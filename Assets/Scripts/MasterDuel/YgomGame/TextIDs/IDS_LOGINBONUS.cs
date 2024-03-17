@@ -1,0 +1,14 @@
+namespace YgomGame.TextIDs
+{
+	public enum IDS_LOGINBONUS
+	{
+		TITLE = 0,
+		ERR_TITLE = 1,
+		ANNIV_1ST_TITLE = 2,
+		ANNIV_1ST_DESC = 3,
+		GOTO_1ST_ANNIVPACK = 4,
+		ERR_INVALID_TERM = 5,
+		ERR_ALREADY_RECEIVED = 6,
+		ERR_COMPLETED = 7
+	}
+}
