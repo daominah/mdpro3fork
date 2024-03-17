@@ -27,7 +27,7 @@ namespace MDPro3
         private IEnumerator CheckUpdate()
         {
             yield return new WaitForSeconds(1);
-            var www = UnityWebRequest.Get("https://code.mycard.moe/sherry_chaos/MDPro2_Version/-/raw/master/ver.txt");
+            var www = UnityWebRequest.Get("https://code.mycard.moe/sherry_chaos/MDPro3/-/raw/master/Version.txt");
             www.SetRequestHeader("Cache-Control", "max-age=0, no-cache, no-store");
             www.SetRequestHeader("Pragma", "no-cache");
             yield return www.SendWebRequest();
