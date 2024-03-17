@@ -36,7 +36,7 @@ namespace MDPro3
                 var result = www.downloadHandler.text;
                 var lines = result.Replace("\r", "").Split('\n');
                 if (Application.version != lines[0])
-                    MessageManager.Cast(InterString.Get("检测到新版本。"));
+                    MessageManager.Cast(InterString.Get("检测到新版本[[?]]。", lines[0]));
             }
             catch
             {

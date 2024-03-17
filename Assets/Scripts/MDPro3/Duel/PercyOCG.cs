@@ -26,7 +26,7 @@ namespace MDPro3
         public PercyOCG()
         {
             _buffer = Marshal.AllocHGlobal(1024 * 256); // 256 KiB
-            error = InterString.Get("YGOPro1旧版的录像崩溃了！您可以选择使用永不崩溃的新版录像。");
+            error = InterString.Get("YGOPro旧版的回放崩溃了！您可以选择使用永不崩溃的新版回放。");
             ygopro = new Ygopro(ReceiveHandler, CardHandler, ScriptHandler, ChatHandler);
             //ygopro.m_log = a => UnityEngine.Debug.Log(a);
         }

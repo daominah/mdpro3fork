@@ -152,11 +152,6 @@ namespace MDPro3.UI
                 }
                 else if (SelectDeck.state == SelectDeck.State.ForSolo)
                 {
-                    if(deckName.Contains(" "))
-                    {
-                        MessageManager.Cast(InterString.Get("给AI用的卡组的卡组名中不能包含空格。"));
-                        return;
-                    }
                     Program.I().ShiftToServant(Program.I().solo);
                     Program.I().solo.btnDeck.transform.GetChild(0).GetComponent<Text>().text = deckName;
                 }

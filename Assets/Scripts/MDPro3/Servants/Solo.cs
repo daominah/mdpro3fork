@@ -45,8 +45,6 @@ namespace MDPro3
             returnServant = Program.I().menu;
             base.Initialize();
             btnDeck.transform.GetChild(0).GetComponent<Text>().text = Config.Get("DeckInUse", "@ui");
-            if(btnDeck.transform.GetChild(0).GetComponent<Text>().text.Contains(" "))
-                btnDeck.transform.GetChild(0).GetComponent<Text>().text = string.Empty;
             btnDeck.SetActive(false);
             Load();
         }
@@ -158,12 +156,13 @@ namespace MDPro3
             string aiCommand = bot.command;
             if (aiCode == 4)
             {
-                if(btnDeck.transform.GetChild(0).GetComponent<Text>().text == string.Empty)
+                string selectedDeck = btnDeck.transform.GetChild(0).GetComponent<Text>().text;
+                if (!File.Exists("Deck/" + selectedDeck + ".ydk"))
                 {
-                    MessageManager.Cast(InterString.Get("请先选择卡组。"));
+                    MessageManager.Cast(InterString.Get("请先为AI选择有效的卡组。"));
                     return;
                 }
-                aiCommand += " DeckFile=" + btnDeck.transform.GetChild(0).GetComponent<Text>().text;
+                aiCommand += " DeckFile=\"" + btnDeck.transform.GetChild(0).GetComponent<Text>().text + "\"";
             }
             Match match = Regex.Match(aiCommand, "Random=(\\w+)");
             if (match.Success)

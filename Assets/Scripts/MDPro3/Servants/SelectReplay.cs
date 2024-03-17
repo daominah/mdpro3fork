@@ -121,7 +121,7 @@ namespace MDPro3
                 {
                     if (god)
                     {
-                        MessageManager.Cast(InterString.Get("您正在观看旧版的录像（上帝视角），不保证稳定性。"));
+                        MessageManager.Cast(InterString.Get("您正在观看旧版的回放（上帝视角），不保证稳定性。"));
                         percy?.Dispose();
                         percy = new PercyOCG();
                         var replays = GetYRPBuffer(fileName);
@@ -136,7 +136,7 @@ namespace MDPro3
                 }
                 else
                 {
-                    MessageManager.Cast(InterString.Get("您正在观看旧版的录像（上帝视角），不保证稳定性。"));
+                    MessageManager.Cast(InterString.Get("您正在观看旧版的回放（上帝视角），不保证稳定性。"));
                     percy?.Dispose();
                     percy = new PercyOCG();
                     var collections = TcpHelper.GetPackages(percy.ygopro.GetYRP3dBuffer(GetYRP(File.ReadAllBytes(fileName))));
@@ -145,7 +145,7 @@ namespace MDPro3
             }
             catch
             {
-                MessageManager.Cast(InterString.Get("录像没有录制完整。"));
+                MessageManager.Cast(InterString.Get("回放没有录制完整。"));
             }
         }
         List<byte[]> GetYRPBuffer(string path)

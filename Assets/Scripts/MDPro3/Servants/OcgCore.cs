@@ -233,7 +233,7 @@ namespace MDPro3
         {
             var selections = new List<string>()
                     {
-                        InterString.Get("保存录像"),
+                        InterString.Get("保存回放"),
                         InterString.Get("保存"),
                         InterString.Get("放弃"),
                         Tools.GetTimeString()
@@ -1469,7 +1469,7 @@ namespace MDPro3
 
         //Start 决斗改名
         //AiName 残局改名
-        //sibyl_name 录像改名
+        //sibyl_name 回放改名
 
         private void PracticalizeMessage(Package p)
         {
@@ -1643,7 +1643,7 @@ namespace MDPro3
                         {
                             selections = new List<string>()
                             {
-                                InterString.Get("保存录像"),
+                                InterString.Get("保存回放"),
                                 InterString.Get("保存"),
                                 InterString.Get("放弃"),
                                 Tools.GetTimeString()

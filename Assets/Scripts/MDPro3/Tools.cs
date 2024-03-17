@@ -170,6 +170,8 @@ namespace MDPro3
                 }
             }
             result.Add(input.Substring(start));
+            for (int i = 0; i < result.Count; i++)
+                result[i] = result[i].Replace("\"", "");
             return result.ToArray();
         }
     }
