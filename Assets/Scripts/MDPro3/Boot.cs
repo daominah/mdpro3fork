@@ -135,7 +135,7 @@ namespace MDPro3
         IEnumerator LoadMainSceneAsync()
         {
             Config.Initialize("Data/config.conf");
-            Config.Set("Version", Application.version);
+            Config.Set("Version", Application.version.Substring(0, 5));
             Config.Save();
             var ini = Addressables.InitializeAsync();
             while (!ini.IsDone)
