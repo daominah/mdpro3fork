@@ -86,6 +86,7 @@ namespace MDPro3
             Program.I().cutin.Load();
             Program.I().mate.Load();
             Program.I().solo.Load();
+            Online.severSelectionsInitialized = false;
         }
 
         IEnumerator LoadDiyWallpaperAsync(string path, Transform parent)

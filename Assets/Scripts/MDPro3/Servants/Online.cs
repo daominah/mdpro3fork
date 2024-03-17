@@ -195,20 +195,25 @@ namespace MDPro3
 
         string GetPoolCodeByName(string pool)
         {
-
-
+            for (int i = 1481; i < 1487; i++)
+            {
+                if (StringHelper.GetUnsafe(i) == pool)
+                    return (i - 1481).ToString();
+            }
             return "5";
         }
         string GetModeCodeByName(string mode)
         {
-
-
+            for (int i = 1244; i < 1247; i++)
+            {
+                if (StringHelper.GetUnsafe(i) == mode)
+                    return (i - 1244).ToString();
+            }
             return "0";
         }
 
-
         public List<string> serverSelections;
-        bool severSelectionsInitialized;
+        public static bool severSelectionsInitialized;
 
         public void OnServer()
         {
