@@ -66,6 +66,8 @@ namespace MDPro3
             Clear();
             btnDelete.SwitchOffWithoutAction();
             btnPickup.OnSwitchOff();
+            if (!Directory.Exists("Deck"))
+                Directory.CreateDirectory("Deck");
             var files = Directory.GetFiles("Deck", "*.ydk");
             List<string> fileList = files.ToList();
             foreach (var file in files)

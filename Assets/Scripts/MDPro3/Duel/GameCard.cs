@@ -874,23 +874,23 @@ namespace MDPro3
                 AddStringTail(InterString.Get("未正规登场"));
             else
                 RemoveStringTail(InterString.Get("未正规登场"));
-            if ((data.Type & (uint)CardType.Xyz) > 0 && (gps.location & (uint)CardLocation.MonsterZone) > 0)
-                overlays = Program.I().ocgcore.GCS_GetOverlays(this);
-            else
-                overlays = new List<GameCard>();
+
+            overlays = Program.I().ocgcore.GCS_GetOverlays(this);
 
             cacheP = p;
             p = gps;
-            //Debug.LogFormat("reason: {0:X}", p.reason);
+            
+            //Debug.LogFormat("{0}: reason: {1:X} location: {2:X}", data.Name, p.reason, p.location);
 
-            foreach (var overlay in overlays)
+            for (int i = 0; i < overlays.Count; i++)
             {
-                overlay.overlayParent = this;
-                overlay.p.controller = gps.controller;
-                overlay.p.location = gps.location | (uint)CardLocation.Overlay;
-                overlay.p.sequence = gps.sequence;
-                overlay.p.position = (int)CardPosition.FaceUpAttack;
+                overlays[i].overlayParent = this;
+                overlays[i].p.controller = gps.controller;
+                overlays[i].p.location = gps.location | (uint)CardLocation.Overlay;
+                overlays[i].p.sequence = gps.sequence;
+                overlays[i].p.position = i;
             }
+            Program.I().ocgcore.ArrangeCards();
 
             if (Program.I().ocgcore.currentMessage == GameMessage.Move
                 && cacheP.location != p.location

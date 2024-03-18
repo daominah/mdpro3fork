@@ -1903,13 +1903,15 @@ namespace MDPro3
                     uint reason = r.ReadUInt32();
 
                     card = GCS_Get(from);
-                    if (card == null)
-                        card = GCS_Create(from);
-                    card.CacheData();
-                    card.SetCode(code);
-                    to.reason = reason;
-                    Sleep((int)(card.Move(to) * 100));
-                    ArrangeCards();
+                    if (card != null)
+                    {
+                        card.CacheData();
+                        card.SetCode(code);
+                        to.reason = reason;
+                        Sleep((int)(card.Move(to) * 100));
+                    }
+                    else
+                        Debug.LogFormat("GCS_Get: not found, location: {0:X}, sequence: {1:X}, position: {2:X}", from.location, from.sequence, from.position);
                     break;
                 case GameMessage.PosChange:
                     ES_hint = StringHelper.GetUnsafe(1600);//卡片改变了表示形式
@@ -2199,8 +2201,6 @@ namespace MDPro3
                         cardsInChain.Add(card);
                         Sleep(100);
                         ES_hint = InterString.Get("「[?]」被发动时", card.GetData().Name);
-                        if (GetAutoInfo())
-                            description.Show(card, null);
                     }
                     if (gps.controller == 0)
                     {
@@ -2212,6 +2212,8 @@ namespace MDPro3
                         if (!opActivated.Contains(code))
                             opActivated.Add(code);
                     }
+                    if (card != null && GetAutoInfo())
+                        description.Show(card, null);
                     break;
                 case GameMessage.Chained:
                     var currentChainCard = cardsInChain[cardsInChain.Count - 1];
