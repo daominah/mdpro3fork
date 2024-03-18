@@ -406,6 +406,9 @@ namespace MDPro3
             else if ((p.location & (uint)CardLocation.Hand) > 0)
             {
                 int handsCount;
+                if(c == null)
+                    return Vector3.zero;
+
                 if (c.p.controller == 0)
                     handsCount = Program.I().ocgcore.GetMyHandCount();
                 else

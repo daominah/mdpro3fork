@@ -1906,12 +1906,15 @@ namespace MDPro3
                     if (card != null)
                     {
                         card.CacheData();
-                        card.SetCode(code);
-                        to.reason = reason;
-                        Sleep((int)(card.Move(to) * 100));
                     }
                     else
+                    {
                         Debug.LogFormat("GCS_Get: not found, location: {0:X}, sequence: {1:X}, position: {2:X}", from.location, from.sequence, from.position);
+                        card = GCS_Create(from);
+                    }
+                    card.SetCode(code);
+                    to.reason = reason;
+                    Sleep((int)(card.Move(to) * 100));
                     break;
                 case GameMessage.PosChange:
                     ES_hint = StringHelper.GetUnsafe(1600);//卡片改变了表示形式

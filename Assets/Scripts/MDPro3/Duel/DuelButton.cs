@@ -172,12 +172,23 @@ namespace MDPro3.UI
                     gps.sequence = sequence;
                     var position = GameCard.GetCardPosition(gps);
                     uiPoint = UIManager.WorldToScreenPoint(Program.I().camera_.cameraMain, position);
+                    if ((location & ((uint)CardLocation.Deck + (uint)CardLocation.Extra)) > 0
+                        && controller != 0)
+                        height = -100;
                 }
                 else
                 {
                     uiPoint = UIManager.WorldToScreenPoint(Program.I().camera_.cameraMain, cookieCard.model.transform.position);
-                    if (cookieCard != null && (cookieCard.p.location & (uint)CardLocation.Hand) > 0)
-                        height = 250;
+                    if (cookieCard != null)
+                    {
+                        if((cookieCard.p.location & (uint)CardLocation.Hand) > 0)
+                        {
+                            if(cookieCard.p.controller == 0)
+                                height = 250f;
+                            else
+                                height = -100;
+                        }
+                    }
                 }
                 GetComponent<RectTransform>().anchoredPosition = new Vector2(uiPoint.x - (buttonsCount - 1) * 80 + id * 160, uiPoint.y + height);
             }
