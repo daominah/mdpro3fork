@@ -431,7 +431,7 @@ namespace MDPro3.UI
                         }
                     }
                 }
-                if ((passController & 0x1F00) > 0)
+                if ((passController & 0x3F00) > 0)
                 {
                     if ((p.location & (uint)CardLocation.SpellZone) > 0)
                     {

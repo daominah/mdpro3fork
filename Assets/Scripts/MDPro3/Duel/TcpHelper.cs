@@ -24,26 +24,29 @@ namespace MDPro3
         public static string lastRecordName = "";
         public static List<Package> packagesInRecord = new List<Package>();
 
+        private static readonly Queue<Package> messageQueue = new Queue<Package>();
+        public static void InitializeSender()
+        {
+            var senderThead = new Thread(Sender);
+            senderThead.IsBackground = true;
+            senderThead.Start();
+        }
+
         public static void Join(string ipString, string name, string portString, string pswString, string version)
         {
-            //Debug.Log("TcpHelper-Join-Start");
             if (canJoin)
             {
-                //Debug.Log("TcpHelper-Join-canJoin: true");
-
                 if (tcpClient == null || tcpClient.Connected == false)
                 {
-                    //Debug.Log("TcpHelper-Join-mark1");
-
                     canJoin = false;
                     try
                     {
-                        //Debug.Log("TcpHelper-Join-mark2");
-
                         tcpClient = new TcpClientWithTimeout(ipString, int.Parse(portString), 3000).Connect();
                         networkStream = tcpClient.GetStream();
                         var t = new Thread(Receiver);
                         t.Start();
+                        messageQueue.Clear();
+                        InitializeSender();
                         CtosMessage_PlayerInfo(name);
                         CtosMessage_JoinGame(pswString, version);
                     }
@@ -56,16 +59,12 @@ namespace MDPro3
             }
             else
             {
-                //Debug.Log("TcpHelper-Join-canJoin: false");
-
                 onDisConnected = true;
             }
         }
 
         public static void Receiver()
         {
-            //Debug.Log("TcpHelper-Receiver-Start");
-
             try
             {
                 while (tcpClient != null
@@ -74,19 +73,13 @@ namespace MDPro3
                     && Program.Running
                     && !Program.I().room.duelEnded)
                 {
-                    //Debug.Log("TcpHelper-Receiver-Mark1");
-
                     var data = SocketMaster.ReadPacket(networkStream);
                     AddDateJumoLine(data);
                 }
-                //Debug.Log("TcpHelper-Receiver-Mark2");
-
                 onDisConnected = true;
             }
             catch
             {
-                //Debug.Log("TcpHelper-Receiver-Mark3");
-
                 onDisConnected = true;
             }
         }
@@ -231,37 +224,56 @@ namespace MDPro3
 
         public static void Send(Package message)
         {
-            if (tcpClient != null && tcpClient.Connected)
+            lock (locker)
             {
-                var t = new Thread(Sender);
-                t.Start(message);
+                messageQueue.Enqueue(message);
             }
         }
 
-        private static void Sender(object o)
+        private static void Sender()
         {
-            try
+            while (tcpClient != null && tcpClient.Connected)
             {
+                Package currentMessage;
                 lock (locker)
                 {
-                    var message = (Package)o;
-                    var data = message.Data.Get();
-                    var memstream = new MemoryStream();
-                    var b = new BinaryWriter(memstream);
-                    b.Write(BitConverter.GetBytes((short)data.Length + 1), 0, 2);
-                    b.Write(BitConverter.GetBytes((byte)message.Function), 0, 1);
-                    b.Write(data, 0, data.Length);
-                    var s = memstream.ToArray();
-                    //Debug.Log(BitConverter.ToString(s));
-                    tcpClient.Client.Send(s);
+                    if (messageQueue.Count == 0)
+                        continue;
+                    currentMessage = messageQueue.Dequeue();
                 }
-            }
-            catch
-            {
-                onDisConnected = true;
+                try
+                {
+                    var data = currentMessage.Data.Get();
+                    using (MemoryStream memstream = new MemoryStream())
+                    {
+                        using (BinaryWriter b = new BinaryWriter(memstream))
+                        {
+                            b.Write(BitConverter.GetBytes((short)(data.Length + 1)), 0, 2);
+                            b.Write(BitConverter.GetBytes((byte)currentMessage.Function), 0, 1);
+                            b.Write(data, 0, data.Length);
+                        }
+                        byte[] s = memstream.ToArray();
+                        try
+                        {
+                            tcpClient.Client.Send(s);
+                        }
+                        catch (SocketException ex)
+                        {
+                            Debug.LogError($"Failed to send data: {ex.Message}");
+                            onDisConnected = true;
+                            break;
+                        }
+                    }
+                }
+                catch
+                {
+                    onDisConnected = true;
+                    break;
+                }
             }
         }
 
+        #region CtosMessage
         public static void CtosMessage_Response(byte[] response)
         {
             var message = new Package();
@@ -408,7 +420,7 @@ namespace MDPro3
             message.Function = (int)CtosMessage.HsStart;
             Send(message);
         }
-
+        #endregion
         public static List<Package> ReadPackagesInRecord(string path)
         {
             List<Package> re = null;
@@ -766,20 +778,15 @@ namespace MDPro3
     {
         private static byte[] ReadFull(NetworkStream stream, int length)
         {
-            //Debug.Log("TcpHelper-ReadReadFull-Start");
-
             var buf = new byte[length];
             var rlen = 0;
             while (rlen < buf.Length)
             {
-                //Debug.Log("TcpHelper-ReadReadFull-Mark1");
-
                 var currentLength = stream.Read(buf, rlen, buf.Length - rlen);
                 rlen += currentLength;
                 if (currentLength == 0)
                 {
                     TcpHelper.onDisConnected = true;
-                    //Debug.Log("TcpHelper-ReadReadFull-Set onDisConnected True");
                     break;
                 }
             }
@@ -788,8 +795,6 @@ namespace MDPro3
 
         public static byte[] ReadPacket(NetworkStream stream)
         {
-            //Debug.Log("TcpHelper-ReadPacket-Start");
-
             var hdr = ReadFull(stream, 2);
             var plen = BitConverter.ToUInt16(hdr, 0);
             var buf = ReadFull(stream, plen);

@@ -45,6 +45,10 @@ namespace MDPro3
         public Room room;
         public EditDeck editDeck;
 
+#if UNITY_EDITOR
+        public float timeScaleFloat = 1;
+
+#endif
         #region Initializement
 
         private static Program instance;
@@ -165,11 +169,6 @@ namespace MDPro3
         public static bool InputGetMouse1Up;
         public static float pressingTime;
 
-        public float testFloat1;
-        public float testFloat2;
-        public float testFloat3;
-        public float testFloat4;
-
         void Update()
         {
             InputGetMouse0 = Input.GetMouseButton(0);
@@ -206,8 +205,9 @@ namespace MDPro3
             foreach (Manager manager in managers) manager.PerFrameFunction();
             foreach (Servant servant in servants) servant.PerFrameFunction();
 
-            if (Input.GetKey(KeyCode.P))
-                OcgCore.messagePass = true;
+#if UNITY_EDITOR
+            timeScale = timeScaleFloat;
+#endif
         }
 
         public void UnloadUnusedAssets()

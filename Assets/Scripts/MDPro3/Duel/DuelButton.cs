@@ -186,7 +186,7 @@ namespace MDPro3.UI
                             if(cookieCard.p.controller == 0)
                                 height = 250f;
                             else
-                                height = -100;
+                                height = -200;
                         }
                     }
                 }

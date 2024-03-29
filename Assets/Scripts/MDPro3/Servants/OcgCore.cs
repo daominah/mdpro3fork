@@ -20,6 +20,7 @@ using MDPro3.YGOSharp.OCGWrapper.Enums;
 using static YgomGame.Bg.BgEffectSettingInner;
 using MDPro3.UI;
 
+
 namespace MDPro3
 {
     public class OcgCore : Servant
@@ -278,7 +279,7 @@ namespace MDPro3
             }
         }
 
-        public void OnDuelResultConfirmed()
+        public void OnDuelResultConfirmed(bool manual = false)
         {
             Program.I().room.joinWithReconnect = false;
 
@@ -311,25 +312,42 @@ namespace MDPro3
 
             if (condition == Condition.Watch)
             {
-                if (duelEnded)
-                    Hide(0);
+                if (manual)
+                {
+                    surrended = false;
+                    Program.I().room.duelEnded = false;
+                    Program.I().room.needSide = false;
+                    Program.I().room.sideWaitingObserver = false;
+                    if (Program.I().currentSubServant != null)
+                    {
+                        Program.I().currentSubServant.Hide(-1);
+                        Program.I().currentSubServant = null;
+                    }
+                    TcpHelper.CtosMessage_LeaveGame();
+                    OnExit();
+                }
                 else
                 {
-                    field0.SetActive(false);
-                    field1.SetActive(false);
-                    field0.SetActive(true);
-                    field1.SetActive(true);
+                    if (duelEnded)
+                        Hide(0);
+                    else
+                    {
+                        field0.SetActive(false);
+                        field1.SetActive(false);
+                        field0.SetActive(true);
+                        field1.SetActive(true);
+                    }
                 }
                 return;
             }
 
             var selections = new List<string>
-        {
-            InterString.Get("投降"),
-            InterString.Get("您确定要投降吗？"),
-            InterString.Get("是"),
-            InterString.Get("否")
-        };
+            {
+                InterString.Get("投降"),
+                InterString.Get("您确定要投降吗？"),
+                InterString.Get("是"),
+                InterString.Get("否")
+            };
             Action yes = () =>
             {
                 surrended = true;
@@ -1276,14 +1294,22 @@ namespace MDPro3
 
         public void SendReturn(byte[] buffer)
         {
+            handler?.Invoke(buffer);
             ClearResponse();
-            if (handler != null) handler(buffer);
         }
 
         public void Sleep(int framsIn100)
         {
             var illustion = (int)(Program.TimePassed() + framsIn100 * 10f);
             if (illustion > MessageBeginTime) MessageBeginTime = illustion;
+        }
+
+        public void OnResend()
+        {
+            var binaryMaster = new BinaryMaster();
+            binaryMaster = new BinaryMaster();
+            binaryMaster.writer.Write(-1);
+            SendReturn(binaryMaster.Get());
         }
 
         public void StocMessage_TimeLimit(BinaryReader r)
@@ -4088,101 +4114,54 @@ namespace MDPro3
                     }
 
                     var handleFlag = 0;
-                    //无强制发动的卡
                     if (forced == 0)
                     {
-                        //无关键卡
                         if (spcount == 0)
                         {
-                            //全时点
-                            if (chainCondition == ChainCondition.All)
+                            switch (chainCondition)
                             {
-                                //无卡连锁
-                                if (chainCards.Count == 0)
-                                    //无连锁提示
-                                    handleFlag = -1;
-                                //有卡连锁
-                                else
-                                {
-                                    //一个效果需要处理
-                                    if (chainCards.Count == 1 && chainCards[0].effects.Count == 1)
-                                        handleFlag = 1;
-                                    //多个效果需要处理
+                                case ChainCondition.All:
+                                    if (chainCards.Count == 0)
+                                        handleFlag = -1;
                                     else
-                                        handleFlag = 2;
-                                }
+                                        handleFlag = 1;
+                                    break;
+                                default:
+                                    handleFlag = 0;
+                                    break;
                             }
-                            else
-                                handleFlag = 0;
                         }
-                        //有关键卡
                         else
                         {
-                            //无卡连锁
                             if (chainCards.Count == 0)
                             {
                                 handleFlag = 0;
                                 if (chainCondition == ChainCondition.All)
                                     handleFlag = -1;
                             }
-                            //有卡连锁
                             else
                             {
                                 if (chainCondition == ChainCondition.No)
                                     handleFlag = 0;
                                 else
-                                {
-                                    if (chainCards.Count == 1 && chainCards[0].effects.Count == 1)
-                                        handleFlag = 1;
-                                    else
-                                        handleFlag = 2;
-                                }
+                                    handleFlag = 1;
                             }
                         }
                     }
-                    //有强制发动的卡
                     else
+                        handleFlag = 3;
+
+                    switch (handleFlag)
                     {
-                        //有一张强制发动的卡
-                        if (chainCards.Count == 1 && chainCards[0].effects.Count == 1)
-                            handleFlag = 4;
-                        //有多张强制发动的卡
-                        else
-                            handleFlag = 3;
-                    }
-                    //响应
-                    //无卡连锁提示
-                    if (handleFlag == -1)
-                    {
-                        //TODO or not to
-                        binaryMaster = new BinaryMaster();
-                        binaryMaster.writer.Write(-1);
-                        SendReturn(binaryMaster.Get());
-                    }
-                    //直接回复
-                    else if (handleFlag == 0)
-                    {
-                        binaryMaster = new BinaryMaster();
-                        binaryMaster.writer.Write(-1);
-                        SendReturn(binaryMaster.Get());
-                    }
-                    //处理一张 废除
-                    if (handleFlag == 1)
-                        handleFlag = 2;
-                    //处理多张
-                    if (handleFlag == 2)
-                    {
-                        ShowPopupSelectCard(InterString.Get("选择效果发动。"), chainCards, 1, 1, true, false);
-                    }
-                    //处理多张强制发动的卡
-                    else if (handleFlag == 3)
-                    {
-                        ShowPopupSelectCard(InterString.Get("选择必发效果发动。"), chainCards, 1, 1, false, false);
-                    }
-                    //处理一张强制发动的卡
-                    else if (handleFlag == 4)
-                    {
-                        ShowPopupSelectCard(InterString.Get("选择必发效果发动。"), chainCards, 1, 1, false, false);
+                        case 1:
+                            ShowPopupSelectCard(InterString.Get("选择效果发动。"), chainCards, 1, 1, true, false);
+                            break;
+                        case 3:
+                            ShowPopupSelectCard(InterString.Get("选择必发效果发动。"), chainCards, 1, 1, false, false);
+                            break;
+                        default:
+                            OnResend();
+                            break;
                     }
                     break;
                 case GameMessage.SelectCard:
@@ -4438,7 +4417,7 @@ namespace MDPro3
                     }
                     else
                         if (ES_selectHint == "")
-                        ES_selectHint = StringHelper.GetUnsafe(570);//请选择要变成不能使用的卡片区域
+                            ES_selectHint = StringHelper.GetUnsafe(570);//请选择要变成不能使用的卡片区域
                     hintObj.SetActive(true);
                     hintText.text = ES_selectHint;
                     break;

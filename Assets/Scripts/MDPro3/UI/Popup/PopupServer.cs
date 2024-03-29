@@ -57,10 +57,10 @@ namespace MDPro3.UI
                 textMode.text,
                 toggleNoCheck.switchOn ? "T" : "F",
                 toggleNoShuffle.switchOn ? "T" : "F",
-                inputTime.text,
-                inputLP.text,
-                inputHand.text,
-                inputDraw.text
+                inputTime.text == "" ? "0" : inputTime.text,
+                inputLP.text == "" ? "8000" : inputLP.text,
+                inputHand.text == "" ? "5" : inputHand.text,
+                inputDraw.text == "" ? "1" : inputDraw.text
             };
         }
 
