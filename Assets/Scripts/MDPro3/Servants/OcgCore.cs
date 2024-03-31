@@ -684,6 +684,8 @@ namespace MDPro3
                 var lineManager = attackLine.GetComponent<ElementObjectManager>();
                 var line1 = lineManager.GetElement<LineRenderer>("arrowlimeRollover");
                 var line2 = lineManager.GetElement<LineRenderer>("arrowRollover");
+                line1.sortingLayerName = "DuelEffect_High";
+                line2.sortingLayerName = "DuelEffect_High";
                 line1.material.renderQueue = 4000;
                 line2.material.renderQueue = 4000;
                 line1.material.SetTexture("_Texture2DAsset_b6d1fd99174c608f800b61fcd5471719_Out_0", TextureManager.container.fxt_Arrow_003);
@@ -702,6 +704,7 @@ namespace MDPro3
                     yield return null;
                 targetLine = ie.Current;
                 var line = targetLine.transform.GetChild(0).GetComponent<LineRenderer>();
+                line.sortingLayerName = "DuelEffect_High";
                 line.material.renderQueue = 4000;
                 line.material.SetTexture("_Texture2DAsset_b6d1fd99174c608f800b61fcd5471719_Out_0", TextureManager.container.fxt_Arrow);
                 line.material.SetTexture("_Texture2DAsset_46a0b6b632b7ad8a9a0dbeab8e0a7fa5_Out_0", TextureManager.container.fxt_Arrow_004);
@@ -718,6 +721,7 @@ namespace MDPro3
                     yield return null;
                 equipLine = ie.Current;
                 var line = equipLine.transform.GetChild(0).GetComponent<LineRenderer>();
+                line.sortingLayerName = "DuelEffect_High";
                 line.material.renderQueue = 4000;
                 line.material.SetTexture("_Texture2DAsset_5b426b3b88fc4e3c873ed973f68902bd_Out_0", TextureManager.container.fxt_Arrow);
                 line.material.SetTexture("_Texture2DAsset_32775df679384275b23b5efed70b243e_Out_0", TextureManager.container.fxt_Arrow_004);
