@@ -1024,7 +1024,7 @@ namespace MDPro3
                     return 0.2f;
                 }
 
-                //Token In
+                //Token In (from unknow)
                 if (cacheP.location == 0)
                 {
                     AudioManager.PlaySE("SE_CARD_TOKEN_SUMMON");
@@ -1044,7 +1044,7 @@ namespace MDPro3
                     Destroy(fx, 2f);
                     return 0.5f;
                 }
-                //Token Out
+                //Token Out (to unknow)
                 if (p.location == 0)
                 {
                     AudioManager.PlaySE("SE_CARD_TOKEN_BREAK");
@@ -1134,7 +1134,7 @@ namespace MDPro3
                         moveTime = 0.2f;
                         break;
                 }
-
+            TokenPass:
                 var cardPlane = manager.GetElement<Transform>("CardPlane");
                 var pivot = manager.GetElement<Transform>("Pivot");
                 var offset = manager.GetElement<Transform>("Offset");
@@ -1785,6 +1785,10 @@ namespace MDPro3
                 fx.transform.localEulerAngles = new Vector3(0, 90, 0);
             if ((p.location & (uint)CardLocation.SpellZone) > 0)
                 fx.transform.localScale = Vector3.one * 0.8f;
+            if ((p.location & ((uint)CardLocation.Deck + (uint)CardLocation.Extra)) > 0)
+            {
+                fx.transform.localEulerAngles = new Vector3(0, GetCardRotation(p).y, 0);
+            }
             Destroy(fx, 1f);
         }
         public void AnimationLandShake(GameCard card, bool huge)
@@ -1822,6 +1826,7 @@ namespace MDPro3
             sequence.AppendInterval(1f * id);
             sequence.Append(turn.DOLocalMoveY(2, 0.1f).OnStart(() =>
             {
+                Program.I().ocgcore.description.Show(this, null);
                 model.SetActive(true);
                 if (Program.I().ocgcore.GetLocationCardCount(CardLocation.Deck, p.controller) == 1)
                 {

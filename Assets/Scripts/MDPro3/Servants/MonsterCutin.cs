@@ -169,7 +169,7 @@ namespace MDPro3
             {
                 playing = false;
             });
-
+            code = AliasCode(code);
             Card card = CardsManager.Get(code);
 
             GameObject loader = null;
@@ -381,6 +381,19 @@ namespace MDPro3
             handler.code = int.Parse(task[0]);
             handler.cardName = task[1];
             handler.Refresh();
+        }
+
+        static int AliasCode(int code)
+        {
+            if (code == 89631142 || code == 89631148)//ÇàÑÛ°×Áú
+                return 89631141;
+            if (code == 89943725)//ĞÂÓîÏÀ
+                return 89943723;
+            if (code == 46986424 || code == 46986426)//ºÚÄ§ÊõÊ¦
+                return 46986417;
+            if (code == 74677425)//ÕæºìÑÛºÚÁú
+                return 74677424;
+            return code;
         }
     }
 }

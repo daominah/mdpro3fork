@@ -45,10 +45,6 @@ namespace MDPro3
         public Room room;
         public EditDeck editDeck;
 
-#if UNITY_EDITOR
-        public float timeScaleFloat = 1;
-
-#endif
         #region Initializement
 
         private static Program instance;
@@ -160,6 +156,9 @@ namespace MDPro3
             }
         }
         float m_timeScale = 1f;
+#if UNITY_EDITOR
+        public float timeScaleForEdit = 1;
+#endif
 
         public static bool InputGetMouse0;
         public static bool InputGetMouse0Down;
@@ -206,7 +205,7 @@ namespace MDPro3
             foreach (Servant servant in servants) servant.PerFrameFunction();
 
 #if UNITY_EDITOR
-            timeScale = timeScaleFloat;
+            timeScale = timeScaleForEdit;
 #endif
         }
 

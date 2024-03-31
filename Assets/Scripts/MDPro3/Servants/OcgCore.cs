@@ -20,7 +20,6 @@ using MDPro3.YGOSharp.OCGWrapper.Enums;
 using static YgomGame.Bg.BgEffectSettingInner;
 using MDPro3.UI;
 
-
 namespace MDPro3
 {
     public class OcgCore : Servant
@@ -165,14 +164,22 @@ namespace MDPro3
         }
         public void OnAcc()
         {
+#if UNITY_EDITOR
+            Program.I().timeScaleForEdit = 2f;
+#else
             Program.I().timeScale = 2f;
+#endif
             buttonAcc.SetActive(false);
             buttonNor.SetActive(true);
             SetBgTimeScale(0.5f);
         }
         public void OnNor()
         {
+#if UNITY_EDITOR
+            Program.I().timeScaleForEdit = 1f;
+#else
             Program.I().timeScale = 1f;
+#endif
             buttonAcc.SetActive(true);
             buttonNor.SetActive(false);
             SetBgTimeScale(1f);
@@ -1126,7 +1133,7 @@ namespace MDPro3
             }
         }
 
-        #endregion
+#endregion
 
         #region Message
         public List<GameCard> cards = new List<GameCard>();
@@ -1543,6 +1550,15 @@ namespace MDPro3
                     name_1_tag = r.ReadUnicode(50);
                     name_1_c = r.ReadUnicode(50);
                     var isTag = !(name_0_tag == "---" && name_1_tag == "---" && name_0 == name_0_c && name_1 == name_1_c);
+
+                    if (Config.Get("ReplayPlayerName0", "@ui").Length > 0)
+                        name_0 = Config.Get("ReplayPlayerName0", "@ui");
+                    if (Config.Get("ReplayPlayerName1", "@ui").Length > 0)
+                        name_1 = Config.Get("ReplayPlayerName1", "@ui");
+                    if (Config.Get("ReplayPlayerName0Tag", "@ui").Length > 0)
+                        name_0_tag = Config.Get("ReplayPlayerName0Tag", "@ui");
+                    if (Config.Get("ReplayPlayerName1Tag", "@ui").Length > 0)
+                        name_1_tag = Config.Get("ReplayPlayerName1Tag", "@ui");
                     if (isTag)
                     {
                         if (isFirst)
@@ -1555,6 +1571,11 @@ namespace MDPro3
                             name_0_c = name_0_tag;
                             name_1_c = name_1;
                         }
+                    }
+                    else
+                    {
+                        name_0_c = name_0;
+                        name_1_c = name_1;
                     }
                     player0Name.text = name_0_c;
                     player1Name.text = name_1_c;
@@ -2901,8 +2922,13 @@ namespace MDPro3
                     if (life0 <= 0 || life1 <= 0)
                     {
                         AudioManager.StopBGM();
+#if UNITY_EDITOR
+                        Program.I().timeScaleForEdit = 0.1f;
+                        DOTween.To(() => Program.I().timeScaleForEdit, x => Program.I().timeScaleForEdit = x, 1, 0.8f).SetEase(Ease.InQuad);
+#else
                         Program.I().timeScale = 0.1f;
                         DOTween.To(() => Program.I().timeScale, x => Program.I().timeScale = x, 1, 0.8f).SetEase(Ease.InQuad);
+#endif
 
                         if (life0 <= 0)
                         {
@@ -2963,8 +2989,13 @@ namespace MDPro3
                     }
                     if (life0 <= 0 || life1 <= 0)
                     {
+#if UNITY_EDITOR
+                        Program.I().timeScaleForEdit = 0.1f;
+                        DOTween.To(() => Program.I().timeScaleForEdit, x => Program.I().timeScaleForEdit = x, 1, 0.8f).SetEase(Ease.InQuad);
+#else
                         Program.I().timeScale = 0.1f;
                         DOTween.To(() => Program.I().timeScale, x => Program.I().timeScale = x, 1, 0.8f).SetEase(Ease.InQuad);
+#endif
                         if (life0 <= 0)
                         {
                             hitObj = ABLoader.LoadFromFile("effects/hit/fxp_dithit_fin_near_001");
@@ -3409,6 +3440,7 @@ namespace MDPro3
                         if (card != null)
                         {
                             card.SetCode(code);
+                            description.Show(card, null);
                             card.AnimationConfirm();
                         }
                     }
@@ -3620,10 +3652,6 @@ namespace MDPro3
                             manager = manager.GetElement<ElementObjectManager>("SummonPendulumShowCard");
                             pendulum.transform.SetParent(Program.I().container_3D, false);
                             Tools.ChangeLayer(pendulum, "DuelOverlay3D");
-                            //AudioManager.PlaySE("SE_SMN_PENDULUM_01_01");
-                            //AudioManager.PlaySE("SE_SMN_PENDULUM_01_02");
-                            //AudioManager.PlaySE("SE_SMN_PENDULUM_01_03");
-                            //AudioManager.PlaySE("SE_SMN_PENDULUM_02");
 
                             var card1 = manager.GetElement<ElementObjectManager>("DummyCard01");
                             var card2 = manager.GetElement<ElementObjectManager>("DummyCard02");
@@ -3697,7 +3725,6 @@ namespace MDPro3
 
                             if (MasterRule >= 4)
                             {
-                                //AudioManager.PlaySE("SE_SUMMON_PENDULUM_SET");
                                 var pendulumSet = ABLoader.LoadFromFolder("timeline/summon/summonpendulum/summonpendulumscaleset", "PendulumSet", true);
                                 pendulumSet.transform.SetParent(Program.I().container_3D);
                                 ElementObjectManager setManager = null;
@@ -3832,14 +3859,13 @@ namespace MDPro3
                     for (int i = 0; i < count; i++)
                         ES_searchCodes.Add(r.ReadInt32());
                     selections = new List<string>()
-                {
-                    InterString.Get("ÇëÊäÈë¹Ø¼ü×Ö£º"),
-                    InterString.Get("ËÑË÷"),
-                    string.Empty,
-                    string.Empty
-                };
+                    {
+                        InterString.Get("ÇëÊäÈë¹Ø¼ü×Ö£º"),
+                        InterString.Get("ËÑË÷"),
+                        string.Empty,
+                        string.Empty
+                    };
                     ShowPopupInput(selections, OnAnnounceCard, null);
-                    //ac
                     break;
                 case GameMessage.SelectIdleCmd:
                     if (InIgnoranceReplay()) break;
@@ -4023,12 +4049,12 @@ namespace MDPro3
                     //    title = forReplaceFirst.Replace(title, "¡¸" + cardsInChain[currentChainNumber - 1].GetData().Name + "¡¹", 1);
                     //}
                     selections = new List<string>
-                {
-                    title,
-                    desc,
-                    InterString.Get("ÊÇ"),
-                    InterString.Get("·ñ")
-                };
+                    {
+                        title,
+                        desc,
+                        InterString.Get("ÊÇ"),
+                        InterString.Get("·ñ")
+                    };
                     Action yes = () =>
                     {
                         var binaryMaster = new BinaryMaster();
