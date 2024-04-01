@@ -173,6 +173,9 @@ namespace MDPro3
 
         string TextForDetail(string text)
         {
+            if(string.IsNullOrEmpty(text))
+                text = string.Empty;
+
             if (Config.Get("Language", "zh-CN") != "en-US"
                 || Config.Get("Language", "zh-CN") != "es-ES")
             {
