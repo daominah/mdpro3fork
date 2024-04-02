@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -173,6 +174,19 @@ namespace MDPro3
             for (int i = 0; i < result.Count; i++)
                 result[i] = result[i].Replace("\"", "");
             return result.ToArray();
+        }
+
+        public static void TryOpenInFileExplorer(string path)
+        {
+            try
+            {
+                string argument = $"/select, \"{path}\"";
+                Process.Start(new ProcessStartInfo("explorer.exe", argument));
+            }
+            catch (Exception ex)
+            {
+                MessageManager.Cast($"Failed to open file explorer: {ex.Message}");
+            }
         }
     }
 }

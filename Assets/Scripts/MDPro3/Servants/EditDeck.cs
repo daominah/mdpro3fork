@@ -14,6 +14,7 @@ using MDPro3.YGOSharp;
 using MDPro3.YGOSharp.OCGWrapper.Enums;
 using MDPro3.UI;
 using Toggle = MDPro3.UI.Toggle;
+using UnityEngine.Android;
 
 namespace MDPro3
 {
@@ -532,22 +533,24 @@ namespace MDPro3
             listWidth = uiWidth - (outerWidth * 2 + descriptionWidth + innerWidth * 2 + tableWidth);
             manager.GetElement<RectTransform>("List").sizeDelta = new Vector2(listWidth, 840);
 
-            var startX = 825f;
+            var startX = 810f;
             var space = 20f;
-            var fullWidth = uiWidth - startX - 100 - space * 4;
-            var buttonWidth = fullWidth / 5;
+            var fullWidth = uiWidth - startX - 30 - space * 5;
+            var buttonWidth = fullWidth / 6;
             manager.GetElement<RectTransform>("ButtonDeckReset").sizeDelta = new Vector2(buttonWidth, 62);
             manager.GetElement<RectTransform>("ButtonDeckSort").sizeDelta = new Vector2(buttonWidth, 62);
             manager.GetElement<RectTransform>("ButtonDeckRandom").sizeDelta = new Vector2(buttonWidth, 62);
             manager.GetElement<RectTransform>("ButtonDeckCopy").sizeDelta = new Vector2(buttonWidth, 62);
+            manager.GetElement<RectTransform>("ButtonDeckShare").sizeDelta = new Vector2(buttonWidth, 62);
             manager.GetElement<RectTransform>("ButtonDeckSave").sizeDelta = new Vector2(buttonWidth, 62);
-            manager.GetElement<RectTransform>("ButtonChangeSide").sizeDelta = new Vector2(buttonWidth * 3 + space * 2, 62);
+            manager.GetElement<RectTransform>("ButtonChangeSide").sizeDelta = new Vector2(buttonWidth * 4 + space * 3, 62);
 
             manager.GetElement<RectTransform>("ButtonDeckReset").anchoredPosition = new Vector2(startX, -34);
             manager.GetElement<RectTransform>("ButtonDeckSort").anchoredPosition = new Vector2(startX + buttonWidth + space, -34);
             manager.GetElement<RectTransform>("ButtonDeckRandom").anchoredPosition = new Vector2(startX + (buttonWidth + space) * 2, -34);
             manager.GetElement<RectTransform>("ButtonDeckCopy").anchoredPosition = new Vector2(startX + (buttonWidth + space) * 3, -34);
-            manager.GetElement<RectTransform>("ButtonDeckSave").anchoredPosition = new Vector2(startX + (buttonWidth + space) * 4, -34);
+            manager.GetElement<RectTransform>("ButtonDeckShare").anchoredPosition = new Vector2(startX + (buttonWidth + space) * 4, -34);
+            manager.GetElement<RectTransform>("ButtonDeckSave").anchoredPosition = new Vector2(startX + (buttonWidth + space) * 5, -34);
             manager.GetElement<RectTransform>("ButtonChangeSide").anchoredPosition = new Vector2(startX + (buttonWidth + space) * 2, -34);
 
             foreach (var card in cards)
@@ -1013,6 +1016,20 @@ namespace MDPro3
 
             deckName += " - " + InterString.Get("复制");
             input.text = deckName;
+        }
+        public void OnShare()
+        {
+            if(dirty || !File.Exists("Deck/" + deckName + ".ydk"))
+            {
+                MessageManager.Cast(InterString.Get("请先保存卡组。"));
+                return;
+            }
+
+#if UNITY_ANDROID && !UNITY_EDITOR
+            new NativeShare().SetText(File.ReadAllText("Deck/" + deckName + ".ydk")).Share();
+#else
+            Tools.TryOpenInFileExplorer(Path.GetFullPath("Deck/" + deckName + ".ydk"));
+#endif
         }
         public void OnSave()
         {
