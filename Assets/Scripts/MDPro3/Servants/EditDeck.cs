@@ -15,6 +15,7 @@ using MDPro3.YGOSharp.OCGWrapper.Enums;
 using MDPro3.UI;
 using Toggle = MDPro3.UI.Toggle;
 using UnityEngine.Android;
+using static YgomSystem.Utility.AssetLinker;
 
 namespace MDPro3
 {
@@ -1025,11 +1026,14 @@ namespace MDPro3
                 return;
             }
 
-#if UNITY_ANDROID && !UNITY_EDITOR
-            new NativeShare().SetText(File.ReadAllText("Deck/" + deckName + ".ydk")).Share();
-#else
-            Tools.TryOpenInFileExplorer(Path.GetFullPath("Deck/" + deckName + ".ydk"));
-#endif
+            //#if UNITY_ANDROID && !UNITY_EDITOR
+            //            new NativeShare().SetText(File.ReadAllText("Deck/" + deckName + ".ydk")).Share();
+            //#else
+            //            Tools.TryOpenInFileExplorer(Path.GetFullPath("Deck/" + deckName + ".ydk"));
+            //#endif
+            var url = DeckShareURL.DeckToUri(deck.Main, deck.Extra, deck.Side).ToString();
+            GUIUtility.systemCopyBuffer = url;
+            Application.OpenURL(url);
         }
         public void OnSave()
         {
@@ -1086,6 +1090,24 @@ namespace MDPro3
 
         void FileSave()
         {
+            try
+            {
+                SaveDeckFile(deck, input.text);
+                if (input.text != deckName)
+                    File.Delete("Deck/" + deckName + ".ydk");
+                Config.Set("DeckInUse", input.text);
+                deckName = input.text;
+                MessageManager.Cast(InterString.Get("卡组「[?]」已保存。", input.text));
+                dirty = false;
+            }
+            catch
+            {
+                MessageManager.Cast(InterString.Get("保存失败！"));
+            }
+        }
+
+        public void SaveDeckFile(Deck deck, string deckName)
+        {
             var value = "#created by mdpro3\r\n#main\r\n";
             for (var i = 0; i < deck.Main.Count; i++) value += deck.Main[i] + "\r\n";
             value += "#extra\r\n";
@@ -1107,16 +1129,11 @@ namespace MDPro3
             value += "#mate\r\n";
             for (var i = 0; i < deck.Mate.Count; i++) value += deck.Mate[i] + "#\r\n";
 
-            var outName = input.text;
             try
             {
-                File.WriteAllText("Deck/" + outName + ".ydk", value, Encoding.UTF8);
-                if (outName != deckName)
-                    File.Delete("Deck/" + deckName + ".ydk");
-                Config.Set("DeckInUse", outName);
-                deckName = outName;
-                MessageManager.Cast(InterString.Get("卡组「[?]」已保存。", outName));
-                dirty = false;
+                File.WriteAllText("Deck/" + deckName + ".ydk", value, Encoding.UTF8);
+                Config.Set("DeckInUse", deckName);
+                MessageManager.Cast(InterString.Get("卡组「[?]」已保存。", deckName));
             }
             catch
             {

@@ -229,11 +229,18 @@ namespace MDPro3
                 string clipBoard = GUIUtility.systemCopyBuffer;
                 if (clipBoard.Contains("#main"))
                     File.WriteAllText(path!, clipBoard, Encoding.UTF8);
+                else if (clipBoard.Contains("ygotype=deck&v=1&d="))
+                {
+                    var uri = new Uri(clipBoard);
+                    var deck = DeckShareURL.UriToDeck(uri);
+                    Program.I().editDeck.SaveDeckFile(deck, deckName);
+                }
                 Config.Set("DeckInUse", deckName);
                 Program.I().selectDeck.RefreshList();
             }
-            catch
+            catch(Exception e)
             {
+                Debug.LogException(e);
                 MessageManager.Cast(InterString.Get("创建卡组失败！请检查文件夹权限。"));
             }
         }

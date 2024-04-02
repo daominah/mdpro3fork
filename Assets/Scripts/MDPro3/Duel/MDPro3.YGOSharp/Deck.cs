@@ -142,6 +142,26 @@ namespace MDPro3.YGOSharp
                 Mate.Add(1000001);
         }
 
+        public Deck(List<int> main, List<int> extra, List<int> side)
+        {
+            Main = main;
+            Extra = extra;
+            Side = side;
+            Pickup = new List<int>();
+            Protector = new List<int>();
+            Case = new List<int>();
+            Field = new List<int>();
+            Grave = new List<int>();
+            Stand = new List<int>();
+            Mate = new List<int>();
+            Protector.Add(1070001);
+            Case.Add(1080001);
+            Field.Add(1090001);
+            Grave.Add(1100001);
+            Stand.Add(1110001);
+            Mate.Add(1000001);
+        }
+
         public int Check(Banlist ban, bool ocg, bool tcg)
         {
             if (Main.Count < 40 ||
