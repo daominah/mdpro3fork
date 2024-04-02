@@ -8,12 +8,12 @@ namespace MDPro3
 {
     public class DeckShareURL
     {
-        static string URL_SCHEME_HTTP = "http";
-        static string URL_HOST_DECK = "deck.ourygo.top";
-        static string ARG_DECK = "deck";
-        static string QUERY_VERSION = "v";
-        static string QUERY_YGO_TYPE = "ygotype";
-        static string QUERY_DECK = "d";
+        static readonly string URL_SCHEME_HTTP = "http";
+        static readonly string URL_HOST_DECK = "deck.ourygo.top";
+        static readonly string ARG_DECK = "deck";
+        static readonly string QUERY_VERSION = "v";
+        static readonly string QUERY_YGO_TYPE = "ygotype";
+        static readonly string QUERY_DECK = "d";
 
         public static Uri DeckToUri(List<int>main, List<int>extra, List<int>side, Dictionary<string, string> parameters = null)
         {

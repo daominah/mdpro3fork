@@ -1095,7 +1095,6 @@ namespace MDPro3
                 SaveDeckFile(deck, input.text);
                 if (input.text != deckName)
                     File.Delete("Deck/" + deckName + ".ydk");
-                Config.Set("DeckInUse", input.text);
                 deckName = input.text;
                 MessageManager.Cast(InterString.Get("卡组「[?]」已保存。", input.text));
                 dirty = false;
@@ -1133,7 +1132,6 @@ namespace MDPro3
             {
                 File.WriteAllText("Deck/" + deckName + ".ydk", value, Encoding.UTF8);
                 Config.Set("DeckInUse", deckName);
-                MessageManager.Cast(InterString.Get("卡组「[?]」已保存。", deckName));
             }
             catch
             {

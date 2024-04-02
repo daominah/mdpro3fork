@@ -82,6 +82,7 @@ namespace MDPro3
             cardMatRoyal = Instantiate(manager.GetElement<Renderer>("DummyCardModel_front").material);
 
             cardMatNormal.SetFloat("_FakeBlend", 1);
+            cardMatNormal.SetColor("_AmbientColor", new Color(0.0588f, 0.0588f, 0.0588f, 1f));
             cardMatShine.SetFloat("_FakeBlend", 1);
             cardMatRoyal.SetFloat("_FakeBlend", 1);
 
