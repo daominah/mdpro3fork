@@ -4298,7 +4298,8 @@ namespace MDPro3
                             card.selectPtr = i;
                             card.levelForSelect_1 = para & 0xffff;
                             card.levelForSelect_2 = para >> 16;
-                            if (card.levelForSelect_2 == 0) card.levelForSelect_2 = card.levelForSelect_1;
+                            if (card.levelForSelect_2 == 0) 
+                                card.levelForSelect_2 = card.levelForSelect_1;
                             cardsInSelection.Add(card);
                             cardsMustBeSelected.Add(card);
                         }
@@ -4341,7 +4342,8 @@ namespace MDPro3
                             card.selectPtr = i;
                             card.levelForSelect_1 = para & 0xffff;
                             card.levelForSelect_2 = para >> 16;
-                            if (card.levelForSelect_2 == 0) card.levelForSelect_2 = card.levelForSelect_1;
+                            if (card.levelForSelect_2 == 0) 
+                                card.levelForSelect_2 = card.levelForSelect_1;
                             cardsInSelection.Add(card);
                         }
                     }
@@ -5361,6 +5363,19 @@ namespace MDPro3
                             place.CardInThisZoneUnselectable();
                     }
             }
+            else if (currentMessage == GameMessage.SelectTribute)
+            {
+                var sum = 0;
+                foreach (var c in selected)
+                    sum += c.levelForSelect_1;
+                if (selected.Count >= fieldMax)
+                    FieldSelectedSend();
+                else if (sum >= fieldMin)
+                {
+                    fieldSendable = true;
+                    RefreshButton();
+                }
+            }
             else
             {
                 if (selected.Count >= fieldMin)
@@ -5423,6 +5438,15 @@ namespace MDPro3
             else if (currentMessage == GameMessage.SelectCounter)
                 for (var i = 0; i < cardsInSelection.Count; i++)
                     binaryMaster.writer.Write((short)cardsInSelection[i].counterSelected);
+            else if (currentMessage == GameMessage.SelectSum)
+            {
+                binaryMaster.writer.Write((byte)selected.Count);
+                foreach(var card in cardsMustBeSelected)
+                    binaryMaster.writer.Write((byte)card.selectPtr);
+                foreach (var card in selected)
+                    if(!cardsMustBeSelected.Contains(card))
+                        binaryMaster.writer.Write((byte)card.selectPtr);
+            }
             else
             {
                 binaryMaster.writer.Write((byte)selected.Count);
