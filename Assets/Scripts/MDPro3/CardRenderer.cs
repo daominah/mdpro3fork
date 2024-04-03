@@ -523,6 +523,8 @@ namespace MDPro3
             if (language != "en-US" && language != "es-ES")
                 description = description.Replace(" ", "\u00A0");
 
+            description = description.Replace("\r\n\r\n", "\r\n");
+
             return description;
         }
 

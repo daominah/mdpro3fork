@@ -175,7 +175,7 @@ namespace MDPro3
                     {
                         foreach (var extName in new[] { ".png", ".jpg" })
                         {
-                            var picPath = $"pics/{code}{extName}";
+                            var picPath = $"art/{code}{extName}";
                             if (file.ToLower() == picPath)
                             {
                                 returenValue = new Texture2D(0, 0);
@@ -183,11 +183,41 @@ namespace MDPro3
                                 var entry = zip[picPath];
                                 entry.Extract(stream);
                                 returenValue.LoadImage(stream.ToArray());
-                                var card = CardsManager.Get(code);
-                                if ((card.Type & (uint)CardType.Pendulum) > 0)
-                                    returenValue = GetArtFromPendulumCard(returenValue);
-                                else
-                                    returenValue = GetArtFromCard(returenValue);
+                            }
+                        }
+                    }
+                }
+                if(returenValue == null)
+                {
+                    foreach (var zip in ZipManager.zips)
+                    {
+                        if (zip.Name.ToLower().EndsWith("script.zip"))
+                            continue;
+                        foreach (var file in zip.EntryFileNames)
+                        {
+                            foreach (var extName in new[] { ".png", ".jpg" })
+                            {
+                                var picPath = $"pics/{code}{extName}";
+                                if (file.ToLower() == picPath)
+                                {
+                                    returenValue = new Texture2D(0, 0);
+                                    MemoryStream stream = new MemoryStream();
+                                    var entry = zip[picPath];
+                                    entry.Extract(stream);
+                                    returenValue.LoadImage(stream.ToArray());
+                                    var card = CardsManager.Get(code);
+                                    if(code >= 120000000 && code < 130000000)
+                                    {
+                                        if ((card.Type & (uint)CardType.Monster) > 0)
+                                            returenValue = GetArtFromRushDuelMonsterCard(returenValue);
+                                        else
+                                            returenValue = GetArtFromRushDuelSpellCard(returenValue);
+                                    }
+                                    else if ((card.Type & (uint)CardType.Pendulum) > 0)
+                                        returenValue = GetArtFromPendulumCard(returenValue);
+                                    else
+                                        returenValue = GetArtFromCard(returenValue);
+                                }
                             }
                         }
                     }
@@ -218,7 +248,6 @@ namespace MDPro3
                 }
                 yield return returenValue;
             }
-            //loadingArt = false;
         }
 
         int getCount;
@@ -677,6 +706,22 @@ namespace MDPro3
             var startY = Mathf.CeilToInt(cardPic.height * 0.38f);
             var width = Mathf.CeilToInt(cardPic.width * 0.933f);
             var height = Mathf.CeilToInt(cardPic.height * 0.81f);
+            return GetCroppingTex(cardPic, startX, startY, width, height);
+        }
+        public static Texture2D GetArtFromRushDuelMonsterCard(Texture2D cardPic)
+        {
+            var startX = Mathf.CeilToInt(cardPic.width * 0.067f);
+            var startY = Mathf.CeilToInt(cardPic.height * 0.29f);
+            var width = Mathf.CeilToInt(cardPic.width * 0.933f);
+            var height = Mathf.CeilToInt(cardPic.height * 0.90f);
+            return GetCroppingTex(cardPic, startX, startY, width, height);
+        }
+        public static Texture2D GetArtFromRushDuelSpellCard(Texture2D cardPic)
+        {
+            var startX = Mathf.CeilToInt(cardPic.width * 0.067f);
+            var startY = Mathf.CeilToInt(cardPic.height * 0.29f);
+            var width = Mathf.CeilToInt(cardPic.width * 0.933f);
+            var height = Mathf.CeilToInt(cardPic.height * 0.90f);
             return GetCroppingTex(cardPic, startX, startY, width, height);
         }
 
