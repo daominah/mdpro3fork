@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.UI;
 using MDPro3.YGOSharp.OCGWrapper.Enums;
+using YgomSystem.UI;
 
 
 namespace MDPro3.UI
@@ -134,13 +135,27 @@ namespace MDPro3.UI
 
                     foreach (var mono in monos)
                         if (!mono.selected)
-                            if (OcgCore.CheckSelectable(Program.I().ocgcore.cardsInSelection, mono.card, selected))
+                            if (OcgCore.CheckSelectable(Program.I().ocgcore.cardsInSelection, mono.card, selected, max))
                                 mono.SelectableThis();
                             else
                                 mono.UnselectableThis();
                 }
-
-                title.text = hint + "-" + OcgCore.GetSelectLevelSum(GetSelected())[0].ToString() + "/" + core.ES_level;
+                var selectedSum = OcgCore.GetSelectLevelSum(GetSelected());
+                if (!core.ES_overFlow)
+                {
+                    if (selectedSum[0] == core.ES_level || selectedSum[1] == core.ES_level)
+                        btnConfirm.GetComponent<ButtonPress>().SetInteractable(true);
+                    else
+                        btnConfirm.GetComponent<ButtonPress>().SetInteractable(false);
+                }
+                else
+                {
+                    if (selectedSum[0] > core.ES_level || selectedSum[1] > core.ES_level)
+                        btnConfirm.GetComponent<ButtonPress>().SetInteractable(true);
+                    else
+                        btnConfirm.GetComponent<ButtonPress>().SetInteractable(false);
+                }
+                title.text = hint + "-" + selectedSum[0].ToString() + "/" + core.ES_level;
             }
             else
             {

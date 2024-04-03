@@ -125,7 +125,6 @@ namespace MDPro3.UI
         void OnClick()
         {
             AudioManager.PlaySE("SE_MENU_SELECT_01");
-
             if ((card.p.location & (uint)CardLocation.Onfield) > 0
                 && (card.p.location & (uint)CardLocation.Overlay) == 0)
             {
@@ -143,6 +142,7 @@ namespace MDPro3.UI
             }
 
             Program.I().ocgcore.description.Show(card, cardFace.material);
+
             if (selected)
             {
                 if (!unselectable)
@@ -176,6 +176,7 @@ namespace MDPro3.UI
                     }
                 }
             }
+
         }
 
         void SelectThis()

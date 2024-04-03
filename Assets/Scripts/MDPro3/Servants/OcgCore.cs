@@ -4707,8 +4707,10 @@ namespace MDPro3
             return new int[] { sum1, sum2 };
         }
 
-        public static bool CheckSelectable(List<GameCard> cards, GameCard card, List<GameCard> selectedCards)
+        public static bool CheckSelectable(List<GameCard> cards, GameCard card, List<GameCard> selectedCards, int max)
         {
+            if(selectedCards.Count >= max) 
+                return false;
             bool returnValue = false;
             var sum = GetSelectLevelSum(selectedCards);
             if (sum[0] + card.levelForSelect_1 == Program.I().ocgcore.ES_level || sum[1] + card.levelForSelect_2 == Program.I().ocgcore.ES_level)
@@ -4723,7 +4725,7 @@ namespace MDPro3
                 foreach (var c in cards)
                     if (!newSelectedCards.Contains(c))
                     {
-                        returnValue = CheckSelectable(cards, c, newSelectedCards);
+                        returnValue = CheckSelectable(cards, c, newSelectedCards, max);
                         if (returnValue)
                             return true;
                     }
@@ -5337,7 +5339,7 @@ namespace MDPro3
                         foreach (var place in places)
                             if (place.cardSelecting)
                                 if (!place.cardSelected)
-                                    if (CheckSelectable(cardsInSelection, place.cookieCard, selected))
+                                    if (CheckSelectable(cardsInSelection, place.cookieCard, selected, ES_max))
                                         place.CardInThisZoneSelectable();
                                     else
                                         place.CardInThisZoneUnselectable();
