@@ -2009,6 +2009,9 @@ namespace MDPro3
                     card = GCS_Get(from);
                     if (card != null)
                         Sleep((int)(card.Move(to) * 100));
+                    card = GCS_Get(to);
+                    if (card != null)
+                        Sleep((int)(card.Move(from) * 100));
                     break;
                 case GameMessage.Summoning:
                     cardsInSelection.Clear();
