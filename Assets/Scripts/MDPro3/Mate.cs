@@ -82,6 +82,9 @@ namespace MDPro3
                 m_collider.size = new Vector3(10, 10, 10);
                 m_collider.center = new Vector3(0, 5, 0);
                 transform.GetChild(0).gameObject.AddComponent<EventSEPlayer>();
+                var animator = transform.GetChild(0).GetComponent<Animator>();
+                if (animator != null)
+                    animator.cullingMode = AnimatorCullingMode.AlwaysAnimate;
                 gameObject.SetActive(false);
             }
             else
@@ -133,7 +136,11 @@ namespace MDPro3
                 transform.localScale = Vector3.one * 5;
                 if(huge)
                     transform.localScale = Vector3.one * 4f;
-                //var animator = GetComponent<Animator>();
+
+                var animator = GetComponent<Animator>();
+                if (animator != null)
+                    animator.cullingMode = AnimatorCullingMode.AlwaysAnimate;
+
                 //AnimatorControllerParameter[] parameter = animator.parameters;
                 //foreach (var param in parameter)
                 //    Debug.Log(": 参数名称：" + param.name + " 参数类型：" + param.type);

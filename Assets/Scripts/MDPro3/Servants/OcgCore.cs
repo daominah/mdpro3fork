@@ -4451,8 +4451,7 @@ namespace MDPro3
                         }
                     }
                     else
-                        if (ES_selectHint == "")
-                            ES_selectHint = StringHelper.GetUnsafe(570);//请选择要变成不能使用的卡片区域
+                        ES_selectHint = StringHelper.GetUnsafe(570);//请选择要变成不能使用的卡片区域
                     hintObj.SetActive(true);
                     hintText.text = ES_selectHint;
                     break;

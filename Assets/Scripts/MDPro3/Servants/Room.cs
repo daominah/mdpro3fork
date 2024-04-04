@@ -856,6 +856,7 @@ namespace MDPro3
                             task = StringHelper.GetUnsafe(1406);
                             break;
                     }
+                    task = task.Replace("(%d)", "");
                     tasks.Add(task);
                     UIManager.ShowPopupConfirm(tasks);
                     break;
