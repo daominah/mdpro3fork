@@ -1067,6 +1067,7 @@ namespace MDPro3
 
                 //ÌØÊâÕÙ»½
                 if ((p.reason & (uint)CardReason.SPSUMMON) > 0
+                    && (p.location & (uint)CardLocation.MonsterZone) > 0
                     && (cacheP.location & (uint)CardLocation.MonsterZone) == 0)
                 {
                     bool summonEffect = true;
