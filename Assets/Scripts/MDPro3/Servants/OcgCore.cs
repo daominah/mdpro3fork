@@ -1194,6 +1194,7 @@ namespace MDPro3
 
         public List<GameCard> materialCards = new List<GameCard>();
         public List<GameCard> cardsInChain = new List<GameCard>();
+        public List<int> codesInChain = new List<int>();
         public List<GameCard> cardsBeTarget = new List<GameCard>();
         public List<GameCard> cardsInSelection = new List<GameCard>();
         public List<GameCard> cardsMustBeSelected = new List<GameCard>();
@@ -1236,6 +1237,7 @@ namespace MDPro3
             lastHandOffset = 0;
             materialCards.Clear();
             cardsInChain.Clear();
+            codesInChain.Clear();
             cardsBeTarget.Clear();
             cardsInSelection.Clear();
             cardsMustBeSelected.Clear();
@@ -2256,6 +2258,7 @@ namespace MDPro3
                         card.SetCode(code);
                         card.AnimationActivate();
                         cardsInChain.Add(card);
+                        codesInChain.Add(code);
                         Sleep(100);
                         ES_hint = InterString.Get("「[?]」被发动时", card.GetData().Name);
                     }
@@ -2285,6 +2288,9 @@ namespace MDPro3
                     {
                         card = cardsInChain[id - 1];
                         card.ResolveChain(id);
+                        if (card.GetData().Id != codesInChain[id - 1])
+                            //Hand Shuffle
+                            break;
                         if (card.disabled || card.negated)
                             break;
 
@@ -2577,6 +2583,7 @@ namespace MDPro3
                     }
                     cardsBeTarget.Clear();
                     cardsInChain.Clear();
+                    codesInChain.Clear();
                     materialCards.Clear();
                     break;
                 case GameMessage.ChainNegated:

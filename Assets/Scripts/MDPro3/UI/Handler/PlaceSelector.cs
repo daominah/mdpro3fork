@@ -155,19 +155,43 @@ namespace MDPro3.UI
                 highlight.SetActive(false);
         }
 
+
+
         void OnClick()
         {
             if (selecting)
             {
                 AudioManager.PlaySE("SE_DUEL_SELECT");
-                selected = true;
-                var response = new byte[3];
-                response[0] = Program.I().ocgcore.isFirst ? (byte)p.controller : (byte)(1 - p.controller);
-                response[1] = (byte)p.location;
-                response[2] = (byte)p.sequence;
-                var binaryMaster = new BinaryMaster();
-                binaryMaster.writer.Write(response);
-                Program.I().ocgcore.SendReturn(binaryMaster.Get());
+                if (!selected)
+                {
+                    selected = true;
+                    select.SetActive(false);
+                    selectPush.SetActive(false);
+                    selectPush.SetActive(true);
+                }
+                else
+                {
+                    selected = false;
+                    select.SetActive(true);
+                }
+                var selectedCount = 0;
+                foreach(var place in Program.I().ocgcore.places)
+                    if(place.selected)
+                        selectedCount++;
+                if (selectedCount == Program.I().ocgcore.ES_min)
+                {
+                    var binaryMaster = new BinaryMaster();
+                    foreach (var place in Program.I().ocgcore.places)
+                        if (place.selected)
+                        {
+                            var response = new byte[3];
+                            response[0] = Program.I().ocgcore.isFirst ? (byte)place.p.controller : (byte)(1 - place.p.controller);
+                            response[1] = (byte)place.p.location;
+                            response[2] = (byte)place.p.sequence;
+                            binaryMaster.writer.Write(response);
+                        }
+                    Program.I().ocgcore.SendReturn(binaryMaster.Get());
+                }
             }
             else if (cardSelecting)
             {
