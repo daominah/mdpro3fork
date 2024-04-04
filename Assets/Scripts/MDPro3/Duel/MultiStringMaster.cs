@@ -31,7 +31,7 @@ namespace MDPro3
             }
             ReCreateString();
         }
-        public void Remove(string str)
+        public void Remove(string str, bool all = false)
         {
             Part t = null;
             for (var i = 0; i < strings.Count; i++)
@@ -39,10 +39,15 @@ namespace MDPro3
                     t = strings[i];
             if (t != null)
             {
-                if (t.count == 1)
+                if(all)
                     strings.Remove(t);
                 else
-                    t.count--;
+                {
+                    if (t.count == 1)
+                        strings.Remove(t);
+                    else
+                        t.count--;
+                }
             }
             ReCreateString();
         }

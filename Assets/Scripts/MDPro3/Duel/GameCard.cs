@@ -869,6 +869,11 @@ namespace MDPro3
                 RefreshData();
             }
 
+            overlays = Program.I().ocgcore.GCS_GetOverlays(this);
+
+            cacheP = p;
+            p = gps;
+
             if (!SemiNomiSummoned
                 && (CardsManager.Get(data.Id).Type & 0x68020C0) > 0
                 && (CardsManager.Get(data.Id).Type & (uint)CardType.Monster) > 0
@@ -876,13 +881,8 @@ namespace MDPro3
                 )
                 AddStringTail(InterString.Get("未正规登场"));
             else
-                RemoveStringTail(InterString.Get("未正规登场"));
+                RemoveStringTail(InterString.Get("未正规登场"), true);
 
-            overlays = Program.I().ocgcore.GCS_GetOverlays(this);
-
-            cacheP = p;
-            p = gps;
-            
             //Debug.LogFormat("{0}: reason: {1:X} location: {2:X}", data.Name, p.reason, p.location);
 
             for (int i = 0; i < overlays.Count; i++)
@@ -2574,9 +2574,9 @@ namespace MDPro3
         {
             tails.Add(tail);
         }
-        public void RemoveStringTail(string tail)
+        public void RemoveStringTail(string tail, bool all = false)
         {
-            tails.Remove(tail);
+            tails.Remove(tail, all);
         }
         public void ClearAllTails()
         {
