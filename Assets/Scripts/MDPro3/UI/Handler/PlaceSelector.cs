@@ -203,6 +203,8 @@ namespace MDPro3.UI
                 }
                 else if (!cardSelected && !cardUnselectable && !cardPreselected)
                     selectButton.Show();
+                else if (cardSelected && !cardUnselectable && !cardPreselected)
+                    UnselectCardInThisZone();
                 var card = FindCardInThisPlace();
                 if (card != null)
                     card.OnClick();
@@ -421,6 +423,15 @@ namespace MDPro3.UI
             selectCardPush.SetActive(true);
             Program.I().ocgcore.FieldSelectRefresh(cookieCard);
         }
+
+        public void UnselectCardInThisZone()
+        {
+            if (Program.I().ocgcore.currentMessage == GameMessage.SelectCounter)
+                return;
+            cardSelected = false;
+            Program.I().ocgcore.FieldSelectRefresh(cookieCard);
+        }
+
         public void CardInThisZoneSelectable()
         {
             cardUnselectable = false;
@@ -488,16 +499,6 @@ namespace MDPro3.UI
                 selectCardPush.transform.localEulerAngles = new Vector3(0, 90, 0);
             }
 
-        }
-        public void StopShowingZoneHighlight()
-        {
-            select.SetActive(false);
-        }
-        public void StopShowingCardHighlight()
-        {
-            selectCard.SetActive(false);
-            selectCardPush.SetActive(false);
-            selectCardPush.SetActive(true);
         }
 
         public GameCard FindCardInThisPlace()

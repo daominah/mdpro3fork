@@ -1132,10 +1132,10 @@ namespace MDPro3
                         moveTime = 0.1f;
                         break;
                     case GameMessage.ShuffleSetCard:
+                    case GameMessage.Swap:
                         moveTime = 0.2f;
                         break;
                 }
-            TokenPass:
                 var cardPlane = manager.GetElement<Transform>("CardPlane");
                 var pivot = manager.GetElement<Transform>("Pivot");
                 var offset = manager.GetElement<Transform>("Offset");

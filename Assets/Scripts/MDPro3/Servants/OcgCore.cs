@@ -2008,12 +2008,26 @@ namespace MDPro3
                     from = r.ReadGPS();
                     code = r.ReadInt32();
                     to = r.ReadGPS();
+                    var from2 = new GPS
+                    {
+                        controller = from.controller,
+                        location = from.location,
+                        sequence = from.sequence,
+                        position = to.position
+                    };
+                    var to2 = new GPS
+                    {
+                        controller = to.controller,
+                        location = to.location,
+                        sequence = to.sequence,
+                        position = from.position
+                    };
                     card = GCS_Get(from);
+                    var card_2 = GCS_Get(to);
                     if (card != null)
-                        Sleep((int)(card.Move(to) * 100));
-                    card = GCS_Get(to);
-                    if (card != null)
-                        Sleep((int)(card.Move(from) * 100));
+                        Sleep((int)(card.Move(to2) * 100));
+                    if (card_2 != null)
+                        Sleep((int)(card_2.Move(from2) * 100));
                     break;
                 case GameMessage.Summoning:
                     cardsInSelection.Clear();
@@ -4713,35 +4727,25 @@ namespace MDPro3
             return new int[] { sum1, sum2 };
         }
 
-        public static bool CheckSelectable(List<GameCard> cards, GameCard card, List<GameCard> selectedCards, int max, List<GameCard> unselectables = null)
+        public static bool CheckSelectableInSum(List<GameCard> cards, GameCard card, List<GameCard> selectedCards, int max)
         {
             if(selectedCards.Count >= max)
                 return false;
             bool returnValue = false;
             var sum = GetSelectLevelSum(selectedCards);
-            if(unselectables == null)
-                unselectables = new List<GameCard>();
-            foreach(var c in  cards)
-                if(!selectedCards.Contains(c))
-                    if (!unselectables.Contains(c))
-                        if(c != card)
-                            if (sum[0] + c.levelForSelect_1 > Program.I().ocgcore.ES_level || sum[1] + c.levelForSelect_2 > Program.I().ocgcore.ES_level)
-                                unselectables.Add(c);
-
             if (sum[0] + card.levelForSelect_1 == Program.I().ocgcore.ES_level || sum[1] + card.levelForSelect_2 == Program.I().ocgcore.ES_level)
                 return true;
-            else
-            {
-                var newSelectedCards = new List<GameCard>(selectedCards) { card };
-                foreach (var c in cards)
-                    if(!unselectables.Contains(c))
-                        if (!newSelectedCards.Contains(c))
-                        {
-                            returnValue = CheckSelectable(cards, c, newSelectedCards, max, unselectables);
-                            if (returnValue)
-                                return true;
-                        }
-            }
+            if (sum[0] + card.levelForSelect_1 > Program.I().ocgcore.ES_level || sum[1] + card.levelForSelect_2 > Program.I().ocgcore.ES_level)
+                return false;
+
+            var newSelectedCards = new List<GameCard>(selectedCards) { card };
+            foreach (var c in cards)
+                if (!newSelectedCards.Contains(c))
+                {
+                    returnValue = CheckSelectableInSum(cards, c, newSelectedCards, max);
+                    if (returnValue)
+                        return true;
+                }
             return returnValue;
         }
 
@@ -5319,6 +5323,16 @@ namespace MDPro3
             if (currentMessage == GameMessage.SelectCard
                 || currentMessage == GameMessage.SelectCounter)
                 hintText.text = fieldHint + ": " + 0 + "/" + fieldMax;
+            else if(currentMessage == GameMessage.SelectSum && !ES_overFlow)
+            {
+                foreach (var place in places)
+                    if (place.cardSelecting)
+                        if (!place.cardSelected)
+                            if (CheckSelectableInSum(cardsInSelection, place.cookieCard, cardsMustBeSelected, ES_max))
+                                place.CardInThisZoneSelectable();
+                            else
+                                place.CardInThisZoneUnselectable();
+            }
             else
                 hintText.text = fieldHint;
         }
@@ -5351,7 +5365,7 @@ namespace MDPro3
                         foreach (var place in places)
                             if (place.cardSelecting)
                                 if (!place.cardSelected)
-                                    if (CheckSelectable(cardsInSelection, place.cookieCard, selected, ES_max))
+                                    if (CheckSelectableInSum(cardsInSelection, place.cookieCard, selected, ES_max))
                                         place.CardInThisZoneSelectable();
                                     else
                                         place.CardInThisZoneUnselectable();

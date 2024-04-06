@@ -92,6 +92,12 @@ namespace MDPro3.UI
                                 mono.PreSelectThis();
                                 break;
                             }
+                    foreach (var mono in monos)
+                        if (!mono.selected)
+                            if (OcgCore.CheckSelectableInSum(Program.I().ocgcore.cardsInSelection, mono.card, core.cardsMustBeSelected, max + core.cardsMustBeSelected.Count))
+                                mono.SelectableThis();
+                            else
+                                mono.UnselectableThis();
                     title.text = hint + "-" + OcgCore.GetSelectLevelSum(GetSelected())[0].ToString() + "/" + core.ES_level;
                 }
                 else if (core.currentMessage == GameMessage.SortCard
@@ -135,7 +141,7 @@ namespace MDPro3.UI
 
                     foreach (var mono in monos)
                         if (!mono.selected)
-                            if (OcgCore.CheckSelectable(Program.I().ocgcore.cardsInSelection, mono.card, selected, max + core.cardsMustBeSelected.Count))
+                            if (OcgCore.CheckSelectableInSum(Program.I().ocgcore.cardsInSelection, mono.card, selected, max + core.cardsMustBeSelected.Count))
                                 mono.SelectableThis();
                             else
                                 mono.UnselectableThis();
