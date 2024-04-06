@@ -135,7 +135,7 @@ namespace MDPro3.UI
 
                     foreach (var mono in monos)
                         if (!mono.selected)
-                            if (OcgCore.CheckSelectable(Program.I().ocgcore.cardsInSelection, mono.card, selected, max))
+                            if (OcgCore.CheckSelectable(Program.I().ocgcore.cardsInSelection, mono.card, selected, max + core.cardsMustBeSelected.Count))
                                 mono.SelectableThis();
                             else
                                 mono.UnselectableThis();

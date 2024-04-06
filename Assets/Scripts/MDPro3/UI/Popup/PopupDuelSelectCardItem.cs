@@ -210,7 +210,7 @@ namespace MDPro3.UI
 
         void UnselectThis()
         {
-            if (!selected) return;
+            if (!selected || unselectable) return;
             selected = false;
             manager.selectedCount--;
 
