@@ -4713,28 +4713,34 @@ namespace MDPro3
             return new int[] { sum1, sum2 };
         }
 
-        public static bool CheckSelectable(List<GameCard> cards, GameCard card, List<GameCard> selectedCards, int max)
+        public static bool CheckSelectable(List<GameCard> cards, GameCard card, List<GameCard> selectedCards, int max, List<GameCard> unselectables = null)
         {
-            if(selectedCards.Count >= max) 
+            if(selectedCards.Count >= max)
                 return false;
             bool returnValue = false;
             var sum = GetSelectLevelSum(selectedCards);
+            if(unselectables == null)
+                unselectables = new List<GameCard>();
+            foreach(var c in  cards)
+                if(!selectedCards.Contains(c))
+                    if (!unselectables.Contains(c))
+                        if(c != card)
+                            if (sum[0] + c.levelForSelect_1 > Program.I().ocgcore.ES_level || sum[1] + c.levelForSelect_2 > Program.I().ocgcore.ES_level)
+                                unselectables.Add(c);
+
             if (sum[0] + card.levelForSelect_1 == Program.I().ocgcore.ES_level || sum[1] + card.levelForSelect_2 == Program.I().ocgcore.ES_level)
                 return true;
             else
             {
-                var newSelectedCards = new List<GameCard>();
-                if (selectedCards != null)
-                    foreach (var c in selectedCards)
-                        newSelectedCards.Add(c);
-                newSelectedCards.Add(card);
+                var newSelectedCards = new List<GameCard>(selectedCards) { card };
                 foreach (var c in cards)
-                    if (!newSelectedCards.Contains(c))
-                    {
-                        returnValue = CheckSelectable(cards, c, newSelectedCards, max);
-                        if (returnValue)
-                            return true;
-                    }
+                    if(!unselectables.Contains(c))
+                        if (!newSelectedCards.Contains(c))
+                        {
+                            returnValue = CheckSelectable(cards, c, newSelectedCards, max, unselectables);
+                            if (returnValue)
+                                return true;
+                        }
             }
             return returnValue;
         }
