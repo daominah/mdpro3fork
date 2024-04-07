@@ -4471,8 +4471,9 @@ namespace MDPro3
                                 ES_selectHint = InterString.Get("请为对方的「[?]」选择位置。", CardsManager.Get(Es_selectMSGHintData).Name);
                         }
                     }
-                    else
+                    else if (ES_selectHint == "")
                         ES_selectHint = StringHelper.GetUnsafe(570);//请选择要变成不能使用的卡片区域
+
                     hintObj.SetActive(true);
                     hintText.text = ES_selectHint;
                     break;
@@ -4692,6 +4693,7 @@ namespace MDPro3
             }
             CloseBgHint();
             FieldSelectReset();
+            ES_selectHint = string.Empty;
         }
 
         #endregion
@@ -5317,24 +5319,28 @@ namespace MDPro3
             fieldExitable = exitable;
             fieldSendable = sendable;
             fieldCounterCount = 0;
-            RefreshButton();
 
             hintObj.SetActive(true);
             if (currentMessage == GameMessage.SelectCard
                 || currentMessage == GameMessage.SelectCounter)
                 hintText.text = fieldHint + ": " + 0 + "/" + fieldMax;
-            else if(currentMessage == GameMessage.SelectSum && !ES_overFlow)
+            else if(currentMessage == GameMessage.SelectSum)
             {
-                foreach (var place in places)
-                    if (place.cardSelecting)
-                        if (!place.cardSelected)
-                            if (CheckSelectableInSum(cardsInSelection, place.cookieCard, cardsMustBeSelected, ES_max))
-                                place.CardInThisZoneSelectable();
-                            else
-                                place.CardInThisZoneUnselectable();
+                if(!ES_overFlow)
+                    foreach (var place in places)
+                        if (place.cardSelecting)
+                            if (!place.cardSelected)
+                                if (CheckSelectableInSum(cardsInSelection, place.cookieCard, cardsMustBeSelected, ES_max))
+                                    place.CardInThisZoneSelectable();
+                                else
+                                    place.CardInThisZoneUnselectable();
+                hintText.text = fieldHint + ": " + GetSelectLevelSum(cardsMustBeSelected)[0] + "/" + ES_level;
             }
             else
-                hintText.text = fieldHint;
+                if(!string.IsNullOrEmpty(fieldHint))
+                    hintText.text = fieldHint;
+
+            RefreshButton();
         }
 
         public void FieldSelectRefresh(GameCard card)
@@ -5436,6 +5442,8 @@ namespace MDPro3
                 if (currentMessage == GameMessage.SelectUnselect)
                     btnCancel.Hide();
             }
+            else
+                btnConfirm.Hide();
             if (fieldExitable)
             {
                 if (currentMessage == GameMessage.SelectUnselect && fieldSendable)
@@ -5444,7 +5452,8 @@ namespace MDPro3
                 else
                     btnCancel.Show();
             }
-
+            else
+                btnCancel.Hide();
         }
 
         void FieldSelectReset()
@@ -5534,8 +5543,14 @@ namespace MDPro3
                 popupPhase.Show();
             };
         }
+
+        string lastHint = string.Empty;
         public void ShowPopupSelectCard(string hint, List<GameCard> cards, int min, int max, bool exitable, bool sendable)
         {
+            if (string.IsNullOrEmpty(hint))
+                hint = lastHint;
+            else
+                lastHint = hint;
             var handler = Addressables.InstantiateAsync("PopupDuelSelectCard");
             handler.Completed += (result) =>
             {
