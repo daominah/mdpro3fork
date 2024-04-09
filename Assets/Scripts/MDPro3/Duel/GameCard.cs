@@ -1068,7 +1068,8 @@ namespace MDPro3
                 //ÌØÊâÕÙ»½
                 if ((p.reason & (uint)CardReason.SPSUMMON) > 0
                     && (p.location & (uint)CardLocation.MonsterZone) > 0
-                    && (cacheP.location & (uint)CardLocation.MonsterZone) == 0)
+                    && (cacheP.location & (uint)CardLocation.MonsterZone) == 0
+                    && (p.location & (uint)CardLocation.Overlay) == 0)
                 {
                     bool summonEffect = true;
                     if (Program.I().ocgcore.condition == OcgCore.Condition.Duel
@@ -1104,7 +1105,8 @@ namespace MDPro3
                 //Í¨³£ÕÙ»½
                 else if ((p.position & (uint)CardPosition.FaceUp) > 0
                     && (p.location & (uint)CardLocation.MonsterZone) > 0
-                    && (cacheP.location & (uint)CardLocation.Hand) > 0)
+                    && (cacheP.location & (uint)CardLocation.Hand) > 0
+                    && (p.location & (uint)CardLocation.Overlay) == 0)
                 {
                     bool cutin = MonsterCutin.HasCutin(data.Id);
                     if (cutin)

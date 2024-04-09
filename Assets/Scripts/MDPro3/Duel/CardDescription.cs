@@ -320,7 +320,7 @@ namespace MDPro3
                         returnValue.sprite = TextureManager.container.attributeSpell;
                         returnValue.notOriginal = true;
                     }
-                    else if ((data.Type & (uint)CardType.Trap & origin.Type) > 0)
+                    else// if ((data.Type & (uint)CardType.Trap) > 0)
                     {
                         returnValue.sprite = TextureManager.container.attributeTrap;
                         returnValue.notOriginal = true;

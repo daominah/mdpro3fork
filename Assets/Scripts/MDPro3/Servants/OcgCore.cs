@@ -4371,6 +4371,30 @@ namespace MDPro3
                             cardsInSelection.Add(card);
                         }
                     }
+
+                    level = 0;
+                    foreach (var c in cardsInSelection)
+                        level += c.levelForSelect_1;
+                    if (level == ES_level)
+                        sendable = true;
+                    if (!sendable)
+                    {
+                        level = 0;
+                        foreach (var c in cardsInSelection)
+                            level += c.levelForSelect_2;
+                        if (level == ES_level)
+                            sendable = true;
+                    }
+                    if (sendable)
+                    {
+                        binaryMaster = new BinaryMaster();
+                        binaryMaster.writer.Write(cardsInSelection.Count);
+                        for (var i = 0; i < cardsInSelection.Count; i++)
+                            binaryMaster.writer.Write(i);
+                        SendReturn(binaryMaster.Get());
+                        break;
+                    }
+
                     allOnfield = true;
                     foreach (var c in cardsInSelection)
                         if ((c.p.location & (uint)CardLocation.Onfield) == 0 || (c.p.location & (uint)CardLocation.Overlay) > 0)
@@ -5316,7 +5340,7 @@ namespace MDPro3
             fieldHint = hint;
             fieldMin = min;
             fieldMax = max;
-            fieldExitable = exitable;
+            fieldExitable = exitable; 
             fieldSendable = sendable;
             fieldCounterCount = 0;
 
@@ -5326,11 +5350,11 @@ namespace MDPro3
                 hintText.text = fieldHint + ": " + 0 + "/" + fieldMax;
             else if(currentMessage == GameMessage.SelectSum)
             {
-                if(!ES_overFlow)
+                if (!ES_overFlow)
                     foreach (var place in places)
                         if (place.cardSelecting)
                             if (!place.cardSelected)
-                                if (CheckSelectableInSum(cardsInSelection, place.cookieCard, cardsMustBeSelected, ES_max))
+                                if (CheckSelectableInSum(cardsInSelection, place.cookieCard, cardsMustBeSelected, ES_max + cardsMustBeSelected.Count))
                                     place.CardInThisZoneSelectable();
                                 else
                                     place.CardInThisZoneUnselectable();
@@ -5371,7 +5395,7 @@ namespace MDPro3
                         foreach (var place in places)
                             if (place.cardSelecting)
                                 if (!place.cardSelected)
-                                    if (CheckSelectableInSum(cardsInSelection, place.cookieCard, selected, ES_max))
+                                    if (CheckSelectableInSum(cardsInSelection, place.cookieCard, selected, ES_max + cardsMustBeSelected.Count))
                                         place.CardInThisZoneSelectable();
                                     else
                                         place.CardInThisZoneUnselectable();

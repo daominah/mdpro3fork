@@ -834,6 +834,7 @@ GameObject:
   - component: {fileID: 5573377113298381838}
   - component: {fileID: 5573377113298381839}
   - component: {fileID: 5573377113298381837}
+  - component: {fileID: 8766377150664877656}
   m_Layer: 5
   m_Name: Rock
   m_TagString: Untagged
@@ -939,6 +940,23 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8766377150664877656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5573377113298381841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c48b628189305e649b63ee28987f282f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  previewClip: {fileID: 0}
+  enterAudio: 
+  clickAudio: SE_MENU_SELECT_01
+  exitAudio: 
+  audioType: 0
 --- !u!1 &5573377113519248206
 GameObject:
   m_ObjectHideFlags: 0
@@ -951,6 +969,7 @@ GameObject:
   - component: {fileID: 5573377113519248203}
   - component: {fileID: 5573377113519248204}
   - component: {fileID: 5573377113519248202}
+  - component: {fileID: 2654677456813357488}
   m_Layer: 5
   m_Name: Scissors
   m_TagString: Untagged
@@ -1056,6 +1075,23 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2654677456813357488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5573377113519248206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c48b628189305e649b63ee28987f282f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  previewClip: {fileID: 0}
+  enterAudio: 
+  clickAudio: SE_MENU_SELECT_01
+  exitAudio: 
+  audioType: 0
 --- !u!1 &5573377113918574944
 GameObject:
   m_ObjectHideFlags: 0
@@ -1068,6 +1104,7 @@ GameObject:
   - component: {fileID: 5573377113918574877}
   - component: {fileID: 5573377113918574878}
   - component: {fileID: 5573377113918574876}
+  - component: {fileID: 4117181970961081989}
   m_Layer: 5
   m_Name: Paper
   m_TagString: Untagged
@@ -1173,3 +1210,20 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4117181970961081989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5573377113918574944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c48b628189305e649b63ee28987f282f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  previewClip: {fileID: 0}
+  enterAudio: 
+  clickAudio: SE_MENU_SELECT_01
+  exitAudio: 
+  audioType: 0
