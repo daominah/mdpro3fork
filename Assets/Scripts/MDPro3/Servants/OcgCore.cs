@@ -4388,9 +4388,12 @@ namespace MDPro3
                     if (sendable)
                     {
                         binaryMaster = new BinaryMaster();
-                        binaryMaster.writer.Write(cardsInSelection.Count);
-                        for (var i = 0; i < cardsInSelection.Count; i++)
-                            binaryMaster.writer.Write(i);
+                        binaryMaster.writer.Write((byte)cardsInSelection.Count);
+                        foreach (var c in cardsMustBeSelected)
+                            binaryMaster.writer.Write((byte)c.selectPtr);
+                        foreach (var c in cardsInSelection)
+                            if (!cardsMustBeSelected.Contains(c))
+                                binaryMaster.writer.Write((byte)c.selectPtr);
                         SendReturn(binaryMaster.Get());
                         break;
                     }
