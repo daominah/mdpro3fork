@@ -1518,7 +1518,7 @@ namespace MDPro3
         public void AnimationNegate()
         {
             AudioManager.PlaySE("SE_EFFECT_INVALID");
-            CameraManager.BlackInOut(0f, 0.3f, 0.4f, 0.3f);
+            CameraManager.BlackInOut(0f, 0.2f, 0.5f, 0.3f);
             ElementObjectManager manager;
             GameObject model;
             if (ThisLocationShouldHaveModel(p))
@@ -1545,11 +1545,11 @@ namespace MDPro3
             || (p.location & (uint)CardLocation.Deck) > 0)
             {
                 HideLabel();
-                sequence.Append(offset.DOLocalMoveY(5, 0.15f));
+                sequence.Append(offset.DOLocalMoveY(5, 0.1f));
                 sequence.AppendInterval(0.5f);
                 sequence.Append(offset.DOLocalMoveY(0f, 0.2f));
-                sequence.Insert(0, pivot.DOScale(1f, 0.15f));
-                sequence.Insert(0.65f, pivot.DOScale(scale, 0.2f));
+                sequence.Insert(0, pivot.DOScale(1f, 0.1f));
+                sequence.Insert(0.6f, pivot.DOScale(scale, 0.2f));
                 sequence.OnComplete(() =>
                 {
                     Tools.ChangeLayer(model, "Default");
@@ -1566,18 +1566,18 @@ namespace MDPro3
                     manager.GetElement<Transform>("Turn").DOLocalRotate(Vector3.zero, 0.1f);
                 var originRotaion = pivot.localEulerAngles;
 
-                sequence.Append(offset.DOLocalMoveY(1, 0.15f));
-                sequence.Join(offset.DOLocalMoveZ(5, 0.15f));
-                sequence.Join(offset.DOLocalRotate(Vector3.zero, 0.15f));
-                sequence.Join(pivot.DOLocalRotate(Vector3.zero, 0.15f));
-                sequence.Join(manager.GetElement<Transform>("Turn").DOLocalRotate(Vector3.zero, 0.15f));
+                sequence.Append(offset.DOLocalMoveY(1, 0.1f));
+                sequence.Join(offset.DOLocalMoveZ(5, 0.1f));
+                sequence.Join(offset.DOLocalRotate(Vector3.zero, 0.1f));
+                sequence.Join(pivot.DOLocalRotate(Vector3.zero, 0.1f));
+                sequence.Join(manager.GetElement<Transform>("Turn").DOLocalRotate(Vector3.zero, 0.1f));
                 sequence.Append(offset.DOLocalMoveY(1.2f, 0.5f));
                 sequence.Join(offset.DOLocalMoveZ(5.5f, 0.5f));
                 sequence.Append(offset.DOLocalMoveY(0f, 0.2f));
                 sequence.Join(offset.DOLocalMoveZ(0f, 0.2f));
                 sequence.Join(pivot.DOLocalRotate(originRotaion, 0.15f));
-                sequence.Insert(0, pivot.DOScale(1.2f, 0.65f));
-                sequence.Insert(0.65f, pivot.DOScale(scale, 0.2f));
+                sequence.Insert(0, pivot.DOScale(1.2f, 0.2f));
+                sequence.Insert(0.6f, pivot.DOScale(scale, 0.2f));
                 sequence.OnComplete(() =>
                 {
                     Tools.ChangeLayer(model, "Default");
@@ -1589,11 +1589,11 @@ namespace MDPro3
                 || (p.location & (uint)CardLocation.Removed) > 0)
             {
                 offset.localPosition = new Vector3(0, -5, 0);
-                sequence.Append(offset.DOLocalMoveY(0, 0.15f));
+                sequence.Append(offset.DOLocalMoveY(0, 0.1f));
                 sequence.AppendInterval(0.5f);
                 sequence.Append(offset.DOLocalMoveY(-5f, 0.2f));
-                sequence.Insert(0, offset.DOScale(1f, 0.15f));
-                sequence.Insert(0.65f, offset.DOScale(Vector3.zero, 0.2f));
+                sequence.Insert(0, offset.DOScale(1f, 0.1f));
+                sequence.Insert(0.6f, offset.DOScale(Vector3.one * 0.2f, 0.2f));
                 sequence.OnComplete(() =>
                 {
                     Destroy(model);

@@ -66,6 +66,8 @@ namespace MDPro3
         public Text duelCutinValue;
         public Button duelEffect;
         public Text duelEffectValue;
+        public Button duelChain;
+        public Text duelChainValue;
         public Button duelDice;
         public Text duelDiceValue;
         public Button duelCoin;
@@ -92,6 +94,8 @@ namespace MDPro3
         public Text watchCutinValue;
         public Button watchEffect;
         public Text watchEffectValue;
+        public Button watchChain;
+        public Text watchChainValue;
         public Button watchDice;
         public Text watchDiceValue;
         public Button watchCoin;
@@ -116,6 +120,8 @@ namespace MDPro3
         public Text replayCutinValue;
         public Button replayEffect;
         public Text replayEffectValue;
+        public Button replayChain;
+        public Text replayChainValue;
         public Button replayDice;
         public Text replayDiceValue;
         public Button replayCoin;
@@ -176,6 +182,9 @@ namespace MDPro3
             duelEffect.onClick.AddListener(OnDuelEffectClick);
             watchEffect.onClick.AddListener(OnWatchEffectClick);
             replayEffect.onClick.AddListener(OnReplayEffectClick);
+            duelChain.onClick.AddListener(OnDuelChainClick);
+            watchChain.onClick.AddListener(OnWatchChainClick);
+            replayChain.onClick.AddListener(OnReplayChainClick);
             duelDice.onClick.AddListener(OnDuelDiceClick);
             watchDice.onClick.AddListener(OnWatchDiceClick);
             replayDice.onClick.AddListener(OnReplayDiceClick);
@@ -275,6 +284,9 @@ namespace MDPro3
             Config.Set("DuelEffect", SaveBool(duelEffectValue.text));
             Config.Set("WatchEffect", SaveBool(watchEffectValue.text));
             Config.Set("ReplayEffect", SaveBool(replayEffectValue.text));
+            Config.Set("DuelChain", SaveBool(duelChainValue.text));
+            Config.Set("WatchChain", SaveBool(watchChainValue.text));
+            Config.Set("ReplayChain", SaveBool(replayChainValue.text));
             Config.Set("DuelDice", SaveBool(duelDiceValue.text));
             Config.Set("WatchDice", SaveBool(watchDiceValue.text));
             Config.Set("ReplayDice", SaveBool(replayDiceValue.text));
@@ -800,6 +812,22 @@ namespace MDPro3
             else
                 replayEffectValue.text = InterString.Get("开");
 
+            value = Config.Get("DuelChain", "1");
+            if (value == "0")
+                duelChainValue.text = InterString.Get("关");
+            else
+                duelChainValue.text = InterString.Get("开");
+            value = Config.Get("WatchChain", "1");
+            if (value == "0")
+                watchChainValue.text = InterString.Get("关");
+            else
+                watchChainValue.text = InterString.Get("开");
+            value = Config.Get("ReplayChain", "1");
+            if (value == "0")
+                replayChainValue.text = InterString.Get("关");
+            else
+                replayChainValue.text = InterString.Get("开");
+
             value = Config.Get("DuelDice", "1");
             if (value == "0")
                 duelDiceValue.text = InterString.Get("关");
@@ -1021,6 +1049,27 @@ namespace MDPro3
                 replayEffectValue.text = InterString.Get("关");
             else
                 replayEffectValue.text = InterString.Get("开");
+        }
+        public void OnDuelChainClick()
+        {
+            if (duelChainValue.text == InterString.Get("开"))
+                duelChainValue.text = InterString.Get("关");
+            else
+                duelChainValue.text = InterString.Get("开");
+        }
+        public void OnWatchChainClick()
+        {
+            if (watchChainValue.text == InterString.Get("开"))
+                watchChainValue.text = InterString.Get("关");
+            else
+                watchChainValue.text = InterString.Get("开");
+        }
+        public void OnReplayChainClick()
+        {
+            if (replayChainValue.text == InterString.Get("开"))
+                replayChainValue.text = InterString.Get("关");
+            else
+                replayChainValue.text = InterString.Get("开");
         }
         public void OnDuelDiceClick()
         {

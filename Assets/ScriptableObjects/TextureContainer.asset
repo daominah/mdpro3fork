@@ -318,6 +318,16 @@ MonoBehaviour:
   chainCircleNum7: {fileID: 21300000, guid: e2cc2a0a0f2a1524fb739254e1996861, type: 3}
   chainCircleNum8: {fileID: 21300000, guid: 1ae27ae278d3e40428cda309541918c1, type: 3}
   chainCircleNum9: {fileID: 21300000, guid: ce56843701b6d914c869db7269627599, type: 3}
+  chainNumSet0: {fileID: 21300000, guid: 998945db525e3384cb41bbb21b4bfa94, type: 3}
+  chainNumSet1: {fileID: 21300000, guid: 91d89d9a5dd8e7843a0f9a6c02d9cb1d, type: 3}
+  chainNumSet2: {fileID: 21300000, guid: 1bcc2f307bdff8844984f0879f7555eb, type: 3}
+  chainNumSet3: {fileID: 21300000, guid: d1fd175f95778444e8af57633c02cb22, type: 3}
+  chainNumSet4: {fileID: 21300000, guid: 71bf23486bf63a94bb58b0fe72f645a6, type: 3}
+  chainNumSet5: {fileID: 21300000, guid: d2a151a24e93eb048844c6e884f6015e, type: 3}
+  chainNumSet6: {fileID: 21300000, guid: f51cae04dc114a34eb0f5765a668c831, type: 3}
+  chainNumSet7: {fileID: 21300000, guid: 5a4b900ee24dc5546861d48ce2e42150, type: 3}
+  chainNumSet8: {fileID: 21300000, guid: 0ac64bc140f9d204886aed6f0dcf8eeb, type: 3}
+  chainNumSet9: {fileID: 21300000, guid: 1514e0f4855cc744587659ea7eb86465, type: 3}
   toggleM: {fileID: 21300000, guid: b4b6f990bf52e9e41a3157d2c0701a28, type: 3}
   toggleM_On: {fileID: 21300000, guid: 77342bb8b8bac73418a111be27a694e5, type: 3}
   toggleM_Over: {fileID: 21300000, guid: 03c22d822bdf72e4680c02fb6caa13a5, type: 3}

@@ -737,5 +737,34 @@ namespace MDPro3
             returnValue.Apply();
             return returnValue;
         }
+
+        public static Sprite GetChainNumSprite(int num)
+        {
+            switch (num)
+            {
+                case 0:
+                    return container.chainNumSet0;
+                case 1:
+                    return container.chainNumSet1;
+                case 2:
+                    return container.chainNumSet2;
+                case 3:
+                    return container.chainNumSet3;
+                case 4:
+                    return container.chainNumSet4;
+                case 5:
+                    return container.chainNumSet5;
+                case 6:
+                    return container.chainNumSet6;
+                case 7:
+                    return container.chainNumSet7;
+                case 8:
+                    return container.chainNumSet8;
+                case 9:
+                    return container.chainNumSet9;
+                default:
+                    return container.chainNumSet0;
+            }
+        }
     }
 }

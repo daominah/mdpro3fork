@@ -19,6 +19,7 @@ using MDPro3.YGOSharp;
 using MDPro3.YGOSharp.OCGWrapper.Enums;
 using static YgomGame.Bg.BgEffectSettingInner;
 using MDPro3.UI;
+using static MDPro3.GameCard;
 
 namespace MDPro3
 {
@@ -670,8 +671,6 @@ namespace MDPro3
             cg.interactable = true;
             cg.blocksRaycasts = true;
 
-            //ABLoader.LoadFromFolder("Robber/63bd3e25");
-
             //Attack Line
             if (attackLine == null)
             {
@@ -1195,6 +1194,8 @@ namespace MDPro3
         public List<GameCard> materialCards = new List<GameCard>();
         public List<GameCard> cardsInChain = new List<GameCard>();
         public List<int> codesInChain = new List<int>();
+        public List<uint> controllerInChain = new List<uint>();
+        public List<int> negatedInChain = new List<int>();
         public List<GameCard> cardsBeTarget = new List<GameCard>();
         public List<GameCard> cardsInSelection = new List<GameCard>();
         public List<GameCard> cardsMustBeSelected = new List<GameCard>();
@@ -1238,6 +1239,8 @@ namespace MDPro3
             materialCards.Clear();
             cardsInChain.Clear();
             codesInChain.Clear();
+            controllerInChain.Clear();
+            negatedInChain.Clear();
             cardsBeTarget.Clear();
             cardsInSelection.Clear();
             cardsMustBeSelected.Clear();
@@ -2270,10 +2273,21 @@ namespace MDPro3
                     if (card != null)
                     {
                         card.SetCode(code);
-                        card.AnimationActivate();
                         cardsInChain.Add(card);
                         codesInChain.Add(code);
-                        Sleep(100);
+                        controllerInChain.Add(card.p.controller);
+                        card.AnimationActivate();
+                        float extraSleep = 0f;
+                        if (cardsInChain.Count > 1)
+                            extraSleep = 1.44f;
+                        if (cardsInChain.Count > 3)
+                            extraSleep = 2.1f;
+
+                        DOTween.To(v => { }, 0, 0, 1f).OnComplete(() =>
+                        {
+                            ShowChainStack();
+                        });
+                        Sleep(100 + (int)(extraSleep * 100));
                         ES_hint = InterString.Get("「[?]」被发动时", card.GetData().Name);
                     }
                     if (gps.controller == 0)
@@ -2296,288 +2310,304 @@ namespace MDPro3
                     break;
                 case GameMessage.ChainSolving:
                     var id = (int)r.ReadByte();
-                    card = null;
-                    var config = true;
-                    if (id <= cardsInChain.Count)
+                    messagePass = false;
+                    DOTween.To(v => { }, 0, 0, ShowChainResolve(id)).OnComplete(() =>
                     {
-                        card = cardsInChain[id - 1];
-                        card.ResolveChain(id);
-                        if (card.GetData().Id != codesInChain[id - 1])
-                            //Hand Shuffle
-                            break;
-                        if (card.disabled || card.negated)
-                            break;
-
-                        if (condition == Condition.Duel
-                            && Config.Get("DuelEffect", "1") == "0")
-                            config = false;
-                        if (condition == Condition.Watch
-                            && Config.Get("WatchEffect", "1") == "0")
-                            config = false;
-                        if (condition == Condition.Replay
-                            && Config.Get("ReplayEffect", "1") == "0")
-                            config = false;
-                        if (!config)
-                            break;
-
-                        code = card.GetData().Alias > 0 ? card.GetData().Alias : card.GetData().Id;
-                        if (card.GetData().Id == 83764719)
-                            code = 83764719;
-
-                        if (Directory.Exists(Program.root + "Card/" + code.ToString()))
+                        if (id <= cardsInChain.Count)
                         {
-                            messagePass = false;
-                            effect = ABLoader.LoadFromFolder("Card/" + code.ToString(), "CardEffect" + code.ToString(), true);
-                            allGameObjects.Add(effect);
-                            for (int i = 0; i < effect.transform.childCount; i++)
+                            bool needPlay = true;
+                            card = cardsInChain[id - 1];
+                            if (card == null)
+                                needPlay = false;
+                            else
+                                card.ResolveChain(id);
+
+                            if (needPlay && card.GetData().Id != codesInChain[id - 1])
+                                needPlay = false;
+                            if (needPlay && (negatedInChain.Contains(id) || card.disabled))
                             {
-                                if (effect.transform.GetChild(i).GetComponent<PlayableDirector>() == null)
-                                    Destroy(effect.transform.GetChild(i).gameObject);
-                                else
+                                needPlay = false;
+                                card.negated = true;
+                                card.AnimationNegate();
+                                Sleep(100);
+                            }
+
+                            if (condition == Condition.Duel
+                                && Config.Get("DuelEffect", "1") == "0")
+                                needPlay = false;
+                            if (condition == Condition.Watch
+                                && Config.Get("WatchEffect", "1") == "0")
+                                needPlay = false;
+                            if (condition == Condition.Replay
+                                && Config.Get("ReplayEffect", "1") == "0")
+                                needPlay = false;
+
+                            if (needPlay)
+                            {
+                                code = card.GetData().Alias > 0 ? card.GetData().Alias : card.GetData().Id;
+                                if (card.GetData().Id == 83764719)//死者苏生 异画
+                                    code = 83764719;
+                                if (Directory.Exists(Program.root + "Card/" + code.ToString()))
                                 {
-                                    mono = effect.transform.GetChild(i).gameObject.AddComponent<DoWhenPlayableDirectorStop>();
-                                    mono.action = () => 
+                                    effect = ABLoader.LoadFromFolder("Card/" + code.ToString(), "CardEffect" + code.ToString(), true);
+                                    allGameObjects.Add(effect);
+                                    for (int i = 0; i < effect.transform.childCount; i++)
                                     {
-                                        messagePass = true;
-                                        Destroy(effect);
-                                    };
-                                }
-                            }
-                            if (code == 5318639)
-                            {
-                                if (card.effectTargets.Count > 0 && card.effectTargets[0].model != null)
-                                {
-                                    AudioManager.PlaySE("SE_EV_CYCLONE");
-                                    effect.transform.localPosition = card.effectTargets[0].model.transform.position;
-                                    if (card.p.controller != 0)
-                                        effect.transform.localEulerAngles = new Vector3(0, 180, 0);
+                                        if (effect.transform.GetChild(i).GetComponent<PlayableDirector>() == null)
+                                            Destroy(effect.transform.GetChild(i).gameObject);
+                                        else
+                                        {
+                                            mono = effect.transform.GetChild(i).gameObject.AddComponent<DoWhenPlayableDirectorStop>();
+                                            mono.action = () =>
+                                            {
+                                                messagePass = true;
+                                                Destroy(effect);
+                                            };
+                                        }
+                                    }
+                                    if (code == 5318639)
+                                    {
+                                        if (card.effectTargets.Count > 0 && card.effectTargets[0].model != null)
+                                        {
+                                            AudioManager.PlaySE("SE_EV_CYCLONE");
+                                            effect.transform.localPosition = card.effectTargets[0].model.transform.position;
+                                            if (card.p.controller != 0)
+                                                effect.transform.localEulerAngles = new Vector3(0, 180, 0);
+                                        }
+                                        else
+                                        {
+                                            messagePass = true;
+                                            Destroy(effect);
+                                        }
+                                    }
+                                    else if (code == 2263869)
+                                    {
+                                        if (card.effectTargets.Count > 0 && card.effectTargets[0].model != null)
+                                            AudioManager.PlaySE("SE_EV_ULTIMATE_SLAYER");
+                                        else
+                                        {
+                                            messagePass = true;
+                                            Destroy(effect);
+                                        }
+                                    }
+                                    else if (code == 12580477)
+                                    {
+                                        AudioManager.PlaySE("SE_EV_RAIGEKI");
+                                        if (card.p.controller == 0)
+                                        {
+                                            for (int i = 0; i < effect.transform.childCount; i++)
+                                                if (effect.transform.GetChild(i).name.StartsWith("Ef04343_Near"))
+                                                    Destroy(effect.transform.GetChild(i).gameObject);
+                                        }
+                                        else
+                                        {
+                                            for (int i = 0; i < effect.transform.childCount; i++)
+                                                if (effect.transform.GetChild(i).name.StartsWith("Ef04343_Far"))
+                                                    Destroy(effect.transform.GetChild(i).gameObject);
+                                        }
+                                    }
+                                    else if (code == 14558127)
+                                    {
+                                        int order = 0;
+                                        for (int i = 0; i < cardsInChain.Count; i++)
+                                            if (cardsInChain[i] == card)
+                                                order = i;
+                                        if (order > 0)
+                                        {
+                                            AudioManager.PlaySE("SE_EV_ASH_BLOSSOM_v2");
+                                            effect.transform.localPosition = GameCard.GetCardPosition(cardsInChain[order - 1].p);
+                                        }
+                                        else
+                                        {
+                                            messagePass = true;
+                                            Destroy(effect);
+                                        }
+                                    }
+                                    else if (code == 18144506)
+                                    {
+                                        AudioManager.PlaySE("SE_EV_HARPIESFEATHER_DUSTER_3D");
+                                        foreach (var child in effect.transform.GetComponentsInChildren<Transform>(true))
+                                            if (child.name == "DistPlane")
+                                                Destroy(child.gameObject);
+                                        if (card.p.controller == 0)
+                                        {
+                                            for (int i = 0; i < effect.transform.childCount; i++)
+                                                if (effect.transform.GetChild(i).name == "Ef04678Op(Clone)")
+                                                    Destroy(effect.transform.GetChild(i).gameObject);
+                                        }
+                                        else
+                                        {
+                                            for (int i = 0; i < effect.transform.childCount; i++)
+                                                if (effect.transform.GetChild(i).name == "Ef04678(Clone)")
+                                                    Destroy(effect.transform.GetChild(i).gameObject);
+                                        }
+                                    }
+                                    else if (code == 23002292)
+                                    {
+                                        AudioManager.PlaySE("SE_EV_REDREBOOT");
+                                    }
+                                    else if (code == 24224830)
+                                    {
+                                        AudioManager.PlaySE("SE_EV_CALLED_GRAVE");
+                                        if (card.p.controller == 0)
+                                        {
+                                            for (int i = 0; i < effect.transform.childCount; i++)
+                                                if (effect.transform.GetChild(i).name == "Ef13619Op(Clone)")
+                                                    Destroy(effect.transform.GetChild(i).gameObject);
+                                        }
+                                        else
+                                        {
+                                            for (int i = 0; i < effect.transform.childCount; i++)
+                                                if (effect.transform.GetChild(i).name == "Ef13619(Clone)")
+                                                    Destroy(effect.transform.GetChild(i).gameObject);
+                                        }
+                                    }
+                                    else if (code == 24299458)
+                                    {
+                                        AudioManager.PlaySE("SE_EV_FORBIDDEN_DROPLET");
+                                        if (card.p.controller == 0)
+                                        {
+                                            for (int i = 0; i < effect.transform.childCount; i++)
+                                                if (effect.transform.GetChild(i).name == "Ef15299_Near(Clone)")
+                                                    Destroy(effect.transform.GetChild(i).gameObject);
+                                        }
+                                        else
+                                        {
+                                            for (int i = 0; i < effect.transform.childCount; i++)
+                                                if (effect.transform.GetChild(i).name == "Ef15299_Far(Clone)")
+                                                    Destroy(effect.transform.GetChild(i).gameObject);
+                                        }
+                                    }
+                                    else if (code == 25311006)
+                                    {
+                                        AudioManager.PlaySE("SE_EV_TRIPLETACTICS_TALENT");
+                                    }
+                                    else if (code == 41420027)
+                                    {
+                                        AudioManager.PlaySE("SE_EV_SOLEMNJUDGMENT");
+                                    }
+                                    else if (code == 44095762)
+                                    {
+                                        AudioManager.PlaySE("SE_EV_MIRRORFORCE");
+                                        if (card.p.controller == 0)
+                                        {
+                                            for (int i = 0; i < effect.transform.childCount; i++)
+                                                if (effect.transform.GetChild(i).name == "Ef04887Op(Clone)")
+                                                    Destroy(effect.transform.GetChild(i).gameObject);
+                                        }
+                                        else
+                                        {
+                                            for (int i = 0; i < effect.transform.childCount; i++)
+                                                if (effect.transform.GetChild(i).name == "Ef04887(Clone)")
+                                                    Destroy(effect.transform.GetChild(i).gameObject);
+                                        }
+                                    }
+                                    else if (code == 53129443)
+                                    {
+                                        AudioManager.PlaySE("SE_EV_BLACKHOLE");
+                                    }
+                                    else if (code == 54693926)
+                                    {
+                                        AudioManager.PlaySE("SE_EV_DARKRULER_NOMORE");
+                                        if (card.p.controller == 0)
+                                        {
+                                            for (int i = 0; i < effect.transform.childCount; i++)
+                                                if (effect.transform.GetChild(i).name == "Ef14742Op(Clone)")
+                                                    Destroy(effect.transform.GetChild(i).gameObject);
+                                        }
+                                        else
+                                        {
+                                            for (int i = 0; i < effect.transform.childCount; i++)
+                                                if (effect.transform.GetChild(i).name == "Ef14742(Clone)")
+                                                    Destroy(effect.transform.GetChild(i).gameObject);
+                                        }
+                                    }
+                                    else if (code == 61740673)
+                                    {
+                                        AudioManager.PlaySE("SE_EV_IMPERIAL_ORDER");
+                                    }
+                                    else if (code == 62279055)
+                                    {
+                                        Tools.ChangeLayer(effect, "Default");
+                                        AudioManager.PlaySE("SE_EV_MAGIC_CYLINDER");
+                                        if (card.p.controller == 0)
+                                        {
+                                            for (int i = 0; i < effect.transform.childCount; i++)
+                                                if (effect.transform.GetChild(i).name == "Ef05124_far(Clone)")
+                                                    Destroy(effect.transform.GetChild(i).gameObject);
+                                        }
+                                        else
+                                        {
+                                            for (int i = 0; i < effect.transform.childCount; i++)
+                                                if (effect.transform.GetChild(i).name == "Ef05124_near(Clone)")
+                                                    Destroy(effect.transform.GetChild(i).gameObject);
+                                        }
+                                    }
+                                    else if (code == 63391643)
+                                    {
+                                        if (card.effectTargets.Count > 0 && card.effectTargets[0].model != null)
+                                        {
+                                            AudioManager.PlaySE("SE_EV_THOUSANDKNIVES");
+                                            effect.transform.localPosition = card.effectTargets[0].model.transform.position;
+                                            if (card.p.controller != 0)
+                                                effect.transform.localEulerAngles = new Vector3(0, 180, 0);
+                                        }
+                                        else
+                                        {
+                                            messagePass = true;
+                                            Destroy(effect);
+                                        }
+                                    }
+                                    else if (code == 65681983)
+                                    {
+                                        AudioManager.PlaySE("SE_EV_CROSSOUT_DESIGNATOR");
+                                        if (card.p.controller == 0)
+                                        {
+                                            for (int i = 0; i < effect.transform.childCount; i++)
+                                                if (effect.transform.GetChild(i).name == "Ef14627_Near(Clone)")
+                                                    Destroy(effect.transform.GetChild(i).gameObject);
+                                        }
+                                        else
+                                        {
+                                            for (int i = 0; i < effect.transform.childCount; i++)
+                                                if (effect.transform.GetChild(i).name == "Ef14627_Far(Clone)")
+                                                    Destroy(effect.transform.GetChild(i).gameObject);
+                                        }
+                                    }
+                                    else if (code == 72302403)
+                                    {
+                                        AudioManager.PlaySE("SE_EV_GOFUKEN");
+                                        if (card.p.controller == 0)
+                                        {
+                                            for (int i = 0; i < effect.transform.childCount; i++)
+                                                if (effect.transform.GetChild(i).name == "Ef04354Op(Clone)")
+                                                    Destroy(effect.transform.GetChild(i).gameObject);
+                                        }
+                                        else
+                                        {
+                                            for (int i = 0; i < effect.transform.childCount; i++)
+                                                if (effect.transform.GetChild(i).name == "Ef04354(Clone)")
+                                                    Destroy(effect.transform.GetChild(i).gameObject);
+                                        }
+                                    }
+                                    else if (code == 75500286)
+                                    {
+                                        AudioManager.PlaySE("SE_EV_GOLD_SARCOPHAGUS");
+                                    }
+                                    else if (code == 83764718 || code == 83764719)
+                                    {
+                                        AudioManager.PlaySE("SE_EV_MONSTER_REBORN");
+                                    }
                                 }
                                 else
-                                {
                                     messagePass = true;
-                                    Destroy(effect);
-                                }
                             }
-                            else if (code == 2263869)
-                            {
-                                if (card.effectTargets.Count > 0 && card.effectTargets[0].model != null)
-                                    AudioManager.PlaySE("SE_EV_ULTIMATE_SLAYER");
-                                else
-                                {
-                                    messagePass = true;
-                                    Destroy(effect);
-                                }
-                            }
-                            else if (code == 12580477)
-                            {
-                                AudioManager.PlaySE("SE_EV_RAIGEKI");
-                                if (card.p.controller == 0)
-                                {
-                                    for (int i = 0; i < effect.transform.childCount; i++)
-                                        if (effect.transform.GetChild(i).name.StartsWith("Ef04343_Near"))
-                                            Destroy(effect.transform.GetChild(i).gameObject);
-                                }
-                                else
-                                {
-                                    for (int i = 0; i < effect.transform.childCount; i++)
-                                        if (effect.transform.GetChild(i).name.StartsWith("Ef04343_Far"))
-                                            Destroy(effect.transform.GetChild(i).gameObject);
-                                }
-                            }
-                            else if (code == 14558127)
-                            {
-                                int order = 0;
-                                for (int i = 0; i < cardsInChain.Count; i++)
-                                    if (cardsInChain[i] == card)
-                                        order = i;
-                                if (order > 0)
-                                {
-                                    AudioManager.PlaySE("SE_EV_ASH_BLOSSOM_v2");
-                                    effect.transform.localPosition = GameCard.GetCardPosition(cardsInChain[order - 1].p);
-                                }
-                                else
-                                {
-                                    messagePass = true;
-                                    Destroy(effect);
-                                }
-                            }
-                            else if (code == 18144506)
-                            {
-                                AudioManager.PlaySE("SE_EV_HARPIESFEATHER_DUSTER_3D");
-                                foreach (var child in effect.transform.GetComponentsInChildren<Transform>(true))
-                                    if (child.name == "DistPlane")
-                                        Destroy(child.gameObject);
-                                if (card.p.controller == 0)
-                                {
-                                    for (int i = 0; i < effect.transform.childCount; i++)
-                                        if (effect.transform.GetChild(i).name == "Ef04678Op(Clone)")
-                                            Destroy(effect.transform.GetChild(i).gameObject);
-                                }
-                                else
-                                {
-                                    for (int i = 0; i < effect.transform.childCount; i++)
-                                        if (effect.transform.GetChild(i).name == "Ef04678(Clone)")
-                                            Destroy(effect.transform.GetChild(i).gameObject);
-                                }
-                            }
-                            else if (code == 23002292)
-                            {
-                                AudioManager.PlaySE("SE_EV_REDREBOOT");
-                            }
-                            else if (code == 24224830)
-                            {
-                                AudioManager.PlaySE("SE_EV_CALLED_GRAVE");
-                                if (card.p.controller == 0)
-                                {
-                                    for (int i = 0; i < effect.transform.childCount; i++)
-                                        if (effect.transform.GetChild(i).name == "Ef13619Op(Clone)")
-                                            Destroy(effect.transform.GetChild(i).gameObject);
-                                }
-                                else
-                                {
-                                    for (int i = 0; i < effect.transform.childCount; i++)
-                                        if (effect.transform.GetChild(i).name == "Ef13619(Clone)")
-                                            Destroy(effect.transform.GetChild(i).gameObject);
-                                }
-                            }
-                            else if (code == 24299458)
-                            {
-                                AudioManager.PlaySE("SE_EV_FORBIDDEN_DROPLET");
-                                if (card.p.controller == 0)
-                                {
-                                    for (int i = 0; i < effect.transform.childCount; i++)
-                                        if (effect.transform.GetChild(i).name == "Ef15299_Near(Clone)")
-                                            Destroy(effect.transform.GetChild(i).gameObject);
-                                }
-                                else
-                                {
-                                    for (int i = 0; i < effect.transform.childCount; i++)
-                                        if (effect.transform.GetChild(i).name == "Ef15299_Far(Clone)")
-                                            Destroy(effect.transform.GetChild(i).gameObject);
-                                }
-                            }
-                            else if (code == 25311006)
-                            {
-                                AudioManager.PlaySE("SE_EV_TRIPLETACTICS_TALENT");
-                            }
-                            else if (code == 41420027)
-                            {
-                                AudioManager.PlaySE("SE_EV_SOLEMNJUDGMENT");
-                            }
-                            else if (code == 44095762)
-                            {
-                                AudioManager.PlaySE("SE_EV_MIRRORFORCE");
-                                if (card.p.controller == 0)
-                                {
-                                    for (int i = 0; i < effect.transform.childCount; i++)
-                                        if (effect.transform.GetChild(i).name == "Ef04887Op(Clone)")
-                                            Destroy(effect.transform.GetChild(i).gameObject);
-                                }
-                                else
-                                {
-                                    for (int i = 0; i < effect.transform.childCount; i++)
-                                        if (effect.transform.GetChild(i).name == "Ef04887(Clone)")
-                                            Destroy(effect.transform.GetChild(i).gameObject);
-                                }
-                            }
-                            else if (code == 53129443)
-                            {
-                                AudioManager.PlaySE("SE_EV_BLACKHOLE");
-                            }
-                            else if (code == 54693926)
-                            {
-                                AudioManager.PlaySE("SE_EV_DARKRULER_NOMORE");
-                                if (card.p.controller == 0)
-                                {
-                                    for (int i = 0; i < effect.transform.childCount; i++)
-                                        if (effect.transform.GetChild(i).name == "Ef14742Op(Clone)")
-                                            Destroy(effect.transform.GetChild(i).gameObject);
-                                }
-                                else
-                                {
-                                    for (int i = 0; i < effect.transform.childCount; i++)
-                                        if (effect.transform.GetChild(i).name == "Ef14742(Clone)")
-                                            Destroy(effect.transform.GetChild(i).gameObject);
-                                }
-                            }
-                            else if (code == 61740673)
-                            {
-                                AudioManager.PlaySE("SE_EV_IMPERIAL_ORDER");
-                            }
-                            else if (code == 62279055)
-                            {
-                                Tools.ChangeLayer(effect, "Default");
-                                AudioManager.PlaySE("SE_EV_MAGIC_CYLINDER");
-                                if (card.p.controller == 0)
-                                {
-                                    for (int i = 0; i < effect.transform.childCount; i++)
-                                        if (effect.transform.GetChild(i).name == "Ef05124_far(Clone)")
-                                            Destroy(effect.transform.GetChild(i).gameObject);
-                                }
-                                else
-                                {
-                                    for (int i = 0; i < effect.transform.childCount; i++)
-                                        if (effect.transform.GetChild(i).name == "Ef05124_near(Clone)")
-                                            Destroy(effect.transform.GetChild(i).gameObject);
-                                }
-                            }
-                            else if (code == 63391643)
-                            {
-                                if (card.effectTargets.Count > 0 && card.effectTargets[0].model != null)
-                                {
-                                    AudioManager.PlaySE("SE_EV_THOUSANDKNIVES");
-                                    effect.transform.localPosition = card.effectTargets[0].model.transform.position;
-                                    if (card.p.controller != 0)
-                                        effect.transform.localEulerAngles = new Vector3(0, 180, 0);
-                                }
-                                else
-                                {
-                                    messagePass = true;
-                                    Destroy(effect);
-                                }
-                            }
-                            else if (code == 65681983)
-                            {
-                                AudioManager.PlaySE("SE_EV_CROSSOUT_DESIGNATOR");
-                                if (card.p.controller == 0)
-                                {
-                                    for (int i = 0; i < effect.transform.childCount; i++)
-                                        if (effect.transform.GetChild(i).name == "Ef14627_Near(Clone)")
-                                            Destroy(effect.transform.GetChild(i).gameObject);
-                                }
-                                else
-                                {
-                                    for (int i = 0; i < effect.transform.childCount; i++)
-                                        if (effect.transform.GetChild(i).name == "Ef14627_Far(Clone)")
-                                            Destroy(effect.transform.GetChild(i).gameObject);
-                                }
-                            }
-                            else if (code == 72302403)
-                            {
-                                AudioManager.PlaySE("SE_EV_GOFUKEN");
-                                if (card.p.controller == 0)
-                                {
-                                    for (int i = 0; i < effect.transform.childCount; i++)
-                                        if (effect.transform.GetChild(i).name == "Ef04354Op(Clone)")
-                                            Destroy(effect.transform.GetChild(i).gameObject);
-                                }
-                                else
-                                {
-                                    for (int i = 0; i < effect.transform.childCount; i++)
-                                        if (effect.transform.GetChild(i).name == "Ef04354(Clone)")
-                                            Destroy(effect.transform.GetChild(i).gameObject);
-                                }
-                            }
-                            else if (code == 75500286)
-                            {
-                                AudioManager.PlaySE("SE_EV_GOLD_SARCOPHAGUS");
-                            }
-                            else if (code == 83764718 || code == 83764719)
-                            {
-                                AudioManager.PlaySE("SE_EV_MONSTER_REBORN");
-                            }
+                            else
+                                messagePass = true;
                         }
-                    }
+                        else
+                            messagePass = true;
+                    });
                     break;
                 case GameMessage.ChainSolved:
                     id = r.ReadByte();
@@ -2598,20 +2628,18 @@ namespace MDPro3
                     cardsBeTarget.Clear();
                     cardsInChain.Clear();
                     codesInChain.Clear();
+                    controllerInChain.Clear();
+                    negatedInChain.Clear();
                     materialCards.Clear();
                     break;
                 case GameMessage.ChainNegated:
                 case GameMessage.ChainDisabled:
-                    var id_ = r.ReadByte() - 1;
-                    if (id_ < 0)
-                        id_ = 0;
-                    card = null;
-                    if (id_ < cardsInChain.Count)
+                    id = r.ReadByte();
+                    if (id <= cardsInChain.Count)
                     {
-                        card = cardsInChain[id_];
+                        negatedInChain.Add(id);
+                        card = cardsInChain[id - 1];
                         card.negated = true;
-                        card.AnimationNegate();
-                        Sleep(100);
                     }
                     break;
                 case GameMessage.Attack:
@@ -3044,7 +3072,7 @@ namespace MDPro3
                 case GameMessage.TossCoin:
                     player = LocalPlayer(r.ReadByte());
                     count = r.ReadByte();
-                    config = true;
+                    bool config = true;
                     if (condition == Condition.Duel
                         && Config.Get("DuelCoin", "1") == "0")
                         config = false;
@@ -6087,6 +6115,330 @@ namespace MDPro3
         {
             if(placeCount.gameObject.activeSelf)
                 placeCount.gameObject.SetActive(false);
+        }
+        bool CheckChain()
+        {
+            bool config = true;
+            if (condition == Condition.Duel && Config.Get("DuelChain", "1") == "0")
+                config = false;
+            if (condition == Condition.Watch && Config.Get("WatchChain", "1") == "0")
+                config = false;
+            if (condition == Condition.Replay && Config.Get("ReplayChain", "1") == "0")
+                config = false;
+            return config;
+        }
+        void ShowChainStack()
+        {
+            int chain = cardsInChain.Count;
+            if (chain == 1)
+                return;
+            if (!CheckChain())
+                return;
+
+            GameObject animation;
+            if (chain < 4)
+                animation = ABLoader.LoadFromFile("Timeline/DuelChain/DuelChainStack01", true);
+            else
+            {
+                animation = ABLoader.LoadFromFile("Timeline/DuelChain/DuelChainStack02", true);
+                DOTween.To(v => { }, 0, 0, 0.0166f).OnComplete(() =>
+                {
+                    AudioManager.PlaySE("SE_DUELCHAIN_STACK02");
+                });
+                DOTween.To(v => { }, 0, 0, 0.767f).OnComplete(() =>
+                {
+                    if(chain == 4)
+                        AudioManager.PlaySE("SE_DUEL_CHAIN_NUMEFF_01");
+                    else if(chain == 5)
+                        AudioManager.PlaySE("SE_DUEL_CHAIN_NUMEFF_02");
+                    else
+                        AudioManager.PlaySE("SE_DUEL_CHAIN_NUMEFF_03");
+                });
+            }
+            var director = animation.GetComponent<PlayableDirector>();
+            var mono = animation.AddComponent<DoWhenPlayableDirectorStop>();
+            mono.action = () =>
+            {
+                Destroy(animation);
+            };
+            var manager = animation.GetComponent<ElementObjectManager>();
+
+            ElementObjectManager targetCardD;
+            if (controllerInChain[chain - 1] == 0)
+            {
+                targetCardD = manager.GetElement<ElementObjectManager>("DummyChainCardDL");
+                manager.GetElement("ChainCardSetDROffset").SetActive(false);
+                ChangeChainNumber(
+                    manager.GetElement<SpriteRenderer>("ChainNumDL_Digit"),
+                    manager.GetElement<SpriteRenderer>("ChainNumDL_Ones"),
+                    manager.GetElement<SpriteRenderer>("ChainNumDL_Tens"),
+                    chain);
+            }
+            else
+            {
+                targetCardD = manager.GetElement<ElementObjectManager>("DummyChainCardDR");
+                manager.GetElement("ChainCardSetDLOffset").SetActive(false);
+                ChangeChainNumber(
+                    manager.GetElement<SpriteRenderer>("ChainNumDR_Digit"),
+                    manager.GetElement<SpriteRenderer>("ChainNumDR_Ones"),
+                    manager.GetElement<SpriteRenderer>("ChainNumDR_Tens"),
+                    chain);
+            }
+            StartCoroutine(Program.I().texture_.LoadDummyCard(targetCardD, codesInChain[chain - 1]));
+
+            if (controllerInChain[chain - 1] == controllerInChain[chain - 2])
+            {
+                manager.GetElement("ChainStraightCLtoDR").SetActive(false);
+                manager.GetElement("ChainStraightCRtoDL").SetActive(false);
+            }
+            else
+            {
+                if (controllerInChain[chain - 1] == 0)
+                    manager.GetElement("ChainStraightCLtoDR").SetActive(false);
+                else
+                    manager.GetElement("ChainStraightCRtoDL").SetActive(false);
+            }
+            ElementObjectManager targetCardC;
+            if (controllerInChain[chain - 2] == 0)
+            {
+                targetCardC = manager.GetElement<ElementObjectManager>("DummyChainCardCL");
+                manager.GetElement("ChainCardSetCROffset").SetActive(false);
+                ChangeChainNumber(
+                    manager.GetElement<SpriteRenderer>("ChainNumCL_Digit"),
+                    manager.GetElement<SpriteRenderer>("ChainNumCL_Ones"),
+                    manager.GetElement<SpriteRenderer>("ChainNumCL_Tens"),
+                    chain - 1);
+            }
+            else
+            {
+                targetCardC = manager.GetElement<ElementObjectManager>("DummyChainCardCR");
+                manager.GetElement("ChainCardSetCLOffset").SetActive(false);
+                ChangeChainNumber(
+                    manager.GetElement<SpriteRenderer>("ChainNumCR_Digit"),
+                    manager.GetElement<SpriteRenderer>("ChainNumCR_Ones"),
+                    manager.GetElement<SpriteRenderer>("ChainNumCR_Tens"),
+                    chain - 1);
+            }
+            StartCoroutine(Program.I().texture_.LoadDummyCard(targetCardC, codesInChain[chain - 2]));
+
+            if(chain > 3)
+            {
+                if (controllerInChain[chain - 2] == controllerInChain[chain - 3])
+                {
+                    manager.GetElement("ChainStraightBLtoCR").SetActive(false);
+                    manager.GetElement("ChainStraightBRtoCL").SetActive(false);
+                }
+                else
+                {
+                    if (controllerInChain[chain - 2] == 0)
+                        manager.GetElement("ChainStraightBLtoCR").SetActive(false);
+                    else
+                        manager.GetElement("ChainStraightBRtoCL").SetActive(false);
+                }
+                ElementObjectManager targetCardB;
+                if (controllerInChain[chain - 3] == 0)
+                {
+                    targetCardB = manager.GetElement<ElementObjectManager>("DummyChainCardBL");
+                    manager.GetElement("ChainCardSetBROffset").SetActive(false);
+                    ChangeChainNumber(
+                        manager.GetElement<SpriteRenderer>("ChainNumBL_Digit"),
+                        manager.GetElement<SpriteRenderer>("ChainNumBL_Ones"),
+                        manager.GetElement<SpriteRenderer>("ChainNumBL_Tens"),
+                        chain - 2);
+                }
+                else
+                {
+                    targetCardB = manager.GetElement<ElementObjectManager>("DummyChainCardBR");
+                    manager.GetElement("ChainCardSetBLOffset").SetActive(false);
+                    ChangeChainNumber(
+                        manager.GetElement<SpriteRenderer>("ChainNumBR_Digit"),
+                        manager.GetElement<SpriteRenderer>("ChainNumBR_Ones"),
+                        manager.GetElement<SpriteRenderer>("ChainNumBR_Tens"),
+                        chain - 2);
+                }
+                StartCoroutine(Program.I().texture_.LoadDummyCard(targetCardB, codesInChain[chain - 3]));
+
+                if (controllerInChain[chain - 3] == controllerInChain[chain - 4])
+                {
+                    manager.GetElement("ChainStraightALtoBR").SetActive(false);
+                    manager.GetElement("ChainStraightARtoBL").SetActive(false);
+                }
+                else
+                {
+                    if (controllerInChain[chain - 3] == 0)
+                        manager.GetElement("ChainStraightALtoBR").SetActive(false);
+                    else
+                        manager.GetElement("ChainStraightARtoBL").SetActive(false);
+                }
+                ElementObjectManager targetCardA;
+                if (controllerInChain[chain - 4] == 0)
+                {
+                    targetCardA = manager.GetElement<ElementObjectManager>("DummyChainCardAL");
+                    manager.GetElement("ChainCardSetAROffset").SetActive(false);
+                    ChangeChainNumber(
+                        manager.GetElement<SpriteRenderer>("ChainNumAL_Digit"),
+                        manager.GetElement<SpriteRenderer>("ChainNumAL_Ones"),
+                        manager.GetElement<SpriteRenderer>("ChainNumAL_Tens"),
+                        chain - 3);
+                }
+                else
+                {
+                    targetCardA = manager.GetElement<ElementObjectManager>("DummyChainCardAR");
+                    manager.GetElement("ChainCardSetALOffset").SetActive(false);
+                    ChangeChainNumber(
+                        manager.GetElement<SpriteRenderer>("ChainNumAR_Digit"),
+                        manager.GetElement<SpriteRenderer>("ChainNumAR_Ones"),
+                        manager.GetElement<SpriteRenderer>("ChainNumAR_Tens"),
+                        chain - 3);
+                }
+                StartCoroutine(Program.I().texture_.LoadDummyCard(targetCardA, codesInChain[chain - 4]));
+            }
+        }
+        float ShowChainResolve(int chain)
+        {
+            if (cardsInChain.Count == 1)
+                return 0;
+            if (!CheckChain())
+                return 0;
+
+            GameObject animation;
+            if(chain == 1)
+                animation = ABLoader.LoadFromFile("Timeline/DuelChain/DuelChainResolve01", true);
+            else if(chain == 2)
+                animation = ABLoader.LoadFromFile("Timeline/DuelChain/DuelChainResolve02", true);
+            else
+                animation = ABLoader.LoadFromFile("Timeline/DuelChain/DuelChainResolve03", true);
+            var director = animation.GetComponent<PlayableDirector>();
+            var mono = animation.AddComponent<DoWhenPlayableDirectorStop>();
+            mono.action = () =>
+            {
+                Destroy(animation);
+            };
+            var manager = animation.GetComponent<ElementObjectManager>();
+
+            ElementObjectManager targetCardD;
+            if (controllerInChain[chain - 1] == 0)
+            {
+                targetCardD = manager.GetElement<ElementObjectManager>("DummyChainCardDL");
+                manager.GetElement("ChainCardSetDROffset").SetActive(false);
+                ChangeChainNumber(
+                    manager.GetElement<SpriteRenderer>("ChainNumDL_Digit"),
+                    manager.GetElement<SpriteRenderer>("ChainNumDL_Ones"),
+                    manager.GetElement<SpriteRenderer>("ChainNumDL_Tens"),
+                    chain);
+            }
+            else
+            {
+                targetCardD = manager.GetElement<ElementObjectManager>("DummyChainCardDR");
+                manager.GetElement("ChainCardSetDLOffset").SetActive(false);
+                ChangeChainNumber(
+                    manager.GetElement<SpriteRenderer>("ChainNumDR_Digit"),
+                    manager.GetElement<SpriteRenderer>("ChainNumDR_Ones"),
+                    manager.GetElement<SpriteRenderer>("ChainNumDR_Tens"),
+                    chain);
+            }
+            StartCoroutine(Program.I().texture_.LoadDummyCard(targetCardD, codesInChain[chain - 1]));
+
+            if(chain > 1)
+            {
+                if (controllerInChain[chain - 1] == controllerInChain[chain - 2])
+                {
+                    manager.GetElement("ChainStraightCLtoDR").SetActive(false);
+                    manager.GetElement("ChainStraightCRtoDL").SetActive(false);
+                }
+                else
+                {
+                    if(controllerInChain[chain - 1] == 0)
+                        manager.GetElement("ChainStraightCLtoDR").SetActive(false);
+                    else
+                        manager.GetElement("ChainStraightCRtoDL").SetActive(false);
+                }
+
+                ElementObjectManager targetCardC;
+                if (controllerInChain[chain - 2] == 0)
+                {
+                    targetCardC = manager.GetElement<ElementObjectManager>("DummyChainCardCL");
+                    manager.GetElement("ChainCardSetCROffset").SetActive(false);
+                    ChangeChainNumber(
+                        manager.GetElement<SpriteRenderer>("ChainNumCL_Digit"),
+                        manager.GetElement<SpriteRenderer>("ChainNumCL_Ones"),
+                        manager.GetElement<SpriteRenderer>("ChainNumCL_Tens"),
+                        chain - 1);
+                }
+                else
+                {
+                    targetCardC = manager.GetElement<ElementObjectManager>("DummyChainCardCR");
+                    manager.GetElement("ChainCardSetCLOffset").SetActive(false);
+                    ChangeChainNumber(
+                        manager.GetElement<SpriteRenderer>("ChainNumCR_Digit"),
+                        manager.GetElement<SpriteRenderer>("ChainNumCR_Ones"),
+                        manager.GetElement<SpriteRenderer>("ChainNumCR_Tens"),
+                        chain - 1);
+                }
+                StartCoroutine(Program.I().texture_.LoadDummyCard(targetCardC, codesInChain[chain - 2]));
+            }
+
+            if (chain > 2)
+            {
+                if (controllerInChain[chain - 2] == controllerInChain[chain - 3])
+                {
+                    manager.GetElement("ChainStraightBLtoCR").SetActive(false);
+                    manager.GetElement("ChainStraightBRtoCL").SetActive(false);
+                }
+                else
+                {
+                    if (controllerInChain[chain - 2] == 0)
+                        manager.GetElement("ChainStraightBLtoCR").SetActive(false);
+                    else
+                        manager.GetElement("ChainStraightBRtoCL").SetActive(false);
+                }
+
+                ElementObjectManager targetCardB;
+                if (controllerInChain[chain - 3] == 0)
+                {
+                    targetCardB = manager.GetElement<ElementObjectManager>("DummyChainCardBL");
+                    manager.GetElement("ChainCardSetBROffset").SetActive(false);
+                    ChangeChainNumber(
+                        manager.GetElement<SpriteRenderer>("ChainNumBL_Digit"),
+                        manager.GetElement<SpriteRenderer>("ChainNumBL_Ones"),
+                        manager.GetElement<SpriteRenderer>("ChainNumBL_Tens"),
+                        chain - 2);
+                }
+                else
+                {
+                    targetCardB = manager.GetElement<ElementObjectManager>("DummyChainCardBR");
+                    manager.GetElement("ChainCardSetBLOffset").SetActive(false);
+                    ChangeChainNumber(
+                        manager.GetElement<SpriteRenderer>("ChainNumBR_Digit"),
+                        manager.GetElement<SpriteRenderer>("ChainNumBR_Ones"),
+                        manager.GetElement<SpriteRenderer>("ChainNumBR_Tens"),
+                        chain - 2);
+                }
+                StartCoroutine(Program.I().texture_.LoadDummyCard(targetCardB, codesInChain[chain - 3]));
+            }
+
+            if (chain == 1)
+                return 0.95f;
+            else if (chain == 2)
+                return 1.84f;
+            else
+                return 1.84f;
+        }
+
+        void ChangeChainNumber(SpriteRenderer digit, SpriteRenderer one, SpriteRenderer ten, int number)
+        {
+            if(number < 10)
+            {
+                one.gameObject.SetActive(false);
+                ten.gameObject.SetActive(false);
+                digit.sprite = TextureManager.GetChainNumSprite(number);
+            }
+            else
+            {
+                digit.gameObject.SetActive(false);
+                one.sprite = TextureManager.GetChainNumSprite(number % 10);
+                ten.sprite = TextureManager.GetChainNumSprite((number / 10) % 10);
+            }
         }
 
         #endregion

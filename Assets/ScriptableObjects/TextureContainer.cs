@@ -263,6 +263,17 @@ public class TextureContainer : ScriptableObject
     public Sprite chainCircleNum7;
     public Sprite chainCircleNum8;
     public Sprite chainCircleNum9;
+    [Header("Chain Num Set")]
+    public Sprite chainNumSet0;
+    public Sprite chainNumSet1;
+    public Sprite chainNumSet2;
+    public Sprite chainNumSet3;
+    public Sprite chainNumSet4;
+    public Sprite chainNumSet5;
+    public Sprite chainNumSet6;
+    public Sprite chainNumSet7;
+    public Sprite chainNumSet8;
+    public Sprite chainNumSet9;
     [Header("Window")]
     public Sprite toggleM;
     public Sprite toggleM_On;
