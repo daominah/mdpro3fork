@@ -19,7 +19,6 @@ using MDPro3.YGOSharp;
 using MDPro3.YGOSharp.OCGWrapper.Enums;
 using static YgomGame.Bg.BgEffectSettingInner;
 using MDPro3.UI;
-using static MDPro3.GameCard;
 
 namespace MDPro3
 {
@@ -2278,11 +2277,13 @@ namespace MDPro3
                         controllerInChain.Add(card.p.controller);
                         card.AnimationActivate();
                         float extraSleep = 0f;
-                        if (cardsInChain.Count > 1)
-                            extraSleep = 1.44f;
-                        if (cardsInChain.Count > 3)
-                            extraSleep = 2.1f;
-
+                        if (CheckChain())
+                        {
+                            if (cardsInChain.Count > 1)
+                                extraSleep = 1.44f;
+                            else if (cardsInChain.Count > 3)
+                                extraSleep = 2.1f;
+                        }
                         DOTween.To(v => { }, 0, 0, 1f).OnComplete(() =>
                         {
                             ShowChainStack();
@@ -6121,9 +6122,9 @@ namespace MDPro3
             bool config = true;
             if (condition == Condition.Duel && Config.Get("DuelChain", "1") == "0")
                 config = false;
-            if (condition == Condition.Watch && Config.Get("WatchChain", "1") == "0")
+            else if (condition == Condition.Watch && Config.Get("WatchChain", "1") == "0")
                 config = false;
-            if (condition == Condition.Replay && Config.Get("ReplayChain", "1") == "0")
+            else if (condition == Condition.Replay && Config.Get("ReplayChain", "1") == "0")
                 config = false;
             return config;
         }
@@ -6184,7 +6185,7 @@ namespace MDPro3
                     manager.GetElement<SpriteRenderer>("ChainNumDR_Tens"),
                     chain);
             }
-            StartCoroutine(Program.I().texture_.LoadDummyCard(targetCardD, codesInChain[chain - 1]));
+            StartCoroutine(Program.I().texture_.LoadDummyCard(targetCardD, codesInChain[chain - 1], true));
 
             if (controllerInChain[chain - 1] == controllerInChain[chain - 2])
             {
@@ -6219,7 +6220,7 @@ namespace MDPro3
                     manager.GetElement<SpriteRenderer>("ChainNumCR_Tens"),
                     chain - 1);
             }
-            StartCoroutine(Program.I().texture_.LoadDummyCard(targetCardC, codesInChain[chain - 2]));
+            StartCoroutine(Program.I().texture_.LoadDummyCard(targetCardC, codesInChain[chain - 2], true));
 
             if(chain > 3)
             {
@@ -6256,7 +6257,7 @@ namespace MDPro3
                         manager.GetElement<SpriteRenderer>("ChainNumBR_Tens"),
                         chain - 2);
                 }
-                StartCoroutine(Program.I().texture_.LoadDummyCard(targetCardB, codesInChain[chain - 3]));
+                StartCoroutine(Program.I().texture_.LoadDummyCard(targetCardB, codesInChain[chain - 3], true));
 
                 if (controllerInChain[chain - 3] == controllerInChain[chain - 4])
                 {
@@ -6291,7 +6292,7 @@ namespace MDPro3
                         manager.GetElement<SpriteRenderer>("ChainNumAR_Tens"),
                         chain - 3);
                 }
-                StartCoroutine(Program.I().texture_.LoadDummyCard(targetCardA, codesInChain[chain - 4]));
+                StartCoroutine(Program.I().texture_.LoadDummyCard(targetCardA, codesInChain[chain - 4], true));
             }
         }
         float ShowChainResolve(int chain)
@@ -6337,7 +6338,7 @@ namespace MDPro3
                     manager.GetElement<SpriteRenderer>("ChainNumDR_Tens"),
                     chain);
             }
-            StartCoroutine(Program.I().texture_.LoadDummyCard(targetCardD, codesInChain[chain - 1]));
+            StartCoroutine(Program.I().texture_.LoadDummyCard(targetCardD, codesInChain[chain - 1], true));
 
             if(chain > 1)
             {
@@ -6375,7 +6376,7 @@ namespace MDPro3
                         manager.GetElement<SpriteRenderer>("ChainNumCR_Tens"),
                         chain - 1);
                 }
-                StartCoroutine(Program.I().texture_.LoadDummyCard(targetCardC, codesInChain[chain - 2]));
+                StartCoroutine(Program.I().texture_.LoadDummyCard(targetCardC, codesInChain[chain - 2], true));
             }
 
             if (chain > 2)
@@ -6414,7 +6415,7 @@ namespace MDPro3
                         manager.GetElement<SpriteRenderer>("ChainNumBR_Tens"),
                         chain - 2);
                 }
-                StartCoroutine(Program.I().texture_.LoadDummyCard(targetCardB, codesInChain[chain - 3]));
+                StartCoroutine(Program.I().texture_.LoadDummyCard(targetCardB, codesInChain[chain - 3], true));
             }
 
             if (chain == 1)

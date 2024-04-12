@@ -8,5 +8,10 @@ namespace MDPro3.UI
         {
             AudioManager.PlaySE(se, 0.4f);
         }
+        void NewEvent(string se)
+        {
+            AudioManager.PlaySE(se, 0.4f);
+        }
+
     }
 }

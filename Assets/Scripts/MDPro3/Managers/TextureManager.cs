@@ -111,6 +111,8 @@ namespace MDPro3
 
         public IEnumerator LoadDummyCard(ElementObjectManager manager, int code, bool active = false)
         {
+            if(active)
+                manager.gameObject.SetActive(false);
             var ie = LoadCardAsync(code, true);
             while (ie.MoveNext())
                 yield return null;
