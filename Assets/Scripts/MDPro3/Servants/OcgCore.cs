@@ -6130,7 +6130,7 @@ namespace MDPro3
                 return;
 
             GameObject animation;
-            if (chain < 4)
+            if (chain < 3)
                 animation = ABLoader.LoadFromFile("Timeline/DuelChain/DuelChainStack01", true);
             else
             {
@@ -6141,9 +6141,9 @@ namespace MDPro3
                 });
                 DOTween.To(v => { }, 0, 0, 0.767f).OnComplete(() =>
                 {
-                    if(chain == 4)
+                    if(chain == 3)
                         AudioManager.PlaySE("SE_DUEL_CHAIN_NUMEFF_01");
-                    else if(chain == 5)
+                    else if(chain == 4)
                         AudioManager.PlaySE("SE_DUEL_CHAIN_NUMEFF_02");
                     else
                         AudioManager.PlaySE("SE_DUEL_CHAIN_NUMEFF_03");
@@ -6215,7 +6215,7 @@ namespace MDPro3
             }
             StartCoroutine(Program.I().texture_.LoadDummyCard(targetCardC, codesInChain[chain - 2], true));
 
-            if(chain > 3)
+            if(chain > 2)
             {
                 if (controllerInChain[chain - 2] == controllerInChain[chain - 3])
                 {
@@ -6252,40 +6252,50 @@ namespace MDPro3
                 }
                 StartCoroutine(Program.I().texture_.LoadDummyCard(targetCardB, codesInChain[chain - 3], true));
 
-                if (controllerInChain[chain - 3] == controllerInChain[chain - 4])
+                if(chain > 3)
+                {
+                    if (controllerInChain[chain - 3] == controllerInChain[chain - 4])
+                    {
+                        manager.GetElement("ChainStraightALtoBR").SetActive(false);
+                        manager.GetElement("ChainStraightARtoBL").SetActive(false);
+                    }
+                    else
+                    {
+                        if (controllerInChain[chain - 3] == 0)
+                            manager.GetElement("ChainStraightALtoBR").SetActive(false);
+                        else
+                            manager.GetElement("ChainStraightARtoBL").SetActive(false);
+                    }
+                    ElementObjectManager targetCardA;
+                    if (controllerInChain[chain - 4] == 0)
+                    {
+                        targetCardA = manager.GetElement<ElementObjectManager>("DummyChainCardAL");
+                        manager.GetElement("ChainCardSetAROffset").SetActive(false);
+                        ChangeChainNumber(
+                            manager.GetElement<SpriteRenderer>("ChainNumAL_Digit"),
+                            manager.GetElement<SpriteRenderer>("ChainNumAL_Ones"),
+                            manager.GetElement<SpriteRenderer>("ChainNumAL_Tens"),
+                            chain - 3);
+                    }
+                    else
+                    {
+                        targetCardA = manager.GetElement<ElementObjectManager>("DummyChainCardAR");
+                        manager.GetElement("ChainCardSetALOffset").SetActive(false);
+                        ChangeChainNumber(
+                            manager.GetElement<SpriteRenderer>("ChainNumAR_Digit"),
+                            manager.GetElement<SpriteRenderer>("ChainNumAR_Ones"),
+                            manager.GetElement<SpriteRenderer>("ChainNumAR_Tens"),
+                            chain - 3);
+                    }
+                    StartCoroutine(Program.I().texture_.LoadDummyCard(targetCardA, codesInChain[chain - 4], true));
+                }
+                else
                 {
                     manager.GetElement("ChainStraightALtoBR").SetActive(false);
                     manager.GetElement("ChainStraightARtoBL").SetActive(false);
-                }
-                else
-                {
-                    if (controllerInChain[chain - 3] == 0)
-                        manager.GetElement("ChainStraightALtoBR").SetActive(false);
-                    else
-                        manager.GetElement("ChainStraightARtoBL").SetActive(false);
-                }
-                ElementObjectManager targetCardA;
-                if (controllerInChain[chain - 4] == 0)
-                {
-                    targetCardA = manager.GetElement<ElementObjectManager>("DummyChainCardAL");
-                    manager.GetElement("ChainCardSetAROffset").SetActive(false);
-                    ChangeChainNumber(
-                        manager.GetElement<SpriteRenderer>("ChainNumAL_Digit"),
-                        manager.GetElement<SpriteRenderer>("ChainNumAL_Ones"),
-                        manager.GetElement<SpriteRenderer>("ChainNumAL_Tens"),
-                        chain - 3);
-                }
-                else
-                {
-                    targetCardA = manager.GetElement<ElementObjectManager>("DummyChainCardAR");
                     manager.GetElement("ChainCardSetALOffset").SetActive(false);
-                    ChangeChainNumber(
-                        manager.GetElement<SpriteRenderer>("ChainNumAR_Digit"),
-                        manager.GetElement<SpriteRenderer>("ChainNumAR_Ones"),
-                        manager.GetElement<SpriteRenderer>("ChainNumAR_Tens"),
-                        chain - 3);
+                    manager.GetElement("ChainCardSetAROffset").SetActive(false);
                 }
-                StartCoroutine(Program.I().texture_.LoadDummyCard(targetCardA, codesInChain[chain - 4], true));
             }
         }
         float ShowChainResolve(int chain)
