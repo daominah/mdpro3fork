@@ -570,6 +570,9 @@ namespace MDPro3
 
         public void CameraZoomToMate0()
         {
+            if (Program.root == "Android/")
+                return;
+
             if (Config.Get("MateViewTips", "0") == "0")
             {
                 MessageManager.Cast("长按宠物再松开后即可返回正常视角。");
@@ -591,6 +594,9 @@ namespace MDPro3
         }
         public void CameraZoomToMate1()
         {
+            if (Program.root == "Android/")
+                return;
+
             if (Config.Get("MateViewTips", "0") == "0")
             {
                 MessageManager.Cast("长按宠物再松开后即可返回正常视角。");
