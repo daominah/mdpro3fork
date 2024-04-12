@@ -402,27 +402,17 @@ namespace MDPro3
         }
         void AddChatItem(int player, string content)
         {
-            if (Program.I().ocgcore.isShowed)
+            if (Program.I().ocgcore.isShowed && player < 4)
             {
                 if (mode != 2)
                     player = Program.I().ocgcore.LocalPlayer(player);
                 else
                 {
-                    if (Program.I().ocgcore.isFirst)
-                        player ^= 2;
-                    if (player == 0)
-                        player = 0;
-                    else if (player == 1)
-                        player = 2;
-                    else if (player == 2)
-                        player = 1;
-                    else if (player == 3)
-                        player = 3;
-                    else
-                        player = 10;
+                    if (Program.I().ocgcore.isFirst && selfType > 1
+                        || !Program.I().ocgcore.isFirst && selfType < 2)
+                        player = (player + 2) % 4;
                 }
             }
-
 
             var nickName = players[player]?.name;
             GameObject item = null;

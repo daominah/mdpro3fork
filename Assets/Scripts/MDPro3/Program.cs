@@ -298,6 +298,7 @@ namespace MDPro3
         private void OnApplicationQuit()
         {
             Running = false;
+            TcpHelper.tcpClient?.Close();
             YgoServer.StopServer();
         }
     }

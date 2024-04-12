@@ -1696,14 +1696,7 @@ namespace MDPro3
                     {
                         if (condition != Condition.Replay)
                         {
-                            selections = new List<string>()
-                            {
-                                InterString.Get("保存回放"),
-                                InterString.Get("保存"),
-                                InterString.Get("放弃"),
-                                Tools.GetTimeString()
-                            };
-                            ShowPopupInput(selections, OnSaveReplay, OnGiveUpReplay, InputValidation.ValidationType.Path);
+                            ShowSaveReplay();
                             Destroy(mono.gameObject);
                         }
                     };
@@ -1714,6 +1707,8 @@ namespace MDPro3
                         playableGuide0.GetComponent<Animator>().SetTrigger("End");
                         playableGuide1.GetComponent<Animator>().SetTrigger("End");
                     }
+                    //防止对方在更换副卡组时拔螺丝
+                    UIManager.UIBlackOut(transitionTime);
                     break;
                 case GameMessage.Start:
                     CoreReset();
@@ -4756,22 +4751,14 @@ namespace MDPro3
 
         #region PracticalizeTools
 
-        public int LocalPlayer(int p, bool advanced = false)
+        public int LocalPlayer(int p)
         {
             if (p == 0 || p == 1)
             {
-                if (advanced)
-                {
-
-                }
-                else
-                {
-                    if (isFirst)
-                        return p;
-                    return 1 - p;
-                }
+                if (isFirst)
+                    return p;
+                return 1 - p;
             }
-
             return p;
         }
         public static int[] GetSelectLevelSum(List<GameCard> cards)
@@ -6440,6 +6427,18 @@ namespace MDPro3
                 one.sprite = TextureManager.GetChainNumSprite(number % 10);
                 ten.sprite = TextureManager.GetChainNumSprite((number / 10) % 10);
             }
+        }
+
+        void ShowSaveReplay()
+        {
+            var selections = new List<string>()
+            {
+                InterString.Get("保存回放"),
+                InterString.Get("保存"),
+                InterString.Get("放弃"),
+                Tools.GetTimeString()
+            };
+            ShowPopupInput(selections, OnSaveReplay, OnGiveUpReplay, InputValidation.ValidationType.Path);
         }
 
         #endregion

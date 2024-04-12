@@ -88,7 +88,7 @@ namespace MDPro3
                         cg.alpha = 1f;
                         cg.interactable = true;
                         cg.blocksRaycasts = true;
-                        if (depth <= 0)
+                        if (depth <= 0 || (this == Program.I().editDeck && Program.I().editDeck.condition == EditDeck.EditDeckCondition.ChangeSide))
                             UIManager.HideExitButton(0);
                         else
                             UIManager.ShowExitButton(0);
