@@ -34,11 +34,11 @@ namespace MDPro3
         public static void Initialize()
         {
             var language = Config.Get("Language", "zh-CN");
-            var path = "data/locales/" + language + "/strings.conf";
+            var path = Program.localesPath + Program.slash + language + "/strings.conf";
             var text = File.ReadAllText(path);
             foreach (var conf in Directory.GetFiles("Expansions", "*.conf"))
                 text += "\r\n" + File.ReadAllText(conf);
-            foreach (var zip in ZipManager.zips)
+            foreach (var zip in ZipHelper.zips)
             {
                 if (zip.Name.ToLower().EndsWith("script.zip"))
                     continue;
@@ -179,7 +179,7 @@ namespace MDPro3
             for (int i = 0; i < 7; i++)
                 if ((attribute & (1u << i)) > 0)
                 {
-                    if (passFirst) r += "/";
+                    if (passFirst) r += Program.slash;
                     r += GetUnsafe(1010 + i);
                     passFirst = true;
                 }
@@ -192,7 +192,7 @@ namespace MDPro3
             for (var i = 0; i < 26; i++)
                 if ((race & (1 << i)) > 0)
                 {
-                    if (passFirst) r += "/";
+                    if (passFirst) r += Program.slash;
                     r += GetUnsafe(1020 + i);
                     passFirst = true;
                 }
@@ -261,7 +261,7 @@ namespace MDPro3
             for (var i = 0; i < 3; i++)
                 if ((a & (1 << i)) > 0)
                 {
-                    if (passFirst) r += "/";
+                    if (passFirst) r += Program.slash;
                     r += GetUnsafe(1050 + i);
                     passFirst = true;
                 }
@@ -277,14 +277,14 @@ namespace MDPro3
                 for (var i = 4; i < 27; i++)
                     if (((a & 0x68020C0) & (1 << i)) > 0)
                     {
-                        start += "/" + GetUnsafe(1050 + i);
+                        start += Program.slash + GetUnsafe(1050 + i);
                         break;
                     }
                 a -= a & 0x68020C0;
             }
             if ((a & (long)CardType.Pendulum) > 0)
             {
-                start += "/" + GetUnsafe(1074);
+                start += Program.slash + GetUnsafe(1074);
                 a -= (long)CardType.Pendulum;
             }
             if ((a & 0x30) > 0)
@@ -292,14 +292,14 @@ namespace MDPro3
                 for (var i = 4; i < 6; i++)
                     if ((a & (1 << i)) > 0)
                     {
-                        end += "/" + GetUnsafe(1050 + i);
+                        end += Program.slash + GetUnsafe(1050 + i);
                         break;
                     }
                 a -= a & 0x30;
             }
             for (var i = 4; i < 27; i++)
                 if ((a & (1 << i)) > 0)
-                    start += "/" + GetUnsafe(1050 + i);
+                    start += Program.slash + GetUnsafe(1050 + i);
             var returnValue = start + end;
             if (returnValue == "")
                 returnValue = GetUnsafe(1054);
@@ -320,9 +320,9 @@ namespace MDPro3
                 if (CardDescription.WhetherCardIsMonster(data))
                 {
                     if (data.Race != origin.Race)
-                        re = "【" + "<color=#FD3E08>" + InterString.Get("[?]族", Race(data.Race)) + "</color>" + "/" + SecondType(data.Type) + "】";
+                        re = "【" + "<color=#FD3E08>" + InterString.Get("[?]族", Race(data.Race)) + "</color>" + Program.slash + SecondType(data.Type) + "】";
                     else
-                        re = "【" + InterString.Get("[?]族", Race(data.Race)) + "/" + SecondType(data.Type) + "】";
+                        re = "【" + InterString.Get("[?]族", Race(data.Race)) + Program.slash + SecondType(data.Type) + "】";
                 }
                 else
                     re = "【" + MainType(data.Type) + "】";

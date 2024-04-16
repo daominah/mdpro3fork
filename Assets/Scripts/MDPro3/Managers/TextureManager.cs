@@ -133,9 +133,9 @@ namespace MDPro3
             }
             string fullPath;
 #if !UNITY_EDITOR && UNITY_ANDROID
-        fullPath = "file://" + Application.persistentDataPath + "/" + path;
+        fullPath = "file://" + Application.persistentDataPath + Program.slash + path;
 #else
-            fullPath = System.Environment.CurrentDirectory + "/" + path;
+            fullPath = System.Environment.CurrentDirectory + Program.slash + path;
 #endif
             UnityWebRequest request = UnityWebRequestTexture.GetTexture(fullPath);
             request.SendWebRequest();
@@ -156,20 +156,20 @@ namespace MDPro3
             //while(loadingArt)
             //    yield return null;
             //loadingArt = true;
-            if (!Directory.Exists("Art"))
-                Directory.CreateDirectory("Art");
-            if (!Directory.Exists("Art2"))
-                Directory.CreateDirectory("Art2");
-            var path = "Art2/" + code;
+            if (!Directory.Exists(Program.artPath))
+                Directory.CreateDirectory(Program.artPath);
+            if (!Directory.Exists(Program.altArtPath))
+                Directory.CreateDirectory(Program.altArtPath);
+            var path = Program.altArtPath + Program.slash + code;
             if (File.Exists(path + ".jpg"))
                 path += ".jpg";
             else if (File.Exists(path + ".png"))
                 path += ".png";
-            else if (File.Exists("Art/" + code.ToString() + ".jpg"))
-                path = "Art/" + code.ToString() + ".jpg";
+            else if (File.Exists(Program.artPath + Program.slash + code.ToString() + ".jpg"))
+                path = Program.artPath + Program.slash + code.ToString() + ".jpg";
             else
             {
-                foreach (var zip in ZipManager.zips)
+                foreach (var zip in ZipHelper.zips)
                 {
                     if (zip.Name.ToLower().EndsWith("script.zip"))
                         continue;
@@ -191,7 +191,7 @@ namespace MDPro3
                 }
                 if(returenValue == null)
                 {
-                    foreach (var zip in ZipManager.zips)
+                    foreach (var zip in ZipHelper.zips)
                     {
                         if (zip.Name.ToLower().EndsWith("script.zip"))
                             continue;

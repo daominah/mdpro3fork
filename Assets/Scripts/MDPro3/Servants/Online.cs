@@ -275,7 +275,8 @@ namespace MDPro3
                 MessageManager.Cast("主机地址和端口不能为空。");
                 return;
             }
-
+            if (!TcpHelper.canJoin)
+                return;
             Room.fromSolo = false;
             Room.fromLocalHost = false;
             new Thread(() => { TcpHelper.Join(ip, Config.Get("DuelPlayerName0", "@ui"), port, password, version); }).Start();

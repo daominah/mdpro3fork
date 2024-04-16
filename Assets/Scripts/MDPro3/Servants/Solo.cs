@@ -51,7 +51,7 @@ namespace MDPro3
 
         public void Load()
         {
-            ReadBots("Data/locales/" + Config.Get("Language", "zh-CN") + "/bot.conf");
+            ReadBots(Program.localesPath + Program.slash + Config.Get("Language", "zh-CN") + "/bot.conf");
             Print();
             StartCoroutine(SelectZero());
         }

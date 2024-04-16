@@ -13,7 +13,7 @@ namespace MDPro3
         public static void Initialize()
         {
             string language = Config.Get("Language", "zh-CN");
-            path = "data/locales/" + language + "/translation.conf";
+            path = Program.localesPath + Program.slash + language + "/translation.conf";
             if (!File.Exists(path))
                 File.Create(path).Close();
 

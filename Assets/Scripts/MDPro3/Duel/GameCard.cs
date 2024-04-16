@@ -341,11 +341,17 @@ namespace MDPro3
                     StartCoroutine(SetFace());
                 RefreshLabel();
             }
+            if(d.Id > 0)
+                if ((p.location & (uint)CardLocation.Extra) > 0)
+                    if ((p.position & (uint)CardPosition.FaceUp) > 0)
+                        if (p.sequence == Program.I().ocgcore.GetLocationCardCount(CardLocation.Extra, p.controller) - 1)
+                            StartCoroutine(Program.I().ocgcore.UpdateDeckTop(p.controller, this));
         }
 
         public void SetCode(int code)
         {
             if (code > 0)
+            {
                 if (data.Id != code)
                 {
                     SetData(CardsManager.Get(code));
@@ -355,6 +361,7 @@ namespace MDPro3
                             if (!Program.I().ocgcore.sideReference.Main.Contains(code))
                                 Program.I().ocgcore.sideReference.Main.Add(code);
                 }
+            }
         }
 
         public void RefreshData()
@@ -1018,6 +1025,9 @@ namespace MDPro3
                             main.startColor = Color.red;
                     }
 
+                    if((p.location & (uint)CardLocation.Extra) > 0
+                        && (p.location & (uint)CardLocation.Overlay) == 0)
+                        Program.I().ocgcore.SetDeckTop(this);
                     Destroy(model);
                     Destroy(fx, 2);
                     OcgCore.messagePass = true;
@@ -1144,7 +1154,13 @@ namespace MDPro3
                 var turn = manager.GetElement<Transform>("Turn");
 
                 //Ö÷ÌåÒÆ¶¯
-                sequence.Append(model.transform.DOLocalMove(position, moveTime));
+                sequence.Append(model.transform.DOLocalMove(position, moveTime).OnStart(() =>
+                {
+                    if ((cacheP.location & (uint)CardLocation.Extra) > 0
+                        && (p.location & (uint)CardLocation.Extra) == 0
+                        && cacheP.sequence == Program.I().ocgcore.GetLocationCardCount(CardLocation.Extra, cacheP.controller) - 1)
+                        StartCoroutine(Program.I().ocgcore.UpdateDeckTop(cacheP.controller));
+                }));
                 sequence.Join(pivot.DOScale(GetCardScale(p), moveTime * 0.95f));
                 //Turn
                 if ((p.location & (uint)CardLocation.Removed) > 0
@@ -1218,6 +1234,9 @@ namespace MDPro3
                     inAnimation = false;
                     if ((p.location & ((uint)CardLocation.Grave + (uint)CardLocation.Removed)) == 0)
                         OcgCore.messagePass = true;
+                    if((p.location & (uint)CardLocation.Extra) > 0 
+                        && (cacheP.location & (uint)CardLocation.Extra) == 0)
+                        Program.I().ocgcore.SetDeckTop(this);
                 });
 
             SummonPass:
@@ -1266,7 +1285,13 @@ namespace MDPro3
         void SequenceStrongSummon(Sequence sequence, Vector3 position, Vector3 angle, float interval, float timeBefore = 0)
         {
             sequence.AppendInterval(interval);
-            sequence.Append(manager.transform.DOMove(position, 0.2f));
+            sequence.Append(manager.transform.DOMove(position, 0.2f).OnStart(() =>
+            {
+                if ((cacheP.location & (uint)CardLocation.Extra) > 0
+                && (p.location & (uint)CardLocation.Extra) == 0
+                && cacheP.sequence == Program.I().ocgcore.GetLocationCardCount(CardLocation.Extra, cacheP.controller))
+                    StartCoroutine(Program.I().ocgcore.UpdateDeckTop(cacheP.controller));
+            }));
             sequence.Join(manager.transform.DOLocalRotate(Vector3.zero, 0.1f));
             sequence.Join(manager.GetElement<Transform>("CardPlane").DOLocalRotate(new Vector3(0, (angle.y == 0) || (angle.y == 270) ? 0 : 180, 0), 0.2f));
             sequence.Join(manager.GetElement<Transform>("Turn").DOLocalRotate(new Vector3(0, (angle.y == 0) || (angle.y == 180) ? 0 : 270, angle.z), 0.2f));

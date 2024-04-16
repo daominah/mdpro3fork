@@ -88,11 +88,11 @@ namespace MDPro3
         }
         void LoadNames()
         {
-            LoadData(0, "Data/locales/" + language + "/IDS_ITEM.bytes");
+            LoadData(0, Program.localesPath + Program.slash + language + "/IDS_ITEM.bytes");
         }
         void LoadDescriptions()
         {
-            LoadData(1, "Data/locales/" + language + "/IDS_ITEMDESC.bytes");
+            LoadData(1, Program.localesPath + Program.slash + language + "/IDS_ITEMDESC.bytes");
         }
         void LoadData(int type, string path)
         {
@@ -170,15 +170,49 @@ namespace MDPro3
             }
             return returnValue;
         }
-        public string CodeToPath(string code)
+        public string CodeToPath(string code, ItemType type)
         {
             string returnValue = "";
             foreach (var kind in kinds)
                 foreach (var item in kind)
                     if (item.id.ToString() == code)
                         return item.path;
+            switch (type)
+            {
+                case ItemType.Wallpaper:
+                    return wallpapers[0].path;
+                case ItemType.Face:
+                    return faces[0].path;
+                case ItemType.Frame:
+                    return frames[0].path;
+                case ItemType.Protector:
+                    return protectors[0].path;
+                case ItemType.Mat:
+                    return mats[0].path;
+                case ItemType.Grave:
+                    return graves[0].path;
+                case ItemType.Stand:
+                    return stands[0].path;
+                case ItemType.Mate:
+                    return mates[0].path;
+                case ItemType.Case:
+                    return cases[0].path;
+                default:
+                    return mats[0].path;
+            }
+        }
 
-            return returnValue;
+        public enum ItemType
+        {
+            Wallpaper,
+            Face,
+            Frame,
+            Protector,
+            Mat,
+            Grave,
+            Stand,
+            Mate,
+            Case
         }
     }
 }

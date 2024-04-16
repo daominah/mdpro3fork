@@ -4,13 +4,14 @@ using Ionic.Zip;
 
 namespace MDPro3
 {
-    public class ZipManager
+    public class ZipHelper
     {
         public static List<ZipFile> zips = new List<ZipFile>();
 
         public static void Initialize()
         {
-            zips.Add(new ZipFile("data/script.zip"));
+            zips.Clear();
+            zips.Add(new ZipFile("Data/script.zip"));
 
             if (!Directory.Exists("Expansions"))
                 Directory.CreateDirectory("Expansions");
@@ -18,6 +19,11 @@ namespace MDPro3
                 zips.Add(new ZipFile(zip));
             foreach (var zip in Directory.GetFiles("Expansions", "*.zip"))
                 zips.Add(new ZipFile(zip));
+        }
+        public static void Dispose()
+        {
+            foreach (var zip in zips)
+                zip.Dispose();
         }
     }
 }

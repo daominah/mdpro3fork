@@ -195,9 +195,9 @@ namespace MDPro3
             while (loadingPMat)
                 yield return null;
             loadingPMat = true;
-            if (File.Exists(Program.root + "Protector/" + code + "/" + code))
+            if (File.Exists(Program.root + "Protector/" + code + Program.slash + code))
             {
-                var abr = AssetBundle.LoadFromFileAsync(Program.root + "Protector/" + code + "/" + code);
+                var abr = AssetBundle.LoadFromFileAsync(Program.root + "Protector/" + code + Program.slash + code);
                 while (!abr.isDone)
                     yield return null;
                 var abmr = AssetBundle.LoadFromFileAsync(Program.root + "Protector/" + code + "/PMat");
@@ -212,20 +212,20 @@ namespace MDPro3
             }
             else
             {
-                var ab1r = AssetBundle.LoadFromFileAsync(Program.root + "Protector/" + code + "/" + code + "_1");
+                var ab1r = AssetBundle.LoadFromFileAsync(Program.root + "Protector/" + code + Program.slash + code + "_1");
                 while (!ab1r.isDone)
                     yield return null;
                 var ab1 = ab1r.assetBundle;
 
-                var ab2r = AssetBundle.LoadFromFileAsync(Program.root + "Protector/" + code + "/" + code + "_2");
+                var ab2r = AssetBundle.LoadFromFileAsync(Program.root + "Protector/" + code + Program.slash + code + "_2");
                 while (!ab2r.isDone)
                     yield return null;
                 var ab2 = ab2r.assetBundle;
 
                 AssetBundle ab3 = null;
-                if (File.Exists(Program.root + "Protector/" + code + "/" + code + "_3"))
+                if (File.Exists(Program.root + "Protector/" + code + Program.slash + code + "_3"))
                 {
-                    var ab3r = AssetBundle.LoadFromFileAsync(Program.root + "Protector/" + code + "/" + code + "_3");
+                    var ab3r = AssetBundle.LoadFromFileAsync(Program.root + "Protector/" + code + Program.slash + code + "_3");
                     while (!ab3r.isDone)
                         yield return null;
                     ab3 = ab3r.assetBundle;
@@ -274,7 +274,7 @@ namespace MDPro3
                 }
             }
             Mate.MateType type = Mate.MateType.MasterDuel;
-            if (item.id == 0)
+            if (item.id == 0 && File.Exists(Program.root + "CrossDuel/" + code + ".bundle"))
                 type = Mate.MateType.CrossDuel;
             Mate returnValue = null;
             if (type == Mate.MateType.CrossDuel)
@@ -326,7 +326,7 @@ namespace MDPro3
             }
             else
             {
-                var ie = LoadFromFileAsync(Program.items.CodeToPath(code.ToString()));
+                var ie = LoadFromFileAsync(Program.items.CodeToPath(code.ToString(), Items.ItemType.Mate));
                 while (ie.MoveNext())
                     yield return null;
                 var mateGo = ie.Current;

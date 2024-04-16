@@ -40,6 +40,8 @@ namespace MDPro3
         public Font atkDef;
         public RenderTexture renderTexture;
 
+        static readonly string bigSlash = "£¯";
+
         public void SwitchLanguage()
         {
             //cardDescription
@@ -256,7 +258,7 @@ namespace MDPro3
                     cardArtPendulum.texture = art;
                 }
                 var pendulumDescription = CardDescription.GetCardDescriptionSplit(data.Desc);
-                cardDescription.text = StringHelper.GetType(data).Replace("/", "£¯") + "\r\n" + TextForRender(pendulumDescription[1]);
+                cardDescription.text = StringHelper.GetType(data).Replace(Program.slash, bigSlash) + "\r\n" + TextForRender(pendulumDescription[1]);
                 cardDescriptionPendulum.text = TextForRender(pendulumDescription[0]);
                 lScale.text = data.LScale.ToString();
                 rScale.text = data.RScale.ToString();
@@ -279,7 +281,7 @@ namespace MDPro3
                 cardArt.texture = art;
                 var description = "";
                 if ((data.Type & (uint)CardType.Monster) > 0)
-                    description = StringHelper.GetType(data).Replace("/", "£¯") + "\r\n";
+                    description = StringHelper.GetType(data).Replace(Program.slash, bigSlash) + "\r\n";
                 description += TextForRender(data.Desc);
                 cardDescription.text = description;
 
@@ -519,7 +521,7 @@ namespace MDPro3
                     .Replace("\n¢á", "¢á");
             }
 
-            description = description.Replace("/", "£¯");
+            description = description.Replace(Program.slash, bigSlash);
             if (language != "en-US" && language != "es-ES")
                 description = description.Replace(" ", "\u00A0");
 

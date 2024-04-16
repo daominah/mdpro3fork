@@ -83,9 +83,9 @@ namespace MDPro3
         Deck history;
         public Deck shine;
         public Deck royal;
-        readonly string bookPath = "data/book.ydk";
-        readonly string shinePath = "data/sr.ydk";
-        readonly string royalPath = "data/ur.ydk";
+        readonly string bookPath = "Data/book.ydk";
+        readonly string shinePath = "Data/sr.ydk";
+        readonly string royalPath = "Data/ur.ydk";
         Card cardShowing;
         public Banlist banlist;
         public static string pack = "";
@@ -201,12 +201,12 @@ namespace MDPro3
             else
             {
                 List<string> selections = new List<string>
-            {
-                InterString.Get("卡组未保存"),
-                InterString.Get("卡组已修改，是否保存？"),
-                InterString.Get("保存"),
-                InterString.Get("不保存")
-            };
+                {
+                    InterString.Get("卡组未保存"),
+                    InterString.Get("卡组已修改，是否保存？"),
+                    InterString.Get("保存"),
+                    InterString.Get("不保存")
+                };
                 UIManager.ShowPopupYesOrNo(selections, OnSave, OnExit);
             }
         }

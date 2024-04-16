@@ -15,7 +15,7 @@ namespace MDPro3
     {
         public static TcpClient tcpClient;
         private static NetworkStream networkStream;
-        private static bool canJoin = true;
+        public static bool canJoin = true;
         public static bool onDisConnected;
         private static readonly List<byte[]> datas = new List<byte[]>();
         private static readonly object locker = new object();

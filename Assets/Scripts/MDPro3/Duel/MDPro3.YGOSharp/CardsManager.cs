@@ -25,14 +25,14 @@ namespace MDPro3.YGOSharp
             nullString = string.Empty;
 ;
             string language = Config.Get("Language", "zh-CN");
-            string databaseFullPath = "data/locales/" + language + "/cards.cdb";
+            string databaseFullPath = Program.localesPath + Program.slash + language + "/cards.cdb";
             if (!File.Exists(databaseFullPath))
-                databaseFullPath = "data/locales/zh-CN/cards.cdb";
+                databaseFullPath = Program.localesPath + Program.slash + "zh-CN/cards.cdb";
             _cards.Clear();
             LoadCDB(databaseFullPath);
             foreach(var cdb in Directory.GetFiles("Expansions", "*.cdb"))
                 LoadCDB(cdb);
-            foreach(var zip in ZipManager.zips)
+            foreach(var zip in ZipHelper.zips)
             {
                 if (zip.Name.ToLower().EndsWith("script.zip"))
                     continue;
@@ -41,8 +41,10 @@ namespace MDPro3.YGOSharp
                     if (file.ToLower().EndsWith(".cdb"))
                     {
                         var e = zip[file];
-                        var tempFile = Path.Combine(Path.GetTempPath(), file);
-                        e.Extract(Path.GetTempPath(), ExtractExistingFileAction.OverwriteSilently);
+                        if (!Directory.Exists(Program.tempFolder))
+                            Directory.CreateDirectory(Program.tempFolder);
+                        var tempFile = Path.Combine(Path.GetFullPath(Program.tempFolder), file);
+                        e.Extract(Path.GetFullPath(Program.tempFolder), ExtractExistingFileAction.OverwriteSilently);
                         LoadCDB(tempFile);
                         File.Delete(tempFile);
                     }
@@ -1949,7 +1951,7 @@ namespace MDPro3.YGOSharp
 
         static Dictionary<string, string> pacDic = new Dictionary<string, string>();
 
-        static string path = "data/pack";
+        static string path = "Data/pack";
 
         internal static void Initialize()
         {
@@ -1958,7 +1960,7 @@ namespace MDPro3.YGOSharp
                 var fileInfos = new DirectoryInfo(path).GetFiles();
                 foreach (var file in fileInfos)
                     if (file.Name.ToLower().EndsWith(".db"))
-                        LoadDataBase(path + "/" + file.Name);
+                        LoadDataBase(path + Program.slash + file.Name);
                 InitializeSec();
             }
         }

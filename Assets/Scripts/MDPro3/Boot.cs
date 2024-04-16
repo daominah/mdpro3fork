@@ -62,20 +62,20 @@ namespace MDPro3
             if (totalNum == 0)
                 text.text = title + dots;
             else
-                text.text = title + "(" + nowNum + "/" + totalNum + ")";
+                text.text = title + "(" + nowNum + Program.slash + totalNum + ")";
         }
 
         bool InitializeLanguage()
         {
-            if (!Directory.Exists("Data"))
+            if (!Directory.Exists(Program.dataPath))
             {
-                Directory.CreateDirectory("Data");
-                Config.Initialize("Data/config.conf");
+                Directory.CreateDirectory(Program.dataPath);
+                Config.Initialize(Program.configPath);
                 return true;
             }
             else
             {
-                Config.Initialize("Data/config.conf");
+                Config.Initialize(Program.configPath);
                 if(Config.Get("Version", "Version") == "Version")
                     return true;
                 InterString.Initialize();
@@ -109,7 +109,7 @@ namespace MDPro3
             nowNum = 0;
             totalNum = 0;
 
-            string filePath = Application.streamingAssetsPath + "/" + type + ".zip";
+            string filePath = Application.streamingAssetsPath + Program.slash + type + ".zip";
             var www = new WWW(filePath);
             while (!www.isDone)
             {
@@ -134,7 +134,7 @@ namespace MDPro3
 
         IEnumerator LoadMainSceneAsync()
         {
-            Config.Initialize("Data/config.conf");
+            Config.Initialize(Program.configPath);
             Config.Set("Version", Application.version.Substring(0, 5));
             Config.Save();
             var ini = Addressables.InitializeAsync();
@@ -223,7 +223,7 @@ namespace MDPro3
                 if(installVersion.Length > 5 || !installVersion.EndsWith("0"))
                 {
                     title = "不能直接安装更新包。Can not install update apk directly.";
-                    Directory.Delete("Data");
+                    Directory.Delete(Program.dataPath);
                     return false;
                 }
                 else

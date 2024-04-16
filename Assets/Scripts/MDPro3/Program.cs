@@ -3,14 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
-using UnityEngine.UI;
 using MDPro3.YGOSharp;
-using Ionic.Zip;
 using UnityEngine.EventSystems;
 using UnityEngine.AddressableAssets;
 using MDPro3.Net;
-using System.Threading;
-using System.Runtime.InteropServices;
 
 namespace MDPro3
 {
@@ -55,6 +51,19 @@ namespace MDPro3
 
         #region State
         public static bool Running = true;
+        public static readonly string artPath = "Art";
+        public static readonly string altArtPath = "Art2";
+        public static readonly string cardPicPath = "CardGenerated";
+        public static readonly string dataPath = "Data";
+        public static readonly string localesPath = "Data/locales";
+        public static readonly string configPath = "Data/config.conf";
+        public static readonly string lflistPath = "Data/lflist.conf";
+        public static readonly string deckPath = "Deck";
+        public static readonly string expansionsPath = "Expansions";
+        public static readonly string puzzlePath = "Puzzle";
+        public static readonly string replayPath = "Replay";
+        public static readonly string diyPath = "DIY";
+        public static readonly string slash = "/";
         #endregion
 
         public static Program I()
@@ -79,18 +88,21 @@ namespace MDPro3
 
         void InitializeRest()
         {
-            ZipManager.Initialize();
-            if (!Directory.Exists("Data"))
-                Directory.CreateDirectory("Data");
-            Config.Initialize("Data/config.conf");
+            ZipHelper.Initialize();
+            if (!Directory.Exists(dataPath))
+                Directory.CreateDirectory(dataPath);
+            Config.Initialize(configPath);
             items.Initialize();
-            BanlistManager.Initialize("data/lflist.conf");
+            BanlistManager.Initialize(lflistPath);
             InitializeAllManagers();
             InitializeAllServants();
+        }
 
-
-            //new Thread(Server.Main).Start();
-            //new Thread(Client.Main).Start();
+        public void InitializeForDataChange()
+        {
+            ZipHelper.Initialize();
+            StringHelper.Initialize();
+            CardsManager.Initialize();
         }
 
         private void InitializeAllManagers()
@@ -129,6 +141,7 @@ namespace MDPro3
 
         #region MonoBehaviors
 
+        public static string tempFolder = "TempFolder";
         public static string root = "StandaloneWindows64/";
         void Awake()
         {
@@ -284,7 +297,20 @@ namespace MDPro3
             if (currentSubServant != null)
                 currentSubServant.OnReturn();
             else
+            {
+                if(currentServant == null)
+                {
+                    foreach(var servant in  servants)
+                        if (servant.isShowed)
+                        {
+                            currentServant = servant;
+                            break;
+                        }
+                }
+                if (currentServant == null)
+                    currentServant = cutin;
                 currentServant.OnReturn();
+            }
         }
 
         public void ExitDuel()
@@ -298,8 +324,34 @@ namespace MDPro3
         private void OnApplicationQuit()
         {
             Running = false;
-            TcpHelper.tcpClient?.Close();
+            ClearCache();
+            TcpHelper.tcpClient = null;
             YgoServer.StopServer();
+        }
+
+        void ClearCache()
+        {
+#if UNITY_ANDROID && !UNITY_EDITOR
+            AndroidJavaClass unityPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
+            AndroidJavaObject currentActivity = unityPlayer.GetStatic<AndroidJavaObject>("currentActivity");
+            AndroidJavaObject cacheDir = currentActivity.Call<AndroidJavaObject>("getCacheDir");
+            string cachePath = cacheDir.Call<string>("getAbsolutePath");
+            ClearDirectoryRecursively(new DirectoryInfo(cachePath));
+#else
+            if (Directory.Exists(tempFolder))
+                Directory.Delete(tempFolder, true);
+#endif
+        }
+
+        void ClearDirectoryRecursively(DirectoryInfo directory)
+        {
+            foreach(var file in directory.GetFiles())
+                file.Delete();
+            foreach(var subDir in directory.GetDirectories())
+            {
+                ClearDirectoryRecursively(subDir);
+                subDir.Delete();
+            }
         }
     }
 }

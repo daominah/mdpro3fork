@@ -59,6 +59,8 @@ namespace MDPro3
         public ElementObjectManager myExtra;
         public ElementObjectManager opDeck;
         public ElementObjectManager opExtra;
+        public Material myProtector;
+        public Material opProtector;
 
         GameObject timer;
         ElementObjectManager timerManager;
@@ -506,11 +508,11 @@ namespace MDPro3
                 #endregion
 
                 #region Hot Key
-                if (Input.GetKeyDown(KeyCode.Q))
+                if (Input.GetKeyDown(KeyCode.Q) && !Program.I().room.chatOn)
                     CameraZoomToMate0();
-                if (Input.GetKeyDown(KeyCode.E))
+                if (Input.GetKeyDown(KeyCode.E) && !Program.I().room.chatOn)
                     CameraZoomToMate1();
-                if (Input.GetKeyDown(KeyCode.W))
+                if (Input.GetKeyDown(KeyCode.W) && !Program.I().room.chatOn)
                     CameraBack();
 
                 if (Program.InputGetMouse1Up || Input.GetKey(KeyCode.Escape))
@@ -527,17 +529,17 @@ namespace MDPro3
                     foreach (var line in targetLines)
                         Destroy(line);
                 }
-                if (Input.GetKeyDown(KeyCode.A))
+                if (Input.GetKeyDown(KeyCode.A) && !Program.I().room.chatOn)
                 {
                     chainCondition = ChainCondition.Smart;
                     OnTiming();
                 }
-                if (Input.GetKeyDown(KeyCode.S))
+                if (Input.GetKeyDown(KeyCode.S) && !Program.I().room.chatOn)
                 {
                     chainCondition = ChainCondition.All;
                     OnTiming();
                 }
-                if (Input.GetKeyDown(KeyCode.D))
+                if (Input.GetKeyDown(KeyCode.D) && !Program.I().room.chatOn)
                 {
                     chainCondition = ChainCondition.No;
                     OnTiming();
@@ -777,16 +779,20 @@ namespace MDPro3
 
 
             //场地
-            var path = Program.items.CodeToPath(Config.Get(condition.ToString() + "Field0", Program.items.mats[0].id.ToString()));
+            var path = Program.items.CodeToPath(
+                Config.Get(condition.ToString() + "Field0", 
+                Program.items.mats[0].id.ToString()), Items.ItemType.Mat);
             if (deck != null)
-                path = Program.items.CodeToPath(deck.Field[0].ToString());
+                path = Program.items.CodeToPath(deck.Field[0].ToString(), Items.ItemType.Mat);
             var enumerator = ABLoader.LoadFromFileAsync(path + "_near");
             while (enumerator.MoveNext())
                 yield return null;
             field0 = enumerator.Current;
             field0.transform.SetParent(Program.I().container_3D, false);
 
-            enumerator = ABLoader.LoadFromFileAsync(Program.items.CodeToPath(Config.Get(condition.ToString() + "Field1", Program.items.mats[0].id.ToString())) + "_far");
+            enumerator = ABLoader.LoadFromFileAsync(
+                Program.items.CodeToPath(Config.Get(condition.ToString() + "Field1", 
+                Program.items.mats[0].id.ToString()), Items.ItemType.Mat) + "_far");
             while (enumerator.MoveNext())
                 yield return null;
             field1 = enumerator.Current;
@@ -814,15 +820,19 @@ namespace MDPro3
             Transform pos_Avatar_far = Tools.GetChildByName(field1.transform, "POS_Avatar_far");
 
             //墓地
-            path = Program.items.CodeToPath(Config.Get(condition.ToString() + "Grave0", Program.items.graves[0].id.ToString()));
+            path = Program.items.CodeToPath(
+                Config.Get(condition.ToString() + "Grave0", 
+                Program.items.graves[0].id.ToString()), Items.ItemType.Grave);
             if (deck != null)
-                path = Program.items.CodeToPath(deck.Grave[0].ToString());
+                path = Program.items.CodeToPath(deck.Grave[0].ToString(), Items.ItemType.Grave);
             enumerator = ABLoader.LoadFromFileAsync(path + "_near");
             while (enumerator.MoveNext())
                 yield return null;
             grave0 = enumerator.Current;
             grave0.transform.SetParent(pos_Grave_near, false);
-            enumerator = ABLoader.LoadFromFileAsync(Program.items.CodeToPath(Config.Get(condition.ToString() + "Grave1", Program.items.graves[0].id.ToString())) + "_far");
+            enumerator = ABLoader.LoadFromFileAsync(
+                Program.items.CodeToPath(Config.Get(condition.ToString() + "Grave1", 
+                Program.items.graves[0].id.ToString()), Items.ItemType.Grave) + "_far");
             while (enumerator.MoveNext())
                 yield return null;
             grave1 = enumerator.Current;
@@ -842,15 +852,19 @@ namespace MDPro3
             graves.Add(g1);
 
             //站台
-            path = Program.items.CodeToPath(Config.Get(condition.ToString() + "Stand0", Program.items.stands[0].id.ToString()));
+            path = Program.items.CodeToPath(
+                Config.Get(condition.ToString() + "Stand0", 
+                Program.items.stands[0].id.ToString()), Items.ItemType.Stand);
             if (deck != null)
-                path = Program.items.CodeToPath(deck.Stand[0].ToString());
+                path = Program.items.CodeToPath(deck.Stand[0].ToString(), Items.ItemType.Stand);
             enumerator = ABLoader.LoadFromFileAsync(path + "_near");
             while (enumerator.MoveNext())
                 yield return null;
             stand0 = enumerator.Current;
             stand0.transform.SetParent(pos_AvatarStand_near, false);
-            enumerator = ABLoader.LoadFromFileAsync(Program.items.CodeToPath(Config.Get(condition.ToString() + "Stand1", Program.items.stands[0].id.ToString())) + "_far");
+            enumerator = ABLoader.LoadFromFileAsync(
+                Program.items.CodeToPath(Config.Get(condition.ToString() + "Stand1", 
+                Program.items.stands[0].id.ToString()), Items.ItemType.Stand) + "_far");
             while (enumerator.MoveNext())
                 yield return null;
             stand1 = enumerator.Current;
@@ -1015,54 +1029,34 @@ namespace MDPro3
                 deckMat = ie.Current;
             }
 
+            if (condition == Condition.Duel)
+                myProtector = deckMat;
+            else if (condition == Condition.Watch)
+                myProtector = Appearance.watchProtector0;
+            else if (condition == Condition.Replay)
+                myProtector = Appearance.replayProtector0;
+
             foreach (var r in myDeck.transform.GetComponentsInChildren<Renderer>(true))
-            {
                 if (r.name.EndsWith("back"))
-                {
-                    if (condition == Condition.Duel)
-                        r.material = deckMat;
-                    else if (condition == Condition.Watch)
-                        r.material = Appearance.watchProtector0;
-                    else if (condition == Condition.Replay)
-                        r.material = Appearance.replayProtector0;
-                }
-            }
+                    r.material = myProtector;
             foreach (var r in myExtra.transform.GetComponentsInChildren<Renderer>(true))
-            {
                 if (r.name.EndsWith("back"))
-                {
-                    if (condition == Condition.Duel)
-                        r.material = deckMat;
-                    else if (condition == Condition.Watch)
-                        r.material = Appearance.watchProtector0;
-                    else if (condition == Condition.Replay)
-                        r.material = Appearance.replayProtector0;
-                }
-            }
+                    r.material = myProtector;
+
+            if (condition == Condition.Duel)
+                opProtector = Appearance.duelProtector1;
+            else if (condition == Condition.Watch)
+                opProtector = Appearance.watchProtector1;
+            else if (condition == Condition.Replay)
+                opProtector = Appearance.replayProtector1;
+
             foreach (var r in opDeck.transform.GetComponentsInChildren<Renderer>(true))
-            {
                 if (r.name.EndsWith("back"))
-                {
-                    if (condition == Condition.Duel)
-                        r.material = Appearance.duelProtector1;
-                    else if (condition == Condition.Watch)
-                        r.material = Appearance.watchProtector1;
-                    else if (condition == Condition.Replay)
-                        r.material = Appearance.replayProtector1;
-                }
-            }
+                    r.material = opProtector;
             foreach (var r in opExtra.transform.GetComponentsInChildren<Renderer>(true))
-            {
                 if (r.name.EndsWith("back"))
-                {
-                    if (condition == Condition.Duel)
-                        r.material = Appearance.duelProtector1;
-                    else if (condition == Condition.Watch)
-                        r.material = Appearance.watchProtector1;
-                    else if (condition == Condition.Replay)
-                        r.material = Appearance.replayProtector1;
-                }
-            }
+                    r.material = opProtector;
+
             myDeck.gameObject.SetActive(false);
             myExtra.gameObject.SetActive(false);
             opDeck.gameObject.SetActive(false);
@@ -2277,19 +2271,7 @@ namespace MDPro3
                         codesInChain.Add(code);
                         controllerInChain.Add(card.p.controller);
                         card.AnimationActivate();
-                        float extraSleep = 0f;
-                        if (CheckChain())
-                        {
-                            if (cardsInChain.Count > 1)
-                                extraSleep = 1.44f;
-                            else if (cardsInChain.Count > 3)
-                                extraSleep = 2.1f;
-                        }
-                        DOTween.To(v => { }, 0, 0, 1f).OnComplete(() =>
-                        {
-                            ShowChainStack();
-                        });
-                        Sleep(100 + (int)(extraSleep * 100));
+                        Sleep(100);
                         ES_hint = InterString.Get("「[?]」被发动时", card.GetData().Name);
                     }
                     if (gps.controller == 0)
@@ -2308,7 +2290,16 @@ namespace MDPro3
                 case GameMessage.Chained:
                     var currentChainCard = cardsInChain[cardsInChain.Count - 1];
                     currentChainCard.AddChain(cardsInChain.Count);
-                    Sleep(10);
+                    ShowChainStack();
+                    int sleepIn100 = 0;
+                    if (CheckChain())
+                    {
+                        if (cardsInChain.Count > 1)
+                            sleepIn100 = 144;
+                        if (cardsInChain.Count > 3)
+                            sleepIn100 = 210;
+                    }
+                    Sleep(sleepIn100);
                     break;
                 case GameMessage.ChainSolving:
                     var id = (int)r.ReadByte();
@@ -2326,7 +2317,7 @@ namespace MDPro3
 
                             if (needPlay && card.GetData().Id != codesInChain[id - 1])
                                 needPlay = false;
-                            if (needPlay && (negatedInChain.Contains(id) || card.disabled))
+                            if (needPlay && (negatedInChain.Contains(id) || card.disabled || card.negated))
                             {
                                 needPlay = false;
                                 card.negated = true;
@@ -4238,10 +4229,10 @@ namespace MDPro3
                     switch (handleFlag)
                     {
                         case 1:
-                            ShowPopupSelectCard(InterString.Get("选择效果发动。"), chainCards, 1, 1, true, false);
+                            ShowPopupSelectCard(InterString.Get("[?]，是否连锁？", ES_hint), chainCards, 1, 1, true, false);
                             break;
                         case 3:
-                            ShowPopupSelectCard(InterString.Get("选择必发效果发动。"), chainCards, 1, 1, false, false);
+                            ShowPopupSelectCard(InterString.Get("[?]，请选择效果发动。", ES_hint), chainCards, 1, 1, false, false);
                             break;
                         default:
                             OnResend();
@@ -5372,7 +5363,7 @@ namespace MDPro3
             hintObj.SetActive(true);
             if (currentMessage == GameMessage.SelectCard
                 || currentMessage == GameMessage.SelectCounter)
-                hintText.text = fieldHint + ": " + 0 + "/" + fieldMax;
+                hintText.text = fieldHint + ": " + 0 + Program.slash + fieldMax;
             else if(currentMessage == GameMessage.SelectSum)
             {
                 if (!ES_overFlow)
@@ -5383,7 +5374,7 @@ namespace MDPro3
                                     place.CardInThisZoneSelectable();
                                 else
                                     place.CardInThisZoneUnselectable();
-                hintText.text = fieldHint + ": " + GetSelectLevelSum(cardsMustBeSelected)[0] + "/" + ES_level;
+                hintText.text = fieldHint + ": " + GetSelectLevelSum(cardsMustBeSelected)[0] + Program.slash + ES_level;
             }
             else
                 if(!string.IsNullOrEmpty(fieldHint))
@@ -5427,13 +5418,13 @@ namespace MDPro3
                     }
                 }
                 RefreshButton();
-                hintText.text = fieldHint + ": " + GetSelectLevelSum(selected)[0] + "/" + ES_level;
+                hintText.text = fieldHint + ": " + GetSelectLevelSum(selected)[0] + Program.slash + ES_level;
             }
             else if (currentMessage == GameMessage.SelectCounter)
             {
                 fieldCounterCount++;
                 card.counterSelected++;
-                hintText.text = fieldHint + ": " + fieldCounterCount + "/" + fieldMax;
+                hintText.text = fieldHint + ": " + fieldCounterCount + Program.slash + fieldMax;
 
                 if (fieldCounterCount == ES_min)
                 {
@@ -5479,7 +5470,7 @@ namespace MDPro3
                     RefreshButton();
                 }
                 if (currentMessage == GameMessage.SelectCard)
-                    hintText.text = fieldHint + ": " + selected.Count + "/" + fieldMax;
+                    hintText.text = fieldHint + ": " + selected.Count + Program.slash + fieldMax;
             }
         }
 
@@ -5552,7 +5543,7 @@ namespace MDPro3
                 foreach (var card in cardsInSelection)
                     card.counterSelected = 0;
                 fieldCounterCount = 0;
-                hintText.text = fieldHint + ": " + 0 + "/" + fieldMax;
+                hintText.text = fieldHint + ": " + 0 + Program.slash + fieldMax;
                 foreach (var place in places)
                     if (place.cardSelecting)
                         place.CardInThisZoneSelectable();
@@ -5658,6 +5649,50 @@ namespace MDPro3
                 popupInput.validationType = type;
                 popupInput.Show();
             };
+        }
+
+        public void SetDeckTop(GameCard card)
+        {
+            var deck = card.p.controller == 0 ? myExtra : opExtra;
+            Material targetMat = null;
+            if ((card.p.position & (uint)CardPosition.FaceUp) > 0)
+                targetMat = card.GetMaterial();
+            if (targetMat == null)
+                targetMat = card.p.controller == 0 ? myProtector : opProtector;
+            foreach (var r in deck.transform.GetComponentsInChildren<Renderer>(true))
+                if (r.name.EndsWith("back"))
+                    r.material = targetMat;
+        }
+        public IEnumerator UpdateDeckTop(uint controller, GameCard card = null)
+        {
+            var deck = controller == 0 ? myExtra : opExtra;
+            GameCard topCard = card;
+            if (topCard == null)
+            {
+                var extraCount = GetLocationCardCount(CardLocation.Extra, controller);
+                foreach (var c in cards)
+                    if (c.p.controller == controller)
+                        if ((c.p.location & (uint)CardLocation.Extra) > 0)
+                            if ((c.p.position & (uint)CardPosition.FaceUp) > 0)
+                                if (c.p.sequence == extraCount - 1)
+                                {
+                                    topCard = c;
+                                    break;
+                                }
+            }
+            var targetMat = controller == 0 ? myProtector : opProtector;
+            if(topCard != null)
+            {
+                targetMat = TextureManager.GetCardMaterial(topCard.GetData().Id, true);
+                var ie = Program.I().texture_.LoadCardAsync(topCard.GetData().Id, true);
+                StartCoroutine(ie);
+                while (ie.MoveNext())
+                    yield return null;
+                targetMat.mainTexture = ie.Current;
+            }
+            foreach (var r in deck.transform.GetComponentsInChildren<Renderer>(true))
+                if (r.name.EndsWith("back"))
+                    r.material = targetMat;
         }
 
         public void RefreshBgState()
@@ -6345,6 +6380,11 @@ namespace MDPro3
 
             if(chain > 1)
             {
+                if(chain != cardsInChain.Count)
+                {
+                    manager.GetComponent<PlayableDirector>().time = 0.83f;
+                    manager.GetElement("ResolveTextSet").SetActive(false);
+                }
                 if (controllerInChain[chain - 1] == controllerInChain[chain - 2])
                 {
                     manager.GetElement("ChainStraightCLtoDR").SetActive(false);
@@ -6423,10 +6463,10 @@ namespace MDPro3
 
             if (chain == 1)
                 return 0.95f;
-            else if (chain == 2)
+            else if (chain == cardsInChain.Count)
                 return 1.84f;
             else
-                return 1.84f;
+                return 1f;
         }
 
         void ChangeChainNumber(SpriteRenderer digit, SpriteRenderer one, SpriteRenderer ten, int number)

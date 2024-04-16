@@ -98,7 +98,7 @@ namespace MDPro3.UI
                                 mono.SelectableThis();
                             else
                                 mono.UnselectableThis();
-                    title.text = hint + "-" + OcgCore.GetSelectLevelSum(GetSelected())[0].ToString() + "/" + core.ES_level;
+                    title.text = hint + "-" + OcgCore.GetSelectLevelSum(GetSelected())[0].ToString() + Program.slash + core.ES_level;
                 }
                 else if (core.currentMessage == GameMessage.SortCard
                 || core.currentMessage == GameMessage.SortChain)
@@ -161,7 +161,7 @@ namespace MDPro3.UI
                     else
                         btnConfirm.GetComponent<ButtonPress>().SetInteractable(false);
                 }
-                title.text = hint + "-" + selectedSum[0].ToString() + "/" + core.ES_level;
+                title.text = hint + "-" + selectedSum[0].ToString() + Program.slash + core.ES_level;
             }
             else
             {
@@ -182,7 +182,7 @@ namespace MDPro3.UI
                         mono.SelectableThis();
                 }
                 if (core.currentMessage == GameMessage.SelectCard)
-                    title.text = hint + "-" + GetSelected().Count + "/" + max.ToString();
+                    title.text = hint + "-" + GetSelected().Count + Program.slash + max.ToString();
             }
         }
 

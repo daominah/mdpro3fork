@@ -71,7 +71,7 @@ namespace MDPro3
             }
             else
             {
-                foreach (var zip in ZipManager.zips)
+                foreach (var zip in ZipHelper.zips)
                     if (zip.ContainsEntry(fileName2))
                     {
                         var ms = new MemoryStream();

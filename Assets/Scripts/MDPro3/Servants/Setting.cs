@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -128,6 +129,14 @@ namespace MDPro3
         public Text replayCoinValue;
         public Button replayAutoInfo;
         public Text replayAutoInfoValue;
+        [Header("Port")]
+        public Button import;
+        public Button exportDeck;
+        public Button exportReplay;
+        public Button exportPicture;
+        public Button clearPicture;
+        public Button clearExpansions;
+
         public override void Initialize()
         {
             depth = 1;
@@ -195,6 +204,12 @@ namespace MDPro3
             watchAutoInfo.onClick.AddListener(OnWatchAutoInfoClick);
             replayAutoInfo.onClick.AddListener(OnReplayAutoInfoClick);
             timing.onClick.AddListener(OnTimingClick);
+            import.onClick.AddListener(OnImport);
+            exportDeck.onClick.AddListener(OnExportDecks);
+            exportReplay.onClick.AddListener(OnExportReplays);
+            exportPicture.onClick.AddListener(OnExportPictures);
+            clearPicture.onClick.AddListener(OnClearPictures);
+            clearExpansions.onClick.AddListener(OnClearExpansions);
 
             bgmVol.value = int.Parse(Config.Get("BgmVol", "700")) / (float)1000;
             seVol.value = int.Parse(Config.Get("SeVol", "700")) / (float)1000;
@@ -659,10 +674,10 @@ namespace MDPro3
             }
 
             List<string> selections = new List<string>
-        {
-            InterString.Get("语言")
-        };
-            DirectoryInfo[] infos = new DirectoryInfo("data/locales").GetDirectories();
+            {
+                InterString.Get("语言")
+            };
+            DirectoryInfo[] infos = new DirectoryInfo(Program.localesPath).GetDirectories();
             foreach (DirectoryInfo info in infos)
                 selections.Add(InterString.Get(info.Name));
             UIManager.ShowPopupSelection(selections, OnLanguageSelection);
@@ -1142,6 +1157,76 @@ namespace MDPro3
                 timingValue.text = InterString.Get("开");
         }
 
+        void OnImport()
+        {
+            if (Program.I().ocgcore.isShowed)
+            {
+                MessageManager.Cast(InterString.Get("决斗中不能进行此操作。"));
+                return;
+            }
+
+            PortHelper.ImportFiles();
+        }
+        void OnExportDecks()
+        {
+            PortHelper.ExportAllDecks();
+        }
+        void OnExportReplays()
+        {
+            PortHelper.ExportAllReplays();
+        }
+        void OnExportPictures()
+        {
+            PortHelper.ExportAllPictures();
+        }
+        void OnClearPictures()
+        {
+            if (Program.I().ocgcore.isShowed)
+            {
+                MessageManager.Cast(InterString.Get("决斗中不能进行此操作。"));
+                return;
+            }
+
+            var selections = new List<string>
+            {
+                InterString.Get("确定清空"),
+                InterString.Get("是否确认删除所有导入的卡图？"),
+                InterString.Get("确认"),
+                InterString.Get("取消")
+            };
+            UIManager.ShowPopupYesOrNo(selections, () =>
+            {
+                if (!Directory.Exists(Program.altArtPath))
+                    Directory.CreateDirectory(Program.altArtPath);
+                foreach (var file in Directory.GetFiles(Program.altArtPath))
+                    File.Delete(file);
+            }, null);
+        }
+        void OnClearExpansions()
+        {
+            if (Program.I().ocgcore.isShowed)
+            {
+                MessageManager.Cast(InterString.Get("决斗中不能进行此操作。"));
+                return;
+            }
+
+            var selections = new List<string>
+            {
+                InterString.Get("确定清空"),
+                InterString.Get("是否确认删除所有导入的扩展卡包？"),
+                InterString.Get("确认"),
+                InterString.Get("取消")
+            };
+            UIManager.ShowPopupYesOrNo(selections, () =>
+            {
+                ZipHelper.Dispose();
+                if(!Directory.Exists(Program.expansionsPath))
+                    Directory.CreateDirectory(Program.expansionsPath);
+                foreach (var file in Directory.GetFiles(Program.expansionsPath))
+                    File.Delete(file);
+                Program.I().InitializeForDataChange();
+            }, null);
+        }
         #endregion
 
         public void OnAboutGame()

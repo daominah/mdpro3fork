@@ -405,7 +405,11 @@ namespace MDPro3
             if (Program.I().ocgcore.isShowed && player < 4)
             {
                 if (mode != 2)
-                    player = Program.I().ocgcore.LocalPlayer(player);
+                {
+                    if (Program.I().ocgcore.isFirst && selfType == 1
+                        || !Program.I().ocgcore.isFirst && selfType == 0)
+                        player = (player + 1) % 2;
+                }
                 else
                 {
                     if (Program.I().ocgcore.isFirst && selfType > 1

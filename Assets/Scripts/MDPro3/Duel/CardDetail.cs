@@ -151,18 +151,16 @@ namespace MDPro3
                 manager.GetElement<Image>("Limit").sprite = TextureManager.container.banned;
         }
 
-        readonly string savePath = "CardGenerated";
-
         public void GenerateCard()
         {
-            if (!Directory.Exists(savePath))
-                Directory.CreateDirectory(savePath);
-            Texture2D texture = (Texture2D)manager.GetElement<RawImage>("Card").material.mainTexture;
-            var picture = texture.EncodeToPNG();
-            var fullPath = savePath + "/" + code + ".png";
+            if (!Directory.Exists(Program.cardPicPath))
+                Directory.CreateDirectory(Program.cardPicPath);
             try
             {
-                File.WriteAllBytes(savePath + "/" + code + ".png", picture);
+                Texture2D texture = (Texture2D)manager.GetElement<RawImage>("Card").texture;
+                var picture = texture.EncodeToPNG();
+                var fullPath = Program.cardPicPath + Program.slash + code + ".png";
+                File.WriteAllBytes(Program.cardPicPath + Program.slash + code + ".png", picture);
                 MessageManager.Cast(InterString.Get("¿¨Í¼ÒÑ±£´æÓÚ£º[?]", fullPath));
             }
             catch
