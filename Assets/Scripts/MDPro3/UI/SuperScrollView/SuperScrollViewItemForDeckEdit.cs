@@ -150,7 +150,7 @@ namespace MDPro3.UI
             for (int i = 0; i < transform.GetSiblingIndex(); i++)
                 yield return null;
 
-            var ie = Program.I().texture_.LoadCardAsync(code);
+            var ie = Program.I().texture_.LoadCardAsync(code, true);
             StartCoroutine(ie);
             while (ie.MoveNext())
                 yield return null;

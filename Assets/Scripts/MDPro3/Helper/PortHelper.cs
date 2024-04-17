@@ -44,17 +44,10 @@ namespace MDPro3
 #if UNITY_ANDROID && !UNITY_EDITOR
             NativeFilePicker.ExportMultipleFiles(filePaths, ExportResult);
 #else
-            StandaloneFileBrowser.OpenFolderPanelAsync("请选择导出目录", "", false, (string[] paths) =>
+            StandaloneFileBrowser.OpenFolderPanelAsync(InterString.Get("请选择导出目录"), "", false, (string[] paths) =>
             {
                 ExportFiles(paths, filePaths);
             });
-
-            //var config = new FolderDialogConfiguration
-            //{
-            //    Title = InterString.Get("请选择导出目录"),
-            //};
-            //var result = FileBrowser.FileBrowserService.OpenFolderDialog(config);
-            //ExportFiles(result, filePaths);
 #endif
         }
 
@@ -74,25 +67,6 @@ namespace MDPro3
 
         static void ChooseFiles()
         {
-            //var config = new FileDialogConfiguration
-            //{
-            //    Title = InterString.Get("请选择需要导入的文件"),
-            //    FileDialogType = FileBrowser.FileDialogType.Open,
-            //    Multiselect = true,
-            //    ExtensionFilters = new[]
-            //    {
-            //        new ExtensionFilter(InterString.Get("所有文件"), "*"),
-            //        new ExtensionFilter(InterString.Get("卡组码文件"), "ydk"),
-            //        new ExtensionFilter(InterString.Get("回放文件"), "yrp", "yrp3d"),
-            //        new ExtensionFilter(InterString.Get("扩展卡文件"), "ypk"),
-            //        new ExtensionFilter(InterString.Get("数据库文件"), "cdb"),
-            //        new ExtensionFilter(InterString.Get("字段文件"), "conf"),
-            //        new ExtensionFilter(InterString.Get("图片文件"), "png", "jpg")
-            //    }
-            //};
-            //var result = FileBrowser.FileBrowserService.OpenFileDialog(config);
-            //CopyFilesToGame(result);
-
             var extensions = new[]
             {
                 new ExtensionFilter(InterString.Get("所有文件"), "*"),

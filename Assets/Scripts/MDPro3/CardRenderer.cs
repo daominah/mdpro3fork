@@ -4,6 +4,7 @@ using UnityEngine.AddressableAssets;
 using UnityEngine.UI;
 using MDPro3.YGOSharp;
 using MDPro3.YGOSharp.OCGWrapper.Enums;
+using System;
 
 namespace MDPro3
 {
@@ -491,13 +492,12 @@ namespace MDPro3
                 return string.Empty;
             var language = Config.Get("Language", "zh-CN");
 
-            //Remove Space
             if (language == "ja-JP")
             {
-                description = description.Replace("\t\r\n", "\r\r\r");
-                description = description.Replace("\r\n¡ñ", "¡ñ¡ñ¡ñ");
-                description = description.Replace("\r\n", string.Empty);
-                description = description.Replace("\r\r\r", "\r\n");
+                description = description.Replace("\t", "\f\f\f");
+                description = description.Replace("\n¡ñ", "¡ñ¡ñ¡ñ");
+                description = description.Replace("\n", string.Empty);
+                description = description.Replace("\f\f\f", "\r\n");
                 description = description.Replace("¡ñ¡ñ¡ñ", "\r\n¡ñ");
             }
             else
@@ -524,12 +524,8 @@ namespace MDPro3
             description = description.Replace(Program.slash, bigSlash);
             if (language != "en-US" && language != "es-ES")
                 description = description.Replace(" ", "\u00A0");
-
             description = description.Replace("\r\n\r\n", "\r\n");
-
             return description;
         }
-
-
     }
 }

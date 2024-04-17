@@ -105,11 +105,11 @@ namespace MDPro3.UI
         IEnumerator RefreshCard()
         {
             GetComponent<RawImage>().texture = TextureManager.container.unknownCard.texture;
-            var ie = Program.I().texture_.LoadCardAsync(code);
+            var ie = Program.I().texture_.LoadCardAsync(code, true);
             while (ie.MoveNext())
                 yield return null;
             GetComponent<RawImage>().texture = ie.Current;
-            GetComponent<RawImage>().material = TextureManager.GetCardMaterial(code);
+            GetComponent<RawImage>().material = TextureManager.GetCardMaterial(code, true);
         }
 
         public void RefreshLimitIcon()
