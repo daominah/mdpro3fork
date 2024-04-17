@@ -110,6 +110,7 @@ namespace MDPro3
             roomPlayers.Add(player2);
             roomPlayers.Add(player3);
         }
+
         public bool chatOn;
         public bool chatSwitching;
         public void SwitchChat(float moveTime)
@@ -342,18 +343,20 @@ namespace MDPro3
             TcpHelper.CtosMessage_Response(buffer);
         }
 
-        public void OnSubmit(string chat)
-        {
-            if (chat != string.Empty)
-                TcpHelper.CtosMessage_Chat(chat);
-        }
-
         public void OnChat(string content)
         {
             if (content == string.Empty)
                 return;
-            OnSubmit(content);
+            TcpHelper.CtosMessage_Chat(content);
             chatInput.text = string.Empty;
+        }
+
+        public void OnSend()
+        {
+            if (chatInput.text == string.Empty)
+                return;
+            AudioManager.PlaySE("SE_MENU_DECIDE");
+            OnChat(chatInput.text);
         }
 
         public void OnToDuel()

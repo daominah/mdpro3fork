@@ -544,8 +544,10 @@ namespace MDPro3
                     chainCondition = ChainCondition.No;
                     OnTiming();
                 }
-                if (Input.GetKeyDown(KeyCode.Return)
+                if ((Input.GetKeyDown(KeyCode.Return)
                     || Input.GetKeyDown(KeyCode.KeypadEnter))
+                    && (!Program.I().room.chatInput.isFocused
+                    || Program.I().room.chatInput.text == string.Empty))
                 {
                     ToChat();
                 }
@@ -1540,8 +1542,8 @@ namespace MDPro3
             var length_of_message = r.BaseStream.Length;
             BinaryMaster binaryMaster;
             List<string> selections;
-            if ((GameMessage)p.Function != GameMessage.UpdateData)
-                Debug.Log("----------" + (GameMessage)p.Function);
+            //if ((GameMessage)p.Function != GameMessage.UpdateData)
+            //    Debug.Log("----------" + (GameMessage)p.Function);
             //else
             //    Debug.Log("----------" + (GameMessage)p.Function);
             switch ((GameMessage)p.Function)
