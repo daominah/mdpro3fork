@@ -340,13 +340,8 @@ namespace MDPro3.UI
                 case GameMessage.SortCard:
                 case GameMessage.SortChain:
                     var bytes = new byte[monos.Count];
-                    foreach (var mono in monos)
-                        for (int i = 0; i < cards.Count; i++)
-                            if (mono.card == cards[i])
-                            {
-                                bytes[i] = (byte)i;
-                                break;
-                            }
+                    for(int i = 0; i < monos.Count; i++)
+                        bytes[i] = (byte)(monos[i].GetOrder() - 1);
                     binaryMaster = new BinaryMaster();
                     binaryMaster.writer.Write(bytes);
                     Program.I().ocgcore.SendReturn(binaryMaster.Get());

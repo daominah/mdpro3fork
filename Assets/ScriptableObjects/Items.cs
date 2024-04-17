@@ -1,7 +1,9 @@
+using MDPro3.YGOSharp;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Text.RegularExpressions;
 using UnityEngine;
 
 namespace MDPro3
@@ -9,6 +11,7 @@ namespace MDPro3
     [CreateAssetMenu]
     public class Items : ScriptableObject
     {
+        public static string nullString = "coming soon";
         [Serializable]
         public struct Item
         {
@@ -147,15 +150,60 @@ namespace MDPro3
         {
             names.TryGetValue(code, out var returnValue);
             if (string.IsNullOrEmpty(returnValue))
-                returnValue = "coming soon";
+                returnValue = nullString;
             return returnValue;
         }
         string GetDescription(int code)
         {
             descriptions.TryGetValue(code, out var returnValue);
-            return returnValue;
+            if (string.IsNullOrEmpty(returnValue))
+                return nullString;
+            returnValue = returnValue.Replace(" get=\'name\'", string.Empty);
+            string pattern = @"<card mrk='(\d+)'/>";
+            return Regex.Replace(returnValue, pattern, EvaluatorGetNameFromNumber);
         }
-
+        string EvaluatorGetNameFromNumber(Match match)
+        {
+            string numberString = match.Groups[1].Value;
+            int cardCode = 0;
+            switch (numberString)
+            {
+                case "18799":
+                    cardCode = 27015862;
+                    break;
+                case "14648":
+                    cardCode = 40441990;
+                    break;
+                case "15250":
+                    cardCode = 20129614;
+                    break;
+                case "13670":
+                    cardCode = 26077387;
+                    break;
+                case "19196":
+                    cardCode = 80845034;
+                    break;
+                case "13982":
+                    cardCode = 79698395;
+                    break;
+                case "10191":
+                    cardCode = 14001430;
+                    break;
+                case "10793":
+                    cardCode = 99795159;
+                    break;
+                case "15573":
+                    cardCode = 34572613;
+                    break;
+                case "18003":
+                    cardCode = 25550531;
+                    break;
+                case "16200":
+                    cardCode = 24639891;
+                    break;
+            }
+            return CardsManager.Get(cardCode).Name;
+        }
 
         public string WallpaperCodeToPath(string code)
         {

@@ -1716,7 +1716,7 @@ namespace MDPro3
             }
         }
 
-        public void AnimationConfirm()
+        public void AnimationConfirm(int id)
         {
             if (!ThisLocationShouldHaveModel(p))
             {
@@ -1724,15 +1724,16 @@ namespace MDPro3
                 ModelAt(p);
             }
             inAnimation = true;
-
-            AudioManager.PlaySE("SE_CARDVIEW_02");
-
             var offset = manager.GetElement<Transform>("Offset");
             var offsetPosition = offset.localPosition;
             var turn = manager.GetElement<Transform>("Turn");
             var turnEulerAngles = turn.localEulerAngles;
             var sequence = DOTween.Sequence();
-            sequence.Append(offset.DOLocalMove(new Vector3(0, 2, 3), 0.1f));
+            sequence.AppendInterval(id);
+            sequence.Append(offset.DOLocalMove(new Vector3(0, 2, 3), 0.1f).OnStart(() => 
+            {
+                AudioManager.PlaySE("SE_CARDVIEW_02");
+            }));
             sequence.Join(turn.DOLocalRotate(Vector3.zero, 0.1f).OnComplete(() =>
             {
                 var highlight = ABLoader.LoadFromFile("Effects/other/fxp_card_decide_001", true);
