@@ -1219,10 +1219,10 @@ namespace MDPro3
         private string ES_turnString = "";
 
         public bool duelEnded;
-        int summonedMonsterController;
-        int spSummonedMonsterController;
         //For single duel end
         //Program.I().room.duelEnded: For match End;
+
+        bool needDamageResponseInstant;
 
         public void CoreReset()
         {
@@ -1252,6 +1252,7 @@ namespace MDPro3
             surrended = false;
             deckReserved = false;
             cantCheckGrave = false;
+            needDamageResponseInstant = false;
             if (condition == Condition.Replay)
             {
                 replayButtons.SetActive(true);
@@ -1447,7 +1448,10 @@ namespace MDPro3
                 case GameMessage.ChainDisabled:
                     return true;
                 case GameMessage.Damage:
-                    return false;
+                    if (needDamageResponseInstant)
+                        return false;
+                    else
+                        return true;
                 case GameMessage.Hint:
                     int type = r.ReadChar();
                     if (type == 8) return true;
@@ -2719,7 +2723,8 @@ namespace MDPro3
                     break;
                 case GameMessage.Battle:
                     attackLine.SetActive(false);
-                    Destroy(duelFinalBlow, 0.5f);
+                    Destroy(duelFinalBlow);
+                    needDamageResponseInstant = true;
 
                     var gpsAttacker = r.ReadShortGPS();
                     r.ReadByte();
@@ -2951,6 +2956,10 @@ namespace MDPro3
                         quence.Append(attackTransform.DOMove(attackPosition, 0.3f).SetEase(Ease.InQuad));
                         quence.Join(Program.I().camera_.cameraMain.transform.DOMove(new Vector3(0, 95, -37), 0.3f));
                         quence.Join(attackTransform.DORotate(attackAngle, 0.3f).SetEase(Ease.InQuad));
+                        quence.OnComplete(() => 
+                        { 
+                            needDamageResponseInstant = false; 
+                        });
                         Sleep(125);
                     }
                     AudioManager.PlaySE(sound1);
@@ -4790,6 +4799,22 @@ namespace MDPro3
                     if (returnValue)
                         return true;
                 }
+            return returnValue;
+        }
+
+        public static bool TypeMatchReason(int type, int reason)
+        {
+            bool returnValue = false;
+            if ((type & (uint)CardType.Ritual) > 0 && (reason & (uint)CardReason.Ritual) > 0)
+                return true;
+            if ((type & (uint)CardType.Fusion) > 0 && (reason & (uint)CardReason.Fusion) > 0)
+                return true;
+            if ((type & (uint)CardType.Synchro) > 0 && (reason & (uint)CardReason.Synchro) > 0)
+                return true;
+            if ((type & (uint)CardType.Xyz) > 0 && (reason & (uint)CardReason.Xyz) > 0)
+                return true;
+            if ((type & (uint)CardType.Link) > 0 && (reason & (uint)CardReason.Link) > 0)
+                return true;
             return returnValue;
         }
 

@@ -136,14 +136,15 @@ namespace MDPro3
 
         void SyncSummonTimeline()
         {
-            if ((reason & (uint)CardReason.Ritual) > 0)
+            var type = CardsManager.Get(summonCard).Type;
+            if ((reason & (uint)CardReason.Ritual) > 0 && (type & (uint)CardType.Ritual) > 0)
                 StartCoroutine(SummonRitual());
-            else if ((reason & (uint)CardReason.Synchro) > 0)
+            else if ((reason & (uint)CardReason.Synchro) > 0 && (type & (uint)CardType.Synchro) > 0)
                 StartCoroutine(SummonSynchro());
-            else if ((reason & (uint)CardReason.Link) > 0)
-                StartCoroutine(SummonLink());
-            else if ((reason & (uint)CardReason.Xyz) > 0)
+            else if ((reason & (uint)CardReason.Xyz) > 0 && (type & (uint)CardType.Xyz) > 0)
                 StartCoroutine(SummonXyz());
+            else if ((reason & (uint)CardReason.Link) > 0 && (type & (uint)CardType.Link) > 0)
+                StartCoroutine(SummonLink());
             else
             {
                 CameraManager.BlackIn(0f, 0.3f);

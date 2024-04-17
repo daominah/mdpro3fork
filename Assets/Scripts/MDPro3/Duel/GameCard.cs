@@ -1092,7 +1092,10 @@ namespace MDPro3
                         && Config.Get("ReplaySummon", "1") == "0")
                         summonEffect = false;
 
-                    if (summonEffect && Program.I().ocgcore.materialCards.Count > 0)
+                    if (summonEffect
+                        && Program.I().ocgcore.materialCards.Count > 0
+                        && (OcgCore.TypeMatchReason(data.Type, (int)Program.I().ocgcore.materialCards[0].p.reason)
+                        || OcgCore.TypeMatchReason(data.Type, Program.I().ocgcore.materialCards[0].GetData().Reason)))
                     {
                         Program.I().ocgcore.description.Hide();
                         Program.I().ocgcore.list.Hide();
