@@ -48,7 +48,7 @@ namespace MDPro3
             //cardDescription
             cardName.fontSize = 50;
             cardName.GetComponent<RectTransform>().sizeDelta = new Vector2(200, 80);
-            var language = Config.Get("Language", "zh-CN");
+            var language = Config.Get("CardLanguage", "zh-CN");
             if (language == "zh-CN")
             {
                 var handle = Addressables.LoadAssetAsync<Font>("RenderFontChineseSimplified");
@@ -107,13 +107,13 @@ namespace MDPro3
 
         public void RenderName(int code)
         {
-            var data = CardsManager.Get(code);
+            var data = CardsManager.GetRenderCard(code);
             if (data.Id == 0)
                 return;
             cardName.GetComponent<RectTransform>().localScale = Vector3.one;
             cardNameTMP.GetComponent<RectTransform>().localScale = Vector3.one;
-            if (Config.Get("Language", "zh-CN") == "en-US"
-                || Config.Get("Language", "zh-CN") == "es-ES")
+            if (Config.Get("CardLanguage", "zh-CN") == "en-US"
+                || Config.Get("CardLanguage", "zh-CN") == "es-ES")
             {
                 cardName.text = string.Empty;
                 cardNameTMP.text = data.Name;
@@ -184,14 +184,14 @@ namespace MDPro3
 
         public void RenderCard(int code, Texture2D art)
         {
-            var data = CardsManager.Get(code);
+            Card data = CardsManager.GetRenderCard(code);
             if (data.Id == 0)
                 return;
 
             cardName.GetComponent<RectTransform>().localScale = Vector3.one;
             cardNameTMP.GetComponent<RectTransform>().localScale = Vector3.one;
-            if (Config.Get("Language", "zh-CN") == "en-US"
-                || Config.Get("Language", "zh-CN") == "es-ES")
+            if (Config.Get("CardLanguage", "zh-CN") == "en-US"
+                || Config.Get("CardLanguage", "zh-CN") == "es-ES")
             {
                 cardName.text = string.Empty;
                 cardNameTMP.text = data.Name;
@@ -259,7 +259,7 @@ namespace MDPro3
                     cardArtPendulum.texture = art;
                 }
                 var pendulumDescription = CardDescription.GetCardDescriptionSplit(data.Desc);
-                cardDescription.text = StringHelper.GetType(data).Replace(Program.slash, bigSlash) + "\r\n" + TextForRender(pendulumDescription[1]);
+                cardDescription.text = StringHelper.GetType(data, true).Replace(Program.slash, bigSlash) + "\r\n" + TextForRender(pendulumDescription[1]);
                 cardDescriptionPendulum.text = TextForRender(pendulumDescription[0]);
                 lScale.text = data.LScale.ToString();
                 rScale.text = data.RScale.ToString();
@@ -282,7 +282,7 @@ namespace MDPro3
                 cardArt.texture = art;
                 var description = "";
                 if ((data.Type & (uint)CardType.Monster) > 0)
-                    description = StringHelper.GetType(data).Replace(Program.slash, bigSlash) + "\r\n";
+                    description = StringHelper.GetType(data, true).Replace(Program.slash, bigSlash) + "\r\n";
                 description += TextForRender(data.Desc);
                 cardDescription.text = description;
 
@@ -320,7 +320,7 @@ namespace MDPro3
                     var bracketRight = "¡¿";
                     var spaces = "   ";
                     spellTypeIcon.GetComponent<RectTransform>().anchoredPosition = new Vector2(-79f, 364);
-                    switch (Config.Get("Language", "zh-CN"))
+                    switch (Config.Get("CardLanguage", "zh-CN"))
                     {
                         case "en-US":
                             bracketLeft = "[";
@@ -350,7 +350,7 @@ namespace MDPro3
                     if ((data.Type & (uint)CardType.Spell) > 0)
                     {
                         cardFrame.sprite = TextureManager.container.cardFrameSpellOF;
-                        var type = bracketLeft + InterString.Get("Ä§·¨¿¨") + spaces + bracketRight;
+                        var type = bracketLeft + InterString.Get("Ä§·¨¿¨", true) + spaces + bracketRight;
                         if ((data.Type & (uint)CardType.Field) > 0)
                             spellTypeIcon.sprite = TextureManager.container.typeField;
                         else if ((data.Type & (uint)CardType.Equip) > 0)
@@ -368,7 +368,7 @@ namespace MDPro3
                     else
                     {
                         cardFrame.sprite = TextureManager.container.cardFrameTrapOF;
-                        var type = bracketLeft + InterString.Get("ÏÝÚå¿¨") + spaces + bracketRight;
+                        var type = bracketLeft + InterString.Get("ÏÝÚå¿¨", true) + spaces + bracketRight;
                         if ((data.Type & (uint)CardType.Counter) > 0)
                             spellTypeIcon.sprite = TextureManager.container.typeCounter;
                         else if ((data.Type & (uint)CardType.Continuous) > 0)
@@ -490,7 +490,7 @@ namespace MDPro3
         {
             if (string.IsNullOrEmpty(description))
                 return string.Empty;
-            var language = Config.Get("Language", "zh-CN");
+            var language = Config.Get("CardLanguage", "zh-CN");
 
             if (language == "ja-JP")
             {

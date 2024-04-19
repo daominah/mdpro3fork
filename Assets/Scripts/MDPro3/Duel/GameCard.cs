@@ -11,7 +11,6 @@ using MDPro3.UI;
 using MDPro3.YGOSharp;
 using MDPro3.YGOSharp.OCGWrapper.Enums;
 
-
 namespace MDPro3
 {
     public class GPS
@@ -1736,6 +1735,7 @@ namespace MDPro3
             sequence.Append(offset.DOLocalMove(new Vector3(0, 2, 3), 0.1f).OnStart(() => 
             {
                 AudioManager.PlaySE("SE_CARDVIEW_02");
+                Program.I().ocgcore.description.Show(this, null);
             }));
             sequence.Join(turn.DOLocalRotate(Vector3.zero, 0.1f).OnComplete(() =>
             {

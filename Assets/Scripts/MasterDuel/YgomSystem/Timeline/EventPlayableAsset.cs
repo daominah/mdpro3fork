@@ -26,7 +26,16 @@ namespace YgomSystem.Timeline
             var playable = ScriptPlayable<EventPlayableBehaviour>.Create(graph);
             var behaviour = playable.GetBehaviour();
 			behaviour.label = label;
-
+			behaviour.eventList = new List<EventPlayableBehaviour.EventInfo>();
+			foreach(var info in eventList)
+			{
+				behaviour.eventList.Add(new EventPlayableBehaviour.EventInfo() 
+				{ 
+					label = info.label,
+					time = info.time,
+					isDone = false
+				});
+            }
 			return playable;
         }
     }

@@ -19,6 +19,8 @@ using MDPro3.YGOSharp;
 using MDPro3.YGOSharp.OCGWrapper.Enums;
 using static YgomGame.Bg.BgEffectSettingInner;
 using MDPro3.UI;
+using YgomGame.Duel;
+using UnityEngine.AI;
 
 namespace MDPro3
 {
@@ -1223,7 +1225,7 @@ namespace MDPro3
         //Program.I().room.duelEnded: For match End;
 
         bool needDamageResponseInstant;
-
+        public Action endingAction;
         public void CoreReset()
         {
             if (cards.Count > 0)
@@ -1252,17 +1254,12 @@ namespace MDPro3
             surrended = false;
             deckReserved = false;
             cantCheckGrave = false;
+            cookie_matchKill = 0;
             needDamageResponseInstant = false;
             if (condition == Condition.Replay)
-            {
                 replayButtons.SetActive(true);
-                //buttonForceSaveReplay.SetActive(false);
-            }
             else
-            {
-                //buttonForceSaveReplay.SetActive(true);
                 replayButtons.SetActive(false);
-            }
             buttonStop.SetActive(true);
             buttonPlay.SetActive(false);
             buttonAcc.SetActive(true);
@@ -1292,6 +1289,7 @@ namespace MDPro3
             opSpSummonCount = 0;
             Program.I().room.duelEnded = false;
             Program.I().room.joinWithReconnect = false;
+            endingAction = null;
         }
 
         public void AddPackage(Package p)
@@ -1631,6 +1629,7 @@ namespace MDPro3
                     duelEnded = true;
                     description.Hide();
                     ClearResponse();
+
                     if (currentPopup != null)
                     {
                         currentPopup.whenQuitDo = null;
@@ -1642,6 +1641,7 @@ namespace MDPro3
                     keys.Insert(0, currentMessageIndex);
                     AudioManager.StopBGM();
                     GameObject duelText;
+                    string endingReason = string.Empty;
                     if (player == 2)
                     {
                         result = DuelResult.Draw;
@@ -1654,23 +1654,13 @@ namespace MDPro3
                         if (cookie_matchKill > 0)
                         {
                             winReason = CardsManager.Get(cookie_matchKill).Name;
-                            PrintDuelLog(InterString.Get("比赛胜利，卡片：[?]", winReason));
+                            endingReason = InterString.Get("比赛胜利，卡片：[?]", winReason);
                         }
                         else
                         {
                             winReason = StringHelper.Get("victory", winType);
-                            PrintDuelLog(InterString.Get("游戏胜利，原因：[?]", winReason));
+                            endingReason = InterString.Get("游戏胜利，原因：[?]", winReason);
                         }
-                        bgPhase1 = 4;
-                        var seLabel = "SE_FIELD_MAT" + field0Manager.name.Substring(4, 3) + "_PHASE4_R";
-                        field1Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase4ToEnd, seLabel);
-                        grave1Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase4ToEnd);
-                        if (stand1Manager != null)
-                            stand1Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase4ToEnd);
-                        if (mate0 != null)
-                            mate0.Play(Mate.MateAction.Victory);
-                        if (mate1 != null)
-                            mate1.Play(Mate.MateAction.Defeat);
                     }
                     else
                     {
@@ -1679,33 +1669,14 @@ namespace MDPro3
                         if (cookie_matchKill > 0)
                         {
                             winReason = CardsManager.Get(cookie_matchKill).Name;
-                            PrintDuelLog(InterString.Get("比赛败北，卡片：[?]", winReason));
+                            endingReason = InterString.Get("比赛败北，卡片：[?]", winReason);
                         }
                         else
                         {
                             winReason = StringHelper.Get("victory", winType);
-                            PrintDuelLog(InterString.Get("游戏败北，原因：[?]", winReason));
+                            endingReason = InterString.Get("游戏败北，原因：[?]", winReason);
                         }
-                        bgPhase0 = 4;
-                        var seLabel = "SE_FIELD_MAT" + field0Manager.name.Substring(4, 3) + "_PHASE4_P";
-                        field0Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase4ToEnd, seLabel);
-                        grave0Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase4ToEnd);
-                        if (stand0Manager != null)
-                            stand0Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase4ToEnd);
-                        if (mate0 != null)
-                            mate0.Play(Mate.MateAction.Defeat);
-                        if (mate1 != null)
-                            mate1.Play(Mate.MateAction.Victory);
                     }
-                    var mono = duelText.AddComponent<DoWhenPlayableDirectorStop>();
-                    mono.action = () =>
-                    {
-                        if (condition != Condition.Replay)
-                        {
-                            ShowSaveReplay();
-                            Destroy(mono.gameObject);
-                        }
-                    };
                     if (timerHandler != null)
                         timerHandler.DuelEnd();
                     if (playableGuide0 != null && playableGuide1 != null)
@@ -1715,6 +1686,107 @@ namespace MDPro3
                     }
                     //防止对方在更换副卡组时拔螺丝
                     UIManager.UIBlackOut(transitionTime);
+
+                    duelText.SetActive(false);
+                    endingAction = () =>
+                    {
+                        duelText.SetActive(true);
+                        var mono = duelText.AddComponent<DoWhenPlayableDirectorStop>();
+                        mono.action = () =>
+                        {
+                            PrintDuelLog(endingReason);
+                            if (condition != Condition.Replay)
+                            {
+                                ShowSaveReplay();
+                                Destroy(mono.gameObject);
+                            }
+                        };
+                        if(result == DuelResult.Win)
+                        {
+                            bgPhase1 = 4;
+                            var seLabel = "SE_FIELD_MAT" + field0Manager.name.Substring(4, 3) + "_PHASE4_R";
+                            field1Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase1ToPhase2);
+                            field1Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase2ToPhase3);
+                            field1Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase3ToPhase4);
+                            field1Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase4ToEnd, seLabel);
+                            if (stand1Manager != null)
+                                stand1Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase4ToEnd);
+                            if (mate0 != null)
+                                mate0.Play(Mate.MateAction.Victory);
+                            if (mate1 != null)
+                                mate1.Play(Mate.MateAction.Defeat);
+                        }
+                        else if(result == DuelResult.Lose)
+                        {
+                            bgPhase0 = 4;
+                            var seLabel = "SE_FIELD_MAT" + field0Manager.name.Substring(4, 3) + "_PHASE4_P";
+                            field0Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase1ToPhase2);
+                            field0Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase2ToPhase3);
+                            field0Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase3ToPhase4);
+                            field0Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase4ToEnd, seLabel);
+
+                            if (stand0Manager != null)
+                                stand0Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase4ToEnd);
+                            if (mate0 != null)
+                                mate0.Play(Mate.MateAction.Defeat);
+                            if (mate1 != null)
+                                mate1.Play(Mate.MateAction.Victory);
+                        }
+                    };
+                    if (cookie_matchKill > 0)
+                    {
+                        PlayCommonSpecialWin(new int[] { cookie_matchKill });
+                    }
+                    else if(winType >= 0x10)
+                    {
+                        if(winType == 0x10)//被封印的艾克佐迪亚
+                        {
+                            ElementObjectManager mner = PlaySpecialWin("SummonSpecialWin4027");
+                            StartCoroutine(Program.I().texture_.LoadDummyCard(mner.GetElement<ElementObjectManager>("DummyCard"), 33396948, true));
+                            StartCoroutine(Program.I().texture_.LoadDummyCard(mner.GetElement<ElementObjectManager>("DummyCard2"), 7902349, true));
+                            StartCoroutine(Program.I().texture_.LoadDummyCard(mner.GetElement<ElementObjectManager>("DummyCard3"), 70903634, true));
+                            StartCoroutine(Program.I().texture_.LoadDummyCard(mner.GetElement<ElementObjectManager>("DummyCard4"), 44519536, true));
+                            StartCoroutine(Program.I().texture_.LoadDummyCard(mner.GetElement<ElementObjectManager>("DummyCard5"), 8124921, true));
+                        }
+                        else if( winType == 0x11)//终焉的倒计时
+                            PlayCommonSpecialWin(new int[] { 95308449 });
+                        else if (winType == 0x12)//毒蛇神 维诺米纳迦
+                            PlayCommonSpecialWin(new int[] { 8062132 });
+                        else if (winType == 0x13)//光之创造神 哈拉克提
+                            PlayCommonSpecialWin(new int[] { 10000040 });
+                        else if (winType == 0x14)//究极封印神 艾克佐迪奥斯
+                            PlayCommonSpecialWin(new int[] { 13893596 });
+                        else if (winType == 0x15)//通灵盘
+                            PlaySpecialWin("SummonSpecialWin14585");
+                        else if (winType == 0x16)//最终一战！
+                            PlayCommonSpecialWin(new int[] { 28566710 });
+                        else if (winType == 0x17)//No.88 机关傀儡-命运狮子
+                            PlayCommonSpecialWin(new int[] { 48995978 });
+                        else if (winType == 0x18)//混沌No.88 机关傀儡-灾厄狮子
+                            PlayCommonSpecialWin(new int[] { 6165656 });
+                        else if (winType == 0x19)//头奖壶7
+                            PlayCommonSpecialWin(new int[] { 81171949, 81171949, 81171949 });
+                        else if (winType == 0x1A)//魂之接力
+                            PlayCommonSpecialWin(new int[] { 42776960 });
+                        else if (winType == 0x1B)//鬼计惰天使
+                            PlaySpecialWin("SummonSpecialWin11422");
+                        else if (winType == 0x1C)//幻煌龙的天涡
+                            PlayCommonSpecialWin(new int[] { 97795930 });
+                        else if (winType == 0x1D)//方程式运动员胜利团队
+                            PlayCommonSpecialWin(new int[] { 69553552 });
+                        else if (winType == 0x1E)//飞行象
+                            PlayCommonSpecialWin(new int[] { 66765023 });
+                        else if (winType == 0x1F)//守护神 艾克佐迪亚
+                            PlayCommonSpecialWin(new int[] { 5008836 });
+                        else if (winType == 0x20)//真艾克佐迪亚
+                            PlayCommonSpecialWin(new int[] { 37984331 });
+                        else if (winType == 0x21)//混沌虚数No.1000 梦幻虚光神 原数天灵·原数天地
+                            PlayCommonSpecialWin(new int[] { 15862758 });
+                        else if (winType == 0x22)//席取-六双丸
+                            PlaySpecialWin("SummonSpecialWin17158");
+                    }
+                    else
+                        endingAction.Invoke();
                     break;
                 case GameMessage.Start:
                     CoreReset();
@@ -1740,7 +1812,6 @@ namespace MDPro3
                             player0Name.text = name_0_tag;
                     }
                     SetFace();
-                    cookie_matchKill = 0;
                     GCS_CreateBundle(r.ReadInt16(), LocalPlayer(0), CardLocation.Deck);
                     GCS_CreateBundle(r.ReadInt16(), LocalPlayer(0), CardLocation.Extra);
                     GCS_CreateBundle(r.ReadInt16(), LocalPlayer(1), CardLocation.Deck);
@@ -1912,7 +1983,7 @@ namespace MDPro3
                     opExtra.gameObject.SetActive(true);
                     cg.alpha = 0;
                     cg.interactable = false;
-                    mono = myDeck.gameObject.AddComponent<DoWhenPlayableDirectorStop>();
+                    var mono = myDeck.gameObject.AddComponent<DoWhenPlayableDirectorStop>();
                     mono.action = () =>
                     {
                         cg.alpha = 1;
@@ -2329,8 +2400,9 @@ namespace MDPro3
                                 card.negated = true;
                                 card.AnimationNegate();
                                 Sleep(100);
+                                messagePass = true;
+                                return;
                             }
-
                             if (condition == Condition.Duel
                                 && Config.Get("DuelEffect", "1") == "0")
                                 needPlay = false;
@@ -2897,6 +2969,7 @@ namespace MDPro3
                     Sequence quence = DOTween.Sequence();
                     if (attackCard.GetData().Attack < 2000)
                     {
+                        faceAngle.z = faceAngle.y >= 0 && faceAngle.y < 180 ? -20f : 20f;
                         quence.Append(attackTransform.DOMove(attackPosition + new Vector3(0f, 10f, 0f) - v * 0.3f, 0.3f).SetEase(Ease.InOutCubic).OnComplete(() =>
                         {
                             tailObj.SetActive(true);
@@ -2905,6 +2978,8 @@ namespace MDPro3
                         }));
                         quence.Join(attackTransform.DORotate(faceAngle, 0.3f).SetEase(Ease.InOutCubic));
                         quence.Append(attackTransform.DOMove(attackPosition + (attackedPosition - attackPosition) * 0.8f + new Vector3(0f, 0f, 0f), 0.1f).SetEase(Ease.InSine));
+                        faceAngle.z = 0;
+                        quence.Join(attackTransform.DORotate(faceAngle, 0.1f).SetEase(Ease.InSine));
                         quence.Join(Program.I().camera_.cameraMain.transform.DOMove(new Vector3(0, 95, -37 + directAttack * 5), 0.1f));
                         quence.AppendCallback(() =>
                         {
@@ -2927,6 +3002,7 @@ namespace MDPro3
                     }
                     else
                     {
+                        faceAngle.z = faceAngle.y >= 0 && faceAngle.y < 180 ? -30f : 30f;
                         quence.Append(attackTransform.DOMove(attackPosition + new Vector3(0f, 10f, 0f) - v * 0.4f, 0.5f).SetEase(Ease.InOutCubic));
                         quence.Join(attackTransform.DORotate(faceAngle + new Vector3(45f, 0f, 0f), 0.5f).SetEase(Ease.InOutCubic));
                         quence.InsertCallback(0.4f, () =>
@@ -2937,6 +3013,7 @@ namespace MDPro3
                         });
 
                         quence.Append(attackTransform.DOMove(attackPosition + (attackedPosition - attackPosition) * 0.8f + new Vector3(0f, 0f, 0f), 0.15f).SetEase(Ease.InSine));
+                        faceAngle.z = 0;
                         quence.Join(attackTransform.DORotate(faceAngle, 0.15f));
                         quence.Join(Program.I().camera_.cameraMain.transform.DOMove(new Vector3(0, 95, -37 + directAttack * 5), 0.15f));
                         quence.AppendCallback(() =>
@@ -3500,7 +3577,6 @@ namespace MDPro3
                         if (card != null)
                         {
                             card.SetCode(code);
-                            description.Show(card, null);
                             card.AnimationConfirm(i);
                         }
                     }
@@ -4755,6 +4831,68 @@ namespace MDPro3
             ES_selectHint = string.Empty;
         }
 
+        void PlayCommonSpecialWin(int[] code)
+        {
+            var count = code.Length;
+            var go = ABLoader.LoadFromFolder("Timeline/SpecialWin/SpecialWinCommonCard0" + count);
+            ElementObjectManager mner = null;
+            for (int i = 0; i < go.transform.childCount; i++)
+            {
+                mner = go.transform.GetChild(i).GetComponent<ElementObjectManager>();
+                if (mner == null)
+                    Destroy(go.transform.GetChild(i).gameObject);
+            }
+            foreach (var child in mner.transform.GetComponentsInChildren<Transform>(true))
+                if (child.name == "White")
+                {
+                    var newWhite = Instantiate(child.gameObject);
+                    newWhite.transform.SetParent(child.transform, false);
+                    newWhite.transform.localScale = Vector3.one;
+                    newWhite.GetComponent<SpriteRenderer>().color = Color.clear;
+                }
+            StartCoroutine(Program.I().texture_.LoadDummyCardLoadingPic(mner.GetElement<ElementObjectManager>("DummyCard01"), code[0], true));
+            mner.GetElement<ElementObjectManager>("DummyCard01").GetElement<Renderer>("DummyCardModel_front").material.renderQueue = 4000;
+            if(count > 1)
+            {
+                StartCoroutine(Program.I().texture_.LoadDummyCardLoadingPic(mner.GetElement<ElementObjectManager>("DummyCard02"), code[1], true));
+                mner.GetElement<ElementObjectManager>("DummyCard02").GetElement<Renderer>("DummyCardModel_front").material.renderQueue = 4000;
+            }
+            if (count > 2)
+            {
+                StartCoroutine(Program.I().texture_.LoadDummyCardLoadingPic(mner.GetElement<ElementObjectManager>("DummyCard03"), code[2], true));
+                mner.GetElement<ElementObjectManager>("DummyCard03").GetElement<Renderer>("DummyCardModel_front").material.renderQueue = 4000;
+            }
+            if (count > 3)
+            {
+                StartCoroutine(Program.I().texture_.LoadDummyCardLoadingPic(mner.GetElement<ElementObjectManager>("DummyCard04"), code[3], true));
+                mner.GetElement<ElementObjectManager>("DummyCard04").GetElement<Renderer>("DummyCardModel_front").material.renderQueue = 4000;
+            }
+            if (count > 4)
+            {
+                StartCoroutine(Program.I().texture_.LoadDummyCardLoadingPic(mner.GetElement<ElementObjectManager>("DummyCard05"), code[4], true));
+                mner.GetElement<ElementObjectManager>("DummyCard05").GetElement<Renderer>("DummyCardModel_front").material.renderQueue = 4000;
+            }
+            mner.GetComponent<PlayableDirector>().Play();
+            var mono = mner.gameObject.AddComponent<DoWhenPlayableDirectorStop>();
+            mono.action = () => 
+            { 
+                Destroy(go);
+            };
+        }
+        ElementObjectManager PlaySpecialWin(string path)
+        {
+            var go = ABLoader.LoadFromFolder("Timeline/SpecialWin/" + path);
+            ElementObjectManager manager = null;
+            for (int i = 0; i < go.transform.childCount; i++)
+            {
+                manager = go.transform.GetChild(i).GetComponent<ElementObjectManager>();
+                if (manager == null)
+                    Destroy(go.transform.GetChild(i).gameObject);
+            }
+            var mono = manager.gameObject.AddComponent<DoWhenPlayableDirectorStop>();
+            mono.action = () => { Destroy(go); };
+            return manager;
+        }
         #endregion
 
         #region PracticalizeTools

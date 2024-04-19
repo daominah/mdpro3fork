@@ -120,40 +120,39 @@ namespace MDPro3.YGOSharp
 
         internal Card(IDataRecord reader)
         {
-            this.Str = new string[16];
-            this.Id = (int)reader.GetInt64(0);
-            this.Ot = reader.GetInt32(1);
-            this.Alias = (int)reader.GetInt64(2);
-            this.Setcode = reader.GetInt64(3);
-            this.Type = (int)reader.GetInt64(4);
-            this.Attack = reader.GetInt32(5);
-            this.Defense = reader.GetInt32(6);
-            this.rAttack = this.Attack;
-            this.rDefense = this.Defense;
+            Str = new string[16];
+            Id = (int)reader.GetInt64(0);
+            Ot = reader.GetInt32(1);
+            Alias = (int)reader.GetInt64(2);
+            Setcode = reader.GetInt64(3);
+            Type = (int)reader.GetInt64(4);
+            Attack = reader.GetInt32(5);
+            Defense = reader.GetInt32(6);
+            rAttack = this.Attack;
+            rDefense = this.Defense;
             long Level_raw = reader.GetInt64(7);
-            this.Level = (int)Level_raw & 0xff;
-            this.LScale = (int)((Level_raw >> 0x18) & 0xff);
-            this.RScale = (int)((Level_raw >> 0x10) & 0xff);
-            this.LinkMarker = this.Defense;
-            this.Race = reader.GetInt32(8);
-            this.Attribute = reader.GetInt32(9);
-            this.Category = reader.GetInt64(10);
-            this.Name = reader.GetString(12);
-            this.Desc = reader.GetString(13);
-
+            Level = (int)Level_raw & 0xff;
+            LScale = (int)((Level_raw >> 0x18) & 0xff);
+            RScale = (int)((Level_raw >> 0x10) & 0xff);
+            LinkMarker = this.Defense;
+            Race = reader.GetInt32(8);
+            Attribute = reader.GetInt32(9);
+            Category = reader.GetInt64(10);
+            Name = reader.GetString(12);
+            Desc = reader.GetString(13);
 
             for (int ii = 0; ii < 0x10; ii++)
             {
-                this.Str[ii] = reader.GetString(14 + ii);
+                Str[ii] = reader.GetString(14 + ii);
             }
         }
 
         public Card()
         {
-            this.Id = 0;
-            this.Str = new string[16];
-            this.Name = CardsManager.nullName;
-            this.Desc = CardsManager.nullString;
+            Id = 0;
+            Str = new string[16];
+            Name = CardsManager.nullName;
+            Desc = CardsManager.nullString;
         }
     }
 }

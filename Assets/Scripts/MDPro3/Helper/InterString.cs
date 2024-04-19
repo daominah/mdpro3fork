@@ -8,18 +8,19 @@ namespace MDPro3
     public static class InterString
     {
         private static readonly Dictionary<string, string> translations = new Dictionary<string, string>();
-        private static string path;
+        private static readonly Dictionary<string, string> translationsForRender = new Dictionary<string, string>();
 
+        private static string path;
+        private static string pathForRender;
         public static void Initialize()
         {
-            string language = Config.Get("Language", "zh-CN");
-            path = Program.localesPath + Program.slash + language + "/translation.conf";
+            translations.Clear();
+            path = Program.localesPath + Program.slash + Config.Get("Language", "zh-CN") + "/translation.conf";
             if (!File.Exists(path))
                 File.Create(path).Close();
 
             var txtString = File.ReadAllText(path);
             var lines = txtString.Replace("\r", "").Split('\n');
-            translations.Clear();
             for (var i = 0; i < lines.Length; i++)
             {
                 var mats = Regex.Split(lines[i], "->");
@@ -27,34 +28,49 @@ namespace MDPro3
                     if (!translations.ContainsKey(mats[0]))
                         translations.Add(mats[0], mats[1]);
             }
+
+            translationsForRender.Clear();
+            pathForRender = Program.localesPath + Program.slash + Config.Get("CardLanguage", "zh-CN") + "/translation.conf";
+            if (!File.Exists(pathForRender))
+                File.Create(pathForRender).Close();
+            txtString = File.ReadAllText(pathForRender);
+            lines = txtString.Replace("\r", "").Split('\n');
+            for (var i = 0; i < lines.Length; i++)
+            {
+                var mats = Regex.Split(lines[i], "->");
+                if (mats.Length == 2)
+                    if (!translationsForRender.ContainsKey(mats[0]))
+                        translationsForRender.Add(mats[0], mats[1]);
+            }
         }
 
-        public static string Get(string original)
+        public static string Get(string original, bool render = false)
         {
             var returnValue = original;
-            if (translations.TryGetValue(original, out returnValue))
+            var targetTranslations = render ? translationsForRender : translations;
+            if (targetTranslations.TryGetValue(original, out returnValue))
                 return returnValue.Replace("@n", "\r\n").Replace("@ui", "");
 
             if (original != "")
             {
                 try
                 {
-                    File.AppendAllText(path, original + "->" + original + "\r\n");
+                    File.AppendAllText(render ? pathForRender : path, original + "->" + original + "\r\n");
                 }
                 catch
                 {
                     Program.noAccess = true;
                 }
 
-                translations.Add(original, original);
+                targetTranslations.Add(original, original);
                 return original.Replace("@n", "\r\n").Replace("@ui", "");
             }
             return original;
         }
 
-        public static string Get(string original, string replace)
+        public static string Get(string original, string replace, bool render = false)
         {
-            return Get(original).Replace("[?]", replace);
+            return Get(original, render).Replace("[?]", replace);
         }
         public static string GetOriginal(string value)
         {
@@ -69,6 +85,5 @@ namespace MDPro3
             }
             return returnValue;
         }
-
     }
 }

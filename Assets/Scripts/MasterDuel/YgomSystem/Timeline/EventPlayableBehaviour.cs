@@ -31,9 +31,20 @@ namespace YgomSystem.Timeline
         public override void OnBehaviourPlay(Playable playable, FrameData info)
 		{
             PlayContent();
+            foreach (var e in eventList)
+            {
+                if (e.label == "WinStart" && !e.isDone)
+                {
+                    e.isDone = true;
+                    DOTween.To(v => { }, 0, 0, (float)e.time).OnComplete(() =>
+                    {
+                        Program.I().ocgcore.endingAction?.Invoke();
+                    });
+                }
+            }
         }
 
-		public override void ProcessFrame(Playable playable, FrameData info, object playerData)
+        public override void ProcessFrame(Playable playable, FrameData info, object playerData)
 		{
             if(playable.GetPlayState() == PlayState.Playing)
                 PlayContent();

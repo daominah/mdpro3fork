@@ -6,7 +6,6 @@ using Mono.Data.Sqlite;
 using MDPro3.YGOSharp.OCGWrapper.Enums;
 using System.IO;
 using static MDPro3.EditDeck;
-using System.Text;
 using Ionic.Zip;
 
 namespace MDPro3.YGOSharp
@@ -14,7 +13,7 @@ namespace MDPro3.YGOSharp
     internal static class CardsManager
     {
         public static IDictionary<int, Card> _cards = new Dictionary<int, Card>();
-
+        public static IDictionary<int, Card> _cardsForRender = new Dictionary<int, Card>();
         public static string nullName = "";
 
         public static string nullString = "";
@@ -52,9 +51,36 @@ namespace MDPro3.YGOSharp
             }
             UpdateSetNames();
             PacksManager.Initialize();
+
+            _cardsForRender.Clear();
+            var cardLanguage = Config.Get("CardLanguage", "zh-CN");
+            databaseFullPath = Program.localesPath + Program.slash + cardLanguage + "/cards.cdb";
+            if (!File.Exists(databaseFullPath))
+                databaseFullPath = Program.localesPath + Program.slash + "zh-CN/cards.cdb";
+            LoadCDB(databaseFullPath, true);
+            foreach (var cdb in Directory.GetFiles("Expansions", "*.cdb"))
+                LoadCDB(cdb, true);
+            foreach (var zip in ZipHelper.zips)
+            {
+                if (zip.Name.ToLower().EndsWith("script.zip"))
+                    continue;
+                foreach (var file in zip.EntryFileNames)
+                {
+                    if (file.ToLower().EndsWith(".cdb"))
+                    {
+                        var e = zip[file];
+                        if (!Directory.Exists(Program.tempFolder))
+                            Directory.CreateDirectory(Program.tempFolder);
+                        var tempFile = Path.Combine(Path.GetFullPath(Program.tempFolder), file);
+                        e.Extract(Path.GetFullPath(Program.tempFolder), ExtractExistingFileAction.OverwriteSilently);
+                        LoadCDB(tempFile, true);
+                        File.Delete(tempFile);
+                    }
+                }
+            }
         }
 
-        internal static void LoadCDB(string databaseFullPath)
+        internal static void LoadCDB(string databaseFullPath, bool render = false)
         {
             using (SqliteConnection connection = new SqliteConnection("Data Source=" + databaseFullPath))
             {
@@ -67,7 +93,7 @@ namespace MDPro3.YGOSharp
                     {
                         while (reader.Read())
                         {
-                            LoadCard(reader);
+                            LoadCard(reader, render);
                         }
                     }
                 }
@@ -89,7 +115,12 @@ namespace MDPro3.YGOSharp
                 return _cards[id].Clone();
             return null;
         }
-
+        internal static Card GetRenderCard(int id)
+        {
+            if (_cardsForRender.ContainsKey(id))
+                return _cardsForRender[id].Clone();
+            return null;
+        }
         internal static Card GetCardRaw(int id)
         {
             if (_cards.ContainsKey(id))
@@ -120,12 +151,18 @@ namespace MDPro3.YGOSharp
             return returnValue;
         }
 
-        private static void LoadCard(IDataRecord reader)
+        private static void LoadCard(IDataRecord reader, bool render = false)
         {
             Card card = new Card(reader);
-            if (!_cards.ContainsKey(card.Id))
+            if (!render)
             {
-                _cards.Add(card.Id, card);
+                if (!_cards.ContainsKey(card.Id))
+                    _cards.Add(card.Id, card);
+            }
+            else
+            {
+                if (!_cardsForRender.ContainsKey(card.Id))
+                    _cardsForRender.Add(card.Id, card);
             }
         }
 

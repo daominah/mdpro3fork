@@ -146,33 +146,41 @@ namespace YgomSystem.Effect
 		{
 			var widthScale = transform.localScale.x;
 			var heightScale = transform.localScale.y;
-
-			if(fitMode == FitMode.FitWidth)
+			var z = transform.localScale.z;
+            if (fitMode == FitMode.FitWidth)
 			{
 				var x = widthScale * (Screen.width * 9f / (Screen.height * 16f));
-				transform.localScale = new Vector2(x, heightScale);
+				transform.localScale = new Vector3(x, heightScale, z);
 			}
 			else if(fitMode == FitMode.FitHeight)
 			{
 				var y = heightScale * (Screen.height * 16f / (Screen.width * 9f));
-				transform.localScale=new Vector2(widthScale, y);
+				transform.localScale=new Vector3(widthScale, y, z);
 			}
             else if (fitMode == FitMode.FitWidthMaintainAspectRatio)
             {
-                var x = widthScale * (Screen.width * 9f / (Screen.height * 16f));
-                transform.localScale = new Vector2(x, heightScale * x / widthScale);
+				if(name == "SpliteDummy" || name == "White")
+				{
+					var x = widthScale * (Screen.width * 9f / (Screen.height * 16f));
+					transform.localScale = new Vector3(x, heightScale * x / widthScale, z);
+				}
+				else if(name == "Black")
+				{
+					widthScale = 15f * (Screen.width * 9f / (Screen.height * 16f));
+					transform.localScale = new Vector3(widthScale, widthScale, z);
+				}
             }
             else if (fitMode == FitMode.FitHeightMaintainAspectRatio)
             {
-                var y = heightScale * (Screen.height * 16f / (Screen.width * 9f));
-                transform.localScale = new Vector2(widthScale * y / heightScale, y);
+				heightScale = 6f;
+                transform.localScale = new Vector3(heightScale, heightScale, z);
             }
             else if (fitMode == FitMode.FitWidthHeight)
             {
                 var x = heightScale * Screen.width / Screen.height;
-                transform.localScale = new Vector2(x * 1.1f, heightScale);
-				if (transform.parent.name.StartsWith("Ef04678"))
-                    transform.localScale = new Vector2(x * 2f, heightScale * 2f);
+                transform.localScale = new Vector3(x * 1.1f, heightScale, z);
+				if (transform.parent != null && transform.parent.name.StartsWith("Ef04678"))
+                    transform.localScale = new Vector3(x * 2f, heightScale * 2f, z);
             }
         }
 

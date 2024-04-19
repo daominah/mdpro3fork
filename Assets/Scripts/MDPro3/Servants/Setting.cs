@@ -48,6 +48,8 @@ namespace MDPro3
         public Text autoRPSValue;
         public Slider uiScale;
         public Text uiScaleValue;
+        public Button cardLanguage;
+        public Text cardLanguageValue;
         public Button language;
         public Text languageValue;
         [Header("Duel")]
@@ -163,6 +165,7 @@ namespace MDPro3
             showFPS.onClick.AddListener(OnShowFPSClicked);
             screen.onClick.AddListener(OnScreenModeChange);
             resolution.onClick.AddListener(OnResolutionChange);
+            cardLanguage.onClick.AddListener(OnCardLanguageChange);
             language.onClick.AddListener(OnLanguageChange);
             confirm.onClick.AddListener(OnConfirmClicked);
             autoRPS.onClick.AddListener(OnAutoRPS);
@@ -230,6 +233,7 @@ namespace MDPro3
             InitializeScreenMode();
             InitializeResolution();
             InitializeConfirm();
+            InitializeCardLanguage();
             InitializeLanguage();
             InitializeSwitches();
         }
@@ -278,6 +282,7 @@ namespace MDPro3
             Config.Set("ShowFPS", SaveBool(showFPSValue.text));
             Config.Set("ScreenMode", SaveScreenMode(screenValue.text));
             Config.Set("Resolution", resolutionValue.text);
+            Config.Set("CardLanguage", InterString.GetOriginal(cardLanguageValue.text));
             Config.Set("Language", InterString.GetOriginal(languageValue.text));
             Config.Set("Confirm", SaveBool(confirmValue.text));
 
@@ -660,6 +665,36 @@ namespace MDPro3
             Screen.SetResolution(int.Parse(Regex.Split(selected, " x ")[0]), int.Parse(Regex.Split(selected, " x ")[1]), Screen.fullScreen);
             resolutionValue.text = selected;
         }
+        public void InitializeCardLanguage()
+        {
+            string lan = Config.Get("CardLanguage", "zh-CN");
+            cardLanguageValue.text = InterString.Get(lan);
+        }
+        public void OnCardLanguageChange()
+        {
+            if (Program.I().ocgcore.isShowed)
+            {
+                MessageManager.Cast(InterString.Get("决斗中不能更改此选项。"));
+                return;
+            }
+
+            List<string> selections = new List<string>
+            {
+                InterString.Get("卡图语言")
+            };
+            DirectoryInfo[] infos = new DirectoryInfo(Program.localesPath).GetDirectories();
+            foreach (DirectoryInfo info in infos)
+                selections.Add(InterString.Get(info.Name));
+            UIManager.ShowPopupSelection(selections, OnCardLanguageSelection);
+        }
+        public void OnCardLanguageSelection()
+        {
+            string selected = UnityEngine.EventSystems.EventSystem.current.
+                    currentSelectedGameObject.transform.GetChild(0).GetComponent<Text>().text;
+            cardLanguageValue.text = selected;
+            Config.Set("CardLanguage", InterString.GetOriginal(selected));
+            UIManager.ChangeLanguage();
+        }
         public void InitializeLanguage()
         {
             string lan = Config.Get("Language", "zh-CN");
@@ -690,6 +725,7 @@ namespace MDPro3
             Config.Set("Language", InterString.GetOriginal(selected));
             UIManager.ChangeLanguage();
         }
+
         public void InitializeConfirm()
         {
             string value = Config.Get("Confirm", "1");

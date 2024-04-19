@@ -11,7 +11,7 @@ namespace MDPro3
     public static class StringHelper
     {
         public static List<HashedString> hashedStrings = new List<HashedString>();
-
+        public static List<HashedString> hashedStringsForRender = new List<HashedString>();
         public static List<HashedString> setNames = new List<HashedString>();
 
         public static int StringToInt(string str)
@@ -53,10 +53,31 @@ namespace MDPro3
                     }
                 }
             }
-            InitializeContent(text);
+
+            language = Config.Get("CardLanguage", "zh-CN");
+            path = Program.localesPath + Program.slash + language + "/strings.conf";
+            string textForRender = File.ReadAllText(path);
+            foreach (var conf in Directory.GetFiles("Expansions", "*.conf"))
+                textForRender += "\r\n" + File.ReadAllText(conf);
+            foreach (var zip in ZipHelper.zips)
+            {
+                if (zip.Name.ToLower().EndsWith("script.zip"))
+                    continue;
+                foreach (var file in zip.EntryFileNames)
+                {
+                    if (file.ToLower().EndsWith(".conf"))
+                    {
+                        var ms = new MemoryStream();
+                        var e = zip[file];
+                        e.Extract(ms);
+                        textForRender += "\r\n" + Encoding.UTF8.GetString(ms.ToArray());
+                    }
+                }
+            }
+            InitializeContent(text, textForRender);
         }
 
-        public static void InitializeContent(string text)
+        public static void InitializeContent(string text, string textForRender)
         {
             var st = text.Replace("\r", "");
             var lines = st.Split(new[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
@@ -89,12 +110,40 @@ namespace MDPro3
                         }
                     }
                 }
+            hashedStringsForRender.Clear();
+            st = textForRender.Replace("\r", "");
+            lines = st.Split(new[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
+            foreach (var line in lines)
+                if (line.Length > 1 && line.Substring(0, 1) == "!")
+                {
+                    var mats = line.Substring(1, line.Length - 1).Split(new[] { " " }, StringSplitOptions.RemoveEmptyEntries);
+                    if (mats.Length > 2)
+                    {
+                        var a = new HashedString();
+                        a.region = mats[0];
+                        try
+                        {
+                            a.hashCode = StringToInt(mats[1]);
+                        }
+                        catch (Exception e)
+                        {
+                            MessageManager.Cast(e.ToString());
+                        }
+
+                        a.content = "";
+                        for (var i = 2; i < mats.Length; i++)
+                            a.content += mats[i] + " ";
+                        a.content = a.content.Substring(0, a.content.Length - 1);
+                        if (Get(a.region, a.hashCode, true) == "")
+                            hashedStringsForRender.Add(a);
+                    }
+                }
         }
 
-        public static string Get(string region, int hashCode)
+        public static string Get(string region, int hashCode, bool render = false)
         {
             var re = "";
-            foreach (var s in hashedStrings)
+            foreach (var s in render ? hashedStringsForRender : hashedStrings)
                 if (s.region == region && s.hashCode == hashCode)
                 {
                     re = s.content;
@@ -103,10 +152,10 @@ namespace MDPro3
             return re;
         }
 
-        internal static string GetUnsafe(int hashCode)
+        internal static string GetUnsafe(int hashCode, bool render = false)
         {
             var re = "";
-            foreach (var s in hashedStrings)
+            foreach (var s in render ? hashedStringsForRender : hashedStrings)
                 if (s.region == "system" && s.hashCode == hashCode)
                 {
                     re = s.content;
@@ -115,7 +164,6 @@ namespace MDPro3
 
             return re;
         }
-
         internal static string Get(int description)
         {
             var a = "";
@@ -185,7 +233,7 @@ namespace MDPro3
                 }
             return r;
         }
-        public static string Race(long race)
+        public static string Race(long race, bool render = false)
         {
             var r = "";
             var passFirst = false;
@@ -193,7 +241,7 @@ namespace MDPro3
                 if ((race & (1 << i)) > 0)
                 {
                     if (passFirst) r += Program.slash;
-                    r += GetUnsafe(1020 + i);
+                    r += GetUnsafe(1020 + i, render);
                     passFirst = true;
                 }
             return r;
@@ -254,7 +302,7 @@ namespace MDPro3
 
         }
 
-        public static string MainType(long a)
+        public static string MainType(long a, bool render = false)
         {
             var r = "";
             var passFirst = false;
@@ -262,13 +310,13 @@ namespace MDPro3
                 if ((a & (1 << i)) > 0)
                 {
                     if (passFirst) r += Program.slash;
-                    r += GetUnsafe(1050 + i);
+                    r += GetUnsafe(1050 + i, render);
                     passFirst = true;
                 }
             return r;
         }
 
-        public static string SecondType(long a)
+        public static string SecondType(long a, bool render = false)
         {
             var start = "";
             var end = "";
@@ -277,14 +325,14 @@ namespace MDPro3
                 for (var i = 4; i < 27; i++)
                     if (((a & 0x68020C0) & (1 << i)) > 0)
                     {
-                        start += Program.slash + GetUnsafe(1050 + i);
+                        start += Program.slash + GetUnsafe(1050 + i, render);
                         break;
                     }
                 a -= a & 0x68020C0;
             }
             if ((a & (long)CardType.Pendulum) > 0)
             {
-                start += Program.slash + GetUnsafe(1074);
+                start += Program.slash + GetUnsafe(1074, render);
                 a -= (long)CardType.Pendulum;
             }
             if ((a & 0x30) > 0)
@@ -292,29 +340,29 @@ namespace MDPro3
                 for (var i = 4; i < 6; i++)
                     if ((a & (1 << i)) > 0)
                     {
-                        end += Program.slash + GetUnsafe(1050 + i);
+                        end += Program.slash + GetUnsafe(1050 + i, render);
                         break;
                     }
                 a -= a & 0x30;
             }
             for (var i = 4; i < 27; i++)
                 if ((a & (1 << i)) > 0)
-                    start += Program.slash + GetUnsafe(1050 + i);
+                    start += Program.slash + GetUnsafe(1050 + i, render);
             var returnValue = start + end;
             if (returnValue == "")
-                returnValue = GetUnsafe(1054);
+                returnValue = GetUnsafe(1054, render);
             else
                 returnValue = returnValue.Substring(1, returnValue.Length - 1);
 
             return returnValue;
         }
 
-        public static string GetType(Card data)
+        public static string GetType(Card data, bool render = false)
         {
             var re = "";
             if (data.Id == 0)
                 return re;
-            var origin = CardsManager.Get(data.Id);
+            var origin = render ? CardsManager.GetRenderCard(data.Id) : CardsManager.Get(data.Id);
             try
             {
                 if (CardDescription.WhetherCardIsMonster(data))
@@ -322,7 +370,7 @@ namespace MDPro3
                     if (data.Race != origin.Race)
                         re = "¡¾" + "<color=#FD3E08>" + InterString.Get("[?]×å", Race(data.Race)) + "</color>" + Program.slash + SecondType(data.Type) + "¡¿";
                     else
-                        re = "¡¾" + InterString.Get("[?]×å", Race(data.Race)) + Program.slash + SecondType(data.Type) + "¡¿";
+                        re = "¡¾" + InterString.Get("[?]×å", Race(data.Race, render), render) + Program.slash + SecondType(data.Type, render) + "¡¿";
                 }
                 else
                     re = "¡¾" + MainType(data.Type) + "¡¿";
@@ -331,6 +379,7 @@ namespace MDPro3
             { Debug.LogError(e); }
             return re;
         }
+
         public static string GetSetName(long Setcode, bool raw = false)
         {
             var setcodes = new int[4];
