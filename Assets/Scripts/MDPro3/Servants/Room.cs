@@ -582,15 +582,15 @@ namespace MDPro3
                     {
                         if (selfType == player)
                             position = PlayerPosition.Me;
-                        else if ((selfType == 0 && player == 1)
-                        || (selfType == 1 && player == 0)
-                        || (selfType == 2 && player == 3)
-                        || (selfType == 3 && player == 2))
+                        else if ((selfType + player) % 4 == 1)
                             position = PlayerPosition.MyTag;
-                        else if (player == 0 || player == 2)
-                            position = PlayerPosition.Op;
                         else
-                            position = PlayerPosition.OpTag;
+                        {
+                            if (player == 0 || player == 2)
+                                position = PlayerPosition.Op;
+                            else
+                                position = PlayerPosition.OpTag;
+                        }
                     }
                     else
                     {

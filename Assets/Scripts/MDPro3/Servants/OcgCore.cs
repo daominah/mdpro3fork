@@ -5270,15 +5270,32 @@ namespace MDPro3
         {
             if (condition == Condition.Duel)
             {
+                var selfType = Program.I().room.selfType;
                 if (player0Name.text == name_0)
                 {
-                    player0Frame.material = Appearance.duelFrameMat0;
-                    player0Frame.sprite = Appearance.duelFace0;
+                    if(selfType == 0 || selfType == 2)
+                    {
+                        player0Frame.material = Appearance.duelFrameMat0;
+                        player0Frame.sprite = Appearance.duelFace0;
+                    }
+                    else
+                    {
+                        player0Frame.material = Appearance.duelFrameMat0Tag;
+                        player0Frame.sprite = Appearance.duelFace0Tag;
+                    }
                 }
                 else
                 {
-                    player0Frame.material = Appearance.duelFrameMat0Tag;
-                    player0Frame.sprite = Appearance.duelFace0Tag;
+                    if (selfType == 0 || selfType == 2)
+                    {
+                        player0Frame.material = Appearance.duelFrameMat0Tag;
+                        player0Frame.sprite = Appearance.duelFace0Tag;
+                    }
+                    else
+                    {
+                        player0Frame.material = Appearance.duelFrameMat0;
+                        player0Frame.sprite = Appearance.duelFace0;
+                    }
                 }
                 if (player1Name.text == name_1)
                 {
