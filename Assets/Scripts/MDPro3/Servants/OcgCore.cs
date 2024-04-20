@@ -6671,6 +6671,8 @@ namespace MDPro3
 
         void ShowSaveReplay()
         {
+            if (!duelEnded)
+                return;
             var selections = new List<string>()
             {
                 InterString.Get("±£´æ»Ø·Å"),
