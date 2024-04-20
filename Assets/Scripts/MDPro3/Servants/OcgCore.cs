@@ -4399,10 +4399,15 @@ namespace MDPro3
                             allOnfield = false;
                             break;
                         }
+                    if (!string.IsNullOrEmpty(ES_selectHint))
+                        ES_selectUnselectHint = ES_selectHint;
+                    if (string.IsNullOrEmpty(ES_selectUnselectHint))
+                        ES_selectUnselectHint = InterString.Get("ÇëÑ¡Ôñ¿¨Æ¬");
+
                     if (allOnfield)
-                        FieldSelect(ES_selectHint, cardsInSelection, 1, 1, cancelable, finishable);
+                        FieldSelect(ES_selectUnselectHint, cardsInSelection, 1, 1, cancelable, finishable);
                     else
-                        ShowPopupSelectCard(ES_selectHint, cardsInSelection, 1, 1, cancelable, finishable);
+                        ShowPopupSelectCard(ES_selectUnselectHint, cardsInSelection, 1, 1, cancelable, finishable);
                     break;
                 case GameMessage.SelectSum:
                     if (InIgnoranceReplay()) break;
@@ -5518,7 +5523,7 @@ namespace MDPro3
         {
             foreach (var place in places)
                 place.InitializeSelectCardInThisZone(cards);
-            fieldHint = hint;
+            fieldHint = string.IsNullOrEmpty(hint) ? InterString.Get("ÇëÑ¡Ôñ¿¨Æ¬") : hint;
             fieldMin = min;
             fieldMax = max;
             fieldExitable = exitable; 
@@ -5749,13 +5754,10 @@ namespace MDPro3
             };
         }
 
-        string lastHint = string.Empty;
         public void ShowPopupSelectCard(string hint, List<GameCard> cards, int min, int max, bool exitable, bool sendable)
         {
             if (string.IsNullOrEmpty(hint))
-                hint = lastHint;
-            else
-                lastHint = hint;
+                hint = InterString.Get("ÇëÑ¡Ôñ¿¨Æ¬");
             var handler = Addressables.InstantiateAsync("PopupDuelSelectCard");
             handler.Completed += (result) =>
             {

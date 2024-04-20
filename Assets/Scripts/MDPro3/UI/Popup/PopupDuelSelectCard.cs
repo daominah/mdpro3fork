@@ -328,14 +328,13 @@ namespace MDPro3.UI
                     break;
                 case GameMessage.AnnounceCard:
                     foreach (var mono in monos)
-                    {
                         if (mono.selected)
                         {
                             binaryMaster = new BinaryMaster();
                             binaryMaster.writer.Write(mono.card.GetData().Id);
                             Program.I().ocgcore.SendReturn(binaryMaster.Get());
                         }
-                    }
+                    Program.I().ocgcore.ClearAnnounceCards();
                     break;
                 case GameMessage.SortCard:
                 case GameMessage.SortChain:
