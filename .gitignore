@@ -22,8 +22,7 @@ ExportedObj/
 [Ll]ibrary/
 [Tt]emp/
 [Oo]bj/
-[Bb]uild/
-[Bb]uilds/
+/[Bb]uild/
 Logs/
 UserSettings/
 *.pidb.meta
@@ -35,22 +34,21 @@ sysinfo.txt
 *.unitypackage
 
 # MDPro3 Assets
-Android/
-Art/
-Art2/
-AssetsUnused/
-CardGenerated/
-[Dd]ata/
-[Dd]eck/
-[Dd]IY/
-[Ee]xpansions/
-[Pp]uzzle/
-[Rr]eplay/
-StandaloneWindows64/
-Tools/YGO Classes/build/android/obj/
+/Android/
+/Art/
+/Art2/
+/AssetsUnused/
+/CardGenerated/
+/[Dd]ata/
+/[Dd]eck/
+/[Dd]IY/
+/[Ee]xpansions/
+/[Pp]uzzle/
+/[Rr]eplay/
+/StandaloneWindows64/
+/TempFolder/
+Tools/YGO Classes/build/windows/build/
 Tools/YGO Classes/build/android/libs/
-Tools/YGO Classes/windows/build/
-TempFolder/
 
 Assets/Spine/
 Assets/SpineWallpaper/
