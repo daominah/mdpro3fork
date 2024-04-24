@@ -1,0 +1,237 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: SE_SYS
+  m_EditorClassIdentifier: 
+  m_GroupName: SE_SYS
+  m_Data:
+    m_SerializedData: []
+  m_GUID: db254bcb3806efb498327d3fd46e9eab
+  m_SerializeEntries:
+  - m_GUID: 23a3bcb3bb251034389f06c130513c01
+    m_Address: SE_WCS_HOLDING_01
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 086d97a5dd4a6814d9032e5a2946df13
+    m_Address: SE_TOURNAMENT_HOLD
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 29a6d3c55776f8b4d95fe34b642465e7
+    m_Address: SE_TITLE_START
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: dd8cae9b4c4800a409a25f021d79c967
+    m_Address: SE_TEAM_VICTORY
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6bed6bc293720cd47870af5cf419bb8e
+    m_Address: SE_TEAM_LOSE
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8c6edbdbb801d4a45be6d976bfa9f3c2
+    m_Address: SE_TEAM_DRAW
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c06bc16907661ef46aef60b262fad14b
+    m_Address: SE_TEAM_CROWN_R
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 55d4fbe77f30f1545ad0151729ffd758
+    m_Address: SE_TEAM_CROWN_L
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 44ec6792d591e3f4c82a7f42a152cfe7
+    m_Address: SE_TEAM_CONFIRM
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: bd6063a37773fe744a791a99d934bd8d
+    m_Address: SE_SYS_VS_OP
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8dba14c05a5acdb4f9f9fd28eed3e883
+    m_Address: SE_SYS_VS_COUNT
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a21749a91a26c8d4c8d9902e8802de7b
+    m_Address: SE_SYS_VS_CONFIRM
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c8972febfe8d46549872e37405591563
+    m_Address: SE_SYS_VERIFY_KIRAKIRA_01
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 28a808a53e55984409c86a89c5f31965
+    m_Address: SE_SYS_VERIFY_03
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 221880bdde89615428c932de912ec4ee
+    m_Address: SE_SYS_VERIFY_02
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d55d16824dbb0cd47b21786ec96d0144
+    m_Address: SE_SYS_VERIFY
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8c33af153b47eda4b9908881a919d175
+    m_Address: SE_STRUCTURE_CARD_OPEN
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 547488a71d1ac3a48acf0b53244e595c
+    m_Address: SE_STRUCTURE_CARD_GET
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5ae3bf9aeb952674a9e397a2f2b65d7b
+    m_Address: SE_STRUCTURE_CARD_CLOSE
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 028ece3075428384491c9f7d588a1bd2
+    m_Address: SE_ROOM_SITDOWN
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c54e87921dba02c4ca5b2f2005b9d0a2
+    m_Address: SE_MENU_SLIDE_04
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 840bbf59cbfb1bf45b3c583f9c892ed6
+    m_Address: SE_MENU_SLIDE_03
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 999b63e72bbda774599ac5f55e31d6e6
+    m_Address: SE_MENU_SLIDE_02
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: bdfa94d63ec55654196e5a1684ae1f95
+    m_Address: SE_MENU_SLIDE_01
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a7e291f58d47ca34182d99e26effad45
+    m_Address: SE_MENU_SELECT_02
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e6f5545466ba4a942b03a2763dd2a478
+    m_Address: SE_MENU_SELECT_01
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6f1489cab61db2f4595980933e84e980
+    m_Address: SE_MENU_S_DECIDE_02
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 63073dba95ae3a148aa7d649509d0391
+    m_Address: SE_MENU_S_DECIDE_01
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 3c1274b4b92ed4440abc84e0e7a1bea5
+    m_Address: SE_MENU_OVERLAP_02
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f8c90dc5314cd2d4496e31a7b02254bf
+    m_Address: SE_MENU_OVERLAP
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6228668bdf08c2f4497b57dcf227e7b1
+    m_Address: SE_MENU_DECIDE
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 0b86a0c7628a3b04a9abadc0ce2dcb88
+    m_Address: SE_MENU_CANCEL
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 1914893cc97dd36428846351203a36bb
+    m_Address: SE_LEVEL_UP
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 53f00acd9d463b2408f288292fb6052f
+    m_Address: SE_DUELISTCUP_LVUP
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 903a6558f54c51e4296464bb230820c6
+    m_Address: SE_DUELISTCUP_2ND_DPUP
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: b96ae4bbd3489784cabfae8d1bec3893
+    m_Address: SE_DUEL_ENTRY_VS
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ca445d79b033f3845bcbe301e8780345
+    m_Address: SE_DUEL_ENTRY_TEAM_VS2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8b3cf3d60b33aa64687254e9028d3178
+    m_Address: SE_DUEL_ENTRY_TEAM_HANDLE
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e6a2b167e5a503d489a127a20f1021b2
+    m_Address: SE_DUEL_ENTRY_LOOP_ED
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: fd1cf9d5e47938f4e92418d3ddee7c8c
+    m_Address: SE_DUEL_ENTRY_LOOP_02
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ac90bb20a23742c41a818ee753bb0920
+    m_Address: SE_DUEL_ENTRY_LOOP
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 980b5925845eeae45a99ec73dce3793f
+    m_Address: SE_DUEL_ENTRY_GOOUT
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d9bce9e265eee054c92541694ea943c8
+    m_Address: SE_DUEL_ENTRY_COIN_TAIL
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d5a1d8a4383113647912875a7fd81edf
+    m_Address: SE_DUEL_ENTRY_COIN_HEAD
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8cccb01f9a0f9d045bbc731bb30074b2
+    m_Address: SE_DUEL_ENTRY_COIN
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e4381ceddc645de499c1bc4fc160d005
+    m_Address: SE_DPASS_ACQUIRE
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 184051ed80dadd14db5dab3cc67379ed
+    m_Address: SE_DECK_WINDOW_OPEN
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 680888714f89c554591641db423f89d7
+    m_Address: SE_DECK_SECRET_KEY
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4bf945c505a735140b310a69bc8f5d5c
+    m_Address: SE_DECK_PLUS
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e6e0341185792924a89dd9466ad4ba76
+    m_Address: SE_DECK_MINUS
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5083f40c10be8f740bdd8e183e9a01b1
+    m_Address: SE_DECK_CRAFT_02
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2fbc4ba8cd003cf4f8f6b0822fd363fc
+    m_Address: SE_DECK_CRAFT_01
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: eb86f5e61f8fc41458d53f074b9fe902
+    m_Address: SE_DECK_CARD_SELECT
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: e38330e9272b0a94a916f68bd5115c96, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 7805c1070168ca94eb98efe60b650861, type: 2}
+    - {fileID: 11400000, guid: e0464e78542135046a320bd050663a09, type: 2}
