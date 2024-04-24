@@ -40,7 +40,6 @@ sysinfo.txt
 /AssetsUnused/
 /CardGenerated/
 /[Dd]eck/
-/[Dd]IY/
 /[Ee]xpansions/
 /[Pp]uzzle/
 /[Rr]eplay/
@@ -54,8 +53,6 @@ Data/hosts.conf
 Data/sr.ydk
 Data/ur.ydk
 
-Assets/Spine/
-Assets/SpineWallpaper/
-Assets/StreamingAssets/
-Assets/desktop.ini.meta
-Assets/desktop.ini
+/Assets/Spine/
+/Assets/SpineWallpaper/
+/Assets/StreamingAssets/
