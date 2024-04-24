@@ -308,7 +308,16 @@ namespace MDPro3
                         }
                 }
                 if (currentServant == null)
-                    currentServant = cutin;
+                {
+                    foreach (var servant in servants)
+                        if (servant.isShowed)
+                        {
+                            currentServant = servant;
+                            break;
+                        }
+                    if(currentServant == null)
+                        currentServant = online;
+                }
                 currentServant.OnReturn();
             }
         }

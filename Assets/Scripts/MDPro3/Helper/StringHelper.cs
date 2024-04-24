@@ -36,20 +36,23 @@ namespace MDPro3
             var language = Config.Get("Language", "zh-CN");
             var path = Program.localesPath + Program.slash + language + "/strings.conf";
             var text = File.ReadAllText(path);
-            foreach (var conf in Directory.GetFiles("Expansions", "*.conf"))
-                text += "\r\n" + File.ReadAllText(conf);
-            foreach (var zip in ZipHelper.zips)
+            if(Config.Get("Expansions", "1") == "1")
             {
-                if (zip.Name.ToLower().EndsWith("script.zip"))
-                    continue;
-                foreach (var file in zip.EntryFileNames)
+                foreach (var conf in Directory.GetFiles("Expansions", "*.conf"))
+                    text += "\r\n" + File.ReadAllText(conf);
+                foreach (var zip in ZipHelper.zips)
                 {
-                    if (file.ToLower().EndsWith(".conf"))
+                    if (zip.Name.ToLower().EndsWith("script.zip"))
+                        continue;
+                    foreach (var file in zip.EntryFileNames)
                     {
-                        var ms = new MemoryStream();
-                        var e = zip[file];
-                        e.Extract(ms);
-                        text += "\r\n" + Encoding.UTF8.GetString(ms.ToArray());
+                        if (file.ToLower().EndsWith(".conf"))
+                        {
+                            var ms = new MemoryStream();
+                            var e = zip[file];
+                            e.Extract(ms);
+                            text += "\r\n" + Encoding.UTF8.GetString(ms.ToArray());
+                        }
                     }
                 }
             }
@@ -57,23 +60,27 @@ namespace MDPro3
             language = Config.Get("CardLanguage", "zh-CN");
             path = Program.localesPath + Program.slash + language + "/strings.conf";
             string textForRender = File.ReadAllText(path);
-            foreach (var conf in Directory.GetFiles("Expansions", "*.conf"))
-                textForRender += "\r\n" + File.ReadAllText(conf);
-            foreach (var zip in ZipHelper.zips)
+            if (Config.Get("Expansions", "1") == "1")
             {
-                if (zip.Name.ToLower().EndsWith("script.zip"))
-                    continue;
-                foreach (var file in zip.EntryFileNames)
+                foreach (var conf in Directory.GetFiles("Expansions", "*.conf"))
+                    textForRender += "\r\n" + File.ReadAllText(conf);
+                foreach (var zip in ZipHelper.zips)
                 {
-                    if (file.ToLower().EndsWith(".conf"))
+                    if (zip.Name.ToLower().EndsWith("script.zip"))
+                        continue;
+                    foreach (var file in zip.EntryFileNames)
                     {
-                        var ms = new MemoryStream();
-                        var e = zip[file];
-                        e.Extract(ms);
-                        textForRender += "\r\n" + Encoding.UTF8.GetString(ms.ToArray());
+                        if (file.ToLower().EndsWith(".conf"))
+                        {
+                            var ms = new MemoryStream();
+                            var e = zip[file];
+                            e.Extract(ms);
+                            textForRender += "\r\n" + Encoding.UTF8.GetString(ms.ToArray());
+                        }
                     }
                 }
             }
+
             InitializeContent(text, textForRender);
         }
 

@@ -1,6 +1,7 @@
 ﻿using DG.Tweening;
 using MDPro3.UI;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
@@ -8,6 +9,7 @@ using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.Networking;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
 using ShadowResolution = UnityEngine.Rendering.Universal.ShadowResolution;
@@ -137,7 +139,13 @@ namespace MDPro3
         public Button exportReplay;
         public Button exportPicture;
         public Button clearPicture;
+
+        [Header("Expansions")]
+        public Button supportExpansions;
+        public Text supportExpansionsValue;
         public Button clearExpansions;
+        public Button updatePrerelease;
+        public Text updatePrereleaseValue;
 
         public override void Initialize()
         {
@@ -219,6 +227,9 @@ namespace MDPro3
             voiceVol.value = int.Parse(Config.Get("VoiceVol", "700")) / (float)1000;
             fps.value = int.Parse(Config.Get("FPS", "60"));
             scale.value = int.Parse(Config.Get("Scale", "1000")) / (float)1000;
+
+            supportExpansions.onClick.AddListener(OnSupportExpansions);
+            updatePrerelease.onClick.AddListener(OnUpdatePrerelease);
 
             var defau = "1000";
 #if UNITY_ANDROID
@@ -317,6 +328,9 @@ namespace MDPro3
             Config.Set("WatchAutoInfo", SaveBool(watchAutoInfoValue.text));
             Config.Set("ReplayAutoInfo", SaveBool(replayAutoInfoValue.text));
             Config.Set("Timing", SaveBool(timingValue.text));
+
+            Config.Set("Expansions", SaveBool(supportExpansionsValue.text));
+
             Config.Save();
         }
         public string SaveBool(string value)
@@ -327,6 +341,8 @@ namespace MDPro3
             if (value == InterString.Get("有"))
                 returnValue = "1";
             if (value == InterString.Get("左"))
+                returnValue = "1";
+            if (value == InterString.Get("是"))
                 returnValue = "1";
             return returnValue;
         }
@@ -938,6 +954,12 @@ namespace MDPro3
                 autoRPSValue.text = InterString.Get("关");
             else
                 autoRPSValue.text = InterString.Get("开");
+
+            value = Config.Get("Expansions", "1");
+            if (value == "0")
+                supportExpansionsValue.text = InterString.Get("否");
+            else
+                supportExpansionsValue.text = InterString.Get("是");
         }
         public void OnDuelAppearcanceClick()
         {
@@ -1263,6 +1285,88 @@ namespace MDPro3
                 Program.I().InitializeForDataChange();
             }, null);
         }
+
+        void OnSupportExpansions()
+        {
+            if (supportExpansionsValue.text == InterString.Get("否"))
+            {
+                supportExpansionsValue.text = InterString.Get("是");
+                Config.Set("Expansions", "1");
+            }
+            else
+            {
+                supportExpansionsValue.text = InterString.Get("否");
+                Config.Set("Expansions", "0");
+            }
+            UIManager.ChangeLanguage();
+        }
+
+        bool checking;
+        void OnUpdatePrerelease()
+        {
+            if (!checking)
+            {
+                checking = true;
+                StartCoroutine(UpdatePrereleaseAsync());
+            }
+        }
+
+        public static readonly string prereleaseVersionUrl = "https://cdn02.moecube.com:444/ygopro-super-pre/data/version.txt";
+        public static readonly string prereleasePackUrl = "https://cdn02.moecube.com:444/ygopro-super-pre/archive/ygopro-super-pre.ypk";
+
+        IEnumerator UpdatePrereleaseAsync()
+        {
+            var filePath = Path.Combine(Program.expansionsPath, Path.GetFileName(prereleasePackUrl));
+            if (!File.Exists(filePath))
+            {
+                Config.Set("Prerelease", "0");
+                Config.Save();
+            }
+
+            var www = UnityWebRequest.Get(prereleaseVersionUrl);
+            www.SendWebRequest();
+            while (!www.isDone)
+            {
+                yield return null;
+                updatePrereleaseValue.text = InterString.Get("检查更新中");
+            }
+            if (www.result == UnityWebRequest.Result.Success)
+            {
+                var result = www.downloadHandler.text;
+                var lines = result.Replace("\r", "").Split('\n');
+                if (Config.Get("Prerelease", "0") != lines[0])
+                {
+                    if(!Directory.Exists(Program.expansionsPath))
+                        Directory.CreateDirectory(Program.expansionsPath);
+                    var download = UnityWebRequest.Get(prereleasePackUrl);
+                    download.SendWebRequest();
+                    MessageManager.Cast("正在更新，请耐心等待更待更新完成再进行其他操作。");
+                    while (!download.isDone)
+                    {
+                        yield return null;
+                        updatePrereleaseValue.text = (download.downloadProgress * 100f).ToString("0.##") + "%";
+                    }
+                    if(download.result == UnityWebRequest.Result.Success)
+                    {
+                        ZipHelper.Dispose();
+                        File.WriteAllBytes(filePath, download.downloadHandler.data);
+                        MessageManager.Cast("先行卡更新成功。");
+                        Config.Set("Prerelease", lines[0]);
+                        Config.Save();
+                        Program.I().InitializeForDataChange();
+                    }
+                    else
+                        MessageManager.Cast("先行卡更新失败。");
+                }
+                else
+                    MessageManager.Cast("先行卡已是最新版。");
+            }
+            else
+                MessageManager.Cast(InterString.Get("检查更新失败！"));
+            updatePrereleaseValue.text = string.Empty;
+            checking = false;
+        }
+
         #endregion
 
         public void OnAboutGame()

@@ -124,19 +124,6 @@ namespace MDPro3
                 manager.gameObject.SetActive(true);
         }
 
-        public IEnumerator LoadDummyCardLoadingPic(ElementObjectManager manager, int code, bool active = false)
-        {
-            if (active)
-                manager.gameObject.SetActive(false);
-            var ie = LoadCardAsync(code, true);
-            while (ie.MoveNext())
-                yield return null;
-            manager.GetElement<Renderer>("DummyCardModel_side").material = cardMatSide;
-            manager.GetElement<Renderer>("DummyCardModel_front").material.SetTexture("_LoadingTex", ie.Current);
-            manager.GetElement<Renderer>("DummyCardModel_front").material.SetFloat("_LoadingBlend", 1);
-            if (active)
-                manager.gameObject.SetActive(true);
-        }
 
         public static IEnumerator<Texture2D> LoadFromFileAsync(string path)
         {

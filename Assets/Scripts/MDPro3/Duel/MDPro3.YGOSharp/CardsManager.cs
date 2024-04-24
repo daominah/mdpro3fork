@@ -29,26 +29,30 @@ namespace MDPro3.YGOSharp
                 databaseFullPath = Program.localesPath + Program.slash + "zh-CN/cards.cdb";
             _cards.Clear();
             LoadCDB(databaseFullPath);
-            foreach(var cdb in Directory.GetFiles("Expansions", "*.cdb"))
-                LoadCDB(cdb);
-            foreach(var zip in ZipHelper.zips)
+            if (Config.Get("Expansions", "1") == "1")
             {
-                if (zip.Name.ToLower().EndsWith("script.zip"))
-                    continue;
-                foreach (var file in zip.EntryFileNames)
+                foreach (var cdb in Directory.GetFiles("Expansions", "*.cdb"))
+                    LoadCDB(cdb);
+                foreach (var zip in ZipHelper.zips)
                 {
-                    if (file.ToLower().EndsWith(".cdb"))
+                    if (zip.Name.ToLower().EndsWith("script.zip"))
+                        continue;
+                    foreach (var file in zip.EntryFileNames)
                     {
-                        var e = zip[file];
-                        if (!Directory.Exists(Program.tempFolder))
-                            Directory.CreateDirectory(Program.tempFolder);
-                        var tempFile = Path.Combine(Path.GetFullPath(Program.tempFolder), file);
-                        e.Extract(Path.GetFullPath(Program.tempFolder), ExtractExistingFileAction.OverwriteSilently);
-                        LoadCDB(tempFile);
-                        File.Delete(tempFile);
+                        if (file.ToLower().EndsWith(".cdb"))
+                        {
+                            var e = zip[file];
+                            if (!Directory.Exists(Program.tempFolder))
+                                Directory.CreateDirectory(Program.tempFolder);
+                            var tempFile = Path.Combine(Path.GetFullPath(Program.tempFolder), file);
+                            e.Extract(Path.GetFullPath(Program.tempFolder), ExtractExistingFileAction.OverwriteSilently);
+                            LoadCDB(tempFile);
+                            File.Delete(tempFile);
+                        }
                     }
                 }
             }
+
             UpdateSetNames();
             PacksManager.Initialize();
 
@@ -58,23 +62,26 @@ namespace MDPro3.YGOSharp
             if (!File.Exists(databaseFullPath))
                 databaseFullPath = Program.localesPath + Program.slash + "zh-CN/cards.cdb";
             LoadCDB(databaseFullPath, true);
-            foreach (var cdb in Directory.GetFiles("Expansions", "*.cdb"))
-                LoadCDB(cdb, true);
-            foreach (var zip in ZipHelper.zips)
+            if (Config.Get("Expansions", "1") == "1")
             {
-                if (zip.Name.ToLower().EndsWith("script.zip"))
-                    continue;
-                foreach (var file in zip.EntryFileNames)
+                foreach (var cdb in Directory.GetFiles("Expansions", "*.cdb"))
+                    LoadCDB(cdb, true);
+                foreach (var zip in ZipHelper.zips)
                 {
-                    if (file.ToLower().EndsWith(".cdb"))
+                    if (zip.Name.ToLower().EndsWith("script.zip"))
+                        continue;
+                    foreach (var file in zip.EntryFileNames)
                     {
-                        var e = zip[file];
-                        if (!Directory.Exists(Program.tempFolder))
-                            Directory.CreateDirectory(Program.tempFolder);
-                        var tempFile = Path.Combine(Path.GetFullPath(Program.tempFolder), file);
-                        e.Extract(Path.GetFullPath(Program.tempFolder), ExtractExistingFileAction.OverwriteSilently);
-                        LoadCDB(tempFile, true);
-                        File.Delete(tempFile);
+                        if (file.ToLower().EndsWith(".cdb"))
+                        {
+                            var e = zip[file];
+                            if (!Directory.Exists(Program.tempFolder))
+                                Directory.CreateDirectory(Program.tempFolder);
+                            var tempFile = Path.Combine(Path.GetFullPath(Program.tempFolder), file);
+                            e.Extract(Path.GetFullPath(Program.tempFolder), ExtractExistingFileAction.OverwriteSilently);
+                            LoadCDB(tempFile, true);
+                            File.Delete(tempFile);
+                        }
                     }
                 }
             }
@@ -1990,8 +1997,12 @@ namespace MDPro3.YGOSharp
 
         static string path = "Data/pack";
 
+        static bool initialized;
+
         internal static void Initialize()
         {
+            if (initialized)
+                return;
             if (Directory.Exists(path))
             {
                 var fileInfos = new DirectoryInfo(path).GetFiles();
@@ -1999,6 +2010,7 @@ namespace MDPro3.YGOSharp
                     if (file.Name.ToLower().EndsWith(".db"))
                         LoadDataBase(path + Program.slash + file.Name);
                 InitializeSec();
+                initialized = true;
             }
         }
 

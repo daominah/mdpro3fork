@@ -89,6 +89,7 @@ namespace MDPro3
 
         public bool inAi;
         public Condition condition = Condition.N;
+        public bool isTag;
         public ChainCondition chainCondition = ChainCondition.Smart;
         public Deck deck;
         public Deck sideReference = new Deck();
@@ -1561,7 +1562,7 @@ namespace MDPro3
                     name_1 = r.ReadUnicode(50);
                     name_1_tag = r.ReadUnicode(50);
                     name_1_c = r.ReadUnicode(50);
-                    var isTag = !(name_0_tag == "---" && name_1_tag == "---" && name_0 == name_0_c && name_1 == name_1_c);
+                    isTag = !(name_0_tag == "---" && name_1_tag == "---" && name_0 == name_0_c && name_1 == name_1_c);
 
                     if (Config.Get("ReplayPlayerName0", "@ui").Length > 0)
                         name_0 = Config.Get("ReplayPlayerName0", "@ui");
@@ -1621,6 +1622,7 @@ namespace MDPro3
                     name_1_c = name_1;
                     player0Name.text = name_0_c;
                     player1Name.text = name_1_c;
+                    isTag = false;
                     SetFace();
                     break;
                 case GameMessage.Win:
@@ -1810,7 +1812,10 @@ namespace MDPro3
                             player1Name.text = name_1_tag;
                         else
                             player0Name.text = name_0_tag;
+                        isTag = true;
                     }
+                    else
+                        isTag = false;
                     SetFace();
                     GCS_CreateBundle(r.ReadInt16(), LocalPlayer(0), CardLocation.Deck);
                     GCS_CreateBundle(r.ReadInt16(), LocalPlayer(0), CardLocation.Extra);
@@ -4252,12 +4257,12 @@ namespace MDPro3
                     int forced = r.ReadByte();
                     var hint0 = r.ReadInt32();
                     var hint1 = r.ReadInt32();
-
                     var chainCards = new List<GameCard>();
                     for (var i = 0; i < count; i++)
                     {
                         var flag = 0;
-                        if (length_of_message % 12 != 0) flag = r.ReadChar();
+                        if (((length_of_message - 12) / count) % 12 != 0)
+                            flag = r.ReadChar();
                         code = r.ReadInt32() % 1000000000;
                         gps = r.ReadGPS();
                         desc = StringHelper.Get(r.ReadInt32());
@@ -4855,28 +4860,16 @@ namespace MDPro3
                     newWhite.transform.localScale = Vector3.one;
                     newWhite.GetComponent<SpriteRenderer>().color = Color.clear;
                 }
-            StartCoroutine(Program.I().texture_.LoadDummyCardLoadingPic(mner.GetElement<ElementObjectManager>("DummyCard01"), code[0], true));
+            StartCoroutine(Program.I().texture_.LoadDummyCard(mner.GetElement<ElementObjectManager>("DummyCard01"), code[0], true));
             mner.GetElement<ElementObjectManager>("DummyCard01").GetElement<Renderer>("DummyCardModel_front").material.renderQueue = 4000;
             if(count > 1)
-            {
-                StartCoroutine(Program.I().texture_.LoadDummyCardLoadingPic(mner.GetElement<ElementObjectManager>("DummyCard02"), code[1], true));
-                mner.GetElement<ElementObjectManager>("DummyCard02").GetElement<Renderer>("DummyCardModel_front").material.renderQueue = 4000;
-            }
+                StartCoroutine(Program.I().texture_.LoadDummyCard(mner.GetElement<ElementObjectManager>("DummyCard02"), code[1], true));
             if (count > 2)
-            {
-                StartCoroutine(Program.I().texture_.LoadDummyCardLoadingPic(mner.GetElement<ElementObjectManager>("DummyCard03"), code[2], true));
-                mner.GetElement<ElementObjectManager>("DummyCard03").GetElement<Renderer>("DummyCardModel_front").material.renderQueue = 4000;
-            }
+                StartCoroutine(Program.I().texture_.LoadDummyCard(mner.GetElement<ElementObjectManager>("DummyCard03"), code[2], true));
             if (count > 3)
-            {
-                StartCoroutine(Program.I().texture_.LoadDummyCardLoadingPic(mner.GetElement<ElementObjectManager>("DummyCard04"), code[3], true));
-                mner.GetElement<ElementObjectManager>("DummyCard04").GetElement<Renderer>("DummyCardModel_front").material.renderQueue = 4000;
-            }
+                StartCoroutine(Program.I().texture_.LoadDummyCard(mner.GetElement<ElementObjectManager>("DummyCard04"), code[3], true));
             if (count > 4)
-            {
-                StartCoroutine(Program.I().texture_.LoadDummyCardLoadingPic(mner.GetElement<ElementObjectManager>("DummyCard05"), code[4], true));
-                mner.GetElement<ElementObjectManager>("DummyCard05").GetElement<Renderer>("DummyCardModel_front").material.renderQueue = 4000;
-            }
+                StartCoroutine(Program.I().texture_.LoadDummyCard(mner.GetElement<ElementObjectManager>("DummyCard05"), code[4], true));
             mner.GetComponent<PlayableDirector>().Play();
             var mono = mner.gameObject.AddComponent<DoWhenPlayableDirectorStop>();
             mono.action = () => 
@@ -5273,15 +5266,23 @@ namespace MDPro3
                 var selfType = Program.I().room.selfType;
                 if (player0Name.text == name_0)
                 {
-                    if(selfType == 0 || selfType == 2)
+                    if (isTag)
                     {
-                        player0Frame.material = Appearance.duelFrameMat0;
-                        player0Frame.sprite = Appearance.duelFace0;
+                        if (selfType == 0 || selfType == 2)
+                        {
+                            player0Frame.material = Appearance.duelFrameMat0;
+                            player0Frame.sprite = Appearance.duelFace0;
+                        }
+                        else
+                        {
+                            player0Frame.material = Appearance.duelFrameMat0Tag;
+                            player0Frame.sprite = Appearance.duelFace0Tag;
+                        }
                     }
                     else
                     {
-                        player0Frame.material = Appearance.duelFrameMat0Tag;
-                        player0Frame.sprite = Appearance.duelFace0Tag;
+                        player0Frame.material = Appearance.duelFrameMat0;
+                        player0Frame.sprite = Appearance.duelFace0;
                     }
                 }
                 else

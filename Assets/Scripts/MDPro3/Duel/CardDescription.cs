@@ -55,13 +55,14 @@ namespace MDPro3
         public void Show(GameCard card, Material mat)
         {
             var data = card.GetData();
-            var tails = "<color=#0FFF0F>" + card.tails.managedString + "</color>";
-            var p = card.p;
-            if (data.Id == 0)
+            var origin = CardsManager.Get(data.Id);
+
+            if (origin.Id == 0)
                 return;
 
+            var tails = "<color=#0FFF0F>" + card.tails.managedString + "</color>";
+            var p = card.p;
             this.data = data;
-            var origin = CardsManager.Get(data.Id);
 
             manager.GetElement<RectTransform>("Window").DOAnchorPosX(20, 0.01f);
             showing = true;
