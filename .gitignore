@@ -39,7 +39,6 @@ sysinfo.txt
 /Art2/
 /AssetsUnused/
 /CardGenerated/
-/[Dd]ata/
 /[Dd]eck/
 /[Dd]IY/
 /[Ee]xpansions/
@@ -49,6 +48,11 @@ sysinfo.txt
 /TempFolder/
 Tools/YGO Classes/build/windows/build/
 Tools/YGO Classes/build/android/libs/
+Data/book.ydk
+Data/config.conf
+Data/hosts.conf
+Data/sr.ydk
+Data/ur.ydk
 
 Assets/Spine/
 Assets/SpineWallpaper/
