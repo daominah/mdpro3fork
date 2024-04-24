@@ -2,6 +2,16 @@
 
 A new version of YGOPro in Unity with MasterDuel Assets.
 
+
+### Other required folders
+
+* Android: You can find it from the Android apk.
+
+* StandaloneWindows64: You can find it from the windows client.
+
+* Art: https://code.mycard.moe/mycard/hd-arts
+
+
 ### Tools
 
 * YGO Classes: Used to compile dependencies from YGOPro in this project.
