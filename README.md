@@ -14,6 +14,8 @@ A new version of YGOPro in Unity with MasterDuel Assets.
 
 ### Tools
 
+* DumpShaders: Used for replacement during built-in assets packaging.
+
 * YGO Classes: Used to compile dependencies from YGOPro in this project.
 
 * Translations: python scripts used to split translation.csv to translation.conf.
