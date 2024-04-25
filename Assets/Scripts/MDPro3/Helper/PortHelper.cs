@@ -8,6 +8,8 @@ namespace MDPro3
 {
     public class PortHelper
     {
+        static List<string> filesToDelete = new List<string>();
+
         public static void ImportFiles()
         {
 #if UNITY_ANDROID && !UNITY_EDITOR
@@ -44,8 +46,7 @@ namespace MDPro3
 #if UNITY_ANDROID && !UNITY_EDITOR
             NativeFilePicker.ExportMultipleFiles(filePaths, ExportResult);
             if(!copy)
-                foreach(var file in filePaths)
-                    File.Delete(file);
+                filesToDelete = filePaths.ToList();
 #else
             StandaloneFileBrowser.OpenFolderPanelAsync(InterString.Get("请选择导出目录"), "", false, (string[] paths) =>
             {
@@ -159,7 +160,12 @@ namespace MDPro3
         static void ExportResult(bool sucess)
         {
             if (sucess)
+            {
                 MessageManager.Cast(InterString.Get("导出成功。"));
+                foreach(var file in filesToDelete)
+                    File.Delete(file);
+                filesToDelete.Clear();
+            }
             else
                 MessageManager.Cast(InterString.Get("导出失败。"));
         }
