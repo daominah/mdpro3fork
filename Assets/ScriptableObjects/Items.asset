@@ -728,6 +728,13 @@ MonoBehaviour:
     functional: 0
     secondFace: 0
     diy: 0
+  - id: 1010071
+    m_name: 
+    m_description: 
+    path: 
+    functional: 0
+    secondFace: 0
+    diy: 0
   - id: 1011001
     m_name: 
     m_description: 
@@ -1555,6 +1562,13 @@ MonoBehaviour:
     functional: 0
     secondFace: 0
     diy: 0
+  - id: 1032006
+    m_name: 
+    m_description: 
+    path: 
+    functional: 0
+    secondFace: 0
+    diy: 0
   - id: 1033001
     m_name: 
     m_description: 
@@ -2117,6 +2131,13 @@ MonoBehaviour:
     secondFace: 0
     diy: 0
   - id: 1070087
+    m_name: 
+    m_description: 
+    path: 
+    functional: 0
+    secondFace: 0
+    diy: 0
+  - id: 1070089
     m_name: 
     m_description: 
     path: 
@@ -3026,6 +3047,13 @@ MonoBehaviour:
     m_name: 
     m_description: 
     path: Avatarstand/avatarstand_u012
+    functional: 0
+    secondFace: 0
+    diy: 0
+  - id: 1111010
+    m_name: 
+    m_description: 
+    path: Avatarstand/avatarstand_u017
     functional: 0
     secondFace: 0
     diy: 0

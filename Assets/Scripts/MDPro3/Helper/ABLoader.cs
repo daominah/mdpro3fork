@@ -195,22 +195,8 @@ namespace MDPro3
             while (loadingPMat)
                 yield return null;
             loadingPMat = true;
-            if (File.Exists(Program.root + "Protector/" + code + Program.slash + code))
-            {
-                var abr = AssetBundle.LoadFromFileAsync(Program.root + "Protector/" + code + Program.slash + code);
-                while (!abr.isDone)
-                    yield return null;
-                var abmr = AssetBundle.LoadFromFileAsync(Program.root + "Protector/" + code + "/PMat");
-                while (!abmr.isDone)
-                    yield return null;
-                var ab = abr.assetBundle;
-                var abm = abmr.assetBundle;
-                material = abm.LoadAsset<Material>("PMat");
-                material.renderQueue = 3000;
-                ab.Unload(false);
-                abm.Unload(false);
-            }
-            else
+
+            if (File.Exists(Program.root + "Protector/" + code + Program.slash + code + "_1"))
             {
                 var ab1r = AssetBundle.LoadFromFileAsync(Program.root + "Protector/" + code + Program.slash + code + "_1");
                 while (!ab1r.isDone)
@@ -243,6 +229,23 @@ namespace MDPro3
                 ab2.Unload(false);
                 if (ab3 != null)
                     ab3.Unload(false);
+                abm.Unload(false);
+
+            }
+
+            else
+            {
+                var abr = AssetBundle.LoadFromFileAsync(Program.root + "Protector/" + code + Program.slash + code);
+                while (!abr.isDone)
+                    yield return null;
+                var abmr = AssetBundle.LoadFromFileAsync(Program.root + "Protector/" + code + "/PMat");
+                while (!abmr.isDone)
+                    yield return null;
+                var ab = abr.assetBundle;
+                var abm = abmr.assetBundle;
+                material = abm.LoadAsset<Material>("PMat");
+                material.renderQueue = 3000;
+                ab.Unload(false);
                 abm.Unload(false);
             }
             if (cachedPMat.ContainsKey(code))

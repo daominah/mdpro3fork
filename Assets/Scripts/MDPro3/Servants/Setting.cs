@@ -300,9 +300,6 @@ namespace MDPro3
             Config.Set("DuelVoice", SaveBool(duelVoiceValue.text));
             Config.Set("WatchVoice", SaveBool(watchVoiceValue.text));
             Config.Set("ReplayVoice", SaveBool(replayVoiceValue.text));
-            Config.Set("DuelCloseup", SaveBool(duelCloseupValue.text));
-            Config.Set("WatchCloseup", SaveBool(watchCloseupValue.text));
-            Config.Set("ReplayCloseup", SaveBool(replayCloseupValue.text));
             Config.Set("DuelSummon", SaveBool(duelSummonValue.text));
             Config.Set("WatchSummon", SaveBool(watchSummonValue.text));
             Config.Set("ReplaySummon", SaveBool(replaySummonValue.text));
@@ -1021,23 +1018,47 @@ namespace MDPro3
         public void OnDuelCloseupClick()
         {
             if (duelCloseupValue.text == InterString.Get("开"))
+            {
                 duelCloseupValue.text = InterString.Get("关");
+                Config.Set("DuelCloseup", "0");
+            }
             else
+            {
                 duelCloseupValue.text = InterString.Get("开");
+                Config.Set("DuelCloseup", "1");
+            }
+            Config.Save();
+            Program.I().ocgcore.RefreshAllCardsLabel();
         }
         public void OnWatchCloseupClick()
         {
             if (watchCloseupValue.text == InterString.Get("开"))
+            {
                 watchCloseupValue.text = InterString.Get("关");
+                Config.Set("WatchCloseup", "0");
+            }
             else
+            {
                 watchCloseupValue.text = InterString.Get("开");
+                Config.Set("WatchCloseup", "1");
+            }
+            Config.Save();
+            Program.I().ocgcore.RefreshAllCardsLabel();
         }
         public void OnReplayCloseupClick()
         {
             if (replayCloseupValue.text == InterString.Get("开"))
+            {
                 replayCloseupValue.text = InterString.Get("关");
+                Config.Set("ReplayCloseup", "0");
+            }
             else
+            {
                 replayCloseupValue.text = InterString.Get("开");
+                Config.Set("ReplayCloseup", "0");
+            }
+            Config.Save();
+            Program.I().ocgcore.RefreshAllCardsLabel();
         }
         public void OnDuelSummonClick()
         {

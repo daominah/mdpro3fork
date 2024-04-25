@@ -48,6 +48,8 @@ namespace YgomGame.Duel
         private void Awake()
         {
             m_LPController = LabeledPlayableController.Create(GetComponent<PlayableDirector>());
+			foreach (var sr in transform.GetComponentsInChildren<SpriteRenderer>(true))
+				sr.sortingLayerName = "ChainSpot";
         }
 
         public void Play(int chainnum, uint location, bool cardexist, bool turn, Vector3 worldposition, bool mutesound)

@@ -20,6 +20,7 @@ namespace MDPro3
 
         static Dictionary<int, Texture2D> cachedArts = new Dictionary<int, Texture2D>();
         static Dictionary<int, Texture2D> cachedCards = new Dictionary<int, Texture2D>();
+        static Dictionary<int, Texture2D> cachedCloseups = new Dictionary<int, Texture2D>();
         static Dictionary<int, Texture2D> cachedMasks = new Dictionary<int, Texture2D>();
         static Dictionary<string, Sprite> cachedIcons = new Dictionary<string, Sprite>();
 
@@ -328,6 +329,49 @@ namespace MDPro3
                 Destroy(mask);
             cachedMasks.Clear();
         }
+
+        public IEnumerator<Texture2D> LoadCloseupAsync(int code, MeshRenderer renderer = null)
+        {
+            if(renderer != null)
+                renderer.gameObject.SetActive(false);
+            if (cachedCloseups.TryGetValue(code, out var returenValue))
+            {
+                if (renderer != null)
+                    ResizeCloseup(renderer, returenValue);
+                yield return returenValue;
+                yield break;
+            }
+            if (!Directory.Exists(Program.closeupPath))
+                Directory.CreateDirectory(Program.closeupPath);
+            var path = Program.closeupPath + Program.slash + code + ".png";
+            if (!File.Exists(path))
+                yield break;
+            IEnumerator ie = LoadFromFileAsync(path);
+            StartCoroutine(ie);
+            while (ie.MoveNext())
+                yield return null;
+            returenValue = ie.Current as Texture2D;
+            returenValue.name = "Closeup_" + code;
+            if (cachedCloseups.ContainsKey(code))
+            {
+                Destroy(returenValue);
+                returenValue = cachedCloseups[code];
+            }
+            else
+                cachedCloseups.Add(code, returenValue);
+            if (renderer != null)
+                ResizeCloseup(renderer, returenValue);
+            yield return returenValue;
+        }
+
+        void ResizeCloseup(MeshRenderer renderer, Texture2D tex)
+        {
+            renderer.material.mainTexture = tex;
+            var aspect = (float)tex.width / tex.height;
+            renderer.transform.localScale = new Vector3 (8f * aspect, 8f, 1f);
+            renderer.gameObject.SetActive(true);
+        }
+
         public Texture2D GetNameMask(int code, bool cache = false)
         {
             if (cachedMasks.ContainsKey(code))

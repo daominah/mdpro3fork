@@ -10,6 +10,7 @@ using YgomSystem.ElementSystem;
 using MDPro3.UI;
 using MDPro3.YGOSharp;
 using MDPro3.YGOSharp.OCGWrapper.Enums;
+using System.IO;
 
 namespace MDPro3
 {
@@ -67,6 +68,7 @@ namespace MDPro3
 
         public GameObject model;
         public ElementObjectManager manager;
+        float closeupLineColorIntensity = 1.5f;
         public void Dispose()
         {
             Destroy(model);
@@ -1162,6 +1164,9 @@ namespace MDPro3
                         && (p.location & (uint)CardLocation.Extra) == 0
                         && cacheP.sequence == Program.I().ocgcore.GetLocationCardCount(CardLocation.Extra, cacheP.controller) - 1)
                         StartCoroutine(Program.I().ocgcore.UpdateDeckTop(cacheP.controller));
+                    if ((p.position & (uint)CardPosition.FaceDown) > 0
+                        || (p.location & (uint)CardLocation.MonsterZone) == 0)
+                        HideLabel();
                 }));
                 sequence.Join(pivot.DOScale(GetCardScale(p), moveTime * 0.95f));
                 //Turn
@@ -1991,6 +1996,8 @@ namespace MDPro3
         int lastRace;
         public void RefreshLabel()
         {
+            if(model == null) 
+                return;
             if ((p.location & (uint)CardLocation.Onfield) == 0 || (p.position & (uint)CardPosition.FaceUp) == 0)
             {
                 HideLabel();
@@ -2258,19 +2265,40 @@ namespace MDPro3
                     manager.GetElement("TunerIconRoot").SetActive(false);
                 //Attribute
                 if ((data.Attribute & (uint)CardAttribute.Light) > 0)
+                {
                     manager.GetElement<SpriteRenderer>("IconAttribute").sprite = TextureManager.container.attributeLight;
+                    manager.GetElement<MeshRenderer>("Closeup").material.SetColor("_Color", new Color(1, 1, 0, 1) * closeupLineColorIntensity);
+                }
                 else if ((data.Attribute & (uint)CardAttribute.Dark) > 0)
+                {
                     manager.GetElement<SpriteRenderer>("IconAttribute").sprite = TextureManager.container.attributeDark;
+                    manager.GetElement<MeshRenderer>("Closeup").material.SetColor("_Color", new Color(1, 0, 1, 1) * closeupLineColorIntensity);
+                }
                 else if ((data.Attribute & (uint)CardAttribute.Water) > 0)
+                {
                     manager.GetElement<SpriteRenderer>("IconAttribute").sprite = TextureManager.container.attributeWater;
+                    manager.GetElement<MeshRenderer>("Closeup").material.SetColor("_Color", new Color(0, 1, 1, 1) * closeupLineColorIntensity);
+                }
                 else if ((data.Attribute & (uint)CardAttribute.Fire) > 0)
+                {
                     manager.GetElement<SpriteRenderer>("IconAttribute").sprite = TextureManager.container.attributeFire;
+                    manager.GetElement<MeshRenderer>("Closeup").material.SetColor("_Color", new Color(1, 0, 0, 1) * closeupLineColorIntensity);
+                }
                 else if ((data.Attribute & (uint)CardAttribute.Earth) > 0)
+                {
                     manager.GetElement<SpriteRenderer>("IconAttribute").sprite = TextureManager.container.attributeEarth;
+                    manager.GetElement<MeshRenderer>("Closeup").material.SetColor("_Color", new Color(1, 0.2f, 0, 1) * closeupLineColorIntensity);
+                }
                 else if ((data.Attribute & (uint)CardAttribute.Wind) > 0)
+                {
                     manager.GetElement<SpriteRenderer>("IconAttribute").sprite = TextureManager.container.attributeWind;
+                    manager.GetElement<MeshRenderer>("Closeup").material.SetColor("_Color", new Color(0, 1, 0, 1) * closeupLineColorIntensity);
+                }
                 else if ((data.Attribute & (uint)CardAttribute.Divine) > 0)
+                {
                     manager.GetElement<SpriteRenderer>("IconAttribute").sprite = TextureManager.container.attributeDivine;
+                    manager.GetElement<MeshRenderer>("Closeup").material.SetColor("_Color", new Color(1, 1, 0, 1) * closeupLineColorIntensity);
+                }
                 if (data.Id > 0 && data.Attribute != origin.Attribute)
                 {
                     manager.GetElement("IconAttributeChange").SetActive(true);
@@ -2458,6 +2486,9 @@ namespace MDPro3
                 manager.GetElement<TextMeshPro>("TextCounter").text = string.Empty;
             }
 
+            manager.GetElement<Transform>("DefaultShow").localEulerAngles = new Vector3(0f, 0f, 0f);
+            manager.GetElement<Transform>("DefaultHide").localEulerAngles = new Vector3(0f, 0f, 0f);
+            manager.GetElement<Transform>("CloseupOffset").localEulerAngles = new Vector3(0f, 0f, 0f);
 
             if (p.controller == 0)
             {
@@ -2475,28 +2506,63 @@ namespace MDPro3
             }
             else
             {
-                manager.GetElement<Transform>("MonsterMaterialsRoot").localEulerAngles = new Vector3(0f, 180f, 0f);
-                manager.GetElement<Transform>("CardAttackBody").localEulerAngles = new Vector3(0f, 180f, 0f);
-                manager.GetElement<Transform>("CardPendulumBody").localEulerAngles = new Vector3(0f, 180f, 0f);
-                manager.GetElement<Transform>("LinkCount").localEulerAngles = new Vector3(0f, 180f, 0f);
-                manager.GetElement<Transform>("CardLevel").localEulerAngles = new Vector3(0f, 180f, 0f);
-                manager.GetElement<Transform>("TunerIconRoot").localEulerAngles = new Vector3(0f, 180f, 0f);
-                manager.GetElement<Transform>("CardAttribute").localEulerAngles = new Vector3(0f, 180f, 0f);
-                manager.GetElement<Transform>("MagicTypeBase").localEulerAngles = new Vector3(0f, 180f, 0f);
-                manager.GetElement<Transform>("CardType").localEulerAngles = new Vector3(0f, 180f, 0f);
-                manager.GetElement<Transform>("CardCounter").localEulerAngles = new Vector3(0f, 180f, 0f);
-                manager.GetElement<Transform>("StatusIcon").localEulerAngles = new Vector3(0f, 180f, 0f);
+                if (CloseupConfig())
+                {
+                    manager.GetElement<Transform>("DefaultShow").localEulerAngles = new Vector3(0f, 180f, 0f);
+                    manager.GetElement<Transform>("DefaultHide").localEulerAngles = new Vector3(0f, 180f, 0f);
+                    manager.GetElement<Transform>("CloseupOffset").localEulerAngles = new Vector3(0f, 180f, 0f);
+
+                    manager.GetElement<Transform>("MonsterMaterialsRoot").localEulerAngles = new Vector3(0f, 0f, 0f);
+                    manager.GetElement<Transform>("CardAttackBody").localEulerAngles = new Vector3(0f, 0f, 0f);
+                    manager.GetElement<Transform>("CardPendulumBody").localEulerAngles = new Vector3(0f, 0f, 0f);
+                    manager.GetElement<Transform>("LinkCount").localEulerAngles = new Vector3(0f, 0f, 0f);
+                    manager.GetElement<Transform>("CardLevel").localEulerAngles = new Vector3(0f, 0f, 0f);
+                    manager.GetElement<Transform>("TunerIconRoot").localEulerAngles = new Vector3(0f, 0f, 0f);
+                    manager.GetElement<Transform>("CardAttribute").localEulerAngles = new Vector3(0f, 0f, 0f);
+                    manager.GetElement<Transform>("MagicTypeBase").localEulerAngles = new Vector3(0f, 0f, 0f);
+                    manager.GetElement<Transform>("CardType").localEulerAngles = new Vector3(0f, 0f, 0f);
+                    manager.GetElement<Transform>("CardCounter").localEulerAngles = new Vector3(0f, 0f, 0f);
+                    manager.GetElement<Transform>("StatusIcon").localEulerAngles = new Vector3(0f, 0f, 0f);
+                }
+                else
+                {
+                    manager.GetElement<Transform>("MonsterMaterialsRoot").localEulerAngles = new Vector3(0f, 180f, 0f);
+                    manager.GetElement<Transform>("CardAttackBody").localEulerAngles = new Vector3(0f, 180f, 0f);
+                    manager.GetElement<Transform>("CardPendulumBody").localEulerAngles = new Vector3(0f, 180f, 0f);
+                    manager.GetElement<Transform>("LinkCount").localEulerAngles = new Vector3(0f, 180f, 0f);
+                    manager.GetElement<Transform>("CardLevel").localEulerAngles = new Vector3(0f, 180f, 0f);
+                    manager.GetElement<Transform>("TunerIconRoot").localEulerAngles = new Vector3(0f, 180f, 0f);
+                    manager.GetElement<Transform>("CardAttribute").localEulerAngles = new Vector3(0f, 180f, 0f);
+                    manager.GetElement<Transform>("MagicTypeBase").localEulerAngles = new Vector3(0f, 180f, 0f);
+                    manager.GetElement<Transform>("CardType").localEulerAngles = new Vector3(0f, 180f, 0f);
+                    manager.GetElement<Transform>("CardCounter").localEulerAngles = new Vector3(0f, 180f, 0f);
+                    manager.GetElement<Transform>("StatusIcon").localEulerAngles = new Vector3(0f, 180f, 0f);
+                }
             }
 
             ShowLabel();
         }
 
+        bool closeupShowing;
         public void ShowLabel()
         {
             labelShowing = true;
             Transform labelRoot = manager.GetElement<Transform>("StatusLabelRoot");
             labelRoot.gameObject.SetActive(true);
             labelRoot.DOScale(1, 0.2f).SetEase(Ease.InCubic);
+            if (NeedShowCloseup())
+            {
+                if (!closeupShowing)
+                {
+                    closeupShowing = true;
+                    StartCoroutine(Program.I().texture_.LoadCloseupAsync(data.Id, manager.GetElement<MeshRenderer>("Closeup")));
+                }
+            }
+            else
+            {
+                closeupShowing = false;
+                manager.GetElement("Closeup").SetActive(false);
+            }
 
             HideHiddenLabel();
         }
@@ -2505,6 +2571,8 @@ namespace MDPro3
             labelShowing = false;
             Transform labelRoot = manager.GetElement<Transform>("StatusLabelRoot");
             labelRoot.DOScale(0, 0.2f).SetEase(Ease.OutCubic).OnComplete(() => labelRoot.gameObject.SetActive(false));
+            manager.GetElement("Closeup").SetActive(false);
+            closeupShowing = false;
         }
 
         public void ShowHiddenLabel()
@@ -2552,9 +2620,43 @@ namespace MDPro3
                 m_disabled = false;
 
             if (disabled)
+            {
                 cardFace.material.SetFloat("_Monochrome", 1);
+                manager.GetElement<Renderer>("Closeup").material.SetVector("RGBA", Vector4.zero);
+                manager.GetElement<Renderer>("Closeup").material.SetFloat("Mono", 1);
+            }
             else
+            {
                 cardFace.material.SetFloat("_Monochrome", 0);
+                manager.GetElement<Renderer>("Closeup").material.SetVector("RGBA", Vector4.one);
+                manager.GetElement<Renderer>("Closeup").material.SetFloat("Mono", 0);
+            }
+        }
+
+        bool NeedShowCloseup()
+        {
+            if (model == null)
+                return false;
+            if(!CloseupConfig())
+                return false;
+            if((p.location & (uint)CardLocation.MonsterZone) == 0)
+                return false;
+            if ((p.position & (uint)CardPosition.FaceDown) > 0)
+                return false;
+            if(!File.Exists(Program.closeupPath + Program.slash + data.Id + ".png"))
+                return false;
+            return true;
+        }
+
+        bool CloseupConfig()
+        {
+            if (Program.I().ocgcore.condition == OcgCore.Condition.Duel && Config.Get("DuelCloseup", "1") == "0")
+                return false;
+            if (Program.I().ocgcore.condition == OcgCore.Condition.Watch && Config.Get("WatchCloseup", "1") == "0")
+                return false;
+            if (Program.I().ocgcore.condition == OcgCore.Condition.Replay && Config.Get("ReplayCloseup", "1") == "0")
+                return false;
+            return true;
         }
         #endregion
 

@@ -2066,11 +2066,6 @@ namespace MDPro3
                             card.AnimationPositon(delay);
                             sleep = 0.3f;
                         }
-                        if ((to.position & (uint)CardPosition.FaceDown) > 0
-                            && (to.location & (uint)CardLocation.MonsterZone) > 0)
-                        {
-                            card.HideLabel();
-                        }
                         Sleep((int)(sleep * 100));
                     }
                     break;
@@ -5255,6 +5250,16 @@ namespace MDPro3
                 returnValue = false;
 
             return returnValue;
+        }
+
+        public void RefreshAllCardsLabel()
+        {
+            if (!isShowed)
+                return;
+            foreach(var card in cards)
+            {
+                card.RefreshLabel();
+            }
         }
         #endregion
 

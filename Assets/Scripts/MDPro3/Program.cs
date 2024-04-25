@@ -54,6 +54,7 @@ namespace MDPro3
         public static readonly string artPath = "Art";
         public static readonly string altArtPath = "Art2";
         public static readonly string cardPicPath = "CardGenerated";
+        public static readonly string closeupPath = "Closeup";
         public static readonly string dataPath = "Data";
         public static readonly string localesPath = "Data/locales";
         public static readonly string configPath = "Data/config.conf";
@@ -336,6 +337,7 @@ namespace MDPro3
             ClearCache();
             TcpHelper.tcpClient = null;
             YgoServer.StopServer();
+            ZipHelper.Dispose();
         }
 
         void ClearCache()
