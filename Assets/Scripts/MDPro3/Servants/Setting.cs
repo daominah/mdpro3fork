@@ -1309,6 +1309,12 @@ namespace MDPro3
 
         void OnSupportExpansions()
         {
+            if (Program.I().ocgcore.isShowed)
+            {
+                MessageManager.Cast(InterString.Get("决斗中不能更改此选项。"));
+                return;
+            }
+
             if (supportExpansionsValue.text == InterString.Get("否"))
             {
                 supportExpansionsValue.text = InterString.Get("是");
@@ -1319,12 +1325,18 @@ namespace MDPro3
                 supportExpansionsValue.text = InterString.Get("否");
                 Config.Set("Expansions", "0");
             }
-            UIManager.ChangeLanguage();
+            Program.I().InitializeForDataChange();
         }
 
         bool checking;
         void OnUpdatePrerelease()
         {
+            if (Program.I().ocgcore.isShowed)
+            {
+                MessageManager.Cast(InterString.Get("决斗中不能进行此操作。"));
+                return;
+            }
+
             if (!checking)
             {
                 checking = true;
