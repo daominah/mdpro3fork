@@ -193,13 +193,10 @@ namespace MDPro3
             loader.transform.SetParent(Program.I().container_2D, false);
             Destroy(loader, 1.6f);
 
-            if (diy)
-            {
-
-            }
-            else
+            if (!diy)
             {
                 loader.transform.GetChild(0).localPosition = Vector3.zero;
+                loader.transform.GetChild(0).GetComponent<PlayableDirector>().time = 0;
             }
 
             //BackEffects

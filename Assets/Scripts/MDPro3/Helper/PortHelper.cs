@@ -36,27 +36,35 @@ namespace MDPro3
             if (!Directory.Exists(Program.cardPicPath))
                 Directory.CreateDirectory(Program.cardPicPath);
             var filePaths = Directory.GetFiles(Program.cardPicPath);
-            Export(filePaths);
+            Export(filePaths, false);
         }
 
-        static void Export(string[] filePaths)
+        static void Export(string[] filePaths, bool copy = true)
         {
 #if UNITY_ANDROID && !UNITY_EDITOR
             NativeFilePicker.ExportMultipleFiles(filePaths, ExportResult);
+            if(!copy)
+                foreach(var file in filePaths)
+                    File.Delete(file);
 #else
             StandaloneFileBrowser.OpenFolderPanelAsync(InterString.Get("请选择导出目录"), "", false, (string[] paths) =>
             {
-                ExportFiles(paths, filePaths);
+                ExportFiles(paths, filePaths, copy);
             });
 #endif
         }
 
-        private static void ExportFiles(string[] result, string[] filePaths)
+        private static void ExportFiles(string[] result, string[] filePaths, bool copy = true)
         {
             try
             {
-                foreach(var file in  filePaths)
-                    File.Copy(file, Path.Combine(result.FirstOrDefault(), Path.GetFileName(file)));
+                foreach(var file in filePaths)
+                {
+                    if(copy)
+                        File.Copy(file, Path.Combine(result.FirstOrDefault(), Path.GetFileName(file)));
+                    else
+                        File.Move(file, Path.Combine(result.FirstOrDefault(), Path.GetFileName(file)));
+                }
                 ExportResult(true);
             }
             catch

@@ -9,6 +9,7 @@ using YgomSystem.ElementSystem;
 using MDPro3.YGOSharp;
 using MDPro3.YGOSharp.OCGWrapper.Enums;
 using static MDPro3.EditDeck;
+using DG.Tweening;
 
 namespace MDPro3
 {
@@ -370,6 +371,10 @@ namespace MDPro3
             var aspect = (float)tex.width / tex.height;
             renderer.transform.localScale = new Vector3 (8f * aspect, 8f, 1f);
             renderer.gameObject.SetActive(true);
+            DOTween.To(() => 0f, x =>
+            {
+                renderer.transform.localScale = new Vector3(x * aspect, x, 1f);
+            }, 8f, 0.3f);
         }
 
         public Texture2D GetNameMask(int code, bool cache = false)
