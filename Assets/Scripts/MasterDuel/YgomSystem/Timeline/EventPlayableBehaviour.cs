@@ -66,14 +66,7 @@ namespace YgomSystem.Timeline
 			played = true;
             if (label == "StartCard")
             {
-                if (Program.I().currentServant != Program.I().ocgcore)
-                    return;
-                var t = TimeLineManager.dummyCard.transform;
-                var position = t.position;
-                var angels = t.eulerAngles;
-                angels = new Vector3(-angels.x, angels.y + 180, -angels.z);
-                Program.I().ocgcore.summonCard.StrongSummonLand(position, angels);
-                CameraManager.BlackOut(0f, 0.3f);
+                Program.I().ocgcore.startCard?.Invoke();
             }
             else if (label == "StrongSummon")
             {

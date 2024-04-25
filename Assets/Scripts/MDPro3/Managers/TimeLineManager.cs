@@ -47,6 +47,19 @@ namespace MDPro3
 
         public IEnumerator SummonMaterial()
         {
+            Program.I().ocgcore.startCard = () =>
+            {
+                if (Program.I().currentServant != Program.I().ocgcore)
+                    return;
+                var t = dummyCard.transform;
+                var position = t.position;
+                var angels = t.eulerAngles;
+                angels = new Vector3(-angels.x, angels.y + 180, -angels.z);
+                Program.I().ocgcore.summonCard.StrongSummonLand(position, angels);
+                CameraManager.BlackOut(0f, 0.3f);
+                Program.I().ocgcore.startCard = null;
+            };
+
             inSummonMaterial = true;
             skippable = false;
             skipping = false;
@@ -171,7 +184,7 @@ namespace MDPro3
                 summon = ABLoader.LoadFromFolder("timeline/summon/summonfusion/summonfusion0" + materials.Count + "_01",
                 "SummonFusion0" + materials.Count, true);
             Program.I().ocgcore.allGameObjects.Add(summon);
-            DeleteWhenStop(summon.transform.GetChild(0).gameObject);
+            DoWhenStop(summon.transform.GetChild(0).gameObject);
             var manager = summon.transform.GetChild(0).GetComponent<ElementObjectManager>();
             currentManager = manager;
             dummyCard = manager.GetElement("PostFusionPosDummy");
@@ -233,7 +246,7 @@ namespace MDPro3
                 else
                 {
                     manager = summon.transform.GetChild(i).GetComponent<ElementObjectManager>();
-                    DeleteWhenStop(summon.transform.GetChild(i).gameObject);
+                    DoWhenStop(summon.transform.GetChild(i).gameObject);
                 }
             }
 
@@ -287,7 +300,7 @@ namespace MDPro3
                 summon = ABLoader.LoadFromFile("timeline/summon/summonsynchro/summonsynchro02", true);
 
             Program.I().ocgcore.allGameObjects.Add(summon);
-            DeleteWhenStop(summon);
+            DoWhenStop(summon);
             var manager = summon.GetComponent<ElementObjectManager>();
             currentSyncManager = manager;
             manager.transform.GetChild(0).GetChild(0).gameObject.AddComponent<AutoScaleOnce>();
@@ -348,7 +361,7 @@ namespace MDPro3
                 summon = ABLoader.LoadFromFile("timeline/summon/summonxyz/summonxyz03_01", true);
 
             Program.I().ocgcore.allGameObjects.Add(summon);
-            DeleteWhenStop(summon);
+            DoWhenStop(summon);
             summon.transform.GetChild(0).gameObject.AddComponent<AutoScaleOnce>();
 
             var manager = summon.GetComponent<ElementObjectManager>();
@@ -380,7 +393,7 @@ namespace MDPro3
                 summon = ABLoader.LoadFromFile("timeline/summon/summonlink/summonlink03_01", true);
 
             Program.I().ocgcore.allGameObjects.Add(summon);
-            DeleteWhenStop(summon);
+            DoWhenStop(summon);
             var manager = summon.GetComponent<ElementObjectManager>();
             currentSyncManager = manager;
             manager.GetElement("BlackNormal").AddComponent<AutoScaleOnce>();
@@ -634,13 +647,14 @@ namespace MDPro3
             }
         }
 
-        void DeleteWhenStop(GameObject director)
+        void DoWhenStop(GameObject director)
         {
             if (director == null)
                 return;
             var mono = director.AddComponent<DoWhenPlayableDirectorStop>();
             mono.action = () =>
             {
+                Program.I().ocgcore.startCard?.Invoke();
                 Destroy(director);
             };
         }

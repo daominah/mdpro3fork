@@ -96,6 +96,9 @@ namespace MDPro3
 
         DuelButton btnConfirm;
         DuelButton btnCancel;
+
+        public Action startCard;
+
         #region Servants
         public override void Initialize()
         {
