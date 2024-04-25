@@ -1055,7 +1055,7 @@ namespace MDPro3
             else
             {
                 replayCloseupValue.text = InterString.Get("开");
-                Config.Set("ReplayCloseup", "0");
+                Config.Set("ReplayCloseup", "1");
             }
             Config.Save();
             Program.I().ocgcore.RefreshAllCardsLabel();

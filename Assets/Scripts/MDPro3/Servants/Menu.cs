@@ -9,6 +9,8 @@ using System;
 using UnityEngine.Networking;
 using YgomSystem.LocalFileSystem.Internal;
 using System.IO;
+using MDPro3.YGOSharp;
+using MDPro3.YGOSharp.OCGWrapper.Enums;
 
 namespace MDPro3
 {
@@ -143,7 +145,42 @@ namespace MDPro3
                     if (Program.TimePassed() - exitPressedTime < 300)
                         OnReturn();
                 }
+#if UNITY_EDITOR
+                //if (Input.GetKeyDown(KeyCode.C))
+                //{
+                //    CopyMonsterCutin();
+                //}
+#endif
             }
         }
+
+#if UNITY_EDITOR
+        void CopyMonsterCutin()
+        {
+            var files = Directory.GetFiles(Program.closeupPath);
+            foreach (var file in files)
+            {
+                var code = 0;
+                try
+                {
+                    code = int.Parse(Path.GetFileName(file).ToLower().Replace(".png", string.Empty));
+                }
+                catch 
+                {
+                    Debug.Log("Error Closeup file name: " + file);
+                    continue;
+                }
+                var card = CardsManager.Get(code);
+                if((card.Type & (uint)CardType.Monster) > 0
+                    || (card.Type & (uint)CardType.TrapMonster) > 0)
+                {
+                    if(!Directory.Exists("CloseupMonsters"))
+                        Directory.CreateDirectory("CloseupMonsters");
+                    File.Copy(file, Path.Combine("CloseupMonsters", Path.GetFileName(file)));
+                }
+            }
+        }
+#endif
+
     }
 }
