@@ -16,7 +16,7 @@ namespace MDPro3.UI
         [Header("Popup Duel SelectCard Reference")]
         public ScrollRect scrollView;
         public RectTransform baseRect;
-
+        public Button btnFinish;
         public string hint;
         public List<GameCard> cards;
         public int min;
@@ -48,8 +48,17 @@ namespace MDPro3.UI
         public override void InitializeSelections()
         {
             core = Program.I().ocgcore;
-            btnCancel.GetComponent<ButtonPress>().SetInteractable(exitable);
-            btnConfirm.GetComponent<ButtonPress>().SetInteractable(sendable);
+            if(core.currentMessage == GameMessage.ConfirmCards)
+            {
+                btnConfirm.gameObject.SetActive(false);
+                btnCancel.gameObject.SetActive(false);
+                btnFinish.gameObject.SetActive(true);
+            }
+            else
+            {
+                btnCancel.GetComponent<ButtonPress>().SetInteractable(exitable);
+                btnConfirm.GetComponent<ButtonPress>().SetInteractable(sendable);
+            }
             if (cards.Count <= 4)
             {
                 baseRect.sizeDelta = new Vector2(650, 420);
@@ -162,6 +171,10 @@ namespace MDPro3.UI
                         btnConfirm.GetComponent<ButtonPress>().SetInteractable(false);
                 }
                 title.text = hint + "-" + selectedSum[0].ToString() + Program.slash + core.ES_level;
+            }
+            else if(core.currentMessage == GameMessage.ConfirmCards)
+            {
+
             }
             else
             {
@@ -392,6 +405,14 @@ namespace MDPro3.UI
                     break;
             }
             core.Sleep(20);
+            Hide();
+        }
+
+        public void OnFinish()
+        {
+            AudioManager.PlaySE("SE_DUEL_DECIDE");
+            core.Sleep(20);
+            OcgCore.messagePass = true;
             Hide();
         }
 

@@ -3569,6 +3569,10 @@ namespace MDPro3
                 case GameMessage.ConfirmCards:
                     player = LocalPlayer(r.ReadByte());
                     count = r.ReadByte();
+                    var listShow = false;
+                    if(count > 3 && condition == Condition.Duel)
+                        listShow = true;
+                    var confirmCards = new List<GameCard>();
                     for (int i = 0; i < count; i++)
                     {
                         code = r.ReadInt32();
@@ -3577,10 +3581,19 @@ namespace MDPro3
                         if (card != null)
                         {
                             card.SetCode(code);
-                            card.AnimationConfirm(i);
+                            if(listShow)
+                                confirmCards.Add(card);
+                            else
+                                card.AnimationConfirm(i);
                         }
                     }
-                    Sleep(100 * count);
+                    if (listShow)
+                    {
+                        messagePass = false;
+                        ShowPopupSelectCard(InterString.Get("È·ÈÏ¿¨Æ¬£º[?]ÕÅ¡£", count.ToString()), confirmCards, 0, 0, true, true);
+                    }
+                    else
+                        Sleep(100 * count);
                     break;
                 case GameMessage.DeckTop:
                     player = LocalPlayer(r.ReadByte());

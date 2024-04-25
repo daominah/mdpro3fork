@@ -54,7 +54,8 @@ namespace MDPro3.UI
             bool showHead = false;
             if (id == 0)
                 showHead = true;
-            else if (card.p.location != cards[id - 1].p.location)
+            else if (card.p.location != cards[id - 1].p.location 
+                || card.p.controller != cards[id - 1].p.controller)
                 showHead = true;
             if (showHead)
                 locationIcon.sprite = TextureManager.GetCardLocationIcon(card.p);
@@ -64,7 +65,8 @@ namespace MDPro3.UI
             bool isEnd = false;
             if (id == cards.Count - 1)
                 isEnd = true;
-            else if (card.p.location != cards[id + 1].p.location)
+            else if (card.p.location != cards[id + 1].p.location 
+                || card.p.controller != cards[id + 1].p.controller)
                 isEnd = true;
             if (isEnd)
                 GetComponent<RectTransform>().sizeDelta = new Vector2(145, 180);
@@ -185,7 +187,10 @@ namespace MDPro3.UI
             selected = true;
             manager.selectedCount++;
 
-            if (!manager.order)
+            if(Program.I().ocgcore.currentMessage == GameMessage.ConfirmCards)
+            {
+            }
+            else if (!manager.order)
                 checkOn.SetActive(true);
             else
             {
