@@ -2380,8 +2380,6 @@ namespace MDPro3
                 }
                 else
                     manager.GetElement("IconTypeChange").SetActive(false);
-
-
             }
             else
             {
@@ -2503,6 +2501,7 @@ namespace MDPro3
                 manager.GetElement<Transform>("CardType").localEulerAngles = new Vector3(0f, 0f, 0f);
                 manager.GetElement<Transform>("CardCounter").localEulerAngles = new Vector3(0f, 0f, 0f);
                 manager.GetElement<Transform>("StatusIcon").localEulerAngles = new Vector3(0f, 0f, 0f);
+                manager.GetElement<Transform>("LinkMarkerRoot").localEulerAngles = new Vector3(0f, 0f, 0f);
             }
             else
             {
@@ -2523,6 +2522,7 @@ namespace MDPro3
                     manager.GetElement<Transform>("CardType").localEulerAngles = new Vector3(0f, 0f, 0f);
                     manager.GetElement<Transform>("CardCounter").localEulerAngles = new Vector3(0f, 0f, 0f);
                     manager.GetElement<Transform>("StatusIcon").localEulerAngles = new Vector3(0f, 0f, 0f);
+                    manager.GetElement<Transform>("LinkMarkerRoot").localEulerAngles = new Vector3(0f, 180f, 0f);
                 }
                 else
                 {
@@ -2537,6 +2537,7 @@ namespace MDPro3
                     manager.GetElement<Transform>("CardType").localEulerAngles = new Vector3(0f, 180f, 0f);
                     manager.GetElement<Transform>("CardCounter").localEulerAngles = new Vector3(0f, 180f, 0f);
                     manager.GetElement<Transform>("StatusIcon").localEulerAngles = new Vector3(0f, 180f, 0f);
+                    manager.GetElement<Transform>("LinkMarkerRoot").localEulerAngles = new Vector3(0f, 0f, 0f);
                 }
             }
 
