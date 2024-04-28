@@ -26,6 +26,9 @@ namespace MDPro3.UI
             this.location = location;
             this.controller = controller;
 
+            Program.I().ocgcore.log.showing = true;
+            Program.I().ocgcore.OnLog(true);
+
             if (!showing)
             {
                 RefreshList();

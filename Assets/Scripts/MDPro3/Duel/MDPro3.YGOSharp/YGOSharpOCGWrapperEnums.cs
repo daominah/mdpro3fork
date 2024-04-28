@@ -124,12 +124,16 @@
         Synchro = 0x80000,
         Ritual = 0x100000,
         Xyz = 0x200000,
+
+        //New Add
+        Pendulum = 0x400000,
+
         REPLACE = 0x1000000,
         DRAW = 0x2000000,
         REDIRECT = 0x4000000,
         REVEAL = 0x8000000,
         Link = 0x10000000,
-        LOST_OVERLAY = 0x20000000
+        LOST_OVERLAY = 0x20000000,
     }
     public enum CardStatus
     {

@@ -859,7 +859,25 @@ namespace MDPro3
             }
         }
 
-        GPS cacheP;
+        public bool InPendulumZone()
+        {
+            if ((p.location & (uint)CardLocation.SpellZone) == 0)
+                return false;
+            if(Program.I().ocgcore.MasterRule > 3)
+            {
+                if (p.sequence != 0 && p.sequence != 4)
+                    return false;
+            }
+            else if (p.sequence != 6 && p.sequence != 7)
+                return false;
+            if ((data.Type & (uint)CardType.Pendulum) == 0)
+                return false;
+            if ((p.position & (uint)CardPosition.FaceDown) > 0)
+                return false;
+            return true;
+        }
+
+        public GPS cacheP;
         bool inAnimation;
         static uint lastMovedLocation;
         public float Move(GPS gps, bool rush = false)
@@ -1038,6 +1056,8 @@ namespace MDPro3
                 //Token In (from unknow)
                 if (cacheP.location == 0)
                 {
+                    Program.I().ocgcore.ignoreNextMoveLog = true;
+
                     AudioManager.PlaySE("SE_CARD_TOKEN_SUMMON");
                     var fx = ABLoader.LoadFromFolder("Timeline/Summon/SummonToken", "SummonToken", true);
                     fx.transform.position = GetCardPosition(p);
@@ -1082,6 +1102,8 @@ namespace MDPro3
                     && (cacheP.location & (uint)CardLocation.MonsterZone) == 0
                     && (p.location & (uint)CardLocation.Overlay) == 0)
                 {
+                    Program.I().ocgcore.ignoreNextMoveLog = true;
+
                     bool summonEffect = true;
                     if (Program.I().ocgcore.condition == OcgCore.Condition.Duel
                         && Config.Get("DuelSummon", "1") == "0")
@@ -1116,12 +1138,14 @@ namespace MDPro3
                         goto SummonPass;
                     }
                 }
-                //Í¨³£ÕÙ»½
+                //ÕÙ»½
                 else if ((p.position & (uint)CardPosition.FaceUp) > 0
                     && (p.location & (uint)CardLocation.MonsterZone) > 0
                     && (cacheP.location & (uint)CardLocation.Hand) > 0
                     && (p.location & (uint)CardLocation.Overlay) == 0)
                 {
+                    Program.I().ocgcore.ignoreNextMoveLog = true;
+
                     bool cutin = MonsterCutin.HasCutin(data.Id);
                     if (cutin)
                         MonsterCutin.Play(data.Id, (int)p.controller);
@@ -1139,7 +1163,7 @@ namespace MDPro3
                         break;
                     case GameMessage.Move:
                         if ((p.location & (uint)CardLocation.Onfield) > 0)
-                            moveTime = 0.3f;
+                            moveTime = 0.4f;
                         else
                             moveTime = 0.2f;
                         break;
@@ -1168,6 +1192,16 @@ namespace MDPro3
                         || (p.location & (uint)CardLocation.MonsterZone) == 0)
                         HideLabel();
                 }));
+                if((p.location & (uint)CardLocation.Onfield) > 0
+                    && cacheP != null
+                    && (cacheP.location & (uint)CardLocation.Onfield) == 0)
+                {
+                    sequence.Join(cardPlane.DOLocalMove(Vector3.up * 15f, moveTime * 0.5f).SetEase(Ease.InOutSine).OnComplete(() =>
+                    {
+                        sequence.Join(cardPlane.DOLocalMove(Vector3.zero, moveTime * 0.5f).SetEase(Ease.InOutSine));
+                    }));
+                }
+
                 sequence.Join(pivot.DOScale(GetCardScale(p), moveTime * 0.95f));
                 //Turn
                 if ((p.location & (uint)CardLocation.Removed) > 0
@@ -1564,6 +1598,8 @@ namespace MDPro3
                 ModelAt(p, model);
                 manager = model.GetComponent<ElementObjectManager>();
             }
+            var cardFace = manager.GetElement<Transform>("CardModel").GetChild(1).GetComponent<Renderer>();
+            var originMono = cardFace.material.GetFloat("_Monochrome");
             Tools.ChangeLayer(model, "DuelOverlay3D");
             CameraManager.DuelOverlay3DPlus();
             manager.GetElement("EffectNegate").SetActive(false);
@@ -1578,8 +1614,10 @@ namespace MDPro3
             {
                 HideLabel();
                 sequence.Append(offset.DOLocalMoveY(5, 0.1f));
+                sequence.Join(DOTween.To(() => originMono, x => cardFace.material.SetFloat("_Monochrome", x), 1, 0.1f));
                 sequence.AppendInterval(0.5f);
                 sequence.Append(offset.DOLocalMoveY(0f, 0.2f));
+                sequence.Join(DOTween.To(() => 1, x => cardFace.material.SetFloat("_Monochrome", x), 0, 0.2f));
                 sequence.Insert(0, pivot.DOScale(1f, 0.1f));
                 sequence.Insert(0.6f, pivot.DOScale(scale, 0.2f));
                 sequence.OnComplete(() =>
@@ -1589,6 +1627,7 @@ namespace MDPro3
                     RefreshLabel();
                     if (!ThisLocationShouldHaveModel(p))
                         Destroy(model);
+                    cardFace.material.SetFloat("_Monochrome", originMono);
                 });
             }
             else if ((p.location & (uint)CardLocation.Hand) > 0)
@@ -1603,11 +1642,13 @@ namespace MDPro3
                 sequence.Join(offset.DOLocalRotate(Vector3.zero, 0.1f));
                 sequence.Join(pivot.DOLocalRotate(Vector3.zero, 0.1f));
                 sequence.Join(manager.GetElement<Transform>("Turn").DOLocalRotate(Vector3.zero, 0.1f));
+                sequence.Join(DOTween.To(() => originMono, x => cardFace.material.SetFloat("_Monochrome", x), 1, 0.1f));
                 sequence.Append(offset.DOLocalMoveY(1.2f, 0.5f));
                 sequence.Join(offset.DOLocalMoveZ(5.5f, 0.5f));
                 sequence.Append(offset.DOLocalMoveY(0f, 0.2f));
                 sequence.Join(offset.DOLocalMoveZ(0f, 0.2f));
                 sequence.Join(pivot.DOLocalRotate(originRotaion, 0.15f));
+                sequence.Join(DOTween.To(() => 1, x => cardFace.material.SetFloat("_Monochrome", x), 0, 0.2f));
                 sequence.Insert(0, pivot.DOScale(1.2f, 0.2f));
                 sequence.Insert(0.6f, pivot.DOScale(scale, 0.2f));
                 sequence.OnComplete(() =>
@@ -1615,6 +1656,7 @@ namespace MDPro3
                     Tools.ChangeLayer(model, "Default");
                     CameraManager.DuelOverlay3DMinus();
                     inAnimation = false;
+                    cardFace.material.SetFloat("_Monochrome", originMono);
                 });
             }
             else if ((p.location & (uint)CardLocation.Grave) > 0
@@ -1622,17 +1664,19 @@ namespace MDPro3
             {
                 offset.localPosition = new Vector3(0, -5, 0);
                 sequence.Append(offset.DOLocalMoveY(0, 0.1f));
+                sequence.Join(DOTween.To(() => originMono, x => cardFace.material.SetFloat("_Monochrome", x), 1, 0.1f));
                 sequence.AppendInterval(0.5f);
                 sequence.Append(offset.DOLocalMoveY(-5f, 0.2f));
+                sequence.Join(DOTween.To(() => 1, x => cardFace.material.SetFloat("_Monochrome", x), 0, 0.2f));
                 sequence.Insert(0, offset.DOScale(1f, 0.1f));
                 sequence.Insert(0.6f, offset.DOScale(Vector3.one * 0.2f, 0.2f));
                 sequence.OnComplete(() =>
                 {
                     Destroy(model);
                     CameraManager.DuelOverlay3DMinus();
+                    cardFace.material.SetFloat("_Monochrome", originMono);
                 });
             }
-
         }
         public void AnimationActivate()
         {
@@ -1735,10 +1779,13 @@ namespace MDPro3
             var offsetPosition = offset.localPosition;
             var turn = manager.GetElement<Transform>("Turn");
             var turnEulerAngles = turn.localEulerAngles;
+            if(!ThisLocationShouldHaveModel(p))
+                model.SetActive(false);
             var sequence = DOTween.Sequence();
             sequence.AppendInterval(id);
             sequence.Append(offset.DOLocalMove(new Vector3(0, 2, 3), 0.1f).OnStart(() => 
             {
+                model.SetActive(true);
                 AudioManager.PlaySE("SE_CARDVIEW_02");
                 Program.I().ocgcore.description.Show(this, null);
             }));
@@ -1747,6 +1794,7 @@ namespace MDPro3
                 var highlight = ABLoader.LoadFromFile("Effects/other/fxp_card_decide_001", true);
                 highlight.transform.position = offset.position;
                 highlight.transform.rotation = offset.rotation;
+                highlight.transform.localScale = GetCardScale(p);
                 Destroy(highlight, 1f);
             }));
             sequence.AppendInterval(0.8f);
@@ -2586,6 +2634,8 @@ namespace MDPro3
 
             Transform linkMarker = manager.GetElement<Transform>("LinkMarkerRoot");
             linkMarker.DOScale(1.7f, 0.2f).SetEase(Ease.InOutCubic);
+            foreach (var sr in linkMarker.GetComponentsInChildren<SpriteRenderer>(true))
+                sr.sortingLayerName = "CardStatus";
         }
         public void HideHiddenLabel()
         {
@@ -2608,6 +2658,8 @@ namespace MDPro3
 
             Transform linkMarker = manager.GetElement<Transform>("LinkMarkerRoot");
             linkMarker.DOScale(0.95f, 0.2f).SetEase(Ease.InOutCubic);
+            foreach (var sr in linkMarker.GetComponentsInChildren<SpriteRenderer>(true))
+                sr.sortingLayerName = "Default";
         }
 
         void SetDisabled()
@@ -2699,6 +2751,11 @@ namespace MDPro3
         public void ClearCounter()
         {
             cardCounters.Clear();
+        }
+        public int GetCounterCount(int type)
+        {
+            cardCounters.TryGetValue(type, out var count);
+            return count;
         }
         #endregion
 

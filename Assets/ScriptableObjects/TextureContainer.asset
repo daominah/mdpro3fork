@@ -270,14 +270,54 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 69eaad41036577a4bb6a9a301867ea1c, type: 3}
   - {fileID: 21300000, guid: f5187da4e9560cd4ea34017cd1adae54, type: 3}
   - {fileID: 21300000, guid: 9c6a96c10511f664b90bfd9ecddfc4ca, type: 3}
+  onLog:
+  - {fileID: 21300000, guid: e5e78c13baa816743b5c8196e190027f, type: 3}
+  - {fileID: 21300000, guid: 9346a94edf4eab3428073345f21093a1, type: 3}
+  - {fileID: 21300000, guid: 09e08eebbd84ca742bd589427e19222a, type: 3}
+  - {fileID: 21300000, guid: 4ccd7d816b1c97f46bdd0458882dd19d, type: 3}
+  offLog:
+  - {fileID: 21300000, guid: e3bf0fadaf52dd645866a265384db0b6, type: 3}
+  - {fileID: 21300000, guid: 7f0b9c3067e20b24f8326d6ff5d89d6c, type: 3}
+  - {fileID: 21300000, guid: 41402faeb0a7af84db36c1b089369a24, type: 3}
+  - {fileID: 21300000, guid: dc673a1442c82fc45a2ab66ada8a6949, type: 3}
   locationDeck: {fileID: 21300000, guid: 0ba47bffa7347e24db21ccc5725c3549, type: 3}
   locationExtra: {fileID: 21300000, guid: efba74afd3738c848821b34cfadc7c0f, type: 3}
   locationHand: {fileID: 21300000, guid: 90495ad71cf0a124abd3ad54918a3868, type: 3}
   locationGrave: {fileID: 21300000, guid: 7aee6631e0f212b41be0256c47fc2cb3, type: 3}
   locationRemoved: {fileID: 21300000, guid: b81da817a0bf1354ba477d7bd1cc0e67, type: 3}
-  locationField: {fileID: 21300000, guid: fca413749a7aeb04db50d977e417aad9, type: 3}
+  locationFieldMagic: {fileID: 21300000, guid: fca413749a7aeb04db50d977e417aad9, type: 3}
   locationOverlay: {fileID: 21300000, guid: 4fa2b99111e0b6b4a93fdba40be864bb, type: 3}
   locationSearch: {fileID: 21300000, guid: 200b6f5aeb3716b40b59ba32b9bbeed5, type: 3}
+  locationMyField: {fileID: 21300000, guid: 28fb5a7ac4524784d8b83fed543d408a, type: 3}
+  locationMyMZone0: {fileID: 21300000, guid: 1cb6b07cf2287d949ab557388cc457c6, type: 3}
+  locationMyMZone1: {fileID: 21300000, guid: ba79773d44b77d845ae1665fe822c34c, type: 3}
+  locationMyMZone2: {fileID: 21300000, guid: 94470c286e745f3428cfad1626a13276, type: 3}
+  locationMyMZone3: {fileID: 21300000, guid: 4de976d3a61329b45b98151604550d4c, type: 3}
+  locationMyMZone4: {fileID: 21300000, guid: b4c69d8bfff61ec4c92730c7f96ed616, type: 3}
+  locationMyMZone5: {fileID: 21300000, guid: 3a879fa0e14192948a8191fc410f5ae3, type: 3}
+  locationMyMZone6: {fileID: 21300000, guid: 1f1e006e7ca181849b6513943a8abae7, type: 3}
+  locationMySZone0: {fileID: 21300000, guid: 14c48dceca254864791ca173e7c28844, type: 3}
+  locationMySZone1: {fileID: 21300000, guid: e8c3bdc48d2fa7741b9999b6f18a165d, type: 3}
+  locationMySZone2: {fileID: 21300000, guid: 724a56f80c51290449830848dc09e90f, type: 3}
+  locationMySZone3: {fileID: 21300000, guid: d466f50622af44d498c3debf62a7c0c0, type: 3}
+  locationMySZone4: {fileID: 21300000, guid: 4c1d817f88a432246a2cf5e74bdc4f7e, type: 3}
+  locationOpField: {fileID: 21300000, guid: 379409f4360c1e143b4a75d5d05c1aac, type: 3}
+  locationOpMZone0: {fileID: 21300000, guid: 32a15e406c4d76a4a88387482cf6ea22, type: 3}
+  locationOpMZone1: {fileID: 21300000, guid: ec02940d55baea14aa750f970852f518, type: 3}
+  locationOpMZone2: {fileID: 21300000, guid: 16ad9b37f91f2ff42bccae237de84812, type: 3}
+  locationOpMZone3: {fileID: 21300000, guid: b13fcfd7cc930c744a9b59cbc1d484ec, type: 3}
+  locationOpMZone4: {fileID: 21300000, guid: 66fa3708b1a2a3544adf2caccce91e14, type: 3}
+  locationOpMZone5: {fileID: 21300000, guid: a356a728ed664ad41891d87446a73285, type: 3}
+  locationOpMZone6: {fileID: 21300000, guid: 7bfb246811bef8e4b9af1d44c6812f8d, type: 3}
+  locationOpSZone0: {fileID: 21300000, guid: 2660ad2fd1cfdea498a28a1987f97a33, type: 3}
+  locationOpSZone1: {fileID: 21300000, guid: c3a29b5c56c06a9489b880e37a49970e, type: 3}
+  locationOpSZone2: {fileID: 21300000, guid: c1a4dfa01e44dd243beac04074f47faf, type: 3}
+  locationOpSZone3: {fileID: 21300000, guid: ac53d1d7c956fe741b05b3b2e1bcc287, type: 3}
+  locationOpSZone4: {fileID: 21300000, guid: fb025bfdb003df24f8935cadecabc656, type: 3}
+  controllerMe: {fileID: 21300000, guid: ed8b8eb972f69ec46ae52dfa81834e4a, type: 3}
+  controllerOp: {fileID: 21300000, guid: 0e48823e814e031469ed12c801da3ba5, type: 3}
+  controllerOther: {fileID: 21300000, guid: 0947ff6a5a4b93e48a39f8a2f52d2497, type: 3}
+  controllerOther2: {fileID: 21300000, guid: 5d66c3b548ab00e458a8d4dc97a61055, type: 3}
   listMyDeck: {fileID: 21300000, guid: 8a12c8fdfbc189c49a57a4f38577364c, type: 3}
   listOpDeck: {fileID: 21300000, guid: 2baa50add66dde94b9e794dee66424f4, type: 3}
   listMyExtra: {fileID: 21300000, guid: 84a2defa586acac4f8ca53cc6bc60f1a, type: 3}

@@ -52,16 +52,26 @@ namespace MDPro3
             manager.GetElement<RawImage>("Card").material = mat;
         }
 
-        public void Show(GameCard card, Material mat)
+        public void Show(GameCard card, Material mat, int code = -1, GPS gps = null)
         {
-            var data = card.GetData();
+            Card data;
+            if(code > -1)
+                data = CardsManager.Get(code);
+            else
+                data = card.GetData();
             var origin = CardsManager.Get(data.Id);
 
             if (origin.Id == 0)
                 return;
+            var tails = string.Empty;
+            if(code == -1)
+                tails = "<color=#0FFF0F>" + card.tails.managedString + "</color>";
+            GPS p;
+            if (code > -1)
+                p = gps;
+            else
+                p = card.p;
 
-            var tails = "<color=#0FFF0F>" + card.tails.managedString + "</color>";
-            var p = card.p;
             this.data = data;
 
             manager.GetElement<RectTransform>("Window").DOAnchorPosX(20, 0.01f);

@@ -135,7 +135,7 @@ namespace MDPro3.YGOSharp
             return null;
         }
 
-        internal static Card Get(int id)
+        internal static Card Get(int id, bool noneIsZero = false)
         {
             Card returnValue = new Card();
             if (id > 0)
@@ -152,6 +152,11 @@ namespace MDPro3.YGOSharp
                 if (returnValue == null)
                 {
                     returnValue = new Card();
+                    if (!noneIsZero)
+                    {
+                        returnValue.Id = id;
+                        returnValue.Desc = id.ToString();
+                    }
                 }
             }
 

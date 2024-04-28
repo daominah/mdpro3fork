@@ -1,3 +1,5 @@
+using MDPro3;
+using MDPro3.YGOSharp.OCGWrapper.Enums;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -210,15 +212,49 @@ public class TextureContainer : ScriptableObject
     public Sprite[] onTiming;
     public Sprite[] offTiming;
     public Sprite[] autoTiming;
+    public Sprite[] onLog;
+    public Sprite[] offLog;
+
     [Header("Location Icon")]
     public Sprite locationDeck;
     public Sprite locationExtra;
     public Sprite locationHand;
     public Sprite locationGrave;
     public Sprite locationRemoved;
-    public Sprite locationField;
+    public Sprite locationFieldMagic;
     public Sprite locationOverlay;
     public Sprite locationSearch;
+    public Sprite locationMyField;
+    public Sprite locationMyMZone0;
+    public Sprite locationMyMZone1;
+    public Sprite locationMyMZone2;
+    public Sprite locationMyMZone3;
+    public Sprite locationMyMZone4;
+    public Sprite locationMyMZone5;
+    public Sprite locationMyMZone6;
+    public Sprite locationMySZone0;
+    public Sprite locationMySZone1;
+    public Sprite locationMySZone2;
+    public Sprite locationMySZone3;
+    public Sprite locationMySZone4;
+    public Sprite locationOpField;
+    public Sprite locationOpMZone0;
+    public Sprite locationOpMZone1;
+    public Sprite locationOpMZone2;
+    public Sprite locationOpMZone3;
+    public Sprite locationOpMZone4;
+    public Sprite locationOpMZone5;
+    public Sprite locationOpMZone6;
+    public Sprite locationOpSZone0;
+    public Sprite locationOpSZone1;
+    public Sprite locationOpSZone2;
+    public Sprite locationOpSZone3;
+    public Sprite locationOpSZone4;
+    [Header("Card Controller Icon")]
+    public Sprite controllerMe;
+    public Sprite controllerOp;
+    public Sprite controllerOther;
+    public Sprite controllerOther2;
     [Header("Card List Location Icon")]
     public Sprite listMyDeck;
     public Sprite listOpDeck;
@@ -285,5 +321,86 @@ public class TextureContainer : ScriptableObject
     public Texture2D fxt_Arrow_003;
     public Texture2D fxt_Arrow_004;
     public Texture2D fxt_msk_005;
+
+    public List<Sprite> GetLocationIcons(GPS p)
+    {
+        var returnValue = new List<Sprite>();
+        if((p.location & (uint)CardLocation.Onfield) > 0 
+            && (p.location & (uint)CardLocation.Overlay) == 0)
+        {
+            if ((p.location & (uint)CardLocation.SpellZone) > 0 && p.sequence == 5)
+            {
+                returnValue.Add(locationFieldMagic);
+                returnValue.Add(p.controller == 0 ? controllerMe : controllerOp);
+                return returnValue;
+            }
+            if((p.location & (uint)CardLocation.MonsterZone) > 0)
+            {
+                switch (p.sequence)
+                {
+                    case 0:
+                        returnValue.Add(p.controller == 0 ? locationMyMZone0 : locationOpMZone0);
+                        break;
+                    case 1:
+                        returnValue.Add(p.controller == 0 ? locationMyMZone1 : locationOpMZone1);
+                        break;
+                    case 2:
+                        returnValue.Add(p.controller == 0 ? locationMyMZone2 : locationOpMZone2);
+                        break;
+                    case 3:
+                        returnValue.Add(p.controller == 0 ? locationMyMZone3 : locationOpMZone3);
+                        break;
+                    case 4:
+                        returnValue.Add(p.controller == 0 ? locationMyMZone4 : locationOpMZone4);
+                        break;
+                    case 5:
+                        returnValue.Add(p.controller == 0 ? locationMyMZone5 : locationOpMZone5);
+                        break;
+                    case 6:
+                        returnValue.Add(p.controller == 0 ? locationMyMZone6 : locationOpMZone6);
+                        break;
+                }
+            }
+            else
+            {
+                switch (p.sequence)
+                {
+                    case 0:
+                        returnValue.Add(p.controller == 0 ? locationMySZone0 : locationOpSZone0);
+                        break;
+                    case 1:
+                        returnValue.Add(p.controller == 0 ? locationMySZone1 : locationOpSZone1);
+                        break;
+                    case 2:
+                        returnValue.Add(p.controller == 0 ? locationMySZone2 : locationOpSZone2);
+                        break;
+                    case 3:
+                        returnValue.Add(p.controller == 0 ? locationMySZone3 : locationOpSZone3);
+                        break;
+                    case 4:
+                        returnValue.Add(p.controller == 0 ? locationMySZone4 : locationOpSZone4);
+                        break;
+                }
+            }
+        }
+        else
+        {
+            if ((p.location & (uint)CardLocation.Overlay) > 0)
+                returnValue.Add(locationOverlay);
+            else if ((p.location & (uint)CardLocation.Deck) > 0)
+                returnValue.Add(locationDeck);
+            else if ((p.location & (uint)CardLocation.Extra) > 0)
+                returnValue.Add(locationExtra);
+            else if ((p.location & (uint)CardLocation.Hand) > 0)
+                returnValue.Add(locationHand);
+            else if ((p.location & (uint)CardLocation.Grave) > 0)
+                returnValue.Add(locationGrave);
+            else if ((p.location & (uint)CardLocation.Removed) > 0)
+                returnValue.Add(locationRemoved);
+
+            returnValue.Add(p.controller == 0 ? controllerMe : controllerOp);
+        }
+        return returnValue;
+    }
 
 }

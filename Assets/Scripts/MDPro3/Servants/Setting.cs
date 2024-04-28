@@ -1373,7 +1373,7 @@ namespace MDPro3
                         Directory.CreateDirectory(Program.expansionsPath);
                     var download = UnityWebRequest.Get(prereleasePackUrl);
                     download.SendWebRequest();
-                    MessageManager.Cast("正在更新，请耐心等待更待更新完成再进行其他操作。");
+                    MessageManager.Cast(InterString.Get("正在更新，请耐心等待更待更新完成再进行其他操作。"));
                     while (!download.isDone)
                     {
                         yield return null;
@@ -1383,16 +1383,16 @@ namespace MDPro3
                     {
                         ZipHelper.Dispose();
                         File.WriteAllBytes(filePath, download.downloadHandler.data);
-                        MessageManager.Cast("先行卡更新成功。");
+                        MessageManager.Cast(InterString.Get("先行卡更新成功。"));
                         Config.Set("Prerelease", lines[0]);
                         Config.Save();
                         Program.I().InitializeForDataChange();
                     }
                     else
-                        MessageManager.Cast("先行卡更新失败。");
+                        MessageManager.Cast(InterString.Get("先行卡更新失败。"));
                 }
                 else
-                    MessageManager.Cast("先行卡已是最新版。");
+                    MessageManager.Cast(InterString.Get("先行卡已是最新版。"));
             }
             else
                 MessageManager.Cast(InterString.Get("检查更新失败！"));

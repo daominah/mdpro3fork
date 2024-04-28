@@ -10,6 +10,7 @@ using MDPro3.YGOSharp;
 using MDPro3.YGOSharp.OCGWrapper.Enums;
 using static MDPro3.EditDeck;
 using DG.Tweening;
+using UnityEngine.UI;
 
 namespace MDPro3
 {
@@ -272,7 +273,7 @@ namespace MDPro3
             while (container == null)
                 yield return null;
 
-            var data = CardsManager.Get(code);
+            var data = CardsManager.Get(code, true);
             if (data.Id == 0)
             {
                 yield return container.unknownCard.texture;
@@ -320,6 +321,15 @@ namespace MDPro3
             }
             //loadingCard = false;
             yield return returnValue;
+        }
+
+        public IEnumerator LoadCardToRawImageAsync(RawImage rawImage, int code, bool cache = false)
+        {
+            var ie = LoadCardAsync(code, cache);
+            StartCoroutine(ie);
+            while (ie.MoveNext())
+                yield return null;
+            rawImage.texture = ie.Current;
         }
         public static void ClearCache()
         {
@@ -469,7 +479,12 @@ namespace MDPro3
             else if ((p.location & (uint)CardLocation.Overlay) > 0)
                 return container.locationOverlay;
             else if ((p.location & (uint)CardLocation.Onfield) > 0)
-                return container.locationField;
+            {
+                if(p.controller == 0)
+                    return container.locationMyField;
+                else
+                    return container.locationOpField;
+            }
             else if ((p.location & (uint)CardLocation.Search) > 0)
                 return container.locationSearch;
             else

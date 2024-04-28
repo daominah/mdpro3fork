@@ -91,7 +91,7 @@ namespace MDPro3.UI
                     positionAttack.texture = ie.Current;
                 }
                 else
-                    positionAttack.GetComponent<Renderer>().material = Appearance.duelProtector0;
+                    positionAttack.material = Program.I().ocgcore.myProtector;
             }
             if (positionDefense != null)
             {
@@ -99,7 +99,7 @@ namespace MDPro3.UI
                 positionDefense.texture = ie.Current;
             }
             if (positionDefenseDown != null)
-                positionDefenseDown.GetComponent<Renderer>().material = Appearance.duelProtector0;
+                positionDefenseDown.material = Program.I().ocgcore.myProtector;
         }
 
         void OnAttack()

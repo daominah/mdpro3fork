@@ -23,5 +23,17 @@ public class DuelPrefabContainer : ScriptableObject
     [Header("Duel Turn Change")]
     public GameObject duelTurnChangeNear;
     public GameObject duelTurnChangeFar;
-
+    [Header("Duel Log")]
+    public GameObject duelLogNewTurn;
+    public GameObject duelLogNewPhase;
+    public GameObject duelLogSingleCard;
+    public GameObject duelLogSingleCard2;
+    public GameObject duelLogAttack;
+    public GameObject duelLogChaining;
+    public GameObject duelLogText;
+    public GameObject duelLogText2;
+    public GameObject duelLogTextWithCard;
+    public GameObject duelLogTextWithCard2;
+    public GameObject duelLogLpChange;
+    public GameObject duelLogCounter;
 }

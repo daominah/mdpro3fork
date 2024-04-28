@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: DuelPrefabs
   m_EditorClassIdentifier: 
   cardModel: {fileID: 1801160342276106, guid: eca8eb3e834857643bf369534f625d4e, type: 3}
-  deckModel: {fileID: 1311692751288935, guid: 09e5790b4512bd64797c7947b6e1d4a5, type: 3}
   duelButton: {fileID: 3999006118112400323, guid: cb936a9c6b1ef404eae4f628df36bc06, type: 3}
   duelLpText: {fileID: 2323089295963095394, guid: dca0c795f9a1e79409d1ab8f20e92b61, type: 3}
   duelDrawPhaseNear: {fileID: 5856038741196950936, guid: 898af3292dd93df44a57e0dc79a2ea24, type: 3}
@@ -30,3 +29,15 @@ MonoBehaviour:
   duelEndPhaseFar: {fileID: 5856038741196950936, guid: 6d72a386e15498f4c9f143c4d6296e29, type: 3}
   duelTurnChangeNear: {fileID: 3294841327996425202, guid: ba7c25701677bfe46844c02aae6862fb, type: 3}
   duelTurnChangeFar: {fileID: 3294841327996425202, guid: 80e9603c8ea17d242a17e6cf9fda143e, type: 3}
+  duelLogNewTurn: {fileID: 7203926964080664684, guid: 43730ecf495ffd54fa0055a0e8552919, type: 3}
+  duelLogNewPhase: {fileID: 524344449574876474, guid: 917e25ff614d7684bb008f81ab93dd12, type: 3}
+  duelLogSingleCard: {fileID: 5780536312215202854, guid: 74b7ab0561ca03d49853f057b8f11347, type: 3}
+  duelLogSingleCard2: {fileID: 5780536312215202854, guid: 94318d2c206e04e4e8191089c6545f5f, type: 3}
+  duelLogAttack: {fileID: 2151824643533788444, guid: d2e06601bdd6db042aba7801a68a79f7, type: 3}
+  duelLogChaining: {fileID: 1387090791483376203, guid: 455ef5c0fdfc98247b8e498696ea03c6, type: 3}
+  duelLogText: {fileID: 1387090791483376203, guid: f167322dbdf4f07469022354451498bd, type: 3}
+  duelLogText2: {fileID: 1387090791483376203, guid: 574e04a1d6187b145848ebd7739eb746, type: 3}
+  duelLogTextWithCard: {fileID: 1387090791483376203, guid: 518bbf4ee6de60f45b715d1a0d53471b, type: 3}
+  duelLogTextWithCard2: {fileID: 1387090791483376203, guid: 817f6d2fe893e014fa8cb27ee51d0b7c, type: 3}
+  duelLogLpChange: {fileID: 3150024044697431290, guid: dc378e95e2ba7464b978203e6a5108b1, type: 3}
+  duelLogCounter: {fileID: 4080254034130760786, guid: ab80aff3c66e22a45bc8388643a8e1c2, type: 3}
