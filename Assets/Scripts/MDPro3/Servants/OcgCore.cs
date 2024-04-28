@@ -19,9 +19,6 @@ using MDPro3.YGOSharp;
 using MDPro3.YGOSharp.OCGWrapper.Enums;
 using static YgomGame.Bg.BgEffectSettingInner;
 using MDPro3.UI;
-using YgomGame.Duel;
-using UnityEngine.AI;
-using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
 
 namespace MDPro3
 {
