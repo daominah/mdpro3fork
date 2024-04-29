@@ -501,30 +501,50 @@ namespace MDPro3
             return returnValue;
         }
 
-        public static string[] GetCardDescriptionSplit(string description)
+        public static string[] GetCardDescriptionSplit(string description, bool render = false)
         {
             var returnValue = new string[2];
             var lines = description.Replace("\r", "").Split('\n');
+            var language = render ? Config.Get("CardLanguage", "zh-CN") : Config.Get("Language", "zh-CN");
 
-            int pendulumEnd = 0;
-            for (int i = 1; i < lines.Length; i++)
+            int beforePendulum = 1;
+            int splitLines = 1;
+            string symbol = "¡¾";
+            int monsterStart = 0;
+
+            if (language == "en-US")
             {
-                if (lines[i].Contains("¡¾"))
+                beforePendulum = 2;
+                splitLines = 2;
+                symbol = "[";
+            }
+            if (language == "es-ES")
+            {
+                beforePendulum = 2;
+                splitLines = 2;
+            }
+            if (language == "zh-TW")
+            {
+                beforePendulum = 0;
+            }
+
+            for (int i = beforePendulum; i < lines.Length; i++)
+                if (lines[i].StartsWith(symbol))
                 {
-                    pendulumEnd = i;
+                    monsterStart = i;
                     break;
                 }
-            }
-            for (int i = 1; i < lines.Length; i++)
+
+            for (int i = beforePendulum; i < lines.Length; i++)
             {
-                if (i < pendulumEnd)
+                if (i <= monsterStart - splitLines)
                 {
-                    if (pendulumEnd - i == 1)
+                    if (monsterStart - i == splitLines)
                         returnValue[0] += lines[i];
                     else
                         returnValue[0] += lines[i] + "\r\n";
                 }
-                else if (i > pendulumEnd)
+                else if (i > monsterStart)
                 {
                     if (i == lines.Length - 1)
                         returnValue[1] += lines[i];
@@ -532,6 +552,8 @@ namespace MDPro3
                         returnValue[1] += lines[i] + "\r\n";
                 }
             }
+            if (language == "es-ES")
+                returnValue[0] = returnValue[0].Replace("-n/a-", string.Empty);
             return returnValue;
         }
 

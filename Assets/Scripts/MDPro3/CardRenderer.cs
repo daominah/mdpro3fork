@@ -258,7 +258,7 @@ namespace MDPro3
                     cardArtPendulum.gameObject.SetActive(true);
                     cardArtPendulum.texture = art;
                 }
-                var pendulumDescription = CardDescription.GetCardDescriptionSplit(data.Desc);
+                var pendulumDescription = CardDescription.GetCardDescriptionSplit(data.Desc, true);
                 cardDescription.text = StringHelper.GetType(data, true).Replace(Program.slash, bigSlash) + "\r\n" + TextForRender(pendulumDescription[1]);
                 cardDescriptionPendulum.text = TextForRender(pendulumDescription[0]);
                 lScale.text = data.LScale.ToString();
