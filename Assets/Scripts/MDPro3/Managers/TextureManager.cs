@@ -94,9 +94,13 @@ namespace MDPro3
 
             while (container == null)
                 yield return null;
-            cardMatNormal.SetTexture("_KiraMask", container.cardKiraMask);
             cardMatShine.SetTexture("_KiraMask", container.cardKiraMask);
             cardMatRoyal.SetTexture("_KiraMask", container.cardKiraMask);
+            var tempTex = cardMatRoyal.GetTexture("_Texture2DAsset_90c6e35ef4304f289c279037152a03b7_Out_0");
+            cardMatNormal.SetTexture("_Texture2DAsset_90c6e35ef4304f289c279037152a03b7_Out_0", tempTex);
+            tempTex = cardMatRoyal.GetTexture("_HighlightNormal");
+            cardMatRoyal.SetTexture("_Texture2DAsset_3e204bf62e854283be7482d92655b24f_Out_0", tempTex);
+
             cardMatNormal.enableInstancing = true;
             cardMatShine.enableInstancing = true;
             cardMatRoyal.enableInstancing = true;
