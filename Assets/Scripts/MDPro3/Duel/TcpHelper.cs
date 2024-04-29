@@ -52,7 +52,10 @@ namespace MDPro3
                     }
                     catch (Exception e)
                     {
-                        MessageManager.messageFromSubString = "JoinError: " + e;
+                        if(Program.I().solo)
+                            MessageManager.messageFromSubString = InterString.Get("端口被占用， 请尝试修改端口后再尝试。端口号应大于0，小于65535。");
+                        else
+                            MessageManager.messageFromSubString = "JoinError: " + e;
                     }
                     canJoin = true;
                 }

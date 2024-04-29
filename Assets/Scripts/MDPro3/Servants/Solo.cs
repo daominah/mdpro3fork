@@ -200,7 +200,7 @@ namespace MDPro3
             command += " Host=127.0.0.1";
 
             port = inputPort.text;
-            if (string.IsNullOrEmpty(port) || int.Parse(port.Substring(0, 5)) <= 0 || int.Parse(port.Substring(0, 5)) > 65535)
+            if (string.IsNullOrEmpty(port) || int.Parse(port) <= 0 || int.Parse(port) > 65535)
             {
                 port = "7911";
                 inputPort.text = port;
