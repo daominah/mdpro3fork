@@ -18,6 +18,9 @@ namespace MDPro3
         static List<GameObject> items = new List<GameObject>();
         static readonly float transitionTime = 0.3f;
         static readonly float existTime = 3f;
+
+        public static string messageFromSubString = string.Empty;
+
         public override void Initialize()
         {
             base.Initialize();
@@ -32,6 +35,15 @@ namespace MDPro3
             {
                 messageCard = result.Result;
             };
+        }
+        public override void PerFrameFunction()
+        {
+            base.PerFrameFunction();
+            if(messageFromSubString != string.Empty)
+            {
+                Cast(messageFromSubString);
+                messageFromSubString= string.Empty;
+            }
         }
 
         public void CastCard(int code)

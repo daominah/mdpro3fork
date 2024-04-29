@@ -2604,6 +2604,7 @@ namespace MDPro3
                     messagePass = false;
                     int playerType = r.ReadByte();
                     isFirst = (playerType & 0xF) == 0;
+                    Room.coreShowing = true;
                     isObserver = (playerType & 0xF0) > 0;
                     if (r.BaseStream.Length > 17)
                         MasterRule = r.ReadByte();

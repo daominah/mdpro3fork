@@ -63,7 +63,7 @@ namespace MDPro3
         public static bool fromSolo;
         public static bool soloLockHand;
         public static bool fromLocalHost;
-
+        public static bool coreShowing;
         public class Player
         {
             public string name = "";
@@ -150,6 +150,7 @@ namespace MDPro3
         public override void Show(int preDepth)
         {
             base.Show(preDepth);
+            coreShowing = false;
             ChatOn(transitionTime);
             Program.I().ocgcore.handler = Handler;
             deckName.text = Config.Get("DeckInUse", "@ui");
@@ -405,7 +406,7 @@ namespace MDPro3
         }
         void AddChatItem(int player, string content)
         {
-            if (Program.I().ocgcore.isShowed && player < 4)
+            if (coreShowing && player < 4)
             {
                 if (mode != 2)
                 {

@@ -52,7 +52,7 @@ namespace MDPro3
                     }
                     catch (Exception e)
                     {
-                        Debug.LogError("JoinError: " + e);
+                        MessageManager.messageFromSubString = "JoinError: " + e;
                     }
                     canJoin = true;
                 }
