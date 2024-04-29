@@ -15,7 +15,7 @@ namespace MDPro3.UI
             Path,
             NoSpace
         }
-
+        public int maxLenght = 0;
         InputField m_InputFied;
 
         public ValidationType type = ValidationType.Path;
@@ -43,6 +43,11 @@ namespace MDPro3.UI
             {
                 if (inputInfo.Length > 0 && inputInfo.Contains(" "))
                     m_InputFied.text = m_InputFied.text.Replace(" ", "");
+            }
+            if(maxLenght > 0)
+            {
+                if (inputInfo.Length > maxLenght)
+                    m_InputFied.text = inputInfo.Substring(0, maxLenght);
             }
         }
     }

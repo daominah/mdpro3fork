@@ -191,6 +191,7 @@ namespace MDPro3
             return "";
         }
 
+        public static string port;
         public void Launch(string command, bool lockHand, bool noCheck, bool noShuffle)
         {
             command = command.Replace("'", "\"");
@@ -198,9 +199,12 @@ namespace MDPro3
                 command += " Hand=1";
             command += " Host=127.0.0.1";
 
-            string port = inputPort.text;
-            if (string.IsNullOrEmpty(port) || port == "0")
+            port = inputPort.text;
+            if (string.IsNullOrEmpty(port) || int.Parse(port.Substring(0, 5)) <= 0 || int.Parse(port.Substring(0, 5)) > 65535)
+            {
                 port = "7911";
+                inputPort.text = port;
+            }
             command += " Port=" + port;
 
             string lp = inputLP.text;
@@ -221,7 +225,7 @@ namespace MDPro3
             else
                 Room.soloLockHand = false;
             Room.fromLocalHost = false;
-            (new Thread(() => { Thread.Sleep(200); TcpHelper.Join("127.0.0.1", Config.Get("DuelPlayerName0", "@ui"), "7911", "", ""); })).Start();
+            (new Thread(() => { Thread.Sleep(200); TcpHelper.Join("127.0.0.1", Config.Get("DuelPlayerName0", "@ui"), port, "", ""); })).Start();
             (new Thread(() => { Thread.Sleep(300); WindBot.Program.Main(Tools.SplitWithPreservedQuotes(command)); })).Start();
         }
     }
