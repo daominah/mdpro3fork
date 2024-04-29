@@ -1679,7 +1679,7 @@ namespace MDPro3
                     else if ((to.location & (uint)CardLocation.Hand) > 0)
                     {
                         textReason = InterString.Get("回到");
-                        if ((from.location & (uint)CardLocation.Deck) > 0)
+                        if ((from.location & ((uint)CardLocation.Deck + (uint)CardLocation.Extra)) > 0)
                             textReason = InterString.Get("加入");
                         if ((from.location & ((uint)CardLocation.Grave + (uint)CardLocation.Removed)) > 0)
                             textReason = InterString.Get("回收");

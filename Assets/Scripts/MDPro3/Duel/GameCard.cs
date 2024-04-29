@@ -1194,7 +1194,8 @@ namespace MDPro3
                 }));
                 if((p.location & (uint)CardLocation.Onfield) > 0
                     && cacheP != null
-                    && (cacheP.location & (uint)CardLocation.Onfield) == 0)
+                    && (cacheP.location & (uint)CardLocation.Onfield) == 0
+                    && (p.location & (uint)CardLocation.Overlay) == 0)
                 {
                     sequence.Join(cardPlane.DOLocalMove(Vector3.up * 15f, moveTime * 0.5f).SetEase(Ease.InOutSine).OnComplete(() =>
                     {
@@ -2553,7 +2554,7 @@ namespace MDPro3
             }
             else
             {
-                if (CloseupConfig())
+                if (CloseupConfig() && (p.location & (uint)CardLocation.MonsterZone) > 0)
                 {
                     manager.GetElement<Transform>("DefaultShow").localEulerAngles = new Vector3(0f, 180f, 0f);
                     manager.GetElement<Transform>("DefaultHide").localEulerAngles = new Vector3(0f, 180f, 0f);
