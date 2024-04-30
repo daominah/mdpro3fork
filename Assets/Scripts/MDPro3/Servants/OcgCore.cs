@@ -49,6 +49,8 @@ namespace MDPro3
         public Button buttonTiming;
         public Button buttonLog;
 
+        public MeshRenderer greenBackground;
+
         GameObject field0;
         GameObject field1;
         GameObject grave0;
@@ -540,13 +542,6 @@ namespace MDPro3
                 #endregion
 
                 #region Hot Key
-                if (Input.GetKeyDown(KeyCode.Q) && !Program.I().room.chatOn)
-                    CameraZoomToMate0();
-                if (Input.GetKeyDown(KeyCode.E) && !Program.I().room.chatOn)
-                    CameraZoomToMate1();
-                if (Input.GetKeyDown(KeyCode.W) && !Program.I().room.chatOn)
-                    CameraBack();
-
                 if (Program.InputGetMouse1Up || Input.GetKey(KeyCode.Escape))
                 {
                     if (detail.showing)
@@ -561,17 +556,28 @@ namespace MDPro3
                     foreach (var line in targetLines)
                         Destroy(line);
                 }
-                if (Input.GetKeyDown(KeyCode.A) && !Program.I().room.chatOn)
+
+                if (Program.I().room.chatOn)
+                    return;
+
+                if (Input.GetKeyDown(KeyCode.Q))
+                    CameraZoomToMate0();
+                if (Input.GetKeyDown(KeyCode.E))
+                    CameraZoomToMate1();
+                if (Input.GetKeyDown(KeyCode.W))
+                    CameraBack();
+
+                if (Input.GetKeyDown(KeyCode.A))
                 {
                     chainCondition = ChainCondition.Smart;
                     OnTiming();
                 }
-                if (Input.GetKeyDown(KeyCode.S) && !Program.I().room.chatOn)
+                if (Input.GetKeyDown(KeyCode.S))
                 {
                     chainCondition = ChainCondition.All;
                     OnTiming();
                 }
-                if (Input.GetKeyDown(KeyCode.D) && !Program.I().room.chatOn)
+                if (Input.GetKeyDown(KeyCode.D))
                 {
                     chainCondition = ChainCondition.No;
                     OnTiming();
@@ -586,6 +592,84 @@ namespace MDPro3
                 if (Input.GetKeyDown(KeyCode.Tab))
                 {
                     OnLog();
+                }
+
+                if(Input.GetKeyDown(KeyCode.G))
+                {
+                    if (greenBackground.gameObject.activeInHierarchy)
+                    {
+                        greenBackground.gameObject.SetActive(false);
+                        cg.alpha = 1f;
+                        cg.interactable = true;
+                        CameraManager.DuelOverlay3DMinus();
+                    }
+                    else
+                    {
+                        greenBackground.gameObject.SetActive(true);
+                        cg.alpha = 0f;
+                        cg.interactable = false;
+                        CameraManager.DuelOverlay3DPlus();
+                    }
+                }
+                if (cg.alpha == 0
+                    && (Input.GetKeyDown(KeyCode.Alpha0) 
+                    || Input.GetKeyDown(KeyCode.Keypad0)))
+                {
+                    greenBackground.material.color = Color.black;
+                }
+                if (cg.alpha == 0
+                    && (Input.GetKeyDown(KeyCode.Alpha1) 
+                    || Input.GetKeyDown(KeyCode.Keypad1)))
+                {
+                    greenBackground.material.color = Color.red;
+                }
+                if (cg.alpha == 0
+                    && (Input.GetKeyDown(KeyCode.Alpha2) 
+                    || Input.GetKeyDown(KeyCode.Keypad2)))
+                {
+                    greenBackground.material.color = new Color(1f, 0.5f, 0f);
+                }
+                if (cg.alpha == 0
+                    && (Input.GetKeyDown(KeyCode.Alpha3) 
+                    || Input.GetKeyDown(KeyCode.Keypad3)))
+                {
+                    greenBackground.material.color = new Color(1f, 1f, 0f);
+                }
+                if (cg.alpha == 0
+                    && (Input.GetKeyDown(KeyCode.Alpha4) 
+                    || Input.GetKeyDown(KeyCode.Keypad4)))
+                {
+                    greenBackground.material.color = Color.green;
+                }
+                if (cg.alpha == 0
+                    && (Input.GetKeyDown(KeyCode.Alpha5) 
+                    || Input.GetKeyDown(KeyCode.Keypad5)))
+                {
+                    greenBackground.material.color = new Color(0f, 1f, 1f);
+                }
+                if (cg.alpha == 0
+                    && (Input.GetKeyDown(KeyCode.Alpha6) 
+                    || Input.GetKeyDown(KeyCode.Keypad6)))
+                {
+                    greenBackground.material.color = Color.blue;
+                }
+                if (cg.alpha == 0
+                    && (Input.GetKeyDown(KeyCode.Alpha7) 
+                    || Input.GetKeyDown(KeyCode.Keypad7)))
+                {
+                    greenBackground.material.color = new Color(0.6f, 0f, 1f);
+                }
+                if (cg.alpha == 0
+                    && (Input.GetKeyDown(KeyCode.Alpha8) 
+                    || Input.GetKeyDown(KeyCode.Keypad8)))
+                {
+                    greenBackground.material.color = Color.gray;
+                }
+                if (cg.alpha == 0
+                    && (Input.GetKeyDown(KeyCode.Alpha9) 
+                    || Input.GetKeyDown(KeyCode.Keypad9)))
+                {
+                    greenBackground.material.color = Color.white;
                 }
 
                 #endregion
@@ -717,6 +801,40 @@ namespace MDPro3
             cg.alpha = 1f;
             cg.interactable = true;
             cg.blocksRaycasts = true;
+
+            //ABLoader.LoadFromFolder("20f13fa0");//eff_duel_hiteffect_00
+            //ABLoader.LoadFromFolder("76500705");//assets/resourcesassetbundle/duel/effects/hit/fxp_hitm_fin/fxp_hitm_fin_blueeyes/attackblueeyes_screeneffect.prefab
+            //ABLoader.LoadFromFolder("331f3358");//assets/resourcesassetbundle/duel/effects/hit/fxp_hitm_fin/fxp_hitm_fin_blueeyes/fxp_hitm_fin_bluee01_far_001.prefab
+            //ABLoader.LoadFromFolder("07b85b70");//assets/resourcesassetbundle/duel/effects/hit/fxp_hitm_fin/fxp_hitm_fin_blueeyes/fxp_hitm_fin_bluee01_near_001.prefab
+            //ABLoader.LoadFromFolder("2c35cb85");//assets/resourcesassetbundle/duel/effects/hit/fxp_hitm_fin/fxp_hitm_fin_darkm01/attackdarkm_screeneffect.prefab
+            //ABLoader.LoadFromFolder("704cfe70");//assets/resourcesassetbundle/duel/effects/hit/fxp_hitm_fin/fxp_hitm_fin_darkm01/fxp_hitm_fin_darkm01_far_001.prefab
+            //ABLoader.LoadFromFolder("324ea047");//assets/resourcesassetbundle/duel/effects/hit/fxp_hitm_fin/fxp_hitm_fin_darkm01/fxp_hitm_fin_darkm01_near_001.prefab
+            //ABLoader.LoadFromFolder("17c1f342");//assets/resourcesassetbundle/duel/effects/hit/fxp_hitm_fin/fxp_hitm_fin_m04998/fxp_hitm_fin_m04998_far_001.prefab
+            //ABLoader.LoadFromFolder("fafe7cca");//assets/resourcesassetbundle/duel/effects/hit/fxp_hitm_fin/fxp_hitm_fin_m04998/fxp_hitm_fin_m04998_near_001.prefab
+            //ABLoader.LoadFromFolder("7c292573");//assets/resourcesassetbundle/duel/effects/hit/fxp_hitm_fin/fxp_hitm_fin_m04999/attackm04999screeneffect.prefab
+            //ABLoader.LoadFromFolder("63bd3e25");//assets/resourcesassetbundle/duel/effects/hit/fxp_hitm_fin/fxp_hitm_fin_m04999/fxp_hitm_fin_m04999_far_001.prefab
+            //ABLoader.LoadFromFolder("295cf4fc");//assets/resourcesassetbundle/duel/effects/hit/fxp_hitm_fin/fxp_hitm_fin_m04999/fxp_hitm_fin_m04999_near_001.prefab
+            //ABLoader.LoadFromFolder("b5d157e4");//assets/resourcesassetbundle/duel/effects/hit/fxp_hitm_fin/fxp_hitm_fin_m05000/attack_m05000screeneffect.prefab
+            //ABLoader.LoadFromFolder("922c9b22");//assets/resourcesassetbundle/duel/effects/hit/fxp_hitm_fin/fxp_hitm_fin_m05000/fxp_hitm_fin_m05000_far_001.prefab
+            //ABLoader.LoadFromFolder("b7c9f0fa");//assets/resourcesassetbundle/duel/effects/hit/fxp_hitm_fin/fxp_hitm_fin_m05000/fxp_hitm_fin_m05000_near_001.prefab
+            //ABLoader.LoadFromFolder("03c2faea");//assets/resourcesassetbundle/duel/effects/hit/fxp_hitm_fin/fxp_hitm_fin_redeyes01/attackredescreeneffect.prefab
+            //ABLoader.LoadFromFolder("34ee4d85");//assets/resourcesassetbundle/duel/effects/hit/fxp_hitm_fin/fxp_hitm_fin_redeyes01/fxp_hitm_fin_rede01_far_001.prefab
+            //ABLoader.LoadFromFolder("ffdd0467");//assets/resourcesassetbundle/duel/effects/hit/fxp_hitm_fin/fxp_hitm_fin_redeyes01/fxp_hitm_fin_rede01_near_001.prefab
+
+            //ABLoader.LoadFromFolder("6733207a");//assets/resourcesassetbundle/duel/timeline/duel/universal/attack/attack_m04998/attack_m04998dummycardset.prefab
+            //ABLoader.LoadFromFolder("8c4d1977");//assets/resourcesassetbundle/duel/timeline/duel/universal/attack/attack_m04998/attack_m04998punch.prefab
+            //ABLoader.LoadFromFolder("b51f3a0f");//assets/resourcesassetbundle/duel/timeline/duel/universal/attack/attack_m04999/attackm04999beam.prefab
+            //ABLoader.LoadFromFolder("d25bd123");//assets/resourcesassetbundle/duel/timeline/duel/universal/attack/attack_m04999/attackm04999dummycardset.prefab
+            //ABLoader.LoadFromFolder("5d9d44b3");//assets/resourcesassetbundle/duel/timeline/duel/universal/attack/attack_m05000/attack_m05000bless.prefab
+            //ABLoader.LoadFromFolder("745fb658");//assets/resourcesassetbundle/duel/timeline/duel/universal/attack/attack_m05000/attack_m05000dummycardset.prefab
+            //ABLoader.LoadFromFolder("446b8cb8");//assets/resourcesassetbundle/duel/timeline/duel/universal/attack/attackblueeyes/attackblueebeam.prefab
+            //ABLoader.LoadFromFolder("a82a423d");//assets/resourcesassetbundle/duel/timeline/duel/universal/attack/attackblueeyes/attackblueedummycardset.prefab
+            //ABLoader.LoadFromFolder("3a32fcda");//assets/resourcesassetbundle/duel/timeline/duel/universal/attack/attackdarkm/attackdarkmdummycardset.prefab
+            //ABLoader.LoadFromFolder("57090dd3");//assets/resourcesassetbundle/duel/timeline/duel/universal/attack/attackdarkm/attackdarkmlinerenderer.prefab
+            //ABLoader.LoadFromFolder("637a633f");//assets/resourcesassetbundle/duel/timeline/duel/universal/attack/attackdarkm/attackdarkmlinerendererda.prefab
+            //ABLoader.LoadFromFolder("657e34c6");//assets/resourcesassetbundle/duel/timeline/duel/universal/attack/attackdarkm/attackdarkmtargetpoint.prefab
+            //ABLoader.LoadFromFolder("5c2f34a0");//assets/resourcesassetbundle/duel/timeline/duel/universal/attack/attackredeyes/attackredebless.prefab
+            //ABLoader.LoadFromFolder("fbf001db");//assets/resourcesassetbundle/duel/timeline/duel/universal/attack/attackredeyes/attackrededummycardset.prefab
 
             #region Attack Line
             if (attackLine == null)
@@ -1354,6 +1472,8 @@ namespace MDPro3
             chainSolving = 0;
             ignoreNextMoveLog = false;
             psum = false;
+
+            greenBackground.gameObject.SetActive(false);
         }
 
         public void AddPackage(Package p)
@@ -2604,7 +2724,8 @@ namespace MDPro3
                     messagePass = false;
                     int playerType = r.ReadByte();
                     isFirst = (playerType & 0xF) == 0;
-                    Room.coreShowing = true;
+                    Room.coreShowing = 2;
+                    Program.I().room.AddChatItem(-2, "Core Ready");
                     isObserver = (playerType & 0xF0) > 0;
                     if (r.BaseStream.Length > 17)
                         MasterRule = r.ReadByte();

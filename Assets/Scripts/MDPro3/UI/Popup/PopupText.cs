@@ -14,6 +14,7 @@ namespace MDPro3.UI
         public ScrollRect scrollRect;
         public TextMeshProUGUI text;
 
+        public HorizontalAlignmentOptions alignment = HorizontalAlignmentOptions.Center;
         public override void InitializeSelections()
         {
             base.InitializeSelections();
@@ -30,6 +31,8 @@ namespace MDPro3.UI
             backTop.sizeDelta = new Vector2(backTop.sizeDelta.x, (1100 - sizeDelta.y) / 2);
             backBotton.sizeDelta = new Vector2(backBotton.sizeDelta.x, (1100 - sizeDelta.y) / 2);
             scrollRect.verticalScrollbar.value = 1;
+
+            text.horizontalAlignment = alignment;
         }
 
         public override void OnCancel()

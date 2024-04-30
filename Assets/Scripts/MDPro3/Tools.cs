@@ -188,5 +188,17 @@ namespace MDPro3
                 MessageManager.Cast($"Failed to open file explorer: {ex.Message}");
             }
         }
+
+        public static KeyValuePair<TKey, TValue> GetNthElement<TKey, TValue>(Dictionary<TKey, TValue> dic, int n)
+        {
+            if (n < 0)
+                n = 0;
+            if (n >= dic.Count)
+                n = dic.Count - 1;
+            var enumerator = dic.GetEnumerator();
+            for (int i = 0; i < n; i++)
+                enumerator.MoveNext();
+            return enumerator.Current;
+        }
     }
 }

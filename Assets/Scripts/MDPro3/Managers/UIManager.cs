@@ -257,13 +257,14 @@ namespace MDPro3
                 popupSearchFilter.Show();
             };
         }
-        public static void ShowPopupText(List<string> selections)
+        public static void ShowPopupText(List<string> selections, HorizontalAlignmentOptions alignment = HorizontalAlignmentOptions.Center)
         {
             var handle = Addressables.InstantiateAsync("PopupText");
             handle.Completed += (result) =>
             {
                 result.Result.transform.SetParent(Program.I().ui_.popup, false);
                 var popupText = result.Result.GetComponent<PopupText>();
+                popupText.alignment = alignment;
                 popupText.selections = selections;
                 popupText.Show();
             };

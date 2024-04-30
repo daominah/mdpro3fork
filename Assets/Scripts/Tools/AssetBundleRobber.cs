@@ -47,8 +47,17 @@ public class AssetBundleRobber : MonoBehaviour
 
         Initialize();
 
-        StartCoroutine(RefreshFileResources());
-        //Copy("fdea3f9a");
+        //StartCoroutine(RefreshFileResources());
+        Copy("296a15e7");//2
+        Copy("5e6d2571");//3
+        Copy("c009b0d2");//4
+        Copy("b70e8044");//5
+        Copy("5900e168");//7
+        Copy("c9bffcf9");//8
+        Copy("beb8cc6f");//9
+        Copy("de7f458a");//10
+
+
     }
             
 

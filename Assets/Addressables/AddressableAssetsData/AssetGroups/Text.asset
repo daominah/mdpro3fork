@@ -33,6 +33,10 @@ MonoBehaviour:
     m_Address: AboutUpdate
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 6c2a363b3f65c99499c33654b3e5c03e
+    m_Address: UpdateContent
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: e38330e9272b0a94a916f68bd5115c96, type: 2}
   m_SchemaSet:

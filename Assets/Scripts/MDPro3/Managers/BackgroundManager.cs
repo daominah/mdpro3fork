@@ -7,28 +7,51 @@ namespace MDPro3
 {
     public class BackgroundManager : Manager
     {
-        static GameObject back;
+        GameObject back;
 
-        public override void Initialize()
+        public static readonly Dictionary<int, string> backgrounds = new Dictionary<int, string>()
         {
-            base.Initialize();
-            back = ABLoader.LoadFromFile("wallpaper/back/back0007");
-            if (back == null)
-                return;
-            back.AddComponent<AutoScale>();
-            Tools.ChangeLayer(back, "2D");
-            back.transform.SetParent(transform);
-        }
+            {1, "Classic" },
+            {2, "Classic2" },
+            {3, "PurpleDarkFantasy" },
+            {5, "ClassicPurple" },
+            {4, "ClassicPurpleShine" },
+            //{6, "ClassicWhite" },
+            {7, "WCS" },
+            {8, "Shop" },
+            {9, "Knowledge" },
+            {10, "DeepDarkFantasy" },
+        };
 
-        public static void Change(int id)
+
+        public void Change(int id)
         {
-            var back = ABLoader.LoadFromFile("wallpaper/back/back000" + id);
-            if (back == null) return;
-            else
+            Destroy(back);
+            if (id == 0)
             {
-                Object.Destroy(BackgroundManager.back);
-                BackgroundManager.back = back;
+                var random = Random.Range(0, backgrounds.Count);
+                id = Tools.GetNthElement(backgrounds, random).Key;
             }
+            var endString = id.ToString("D4");
+            back = ABLoader.LoadFromFolder("wallpaper/back" + endString, "Background" + endString, true);
+            back.transform.GetChild(0).gameObject.AddComponent<AutoScale>();
+            Tools.ChangeLayer(back, "2D");
+            back.transform.SetParent(transform, false);
+        }
+        public int GetIDByName(string bgName)
+        {
+            var id = 0;
+            if(bgName == InterString.Get("Ëæ»ú"))
+                return 0;
+            foreach (var background in backgrounds)
+            {
+                if(bgName == background.Value)
+                {
+                    id = background.Key;
+                    break;
+                }
+            }
+            return id;
         }
     }
 }

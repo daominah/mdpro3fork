@@ -338,6 +338,7 @@ namespace MDPro3
             TcpHelper.tcpClient = null;
             YgoServer.StopServer();
             ZipHelper.Dispose();
+            Config.Save();
         }
 
         void ClearCache()

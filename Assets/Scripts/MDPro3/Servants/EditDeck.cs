@@ -146,7 +146,6 @@ namespace MDPro3
             else
             {
                 AudioManager.PlayBGM("BGM_MENU_02");
-
                 deckName = Config.Get("DeckInUse", "");
                 input.text = deckName;
                 ScrollViewInstall();

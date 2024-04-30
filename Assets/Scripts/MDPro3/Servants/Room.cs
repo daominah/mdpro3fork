@@ -63,7 +63,7 @@ namespace MDPro3
         public static bool fromSolo;
         public static bool soloLockHand;
         public static bool fromLocalHost;
-        public static bool coreShowing;
+        public static int coreShowing = 0;
         public class Player
         {
             public string name = "";
@@ -150,7 +150,7 @@ namespace MDPro3
         public override void Show(int preDepth)
         {
             base.Show(preDepth);
-            coreShowing = false;
+            coreShowing = 0;
             ChatOn(transitionTime);
             Program.I().ocgcore.handler = Handler;
             deckName.text = Config.Get("DeckInUse", "@ui");
@@ -404,9 +404,34 @@ namespace MDPro3
             WatchOpTag,
             Other
         }
-        void AddChatItem(int player, string content)
+
+        SortedDictionary<int, string> cachedDialog = new SortedDictionary<int, string>();
+
+        public void AddChatItem(int player, string content)
         {
-            if (coreShowing && player < 4)
+            if(coreShowing == 1)
+            {
+                cachedDialog.Add(player, content);
+                return;
+            }
+            if(coreShowing == 2 && cachedDialog.Count > 0)
+            {
+                var players = new List<int>();
+                var contents = new List<string>();
+                foreach(var element  in cachedDialog)
+                {
+                    players.Add(element.Key);
+                    contents.Add(element.Value);
+                }
+                cachedDialog.Clear();
+                for(int i = 0; i < players.Count; i++)
+                    AddChatItem(players[i], contents[i]);
+            }
+
+            if (player == -2)
+                return;
+
+            if (coreShowing == 2 && player < 4)
             {
                 if (mode != 2)
                 {
@@ -716,6 +741,8 @@ namespace MDPro3
 
         void ShowOcgCore()
         {
+            if(coreShowing == 0)
+                coreShowing = 1;
             if (Program.I().ocgcore.isShowed)
                 return;
             if (mode != 2)

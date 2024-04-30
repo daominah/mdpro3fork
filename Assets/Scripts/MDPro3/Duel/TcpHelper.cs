@@ -27,9 +27,17 @@ namespace MDPro3
         private static readonly Queue<Package> messageQueue = new Queue<Package>();
         public static void InitializeSender()
         {
-            var senderThead = new Thread(Sender);
-            senderThead.IsBackground = true;
-            senderThead.Start();
+            try
+            {
+                var senderThead = new Thread(Sender);
+                senderThead.IsBackground = true;
+                senderThead.Start();
+            }
+            catch 
+            {
+                if (Program.I().solo.isShowed)
+                    MessageManager.messageFromSubString = InterString.Get("端口被占用， 请尝试修改端口后再尝试。端口号应大于0，小于65535。");
+            }
         }
 
         public static void Join(string ipString, string name, string portString, string pswString, string version)
@@ -52,7 +60,7 @@ namespace MDPro3
                     }
                     catch (Exception e)
                     {
-                        if(Program.I().solo)
+                        if(Program.I().solo.isShowed)
                             MessageManager.messageFromSubString = InterString.Get("端口被占用， 请尝试修改端口后再尝试。端口号应大于0，小于65535。");
                         else
                             MessageManager.messageFromSubString = "JoinError: " + e;
@@ -871,5 +879,10 @@ namespace MDPro3
                 exception = ex;
             }
         }
+
+
+
     }
+
+
 }

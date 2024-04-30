@@ -50,6 +50,8 @@ namespace MDPro3
         public Text autoRPSValue;
         public Slider uiScale;
         public Text uiScaleValue;
+        public Button background;
+        public Text backgroundValue;
         public Button cardLanguage;
         public Text cardLanguageValue;
         public Button language;
@@ -173,6 +175,7 @@ namespace MDPro3
             showFPS.onClick.AddListener(OnShowFPSClicked);
             screen.onClick.AddListener(OnScreenModeChange);
             resolution.onClick.AddListener(OnResolutionChange);
+            background.onClick.AddListener(OnBackground);
             cardLanguage.onClick.AddListener(OnCardLanguageChange);
             language.onClick.AddListener(OnLanguageChange);
             confirm.onClick.AddListener(OnConfirmClicked);
@@ -244,6 +247,7 @@ namespace MDPro3
             InitializeScreenMode();
             InitializeResolution();
             InitializeConfirm();
+            InitializeBackground();
             InitializeCardLanguage();
             InitializeLanguage();
             InitializeSwitches();
@@ -678,6 +682,41 @@ namespace MDPro3
             Screen.SetResolution(int.Parse(Regex.Split(selected, " x ")[0]), int.Parse(Regex.Split(selected, " x ")[1]), Screen.fullScreen);
             resolutionValue.text = selected;
         }
+
+        public void InitializeBackground()
+        {
+            var id = int.Parse(Config.Get("Background", "0"));
+            var value = InterString.Get("随机");
+            if (id != 0)
+                BackgroundManager.backgrounds.TryGetValue(id, out value);
+            if(string.IsNullOrEmpty(value))
+                value = InterString.Get("随机");
+            backgroundValue.text = value;
+            Program.I().background_.Change(id);
+        }
+
+        public void OnBackground()
+        {
+            List<string> selections = new List<string>
+            {
+                InterString.Get("更换背景"),
+                InterString.Get("随机"),
+            };
+            foreach (var background in BackgroundManager.backgrounds)
+                selections.Add(background.Value);
+
+            UIManager.ShowPopupSelection(selections, OnBackgroundSelection);
+        }
+
+        void OnBackgroundSelection()
+        {
+            string selected = UnityEngine.EventSystems.EventSystem.current.
+                    currentSelectedGameObject.transform.GetChild(0).GetComponent<Text>().text;
+            var id = Program.I().background_.GetIDByName(selected);
+            Config.Set("Background", id.ToString());
+            InitializeBackground();
+        }
+
         public void InitializeCardLanguage()
         {
             string lan = Config.Get("CardLanguage", "zh-CN");
@@ -1426,7 +1465,7 @@ namespace MDPro3
                     InterString.Get("关于版本号"),
                     result.Result.text
                 };
-                UIManager.ShowPopupText(selections);
+                UIManager.ShowPopupText(selections, TMPro.HorizontalAlignmentOptions.Left);
             };
         }
         public void OnAboutUpdate()
@@ -1442,6 +1481,20 @@ namespace MDPro3
                 UIManager.ShowPopupText(selections);
             };
         }
+        public void OnUpdateContent()
+        {
+            var handle = Addressables.LoadAssetAsync<TextAsset>("UpdateContent");
+            handle.Completed += (result) =>
+            {
+                var selections = new List<string>()
+                {
+                    InterString.Get("更新内容"),
+                    result.Result.text
+                };
+                UIManager.ShowPopupText(selections, TMPro.HorizontalAlignmentOptions.Left);
+            };
+        }
+
     }
 
 

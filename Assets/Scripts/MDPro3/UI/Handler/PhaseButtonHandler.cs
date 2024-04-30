@@ -41,7 +41,7 @@ namespace MDPro3.UI
 
             textAbove = manager.GetElement<TextMeshPro>("Text03");
             textAbove.font = Program.I().ui_.tmpFontForPhaseButton;
-            textAbove.text = "Turn1";
+            textAbove.text = "Turn 1";
 
             textBelow = manager.GetElement<TextMeshPro>("Text02");
             textBelow.font = Program.I().ui_.tmpFontForPhaseButton;
@@ -104,7 +104,7 @@ namespace MDPro3.UI
 
         public static void TurnChange(bool me, int turns)
         {
-            SetTextAbove("Turn" + turns.ToString());
+            SetTextAbove("Turn " + turns.ToString());
             commonPart.localScale = Vector3.zero;
             commonPart.DOScale(Vector3.one, 0.3f);
             if (me)
