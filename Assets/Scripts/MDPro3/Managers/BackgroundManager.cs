@@ -32,6 +32,7 @@ namespace MDPro3
                 var random = Random.Range(0, backgrounds.Count);
                 id = Tools.GetNthElement(backgrounds, random).Key;
             }
+
             var endString = id.ToString("D4");
             back = ABLoader.LoadFromFolder("wallpaper/back" + endString, "Background" + endString, true);
             back.transform.GetChild(0).gameObject.AddComponent<AutoScale>();

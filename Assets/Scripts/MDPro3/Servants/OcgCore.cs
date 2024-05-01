@@ -1413,6 +1413,10 @@ namespace MDPro3
             turns = 0;
             handOffset = 0;
             lastHandOffset = 0;
+            myPreHandCards.Clear();
+            opPreHandCards.Clear();
+            needRefreshHand0 = true;
+            needRefreshHand1 = true;
             materialCards.Clear();
             cardsInChain.Clear();
             codesInChain.Clear();
@@ -2230,6 +2234,7 @@ namespace MDPro3
                     if (psum)
                     {
                         psum = false;
+                        cardsBeTarget.Clear();
                         item = Instantiate(chainSolving > 0 ? container.duelLogText2 : container.duelLogText);
                         item.transform.GetChild(1).GetComponent<Text>().text = InterString.Get("¡È∞⁄’ŸªΩΩ· ¯");
                         log.AddLog(item);
@@ -2410,13 +2415,13 @@ namespace MDPro3
 
             item.transform.GetChild(5).GetComponent<Button>().onClick.AddListener(() =>
             {
-                Debug.LogFormat("Location: {0:X}, Sequence: {1}, Position: {2}", from.location, from.sequence, from.position);
+                Debug.LogFormat("Location: {0:X}, Sequence: {1}, Position: {2:X}", from.location, from.sequence, from.position);
             });
             if(to != null)
             {
                 item.transform.GetChild(7).GetComponent<Button>().onClick.AddListener(() =>
                 {
-                    Debug.LogFormat("Location: {0:X}, Sequence: {1}, Position: {2}", to.location, to.sequence, to.position);
+                    Debug.LogFormat("Location: {0:X}, Sequence: {1}, Position: {2:X}", to.location, to.sequence, to.position);
                 });
             }
 #endif
@@ -2944,8 +2949,8 @@ namespace MDPro3
                         }
                     }
                     catch { }
-                    needRefreshHand0 = true;
-                    needRefreshHand1 = true;
+                    myPreHandCards.Clear();
+                    opPreHandCards.Clear();
                     RefreshHandCardPosition();
                     RefreshBgState();
                     break;
@@ -4197,6 +4202,7 @@ namespace MDPro3
                     var deckCount = GetLocationCardCount(CardLocation.Deck, (uint)player);
                     var handCount = GetLocationCardCount(CardLocation.Hand, (uint)player);
                     sleep = 0;
+                    List<GameCard> preHands = new List<GameCard>();
                     for (var i = 0; i < count; i++)
                     {
                         card = GCS_Get(
@@ -4207,15 +4213,26 @@ namespace MDPro3
                                 sequence = (uint)(deckCount - 1 - i),
                             });
                         card.SetCode(r.ReadInt32() & 0x7fffffff);
-                        if (card != null)
-                            sleep = card.Move(
+                        preHands.Add(card);
+                    }
+                    if (player == 0)
+                    {
+                        needRefreshHand0 = true;
+                        myPreHandCards = preHands;
+                    }
+                    else
+                    {
+                        needRefreshHand1 = true;
+                        opPreHandCards = preHands;
+                    }
+                    for (var i = 0; i < preHands.Count; i++)
+                        sleep = preHands[i].Move(
                                 new GPS
                                 {
                                     controller = (uint)player,
                                     location = (uint)CardLocation.Hand,
                                     sequence = (uint)(handCount + i),
                                 });
-                    }
                     Sleep((int)(sleep * 100));
                     break;
                 case GameMessage.TagSwap:
@@ -6119,14 +6136,19 @@ namespace MDPro3
         public bool needRefreshHand1 = true;
         public List<GameCard> myHandCards = new List<GameCard>();
         public List<GameCard> opHandCards = new List<GameCard>();
+        List<GameCard> myPreHandCards = new List<GameCard>();
+        List<GameCard> opPreHandCards = new List<GameCard>();
+
         public int GetMyHandCount()
         {
             if (needRefreshHand0)
             {
-                myHandCards.Clear();
+                myHandCards = new List<GameCard>(myPreHandCards);
                 foreach (var card in cards)
-                    if (card.p.controller == 0 && (card.p.location & (uint)CardLocation.Hand) > 0)
-                        myHandCards.Add(card);
+                    if (card.p.controller == 0)
+                        if((card.p.location & (uint)CardLocation.Hand) > 0)
+                            if(!myHandCards.Contains(card))
+                                myHandCards.Add(card);
                 needRefreshHand0 = false;
             }
             return myHandCards.Count;
@@ -6135,10 +6157,12 @@ namespace MDPro3
         {
             if (needRefreshHand1)
             {
-                opHandCards.Clear();
+                opHandCards = new List<GameCard>(opPreHandCards);
                 foreach (var card in cards)
-                    if (card.p.controller != 0 && (card.p.location & (uint)CardLocation.Hand) > 0)
-                        opHandCards.Add(card);
+                    if (card.p.controller != 0)
+                        if ((card.p.location & (uint)CardLocation.Hand) > 0)
+                            if (!opHandCards.Contains(card))
+                                opHandCards.Add(card);
                 needRefreshHand1 = false;
             }
             return opHandCards.Count;

@@ -25,6 +25,11 @@ namespace MDPro3.UI
             else
                 transform.localScale = new Vector3(width, height, transform.localScale.z);
         }
+
+        private void OnDestroy()
+        {
+            Program.onScreenChanged -= Scale;
+        }
     }
 }
 

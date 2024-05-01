@@ -196,7 +196,7 @@ namespace MDPro3
             if (n >= dic.Count)
                 n = dic.Count - 1;
             var enumerator = dic.GetEnumerator();
-            for (int i = 0; i < n; i++)
+            for (int i = 0; i < n + 1; i++)
                 enumerator.MoveNext();
             return enumerator.Current;
         }

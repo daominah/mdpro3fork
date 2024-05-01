@@ -120,10 +120,8 @@ namespace MDPro3
                     }
                     if (!hover && !clicked && !handDefault)
                     {
-
                         AnimationHandDefault(0.1f);
                     }
-
                     if (Math.Abs(Program.I().ocgcore.handOffset - Program.I().ocgcore.lastHandOffset) > 10)
                         SetHandDefault();
                 }
@@ -880,7 +878,7 @@ namespace MDPro3
         public GPS cacheP;
         bool inAnimation;
         static uint lastMovedLocation;
-        public float Move(GPS gps, bool rush = false)
+        public float Move(GPS gps, bool rush = false, float wait = 0f)
         {
             Program.I().ocgcore.lastMoveCard = this;
 
@@ -951,6 +949,8 @@ namespace MDPro3
                 if (model == null)
                 {
                     CreateModel();
+                    if ((cacheP.location & (uint)CardLocation.Deck) > 0)
+                        cacheP.position = (int)CardPosition.FaceDownAttack;
                     ModelAt(cacheP);
                 }
 
@@ -1156,16 +1156,37 @@ namespace MDPro3
                     goto SummonPass;
                 }
 
+                bool handAppeal = false;
+                bool fieldAppeal = false;
+                var ease = Ease.Unset;
                 switch (Program.I().ocgcore.currentMessage)
                 {
                     case GameMessage.Draw:
-                        moveTime = 0.15f;
-                        break;
-                    case GameMessage.Move:
-                        if ((p.location & (uint)CardLocation.Onfield) > 0)
-                            moveTime = 0.4f;
+                        if (p.controller == 0)
+                        {
+                            moveTime = 0.5f;
+                            handAppeal = true;
+                        }
                         else
                             moveTime = 0.2f;
+                        break;
+                    case GameMessage.Move:
+                        if ((p.location & (uint)CardLocation.Onfield) > 0
+                            && cacheP != null
+                            && (cacheP.location & (uint)CardLocation.Onfield) == 0
+                            && (p.location & (uint)CardLocation.Overlay) == 0)
+                        {
+                            moveTime = 0.4f;
+                            fieldAppeal = true;
+                        }
+                        else if ((p.location & (uint)CardLocation.Hand) > 0 
+                            && p.controller == 0)
+                        {
+                            moveTime = 0.6f;
+                            handAppeal = true;
+                        }
+                        else
+                            moveTime = 0.25f;
                         break;
                     case GameMessage.FlipSummoning:
                     case GameMessage.PosChange:
@@ -1182,7 +1203,19 @@ namespace MDPro3
                 var turn = manager.GetElement<Transform>("Turn");
 
                 //Ö÷ÌåÒÆ¶¯
-                sequence.Append(model.transform.DOLocalMove(position, moveTime).OnStart(() =>
+                sequence.AppendInterval(wait);
+                var targetMainMoveTime = moveTime;
+                if (handAppeal)
+                {
+                    targetMainMoveTime *= 0.666f;
+                    ease = Ease.OutCubic;
+                }
+                if (fieldAppeal)
+                {
+                    targetMainMoveTime *= 0.666f;
+                    ease = Ease.OutSine;
+                }
+                sequence.Append(model.transform.DOLocalMove(position, targetMainMoveTime).SetEase(ease).OnStart(() =>
                 {
                     if ((cacheP.location & (uint)CardLocation.Extra) > 0
                         && (p.location & (uint)CardLocation.Extra) == 0
@@ -1192,47 +1225,49 @@ namespace MDPro3
                         || (p.location & (uint)CardLocation.MonsterZone) == 0)
                         HideLabel();
                 }));
-                if((p.location & (uint)CardLocation.Onfield) > 0
-                    && cacheP != null
-                    && (cacheP.location & (uint)CardLocation.Onfield) == 0
-                    && (p.location & (uint)CardLocation.Overlay) == 0)
+                if(fieldAppeal)
                 {
-                    sequence.Join(cardPlane.DOLocalMove(Vector3.up * 15f, moveTime * 0.5f).SetEase(Ease.InOutSine).OnComplete(() =>
+                    sequence.Join(cardPlane.DOLocalMove(Vector3.up * 15f, targetMainMoveTime).SetEase(ease).OnComplete(() =>
                     {
-                        sequence.Join(cardPlane.DOLocalMove(Vector3.zero, moveTime * 0.5f).SetEase(Ease.InOutSine));
+                        sequence.Join(cardPlane.DOLocalMove(Vector3.zero, targetMainMoveTime * 0.5f).SetEase(Ease.InSine));
                     }));
                 }
 
-                sequence.Join(pivot.DOScale(GetCardScale(p), moveTime * 0.95f));
+                sequence.Join(pivot.DOScale(GetCardScale(p), targetMainMoveTime * 0.95f));
                 //Turn
                 if ((p.location & (uint)CardLocation.Removed) > 0
                     || (p.location & (uint)CardLocation.Deck) > 0
                     || (p.location & (uint)CardLocation.Extra) > 0)
-                    sequence.Join(turn.DOLocalRotate(new Vector3(0, 0, rotation.z), moveTime * 0.5f));
+                    sequence.Join(turn.DOLocalRotate(new Vector3(0, 0, rotation.z), targetMainMoveTime * 0.8f));
                 else
-                    sequence.Join(turn.DOLocalRotate(new Vector3(0, (rotation.y == 0) || (rotation.y == 180) ? 0 : 270, rotation.z), moveTime * 0.5f));
+                    sequence.Join(turn.DOLocalRotate(new Vector3(0, (rotation.y == 0) || (rotation.y == 180) ? 0 : 270, rotation.z), targetMainMoveTime * 0.8f).SetEase(ease));
+                if (handAppeal)
+                    sequence.Join(turn.DOLocalMove(new Vector3(0, 0, 10), targetMainMoveTime).SetEase(Ease.OutCubic).OnComplete(() =>
+                    {
+                        turn.DOLocalMove(Vector3.zero, targetMainMoveTime * 0.5f).SetEase(Ease.InCubic);
+                    }));
+
                 //CardPlane
                 if ((p.location & (uint)CardLocation.Deck) > 0
                     || (p.location & (uint)CardLocation.Extra) > 0
                     || (p.location & (uint)CardLocation.Removed) > 0)
-                    sequence.Join(cardPlane.DOLocalRotate(new Vector3(rotation.x, rotation.y, 0), moveTime * 0.5f));
+                    sequence.Join(cardPlane.DOLocalRotate(new Vector3(rotation.x, rotation.y, 0), targetMainMoveTime * 0.5f));
                 else
-                    sequence.Join(cardPlane.DOLocalRotate(new Vector3(rotation.x, (rotation.y == 0 || rotation.y == 270) ? 0 : 180, 0), moveTime * 0.5f));
+                    sequence.Join(cardPlane.DOLocalRotate(new Vector3(rotation.x, (rotation.y == 0 || rotation.y == 270) ? 0 : 180, 0), targetMainMoveTime * 0.5f));
 
                 //Pivot && Offset
                 if ((p.location & (uint)CardLocation.Hand) > 0)
                 {
-                    sequence.Join(pivot.DOLocalMove(new Vector3(0, 0, HandOffsetPositionByX(position.x)), moveTime / 4));
-                    sequence.Join(offset.DOLocalRotate(new Vector3(0, HandOffsetRotationByX(position.x), handAngle), moveTime / 4));
-                    sequence.Join(turn.DOLocalRotate(new Vector3(0, 0, data.Id > 0 ? 0 : 180), moveTime / 4));
+                    sequence.Join(pivot.DOLocalMove(new Vector3(0, 0, HandOffsetPositionByX(position.x)), targetMainMoveTime / 4));
+                    sequence.Join(offset.DOLocalRotate(new Vector3(0, HandOffsetRotationByX(position.x), handAngle), targetMainMoveTime / 4));
                     handDefault = true;
                 }
                 else
                 {
-                    sequence.Join(offset.DOLocalMove(Vector3.zero, moveTime / 4));
+                    sequence.Join(offset.DOLocalMove(Vector3.zero, targetMainMoveTime / 4));
                     sequence.Join(offset.DOLocalRotate(Vector3.zero, 0.21f));
-                    sequence.Join(pivot.DOLocalMove(Vector3.zero, moveTime / 4));
-                    sequence.Join(pivot.DOLocalRotate(Vector3.zero, moveTime / 4));
+                    sequence.Join(pivot.DOLocalMove(Vector3.zero, targetMainMoveTime / 4));
+                    sequence.Join(pivot.DOLocalRotate(Vector3.zero, targetMainMoveTime / 4));
                 }
 
                 if ((p.location & ((uint)CardLocation.Grave + (uint)CardLocation.Removed)) > 0)
@@ -1895,6 +1930,7 @@ namespace MDPro3
             }
             else
             {
+                return;
                 model.transform.DOShakePosition(0.4f, Vector3.one * 0.2f, 10, 90, false, true, ShakeRandomnessMode.Harmonic);
                 model.transform.DOShakeRotation(0.4f, 5f);
                 Sequence sequence = DOTween.Sequence();

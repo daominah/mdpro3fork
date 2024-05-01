@@ -214,7 +214,7 @@ namespace MDPro3
             }
             else
             {
-                Program.I().camera_.cameraMain.DOShakePosition(0.3f, 1, 100);
+                Program.I().camera_.cameraMain.DOShakePosition(0.2f, 0.5f, 50);
             }
         }
     }
