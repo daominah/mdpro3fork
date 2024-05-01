@@ -56,6 +56,7 @@ namespace MDPro3
         public Text cardLanguageValue;
         public Button language;
         public Text languageValue;
+
         [Header("Duel")]
         public Button duelAppearance;
         public Text duelAppearanceValue;
@@ -81,6 +82,10 @@ namespace MDPro3
         public Text duelCoinValue;
         public Button duelAutoInfo;
         public Text duelAutoInfoValue;
+        public Button duelPlayerMessage;
+        public Text duelPlayerMessageValue;
+        public Button duelSystemMessage;
+        public Text duelSystemMessageValue;
         public Button timing;
         public Text timingValue;
 
@@ -109,6 +114,10 @@ namespace MDPro3
         public Text watchCoinValue;
         public Button watchAutoInfo;
         public Text watchAutoInfoValue;
+        public Button watchPlayerMessage;
+        public Text watchPlayerMessageValue;
+        public Button watchSystemMessage;
+        public Text watchSystemMessageValue;
 
         [Header("Replay")]
         public Button replayAppearance;
@@ -135,6 +144,11 @@ namespace MDPro3
         public Text replayCoinValue;
         public Button replayAutoInfo;
         public Text replayAutoInfoValue;
+        public Button replayPlayerMessage;
+        public Text replayPlayerMessageValue;
+        public Button replaySystemMessage;
+        public Text replaySystemMessageValue;
+
         [Header("Port")]
         public Button import;
         public Button exportDeck;
@@ -157,7 +171,6 @@ namespace MDPro3
             subBlackAlpha = 0.9f;
             returnServant = Program.I().menu;
             base.Initialize();
-
 
             QualitySettings.vSyncCount = 0;
             Application.targetFrameRate = 60;
@@ -214,6 +227,12 @@ namespace MDPro3
             duelCoin.onClick.AddListener(OnDuelCoinClick);
             watchCoin.onClick.AddListener(OnWatchCoinClick);
             replayCoin.onClick.AddListener(OnReplayCoinClick);
+            duelPlayerMessage.onClick.AddListener(OnDuelPlayerMessageClick);
+            watchPlayerMessage.onClick.AddListener(OnWatchPlayerMessageClick);
+            replayPlayerMessage.onClick.AddListener(OnReplayPlayerMessageClick);
+            duelSystemMessage.onClick.AddListener(OnDuelSystemMessageClick);
+            watchSystemMessage.onClick.AddListener(OnWatchSystemMessageClick);
+            replaySystemMessage.onClick.AddListener(OnReplaySystemMessageClick);
             duelAutoInfo.onClick.AddListener(OnDuelAutoInfoClick);
             watchAutoInfo.onClick.AddListener(OnWatchAutoInfoClick);
             replayAutoInfo.onClick.AddListener(OnReplayAutoInfoClick);
@@ -328,6 +347,12 @@ namespace MDPro3
             Config.Set("DuelAutoInfo", SaveBool(duelAutoInfoValue.text));
             Config.Set("WatchAutoInfo", SaveBool(watchAutoInfoValue.text));
             Config.Set("ReplayAutoInfo", SaveBool(replayAutoInfoValue.text));
+            Config.Set("DuelPlayerMessage", SaveBool(duelPlayerMessageValue.text));
+            Config.Set("WatchPlayerMessage", SaveBool(watchPlayerMessageValue.text));
+            Config.Set("ReplayPlayerMessage", SaveBool(replayPlayerMessageValue.text));
+            Config.Set("DuelSystemMessage", SaveBool(duelSystemMessageValue.text));
+            Config.Set("WatchSystemMessage", SaveBool(watchSystemMessageValue.text));
+            Config.Set("ReplaySystemMessage", SaveBool(replaySystemMessageValue.text));
             Config.Set("Timing", SaveBool(timingValue.text));
 
             Config.Set("Expansions", SaveBool(supportExpansionsValue.text));
@@ -979,6 +1004,38 @@ namespace MDPro3
             else
                 replayAutoInfoValue.text = InterString.Get("开");
 
+            value = Config.Get("DuelPlayerMessage", "1");
+            if (value == "0")
+                duelPlayerMessageValue.text = InterString.Get("关");
+            else
+                duelPlayerMessageValue.text = InterString.Get("开");
+            value = Config.Get("WatchPlayerMessage", "1");
+            if (value == "0")
+                watchPlayerMessageValue.text = InterString.Get("关");
+            else
+                watchPlayerMessageValue.text = InterString.Get("开");
+            value = Config.Get("ReplayPlayerMessage", "1");
+            if (value == "0")
+                replayPlayerMessageValue.text = InterString.Get("关");
+            else
+                replayPlayerMessageValue.text = InterString.Get("开");
+
+            value = Config.Get("DuelSystemMessage", "1");
+            if (value == "0")
+                duelSystemMessageValue.text = InterString.Get("关");
+            else
+                duelSystemMessageValue.text = InterString.Get("开");
+            value = Config.Get("WatchSystemMessage", "1");
+            if (value == "0")
+                watchSystemMessageValue.text = InterString.Get("关");
+            else
+                watchSystemMessageValue.text = InterString.Get("开");
+            value = Config.Get("ReplaySystemMessage", "1");
+            if (value == "0")
+                replaySystemMessageValue.text = InterString.Get("关");
+            else
+                replaySystemMessageValue.text = InterString.Get("开");
+
             value = Config.Get("Timing", "0");
             if (value == "0")
                 timingValue.text = InterString.Get("关");
@@ -1246,6 +1303,7 @@ namespace MDPro3
             else
                 replayCoinValue.text = InterString.Get("开");
         }
+
         public void OnDuelAutoInfoClick()
         {
             if (duelAutoInfoValue.text == InterString.Get("开"))
@@ -1267,6 +1325,51 @@ namespace MDPro3
             else
                 replayAutoInfoValue.text = InterString.Get("开");
         }
+
+        public void OnDuelPlayerMessageClick()
+        {
+            if (duelPlayerMessageValue.text == InterString.Get("开"))
+                duelPlayerMessageValue.text = InterString.Get("关");
+            else
+                duelPlayerMessageValue.text = InterString.Get("开");
+        }
+        public void OnWatchPlayerMessageClick()
+        {
+            if (watchPlayerMessageValue.text == InterString.Get("开"))
+                watchPlayerMessageValue.text = InterString.Get("关");
+            else
+                watchPlayerMessageValue.text = InterString.Get("开");
+        }
+        public void OnReplayPlayerMessageClick()
+        {
+            if (replayPlayerMessageValue.text == InterString.Get("开"))
+                replayPlayerMessageValue.text = InterString.Get("关");
+            else
+                replayPlayerMessageValue.text = InterString.Get("开");
+        }
+
+        public void OnDuelSystemMessageClick()
+        {
+            if (duelSystemMessageValue.text == InterString.Get("开"))
+                duelSystemMessageValue.text = InterString.Get("关");
+            else
+                duelSystemMessageValue.text = InterString.Get("开");
+        }
+        public void OnWatchSystemMessageClick()
+        {
+            if (watchSystemMessageValue.text == InterString.Get("开"))
+                watchSystemMessageValue.text = InterString.Get("关");
+            else
+                watchSystemMessageValue.text = InterString.Get("开");
+        }
+        public void OnReplaySystemMessageClick()
+        {
+            if (replaySystemMessageValue.text == InterString.Get("开"))
+                replaySystemMessageValue.text = InterString.Get("关");
+            else
+                replaySystemMessageValue.text = InterString.Get("开");
+        }
+
         public void OnTimingClick()
         {
             if (timingValue.text == InterString.Get("开"))

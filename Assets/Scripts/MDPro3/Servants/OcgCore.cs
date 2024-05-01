@@ -557,6 +557,14 @@ namespace MDPro3
                         Destroy(line);
                 }
 
+                if ((Input.GetKeyDown(KeyCode.Return)
+                    || Input.GetKeyDown(KeyCode.KeypadEnter))
+                    && (!Program.I().room.chatInput.isFocused
+                    || Program.I().room.chatInput.text == string.Empty))
+                {
+                    ToChat();
+                }
+
                 if (Program.I().room.chatOn)
                     return;
 
@@ -581,13 +589,6 @@ namespace MDPro3
                 {
                     chainCondition = ChainCondition.No;
                     OnTiming();
-                }
-                if ((Input.GetKeyDown(KeyCode.Return)
-                    || Input.GetKeyDown(KeyCode.KeypadEnter))
-                    && (!Program.I().room.chatInput.isFocused
-                    || Program.I().room.chatInput.text == string.Empty))
-                {
-                    ToChat();
                 }
                 if (Input.GetKeyDown(KeyCode.Tab))
                 {
@@ -1688,8 +1689,37 @@ namespace MDPro3
             MessageManager.Cast(content);
         }
 
+
+        bool GetMessageConfig(int player)
+        {
+            bool isPlayer = true;
+            if(player > 3 && player != 7)
+                isPlayer = false;
+            if(isPlayer)
+            {
+                if (condition == Condition.Duel && Config.Get("DuelPlayerMessage", "1") == "0")
+                    return false;
+                if (condition == Condition.Watch && Config.Get("WatchPlayerMessage", "1") == "0")
+                    return false;
+                if (condition == Condition.Replay && Config.Get("ReplayPlayerMessage", "1") == "0")
+                    return false;
+            }
+            else
+            {
+                if (condition == Condition.Duel && Config.Get("DuelSystemMessage", "1") == "0")
+                    return false;
+                if (condition == Condition.Watch && Config.Get("WatchSystemMessage", "1") == "0")
+                    return false;
+                if (condition == Condition.Replay && Config.Get("ReplaySystemMessage", "1") == "0")
+                    return false;
+            }
+            return true;
+        }
+
         public void Chat(int player, string content)
         {
+            if (!GetMessageConfig(player))
+                return;
             var playerName = Program.I().room.GetPlayerName(player);
             if (player == 7 || player < 4)
                 MessageManager.Cast(playerName + ": " + content);
