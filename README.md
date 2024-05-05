@@ -11,6 +11,7 @@ A new version of YGOPro in Unity with MasterDuel Assets.
 
 * Art: https://code.mycard.moe/mycard/hd-arts
 
+* Closeup: https://code.mycard.moe/mycard/ygopro2-closeup
 
 ### Tools
 
