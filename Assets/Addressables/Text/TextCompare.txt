@@ -1,0 +1,134 @@
+0 Material Base
+ 1 string m_Name = "Front_MasicCircle5005"
+ 0 PPtr<Shader> m_Shader
+  0 int m_FileID = 0
+  0 SInt64 m_PathID = 5177747120346648885
+ 1 string m_ShaderKeywords = ""
+ 0 unsigned int m_LightmapFlags = 4
+ 0 bool m_EnableInstancingVariants = false
+ 1 bool m_DoubleSidedGI = false
+ 0 int m_CustomRenderQueue = 3000
+ 0 map stringTagMap
+  0 Array Array (0 items)
+   0 int size = 0
+ 0 vector disabledShaderPasses
+  1 Array Array (0 items)
+   0 int size = 0
+ 0 UnityPropertySheet m_SavedProperties
+  0 map m_TexEnvs
+   0 Array Array (5 items)
+    0 int size = 5
+    [0]
+     0 pair data
+      1 string first = "_MainTex"
+      0 UnityTexEnv second
+       0 PPtr<Texture> m_Texture
+        0 int m_FileID = 0
+        0 SInt64 m_PathID = -4974535830333283684
+       0 Vector2f m_Scale
+        0 float x = 1
+        0 float y = 1
+       0 Vector2f m_Offset
+        0 float x = 0
+        0 float y = 0
+    [1]
+     0 pair data
+      1 string first = "_Texture2DAsset_ae291493e1844e8d9fa1e6d82ac810bc_Out_0"
+      0 UnityTexEnv second
+       0 PPtr<Texture> m_Texture
+        0 int m_FileID = 0
+        0 SInt64 m_PathID = -5898664019765339133
+       0 Vector2f m_Scale
+        0 float x = 1
+        0 float y = 1
+       0 Vector2f m_Offset
+        0 float x = 0
+        0 float y = 0
+    [2]
+     0 pair data
+      1 string first = "unity_Lightmaps"
+      0 UnityTexEnv second
+       0 PPtr<Texture> m_Texture
+        0 int m_FileID = 0
+        0 SInt64 m_PathID = 0
+       0 Vector2f m_Scale
+        0 float x = 1
+        0 float y = 1
+       0 Vector2f m_Offset
+        0 float x = 0
+        0 float y = 0
+    [3]
+     0 pair data
+      1 string first = "unity_LightmapsInd"
+      0 UnityTexEnv second
+       0 PPtr<Texture> m_Texture
+        0 int m_FileID = 0
+        0 SInt64 m_PathID = 0
+       0 Vector2f m_Scale
+        0 float x = 1
+        0 float y = 1
+       0 Vector2f m_Offset
+        0 float x = 0
+        0 float y = 0
+    [4]
+     0 pair data
+      1 string first = "unity_ShadowMasks"
+      0 UnityTexEnv second
+       0 PPtr<Texture> m_Texture
+        0 int m_FileID = 0
+        0 SInt64 m_PathID = 0
+       0 Vector2f m_Scale
+        0 float x = 1
+        0 float y = 1
+       0 Vector2f m_Offset
+        0 float x = 0
+        0 float y = 0
+  0 map m_Floats
+   0 Array Array (6 items)
+    0 int size = 6
+    [0]
+     0 pair data
+      1 string first = "_Stencil"
+      0 float second = 0
+    [1]
+     0 pair data
+      1 string first = "_StencilComp"
+      0 float second = 8
+    [2]
+     0 pair data
+      1 string first = "_StencilOp"
+      0 float second = 0
+    [3]
+     0 pair data
+      1 string first = "_StencilReadMask"
+      0 float second = 255
+    [4]
+     0 pair data
+      1 string first = "_StencilWriteMask"
+      0 float second = 255
+    [5]
+     0 pair data
+      1 string first = "_ZWrite"
+      0 float second = 0
+  0 map m_Colors
+   0 Array Array (2 items)
+    0 int size = 2
+    [0]
+     0 pair data
+      1 string first = "_LerpColor1"
+      0 ColorRGBA second
+       0 float r = 1
+       0 float g = 0.78
+       0 float b = 0.37
+       0 float a = 0
+    [1]
+     0 pair data
+      1 string first = "_LerpColor2"
+      0 ColorRGBA second
+       0 float r = 0.46
+       0 float g = 0.65
+       0 float b = 0.81
+       0 float a = 0
+ 0 vector m_BuildTextureStacks
+  1 Array Array (0 items)
+   0 int size = 0
