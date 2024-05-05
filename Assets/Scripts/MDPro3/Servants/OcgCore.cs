@@ -4980,7 +4980,8 @@ namespace MDPro3
                     ShowPopupInput(selections, OnAnnounceCard, null);
                     break;
                 case GameMessage.SelectIdleCmd:
-                    if (InIgnoranceReplay()) break;
+                    if (InIgnoranceReplay()) 
+                        break;
 
                     player = LocalPlayer(r.ReadChar());
                     count = r.ReadByte();

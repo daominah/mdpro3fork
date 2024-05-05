@@ -328,6 +328,13 @@ MonoBehaviour:
     functional: 0
     secondFace: 0
     diy: 1
+  - id: 1135005
+    m_name: "\u9ED1\u9B54\u672F\u5C11\u5973 RD"
+    m_description: "\u4F60MDPro3\u4E5F\u662F\u4E8C\u6E38\u3002"
+    path: Wallpaper/front5005
+    functional: 0
+    secondFace: 0
+    diy: 0
   faces:
   - id: 1010001
     m_name: 

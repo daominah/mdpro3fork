@@ -17,12 +17,21 @@ namespace MDPro3
         {
             public int id;
             public string m_name;
+            bool nameLoaded;
+            bool descriptionLoaded;
             public string name
             {
                 get
                 {
-                    if (!diy)
-                        m_name = instace.GetName(id);
+                    if (!diy && !nameLoaded)
+                    {
+                        var listName = instance.GetName(id);
+                        if(listName != nullString)
+                            m_name = instance.GetName(id);
+                        if(string.IsNullOrEmpty(m_name))
+                            m_name = nullString;
+                        nameLoaded = true;
+                    }
                     return m_name;
                 }
                 set
@@ -35,8 +44,20 @@ namespace MDPro3
             {
                 get
                 {
-                    if (!diy)
-                        m_description = instace.GetDescription(id);
+                    if (!diy && !descriptionLoaded)
+                    {
+                        var listDescription = instance.GetDescription(id);
+                        if(listDescription != nullString)
+                            m_description = listDescription;
+                        if(string.IsNullOrEmpty(m_description))
+                            m_description = nullString;
+                        descriptionLoaded = true;
+                    }
+                    if(diy && !descriptionLoaded)
+                    {
+                        if(m_description.Contains("@"))
+                            m_description = InterString.Get("”…°∏[?]°πÕ∂∏Â°£", m_description);
+                    }
                     return m_description;
                 }
                 set
@@ -66,10 +87,10 @@ namespace MDPro3
         Dictionary<int, string> names = new Dictionary<int, string>();
         Dictionary<int, string> descriptions = new Dictionary<int, string>();
 
-        static Items instace;
+        static Items instance;
         public void Initialize()
         {
-            instace = this;
+            instance = this;
             kinds = new List<List<Item>>()
         {
             wallpapers,

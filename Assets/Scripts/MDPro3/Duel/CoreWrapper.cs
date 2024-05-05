@@ -1,12 +1,11 @@
+using Meisui.Random;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
-using UnityEngine;
-using Meisui.Random;
-using System.Linq;
 
 namespace Percy
 {
@@ -1141,7 +1140,7 @@ namespace Percy
 
         private void AddDeck(Deck deck, int playerId, bool random)
         {
-            if(random)
+            if (random)
             {
                 var seed = new System.Random();
                 for (var i = 0; i < deck.Main.Count; i++)
@@ -1165,37 +1164,6 @@ namespace Percy
             AddDeck(FromYDKtoDeck(playerDek), playerId, random);
         }
 
-        public bool StartDuel(string player0Deck, string player1Deck, bool player0GoFirst, bool random, int life, bool god, int mr, int hand, int draw)
-        {
-            try
-            {
-                godMode = god;
-                isFirst = player0GoFirst;
-                Dll.set_player_info(duel, 0, life, hand, draw);
-                Dll.set_player_info(duel, 1, life, hand, draw);
-                AddDeckFromFile(player0Deck, isFirst ? 0 : 1, random);
-                AddDeckFromFile(player1Deck, isFirst ? 1 : 0, random);
-                var opt = 0;
-                opt |= 0x80;
-                if (!random)
-                    opt |= 0x10;
-                var master = new BinaryMaster();
-                master.writer.Write((char)GameMessage.Start);
-                master.writer.Write((byte)(isFirst ? 0xf0 : 0xff));
-                master.writer.Write(life);
-                master.writer.Write(life);
-                master.writer.Write((ushort)Dll.query_field_count(duel, 0, 0x1));
-                master.writer.Write((ushort)Dll.query_field_count(duel, 0, 0x40));
-                master.writer.Write((ushort)Dll.query_field_count(duel, 1, 0x1));
-                master.writer.Write((ushort)Dll.query_field_count(duel, 1, 0x40));
-                sendToPlayer(master.Get());
-                Dll.start_duel(duel, opt | (mr << 16));
-                Refresh();
-                new Thread(Process).Start();
-                return true;
-            }
-            catch { return false; }
-        }
         public bool StartPuzzle(string path)
         {
             godMode = true;
@@ -1205,41 +1173,6 @@ namespace Percy
             var result = Dll.preload_script(duel, GetPtrString(path), 0);
             if (result == 0) return false;
             Dll.start_duel(duel, 0);
-            Refresh();
-            new Thread(Process).Start();
-            return true;
-        }
-        public bool StartAI(string playerDek, string aiDeck, string aiScript, bool playerGoFirst, bool unrand, int life, bool god, int mr)
-        {
-            godMode = god;
-            isFirst = playerGoFirst;
-            Dll.set_player_info(duel, 0, life, 5, 1);
-            Dll.set_player_info(duel, 1, life, 5, 1);
-            var reult = 0;
-            for (var i = 0; i < 10; i++)
-            {
-                reult = Dll.preload_script(duel, GetPtrString(aiScript), 0);
-                if (reult > 0) break;
-            }
-
-            if (reult == 0) return false;
-            AddDeckFromFile(playerDek, playerGoFirst ? 0 : 1, !unrand);
-            AddDeckFromFile(aiDeck, playerGoFirst ? 1 : 0, true);
-            Dll.set_ai_id(duel, playerGoFirst ? 1 : 0);
-            var opt = 0;
-            opt |= 0x80;
-            if (unrand) opt |= 0x10;
-            var master = new BinaryMaster();
-            master.writer.Write((char)GameMessage.Start);
-            master.writer.Write((byte)(playerGoFirst ? 0xf0 : 0xff));
-            master.writer.Write(life);
-            master.writer.Write(life);
-            master.writer.Write((ushort)Dll.query_field_count(duel, 0, 0x1));
-            master.writer.Write((ushort)Dll.query_field_count(duel, 0, 0x40));
-            master.writer.Write((ushort)Dll.query_field_count(duel, 1, 0x1));
-            master.writer.Write((ushort)Dll.query_field_count(duel, 1, 0x40));
-            sendToPlayer(master.Get());
-            Dll.start_duel(duel, opt | (mr << 16));
             Refresh();
             new Thread(Process).Start();
             return true;
