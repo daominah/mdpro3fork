@@ -727,7 +727,7 @@ namespace MDPro3
                     for (int i = 0; i < files.Length; i++)
                     {
                         int code = int.Parse(files[i].Name.Replace(".bundle", ""));
-                        var card = CardsManager.Get(code);
+                        var card = CardsManager.Get(code, true);
                         GameObject item = Instantiate(appearanceItem);
                         AppearanceItem itemMono = item.GetComponent<AppearanceItem>();
                         itemMono.id = i + targetItems.Count;

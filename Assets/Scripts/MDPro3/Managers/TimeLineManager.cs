@@ -97,6 +97,8 @@ namespace MDPro3
                 var dummyCard = manager.GetElement<ElementObjectManager>("DummyCard0" + (i + 1).ToString());
                 var renderer = dummyCard.GetElement<Renderer>("DummyCardModel_front");
                 var code = materials[i].GetData().Id;
+                if (code == 0)
+                    code = materials[i].GetCachedData().Id;
                 StartCoroutine(RefreshCardFace(renderer, code));
 
                 var cardBack01 = dummyCard.transform.parent.GetChild(0).GetComponent<ParticleSystem>().main;
@@ -602,7 +604,10 @@ namespace MDPro3
                 var materials = Program.I().ocgcore.materialCards;
                 for (int i = 0; i < count; i++)
                 {
-                    var ie = Program.I().texture_.LoadCardAsync(materials[i + order].GetData().Id);
+                    var code = materials[i + order].GetData().Id;
+                    if(code == 0)
+                        code = materials[i + order].GetCachedData().Id;
+                    var ie = Program.I().texture_.LoadCardAsync(code);
                     StartCoroutine(ie);
                     while (ie.MoveNext())
                         yield return null;

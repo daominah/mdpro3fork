@@ -542,7 +542,7 @@ namespace MDPro3
                 #endregion
 
                 #region Hot Key
-                if (Program.InputGetMouse1Up || Input.GetKey(KeyCode.Escape))
+                if (Program.InputGetMouse1Up || Input.GetKeyUp(KeyCode.Escape))
                 {
                     if (detail.showing)
                         detail.Hide();
@@ -2060,13 +2060,14 @@ namespace MDPro3
                 case GameMessage.PosChange:
                     code = r.ReadInt32();
                     from = r.ReadGPS();
-                    if ((from.location & (uint)CardLocation.SpellZone) > 0
-                        && (from.position & (uint)CardPosition.FaceDown) > 0)
-                        break;
+
                     textReason = InterString.Get("更改表示形式");
                     if ((from.location & (uint)CardLocation.SpellZone) > 0
                         && (from.position & (uint)CardPosition.FaceUp) > 0)
                         textReason = InterString.Get("盖放");
+                    if ((from.location & (uint)CardLocation.SpellZone) > 0
+                        && (from.position & (uint)CardPosition.FaceDown) > 0)
+                        textReason = InterString.Get("打开盖卡");
                     to = from;
                     to.position = r.ReadByte();
                     if(code == 0)

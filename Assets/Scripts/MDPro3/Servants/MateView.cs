@@ -57,7 +57,7 @@ namespace MDPro3
             cards.Clear();
             for (int i = 0; i < crossDuelMates.Count; i++)
             {
-                var card = CardsManager.Get(crossDuelMates[i]);
+                var card = CardsManager.Get(crossDuelMates[i], true);
                 if (card.Id == 0)
                 {
                     card.Id = crossDuelMates[i];

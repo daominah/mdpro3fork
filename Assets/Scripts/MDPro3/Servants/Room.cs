@@ -130,6 +130,8 @@ namespace MDPro3
             OnResize();
             right.gameObject.GetComponent<CanvasGroup>().alpha = 1;
             right.DOAnchorPosX(0, moveTime).OnComplete(() => chatSwitching = false);
+            if(!isShowed)
+                chatInput.Select();
         }
 
         public void ChatOff(float moveTime)

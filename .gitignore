@@ -32,6 +32,7 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+*.gradle
 
 # MDPro3 Assets
 /Android/
@@ -42,6 +43,7 @@ sysinfo.txt
 /Closeup/
 /[Dd]eck/
 /[Ee]xpansions/
+/Keys/
 /[Pp]uzzle/
 /[Rr]eplay/
 /StandaloneWindows64/

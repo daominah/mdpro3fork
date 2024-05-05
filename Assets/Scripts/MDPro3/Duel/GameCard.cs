@@ -323,7 +323,8 @@ namespace MDPro3
         }
         public Card CacheData()
         {
-            cachedData = data.Clone();
+            if(data.Id > 0)
+                cachedData = data.Clone();
             return cachedData;
         }
         public Card GetCachedData()
@@ -1164,7 +1165,7 @@ namespace MDPro3
                     case GameMessage.Draw:
                         if (p.controller == 0)
                         {
-                            moveTime = 0.5f;
+                            moveTime = 0.6f;
                             handAppeal = true;
                         }
                         else
