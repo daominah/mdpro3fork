@@ -642,58 +642,64 @@ namespace MDPro3
         public void OnResolutionChange()
         {
             List<string> selections = new List<string>
-        {
-            InterString.Get("分辨率")
-        };
+            {
+                InterString.Get("分辨率")
+            };
             foreach (var resolution in Screen.resolutions)
             {
                 string selection = Regex.Split(resolution.ToString(), " @ ")[0];
 #if !UNITY_EDITOR && UNITY_ANDROID
-            int height = int.Parse(Regex.Split(selection, " x ")[0]);
-            int width = int.Parse(Regex.Split(selection, " x ")[1]);
-            if (height > 540)
-            {
-                string r = (width * 540 / height).ToString() + " x " + 540.ToString();
-                if(!selections.Contains(r))
-                    selections.Add(r);
-            }
-            if(height > 720)
-            {
-                string r = (width * 720 / height).ToString() + " x " + 720.ToString();
-                if (!selections.Contains(r))
-                    selections.Add(r);
-            }
-            if (height > 1080)
-            {
-                string r = (width * 1080 / height).ToString() + " x " + 1080.ToString();
-                if (!selections.Contains(r))
-                    selections.Add(r);
-            }
-            if (height > 1200)
-            {
-                string r = (width * 1200 / height).ToString() + " x " + 1200.ToString();
-                if (!selections.Contains(r))
-                    selections.Add(r);
-            }
-            if (height > 1440)
-            {
-                string r = (width * 1440 / height).ToString() + " x " + 1440.ToString();
-                if (!selections.Contains(r))
-                    selections.Add(r);
-            }
-            if (height > 1600)
-            {
-                string r = (width * 1600 / height).ToString() + " x " + 1600.ToString();
-                if (!selections.Contains(r))
-                    selections.Add(r);
-            }
-            if (height > 2160)
-            {
-                string r = (width * 2160 / height).ToString() + " x " + 2160.ToString();
-                if (!selections.Contains(r))
-                    selections.Add(r);
-            }
-            selection = width.ToString() + " x " + height.ToString();
+                int height = int.Parse(Regex.Split(selection, " x ")[0]);
+                int width = int.Parse(Regex.Split(selection, " x ")[1]);
+                if (height > width)
+                {
+                    var cache = height;
+                    height = width;
+                    width = cache;
+                }
+                if (height > 540)
+                {
+                    string r = (width * 540 / height).ToString() + " x " + 540.ToString();
+                    if(!selections.Contains(r))
+                        selections.Add(r);
+                }
+                if(height > 720)
+                {
+                    string r = (width * 720 / height).ToString() + " x " + 720.ToString();
+                    if (!selections.Contains(r))
+                        selections.Add(r);
+                }
+                if (height > 1080)
+                {
+                    string r = (width * 1080 / height).ToString() + " x " + 1080.ToString();
+                    if (!selections.Contains(r))
+                        selections.Add(r);
+                }
+                if (height > 1200)
+                {
+                    string r = (width * 1200 / height).ToString() + " x " + 1200.ToString();
+                    if (!selections.Contains(r))
+                        selections.Add(r);
+                }
+                if (height > 1440)
+                {
+                    string r = (width * 1440 / height).ToString() + " x " + 1440.ToString();
+                    if (!selections.Contains(r))
+                        selections.Add(r);
+                }
+                if (height > 1600)
+                {
+                    string r = (width * 1600 / height).ToString() + " x " + 1600.ToString();
+                    if (!selections.Contains(r))
+                        selections.Add(r);
+                }
+                if (height > 2160)
+                {
+                    string r = (width * 2160 / height).ToString() + " x " + 2160.ToString();
+                    if (!selections.Contains(r))
+                        selections.Add(r);
+                }
+                selection = width.ToString() + " x " + height.ToString();
 #endif
                 if (!selections.Contains(selection))
                     selections.Add(selection);
