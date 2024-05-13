@@ -838,6 +838,8 @@ namespace MDPro3
             //ABLoader.LoadFromFolder("5c2f34a0");//assets/resourcesassetbundle/duel/timeline/duel/universal/attack/attackredeyes/attackredebless.prefab
             //ABLoader.LoadFromFolder("fbf001db");//assets/resourcesassetbundle/duel/timeline/duel/universal/attack/attackredeyes/attackrededummycardset.prefab
 
+            ABLoader.LoadFromFolder("MasterDuel/Card/63166095");
+
             #region Attack Line
             if (attackLine == null)
             {
@@ -1405,6 +1407,8 @@ namespace MDPro3
 
         bool needDamageResponseInstant;
         public Action endingAction;
+        public Action nextMoveAction;
+
         public void CoreReset()
         {
             if (cards.Count > 0)
