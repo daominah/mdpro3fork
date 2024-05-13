@@ -19,8 +19,8 @@ namespace MDPro3.UI
         public override void OnClick()
         {
             base.OnClick();
-            if (code == 0) return;
-            MonsterCutin.Play(code, 0);
+            if (MonsterCutin.HasCutin(code))
+                MonsterCutin.Play(code, 0);
         }
     }
 }

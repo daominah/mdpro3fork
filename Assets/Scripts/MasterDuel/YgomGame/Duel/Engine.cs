@@ -567,9 +567,9 @@ namespace YgomGame.Duel
 				return 0;
 			}
 
-			public CardStatus(int param)
-			{
-			}
+			//public CardStatus(int param)
+			//{
+			//}
 		}
 
 		public struct BasicVal

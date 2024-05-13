@@ -36,10 +36,10 @@ namespace MDPro3
 
             string path;
             IEnumerator ie;
-            if (Directory.Exists(Program.root + "Monstercutin/" + summonCard))
-                ie = ABLoader.LoadFromFolderAsync("Monstercutin/" + summonCard, "Spine" + summonCard, true, false);
+            if (MonsterCutin.codes.Contains(summonCard))
+                ie = ABLoader.LoadFromFolderAsync("MonsterCutin/" + summonCard, "Spine" + summonCard, true, false);
             else
-                ie = ABLoader.LoadFromFileAsync("Monstercutin2/" + summonCard, true, false);
+                ie = ABLoader.LoadFromFileAsync("MonsterCutin2/" + summonCard, true, false);
             StartCoroutine(ie);
             while (ie.MoveNext())
                 yield return null;
@@ -80,10 +80,10 @@ namespace MDPro3
 
             GameObject ms;
             if (materials.Count > 8)
-                ms = ABLoader.LoadFromFolder("timeline/summon/summonfusion/summonfusionshowunitcard08",
+                ms = ABLoader.LoadFromFolder("MasterDuel/Timeline/summon/summonfusion/summonfusionshowunitcard08",
                 "summonfusionshowunitcard08", true);
             else
-                ms = ABLoader.LoadFromFolder("timeline/summon/summonfusion/summonfusionshowunitcard0" + materials.Count,
+                ms = ABLoader.LoadFromFolder("MasterDuel/Timeline/summon/summonfusion/summonfusionshowunitcard0" + materials.Count,
                 "summonfusionshowunitcard0" + materials.Count, true);
 
             Program.I().ocgcore.allGameObjects.Add(ms);
@@ -180,10 +180,10 @@ namespace MDPro3
 
             GameObject summon;
             if (materials.Count > 5)
-                summon = ABLoader.LoadFromFolder("timeline/summon/summonfusion/fusionnum",
+                summon = ABLoader.LoadFromFolder("MasterDuel/Timeline/summon/summonfusion/fusionnum",
                 "FusionNum", true);
             else
-                summon = ABLoader.LoadFromFolder("timeline/summon/summonfusion/summonfusion0" + materials.Count + "_01",
+                summon = ABLoader.LoadFromFolder("MasterDuel/Timeline/summon/summonfusion/summonfusion0" + materials.Count + "_01",
                 "SummonFusion0" + materials.Count, true);
             Program.I().ocgcore.allGameObjects.Add(summon);
             DoWhenStop(summon.transform.GetChild(0).gameObject);
@@ -236,9 +236,9 @@ namespace MDPro3
             summoned = 1;
             GameObject summon;
             if (materials.Count > 0)
-                summon = ABLoader.LoadFromFolder("timeline/summon/summonritual/summonritual01", "SummonRitual01", true);
+                summon = ABLoader.LoadFromFolder("MasterDuel/Timeline/summon/summonritual/summonritual01", "SummonRitual01", true);
             else
-                summon = ABLoader.LoadFromFolder("timeline/summon/summonritual/summonritual02", "SummonRitual02", true);
+                summon = ABLoader.LoadFromFolder("MasterDuel/Timeline/summon/summonritual/summonritual02", "SummonRitual02", true);
 
             ElementObjectManager manager = null;
             for (int i = 0; i < summon.transform.childCount; i++)
@@ -297,9 +297,9 @@ namespace MDPro3
             summoned = 2;
             GameObject summon;
             if (materials.Count > 0)
-                summon = ABLoader.LoadFromFile("timeline/summon/summonsynchro/summonsynchro01", true);
+                summon = ABLoader.LoadFromFile("MasterDuel/Timeline/summon/summonsynchro/summonsynchro01", true);
             else
-                summon = ABLoader.LoadFromFile("timeline/summon/summonsynchro/summonsynchro02", true);
+                summon = ABLoader.LoadFromFile("MasterDuel/Timeline/summon/summonsynchro/summonsynchro02", true);
 
             Program.I().ocgcore.allGameObjects.Add(summon);
             DoWhenStop(summon);
@@ -354,13 +354,13 @@ namespace MDPro3
 
             GameObject summon;
             if (materials.Count == 0)
-                summon = ABLoader.LoadFromFile("timeline/summon/summonxyz/summonxyz00_01", true);
+                summon = ABLoader.LoadFromFile("MasterDuel/Timeline/summon/summonxyz/summonxyz00_01", true);
             else if (materials.Count == 1)
-                summon = ABLoader.LoadFromFile("timeline/summon/summonxyz/summonxyz01_01", true);
+                summon = ABLoader.LoadFromFile("MasterDuel/Timeline/summon/summonxyz/summonxyz01_01", true);
             else if (materials.Count == 2)
-                summon = ABLoader.LoadFromFile("timeline/summon/summonxyz/summonxyz02_01", true);
+                summon = ABLoader.LoadFromFile("MasterDuel/Timeline/summon/summonxyz/summonxyz02_01", true);
             else
-                summon = ABLoader.LoadFromFile("timeline/summon/summonxyz/summonxyz03_01", true);
+                summon = ABLoader.LoadFromFile("MasterDuel/Timeline/summon/summonxyz/summonxyz03_01", true);
 
             Program.I().ocgcore.allGameObjects.Add(summon);
             DoWhenStop(summon);
@@ -388,11 +388,11 @@ namespace MDPro3
             GameObject summon;
             int linkCount = CardDescription.GetCardLinkCount(CardsManager.Get(summonCard));
             if (linkCount == 1)
-                summon = ABLoader.LoadFromFile("timeline/summon/summonlink/summonlink01_01", true);
+                summon = ABLoader.LoadFromFile("MasterDuel/Timeline/summon/summonlink/summonlink01_01", true);
             else if (linkCount == 2)
-                summon = ABLoader.LoadFromFile("timeline/summon/summonlink/summonlink02_01", true);
+                summon = ABLoader.LoadFromFile("MasterDuel/Timeline/summon/summonlink/summonlink02_01", true);
             else
-                summon = ABLoader.LoadFromFile("timeline/summon/summonlink/summonlink03_01", true);
+                summon = ABLoader.LoadFromFile("MasterDuel/Timeline/summon/summonlink/summonlink03_01", true);
 
             Program.I().ocgcore.allGameObjects.Add(summon);
             DoWhenStop(summon);

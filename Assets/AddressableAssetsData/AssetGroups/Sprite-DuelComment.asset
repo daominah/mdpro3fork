@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Sprite-DuelComment
+  m_EditorClassIdentifier: 
+  m_GroupName: Sprite-DuelComment
+  m_GUID: 981fd1d4d0db6304ead77cf43d8c9584
+  m_SerializeEntries:
+  - m_GUID: bc1d3998cfb95d347ac15b01aad285e8
+    m_Address: DuelComment1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8f058cbdbf02f4848b0b623b8bbf6e92
+    m_Address: DuelComment2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b3e00187e19cf0346982661e9e988a98
+    m_Address: DuelComment3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b54c3cfde364f4a46b747be84ee6ea81
+    m_Address: DuelComment4
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cf9a970f696d8ed4faa8c37672aec00d
+    m_Address: DuelComment5
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: e38330e9272b0a94a916f68bd5115c96, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 65135050d01dc6f42b63000a4e3e7e45, type: 2}
+    - {fileID: 11400000, guid: 61a4170eb1620fd43b1f71ed7d379253, type: 2}

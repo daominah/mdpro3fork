@@ -1,5 +1,5 @@
 using System.Text;
-using Steamworks;
+//using Steamworks;
 using UnityEngine;
 
 [DisallowMultipleComponent]
@@ -11,7 +11,7 @@ public class SteamManager : MonoBehaviour
 
 	protected bool m_bInitialized;
 
-	protected SteamAPIWarningMessageHook_t m_SteamAPIWarningMessageHook;
+	//protected SteamAPIWarningMessageHook_t m_SteamAPIWarningMessageHook;
 
 	protected static SteamManager Instance => null;
 

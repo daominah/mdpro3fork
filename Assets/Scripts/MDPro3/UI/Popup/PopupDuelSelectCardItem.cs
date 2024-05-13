@@ -132,7 +132,7 @@ namespace MDPro3.UI
             {
                 if (manager.arrow == null)
                 {
-                    manager.arrow = ABLoader.LoadFromFile("Effects/other/fxp_arrow_aim_001", true);
+                    manager.arrow = ABLoader.LoadFromFile("MasterDuel/Effects/other/fxp_arrow_aim_001", true);
                     Program.I().ocgcore.allGameObjects.Add(manager.arrow);
                 }
                 manager.arrow.transform.position = card.model.transform.position;

@@ -13,12 +13,14 @@ using AssetsTools.NET.Extra;
 public class AssetBundleRobber : MonoBehaviour
 {
     public Text text;
+    static Text sText;
     string masterDuelAssetBundlePath;
     string masterDuelWindowsAssetBundlePath = "../../../Game/Steam/steamapps/common/Yu-Gi-Oh!  Master Duel/LocalData/16165626/0000/";
     string masterDuelAndroidAssetBundlePath = "../../../Game/Steam/steamapps/common/Yu-Gi-Oh!  Master Duel/LocalData/Android/0000/";
     string workingPlace;
     string androindWorkingPlace = "Android/Robber/";
     string windowsWorkingPlace = "StandaloneWindows64/Robber/";
+    string ydkIdsPath = "Data/YdkIds.txt";
     public static int fileCount;
     public static int currentFileCount;
     public static Dictionary<string, string> ydkIds = new Dictionary<string, string>();
@@ -33,8 +35,15 @@ public class AssetBundleRobber : MonoBehaviour
     public static List<AssetbundleInfo> files = new List<AssetbundleInfo>();
     public static List<AssetbundleInfo> newFiles = new List<AssetbundleInfo>();
 
+    public static void SetHint(string hint)
+    {
+        sText.text = hint;
+    }
+
     void Start()
     {
+        sText = text;
+
         Application.targetFrameRate = 0;
 
         masterDuelAssetBundlePath = masterDuelWindowsAssetBundlePath;
@@ -42,24 +51,16 @@ public class AssetBundleRobber : MonoBehaviour
         masterDuelAssetBundlePath = masterDuelAndroidAssetBundlePath;
         workingPlace = androindWorkingPlace;
 
-        //fullCopy = true;
-        fullCopy = false;
+        fullCopy = true;
+        //fullCopy = false;
 
         Initialize();
 
-        //StartCoroutine(RefreshFileResources());
-        Copy("296a15e7");//2
-        Copy("5e6d2571");//3
-        Copy("c009b0d2");//4
-        Copy("b70e8044");//5
-        Copy("5900e168");//7
-        Copy("c9bffcf9");//8
-        Copy("beb8cc6f");//9
-        Copy("de7f458a");//10
+        StartCoroutine(RefreshFileResources());
 
 
     }
-            
+
 
 
 
@@ -82,13 +83,17 @@ public class AssetBundleRobber : MonoBehaviour
         Debug.Log(path + ": Copy Done!");
     }
 
+    bool noSave = false;
+
     void Initialize()
     {
-        if(!Directory.Exists(workingPlace))
+        if (!Directory.Exists(workingPlace))
             Directory.CreateDirectory(workingPlace);
         var fullText = "";
-        if(File.Exists(workingPlace + "FileList.txt"))
+        if (File.Exists(workingPlace + "FileList.txt"))
             fullText = File.ReadAllText(workingPlace + "FileList.txt");
+        else
+            noSave = true;
         var lines = fullText.Replace("\r", "").Split('\n');
         AssetbundleInfo file = new AssetbundleInfo();
         file.dependencies = new List<string>();
@@ -113,14 +118,19 @@ public class AssetBundleRobber : MonoBehaviour
             else
                 file.name = line.Replace("-", "");
         }
-        text.text = "Load FileList Complete.";
-        Debug.Log("加载文件数量：" + files.Count);
-        fullText = File.ReadAllText("data/YdkIds.txt");
+        if (!noSave)
+        {
+            Debug.Log("加载文件数量：" + files.Count);
+            text.text = "Load FileList Complete.";
+        }
+        else
+            text.text = "No FileList to load.";
+        fullText = File.ReadAllText(ydkIdsPath);
         lines = fullText.Replace("\r", "").Split('\n');
-        foreach(var line in lines)
+        foreach (var line in lines)
         {
             var pair = Regex.Split(line, " ");
-            if(pair.Length == 2 && !ydkIds.ContainsKey(pair[1]))
+            if (pair.Length == 2 && !ydkIds.ContainsKey(pair[1]))
                 ydkIds.Add(pair[1], pair[0]);
         }
     }
@@ -130,11 +140,8 @@ public class AssetBundleRobber : MonoBehaviour
         var assetManager = GetComponent<AssetStudio.AssetsManager>();
         var ie = assetManager.LoadFolderAsync(masterDuelAssetBundlePath);
         StartCoroutine(ie);
-        while(ie.MoveNext())
-        {
-            text.text = "LoadResources: " + currentFileCount + "/" + fileCount;
+        while (ie.MoveNext())
             yield return null;
-        }
         bool modified = false;
         int count = 0;
         foreach (var file in assetManager.assetsFileList)
@@ -147,10 +154,12 @@ public class AssetBundleRobber : MonoBehaviour
                     foreach (var pair in assetBundle.m_Container)
                     {
                         fileName = pair.Key;
+                        text.text = count + "/ " + assetManager.assetsFileList.Count + ": " + fileName;
+                        yield return null;
                         break;
                     }
             bool contained = false;
-            foreach(var f in files)
+            foreach (var f in files)
                 if (f.path == filePath)
                 {
                     contained = true;
@@ -165,25 +174,17 @@ public class AssetBundleRobber : MonoBehaviour
                 filestruct.dependencies = GetDependencies(filePath);
                 files.Add(filestruct);
                 newFiles.Add(filestruct);
-                text.text = "GetDependencies: " + count + "/" + assetManager.assetsFileList.Count;
+                //text.text = "GetDependencies: " + count + "/" + assetManager.assetsFileList.Count;
+
+                var content = string.Empty;
+                content += filestruct.path + "\r\n";
+                content += "-" + filestruct.name + "\r\n";
+                foreach (var depend in filestruct.dependencies)
+                    content += "--" + depend + "\r\n";
+                File.AppendAllText(workingPlace + "FileList.txt", content);
                 yield return null;
             }
         }
-        if(modified)
-        {
-            var all = "";
-            foreach (var file in files)
-            {
-                all += file.path + "\r\n";
-                all += "-" + file.name + "\r\n";
-                foreach (var depend in file.dependencies)
-                    all += "--" + depend + "\r\n";
-            }
-            File.WriteAllText(workingPlace + "FileList.txt", all);
-            Debug.Log("FileList更新完成，新文件：" + newFiles.Count);
-        }
-        else
-            Debug.Log("没有新文件。");
         StartCoroutine(CopyBundles());
     }
 
@@ -201,82 +202,73 @@ public class AssetBundleRobber : MonoBehaviour
         {
             currentFileCount++;
             var type = GetAssetType(file.name);
-            if (type == AssetType.Avatarstand)
+            if (type == AssetType.AvatarStand)
             {
-                if (!Directory.Exists(workingPlace + "Avatarstand"))
-                    Directory.CreateDirectory(workingPlace + "Avatarstand");
-                if(!File.Exists(workingPlace + "Avatarstand/" + Path.GetFileName(file.name).Replace(".prefab", "")))
-                    File.Copy(GetFullPath(file.path), workingPlace + "Avatarstand/" +
-                        Path.GetFileName(file.name).Replace(".prefab", ""));
-                text.text = "Copying: " + currentFileCount + "/" + fileCount;
-                yield return null;
+                if (!Directory.Exists(workingPlace + "AvatarStand"))
+                    Directory.CreateDirectory(workingPlace + "AvatarStand");
+                var targetName = workingPlace + "AvatarStand/" + Path.GetFileName(file.name).Replace(".prefab", "").Replace("avatarstand_", "AvatarStand_");
+
+                if (!File.Exists(targetName))
+                    File.Copy(GetFullPath(file.path), targetName);
             }
             else if (type == AssetType.Frame)
             {
                 if (!Directory.Exists(workingPlace + "Frame"))
                     Directory.CreateDirectory(workingPlace + "Frame");
-                File.Copy(GetFullPath(file.path), workingPlace + "Frame/" +
-                    Path.GetFileName(file.name).Replace(".mat", "").Replace("profileframemat", "ProfileFrameMat"));
-                text.text = "Copying: " + currentFileCount + "/" + fileCount;
-                yield return null;
+                var targetName = workingPlace + "Frame/" + Path.GetFileName(file.name).Replace(".mat", "").Replace("profileframemat", "ProfileFrameMat");
+                File.Copy(GetFullPath(file.path), targetName);
             }
             else if (type == AssetType.Grave)
             {
                 if (!Directory.Exists(workingPlace + "Grave"))
                     Directory.CreateDirectory(workingPlace + "Grave");
-                if (!File.Exists(workingPlace + "Grave/" + Path.GetFileName(file.name).Replace(".prefab", "")))
-                    File.Copy(GetFullPath(file.path), workingPlace + "Grave/" +
-                        Path.GetFileName(file.name).Replace(".prefab", ""));
-                text.text = "Copying: " + currentFileCount + "/" + fileCount;
-                yield return null;
+                var targetName = workingPlace + "Grave/" + Path.GetFileName(file.name).Replace(".prefab", "").Replace("grave_", "Grave_");
+                if (!File.Exists(targetName))
+                    File.Copy(GetFullPath(file.path), targetName);
             }
             else if (type == AssetType.Mat)
             {
                 if (!Directory.Exists(workingPlace + "Mat"))
                     Directory.CreateDirectory(workingPlace + "Mat");
-                if(!File.Exists(workingPlace + "Mat/" + Path.GetFileName(file.name).Replace(".prefab", "")))
-                    File.Copy(GetFullPath(file.path), workingPlace + "Mat/" +
-                        Path.GetFileName(file.name).Replace(".prefab", ""));
-                text.text = "Copying: " + currentFileCount + "/" + fileCount;
-                yield return null;
+                var targetName = workingPlace + "Mat/" + Path.GetFileName(file.name).Replace(".prefab", "").Replace("mat_", "Mat_");
+                if (!File.Exists(targetName))
+                    File.Copy(GetFullPath(file.path), targetName);
             }
             else if (type == AssetType.Mate)
             {
                 if (!Directory.Exists(workingPlace + "Mate"))
                     Directory.CreateDirectory(workingPlace + "Mate");
-                if (!File.Exists(workingPlace + "Mate/" + Path.GetFileName(file.name).Replace(".prefab", "")))
-                    File.Copy(GetFullPath(file.path), workingPlace + "Mate/" +
-                        Path.GetFileName(file.name).Replace(".prefab", ""));
-                text.text = "Copying: " + currentFileCount + "/" + fileCount;
-                yield return null;
+                var targetName = workingPlace + "Mate/" + Path.GetFileName(file.name).Replace(".prefab", "").Replace("_model", "_Model").Replace("_sd_", "_SD_").Replace("m", "M").Replace("v", "V");
+                if (!File.Exists(targetName))
+                    File.Copy(GetFullPath(file.path), targetName);
             }
             else if (type == AssetType.Protector)
             {
                 if (!Directory.Exists(workingPlace + "Protector"))
                     Directory.CreateDirectory(workingPlace + "Protector");
                 string subDir = "107" + Regex.Split(file.name, "/")[4];
-                if (!Directory.Exists(workingPlace + "Protector/" + subDir))
-                    Directory.CreateDirectory(workingPlace + "Protector/" + subDir);
-                File.Copy(GetFullPath(file.path), workingPlace + "Protector/" +
-                    subDir + "/" + Path.GetFileName(file.name).Replace(".mat", "").Replace(".png", "")
-                    .Replace("protectoricon", "").Replace("pmat", "PMat"));
-                text.text = "Copying: " + currentFileCount + "/" + fileCount;
-                yield return null;
+                var targetFolder = workingPlace + "Protector/" + subDir;
+                var targetName = targetFolder + "/" + Path.GetFileName(file.name).Replace("pmat.mat", subDir).Replace("protectoricon", "ProtectorIcon").Replace(".png", "");
+
+                if (!Directory.Exists(targetFolder))
+                    Directory.CreateDirectory(targetFolder);
+                File.Copy(GetFullPath(file.path), targetName);
             }
             else if (type == AssetType.Wallpaper)
             {
                 if (!Directory.Exists(workingPlace + "Wallpaper"))
                     Directory.CreateDirectory(workingPlace + "Wallpaper");
-                string subDir = Path.GetFileName(file.name).Replace(".prefab", "");
-                if (!Directory.Exists(workingPlace + "Wallpaper/" + subDir))
-                    Directory.CreateDirectory(workingPlace + "Wallpaper/" + subDir);
-                File.Copy(GetFullPath(file.path), workingPlace + "Wallpaper/" + subDir + "/" + subDir);
+                var subDir = Path.GetFileName(file.name).Replace(".prefab", "").Replace("front", "Front");
+                var targetFolder = workingPlace + "Wallpaper/" + subDir;
+                if (!Directory.Exists(targetFolder))
+                    Directory.CreateDirectory(targetFolder);
+                File.Copy(GetFullPath(file.path), targetFolder + "/" + subDir);
                 List<string> depens = new List<string>();
                 try
                 {
                     depens = GetDependencies(file.path);
                 }
-                catch(Exception e)
+                catch (Exception e)
                 {
                     Debug.Log(file.path);
                     Debug.LogException(e);
@@ -284,12 +276,37 @@ public class AssetBundleRobber : MonoBehaviour
                 foreach (string depen in depens)
                 {
                     if (File.Exists(GetFullPath(depen)))
-                        File.Copy(GetFullPath(depen), workingPlace + "Wallpaper/" + subDir + "/" + depen);
+                        File.Copy(GetFullPath(depen), targetFolder + "/" + depen);
                     else
                         Debug.Log("未找到" + file.path + "的依赖：" + depen);
                 }
-                text.text = "Copying: " + currentFileCount + "/" + fileCount;
-                yield return null;
+            }
+            else if (type == AssetType.Background)
+            {
+                if (!Directory.Exists(workingPlace + "Background"))
+                    Directory.CreateDirectory(workingPlace + "Background");
+                string subDir = Path.GetFileName(file.name).Replace("back", "Back").Replace(".prefab", "");
+                var targetFolder = workingPlace + "Background/" + subDir;
+                if (!Directory.Exists(targetFolder))
+                    Directory.CreateDirectory(targetFolder);
+                File.Copy(GetFullPath(file.path), targetFolder + "/" + subDir);
+                List<string> depens = new List<string>();
+                try
+                {
+                    depens = GetDependencies(file.path);
+                }
+                catch (Exception e)
+                {
+                    Debug.Log(file.path);
+                    Debug.LogException(e);
+                }
+                foreach (string depen in depens)
+                {
+                    if (File.Exists(GetFullPath(depen)))
+                        File.Copy(GetFullPath(depen), targetFolder + "/" + depen);
+                    else
+                        Debug.Log("未找到" + file.path + "的依赖：" + depen);
+                }
             }
             else if (type == AssetType.Card)
             {
@@ -301,10 +318,10 @@ public class AssetBundleRobber : MonoBehaviour
                     subDir = "HD" + subDir;
                 else if (file.name.Contains("/sd/"))
                     subDir = "SD" + subDir;
-                if (!Directory.Exists(workingPlace + "Card/" + subDir))
-                    Directory.CreateDirectory(workingPlace + "Card/" + subDir);
-                File.Copy(GetFullPath(file.path), workingPlace + "Card/" +
-                    subDir + "/" + file.path);
+                var targetFolder = workingPlace + "Card/" + subDir;
+                if (!Directory.Exists(targetFolder))
+                    Directory.CreateDirectory(targetFolder);
+                File.Copy(GetFullPath(file.path), targetFolder + "/" + Path.GetFileName(file.name).Replace(".prefab", "").Replace("ef", "Ef"));
                 List<string> depens = new List<string>();
                 try
                 {
@@ -319,14 +336,12 @@ public class AssetBundleRobber : MonoBehaviour
                 {
                     if (File.Exists(GetFullPath(depen)))
                     {
-                        if(!File.Exists(workingPlace + "Card/" + subDir + "/" + depen))
-                            File.Copy(GetFullPath(depen), workingPlace + "Card/" + subDir + "/" + depen);
+                        if (!File.Exists(targetFolder + "/" + depen))
+                            File.Copy(GetFullPath(depen), targetFolder + "/" + depen);
                     }
                     else
                         Debug.Log("未找到" + file.path + "的依赖：" + depen);
                 }
-                text.text = "Copying: " + currentFileCount + "/" + fileCount;
-                yield return null;
             }
             else if (type == AssetType.MonsterCutin)
             {
@@ -337,10 +352,10 @@ public class AssetBundleRobber : MonoBehaviour
                     Directory.CreateDirectory(workingPlace + "MonsterCutin");
                 string subDir = Regex.Split(file.name, "/")[7].Replace("p", "");
                 subDir = GetYdkID(subDir);
-                if (!Directory.Exists(workingPlace + "MonsterCutin/" + subDir))
-                    Directory.CreateDirectory(workingPlace + "MonsterCutin/" + subDir);
-                File.Copy(GetFullPath(file.path), workingPlace + "MonsterCutin/" +
-                    subDir + "/" + file.path);
+                var targetFolder = workingPlace + "MonsterCutin/" + subDir;
+                if (!Directory.Exists(targetFolder))
+                    Directory.CreateDirectory(targetFolder);
+                File.Copy(GetFullPath(file.path), targetFolder + "/" + subDir);
                 List<string> depens = new List<string>();
                 try
                 {
@@ -355,37 +370,76 @@ public class AssetBundleRobber : MonoBehaviour
                 {
                     if (File.Exists(GetFullPath(depen)))
                     {
-                        if (!File.Exists(workingPlace + "MonsterCutin/" + subDir + "/" + depen))
-                            File.Copy(GetFullPath(depen), workingPlace + "MonsterCutin/" + subDir + "/" + depen);
+                        if (!File.Exists(targetFolder + "/" + depen))
+                            File.Copy(GetFullPath(depen), targetFolder + "/" + depen);
                     }
                     else
                         Debug.Log("未找到" + file.path + "的依赖：" + depen + ": " + GetFullPath(depen));
                 }
-                text.text = "Copying: " + currentFileCount + "/" + fileCount;
-                yield return null;
             }
+            else if (type == AssetType.SpecialWin)
+            {
+                if (file.name.Contains("/sd/"))
+                    if (workingPlace.Contains("Windows"))
+                        continue;
+                if (!Directory.Exists(workingPlace + "SpecialWin"))
+                    Directory.CreateDirectory(workingPlace + "SpecialWin");
+                string subDir = Regex.Split(file.name, "/")[8].Replace("p", "");
+                subDir = GetYdkID(subDir);
+                var targetFolder = workingPlace + "SpecialWin/" + subDir;
+                if (!Directory.Exists(targetFolder))
+                    Directory.CreateDirectory(targetFolder);
+                File.Copy(GetFullPath(file.path), targetFolder + "/" + subDir);
+                List<string> depens = new List<string>();
+                try
+                {
+                    depens = GetDependencies(file.path);
+                }
+                catch (Exception e)
+                {
+                    Debug.Log("查找" + file.path + "的依赖失败：");
+                    Debug.LogException(e);
+                }
+                foreach (string depen in depens)
+                {
+                    if (File.Exists(GetFullPath(depen)))
+                    {
+                        if (!File.Exists(targetFolder + "/" + depen))
+                            File.Copy(GetFullPath(depen), targetFolder + "/" + depen);
+                    }
+                    else
+                        Debug.Log("未找到" + file.path + "的依赖：" + depen + ": " + GetFullPath(depen));
+                }
+            }
+            text.text = "Copying: " + currentFileCount + "/" + fileCount;
+            yield return null;
         }
         text.text = "Copy Complete.";
     }
 
+    string prefix = "assets/resourcesassetbundle";
+
     AssetType GetAssetType(string name)
     {
-        if (name.Contains("assets/resourcesassetbundle/duel/bg/avatarstand/"))
+        if (!name.StartsWith(prefix))
+            return AssetType.None;
+
+        if (name.Contains("/duel/bg/avatarstand/"))
         {
             if (name.Contains(".prefab"))
-                return AssetType.Avatarstand;
+                return AssetType.AvatarStand;
         }
-        else if (name.Contains("assets/resourcesassetbundle/images/profileframe/"))
+        else if (name.Contains("/images/profileframe/"))
         {
             if (name.Contains(".mat"))
                 return AssetType.Frame;
         }
-        else if (name.Contains("/grave/"))
+        else if (name.Contains("/duel/bg/grave/"))
         {
             if (name.Contains(".prefab"))
                 return AssetType.Grave;
         }
-        else if (name.Contains("/mat/"))
+        else if (name.Contains("/duel/bg/mat/"))
         {
             if (name.Contains(".prefab"))
                 return AssetType.Mat;
@@ -400,12 +454,15 @@ public class AssetBundleRobber : MonoBehaviour
             if (!name.Contains("/protector/shaders/"))
                 return AssetType.Protector;
         }
-        else if (name.Contains("/outgamebg/front/")
-            || name.Contains("/wallpaper/wallpaper")
-            )
+        else if (name.Contains("/wallpaper/"))
         {
             if (name.Contains(".prefab"))
                 return AssetType.Wallpaper;
+        }
+        else if (name.Contains("/prefabs/outgamebg/back/"))
+        {
+            if (name.Contains(".prefab"))
+                return AssetType.Background;
         }
         else if (name.Contains("/duel/timeline/card/"))
         {
@@ -417,12 +474,19 @@ public class AssetBundleRobber : MonoBehaviour
             if (name.Contains(".prefab"))
                 return AssetType.MonsterCutin;
         }
+        else if (name.Contains("/duel/timeline/duel/universal/summon/summonspecialwin/"))
+        {
+            if (name.Contains(".prefab"))
+                if (Path.GetFileName(name).Contains("summonspecialwin"))
+                    return AssetType.SpecialWin;
+        }
+
         return AssetType.None;
     }
     public enum AssetType
     {
         None,
-        Avatarstand,
+        AvatarStand,
         Card,
         Frame,
         Grave,
@@ -430,18 +494,21 @@ public class AssetBundleRobber : MonoBehaviour
         Mate,
         MonsterCutin,
         Protector,
-        Wallpaper
+        Wallpaper,
+        Background,
+        SpecialWin
     }
 
 
     List<string> GetDependencies(string fileName, List<string> parentDepends = null)
     {
+        GC.Collect();
         byte[] bytes = Decompress(fileName);
         List<int> dependencyPositions = new List<int>();
         for (int i = 0; i < bytes.Length; i++)
         {
             if (bytes[i] == 0x2F)
-                if(i + 9 < bytes.Length)
+                if (i + 9 < bytes.Length)
                     if (bytes[i + 2] == bytes[i - 1])
                         if (bytes[i + 1] == bytes[i - 2])
                         {
@@ -476,11 +543,11 @@ public class AssetBundleRobber : MonoBehaviour
                 temp.Add(bytes[j]);
             }
             var s = Encoding.UTF8.GetString(temp.ToArray());
-            if(s != fileName)
+            if (s != fileName)
             {
-                if(parentDepends != null)
+                if (parentDepends != null)
                 {
-                    if(!parentDepends.Contains(s))
+                    if (!parentDepends.Contains(s))
                         dependencies.Add(s);
                 }
                 else
@@ -488,25 +555,24 @@ public class AssetBundleRobber : MonoBehaviour
             }
         }
 
-        List<string> newParentDepends = new List<string>();
-        foreach (var dependency in dependencies)
-            newParentDepends.Add(dependency);
-        if(parentDepends != null)
+        List<string> newParentDepends = new List<string>(dependencies);
+        if (parentDepends != null)
             foreach (var dependency in parentDepends)
-                if(!newParentDepends.Contains(dependency))
+                if (!newParentDepends.Contains(dependency))
                     newParentDepends.Add(dependency);
 
         List<string> subdepends = new List<string>();
-        foreach(var value in dependencies)
+        foreach (var value in dependencies)
         {
             var ss = GetDependencies(value, newParentDepends);
-            foreach(var s in ss)
-                if(!subdepends.Contains(s))
+            foreach (var s in ss)
+                if (!subdepends.Contains(s))
                     subdepends.Add(s);
         }
-        foreach(var value in subdepends)
-            if(!dependencies.Contains(value))
+        foreach (var value in subdepends)
+            if (!dependencies.Contains(value))
                 dependencies.Add(value);
+        bytes = null;
         return dependencies;
     }
 
@@ -527,13 +593,20 @@ public class AssetBundleRobber : MonoBehaviour
 
     string GetYdkID(string mdID)
     {
-        if(!ydkIds.TryGetValue(mdID, out var ydkID))
+        if (!ydkIds.TryGetValue(mdID, out var ydkID))
             ydkID = mdID;
         return ydkID;
     }
 
     string GetFullPath(string path)
     {
-        return masterDuelAssetBundlePath + path.Substring(0, 2) + "/" + path;
+        if (path.Length <= 2)
+        {
+            Debug.Log("Too short: " + path);
+            return string.Empty;
+        }
+        var returnValue = masterDuelAssetBundlePath + path.Substring(0, 2) + "/" + path;
+        //Debug.Log(path + ": " + returnValue);
+        return returnValue;
     }
 }

@@ -612,6 +612,7 @@ namespace MDPro3
                         CameraManager.DuelOverlay3DPlus();
                     }
                 }
+
                 if (cg.alpha == 0
                     && (Input.GetKeyDown(KeyCode.Alpha0) 
                     || Input.GetKeyDown(KeyCode.Keypad0)))
@@ -840,7 +841,7 @@ namespace MDPro3
             #region Attack Line
             if (attackLine == null)
             {
-                var ie = ABLoader.LoadFromFileAsync("Effects/Other/fxp_atk_select_arrow_001");
+                var ie = ABLoader.LoadFromFileAsync("MasterDuel/Effects/Other/fxp_atk_select_arrow_001");
                 StartCoroutine(ie);
                 while (ie.MoveNext())
                     yield return null;
@@ -864,7 +865,7 @@ namespace MDPro3
             #region Target Line
             if (targetLine == null)
             {
-                var ie = ABLoader.LoadFromFileAsync("Effects/Other/fxp_target_arrow_001");
+                var ie = ABLoader.LoadFromFileAsync("MasterDuel/Effects/Other/fxp_target_arrow_001");
                 StartCoroutine(ie);
                 while (ie.MoveNext())
                     yield return null;
@@ -883,7 +884,7 @@ namespace MDPro3
             #region Equip Line
             if (equipLine == null)
             {
-                var ie = ABLoader.LoadFromFileAsync("Effects/Other/fxp_equip_arrow_001");
+                var ie = ABLoader.LoadFromFileAsync("MasterDuel/Effects/Other/fxp_equip_arrow_001");
                 StartCoroutine(ie);
                 while (ie.MoveNext())
                     yield return null;
@@ -900,7 +901,7 @@ namespace MDPro3
             #region Dice
             if (myDice == null)
             {
-                var ie = ABLoader.LoadFromFolderAsync("TimeLine/DuelDice");
+                var ie = ABLoader.LoadFromFolderAsync("MasterDuel/TimeLine/DuelDice");
                 StartCoroutine(ie);
                 while (ie.MoveNext())
                     yield return null;
@@ -915,7 +916,7 @@ namespace MDPro3
             }
             if (opDice == null)
             {
-                var ie = ABLoader.LoadFromFolderAsync("TimeLine/DuelDiceEn");
+                var ie = ABLoader.LoadFromFolderAsync("MasterDuel/TimeLine/DuelDiceEn");
                 StartCoroutine(ie);
                 while (ie.MoveNext())
                     yield return null;
@@ -949,13 +950,14 @@ namespace MDPro3
                 Program.items.mats[0].id.ToString()), Items.ItemType.Mat);
             if (deck != null)
                 path = Program.items.CodeToPath(deck.Field[0].ToString(), Items.ItemType.Mat);
+            path = "MasterDuel/" + path;
             var enumerator = ABLoader.LoadFromFileAsync(path + "_near");
             while (enumerator.MoveNext())
                 yield return null;
             field0 = enumerator.Current;
             field0.transform.SetParent(Program.I().container_3D, false);
 
-            enumerator = ABLoader.LoadFromFileAsync(
+            enumerator = ABLoader.LoadFromFileAsync("MasterDuel/" + 
                 Program.items.CodeToPath(Config.Get(condition.ToString() + "Field1", 
                 Program.items.mats[0].id.ToString()), Items.ItemType.Mat) + "_far");
             while (enumerator.MoveNext())
@@ -991,12 +993,13 @@ namespace MDPro3
                 Program.items.graves[0].id.ToString()), Items.ItemType.Grave);
             if (deck != null)
                 path = Program.items.CodeToPath(deck.Grave[0].ToString(), Items.ItemType.Grave);
+            path = "MasterDuel/" + path;
             enumerator = ABLoader.LoadFromFileAsync(path + "_near");
             while (enumerator.MoveNext())
                 yield return null;
             grave0 = enumerator.Current;
             grave0.transform.SetParent(pos_Grave_near, false);
-            enumerator = ABLoader.LoadFromFileAsync(
+            enumerator = ABLoader.LoadFromFileAsync("MasterDuel/" +
                 Program.items.CodeToPath(Config.Get(condition.ToString() + "Grave1", 
                 Program.items.graves[0].id.ToString()), Items.ItemType.Grave) + "_far");
             while (enumerator.MoveNext())
@@ -1024,12 +1027,13 @@ namespace MDPro3
                 Program.items.stands[0].id.ToString()), Items.ItemType.Stand);
             if (deck != null)
                 path = Program.items.CodeToPath(deck.Stand[0].ToString(), Items.ItemType.Stand);
+            path = "MasterDuel/" + path;
             enumerator = ABLoader.LoadFromFileAsync(path + "_near");
             while (enumerator.MoveNext())
                 yield return null;
             stand0 = enumerator.Current;
             stand0.transform.SetParent(pos_AvatarStand_near, false);
-            enumerator = ABLoader.LoadFromFileAsync(
+            enumerator = ABLoader.LoadFromFileAsync("MasterDuel/" +
                 Program.items.CodeToPath(Config.Get(condition.ToString() + "Stand1", 
                 Program.items.stands[0].id.ToString()), Items.ItemType.Stand) + "_far");
             while (enumerator.MoveNext())
@@ -1068,7 +1072,7 @@ namespace MDPro3
             #endregion
 
             #region 场地背景
-            enumerator = ABLoader.LoadFromFileAsync("bg/celestialsphere_c001");
+            enumerator = ABLoader.LoadFromFileAsync("MasterDuel/BG/celestialsphere_c001");
             while (enumerator.MoveNext())
                 yield return null;
             var matBack = enumerator.Current;
@@ -1081,7 +1085,7 @@ namespace MDPro3
             GameObject phaseButton;
             if (field1.name.StartsWith("Mat_013"))
             {
-                enumerator = ABLoader.LoadFromFileAsync("bg/timer/phasebutton_013");
+                enumerator = ABLoader.LoadFromFileAsync("MasterDuel/BG/timer/phasebutton_013");
                 while (enumerator.MoveNext())
                     yield return null;
                 phaseButton = enumerator.Current;
@@ -1090,7 +1094,7 @@ namespace MDPro3
             }
             else
             {
-                enumerator = ABLoader.LoadFromFileAsync("bg/timer/phasebutton_c001");
+                enumerator = ABLoader.LoadFromFileAsync("MasterDuel/BG/timer/phasebutton_c001");
                 while (enumerator.MoveNext())
                     yield return null;
                 phaseButton = enumerator.Current;
@@ -1110,9 +1114,9 @@ namespace MDPro3
             {
                 IEnumerator<GameObject> ie;
                 if (field1.name.StartsWith("Mat_013"))
-                    ie = ABLoader.LoadFromFileAsync("BG/timer/timer_013", true);
+                    ie = ABLoader.LoadFromFileAsync("MasterDuel/BG/timer/timer_013", true);
                 else
-                    ie = ABLoader.LoadFromFileAsync("BG/timer/timer_c001", true);
+                    ie = ABLoader.LoadFromFileAsync("MasterDuel/BG/timer/timer_c001", true);
                 StartCoroutine(ie);
                 while (ie.MoveNext())
                     yield return null;
@@ -1136,12 +1140,12 @@ namespace MDPro3
             #region Playable Guide
             if (condition == Condition.Duel && inAi == false)
             {
-                var ie = ABLoader.LoadFromFileAsync("BG/timer/playableguide_c001_near", true);
+                var ie = ABLoader.LoadFromFileAsync("MasterDuel/BG/timer/playableguide_c001_near", true);
                 StartCoroutine(ie);
                 while (ie.MoveNext())
                     yield return null;
                 playableGuide0 = ie.Current;
-                ie = ABLoader.LoadFromFileAsync("BG/timer/playableguide_c001_far", true);
+                ie = ABLoader.LoadFromFileAsync("MasterDuel/BG/timer/playableguide_c001_far", true);
                 StartCoroutine(ie);
                 while (ie.MoveNext())
                     yield return null;
@@ -1152,17 +1156,17 @@ namespace MDPro3
                 playableGuide0.SetActive(false);
                 playableGuide1.SetActive(false);
 
-#if UNITY_ANDROID
-                Destroy(playableGuide0.transform.GetChild(2).gameObject);
-                Destroy(playableGuide1.transform.GetChild(2).gameObject);
-#endif
+//#if UNITY_ANDROID
+//                Destroy(playableGuide0.transform.GetChild(2).gameObject);
+//                Destroy(playableGuide1.transform.GetChild(2).gameObject);
+//#endif
                 allGameObjects.Add(playableGuide0);
                 allGameObjects.Add(playableGuide1);
             }
             #endregion
 
             #region 卡组
-            var deckLoad = ABLoader.LoadFromFileAsync("Timeline/DuelDeckAppearance", true);
+            var deckLoad = ABLoader.LoadFromFileAsync("MasterDuel/Timeline/DuelDeckAppearance", true);
             StartCoroutine(deckLoad);
             while (deckLoad.MoveNext())
                 yield return null;
@@ -2609,12 +2613,12 @@ namespace MDPro3
                     if (player == 2)
                     {
                         result = DuelResult.Draw;
-                        duelText = ABLoader.LoadFromFile("Timeline/DuelText/DuelTextDraw", true);
+                        duelText = ABLoader.LoadFromFile("MasterDuel/Timeline/DuelText/DuelTextDraw", true);
                     }
                     else if (player == 0 || winType == 4)
                     {
                         result = DuelResult.Win;
-                        duelText = ABLoader.LoadFromFile("Timeline/DuelText/DuelTextWin", true);
+                        duelText = ABLoader.LoadFromFile("MasterDuel/Timeline/DuelText/DuelTextWin", true);
                         if (cookie_matchKill > 0)
                         {
                             winReason = CardsManager.Get(cookie_matchKill).Name;
@@ -2629,7 +2633,7 @@ namespace MDPro3
                     else
                     {
                         result = DuelResult.Lose;
-                        duelText = ABLoader.LoadFromFile("Timeline/DuelText/DuelTextLose", true);
+                        duelText = ABLoader.LoadFromFile("MasterDuel/Timeline/DuelText/DuelTextLose", true);
                         if (cookie_matchKill > 0)
                         {
                             winReason = CardsManager.Get(cookie_matchKill).Name;
@@ -2705,7 +2709,7 @@ namespace MDPro3
                     {
                         if(winType == 0x10)//被封印的艾克佐迪亚
                         {
-                            ElementObjectManager mner = PlaySpecialWin("SummonSpecialWin4027");
+                            ElementObjectManager mner = PlaySpecialWin("33396948");
                             StartCoroutine(Program.I().texture_.LoadDummyCard(mner.GetElement<ElementObjectManager>("DummyCard"), 33396948, true));
                             StartCoroutine(Program.I().texture_.LoadDummyCard(mner.GetElement<ElementObjectManager>("DummyCard2"), 7902349, true));
                             StartCoroutine(Program.I().texture_.LoadDummyCard(mner.GetElement<ElementObjectManager>("DummyCard3"), 70903634, true));
@@ -2721,7 +2725,7 @@ namespace MDPro3
                         else if (winType == 0x14)//究极封印神 艾克佐迪奥斯
                             PlayCommonSpecialWin(new int[] { 13893596 });
                         else if (winType == 0x15)//通灵盘
-                            PlaySpecialWin("SummonSpecialWin14585");
+                            PlaySpecialWin("40771118");
                         else if (winType == 0x16)//最终一战！
                             PlayCommonSpecialWin(new int[] { 28566710 });
                         else if (winType == 0x17)//No.88 机关傀儡-命运狮子
@@ -2733,7 +2737,7 @@ namespace MDPro3
                         else if (winType == 0x1A)//魂之接力
                             PlayCommonSpecialWin(new int[] { 42776960 });
                         else if (winType == 0x1B)//鬼计惰天使
-                            PlaySpecialWin("SummonSpecialWin11422");
+                            PlaySpecialWin("53334641");
                         else if (winType == 0x1C)//幻煌龙的天涡
                             PlayCommonSpecialWin(new int[] { 97795930 });
                         else if (winType == 0x1D)//方程式运动员胜利团队
@@ -2747,7 +2751,7 @@ namespace MDPro3
                         else if (winType == 0x21)//混沌虚数No.1000 梦幻虚光神 原数天灵·原数天地
                             PlayCommonSpecialWin(new int[] { 15862758 });
                         else if (winType == 0x22)//席取-六双丸
-                            PlaySpecialWin("SummonSpecialWin17158");
+                            PlaySpecialWin("96637156");
                     }
                     else
                         endingAction.Invoke();
@@ -2798,7 +2802,7 @@ namespace MDPro3
                         var mono = myDeck.gameObject.AddComponent<DoWhenPlayableDirectorStop>();
                         mono.action = () => 
                         {
-                            var effect = ABLoader.LoadFromFile("Timeline/DuelText/DuelTextStart", true);
+                            var effect = ABLoader.LoadFromFile("MasterDuel/Timeline/DuelText/DuelTextStart", true);
                             var mono = effect.AddComponent<DoWhenPlayableDirectorStop>();
                             mono.action = () =>
                             {
@@ -2960,8 +2964,9 @@ namespace MDPro3
                         AudioManager.PlayBGMNormal(field1.name);
                     };
 
-                    foreach (var c in cards)
-                        c.Move(c.p, true);
+                    for (var i = 0; i < cards.Count; i++)
+                        cards[i].Move(cards[i].p, true);
+
                     UIManager.UIBlackOut(transitionTime + 0.1f);
                     Sleep((int)(transitionTime * 100 + 10));
                     break;
@@ -3035,7 +3040,7 @@ namespace MDPro3
                     break;
                 case GameMessage.Set:
                     ES_hint = StringHelper.GetUnsafe(1601);//盖放了卡片
-                    var effect = ABLoader.LoadFromFile("effects/summon/fxp_som_mgctrpfld_001", true);
+                    var effect = ABLoader.LoadFromFile("MasterDuel/Effects/summon/fxp_som_mgctrpfld_001", true);
                     effect.transform.position = lastMoveCard.model.transform.position;
                     Destroy(effect, 3f);
                     AudioManager.PlaySE("SE_LAND_MT_SET");
@@ -3076,7 +3081,7 @@ namespace MDPro3
                         mySummonCount++;
                     else
                         opSummonCount++;
-                    effect = ABLoader.LoadFromFile("effects/summon/fxp_somldg/hand/fxp_somldg_hand_001", true);
+                    effect = ABLoader.LoadFromFile("MasterDuel/Effects/summon/fxp_somldg/hand/fxp_somldg_hand_001", true);
                     effect.transform.localPosition = GameCard.GetCardPosition(gps);
                     if ((gps.position & (uint)CardPosition.Attack) > 0)
                         Destroy(effect.transform.GetChild(1).gameObject);
@@ -3095,7 +3100,7 @@ namespace MDPro3
                         ES_hint = InterString.Get("「[?]」通常召唤宣言时", card.GetData().Name);
                         if (card.GetData().Level > 6)
                         {
-                            effect = ABLoader.LoadFromFolder("effects/summon/fxp_somldg/Advance_s2", "Advance_s2", true);
+                            effect = ABLoader.LoadFromFolder("MasterDuel/Effects/summon/fxp_somldg/Advance_s2", "Advance_s2", true);
                             effect.transform.localPosition = GameCard.GetCardPosition(gps);
                             Destroy(effect, 10);
                             se = "SE_LAND_ADVANCE_HIGH";
@@ -3103,7 +3108,7 @@ namespace MDPro3
                         }
                         else if (card.GetData().Level > 4)
                         {
-                            effect = ABLoader.LoadFromFolder("effects/summon/fxp_somldg/Advance_s1", "Advance_s1", true);
+                            effect = ABLoader.LoadFromFolder("MasterDuel/Effects/summon/fxp_somldg/Advance_s1", "Advance_s1", true);
                             effect.transform.localPosition = GameCard.GetCardPosition(gps);
                             Destroy(effect, 10);
                             se = "SE_LAND_ADVANCE_MIDDLE";
@@ -3133,7 +3138,7 @@ namespace MDPro3
                     if ((card.GetData().Type & (uint)CardType.Token) > 0)
                         goto TokenPasss;
 
-                    effect = ABLoader.LoadFromFile("effects/summon/fxp_somldg/hand/fxp_somldg_hand_001", true);
+                    effect = ABLoader.LoadFromFile("MasterDuel/Effects/summon/fxp_somldg/hand/fxp_somldg_hand_001", true);
                     effect.transform.localPosition = GameCard.GetCardPosition(gps);
                     if ((gps.position & (uint)CardPosition.Attack) > 0)
                         Destroy(effect.transform.GetChild(1).gameObject);
@@ -3152,7 +3157,7 @@ namespace MDPro3
                             //&& (card.GetData().Reason & (uint)CardReason.Link) > 0)
                             && (card.GetData().Type & (uint)CardType.Link) > 0)
                         {
-                            tail = "effects/summon/fxp_somldg/Link_s1";
+                            tail = "MasterDuel/Effects/summon/fxp_somldg/Link_s1";
                             se = "SE_LAND_LINK_MIDDLE";
                             lastSpSummonReason = (uint)CardReason.Link;
                         }
@@ -3160,7 +3165,7 @@ namespace MDPro3
                             //&& (card.GetData().Reason & (uint)CardReason.Fusion) > 0)
                             && (card.GetData().Type & (uint)CardType.Fusion) > 0)
                         {
-                            tail = "effects/summon/fxp_somldg/Fusion_s1";
+                            tail = "MasterDuel/Effects/summon/fxp_somldg/Fusion_s1";
                             se = "SE_LAND_FUSION_MIDDLE";
                             lastSpSummonReason = (uint)CardReason.Fusion;
                         }
@@ -3168,7 +3173,7 @@ namespace MDPro3
                             //&& (card.GetData().Reason & (uint)CardReason.Synchro) > 0)
                             && (card.GetData().Type & (uint)CardType.Synchro) > 0)
                         {
-                            tail = "effects/summon/fxp_somldg/Synchro_s1";
+                            tail = "MasterDuel/Effects/summon/fxp_somldg/Synchro_s1";
                             se = "SE_LAND_SYNCHRO_MIDDLE";
                             lastSpSummonReason = (uint)CardReason.Synchro;
                         }
@@ -3176,7 +3181,7 @@ namespace MDPro3
                             //&& (card.GetData().Reason & (uint)CardReason.Xyz) > 0)
                             && (card.GetData().Type & (uint)CardType.Xyz) > 0)
                         {
-                            tail = "effects/summon/fxp_somldg/Xyz_s1";
+                            tail = "MasterDuel/Effects/summon/fxp_somldg/Xyz_s1";
                             se = "SE_LAND_XYZ_MIDDLE";
                             lastSpSummonReason = (uint)CardReason.Xyz;
                         }
@@ -3184,19 +3189,19 @@ namespace MDPro3
                             //&& (card.GetData().Reason & (uint)CardReason.Ritual) > 0)
                             && (card.GetData().Type & (uint)CardType.Ritual) > 0)
                         {
-                            tail = "effects/summon/fxp_somldg/Ritual_s1";
+                            tail = "MasterDuel/Effects/summon/fxp_somldg/Ritual_s1";
                             se = "SE_LAND_RITUAL_MIDDLE";
                             lastSpSummonReason = (uint)CardReason.Ritual;
                         }
                         else if (psum)
                         {
-                            tail = "effects/summon/fxp_somldg/Pendulum_s1";
+                            tail = "MasterDuel/Effects/summon/fxp_somldg/Pendulum_s1";
                             se = "SE_LAND_PENDULUM_MIDDLE";
                             lastSpSummonReason = (uint)CardReason.Pendulum;
                         }
                         else
                         {
-                            tail = "effects/summon/fxp_somldg/Special_s1";
+                            tail = "MasterDuel/Effects/summon/fxp_somldg/Special_s1";
                             se = "SE_LAND_ADVANCE_MIDDLE";
                             lastSpSummonReason = 0;
                         }
@@ -3344,9 +3349,9 @@ namespace MDPro3
                                 code = card.GetData().Alias > 0 ? card.GetData().Alias : card.GetData().Id;
                                 if (card.GetData().Id == 83764719)//死者苏生 异画
                                     code = 83764719;
-                                if (Directory.Exists(Program.root + "Card/" + code.ToString()))
+                                if (Directory.Exists(Program.root + "MasterDuel/Card/" + code.ToString()))
                                 {
-                                    effect = ABLoader.LoadFromFolder("Card/" + code.ToString(), "CardEffect" + code.ToString(), true);
+                                    effect = ABLoader.LoadFromFolder("MasterDuel/Card/" + code.ToString(), "CardEffect" + code.ToString(), true);
                                     allGameObjects.Add(effect);
                                     for (int i = 0; i < effect.transform.childCount; i++)
                                     {
@@ -3700,7 +3705,7 @@ namespace MDPro3
                                 if (attackCard.GetData().Attack >= life0)
                                     finalBlow = true;
                             }
-                            effect = ABLoader.LoadFromFile("Timeline/DuelText/DuelDirectAtk00", true);
+                            effect = ABLoader.LoadFromFile("MasterDuel/Timeline/DuelText/DuelDirectAtk00", true);
                             mono = effect.AddComponent<DoWhenPlayableDirectorStop>();
                             mono.action = () =>
                             {
@@ -3713,7 +3718,7 @@ namespace MDPro3
                         {
                             if(duelFinalBlow != null)
                                 Destroy(duelFinalBlow);
-                            duelFinalBlow = ABLoader.LoadFromFile("Timeline/DuelText/DuelFinalBlow", true);
+                            duelFinalBlow = ABLoader.LoadFromFile("MasterDuel/Timeline/DuelText/DuelFinalBlow", true);
                         }
                         Sleep(20);
                     }
@@ -3806,52 +3811,58 @@ namespace MDPro3
                     string sound2 = "";
                     if ((attackCard.GetData().Attribute & (uint)CardAttribute.Dark) > 0)
                     {
-                        tail = "effects/attack/fxp_atkdak_s2_001";
-                        hit = "effects/hit/fxp_hitdak_s2_001";
+                        tail = "MasterDuel/Effects/attack/fxp_atkdak_s2_001";
+                        hit = "MasterDuel/Effects/hit/fxp_hitdak_s2_001";
                         sound1 = "SE_ATTACK_A_DARK_SPECIAL_01";
                         sound2 = "SE_ATTACK_A_DARK_SPECIAL_02";
                     }
                     else if ((attackCard.GetData().Attribute & (uint)CardAttribute.Earth) > 0)
                     {
-                        tail = "effects/attack/fxp_atkeah_s2_001";
-                        hit = "effects/hit/fxp_hiteah_s2_001";
+                        tail = "MasterDuel/Effects/attack/fxp_atkeah_s2_001";
+                        hit = "MasterDuel/Effects/hit/fxp_hiteah_s2_001";
                         sound1 = "SE_ATTACK_A_EARTH_SPECIAL_01";
                         sound2 = "SE_ATTACK_A_EARTH_SPECIAL_02";
                     }
                     else if ((attackCard.GetData().Attribute & (uint)CardAttribute.Fire) > 0)
                     {
-                        tail = "effects/attack/fxp_atkfie_s2_001";
-                        hit = "effects/hit/fxp_hitfie_s2_001";
+                        tail = "MasterDuel/Effects/attack/fxp_atkfie_s2_001";
+                        hit = "MasterDuel/Effects/hit/fxp_hitfie_s2_001";
                         sound1 = "SE_ATTACK_A_FIRE_SPECIAL_01";
                         sound2 = "SE_ATTACK_A_FIRE_SPECIAL_02";
                     }
                     else if ((attackCard.GetData().Attribute & (uint)CardAttribute.Light) > 0)
                     {
-                        tail = "effects/attack/fxp_atklit_s2_001";
-                        hit = "effects/hit/fxp_hitlit_s2_001";
+                        tail = "MasterDuel/Effects/attack/fxp_atklit_s2_001";
+                        hit = "MasterDuel/Effects/hit/fxp_hitlit_s2_001";
                         sound1 = "SE_ATTACK_A_LIGHT_SPECIAL_01";
                         sound2 = "SE_ATTACK_A_LIGHT_SPECIAL_02";
                     }
                     else if ((attackCard.GetData().Attribute & (uint)CardAttribute.Water) > 0)
                     {
-                        tail = "effects/attack/fxp_atkwtr_s2_001";
-                        hit = "effects/hit/fxp_hitwtr_s2_001";
+                        tail = "MasterDuel/Effects/attack/fxp_atkwtr_s2_001";
+                        hit = "MasterDuel/Effects/hit/fxp_hitwtr_s2_001";
                         sound1 = "SE_ATTACK_A_WIND_SPECIAL_01";
                         sound2 = "SE_ATTACK_A_WIND_SPECIAL_02";
                     }
                     else if ((attackCard.GetData().Attribute & (uint)CardAttribute.Wind) > 0)
                     {
-                        tail = "effects/attack/fxp_atkwid_s2_001";
-                        hit = "effects/hit/fxp_hitwid_s2_001";
+                        tail = "MasterDuel/Effects/attack/fxp_atkwid_s2_001";
+                        hit = "MasterDuel/Effects/hit/fxp_hitwid_s2_001";
                         sound1 = "SE_ATTACK_A_DARK_SPECIAL_01";
                         sound2 = "SE_ATTACK_A_DARK_SPECIAL_02";
                     }
                     else// if ((attackCard.GetData().Attribute & (uint)CardAttribute.Divine) > 0)
                     {
-                        tail = "effects/attack/fxp_atkdve_s2_001";
-                        hit = "effects/hit/fxp_hitdve_s2_001";
+                        tail = "MasterDuel/Effects/attack/fxp_atkdve_s2_001";
+                        hit = "MasterDuel/Effects/hit/fxp_hitdve_s2_001";
                         sound1 = "SE_ATTACK_A_DIVINE_SPECIAL_01";
                         sound2 = "SE_ATTACK_A_DIVINE_SPECIAL_02";
+
+                        if (attackCard.GetData().Attack < 2000)
+                        {
+                            tail = tail.Replace("_s2_", "_s1_");
+                            hit = hit.Replace("_s2_", "_s1_");
+                        }
                         tailObj = ABLoader.LoadFromFolder(tail, Path.GetFileName(tail), true);
                         hitObj = ABLoader.LoadFromFolder(hit, Path.GetFileName(hit), true);
                         hitObj.SetActive(false);
@@ -3869,13 +3880,13 @@ namespace MDPro3
                         if ((attackedCard.p.position & (uint)CardPosition.Defence) > 0)
                             if (attackedCard.GetData().Defense >= attackCard.GetData().Attack)
                             {
-                                hit = "effects/hit/fxp_hit_guard_001";
+                                hit = "MasterDuel/Effects/hit/fxp_hit_guard_001";
                                 sound2 = "SE_ATTACK_GUARD";
                             }
                         if ((attackedCard.p.position & (uint)CardPosition.Attack) > 0)
                             if (attackedCard.GetData().Attack > attackCard.GetData().Attack)
                             {
-                                hit = "effects/hit/fxp_hit_guard_001";
+                                hit = "MasterDuel/Effects/hit/fxp_hit_guard_001";
                                 sound2 = "SE_ATTACK_GUARD";
                             }
                     }
@@ -3886,13 +3897,13 @@ namespace MDPro3
                         attackTransform.LookAt(dummy.transform);
                         if (directAttack == 1)
                         {
-                            hit = "effects/hit/fxp_dithit_far_001";
-                            sound2 = "SE_DIRECT_ATTACK_PLAYER";
+                            hit = "MasterDuel/Effects/hit/fxp_dithit_far_001";
+                            sound2 = "SE_DIRECT_ATTACK_RIVAL";
                         }
                         else
                         {
-                            hit = "effects/hit/fxp_dithit_near_001";
-                            sound2 = "SE_DIRECT_ATTACK_RIVAL";
+                            hit = "MasterDuel/Effects/hit/fxp_dithit_near_001";
+                            sound2 = "SE_DIRECT_ATTACK_PLAYER";
                         }
                         Destroy(dummy);
                     }
@@ -3977,12 +3988,12 @@ namespace MDPro3
                         quence.Append(attackTransform.DOMove(attackPosition, 0.3f).SetEase(Ease.InQuad));
                         quence.Join(Program.I().camera_.cameraMain.transform.DOMove(new Vector3(0, 95, -37), 0.3f));
                         quence.Join(attackTransform.DORotate(attackAngle, 0.3f).SetEase(Ease.InQuad));
-                        quence.OnComplete(() => 
-                        { 
-                            needDamageResponseInstant = false; 
-                        });
                         Sleep(125);
                     }
+                    quence.OnComplete(() =>
+                    {
+                        needDamageResponseInstant = false;
+                    });
                     AudioManager.PlaySE(sound1);
                     Destroy(tailObj, 3f);
                     break;
@@ -4013,13 +4024,13 @@ namespace MDPro3
 
                         if (life0 <= 0)
                         {
-                            hitObj = ABLoader.LoadFromFile("effects/hit/fxp_dithit_fin_near_001");
+                            hitObj = ABLoader.LoadFromFile("MasterDuel/Effects/hit/fxp_dithit_fin_near_001");
                             hitObj.transform.position = new Vector3(0, 15, -25);
                             Destroy(hitObj, 10);
                         }
                         if (life1 <= 0)
                         {
-                            hitObj = ABLoader.LoadFromFile("effects/hit/fxp_dithit_fin_far_001");
+                            hitObj = ABLoader.LoadFromFile("MasterDuel/Effects/hit/fxp_dithit_fin_far_001");
                             hitObj.transform.position = new Vector3(0, 15, 25);
                             Destroy(hitObj, 10);
                         }
@@ -4078,13 +4089,13 @@ namespace MDPro3
 #endif
                         if (life0 <= 0)
                         {
-                            hitObj = ABLoader.LoadFromFile("effects/hit/fxp_dithit_fin_near_001");
+                            hitObj = ABLoader.LoadFromFile("MasterDuel/Effects/hit/fxp_dithit_fin_near_001");
                             hitObj.transform.position = new Vector3(0, 15, -25);
                             Destroy(hitObj, 10);
                         }
                         if (life1 <= 0)
                         {
-                            hitObj = ABLoader.LoadFromFile("effects/hit/fxp_dithit_fin_far_001");
+                            hitObj = ABLoader.LoadFromFile("MasterDuel/Effects/hit/fxp_dithit_fin_far_001");
                             hitObj.transform.position = new Vector3(0, 15, 25);
                             Destroy(hitObj, 10);
                         }
@@ -4112,7 +4123,7 @@ namespace MDPro3
                         AudioManager.PlaySE("SE_COIN_THROW");
                         for (var i = 0; i < count; i++)
                         {
-                            var coin = ABLoader.LoadFromFolder("TimeLine/DuelCoinToss01", "DuelCoinToss", true);
+                            var coin = ABLoader.LoadFromFolder("MasterDuel/TimeLine/DuelCoinToss01", "DuelCoinToss", true);
                             var manager = coin.transform.GetChild(0).GetComponent<ElementObjectManager>();
                             manager.GetComponent<PlayableDirector>().Play();
                             Destroy(coin, 3f);
@@ -4753,7 +4764,7 @@ namespace MDPro3
                         {
                             description.Hide();
                             targetTime = 366;
-                            GameObject pendulum = ABLoader.LoadFromFolder("timeline/summon/summonpendulum/summonpendulum01", "SummonPendulum", true);
+                            GameObject pendulum = ABLoader.LoadFromFolder("MasterDuel/Timeline/summon/summonpendulum/summonpendulum01", "SummonPendulum", true);
                             ElementObjectManager manager = null;
                             for (int j = 0; j < pendulum.transform.childCount; j++)
                             {
@@ -4838,7 +4849,7 @@ namespace MDPro3
 
                             if (MasterRule >= 4)
                             {
-                                var pendulumSet = ABLoader.LoadFromFolder("timeline/summon/summonpendulum/summonpendulumscaleset", "PendulumSet", true);
+                                var pendulumSet = ABLoader.LoadFromFolder("MasterDuel/Timeline/summon/summonpendulum/summonpendulumscaleset", "PendulumSet", true);
                                 pendulumSet.transform.SetParent(Program.I().container_3D);
                                 ElementObjectManager setManager = null;
                                 for (int j = 0; j < pendulumSet.transform.childCount; j++)
@@ -5819,7 +5830,8 @@ namespace MDPro3
         void PlayCommonSpecialWin(int[] code)
         {
             var count = code.Length;
-            var go = ABLoader.LoadFromFolder("Timeline/SpecialWin/SpecialWinCommonCard0" + count);
+            var go = ABLoader.LoadFromFolder("MasterDuel/Timeline/SpecialWin/SpecialWinCommonCard0" + count);
+            allGameObjects.Add(go);
             ElementObjectManager mner = null;
             for (int i = 0; i < go.transform.childCount; i++)
             {
@@ -5854,7 +5866,8 @@ namespace MDPro3
         }
         ElementObjectManager PlaySpecialWin(string path)
         {
-            var go = ABLoader.LoadFromFolder("Timeline/SpecialWin/" + path);
+            var go = ABLoader.LoadFromFolder("MasterDuel/Timeline/SpecialWin/" + path);
+            allGameObjects.Add(go);
             ElementObjectManager manager = null;
             for (int i = 0; i < go.transform.childCount; i++)
             {
@@ -6390,7 +6403,10 @@ namespace MDPro3
                 seType = "RECOVERY";
             }
             else
-                AudioManager.PlaySE("SE_COST_DAMAGE");
+            {
+                if(!needDamageResponseInstant)
+                    AudioManager.PlaySE("SE_COST_DAMAGE");
+            }
             obj.GetComponent<TextMeshProUGUI>().color = color;
             if (player == 0)
             {
@@ -7088,7 +7104,7 @@ namespace MDPro3
                     if (card.p.controller == 0)
                         if (card.buttons.Count > 0)
                         {
-                            var effect = ABLoader.LoadFromFile("effects/hitghlight/fxp_hl_active/fxp_hl_active_grave_001", true);
+                            var effect = ABLoader.LoadFromFile("MasterDuel/Effects/hitghlight/fxp_hl_active/fxp_hl_active_grave_001", true);
                             effect.transform.SetParent(grave0Manager.GetElement<Transform>("GraveHighlightNear"), false);
                             Destroy(effect, 3f);
                             grave0Manager.GetElement<Animator>("GraveHighlightNear").SetBool("On", true);
@@ -7100,7 +7116,7 @@ namespace MDPro3
                     if (card.p.controller == 0)
                         if (card.buttons.Count > 0)
                         {
-                            var effect = ABLoader.LoadFromFile("effects/hitghlight/fxp_hl_active/fxp_hl_active_exclude_001", true);
+                            var effect = ABLoader.LoadFromFile("MasterDuel/Effects/hitghlight/fxp_hl_active/fxp_hl_active_exclude_001", true);
                             effect.transform.SetParent(grave0Manager.GetElement<Transform>("ExcludeHighlightNear"), false);
                             Destroy(effect, 3f);
                             grave0Manager.GetElement<Animator>("ExcludeHighlightNear").SetBool("On", true);
@@ -7112,7 +7128,7 @@ namespace MDPro3
                     if (card.p.controller == 0)
                         if (card.buttons.Count > 0)
                         {
-                            var effect = ABLoader.LoadFromFile("effects/hitghlight/fxp_hl_active/fxp_hl_active_exdeck_001", true);
+                            var effect = ABLoader.LoadFromFile("MasterDuel/Effects/hitghlight/fxp_hl_active/fxp_hl_active_exdeck_001", true);
                             effect.transform.SetParent(myExtra.transform, false);
                             foreach (var place in places)
                                 place.ShowHint((uint)CardLocation.Extra, 0u);
@@ -7125,7 +7141,7 @@ namespace MDPro3
                     if (card.p.controller == 0)
                         if (card.buttons.Count > 0)
                         {
-                            var effect = ABLoader.LoadFromFile("effects/hitghlight/fxp_hl_active/fxp_hl_active_exdeck_001", true);
+                            var effect = ABLoader.LoadFromFile("MasterDuel/Effects/hitghlight/fxp_hl_active/fxp_hl_active_exdeck_001", true);
                             effect.transform.SetParent(myDeck.transform, false);
                             foreach (var place in places)
                                 place.ShowHint((uint)CardLocation.Deck, 0u);
@@ -7354,10 +7370,10 @@ namespace MDPro3
 
             GameObject animation;
             if (chain < 3)
-                animation = ABLoader.LoadFromFile("Timeline/DuelChain/DuelChainStack01", true);
+                animation = ABLoader.LoadFromFile("MasterDuel/Timeline/DuelChain/DuelChainStack01", true);
             else
             {
-                animation = ABLoader.LoadFromFile("Timeline/DuelChain/DuelChainStack02", true);
+                animation = ABLoader.LoadFromFile("MasterDuel/Timeline/DuelChain/DuelChainStack02", true);
                 DOTween.To(v => { }, 0, 0, 0.0166f).OnComplete(() =>
                 {
                     AudioManager.PlaySE("SE_DUELCHAIN_STACK02");
@@ -7530,11 +7546,11 @@ namespace MDPro3
 
             GameObject animation;
             if(chain == 1)
-                animation = ABLoader.LoadFromFile("Timeline/DuelChain/DuelChainResolve01", true);
+                animation = ABLoader.LoadFromFile("MasterDuel/Timeline/DuelChain/DuelChainResolve01", true);
             else if(chain == 2)
-                animation = ABLoader.LoadFromFile("Timeline/DuelChain/DuelChainResolve02", true);
+                animation = ABLoader.LoadFromFile("MasterDuel/Timeline/DuelChain/DuelChainResolve02", true);
             else
-                animation = ABLoader.LoadFromFile("Timeline/DuelChain/DuelChainResolve03", true);
+                animation = ABLoader.LoadFromFile("MasterDuel/Timeline/DuelChain/DuelChainResolve03", true);
             var director = animation.GetComponent<PlayableDirector>();
             var mono = animation.AddComponent<DoWhenPlayableDirectorStop>();
             mono.action = () =>

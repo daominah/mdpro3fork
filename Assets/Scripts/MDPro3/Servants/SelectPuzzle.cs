@@ -113,7 +113,7 @@ namespace MDPro3
                 };
                 tasks.Add(task);
             }
-            var handle = Addressables.LoadAssetAsync<GameObject>("ButtonForTwoStage");
+            var handle = Addressables.LoadAssetAsync<GameObject>("ButtonTwoStageForPuzzle");
             handle.Completed += (result) =>
             {
                 superScrollView = new SuperScrollViewTwoStage

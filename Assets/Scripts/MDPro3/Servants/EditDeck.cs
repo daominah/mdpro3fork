@@ -75,7 +75,6 @@ namespace MDPro3
         public ElementObjectManager manager;
         Tabs tabs;
 
-        bool loaded;
         public bool dirty;
         string deckName;
         public Deck deck;
@@ -193,8 +192,6 @@ namespace MDPro3
 
         public override void OnReturn()
         {
-            if (!loaded)
-                return;
             if (!dirty)
                 base.OnReturn();
             else
@@ -212,8 +209,6 @@ namespace MDPro3
 
         IEnumerator RefreshAsync()
         {
-            loaded = false;
-
             mainCount = deck.Main.Count;
             extraCount = deck.Extra.Count;
             sideCount = deck.Side.Count;
@@ -227,6 +222,8 @@ namespace MDPro3
 
             for (int i = 0; i < deck.Main.Count; i++)
             {
+                if (!isShowed)
+                    yield break;
                 var card = Instantiate(itemOnTable);
                 card.transform.SetParent(cardsOnEditParent, false);
                 var mono = card.GetComponent<CardOnEdit>();
@@ -238,6 +235,8 @@ namespace MDPro3
             }
             for (int i = 0; i < deck.Extra.Count; i++)
             {
+                if (!isShowed)
+                    yield break;
                 var card = Instantiate(itemOnTable);
                 card.transform.SetParent(cardsOnEditParent, false);
                 var mono = card.GetComponent<CardOnEdit>();
@@ -249,6 +248,8 @@ namespace MDPro3
             }
             for (int i = 0; i < deck.Side.Count; i++)
             {
+                if (!isShowed)
+                    yield break;
                 var card = Instantiate(itemOnTable);
                 card.transform.SetParent(cardsOnEditParent, false);
                 var mono = card.GetComponent<CardOnEdit>();
@@ -258,7 +259,6 @@ namespace MDPro3
                 cards.Add(mono);
                 yield return null;
             }
-            loaded = true;
             dirty = false;
         }
 
@@ -333,7 +333,7 @@ namespace MDPro3
         void Dispose()
         {
             foreach (var card in cards)
-                Destroy(card.gameObject);
+                card.Dispose();
             cards.Clear();
         }
 
@@ -480,7 +480,7 @@ namespace MDPro3
                     else if (returnAction != null)
                         returnAction();
                 }
-                if (Input.GetKeyUp(KeyCode.Escape))
+                if (Input.GetKeyDown(KeyCode.Escape))
                 {
                     if (detail.showing)
                         detail.Hide();
@@ -599,8 +599,6 @@ namespace MDPro3
         }
         void ShowAppearance()
         {
-            if (!loaded)
-                return;
             intoAppearance = true;
             Appearance.type = Appearance.AppearanceType.Deck;
             Program.I().ShiftToServant(Program.I().appearance);
@@ -942,8 +940,6 @@ namespace MDPro3
 
         public void OnReset()
         {
-            if (!loaded)
-                return;
             Dispose();
             StartCoroutine(RefreshAsync());
         }

@@ -43,12 +43,12 @@ namespace MDPro3
                 nextMuteSE = string.Empty;
                 return;
             }
-            if (lastSE.time > 0)
-                if (lastSE.seName == path && Time.time - lastSE.time < 0.1f)
-                    return;
+
+            if (lastSE.time > 0 && lastSE.seName == path && Time.time - lastSE.time < 0.1f)
+                return;
+
             lastSE.time = Time.time;
             lastSE.seName = path;
-
             var handle = Addressables.LoadAssetAsync<AudioClip>(path);
             handle.Completed += (result) =>
             {
@@ -234,8 +234,8 @@ namespace MDPro3
                 return;
             if (bgm.time > loopEnd)
                 bgm.time = loopStart;
-            if (Input.GetKeyDown(KeyCode.T))
-                bgm.time = loopEnd - 5;
+            //if (Input.GetKeyDown(KeyCode.T))
+            //    bgm.time = loopEnd - 5;
         }
 
         public static void PlayVoice(string path)

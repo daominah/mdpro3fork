@@ -51,10 +51,10 @@ namespace MDPro3
 
         #region State
         public static bool Running = true;
-        public static readonly string artPath = "Art";
-        public static readonly string altArtPath = "Art2";
-        public static readonly string cardPicPath = "CardGenerated";
-        public static readonly string closeupPath = "Closeup";
+        public static readonly string artPath = "Picture/Art";
+        public static readonly string altArtPath = "Picture/Art2";
+        public static readonly string cardPicPath = "Picture/CardGenerated";
+        public static readonly string closeupPath = "Picture/Closeup";
         public static readonly string dataPath = "Data";
         public static readonly string localesPath = "Data/locales";
         public static readonly string configPath = "Data/config.conf";
@@ -63,7 +63,7 @@ namespace MDPro3
         public static readonly string expansionsPath = "Expansions";
         public static readonly string puzzlePath = "Puzzle";
         public static readonly string replayPath = "Replay";
-        public static readonly string diyPath = "DIY";
+        public static readonly string diyPath = "Picture/DIY";
         public static readonly string slash = "/";
         #endregion
 
@@ -334,11 +334,16 @@ namespace MDPro3
         private void OnApplicationQuit()
         {
             Running = false;
+            Config.Save();
             ClearCache();
-            TcpHelper.tcpClient = null;
             YgoServer.StopServer();
             ZipHelper.Dispose();
-            Config.Save();
+            try
+            {
+                TcpHelper.tcpClient.Close();
+            }
+            catch { }
+            TcpHelper.tcpClient = null;
         }
 
         void ClearCache()

@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using MDPro3.UI;
@@ -13,16 +12,17 @@ namespace MDPro3
         {
             {1, "Classic" },
             {2, "Classic2" },
-            {3, "PurpleDarkFantasy" },
+            {11, "ClassicRed" },
+            //{12, "ClassicGreen" },
             {5, "ClassicPurple" },
             {4, "ClassicPurpleShine" },
             //{6, "ClassicWhite" },
             {7, "WCS" },
             {8, "Shop" },
             {9, "Knowledge" },
+            {3, "PurpleDarkFantasy" },
             {10, "DeepDarkFantasy" },
         };
-
 
         public void Change(int id)
         {
@@ -34,7 +34,7 @@ namespace MDPro3
             }
 
             var endString = id.ToString("D4");
-            back = ABLoader.LoadFromFolder("wallpaper/back" + endString, "Background" + endString, true);
+            back = ABLoader.LoadFromFolder("MasterDuel/Background/Back" + endString, "Background" + endString, true);
             back.transform.GetChild(0).gameObject.AddComponent<AutoScale>();
             Tools.ChangeLayer(back, "2D");
             back.transform.SetParent(transform, false);

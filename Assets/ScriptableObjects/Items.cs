@@ -228,7 +228,7 @@ namespace MDPro3
 
         public string WallpaperCodeToPath(string code)
         {
-            string returnValue = "Wallpaper/front0001";
+            string returnValue = "Wallpaper/Front0001";
             foreach (var item in wallpapers)
             {
                 if (item.id.ToString() == code)
@@ -270,6 +270,62 @@ namespace MDPro3
                     return mats[0].path;
             }
         }
+
+        public static string CodeToIconPath(string id)
+        {
+            var currentContent = id.Substring(0, 3);
+            string pathPrefix = "";
+            string pathSuffix = "";
+            switch (currentContent)
+            {
+                case "113":
+                    pathPrefix = "WallPaperIcon";
+                    pathSuffix = string.Empty;
+                    break;
+                case "101":
+                    pathPrefix = "ProfileIcon";
+                    pathSuffix = "_L";
+                    break;
+                case "103":
+                    pathPrefix = "ProfileFrame";
+                    pathSuffix = "_L";
+                    break;
+                case "107":
+                    pathPrefix = "ProtectorIcon";
+                    pathSuffix = string.Empty;
+                    break;
+                case "109":
+                    pathPrefix = "FieldIcon";
+                    pathSuffix = string.Empty;
+                    break;
+                case "110":
+                    pathPrefix = "FieldObjIcon";
+                    pathSuffix = string.Empty;
+                    break;
+                case "111":
+                    pathPrefix = "FieldAvatarBaseIcon";
+                    pathSuffix = string.Empty;
+                    break;
+                case "100":
+                    pathPrefix = string.Empty;
+                    pathSuffix = string.Empty;
+                    break;
+                case "108":
+                    pathPrefix = "DeckCase";
+                    pathSuffix = "_L";
+                    break;
+                default:
+                    pathPrefix = string.Empty;
+                    pathSuffix = string.Empty;
+                    break;
+            }
+
+            if(currentContent == "108")
+                return pathPrefix + id.Substring(3) + pathSuffix;
+            else
+                return pathPrefix + id + pathSuffix;
+        }
+
 
         public enum ItemType
         {

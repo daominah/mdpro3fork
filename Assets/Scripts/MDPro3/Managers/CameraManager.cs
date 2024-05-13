@@ -10,8 +10,8 @@ namespace MDPro3
 {
     public class CameraManager : Manager
     {
-        //DuelOverlay3D ¶¥²¿ÊÓ½Ç
-        //DuelOverlayEffect3D ÕýÊÓ½Ç
+        //DuelOverlay3D ï¿½ï¿½ï¿½ï¿½ï¿½Ó½ï¿½
+        //DuelOverlayEffect3D ï¿½ï¿½ï¿½Ó½ï¿½
         //DuelOverlay2D
         //DuelOverlayEffect2D OverUI
         public Camera cameraMain;
@@ -27,17 +27,17 @@ namespace MDPro3
         public SpriteRenderer black;
 
         public UniversalRenderPipelineAsset urpAsset;
-        public ForwardRendererData forwardRendererData;
+        public UniversalRendererData forwardRendererData;
         public UniversalRenderPipelineAsset urpAssetForUI;
-        public ForwardRendererData forwardRendererDataForUI;
+        public UniversalRendererData forwardRendererDataForUI;
 
         public override void Initialize()
         {
             base.Initialize();
             urpAsset = Resources.Load<UniversalRenderPipelineAsset>("Settings/URPAsset");
-            forwardRendererData = Resources.Load<ForwardRendererData>("Settings/URPAsset_Renderer");
+            forwardRendererData = Resources.Load<UniversalRendererData>("Settings/URPAsset_Renderer");
             urpAssetForUI = Resources.Load<UniversalRenderPipelineAsset>("Settings/URPAssetForUI");
-            forwardRendererDataForUI = Resources.Load<ForwardRendererData>("Settings/URPAssetForUI_Renderer");
+            forwardRendererDataForUI = Resources.Load<UniversalRendererData>("Settings/URPAssetForUI_Renderer");
 
             ShiftTo2D();
             ChangeCameraFOV();
@@ -161,12 +161,12 @@ namespace MDPro3
         {
             uiBlurCount++;
             Program.I().camera_.cameraUIBlur.gameObject.SetActive(true);
-            foreach (var feature in Program.I().camera_.forwardRendererData.rendererFeatures)
-                if (feature is KawaseBlur)
-                    feature.SetActive(true);
-            foreach (var feature in Program.I().camera_.forwardRendererDataForUI.rendererFeatures)
-                if (feature is KawaseBlur)
-                    feature.SetActive(true);
+            //foreach (var feature in Program.I().camera_.forwardRendererData.rendererFeatures)
+            //    if (feature is KawaseBlur)
+            //        feature.SetActive(true);
+            //foreach (var feature in Program.I().camera_.forwardRendererDataForUI.rendererFeatures)
+            //    if (feature is KawaseBlur)
+            //        feature.SetActive(true);
         }
         public static void UIBlurMinus()
         {
@@ -176,12 +176,12 @@ namespace MDPro3
             if (uiBlurCount == 0)
             {
                 Program.I().camera_.cameraUIBlur.gameObject.SetActive(false);
-                foreach (var feature in Program.I().camera_.forwardRendererData.rendererFeatures)
-                    if (feature is KawaseBlur)
-                        feature.SetActive(false);
-                foreach (var feature in Program.I().camera_.forwardRendererDataForUI.rendererFeatures)
-                    if (feature is KawaseBlur)
-                        feature.SetActive(false);
+                //foreach (var feature in Program.I().camera_.forwardRendererData.rendererFeatures)
+                //    if (feature is KawaseBlur)
+                //        feature.SetActive(false);
+                //foreach (var feature in Program.I().camera_.forwardRendererDataForUI.rendererFeatures)
+                //    if (feature is KawaseBlur)
+                //        feature.SetActive(false);
             }
         }
 
@@ -216,6 +216,11 @@ namespace MDPro3
             {
                 Program.I().camera_.cameraMain.DOShakePosition(0.2f, 0.5f, 50);
             }
+        }
+
+        private void OnApplicationQuit()
+        {
+            cameraRenderTexture.targetTexture = null;
         }
     }
 }

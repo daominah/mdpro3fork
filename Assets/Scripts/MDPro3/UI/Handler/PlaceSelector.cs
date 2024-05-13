@@ -37,24 +37,24 @@ namespace MDPro3.UI
             var collider = gameObject.AddComponent<BoxCollider>();
             if ((p.location & (uint)CardLocation.Deck) > 0)
             {
-                highlight = ABLoader.LoadFromFile("effects/eff_highlight/eff_duel_highlight10", true);
+                highlight = ABLoader.LoadFromFile("MasterDuel/Effects/eff_highlight/eff_duel_highlight10", true);
                 transform.localEulerAngles = new Vector3(0, -19.5f, 0);
                 collider.size = new Vector3(8f, 1f, 10f);
             }
             else if ((p.location & (uint)CardLocation.Extra) > 0)
             {
-                highlight = ABLoader.LoadFromFile("effects/eff_highlight/eff_duel_highlight10", true);
+                highlight = ABLoader.LoadFromFile("MasterDuel/Effects/eff_highlight/eff_duel_highlight10", true);
                 transform.localEulerAngles = new Vector3(0, 19.5f, 0);
                 collider.size = new Vector3(8f, 1f, 10f);
             }
             else if ((p.location & (uint)CardLocation.MonsterZone) > 0)
             {
-                highlight = ABLoader.LoadFromFile("effects/eff_highlight/eff_duel_highlight11", true);
+                highlight = ABLoader.LoadFromFile("MasterDuel/Effects/eff_highlight/eff_duel_highlight11", true);
                 collider.size = new Vector3(8f, 1f, 8f);
-                select = ABLoader.LoadFromFile("effects/hitghlight/fxp_hl_select/fxp_hl_select_mst_001", true);
-                selectPush = ABLoader.LoadFromFile("effects/hitghlight/fxp_hl_select/fxp_hl_select_mst_push_001", true);
-                selectCard = ABLoader.LoadFromFile("effects/hitghlight/fxp_hl_select/fxp_hl_select_card_001", true);
-                selectCardPush = ABLoader.LoadFromFile("effects/hitghlight/fxp_hl_select/fxp_hl_select_card_push_001", true);
+                select = ABLoader.LoadFromFile("MasterDuel/Effects/hitghlight/fxp_hl_select/fxp_hl_select_mst_001", true);
+                selectPush = ABLoader.LoadFromFile("MasterDuel/Effects/hitghlight/fxp_hl_select/fxp_hl_select_mst_push_001", true);
+                selectCard = ABLoader.LoadFromFile("MasterDuel/Effects/hitghlight/fxp_hl_select/fxp_hl_select_card_001", true);
+                selectCardPush = ABLoader.LoadFromFile("MasterDuel/Effects/hitghlight/fxp_hl_select/fxp_hl_select_card_push_001", true);
                 disable = new GameObject("Disable");
                 CreateSelectButton();
             }
@@ -62,23 +62,23 @@ namespace MDPro3.UI
             {
                 if (p.sequence == 5)
                 {
-                    highlight = ABLoader.LoadFromFile("effects/eff_highlight/eff_duel_highlight13", true);
+                    highlight = ABLoader.LoadFromFile("MasterDuel/Effects/eff_highlight/eff_duel_highlight13", true);
                     collider.size = new Vector3(6f, 1f, 7f);
-                    select = ABLoader.LoadFromFile("effects/hitghlight/fxp_hl_select/fxp_hl_select_card_001", true);
-                    selectPush = ABLoader.LoadFromFile("effects/hitghlight/fxp_hl_select/fxp_hl_select_card_push_001", true);
-                    selectCard = ABLoader.LoadFromFile("effects/hitghlight/fxp_hl_select/fxp_hl_select_card_001", true);
-                    selectCardPush = ABLoader.LoadFromFile("effects/hitghlight/fxp_hl_select/fxp_hl_select_card_push_001", true);
+                    select = ABLoader.LoadFromFile("MasterDuel/Effects/hitghlight/fxp_hl_select/fxp_hl_select_card_001", true);
+                    selectPush = ABLoader.LoadFromFile("MasterDuel/Effects/hitghlight/fxp_hl_select/fxp_hl_select_card_push_001", true);
+                    selectCard = ABLoader.LoadFromFile("MasterDuel/Effects/hitghlight/fxp_hl_select/fxp_hl_select_card_001", true);
+                    selectCardPush = ABLoader.LoadFromFile("MasterDuel/Effects/hitghlight/fxp_hl_select/fxp_hl_select_card_push_001", true);
                     select.transform.localScale = Vector3.one * 0.8f;
                     selectPush.transform.localScale = Vector3.one * 0.8f;
                 }
                 else
                 {
-                    highlight = ABLoader.LoadFromFile("effects/eff_highlight/eff_duel_highlight12", true);
+                    highlight = ABLoader.LoadFromFile("MasterDuel/Effects/eff_highlight/eff_duel_highlight12", true);
                     collider.size = new Vector3(8f, 1f, 7f);
-                    select = ABLoader.LoadFromFile("effects/hitghlight/fxp_hl_select/fxp_hl_select_trpmgc_001", true);
-                    selectPush = ABLoader.LoadFromFile("effects/hitghlight/fxp_hl_select/fxp_hl_select_trpmgc_push_001", true);
-                    selectCard = ABLoader.LoadFromFile("effects/hitghlight/fxp_hl_select/fxp_hl_select_card_001", true);
-                    selectCardPush = ABLoader.LoadFromFile("effects/hitghlight/fxp_hl_select/fxp_hl_select_card_push_001", true);
+                    select = ABLoader.LoadFromFile("MasterDuel/Effects/hitghlight/fxp_hl_select/fxp_hl_select_trpmgc_001", true);
+                    selectPush = ABLoader.LoadFromFile("MasterDuel/Effects/hitghlight/fxp_hl_select/fxp_hl_select_trpmgc_push_001", true);
+                    selectCard = ABLoader.LoadFromFile("MasterDuel/Effects/hitghlight/fxp_hl_select/fxp_hl_select_card_001", true);
+                    selectCardPush = ABLoader.LoadFromFile("MasterDuel/Effects/hitghlight/fxp_hl_select/fxp_hl_select_card_push_001", true);
                 }
                 selectCard.transform.localScale = Vector3.one * 0.8f;
                 selectCardPush.transform.localScale = Vector3.one * 0.8f;
@@ -545,7 +545,7 @@ namespace MDPro3.UI
         {
             if ((location & p.location) > 0 && controller == p.controller)
             {
-                hintObj = ABLoader.LoadFromFile("effects/hitghlight/fxp_hl_exdeck_001", true);
+                hintObj = ABLoader.LoadFromFile("MasterDuel/Effects/hitghlight/fxp_hl_exdeck_001", true);
                 hintObj.transform.SetParent(transform, false);
                 int cardCount = Program.I().ocgcore.GetLocationCardCount((CardLocation)location, controller);
                 hintObj.transform.localScale = new Vector3(1.1f, cardCount * 0.1f, 1.1f);

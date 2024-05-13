@@ -1,18 +1,18 @@
 using System;
 using System.Collections.Generic;
 using KonamiCommonIAB;
-using Steamworks;
+//using Steamworks;
 using YgomSystem.Network;
 
 namespace YgomSystem.Billing
 {
 	public class Billing_Steam : Billing_Base
 	{
-		protected Callback<MicroTxnAuthorizationResponse_t> m_MicroTxnAuthorizationResponse;
+		//protected Callback<MicroTxnAuthorizationResponse_t> m_MicroTxnAuthorizationResponse;
 
-		protected Callback<SteamServerConnectFailure_t> m_SteamServerConnectFailureCallback;
+		//protected Callback<SteamServerConnectFailure_t> m_SteamServerConnectFailureCallback;
 
-		protected Callback<SteamServersDisconnected_t> m_SteamServerDisconnectedCallback;
+		//protected Callback<SteamServersDisconnected_t> m_SteamServerDisconnectedCallback;
 
 		protected ProductInfo m_ProductInfo;
 
@@ -56,21 +56,21 @@ namespace YgomSystem.Billing
 		{
 		}
 
-		private void OnMicroTxnAuthorizationResponse(MicroTxnAuthorizationResponse_t response)
-		{
-		}
+		//private void OnMicroTxnAuthorizationResponse(MicroTxnAuthorizationResponse_t response)
+		//{
+		//}
 
-		private void OnSteamServerConnectFailure(SteamServerConnectFailure_t response)
-		{
-		}
+		//private void OnSteamServerConnectFailure(SteamServerConnectFailure_t response)
+		//{
+		//}
 
-		private void OnSteamServersDisconnected(SteamServersDisconnected_t response)
-		{
-		}
+		//private void OnSteamServersDisconnected(SteamServersDisconnected_t response)
+		//{
+		//}
 
-		protected void RequestPurchase(MicroTxnAuthorizationResponse_t response, Action<ResultCode> callback)
-		{
-		}
+		//protected void RequestPurchase(MicroTxnAuthorizationResponse_t response, Action<ResultCode> callback)
+		//{
+		//}
 
 		private void RegistCallback()
 		{

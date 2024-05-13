@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using Steamworks;
+//using Steamworks;
 
 namespace YgomSystem
 {
@@ -14,7 +14,7 @@ namespace YgomSystem
 
 		private string steam_auth_session;
 
-		private HAuthTicket m_HAuthTicket;
+		//private HAuthTicket m_HAuthTicket;
 
 		private uint m_pcbTicket;
 
@@ -22,7 +22,7 @@ namespace YgomSystem
 
 		private byte[] m_token;
 
-		private Callback<GetAuthSessionTicketResponse_t> m_SessionTicketResponse;
+		//private Callback<GetAuthSessionTicketResponse_t> m_SessionTicketResponse;
 
 		private Action<string> m_callback;
 
@@ -57,8 +57,8 @@ namespace YgomSystem
 			return false;
 		}
 
-		private void RequestSessionTicketResponseCallback(GetAuthSessionTicketResponse_t r)
-		{
-		}
+		//private void RequestSessionTicketResponseCallback(GetAuthSessionTicketResponse_t r)
+		//{
+		//}
 	}
 }

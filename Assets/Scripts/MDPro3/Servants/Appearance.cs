@@ -8,6 +8,7 @@ using UnityEngine.AddressableAssets;
 using UnityEngine.UI;
 using MDPro3.YGOSharp;
 using MDPro3.UI;
+using DG.Tweening.Plugins.Core.PathCore;
 
 namespace MDPro3
 {
@@ -121,7 +122,7 @@ namespace MDPro3
             Program.onScreenChanged += RefreshItemsPosition;
             playerName.onEndEdit.AddListener(SavePlayerName);
 
-            AssetBundle ab = AssetBundle.LoadFromFile(Program.root + "Frame/ProfileFrameMat1030001");
+            AssetBundle ab = AssetBundle.LoadFromFile(Program.root + "MasterDuel/Frame/ProfileFrameMat1030001");
             matForFace = ab.LoadAsset<Material>("ProfileFrameMat1030001");
             ab.Unload(false);
             var handle = Addressables.LoadAssetAsync<GameObject>("AppearanceItem");
@@ -537,7 +538,7 @@ namespace MDPro3
                 if (UIManager.currentWallpaper != Config.Get("Wallpaper", Program.items.wallpapers[0].id.ToString()))
                 {
                     UIManager.currentWallpaper = Config.Get("Wallpaper", Program.items.wallpapers[0].id.ToString());
-                    Program.I().ui_.ChangeWallPaper(UIManager.currentWallpaper);
+                    Program.I().ui_.ChangeWallpaper(UIManager.currentWallpaper);
                 }
             }
             else
@@ -576,7 +577,7 @@ namespace MDPro3
             else
                 defaultPlayer.transform.parent.gameObject.SetActive(true);
             table.gameObject.SetActive(false);
-            cardsRoot.gameObject.SetActive(false);
+            cardsRoot.GetComponent<RectTransform>().anchoredPosition = new Vector2(0f, -1080f);
 
             if (currentContent == "PlayerName")
             {
@@ -605,7 +606,7 @@ namespace MDPro3
                 detailTitle.transform.parent.GetComponent<CanvasGroup>().blocksRaycasts = false;
                 playerName.transform.parent.parent.gameObject.SetActive(false);
                 table.gameObject.SetActive(true);
-                cardsRoot.gameObject.SetActive(true);
+                cardsRoot.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
 
                 return;
             }
@@ -662,52 +663,6 @@ namespace MDPro3
 
             if (currentList.Count == 0)
             {
-                string pathPrefix = "";
-                string pathSuffix = "";
-                switch (currentContent)
-                {
-                    case "Wallpaper":
-                        pathPrefix = "WallpaperIcon";
-                        pathSuffix = "";
-                        break;
-                    case "Face":
-                        pathPrefix = "ProfileIcon";
-                        pathSuffix = "_L";
-                        break;
-                    case "Frame":
-                        pathPrefix = "ProfileFrame";
-                        pathSuffix = "_L";
-                        break;
-                    case "Protector":
-                        pathPrefix = "ProtectorIcon";
-                        pathSuffix = "";
-                        break;
-                    case "Field":
-                        pathPrefix = "FieldIcon";
-                        pathSuffix = "";
-                        break;
-                    case "Grave":
-                        pathPrefix = "FieldObjIcon";
-                        pathSuffix = "";
-                        break;
-                    case "Stand":
-                        pathPrefix = "FieldAvatarBaseIcon";
-                        pathSuffix = "";
-                        break;
-                    case "Mate":
-                        pathPrefix = "";
-                        pathSuffix = "";
-                        break;
-                    case "Case":
-                        pathPrefix = "DeckCase";
-                        pathSuffix = "_L";
-                        break;
-                    default:
-                        pathPrefix = "";
-                        pathSuffix = "";
-                        break;
-                }
-
                 for (int i = 0; i < targetItems.Count; i++)
                 {
                     GameObject item = Instantiate(appearanceItem);
@@ -716,7 +671,7 @@ namespace MDPro3
                     itemMono.itemID = targetItems[i].id;
                     itemMono.description = targetItems[i].description;
                     itemMono.itemName = targetItems[i].name;
-                    itemMono.path = pathPrefix + itemMono.itemID.ToString() + pathSuffix;
+                    itemMono.path = Items.CodeToIconPath(itemMono.itemID.ToString());
                     itemMono.transform.SetParent(scrollView.content, false);
                     currentList.Add(item);
                 }

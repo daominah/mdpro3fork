@@ -1,5 +1,5 @@
 using System;
-using Steamworks;
+//using Steamworks;
 
 namespace YgomSystem
 {
@@ -24,15 +24,15 @@ namespace YgomSystem
 
 		private static Action s_callback;
 
-		private static Callback<FloatingGamepadTextInputDismissed_t> s_onFinish;
+		//private static Callback<FloatingGamepadTextInputDismissed_t> s_onFinish;
 
 		public static bool Open(MODE mode = MODE.SingleLine, POSITION pos = POSITION.BOTTOM, Action callback = null, int x = -1, int y = -1, int w = -1, int h = -1)
 		{
 			return false;
 		}
 
-		private static void OnFloatingKeyboardFinish(FloatingGamepadTextInputDismissed_t t)
-		{
-		}
+		//private static void OnFloatingKeyboardFinish(FloatingGamepadTextInputDismissed_t t)
+		//{
+		//}
 	}
 }

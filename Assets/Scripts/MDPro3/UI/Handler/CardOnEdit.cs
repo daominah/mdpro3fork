@@ -102,14 +102,30 @@ namespace MDPro3.UI
             }
         }
 
+        bool refreshed;
         IEnumerator RefreshCard()
         {
+            refreshed = false;
             GetComponent<RawImage>().texture = TextureManager.container.unknownCard.texture;
             var ie = Program.I().texture_.LoadCardAsync(code, true);
             while (ie.MoveNext())
                 yield return null;
             GetComponent<RawImage>().texture = ie.Current;
             GetComponent<RawImage>().material = TextureManager.GetCardMaterial(code, true);
+            refreshed = true;
+        }
+
+        public void Dispose()
+        {
+            StartCoroutine(DisposeAsync());
+        }
+
+        IEnumerator DisposeAsync()
+        {
+            GetComponent<CanvasGroup>().alpha = 0f;
+            while (!refreshed)
+                yield return null;
+            Destroy(gameObject);
         }
 
         public void RefreshLimitIcon()

@@ -144,8 +144,11 @@ namespace MDPro3.UI
             else
                 limitIcon.sprite = TextureManager.container.banned;
         }
+
+        bool refreshed;
         IEnumerator RefreshAsync()
         {
+            refreshed = false;
             GetComponent<RawImage>().material = null;
             for (int i = 0; i < transform.GetSiblingIndex(); i++)
                 yield return null;
@@ -162,12 +165,14 @@ namespace MDPro3.UI
             GetComponent<RawImage>().material.SetFloat("_LoadingBlend", 1f);
             float blend = 1;
             DOTween.To(() => blend, x => { blend = x; GetComponent<RawImage>().material.SetFloat("_LoadingBlend", blend); }, 0f, 0.2f);
-
             enummerator = null;
+            refreshed = true;
         }
 
         void OnClick(PointerEventData eventData)
         {
+            if (!refreshed)
+                return;
             var cardFace = GetComponent<RawImage>().texture;
             var mat = GetComponent<RawImage>().material;
             if (Program.I().editDeck.manager.GetElement<Tab>("TabHistory").selected)

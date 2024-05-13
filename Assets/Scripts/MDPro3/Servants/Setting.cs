@@ -443,17 +443,17 @@ namespace MDPro3
                     Program.I().camera_.urpAssetForUI.msaaSampleCount = 1;
                     break;
                 case 2:
-                    faaValue.text = InterString.Get("MSAA 2x");
+                    faaValue.text = "MSAA 2x";
                     Program.I().camera_.urpAsset.msaaSampleCount = 2;
                     Program.I().camera_.urpAssetForUI.msaaSampleCount = 2;
                     break;
                 case 3:
-                    faaValue.text = InterString.Get("MSAA 4x");
+                    faaValue.text = "MSAA 4x";
                     Program.I().camera_.urpAsset.msaaSampleCount = 4;
                     Program.I().camera_.urpAssetForUI.msaaSampleCount = 4;
                     break;
                 case 4:
-                    faaValue.text = InterString.Get("MSAA 8x");
+                    faaValue.text = "MSAA 8x";
                     Program.I().camera_.urpAsset.msaaSampleCount = 8;
                     Program.I().camera_.urpAssetForUI.msaaSampleCount = 8;
                     break;
@@ -464,38 +464,38 @@ namespace MDPro3
             var cameraData3D = Program.I().camera_.cameraMain.GetUniversalAdditionalCameraData();
             var cameraData2D = Program.I().camera_.camera2D.GetUniversalAdditionalCameraData();
 
+            OnFAAChange(faa.value);
+
             switch ((int)value)
             {
                 case 0:
                     aaaValue.text = InterString.Get("无");
                     cameraData3D.antialiasing = AntialiasingMode.None;
-                    cameraData2D.antialiasing = AntialiasingMode.None;
                     break;
                 case 1:
-                    aaaValue.text = InterString.Get("FAA");
+                    aaaValue.text = "FAA";
                     cameraData3D.antialiasing = AntialiasingMode.FastApproximateAntialiasing;
-                    cameraData2D.antialiasing = AntialiasingMode.FastApproximateAntialiasing;
                     break;
                 case 2:
-                    aaaValue.text = InterString.Get("SMAA Low");
+                    aaaValue.text = "SMAA Low";
                     cameraData3D.antialiasing = AntialiasingMode.SubpixelMorphologicalAntiAliasing;
                     cameraData3D.antialiasingQuality = AntialiasingQuality.Low;
-                    cameraData2D.antialiasing = AntialiasingMode.SubpixelMorphologicalAntiAliasing;
-                    cameraData2D.antialiasingQuality = AntialiasingQuality.Low;
                     break;
                 case 3:
-                    aaaValue.text = InterString.Get("SMAA Medium");
+                    aaaValue.text = "SMAA Medium";
                     cameraData3D.antialiasing = AntialiasingMode.SubpixelMorphologicalAntiAliasing;
                     cameraData3D.antialiasingQuality = AntialiasingQuality.Medium;
-                    cameraData2D.antialiasing = AntialiasingMode.SubpixelMorphologicalAntiAliasing;
-                    cameraData2D.antialiasingQuality = AntialiasingQuality.Medium;
                     break;
                 case 4:
-                    aaaValue.text = InterString.Get("SMAA High");
+                    aaaValue.text = "SMAA High";
                     cameraData3D.antialiasing = AntialiasingMode.SubpixelMorphologicalAntiAliasing;
                     cameraData3D.antialiasingQuality = AntialiasingQuality.High;
-                    cameraData2D.antialiasing = AntialiasingMode.SubpixelMorphologicalAntiAliasing;
-                    cameraData2D.antialiasingQuality = AntialiasingQuality.High;
+                    break;
+                case 5:
+                    aaaValue.text = "TAA";
+                    cameraData3D.antialiasing = AntialiasingMode.TemporalAntiAliasing;
+                    Program.I().camera_.urpAsset.msaaSampleCount = 1;
+                    Program.I().camera_.urpAssetForUI.msaaSampleCount = 1;
                     break;
             }
         }

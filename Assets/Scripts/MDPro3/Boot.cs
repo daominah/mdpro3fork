@@ -7,6 +7,7 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.ResourceProviders;
 
 namespace MDPro3
 {
@@ -134,24 +135,33 @@ namespace MDPro3
 
         IEnumerator LoadMainSceneAsync()
         {
+            nowNum = 0;
+            totalNum = 0;
+            progressBar.value = 0;
+
             Config.Initialize(Program.configPath);
             Config.Set("Version", Application.version.Substring(0, 5));
             Config.Save();
+
+            title = InterString.Get("正在初始化");
             var ini = Addressables.InitializeAsync();
             while (!ini.IsDone)
+            {
+                progressBar.value = ini.PercentComplete;
                 yield return null;
+            }
 
+            title = InterString.Get("正在读取数据");
             var handle = Addressables.LoadAssetAsync<Items>("Items");
             while (!handle.IsDone)
+            {
+                progressBar.value = handle.PercentComplete;
                 yield return null;
+            }
             Program.items = handle.Result;
 
-            var load = Addressables.LoadSceneAsync("SceneMain");
-            Addressables.InitializeAsync();
-
             title = InterString.Get("正在进入游戏");
-            nowNum = 0;
-            totalNum = 0;
+            var load = Addressables.LoadSceneAsync("SceneMain");
             while (!load.IsDone)
             {
                 yield return null;

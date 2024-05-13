@@ -161,7 +161,7 @@ namespace MDPro3.UI
             }
             else
             {
-                if (path.StartsWith("Wallpaper"))
+                if (path.StartsWith("WallPaperIcon"))
                     Config.Set("Wallpaper", itemID.ToString());
                 else
                     Config.Set(Appearance.type.ToString() + Appearance.currentContent + Appearance.player, itemID.ToString());

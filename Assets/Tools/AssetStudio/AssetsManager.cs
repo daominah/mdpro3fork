@@ -92,12 +92,11 @@ namespace AssetStudio
                     importFilesHash.Add(Path.GetFileName(file));
                 }
             }
-            AssetBundleRobber.fileCount = importFiles.Count;
 
             for (var i = 0; i < importFiles.Count; i++)
             {
                 LoadFile(importFiles[i]);
-                AssetBundleRobber.currentFileCount = i + 1;
+                AssetBundleRobber.SetHint("LoadAssets: " + (i + 1) + "/" + importFiles.Count);
                 yield return null;
             }
 
@@ -106,8 +105,14 @@ namespace AssetStudio
             noexistFiles.Clear();
             assetsFileListHash.Clear();
 
-            ReadAssets();
-            ProcessAssets();
+            var ie = ReadAssetsAsync();
+            StartCoroutine(ie);
+            while(ie.MoveNext())
+                yield return null;
+            //ie = ProcessAssetsAsync();
+            //StartCoroutine(ie);
+            //while (ie.MoveNext())
+            //    yield return null;
         }
 
         private void LoadFile(string fullName)
@@ -548,6 +553,41 @@ namespace AssetStudio
             }
         }
 
+        IEnumerator ReadAssetsAsync()
+        {
+            var progressCount = assetsFileList.Sum(x => x.m_Objects.Count);
+            int i = 0;
+            Progress.Reset();
+            foreach (var assetsFile in assetsFileList)
+            {
+                i++;
+                foreach (var objectInfo in assetsFile.m_Objects)
+                {
+                    var objectReader = new ObjectReader(assetsFile.reader, assetsFile, objectInfo);
+                    try
+                    {
+                        if(objectReader.type == ClassIDType.AssetBundle)
+                        {
+                            assetsFile.AddObject(new AssetBundle(objectReader));
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        var sb = new StringBuilder();
+                        sb.AppendLine("Unable to load object")
+                            .AppendLine($"Assets {assetsFile.fileName}")
+                            .AppendLine($"Path {assetsFile.originalPath}")
+                            .AppendLine($"Type {objectReader.type}")
+                            .AppendLine($"PathID {objectInfo.m_PathID}")
+                            .Append(e);
+                        Logger.Error(sb.ToString());
+                    }
+                }
+                AssetBundleRobber.SetHint("ReadAssets: " + i + "/" + assetsFileList.Count);
+                yield return null;
+            }
+        }
+
         private void ProcessAssets()
         {
             Logger.Info("Process Assets...");
@@ -608,6 +648,71 @@ namespace AssetStudio
                         }
                     }
                 }
+            }
+        }
+
+        IEnumerator ProcessAssetsAsync()
+        {
+            int i = 0;
+            foreach (var assetsFile in assetsFileList)
+            {
+                i++;
+                foreach (var obj in assetsFile.Objects)
+                {
+                    if (obj is GameObject m_GameObject)
+                    {
+                        foreach (var pptr in m_GameObject.m_Components)
+                        {
+                            if (pptr.TryGet(out var m_Component))
+                            {
+                                switch (m_Component)
+                                {
+                                    case Transform m_Transform:
+                                        m_GameObject.m_Transform = m_Transform;
+                                        break;
+                                    case MeshRenderer m_MeshRenderer:
+                                        m_GameObject.m_MeshRenderer = m_MeshRenderer;
+                                        break;
+                                    case MeshFilter m_MeshFilter:
+                                        m_GameObject.m_MeshFilter = m_MeshFilter;
+                                        break;
+                                    case SkinnedMeshRenderer m_SkinnedMeshRenderer:
+                                        m_GameObject.m_SkinnedMeshRenderer = m_SkinnedMeshRenderer;
+                                        break;
+                                    case Animator m_Animator:
+                                        m_GameObject.m_Animator = m_Animator;
+                                        break;
+                                    case Animation m_Animation:
+                                        m_GameObject.m_Animation = m_Animation;
+                                        break;
+                                }
+                            }
+                        }
+                    }
+                    else if (obj is SpriteAtlas m_SpriteAtlas)
+                    {
+                        foreach (var m_PackedSprite in m_SpriteAtlas.m_PackedSprites)
+                        {
+                            if (m_PackedSprite.TryGet(out var m_Sprite))
+                            {
+                                if (m_Sprite.m_SpriteAtlas.IsNull)
+                                {
+                                    m_Sprite.m_SpriteAtlas.Set(m_SpriteAtlas);
+                                }
+                                else
+                                {
+                                    m_Sprite.m_SpriteAtlas.TryGet(out var m_SpriteAtlaOld);
+                                    if (m_SpriteAtlaOld.m_IsVariant)
+                                    {
+                                        m_Sprite.m_SpriteAtlas.Set(m_SpriteAtlas);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                AssetBundleRobber.SetHint("ProcessAssets: " + i + "/" + assetsFileList.Count);
+                yield return null;
             }
         }
     }

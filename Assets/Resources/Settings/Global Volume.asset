@@ -32,30 +32,21 @@ MonoBehaviour:
   m_Name: LensDistortion
   m_EditorClassIdentifier: 
   active: 0
-  m_AdvancedMode: 0
   intensity:
     m_OverrideState: 1
     m_Value: 0
-    min: -1
-    max: 1
   xMultiplier:
     m_OverrideState: 0
     m_Value: 1
-    min: 0
-    max: 1
   yMultiplier:
     m_OverrideState: 0
     m_Value: 1
-    min: 0
-    max: 1
   center:
     m_OverrideState: 0
     m_Value: {x: 0.5, y: 0.5}
   scale:
     m_OverrideState: 0
     m_Value: 1
-    min: 0.01
-    max: 5
 --- !u!114 &201023695557414981
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -69,12 +60,9 @@ MonoBehaviour:
   m_Name: ChromaticAberration
   m_EditorClassIdentifier: 
   active: 0
-  m_AdvancedMode: 0
   intensity:
     m_OverrideState: 1
     m_Value: 0
-    min: 0
-    max: 1
 --- !u!114 &1743250120040662126
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -88,45 +76,40 @@ MonoBehaviour:
   m_Name: Bloom
   m_EditorClassIdentifier: 
   active: 1
-  m_AdvancedMode: 0
-  threshold:
-    m_OverrideState: 1
-    m_Value: 1.1
-    min: 0
-  intensity:
-    m_OverrideState: 1
-    m_Value: 5.5
-    min: 0
-  scatter:
-    m_OverrideState: 1
-    m_Value: 0.4
-    min: 0
-    max: 1
-  clamp:
-    m_OverrideState: 0
-    m_Value: 65472
-    min: 0
-  tint:
-    m_OverrideState: 0
-    m_Value: {r: 1, g: 1, b: 1, a: 1}
-    hdr: 0
-    showAlpha: 0
-    showEyeDropper: 1
-  highQualityFiltering:
-    m_OverrideState: 1
-    m_Value: 1
   skipIterations:
     m_OverrideState: 0
     m_Value: 1
-    min: 0
-    max: 16
+  threshold:
+    m_OverrideState: 1
+    m_Value: 1.1
+  intensity:
+    m_OverrideState: 1
+    m_Value: 5.5
+  scatter:
+    m_OverrideState: 1
+    m_Value: 0.4
+  clamp:
+    m_OverrideState: 0
+    m_Value: 65472
+  tint:
+    m_OverrideState: 0
+    m_Value: {r: 1, g: 1, b: 1, a: 1}
+  highQualityFiltering:
+    m_OverrideState: 1
+    m_Value: 1
+  downscale:
+    m_OverrideState: 0
+    m_Value: 0
+  maxIterations:
+    m_OverrideState: 0
+    m_Value: 6
   dirtTexture:
     m_OverrideState: 0
     m_Value: {fileID: 0}
+    dimension: 1
   dirtIntensity:
     m_OverrideState: 0
     m_Value: 0
-    min: 0
 --- !u!114 &2404068591579314995
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -140,26 +123,18 @@ MonoBehaviour:
   m_Name: Vignette
   m_EditorClassIdentifier: 
   active: 1
-  m_AdvancedMode: 0
   color:
     m_OverrideState: 1
     m_Value: {r: 0, g: 0, b: 0, a: 1}
-    hdr: 0
-    showAlpha: 0
-    showEyeDropper: 1
   center:
     m_OverrideState: 1
     m_Value: {x: 0.5, y: 0.5}
   intensity:
     m_OverrideState: 1
     m_Value: 0.3
-    min: 0
-    max: 1
   smoothness:
     m_OverrideState: 1
     m_Value: 0.4
-    min: 0.01
-    max: 1
   rounded:
     m_OverrideState: 0
     m_Value: 0
@@ -176,7 +151,6 @@ MonoBehaviour:
   m_Name: MotionBlur
   m_EditorClassIdentifier: 
   active: 1
-  m_AdvancedMode: 0
   mode:
     m_OverrideState: 0
     m_Value: 0
@@ -186,13 +160,9 @@ MonoBehaviour:
   intensity:
     m_OverrideState: 1
     m_Value: 0
-    min: 0
-    max: 1
   clamp:
     m_OverrideState: 1
     m_Value: 0.05
-    min: 0
-    max: 0.2
 --- !u!114 &8193839648642336318
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -206,52 +176,36 @@ MonoBehaviour:
   m_Name: DepthOfField
   m_EditorClassIdentifier: 
   active: 0
-  m_AdvancedMode: 0
   mode:
     m_OverrideState: 1
     m_Value: 2
   gaussianStart:
     m_OverrideState: 0
     m_Value: 10
-    min: 0
   gaussianEnd:
     m_OverrideState: 0
     m_Value: 30
-    min: 0
   gaussianMaxRadius:
     m_OverrideState: 0
     m_Value: 1
-    min: 0.5
-    max: 1.5
   highQualitySampling:
     m_OverrideState: 0
     m_Value: 0
   focusDistance:
     m_OverrideState: 1
     m_Value: 10
-    min: 0.1
   aperture:
     m_OverrideState: 1
     m_Value: 5.6
-    min: 1
-    max: 32
   focalLength:
     m_OverrideState: 1
     m_Value: 50
-    min: 1
-    max: 300
   bladeCount:
     m_OverrideState: 0
     m_Value: 5
-    min: 3
-    max: 9
   bladeCurvature:
     m_OverrideState: 0
     m_Value: 1
-    min: 0
-    max: 1
   bladeRotation:
     m_OverrideState: 0
     m_Value: 0
-    min: -180
-    max: 180

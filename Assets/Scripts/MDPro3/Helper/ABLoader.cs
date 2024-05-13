@@ -93,8 +93,12 @@ namespace MDPro3
             }
 
             List<AssetBundle> bundles = new List<AssetBundle>();
-            DirectoryInfo dir;
-            dir = new DirectoryInfo(Program.root + path);
+
+            DirectoryInfo dir = new DirectoryInfo(Program.root + path);
+#if UNITY_STANDALONE_WIN && !UNITY_EDITOR
+            dir = new DirectoryInfo(Path.Combine(Application.dataPath, Program.root + path));
+#endif
+
             FileInfo[] files = dir.GetFiles("*");
             for (int i = 0; i < files.Length; i++)
                 bundles.Add(AssetBundle.LoadFromFile(files[i].FullName));
@@ -140,7 +144,12 @@ namespace MDPro3
             }
 
             List<AssetBundle> bundles = new List<AssetBundle>();
+
             DirectoryInfo dir = new DirectoryInfo(Program.root + path);
+#if UNITY_STANDALONE_WIN && !UNITY_EDITOR
+            dir = new DirectoryInfo(Path.Combine(Application.dataPath, Program.root + path));
+#endif
+
             FileInfo[] files = dir.GetFiles("*");
             for (int i = 0; i < files.Length; i++)
             {
@@ -179,6 +188,7 @@ namespace MDPro3
             }
         }
 
+        static readonly object pMatLock = new object();
         static bool loadingPMat;
         public static IEnumerator<Material> LoadProtectorMaterial(string code)
         {
@@ -192,72 +202,59 @@ namespace MDPro3
                 else
                     cachedPMat.Remove(code);
             }
-            while (loadingPMat)
-                yield return null;
-            loadingPMat = true;
-
-            if (File.Exists(Program.root + "Protector/" + code + Program.slash + code + "_1"))
+            while (true)
             {
-                var ab1r = AssetBundle.LoadFromFileAsync(Program.root + "Protector/" + code + Program.slash + code + "_1");
-                while (!ab1r.isDone)
-                    yield return null;
-                var ab1 = ab1r.assetBundle;
-
-                var ab2r = AssetBundle.LoadFromFileAsync(Program.root + "Protector/" + code + Program.slash + code + "_2");
-                while (!ab2r.isDone)
-                    yield return null;
-                var ab2 = ab2r.assetBundle;
-
-                AssetBundle ab3 = null;
-                if (File.Exists(Program.root + "Protector/" + code + Program.slash + code + "_3"))
+                lock (pMatLock)
                 {
-                    var ab3r = AssetBundle.LoadFromFileAsync(Program.root + "Protector/" + code + Program.slash + code + "_3");
-                    while (!ab3r.isDone)
-                        yield return null;
-                    ab3 = ab3r.assetBundle;
+                    if (!loadingPMat)
+                    {
+                        loadingPMat = true;
+                        break;
+                    }
                 }
-
-                var abmr = AssetBundle.LoadFromFileAsync(Program.root + "Protector/" + code + "/PMat");
-                while (!abmr.isDone)
-                    yield return null;
-                var abm = abmr.assetBundle;
-                material = abm.LoadAsset<Material>("PMat");
-                material.renderQueue = 3000;
-                material.enableInstancing = true;
-
-                ab1.Unload(false);
-                ab2.Unload(false);
-                if (ab3 != null)
-                    ab3.Unload(false);
-                abm.Unload(false);
-
+                yield return null;
             }
 
-            else
+            var folder = Program.root + "MasterDuel/Protector/" + code;
+#if UNITY_STANDALONE_WIN && !UNITY_EDITOR
+            folder = Path.Combine(Application.dataPath, folder);
+#endif
+            if (!Directory.Exists(folder))
+                yield break;
+            var files = Directory.GetFiles(folder);
+
+            AssetBundle matAB = null;
+            List<AssetBundle> abs = new List<AssetBundle>();
+            foreach (var file in files)
             {
-                var abr = AssetBundle.LoadFromFileAsync(Program.root + "Protector/" + code + Program.slash + code);
-                while (!abr.isDone)
+                var abr = AssetBundle.LoadFromFileAsync(file);
+                while(!abr.isDone)
                     yield return null;
-                var abmr = AssetBundle.LoadFromFileAsync(Program.root + "Protector/" + code + "/PMat");
-                while (!abmr.isDone)
-                    yield return null;
-                var ab = abr.assetBundle;
-                var abm = abmr.assetBundle;
-                material = abm.LoadAsset<Material>("PMat");
-                material.renderQueue = 3000;
-                ab.Unload(false);
-                abm.Unload(false);
+                abs.Add(abr.assetBundle);
+                if (Path.GetFileName(file) == code)
+                    matAB = abr.assetBundle;
             }
+            if(matAB == null)
+                yield break;
+
+            material = matAB.LoadAsset<Material>("PMat");
+            material.renderQueue = 3000;
+            foreach (var ab in abs)
+                ab.Unload(false);
+
             if (cachedPMat.ContainsKey(code))
                 material = cachedPMat[code];
             else
                 cachedPMat.Add(code, material);
-            loadingPMat = false;
+            lock (pMatLock)
+            {
+                loadingPMat = false;
+            }
             yield return material;
         }
         public static IEnumerator<Material> LoadFrameMaterial(string code)
         {
-            var abr = AssetBundle.LoadFromFileAsync(Program.root + "Frame/ProfileFrameMat" + code);
+            var abr = AssetBundle.LoadFromFileAsync(Program.root + "MasterDuel/Frame/ProfileFrameMat" + code);
             while (!abr.isDone)
                 yield return null;
             var ab = abr.assetBundle;
@@ -329,7 +326,7 @@ namespace MDPro3
             }
             else
             {
-                var ie = LoadFromFileAsync(Program.items.CodeToPath(code.ToString(), Items.ItemType.Mate));
+                var ie = LoadFromFileAsync("MasterDuel/" + Program.items.CodeToPath(code.ToString(), Items.ItemType.Mate));
                 while (ie.MoveNext())
                     yield return null;
                 var mateGo = ie.Current;

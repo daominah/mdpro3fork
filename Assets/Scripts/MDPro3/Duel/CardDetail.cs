@@ -174,11 +174,10 @@ namespace MDPro3
             if(string.IsNullOrEmpty(text))
                 text = string.Empty;
 
-            if (Config.Get("Language", "zh-CN") != "en-US"
-                || Config.Get("Language", "zh-CN") != "es-ES")
-            {
+            var language = Config.Get("Language", "zh-CN");
+
+            if (language != "en-US" && language != "es-ES")
                 return text.Replace(" ", "\u00A0");
-            }
             else
                 return text;
         }

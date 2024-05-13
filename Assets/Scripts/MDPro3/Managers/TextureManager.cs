@@ -46,7 +46,7 @@ namespace MDPro3
 
         IEnumerator LoadMaterials()
         {
-            var ie = ABLoader.LoadFromFileAsync("timeline/summon/summonsynchro/summonsynchro01", true);
+            var ie = ABLoader.LoadFromFileAsync("MasterDuel/Timeline/summon/summonsynchro/summonsynchro01", true);
             StartCoroutine(ie);
             while (ie.MoveNext())
                 yield return null;
@@ -62,7 +62,7 @@ namespace MDPro3
                 cardMatSide = result.Result;
             };
 
-            ie = ABLoader.LoadFromFileAsync("timeline/summon/summonsynchro/summonsynchro01_shinestyle");
+            ie = ABLoader.LoadFromFileAsync("MasterDuel/Timeline/summon/summonsynchro/summonsynchro01_shinestyle");
             StartCoroutine(ie);
             while (ie.MoveNext())
                 yield return null;
@@ -73,7 +73,7 @@ namespace MDPro3
             manager = manager.GetElement<ElementObjectManager>("DummyCardSynchro");
             cardMatShine = Instantiate(manager.GetElement<Renderer>("DummyCardModel_front").material);
 
-            ie = ABLoader.LoadFromFileAsync("timeline/summon/summonsynchro/summonsynchro01_royalstyle");
+            ie = ABLoader.LoadFromFileAsync("MasterDuel/Timeline/summon/summonsynchro/summonsynchro01_royalstyle");
             StartCoroutine(ie);
             while (ie.MoveNext())
                 yield return null;
@@ -153,7 +153,8 @@ namespace MDPro3
             request.Dispose();
         }
 
-        bool loadingArt;
+        static readonly object artLock = new object();
+        static bool loadingArt = false;
         public IEnumerator<Texture2D> LoadArtAsync(int code, bool cache = false)
         {
             if (cachedArts.TryGetValue(code, out var returenValue))
@@ -161,9 +162,29 @@ namespace MDPro3
                 yield return returenValue;
                 yield break;
             }
-            //while(loadingArt)
-            //    yield return null;
-            //loadingArt = true;
+            while (true)
+            {
+                lock (artLock)
+                {
+                    if (!loadingArt)
+                    {
+                        loadingArt = true;
+                        break;
+                    }
+                }
+                yield return null;
+            }
+
+            if (cachedArts.TryGetValue(code, out returenValue))
+            {
+                lock (artLock)
+                {
+                    loadingArt = false;
+                    yield return returenValue;
+                    yield break;
+                }
+            }
+
             if (!Directory.Exists(Program.artPath))
                 Directory.CreateDirectory(Program.artPath);
             if (!Directory.Exists(Program.altArtPath))
@@ -248,35 +269,32 @@ namespace MDPro3
                 returenValue.name = "Art_" + code;
                 if (cache)
                 {
-                    if (cachedArts.ContainsKey(code))
-                    {
-                        Destroy(returenValue);
+                    if(cachedArts.ContainsKey(code))
                         returenValue = cachedArts[code];
-                    }
                     else
                         cachedArts.Add(code, returenValue);
                 }
                 yield return returenValue;
             }
+            lock (artLock)
+            {
+                loadingArt = false;
+            }
         }
 
         int getCount;
-        public static bool loadingCard;
+        static readonly object cardLock = new object();
+        static bool loadingCard = false;
+
         public IEnumerator<Texture2D> LoadCardAsync(int code, bool cache = false)
         {
             if (cachedCards.TryGetValue(code, out var returnValue))
             {
-                if (returnValue != null)
-                {
-                    yield return returnValue;
-                    yield break;
-                }
-                else
-                    cachedCards.Remove(code);
+                yield return returnValue;
+                yield break;
             }
             while (container == null)
                 yield return null;
-
             var data = CardsManager.Get(code, true);
             if (data.Id == 0)
             {
@@ -284,9 +302,28 @@ namespace MDPro3
                 yield break;
             }
 
-            //while (loadingCard)
-            //    yield return null;
-            //loadingCard = true;
+            while (true)
+            {
+                lock (cardLock)
+                {
+                    if (!loadingCard)
+                    {
+                        loadingCard = true;
+                        break;
+                    }
+                }
+                yield return null;
+            }
+            if (cachedCards.TryGetValue(code, out returnValue))
+            {
+                lock(cardLock)
+                {
+                    loadingCard = false;
+                    yield return returnValue;
+                    yield break;
+                }
+            }
+
 
             IEnumerator ie = LoadArtAsync(code);
             StartCoroutine(ie);
@@ -295,36 +332,49 @@ namespace MDPro3
             if (ie.Current == null)
             {
                 yield return container.unknownCard.texture;
+                lock (cardLock)
+                {
+                    loadingCard = false;
+                }
                 yield break;
             }
             returnValue = ie.Current as Texture2D;
 
-            if (cachedCards.TryGetValue(code, out var card))
+            RenderTexture.active = Program.I().cardRenderer.renderTexture;
+            if(!Program.I().cardRenderer.RenderCard(code, returnValue))
             {
-                yield return card;
+                yield return container.unknownCard.texture;
+                lock (cardLock)
+                {
+                    loadingCard = false;
+                }
                 yield break;
             }
-            else
-            {
-                RenderTexture.active = Program.I().cardRenderer.renderTexture;
-                Program.I().cardRenderer.RenderCard(code, returnValue);
-                Program.I().camera_.cameraRenderTexture.Render();
-                returnValue = new Texture2D(RenderTexture.active.width, RenderTexture.active.height, TextureFormat.RGB24, false);
-                returnValue.ReadPixels(new Rect(0, 0, RenderTexture.active.width, RenderTexture.active.height), 0, 0);
-                returnValue.Apply();
-                returnValue.name = "Card_" + code;
-            }
+            Program.I().camera_.cameraRenderTexture.Render();
+            returnValue = new Texture2D(RenderTexture.active.width, RenderTexture.active.height, TextureFormat.RGB24, false);
+            returnValue.ReadPixels(new Rect(0, 0, RenderTexture.active.width, RenderTexture.active.height), 0, 0);
+            returnValue.Apply();
+            returnValue.name = "Card_" + code;
             if (cache)
-                cachedCards.Add(code, returnValue);
-
+            {
+                if (cachedCards.ContainsKey(code))
+                    returnValue = cachedCards[code];
+                else
+                    cachedCards.Add(code, returnValue);
+            }
+            yield return null;
             getCount++;
             if (getCount > cacheMax)
             {
                 getCount = 0;
                 Program.I().UnloadUnusedAssets();
+                yield return null;
             }
-            //loadingCard = false;
             yield return returnValue;
+            lock (cardLock)
+            {
+                loadingCard = false;
+            }
         }
 
         public IEnumerator LoadCardToRawImageAsync(RawImage rawImage, int code, bool cache = false)
@@ -739,6 +789,7 @@ namespace MDPro3
             }
         }
 
+
         public static IEnumerator<Sprite> LoadItemIcon(string id)
         {
             if (cachedIcons.ContainsKey(id))
@@ -746,7 +797,7 @@ namespace MDPro3
                 yield return cachedIcons[id];
                 yield break;
             }
-            var handle = Addressables.LoadAssetAsync<Sprite>(id);
+            var handle = Addressables.LoadAssetAsync<Sprite>(Items.CodeToIconPath(id));
             while (!handle.IsDone)
                 yield return null;
             Sprite returnValue;

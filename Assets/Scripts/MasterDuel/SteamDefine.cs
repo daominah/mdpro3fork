@@ -1,8 +1,8 @@
-using Steamworks;
+//using Steamworks;
 
 public class SteamDefine
 {
-	public static AppId_t AppId;
+	//public static AppId_t AppId;
 
 	public const string CryptoHash = "ebab0f004f390d657255dc643e1f48d393127093";
 

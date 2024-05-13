@@ -38,7 +38,7 @@ namespace MDPro3
             base.Initialize();
 
             currentWallpaper = Config.Get("Wallpaper", Program.items.wallpapers[0].id.ToString());
-            ChangeWallPaper(currentWallpaper);
+            ChangeWallpaper(currentWallpaper);
             InitializeLanguage();
         }
         public static void Translate(GameObject go)
@@ -99,14 +99,14 @@ namespace MDPro3
             dynamic.transform.SetParent(parent, false);
         }
 
-        public Transform ChangeWallPaper(string path)
+        public Transform ChangeWallpaper(string path)
         {
             if (wallpaper.transform.childCount > 0)
                 Destroy(wallpaper.transform.GetChild(0).gameObject);
-            path = Program.items.WallpaperCodeToPath(path);
-            if (!path.Contains("front"))
+            path = "MasterDuel/" + Program.items.WallpaperCodeToPath(path);
+            if (!path.ToLower().Contains("front"))
             {
-                Transform frontback = ChangeWallPaper("1130002");
+                Transform frontback = ChangeWallpaper("1130002");
                 Destroy(frontback.GetChild(1).gameObject);
                 StartCoroutine(LoadDiyWallpaperAsync(path, frontback));
                 return frontback;

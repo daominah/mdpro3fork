@@ -22,6 +22,8 @@ namespace MDPro3
         public ScrollRect scrollView;
         public InputField inputField;
         public static List<Card> cards = new List<Card>();
+        public static List<int> codes = new List<int>();
+        public static List<int> codes2 = new List<int>();
         public static int controller = 0;
 
         static DirectoryInfo[] dirInfos;
@@ -35,12 +37,19 @@ namespace MDPro3
             haveLine = false;
             returnServant = Program.I().menu;
             base.Initialize();
-            if (!Directory.Exists(Program.root + "Monstercutin"))
-                Directory.CreateDirectory(Program.root + "Monstercutin");
-            dirInfos = new DirectoryInfo(Program.root + "Monstercutin").GetDirectories();
-            if (!Directory.Exists(Program.root + "Monstercutin2"))
-                Directory.CreateDirectory(Program.root + "Monstercutin2");
-            fileInfos = new DirectoryInfo(Program.root + "Monstercutin2").GetFiles();
+            var targetFolder = Program.root + "MonsterCutin";
+            var targetFolder2 = Program.root + "MonsterCutin2";
+
+#if UNITY_STANDALONE_WIN && !UNITY_EDITOR
+            targetFolder = Path.Combine(Application.dataPath, Program.root + "MonsterCutin");
+            targetFolder2 = Path.Combine(Application.dataPath, Program.root + "MonsterCutin2");
+#endif
+            if(!Directory.Exists(targetFolder))
+                Directory.CreateDirectory(targetFolder);
+            if (!Directory.Exists(targetFolder2))
+                Directory.CreateDirectory(targetFolder2);
+            dirInfos = new DirectoryInfo(targetFolder).GetDirectories();
+            fileInfos = new DirectoryInfo(targetFolder2).GetFiles();
             inputField.onEndEdit.AddListener(Print);
             Load();
         }
@@ -52,12 +61,16 @@ namespace MDPro3
             {
                 Card card = CardsManager.Get(int.Parse(dirInfos[i].Name));
                 cards.Add(card);
+                codes.Add(card.Id);
             }
             for (int i = 0; i < fileInfos.Length; i++)
             {
                 Card card = CardsManager.Get(int.Parse(fileInfos[i].Name));
                 if (!cards.Contains(card))
+                {
                     cards.Add(card);
+                    codes2.Add(card.Id);
+                }
             }
             cards.Sort(CardsManager.ComparisonOfCard());
             Print();
@@ -132,17 +145,14 @@ namespace MDPro3
 
         public static bool HasCutin(int code)
         {
-            bool cutinEffect = true;
             if (Program.I().ocgcore.condition == OcgCore.Condition.Duel
                 && Config.Get("DuelCutin", "1") == "0")
-                cutinEffect = false;
+                return false;
             if (Program.I().ocgcore.condition == OcgCore.Condition.Watch
                 && Config.Get("WatchCutin", "1") == "0")
-                cutinEffect = false;
+                return false;
             if (Program.I().ocgcore.condition == OcgCore.Condition.Replay
                 && Config.Get("ReplayCutin", "1") == "0")
-                cutinEffect = false;
-            if (!cutinEffect)
                 return false;
 
             bool returnValue = false;
@@ -176,11 +186,11 @@ namespace MDPro3
             bool diy = false;
             if(cutin == null)
             {
-                if (Directory.Exists(Program.root + "Monstercutin/" + code))
-                    loader = ABLoader.LoadFromFolder("Monstercutin/" + code, "Spine" + code);
+                if (codes.Contains(code))
+                    loader = ABLoader.LoadFromFolder("MonsterCutin/" + code, "Spine" + code);
                 else
                 {
-                    loader = ABLoader.LoadFromFile("Monstercutin2/" + code);
+                    loader = ABLoader.LoadFromFile("MonsterCutin2/" + code);
                     diy = true;
                 }
             }
@@ -202,19 +212,19 @@ namespace MDPro3
             //BackEffects
             GameObject back;
             if ((card.Attribute & (uint)CardAttribute.Dark) > 0)//125
-                back = ABLoader.LoadFromFile("timeline/summon/summonmonster/04backeff/summonmonster_bgdak_s2", true);
+                back = ABLoader.LoadFromFile("MasterDuel/Timeline/summon/summonmonster/04backeff/summonmonster_bgdak_s2", true);
             else if ((card.Attribute & (uint)CardAttribute.Light) > 0)//100
-                back = ABLoader.LoadFromFile("timeline/summon/summonmonster/04backeff/summonmonster_bglit_s2", true);
+                back = ABLoader.LoadFromFile("MasterDuel/Timeline/summon/summonmonster/04backeff/summonmonster_bglit_s2", true);
             else if ((card.Attribute & (uint)CardAttribute.Earth) > 0)//56
-                back = ABLoader.LoadFromFile("timeline/summon/summonmonster/04backeff/summonmonster_bgeah_s2", true);
+                back = ABLoader.LoadFromFile("MasterDuel/Timeline/summon/summonmonster/04backeff/summonmonster_bgeah_s2", true);
             else if ((card.Attribute & (uint)CardAttribute.Water) > 0)//35
-                back = ABLoader.LoadFromFile("timeline/summon/summonmonster/04backeff/summonmonster_bgwtr_s2", true);
+                back = ABLoader.LoadFromFile("MasterDuel/Timeline/summon/summonmonster/04backeff/summonmonster_bgwtr_s2", true);
             else if ((card.Attribute & (uint)CardAttribute.Fire) > 0)//31
-                back = ABLoader.LoadFromFile("timeline/summon/summonmonster/04backeff/summonmonster_bgfie_s2", true);
+                back = ABLoader.LoadFromFile("MasterDuel/Timeline/summon/summonmonster/04backeff/summonmonster_bgfie_s2", true);
             else if ((card.Attribute & (uint)CardAttribute.Wind) > 0)//25
-                back = ABLoader.LoadFromFile("timeline/summon/summonmonster/04backeff/summonmonster_bgwid_s2", true);
+                back = ABLoader.LoadFromFile("MasterDuel/Timeline/summon/summonmonster/04backeff/summonmonster_bgwid_s2", true);
             else//4
-                back = ABLoader.LoadFromFile("timeline/summon/summonmonster/04backeff/summonmonster_bgdve_s2", true);
+                back = ABLoader.LoadFromFile("MasterDuel/Timeline/summon/summonmonster/04backeff/summonmonster_bgdve_s2", true);
             back.transform.SetParent(Program.I().container_2D, false);
             Transform eff_flame = back.transform.Find("Eff_Flame");
             eff_flame.localScale = new Vector3(2.76f, 1.55f, 1f);
@@ -232,9 +242,9 @@ namespace MDPro3
             //Name Bar
             GameObject nameBar;
             if (controller == 0)
-                nameBar = ABLoader.LoadFromFile("timeline/summon/summonmonster/01text/summonmonster_name_near", true);
+                nameBar = ABLoader.LoadFromFile("MasterDuel/Timeline/summon/summonmonster/01text/summonmonster_name_near", true);
             else
-                nameBar = ABLoader.LoadFromFile("timeline/summon/summonmonster/01text/summonmonster_name_far", true);
+                nameBar = ABLoader.LoadFromFile("MasterDuel/Timeline/summon/summonmonster/01text/summonmonster_name_far", true);
 
             nameBar.transform.SetParent(Program.I().container_2D, false);
             var manager = nameBar.GetComponent<ElementObjectManager>();
@@ -316,7 +326,7 @@ namespace MDPro3
             Destroy(nameBar, 1.6f);
 
             //front Effect
-            var frontEffect = ABLoader.LoadFromFile("timeline/summon/summonmonster/02fronteff/summonmonster_thunder_power", true);
+            var frontEffect = ABLoader.LoadFromFile("MasterDuel/Timeline/summon/summonmonster/02fronteff/summonmonster_thunder_power", true);
             frontEffect.transform.SetParent(Program.I().container_2D, false);
             Destroy(frontEffect, 1.6f);
         }
@@ -324,7 +334,8 @@ namespace MDPro3
         IEnumerator autoPlay;
         public void AutoPlay()
         {
-            if (autoPlay != null) return;
+            if (autoPlay != null) 
+                return;
             autoPlay = AutoPlayAsync();
             StartCoroutine(autoPlay);
         }
@@ -343,7 +354,7 @@ namespace MDPro3
             {
                 IEnumerator<GameObject> ie;
                 bool diy = false;
-                if (Directory.Exists(Program.root + "Monstercutin/" + card.Id))
+                if (codes.Contains(card.Id))
                     ie = ABLoader.LoadFromFolderAsync("MonsterCutin/" + card.Id, "Spine" + card.Id, false, true);
                 else
                 {

@@ -182,11 +182,11 @@ namespace MDPro3
             }
         }
 
-        public void RenderCard(int code, Texture2D art)
+        public bool RenderCard(int code, Texture2D art)
         {
             Card data = CardsManager.GetRenderCard(code);
-            if (data.Id == 0)
-                return;
+            if (data == null || data.Id == 0)
+                return false;
 
             cardName.GetComponent<RectTransform>().localScale = Vector3.one;
             cardNameTMP.GetComponent<RectTransform>().localScale = Vector3.one;
@@ -466,6 +466,7 @@ namespace MDPro3
                         levels.transform.GetChild(i).gameObject.SetActive(false);
                 }
             }
+            return true;
         }
 
         static Card AdjustLevelForRender(Card data)
