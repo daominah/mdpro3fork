@@ -3608,6 +3608,10 @@ namespace MDPro3
                                     {
                                         AudioManager.PlaySE("SE_EV_MONSTER_REBORN");
                                     }
+                                    else if(code == 63166095)//ENGAGE
+                                    {
+
+                                    }
                                 }
                                 else
                                     messagePass = true;
