@@ -884,7 +884,7 @@ namespace MDPro3
         public GPS cacheP;
         bool inAnimation;
         static uint lastMovedLocation;
-        public float Move(GPS gps, bool rush = false, float wait = 0f)
+        public float Move(GPS gps, bool rush = false, float wait = 0f, float overrideMoveTime = 0)
         {
             Program.I().ocgcore.lastMoveCard = this;
 
@@ -958,6 +958,14 @@ namespace MDPro3
                     if ((cacheP.location & (uint)CardLocation.Deck) > 0)
                         cacheP.position = (int)CardPosition.FaceDownAttack;
                     ModelAt(cacheP);
+                }
+
+                if(Program.I().ocgcore.nextMoveAction != null)
+                {
+                    OcgCore.messagePass = false;
+                    Program.I().ocgcore.nextMoveAction.Invoke();
+                    model.SetActive(false);
+                    return 0;
                 }
 
                 inAnimation = true;
@@ -1165,44 +1173,52 @@ namespace MDPro3
                 bool handAppeal = false;
                 bool fieldAppeal = false;
                 var ease = Ease.Unset;
-                switch (Program.I().ocgcore.currentMessage)
+                if(overrideMoveTime > 0f)
                 {
-                    case GameMessage.Draw:
-                        if (p.controller == 0)
-                        {
-                            moveTime = 0.6f;
-                            handAppeal = true;
-                        }
-                        else
-                            moveTime = 0.2f;
-                        break;
-                    case GameMessage.Move:
-                        if ((p.location & (uint)CardLocation.Onfield) > 0
-                            && cacheP != null
-                            && (cacheP.location & (uint)CardLocation.Onfield) == 0
-                            && (p.location & (uint)CardLocation.Overlay) == 0)
-                        {
-                            moveTime = 0.4f;
-                            fieldAppeal = true;
-                        }
-                        else if ((p.location & (uint)CardLocation.Hand) > 0 
-                            && p.controller == 0)
-                        {
-                            moveTime = 0.6f;
-                            handAppeal = true;
-                        }
-                        else
-                            moveTime = 0.25f;
-                        break;
-                    case GameMessage.FlipSummoning:
-                    case GameMessage.PosChange:
-                        moveTime = 0.1f;
-                        break;
-                    case GameMessage.ShuffleSetCard:
-                    case GameMessage.Swap:
-                        moveTime = 0.2f;
-                        break;
+                    moveTime = overrideMoveTime;
                 }
+                else
+                {
+                    switch (Program.I().ocgcore.currentMessage)
+                    {
+                        case GameMessage.Draw:
+                            if (p.controller == 0)
+                            {
+                                moveTime = 0.6f;
+                                handAppeal = true;
+                            }
+                            else
+                                moveTime = 0.2f;
+                            break;
+                        case GameMessage.Move:
+                            if ((p.location & (uint)CardLocation.Onfield) > 0
+                                && cacheP != null
+                                && (cacheP.location & (uint)CardLocation.Onfield) == 0
+                                && (p.location & (uint)CardLocation.Overlay) == 0)
+                            {
+                                moveTime = 0.4f;
+                                fieldAppeal = true;
+                            }
+                            else if ((p.location & (uint)CardLocation.Hand) > 0
+                                && p.controller == 0)
+                            {
+                                moveTime = 0.6f;
+                                handAppeal = true;
+                            }
+                            else
+                                moveTime = 0.25f;
+                            break;
+                        case GameMessage.FlipSummoning:
+                        case GameMessage.PosChange:
+                            moveTime = 0.1f;
+                            break;
+                        case GameMessage.ShuffleSetCard:
+                        case GameMessage.Swap:
+                            moveTime = 0.2f;
+                            break;
+                    }
+                }
+
                 var cardPlane = manager.GetElement<Transform>("CardPlane");
                 var pivot = manager.GetElement<Transform>("Pivot");
                 var offset = manager.GetElement<Transform>("Offset");
@@ -1231,6 +1247,8 @@ namespace MDPro3
                         || (p.location & (uint)CardLocation.MonsterZone) == 0)
                         HideLabel();
                 }));
+                sequence.Join(model.transform.DOLocalRotate(Vector3.zero, targetMainMoveTime));
+
                 if(fieldAppeal)
                 {
                     sequence.Join(cardPlane.DOLocalMove(Vector3.up * 15f, targetMainMoveTime).SetEase(ease).OnComplete(() =>
@@ -1471,6 +1489,18 @@ namespace MDPro3
             manager.GetElement<Transform>("Offset").localPosition = Vector3.zero;
             manager.GetElement<Transform>("Turn").localEulerAngles = Vector3.zero;
             manager.GetElement<Transform>("Turn").localPosition = Vector3.zero;
+        }
+
+        public void ResetModelRotation()
+        {
+            if (model == null)
+                return;
+            manager.transform.localEulerAngles = Vector3.zero;
+            manager.GetElement<Transform>("CardPlane").localEulerAngles = Vector3.zero;
+            manager.GetElement<Transform>("Pivot").localEulerAngles = Vector3.zero;
+            manager.GetElement<Transform>("Offset").localEulerAngles = Vector3.zero;
+            manager.GetElement<Transform>("Turn").localEulerAngles = Vector3.zero;
+            manager.GetElement<Transform>("CardModel").localEulerAngles = Vector3.zero;
         }
 
         #region Animation

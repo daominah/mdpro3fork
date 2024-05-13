@@ -385,6 +385,18 @@ namespace MDPro3
                 yield return null;
             rawImage.texture = ie.Current;
         }
+
+        public IEnumerator LoadCardTohRendererAsync(Renderer renderer, int code, bool cache = false)
+        {
+            var ie = LoadCardAsync(code, cache);
+            StartCoroutine(ie);
+            while (ie.MoveNext())
+                yield return null;
+            var mat = GetCardMaterial(code, cache);
+            mat.mainTexture = ie.Current;
+            renderer.material = mat;
+        }
+
         public static void ClearCache()
         {
             foreach (var card in cachedCards.Values)

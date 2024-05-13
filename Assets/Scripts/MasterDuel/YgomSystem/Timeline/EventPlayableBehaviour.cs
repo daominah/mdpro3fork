@@ -77,6 +77,21 @@ namespace YgomSystem.Timeline
                 if (MonsterCutin.HasCutin(code))
                     MonsterCutin.Play(code, (int)Program.I().ocgcore.summonCard.p.controller);
             }
+            else if(label == "Next")//Engage
+            {
+                var target = Program.I().ocgcore.nextMoveManager.GetElement<Transform>("DummyCard01");
+                var card = Program.I().ocgcore.lastMoveCard;
+                card.model.SetActive(true);
+                card.ResetModelRotation();
+                card.model.transform.position = target.position;
+                card.model.transform.eulerAngles = new Vector3(- target.eulerAngles.x, 0f, 0f);
+                Program.I().ocgcore.nextMoveAction = null;
+                card.Move(card.p, false, 0f, Program.I().ocgcore.nextMoveTime);
+                DOTween.To(v => { }, 0, 0, Program.I().ocgcore.nextMoveTime).OnComplete(() =>
+                {
+                    OcgCore.messagePass = true;
+                });
+            }
         }
 
     }

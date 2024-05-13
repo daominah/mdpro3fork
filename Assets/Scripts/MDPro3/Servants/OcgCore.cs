@@ -772,6 +772,7 @@ namespace MDPro3
                 card.Dispose();
             cards.Clear();
             pause = false;
+            nextMoveAction = null;
             GC.Collect();
             yield return null;
             CameraManager.ShiftTo2D();
@@ -837,8 +838,6 @@ namespace MDPro3
             //ABLoader.LoadFromFolder("657e34c6");//assets/resourcesassetbundle/duel/timeline/duel/universal/attack/attackdarkm/attackdarkmtargetpoint.prefab
             //ABLoader.LoadFromFolder("5c2f34a0");//assets/resourcesassetbundle/duel/timeline/duel/universal/attack/attackredeyes/attackredebless.prefab
             //ABLoader.LoadFromFolder("fbf001db");//assets/resourcesassetbundle/duel/timeline/duel/universal/attack/attackredeyes/attackrededummycardset.prefab
-
-            ABLoader.LoadFromFolder("MasterDuel/Card/63166095");
 
             #region Attack Line
             if (attackLine == null)
@@ -1408,6 +1407,8 @@ namespace MDPro3
         bool needDamageResponseInstant;
         public Action endingAction;
         public Action nextMoveAction;
+        public ElementObjectManager nextMoveManager;
+        public float nextMoveTime = 0f;
 
         public void CoreReset()
         {
@@ -1477,7 +1478,7 @@ namespace MDPro3
             Program.I().room.duelEnded = false;
             Program.I().room.joinWithReconnect = false;
             endingAction = null;
-
+            nextMoveAction = null;
             log.ClearLog();
             log.showing = true;
             OnLog(true);
@@ -3610,7 +3611,23 @@ namespace MDPro3
                                     }
                                     else if(code == 63166095)//ENGAGE
                                     {
-
+                                        Destroy(effect);
+                                        messagePass = true;
+                                        nextMoveAction = () =>
+                                        {
+                                            var effect = ABLoader.LoadFromFolder("MasterDuel/Card/63166095", "CardEffect63166095", true);
+                                            allGameObjects.Add(effect);
+                                            var manager = effect.transform.GetChild(0).GetComponent<ElementObjectManager>();
+                                            nextMoveManager = manager;
+                                            nextMoveTime = 0.3f;
+                                            var mono = manager.gameObject.AddComponent<DoWhenPlayableDirectorStop>();
+                                            mono.action = () =>
+                                            {
+                                                Destroy(effect);
+                                            };
+                                            var cardFace = manager.GetElement<Renderer>("SummonPosDummy");
+                                            StartCoroutine(Program.I().texture_.LoadCardTohRendererAsync(cardFace, lastMoveCard.GetData().Id, true));
+                                        };
                                     }
                                 }
                                 else
