@@ -3629,6 +3629,10 @@ namespace MDPro3
                                             StartCoroutine(Program.I().texture_.LoadCardTohRendererAsync(cardFace, lastMoveCard.GetData().Id, true));
                                         };
                                     }
+                                    else if(code == 19613556)
+                                    {
+                                        AudioManager.PlaySE("SE_EV_HEAVY_STORM");
+                                    }
                                 }
                                 else
                                     messagePass = true;
