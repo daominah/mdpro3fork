@@ -1407,8 +1407,10 @@ namespace MDPro3
         bool needDamageResponseInstant;
         public Action endingAction;
         public Action nextMoveAction;
+        public int lastSelectedCard = 0;
         public ElementObjectManager nextMoveManager;
         public float nextMoveTime = 0f;
+
 
         public void CoreReset()
         {
@@ -3626,6 +3628,8 @@ namespace MDPro3
                                                 Destroy(effect);
                                             };
                                             var cardFace = manager.GetElement<Renderer>("SummonPosDummy");
+                                            if (condition != Condition.Replay && lastMoveCard.GetData().Id != lastSelectedCard)
+                                                lastMoveCard.SetCode(lastSelectedCard);
                                             StartCoroutine(Program.I().texture_.LoadCardTohRendererAsync(cardFace, lastMoveCard.GetData().Id, true));
                                         };
                                     }
@@ -4761,14 +4765,15 @@ namespace MDPro3
                             }
                             cardsBeTarget.Add(card);
                         }
-                        if (cardsInChain.Count == 0)
-                            if (cardsBeTarget.Count == 2)
-                                if (cardsBeTarget[0].p.location == (uint)CardLocation.SpellZone)
-                                    if (cardsBeTarget[1].p.location == (uint)CardLocation.SpellZone)
-                                        if (cardsBeTarget[0].p.sequence == p1 || cardsBeTarget[0].p.sequence == p2)
-                                            if (cardsBeTarget[1].p.sequence == p1 || cardsBeTarget[1].p.sequence == p2)
-                                                if (cardsBeTarget[0].p.controller == cardsBeTarget[1].p.controller)
-                                                    psum = true;
+                        if(phase == DuelPhase.Main1 || phase == DuelPhase.Main2)
+                            if (cardsInChain.Count == 0)
+                                if (cardsBeTarget.Count == 2)
+                                    if (cardsBeTarget[0].p.location == (uint)CardLocation.SpellZone)
+                                        if (cardsBeTarget[1].p.location == (uint)CardLocation.SpellZone)
+                                            if (cardsBeTarget[0].p.sequence == p1 || cardsBeTarget[0].p.sequence == p2)
+                                                if (cardsBeTarget[1].p.sequence == p1 || cardsBeTarget[1].p.sequence == p2)
+                                                    if (cardsBeTarget[0].p.controller == cardsBeTarget[1].p.controller)
+                                                        psum = true;
                         config = true;
                         if (psum)
                         {
@@ -5370,7 +5375,10 @@ namespace MDPro3
                         binaryMaster = new BinaryMaster();
                         binaryMaster.writer.Write((byte)count);
                         foreach (var c in cardsInSelection)
+                        {
+                            lastSelectedCard = c.GetData().Id;
                             binaryMaster.writer.Write(c.selectPtr);
+                        }
                         SendReturn(binaryMaster.Get());
                         break;
                     }
@@ -5871,10 +5879,12 @@ namespace MDPro3
             foreach (var child in mner.transform.GetComponentsInChildren<Transform>(true))
                 if (child.name == "White")
                 {
-                    var newWhite = Instantiate(child.gameObject);
-                    newWhite.transform.SetParent(child.transform, false);
-                    newWhite.transform.localScale = Vector3.one;
-                    newWhite.GetComponent<SpriteRenderer>().color = Color.clear;
+                    //var newWhite = Instantiate(child.gameObject);
+                    //newWhite.transform.SetParent(child.transform, false);
+                    //newWhite.transform.localScale = Vector3.one;
+                    //newWhite.GetComponent<SpriteRenderer>().color = Color.clear;
+
+                    //child.gameObject.SetActive(false);
                 }
             StartCoroutine(Program.I().texture_.LoadDummyCard(mner.GetElement<ElementObjectManager>("DummyCard01"), code[0], true));
             mner.GetElement<ElementObjectManager>("DummyCard01").GetElement<Renderer>("DummyCardModel_front").material.renderQueue = 4000;

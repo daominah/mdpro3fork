@@ -111,8 +111,10 @@ namespace MDPro3.UI
             button.onClick.AddListener(OnClick);
         }
 
+        bool refreshed;
         IEnumerator RefreshCard(int code)
         {
+            refreshed = false;
             cardFace.texture = TextureManager.container.unknownCard.texture;
             var ie = Program.I().texture_.LoadCardAsync(code, true);
             while (ie.MoveNext())
@@ -121,6 +123,14 @@ namespace MDPro3.UI
             cardFace.material = mat;
             cardFace.material.mainTexture = ie.Current;
             cardFace.texture = ie.Current;
+            refreshed = true;
+        }
+
+        public IEnumerator DisposeAsync()
+        {
+            while (!refreshed)
+                yield return null;
+            Destroy(gameObject);
         }
 
         float clickTime;

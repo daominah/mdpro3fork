@@ -249,6 +249,13 @@ namespace MDPro3.UI
         public override void OnConfirm()
         {
             base.OnConfirm();
+            foreach (var mono in monos)
+                if (mono.selected)
+                {
+                    Program.I().ocgcore.lastSelectedCard = mono.card.GetData().Id;
+                    break;
+                }
+
             switch (core.currentMessage)
             {
                 case GameMessage.SelectEffectYn:
@@ -418,8 +425,26 @@ namespace MDPro3.UI
 
         public override void Hide()
         {
-            base.Hide();
             Destroy(arrow);
+
+            if (shadow != null)
+                shadow.DOFade(0f, transitionTime);
+            window.DOAnchorPos(new Vector2(0f, -1100f), transitionTime).OnComplete(() =>
+            {
+                StartCoroutine(DisposeAsync());
+                Program.I().ocgcore.returnAction = null;
+                whenQuitDo?.Invoke();
+            });
+            Program.I().ocgcore.Sleep((int)(transitionTime * 100));
+            Program.I().ocgcore.currentPopup = null;
+
+        }
+
+        IEnumerator DisposeAsync()
+        {
+            foreach(var mono in monos)
+                yield return mono.DisposeAsync();
+            Destroy(gameObject);
         }
     }
 }

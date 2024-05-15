@@ -2730,7 +2730,7 @@ namespace MDPro3
                 manager.GetElement("CardType").SetActive(true);
 
             Transform linkMarker = manager.GetElement<Transform>("LinkMarkerRoot");
-            linkMarker.DOScale(0.95f, 0.2f).SetEase(Ease.InOutCubic);
+            linkMarker.DOScale(1f, 0.2f).SetEase(Ease.InOutCubic);
             foreach (var sr in linkMarker.GetComponentsInChildren<SpriteRenderer>(true))
                 sr.sortingLayerName = "Default";
         }

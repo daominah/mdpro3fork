@@ -173,7 +173,6 @@ namespace MDPro3
             base.Initialize();
 
             QualitySettings.vSyncCount = 0;
-            Application.targetFrameRate = 60;
 
             bgmVol.onValueChanged.AddListener(OnBgmVolChange);
             seVol.onValueChanged.AddListener(OnSeVolChange);
@@ -254,6 +253,11 @@ namespace MDPro3
             updatePrerelease.onClick.AddListener(OnUpdatePrerelease);
 
             var defau = "1000";
+#if UNITY_ANDROID
+            defau = "500";
+#endif
+            scale.value = int.Parse(Config.Get("Scale", defau)) / (float)1000;
+            defau = "1000";
 #if UNITY_ANDROID
             defau = "1500";
 #endif
@@ -386,9 +390,11 @@ namespace MDPro3
         }
         public void OnFpsChange(float value)
         {
+            QualitySettings.vSyncCount = 0;
             Application.targetFrameRate = (int)value;
             fpsValue.text = ((int)value).ToString();
         }
+
         public void OnScaleChange(float vol)
         {
             string value = vol.ToString();

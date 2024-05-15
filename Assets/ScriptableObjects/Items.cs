@@ -11,7 +11,6 @@ namespace MDPro3
     [CreateAssetMenu]
     public class Items : ScriptableObject
     {
-        public static string nullString = "coming soon";
         [Serializable]
         public struct Item
         {
@@ -23,13 +22,11 @@ namespace MDPro3
             {
                 get
                 {
-                    if (!diy && !nameLoaded)
+                    if (!nameLoaded)
                     {
-                        var listName = instance.GetName(id);
+                        var listName = instance.GetName(id, m_name);
                         if(listName != nullString)
-                            m_name = instance.GetName(id);
-                        if(string.IsNullOrEmpty(m_name))
-                            m_name = nullString;
+                            m_name = listName;
                         nameLoaded = true;
                     }
                     return m_name;
@@ -83,96 +80,158 @@ namespace MDPro3
 
         public List<List<Item>> kinds;
 
+        static readonly string mapPath = "Data/items.txt";
+        public static string nullString = "coming soon";
         static string language = "";
+
+
+        Dictionary<string, int> maps = new Dictionary<string, int>();
         Dictionary<int, string> names = new Dictionary<int, string>();
         Dictionary<int, string> descriptions = new Dictionary<int, string>();
 
         static Items instance;
+        static bool initialized = false;
         public void Initialize()
         {
-            instance = this;
-            kinds = new List<List<Item>>()
-        {
-            wallpapers,
-            faces,
-            frames,
-            protectors,
-            mats,
-            graves,
-            stands,
-            mates,
-            cases,
-        };
-            if (language != Config.Get("Language", "zh-CN"))
+            if (!initialized)
             {
-                language = Config.Get("Language", "zh-CN");
-                LoadNames();
-                LoadDescriptions();
+                instance = this;
+                kinds = new List<List<Item>>()
+                {
+                    wallpapers,
+                    faces,
+                    frames,
+                    protectors,
+                    mats,
+                    graves,
+                    stands,
+                    mates,
+                    cases,
+                };
+                var all = File.ReadAllText(mapPath);
+                var lines = all.Replace("\r", string.Empty).Split('\n');
+                foreach(var line in lines)
+                {
+                    var pair = line.Split(' ');
+                    if (pair.Length > 1)
+                    {
+                        try
+                        {
+                            maps.Add(pair[1], int.Parse(pair[0]));
+                        }
+                        catch(Exception e)
+                        {
+                            Debug.LogError("Read items.txt Error: " + e);
+                        }
+                    }
+                }
+                initialized = true;
+            }
+            var currentLanguage = Config.Get("Language", "zh-CN");
+            if (language != currentLanguage)
+            {
+                language = currentLanguage;
+                Load();
             }
         }
-        void LoadNames()
+
+        void Load()
         {
-            LoadData(0, Program.localesPath + Program.slash + language + "/IDS_ITEM.bytes");
+            LoadData(Program.localesPath + Program.slash + language + "/IDS_ITEM.bytes");
+            LoadData(Program.localesPath + Program.slash + language + "/IDS_ITEMDESC.bytes");
         }
-        void LoadDescriptions()
+        void LoadData(string path)
         {
-            LoadData(1, Program.localesPath + Program.slash + language + "/IDS_ITEMDESC.bytes");
-        }
-        void LoadData(int type, string path)
-        {
-            var dictionary = new Dictionary<int, string>();
+            int type = 0;
+            if (path.EndsWith("IDS_ITEMDESC.bytes"))
+                type = 1;
+
             var bytes = File.ReadAllBytes(path);
-            List<int> positions = new List<int>();
+            var languageBytes = Encoding.UTF8.GetBytes(language);
+            int start = 0;
             for (int i = 0; i < bytes.Length; i++)
             {
-                if (bytes[i] == 0xA9)
-                    if (bytes[i + 1] == 0x49)
-                        if (bytes[i + 2] == 0x44)
-                            positions.Add(i);
-            }
-            for (int i = 0; i < positions.Count; i++)
-            {
-                var b_key = new List<byte>();
-                var b_value = new List<byte>();
-                for (int j = positions[i] + 3; j < positions[i] + 10; j++)
-                    b_key.Add(bytes[j]);
-                if (i == positions.Count - 1)
+                bool pass = true;
+                for (int j = 0; j < languageBytes.Length; j++)
                 {
-                    for (int j = positions[i] + 10; j < bytes.Length; j++)
-                        b_value.Add(bytes[j]);
+                    if (bytes[i + j] != languageBytes[j])
+                    {
+                        pass = false;
+                        break;
+                    }
+                }
+                if (pass)
+                {
+                    start = i + 5;
+                    break;
+                }
+            }
+
+            bool isID = true;
+            var ids = new List<string>();
+            var values = new List<string>();
+            for (int i = start; i < bytes.Length;)
+            {
+                int length = 0;
+                if (bytes[i] == 0xDA)
+                {
+                    length = (bytes[i + 1] << 8) | bytes[i + 2];
+                }
+                else if (bytes[i] == 0xD9)
+                {
+                    length = bytes[i + 1];
+                }
+                else if (bytes[i] > 0xA0 && bytes[i] < 0xB0)
+                {
+                    length = bytes[i] - 0xA0;
+                }
+                else if (bytes[i] >= 0xB0 && bytes[i] < 0xC0)
+                {
+                    length = bytes[i] - 0xB0 + 16;
                 }
                 else
-                {
-                    for (int j = positions[i] + 10; j < positions[i + 1]; j++)
-                        b_value.Add(bytes[j]);
-                }
-                if (b_value.Count > 0)
-                {
-                    var blank = b_value[0];
-                    b_value.RemoveAt(0);
-                    if (blank >= 0xC2)
-                        b_value.RemoveAt(0);
-                    if (blank >= 0xE0)
-                        b_value.RemoveAt(0);
-                    if (blank >= 0xF0)
-                        b_value.RemoveAt(0);
-                }
-                var key = int.Parse(Encoding.UTF8.GetString(b_key.ToArray()));
-                var value = Encoding.UTF8.GetString(b_value.ToArray());
-                if (!dictionary.ContainsKey(key))
-                    dictionary.Add(key, value);
+                    Debug.LogErrorFormat("Items Load: Unknown Lentgh {0:X}", bytes[i]);
+
+                var offset = 1;
+                if (length > 31)
+                    offset = 2;
+                if (length > 255)
+                    offset = 3;
+
+                var newBytes = new byte[length];
+                Array.Copy(bytes, i + offset, newBytes, 0, length);
+                var content = Encoding.UTF8.GetString(newBytes);
+                if (isID)
+                    ids.Add(content);
+                else
+                    values.Add(content);
+                isID = !isID;
+                i += length + offset;
             }
+
+            var dic = new Dictionary<int, string>();
+            for (int i = 0; i < ids.Count && i < values.Count; i++)
+                if (maps.TryGetValue(ids[i], out var id))
+                    dic.Add(id, values[i]);
+
             if (type == 0)
-                names = dictionary;
-            else if (type == 1)
-                descriptions = dictionary;
+                names = dic;
+            else if(type == 1)
+                descriptions = dic;
         }
-        string GetName(int code)
+
+        string GetName(int code, string mName)
         {
             names.TryGetValue(code, out var returnValue);
             if (string.IsNullOrEmpty(returnValue))
-                returnValue = nullString;
-            return returnValue;
+            {
+                if(string.IsNullOrEmpty(mName))
+                    returnValue = nullString;
+                else 
+                    returnValue = mName;
+            }
+            string pattern = @"<card mrk='(\d+)'/>";
+            return Regex.Replace(returnValue, pattern, EvaluatorGetNameFromNumber);
         }
         string GetDescription(int code)
         {
@@ -186,40 +245,40 @@ namespace MDPro3
         string EvaluatorGetNameFromNumber(Match match)
         {
             string numberString = match.Groups[1].Value;
-            int cardCode = 0;
-            switch (numberString)
+            int cardCode = int.Parse(numberString);
+            switch (cardCode)
             {
-                case "18799":
+                case 18799:
                     cardCode = 27015862;
                     break;
-                case "14648":
+                case 14648:
                     cardCode = 40441990;
                     break;
-                case "15250":
+                case 15250:
                     cardCode = 20129614;
                     break;
-                case "13670":
+                case 13670:
                     cardCode = 26077387;
                     break;
-                case "19196":
+                case 19196:
                     cardCode = 80845034;
                     break;
-                case "13982":
+                case 13982:
                     cardCode = 79698395;
                     break;
-                case "10191":
+                case 10191:
                     cardCode = 14001430;
                     break;
-                case "10793":
+                case 10793:
                     cardCode = 99795159;
                     break;
-                case "15573":
+                case 15573:
                     cardCode = 34572613;
                     break;
-                case "18003":
+                case 18003:
                     cardCode = 25550531;
                     break;
-                case "16200":
+                case 16200:
                     cardCode = 24639891;
                     break;
             }

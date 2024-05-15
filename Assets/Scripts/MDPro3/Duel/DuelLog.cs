@@ -1,6 +1,7 @@
 using DG.Tweening;
 using MDPro3;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class DuelLog : MonoBehaviour
@@ -17,17 +18,18 @@ public class DuelLog : MonoBehaviour
     public RectTransform baseRect;
     public ScrollRect scrollRect;
     public bool showing;
+    bool draged = false;
     public void Show()
     {
         showing = true;
         AudioManager.PlaySE("SE_LOG_OPEN");
         baseRect.DOAnchorPosX(-20f, 0.2f);
-        scrollRect.verticalScrollbar.value = 0f;
     }
 
     public void Hide(bool silent = false)
     {
         showing = false;
+        draged = false;
         baseRect.DOAnchorPosX(400f, 0.2f);
 
         if (!silent)
@@ -54,6 +56,8 @@ public class DuelLog : MonoBehaviour
         }
         if(!showing && fullHeight > scrollRect.viewport.rect.height)
             item.SetActive(false);
+        if (!draged)
+            scrollRect.verticalScrollbar.value = 0f;
     }
 
     public void ClearLog()
@@ -66,6 +70,7 @@ public class DuelLog : MonoBehaviour
     private void Start()
     {
         scrollRect.verticalScrollbar.onValueChanged.AddListener(Refresh);
+        scrollRect.GetComponent<DoWhenOnDrag>().action = () => { draged = true; };
     }
 
     void Refresh(float value)
@@ -132,5 +137,4 @@ public class DuelLog : MonoBehaviour
         float bottom = top - rectTransform.rect.height;
         return top > visibleRect.yMin && bottom < visibleRect.yMax;
     }
-
 }

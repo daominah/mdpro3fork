@@ -463,8 +463,9 @@ namespace MDPro3
             Program.I().camera_.cameraRenderTexture.Render();
             returnValue = new Texture2D(RenderTexture.active.width, 203, TextureFormat.RGBA32, false);
             var rect = new Rect(0, Program.I().cardRenderer.renderTexture.height - 203, Program.I().cardRenderer.renderTexture.width, 203);
-            if (SystemInfo.graphicsUVStartsAtTop)
-                rect = new Rect(0, 0, Program.I().cardRenderer.renderTexture.width, 203); returnValue.ReadPixels(rect, 0, 0);
+            //if (SystemInfo.graphicsUVStartsAtTop)
+            //    rect = new Rect(0, 0, Program.I().cardRenderer.renderTexture.width, 203); 
+            returnValue.ReadPixels(rect, 0, 0);
             returnValue.Apply();
             returnValue.wrapMode = TextureWrapMode.Clamp;
             if (cache)

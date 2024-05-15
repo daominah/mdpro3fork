@@ -20,19 +20,23 @@ namespace MDPro3.UI
         float transitionTime = 0.15f;
         CardLocation location;
         int controller;
+        bool showWithCloseDuelLog = false;
         public void Show(List<GameCard> cards, CardLocation location, int controller)
         {
             this.cards = cards;
             this.location = location;
             this.controller = controller;
 
-            Program.I().ocgcore.log.showing = true;
-            Program.I().ocgcore.OnLog(true);
-
             if (!showing)
             {
                 RefreshList();
                 baseRect.DOAnchorPosX(-30, transitionTime);
+
+                if (Program.I().ocgcore.log.showing)
+                {
+                    Program.I().ocgcore.OnLog(true);
+                    showWithCloseDuelLog = true;
+                }
             }
             else
             {
@@ -52,6 +56,11 @@ namespace MDPro3.UI
                 return;
             showing = false;
             baseRect.DOAnchorPosX(150, 0.3f);
+            if(showWithCloseDuelLog)
+            {
+                showWithCloseDuelLog = false;
+                Program.I().ocgcore.OnLog();
+            }
         }
 
         void RefreshList()

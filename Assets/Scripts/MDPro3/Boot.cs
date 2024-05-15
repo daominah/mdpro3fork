@@ -27,6 +27,8 @@ namespace MDPro3
 
         void Start()
         {
+            Application.targetFrameRate = 0;
+
 #if !UNITY_EDITOR && UNITY_ANDROID
             Environment.CurrentDirectory = Application.persistentDataPath;
             Directory.SetCurrentDirectory(Application.persistentDataPath);
