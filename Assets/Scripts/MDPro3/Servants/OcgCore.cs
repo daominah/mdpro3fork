@@ -3356,7 +3356,11 @@ namespace MDPro3
                                 code = card.GetData().Alias > 0 ? card.GetData().Alias : card.GetData().Id;
                                 if (card.GetData().Id == 83764719)//À¿’ﬂÀ’…˙ “Ïª≠
                                     code = 83764719;
-                                if (Directory.Exists(Program.root + "MasterDuel/Card/" + code.ToString()))
+                                var targetFolder = Program.root + "MasterDuel/Card/" + code.ToString();
+#if UNITY_STANDALONE_WIN && !UNITY_EDITOR
+                                targetFolder = Path.Combine(Application.dataPath, targetFolder);
+#endif
+                                if (Directory.Exists(targetFolder))
                                 {
                                     effect = ABLoader.LoadFromFolder("MasterDuel/Card/" + code.ToString(), "CardEffect" + code.ToString(), true);
                                     allGameObjects.Add(effect);
@@ -5883,8 +5887,7 @@ namespace MDPro3
                     //newWhite.transform.SetParent(child.transform, false);
                     //newWhite.transform.localScale = Vector3.one;
                     //newWhite.GetComponent<SpriteRenderer>().color = Color.clear;
-
-                    //child.gameObject.SetActive(false);
+                    child.gameObject.SetActive(false);
                 }
             StartCoroutine(Program.I().texture_.LoadDummyCard(mner.GetElement<ElementObjectManager>("DummyCard01"), code[0], true));
             mner.GetElement<ElementObjectManager>("DummyCard01").GetElement<Renderer>("DummyCardModel_front").material.renderQueue = 4000;
