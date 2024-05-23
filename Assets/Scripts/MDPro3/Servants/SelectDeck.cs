@@ -20,7 +20,7 @@ namespace MDPro3
 
         SuperScrollView superScrollView;
         public Dictionary<string, Deck> decks = new Dictionary<string, Deck>();
-        public List<SuperScrollViewItemForDeck> items;
+        public List<SuperScrollViewItemForDeckSelect> items;
         public ButtonSwitchForDeckPickup btnPickup;
         public ToggleForDeckDelete btnDelete;
 
@@ -53,7 +53,9 @@ namespace MDPro3
             DOTween.To(v => { }, 0, 0, transitionTime).OnComplete(() =>
             {
                 btnPickup.OnSwitchOff();
-                superScrollView.Clear();
+                if(superScrollView != null)
+                    foreach (var item in superScrollView.items)
+                        item.gameObject.GetComponent<SuperScrollViewItemForDeckSelect>().Dispose();
                 Clear();
                 depth = 1;
                 state = State.ForEdit;
@@ -152,7 +154,7 @@ namespace MDPro3
 
         void ItemOnListRefresh(string[] task, GameObject item)
         {
-            var handler = item.GetComponent<SuperScrollViewItemForDeck>();
+            var handler = item.GetComponent<SuperScrollViewItemForDeckSelect>();
             handler.deckName = task[0];
             handler.deckCase = int.Parse(task[1]);
             handler.card1 = int.Parse(task[2]);

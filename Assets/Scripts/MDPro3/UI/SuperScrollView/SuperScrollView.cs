@@ -56,7 +56,7 @@ namespace MDPro3.UI
             scrollView.verticalScrollbar.onValueChanged.AddListener(OnScrollBarChange);
         }
 
-        public void Clear()
+        public virtual void Clear()
         {
             foreach (var item in items)
                 UnityEngine.Object.Destroy(item.gameObject);

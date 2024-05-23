@@ -169,6 +169,18 @@ namespace MDPro3.UI
             refreshed = true;
         }
 
+        public void Dispose()
+        {
+            StartCoroutine(DisposeAsync());
+        }
+
+        IEnumerator DisposeAsync()
+        {
+            while(!refreshed)
+                yield return null;
+            Destroy(gameObject);
+        }
+
         void OnClick(PointerEventData eventData)
         {
             if (!refreshed)

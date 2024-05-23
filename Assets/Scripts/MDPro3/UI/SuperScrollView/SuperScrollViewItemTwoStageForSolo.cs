@@ -19,7 +19,7 @@ namespace MDPro3.UI
             Program.I().solo.superScrollView.selected = id;
             Program.I().solo.description.text = botInfo.desc;
             Program.I().solo.description.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
-            if(id == 4)
+            if(id == Solo.diyAI)
                 Program.I().solo.btnDeck.SetActive(true);
             else
                 Program.I().solo.btnDeck.SetActive(false);

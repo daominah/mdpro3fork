@@ -657,7 +657,6 @@ namespace MDPro3
             else
                 return container.typeLevel;
         }
-
         public static Sprite GetCardCounterIcon(int counter)
         {
             switch (counter)

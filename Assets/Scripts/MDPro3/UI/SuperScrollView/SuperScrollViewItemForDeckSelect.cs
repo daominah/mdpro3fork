@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 namespace MDPro3.UI
 {
-    public class SuperScrollViewItemForDeck : SuperScrollViewItem, IPointerEnterHandler, IPointerExitHandler
+    public class SuperScrollViewItemForDeckSelect : SuperScrollViewItem, IPointerEnterHandler, IPointerExitHandler
     {
         public string deckName;
         public int deckCase;
@@ -44,8 +44,10 @@ namespace MDPro3.UI
             StartCoroutine(RefreshAsync());
         }
 
+        bool refreshed;
         IEnumerator RefreshAsync()
         {
+            refreshed = false;
             textName.text = deckName;
             var casePath = deckCase.ToString();
             var load = TextureManager.LoadItemIcon(casePath);
@@ -125,6 +127,19 @@ namespace MDPro3.UI
                 cardFace3.texture = null;
                 cardFace3.material = pMat;
             }
+            refreshed = true;
+        }
+
+        public void Dispose()
+        {
+            StartCoroutine(DisposeAsync());
+        }
+
+        IEnumerator DisposeAsync()
+        {
+            while(!refreshed)
+                yield return null;
+            Destroy(gameObject);
         }
 
         public override void OnClick()

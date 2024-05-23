@@ -28,6 +28,8 @@ namespace MDPro3
         public InputField inputHand;
         public InputField inputDraw;
         public GameObject btnDeck;
+
+        public static readonly int diyAI = 6;
         public class BotInfo
         {
             public string name;
@@ -154,7 +156,7 @@ namespace MDPro3
         {
             BotInfo bot = bots[aiCode];
             string aiCommand = bot.command;
-            if (aiCode == 4)
+            if (aiCode == diyAI)
             {
                 string selectedDeck = btnDeck.transform.GetChild(0).GetComponent<Text>().text;
                 if (!File.Exists("Deck/" + selectedDeck + ".ydk"))

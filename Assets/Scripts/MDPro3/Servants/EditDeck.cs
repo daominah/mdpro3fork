@@ -184,7 +184,8 @@ namespace MDPro3
                 {
                     Dispose();
                     if (superScrollView != null)
-                        superScrollView.Clear();
+                        foreach (var item in superScrollView.items)
+                            item.gameObject.GetComponent<SuperScrollViewItemForDeckEdit>().Dispose();
                 });
             }
         }
