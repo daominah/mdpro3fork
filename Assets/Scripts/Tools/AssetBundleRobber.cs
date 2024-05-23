@@ -1,5 +1,3 @@
-using AssetStudio;
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -9,6 +7,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using AssetsTools.NET;
 using AssetsTools.NET.Extra;
+using System.Threading;
+using System.Collections.Concurrent;
 
 public class AssetBundleRobber : MonoBehaviour
 {
@@ -18,14 +18,21 @@ public class AssetBundleRobber : MonoBehaviour
     string masterDuelWindowsAssetBundlePath = "../../../Game/Steam/steamapps/common/Yu-Gi-Oh!  Master Duel/LocalData/16165626/0000/";
     string masterDuelAndroidAssetBundlePath = "../../../Game/Steam/steamapps/common/Yu-Gi-Oh!  Master Duel/LocalData/Android/0000/";
     string workingPlace;
-    string androindWorkingPlace = "Android/Robber/";
-    string windowsWorkingPlace = "StandaloneWindows64/Robber/";
-    string ydkIdsPath = "Data/YdkIds.txt";
     public static int fileCount;
     public static int currentFileCount;
     public static Dictionary<string, string> ydkIds = new Dictionary<string, string>();
+    readonly object _lock = new object();
+    bool noSave = false;
+    ConcurrentQueue<string> logQueue = new ConcurrentQueue<string>();
+    int count = 0;
+    AssetStudio.AssetsManager assetManager;
 
     bool fullCopy;
+    string androindWorkingPlace = "Android/Robber/";
+    string windowsWorkingPlace = "StandaloneWindows64/Robber/";
+    string ydkIdsPath = "Data/YdkIds.txt";
+    int threads = 32;
+
     public struct AssetbundleInfo
     {
         public string path;
@@ -43,6 +50,7 @@ public class AssetBundleRobber : MonoBehaviour
     void Start()
     {
         sText = text;
+        assetManager = GetComponent<AssetStudio.AssetsManager>();
 
         Application.targetFrameRate = 0;
 
@@ -56,13 +64,10 @@ public class AssetBundleRobber : MonoBehaviour
 
         Initialize();
 
-        StartCoroutine(RefreshFileResources());
+        //StartCoroutine(RefreshFileResources());
 
-
+        Copy("5c49851c");
     }
-
-
-
 
     void Copy(string path)
     {
@@ -82,8 +87,6 @@ public class AssetBundleRobber : MonoBehaviour
         }
         Debug.Log(path + ": Copy Done!");
     }
-
-    bool noSave = false;
 
     void Initialize()
     {
@@ -120,11 +123,12 @@ public class AssetBundleRobber : MonoBehaviour
         }
         if (!noSave)
         {
-            Debug.Log("加载文件数量：" + files.Count);
-            text.text = "Load FileList Complete.";
+            Debug.Log("Preloged：" + files.Count);
         }
         else
-            text.text = "No FileList to load.";
+        {
+            Debug.Log("No FileList to load.");
+        }
         fullText = File.ReadAllText(ydkIdsPath);
         lines = fullText.Replace("\r", "").Split('\n');
         foreach (var line in lines)
@@ -135,58 +139,151 @@ public class AssetBundleRobber : MonoBehaviour
         }
     }
 
+
+    void AddLog(int i)
+    {
+        var file = assetManager.assetsFileList[i];
+        count++;
+        string filePath = file.originalPath.Substring(file.originalPath.Length - 8);
+
+        string fileName = "";
+        foreach (var obj in file.Objects)
+            if (obj is AssetStudio.AssetBundle assetBundle)
+                foreach (var pair in assetBundle.m_Container)
+                {
+                    fileName = pair.Key;
+                    break;
+                }
+
+        var filestruct = new AssetbundleInfo();
+        filestruct.path = filePath;
+        filestruct.name = fileName;
+        filestruct.dependencies = GetDependencies(filePath);
+        lock (_lock)
+        {
+            files.Add(filestruct);
+            newFiles.Add(filestruct);
+        }
+
+        var content = string.Empty;
+        content += filestruct.path + "\r\n";
+        content += "-" + filestruct.name + "\r\n";
+        foreach (var depend in filestruct.dependencies)
+            content += "--" + depend + "\r\n";
+
+        logQueue.Enqueue(content);
+    }
+
     IEnumerator RefreshFileResources()
     {
-        var assetManager = GetComponent<AssetStudio.AssetsManager>();
         var ie = assetManager.LoadFolderAsync(masterDuelAssetBundlePath);
         StartCoroutine(ie);
         while (ie.MoveNext())
             yield return null;
-        bool modified = false;
-        int count = 0;
-        foreach (var file in assetManager.assetsFileList)
-        {
-            count++;
-            string filePath = file.originalPath.Substring(file.originalPath.Length - 8);
-            string fileName = "";
-            foreach (var obj in file.Objects)
-                if (obj is AssetStudio.AssetBundle assetBundle)
-                    foreach (var pair in assetBundle.m_Container)
-                    {
-                        fileName = pair.Key;
-                        text.text = count + "/ " + assetManager.assetsFileList.Count + ": " + fileName;
-                        yield return null;
-                        break;
-                    }
-            bool contained = false;
-            foreach (var f in files)
-                if (f.path == filePath)
-                {
-                    contained = true;
-                    break;
-                }
-            if (!contained)
-            {
-                modified = true;
-                var filestruct = new AssetbundleInfo();
-                filestruct.path = filePath;
-                filestruct.name = fileName;
-                filestruct.dependencies = GetDependencies(filePath);
-                files.Add(filestruct);
-                newFiles.Add(filestruct);
-                //text.text = "GetDependencies: " + count + "/" + assetManager.assetsFileList.Count;
 
-                var content = string.Empty;
-                content += filestruct.path + "\r\n";
-                content += "-" + filestruct.name + "\r\n";
-                foreach (var depend in filestruct.dependencies)
-                    content += "--" + depend + "\r\n";
-                File.AppendAllText(workingPlace + "FileList.txt", content);
+        Debug.Log("new files: " + assetManager.assetsFileList.Count);
+
+        indexQueue = new ConcurrentQueue<int>();
+        workerThreads = new List<Thread> { };
+        isProcessing = true;
+
+        for (int i = 0; i < threads; i++)
+        {
+            Thread workerThread = new Thread(ProcessLogs);
+            workerThreads.Add(workerThread);
+            workerThread.Start();
+        }
+
+        ie = EnqueueLogs(assetManager.assetsFileList.Count);
+        while (ie.MoveNext())
+        {
+            text.text = "Logging: " + count + "/" + assetManager.assetsFileList.Count;
+            if (logQueue.TryDequeue(out var log))
+                File.AppendAllText(workingPlace + "FileList.txt", log);
+            yield return null;
+        }
+
+        while (logQueue.TryDequeue(out var log))
+        {
+            File.AppendAllText(workingPlace + "FileList.txt", log);
+            text.text = "Writing Left: " + logQueue.Count;
+            yield return null;
+        }
+
+        StartCoroutine(CopyBundles());
+    }
+
+    private ConcurrentQueue<int> indexQueue;
+    private List<Thread> workerThreads;
+    private bool isProcessing;
+
+
+    public void StopProcessingLogs()
+    {
+        isProcessing = false;
+
+        foreach (Thread workerThread in workerThreads)
+        {
+            workerThread.Join();
+        }
+
+        workerThreads.Clear();
+    }
+
+    private IEnumerator EnqueueLogs(int count)
+    {
+        int processedIndexCount = 0;
+        int indexesPerFrame = 32;
+
+        for (int i = 0; i < count; i++)
+        {
+            indexQueue.Enqueue(i);
+            processedIndexCount++;
+
+            if (processedIndexCount >= indexesPerFrame)
+            {
+                processedIndexCount = 0;
                 yield return null;
             }
         }
-        StartCoroutine(CopyBundles());
+
+        while (!indexQueue.IsEmpty)
+        {
+            yield return null;
+        }
+
+        StopProcessingLogs();
     }
+
+    private void ProcessLogs()
+    {
+        while (isProcessing)
+        {
+            if (indexQueue.TryDequeue(out int index))
+            {
+                AddLog(index);
+            }
+            else
+            {
+                Thread.Sleep(10);
+            }
+        }
+    }
+
+    public void OnApplicationQuit()
+    {
+        StopProcessingLogs();
+    }
+
+
+
+
+
+
+
+
+
+
 
     IEnumerator CopyBundles()
     {
@@ -263,16 +360,7 @@ public class AssetBundleRobber : MonoBehaviour
                 if (!Directory.Exists(targetFolder))
                     Directory.CreateDirectory(targetFolder);
                 File.Copy(GetFullPath(file.path), targetFolder + "/" + subDir);
-                List<string> depens = new List<string>();
-                try
-                {
-                    depens = GetDependencies(file.path);
-                }
-                catch (Exception e)
-                {
-                    Debug.Log(file.path);
-                    Debug.LogException(e);
-                }
+                var depens = new List<string>(file.dependencies);
                 foreach (string depen in depens)
                 {
                     if (File.Exists(GetFullPath(depen)))
@@ -289,17 +377,11 @@ public class AssetBundleRobber : MonoBehaviour
                 var targetFolder = workingPlace + "Background/" + subDir;
                 if (!Directory.Exists(targetFolder))
                     Directory.CreateDirectory(targetFolder);
-                File.Copy(GetFullPath(file.path), targetFolder + "/" + subDir);
-                List<string> depens = new List<string>();
-                try
-                {
-                    depens = GetDependencies(file.path);
-                }
-                catch (Exception e)
-                {
-                    Debug.Log(file.path);
-                    Debug.LogException(e);
-                }
+                if (!File.Exists(targetFolder + "/" + subDir))
+                    File.Copy(GetFullPath(file.path), targetFolder + "/" + subDir);
+                else
+                    File.Copy(GetFullPath(file.path), targetFolder + "/" + subDir + "---------");
+                var depens = new List<string>(file.dependencies);
                 foreach (string depen in depens)
                 {
                     if (File.Exists(GetFullPath(depen)))
@@ -322,16 +404,7 @@ public class AssetBundleRobber : MonoBehaviour
                 if (!Directory.Exists(targetFolder))
                     Directory.CreateDirectory(targetFolder);
                 File.Copy(GetFullPath(file.path), targetFolder + "/" + Path.GetFileName(file.name).Replace(".prefab", "").Replace("ef", "Ef"));
-                List<string> depens = new List<string>();
-                try
-                {
-                    depens = GetDependencies(file.path);
-                }
-                catch (Exception e)
-                {
-                    Debug.Log(file.path);
-                    Debug.LogException(e);
-                }
+                var depens = new List<string>(file.dependencies);
                 foreach (string depen in depens)
                 {
                     if (File.Exists(GetFullPath(depen)))
@@ -355,17 +428,11 @@ public class AssetBundleRobber : MonoBehaviour
                 var targetFolder = workingPlace + "MonsterCutin/" + subDir;
                 if (!Directory.Exists(targetFolder))
                     Directory.CreateDirectory(targetFolder);
-                File.Copy(GetFullPath(file.path), targetFolder + "/" + subDir);
-                List<string> depens = new List<string>();
-                try
-                {
-                    depens = GetDependencies(file.path);
-                }
-                catch (Exception e)
-                {
-                    Debug.Log("查找" + file.path + "的依赖失败：");
-                    Debug.LogException(e);
-                }
+                if (File.Exists(targetFolder + "/" + subDir))
+                    File.Copy(GetFullPath(file.path), targetFolder + "/" + subDir + "----------");
+                else
+                    File.Copy(GetFullPath(file.path), targetFolder + "/" + subDir);
+                var depens = new List<string>(file.dependencies);
                 foreach (string depen in depens)
                 {
                     if (File.Exists(GetFullPath(depen)))
@@ -384,22 +451,19 @@ public class AssetBundleRobber : MonoBehaviour
                         continue;
                 if (!Directory.Exists(workingPlace + "SpecialWin"))
                     Directory.CreateDirectory(workingPlace + "SpecialWin");
-                string subDir = Regex.Split(file.name, "/")[8].Replace("p", "");
+                string subDir = Regex.Split(file.name, "/")[8];
+                if (subDir.Contains(".prefab"))//4027 艾克佐迪亚
+                {
+                    subDir = subDir.Replace(".prefab", "").Replace("summonspecialwin", "");
+                }
+                else
+                    subDir = subDir.Replace("p", "");
                 subDir = GetYdkID(subDir);
                 var targetFolder = workingPlace + "SpecialWin/" + subDir;
                 if (!Directory.Exists(targetFolder))
                     Directory.CreateDirectory(targetFolder);
                 File.Copy(GetFullPath(file.path), targetFolder + "/" + subDir);
-                List<string> depens = new List<string>();
-                try
-                {
-                    depens = GetDependencies(file.path);
-                }
-                catch (Exception e)
-                {
-                    Debug.Log("查找" + file.path + "的依赖失败：");
-                    Debug.LogException(e);
-                }
+                var depens = new List<string>(file.dependencies);
                 foreach (string depen in depens)
                 {
                     if (File.Exists(GetFullPath(depen)))
@@ -411,6 +475,42 @@ public class AssetBundleRobber : MonoBehaviour
                         Debug.Log("未找到" + file.path + "的依赖：" + depen + ": " + GetFullPath(depen));
                 }
             }
+            else if (type == AssetType.BGM)
+            {
+                if (!Directory.Exists(workingPlace + "Sound/BGM"))
+                    Directory.CreateDirectory(workingPlace + "Sound/BGM");
+                var targetName = workingPlace + "Sound/BGM/" + Path.GetFileName(file.name).Replace(".wav", "");
+                File.Copy(GetFullPath(file.path), targetName);
+            }
+            else if (type == AssetType.SE_DUEL)
+            {
+                if (!Directory.Exists(workingPlace + "Sound/SE_DUEL"))
+                    Directory.CreateDirectory(workingPlace + "Sound/SE_DUEL");
+                var targetName = workingPlace + "Sound/SE_DUEL/" + Path.GetFileName(file.name).Replace(".wav", "");
+                File.Copy(GetFullPath(file.path), targetName);
+            }
+            else if (type == AssetType.SE_FIELD)
+            {
+                if (!Directory.Exists(workingPlace + "Sound/SE_FIELD"))
+                    Directory.CreateDirectory(workingPlace + "Sound/SE_FIELD");
+                var targetName = workingPlace + "Sound/SE_FIELD/" + Path.GetFileName(file.name).Replace(".wav", "");
+                File.Copy(GetFullPath(file.path), targetName);
+            }
+            else if (type == AssetType.SE_MATE)
+            {
+                if (!Directory.Exists(workingPlace + "Sound/SE_MATE"))
+                    Directory.CreateDirectory(workingPlace + "Sound/SE_MATE");
+                var targetName = workingPlace + "Sound/SE_MATE/" + Path.GetFileName(file.name).Replace(".wav", "");
+                File.Copy(GetFullPath(file.path), targetName);
+            }
+            else if (type == AssetType.SE_SYS)
+            {
+                if (!Directory.Exists(workingPlace + "Sound/SE_SYS"))
+                    Directory.CreateDirectory(workingPlace + "Sound/SE_SYS");
+                var targetName = workingPlace + "Sound/SE_SYS/" + Path.GetFileName(file.name).Replace(".wav", "");
+                File.Copy(GetFullPath(file.path), targetName);
+            }
+
             text.text = "Copying: " + currentFileCount + "/" + fileCount;
             yield return null;
         }
@@ -426,27 +526,27 @@ public class AssetBundleRobber : MonoBehaviour
 
         if (name.Contains("/duel/bg/avatarstand/"))
         {
-            if (name.Contains(".prefab"))
+            if (name.EndsWith(".prefab"))
                 return AssetType.AvatarStand;
         }
         else if (name.Contains("/images/profileframe/"))
         {
-            if (name.Contains(".mat"))
+            if (name.EndsWith(".mat"))
                 return AssetType.Frame;
         }
         else if (name.Contains("/duel/bg/grave/"))
         {
-            if (name.Contains(".prefab"))
+            if (name.EndsWith(".prefab"))
                 return AssetType.Grave;
         }
         else if (name.Contains("/duel/bg/mat/"))
         {
-            if (name.Contains(".prefab"))
+            if (name.EndsWith(".prefab"))
                 return AssetType.Mat;
         }
         else if (name.Contains("/mate/"))
         {
-            if (name.Contains(".prefab"))
+            if (name.EndsWith(".prefab"))
                 return AssetType.Mate;
         }
         else if (name.Contains("/protector/"))
@@ -456,29 +556,54 @@ public class AssetBundleRobber : MonoBehaviour
         }
         else if (name.Contains("/wallpaper/"))
         {
-            if (name.Contains(".prefab"))
+            if (name.EndsWith(".prefab"))
                 return AssetType.Wallpaper;
         }
         else if (name.Contains("/prefabs/outgamebg/back/"))
         {
-            if (name.Contains(".prefab"))
+            if (name.EndsWith(".prefab"))
                 return AssetType.Background;
         }
         else if (name.Contains("/duel/timeline/card/"))
         {
-            if (name.Contains(".prefab"))
+            if (name.EndsWith(".prefab"))
                 return AssetType.Card;
         }
         else if (name.Contains("/duel/timeline/duel/monstercutin/"))
         {
-            if (name.Contains(".prefab"))
+            if (name.EndsWith(".prefab"))
                 return AssetType.MonsterCutin;
         }
         else if (name.Contains("/duel/timeline/duel/universal/summon/summonspecialwin/"))
         {
-            if (name.Contains(".prefab"))
+            if (name.EndsWith(".prefab"))
                 if (Path.GetFileName(name).Contains("summonspecialwin"))
                     return AssetType.SpecialWin;
+        }
+        else if (name.Contains("/bgm/"))
+        {
+            if (name.EndsWith(".wav"))
+                return AssetType.BGM;
+        }
+        else if (name.Contains("/se_duel/"))
+        {
+            if (name.EndsWith(".wav"))
+                return AssetType.SE_DUEL;
+        }
+        else if (name.Contains("/se_field/"))
+        {
+            if (name.EndsWith(".wav"))
+                return AssetType.SE_FIELD;
+        }
+        else if (name.Contains("/se_mate/"))
+        {
+            if (name.EndsWith(".wav"))
+                return AssetType.SE_MATE;
+        }
+        else if (name.Contains("/se_sys/"))
+        {
+            if (name.EndsWith(".wav"))
+                return AssetType.SE_SYS;
         }
 
         return AssetType.None;
@@ -496,13 +621,16 @@ public class AssetBundleRobber : MonoBehaviour
         Protector,
         Wallpaper,
         Background,
-        SpecialWin
+        SpecialWin,
+        BGM,
+        SE_DUEL,
+        SE_FIELD,
+        SE_MATE,
+        SE_SYS
     }
-
 
     List<string> GetDependencies(string fileName, List<string> parentDepends = null)
     {
-        GC.Collect();
         byte[] bytes = Decompress(fileName);
         List<int> dependencyPositions = new List<int>();
         for (int i = 0; i < bytes.Length; i++)
@@ -572,7 +700,6 @@ public class AssetBundleRobber : MonoBehaviour
         foreach (var value in subdepends)
             if (!dependencies.Contains(value))
                 dependencies.Add(value);
-        bytes = null;
         return dependencies;
     }
 
@@ -581,7 +708,7 @@ public class AssetBundleRobber : MonoBehaviour
         var manager = new AssetsTools.NET.Extra.AssetsManager();
         if (!File.Exists(GetFullPath(path)))
         {
-            Debug.Log("未找到" + path);
+            Debug.Log("Not Find: " + path);
             return new byte[0];
         }
         BundleFileInstance bundleInst = manager.LoadBundleFile(GetFullPath(path), false);
