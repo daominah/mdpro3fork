@@ -189,6 +189,9 @@ namespace MDPro3
                                 case StocMessage.HsWatchChange:
                                     Program.I().room.StocMessage_HsWatchChange(r);
                                     break;
+                                case StocMessage.TeammateSurrender:
+                                    Program.I().ocgcore.StocMessage_TeammateSurrender();
+                                    break;
                             }
                         }
                         catch (Exception e)

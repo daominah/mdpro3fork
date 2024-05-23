@@ -3,7 +3,6 @@
 
 #include "config.h"
 #include "deck_manager.h"
-
 #include <event2/event.h>
 #include <event2/listener.h>
 #include <event2/bufferevent.h>
@@ -11,6 +10,8 @@
 #include <event2/thread.h>
 
 namespace ygo {
+	constexpr int SIZE_NETWORK_BUFFER = 0x2000;
+	constexpr int MAX_DATA_SIZE = SIZE_NETWORK_BUFFER - 3;
 
 struct HostInfo {
 	unsigned int lflist{ 0 };
@@ -199,6 +200,7 @@ public:
 #define STOC_HS_PLAYER_ENTER	0x20
 #define STOC_HS_PLAYER_CHANGE	0x21
 #define STOC_HS_WATCH_CHANGE	0x22
+#define STOC_TEAMMATE_SURRENDER	0x23
 #ifdef YGOPRO_SERVER_MODE
 #define STOC_FIELD_FINISH	0x30
 #endif

@@ -62,6 +62,7 @@
         White = 17,
         Gray = 18
     }
+
     public enum StocMessage
     {
         GameMsg = 0x1,
@@ -84,7 +85,8 @@
         Chat = 0x19,
         HsPlayerEnter = 0x20,
         HsPlayerChange = 0x21,
-        HsWatchChange = 0x22
+        HsWatchChange = 0x22,
+        TeammateSurrender = 0x23
     }
 
 }

@@ -56,7 +56,6 @@ inline int myswprintf(wchar_t(&buf)[N], const wchar_t* fmt, TR... args) {
 	return swprintf(buf, N, fmt, args...);
 }
 
-
 #ifndef YGOPRO_SERVER_MODE
 #include <irrlicht.h>
 #ifdef __APPLE__
@@ -97,10 +96,8 @@ using namespace irr;
 using namespace io;
 #endif
 
-typedef int BOOL;
-
 extern const unsigned short PRO_VERSION;
-extern int enable_log;
+extern unsigned int enable_log;
 extern bool exit_on_return;
 extern bool open_file;
 extern wchar_t open_file_name[256];

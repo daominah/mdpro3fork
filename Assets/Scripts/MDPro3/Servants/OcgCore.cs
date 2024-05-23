@@ -301,11 +301,11 @@ namespace MDPro3
             Program.I().room.joinWithReconnect = false;
 
             if (Program.I().room.duelEnded
-                || surrended
+                || surrendered
                 || TcpHelper.tcpClient == null
                 || !TcpHelper.tcpClient.Connected)
             {
-                surrended = false;
+                surrendered = false;
                 Program.I().room.duelEnded = false;
                 Program.I().room.needSide = false;
                 Program.I().room.sideWaitingObserver = false;
@@ -331,7 +331,7 @@ namespace MDPro3
             {
                 if (manual)
                 {
-                    surrended = false;
+                    surrendered = false;
                     Program.I().room.duelEnded = false;
                     Program.I().room.needSide = false;
                     Program.I().room.sideWaitingObserver = false;
@@ -367,11 +367,13 @@ namespace MDPro3
             };
             Action yes = () =>
             {
-                surrended = true;
+                surrendered = true;
                 if (TcpHelper.tcpClient != null && TcpHelper.tcpClient.Connected)
                 {
                     TcpHelper.CtosMessage_Surrender();
                     Program.I().ExitCurrentServant();
+                    if (Program.I().room.mode == 2 && !tagSurrendered)
+                        MessageManager.Cast(InterString.Get("您发起了投降。"));
                 }
                 else
                     OnExit();
@@ -1359,7 +1361,8 @@ namespace MDPro3
         public static int MessageBeginTime;
         public ResponseHandler handler = null;
 
-        public bool surrended;
+        public bool surrendered;
+        public bool tagSurrendered;
         private bool deckReserved;
         public bool cantCheckGrave;
         private readonly List<int> keys = new List<int>();
@@ -1441,7 +1444,8 @@ namespace MDPro3
             opActivated.Clear();
             description.Hide();
             list.Hide();
-            surrended = false;
+            surrendered = false;
+            tagSurrendered = false;
             deckReserved = false;
             cantCheckGrave = false;
             cookie_matchKill = 0;
@@ -1526,6 +1530,14 @@ namespace MDPro3
             binaryMaster = new BinaryMaster();
             binaryMaster.writer.Write(-1);
             SendReturn(binaryMaster.Get());
+        }
+
+        public void StocMessage_TeammateSurrender()
+        {
+            if(surrendered) 
+                return;
+            tagSurrendered = true;
+            MessageManager.Cast(InterString.Get("队友发起了投降。"));
         }
 
         public void StocMessage_TimeLimit(BinaryReader r)
@@ -2514,7 +2526,7 @@ namespace MDPro3
             GPS to;
             int val;
             string name;
-            surrended = false;
+            surrendered = false;
             var length_of_message = r.BaseStream.Length;
             BinaryMaster binaryMaster;
             List<string> selections;
@@ -5970,7 +5982,6 @@ namespace MDPro3
 
         public static bool TypeMatchReason(int type, int reason)
         {
-            bool returnValue = false;
             if ((type & (uint)CardType.Ritual) > 0 && (reason & (uint)CardReason.Ritual) > 0)
                 return true;
             if ((type & (uint)CardType.Fusion) > 0 && (reason & (uint)CardReason.Fusion) > 0)
@@ -5981,7 +5992,7 @@ namespace MDPro3
                 return true;
             if ((type & (uint)CardType.Link) > 0 && (reason & (uint)CardReason.Link) > 0)
                 return true;
-            return returnValue;
+            return false;
         }
 
         public GameCard GCS_Create(GPS p)
