@@ -11,7 +11,6 @@ namespace MDPro3.UI
         public RawImage face;
         public SelectPuzzle.Puzzle puzzle;
 
-        public bool refreshed;
         IEnumerator enumerator;
         public override void OnSelected()
         {
@@ -39,6 +38,7 @@ namespace MDPro3.UI
 
         IEnumerator RefreshFace()
         {
+            refreshed = false;
             while (TextureManager.container == null)
                 yield return null;
             face.texture = TextureManager.container.black.texture;

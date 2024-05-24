@@ -54,6 +54,12 @@ namespace MDPro3.UI
             itemOnListRefresh(items[i].args, items[i].gameObject);
         }
 
-
+        public override void Clear()
+        {
+            foreach(var item in items)
+                item.gameObject.GetComponent<SuperScrollViewItemTwoStage>().Dispose();
+            items.Clear();
+            scrollView.content.sizeDelta = new Vector2(0, 0);
+        }
     }
 }

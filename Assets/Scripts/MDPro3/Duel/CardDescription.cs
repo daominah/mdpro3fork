@@ -42,8 +42,8 @@ namespace MDPro3
 
         IEnumerator RefreshFace(int code)
         {
-            var mat = TextureManager.GetCardMaterial(code, true);
-            var ie = Program.I().texture_.LoadCardAsync(code, true);
+            var mat = TextureManager.GetCardMaterial(code);
+            var ie = Program.I().texture_.LoadCardAsync(code);
             StartCoroutine(ie);
             while (ie.MoveNext())
                 yield return null;

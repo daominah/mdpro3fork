@@ -197,7 +197,7 @@ namespace MDPro3
                 IEnumerator<Texture2D> ic = null;
                 if (deck.Pickup.Count > 0 && deck.Pickup[0] != 0)
                 {
-                    ic = Program.I().texture_.LoadCardAsync(deck.Pickup[0], true);
+                    ic = Program.I().texture_.LoadCardAsync(deck.Pickup[0]);
                     StartCoroutine(ic);
                     while (ic.MoveNext())
                         yield return null;
@@ -219,7 +219,7 @@ namespace MDPro3
                 }
                 if (deck.Pickup.Count > 1 && deck.Pickup[1] != 0)
                 {
-                    ic = Program.I().texture_.LoadCardAsync(deck.Pickup[1], true);
+                    ic = Program.I().texture_.LoadCardAsync(deck.Pickup[1]);
                     StartCoroutine(ic);
                     while (ic.MoveNext())
                         yield return null;
@@ -241,7 +241,7 @@ namespace MDPro3
                 }
                 if (deck.Pickup.Count > 2 && deck.Pickup[2] != 0)
                 {
-                    ic = Program.I().texture_.LoadCardAsync(deck.Pickup[2], true);
+                    ic = Program.I().texture_.LoadCardAsync(deck.Pickup[2]);
                     StartCoroutine(ic);
                     while (ic.MoveNext())
                         yield return null;

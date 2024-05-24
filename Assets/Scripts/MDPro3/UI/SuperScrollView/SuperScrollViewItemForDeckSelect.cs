@@ -63,7 +63,7 @@ namespace MDPro3.UI
             IEnumerator<Texture2D> ie = null;
             if (card1 != 0)
             {
-                ie = Program.I().texture_.LoadCardAsync(card1, true);
+                ie = Program.I().texture_.LoadCardAsync(card1);
                 StartCoroutine(ie);
                 while (ie.MoveNext())
                     yield return null;
@@ -85,7 +85,7 @@ namespace MDPro3.UI
             }
             if (card2 != 0)
             {
-                ie = Program.I().texture_.LoadCardAsync(card2, true);
+                ie = Program.I().texture_.LoadCardAsync(card2);
                 StartCoroutine(ie);
                 while (ie.MoveNext())
                     yield return null;
@@ -107,7 +107,7 @@ namespace MDPro3.UI
             }
             if (card3 != 0)
             {
-                ie = Program.I().texture_.LoadCardAsync(card3, true);
+                ie = Program.I().texture_.LoadCardAsync(card3);
                 StartCoroutine(ie);
                 while (ie.MoveNext())
                     yield return null;

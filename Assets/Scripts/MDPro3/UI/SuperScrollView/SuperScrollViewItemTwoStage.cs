@@ -15,7 +15,7 @@ namespace MDPro3.UI
 
         public float startX;
         public int stage = -1;
-
+        public bool refreshed;
 
         private void Start()
         {
@@ -53,6 +53,18 @@ namespace MDPro3.UI
         public void OnDecide()
         {
             action?.Invoke();
+        }
+
+        public void Dispose()
+        {
+            StartCoroutine(DisposeAsync());
+        }
+
+        IEnumerator DisposeAsync()
+        {
+            while(!refreshed)
+                yield return null;
+            Destroy(gameObject);
         }
     }
 }

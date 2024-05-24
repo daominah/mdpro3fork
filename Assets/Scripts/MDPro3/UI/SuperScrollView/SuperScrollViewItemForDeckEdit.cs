@@ -18,7 +18,17 @@ namespace MDPro3.UI
         public Image dot2;
         public Image dot3;
 
-        public int code;
+        TargetCardID Mono => GetComponent<TargetCardID>();
+        int m_code;
+        public int Code 
+        {
+            get { return m_code; }
+            set 
+            { 
+                m_code = value; 
+                Mono.code = value;
+            }
+        }
 
         IEnumerator enummerator;
         private void Start()
@@ -37,7 +47,7 @@ namespace MDPro3.UI
         }
         public override void Refresh()
         {
-            var data = CardsManager.Get(code);
+            var data = CardsManager.Get(Code);
             if ((data.Type & (uint)CardType.Pendulum) > 0)
             {
                 if ((data.Type & (uint)CardType.Normal) > 0)
@@ -75,7 +85,6 @@ namespace MDPro3.UI
                     GetComponent<RawImage>().texture = TextureManager.container.cardFrameToken.texture;
                 else
                     GetComponent<RawImage>().texture = TextureManager.container.cardFrameEffect.texture;
-
             }
 
             RefreshCountDot();
@@ -88,8 +97,8 @@ namespace MDPro3.UI
 
         public void RefreshCountDot()
         {
-            int max = Program.I().editDeck.banlist.GetQuantity(code);
-            int count = Program.I().editDeck.GetCardCount(code);
+            int max = Program.I().editDeck.banlist.GetQuantity(Code);
+            int count = Program.I().editDeck.GetCardCount(Code);
             dot1.gameObject.SetActive(false);
             dot2.gameObject.SetActive(false);
             dot3.gameObject.SetActive(false);
@@ -134,7 +143,7 @@ namespace MDPro3.UI
 
         public void RefreshLimiteIcon()
         {
-            var limit = Program.I().editDeck.banlist.GetQuantity(code);
+            var limit = Program.I().editDeck.banlist.GetQuantity(Code);
             if (limit == 3)
                 limitIcon.sprite = TextureManager.container.typeNone;
             else if (limit == 2)
@@ -149,20 +158,20 @@ namespace MDPro3.UI
         IEnumerator RefreshAsync()
         {
             refreshed = false;
-            GetComponent<RawImage>().material = null;
+            var face = GetComponent<RawImage>();
+            face.material = null;
             for (int i = 0; i < transform.GetSiblingIndex(); i++)
                 yield return null;
 
-            var ie = Program.I().texture_.LoadCardAsync(code, true);
+            var ie = Program.I().texture_.LoadCardToRawImageWithMaterialAsync(GetComponent<RawImage>(), Code, false);
             StartCoroutine(ie);
             while (ie.MoveNext())
                 yield return null;
 
-            var rarity = GetRarity(code);
-            GetComponent<RawImage>().material = TextureManager.GetCardMaterial(code, true);
-            GetComponent<RawImage>().material.SetTexture("_LoadingTex", GetComponent<RawImage>().texture);
-            GetComponent<RawImage>().texture = ie.Current;
-            GetComponent<RawImage>().material.SetFloat("_LoadingBlend", 1f);
+            face.material.SetTexture("_LoadingTex", face.texture);
+            face.texture = null;
+
+            face.material.SetFloat("_LoadingBlend", 1f);
             float blend = 1;
             DOTween.To(() => blend, x => { blend = x; GetComponent<RawImage>().material.SetFloat("_LoadingBlend", blend); }, 0f, 0.2f);
             enummerator = null;
@@ -185,29 +194,29 @@ namespace MDPro3.UI
         {
             if (!refreshed)
                 return;
-            var cardFace = GetComponent<RawImage>().texture;
+            var cardFace = GetComponent<RawImage>().material.mainTexture;
             var mat = GetComponent<RawImage>().material;
             if (Program.I().editDeck.manager.GetElement<Tab>("TabHistory").selected)
-                Program.I().editDeck.Description(code, cardFace, mat, false);
+                Program.I().editDeck.Description(Code, cardFace, mat, false);
             else
-                Program.I().editDeck.Description(code, cardFace, mat);
+                Program.I().editDeck.Description(Code, cardFace, mat);
         }
 
         void OnClickRight(PointerEventData eventData)
         {
             if (Program.I().editDeck.condition == EditDeckCondition.ChangeSide)
                 return;
-            var max = Program.I().editDeck.banlist.GetQuantity(code);
-            var count = Program.I().editDeck.GetCardCount(code);
+            var max = Program.I().editDeck.banlist.GetQuantity(Code);
+            var count = Program.I().editDeck.GetCardCount(Code);
             if (count < max)
             {
                 AudioManager.PlaySE("SE_DECK_PLUS");
 
                 var item = Instantiate(Program.I().editDeck.itemOnTable);
                 var handler = item.GetComponent<CardOnEdit>();
-                handler.code = code;
+                handler.code = Code;
 
-                var card = CardsManager.Get(code);
+                var card = CardsManager.Get(Code);
                 var isExtra = card.IsExtraCard();
                 if (!isExtra)
                 {
@@ -267,7 +276,7 @@ namespace MDPro3.UI
 
             var item = Instantiate(Program.I().editDeck.itemOnTable);
             dragItem = item.GetComponent<CardOnEdit>();
-            dragItem.code = code;
+            dragItem.code = Code;
             dragItem.id = 99999999;
 
             var defau = 1000f;
@@ -296,8 +305,8 @@ namespace MDPro3.UI
             if (Program.I().editDeck.condition == EditDeckCondition.ChangeSide)
                 return;
 
-            var max = Program.I().editDeck.banlist.GetQuantity(code);
-            var count = Program.I().editDeck.GetCardCount(code);
+            var max = Program.I().editDeck.banlist.GetQuantity(Code);
+            var count = Program.I().editDeck.GetCardCount(Code);
             if (count >= max)
             {
                 Destroy(dragItem.gameObject);
@@ -319,7 +328,7 @@ namespace MDPro3.UI
             }
             else
             {
-                var c = CardsManager.Get(code);
+                var c = CardsManager.Get(Code);
                 var isExtra = c.IsExtraCard();
 
                 if (Program.I().editDeck.manager.GetElement<UIHover>("DummyMain").hover)

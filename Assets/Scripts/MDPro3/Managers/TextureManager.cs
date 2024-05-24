@@ -11,6 +11,9 @@ using MDPro3.YGOSharp.OCGWrapper.Enums;
 using static MDPro3.EditDeck;
 using DG.Tweening;
 using UnityEngine.UI;
+using System.Collections.Concurrent;
+using System.Linq;
+using System;
 
 namespace MDPro3
 {
@@ -26,7 +29,7 @@ namespace MDPro3
         static Dictionary<int, Texture2D> cachedMasks = new Dictionary<int, Texture2D>();
         static Dictionary<string, Sprite> cachedIcons = new Dictionary<string, Sprite>();
 
-        int cacheMax = 200;
+        int cardsUnCachedMax = 100;
 
         public static Material cardMatNormal;
         public static Material cardMatShine;
@@ -116,29 +119,10 @@ namespace MDPro3
 #endif
         }
 
-        public IEnumerator LoadDummyCard(ElementObjectManager manager, int code, bool active = false)
-        {
-            if(active)
-                manager.gameObject.SetActive(false);
-            var ie = LoadCardAsync(code, true);
-            while (ie.MoveNext())
-                yield return null;
-            var mat = GetCardMaterial(code);
-            manager.GetElement<Renderer>("DummyCardModel_side").material = cardMatSide;
-            manager.GetElement<Renderer>("DummyCardModel_front").material = mat;
-            manager.GetElement<Renderer>("DummyCardModel_front").material.mainTexture = ie.Current;
-            if (active)
-                manager.gameObject.SetActive(true);
-        }
-
-
-        public static IEnumerator<Texture2D> LoadFromFileAsync(string path)
+        public static IEnumerator<Texture2D> LoadPicFromFileAsync(string path)
         {
             if (!File.Exists(path))
-            {
-                //Debug.Log("Œ¥’“µΩÕº∆¨£∫" + path);
                 yield break;
-            }
             string fullPath;
 #if !UNITY_EDITOR && UNITY_ANDROID
         fullPath = "file://" + Application.persistentDataPath + Program.slash + path;
@@ -256,7 +240,7 @@ namespace MDPro3
             }
             if (returenValue == null)
             {
-                IEnumerator ie = LoadFromFileAsync(path);
+                IEnumerator ie = LoadPicFromFileAsync(path);
                 StartCoroutine(ie);
                 while (ie.MoveNext())
                     yield return null;
@@ -282,23 +266,23 @@ namespace MDPro3
             }
         }
 
-        int getCount;
+
+        int count;
         static readonly object cardLock = new object();
         static bool loadingCard = false;
+        ConcurrentQueue<int> cardsToRenderAndCache = new ConcurrentQueue<int>();
 
-        public IEnumerator<Texture2D> LoadCardAsync(int code, bool cache = false)
+        public override void PerFrameFunction()
+        {
+            if (cardsToRenderAndCache.TryDequeue(out int code))
+                StartCoroutine(RenderCardAsync(code));
+        }
+
+        IEnumerator<Texture2D> RenderCardAsync(int code, bool cache = true)
         {
             if (cachedCards.TryGetValue(code, out var returnValue))
             {
                 yield return returnValue;
-                yield break;
-            }
-            while (container == null)
-                yield return null;
-            var data = CardsManager.Get(code, true);
-            if (data.Id == 0)
-            {
-                yield return container.unknownCard.texture;
                 yield break;
             }
 
@@ -314,23 +298,25 @@ namespace MDPro3
                 }
                 yield return null;
             }
+
             if (cachedCards.TryGetValue(code, out returnValue))
             {
-                lock(cardLock)
+                lock (cardLock)
                 {
                     loadingCard = false;
-                    yield return returnValue;
-                    yield break;
                 }
+                yield return returnValue;
+                yield break;
             }
 
-
-            IEnumerator ie = LoadArtAsync(code);
+            IEnumerator ie = LoadArtAsync(code, true);
             StartCoroutine(ie);
             while (ie.MoveNext())
                 yield return null;
             if (ie.Current == null)
             {
+                if (cache)
+                    cachedCards.Add(code, container.unknownCard.texture);
                 yield return container.unknownCard.texture;
                 lock (cardLock)
                 {
@@ -338,11 +324,13 @@ namespace MDPro3
                 }
                 yield break;
             }
-            returnValue = ie.Current as Texture2D;
 
+            returnValue = ie.Current as Texture2D;
             RenderTexture.active = Program.I().cardRenderer.renderTexture;
-            if(!Program.I().cardRenderer.RenderCard(code, returnValue))
+            if (!Program.I().cardRenderer.RenderCard(code, returnValue))
             {
+                if (cache)
+                    cachedCards.Add(code, container.unknownCard.texture);
                 yield return container.unknownCard.texture;
                 lock (cardLock)
                 {
@@ -350,25 +338,31 @@ namespace MDPro3
                 }
                 yield break;
             }
+
             Program.I().camera_.cameraRenderTexture.Render();
             returnValue = new Texture2D(RenderTexture.active.width, RenderTexture.active.height, TextureFormat.RGB24, false);
             returnValue.ReadPixels(new Rect(0, 0, RenderTexture.active.width, RenderTexture.active.height), 0, 0);
             returnValue.Apply();
             returnValue.name = "Card_" + code;
+
             if (cache)
             {
                 if (cachedCards.ContainsKey(code))
+                {
+                    Destroy(returnValue);
                     returnValue = cachedCards[code];
+                }
                 else
                     cachedCards.Add(code, returnValue);
             }
-            yield return null;
-            getCount++;
-            if (getCount > cacheMax)
+            else
             {
-                getCount = 0;
-                Program.I().UnloadUnusedAssets();
-                yield return null;
+                count++;
+                if (count > cardsUnCachedMax)
+                {
+                    count = 0;
+                    Program.I().UnloadUnusedAssets();
+                }
             }
             yield return returnValue;
             lock (cardLock)
@@ -377,26 +371,86 @@ namespace MDPro3
             }
         }
 
-        public IEnumerator LoadCardToRawImageAsync(RawImage rawImage, int code, bool cache = false)
+        /// <summary>
+        /// Default cache
+        /// </summary>
+        public IEnumerator<Texture2D> LoadCardAsync(int code)
         {
-            var ie = LoadCardAsync(code, cache);
+            if (cachedCards.TryGetValue(code, out var returnValue))
+            {
+                yield return returnValue;
+                yield break;
+            }
+            while (container == null)
+                yield return null;
+            var data = CardsManager.Get(code, true);
+            if (data.Id == 0)
+            {
+                yield return container.unknownCard.texture;
+                yield break;
+            }
+
+            while (!cachedCards.TryGetValue(code, out returnValue))
+            {
+                if (!cardsToRenderAndCache.Contains(code))
+                    cardsToRenderAndCache.Enqueue(code);
+                yield return null;
+            }
+            yield return returnValue;
+        }
+
+        public IEnumerator LoadCardToRawImageWithoutMaterialAsync(RawImage rawImage, int code, bool cache = true)
+        {
+            var ie = RenderCardAsync(code, false);
             StartCoroutine(ie);
             while (ie.MoveNext())
                 yield return null;
+            if (rawImage == null)
+                yield break;
             rawImage.texture = ie.Current;
         }
 
-        public IEnumerator LoadCardTohRendererAsync(Renderer renderer, int code, bool cache = false)
+        public IEnumerator LoadCardToRawImageWithMaterialAsync(RawImage rawImage, int code, bool cache = true)
         {
-            var ie = LoadCardAsync(code, cache);
+            var ie = RenderCardAsync(code, false);
             StartCoroutine(ie);
             while (ie.MoveNext())
                 yield return null;
+            if (rawImage == null)
+                yield break;
+            if(rawImage.GetComponent<TargetCardID>().code != code)
+                yield break;
+            var mat = GetCardMaterial(code, cache);
+            mat.mainTexture = ie.Current;
+            rawImage.material = mat;
+        }
+
+        public IEnumerator LoadCardToRendererWithMaterialAsync(Renderer renderer, int code, bool cache = true)
+        {
+            var ie = RenderCardAsync(code, cache);
+            StartCoroutine(ie);
+            while (ie.MoveNext())
+                yield return null;
+            if (renderer == null)
+                yield break;
             var mat = GetCardMaterial(code, cache);
             mat.mainTexture = ie.Current;
             renderer.material = mat;
         }
-
+        public IEnumerator LoadDummyCard(ElementObjectManager manager, int code, bool active = false)
+        {
+            if (active)
+                manager.gameObject.SetActive(false);
+            var ie = LoadCardAsync(code);
+            while (ie.MoveNext())
+                yield return null;
+            var mat = GetCardMaterial(code);
+            manager.GetElement<Renderer>("DummyCardModel_side").material = cardMatSide;
+            manager.GetElement<Renderer>("DummyCardModel_front").material = mat;
+            manager.GetElement<Renderer>("DummyCardModel_front").material.mainTexture = ie.Current;
+            if (active)
+                manager.gameObject.SetActive(true);
+        }
         public static void ClearCache()
         {
             foreach (var card in cachedCards.Values)
@@ -423,7 +477,7 @@ namespace MDPro3
             var path = Program.closeupPath + Program.slash + code + ".png";
             if (!File.Exists(path))
                 yield break;
-            IEnumerator ie = LoadFromFileAsync(path);
+            IEnumerator ie = LoadPicFromFileAsync(path);
             StartCoroutine(ie);
             while (ie.MoveNext())
                 yield return null;

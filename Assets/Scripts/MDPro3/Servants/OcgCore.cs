@@ -1955,7 +1955,7 @@ namespace MDPro3
                         item.transform.GetChild(1).GetChild(0).GetComponent<Text>().color =
                             card.p.controller == 0 ? DuelLog.myChainColor : DuelLog.opChainColor;
                         item.transform.GetChild(2).GetComponent<Text>().text = InterString.Get("连锁");
-                        StartCoroutine(Program.I().texture_.LoadCardToRawImageAsync(
+                        StartCoroutine(Program.I().texture_.LoadCardToRawImageWithoutMaterialAsync(
                             item.transform.GetChild(3).GetComponent<RawImage>(), code));
                         log.AddLog(item);
                     }
@@ -2170,7 +2170,7 @@ namespace MDPro3
                     item.transform.GetChild(1).GetChild(0).GetComponent<Text>().color =
                         card.p.controller == 0 ? DuelLog.myChainColor : DuelLog.opChainColor;
                     item.transform.GetChild(2).GetComponent<Text>().text = InterString.Get("效果处理");
-                    StartCoroutine(Program.I().texture_.LoadCardToRawImageAsync(
+                    StartCoroutine(Program.I().texture_.LoadCardToRawImageWithoutMaterialAsync(
                         item.transform.GetChild(3).GetComponent<RawImage>(), card.GetData().Id));
                     log.AddLog(item);
                     break;
@@ -2199,7 +2199,7 @@ namespace MDPro3
                     item.transform.GetChild(2).GetComponent<Text>().text = InterString.Get("攻击");
                     var cardFace1 = item.transform.GetChild(3).GetComponent<RawImage>();
                     code = attackCard.GetData().Id;
-                    StartCoroutine(Program.I().texture_.LoadCardToRawImageAsync(cardFace1, code, true));
+                    StartCoroutine(Program.I().texture_.LoadCardToRawImageWithoutMaterialAsync(cardFace1, code, true));
                     if ((from.position & (uint)CardPosition.Defence) > 0)
                         cardFace1.transform.localEulerAngles = new Vector3(0f, 0f, 90f);
                     cardFace1.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(() =>
@@ -2228,7 +2228,7 @@ namespace MDPro3
                         var cardFace2 = item.transform.GetChild(7).GetComponent<RawImage>();
                         code2 = attackedCard.GetData().Id;
                         if (code2 > 0)
-                            StartCoroutine(Program.I().texture_.LoadCardToRawImageAsync(cardFace2, code2, true));
+                            StartCoroutine(Program.I().texture_.LoadCardToRawImageWithoutMaterialAsync(cardFace2, code2, true));
                         else
                         {
                             cardFace2.texture = null;
@@ -2310,7 +2310,7 @@ namespace MDPro3
                         {
                             code = Es_selectMSGHintData;
                             cardFace = item.transform.GetChild(2).GetComponent<RawImage>();
-                            StartCoroutine(Program.I().texture_.LoadCardToRawImageAsync(cardFace, code, true));
+                            StartCoroutine(Program.I().texture_.LoadCardToRawImageWithoutMaterialAsync(cardFace, code, true));
                             item.transform.GetChild(0).GetComponent<Button>().onClick.AddListener(() =>
                             {
                                 description.Show(null, null, code, new GPS());
@@ -2339,7 +2339,7 @@ namespace MDPro3
                     item.transform.GetChild(1).GetComponent<Image>().color = targetColor;
                     item.transform.GetChild(2).GetComponent<Text>().text = card.GetData().Name;
                     cardFace = item.transform.GetChild(3).GetComponent<RawImage>();
-                    StartCoroutine(Program.I().texture_.LoadCardToRawImageAsync(cardFace, card.GetData().Id, true));
+                    StartCoroutine(Program.I().texture_.LoadCardToRawImageWithoutMaterialAsync(cardFace, card.GetData().Id, true));
                     cardFace.transform.GetChild(0).GetComponent<Button>().onClick.AddListener(() =>
                     {
                         description.Show(null, null, code, gps);
@@ -2398,7 +2398,7 @@ namespace MDPro3
 
             var cardFace = item.transform.GetChild(4).GetComponent<RawImage>();
             if (code > 0)
-                StartCoroutine(Program.I().texture_.LoadCardToRawImageAsync(cardFace, code, true));
+                StartCoroutine(Program.I().texture_.LoadCardToRawImageWithoutMaterialAsync(cardFace, code, true));
             else
             {
                 cardFace.texture = null;
@@ -3646,7 +3646,7 @@ namespace MDPro3
                                             var cardFace = manager.GetElement<Renderer>("SummonPosDummy");
                                             if (condition != Condition.Replay && lastMoveCard.GetData().Id != lastSelectedCard)
                                                 lastMoveCard.SetCode(lastSelectedCard);
-                                            StartCoroutine(Program.I().texture_.LoadCardTohRendererAsync(cardFace, lastMoveCard.GetData().Id, true));
+                                            StartCoroutine(Program.I().texture_.LoadCardToRendererWithMaterialAsync(cardFace, lastMoveCard.GetData().Id, true));
                                         };
                                     }
                                     else if(code == 19613556)
@@ -6930,7 +6930,7 @@ namespace MDPro3
             if(topCard != null)
             {
                 targetMat = TextureManager.GetCardMaterial(topCard.GetData().Id, true);
-                var ie = Program.I().texture_.LoadCardAsync(topCard.GetData().Id, true);
+                var ie = Program.I().texture_.LoadCardAsync(topCard.GetData().Id);
                 StartCoroutine(ie);
                 while (ie.MoveNext())
                     yield return null;

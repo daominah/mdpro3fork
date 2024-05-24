@@ -107,7 +107,7 @@ namespace MDPro3.UI
         {
             refreshed = false;
             GetComponent<RawImage>().texture = TextureManager.container.unknownCard.texture;
-            var ie = Program.I().texture_.LoadCardAsync(code, true);
+            var ie = Program.I().texture_.LoadCardAsync(code);
             while (ie.MoveNext())
                 yield return null;
             GetComponent<RawImage>().texture = ie.Current;

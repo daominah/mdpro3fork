@@ -301,7 +301,7 @@ namespace MDPro3
             cardFace.material = TextureManager.GetCardMaterial(data.Id);
             cardFace.material.renderQueue = 2999;
             IEnumerator enumerator;
-            enumerator = Program.I().texture_.LoadCardAsync(data.Id, true);
+            enumerator = Program.I().texture_.LoadCardAsync(data.Id);
             StartCoroutine(enumerator);
             while (enumerator.MoveNext())
                 yield return null;

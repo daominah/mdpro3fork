@@ -1372,7 +1372,7 @@ namespace MDPro3
         void ItemOnListRefresh(string[] tasks, GameObject item)
         {
             var handler = item.GetComponent<SuperScrollViewItemForDeckEdit>();
-            handler.code = int.Parse(tasks[0].ToString());
+            handler.Code = int.Parse(tasks[0].ToString());
             handler.Refresh();
         }
 
@@ -1524,7 +1524,9 @@ namespace MDPro3
         void UpdateRarity()
         {
             Material mat = TextureManager.GetCardMaterial(cardShowing.Id);
-            manager.GetElement<RawImage>("Card").material = mat;
+            var face = manager.GetElement<RawImage>("Card");
+            mat.mainTexture = face.texture;
+            face.material = mat;
             if (relatedCard != null && relatedCard.Id == cardShowing.Id)
                 manager.GetElement<RawImage>("RawImageRelatedCard").material = mat;
             foreach (var card in cards)
@@ -1532,7 +1534,7 @@ namespace MDPro3
                     card.gameObject.GetComponent<RawImage>().material = mat;
             foreach (var item in superScrollView.items)
                 if (item.gameObject != null)
-                    if (item.gameObject.GetComponent<SuperScrollViewItemForDeckEdit>().code == cardShowing.Id)
+                    if (item.gameObject.GetComponent<SuperScrollViewItemForDeckEdit>().Code == cardShowing.Id)
                         item.gameObject.GetComponent<RawImage>().material = mat;
         }
 

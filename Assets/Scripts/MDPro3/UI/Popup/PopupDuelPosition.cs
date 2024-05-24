@@ -79,7 +79,7 @@ namespace MDPro3.UI
         }
         IEnumerator RefreshCard(int code)
         {
-            var ie = Program.I().texture_.LoadCardAsync(code, true);
+            var ie = Program.I().texture_.LoadCardAsync(code);
             while (ie.MoveNext())
                 yield return null;
             var mat = TextureManager.GetCardMaterial(code);

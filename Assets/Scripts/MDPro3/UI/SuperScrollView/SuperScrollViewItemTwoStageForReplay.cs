@@ -13,7 +13,6 @@ namespace MDPro3.UI
         public string replayName;
         YRP yrp;
 
-        public bool refreshed;
         IEnumerator enumerator;
         public override void OnSelected()
         {
