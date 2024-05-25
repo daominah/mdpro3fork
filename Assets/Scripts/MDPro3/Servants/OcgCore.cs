@@ -40,7 +40,6 @@ namespace MDPro3
         public CardList list;
         public DuelLog log;
         public RectTransform popup;
-        public GameObject replayButtons;
         public GameObject buttonStop;
         public GameObject buttonPlay;
         public GameObject buttonAcc;
@@ -174,14 +173,19 @@ namespace MDPro3
         }
         public void OnAcc()
         {
+            float targetSpeed = 1.5f;
 #if UNITY_EDITOR
-            Program.I().timeScaleForEdit = 2f;
+            if(condition == Condition.Replay)
+                targetSpeed = 2f;
+            Program.I().timeScaleForEdit = targetSpeed;
 #else
-            Program.I().timeScale = 2f;
+            if (condition == Condition.Replay)
+                targetSpeed = 2f;
+            Program.I().timeScale = targetSpeed;
 #endif
             buttonAcc.SetActive(false);
             buttonNor.SetActive(true);
-            SetBgTimeScale(0.5f);
+            SetBgTimeScale(1f / targetSpeed);
         }
         public void OnNor()
         {
@@ -1450,10 +1454,6 @@ namespace MDPro3
             cantCheckGrave = false;
             cookie_matchKill = 0;
             needDamageResponseInstant = false;
-            if (condition == Condition.Replay)
-                replayButtons.SetActive(true);
-            else
-                replayButtons.SetActive(false);
             buttonStop.SetActive(true);
             buttonPlay.SetActive(false);
             buttonAcc.SetActive(true);
@@ -7089,10 +7089,15 @@ namespace MDPro3
         {
             Tools.SetAnimatorTimescale(field0.transform, timeScale);
             Tools.SetAnimatorTimescale(field1.transform, timeScale);
+            Tools.SetParticleSystemSimulationSpeed(field0.transform, timeScale);
+            Tools.SetParticleSystemSimulationSpeed(field1.transform, timeScale);
             if (mate0 != null)
                 mate0.SetTimeScale(timeScale);
             if (mate1 != null)
                 mate1.SetTimeScale(timeScale);
+            foreach (var card in cards)
+                if (card.model != null)
+                    Tools.SetAnimatorTimescale(card.model.transform, timeScale);
         }
 
         public void GraveBgEffect(GPS p, bool cardIn)

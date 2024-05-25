@@ -51,7 +51,7 @@ namespace MDPro3.UI
 
             if (timeLimit == 0)
                 DuelEnd();
-            pastTime += Time.deltaTime;
+            pastTime += Time.unscaledDeltaTime;
             int remainTime = Mathf.CeilToInt(time - pastTime);
             text.text = remainTime.ToString();
 

@@ -35,6 +35,8 @@ namespace MDPro3.UI
         public bool unselectable;
         static Color unselectableColor = new Color(0.5f, 0.5f, 0.5f, 1f);
         public bool preselected;
+        static float doubleClickTime = 0.2f;
+
 
         private void Start()
         {
@@ -159,7 +161,7 @@ namespace MDPro3.UI
             {
                 if (!unselectable)
                 {
-                    if ((Time.time - clickTime) < 0.2f)
+                    if ((Time.time - clickTime) < doubleClickTime * Time.timeScale)
                     {
                         if (manager.selectedCount == 1 && manager.min == 1 && manager.max == 1)
                             manager.OnConfirm();

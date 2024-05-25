@@ -242,30 +242,37 @@ namespace MDPro3
             exportPicture.onClick.AddListener(OnExportPictures);
             clearPicture.onClick.AddListener(OnClearPictures);
             clearExpansions.onClick.AddListener(OnClearExpansions);
-
-            bgmVol.value = int.Parse(Config.Get("BgmVol", "700")) / (float)1000;
-            seVol.value = int.Parse(Config.Get("SeVol", "700")) / (float)1000;
-            voiceVol.value = int.Parse(Config.Get("VoiceVol", "700")) / (float)1000;
-            fps.value = int.Parse(Config.Get("FPS", "60"));
-            scale.value = int.Parse(Config.Get("Scale", "1000")) / (float)1000;
-
             supportExpansions.onClick.AddListener(OnSupportExpansions);
             updatePrerelease.onClick.AddListener(OnUpdatePrerelease);
+
+            bgmVol.value = int.Parse(Config.Get("BgmVol", "700")) / (float)1000;
+            OnBgmVolChange(bgmVol.value);
+            seVol.value = int.Parse(Config.Get("SeVol", "700")) / (float)1000;
+            OnSeVolChange(seVol.value);
+            voiceVol.value = int.Parse(Config.Get("VoiceVol", "700")) / (float)1000;
+            OnVoiceVolChange(voiceVol.value);
+            fps.value = int.Parse(Config.Get("FPS", "60"));
+            OnFpsChange(fps.value);
 
             var defau = "1000";
 #if UNITY_ANDROID
             defau = "500";
 #endif
             scale.value = int.Parse(Config.Get("Scale", defau)) / (float)1000;
+            OnScaleChange(scale.value);
             defau = "1000";
 #if UNITY_ANDROID
             defau = "1500";
 #endif
             uiScale.value = int.Parse(Config.Get("UIScale", defau)) / (float)1000;
             quality.value = int.Parse(Config.Get("Quality", "3"));
+            OnQualityChange(quality.value);
             faa.value = int.Parse(Config.Get("FAA", "1"));
+            OnFAAChange(faa.value);
             aaa.value = int.Parse(Config.Get("AAA", "0"));
+            OnAAAChange(aaa.value);
             shadow.value = int.Parse(Config.Get("Shadow", "0"));
+            OnShadowChange(shadow.value);
             InitializeShowFPS();
             InitializeScreenMode();
             InitializeResolution();

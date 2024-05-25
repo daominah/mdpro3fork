@@ -75,6 +75,15 @@ namespace MDPro3
             foreach (var animator in container.GetComponentsInChildren<Animator>(true))
                 animator.speed = timeScale;
         }
+        public static void SetParticleSystemSimulationSpeed(Transform container, float timeScale)
+        {
+            foreach(var particle in container.GetComponentsInChildren<ParticleSystem>(true))
+            {
+                var main = particle.main;
+                main.simulationSpeed = timeScale;
+            }
+        }
+
         public static void SetPlayableDirectorUnscaledGameTime(Transform container)
         {
             foreach (var director in container.GetComponentsInChildren<PlayableDirector>(true))
