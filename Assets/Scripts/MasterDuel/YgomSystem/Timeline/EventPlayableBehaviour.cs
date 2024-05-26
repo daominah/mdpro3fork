@@ -85,6 +85,7 @@ namespace YgomSystem.Timeline
                 card.ResetModelRotation();
                 card.model.transform.position = target.position;
                 card.model.transform.eulerAngles = new Vector3(- target.eulerAngles.x, 0f, 0f);
+
                 Program.I().ocgcore.nextMoveAction = null;
                 card.Move(card.p, false, 0f, Program.I().ocgcore.nextMoveTime);
                 DOTween.To(v => { }, 0, 0, Program.I().ocgcore.nextMoveTime).OnComplete(() =>

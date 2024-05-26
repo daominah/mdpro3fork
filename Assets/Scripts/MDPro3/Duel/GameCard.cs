@@ -959,8 +959,7 @@ namespace MDPro3
                         cacheP.position = (int)CardPosition.FaceDownAttack;
                     ModelAt(cacheP);
                 }
-
-                if(Program.I().ocgcore.nextMoveAction != null)
+                if (Program.I().ocgcore.nextMoveAction != null)
                 {
                     OcgCore.messagePass = false;
                     Program.I().ocgcore.nextMoveAction.Invoke();

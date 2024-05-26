@@ -32,8 +32,10 @@ namespace MDPro3
             try
             {
                 senderThead?.Abort();
-                senderThead = new Thread(Sender);
-                senderThead.IsBackground = true;
+                senderThead = new Thread(Sender)
+                {
+                    IsBackground = true
+                };
                 senderThead.Start();
             }
             catch 
@@ -251,12 +253,12 @@ namespace MDPro3
         {
             while (tcpClient != null && tcpClient.Connected)
             {
+                senderThead.Join(100);
                 Package currentMessage;
                 lock (locker)
                 {
                     if (messageQueue.Count == 0)
                     {
-                        senderThead.Join(100);
                         continue;
                     }
                     currentMessage = messageQueue.Dequeue();

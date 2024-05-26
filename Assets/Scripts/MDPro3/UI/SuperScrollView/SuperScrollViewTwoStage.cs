@@ -57,7 +57,7 @@ namespace MDPro3.UI
         public override void Clear()
         {
             foreach(var item in items)
-                item.gameObject.GetComponent<SuperScrollViewItemTwoStage>().Dispose();
+                item.gameObject?.GetComponent<SuperScrollViewItemTwoStage>().Dispose();
             items.Clear();
             scrollView.content.sizeDelta = new Vector2(0, 0);
         }

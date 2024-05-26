@@ -19,6 +19,7 @@ using MDPro3.YGOSharp;
 using MDPro3.YGOSharp.OCGWrapper.Enums;
 using static YgomGame.Bg.BgEffectSettingInner;
 using MDPro3.UI;
+using Mono.Cecil.Cil;
 
 namespace MDPro3
 {
@@ -1416,6 +1417,8 @@ namespace MDPro3
         bool needDamageResponseInstant;
         public Action endingAction;
         public Action nextMoveAction;
+        Renderer nextMoveActionTargetRenderer;
+
         public int lastSelectedCard = 0;
         public ElementObjectManager nextMoveManager;
         public float nextMoveTime = 0f;
@@ -1586,6 +1589,8 @@ namespace MDPro3
             try
             {
                 var messageIsHandled = false;
+                    GetConfirmedCard();
+
                 while (!pause && messagePass)
                 {
                     if (packages.Count == 0) break;
@@ -2500,6 +2505,27 @@ namespace MDPro3
                 lp = 0;
             item.transform.GetChild(6).GetComponent<Text>().text = lp.ToString();
             log.AddLog(item, indent);
+        }
+
+        private void GetConfirmedCard()
+        {
+            if (nextMoveAction == null || nextMoveActionTargetRenderer == null)
+                return;
+            for (int i = 0; i < packages.Count; i++)
+            {
+                if ((GameMessage)packages[i].Function == GameMessage.ConfirmCards)
+                {
+                    var r = packages[i].Data.reader;
+                    r.BaseStream.Seek(0, 0);
+                    r.ReadByte();
+                    r.ReadByte();
+
+                    int nextConfirmedCard = r.ReadInt32();
+                    StartCoroutine(Program.I().texture_.LoadCardToRendererWithMaterialAsync(nextMoveActionTargetRenderer, nextConfirmedCard, true));
+                    nextMoveActionTargetRenderer = null;
+                    lastMoveCard.SetCode(nextConfirmedCard);
+                }
+            }
         }
 
         //Start ¾ö¶·¸ÄÃû
@@ -3646,10 +3672,7 @@ namespace MDPro3
                                             {
                                                 Destroy(effect);
                                             };
-                                            var cardFace = manager.GetElement<Renderer>("SummonPosDummy");
-                                            if (condition != Condition.Replay && lastMoveCard.GetData().Id != lastSelectedCard)
-                                                lastMoveCard.SetCode(lastSelectedCard);
-                                            StartCoroutine(Program.I().texture_.LoadCardToRendererWithMaterialAsync(cardFace, lastMoveCard.GetData().Id, true));
+                                            nextMoveActionTargetRenderer = manager.GetElement<Renderer>("SummonPosDummy");
                                         };
                                     }
                                     else if(code == 19613556)
