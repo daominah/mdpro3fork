@@ -26,6 +26,8 @@ namespace MDPro3.UI
                 float height = btnConfirm.GetComponent<RectTransform>().anchoredPosition.y;
                 btnConfirm.GetComponent<RectTransform>().anchoredPosition = new Vector2(0f, height);
             }
+
+            OcgCore.inputMode = true;
         }
 
         public override void OnConfirm()
@@ -41,5 +43,9 @@ namespace MDPro3.UI
             Hide();
         }
 
+        private void OnDestroy()
+        {
+            OcgCore.inputMode = false;
+        }
     }
 }

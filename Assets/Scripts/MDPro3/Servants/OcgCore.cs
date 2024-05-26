@@ -424,6 +424,8 @@ namespace MDPro3
         bool mate0Random;
         bool mate1Random;
 
+
+        public static bool inputMode;
         public override void PerFrameFunction()
         {
             if (isShowed)
@@ -571,7 +573,7 @@ namespace MDPro3
                     ToChat();
                 }
 
-                if (Program.I().room.chatOn)
+                if (Program.I().room.chatOn || inputMode)
                     return;
 
                 if (Input.GetKeyDown(KeyCode.Q))
