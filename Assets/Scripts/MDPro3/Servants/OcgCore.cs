@@ -1496,6 +1496,7 @@ namespace MDPro3
             psum = false;
 
             greenBackground.gameObject.SetActive(false);
+            inputMode = false;
         }
 
         public void AddPackage(Package p)

@@ -25,11 +25,14 @@ namespace MDPro3
         public static List<Package> packagesInRecord = new List<Package>();
 
         private static readonly Queue<Package> messageQueue = new Queue<Package>();
+
+        static Thread senderThead;
         public static void InitializeSender()
         {
             try
             {
-                var senderThead = new Thread(Sender);
+                senderThead?.Abort();
+                senderThead = new Thread(Sender);
                 senderThead.IsBackground = true;
                 senderThead.Start();
             }
@@ -252,7 +255,10 @@ namespace MDPro3
                 lock (locker)
                 {
                     if (messageQueue.Count == 0)
+                    {
+                        senderThead.Join(100);
                         continue;
+                    }
                     currentMessage = messageQueue.Dequeue();
                 }
                 try
