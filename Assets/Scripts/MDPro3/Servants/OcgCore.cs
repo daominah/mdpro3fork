@@ -19,7 +19,6 @@ using MDPro3.YGOSharp;
 using MDPro3.YGOSharp.OCGWrapper.Enums;
 using static YgomGame.Bg.BgEffectSettingInner;
 using MDPro3.UI;
-using Mono.Cecil.Cil;
 
 namespace MDPro3
 {
@@ -45,6 +44,7 @@ namespace MDPro3
         public GameObject buttonPlay;
         public GameObject buttonAcc;
         public GameObject buttonNor;
+        public GameObject buttonReplayQuit;
         public GameObject buttonForceSaveReplay;
         public Button buttonTiming;
         public Button buttonLog;
@@ -1481,6 +1481,10 @@ namespace MDPro3
             }
             else
                 buttonTiming.gameObject.SetActive(false);
+            if (condition == Condition.Replay)
+                buttonReplayQuit.SetActive(true);
+            else
+                buttonReplayQuit.SetActive(false);
             HidePlaceCount();
             mySummonCount = 0;
             mySpSummonCount = 0;

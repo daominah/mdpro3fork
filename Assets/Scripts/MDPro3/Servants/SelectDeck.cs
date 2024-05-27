@@ -133,12 +133,13 @@ namespace MDPro3
                 {
                     if (!deck.Key.Contains(search))
                         continue;
-                    var task = new string[6]
+                    var task = new string[7]
                     {
                 deck.Key,
                 deck.Value.Case[0].ToString(),
                 "0", "0", "0",
-                deck.Value.Protector[0].ToString()
+                deck.Value.Protector[0].ToString(),
+                "0"//For Delete
                     };
                     if (deck.Value.Pickup.Count > 0)
                         task[2] = deck.Value.Pickup[0].ToString();
@@ -161,6 +162,7 @@ namespace MDPro3
             handler.card2 = int.Parse(task[3]);
             handler.card3 = int.Parse(task[4]);
             handler.protector = task[5];
+            handler.selected = task[6] != "0";
             handler.Refresh();
         }
 
@@ -260,25 +262,26 @@ namespace MDPro3
             {
                 deleting = false;
                 int count = 0;
-                foreach (var item in items)
-                    if (item.selected)
+                foreach (var item in superScrollView.items)
+                    if (item.args[6] != "0")
                     {
                         count++;
-                        File.Delete("Deck/" + item.deckName + ".ydk");
-                        MessageManager.Cast(InterString.Get("已删除卡组「[?]」", item.deckName));
+                        File.Delete("Deck/" + item.args[0] + ".ydk");
+                        MessageManager.Cast(InterString.Get("已删除卡组「[?]」", item.args[0]));
                     }
                 if (count > 0)
                     RefreshList();
                 else
-                {
                     ExitDeleteDeck();
-                }
             }
         }
 
         void ExitDeleteDeck()
         {
             deleting = false;
+            if(superScrollView != null)
+                foreach(var item in superScrollView.items)
+                    item.args[6] = "0";
             foreach (var item in items)
                 item.HideToggle();
         }

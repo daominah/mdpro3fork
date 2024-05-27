@@ -47,6 +47,11 @@ namespace MDPro3.UI
         bool refreshed;
         IEnumerator RefreshAsync()
         {
+            if (selected)
+                ToggleOn();
+            else
+                ToggleOff();
+
             refreshed = false;
             textName.text = deckName;
             var casePath = deckCase.ToString();
@@ -209,11 +214,13 @@ namespace MDPro3.UI
         {
             selected = true;
             toggleOn.SetActive(true);
+            handler.items[id].args[6] = "1";
         }
         public void ToggleOff()
         {
             selected = false;
             toggleOn.SetActive(false);
+            handler.items[id].args[6] = "0";
         }
     }
 }

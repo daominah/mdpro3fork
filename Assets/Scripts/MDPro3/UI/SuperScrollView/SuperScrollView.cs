@@ -93,6 +93,7 @@ namespace MDPro3.UI
             {
                 items[i].gameObject = UnityEngine.Object.Instantiate(itemObject);
                 items[i].gameObject.transform.SetParent(scrollView.content, false);
+                items[i].gameObject.GetComponent<SuperScrollViewItem>().handler = this;
                 ItemRefreshPositon(i);
             }
         }

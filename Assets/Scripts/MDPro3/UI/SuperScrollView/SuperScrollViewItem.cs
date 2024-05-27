@@ -8,6 +8,7 @@ namespace MDPro3.UI
     public class SuperScrollViewItem : MonoBehaviour
     {
         public int id;
+        public SuperScrollView handler;
 
         private void Start()
         {
