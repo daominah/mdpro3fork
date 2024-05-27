@@ -90,42 +90,6 @@ namespace MDPro3
                 director.timeUpdateMode = DirectorUpdateMode.UnscaledGameTime;
         }
 
-        public static bool InAnimation(GameObject target, string animationName)
-        {
-            bool returnValue = false;
-            foreach (var p in target.GetComponentsInChildren<Animator>(true))
-            {
-                if (p.GetCurrentAnimatorClipInfo(0)[0].clip.name.ToLower().Contains(animationName))
-                    return true;
-            }
-
-            return returnValue;
-        }
-
-        public static bool BytesContainsBytes(byte[] bytes, byte[] search)
-        {
-            for (int i = 0; i < bytes.Length - search.Length; i++)
-            {
-                bool match = true;
-                for (int j = 0; j < search.Length; j++)
-                {
-                    if (bytes[i + j] == search[j])
-                    {
-
-                    }
-                    else
-                    {
-                        match = false;
-                        break;
-                    }
-                }
-                if (match)
-                    return true;
-            }
-            return false;
-        }
-
-
         public static int CompareTime(object x, object y)
         {
             if (x == null && y == null) return 0;
@@ -183,19 +147,6 @@ namespace MDPro3
             for (int i = 0; i < result.Count; i++)
                 result[i] = result[i].Replace("\"", "");
             return result.ToArray();
-        }
-
-        public static void TryOpenInFileExplorer(string path)
-        {
-            try
-            {
-                string argument = $"/select, \"{path}\"";
-                Process.Start(new ProcessStartInfo("explorer.exe", argument));
-            }
-            catch (Exception ex)
-            {
-                MessageManager.Cast($"Failed to open file explorer: {ex.Message}");
-            }
         }
 
         public static KeyValuePair<TKey, TValue> GetNthElement<TKey, TValue>(Dictionary<TKey, TValue> dic, int n)

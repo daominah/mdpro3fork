@@ -12,6 +12,7 @@ using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
+using YgomGame.WCS.Portal;
 using ShadowResolution = UnityEngine.Rendering.Universal.ShadowResolution;
 
 namespace MDPro3
@@ -46,8 +47,6 @@ namespace MDPro3
         public Text scaleValue;
         public Button confirm;
         public Text confirmValue;
-        public Button autoRPS;
-        public Text autoRPSValue;
         public Slider uiScale;
         public Text uiScaleValue;
         public Button background;
@@ -86,8 +85,12 @@ namespace MDPro3
         public Text duelPlayerMessageValue;
         public Button duelSystemMessage;
         public Text duelSystemMessageValue;
+        public Slider duelAcc;
+        public Text duelAccValue;
         public Button timing;
         public Text timingValue;
+        public Button autoRPS;
+        public Text autoRPSValue;
 
         [Header("Watch")]
         public Button watchAppearance;
@@ -118,6 +121,8 @@ namespace MDPro3
         public Text watchPlayerMessageValue;
         public Button watchSystemMessage;
         public Text watchSystemMessageValue;
+        public Slider watchAcc;
+        public Text watchAccValue;
 
         [Header("Replay")]
         public Button replayAppearance;
@@ -148,6 +153,8 @@ namespace MDPro3
         public Text replayPlayerMessageValue;
         public Button replaySystemMessage;
         public Text replaySystemMessageValue;
+        public Slider replayAcc;
+        public Text replayAccValue;
 
         [Header("Port")]
         public Button import;
@@ -232,11 +239,15 @@ namespace MDPro3
             duelSystemMessage.onClick.AddListener(OnDuelSystemMessageClick);
             watchSystemMessage.onClick.AddListener(OnWatchSystemMessageClick);
             replaySystemMessage.onClick.AddListener(OnReplaySystemMessageClick);
+            duelAcc.onValueChanged.AddListener(OnDuelAccChange);
+            watchAcc.onValueChanged.AddListener (OnWatchAccChange);
+            replayAcc.onValueChanged.AddListener(OnReplayAccChange);
             duelAutoInfo.onClick.AddListener(OnDuelAutoInfoClick);
             watchAutoInfo.onClick.AddListener(OnWatchAutoInfoClick);
             replayAutoInfo.onClick.AddListener(OnReplayAutoInfoClick);
             timing.onClick.AddListener(OnTimingClick);
             import.onClick.AddListener(OnImport);
+
             exportDeck.onClick.AddListener(OnExportDecks);
             exportReplay.onClick.AddListener(OnExportReplays);
             exportPicture.onClick.AddListener(OnExportPictures);
@@ -245,34 +256,43 @@ namespace MDPro3
             supportExpansions.onClick.AddListener(OnSupportExpansions);
             updatePrerelease.onClick.AddListener(OnUpdatePrerelease);
 
-            bgmVol.value = int.Parse(Config.Get("BgmVol", "700")) / (float)1000;
+            bgmVol.value = Config.GetFloat("BgmVol", 0.7f);
             OnBgmVolChange(bgmVol.value);
-            seVol.value = int.Parse(Config.Get("SeVol", "700")) / (float)1000;
+            seVol.value = Config.GetFloat("SeVol", 0.7f);
             OnSeVolChange(seVol.value);
-            voiceVol.value = int.Parse(Config.Get("VoiceVol", "700")) / (float)1000;
+            voiceVol.value = Config.GetFloat("VoiceVol", 0.7f);
             OnVoiceVolChange(voiceVol.value);
-            fps.value = int.Parse(Config.Get("FPS", "60"));
+            fps.value = Config.GetFloat("FPS", 60);
             OnFpsChange(fps.value);
 
-            var defau = "1000";
+            var defau = 1f;
 #if UNITY_ANDROID
-            defau = "500";
+            defau = 0.5f;
 #endif
-            scale.value = int.Parse(Config.Get("Scale", defau)) / (float)1000;
+            scale.value = Config.GetFloat("Scale", defau);
             OnScaleChange(scale.value);
-            defau = "1000";
+
+            defau = 1f;
 #if UNITY_ANDROID
-            defau = "1500";
+            defau = 1.5f;
 #endif
-            uiScale.value = int.Parse(Config.Get("UIScale", defau)) / (float)1000;
-            quality.value = int.Parse(Config.Get("Quality", "3"));
+            uiScale.value = Config.GetFloat("UIScale", defau);
+            quality.value = Config.GetFloat("Quality", 3f);
             OnQualityChange(quality.value);
-            faa.value = int.Parse(Config.Get("FAA", "1"));
+            faa.value = Config.GetFloat("FAA", 1);
             OnFAAChange(faa.value);
-            aaa.value = int.Parse(Config.Get("AAA", "0"));
+            aaa.value = Config.GetFloat("AAA", 0);
             OnAAAChange(aaa.value);
-            shadow.value = int.Parse(Config.Get("Shadow", "0"));
+            shadow.value = Config.GetFloat("Shadow", 0);
             OnShadowChange(shadow.value);
+
+            duelAcc.value = Config.GetFloat("DuelAcc", 2f);
+            OnDuelAccChange(duelAcc.value);
+            watchAcc.value = Config.GetFloat("WatchAcc", 2f);
+            OnWatchAccChange(watchAcc.value);
+            replayAcc.value = Config.GetFloat("ReplayAcc", 2f);
+            OnReplayAccChange(replayAcc.value);
+
             InitializeShowFPS();
             InitializeScreenMode();
             InitializeResolution();
@@ -314,16 +334,16 @@ namespace MDPro3
         #region setting
         public void Save()
         {
-            Config.Set("BgmVol", ((int)(bgmVol.value * 1000)).ToString());
-            Config.Set("SeVol", ((int)(seVol.value * 1000)).ToString());
-            Config.Set("VoiceVol", ((int)(voiceVol.value * 1000)).ToString());
-            Config.Set("FPS", fpsValue.text);
-            Config.Set("Scale", ((int)(scale.value * 1000)).ToString());
-            Config.Set("UIScale", ((int)(uiScale.value * 1000)).ToString());
-            Config.Set("Quality", quality.value.ToString());
-            Config.Set("FAA", faa.value.ToString());
-            Config.Set("AAA", aaa.value.ToString());
-            Config.Set("Shadow", shadow.value.ToString());
+            Config.SetFloat("BgmVol", bgmVol.value);
+            Config.SetFloat("SeVol", seVol.value);
+            Config.SetFloat("VoiceVol", voiceVol.value);
+            Config.SetFloat("FPS", fps.value);
+            Config.SetFloat("Scale", scale.value);
+            Config.SetFloat("UIScale", uiScale.value);
+            Config.SetFloat("Quality", quality.value);
+            Config.SetFloat("FAA", faa.value);
+            Config.SetFloat("AAA", aaa.value);
+            Config.SetFloat("Shadow", shadow.value);
             Config.Set("ShowFPS", SaveBool(showFPSValue.text));
             Config.Set("ScreenMode", SaveScreenMode(screenValue.text));
             Config.Set("Resolution", resolutionValue.text);
@@ -364,6 +384,9 @@ namespace MDPro3
             Config.Set("DuelSystemMessage", SaveBool(duelSystemMessageValue.text));
             Config.Set("WatchSystemMessage", SaveBool(watchSystemMessageValue.text));
             Config.Set("ReplaySystemMessage", SaveBool(replaySystemMessageValue.text));
+            Config.SetFloat("DuelAcc", duelAcc.value);
+            Config.SetFloat("WatchAcc", watchAcc.value);
+            Config.SetFloat("ReplayAcc", replayAcc.value);
             Config.Set("Timing", SaveBool(timingValue.text));
 
             Config.Set("Expansions", SaveBool(supportExpansionsValue.text));
@@ -1387,6 +1410,44 @@ namespace MDPro3
                 replaySystemMessageValue.text = InterString.Get("关");
             else
                 replaySystemMessageValue.text = InterString.Get("开");
+        }
+
+
+        public static float duelAccSpeed = 2f;
+        public static float watchAccSpeed = 2f;
+        public static float replayAccSpeed = 2f;
+
+        public void OnDuelAccChange(float value)
+        {
+            string result = value.ToString();
+            duelAccValue.text = result.Length > 4 ? result.Substring(0, 4) : result;
+            Config.SetFloat("DuelAcc", value);
+            if (Program.I().ocgcore.isShowed)
+                if (Program.I().ocgcore.condition == OcgCore.Condition.Duel)
+                    if (Program.I().ocgcore.accing)
+                        Program.I().ocgcore.OnAcc();
+        }
+
+        public void OnWatchAccChange(float value)
+        {
+            string result = value.ToString();
+            watchAccValue.text = result.Length > 4 ? result.Substring(0, 4) : result;
+            Config.SetFloat("WatchAcc", value);
+            if (Program.I().ocgcore.isShowed)
+                if (Program.I().ocgcore.condition == OcgCore.Condition.Watch)
+                    if (Program.I().ocgcore.accing)
+                        Program.I().ocgcore.OnAcc();
+        }
+
+        public void OnReplayAccChange(float value)
+        {
+            string result = value.ToString();
+            replayAccValue.text = result.Length > 4 ? result.Substring(0, 4) : result;
+            Config.SetFloat("ReplayAcc", value);
+            if (Program.I().ocgcore.isShowed)
+                if (Program.I().ocgcore.condition == OcgCore.Condition.Replay)
+                    if (Program.I().ocgcore.accing)
+                        Program.I().ocgcore.OnAcc();
         }
 
         public void OnTimingClick()

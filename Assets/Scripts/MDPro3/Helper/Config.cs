@@ -50,23 +50,23 @@ namespace MDPro3
             }
         }
 
-        internal static float GetFloat(string v, string defaul)
+        public static float GetFloat(string v, float defaul)
         {
             var getted = 0;
             try
             {
-                getted = int.Parse(Get(v, defaul));
+                getted = int.Parse(Get(v, (defaul * 1000).ToString()));
             }
             catch (Exception)
             {
             }
 
-            return getted / 100000f;
+            return getted / 1000f;
         }
 
-        internal static void SetFloat(string v, float f)
+        public static void SetFloat(string v, float f)
         {
-            Set(v, ((int)(f * 100000f)).ToString());
+            Set(v, ((int)(f * 1000f)).ToString());
         }
 
         public static bool Have(string original)

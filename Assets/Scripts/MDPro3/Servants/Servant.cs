@@ -238,7 +238,7 @@ namespace MDPro3
                 || Gamepad.current != null && Gamepad.current.bButton.wasReleasedThisFrame
                 )
                 {
-                    if (Program.TimePassed() - exitPressedTime < 300)
+                    if (Program.TimePassed() - exitPressedTime < 300 * Time.timeScale)
                         OnReturn();
                 }
 

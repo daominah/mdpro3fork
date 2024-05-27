@@ -66,6 +66,7 @@ namespace MDPro3
         public Material myProtector;
         public Material opProtector;
 
+        GameObject phaseButton;
         GameObject timer;
         ElementObjectManager timerManager;
         TimerHandler timerHandler;
@@ -147,6 +148,7 @@ namespace MDPro3
         {
             base.OnExit();
             CloseConnection();
+            exitWithAcc = accing;
             OnNor();
         }
 
@@ -172,32 +174,48 @@ namespace MDPro3
             buttonPlay.SetActive(false);
 
         }
+
+        public bool accing;
+        bool exitWithAcc;
         public void OnAcc()
         {
-            float targetSpeed = 1.5f;
+            accing = true;
+            float targetSpeed = 2f;
+            switch (condition)
+            {
+                case Condition.Duel:
+                    targetSpeed = Config.GetFloat("DuelAcc", 2f);
+                    break;
+                case Condition.Watch:
+                    targetSpeed = Config.GetFloat("WatchAcc", 2f);
+                    break;
+                case Condition.Replay:
+                    targetSpeed = Config.GetFloat("ReplayAcc", 2f);
+                    break;
+            }
+
 #if UNITY_EDITOR
-            if(condition == Condition.Replay)
-                targetSpeed = 2f;
             Program.I().timeScaleForEdit = targetSpeed;
 #else
-            if (condition == Condition.Replay)
-                targetSpeed = 2f;
             Program.I().timeScale = targetSpeed;
 #endif
+
             buttonAcc.SetActive(false);
             buttonNor.SetActive(true);
             SetBgTimeScale(1f / targetSpeed);
         }
         public void OnNor()
         {
+            accing = false;
+            float targetSpeed = 1f;
 #if UNITY_EDITOR
-            Program.I().timeScaleForEdit = 1f;
+            Program.I().timeScaleForEdit = targetSpeed;
 #else
-            Program.I().timeScale = 1f;
+            Program.I().timeScale = targetSpeed;
 #endif
             buttonAcc.SetActive(true);
             buttonNor.SetActive(false);
-            SetBgTimeScale(1f);
+            SetBgTimeScale(targetSpeed);
         }
 
         public void OnTiming()
@@ -1092,7 +1110,6 @@ namespace MDPro3
             #endregion
 
             #region ½×¶Î°´Å¥
-            GameObject phaseButton;
             if (field1.name.StartsWith("Mat_013"))
             {
                 enumerator = ABLoader.LoadFromFileAsync("MasterDuel/BG/timer/phasebutton_013");
@@ -1305,6 +1322,9 @@ namespace MDPro3
             UIManager.ShowFPSLeft();
             messagePass = true;
             yield return null;
+
+            if (exitWithAcc)
+                OnAcc();
 
             DOTween.To(v => { }, 0, 0, UnityEngine.Random.Range(8, 16)).OnComplete(() =>
             {
@@ -7119,15 +7139,11 @@ namespace MDPro3
         {
             Tools.SetAnimatorTimescale(field0.transform, timeScale);
             Tools.SetAnimatorTimescale(field1.transform, timeScale);
+            Tools.SetAnimatorTimescale(phaseButton.transform, timeScale);
+            if (timer != null)
+                Tools.SetAnimatorTimescale(timer.transform, timeScale);
             Tools.SetParticleSystemSimulationSpeed(field0.transform, timeScale);
             Tools.SetParticleSystemSimulationSpeed(field1.transform, timeScale);
-            if (mate0 != null)
-                mate0.SetTimeScale(timeScale);
-            if (mate1 != null)
-                mate1.SetTimeScale(timeScale);
-            foreach (var card in cards)
-                if (card.model != null)
-                    Tools.SetAnimatorTimescale(card.model.transform, timeScale);
         }
 
         public void GraveBgEffect(GPS p, bool cardIn)
