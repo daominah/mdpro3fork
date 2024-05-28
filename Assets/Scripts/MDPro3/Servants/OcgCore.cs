@@ -1373,6 +1373,7 @@ namespace MDPro3
         public int turns;
         public bool isFirst;
         public bool isObserver;
+        int playerType;
         public bool myTurn = true;
         public DuelPhase phase = DuelPhase.Draw;
         public delegate void ResponseHandler(byte[] buffer);
@@ -2590,8 +2591,46 @@ namespace MDPro3
             switch ((GameMessage)p.Function)
             {
                 case GameMessage.sibyl_chat:
-                    r.ReadInt32();
-                    PrintDuelLog(r.ReadALLUnicode());
+                    player = r.ReadInt32();
+                    if (!GetMessageConfig(player))
+                        break;
+                    switch (player)
+                    {
+                        case 0:
+                            name = name_0;
+                            if (playerType < 7 && 
+                                ((playerType < 2 && !isFirst) || (playerType >= 2 && isFirst)))
+                                name = name_1;
+                            break;
+                        case 1:
+                            name = name_0_tag;
+                            if (playerType < 7 && 
+                                ((playerType < 2 && !isFirst) || (playerType >= 2 && isFirst)))
+                                name = name_1_tag;
+                            break;
+                        case 2:
+                            name = name_1;
+                            if (playerType < 7 && 
+                                ((playerType < 2 && !isFirst) || (playerType >= 2 && isFirst)))
+                                name = name_0;
+                            break;
+                        case 3:
+                            name = name_1_tag;
+                            if (playerType < 7 && 
+                                ((playerType < 2 && !isFirst) || (playerType >= 2 && isFirst)))
+                                name = name_0_tag;
+                            break;
+                        case 7:
+                            name = InterString.Get("¹ÛÕ½Õß");
+                            break;
+                        default:
+                            name = string.Empty;
+                            break;
+                    }
+                    if (name != string.Empty)
+                        name += ": ";
+                    var content = r.ReadALLUnicode();
+                    MessageManager.Cast(name + content);
                     break;
                 case GameMessage.sibyl_name:
                     name_0 = r.ReadUnicode(50);
@@ -2600,6 +2639,7 @@ namespace MDPro3
                     name_1 = r.ReadUnicode(50);
                     name_1_tag = r.ReadUnicode(50);
                     name_1_c = r.ReadUnicode(50);
+
                     isTag = !(name_0_tag == "---" && name_1_tag == "---" && name_0 == name_0_c && name_1 == name_1_c);
 
                     if (Config.Get("ReplayPlayerName0", "@ui").Length > 0)
@@ -2834,10 +2874,9 @@ namespace MDPro3
                     cg.interactable = false;
                     md5Maker = 0;
                     messagePass = false;
-                    int playerType = r.ReadByte();
+                    playerType = r.ReadByte();
                     isFirst = (playerType & 0xF) == 0;
                     Room.coreShowing = 2;
-                    Program.I().room.AddChatItem(-2, "Core Ready");
                     isObserver = (playerType & 0xF0) > 0;
                     if (r.BaseStream.Length > 17)
                         MasterRule = r.ReadByte();
@@ -6326,9 +6365,11 @@ namespace MDPro3
         }
         public Package GetNamePacket()
         {
-            var p__ = new Package();
-            p__.Function = (int)GameMessage.sibyl_name;
-            p__.Data = new BinaryMaster();
+            var p__ = new Package
+            {
+                Function = (int)GameMessage.sibyl_name,
+                Data = new BinaryMaster()
+            };
             p__.Data.writer.WriteUnicode(name_0, 50);
             p__.Data.writer.WriteUnicode(name_0_tag, 50);
             p__.Data.writer.WriteUnicode(name_0_c != "" ? name_0_c : name_0, 50);
@@ -6341,18 +6382,17 @@ namespace MDPro3
 
         bool GetAutoInfo()
         {
-            bool returnValue = true;
             if (condition == Condition.Duel
                 && Config.Get("DuelAutoInfo", "0") == "0")
-                returnValue = false;
+                return false;
             if (condition == Condition.Watch
                 && Config.Get("WatchAutoInfo", "0") == "0")
-                returnValue = false;
+                return false;
             if (condition == Condition.Replay
                 && Config.Get("ReplayAutoInfo", "0") == "0")
-                returnValue = false;
+                return false;
 
-            return returnValue;
+            return true;
         }
 
         public void RefreshAllCardsLabel()
