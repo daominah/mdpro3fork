@@ -10,6 +10,6 @@ namespace MDPro3
         public Image frame;
         public Text playerName;
         public GameObject readyIcon;
-        public GameObject button;
+        public GameObject kickButton;
     }
 }

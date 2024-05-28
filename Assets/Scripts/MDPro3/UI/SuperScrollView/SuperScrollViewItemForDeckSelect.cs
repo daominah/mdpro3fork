@@ -161,16 +161,16 @@ namespace MDPro3.UI
             else
             {
                 Config.Set("DeckInUse", deckName);
-                if (SelectDeck.state == SelectDeck.State.ForEdit)
+                if (SelectDeck.condition == SelectDeck.Condition.ForEdit)
                 {
                     Program.I().ShiftToServant(Program.I().editDeck);
                     Program.I().editDeck.returnServant = Program.I().selectDeck;
                 }
-                else if (SelectDeck.state == SelectDeck.State.ForDuel)
+                else if (SelectDeck.condition == SelectDeck.Condition.ForDuel)
                 {
                     Program.I().ShiftToServant(Program.I().room);
                 }
-                else if (SelectDeck.state == SelectDeck.State.ForSolo)
+                else if (SelectDeck.condition == SelectDeck.Condition.ForSolo)
                 {
                     Program.I().ShiftToServant(Program.I().solo);
                     Program.I().solo.btnDeck.transform.GetChild(0).GetComponent<Text>().text = deckName;

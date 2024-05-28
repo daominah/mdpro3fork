@@ -64,6 +64,7 @@ namespace MDPro3
 
         public void OnSolo()
         {
+            Program.I().solo.SwitchCondition(Solo.Condition.ForSolo);
             Program.I().ShiftToServant(Program.I().solo);
         }
         public void OnOnline()
@@ -88,6 +89,7 @@ namespace MDPro3
         }
         public void OnEditDeck()
         {
+            Program.I().selectDeck.SwitchCondition(SelectDeck.Condition.ForEdit);
             Program.I().ShiftToServant(Program.I().selectDeck);
         }
         public void OnSetting()

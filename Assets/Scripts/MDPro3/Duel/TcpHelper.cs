@@ -27,6 +27,11 @@ namespace MDPro3
         private static readonly Queue<Package> messageQueue = new Queue<Package>();
 
         static Thread senderThead;
+
+        public static string joinedAddress;
+        public static string joinedPort;
+        public static string joinedPassword;
+
         public static void InitializeSender()
         {
             try
@@ -62,6 +67,9 @@ namespace MDPro3
                         InitializeSender();
                         CtosMessage_PlayerInfo(name);
                         CtosMessage_JoinGame(pswString, version);
+                        joinedAddress = ipString;
+                        joinedPort = portString;
+                        joinedPassword = pswString;
                     }
                     catch (Exception e)
                     {

@@ -1,5 +1,4 @@
 using DG.Tweening;
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -33,6 +32,7 @@ namespace MDPro3
         public Button btnToWatch;
         public Button btnReady;
         public Button btnStart;
+        public Button btnSelectAI;
 
         public Text description;
         public ScrollRect chatScroll;
@@ -346,6 +346,31 @@ namespace MDPro3
             TcpHelper.CtosMessage_Response(buffer);
         }
 
+        public void OnSelectAI()
+        {
+            if (RoomIsFull())
+            {
+                MessageManager.Cast("房间已满，无法继续添加AI。");
+            }
+            else
+            {
+                Program.I().solo.SwitchCondition(Solo.Condition.ForRoom);
+                Program.I().ShiftToServant(Program.I().solo);
+            }
+        }
+
+        bool RoomIsFull()
+        {
+            int playerSeats = 2;
+            if (mode == 2)
+                playerSeats = 4;
+
+            for (int i = 0; i < playerSeats; i++)
+                if (players[i] == null)
+                    return false;
+            return true;
+        }
+
         public void OnChat(string content)
         {
             if (content == string.Empty)
@@ -382,9 +407,7 @@ namespace MDPro3
                 MessageManager.Cast(InterString.Get("请先取消准备，再选择卡组。"));
                 return;
             }
-            SelectDeck.state = SelectDeck.State.ForDuel;
-            Program.I().selectDeck.depth = 3;
-            Program.I().selectDeck.returnServant = this;
+            Program.I().selectDeck.SwitchCondition(SelectDeck.Condition.ForDuel);
             Program.I().ShiftToServant(Program.I().selectDeck);
         }
 
@@ -722,18 +745,20 @@ namespace MDPro3
             if (isHost)
             {
                 btnStart.gameObject.SetActive(true);
-                roomPlayers[0].button.SetActive(true);
-                roomPlayers[1].button.SetActive(true);
-                roomPlayers[2].button.SetActive(true);
-                roomPlayers[3].button.SetActive(true);
+                roomPlayers[0].kickButton.SetActive(true);
+                roomPlayers[1].kickButton.SetActive(true);
+                roomPlayers[2].kickButton.SetActive(true);
+                roomPlayers[3].kickButton.SetActive(true);
+                btnSelectAI.gameObject.SetActive(true);
             }
             else
             {
                 btnStart.gameObject.SetActive(false);
-                roomPlayers[0].button.SetActive(false);
-                roomPlayers[1].button.SetActive(false);
-                roomPlayers[2].button.SetActive(false);
-                roomPlayers[3].button.SetActive(false);
+                roomPlayers[0].kickButton.SetActive(false);
+                roomPlayers[1].kickButton.SetActive(false);
+                roomPlayers[2].kickButton.SetActive(false);
+                roomPlayers[3].kickButton.SetActive(false);
+                btnSelectAI.gameObject.SetActive(false);
             }
             if (selfType == 7)
                 btnReady.gameObject.SetActive(false);

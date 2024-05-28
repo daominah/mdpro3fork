@@ -24,18 +24,37 @@ namespace MDPro3
         public ButtonSwitchForDeckPickup btnPickup;
         public ToggleForDeckDelete btnDelete;
 
-        public enum State
+        public enum Condition
         {
             ForEdit,
             ForDuel,
             ForSolo
         }
-        public static State state = State.ForEdit;
+        public static Condition condition = Condition.ForEdit;
+        public void SwitchCondition(Condition condition)
+        {
+            SelectDeck.condition = condition;
+            switch (condition)
+            {
+                case Condition.ForEdit:
+                    returnServant = Program.I().menu;
+                    depth = 1;
+                    break;
+                case Condition.ForDuel:
+                    returnServant = Program.I().room;
+                    depth = 3;
+                    break;
+                case Condition.ForSolo:
+                    returnServant = Program.I().solo;
+                    depth = 4;
+                    break;
+            }
+        }
+
         public override void Initialize()
         {
-            depth = 1;
             haveLine = true;
-            returnServant = Program.I().menu;
+            SwitchCondition(Condition.ForEdit);
             base.Initialize();
             search.onEndEdit.AddListener(Print);
         }
@@ -57,9 +76,6 @@ namespace MDPro3
                     foreach (var item in superScrollView.items)
                         item.gameObject.GetComponent<SuperScrollViewItemForDeckSelect>().Dispose();
                 Clear();
-                depth = 1;
-                state = State.ForEdit;
-                returnServant = Program.I().menu;
             });
         }
 

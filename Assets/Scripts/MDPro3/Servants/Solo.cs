@@ -30,6 +30,8 @@ namespace MDPro3
         public GameObject btnDeck;
 
         public static readonly int diyAI = 6;
+        public static string port;
+
         public class BotInfo
         {
             public string name;
@@ -40,11 +42,34 @@ namespace MDPro3
         }
         private IList<BotInfo> bots = new List<BotInfo>();
 
+        public enum Condition
+        {
+            ForSolo,
+            ForRoom
+        }
+
+        public static Condition condition;
+
+        public void SwitchCondition(Condition condition)
+        {
+            Solo.condition = condition;
+            switch (condition)
+            {
+                case Condition.ForSolo:
+                    returnServant = Program.I().menu;
+                    depth = 1;
+                    break;
+                case Condition.ForRoom:
+                    returnServant = Program.I().room;
+                    depth = 3;
+                    break;
+            }
+        }
+
         public override void Initialize()
         {
-            depth = 1;
             haveLine = true;
-            returnServant = Program.I().menu;
+            SwitchCondition(Condition.ForSolo);
             base.Initialize();
             btnDeck.transform.GetChild(0).GetComponent<Text>().text = Config.Get("DeckInUse", "@ui");
             btnDeck.SetActive(false);
@@ -146,13 +171,11 @@ namespace MDPro3
 
         public void OnSelectAIDeck()
         {
-            SelectDeck.state = SelectDeck.State.ForSolo;
-            Program.I().selectDeck.depth = 3;
-            Program.I().selectDeck.returnServant = this;
+            Program.I().selectDeck.SwitchCondition(SelectDeck.Condition.ForSolo);
             Program.I().ShiftToServant(Program.I().selectDeck);
         }
 
-        public void StartAI(int aiCode)
+        string GetWindBotCommand(int aiCode)
         {
             BotInfo bot = bots[aiCode];
             string aiCommand = bot.command;
@@ -162,7 +185,7 @@ namespace MDPro3
                 if (!File.Exists("Deck/" + selectedDeck + ".ydk"))
                 {
                     MessageManager.Cast(InterString.Get("请先为AI选择有效的卡组。"));
-                    return;
+                    return string.Empty;
                 }
                 aiCommand += " DeckFile=\"" + btnDeck.transform.GetChild(0).GetComponent<Text>().text + "\"";
             }
@@ -174,7 +197,24 @@ namespace MDPro3
                 if (command != string.Empty)
                     aiCommand = command;
             }
-            Launch(aiCommand, toggleLockHand.isOn, toggleNoCheck.isOn, toggleNoShuffle.isOn);
+            return aiCommand;
+        }
+
+        public void StartAIForSolo(int aiCode)
+        {
+            string aiCommand = GetWindBotCommand(aiCode);
+            if(aiCommand != string.Empty)
+                Launch(aiCommand, toggleLockHand.isOn, toggleNoCheck.isOn, toggleNoShuffle.isOn);
+        }
+
+        public void StartAIForRoom(int aiCode)
+        {
+            string aiCommand = GetWindBotCommand(aiCode);
+            if (aiCommand != string.Empty)
+            {
+                StartWindBot(aiCommand, TcpHelper.joinedAddress, TcpHelper.joinedPort, TcpHelper.joinedPassword, toggleLockHand.isOn);
+                Program.I().ShiftToServant(Program.I().room);
+            }
         }
 
         private string GetRandomBot(string flag)
@@ -193,21 +233,26 @@ namespace MDPro3
             return "";
         }
 
-        public static string port;
-        public void Launch(string command, bool lockHand, bool noCheck, bool noShuffle)
+
+        public void StartWindBot(string command, string ip, string port, string password, bool lockHand)
         {
             command = command.Replace("'", "\"");
-            if(lockHand)
+            if (lockHand)
                 command += " Hand=1";
-            command += " Host=127.0.0.1";
+            command += " Host=" + ip;
+            command += " Port=" + port;
+            command += " HostInfo=" + password;
+            (new Thread(() => { Thread.Sleep(300); WindBot.Program.Main(Tools.SplitWithPreservedQuotes(command)); })).Start();
+        }
 
+        public void Launch(string command, bool lockHand, bool noCheck, bool noShuffle)
+        {
             port = inputPort.text;
             if (string.IsNullOrEmpty(port) || int.Parse(port) <= 0 || int.Parse(port) > 65535)
             {
                 port = "7911";
                 inputPort.text = port;
             }
-            command += " Port=" + port;
 
             string lp = inputLP.text;
             if (string.IsNullOrEmpty(lp) /*|| lp == "0"*/)
@@ -228,7 +273,8 @@ namespace MDPro3
                 Room.soloLockHand = false;
             Room.fromLocalHost = false;
             (new Thread(() => { Thread.Sleep(200); TcpHelper.Join("127.0.0.1", Config.Get("DuelPlayerName0", "@ui"), port, "", ""); })).Start();
-            (new Thread(() => { Thread.Sleep(300); WindBot.Program.Main(Tools.SplitWithPreservedQuotes(command)); })).Start();
+
+            StartWindBot(command, "127.0.0.1", port, string.Empty, lockHand);
         }
     }
 }

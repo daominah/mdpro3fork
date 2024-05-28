@@ -35,7 +35,10 @@ namespace MDPro3.UI
             StartCoroutine(enumerator);
             action = () =>
             {
-                Program.I().solo.StartAI(id);
+                if(Solo.condition == Solo.Condition.ForSolo)
+                    Program.I().solo.StartAIForSolo(id);
+                else
+                    Program.I().solo.StartAIForRoom(id);
             };
         }
 
