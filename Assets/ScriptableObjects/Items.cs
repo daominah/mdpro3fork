@@ -81,6 +81,7 @@ namespace MDPro3
         public List<List<Item>> kinds;
 
         static readonly string mapPath = "Data/items.txt";
+        static readonly string ydkIdsPath = "Data/YdkIds.txt";
         public static string nullString = "coming soon";
         static string language = "";
 
@@ -88,7 +89,7 @@ namespace MDPro3
         Dictionary<string, int> maps = new Dictionary<string, int>();
         Dictionary<int, string> names = new Dictionary<int, string>();
         Dictionary<int, string> descriptions = new Dictionary<int, string>();
-
+        Dictionary<int, int> ydkIds = new Dictionary<int, int>();
         static Items instance;
         static bool initialized = false;
         public void Initialize()
@@ -125,6 +126,26 @@ namespace MDPro3
                         }
                     }
                 }
+
+                all = File.ReadAllText(ydkIdsPath);
+                lines = all.Replace("\r", string.Empty).Split('\n');
+                foreach (var line in lines)
+                {
+                    var pair = line.Split(' ');
+                    if (pair.Length > 1)
+                    {
+                        try
+                        {
+                            if(!ydkIds.ContainsKey(int.Parse(pair[1])))
+                                ydkIds.Add(int.Parse(pair[1]), int.Parse(pair[0]));
+                        }
+                        catch (Exception e)
+                        {
+                            Debug.LogError("Read YdkIds.txt Error: " + e);
+                        }
+                    }
+                }
+
                 initialized = true;
             }
             var currentLanguage = Config.Get("Language", "zh-CN");
@@ -246,42 +267,7 @@ namespace MDPro3
         {
             string numberString = match.Groups[1].Value;
             int cardCode = int.Parse(numberString);
-            switch (cardCode)
-            {
-                case 18799:
-                    cardCode = 27015862;
-                    break;
-                case 14648:
-                    cardCode = 40441990;
-                    break;
-                case 15250:
-                    cardCode = 20129614;
-                    break;
-                case 13670:
-                    cardCode = 26077387;
-                    break;
-                case 19196:
-                    cardCode = 80845034;
-                    break;
-                case 13982:
-                    cardCode = 79698395;
-                    break;
-                case 10191:
-                    cardCode = 14001430;
-                    break;
-                case 10793:
-                    cardCode = 99795159;
-                    break;
-                case 15573:
-                    cardCode = 34572613;
-                    break;
-                case 18003:
-                    cardCode = 25550531;
-                    break;
-                case 16200:
-                    cardCode = 24639891;
-                    break;
-            }
+            ydkIds.TryGetValue(cardCode, out cardCode);
             return CardsManager.Get(cardCode).Name;
         }
 

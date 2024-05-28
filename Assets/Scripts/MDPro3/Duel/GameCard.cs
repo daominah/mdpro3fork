@@ -232,11 +232,8 @@ namespace MDPro3
             var e10 = cardYellowHighlightSelect.AddComponent<ElementObject>();
             e10.label = "EffectHighlightYellowSelect";
 
-            var scale = 1.05f;
-            e7.transform.localScale *= scale;
-            //e8.transform.localScale *= scale;
-            //e9.transform.localScale *= scale;
-            //e10.transform.localScale *= scale;
+            e7.transform.localScale = new Vector3(1.03f, 1f, 1.025f);
+            e9.transform.localScale = new Vector3(1.02f, 1f, 1f);
 
             var list = manager.serializedElements.ToList();
             list.Add(e1);
