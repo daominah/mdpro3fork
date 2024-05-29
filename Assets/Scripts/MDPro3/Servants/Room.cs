@@ -760,6 +760,9 @@ namespace MDPro3
                 roomPlayers[3].kickButton.SetActive(false);
                 btnSelectAI.gameObject.SetActive(false);
             }
+            if(fromSolo)
+                btnSelectAI.gameObject.SetActive(false);
+
             if (selfType == 7)
                 btnReady.gameObject.SetActive(false);
             else

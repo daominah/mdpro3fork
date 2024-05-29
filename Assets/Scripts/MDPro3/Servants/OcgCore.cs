@@ -2594,39 +2594,57 @@ namespace MDPro3
                     player = r.ReadInt32();
                     if (!GetMessageConfig(player))
                         break;
-                    switch (player)
+                    name = string.Empty;
+                    if (isTag)
                     {
-                        case 0:
-                            name = name_0;
-                            if (playerType < 7 && 
-                                ((playerType < 2 && !isFirst) || (playerType >= 2 && isFirst)))
-                                name = name_1;
-                            break;
-                        case 1:
-                            name = name_0_tag;
-                            if (playerType < 7 && 
-                                ((playerType < 2 && !isFirst) || (playerType >= 2 && isFirst)))
-                                name = name_1_tag;
-                            break;
-                        case 2:
-                            name = name_1;
-                            if (playerType < 7 && 
-                                ((playerType < 2 && !isFirst) || (playerType >= 2 && isFirst)))
+                        switch (player)
+                        {
+                            case 0:
                                 name = name_0;
-                            break;
-                        case 3:
-                            name = name_1_tag;
-                            if (playerType < 7 && 
-                                ((playerType < 2 && !isFirst) || (playerType >= 2 && isFirst)))
+                                if (playerType < 7 &&
+                                    ((playerType < 2 && !isFirst) || (playerType >= 2 && isFirst)))
+                                    name = name_1;
+                                break;
+                            case 1:
                                 name = name_0_tag;
-                            break;
-                        case 7:
-                            name = InterString.Get("观战者");
-                            break;
-                        default:
-                            name = string.Empty;
-                            break;
+                                if (playerType < 7 &&
+                                    ((playerType < 2 && !isFirst) || (playerType >= 2 && isFirst)))
+                                    name = name_1_tag;
+                                break;
+                            case 2:
+                                name = name_1;
+                                if (playerType < 7 &&
+                                    ((playerType < 2 && !isFirst) || (playerType >= 2 && isFirst)))
+                                    name = name_0;
+                                break;
+                            case 3:
+                                name = name_1_tag;
+                                if (playerType < 7 &&
+                                    ((playerType < 2 && !isFirst) || (playerType >= 2 && isFirst)))
+                                    name = name_0_tag;
+                                break;
+                        }
                     }
+                    else
+                    {
+                        switch (player)
+                        {
+                            case 0:
+                                name = name_0;
+                                if (playerType < 7 &&
+                                    ((playerType == 0 && !isFirst) || (playerType == 1 && isFirst)))
+                                    name = name_1;
+                                break;
+                            case 1:
+                                name = name_1;
+                                if (playerType < 7 &&
+                                    ((playerType == 0 && !isFirst) || (playerType == 1 && isFirst)))
+                                    name = name_0;
+                                break;
+                        }
+                    }
+                    if(player == 7)
+                        name = InterString.Get("观战者");
                     if (name != string.Empty)
                         name += ": ";
                     var content = r.ReadALLUnicode();
@@ -2928,8 +2946,9 @@ namespace MDPro3
                     break;
                 case GameMessage.ReloadField:
                     CoreReset();
-                    isFirst = true;
-                    myTurn = true;
+
+                    if (inAi)
+                        myTurn = true;
                     PhaseButtonHandler.TurnChange(myTurn, 1);
 
                     MasterRule = r.ReadByte() + 1;

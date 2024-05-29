@@ -68,6 +68,19 @@ namespace MDPro3
             public bool diy;
         }
 
+        public enum ItemType
+        {
+            Wallpaper,
+            Face,
+            Frame,
+            Protector,
+            Mat,
+            Grave,
+            Stand,
+            Mate,
+            Case
+        }
+
         public List<Item> wallpapers;
         public List<Item> faces;
         public List<Item> frames;
@@ -267,8 +280,11 @@ namespace MDPro3
         {
             string numberString = match.Groups[1].Value;
             int cardCode = int.Parse(numberString);
-            ydkIds.TryGetValue(cardCode, out cardCode);
-            return CardsManager.Get(cardCode).Name;
+            ydkIds.TryGetValue(cardCode, out var code);
+            if(code != 0)
+                return CardsManager.Get(code).Name;
+            else
+                return CardsManager.Get(cardCode).Name;
         }
 
         public string WallpaperCodeToPath(string code)
@@ -372,17 +388,5 @@ namespace MDPro3
         }
 
 
-        public enum ItemType
-        {
-            Wallpaper,
-            Face,
-            Frame,
-            Protector,
-            Mat,
-            Grave,
-            Stand,
-            Mate,
-            Case
-        }
     }
 }
