@@ -87,7 +87,7 @@ namespace MDPro3
             Program.I().camera_.cameraMain.gameObject.SetActive(true);
             Program.I().camera_.light.SetActive(true);
             Program.I().camera_.camera2D.gameObject.SetActive(false);
-            QualitySettings.SetQualityLevel(int.Parse(Config.Get("Quality", "0")));
+            QualitySettings.SetQualityLevel((int)Config.GetFloat("Quality", 2f));
         }
         public static void Overlay3DReset()
         {

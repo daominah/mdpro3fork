@@ -466,7 +466,7 @@ namespace MDPro3
                     qualityText = InterString.Get("中等");
                     break;
             }
-            Config.Set("Quality", ((int)value).ToString());
+            Config.SetFloat("Quality", (int)value);
             qualityValue.text = qualityText;
         }
         public void OnFAAChange(float value)
