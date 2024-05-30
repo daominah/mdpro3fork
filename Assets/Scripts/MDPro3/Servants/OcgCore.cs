@@ -148,7 +148,6 @@ namespace MDPro3
         {
             base.OnExit();
             CloseConnection();
-            exitWithAcc = accing;
             OnNor();
         }
 
@@ -176,7 +175,6 @@ namespace MDPro3
         }
 
         public bool accing;
-        bool exitWithAcc;
         public void OnAcc()
         {
             accing = true;
@@ -1323,7 +1321,9 @@ namespace MDPro3
             messagePass = true;
             yield return null;
 
-            if (exitWithAcc)
+            if (condition == Condition.Duel && Config.GetBool("DuelAutoAcc", false)
+                || condition == Condition.Watch && Config.GetBool("WatchAutoAcc", false)
+                || condition == Condition.Replay && Config.GetBool("ReplayAutoAcc", false))
                 OnAcc();
 
             DOTween.To(v => { }, 0, 0, UnityEngine.Random.Range(8, 16)).OnComplete(() =>
@@ -3156,6 +3156,7 @@ namespace MDPro3
                     card = GCS_Get(from);
                     if (card != null)
                     {
+                        card.ShowFaceDownCardOrNot(false);
                         card.SetCode(code);
                         sleep = card.Move(to);
                         var delay = sleep;

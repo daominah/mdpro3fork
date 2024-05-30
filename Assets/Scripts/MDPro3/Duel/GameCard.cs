@@ -318,7 +318,6 @@ namespace MDPro3
             }
         }
 
-
         public Card GetData()
         {
             return data;
@@ -336,14 +335,17 @@ namespace MDPro3
 
         public void SetData(Card d)
         {
-            data = d;
-            if (model != null)
+            if(d.Id != data.Id)
             {
-                if (data.Id > 0)
-                    StartCoroutine(SetFace());
-                RefreshLabel();
+                data = d;
+                if (model != null)
+                {
+                    if (data.Id > 0)
+                        StartCoroutine(SetFace());
+                }
             }
-            if(d.Id > 0)
+            RefreshLabel();
+            if (d.Id > 0)
                 if ((p.location & (uint)CardLocation.Extra) > 0)
                     if ((p.position & (uint)CardPosition.FaceUp) > 0)
                         if (p.sequence == Program.I().ocgcore.GetLocationCardCount(CardLocation.Extra, p.controller) - 1)
@@ -942,6 +944,7 @@ namespace MDPro3
                 {
                     CreateModel();
                     ModelAt(p);
+                    ShowFaceDownCardOrNot(NeedShowFaceDownCard());
                 }
                 return 0;
             }
@@ -1334,6 +1337,7 @@ namespace MDPro3
                     if((p.location & (uint)CardLocation.Extra) > 0 
                         && (cacheP.location & (uint)CardLocation.Extra) == 0)
                         Program.I().ocgcore.SetDeckTop(this);
+                    ShowFaceDownCardOrNot(NeedShowFaceDownCard());
                 });
 
             SummonPass:
@@ -1854,6 +1858,7 @@ namespace MDPro3
             sequence.Append(offset.DOLocalMove(new Vector3(0, 2, 3), 0.1f).OnStart(() => 
             {
                 model.SetActive(true);
+                ShowFaceDownCardOrNot(false);
                 AudioManager.PlaySE("SE_CARDVIEW_02");
                 Program.I().ocgcore.description.Show(this, null);
             }));
@@ -1881,6 +1886,7 @@ namespace MDPro3
                             Destroy(model);
                     });
                 }
+                ShowFaceDownCardOrNot(NeedShowFaceDownCard());
             });
         }
         public void AnimationPositon(float delay = 0)
@@ -2670,10 +2676,13 @@ namespace MDPro3
             labelRoot.DOScale(1, 0.2f).SetEase(Ease.InCubic);
             if (NeedShowCloseup())
             {
+                var renderer = manager.GetElement<MeshRenderer>("Closeup");
+                if(renderer.material.mainTexture == null)
+                    closeupShowing = false;
                 if (!closeupShowing)
                 {
                     closeupShowing = true;
-                    StartCoroutine(Program.I().texture_.LoadCloseupAsync(data.Id, manager.GetElement<MeshRenderer>("Closeup")));
+                    StartCoroutine(Program.I().texture_.LoadCloseupAsync(data.Id, renderer));
                 }
             }
             else
@@ -2780,6 +2789,48 @@ namespace MDPro3
                 return false;
             return true;
         }
+
+        public bool NeedShowFaceDownCard()
+        {
+            if(data.Id == 0)
+                return false;
+            if((p.position & (uint)CardPosition.FaceUp) > 0)
+                return false;
+            if((p.location & (uint)CardLocation.Onfield) == 0)
+                return false;
+
+            return true;
+        }
+
+        public void ShowFaceDownCardOrNot(bool show)
+        {
+            if (model == null)
+                return;
+            var back = manager.GetElement<Transform>("CardModel").GetChild(0).GetComponent<Renderer>();
+            var face = manager.GetElement<Transform>("CardModel").GetChild(1).GetComponent<Renderer>();
+
+            if (Program.I().ocgcore.condition == OcgCore.Condition.Duel && !Config.GetBool("DuelFaceDown", true))
+                show = false;
+            if (Program.I().ocgcore.condition == OcgCore.Condition.Watch && !Config.GetBool("WatchFaceDown", true))
+                show = false;
+            if (Program.I().ocgcore.condition == OcgCore.Condition.Replay && !Config.GetBool("ReplayFaceDown", true))
+                show = false;
+
+            if (show)
+            {
+                face.GetComponent<Animator>().SetBool("Show", true);
+                face.transform.localEulerAngles = new Vector3(180f, 0f, 0f);
+                face.material.SetTexture("_LoadingTex", back.material.mainTexture);
+                back.gameObject.SetActive(false);
+            }
+            else
+            {
+                back.gameObject.SetActive(true);
+                face.GetComponent<Animator>().SetBool("Show", false);
+                face.transform.localEulerAngles = new Vector3(180f, 0f, -180f);
+            }
+        }
+
         #endregion
 
         #region CardCounter

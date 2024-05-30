@@ -360,9 +360,10 @@ namespace MDPro3
             }
             manager.GetElement("Group").SetActive(true);
             cardShowing = data;
-            if (showingFace != null)
-                Destroy(showingFace);
-            showingFace = Instantiate(cardFace);
+            //if (showingFace != null)
+            //    Destroy(showingFace);
+            //showingFace = Instantiate(cardFace);
+            showingFace = cardFace;
             manager.GetElement<RawImage>("Card").texture = showingFace;
             manager.GetElement<RawImage>("Card").material = mat;
             manager.GetElement<Text>("TextName").text = data.Name;

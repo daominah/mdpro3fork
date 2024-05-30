@@ -14,6 +14,9 @@ namespace MDPro3
 
         private static string path;
 
+        public readonly static string stringYes = "1";
+        public readonly static string stringNo = "0";
+
         public static void Initialize(string path)
         {
             Config.path = path;
@@ -48,25 +51,6 @@ namespace MDPro3
                     translations.Add(s);
                 }
             }
-        }
-
-        public static float GetFloat(string v, float defaul)
-        {
-            var getted = 0;
-            try
-            {
-                getted = int.Parse(Get(v, (defaul * 1000).ToString()));
-            }
-            catch (Exception)
-            {
-            }
-
-            return getted / 1000f;
-        }
-
-        public static void SetFloat(string v, float f)
-        {
-            Set(v, ((int)(f * 1000f)).ToString());
         }
 
         public static bool Have(string original)
@@ -125,6 +109,35 @@ namespace MDPro3
                 s.translated = setted;
                 translations.Add(s);
             }
+        }
+        public static float GetFloat(string v, float defau)
+        {
+            var getted = 0;
+            try
+            {
+                getted = int.Parse(Get(v, (defau * 1000).ToString()));
+            }
+            catch { }
+
+            return getted / 1000f;
+        }
+        public static void SetFloat(string v, float f)
+        {
+            Set(v, ((int)(f * 1000f)).ToString());
+        }
+        public static bool GetBool(string original, bool value)
+        {
+            try
+            {
+                value = Get(original, value ? stringYes : stringNo) == stringYes;
+            }
+            catch { }
+
+            return value;
+        }
+        public static void SetBool(string original, bool value)
+        {
+            Set(original, value ? stringYes : stringNo);
         }
         public static void Save()
         {

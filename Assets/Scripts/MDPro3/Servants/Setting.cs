@@ -1,18 +1,17 @@
 ﻿using DG.Tweening;
 using MDPro3.UI;
+using NUnit.Framework.Constraints;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
-using YgomGame.WCS.Portal;
 using ShadowResolution = UnityEngine.Rendering.Universal.ShadowResolution;
 
 namespace MDPro3
@@ -87,6 +86,11 @@ namespace MDPro3
         public Text duelSystemMessageValue;
         public Slider duelAcc;
         public Text duelAccValue;
+        public Button duelAutoAcc;
+        public Text duelAutoAccValue;
+        public Button duelFaceDown;
+        public Text duelFaceDownValue;
+
         public Button timing;
         public Text timingValue;
         public Button autoRPS;
@@ -123,6 +127,10 @@ namespace MDPro3
         public Text watchSystemMessageValue;
         public Slider watchAcc;
         public Text watchAccValue;
+        public Button watchAutoAcc;
+        public Text watchAutoAccValue;
+        public Button watchFaceDown;
+        public Text watchFaceDownValue;
 
         [Header("Replay")]
         public Button replayAppearance;
@@ -155,6 +163,10 @@ namespace MDPro3
         public Text replaySystemMessageValue;
         public Slider replayAcc;
         public Text replayAccValue;
+        public Button replayAutoAcc;
+        public Text replayAutoAccValue;
+        public Button replayFaceDown;
+        public Text replayFaceDownValue;
 
         [Header("Port")]
         public Button import;
@@ -233,6 +245,9 @@ namespace MDPro3
             duelCoin.onClick.AddListener(OnDuelCoinClick);
             watchCoin.onClick.AddListener(OnWatchCoinClick);
             replayCoin.onClick.AddListener(OnReplayCoinClick);
+            duelAutoInfo.onClick.AddListener(OnDuelAutoInfoClick);
+            watchAutoInfo.onClick.AddListener(OnWatchAutoInfoClick);
+            replayAutoInfo.onClick.AddListener(OnReplayAutoInfoClick);
             duelPlayerMessage.onClick.AddListener(OnDuelPlayerMessageClick);
             watchPlayerMessage.onClick.AddListener(OnWatchPlayerMessageClick);
             replayPlayerMessage.onClick.AddListener(OnReplayPlayerMessageClick);
@@ -240,11 +255,15 @@ namespace MDPro3
             watchSystemMessage.onClick.AddListener(OnWatchSystemMessageClick);
             replaySystemMessage.onClick.AddListener(OnReplaySystemMessageClick);
             duelAcc.onValueChanged.AddListener(OnDuelAccChange);
-            watchAcc.onValueChanged.AddListener (OnWatchAccChange);
+            watchAcc.onValueChanged.AddListener(OnWatchAccChange);
             replayAcc.onValueChanged.AddListener(OnReplayAccChange);
-            duelAutoInfo.onClick.AddListener(OnDuelAutoInfoClick);
-            watchAutoInfo.onClick.AddListener(OnWatchAutoInfoClick);
-            replayAutoInfo.onClick.AddListener(OnReplayAutoInfoClick);
+            duelAutoAcc.onClick.AddListener(OnDuelAutoAccClick);
+            watchAutoAcc.onClick.AddListener(OnWatchAutoAccClick);
+            replayAutoAcc.onClick.AddListener(OnReplayAutoAccClick);
+            duelFaceDown.onClick.AddListener(OnDuelFaceDownClick);
+            watchFaceDown.onClick.AddListener(OnWatchFaceDownClick);
+            replayFaceDown.onClick.AddListener(OnReplayFaceDownClick);
+
             timing.onClick.AddListener(OnTimingClick);
             import.onClick.AddListener(OnImport);
 
@@ -262,7 +281,7 @@ namespace MDPro3
             OnSeVolChange(seVol.value);
             voiceVol.value = Config.GetFloat("VoiceVol", 0.7f);
             OnVoiceVolChange(voiceVol.value);
-            fps.value = Config.GetFloat("FPS", 60);
+            fps.value = Config.GetFloat("FPS", 60f);
             OnFpsChange(fps.value);
 
             var defau = 1f;
@@ -384,26 +403,26 @@ namespace MDPro3
             Config.Set("DuelSystemMessage", SaveBool(duelSystemMessageValue.text));
             Config.Set("WatchSystemMessage", SaveBool(watchSystemMessageValue.text));
             Config.Set("ReplaySystemMessage", SaveBool(replaySystemMessageValue.text));
-            Config.SetFloat("DuelAcc", duelAcc.value);
-            Config.SetFloat("WatchAcc", watchAcc.value);
-            Config.SetFloat("ReplayAcc", replayAcc.value);
-            Config.Set("Timing", SaveBool(timingValue.text));
+            Config.Set("DuelAutoAcc", SaveBool(duelAutoAccValue.text));
+            Config.Set("WatchAutoAcc", SaveBool(watchAutoAccValue.text));
+            Config.Set("ReplayAutoAcc", SaveBool(replayAutoAccValue.text));
 
+            Config.Set("Timing", SaveBool(timingValue.text));
             Config.Set("Expansions", SaveBool(supportExpansionsValue.text));
 
             Config.Save();
         }
         public string SaveBool(string value)
         {
-            string returnValue = "0";
+            string returnValue = Config.stringNo;
             if (value == InterString.Get("开"))
-                returnValue = "1";
+                returnValue = Config.stringYes;
             if (value == InterString.Get("有"))
-                returnValue = "1";
+                returnValue = Config.stringYes;
             if (value == InterString.Get("左"))
-                returnValue = "1";
+                returnValue = Config.stringYes;
             if (value == InterString.Get("是"))
-                returnValue = "1";
+                returnValue = Config.stringYes;
             return returnValue;
         }
         public void OnBgmVolChange(float vol)
@@ -569,8 +588,8 @@ namespace MDPro3
         }
         public void InitializeShowFPS()
         {
-            string value = Config.Get("ShowFPS", "1");
-            if (value == "1")
+            var value = Config.GetBool("ShowFPS", true);
+            if (value)
             {
                 showFPSValue.text = InterString.Get("开");
                 UIManager.ShowFPS();
@@ -847,23 +866,23 @@ namespace MDPro3
 
         public void InitializeConfirm()
         {
-            string value = Config.Get("Confirm", "1");
-            if (value == "0")
-                confirmValue.text = InterString.Get("右");
-            else
+            var value = Config.GetBool("Confirm", true);
+            if (value)
                 confirmValue.text = InterString.Get("左");
+            else
+                confirmValue.text = InterString.Get("右");
         }
         public void OnConfirmClicked()
         {
             if (confirmValue.text == InterString.Get("右"))
             {
                 confirmValue.text = InterString.Get("左");
-                Config.Set("Confirm", "1");
+                Config.SetBool("Confirm", true);
             }
             else
             {
                 confirmValue.text = InterString.Get("右");
-                Config.Set("Confirm", "0");
+                Config.SetBool("Confirm", false);
             }
         }
 
@@ -872,12 +891,12 @@ namespace MDPro3
             if (autoRPSValue.text == InterString.Get("关"))
             {
                 autoRPSValue.text = InterString.Get("开");
-                Config.Set("AutoRPS", "1");
+                Config.SetBool("AutoRPS", true);
             }
             else
             {
                 autoRPSValue.text = InterString.Get("关");
-                Config.Set("AutoRPS", "0");
+                Config.SetBool("AutoRPS", false);
             }
         }
         public void InitializeSwitches()
@@ -886,215 +905,247 @@ namespace MDPro3
             watchAppearanceValue.text = Config.Get("WatchPlayerName0", "@ui");
             replayAppearanceValue.text = Config.Get("ReplayPlayerName0", "@ui");
 
-            string value = Config.Get("DuelVoice", "0");
-            if (value == "0")
-                duelVoiceValue.text = InterString.Get("关");
-            else
+            var value = Config.GetBool("DuelVoice", false);
+            if (value)
                 duelVoiceValue.text = InterString.Get("开");
-            value = Config.Get("WatchVoice", "0");
-            if (value == "0")
-                watchVoiceValue.text = InterString.Get("关");
             else
+                duelVoiceValue.text = InterString.Get("关");
+            value = Config.GetBool("WatchVoice", false);
+            if (value)
                 watchVoiceValue.text = InterString.Get("开");
-            value = Config.Get("ReplayVoice", "0");
-            if (value == "0")
-                replayVoiceValue.text = InterString.Get("关");
             else
+                watchVoiceValue.text = InterString.Get("关");
+            value = Config.GetBool("ReplayVoice", false);
+            if (value)
                 replayVoiceValue.text = InterString.Get("开");
-
-            value = Config.Get("DuelCloseup", "1");
-            if (value == "0")
-                duelCloseupValue.text = InterString.Get("关");
             else
+                replayVoiceValue.text = InterString.Get("关");
+
+            value = Config.GetBool("DuelCloseup", true);
+            if (value)
                 duelCloseupValue.text = InterString.Get("开");
-            value = Config.Get("WatchCloseup", "1");
-            if (value == "0")
-                watchCloseupValue.text = InterString.Get("关");
             else
+                duelCloseupValue.text = InterString.Get("关");
+            value = Config.GetBool("WatchCloseup", true);
+            if (value)
                 watchCloseupValue.text = InterString.Get("开");
-            value = Config.Get("ReplayCloseup", "1");
-            if (value == "0")
-                replayCloseupValue.text = InterString.Get("关");
             else
+                watchCloseupValue.text = InterString.Get("关");
+            value = Config.GetBool("ReplayCloseup", true);
+            if (value)
                 replayCloseupValue.text = InterString.Get("开");
-
-            value = Config.Get("DuelSummon", "1");
-            if (value == "0")
-                duelSummonValue.text = InterString.Get("关");
             else
+                replayCloseupValue.text = InterString.Get("关");
+
+            value = Config.GetBool("DuelSummon", true);
+            if (value)
                 duelSummonValue.text = InterString.Get("开");
-            value = Config.Get("WatchSummon", "1");
-            if (value == "0")
-                watchSummonValue.text = InterString.Get("关");
             else
+                duelSummonValue.text = InterString.Get("关");
+            value = Config.GetBool("WatchSummon", true);
+            if (value)
                 watchSummonValue.text = InterString.Get("开");
-            value = Config.Get("ReplaySummon", "1");
-            if (value == "0")
-                replaySummonValue.text = InterString.Get("关");
             else
+                watchSummonValue.text = InterString.Get("关");
+            value = Config.GetBool("ReplaySummon", true);
+            if (value)
                 replaySummonValue.text = InterString.Get("开");
-
-            value = Config.Get("DuelPendulum", "1");
-            if (value == "0")
-                duelPendulumValue.text = InterString.Get("关");
             else
+                replaySummonValue.text = InterString.Get("关");
+
+            value = Config.GetBool("DuelPendulum", true);
+            if (value)
                 duelPendulumValue.text = InterString.Get("开");
-            value = Config.Get("WatchPendulum", "1");
-            if (value == "0")
-                watchPendulumValue.text = InterString.Get("关");
             else
+                duelPendulumValue.text = InterString.Get("关");
+            value = Config.GetBool("WatchPendulum", true);
+            if (value)
                 watchPendulumValue.text = InterString.Get("开");
-            value = Config.Get("ReplayPendulum", "1");
-            if (value == "0")
-                replayPendulumValue.text = InterString.Get("关");
             else
+                watchPendulumValue.text = InterString.Get("关");
+            value = Config.GetBool("ReplayPendulum", true);
+            if (value)
                 replayPendulumValue.text = InterString.Get("开");
-
-            value = Config.Get("DuelCutin", "1");
-            if (value == "0")
-                duelCutinValue.text = InterString.Get("关");
             else
+                replayPendulumValue.text = InterString.Get("关");
+
+            value = Config.GetBool("DuelCutin", true);
+            if (value)
                 duelCutinValue.text = InterString.Get("开");
-            value = Config.Get("WatchCutin", "1");
-            if (value == "0")
-                watchCutinValue.text = InterString.Get("关");
             else
+                duelCutinValue.text = InterString.Get("关");
+            value = Config.GetBool("WatchCutin", true);
+            if (value)
                 watchCutinValue.text = InterString.Get("开");
-            value = Config.Get("ReplayCutin", "1");
-            if (value == "0")
-                replayCutinValue.text = InterString.Get("关");
             else
+                watchCutinValue.text = InterString.Get("关");
+            value = Config.GetBool("ReplayCutin", true);
+            if (value)
                 replayCutinValue.text = InterString.Get("开");
-
-            value = Config.Get("DuelEffect", "1");
-            if (value == "0")
-                duelEffectValue.text = InterString.Get("关");
             else
+                replayCutinValue.text = InterString.Get("关");
+
+            value = Config.GetBool("DuelEffect", true);
+            if (value)
                 duelEffectValue.text = InterString.Get("开");
-            value = Config.Get("WatchEffect", "1");
-            if (value == "0")
-                watchEffectValue.text = InterString.Get("关");
             else
+                duelEffectValue.text = InterString.Get("关");
+            value = Config.GetBool("WatchEffect", true);
+            if (value)
                 watchEffectValue.text = InterString.Get("开");
-            value = Config.Get("ReplayEffect", "1");
-            if (value == "0")
-                replayEffectValue.text = InterString.Get("关");
             else
+                watchEffectValue.text = InterString.Get("关");
+            value = Config.GetBool("ReplayEffect", true);
+            if (value)
                 replayEffectValue.text = InterString.Get("开");
-
-            value = Config.Get("DuelChain", "1");
-            if (value == "0")
-                duelChainValue.text = InterString.Get("关");
             else
+                replayEffectValue.text = InterString.Get("关");
+
+            value = Config.GetBool("DuelChain", true);
+            if (value)
                 duelChainValue.text = InterString.Get("开");
-            value = Config.Get("WatchChain", "1");
-            if (value == "0")
-                watchChainValue.text = InterString.Get("关");
             else
+                duelChainValue.text = InterString.Get("关");
+            value = Config.GetBool("WatchChain", true);
+            if (value)
                 watchChainValue.text = InterString.Get("开");
-            value = Config.Get("ReplayChain", "1");
-            if (value == "0")
-                replayChainValue.text = InterString.Get("关");
             else
+                watchChainValue.text = InterString.Get("关");
+            value = Config.GetBool("ReplayChain", true);
+            if (value)
                 replayChainValue.text = InterString.Get("开");
-
-            value = Config.Get("DuelDice", "1");
-            if (value == "0")
-                duelDiceValue.text = InterString.Get("关");
             else
+                replayChainValue.text = InterString.Get("关");
+
+            value = Config.GetBool("DuelDice", true);
+            if (value)
                 duelDiceValue.text = InterString.Get("开");
-            value = Config.Get("WatchDice", "1");
-            if (value == "0")
-                watchDiceValue.text = InterString.Get("关");
             else
+                duelDiceValue.text = InterString.Get("关");
+            value = Config.GetBool("WatchDice", true);
+            if (value)
                 watchDiceValue.text = InterString.Get("开");
-            value = Config.Get("ReplayDice", "1");
-            if (value == "0")
-                replayDiceValue.text = InterString.Get("关");
             else
+                watchDiceValue.text = InterString.Get("关");
+            value = Config.GetBool("ReplayDice", true);
+            if (value)
                 replayDiceValue.text = InterString.Get("开");
-
-            value = Config.Get("DuelCoin", "1");
-            if (value == "0")
-                duelCoinValue.text = InterString.Get("关");
             else
+                replayDiceValue.text = InterString.Get("关");
+
+            value = Config.GetBool("DuelCoin", true);
+            if (value)
                 duelCoinValue.text = InterString.Get("开");
-            value = Config.Get("WatchCoin", "1");
-            if (value == "0")
-                watchCoinValue.text = InterString.Get("关");
             else
+                duelCoinValue.text = InterString.Get("关");
+            value = Config.GetBool("WatchCoin", true);
+            if (value)
                 watchCoinValue.text = InterString.Get("开");
-            value = Config.Get("ReplayCoin", "1");
-            if (value == "0")
-                replayCoinValue.text = InterString.Get("关");
             else
+                watchCoinValue.text = InterString.Get("关");
+            value = Config.GetBool("ReplayCoin", true);
+            if (value)
                 replayCoinValue.text = InterString.Get("开");
-
-            value = Config.Get("DuelAutoInfo", "1");
-            if (value == "0")
-                duelAutoInfoValue.text = InterString.Get("关");
             else
+                replayCoinValue.text = InterString.Get("关");
+
+            value = Config.GetBool("DuelAutoInfo", true);
+            if (value)
                 duelAutoInfoValue.text = InterString.Get("开");
-            value = Config.Get("WatchAutoInfo", "1");
-            if (value == "0")
-                watchAutoInfoValue.text = InterString.Get("关");
             else
+                duelAutoInfoValue.text = InterString.Get("关");
+            value = Config.GetBool("WatchAutoInfo", true);
+            if (value)
                 watchAutoInfoValue.text = InterString.Get("开");
-            value = Config.Get("ReplayAutoInfo", "1");
-            if (value == "0")
-                replayAutoInfoValue.text = InterString.Get("关");
             else
+                watchAutoInfoValue.text = InterString.Get("关");
+            value = Config.GetBool("ReplayAutoInfo", true);
+            if (value)
                 replayAutoInfoValue.text = InterString.Get("开");
-
-            value = Config.Get("DuelPlayerMessage", "1");
-            if (value == "0")
-                duelPlayerMessageValue.text = InterString.Get("关");
             else
+                replayAutoInfoValue.text = InterString.Get("关");
+
+            value = Config.GetBool("DuelPlayerMessage", true);
+            if (value)
                 duelPlayerMessageValue.text = InterString.Get("开");
-            value = Config.Get("WatchPlayerMessage", "1");
-            if (value == "0")
-                watchPlayerMessageValue.text = InterString.Get("关");
             else
+                duelPlayerMessageValue.text = InterString.Get("关");
+            value = Config.GetBool("WatchPlayerMessage", true);
+            if (value)
                 watchPlayerMessageValue.text = InterString.Get("开");
-            value = Config.Get("ReplayPlayerMessage", "1");
-            if (value == "0")
-                replayPlayerMessageValue.text = InterString.Get("关");
             else
+                watchPlayerMessageValue.text = InterString.Get("关");
+            value = Config.GetBool("ReplayPlayerMessage", true);
+            if (value)
                 replayPlayerMessageValue.text = InterString.Get("开");
-
-            value = Config.Get("DuelSystemMessage", "1");
-            if (value == "0")
-                duelSystemMessageValue.text = InterString.Get("关");
             else
+                replayPlayerMessageValue.text = InterString.Get("关");
+
+            value = Config.GetBool("DuelSystemMessage", true);
+            if (value)
                 duelSystemMessageValue.text = InterString.Get("开");
-            value = Config.Get("WatchSystemMessage", "1");
-            if (value == "0")
-                watchSystemMessageValue.text = InterString.Get("关");
             else
+                duelSystemMessageValue.text = InterString.Get("关");
+            value = Config.GetBool("WatchSystemMessage", true);
+            if (value)
                 watchSystemMessageValue.text = InterString.Get("开");
-            value = Config.Get("ReplaySystemMessage", "1");
-            if (value == "0")
-                replaySystemMessageValue.text = InterString.Get("关");
             else
+                watchSystemMessageValue.text = InterString.Get("关");
+            value = Config.GetBool("ReplaySystemMessage", true);
+            if (value)
                 replaySystemMessageValue.text = InterString.Get("开");
-
-            value = Config.Get("Timing", "0");
-            if (value == "0")
-                timingValue.text = InterString.Get("关");
             else
+                replaySystemMessageValue.text = InterString.Get("关");
+
+            value = Config.GetBool("DuelAutoAcc", false);
+            if (value)
+                duelAutoAccValue.text = InterString.Get("开");
+            else
+                duelAutoAccValue.text = InterString.Get("关");
+            value = Config.GetBool("WatchAutoAcc", false);
+            if (value)
+                watchAutoAccValue.text = InterString.Get("开");
+            else
+                watchAutoAccValue.text = InterString.Get("关");
+            value = Config.GetBool("ReplayAutoAcc", false);
+            if (value)
+                replayAutoAccValue.text = InterString.Get("开");
+            else
+                replayAutoAccValue.text = InterString.Get("关");
+
+            value = Config.GetBool("DuelFaceDown", true);
+            if (value)
+                duelFaceDownValue.text = InterString.Get("开");
+            else
+                duelFaceDownValue.text = InterString.Get("关");
+            value = Config.GetBool("WatchFaceDown", true);
+            if (value)
+                watchFaceDownValue.text = InterString.Get("开");
+            else
+                watchFaceDownValue.text = InterString.Get("关");
+            value = Config.GetBool("ReplayFaceDown", true);
+            if (value)
+                replayFaceDownValue.text = InterString.Get("开");
+            else
+                replayFaceDownValue.text = InterString.Get("关");
+
+            value = Config.GetBool("Timing", true);
+            if (value)
                 timingValue.text = InterString.Get("开");
-
-            value = Config.Get("AutoRPS", "0");
-            if (value == "0")
-                autoRPSValue.text = InterString.Get("关");
             else
+                timingValue.text = InterString.Get("关");
+
+            value = Config.GetBool("AutoRPS", false);
+            if (value)
                 autoRPSValue.text = InterString.Get("开");
-
-            value = Config.Get("Expansions", "1");
-            if (value == "0")
-                supportExpansionsValue.text = InterString.Get("否");
             else
+                autoRPSValue.text = InterString.Get("关");
+
+            value = Config.GetBool("Expansions", true);
+            if (value)
                 supportExpansionsValue.text = InterString.Get("是");
+            else
+                supportExpansionsValue.text = InterString.Get("否");
         }
         public void OnDuelAppearcanceClick()
         {
@@ -1158,12 +1209,12 @@ namespace MDPro3
             if (duelCloseupValue.text == InterString.Get("开"))
             {
                 duelCloseupValue.text = InterString.Get("关");
-                Config.Set("DuelCloseup", "0");
+                Config.SetBool("DuelCloseup", false);
             }
             else
             {
                 duelCloseupValue.text = InterString.Get("开");
-                Config.Set("DuelCloseup", "1");
+                Config.SetBool("DuelCloseup", true);
             }
             Config.Save();
             Program.I().ocgcore.RefreshAllCardsLabel();
@@ -1173,12 +1224,12 @@ namespace MDPro3
             if (watchCloseupValue.text == InterString.Get("开"))
             {
                 watchCloseupValue.text = InterString.Get("关");
-                Config.Set("WatchCloseup", "0");
+                Config.SetBool("WatchCloseup", false);
             }
             else
             {
                 watchCloseupValue.text = InterString.Get("开");
-                Config.Set("WatchCloseup", "1");
+                Config.SetBool("WatchCloseup", true);
             }
             Config.Save();
             Program.I().ocgcore.RefreshAllCardsLabel();
@@ -1188,12 +1239,12 @@ namespace MDPro3
             if (replayCloseupValue.text == InterString.Get("开"))
             {
                 replayCloseupValue.text = InterString.Get("关");
-                Config.Set("ReplayCloseup", "0");
+                Config.SetBool("ReplayCloseup", false);
             }
             else
             {
                 replayCloseupValue.text = InterString.Get("开");
-                Config.Set("ReplayCloseup", "1");
+                Config.SetBool("ReplayCloseup", true);
             }
             Config.Save();
             Program.I().ocgcore.RefreshAllCardsLabel();
@@ -1412,11 +1463,6 @@ namespace MDPro3
                 replaySystemMessageValue.text = InterString.Get("开");
         }
 
-
-        public static float duelAccSpeed = 2f;
-        public static float watchAccSpeed = 2f;
-        public static float replayAccSpeed = 2f;
-
         public void OnDuelAccChange(float value)
         {
             string result = value.ToString();
@@ -1448,6 +1494,74 @@ namespace MDPro3
                 if (Program.I().ocgcore.condition == OcgCore.Condition.Replay)
                     if (Program.I().ocgcore.accing)
                         Program.I().ocgcore.OnAcc();
+        }
+
+        public void OnDuelAutoAccClick()
+        {
+            if (duelAutoAccValue.text == InterString.Get("开"))
+                duelAutoAccValue.text = InterString.Get("关");
+            else
+                duelAutoAccValue.text = InterString.Get("开");
+        }
+        public void OnWatchAutoAccClick()
+        {
+            if (watchAutoAccValue.text == InterString.Get("开"))
+                watchAutoAccValue.text = InterString.Get("关");
+            else
+                watchAutoAccValue.text = InterString.Get("开");
+        }
+        public void OnReplayAutoAccClick()
+        {
+            if (replayAutoAccValue.text == InterString.Get("开"))
+                replayAutoAccValue.text = InterString.Get("关");
+            else
+                replayAutoAccValue.text = InterString.Get("开");
+        }
+
+        public void OnDuelFaceDownClick()
+        {
+            if (duelFaceDownValue.text == InterString.Get("开"))
+            {
+                duelFaceDownValue.text = InterString.Get("关");
+                Config.SetBool("DuelFaceDown", false);
+            }
+            else
+            {
+                duelFaceDownValue.text = InterString.Get("开");
+                Config.SetBool("DuelFaceDown", true);
+            }
+            foreach(var card in Program.I().ocgcore.cards)
+                card.ShowFaceDownCardOrNot(card.NeedShowFaceDownCard());
+        }
+        public void OnWatchFaceDownClick()
+        {
+            if (watchFaceDownValue.text == InterString.Get("开"))
+            {
+                watchFaceDownValue.text = InterString.Get("关");
+                Config.SetBool("WatchFaceDown", false);
+            }
+            else
+            {
+                watchFaceDownValue.text = InterString.Get("开");
+                Config.SetBool("WatchFaceDown", true);
+            }
+            foreach (var card in Program.I().ocgcore.cards)
+                card.ShowFaceDownCardOrNot(card.NeedShowFaceDownCard());
+        }
+        public void OnReplayFaceDownClick()
+        {
+            if (replayFaceDownValue.text == InterString.Get("开"))
+            {
+                replayFaceDownValue.text = InterString.Get("关");
+                Config.SetBool("ReplayFaceDown", false);
+            }
+            else
+            {
+                replayFaceDownValue.text = InterString.Get("开");
+                Config.SetBool("ReplayFaceDown", true);
+            }
+            foreach (var card in Program.I().ocgcore.cards)
+                card.ShowFaceDownCardOrNot(card.NeedShowFaceDownCard());
         }
 
         public void OnTimingClick()
@@ -1540,12 +1654,12 @@ namespace MDPro3
             if (supportExpansionsValue.text == InterString.Get("否"))
             {
                 supportExpansionsValue.text = InterString.Get("是");
-                Config.Set("Expansions", "1");
+                Config.SetBool("Expansions", true);
             }
             else
             {
                 supportExpansionsValue.text = InterString.Get("否");
-                Config.Set("Expansions", "0");
+                Config.SetBool("Expansions", false);
             }
             Program.I().InitializeForDataChange();
         }
