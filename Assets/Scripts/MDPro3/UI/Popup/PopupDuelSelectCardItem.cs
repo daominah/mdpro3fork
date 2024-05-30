@@ -181,7 +181,9 @@ namespace MDPro3.UI
                 }
                 else
                 {
-                    if (manager.max == 1 && manager.min == 1)
+                    if (manager.max == 1 
+                        && manager.min == 1
+                        && Program.I().ocgcore.currentMessage != GameMessage.SelectSum)
                     {
                         foreach (var card in manager.monos)
                             card.UnselectThis();
