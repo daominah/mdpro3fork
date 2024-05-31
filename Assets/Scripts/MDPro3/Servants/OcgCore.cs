@@ -4172,6 +4172,7 @@ namespace MDPro3
                     if (life0 <= 0 || life1 <= 0)
                     {
                         AudioManager.StopBGM();
+                        OnNor();
 #if UNITY_EDITOR
                         Program.I().timeScaleForEdit = 0.1f;
                         DOTween.To(() => Program.I().timeScaleForEdit, x => Program.I().timeScaleForEdit = x, 1, 0.8f).SetEase(Ease.InQuad);

@@ -2812,12 +2812,22 @@ namespace MDPro3
             return true;
         }
 
+        public bool IsFaceDownOnSpellZone()
+        {
+            if ((p.position & (uint)CardPosition.FaceUp) > 0)
+                return false;
+            if ((p.location & (uint)CardLocation.SpellZone) == 0)
+                return false;
+
+            return true;
+        }
+
         int setTurn = 0;
         public void ShowFaceDownCardOrNot(bool show)
         {
             if (model == null)
                 return;
-            if (show)
+            if (IsFaceDownOnSpellZone())
                 setTurn = Program.I().ocgcore.turns;
 
             var back = manager.GetElement<Transform>("CardModel").GetChild(0).GetComponent<Renderer>();
