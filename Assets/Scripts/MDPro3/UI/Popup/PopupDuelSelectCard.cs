@@ -126,6 +126,10 @@ namespace MDPro3.UI
         {
             base.Show();
             Program.I().currentServant.returnAction = OnCancel;
+            if (!exitable)
+                Program.I().currentServant.returnAction = FieldView;
+            if (Program.I().ocgcore.currentMessage == GameMessage.ConfirmCards)
+                Program.I().currentServant.returnAction = OnFinish;
         }
 
         void Refresh()
@@ -373,7 +377,6 @@ namespace MDPro3.UI
 
         public override void OnCancel()
         {
-            //Debug.Log("OnCancel: " + core.currentMessage);
             base.OnCancel();
             if (!exitable)
                 return;
