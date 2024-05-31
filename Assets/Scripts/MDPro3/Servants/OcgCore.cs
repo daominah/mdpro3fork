@@ -4596,6 +4596,8 @@ namespace MDPro3
                     PhaseButtonHandler.TurnChange(myTurn, turns);
                     TurnChangeBanner(myTurn ? 0 : 1);
                     PhaseButtonHandler.SetTextMain("");
+                    foreach (var c in cards)
+                        c.ShowDisquiet();
                     break;
                 case GameMessage.NewPhase:
                     attackLine.SetActive(false);

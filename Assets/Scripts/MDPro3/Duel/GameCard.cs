@@ -187,12 +187,12 @@ namespace MDPro3
             var cardParmChange = ABLoader.LoadFromFile("MasterDuel/Effects/eff_prm/fxp_cardparm_change_001", true);
             var cardBuffActive = ABLoader.LoadFromFile("MasterDuel/Effects/buff/fxp_bff_active_001", true);
             var cardNegate = ABLoader.LoadFromFile("MasterDuel/Effects/buff/fxp_bff_disable_001", true);
+            var cardDisquiet = ABLoader.LoadFromFile("MasterDuel/Effects/buff/fxp_bff_disquiet_001", true);
 
             var cardBlueHighlight = ABLoader.LoadFromFile("MasterDuel/Effects/hitghlight/fxp_hl_set_001", true);
             var cardBlueHighlightSelect = ABLoader.LoadFromFile("MasterDuel/Effects/hitghlight/fxp_hl_set_sct_001", true);
             var cardYellowHighlight = ABLoader.LoadFromFile("MasterDuel/Effects/hitghlight/fxp_hl_spsom_001", true);
             var cardYellowHighlightSelect = ABLoader.LoadFromFile("MasterDuel/Effects/hitghlight/fxp_hl_spsom_sct_001", true);
-
 
             cardParmUp.transform.SetParent(manager.GetElement<Transform>("Turn").GetChild(1), false);
             cardParmDown.transform.SetParent(manager.GetElement<Transform>("Turn").GetChild(1), false);
@@ -201,6 +201,9 @@ namespace MDPro3
             cardBuffActive.transform.localPosition = new Vector3(0, 0.1f, 0);
             cardNegate.transform.SetParent(manager.GetElement<Transform>("Turn").GetChild(1), false);
             cardNegate.transform.localPosition = new Vector3(0, 0.1f, 0);
+            cardDisquiet.transform.SetParent(manager.GetElement<Transform>("Turn").GetChild(1), false);
+            cardDisquiet.transform.localPosition = new Vector3(0, 0f, 0);
+            cardDisquiet.transform.localEulerAngles = new Vector3(0f, 0f, 180f);
 
             var highlight = new GameObject("Highlight");
             cardBlueHighlight.transform.SetParent(highlight.transform, false);
@@ -221,7 +224,8 @@ namespace MDPro3
             e4.label = "EffectBuffActive";
             var e5 = cardNegate.AddComponent<ElementObject>();
             e5.label = "EffectNegate";
-
+            var e6 = cardDisquiet.AddComponent<ElementObject>();
+            e6.label = "EffectDisquiet";
 
             var e7 = cardBlueHighlight.AddComponent<ElementObject>();
             e7.label = "EffectHighlightBlue";
@@ -241,6 +245,7 @@ namespace MDPro3
             list.Add(e3);
             list.Add(e4);
             list.Add(e5);
+            list.Add(e6);
 
             list.Add(e7);
             list.Add(e8);
@@ -254,6 +259,7 @@ namespace MDPro3
             cardParmChange.SetActive(false);
             cardBuffActive.SetActive(false);
             cardNegate.SetActive(false);
+            cardDisquiet.SetActive(false);
 
             cardBlueHighlight.SetActive(false);
             cardBlueHighlightSelect.SetActive(false);
@@ -341,9 +347,13 @@ namespace MDPro3
                 if (model != null)
                 {
                     if (data.Id > 0)
+                    {
                         StartCoroutine(SetFace());
+                        ShowFaceDownCardOrNot(NeedShowFaceDownCard());
+                    }
                 }
             }
+            data = d;
             RefreshLabel();
             if (d.Id > 0)
                 if ((p.location & (uint)CardLocation.Extra) > 0)
@@ -2802,10 +2812,14 @@ namespace MDPro3
             return true;
         }
 
+        int setTurn = 0;
         public void ShowFaceDownCardOrNot(bool show)
         {
             if (model == null)
                 return;
+            if (show)
+                setTurn = Program.I().ocgcore.turns;
+
             var back = manager.GetElement<Transform>("CardModel").GetChild(0).GetComponent<Renderer>();
             var face = manager.GetElement<Transform>("CardModel").GetChild(1).GetComponent<Renderer>();
 
@@ -2828,7 +2842,23 @@ namespace MDPro3
                 back.gameObject.SetActive(true);
                 face.GetComponent<Animator>().SetBool("Show", false);
                 face.transform.localEulerAngles = new Vector3(180f, 0f, -180f);
+                manager.GetElement("EffectDisquiet").SetActive(false);
             }
+        }
+        public void ShowDisquiet()
+        {
+            if (model == null)
+                return;
+            if (setTurn == 0)
+                return;
+            if (setTurn >= Program.I().ocgcore.turns)
+                return;
+            if ((p.location & (uint)CardLocation.SpellZone) == 0)
+                return;
+            if ((p.position & (uint)CardPosition.FaceDown) == 0)
+                return;
+
+            manager.GetElement("EffectDisquiet").SetActive(true);
         }
 
         #endregion
