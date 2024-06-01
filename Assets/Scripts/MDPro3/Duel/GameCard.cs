@@ -905,6 +905,7 @@ namespace MDPro3
                 foreach (var card in Program.I().ocgcore.cards)
                     card.RemoveTarget(this);
                 disabled = false;
+                setOverTurn = false;
                 RefreshData();
             }
 
@@ -955,6 +956,8 @@ namespace MDPro3
                     CreateModel();
                     ModelAt(p);
                     ShowFaceDownCardOrNot(NeedShowFaceDownCard());
+                    if (IsFaceDownOnSpellZone())
+                        setOverTurn = true;
                 }
                 return 0;
             }
@@ -2823,6 +2826,7 @@ namespace MDPro3
         }
 
         int setTurn = 0;
+        public bool setOverTurn;
         public void ShowFaceDownCardOrNot(bool show)
         {
             if (model == null)
@@ -2871,6 +2875,7 @@ namespace MDPro3
                 return;
 
             manager.GetElement("EffectDisquiet").SetActive(true);
+            setOverTurn = true;
         }
 
         #endregion

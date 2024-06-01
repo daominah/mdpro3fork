@@ -56,8 +56,8 @@ public class AssetBundleRobber : MonoBehaviour
 
         masterDuelAssetBundlePath = masterDuelWindowsAssetBundlePath;
         workingPlace = windowsWorkingPlace;
-        //masterDuelAssetBundlePath = masterDuelAndroidAssetBundlePath;
-        //workingPlace = androindWorkingPlace;
+        masterDuelAssetBundlePath = masterDuelAndroidAssetBundlePath;
+        workingPlace = androindWorkingPlace;
 
         fullCopy = true;
         //fullCopy = false;
@@ -66,7 +66,22 @@ public class AssetBundleRobber : MonoBehaviour
 
         //StartCoroutine(RefreshFileResources());
 
-        Copy("ecf3e547");//Fusion07445TrailFieldCard01
+        Copy("b9f86e1a");//Effects/Hit/Eff_Duel_HitEffect_00
+        Copy("20f13fa0");//Effects/Hit/Eff_Duel_HitEffect_03
+        Copy("ac8758eb");//Effects/MagicTrapEffects/fxp_05740_Area
+        Copy("6d07fd50");//Effects/MagicTrapEffects/fxp_05740_Card
+        Copy("1670a856");//Effects/MagicTrapEffects/fxp_13631_Area_Loop
+        Copy("6b1dcc84");//Effects/MagicTrapEffects/fxp_13631_Area
+        Copy("aa9d693f");//Effects/MagicTrapEffects/fxp_13631_Card
+        Copy("55f66563");//Effects/MagicTrapEffects/fxp_14876
+
+        Copy("138f1dcd");//Effects/MonsterEffectProcess/fxp_mep08933_01
+        Copy("1d6fc525");//Effects/Sacrifice/fxp_Sacrifice_fsn_001
+        Copy("1bd494f3");//Effects/Sacrifice/fxp_Sacrifice_fsn_ef07445_001
+        Copy("e93b1e20");//Effects/Sacrifice/fxp_Sacrifice_rtl_001
+
+
+
     }
 
     void Copy(string path)

@@ -579,5 +579,20 @@ namespace MDPro3.UI
             else
                 disable.SetActive(false);
         }
+
+        public bool InTheSameLine(GPS gps)
+        {
+            if ((gps.location & ((uint)CardLocation.Deck + (uint)CardLocation.Extra)) > 0)
+                return false;
+            if ((p.location & ((uint)CardLocation.Deck + (uint)CardLocation.Extra)) > 0)
+                return false;
+
+            if ((p.sequence == gps.sequence) && (p.controller == gps.controller))
+                return true;
+            if ((p.sequence == (4 - gps.sequence)) && (p.controller != gps.controller))
+                return true;
+
+            return false;
+        }
     }
 }

@@ -790,9 +790,13 @@ namespace MDPro3
             allPackages.Clear();
             AudioManager.ResetSESource();
 
-            foreach (GameObject gameObject in allGameObjects)
-                Destroy(gameObject);
+            foreach (var o in turnEndDeleteObjects)
+                Destroy(o);
+            turnEndDeleteObjects.Clear();
+            foreach (var o in allGameObjects)
+                Destroy(o);
             allGameObjects.Clear();
+
             foreach (var card in cards)
                 card.Dispose();
             cards.Clear();
@@ -863,11 +867,6 @@ namespace MDPro3
             //ABLoader.LoadFromFolder("657e34c6");//assets/resourcesassetbundle/duel/timeline/duel/universal/attack/attackdarkm/attackdarkmtargetpoint.prefab
             //ABLoader.LoadFromFolder("5c2f34a0");//assets/resourcesassetbundle/duel/timeline/duel/universal/attack/attackredeyes/attackredebless.prefab
             //ABLoader.LoadFromFolder("fbf001db");//assets/resourcesassetbundle/duel/timeline/duel/universal/attack/attackredeyes/attackrededummycardset.prefab
-
-            //ABLoader.LoadFromFolder("MasterDuel/Timeline/Summon/SummonFusion/Fusion07445TrailFieldCard01");
-            //ABLoader.LoadFromFolder("MasterDuel/Timeline/Summon/SummonFusion/SummonFusion07445ShowUnitCard01");
-            //ABLoader.LoadFromFolder("MasterDuel/Timeline/Summon/SummonFusion/SummonFusion07445ShowUnitCard08");
-            //ABLoader.LoadFromFolder("MasterDuel/Timeline/Summon/SummonFusion/SummonFusion07445ShowUnitCardNum");
 
             #region Attack Line
             if (attackLine == null)
@@ -1383,6 +1382,7 @@ namespace MDPro3
         public DuelPhase phase = DuelPhase.Draw;
         public delegate void ResponseHandler(byte[] buffer);
         public List<GameObject> allGameObjects = new List<GameObject>();
+        List<GameObject> turnEndDeleteObjects = new List<GameObject>();
 
         public static bool messagePass;
         public static bool pause;
@@ -3771,7 +3771,117 @@ namespace MDPro3
                                     }
                                 }
                                 else
-                                    messagePass = true;
+                                {
+                                    if(code == 82732705)//技能抽取
+                                    {
+                                        if(card.model == null)
+                                        {
+                                            messagePass = true;
+                                            return;
+                                        }
+
+                                        AudioManager.PlaySE("SE_EV_SKILLDRAIN");
+                                        var effArea = ABLoader.LoadFromFolder("MasterDuel/Effects/MagicTrapEffects/fxp_05740_Area", "fxp_05740_Area", true);
+                                        var effCard = ABLoader.LoadFromFolder("MasterDuel/Effects/MagicTrapEffects/fxp_05740_Card", "fxp_05740_Card", true);
+                                        effCard.SetActive(false);
+                                        effCard.transform.position = card.model.transform.position;
+                                        DOTween.To(v => { }, 0, 0, 0.5f).OnComplete(() =>
+                                        {
+                                            effCard.SetActive(true);
+                                        });
+                                        DOTween.To(v => { }, 0, 0, 1.5f).OnComplete(() =>
+                                        {
+                                            Destroy(effArea);
+                                            Destroy(effCard);
+                                            messagePass = true;
+                                        });
+                                    }
+                                    else if(code == 10045474)//无限泡影
+                                    {
+                                        if (card.effectTargets.Count == 0 || card.effectTargets[0].model == null)
+                                        {
+                                            messagePass = true;
+                                            return;
+                                        }
+
+                                        var time = 1.5f;
+
+                                        AudioManager.PlaySE("SE_EV_INFINITE_IMPERMANENCE");
+                                        var effCard = ABLoader.LoadFromFolder("MasterDuel/Effects/MagicTrapEffects/fxp_13631_Card", "fxp_13631_Card", true);
+                                        effCard.transform.position = card.effectTargets[0].model.transform.position;
+                                        if((card.effectTargets[0].p.position & (uint)CardPosition.Attack) > 0)
+                                            Destroy(effCard.transform.GetChild(0).GetChild(1).gameObject);
+                                        else
+                                            Destroy(effCard.transform.GetChild(0).GetChild(0).gameObject);
+
+                                        if (card.setOverTurn)
+                                        {
+                                            GameObject effArea = ABLoader.LoadFromFolder("MasterDuel/Effects/MagicTrapEffects/fxp_13631_Area", "fxp_13631_Area", true);
+                                            GameObject effAreaLoop = ABLoader.LoadFromFolder("MasterDuel/Effects/MagicTrapEffects/fxp_13631_Area_Loop", "fxp_13631_Area_Loop", true);
+                                            foreach(var place in Program.I().ocgcore.places)
+                                            {
+                                                if (place.InTheSameLine(card.p))
+                                                {
+                                                    var area = Instantiate(effArea);
+                                                    area.transform.position = place.transform.position;
+                                                    Destroy(area, time);
+                                                    var loop = Instantiate(effAreaLoop);
+                                                    loop.transform.SetParent(place.transform, false);
+                                                    if ((place.p.location & (uint)CardLocation.MonsterZone) > 0)
+                                                        loop.transform.localScale = new Vector3(1f, 1f, 1.1f);
+                                                    allGameObjects.Add(loop);
+                                                    turnEndDeleteObjects.Add(loop);
+                                                }
+                                            }
+                                            Destroy(effArea);
+                                            Destroy(effAreaLoop);
+                                        }
+
+                                        DOTween.To(v => { }, 0, 0, time).OnComplete(() =>
+                                        {
+                                            Destroy(effCard);
+                                            messagePass = true;
+                                        });
+                                    }
+                                    else if (code == 14532163)//闪电风暴
+                                    {
+                                        var eff = ABLoader.LoadFromFolder("MasterDuel/Effects/MagicTrapEffects/fxp_14876", "fxp_14876", true);
+
+                                        if (card.p.controller == 0)
+                                        {
+                                            AudioManager.PlaySE("SE_EV_LIGHTNINGSTORM_P");
+                                            Destroy(eff.transform.GetChild(0).GetChild(0).GetChild(2).gameObject);
+                                        }
+                                        else
+                                        {
+                                            AudioManager.PlaySE("SE_EV_LIGHTNINGSTORM_R");
+                                            Destroy(eff.transform.GetChild(0).GetChild(0).GetChild(0).gameObject);
+                                        }
+                                        DOTween.To(v => { }, 0, 0, 1f).OnComplete(() =>
+                                        {
+                                            Destroy(eff);
+                                            messagePass = true;
+                                        });
+                                    }
+                                    else if (code == 97268402)//效果遮蒙者
+                                    {
+                                        if (card.effectTargets.Count == 0 || card.effectTargets[0].model == null)
+                                        {
+                                            messagePass = true;
+                                            return;
+                                        }
+                                        AudioManager.PlaySE("SE_EV_EFFECT_VEILER");
+                                        var eff = ABLoader.LoadFromFolder("MasterDuel/Effects/MonsterEffectProcess/fxp_mep08933_01", "fxp_mep08933_01", true);
+                                        eff.transform.position = card.effectTargets[0].model.transform.position;
+                                        DOTween.To(v => { }, 0, 0, 1f).OnComplete(() =>
+                                        {
+                                            Destroy(eff);
+                                            messagePass = true;
+                                        });
+                                    }
+                                    else
+                                        messagePass = true;
+                                }
                             }
                             else
                                 messagePass = true;
@@ -4607,6 +4717,9 @@ namespace MDPro3
                     PhaseButtonHandler.SetTextMain("");
                     foreach (var c in cards)
                         c.ShowDisquiet();
+                    foreach(var o in turnEndDeleteObjects)
+                        Destroy(o);
+                    turnEndDeleteObjects.Clear();
                     break;
                 case GameMessage.NewPhase:
                     attackLine.SetActive(false);
