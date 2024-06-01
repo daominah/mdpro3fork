@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using MDPro3.YGOSharp;
 using MDPro3.YGOSharp.OCGWrapper.Enums;
+using TMPro;
 
 namespace MDPro3.UI
 {
@@ -15,14 +16,17 @@ namespace MDPro3.UI
         public GameObject cardBack;
         public Button button;
         public Image levelIcon;
-        public Text textBlack;
-        public Text textWhite;
+        public TextMeshProUGUI textLevel;
+        public Image pendulumIcon;
+        public TextMeshProUGUI textPendulum;
+        public Image tunerIcon;
         public GameObject checkOn;
         public GameObject orderBase;
         public Text orderText;
         public GameObject chain;
         public Text chainText;
         public GameObject target;
+
 
         public int id;
         public List<GameCard> cards;
@@ -94,20 +98,34 @@ namespace MDPro3.UI
                     target.SetActive(false);
             }
 
-            if ((CardsManager.Get(card.GetData().Id).Type & (uint)CardType.Monster) > 0)
+            var origin = CardsManager.Get(card.GetData().Id);
+
+            if ((origin.Type & (uint)CardType.Monster) > 0)
             {
                 levelIcon.sprite = TextureManager.GetCardLevelIcon(card.GetData());
                 if ((card.GetData().Type & (uint)CardType.Link) > 0)
-                    textBlack.text = CardDescription.GetCardLinkCount(card.GetData()).ToString();
+                    textLevel.text = CardDescription.GetCardLinkCount(card.GetData()).ToString();
                 else
-                    textBlack.text = card.GetData().Level.ToString();
-                textWhite.text = textBlack.text;
+                    textLevel.text = card.GetData().Level.ToString();
+
+                if ((origin.Type & (uint)CardType.Tuner) > 0)
+                    tunerIcon.gameObject.SetActive(true);
             }
             else
             {
                 levelIcon.sprite = TextureManager.container.typeNone;
-                textBlack.text = "";
-                textWhite.text = "";
+                textLevel.text = string.Empty;
+            }
+
+            if ((origin.Type & (uint)CardType.Pendulum) > 0)
+            {
+                pendulumIcon.gameObject.SetActive(true);
+                textPendulum.text = card.GetData().LScale.ToString();
+            }
+            else
+            {
+                pendulumIcon.gameObject.SetActive(false);
+                textPendulum.text = string.Empty;
             }
 
             button.onClick.AddListener(OnClick);
@@ -247,7 +265,10 @@ namespace MDPro3.UI
             cardFace.color = unselectableColor;
             cardBack.GetComponent<Image>().color = unselectableColor;
             levelIcon.color = unselectableColor;
-            textWhite.color = unselectableColor;
+            pendulumIcon.color = unselectableColor;
+            textLevel.color = unselectableColor;
+            textPendulum.color = unselectableColor;
+            tunerIcon.color = unselectableColor;
         }
         public void SelectableThis()
         {
@@ -257,7 +278,10 @@ namespace MDPro3.UI
             cardFace.color = Color.white;
             cardBack.GetComponent<Image>().color = Color.white;
             levelIcon.color = Color.white;
-            textWhite.color = Color.white;
+            pendulumIcon.color = Color.white;
+            textLevel.color = Color.white;
+            textPendulum.color = Color.white;
+            tunerIcon.color = Color.white;
         }
 
         public void PreSelectThis()

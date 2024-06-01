@@ -447,7 +447,7 @@ namespace MDPro3
         {
             if (isShowed)
             {
-                if (TimeLineManager.skippable
+                if (TimelineManager.skippable
                     && Program.InputGetMouse0Down)
                 {
                     Program.I().timeline_.Skip();
@@ -781,7 +781,7 @@ namespace MDPro3
             ClearResponse();
             CameraManager.BlackOut(0f, 0.3f);
             UIManager.UIBlackIn(transitionTime);
-            TimeLineManager.inSummonMaterial = false;
+            TimelineManager.inSummonMaterial = false;
             hintObj.SetActive(false);
             attackLine.SetActive(false);
             Destroy(duelFinalBlow, 0.5f);
@@ -863,6 +863,11 @@ namespace MDPro3
             //ABLoader.LoadFromFolder("657e34c6");//assets/resourcesassetbundle/duel/timeline/duel/universal/attack/attackdarkm/attackdarkmtargetpoint.prefab
             //ABLoader.LoadFromFolder("5c2f34a0");//assets/resourcesassetbundle/duel/timeline/duel/universal/attack/attackredeyes/attackredebless.prefab
             //ABLoader.LoadFromFolder("fbf001db");//assets/resourcesassetbundle/duel/timeline/duel/universal/attack/attackredeyes/attackrededummycardset.prefab
+
+            //ABLoader.LoadFromFolder("MasterDuel/Timeline/Summon/SummonFusion/Fusion07445TrailFieldCard01");
+            //ABLoader.LoadFromFolder("MasterDuel/Timeline/Summon/SummonFusion/SummonFusion07445ShowUnitCard01");
+            //ABLoader.LoadFromFolder("MasterDuel/Timeline/Summon/SummonFusion/SummonFusion07445ShowUnitCard08");
+            //ABLoader.LoadFromFolder("MasterDuel/Timeline/Summon/SummonFusion/SummonFusion07445ShowUnitCardNum");
 
             #region Attack Line
             if (attackLine == null)
@@ -1407,6 +1412,7 @@ namespace MDPro3
 
         public List<GameCard> materialCards = new List<GameCard>();
         public List<GameCard> cardsInChain = new List<GameCard>();
+        public GameCard currentSolvingCard;
         public List<int> codesInChain = new List<int>();
         public List<uint> controllerInChain = new List<uint>();
         public List<int> negatedInChain = new List<int>();
@@ -3437,6 +3443,7 @@ namespace MDPro3
                     break;
                 case GameMessage.ChainSolving:
                     var id = (int)r.ReadByte();
+                    currentSolvingCard = cardsInChain[id - 1];
                     messagePass = false;
                     DOTween.To(v => { }, 0, 0, ShowChainResolve(id)).OnComplete(() =>
                     {
@@ -3797,6 +3804,7 @@ namespace MDPro3
                     controllerInChain.Clear();
                     negatedInChain.Clear();
                     materialCards.Clear();
+                    currentSolvingCard = null;
                     break;
                 case GameMessage.ChainNegated:
                     id = r.ReadByte();

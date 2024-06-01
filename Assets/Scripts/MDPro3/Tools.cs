@@ -90,6 +90,19 @@ namespace MDPro3
                 director.timeUpdateMode = DirectorUpdateMode.UnscaledGameTime;
         }
 
+        public static PlayableDirector GetPlayableDirectorInChildren(Transform container)
+        {
+            PlayableDirector returnValue = null;
+            for (int i = 0 ; i < container.childCount; i++)
+            {
+                if (container.GetChild(i).GetComponent<PlayableDirector>() != null)
+                    returnValue = container.GetChild(i).GetComponent<PlayableDirector>();
+                else
+                    UnityEngine.Object.Destroy(container.GetChild(i).gameObject);
+            }
+            return returnValue;
+        }
+
         public static int CompareTime(object x, object y)
         {
             if (x == null && y == null) return 0;

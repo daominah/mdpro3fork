@@ -11,7 +11,7 @@ using MDPro3.UI;
 
 namespace MDPro3
 {
-    public class TimeLineManager : Manager
+    public class TimelineManager : Manager
     {
         public static ElementObjectManager currentManager;
         public static ElementObjectManager currentSyncManager;
@@ -79,16 +79,34 @@ namespace MDPro3
             SyncSummonTimeline();
 
             GameObject ms;
-            if (materials.Count > 8)
-                ms = ABLoader.LoadFromFolder("MasterDuel/Timeline/summon/summonfusion/summonfusionshowunitcard08",
-                "summonfusionshowunitcard08", true);
+
+            //Super Polymerization
+            var data = Program.I().ocgcore.summonCard.GetData();
+            if ((data.Type & (uint)CardType.Fusion) > 0 
+                && Program.I().ocgcore.currentSolvingCard != null
+                && Program.I().ocgcore.currentSolvingCard.GetData().Id == 48130397)
+            {
+                if (materials.Count > 8)
+                    ms = ABLoader.LoadFromFolder("MasterDuel/Timeline/Summon/SummonFusion/SummonFusion07445ShowUnitCard08",
+                    "SummonFusion07445ShowUnitCard08", true);
+                else
+                    ms = ABLoader.LoadFromFolder("MasterDuel/Timeline/Summon/SummonFusion/SummonFusion07445ShowUnitCard0" + materials.Count,
+                    "SummonFusion07445ShowUnitCard0" + materials.Count, true);
+            }
             else
-                ms = ABLoader.LoadFromFolder("MasterDuel/Timeline/summon/summonfusion/summonfusionshowunitcard0" + materials.Count,
-                "summonfusionshowunitcard0" + materials.Count, true);
+            {
+                if (materials.Count > 8)
+                    ms = ABLoader.LoadFromFolder("MasterDuel/Timeline/Summon/SummonFusion/SummonFusionShowUnitCard08",
+                    "SummonFusionShowUnitCard08", true);
+                else
+                    ms = ABLoader.LoadFromFolder("MasterDuel/Timeline/Summon/SummonFusion/summonfusionshowunitcard0" + materials.Count,
+                    "SummonFusionShowUnitCard0" + materials.Count, true);
+            }
 
             Program.I().ocgcore.allGameObjects.Add(ms);
 
-            var manager = ms.transform.GetChild(0).GetComponent<ElementObjectManager>();
+            var manager = Tools.GetPlayableDirectorInChildren(ms.transform).GetComponent<ElementObjectManager>();
+            manager.GetComponent<PlayableDirector>().playOnAwake = true;
             currentManager = manager;
 
             bool tunerFound = false;

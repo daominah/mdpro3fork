@@ -2829,6 +2829,8 @@ namespace MDPro3
                 return;
             if (IsFaceDownOnSpellZone())
                 setTurn = Program.I().ocgcore.turns;
+            else
+                setTurn = 0;
 
             var back = manager.GetElement<Transform>("CardModel").GetChild(0).GetComponent<Renderer>();
             var face = manager.GetElement<Transform>("CardModel").GetChild(1).GetComponent<Renderer>();

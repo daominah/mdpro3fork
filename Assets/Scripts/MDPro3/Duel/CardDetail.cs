@@ -74,6 +74,7 @@ namespace MDPro3
 
             var statusRect = manager.GetElement<RectTransform>("Status");
             var effectRect = manager.GetElement<RectTransform>("Effect");
+
             if ((origin.Type & (uint)CardType.Monster) > 0)
             {
                 statusRect.sizeDelta = new Vector2(statusRect.sizeDelta.x, 140);
@@ -81,6 +82,10 @@ namespace MDPro3
                 manager.GetElement("StatusSpell").SetActive(false);
                 manager.GetElement<Image>("Level").sprite = TextureManager.GetCardLevelIcon(origin);
                 manager.GetElement<Image>("Race").sprite = TextureManager.GetCardRaceIcon(origin.Race);
+                if ((origin.Type & (uint)CardType.Tuner) > 0)
+                    manager.GetElement("Tuner").SetActive(true);
+                else
+                    manager.GetElement("Tuner").SetActive(false);
                 manager.GetElement<Text>("TextATK").text = origin.Attack == -2 ? "?" : origin.Attack.ToString();
                 if ((origin.Type & (uint)CardType.Link) > 0)
                 {

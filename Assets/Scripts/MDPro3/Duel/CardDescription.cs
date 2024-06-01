@@ -152,6 +152,25 @@ namespace MDPro3
                 var raceSprite = GetCardRace(data);
                 manager.GetElement<Image>("Race").sprite = raceSprite.sprite;
                 manager.GetElement("RaceOutline").SetActive(raceSprite.notOriginal);
+                bool isTuner = false;
+                if ((data.Type & (uint)CardType.Tuner) > 0)
+                {
+                    isTuner = true;
+                    manager.GetElement("Tuner").SetActive(true);
+                }
+                else
+                    manager.GetElement("Tuner").SetActive(false);
+
+                if(isTuner)
+                {
+                    if ((origin.Type & (uint)CardType.Tuner) > 0)
+                        manager.GetElement("TunerOutline").SetActive(false);
+                    else
+                        manager.GetElement("TunerOutline").SetActive(true);
+                }
+                else
+                    manager.GetElement("TunerOutline").SetActive(false);
+
                 manager.GetElement<Image>("Level").sprite = TextureManager.GetCardLevelIcon(data);
                 if ((data.Type & (uint)CardType.Link) > 0)
                 {

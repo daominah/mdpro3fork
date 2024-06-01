@@ -56,8 +56,8 @@ public class AssetBundleRobber : MonoBehaviour
 
         masterDuelAssetBundlePath = masterDuelWindowsAssetBundlePath;
         workingPlace = windowsWorkingPlace;
-        masterDuelAssetBundlePath = masterDuelAndroidAssetBundlePath;
-        workingPlace = androindWorkingPlace;
+        //masterDuelAssetBundlePath = masterDuelAndroidAssetBundlePath;
+        //workingPlace = androindWorkingPlace;
 
         fullCopy = true;
         //fullCopy = false;
@@ -66,7 +66,7 @@ public class AssetBundleRobber : MonoBehaviour
 
         //StartCoroutine(RefreshFileResources());
 
-        Copy("5c49851c");
+        Copy("ecf3e547");//Fusion07445TrailFieldCard01
     }
 
     void Copy(string path)

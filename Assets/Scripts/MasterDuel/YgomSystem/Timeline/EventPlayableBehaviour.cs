@@ -72,7 +72,7 @@ namespace YgomSystem.Timeline
             {
                 if (Program.I().currentServant != Program.I().ocgcore)
                     return;
-                TimeLineManager.skippable = false;
+                MDPro3.TimelineManager.skippable = false;
                 var code = Program.I().ocgcore.summonCard.GetData().Id;
                 if (MonsterCutin.HasCutin(code))
                     MonsterCutin.Play(code, (int)Program.I().ocgcore.summonCard.p.controller);

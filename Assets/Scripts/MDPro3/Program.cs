@@ -24,7 +24,7 @@ namespace MDPro3
         public AudioManager audio_;
         public TextureManager texture_;
         public MessageManager message_;
-        public TimeLineManager timeline_;
+        public TimelineManager timeline_;
 
         [Header("Servants")]
         public Menu menu;

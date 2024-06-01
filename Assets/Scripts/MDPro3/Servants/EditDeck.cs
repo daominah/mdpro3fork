@@ -360,9 +360,6 @@ namespace MDPro3
             }
             manager.GetElement("Group").SetActive(true);
             cardShowing = data;
-            //if (showingFace != null)
-            //    Destroy(showingFace);
-            //showingFace = Instantiate(cardFace);
             showingFace = cardFace;
             manager.GetElement<RawImage>("Card").texture = showingFace;
             manager.GetElement<RawImage>("Card").material = mat;
@@ -372,6 +369,9 @@ namespace MDPro3
             manager.GetElement<Image>("BaseType").color = colors[1];
             manager.GetElement<Image>("Attribute").sprite = CardDescription.GetCardAttribute(data).sprite;
             manager.GetElement<Text>("TextType").text = StringHelper.GetType(data);
+
+            manager.GetElement("Tuner").SetActive(false);
+
             if ((data.Type & (uint)CardType.Monster) > 0)
             {
                 manager.GetElement("PropertyMonster").SetActive(true);
@@ -379,6 +379,8 @@ namespace MDPro3
                 manager.GetElement<Image>("Level").sprite = TextureManager.GetCardLevelIcon(data);
                 manager.GetElement<Text>("TextAttack").text = data.Attack == -2 ? "?" : data.Attack.ToString();
                 manager.GetElement<Image>("Race").sprite = CardDescription.GetCardRace(data).sprite;
+                if ((data.Type & (uint)CardType.Tuner) > 0)
+                    manager.GetElement("Tuner").SetActive(true);
                 if ((data.Type & (uint)CardType.Pendulum) > 0)
                 {
                     var texts = CardDescription.GetCardDescriptionSplit(data.Desc);

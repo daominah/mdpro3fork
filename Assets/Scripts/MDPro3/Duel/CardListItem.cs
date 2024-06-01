@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using MDPro3.YGOSharp.OCGWrapper.Enums;
+using TMPro;
 
 namespace MDPro3.UI
 {
@@ -11,8 +12,7 @@ namespace MDPro3.UI
         public RawImage face;
         public GameObject cardBack;
         public Image levelIcon;
-        public Text textWhite;
-        public Text textBlack;
+        public TextMeshProUGUI textLevel;
         public GameObject chain;
         public Text chainText;
         public GameObject target;
@@ -32,16 +32,14 @@ namespace MDPro3.UI
                 {
                     levelIcon.sprite = TextureManager.GetCardLevelIcon(card.GetData());
                     if ((card.GetData().Type & (uint)CardType.Link) > 0)
-                        textWhite.text = CardDescription.GetCardLinkCount(card.GetData()).ToString();
+                        textLevel.text = CardDescription.GetCardLinkCount(card.GetData()).ToString();
                     else
-                        textWhite.text = card.GetData().Level.ToString();
-                    textBlack.text = textWhite.text;
+                        textLevel.text = card.GetData().Level.ToString();
                 }
                 else
                 {
                     levelIcon.sprite = TextureManager.container.typeNone;
-                    textWhite.text = "";
-                    textBlack.text = "";
+                    textLevel.text = "";
                 }
                 if (card.chains.Count > 0)
                 {
@@ -65,8 +63,7 @@ namespace MDPro3.UI
             else
             {
                 levelIcon.gameObject.SetActive(false);
-                textWhite.text = "";
-                textBlack.text = "";
+                textLevel.text = "";
                 chain.SetActive(false);
                 cardBack.SetActive(false);
             }
