@@ -137,6 +137,13 @@ namespace MDPro3
                 itemOnList = result.Result;
             };
         }
+
+        public void SetBanlistName(string listName)
+        {
+            if(manager == null)
+                manager = GetComponent<ElementObjectManager>();
+            manager.GetElement<Text>("TextBanlist").text = listName;
+        }
         public override void Show(int preDepth)
         {
             base.Show(preDepth);

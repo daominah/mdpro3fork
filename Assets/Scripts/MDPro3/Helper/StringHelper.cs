@@ -36,17 +36,19 @@ namespace MDPro3
             var language = Config.Get("Language", "zh-CN");
             var path = Program.localesPath + Program.slash + language + "/strings.conf";
             var text = File.ReadAllText(path);
-            if(Config.Get("Expansions", "1") == "1")
+            if (Config.GetBool("Expansions", true))
             {
                 foreach (var conf in Directory.GetFiles("Expansions", "*.conf"))
-                    text += "\r\n" + File.ReadAllText(conf);
+                    if(!conf.ToLower().EndsWith("lflist.conf"))
+                        text += "\r\n" + File.ReadAllText(conf);
                 foreach (var zip in ZipHelper.zips)
                 {
                     if (zip.Name.ToLower().EndsWith("script.zip"))
                         continue;
                     foreach (var file in zip.EntryFileNames)
                     {
-                        if (file.ToLower().EndsWith(".conf"))
+                        if (file.ToLower().EndsWith(".conf")
+                            && !file.ToLower().EndsWith("lflist.conf"))
                         {
                             var ms = new MemoryStream();
                             var e = zip[file];

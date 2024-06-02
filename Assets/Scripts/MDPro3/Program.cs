@@ -94,7 +94,7 @@ namespace MDPro3
                 Directory.CreateDirectory(dataPath);
             Config.Initialize(configPath);
             items.Initialize();
-            BanlistManager.Initialize(lflistPath);
+            BanlistManager.Initialize();
             InitializeAllManagers();
             InitializeAllServants();
         }
@@ -102,6 +102,7 @@ namespace MDPro3
         public void InitializeForDataChange()
         {
             ZipHelper.Initialize();
+            BanlistManager.Initialize();
             StringHelper.Initialize();
             CardsManager.Initialize();
         }

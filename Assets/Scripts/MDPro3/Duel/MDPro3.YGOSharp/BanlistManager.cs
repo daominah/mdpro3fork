@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Ionic.Zip;
+using System.Collections.Generic;
 using System.IO;
 
 namespace MDPro3.YGOSharp
@@ -7,11 +8,56 @@ namespace MDPro3.YGOSharp
     {
         public static List<Banlist> Banlists { get; private set; }
 
-        public static void Initialize(string fileName)
+        public static void Initialize()
         {
             Banlists = new List<Banlist>();
+            StreamReader reader = null;
+            if (Config.GetBool("Expansions", true))
+            {
+                var confPath = Program.expansionsPath + Program.slash + "lflist.conf";
+                if(File.Exists(confPath))
+                {
+                    reader = new StreamReader(confPath);
+                    InitializeFromReader(reader);
+                    reader.Close();
+                }
+                foreach (var zip in ZipHelper.zips)
+                {
+                    if (zip.Name.ToLower().EndsWith("script.zip"))
+                        continue;
+                    foreach (var file in zip.EntryFileNames)
+                    {
+                        if (file.ToLower().EndsWith("lflist.conf"))
+                        {
+                            var e = zip[file];
+                            if (!Directory.Exists(Program.tempFolder))
+                                Directory.CreateDirectory(Program.tempFolder);
+                            var tempFile = Path.Combine(Path.GetFullPath(Program.tempFolder), file);
+                            e.Extract(Path.GetFullPath(Program.tempFolder), ExtractExistingFileAction.OverwriteSilently);
+                            reader = new StreamReader(tempFile);
+                            InitializeFromReader(reader);
+                            reader.Close();
+                            File.Delete(tempFile);
+                        }
+                    }
+                }
+            }
+
             Banlist current = null;
-            StreamReader reader = new StreamReader(fileName);
+            reader = new StreamReader(Program.lflistPath);
+            InitializeFromReader(reader);
+            reader.Close();
+            current = new Banlist();
+            current.Name ="N/A";
+            Banlists.Add(current);
+
+            Program.I().editDeck.banlist = Banlists[0];
+            Program.I().editDeck.SetBanlistName(Program.I().editDeck.banlist.Name);
+        }
+
+        public static void InitializeFromReader(StreamReader reader)
+        {
+            Banlist current = null;
             while (!reader.EndOfStream)
             {
                 string line = reader.ReadLine();
@@ -32,20 +78,17 @@ namespace MDPro3.YGOSharp
                         continue;
                     if (current == null)
                         continue;
-                    string[] data = line.Split(new char[] {  ' '  }, System.StringSplitOptions.RemoveEmptyEntries);
+                    string[] data = line.Split(new char[] { ' ' }, System.StringSplitOptions.RemoveEmptyEntries);
                     int id = int.Parse(data[0]);
                     int count = int.Parse(data[1]);
                     current.Add(id, count);
                 }
-                catch (System.Exception e)  
+                catch (System.Exception e)
                 {
                     UnityEngine.Debug.Log(line);
                     UnityEngine.Debug.Log(e);
                 }
             }
-            current = new Banlist();
-            current.Name ="N/A";
-            Banlists.Add(current);
         }
 
         public static int GetIndex(uint hash)
