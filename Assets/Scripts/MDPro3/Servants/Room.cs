@@ -545,6 +545,8 @@ namespace MDPro3
 
             if (Program.I().ocgcore.isShowed)
                 Program.I().ocgcore.Chat(player, content);
+            if (Program.I().online.isShowed)
+                MessageManager.Cast(content);
         }
 
         public string GetPlayerName(int player)
@@ -924,7 +926,8 @@ namespace MDPro3
                     UIManager.ShowPopupConfirm(tasks);
                     break;
                 case 4:
-                    Debug.Log("Room Error: 4");
+                    Debug.Log("ERROR 4: " + code);
+
                     break;
             }
         }

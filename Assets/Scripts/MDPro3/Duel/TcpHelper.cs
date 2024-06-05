@@ -28,6 +28,8 @@ namespace MDPro3
 
         static Thread senderThead;
 
+        public static int version = 0x1361;
+
         public static string joinedAddress;
         public static string joinedPort;
         public static string joinedPassword;
@@ -50,7 +52,7 @@ namespace MDPro3
             }
         }
 
-        public static void Join(string ipString, string name, string portString, string pswString, string version)
+        public static void Join(string ipString, string name, string portString, string pswString)
         {
             if (canJoin)
             {
@@ -66,7 +68,7 @@ namespace MDPro3
                         messageQueue.Clear();
                         InitializeSender();
                         CtosMessage_PlayerInfo(name);
-                        CtosMessage_JoinGame(pswString, version);
+                        CtosMessage_JoinGame(pswString);
                         joinedAddress = ipString;
                         joinedPort = portString;
                         joinedPassword = pswString;
@@ -365,12 +367,11 @@ namespace MDPro3
         {
         }
 
-        public static void CtosMessage_JoinGame(string psw, string version)
+        public static void CtosMessage_JoinGame(string psw)
         {
             deckStrings.Clear();
             var message = new Package();
             message.Function = (int)CtosMessage.JoinGame;
-            //Config.ClientVersion = (uint)GameStringManager.helper_stringToInt(version);
             message.Data.writer.Write((short)Config.ClientVersion);
             message.Data.writer.Write((byte)204);
             message.Data.writer.Write((byte)204);

@@ -8,14 +8,14 @@ namespace MDPro3
 {
     public static class Config
     {
-        public static uint ClientVersion = 0x1360;
+        public static uint ClientVersion = 0x1361;
 
         private static readonly List<OneString> translations = new List<OneString>();
 
         private static string path;
 
-        public readonly static string stringYes = "1";
-        public readonly static string stringNo = "0";
+        public const string stringYes = "1";
+        public const string stringNo = "0";
 
         public static void Initialize(string path)
         {

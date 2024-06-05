@@ -25,7 +25,7 @@ namespace irr {
 #include "single_mode.h"
 #endif //YGOPRO_SERVER_MODE
 
-const unsigned short PRO_VERSION = 0x1360;
+const unsigned short PRO_VERSION = 0x1361;
 
 namespace ygo {
 
@@ -1199,7 +1199,6 @@ void Game::LoadExpansions() {
 		}
 		});
 #endif // SERVER_PRO3_SUPPORT
-
 	FileSystem::TraversalDir(L"./expansions", [](const wchar_t* name, bool isdir) {
 		wchar_t fpath[1024];
 		myswprintf(fpath, L"./expansions/%ls", name);

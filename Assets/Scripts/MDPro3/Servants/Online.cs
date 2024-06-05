@@ -190,7 +190,7 @@ namespace MDPro3
             Room.fromLocalHost = true;
             YgoServer.StartServer(args);
             string name = Config.Get("DuelPlayerName0", "@ui");
-            (new Thread(() => { Thread.Sleep(200); TcpHelper.Join("127.0.0.1", Config.Get("DuelPlayerName0", "@ui"), "7911", "", ""); })).Start();
+            (new Thread(() => { Thread.Sleep(200); TcpHelper.Join("127.0.0.1", Config.Get("DuelPlayerName0", "@ui"), "7911", ""); })).Start();
         }
 
         string GetPoolCodeByName(string pool)
@@ -260,9 +260,9 @@ namespace MDPro3
 
         public void Join()
         {
-            KF_OnlineGame(inputName.text, inputHost.text, inputPort.text, "", inputPassword.text);
+            KF_OnlineGame(inputName.text, inputHost.text, inputPort.text, inputPassword.text);
         }
-        public void KF_OnlineGame(string name, string ip, string port, string version, string password)
+        public void KF_OnlineGame(string name, string ip, string port, string password)
         {
             if (name == "")
             {
@@ -279,7 +279,7 @@ namespace MDPro3
                 return;
             Room.fromSolo = false;
             Room.fromLocalHost = false;
-            new Thread(() => { TcpHelper.Join(ip, Config.Get("DuelPlayerName0", "@ui"), port, password, version); }).Start();
+            new Thread(() => { TcpHelper.Join(ip, Config.Get("DuelPlayerName0", "@ui"), port, password); }).Start();
         }
     }
 }

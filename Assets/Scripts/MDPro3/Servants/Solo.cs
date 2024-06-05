@@ -272,7 +272,7 @@ namespace MDPro3
             else
                 Room.soloLockHand = false;
             Room.fromLocalHost = false;
-            (new Thread(() => { Thread.Sleep(200); TcpHelper.Join("127.0.0.1", Config.Get("DuelPlayerName0", "@ui"), port, "", ""); })).Start();
+            (new Thread(() => { Thread.Sleep(200); TcpHelper.Join("127.0.0.1", Config.Get("DuelPlayerName0", "@ui"), port, ""); })).Start();
 
             StartWindBot(command, "127.0.0.1", port, string.Empty, lockHand);
         }
