@@ -105,9 +105,9 @@ namespace MDPro3
                     {
                         string deckName = "";
                         deckName = newBot.command.Split(new string[] { "Deck=", " Dialog=" }, StringSplitOptions.RemoveEmptyEntries)[1].Replace("'", "").Replace(" ", "");
-                        if(File.Exists("Data/WindBot/Decks/Ai_" + deckName + ".ydk")) 
+                        if(File.Exists("Data/WindBot/Decks/Ai_" + deckName + Program.ydkExpansion)) 
                         {
-                            aiDeck = new Deck("Data/WindBot/Decks/Ai_" + deckName + ".ydk");
+                            aiDeck = new Deck("Data/WindBot/Decks/Ai_" + deckName + Program.ydkExpansion);
                             if(aiDeck.Main.Count > 0)
                                 newBot.main0 = aiDeck.Main[0];
                         }
@@ -182,7 +182,7 @@ namespace MDPro3
             if (aiCode == diyAI)
             {
                 string selectedDeck = btnDeck.transform.GetChild(0).GetComponent<Text>().text;
-                if (!File.Exists("Deck/" + selectedDeck + ".ydk"))
+                if (!File.Exists(Program.deckPath + selectedDeck + Program.ydkExpansion))
                 {
                     MessageManager.Cast(InterString.Get("请先为AI选择有效的卡组。"));
                     return string.Empty;

@@ -162,12 +162,17 @@ namespace MDPro3.UI
 
         void OnClickRight(PointerEventData eventData)
         {
+            if (!Program.I().editDeck.deckIsFromLocalFile)
+                return;
             if (Program.I().currentServant == Program.I().editDeck)
                 Program.I().editDeck.DeleteCard(this);
         }
 
         void OnBeginDrag(PointerEventData eventData)
         {
+            if (!Program.I().editDeck.deckIsFromLocalFile)
+                return;
+
             dragging = true;
             transform.localScale = Vector3.one * 1.2f;
             transform.SetSiblingIndex(transform.parent.childCount - 1);
@@ -175,6 +180,9 @@ namespace MDPro3.UI
         }
         void OnDrag(PointerEventData eventData)
         {
+            if (!Program.I().editDeck.deckIsFromLocalFile)
+                return;
+
             var dragTarget = GetComponent<RectTransform>();
             Vector3 uiPosition;
             RectTransformUtility.ScreenPointToWorldPointInRectangle(
@@ -193,6 +201,9 @@ namespace MDPro3.UI
 
         void OnEndDrag(PointerEventData eventData)
         {
+            if (!Program.I().editDeck.deckIsFromLocalFile)
+                return;
+
             Program.I().editDeck.RefreshCardID();
             dragging = false;
             button.GetComponent<Image>().raycastTarget = true;

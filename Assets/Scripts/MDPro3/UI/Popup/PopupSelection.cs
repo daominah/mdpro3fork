@@ -68,7 +68,6 @@ namespace MDPro3.UI
             var servant = Program.I().currentServant;
             window.DOAnchorPos(new Vector2(0f, -1100f), transitionTime).OnComplete(() =>
             {
-                CameraManager.UIBlurMinus();
                 Destroy(gameObject);
                 servant.returnAction = null;
                 closeAction?.Invoke();

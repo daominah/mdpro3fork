@@ -37,6 +37,8 @@ namespace MDPro3
         //Hide -> ApplyHideArrangement
 
         //Program.ShiftServant 调用show 和 hide
+        //show 在 isShowed为false时才执行ApplyShowArrangement
+        //hide 在 isShowed为true时才执行ApplyHideArrangement
 
         public virtual void Initialize()
         {
@@ -88,7 +90,7 @@ namespace MDPro3
                         cg.alpha = 1f;
                         cg.interactable = true;
                         cg.blocksRaycasts = true;
-                        if (depth <= 0 || (this == Program.I().editDeck && Program.I().editDeck.condition == EditDeck.EditDeckCondition.ChangeSide))
+                        if (depth <= 0 || (this == Program.I().editDeck && Program.I().editDeck.condition == EditDeck.Condition.ChangeSide))
                             UIManager.HideExitButton(0);
                         else
                             UIManager.ShowExitButton(0);

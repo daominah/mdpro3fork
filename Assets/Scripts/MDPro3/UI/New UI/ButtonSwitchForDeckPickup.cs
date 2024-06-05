@@ -9,13 +9,19 @@ namespace MDPro3.UI
         public override void OnSwitchOn()
         {
             base.OnSwitchOn();
-            Program.I().selectDeck.hoverOn = true;
+            if(Program.I().currentServant == Program.I().selectDeck)
+                Program.I().selectDeck.hoverOn = true;
+            else
+                Program.I().onlineDeckViewer.hoverOn = true;
         }
 
         public override void OnSwitchOff()
         {
             base.OnSwitchOff();
-            Program.I().selectDeck.hoverOn = false;
+            if (Program.I().currentServant == Program.I().selectDeck)
+                Program.I().selectDeck.hoverOn = false;
+            else
+                Program.I().onlineDeckViewer.hoverOn = false;
         }
     }
 }

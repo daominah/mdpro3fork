@@ -18,6 +18,11 @@ namespace MDPro3.YGOSharp
         public List<int> Stand { get; private set; }
         public List<int> Mate { get; private set; }
 
+        public const string deckPrefix = "#created by ";
+        public const string defaultDeckAuthor = "mdpro3";
+
+        public string author = defaultDeckAuthor;
+
         public Deck()
         {
             Main = new List<int>();
@@ -34,6 +39,25 @@ namespace MDPro3.YGOSharp
 
         public Deck(string path)
         {
+            string text = File.ReadAllText(path);
+            var d = new Deck(text, defaultDeckAuthor);
+            Main = d.Main;
+            Extra = d.Extra;
+            Side = d.Side;
+            Pickup = d.Pickup;
+            Protector = d.Protector;
+            Case = d.Case;
+            Field = d.Field;
+            Grave = d.Grave;
+            Stand = d.Stand;
+            Mate = d.Mate;
+            author = d.author;
+        }
+
+        public Deck(string text, string author = defaultDeckAuthor)
+        {
+            this.author = author;
+
             Main = new List<int>();
             Extra = new List<int>();
             Side = new List<int>();
@@ -46,12 +70,22 @@ namespace MDPro3.YGOSharp
             Mate = new List<int>();
             try
             {
-                string text = File.ReadAllText(path);
                 string st = text.Replace("\r", "");
                 string[] lines = st.Split(new string[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
                 int flag = -1;
                 foreach (string line in lines)
                 {
+                    if (line.StartsWith(deckPrefix))
+                    {
+                        if(this.author == defaultDeckAuthor)
+                        {
+                            var authorString = line.Replace(deckPrefix, string.Empty);
+                            if(OnlineDeck.StringIsIdFormat(authorString))
+                                this.author = authorString;
+                        }
+                        continue;
+                    }
+
                     if (line == "#main")
                         flag = 1;
                     else if (line == "#extra")
@@ -77,7 +111,7 @@ namespace MDPro3.YGOSharp
                         int code = 0;
                         try
                         {
-                            code = Int32.Parse(line.Replace("#", ""));
+                            code = int.Parse(line.Replace("#", ""));
                         }
                         catch (Exception)
                         {
@@ -103,19 +137,19 @@ namespace MDPro3.YGOSharp
                                     Protector.Add(code);
                                     break;
                                 case 6:
-                                    Case.Add(code); 
+                                    Case.Add(code);
                                     break;
                                 case 7:
-                                    Field.Add(code); 
+                                    Field.Add(code);
                                     break;
                                 case 8:
-                                    Grave.Add(code); 
+                                    Grave.Add(code);
                                     break;
                                 case 9:
-                                    Stand.Add(code); 
+                                    Stand.Add(code);
                                     break;
                                 case 10:
-                                    Mate.Add(code); 
+                                    Mate.Add(code);
                                     break;
                                 default:
                                     break;
@@ -132,11 +166,11 @@ namespace MDPro3.YGOSharp
                 Protector.Add(1070001);
             if (Case.Count == 0)
                 Case.Add(1080001);
-            if(Field.Count == 0)
+            if (Field.Count == 0)
                 Field.Add(1090001);
-            if(Grave.Count == 0)
+            if (Grave.Count == 0)
                 Grave.Add(1100001);
-            if(Stand.Count == 0)
+            if (Stand.Count == 0)
                 Stand.Add(1110001);
             if (Mate.Count == 0)
                 Mate.Add(1000001);

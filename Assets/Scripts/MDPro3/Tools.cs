@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Runtime.InteropServices;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.Playables;
 
@@ -172,6 +173,17 @@ namespace MDPro3
             for (int i = 0; i < n + 1; i++)
                 enumerator.MoveNext();
             return enumerator.Current;
+        }
+
+        public static bool IsAlphaNumeric(string input)
+        {
+            Regex regex = new Regex("^[A-Za-z0-9]+$");
+            return regex.IsMatch(input);
+        }
+        public static bool IsLowerAlphaNumeric(string input)
+        {
+            Regex regex = new Regex("^[a-z0-9]+$");
+            return regex.IsMatch(input);
         }
     }
 }

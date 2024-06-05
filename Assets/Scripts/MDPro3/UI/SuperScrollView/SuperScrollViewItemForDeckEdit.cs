@@ -204,7 +204,10 @@ namespace MDPro3.UI
 
         void OnClickRight(PointerEventData eventData)
         {
-            if (Program.I().editDeck.condition == EditDeckCondition.ChangeSide)
+            if (!Program.I().editDeck.deckIsFromLocalFile)
+                return;
+
+            if (Program.I().editDeck.condition == Condition.ChangeSide)
                 return;
             var max = Program.I().editDeck.banlist.GetQuantity(Code);
             var count = Program.I().editDeck.GetCardCount(Code);
@@ -271,7 +274,10 @@ namespace MDPro3.UI
 
         void OnBeginDrag(PointerEventData eventData)
         {
-            if (Program.I().editDeck.condition == EditDeckCondition.ChangeSide)
+            if (!Program.I().editDeck.deckIsFromLocalFile)
+                return;
+
+            if (Program.I().editDeck.condition == Condition.ChangeSide)
                 return;
 
             var item = Instantiate(Program.I().editDeck.itemOnTable);
@@ -291,7 +297,10 @@ namespace MDPro3.UI
         }
         void OnDrag(PointerEventData eventData)
         {
-            if (Program.I().editDeck.condition == EditDeckCondition.ChangeSide)
+            if (!Program.I().editDeck.deckIsFromLocalFile)
+                return;
+
+            if (Program.I().editDeck.condition == Condition.ChangeSide)
                 return;
 
             var dragTarget = dragItem.GetComponent<RectTransform>();
@@ -302,7 +311,10 @@ namespace MDPro3.UI
         }
         void OnEndDrag(PointerEventData eventData)
         {
-            if (Program.I().editDeck.condition == EditDeckCondition.ChangeSide)
+            if (!Program.I().editDeck.deckIsFromLocalFile)
+                return;
+
+            if (Program.I().editDeck.condition == Condition.ChangeSide)
                 return;
 
             var max = Program.I().editDeck.banlist.GetQuantity(Code);

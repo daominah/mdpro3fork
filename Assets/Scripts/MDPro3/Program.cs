@@ -40,6 +40,7 @@ namespace MDPro3
         public OcgCore ocgcore;
         public Room room;
         public EditDeck editDeck;
+        public OnlineDeckViewer onlineDeckViewer;
 
         #region Initializement
 
@@ -51,20 +52,21 @@ namespace MDPro3
 
         #region State
         public static bool Running = true;
-        public static readonly string artPath = "Picture/Art";
-        public static readonly string altArtPath = "Picture/Art2";
-        public static readonly string cardPicPath = "Picture/CardGenerated";
-        public static readonly string closeupPath = "Picture/Closeup";
-        public static readonly string dataPath = "Data";
-        public static readonly string localesPath = "Data/locales";
-        public static readonly string configPath = "Data/config.conf";
-        public static readonly string lflistPath = "Data/lflist.conf";
-        public static readonly string deckPath = "Deck";
-        public static readonly string expansionsPath = "Expansions";
-        public static readonly string puzzlePath = "Puzzle";
-        public static readonly string replayPath = "Replay";
-        public static readonly string diyPath = "Picture/DIY";
-        public static readonly string slash = "/";
+        public const string artPath = "Picture/Art";
+        public const string altArtPath = "Picture/Art2";
+        public const string cardPicPath = "Picture/CardGenerated";
+        public const string closeupPath = "Picture/Closeup";
+        public const string dataPath = "Data";
+        public const string localesPath = "Data/locales";
+        public const string configPath = "Data/config.conf";
+        public const string lflistPath = "Data/lflist.conf";
+        public const string deckPath = "Deck/";
+        public const string expansionsPath = "Expansions";
+        public const string puzzlePath = "Puzzle";
+        public const string replayPath = "Replay";
+        public const string diyPath = "Picture/DIY";
+        public const string slash = "/";
+        public const string ydkExpansion = ".ydk";
         #endregion
 
         public static Program I()
@@ -135,6 +137,7 @@ namespace MDPro3
             servants.Add(ocgcore);
             servants.Add(room);
             servants.Add(editDeck);
+            servants.Add(onlineDeckViewer);
             foreach (Servant servant in servants)
                 servant.Initialize();
         }

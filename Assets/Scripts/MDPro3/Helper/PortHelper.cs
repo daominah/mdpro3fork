@@ -100,10 +100,10 @@ namespace MDPro3
                 var fileName = Path.GetFileName(path);
                 try
                 {
-                    if (path.ToLower().EndsWith(".ydk"))
+                    if (path.ToLower().EndsWith(Program.ydkExpansion))
                     {
-                        File.Copy(path, Program.deckPath + Program.slash + fileName, true);
-                        MessageManager.Cast(InterString.Get("导入卡组「[?]」成功。", fileName.Replace(".ydk", string.Empty)));
+                        File.Copy(path, Program.deckPath + fileName, true);
+                        MessageManager.Cast(InterString.Get("导入卡组「[?]」成功。", fileName.Replace(Program.ydkExpansion, string.Empty)));
                     }
                     else if (path.ToLower().EndsWith(".yrp") || path.ToLower().EndsWith(".yrp3d"))
                     {
@@ -139,8 +139,8 @@ namespace MDPro3
             {
                 try
                 {
-                    if (path.ToLower().EndsWith(".ydk"))
-                        File.Move(path, Program.deckPath + Program.slash + Path.GetFileName(path));
+                    if (path.ToLower().EndsWith(Program.ydkExpansion))
+                        File.Move(path, Program.deckPath + Path.GetFileName(path));
                     if (path.ToLower().EndsWith(".yrp") || path.ToLower().EndsWith(".yrp3d"))
                         File.Move(path, Program.replayPath + Program.slash + Path.GetFileName(path));
                     if (path.ToLower().EndsWith(".ypk") || path.ToLower().EndsWith(".zip") || path.ToLower().EndsWith(".cdb") || path.ToLower().EndsWith(".conf"))

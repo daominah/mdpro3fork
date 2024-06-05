@@ -156,8 +156,8 @@ namespace MDPro3
             ChatOn(transitionTime);
             Program.I().ocgcore.handler = Handler;
             deckName.text = Config.Get("DeckInUse", "@ui");
-            if(File.Exists("Deck/" + deckName.text + ".ydk"))
-                deck = new Deck("Deck/" + deckName.text + ".ydk");
+            if(File.Exists(Program.deckPath + deckName.text + Program.ydkExpansion))
+                deck = new Deck(Program.deckPath + deckName.text + Program.ydkExpansion);
             else
             {
                 deck = null;
@@ -316,9 +316,9 @@ namespace MDPro3
                 TcpHelper.CtosMessage_HsNotReady();
             else
             {
-                if (File.Exists("Deck/" + Config.Get("DeckInUse", "") + ".ydk"))
+                if (File.Exists("Deck/" + Config.Get("DeckInUse", "") + Program.ydkExpansion))
                 {
-                    TcpHelper.CtosMessage_UpdateDeck(new Deck("Deck/" + Config.Get("DeckInUse", "") + ".ydk"));
+                    TcpHelper.CtosMessage_UpdateDeck(new Deck(Program.deckPath + Config.Get("DeckInUse", "") + Program.ydkExpansion));
                     TcpHelper.CtosMessage_HsReady();
                 }
                 else

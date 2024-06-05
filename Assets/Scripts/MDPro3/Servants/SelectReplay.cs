@@ -1,4 +1,5 @@
 using MDPro3.UI;
+using MDPro3.YGOSharp;
 using Percy;
 using SevenZip.Compression.LZMA;
 using System;
@@ -343,29 +344,17 @@ namespace MDPro3
             var yrp = cachedYRPs[replay];
             replay = replay.Replace(".yrp", "");
 
-            var value = "#created by mdpro3\r\n#main\r\n";
+            var value = MDPro3.YGOSharp.Deck.deckPrefix + MDPro3.YGOSharp.Deck.defaultDeckAuthor + "\r\n#main\r\n";
             for (int i = 0; i < yrp.playerData[player].main.Count; i++)
                 value += yrp.playerData[player].main[i] + "\r\n";
             value += "#extra\r\n";
             for (int i = 0; i < yrp.playerData[player].extra.Count; i++)
                 value += yrp.playerData[player].extra[i] + "\r\n";
-            int count = 0;
-            bool saved = false;
-            while (!saved)
-            {
-                if (File.Exists("Deck/" + replay + "_" + yrp.playerData[player].name + "_" + count + ".ydk"))
-                    count++;
-                else
-                {
-                    File.WriteAllText("Deck/" + replay + "_" + yrp.playerData[player].name + "_" + count + ".ydk", value);
-                    Config.Set("DeckInUse", replay + "_" + yrp.playerData[player].name + "_" + count);
-                    saved = true;
-                }
-            }
 
+            var deck = new MDPro3.YGOSharp.Deck(value, MDPro3.YGOSharp.Deck.defaultDeckAuthor);
+            var deckName = replay +"_" + yrp.playerData[player].name;
+            Program.I().editDeck.SwitchCondition(EditDeck.Condition.ReplayDeck, deckName, deck);
             Program.I().ShiftToServant(Program.I().editDeck);
-            Program.I().editDeck.returnServant = Program.I().replay;
-
         }
     }
 }

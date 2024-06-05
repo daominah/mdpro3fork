@@ -23,6 +23,7 @@ namespace MDPro3
         public List<SuperScrollViewItemForDeckSelect> items;
         public ButtonSwitchForDeckPickup btnPickup;
         public ToggleForDeckDelete btnDelete;
+        public Button btnOnline;
 
         public enum Condition
         {
@@ -39,14 +40,17 @@ namespace MDPro3
                 case Condition.ForEdit:
                     returnServant = Program.I().menu;
                     depth = 1;
+                    btnOnline.interactable = true;
                     break;
                 case Condition.ForDuel:
                     returnServant = Program.I().room;
                     depth = 3;
+                    btnOnline.interactable = false;
                     break;
                 case Condition.ForSolo:
                     returnServant = Program.I().solo;
                     depth = 4;
+                    btnOnline.interactable = false;
                     break;
             }
         }
@@ -84,9 +88,9 @@ namespace MDPro3
             Clear();
             btnDelete.SwitchOffWithoutAction();
             btnPickup.OnSwitchOff();
-            if (!Directory.Exists("Deck"))
-                Directory.CreateDirectory("Deck");
-            var files = Directory.GetFiles("Deck", "*.ydk");
+            if (!Directory.Exists(Program.deckPath))
+                Directory.CreateDirectory(Program.deckPath);
+            var files = Directory.GetFiles(Program.deckPath, "*.ydk");
             List<string> fileList = files.ToList();
             foreach (var file in files)
             {
@@ -124,11 +128,11 @@ namespace MDPro3
                 superScrollView.Clear();
                 items.Clear();
             }
-            var defau = 1000f;
+            var defau = 1f;
 #if UNITY_ANDROID
-            defau = 1500f;
+            defau = 1.5f;
 #endif
-            var scale = float.Parse(Config.Get("UIScale", defau.ToString())) / 1000;
+            var scale = Config.GetFloat("UIScale", defau);
 
             var handle = Addressables.LoadAssetAsync<GameObject>("DeckOnSelect");
             handle.Completed += (result) =>
@@ -151,11 +155,11 @@ namespace MDPro3
                         continue;
                     var task = new string[7]
                     {
-                deck.Key,
-                deck.Value.Case[0].ToString(),
-                "0", "0", "0",
-                deck.Value.Protector[0].ToString(),
-                "0"//For Delete
+                        deck.Key,
+                        deck.Value.Case[0].ToString(),
+                        "0", "0", "0",
+                        deck.Value.Protector[0].ToString(),
+                        "0"//For Delete
                     };
                     if (deck.Value.Pickup.Count > 0)
                         task[2] = deck.Value.Pickup[0].ToString();
@@ -211,18 +215,18 @@ namespace MDPro3
 
         void DeckCheck(string deckName)
         {
-            var path = $"Deck/{deckName}.ydk";
+            var path = Program.deckPath + deckName + Program.ydkExpansion;
 
             if (File.Exists(path))
             {
                 deckInUse = deckName;
                 List<string> tasks = new List<string>()
-            {
-                InterString.Get("该卡组名已存在"),
-                InterString.Get("该卡组名的文件已存在，是否直接覆盖创建？"),
-                InterString.Get("覆盖"),
-                InterString.Get("取消")
-            };
+                {
+                    InterString.Get("该卡组名已存在"),
+                    InterString.Get("该卡组名的文件已存在，是否直接覆盖创建？"),
+                    InterString.Get("覆盖"),
+                    InterString.Get("取消")
+                };
                 DOTween.To(v => { }, 0, 0, transitionTime + 0.1f).OnComplete(() =>
                 {
                     UIManager.ShowPopupYesOrNo(tasks, DeckFileCreateWithName, null);
@@ -242,7 +246,7 @@ namespace MDPro3
         {
             try
             {
-                var path = $"Deck/{deckName}.ydk";
+                var path = Program.deckPath + deckName + Program.ydkExpansion;
                 Directory.CreateDirectory(Path.GetDirectoryName(path)!);
                 File.Create(path).Close();
 
@@ -282,7 +286,7 @@ namespace MDPro3
                     if (item.args[6] != "0")
                     {
                         count++;
-                        File.Delete("Deck/" + item.args[0] + ".ydk");
+                        File.Delete(Program.deckPath + item.args[0] + Program.ydkExpansion);
                         MessageManager.Cast(InterString.Get("已删除卡组「[?]」", item.args[0]));
                     }
                 if (count > 0)
@@ -300,6 +304,11 @@ namespace MDPro3
                     item.args[6] = "0";
             foreach (var item in items)
                 item.HideToggle();
+        }
+
+        public void OnOnlineDeckView()
+        {
+            Program.I().ShiftToServant(Program.I().onlineDeckViewer);
         }
     }
 }

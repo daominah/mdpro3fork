@@ -343,7 +343,7 @@ namespace MDPro3
             {
                 Program.I().room.needSide = false;
                 MessageManager.Cast(InterString.Get("卡片历史中为您准备了对手上一局使用过的卡。"));
-                Program.I().editDeck.condition = EditDeck.EditDeckCondition.ChangeSide;
+                Program.I().editDeck.SwitchCondition(EditDeck.Condition.ChangeSide);
                 ReturnTo();
                 return;
             }
@@ -821,8 +821,8 @@ namespace MDPro3
             mate1Random = false;
             deck = null;
             var deckName = Config.Get("DeckInUse", "");
-            if (condition == Condition.Duel && inAi == false && File.Exists("Deck/" + deckName + ".ydk"))
-                deck = new Deck("Deck/" + deckName + ".ydk");
+            if (condition == Condition.Duel && inAi == false && File.Exists(Program.deckPath + deckName + Program.ydkExpansion))
+                deck = new Deck(Program.deckPath + deckName + Program.ydkExpansion);
 
             UIManager.UIBlackIn(transitionTime);
             yield return new WaitForSeconds(transitionTime);

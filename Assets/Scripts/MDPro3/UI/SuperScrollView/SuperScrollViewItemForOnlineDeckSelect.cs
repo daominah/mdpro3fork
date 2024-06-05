@@ -6,29 +6,29 @@ using UnityEngine.UI;
 
 namespace MDPro3.UI
 {
-    public class SuperScrollViewItemForDeckSelect : SuperScrollViewItem, IPointerEnterHandler, IPointerExitHandler
+    public class SuperScrollViewItemForOnlineDeckSelect : SuperScrollViewItem, IPointerEnterHandler, IPointerExitHandler
     {
         public string deckName;
+        public string authorName;
+        public string deckId;
         public int deckCase;
         public int card1;
         public int card2;
         public int card3;
         public string protector;
+        public int like;
 
-        public Text textName;
+        public Text textDeckName;
+        public Text textAuthorName;
         public Image caseIcon;
         public RawImage cardFace1;
         public RawImage cardFace2;
         public RawImage cardFace3;
+        public Text textLike;
 
-        public GameObject toggle;
-        public GameObject toggleOn;
-        public bool selected;
-        bool onSelect;
         public void Awake()
         {
-            Program.I().selectDeck.items.Add(this);
-            toggle.SetActive(false);
+            Program.I().onlineDeckViewer.items.Add(this);
             var defau = 1000f;
 #if UNITY_ANDROID
             defau = 1500f;
@@ -46,13 +46,10 @@ namespace MDPro3.UI
         bool refreshed;
         IEnumerator RefreshAsync()
         {
-            if (selected)
-                ToggleOn();
-            else
-                ToggleOff();
-
             refreshed = false;
-            textName.text = deckName;
+            textDeckName.text = deckName;
+            textAuthorName.text = "By " + authorName;
+            textLike.text = like.ToString();
             var casePath = deckCase.ToString();
             var load = TextureManager.LoadItemIcon(casePath);
             while (load.MoveNext())
@@ -141,7 +138,7 @@ namespace MDPro3.UI
 
         IEnumerator DisposeAsync()
         {
-            while(!refreshed)
+            while (!refreshed)
                 yield return null;
             Destroy(gameObject);
         }
@@ -149,32 +146,9 @@ namespace MDPro3.UI
         public override void OnClick()
         {
             AudioManager.PlaySE("SE_DUEL_SELECT");
-
-            if (onSelect)
-            {
-                if (selected)
-                    ToggleOff();
-                else
-                    ToggleOn();
-            }
-            else
-            {
-                Config.Set("DeckInUse", deckName);
-                if (SelectDeck.condition == SelectDeck.Condition.ForEdit)
-                {
-                    Program.I().editDeck.SwitchCondition(EditDeck.Condition.EditDeck);
-                    Program.I().ShiftToServant(Program.I().editDeck);
-                }
-                else if (SelectDeck.condition == SelectDeck.Condition.ForDuel)
-                {
-                    Program.I().ShiftToServant(Program.I().room);
-                }
-                else if (SelectDeck.condition == SelectDeck.Condition.ForSolo)
-                {
-                    Program.I().ShiftToServant(Program.I().solo);
-                    Program.I().solo.btnDeck.transform.GetChild(0).GetComponent<Text>().text = deckName;
-                }
-            }
+            Program.I().editDeck.onlineDeckID = deckId;
+            Program.I().editDeck.SwitchCondition(EditDeck.Condition.OnlineDeck);
+            Program.I().ShiftToServant(Program.I().editDeck);
         }
 
         public void Hover(bool hover)
@@ -186,40 +160,14 @@ namespace MDPro3.UI
 
         public void OnPointerEnter(PointerEventData eventData)
         {
-            if (!Program.I().selectDeck.hoverOn)
+            if (!Program.I().onlineDeckViewer.hoverOn)
                 Hover(true);
         }
         public void OnPointerExit(PointerEventData eventData)
         {
-            if (!Program.I().selectDeck.hoverOn)
+            if (!Program.I().onlineDeckViewer.hoverOn)
                 Hover(false);
-        }
-
-        public void ShowToggle()
-        {
-            toggle.SetActive(true);
-            toggleOn.SetActive(false);
-            onSelect = true;
-        }
-
-        public void HideToggle()
-        {
-            toggle.SetActive(false);
-            selected = false;
-            onSelect = false;
-        }
-
-        public void ToggleOn()
-        {
-            selected = true;
-            toggleOn.SetActive(true);
-            handler.items[id].args[6] = "1";
-        }
-        public void ToggleOff()
-        {
-            selected = false;
-            toggleOn.SetActive(false);
-            handler.items[id].args[6] = "0";
         }
     }
 }
+

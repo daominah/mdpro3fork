@@ -10,10 +10,6 @@ namespace MDPro3
 {
     public class CameraManager : Manager
     {
-        //DuelOverlay3D �����ӽ�
-        //DuelOverlayEffect3D ���ӽ�
-        //DuelOverlay2D
-        //DuelOverlayEffect2D OverUI
         public Camera cameraMain;
         public Camera camera2D;
         public Camera cameraDuelOverlay3D;
