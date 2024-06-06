@@ -1437,6 +1437,7 @@ namespace MDPro3
         private int Es_selectMSGHintType;
         private List<int> ES_searchCodes = new List<int>();
         private string ES_selectUnselectHint = "";
+        private bool ES_selectCardFromFieldFirstFlag = false;
         private int ES_sortSum;
         private string ES_turnString = "";
 
@@ -4701,6 +4702,8 @@ namespace MDPro3
                             data = (data >> 16) | (data << 16);
                         PrintDuelLog(InterString.Get("ÇøÓòÑ¡Ôñ£º[?]", StringHelper.Zone(data)));
                     }
+                    ES_selectCardFromFieldFirstFlag = (type == 3 && data == 575);
+
                     break;
                 case GameMessage.MissedEffect:
                     //TODO
@@ -5622,6 +5625,15 @@ namespace MDPro3
                             cardsInSelection.Add(card);
                         }
                     }
+                    if (ES_selectCardFromFieldFirstFlag && cancelable)
+                    {
+                        ES_selectCardFromFieldFirstFlag = false;
+                        binaryMaster = new BinaryMaster();
+                        binaryMaster.writer.Write(-1);
+                        SendReturn(binaryMaster.Get());
+                        break;
+                    }
+
                     if (ES_min == 1 && count == 1)
                     {
                         binaryMaster = new BinaryMaster();

@@ -77,10 +77,25 @@ namespace MDPro3
             });
         }
 
+        static List<string> cachedMessage = new List<string>();
+
         public static void Cast(string message)
         {
-            if (items.Count > 10 || Program.I().message_.messageItem == null)
+            if (items.Count > 10)
                 return;
+            if (Program.I().message_.messageItem == null)
+            {
+                cachedMessage.Add(message);
+                return;
+            }
+
+            if(cachedMessage.Count > 0)
+            {
+                var ms = new List<string>(cachedMessage);
+                cachedMessage.Clear();
+                foreach(var m in ms)
+                    Cast(m);
+            }
 
             CameraManager.UIBlurPlus();
             var item = Instantiate(Program.I().message_.messageItem);

@@ -105,7 +105,7 @@ namespace MDPro3
                 }
                 else
                 {
-                    MessageManager.Cast(InterString.Get("上传卡组「[?]」失败：", responseData.data.deckName) + InterString.Get(responseData.message));
+                    MessageManager.Cast(InterString.Get("上传卡组「[?]」失败：", responseData.data.deckName) + InterString.Get(responseData.message, responseData.messageValue));
                 }
             }
             else
@@ -139,7 +139,7 @@ namespace MDPro3
                 }
                 else
                 {
-                    MessageManager.Cast(InterString.Get("更新卡组「[?]」失败：", responseData.data.deckName) + InterString.Get(responseData.message));
+                    MessageManager.Cast(InterString.Get("更新卡组「[?]」失败：", responseData.data.deckName) + InterString.Get(responseData.message, responseData.messageValue));
                 }
             }
             else
@@ -203,7 +203,7 @@ namespace MDPro3
                 if (responseData.code == 0)
                     MessageManager.Cast(InterString.Get("点赞卡组成功。"));
                 else
-                    MessageManager.Cast(InterString.Get("点赞卡组失败：") + InterString.Get(responseData.message));
+                    MessageManager.Cast(InterString.Get("点赞卡组失败：") + InterString.Get(responseData.message, responseData.messageValue));
             }
             else
                 MessageManager.Cast(InterString.Get("点赞卡组失败：") + request.error);
@@ -244,6 +244,7 @@ namespace MDPro3
         {
             public int code = 0;
             public string message = string.Empty;
+            public string messageValue = string.Empty;
             public OnlineDeckData data;
         }
 
@@ -252,6 +253,7 @@ namespace MDPro3
         {
             public int code = 0;
             public string message = string.Empty;
+            public string messageValue = string.Empty;
             public ResponseRecords data;
         }
 
@@ -260,6 +262,7 @@ namespace MDPro3
         {
             public int code = 0;
             public string message = string.Empty;
+            public string messageValue = string.Empty;
             public OnlineDeckData[] data;
         }
 

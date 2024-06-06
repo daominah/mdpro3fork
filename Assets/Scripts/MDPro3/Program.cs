@@ -125,7 +125,7 @@ namespace MDPro3
             //    "-p",
             //    "888",
             //    "-w",
-            //    "AI",
+            //    "M#1008611",
             //    "-j"
             //};
 
@@ -151,24 +151,13 @@ namespace MDPro3
                 if (args[i].ToLower() == "-p" && args.Length > i + 1) 
                     port = args[++i];
                 if (args[i].ToLower() == "-w" && args.Length > i + 1)
-                {
                     password = args[++i];
-                }
-
                 if (args[i].ToLower() == "-d" && args.Length > i + 1)
-                {
                     deck = args[++i];
-                }
-
                 if (args[i].ToLower() == "-r" && args.Length > i + 1)
-                {
                     replay = args[++i];
-                }
-
                 if (args[i].ToLower() == "-s" && args.Length > i + 1)
-                {
                     puzzle = args[++i];
-                }
 
                 if (args[i].ToLower() == "-j")
                 {
@@ -180,7 +169,6 @@ namespace MDPro3
 
             if (join)
             {
-                //ShiftToServant(online);
                 online.KF_OnlineGame(nick, host, port, password);
                 exitOnReturn = true;
             }

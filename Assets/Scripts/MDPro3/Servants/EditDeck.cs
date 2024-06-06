@@ -1683,6 +1683,14 @@ namespace MDPro3
 
         void ScrollViewInstall()
         {
+            StartCoroutine(ScrollViewInstallAsync());
+        }
+
+        IEnumerator ScrollViewInstallAsync()
+        {
+            while(itemOnList == null)
+                yield return null;
+
             superScrollView?.Clear();
 
             var defau = 1000f;
@@ -1719,6 +1727,9 @@ namespace MDPro3
 
         void PrintCards(List<int> codes)
         {
+            if (superScrollView == null)
+                return;
+
             var args = new List<string[]>();
             for (int i = 0; i < codes.Count; i++)
             {
