@@ -106,6 +106,8 @@ namespace MDPro3.UI
         IEnumerator RefreshCard()
         {
             refreshed = false;
+            while (TextureManager.container == null)
+                yield return null;
             GetComponent<RawImage>().texture = TextureManager.container.unknownCard.texture;
             var ie = Program.I().texture_.LoadCardAsync(code);
             while (ie.MoveNext())
@@ -130,6 +132,13 @@ namespace MDPro3.UI
 
         public void RefreshLimitIcon()
         {
+            StartCoroutine(RefreshLimitIconAsync());
+        }
+
+        IEnumerator RefreshLimitIconAsync()
+        {
+            while(TextureManager.container == null)
+                yield return null;
             var limit = Program.I().editDeck.banlist.GetQuantity(code);
             if (limit == 3)
                 limitIcon.sprite = TextureManager.container.typeNone;
@@ -140,6 +149,7 @@ namespace MDPro3.UI
             else
                 limitIcon.sprite = TextureManager.container.banned;
         }
+
         public bool picked;
         public void PickUp(bool on)
         {

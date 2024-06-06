@@ -62,6 +62,13 @@ namespace MDPro3
             base.Initialize();
             search.onEndEdit.AddListener(Print);
         }
+        public override void OnExit()
+        {
+            if (Program.exitOnReturn)
+                Menu.GameQuit();
+            else
+                Program.I().ShiftToServant(returnServant);
+        }
 
         public override void ApplyShowArrangement(int preDepth)
         {

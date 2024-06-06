@@ -64,47 +64,74 @@ namespace MDPro3
 
         public void OnSolo()
         {
+            if(Program.exitOnReturn) 
+                return;
+
             Program.I().solo.SwitchCondition(Solo.Condition.ForSolo);
             Program.I().ShiftToServant(Program.I().solo);
         }
         public void OnOnline()
         {
+            if (Program.exitOnReturn)
+                return;
+
             Program.I().ShiftToServant(Program.I().online);
         }
         public void OnPuzzle()
         {
+            if (Program.exitOnReturn)
+                return;
+
             Program.I().ShiftToServant(Program.I().puzzle);
         }
         public void OnReplay()
         {
+            if (Program.exitOnReturn)
+                return;
+
             Program.I().ShiftToServant(Program.I().replay);
         }
         public void OnCutin()
         {
+            if (Program.exitOnReturn)
+                return;
+
             Program.I().ShiftToServant(Program.I().cutin);
         }
         public void OnMate()
         {
+            if (Program.exitOnReturn)
+                return;
+
             Program.I().ShiftToServant(Program.I().mate);
         }
         public void OnEditDeck()
         {
+            if (Program.exitOnReturn)
+                return;
+
             Program.I().selectDeck.SwitchCondition(SelectDeck.Condition.ForEdit);
             Program.I().ShiftToServant(Program.I().selectDeck);
         }
         public void OnSetting()
         {
+            if (Program.exitOnReturn)
+                return;
+
             Program.I().ShiftToServant(Program.I().setting);
         }
         public override void OnExit()
         {
+            if (Program.exitOnReturn)
+                return;
+
             List<string> selections = new List<string>
-        {
-            InterString.Get("确认退出"),
-            InterString.Get("即将退出应用程序，@n是否确认？"),
-            InterString.Get("确认"),
-            InterString.Get("取消")
-        };
+            {
+                InterString.Get("确认退出"),
+                InterString.Get("即将退出应用程序，@n是否确认？"),
+                InterString.Get("确认"),
+                InterString.Get("取消")
+            };
             UIManager.ShowPopupYesOrNo(selections, GameQuit, null);
         }
 
@@ -113,7 +140,7 @@ namespace MDPro3
 #if UNITY_EDITOR
             EditorApplication.isPlaying = false;
 #else
-        Application.Quit();
+            Application.Quit();
 #endif
 
         }

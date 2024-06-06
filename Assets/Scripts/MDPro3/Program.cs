@@ -99,6 +99,108 @@ namespace MDPro3
             BanlistManager.Initialize();
             InitializeAllManagers();
             InitializeAllServants();
+            ReadParams();
+        }
+
+        public static bool exitOnReturn = false;
+        void ReadParams()
+        {
+            var args = Environment.GetCommandLineArgs();
+            //args = new string[11]
+            //{
+            //    //"-r",
+            //    //"TURN023"
+
+            //    //"-s",
+            //    //"6ace for win!"
+
+            //    "-d",
+            //    "LLÌúÊÞ",
+
+            //    "-n",
+            //    "³à×ÓÄÎÂä",
+
+            //    "-h",
+            //    "mygo.superpre.pro",
+            //    "-p",
+            //    "888",
+            //    "-w",
+            //    "AI",
+            //    "-j"
+            //};
+
+            string nick = null;
+            string host = null;
+            string port = null;
+            string password = null;
+            string deck = null;
+            string replay = null;
+            string puzzle = null;
+            var join = false;
+            for (var i = 0; i < args.Length; i++)
+            {
+                if (args[i].ToLower() == "-n" && args.Length > i + 1)
+                {
+                    nick = args[++i];
+                    Config.Set("DuelPlayerName0", nick);
+                    Config.Save();
+                }
+
+                if (args[i].ToLower() == "-h" && args.Length > i + 1) 
+                    host = args[++i];
+                if (args[i].ToLower() == "-p" && args.Length > i + 1) 
+                    port = args[++i];
+                if (args[i].ToLower() == "-w" && args.Length > i + 1)
+                {
+                    password = args[++i];
+                }
+
+                if (args[i].ToLower() == "-d" && args.Length > i + 1)
+                {
+                    deck = args[++i];
+                }
+
+                if (args[i].ToLower() == "-r" && args.Length > i + 1)
+                {
+                    replay = args[++i];
+                }
+
+                if (args[i].ToLower() == "-s" && args.Length > i + 1)
+                {
+                    puzzle = args[++i];
+                }
+
+                if (args[i].ToLower() == "-j")
+                {
+                    join = true;
+                    Config.Set("DeckInUse", deck);
+                    Config.Save();
+                }
+            }
+
+            if (join)
+            {
+                //ShiftToServant(online);
+                online.KF_OnlineGame(nick, host, port, password);
+                exitOnReturn = true;
+            }
+            else if (deck != null)
+            {
+                Config.Set("DeckInUse", deck);
+                editDeck.SwitchCondition(EditDeck.Condition.EditDeck);
+                StartCoroutine(ShiftToServantAsync(editDeck));
+                exitOnReturn = true;
+            }
+            else if (replay != null)
+            {
+                this.replay.KF_Replay(replay);
+                exitOnReturn = true;
+            }
+            else if (puzzle != null)
+            {
+                this.puzzle.StartPuzzle(puzzle);
+                exitOnReturn = true;
+            }
         }
 
         public void InitializeForDataChange()
@@ -281,6 +383,12 @@ namespace MDPro3
                 if (ser == servant)
                     ser.Show(depth);
             depth = servant.depth;
+        }
+        IEnumerator ShiftToServantAsync(Servant servant)
+        {
+            while(!servant.initialized)
+                yield return null;
+            ShiftToServant(servant);
         }
         public void ShowSubServant(Servant servant)
         {

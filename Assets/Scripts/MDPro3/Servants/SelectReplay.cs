@@ -44,6 +44,13 @@ namespace MDPro3
             base.Show(preDepth);
             Print();
         }
+        public override void OnExit()
+        {
+            if (Program.exitOnReturn)
+                Menu.GameQuit();
+            else
+                Program.I().ShiftToServant(returnServant);
+        }
 
         void SelectZero()
         {

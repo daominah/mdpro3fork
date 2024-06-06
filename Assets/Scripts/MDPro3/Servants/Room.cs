@@ -83,7 +83,6 @@ namespace MDPro3
             haveLine = false;
             returnServant = Program.I().online;
             base.Initialize();
-            ChatOff(0);
             deckBtn.GetComponent<ButtonHover>().hoverIn = () => Hover(true);
             deckBtn.GetComponent<ButtonHover>().hoverOut = () => Hover(false);
 
@@ -986,7 +985,6 @@ namespace MDPro3
 
         public void StocMessage_ChangeSide(BinaryReader r)
         {
-            Program.I().ocgcore.returnServant = Program.I().editDeck;
             needSide = true;
             if (Program.I().ocgcore.condition != OcgCore.Condition.Duel || joinWithReconnect)
                 Program.I().ocgcore.OnDuelResultConfirmed();

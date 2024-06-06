@@ -79,7 +79,7 @@ namespace MDPro3
 
         public static void Cast(string message)
         {
-            if (items.Count > 10)
+            if (items.Count > 10 || Program.I().message_.messageItem == null)
                 return;
 
             CameraManager.UIBlurPlus();

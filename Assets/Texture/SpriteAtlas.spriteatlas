@@ -467,6 +467,7 @@ SpriteAtlas:
     - 5c2e30db054f6e9418d114f51c901dee: 21300000
     - bcbaa3dbaee4ca9408c722ddf577cf1f: 21300000
     - 998945db525e3384cb41bbb21b4bfa94: 21300000
+    - ba95d9db4d92bfd4686245e1a6ec2236: 21300000
     - 09e08eebbd84ca742bd589427e19222a: 21300000
     - c7863afb3193ba241970da4a31fed168: 21300000
     - 4fae920c16bd9e640927ceb8cead3c1c: 21300000
@@ -1030,6 +1031,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 5c2e30db054f6e9418d114f51c901dee, type: 3}
   - {fileID: 21300000, guid: bcbaa3dbaee4ca9408c722ddf577cf1f, type: 3}
   - {fileID: 21300000, guid: 998945db525e3384cb41bbb21b4bfa94, type: 3}
+  - {fileID: 21300000, guid: ba95d9db4d92bfd4686245e1a6ec2236, type: 3}
   - {fileID: 21300000, guid: 09e08eebbd84ca742bd589427e19222a, type: 3}
   - {fileID: 21300000, guid: c7863afb3193ba241970da4a31fed168, type: 3}
   - {fileID: 21300000, guid: 4fae920c16bd9e640927ceb8cead3c1c, type: 3}
@@ -1592,6 +1594,7 @@ SpriteAtlas:
   - GUI_T_Icon1_Type19
   - GUI_T_Icon1_Counter_DEATH
   - ChainNumSet_0
+  - neuron_deck_icon_good_on
   - GUI_T_DuelButtonLog_Off_3
   - GUI_CommonGradationV
   - GUI_alpha_Icon_Cardlist2

@@ -144,6 +144,14 @@ namespace MDPro3
             };
         }
 
+        public override bool initialized
+        {
+            get
+            {
+                return (itemOnTable != null && itemOnList != null);
+            }
+        }
+
         public enum Condition
         {
             EditDeck,
@@ -170,7 +178,7 @@ namespace MDPro3
             else if (condition == Condition.ChangeSide)
             {
                 depth = 2;
-                returnServant = null;
+                //returnServant = null;
                 manager.GetElement("ButtonChangeSide").SetActive(true);
                 manager.GetElement("ButtonAppearance").SetActive(false);
 
@@ -212,6 +220,7 @@ namespace MDPro3
             {
                 case Condition.EditDeck:
                     manager.GetElement("ButtonUpload").SetActive(true);
+                    input.interactable = true;
                     if (deck.author == Deck.defaultDeckAuthor || !OnlineDeck.StringIsIdFormat(deck.author))
                         manager.GetElement<Text>("TextUpload").text = InterString.Get("上传");
                     else
@@ -221,28 +230,37 @@ namespace MDPro3
                     manager.GetElement("ButtonUpload").SetActive(deckIsFromLocalFile);
                     if (deckIsFromLocalFile)
                     {
+                        input.interactable = true;
                         if (deck.author == Deck.defaultDeckAuthor || !OnlineDeck.StringIsIdFormat(deck.author))
                             manager.GetElement<Text>("TextUpload").text = InterString.Get("上传");
                         else
                             manager.GetElement<Text>("TextUpload").text = deck.author;
                     }
                     else
+                    {
+                        input.interactable = false;
                         manager.GetElement("ButtonUpload").SetActive(false);
+                    }
                     break;
                 case Condition.OnlineDeck:
                     manager.GetElement("ButtonUpload").SetActive(true);
                     if (deckIsFromLocalFile)
                     {
+                        input.interactable = true;
                         if (deck.author == Deck.defaultDeckAuthor || !OnlineDeck.StringIsIdFormat(deck.author))
                             manager.GetElement<Text>("TextUpload").text = InterString.Get("上传");
                         else
                             manager.GetElement<Text>("TextUpload").text = deck.author;
                     }
                     else
+                    {
+                        input.interactable = false;
                         manager.GetElement<Text>("TextUpload").text = InterString.Get("点赞");
+                    }
                     break;
                 case Condition.ChangeSide:
                     manager.GetElement("ButtonUpload").SetActive(false);
+                    input.interactable = false;
                     break;
             }
         }
@@ -278,6 +296,7 @@ namespace MDPro3
             if (!intoAppearance)
             {
                 AudioManager.PlayBGM("BGM_MENU_01");
+
                 var content = InterString.Get("#该文件是用于保存【卡片收藏】中的卡的卡组码。");
                 content += "\r\n#main\r\n";
                 for (int i = 0; i < book.Main.Count; i++)
@@ -293,7 +312,6 @@ namespace MDPro3
                 for (int i = 0; i < shine.Main.Count; i++)
                     content += shine.Main[i] + "\r\n";
                 File.WriteAllText(shinePath, content, Encoding.UTF8);
-                condition = Condition.EditDeck;
                 DOTween.To(v => { }, 0, 0, transitionTime).OnComplete(() =>
                 {
                     Dispose();
@@ -301,6 +319,7 @@ namespace MDPro3
                         foreach (var item in superScrollView.items)
                             item.gameObject.GetComponent<SuperScrollViewItemForDeckEdit>().Dispose();
                 });
+
             }
         }
 
@@ -744,8 +763,10 @@ namespace MDPro3
         }
         void ShowAppearance()
         {
+            if (!deckIsFromLocalFile)
+                return;
             intoAppearance = true;
-            Appearance.type = Appearance.AppearanceType.Deck;
+            Program.I().appearance.SwitchCondition(Appearance.Condition.Deck);
             Program.I().ShiftToServant(Program.I().appearance);
         }
         void ShowBanlists()

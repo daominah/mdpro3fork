@@ -343,6 +343,7 @@ namespace MDPro3
             {
                 Program.I().room.needSide = false;
                 MessageManager.Cast(InterString.Get("卡片历史中为您准备了对手上一局使用过的卡。"));
+                returnServant = Program.I().editDeck;
                 Program.I().editDeck.SwitchCondition(EditDeck.Condition.ChangeSide);
                 ReturnTo();
                 return;
@@ -826,6 +827,8 @@ namespace MDPro3
 
             UIManager.UIBlackIn(transitionTime);
             yield return new WaitForSeconds(transitionTime);
+            while (!Appearance.loaded)
+                yield return null;
             CameraManager.ShiftTo3D();
             UIManager.HideExitButton(0);
             UIManager.HideLine(0);

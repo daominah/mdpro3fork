@@ -94,7 +94,7 @@ public class OnlineDeckViewer : Servant
             (
             (int)Math.Floor(scrollRect.content.rect.width / (260 * scale)),
             260 * scale,
-            240 * scale,
+            260 * scale,
             0,
             128,
             result.Result,
@@ -109,7 +109,7 @@ public class OnlineDeckViewer : Servant
                 if (!deck.deckContributor.ToLower().Contains(searchAuthorName.text.ToLower()))
                     continue;
 
-                var task = new string[9]
+                var task = new string[10]
                 {
                     deck.deckName,
                     deck.deckContributor,
@@ -119,7 +119,8 @@ public class OnlineDeckViewer : Servant
                     deck.deckCoverCard2.ToString(),
                     deck.deckCoverCard3.ToString(),
                     deck.deckProtector == 0 ? "1070001" : deck.deckProtector.ToString(),
-                    deck.deckLike.ToString()
+                    deck.deckLike.ToString(),
+                    deck.lastDate
                 };
                 tasks.Add(task);
             }
@@ -140,6 +141,7 @@ public class OnlineDeckViewer : Servant
         handler.card3 = int.Parse(task[6]);
         handler.protector = task[7];
         handler.like = int.Parse(task[8]);
+        handler.lastDate = task[9];
         handler.Refresh();
     }
 

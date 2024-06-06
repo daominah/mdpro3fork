@@ -17,6 +17,7 @@ namespace MDPro3.UI
         public int card3;
         public string protector;
         public int like;
+        public string lastDate;
 
         public Text textDeckName;
         public Text textAuthorName;
@@ -25,6 +26,7 @@ namespace MDPro3.UI
         public RawImage cardFace2;
         public RawImage cardFace3;
         public Text textLike;
+        public Text textDate;
 
         public void Awake()
         {
@@ -50,6 +52,7 @@ namespace MDPro3.UI
             textDeckName.text = deckName;
             textAuthorName.text = "By " + authorName;
             textLike.text = like.ToString();
+            textDate.text = lastDate.Substring(0, 10);
             var casePath = deckCase.ToString();
             var load = TextureManager.LoadItemIcon(casePath);
             while (load.MoveNext())

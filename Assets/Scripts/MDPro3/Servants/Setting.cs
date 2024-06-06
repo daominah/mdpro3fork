@@ -1149,7 +1149,7 @@ namespace MDPro3
         }
         public void OnDuelAppearcanceClick()
         {
-            Appearance.type = Appearance.AppearanceType.Duel;
+            Program.I().appearance.SwitchCondition(Appearance.Condition.Duel);
             if (Program.I().currentSubServant == this)
                 Program.I().ShowSubServant(Program.I().appearance);
             else
@@ -1157,7 +1157,7 @@ namespace MDPro3
         }
         public void OnWatchAppearcanceClick()
         {
-            Appearance.type = Appearance.AppearanceType.Watch;
+            Program.I().appearance.SwitchCondition(Appearance.Condition.Watch);
             if (Program.I().currentSubServant == this)
                 Program.I().ShowSubServant(Program.I().appearance);
             else
@@ -1165,7 +1165,7 @@ namespace MDPro3
         }
         public void OnReplayAppearcanceClick()
         {
-            Appearance.type = Appearance.AppearanceType.Replay;
+            Program.I().appearance.SwitchCondition(Appearance.Condition.Replay);
             if (Program.I().currentSubServant == this)
                 Program.I().ShowSubServant(Program.I().appearance);
             else

@@ -48,6 +48,14 @@ namespace MDPro3
             LoadHostAddress();
         }
 
+        public override void Show(int preDepth)
+        {
+            if(Program.exitOnReturn)
+                Menu.GameQuit();
+            else
+                base.Show(preDepth);
+        }
+
         void LoadHostAddress()
         {
             if (!File.Exists(savePath))

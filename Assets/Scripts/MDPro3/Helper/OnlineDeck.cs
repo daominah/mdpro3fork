@@ -234,6 +234,7 @@ namespace MDPro3
             public int deckCoverCard3 = 0;
             public int deckCase = 0;
             public int deckProtector = 0;
+            public string lastDate;
             public string deckYdk;
             public string deckMainSerial;
         }

@@ -103,16 +103,37 @@ namespace MDPro3
     };
 
         public GameObject appearanceItem;
-        public enum AppearanceType
+        public enum Condition
         {
             Duel,
             Watch,
             Replay,
             Deck
         }
-
-        public static AppearanceType type = AppearanceType.Duel;
-
+        public Condition condition = Condition.Duel;
+        public void SwitchCondition(Condition condition)
+        {
+            this.condition = condition;
+            switch (condition)
+            {
+                case Condition.Duel:
+                    depth = 3;
+                    title.text = InterString.Get("决斗外观");
+                    break;
+                case Condition.Watch:
+                    depth = 3;
+                    title.text = InterString.Get("观战外观");
+                    break;
+                case Condition.Replay:
+                    depth = 3;
+                    title.text = InterString.Get("回放外观");
+                    break;
+                case Condition.Deck:
+                    depth = 7;
+                    title.text = InterString.Get("卡组外观");
+                    break;
+            }
+        }
         public override void Initialize()
         {
             depth = 3;
@@ -133,6 +154,8 @@ namespace MDPro3
 
             StartCoroutine(LoadSettingAssets());
         }
+
+
         public static bool loaded;
         IEnumerator LoadSettingAssets()
         {
@@ -456,14 +479,14 @@ namespace MDPro3
 
         void SavePlayerName(string nameValue)
         {
-            Config.Set(type.ToString() + "PlayerName" + player, nameValue == "" ? "@ui" : nameValue);
-            playerName.text = Config.Get(type.ToString() + "PlayerName" + player, "@ui");
+            Config.Set(condition.ToString() + "PlayerName" + player, nameValue == "" ? "@ui" : nameValue);
+            playerName.text = Config.Get(condition.ToString() + "PlayerName" + player, "@ui");
         }
 
         public override void Show(int preDepth)
         {
             base.Show(preDepth);
-            if (type == AppearanceType.Deck)
+            if (condition == Condition.Deck)
             {
                 defaultButton.transform.parent.gameObject.SetActive(false);
                 defaultButtonDeck.transform.parent.gameObject.SetActive(true);
@@ -486,21 +509,6 @@ namespace MDPro3
                 defaultButton.SelectThis();
             }
             defaultPlayer.SelectThis();
-            switch (type)
-            {
-                case AppearanceType.Duel:
-                    title.text = InterString.Get("决斗外观");
-                    break;
-                case AppearanceType.Watch:
-                    title.text = InterString.Get("观战外观");
-                    break;
-                case AppearanceType.Replay:
-                    title.text = InterString.Get("回放外观");
-                    break;
-                case AppearanceType.Deck:
-                    title.text = InterString.Get("卡组外观");
-                    break;
-            }
         }
 
         public override void OnReturn()
@@ -513,7 +521,7 @@ namespace MDPro3
 
         public override void OnExit()
         {
-            if (type != AppearanceType.Deck)
+            if (condition != Condition.Deck)
             {
                 if (Program.I().currentSubServant == this)
                     Program.I().ShowSubServant(Program.I().setting);
@@ -572,7 +580,7 @@ namespace MDPro3
         {
             currentContent = type;
             pools.TryGetValue(currentContent, out currentList);
-            if (Appearance.type == AppearanceType.Deck)
+            if (Program.I().appearance.condition == Condition.Deck)
                 defaultPlayer.transform.parent.gameObject.SetActive(false);
             else
                 defaultPlayer.transform.parent.gameObject.SetActive(true);
@@ -587,7 +595,7 @@ namespace MDPro3
                 detailTitle.transform.parent.GetComponent<CanvasGroup>().blocksRaycasts = false;
                 playerName.transform.parent.parent.gameObject.SetActive(true);
 
-                playerName.text = Config.Get(Appearance.type.ToString() + currentContent + player, "");
+                playerName.text = Config.Get(Program.I().appearance.condition.ToString() + currentContent + player, "");
                 if (player == "0")
                     playerNameEx.text = InterString.Get("请输入您的昵称：");
                 else if (player == "1")
@@ -716,7 +724,7 @@ namespace MDPro3
                 }
                 else
                 {
-                    if (Appearance.type == AppearanceType.Deck)
+                    if (Program.I().appearance.condition == Condition.Deck)
                     {
                         if (item.GetComponent<AppearanceItem>().itemID == Program.I().editDeck.deck.Case[0]
                             || item.GetComponent<AppearanceItem>().itemID == Program.I().editDeck.deck.Protector[0]
@@ -731,7 +739,7 @@ namespace MDPro3
                     }
                     else
                     {
-                        if (item.GetComponent<AppearanceItem>().itemID.ToString() == Config.Get(Appearance.type.ToString() + currentContent + player, targetItems[0].id.ToString()))
+                        if (item.GetComponent<AppearanceItem>().itemID.ToString() == Config.Get(Program.I().appearance.condition.ToString() + currentContent + player, targetItems[0].id.ToString()))
                         {
                             item.GetComponent<AppearanceItem>().SelectThis();
                             break;

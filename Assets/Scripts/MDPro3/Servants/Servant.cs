@@ -40,6 +40,8 @@ namespace MDPro3
         //show 在 isShowed为false时才执行ApplyShowArrangement
         //hide 在 isShowed为true时才执行ApplyHideArrangement
 
+        public virtual bool initialized { get; protected set; }
+
         public virtual void Initialize()
         {
             if (gameObject != null)

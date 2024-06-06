@@ -102,7 +102,7 @@ namespace MDPro3.UI
             Program.I().appearance.hover.text = itemName;
             StartCoroutine(ShowDetail());
 
-            if (Appearance.type == Appearance.AppearanceType.Deck)
+            if (Program.I().appearance.condition == Appearance.Condition.Deck)
             {
                 if (path.StartsWith("DeckCase"))
                 {
@@ -164,7 +164,7 @@ namespace MDPro3.UI
                 if (path.StartsWith("WallPaperIcon"))
                     Config.Set("Wallpaper", itemID.ToString());
                 else
-                    Config.Set(Appearance.type.ToString() + Appearance.currentContent + Appearance.player, itemID.ToString());
+                    Config.Set(Program.I().appearance.condition.ToString() + Appearance.currentContent + Appearance.player, itemID.ToString());
             }
         }
         public IEnumerator ShowDetail()
@@ -183,38 +183,38 @@ namespace MDPro3.UI
                 Program.I().appearance.detailProtector.material = protector.material;
                 if (Appearance.player == "0")
                 {
-                    if (Appearance.type == Appearance.AppearanceType.Duel)
+                    if (Program.I().appearance.condition == Appearance.Condition.Duel)
                         Appearance.duelProtector0 = protector.material;
-                    else if (Appearance.type == Appearance.AppearanceType.Watch)
+                    else if (Program.I().appearance.condition == Appearance.Condition.Watch)
                         Appearance.watchProtector0 = protector.material;
-                    else if (Appearance.type == Appearance.AppearanceType.Replay)
+                    else if (Program.I().appearance.condition == Appearance.Condition.Replay)
                         Appearance.replayProtector0 = protector.material;
                 }
                 else if (Appearance.player == "1")
                 {
-                    if (Appearance.type == Appearance.AppearanceType.Duel)
+                    if (Program.I().appearance.condition == Appearance.Condition.Duel)
                         Appearance.duelProtector1 = protector.material;
-                    else if (Appearance.type == Appearance.AppearanceType.Watch)
+                    else if (Program.I().appearance.condition == Appearance.Condition.Watch)
                         Appearance.watchProtector1 = protector.material;
-                    else if (Appearance.type == Appearance.AppearanceType.Replay)
+                    else if (Program.I().appearance.condition == Appearance.Condition.Replay)
                         Appearance.replayProtector1 = protector.material;
                 }
                 else if (Appearance.player == "0Tag")
                 {
-                    if (Appearance.type == Appearance.AppearanceType.Duel)
+                    if (Program.I().appearance.condition == Appearance.Condition.Duel)
                         Appearance.duelProtector0Tag = protector.material;
-                    else if (Appearance.type == Appearance.AppearanceType.Watch)
+                    else if (Program.I().appearance.condition == Appearance.Condition.Watch)
                         Appearance.watchProtector0Tag = protector.material;
-                    else if (Appearance.type == Appearance.AppearanceType.Replay)
+                    else if (Program.I().appearance.condition == Appearance.Condition.Replay)
                         Appearance.replayProtector0Tag = protector.material;
                 }
                 else if (Appearance.player == "1Tag")
                 {
-                    if (Appearance.type == Appearance.AppearanceType.Duel)
+                    if (Program.I().appearance.condition == Appearance.Condition.Duel)
                         Appearance.duelProtector1Tag = protector.material;
-                    else if (Appearance.type == Appearance.AppearanceType.Watch)
+                    else if (Program.I().appearance.condition == Appearance.Condition.Watch)
                         Appearance.watchProtector1Tag = protector.material;
-                    else if (Appearance.type == Appearance.AppearanceType.Replay)
+                    else if (Program.I().appearance.condition == Appearance.Condition.Replay)
                         Appearance.replayProtector1Tag = protector.material;
                 }
             }
@@ -231,38 +231,38 @@ namespace MDPro3.UI
                 {
                     if (Appearance.player == "0")
                     {
-                        if (Appearance.type == Appearance.AppearanceType.Duel)
+                        if (Program.I().appearance.condition == Appearance.Condition.Duel)
                             Appearance.duelFace0 = icon.sprite;
-                        else if (Appearance.type == Appearance.AppearanceType.Watch)
+                        else if (Program.I().appearance.condition == Appearance.Condition.Watch)
                             Appearance.watchFace0 = icon.sprite;
-                        else if (Appearance.type == Appearance.AppearanceType.Replay)
+                        else if (Program.I().appearance.condition == Appearance.Condition.Replay)
                             Appearance.replayFace0 = icon.sprite;
                     }
                     else if (Appearance.player == "1")
                     {
-                        if (Appearance.type == Appearance.AppearanceType.Duel)
+                        if (Program.I().appearance.condition == Appearance.Condition.Duel)
                             Appearance.duelFace1 = icon.sprite;
-                        else if (Appearance.type == Appearance.AppearanceType.Watch)
+                        else if (Program.I().appearance.condition == Appearance.Condition.Watch)
                             Appearance.watchFace1 = icon.sprite;
-                        else if (Appearance.type == Appearance.AppearanceType.Replay)
+                        else if (Program.I().appearance.condition == Appearance.Condition.Replay)
                             Appearance.replayFace1 = icon.sprite;
                     }
                     else if (Appearance.player == "0Tag")
                     {
-                        if (Appearance.type == Appearance.AppearanceType.Duel)
+                        if (Program.I().appearance.condition == Appearance.Condition.Duel)
                             Appearance.duelFace0Tag = icon.sprite;
-                        else if (Appearance.type == Appearance.AppearanceType.Watch)
+                        else if (Program.I().appearance.condition == Appearance.Condition.Watch)
                             Appearance.watchFace0Tag = icon.sprite;
-                        else if (Appearance.type == Appearance.AppearanceType.Replay)
+                        else if (Program.I().appearance.condition == Appearance.Condition.Replay)
                             Appearance.replayFace0Tag = icon.sprite;
                     }
                     else if (Appearance.player == "1Tag")
                     {
-                        if (Appearance.type == Appearance.AppearanceType.Duel)
+                        if (Program.I().appearance.condition == Appearance.Condition.Duel)
                             Appearance.duelFace1Tag = icon.sprite;
-                        else if (Appearance.type == Appearance.AppearanceType.Watch)
+                        else if (Program.I().appearance.condition == Appearance.Condition.Watch)
                             Appearance.watchFace1Tag = icon.sprite;
-                        else if (Appearance.type == Appearance.AppearanceType.Replay)
+                        else if (Program.I().appearance.condition == Appearance.Condition.Replay)
                             Appearance.replayFace1Tag = icon.sprite;
                     }
                 }
@@ -270,17 +270,17 @@ namespace MDPro3.UI
                 {
                     if (Appearance.player == "0")
                     {
-                        if (Appearance.type == Appearance.AppearanceType.Duel)
+                        if (Program.I().appearance.condition == Appearance.Condition.Duel)
                         {
                             Program.I().appearance.detailImage.sprite = Appearance.duelFace0;
                             Appearance.duelFrameMat0 = icon.material;
                         }
-                        else if (Appearance.type == Appearance.AppearanceType.Watch)
+                        else if (Program.I().appearance.condition == Appearance.Condition.Watch)
                         {
                             Program.I().appearance.detailImage.sprite = Appearance.watchFace0;
                             Appearance.watchFrameMat0 = icon.material;
                         }
-                        else if (Appearance.type == Appearance.AppearanceType.Replay)
+                        else if (Program.I().appearance.condition == Appearance.Condition.Replay)
                         {
                             Program.I().appearance.detailImage.sprite = Appearance.replayFace0;
                             Appearance.replayFrameMat0 = icon.material;
@@ -288,17 +288,17 @@ namespace MDPro3.UI
                     }
                     else if (Appearance.player == "1")
                     {
-                        if (Appearance.type == Appearance.AppearanceType.Duel)
+                        if (Program.I().appearance.condition == Appearance.Condition.Duel)
                         {
                             Program.I().appearance.detailImage.sprite = Appearance.duelFace1;
                             Appearance.duelFrameMat1 = icon.material;
                         }
-                        else if (Appearance.type == Appearance.AppearanceType.Watch)
+                        else if (Program.I().appearance.condition == Appearance.Condition.Watch)
                         {
                             Program.I().appearance.detailImage.sprite = Appearance.watchFace1;
                             Appearance.watchFrameMat1 = icon.material;
                         }
-                        else if (Appearance.type == Appearance.AppearanceType.Replay)
+                        else if (Program.I().appearance.condition == Appearance.Condition.Replay)
                         {
                             Program.I().appearance.detailImage.sprite = Appearance.replayFace1;
                             Appearance.replayFrameMat1 = icon.material;
@@ -306,17 +306,17 @@ namespace MDPro3.UI
                     }
                     else if (Appearance.player == "0Tag")
                     {
-                        if (Appearance.type == Appearance.AppearanceType.Duel)
+                        if (Program.I().appearance.condition == Appearance.Condition.Duel)
                         {
                             Program.I().appearance.detailImage.sprite = Appearance.duelFace0Tag;
                             Appearance.duelFrameMat0Tag = icon.material;
                         }
-                        else if (Appearance.type == Appearance.AppearanceType.Watch)
+                        else if (Program.I().appearance.condition == Appearance.Condition.Watch)
                         {
                             Program.I().appearance.detailImage.sprite = Appearance.watchFace0Tag;
                             Appearance.watchFrameMat0Tag = icon.material;
                         }
-                        else if (Appearance.type == Appearance.AppearanceType.Replay)
+                        else if (Program.I().appearance.condition == Appearance.Condition.Replay)
                         {
                             Program.I().appearance.detailImage.sprite = Appearance.replayFace0Tag;
                             Appearance.replayFrameMat0Tag = icon.material;
@@ -324,17 +324,17 @@ namespace MDPro3.UI
                     }
                     else if (Appearance.player == "1Tag")
                     {
-                        if (Appearance.type == Appearance.AppearanceType.Duel)
+                        if (Program.I().appearance.condition == Appearance.Condition.Duel)
                         {
                             Program.I().appearance.detailImage.sprite = Appearance.duelFace1Tag;
                             Appearance.duelFrameMat1Tag = icon.material;
                         }
-                        else if (Appearance.type == Appearance.AppearanceType.Watch)
+                        else if (Program.I().appearance.condition == Appearance.Condition.Watch)
                         {
                             Program.I().appearance.detailImage.sprite = Appearance.watchFace1Tag;
                             Appearance.watchFrameMat1Tag = icon.material;
                         }
-                        else if (Appearance.type == Appearance.AppearanceType.Replay)
+                        else if (Program.I().appearance.condition == Appearance.Condition.Replay)
                         {
                             Program.I().appearance.detailImage.sprite = Appearance.replayFace1Tag;
                             Appearance.replayFrameMat1Tag = icon.material;

@@ -27,6 +27,15 @@ namespace MDPro3
             Print();
             StartCoroutine(SelectZero());
         }
+
+        public override void OnExit()
+        {
+            if(Program.exitOnReturn)
+                Menu.GameQuit();
+            else
+                Program.I().ShiftToServant(returnServant);
+        }
+
         IEnumerator SelectZero()
         {
             while (superScrollView == null)
