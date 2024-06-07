@@ -3491,6 +3491,8 @@ namespace MDPro3
                                 code = card.GetData().Alias > 0 ? card.GetData().Alias : card.GetData().Id;
                                 if (card.GetData().Id == 83764719)//ËÀÕßËÕÉú Òì»­
                                     code = 83764719;
+                                if (card.GetData().Id == 63166096)//ËÀÕßËÕÉú Òì»­
+                                    code = 63166096;
                                 var targetFolder = Program.root + "MasterDuel/Card/" + code.ToString();
 #if UNITY_STANDALONE_WIN && !UNITY_EDITOR
                                 targetFolder = Path.Combine(Application.dataPath, targetFolder);
@@ -3750,13 +3752,13 @@ namespace MDPro3
                                     {
                                         AudioManager.PlaySE("SE_EV_MONSTER_REBORN");
                                     }
-                                    else if(code == 63166095)//ENGAGE
+                                    else if(code == 63166095 || code == 63166096)//ENGAGE
                                     {
                                         Destroy(effect);
                                         messagePass = true;
                                         nextMoveAction = () =>
                                         {
-                                            var effect = ABLoader.LoadFromFolder("MasterDuel/Card/63166095", "CardEffect63166095", true);
+                                            var effect = ABLoader.LoadFromFolder("MasterDuel/Card/" + code, "CardEffect" + code, true);
                                             allGameObjects.Add(effect);
                                             var manager = effect.transform.GetChild(0).GetComponent<ElementObjectManager>();
                                             nextMoveManager = manager;

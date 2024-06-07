@@ -1,7 +1,5 @@
-using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Threading;
-using static Percy.Ygopro;
 
 namespace MDPro3.Net
 {
