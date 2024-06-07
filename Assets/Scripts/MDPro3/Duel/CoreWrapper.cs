@@ -260,7 +260,7 @@ namespace Percy
         private static Ygopro.CardHandler card_handler;
         private static Ygopro.ScriptHandler script_handler;
         private static Ygopro.ChatHandler chat_handler;
-        private static readonly IntPtr _buffer_2 = Marshal.AllocHGlobal(65536);
+        private static readonly byte[] _buffer_2 = new byte[256];
 
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         private delegate IntPtr ScriptReader(string scriptName, int* len);
@@ -298,7 +298,8 @@ namespace Percy
         [DllImport("ocgcore", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
         public static extern int get_message(IntPtr pduel, IntPtr buf);
         [DllImport("ocgcore", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void get_log_message(IntPtr pduel, IntPtr buf);
+        //public static extern void get_log_message(IntPtr pduel, IntPtr buf);
+        public static extern void get_log_message(IntPtr pduel, byte[] buf);
         [DllImport("ocgcore", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
         public static extern void set_responseb(IntPtr pduel, IntPtr buf);
         [DllImport("ocgcore", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
@@ -343,15 +344,12 @@ namespace Percy
             *pData = card_handler(code);
             return code;
         }
+
         [MonoPInvokeCallback]
         private static uint OnMessageHandler(IntPtr pDuel, uint messageType)
         {
-            var arr = new byte[256];
             get_log_message(pDuel, _buffer_2);
-            Marshal.Copy(_buffer_2, arr, 0, 256);
-            var message = Encoding.UTF8.GetString(arr);
-            if (message.Contains("\0"))
-                message = message.Substring(0, message.IndexOf('\0'));
+            var message = Encoding.UTF8.GetString(_buffer_2).TrimEnd('\0');
             chat_handler(message);
             return 0;
         }
