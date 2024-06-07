@@ -56,7 +56,7 @@ public class OnlineDeckViewer : Servant
 
     IEnumerator RefreshAsync()
     {
-        var task = OnlineDeck.FetchSimpleDeckList(100000, searchDeckName.text, searchAuthorName.text);
+        var task = OnlineDeck.FetchSimpleDeckList(10000, searchDeckName.text, searchAuthorName.text);
         yield return new WaitUntil(() => task.IsCompleted);
 
         if(task.Status == System.Threading.Tasks.TaskStatus.RanToCompletion)
@@ -104,10 +104,10 @@ public class OnlineDeckViewer : Servant
             List<string[]> tasks = new List<string[]>();
             foreach (var deck in decks)
             {
-                if (!deck.deckName.ToLower().Contains(searchDeckName.text.ToLower()))
-                    continue;
-                if (!deck.deckContributor.ToLower().Contains(searchAuthorName.text.ToLower()))
-                    continue;
+                //if (!deck.deckName.ToLower().Contains(searchDeckName.text.ToLower()))
+                //    continue;
+                //if (!deck.deckContributor.ToLower().Contains(searchAuthorName.text.ToLower()))
+                //    continue;
 
                 var task = new string[10]
                 {

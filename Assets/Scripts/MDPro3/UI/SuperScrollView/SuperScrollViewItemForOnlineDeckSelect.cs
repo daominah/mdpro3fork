@@ -52,7 +52,7 @@ namespace MDPro3.UI
             textDeckName.text = deckName;
             textAuthorName.text = "By " + authorName;
             textLike.text = like.ToString();
-            textDate.text = lastDate.Substring(0, 10);
+            textDate.text = lastDate;
             var casePath = deckCase.ToString();
             var load = TextureManager.LoadItemIcon(casePath);
             while (load.MoveNext())

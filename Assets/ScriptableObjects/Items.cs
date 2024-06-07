@@ -25,7 +25,7 @@ namespace MDPro3
                     if (!nameLoaded)
                     {
                         var listName = instance.GetName(id, m_name);
-                        if(listName != nullString)
+                        if(listName != nullString || string.IsNullOrEmpty(m_name))
                             m_name = listName;
                         nameLoaded = true;
                     }
