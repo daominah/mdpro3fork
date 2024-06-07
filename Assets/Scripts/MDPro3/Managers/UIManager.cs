@@ -41,6 +41,7 @@ namespace MDPro3
             ChangeWallpaper(currentWallpaper);
             InitializeLanguage();
         }
+
         public static void Translate(GameObject go)
         {
             foreach (var text in go.GetComponentsInChildren<Text>(true))
