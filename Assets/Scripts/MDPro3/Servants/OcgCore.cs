@@ -6812,6 +6812,8 @@ namespace MDPro3
         }
         void TurnChangeBanner(int controller)
         {
+            if (turns == 1)
+                return;
             GameObject phaseObject = Instantiate(controller == 0 ? container.duelTurnChangeNear : container.duelTurnChangeFar);
             Destroy(phaseObject, 2f);
             Sleep(200);
