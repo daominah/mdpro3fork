@@ -27,6 +27,9 @@ namespace MDPro3
         public UniversalRenderPipelineAsset urpAssetForUI;
         public UniversalRendererData forwardRendererDataForUI;
 
+        public static Vector3 mainCameraDefaultPosition = new Vector3(0f, 95f, -37f);
+        public static Vector3 mainCameraDefaultRotation = new Vector3(70f, 0f, 0f);
+
         public override void Initialize()
         {
             base.Initialize();
@@ -211,6 +214,26 @@ namespace MDPro3
             else
             {
                 Program.I().camera_.cameraMain.DOShakePosition(0.2f, 0.5f, 50);
+            }
+        }
+
+        public static bool overlaySticking;
+        public static void Duel3DOverlayStickWithMain(bool stick)
+        {
+            if (stick)
+            {
+                overlaySticking = true;
+                Program.I().camera_.cameraDuelOverlay3D.transform.SetParent(Program.I().camera_.cameraMain.transform, false);
+                Program.I().camera_.cameraDuelOverlay3D.transform.localPosition = Vector3.zero;
+                Program.I().camera_.cameraDuelOverlay3D.transform.localEulerAngles = Vector3.zero;
+            }
+            else
+            {
+                overlaySticking = false;
+                Program.I().camera_.cameraDuelOverlay3D.transform.SetParent(Program.I().camera_.transform, false);
+                Program.I().camera_.cameraDuelOverlay3D.transform.localPosition = mainCameraDefaultPosition;
+                Program.I().camera_.cameraDuelOverlay3D.transform.localEulerAngles = mainCameraDefaultRotation;
+
             }
         }
 

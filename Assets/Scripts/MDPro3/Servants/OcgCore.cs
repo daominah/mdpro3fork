@@ -837,39 +837,7 @@ namespace MDPro3
             cg.interactable = true;
             cg.blocksRaycasts = true;
 
-            //ABLoader.LoadFromFolder("20f13fa0");//eff_duel_hiteffect_00
-            //ABLoader.LoadFromFolder("76500705");//assets/resourcesassetbundle/duel/effects/hit/fxp_hitm_fin/fxp_hitm_fin_blueeyes/attackblueeyes_screeneffect.prefab
-            //ABLoader.LoadFromFolder("331f3358");//assets/resourcesassetbundle/duel/effects/hit/fxp_hitm_fin/fxp_hitm_fin_blueeyes/fxp_hitm_fin_bluee01_far_001.prefab
-            //ABLoader.LoadFromFolder("07b85b70");//assets/resourcesassetbundle/duel/effects/hit/fxp_hitm_fin/fxp_hitm_fin_blueeyes/fxp_hitm_fin_bluee01_near_001.prefab
-            //ABLoader.LoadFromFolder("2c35cb85");//assets/resourcesassetbundle/duel/effects/hit/fxp_hitm_fin/fxp_hitm_fin_darkm01/attackdarkm_screeneffect.prefab
-            //ABLoader.LoadFromFolder("704cfe70");//assets/resourcesassetbundle/duel/effects/hit/fxp_hitm_fin/fxp_hitm_fin_darkm01/fxp_hitm_fin_darkm01_far_001.prefab
-            //ABLoader.LoadFromFolder("324ea047");//assets/resourcesassetbundle/duel/effects/hit/fxp_hitm_fin/fxp_hitm_fin_darkm01/fxp_hitm_fin_darkm01_near_001.prefab
-            //ABLoader.LoadFromFolder("17c1f342");//assets/resourcesassetbundle/duel/effects/hit/fxp_hitm_fin/fxp_hitm_fin_m04998/fxp_hitm_fin_m04998_far_001.prefab
-            //ABLoader.LoadFromFolder("fafe7cca");//assets/resourcesassetbundle/duel/effects/hit/fxp_hitm_fin/fxp_hitm_fin_m04998/fxp_hitm_fin_m04998_near_001.prefab
-            //ABLoader.LoadFromFolder("7c292573");//assets/resourcesassetbundle/duel/effects/hit/fxp_hitm_fin/fxp_hitm_fin_m04999/attackm04999screeneffect.prefab
-            //ABLoader.LoadFromFolder("63bd3e25");//assets/resourcesassetbundle/duel/effects/hit/fxp_hitm_fin/fxp_hitm_fin_m04999/fxp_hitm_fin_m04999_far_001.prefab
-            //ABLoader.LoadFromFolder("295cf4fc");//assets/resourcesassetbundle/duel/effects/hit/fxp_hitm_fin/fxp_hitm_fin_m04999/fxp_hitm_fin_m04999_near_001.prefab
-            //ABLoader.LoadFromFolder("b5d157e4");//assets/resourcesassetbundle/duel/effects/hit/fxp_hitm_fin/fxp_hitm_fin_m05000/attack_m05000screeneffect.prefab
-            //ABLoader.LoadFromFolder("922c9b22");//assets/resourcesassetbundle/duel/effects/hit/fxp_hitm_fin/fxp_hitm_fin_m05000/fxp_hitm_fin_m05000_far_001.prefab
-            //ABLoader.LoadFromFolder("b7c9f0fa");//assets/resourcesassetbundle/duel/effects/hit/fxp_hitm_fin/fxp_hitm_fin_m05000/fxp_hitm_fin_m05000_near_001.prefab
-            //ABLoader.LoadFromFolder("03c2faea");//assets/resourcesassetbundle/duel/effects/hit/fxp_hitm_fin/fxp_hitm_fin_redeyes01/attackredescreeneffect.prefab
-            //ABLoader.LoadFromFolder("34ee4d85");//assets/resourcesassetbundle/duel/effects/hit/fxp_hitm_fin/fxp_hitm_fin_redeyes01/fxp_hitm_fin_rede01_far_001.prefab
-            //ABLoader.LoadFromFolder("ffdd0467");//assets/resourcesassetbundle/duel/effects/hit/fxp_hitm_fin/fxp_hitm_fin_redeyes01/fxp_hitm_fin_rede01_near_001.prefab
 
-            //ABLoader.LoadFromFolder("6733207a");//assets/resourcesassetbundle/duel/timeline/duel/universal/attack/attack_m04998/attack_m04998dummycardset.prefab
-            //ABLoader.LoadFromFolder("8c4d1977");//assets/resourcesassetbundle/duel/timeline/duel/universal/attack/attack_m04998/attack_m04998punch.prefab
-            //ABLoader.LoadFromFolder("b51f3a0f");//assets/resourcesassetbundle/duel/timeline/duel/universal/attack/attack_m04999/attackm04999beam.prefab
-            //ABLoader.LoadFromFolder("d25bd123");//assets/resourcesassetbundle/duel/timeline/duel/universal/attack/attack_m04999/attackm04999dummycardset.prefab
-            //ABLoader.LoadFromFolder("5d9d44b3");//assets/resourcesassetbundle/duel/timeline/duel/universal/attack/attack_m05000/attack_m05000bless.prefab
-            //ABLoader.LoadFromFolder("745fb658");//assets/resourcesassetbundle/duel/timeline/duel/universal/attack/attack_m05000/attack_m05000dummycardset.prefab
-            //ABLoader.LoadFromFolder("446b8cb8");//assets/resourcesassetbundle/duel/timeline/duel/universal/attack/attackblueeyes/attackblueebeam.prefab
-            //ABLoader.LoadFromFolder("a82a423d");//assets/resourcesassetbundle/duel/timeline/duel/universal/attack/attackblueeyes/attackblueedummycardset.prefab
-            //ABLoader.LoadFromFolder("3a32fcda");//assets/resourcesassetbundle/duel/timeline/duel/universal/attack/attackdarkm/attackdarkmdummycardset.prefab
-            //ABLoader.LoadFromFolder("57090dd3");//assets/resourcesassetbundle/duel/timeline/duel/universal/attack/attackdarkm/attackdarkmlinerenderer.prefab
-            //ABLoader.LoadFromFolder("637a633f");//assets/resourcesassetbundle/duel/timeline/duel/universal/attack/attackdarkm/attackdarkmlinerendererda.prefab
-            //ABLoader.LoadFromFolder("657e34c6");//assets/resourcesassetbundle/duel/timeline/duel/universal/attack/attackdarkm/attackdarkmtargetpoint.prefab
-            //ABLoader.LoadFromFolder("5c2f34a0");//assets/resourcesassetbundle/duel/timeline/duel/universal/attack/attackredeyes/attackredebless.prefab
-            //ABLoader.LoadFromFolder("fbf001db");//assets/resourcesassetbundle/duel/timeline/duel/universal/attack/attackredeyes/attackrededummycardset.prefab
 
             #region Attack Line
             if (attackLine == null)
@@ -4025,10 +3993,6 @@ namespace MDPro3
                     MessageManager.Cast("ReleaseRelation");
                     break;
                 case GameMessage.Battle:
-                    attackLine.SetActive(false);
-                    Destroy(duelFinalBlow);
-                    needDamageResponseInstant = true;
-
                     var gpsAttacker = r.ReadShortGPS();
                     r.ReadByte();
                     attackCard = GCS_Get(gpsAttacker);
@@ -4084,6 +4048,19 @@ namespace MDPro3
                     }
                     else
                         attackedPosition = attackedCard.model.transform.position;
+
+
+                    attackLine.SetActive(false);
+                    bool isFinalAttack = false;
+                    if (duelFinalBlow != null)
+                    {
+                        isFinalAttack = true;
+                        Destroy(duelFinalBlow);
+                    }
+                    needDamageResponseInstant = true;
+                    messagePass = false;
+                    if(isFinalAttack && GetSpecialFinalAttackType(attackCard, attackedPosition) != FinalAttackType.Normal)
+                        break;
 
                     GameObject tailObj = null;
                     GameObject hitObj = null;
@@ -4202,7 +4179,6 @@ namespace MDPro3
                     faceAngle.x = 0;
                     attackTransform.eulerAngles = attackAngle;
 
-                    messagePass = false;
                     Sequence quence = DOTween.Sequence();
                     if (attackCard.GetData().Attack < 2000)
                     {
@@ -4299,10 +4275,10 @@ namespace MDPro3
                         OnNor();
 #if UNITY_EDITOR
                         Program.I().timeScaleForEdit = 0.1f;
-                        DOTween.To(() => Program.I().timeScaleForEdit, x => Program.I().timeScaleForEdit = x, 1, 0.8f).SetEase(Ease.InQuad);
+                        DOTween.To(() => Program.I().timeScaleForEdit, x => Program.I().timeScaleForEdit = x, 1f, 0.85f).SetEase(Ease.InQuad);
 #else
                         Program.I().timeScale = 0.1f;
-                        DOTween.To(() => Program.I().timeScale, x => Program.I().timeScale = x, 1, 0.8f).SetEase(Ease.InQuad);
+                        DOTween.To(() => Program.I().timeScale, x => Program.I().timeScale = x, 1f, 0.85f).SetEase(Ease.InQuad);
 #endif
 
                         if (life0 <= 0)
@@ -6818,6 +6794,679 @@ namespace MDPro3
             Destroy(phaseObject, 2f);
             Sleep(200);
         }
+
+
+        enum FinalAttackType
+        {
+            BlueEyes,
+            DarkM,
+            RedEyes,
+            Slifer,
+            Obelisk,
+            Ra,
+            Normal
+        }
+
+        FinalAttackType GetSpecialFinalAttackType(GameCard attackCard, Vector3 attackedPosition)
+        {
+            var data = attackCard.GetData();
+            var returnValue = FinalAttackType.Normal;
+            if (data.Id == 89631139 || data.Alias == 89631139 //ÇàÑÛ°×Áú
+                || data.Id == 53347303 || data.Alias == 53347303 //ÇàÑÛ¹âÁú
+                || data.Id == 22804410 || data.Alias == 22804410 //Ô¨ÑÛ°×Áú
+                || data.Id == 38517737 || data.Alias == 38517737 //ÇàÑÛÑÇ°×Áú
+                || data.Id == 30576089 || data.Alias == 30576089 //ÇàÑÛÅçÆøÁú
+                || data.Id == 9433350 || data.Alias == 9433350 //×ï ÇàÑÛ°×Áú
+                || data.Id == 53183600 || data.Alias == 53183600 //ÇàÑÛ¿¨Í¨Áú
+                || data.Id == 23995346 || data.Alias == 23995346 //ÇàÑÛ¾¿¼«Áú
+                || data.Id == 43228023 || data.Alias == 43228023 //ÇàÑÛ¾¿¼«ÑÇÁú
+                || data.Id == 56532353 || data.Alias == 56532353 //ÕæÇàÑÛ¾¿¼«Áú
+                || data.Id == 2129638 || data.Alias == 2129638 //ÇàÑÛË«±¬ÁÑÁú
+                || data.Id == 11443677 || data.Alias == 11443677 //ÇàÑÛ±©¾ýÁú
+                )
+                returnValue = FinalAttackType.BlueEyes;
+            if (data.Id == 46986414 || data.Alias == 46986414 //ºÚÄ§ÊõÊ¦
+                || data.Id == 92377303 || data.Alias == 92377303 //ºÚÒÂ´óÏÍÕß
+                || data.Id == 342673 || data.Alias == 342673 //ºÚÉ«Ä§ÊõÊ¦-ºÚÄ§ÊõÊ¦
+                || data.Id == 21296502 || data.Alias == 21296502 //¿¨Í¨ºÚÄ§ÊõÊ¦
+                || data.Id == 29436665 || data.Alias == 29436665 //ºÚÄ§µ¼Ö´ÐÐ¹Ù
+                || data.Id == 35191415 || data.Alias == 35191415 //ºÚ»ÃÏëÖ®Ä§ÊõÊ¦
+                || data.Id == 38033121 || data.Alias == 38033121 //ºÚÄ§ÊõÉÙÅ®
+                || data.Id == 90960358 || data.Alias == 90960358 //¿¨Í¨ºÚÄ§ÊõÉÙÅ®
+                || data.Id == 50237654 || data.Alias == 50237654 //³¬Ä§µ¼Ê¦-ºÚÄ§ÊõÊ¦Í½
+                )
+                returnValue = FinalAttackType.DarkM;
+            if (data.Id == 74677422 || data.Alias == 74677422 //ÕæºìÑÛºÚÁú
+                || data.Id == 96561011 || data.Alias == 96561011 //ÕæºìÑÛ°µÁú
+                || data.Id == 64335804 || data.Alias == 64335804 //ÕæºìÑÛºÚ¸ÖÁú
+                || data.Id == 18491580 || data.Alias == 18491580 //ÕæºìÑÛÑÇºÚÁú
+                || data.Id == 55343236 || data.Alias == 55343236 //×ï ÕæºìÑÛºÚÁú
+                || data.Id == 6556909 || data.Alias == 6556909 //ÕæºìÖ®»ê
+                )
+                returnValue = FinalAttackType.RedEyes;
+            if (data.Id == 10000000 || data.Alias == 10000000 //¾ÞÉñ±ø
+                )
+                returnValue = FinalAttackType.Obelisk;
+            if (data.Id == 10000010 || data.Alias == 10000010 //ÒíÉñÁú
+                || data.Id == 10000080 || data.Alias == 10000080 //µ°
+                || data.Id == 10000090 || data.Alias == 10000090 //²»ËÀÄñ
+                )
+                returnValue = FinalAttackType.Ra;
+            if (data.Id == 10000020 || data.Alias == 10000020 //Ìì¿ÕÁú
+                )
+                returnValue = FinalAttackType.Slifer;
+
+            AnimationFinalAttack(returnValue, attackCard, attackedPosition);
+            return returnValue;
+        }
+
+        void AnimationFinalAttack(FinalAttackType type, GameCard attackCard, Vector3 attackedPosition)
+        {
+            if (type == FinalAttackType.Normal)
+                return;
+            if (type == FinalAttackType.BlueEyes)
+                AnimationFinalAttack_BlueEyes(attackCard, attackedPosition);
+            else if(type == FinalAttackType.DarkM)
+                AnimationFinalAttack_DarkM(attackCard, attackedPosition);
+            else if (type == FinalAttackType.RedEyes)
+                AnimationFinalAttack_RedEyes(attackCard, attackedPosition);
+            else if (type == FinalAttackType.Ra)
+                AnimationFinalAttack_Ra(attackCard, attackedPosition);
+            else if (type == FinalAttackType.Slifer)
+                AnimationFinalAttack_Slifer(attackCard, attackedPosition);
+            else if (type == FinalAttackType.Obelisk)
+                AnimationFinalAttack_Obelisk(attackCard, attackedPosition);
+        }
+
+        void AnimationFinalAttack_BlueEyes(GameCard attackCard, Vector3 attackedPosition)
+        {
+            var attackRotation = attackCard.p.controller == 0 ? Vector3.zero : new Vector3(0f, 180f, 0f);
+
+            CameraManager.Duel3DOverlayStickWithMain(true);
+            AudioManager.PlaySE("SE_MONSTERATTACK_BE_01");
+
+            var cardSet = ABLoader.LoadFromFolder("MasterDuel/Timeline/FinalAttack/BlueEyes/CardSet", "BlueEyes CardSet", true);
+            var attackTransform = cardSet.transform;
+            var cardSetManager = attackTransform.GetChild(0).GetComponent<ElementObjectManager>();
+            var subManager = cardSetManager.GetElement<ElementObjectManager>("Card");
+            StartCoroutine(Program.I().texture_.LoadDummyCard(subManager, attackCard.GetData().Id));
+            attackCard.model.SetActive(false);
+            Tools.ChangeLayer(cardSet, "DuelOverlay3D");
+            var screenEffect = ABLoader.LoadFromFolder("MasterDuel/Timeline/FinalAttack/BlueEyes/ScreenEffect", "BlueEyes ScreenEffect", true);
+            screenEffect.transform.SetParent(Program.I().camera_.cameraDuelOverlay3D.transform, true);
+
+            var hit = ABLoader.LoadFromFolder("MasterDuel/Timeline/FinalAttack/BlueEyes/Hit" + (attackCard.p.controller == 0 ? "Far" : "Near"), "BlueEyes Hit", true);
+            hit.transform.position = attackedPosition;
+            hit.SetActive(false);
+
+            var beam = ABLoader.LoadFromFolder("MasterDuel/Timeline/FinalAttack/BlueEyes/Beam", "BlueEyes Beam", true);
+            Destroy(beam);
+            beam = beam.transform.GetChild(0).gameObject;
+            beam.transform.SetParent(cardSetManager.transform, false);
+            beam.transform.localPosition = new Vector3(0f, 1f, 0f);
+            beam.GetComponent<PlayableDirector>().enabled = true;
+            beam.GetComponent<PlayableDirector>().playOnAwake = true;
+            beam.SetActive(false);
+
+            var offset = new Vector3(0f, 5f, -8f);
+            if (attackCard.p.controller != 0)
+                offset.z = 8f;
+            var attackPosition = attackCard.model.transform.position;
+            attackTransform.position = attackPosition + offset;
+            attackTransform.LookAt(attackedPosition);
+            var faceAngle = attackTransform.eulerAngles;
+            faceAngle.x = 0;
+            attackTransform.eulerAngles = attackRotation;
+            attackTransform.position = attackPosition;
+
+            Sequence quence = DOTween.Sequence();
+            faceAngle.z = faceAngle.y >= 0 && faceAngle.y < 180 ? -60f : 60f;
+            offset = new Vector3(0f, 5f, -15f);
+            if (attackCard.p.controller != 0)
+                offset.z = 15f;
+            quence.Append(attackTransform.DOMove(attackPosition + offset, 0.6f).SetEase(Ease.InOutCubic));
+            quence.Join(attackTransform.DORotate(faceAngle + new Vector3(45f, 0f, 0f), 0.6f).SetEase(Ease.InOutCubic));
+
+            offset = new Vector3(0f, 5f, -8f);
+            if (attackCard.p.controller != 0)
+                offset.z = 8f;
+            quence.Append(attackTransform.DOMove(attackPosition + offset, 0.3f).SetEase(Ease.InOutCubic));
+            faceAngle.z = 0f;
+            quence.Join(attackTransform.DORotate(faceAngle, 0.3f).SetEase(Ease.InOutCubic));
+
+            quence.InsertCallback(0.7f, () =>
+            {
+                beam.SetActive(true);
+            });
+
+            offset = new Vector3(0f, 3f, 8f);
+            if (attackCard.p.controller != 0)
+                offset.z = -8f;
+            quence.Append(Program.I().camera_.cameraMain.transform.DOLocalMove(CameraManager.mainCameraDefaultPosition + offset, 0.1f));
+            quence.InsertCallback(1.05f, () =>
+            {
+                hit.SetActive(true);
+                AudioManager.PlaySE("SE_MONSTERATTACK_BE_02");
+                messagePass = true;
+                CameraManager.ShakeCamera(true);
+            });
+            quence.AppendInterval(1f);
+            quence.Append(attackTransform.DOMove(attackPosition, 0.5f).SetEase(Ease.InOutCubic));
+            quence.Join(attackTransform.DORotate(attackRotation, 0.5f).SetEase(Ease.InOutCubic));
+            quence.Join(Program.I().camera_.cameraMain.transform.DOLocalMove(CameraManager.mainCameraDefaultPosition, 0.2f));
+
+            quence.OnComplete(() =>
+            {
+                Destroy(cardSet);
+                Destroy(hit);
+                Destroy(screenEffect);
+                needDamageResponseInstant = false;
+                attackCard.model.SetActive(true);
+                CameraManager.Duel3DOverlayStickWithMain(false);
+            });
+        }
+        void AnimationFinalAttack_DarkM(GameCard attackCard, Vector3 attackedPosition)
+        {
+            var attackRotation = attackCard.p.controller == 0 ? Vector3.zero : new Vector3(0f, 180f, 0f);
+            CameraManager.Duel3DOverlayStickWithMain(true);
+            CameraManager.DuelOverlay3DPlus();
+
+            AudioManager.PlaySE("SE_MONSTERATTACK_BM_01");
+
+            var cardSet = ABLoader.LoadFromFolder("MasterDuel/Timeline/FinalAttack/DarkM/CardSet", "DarkM CardSet", true);
+            var screenEffect = ABLoader.LoadFromFolder("MasterDuel/Timeline/FinalAttack/DarkM/ScreenEffect", "DarkM ScreenEffect", true);
+            var hit = ABLoader.LoadFromFolder("MasterDuel/Timeline/FinalAttack/DarkM/Hit" + (attackCard.p.controller == 0 ? "Far" : "Near"), "DarkM Hit", true);
+            //var lineRenderer = ABLoader.LoadFromFolder("MasterDuel/Timeline/FinalAttack/DarkM/LineRenderer", "DarkM LineRenderer", true);
+            var lineRendererDA = ABLoader.LoadFromFolder("MasterDuel/Timeline/FinalAttack/DarkM/LineRendererDA", "DarkM LineRendererDA", true);
+            var targetPoint = ABLoader.LoadFromFolder("MasterDuel/Timeline/FinalAttack/DarkM/TargetPoint", "DarkM TargetPoint", true);
+
+            Tools.ChangeLayer(cardSet, "DuelOverlay3D");
+            Tools.ChangeLayer(screenEffect, "DuelOverlay3D");
+            Tools.ChangeLayer(hit, "DuelOverlay3D");
+            Tools.ChangeLayer(lineRendererDA, "DuelOverlay3D");
+            Tools.ChangeLayer(targetPoint, "DuelOverlay3D");
+
+            var attackTransform = cardSet.transform;
+            var cardSetManager = attackTransform.GetChild(0).GetComponent<ElementObjectManager>();
+            var subManager = cardSetManager.GetElement<ElementObjectManager>("Card");
+            StartCoroutine(Program.I().texture_.LoadDummyCard(subManager, attackCard.GetData().Id));
+            attackCard.model.SetActive(false);
+            screenEffect.transform.SetParent(Program.I().camera_.cameraDuelOverlay3D.transform, true);
+
+            hit.transform.position = attackedPosition;
+            hit.SetActive(false);
+            targetPoint.transform.position = attackedPosition;
+            targetPoint.transform.GetChild(0).GetComponent<PlayableDirector>().playOnAwake = true;
+            targetPoint.transform.LookAt(attackCard.model.transform);
+            targetPoint.transform.GetChild(0).transform.localEulerAngles = new Vector3(0f, 180f, 0f);
+            targetPoint.SetActive(false);
+
+
+            var lineManager = lineRendererDA.transform.GetChild(0).GetComponent<ElementObjectManager>();
+            var line1 = lineManager.GetElement<LineRenderer>("Line01");
+            var line2 = lineManager.GetElement<LineRenderer>("Line02");
+            lineRendererDA.SetActive(false);
+
+            var offset = new Vector3(0f, 20f, -8f);
+            if (attackCard.p.controller != 0)
+                offset.z = 8f;
+            var attackPosition = attackCard.model.transform.position;
+            attackTransform.position = attackPosition + offset;
+
+            var positions = new Vector3[2]
+{
+                attackTransform.position + new Vector3(0f, 1f, 0f),
+                attackedPosition
+};
+            line1.SetPositions(positions);
+            line2.SetPositions(positions);
+
+            attackTransform.LookAt(attackedPosition);
+            var faceAngle = attackTransform.eulerAngles;
+            faceAngle.x = 0;
+            attackTransform.eulerAngles = attackRotation;
+            attackTransform.position = attackPosition;
+
+            Sequence quence = DOTween.Sequence();
+            faceAngle.z = faceAngle.y >= 0 && faceAngle.y < 180 ? -60f : 60f;
+            offset = new Vector3(0f, 40f, -15f);
+            if (attackCard.p.controller != 0)
+                offset.z = 15f;
+            quence.Append(attackTransform.DOMove(attackPosition + offset, 0.8f).SetEase(Ease.InOutCubic));
+            quence.Join(attackTransform.DORotate(faceAngle + new Vector3(45f, 0f, 0f), 0.8f).SetEase(Ease.InOutCubic));
+
+            offset = new Vector3(0f, 20f, -8f);
+            if (attackCard.p.controller != 0)
+                offset.z = 8f;
+            quence.Append(attackTransform.DOMove(attackPosition + offset, 0.3f).SetEase(Ease.InOutCubic));
+            faceAngle.z = 0f;
+            quence.Join(attackTransform.DORotate(faceAngle + new Vector3(30f, 0f, 0f), 0.3f).SetEase(Ease.InOutCubic));
+
+            quence.InsertCallback(0.9f, () =>
+            {
+                lineRendererDA.SetActive(true);
+                Destroy(lineRendererDA, 0.58f);
+            });
+
+            offset = new Vector3(0f, 3f, 8f);
+            if (attackCard.p.controller != 0)
+                offset.z = -8f;
+            quence.Append(Program.I().camera_.cameraMain.transform.DOLocalMove(CameraManager.mainCameraDefaultPosition + offset, 0.1f));
+            quence.InsertCallback(1.25f, () =>
+            {
+                hit.SetActive(true);
+                targetPoint.SetActive(true);
+                AudioManager.PlaySE("SE_MONSTERATTACK_BM_02");
+                messagePass = true;
+                CameraManager.ShakeCamera(true);
+            });
+            quence.AppendInterval(0.5f);
+            quence.Append(attackTransform.DOMove(attackPosition, 0.5f).SetEase(Ease.InOutCubic));
+            quence.Join(attackTransform.DORotate(attackRotation, 0.5f).SetEase(Ease.InOutCubic));
+            quence.Join(Program.I().camera_.cameraMain.transform.DOLocalMove(CameraManager.mainCameraDefaultPosition, 0.2f));
+
+            quence.OnComplete(() =>
+            {
+                Destroy(cardSet);
+                Destroy(hit);
+                Destroy(screenEffect);
+                Destroy(targetPoint);
+                needDamageResponseInstant = false;
+                attackCard.model.SetActive(true);
+                CameraManager.Duel3DOverlayStickWithMain(false);
+                CameraManager.DuelOverlay3DMinus();
+            });
+        }
+        void AnimationFinalAttack_RedEyes(GameCard attackCard, Vector3 attackedPosition)
+        {
+            var attackRotation = attackCard.p.controller == 0 ? Vector3.zero : new Vector3(0f, 180f, 0f);
+            CameraManager.Duel3DOverlayStickWithMain(true);
+            CameraManager.DuelOverlay3DPlus();
+
+            AudioManager.PlaySE("SE_MONSTERATTACK_RE_01");
+
+            var cardSet = ABLoader.LoadFromFolder("MasterDuel/Timeline/FinalAttack/RedEyes/CardSet", "RedEyes CardSet", true);
+            var screenEffect = ABLoader.LoadFromFolder("MasterDuel/Timeline/FinalAttack/RedEyes/ScreenEffect", "RedEyes ScreenEffect", true);
+            var hit = ABLoader.LoadFromFolder("MasterDuel/Timeline/FinalAttack/RedEyes/Hit" + (attackCard.p.controller == 0 ? "Far" : "Near"), "RedEyes Hit", true);
+            var bless = ABLoader.LoadFromFolder("MasterDuel/Timeline/FinalAttack/RedEyes/Bless", "RedEyes Bless", true);
+            bless.SetActive(false);
+
+            Tools.ChangeLayer(cardSet, "DuelOverlay3D");
+
+            var attackTransform = cardSet.transform;
+            var cardSetManager = attackTransform.GetChild(0).GetComponent<ElementObjectManager>();
+            var subManager = cardSetManager.GetElement<ElementObjectManager>("Card");
+            StartCoroutine(Program.I().texture_.LoadDummyCard(subManager, attackCard.GetData().Id));
+            cardSetManager.GetComponent<PlayableDirector>().Play();
+            attackCard.model.SetActive(false);
+            screenEffect.transform.SetParent(Program.I().camera_.cameraDuelOverlay3D.transform, true);
+
+            hit.transform.position = attackedPosition;
+            hit.SetActive(false);
+
+            var offset = new Vector3(0f, 20f, -8f);
+            if (attackCard.p.controller != 0)
+                offset.z = 8f;
+            var attackPosition = attackCard.model.transform.position;
+            attackTransform.position = attackPosition + offset;
+
+            attackTransform.LookAt(attackedPosition);
+            var faceAngle = attackTransform.eulerAngles;
+            faceAngle.x = 0;
+            attackTransform.eulerAngles = attackRotation;
+            attackTransform.position = attackPosition;
+
+            Sequence quence = DOTween.Sequence();
+            faceAngle.z = faceAngle.y >= 0 && faceAngle.y < 180 ? -60f : 60f;
+            offset = new Vector3(0f, 40f, -15f);
+            if (attackCard.p.controller != 0)
+                offset.z = 15f;
+            quence.Append(attackTransform.DOMove(attackPosition + offset, 0.6f).SetEase(Ease.InOutCubic));
+            quence.Join(attackTransform.DORotate(faceAngle + new Vector3(45f, 0f, 0f), 0.6f).SetEase(Ease.InOutCubic));
+
+            offset = new Vector3(0f, 20f, -8f);
+            if (attackCard.p.controller != 0)
+                offset.z = 8f;
+            quence.Append(attackTransform.DOMove(attackPosition + offset, 0.3f).SetEase(Ease.InOutCubic));
+            faceAngle.z = 0f;
+            quence.Join(attackTransform.DORotate(faceAngle + new Vector3(30f, 0f, 0f), 0.3f).SetEase(Ease.InOutCubic));
+
+
+            offset = new Vector3(0f, 3f, 8f);
+            if (attackCard.p.controller != 0)
+                offset.z = -8f;
+            quence.Append(Program.I().camera_.cameraMain.transform.DOLocalMove(CameraManager.mainCameraDefaultPosition + offset, 0.3f));
+            quence.InsertCallback(0.95f, () =>
+            {
+                bless.SetActive(true);
+                bless.transform.position = attackTransform.position;
+                bless.transform.LookAt(attackedPosition);
+                bless.transform.DOMove(attackedPosition, 0.3f);
+            });
+
+            quence.InsertCallback(1.2f, () =>
+            {
+                hit.SetActive(true);
+                AudioManager.PlaySE("SE_MONSTERATTACK_RE_02");
+                messagePass = true;
+                CameraManager.ShakeCamera(true);
+            });
+            quence.AppendInterval(0.5f);
+            quence.Append(attackTransform.DOMove(attackPosition, 0.5f).SetEase(Ease.InOutCubic));
+            quence.Join(attackTransform.DORotate(attackRotation, 0.5f).SetEase(Ease.InOutCubic));
+            quence.Join(Program.I().camera_.cameraMain.transform.DOLocalMove(CameraManager.mainCameraDefaultPosition, 0.2f));
+
+            quence.OnComplete(() =>
+            {
+                Destroy(cardSet);
+                Destroy(hit);
+                Destroy(screenEffect);
+                Destroy(bless);
+                needDamageResponseInstant = false;
+                attackCard.model.SetActive(true);
+                CameraManager.Duel3DOverlayStickWithMain(false);
+                CameraManager.DuelOverlay3DMinus();
+            });
+        }
+        void AnimationFinalAttack_Ra(GameCard attackCard, Vector3 attackedPosition)
+        {
+            var attackRotation = attackCard.p.controller == 0 ? Vector3.zero : new Vector3(0f, 180f, 0f);
+            CameraManager.Duel3DOverlayStickWithMain(true);
+            CameraManager.DuelOverlay3DPlus();
+
+            AudioManager.PlaySE("SE_MONSTERATTACK_RA_01");
+
+            var cardSet = ABLoader.LoadFromFolder("MasterDuel/Timeline/FinalAttack/Ra/CardSet", "Ra CardSet", true);
+            var screenEffect = ABLoader.LoadFromFolder("MasterDuel/Timeline/FinalAttack/Ra/ScreenEffect", "Ra ScreenEffect", true);
+            var hit = ABLoader.LoadFromFolder("MasterDuel/Timeline/FinalAttack/Ra/Hit" + (attackCard.p.controller == 0 ? "Far" : "Near"), "Ra Hit", true);
+            var bless = ABLoader.LoadFromFolder("MasterDuel/Timeline/FinalAttack/Ra/Bless", "Ra Bless", true);
+            Tools.SetParticleSystemSimulationSpeed(bless.transform, 0.5f);
+            bless.SetActive(false);
+
+            Tools.ChangeLayer(cardSet, "DuelOverlay3D");
+
+            var attackTransform = cardSet.transform;
+            var cardSetManager = attackTransform.GetChild(0).GetComponent<ElementObjectManager>();
+            var subManager = cardSetManager.GetElement<ElementObjectManager>("Card");
+            StartCoroutine(Program.I().texture_.LoadDummyCard(subManager, attackCard.GetData().Id));
+            cardSetManager.GetComponent<PlayableDirector>().Play();
+            attackCard.model.SetActive(false);
+            screenEffect.transform.SetParent(Program.I().camera_.cameraDuelOverlay3D.transform, true);
+
+            hit.transform.position = attackedPosition;
+            hit.SetActive(false);
+
+            var offset = new Vector3(0f, 20f, -8f);
+            if (attackCard.p.controller != 0)
+                offset.z = 8f;
+            var attackPosition = attackCard.model.transform.position;
+            attackTransform.position = attackPosition + offset;
+
+            attackTransform.LookAt(attackedPosition);
+            var faceAngle = attackTransform.eulerAngles;
+            faceAngle.x = 0;
+            attackTransform.eulerAngles = attackRotation;
+            attackTransform.position = attackPosition;
+
+            Sequence quence = DOTween.Sequence();
+            faceAngle.z = 0f;
+            offset = new Vector3(0f, 40f, -15f);
+            if (attackCard.p.controller != 0)
+                offset.z = 15f;
+            quence.Append(attackTransform.DOMove(attackPosition + offset, 1f).SetEase(Ease.InOutCubic));
+            quence.Join(attackTransform.DORotate(faceAngle + new Vector3(-30f, 0f, 0f), 1f).SetEase(Ease.InOutCubic));
+
+            quence.InsertCallback(1f, () =>
+            {
+                bless.SetActive(true);
+                bless.transform.position = attackTransform.position;
+                bless.transform.LookAt(attackedPosition);
+
+                bless.transform.DOMove(attackedPosition, 0.3f);
+
+                offset = new Vector3(0f, 3f, 8f);
+                if (attackCard.p.controller != 0)
+                    offset.z = -8f;
+                Program.I().camera_.cameraMain.transform.DOLocalMove(CameraManager.mainCameraDefaultPosition + offset, 0.3f);
+            });
+
+            offset = new Vector3(0f, 20f, 0f);
+            if (attackCard.p.controller != 0)
+                offset.z = 0f;
+            quence.Append(attackTransform.DOMove(attackPosition + offset, 0.3f).SetEase(Ease.OutCubic));
+            quence.Join(attackTransform.DORotate(faceAngle + new Vector3(30f, 0f, 0f), 0.3f).SetEase(Ease.OutCubic));
+
+
+            quence.InsertCallback(1.3f, () =>
+            {
+                hit.SetActive(true);
+                AudioManager.PlaySE("SE_MONSTERATTACK_RA_02");
+                messagePass = true;
+                CameraManager.ShakeCamera(true);
+            });
+            quence.AppendInterval(0.5f);
+            quence.Append(attackTransform.DOMove(attackPosition, 0.5f).SetEase(Ease.InOutCubic));
+            quence.Join(attackTransform.DORotate(attackRotation, 0.5f).SetEase(Ease.InOutCubic));
+            quence.Join(Program.I().camera_.cameraMain.transform.DOLocalMove(CameraManager.mainCameraDefaultPosition, 0.2f));
+
+            quence.OnComplete(() =>
+            {
+                Destroy(cardSet);
+                Destroy(hit);
+                Destroy(screenEffect);
+                Destroy(bless);
+                needDamageResponseInstant = false;
+                attackCard.model.SetActive(true);
+                CameraManager.Duel3DOverlayStickWithMain(false);
+                CameraManager.DuelOverlay3DMinus();
+            });
+        }
+        void AnimationFinalAttack_Slifer(GameCard attackCard, Vector3 attackedPosition)
+        {
+            var attackRotation = attackCard.p.controller == 0 ? Vector3.zero : new Vector3(0f, 180f, 0f);
+            CameraManager.Duel3DOverlayStickWithMain(true);
+            CameraManager.DuelOverlay3DPlus();
+            AudioManager.PlaySE("SE_MONSTERATTACK_SLIFER_01");
+
+            var cardSet = ABLoader.LoadFromFolder("MasterDuel/Timeline/FinalAttack/Slifer/CardSet", "Slifer CardSet", true);
+            Tools.ChangeLayer(cardSet, "DuelOverlay3D");
+            var attackTransform = cardSet.transform;
+            var cardSetManager = attackTransform.GetChild(0).GetComponent<ElementObjectManager>();
+            var subManager = cardSetManager.GetElement<ElementObjectManager>("Card");
+            StartCoroutine(Program.I().texture_.LoadDummyCard(subManager, attackCard.GetData().Id));
+            attackCard.model.SetActive(false);
+
+            var screenEffect = ABLoader.LoadFromFolder("MasterDuel/Timeline/FinalAttack/Slifer/ScreenEffect", "Slifer ScreenEffect", true);
+            screenEffect.transform.SetParent(Program.I().camera_.cameraDuelOverlay3D.transform, true);
+            screenEffect.SetActive(false);
+
+            var hit = ABLoader.LoadFromFolder("MasterDuel/Timeline/FinalAttack/Slifer/Hit" + (attackCard.p.controller == 0 ? "Far" : "Near"), "Slifer Hit", true);
+            hit.transform.position = attackedPosition;
+            hit.SetActive(false);
+
+            var beam = ABLoader.LoadFromFolder("MasterDuel/Timeline/FinalAttack/Slifer/Beam", "Slifer Beam", true);
+            Destroy(beam);
+            beam = beam.transform.GetChild(0).gameObject;
+            beam.transform.SetParent(cardSetManager.transform, false);
+            beam.transform.localPosition = new Vector3(0f, 1f, 0f);
+            beam.GetComponent<PlayableDirector>().enabled = true;
+            beam.GetComponent<PlayableDirector>().playOnAwake = true;
+            beam.SetActive(false);
+
+            var offset = new Vector3(0f, 20f, -8f);
+            if (attackCard.p.controller != 0)
+                offset.z = 8f;
+            var attackPosition = attackCard.model.transform.position;
+            attackTransform.position = attackPosition + offset;
+            attackTransform.LookAt(attackedPosition);
+            var faceAngle = attackTransform.eulerAngles;
+            faceAngle.x = 0;
+            attackTransform.eulerAngles = attackRotation;
+            attackTransform.position = attackPosition;
+
+            Sequence quence = DOTween.Sequence();
+            faceAngle.z = 0;
+            offset = new Vector3(0f, 40f, -15f);
+            if (attackCard.p.controller != 0)
+                offset.z = 15f;
+            quence.Append(attackTransform.DOMove(attackPosition + offset, 0.8f).SetEase(Ease.InOutCubic));
+            quence.Join(attackTransform.DORotate(faceAngle + new Vector3(30f, 0f, 0f), 0.8f).SetEase(Ease.InOutCubic));
+
+            offset = new Vector3(0f, 20f, -8f);
+            if (attackCard.p.controller != 0)
+                offset.z = 8f;
+            quence.Append(attackTransform.DOMove(attackPosition + offset, 0.3f).SetEase(Ease.InOutCubic));
+            faceAngle.z = 0f;
+            quence.Join(attackTransform.DORotate(faceAngle, 0.3f).SetEase(Ease.InOutCubic));
+
+            quence.InsertCallback(0.4f, () =>
+            {
+                screenEffect.SetActive(true);
+            });
+
+            quence.InsertCallback(0.9f, () =>
+            {
+                beam.SetActive(true);
+            });
+
+            quence.InsertCallback(1.1f, () =>
+            {
+                offset = new Vector3(0f, 3f, 8f);
+                if (attackCard.p.controller != 0)
+                    offset.z = -8f;
+                Program.I().camera_.cameraMain.transform.DOLocalMove(CameraManager.mainCameraDefaultPosition + offset, 0.1f);
+            });
+
+            quence.InsertCallback(1.2f, () =>
+            {
+                hit.SetActive(true);
+                AudioManager.PlaySE("SE_MONSTERATTACK_SLIFER_02");
+                messagePass = true;
+                CameraManager.ShakeCamera(true);
+            });
+            quence.AppendInterval(0.6f);
+            quence.Append(attackTransform.DOMove(attackPosition, 0.5f).SetEase(Ease.InOutCubic));
+            quence.Join(attackTransform.DORotate(attackRotation, 0.5f).SetEase(Ease.InOutCubic));
+            quence.Join(Program.I().camera_.cameraMain.transform.DOLocalMove(CameraManager.mainCameraDefaultPosition, 0.2f));
+
+            quence.OnComplete(() =>
+            {
+                Destroy(cardSet);
+                Destroy(hit);
+                Destroy(screenEffect);
+                needDamageResponseInstant = false;
+                attackCard.model.SetActive(true);
+                CameraManager.Duel3DOverlayStickWithMain(false);
+                CameraManager.DuelOverlay3DMinus();
+            });
+
+        }
+        void AnimationFinalAttack_Obelisk(GameCard attackCard, Vector3 attackedPosition)
+        {
+            var attackRotation = attackCard.p.controller == 0 ? Vector3.zero : new Vector3(0f, 180f, 0f);
+            CameraManager.Duel3DOverlayStickWithMain(true);
+            CameraManager.DuelOverlay3DPlus();
+
+            AudioManager.PlaySE("SE_MONSTERATTACK_OBELISK_01");
+
+            var cardSet = ABLoader.LoadFromFolder("MasterDuel/Timeline/FinalAttack/Obelisk/CardSet", "Obelisk CardSet", true);
+            var screenEffect = ABLoader.LoadFromFolder("MasterDuel/Timeline/FinalAttack/Obelisk/ScreenEffect", "Obelisk ScreenEffect", true);
+            var hit = ABLoader.LoadFromFolder("MasterDuel/Timeline/FinalAttack/Obelisk/Hit" + (attackCard.p.controller == 0 ? "Far" : "Near"), "Obelisk Hit", true);
+            var punch = ABLoader.LoadFromFolder("MasterDuel/Timeline/FinalAttack/Obelisk/Punch", "Obelisk Punch", true);
+            Destroy(punch);
+            punch = Tools.GetPlayableDirectorInChildren(punch.transform).gameObject;
+            punch.transform.SetParent(null, false);
+            punch.GetComponent<PlayableDirector>().enabled = true;
+            if (attackCard.p.controller != 0)
+                punch.transform.eulerAngles = new Vector3(0f, 180f, 0f);
+
+            Tools.ChangeLayer(cardSet, "DuelOverlay3D");
+            Tools.ChangeLayer(punch, "DuelOverlay3D");
+
+            var attackTransform = cardSet.transform;
+            var cardSetManager = attackTransform.GetChild(0).GetComponent<ElementObjectManager>();
+            var subManager = cardSetManager.GetElement<ElementObjectManager>("Card");
+            StartCoroutine(Program.I().texture_.LoadDummyCard(subManager, attackCard.GetData().Id));
+            cardSetManager.GetComponent<PlayableDirector>().Play();
+            attackCard.model.SetActive(false);
+            screenEffect.transform.SetParent(Program.I().camera_.cameraDuelOverlay3D.transform, true);
+
+            hit.transform.position = attackedPosition;
+            hit.SetActive(false);
+            punch.transform.position = attackedPosition;
+            punch.SetActive(false);
+
+            var offset = new Vector3(0f, 5f, -8f);
+            if (attackCard.p.controller != 0)
+                offset.z = 8f;
+            var attackPosition = attackCard.model.transform.position;
+            attackTransform.position = attackPosition + offset;
+
+            attackTransform.LookAt(attackedPosition);
+            var faceAngle = attackTransform.eulerAngles;
+            faceAngle.x = 0;
+            attackTransform.eulerAngles = attackRotation;
+            attackTransform.position = attackPosition;
+
+            Sequence quence = DOTween.Sequence();
+            faceAngle.z = 0f;
+            offset = new Vector3(5f, 40f, -15f);
+            if (attackCard.p.controller != 0)
+            {
+                offset.x = -5f;
+                offset.z = 15f;
+            }
+            quence.Append(attackTransform.DOMove(attackPosition + offset, 1.5f).SetEase(Ease.InOutCubic));
+            offset = new Vector3(-30f, 35f, 0f);
+            quence.Join(attackTransform.DORotate(faceAngle + offset, 1.5f).SetEase(Ease.InOutCubic));
+            quence.InsertCallback(1f, () =>
+            {
+                punch.SetActive(true);
+            });
+
+            offset = new Vector3(0f, 20f, -8f);
+            if (attackCard.p.controller != 0)
+                offset.z = 8f;
+            quence.Append(attackTransform.DOMove(attackPosition + offset, 0.4f).SetEase(Ease.InOutCubic));
+            faceAngle.z = 0f;
+            offset = new Vector3(20f, 0f, 0f);
+            quence.Join(attackTransform.DORotate(faceAngle + offset, 0.4f).SetEase(Ease.InOutCubic));
+            quence.Join(attackTransform.GetChild(0).DOLocalMoveZ(10f, 0.4f));
+            quence.Join(attackTransform.GetChild(0).DOLocalRotate(new Vector3(0f, -30f, 0f), 0.4f));
+            offset = new Vector3(0f, 3f, 8f);
+            if (attackCard.p.controller != 0)
+                offset.z = -8f;
+            quence.Join(Program.I().camera_.cameraMain.transform.DOLocalMove(CameraManager.mainCameraDefaultPosition + offset, 0.4f));
+
+            quence.InsertCallback(1.8f, () =>
+            {
+                hit.SetActive(true);
+                AudioManager.PlaySE("SE_MONSTERATTACK_OBELISK_02");
+                messagePass = true;
+                CameraManager.ShakeCamera(true);
+            });
+
+            quence.AppendInterval(0.5f);
+            quence.Append(attackTransform.DOMove(attackPosition, 0.5f).SetEase(Ease.InOutCubic));
+            quence.Join(attackTransform.DORotate(attackRotation, 0.5f).SetEase(Ease.InOutCubic));
+            quence.Join(attackTransform.GetChild(0).DOLocalMove(Vector3.zero, 0.5f).SetEase(Ease.InOutCubic));
+            quence.Join(attackTransform.GetChild(0).DOLocalRotate(Vector3.zero, 0.5f).SetEase(Ease.InOutCubic));
+
+            quence.Join(Program.I().camera_.cameraMain.transform.DOLocalMove(CameraManager.mainCameraDefaultPosition, 0.2f));
+
+            quence.OnComplete(() =>
+            {
+                Destroy(cardSet);
+                Destroy(hit);
+                Destroy(screenEffect);
+                Destroy(punch);
+                needDamageResponseInstant = false;
+                attackCard.model.SetActive(true);
+                CameraManager.Duel3DOverlayStickWithMain(false);
+                CameraManager.DuelOverlay3DMinus();
+            });
+        }
+
         void RefreshHandCardPositionInstant()
         {
             if (isShowed)
@@ -7547,15 +8196,15 @@ namespace MDPro3
             var line2 = lineManager.GetElement<LineRenderer>("arrowRollover");
             var posArr = new Vector3[9]
             {
-            new Vector3(start.x, 5, start.z),
-            new Vector3(start.x + (end.x - start.x) * 0.125f, 5.8f, start.z + (end.z - start.z) * 0.125f),
-            new Vector3(start.x + (end.x - start.x) * 0.25f, 6.3f, start.z + (end.z - start.z) * 0.25f),
-            new Vector3(start.x + (end.x - start.x) * 0.375f, 6.5f, start.z + (end.z - start.z) * 0.375f),
-            new Vector3(start.x + (end.x - start.x) * 0.5f, 6.5f, start.z + (end.z - start.z) * 0.5f),
-            new Vector3(start.x + (end.x - start.x) * 0.625f, 6.5f, start.z + (end.z - start.z) * 0.625f),
-            new Vector3(start.x + (end.x - start.x) * 0.75f, 6.3f, start.z + (end.z - start.z) * 0.75f),
-            new Vector3(start.x + (end.x - start.x) * 0.875f, 5.8f, start.z + (end.z - start.z) * 0.875f),
-            new Vector3(end.x, 5, end.z),
+                new Vector3(start.x, 5, start.z),
+                new Vector3(start.x + (end.x - start.x) * 0.125f, 5.8f, start.z + (end.z - start.z) * 0.125f),
+                new Vector3(start.x + (end.x - start.x) * 0.25f, 6.3f, start.z + (end.z - start.z) * 0.25f),
+                new Vector3(start.x + (end.x - start.x) * 0.375f, 6.5f, start.z + (end.z - start.z) * 0.375f),
+                new Vector3(start.x + (end.x - start.x) * 0.5f, 6.5f, start.z + (end.z - start.z) * 0.5f),
+                new Vector3(start.x + (end.x - start.x) * 0.625f, 6.5f, start.z + (end.z - start.z) * 0.625f),
+                new Vector3(start.x + (end.x - start.x) * 0.75f, 6.3f, start.z + (end.z - start.z) * 0.75f),
+                new Vector3(start.x + (end.x - start.x) * 0.875f, 5.8f, start.z + (end.z - start.z) * 0.875f),
+                new Vector3(end.x, 5, end.z),
             };
             line1.SetPositions(posArr);
             line2.SetPositions(posArr);

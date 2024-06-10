@@ -64,8 +64,8 @@ namespace YgomSystem.Effect
             if (useMainCameraSetting)
             {
                 cameraViewType = ViewType.View3D;
-                cameraPosition = new Vector3 (0, 95, -37);
-                cameraAngle = new Vector3(70, 0, 0);
+                cameraPosition = CameraManager.mainCameraDefaultPosition;
+                cameraAngle = CameraManager.mainCameraDefaultRotation;
                 overUI = false;
             }
 
@@ -94,6 +94,8 @@ namespace YgomSystem.Effect
 
         public void SetupCamera(Camera target)
 		{
+            if (target == Program.I().camera_.cameraDuelOverlay3D && CameraManager.overlaySticking)
+                return;
 			target.transform.localPosition = cameraPosition;
 			target.transform.localEulerAngles = cameraAngle;
 			if (target.name.Contains("2D"))
