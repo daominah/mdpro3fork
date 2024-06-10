@@ -8649,6 +8649,8 @@ namespace MDPro3
         {
             if (!duelEnded)
                 return;
+            if (!isShowed)
+                return;
             var selections = new List<string>()
             {
                 InterString.Get("±£´æ»Ø·Å"),

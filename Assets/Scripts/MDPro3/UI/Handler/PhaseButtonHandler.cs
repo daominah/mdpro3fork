@@ -64,7 +64,7 @@ namespace MDPro3.UI
                 //Click
                 if (Program.hoverObject == collider_.gameObject && Program.InputGetMouse0Up)
                 {
-                    if (Program.I().ocgcore.returnAction == null)
+                    if (Program.I().ocgcore.currentPopup == null)
                     {
                         var tasks = new List<string>
                         {Program.I().ocgcore.phase.ToString()};
