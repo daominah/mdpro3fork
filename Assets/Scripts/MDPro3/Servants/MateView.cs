@@ -110,9 +110,9 @@ namespace MDPro3
             };
         }
 
-        public override void Show(int preDepth)
+        public override void ApplyShowArrangement(int preDepth)
         {
-            base.Show(preDepth);
+            base.ApplyShowArrangement(preDepth);
             Program.I().camera_.light.gameObject.SetActive(true);
             CameraManager.DuelOverlay2DPlus();
             CameraReset();

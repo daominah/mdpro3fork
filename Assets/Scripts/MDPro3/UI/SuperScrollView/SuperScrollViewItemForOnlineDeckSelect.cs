@@ -53,16 +53,18 @@ namespace MDPro3.UI
             textAuthorName.text = "By " + authorName;
             textLike.text = like.ToString();
             textDate.text = lastDate;
-            var casePath = deckCase.ToString();
-            var load = TextureManager.LoadItemIcon(casePath);
+            var load = TextureManager.LoadItemIcon(deckCase.ToString(), Items.ItemType.Case);
             while (load.MoveNext())
                 yield return null;
             if (load.Current != null)
                 caseIcon.sprite = load.Current;
-            while (Program.I().selectDeck.inTransition)
-                yield return null;
-            for (int i = 0; i < transform.GetSiblingIndex(); i++)
-                yield return null;
+            refreshed = true;
+        }
+
+        bool cardRefreshing;
+        IEnumerator RefreshCardAsync()
+        {
+            cardRefreshing = true;
             Material pMat = null;
             IEnumerator<Texture2D> ie = null;
             if (card1 != 0)
@@ -131,8 +133,9 @@ namespace MDPro3.UI
                 cardFace3.texture = null;
                 cardFace3.material = pMat;
             }
-            refreshed = true;
+            cardRefreshing = false;
         }
+
 
         public void Dispose()
         {
@@ -142,6 +145,8 @@ namespace MDPro3.UI
         IEnumerator DisposeAsync()
         {
             while (!refreshed)
+                yield return null;
+            while (cardRefreshing)
                 yield return null;
             Destroy(gameObject);
         }
@@ -163,6 +168,7 @@ namespace MDPro3.UI
 
         public void OnPointerEnter(PointerEventData eventData)
         {
+            StartCoroutine(RefreshCardAsync());
             if (!Program.I().onlineDeckViewer.hoverOn)
                 Hover(true);
         }

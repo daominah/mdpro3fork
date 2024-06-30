@@ -25,6 +25,7 @@ namespace MDPro3
         public TextureManager texture_;
         public MessageManager message_;
         public TimelineManager timeline_;
+        public NewsManager news_;
 
         [Header("Servants")]
         public Menu menu;
@@ -444,6 +445,8 @@ namespace MDPro3
             }
             catch { }
             TcpHelper.tcpClient = null;
+
+            MyCard.CloseAthleticWatchListWebSocket();
         }
 
         void ClearCache()

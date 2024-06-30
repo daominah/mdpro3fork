@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Data.Common;
 using System.Diagnostics;
 
-namespace MDPro3
+namespace MDPro3.Net
 {
     public class DeckShareURL
     {

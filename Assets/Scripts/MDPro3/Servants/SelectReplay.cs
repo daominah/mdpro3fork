@@ -39,11 +39,12 @@ namespace MDPro3
             handle.Completed += (result) => { item = result.Result; };
         }
 
-        public override void Show(int preDepth)
+        public override void ApplyShowArrangement(int preDepth)
         {
-            base.Show(preDepth);
+            base.ApplyShowArrangement(preDepth);
             Print();
         }
+
         public override void OnExit()
         {
             if (Program.exitOnReturn)

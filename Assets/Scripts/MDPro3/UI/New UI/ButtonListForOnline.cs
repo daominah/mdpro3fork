@@ -1,0 +1,15 @@
+using MDPro3.UI;
+using UnityEngine;
+
+namespace MDPro3.UI
+{
+    public class ButtonListForOnline : ButtonList
+    {
+        public int id = 0;
+        public override void SelectThis()
+        {
+            base.SelectThis();
+            Program.I().online.SwitchFunction(id);
+        }
+    }
+}

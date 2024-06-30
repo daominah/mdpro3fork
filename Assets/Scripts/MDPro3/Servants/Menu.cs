@@ -11,13 +11,13 @@ using YgomSystem.LocalFileSystem.Internal;
 using System.IO;
 using MDPro3.YGOSharp;
 using MDPro3.YGOSharp.OCGWrapper.Enums;
+using MDPro3.Net;
 
 namespace MDPro3
 {
     public class Menu : Servant
     {
         public Text title;
-        //public Text debugText;
         public override void Initialize()
         {
             depth = 0;
@@ -25,6 +25,7 @@ namespace MDPro3
             base.Initialize();
             title.text = "MDPro3 v" + Application.version;
             StartCoroutine(CheckUpdate());
+            StartCoroutine(LoadMyCardNewsAsync());
         }
 
         private IEnumerator CheckUpdate()
@@ -60,6 +61,19 @@ namespace MDPro3
                     MessageManager.Cast(InterString.Get("检测到新版先行卡，请至 [游戏设置]-[扩展卡包]-[更新先行卡] 处进行更新。"));
             }
         }
+
+
+        IEnumerator LoadMyCardNewsAsync()
+        {
+            var news = MyCard.GetNews();
+            while (!news.IsCompleted)
+                yield return null;
+            Program.I().news_.news = news.Result;
+            Program.I().news_.LoadNews();
+        }
+
+
+
 
 
         public void OnSolo()

@@ -108,6 +108,8 @@ namespace MDPro3
             roomPlayers.Add(player1);
             roomPlayers.Add(player2);
             roomPlayers.Add(player3);
+
+            ChatOff(0);
         }
 
         public bool chatOn;
@@ -127,7 +129,10 @@ namespace MDPro3
             chatSwitching = true;
             chatOn = true;
             OnResize();
-            right.gameObject.GetComponent<CanvasGroup>().alpha = 1;
+            var cg = right.GetComponent<CanvasGroup>();
+            cg.alpha = 1f;
+            cg.blocksRaycasts = true;
+            cg.interactable = true;
             right.DOAnchorPosX(0, moveTime).OnComplete(() => chatSwitching = false);
             if(!isShowed)
                 chatInput.Select();
@@ -135,27 +140,30 @@ namespace MDPro3
 
         public void ChatOff(float moveTime)
         {
-            if (chatSwitching)
-                return;
+            //if (chatSwitching)
+            //    return;
             chatSwitching = true;
             chatOn = false;
             OnResize();
             var width = right.sizeDelta.x;
             right.DOAnchorPosX(width, moveTime).OnComplete(() =>
             {
-                right.gameObject.GetComponent<CanvasGroup>().alpha = 0;
+                var cg = right.GetComponent<CanvasGroup>();
+                cg.alpha = 0f;
+                cg.blocksRaycasts = false;
+                cg.interactable = false;
                 chatSwitching = false;
             });
         }
 
-        public override void Show(int preDepth)
+        public override void ApplyShowArrangement(int preDepth)
         {
-            base.Show(preDepth);
+            base.ApplyShowArrangement(preDepth);
             coreShowing = 0;
             ChatOn(transitionTime);
             Program.I().ocgcore.handler = Handler;
             deckName.text = Config.Get("DeckInUse", "@ui");
-            if(File.Exists(Program.deckPath + deckName.text + Program.ydkExpansion))
+            if (File.Exists(Program.deckPath + deckName.text + Program.ydkExpansion))
                 deck = new Deck(Program.deckPath + deckName.text + Program.ydkExpansion);
             else
             {
@@ -165,11 +173,13 @@ namespace MDPro3
 
             StartCoroutine(RefreshAsync());
         }
-        public override void Hide(int preDepth)
+
+        public override void ApplyHideArrangement(int preDepth)
         {
-            base.Hide(preDepth);
+            base.ApplyHideArrangement(preDepth);
             ChatOff(transitionTime);
         }
+
         IEnumerator RefreshAsync()
         {
             player0.gameObject.SetActive(false);
@@ -179,7 +189,7 @@ namespace MDPro3
             deckIcon.color = Color.clear;
             if(deck != null)
             {
-                var ie = TextureManager.LoadItemIcon(deck.Case[0].ToString());
+                var ie = TextureManager.LoadItemIcon(deck.Case[0].ToString(), Items.ItemType.Case);
                 StartCoroutine(ie);
                 while (ie.MoveNext())
                     yield return null;
@@ -671,8 +681,8 @@ namespace MDPro3
                     description += InterString.Get("本机地址：") + ip + "\r\n";
                 description += InterString.Get("端口：") + "7911\r\n";
             }
-            description += StringHelper.GetUnsafe(1244 + mode) + "\r\n";//模式
-            description += StringHelper.GetUnsafe(1259 + Program.I().ocgcore.MasterRule) + "\r\n";//规则
+            description += StringHelper.GetUnsafe(1227) + StringHelper.GetUnsafe(1244 + mode) + "\r\n";//决斗模式：
+            description += StringHelper.GetUnsafe(1236) + StringHelper.GetUnsafe(1259 + Program.I().ocgcore.MasterRule) + "\r\n";//规则：
             description += StringHelper.GetUnsafe(1225) + StringHelper.GetUnsafe(1481 + rule) + "\r\n";//卡片允许：
             description += StringHelper.GetUnsafe(1226) + BanlistManager.GetName(lfList) + "\r\n";//禁限卡表
             description += StringHelper.GetUnsafe(1231) + startLp + "\r\n";//初始基本分：

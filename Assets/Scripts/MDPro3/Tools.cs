@@ -5,9 +5,11 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Runtime.InteropServices;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Playables;
 
@@ -175,15 +177,75 @@ namespace MDPro3
             return enumerator.Current;
         }
 
-        public static bool IsAlphaNumeric(string input)
+        public static bool StringIsAlphaNumeric(string input)
         {
             Regex regex = new Regex("^[A-Za-z0-9]+$");
             return regex.IsMatch(input);
         }
-        public static bool IsLowerAlphaNumeric(string input)
+        public static bool StringIsLowerAlphaNumeric(string input)
         {
             Regex regex = new Regex("^[a-z0-9]+$");
             return regex.IsMatch(input);
         }
+
+        public static int GetLocalDeckCount()
+        {
+            return Directory.GetFiles(Program.deckPath, "*.ydk").Length;
+        }
+
+        public static DateTime GetLocalDeckLastEditTime()
+        {
+            DateTime dateTime = DateTime.MinValue;
+            foreach(var file in Directory.GetFiles(Program.deckPath, "*.ydk"))
+            {
+                var fileInfo = new FileInfo(file);
+                if(fileInfo.LastWriteTime > dateTime)
+                    dateTime = fileInfo.LastWriteTime;
+            }
+            return dateTime;
+        }
+
+        public static Color[] ResizePixels(Color[] originalPixels, int originalWidth, int originalHeight, int newWidth, int newHeight)
+        {
+            Color[] newPixels = new Color[newWidth * newHeight];
+
+            for (int y = 0; y < newHeight; y++)
+            {
+                for (int x = 0; x < newWidth; x++)
+                {
+                    int origX = (int)((float)x / newWidth * originalWidth);
+                    int origY = (int)((float)y / newHeight * originalHeight);
+
+                    newPixels[y * newWidth + x] = originalPixels[origY * originalWidth + origX];
+                }
+            }
+
+            return newPixels;
+        }
+
+        #region Online
+        public static async Task<Texture2D> DownloadImageAsync(string url)
+        {
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    var imageBytes = await client.GetByteArrayAsync(url);
+                    var imageStream = new MemoryStream(imageBytes);
+                    var returenValue = new Texture2D(0, 0);
+                    returenValue.LoadImage(imageStream.ToArray());
+                    return returenValue;
+                }
+            }
+            catch (Exception ex)
+            {
+                UnityEngine.Debug.Log($"Error downloading image: {ex.Message}");
+                return null;
+            }
+        }
+        #endregion
+
+
+
     }
 }

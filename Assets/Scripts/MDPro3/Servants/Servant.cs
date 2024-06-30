@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using DG.Tweening;
 using UnityEngine.InputSystem;
 using System;
+using System.Collections;
 
 namespace MDPro3 
 {
@@ -31,6 +32,8 @@ namespace MDPro3
 
         float startX;
 
+        public int refreshingCount;
+
         //右键、ESC、退出按钮等触发OnReturn,
         //returnAction为空时OnReturn触发OnExit退出， 不为空时执行returnAction，
         //OnExit控制单独退出(Hide)还是切换Servant
@@ -44,28 +47,28 @@ namespace MDPro3
 
         public virtual void Initialize()
         {
-            if (gameObject != null)
+            if (gameObject == null)
+                return;
+
+            startX = GetComponent<RectTransform>().anchoredPosition.x;
+            cg = GetComponent<CanvasGroup>();
+            if (cg == null) return;
+            if (depth == 0)
             {
-                startX = GetComponent<RectTransform>().anchoredPosition.x;
-                cg = GetComponent<CanvasGroup>();
-                if (cg == null) return;
-                if (depth == 0)
-                {
-                    cg.alpha = 1f;
-                    cg.interactable = true;
-                    cg.blocksRaycasts = true;
-                    Program.I().currentServant = this;
-                    Program.I().depth = 0;
-                    isShowed = true;
-                    Program.I().ui_.btnExit.GetComponent<RectTransform>().anchoredPosition = new Vector2(65, 65);
-                    Program.I().ui_.line.alpha = 0f;
-                }
-                else
-                {
-                    cg.alpha = 0f;
-                    cg.interactable = false;
-                    cg.blocksRaycasts = false;
-                }
+                cg.alpha = 1f;
+                cg.interactable = true;
+                cg.blocksRaycasts = true;
+                Program.I().currentServant = this;
+                Program.I().depth = 0;
+                isShowed = true;
+                Program.I().ui_.btnExit.GetComponent<RectTransform>().anchoredPosition = new Vector2(65, 65);
+                Program.I().ui_.line.alpha = 0f;
+            }
+            else
+            {
+                cg.alpha = 0f;
+                cg.interactable = false;
+                cg.blocksRaycasts = false;
             }
         }
 
@@ -79,6 +82,8 @@ namespace MDPro3
         }
         public virtual void ApplyShowArrangement(int preDepth)
         {
+            transform.GetChild(0).gameObject.SetActive(true);
+
             bool blackTransition = false;
             if (Program.I().currentServant == this && preDepth == -1)
                 blackTransition = true;
@@ -160,6 +165,7 @@ namespace MDPro3
                 isShowed = false;
                 ApplyHideArrangement(preDepth);
             }
+            StartCoroutine(ShutdownAsync());
         }
 
         public virtual void ApplyHideArrangement(int preDepth)
@@ -217,6 +223,17 @@ namespace MDPro3
                     Program.I().ui_.blackBack.raycastTarget = false;
                 });
             }
+        }
+
+        public virtual IEnumerator ShutdownAsync()
+        {
+            while(inTransition)
+                yield return null;
+
+            while(refreshingCount > 0)
+                yield return null;
+            if(!isShowed)
+                transform.GetChild(0).gameObject.SetActive(false);
         }
 
         [HideInInspector]

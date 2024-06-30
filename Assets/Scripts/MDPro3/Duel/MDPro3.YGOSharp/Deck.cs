@@ -22,6 +22,8 @@ namespace MDPro3.YGOSharp
         public const string defaultDeckAuthor = "mdpro3";
 
         public string author = defaultDeckAuthor;
+        public string userId;
+        public string deckId;
 
         public Deck()
         {
@@ -52,11 +54,15 @@ namespace MDPro3.YGOSharp
             Stand = d.Stand;
             Mate = d.Mate;
             author = d.author;
+            userId = d.userId;
+            deckId = d.deckId;
         }
 
-        public Deck(string text, string author = defaultDeckAuthor)
+        public Deck(string text, string author = defaultDeckAuthor, string deckID = "", string userID = "")
         {
             this.author = author;
+            deckId = deckID;
+            userId = userID;
 
             Main = new List<int>();
             Extra = new List<int>();
@@ -73,6 +79,7 @@ namespace MDPro3.YGOSharp
                 string st = text.Replace("\r", "");
                 string[] lines = st.Split(new string[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
                 int flag = -1;
+
                 foreach (string line in lines)
                 {
                     if (line.StartsWith(deckPrefix))
@@ -83,6 +90,18 @@ namespace MDPro3.YGOSharp
                             if(OnlineDeck.StringIsIdFormat(authorString))
                                 this.author = authorString;
                         }
+                        continue;
+                    }
+                    if (line.StartsWith("###") && userId == string.Empty)
+                    {
+                        userId = line.Replace("###", string.Empty);
+                        continue;
+                    }
+                    if (line.StartsWith("##") && deckId == string.Empty)
+                    {
+                        deckId = line.Replace("##", string.Empty);
+                        if (!OnlineDeck.StringIsIdFormat(deckId))
+                            deckId = string.Empty;
                         continue;
                     }
 

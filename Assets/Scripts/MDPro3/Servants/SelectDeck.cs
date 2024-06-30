@@ -10,6 +10,9 @@ using UnityEngine.AddressableAssets;
 using UnityEngine.UI;
 using MDPro3.YGOSharp;
 using MDPro3.UI;
+using MDPro3.Net;
+using System.Runtime.CompilerServices;
+using static MDPro3.YGOSharp.PacksManager;
 
 namespace MDPro3
 {
@@ -23,13 +26,16 @@ namespace MDPro3
         public List<SuperScrollViewItemForDeckSelect> items;
         public ButtonSwitchForDeckPickup btnPickup;
         public ToggleForDeckDelete btnDelete;
-        public Button btnOnline;
+        public GameObject btnOnline;
+        public GameObject btnSync;
+        public Text title;
 
         public enum Condition
         {
             ForEdit,
             ForDuel,
-            ForSolo
+            ForSolo,
+            MyCard
         }
         public static Condition condition = Condition.ForEdit;
         public void SwitchCondition(Condition condition)
@@ -40,17 +46,30 @@ namespace MDPro3
                 case Condition.ForEdit:
                     returnServant = Program.I().menu;
                     depth = 1;
-                    btnOnline.interactable = true;
+                    btnOnline.SetActive(true);
+                    btnSync.SetActive(false);
+                    title.text = InterString.Get("编辑卡组");
                     break;
                 case Condition.ForDuel:
                     returnServant = Program.I().room;
                     depth = 3;
-                    btnOnline.interactable = false;
+                    btnOnline.SetActive(false);
+                    btnSync.SetActive(false);
+                    title.text = InterString.Get("选择卡组");
                     break;
                 case Condition.ForSolo:
                     returnServant = Program.I().solo;
                     depth = 4;
-                    btnOnline.interactable = false;
+                    btnOnline.SetActive(false);
+                    btnSync.SetActive(false);
+                    title.text = InterString.Get("选择卡组");
+                    break;
+                case Condition.MyCard:
+                    returnServant = Program.I().online;
+                    depth = 2;
+                    btnOnline.SetActive(false);
+                    btnSync.SetActive(false);
+                    title.text = InterString.Get("MyCard卡组");
                     break;
             }
         }
@@ -80,42 +99,81 @@ namespace MDPro3
         {
             base.ApplyHideArrangement(preDepth);
             Config.Save();
-            DOTween.To(v => { }, 0, 0, transitionTime).OnComplete(() =>
+            DOTween.To(v => { }, 0, 0, transitionTime * 0.9f).OnComplete(() =>
             {
                 btnPickup.OnSwitchOff();
                 if(superScrollView != null)
                     foreach (var item in superScrollView.items)
+                    {
+                        item.gameObject.transform.SetParent(Program.I().container_2D, false);
                         item.gameObject.GetComponent<SuperScrollViewItemForDeckSelect>().Dispose();
+                    }
                 Clear();
             });
         }
 
         public void RefreshList()
         {
+            if (!isShowed)
+                return;
+
             Clear();
             btnDelete.SwitchOffWithoutAction();
             btnPickup.OnSwitchOff();
-            if (!Directory.Exists(Program.deckPath))
-                Directory.CreateDirectory(Program.deckPath);
-            var files = Directory.GetFiles(Program.deckPath, "*.ydk");
-            List<string> fileList = files.ToList();
-            foreach (var file in files)
+
+            if(condition == Condition.MyCard)
             {
-                var fileName = Path.GetFileName(file);
-                fileName = fileName.Substring(0, fileName.Length - 4);
-                if (fileName == Config.Get("DeckInUse", ""))
+                if(OnlineDeck.decks == null)
+                    decks.Clear();
+
+                foreach (var d in OnlineDeck.decks)
                 {
-                    fileList.Remove(file);
-                    fileList.Insert(0, file);
-                    break;
+                    if (decks.ContainsKey(d.deckName))
+                    {
+                        int avoid = 2;
+                        while (decks.ContainsKey(d.deckName + $" ({avoid})"))
+                            avoid++;
+                        d.deckName += $" ({avoid})";
+                    }
+                    decks.Add(d.deckName, new Deck(d.deckYdk, d.deckId));
+                }
+
+                var configDeck = Config.Get("DeckInUse", "");
+                if (decks.ContainsKey(configDeck))
+                {
+                    var deck = decks[configDeck];
+                    decks.Remove(configDeck);
+                    var newDecks = new Dictionary<string, Deck>();
+                    newDecks[configDeck] = deck;
+                    foreach(var d in decks)
+                        newDecks.Add(d.Key, d.Value);
+                    decks = newDecks;
                 }
             }
-            List<string> list = new List<string>();
-            foreach (var deck in fileList)
+            else
             {
-                var name = Path.GetFileName(deck);
-                name = name.Substring(0, name.Length - 4);
-                decks.Add(name, new Deck(deck));
+                if (!Directory.Exists(Program.deckPath))
+                    Directory.CreateDirectory(Program.deckPath);
+                var files = Directory.GetFiles(Program.deckPath, "*.ydk");
+                List<string> fileList = files.ToList();
+                foreach (var file in files)
+                {
+                    var fileName = Path.GetFileName(file);
+                    fileName = fileName.Substring(0, fileName.Length - 4);
+                    if (fileName == Config.Get("DeckInUse", ""))
+                    {
+                        fileList.Remove(file);
+                        fileList.Insert(0, file);
+                        break;
+                    }
+                }
+                List<string> list = new List<string>();
+                foreach (var deck in fileList)
+                {
+                    var name = Path.GetFileName(deck);
+                    name = name.Substring(0, name.Length - 4);
+                    decks.Add(name, new Deck(deck));
+                }
             }
             Print(search.text);
         }
@@ -160,13 +218,14 @@ namespace MDPro3
                 {
                     if (!deck.Key.Contains(search))
                         continue;
-                    var task = new string[7]
+                    var task = new string[8]
                     {
                         deck.Key,
                         deck.Value.Case[0].ToString(),
                         "0", "0", "0",
                         deck.Value.Protector[0].ToString(),
-                        "0"//For Delete
+                        "0",//For Delete
+                        deck.Value.deckId
                     };
                     if (deck.Value.Pickup.Count > 0)
                         task[2] = deck.Value.Pickup[0].ToString();
@@ -190,6 +249,7 @@ namespace MDPro3
             handler.card3 = int.Parse(task[4]);
             handler.protector = task[5];
             handler.selected = task[6] != "0";
+            handler.deckId = task[7];
             handler.Refresh();
         }
 
@@ -267,7 +327,7 @@ namespace MDPro3
                     Program.I().editDeck.SaveDeckFile(deck, deckName);
                 }
                 Config.Set("DeckInUse", deckName);
-                Program.I().selectDeck.RefreshList();
+                RefreshList();
             }
             catch(Exception e)
             {
@@ -289,18 +349,39 @@ namespace MDPro3
             {
                 deleting = false;
                 int count = 0;
+                var toDelete = new List<string>();
                 foreach (var item in superScrollView.items)
                     if (item.args[6] != "0")
                     {
                         count++;
                         File.Delete(Program.deckPath + item.args[0] + Program.ydkExpansion);
                         MessageManager.Cast(InterString.Get("已删除卡组「[?]」", item.args[0]));
+                        toDelete.Add(item.args[7]);
                     }
+                DeleteOnlineDecks(toDelete);
                 if (count > 0)
                     RefreshList();
                 else
                     ExitDeleteDeck();
             }
+        }
+
+        void DeleteOnlineDecks(List<string> ids)
+        {
+            if (MyCard.account == null)
+                return;
+            StartCoroutine(DeleteOnlineDecksAsync(ids));
+        }
+
+        IEnumerator DeleteOnlineDecksAsync(List<string> ids)
+        {
+            var task = OnlineDeck.DeleteDecks(ids);
+            while(!task.IsCompleted)
+                yield return null;
+
+            var task2 = OnlineDeck.GetAllDecks();
+            while (!task2.IsCompleted)
+                yield return null;
         }
 
         void ExitDeleteDeck()
@@ -316,6 +397,38 @@ namespace MDPro3
         public void OnOnlineDeckView()
         {
             Program.I().ShiftToServant(Program.I().onlineDeckViewer);
+        }
+
+        public void OnSyncDeck()
+        {
+            var hint = InterString.Get("本地卡组数量：");
+            hint += Tools.GetLocalDeckCount() + " ";
+
+            hint += InterString.Get("本地卡组最后编辑时间：");
+            hint += Tools.GetLocalDeckLastEditTime() + "\r\n";
+
+            hint += InterString.Get("云端卡组数量：");
+            hint += OnlineDeck.decks.Length + " ";
+
+            hint += InterString.Get("云端卡组最后编辑时间：");
+            hint += OnlineDeck.GetDeckLastEditTime();
+
+            List<string> selections = new List<string>
+                {
+                    InterString.Get("同步卡组"),
+                    hint,
+                    InterString.Get("本地至云端"),
+                    InterString.Get("云端至本地")
+                };
+            UIManager.ShowPopupYesOrNoOrCancel(selections, SyncDecksFromLocalToServer, SyncDecksFromServerToLocal);
+        }
+
+        void SyncDecksFromLocalToServer()
+        {
+        }
+
+        void SyncDecksFromServerToLocal()
+        {
         }
     }
 }

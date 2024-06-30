@@ -371,6 +371,27 @@ MonoBehaviour:
   toggleM: {fileID: 21300000, guid: b4b6f990bf52e9e41a3157d2c0701a28, type: 3}
   toggleM_On: {fileID: 21300000, guid: 77342bb8b8bac73418a111be27a694e5, type: 3}
   toggleM_Over: {fileID: 21300000, guid: 03c22d822bdf72e4680c02fb6caa13a5, type: 3}
+  rankBG01: {fileID: 21300000, guid: 005f18c0af5a8b74296cedaadea495bd, type: 3}
+  rankBG02: {fileID: 21300000, guid: 3a0f13be6eefecb459ca292b26396fc1, type: 3}
+  rankBG03: {fileID: 21300000, guid: 05e08c283e0324d46a3d6fdf42e39744, type: 3}
+  rankBG04: {fileID: 21300000, guid: 4a40087de21d1634aa2ae89a008c063a, type: 3}
+  rankBG05: {fileID: 21300000, guid: c4a9f53bc5bcaaf43b63f3505842b2c7, type: 3}
+  rankBG06: {fileID: 21300000, guid: 4e07ed95ac6f2ed4fb512bec5b578183, type: 3}
+  rankBG07: {fileID: 21300000, guid: ec6f0285a5f1c5e4bbed8c4bef6f7a40, type: 3}
+  rankBG08: {fileID: 21300000, guid: d90c16009eabc014db142d529b779969, type: 3}
+  rankIcon01: {fileID: 21300000, guid: 67fa771e6c68dec4096c059f22a288c0, type: 3}
+  rankIcon02: {fileID: 21300000, guid: 08fd75c4e54ad1141b6ef4497fb35d2c, type: 3}
+  rankIcon03: {fileID: 21300000, guid: ca6fc01f6d6a9a040983d4e3b724ba03, type: 3}
+  rankIcon04: {fileID: 21300000, guid: 96495b3dca03bef4cbb4c98bf6f248f0, type: 3}
+  rankIcon05: {fileID: 21300000, guid: 5fdfa681bf6c0664da907b3acf04c941, type: 3}
+  rankIcon06: {fileID: 21300000, guid: 1069dc6e8385e4349a1719bfc2ae64bf, type: 3}
+  rankIcon07: {fileID: 21300000, guid: 594b2da68531f8748bde385e1c723438, type: 3}
+  rankIcon08: {fileID: 21300000, guid: 3a644e2a25fa1e840aba0896ccac2915, type: 3}
+  rankTier01: {fileID: 21300000, guid: 61627c4771c861343afe3cc32446146c, type: 3}
+  rankTier02: {fileID: 21300000, guid: 9153b3144c7b93146abf018a5612a677, type: 3}
+  rankTier03: {fileID: 21300000, guid: 4d65ae8b11291f6429d680286710791c, type: 3}
+  rankTier04: {fileID: 21300000, guid: fd3bc6ca40194e342b6c7209d3eca9d3, type: 3}
+  rankTier05: {fileID: 21300000, guid: 7ae049f51102ee24a8cd1ef346c430f6, type: 3}
   fxt_Arrow: {fileID: 2800000, guid: f7b877a77c7530543815b9cd571203ee, type: 3}
   fxt_Arrow_002: {fileID: 2800000, guid: cc77cec8332acc04eb877183efcec954, type: 3}
   fxt_Arrow_003: {fileID: 2800000, guid: 89ee305204be7844abd1fc33fd0e8db7, type: 3}

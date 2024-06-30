@@ -14,6 +14,7 @@ namespace MDPro3.UI
         public int card2;
         public int card3;
         public string protector;
+        public string deckId;
 
         public Text textName;
         public Image caseIcon;
@@ -54,7 +55,7 @@ namespace MDPro3.UI
             refreshed = false;
             textName.text = deckName;
             var casePath = deckCase.ToString();
-            var load = TextureManager.LoadItemIcon(casePath);
+            var load = TextureManager.LoadItemIcon(casePath, Items.ItemType.Case);
             while (load.MoveNext())
                 yield return null;
             if (load.Current != null)
@@ -72,8 +73,9 @@ namespace MDPro3.UI
                 while (ie.MoveNext())
                     yield return null;
                 cardFace1.texture = ie.Current;
-                var mat = TextureManager.GetCardMaterial(card1);
-                cardFace1.material = mat;
+                //var mat = TextureManager.GetCardMaterial(card1);
+                //cardFace1.material = mat;
+                cardFace1.material = null;
             }
             else
             {
@@ -94,8 +96,9 @@ namespace MDPro3.UI
                 while (ie.MoveNext())
                     yield return null;
                 cardFace2.texture = ie.Current;
-                var mat = TextureManager.GetCardMaterial(card2);
-                cardFace2.material = mat;
+                //var mat = TextureManager.GetCardMaterial(card2);
+                //cardFace2.material = mat;
+                cardFace2.material = null;
             }
             else
             {
@@ -116,8 +119,9 @@ namespace MDPro3.UI
                 while (ie.MoveNext())
                     yield return null;
                 cardFace3.texture = ie.Current;
-                var mat = TextureManager.GetCardMaterial(card3);
-                cardFace3.material = mat;
+                //var mat = TextureManager.GetCardMaterial(card3);
+                //cardFace3.material = mat;
+                cardFace3.material = null;
             }
             else
             {
@@ -164,6 +168,12 @@ namespace MDPro3.UI
                 {
                     Program.I().editDeck.SwitchCondition(EditDeck.Condition.EditDeck);
                     Program.I().ShiftToServant(Program.I().editDeck);
+                }
+                else if (SelectDeck.condition == SelectDeck.Condition.MyCard)
+                {
+                    //Program.I().editDeck.SwitchCondition(EditDeck.Condition.EditOnlineDeck, textName.text);
+                    //Program.I().ShiftToServant(Program.I().editDeck);
+                    Program.I().ShiftToServant(Program.I().online);
                 }
                 else if (SelectDeck.condition == SelectDeck.Condition.ForDuel)
                 {

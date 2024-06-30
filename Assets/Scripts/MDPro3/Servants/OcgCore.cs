@@ -134,6 +134,7 @@ namespace MDPro3
         }
         public override void ApplyShowArrangement(int preDepth)
         {
+            transform.GetChild(0).gameObject.SetActive(true);
             StartCoroutine(LoadAssets());
             CameraBack();
         }
@@ -946,11 +947,11 @@ namespace MDPro3
             #endregion
 
             #region 场地
-            var path = Program.items.CodeToPath(
+            var path = Program.items.GetPathByCode(
                 Config.Get(condition.ToString() + "Field0", 
                 Program.items.mats[0].id.ToString()), Items.ItemType.Mat);
             if (deck != null)
-                path = Program.items.CodeToPath(deck.Field[0].ToString(), Items.ItemType.Mat);
+                path = Program.items.GetPathByCode(deck.Field[0].ToString(), Items.ItemType.Mat);
             path = "MasterDuel/" + path;
             var enumerator = ABLoader.LoadFromFileAsync(path + "_near");
             while (enumerator.MoveNext())
@@ -959,7 +960,7 @@ namespace MDPro3
             field0.transform.SetParent(Program.I().container_3D, false);
 
             enumerator = ABLoader.LoadFromFileAsync("MasterDuel/" + 
-                Program.items.CodeToPath(Config.Get(condition.ToString() + "Field1", 
+                Program.items.GetPathByCode(Config.Get(condition.ToString() + "Field1", 
                 Program.items.mats[0].id.ToString()), Items.ItemType.Mat) + "_far");
             while (enumerator.MoveNext())
                 yield return null;
@@ -989,11 +990,11 @@ namespace MDPro3
             #endregion
 
             #region 墓地
-            path = Program.items.CodeToPath(
+            path = Program.items.GetPathByCode(
                 Config.Get(condition.ToString() + "Grave0", 
                 Program.items.graves[0].id.ToString()), Items.ItemType.Grave);
             if (deck != null)
-                path = Program.items.CodeToPath(deck.Grave[0].ToString(), Items.ItemType.Grave);
+                path = Program.items.GetPathByCode(deck.Grave[0].ToString(), Items.ItemType.Grave);
             path = "MasterDuel/" + path;
             enumerator = ABLoader.LoadFromFileAsync(path + "_near");
             while (enumerator.MoveNext())
@@ -1001,7 +1002,7 @@ namespace MDPro3
             grave0 = enumerator.Current;
             grave0.transform.SetParent(pos_Grave_near, false);
             enumerator = ABLoader.LoadFromFileAsync("MasterDuel/" +
-                Program.items.CodeToPath(Config.Get(condition.ToString() + "Grave1", 
+                Program.items.GetPathByCode(Config.Get(condition.ToString() + "Grave1", 
                 Program.items.graves[0].id.ToString()), Items.ItemType.Grave) + "_far");
             while (enumerator.MoveNext())
                 yield return null;
@@ -1023,11 +1024,11 @@ namespace MDPro3
             #endregion
 
             #region 站台
-            path = Program.items.CodeToPath(
+            path = Program.items.GetPathByCode(
                 Config.Get(condition.ToString() + "Stand0", 
                 Program.items.stands[0].id.ToString()), Items.ItemType.Stand);
             if (deck != null)
-                path = Program.items.CodeToPath(deck.Stand[0].ToString(), Items.ItemType.Stand);
+                path = Program.items.GetPathByCode(deck.Stand[0].ToString(), Items.ItemType.Stand);
             path = "MasterDuel/" + path;
             enumerator = ABLoader.LoadFromFileAsync(path + "_near");
             while (enumerator.MoveNext())
@@ -1035,7 +1036,7 @@ namespace MDPro3
             stand0 = enumerator.Current;
             stand0.transform.SetParent(pos_AvatarStand_near, false);
             enumerator = ABLoader.LoadFromFileAsync("MasterDuel/" +
-                Program.items.CodeToPath(Config.Get(condition.ToString() + "Stand1", 
+                Program.items.GetPathByCode(Config.Get(condition.ToString() + "Stand1", 
                 Program.items.stands[0].id.ToString()), Items.ItemType.Stand) + "_far");
             while (enumerator.MoveNext())
                 yield return null;
@@ -1632,6 +1633,18 @@ namespace MDPro3
             {
                 Debug.Log(e);
             }
+        }
+
+        bool CurrentChainDisabled()
+        {
+            for(int i = 0; i < packages.Count; i++)
+            {
+                if ((GameMessage)packages[i].Function == GameMessage.ChainDisabled)
+                    return true;
+                if ((GameMessage)packages[i].Function == GameMessage.ChainSolved)
+                    return false;
+            }
+            return false;
         }
 
         private bool IfMessageImportant(Package package)
@@ -2565,7 +2578,7 @@ namespace MDPro3
             //if ((GameMessage)p.Function != GameMessage.UpdateData)
             //    Debug.Log("----------" + (GameMessage)p.Function);
             //else
-            //    Debug.Log("----------" + (GameMessage)p.Function);
+            //    Debug.Log("|||||||||||" + (GameMessage)p.Function);
             switch ((GameMessage)p.Function)
             {
                 case GameMessage.sibyl_chat:
@@ -3444,6 +3457,13 @@ namespace MDPro3
                                 messagePass = true;
                                 return;
                             }
+                            if (needPlay && CurrentChainDisabled())
+                            {
+                                needPlay = false;
+                                messagePass = true;
+                                return;
+                            }
+
                             if (condition == Condition.Duel
                                 && Config.Get("DuelEffect", "1") == "0")
                                 needPlay = false;
@@ -3724,6 +3744,7 @@ namespace MDPro3
                                     {
                                         Destroy(effect);
                                         messagePass = true;
+                                        Debug.Log("Engage is Negated: " + card.negated);
                                         nextMoveAction = () =>
                                         {
                                             var effect = ABLoader.LoadFromFolder("MasterDuel/Card/" + code, "CardEffect" + code, true);

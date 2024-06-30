@@ -47,7 +47,7 @@ namespace MDPro3.UI
             }
             else if (path.Length > 0)
             {
-                var load = TextureManager.LoadItemIcon(itemID.ToString());
+                var load = TextureManager.LoadItemIcon(itemID.ToString(), Items.ItemType.Unknown);
                 while (load.MoveNext())
                     yield return null;
                 icon.sprite = load.Current;

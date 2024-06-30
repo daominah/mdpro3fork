@@ -84,6 +84,8 @@ namespace MDPro3.UI
         public void SwitchOnWithoutAction()
         {
             switchOn = true;
+            if (normalSprite == null)
+                Awake();
             var state = GetComponent<Button>().spriteState;
             GetComponent<Image>().sprite = normalSprite2;
             state.highlightedSprite = hoverSprite2;
@@ -101,6 +103,8 @@ namespace MDPro3.UI
         public void SwitchOffWithoutAction()
         {
             switchOn = false;
+            if(normalSprite == null)
+                Awake();
             var state = GetComponent<Button>().spriteState;
             GetComponent<Image>().sprite = normalSprite;
             state.highlightedSprite = hoverSprite;

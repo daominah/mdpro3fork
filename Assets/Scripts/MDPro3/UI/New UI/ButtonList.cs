@@ -16,6 +16,7 @@ namespace MDPro3.UI
         Text text;
         Color textColor;
         public float pressColor = 0.5f;
+
         private void Awake()
         {
             text = transform.GetChild(0).GetComponent<Text>();
@@ -46,13 +47,15 @@ namespace MDPro3.UI
         {
             selected = true;
             GetComponent<Image>().sprite = selectedSprite;
+            if(text == null)
+                text = transform.GetChild(0).gameObject.GetComponent<Text>();
             text.color = Color.black;
             if (scrollRect != null)
             {
                 scrollRect.gameObject.SetActive(true);
                 scrollRect.normalizedPosition = new Vector2(0, 1);
             }
-            foreach (var btn in transform.parent.GetComponentsInChildren<ButtonList>())
+            foreach (var btn in transform.parent.GetComponentsInChildren<ButtonList>(true))
             {
                 if (btn != this)
                     btn.UnselectThis();
@@ -63,6 +66,8 @@ namespace MDPro3.UI
         {
             selected = false;
             GetComponent<Image>().sprite = normalSprite;
+            if (text == null)
+                text = transform.GetChild(0).gameObject.GetComponent<Text>();
             text.color = Color.white;
             if (scrollRect != null)
                 scrollRect.gameObject.SetActive(false);

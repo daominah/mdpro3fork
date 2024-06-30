@@ -326,7 +326,7 @@ namespace MDPro3
             }
             else
             {
-                var ie = LoadFromFileAsync("MasterDuel/" + Program.items.CodeToPath(code.ToString(), Items.ItemType.Mate));
+                var ie = LoadFromFileAsync("MasterDuel/" + Program.items.GetPathByCode(code.ToString(), Items.ItemType.Mate));
                 while (ie.MoveNext())
                     yield return null;
                 var mateGo = ie.Current;

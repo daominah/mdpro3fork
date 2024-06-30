@@ -70,6 +70,7 @@ namespace MDPro3
 
         public enum ItemType
         {
+            Unknown,
             Wallpaper,
             Face,
             Frame,
@@ -104,7 +105,7 @@ namespace MDPro3
         Dictionary<int, string> descriptions = new Dictionary<int, string>();
         Dictionary<int, int> ydkIds = new Dictionary<int, int>();
         static Items instance;
-        static bool initialized = false;
+        public static bool initialized = false;
         public void Initialize()
         {
             if (!initialized)
@@ -300,9 +301,12 @@ namespace MDPro3
             }
             return returnValue;
         }
-        public string CodeToPath(string code, ItemType type)
+
+        public string GetPathByCode(string code, ItemType type)
         {
             string returnValue = "";
+            if(type == ItemType.Unknown)
+                return CodeToIconPath(code);
             foreach (var kind in kinds)
                 foreach (var item in kind)
                     if (item.id.ToString() == code)

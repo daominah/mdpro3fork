@@ -9,6 +9,7 @@ using Spine.Unity;
 using TMPro;
 using UnityEngine.AddressableAssets;
 using MDPro3.UI;
+using MDPro3.Net;
 
 namespace MDPro3
 {
@@ -56,6 +57,7 @@ namespace MDPro3
             CardsManager.Initialize();
             Program.items.Initialize();
             Program.I().cardRenderer.SwitchLanguage();
+            Program.I().online.LocalHostInitialize();
             UIManager instance = Program.I().ui_;
             foreach (var text in instance.GetComponentsInChildren<Text>(true))
             {
@@ -220,7 +222,19 @@ namespace MDPro3
                 popupYesOrNo.Show();
             };
         }
-
+        public static void ShowPopupYesOrNoOrCancel(List<string> selections, Action confirmAction, Action cancelAction)
+        {
+            var handle = Addressables.InstantiateAsync("PopupYesOrNoOrCancel");
+            handle.Completed += (result) =>
+            {
+                result.Result.transform.SetParent(Program.I().ui_.popup, false);
+                PopupYesOrNo popupYesOrNo = result.Result.GetComponent<PopupYesOrNo>();
+                popupYesOrNo.selections = selections;
+                popupYesOrNo.confirmAction = confirmAction;
+                popupYesOrNo.cancelAction = cancelAction;
+                popupYesOrNo.Show();
+            };
+        }
         public static void ShowPopupConfirm(List<string> selections)
         {
             var handle = Addressables.InstantiateAsync("PopupConfirm");

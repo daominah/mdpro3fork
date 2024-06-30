@@ -334,6 +334,12 @@ namespace MDPro3
             else
                 btnSurrender.gameObject.SetActive(false);
         }
+        public override void ApplyShowArrangement(int preDepth)
+        {
+            base.ApplyShowArrangement(preDepth);
+            if (preDepth <= depth)
+                defaultButton.SelectThis();
+        }
 
         public override void OnExit()
         {
@@ -342,12 +348,6 @@ namespace MDPro3
             if (Program.I().currentServant == Program.I().ocgcore)
                 UIManager.ShowFPSLeft();
 
-        }
-        public override void ApplyShowArrangement(int preDepth)
-        {
-            base.ApplyShowArrangement(preDepth);
-            if (preDepth <= depth)
-                defaultButton.SelectThis();
         }
 
         #region setting
@@ -647,12 +647,12 @@ namespace MDPro3
         public void OnScreenModeChange()
         {
             List<string> selections = new List<string>
-        {
-            InterString.Get("显示模式"),
-            InterString.Get("独占全屏"),
-            InterString.Get("窗口全屏"),
-            InterString.Get("窗口化")
-        };
+            {
+                InterString.Get("显示模式"),
+                InterString.Get("独占全屏"),
+                InterString.Get("窗口全屏"),
+                InterString.Get("窗口化")
+            };
             UIManager.ShowPopupSelection(selections, OnScreenModeSelection);
         }
         public void OnScreenModeSelection()
@@ -680,18 +680,18 @@ namespace MDPro3
         }
         public void InitializeResolution()
         {
-            string resolution;
-            if (Config.Have("Resolution"))
-                resolution = Config.Get("Resolution", "1920 x 1080");
-            else
-                resolution = Regex.Split(Screen.currentResolution.ToString(), " @ ")[0];
-            string fullScreenMode = Config.Get("ScreenMode", "1");
-            if (fullScreenMode == "0")
-                Screen.SetResolution(int.Parse(Regex.Split(resolution, " x ")[0]), int.Parse(Regex.Split(resolution, " x ")[1]), FullScreenMode.ExclusiveFullScreen);
-            else if (fullScreenMode == "2")
-                Screen.SetResolution(int.Parse(Regex.Split(resolution, " x ")[0]), int.Parse(Regex.Split(resolution, " x ")[1]), FullScreenMode.Windowed);
-            else
-                Screen.SetResolution(int.Parse(Regex.Split(resolution, " x ")[0]), int.Parse(Regex.Split(resolution, " x ")[1]), FullScreenMode.FullScreenWindow);
+            string resolution = $"{Screen.width} x {Screen.height}";
+            //if (Config.Have("Resolution"))
+            //    resolution = Config.Get("Resolution", "1920 x 1080");
+            //else
+            //    resolution = Regex.Split(Screen.currentResolution.ToString(), " @ ")[0];
+            //string fullScreenMode = Config.Get("ScreenMode", "1");
+            //if (fullScreenMode == "0")
+            //    Screen.SetResolution(int.Parse(Regex.Split(resolution, " x ")[0]), int.Parse(Regex.Split(resolution, " x ")[1]), FullScreenMode.ExclusiveFullScreen);
+            //else if (fullScreenMode == "2")
+            //    Screen.SetResolution(int.Parse(Regex.Split(resolution, " x ")[0]), int.Parse(Regex.Split(resolution, " x ")[1]), FullScreenMode.Windowed);
+            //else
+            //    Screen.SetResolution(int.Parse(Regex.Split(resolution, " x ")[0]), int.Parse(Regex.Split(resolution, " x ")[1]), FullScreenMode.FullScreenWindow);
             resolutionValue.text = resolution;
         }
         public void OnResolutionChange()

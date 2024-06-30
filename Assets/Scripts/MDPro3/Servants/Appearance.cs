@@ -49,6 +49,8 @@ namespace MDPro3
         public static Sprite watchFace1Tag;
         public static Sprite replayFace0Tag;
         public static Sprite replayFace1Tag;
+        public static Sprite defaultFace0;
+        public static Sprite defaultFace1;
 
         public static Material duelFrameMat0;
         public static Material duelFrameMat1;
@@ -90,17 +92,17 @@ namespace MDPro3
         static List<GameObject> cases = new List<GameObject>();
 
         Dictionary<string, List<GameObject>> pools = new Dictionary<string, List<GameObject>>
-    {
-        { "Wallpaper", wallpapers },
-        { "Face", faces },
-        { "Frame", frames },
-        { "Protector", protectors },
-        { "Field", mats },
-        { "Grave", graves },
-        { "Stand", stands },
-        { "Mate", mates },
-        { "Case", cases },
-    };
+        {
+            { "Wallpaper", wallpapers },
+            { "Face", faces },
+            { "Frame", frames },
+            { "Protector", protectors },
+            { "Field", mats },
+            { "Grave", graves },
+            { "Stand", stands },
+            { "Mate", mates },
+            { "Case", cases },
+        };
 
         public GameObject appearanceItem;
         public enum Condition
@@ -160,77 +162,89 @@ namespace MDPro3
         IEnumerator LoadSettingAssets()
         {
             loaded = false;
-            var ie = TextureManager.LoadItemIcon(Config.Get("DuelFace0", Program.items.faces[0].id.ToString()));
+            var ie = TextureManager.LoadItemIcon(Config.Get("DuelFace0", Program.items.faces[0].id.ToString()), Items.ItemType.Face);
             StartCoroutine(ie);
             while (ie.MoveNext())
                 yield return null;
             duelFace0 = ie.Current;
 
-            ie = TextureManager.LoadItemIcon(Config.Get("DuelFace1", Program.items.faces[0].id.ToString()));
+            ie = TextureManager.LoadItemIcon(Config.Get("DuelFace1", Program.items.faces[0].id.ToString()), Items.ItemType.Face);
             StartCoroutine(ie);
             while (ie.MoveNext())
                 yield return null;
             duelFace1 = ie.Current;
 
-            ie = TextureManager.LoadItemIcon(Config.Get("DuelFace0Tag", Program.items.faces[0].id.ToString()));
+            ie = TextureManager.LoadItemIcon(Config.Get("DuelFace0Tag", Program.items.faces[0].id.ToString()), Items.ItemType.Face);
             StartCoroutine(ie);
             while (ie.MoveNext())
                 yield return null;
             duelFace0Tag = ie.Current;
 
-            ie = TextureManager.LoadItemIcon(Config.Get("DuelFace1Tag", Program.items.faces[0].id.ToString()));
+            ie = TextureManager.LoadItemIcon(Config.Get("DuelFace1Tag", Program.items.faces[0].id.ToString()), Items.ItemType.Face);
             StartCoroutine(ie);
             while (ie.MoveNext())
                 yield return null;
             duelFace1Tag = ie.Current;
 
-            ie = TextureManager.LoadItemIcon(Config.Get("WatchFace0", Program.items.faces[0].id.ToString()));
+            ie = TextureManager.LoadItemIcon(Config.Get("WatchFace0", Program.items.faces[0].id.ToString()), Items.ItemType.Face);
             StartCoroutine(ie);
             while (ie.MoveNext())
                 yield return null;
             watchFace0 = ie.Current;
 
-            ie = TextureManager.LoadItemIcon(Config.Get("WatchFace1", Program.items.faces[0].id.ToString()));
+            ie = TextureManager.LoadItemIcon(Config.Get("WatchFace1", Program.items.faces[0].id.ToString()), Items.ItemType.Face);
             StartCoroutine(ie);
             while (ie.MoveNext())
                 yield return null;
             watchFace1 = ie.Current;
 
-            ie = TextureManager.LoadItemIcon(Config.Get("WatchFace0Tag", Program.items.faces[0].id.ToString()));
+            ie = TextureManager.LoadItemIcon(Config.Get("WatchFace0Tag", Program.items.faces[0].id.ToString()), Items.ItemType.Face);
             StartCoroutine(ie);
             while (ie.MoveNext())
                 yield return null;
             watchFace0Tag = ie.Current;
 
-            ie = TextureManager.LoadItemIcon(Config.Get("WatchFace1Tag", Program.items.faces[0].id.ToString()));
+            ie = TextureManager.LoadItemIcon(Config.Get("WatchFace1Tag", Program.items.faces[0].id.ToString()), Items.ItemType.Face);
             StartCoroutine(ie);
             while (ie.MoveNext())
                 yield return null;
             watchFace1Tag = ie.Current;
 
-            ie = TextureManager.LoadItemIcon(Config.Get("ReplayFace0", Program.items.faces[0].id.ToString()));
+            ie = TextureManager.LoadItemIcon(Config.Get("ReplayFace0", Program.items.faces[0].id.ToString()), Items.ItemType.Face);
             StartCoroutine(ie);
             while (ie.MoveNext())
                 yield return null;
             replayFace0 = ie.Current;
 
-            ie = TextureManager.LoadItemIcon(Config.Get("ReplayFace1", Program.items.faces[0].id.ToString()));
+            ie = TextureManager.LoadItemIcon(Config.Get("ReplayFace1", Program.items.faces[0].id.ToString()), Items.ItemType.Face);
             StartCoroutine(ie);
             while (ie.MoveNext())
                 yield return null;
             replayFace1 = ie.Current;
 
-            ie = TextureManager.LoadItemIcon(Config.Get("ReplayFace0Tag", Program.items.faces[0].id.ToString()));
+            ie = TextureManager.LoadItemIcon(Config.Get("ReplayFace0Tag", Program.items.faces[0].id.ToString()), Items.ItemType.Face);
             StartCoroutine(ie);
             while (ie.MoveNext())
                 yield return null;
             replayFace0Tag = ie.Current;
 
-            ie = TextureManager.LoadItemIcon(Config.Get("ReplayFace1Tag", Program.items.faces[0].id.ToString()));
+            ie = TextureManager.LoadItemIcon(Config.Get("ReplayFace1Tag", Program.items.faces[0].id.ToString()), Items.ItemType.Face);
             StartCoroutine(ie);
             while (ie.MoveNext())
                 yield return null;
             replayFace1Tag = ie.Current;
+
+            ie = TextureManager.LoadItemIcon("1010039", Items.ItemType.Face);
+            StartCoroutine(ie);
+            while (ie.MoveNext())
+                yield return null;
+            defaultFace0 = ie.Current;
+
+            ie = TextureManager.LoadItemIcon("1010001", Items.ItemType.Face);
+            StartCoroutine(ie);
+            while (ie.MoveNext())
+                yield return null;
+            defaultFace1 = ie.Current;
 
             Sprite duelFrame0;
             Sprite duelFrame1;
@@ -245,72 +259,72 @@ namespace MDPro3
             Sprite replayFrame0Tag;
             Sprite replayFrame1Tag;
 
-            ie = TextureManager.LoadItemIcon(Config.Get("DuelFrame0", Program.items.frames[0].id.ToString()));
+            ie = TextureManager.LoadItemIcon(Config.Get("DuelFrame0", Program.items.frames[0].id.ToString()), Items.ItemType.Frame);
             StartCoroutine(ie);
             while (ie.MoveNext())
                 yield return null;
             duelFrame0 = ie.Current;
 
-            ie = TextureManager.LoadItemIcon(Config.Get("DuelFrame1", Program.items.frames[0].id.ToString()));
+            ie = TextureManager.LoadItemIcon(Config.Get("DuelFrame1", Program.items.frames[0].id.ToString()), Items.ItemType.Frame);
             StartCoroutine(ie);
             while (ie.MoveNext())
                 yield return null;
             duelFrame1 = ie.Current;
-            ie = TextureManager.LoadItemIcon(Config.Get("DuelFrame0Tag", Program.items.frames[0].id.ToString()));
+            ie = TextureManager.LoadItemIcon(Config.Get("DuelFrame0Tag", Program.items.frames[0].id.ToString()), Items.ItemType.Frame);
             StartCoroutine(ie);
             while (ie.MoveNext())
                 yield return null;
             duelFrame0Tag = ie.Current;
 
-            ie = TextureManager.LoadItemIcon(Config.Get("DuelFrame1Tag", Program.items.frames[0].id.ToString()));
+            ie = TextureManager.LoadItemIcon(Config.Get("DuelFrame1Tag", Program.items.frames[0].id.ToString()), Items.ItemType.Frame);
             StartCoroutine(ie);
             while (ie.MoveNext())
                 yield return null;
             duelFrame1Tag = ie.Current;
 
-            ie = TextureManager.LoadItemIcon(Config.Get("WatchFrame0", Program.items.frames[0].id.ToString()));
+            ie = TextureManager.LoadItemIcon(Config.Get("WatchFrame0", Program.items.frames[0].id.ToString()), Items.ItemType.Frame);
             StartCoroutine(ie);
             while (ie.MoveNext())
                 yield return null;
             watchFrame0 = ie.Current;
 
-            ie = TextureManager.LoadItemIcon(Config.Get("WatchFrame1", Program.items.frames[0].id.ToString()));
+            ie = TextureManager.LoadItemIcon(Config.Get("WatchFrame1", Program.items.frames[0].id.ToString()), Items.ItemType.Frame);
             StartCoroutine(ie);
             while (ie.MoveNext())
                 yield return null;
             watchFrame1 = ie.Current;
 
-            ie = TextureManager.LoadItemIcon(Config.Get("WatchFrame0Tag", Program.items.frames[0].id.ToString()));
+            ie = TextureManager.LoadItemIcon(Config.Get("WatchFrame0Tag", Program.items.frames[0].id.ToString()), Items.ItemType.Frame);
             StartCoroutine(ie);
             while (ie.MoveNext())
                 yield return null;
             watchFrame0Tag = ie.Current;
 
-            ie = TextureManager.LoadItemIcon(Config.Get("WatchFrame1Tag", Program.items.frames[0].id.ToString()));
+            ie = TextureManager.LoadItemIcon(Config.Get("WatchFrame1Tag", Program.items.frames[0].id.ToString()), Items.ItemType.Frame);
             StartCoroutine(ie);
             while (ie.MoveNext())
                 yield return null;
             watchFrame1Tag = ie.Current;
 
-            ie = TextureManager.LoadItemIcon(Config.Get("ReplayFrame0", Program.items.frames[0].id.ToString()));
+            ie = TextureManager.LoadItemIcon(Config.Get("ReplayFrame0", Program.items.frames[0].id.ToString()), Items.ItemType.Frame);
             StartCoroutine(ie);
             while (ie.MoveNext())
                 yield return null;
             replayFrame0 = ie.Current;
 
-            ie = TextureManager.LoadItemIcon(Config.Get("ReplayFrame1", Program.items.frames[0].id.ToString()));
+            ie = TextureManager.LoadItemIcon(Config.Get("ReplayFrame1", Program.items.frames[0].id.ToString()), Items.ItemType.Frame);
             StartCoroutine(ie);
             while (ie.MoveNext())
                 yield return null;
             replayFrame1 = ie.Current;
 
-            ie = TextureManager.LoadItemIcon(Config.Get("ReplayFrame0Tag", Program.items.frames[0].id.ToString()));
+            ie = TextureManager.LoadItemIcon(Config.Get("ReplayFrame0Tag", Program.items.frames[0].id.ToString()), Items.ItemType.Frame);
             StartCoroutine(ie);
             while (ie.MoveNext())
                 yield return null;
             replayFrame0Tag = ie.Current;
 
-            ie = TextureManager.LoadItemIcon(Config.Get("ReplayFrame1Tag", Program.items.frames[0].id.ToString()));
+            ie = TextureManager.LoadItemIcon(Config.Get("ReplayFrame1Tag", Program.items.frames[0].id.ToString()), Items.ItemType.Frame);
             StartCoroutine(ie);
             while (ie.MoveNext())
                 yield return null;

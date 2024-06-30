@@ -1,4 +1,3 @@
-using ICSharpCode.SharpZipLib.Zip;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -14,6 +13,7 @@ using UnityEngine.UI;
 using System.Collections.Concurrent;
 using System.Linq;
 using System;
+using System.Threading.Tasks;
 
 namespace MDPro3
 {
@@ -125,9 +125,9 @@ namespace MDPro3
                 yield break;
             string fullPath;
 #if !UNITY_EDITOR && UNITY_ANDROID
-        fullPath = "file://" + Application.persistentDataPath + Program.slash + path;
+            fullPath = "file://" + Application.persistentDataPath + Program.slash + path;
 #else
-            fullPath = System.Environment.CurrentDirectory + Program.slash + path;
+            fullPath = Environment.CurrentDirectory + Program.slash + path;
 #endif
             UnityWebRequest request = UnityWebRequestTexture.GetTexture(fullPath);
             request.SendWebRequest();
@@ -135,6 +135,25 @@ namespace MDPro3
                 yield return null;
             yield return DownloadHandlerTexture.GetContent(request);
             request.Dispose();
+        }
+
+        public static async Task<Texture2D> LoadPicFromLocalFileAsync(string path)
+        {
+            if (!File.Exists(path))
+                return null;
+            string fullPath;
+#if !UNITY_EDITOR && UNITY_ANDROID
+            fullPath = "file://" + Application.persistentDataPath + Program.slash + path;
+#else
+            fullPath = Environment.CurrentDirectory + Program.slash + path;
+#endif
+            UnityWebRequest request = UnityWebRequestTexture.GetTexture(fullPath);
+            await request.SendWebRequest();
+
+            if(request.result == UnityWebRequest.Result.Success)
+                return DownloadHandlerTexture.GetContent(request);
+            else
+                return null;
         }
 
         static readonly object artLock = new object();
@@ -371,9 +390,6 @@ namespace MDPro3
             }
         }
 
-        /// <summary>
-        /// Default cache
-        /// </summary>
         public IEnumerator<Texture2D> LoadCardAsync(int code)
         {
             if (cachedCards.TryGetValue(code, out var returnValue))
@@ -856,7 +872,7 @@ namespace MDPro3
         }
 
 
-        public static IEnumerator<Sprite> LoadItemIcon(string id)
+        public static IEnumerator<Sprite> LoadItemIcon(string id, Items.ItemType type)
         {
             if (cachedIcons.ContainsKey(id))
             {
@@ -866,6 +882,10 @@ namespace MDPro3
             var handle = Addressables.LoadAssetAsync<Sprite>(Items.CodeToIconPath(id));
             while (!handle.IsDone)
                 yield return null;
+
+            if (handle.Result == null)
+                yield break;
+
             Sprite returnValue;
             if (cachedIcons.ContainsKey(id))
             {
@@ -954,5 +974,6 @@ namespace MDPro3
                     return container.chainNumSet0;
             }
         }
+
     }
 }

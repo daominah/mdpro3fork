@@ -1,5 +1,6 @@
 using MDPro3;
 using MDPro3.YGOSharp.OCGWrapper.Enums;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -315,6 +316,29 @@ public class TextureContainer : ScriptableObject
     public Sprite toggleM_On;
     public Sprite toggleM_Over;
 
+    [Header("Rank")]
+    public Sprite rankBG01;
+    public Sprite rankBG02;
+    public Sprite rankBG03;
+    public Sprite rankBG04;
+    public Sprite rankBG05;
+    public Sprite rankBG06;
+    public Sprite rankBG07;
+    public Sprite rankBG08;
+    public Sprite rankIcon01;
+    public Sprite rankIcon02;
+    public Sprite rankIcon03;
+    public Sprite rankIcon04;
+    public Sprite rankIcon05;
+    public Sprite rankIcon06;
+    public Sprite rankIcon07;
+    public Sprite rankIcon08;
+    public Sprite rankTier01;
+    public Sprite rankTier02;
+    public Sprite rankTier03;
+    public Sprite rankTier04;
+    public Sprite rankTier05;
+
     [Header("Other")]
     public Texture2D fxt_Arrow;
     public Texture2D fxt_Arrow_002;
@@ -402,5 +426,118 @@ public class TextureContainer : ScriptableObject
         }
         return returnValue;
     }
+
+    int[] rankRange = new int[]
+    {
+        1000,
+        1100,
+        1200,
+        1300,
+        1400,
+        1500,
+        1600,
+        1700
+    };
+
+    public List<Sprite> GetRankSprites(int rank)
+    {
+        var returnValue = new List<Sprite>();
+        if(rank < rankRange[1])
+        {
+            returnValue.Add(rankBG01);
+            returnValue.Add(rankIcon01);
+            returnValue.Add(GetRankTier(rankRange[0], rankRange[1], rank));
+            returnValue.Add(transparent);
+            returnValue.Add(transparent);
+        }
+        else if(rank < rankRange[2])
+        {
+            returnValue.Add(rankBG02);
+            returnValue.Add(rankIcon02);
+            returnValue.Add(GetRankTier(rankRange[1], rankRange[2], rank));
+            returnValue.Add(transparent);
+            returnValue.Add(transparent);
+        }
+        else if(rank < rankRange[3])
+        {
+            returnValue.Add(rankBG03);
+            returnValue.Add(rankIcon03);
+            returnValue.Add(GetRankTier(rankRange[2], rankRange[3], rank));
+            returnValue.Add(transparent);
+            returnValue.Add(transparent);
+        }
+        else if (rank < rankRange[4])
+        {
+            returnValue.Add(rankBG04);
+            returnValue.Add(rankIcon04);
+            returnValue.Add(GetRankTier(rankRange[3], rankRange[4], rank));
+            returnValue.Add(transparent);
+            returnValue.Add(transparent);
+        }
+        else if (rank < rankRange[5])
+        {
+            returnValue.Add(rankBG05);
+            returnValue.Add(rankIcon05);
+            returnValue.Add(transparent);
+            returnValue.Add(GetRankTier(rankRange[4], rankRange[5], rank));
+            returnValue.Add(transparent);
+        }
+        else if (rank < rankRange[6])
+        {
+            returnValue.Add(rankBG06);
+            returnValue.Add(rankIcon06);
+            returnValue.Add(transparent);
+            returnValue.Add(GetRankTier(rankRange[5], rankRange[6], rank));
+            returnValue.Add(transparent);
+        }
+        else if (rank < rankRange[7])
+        {
+            returnValue.Add(rankBG07);
+            returnValue.Add(rankIcon07);
+            returnValue.Add(transparent);
+            returnValue.Add(transparent);
+            returnValue.Add(GetRankTier(rankRange[6], rankRange[7], rank));
+        }
+        else
+        {
+            returnValue.Add(rankBG08);
+            returnValue.Add(rankIcon08);
+            returnValue.Add(transparent);
+            returnValue.Add(transparent);
+            returnValue.Add(transparent);
+        }
+        return returnValue;
+    }
+
+    Sprite GetRankTier(int rankStart, int rankEnd, int rank)
+    {
+        if(rank > rankEnd)
+            return rankTier05;
+        if (rank < rankStart)
+            return rankTier01;
+
+        int rangeLength = rankEnd - rankStart;
+        int segmentSize = rangeLength / 5;
+        int tier = (int)Math.Floor((double)(rank - rankStart) / segmentSize);
+
+        switch (tier)
+        {
+            case 0:
+                return rankTier01;
+            case 1:
+                return rankTier02;
+            case 2:
+                return rankTier03;
+            case 3:
+                return rankTier04;
+            case 4:
+                return rankTier05;
+            default:
+                return rankTier01;
+        }
+    }
+
+
+
 
 }

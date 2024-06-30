@@ -87,6 +87,41 @@ namespace MDPro3.UI
             ToTop();
         }
 
+        public virtual void UpdateTasks(List<string[]> tasks)
+        {
+            scrollView.content.sizeDelta = new Vector2(0, (int)Math.Ceiling((float)items.Count / numOfEachLine) * cellY + extraForHead + extraForEnd);
+            float viewHeight = scrollView.GetComponent<RectTransform>().rect.height;
+            maxShowLines = (int)Math.Ceiling(viewHeight / cellY);
+            maxShow = numOfEachLine * (maxShowLines + 1);
+            if (maxShow > tasks.Count)
+            {
+                maxShow = tasks.Count;
+                Print(tasks);
+                return;
+            }
+
+            for (int i = 0;i < tasks.Count; i++)
+            {
+                if(items.Count > i)
+                {
+                    items[i].args = tasks[i];
+                }
+                else
+                {
+                    var it = new Item();
+                    it.args = tasks[i];
+                    it.gameObject = null;
+                    items.Add(it);
+                }
+            }
+            for(int i = tasks.Count; i < items.Count; i++)
+            {
+                UnityEngine.Object.Destroy(items[i].gameObject);
+                items.RemoveAt(i);
+            }
+
+        }
+
         void CreateItem(int i)
         {
             if (items[i].gameObject == null)

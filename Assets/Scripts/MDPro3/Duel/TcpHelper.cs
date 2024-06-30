@@ -61,6 +61,8 @@ namespace MDPro3
                     canJoin = false;
                     try
                     {
+                        Debug.LogFormat("Try Address: {0}, Port: {1}, Password: {2}", ipString, portString, pswString);
+
                         tcpClient = new TcpClientWithTimeout(ipString, int.Parse(portString), 3000).Connect();
                         networkStream = tcpClient.GetStream();
                         var t = new Thread(Receiver);
@@ -72,6 +74,7 @@ namespace MDPro3
                         joinedAddress = ipString;
                         joinedPort = portString;
                         joinedPassword = pswString;
+                        Debug.LogFormat("Joind Address: {0}, Port: {1}, Password: {2}", joinedAddress, joinedPort, joinedPassword);
                     }
                     catch (Exception e)
                     {

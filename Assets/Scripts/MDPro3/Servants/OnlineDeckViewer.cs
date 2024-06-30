@@ -37,12 +37,15 @@ public class OnlineDeckViewer : Servant
     public override void ApplyHideArrangement(int preDepth)
     {
         base.ApplyHideArrangement(preDepth);
-        DOTween.To(v => { }, 0, 0, transitionTime).OnComplete(() =>
+        DOTween.To(v => { }, 0, 0, transitionTime * 0.9f).OnComplete(() =>
         {
             btnPickup.OnSwitchOff();
             if (superScrollView != null)
                 foreach (var item in superScrollView.items)
+                {
+                    item.gameObject.transform.SetParent(Program.I().container_2D, false);
                     item.gameObject.GetComponent<SuperScrollViewItemForOnlineDeckSelect>().Dispose();
+                }
             Clear();
         });
     }
