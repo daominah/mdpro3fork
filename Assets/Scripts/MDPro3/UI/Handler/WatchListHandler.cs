@@ -14,7 +14,6 @@ namespace MDPro3.UI
         public ScrollRect scrollRect;
         public InputField inputSearch;
 
-
         SuperScrollView superScrollView;
 
         List<MyCardRoom> rooms;
@@ -28,6 +27,15 @@ namespace MDPro3.UI
         private void OnDisable()
         {
             Clear();
+        }
+
+        public List<string[]> GetSearchedTasks()
+        {
+            var returnValue = new List<string[]>();
+            foreach (var task in tasks)
+                if (task[2].Contains(inputSearch.text) || task[3].Contains(inputSearch.text))
+                    returnValue.Add(task);
+            return returnValue;
         }
 
         public void SetRooms(List<MyCardRoom> rooms)
@@ -90,7 +98,7 @@ namespace MDPro3.UI
             };
             tasks.Add(task);
             if (gameObject.activeInHierarchy)
-                superScrollView.UpdateTasks(tasks);
+                superScrollView.UpdateTasks(GetSearchedTasks());
         }
         public void UpdateRoom(MyCardRoom room)
         {
@@ -121,7 +129,7 @@ namespace MDPro3.UI
                     for (var i = 1; i < task.Length; i++)
                         t[i] = task[i];
             if (gameObject.activeInHierarchy)
-                superScrollView.UpdateTasks(tasks);
+                superScrollView.UpdateTasks(GetSearchedTasks());
         }
         public void DeleteRoom(string roomId)
         {
@@ -134,10 +142,10 @@ namespace MDPro3.UI
                 }
             }
             if (gameObject.activeInHierarchy)
-                superScrollView.UpdateTasks(tasks);
+                superScrollView.UpdateTasks(GetSearchedTasks());
         }
 
-        void Print()
+        public void Print()
         {
             if (!gameObject.activeInHierarchy)
                 return;
@@ -157,7 +165,7 @@ namespace MDPro3.UI
                     ItemOnListRefresh,
                     scrollRect
                     );
-                superScrollView.Print(tasks);
+                superScrollView.Print(GetSearchedTasks());
             };
         }
 

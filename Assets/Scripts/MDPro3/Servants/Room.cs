@@ -134,7 +134,7 @@ namespace MDPro3
             cg.blocksRaycasts = true;
             cg.interactable = true;
             right.DOAnchorPosX(0, moveTime).OnComplete(() => chatSwitching = false);
-            if(!isShowed)
+            if(!isShowed && Program.root != "Android/")
                 chatInput.Select();
         }
 
