@@ -223,6 +223,14 @@ namespace MDPro3
             return newPixels;
         }
 
+        public static Sprite Texture2Sprite(Texture2D texture)
+        {
+            if(texture == null)
+                return null;
+            var sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
+            return sprite;
+        }
+
         #region Online
         public static async Task<Texture2D> DownloadImageAsync(string url)
         {

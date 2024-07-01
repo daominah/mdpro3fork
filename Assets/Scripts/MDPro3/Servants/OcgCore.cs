@@ -19,6 +19,8 @@ using MDPro3.YGOSharp;
 using MDPro3.YGOSharp.OCGWrapper.Enums;
 using static YgomGame.Bg.BgEffectSettingInner;
 using MDPro3.UI;
+using MDPro3.Net;
+using YgomGame.Download;
 
 namespace MDPro3
 {
@@ -91,8 +93,9 @@ namespace MDPro3
         public PopupDuel currentPopup;
 
         public bool inAi;
-        public Condition condition = Condition.N;
         public bool isTag;
+        public bool mycardDuel;
+        public Condition condition = Condition.N;
         public ChainCondition chainCondition = ChainCondition.Smart;
         public Deck deck;
         public Deck sideReference = new Deck();
@@ -791,6 +794,7 @@ namespace MDPro3
             packages.Clear();
             allPackages.Clear();
             AudioManager.ResetSESource();
+            mycardDuel = false;
 
             foreach (var o in turnEndDeleteObjects)
                 Destroy(o);
@@ -1276,8 +1280,6 @@ namespace MDPro3
             }
             #endregion
 
-            //while(TextureManager.loadingCard)
-            //    yield return null;
             GC.Collect();
             //ÍË³ö¼ÓÔØ
             yield return new WaitForSeconds(transitionTime);
@@ -6661,7 +6663,28 @@ namespace MDPro3
                     player1Frame.sprite = Appearance.replayFace1Tag;
                 }
             }
+
+            StartCoroutine(SetMyCardFace());
         }
+
+        IEnumerator SetMyCardFace()
+        {
+            if (MyCard.account == null || !mycardDuel)
+                yield break;
+
+            var task = MyCard.GetAvatarAsync(player0Name.text);
+            while (!task.IsCompleted)
+                yield return null;
+            if (task.Result != null)
+                player0Frame.sprite = Tools.Texture2Sprite(task.Result);
+
+            task = MyCard.GetAvatarAsync(player1Name.text);
+            while (!task.IsCompleted)
+                yield return null;
+            if (task.Result != null)
+                player1Frame.sprite = Tools.Texture2Sprite(task.Result);
+        }
+
         void SetLP(int player, int val, bool first = false)
         {
             if (first)

@@ -8,6 +8,7 @@ using UnityEngine;
 using MDPro3.YGOSharp;
 using MDPro3.YGOSharp.Network.Enums;
 using MDPro3.YGOSharp.OCGWrapper.Enums;
+using MDPro3.Net;
 
 namespace MDPro3
 {
@@ -74,6 +75,8 @@ namespace MDPro3
                         joinedAddress = ipString;
                         joinedPort = portString;
                         joinedPassword = pswString;
+                        Program.I().ocgcore.mycardDuel = joinedAddress == MyCard.duelUrl;
+
                         Debug.LogFormat("Joind Address: {0}, Port: {1}, Password: {2}", joinedAddress, joinedPort, joinedPassword);
                     }
                     catch (Exception e)

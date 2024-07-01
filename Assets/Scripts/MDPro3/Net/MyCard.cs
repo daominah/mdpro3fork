@@ -14,7 +14,8 @@ namespace MDPro3.Net
 {
     public static class MyCard
     {
-        public const string athleticUrl = "tiramisu.moenext.com";
+        public const string duelUrl = "tiramisu.moenext.com";
+        public const int entertainPort = 7911;
         public const int athleticPort = 8911;
 
         const string loginUrl = "https://sapi.moecube.com:444/accounts/signin";
@@ -31,6 +32,8 @@ namespace MDPro3.Net
         public static MyCardAccount account;
         public static MyCardApp ygopro;
         public static Texture2D avatar;
+
+        const int avatarSize = 128;
 
         public static async Task<MyCardAccount> Login(string account, string password)
         {
@@ -158,10 +161,10 @@ namespace MDPro3.Net
                 {
                     var fileName = Path.GetFileNameWithoutExtension(avatarAddress);
                     fullPath = avatartSavePath + fileName + ".png";
-                    if(returnValue.width > 256)
+                    if(returnValue.width > avatarSize)
                     {
-                        returnValue = new Texture2D(256, 256);
-                        var resizePixels = Tools.ResizePixels(task.Result.GetPixels(), task.Result.width, task.Result.height, 256, 256);
+                        returnValue = new Texture2D(avatarSize, avatarSize);
+                        var resizePixels = Tools.ResizePixels(task.Result.GetPixels(), task.Result.width, task.Result.height, avatarSize, avatarSize);
                         returnValue.SetPixels(resizePixels);
                         returnValue.Apply();
                         UnityEngine.Object.Destroy(task.Result);
@@ -199,6 +202,7 @@ namespace MDPro3.Net
             }
             return defaultAvatar;
         }
+
 
         public static async Task<MyCardNews> GetNews()
         {
