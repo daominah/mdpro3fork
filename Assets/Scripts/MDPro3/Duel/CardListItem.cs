@@ -76,14 +76,14 @@ namespace MDPro3.UI
             var code = card.GetData().Id;
             if (code != 0)
             {
-                IEnumerator ie = Program.I().texture_.LoadCardAsync(code);
-                StartCoroutine(ie);
-                while (ie.MoveNext())
+                var task = TextureManager.LoadCardAsync(code, false);
+                while(!task.IsCompleted)
                     yield return null;
+
                 var mat = TextureManager.GetCardMaterial(code);
                 face.material = mat;
-                face.material.mainTexture = ie.Current as Texture2D;
-                face.texture = ie.Current as Texture2D;
+                face.material.mainTexture = task.Result;
+                face.texture = task.Result;
             }
             else
             {

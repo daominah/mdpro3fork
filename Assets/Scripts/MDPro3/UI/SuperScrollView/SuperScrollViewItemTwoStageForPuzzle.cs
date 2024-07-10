@@ -11,7 +11,6 @@ namespace MDPro3.UI
         public RawImage face;
         public SelectPuzzle.Puzzle puzzle;
 
-        IEnumerator enumerator;
         public override void OnSelected()
         {
             base.OnSelected();
@@ -24,30 +23,26 @@ namespace MDPro3.UI
         public override void Refresh()
         {
             base.Refresh();
-            refreshed = false;
             title.text = puzzle.name;
-            if (enumerator != null)
-                StopCoroutine(enumerator);
-            enumerator = RefreshFace();
-            StartCoroutine(enumerator);
             action = () =>
             {
                 Program.I().puzzle.StartPuzzle(puzzle.name);
             };
         }
 
-        IEnumerator RefreshFace()
+        public override IEnumerator RefreshAsync()
         {
-            refreshed = false;
             while (TextureManager.container == null)
                 yield return null;
+
             face.texture = TextureManager.container.black.texture;
-            IEnumerator ie = Program.I().texture_.LoadArtAsync(int.Parse(puzzle.firstCard), true);
-            StartCoroutine(ie);
-            while (ie.MoveNext())
+
+            var task = TextureManager.LoadArtAsync(int.Parse(puzzle.firstCard), true);
+            while(!task.IsCompleted)
                 yield return null;
-            face.texture = ie.Current as Texture2D;
             face.color = Color.white;
+            face.texture = task.Result;
+
             enumerator = null;
             refreshed = true;
         }

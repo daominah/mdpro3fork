@@ -106,6 +106,9 @@ namespace MDPro3
         {
             if (wallpaper.transform.childCount > 0)
                 Destroy(wallpaper.transform.GetChild(0).gameObject);
+            if (path == Items.noneCode.ToString())
+                return null;
+
             path = "MasterDuel/" + Program.items.WallpaperCodeToPath(path);
             if (!path.ToLower().Contains("front"))
             {

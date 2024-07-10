@@ -18,7 +18,7 @@ namespace MDPro3.UI
 
         public virtual void Refresh()
         {
-
+            
         }
 
         public virtual void OnClick()

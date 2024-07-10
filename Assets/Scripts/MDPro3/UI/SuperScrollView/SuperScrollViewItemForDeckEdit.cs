@@ -18,19 +18,11 @@ namespace MDPro3.UI
         public Image dot2;
         public Image dot3;
 
-        TargetCardID Mono => GetComponent<TargetCardID>();
-        int m_code;
-        public int Code 
-        {
-            get { return m_code; }
-            set 
-            { 
-                m_code = value; 
-                Mono.code = value;
-            }
-        }
+        public int code;
 
+        RawImage face;
         IEnumerator enummerator;
+
         private void Start()
         {
             button.GetComponent<EventDrag>().onClick = OnClick;
@@ -47,44 +39,48 @@ namespace MDPro3.UI
         }
         public override void Refresh()
         {
-            var data = CardsManager.Get(Code);
+            if (face == null)
+                face = GetComponent<RawImage>();
+            face.material = null;
+
+            var data = CardsManager.Get(code);
             if ((data.Type & (uint)CardType.Pendulum) > 0)
             {
                 if ((data.Type & (uint)CardType.Normal) > 0)
-                    GetComponent<RawImage>().texture = TextureManager.container.cardFramePendulumNormal.texture;
+                    face.texture = TextureManager.container.cardFramePendulumNormal.texture;
                 else if ((data.Type & (uint)CardType.Xyz) > 0)
-                    GetComponent<RawImage>().texture = TextureManager.container.cardFramePendulumXyz.texture;
+                    face.texture = TextureManager.container.cardFramePendulumXyz.texture;
                 else if ((data.Type & (uint)CardType.Synchro) > 0)
-                    GetComponent<RawImage>().texture = TextureManager.container.cardFramePendulumSynchro.texture;
+                    face.texture = TextureManager.container.cardFramePendulumSynchro.texture;
                 else if ((data.Type & (uint)CardType.Fusion) > 0)
-                    GetComponent<RawImage>().texture = TextureManager.container.cardFramePendulumFusion.texture;
+                    face.texture = TextureManager.container.cardFramePendulumFusion.texture;
                 else if ((data.Type & (uint)CardType.Ritual) > 0)
-                    GetComponent<RawImage>().texture = TextureManager.container.cardFramePendulumRitual.texture;
+                    face.texture = TextureManager.container.cardFramePendulumRitual.texture;
                 else
-                    GetComponent<RawImage>().texture = TextureManager.container.cardFramePendulumEffect.texture;
+                    face.texture = TextureManager.container.cardFramePendulumEffect.texture;
             }
             else
             {
                 if ((data.Type & (uint)CardType.Normal) > 0)
-                    GetComponent<RawImage>().texture = TextureManager.container.cardFrameNormal.texture;
+                    face.texture = TextureManager.container.cardFrameNormal.texture;
                 else if ((data.Type & (uint)CardType.Xyz) > 0)
-                    GetComponent<RawImage>().texture = TextureManager.container.cardFrameXyz.texture;
+                    face.texture = TextureManager.container.cardFrameXyz.texture;
                 else if ((data.Type & (uint)CardType.Synchro) > 0)
-                    GetComponent<RawImage>().texture = TextureManager.container.cardFrameSynchro.texture;
+                    face.texture = TextureManager.container.cardFrameSynchro.texture;
                 else if ((data.Type & (uint)CardType.Fusion) > 0)
-                    GetComponent<RawImage>().texture = TextureManager.container.cardFrameFusion.texture;
+                    face.texture = TextureManager.container.cardFrameFusion.texture;
                 else if ((data.Type & (uint)CardType.Ritual) > 0 && (data.Type & (uint)CardType.Monster) > 0)
-                    GetComponent<RawImage>().texture = TextureManager.container.cardFrameRitual.texture;
+                    face.texture = TextureManager.container.cardFrameRitual.texture;
                 else if ((data.Type & (uint)CardType.Link) > 0)
-                    GetComponent<RawImage>().texture = TextureManager.container.cardFrameLink.texture;
+                    face.texture = TextureManager.container.cardFrameLink.texture;
                 else if ((data.Type & (uint)CardType.Spell) > 0)
-                    GetComponent<RawImage>().texture = TextureManager.container.cardFrameSpell.texture;
+                    face.texture = TextureManager.container.cardFrameSpell.texture;
                 else if ((data.Type & (uint)CardType.Trap) > 0)
-                    GetComponent<RawImage>().texture = TextureManager.container.cardFrameTrap.texture;
+                    face.texture = TextureManager.container.cardFrameTrap.texture;
                 else if ((data.Type & (uint)CardType.Token) > 0)
-                    GetComponent<RawImage>().texture = TextureManager.container.cardFrameToken.texture;
+                    face.texture = TextureManager.container.cardFrameToken.texture;
                 else
-                    GetComponent<RawImage>().texture = TextureManager.container.cardFrameEffect.texture;
+                    face.texture = TextureManager.container.cardFrameEffect.texture;
             }
 
             RefreshCountDot();
@@ -97,8 +93,8 @@ namespace MDPro3.UI
 
         public void RefreshCountDot()
         {
-            int max = Program.I().editDeck.banlist.GetQuantity(Code);
-            int count = Program.I().editDeck.GetCardCount(Code);
+            int max = Program.I().editDeck.banlist.GetQuantity(code);
+            int count = Program.I().editDeck.GetCardCount(code);
             dot1.gameObject.SetActive(false);
             dot2.gameObject.SetActive(false);
             dot3.gameObject.SetActive(false);
@@ -143,7 +139,7 @@ namespace MDPro3.UI
 
         public void RefreshLimiteIcon()
         {
-            var limit = Program.I().editDeck.banlist.GetQuantity(Code);
+            var limit = Program.I().editDeck.banlist.GetQuantity(code);
             if (limit == 3)
                 limitIcon.sprite = TextureManager.container.typeNone;
             else if (limit == 2)
@@ -158,22 +154,23 @@ namespace MDPro3.UI
         IEnumerator RefreshAsync()
         {
             refreshed = false;
-            var face = GetComponent<RawImage>();
-            face.material = null;
-            for (int i = 0; i < transform.GetSiblingIndex(); i++)
+            for (int i = 0; i < transform.GetSiblingIndex() * 2; i++)
                 yield return null;
 
-            var ie = Program.I().texture_.LoadCardToRawImageWithMaterialAsync(GetComponent<RawImage>(), Code, false);
-            StartCoroutine(ie);
-            while (ie.MoveNext())
+            var task = TextureManager.LoadCardAsync(code);
+            while(!task.IsCompleted)
                 yield return null;
 
+            var mat = TextureManager.GetCardMaterial(code, false);
+            mat.mainTexture = task.Result;
+
+            face.material = mat;
             face.material.SetTexture("_LoadingTex", face.texture);
             face.texture = null;
 
             face.material.SetFloat("_LoadingBlend", 1f);
             float blend = 1;
-            DOTween.To(() => blend, x => { blend = x; GetComponent<RawImage>().material.SetFloat("_LoadingBlend", blend); }, 0f, 0.2f);
+            DOTween.To(() => blend, x => { blend = x; face.material.SetFloat("_LoadingBlend", blend); }, 0f, 0.2f);
             enummerator = null;
             refreshed = true;
         }
@@ -197,9 +194,9 @@ namespace MDPro3.UI
             var cardFace = GetComponent<RawImage>().material.mainTexture;
             var mat = GetComponent<RawImage>().material;
             if (Program.I().editDeck.manager.GetElement<Tab>("TabHistory").selected)
-                Program.I().editDeck.Description(Code, cardFace, mat, false);
+                Program.I().editDeck.Description(code, cardFace, mat, false);
             else
-                Program.I().editDeck.Description(Code, cardFace, mat);
+                Program.I().editDeck.Description(code, cardFace, mat);
         }
 
         void OnClickRight(PointerEventData eventData)
@@ -209,17 +206,17 @@ namespace MDPro3.UI
 
             if (Program.I().editDeck.condition == Condition.ChangeSide)
                 return;
-            var max = Program.I().editDeck.banlist.GetQuantity(Code);
-            var count = Program.I().editDeck.GetCardCount(Code);
+            var max = Program.I().editDeck.banlist.GetQuantity(code);
+            var count = Program.I().editDeck.GetCardCount(code);
             if (count < max)
             {
                 AudioManager.PlaySE("SE_DECK_PLUS");
 
                 var item = Instantiate(Program.I().editDeck.itemOnTable);
                 var handler = item.GetComponent<CardOnEdit>();
-                handler.code = Code;
+                handler.code = code;
 
-                var card = CardsManager.Get(Code);
+                var card = CardsManager.Get(code);
                 var isExtra = card.IsExtraCard();
                 if (!isExtra)
                 {
@@ -282,7 +279,7 @@ namespace MDPro3.UI
 
             var item = Instantiate(Program.I().editDeck.itemOnTable);
             dragItem = item.GetComponent<CardOnEdit>();
-            dragItem.code = Code;
+            dragItem.code = code;
             dragItem.id = 99999999;
 
             var defau = 1000f;
@@ -317,8 +314,8 @@ namespace MDPro3.UI
             if (Program.I().editDeck.condition == Condition.ChangeSide)
                 return;
 
-            var max = Program.I().editDeck.banlist.GetQuantity(Code);
-            var count = Program.I().editDeck.GetCardCount(Code);
+            var max = Program.I().editDeck.banlist.GetQuantity(code);
+            var count = Program.I().editDeck.GetCardCount(code);
             if (count >= max)
             {
                 Destroy(dragItem.gameObject);
@@ -340,7 +337,7 @@ namespace MDPro3.UI
             }
             else
             {
-                var c = CardsManager.Get(Code);
+                var c = CardsManager.Get(code);
                 var isExtra = c.IsExtraCard();
 
                 if (Program.I().editDeck.manager.GetElement<UIHover>("DummyMain").hover)

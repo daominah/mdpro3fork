@@ -440,6 +440,8 @@ namespace MDPro3
         public void OnFpsChange(float value)
         {
             QualitySettings.vSyncCount = 0;
+            if (value > 0f && value < 30f)
+                value = 30f;
             Application.targetFrameRate = (int)value;
             fpsValue.text = ((int)value).ToString();
         }
@@ -774,8 +776,12 @@ namespace MDPro3
             var id = int.Parse(Config.Get("Background", "0"));
             var value = InterString.Get("随机");
             if (id != 0)
-                BackgroundManager.backgrounds.TryGetValue(id, out value);
-            if(string.IsNullOrEmpty(value))
+                if (!BackgroundManager.backgrounds.TryGetValue(id, out value))
+                {
+                    id = 1;
+                    value = "Classic";
+                }
+            if (string.IsNullOrEmpty(value))
                 value = InterString.Get("随机");
             backgroundValue.text = value;
             Program.I().background_.Change(id);

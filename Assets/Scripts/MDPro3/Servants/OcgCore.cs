@@ -727,7 +727,7 @@ namespace MDPro3
 
         public void CameraZoomToMate0()
         {
-            if (Program.root == "Android/")
+            if (Program.root == Program.rootAndroid)
                 return;
 
             if (Config.Get("MateViewTips", "0") == "0")
@@ -751,7 +751,7 @@ namespace MDPro3
         }
         public void CameraZoomToMate1()
         {
-            if (Program.root == "Android/")
+            if (Program.root == Program.rootAndroid)
                 return;
 
             if (Config.Get("MateViewTips", "0") == "0")
@@ -834,6 +834,11 @@ namespace MDPro3
             yield return new WaitForSeconds(transitionTime);
             while (!Appearance.loaded)
                 yield return null;
+
+            var setRefresh = Program.I().appearance.LoadSettingAssets();
+            while (setRefresh.MoveNext())
+                yield return null;
+
             CameraManager.ShiftTo3D();
             UIManager.HideExitButton(0);
             UIManager.HideLine(0);
@@ -841,8 +846,6 @@ namespace MDPro3
             cg.alpha = 1f;
             cg.interactable = true;
             cg.blocksRaycasts = true;
-
-
 
             #region Attack Line
             if (attackLine == null)
@@ -965,7 +968,7 @@ namespace MDPro3
 
             enumerator = ABLoader.LoadFromFileAsync("MasterDuel/" + 
                 Program.items.GetPathByCode(Config.Get(condition.ToString() + "Field1", 
-                Program.items.mats[0].id.ToString()), Items.ItemType.Mat) + "_far");
+                Program.items.mats[0].id.ToString()), Items.ItemType.Mat, 1) + "_far");
             while (enumerator.MoveNext())
                 yield return null;
             field1 = enumerator.Current;
@@ -1006,8 +1009,8 @@ namespace MDPro3
             grave0 = enumerator.Current;
             grave0.transform.SetParent(pos_Grave_near, false);
             enumerator = ABLoader.LoadFromFileAsync("MasterDuel/" +
-                Program.items.GetPathByCode(Config.Get(condition.ToString() + "Grave1", 
-                Program.items.graves[0].id.ToString()), Items.ItemType.Grave) + "_far");
+                Program.items.GetPathByCode(Config.Get(condition.ToString() + "Grave1",
+                Program.items.graves[0].id.ToString()), Items.ItemType.Grave, 1) + "_far");
             while (enumerator.MoveNext())
                 yield return null;
             grave1 = enumerator.Current;
@@ -1028,53 +1031,64 @@ namespace MDPro3
             #endregion
 
             #region 站台
-            path = Program.items.GetPathByCode(
-                Config.Get(condition.ToString() + "Stand0", 
-                Program.items.stands[0].id.ToString()), Items.ItemType.Stand);
-            if (deck != null)
-                path = Program.items.GetPathByCode(deck.Stand[0].ToString(), Items.ItemType.Stand);
-            path = "MasterDuel/" + path;
-            enumerator = ABLoader.LoadFromFileAsync(path + "_near");
-            while (enumerator.MoveNext())
-                yield return null;
-            stand0 = enumerator.Current;
-            stand0.transform.SetParent(pos_AvatarStand_near, false);
-            enumerator = ABLoader.LoadFromFileAsync("MasterDuel/" +
-                Program.items.GetPathByCode(Config.Get(condition.ToString() + "Stand1", 
-                Program.items.stands[0].id.ToString()), Items.ItemType.Stand) + "_far");
-            while (enumerator.MoveNext())
-                yield return null;
-            stand1 = enumerator.Current;
-            stand1.transform.SetParent(pos_AvatarStand_far, false);
+            var standConfig = Config.Get(condition.ToString() + "Stand0", Program.items.stands[0].id.ToString());
+            if(standConfig != Items.noneCode.ToString() || deck != null)
+            {
+                path = Program.items.GetPathByCode(standConfig, Items.ItemType.Stand);
+                if (deck != null)
+                    path = Program.items.GetPathByCode(deck.Stand[0].ToString(), Items.ItemType.Stand);
+                path = "MasterDuel/" + path;
+                enumerator = ABLoader.LoadFromFileAsync(path + "_near");
+                while (enumerator.MoveNext())
+                    yield return null;
+                stand0 = enumerator.Current;
+                stand0.transform.SetParent(pos_AvatarStand_near, false);
 
-            pos_Avatar_near = Tools.GetChildByName(stand0.transform, "POS_Avatar_near");
-            pos_Avatar_far = Tools.GetChildByName(stand1.transform, "POS_Avatar_far");
+                pos_Avatar_near = Tools.GetChildByName(stand0.transform, "POS_Avatar_near");
+                Tools.PlayAnimation(stand0.transform, "StartToPhase1");
+                stand0Manager = stand0.GetComponent<BgEffectManager>();
+            }
 
-            Tools.PlayAnimation(stand0.transform, "StartToPhase1");
-            Tools.PlayAnimation(stand1.transform, "StartToPhase1");
+            standConfig = Config.Get(condition.ToString() + "Stand1", Program.items.stands[0].id.ToString());
+            if (standConfig != Items.noneCode.ToString())
+            {
+                enumerator = ABLoader.LoadFromFileAsync("MasterDuel/" +
+                Program.items.GetPathByCode(standConfig, Items.ItemType.Stand, 1) + "_far");
+                while (enumerator.MoveNext())
+                    yield return null;
+                stand1 = enumerator.Current;
+                stand1.transform.SetParent(pos_AvatarStand_far, false);
 
-            stand0Manager = stand0.GetComponent<BgEffectManager>();
-            stand1Manager = stand1.GetComponent<BgEffectManager>();
+                pos_Avatar_far = Tools.GetChildByName(stand1.transform, "POS_Avatar_far");
+                Tools.PlayAnimation(stand1.transform, "StartToPhase1");
+                stand1Manager = stand1.GetComponent<BgEffectManager>();
+            }
+
             #endregion
 
             #region 宠物
-            int mateCode = int.Parse(Config.Get(condition.ToString() + "Mate0", Program.items.mates[0].id.ToString()));
-            if (deck != null)
-                mateCode = deck.Mate[0];
-            var mateLoader = ABLoader.LoadMateAsync(mateCode);
-            StartCoroutine(mateLoader);
-            while (mateLoader.MoveNext())
-                yield return null;
-            mate0 = mateLoader.Current;
-            mate0.parent = pos_Avatar_near;
-            allGameObjects.Add(mate0.gameObject);
+            var mateConfig = Config.Get(condition.ToString() + "Mate0", Program.items.mates[0].id.ToString());
+            if(mateConfig != Items.noneCode.ToString() || deck != null)
+            {
+                int mateCode = int.Parse(mateConfig);
+                if (deck != null)
+                    mateCode = deck.Mate[0];
+                var mateLoader = ABLoader.LoadMateAsync(mateCode);
+                while (mateLoader.MoveNext())
+                    yield return null;
+                mate0 = mateLoader.Current;
+                mate0.parent = pos_Avatar_near;
+            }
 
-            mateLoader = ABLoader.LoadMateAsync(int.Parse(Config.Get(condition.ToString() + "Mate1", Program.items.mates[0].id.ToString())));
-            StartCoroutine(mateLoader);
-            while (mateLoader.MoveNext())
-                yield return null;
-            mate1 = mateLoader.Current;
-            mate1.parent = pos_Avatar_far;
+            mateConfig = Config.Get(condition.ToString() + "Mate1", Program.items.mates[0].id.ToString());
+            if (mateConfig != Items.noneCode.ToString())
+            {
+                var mateLoader = ABLoader.LoadMateAsync(int.Parse(Config.Get(condition.ToString() + "Mate1", Program.items.mates[0].id.ToString())));
+                while (mateLoader.MoveNext())
+                    yield return null;
+                mate1 = mateLoader.Current;
+                mate1.parent = pos_Avatar_far;
+            }
             #endregion
 
             #region 场地背景
@@ -1281,6 +1295,7 @@ namespace MDPro3
             #endregion
 
             GC.Collect();
+            yield return new WaitForSeconds(0.2f);
             //退出加载
             yield return new WaitForSeconds(transitionTime);
             field0Manager.PlayAnimatorTrigger(TriggerLabelDefine.StartToPhase1);
@@ -1289,10 +1304,16 @@ namespace MDPro3
             field1Manager.PlayAnimatorTrigger(TriggerLabelDefine.StartToPhase1);
             grave1Manager.PlayAnimatorTrigger(TriggerLabelDefine.StartToPhase1);
             bgPhase1 = 1;
-            mate0.gameObject.SetActive(true);
-            mate0.Play(Mate.MateAction.Entry);
-            mate1.gameObject.SetActive(true);
-            mate1.Play(Mate.MateAction.Entry);
+            if(mate0 != null)
+            {
+                mate0.gameObject.SetActive(true);
+                mate0.Play(Mate.MateAction.Entry);
+            }
+            if(mate1 != null)
+            {
+                mate1.gameObject.SetActive(true);
+                mate1.Play(Mate.MateAction.Entry);
+            }
             if (timerHandler != null)
                 timerHandler.DuelStart();
             UIManager.ShowFPSLeft();
@@ -4611,7 +4632,20 @@ namespace MDPro3
                     int ptype = r.ReadByte();
                     var pvalue = r.ReadInt32();
                     var valstring = StringHelper.Get(pvalue);
-                    if (pvalue == 38723936) valstring = InterString.Get("不能确认墓地里的卡");
+                    if (pvalue == 38723936)
+                    {
+                        valstring = InterString.Get("不能确认墓地里的卡");
+                        if(player == 0)
+                        {
+                            if(ptype == 6)
+                            {
+                                cantCheckGrave = true;
+                                list.Hide();
+                            }
+                            if (ptype == 7)
+                                cantCheckGrave = false;
+                        }
+                    }
                     if (ptype == 6)
                     {
                         if (player == 0)
@@ -4931,6 +4965,7 @@ namespace MDPro3
                             }
                         }
                     }
+                    
                     break;
                 case GameMessage.ShuffleSetCard:
                     messagePass = false;
@@ -6101,15 +6136,37 @@ namespace MDPro3
 
         void ClearResponse()
         {
+            var myMaxDeck = GetLocationCardCount(CardLocation.Deck, 0);
+            var opMaxDeck = GetLocationCardCount(CardLocation.Deck, 1);
             foreach (var card in cards)
             {
                 card.effects.Clear();
                 card.ClearButtons();
+                if ((card.p.location & (uint)CardLocation.Deck) > 0)
+                {
+                    if (deckReserved)
+                    {
+                        if (card.p.controller == 0 && card.p.sequence != myMaxDeck - 1)
+                            card.EraseData();
+                        if (card.p.controller == 1 && card.p.sequence != opMaxDeck - 1)
+                            card.EraseData();
+                    }
+                    else
+                    {
+                        card.EraseData();
+                    }
+                }
             }
             foreach (var place in places)
             {
                 place.StopResponse();
                 place.HideHint();
+                place.ClearButtons();
+            }
+            foreach (var grave in graves)
+            {
+                grave.ClearGraveButtons();
+                grave.ClearExcludeButtons();
             }
 
             PhaseButtonHandler.battlePhase = false;
@@ -6117,13 +6174,6 @@ namespace MDPro3
             PhaseButtonHandler.endPhase = false;
             PhaseButtonHandler.CloseHint();
 
-            foreach (var place in places)
-                place.ClearButtons();
-            foreach (var grave in graves)
-            {
-                grave.ClearGraveButtons();
-                grave.ClearExcludeButtons();
-            }
             CloseBgHint();
             FieldSelectReset();
             ES_selectHint = string.Empty;
@@ -6540,7 +6590,7 @@ namespace MDPro3
             return p__;
         }
 
-        bool GetAutoInfo()
+        public bool GetAutoInfo()
         {
             if (condition == Condition.Duel
                 && Config.Get("DuelAutoInfo", "0") == "0")
@@ -7875,12 +7925,12 @@ namespace MDPro3
             var targetMat = controller == 0 ? myProtector : opProtector;
             if(topCard != null)
             {
-                targetMat = TextureManager.GetCardMaterial(topCard.GetData().Id, true);
-                var ie = Program.I().texture_.LoadCardAsync(topCard.GetData().Id);
-                StartCoroutine(ie);
-                while (ie.MoveNext())
+                var code = topCard.GetData().Id;
+                targetMat = TextureManager.GetCardMaterial(code, true);
+                var task = TextureManager.LoadCardAsync(code, true);
+                while (!task.IsCompleted)
                     yield return null;
-                targetMat.mainTexture = ie.Current;
+                targetMat.mainTexture = task.Result;
             }
             foreach (var r in deck.transform.GetComponentsInChildren<Renderer>(true))
                 if (r.name.EndsWith("back"))
@@ -8679,13 +8729,13 @@ namespace MDPro3
             {
                 one.gameObject.SetActive(false);
                 ten.gameObject.SetActive(false);
-                digit.sprite = TextureManager.GetChainNumSprite(number);
+                digit.sprite = TextureManager.container.GetChainNumSprite(number);
             }
             else
             {
                 digit.gameObject.SetActive(false);
-                one.sprite = TextureManager.GetChainNumSprite(number % 10);
-                ten.sprite = TextureManager.GetChainNumSprite((number / 10) % 10);
+                one.sprite = TextureManager.container.GetChainNumSprite(number % 10);
+                ten.sprite = TextureManager.container.GetChainNumSprite((number / 10) % 10);
             }
         }
 

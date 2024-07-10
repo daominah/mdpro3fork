@@ -8,7 +8,6 @@ using System.Collections.Generic;
 using UnityWebSocket;
 using Newtonsoft.Json.Linq;
 using System.IO;
-using WindBot.Game;
 
 namespace MDPro3.Net
 {
@@ -128,7 +127,7 @@ namespace MDPro3.Net
                     if (cachedAvatars.ContainsKey(avatarName))
                         return cachedAvatars[avatarName];
 
-                var load = TextureManager.LoadPicFromLocalFileAsync(fullPath);
+                var load = TextureManager.LoadPicFromFileAsync(fullPath);
                 await load;
                 lock (cachedAvatars)
                     if (!cachedAvatars.ContainsKey(avatarName))
@@ -152,22 +151,26 @@ namespace MDPro3.Net
                 }
             }
 
-            var task = Tools.DownloadImageAsync(avatarAddress);
-            await task;
-            var returnValue = task.Result;
+            var requestAvatar = Tools.DownloadImageAsync(avatarAddress);
+            await requestAvatar;
+            Texture2D downloadImage = requestAvatar.Result;
+            if (downloadImage == null)
+                return null;
+
+            var returnValue = downloadImage;
             try
             {
-                if(task.Result != null)
+                if(downloadImage != null)
                 {
                     var fileName = Path.GetFileNameWithoutExtension(avatarAddress);
                     fullPath = avatartSavePath + fileName + ".png";
-                    if(returnValue.width > avatarSize)
+                    if(downloadImage.width > avatarSize)
                     {
                         returnValue = new Texture2D(avatarSize, avatarSize);
-                        var resizePixels = Tools.ResizePixels(task.Result.GetPixels(), task.Result.width, task.Result.height, avatarSize, avatarSize);
+                        var resizePixels = Tools.ResizePixels(downloadImage.GetPixels(), downloadImage.width, downloadImage.height, avatarSize, avatarSize);
                         returnValue.SetPixels(resizePixels);
                         returnValue.Apply();
-                        UnityEngine.Object.Destroy(task.Result);
+                        UnityEngine.Object.Destroy(downloadImage);
                     }
 
                     File.WriteAllBytes(fullPath, returnValue.EncodeToPNG());
@@ -193,7 +196,7 @@ namespace MDPro3.Net
         {
             if(defaultAvatar == null)
             {
-                var task = TextureManager.LoadPicFromLocalFileAsync(avatartSavePath + "default_avatar.png");
+                var task = TextureManager.LoadPicFromFileAsync(avatartSavePath + "default_avatar.png");
                 await task;
                 if (task.Result != null)
                 {

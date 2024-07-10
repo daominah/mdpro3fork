@@ -34,7 +34,7 @@ namespace MDPro3
         public static void Initialize()
         {
             var language = Config.Get("Language", "zh-CN");
-            var path = Program.localesPath + Program.slash + language + "/strings.conf";
+            var path = Program.localesPath + language + "/strings.conf";
             var text = File.ReadAllText(path);
             if (Config.GetBool("Expansions", true))
             {
@@ -60,7 +60,7 @@ namespace MDPro3
             }
 
             language = Config.Get("CardLanguage", "zh-CN");
-            path = Program.localesPath + Program.slash + language + "/strings.conf";
+            path = Program.localesPath + language + "/strings.conf";
             string textForRender = File.ReadAllText(path);
             if (Config.Get("Expansions", "1") == "1")
             {

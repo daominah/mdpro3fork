@@ -136,13 +136,13 @@ namespace MDPro3.UI
         {
             refreshed = false;
             cardFace.texture = TextureManager.container.unknownCard.texture;
-            var ie = Program.I().texture_.LoadCardAsync(code);
-            while (ie.MoveNext())
+            var task = TextureManager.LoadCardAsync(code, true);
+            while (!task.IsCompleted)
                 yield return null;
             var mat = TextureManager.GetCardMaterial(code);
             cardFace.material = mat;
-            cardFace.material.mainTexture = ie.Current;
-            cardFace.texture = ie.Current;
+            cardFace.material.mainTexture = task.Result;
+            cardFace.texture = task.Result;
             refreshed = true;
         }
 

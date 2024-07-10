@@ -5,6 +5,7 @@ using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace MDPro3
 {
@@ -94,16 +95,23 @@ namespace MDPro3
 
         public List<List<Item>> kinds;
 
-        static readonly string mapPath = "Data/items.txt";
-        static readonly string ydkIdsPath = "Data/YdkIds.txt";
-        public static string nullString = "coming soon";
+        const string mapPath = "Data/items.txt";
+        const string ydkIdsPath = "Data/YdkIds.txt";
+        public const string nullString = "coming soon";
         static string language = "";
-
+        public const int randomCode = 9999;
+        public const int sameCode = 8888;
+        public const int noneCode = 0;
+        public const string randomIconPath = "Menu-Random";
+        public const string sameIconPath = "Menu-Same";
+        public const string noneIconPath = "Menu-NoImage";
 
         Dictionary<string, int> maps = new Dictionary<string, int>();
         Dictionary<int, string> names = new Dictionary<int, string>();
         Dictionary<int, string> descriptions = new Dictionary<int, string>();
         Dictionary<int, int> ydkIds = new Dictionary<int, int>();
+        Dictionary<string, Sprite> cachedIcons = new Dictionary<string, Sprite>();
+
         static Items instance;
         public static bool initialized = false;
         public void Initialize()
@@ -172,8 +180,8 @@ namespace MDPro3
 
         void Load()
         {
-            LoadData(Program.localesPath + Program.slash + language + "/IDS_ITEM.bytes");
-            LoadData(Program.localesPath + Program.slash + language + "/IDS_ITEMDESC.bytes");
+            LoadData(Program.localesPath + language + "/IDS_ITEM.bytes");
+            LoadData(Program.localesPath + language + "/IDS_ITEMDESC.bytes");
         }
         void LoadData(string path)
         {
@@ -291,6 +299,9 @@ namespace MDPro3
         public string WallpaperCodeToPath(string code)
         {
             string returnValue = "Wallpaper/Front0001";
+            if(code == randomCode.ToString())
+                return GetRandomItem(ItemType.Wallpaper).path;
+
             foreach (var item in wallpapers)
             {
                 if (item.id.ToString() == code)
@@ -302,10 +313,63 @@ namespace MDPro3
             return returnValue;
         }
 
-        public string GetPathByCode(string code, ItemType type)
+        public Item GetRandomItem(ItemType type)
         {
-            string returnValue = "";
-            if(type == ItemType.Unknown)
+            switch (type)
+            {
+                case ItemType.Wallpaper:
+                    return wallpapers[UnityEngine.Random.Range(0, wallpapers.Count)];
+                case ItemType.Face:
+                    return faces[UnityEngine.Random.Range(0, faces.Count)];
+                case ItemType.Frame:
+                    return frames[UnityEngine.Random.Range(0, frames.Count)];
+                case ItemType.Protector:
+                    return protectors[UnityEngine.Random.Range(0, protectors.Count)];
+                case ItemType.Mat:
+                    return mats[UnityEngine.Random.Range(0, mats.Count)];
+                case ItemType.Grave:
+                    return graves[UnityEngine.Random.Range(0, graves.Count)];
+                case ItemType.Stand:
+                    return stands[UnityEngine.Random.Range(0, stands.Count)];
+                case ItemType.Mate:
+                    return mates[UnityEngine.Random.Range(0, mates.Count)];
+                case ItemType.Case:
+                    return cases[UnityEngine.Random.Range(0, cases.Count)];
+                default:
+                    return mats[UnityEngine.Random.Range(0, mats.Count)];
+            }
+        }
+
+        public string GetSameCode(ItemType type, string mapCode)
+        {
+            if (type == ItemType.Grave)
+                return "110" + mapCode.Substring(3);
+            else if (type == ItemType.Stand)
+                return "111" + mapCode.Substring(3);
+            else
+                return mapCode;
+        }
+
+        string lastMat0;
+        string lastMat1;
+        public string GetPathByCode(string code, ItemType type, int player = 0)
+        {
+            if(code == randomCode.ToString())
+            {
+                var item = GetRandomItem(type);
+                if (type == ItemType.Mat)
+                {
+                    if(player == 0)
+                        lastMat0 = item.id.ToString();
+                    else
+                        lastMat1 = item.id.ToString();
+                }
+                return item.path;
+            }
+            if (code == sameCode.ToString())
+                code = GetSameCode(type, player == 0 ? lastMat0 : lastMat1);
+
+            if (type == ItemType.Unknown)
                 return CodeToIconPath(code);
             foreach (var kind in kinds)
                 foreach (var item in kind)
@@ -338,6 +402,13 @@ namespace MDPro3
 
         public static string CodeToIconPath(string id)
         {
+            if (id == randomCode.ToString())
+                return randomIconPath;
+            if(id == sameCode.ToString())
+                return sameIconPath;
+            if (id == noneCode.ToString())
+                return noneIconPath;
+
             var currentContent = id.Substring(0, 3);
             string pathPrefix = "";
             string pathSuffix = "";
@@ -391,6 +462,116 @@ namespace MDPro3
                 return pathPrefix + id + pathSuffix;
         }
 
+
+        public IEnumerator<Sprite> LoadItemIconAsync(string id, ItemType type)
+        {
+            lock (cachedIcons)
+            {
+                if (cachedIcons.ContainsKey(id))
+                {
+                    yield return cachedIcons[id];
+                    yield break;
+                }
+            }
+
+            var handle = Addressables.LoadAssetAsync<Sprite>(CodeToIconPath(id));
+            while (!handle.IsDone)
+                yield return null;
+
+            if (handle.Result == null)
+                yield break;
+
+            Sprite returnValue;
+            lock (cachedIcons)
+            {
+                if(cachedIcons.ContainsKey(id))
+                {
+                    returnValue = cachedIcons[id];
+                    Addressables.Release(handle);
+                }
+                else
+                {
+                    returnValue = handle.Result;
+                    cachedIcons.Add(id, returnValue);
+                }
+            }
+
+            yield return returnValue;
+        }
+
+        public static string lastRandomFrameID;
+        public IEnumerator<Sprite> LoadConcreteItemIconAsync(string id, ItemType type)
+        {
+            if(id == randomCode.ToString())
+            {
+                id = GetRandomItem(type).id.ToString();
+                if(type == ItemType.Frame)
+                    lastRandomFrameID = id;
+            }
+
+            var ie = LoadItemIconAsync(id, type);
+            while(ie.MoveNext())
+                yield return null;
+            yield return ie.Current;
+        }
+
+        public bool ListHaveRandom(List<Item> target)
+        {
+            if(target == wallpapers) 
+                return true;
+            else if (target == faces)
+                return true;
+            else if (target == frames)
+                return true;
+            else if (target == protectors)
+                return true;
+            else if (target == mats)
+                return true;
+            else if (target == graves)
+                return true;
+            else if (target == stands)
+                return true;
+            else if (target == mates)
+                return true;
+            else if (target == cases)
+                return true;
+            else
+                return false;
+        }
+
+        public bool ListHaveSame(List<Item> target)
+        {
+            if (target == graves)
+                return true;
+            else if (target == stands)
+                return true;
+            else
+                return false;
+        }
+
+        public bool ListHaveNone(List<Item> target)
+        {
+            if (target == wallpapers)
+                return true;
+            else if (target == faces)
+                return false;
+            else if (target == frames)
+                return false;
+            else if (target == protectors)
+                return false;
+            else if (target == mats)
+                return false;
+            else if (target == graves)
+                return false;
+            else if (target == stands)
+                return true;
+            else if (target == mates)
+                return true;
+            else if (target == cases)
+                return false;
+            else
+                return false;
+        }
 
     }
 }

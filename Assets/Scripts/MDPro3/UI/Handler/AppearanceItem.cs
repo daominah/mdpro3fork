@@ -47,7 +47,7 @@ namespace MDPro3.UI
             }
             else if (path.Length > 0)
             {
-                var load = TextureManager.LoadItemIcon(itemID.ToString(), Items.ItemType.Unknown);
+                var load = Program.items.LoadItemIconAsync(itemID.ToString(), Items.ItemType.Unknown);
                 while (load.MoveNext())
                     yield return null;
                 icon.sprite = load.Current;
@@ -73,13 +73,11 @@ namespace MDPro3.UI
             }
             else //CrossDuel Mate
             {
-                var loading = Program.I().texture_.LoadArtAsync(itemID, true);
-                StartCoroutine(loading);
-                while (loading.MoveNext())
+                var task = TextureManager.LoadArtAsync(itemID, true);
+                while(!task.IsCompleted)
                     yield return null;
-                var texture = loading.Current;
-                icon.sprite = Sprite.Create(texture, new Rect(0, texture.height - texture.width, texture.width, texture.width), new Vector2(0.5f, 0.5f));
                 icon.color = Color.white;
+                icon.sprite = Tools.Texture2Sprite(task.Result);
             }
 
             if (path.StartsWith("ProfileIcon"))

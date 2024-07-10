@@ -79,8 +79,8 @@ namespace MDPro3.UI
         }
         IEnumerator RefreshCard(int code)
         {
-            var ie = Program.I().texture_.LoadCardAsync(code);
-            while (ie.MoveNext())
+            var task = TextureManager.LoadCardAsync(code, false);
+            while (!task.IsCompleted)
                 yield return null;
             var mat = TextureManager.GetCardMaterial(code);
             if (positionAttack != null)
@@ -88,7 +88,7 @@ namespace MDPro3.UI
                 if (option1 == 1)
                 {
                     positionAttack.material = mat;
-                    positionAttack.texture = ie.Current;
+                    positionAttack.texture = task.Result;
                 }
                 else
                     positionAttack.material = Program.I().ocgcore.myProtector;
@@ -96,7 +96,7 @@ namespace MDPro3.UI
             if (positionDefense != null)
             {
                 positionDefense.material = mat;
-                positionDefense.texture = ie.Current;
+                positionDefense.texture = task.Result;
             }
             if (positionDefenseDown != null)
                 positionDefenseDown.material = Program.I().ocgcore.myProtector;

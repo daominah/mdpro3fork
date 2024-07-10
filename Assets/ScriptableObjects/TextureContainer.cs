@@ -538,6 +538,34 @@ public class TextureContainer : ScriptableObject
     }
 
 
+    public Sprite GetChainNumSprite(int num)
+    {
+        switch (num)
+        {
+            case 0:
+                return chainNumSet0;
+            case 1:
+                return chainNumSet1;
+            case 2:
+                return chainNumSet2;
+            case 3:
+                return chainNumSet3;
+            case 4:
+                return chainNumSet4;
+            case 5:
+                return chainNumSet5;
+            case 6:
+                return chainNumSet6;
+            case 7:
+                return chainNumSet7;
+            case 8:
+                return chainNumSet8;
+            case 9:
+                return chainNumSet9;
+            default:
+                return chainNumSet0;
+        }
+    }
 
 
 }

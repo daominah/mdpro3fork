@@ -11,11 +11,12 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.Playables;
 
 namespace MDPro3
 {
-    public class Tools
+    public static class Tools
     {
         public static Transform GetChildByName(Transform parent, string childName)
         {
@@ -234,20 +235,16 @@ namespace MDPro3
         #region Online
         public static async Task<Texture2D> DownloadImageAsync(string url)
         {
-            try
+            using var request = UnityWebRequestTexture.GetTexture(url);
+            request.SetRequestHeader("User-Agent", "MDPro3/" + Application.version + " (" + System.Environment.OSVersion.ToString() + "); Unity/" + Application.unityVersion);
+            await request.SendWebRequest();
+            if (request.result == UnityWebRequest.Result.Success)
             {
-                using (var client = new HttpClient())
-                {
-                    var imageBytes = await client.GetByteArrayAsync(url);
-                    var imageStream = new MemoryStream(imageBytes);
-                    var returenValue = new Texture2D(0, 0);
-                    returenValue.LoadImage(imageStream.ToArray());
-                    return returenValue;
-                }
+                return DownloadHandlerTexture.GetContent(request);
             }
-            catch (Exception ex)
+            else
             {
-                UnityEngine.Debug.Log($"Error downloading image: {ex.Message}");
+                UnityEngine.Debug.LogErrorFormat($"Image [{0}]: {1}", url, request.error);
                 return null;
             }
         }
@@ -255,5 +252,14 @@ namespace MDPro3
 
 
 
+    }
+
+    public static class Extensions
+    {
+        public static async Task Then(this Task<Texture2D> task, Action<Texture2D> callback)
+        {
+            var result = await task;
+            callback(result);
+        }
     }
 }

@@ -1,3 +1,4 @@
+using Percy;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,7 +12,6 @@ namespace MDPro3.UI
         public RawImage face;
         public Solo.BotInfo botInfo;
 
-        IEnumerator enumerator;
         public override void OnSelected()
         {
             base.OnSelected();
@@ -27,12 +27,7 @@ namespace MDPro3.UI
         public override void Refresh()
         {
             base.Refresh();
-            refreshed = false;
             title.text = botInfo.name;
-            if (enumerator != null)
-                StopCoroutine(enumerator);
-            enumerator = RefreshFace();
-            StartCoroutine(enumerator);
             action = () =>
             {
                 if(Solo.condition == Solo.Condition.ForSolo)
@@ -42,18 +37,19 @@ namespace MDPro3.UI
             };
         }
 
-        IEnumerator RefreshFace()
+        public override IEnumerator RefreshAsync()
         {
-            refreshed = false;
             while (TextureManager.container == null)
                 yield return null;
+
             face.texture = TextureManager.container.black.texture;
-            IEnumerator ie = Program.I().texture_.LoadArtAsync(botInfo.main0, true);
-            StartCoroutine(ie);
-            while (ie.MoveNext())
+
+            var task = TextureManager.LoadArtAsync(botInfo.main0, true);
+            while (!task.IsCompleted)
                 yield return null;
-            face.texture = ie.Current as Texture2D;
             face.color = Color.white;
+            face.texture = task.Result;
+
             enumerator = null;
             refreshed = true;
         }

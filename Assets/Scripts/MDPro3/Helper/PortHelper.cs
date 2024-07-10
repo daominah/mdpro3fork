@@ -123,7 +123,7 @@ namespace MDPro3
                     }
                     else if (path.ToLower().EndsWith(".png") || path.ToLower().EndsWith(".jpg"))
                     {
-                        File.Copy(path, Program.altArtPath + Program.slash + Path.GetFileName(path), true);
+                        File.Copy(path, Program.altArtPath + Path.GetFileName(path), true);
                         MessageManager.Cast(InterString.Get("导入自定义卡图「[?]」成功。", fileName));
                     }
                 }
@@ -149,7 +149,7 @@ namespace MDPro3
                         newDataAdded = true;
                     }
                     if (path.ToLower().EndsWith(".png") || path.ToLower().EndsWith(".jpg") || path.ToLower().EndsWith(".jpeg"))
-                        File.Move(path, Program.altArtPath + Program.slash + Path.GetFileName(path));
+                        File.Move(path, Program.altArtPath + Path.GetFileName(path));
                 }
                 catch { }
             }

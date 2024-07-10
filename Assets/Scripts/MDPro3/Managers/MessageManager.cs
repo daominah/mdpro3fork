@@ -57,12 +57,14 @@ namespace MDPro3
 
         IEnumerator RefreshAsync(GameObject item, int code)
         {
-            var ie = Program.I().texture_.LoadCardAsync(code);
-            while (ie.MoveNext())
+            var task = TextureManager.LoadCardAsync(code, false);
+            while(!task.IsCompleted)
                 yield return null;
+
             var mat = TextureManager.GetCardMaterial(code);
             item.GetComponent<RawImage>().material = mat;
-            item.GetComponent<RawImage>().texture = ie.Current;
+            item.GetComponent<RawImage>().texture = task.Result;
+
             var rect = item.GetComponent<RectTransform>();
             rect.anchoredPosition = new Vector2(200, -160);
             rect.DOAnchorPosX(-50f, transitionTime);

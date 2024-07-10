@@ -1,6 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using MDPro3.UI;
+using System.Collections;
+using System.IO;
+using static UnityEngine.UI.Image;
 
 namespace MDPro3
 {
@@ -13,7 +16,6 @@ namespace MDPro3
             {1, "Classic" },
             {2, "Classic2" },
             {11, "ClassicRed" },
-            //{12, "ClassicGreen" },
             {5, "ClassicPurple" },
             {4, "ClassicPurpleShine" },
             //{6, "ClassicWhite" },
@@ -22,23 +24,88 @@ namespace MDPro3
             {9, "Knowledge" },
             {3, "PurpleDarkFantasy" },
             {10, "DeepDarkFantasy" },
+            {12, "DIY Green" },
+
+            {50, "DIY Red" },
+            {51, "DIY Purple" },
+            {52, "DIY PurpleShine" },
+            //{53, "DIY Double" },
+            {54, "DIY WCS" },
+            {55, "DIY SHOP" },
+            {56, "DIY Knowledge" },
         };
 
         public void Change(int id)
         {
             Destroy(back);
+
             if (id == 0)
             {
                 var random = Random.Range(0, backgrounds.Count);
                 id = Tools.GetNthElement(backgrounds, random).Key;
             }
 
+            var cid = id;
+            if (id == 50)
+                id = 11;
+            if (id == 51)
+                id = 5;
+            if (id == 52)
+                id = 4;
+            if (id == 53)
+                id = 6;
+            if (id == 54)
+                id = 7;
+            if (id == 55)
+                id = 8;
+            if (id == 56)
+                id = 9;
+
             var endString = id.ToString("D4");
             back = ABLoader.LoadFromFolder("MasterDuel/Background/Back" + endString, "Background" + endString, true);
             back.transform.GetChild(0).gameObject.AddComponent<AutoScale>();
             Tools.ChangeLayer(back, "2D");
             back.transform.SetParent(transform, false);
+
+            if(id == 12 || cid >= 50)
+            {
+                StartCoroutine(SetDIYBGAsync(back.transform.GetChild(0).GetComponent<SpriteRenderer>(), id));
+            }
         }
+
+        IEnumerator SetDIYBGAsync(SpriteRenderer renderer, int id)
+        {
+            var bg = Program.diyPath + "Background";
+            if (File.Exists(bg + ".png"))
+                bg += ".png";
+            else if (File.Exists(bg + ".jpg"))
+                bg += ".jpg";
+            else
+                yield break;
+
+            var load = TextureManager.LoadPicFromFileAsync(bg);
+            while(!load.IsCompleted)
+                yield return null;
+
+            int targetHeight = 1080;
+            Texture2D scaledTexture;
+            if(load.Result.height != targetHeight)
+            {
+                int newWidth = Mathf.RoundToInt(load.Result.width * (targetHeight / (float)load.Result.height));
+                scaledTexture = new Texture2D(newWidth, targetHeight);
+                var pixels = load.Result.GetPixels();
+                scaledTexture.SetPixels(Tools.ResizePixels(pixels, load.Result.width, load.Result.height, newWidth, targetHeight));
+                scaledTexture.Apply();
+            }
+            else
+                scaledTexture = load.Result;
+
+            if (renderer != null)
+                renderer.sprite = Tools.Texture2Sprite(scaledTexture);
+            if(id == 9)
+                renderer.material.SetTexture("_MainTex01", scaledTexture);
+        }
+
         public int GetIDByName(string bgName)
         {
             var id = 0;

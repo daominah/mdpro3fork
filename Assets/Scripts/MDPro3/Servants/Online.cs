@@ -192,7 +192,6 @@ namespace MDPro3.Net
             base.ApplyHideArrangement(preDepth);
             Config.Save();
             Save();
-            MyCard.CloseAthleticWatchListWebSocket();
         }
 
         public void OnSaveAddress()
@@ -508,7 +507,7 @@ namespace MDPro3.Net
 
             if (task.Result.user.id == 0)
             {
-                Debug.Log("TokenIn Failed.");
+                MessageManager.Cast(InterString.Get("MyCardµÇÂ¼Ê§°Ü¡£"));
                 goMyCardLogin.SetActive(true);
                 goMyCardFunctions.SetActive(false);
                 yield break;
@@ -611,6 +610,8 @@ namespace MDPro3.Net
             Config.Set("MyCardToken", Config.stringNo);
             Config.Save();
             MyCard.account = null;
+            MyCard.CloseAthleticWatchListWebSocket();
+
             goMyCardFunctions.SetActive(false);
             goMyCardLogin.SetActive(true);
             inputMyCardAccount.text = string.Empty;

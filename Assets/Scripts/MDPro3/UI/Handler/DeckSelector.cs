@@ -73,7 +73,7 @@ namespace MDPro3.UI
             rawImageCard2.color = Color.clear;
             rawImageCard3.color = Color.clear;
 
-            var ie = TextureManager.LoadItemIcon(deckCase.ToString(), Items.ItemType.Case);
+            var ie = Program.items.LoadItemIconAsync(deckCase.ToString(), Items.ItemType.Case);
             while (ie.MoveNext())
                 yield return null;
             imageCase.sprite = ie.Current;
@@ -91,11 +91,11 @@ namespace MDPro3.UI
             else
             {
                 var mat = TextureManager.GetCardMaterial(card1);
-                var ie2 = Program.I().texture_.LoadCardAsync(card1);
-                while (ie2.MoveNext())
+                var task = TextureManager.LoadCardAsync(card1, true);
+                while (!task.IsCompleted)
                     yield return null;
                 rawImageCard1.material = mat;
-                rawImageCard1.texture = ie2.Current;
+                rawImageCard1.texture = task.Result;
                 rawImageCard1.color = Color.white;
             }
 
@@ -111,11 +111,11 @@ namespace MDPro3.UI
             else
             {
                 var mat = TextureManager.GetCardMaterial(card2);
-                var ie2 = Program.I().texture_.LoadCardAsync(card2);
-                while (ie2.MoveNext())
+                var task = TextureManager.LoadCardAsync(card2, true);
+                while (!task.IsCompleted)
                     yield return null;
                 rawImageCard2.material = mat;
-                rawImageCard2.texture = ie2.Current;
+                rawImageCard2.texture = task.Result;
                 rawImageCard2.color = Color.white;
             }
 
@@ -131,11 +131,11 @@ namespace MDPro3.UI
             else
             {
                 var mat = TextureManager.GetCardMaterial(card3);
-                var ie2 = Program.I().texture_.LoadCardAsync(card3);
-                while (ie2.MoveNext())
+                var task = TextureManager.LoadCardAsync(card3, true);
+                while (!task.IsCompleted)
                     yield return null;
                 rawImageCard3.material = mat;
-                rawImageCard3.texture = ie2.Current;
+                rawImageCard3.texture = task.Result;
                 rawImageCard3.color = Color.white;
             }
 
