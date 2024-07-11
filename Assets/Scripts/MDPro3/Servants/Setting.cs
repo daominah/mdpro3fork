@@ -170,6 +170,7 @@ namespace MDPro3
 
         [Header("Port")]
         public Button import;
+        public Button importBG;
         public Button exportDeck;
         public Button exportReplay;
         public Button exportPicture;
@@ -265,7 +266,9 @@ namespace MDPro3
             replayFaceDown.onClick.AddListener(OnReplayFaceDownClick);
 
             timing.onClick.AddListener(OnTimingClick);
+
             import.onClick.AddListener(OnImport);
+            importBG.onClick.AddListener(OnImportBG);
 
             exportDeck.onClick.AddListener(OnExportDecks);
             exportReplay.onClick.AddListener(OnExportReplays);
@@ -1587,6 +1590,10 @@ namespace MDPro3
             }
 
             PortHelper.ImportFiles();
+        }
+        void OnImportBG()
+        {
+            PortHelper.ImportBG();
         }
         void OnExportDecks()
         {

@@ -9,7 +9,8 @@ namespace MDPro3
     public class PortHelper
     {
         static List<string> filesToDelete = new List<string>();
-
+        static string[] pictureFormat = new string[] { "image/png", "image/jpeg" };
+        const string bgPath = Program.diyPath + "Background.png";
         public static void ImportFiles()
         {
 #if UNITY_ANDROID && !UNITY_EDITOR
@@ -19,59 +20,13 @@ namespace MDPro3
 #endif
         }
 
-        public static void ExportAllDecks()
-        {
-            if(!Directory.Exists(Program.deckPath))
-                Directory.CreateDirectory(Program.deckPath);
-            var filePaths = Directory.GetFiles(Program.deckPath);
-            Export(filePaths);
-        }
-        public static void ExportAllReplays()
-        {
-            if (!Directory.Exists(Program.replayPath))
-                Directory.CreateDirectory(Program.replayPath);
-            var filePaths = Directory.GetFiles(Program.replayPath);
-            Export(filePaths);
-        }
-        public static void ExportAllPictures()
-        {
-            if (!Directory.Exists(Program.cardPicPath))
-                Directory.CreateDirectory(Program.cardPicPath);
-            var filePaths = Directory.GetFiles(Program.cardPicPath);
-            Export(filePaths, false);
-        }
-
-        static void Export(string[] filePaths, bool copy = true)
+        public static void ImportBG()
         {
 #if UNITY_ANDROID && !UNITY_EDITOR
-            NativeFilePicker.ExportMultipleFiles(filePaths, ExportResult);
-            if(!copy)
-                filesToDelete = filePaths.ToList();
+            NativeFilePicker.PickFile(MovePictureToGameBG, pictureFormat);
 #else
-            StandaloneFileBrowser.OpenFolderPanelAsync(InterString.Get("请选择导出目录"), "", false, (string[] paths) =>
-            {
-                ExportFiles(paths, filePaths, copy);
-            });
+            ChooseBGPicture();
 #endif
-        }
-
-        private static void ExportFiles(string[] result, string[] filePaths, bool copy = true)
-        {
-            try
-            {
-                foreach(var file in filePaths)
-                {
-                    if(copy)
-                        File.Copy(file, Path.Combine(result.FirstOrDefault(), Path.GetFileName(file)));
-                    else
-                        File.Move(file, Path.Combine(result.FirstOrDefault(), Path.GetFileName(file)));
-                }
-                ExportResult(true);
-            }
-            catch
-            {
-                ExportResult(false);
-            }
         }
 
         static void ChooseFiles()
@@ -90,6 +45,34 @@ namespace MDPro3
             {
                 CopyFilesToGame(paths);
             });
+        }
+
+        static void ChooseBGPicture()
+        {
+            var extensions = new[]
+            {
+                new ExtensionFilter(InterString.Get("图片文件"), "png", "jpg")
+            };
+            StandaloneFileBrowser.OpenFilePanelAsync(InterString.Get("请选择需要导入的文件"), "", extensions, false, (string[] paths) =>
+            {
+                CopyBGToGame(paths);
+            });
+        }
+
+        static void CopyBGToGame(IEnumerable<string> files)
+        {
+            foreach (string path in files)
+            {
+                if(File.Exists(bgPath))
+                    File.Delete(bgPath);
+                File.Copy(path, bgPath);
+                MessageManager.Cast(InterString.Get("导入背景图成功。"));
+                Program.I().background_.Refresh();
+            }
+        }
+        static void MovePictureToGameBG(string file)
+        {
+            CopyBGToGame(new List<string> { file });
         }
 
         static void CopyFilesToGame(IEnumerable<string> files)
@@ -132,6 +115,7 @@ namespace MDPro3
             if (newDataAdded)
                 Program.I().InitializeForDataChange();
         }
+
         static void MoveFilesToGame(string[] files)
         {
             bool newDataAdded = false;
@@ -169,6 +153,62 @@ namespace MDPro3
             else
                 MessageManager.Cast(InterString.Get("导出失败。"));
         }
+
+        public static void ExportAllDecks()
+        {
+            if (!Directory.Exists(Program.deckPath))
+                Directory.CreateDirectory(Program.deckPath);
+            var filePaths = Directory.GetFiles(Program.deckPath);
+            Export(filePaths);
+        }
+        public static void ExportAllReplays()
+        {
+            if (!Directory.Exists(Program.replayPath))
+                Directory.CreateDirectory(Program.replayPath);
+            var filePaths = Directory.GetFiles(Program.replayPath);
+            Export(filePaths);
+        }
+        public static void ExportAllPictures()
+        {
+            if (!Directory.Exists(Program.cardPicPath))
+                Directory.CreateDirectory(Program.cardPicPath);
+            var filePaths = Directory.GetFiles(Program.cardPicPath);
+            Export(filePaths, false);
+        }
+
+        static void Export(string[] filePaths, bool copy = true)
+        {
+#if UNITY_ANDROID && !UNITY_EDITOR
+            NativeFilePicker.ExportMultipleFiles(filePaths, ExportResult);
+            if(!copy)
+                filesToDelete = filePaths.ToList();
+#else
+            StandaloneFileBrowser.OpenFolderPanelAsync(InterString.Get("请选择导出目录"), "", false, (string[] paths) =>
+            {
+                ExportFiles(paths, filePaths, copy);
+            });
+#endif
+        }
+
+        private static void ExportFiles(string[] result, string[] filePaths, bool copy = true)
+        {
+            try
+            {
+                foreach (var file in filePaths)
+                {
+                    if (copy)
+                        File.Copy(file, Path.Combine(result.FirstOrDefault(), Path.GetFileName(file)));
+                    else
+                        File.Move(file, Path.Combine(result.FirstOrDefault(), Path.GetFileName(file)));
+                }
+                ExportResult(true);
+            }
+            catch
+            {
+                ExportResult(false);
+            }
+        }
+
     }
 
 }

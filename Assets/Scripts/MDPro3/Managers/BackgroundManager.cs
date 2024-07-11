@@ -10,30 +10,39 @@ namespace MDPro3
     public class BackgroundManager : Manager
     {
         GameObject back;
-
+        int cid;
         public static readonly Dictionary<int, string> backgrounds = new Dictionary<int, string>()
         {
             {1, "Classic" },
             {2, "Classic2" },
             {11, "ClassicRed" },
-            {5, "ClassicPurple" },
-            {4, "ClassicPurpleShine" },
+            {5, "ClassicPink" },
+            {4, "ClassicPinkShine" },
             //{6, "ClassicWhite" },
             {7, "WCS" },
             {8, "Shop" },
             {9, "Knowledge" },
             {3, "PurpleDarkFantasy" },
             {10, "DeepDarkFantasy" },
+            //{13, "New" },
             {12, "DIY Green" },
 
-            {50, "DIY Red" },
-            {51, "DIY Purple" },
-            {52, "DIY PurpleShine" },
-            //{53, "DIY Double" },
-            {54, "DIY WCS" },
-            {55, "DIY SHOP" },
-            {56, "DIY Knowledge" },
+            {50, "DIY Classic" },
+            {51, "DIY Classic2" },
+            {52, "DIY Red" },
+            {53, "DIY Pink" },
+            {54, "DIY PinkShine" },
+            //{55, "DIY Purple" },
+            {56, "DIY WCS" },
+            {57, "DIY SHOP" },
+            {58, "DIY Knowledge" },
+            {59, "DIY DeepDarkFantasy" },
         };
+
+        public void Refresh()
+        {
+            Change(cid);
+        }
 
         public void Change(int id)
         {
@@ -45,21 +54,27 @@ namespace MDPro3
                 id = Tools.GetNthElement(backgrounds, random).Key;
             }
 
-            var cid = id;
+            cid = id;
             if (id == 50)
-                id = 11;
+                id = 1;
             if (id == 51)
-                id = 5;
+                id = 2;
             if (id == 52)
-                id = 4;
+                id = 11;
             if (id == 53)
-                id = 6;
+                id = 5;
             if (id == 54)
-                id = 7;
+                id = 4;
             if (id == 55)
-                id = 8;
+                id = 6;
             if (id == 56)
+                id = 7;
+            if (id == 57)
+                id = 8;
+            if (id == 58)
                 id = 9;
+            if (id == 59)
+                id = 10;
 
             var endString = id.ToString("D4");
             back = ABLoader.LoadFromFolder("MasterDuel/Background/Back" + endString, "Background" + endString, true);
