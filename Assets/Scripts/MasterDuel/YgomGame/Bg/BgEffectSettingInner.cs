@@ -185,7 +185,8 @@ namespace YgomGame.Bg
 			tapPlaying = true;
 			yield return new WaitForSeconds(activeTime == 0 ? 4 : activeTime);
 			tapPlaying = false;
-			gameObject.SetActive(false);
+			if(playingOnlyActive)
+				gameObject.SetActive(false);
 		}
 
 		private IEnumerator CheckParticleEffectEnd()

@@ -174,9 +174,7 @@ namespace MDPro3
 
                 if (request.result == UnityWebRequest.Result.Success)
                 {
-                    string jsonResult = request.downloadHandler.text;
-                    var responseData = JsonUtility.FromJson<ResponseSingleData>(request.downloadHandler.text);
-                    return responseData.data;
+                    return JsonUtility.FromJson<ResponseSingleData>(request.downloadHandler.text).data;
                 }
                 else
                 {
@@ -532,6 +530,8 @@ namespace MDPro3
             public string deckMainSerial;
             public int userid;
             public bool isPublic;
+            public string description;
+            public bool isDelete;
 
             public OnlineDeckData() { }
 

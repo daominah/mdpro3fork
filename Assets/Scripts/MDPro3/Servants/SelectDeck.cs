@@ -128,6 +128,8 @@ namespace MDPro3
 
                 foreach (var d in OnlineDeck.decks)
                 {
+                    if (d.isDelete)
+                        continue;
                     if (decks.ContainsKey(d.deckName))
                     {
                         int avoid = 2;
@@ -355,7 +357,7 @@ namespace MDPro3
                     {
                         count++;
                         File.Delete(Program.deckPath + item.args[0] + Program.ydkExpansion);
-                        MessageManager.Cast(InterString.Get("已删除卡组「[?]」", item.args[0]));
+                        MessageManager.Cast(InterString.Get("已删除本地卡组「[?]」", item.args[0]));
                         toDelete.Add(item.args[7]);
                     }
                 DeleteOnlineDecks(toDelete);

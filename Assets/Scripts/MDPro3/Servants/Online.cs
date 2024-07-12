@@ -731,9 +731,12 @@ namespace MDPro3.Net
                 deckList.Add(new Deck(deck));
 
             var decksNeedUpload = new Dictionary<string, Deck>();//没在服务器找到对应的deckId的本地卡组
+
             var decksNeedUpdate= new Dictionary<string, Deck>();//找到deckId但本地时间大于服务器时间五秒以上的卡组
             var decksNeedUpdate2 = new Dictionary<string, Deck>();//找到deckId但本地时间小于服务器时间五秒以上的卡组
             var localDeckIds = new List<string>();
+            var decksNeedDelete = new List<string>();//需要删除的卡组
+
             for (int i = 0; i < deckList.Count; i++)
             {
                 var deckName = Path.GetFileNameWithoutExtension(deckFiles[i]);
@@ -751,30 +754,48 @@ namespace MDPro3.Net
                     {
                         deckIdFound = true;
                         var fileInfo = new FileInfo(deckFiles[i]);
-                        DateTime serverTime;
-                        try
+                        if (od.isDelete)
                         {
-                            serverTime = DateTime.Parse(od.deckUpdateDate);
+                            decksNeedDelete.Add(deckName);
                         }
-                        catch
+                        else
                         {
-                            serverTime = DateTime.Parse(od.deckUploadDate);
-                        }
-                        var diff = serverTime - fileInfo.LastWriteTime;
-                        if (diff.TotalSeconds > 5f)
-                        {
-                            if(fileInfo.LastWriteTime > serverTime)
-                                decksNeedUpdate.Add(deckName, deckList[i]);
-                            else
-                                decksNeedUpdate2.Add(deckName, deckList[i]);
+                            DateTime serverTime;
+                            try
+                            {
+                                serverTime = DateTime.Parse(od.deckUpdateDate);
+                            }
+                            catch
+                            {
+                                serverTime = DateTime.Parse(od.deckUploadDate);
+                            }
+                            var diff = serverTime - fileInfo.LastWriteTime;
+                            if (diff.TotalSeconds > 5f)
+                            {
+                                if (fileInfo.LastWriteTime > serverTime)
+                                    decksNeedUpdate.Add(deckName, deckList[i]);
+                                else
+                                    decksNeedUpdate2.Add(deckName, deckList[i]);
+                            }
                         }
                     }
 
                 if (!deckIdFound)
-                    decksNeedUpload.Add(deckName, deckList[i]);
+                {
+                    var getDeck = OnlineDeck.GetDeck(deckList[i].deckId);
+                    while(!getDeck.IsCompleted)
+                        yield return null;
+                    if(getDeck.Result == null)
+                        decksNeedUpload.Add(deckName, deckList[i]);
+                    else
+                    {
+                        if(getDeck.Result.isDelete)
+                            decksNeedDelete.Add(deckName);
+                        else
+                            decksNeedUpload.Add(deckName, deckList[i]);
+                    }
+                }
             }
-
-
 
             //上传已经有Id的本地较新卡组
             foreach (var deck in decksNeedUpdate)
@@ -813,8 +834,9 @@ namespace MDPro3.Net
             //下载本地ID不存在的服务器卡组
             List<OnlineDeck.OnlineDeckData> odtd = new List<OnlineDeck.OnlineDeckData>();
             foreach(var od in OnlineDeck.decks)
-                if (!localDeckIds.Contains(od.deckId))
-                    odtd.Add(od);
+                if(!od.isDelete)
+                    if (!localDeckIds.Contains(od.deckId))
+                        odtd.Add(od);
             foreach(var deck in odtd)
             {
                 var d = new Deck(deck.deckYdk, Deck.defaultDeckAuthor);
@@ -842,6 +864,10 @@ namespace MDPro3.Net
                     info.LastWriteTime = DateTime.Parse(deck.deckUploadDate);
                 }
             }
+
+            //删除已经被标记为删除的卡组
+            foreach(var deck in decksNeedDelete)
+                File.Delete(Program.deckPath + deck + Program.ydkExpansion);
         }
 
         public void SetWatchRooms(List<MyCardRoom> rooms)
