@@ -1658,12 +1658,17 @@ namespace MDPro3
             }
         }
 
-        bool CurrentChainDisabled()
+        bool CurrentChainDisabled(int currentChain)
         {
             for(int i = 0; i < packages.Count; i++)
             {
                 if ((GameMessage)packages[i].Function == GameMessage.ChainDisabled)
-                    return true;
+                {
+                    var r = packages[i].Data.reader;
+                    r.BaseStream.Seek(0, 0);
+                    if(r.ReadByte() == currentChain)
+                        return true;
+                }
                 if ((GameMessage)packages[i].Function == GameMessage.ChainSolved)
                     return false;
             }
@@ -3480,7 +3485,7 @@ namespace MDPro3
                                 messagePass = true;
                                 return;
                             }
-                            if (needPlay && CurrentChainDisabled())
+                            if (needPlay && CurrentChainDisabled(id))
                             {
                                 needPlay = false;
                                 messagePass = true;
@@ -3767,7 +3772,6 @@ namespace MDPro3
                                     {
                                         Destroy(effect);
                                         messagePass = true;
-                                        Debug.Log("Engage is Negated: " + card.negated);
                                         nextMoveAction = () =>
                                         {
                                             var effect = ABLoader.LoadFromFolder("MasterDuel/Card/" + code, "CardEffect" + code, true);
