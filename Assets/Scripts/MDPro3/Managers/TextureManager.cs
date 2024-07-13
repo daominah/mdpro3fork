@@ -28,6 +28,7 @@ namespace MDPro3
         public static Material cardMatShine;
         public static Material cardMatRoyal;
         public static Material cardMatSide;
+        static Texture cardHolo4;
 
         static int cardLoadCount;
         const int cardLoadMax = 200;
@@ -44,8 +45,10 @@ namespace MDPro3
 
         IEnumerator LoadMaterials()
         {
+            while(container == null)
+                yield return null;
+
             var ie = ABLoader.LoadFromFileAsync("MasterDuel/Timeline/summon/summonsynchro/summonsynchro01", true);
-            StartCoroutine(ie);
             while (ie.MoveNext())
                 yield return null;
             var manager = ie.Current.GetComponent<ElementObjectManager>();
@@ -60,6 +63,18 @@ namespace MDPro3
                 cardMatSide = result.Result;
             };
 
+            ie = ABLoader.LoadFromFileAsync("MasterDuel/Timeline/summon/summonsynchro/summonsynchro01_royalstyle");
+            StartCoroutine(ie);
+            while (ie.MoveNext())
+                yield return null;
+            manager = ie.Current.GetComponent<ElementObjectManager>();
+            manager.gameObject.SetActive(false);
+            Destroy(manager.gameObject);
+            manager = manager.GetElement<ElementObjectManager>("SummonSynchroPostSynchro");
+            manager = manager.GetElement<ElementObjectManager>("DummyCardSynchro");
+            cardMatRoyal = Instantiate(manager.GetElement<Renderer>("DummyCardModel_front").material);
+            cardHolo4 = cardMatRoyal.GetTexture("_KiraColorTexture");
+
             ie = ABLoader.LoadFromFileAsync("MasterDuel/Timeline/summon/summonsynchro/summonsynchro01_shinestyle");
             StartCoroutine(ie);
             while (ie.MoveNext())
@@ -71,16 +86,25 @@ namespace MDPro3
             manager = manager.GetElement<ElementObjectManager>("DummyCardSynchro");
             cardMatShine = Instantiate(manager.GetElement<Renderer>("DummyCardModel_front").material);
 
-            ie = ABLoader.LoadFromFileAsync("MasterDuel/Timeline/summon/summonsynchro/summonsynchro01_royalstyle");
-            StartCoroutine(ie);
-            while (ie.MoveNext())
-                yield return null;
-            manager = ie.Current.GetComponent<ElementObjectManager>();
-            manager.gameObject.SetActive(false);
-            Destroy(manager.gameObject);
-            manager = manager.GetElement<ElementObjectManager>("SummonSynchroPostSynchro");
-            manager = manager.GetElement<ElementObjectManager>("DummyCardSynchro");
-            cardMatRoyal = Instantiate(manager.GetElement<Renderer>("DummyCardModel_front").material);
+            cardMatShine.SetFloat("_HighlightAmp", 1.2f);
+            cardMatShine.SetFloat("_HighlightRotation", -45f);
+            cardMatShine.SetFloat("_HighlightScrollOffset", 5f);
+            cardMatShine.SetFloat("_HoloBrightness", 0.75f);
+            cardMatShine.SetFloat("_IllustBrightness", 1.5f);
+            cardMatShine.SetFloat("_IllustContrast", -3.8f);
+            cardMatShine.SetFloat("_IllustHoloPower", 1.4f);
+            cardMatShine.SetFloat("_IllustRanbowPower", 1.5f);
+            cardMatShine.SetTexture("_KiraColorTexture", cardHolo4);
+
+            //UR Like
+            //cardMatShine.SetFloat("_HighlightAmp", 2f);
+            //cardMatShine.SetFloat("_HighlightRotation", -45f);
+            //cardMatShine.SetFloat("_HoloBrightness", 1f);
+            //cardMatShine.SetFloat("_IllustBrightness", 0f);
+            //cardMatShine.SetFloat("_IllustContrast", -2f);
+            //cardMatShine.SetFloat("_IllustHoloPower", 3f);
+            //cardMatShine.SetTexture("_KiraColorTexture", container.cardRainbowMask);
+
 
             cardMatNormal.SetFloat("_FakeBlend", 1);
             cardMatNormal.SetColor("_AmbientColor", new Color(0.0588f, 0.0588f, 0.0588f, 1f));

@@ -65,6 +65,7 @@ public class TextureContainer : ScriptableObject
     public Texture2D cardNormal;
     public Texture2D cardNormalLink;
     public Texture2D cardNormalPendulum;
+    public Texture2D cardRainbowMask;
     [Header("Card Attribute")]
     public Sprite attributeLight;
     public Sprite attributeDark;
