@@ -342,6 +342,8 @@ namespace MDPro3
 
         public string GetSameCode(ItemType type, string mapCode)
         {
+            if (mapCode.Length != 7)
+                mapCode = "1090001";
             if (type == ItemType.Grave)
                 return "110" + mapCode.Substring(3);
             else if (type == ItemType.Stand)
@@ -365,6 +367,13 @@ namespace MDPro3
                         lastMat1 = item.id.ToString();
                 }
                 return item.path;
+            }
+            if(type == ItemType.Mat)
+            {
+                if (player == 0)
+                    lastMat0 = code;
+                else
+                    lastMat1 = code;
             }
             if (code == sameCode.ToString())
                 code = GetSameCode(type, player == 0 ? lastMat0 : lastMat1);
