@@ -124,17 +124,15 @@ namespace MDPro3
 #else
             fullPath = Environment.CurrentDirectory + Program.slash + path;
 #endif
-            using (var request = UnityWebRequestTexture.GetTexture(fullPath))
-            {
-                await request.SendWebRequest();
+            using var request = UnityWebRequestTexture.GetTexture(fullPath);
+            await request.SendWebRequest();
 
-                if (request.result == UnityWebRequest.Result.Success)
-                    return DownloadHandlerTexture.GetContent(request);
-                else
-                {
-                    Debug.LogWarningFormat("Pic File [{0}] not fount.", path);
-                    return null;
-                }
+            if (request.result == UnityWebRequest.Result.Success)
+                return DownloadHandlerTexture.GetContent(request);
+            else
+            {
+                Debug.LogWarningFormat("Pic File [{0}] not fount.", path);
+                return null;
             }
         }
 
