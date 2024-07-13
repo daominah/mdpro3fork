@@ -815,6 +815,7 @@ namespace MDPro3
             cg.interactable = false;
             cg.blocksRaycasts = false;
             log.ClearLog();
+            Program.I().room.ChatOff(0);
             UIManager.UIBlackOut(transitionTime);
             UIManager.ShowFPSRight();
             AudioManager.PlayBGM("BGM_MENU_01");
