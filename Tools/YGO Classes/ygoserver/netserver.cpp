@@ -88,9 +88,9 @@ bool NetServer::StartServer(unsigned short port) {
 	memset(&sin, 0, sizeof(sin));
 	server_port = port;
 	sin.sin_family = AF_INET;
-#ifdef SERVER_PRO2_SUPPORT
-	sin.sin_addr.s_addr = htonl(INADDR_LOOPBACK);
-#else
+//#ifdef SERVER_PRO2_SUPPORT
+//	sin.sin_addr.s_addr = htonl(INADDR_LOOPBACK);
+//#else
 	sin.sin_addr.s_addr = htonl(INADDR_ANY);
 #endif
 	sin.sin_port = htons(port);
