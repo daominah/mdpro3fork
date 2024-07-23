@@ -41,7 +41,7 @@ namespace MDPro3
         public static async void FetchDeckList(int page = 1, int pageSize = 20,  string keyWord = "", string contributor = "")
         {
             string apiUrl = url + listAPI + $"?page={page}&size={pageSize}&keyWord={keyWord}&contributor={contributor}";
-            UnityWebRequest request = UnityWebRequest.Get(apiUrl);
+            using UnityWebRequest request = UnityWebRequest.Get(apiUrl);
             request.SetRequestHeader(reqHeader, reqValue);
 
             AsyncOperation sendRequestOperation = request.SendWebRequest();
@@ -62,7 +62,7 @@ namespace MDPro3
         public static async Task<OnlineDeckData[]> FetchSimpleDeckList(int size, string keyWord = "", string contributor = "", bool sortLike = true)
         {
             string apiUrl = url + liteAPI + $"?size={size}&keyWord={keyWord}&contributor={contributor}&sortLike={sortLike}";
-            UnityWebRequest request = UnityWebRequest.Get(apiUrl);
+            using UnityWebRequest request = UnityWebRequest.Get(apiUrl);
             request.SetRequestHeader(reqHeader, reqValue);
 
             try
@@ -99,7 +99,7 @@ namespace MDPro3
             string apiUrl = url + uploadAPI;
 
             string jsonData = JsonUtility.ToJson(deck);
-            UnityWebRequest request = UnityWebRequest.Post(apiUrl, jsonData, jsonHeader);
+            using UnityWebRequest request = UnityWebRequest.Post(apiUrl, jsonData, jsonHeader);
 
             request.SetRequestHeader(reqHeader, reqValue);
             request.SetRequestHeader(contentTypeHeader, jsonHeader);
@@ -133,7 +133,7 @@ namespace MDPro3
 
             string jsonData = JsonUtility.ToJson(deck);
             byte[] dataRaw = Encoding.UTF8.GetBytes(jsonData);
-            UnityWebRequest request = UnityWebRequest.Put(apiUrl, dataRaw);
+            using UnityWebRequest request = UnityWebRequest.Put(apiUrl, dataRaw);
 
             request.SetRequestHeader(reqHeader, reqValue);
             request.SetRequestHeader(contentTypeHeader, jsonHeader);
@@ -164,7 +164,7 @@ namespace MDPro3
         public static async Task<OnlineDeckData> GetDeck(string deckID)
         {
             string apiUrl = url + getAPI + deckID;
-            UnityWebRequest request = UnityWebRequest.Get(apiUrl);
+            using UnityWebRequest request = UnityWebRequest.Get(apiUrl);
             request.SetRequestHeader(reqHeader, reqValue);
 
             try
@@ -200,7 +200,7 @@ namespace MDPro3
         {
             string apiUrl = url + likeAPI + deckId;
 
-            UnityWebRequest request = UnityWebRequest.PostWwwForm(apiUrl, jsonHeader);
+            using UnityWebRequest request = UnityWebRequest.PostWwwForm(apiUrl, jsonHeader);
 
             request.SetRequestHeader(reqHeader, reqValue);
             request.SetRequestHeader(contentTypeHeader, jsonHeader);
@@ -231,7 +231,7 @@ namespace MDPro3
 
             string apiUrl = url + getAllAPI + userId;
 
-            UnityWebRequest request = UnityWebRequest.Get(apiUrl);
+            using UnityWebRequest request = UnityWebRequest.Get(apiUrl);
             request.SetRequestHeader(reqHeader, reqValue);
             request.SetRequestHeader(tokenHeader, token);
 
@@ -315,7 +315,7 @@ namespace MDPro3
         public static async Task<bool> SyncDecks(List<Deck> decks, List<string> deckNames)
         {
             string apiUrl = url + getIdsAPI + decks.Count;
-            var getIDs = UnityWebRequest.Get(apiUrl);
+            using var getIDs = UnityWebRequest.Get(apiUrl);
             getIDs.SetRequestHeader(reqHeader, reqValue);
 
             await getIDs.SendWebRequest();
@@ -358,7 +358,7 @@ namespace MDPro3
             }
 
             var json = JsonUtility.ToJson(body);
-            UnityWebRequest request = UnityWebRequest.Post(apiUrl, json, jsonHeader);
+            using UnityWebRequest request = UnityWebRequest.Post(apiUrl, json, jsonHeader);
 
             request.SetRequestHeader(reqHeader, reqValue);
             request.SetRequestHeader(contentTypeHeader, jsonHeader);
@@ -384,7 +384,7 @@ namespace MDPro3
             if (deck == null)
             {
                 string api = url + getIdAPI;
-                var re = UnityWebRequest.Get(api);
+                using var re = UnityWebRequest.Get(api);
                 re.SetRequestHeader(reqHeader, reqValue);
                 await re.SendWebRequest();
                 if (re.result == UnityWebRequest.Result.Success)
@@ -418,7 +418,7 @@ namespace MDPro3
             body.deck.deckYdk = ydk;
 
             var json = JsonUtility.ToJson(body);
-            var request = UnityWebRequest.Post(apiUrl, json, jsonHeader);
+            using var request = UnityWebRequest.Post(apiUrl, json, jsonHeader);
             request.SetRequestHeader(reqHeader, reqValue);
             request.SetRequestHeader(contentTypeHeader, jsonHeader);
             request.SetRequestHeader(tokenHeader, MyCard.account.token);
@@ -447,7 +447,7 @@ namespace MDPro3
             body.userId = MyCard.account.user.id;
 
             var json = JsonUtility.ToJson(body);
-            var request = UnityWebRequest.Post(apiUrl, json, jsonHeader);
+            using var request = UnityWebRequest.Post(apiUrl, json, jsonHeader);
             request.SetRequestHeader(reqHeader, reqValue);
             request.SetRequestHeader(contentTypeHeader, jsonHeader);
             request.SetRequestHeader(tokenHeader, MyCard.account.token);
@@ -486,7 +486,7 @@ namespace MDPro3
             }
 
             var json = JsonUtility.ToJson(body);
-            UnityWebRequest request = UnityWebRequest.Post(apiUrl, json, jsonHeader);
+            using UnityWebRequest request = UnityWebRequest.Post(apiUrl, json, jsonHeader);
 
             request.SetRequestHeader(reqHeader, reqValue);
             request.SetRequestHeader(contentTypeHeader, jsonHeader);
