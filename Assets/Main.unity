@@ -21646,7 +21646,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1581995138}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -25604,7 +25604,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 931169952}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.6103896
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -66966,7 +66966,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 948258731}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -92444,7 +92444,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 761159127}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.6629212
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -97569,7 +97569,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 2083794100}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.5588235
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
