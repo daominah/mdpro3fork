@@ -406,14 +406,19 @@ namespace MDPro3
                     return false;
                 }
             }
-
+            else
+            {
+                Debug.Log("Sync Deck Found: " + deck.deckName +"-" + deckName);
+                deck.deckName = deckName;
+            }
 
             string apiUrl = url + syncSigleAPI;
-            var body = new PostDeckBody();
-            body.userId = MyCard.account.user.id;
-            body.deckContributor = MyCard.account.user.username;
-
-            body.deck = new PostDeck(deck);
+            var body = new PostDeckBody
+            {
+                userId = MyCard.account.user.id,
+                deckContributor = MyCard.account.user.username,
+                deck = new PostDeck(deck)
+            };
             body.deck.deckName = deckName;
             body.deck.deckYdk = ydk;
 

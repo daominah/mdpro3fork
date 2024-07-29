@@ -11,8 +11,6 @@ using UnityEngine.UI;
 using MDPro3.YGOSharp;
 using MDPro3.UI;
 using MDPro3.Net;
-using System.Runtime.CompilerServices;
-using static MDPro3.YGOSharp.PacksManager;
 
 namespace MDPro3
 {
@@ -123,9 +121,6 @@ namespace MDPro3
 
             if(condition == Condition.MyCard)
             {
-                if(OnlineDeck.decks == null)
-                    decks.Clear();
-
                 foreach (var d in OnlineDeck.decks)
                 {
                     if (d.isDelete)
