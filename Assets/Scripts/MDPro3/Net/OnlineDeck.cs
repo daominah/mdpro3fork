@@ -381,6 +381,7 @@ namespace MDPro3
         public static async Task<bool> SyncDeck(string deckId, string deckName, string ydk, bool showHint = true)
         {
             var deck = GetOnlineDeckByID(deckId);
+
             if (deck == null)
             {
                 string api = url + getIdAPI;
@@ -408,7 +409,6 @@ namespace MDPro3
             }
             else
             {
-                Debug.Log("Sync Deck Found: " + deck.deckName +"-" + deckName);
                 deck.deckName = deckName;
             }
 

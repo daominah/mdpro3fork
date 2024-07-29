@@ -1426,6 +1426,7 @@ namespace MDPro3
                 deck.author = this.deck.author;
             else
                 deck.author = Deck.defaultDeckAuthor;
+            deck.deckId = this.deck.deckId;
             return deck;
         }
 
