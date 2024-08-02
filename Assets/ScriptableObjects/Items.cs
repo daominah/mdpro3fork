@@ -346,6 +346,8 @@ namespace MDPro3
                 mapCode = "1090001";
             if (mapCode == "1098001")
                 mapCode = "1090009";
+            if (mapCode == "1098002")
+                mapCode = "1090003";
 
             if (type == ItemType.Grave)
                 return "110" + mapCode.Substring(3);

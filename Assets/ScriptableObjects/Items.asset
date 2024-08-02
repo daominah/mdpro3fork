@@ -2967,7 +2967,14 @@ MonoBehaviour:
   - id: 1098001
     m_name: Skyscraper Parking Lot
     m_description: https://www.nexusmods.com/yugiohmasterduel/mods/1731
-    path: Mat/mat_801
+    path: Mat/Mat_801
+    functional: 0
+    secondFace: 0
+    diy: 0
+  - id: 1098002
+    m_name: Graveyard
+    m_description: https://www.nexusmods.com/yugiohmasterduel/mods/401
+    path: Mat/Mat_802
     functional: 0
     secondFace: 0
     diy: 0
