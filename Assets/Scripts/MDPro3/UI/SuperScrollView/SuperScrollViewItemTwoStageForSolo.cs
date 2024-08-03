@@ -12,13 +12,14 @@ namespace MDPro3.UI
         public RawImage face;
         public Solo.BotInfo botInfo;
 
+        bool diyDeck;
         public override void OnSelected()
         {
             base.OnSelected();
             Program.I().solo.superScrollView.selected = id;
             Program.I().solo.description.text = botInfo.desc;
             Program.I().solo.description.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
-            if(id == Solo.diyAI)
+            if(diyDeck)
                 Program.I().solo.btnDeck.SetActive(true);
             else
                 Program.I().solo.btnDeck.SetActive(false);
@@ -28,12 +29,13 @@ namespace MDPro3.UI
         {
             base.Refresh();
             title.text = botInfo.name;
+            diyDeck = botInfo.command.Contains("Lucky");
             action = () =>
             {
                 if(Solo.condition == Solo.Condition.ForSolo)
-                    Program.I().solo.StartAIForSolo(id);
+                    Program.I().solo.StartAIForSolo(id, diyDeck);
                 else
-                    Program.I().solo.StartAIForRoom(id);
+                    Program.I().solo.StartAIForRoom(id, diyDeck);
             };
         }
 

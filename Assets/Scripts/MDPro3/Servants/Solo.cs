@@ -29,7 +29,6 @@ namespace MDPro3
         public InputField inputDraw;
         public GameObject btnDeck;
 
-        public static readonly int diyAI = 6;
         public static string port;
 
         public class BotInfo
@@ -175,11 +174,11 @@ namespace MDPro3
             Program.I().ShiftToServant(Program.I().selectDeck);
         }
 
-        string GetWindBotCommand(int aiCode)
+        string GetWindBotCommand(int aiCode, bool diyDeck)
         {
             BotInfo bot = bots[aiCode];
             string aiCommand = bot.command;
-            if (aiCode == diyAI)
+            if (diyDeck)
             {
                 string selectedDeck = btnDeck.transform.GetChild(0).GetComponent<Text>().text;
                 if (!File.Exists(Program.deckPath + selectedDeck + Program.ydkExpansion))
@@ -200,16 +199,16 @@ namespace MDPro3
             return aiCommand;
         }
 
-        public void StartAIForSolo(int aiCode)
+        public void StartAIForSolo(int aiCode, bool diyDeck)
         {
-            string aiCommand = GetWindBotCommand(aiCode);
+            string aiCommand = GetWindBotCommand(aiCode, diyDeck);
             if(aiCommand != string.Empty)
                 Launch(aiCommand, toggleLockHand.isOn, toggleNoCheck.isOn, toggleNoShuffle.isOn);
         }
 
-        public void StartAIForRoom(int aiCode)
+        public void StartAIForRoom(int aiCode, bool diyDeck)
         {
-            string aiCommand = GetWindBotCommand(aiCode);
+            string aiCommand = GetWindBotCommand(aiCode, diyDeck);
             if (aiCommand != string.Empty)
             {
                 StartWindBot(aiCommand, TcpHelper.joinedAddress, TcpHelper.joinedPort, TcpHelper.joinedPassword, toggleLockHand.isOn);
