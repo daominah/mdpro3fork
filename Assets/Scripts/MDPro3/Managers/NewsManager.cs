@@ -3,6 +3,7 @@ using MDPro3;
 using MDPro3.Net;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -79,25 +80,23 @@ public class NewsManager : Manager
     {
         if (news == null)
             return;
-        StartCoroutine(LoadNewsAsync());
+        _ = LoadNewsImageAsync();
     }
 
-    IEnumerator LoadNewsAsync()
+    async Task LoadNewsImageAsync()
     {
         Hide();
-        for(int i = 0; i < news.ChineseCN.Length && i < maxLoad; i++)
+        for (int i = 0; i < news.ChineseCN.Length && i < maxLoad; i++)
         {
             var load = Tools.DownloadImageAsync(news.ChineseCN[i].image);
-            while(!load.IsCompleted)
-                yield return null;
+            await load;
             newsPics.Add(load.Result);
-            if(i == 0)
+            if (i == 0)
                 Show();
         }
     }
 
     int currentNewsIndex = 0;
-
     public void OnRight(float moveTime = 0.1f)
     {
         idleTime = 0f;

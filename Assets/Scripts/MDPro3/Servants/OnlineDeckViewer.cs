@@ -42,10 +42,7 @@ public class OnlineDeckViewer : Servant
             btnPickup.OnSwitchOff();
             if (superScrollView != null)
                 foreach (var item in superScrollView.items)
-                {
-                    item.gameObject.transform.SetParent(Program.I().container_2D, false);
                     item.gameObject.GetComponent<SuperScrollViewItemForOnlineDeckSelect>().Dispose();
-                }
             Clear();
         });
     }

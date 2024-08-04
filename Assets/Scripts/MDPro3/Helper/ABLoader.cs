@@ -192,6 +192,9 @@ namespace MDPro3
         static bool loadingPMat;
         public static IEnumerator<Material> LoadProtectorMaterial(string code)
         {
+            if (code == Items.randomCode.ToString())
+                code = Program.items.GetRandomItem(Items.ItemType.Protector).id.ToString();
+
             if (cachedPMat.TryGetValue(code, out var material))
             {
                 if (material != null)
@@ -254,6 +257,9 @@ namespace MDPro3
         }
         public static IEnumerator<Material> LoadFrameMaterial(string code)
         {
+            if (code == Items.randomCode.ToString())
+                code = Items.lastRandomFrameID;
+
             var abr = AssetBundle.LoadFromFileAsync(Program.root + "MasterDuel/Frame/ProfileFrameMat" + code);
             while (!abr.isDone)
                 yield return null;

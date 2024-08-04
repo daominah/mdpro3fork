@@ -120,9 +120,9 @@ namespace YgomGame.Bg
 				foreach(var ani in animator.parameters)
 					animatorParams.Add(ani.name);
 			}
-			if (disableLowEndPlatform && Program.root != "StandaloneWindows64/")
+			if (disableLowEndPlatform && Program.root != Program.rootWindows64)
 				Destroy(gameObject);
-			if (enableLowEndPlatformOnly && Program.root == "StandaloneWindows64/")
+			if (enableLowEndPlatformOnly && Program.root == Program.rootWindows64)
 				Destroy(gameObject);
 
 			if (playingOnlyActive)
@@ -131,12 +131,12 @@ namespace YgomGame.Bg
 
 		public bool PlayEffect(TriggerLabelDefine triggerLabel)
 		{
-			if (disableLowEndPlatform && Program.root != "StandaloneWindows64/")
+			if (disableLowEndPlatform && Program.root != Program.rootWindows64)
 			{
                 gameObject.SetActive(false);
 				return false;
             }
-			if(enableLowEndPlatformOnly && Program.root == "StandaloneWindows64/")
+			if(enableLowEndPlatformOnly && Program.root == Program.rootWindows64)
 			{
                 gameObject.SetActive(false);
                 return false;
@@ -185,7 +185,8 @@ namespace YgomGame.Bg
 			tapPlaying = true;
 			yield return new WaitForSeconds(activeTime == 0 ? 4 : activeTime);
 			tapPlaying = false;
-			gameObject.SetActive(false);
+			if(playingOnlyActive)
+				gameObject.SetActive(false);
 		}
 
 		private IEnumerator CheckParticleEffectEnd()

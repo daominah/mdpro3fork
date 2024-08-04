@@ -23,6 +23,12 @@ namespace MDPro3.UI
         bool showWithCloseDuelLog = false;
         public void Show(List<GameCard> cards, CardLocation location, int controller)
         {
+            if(Program.I().ocgcore.cantCheckGrave && location == CardLocation.Grave)
+            {
+                MessageManager.Cast(InterString.Get("现在不能查看此处的卡片。"));
+                return;
+            }
+
             this.cards = cards;
             this.location = location;
             this.controller = controller;

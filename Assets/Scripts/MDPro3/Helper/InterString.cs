@@ -15,7 +15,7 @@ namespace MDPro3
         public static void Initialize()
         {
             translations.Clear();
-            path = Program.localesPath + Program.slash + Config.Get("Language", "zh-CN") + "/translation.conf";
+            path = Program.localesPath + Config.Get("Language", "zh-CN") + "/translation.conf";
             if (!File.Exists(path))
                 File.Create(path).Close();
 
@@ -30,7 +30,7 @@ namespace MDPro3
             }
 
             translationsForRender.Clear();
-            pathForRender = Program.localesPath + Program.slash + Config.Get("CardLanguage", "zh-CN") + "/translation.conf";
+            pathForRender = Program.localesPath + Config.Get("CardLanguage", "zh-CN") + "/translation.conf";
             if (!File.Exists(pathForRender))
                 File.Create(pathForRender).Close();
             txtString = File.ReadAllText(pathForRender);

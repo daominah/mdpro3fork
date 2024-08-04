@@ -24,9 +24,9 @@ namespace MDPro3.YGOSharp
             nullString = string.Empty;
 ;
             string language = Config.Get("Language", "zh-CN");
-            string databaseFullPath = Program.localesPath + Program.slash + language + "/cards.cdb";
+            string databaseFullPath = Program.localesPath + language + "/cards.cdb";
             if (!File.Exists(databaseFullPath))
-                databaseFullPath = Program.localesPath + Program.slash + "zh-CN/cards.cdb";
+                databaseFullPath = Program.localesPath + "zh-CN/cards.cdb";
             _cards.Clear();
             LoadCDB(databaseFullPath);
             if (Config.Get("Expansions", "1") == "1")
@@ -58,9 +58,9 @@ namespace MDPro3.YGOSharp
 
             _cardsForRender.Clear();
             var cardLanguage = Config.Get("CardLanguage", "zh-CN");
-            databaseFullPath = Program.localesPath + Program.slash + cardLanguage + "/cards.cdb";
+            databaseFullPath = Program.localesPath + cardLanguage + "/cards.cdb";
             if (!File.Exists(databaseFullPath))
-                databaseFullPath = Program.localesPath + Program.slash + "zh-CN/cards.cdb";
+                databaseFullPath = Program.localesPath + "zh-CN/cards.cdb";
             LoadCDB(databaseFullPath, true);
             if (Config.Get("Expansions", "1") == "1")
             {

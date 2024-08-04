@@ -17,6 +17,8 @@ namespace MDPro3.UI
         public int stage = -1;
         public bool refreshed;
 
+        public IEnumerator enumerator;
+
         private void Start()
         {
             button.onClick.AddListener(OnClick);
@@ -45,24 +47,51 @@ namespace MDPro3.UI
                     btn.ToStage0();
             OnSelected();
         }
-
-        public virtual void OnSelected()
-        {
-
-        }
         public void OnDecide()
         {
             action?.Invoke();
         }
 
-        public void Dispose()
+
+        public virtual void OnSelected()
         {
-            StartCoroutine(DisposeAsync());
+
         }
 
-        IEnumerator DisposeAsync()
+        public override void Refresh()
         {
-            while(!refreshed)
+            base.Refresh();
+            refreshed = false;
+            if(enumerator != null)
+                StopCoroutine(enumerator);
+            enumerator = RefreshAsync();
+            if(gameObject.activeInHierarchy)
+                StartCoroutine(enumerator);
+        }
+
+        private void OnEnable()
+        {
+            if(enumerator != null)
+                StartCoroutine(enumerator);
+        }
+
+        public virtual IEnumerator RefreshAsync()
+        {
+            yield return null;
+            enumerator = null;
+            refreshed = true;
+        }
+
+
+        public void Dispose()
+        {
+            Destroy(gameObject);
+            //StartCoroutine(DisposeAsync());
+        }
+
+        public IEnumerator DisposeAsync()
+        {
+            while (!refreshed)
                 yield return null;
             Destroy(gameObject);
         }

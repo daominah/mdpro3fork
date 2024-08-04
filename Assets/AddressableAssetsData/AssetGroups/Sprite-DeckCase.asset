@@ -15,53 +15,48 @@ MonoBehaviour:
   m_GroupName: Sprite-DeckCase
   m_GUID: a74199e64d3fdb7459b07da88225930a
   m_SerializeEntries:
+  - m_GUID: 05eb93a2451178c478126b760f8cdcfb
+    m_Address: DeckCase0026_L
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 07c4d7b615554704e9815e9ae3c52ff2
+    m_Address: DeckCase2011_L
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0c6678c96f306fc43bd0c026fcac26e9
+    m_Address: DeckCase2006_L
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1dead0ac9da46af428f61018634e4e7b
+    m_Address: DeckCase2012_L
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 25385654482dc7146a0b9c646e58a943
+    m_Address: DeckCase1003_L
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 25703cdb0c6adcc418a103abbb21bd91
+    m_Address: DeckCase2008_L
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 28de5a57650f8724eaff0ef9c66127e9
     m_Address: DeckCase0001_L
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 46b81e3bef06eaf409f7c2ff58a16766
-    m_Address: DeckCase0002_L
+  - m_GUID: 3d1fbeede3b969040943b02b21e84fe9
+    m_Address: DeckCase2013_L
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 48b9d87013f7e194481d500eee408677
-    m_Address: DeckCase0003_L
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: a9999c0948851a6418028aac9f0cfd18
-    m_Address: DeckCase0004_L
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 7f0fcf30daa8b0d4395c2e80adfb60c0
-    m_Address: DeckCase0005_L
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: e9545eb18eb407c40bfa09e7e31cfe45
-    m_Address: DeckCase0006_L
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: ddeea77c08a001a419f79fad644b8aaa
-    m_Address: DeckCase0007_L
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 473020cbf8ca6c043b2c3423140deaf7
-    m_Address: DeckCase0008_L
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 79ba292781b27974190c8fca541a02df
-    m_Address: DeckCase0009_L
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: eb44d450de4130a4a8d4babaf785e45c
-    m_Address: DeckCase0010_L
+  - m_GUID: 419bd8213242151498b7786697730f7e
+    m_Address: DeckCase1002_L
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -70,23 +65,48 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 7812dab526859cb4e8cc53381569cbf8
-    m_Address: DeckCase0012_L
+  - m_GUID: 46b81e3bef06eaf409f7c2ff58a16766
+    m_Address: DeckCase0002_L
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 89e417715d7927446ae8856a2c95e11b
-    m_Address: DeckCase0013_L
+  - m_GUID: 473020cbf8ca6c043b2c3423140deaf7
+    m_Address: DeckCase0008_L
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 63d3ad4c0ee49ec46946911ce82ff93f
-    m_Address: DeckCase0014_L
+  - m_GUID: 47b79efae1589fb4eba4eaecb3c17a2a
+    m_Address: DeckCase2005_L
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: c267040f515ce224da2e247375193cf1
-    m_Address: DeckCase0015_L
+  - m_GUID: 487b4fab3e84c2b44aa5b1aa448ed325
+    m_Address: DeckCase1006_L
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 48b9d87013f7e194481d500eee408677
+    m_Address: DeckCase0003_L
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4cbdcf0ca01a91449889a39fbb9fcd3a
+    m_Address: DeckCase1010_L
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 529e0d9dfa13bdc43a4283afadec21a6
+    m_Address: DeckCase1011_L
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5ec0bb4d2fbba80459b96c098c8da522
+    m_Address: DeckCase2009_L
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5f6870df5328e94469b702e72b230eb9
+    m_Address: DeckCase1012_L
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -95,13 +115,8 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: e9067bb1289f72349a75c9555ed002f6
-    m_Address: DeckCase0017_L
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 71905cec2b3a92941af3c072b677eb7e
-    m_Address: DeckCase0018_L
+  - m_GUID: 63d3ad4c0ee49ec46946911ce82ff93f
+    m_Address: DeckCase0014_L
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -110,8 +125,118 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6f86fa1ccccce8144bb1151712e91387
+    m_Address: DeckCase2003_L
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 71905cec2b3a92941af3c072b677eb7e
+    m_Address: DeckCase0018_L
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 761b644011607be4ea50ccace38d1537
+    m_Address: DeckCase2010_L
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7812dab526859cb4e8cc53381569cbf8
+    m_Address: DeckCase0012_L
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 79ba292781b27974190c8fca541a02df
+    m_Address: DeckCase0009_L
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7f0fcf30daa8b0d4395c2e80adfb60c0
+    m_Address: DeckCase0005_L
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 83681a2638b042a47a8ed72609441cd3
+    m_Address: DeckCase1005_L
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 868c47dcc5167724a926f1f86ea5df82
+    m_Address: DeckCase1009_L
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 89e417715d7927446ae8856a2c95e11b
+    m_Address: DeckCase0013_L
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 89e94c0f4f758eb409c52b38a1abc1fb
+    m_Address: DeckCase1004_L
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8c61b821e7a95ea4ea83d1aabcc55378
+    m_Address: DeckCase2002_L
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 94e139782506d3f4189d5a63eec889d5
+    m_Address: DeckCase1008_L
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9fe8c4c1e430193469d4ca22777ae1d3
+    m_Address: DeckCase2004_L
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a5cea3020f941e2499489457d35d99c6
+    m_Address: DeckCase2001_L
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a7eca34a88e103740aa976c63c996262
+    m_Address: DeckCase0024_L
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a9999c0948851a6418028aac9f0cfd18
+    m_Address: DeckCase0004_L
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b319742ee6fc2a94b8e0abdace936c0e
+    m_Address: DeckCase1001_L
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b66a0928026c8204682f39efceddfbf9
+    m_Address: DeckCase0022_L
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c267040f515ce224da2e247375193cf1
+    m_Address: DeckCase0015_L
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cb79463f21e611f44b22acca14248098
+    m_Address: DeckCase2014_L
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: cf39b06d6b817ec40be606c1f0038d05
     m_Address: DeckCase0020_L
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dd7ac928a49ada449856481c0c4855e3
+    m_Address: DeckCase1007_L
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ddeea77c08a001a419f79fad644b8aaa
+    m_Address: DeckCase0007_L
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -120,8 +245,23 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: b66a0928026c8204682f39efceddfbf9
-    m_Address: DeckCase0022_L
+  - m_GUID: e333c03fce97dca488f26473285b6804
+    m_Address: DeckCase2007_L
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e9067bb1289f72349a75c9555ed002f6
+    m_Address: DeckCase0017_L
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e9545eb18eb407c40bfa09e7e31cfe45
+    m_Address: DeckCase0006_L
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: eb44d450de4130a4a8d4babaf785e45c
+    m_Address: DeckCase0010_L
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -132,141 +272,6 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: fdef298e24100904d99adcf51e02fdee
     m_Address: DeckCase0025_L
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: b319742ee6fc2a94b8e0abdace936c0e
-    m_Address: DeckCase1001_L
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 419bd8213242151498b7786697730f7e
-    m_Address: DeckCase1002_L
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 25385654482dc7146a0b9c646e58a943
-    m_Address: DeckCase1003_L
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 89e94c0f4f758eb409c52b38a1abc1fb
-    m_Address: DeckCase1004_L
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 83681a2638b042a47a8ed72609441cd3
-    m_Address: DeckCase1005_L
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 487b4fab3e84c2b44aa5b1aa448ed325
-    m_Address: DeckCase1006_L
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: dd7ac928a49ada449856481c0c4855e3
-    m_Address: DeckCase1007_L
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 94e139782506d3f4189d5a63eec889d5
-    m_Address: DeckCase1008_L
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: a5cea3020f941e2499489457d35d99c6
-    m_Address: DeckCase2001_L
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 8c61b821e7a95ea4ea83d1aabcc55378
-    m_Address: DeckCase2002_L
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 6f86fa1ccccce8144bb1151712e91387
-    m_Address: DeckCase2003_L
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 9fe8c4c1e430193469d4ca22777ae1d3
-    m_Address: DeckCase2004_L
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 47b79efae1589fb4eba4eaecb3c17a2a
-    m_Address: DeckCase2005_L
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 0c6678c96f306fc43bd0c026fcac26e9
-    m_Address: DeckCase2006_L
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: e333c03fce97dca488f26473285b6804
-    m_Address: DeckCase2007_L
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 25703cdb0c6adcc418a103abbb21bd91
-    m_Address: DeckCase2008_L
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 5ec0bb4d2fbba80459b96c098c8da522
-    m_Address: DeckCase2009_L
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 761b644011607be4ea50ccace38d1537
-    m_Address: DeckCase2010_L
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 07c4d7b615554704e9815e9ae3c52ff2
-    m_Address: DeckCase2011_L
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 3d1fbeede3b969040943b02b21e84fe9
-    m_Address: DeckCase2013_L
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: cb79463f21e611f44b22acca14248098
-    m_Address: DeckCase2014_L
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 529e0d9dfa13bdc43a4283afadec21a6
-    m_Address: DeckCase1011_L
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 868c47dcc5167724a926f1f86ea5df82
-    m_Address: DeckCase1009_L
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 4cbdcf0ca01a91449889a39fbb9fcd3a
-    m_Address: DeckCase1010_L
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 1dead0ac9da46af428f61018634e4e7b
-    m_Address: DeckCase2012_L
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: a7eca34a88e103740aa976c63c996262
-    m_Address: DeckCase0024_L
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 05eb93a2451178c478126b760f8cdcfb
-    m_Address: DeckCase0026_L
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

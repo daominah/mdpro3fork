@@ -11,8 +11,6 @@ using UnityEngine.UI;
 using MDPro3.YGOSharp;
 using MDPro3.UI;
 using MDPro3.Net;
-using System.Runtime.CompilerServices;
-using static MDPro3.YGOSharp.PacksManager;
 
 namespace MDPro3
 {
@@ -123,11 +121,10 @@ namespace MDPro3
 
             if(condition == Condition.MyCard)
             {
-                if(OnlineDeck.decks == null)
-                    decks.Clear();
-
                 foreach (var d in OnlineDeck.decks)
                 {
+                    if (d.isDelete)
+                        continue;
                     if (decks.ContainsKey(d.deckName))
                     {
                         int avoid = 2;
@@ -355,7 +352,7 @@ namespace MDPro3
                     {
                         count++;
                         File.Delete(Program.deckPath + item.args[0] + Program.ydkExpansion);
-                        MessageManager.Cast(InterString.Get("已删除卡组「[?]」", item.args[0]));
+                        MessageManager.Cast(InterString.Get("已删除本地卡组「[?]」", item.args[0]));
                         toDelete.Add(item.args[7]);
                     }
                 DeleteOnlineDecks(toDelete);

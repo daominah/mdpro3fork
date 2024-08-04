@@ -134,7 +134,7 @@ namespace MDPro3
             cg.blocksRaycasts = true;
             cg.interactable = true;
             right.DOAnchorPosX(0, moveTime).OnComplete(() => chatSwitching = false);
-            if(!isShowed && Program.root != "Android/")
+            if(!isShowed && Program.root != Program.rootAndroid)
                 chatInput.Select();
         }
 
@@ -189,7 +189,7 @@ namespace MDPro3
             deckIcon.color = Color.clear;
             if(deck != null)
             {
-                var ie = TextureManager.LoadItemIcon(deck.Case[0].ToString(), Items.ItemType.Case);
+                var ie = Program.items.LoadItemIconAsync(deck.Case[0].ToString(), Items.ItemType.Case);
                 StartCoroutine(ie);
                 while (ie.MoveNext())
                     yield return null;
@@ -203,14 +203,12 @@ namespace MDPro3
             if (deck != null)
             {
                 Material pMat = null;
-                IEnumerator<Texture2D> ic = null;
                 if (deck.Pickup.Count > 0 && deck.Pickup[0] != 0)
                 {
-                    ic = Program.I().texture_.LoadCardAsync(deck.Pickup[0]);
-                    StartCoroutine(ic);
-                    while (ic.MoveNext())
+                    var task = TextureManager.LoadCardAsync(deck.Pickup[0], true);
+                    while (!task.IsCompleted)
                         yield return null;
-                    card1.texture = ic.Current;
+                    card1.texture = task.Result;
                     var mat = TextureManager.GetCardMaterial(deck.Pickup[0]);
                     card1.material = mat;
                 }
@@ -228,11 +226,10 @@ namespace MDPro3
                 }
                 if (deck.Pickup.Count > 1 && deck.Pickup[1] != 0)
                 {
-                    ic = Program.I().texture_.LoadCardAsync(deck.Pickup[1]);
-                    StartCoroutine(ic);
-                    while (ic.MoveNext())
+                    var task = TextureManager.LoadCardAsync(deck.Pickup[1], true);
+                    while (!task.IsCompleted)
                         yield return null;
-                    card2.texture = ic.Current;
+                    card2.texture = task.Result;
                     var mat = TextureManager.GetCardMaterial(deck.Pickup[1]);
                     card2.material = mat;
                 }
@@ -250,11 +247,10 @@ namespace MDPro3
                 }
                 if (deck.Pickup.Count > 2 && deck.Pickup[2] != 0)
                 {
-                    ic = Program.I().texture_.LoadCardAsync(deck.Pickup[2]);
-                    StartCoroutine(ic);
-                    while (ic.MoveNext())
+                    var task = TextureManager.LoadCardAsync(deck.Pickup[2], true);
+                    while (!task.IsCompleted)
                         yield return null;
-                    card3.texture = ic.Current;
+                    card3.texture = task.Result;
                     var mat = TextureManager.GetCardMaterial(deck.Pickup[2]);
                     card3.material = mat;
                 }

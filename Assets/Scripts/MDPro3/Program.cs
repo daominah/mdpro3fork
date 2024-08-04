@@ -38,6 +38,7 @@ namespace MDPro3
         public SelectDeck selectDeck;
         public Setting setting;
         public Appearance appearance;
+        public SelectCharacter character;
         public OcgCore ocgcore;
         public Room room;
         public EditDeck editDeck;
@@ -53,19 +54,19 @@ namespace MDPro3
 
         #region State
         public static bool Running = true;
-        public const string artPath = "Picture/Art";
-        public const string altArtPath = "Picture/Art2";
+        public const string artPath = "Picture/Art/";
+        public const string altArtPath = "Picture/Art2/";
         public const string cardPicPath = "Picture/CardGenerated";
         public const string closeupPath = "Picture/Closeup";
-        public const string dataPath = "Data";
-        public const string localesPath = "Data/locales";
+        public const string dataPath = "Data/";
+        public const string localesPath = "Data/locales/";
         public const string configPath = "Data/config.conf";
         public const string lflistPath = "Data/lflist.conf";
         public const string deckPath = "Deck/";
         public const string expansionsPath = "Expansions";
         public const string puzzlePath = "Puzzle";
         public const string replayPath = "Replay";
-        public const string diyPath = "Picture/DIY";
+        public const string diyPath = "Picture/DIY/";
         public const string slash = "/";
         public const string ydkExpansion = ".ydk";
         #endregion
@@ -101,6 +102,8 @@ namespace MDPro3
             InitializeAllManagers();
             InitializeAllServants();
             ReadParams();
+
+            VoiceHelper.LoadVoicesAndInfo();
         }
 
         public static bool exitOnReturn = false;
@@ -225,6 +228,7 @@ namespace MDPro3
             servants.Add(mate);
             servants.Add(selectDeck);
             servants.Add(appearance);
+            servants.Add(character);
             servants.Add(ocgcore);
             servants.Add(room);
             servants.Add(editDeck);
@@ -238,11 +242,14 @@ namespace MDPro3
         #region MonoBehaviors
 
         public static string tempFolder = "TempFolder";
-        public static string root = "StandaloneWindows64/";
+        public const string rootWindows64 = "StandaloneWindows64/";
+        public const string rootAndroid = "Android/";
+        public static string root = rootWindows64;
+
         void Awake()
         {
 #if UNITY_ANDROID
-            root = "Android/";
+            root = rootAndroid;
 #endif
 
             instance = this;
@@ -332,7 +339,7 @@ namespace MDPro3
             var unload = Resources.UnloadUnusedAssets();
             while (!unload.isDone)
                 yield return null;
-            GC.Collect();
+            //GC.Collect();
             gc = null;
         }
 

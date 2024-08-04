@@ -1,0 +1,667 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1edfecd5b229758408f360ce4af7ba13, type: 3}
+  m_Name: Characters
+  m_EditorClassIdentifier: 
+  dm:
+  - id: 0001
+    name: "\u95C7\u904A\u622F"
+    profile: 
+    notReady: 0
+  - id: 0002
+    name: "\u6D77\u99AC \u702C\u4EBA"
+    profile: 
+    notReady: 0
+  - id: 0003
+    name: "\u57CE\u4E4B\u5185 \u514B\u4E5F"
+    profile: 
+    notReady: 0
+  - id: 0004
+    name: "\u5B54\u96C0 \u821E"
+    profile: 
+    notReady: 0
+  - id: 0005
+    name: "\u771F\u5D0E \u674F\u5B50"
+    profile: 
+    notReady: 0
+  - id: 0006
+    name: "\u6B66\u85E4 \u904A\u622F"
+    profile: 
+    notReady: 0
+  - id: 0007
+    name: "\u30A4\u30F3\u30BB\u30AF\u30BF\u30FC\u7FBD\u86FE"
+    profile: 
+    notReady: 0
+  - id: 0008
+    name: "\u30C0\u30A4\u30CA\u30BD\u30FC\u7ADC\u5D0E"
+    profile: 
+    notReady: 0
+  - id: 0009
+    name: "\u68B6\u6728 \u6F01\u592A"
+    profile: 
+    notReady: 0
+  - id: 0010
+    name: "\u95C7\u30DE\u30EA\u30AF"
+    profile: 
+    notReady: 0
+  - id: 0011
+    name: "\u95C7\u30D0\u30AF\u30E9"
+    profile: 
+    notReady: 0
+  - id: 0012
+    name: "\u30D0\u30F3\u30C7\u30C3\u30C8\u30FB\u30AD\u30FC\u30B9"
+    profile: 
+    notReady: 0
+  - id: 0013
+    name: "\u30A4\u30B7\u30BA\u30FB\u30A4\u30B7\u30E5\u30BF\u30FC\u30EB"
+    profile: 
+    notReady: 0
+  - id: 0014
+    name: "\u30EA\u30B7\u30C9"
+    profile: 
+    notReady: 0
+  - id: 0015
+    name: "\u30DA\u30AC\u30B5\u30B9\u30FBJ\u30FB\u30AF\u30ED\u30D5\u30A9\u30FC\u30C9"
+    profile: 
+    notReady: 0
+  - id: 0016
+    name: "\u6B66\u85E4 \u53CC\u516D"
+    profile: 
+    notReady: 0
+  - id: 0017
+    name: "\u6D77\u99AC\u30E2\u30AF\u30D0"
+    profile: 
+    notReady: 0
+  - id: 0018
+    name: "\u30DE\u30EA\u30AF\u30FB\u30A4\u30B7\u30E5\u30BF\u30FC\u30EB"
+    profile: 
+    notReady: 1
+  - id: 0019
+    name: "\u8FF7\u5BAE\u5144\u5F1F"
+    profile: 
+    notReady: 0
+  - id: 0020
+    name: "\u8FF7\u5BAE\u5144\u5F1F \u5144"
+    profile: 
+    notReady: 0
+  - id: 0021
+    name: "\u8FF7\u5BAE\u5144\u5F1F \u5F1F"
+    profile: 
+    notReady: 0
+  - id: 0022
+    name: "\u30D1\u30F3\u30C9\u30E9"
+    profile: 
+    notReady: 0
+  - id: 0023
+    name: "\u30B4\u30FC\u30B9\u30C8\u9AA8\u585A"
+    profile: 
+    notReady: 0
+  - id: 0024
+    name: "\u30A8\u30B9\u30D1\u30FC\u7D7D\u5834"
+    profile: 
+    notReady: 0
+  - id: 0025
+    name: "\u3010\u30A4\u30D9\u30F3\u30C8\u3011\u57CE\u4E4B\u5185 \u514B\u4E5F"
+    profile: 
+    notReady: 1
+  - id: 0029
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0031
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0032
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0033
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0034
+    name: 
+    profile: 
+    notReady: 0
+  gx:
+  - id: 0101
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0102
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0103
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0104
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0105
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0106
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0107
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0109
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0110
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0112
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0113
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0114
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0115
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0140
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0153
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0154
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0155
+    name: 
+    profile: 
+    notReady: 0
+  _5ds:
+  - id: 0201
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0202
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0203
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0204
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0205
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0206
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0207
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0208
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0209
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0210
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0211
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0213
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0214
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0215
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0216
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0217
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0218
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0240
+    name: 
+    profile: 
+    notReady: 0
+  dsod:
+  - id: 0301
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0302
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0303
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0304
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0305
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0306
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0307
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0308
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0309
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0315
+    name: 
+    profile: 
+    notReady: 0
+  zexal:
+  - id: 0401
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0404
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0405
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0406
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0407
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0409
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0410
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0411
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0412
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0415
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0418
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0419
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0420
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0424
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0443
+    name: 
+    profile: 
+    notReady: 0
+  arcv:
+  - id: 0501
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0502
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0503
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0504
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0505
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0506
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0507
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0508
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0510
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0512
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0513
+    name: 
+    profile: 
+    notReady: 0
+  vrains:
+  - id: 0601
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0602
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0603
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0604
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0605
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0609
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0610
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0849
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0850
+    name: 
+    profile: 
+    notReady: 0
+  sevens:
+  - id: 0701
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0702
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0703
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0704
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0705
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0706
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0707
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0708
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0709
+    name: 
+    profile: 
+    notReady: 0
+  npc:
+  - id: 0801
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0803
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0806
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0808
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0809
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0811
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0813
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0816
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0818
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0819
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0821
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0823
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0825
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0827
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0829
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0830
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0831
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0832
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0833
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0834
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0835
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0836
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0837
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0838
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0839
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0840
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0841
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0842
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0843
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0844
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0845
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0846
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0847
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0848
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0851
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0852
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0853
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0854
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0855
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0856
+    name: 
+    profile: 
+    notReady: 0
+  - id: 0857
+    name: 
+    profile: 
+    notReady: 0
+  - id: 9995
+    name: 
+    profile: 
+    notReady: 0

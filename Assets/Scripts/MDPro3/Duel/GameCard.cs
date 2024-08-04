@@ -303,14 +303,15 @@ namespace MDPro3
                     GetChild(1).GetComponent<Renderer>();
             cardFace.material = TextureManager.GetCardMaterial(data.Id);
             cardFace.material.renderQueue = 2999;
-            IEnumerator enumerator;
-            enumerator = Program.I().texture_.LoadCardAsync(data.Id);
-            StartCoroutine(enumerator);
-            while (enumerator.MoveNext())
+
+            var task = TextureManager.LoadCardAsync(data.Id, true);
+            while (!task.IsCompleted)
                 yield return null;
+
             if (model == null)
                 yield break;
-            cardFace.material.mainTexture = enumerator.Current as Texture;
+
+            cardFace.material.mainTexture = task.Result;
             SetDisabled();
 
             if (p.controller == 0 && Program.I().ocgcore.deck != null)
@@ -384,6 +385,7 @@ namespace MDPro3
             SetData(data);
             ClearAllTails();
         }
+
         public void EraseData()
         {
             SetData(CardsManager.Get(0));
@@ -1873,7 +1875,8 @@ namespace MDPro3
                 model.SetActive(true);
                 ShowFaceDownCardOrNot(false);
                 AudioManager.PlaySE("SE_CARDVIEW_02");
-                Program.I().ocgcore.description.Show(this, null);
+                if(Program.I().ocgcore.GetAutoInfo())
+                    Program.I().ocgcore.description.Show(this, null);
             }));
             sequence.Join(turn.DOLocalRotate(Vector3.zero, 0.1f).OnComplete(() =>
             {
@@ -1999,7 +2002,9 @@ namespace MDPro3
             sequence.AppendInterval(1f * id);
             sequence.Append(turn.DOLocalMoveY(2, 0.1f).OnStart(() =>
             {
-                Program.I().ocgcore.description.Show(this, null);
+                if (Program.I().ocgcore.GetAutoInfo())
+                    Program.I().ocgcore.description.Show(this, null);
+
                 model.SetActive(true);
                 if (Program.I().ocgcore.GetLocationCardCount(CardLocation.Deck, p.controller) == 1)
                 {

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static MDPro3.SelectPuzzle;
 
 namespace MDPro3.UI
 {
@@ -13,7 +14,6 @@ namespace MDPro3.UI
         public string replayName;
         YRP yrp;
 
-        IEnumerator enumerator;
         public override void OnSelected()
         {
             base.OnSelected();
@@ -67,40 +67,36 @@ namespace MDPro3.UI
 
         public override void Refresh()
         {
-            base.Refresh();
-            refreshed = false;
             title.text = replayName;
             yrp = Program.I().replay.CacheYRP(replayName);
-            if (enumerator != null)
-                StopCoroutine(enumerator);
-            enumerator = RefreshFace();
-            StartCoroutine(enumerator);
             action = () =>
             {
                 Program.I().replay.KF_Replay(replayName);
             };
+            base.Refresh();
         }
 
-        IEnumerator RefreshFace()
+        public override IEnumerator RefreshAsync()
         {
             while (TextureManager.container == null)
                 yield return null;
+
+            face.texture = TextureManager.container.black.texture;
+
             if (yrp == null)
             {
                 face.texture = TextureManager.container.unknownArt.texture;
                 face.color = Color.white;
                 enumerator = null;
-                refreshed = true;
                 yield break;
             }
 
-            face.texture = TextureManager.container.black.texture;
-            IEnumerator ie = Program.I().texture_.LoadArtAsync(yrp.playerData[0].main[0], true);
-            StartCoroutine(ie);
-            while (ie.MoveNext())
+            var task = TextureManager.LoadArtAsync(yrp.playerData[0].main[0], true);
+            while (!task.IsCompleted)
                 yield return null;
-            face.texture = ie.Current as Texture2D;
             face.color = Color.white;
+            face.texture = task.Result;
+
             enumerator = null;
             refreshed = true;
         }

@@ -1,3 +1,4 @@
+using Percy;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,14 +12,14 @@ namespace MDPro3.UI
         public RawImage face;
         public Solo.BotInfo botInfo;
 
-        IEnumerator enumerator;
+        bool diyDeck;
         public override void OnSelected()
         {
             base.OnSelected();
             Program.I().solo.superScrollView.selected = id;
             Program.I().solo.description.text = botInfo.desc;
             Program.I().solo.description.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
-            if(id == Solo.diyAI)
+            if(diyDeck)
                 Program.I().solo.btnDeck.SetActive(true);
             else
                 Program.I().solo.btnDeck.SetActive(false);
@@ -27,33 +28,30 @@ namespace MDPro3.UI
         public override void Refresh()
         {
             base.Refresh();
-            refreshed = false;
             title.text = botInfo.name;
-            if (enumerator != null)
-                StopCoroutine(enumerator);
-            enumerator = RefreshFace();
-            StartCoroutine(enumerator);
+            diyDeck = botInfo.command.Contains("Lucky");
             action = () =>
             {
                 if(Solo.condition == Solo.Condition.ForSolo)
-                    Program.I().solo.StartAIForSolo(id);
+                    Program.I().solo.StartAIForSolo(id, diyDeck);
                 else
-                    Program.I().solo.StartAIForRoom(id);
+                    Program.I().solo.StartAIForRoom(id, diyDeck);
             };
         }
 
-        IEnumerator RefreshFace()
+        public override IEnumerator RefreshAsync()
         {
-            refreshed = false;
             while (TextureManager.container == null)
                 yield return null;
+
             face.texture = TextureManager.container.black.texture;
-            IEnumerator ie = Program.I().texture_.LoadArtAsync(botInfo.main0, true);
-            StartCoroutine(ie);
-            while (ie.MoveNext())
+
+            var task = TextureManager.LoadArtAsync(botInfo.main0, true);
+            while (!task.IsCompleted)
                 yield return null;
-            face.texture = ie.Current as Texture2D;
             face.color = Color.white;
+            face.texture = task.Result;
+
             enumerator = null;
             refreshed = true;
         }

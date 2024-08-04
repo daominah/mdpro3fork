@@ -89,6 +89,8 @@ namespace MDPro3
             Program.I().cutin.Load();
             Program.I().mate.Load();
             Program.I().solo.Load();
+            Program.I().character.LoadCharacters();
+            Program.I().setting.RefreshCharacterName();
             Online.severSelectionsInitialized = false;
         }
 
@@ -106,6 +108,9 @@ namespace MDPro3
         {
             if (wallpaper.transform.childCount > 0)
                 Destroy(wallpaper.transform.GetChild(0).gameObject);
+            if (path == Items.noneCode.ToString())
+                return null;
+
             path = "MasterDuel/" + Program.items.WallpaperCodeToPath(path);
             if (!path.ToLower().Contains("front"))
             {

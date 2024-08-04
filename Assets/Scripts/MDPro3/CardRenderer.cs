@@ -180,10 +180,13 @@ namespace MDPro3
                         levelsMask.transform.GetChild(i).gameObject.SetActive(false);
                 }
             }
+            Program.I().camera_.cameraRenderTexture.Render();
         }
 
         public bool RenderCard(int code, Texture2D art)
         {
+            RenderTexture.active = renderTexture;
+
             Card data = CardsManager.GetRenderCard(code);
             if (data == null || data.Id == 0)
                 return false;
@@ -466,6 +469,9 @@ namespace MDPro3
                         levels.transform.GetChild(i).gameObject.SetActive(false);
                 }
             }
+
+            Program.I().camera_.cameraRenderTexture.Render();
+
             return true;
         }
 

@@ -66,6 +66,7 @@ MonoBehaviour:
   cardNormal: {fileID: 2800000, guid: b552f9fd55ddc7443bfe07c7dbc13b1f, type: 3}
   cardNormalLink: {fileID: 2800000, guid: 875fa980a3eb990419e51879fe12b281, type: 3}
   cardNormalPendulum: {fileID: 2800000, guid: 71402236982fddd41ada1cc6a44e94bd, type: 3}
+  cardRainbowMask: {fileID: 2800000, guid: ce96aab8acee80f4881cd81654d62c5d, type: 3}
   attributeLight: {fileID: 21300000, guid: 157f899e40b269e4bb70d867aa084278, type: 3}
   attributeDark: {fileID: 21300000, guid: 7976b559931f6e840863f07ea92c278a, type: 3}
   attributeWater: {fileID: 21300000, guid: e639e2cab68115f499825b099bd456d5, type: 3}

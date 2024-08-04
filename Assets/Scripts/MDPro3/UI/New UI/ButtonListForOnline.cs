@@ -1,6 +1,3 @@
-using MDPro3.UI;
-using UnityEngine;
-
 namespace MDPro3.UI
 {
     public class ButtonListForOnline : ButtonList

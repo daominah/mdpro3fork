@@ -53,7 +53,7 @@ namespace MDPro3.UI
             textAuthorName.text = "By " + authorName;
             textLike.text = like.ToString();
             textDate.text = lastDate;
-            var load = TextureManager.LoadItemIcon(deckCase.ToString(), Items.ItemType.Case);
+            var load = Program.items.LoadItemIconAsync(deckCase.ToString(), Items.ItemType.Case);
             while (load.MoveNext())
                 yield return null;
             if (load.Current != null)
@@ -66,14 +66,12 @@ namespace MDPro3.UI
         {
             cardRefreshing = true;
             Material pMat = null;
-            IEnumerator<Texture2D> ie = null;
             if (card1 != 0)
             {
-                ie = Program.I().texture_.LoadCardAsync(card1);
-                StartCoroutine(ie);
-                while (ie.MoveNext())
+                var task = TextureManager.LoadCardAsync(card1);
+                while (!task.IsCompleted)
                     yield return null;
-                cardFace1.texture = ie.Current;
+                cardFace1.texture = task.Result;
                 var mat = TextureManager.GetCardMaterial(card1);
                 cardFace1.material = mat;
             }
@@ -91,11 +89,10 @@ namespace MDPro3.UI
             }
             if (card2 != 0)
             {
-                ie = Program.I().texture_.LoadCardAsync(card2);
-                StartCoroutine(ie);
-                while (ie.MoveNext())
+                var task = TextureManager.LoadCardAsync(card2);
+                while (!task.IsCompleted)
                     yield return null;
-                cardFace2.texture = ie.Current;
+                cardFace2.texture = task.Result;
                 var mat = TextureManager.GetCardMaterial(card2);
                 cardFace2.material = mat;
             }
@@ -113,11 +110,10 @@ namespace MDPro3.UI
             }
             if (card3 != 0)
             {
-                ie = Program.I().texture_.LoadCardAsync(card3);
-                StartCoroutine(ie);
-                while (ie.MoveNext())
+                var task = TextureManager.LoadCardAsync(card3);
+                while (!task.IsCompleted)
                     yield return null;
-                cardFace3.texture = ie.Current;
+                cardFace3.texture = task.Result;
                 var mat = TextureManager.GetCardMaterial(card3);
                 cardFace3.material = mat;
             }
@@ -144,6 +140,7 @@ namespace MDPro3.UI
 
         IEnumerator DisposeAsync()
         {
+            gameObject.transform.SetParent(Program.I().container_2D, false);
             while (!refreshed)
                 yield return null;
             while (cardRefreshing)

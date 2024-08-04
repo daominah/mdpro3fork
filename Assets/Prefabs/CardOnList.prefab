@@ -464,7 +464,6 @@ GameObject:
   - component: {fileID: 5765855581067432432}
   - component: {fileID: 1680429034235359536}
   - component: {fileID: 3876838352095827531}
-  - component: {fileID: 8740556516760449465}
   m_Layer: 5
   m_Name: CardOnList
   m_TagString: Untagged
@@ -561,16 +560,3 @@ MonoBehaviour:
   dot1: {fileID: 1815141877113245003}
   dot2: {fileID: 1815141876998606447}
   dot3: {fileID: 1815141876938018191}
---- !u!114 &8740556516760449465
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5765855581067432438}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c51d77dd45bb0d94aabaf74e71fa7ef9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  code: 0

@@ -55,7 +55,7 @@ namespace MDPro3.UI
             refreshed = false;
             textName.text = deckName;
             var casePath = deckCase.ToString();
-            var load = TextureManager.LoadItemIcon(casePath, Items.ItemType.Case);
+            var load = Program.items.LoadItemIconAsync(casePath, Items.ItemType.Case);
             while (load.MoveNext())
                 yield return null;
             if (load.Current != null)
@@ -65,17 +65,14 @@ namespace MDPro3.UI
             for (int i = 0; i < transform.GetSiblingIndex(); i++)
                 yield return null;
             Material pMat = null;
-            IEnumerator<Texture2D> ie = null;
             if (card1 != 0)
             {
-                ie = Program.I().texture_.LoadCardAsync(card1);
-                StartCoroutine(ie);
-                while (ie.MoveNext())
+                var task = TextureManager.LoadCardAsync(card1, true);
+                while (!task.IsCompleted)
                     yield return null;
-                cardFace1.texture = ie.Current;
-                //var mat = TextureManager.GetCardMaterial(card1);
-                //cardFace1.material = mat;
-                cardFace1.material = null;
+                cardFace1.texture = task.Result;
+                var mat = TextureManager.GetCardMaterial(card1);
+                cardFace1.material = mat;
             }
             else
             {
@@ -91,14 +88,12 @@ namespace MDPro3.UI
             }
             if (card2 != 0)
             {
-                ie = Program.I().texture_.LoadCardAsync(card2);
-                StartCoroutine(ie);
-                while (ie.MoveNext())
+                var task = TextureManager.LoadCardAsync(card2, true);
+                while (!task.IsCompleted)
                     yield return null;
-                cardFace2.texture = ie.Current;
-                //var mat = TextureManager.GetCardMaterial(card2);
-                //cardFace2.material = mat;
-                cardFace2.material = null;
+                cardFace2.texture = task.Result;
+                var mat = TextureManager.GetCardMaterial(card2);
+                cardFace2.material = mat;
             }
             else
             {
@@ -114,14 +109,12 @@ namespace MDPro3.UI
             }
             if (card3 != 0)
             {
-                ie = Program.I().texture_.LoadCardAsync(card3);
-                StartCoroutine(ie);
-                while (ie.MoveNext())
+                var task = TextureManager.LoadCardAsync(card3, true);
+                while (!task.IsCompleted)
                     yield return null;
-                cardFace3.texture = ie.Current;
-                //var mat = TextureManager.GetCardMaterial(card3);
-                //cardFace3.material = mat;
-                cardFace3.material = null;
+                cardFace3.texture = task.Result;
+                var mat = TextureManager.GetCardMaterial(card3);
+                cardFace3.material = mat;
             }
             else
             {

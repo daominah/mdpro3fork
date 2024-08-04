@@ -419,7 +419,7 @@ namespace MDPro3
             input.text = deckName;
 
             var casePath = deck.Case[0].ToString();
-            var ie = TextureManager.LoadItemIcon(casePath, Items.ItemType.Case);
+            var ie = Program.items.LoadItemIconAsync(casePath, Items.ItemType.Case);
             StartCoroutine(ie);
             while (ie.MoveNext())
                 yield return null;
@@ -485,7 +485,7 @@ namespace MDPro3
                 yield return null;
             }
 
-            var ie = TextureManager.LoadItemIcon(deck.Case[0].ToString(), Items.ItemType.Case);
+            var ie = Program.items.LoadItemIconAsync(deck.Case[0].ToString(), Items.ItemType.Case);
             StartCoroutine(ie);
             while (ie.MoveNext())
                 yield return null;
@@ -499,21 +499,21 @@ namespace MDPro3
             manager.GetElement<Image>("IconProtector").color = Color.white;
             manager.GetElement<Image>("IconProtector").material = im.Current;
 
-            ie = TextureManager.LoadItemIcon(deck.Field[0].ToString(), Items.ItemType.Mat);
+            ie = Program.items.LoadItemIconAsync(deck.Field[0].ToString(), Items.ItemType.Mat);
             StartCoroutine(ie);
             while (ie.MoveNext())
                 yield return null;
             manager.GetElement<Image>("IconField").color = Color.white;
             manager.GetElement<Image>("IconField").sprite = ie.Current;
 
-            ie = TextureManager.LoadItemIcon(deck.Grave[0].ToString(), Items.ItemType.Grave);
+            ie = Program.items.LoadItemIconAsync(deck.Grave[0].ToString(), Items.ItemType.Grave);
             StartCoroutine(ie);
             while (ie.MoveNext())
                 yield return null;
             manager.GetElement<Image>("IconGrave").color = Color.white;
             manager.GetElement<Image>("IconGrave").sprite = ie.Current;
 
-            ie = TextureManager.LoadItemIcon(deck.Stand[0].ToString(), Items.ItemType.Stand);
+            ie = Program.items.LoadItemIconAsync(deck.Stand[0].ToString(), Items.ItemType.Stand);
             StartCoroutine(ie);
             while (ie.MoveNext())
                 yield return null;
@@ -523,7 +523,7 @@ namespace MDPro3
             var mate = deck.Mate[0].ToString();
             if (mate.Length == 7 && mate.StartsWith("100"))
             {
-                ie = TextureManager.LoadItemIcon(mate, Items.ItemType.Mate);
+                ie = Program.items.LoadItemIconAsync(mate, Items.ItemType.Mate);
                 StartCoroutine(ie);
                 while (ie.MoveNext())
                     yield return null;
@@ -532,13 +532,11 @@ namespace MDPro3
             }
             else
             {
-                var art = Program.I().texture_.LoadArtAsync(deck.Mate[0], true);
-                StartCoroutine(art);
-                while (art.MoveNext())
+                var task = TextureManager.LoadArtAsync(deck.Mate[0], true);
+                while(!task.IsCompleted)
                     yield return null;
                 manager.GetElement<Image>("IconMate").color = Color.white;
-                manager.GetElement<Image>("IconMate").sprite =
-                    Sprite.Create(art.Current, new Rect(0, 0, art.Current.width, art.Current.height), new Vector2(0.5f, 0.5f));
+                manager.GetElement<Image>("IconMate").sprite = Tools.Texture2Sprite(task.Result);
             }
         }
         void Dispose()
@@ -1428,6 +1426,7 @@ namespace MDPro3
                 deck.author = this.deck.author;
             else
                 deck.author = Deck.defaultDeckAuthor;
+            deck.deckId = this.deck.deckId;
             return deck;
         }
 
@@ -1837,7 +1836,7 @@ namespace MDPro3
         void ItemOnListRefresh(string[] tasks, GameObject item)
         {
             var handler = item.GetComponent<SuperScrollViewItemForDeckEdit>();
-            handler.Code = int.Parse(tasks[0].ToString());
+            handler.code = int.Parse(tasks[0].ToString());
             handler.Refresh();
         }
 
@@ -1932,7 +1931,7 @@ namespace MDPro3
                     card.gameObject.GetComponent<RawImage>().material = mat;
             foreach (var item in superScrollView.items)
                 if (item.gameObject != null)
-                    if (item.gameObject.GetComponent<SuperScrollViewItemForDeckEdit>().Code == cardShowing.Id)
+                    if (item.gameObject.GetComponent<SuperScrollViewItemForDeckEdit>().code == cardShowing.Id)
                         item.gameObject.GetComponent<RawImage>().material = mat;
         }
 

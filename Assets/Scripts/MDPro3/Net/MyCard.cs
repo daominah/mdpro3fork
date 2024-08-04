@@ -8,7 +8,6 @@ using System.Collections.Generic;
 using UnityWebSocket;
 using Newtonsoft.Json.Linq;
 using System.IO;
-using WindBot.Game;
 
 namespace MDPro3.Net
 {
@@ -38,7 +37,7 @@ namespace MDPro3.Net
         public static async Task<MyCardAccount> Login(string account, string password)
         {
             string json = "{\"account\":\"" + account + "\",\"password\":\"" + password + "\"}";
-            UnityWebRequest request = UnityWebRequest.Post(loginUrl, json, jsonHeader);
+            using UnityWebRequest request = UnityWebRequest.Post(loginUrl, json, jsonHeader);
 
             request.SetRequestHeader("Content-Type", jsonHeader);
             request.SetRequestHeader("Origin", "https://accounts.moecube.com");
@@ -66,7 +65,7 @@ namespace MDPro3.Net
 
         public static async Task<MyCardAccount> TokenIn(string token)
         {
-            UnityWebRequest request = UnityWebRequest.Get(authUrl);
+            using UnityWebRequest request = UnityWebRequest.Get(authUrl);
             request.SetRequestHeader(authHeader, "Bearer " + token);
 
             await request.SendWebRequest();
@@ -128,7 +127,7 @@ namespace MDPro3.Net
                     if (cachedAvatars.ContainsKey(avatarName))
                         return cachedAvatars[avatarName];
 
-                var load = TextureManager.LoadPicFromLocalFileAsync(fullPath);
+                var load = TextureManager.LoadPicFromFileAsync(fullPath);
                 await load;
                 lock (cachedAvatars)
                     if (!cachedAvatars.ContainsKey(avatarName))
@@ -152,22 +151,26 @@ namespace MDPro3.Net
                 }
             }
 
-            var task = Tools.DownloadImageAsync(avatarAddress);
-            await task;
-            var returnValue = task.Result;
+            var requestAvatar = Tools.DownloadImageAsync(avatarAddress);
+            await requestAvatar;
+            Texture2D downloadImage = requestAvatar.Result;
+            if (downloadImage == null)
+                return null;
+
+            var returnValue = downloadImage;
             try
             {
-                if(task.Result != null)
+                if(downloadImage != null)
                 {
                     var fileName = Path.GetFileNameWithoutExtension(avatarAddress);
                     fullPath = avatartSavePath + fileName + ".png";
-                    if(returnValue.width > avatarSize)
+                    if(downloadImage.width > avatarSize)
                     {
                         returnValue = new Texture2D(avatarSize, avatarSize);
-                        var resizePixels = Tools.ResizePixels(task.Result.GetPixels(), task.Result.width, task.Result.height, avatarSize, avatarSize);
+                        var resizePixels = Tools.ResizePixels(downloadImage.GetPixels(), downloadImage.width, downloadImage.height, avatarSize, avatarSize);
                         returnValue.SetPixels(resizePixels);
                         returnValue.Apply();
-                        UnityEngine.Object.Destroy(task.Result);
+                        UnityEngine.Object.Destroy(downloadImage);
                     }
 
                     File.WriteAllBytes(fullPath, returnValue.EncodeToPNG());
@@ -193,7 +196,7 @@ namespace MDPro3.Net
         {
             if(defaultAvatar == null)
             {
-                var task = TextureManager.LoadPicFromLocalFileAsync(avatartSavePath + "default_avatar.png");
+                var task = TextureManager.LoadPicFromFileAsync(avatartSavePath + "default_avatar.png");
                 await task;
                 if (task.Result != null)
                 {
@@ -206,7 +209,7 @@ namespace MDPro3.Net
 
         public static async Task<MyCardNews> GetNews()
         {
-            var request = UnityWebRequest.Get(appsUrl);
+            using var request = UnityWebRequest.Get(appsUrl);
             await request.SendWebRequest();
 
             if (request.result == UnityWebRequest.Result.Success)
@@ -234,7 +237,7 @@ namespace MDPro3.Net
             if (account == null)
                 return null;
 
-            var request = UnityWebRequest.Get(expUrl + $"{account.user.username}");
+            using var request = UnityWebRequest.Get(expUrl + $"{account.user.username}");
             await request.SendWebRequest();
 
             if (request.result == UnityWebRequest.Result.Success)
@@ -248,7 +251,7 @@ namespace MDPro3.Net
 
         public static async Task<MyCardMatchInfo> GetMatchInfo(string arena)
         {
-            var request = UnityWebRequest.PostWwwForm(matchUrl + "?arena=" + arena, jsonHeader);
+            using var request = UnityWebRequest.PostWwwForm(matchUrl + "?arena=" + arena, jsonHeader);
             request.SetRequestHeader(contentTypeHeader, jsonHeader);
             request.SetRequestHeader(authHeader, "Basic " + CustomBase64Encode(account.user.username + ":" + account.user.id));
 

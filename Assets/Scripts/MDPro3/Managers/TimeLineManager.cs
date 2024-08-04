@@ -595,27 +595,26 @@ namespace MDPro3
 
         public IEnumerator RefreshCardFace(Renderer face, int code, bool post = false)
         {
-            var ie = Program.I().texture_.LoadCardAsync(code);
-            StartCoroutine(ie);
-            while (ie.MoveNext())
+            var task = TextureManager.LoadCardAsync(code, false);
+            while (!task.IsCompleted)
                 yield return null;
+
             if (!post)
             {
                 var mat = TextureManager.GetCardMaterial(code);
                 face.material = mat;
             }
-            face.material.mainTexture = ie.Current;
+            face.material.mainTexture = task.Result;
         }
 
         public IEnumerator RefreshCardFrame(Renderer face, int count, int order = 0)
         {
             if (count > 100)
             {
-                var ie = Program.I().texture_.LoadCardAsync(count);
-                StartCoroutine(ie);
-                while (ie.MoveNext())
+                var task = TextureManager.LoadCardAsync(count, false);
+                while (!task.IsCompleted)
                     yield return null;
-                face.material.SetTexture("_CardFrameA", ie.Current);
+                face.material.SetTexture("_CardFrameA", task.Result);
             }
             else
             {
@@ -625,11 +624,11 @@ namespace MDPro3
                     var code = materials[i + order].GetData().Id;
                     if(code == 0)
                         code = materials[i + order].GetCachedData().Id;
-                    var ie = Program.I().texture_.LoadCardAsync(code);
-                    StartCoroutine(ie);
-                    while (ie.MoveNext())
+
+                    var task = TextureManager.LoadCardAsync(code, false);
+                    while (!task.IsCompleted)
                         yield return null;
-                    face.material.SetTexture("_CardFrame" + (char)('A' + i), ie.Current);
+                    face.material.SetTexture("_CardFrame" + (char)('A' + i), task.Result);
                 }
             }
         }

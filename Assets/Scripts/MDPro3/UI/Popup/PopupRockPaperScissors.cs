@@ -22,25 +22,22 @@ namespace MDPro3.UI
 
         IEnumerator LoadAsync()
         {
-            var ie = TextureManager.LoadPicFromFileAsync(Program.diyPath + "/Rock.png");
-            StartCoroutine(ie);
-            while (ie.MoveNext())
+            var task = TextureManager.LoadPicFromFileAsync(Program.diyPath + "Rock.png");
+            while(!task.IsCompleted)
                 yield return null;
-            rock.GetComponent<RawImage>().texture = ie.Current;
+            rock.GetComponent<RawImage>().texture = task.Result;
             rock.GetComponent<RawImage>().color = Color.white;
 
-            ie = TextureManager.LoadPicFromFileAsync(Program.diyPath + "/Paper.png");
-            StartCoroutine(ie);
-            while (ie.MoveNext())
+            task = TextureManager.LoadPicFromFileAsync(Program.diyPath + "Paper.png");
+            while (!task.IsCompleted)
                 yield return null;
-            paper.GetComponent<RawImage>().texture = ie.Current;
+            paper.GetComponent<RawImage>().texture = task.Result;
             paper.GetComponent<RawImage>().color = Color.white;
 
-            ie = TextureManager.LoadPicFromFileAsync(Program.diyPath + "/Scissors.png");
-            StartCoroutine(ie);
-            while (ie.MoveNext())
+            task = TextureManager.LoadPicFromFileAsync(Program.diyPath + "Scissors.png");
+            while (!task.IsCompleted)
                 yield return null;
-            scissors.GetComponent<RawImage>().texture = ie.Current;
+            scissors.GetComponent<RawImage>().texture = task.Result;
             scissors.GetComponent<RawImage>().color = Color.white;
         }
     }

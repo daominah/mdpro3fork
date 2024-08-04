@@ -144,7 +144,7 @@ namespace YgomGame.Bg
             }
 
             effectSettings = new Dictionary<BgEffectSettingInner.AnimationLabelDefine, List<BgEffectSettingInner>>();
-            for (int i = 1; i < 27; i++)
+            for (int i = 0; i < 27; i++)
             {
                 var labelDefine = (BgEffectSettingInner.AnimationLabelDefine)i;
                 var list = new List<BgEffectSettingInner>();
@@ -219,11 +219,30 @@ namespace YgomGame.Bg
                     animationLabel = param.animationLabel;
                     break;
                 }
-			var animator = GetComponent<Animator>();
-			if (animator != null)
-				animator.SetTrigger(label.ToString());
+			if (TryGetComponent<Animator>(out var animator))
+			{
+                animator.SetTrigger(label.ToString());
+			}
 
-			effectSettings.TryGetValue(animationLabel, out var settings);
+			effectSettings.TryGetValue(BgEffectSettingInner.AnimationLabelDefine.None, out var settings);
+            if (settings != null)
+                foreach (var setting in settings)
+                    if (setting != null && setting.gameObject != null)
+                    {
+                        setting.gameObject.SetActive(true);
+                        setting.PlayEffect(label);
+                        if (setting.particle != null)
+                            setting.particle.Play();
+                        if (setting.animator != null)
+                            setting.animator.SetTrigger(label.ToString());
+                        else
+                        {
+                            setting.gameObject.SetActive(false);
+                            setting.gameObject.SetActive(true);
+                        }
+                    }
+
+            effectSettings.TryGetValue(animationLabel, out settings);
             if (settings != null)
                 foreach (var setting in settings)
                     if (setting != null && setting.gameObject != null)

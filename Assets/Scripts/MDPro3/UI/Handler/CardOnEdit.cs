@@ -109,11 +109,14 @@ namespace MDPro3.UI
             while (TextureManager.container == null)
                 yield return null;
             GetComponent<RawImage>().texture = TextureManager.container.unknownCard.texture;
-            var ie = Program.I().texture_.LoadCardAsync(code);
-            while (ie.MoveNext())
+            var task = TextureManager.LoadCardAsync(code, true);
+            while (!task.IsCompleted)
                 yield return null;
-            GetComponent<RawImage>().texture = ie.Current;
+
             GetComponent<RawImage>().material = TextureManager.GetCardMaterial(code, true);
+            GetComponent<RawImage>().material.mainTexture = task.Result;
+            GetComponent<RawImage>().texture = task.Result;
+
             refreshed = true;
         }
 
