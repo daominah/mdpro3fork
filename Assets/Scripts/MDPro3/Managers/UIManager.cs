@@ -89,6 +89,8 @@ namespace MDPro3
             Program.I().cutin.Load();
             Program.I().mate.Load();
             Program.I().solo.Load();
+            Program.I().character.LoadCharacters();
+            Program.I().setting.RefreshCharacterName();
             Online.severSelectionsInitialized = false;
         }
 

@@ -98,21 +98,21 @@ namespace MDPro3
         }
 
         static List<int> commonBgms = new List<int>()
-    {
-        1,
-        2,
-        3,
-        4,
-        6,
-        7,
-        8,
-        10,
-        11,
-        12,
-        13,
-        15,
-        16
-    };
+        {
+            1,
+            2,
+            3,
+            4,
+            6,
+            7,
+            8,
+            10,
+            11,
+            12,
+            13,
+            15,
+            16
+        };
         static int currentBgmID = 1;
         static List<int> GetBgmByField(int fieldID)
         {

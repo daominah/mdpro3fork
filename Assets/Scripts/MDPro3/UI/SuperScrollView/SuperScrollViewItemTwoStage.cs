@@ -65,7 +65,14 @@ namespace MDPro3.UI
             if(enumerator != null)
                 StopCoroutine(enumerator);
             enumerator = RefreshAsync();
-            StartCoroutine(enumerator);
+            if(gameObject.activeInHierarchy)
+                StartCoroutine(enumerator);
+        }
+
+        private void OnEnable()
+        {
+            if(enumerator != null)
+                StartCoroutine(enumerator);
         }
 
         public virtual IEnumerator RefreshAsync()
@@ -78,7 +85,8 @@ namespace MDPro3.UI
 
         public void Dispose()
         {
-            StartCoroutine(DisposeAsync());
+            Destroy(gameObject);
+            //StartCoroutine(DisposeAsync());
         }
 
         public IEnumerator DisposeAsync()

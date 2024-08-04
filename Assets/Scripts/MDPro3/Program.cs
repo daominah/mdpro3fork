@@ -38,6 +38,7 @@ namespace MDPro3
         public SelectDeck selectDeck;
         public Setting setting;
         public Appearance appearance;
+        public SelectCharacter character;
         public OcgCore ocgcore;
         public Room room;
         public EditDeck editDeck;
@@ -57,7 +58,7 @@ namespace MDPro3
         public const string altArtPath = "Picture/Art2/";
         public const string cardPicPath = "Picture/CardGenerated";
         public const string closeupPath = "Picture/Closeup";
-        public const string dataPath = "Data";
+        public const string dataPath = "Data/";
         public const string localesPath = "Data/locales/";
         public const string configPath = "Data/config.conf";
         public const string lflistPath = "Data/lflist.conf";
@@ -101,6 +102,8 @@ namespace MDPro3
             InitializeAllManagers();
             InitializeAllServants();
             ReadParams();
+
+            VoiceHelper.LoadVoicesAndInfo();
         }
 
         public static bool exitOnReturn = false;
@@ -225,6 +228,7 @@ namespace MDPro3
             servants.Add(mate);
             servants.Add(selectDeck);
             servants.Add(appearance);
+            servants.Add(character);
             servants.Add(ocgcore);
             servants.Add(room);
             servants.Add(editDeck);

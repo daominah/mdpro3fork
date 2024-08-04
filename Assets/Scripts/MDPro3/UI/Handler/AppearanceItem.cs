@@ -344,7 +344,7 @@ namespace MDPro3.UI
         public void Show()
         {
             var group = GetComponent<CanvasGroup>();
-            group.alpha = 1;
+            group.alpha = 1.0f;
             group.interactable = true;
             group.blocksRaycasts = true;
         }

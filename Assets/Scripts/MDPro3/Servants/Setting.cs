@@ -342,6 +342,7 @@ namespace MDPro3
             base.ApplyShowArrangement(preDepth);
             if (preDepth <= depth)
                 defaultButton.SelectThis();
+            RefreshCharacterName();
         }
 
         public override void OnExit()
@@ -354,6 +355,20 @@ namespace MDPro3
         }
 
         #region setting
+
+        public void RefreshCharacterName()
+        {
+            if (Program.I().character.characters == null)
+                return;
+
+            var character = Config.Get("DuelCharacter0", "0001");
+            duelCharacterValue.text = Program.I().character.characters.GetName(character);
+            character = Config.Get("WatchCharacter0", "0001");
+            watchCharacterValue.text = Program.I().character.characters.GetName(character);
+            character = Config.Get("ReplayCharacter0", "0001");
+            replayCharacterValue.text = Program.I().character.characters.GetName(character);
+        }
+
         public void Save()
         {
             Config.SetFloat("BgmVol", bgmVol.value);
@@ -373,9 +388,6 @@ namespace MDPro3
             Config.Set("Language", InterString.GetOriginal(languageValue.text));
             Config.Set("Confirm", SaveBool(confirmValue.text));
 
-            Config.Set("DuelVoice", SaveBool(duelVoiceValue.text));
-            Config.Set("WatchVoice", SaveBool(watchVoiceValue.text));
-            Config.Set("ReplayVoice", SaveBool(replayVoiceValue.text));
             Config.Set("DuelSummon", SaveBool(duelSummonValue.text));
             Config.Set("WatchSummon", SaveBool(watchSummonValue.text));
             Config.Set("ReplaySummon", SaveBool(replaySummonValue.text));
@@ -1182,15 +1194,27 @@ namespace MDPro3
         }
         public void OnDuelCharacterClick()
         {
-
+            Program.I().character.SwitchCondition(SelectCharacter.Condition.Duel);
+            if (Program.I().currentSubServant == this)
+                Program.I().ShowSubServant(Program.I().character);
+            else
+                Program.I().ShiftToServant(Program.I().character);
         }
         public void OnWatchCharacterClick()
         {
-
+            Program.I().character.SwitchCondition(SelectCharacter.Condition.Watch);
+            if (Program.I().currentSubServant == this)
+                Program.I().ShowSubServant(Program.I().character);
+            else
+                Program.I().ShiftToServant(Program.I().character);
         }
         public void OnReplayCharacterClick()
         {
-
+            Program.I().character.SwitchCondition(SelectCharacter.Condition.Replay);
+            if (Program.I().currentSubServant == this)
+                Program.I().ShowSubServant(Program.I().character);
+            else
+                Program.I().ShiftToServant(Program.I().character);
         }
         public void OnDuelVoiceClick()
         {
@@ -1198,6 +1222,7 @@ namespace MDPro3
                 duelVoiceValue.text = InterString.Get("关");
             else
                 duelVoiceValue.text = InterString.Get("开");
+            Config.Set("DuelVoice", SaveBool(duelVoiceValue.text));
         }
         public void OnWatchVoiceClick()
         {
@@ -1205,6 +1230,7 @@ namespace MDPro3
                 watchVoiceValue.text = InterString.Get("关");
             else
                 watchVoiceValue.text = InterString.Get("开");
+            Config.Set("WatchVoice", SaveBool(watchVoiceValue.text));
         }
         public void OnReplayVoiceClick()
         {
@@ -1212,50 +1238,33 @@ namespace MDPro3
                 replayVoiceValue.text = InterString.Get("关");
             else
                 replayVoiceValue.text = InterString.Get("开");
+            Config.Set("ReplayVoice", SaveBool(replayVoiceValue.text));
         }
         public void OnDuelCloseupClick()
         {
             if (duelCloseupValue.text == InterString.Get("开"))
-            {
                 duelCloseupValue.text = InterString.Get("关");
-                Config.SetBool("DuelCloseup", false);
-            }
             else
-            {
                 duelCloseupValue.text = InterString.Get("开");
-                Config.SetBool("DuelCloseup", true);
-            }
-            Config.Save();
+            Config.Set("DuelCloseup", SaveBool(duelCloseupValue.text));
             Program.I().ocgcore.RefreshAllCardsLabel();
         }
         public void OnWatchCloseupClick()
         {
             if (watchCloseupValue.text == InterString.Get("开"))
-            {
                 watchCloseupValue.text = InterString.Get("关");
-                Config.SetBool("WatchCloseup", false);
-            }
             else
-            {
                 watchCloseupValue.text = InterString.Get("开");
-                Config.SetBool("WatchCloseup", true);
-            }
-            Config.Save();
+            Config.Set("WatchCloseup", SaveBool(watchCloseupValue.text));
             Program.I().ocgcore.RefreshAllCardsLabel();
         }
         public void OnReplayCloseupClick()
         {
             if (replayCloseupValue.text == InterString.Get("开"))
-            {
                 replayCloseupValue.text = InterString.Get("关");
-                Config.SetBool("ReplayCloseup", false);
-            }
             else
-            {
                 replayCloseupValue.text = InterString.Get("开");
-                Config.SetBool("ReplayCloseup", true);
-            }
-            Config.Save();
+            Config.Set("ReplayCloseup", SaveBool(replayCloseupValue.text));
             Program.I().ocgcore.RefreshAllCardsLabel();
         }
         public void OnDuelSummonClick()

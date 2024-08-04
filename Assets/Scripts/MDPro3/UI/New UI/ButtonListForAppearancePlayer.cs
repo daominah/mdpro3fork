@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 namespace MDPro3.UI
 {
     public class ButtonListForAppearancePlayer : ButtonList

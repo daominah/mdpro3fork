@@ -9,7 +9,7 @@ using UnityEngine.AddressableAssets;
 
 namespace MDPro3
 {
-    [CreateAssetMenu]
+    [CreateAssetMenu(fileName = "Items", menuName = "Scriptable Objects/Items")]
     public class Items : ScriptableObject
     {
         [Serializable]
@@ -96,7 +96,6 @@ namespace MDPro3
         public List<List<Item>> kinds;
 
         const string mapPath = "Data/items.txt";
-        const string ydkIdsPath = "Data/YdkIds.txt";
         public const string nullString = "coming soon";
         static string language = "";
         public const int randomCode = 9999;
@@ -109,7 +108,6 @@ namespace MDPro3
         Dictionary<string, int> maps = new Dictionary<string, int>();
         Dictionary<int, string> names = new Dictionary<int, string>();
         Dictionary<int, string> descriptions = new Dictionary<int, string>();
-        Dictionary<int, int> ydkIds = new Dictionary<int, int>();
         Dictionary<string, Sprite> cachedIcons = new Dictionary<string, Sprite>();
 
         static Items instance;
@@ -145,25 +143,6 @@ namespace MDPro3
                         catch(Exception e)
                         {
                             Debug.LogError("Read items.txt Error: " + e);
-                        }
-                    }
-                }
-
-                all = File.ReadAllText(ydkIdsPath);
-                lines = all.Replace("\r", string.Empty).Split('\n');
-                foreach (var line in lines)
-                {
-                    var pair = line.Split(' ');
-                    if (pair.Length > 1)
-                    {
-                        try
-                        {
-                            if(!ydkIds.ContainsKey(int.Parse(pair[1])))
-                                ydkIds.Add(int.Parse(pair[1]), int.Parse(pair[0]));
-                        }
-                        catch (Exception e)
-                        {
-                            Debug.LogError("Read YdkIds.txt Error: " + e);
                         }
                     }
                 }
@@ -273,27 +252,14 @@ namespace MDPro3
                 else 
                     returnValue = mName;
             }
-            string pattern = @"<card mrk='(\d+)'/>";
-            return Regex.Replace(returnValue, pattern, EvaluatorGetNameFromNumber);
+            return YdkIds.ReplaceWithCardName(returnValue);
         }
         string GetDescription(int code)
         {
             descriptions.TryGetValue(code, out var returnValue);
             if (string.IsNullOrEmpty(returnValue))
                 return nullString;
-            returnValue = returnValue.Replace(" get=\'name\'", string.Empty);
-            string pattern = @"<card mrk='(\d+)'/>";
-            return Regex.Replace(returnValue, pattern, EvaluatorGetNameFromNumber);
-        }
-        string EvaluatorGetNameFromNumber(Match match)
-        {
-            string numberString = match.Groups[1].Value;
-            int cardCode = int.Parse(numberString);
-            ydkIds.TryGetValue(cardCode, out var code);
-            if(code != 0)
-                return CardsManager.Get(code).Name;
-            else
-                return CardsManager.Get(cardCode).Name;
+            return YdkIds.ReplaceWithCardName(returnValue);
         }
 
         public string WallpaperCodeToPath(string code)
