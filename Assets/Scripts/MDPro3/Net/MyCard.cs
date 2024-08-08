@@ -167,7 +167,7 @@ namespace MDPro3.Net
                     if(downloadImage.width > avatarSize)
                     {
                         returnValue = new Texture2D(avatarSize, avatarSize);
-                        var resizePixels = Tools.ResizePixels(downloadImage.GetPixels(), downloadImage.width, downloadImage.height, avatarSize, avatarSize);
+                        var resizePixels = TextureManager.ResizePixels(downloadImage.GetPixels(), downloadImage.width, downloadImage.height, avatarSize, avatarSize);
                         returnValue.SetPixels(resizePixels);
                         returnValue.Apply();
                         UnityEngine.Object.Destroy(downloadImage);

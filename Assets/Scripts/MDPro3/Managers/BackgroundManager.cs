@@ -51,7 +51,7 @@ namespace MDPro3
             if (id == 0)
             {
                 var random = Random.Range(0, backgrounds.Count);
-                id = Tools.GetNthElement(backgrounds, random).Key;
+                id = Tools.GetNthDictionaryElement(backgrounds, random).Key;
             }
 
             cid = id;
@@ -109,14 +109,14 @@ namespace MDPro3
                 int newWidth = Mathf.RoundToInt(load.Result.width * (targetHeight / (float)load.Result.height));
                 scaledTexture = new Texture2D(newWidth, targetHeight);
                 var pixels = load.Result.GetPixels();
-                scaledTexture.SetPixels(Tools.ResizePixels(pixels, load.Result.width, load.Result.height, newWidth, targetHeight));
+                scaledTexture.SetPixels(TextureManager.ResizePixels(pixels, load.Result.width, load.Result.height, newWidth, targetHeight));
                 scaledTexture.Apply();
             }
             else
                 scaledTexture = load.Result;
 
             if (renderer != null)
-                renderer.sprite = Tools.Texture2Sprite(scaledTexture);
+                renderer.sprite = TextureManager.Texture2Sprite(scaledTexture);
             if(id == 9)
                 renderer.material.SetTexture("_MainTex01", scaledTexture);
         }

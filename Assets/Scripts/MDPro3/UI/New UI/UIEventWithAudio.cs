@@ -41,7 +41,7 @@ namespace MDPro3.UI
             if (audioType == AudioType.SE)
                 AudioManager.PlaySE(path);
             else if (audioType == AudioType.Voice)
-                AudioManager.PlayVoice(path);
+                AudioManager.PlayVoiceByPath(path);
         }
 
     }

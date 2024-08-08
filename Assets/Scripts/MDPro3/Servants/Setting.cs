@@ -361,11 +361,11 @@ namespace MDPro3
             if (Program.I().character.characters == null)
                 return;
 
-            var character = Config.Get("DuelCharacter0", "0001");
+            var character = Config.Get("DuelCharacter0", VoiceHelper.defaultCharacter);
             duelCharacterValue.text = Program.I().character.characters.GetName(character);
-            character = Config.Get("WatchCharacter0", "0001");
+            character = Config.Get("WatchCharacter0", VoiceHelper.defaultCharacter);
             watchCharacterValue.text = Program.I().character.characters.GetName(character);
-            character = Config.Get("ReplayCharacter0", "0001");
+            character = Config.Get("ReplayCharacter0", VoiceHelper.defaultCharacter);
             replayCharacterValue.text = Program.I().character.characters.GetName(character);
         }
 
@@ -1223,6 +1223,8 @@ namespace MDPro3
             else
                 duelVoiceValue.text = InterString.Get("开");
             Config.Set("DuelVoice", SaveBool(duelVoiceValue.text));
+
+            Program.I().ocgcore.CheckCharaFace();
         }
         public void OnWatchVoiceClick()
         {
@@ -1231,6 +1233,8 @@ namespace MDPro3
             else
                 watchVoiceValue.text = InterString.Get("开");
             Config.Set("WatchVoice", SaveBool(watchVoiceValue.text));
+
+            Program.I().ocgcore.CheckCharaFace();
         }
         public void OnReplayVoiceClick()
         {
@@ -1239,6 +1243,8 @@ namespace MDPro3
             else
                 replayVoiceValue.text = InterString.Get("开");
             Config.Set("ReplayVoice", SaveBool(replayVoiceValue.text));
+
+            Program.I().ocgcore.CheckCharaFace();
         }
         public void OnDuelCloseupClick()
         {

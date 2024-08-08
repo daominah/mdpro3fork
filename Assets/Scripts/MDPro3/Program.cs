@@ -103,7 +103,7 @@ namespace MDPro3
             InitializeAllServants();
             ReadParams();
 
-            VoiceHelper.LoadVoicesAndInfo();
+            //VoiceHelper.ExportAllCardsNotFound();
         }
 
         public static bool exitOnReturn = false;

@@ -536,7 +536,7 @@ namespace MDPro3
                 while(!task.IsCompleted)
                     yield return null;
                 manager.GetElement<Image>("IconMate").color = Color.white;
-                manager.GetElement<Image>("IconMate").sprite = Tools.Texture2Sprite(task.Result);
+                manager.GetElement<Image>("IconMate").sprite = TextureManager.Texture2Sprite(task.Result);
             }
         }
         void Dispose()

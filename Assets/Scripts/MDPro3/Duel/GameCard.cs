@@ -79,8 +79,6 @@ namespace MDPro3
         bool hover;
         bool hoving;
 
-        bool needRefresh;
-
         private void LateUpdate()
         {
             if (model != null)
@@ -876,9 +874,15 @@ namespace MDPro3
 
         public bool InPendulumZone()
         {
+            return InPendulumZoneIf(p, data.Id);
+        }
+
+        public static bool InPendulumZoneIf(GPS p, int code)
+        {
+            var data = CardsManager.Get(code);
             if ((p.location & (uint)CardLocation.SpellZone) == 0)
                 return false;
-            if(Program.I().ocgcore.MasterRule > 3)
+            if (Program.I().ocgcore.MasterRule > 3)
             {
                 if (p.sequence != 0 && p.sequence != 4)
                     return false;
@@ -894,7 +898,7 @@ namespace MDPro3
 
         public GPS cacheP;
         bool inAnimation;
-        static uint lastMovedLocation;
+
         public float Move(GPS gps, bool rush = false, float wait = 0f, float overrideMoveTime = 0)
         {
             Program.I().ocgcore.lastMoveCard = this;

@@ -7,6 +7,9 @@ public class DuelPrefabContainer : ScriptableObject
     public GameObject cardModel;
     public GameObject duelButton;
     public GameObject duelLpText;
+    public GameObject duelChatItemMe;
+    public GameObject duelChatItemOp;
+
     [Header("Duel Phase")]
     public GameObject duelDrawPhaseNear;
     public GameObject duelDrawPhaseFar;

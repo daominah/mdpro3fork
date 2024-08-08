@@ -190,6 +190,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8f058cbdbf02f4848b0b623b8bbf6e92
+    m_Address: DuelChatFrame1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a561565c90c15db40b7e636d5b49c453
     m_Address: card_frame18
     m_ReadOnly: 0
@@ -232,6 +237,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b91e64d35f635f7499e24b2e9d931e4a
     m_Address: card_frame16
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bc1d3998cfb95d347ac15b01aad285e8
+    m_Address: DuelChatFrame0
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -280,6 +290,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e8c36c64e8901df418ca2862a6753e41
+    m_Address: SpriteAtlas_DuelLinks_Chara001
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e93a9b07957684c45a627ce0ebd77c23
     m_Address: card_frame12
     m_ReadOnly: 0
@@ -316,7 +331,7 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: fc01ce42cf093a74c8b48797c496c03f
-    m_Address: SpriteAtlas_DuelLinks
+    m_Address: SpriteAtlas_DuelLinks_Logo
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

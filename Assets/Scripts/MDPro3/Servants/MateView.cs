@@ -114,6 +114,8 @@ namespace MDPro3
         {
             base.ApplyShowArrangement(preDepth);
             Program.I().camera_.light.gameObject.SetActive(true);
+            Program.I().camera_.light.transform.GetChild(0).localEulerAngles = new Vector3(123f, -28f, -40f);
+            Program.I().camera_.light.transform.GetChild(1).localEulerAngles = new Vector3(-80f, -140f, 0f);
             CameraManager.DuelOverlay2DPlus();
             CameraReset();
             AudioManager.PlayBGM("BGM_OUT_TUTORIAL_2", 0.5f);
@@ -132,6 +134,8 @@ namespace MDPro3
             base.ApplyHideArrangement(preDepth);
             CameraManager.DuelOverlay2DMinus();
             Program.I().camera_.light.gameObject.SetActive(false);
+            Program.I().camera_.light.transform.GetChild(0).localEulerAngles = new Vector3(96f, -28f, -40f);
+            Program.I().camera_.light.transform.GetChild(1).localEulerAngles = new Vector3(-15f, -45f, 0f);
             if (mate != null)
                 Destroy(mate.gameObject);
             AudioManager.ResetSESource();

@@ -1,8 +1,10 @@
 using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.Networking;
 
 namespace MDPro3
 {
@@ -139,7 +141,7 @@ namespace MDPro3
             else
             {
                 var list = GetBgmByField(fieldID);
-                currentBgmID = list[Random.Range(0, list.Count)];
+                currentBgmID = list[UnityEngine.Random.Range(0, list.Count)];
                 PlayBGM("BGM_DUEL_NORMAL_" + currentBgmID.ToString("D2"));
             }
         }
@@ -200,7 +202,7 @@ namespace MDPro3
         }
         public static void PlayRandomKeyCardBGM()
         {
-            var bgm = "BGM_DUEL_KEYCARD_" + commonBgms[Random.Range(0, commonBgms.Count)].ToString("D2");
+            var bgm = "BGM_DUEL_KEYCARD_" + commonBgms[UnityEngine.Random.Range(0, commonBgms.Count)].ToString("D2");
             PlayBGM(bgm);
         }
 
@@ -238,9 +240,14 @@ namespace MDPro3
             //    bgm.time = loopEnd - 5;
         }
 
-        public static void PlayVoice(string path)
+        public static void PlayVoiceByPath(string path)
         {
 
+        }
+
+        public static void PlayVoice(AudioClip clip)
+        {
+            voice.PlayOneShot(clip);
         }
 
         public static void SetSeVol(float vol)
@@ -276,65 +283,89 @@ namespace MDPro3
         }
 
         readonly static List<BGMLoop> loops = new List<BGMLoop>
-    {
-        new BGMLoop{name = "BGM_MENU_01", startTime = 12.433f, endTime = 120 + 31.100f },
-        new BGMLoop{name = "BGM_MENU_02", startTime = 15.687f, endTime = 120 + 2.354f },
-        new BGMLoop{name = "BGM_DUEL_NORMAL_01", startTime = 9.600f, endTime = 60 + 55.200f },
-        new BGMLoop{name = "BGM_DUEL_NORMAL_02", startTime = 16.500f, endTime = 60 + 48.500f },
-        new BGMLoop{name = "BGM_DUEL_NORMAL_03", startTime = 5.727f, endTime = 120 + 11.444f },
-        new BGMLoop{name = "BGM_DUEL_NORMAL_04", startTime = 13.518f, endTime = 60 + 57.300f },
-        new BGMLoop{name = "BGM_DUEL_NORMAL_05", startTime = 11.208f, endTime = 120 + 22.875f },
-        new BGMLoop{name = "BGM_DUEL_NORMAL_06", startTime = 9.527f, endTime = 60 + 41.906f },
-        new BGMLoop{name = "BGM_DUEL_NORMAL_07", startTime = 17.456f, endTime = 120 +9.247f },
-        new BGMLoop{name = "BGM_DUEL_NORMAL_08", startTime = 18.400f, endTime = 120 + 12.400f },
-        new BGMLoop{name = "BGM_DUEL_NORMAL_09", startTime = 6.200f, endTime = 60 +51.400f },
-        new BGMLoop{name = "BGM_DUEL_NORMAL_10", startTime = 9.989f, endTime = 60 + 51.636f },
-        new BGMLoop{name = "BGM_DUEL_NORMAL_11", startTime = 2.378f, endTime = 60 +29.650f },
-        new BGMLoop{name = "BGM_DUEL_NORMAL_12", startTime = 7.500f, endTime = 60 +47.800f },
-        new BGMLoop{name = "BGM_DUEL_NORMAL_13", startTime = 7.433f, endTime = 60 + 54.741f },
-        new BGMLoop{name = "BGM_DUEL_NORMAL_14", startTime = 5.538f, endTime = 60 +34.142f },
-        new BGMLoop{name = "BGM_DUEL_NORMAL_15", startTime = 8.455f, endTime = 60 +34.855f },
-        new BGMLoop{name = "BGM_DUEL_NORMAL_16", startTime = 14.440f, endTime = 60 + 44.440f },
-        new BGMLoop{name = "BGM_DUEL_KEYCARD_01", startTime = 11.744f, endTime = 60 + 49.390f },
-        new BGMLoop{name = "BGM_DUEL_KEYCARD_02", startTime = 10.500f, endTime = 60 + 46.500f },
-        new BGMLoop{name = "BGM_DUEL_KEYCARD_03", startTime = 13.697f, endTime = 60 + 38.150f },
-        new BGMLoop{name = "BGM_DUEL_KEYCARD_04", startTime = 7.032f, endTime = 60 + 49.888f },
-        new BGMLoop{name = "BGM_DUEL_KEYCARD_05", startTime = 12.495f, endTime = 60 +23.079f },
-        new BGMLoop{name = "BGM_DUEL_KEYCARD_06", startTime = 11.400f, endTime = 60 + 38.400f },
-        new BGMLoop{name = "BGM_DUEL_KEYCARD_07", startTime = 6.518f, endTime = 60 + 24.928f },
-        new BGMLoop{name = "BGM_DUEL_KEYCARD_08", startTime = 13.783f, endTime = 60 + 57.727f },
-        new BGMLoop{name = "BGM_DUEL_KEYCARD_09", startTime = 3.800f, endTime = 60 + 20.300f },
-        new BGMLoop{name = "BGM_DUEL_KEYCARD_10", startTime = 17.599f, endTime = 60 + 40.508f },
-        new BGMLoop{name = "BGM_DUEL_KEYCARD_11", startTime = 11.738f, endTime = 60 + 57.104f },
-        new BGMLoop{name = "BGM_DUEL_KEYCARD_12", startTime = 13.630f, endTime = 60 + 45.684f },
-        new BGMLoop{name = "BGM_DUEL_KEYCARD_13", startTime = 18.519f, endTime = 60 + 55.734f },
-        new BGMLoop{name = "BGM_DUEL_KEYCARD_14", startTime = 2.269f, endTime = 60 + 35.830f },
-        new BGMLoop{name = "BGM_DUEL_KEYCARD_15", startTime = 11.369f, endTime = 60 + 41.369f },
-        new BGMLoop{name = "BGM_DUEL_KEYCARD_16", startTime = 6.348f, endTime = 60 + 36.151f },
-        new BGMLoop{name = "BGM_DUEL_CLIMAX_01", startTime = 6.300f, endTime = 60 + 37.800f },
-        new BGMLoop{name = "BGM_DUEL_CLIMAX_02", startTime = 12.883f, endTime = 60 + 53.958f },
-        new BGMLoop{name = "BGM_DUEL_CLIMAX_03", startTime = 12.579f, endTime = 120 + 7.444f },
-        new BGMLoop{name = "BGM_DUEL_CLIMAX_04", startTime = 3.325f, endTime = 60 + 31.047f },
-        new BGMLoop{name = "BGM_DUEL_CLIMAX_05", startTime = 5.424f, endTime = 60 + 37.188f },
-        new BGMLoop{name = "BGM_DUEL_CLIMAX_06", startTime = 5.896f, endTime = 60 + 26.184f },
-        new BGMLoop{name = "BGM_DUEL_CLIMAX_07", startTime = 11.500f, endTime = 60 + 31.500f },
-        new BGMLoop{name = "BGM_DUEL_CLIMAX_08", startTime = 15.547f, endTime = 60 + 48.505f },
-        new BGMLoop{name = "BGM_DUEL_CLIMAX_09", startTime = 6.300f, endTime = 60 + 28.800f },
-        new BGMLoop{name = "BGM_DUEL_CLIMAX_10", startTime = 2.500f, endTime = 60 + 34.500f },
-        new BGMLoop{name = "BGM_DUEL_CLIMAX_11", startTime = 13.223f, endTime = 60 + 43.955f },
-        new BGMLoop{name = "BGM_DUEL_CLIMAX_12", startTime = 6.448f, endTime = 60 + 34.252f },
-        new BGMLoop{name = "BGM_DUEL_CLIMAX_13", startTime = 5.637f, endTime = 60 + 50.429f },
-        new BGMLoop{name = "BGM_DUEL_CLIMAX_14", startTime = 12.169f, endTime = 60 + 48.165f },
-        new BGMLoop{name = "BGM_DUEL_CLIMAX_15", startTime = 7.056f, endTime = 60 + 39.847f },
-        new BGMLoop{name = "BGM_DUEL_CLIMAX_16", startTime = 9.606f, endTime = 60 + 28.067f },
-        new BGMLoop{name = "BGM_DUEL_EX_01", startTime = 21.014f, endTime = 60 + 57.026f },
-        new BGMLoop{name = "BGM_DUEL_EX_02_NORMAL", startTime = 2.466f, endTime = 60 + 47.193f },
-        new BGMLoop{name = "BGM_DUEL_EX_02_KEYCARD", startTime = 6.941f, endTime = 60 + 46.766f },
-        new BGMLoop{name = "BGM_DUEL_EX_02_CLIMAX", startTime = 2.346f, endTime = 60 + 43.210f },
-        new BGMLoop{name = "BGM_DUEL_EX_03_NORMAL", startTime = 11.478f, endTime = 60 + 56.473f },
-        new BGMLoop{name = "BGM_DUEL_EX_03_KEYCARD", startTime = 12.463f, endTime = 60 + 46.098f },
-        new BGMLoop{name = "BGM_DUEL_EX_03_CLIMAX", startTime = 1.815f, endTime = 120 + 8.792f },
-        new BGMLoop{name = "BGM_OUT_TUTORIAL_2", startTime = 7.480f, endTime = 60 + 22.480f },
-    };
+        {
+            new BGMLoop{name = "BGM_MENU_01", startTime = 12.433f, endTime = 120 + 31.100f },
+            new BGMLoop{name = "BGM_MENU_02", startTime = 15.687f, endTime = 120 + 2.354f },
+            new BGMLoop{name = "BGM_DUEL_NORMAL_01", startTime = 9.600f, endTime = 60 + 55.200f },
+            new BGMLoop{name = "BGM_DUEL_NORMAL_02", startTime = 16.500f, endTime = 60 + 48.500f },
+            new BGMLoop{name = "BGM_DUEL_NORMAL_03", startTime = 5.727f, endTime = 120 + 11.444f },
+            new BGMLoop{name = "BGM_DUEL_NORMAL_04", startTime = 13.518f, endTime = 60 + 57.300f },
+            new BGMLoop{name = "BGM_DUEL_NORMAL_05", startTime = 11.208f, endTime = 120 + 22.875f },
+            new BGMLoop{name = "BGM_DUEL_NORMAL_06", startTime = 9.527f, endTime = 60 + 41.906f },
+            new BGMLoop{name = "BGM_DUEL_NORMAL_07", startTime = 17.456f, endTime = 120 +9.247f },
+            new BGMLoop{name = "BGM_DUEL_NORMAL_08", startTime = 18.400f, endTime = 120 + 12.400f },
+            new BGMLoop{name = "BGM_DUEL_NORMAL_09", startTime = 6.200f, endTime = 60 +51.400f },
+            new BGMLoop{name = "BGM_DUEL_NORMAL_10", startTime = 9.989f, endTime = 60 + 51.636f },
+            new BGMLoop{name = "BGM_DUEL_NORMAL_11", startTime = 2.378f, endTime = 60 +29.650f },
+            new BGMLoop{name = "BGM_DUEL_NORMAL_12", startTime = 7.500f, endTime = 60 +47.800f },
+            new BGMLoop{name = "BGM_DUEL_NORMAL_13", startTime = 7.433f, endTime = 60 + 54.741f },
+            new BGMLoop{name = "BGM_DUEL_NORMAL_14", startTime = 5.538f, endTime = 60 +34.142f },
+            new BGMLoop{name = "BGM_DUEL_NORMAL_15", startTime = 8.455f, endTime = 60 +34.855f },
+            new BGMLoop{name = "BGM_DUEL_NORMAL_16", startTime = 14.440f, endTime = 60 + 44.440f },
+            new BGMLoop{name = "BGM_DUEL_KEYCARD_01", startTime = 11.744f, endTime = 60 + 49.390f },
+            new BGMLoop{name = "BGM_DUEL_KEYCARD_02", startTime = 10.500f, endTime = 60 + 46.500f },
+            new BGMLoop{name = "BGM_DUEL_KEYCARD_03", startTime = 13.697f, endTime = 60 + 38.150f },
+            new BGMLoop{name = "BGM_DUEL_KEYCARD_04", startTime = 7.032f, endTime = 60 + 49.888f },
+            new BGMLoop{name = "BGM_DUEL_KEYCARD_05", startTime = 12.495f, endTime = 60 +23.079f },
+            new BGMLoop{name = "BGM_DUEL_KEYCARD_06", startTime = 11.400f, endTime = 60 + 38.400f },
+            new BGMLoop{name = "BGM_DUEL_KEYCARD_07", startTime = 6.518f, endTime = 60 + 24.928f },
+            new BGMLoop{name = "BGM_DUEL_KEYCARD_08", startTime = 13.783f, endTime = 60 + 57.727f },
+            new BGMLoop{name = "BGM_DUEL_KEYCARD_09", startTime = 3.800f, endTime = 60 + 20.300f },
+            new BGMLoop{name = "BGM_DUEL_KEYCARD_10", startTime = 17.599f, endTime = 60 + 40.508f },
+            new BGMLoop{name = "BGM_DUEL_KEYCARD_11", startTime = 11.738f, endTime = 60 + 57.104f },
+            new BGMLoop{name = "BGM_DUEL_KEYCARD_12", startTime = 13.630f, endTime = 60 + 45.684f },
+            new BGMLoop{name = "BGM_DUEL_KEYCARD_13", startTime = 18.519f, endTime = 60 + 55.734f },
+            new BGMLoop{name = "BGM_DUEL_KEYCARD_14", startTime = 2.269f, endTime = 60 + 35.830f },
+            new BGMLoop{name = "BGM_DUEL_KEYCARD_15", startTime = 11.369f, endTime = 60 + 41.369f },
+            new BGMLoop{name = "BGM_DUEL_KEYCARD_16", startTime = 6.348f, endTime = 60 + 36.151f },
+            new BGMLoop{name = "BGM_DUEL_CLIMAX_01", startTime = 6.300f, endTime = 60 + 37.800f },
+            new BGMLoop{name = "BGM_DUEL_CLIMAX_02", startTime = 12.883f, endTime = 60 + 53.958f },
+            new BGMLoop{name = "BGM_DUEL_CLIMAX_03", startTime = 12.579f, endTime = 120 + 7.444f },
+            new BGMLoop{name = "BGM_DUEL_CLIMAX_04", startTime = 3.325f, endTime = 60 + 31.047f },
+            new BGMLoop{name = "BGM_DUEL_CLIMAX_05", startTime = 5.424f, endTime = 60 + 37.188f },
+            new BGMLoop{name = "BGM_DUEL_CLIMAX_06", startTime = 5.896f, endTime = 60 + 26.184f },
+            new BGMLoop{name = "BGM_DUEL_CLIMAX_07", startTime = 11.500f, endTime = 60 + 31.500f },
+            new BGMLoop{name = "BGM_DUEL_CLIMAX_08", startTime = 15.547f, endTime = 60 + 48.505f },
+            new BGMLoop{name = "BGM_DUEL_CLIMAX_09", startTime = 6.300f, endTime = 60 + 28.800f },
+            new BGMLoop{name = "BGM_DUEL_CLIMAX_10", startTime = 2.500f, endTime = 60 + 34.500f },
+            new BGMLoop{name = "BGM_DUEL_CLIMAX_11", startTime = 13.223f, endTime = 60 + 43.955f },
+            new BGMLoop{name = "BGM_DUEL_CLIMAX_12", startTime = 6.448f, endTime = 60 + 34.252f },
+            new BGMLoop{name = "BGM_DUEL_CLIMAX_13", startTime = 5.637f, endTime = 60 + 50.429f },
+            new BGMLoop{name = "BGM_DUEL_CLIMAX_14", startTime = 12.169f, endTime = 60 + 48.165f },
+            new BGMLoop{name = "BGM_DUEL_CLIMAX_15", startTime = 7.056f, endTime = 60 + 39.847f },
+            new BGMLoop{name = "BGM_DUEL_CLIMAX_16", startTime = 9.606f, endTime = 60 + 28.067f },
+            new BGMLoop{name = "BGM_DUEL_EX_01", startTime = 21.014f, endTime = 60 + 57.026f },
+            new BGMLoop{name = "BGM_DUEL_EX_02_NORMAL", startTime = 2.466f, endTime = 60 + 47.193f },
+            new BGMLoop{name = "BGM_DUEL_EX_02_KEYCARD", startTime = 6.941f, endTime = 60 + 46.766f },
+            new BGMLoop{name = "BGM_DUEL_EX_02_CLIMAX", startTime = 2.346f, endTime = 60 + 43.210f },
+            new BGMLoop{name = "BGM_DUEL_EX_03_NORMAL", startTime = 11.478f, endTime = 60 + 56.473f },
+            new BGMLoop{name = "BGM_DUEL_EX_03_KEYCARD", startTime = 12.463f, endTime = 60 + 46.098f },
+            new BGMLoop{name = "BGM_DUEL_EX_03_CLIMAX", startTime = 1.815f, endTime = 120 + 8.792f },
+            new BGMLoop{name = "BGM_OUT_TUTORIAL_2", startTime = 7.480f, endTime = 60 + 22.480f },
+        };
+
+
+        public static IEnumerator<AudioClip> LoadAudioFileAsync(string path, AudioType audioType)
+        {
+            string fullPath;
+#if !UNITY_EDITOR && UNITY_ANDROID
+            fullPath = "file://" + Application.persistentDataPath + Program.slash + path;
+#else
+            fullPath = Environment.CurrentDirectory + Program.slash + path;
+#endif
+
+            using var request = UnityWebRequestMultimedia.GetAudioClip(fullPath, audioType);
+            var wait = request.SendWebRequest();
+
+            while (!wait.isDone)
+                yield return null;
+
+            if(request.result == UnityWebRequest.Result.Success)
+            {
+                var audioClip = DownloadHandlerAudioClip.GetContent(request);
+                yield return audioClip;
+            }
+        }
+
     }
 }

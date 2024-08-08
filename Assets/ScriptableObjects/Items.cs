@@ -252,14 +252,14 @@ namespace MDPro3
                 else 
                     returnValue = mName;
             }
-            return YdkIds.ReplaceWithCardName(returnValue);
+            return Cid2Ydk.ReplaceWithCardName(returnValue);
         }
         string GetDescription(int code)
         {
             descriptions.TryGetValue(code, out var returnValue);
             if (string.IsNullOrEmpty(returnValue))
                 return nullString;
-            return YdkIds.ReplaceWithCardName(returnValue);
+            return Cid2Ydk.ReplaceWithCardName(returnValue);
         }
 
         public string WallpaperCodeToPath(string code)

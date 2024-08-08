@@ -43,7 +43,7 @@ namespace MDPro3.UI
 
             charaName = Program.I().character.characters.GetName(characterID);
             charaProfile = Program.I().character.characters.GetProfile(characterID);
-            charaProfile = YdkIds.ReplaceWithCardName(charaProfile);
+            charaProfile = Cid2Ydk.ReplaceWithCardName(charaProfile);
         }
 
         public void SelectThis()
@@ -59,6 +59,7 @@ namespace MDPro3.UI
             ShowChara002();
 
             Config.Set(Program.I().character.condition + "Character" + SelectCharacter.player, characterID);
+            Program.I().ocgcore.CheckCharaFace();
         }
 
         public void UnselectThis()

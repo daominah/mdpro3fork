@@ -823,5 +823,46 @@ namespace MDPro3
         }
         #endregion
 
+        #region Public Static Functions
+        public static Color[] ResizePixels(Color[] originalPixels, int originalWidth, int originalHeight, int newWidth, int newHeight)
+        {
+            Color[] newPixels = new Color[newWidth * newHeight];
+
+            for (int y = 0; y < newHeight; y++)
+            {
+                for (int x = 0; x < newWidth; x++)
+                {
+                    int origX = (int)((float)x / newWidth * originalWidth);
+                    int origY = (int)((float)y / newHeight * originalHeight);
+
+                    newPixels[y * newWidth + x] = originalPixels[origY * originalWidth + origX];
+                }
+            }
+
+            return newPixels;
+        }
+
+        public static Sprite Texture2Sprite(Texture2D texture)
+        {
+            if (texture == null)
+                return null;
+            var sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
+            return sprite;
+        }
+
+        public static void ReplaceTransparentPixelsWithColor(Texture2D texture, Color replacementColor)
+        {
+            Color32[] pixels = texture.GetPixels32();
+
+            for(int i = 0; i < pixels.Length; i++)
+                if (pixels[i].a == 0)
+                    pixels[i] = replacementColor;
+
+            texture.SetPixels32(pixels);
+            texture.Apply();
+        }
+
+        #endregion
+
     }
 }

@@ -20,12 +20,12 @@ using MDPro3.YGOSharp.OCGWrapper.Enums;
 using static YgomGame.Bg.BgEffectSettingInner;
 using MDPro3.UI;
 using MDPro3.Net;
-using YgomGame.Download;
 
 namespace MDPro3
 {
     public class OcgCore : Servant
     {
+        #region Reference
         [Header("Public Reference")]
         public DuelPrefabContainer container;
 
@@ -42,6 +42,7 @@ namespace MDPro3
         public CardList list;
         public DuelLog log;
         public RectTransform popup;
+        public GameObject buttons;
         public GameObject buttonStop;
         public GameObject buttonPlay;
         public GameObject buttonAcc;
@@ -105,6 +106,8 @@ namespace MDPro3
 
         public Action startCard;
 
+        #endregion
+
         #region Servants
         public override void Initialize()
         {
@@ -163,275 +166,7 @@ namespace MDPro3
                 Program.I().ShiftToServant(Program.I().online);
         }
 
-        public void OnStop()
-        {
-            pause = true;
-            buttonStop.SetActive(false);
-            buttonPlay.SetActive(true);
-        }
 
-        public void OnPlay()
-        {
-            pause = false;
-            buttonStop.SetActive(true);
-            buttonPlay.SetActive(false);
-
-        }
-
-        public bool accing;
-        public void OnAcc()
-        {
-            accing = true;
-            float targetSpeed = 2f;
-            switch (condition)
-            {
-                case Condition.Duel:
-                    targetSpeed = Config.GetFloat("DuelAcc", 2f);
-                    break;
-                case Condition.Watch:
-                    targetSpeed = Config.GetFloat("WatchAcc", 2f);
-                    break;
-                case Condition.Replay:
-                    targetSpeed = Config.GetFloat("ReplayAcc", 2f);
-                    break;
-            }
-
-#if UNITY_EDITOR
-            Program.I().timeScaleForEdit = targetSpeed;
-#else
-            Program.I().timeScale = targetSpeed;
-#endif
-
-            buttonAcc.SetActive(false);
-            buttonNor.SetActive(true);
-            SetBgTimeScale(1f / targetSpeed);
-        }
-        public void OnNor()
-        {
-            accing = false;
-            float targetSpeed = 1f;
-#if UNITY_EDITOR
-            Program.I().timeScaleForEdit = targetSpeed;
-#else
-            Program.I().timeScale = targetSpeed;
-#endif
-            buttonAcc.SetActive(true);
-            buttonNor.SetActive(false);
-            SetBgTimeScale(targetSpeed);
-        }
-
-        public void OnTiming()
-        {
-            chainCondition = (ChainCondition)(((int)chainCondition + 1) % 3);
-            SetTimingIcon();
-        }
-        public void OnAnnounceCard(string input)
-        {
-            var datas = CardsManager.AnnounceSearch(input, ES_searchCodes);
-            var max = datas.Count;
-            if (max > 49)
-                max = 40;
-            List<GameCard> cards = new List<GameCard>();
-            for (var i = 0; i < max; i++)
-            {
-                var p = new GPS
-                {
-                    controller = 0,
-                    location = (uint)CardLocation.Search,
-                    sequence = (uint)i,
-                    position = 0
-                };
-                var card = GCS_Create(p);
-                card.SetData(datas[i]);
-                cards.Add(card);
-            }
-            currentPopup.whenQuitDo = () => { ShowPopupSelectCard(InterString.Get("请选择需要宣言的卡片。"), cards, 1, 1, true, false); };
-        }
-        public void ClearAnnounceCards()
-        {
-            List<GameCard> needClean = new List<GameCard>();
-            foreach (var card in cards)
-                if (card.p.location == (uint)CardLocation.Search)
-                    needClean.Add(card);
-            foreach (var card in needClean)
-            {
-                cards.Remove(card);
-                card.Dispose();
-            }
-        }
-        void OnSaveReplay(string replayName)
-        {
-            TcpHelper.SaveRecord(replayName);
-            returnAction = null;
-            OnDuelResultConfirmed();
-        }
-
-        void OnGiveUpReplay()
-        {
-            returnAction = null;
-            OnDuelResultConfirmed();
-        }
-
-        public void OnForcedSaveReplay()
-        {
-            var selections = new List<string>()
-                    {
-                        InterString.Get("保存回放"),
-                        InterString.Get("保存"),
-                        InterString.Get("放弃"),
-                        Tools.GetTimeString()
-                    };
-            ShowPopupInput(selections, OnSaveReplay, OnGiveUpReplay, InputValidation.ValidationType.Path);
-        }
-
-        void SetTimingIcon()
-        {
-            var state = buttonTiming.spriteState;
-            switch (chainCondition)
-            {
-                case ChainCondition.No:
-                    buttonTiming.GetComponent<Image>().sprite = TextureManager.container.offTiming[0];
-                    state.highlightedSprite = TextureManager.container.offTiming[1];
-                    state.pressedSprite = TextureManager.container.offTiming[2];
-                    break;
-                case ChainCondition.Smart:
-                    buttonTiming.GetComponent<Image>().sprite = TextureManager.container.autoTiming[0];
-                    state.highlightedSprite = TextureManager.container.autoTiming[1];
-                    state.pressedSprite = TextureManager.container.autoTiming[2];
-                    break;
-                case ChainCondition.All:
-                    buttonTiming.GetComponent<Image>().sprite = TextureManager.container.onTiming[0];
-                    state.highlightedSprite = TextureManager.container.onTiming[1];
-                    state.pressedSprite = TextureManager.container.onTiming[2];
-                    break;
-            }
-            buttonTiming.spriteState = state;
-        }
-
-        public void CloseConnection()
-        {
-            if (TcpHelper.tcpClient != null)
-            {
-                if (TcpHelper.tcpClient.Connected)
-                {
-                    TcpHelper.tcpClient.Client.Shutdown(0);
-                    TcpHelper.tcpClient.Close();
-                }
-                TcpHelper.tcpClient = null;
-            }
-        }
-
-        public void OnDuelResultConfirmed(bool manual = false)
-        {
-            Program.I().room.joinWithReconnect = false;
-
-            if (Program.I().room.duelEnded
-                || surrendered
-                || TcpHelper.tcpClient == null
-                || !TcpHelper.tcpClient.Connected)
-            {
-                surrendered = false;
-                Program.I().room.duelEnded = false;
-                Program.I().room.needSide = false;
-                Program.I().room.sideWaitingObserver = false;
-                if (Program.I().currentSubServant != null)
-                {
-                    Program.I().currentSubServant.Hide(-1);
-                    Program.I().currentSubServant = null;
-                }
-                OnExit();
-                return;
-            }
-
-            if (Program.I().room.needSide)
-            {
-                Program.I().room.needSide = false;
-                MessageManager.Cast(InterString.Get("卡片历史中为您准备了对手上一局使用过的卡。"));
-                returnServant = Program.I().editDeck;
-                Program.I().editDeck.SwitchCondition(EditDeck.Condition.ChangeSide);
-                ReturnTo();
-                return;
-            }
-
-            if (condition == Condition.Watch)
-            {
-                if (manual)
-                {
-                    surrendered = false;
-                    Program.I().room.duelEnded = false;
-                    Program.I().room.needSide = false;
-                    Program.I().room.sideWaitingObserver = false;
-                    if (Program.I().currentSubServant != null)
-                    {
-                        Program.I().currentSubServant.Hide(-1);
-                        Program.I().currentSubServant = null;
-                    }
-                    TcpHelper.CtosMessage_LeaveGame();
-                    OnExit();
-                }
-                else
-                {
-                    if (duelEnded)
-                        Hide(0);
-                    else
-                    {
-                        field0.SetActive(false);
-                        field1.SetActive(false);
-                        field0.SetActive(true);
-                        field1.SetActive(true);
-                    }
-                }
-                return;
-            }
-
-            var selections = new List<string>
-            {
-                InterString.Get("投降"),
-                InterString.Get("您确定要投降吗？"),
-                InterString.Get("是"),
-                InterString.Get("否")
-            };
-            Action yes = () =>
-            {
-                surrendered = true;
-                if (TcpHelper.tcpClient != null && TcpHelper.tcpClient.Connected)
-                {
-                    TcpHelper.CtosMessage_Surrender();
-                    Program.I().ExitCurrentServant();
-                    if (Program.I().room.mode == 2 && !tagSurrendered)
-                        MessageManager.Cast(InterString.Get("您发起了投降。"));
-                }
-                else
-                    OnExit();
-            };
-            UIManager.ShowPopupYesOrNo(selections, yes, null);
-        }
-
-        public void OnLog(bool silent = false)
-        {
-            if (log.showing)
-            {
-                log.Hide(silent);
-                buttonLog.GetComponent<Image>().sprite = TextureManager.container.onLog[0];
-                var state = buttonLog.spriteState;
-                state.highlightedSprite = TextureManager.container.onLog[1];
-                state.pressedSprite = TextureManager.container.onLog[2];
-                state.disabledSprite = TextureManager.container.onLog[3];
-                buttonLog.spriteState = state;
-            }
-            else
-            {
-                log.Show();
-                buttonLog.GetComponent<Image>().sprite = TextureManager.container.offLog[0];
-                var state = buttonLog.spriteState;
-                state.highlightedSprite = TextureManager.container.offLog[1];
-                state.pressedSprite = TextureManager.container.offLog[2];
-                state.disabledSprite = TextureManager.container.offLog[3];
-                buttonLog.spriteState = state;
-
-                list.Hide();
-            }
-        }
 
         static float mate0ClickIntime;
         static float mate1ClickIntime;
@@ -457,6 +192,12 @@ namespace MDPro3
                 {
                     Program.I().timeline_.Skip();
                     return;
+                }
+
+                if(speaking && Program.InputGetMouse0Down)
+                {
+                    speaking = false;
+                    speakBreaking = true;
                 }
 
                 if (!EventSystem.current.IsPointerOverGameObject() && Program.hoverObject == null && Program.InputGetMouse0Up)
@@ -632,6 +373,7 @@ namespace MDPro3
                         greenBackground.gameObject.SetActive(false);
                         cg.alpha = 1f;
                         cg.interactable = true;
+                        cg.blocksRaycasts = true;
                         CameraManager.DuelOverlay3DMinus();
                     }
                     else
@@ -639,6 +381,7 @@ namespace MDPro3
                         greenBackground.gameObject.SetActive(true);
                         cg.alpha = 0f;
                         cg.interactable = false;
+                        cg.blocksRaycasts = false;
                         CameraManager.DuelOverlay3DPlus();
                     }
                 }
@@ -791,10 +534,15 @@ namespace MDPro3
             attackLine.SetActive(false);
             Destroy(duelFinalBlow, 0.5f);
             yield return new WaitForSeconds(transitionTime);
+            speaking = false;
+            speakBreaking = false;
+            waitForNoWaitingVoice = false;
+
             packages.Clear();
             allPackages.Clear();
             AudioManager.ResetSESource();
             mycardDuel = false;
+            CloseCharaFace();
 
             foreach (var o in turnEndDeleteObjects)
                 Destroy(o);
@@ -808,12 +556,11 @@ namespace MDPro3
             cards.Clear();
             pause = false;
             nextMoveAction = null;
+            cachedCharaFaces.Clear();
             GC.Collect();
             yield return null;
             CameraManager.ShiftTo2D();
-            cg.alpha = 0f;
-            cg.interactable = false;
-            cg.blocksRaycasts = false;
+            buttons.SetActive(false);
             log.ClearLog();
             Program.I().room.ChatOff(0);
             UIManager.UIBlackOut(transitionTime);
@@ -823,6 +570,10 @@ namespace MDPro3
 
         IEnumerator LoadAssets()
         {
+            cg.alpha = 0f;
+            cg.interactable = false;
+            cg.blocksRaycasts = false;
+
             messagePass = false;
             mate0Random = false;
             mate1Random = false;
@@ -844,9 +595,6 @@ namespace MDPro3
             UIManager.HideExitButton(0);
             UIManager.HideLine(0);
             AudioManager.StopBGM();
-            cg.alpha = 1f;
-            cg.interactable = true;
-            cg.blocksRaycasts = true;
 
             #region Attack Line
             if (attackLine == null)
@@ -1296,9 +1044,24 @@ namespace MDPro3
             #endregion
 
             GC.Collect();
-            yield return new WaitForSeconds(0.2f);
+            Preload();
+            yield return new WaitForSeconds(0.3f);
             //退出加载
+
+            if (NeedVoice())
+            {
+                cg.alpha = 1;
+                cg.interactable = true;
+                cg.blocksRaycasts = true;
+            }
+            buttons.SetActive(false);
+
+            UIManager.ShowFPSLeft();
+            UIManager.UIBlackOut(transitionTime);
             yield return new WaitForSeconds(transitionTime);
+
+            messagePass = true;
+
             field0Manager.PlayAnimatorTrigger(TriggerLabelDefine.StartToPhase1);
             grave0Manager.PlayAnimatorTrigger(TriggerLabelDefine.StartToPhase1);
             bgPhase0 = 1;
@@ -1317,9 +1080,6 @@ namespace MDPro3
             }
             if (timerHandler != null)
                 timerHandler.DuelStart();
-            UIManager.ShowFPSLeft();
-            messagePass = true;
-            yield return null;
 
             if (condition == Condition.Duel && Config.GetBool("DuelAutoAcc", false)
                 || condition == Condition.Watch && Config.GetBool("WatchAutoAcc", false)
@@ -1347,7 +1107,280 @@ namespace MDPro3
             }
         }
 
-#endregion
+        #endregion
+
+        #region Button Function
+        public void OnStop()
+        {
+            pause = true;
+            buttonStop.SetActive(false);
+            buttonPlay.SetActive(true);
+        }
+
+        public void OnPlay()
+        {
+            pause = false;
+            buttonStop.SetActive(true);
+            buttonPlay.SetActive(false);
+
+        }
+
+        public bool accing;
+        public void OnAcc()
+        {
+            accing = true;
+            float targetSpeed = 2f;
+            switch (condition)
+            {
+                case Condition.Duel:
+                    targetSpeed = Config.GetFloat("DuelAcc", 2f);
+                    break;
+                case Condition.Watch:
+                    targetSpeed = Config.GetFloat("WatchAcc", 2f);
+                    break;
+                case Condition.Replay:
+                    targetSpeed = Config.GetFloat("ReplayAcc", 2f);
+                    break;
+            }
+
+#if UNITY_EDITOR
+            Program.I().timeScaleForEdit = targetSpeed;
+#else
+            Program.I().timeScale = targetSpeed;
+#endif
+
+            buttonAcc.SetActive(false);
+            buttonNor.SetActive(true);
+            SetBgTimeScale(1f / targetSpeed);
+        }
+        public void OnNor()
+        {
+            accing = false;
+            float targetSpeed = 1f;
+#if UNITY_EDITOR
+            Program.I().timeScaleForEdit = targetSpeed;
+#else
+            Program.I().timeScale = targetSpeed;
+#endif
+            buttonAcc.SetActive(true);
+            buttonNor.SetActive(false);
+            SetBgTimeScale(targetSpeed);
+        }
+
+        public void OnTiming()
+        {
+            chainCondition = (ChainCondition)(((int)chainCondition + 1) % 3);
+            SetTimingIcon();
+        }
+        public void OnAnnounceCard(string input)
+        {
+            var datas = CardsManager.AnnounceSearch(input, ES_searchCodes);
+            var max = datas.Count;
+            if (max > 49)
+                max = 40;
+            List<GameCard> cards = new List<GameCard>();
+            for (var i = 0; i < max; i++)
+            {
+                var p = new GPS
+                {
+                    controller = 0,
+                    location = (uint)CardLocation.Search,
+                    sequence = (uint)i,
+                    position = 0
+                };
+                var card = GCS_Create(p);
+                card.SetData(datas[i]);
+                cards.Add(card);
+            }
+            currentPopup.whenQuitDo = () => { ShowPopupSelectCard(InterString.Get("请选择需要宣言的卡片。"), cards, 1, 1, true, false); };
+        }
+        public void ClearAnnounceCards()
+        {
+            List<GameCard> needClean = new List<GameCard>();
+            foreach (var card in cards)
+                if (card.p.location == (uint)CardLocation.Search)
+                    needClean.Add(card);
+            foreach (var card in needClean)
+            {
+                cards.Remove(card);
+                card.Dispose();
+            }
+        }
+        void OnSaveReplay(string replayName)
+        {
+            TcpHelper.SaveRecord(replayName);
+            returnAction = null;
+            OnDuelResultConfirmed();
+        }
+
+        void OnGiveUpReplay()
+        {
+            returnAction = null;
+            OnDuelResultConfirmed();
+        }
+
+        public void OnForcedSaveReplay()
+        {
+            var selections = new List<string>()
+                    {
+                        InterString.Get("保存回放"),
+                        InterString.Get("保存"),
+                        InterString.Get("放弃"),
+                        Tools.GetTimeString()
+                    };
+            ShowPopupInput(selections, OnSaveReplay, OnGiveUpReplay, InputValidation.ValidationType.Path);
+        }
+
+        void SetTimingIcon()
+        {
+            var state = buttonTiming.spriteState;
+            switch (chainCondition)
+            {
+                case ChainCondition.No:
+                    buttonTiming.GetComponent<Image>().sprite = TextureManager.container.offTiming[0];
+                    state.highlightedSprite = TextureManager.container.offTiming[1];
+                    state.pressedSprite = TextureManager.container.offTiming[2];
+                    break;
+                case ChainCondition.Smart:
+                    buttonTiming.GetComponent<Image>().sprite = TextureManager.container.autoTiming[0];
+                    state.highlightedSprite = TextureManager.container.autoTiming[1];
+                    state.pressedSprite = TextureManager.container.autoTiming[2];
+                    break;
+                case ChainCondition.All:
+                    buttonTiming.GetComponent<Image>().sprite = TextureManager.container.onTiming[0];
+                    state.highlightedSprite = TextureManager.container.onTiming[1];
+                    state.pressedSprite = TextureManager.container.onTiming[2];
+                    break;
+            }
+            buttonTiming.spriteState = state;
+        }
+
+        public void CloseConnection()
+        {
+            if (TcpHelper.tcpClient != null)
+            {
+                if (TcpHelper.tcpClient.Connected)
+                {
+                    TcpHelper.tcpClient.Client.Shutdown(0);
+                    TcpHelper.tcpClient.Close();
+                }
+                TcpHelper.tcpClient = null;
+            }
+        }
+
+        public void OnDuelResultConfirmed(bool manual = false)
+        {
+            Program.I().room.joinWithReconnect = false;
+
+            if (Program.I().room.duelEnded
+                || surrendered
+                || TcpHelper.tcpClient == null
+                || !TcpHelper.tcpClient.Connected)
+            {
+                surrendered = false;
+                Program.I().room.duelEnded = false;
+                Program.I().room.needSide = false;
+                Program.I().room.sideWaitingObserver = false;
+                if (Program.I().currentSubServant != null)
+                {
+                    Program.I().currentSubServant.Hide(-1);
+                    Program.I().currentSubServant = null;
+                }
+                OnExit();
+                return;
+            }
+
+            if (Program.I().room.needSide)
+            {
+                Program.I().room.needSide = false;
+                MessageManager.Cast(InterString.Get("卡片历史中为您准备了对手上一局使用过的卡。"));
+                returnServant = Program.I().editDeck;
+                Program.I().editDeck.SwitchCondition(EditDeck.Condition.ChangeSide);
+                ReturnTo();
+                return;
+            }
+
+            if (condition == Condition.Watch)
+            {
+                if (manual)
+                {
+                    surrendered = false;
+                    Program.I().room.duelEnded = false;
+                    Program.I().room.needSide = false;
+                    Program.I().room.sideWaitingObserver = false;
+                    if (Program.I().currentSubServant != null)
+                    {
+                        Program.I().currentSubServant.Hide(-1);
+                        Program.I().currentSubServant = null;
+                    }
+                    TcpHelper.CtosMessage_LeaveGame();
+                    OnExit();
+                }
+                else
+                {
+                    if (duelEnded)
+                        Hide(0);
+                    else
+                    {
+                        field0.SetActive(false);
+                        field1.SetActive(false);
+                        field0.SetActive(true);
+                        field1.SetActive(true);
+                    }
+                }
+                return;
+            }
+
+            var selections = new List<string>
+            {
+                InterString.Get("投降"),
+                InterString.Get("您确定要投降吗？"),
+                InterString.Get("是"),
+                InterString.Get("否")
+            };
+            Action yes = () =>
+            {
+                surrendered = true;
+                if (TcpHelper.tcpClient != null && TcpHelper.tcpClient.Connected)
+                {
+                    TcpHelper.CtosMessage_Surrender();
+                    Program.I().ExitCurrentServant();
+                    if (Program.I().room.mode == 2 && !tagSurrendered)
+                        MessageManager.Cast(InterString.Get("您发起了投降。"));
+                }
+                else
+                    OnExit();
+            };
+            UIManager.ShowPopupYesOrNo(selections, yes, null);
+        }
+
+        public void OnLog(bool silent = false)
+        {
+            if (log.showing)
+            {
+                log.Hide(silent);
+                buttonLog.GetComponent<Image>().sprite = TextureManager.container.onLog[0];
+                var state = buttonLog.spriteState;
+                state.highlightedSprite = TextureManager.container.onLog[1];
+                state.pressedSprite = TextureManager.container.onLog[2];
+                state.disabledSprite = TextureManager.container.onLog[3];
+                buttonLog.spriteState = state;
+            }
+            else
+            {
+                log.Show();
+                buttonLog.GetComponent<Image>().sprite = TextureManager.container.offLog[0];
+                var state = buttonLog.spriteState;
+                state.highlightedSprite = TextureManager.container.offLog[1];
+                state.pressedSprite = TextureManager.container.offLog[2];
+                state.disabledSprite = TextureManager.container.offLog[3];
+                buttonLog.spriteState = state;
+
+                list.Hide();
+            }
+        }
+
+        #endregion
 
         #region Message
         public List<GameCard> cards = new List<GameCard>();
@@ -1382,10 +1415,14 @@ namespace MDPro3
 
         public static bool messagePass;
         public static bool pause;
+        public static bool speaking;
+        static bool speakBreaking;
+        static bool waitForNoWaitingVoice;
 
         private List<Package> packages = new List<Package>();
         private readonly List<Package> allPackages = new List<Package>();
         public GameMessage currentMessage = GameMessage.Waiting;
+        public GameMessage lastMessage = GameMessage.Waiting;
         private int currentMessageIndex = -1;
         public static int MessageBeginTime;
         public ResponseHandler handler = null;
@@ -1612,160 +1649,6 @@ namespace MDPro3
             }
         }
 
-        private void Sibyl()
-        {
-            try
-            {
-                var messageIsHandled = false;
-                    GetConfirmedCard();
-
-                while (!pause && messagePass)
-                {
-                    if (packages.Count == 0) break;
-                    var currentPackage = packages[0];
-                    currentMessage = (GameMessage)currentPackage.Function;
-
-                    if (IfMessageImportant(currentPackage))
-                        if (Program.TimePassed() < MessageBeginTime)
-                            break;
-
-                    messageIsHandled = true;
-                    try
-                    {
-                        PracticalizeMessage(packages[0]);
-                    }
-                    catch (Exception e)
-                    {
-                        Debug.Log(e);
-                    }
-                    try
-                    {
-                        LogMessage(packages[0]);
-                    }
-                    catch (Exception e)
-                    {
-                        Debug.Log(e);
-                    }
-                    packages.RemoveAt(0);
-                }
-                if (messageIsHandled)
-                    if (condition == Condition.Replay)
-                        if (packages.Count == 0)
-                            MessageManager.Cast(InterString.Get("回放播放结束。"));
-            }
-            catch (Exception e)
-            {
-                Debug.Log(e);
-            }
-        }
-
-        bool CurrentChainDisabled(int currentChain)
-        {
-            for(int i = 0; i < packages.Count; i++)
-            {
-                if ((GameMessage)packages[i].Function == GameMessage.ChainDisabled)
-                {
-                    var r = packages[i].Data.reader;
-                    r.BaseStream.Seek(0, 0);
-                    if(r.ReadByte() == currentChain)
-                        return true;
-                }
-                if ((GameMessage)packages[i].Function == GameMessage.ChainSolved)
-                    return false;
-            }
-            return false;
-        }
-
-        private bool IfMessageImportant(Package package)
-        {
-            var r = package.Data.reader;
-            r.BaseStream.Seek(0, 0);
-            var msg = (GameMessage)packages[0].Function;
-            switch (msg)
-            {
-                case GameMessage.Start:
-                case GameMessage.Win:
-                case GameMessage.ConfirmDecktop:
-                case GameMessage.ConfirmCards:
-                case GameMessage.ShuffleDeck:
-                case GameMessage.ShuffleHand:
-                case GameMessage.SwapGraveDeck:
-                case GameMessage.ShuffleSetCard:
-                case GameMessage.ReverseDeck:
-                case GameMessage.DeckTop:
-                case GameMessage.NewTurn:
-                case GameMessage.NewPhase:
-                case GameMessage.Move:
-                case GameMessage.PosChange:
-                case GameMessage.Swap:
-                case GameMessage.RandomSelected:
-                case GameMessage.BecomeTarget:
-                case GameMessage.Draw:
-                case GameMessage.Recover:
-                case GameMessage.PayLpCost:
-                case GameMessage.TossCoin:
-                case GameMessage.TossDice:
-                case GameMessage.TagSwap:
-                case GameMessage.ReloadField:
-                case GameMessage.FlipSummoning:
-                case GameMessage.Summoning:
-                case GameMessage.SpSummoning:
-                case GameMessage.Chaining:
-                case GameMessage.Chained:
-                case GameMessage.ChainSolving:
-                case GameMessage.ChainSolved:
-                case GameMessage.ChainEnd:
-                case GameMessage.ChainNegated:
-                case GameMessage.ChainDisabled:
-                    return true;
-                case GameMessage.Damage:
-                    if (needDamageResponseInstant)
-                        return false;
-                    else
-                        return true;
-                case GameMessage.Hint:
-                    int type = r.ReadChar();
-                    if (type == 8) return true;
-                    if (type == 10) return true;
-                    return false;
-                case GameMessage.CardHint:
-                    r.ReadGPS();
-                    int ctype = r.ReadByte();
-                    if (ctype == 1) return true;
-                    return false;
-                case GameMessage.SelectBattleCmd:
-                case GameMessage.SelectIdleCmd:
-                case GameMessage.SelectEffectYn:
-                case GameMessage.SelectYesNo:
-                case GameMessage.SelectOption:
-                case GameMessage.SelectCard:
-                case GameMessage.SelectPosition:
-                case GameMessage.SelectTribute:
-                case GameMessage.SortChain:
-                case GameMessage.SelectCounter:
-                case GameMessage.SelectSum:
-                case GameMessage.SortCard:
-                case GameMessage.AnnounceRace:
-                case GameMessage.AnnounceAttrib:
-                case GameMessage.AnnounceCard:
-                case GameMessage.AnnounceNumber:
-                case GameMessage.SelectDisfield:
-                case GameMessage.SelectPlace:
-                case GameMessage.SelectChain:
-                case GameMessage.Attack:
-                    return true;
-            }
-            return false;
-        }
-
-        static string lastDuelLog;
-        private static void PrintDuelLog(string content)
-        {
-            lastDuelLog = content;
-            MessageManager.Cast(content);
-        }
-
-
         bool GetMessageConfig(int player)
         {
             bool isPlayer = true;
@@ -1792,16 +1675,6 @@ namespace MDPro3
             return true;
         }
 
-        public void Chat(int player, string content)
-        {
-            if (!GetMessageConfig(player))
-                return;
-            var playerName = Program.I().room.GetPlayerName(player);
-            if (player == 7 || player < 4)
-                MessageManager.Cast(playerName + ": " + content);
-            else
-                MessageManager.Cast(content);
-        }
 
         public void ForceMSquit()
         {
@@ -1815,12 +1688,62 @@ namespace MDPro3
             return condition != Condition.Duel;
         }
 
+        public Package GetNextPackage()
+        {
+            int target = 1;
+            while(packages.Count > target)
+            {
+                if (packages[target].Function != (int)GameMessage.UpdateData
+                    && packages[target].Function != (int)GameMessage.UpdateCard)
+                    return packages[target];
+                target++;
+            }
+            return null;
+        }
 
+        private void Sibyl()
+        {
+            try
+            {
+                var messageIsHandled = false;
+                GetConfirmedCard();
+
+                while (!pause && messagePass && !speaking && !speakBreaking && !waitForNoWaitingVoice)
+                {
+                    if (packages.Count == 0) break;
+                    var currentPackage = packages[0];
+                    currentMessage = (GameMessage)currentPackage.Function;
+
+                    if (IfMessageImportant(currentPackage))
+                        if (Program.TimePassed() < MessageBeginTime)
+                            break;
+
+                    messageIsHandled = true;
+
+                    VoiceMessage(packages[0]);
+
+                    lastMessage = currentMessage;
+                    packages.RemoveAt(0);
+                }
+                if (messageIsHandled)
+                    if (condition == Condition.Replay)
+                        if (packages.Count == 0)
+                            MessageManager.Cast(InterString.Get("回放播放结束。"));
+            }
+            catch (Exception e)
+            {
+                Debug.Log(e);
+            }
+        }
+
+        #endregion
+
+        #region Duel Log
         public int chainSolving;
         uint lastMoveReason;
         public bool ignoreNextMoveLog;
         uint lastSpSummonReason;
-        bool psum;
+        public bool psum;
         int cacheLp;
         private void LogMessage(Package p)
         {
@@ -2059,12 +1982,36 @@ namespace MDPro3
                         location = (uint)CardLocation.Hand,
                         controller = (uint)player
                     };
+                    List<int> codes = new List<int>();
                     for (var i = 0; i < count; i++)
                     {
                         code = r.ReadInt32() & 0x7fffffff;
-                        textReason = InterString.Get("抽卡");
+                        codes.Add(code);
+                    }
+                    bool allUnknown = true;
+                    for(var i = 0; i < codes.Count; i++)
+                        if (codes[i] != 0)
+                        {
+                            allUnknown = false;
+                            break;
+                        }
+
+                    if (allUnknown)
+                    {
+                        code = 0;
+                        textReason = InterString.Get("抽卡" + " x " + count);
                         AddSingleCardMessageToLog(code, gps, null, textReason);
                     }
+                    else
+                    {
+                        for (var i = 0; i < count; i++)
+                        {
+                            code = codes[i];
+                            textReason = InterString.Get("抽卡");
+                            AddSingleCardMessageToLog(code, gps, null, textReason);
+                        }
+                    }
+
                     break;
                 case GameMessage.RandomSelected:
                     player = LocalPlayer(r.ReadByte());
@@ -2341,6 +2288,7 @@ namespace MDPro3
                     if (psum)
                     {
                         psum = false;
+                        VoiceHelper.ignoreNextPendulumSummon = false;
                         cardsBeTarget.Clear();
                         item = Instantiate(chainSolving > 0 ? container.duelLogText2 : container.duelLogText);
                         item.transform.GetChild(1).GetComponent<Text>().text = InterString.Get("灵摆召唤结束");
@@ -2551,7 +2499,531 @@ namespace MDPro3
             item.transform.GetChild(6).GetComponent<Text>().text = lp.ToString();
             log.AddLog(item, indent);
         }
+        #endregion
 
+        #region PracticalizeTools
+
+        public int LocalPlayer(int p)
+        {
+            if (p == 0 || p == 1)
+            {
+                if (isFirst)
+                    return p;
+                return 1 - p;
+            }
+            return p;
+        }
+        public static int[] GetSelectLevelSum(List<GameCard> cards)
+        {
+            var sum1 = 0;
+            foreach (var card in cards)
+                sum1 += card.levelForSelect_1;
+            var sum2 = 0;
+            foreach (var card in cards)
+                sum2 += card.levelForSelect_2;
+            return new int[] { sum1, sum2 };
+        }
+
+        public static bool CheckSelectableInSum(List<GameCard> cards, GameCard card, List<GameCard> selectedCards, int max)
+        {
+            if(selectedCards.Count >= max)
+                return false;
+            bool returnValue = false;
+            var sum = GetSelectLevelSum(selectedCards);
+            if (sum[0] + card.levelForSelect_1 == Program.I().ocgcore.ES_level || sum[1] + card.levelForSelect_2 == Program.I().ocgcore.ES_level)
+                return true;
+            if (sum[0] + card.levelForSelect_1 > Program.I().ocgcore.ES_level || sum[1] + card.levelForSelect_2 > Program.I().ocgcore.ES_level)
+                return false;
+
+            var newSelectedCards = new List<GameCard>(selectedCards) { card };
+            foreach (var c in cards)
+                if (!newSelectedCards.Contains(c))
+                {
+                    returnValue = CheckSelectableInSum(cards, c, newSelectedCards, max);
+                    if (returnValue)
+                        return true;
+                }
+            return returnValue;
+        }
+
+        public static bool TypeMatchReason(int type, int reason)
+        {
+            if ((type & (uint)CardType.Ritual) > 0 && (reason & (uint)CardReason.Ritual) > 0)
+                return true;
+            if ((type & (uint)CardType.Fusion) > 0 && (reason & (uint)CardReason.Fusion) > 0)
+                return true;
+            if ((type & (uint)CardType.Synchro) > 0 && (reason & (uint)CardReason.Synchro) > 0)
+                return true;
+            if ((type & (uint)CardType.Xyz) > 0 && (reason & (uint)CardReason.Xyz) > 0)
+                return true;
+            if ((type & (uint)CardType.Link) > 0 && (reason & (uint)CardReason.Link) > 0)
+                return true;
+            return false;
+        }
+
+        public GameCard GCS_Create(GPS p)
+        {
+            GameCard c = null;
+            for (var i = 0; i < cards.Count; i++)
+                if (cards[i].md5 == md5Maker)
+                {
+                    c = cards[i];
+                    c.p = p;
+                }
+
+            if (c == null)
+            {
+                c = Program.I().container_3D.gameObject.AddComponent<GameCard>();
+                c.p = p;
+                c.md5 = md5Maker;
+                cards.Add(c);
+            }
+
+            md5Maker++;
+            return c;
+        }
+
+        public GameCard GCS_Get(GPS p)
+        {
+            GameCard c = null;
+            if ((p.location & (uint)CardLocation.Overlay) > 0)
+            {
+                for (var i = 0; i < cards.Count; i++)
+                    if (cards[i].p.location == p.location)
+                        if (cards[i].p.controller == p.controller)
+                            if (cards[i].p.sequence == p.sequence)
+                                if (cards[i].p.position == p.position)
+                                {
+                                    c = cards[i];
+                                    break;
+                                }
+            }
+            else
+            {
+                for (var i = 0; i < cards.Count; i++)
+                    if (cards[i].p.location == p.location)
+                        if (cards[i].p.controller == p.controller)
+                            if (cards[i].p.sequence == p.sequence)
+                            {
+                                c = cards[i];
+                                break;
+                            }
+            }
+
+            if (p.location == 0) c = null;
+            return c;
+        }
+        public List<GameCard> GCS_GetLocationCards(int controller, int location)
+        {
+            var cardsInLocation = new List<GameCard>();
+            for (var i = 0; i < cards.Count; i++)
+                if (cards[i].p.location == location)
+                    if (cards[i].p.controller == controller)
+                        cardsInLocation.Add(cards[i]);
+            return cardsInLocation;
+        }
+        public List<GameCard> GCS_GetOverlays(GameCard c)
+        {
+            var cards = new List<GameCard>();
+            if (c != null)
+                if ((c.p.location & (uint)CardLocation.Overlay) == 0)
+                    for (var i = 0; i < this.cards.Count; i++)
+                        if ((this.cards[i].p.location & (uint)CardLocation.Overlay) > 0)
+                            if (this.cards[i].p.controller == c.p.controller)
+                                if ((this.cards[i].p.location | (uint)CardLocation.Overlay) ==
+                                    (c.p.location | (uint)CardLocation.Overlay))
+                                    if (this.cards[i].p.sequence == c.p.sequence)
+                                        cards.Add(this.cards[i]);
+            return cards;
+        }
+        private void GCS_CreateBundle(int count, int controller, CardLocation location)
+        {
+            for (var i = 0; i < count; i++)
+            {
+                GCS_Create(new GPS
+                {
+                    controller = (uint)controller,
+                    location = (uint)location,
+                    position = (int)CardPosition.FaceDownAttack,
+                    sequence = (uint)i
+                });
+            }
+        }
+        private List<GameCard> GCS_ResizeBundle(int count, int player, CardLocation location)
+        {
+            var cardBow = new List<GameCard>();
+            var waterOutOfBow = new List<GameCard>();
+            for (var i = 0; i < cards.Count; i++)
+                if ((cards[i].p.location & (uint)location) > 0)
+                    if (cards[i].p.controller == player)
+                    {
+                        if (cardBow.Count < count)
+                            cardBow.Add(cards[i]);
+                        else
+                            waterOutOfBow.Add(cards[i]);
+                    }
+            foreach (var card in waterOutOfBow)
+            {
+                cards.Remove(card);
+                if ((card.p.location & (uint)CardLocation.Hand) > 0)
+                    card.AnimationShuffle(0.15f);
+                else
+                    card.Dispose();
+            }
+            while (cardBow.Count < count)
+            {
+                var card = GCS_Create(new GPS
+                {
+                    controller = (uint)player,
+                    location = (uint)location,
+                    position = (int)CardPosition.FaceDownAttack,
+                    sequence = (uint)cardBow.Count
+                });
+                cardBow.Add(card);
+            }
+            foreach (var card in cardBow)
+            {
+                card.EraseData();
+                card.p.position = (int)CardPosition.FaceDownAttack;
+            }
+            return cardBow;
+        }
+        public void ArrangeCards()
+        {
+            //sort 
+            cards.Sort((left, right) =>
+            {
+                var a = 1;
+                if (left.p.controller > right.p.controller)
+                {
+                    a = 1;
+                }
+                else if (left.p.controller < right.p.controller)
+                {
+                    a = -1;
+                }
+                else
+                {
+                    if (left.p.location == (uint)CardLocation.Hand && right.p.location != (uint)CardLocation.Hand)
+                    {
+                        a = -1;
+                    }
+                    else if (left.p.location != (uint)CardLocation.Hand && right.p.location == (uint)CardLocation.Hand)
+                    {
+                        a = 1;
+                    }
+                    else
+                    {
+                        if ((left.p.location | (uint)CardLocation.Overlay) >
+                            (right.p.location | (uint)CardLocation.Overlay))
+                        {
+                            a = -1;
+                        }
+                        else if ((left.p.location | (uint)CardLocation.Overlay) <
+                                 (right.p.location | (uint)CardLocation.Overlay))
+                        {
+                            a = 1;
+                        }
+                        else
+                        {
+                            if (left.p.sequence > right.p.sequence)
+                            {
+                                a = 1;
+                            }
+                            else if (left.p.sequence < right.p.sequence)
+                            {
+                                a = -1;
+                            }
+                            else
+                            {
+                                if ((left.p.location & (uint)CardLocation.Overlay) >
+                                    (right.p.location & (uint)CardLocation.Overlay))
+                                {
+                                    a = -1;
+                                }
+                                else if ((left.p.location & (uint)CardLocation.Overlay) <
+                                         (right.p.location & (uint)CardLocation.Overlay))
+                                {
+                                    a = 1;
+                                }
+                                else
+                                {
+                                    if (left.p.position > right.p.position)
+                                        a = 1;
+                                    else if (left.p.position < right.p.position) a = -1;
+                                }
+                            }
+                        }
+                    }
+                }
+                return a;
+            });
+
+            /////rebuild
+            uint preController = 9999;
+            uint preLocation = 9999;
+            uint preSequence = 9999;
+
+            uint sequenceWriter = 0;
+            var positionWriter = 0;
+
+            for (var i = 0; i < cards.Count; i++)
+                if (cards[i])
+                {
+                    if (preController != cards[i].p.controller) sequenceWriter = 0;
+                    if ((preLocation | (uint)CardLocation.Overlay) != (cards[i].p.location | (uint)CardLocation.Overlay))
+                        sequenceWriter = 0;
+                    if (preSequence != cards[i].p.sequence) positionWriter = 0;
+
+                    if ((cards[i].p.location & (uint)CardLocation.MonsterZone) == 0)
+                        if ((cards[i].p.location & (uint)CardLocation.SpellZone) == 0)
+                            cards[i].p.sequence = sequenceWriter;
+
+
+                    if ((cards[i].p.location & (uint)CardLocation.Overlay) > 0)
+                    {
+                        cards[i].p.position = positionWriter;
+                        positionWriter++;
+                    }
+                    else
+                    {
+                        sequenceWriter++;
+                    }
+
+                    preController = cards[i].p.controller;
+                    preLocation = cards[i].p.location;
+                    preSequence = cards[i].p.sequence;
+                }
+        }
+
+        public bool needRefreshHand0 = true;
+        public bool needRefreshHand1 = true;
+        public List<GameCard> myHandCards = new List<GameCard>();
+        public List<GameCard> opHandCards = new List<GameCard>();
+        List<GameCard> myPreHandCards = new List<GameCard>();
+        List<GameCard> opPreHandCards = new List<GameCard>();
+
+        public int GetMyHandCount()
+        {
+            if (needRefreshHand0)
+            {
+                myHandCards = new List<GameCard>(myPreHandCards);
+                foreach (var card in cards)
+                    if (card.p.controller == 0)
+                        if((card.p.location & (uint)CardLocation.Hand) > 0)
+                            if(!myHandCards.Contains(card))
+                                myHandCards.Add(card);
+                needRefreshHand0 = false;
+            }
+            return myHandCards.Count;
+        }
+        public int GetOpHandCount()
+        {
+            if (needRefreshHand1)
+            {
+                opHandCards = new List<GameCard>(opPreHandCards);
+                foreach (var card in cards)
+                    if (card.p.controller != 0)
+                        if ((card.p.location & (uint)CardLocation.Hand) > 0)
+                            if (!opHandCards.Contains(card))
+                                opHandCards.Add(card);
+                needRefreshHand1 = false;
+            }
+            return opHandCards.Count;
+        }
+
+        public int GetLocationCardCount(CardLocation location, uint controller)
+        {
+            int count = 0;
+            foreach (var card in cards)
+                if ((card.p.location & (uint)location) > 0 && card.p.controller == controller)
+                    count++;
+            return count;
+        }
+        public Package GetNamePacket()
+        {
+            var p__ = new Package
+            {
+                Function = (int)GameMessage.sibyl_name,
+                Data = new BinaryMaster()
+            };
+            p__.Data.writer.WriteUnicode(name_0, 50);
+            p__.Data.writer.WriteUnicode(name_0_tag, 50);
+            p__.Data.writer.WriteUnicode(name_0_c != "" ? name_0_c : name_0, 50);
+            p__.Data.writer.WriteUnicode(name_1, 50);
+            p__.Data.writer.WriteUnicode(name_1_tag, 50);
+            p__.Data.writer.WriteUnicode(name_1_c != "" ? name_1_c : name_1, 50);
+            p__.Data.writer.Write(Program.I().ocgcore.MasterRule);
+            return p__;
+        }
+
+        public bool GetAutoInfo()
+        {
+            if (condition == Condition.Duel
+                && Config.Get("DuelAutoInfo", "0") == "0")
+                return false;
+            if (condition == Condition.Watch
+                && Config.Get("WatchAutoInfo", "0") == "0")
+                return false;
+            if (condition == Condition.Replay
+                && Config.Get("ReplayAutoInfo", "0") == "0")
+                return false;
+
+            return true;
+        }
+
+        public void RefreshAllCardsLabel()
+        {
+            if (!isShowed)
+                return;
+            foreach(var card in cards)
+            {
+                card.RefreshLabel();
+            }
+        }
+
+        bool CurrentChainDisabled(int currentChain)
+        {
+            for (int i = 0; i < packages.Count; i++)
+            {
+                if ((GameMessage)packages[i].Function == GameMessage.ChainDisabled)
+                {
+                    var r = packages[i].Data.reader;
+                    r.BaseStream.Seek(0, 0);
+                    if (r.ReadByte() == currentChain)
+                        return true;
+                }
+                if ((GameMessage)packages[i].Function == GameMessage.ChainSolved)
+                    return false;
+            }
+            return false;
+        }
+
+        private bool IfMessageImportant(Package package)
+        {
+            var r = package.Data.reader;
+            r.BaseStream.Seek(0, 0);
+            var msg = (GameMessage)packages[0].Function;
+            switch (msg)
+            {
+                case GameMessage.Start:
+                case GameMessage.Win:
+                case GameMessage.ConfirmDecktop:
+                case GameMessage.ConfirmCards:
+                case GameMessage.ShuffleDeck:
+                case GameMessage.ShuffleHand:
+                case GameMessage.SwapGraveDeck:
+                case GameMessage.ShuffleSetCard:
+                case GameMessage.ReverseDeck:
+                case GameMessage.DeckTop:
+                case GameMessage.NewTurn:
+                case GameMessage.NewPhase:
+                case GameMessage.Move:
+                case GameMessage.PosChange:
+                case GameMessage.Swap:
+                case GameMessage.RandomSelected:
+                case GameMessage.BecomeTarget:
+                case GameMessage.Draw:
+                case GameMessage.Recover:
+                case GameMessage.PayLpCost:
+                case GameMessage.TossCoin:
+                case GameMessage.TossDice:
+                case GameMessage.TagSwap:
+                case GameMessage.ReloadField:
+                case GameMessage.FlipSummoning:
+                case GameMessage.Summoning:
+                case GameMessage.SpSummoning:
+                case GameMessage.Chaining:
+                case GameMessage.Chained:
+                case GameMessage.ChainSolving:
+                case GameMessage.ChainSolved:
+                case GameMessage.ChainEnd:
+                case GameMessage.ChainNegated:
+                case GameMessage.ChainDisabled:
+                    return true;
+                case GameMessage.Damage:
+                    if (needDamageResponseInstant)
+                        return false;
+                    else
+                        return true;
+                case GameMessage.Hint:
+                    int type = r.ReadChar();
+                    if (type == 8) return true;
+                    if (type == 10) return true;
+                    return false;
+                case GameMessage.CardHint:
+                    r.ReadGPS();
+                    int ctype = r.ReadByte();
+                    if (ctype == 1) return true;
+                    return false;
+                case GameMessage.SelectBattleCmd:
+                case GameMessage.SelectIdleCmd:
+                case GameMessage.SelectEffectYn:
+                case GameMessage.SelectYesNo:
+                case GameMessage.SelectOption:
+                case GameMessage.SelectCard:
+                case GameMessage.SelectPosition:
+                case GameMessage.SelectTribute:
+                case GameMessage.SortChain:
+                case GameMessage.SelectCounter:
+                case GameMessage.SelectSum:
+                case GameMessage.SortCard:
+                case GameMessage.AnnounceRace:
+                case GameMessage.AnnounceAttrib:
+                case GameMessage.AnnounceCard:
+                case GameMessage.AnnounceNumber:
+                case GameMessage.SelectDisfield:
+                case GameMessage.SelectPlace:
+                case GameMessage.SelectChain:
+                case GameMessage.Attack:
+                    return true;
+            }
+            return false;
+        }
+        void ClearResponse()
+        {
+            var myMaxDeck = GetLocationCardCount(CardLocation.Deck, 0);
+            var opMaxDeck = GetLocationCardCount(CardLocation.Deck, 1);
+            foreach (var card in cards)
+            {
+                card.effects.Clear();
+                card.ClearButtons();
+                if ((card.p.location & (uint)CardLocation.Deck) > 0)
+                {
+                    if (deckReserved)
+                    {
+                        if (card.p.controller == 0 && card.p.sequence != myMaxDeck - 1)
+                            card.EraseData();
+                        if (card.p.controller == 1 && card.p.sequence != opMaxDeck - 1)
+                            card.EraseData();
+                    }
+                    else
+                    {
+                        card.EraseData();
+                    }
+                }
+            }
+            foreach (var place in places)
+            {
+                place.StopResponse();
+                place.HideHint();
+                place.ClearButtons();
+            }
+            foreach (var grave in graves)
+            {
+                grave.ClearGraveButtons();
+                grave.ClearExcludeButtons();
+            }
+
+            PhaseButtonHandler.battlePhase = false;
+            PhaseButtonHandler.main2Phase = false;
+            PhaseButtonHandler.endPhase = false;
+            PhaseButtonHandler.CloseHint();
+
+            CloseBgHint();
+            FieldSelectReset();
+            ES_selectHint = string.Empty;
+        }
         private void GetConfirmedCard()
         {
             if (nextMoveAction == null || nextMoveActionTargetRenderer == null)
@@ -2573,9 +3045,9 @@ namespace MDPro3
             }
         }
 
-        //Start 决斗改名
-        //AiName 残局改名
-        //sibyl_name 回放改名
+        #endregion
+
+        #region Practicalize
         private void PracticalizeMessage(Package p)
         {
             currentMessageIndex++;
@@ -2663,7 +3135,7 @@ namespace MDPro3
                                 break;
                         }
                     }
-                    if(player == 7)
+                    if (player == 7)
                         name = InterString.Get("观战者");
                     if (name != string.Empty)
                         name += ": ";
@@ -2819,7 +3291,7 @@ namespace MDPro3
                                 Destroy(mono.gameObject);
                             }
                         };
-                        if(result == DuelResult.Win)
+                        if (result == DuelResult.Win)
                         {
                             bgPhase1 = 4;
                             var seLabel = "SE_FIELD_MAT" + field0Manager.name.Substring(4, 3) + "_PHASE4_R";
@@ -2834,7 +3306,7 @@ namespace MDPro3
                             if (mate1 != null)
                                 mate1.Play(Mate.MateAction.Defeat);
                         }
-                        else if(result == DuelResult.Lose)
+                        else if (result == DuelResult.Lose)
                         {
                             bgPhase0 = 4;
                             var seLabel = "SE_FIELD_MAT" + field0Manager.name.Substring(4, 3) + "_PHASE4_P";
@@ -2855,9 +3327,9 @@ namespace MDPro3
                     {
                         PlayCommonSpecialWin(new int[] { cookie_matchKill });
                     }
-                    else if(winType >= 0x10)
+                    else if (winType >= 0x10)
                     {
-                        if(winType == 0x10)//被封印的艾克佐迪亚
+                        if (winType == 0x10)//被封印的艾克佐迪亚
                         {
                             ElementObjectManager mner = PlaySpecialWin("33396948");
                             StartCoroutine(Program.I().texture_.LoadDummyCard(mner.GetElement<ElementObjectManager>("DummyCard"), 33396948, true));
@@ -2866,7 +3338,7 @@ namespace MDPro3
                             StartCoroutine(Program.I().texture_.LoadDummyCard(mner.GetElement<ElementObjectManager>("DummyCard4"), 44519536, true));
                             StartCoroutine(Program.I().texture_.LoadDummyCard(mner.GetElement<ElementObjectManager>("DummyCard5"), 8124921, true));
                         }
-                        else if( winType == 0x11)//终焉的倒计时
+                        else if (winType == 0x11)//终焉的倒计时
                             PlayCommonSpecialWin(new int[] { 95308449 });
                         else if (winType == 0x12)//毒蛇神 维诺米纳迦
                             PlayCommonSpecialWin(new int[] { 8062132 });
@@ -2908,8 +3380,6 @@ namespace MDPro3
                     break;
                 case GameMessage.Start:
                     CoreReset();
-                    cg.alpha = 0;
-                    cg.interactable = false;
                     md5Maker = 0;
                     messagePass = false;
                     playerType = r.ReadByte();
@@ -2934,6 +3404,8 @@ namespace MDPro3
                     else
                         isTag = false;
                     SetFace();
+                    if (preload)
+                        break;
                     GCS_CreateBundle(r.ReadInt16(), LocalPlayer(0), CardLocation.Deck);
                     GCS_CreateBundle(r.ReadInt16(), LocalPlayer(0), CardLocation.Extra);
                     GCS_CreateBundle(r.ReadInt16(), LocalPlayer(1), CardLocation.Deck);
@@ -2941,7 +3413,6 @@ namespace MDPro3
                     ArrangeCards();
                     RefreshBgState();
                     SetLP(0, 0, true);
-                    UIManager.UIBlackOut(transitionTime + 0.1f);
                     DOTween.To(v => { }, 0, 0, transitionTime).OnComplete(() =>
                     {
                         myDeck.gameObject.SetActive(true);
@@ -2949,7 +3420,7 @@ namespace MDPro3
                         opDeck.gameObject.SetActive(true);
                         opExtra.gameObject.SetActive(true);
                         var mono = myDeck.gameObject.AddComponent<DoWhenPlayableDirectorStop>();
-                        mono.action = () => 
+                        mono.action = () =>
                         {
                             var effect = ABLoader.LoadFromFile("MasterDuel/Timeline/DuelText/DuelTextStart", true);
                             var mono = effect.AddComponent<DoWhenPlayableDirectorStop>();
@@ -2958,6 +3429,8 @@ namespace MDPro3
                                 Destroy(effect);
                                 cg.alpha = 1;
                                 cg.interactable = true;
+                                cg.blocksRaycasts = true;
+                                buttons.SetActive(true);
                                 messagePass = true;
                                 AudioManager.PlayBGMNormal(field1.name);
                             };
@@ -3104,20 +3577,20 @@ namespace MDPro3
                     myExtra.gameObject.SetActive(true);
                     opDeck.gameObject.SetActive(true);
                     opExtra.gameObject.SetActive(true);
-                    cg.alpha = 0;
-                    cg.interactable = false;
+
                     var mono = myDeck.gameObject.AddComponent<DoWhenPlayableDirectorStop>();
                     mono.action = () =>
                     {
                         cg.alpha = 1;
                         cg.interactable = true;
+                        cg.blocksRaycasts = true;
+                        buttons.SetActive(true);
                         AudioManager.PlayBGMNormal(field1.name);
                     };
 
                     for (var i = 0; i < cards.Count; i++)
                         cards[i].Move(cards[i].p, true);
 
-                    UIManager.UIBlackOut(transitionTime + 0.1f);
                     Sleep((int)(transitionTime * 100 + 10));
                     break;
                 case GameMessage.UpdateData:
@@ -3480,7 +3953,7 @@ namespace MDPro3
                                 messagePass = true;
                                 return;
                             }
-                            if(needPlay && card.disabled)
+                            if (needPlay && card.disabled)
                             {
                                 needPlay = false;
                                 messagePass = true;
@@ -3769,7 +4242,7 @@ namespace MDPro3
                                     {
                                         AudioManager.PlaySE("SE_EV_MONSTER_REBORN");
                                     }
-                                    else if(code == 63166095 || code == 63166096)//ENGAGE
+                                    else if (code == 63166095 || code == 63166096)//ENGAGE
                                     {
                                         Destroy(effect);
                                         messagePass = true;
@@ -3788,16 +4261,20 @@ namespace MDPro3
                                             nextMoveActionTargetRenderer = manager.GetElement<Renderer>("SummonPosDummy");
                                         };
                                     }
-                                    else if(code == 19613556)
+                                    else if (code == 19613556)
                                     {
                                         AudioManager.PlaySE("SE_EV_HEAVY_STORM");
+                                    }
+                                    else if (code == 90448279)
+                                    {
+                                        AudioManager.PlaySE("SE_EV_AZEUS");
                                     }
                                 }
                                 else
                                 {
-                                    if(code == 82732705)//技能抽取
+                                    if (code == 82732705)//技能抽取
                                     {
-                                        if(card.model == null)
+                                        if (card.model == null)
                                         {
                                             messagePass = true;
                                             return;
@@ -3819,7 +4296,7 @@ namespace MDPro3
                                             messagePass = true;
                                         });
                                     }
-                                    else if(code == 10045474)//无限泡影
+                                    else if (code == 10045474)//无限泡影
                                     {
                                         if (card.effectTargets.Count == 0 || card.effectTargets[0].model == null)
                                         {
@@ -3832,7 +4309,7 @@ namespace MDPro3
                                         AudioManager.PlaySE("SE_EV_INFINITE_IMPERMANENCE");
                                         var effCard = ABLoader.LoadFromFolder("MasterDuel/Effects/MagicTrapEffects/fxp_13631_Card", "fxp_13631_Card", true);
                                         effCard.transform.position = card.effectTargets[0].model.transform.position;
-                                        if((card.effectTargets[0].p.position & (uint)CardPosition.Attack) > 0)
+                                        if ((card.effectTargets[0].p.position & (uint)CardPosition.Attack) > 0)
                                             Destroy(effCard.transform.GetChild(0).GetChild(1).gameObject);
                                         else
                                             Destroy(effCard.transform.GetChild(0).GetChild(0).gameObject);
@@ -3841,7 +4318,7 @@ namespace MDPro3
                                         {
                                             GameObject effArea = ABLoader.LoadFromFolder("MasterDuel/Effects/MagicTrapEffects/fxp_13631_Area", "fxp_13631_Area", true);
                                             GameObject effAreaLoop = ABLoader.LoadFromFolder("MasterDuel/Effects/MagicTrapEffects/fxp_13631_Area_Loop", "fxp_13631_Area_Loop", true);
-                                            foreach(var place in Program.I().ocgcore.places)
+                                            foreach (var place in Program.I().ocgcore.places)
                                             {
                                                 if (place.InTheSameLine(card.p))
                                                 {
@@ -3978,7 +4455,7 @@ namespace MDPro3
                             if ((attacked.p.position & (uint)CardPosition.Attack) > 0)
                             {
                                 var differ = attackCard.GetData().Attack - attacked.GetData().Attack;
-                                if(attackCard.p.controller == 0)
+                                if (attackCard.p.controller == 0)
                                 {
                                     if (differ >= life1)
                                         finalBlow = true;
@@ -3995,7 +4472,7 @@ namespace MDPro3
                             if (attackCard.p.controller == 0)
                             {
                                 endPosition = opPosition;
-                                if(attackCard.GetData().Attack >= life1)
+                                if (attackCard.GetData().Attack >= life1)
                                     finalBlow = true;
                             }
                             else
@@ -4015,7 +4492,7 @@ namespace MDPro3
                         ShowAttackLine(attackingCard.model.transform.localPosition, endPosition);
                         if (finalBlow)
                         {
-                            if(duelFinalBlow != null)
+                            if (duelFinalBlow != null)
                                 Destroy(duelFinalBlow);
                             duelFinalBlow = ABLoader.LoadFromFile("MasterDuel/Timeline/DuelText/DuelFinalBlow", true);
                         }
@@ -4108,7 +4585,7 @@ namespace MDPro3
                     }
                     needDamageResponseInstant = true;
                     messagePass = false;
-                    if(isFinalAttack && GetSpecialFinalAttackType(attackCard, attackedPosition) != FinalAttackType.Normal)
+                    if (isFinalAttack && GetSpecialFinalAttackType(attackCard, attackedPosition) != FinalAttackType.Normal)
                         break;
 
                     GameObject tailObj = null;
@@ -4640,9 +5117,9 @@ namespace MDPro3
                     if (pvalue == 38723936)
                     {
                         valstring = InterString.Get("不能确认墓地里的卡");
-                        if(player == 0)
+                        if (player == 0)
                         {
-                            if(ptype == 6)
+                            if (ptype == 6)
                             {
                                 cantCheckGrave = true;
                                 list.Hide();
@@ -4763,7 +5240,7 @@ namespace MDPro3
                     PhaseButtonHandler.SetTextMain("");
                     foreach (var c in cards)
                         c.ShowDisquiet();
-                    foreach(var o in turnEndDeleteObjects)
+                    foreach (var o in turnEndDeleteObjects)
                         Destroy(o);
                     turnEndDeleteObjects.Clear();
                     break;
@@ -4868,7 +5345,7 @@ namespace MDPro3
                     player = LocalPlayer(r.ReadByte());
                     count = r.ReadByte();
                     var listShow = false;
-                    if(count > 3 && condition == Condition.Duel)
+                    if (count > 3 && condition == Condition.Duel)
                         listShow = true;
                     var confirmCards = new List<GameCard>();
                     for (int i = 0; i < count; i++)
@@ -4879,7 +5356,7 @@ namespace MDPro3
                         if (card != null)
                         {
                             card.SetCode(code);
-                            if(listShow)
+                            if (listShow)
                                 confirmCards.Add(card);
                             else
                                 card.AnimationConfirm(i);
@@ -4970,7 +5447,7 @@ namespace MDPro3
                             }
                         }
                     }
-                    
+
                     break;
                 case GameMessage.ShuffleSetCard:
                     messagePass = false;
@@ -5039,18 +5516,10 @@ namespace MDPro3
                         gps = r.ReadGPS();
                         card = GCS_Get(gps);
 
-                        int p1 = 0;
-                        int p2 = 4;
-                        if (MasterRule <= 3)
-                        {
-                            p1 = 6;
-                            p2 = 7;
-                        }
-
                         if (card != null)
                         {
                             if (cardsInChain.Count > 0)
-                                cardsInChain[cardsInChain.Count - 1].AddEffectTarget(card);
+                                cardsInChain[^1].AddEffectTarget(card);
                             if (cardsInChain.Count == 0
                                 && card.InPendulumZone())
                                 targetTime += 0;
@@ -5061,15 +5530,14 @@ namespace MDPro3
                             }
                             cardsBeTarget.Add(card);
                         }
-                        if(phase == DuelPhase.Main1 || phase == DuelPhase.Main2)
+                        if (phase == DuelPhase.Main1 || phase == DuelPhase.Main2)
                             if (cardsInChain.Count == 0)
                                 if (cardsBeTarget.Count == 2)
-                                    if (cardsBeTarget[0].p.location == (uint)CardLocation.SpellZone)
-                                        if (cardsBeTarget[1].p.location == (uint)CardLocation.SpellZone)
-                                            if (cardsBeTarget[0].p.sequence == p1 || cardsBeTarget[0].p.sequence == p2)
-                                                if (cardsBeTarget[1].p.sequence == p1 || cardsBeTarget[1].p.sequence == p2)
-                                                    if (cardsBeTarget[0].p.controller == cardsBeTarget[1].p.controller)
-                                                        psum = true;
+                                    if (cardsBeTarget[0].InPendulumZone())
+                                        if (cardsBeTarget[1].InPendulumZone())
+                                            if (cardsBeTarget[0].p.controller == cardsBeTarget[1].p.controller)
+                                                psum = true;
+
                         config = true;
                         if (psum)
                         {
@@ -5321,7 +5789,7 @@ namespace MDPro3
                     ShowPopupInput(selections, OnAnnounceCard, null);
                     break;
                 case GameMessage.SelectIdleCmd:
-                    if (InIgnoranceReplay()) 
+                    if (InIgnoranceReplay())
                         break;
 
                     player = LocalPlayer(r.ReadChar());
@@ -5765,7 +6233,7 @@ namespace MDPro3
                             card.selectPtr = i;
                             card.levelForSelect_1 = para & 0xffff;
                             card.levelForSelect_2 = para >> 16;
-                            if (card.levelForSelect_2 == 0) 
+                            if (card.levelForSelect_2 == 0)
                                 card.levelForSelect_2 = card.levelForSelect_1;
                             cardsInSelection.Add(card);
                             cardsMustBeSelected.Add(card);
@@ -5809,7 +6277,7 @@ namespace MDPro3
                             card.selectPtr = i;
                             card.levelForSelect_1 = para & 0xffff;
                             card.levelForSelect_2 = para >> 16;
-                            if (card.levelForSelect_2 == 0) 
+                            if (card.levelForSelect_2 == 0)
                                 card.levelForSelect_2 = card.levelForSelect_1;
                             cardsInSelection.Add(card);
                         }
@@ -5967,15 +6435,15 @@ namespace MDPro3
                     }
                     else
                     {
-                        if ((positions & 0x1) > 0) 
+                        if ((positions & 0x1) > 0)
                             op1 = 0x1;
-                        if ((positions & 0x2) > 0) 
+                        if ((positions & 0x2) > 0)
                             op1 = 0x2;
-                        if ((positions & 0x4) > 0) 
+                        if ((positions & 0x4) > 0)
                             op2 = 0x4;
                         if ((positions & 0x8) > 0)
                         {
-                            if ((positions & 0x4) > 0) 
+                            if ((positions & 0x4) > 0)
                                 op1 = 0x4;
                             op2 = 0x8;
                         }
@@ -6047,581 +6515,47 @@ namespace MDPro3
                     break;
             }
         }
-        void UpdateBgEffect(int player, bool first = false)
+        public void Chat(int player, string content)
         {
-            if (player == 0)
-            {
-                field0Manager.PlayAnimatorTrigger(TriggerLabelDefine.PhaseToDamagePhaseAll);
-                //field0Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhaseToNextPhaseAll);
-                if (mate0 != null && !first)
-                    mate0.Play(Mate.MateAction.GetDamage);
-                if (bgPhase0 == 1 && life0 < (lpLimit * 0.75f))
-                {
-                    bgPhase0++;
-                    var seLabel = "SE_FIELD_MAT" + field0Manager.name.Substring(4, 3) + "_PHASE1_P";
-                    field0Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase1ToPhase2, seLabel);
-                    grave0Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase1ToPhase2);
-                    if (stand0Manager != null)
-                        stand0Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase1ToPhase2);
-                }
-                if (bgPhase0 == 2 && life0 < (lpLimit * 0.5f))
-                {
-                    bgPhase0++;
-                    var seLabel = "SE_FIELD_MAT" + field0Manager.name.Substring(4, 3) + "_PHASE2_P";
-                    field0Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase2ToPhase3, seLabel);
-                    grave0Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase2ToPhase3);
-                    if (stand0Manager != null)
-                        stand0Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase2ToPhase3);
-                }
-                if (bgPhase0 == 3 && life0 < (lpLimit * 0.25f))
-                {
-                    bgPhase0++;
-                    var seLabel = "SE_FIELD_MAT" + field0Manager.name.Substring(4, 3) + "_PHASE3_P";
-                    field0Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase3ToPhase4, seLabel);
-                    grave0Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase3ToPhase4);
-                    if (stand0Manager != null)
-                        stand0Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase3ToPhase4);
-                    AudioManager.PlayBGMClimax(field1.name);
-                }
-                if (bgPhase0 == 4 && life0 <= 0)
-                {
-                    bgPhase0++;
-                    var seLabel = "SE_FIELD_MAT" + field0Manager.name.Substring(4, 3) + "_PHASE4_P";
-                    field0Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase4ToEnd, seLabel);
-                    grave0Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase4ToEnd);
-                    if (stand0Manager != null)
-                        stand0Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase4ToEnd);
-                }
-            }
-            else
-            {
-                field1Manager.PlayAnimatorTrigger(TriggerLabelDefine.PhaseToDamagePhaseAll);
-                //field1Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhaseToNextPhaseAll);
-                if (mate1 != null && !first)
-                    mate1.Play(Mate.MateAction.GetDamage);
-                if (bgPhase1 == 1 && life1 < (lpLimit * 0.75f))
-                {
-                    bgPhase1++;
-                    var seLabel = "SE_FIELD_MAT" + field1Manager.name.Substring(4, 3) + "_PHASE1_P";
-                    field1Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase1ToPhase2, seLabel);
-                    grave1Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase1ToPhase2);
-                    if (stand1Manager != null)
-                        stand1Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase1ToPhase2);
-                }
-                if (bgPhase1 == 2 && life1 < (lpLimit * 0.5f))
-                {
-                    bgPhase1++;
-                    var seLabel = "SE_FIELD_MAT" + field1Manager.name.Substring(4, 3) + "_PHASE2_P";
-                    field1Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase2ToPhase3, seLabel);
-                    grave1Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase2ToPhase3);
-                    if (stand1Manager != null)
-                        stand1Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase2ToPhase3);
-                }
-                if (bgPhase1 == 3 && life1 < (lpLimit * 0.25f))
-                {
-                    bgPhase1++;
-                    var seLabel = "SE_FIELD_MAT" + field1Manager.name.Substring(4, 3) + "_PHASE3_P";
-                    field1Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase3ToPhase4, seLabel);
-                    grave1Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase3ToPhase4);
-                    if (stand1Manager != null)
-                        stand1Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase3ToPhase4);
-                    AudioManager.PlayBGMClimax(field1.name);
-                }
-                if (bgPhase1 == 4 && life1 <= 0)
-                {
-                    bgPhase1++;
-                    var seLabel = "SE_FIELD_MAT" + field1Manager.name.Substring(4, 3) + "_PHASE4_P";
-                    field1Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase4ToEnd, seLabel);
-                    grave1Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase4ToEnd);
-                    if (stand1Manager != null)
-                        stand1Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase4ToEnd);
-                }
-            }
-        }
-
-        void ClearResponse()
-        {
-            var myMaxDeck = GetLocationCardCount(CardLocation.Deck, 0);
-            var opMaxDeck = GetLocationCardCount(CardLocation.Deck, 1);
-            foreach (var card in cards)
-            {
-                card.effects.Clear();
-                card.ClearButtons();
-                if ((card.p.location & (uint)CardLocation.Deck) > 0)
-                {
-                    if (deckReserved)
-                    {
-                        if (card.p.controller == 0 && card.p.sequence != myMaxDeck - 1)
-                            card.EraseData();
-                        if (card.p.controller == 1 && card.p.sequence != opMaxDeck - 1)
-                            card.EraseData();
-                    }
-                    else
-                    {
-                        card.EraseData();
-                    }
-                }
-            }
-            foreach (var place in places)
-            {
-                place.StopResponse();
-                place.HideHint();
-                place.ClearButtons();
-            }
-            foreach (var grave in graves)
-            {
-                grave.ClearGraveButtons();
-                grave.ClearExcludeButtons();
-            }
-
-            PhaseButtonHandler.battlePhase = false;
-            PhaseButtonHandler.main2Phase = false;
-            PhaseButtonHandler.endPhase = false;
-            PhaseButtonHandler.CloseHint();
-
-            CloseBgHint();
-            FieldSelectReset();
-            ES_selectHint = string.Empty;
-        }
-
-        void PlayCommonSpecialWin(int[] code)
-        {
-            var count = code.Length;
-            var go = ABLoader.LoadFromFolder("MasterDuel/Timeline/SpecialWin/SpecialWinCommonCard0" + count);
-            allGameObjects.Add(go);
-            ElementObjectManager mner = null;
-            for (int i = 0; i < go.transform.childCount; i++)
-            {
-                mner = go.transform.GetChild(i).GetComponent<ElementObjectManager>();
-                if (mner == null)
-                    Destroy(go.transform.GetChild(i).gameObject);
-            }
-            foreach (var child in mner.transform.GetComponentsInChildren<Transform>(true))
-                if (child.name == "White")
-                {
-                    //var newWhite = Instantiate(child.gameObject);
-                    //newWhite.transform.SetParent(child.transform, false);
-                    //newWhite.transform.localScale = Vector3.one;
-                    //newWhite.GetComponent<SpriteRenderer>().color = Color.clear;
-                    child.gameObject.SetActive(false);
-                }
-            StartCoroutine(Program.I().texture_.LoadDummyCard(mner.GetElement<ElementObjectManager>("DummyCard01"), code[0], true));
-            mner.GetElement<ElementObjectManager>("DummyCard01").GetElement<Renderer>("DummyCardModel_front").material.renderQueue = 4000;
-            if(count > 1)
-                StartCoroutine(Program.I().texture_.LoadDummyCard(mner.GetElement<ElementObjectManager>("DummyCard02"), code[1], true));
-            if (count > 2)
-                StartCoroutine(Program.I().texture_.LoadDummyCard(mner.GetElement<ElementObjectManager>("DummyCard03"), code[2], true));
-            if (count > 3)
-                StartCoroutine(Program.I().texture_.LoadDummyCard(mner.GetElement<ElementObjectManager>("DummyCard04"), code[3], true));
-            if (count > 4)
-                StartCoroutine(Program.I().texture_.LoadDummyCard(mner.GetElement<ElementObjectManager>("DummyCard05"), code[4], true));
-            mner.GetComponent<PlayableDirector>().Play();
-            var mono = mner.gameObject.AddComponent<DoWhenPlayableDirectorStop>();
-            mono.action = () => 
-            { 
-                Destroy(go);
-            };
-        }
-        ElementObjectManager PlaySpecialWin(string path)
-        {
-            var go = ABLoader.LoadFromFolder("MasterDuel/Timeline/SpecialWin/" + path);
-            allGameObjects.Add(go);
-            ElementObjectManager manager = null;
-            for (int i = 0; i < go.transform.childCount; i++)
-            {
-                manager = go.transform.GetChild(i).GetComponent<ElementObjectManager>();
-                if (manager == null)
-                    Destroy(go.transform.GetChild(i).gameObject);
-            }
-            var mono = manager.gameObject.AddComponent<DoWhenPlayableDirectorStop>();
-            mono.action = () => { Destroy(go); };
-            return manager;
-        }
-        #endregion
-
-        #region PracticalizeTools
-
-        public int LocalPlayer(int p)
-        {
-            if (p == 0 || p == 1)
-            {
-                if (isFirst)
-                    return p;
-                return 1 - p;
-            }
-            return p;
-        }
-        public static int[] GetSelectLevelSum(List<GameCard> cards)
-        {
-            var sum1 = 0;
-            foreach (var card in cards)
-                sum1 += card.levelForSelect_1;
-            var sum2 = 0;
-            foreach (var card in cards)
-                sum2 += card.levelForSelect_2;
-            return new int[] { sum1, sum2 };
-        }
-
-        public static bool CheckSelectableInSum(List<GameCard> cards, GameCard card, List<GameCard> selectedCards, int max)
-        {
-            if(selectedCards.Count >= max)
-                return false;
-            bool returnValue = false;
-            var sum = GetSelectLevelSum(selectedCards);
-            if (sum[0] + card.levelForSelect_1 == Program.I().ocgcore.ES_level || sum[1] + card.levelForSelect_2 == Program.I().ocgcore.ES_level)
-                return true;
-            if (sum[0] + card.levelForSelect_1 > Program.I().ocgcore.ES_level || sum[1] + card.levelForSelect_2 > Program.I().ocgcore.ES_level)
-                return false;
-
-            var newSelectedCards = new List<GameCard>(selectedCards) { card };
-            foreach (var c in cards)
-                if (!newSelectedCards.Contains(c))
-                {
-                    returnValue = CheckSelectableInSum(cards, c, newSelectedCards, max);
-                    if (returnValue)
-                        return true;
-                }
-            return returnValue;
-        }
-
-        public static bool TypeMatchReason(int type, int reason)
-        {
-            if ((type & (uint)CardType.Ritual) > 0 && (reason & (uint)CardReason.Ritual) > 0)
-                return true;
-            if ((type & (uint)CardType.Fusion) > 0 && (reason & (uint)CardReason.Fusion) > 0)
-                return true;
-            if ((type & (uint)CardType.Synchro) > 0 && (reason & (uint)CardReason.Synchro) > 0)
-                return true;
-            if ((type & (uint)CardType.Xyz) > 0 && (reason & (uint)CardReason.Xyz) > 0)
-                return true;
-            if ((type & (uint)CardType.Link) > 0 && (reason & (uint)CardReason.Link) > 0)
-                return true;
-            return false;
-        }
-
-        public GameCard GCS_Create(GPS p)
-        {
-            GameCard c = null;
-            for (var i = 0; i < cards.Count; i++)
-                if (cards[i].md5 == md5Maker)
-                {
-                    c = cards[i];
-                    c.p = p;
-                }
-
-            if (c == null)
-            {
-                c = Program.I().container_3D.gameObject.AddComponent<GameCard>();
-                c.p = p;
-                c.md5 = md5Maker;
-                cards.Add(c);
-            }
-
-            md5Maker++;
-            return c;
-        }
-
-        public GameCard GCS_Get(GPS p)
-        {
-            GameCard c = null;
-            if ((p.location & (uint)CardLocation.Overlay) > 0)
-            {
-                for (var i = 0; i < cards.Count; i++)
-                    if (cards[i].p.location == p.location)
-                        if (cards[i].p.controller == p.controller)
-                            if (cards[i].p.sequence == p.sequence)
-                                if (cards[i].p.position == p.position)
-                                {
-                                    c = cards[i];
-                                    break;
-                                }
-            }
-            else
-            {
-                for (var i = 0; i < cards.Count; i++)
-                    if (cards[i].p.location == p.location)
-                        if (cards[i].p.controller == p.controller)
-                            if (cards[i].p.sequence == p.sequence)
-                            {
-                                c = cards[i];
-                                break;
-                            }
-            }
-
-            if (p.location == 0) c = null;
-            return c;
-        }
-        public List<GameCard> GCS_GetLocationCards(int controller, int location)
-        {
-            var cardsInLocation = new List<GameCard>();
-            for (var i = 0; i < cards.Count; i++)
-                if (cards[i].p.location == location)
-                    if (cards[i].p.controller == controller)
-                        cardsInLocation.Add(cards[i]);
-            return cardsInLocation;
-        }
-        public List<GameCard> GCS_GetOverlays(GameCard c)
-        {
-            var cards = new List<GameCard>();
-            if (c != null)
-                if ((c.p.location & (uint)CardLocation.Overlay) == 0)
-                    for (var i = 0; i < this.cards.Count; i++)
-                        if ((this.cards[i].p.location & (uint)CardLocation.Overlay) > 0)
-                            if (this.cards[i].p.controller == c.p.controller)
-                                if ((this.cards[i].p.location | (uint)CardLocation.Overlay) ==
-                                    (c.p.location | (uint)CardLocation.Overlay))
-                                    if (this.cards[i].p.sequence == c.p.sequence)
-                                        cards.Add(this.cards[i]);
-            return cards;
-        }
-        private void GCS_CreateBundle(int count, int controller, CardLocation location)
-        {
-            for (var i = 0; i < count; i++)
-            {
-                GCS_Create(new GPS
-                {
-                    controller = (uint)controller,
-                    location = (uint)location,
-                    position = (int)CardPosition.FaceDownAttack,
-                    sequence = (uint)i
-                });
-            }
-        }
-        private List<GameCard> GCS_ResizeBundle(int count, int player, CardLocation location)
-        {
-            var cardBow = new List<GameCard>();
-            var waterOutOfBow = new List<GameCard>();
-            for (var i = 0; i < cards.Count; i++)
-                if ((cards[i].p.location & (uint)location) > 0)
-                    if (cards[i].p.controller == player)
-                    {
-                        if (cardBow.Count < count)
-                            cardBow.Add(cards[i]);
-                        else
-                            waterOutOfBow.Add(cards[i]);
-                    }
-            foreach (var card in waterOutOfBow)
-            {
-                cards.Remove(card);
-                if ((card.p.location & (uint)CardLocation.Hand) > 0)
-                    card.AnimationShuffle(0.15f);
-                else
-                    card.Dispose();
-            }
-            while (cardBow.Count < count)
-            {
-                var card = GCS_Create(new GPS
-                {
-                    controller = (uint)player,
-                    location = (uint)location,
-                    position = (int)CardPosition.FaceDownAttack,
-                    sequence = (uint)cardBow.Count
-                });
-                cardBow.Add(card);
-            }
-            foreach (var card in cardBow)
-            {
-                card.EraseData();
-                card.p.position = (int)CardPosition.FaceDownAttack;
-            }
-            return cardBow;
-        }
-        public void ArrangeCards()
-        {
-            //sort 
-            cards.Sort((left, right) =>
-            {
-                var a = 1;
-                if (left.p.controller > right.p.controller)
-                {
-                    a = 1;
-                }
-                else if (left.p.controller < right.p.controller)
-                {
-                    a = -1;
-                }
-                else
-                {
-                    if (left.p.location == (uint)CardLocation.Hand && right.p.location != (uint)CardLocation.Hand)
-                    {
-                        a = -1;
-                    }
-                    else if (left.p.location != (uint)CardLocation.Hand && right.p.location == (uint)CardLocation.Hand)
-                    {
-                        a = 1;
-                    }
-                    else
-                    {
-                        if ((left.p.location | (uint)CardLocation.Overlay) >
-                            (right.p.location | (uint)CardLocation.Overlay))
-                        {
-                            a = -1;
-                        }
-                        else if ((left.p.location | (uint)CardLocation.Overlay) <
-                                 (right.p.location | (uint)CardLocation.Overlay))
-                        {
-                            a = 1;
-                        }
-                        else
-                        {
-                            if (left.p.sequence > right.p.sequence)
-                            {
-                                a = 1;
-                            }
-                            else if (left.p.sequence < right.p.sequence)
-                            {
-                                a = -1;
-                            }
-                            else
-                            {
-                                if ((left.p.location & (uint)CardLocation.Overlay) >
-                                    (right.p.location & (uint)CardLocation.Overlay))
-                                {
-                                    a = -1;
-                                }
-                                else if ((left.p.location & (uint)CardLocation.Overlay) <
-                                         (right.p.location & (uint)CardLocation.Overlay))
-                                {
-                                    a = 1;
-                                }
-                                else
-                                {
-                                    if (left.p.position > right.p.position)
-                                        a = 1;
-                                    else if (left.p.position < right.p.position) a = -1;
-                                }
-                            }
-                        }
-                    }
-                }
-                return a;
-            });
-
-            /////rebuild
-            uint preController = 9999;
-            uint preLocation = 9999;
-            uint preSequence = 9999;
-
-            uint sequenceWriter = 0;
-            var positionWriter = 0;
-
-            for (var i = 0; i < cards.Count; i++)
-                if (cards[i])
-                {
-                    if (preController != cards[i].p.controller) sequenceWriter = 0;
-                    if ((preLocation | (uint)CardLocation.Overlay) != (cards[i].p.location | (uint)CardLocation.Overlay))
-                        sequenceWriter = 0;
-                    if (preSequence != cards[i].p.sequence) positionWriter = 0;
-
-                    if ((cards[i].p.location & (uint)CardLocation.MonsterZone) == 0)
-                        if ((cards[i].p.location & (uint)CardLocation.SpellZone) == 0)
-                            cards[i].p.sequence = sequenceWriter;
-
-
-                    if ((cards[i].p.location & (uint)CardLocation.Overlay) > 0)
-                    {
-                        cards[i].p.position = positionWriter;
-                        positionWriter++;
-                    }
-                    else
-                    {
-                        sequenceWriter++;
-                    }
-
-                    preController = cards[i].p.controller;
-                    preLocation = cards[i].p.location;
-                    preSequence = cards[i].p.sequence;
-                }
-        }
-
-        public bool needRefreshHand0 = true;
-        public bool needRefreshHand1 = true;
-        public List<GameCard> myHandCards = new List<GameCard>();
-        public List<GameCard> opHandCards = new List<GameCard>();
-        List<GameCard> myPreHandCards = new List<GameCard>();
-        List<GameCard> opPreHandCards = new List<GameCard>();
-
-        public int GetMyHandCount()
-        {
-            if (needRefreshHand0)
-            {
-                myHandCards = new List<GameCard>(myPreHandCards);
-                foreach (var card in cards)
-                    if (card.p.controller == 0)
-                        if((card.p.location & (uint)CardLocation.Hand) > 0)
-                            if(!myHandCards.Contains(card))
-                                myHandCards.Add(card);
-                needRefreshHand0 = false;
-            }
-            return myHandCards.Count;
-        }
-        public int GetOpHandCount()
-        {
-            if (needRefreshHand1)
-            {
-                opHandCards = new List<GameCard>(opPreHandCards);
-                foreach (var card in cards)
-                    if (card.p.controller != 0)
-                        if ((card.p.location & (uint)CardLocation.Hand) > 0)
-                            if (!opHandCards.Contains(card))
-                                opHandCards.Add(card);
-                needRefreshHand1 = false;
-            }
-            return opHandCards.Count;
-        }
-
-        public int GetLocationCardCount(CardLocation location, uint controller)
-        {
-            int count = 0;
-            foreach (var card in cards)
-                if ((card.p.location & (uint)location) > 0 && card.p.controller == controller)
-                    count++;
-            return count;
-        }
-        public Package GetNamePacket()
-        {
-            var p__ = new Package
-            {
-                Function = (int)GameMessage.sibyl_name,
-                Data = new BinaryMaster()
-            };
-            p__.Data.writer.WriteUnicode(name_0, 50);
-            p__.Data.writer.WriteUnicode(name_0_tag, 50);
-            p__.Data.writer.WriteUnicode(name_0_c != "" ? name_0_c : name_0, 50);
-            p__.Data.writer.WriteUnicode(name_1, 50);
-            p__.Data.writer.WriteUnicode(name_1_tag, 50);
-            p__.Data.writer.WriteUnicode(name_1_c != "" ? name_1_c : name_1, 50);
-            p__.Data.writer.Write(Program.I().ocgcore.MasterRule);
-            return p__;
-        }
-
-        public bool GetAutoInfo()
-        {
-            if (condition == Condition.Duel
-                && Config.Get("DuelAutoInfo", "0") == "0")
-                return false;
-            if (condition == Condition.Watch
-                && Config.Get("WatchAutoInfo", "0") == "0")
-                return false;
-            if (condition == Condition.Replay
-                && Config.Get("ReplayAutoInfo", "0") == "0")
-                return false;
-
-            return true;
-        }
-
-        public void RefreshAllCardsLabel()
-        {
-            if (!isShowed)
+            if (!GetMessageConfig(player))
                 return;
-            foreach(var card in cards)
-            {
-                card.RefreshLabel();
-            }
+            var playerName = Program.I().room.GetPlayerName(player);
+            if (player == 7 || player < 4)
+                MessageManager.Cast(playerName + ": " + content);
+            else
+                MessageManager.Cast(content);
         }
-        #endregion
 
-        #region Practicalize
+        bool preload;
+        void Preload()
+        {
+            preload = true;
+            player0LP.text = string.Empty;
+            player1LP.text = string.Empty;
+            for(int i = 0; i < packages.Count; i++)
+            {
+                if ((GameMessage)packages[i].Function == GameMessage.Start
+                    || (GameMessage)packages[i].Function == GameMessage.AiName
+                    || (GameMessage)packages[i].Function == GameMessage.sibyl_name
+                    )
+                {
+                    PracticalizeMessage(packages[i]);
+                    break;
+                }
+                else
+                    continue;
+            }
+
+            preload = false;
+        }
+
+        static string lastDuelLog;
+        private static void PrintDuelLog(string content)
+        {
+            lastDuelLog = content;
+            MessageManager.Cast(content);
+        }
+
         void SetFace()
         {
             if (condition == Condition.Duel)
@@ -6634,18 +6568,18 @@ namespace MDPro3
                         if (selfType == 0 || selfType == 2)
                         {
                             player0Frame.material = Appearance.duelFrameMat0;
-                            player0Frame.sprite = Appearance.duelFace0;
+                            SetFaceWhenCharaOff(Appearance.duelFace0, 0);
                         }
                         else
                         {
                             player0Frame.material = Appearance.duelFrameMat0Tag;
-                            player0Frame.sprite = Appearance.duelFace0Tag;
+                            SetFaceWhenCharaOff(Appearance.duelFace0Tag, 0);
                         }
                     }
                     else
                     {
                         player0Frame.material = Appearance.duelFrameMat0;
-                        player0Frame.sprite = Appearance.duelFace0;
+                        SetFaceWhenCharaOff(Appearance.duelFace0, 0);
                     }
                 }
                 else
@@ -6653,23 +6587,23 @@ namespace MDPro3
                     if (selfType == 0 || selfType == 2)
                     {
                         player0Frame.material = Appearance.duelFrameMat0Tag;
-                        player0Frame.sprite = Appearance.duelFace0Tag;
+                        SetFaceWhenCharaOff(Appearance.duelFace0Tag, 0);
                     }
                     else
                     {
                         player0Frame.material = Appearance.duelFrameMat0;
-                        player0Frame.sprite = Appearance.duelFace0;
+                        SetFaceWhenCharaOff(Appearance.duelFace0, 0);
                     }
                 }
                 if (player1Name.text == name_1)
                 {
                     player1Frame.material = Appearance.duelFrameMat1;
-                    player1Frame.sprite = Appearance.duelFace1;
+                    SetFaceWhenCharaOff(Appearance.duelFace1, 1);
                 }
                 else
                 {
                     player1Frame.material = Appearance.duelFrameMat1Tag;
-                    player1Frame.sprite = Appearance.duelFace1Tag;
+                    SetFaceWhenCharaOff(Appearance.duelFace1Tag, 1);
                 }
             }
             else if (condition == Condition.Watch)
@@ -6677,22 +6611,22 @@ namespace MDPro3
                 if (player0Name.text == name_0)
                 {
                     player0Frame.material = Appearance.watchFrameMat0;
-                    player0Frame.sprite = Appearance.watchFace0;
+                    SetFaceWhenCharaOff(Appearance.watchFace0, 0);
                 }
                 else
                 {
                     player0Frame.material = Appearance.watchFrameMat0Tag;
-                    player0Frame.sprite = Appearance.watchFace0Tag;
+                    SetFaceWhenCharaOff(Appearance.watchFace0Tag, 0);
                 }
                 if (player1Name.text == name_1)
                 {
                     player1Frame.material = Appearance.watchFrameMat1;
-                    player1Frame.sprite = Appearance.watchFace1;
+                    SetFaceWhenCharaOff(Appearance.watchFace1, 1);
                 }
                 else
                 {
                     player1Frame.material = Appearance.watchFrameMat1Tag;
-                    player1Frame.sprite = Appearance.watchFace1Tag;
+                    SetFaceWhenCharaOff(Appearance.watchFace1Tag, 1);
                 }
             }
             else if (condition == Condition.Replay)
@@ -6700,22 +6634,22 @@ namespace MDPro3
                 if (player0Name.text == name_0)
                 {
                     player0Frame.material = Appearance.replayFrameMat0;
-                    player0Frame.sprite = Appearance.replayFace0;
+                    SetFaceWhenCharaOff(Appearance.replayFace0, 0);
                 }
                 else
                 {
                     player0Frame.material = Appearance.replayFrameMat0Tag;
-                    player0Frame.sprite = Appearance.replayFace0Tag;
+                    SetFaceWhenCharaOff(Appearance.replayFace0Tag, 0);
                 }
                 if (player1Name.text == name_1)
                 {
                     player1Frame.material = Appearance.replayFrameMat1;
-                    player1Frame.sprite = Appearance.replayFace1;
+                    SetFaceWhenCharaOff(Appearance.replayFace1, 1);
                 }
                 else
                 {
                     player1Frame.material = Appearance.replayFrameMat1Tag;
-                    player1Frame.sprite = Appearance.replayFace1Tag;
+                    SetFaceWhenCharaOff(Appearance.replayFace1Tag, 1);
                 }
             }
 
@@ -6731,13 +6665,48 @@ namespace MDPro3
             while (!task.IsCompleted)
                 yield return null;
             if (task.Result != null)
-                player0Frame.sprite = Tools.Texture2Sprite(task.Result);
+                SetFaceWhenCharaOff(TextureManager.Texture2Sprite(task.Result), 0);
 
             task = MyCard.GetAvatarAsync(player1Name.text);
             while (!task.IsCompleted)
                 yield return null;
             if (task.Result != null)
-                player1Frame.sprite = Tools.Texture2Sprite(task.Result);
+                SetFaceWhenCharaOff(TextureManager.Texture2Sprite(task.Result), 1);
+        }
+
+
+        Sprite mySprite;
+        Sprite opSprite;
+        void SetFaceWhenCharaOff(Sprite sprite, int player)
+        {
+            Sprite target = mySprite;
+            if (player == 0)
+                mySprite = sprite;
+            else
+                opSprite = sprite;
+
+            if (!charaFaceSetting)
+            {
+                player0Frame.sprite = mySprite;
+                player1Frame.sprite = opSprite;
+            }
+        }
+
+        void CloseCharaFace()
+        {
+            charaFaceSetting = false;
+            SetFaceWhenCharaOff(mySprite, 0);
+        }
+
+        public void CheckCharaFace()
+        {
+            if (!isShowed)
+                return;
+
+            if (NeedVoice())
+                SetCharacterDefaultFace();
+            else
+                CloseCharaFace();
         }
 
         void SetLP(int player, int val, bool first = false)
@@ -6893,7 +6862,6 @@ namespace MDPro3
             Destroy(phaseObject, 2f);
             Sleep(200);
         }
-
 
         enum FinalAttackType
         {
@@ -8758,6 +8726,330 @@ namespace MDPro3
                 Tools.GetTimeString()
             };
             ShowPopupInput(selections, OnSaveReplay, OnGiveUpReplay, InputValidation.ValidationType.Path);
+        }
+        void UpdateBgEffect(int player, bool first = false)
+        {
+            if (player == 0)
+            {
+                field0Manager.PlayAnimatorTrigger(TriggerLabelDefine.PhaseToDamagePhaseAll);
+                //field0Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhaseToNextPhaseAll);
+                if (mate0 != null && !first)
+                    mate0.Play(Mate.MateAction.GetDamage);
+                if (bgPhase0 == 1 && life0 < (lpLimit * 0.75f))
+                {
+                    bgPhase0++;
+                    var seLabel = "SE_FIELD_MAT" + field0Manager.name.Substring(4, 3) + "_PHASE1_P";
+                    field0Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase1ToPhase2, seLabel);
+                    grave0Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase1ToPhase2);
+                    if (stand0Manager != null)
+                        stand0Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase1ToPhase2);
+                }
+                if (bgPhase0 == 2 && life0 < (lpLimit * 0.5f))
+                {
+                    bgPhase0++;
+                    var seLabel = "SE_FIELD_MAT" + field0Manager.name.Substring(4, 3) + "_PHASE2_P";
+                    field0Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase2ToPhase3, seLabel);
+                    grave0Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase2ToPhase3);
+                    if (stand0Manager != null)
+                        stand0Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase2ToPhase3);
+                }
+                if (bgPhase0 == 3 && life0 < (lpLimit * 0.25f))
+                {
+                    bgPhase0++;
+                    var seLabel = "SE_FIELD_MAT" + field0Manager.name.Substring(4, 3) + "_PHASE3_P";
+                    field0Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase3ToPhase4, seLabel);
+                    grave0Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase3ToPhase4);
+                    if (stand0Manager != null)
+                        stand0Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase3ToPhase4);
+                    AudioManager.PlayBGMClimax(field1.name);
+                }
+                if (bgPhase0 == 4 && life0 <= 0)
+                {
+                    bgPhase0++;
+                    var seLabel = "SE_FIELD_MAT" + field0Manager.name.Substring(4, 3) + "_PHASE4_P";
+                    field0Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase4ToEnd, seLabel);
+                    grave0Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase4ToEnd);
+                    if (stand0Manager != null)
+                        stand0Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase4ToEnd);
+                }
+            }
+            else
+            {
+                field1Manager.PlayAnimatorTrigger(TriggerLabelDefine.PhaseToDamagePhaseAll);
+                //field1Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhaseToNextPhaseAll);
+                if (mate1 != null && !first)
+                    mate1.Play(Mate.MateAction.GetDamage);
+                if (bgPhase1 == 1 && life1 < (lpLimit * 0.75f))
+                {
+                    bgPhase1++;
+                    var seLabel = "SE_FIELD_MAT" + field1Manager.name.Substring(4, 3) + "_PHASE1_P";
+                    field1Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase1ToPhase2, seLabel);
+                    grave1Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase1ToPhase2);
+                    if (stand1Manager != null)
+                        stand1Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase1ToPhase2);
+                }
+                if (bgPhase1 == 2 && life1 < (lpLimit * 0.5f))
+                {
+                    bgPhase1++;
+                    var seLabel = "SE_FIELD_MAT" + field1Manager.name.Substring(4, 3) + "_PHASE2_P";
+                    field1Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase2ToPhase3, seLabel);
+                    grave1Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase2ToPhase3);
+                    if (stand1Manager != null)
+                        stand1Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase2ToPhase3);
+                }
+                if (bgPhase1 == 3 && life1 < (lpLimit * 0.25f))
+                {
+                    bgPhase1++;
+                    var seLabel = "SE_FIELD_MAT" + field1Manager.name.Substring(4, 3) + "_PHASE3_P";
+                    field1Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase3ToPhase4, seLabel);
+                    grave1Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase3ToPhase4);
+                    if (stand1Manager != null)
+                        stand1Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase3ToPhase4);
+                    AudioManager.PlayBGMClimax(field1.name);
+                }
+                if (bgPhase1 == 4 && life1 <= 0)
+                {
+                    bgPhase1++;
+                    var seLabel = "SE_FIELD_MAT" + field1Manager.name.Substring(4, 3) + "_PHASE4_P";
+                    field1Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase4ToEnd, seLabel);
+                    grave1Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase4ToEnd);
+                    if (stand1Manager != null)
+                        stand1Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase4ToEnd);
+                }
+            }
+        }
+        void PlayCommonSpecialWin(int[] code)
+        {
+            var count = code.Length;
+            var go = ABLoader.LoadFromFolder("MasterDuel/Timeline/SpecialWin/SpecialWinCommonCard0" + count);
+            allGameObjects.Add(go);
+            ElementObjectManager mner = null;
+            for (int i = 0; i < go.transform.childCount; i++)
+            {
+                mner = go.transform.GetChild(i).GetComponent<ElementObjectManager>();
+                if (mner == null)
+                    Destroy(go.transform.GetChild(i).gameObject);
+            }
+            foreach (var child in mner.transform.GetComponentsInChildren<Transform>(true))
+                if (child.name == "White")
+                {
+                    //var newWhite = Instantiate(child.gameObject);
+                    //newWhite.transform.SetParent(child.transform, false);
+                    //newWhite.transform.localScale = Vector3.one;
+                    //newWhite.GetComponent<SpriteRenderer>().color = Color.clear;
+                    child.gameObject.SetActive(false);
+                }
+            StartCoroutine(Program.I().texture_.LoadDummyCard(mner.GetElement<ElementObjectManager>("DummyCard01"), code[0], true));
+            mner.GetElement<ElementObjectManager>("DummyCard01").GetElement<Renderer>("DummyCardModel_front").material.renderQueue = 4000;
+            if (count > 1)
+                StartCoroutine(Program.I().texture_.LoadDummyCard(mner.GetElement<ElementObjectManager>("DummyCard02"), code[1], true));
+            if (count > 2)
+                StartCoroutine(Program.I().texture_.LoadDummyCard(mner.GetElement<ElementObjectManager>("DummyCard03"), code[2], true));
+            if (count > 3)
+                StartCoroutine(Program.I().texture_.LoadDummyCard(mner.GetElement<ElementObjectManager>("DummyCard04"), code[3], true));
+            if (count > 4)
+                StartCoroutine(Program.I().texture_.LoadDummyCard(mner.GetElement<ElementObjectManager>("DummyCard05"), code[4], true));
+            mner.GetComponent<PlayableDirector>().Play();
+            var mono = mner.gameObject.AddComponent<DoWhenPlayableDirectorStop>();
+            mono.action = () =>
+            {
+                Destroy(go);
+            };
+        }
+        ElementObjectManager PlaySpecialWin(string path)
+        {
+            var go = ABLoader.LoadFromFolder("MasterDuel/Timeline/SpecialWin/" + path);
+            allGameObjects.Add(go);
+            ElementObjectManager manager = null;
+            for (int i = 0; i < go.transform.childCount; i++)
+            {
+                manager = go.transform.GetChild(i).GetComponent<ElementObjectManager>();
+                if (manager == null)
+                    Destroy(go.transform.GetChild(i).gameObject);
+            }
+            var mono = manager.gameObject.AddComponent<DoWhenPlayableDirectorStop>();
+            mono.action = () => { Destroy(go); };
+            return manager;
+        }
+
+        #endregion
+
+        #region Voice
+
+        ChatItemHandler duelChat0;
+        ChatItemHandler duelChat1;
+
+        private void VoiceMessage(Package p)
+        {
+            speaking = true;
+            var voiceData = VoiceHelper.GetVoiceDatas(p);
+            if (NeedVoice())
+            {
+                if (!charaFaceSetting)
+                    SetCharacterDefaultFace();
+
+                if (voiceData.Count == 0)
+                {
+                    speaking = false;
+                    PracticalizeMessage(p);
+                    LogMessage(p);
+                    return;
+                }
+            }
+            else
+            {
+                CloseCharaFace();
+
+                speaking = false;
+                PracticalizeMessage(p);
+                LogMessage(p);
+                return;
+            }
+
+            StartCoroutine(PlayVoiceAsync(p, voiceData));
+        }
+
+        private bool NeedVoice()
+        {
+            return Config.GetBool(condition + "Voice" , false);
+        }
+
+        IEnumerator PlayVoiceAsync(Package p, List<VoiceHelper.VoiceData> data)
+        {
+            var paths = VoiceHelper.GetVoicePaths(data);
+            var clips = new List<AudioClip>[paths.Length];
+            for (int i = 0; i < clips.Length; i++)
+                clips[i] = new List<AudioClip>();
+
+            for(int i = 0; i < paths.Length; i++)
+            {
+                for (int j = 0; j < paths[i].Count; j++)
+                {
+                    var ie = AudioManager.LoadAudioFileAsync(paths[i][j], AudioType.OGGVORBIS);
+                    while (ie.MoveNext())
+                        yield return null;
+                    clips[i].Add(ie.Current);
+                }
+            }
+
+            for (int i = 0; i < clips.Length; i++)
+            {
+                if (!speaking && !waitForNoWaitingVoice)
+                    break;
+                for (int j = 0; j < clips[i].Count; j++)
+                {
+                    if (!speaking && !waitForNoWaitingVoice)
+                        break;
+
+                    var line = VoiceHelper.GetLine(Path.GetFileNameWithoutExtension(paths[i][j]), data[i].me);
+
+                    if (j == 0)
+                        yield return new WaitForSeconds(data[i].delay);
+
+                    if(line != null)
+                    {
+                        var item = Instantiate(data[i].me ? container.duelChatItemMe : container.duelChatItemOp);
+                        item.transform.SetParent(transform.GetChild(0), false);
+                        var handler = item.GetComponent<ChatItemHandler>();
+                        handler.text = line.text;
+                        handler.time = clips[i][j].length;
+                        handler.frame = line.frame;
+                        if (data[i].me)
+                        {
+                            if(duelChat0 != null)
+                                duelChat0.BeGray();
+                            duelChat0 = handler;
+                        }
+                        else
+                        {
+                            if (duelChat1 != null)
+                                duelChat1.BeGray();
+                            duelChat1 = handler;
+                        }
+                        StartCoroutine(SetCharacterFaceAsync(data[i].me ? VoiceHelper.hero : VoiceHelper.rival, line.face, data[i].me, 0f));
+                        StartCoroutine(SetCharacterFaceAsync(data[i].me ? VoiceHelper.hero : VoiceHelper.rival, 1, data[i].me, clips[i][j].length - 0.1f));
+                    }
+
+                    AudioManager.PlayVoice(clips[i][j]);
+                    if (data[i].wait)
+                    {
+                        var timePassed = 0f;
+                        while (timePassed <= clips[i][j].length && speaking)
+                        {
+                            yield return null;
+                            timePassed += Time.deltaTime;
+                        }
+                    }
+                    else
+                    {
+                        if(i == 0 && j == 0 && !waitForNoWaitingVoice)
+                        {
+                            speaking = false;
+                            speakBreaking = false;
+                            PracticalizeMessage(p);
+                            LogMessage(p);
+                            waitForNoWaitingVoice = true;
+                        }
+                        if (waitForNoWaitingVoice)
+                        {
+                            var timePassed = 0f;
+                            while (timePassed <= clips[i][j].length)
+                            {
+                                yield return null;
+                                timePassed += Time.deltaTime;
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (!waitForNoWaitingVoice)
+            {
+                speaking = false;
+                speakBreaking = false;
+                PracticalizeMessage(p);
+                LogMessage(p);
+            }
+            else
+                waitForNoWaitingVoice = false;
+        }
+
+        private bool charaFaceSetting;
+        Dictionary<string, Sprite> cachedCharaFaces = new Dictionary<string, Sprite>();
+        IEnumerator SetCharacterFaceAsync(string chara, int id, bool isMe, float delay = 0f)
+        {
+            charaFaceSetting = true;
+            yield return new WaitForSeconds(delay);
+
+            var address = "sn" + chara + "_3_" + id;
+            if(!cachedCharaFaces.TryGetValue(address, out var sprite))
+            {
+                var handle = Addressables.LoadAssetAsync<Texture2D>("sn" + chara + "_3_" + id);
+                yield return handle;
+
+                if (handle.Status == UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationStatus.Succeeded)
+                {
+                    var texture = TextureManager.GetCroppingTex(handle.Result, 80, 0, 320, 240);
+                    TextureManager.ReplaceTransparentPixelsWithColor(texture, Color.black);
+                    sprite = TextureManager.Texture2Sprite(texture);
+                    cachedCharaFaces[address] = sprite;
+                }
+                else
+                    yield break;
+            }
+
+            if(isMe)
+                player0Frame.sprite = sprite;
+            else
+                player1Frame.sprite = sprite;
+        }
+
+        void SetCharacterDefaultFace()
+        {
+            var hero = Config.Get(condition + "Character0", VoiceHelper.defaultCharacter);
+            var rival = Config.Get(condition + "Character1", VoiceHelper.defaultCharacter);
+            StartCoroutine(SetCharacterFaceAsync(hero, 1, true, 0f));
+            StartCoroutine(SetCharacterFaceAsync(rival, 1, false, 0f));
         }
 
         #endregion

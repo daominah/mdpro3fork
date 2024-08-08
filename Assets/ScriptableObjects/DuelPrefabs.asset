@@ -15,6 +15,8 @@ MonoBehaviour:
   cardModel: {fileID: 1801160342276106, guid: eca8eb3e834857643bf369534f625d4e, type: 3}
   duelButton: {fileID: 3999006118112400323, guid: cb936a9c6b1ef404eae4f628df36bc06, type: 3}
   duelLpText: {fileID: 2323089295963095394, guid: dca0c795f9a1e79409d1ab8f20e92b61, type: 3}
+  duelChatItemMe: {fileID: 6436722705667500942, guid: 41775c601cbdb2c438f1313480ea8dbc, type: 3}
+  duelChatItemOp: {fileID: 8381720085417963831, guid: b6b53787aecd25243959e572f826494f, type: 3}
   duelDrawPhaseNear: {fileID: 5856038741196950936, guid: 898af3292dd93df44a57e0dc79a2ea24, type: 3}
   duelDrawPhaseFar: {fileID: 5856038741196950936, guid: d053774d773c07140bb960cae08adee7, type: 3}
   duelStandbyPhaseNear: {fileID: 5856038741196950936, guid: 76efbc5713908a54581e6d0754e3a740, type: 3}

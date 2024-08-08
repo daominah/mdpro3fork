@@ -126,7 +126,7 @@ public class SelectCharacter : Servant
         if (!isShowed)
             return;
 
-        var configCharacter = Config.Get(condition + "Character" + player, "0001");
+        var configCharacter = Config.Get(condition + "Character" + player, VoiceHelper.defaultCharacter);
         var configSeries = characters.GetCharacterSeries(configCharacter);
         buttonListManager.GetButtonListByName(configSeries[..2]).SelectThis();
     }
@@ -173,7 +173,7 @@ public class SelectCharacter : Servant
             item.SetActive(true);
             var mono = item.GetComponent<CharacterItem>();
             mono.Show();
-            var config = Config.Get(condition + "Character" + player, "0001");
+            var config = Config.Get(condition + "Character" + player, VoiceHelper.defaultCharacter);
             if (mono.characterID == config)
                 mono.SelectThis();
         }

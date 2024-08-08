@@ -1,13 +1,7 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Net;
-using System.Net.Http;
-using System.Runtime.InteropServices;
-using System.Runtime.Serialization.Formatters.Binary;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -166,7 +160,7 @@ namespace MDPro3
             return result.ToArray();
         }
 
-        public static KeyValuePair<TKey, TValue> GetNthElement<TKey, TValue>(Dictionary<TKey, TValue> dic, int n)
+        public static KeyValuePair<TKey, TValue> GetNthDictionaryElement<TKey, TValue>(Dictionary<TKey, TValue> dic, int n)
         {
             if (n < 0)
                 n = 0;
@@ -176,6 +170,11 @@ namespace MDPro3
             for (int i = 0; i < n + 1; i++)
                 enumerator.MoveNext();
             return enumerator.Current;
+        }
+
+        public static KeyValuePair<TKey, TValue> GetRandomDictionaryElement<TKey, TValue>(Dictionary<TKey, TValue> dic)
+        {
+            return GetNthDictionaryElement(dic, UnityEngine.Random.Range(0, dic.Count));
         }
 
         public static bool StringIsAlphaNumeric(string input)
@@ -206,32 +205,6 @@ namespace MDPro3
             return dateTime;
         }
 
-        public static Color[] ResizePixels(Color[] originalPixels, int originalWidth, int originalHeight, int newWidth, int newHeight)
-        {
-            Color[] newPixels = new Color[newWidth * newHeight];
-
-            for (int y = 0; y < newHeight; y++)
-            {
-                for (int x = 0; x < newWidth; x++)
-                {
-                    int origX = (int)((float)x / newWidth * originalWidth);
-                    int origY = (int)((float)y / newHeight * originalHeight);
-
-                    newPixels[y * newWidth + x] = originalPixels[origY * originalWidth + origX];
-                }
-            }
-
-            return newPixels;
-        }
-
-        public static Sprite Texture2Sprite(Texture2D texture)
-        {
-            if(texture == null)
-                return null;
-            var sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
-            return sprite;
-        }
-
         #region Online
         public static async Task<Texture2D> DownloadImageAsync(string url)
         {
@@ -252,14 +225,5 @@ namespace MDPro3
 
 
 
-    }
-
-    public static class Extensions
-    {
-        public static async Task Then(this Task<Texture2D> task, Action<Texture2D> callback)
-        {
-            var result = await task;
-            callback(result);
-        }
     }
 }

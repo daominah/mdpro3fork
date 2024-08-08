@@ -77,7 +77,7 @@ namespace MDPro3.UI
                 while(!task.IsCompleted)
                     yield return null;
                 icon.color = Color.white;
-                icon.sprite = Tools.Texture2Sprite(task.Result);
+                icon.sprite = TextureManager.Texture2Sprite(task.Result);
             }
 
             if (path.StartsWith("ProfileIcon"))

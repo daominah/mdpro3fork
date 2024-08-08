@@ -20,7 +20,6 @@ public class AssetBundleRobber : MonoBehaviour
     string workingPlace;
     public static int fileCount;
     public static int currentFileCount;
-    public static Dictionary<string, string> ydkIds = new Dictionary<string, string>();
     readonly object _lock = new object();
     bool noSave = false;
     ConcurrentQueue<string> logQueue = new ConcurrentQueue<string>();
@@ -30,7 +29,6 @@ public class AssetBundleRobber : MonoBehaviour
     bool fullCopy;
     string androindWorkingPlace = "Android/Robber/";
     string windowsWorkingPlace = "StandaloneWindows64/Robber/";
-    string ydkIdsPath = "Data/YdkIds.txt";
     int threads = 32;
 
     public struct AssetbundleInfo
@@ -127,14 +125,6 @@ public class AssetBundleRobber : MonoBehaviour
         else
         {
             Debug.Log("No FileList to load.");
-        }
-        fullText = File.ReadAllText(ydkIdsPath);
-        lines = fullText.Replace("\r", "").Split('\n');
-        foreach (var line in lines)
-        {
-            var pair = Regex.Split(line, " ");
-            if (pair.Length == 2 && !ydkIds.ContainsKey(pair[1]))
-                ydkIds.Add(pair[1], pair[0]);
         }
     }
 
@@ -719,9 +709,7 @@ public class AssetBundleRobber : MonoBehaviour
 
     string GetYdkID(string mdID)
     {
-        if (!ydkIds.TryGetValue(mdID, out var ydkID))
-            ydkID = mdID;
-        return ydkID;
+        return MDPro3.Cid2Ydk.Get(int.Parse(mdID)).ToString();
     }
 
     string GetFullPath(string path)
