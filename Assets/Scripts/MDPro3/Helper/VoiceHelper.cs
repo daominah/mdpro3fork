@@ -294,6 +294,8 @@ namespace MDPro3
                     case GameMessage.PosChange:
 
                         nextPack = core.GetNextPackage();
+                        if (nextPack == null)
+                            break;
                         //nextPack.Data.reader.BaseStream.Seek(0, 0);
                         if ((GameMessage)nextPack.Function != GameMessage.Chaining)
                             break;
@@ -338,6 +340,8 @@ namespace MDPro3
                         }
 
                         nextPack = core.GetNextPackage();
+                        if (nextPack == null)
+                            break;
                         nextPack.Data.reader.BaseStream.Seek(0, 0);
 
                         category = 0;
@@ -412,7 +416,6 @@ namespace MDPro3
 
                         if ((GameMessage)nextPack.Function == GameMessage.Set)
                         {
-                            to = core.lastMoveCard.p;
                             category = (int)Category.CardSet;
                             if ((to.location & (uint)CardLocation.MonsterZone) > 0)
                                 subCategory = (int)CardSetSub.Monster;

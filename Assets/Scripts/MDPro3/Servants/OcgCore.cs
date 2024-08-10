@@ -1720,7 +1720,14 @@ namespace MDPro3
 
                     messageIsHandled = true;
 
-                    VoiceMessage(packages[0]);
+                    try
+                    {
+                        VoiceMessage(packages[0]);
+                    }
+                    catch(Exception e)
+                    {
+                        Debug.Log(e);
+                    }
 
                     lastMessage = currentMessage;
                     packages.RemoveAt(0);
@@ -1936,7 +1943,7 @@ namespace MDPro3
                         log.AddLog(item);
                     }
                     textReason = InterString.Get("·¢¶¯");
-                    if ((card.cacheP.location & (uint)CardLocation.Hand) > 0
+                    if (card.cacheP != null && (card.cacheP.location & (uint)CardLocation.Hand) > 0
                         && (gps.location & (uint)CardLocation.SpellZone) > 0
                         && (gps.position & (uint)CardPosition.FaceUp) > 0
                         && (data.Type & (uint)CardType.Pendulum) > 0
@@ -8888,7 +8895,7 @@ namespace MDPro3
                 if (!charaFaceSetting)
                     SetCharacterDefaultFace();
 
-                if (voiceData.Count == 0)
+                if (voiceData == null || voiceData.Count == 0)
                 {
                     speaking = false;
                     PracticalizeMessage(p);
