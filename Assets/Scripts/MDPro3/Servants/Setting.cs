@@ -698,17 +698,12 @@ namespace MDPro3
         public void InitializeResolution()
         {
             string resolution = $"{Screen.width} x {Screen.height}";
-            //if (Config.Have("Resolution"))
-            //    resolution = Config.Get("Resolution", "1920 x 1080");
-            //else
-            //    resolution = Regex.Split(Screen.currentResolution.ToString(), " @ ")[0];
-            //string fullScreenMode = Config.Get("ScreenMode", "1");
-            //if (fullScreenMode == "0")
-            //    Screen.SetResolution(int.Parse(Regex.Split(resolution, " x ")[0]), int.Parse(Regex.Split(resolution, " x ")[1]), FullScreenMode.ExclusiveFullScreen);
-            //else if (fullScreenMode == "2")
-            //    Screen.SetResolution(int.Parse(Regex.Split(resolution, " x ")[0]), int.Parse(Regex.Split(resolution, " x ")[1]), FullScreenMode.Windowed);
-            //else
-            //    Screen.SetResolution(int.Parse(Regex.Split(resolution, " x ")[0]), int.Parse(Regex.Split(resolution, " x ")[1]), FullScreenMode.FullScreenWindow);
+
+#if UNITY_ANDROID
+            if (Config.Have("Resolution"))
+                resolution = Config.Get("Resolution", "1920 x 1080");
+            Screen.SetResolution(int.Parse(Regex.Split(resolution, " x ")[0]), int.Parse(Regex.Split(resolution, " x ")[1]), FullScreenMode.FullScreenWindow);
+#endif
             resolutionValue.text = resolution;
         }
         public void OnResolutionChange()
@@ -1764,7 +1759,7 @@ namespace MDPro3
             checking = false;
         }
 
-        #endregion
+#endregion
 
         public void OnAboutGame()
         {
