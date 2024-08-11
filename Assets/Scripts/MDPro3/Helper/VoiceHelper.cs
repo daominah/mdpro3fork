@@ -332,12 +332,12 @@ namespace MDPro3
                         to = r.ReadGPS();
                         reason = r.ReadUInt32();
                         card = core.GCS_Get(from);
-                        c = card.GetData();
                         if (card == null)
                         {
                             //Todo;
                             break;
                         }
+                        c = card.GetData();
 
                         nextPack = core.GetNextPackage();
                         if (nextPack == null)
@@ -374,6 +374,14 @@ namespace MDPro3
 
                             isMe = from.controller == 0;
                             returnValue.Add(GetBeforeSummonData(isMe ? heroVoices : rivalVoices, isMe));
+
+                            target = isMe ? heroVoices : rivalVoices;
+                            data = GetVoiceByCard(isMe ? heroVoices : rivalVoices, target.MainMonsterSummon, code, 0, isMe);
+                            if(data.name != string.Empty)
+                            {
+                                returnValue.Add(data);
+                                break;
+                            }
                         }
 
                         if ((GameMessage)nextPack.Function == GameMessage.SpSummoning)
@@ -412,6 +420,37 @@ namespace MDPro3
                                 fromHand = true;
                                 isMe = from.controller == 0;
                             }
+
+                            target = isMe ? heroVoices : rivalVoices;
+
+                            if(subCategory != (int)SummonSub.Special)
+                            {
+                                data = GetVoiceByCard(isMe ? heroVoices : rivalVoices, target.BeforeMainSummon, code, 0, isMe);
+                                if (data.name != string.Empty)
+                                    returnValue.Add(data);
+                            }
+
+                            data2 = GetVoiceByCard(isMe ? heroVoices : rivalVoices, target.MainMonsterSummon, code, 0, isMe);
+                            if (data2.name != string.Empty)
+                            {
+                                if (subCategory != (int)SummonSub.Special && returnValue.Count == 0)
+                                {
+                                    var voiceShortName = GetVoiceBySubCategory(target.Summon, subCategory, (int)SummonSub.Special, 1, true);
+                                    if(voiceShortName != null)
+                                    {
+                                        data = new VoiceData();
+                                        data.name = voiceShortName;
+                                        data.num = GetVoiceNum(target, data.name);
+                                        data.me = isMe;
+                                        data.wait = true;
+                                        data.delay = 0f;
+                                        returnValue.Add(data);
+                                    }
+                                }
+
+                                returnValue.Add(data2);
+                                break;
+                            }
                         }
 
                         if ((GameMessage)nextPack.Function == GameMessage.Set)
@@ -428,7 +467,24 @@ namespace MDPro3
                         {
                             ignoreNextChaining = true;
 
-                            if((from.location & (uint)CardLocation.Hand) > 0)
+                            code = nextPack.Data.reader.ReadInt32();
+                            gps = nextPack.Data.reader.ReadGPS();
+
+                            target = gps.controller == 0 ? heroVoices : rivalVoices;
+                            data = GetVoiceByCard(gps.controller == 0 ? heroVoices : rivalVoices, target.MainMonsterEffect, code, 0, gps.controller == 0);
+                            if (data.name != string.Empty)
+                            {
+                                returnValue.Add(data);
+                                break;
+                            }
+                            data = GetVoiceByCard(gps.controller == 0 ? heroVoices : rivalVoices, target.MainMagicTrap, code, 0, gps.controller == 0);
+                            if (data.name != string.Empty)
+                            {
+                                returnValue.Add(data);
+                                break;
+                            }
+
+                            if ((from.location & (uint)CardLocation.Hand) > 0)
                             {
                                 fromHand = true;
                                 isMe = from.controller == 0;
@@ -477,6 +533,8 @@ namespace MDPro3
                             break;
                         }
 
+                        code = r.ReadInt32();
+                        gps = r.ReadGPS();
 
                         simple = GetCardEffectSubCategory(r, false);
                         target = simple.isMe ? heroVoices : rivalVoices;
@@ -495,13 +553,26 @@ namespace MDPro3
                             returnValue.Add(data);
                         }
 
-                        data2 = new VoiceData();
-                        data2.name = GetVoiceBySubCategory(target.CardEffect, simple.subCategory, (int)CardEffectSub.Magic, 0);
-                        data2.num = GetVoiceNum(target, data2.name);
-                        data2.me = simple.isMe;
-                        data2.wait = true;
-                        data2.delay = 0f;
-                        returnValue.Add(data2);
+                        data2 = GetVoiceByCard(simple.isMe ? heroVoices : rivalVoices, target.MainMonsterEffect, code, 0, gps.controller == 0);
+                        if (data2.name != string.Empty)
+                        {
+                            returnValue.Add(data2);
+                            break;
+                        }
+                        data2 = GetVoiceByCard(simple.isMe ? heroVoices : rivalVoices, target.MainMagicTrap, code, 0, simple.isMe);
+                        if (data2.name != string.Empty)
+                        {
+                            returnValue.Add(data2);
+                            break;
+                        }
+
+                        data3 = new VoiceData();
+                        data3.name = GetVoiceBySubCategory(target.CardEffect, simple.subCategory, (int)CardEffectSub.Magic, 0);
+                        data3.num = GetVoiceNum(target, data3.name);
+                        data3.me = simple.isMe;
+                        data3.wait = true;
+                        data3.delay = 0f;
+                        returnValue.Add(data3);
 
                         break;
                     case GameMessage.Draw:
@@ -904,6 +975,45 @@ namespace MDPro3
                         returnValue.subCategory = (int)CardEffectSub.CounterTrap;
                 }
             }
+            return returnValue;
+        }
+
+        static VoiceData GetVoiceByCard(VoicesData target, VoiceInfoEntry entry, int card, int engineparam, bool isMe)
+        {
+            var returnValue = new VoiceData();
+            returnValue.name = string.Empty;
+
+            if(entry == null)
+                return returnValue;
+
+            var cid = Cid2Ydk.GetCID(card);
+            if (cid == card)
+                return returnValue;
+
+            var tempStrings = new List<string>();
+            foreach(var value in entry.rawKvp.Values)
+            {
+                if (value.cards == null)
+                    continue;
+                if (value.cards.Contains(cid))
+                    tempStrings.Add(value.shortName);
+                if (value.engineparams != null && value.engineparams.Contains(engineparam))
+                {
+                    tempStrings.Clear();
+                    tempStrings.Add(value.shortName);
+                    break;
+                }
+            }
+            if(tempStrings.Count > 0)
+                returnValue.name = tempStrings[UnityEngine.Random.Range(0, tempStrings.Count)];
+            if(returnValue.name != string.Empty)
+            {
+                returnValue.num = GetVoiceNum(target, returnValue.name);
+                returnValue.me = isMe;
+                returnValue.wait = true;
+                returnValue.delay = 0f;
+            }
+
             return returnValue;
         }
 

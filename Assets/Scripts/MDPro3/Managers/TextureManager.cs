@@ -86,17 +86,18 @@ namespace MDPro3
             manager = manager.GetElement<ElementObjectManager>("DummyCardSynchro");
             cardMatShine = Instantiate(manager.GetElement<Renderer>("DummyCardModel_front").material);
 
-            cardMatShine.SetFloat("_HighlightAmp", 1.2f);
-            cardMatShine.SetFloat("_HighlightRotation", -45f);
-            cardMatShine.SetFloat("_HighlightScrollOffset", 5f);
-            cardMatShine.SetFloat("_HoloBrightness", 0.75f);
-            cardMatShine.SetFloat("_IllustBrightness", 1.5f);
-            cardMatShine.SetFloat("_IllustContrast", -3.8f);
-            cardMatShine.SetFloat("_IllustHoloPower", 1.4f);
-            cardMatShine.SetFloat("_IllustRanbowPower", 1.5f);
-            cardMatShine.SetTexture("_KiraColorTexture", cardHolo4);
+            //SR GR-like
+            //cardMatShine.SetFloat("_HighlightAmp", 1.2f);
+            //cardMatShine.SetFloat("_HighlightRotation", -45f);
+            //cardMatShine.SetFloat("_HighlightScrollOffset", 5f);
+            //cardMatShine.SetFloat("_HoloBrightness", 0.75f);
+            //cardMatShine.SetFloat("_IllustBrightness", 1.5f);
+            //cardMatShine.SetFloat("_IllustContrast", -3.8f);
+            //cardMatShine.SetFloat("_IllustHoloPower", 1.4f);
+            //cardMatShine.SetFloat("_IllustRanbowPower", 1.5f);
+            //cardMatShine.SetTexture("_KiraColorTexture", cardHolo4);
 
-            //UR Like
+            //SR UR-like
             //cardMatShine.SetFloat("_HighlightAmp", 2f);
             //cardMatShine.SetFloat("_HighlightRotation", -45f);
             //cardMatShine.SetFloat("_HoloBrightness", 1f);

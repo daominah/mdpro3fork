@@ -43,12 +43,24 @@ namespace MDPro3
             return dic.ContainsKey(cid.ToString());
         }
 
-        public static int Get(int cid)
+        public static int GetYDK(int cid)
         {
             Initialize();
             if (dic.ContainsKey(cid.ToString()))
                 return dic[cid.ToString()].id;
             return cid;
+        }
+
+        public static int GetCID(int ydk)
+        {
+            Initialize();
+            var card = CardsManager.Get(ydk);
+            if(card.Alias != 0)
+                ydk = card.Alias;
+            foreach(var value in dic.Values)
+                if(value.id == ydk)
+                    return value.cid;
+            return ydk;
         }
 
         static string EvaluatorGetNameFromNumber(Match match)

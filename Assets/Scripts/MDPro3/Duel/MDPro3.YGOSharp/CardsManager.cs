@@ -2002,12 +2002,8 @@ namespace MDPro3.YGOSharp
 
         static string path = "Data/pack";
 
-        static bool initialized;
-
         internal static void Initialize()
         {
-            if (initialized)
-                return;
             if (Directory.Exists(path))
             {
                 var fileInfos = new DirectoryInfo(path).GetFiles();
@@ -2015,7 +2011,6 @@ namespace MDPro3.YGOSharp
                     if (file.Name.ToLower().EndsWith(".db"))
                         LoadDataBase(path + Program.slash + file.Name);
                 InitializeSec();
-                initialized = true;
             }
         }
 

@@ -709,7 +709,7 @@ public class AssetBundleRobber : MonoBehaviour
 
     string GetYdkID(string mdID)
     {
-        return MDPro3.Cid2Ydk.Get(int.Parse(mdID)).ToString();
+        return MDPro3.Cid2Ydk.GetYDK(int.Parse(mdID)).ToString();
     }
 
     string GetFullPath(string path)
