@@ -30,6 +30,7 @@ namespace MDPro3
         public GameObject btnDeck;
 
         public static string port;
+        const string windbotDialogsPath = "Data/Windbot/Dialogs/";
 
         public class BotInfo
         {
@@ -241,7 +242,25 @@ namespace MDPro3
             command += " Host=" + ip;
             command += " Port=" + port;
             command += " HostInfo=" + password;
-            (new Thread(() => { Thread.Sleep(300); WindBot.Program.Main(Tools.SplitWithPreservedQuotes(command)); })).Start();
+
+            var args = Tools.SplitWithPreservedQuotes(command);
+            for (int i = 0; i < args.Length; i++)
+            {
+                if (args[i].StartsWith("Dialog="))
+                {
+                    var path = args[i][7..];
+                    if(!File.Exists(windbotDialogsPath + path + ".json"))
+                    {
+                        var config = Config.Get("Language", "zh-CN");
+                        if (config == "en-US")
+                            config = "default";
+                        args[i] = "Dialog=" + config;
+                    }
+                    break;
+                }
+            }
+
+            (new Thread(() => { Thread.Sleep(300); WindBot.Program.Main(args); })).Start();
         }
 
         public void Launch(string command, bool lockHand, bool noCheck, bool noShuffle)
