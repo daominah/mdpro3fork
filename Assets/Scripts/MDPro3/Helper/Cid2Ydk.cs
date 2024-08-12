@@ -58,7 +58,7 @@ namespace MDPro3
             if(card.Alias != 0)
                 ydk = card.Alias;
             foreach(var value in dic.Values)
-                if(value.id == ydk)
+                if(value.id == ydk || value.id == card.Id)
                     return value.cid;
             return ydk;
         }

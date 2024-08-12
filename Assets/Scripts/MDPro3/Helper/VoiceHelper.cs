@@ -1,15 +1,12 @@
 using System;
 using System.IO;
+using System.Linq;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using UnityEngine;
 using MDPro3.YGOSharp.OCGWrapper.Enums;
 using MDPro3.YGOSharp;
 using static MDPro3.VoiceController;
-using System.Linq;
-using static UnityEngine.EventSystems.EventTrigger;
-using System.Threading;
-using static YgomGame.Duel.Engine;
 
 namespace MDPro3
 {
@@ -373,15 +370,15 @@ namespace MDPro3
                             subCategory = (int)SummonSub.Normal;
 
                             isMe = from.controller == 0;
-                            returnValue.Add(GetBeforeSummonData(isMe ? heroVoices : rivalVoices, isMe));
-
                             target = isMe ? heroVoices : rivalVoices;
                             data = GetVoiceByCard(isMe ? heroVoices : rivalVoices, target.MainMonsterSummon, code, 0, isMe);
-                            if(data.name != string.Empty)
+                            if (data.name != string.Empty)
                             {
                                 returnValue.Add(data);
                                 break;
                             }
+
+                            returnValue.Add(GetBeforeSummonData(target, isMe));
                         }
 
                         if ((GameMessage)nextPack.Function == GameMessage.SpSummoning)
@@ -471,13 +468,13 @@ namespace MDPro3
                             gps = nextPack.Data.reader.ReadGPS();
 
                             target = gps.controller == 0 ? heroVoices : rivalVoices;
-                            data = GetVoiceByCard(gps.controller == 0 ? heroVoices : rivalVoices, target.MainMonsterEffect, code, 0, gps.controller == 0);
+                            data = GetVoiceByCard(target, target.MainMonsterEffect, code, 0, gps.controller == 0);
                             if (data.name != string.Empty)
                             {
                                 returnValue.Add(data);
                                 break;
                             }
-                            data = GetVoiceByCard(gps.controller == 0 ? heroVoices : rivalVoices, target.MainMagicTrap, code, 0, gps.controller == 0);
+                            data = GetVoiceByCard(target, target.MainMagicTrap, code, 0, gps.controller == 0);
                             if (data.name != string.Empty)
                             {
                                 returnValue.Add(data);
@@ -542,28 +539,28 @@ namespace MDPro3
                         if (NeedBeforeCardEffect(simple.isMe))
                             returnValue.Add(GetBeforeCardEffectData(target, simple.isMe));
 
-                        if (simple.inHand)
+                        data = GetVoiceByCard(target, target.MainMonsterEffect, code, 0, simple.isMe);
+                        if (data.name != string.Empty)
                         {
-                            data = new VoiceData();
-                            data.name = GetVoiceBySubCategory(target.CardEffect, (int)CardEffectSub.FromHand, (int)CardEffectSub.FromHand, 0);
-                            data.num = GetVoiceNum(target, data.name);
-                            data.me = simple.isMe;
-                            data.wait = true;
-                            data.delay = 0f;
                             returnValue.Add(data);
+                            break;
+                        }
+                        data = GetVoiceByCard(target, target.MainMagicTrap, code, 0, simple.isMe);
+                        if (data.name != string.Empty)
+                        {
+                            returnValue.Add(data);
+                            break;
                         }
 
-                        data2 = GetVoiceByCard(simple.isMe ? heroVoices : rivalVoices, target.MainMonsterEffect, code, 0, gps.controller == 0);
-                        if (data2.name != string.Empty)
+                        if (simple.inHand)
                         {
+                            data2 = new VoiceData();
+                            data2.name = GetVoiceBySubCategory(target.CardEffect, (int)CardEffectSub.FromHand, (int)CardEffectSub.FromHand, 0);
+                            data2.num = GetVoiceNum(target, data2.name);
+                            data2.me = simple.isMe;
+                            data2.wait = true;
+                            data2.delay = 0f;
                             returnValue.Add(data2);
-                            break;
-                        }
-                        data2 = GetVoiceByCard(simple.isMe ? heroVoices : rivalVoices, target.MainMagicTrap, code, 0, simple.isMe);
-                        if (data2.name != string.Empty)
-                        {
-                            returnValue.Add(data2);
-                            break;
                         }
 
                         data3 = new VoiceData();
@@ -996,12 +993,14 @@ namespace MDPro3
                 if (value.cards == null)
                     continue;
                 if (value.cards.Contains(cid))
-                    tempStrings.Add(value.shortName);
-                if (value.engineparams != null && value.engineparams.Contains(engineparam))
                 {
-                    tempStrings.Clear();
                     tempStrings.Add(value.shortName);
-                    break;
+                    if (value.engineparams != null && value.engineparams.Contains(engineparam))
+                    {
+                        tempStrings.Clear();
+                        tempStrings.Add(value.shortName);
+                        break;
+                    }
                 }
             }
             if(tempStrings.Count > 0)
