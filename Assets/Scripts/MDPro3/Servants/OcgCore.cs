@@ -2006,7 +2006,7 @@ namespace MDPro3
                     if (allUnknown)
                     {
                         code = 0;
-                        textReason = InterString.Get("³é¿¨" + " x " + count);
+                        textReason = InterString.Get("³é¿¨") + " x " + count;
                         AddSingleCardMessageToLog(code, gps, null, textReason);
                     }
                     else
@@ -9027,6 +9027,9 @@ namespace MDPro3
         {
             charaFaceSetting = true;
             yield return new WaitForSeconds(delay);
+
+            if (id == 0)
+                id = 1;
 
             var address = "sn" + chara + "_3_" + id;
             if(!cachedCharaFaces.TryGetValue(address, out var sprite))

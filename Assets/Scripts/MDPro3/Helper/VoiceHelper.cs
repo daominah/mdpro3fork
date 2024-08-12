@@ -52,10 +52,12 @@ namespace MDPro3
         {
             var condition = Program.I().ocgcore.condition;
             var chara = Config.Get(condition + "Character0", defaultCharacter);
-            if(hero != chara) 
+            var configLanguage = Config.Get("Language", "zh-CN");
+
+            if(language != configLanguage || hero != chara)
             { 
                 hero = chara;
-                var dataPath = jsonPath + language + "/voice/V" + hero + ".json";
+                var dataPath = jsonPath + configLanguage + "/voice/V" + hero + ".json";
                 var txt = File.ReadAllText(dataPath);
                 heroVoices = JsonConvert.DeserializeObject<VoicesData>(txt);
 
@@ -65,10 +67,10 @@ namespace MDPro3
             }
 
             chara = Config.Get(condition + "Character1", defaultCharacter);
-            if(rival != chara)
+            if(language != configLanguage || rival != chara)
             {
                 rival = chara;
-                var dataPath = jsonPath + language + "/voice/V" + rival + ".json";
+                var dataPath = jsonPath + configLanguage + "/voice/V" + rival + ".json";
                 var txt = File.ReadAllText(dataPath);
                 rivalVoices = JsonConvert.DeserializeObject<VoicesData>(txt);
 
@@ -76,6 +78,7 @@ namespace MDPro3
                 txt = File.ReadAllText(dataPath);
                 rivalLines = JsonConvert.DeserializeObject<LinesData>(txt);
             }
+            language = configLanguage;
         }
         public static void ExportAllCardsNotFound()
         {
@@ -462,6 +465,8 @@ namespace MDPro3
 
                         if ((GameMessage)nextPack.Function == GameMessage.Chaining)
                         {
+                            if ((to.location & (uint)CardLocation.Onfield) == 0)
+                                break;
                             ignoreNextChaining = true;
 
                             code = nextPack.Data.reader.ReadInt32();

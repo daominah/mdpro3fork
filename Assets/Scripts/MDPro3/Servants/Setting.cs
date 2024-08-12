@@ -510,7 +510,7 @@ namespace MDPro3
             switch ((int)value)
             {
                 case 1:
-                    faaValue.text = InterString.Get("关闭");
+                    faaValue.text = InterString.Get("Off");
                     Program.I().camera_.urpAsset.msaaSampleCount = 1;
                     Program.I().camera_.urpAssetForUI.msaaSampleCount = 1;
                     break;
@@ -541,7 +541,7 @@ namespace MDPro3
             switch ((int)value)
             {
                 case 0:
-                    aaaValue.text = InterString.Get("无");
+                    aaaValue.text = InterString.Get("Off");
                     cameraData3D.antialiasing = AntialiasingMode.None;
                     break;
                 case 1:
