@@ -14,6 +14,7 @@ using YgomSystem.YGomTMPro;
 using MDPro3.YGOSharp;
 using MDPro3.YGOSharp.OCGWrapper.Enums;
 using MDPro3.UI;
+using static UnityEngine.Rendering.DebugUI;
 
 namespace MDPro3
 {
@@ -135,6 +136,9 @@ namespace MDPro3
             {
                 StopCoroutine(autoPlay);
                 autoPlay = null;
+                foreach(var cutin in cutins)
+                    Destroy(cutin);
+                cutins.Clear();
                 UIManager.ShowExitButton(transitionTime);
                 cg.alpha = 1;
                 cg.blocksRaycasts = true;
@@ -174,7 +178,7 @@ namespace MDPro3
                 return;
             playing = true;
             if (Program.I().ocgcore.isShowed)
-                AudioManager.PlayBGMKeyCard(Program.I().ocgcore.field1Manager.name);
+                AudioManager.PlayBgmKeyCard();
             DOTween.To(v => { }, 0, 0, 1.6f).OnComplete(() =>
             {
                 playing = false;
@@ -340,10 +344,14 @@ namespace MDPro3
             StartCoroutine(autoPlay);
         }
         bool randomBGMPlayed;
+        List<GameObject> cutins = new List<GameObject>();
         IEnumerator AutoPlayAsync()
         {
             while (playing)
                 yield return null;
+            if(!isShowed)
+                yield break;
+
             AudioManager.PlayRandomKeyCardBGM();
             randomBGMPlayed = true;
             cg.alpha = 0f;
@@ -361,10 +369,10 @@ namespace MDPro3
                     ie = ABLoader.LoadFromFileAsync("MonsterCutin2/" + card.Id, false, true);
                     diy = true;
                 }
-                StartCoroutine(ie);
                 while (ie.MoveNext())
                     yield return null;
                 ie.Current.SetActive(false);
+                cutins.Add(ie.Current);
                 while (playing)
                     yield return null;
                 ie.Current.SetActive(true);

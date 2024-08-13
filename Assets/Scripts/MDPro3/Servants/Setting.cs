@@ -50,6 +50,8 @@ namespace MDPro3
         public Text uiScaleValue;
         public Button background;
         public Text backgroundValue;
+        public Button bgmBy;
+        public Text bgmByValue;
         public Button cardLanguage;
         public Text cardLanguageValue;
         public Button language;
@@ -212,6 +214,7 @@ namespace MDPro3
             language.onClick.AddListener(OnLanguageChange);
             confirm.onClick.AddListener(OnConfirmClicked);
             autoRPS.onClick.AddListener(OnAutoRPS);
+            bgmBy.onClick.AddListener(OnBgmByClicked);
 
             duelAppearance.onClick.AddListener(OnDuelAppearcanceClick);
             watchAppearance.onClick.AddListener(OnWatchAppearcanceClick);
@@ -323,6 +326,7 @@ namespace MDPro3
             InitializeCardLanguage();
             InitializeLanguage();
             InitializeSwitches();
+            InitializeBgmBy();
         }
 
         public override void Show(int preDepth)
@@ -899,6 +903,31 @@ namespace MDPro3
             {
                 confirmValue.text = InterString.Get("右");
                 Config.SetBool("Confirm", false);
+            }
+        }
+
+        public void InitializeBgmBy()
+        {
+            var value = Config.GetBool("BGMbyMySide", true);
+            if (value)
+                bgmByValue.text = InterString.Get("我方");
+            else
+                bgmByValue.text = InterString.Get("对方");
+        }
+
+        public void OnBgmByClicked()
+        {
+            var value = Config.GetBool("BGMbyMySide", true);
+
+            if (value)
+            {
+                bgmByValue.text = InterString.Get("对方");
+                Config.SetBool("BGMbyMySide", false);
+            }
+            else
+            {
+                bgmByValue.text = InterString.Get("我方");
+                Config.SetBool("BGMbyMySide", true);
             }
         }
 

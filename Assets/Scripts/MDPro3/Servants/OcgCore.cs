@@ -3439,7 +3439,7 @@ namespace MDPro3
                                 cg.blocksRaycasts = true;
                                 buttons.SetActive(true);
                                 messagePass = true;
-                                AudioManager.PlayBGMNormal(field1.name);
+                                AudioManager.PlayBgmNormal(Config.GetBool("BGMbyMySide", true) ? field0.name : field1.name);
                             };
                         };
                     });
@@ -3592,7 +3592,7 @@ namespace MDPro3
                         cg.interactable = true;
                         cg.blocksRaycasts = true;
                         buttons.SetActive(true);
-                        AudioManager.PlayBGMNormal(field1.name);
+                        AudioManager.PlayBgmNormal(Config.GetBool("BGMbyMySide", true) ? field0.name : field1.name);
                     };
 
                     for (var i = 0; i < cards.Count; i++)
@@ -8768,7 +8768,7 @@ namespace MDPro3
                     grave0Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase3ToPhase4);
                     if (stand0Manager != null)
                         stand0Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase3ToPhase4);
-                    AudioManager.PlayBGMClimax(field1.name);
+                    AudioManager.PlayBgmClimax();
                 }
                 if (bgPhase0 == 4 && life0 <= 0)
                 {
@@ -8812,7 +8812,7 @@ namespace MDPro3
                     grave1Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase3ToPhase4);
                     if (stand1Manager != null)
                         stand1Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase3ToPhase4);
-                    AudioManager.PlayBGMClimax(field1.name);
+                    AudioManager.PlayBgmClimax();
                 }
                 if (bgPhase1 == 4 && life1 <= 0)
                 {

@@ -36,12 +36,12 @@ namespace MDPro3.UI
 
         private void PlayAudio(string path)
         {
-            if (path == "")
+            if (string.IsNullOrEmpty(path))
                 return;
             if (audioType == AudioType.SE)
                 AudioManager.PlaySE(path);
             else if (audioType == AudioType.Voice)
-                AudioManager.PlayVoiceByPath(path);
+                AudioManager.PlayVoiceByResourcePath(path);
         }
 
     }
