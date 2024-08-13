@@ -1438,7 +1438,7 @@ namespace MDPro3
                 if (input.text != deckName)
                     File.Delete(Program.deckPath + deckName + Program.ydkExpansion);
                 deckName = input.text;
-                MessageManager.Cast(InterString.Get("卡组「[?]」已保存。", input.text));
+                MessageManager.Cast(InterString.Get("本地卡组「[?]」已保存。", input.text));
                 dirty = false;
             }
             catch
