@@ -46,7 +46,7 @@ AI始终出剪刀,Always plays scissors,Siempre tijeras(IA),チョキ固定,AI�
 本地主机,LAN,LAN,ＬＡＮ対戦,로컬 호스트,本地主機
 账号：,Account: ,Usuario: ,アカウント：,계정：,帳號：
 密码：,Password: ,Contraseña: ,パスワード：,비밀번호：,密碼：
-注册,Register,Registro,登録,등록,註冊
+注册,Register,Registro,登録：,등록,註冊
 登录,Login,Iniciar sesión,ログイン,로그인,登入
 登录失败：,Login failed:,Error de inicio de sesión:,ログイン失敗,로그인 실패：,登入失敗：
 请检查网络连接,Please check your network connection,Por favor verifique su conexión de red,ネットワーク接続を確認してください,네트워크 연결을 확인하십시오,請檢查網絡連接
@@ -73,6 +73,8 @@ MyCard登录失败。,Mycard account Login failed,Error al iniciar sesión en My
 搜索决斗者,Search Duelist,Buscar Duelistas,決闘者サーチ,듀얼리스트 검색,蒐索決鬥者
 创建房间,Create Room,Crear una habitación,ルームの作成,공간 만들기,創建房間
 检测到新版先行卡，请至 [游戏设置]-[扩展卡包]-[更新先行卡] 处进行更新。,A new version of SuperPre cards has been detected. Please go to [SETTING] - [Expansions] - [Update SuperPre cards] to update it.,"Si se detecta una nueva versión de la tarjeta pionera, por favor actualice en [AJUSTES] - [Usar expansiones] - [Actualizar expansiones (cartas pre-lanzadas)].",新しい先行カードが検出されました。[ゲーム設定]-[拡張パッケージ]-[先行カードの更新]で更新してください。,새 선행 카드가 발견되었습니다. [게임 설정] - [카드 확장팩] - [프리릴리즈 카드 업데이트]에서 업데이트하십시오.,檢測到新版先行卡，請至[遊戲設置]-[擴展卡包]-[更新先行卡]處進行更新。
+用户名不能为空。,Player Name cannot be empty.,El nombre de usuario no puede estar vacío.,プレイヤー名は空にできません。,사용자 이름은 비워둘 수 없습니다.,用戶名不能為空。
+主机地址和端口不能为空。,Host IP and Port cannot be empty.,La dirección y el puerto del host no pueden estar vacíos.,ＩＰとＰＯＲＴは空にすることはできません。,호스트 주소와 포트는 비워둘 수 없습니다.,主機地址和端口不能為空。
 ,,,,,
 #Online Server,,,,,
 禁限卡表,Forbidden & Limited Lists,Banlist,リミットレギュレーション,금지 카드 목록,禁限卡表
@@ -111,6 +113,7 @@ YGOPro旧版的回放崩溃了！您可以选择使用永不崩溃的新版回�
 ,,,,,
 #Mate,,,,,
 搜索同伴,Search Mates,Buscar Compañero,メイト検索,메이트 검색,搜索同伴
+长按宠物再松开后即可返回正常视角。,Long press and release the mate to return to normal viewing angle.,Presione la mascota durante mucho tiempo y luego suelte para volver a la perspectiva normal.,メイトを長押しして放すと通常の視野に戻ります。,애완동물을 길게 누르고 놓으면 정상 시각으로 돌아갈 수 있다.,長按寵物再鬆開後即可返回正常視角。
 ,,,,,
 #SelectDeck,,,,,
 选择卡组,Select Deck,Elegir Deck,デッキ選択,덱 선택,選擇牌組
@@ -179,8 +182,8 @@ UI缩放,UI Scaling,Escalado de la UI,ＵＩズーム,UI크기 조정,UI縮放
 语言,Language,Idioma de la UI,言語,언어,語言
 设置游戏中的语言,Change the language of the in-game text,Configurar el idioma de la interfaz de usuario,ゲームや表示されるテキストの言語,게임 내 언어 설정,設置遊戲中的語言
 决斗中不能更改此选项。,This option is unable to change during a duel.,Esta opción no se puede cambiar durante un duelo.,デュエル中にこの設定を変更できません,듀얼 중에는 이 설정을 변경할 수 없습니다.,決斗中不能更改此選項。
-场地背景音乐,Mat BGM,Música de fondo del lugar,フィールドBGM,필드 배경음악,場地背景音樂
-场地背景音乐由哪方决定,Mat BGM decides by,quién decide la música de fondo del lugar,フィールドのBGMはどちらが決めるか,장소 배경음악은 어느 쪽이 정할까요,場地背景音樂由哪方決定
+场地背景音乐,Mat BGM,Música de fondo del lugar,フィールドＢＧＭ,필드 배경음악,場地背景音樂
+场地背景音乐由哪方决定,Mat BGM decides by,quién decide la música de fondo del lugar,フィールドＢＧＭは誰が決めるのですか？,장소 배경음악은 어느 쪽이 정할까요,場地背景音樂由哪方決定
 ,,,,,
 #Setting Duel,,,,,
 外观,Profile,Apariencia,プロフィール,외관,外觀
@@ -505,6 +508,7 @@ Off,Off,Apagado,ＯＦＦ,Off,Off
 确认卡片：[?],Confirm Card: [?],Carta confirmada: [?],カード確認：[?],카드 확인：[?],确認卡片：[?]
 确认卡片：[?]张。,Confirm Cards: [?],Cartas confirmadas: [?] cartas.,カード確認：[?] 枚。,카드 확인：[?]장.,確認卡片：[?]張。
 现在不能查看此处的卡片。,Can not check the cards here now.,No se puede ver la tarjeta aquí ahora.,このカードは現在表示できません。,지금 이 카드에는 액세스할 수 없습니다.,現在不能查看此處的卡片。
+更换副卡组成功，请等待对手更换副卡组。,The adjustment of the side deck has been successful. Please wait for the opponent to change the side deck.,"El cambio del Grupo de tarjetas secundarias fue exitoso, por favor espere a que su oponente cambie el Grupo de tarjetas secundarias.",サブデッキの交換に成功しました。相手がサブデッキを交換するのを待ってください。,보조 카드 그룹 교체에 성공했습니다. 상대방이 보조 카드 그룹을 교체할 때까지 기다리십시오.,更換副卡組成功，請等待對手更換副卡組。
 ,,,,,
 #Duel Log,,,,,
 第[?]回合,Turn [?],Turno [?],ターン [?],[?]턴,第[?]回合
