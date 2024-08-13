@@ -320,13 +320,13 @@ namespace MDPro3.Net
         {
             if (name == "")
             {
-                MessageManager.Cast("用户名不能为空。");
+                MessageManager.Cast(InterString.Get("用户名不能为空。"));
                 return;
             }
 
             if (ip == "" || port == "")
             {
-                MessageManager.Cast("主机地址和端口不能为空。");
+                MessageManager.Cast(InterString.Get("主机地址和端口不能为空。"));
                 return;
             }
             if (!TcpHelper.canJoin)

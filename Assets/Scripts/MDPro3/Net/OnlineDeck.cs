@@ -243,7 +243,7 @@ namespace MDPro3
             }
             else
             {
-                MessageManager.Cast("获取MyCard卡组失败：" + request.error);
+                MessageManager.Cast(InterString.Get("获取MyCard卡组失败：") + request.error);
                 return null;
             }
         }
@@ -327,7 +327,7 @@ namespace MDPro3
             }
             else
             {
-                MessageManager.Cast("上传卡组失败：" + getIDs.error);
+                MessageManager.Cast(InterString.Get("上传卡组失败：") + getIDs.error);
                 return false;
             }
 
@@ -373,7 +373,7 @@ namespace MDPro3
             }
             else
             {
-                MessageManager.Cast("上传卡组失败：" + request.error);
+                MessageManager.Cast(InterString.Get("上传卡组失败：") + request.error);
                 return false;
             }
         }

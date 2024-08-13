@@ -475,7 +475,7 @@ namespace MDPro3
 
             if (Config.Get("MateViewTips", "0") == "0")
             {
-                MessageManager.Cast("长按宠物再松开后即可返回正常视角。");
+                MessageManager.Cast(InterString.Get("长按宠物再松开后即可返回正常视角。"));
                 Config.Set("MateViewTips", "1");
                 Config.Save();
             }
@@ -499,7 +499,7 @@ namespace MDPro3
 
             if (Config.Get("MateViewTips", "0") == "0")
             {
-                MessageManager.Cast("长按宠物再松开后即可返回正常视角。");
+                MessageManager.Cast(InterString.Get("长按宠物再松开后即可返回正常视角。"));
                 Config.Set("MateViewTips", "1");
                 Config.Save();
             }
