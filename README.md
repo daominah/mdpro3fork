@@ -2,16 +2,21 @@
 
 A new version of YGOPro in Unity with MasterDuel Assets.
 
+Unity version: 6000.0.10f1
 
 ### Other required folders
 
 * Android: You can find it from the Android apk.
 
-* StandaloneWindows64: You can find it from the windows client.
+* StandaloneWindows64: You can find it from the released MDPro3(windows).
 
-* Art: https://code.mycard.moe/mycard/hd-arts
+* Picture\Art: https://code.mycard.moe/mycard/hd-arts
 
-* Closeup: https://code.mycard.moe/mycard/ygopro2-closeup
+* Picture\Closeup: https://code.mycard.moe/mycard/ygopro2-closeup
+
+* Picture\DIY: You can find it from the released MDPro3
+
+* Sound: You can find it from the released MDPro3
 
 ### Tools
 
