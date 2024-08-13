@@ -9034,14 +9034,23 @@ namespace MDPro3
             var address = "sn" + chara + "_3_" + id;
             if(!cachedCharaFaces.TryGetValue(address, out var sprite))
             {
-                var handle = Addressables.LoadAssetAsync<Texture2D>("sn" + chara + "_3_" + id);
+                var handle = Addressables.LoadAssetAsync<Sprite>("sn" + chara + "_3_" + id);
                 yield return handle;
 
                 if (handle.Status == UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationStatus.Succeeded)
                 {
-                    var texture = TextureManager.GetCroppingTex(handle.Result, 80, 0, 320, 240);
-                    TextureManager.ReplaceTransparentPixelsWithColor(texture, Color.black);
-                    sprite = TextureManager.Texture2Sprite(texture);
+                    if (handle.Result.texture.width != handle.Result.texture.height)
+                    {
+                        var texture = TextureManager.GetCroppingTex(handle.Result.texture, 80, 0, 320, 240);
+                        TextureManager.ReplaceTransparentPixelsWithColor(texture, Color.black);
+                        sprite = TextureManager.Texture2Sprite(texture);
+                    }
+                    else
+                    {
+                        var texture = TextureManager.CreateCenteredTexture(handle.Result.texture, 280, 0, 10);
+                        TextureManager.ReplaceTransparentPixelsWithColor(texture, Color.black);
+                        sprite = TextureManager.Texture2Sprite(texture);
+                    }
                     cachedCharaFaces[address] = sprite;
                 }
                 else

@@ -355,7 +355,7 @@ namespace MDPro3
         {
             if (RoomIsFull())
             {
-                MessageManager.Cast("房间已满，无法继续添加AI。");
+                MessageManager.Cast(InterString.Get("房间已满，无法继续添加AI。"));
             }
             else
             {
@@ -1048,7 +1048,7 @@ namespace MDPro3
             if (Program.I().editDeck.isShowed)
             {
                 Program.I().editDeck.Hide(0);
-                MessageManager.Cast("更换副卡组成功，请等待对手更换副卡组。");
+                MessageManager.Cast(InterString.Get("更换副卡组成功，请等待对手更换副卡组。"));
             }
 
             if (isShowed)

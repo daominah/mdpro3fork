@@ -127,6 +127,12 @@ namespace MDPro3
             cardMatNormal.enableInstancing = true;
             cardMatShine.enableInstancing = true;
             cardMatRoyal.enableInstancing = true;
+
+            cardMatShine = Instantiate(cardMatRoyal);
+
+            cardMatRoyal.SetTexture("_HighlightNormal", container.CardKiraNormal03_Millennium);
+            cardMatRoyal.SetTexture("_Kira02_01", container.CardKira3_Millennium);
+            cardMatRoyal.SetTexture("_Texture2DAsset_3e204bf62e854283be7482d92655b24f_Out_0", container.CardKiraNormal03_Millennium);
 #if UNITY_ANDROID
             var depens = Directory.GetFiles(Program.root + "CrossDuel/Dependency", "*.bundle");
             foreach (var depen in depens)
@@ -853,7 +859,7 @@ namespace MDPro3
 
         public static void ReplaceTransparentPixelsWithColor(Texture2D texture, Color replacementColor)
         {
-            Color32[] pixels = texture.GetPixels32();
+            var pixels = texture.GetPixels32();
 
             for(int i = 0; i < pixels.Length; i++)
                 if (pixels[i].a == 0)
@@ -863,6 +869,50 @@ namespace MDPro3
             texture.Apply();
         }
 
+        /// <summary>
+        /// Creates a new Texture2D with the original texture centered and allows for vertical and horizontal offsets.
+        /// </summary>
+        /// <param name="originalTexture">The original Texture2D.</param>
+        /// <param name="newSize">The size of the new Texture2D.</param>
+        /// <param name="offsetX">Horizontal offset in pixels.</param>
+        /// <param name="offsetY">Vertical offset in pixels.</param>
+        /// <returns>A new Texture2D with the original texture centered and offset.</returns>
+        public static Texture2D CreateCenteredTexture(Texture2D originalTexture, int newSize, int offsetX, int offsetY)
+        {
+            if (originalTexture == null)
+                throw new System.ArgumentNullException("originalTexture", "Original texture cannot be null.");
+
+            Texture2D newTexture = new(newSize, newSize, originalTexture.format, false);
+
+            for (int y = 0; y < newSize; y++)
+                for (int x = 0; x < newSize; x++)
+                    newTexture.SetPixel(x, y, Color.clear);
+            newTexture.Apply();
+
+            int centerX = newSize / 2;
+            int centerY = newSize / 2;
+
+            int startX = centerX - originalTexture.width / 2 + offsetX;
+            int startY = centerY - originalTexture.height / 2 + offsetY;
+
+            for (int y = 0; y < originalTexture.height; y++)
+            {
+                for (int x = 0; x < originalTexture.width; x++)
+                {
+                    Color pixelColor = originalTexture.GetPixel(x, y);
+                    int newX = startX + x;
+                    int newY = startY + y;
+
+                    if (newX >= 0 && newX < newSize && newY >= 0 && newY < newSize)
+                        newTexture.SetPixel(newX, newY, pixelColor);
+                }
+            }
+
+            // Apply changes to the new texture.
+            newTexture.Apply();
+
+            return newTexture;
+        }
         #endregion
 
     }

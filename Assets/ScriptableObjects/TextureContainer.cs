@@ -346,6 +346,8 @@ public class TextureContainer : ScriptableObject
     public Texture2D fxt_Arrow_003;
     public Texture2D fxt_Arrow_004;
     public Texture2D fxt_msk_005;
+    public Texture2D CardKira3_Millennium;
+    public Texture2D CardKiraNormal03_Millennium;
 
     public List<Sprite> GetLocationIcons(GPS p)
     {
