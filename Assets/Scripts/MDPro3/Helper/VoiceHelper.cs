@@ -12,8 +12,6 @@ namespace MDPro3
 {
     public static class VoiceHelper
     {
-
-
         public const string voicePath = "Sound/Voice/";
         public const string customVoicePath = "Sound/CustomVoice/";
         public const string jsonPath = "Data/locales/";
@@ -987,7 +985,7 @@ namespace MDPro3
 
             if(entry == null)
                 return returnValue;
-
+            card = GetCidDefaultAltCard(card);
             var cid = Cid2Ydk.GetCID(card);
             if (cid == card)
                 return returnValue;
@@ -1019,6 +1017,16 @@ namespace MDPro3
             }
 
             return returnValue;
+        }
+
+        static int GetCidDefaultAltCard(int card)
+        {
+            var data = CardsManager.Get(card);
+            if (card == 89631139 || data.Alias == 89631139)//ÇàÑÛ°×Áú
+                return 89631141;
+            if (card == 46986414 || data.Alias == 46986414)//ºÚÄ§ÊõÊ¦
+                return 46986417;
+            return card;
         }
 
         //0 

@@ -46,6 +46,7 @@ AI始终出剪刀,Always plays scissors,Siempre tijeras(IA),チョキ固定,AI�
 本地主机,LAN,LAN,ＬＡＮ対戦,로컬 호스트,本地主機
 账号：,Account: ,Usuario: ,アカウント：,계정：,帳號：
 密码：,Password: ,Contraseña: ,パスワード：,비밀번호：,密碼：
+注册,Register,Registro,登録,등록,註冊
 登录,Login,Iniciar sesión,ログイン,로그인,登入
 登录失败：,Login failed:,Error de inicio de sesión:,ログイン失敗,로그인 실패：,登入失敗：
 请检查网络连接,Please check your network connection,Por favor verifique su conexión de red,ネットワーク接続を確認してください,네트워크 연결을 확인하십시오,請檢查網絡連接
@@ -70,6 +71,8 @@ MyCard登录失败。,Mycard account Login failed,Error al iniciar sesión en My
 娱乐匹配,Entertainment Match,Match Casual,フリーマッチング,예능 매칭,娛樂匹配
 匹配失败,Matching Failed,Falló el emparejamiento,マッチング失敗,매칭 실패,匹配失敗
 搜索决斗者,Search Duelist,Buscar Duelistas,決闘者サーチ,듀얼리스트 검색,蒐索決鬥者
+创建房间,Create Room,Crear una habitación,ルームの作成,공간 만들기,創建房間
+检测到新版先行卡，请至 [游戏设置]-[扩展卡包]-[更新先行卡] 处进行更新。,A new version of SuperPre cards has been detected. Please go to [SETTING] - [Expansions] - [Update SuperPre cards] to update it.,"Si se detecta una nueva versión de la tarjeta pionera, por favor actualice en [AJUSTES] - [Usar expansiones] - [Actualizar expansiones (cartas pre-lanzadas)].",新しい先行カードが検出されました。[ゲーム設定]-[拡張パッケージ]-[先行カードの更新]で更新してください。,새 선행 카드가 발견되었습니다. [게임 설정] - [카드 확장팩] - [프리릴리즈 카드 업데이트]에서 업데이트하십시오.,檢測到新版先行卡，請至[遊戲設置]-[擴展卡包]-[更新先行卡]處進行更新。
 ,,,,,
 #Online Server,,,,,
 禁限卡表,Forbidden & Limited Lists,Banlist,リミットレギュレーション,금지 카드 목록,禁限卡表
@@ -176,6 +179,8 @@ UI缩放,UI Scaling,Escalado de la UI,ＵＩズーム,UI크기 조정,UI縮放
 语言,Language,Idioma de la UI,言語,언어,語言
 设置游戏中的语言,Change the language of the in-game text,Configurar el idioma de la interfaz de usuario,ゲームや表示されるテキストの言語,게임 내 언어 설정,設置遊戲中的語言
 决斗中不能更改此选项。,This option is unable to change during a duel.,Esta opción no se puede cambiar durante un duelo.,デュエル中にこの設定を変更できません,듀얼 중에는 이 설정을 변경할 수 없습니다.,決斗中不能更改此選項。
+场地背景音乐,Mat BGM,Música de fondo del lugar,フィールドBGM,필드 배경음악,場地背景音樂
+场地背景音乐由哪方决定,Mat BGM decides by,quién decide la música de fondo del lugar,フィールドのBGMはどちらが決めるか,장소 배경음악은 어느 쪽이 정할까요,場地背景音樂由哪方決定
 ,,,,,
 #Setting Duel,,,,,
 外观,Profile,Apariencia,プロフィール,외관,外觀
