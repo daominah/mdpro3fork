@@ -60,18 +60,26 @@ namespace MDPro3
             cards.Clear();
             for (int i = 0; i < dirInfos.Length; i++)
             {
-                Card card = CardsManager.Get(int.Parse(dirInfos[i].Name));
-                cards.Add(card);
-                codes.Add(card.Id);
+                try
+                {
+                    Card card = CardsManager.Get(int.Parse(dirInfos[i].Name));
+                    cards.Add(card);
+                    codes.Add(card.Id);
+                }
+                catch { }
             }
             for (int i = 0; i < fileInfos.Length; i++)
             {
-                Card card = CardsManager.Get(int.Parse(fileInfos[i].Name));
-                if (!cards.Contains(card))
+                try
                 {
-                    cards.Add(card);
-                    codes2.Add(card.Id);
+                    Card card = CardsManager.Get(int.Parse(fileInfos[i].Name));
+                    if (!cards.Contains(card))
+                    {
+                        cards.Add(card);
+                        codes2.Add(card.Id);
+                    }
                 }
+                catch { }
             }
             cards.Sort(CardsManager.ComparisonOfCard());
             Print();

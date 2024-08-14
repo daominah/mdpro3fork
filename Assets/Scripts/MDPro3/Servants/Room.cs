@@ -880,7 +880,7 @@ namespace MDPro3
                     break;
                 case 2:
                     var flag = code >> 28;
-                    code = code & 0xFFFFFFF;
+                    code &= 0xFFFFFFF;
                     var cardName = CardsManager.Get(code).Name;
                     List<string> tasks = new List<string>() { StringHelper.GetUnsafe(1406) };
                     var task = "";
@@ -898,13 +898,18 @@ namespace MDPro3
                             task = StringHelper.GetUnsafe(1411 + flag);
                             replace = new Regex("%ls");
                             task = replace.Replace(task, cardName);
+                            if(flag == 4)
+                            {
+                                replace = new Regex("%d");
+                                task = replace.Replace(task, code.ToString());
+                            }
                             break;
                         case 6:
                         case 7:
                         case 8:
                         case 9:
                             task = StringHelper.GetUnsafe(1411 + flag);
-                            replace = new Regex("%ls");
+                            replace = new Regex("%d");
                             var target = "";
                             if (flag == 6)
                                 target = deck.Main.Count.ToString();
@@ -918,21 +923,20 @@ namespace MDPro3
                             task = StringHelper.GetUnsafe(1406);
                             break;
                     }
-                    task = task.Replace("(%d)", "");
+                    //task = task.Replace("(%d)", "");
                     tasks.Add(task);
                     UIManager.ShowPopupConfirm(tasks);
                     break;
                 case 3:
                     tasks = new List<string>()
-                {
-                    StringHelper.GetUnsafe(1408),
-                    StringHelper.GetUnsafe(1410),
-                };
+                    {
+                        StringHelper.GetUnsafe(1408),
+                        StringHelper.GetUnsafe(1410),
+                    };
                     UIManager.ShowPopupConfirm(tasks);
                     break;
                 case 4:
                     Debug.Log("ERROR 4: " + code);
-
                     break;
             }
         }
