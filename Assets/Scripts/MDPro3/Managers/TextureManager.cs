@@ -131,7 +131,7 @@ namespace MDPro3
             cardMatShine = Instantiate(cardMatRoyal);
 
             cardMatRoyal.SetTexture("_HighlightNormal", container.CardKiraNormal03_Millennium);
-            cardMatRoyal.SetTexture("_Kira02_01", container.CardKira3_Millennium);
+            //cardMatRoyal.SetTexture("_Kira02_01", container.CardKira3_Millennium);
             cardMatRoyal.SetTexture("_Texture2DAsset_3e204bf62e854283be7482d92655b24f_Out_0", container.CardKiraNormal03_Millennium);
 #if UNITY_ANDROID
             var depens = Directory.GetFiles(Program.root + "CrossDuel/Dependency", "*.bundle");

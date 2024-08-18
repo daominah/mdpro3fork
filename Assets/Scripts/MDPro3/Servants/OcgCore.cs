@@ -6011,30 +6011,28 @@ namespace MDPro3
                     if (card != null)
                     {
                         var displayname = "「" + card.GetData().Name + "」";
+                        var forReplaceFirst = new Regex("\\[%ls\\]");
                         if (cr == 0)
                         {
                             desc = StringHelper.Get(200);//是否在[%ls]发动[%ls]的效果？
-                            var forReplaceFirst = new Regex("\\[%ls\\]");
                             desc = forReplaceFirst.Replace(desc, StringHelper.FormatLocation(gps), 1);
-                            desc = forReplaceFirst.Replace(desc, displayname, 1);
+                            desc = ES_hint + "，" + forReplaceFirst.Replace(desc, displayname, 1);
                         }
                         else if (cr == 221)
                         {
                             desc = StringHelper.Get(221);//是否在[%ls]发动[%ls]的诱发类效果？
-                            var forReplaceFirst = new Regex("\\[%ls\\]");
                             desc = forReplaceFirst.Replace(desc, StringHelper.FormatLocation(gps), 1);
                             desc = forReplaceFirst.Replace(desc, displayname, 1);
-                            desc = desc + "\n" + StringHelper.Get(223);//稍后将询问其他可以发动的效果。
+                            desc = ES_hint + "，" + desc + "\n" + StringHelper.Get(223);//稍后将询问其他可以发动的效果。
                         }
                         else
                         {
                             desc = StringHelper.Get(cr);
-                            var forReplaceFirst = new Regex("\\[%ls\\]");
                             desc = forReplaceFirst.Replace(desc, displayname, 1);
                         }
 
                         List<GameCard> oneCardToSend = new List<GameCard>() { card };
-                        ShowPopupSelectCard(ES_hint + "，" + desc, oneCardToSend, 1, 1, true, false);
+                        ShowPopupSelectCard(desc, oneCardToSend, 1, 1, true, false);
                     }
                     break;
                 case GameMessage.SelectChain:
