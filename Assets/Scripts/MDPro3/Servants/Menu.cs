@@ -31,7 +31,7 @@ namespace MDPro3
         private IEnumerator CheckUpdate()
         {
             yield return new WaitForSeconds(3);
-            var www = UnityWebRequest.Get("https://code.mycard.moe/sherry_chaos/MDPro3/-/raw/master/Version.txt");
+            var www = UnityWebRequest.Get(Settings.data.MDPro3VersionUrl);
             www.SetRequestHeader("Cache-Control", "max-age=0, no-cache, no-store");
             www.SetRequestHeader("Pragma", "no-cache");
             yield return www.SendWebRequest();
@@ -45,13 +45,13 @@ namespace MDPro3
             else
                 MessageManager.Cast(InterString.Get("¼ì²é¸üÐÂÊ§°Ü£¡"));
 
-            var filePath = Path.Combine(Program.expansionsPath, Path.GetFileName(Setting.prereleasePackUrl));
+            var filePath = Path.Combine(Program.expansionsPath, Path.GetFileName(Settings.data.PrereleasePackUrl));
             if (!File.Exists(filePath))
             {
                 Config.Set("Prerelease", "0");
                 Config.Save();
             }
-            www = UnityWebRequest.Get(Setting.prereleaseVersionUrl);
+            www = UnityWebRequest.Get(Settings.data.PrereleasePackVersionUrl);
             yield return www.SendWebRequest();
             if(www.result == UnityWebRequest.Result.Success)
             {

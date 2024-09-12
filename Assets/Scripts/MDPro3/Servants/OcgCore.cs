@@ -143,6 +143,7 @@ namespace MDPro3
             transform.GetChild(0).gameObject.SetActive(true);
             StartCoroutine(LoadAssets());
             CameraBack();
+            returnAction = null;
         }
 
         public override void ApplyHideArrangement(int preDepth)
@@ -368,79 +369,67 @@ namespace MDPro3
 
                 if(Input.GetKeyDown(KeyCode.G))
                 {
-                    if (greenBackground.gameObject.activeInHierarchy)
-                    {
-                        greenBackground.gameObject.SetActive(false);
-                        cg.alpha = 1f;
-                        cg.interactable = true;
-                        cg.blocksRaycasts = true;
-                        CameraManager.DuelOverlay3DMinus();
-                    }
+                    if (greenOn)
+                        GreenBackgroundOff();
                     else
-                    {
-                        greenBackground.gameObject.SetActive(true);
-                        cg.alpha = 0f;
-                        cg.interactable = false;
-                        cg.blocksRaycasts = false;
-                        CameraManager.DuelOverlay3DPlus();
-                    }
+                        GreenBackgroundOn();
                 }
 
-                if (cg.alpha == 0
+                if (greenOn
                     && (Input.GetKeyDown(KeyCode.Alpha0) 
                     || Input.GetKeyDown(KeyCode.Keypad0)))
                 {
                     greenBackground.material.color = Color.black;
                 }
-                if (cg.alpha == 0
+                if (greenOn
                     && (Input.GetKeyDown(KeyCode.Alpha1) 
                     || Input.GetKeyDown(KeyCode.Keypad1)))
                 {
                     greenBackground.material.color = Color.red;
                 }
-                if (cg.alpha == 0
+                if (greenOn
                     && (Input.GetKeyDown(KeyCode.Alpha2) 
                     || Input.GetKeyDown(KeyCode.Keypad2)))
                 {
                     greenBackground.material.color = new Color(1f, 0.5f, 0f);
                 }
-                if (cg.alpha == 0
+                if (greenOn
                     && (Input.GetKeyDown(KeyCode.Alpha3) 
                     || Input.GetKeyDown(KeyCode.Keypad3)))
                 {
                     greenBackground.material.color = new Color(1f, 1f, 0f);
                 }
-                if (cg.alpha == 0
+                if (greenOn
                     && (Input.GetKeyDown(KeyCode.Alpha4) 
                     || Input.GetKeyDown(KeyCode.Keypad4)))
                 {
                     greenBackground.material.color = Color.green;
                 }
-                if (cg.alpha == 0
+                if (greenOn
                     && (Input.GetKeyDown(KeyCode.Alpha5) 
                     || Input.GetKeyDown(KeyCode.Keypad5)))
                 {
                     greenBackground.material.color = new Color(0f, 1f, 1f);
                 }
-                if (cg.alpha == 0
+                if (greenOn
                     && (Input.GetKeyDown(KeyCode.Alpha6) 
                     || Input.GetKeyDown(KeyCode.Keypad6)))
                 {
                     greenBackground.material.color = Color.blue;
                 }
-                if (cg.alpha == 0
+                if (greenOn
                     && (Input.GetKeyDown(KeyCode.Alpha7) 
                     || Input.GetKeyDown(KeyCode.Keypad7)))
                 {
                     greenBackground.material.color = new Color(0.6f, 0f, 1f);
                 }
-                if (cg.alpha == 0
+                if (greenOn
                     && (Input.GetKeyDown(KeyCode.Alpha8) 
                     || Input.GetKeyDown(KeyCode.Keypad8)))
                 {
                     greenBackground.material.color = Color.gray;
                 }
-                if (cg.alpha == 0
+                if (greenOn
                     && (Input.GetKeyDown(KeyCode.Alpha9) 
                     || Input.GetKeyDown(KeyCode.Keypad9)))
                 {
@@ -449,6 +438,29 @@ namespace MDPro3
 
                 #endregion
             }
+        }
+
+        bool greenOn;
+        public void GreenBackgroundOn()
+        {
+            greenBackground.gameObject.SetActive(true);
+            cg.alpha = 0f;
+            cg.interactable = false;
+            cg.blocksRaycasts = false;
+            CameraManager.DuelOverlay3DPlus();
+
+            greenOn = true;
+        }
+
+        public void GreenBackgroundOff()
+        {
+            greenBackground.gameObject.SetActive(false);
+            cg.alpha = 1f;
+            cg.interactable = true;
+            cg.blocksRaycasts = true;
+            CameraManager.DuelOverlay3DMinus();
+
+            greenOn = false;
         }
 
         public void ToChat()
@@ -706,7 +718,7 @@ namespace MDPro3
             var path = Program.items.GetPathByCode(
                 Config.Get(condition.ToString() + "Field0", 
                 Program.items.mats[0].id.ToString()), Items.ItemType.Mat);
-            if (deck != null)
+            if (deck != null && !Config.GetBool("OverrideDeckAppearance", false))
                 path = Program.items.GetPathByCode(deck.Field[0].ToString(), Items.ItemType.Mat);
             path = "MasterDuel/" + path;
             var enumerator = ABLoader.LoadFromFileAsync(path + "_near");
@@ -749,7 +761,7 @@ namespace MDPro3
             path = Program.items.GetPathByCode(
                 Config.Get(condition.ToString() + "Grave0", 
                 Program.items.graves[0].id.ToString()), Items.ItemType.Grave);
-            if (deck != null)
+            if (deck != null && !Config.GetBool("OverrideDeckAppearance", false))
                 path = Program.items.GetPathByCode(deck.Grave[0].ToString(), Items.ItemType.Grave);
             path = "MasterDuel/" + path;
             enumerator = ABLoader.LoadFromFileAsync(path + "_near");
@@ -784,7 +796,7 @@ namespace MDPro3
             if(standConfig != Items.noneCode.ToString() || deck != null)
             {
                 path = Program.items.GetPathByCode(standConfig, Items.ItemType.Stand);
-                if (deck != null)
+                if (deck != null && !Config.GetBool("OverrideDeckAppearance", false))
                     path = Program.items.GetPathByCode(deck.Stand[0].ToString(), Items.ItemType.Stand);
                 path = "MasterDuel/" + path;
                 enumerator = ABLoader.LoadFromFileAsync(path + "_near");
@@ -820,7 +832,7 @@ namespace MDPro3
             if(mateConfig != Items.noneCode.ToString() || deck != null)
             {
                 int mateCode = int.Parse(mateConfig);
-                if (deck != null)
+                if (deck != null && !Config.GetBool("OverrideDeckAppearance", false))
                     mateCode = deck.Mate[0];
                 var mateLoader = ABLoader.LoadMateAsync(mateCode);
                 while (mateLoader.MoveNext())
@@ -967,13 +979,14 @@ namespace MDPro3
             allGameObjects.Add(opExtra.gameObject);
 
             var deckMat = Appearance.duelProtector0;
-            if (deck != null)
+            if (deck != null && !Config.GetBool("OverrideDeckAppearance", false))
             {
                 var ie = ABLoader.LoadProtectorMaterial(deck.Protector[0].ToString());
                 StartCoroutine(ie);
                 while (ie.MoveNext())
                     yield return null;
-                deckMat = ie.Current;
+                if (ie.Current != null)
+                    deckMat = ie.Current;
             }
 
             if (condition == Condition.Duel)
@@ -1565,6 +1578,7 @@ namespace MDPro3
 
             greenBackground.gameObject.SetActive(false);
             inputMode = false;
+            returnAction = null;
         }
 
         public void AddPackage(Package p)
@@ -3274,6 +3288,7 @@ namespace MDPro3
                             endingReason = InterString.Get("游戏败北，原因：[?]", winReason);
                         }
                     }
+                    allGameObjects.Add(duelText);
                     if (timerHandler != null)
                         timerHandler.DuelEnd();
                     if (playableGuide0 != null && playableGuide1 != null)
@@ -3283,6 +3298,10 @@ namespace MDPro3
                     }
                     //防止对方在更换副卡组时拔螺丝
                     UIManager.UIBlackOut(transitionTime);
+                    cg.interactable = true;
+                    cg.blocksRaycasts = true;
+                    cg.alpha = 1f;
+                    buttons.SetActive(true);
 
                     duelText.SetActive(false);
                     endingAction = () =>
@@ -6883,50 +6902,19 @@ namespace MDPro3
         {
             var data = attackCard.GetData();
             var returnValue = FinalAttackType.Normal;
-            if (data.Id == 89631139 || data.Alias == 89631139 //青眼白龙
-                || data.Id == 53347303 || data.Alias == 53347303 //青眼光龙
-                || data.Id == 22804410 || data.Alias == 22804410 //渊眼白龙
-                || data.Id == 38517737 || data.Alias == 38517737 //青眼亚白龙
-                || data.Id == 30576089 || data.Alias == 30576089 //青眼喷气龙
-                || data.Id == 9433350 || data.Alias == 9433350 //罪 青眼白龙
-                || data.Id == 53183600 || data.Alias == 53183600 //青眼卡通龙
-                || data.Id == 23995346 || data.Alias == 23995346 //青眼究极龙
-                || data.Id == 43228023 || data.Alias == 43228023 //青眼究极亚龙
-                || data.Id == 56532353 || data.Alias == 56532353 //真青眼究极龙
-                || data.Id == 2129638 || data.Alias == 2129638 //青眼双爆裂龙
-                || data.Id == 11443677 || data.Alias == 11443677 //青眼暴君龙
-                )
+            if(Settings.data.FinalAttackBlueEyes.Contains(data.Id) || Settings.data.FinalAttackBlueEyes.Contains(data.Alias))
                 returnValue = FinalAttackType.BlueEyes;
-            if (data.Id == 46986414 || data.Alias == 46986414 //黑魔术师
-                || data.Id == 92377303 || data.Alias == 92377303 //黑衣大贤者
-                || data.Id == 342673 || data.Alias == 342673 //黑色魔术师-黑魔术师
-                || data.Id == 21296502 || data.Alias == 21296502 //卡通黑魔术师
-                || data.Id == 29436665 || data.Alias == 29436665 //黑魔导执行官
-                || data.Id == 35191415 || data.Alias == 35191415 //黑幻想之魔术师
-                || data.Id == 38033121 || data.Alias == 38033121 //黑魔术少女
-                || data.Id == 90960358 || data.Alias == 90960358 //卡通黑魔术少女
-                || data.Id == 50237654 || data.Alias == 50237654 //超魔导师-黑魔术师徒
-                )
+            if (Settings.data.FinalAttackDarkM.Contains(data.Id) || Settings.data.FinalAttackDarkM.Contains(data.Alias))
                 returnValue = FinalAttackType.DarkM;
-            if (data.Id == 74677422 || data.Alias == 74677422 //真红眼黑龙
-                || data.Id == 96561011 || data.Alias == 96561011 //真红眼暗龙
-                || data.Id == 64335804 || data.Alias == 64335804 //真红眼黑钢龙
-                || data.Id == 18491580 || data.Alias == 18491580 //真红眼亚黑龙
-                || data.Id == 55343236 || data.Alias == 55343236 //罪 真红眼黑龙
-                || data.Id == 6556909 || data.Alias == 6556909 //真红之魂
-                )
+            if (Settings.data.FinalAttackRedEyes.Contains(data.Id) || Settings.data.FinalAttackRedEyes.Contains(data.Alias))
                 returnValue = FinalAttackType.RedEyes;
-            if (data.Id == 10000000 || data.Alias == 10000000 //巨神兵
-                )
+            if (Settings.data.FinalAttackObelisk.Contains(data.Id) || Settings.data.FinalAttackObelisk.Contains(data.Alias))
                 returnValue = FinalAttackType.Obelisk;
-            if (data.Id == 10000010 || data.Alias == 10000010 //翼神龙
-                || data.Id == 10000080 || data.Alias == 10000080 //蛋
-                || data.Id == 10000090 || data.Alias == 10000090 //不死鸟
-                )
+            if (Settings.data.FinalAttackRa.Contains(data.Id) || Settings.data.FinalAttackRa.Contains(data.Alias))
                 returnValue = FinalAttackType.Ra;
-            if (data.Id == 10000020 || data.Alias == 10000020 //天空龙
-                )
+            if (Settings.data.FinalAttackSlifer.Contains(data.Id) || Settings.data.FinalAttackSlifer.Contains(data.Alias))
                 returnValue = FinalAttackType.Slifer;
+
 
             AnimationFinalAttack(returnValue, attackCard, attackedPosition);
             return returnValue;
@@ -8957,6 +8945,16 @@ namespace MDPro3
                         item.transform.SetParent(transform.GetChild(0), false);
                         var handler = item.GetComponent<ChatItemHandler>();
                         handler.text = line.text;
+                        if (clips[i][j] == null)
+                        {
+                            Debug.LogError("Voice File " + paths[i][j] + " not Found!");
+
+                            speaking = false;
+                            speakBreaking = false;
+                            PracticalizeMessage(p);
+                            LogMessage(p);
+                            yield break;
+                        }
                         handler.time = clips[i][j].length;
                         handler.frame = line.frame;
                         if (data[i].me)

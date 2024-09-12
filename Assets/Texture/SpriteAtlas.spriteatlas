@@ -635,6 +635,12 @@ SpriteAtlas:
     - 2e83078f2ed676843871bca5a02759a0: 21300000
     - 211b3c8f6b445a84091e37218c17c9c9: 21300000
     - d363309fff31be744985ca796bd85607: 21300000
+    - 670cd09fb1bd30e4da359d58a9680303: -1581331991
+    - 670cd09fb1bd30e4da359d58a9680303: 1616612182
+    - 670cd09fb1bd30e4da359d58a9680303: 1088490764
+    - 670cd09fb1bd30e4da359d58a9680303: -1076974941
+    - 670cd09fb1bd30e4da359d58a9680303: -822418786
+    - 670cd09fb1bd30e4da359d58a9680303: 203340601
     - cc0d419fa8522d54e8f42ba847436f5f: 21300000
     - f711a69fc93ae574fafb6082aa3a4e60: 21300000
     - d59eae9fe8cab9b4aa5f0e94a851973d: 21300000
@@ -1225,6 +1231,12 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 2e83078f2ed676843871bca5a02759a0, type: 3}
   - {fileID: 21300000, guid: 211b3c8f6b445a84091e37218c17c9c9, type: 3}
   - {fileID: 21300000, guid: d363309fff31be744985ca796bd85607, type: 3}
+  - {fileID: -1581331991, guid: 670cd09fb1bd30e4da359d58a9680303, type: 3}
+  - {fileID: 1616612182, guid: 670cd09fb1bd30e4da359d58a9680303, type: 3}
+  - {fileID: 1088490764, guid: 670cd09fb1bd30e4da359d58a9680303, type: 3}
+  - {fileID: -1076974941, guid: 670cd09fb1bd30e4da359d58a9680303, type: 3}
+  - {fileID: -822418786, guid: 670cd09fb1bd30e4da359d58a9680303, type: 3}
+  - {fileID: 203340601, guid: 670cd09fb1bd30e4da359d58a9680303, type: 3}
   - {fileID: 21300000, guid: cc0d419fa8522d54e8f42ba847436f5f, type: 3}
   - {fileID: 21300000, guid: f711a69fc93ae574fafb6082aa3a4e60, type: 3}
   - {fileID: 21300000, guid: d59eae9fe8cab9b4aa5f0e94a851973d, type: 3}
@@ -1814,6 +1826,12 @@ SpriteAtlas:
   - GUI_CommonButtonList_Over
   - GUI_CommonItemFrameS_Glow
   - GUI_T_DuelButtonActIcon08_4
+  - Sprites_SpellTrapTypeIcons_4
+  - Sprites_SpellTrapTypeIcons_5
+  - Sprites_SpellTrapTypeIcons_0
+  - Sprites_SpellTrapTypeIcons_1
+  - Sprites_SpellTrapTypeIcons_2
+  - Sprites_SpellTrapTypeIcons_3
   - GUI_CardPicture_MarkerLinkOff_DL
   - GUI_T_Icon1_Type20
   - GUI_T_ReplayPause_3

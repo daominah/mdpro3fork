@@ -101,9 +101,11 @@ namespace MDPro3
         public const int randomCode = 9999;
         public const int sameCode = 8888;
         public const int noneCode = 0;
+        public const int diyCode = 9998;
         public const string randomIconPath = "Menu-Random";
         public const string sameIconPath = "Menu-Same";
         public const string noneIconPath = "Menu-NoImage";
+        public const string diyIconPath = "Menu-DIY";
 
         Dictionary<string, int> maps = new Dictionary<string, int>();
         Dictionary<int, string> names = new Dictionary<int, string>();
@@ -316,9 +318,9 @@ namespace MDPro3
                 mapCode = "1090003";
 
             if (type == ItemType.Grave)
-                return "110" + mapCode.Substring(3);
+                return "110" + mapCode[3..];
             else if (type == ItemType.Stand)
-                return "111" + mapCode.Substring(3);
+                return "111" + mapCode[3..];
             else
                 return mapCode;
         }
@@ -388,6 +390,8 @@ namespace MDPro3
                 return sameIconPath;
             if (id == noneCode.ToString())
                 return noneIconPath;
+            if (id == diyCode.ToString())
+                return diyIconPath;
 
             var currentContent = id.Substring(0, 3);
             string pathPrefix = "";
@@ -480,13 +484,51 @@ namespace MDPro3
         }
 
         public static string lastRandomFrameID;
-        public IEnumerator<Sprite> LoadConcreteItemIconAsync(string id, ItemType type)
+        public IEnumerator<Sprite> LoadConcreteItemIconAsync(string id, ItemType type, int player = 0)
         {
             if(id == randomCode.ToString())
             {
                 id = GetRandomItem(type).id.ToString();
                 if(type == ItemType.Frame)
                     lastRandomFrameID = id;
+            }
+
+            if(id == diyCode.ToString())
+            {
+                var path = Program.diyPath;
+                switch (player)
+                {
+                    case 0:
+                        path += Appearance.meString;
+                        break;
+                    case 1:
+                        path += Appearance.opString;
+                        break;
+                    case 2:
+                        path += Appearance.meTagString;
+                        break;
+                    case 3:
+                        path += Appearance.opTagString;
+                        break;
+                }
+                if(File.Exists(path + Program.pngExpansion))
+                {
+                    var task = TextureManager.LoadPicFromFileAsync(path + Program.pngExpansion);
+                    while(!task.IsCompleted)
+                        yield return null;
+                    yield return TextureManager.Texture2Sprite(task.Result);
+                    yield break;
+                }
+                else if (File.Exists(path + Program.jpgExpansion))
+                {
+                    var task = TextureManager.LoadPicFromFileAsync(path + Program.jpgExpansion);
+                    while (!task.IsCompleted)
+                        yield return null;
+                    yield return TextureManager.Texture2Sprite(task.Result);
+                    yield break;
+                }
+                else
+                    id = faces[0].id.ToString();
             }
 
             var ie = LoadItemIconAsync(id, type);
@@ -549,6 +591,13 @@ namespace MDPro3
                 return true;
             else if (target == cases)
                 return false;
+            else
+                return false;
+        }
+        public bool ListHaveDIY(List<Item> target)
+        {
+            if (target == faces)
+                return true;
             else
                 return false;
         }

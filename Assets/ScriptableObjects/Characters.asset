@@ -193,9 +193,13 @@ MonoBehaviour:
     notReady: 0
   - id: 0420
     notReady: 0
+  - id: 0423
+    notReady: 0
   - id: 0424
     notReady: 0
   - id: 0443
+    notReady: 0
+  - id: 0444
     notReady: 0
   arcv:
   - id: 0501
@@ -214,7 +218,11 @@ MonoBehaviour:
     notReady: 0
   - id: 0508
     notReady: 0
+  - id: 0509
+    notReady: 0
   - id: 0510
+    notReady: 0
+  - id: 0511
     notReady: 0
   - id: 0512
     notReady: 0

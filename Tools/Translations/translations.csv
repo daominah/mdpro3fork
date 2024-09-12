@@ -46,7 +46,7 @@ AI始终出剪刀,Always plays scissors,Siempre tijeras(IA),チョキ固定,AI�
 本地主机,LAN,LAN,ＬＡＮ対戦,로컬 호스트,本地主機
 账号：,Account: ,Usuario: ,アカウント：,계정：,帳號：
 密码：,Password: ,Contraseña: ,パスワード：,비밀번호：,密碼：
-注册,Register,Registro,登録：,등록,註冊
+注册,Register,Registrarse,登録,등록,註冊
 登录,Login,Iniciar sesión,ログイン,로그인,登入
 登录失败：,Login failed:,Error de inicio de sesión:,ログイン失敗,로그인 실패：,登入失敗：
 请检查网络连接,Please check your network connection,Por favor verifique su conexión de red,ネットワーク接続を確認してください,네트워크 연결을 확인하십시오,請檢查網絡連接
@@ -71,8 +71,8 @@ MyCard登录失败。,Mycard account Login failed,Error al iniciar sesión en My
 娱乐匹配,Entertainment Match,Match Casual,フリーマッチング,예능 매칭,娛樂匹配
 匹配失败,Matching Failed,Falló el emparejamiento,マッチング失敗,매칭 실패,匹配失敗
 搜索决斗者,Search Duelist,Buscar Duelistas,決闘者サーチ,듀얼리스트 검색,蒐索決鬥者
-创建房间,Create Room,Crear una habitación,ルームの作成,공간 만들기,創建房間
-检测到新版先行卡，请至 [游戏设置]-[扩展卡包]-[更新先行卡] 处进行更新。,A new version of SuperPre cards has been detected. Please go to [SETTING] - [Expansions] - [Update SuperPre cards] to update it.,"Si se detecta una nueva versión de la tarjeta pionera, por favor actualice en [AJUSTES] - [Usar expansiones] - [Actualizar expansiones (cartas pre-lanzadas)].",新しい先行カードが検出されました。[ゲーム設定]-[拡張パッケージ]-[先行カードの更新]で更新してください。,새 선행 카드가 발견되었습니다. [게임 설정] - [카드 확장팩] - [프리릴리즈 카드 업데이트]에서 업데이트하십시오.,檢測到新版先行卡，請至[遊戲設置]-[擴展卡包]-[更新先行卡]處進行更新。
+创建房间,Create Room,Crear una sala,ルームの作成,공간 만들기,創建房間
+检测到新版先行卡，请至 [游戏设置]-[扩展卡包]-[更新先行卡] 处进行更新。,A new version of SuperPre cards has been detected. Please go to [SETTING] - [Expansions] - [Update SuperPre cards] to update it.,Nuevas cartas pre-lanzadas detectadas. Ir a [Ajustes]-[Usar expansiones]-[Actualizar expansiones (cartas pre-lanzadas)].,新しい先行カードが検出されました。[ゲーム設定]-[拡張パッケージ]-[先行カードの更新]で更新してください。,새 선행 카드가 발견되었습니다. [게임 설정] - [카드 확장팩] - [프리릴리즈 카드 업데이트]에서 업데이트하십시오.,檢測到新版先行卡，請至[遊戲設置]-[擴展卡包]-[更新先行卡]處進行更新。
 用户名不能为空。,Player Name cannot be empty.,El nombre de usuario no puede estar vacío.,プレイヤー名は空にできません。,사용자 이름은 비워둘 수 없습니다.,用戶名不能為空。
 主机地址和端口不能为空。,Host IP and Port cannot be empty.,La dirección y el puerto del host no pueden estar vacíos.,ＩＰとＰＯＲＴは空にすることはできません。,호스트 주소와 포트는 비워둘 수 없습니다.,主機地址和端口不能為空。
 ,,,,,
@@ -104,7 +104,7 @@ MyCard登录失败。,Mycard account Login failed,Error al iniciar sesión en My
 您正在观看旧版的回放（上帝视角），不保证稳定性。,"You are watching outdated replay(God View), stability is not guaranteed.","Está viendo una repetición de la versión antigua (Vista de Dios), no se garantiza la estabilidad.",旧バージョンの（ゴッドモード）を再生中，安定性は保証できません。,구 버전의 리플레이를 시청하고 있습니다(하늘의 시점). 안정성이 보장되지 않습니다.,您正在觀看舊版的回放（上帝視角），不保證穩定性。
 回放播放结束。,End of replay.,Finalizó la reproducción de la repetición.,再生終了,리플레이 재생이 종료되었습니다.,回放播放結束。
 YGOPro旧版的回放崩溃了！您可以选择使用永不崩溃的新版回放。,This outdated YGOPro Replay file has crashed! A new type of replay file is suggested to avoid any crashes.,"¡La repetición de la versión antigua de YGOPro falló! Usa repeticiones de la nueva versión, que no se bloquean.",ＹＧＯＰＲＯ旧バージョンリプレイエラー発生！@nエラーをしない新バージョンを使用してください。,YGOPro 구 버전의 리플레이가 충돌했습니다! 안정적인 새로운 버전의 리플레이를 선택할 수 있습니다.,YGOPro舊版的回放崩潰了！您可以選擇使用永不崩潰的新版回放。
-保存回放,Save Replay,Guardar replay,リプレイ保存,리플레이 저장,保存回放
+保存回放,Save Replay,Guardar repetición,リプレイ保存,리플레이 저장,保存回放
 回放没有录制完整。,The replay was not fully recorded.,La repetición no se guardó completamente.,リプレイは未完成状態です,리플레이가 완전히 녹화되지 않았습니다.,回放沒有錄制完整。
 ,,,,,
 #MonsterCutin,,,,,
@@ -113,7 +113,7 @@ YGOPro旧版的回放崩溃了！您可以选择使用永不崩溃的新版回�
 ,,,,,
 #Mate,,,,,
 搜索同伴,Search Mates,Buscar Compañero,メイト検索,메이트 검색,搜索同伴
-长按宠物再松开后即可返回正常视角。,Long press and release the mate to return to normal viewing angle.,Presione la mascota durante mucho tiempo y luego suelte para volver a la perspectiva normal.,メイトを長押しして放すと通常の視野に戻ります。,애완동물을 길게 누르고 놓으면 정상 시각으로 돌아갈 수 있다.,長按寵物再鬆開後即可返回正常視角。
+长按宠物再松开后即可返回正常视角。,Long press and release the mate to return to normal viewing angle.,"Mantenga presionada la mascota y suéltela para volver a la vista normal o presione la tecla ""W""(Solo PC).",メイトを長押しして放すと通常の視野に戻ります。,애완동물을 길게 누르고 놓으면 정상 시각으로 돌아갈 수 있다.,長按寵物再鬆開後即可返回正常視角。
 ,,,,,
 #SelectDeck,,,,,
 选择卡组,Select Deck,Elegir Deck,デッキ選択,덱 선택,選擇牌組
@@ -143,7 +143,7 @@ zh-TW,繁體中文,繁體中文,繁體中文,繁體中文,繁體中文
 关于游戏,About Game,Acerca del juego,ソフト情報,게임 정보,關於遊戲
 ,,,,,
 #Setting System,,,,,
-音乐音量,BGM,Volumen de música,ＢＧＭ,음악 볼륨,音樂音量
+音乐音量,BGM,Volumen de la músic,ＢＧＭ,음악 볼륨,音樂音量
 音效音量,Sound Effects,Volumen de los efectos de sonido,効果音,효과음 볼륨,音效音量
 语音音量,Character Voice,Volumen de voz,ボイス,보이스 볼륨,語音音量
 显示模式,View Mode,Modo de visualización,表示モード,표시 모드,顯示模式
@@ -153,7 +153,7 @@ zh-TW,繁體中文,繁體中文,繁體中文,繁體中文,繁體中文
 窗口化,Window Mode,Ventana,スクリーン窓化,창 모드,視窗化
 窗口化（仅桌面端有效）,Window Mode (PC/Laptop Only),Ventana (sólo válido para PC/Laptop),スクリーン窓化（パソコンやノートに適用する）,창 모드 (데스크탑 전용),視窗化（僅桌面端有效）
 分辨率,Resolution,Resolución,解像度,해상도,解析度
-设置游戏的渲染分辨率,Sets the resolution of the game,Establecer la resolución de renderizado del juego,ゲーム画質やレンダリング解像度,게임의 렌더링 해상도 설정,設置遊戲的渲染分辨率
+设置游戏的渲染分辨率,Sets the resolution of the game,Establecer la resolución de pantalla del juego,ゲーム画質やレンダリング解像度,게임의 렌더링 해상도 설정,設置遊戲的渲染分辨率
 渲染倍率,Resolution Scaling,Aumento de renderizado,レンダリング倍率,렌더링 배율,渲染倍率
 画面质量,Graphics Quality,Calidad de imagen,画質レベル,화면 품질,畫面品質
 非常低,Very Low,Muy baja,非常に低い,매우 낮음,非常低
@@ -177,13 +177,15 @@ UI缩放,UI Scaling,Escalado de la UI,ＵＩズーム,UI크기 조정,UI縮放
 背景,Background,Fondo,背景,배경,背景
 设置游戏中的背景,Set the background in game,Establecer el fondo del juego.,メニュー背景絵を変更する,게임 배경 설정,設定遊戲中的背景
 更换背景,Change Background,Cambiar fondo,背景変更,배경 변경,更換背景
+卡图风格,Card Style,Card Style,カードスタイル,Card Style,卡圖風格
+更改卡片风格类型,Change Card Style,Change Card Style,カードスタイルを変更する,Change Card Style,更改卡片風格類型
 卡图语言,Language in card,Idioma de las cartas,画像テキスト言語,카드 이미지 언어,卡圖語言
 设置卡图中的语言,Change the language that the card used,Configurar el idioma de las cartas,画像のカード名やテキストの言語,카드 이미지 언어 설정,設定卡圖中的語言
 语言,Language,Idioma de la UI,言語,언어,語言
 设置游戏中的语言,Change the language of the in-game text,Configurar el idioma de la interfaz de usuario,ゲームや表示されるテキストの言語,게임 내 언어 설정,設置遊戲中的語言
 决斗中不能更改此选项。,This option is unable to change during a duel.,Esta opción no se puede cambiar durante un duelo.,デュエル中にこの設定を変更できません,듀얼 중에는 이 설정을 변경할 수 없습니다.,決斗中不能更改此選項。
-场地背景音乐,Mat BGM,Música de fondo del lugar,フィールドＢＧＭ,필드 배경음악,場地背景音樂
-场地背景音乐由哪方决定,Mat BGM decides by,quién decide la música de fondo del lugar,フィールドＢＧＭは誰が決めるのですか？,장소 배경음악은 어느 쪽이 정할까요,場地背景音樂由哪方決定
+场地背景音乐,Mat BGM,Música de fondo del escenario,フィールドＢＧＭ,필드 배경음악,場地背景音樂
+场地背景音乐由哪方决定,Mat BGM decides by,¿Quién decide la música de fondo del escenario?,フィールドＢＧＭは誰が決めるのですか？,장소 배경음악은 어느 쪽이 정할까요,場地背景音樂由哪方決定
 ,,,,,
 #Setting Duel,,,,,
 外观,Profile,Apariencia,プロフィール,외관,外觀
@@ -234,10 +236,10 @@ UI缩放,UI Scaling,Escalado de la UI,ＵＩズーム,UI크기 조정,UI縮放
 决斗中的卡片登场与发动效果时自动展示卡片效果栏,Display Card Descriptions when made public in Duel,Mostrar barra de efectos al activar o invocar una carta en el duelo,デュエル中カードを公開した時のみカードの説明を出します,듀얼에서 카드 등장 및 효과 발동 시 카드 효과 창을 자동으로 보여줍니다,決斗中的卡片登場與發動效果時自動展示卡片效果欄
 观战中的卡片登场与发动效果时自动展示卡片效果栏,Display Card Descriptions when made public in Spectation,Mostrar barra de efectos al activar o invocar una carta en modo expectador,観戦中カードを公開した時のみカードの説明を出します,관전에서 카드 등장 및 효과 발동 시 카드 효과 창을 자동으로 보여줍니다,觀戰中的卡片登場與發動效果時自動展示卡片效果欄
 回放中的卡片登场与发动效果时自动展示卡片效果栏,Display Card Descriptions when made public in Replay,Mostrar barra de efectos al activar o invocar una carta en la repetición,リプレイ中カードを公開した時のみカードの説明を出します,리플레이에서 카드 등장 및 효과 발동 시 카드 효과 창을 자동으로 보여줍니다,回放中的卡片登場與發動效果時自動展示卡片效果欄
-玩家消息,Player message,Mensajes del jugador,デュエリスト情報,플레이어 메시지,玩家消息
-决斗中的玩家消息,Player message in Duel,Mensajes de los jugadores durante el duelo,デュエル中のデュエリスト情報,듀얼 중 플레이어 메시지,決鬥中的玩家消息
-观战中的玩家消息,Player message in Spectation,Mensajes de los jugadores en modo expectador,観戦中のデュエリスト情報,관전 중 플레이어 메시지,觀戰中的玩家消息
-回放中的玩家消息,Player message in Replay,Mensajes de los jugadores en la repetición,リプレイのデュエリスト情報,리플레이 중 플레이어 메시지,回放中的玩家消息
+玩家消息,Player message,Mensajes del jugador,チャット情報,플레이어 메시지,玩家消息
+决斗中的玩家消息,Player message in Duel,Mensajes de los jugadores durante el duelo,デュエル中のチャット表示,듀얼 중 플레이어 메시지,決鬥中的玩家消息
+观战中的玩家消息,Player message in Spectation,Mensajes de los jugadores en modo expectador,観戦中のチャット表示,관전 중 플레이어 메시지,觀戰中的玩家消息
+回放中的玩家消息,Player message in Replay,Mensajes de los jugadores en la repetición,リプレイのチャット表示,리플레이 중 플레이어 메시지,回放中的玩家消息
 系统消息,System message,Mensajes del sistema,システム情報,시스템 메시지,系統消息
 决斗中的系统消息,System message in Duel,Mensajes del sistema durante el duelo,デュエル中のシステム情報,듀얼 중 시스템 메시지,決鬥中的系統消息
 观战中的系统消息,System message in Spectation,Mensajes del sistema como en modo expectador durante el duelo,観戦中のシステム情報,관전 중 시스템 메시지,觀戰中的系統消息
@@ -247,14 +249,14 @@ UI缩放,UI Scaling,Escalado de la UI,ＵＩズーム,UI크기 조정,UI縮放
 决斗开始时自动进入加速状态,Auto speed up in Duel,Entra automáticamente en modo acelerado al iniciar el duelo,デュエル開始時に加速状態になる,듀얼 시작 시 자동으로 가속 상태로 전환,決鬥開始時自動進入加速狀態
 观战开始时自动进入加速状态,Auto speed up in Spectation,Entra automáticamente en modo dacelerado al observar un duelo,観戦開始時に加速状態になる,관전 시작 시 자동으로 가속 상태로 전환,觀戰開始時自動進入加速狀態
 回放开始时自动进入加速状态,Auto speed up in Replay,Entra automáticamente en modo acelerado al iniciar la repetición,リプレイ開始時に加速状態になる,리플레이 시작 시 자동으로 가속 상태로 전환,回放開始時自動進入加速狀態
-显示盖卡,Show face-down Card,Mostrar cartas boca abajo,公開情報のセットカードを表側に表示する,세트 카드 표시,顯示蓋卡
-决斗中显示已知盖卡,Show known face-down card in Duel,Mostrar cartas boca abajo conocidas en el duelo,デュエル中に公開情報のセットカードを表側に表示する,듀얼 중 알려진 세트 카드 표시,決鬥中顯示已知蓋卡
-观战中显示已知盖卡,Show known face-down card in Spectation,Mostrar cartas boca abajo conocidas mientras se observa el duelo,観戦中に公開情報のセットカードを表側に表示する,관전 중 알려진 세트 카드 표시,觀戰中顯示已知蓋卡
-回放中显示已知盖卡,Show known face-down card in Replay,Mostrar cartas boca abajo conocidas durante la repetición,リプレイ中に公開情報のセットカードを表側に表示する,리플레이 중 알려진 세트 카드 표시,回放中顯示已知蓋卡
+显示盖卡,Show face-down Card,Mostrar cartas boca abajo,セットカードの透過表示,세트 카드 표시,顯示蓋卡
+决斗中显示已知盖卡,Show known face-down card in Duel,Mostrar cartas boca abajo conocidas en el duelo,デュエル中に公開情報のセットカードを透過で表示する,듀얼 중 알려진 세트 카드 표시,決鬥中顯示已知蓋卡
+观战中显示已知盖卡,Show known face-down card in Spectation,Mostrar cartas boca abajo conocidas mientras se observa el duelo,観戦中に公開情報のセットカードを透過で表示する,관전 중 알려진 세트 카드 표시,觀戰中顯示已知蓋卡
+回放中显示已知盖卡,Show known face-down card in Replay,Mostrar cartas boca abajo conocidas durante la repetición,リプレイ中に公開情報のセットカードを透過で表示する,리플레이 중 알려진 세트 카드 표시,回放中顯示已知蓋卡
 自动全时点,Auto Activation Confirmation,Tiempo completo automático,常に発動を確認する,자동 체인 타이밍,自動全時點
 决斗开始时的时点选项设置为全时点,Set Activation Confirmation at the beginning of the Duel,La opción de tiempo para comenzar un duelo está configurada a tiempo completo,デュエル開始後、常に発動を確認する,듀얼 시작 시 체인 옵션을 전체 체인으로 설정,決斗開始時的時點選項設置為全時點
 自动猜拳,Auto Finger-guessing,"Auto-elegir piedra, papel o tijeras",自動じゃんけん,자동 주사위 게임,自動猜拳
-决斗开始时自动随机猜拳,Auto Finger-guessing at the beginning of the Duel,"Al comienzo del duelo, auto-elige aleatoriamente piedra, papel o tijeras",デュエル開始時、自動的にじゃんけんを行おう,듀얼 시작 시 자동으로 무작위 주사위 게임,決斗開始時自動隨機猜拳
+决斗开始时自动随机猜拳,Auto Finger-guessing at the beginning of the Duel,"Al comienzo del duelo, auto-elige aleatoriamente piedra, papel o tijeras",デュエル開始時、自動的にじゃんけんを行う,듀얼 시작 시 자동으로 무작위 주사위 게임,決斗開始時自動隨機猜拳
 ,,,,,
 #Setting Import/Export,,,,,
 导入导出,Import/Export,Importar | Exportar,導入・輸出,입출력,導入匯出
@@ -508,7 +510,7 @@ Off,Off,Apagado,ＯＦＦ,Off,Off
 确认卡片：[?],Confirm Card: [?],Carta confirmada: [?],カード確認：[?],카드 확인：[?],确認卡片：[?]
 确认卡片：[?]张。,Confirm Cards: [?],Cartas confirmadas: [?] cartas.,カード確認：[?] 枚。,카드 확인：[?]장.,確認卡片：[?]張。
 现在不能查看此处的卡片。,Can not check the cards here now.,No se puede ver la tarjeta aquí ahora.,このカードは現在表示できません。,지금 이 카드에는 액세스할 수 없습니다.,現在不能查看此處的卡片。
-更换副卡组成功，请等待对手更换副卡组。,The adjustment of the side deck has been successful. Please wait for the opponent to change the side deck.,"El cambio del Grupo de tarjetas secundarias fue exitoso, por favor espere a que su oponente cambie el Grupo de tarjetas secundarias.",サブデッキの交換に成功しました。相手がサブデッキを交換するのを待ってください。,보조 카드 그룹 교체에 성공했습니다. 상대방이 보조 카드 그룹을 교체할 때까지 기다리십시오.,更換副卡組成功，請等待對手更換副卡組。
+更换副卡组成功，请等待对手更换副卡组。,The adjustment of the side deck has been successful. Please wait for the opponent to change the side deck.,"El cambio del Grupo de tarjetas secundarias fue exitoso, por favor espere a que su oponente cambie el Grupo de tarjetas secundarias.",サイドデッキの交換に成功しました、相手のサイドデッキの交換をお待ちください。,보조 카드 그룹 교체에 성공했습니다. 상대방이 보조 카드 그룹을 교체할 때까지 기다리십시오.,更換副卡組成功，請等待對手更換副卡組。
 ,,,,,
 #Duel Log,,,,,
 第[?]回合,Turn [?],Turno [?],ターン [?],[?]턴,第[?]回合
@@ -587,6 +589,12 @@ Off,Off,Apagado,ＯＦＦ,Off,Off
 该项设置将与场地设置保持一致。,Set this with Mat setting.,Esta configuración coincidirá con la del escenario de duelo.,フィールドの設定と一致にする,이 설정은 필드 설정과 일치합니다.,該項設定將與場地設定保持一致。
 不设置,No setting,Sin Imagen,設定しない,설정 안 함,不設定
 该项设置将设置为无。,Set to none.,"Esta configuración se establecerá en ""Sin Imagen"".",設定を無しにする,이 설정은 없음으로 설정됩니다.,該項設定將設定為無。
+覆盖卡组设置,Override Deck Appearance,Configuración del Grupo de tarjetas de cobertura,デッキ設定の上書きにする,카드 그룹 설정 덮어쓰기,覆蓋卡組設置
+自定义,DIY,DIY,カスタマイズ,DIY,自定義
+我方头像：,My Avatar: ,My Avatar: ,自分のアバター,My Avatar: ,我方頭像：
+对方头像：,Op Avatar: ,Op Avatar: ,相手のアバター,Op Avatar: ,對方頭像：
+我方队友头像：,My Tag Avatar: ,My Tag Avatar: ,味方パートナーのアバター,My Tag Avatar: ,我方隊友頭像：
+对方队友头像：,Op Tag Avatar: ,Op Tag Avatar: ,相手パートナーのアバター,Op Tag Avatar: ,對方隊友頭像：
 ,,,,,
 #Character,,,,,
 决斗角色,Characters in Duel,Personajes de Duelo,デュエルキャラクター,결투 역할,決斗角色

@@ -29,7 +29,6 @@ namespace MDPro3
         public int ptr;
     }
 
-
     public class GameCard : MonoBehaviour
     {
         private Card data = new Card();
@@ -266,18 +265,7 @@ namespace MDPro3
 
             var back = manager.GetElement<Transform>("CardModel").GetChild(0).GetComponent<Renderer>();
 
-            switch (Program.I().ocgcore.condition)
-            {
-                case OcgCore.Condition.Duel:
-                    back.material = p.controller == 0 ? Appearance.duelProtector0 : Appearance.duelProtector1;
-                    break;
-                case OcgCore.Condition.Watch:
-                    back.material = p.controller == 0 ? Appearance.watchProtector0 : Appearance.watchProtector1;
-                    break;
-                case OcgCore.Condition.Replay:
-                    back.material = p.controller == 0 ? Appearance.replayProtector0 : Appearance.replayProtector1;
-                    break;
-            }
+            back.material = p.controller ==0 ? Program.I().ocgcore.myProtector : Program.I().ocgcore.opProtector;
             back.material.renderQueue = 3000;
             StartCoroutine(SetFace());
 
@@ -311,16 +299,6 @@ namespace MDPro3
 
             cardFace.material.mainTexture = task.Result;
             SetDisabled();
-
-            if (p.controller == 0 && Program.I().ocgcore.deck != null)
-            {
-                var ie = ABLoader.LoadProtectorMaterial(Program.I().ocgcore.deck.Protector[0].ToString());
-                StartCoroutine(ie);
-                while (ie.MoveNext())
-                    yield return null;
-                var back = manager.GetElement<Transform>("CardModel").GetChild(0).GetComponent<Renderer>();
-                back.material = ie.Current;
-            }
         }
 
         public Card GetData()
@@ -971,6 +949,11 @@ namespace MDPro3
             {
                 OcgCore.messagePass = false;
 
+                if (!ThisLocationShouldHaveModel(cacheP) && model != null)
+                {
+                    Destroy(model, 1f);
+                    model = null;
+                }
                 if (model == null)
                 {
                     CreateModel();
@@ -2796,7 +2779,7 @@ namespace MDPro3
                 return false;
             if ((p.position & (uint)CardPosition.FaceDown) > 0)
                 return false;
-            if(!File.Exists(Program.closeupPath + Program.slash + data.Id + ".png"))
+            if(!File.Exists(Program.closeupPath + Program.slash + data.Id + Program.pngExpansion))
                 return false;
             return true;
         }

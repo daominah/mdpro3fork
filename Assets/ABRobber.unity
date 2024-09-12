@@ -38,7 +38,6 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -132,6 +131,7 @@ GameObject:
   - component: {fileID: 916768204}
   - component: {fileID: 916768203}
   - component: {fileID: 916768207}
+  - component: {fileID: 916768209}
   - component: {fileID: 916768208}
   m_Layer: 5
   m_Name: Canvas
@@ -250,6 +250,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpecifyUnityVersion: 
+--- !u!114 &916768209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 916768202}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13ecb54e84e8a11458ff49d89147b0d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 1398959084}
 --- !u!1 &1398959082
 GameObject:
   m_ObjectHideFlags: 0

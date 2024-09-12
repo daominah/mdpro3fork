@@ -7,6 +7,7 @@ using UnityEngine.UI;
 using YgomSystem.ElementSystem;
 using MDPro3.YGOSharp;
 using MDPro3.YGOSharp.OCGWrapper.Enums;
+using static MDPro3.CardRenderer;
 
 namespace MDPro3
 {
@@ -301,23 +302,23 @@ namespace MDPro3
             {
                 if ((origin.Type & (uint)CardType.Monster) == 0)
                 {
-                    returnValue.sprite = TextureManager.GetCardAttributeIcon(data.Attribute);
+                    returnValue.sprite = TextureManager.GetCardAttributeIcon(data.Attribute, data.Id);
                     returnValue.notOriginal = true;
                 }
                 else
                 {
                     if ((data.Attribute ^ origin.Attribute) == 0)
                     {
-                        returnValue.sprite = TextureManager.GetCardAttributeIcon(data.Attribute);
+                        returnValue.sprite = TextureManager.GetCardAttributeIcon(data.Attribute, data.Id);
                         returnValue.notOriginal = false;
                     }
                     else
                     {
                         returnValue.notOriginal = true;
                         if (data.Attribute != origin.Attribute)
-                            returnValue.sprite = TextureManager.GetCardAttributeIcon(data.Attribute);
+                            returnValue.sprite = TextureManager.GetCardAttributeIcon(data.Attribute, data.Id);
                         else
-                            returnValue.sprite = TextureManager.GetCardAttributeIcon(data.Attribute - origin.Attribute);
+                            returnValue.sprite = TextureManager.GetCardAttributeIcon(data.Attribute - origin.Attribute, data.Id);
                     }
                 }
             }
@@ -358,6 +359,14 @@ namespace MDPro3
                     }
                 }
             }
+            if (NeedRushDuelStyle(data.Id))
+            {
+                if (returnValue.sprite == TextureManager.container.attributeSpell)
+                    returnValue.sprite = TextureManager.container.rd_Attribute_Spell;
+                else if (returnValue.sprite == TextureManager.container.attributeTrap)
+                    returnValue.sprite = TextureManager.container.rd_Attribute_Trap;
+            }
+
             return returnValue;
         }
         public struct RaceSprite

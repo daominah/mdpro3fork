@@ -80,5 +80,10 @@ namespace MDPro3.UI
         {
             AudioManager.PlaySE("SE_DUEL_CANCEL");
         }
+
+        public void OnDestroy()
+        {
+            Program.I().ocgcore.returnAction = null;
+        }
     }
 }

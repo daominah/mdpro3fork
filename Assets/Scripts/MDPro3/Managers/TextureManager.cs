@@ -26,7 +26,9 @@ namespace MDPro3
 
         public static Material cardMatNormal;
         public static Material cardMatShine;
+        public static Material cardMatShineRD;
         public static Material cardMatRoyal;
+        public static Material cardMatRoyalRD;
         public static Material cardMatSide;
         static Texture cardHolo4;
 
@@ -130,9 +132,25 @@ namespace MDPro3
 
             cardMatShine = Instantiate(cardMatRoyal);
 
+            cardMatShineRD = Instantiate(cardMatShine);
+            cardMatShineRD.SetTexture("_FrameMask", container.rd_Mask);
+            cardMatShineRD.SetTexture("_KiraMask", container.rd_KiraMask);
+            cardMatShineRD.SetTexture("_MainNormal", container.rd_CardNormal);
+            cardMatShineRD.SetTexture("_AttributeTex", container.rd_CardAttributeSet);
+            cardMatShineRD.SetVector("_AttributeSize_Pos", new Vector4(8.31f, 12.26f, -3.17f, -5.15f));
+
+
             cardMatRoyal.SetTexture("_HighlightNormal", container.CardKiraNormal03_Millennium);
             //cardMatRoyal.SetTexture("_Kira02_01", container.CardKira3_Millennium);
             cardMatRoyal.SetTexture("_Texture2DAsset_3e204bf62e854283be7482d92655b24f_Out_0", container.CardKiraNormal03_Millennium);
+
+            cardMatRoyalRD = Instantiate(cardMatRoyal);
+            cardMatRoyalRD.SetTexture("_FrameMask", container.rd_Mask);
+            cardMatRoyalRD.SetTexture("_KiraMask", container.rd_KiraMask);
+            cardMatRoyalRD.SetTexture("_MainNormal", container.rd_CardNormal);
+            cardMatRoyalRD.SetTexture("_AttributeTex", container.rd_CardAttributeSet);
+            cardMatRoyalRD.SetVector("_AttributeSize_Pos", new Vector4(8.31f, 12.26f, -3.17f, -5.15f));
+
 #if UNITY_ANDROID
             var depens = Directory.GetFiles(Program.root + "CrossDuel/Dependency", "*.bundle");
             foreach (var depen in depens)
@@ -182,12 +200,12 @@ namespace MDPro3
                     return returnValue;
             }
 
-            if (File.Exists(path + ".jpg"))
-                path += ".jpg";
-            else if (File.Exists(path + ".png"))
-                path += ".png";
-            else if (File.Exists(Program.artPath + code.ToString() + ".jpg"))
-                path = Program.artPath + Program.slash + code.ToString() + ".jpg";
+            if (File.Exists(path + Program.jpgExpansion))
+                path += Program.jpgExpansion;
+            else if (File.Exists(path + Program.pngExpansion))
+                path += Program.pngExpansion;
+            else if (File.Exists(Program.artPath + code.ToString() + Program.jpgExpansion))
+                path = Program.artPath + Program.slash + code.ToString() + Program.jpgExpansion;
             else
             {
                 //Load From YPK art Folder
@@ -197,7 +215,7 @@ namespace MDPro3
                         continue;
                     foreach (var file in zip.EntryFileNames)
                     {
-                        foreach (var extName in new[] { ".png", ".jpg" })
+                        foreach (var extName in new[] { Program.pngExpansion, Program.jpgExpansion })
                         {
                             var picPath = $"art/{code}{extName}";
                             if (file.ToLower() == picPath)
@@ -220,7 +238,7 @@ namespace MDPro3
                             continue;
                         foreach (var file in zip.EntryFileNames)
                         {
-                            foreach (var extName in new[] { ".png", ".jpg" })
+                            foreach (var extName in new[] { Program.pngExpansion, Program.jpgExpansion })
                             {
                                 var picPath = $"pics/{code}{extName}";
                                 if (file.ToLower() == picPath)
@@ -395,7 +413,7 @@ namespace MDPro3
             }
             if (!Directory.Exists(Program.closeupPath))
                 Directory.CreateDirectory(Program.closeupPath);
-            var path = Program.closeupPath + Program.slash + code + ".png";
+            var path = Program.closeupPath + Program.slash + code + Program.pngExpansion;
             if (!File.Exists(path))
                 yield break;
 
@@ -450,6 +468,8 @@ namespace MDPro3
         }
         public static Material GetCardMaterial(int code, bool cache = false)
         {
+            bool rushDuel = CardRenderer.NeedRushDuelStyle(code);
+
             var rarity = GetRarity(code);
 
             Material mat = null;
@@ -460,11 +480,11 @@ namespace MDPro3
                     mat = Instantiate(cardMatNormal);
                     break;
                 case CardRarity.Shine:
-                    mat = Instantiate(cardMatShine);
+                    mat = Instantiate(rushDuel ? cardMatShineRD : cardMatShine);
                     needChange = true;
                     break;
                 case CardRarity.Royal:
-                    mat = Instantiate(cardMatRoyal);
+                    mat = Instantiate(rushDuel ? cardMatRoyalRD : cardMatRoyal);
                     needChange = true;
                     break;
             }
@@ -491,20 +511,29 @@ namespace MDPro3
                     mat.SetFloat("_AttributeTile", 6);
                 var mask = Program.I().texture_.GetNameMask(code, cache);
                 mat.SetTexture("_MonsterNameTex", mask);
-                if ((data.Type & (uint)CardType.Link) > 0)
+                if (rushDuel)
                 {
-                    mat.SetTexture("_FrameMask", container.cardFrameMaskLink);
-                    mat.SetTexture("_KiraMask", container.cardKiraMaskLink);
-                    mat.SetTexture("_MainNormal", container.cardNormalLink);
+                    if ((data.Type & (uint)CardType.Pendulum) > 0)
+                    {
+                        mat.SetTexture("_KiraMask", container.rd_KiraMaskPendulum);
+                    }
                 }
-                else if ((data.Type & (uint)CardType.Pendulum) > 0)
+                else
                 {
-                    mat.SetTexture("_FrameMask", container.cardFrameMaskPendulum);
-                    mat.SetTexture("_KiraMask", container.cardKiraMaskPendulum);
-                    mat.SetTexture("_MainNormal", container.cardNormalPendulum);
+                    if ((data.Type & (uint)CardType.Link) > 0)
+                    {
+                        mat.SetTexture("_FrameMask", container.cardFrameMaskLink);
+                        mat.SetTexture("_KiraMask", container.cardKiraMaskLink);
+                        mat.SetTexture("_MainNormal", container.cardNormalLink);
+                    }
+                    else if ((data.Type & (uint)CardType.Pendulum) > 0)
+                    {
+                        mat.SetTexture("_FrameMask", container.cardFrameMaskPendulum);
+                        mat.SetTexture("_KiraMask", container.cardKiraMaskPendulum);
+                        mat.SetTexture("_MainNormal", container.cardNormalPendulum);
+                    }
                 }
             }
-
             return mat;
         }
 
@@ -538,22 +567,23 @@ namespace MDPro3
             else
                 return container.typeNone;
         }
-        public static Sprite GetCardAttributeIcon(int attribute)
+        public static Sprite GetCardAttributeIcon(int attribute, int code)
         {
+            bool rushDuel = CardRenderer.NeedRushDuelStyle(code);
             if ((attribute & (uint)CardAttribute.Light) > 0)
-                return container.attributeLight;
+                return rushDuel ? container.rd_Attribute_Light : container.attributeLight;
             else if ((attribute & (uint)CardAttribute.Dark) > 0)
-                return container.attributeDark;
+                return rushDuel ? container.rd_Attribute_Dark : container.attributeDark;
             else if ((attribute & (uint)CardAttribute.Water) > 0)
-                return container.attributeWater;
+                return rushDuel ? container.rd_Attribute_Water : container.attributeWater;
             else if ((attribute & (uint)CardAttribute.Fire) > 0)
-                return container.attributeFire;
+                return rushDuel ? container.rd_Attribute_Fire : container.attributeFire;
             else if ((attribute & (uint)CardAttribute.Earth) > 0)
-                return container.attributeEarth;
+                return rushDuel ? container.rd_Attribute_Earth : container.attributeEarth;
             else if ((attribute & (uint)CardAttribute.Wind) > 0)
-                return container.attributeWind;
+                return rushDuel ? container.rd_Attribute_Wind : container.attributeWind;
             else
-                return container.attributeDivine;
+                return rushDuel ? container.rd_Attribute_Divine : container.attributeDivine;
         }
         public static Sprite GetCardRaceIcon(int race)
         {
@@ -908,7 +938,6 @@ namespace MDPro3
                 }
             }
 
-            // Apply changes to the new texture.
             newTexture.Apply();
 
             return newTexture;

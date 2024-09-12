@@ -36,6 +36,7 @@ namespace MDPro3
 
         public Text hover;
         public ScrollRect scrollView;
+        public ButtonSwitch btnOverride;
 
         public static Sprite duelFace0;
         public static Sprite duelFace1;
@@ -80,6 +81,11 @@ namespace MDPro3
 
         public static Material matForFace;
         public static string player = "0";
+        public const string meString = "Me";
+        public const string opString = "Op";
+        public const string meTagString = "MeTag";
+        public const string opTagString = "OpTag";
+
 
         static List<GameObject> wallpapers = new List<GameObject>();
         static List<GameObject> faces = new List<GameObject>();
@@ -154,6 +160,15 @@ namespace MDPro3
                 appearanceItem = result.Result;
             };
 
+            btnOverride.onAction = () =>
+            {
+                Config.SetBool("OverrideDeckAppearance", true);
+            };
+            btnOverride.offAction = () =>
+            {
+                Config.SetBool("OverrideDeckAppearance", false);
+            };
+
             StartCoroutine(LoadSettingAssets());
         }
 
@@ -164,22 +179,22 @@ namespace MDPro3
             loaded = false;
 
             #region Face
-            var ie = Program.items.LoadConcreteItemIconAsync(Config.Get("DuelFace0", Program.items.faces[0].id.ToString()), Items.ItemType.Face);
+            var ie = Program.items.LoadConcreteItemIconAsync(Config.Get("DuelFace0", Program.items.faces[0].id.ToString()), Items.ItemType.Face, 0);
             while (ie.MoveNext())
                 yield return null;
             duelFace0 = ie.Current;
 
-            ie = Program.items.LoadConcreteItemIconAsync(Config.Get("DuelFace1", Program.items.faces[0].id.ToString()), Items.ItemType.Face);
+            ie = Program.items.LoadConcreteItemIconAsync(Config.Get("DuelFace1", Program.items.faces[0].id.ToString()), Items.ItemType.Face, 1);
             while (ie.MoveNext())
                 yield return null;
             duelFace1 = ie.Current;
 
-            ie = Program.items.LoadConcreteItemIconAsync(Config.Get("DuelFace0Tag", Program.items.faces[0].id.ToString()), Items.ItemType.Face);
+            ie = Program.items.LoadConcreteItemIconAsync(Config.Get("DuelFace0Tag", Program.items.faces[0].id.ToString()), Items.ItemType.Face, 2);
             while (ie.MoveNext())
                 yield return null;
             duelFace0Tag = ie.Current;
 
-            ie = Program.items.LoadConcreteItemIconAsync(Config.Get("DuelFace1Tag", Program.items.faces[0].id.ToString()), Items.ItemType.Face);
+            ie = Program.items.LoadConcreteItemIconAsync(Config.Get("DuelFace1Tag", Program.items.faces[0].id.ToString()), Items.ItemType.Face, 3);
             while (ie.MoveNext())
                 yield return null;
             duelFace1Tag = ie.Current;
@@ -737,6 +752,25 @@ namespace MDPro3
                         itemMono.transform.SetParent(scrollView.content, false);
                         currentList.Add(item);
                     }
+                    if (Program.items.ListHaveDIY(targetItems))
+                    {
+                        GameObject item = Instantiate(appearanceItem);
+                        AppearanceItem itemMono = item.GetComponent<AppearanceItem>();
+                        itemMono.id = ++itemCount;
+                        itemMono.itemID = Items.diyCode;
+                        itemMono.description = InterString.Get("我方头像：") + 
+                                                                Program.diyPath + meString + Program.pngExpansion + "\n" +
+                                                                InterString.Get("对方头像：") + 
+                                                                Program.diyPath + opString + Program.pngExpansion + "\n" +
+                                                                InterString.Get("我方队友头像：") +
+                                                                Program.diyPath + meTagString + Program.pngExpansion + "\n" +
+                                                                InterString.Get("对方队友头像：") +
+                                                                Program.diyPath + opTagString + Program.pngExpansion;
+                        itemMono.itemName = InterString.Get("自定义");
+                        itemMono.path = Items.diyIconPath;
+                        itemMono.transform.SetParent(scrollView.content, false);
+                        currentList.Add(item);
+                    }
                 }
             }
             foreach (var item in currentList)
@@ -785,6 +819,21 @@ namespace MDPro3
         public void SwitchPlayer(string player)
         {
             Appearance.player = player;
+            if(condition == Condition.Duel)
+            {
+                if(player == "0")
+                {
+                    btnOverride.gameObject.SetActive(true);
+                    if (Config.GetBool("OverrideDeckAppearance", false))
+                        btnOverride.OnSwitchOn();
+                    else
+                        btnOverride.OnSwitchOff();
+                }
+                else
+                    btnOverride.gameObject.SetActive(false);
+            }
+            else
+                btnOverride.gameObject.SetActive(false);
             if (isShowed)
                 ShowItems(currentContent);
         }

@@ -44,7 +44,6 @@ namespace AssetStudio
             var files = Directory.GetFiles(path, "*.*", SearchOption.AllDirectories).ToList();
             var toReadFile = ProcessingSplitFiles(files);
             var ie = LoadAsync(toReadFile);
-            StartCoroutine(ie);
             while (ie.MoveNext())
                 yield return null;
         }
@@ -78,7 +77,15 @@ namespace AssetStudio
             foreach (var file in files)
             {
                 bool found = false;
-                foreach(var f in AssetBundleRobber.files)
+                foreach (var f in AssetBundleRobber.files)
+                {
+                    if (f.path == file.Substring(file.Length - 8))
+                    {
+                        found = true;
+                        break;
+                    }
+                }
+                foreach (var f in DuelLinksRobber.files)
                 {
                     if (f.path == file.Substring(file.Length - 8))
                     {
@@ -106,8 +113,7 @@ namespace AssetStudio
             assetsFileListHash.Clear();
 
             var ie = ReadAssetsAsync();
-            StartCoroutine(ie);
-            while(ie.MoveNext())
+            while (ie.MoveNext())
                 yield return null;
             //ie = ProcessAssetsAsync();
             //StartCoroutine(ie);
@@ -566,7 +572,7 @@ namespace AssetStudio
                     var objectReader = new ObjectReader(assetsFile.reader, assetsFile, objectInfo);
                     try
                     {
-                        if(objectReader.type == ClassIDType.AssetBundle)
+                        if (objectReader.type == ClassIDType.AssetBundle)
                         {
                             assetsFile.AddObject(new AssetBundle(objectReader));
                         }

@@ -104,7 +104,7 @@ namespace MDPro3
                         else if (fileName.ToLower().EndsWith(".conf"))
                             MessageManager.Cast(InterString.Get("导入字段文件「[?]」成功。", fileName));
                     }
-                    else if (path.ToLower().EndsWith(".png") || path.ToLower().EndsWith(".jpg"))
+                    else if (path.ToLower().EndsWith(Program.pngExpansion) || path.ToLower().EndsWith(Program.jpgExpansion))
                     {
                         File.Copy(path, Program.altArtPath + Path.GetFileName(path), true);
                         MessageManager.Cast(InterString.Get("导入自定义卡图「[?]」成功。", fileName));
@@ -132,7 +132,7 @@ namespace MDPro3
                         File.Move(path, Program.expansionsPath + Program.slash + Path.GetFileName(path));
                         newDataAdded = true;
                     }
-                    if (path.ToLower().EndsWith(".png") || path.ToLower().EndsWith(".jpg") || path.ToLower().EndsWith(".jpeg"))
+                    if (path.ToLower().EndsWith(Program.pngExpansion) || path.ToLower().EndsWith(Program.jpgExpansion) || path.ToLower().EndsWith(".jpeg"))
                         File.Move(path, Program.altArtPath + Path.GetFileName(path));
                 }
                 catch { }

@@ -42,6 +42,9 @@ public class AssetBundleRobber : MonoBehaviour
 
     public static void SetHint(string hint)
     {
+        if (sText == null)
+            sText = GameObject.Find("Canvas").transform.GetChild(1).GetComponent<Text>();
+
         sText.text = hint;
     }
 
@@ -62,8 +65,8 @@ public class AssetBundleRobber : MonoBehaviour
 
         Initialize();
 
-        StartCoroutine(RefreshFileResources());
-        //Copy("76500705");
+        //StartCoroutine(RefreshFileResources());
+        Copy("a3904972");
     }
 
     void Copy(string path)

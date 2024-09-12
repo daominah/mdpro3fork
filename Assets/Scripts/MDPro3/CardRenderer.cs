@@ -1,25 +1,38 @@
+using MDPro3.YGOSharp;
+using MDPro3.YGOSharp.OCGWrapper.Enums;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.UI;
-using MDPro3.YGOSharp;
-using MDPro3.YGOSharp.OCGWrapper.Enums;
-using System;
 
 namespace MDPro3
 {
     public class CardRenderer : MonoBehaviour
     {
+        public GameObject ocg;
+        public GameObject rd;
+
+        public enum CardStyle
+        {
+            OCG_TCG,
+            RUSH_DUEL
+        }
+        public const string bigSlash = "£¯";
+        public const string smallSlash = " / ";
+        static readonly float cardNameLabelWidthOCG = 520f;
+        static readonly float cardNameLabelWidthRushDuel = 520f;
+
+        #region Public Reference
+        [Header("OCG")]
         public RawImage cardArt;
         public RawImage cardArtPendulum;
         public RawImage cardArtPendulumSquare;
         public RawImage cardArtPendulumWidth;
         public Image cardFrame;
         public Image cardAttribute;
-        public Text cardName;
-        public TextMeshProUGUI cardNameTMP;
-        public Text cardDescription;
-        public Text cardDescriptionPendulum;
+        public TextMeshProUGUI cardName;
+        public TextMeshProUGUI cardDescription;
+        public TextMeshProUGUI cardDescriptionPendulum;
         public Text lScale;
         public Text rScale;
         public GameObject levels;
@@ -35,105 +48,185 @@ namespace MDPro3
         public Text numATK;
         public Text numDEF;
         public Image linkCount;
-        public Text spellType;
-        public Image spellTypeIcon;
-
+        public TextMeshProUGUI spellType;
         public Font atkDef;
         public RenderTexture renderTexture;
 
-        static readonly string bigSlash = "£¯";
+        [Header("RD")]
+        public RawImage cardArtRD;
+        public RawImage cardArtPendulumRD;
+        public RawImage cardArtPendulumWidthRD;
+        public Image cardFrameRD;
+        public Image cardAttributeRD;
+        public GameObject cardLegendRD;
+        public RectTransform movePartsRD;
+        public TextMeshProUGUI cardNameRD;
+        public TextMeshProUGUI cardTypeRD;
+        public TextMeshProUGUI cardDescriptionRD;
+        public TextMeshProUGUI cardDescriptionPendulumRD;
+        public Text lScaleRD;
+        public Text rScaleRD;
+        public GameObject maxAtkRD;
+        public TextMeshProUGUI maxAtkNumRD;
+        public GameObject atkRD;
+        public TextMeshProUGUI atkNumRD;
+        public GameObject defRD;
+        public TextMeshProUGUI defNumRD;
+        public GameObject levelRD;
+        public TextMeshProUGUI levelNumRD;
+        public GameObject rankRD;
+        public TextMeshProUGUI rankNumRD;
+        public GameObject linkRD;
+        public GameObject linkUL;
+        public GameObject linkU;
+        public GameObject linkUR;
+        public GameObject linkR;
+        public GameObject linkBR;
+        public GameObject linkB;
+        public GameObject linkBL;
+        public GameObject linkL;
+
+        #endregion
 
         public void SwitchLanguage()
         {
-            //cardDescription
-            cardName.fontSize = 50;
-            cardName.GetComponent<RectTransform>().sizeDelta = new Vector2(200, 80);
             var language = Config.Get("CardLanguage", "zh-CN");
             if (language == "zh-CN")
             {
-                var handle = Addressables.LoadAssetAsync<Font>("RenderFontChineseSimplified");
+                var handle = Addressables.LoadAssetAsync<TMP_FontAsset>("RenderFontChineseSimplified");
                 handle.Completed += (result) =>
                 {
-                    cardName.font = handle.Result;
-                    cardDescription.font = handle.Result;
-                    cardDescriptionPendulum.font = handle.Result;
-                    spellType.font = handle.Result;
+                    cardName.fontSize = 50f;
+                    cardNameRD.fontSize = 50f;
+                    spellType.fontSize = 40f;
+                    cardTypeRD.fontSize = 27f;
+                    SetFont(result.Result);
                 };
             }
             else if (language == "zh-TW")
             {
-                var handle = Addressables.LoadAssetAsync<Font>("RenderFontChineseTraditional");
+                var handle = Addressables.LoadAssetAsync<TMP_FontAsset>("RenderFontChineseTraditional");
                 handle.Completed += (result) =>
                 {
-                    cardName.font = handle.Result;
-                    cardDescription.font = handle.Result;
-                    cardDescriptionPendulum.font = handle.Result;
-                    spellType.font = handle.Result;
+                    cardName.fontSize = 55f;
+                    cardNameRD.fontSize = 55f;
+                    spellType.fontSize = 40f;
+                    cardTypeRD.fontSize = 28f;
+                    SetFont(result.Result);
                 };
             }
             else if (language == "ko-KR")
             {
-                var handle = Addressables.LoadAssetAsync<Font>("RenderFontKorean");
+                var handle = Addressables.LoadAssetAsync<TMP_FontAsset>("RenderFontKorean");
                 handle.Completed += (result) =>
                 {
-                    cardName.font = handle.Result;
-                    cardDescription.font = handle.Result;
-                    cardDescriptionPendulum.font = handle.Result;
-                    spellType.font = handle.Result;
+                    cardName.fontSize = 50f;
+                    cardNameRD.fontSize = 50f;
+                    spellType.fontSize = 40f;
+                    cardTypeRD.fontSize = 27f;
+                    SetFont(result.Result);
                 };
             }
             else if (language == "ja-JP")
             {
-                var handle = Addressables.LoadAssetAsync<Font>("RenderFontJapanese");
+                var handle = Addressables.LoadAssetAsync<TMP_FontAsset>("RenderFontJapanese");
                 handle.Completed += (result) =>
                 {
-                    cardName.font = handle.Result;
-                    cardDescription.font = handle.Result;
-                    cardDescriptionPendulum.font = handle.Result;
-                    spellType.font = handle.Result;
+                    cardName.fontSize = 55f;
+                    cardNameRD.fontSize = 55f;
+                    spellType.fontSize = 40f;
+                    cardTypeRD.fontSize = 29f;
+                    SetFont(result.Result);
                 };
             }
             else
             {
-                var handle = Addressables.LoadAssetAsync<Font>("RenderFontEnglish");
+                var handle = Addressables.LoadAssetAsync<TMP_FontAsset>("RenderFontEnglish");
                 handle.Completed += (result) =>
                 {
-                    cardDescription.font = handle.Result;
-                    cardDescriptionPendulum.font = handle.Result;
-                    spellType.font = handle.Result;
+                    cardName.fontSize = 63f;
+                    cardNameRD.fontSize = 63f;
+                    spellType.fontSize = 43f;
+                    cardTypeRD.fontSize = 30f;
+                    SetFont(result.Result);
                 };
             }
         }
 
+        private void SetFont(TMP_FontAsset font)
+        {
+            cardName.font = font;
+            cardNameRD.font = font;
+            cardDescription.font = font;
+            cardDescriptionRD.font = font;
+            cardDescriptionPendulum.font = font;
+            cardDescriptionPendulumRD.font = font;
+            spellType.font = font;
+            cardTypeRD.font = font;
+        }
+
+        public static bool NeedRushDuelStyle(int code)
+        {
+            var config = Config.Get("CardStyle", CardStyle.OCG_TCG.ToString());
+            if (config == CardStyle.RUSH_DUEL.ToString())
+                return true;
+            if(code >= 120000000 && code < 130000000)
+                return true;
+            return false;
+        }
+
         public void RenderName(int code)
         {
+            if (NeedRushDuelStyle(code))
+                RenderRushDuelName(code);
+            else
+                RenderOcgName(code);
+        }
+
+        private void RenderRushDuelName(int code)
+        {
+            ocg.SetActive(false);
+            rd.SetActive(true);
+
+            var data = CardsManager.GetRenderCard(code);
+            if (data.Id == 0)
+                return;
+            cardNameRD.GetComponent<RectTransform>().localScale = Vector3.one;
+
+            cardNameRD.text = data.Name;
+            cardNameRD.GetComponent<ContentSizeFitter>().SetLayoutHorizontal();
+            var nameWidth = cardNameRD.GetComponent<RectTransform>().rect.width;
+            if (nameWidth > cardNameLabelWidthRushDuel)
+                cardNameRD.GetComponent<RectTransform>().localScale = new Vector3(cardNameLabelWidthRushDuel / nameWidth, 1f, 1f);
+
+            cardNameRD.color = Color.white;
+
+            cardArtRD.gameObject.SetActive(false);
+            cardArtPendulumRD.gameObject.SetActive(false);
+            cardArtPendulumWidthRD.gameObject.SetActive(false);
+            cardFrameRD.gameObject.SetActive(false);
+            cardAttributeRD.gameObject.SetActive(false);
+            cardLegendRD.SetActive(false);
+
+            Program.I().camera_.cameraRenderTexture.Render();
+        }
+
+        private void RenderOcgName(int code)
+        {
+            ocg.SetActive(true);
+            rd.SetActive(false);
+
             var data = CardsManager.GetRenderCard(code);
             if (data.Id == 0)
                 return;
             cardName.GetComponent<RectTransform>().localScale = Vector3.one;
-            cardNameTMP.GetComponent<RectTransform>().localScale = Vector3.one;
-            if (Config.Get("CardLanguage", "zh-CN") == "en-US"
-                || Config.Get("CardLanguage", "zh-CN") == "es-ES")
-            {
-                cardName.text = string.Empty;
-                cardNameTMP.text = data.Name;
-                cardNameTMP.GetComponent<ContentSizeFitter>().SetLayoutHorizontal();
-                var nameWidth = cardNameTMP.GetComponent<RectTransform>().rect.width;
-                if (nameWidth > 520)
-                    cardNameTMP.GetComponent<RectTransform>().localScale = new Vector3(520 / nameWidth, 1, 1);
-            }
-            else
-            {
-                cardName.text = data.Name;
-                cardNameTMP.text = string.Empty;
-                cardName.GetComponent<ContentSizeFitter>().SetLayoutHorizontal();
-                var nameWidth = cardName.GetComponent<RectTransform>().rect.width;
-                if (nameWidth > 520)
-                    cardName.GetComponent<RectTransform>().localScale = new Vector3(520 / nameWidth, 1, 1);
-            }
+            cardName.text = data.Name;
+            cardName.GetComponent<ContentSizeFitter>().SetLayoutHorizontal();
+            var nameWidth = cardName.GetComponent<RectTransform>().rect.width;
+            if (nameWidth > cardNameLabelWidthOCG)
+                cardName.GetComponent<RectTransform>().localScale = new Vector3(cardNameLabelWidthOCG / nameWidth, 1, 1);
 
             cardName.color = Color.white;
-            cardNameTMP.color = Color.white;
 
             cardFrame.gameObject.SetActive(false);
             cardArt.gameObject.SetActive(false);
@@ -149,7 +242,6 @@ namespace MDPro3
             rank13Mask.SetActive(false);
             linkMarkers.SetActive(false);
             spellType.text = string.Empty;
-            spellTypeIcon.sprite = TextureManager.container.typeNone;
             data = AdjustLevelForRender(data);
             if ((data.Type & (uint)CardType.Xyz) > 0)
             {
@@ -185,6 +277,199 @@ namespace MDPro3
 
         public bool RenderCard(int code, Texture2D art)
         {
+            if(NeedRushDuelStyle(code))
+                return RenderRushDuelCard(code, art);
+            else
+                return RenderOcgCard(code, art);
+        }
+
+        private bool RenderRushDuelCard(int code, Texture2D art)
+        {
+            ocg.SetActive(false);
+            rd.SetActive(true);
+
+            RenderTexture.active = renderTexture;
+
+            Card data = CardsManager.GetRenderCard(code);
+            if (data == null || data.Id == 0)
+                return false;
+
+            cardNameRD.GetComponent<RectTransform>().localScale = Vector3.one;
+            cardNameRD.text = data.Name;
+            cardNameRD.GetComponent<ContentSizeFitter>().SetLayoutHorizontal();
+            var nameWidth = cardNameRD.GetComponent<RectTransform>().rect.width;
+            if (nameWidth > cardNameLabelWidthRushDuel)
+                cardNameRD.GetComponent<RectTransform>().localScale = new Vector3(cardNameLabelWidthRushDuel / nameWidth, 1, 1);
+
+            cardNameRD.color = Color.black;
+            cardTypeRD.color = Color.black;
+
+            cardArtRD.gameObject.SetActive(false);
+            cardArtPendulumRD.gameObject.SetActive(false);
+            cardArtPendulumWidthRD.gameObject.SetActive(false);
+
+            cardFrameRD.gameObject.SetActive(true);
+            cardAttributeRD.gameObject.SetActive(true);
+            cardDescriptionPendulumRD.text = string.Empty;
+            lScaleRD.text = string.Empty;
+            rScaleRD.text = string.Empty;
+            levelRD.SetActive(false);
+            rankRD.SetActive(false);
+            linkRD.SetActive(false);
+            levelNumRD.gameObject.SetActive(false);
+            rankNumRD.gameObject.SetActive(false);
+            atkNumRD.text = data.Attack == -2 ? "?" : data.Attack.ToString();
+            defNumRD.text = data.Defense == -2 ? "?" : data.Defense.ToString();
+            atkRD.SetActive(true);
+            defRD.SetActive(true);
+            movePartsRD.gameObject.SetActive(true);
+            movePartsRD.anchoredPosition = Vector2.zero;
+
+            cardAttributeRD.sprite = CardDescription.GetCardAttribute(data).sprite;
+            cardTypeRD.text = StringHelper.GetType(data, true, true);
+            if (CardUseLatin())
+                cardTypeRD.text = cardTypeRD.text.Replace(Program.slash, smallSlash);
+            else
+                cardTypeRD.text = cardTypeRD.text.Replace(Program.slash, bigSlash);
+
+            if ((data.Type & (uint)CardType.Pendulum) > 0)
+            {
+                movePartsRD.anchoredPosition = new Vector2(0f, 133f);
+
+                if (art.width == art.height)
+                {
+                    cardArtRD.gameObject.SetActive(true);
+                    cardArtRD.texture = art;
+                }
+                else if (art.width > art.height)
+                {
+                    cardArtPendulumWidthRD.gameObject.SetActive(true);
+                    cardArtPendulumWidthRD.texture = art;
+                }
+                else
+                {
+                    cardArtPendulumRD.gameObject.SetActive(true);
+                    cardArtPendulumRD.texture = art;
+                }
+                var pendulumDescription = CardDescription.GetCardDescriptionSplit(data.Desc, true);
+                cardDescriptionRD.text = TextForRender(pendulumDescription[1]);
+                cardDescriptionPendulumRD.text = TextForRender(pendulumDescription[0]);
+                lScaleRD.text = data.LScale.ToString();
+                rScaleRD.text = data.RScale.ToString();
+                if ((data.Type & (uint)CardType.Xyz) > 0)
+                    cardFrameRD.sprite = TextureManager.container.rd_Frame_PendulumXyz;
+                else if ((data.Type & (uint)CardType.Synchro) > 0)
+                    cardFrameRD.sprite = TextureManager.container.rd_Frame_PendulumSynchro;
+                else if ((data.Type & (uint)CardType.Fusion) > 0)
+                    cardFrameRD.sprite = TextureManager.container.rd_Frame_PendulumFusion;
+                else if ((data.Type & (uint)CardType.Ritual) > 0)
+                    cardFrameRD.sprite = TextureManager.container.rd_Frame_PendulumRitual;
+                else if ((data.Type & (uint)CardType.Link) > 0)
+                    cardFrameRD.sprite = TextureManager.container.rd_Frame_PendulumLink;
+                else if ((data.Type & (uint)CardType.Normal) > 0)
+                    cardFrameRD.sprite = TextureManager.container.rd_Frame_PendulumNormal;
+                else
+                    cardFrameRD.sprite = TextureManager.container.rd_Frame_PendulumEffect;
+            }
+            else
+            {
+                cardArtRD.gameObject.SetActive(true);
+                cardArtRD.texture = art;
+                cardDescriptionRD.text = TextForRender(data.Desc);
+                cardDescriptionPendulumRD.text = string.Empty;
+
+                if (code == 10000000)
+                    cardFrameRD.sprite = TextureManager.container.rd_Frame_Obelisk;
+                else if (code == 10000010)
+                    cardFrameRD.sprite = TextureManager.container.rd_Frame_Ra;
+                else if (code == 10000020)
+                    cardFrameRD.sprite = TextureManager.container.rd_Frame_Slifer;
+                else if ((data.Type & (uint)CardType.Link) > 0)
+                    cardFrameRD.sprite = TextureManager.container.rd_Frame_Link;
+                else if ((data.Type & (uint)CardType.Xyz) > 0)
+                    cardFrameRD.sprite = TextureManager.container.rd_Frame_Xyz;
+                else if ((data.Type & (uint)CardType.Synchro) > 0)
+                    cardFrameRD.sprite = TextureManager.container.rd_Frame_Synchro;
+                else if ((data.Type & (uint)CardType.Fusion) > 0)
+                    cardFrameRD.sprite = TextureManager.container.rd_Frame_Fusion;
+                else if ((data.Type & (uint)CardType.Ritual) > 0 && (data.Type & (uint)CardType.Monster) > 0)
+                    cardFrameRD.sprite = TextureManager.container.rd_Frame_Ritual;
+                else if ((data.Type & (uint)CardType.Token) > 0)
+                    cardFrameRD.sprite = TextureManager.container.rd_Frame_Token;
+                else if ((data.Type & (uint)CardType.Normal) > 0)
+                    cardFrameRD.sprite = TextureManager.container.rd_Frame_Normal;
+                else if ((data.Type & ((uint)CardType.Spell) + (uint)CardType.Trap) > 0)
+                {
+                    atkRD.SetActive(false);
+                    defRD.SetActive(false);
+                    atkNumRD.text = string.Empty;
+                    defNumRD.text = string.Empty;
+
+                    if ((data.Type & (uint)CardType.Spell) > 0)
+                        cardFrameRD.sprite = TextureManager.container.rd_Frame_Spell;
+                    else
+                        cardFrameRD.sprite = TextureManager.container.rd_Frame_Trap;
+                }
+                else
+                    cardFrameRD.sprite = TextureManager.container.rd_Frame_Effect;
+            }
+
+            data = AdjustLevelForRender(data);
+
+            if ((data.Type & (uint)CardType.Link) > 0)
+            {
+                cardNameRD.color = Color.white;
+                //cardTypeRD.color = Color.white;
+                defRD.SetActive(false);
+                defNumRD.text = string.Empty;
+                levelNumRD.gameObject.SetActive(true);
+                levelNumRD.text = CardDescription.GetCardLinkCount(data).ToString();
+
+                linkRD.SetActive(true);
+                for (int i = 0; i < 8; i++)
+                {
+                    if (i < 4)
+                    {
+                        if ((data.LinkMarker & (1 << i)) > 0)
+                            linkRD.transform.GetChild(i).gameObject.SetActive(true);
+                        else
+                            linkRD.transform.GetChild(i).gameObject.SetActive(false);
+                    }
+                    else
+                    {
+                        if ((data.LinkMarker & (1 << (i + 1))) > 0)
+                            linkRD.transform.GetChild(i).gameObject.SetActive(true);
+                        else
+                            linkRD.transform.GetChild(i).gameObject.SetActive(false);
+                    }
+                }
+            }
+            else if ((data.Type & (uint)CardType.Xyz) > 0)
+            {
+                cardNameRD.color = Color.white;
+                if((data.Type & (uint)CardType.Pendulum) == 0)
+                    cardTypeRD.color = Color.white;
+
+                rankRD.SetActive(true);
+                rankNumRD.gameObject.SetActive(true);
+                rankNumRD.text = data.Level.ToString();
+            }
+            else if ((data.Type & (uint)CardType.Monster) > 0)
+            {
+                levelRD.SetActive(true);
+                levelNumRD.gameObject.SetActive(true);
+                levelNumRD.text = data.Level.ToString();
+            }
+
+            Program.I().camera_.cameraRenderTexture.Render();
+            return true;
+        }
+
+        private bool RenderOcgCard(int code, Texture2D art)
+        {
+            ocg.SetActive(true);
+            rd.SetActive(false);
+
             RenderTexture.active = renderTexture;
 
             Card data = CardsManager.GetRenderCard(code);
@@ -192,29 +477,25 @@ namespace MDPro3
                 return false;
 
             cardName.GetComponent<RectTransform>().localScale = Vector3.one;
-            cardNameTMP.GetComponent<RectTransform>().localScale = Vector3.one;
             if (Config.Get("CardLanguage", "zh-CN") == "en-US"
                 || Config.Get("CardLanguage", "zh-CN") == "es-ES")
             {
-                cardName.text = string.Empty;
-                cardNameTMP.text = data.Name;
-                cardNameTMP.GetComponent<ContentSizeFitter>().SetLayoutHorizontal();
-                var nameWidth = cardNameTMP.GetComponent<RectTransform>().rect.width;
-                if (nameWidth > 520)
-                    cardNameTMP.GetComponent<RectTransform>().localScale = new Vector3(520 / nameWidth, 1, 1);
+                cardName.text = data.Name;
+                cardName.GetComponent<ContentSizeFitter>().SetLayoutHorizontal();
+                var nameWidth = cardName.GetComponent<RectTransform>().rect.width;
+                if (nameWidth > cardNameLabelWidthOCG)
+                    cardName.GetComponent<RectTransform>().localScale = new Vector3(cardNameLabelWidthOCG / nameWidth, 1, 1);
             }
             else
             {
                 cardName.text = data.Name;
-                cardNameTMP.text = string.Empty;
                 cardName.GetComponent<ContentSizeFitter>().SetLayoutHorizontal();
                 var nameWidth = cardName.GetComponent<RectTransform>().rect.width;
-                if (nameWidth > 520)
-                    cardName.GetComponent<RectTransform>().localScale = new Vector3(520 / nameWidth, 1, 1);
+                if (nameWidth > cardNameLabelWidthOCG)
+                    cardName.GetComponent<RectTransform>().localScale = new Vector3(cardNameLabelWidthOCG / nameWidth, 1, 1);
             }
 
             cardName.color = Color.black;
-            cardNameTMP.color = Color.black;
 
             cardArt.gameObject.SetActive(false);
             cardArtPendulum.gameObject.SetActive(false);
@@ -240,7 +521,6 @@ namespace MDPro3
             numDEF.text = data.Defense == -2 ? "?" : data.Defense.ToString();
             linkCount.gameObject.SetActive(false);
             spellType.text = "";
-            spellTypeIcon.sprite = TextureManager.container.typeNone;
             cardDescription.GetComponent<RectTransform>().sizeDelta = new Vector2(590f, 160f);
             cardAttribute.sprite = CardDescription.GetCardAttribute(data).sprite;
 
@@ -313,73 +593,17 @@ namespace MDPro3
                 {
                     cardDescription.GetComponent<RectTransform>().sizeDelta = new Vector2(590, 185);
                     cardName.color = Color.white;
-                    cardNameTMP.color = Color.white;
                     line.SetActive(false);
                     textATK.SetActive(false);
                     textDEF.SetActive(false);
                     numATK.text = "";
                     numDEF.text = "";
-                    var bracketLeft = "¡¾";
-                    var bracketRight = "¡¿";
-                    var spaces = "   ";
-                    spellTypeIcon.GetComponent<RectTransform>().anchoredPosition = new Vector2(-79f, 364);
-                    switch (Config.Get("CardLanguage", "zh-CN"))
-                    {
-                        case "en-US":
-                            bracketLeft = "[";
-                            bracketRight = "]";
-                            spaces = "     ";
-                            break;
-                        case "es-ES":
-                            bracketLeft = "[";
-                            bracketRight = "]";
-                            spaces = "     ";
-                            break;
-                        case "ko-KR":
-                            bracketLeft = "[";
-                            bracketRight = "]";
-                            spaces = "  ";
-                            spellTypeIcon.GetComponent<RectTransform>().anchoredPosition = new Vector2(-80f, 364);
-                            break;
-                        case "zh-TW":
-                            spaces = "  ";
-                            spellTypeIcon.GetComponent<RectTransform>().anchoredPosition = new Vector2(-85f, 364);
-                            break;
-                        default:
-                            spellTypeIcon.GetComponent<RectTransform>().anchoredPosition = new Vector2(-79f, 364);
-                            break;
-                    }
+                    spellType.text = StringHelper.GetType(data, true, false);
 
                     if ((data.Type & (uint)CardType.Spell) > 0)
-                    {
                         cardFrame.sprite = TextureManager.container.cardFrameSpellOF;
-                        var type = bracketLeft + InterString.Get("Ä§·¨¿¨", true) + spaces + bracketRight;
-                        if ((data.Type & (uint)CardType.Field) > 0)
-                            spellTypeIcon.sprite = TextureManager.container.typeField;
-                        else if ((data.Type & (uint)CardType.Equip) > 0)
-                            spellTypeIcon.sprite = TextureManager.container.typeEquip;
-                        else if ((data.Type & (uint)CardType.Continuous) > 0)
-                            spellTypeIcon.sprite = TextureManager.container.typeContinuous;
-                        else if ((data.Type & (uint)CardType.QuickPlay) > 0)
-                            spellTypeIcon.sprite = TextureManager.container.typeQuickPlay;
-                        else if ((data.Type & (uint)CardType.Ritual) > 0)
-                            spellTypeIcon.sprite = TextureManager.container.typeRitual;
-                        else
-                            type = type.Replace(spaces, "");
-                        spellType.text = type;
-                    }
                     else
-                    {
                         cardFrame.sprite = TextureManager.container.cardFrameTrapOF;
-                        var type = bracketLeft + InterString.Get("ÏÝÚå¿¨", true) + spaces + bracketRight;
-                        if ((data.Type & (uint)CardType.Counter) > 0)
-                            spellTypeIcon.sprite = TextureManager.container.typeCounter;
-                        else if ((data.Type & (uint)CardType.Continuous) > 0)
-                            spellTypeIcon.sprite = TextureManager.container.typeContinuous;
-                        else
-                            type = type.Replace("   ", "");
-                        spellType.text = type;
-                    }
                 }
                 else
                     cardFrame.sprite = TextureManager.container.cardFrameEffectOF;
@@ -390,7 +614,6 @@ namespace MDPro3
             if ((data.Type & (uint)CardType.Link) > 0)
             {
                 cardName.color = Color.white;
-                cardNameTMP.color = Color.white;
                 linkMarkers.SetActive(true);
                 textDEF.SetActive(false);
                 numDEF.text = "";
@@ -443,7 +666,6 @@ namespace MDPro3
             else if ((data.Type & (uint)CardType.Xyz) > 0)
             {
                 cardName.color = Color.white;
-                cardNameTMP.color = Color.white;
                 if (data.Level == 13)
                     rank13.SetActive(true);
                 else
@@ -501,8 +723,9 @@ namespace MDPro3
 
             if (language == "ja-JP")
             {
-                description = description.Replace("\t", "\f\f\f");
-                description = description.Replace("\n¡ñ", "¡ñ¡ñ¡ñ");
+                description = description.Replace("\t\r\n", "\f\f\f");
+                description = description.Replace("\r\n¡ñ", "¡ñ¡ñ¡ñ");
+                description = description.Replace("\r", string.Empty);
                 description = description.Replace("\n", string.Empty);
                 description = description.Replace("\f\f\f", "\r\n");
                 description = description.Replace("¡ñ¡ñ¡ñ", "\r\n¡ñ");
@@ -517,22 +740,34 @@ namespace MDPro3
                     .Replace("\r\n¢Þ", "¢Þ")
                     .Replace("\r\n¢ß", "¢ß")
                     .Replace("\r\n¢à", "¢à")
-                    .Replace("\r\n¢á", "¢á")
-                    .Replace("\n¢Ú", "¢Ú")
-                    .Replace("\n¢Û", "¢Û")
-                    .Replace("\n¢Ü", "¢Ü")
-                    .Replace("\n¢Ý", "¢Ý")
-                    .Replace("\n¢Þ", "¢Þ")
-                    .Replace("\n¢ß", "¢ß")
-                    .Replace("\n¢à", "¢à")
-                    .Replace("\n¢á", "¢á");
+                    .Replace("\r\n¢á", "¢á");
             }
 
-            description = description.Replace(Program.slash, bigSlash);
-            if (language != "en-US" && language != "es-ES")
+            if (!CardUseLatin())
+                description = description.Replace(Program.slash, bigSlash);
+            else
+                description = description.Replace(Program.slash, smallSlash);
+
+            if (!CardUseLatin())
                 description = description.Replace(" ", "\u00A0");
             description = description.Replace("\r\n\r\n", "\r\n");
             return description;
+        }
+
+        public static bool CardUseLatin()
+        {
+            var config = Config.Get("CardLanguage", "zh-CN");
+            if(config == "en-US" || config == "es-ES")
+                return true;
+            return false;
+        }
+
+        public static bool CardNeedSmallBracket()
+        {
+            var config = Config.Get("CardLanguage", "zh-CN");
+            if (config == "en-US" || config == "es-ES" || config == "ko-KR")
+                return true;
+            return false;
         }
     }
 }

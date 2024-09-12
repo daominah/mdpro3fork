@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,6 +18,13 @@ namespace MDPro3.UI
         public GameObject offObj;
         Color offColor;
         Color onColor;
+
+        public Text text;
+        public Color textOnColor = Color.black;
+        public Color textOffColor = Color.white;
+
+        public Action onAction;
+        public Action offAction;
 
         private void Start()
         {
@@ -106,6 +114,11 @@ namespace MDPro3.UI
             state.highlightedSprite = selectedSprite;
             state.pressedSprite = selectedSprite;
             GetComponent<Button>().spriteState = state;
+
+            if (text != null)
+                text.color = textOnColor;
+
+            onAction?.Invoke();
         }
         public virtual void OnSwitchOff()
         {
@@ -119,6 +132,11 @@ namespace MDPro3.UI
             state.highlightedSprite = hoverSprite;
             state.pressedSprite = hoverSprite;
             GetComponent<Button>().spriteState = state;
+
+            if (text != null)
+                text.color = textOffColor;
+
+            offAction?.Invoke();
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using MDPro3.YGOSharp.OCGWrapper.Enums;
+using MDPro3.Net;
 
 namespace MDPro3.YGOSharp
 {

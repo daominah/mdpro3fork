@@ -69,6 +69,8 @@ namespace MDPro3
         public const string diyPath = "Picture/DIY/";
         public const string slash = "/";
         public const string ydkExpansion = ".ydk";
+        public const string pngExpansion = ".png";
+        public const string jpgExpansion = ".jpg";
         #endregion
 
         public static Program I()

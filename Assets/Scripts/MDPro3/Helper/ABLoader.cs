@@ -332,10 +332,31 @@ namespace MDPro3
             }
             else
             {
-                var ie = LoadFromFileAsync("MasterDuel/" + Program.items.GetPathByCode(code.ToString(), Items.ItemType.Mate));
+                bool mateInFolder = false;
+                var matePath = Program.items.GetPathByCode(code.ToString(), Items.ItemType.Mate);
+                IEnumerator<GameObject> ie;
+                if (matePath.EndsWith("_Folder"))
+                {
+                    mateInFolder = true;
+                    ie = LoadFromFolderAsync("MasterDuel/" + matePath.Replace("_Folder", string.Empty));
+                }
+                else
+                    ie = LoadFromFileAsync("MasterDuel/" + matePath);
                 while (ie.MoveNext())
                     yield return null;
                 var mateGo = ie.Current;
+                if(mateInFolder)
+                {
+                    for (int i = 0; i < ie.Current.transform.childCount; i++)
+                    {
+                        if (ie.Current.transform.GetChild(i).GetComponent<CharacterCollision>() != null)
+                        {
+                            mateGo = Instantiate(ie.Current.transform.GetChild(i).gameObject);
+                            Destroy(ie.Current);
+                            break;
+                        }
+                    }
+                }
                 returnValue = mateGo.AddComponent<Mate>();
             }
             returnValue.type = type;

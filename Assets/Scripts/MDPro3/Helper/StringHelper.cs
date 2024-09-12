@@ -1,4 +1,4 @@
-using System;
+Ôªøusing System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -358,7 +358,7 @@ namespace MDPro3
                 if ((a & (1 << i)) > 0)
                     start += Program.slash + GetUnsafe(1050 + i, render);
             var returnValue = start + end;
-            if (returnValue == "")
+            if (returnValue == string.Empty)
                 returnValue = GetUnsafe(1054, render);
             else
                 returnValue = returnValue.Substring(1, returnValue.Length - 1);
@@ -366,23 +366,97 @@ namespace MDPro3
             return returnValue;
         }
 
-        public static string GetType(Card data, bool render = false)
+        public static string GetType(Card data, bool render = false, bool rushDuel = false)
         {
-            var re = "";
+            var re = string.Empty;
             if (data.Id == 0)
                 return re;
+
+            var bracketLeft = "„Äê";
+            var bracketRight = "„Äë";
+            if (render && CardRenderer.CardNeedSmallBracket())
+            {
+                bracketLeft = "[";
+                bracketRight = "]";
+            }
+
             var origin = render ? CardsManager.GetRenderCard(data.Id) : CardsManager.Get(data.Id);
             try
             {
                 if (CardDescription.WhetherCardIsMonster(data))
                 {
                     if (data.Race != origin.Race)
-                        re = "°æ" + "<color=#FD3E08>" + InterString.Get("[?]◊Â", Race(data.Race)) + "</color>" + Program.slash + SecondType(data.Type) + "°ø";
+                        re = bracketLeft + "<color=#FD3E08>" + InterString.Get("[?]Êóè", Race(data.Race)) + "</color>" + Program.slash + SecondType(data.Type) + bracketRight;
                     else
-                        re = "°æ" + InterString.Get("[?]◊Â", Race(data.Race, render), render) + Program.slash + SecondType(data.Type, render) + "°ø";
+                        re = bracketLeft + InterString.Get("[?]Êóè", Race(data.Race, render), render) + Program.slash + SecondType(data.Type, render) + bracketRight;
                 }
                 else
-                    re = "°æ" + MainType(data.Type) + "°ø";
+                {
+                    if (rushDuel)
+                    {
+                        re = bracketLeft;
+                        if ((data.Type & (uint)CardType.Spell) > 0)
+                            re += InterString.Get("È≠îÊ≥ïÂç°", render);
+                        else
+                            re += InterString.Get("Èô∑Èò±Âç°", render);
+
+                        re = re.Replace("SPELL CARD", "Spell Card")
+                                    .Replace("TRAP CARD", "Trap Card")
+                                    .Replace("CARTA M√ÅGICA", "Carta M√°gica")
+                                    .Replace("CARTA TRAMPA", "Carta Trampa");
+
+                        var secondType = SecondType(data.Type, render);
+                        if (secondType != GetUnsafe(1054, render))
+                        {
+                            re += Program.slash + secondType;
+
+                            if ((data.Type & (uint)CardType.Equip) > 0)
+                                re += "<Sprite=0>";
+                            if ((data.Type & (uint)CardType.QuickPlay) > 0)
+                                re += "<Sprite=1>";
+                            if ((data.Type & (uint)CardType.Field) > 0)
+                                re += "<Sprite=2>";
+                            if ((data.Type & (uint)CardType.Ritual) > 0)
+                                re += "<Sprite=3>";
+                            if ((data.Type & (uint)CardType.Continuous) > 0)
+                                re += "<Sprite=4>";
+                            if ((data.Type & (uint)CardType.Counter) > 0)
+                                re += "<Sprite=5>";
+                        }
+                        re += bracketRight;
+                    }
+                    else
+                    {
+                        if (render)
+                        {
+                            re = bracketLeft;
+                            if ((data.Type & (uint)CardType.Spell) > 0)
+                                re += InterString.Get("È≠îÊ≥ïÂç°", render);
+                            else
+                                re += InterString.Get("Èô∑Èò±Âç°", render);
+
+                            var secondType = SecondType(data.Type, render);
+                            if (secondType != GetUnsafe(1054, render))
+                            {
+                                if ((data.Type & (uint)CardType.Equip) > 0)
+                                    re += "<Sprite=0>";
+                                if ((data.Type & (uint)CardType.QuickPlay) > 0)
+                                    re += "<Sprite=1>";
+                                if ((data.Type & (uint)CardType.Field) > 0)
+                                    re += "<Sprite=2>";
+                                if ((data.Type & (uint)CardType.Ritual) > 0)
+                                    re += "<Sprite=3>";
+                                if ((data.Type & (uint)CardType.Continuous) > 0)
+                                    re += "<Sprite=4>";
+                                if ((data.Type & (uint)CardType.Counter) > 0)
+                                    re += "<Sprite=5>";
+                            }
+                            re += bracketRight;
+                        }
+                        else
+                            re = bracketLeft + MainType(data.Type, render) + bracketRight;
+                    }
+                }
             }
             catch (Exception e)
             { Debug.LogError(e); }
@@ -415,7 +489,7 @@ namespace MDPro3
                 if (raw)
                     return string.Join("|", returnValue.ToArray());
                 else
-                    return "°æ" + string.Join("|", returnValue.ToArray()) + "°ø";
+                    return "„Äê" + string.Join("|", returnValue.ToArray()) + "„Äë";
             }
             else
                 return string.Empty;

@@ -1,6 +1,4 @@
-﻿using DG.Tweening;
-using MDPro3.UI;
-using NUnit.Framework.Constraints;
+﻿using MDPro3.UI;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -52,6 +50,8 @@ namespace MDPro3
         public Text backgroundValue;
         public Button bgmBy;
         public Text bgmByValue;
+        public Button cardStyle;
+        public Text cardStyleValue;
         public Button cardLanguage;
         public Text cardLanguageValue;
         public Button language;
@@ -210,6 +210,7 @@ namespace MDPro3
             screen.onClick.AddListener(OnScreenModeChange);
             resolution.onClick.AddListener(OnResolutionChange);
             background.onClick.AddListener(OnBackground);
+            cardStyle.onClick.AddListener(OnCardStyleChange);
             cardLanguage.onClick.AddListener(OnCardLanguageChange);
             language.onClick.AddListener(OnLanguageChange);
             confirm.onClick.AddListener(OnConfirmClicked);
@@ -323,6 +324,7 @@ namespace MDPro3
             InitializeResolution();
             InitializeConfirm();
             InitializeBackground();
+            InitializeCardStyle();
             InitializeCardLanguage();
             InitializeLanguage();
             InitializeSwitches();
@@ -821,6 +823,37 @@ namespace MDPro3
             var id = Program.I().background_.GetIDByName(selected);
             Config.Set("Background", id.ToString());
             InitializeBackground();
+        }
+
+        public void InitializeCardStyle()
+        {
+            cardStyleValue.text = Config.Get("CardStyle", CardRenderer.CardStyle.OCG_TCG.ToString());
+        }
+
+        public void OnCardStyleChange()
+        {
+            if (Program.I().ocgcore.isShowed)
+            {
+                MessageManager.Cast(InterString.Get("决斗中不能更改此选项。"));
+                return;
+            }
+
+            List<string> selections = new List<string>
+            {
+                InterString.Get("卡图风格")
+            };
+            var values = Enum.GetValues(typeof(CardRenderer.CardStyle));
+            foreach (var value in values)
+                selections.Add(value.ToString());
+            UIManager.ShowPopupSelection(selections, OnCardStyleSelection);
+        }
+        public void OnCardStyleSelection()
+        {
+            string selected = UnityEngine.EventSystems.EventSystem.current.
+                    currentSelectedGameObject.transform.GetChild(0).GetComponent<Text>().text;
+            cardStyleValue.text = selected;
+            Config.Set("CardStyle", selected);
+            UIManager.ChangeLanguage();
         }
 
         public void InitializeCardLanguage()
@@ -1732,19 +1765,16 @@ namespace MDPro3
             }
         }
 
-        public static readonly string prereleaseVersionUrl = "https://cdn02.moecube.com:444/ygopro-super-pre/data/version.txt";
-        public static readonly string prereleasePackUrl = "https://cdn02.moecube.com:444/ygopro-super-pre/archive/ygopro-super-pre.ypk";
-
         IEnumerator UpdatePrereleaseAsync()
         {
-            var filePath = Path.Combine(Program.expansionsPath, Path.GetFileName(prereleasePackUrl));
+            var filePath = Path.Combine(Program.expansionsPath, Path.GetFileName(Settings.data.PrereleasePackUrl));
             if (!File.Exists(filePath))
             {
                 Config.Set("Prerelease", "0");
                 Config.Save();
             }
 
-            var www = UnityWebRequest.Get(prereleaseVersionUrl);
+            var www = UnityWebRequest.Get(Settings.data.PrereleasePackVersionUrl);
             www.SendWebRequest();
             while (!www.isDone)
             {
@@ -1759,7 +1789,7 @@ namespace MDPro3
                 {
                     if(!Directory.Exists(Program.expansionsPath))
                         Directory.CreateDirectory(Program.expansionsPath);
-                    var download = UnityWebRequest.Get(prereleasePackUrl);
+                    var download = UnityWebRequest.Get(Settings.data.PrereleasePackUrl);
                     download.SendWebRequest();
                     MessageManager.Cast(InterString.Get("正在更新，请耐心等待更待更新完成再进行其他操作。"));
                     while (!download.isDone)

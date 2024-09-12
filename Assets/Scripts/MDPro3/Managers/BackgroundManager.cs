@@ -91,10 +91,10 @@ namespace MDPro3
         IEnumerator SetDIYBGAsync(SpriteRenderer renderer, int id)
         {
             var bg = Program.diyPath + "Background";
-            if (File.Exists(bg + ".png"))
-                bg += ".png";
-            else if (File.Exists(bg + ".jpg"))
-                bg += ".jpg";
+            if (File.Exists(bg + Program.pngExpansion))
+                bg += Program.pngExpansion;
+            else if (File.Exists(bg + Program.jpgExpansion))
+                bg += Program.jpgExpansion;
             else
                 yield break;
 

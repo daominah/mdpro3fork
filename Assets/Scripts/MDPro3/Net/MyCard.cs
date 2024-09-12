@@ -97,7 +97,7 @@ namespace MDPro3.Net
 
 
 
-        const string avatartSavePath = "Picture/MyCardAvatars/";
+        const string avatarSavePath = "Picture/MyCardAvatars/";
         static Dictionary<string, string> cachedAvatarAddress = new Dictionary<string, string>();
         static Dictionary<string, Texture2D> cachedAvatars = new Dictionary<string, Texture2D>();
         public static async Task<Texture2D> GetAvatarAsync(string userName)
@@ -106,8 +106,8 @@ namespace MDPro3.Net
             //await t;
             //return t.Result;
 
-            if(!Directory.Exists(avatartSavePath))
-                Directory.CreateDirectory(avatartSavePath);
+            if(!Directory.Exists(avatarSavePath))
+                Directory.CreateDirectory(avatarSavePath);
 
             string fullPath = string.Empty;
             string avatarName = string.Empty;
@@ -116,7 +116,7 @@ namespace MDPro3.Net
             {
                 if (cachedAvatarAddress.TryGetValue(userName, out avatarName))
                 {
-                    fullPath = avatartSavePath + avatarName + ".png";
+                    fullPath = avatarSavePath + avatarName + Program.pngExpansion;
                     cached = true;
                 }
             }
@@ -163,7 +163,7 @@ namespace MDPro3.Net
                 if(downloadImage != null)
                 {
                     var fileName = Path.GetFileNameWithoutExtension(avatarAddress);
-                    fullPath = avatartSavePath + fileName + ".png";
+                    fullPath = avatarSavePath + fileName + Program.pngExpansion;
                     if(downloadImage.width > avatarSize)
                     {
                         returnValue = new Texture2D(avatarSize, avatarSize);
@@ -196,7 +196,7 @@ namespace MDPro3.Net
         {
             if(defaultAvatar == null)
             {
-                var task = TextureManager.LoadPicFromFileAsync(avatartSavePath + "default_avatar.png");
+                var task = TextureManager.LoadPicFromFileAsync(avatarSavePath + "default_avatar.png");
                 await task;
                 if (task.Result != null)
                 {

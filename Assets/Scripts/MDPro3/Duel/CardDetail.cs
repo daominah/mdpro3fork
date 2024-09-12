@@ -164,8 +164,8 @@ namespace MDPro3
             {
                 Texture2D texture = (Texture2D)manager.GetElement<RawImage>("Card").texture;
                 var picture = texture.EncodeToPNG();
-                var fullPath = Program.cardPicPath + Program.slash + code + ".png";
-                File.WriteAllBytes(Program.cardPicPath + Program.slash + code + ".png", picture);
+                var fullPath = Program.cardPicPath + Program.slash + code + Program.pngExpansion;
+                File.WriteAllBytes(Program.cardPicPath + Program.slash + code + Program.pngExpansion, picture);
                 MessageManager.Cast(InterString.Get("¿¨Í¼ÒÑ±£´æÓÚ£º[?]", fullPath));
             }
             catch
