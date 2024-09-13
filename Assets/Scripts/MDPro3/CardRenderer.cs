@@ -96,7 +96,7 @@ namespace MDPro3
                 cardName.fontSize = 50f;
                 cardNameRD.fontSize = 50f;
                 spellType.fontSize = 40f;
-                cardTypeRD.fontSize = 27f;
+                cardTypeRD.fontSizeMax = 27f;
                 SetFont("RenderFontChineseSimplified");
             }
             else if (language == Language.TraditionalChinese)
@@ -104,7 +104,7 @@ namespace MDPro3
                 cardName.fontSize = 55f;
                 cardNameRD.fontSize = 55f;
                 spellType.fontSize = 40f;
-                cardTypeRD.fontSize = 28f;
+                cardTypeRD.fontSizeMax = 28f;
                 SetFont("RenderFontChineseTraditional");
             }
             else if (language == Language.Korean)
@@ -112,7 +112,7 @@ namespace MDPro3
                 cardName.fontSize = 50f;
                 cardNameRD.fontSize = 50f;
                 spellType.fontSize = 40f;
-                cardTypeRD.fontSize = 27f;
+                cardTypeRD.fontSizeMax = 27f;
                 SetFont("RenderFontKorean");
             }
             else if (language == Language.Japanese)
@@ -120,7 +120,7 @@ namespace MDPro3
                 cardName.fontSize = 55f;
                 cardNameRD.fontSize = 55f;
                 spellType.fontSize = 40f;
-                cardTypeRD.fontSize = 29f;
+                cardTypeRD.fontSizeMax = 29f;
                 SetFont("RenderFontJapanese");
             }
             else
@@ -128,7 +128,7 @@ namespace MDPro3
                 cardName.fontSize = 63f;
                 cardNameRD.fontSize = 63f;
                 spellType.fontSize = 43f;
-                cardTypeRD.fontSize = 30f;
+                cardTypeRD.fontSizeMax = 30f;
                 SetFont("RenderFontEnglish");
             }
         }
@@ -518,7 +518,8 @@ namespace MDPro3
                     cardArtPendulum.texture = art;
                 }
                 var pendulumDescription = CardDescription.GetCardDescriptionSplit(data.Desc, true);
-                cardDescription.text = StringHelper.GetType(data, true).Replace(Program.slash, bigSlash) + "\r\n" + TextForRender(pendulumDescription[1]);
+                cardDescription.text = StringHelper.GetType(data, true).Replace(Program.slash, Language.CardUseLatin() ? smallSlash : bigSlash);
+                cardDescription.text += "\r\n" + TextForRender(pendulumDescription[1]);
                 cardDescriptionPendulum.text = TextForRender(pendulumDescription[0]);
                 lScale.text = data.LScale.ToString();
                 rScale.text = data.RScale.ToString();
@@ -541,7 +542,7 @@ namespace MDPro3
                 cardArt.texture = art;
                 var description = "";
                 if ((data.Type & (uint)CardType.Monster) > 0)
-                    description = StringHelper.GetType(data, true).Replace(Program.slash, bigSlash) + "\r\n";
+                    description = StringHelper.GetType(data, true).Replace(Program.slash,Language.CardUseLatin() ? smallSlash : bigSlash) + "\r\n";
                 description += TextForRender(data.Desc);
                 cardDescription.text = description;
 

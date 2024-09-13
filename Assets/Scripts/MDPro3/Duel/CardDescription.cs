@@ -359,7 +359,7 @@ namespace MDPro3
                     }
                 }
             }
-            if (NeedRushDuelStyle(data.Id))
+            if (NeedRushDuelStyle(data.Id) && render)
             {
                 if (returnValue.sprite == TextureManager.container.attributeSpell)
                     returnValue.sprite = TextureManager.container.rd_Attribute_Spell;

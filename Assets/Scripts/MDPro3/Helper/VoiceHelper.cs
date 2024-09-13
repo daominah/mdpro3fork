@@ -55,11 +55,11 @@ namespace MDPro3
             if(language != configLanguage || hero != chara)
             { 
                 hero = chara;
-                var dataPath = jsonPath + configLanguage + "/voice/V" + hero + ".json";
+                var dataPath = jsonPath + Language.Japanese + "/voice/V" + hero + ".json";
                 var txt = File.ReadAllText(dataPath);
                 heroVoices = JsonConvert.DeserializeObject<VoicesData>(txt);
 
-                dataPath = dataPath.Replace("/voice/V", "/voice/SN");
+                dataPath = jsonPath + configLanguage + "/voice/SN" + hero + ".json";
                 txt = File.ReadAllText(dataPath);
                 heroLines = JsonConvert.DeserializeObject<LinesData>(txt);
             }
@@ -68,11 +68,11 @@ namespace MDPro3
             if(language != configLanguage || rival != chara)
             {
                 rival = chara;
-                var dataPath = jsonPath + configLanguage + "/voice/V" + rival + ".json";
+                var dataPath = jsonPath + Language.Japanese + "/voice/V" + rival + ".json";
                 var txt = File.ReadAllText(dataPath);
                 rivalVoices = JsonConvert.DeserializeObject<VoicesData>(txt);
 
-                dataPath = dataPath.Replace("/voice/V", "/voice/SN");
+                dataPath = jsonPath + configLanguage + "/voice/SN" + rival + ".json";
                 txt = File.ReadAllText(dataPath);
                 rivalLines = JsonConvert.DeserializeObject<LinesData>(txt);
             }
