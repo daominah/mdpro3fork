@@ -1,16 +1,16 @@
 /******************************************************************************
  * Spine Runtimes License Agreement
- * Last updated September 24, 2021. Replaces all prior versions.
+ * Last updated July 28, 2023. Replaces all prior versions.
  *
- * Copyright (c) 2013-2021, Esoteric Software LLC
+ * Copyright (c) 2013-2023, Esoteric Software LLC
  *
  * Integration of the Spine Runtimes into software or otherwise creating
  * derivative works of the Spine Runtimes is permitted under the terms and
  * conditions of Section 2 of the Spine Editor License Agreement:
  * http://esotericsoftware.com/spine-editor-license
  *
- * Otherwise, it is permitted to integrate the Spine Runtimes into software
- * or otherwise create derivative works of the Spine Runtimes (collectively,
+ * Otherwise, it is permitted to integrate the Spine Runtimes into software or
+ * otherwise create derivative works of the Spine Runtimes (collectively,
  * "Products"), provided that each user of the Products must obtain their own
  * Spine Editor license and redistribution of the Products in any form must
  * include this license and copyright notice.
@@ -23,8 +23,8 @@
  * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES,
  * BUSINESS INTERRUPTION, OR LOSS OF USE, DATA, OR PROFITS) HOWEVER CAUSED AND
  * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
- * THE SPINE RUNTIMES, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THE
+ * SPINE RUNTIMES, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *****************************************************************************/
 
 #pragma warning disable 0219
@@ -75,6 +75,10 @@ namespace Spine.Unity.Editor {
 		public static bool initialized;
 		private static List<string> texturesWithoutMetaFile = new List<string>();
 
+		public static void OnTextureImportedFirstTime (string texturePath) {
+			texturesWithoutMetaFile.Add(texturePath);
+		}
+
 		// Auto-import entry point for textures
 		void OnPreprocessTexture () {
 #if UNITY_2018_1_OR_NEWER
@@ -124,10 +128,10 @@ namespace Spine.Unity.Editor {
 				Mesh mesh = meshFilter.sharedMesh;
 				if (mesh == null) continue;
 
-				string meshName = string.Format("Skeleton Prefab Mesh \"{0}\"", renderer.name);
+				string meshName = string.Format("Skeleton Prefab Mesh [{0}]", renderer.name);
 				if (nameUsageCount.ContainsKey(meshName)) {
 					nameUsageCount[meshName]++;
-					meshName = string.Format("Skeleton Prefab Mesh \"{0} ({1})\"", renderer.name, nameUsageCount[meshName]);
+					meshName = string.Format("Skeleton Prefab Mesh [{0} ({1})]", renderer.name, nameUsageCount[meshName]);
 				} else {
 					nameUsageCount.Add(meshName, 0);
 				}
@@ -172,15 +176,14 @@ namespace Spine.Unity.Editor {
 
 			if (EditorApplication.isPlayingOrWillChangePlaymode) return;
 
-			string[] folders = { "Assets", "Packages" };
 			string[] assets;
 			string assetPath;
-			assets = AssetDatabase.FindAssets("t:texture icon-subMeshRenderer", folders);
+			assets = AssetDatabase.FindAssets("t:texture icon-subMeshRenderer", null);
 			if (assets.Length > 0) {
 				assetPath = AssetDatabase.GUIDToAssetPath(assets[0]);
 				editorGUIPath = Path.GetDirectoryName(assetPath).Replace('\\', '/');
 			}
-			assets = AssetDatabase.FindAssets("t:script SpineEditorUtilities", folders);
+			assets = AssetDatabase.FindAssets("t:script SpineEditorUtilities", null);
 			if (assets.Length > 0) {
 				assetPath = AssetDatabase.GUIDToAssetPath(assets[0]);
 				editorPath = Path.GetDirectoryName(assetPath).Replace('\\', '/');
@@ -238,7 +241,7 @@ namespace Spine.Unity.Editor {
 		}
 
 		public static void ConfirmInitialization () {
-			if (!initialized || Icons.skeleton == null)
+			if (!initialized)
 				Initialize();
 		}
 
@@ -309,6 +312,12 @@ namespace Spine.Unity.Editor {
 
 			if (oldAnimationState != null) {
 				stateComponent.AnimationState.AssignEventSubscribersFrom(oldAnimationState);
+			}
+			if (stateComponent != null) {
+				// Any set animation needs to be applied as well since it might set attachments,
+				// having an effect on generated SpriteMaskMaterials below.
+				stateComponent.AnimationState.Apply(component.skeleton);
+				component.LateUpdate();
 			}
 
 #if BUILT_IN_SPRITE_MASK_COMPONENT
@@ -538,6 +547,16 @@ namespace Spine.Unity.Editor {
 				return isLastNode;
 			}
 #endif
+		}
+	}
+
+	public class SpineAssetModificationProcessor : UnityEditor.AssetModificationProcessor {
+		static void OnWillCreateAsset (string assetName) {
+			// Note: This method seems to be called from the main thread,
+			// not from worker threads when Project Settings - Editor - Parallel Import is enabled.
+			int endIndex = assetName.LastIndexOf(".meta");
+			string assetPath = endIndex < 0 ? assetName : assetName.Substring(0, endIndex);
+			SpineEditorUtilities.OnTextureImportedFirstTime(assetPath);
 		}
 	}
 
