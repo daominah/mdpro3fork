@@ -10,6 +10,7 @@ namespace MDPro3.UI
         public int subCode;
         public int group;
         public long filterCode;
+        public string text_es_ES;
 
         private void Start()
         {
@@ -20,8 +21,14 @@ namespace MDPro3.UI
                 {
                     if (subCode == 9999)
                         label.text = InterString.Get("[?]Че", label.text);
+                    else if(Language.GetConfig() == Language.Spanish && text_es_ES != string.Empty)
+                        label.text = text_es_ES;
                     else
+                    {
+                        if (Language.NeedBlankToAddWord())
+                            label.text += " ";
                         label.text += StringHelper.GetUnsafe(subCode);
+                    }
                 }
             }
         }

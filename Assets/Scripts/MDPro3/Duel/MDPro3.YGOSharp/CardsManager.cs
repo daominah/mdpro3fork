@@ -23,7 +23,7 @@ namespace MDPro3.YGOSharp
             nullName = InterString.Get("未知卡片");
             nullString = string.Empty;
 ;
-            string language = Config.Get("Language", "zh-CN");
+            string language = Language.GetConfig();
             string databaseFullPath = Program.localesPath + language + "/cards.cdb";
             if (!File.Exists(databaseFullPath))
                 databaseFullPath = Program.localesPath + "zh-CN/cards.cdb";
@@ -57,7 +57,7 @@ namespace MDPro3.YGOSharp
             PacksManager.Initialize();
 
             _cardsForRender.Clear();
-            var cardLanguage = Config.Get("CardLanguage", "zh-CN");
+            var cardLanguage = Language.GetCardConfig();
             databaseFullPath = Program.localesPath + cardLanguage + "/cards.cdb";
             if (!File.Exists(databaseFullPath))
                 databaseFullPath = Program.localesPath + "zh-CN/cards.cdb";

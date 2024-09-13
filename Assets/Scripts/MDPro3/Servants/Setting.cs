@@ -390,8 +390,8 @@ namespace MDPro3
             Config.Set("ShowFPS", SaveBool(showFPSValue.text));
             Config.Set("ScreenMode", SaveScreenMode(screenValue.text));
             Config.Set("Resolution", resolutionValue.text);
-            Config.Set("CardLanguage", InterString.GetOriginal(cardLanguageValue.text));
-            Config.Set("Language", InterString.GetOriginal(languageValue.text));
+            Config.Set(Language.CardConfigName, InterString.GetOriginal(cardLanguageValue.text));
+            Config.Set(Language.ConfigName, InterString.GetOriginal(languageValue.text));
             Config.Set("Confirm", SaveBool(confirmValue.text));
 
             Config.Set("DuelSummon", SaveBool(duelSummonValue.text));
@@ -858,8 +858,7 @@ namespace MDPro3
 
         public void InitializeCardLanguage()
         {
-            string lan = Config.Get("CardLanguage", "zh-CN");
-            cardLanguageValue.text = InterString.Get(lan);
+            cardLanguageValue.text = InterString.Get(Language.GetCardConfig());
         }
         public void OnCardLanguageChange()
         {
@@ -883,13 +882,12 @@ namespace MDPro3
             string selected = UnityEngine.EventSystems.EventSystem.current.
                     currentSelectedGameObject.transform.GetChild(0).GetComponent<Text>().text;
             cardLanguageValue.text = selected;
-            Config.Set("CardLanguage", InterString.GetOriginal(selected));
+            Config.Set(Language.CardConfigName, InterString.GetOriginal(selected));
             UIManager.ChangeLanguage();
         }
         public void InitializeLanguage()
         {
-            string lan = Config.Get("Language", "zh-CN");
-            languageValue.text = InterString.Get(lan);
+            languageValue.text = InterString.Get(Language.GetConfig());
         }
         public void OnLanguageChange()
         {
@@ -913,7 +911,7 @@ namespace MDPro3
             string selected = UnityEngine.EventSystems.EventSystem.current.
                     currentSelectedGameObject.transform.GetChild(0).GetComponent<Text>().text;
             languageValue.text = selected;
-            Config.Set("Language", InterString.GetOriginal(selected));
+            Config.Set(Language.ConfigName, InterString.GetOriginal(selected));
             UIManager.ChangeLanguage();
         }
 

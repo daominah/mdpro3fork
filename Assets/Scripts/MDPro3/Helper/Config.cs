@@ -22,17 +22,17 @@ namespace MDPro3
             {
                 File.Create(path).Close();
                 if (Application.systemLanguage == SystemLanguage.ChineseSimplified)
-                    Set("Language", "zh-CN");
+                    Set(Language.ConfigName, Language.SimplifiedChinese);
                 else if (Application.systemLanguage == SystemLanguage.ChineseTraditional)
-                    Set("Language", "zh-TW");
+                    Set(Language.ConfigName, Language.TraditionalChinese);
                 else if (Application.systemLanguage == SystemLanguage.Spanish)
-                    Set("Language", "es-ES");
+                    Set(Language.ConfigName, Language.Spanish);
                 else if (Application.systemLanguage == SystemLanguage.Japanese)
-                    Set("Language", "ja-JP");
+                    Set(Language.ConfigName, Language.Japanese);
                 else if (Application.systemLanguage == SystemLanguage.Korean)
-                    Set("Language", "ko-KR");
+                    Set(Language.ConfigName, Language.Korean);
                 else
-                    Set("Language", "en-US");
+                    Set(Language.ConfigName, Language.English);
                 Save();
             }
             var txtString = File.ReadAllText(path);

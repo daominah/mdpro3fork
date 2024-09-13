@@ -144,6 +144,7 @@ MonoBehaviour:
   subCode: 0
   group: 10
   filterCode: 32
+  text_es_ES: 
 --- !u!1 &133711167725813748
 GameObject:
   m_ObjectHideFlags: 0
@@ -1021,6 +1022,7 @@ MonoBehaviour:
   subCode: 0
   group: 8
   filterCode: 1
+  text_es_ES: 
 --- !u!1 &1737581927707888380
 GameObject:
   m_ObjectHideFlags: 0
@@ -3351,6 +3353,7 @@ MonoBehaviour:
   subCode: 0
   group: 10
   filterCode: 4
+  text_es_ES: 
 --- !u!1 &2998529745402725765
 GameObject:
   m_ObjectHideFlags: 0
@@ -3495,6 +3498,7 @@ MonoBehaviour:
   subCode: 0
   group: 10
   filterCode: 256
+  text_es_ES: 
 --- !u!1 &3100697265231598035
 GameObject:
   m_ObjectHideFlags: 0
@@ -3943,6 +3947,7 @@ MonoBehaviour:
   subCode: 0
   group: 10
   filterCode: 8
+  text_es_ES: 
 --- !u!1 &3546053825439004521
 GameObject:
   m_ObjectHideFlags: 0
@@ -5476,6 +5481,7 @@ MonoBehaviour:
   subCode: 0
   group: 10
   filterCode: 64
+  text_es_ES: 
 --- !u!1 &5018178596196229625
 GameObject:
   m_ObjectHideFlags: 0
@@ -6004,6 +6010,7 @@ MonoBehaviour:
   subCode: 0
   group: 10
   filterCode: 128
+  text_es_ES: 
 --- !u!1 &5816571785825673831
 GameObject:
   m_ObjectHideFlags: 0
@@ -7027,6 +7034,7 @@ MonoBehaviour:
   subCode: 0
   group: 9
   filterCode: 1
+  text_es_ES: 
 --- !u!1 &7250289921418392796
 GameObject:
   m_ObjectHideFlags: 0
@@ -7329,6 +7337,7 @@ MonoBehaviour:
   subCode: 0
   group: 10
   filterCode: 2
+  text_es_ES: 
 --- !u!1 &7649975649500927601
 GameObject:
   m_ObjectHideFlags: 0
@@ -7627,6 +7636,7 @@ MonoBehaviour:
   subCode: 0
   group: 9
   filterCode: 2
+  text_es_ES: 
 --- !u!1 &7919921117605724901
 GameObject:
   m_ObjectHideFlags: 0
@@ -7771,6 +7781,7 @@ MonoBehaviour:
   subCode: 0
   group: 6
   filterCode: 16
+  text_es_ES: 
 --- !u!1 &7919921117614920653
 GameObject:
   m_ObjectHideFlags: 0
@@ -7990,6 +8001,7 @@ MonoBehaviour:
   subCode: 0
   group: 1
   filterCode: 8
+  text_es_ES: 
 --- !u!1 &7919921117628972654
 GameObject:
   m_ObjectHideFlags: 0
@@ -8134,6 +8146,7 @@ MonoBehaviour:
   subCode: 0
   group: 8
   filterCode: 2
+  text_es_ES: 
 --- !u!1 &7919921117648247243
 GameObject:
   m_ObjectHideFlags: 0
@@ -8278,6 +8291,7 @@ MonoBehaviour:
   subCode: 0
   group: 1
   filterCode: 16
+  text_es_ES: 
 --- !u!1 &7919921117651541528
 GameObject:
   m_ObjectHideFlags: 0
@@ -8422,6 +8436,7 @@ MonoBehaviour:
   subCode: 0
   group: 7
   filterCode: 1024
+  text_es_ES: 
 --- !u!1 &7919921117657808109
 GameObject:
   m_ObjectHideFlags: 0
@@ -8645,6 +8660,7 @@ MonoBehaviour:
   subCode: 0
   group: 0
   filterCode: 8388608
+  text_es_ES: 
 --- !u!1 &7919921117682082193
 GameObject:
   m_ObjectHideFlags: 0
@@ -8789,6 +8805,7 @@ MonoBehaviour:
   subCode: 9999
   group: 3
   filterCode: 2
+  text_es_ES: 
 --- !u!1 &7919921117684440399
 GameObject:
   m_ObjectHideFlags: 0
@@ -9012,6 +9029,7 @@ MonoBehaviour:
   subCode: 0
   group: 7
   filterCode: 16
+  text_es_ES: 
 --- !u!1 &7919921117692278109
 GameObject:
   m_ObjectHideFlags: 0
@@ -9156,6 +9174,7 @@ MonoBehaviour:
   subCode: 1051
   group: 2
   filterCode: 134217728
+  text_es_ES: "M\xE1gica Continua"
 --- !u!1 &7919921117720275334
 GameObject:
   m_ObjectHideFlags: 0
@@ -9454,6 +9473,7 @@ MonoBehaviour:
   subCode: 0
   group: 7
   filterCode: 134217728
+  text_es_ES: 
 --- !u!1 &7919921117752884704
 GameObject:
   m_ObjectHideFlags: 0
@@ -9756,6 +9776,7 @@ MonoBehaviour:
   subCode: 0
   group: 7
   filterCode: 128
+  text_es_ES: 
 --- !u!1 &7919921117761069850
 GameObject:
   m_ObjectHideFlags: 0
@@ -10133,6 +10154,7 @@ MonoBehaviour:
   subCode: 0
   group: 7
   filterCode: 32
+  text_es_ES: 
 --- !u!1 &7919921117798448225
 GameObject:
   m_ObjectHideFlags: 0
@@ -10277,6 +10299,7 @@ MonoBehaviour:
   subCode: 0
   group: 0
   filterCode: 128
+  text_es_ES: 
 --- !u!1 &7919921117799685359
 GameObject:
   m_ObjectHideFlags: 0
@@ -10421,6 +10444,7 @@ MonoBehaviour:
   subCode: 0
   group: 0
   filterCode: 32
+  text_es_ES: 
 --- !u!1 &7919921117807965048
 GameObject:
   m_ObjectHideFlags: 0
@@ -10565,6 +10589,7 @@ MonoBehaviour:
   subCode: 0
   group: 7
   filterCode: 256
+  text_es_ES: 
 --- !u!1 &7919921117813201830
 GameObject:
   m_ObjectHideFlags: 0
@@ -10946,6 +10971,7 @@ MonoBehaviour:
   subCode: 0
   group: 7
   filterCode: 16384
+  text_es_ES: 
 --- !u!1 &7919921117841277295
 GameObject:
   m_ObjectHideFlags: 0
@@ -11090,6 +11116,7 @@ MonoBehaviour:
   subCode: 0
   group: 7
   filterCode: 67108864
+  text_es_ES: 
 --- !u!1 &7919921117841680272
 GameObject:
   m_ObjectHideFlags: 0
@@ -11234,6 +11261,7 @@ MonoBehaviour:
   subCode: 9999
   group: 3
   filterCode: 8
+  text_es_ES: 
 --- !u!1 &7919921117853152552
 GameObject:
   m_ObjectHideFlags: 0
@@ -11378,6 +11406,7 @@ MonoBehaviour:
   subCode: 9999
   group: 3
   filterCode: 1
+  text_es_ES: 
 --- !u!1 &7919921117858149561
 GameObject:
   m_ObjectHideFlags: 0
@@ -11680,6 +11709,7 @@ MonoBehaviour:
   subCode: 9999
   group: 3
   filterCode: 256
+  text_es_ES: 
 --- !u!1 &7919921117877752227
 GameObject:
   m_ObjectHideFlags: 0
@@ -12308,6 +12338,7 @@ MonoBehaviour:
   subCode: 0
   group: 5
   filterCode: 2
+  text_es_ES: 
 --- !u!1 &7919921117968793462
 GameObject:
   m_ObjectHideFlags: 0
@@ -12802,6 +12833,7 @@ MonoBehaviour:
   subCode: 0
   group: 1
   filterCode: 2
+  text_es_ES: 
 --- !u!1 &7919921118037593514
 GameObject:
   m_ObjectHideFlags: 0
@@ -12946,6 +12978,7 @@ MonoBehaviour:
   subCode: 1051
   group: 2
   filterCode: 524288
+  text_es_ES: "M\xE1gica de Campo"
 --- !u!1 &7919921118044975375
 GameObject:
   m_ObjectHideFlags: 0
@@ -13290,6 +13323,7 @@ MonoBehaviour:
   subCode: 1052
   group: 2
   filterCode: 4
+  text_es_ES: Trampa Normal
 --- !u!1 &7919921118100974234
 GameObject:
   m_ObjectHideFlags: 0
@@ -13750,6 +13784,7 @@ MonoBehaviour:
   subCode: 0
   group: 7
   filterCode: 33554432
+  text_es_ES: 
 --- !u!1 &7919921118166149238
 GameObject:
   m_ObjectHideFlags: 0
@@ -13894,6 +13929,7 @@ MonoBehaviour:
   subCode: 9999
   group: 3
   filterCode: 2097152
+  text_es_ES: 
 --- !u!1 &7919921118185348746
 GameObject:
   m_ObjectHideFlags: 0
@@ -14117,6 +14153,7 @@ MonoBehaviour:
   subCode: 0
   group: 7
   filterCode: 8192
+  text_es_ES: 
 --- !u!1 &7919921118210139053
 GameObject:
   m_ObjectHideFlags: 0
@@ -14494,6 +14531,7 @@ MonoBehaviour:
   subCode: 0
   group: 7
   filterCode: 131072
+  text_es_ES: 
 --- !u!1 &7919921118260633673
 GameObject:
   m_ObjectHideFlags: 0
@@ -14871,6 +14909,7 @@ MonoBehaviour:
   subCode: 9999
   group: 3
   filterCode: 33554432
+  text_es_ES: 
 --- !u!1 &7919921118294596957
 GameObject:
   m_ObjectHideFlags: 0
@@ -15297,6 +15336,7 @@ MonoBehaviour:
   subCode: 0
   group: 0
   filterCode: 64
+  text_es_ES: 
 --- !u!1 &7919921118329573392
 GameObject:
   m_ObjectHideFlags: 0
@@ -15441,6 +15481,7 @@ MonoBehaviour:
   subCode: 0
   group: 4
   filterCode: 2097152
+  text_es_ES: 
 --- !u!1 &7919921118344953533
 GameObject:
   m_ObjectHideFlags: 0
@@ -15818,6 +15859,7 @@ MonoBehaviour:
   subCode: 0
   group: 1
   filterCode: 64
+  text_es_ES: 
 --- !u!1 &7919921118374375699
 GameObject:
   m_ObjectHideFlags: 0
@@ -15962,6 +16004,7 @@ MonoBehaviour:
   subCode: 9999
   group: 3
   filterCode: 2048
+  text_es_ES: 
 --- !u!1 &7919921118383325745
 GameObject:
   m_ObjectHideFlags: 0
@@ -16185,6 +16228,7 @@ MonoBehaviour:
   subCode: 0
   group: 1
   filterCode: 4
+  text_es_ES: 
 --- !u!1 &7919921118409017198
 GameObject:
   m_ObjectHideFlags: 0
@@ -16484,6 +16528,7 @@ MonoBehaviour:
   subCode: 0
   group: 6
   filterCode: 2
+  text_es_ES: 
 --- !u!1 &7919921118440095708
 GameObject:
   m_ObjectHideFlags: 0
@@ -16628,6 +16673,7 @@ MonoBehaviour:
   subCode: 9999
   group: 3
   filterCode: 128
+  text_es_ES: 
 --- !u!1 &7919921118460882773
 GameObject:
   m_ObjectHideFlags: 0
@@ -16847,6 +16893,7 @@ MonoBehaviour:
   subCode: 0
   group: 5
   filterCode: 8
+  text_es_ES: 
 --- !u!1 &7919921118498505170
 GameObject:
   m_ObjectHideFlags: 0
@@ -16991,6 +17038,7 @@ MonoBehaviour:
   subCode: 0
   group: 6
   filterCode: 4
+  text_es_ES: 
 --- !u!1 &7919921118500128032
 GameObject:
   m_ObjectHideFlags: 0
@@ -17214,6 +17262,7 @@ MonoBehaviour:
   subCode: 0
   group: 4
   filterCode: 2048
+  text_es_ES: 
 --- !u!1 &7919921118527611655
 GameObject:
   m_ObjectHideFlags: 0
@@ -17674,6 +17723,7 @@ MonoBehaviour:
   subCode: 9999
   group: 3
   filterCode: 8192
+  text_es_ES: 
 --- !u!1 &7919921118558922236
 GameObject:
   m_ObjectHideFlags: 0
@@ -18410,6 +18460,7 @@ MonoBehaviour:
   subCode: 0
   group: 6
   filterCode: 32
+  text_es_ES: 
 --- !u!1 &7919921118606547396
 GameObject:
   m_ObjectHideFlags: 0
@@ -18945,6 +18996,7 @@ MonoBehaviour:
   subCode: 1051
   group: 2
   filterCode: 262144
+  text_es_ES: "M\xE1gica de Equipo"
 --- !u!1 &7919921118654182534
 GameObject:
   m_ObjectHideFlags: 0
@@ -19200,6 +19252,7 @@ MonoBehaviour:
   subCode: 0
   group: 0
   filterCode: 67108864
+  text_es_ES: 
 --- !u!1 &7919921118687124877
 GameObject:
   m_ObjectHideFlags: 0
@@ -19581,6 +19634,7 @@ MonoBehaviour:
   subCode: 0
   group: 7
   filterCode: 2147483648
+  text_es_ES: 
 --- !u!1 &7919921118724227165
 GameObject:
   m_ObjectHideFlags: 0
@@ -19725,6 +19779,7 @@ MonoBehaviour:
   subCode: 0
   group: 7
   filterCode: 1
+  text_es_ES: 
 --- !u!1 &7919921118736328151
 GameObject:
   m_ObjectHideFlags: 0
@@ -19869,6 +19924,7 @@ MonoBehaviour:
   subCode: 1051
   group: 2
   filterCode: 2
+  text_es_ES: "M\xE1gica Normal"
 --- !u!1 &7919921118737165873
 GameObject:
   m_ObjectHideFlags: 0
@@ -20171,6 +20227,7 @@ MonoBehaviour:
   subCode: 1051
   group: 2
   filterCode: 128
+  text_es_ES: "M\xE1gica Ritual"
 --- !u!1 &7919921118847483217
 GameObject:
   m_ObjectHideFlags: 0
@@ -20315,6 +20372,7 @@ MonoBehaviour:
   subCode: 0
   group: 0
   filterCode: 8192
+  text_es_ES: 
 --- !u!1 &7919921118859634352
 GameObject:
   m_ObjectHideFlags: 0
@@ -20617,6 +20675,7 @@ MonoBehaviour:
   subCode: 0
   group: 4
   filterCode: 134217728
+  text_es_ES: 
 --- !u!1 &7919921118880289255
 GameObject:
   m_ObjectHideFlags: 0
@@ -20998,6 +21057,7 @@ MonoBehaviour:
   subCode: 0
   group: 7
   filterCode: 64
+  text_es_ES: 
 --- !u!1 &7919921118912347964
 GameObject:
   m_ObjectHideFlags: 0
@@ -21300,6 +21360,7 @@ MonoBehaviour:
   subCode: 0
   group: 7
   filterCode: 8
+  text_es_ES: 
 --- !u!1 &7919921118929842819
 GameObject:
   m_ObjectHideFlags: 0
@@ -21444,6 +21505,7 @@ MonoBehaviour:
   subCode: 0
   group: 4
   filterCode: 33554432
+  text_es_ES: 
 --- !u!1 &7919921118941616258
 GameObject:
   m_ObjectHideFlags: 0
@@ -21588,6 +21650,7 @@ MonoBehaviour:
   subCode: 0
   group: 1
   filterCode: 1
+  text_es_ES: 
 --- !u!1 &7919921118945480484
 GameObject:
   m_ObjectHideFlags: 0
@@ -21732,6 +21795,7 @@ MonoBehaviour:
   subCode: 1051
   group: 2
   filterCode: 65536
+  text_es_ES: "M\xE1gica de Juego R\xE1pido"
 --- !u!1 &7919921118950348688
 GameObject:
   m_ObjectHideFlags: 0
@@ -21876,6 +21940,7 @@ MonoBehaviour:
   subCode: 0
   group: 0
   filterCode: 16777216
+  text_es_ES: 
 --- !u!1 &7919921118954638785
 GameObject:
   m_ObjectHideFlags: 0
@@ -22099,6 +22164,7 @@ MonoBehaviour:
   subCode: 0
   group: 4
   filterCode: 1024
+  text_es_ES: 
 --- !u!1 &7919921118976158718
 GameObject:
   m_ObjectHideFlags: 0
@@ -22243,6 +22309,7 @@ MonoBehaviour:
   subCode: 0
   group: 7
   filterCode: 1048576
+  text_es_ES: 
 --- !u!1 &7919921118982587512
 GameObject:
   m_ObjectHideFlags: 0
@@ -22516,6 +22583,7 @@ MonoBehaviour:
   subCode: 9999
   group: 3
   filterCode: 65536
+  text_es_ES: 
 --- !u!1 &7919921118994913971
 GameObject:
   m_ObjectHideFlags: 0
@@ -22739,6 +22807,7 @@ MonoBehaviour:
   subCode: 0
   group: 7
   filterCode: 2
+  text_es_ES: 
 --- !u!1 &7919921119008286459
 GameObject:
   m_ObjectHideFlags: 0
@@ -22883,6 +22952,7 @@ MonoBehaviour:
   subCode: 0
   group: 7
   filterCode: 536870912
+  text_es_ES: 
 --- !u!1 &7919921119021773682
 GameObject:
   m_ObjectHideFlags: 0
@@ -23027,6 +23097,7 @@ MonoBehaviour:
   subCode: 9999
   group: 3
   filterCode: 4096
+  text_es_ES: 
 --- !u!1 &7919921119027472424
 GameObject:
   m_ObjectHideFlags: 0
@@ -23171,6 +23242,7 @@ MonoBehaviour:
   subCode: 0
   group: 0
   filterCode: 16
+  text_es_ES: 
 --- !u!1 &7919921119037370778
 GameObject:
   m_ObjectHideFlags: 0
@@ -23315,6 +23387,7 @@ MonoBehaviour:
   subCode: 9999
   group: 3
   filterCode: 16777216
+  text_es_ES: 
 --- !u!1 &7919921119039154631
 GameObject:
   m_ObjectHideFlags: 0
@@ -23617,6 +23690,7 @@ MonoBehaviour:
   subCode: 9999
   group: 3
   filterCode: 512
+  text_es_ES: 
 --- !u!1 &7919921119044867393
 GameObject:
   m_ObjectHideFlags: 0
@@ -23761,6 +23835,7 @@ MonoBehaviour:
   subCode: 9999
   group: 3
   filterCode: 131072
+  text_es_ES: 
 --- !u!1 &7919921119047718514
 GameObject:
   m_ObjectHideFlags: 0
@@ -23905,6 +23980,7 @@ MonoBehaviour:
   subCode: 0
   group: 7
   filterCode: 4194304
+  text_es_ES: 
 --- !u!1 &7919921119047848342
 GameObject:
   m_ObjectHideFlags: 0
@@ -24185,6 +24261,7 @@ MonoBehaviour:
   subCode: 9999
   group: 3
   filterCode: 16384
+  text_es_ES: 
 --- !u!1 &7919921119086061426
 GameObject:
   m_ObjectHideFlags: 0
@@ -24408,6 +24485,7 @@ MonoBehaviour:
   subCode: 9999
   group: 3
   filterCode: 8388608
+  text_es_ES: 
 --- !u!1 &7919921119093362576
 GameObject:
   m_ObjectHideFlags: 0
@@ -24631,6 +24709,7 @@ MonoBehaviour:
   subCode: 0
   group: 4
   filterCode: 512
+  text_es_ES: 
 --- !u!1 &7919921119103088555
 GameObject:
   m_ObjectHideFlags: 0
@@ -24854,6 +24933,7 @@ MonoBehaviour:
   subCode: 0
   group: 7
   filterCode: 4096
+  text_es_ES: 
 --- !u!1 &7919921119120737177
 GameObject:
   m_ObjectHideFlags: 0
@@ -24998,6 +25078,7 @@ MonoBehaviour:
   subCode: 0
   group: 5
   filterCode: 1
+  text_es_ES: 
 --- !u!1 &7919921119122952011
 GameObject:
   m_ObjectHideFlags: 0
@@ -25221,6 +25302,7 @@ MonoBehaviour:
   subCode: 0
   group: 6
   filterCode: 64
+  text_es_ES: 
 --- !u!1 &7919921119140239081
 GameObject:
   m_ObjectHideFlags: 0
@@ -25756,6 +25838,7 @@ MonoBehaviour:
   subCode: 0
   group: 7
   filterCode: 524288
+  text_es_ES: 
 --- !u!1 &7919921119213194201
 GameObject:
   m_ObjectHideFlags: 0
@@ -25979,6 +26062,7 @@ MonoBehaviour:
   subCode: 0
   group: 8
   filterCode: 8
+  text_es_ES: 
 --- !u!1 &7919921119219814836
 GameObject:
   m_ObjectHideFlags: 0
@@ -26123,6 +26207,7 @@ MonoBehaviour:
   subCode: 0
   group: 7
   filterCode: 16777216
+  text_es_ES: 
 --- !u!1 &7919921119219900635
 GameObject:
   m_ObjectHideFlags: 0
@@ -26425,6 +26510,7 @@ MonoBehaviour:
   subCode: 9999
   group: 3
   filterCode: 524288
+  text_es_ES: 
 --- !u!1 &7919921119254838925
 GameObject:
   m_ObjectHideFlags: 0
@@ -26569,6 +26655,7 @@ MonoBehaviour:
   subCode: 0
   group: 7
   filterCode: 4
+  text_es_ES: 
 --- !u!1 &7919921119255060056
 GameObject:
   m_ObjectHideFlags: 0
@@ -26713,6 +26800,7 @@ MonoBehaviour:
   subCode: 9999
   group: 3
   filterCode: 32
+  text_es_ES: 
 --- !u!1 &7919921119272332043
 GameObject:
   m_ObjectHideFlags: 0
@@ -27402,6 +27490,7 @@ MonoBehaviour:
   subCode: 0
   group: 5
   filterCode: 4
+  text_es_ES: 
 --- !u!1 &7919921119311525637
 GameObject:
   m_ObjectHideFlags: 0
@@ -27704,6 +27793,7 @@ MonoBehaviour:
   subCode: 0
   group: 7
   filterCode: 1073741824
+  text_es_ES: 
 --- !u!1 &7919921119326820089
 GameObject:
   m_ObjectHideFlags: 0
@@ -27848,6 +27938,7 @@ MonoBehaviour:
   subCode: 9999
   group: 3
   filterCode: 4194304
+  text_es_ES: 
 --- !u!1 &7919921119333737082
 GameObject:
   m_ObjectHideFlags: 0
@@ -27992,6 +28083,7 @@ MonoBehaviour:
   subCode: 0
   group: 7
   filterCode: 32768
+  text_es_ES: 
 --- !u!1 &7919921119374577105
 GameObject:
   m_ObjectHideFlags: 0
@@ -28373,6 +28465,7 @@ MonoBehaviour:
   subCode: 0
   group: 7
   filterCode: 8388608
+  text_es_ES: 
 --- !u!1 &7919921119403074299
 GameObject:
   m_ObjectHideFlags: 0
@@ -28517,6 +28610,7 @@ MonoBehaviour:
   subCode: 0
   group: 7
   filterCode: 65536
+  text_es_ES: 
 --- !u!1 &7919921119403720766
 GameObject:
   m_ObjectHideFlags: 0
@@ -28661,6 +28755,7 @@ MonoBehaviour:
   subCode: 1052
   group: 2
   filterCode: 1048576
+  text_es_ES: Trampa de Contraefecto
 --- !u!1 &7919921119406500214
 GameObject:
   m_ObjectHideFlags: 0
@@ -28805,6 +28900,7 @@ MonoBehaviour:
   subCode: 9999
   group: 3
   filterCode: 262144
+  text_es_ES: 
 --- !u!1 &7919921119414426297
 GameObject:
   m_ObjectHideFlags: 0
@@ -29024,6 +29120,7 @@ MonoBehaviour:
   subCode: 0
   group: 7
   filterCode: 2048
+  text_es_ES: 
 --- !u!1 &7919921119444229373
 GameObject:
   m_ObjectHideFlags: 0
@@ -29597,6 +29694,7 @@ MonoBehaviour:
   subCode: 0
   group: 4
   filterCode: 4096
+  text_es_ES: 
 --- !u!1 &7919921119489945732
 GameObject:
   m_ObjectHideFlags: 0
@@ -29816,6 +29914,7 @@ MonoBehaviour:
   subCode: 0
   group: 6
   filterCode: 1
+  text_es_ES: 
 --- !u!1 &7919921119500338801
 GameObject:
   m_ObjectHideFlags: 0
@@ -30157,6 +30256,7 @@ MonoBehaviour:
   subCode: 0
   group: 4
   filterCode: 4194304
+  text_es_ES: 
 --- !u!1 &7919921119513028405
 GameObject:
   m_ObjectHideFlags: 0
@@ -30775,6 +30875,7 @@ MonoBehaviour:
   subCode: 0
   group: 7
   filterCode: 2097152
+  text_es_ES: 
 --- !u!1 &7919921119578505907
 GameObject:
   m_ObjectHideFlags: 0
@@ -30998,6 +31099,7 @@ MonoBehaviour:
   subCode: 1052
   group: 2
   filterCode: 268435456
+  text_es_ES: Trampa Continua
 --- !u!1 &7919921119587363443
 GameObject:
   m_ObjectHideFlags: 0
@@ -31533,6 +31635,7 @@ MonoBehaviour:
   subCode: 0
   group: 1
   filterCode: 32
+  text_es_ES: 
 --- !u!1 &7919921119630566916
 GameObject:
   m_ObjectHideFlags: 0
@@ -31906,6 +32009,7 @@ MonoBehaviour:
   subCode: 0
   group: 0
   filterCode: 4
+  text_es_ES: 
 --- !u!1 &7919921119661228915
 GameObject:
   m_ObjectHideFlags: 0
@@ -32129,6 +32233,7 @@ MonoBehaviour:
   subCode: 0
   group: 7
   filterCode: 262144
+  text_es_ES: 
 --- !u!1 &7919921119668859217
 GameObject:
   m_ObjectHideFlags: 0
@@ -32273,6 +32378,7 @@ MonoBehaviour:
   subCode: 9999
   group: 3
   filterCode: 64
+  text_es_ES: 
 --- !u!1 &7919921119680599444
 GameObject:
   m_ObjectHideFlags: 0
@@ -32417,6 +32523,7 @@ MonoBehaviour:
   subCode: 9999
   group: 3
   filterCode: 1048576
+  text_es_ES: 
 --- !u!1 &7919921119686765224
 GameObject:
   m_ObjectHideFlags: 0
@@ -32640,6 +32747,7 @@ MonoBehaviour:
   subCode: 9999
   group: 3
   filterCode: 1024
+  text_es_ES: 
 --- !u!1 &7919921119695834272
 GameObject:
   m_ObjectHideFlags: 0
@@ -32942,6 +33050,7 @@ MonoBehaviour:
   subCode: 0
   group: 0
   filterCode: 2
+  text_es_ES: 
 --- !u!1 &7919921119708186807
 GameObject:
   m_ObjectHideFlags: 0
@@ -33240,6 +33349,7 @@ MonoBehaviour:
   subCode: 9999
   group: 3
   filterCode: 4
+  text_es_ES: 
 --- !u!1 &7919921119715342636
 GameObject:
   m_ObjectHideFlags: 0
@@ -33384,6 +33494,7 @@ MonoBehaviour:
   subCode: 0
   group: 7
   filterCode: 268435456
+  text_es_ES: 
 --- !u!1 &7919921119717452424
 GameObject:
   m_ObjectHideFlags: 0
@@ -33528,6 +33639,7 @@ MonoBehaviour:
   subCode: 0
   group: 6
   filterCode: 8
+  text_es_ES: 
 --- !u!1 &7919921119724852280
 GameObject:
   m_ObjectHideFlags: 0
@@ -33672,6 +33784,7 @@ MonoBehaviour:
   subCode: 9999
   group: 3
   filterCode: 32768
+  text_es_ES: 
 --- !u!1 &7919921119728843485
 GameObject:
   m_ObjectHideFlags: 0
@@ -33816,6 +33929,7 @@ MonoBehaviour:
   subCode: 9999
   group: 3
   filterCode: 16
+  text_es_ES: 
 --- !u!1 &7919921119740278387
 GameObject:
   m_ObjectHideFlags: 0
@@ -34039,6 +34153,7 @@ MonoBehaviour:
   subCode: 0
   group: 7
   filterCode: 512
+  text_es_ES: 
 --- !u!1 &7919921119743517512
 GameObject:
   m_ObjectHideFlags: 0
@@ -35036,6 +35151,7 @@ MonoBehaviour:
   subCode: 0
   group: 10
   filterCode: 1
+  text_es_ES: 
 --- !u!1 &8751623239477761734
 GameObject:
   m_ObjectHideFlags: 0

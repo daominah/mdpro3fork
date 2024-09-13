@@ -151,7 +151,7 @@ namespace MDPro3
 
                 initialized = true;
             }
-            var currentLanguage = Config.Get("Language", "zh-CN");
+            var currentLanguage = Language.GetConfig();
             if (language != currentLanguage)
             {
                 language = currentLanguage;

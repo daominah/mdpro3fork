@@ -31,8 +31,8 @@ namespace MDPro3
         public Image cardFrame;
         public Image cardAttribute;
         public TextMeshProUGUI cardName;
-        public TextMeshProUGUI cardDescription;
-        public TextMeshProUGUI cardDescriptionPendulum;
+        public Text cardDescription;
+        public Text cardDescriptionPendulum;
         public Text lScale;
         public Text rScale;
         public GameObject levels;
@@ -62,8 +62,8 @@ namespace MDPro3
         public RectTransform movePartsRD;
         public TextMeshProUGUI cardNameRD;
         public TextMeshProUGUI cardTypeRD;
-        public TextMeshProUGUI cardDescriptionRD;
-        public TextMeshProUGUI cardDescriptionPendulumRD;
+        public Text cardDescriptionRD;
+        public Text cardDescriptionPendulumRD;
         public Text lScaleRD;
         public Text rScaleRD;
         public GameObject maxAtkRD;
@@ -90,79 +90,67 @@ namespace MDPro3
 
         public void SwitchLanguage()
         {
-            var language = Config.Get("CardLanguage", "zh-CN");
-            if (language == "zh-CN")
+            var language = Language.GetCardConfig();
+            if (language == Language.SimplifiedChinese)
             {
-                var handle = Addressables.LoadAssetAsync<TMP_FontAsset>("RenderFontChineseSimplified");
-                handle.Completed += (result) =>
-                {
-                    cardName.fontSize = 50f;
-                    cardNameRD.fontSize = 50f;
-                    spellType.fontSize = 40f;
-                    cardTypeRD.fontSize = 27f;
-                    SetFont(result.Result);
-                };
+                cardName.fontSize = 50f;
+                cardNameRD.fontSize = 50f;
+                spellType.fontSize = 40f;
+                cardTypeRD.fontSize = 27f;
+                SetFont("RenderFontChineseSimplified");
             }
-            else if (language == "zh-TW")
+            else if (language == Language.TraditionalChinese)
             {
-                var handle = Addressables.LoadAssetAsync<TMP_FontAsset>("RenderFontChineseTraditional");
-                handle.Completed += (result) =>
-                {
-                    cardName.fontSize = 55f;
-                    cardNameRD.fontSize = 55f;
-                    spellType.fontSize = 40f;
-                    cardTypeRD.fontSize = 28f;
-                    SetFont(result.Result);
-                };
+                cardName.fontSize = 55f;
+                cardNameRD.fontSize = 55f;
+                spellType.fontSize = 40f;
+                cardTypeRD.fontSize = 28f;
+                SetFont("RenderFontChineseTraditional");
             }
-            else if (language == "ko-KR")
+            else if (language == Language.Korean)
             {
-                var handle = Addressables.LoadAssetAsync<TMP_FontAsset>("RenderFontKorean");
-                handle.Completed += (result) =>
-                {
-                    cardName.fontSize = 50f;
-                    cardNameRD.fontSize = 50f;
-                    spellType.fontSize = 40f;
-                    cardTypeRD.fontSize = 27f;
-                    SetFont(result.Result);
-                };
+                cardName.fontSize = 50f;
+                cardNameRD.fontSize = 50f;
+                spellType.fontSize = 40f;
+                cardTypeRD.fontSize = 27f;
+                SetFont("RenderFontKorean");
             }
-            else if (language == "ja-JP")
+            else if (language == Language.Japanese)
             {
-                var handle = Addressables.LoadAssetAsync<TMP_FontAsset>("RenderFontJapanese");
-                handle.Completed += (result) =>
-                {
-                    cardName.fontSize = 55f;
-                    cardNameRD.fontSize = 55f;
-                    spellType.fontSize = 40f;
-                    cardTypeRD.fontSize = 29f;
-                    SetFont(result.Result);
-                };
+                cardName.fontSize = 55f;
+                cardNameRD.fontSize = 55f;
+                spellType.fontSize = 40f;
+                cardTypeRD.fontSize = 29f;
+                SetFont("RenderFontJapanese");
             }
             else
             {
-                var handle = Addressables.LoadAssetAsync<TMP_FontAsset>("RenderFontEnglish");
-                handle.Completed += (result) =>
-                {
-                    cardName.fontSize = 63f;
-                    cardNameRD.fontSize = 63f;
-                    spellType.fontSize = 43f;
-                    cardTypeRD.fontSize = 30f;
-                    SetFont(result.Result);
-                };
+                cardName.fontSize = 63f;
+                cardNameRD.fontSize = 63f;
+                spellType.fontSize = 43f;
+                cardTypeRD.fontSize = 30f;
+                SetFont("RenderFontEnglish");
             }
         }
 
-        private void SetFont(TMP_FontAsset font)
+        private void SetFont(string fontName)
         {
-            cardName.font = font;
-            cardNameRD.font = font;
-            cardDescription.font = font;
-            cardDescriptionRD.font = font;
-            cardDescriptionPendulum.font = font;
-            cardDescriptionPendulumRD.font = font;
-            spellType.font = font;
-            cardTypeRD.font = font;
+            var handle = Addressables.LoadAssetAsync<TMP_FontAsset>(fontName);
+            handle.Completed += (result) =>
+            {
+                cardName.font = result.Result;
+                cardNameRD.font = result.Result;
+                spellType.font = result.Result;
+                cardTypeRD.font = result.Result;
+            };
+            var handle2 = Addressables.LoadAssetAsync<Font>(fontName);
+            handle2.Completed += (result) =>
+            {
+                cardDescription.font = result.Result;
+                cardDescriptionRD.font = result.Result;
+                cardDescriptionPendulum.font = result.Result;
+                cardDescriptionPendulumRD.font = result.Result;
+            };
         }
 
         public static bool NeedRushDuelStyle(int code)
@@ -325,9 +313,9 @@ namespace MDPro3
             movePartsRD.gameObject.SetActive(true);
             movePartsRD.anchoredPosition = Vector2.zero;
 
-            cardAttributeRD.sprite = CardDescription.GetCardAttribute(data).sprite;
+            cardAttributeRD.sprite = CardDescription.GetCardAttribute(data, true).sprite;
             cardTypeRD.text = StringHelper.GetType(data, true, true);
-            if (CardUseLatin())
+            if (Language.CardUseLatin())
                 cardTypeRD.text = cardTypeRD.text.Replace(Program.slash, smallSlash);
             else
                 cardTypeRD.text = cardTypeRD.text.Replace(Program.slash, bigSlash);
@@ -477,23 +465,11 @@ namespace MDPro3
                 return false;
 
             cardName.GetComponent<RectTransform>().localScale = Vector3.one;
-            if (Config.Get("CardLanguage", "zh-CN") == "en-US"
-                || Config.Get("CardLanguage", "zh-CN") == "es-ES")
-            {
-                cardName.text = data.Name;
-                cardName.GetComponent<ContentSizeFitter>().SetLayoutHorizontal();
-                var nameWidth = cardName.GetComponent<RectTransform>().rect.width;
-                if (nameWidth > cardNameLabelWidthOCG)
-                    cardName.GetComponent<RectTransform>().localScale = new Vector3(cardNameLabelWidthOCG / nameWidth, 1, 1);
-            }
-            else
-            {
-                cardName.text = data.Name;
-                cardName.GetComponent<ContentSizeFitter>().SetLayoutHorizontal();
-                var nameWidth = cardName.GetComponent<RectTransform>().rect.width;
-                if (nameWidth > cardNameLabelWidthOCG)
-                    cardName.GetComponent<RectTransform>().localScale = new Vector3(cardNameLabelWidthOCG / nameWidth, 1, 1);
-            }
+            cardName.text = data.Name;
+            cardName.GetComponent<ContentSizeFitter>().SetLayoutHorizontal();
+            var nameWidth = cardName.GetComponent<RectTransform>().rect.width;
+            if (nameWidth > cardNameLabelWidthOCG)
+                cardName.GetComponent<RectTransform>().localScale = new Vector3(cardNameLabelWidthOCG / nameWidth, 1, 1);
 
             cardName.color = Color.black;
 
@@ -522,7 +498,7 @@ namespace MDPro3
             linkCount.gameObject.SetActive(false);
             spellType.text = "";
             cardDescription.GetComponent<RectTransform>().sizeDelta = new Vector2(590f, 160f);
-            cardAttribute.sprite = CardDescription.GetCardAttribute(data).sprite;
+            cardAttribute.sprite = CardDescription.GetCardAttribute(data, true).sprite;
 
             if ((data.Type & (uint)CardType.Pendulum) > 0)
             {
@@ -719,9 +695,9 @@ namespace MDPro3
         {
             if (string.IsNullOrEmpty(description))
                 return string.Empty;
-            var language = Config.Get("CardLanguage", "zh-CN");
+            var language = Language.GetCardConfig();
 
-            if (language == "ja-JP")
+            if (language == Language.Japanese)
             {
                 description = description.Replace("\t\r\n", "\f\f\f");
                 description = description.Replace("\r\n¡ñ", "¡ñ¡ñ¡ñ");
@@ -743,31 +719,17 @@ namespace MDPro3
                     .Replace("\r\n¢á", "¢á");
             }
 
-            if (!CardUseLatin())
+            if (!Language.CardUseLatin())
                 description = description.Replace(Program.slash, bigSlash);
             else
                 description = description.Replace(Program.slash, smallSlash);
 
-            if (!CardUseLatin())
+            if (!Language.CardUseLatin())
                 description = description.Replace(" ", "\u00A0");
             description = description.Replace("\r\n\r\n", "\r\n");
             return description;
         }
 
-        public static bool CardUseLatin()
-        {
-            var config = Config.Get("CardLanguage", "zh-CN");
-            if(config == "en-US" || config == "es-ES")
-                return true;
-            return false;
-        }
 
-        public static bool CardNeedSmallBracket()
-        {
-            var config = Config.Get("CardLanguage", "zh-CN");
-            if (config == "en-US" || config == "es-ES" || config == "ko-KR")
-                return true;
-            return false;
-        }
     }
 }

@@ -292,7 +292,7 @@ namespace MDPro3
             public Sprite sprite;
             public bool notOriginal;
         }
-        public static AttributeSprite GetCardAttribute(Card data)
+        public static AttributeSprite GetCardAttribute(Card data, bool render = false)
         {
             var origin = CardsManager.Get(data.Id);
             var returnValue = new AttributeSprite();
@@ -302,23 +302,23 @@ namespace MDPro3
             {
                 if ((origin.Type & (uint)CardType.Monster) == 0)
                 {
-                    returnValue.sprite = TextureManager.GetCardAttributeIcon(data.Attribute, data.Id);
+                    returnValue.sprite = TextureManager.GetCardAttributeIcon(data.Attribute, data.Id, render);
                     returnValue.notOriginal = true;
                 }
                 else
                 {
                     if ((data.Attribute ^ origin.Attribute) == 0)
                     {
-                        returnValue.sprite = TextureManager.GetCardAttributeIcon(data.Attribute, data.Id);
+                        returnValue.sprite = TextureManager.GetCardAttributeIcon(data.Attribute, data.Id, render);
                         returnValue.notOriginal = false;
                     }
                     else
                     {
                         returnValue.notOriginal = true;
                         if (data.Attribute != origin.Attribute)
-                            returnValue.sprite = TextureManager.GetCardAttributeIcon(data.Attribute, data.Id);
+                            returnValue.sprite = TextureManager.GetCardAttributeIcon(data.Attribute, data.Id, render);
                         else
-                            returnValue.sprite = TextureManager.GetCardAttributeIcon(data.Attribute - origin.Attribute, data.Id);
+                            returnValue.sprite = TextureManager.GetCardAttributeIcon(data.Attribute - origin.Attribute, data.Id, render);
                     }
                 }
             }
@@ -534,25 +534,25 @@ namespace MDPro3
         {
             var returnValue = new string[2];
             var lines = description.Replace("\r", "").Split('\n');
-            var language = render ? Config.Get("CardLanguage", "zh-CN") : Config.Get("Language", "zh-CN");
+            var language = render ? Language.GetCardConfig() : Language.GetConfig();
 
             int beforePendulum = 1;
             int splitLines = 1;
             string symbol = "¡¾";
             int monsterStart = 0;
 
-            if (language == "en-US")
+            if (language == Language.English)
             {
                 beforePendulum = 2;
                 splitLines = 2;
                 symbol = "[";
             }
-            if (language == "es-ES")
+            if (language == Language.Spanish)
             {
                 beforePendulum = 2;
                 splitLines = 2;
             }
-            if (language == "zh-TW")
+            if (language == Language.TraditionalChinese)
             {
                 beforePendulum = 0;
             }
@@ -581,7 +581,7 @@ namespace MDPro3
                         returnValue[1] += lines[i] + "\r\n";
                 }
             }
-            if (language == "es-ES")
+            if (language == Language.Spanish)
                 returnValue[0] = returnValue[0].Replace("-n/a-", string.Empty);
             return returnValue;
         }

@@ -16,7 +16,7 @@ namespace MDPro3
         public const string customVoicePath = "Sound/CustomVoice/";
         public const string jsonPath = "Data/locales/";
 
-        public static string language = "zh-CN";
+        public static string language = Language.SimplifiedChinese;
         public const string defaultCharacter = "0001";
         public static string hero;
         public static string rival;
@@ -50,7 +50,7 @@ namespace MDPro3
         {
             var condition = Program.I().ocgcore.condition;
             var chara = Config.Get(condition + "Character0", defaultCharacter);
-            var configLanguage = Config.Get("Language", "zh-CN");
+            var configLanguage = Language.GetConfig();
 
             if(language != configLanguage || hero != chara)
             { 
@@ -82,7 +82,7 @@ namespace MDPro3
         {
             var ids = new List<int>();
 
-            var folder = jsonPath + "zh-CN" + "/voice/";
+            var folder = jsonPath + Language.SimplifiedChinese + "/voice/";
             var jsons = Directory.GetFiles(folder);
             var vjsons = new List<string>();
             foreach (var json in jsons)

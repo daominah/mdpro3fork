@@ -33,7 +33,7 @@ namespace MDPro3
 
         public static void Initialize()
         {
-            var language = Config.Get("Language", "zh-CN");
+            var language = Language.GetConfig();
             var path = Program.localesPath + language + "/strings.conf";
             var text = File.ReadAllText(path);
             if (Config.GetBool("Expansions", true))
@@ -59,7 +59,7 @@ namespace MDPro3
                 }
             }
 
-            language = Config.Get("CardLanguage", "zh-CN");
+            language = Language.GetCardConfig();
             path = Program.localesPath + language + "/strings.conf";
             string textForRender = File.ReadAllText(path);
             if (Config.Get("Expansions", "1") == "1")
@@ -374,7 +374,7 @@ namespace MDPro3
 
             var bracketLeft = "【";
             var bracketRight = "】";
-            if (render && CardRenderer.CardNeedSmallBracket())
+            if (render && Language.CardNeedSmallBracket())
             {
                 bracketLeft = "[";
                 bracketRight = "]";

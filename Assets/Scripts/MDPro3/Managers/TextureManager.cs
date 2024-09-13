@@ -137,7 +137,7 @@ namespace MDPro3
             cardMatShineRD.SetTexture("_KiraMask", container.rd_KiraMask);
             cardMatShineRD.SetTexture("_MainNormal", container.rd_CardNormal);
             cardMatShineRD.SetTexture("_AttributeTex", container.rd_CardAttributeSet);
-            cardMatShineRD.SetVector("_AttributeSize_Pos", new Vector4(8.31f, 12.26f, -3.17f, -5.15f));
+            cardMatShineRD.SetVector("_AttributeSize_Pos", new Vector4(8.31f, 12.26f, -3.19f, -5.13f));
 
 
             cardMatRoyal.SetTexture("_HighlightNormal", container.CardKiraNormal03_Millennium);
@@ -149,7 +149,7 @@ namespace MDPro3
             cardMatRoyalRD.SetTexture("_KiraMask", container.rd_KiraMask);
             cardMatRoyalRD.SetTexture("_MainNormal", container.rd_CardNormal);
             cardMatRoyalRD.SetTexture("_AttributeTex", container.rd_CardAttributeSet);
-            cardMatRoyalRD.SetVector("_AttributeSize_Pos", new Vector4(8.31f, 12.26f, -3.17f, -5.15f));
+            cardMatRoyalRD.SetVector("_AttributeSize_Pos", new Vector4(8.31f, 12.26f, -3.19f, -5.13f));
 
 #if UNITY_ANDROID
             var depens = Directory.GetFiles(Program.root + "CrossDuel/Dependency", "*.bundle");
@@ -567,23 +567,23 @@ namespace MDPro3
             else
                 return container.typeNone;
         }
-        public static Sprite GetCardAttributeIcon(int attribute, int code)
+        public static Sprite GetCardAttributeIcon(int attribute, int code, bool render = false)
         {
             bool rushDuel = CardRenderer.NeedRushDuelStyle(code);
             if ((attribute & (uint)CardAttribute.Light) > 0)
-                return rushDuel ? container.rd_Attribute_Light : container.attributeLight;
+                return rushDuel && render ? container.rd_Attribute_Light : container.attributeLight;
             else if ((attribute & (uint)CardAttribute.Dark) > 0)
-                return rushDuel ? container.rd_Attribute_Dark : container.attributeDark;
+                return rushDuel && render ? container.rd_Attribute_Dark : container.attributeDark;
             else if ((attribute & (uint)CardAttribute.Water) > 0)
-                return rushDuel ? container.rd_Attribute_Water : container.attributeWater;
+                return rushDuel && render ? container.rd_Attribute_Water : container.attributeWater;
             else if ((attribute & (uint)CardAttribute.Fire) > 0)
-                return rushDuel ? container.rd_Attribute_Fire : container.attributeFire;
+                return rushDuel && render ? container.rd_Attribute_Fire : container.attributeFire;
             else if ((attribute & (uint)CardAttribute.Earth) > 0)
-                return rushDuel ? container.rd_Attribute_Earth : container.attributeEarth;
+                return rushDuel && render ? container.rd_Attribute_Earth : container.attributeEarth;
             else if ((attribute & (uint)CardAttribute.Wind) > 0)
-                return rushDuel ? container.rd_Attribute_Wind : container.attributeWind;
+                return rushDuel && render ? container.rd_Attribute_Wind : container.attributeWind;
             else
-                return rushDuel ? container.rd_Attribute_Divine : container.attributeDivine;
+                return rushDuel && render ? container.rd_Attribute_Divine : container.attributeDivine;
         }
         public static Sprite GetCardRaceIcon(int race)
         {

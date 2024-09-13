@@ -14,7 +14,6 @@ using YgomSystem.YGomTMPro;
 using MDPro3.YGOSharp;
 using MDPro3.YGOSharp.OCGWrapper.Enums;
 using MDPro3.UI;
-using static UnityEngine.Rendering.DebugUI;
 
 namespace MDPro3
 {
@@ -72,9 +71,10 @@ namespace MDPro3
             {
                 try
                 {
-                    Card card = CardsManager.Get(int.Parse(fileInfos[i].Name));
-                    if (!cards.Contains(card))
+                    var cardCode = int.Parse(fileInfos[i].Name);
+                    if (!codes.Contains(cardCode))
                     {
+                        Card card = CardsManager.Get(cardCode);
                         cards.Add(card);
                         codes2.Add(card.Id);
                     }

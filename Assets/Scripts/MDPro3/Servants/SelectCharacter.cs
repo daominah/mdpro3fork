@@ -106,10 +106,7 @@ public class SelectCharacter : Servant
     public void LoadCharacters()
     {
         characters.Initialize();
-        characters.ChangeLanguage(Config.Get("Language", "zh-CN"));
-        //foreach (var pool in pools)
-        //    foreach (var c in pool.Value)
-        //        c.GetComponent<CharacterItem>().Load();
+        characters.ChangeLanguage(Language.GetConfig());
     }
 
     public override void OnExit()

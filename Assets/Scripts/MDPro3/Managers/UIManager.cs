@@ -66,10 +66,10 @@ namespace MDPro3
                     text.text = InterString.Get(text.text);
                     if (text.name.EndsWith("Menu"))
                     {
-                        if ((Config.Get("Language", "zh-CN") == "en-US"
-                            || Config.Get("Language", "zh-CN") == "ja-JP"))
+                        if ((Language.GetConfig() == Language.English
+                            || Language.GetConfig() == Language.Japanese))
                             text.font = instance.jpFont;
-                        else if (Config.Get("Language", "zh-CN") == "zh-CN")
+                        else if (Language.GetConfig() == Language.SimplifiedChinese)
                             text.font = instance.cnMenuFont;
                         else
                             text.font = instance.cnFont;
