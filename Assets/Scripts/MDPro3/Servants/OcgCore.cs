@@ -20,6 +20,8 @@ using MDPro3.YGOSharp.OCGWrapper.Enums;
 using static YgomGame.Bg.BgEffectSettingInner;
 using MDPro3.UI;
 using MDPro3.Net;
+using Mono.Cecil.Cil;
+using static WindBot.Game.AI.Decks.TimeThiefExecutor;
 
 namespace MDPro3
 {
@@ -1713,6 +1715,23 @@ namespace MDPro3
                 target++;
             }
             return null;
+        }
+
+        public bool NextMessageIsMaterial()
+        {
+            if (packages.Count < 2) 
+                return false;
+            if(packages[1].Function == (int)GameMessage.Move)
+            {
+                var r = packages[1].Data.reader;
+                r.ReadInt32();
+                r.ReadGPS();
+                r.ReadGPS();
+                var reason = r.ReadUInt32();
+                if ((reason & (uint)CardReason.MATERIAL) > 0)
+                    return true;
+            }
+            return false;
         }
 
         private void Sibyl()
@@ -3948,9 +3967,9 @@ namespace MDPro3
                     if (CheckChain())
                     {
                         if (cardsInChain.Count > 1)
-                            sleepIn100 = 144;
+                            sleepIn100 = 200;
                         if (cardsInChain.Count > 3)
-                            sleepIn100 = 210;
+                            sleepIn100 = 230;
                     }
                     Sleep(sleepIn100);
                     break;
@@ -5300,6 +5319,10 @@ namespace MDPro3
                         phase = DuelPhase.BattleStart;
                         PhaseBanner(player, phase);
                         PhaseButtonHandler.SetTextMain("Battle");
+                        if(myTurn && GetAllAtk(true) >= life1)
+                            AudioManager.PlayBgmClimax();
+                        else if (!myTurn && GetAllAtk(false) >= life0)
+                            AudioManager.PlayBgmClimax();
                     }
                     else if (ph == 0x10)
                     {
@@ -8185,6 +8208,47 @@ namespace MDPro3
                 HideBgDetail();
         }
 
+        private int GetAllAtk(bool mySide)
+        {
+            int allAttack = 0;
+            var monsters = GCS_GetLocationCards(mySide ? 0 : 1, (int)CardLocation.MonsterZone);
+            foreach (var card in monsters)
+                if ((card.p.position & (uint)CardPosition.FaceUpAttack) > 0)
+                    allAttack += card.GetData().Attack;
+            return allAttack;
+        }
+
+        private bool PlayerLosing()
+        {
+            if(myTurn)
+            {
+                if(GetAllAtk(true) - GetAllAtk(false) > life1)
+                {
+                    var defenseCount = 0;
+                    var monsters = GCS_GetLocationCards(1, (int)CardLocation.MonsterZone);
+                    foreach (var card in monsters)
+                        if ((card.p.position & (uint)CardPosition.Defence) > 0)
+                            defenseCount++;
+                    if (defenseCount == 0)
+                        return true;
+                }
+            }
+            else if(!myTurn)
+            {
+                if (GetAllAtk(false) - GetAllAtk(true) > life0)
+                {
+                    var defenseCount = 0;
+                    var monsters = GCS_GetLocationCards(0, (int)CardLocation.MonsterZone);
+                    foreach (var card in monsters)
+                        if ((card.p.position & (uint)CardPosition.Defence) > 0)
+                            defenseCount++;
+                    if (defenseCount == 0)
+                        return true;
+                }
+            }
+            return false;
+        }
+
         void ShowBgDetail()
         {
             if (bgDetailShowing)
@@ -8207,19 +8271,8 @@ namespace MDPro3
                 farManager.GetElement<TextMeshPro>("TextSummon").text = opSummonCount.ToString();
                 farManager.GetElement<TextMeshPro>("TextSpSummon").text = opSpSummonCount.ToString();
 
-                var myMonsters = GCS_GetLocationCards(0, (int)CardLocation.MonsterZone);
-                int myAllAttack = 0;
-                foreach (var card in myMonsters)
-                    if ((card.p.position & (uint)CardPosition.FaceUpAttack) > 0)
-                        myAllAttack += card.GetData().Attack;
-                nearManager.GetElement<TextMeshPro>("TextTotalAtk").text = myAllAttack.ToString();
-
-                var opMonsters = GCS_GetLocationCards(1, (int)CardLocation.MonsterZone);
-                int opAllAttack = 0;
-                foreach (var card in opMonsters)
-                    if ((card.p.position & (uint)CardPosition.FaceUpAttack) > 0)
-                        opAllAttack += card.GetData().Attack;
-                farManager.GetElement<TextMeshPro>("TextTotalAtk").text = opAllAttack.ToString();
+                nearManager.GetElement<TextMeshPro>("TextTotalAtk").text = GetAllAtk(true).ToString();
+                farManager.GetElement<TextMeshPro>("TextTotalAtk").text = GetAllAtk(false).ToString();
 
                 summonInfoManager.GetElement<TextMeshPro>("GraveNear").text = GetLocationCardCount(CardLocation.Grave, 0).ToString();
                 summonInfoManager.GetElement<TextMeshPro>("GraveFar").text = GetLocationCardCount(CardLocation.Grave, 1).ToString();

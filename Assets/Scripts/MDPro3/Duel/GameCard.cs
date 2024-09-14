@@ -1030,7 +1030,7 @@ namespace MDPro3
                     Destroy(model);
                     Destroy(fx, 2);
                     OcgCore.messagePass = true;
-                    return 0.2f;
+                    return Program.I().ocgcore.NextMessageIsMaterial() ? 0f : 0.2f;
                 }
                 //ÕÙ»½ËØ²Ä
                 if (ThisLocationShouldHaveModel(cacheP)
@@ -1065,7 +1065,7 @@ namespace MDPro3
                     Destroy(model);
                     Destroy(fx, 2);
                     OcgCore.messagePass = true;
-                    return 0.2f;
+                    return Program.I().ocgcore.NextMessageIsMaterial() ? 0f : 0.2f;
                 }
 
                 //Token In (from unknow)
