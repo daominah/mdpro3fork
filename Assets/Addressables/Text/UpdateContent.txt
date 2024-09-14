@@ -2,8 +2,7 @@
 
 MDPro v1.1.9.1更新：
 1.升级Spine至v4.2，修复上一版更新的官方MonsterCutin部分动画异常的错误。
-2.更新所有官方MonsterCutin动画文件，用于适配新版Spine。
-史莱姆、银河眼极光波龙、 天照、彩虹、小夜、
+2.安卓端首选图形API变更为OpenGL。
 
 MDPro v1.1.9更新：
 1.新增部分自定义功能，设置文件位于“Data/Settings.json“：

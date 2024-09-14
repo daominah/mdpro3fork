@@ -57,8 +57,8 @@ public class AssetBundleRobber : MonoBehaviour
 
         masterDuelAssetBundlePath = masterDuelWindowsAssetBundlePath;
         workingPlace = windowsWorkingPlace;
-        //masterDuelAssetBundlePath = masterDuelAndroidAssetBundlePath;
-        //workingPlace = androindWorkingPlace;
+        masterDuelAssetBundlePath = masterDuelAndroidAssetBundlePath;
+        workingPlace = androindWorkingPlace;
 
         fullCopy = true;
         //fullCopy = false;

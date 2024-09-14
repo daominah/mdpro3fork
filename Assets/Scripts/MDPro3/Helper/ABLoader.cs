@@ -266,6 +266,7 @@ namespace MDPro3
             var ab = abr.assetBundle;
             var material = ab.LoadAsset<Material>("ProfileFrameMat" + code);
             ab.Unload(false);
+            TextureManager.ChangeProfileFrameMaterialWrapMode(material);
             yield return material;
         }
         public static IEnumerator<Mate> LoadMateAsync(int code)

@@ -66,7 +66,6 @@ namespace MDPro3
             };
 
             ie = ABLoader.LoadFromFileAsync("MasterDuel/Timeline/summon/summonsynchro/summonsynchro01_royalstyle");
-            StartCoroutine(ie);
             while (ie.MoveNext())
                 yield return null;
             manager = ie.Current.GetComponent<ElementObjectManager>();
@@ -78,7 +77,6 @@ namespace MDPro3
             cardHolo4 = cardMatRoyal.GetTexture("_KiraColorTexture");
 
             ie = ABLoader.LoadFromFileAsync("MasterDuel/Timeline/summon/summonsynchro/summonsynchro01_shinestyle");
-            StartCoroutine(ie);
             while (ie.MoveNext())
                 yield return null;
             manager = ie.Current.GetComponent<ElementObjectManager>();
@@ -942,7 +940,32 @@ namespace MDPro3
 
             return newTexture;
         }
-        #endregion
+
+        public static void ChangeProfileFrameMaterialWrapMode(Material mat)
+        {
+#if !UNITY_ANDROID
+            return;
+#endif
+
+            if (mat == null)
+                return;
+
+            for(int i = 0; i < mat.shader.GetPropertyCount(); i++)
+            {
+                if(mat.shader.GetPropertyType(i) == UnityEngine.Rendering.ShaderPropertyType.Texture)
+                {
+                    var propName = mat.shader.GetPropertyName(i);
+                    if (propName != "_ProfileFrameTex" && propName != "_MainTex")
+                    {
+                        var tex = mat.GetTexture(propName);
+                        if (tex != null)
+                            tex.wrapMode = TextureWrapMode.Repeat;
+                    }
+                }
+            }
+        }
+
+#endregion
 
     }
 }
