@@ -89,6 +89,7 @@ namespace MDPro3
         const string shinePath = "Data/sr.ydk";
         const string royalPath = "Data/ur.ydk";
         Card cardShowing;
+        int cardIndex;
         public Banlist banlist;
         public static string pack = "";
         SuperScrollView superScrollView;
@@ -557,7 +558,7 @@ namespace MDPro3
         }
 
         Texture showingFace;
-        public void Description(int code, Texture cardFace, Material mat, bool inHistory = true)
+        public void Description(int code, Texture cardFace, Material mat, bool inHistory = true, int cardIndex = -1)
         {
             var data = CardsManager.Get(code);
             if (data.Id == 0)
@@ -572,6 +573,7 @@ namespace MDPro3
             }
             manager.GetElement("Group").SetActive(true);
             cardShowing = data;
+            this.cardIndex = cardIndex;
             showingFace = cardFace;
             manager.GetElement<RawImage>("Card").texture = showingFace;
             manager.GetElement<RawImage>("Card").material = mat;
@@ -682,7 +684,18 @@ namespace MDPro3
         {
             var cardFace = manager.GetElement<RawImage>("Card").texture;
             var mat = manager.GetElement<RawImage>("Card").material;
-            detail.Show(cardShowing, cardFace, mat);
+            detail.Show(cardShowing, cardFace, mat, cardIndex >= 0 ? CardsInDeck() : null, cardIndex);
+        }
+
+        List<int> CardsInDeck()
+        {
+            var cards = new Dictionary<int, int>();
+            foreach (var card in this.cards)
+                cards.Add(card.transform.GetSiblingIndex(), card.code);
+            var returnValue = new List<int>();
+            for(int i = 0; i < this.cards.Count; i++)
+                returnValue.Add(cards[i]);
+            return returnValue;
         }
 
         public override void PerFrameFunction()

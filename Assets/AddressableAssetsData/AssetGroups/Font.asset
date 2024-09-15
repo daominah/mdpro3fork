@@ -55,6 +55,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5a54dea78777e3845bf3d3c5c677d03a
+    m_Address: Yu-Gi-Oh! ITC Stone Serif M
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 5d02618b2a0a501499e39fdb50edb476
     m_Address: RenderFontJapanese
     m_ReadOnly: 0
@@ -142,6 +147,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e3ad986db42dce245a98dac26a749d20
     m_Address: RenderFontChineseSimplified
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: eb5f54fdeddf7ec4d8e75625a563c3c0
+    m_Address: FOT-Rodin Pro
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

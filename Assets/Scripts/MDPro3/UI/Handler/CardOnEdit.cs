@@ -168,7 +168,7 @@ namespace MDPro3.UI
             AudioManager.PlaySE("SE_DUEL_SELECT");
 
             if (Program.I().currentServant == Program.I().editDeck)
-                Program.I().editDeck.Description(code, GetComponent<RawImage>().texture, GetComponent<RawImage>().material);
+                Program.I().editDeck.Description(code, GetComponent<RawImage>().texture, GetComponent<RawImage>().material, true, transform.GetSiblingIndex());
             else
                 Program.I().appearance.PickThis(this);
         }

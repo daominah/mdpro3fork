@@ -23,6 +23,8 @@ namespace MDPro3
         static readonly float cardNameLabelWidthRushDuel = 520f;
 
         #region Public Reference
+        public RenderTexture renderTexture;
+
         [Header("OCG")]
         public RawImage cardArt;
         public RawImage cardArtPendulum;
@@ -50,7 +52,7 @@ namespace MDPro3
         public Image linkCount;
         public TextMeshProUGUI spellType;
         public Font atkDef;
-        public RenderTexture renderTexture;
+        public Text cardPassword;
 
         [Header("RD")]
         public RawImage cardArtRD;
@@ -85,6 +87,7 @@ namespace MDPro3
         public GameObject linkB;
         public GameObject linkBL;
         public GameObject linkL;
+        public Text cardPasswordRD;
 
         #endregion
 
@@ -282,6 +285,11 @@ namespace MDPro3
             if (data == null || data.Id == 0)
                 return false;
 
+            if (Settings.Data.CardRenderPassword)
+                cardPasswordRD.text = code.ToString("D8");
+            else
+                cardPasswordRD.text = string.Empty;
+
             cardNameRD.GetComponent<RectTransform>().localScale = Vector3.one;
             cardNameRD.text = data.Name;
             cardNameRD.GetComponent<ContentSizeFitter>().SetLayoutHorizontal();
@@ -437,7 +445,6 @@ namespace MDPro3
                 cardNameRD.color = Color.white;
                 if((data.Type & (uint)CardType.Pendulum) == 0)
                     cardTypeRD.color = Color.white;
-
                 rankRD.SetActive(true);
                 rankNumRD.gameObject.SetActive(true);
                 rankNumRD.text = data.Level.ToString();
@@ -463,7 +470,10 @@ namespace MDPro3
             Card data = CardsManager.GetRenderCard(code);
             if (data == null || data.Id == 0)
                 return false;
-
+            if(Settings.Data.CardRenderPassword)
+                cardPassword.text = code.ToString("D8");
+            else
+                cardPassword.text = string.Empty;
             cardName.GetComponent<RectTransform>().localScale = Vector3.one;
             cardName.text = data.Name;
             cardName.GetComponent<ContentSizeFitter>().SetLayoutHorizontal();
@@ -472,6 +482,7 @@ namespace MDPro3
                 cardName.GetComponent<RectTransform>().localScale = new Vector3(cardNameLabelWidthOCG / nameWidth, 1, 1);
 
             cardName.color = Color.black;
+            cardPassword.color = Color.black;
 
             cardArt.gameObject.SetActive(false);
             cardArtPendulum.gameObject.SetActive(false);
@@ -643,6 +654,8 @@ namespace MDPro3
             else if ((data.Type & (uint)CardType.Xyz) > 0)
             {
                 cardName.color = Color.white;
+                cardPassword.color = Color.white;
+
                 if (data.Level == 13)
                     rank13.SetActive(true);
                 else

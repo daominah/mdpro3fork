@@ -511,7 +511,17 @@ namespace MDPro3.Net
 
         }
 
-
+        public static DateTime GetOnlineDeckUpdateDate(OnlineDeckData deck)
+        {
+            try
+            {
+                return DateTime.Parse(deck.deckUpdateDate);
+            }
+            catch
+            {
+                return DateTime.Parse(deck.deckUploadDate);
+            }
+        }
 
         [Serializable]
         public class OnlineDeckData

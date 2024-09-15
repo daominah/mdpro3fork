@@ -20,8 +20,6 @@ using MDPro3.YGOSharp.OCGWrapper.Enums;
 using static YgomGame.Bg.BgEffectSettingInner;
 using MDPro3.UI;
 using MDPro3.Net;
-using Mono.Cecil.Cil;
-using static WindBot.Game.AI.Decks.TimeThiefExecutor;
 
 namespace MDPro3
 {
@@ -6925,17 +6923,17 @@ namespace MDPro3
         {
             var data = attackCard.GetData();
             var returnValue = FinalAttackType.Normal;
-            if(Settings.data.FinalAttackBlueEyes.Contains(data.Id) || Settings.data.FinalAttackBlueEyes.Contains(data.Alias))
+            if(Settings.Data.FinalAttackBlueEyes.Contains(data.Id) || Settings.Data.FinalAttackBlueEyes.Contains(data.Alias))
                 returnValue = FinalAttackType.BlueEyes;
-            if (Settings.data.FinalAttackDarkM.Contains(data.Id) || Settings.data.FinalAttackDarkM.Contains(data.Alias))
+            if (Settings.Data.FinalAttackDarkM.Contains(data.Id) || Settings.Data.FinalAttackDarkM.Contains(data.Alias))
                 returnValue = FinalAttackType.DarkM;
-            if (Settings.data.FinalAttackRedEyes.Contains(data.Id) || Settings.data.FinalAttackRedEyes.Contains(data.Alias))
+            if (Settings.Data.FinalAttackRedEyes.Contains(data.Id) || Settings.Data.FinalAttackRedEyes.Contains(data.Alias))
                 returnValue = FinalAttackType.RedEyes;
-            if (Settings.data.FinalAttackObelisk.Contains(data.Id) || Settings.data.FinalAttackObelisk.Contains(data.Alias))
+            if (Settings.Data.FinalAttackObelisk.Contains(data.Id) || Settings.Data.FinalAttackObelisk.Contains(data.Alias))
                 returnValue = FinalAttackType.Obelisk;
-            if (Settings.data.FinalAttackRa.Contains(data.Id) || Settings.data.FinalAttackRa.Contains(data.Alias))
+            if (Settings.Data.FinalAttackRa.Contains(data.Id) || Settings.Data.FinalAttackRa.Contains(data.Alias))
                 returnValue = FinalAttackType.Ra;
-            if (Settings.data.FinalAttackSlifer.Contains(data.Id) || Settings.data.FinalAttackSlifer.Contains(data.Alias))
+            if (Settings.Data.FinalAttackSlifer.Contains(data.Id) || Settings.Data.FinalAttackSlifer.Contains(data.Alias))
                 returnValue = FinalAttackType.Slifer;
 
 

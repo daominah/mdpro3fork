@@ -108,6 +108,7 @@ SpriteAtlas:
     - b1af4821817981b4f86be3ed178a357c: 21300000
     - 54f39e21a4486e84b8fd934d75136f79: 21300000
     - 0d338f21af4e73747b7fb4c59d63baa7: 21300000
+    - 7d391531d17781147a4b3463e2c94e06: 21300000
     - 7aee6631e0f212b41be0256c47fc2cb3: 21300000
     - 60e1ac31103334b419328732a355473e: 21300000
     - b1b87d31b2fba524081f9e5524353892: 21300000
@@ -704,6 +705,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: b1af4821817981b4f86be3ed178a357c, type: 3}
   - {fileID: 21300000, guid: 54f39e21a4486e84b8fd934d75136f79, type: 3}
   - {fileID: 21300000, guid: 0d338f21af4e73747b7fb4c59d63baa7, type: 3}
+  - {fileID: 21300000, guid: 7d391531d17781147a4b3463e2c94e06, type: 3}
   - {fileID: 21300000, guid: 7aee6631e0f212b41be0256c47fc2cb3, type: 3}
   - {fileID: 21300000, guid: 60e1ac31103334b419328732a355473e, type: 3}
   - {fileID: 21300000, guid: b1b87d31b2fba524081f9e5524353892, type: 3}
@@ -1299,6 +1301,7 @@ SpriteAtlas:
   - GUI_CommonItemFrameM_Glow
   - GUI_T_ReplayPlay_2
   - GUI_CommonInputField_Edit_Over
+  - GUI_alpha_PagingWindow_Arrow
   - GUI_T_Icon1_State00
   - GUI_DeckEdit_CardCollection_TabIcon2
   - GUI_T_DuelButtonCardInfo_1

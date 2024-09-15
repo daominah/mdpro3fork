@@ -2,7 +2,6 @@ using System;
 using System.IO;
 using UnityEngine;
 using Newtonsoft.Json;
-using System.Configuration;
 
 namespace MDPro3
 {
@@ -18,6 +17,7 @@ namespace MDPro3
         public string PrereleasePackUrl;
         public string PrereleasePackVersionUrl;
         public string MDPro3VersionUrl;
+        public bool CardRenderPassword;
 
         public SettingData()
         {
@@ -80,6 +80,7 @@ namespace MDPro3
             PrereleasePackUrl = "https://cdn02.moecube.com:444/ygopro-super-pre/archive/ygopro-super-pre.ypk";
             PrereleasePackVersionUrl = "https://cdn02.moecube.com:444/ygopro-super-pre/data/version.txt";
             MDPro3VersionUrl = "https://code.moenext.com/sherry_chaos/MDPro3/-/raw/master/Version.txt";
+            CardRenderPassword = true;
         }
     }
 
@@ -87,7 +88,7 @@ namespace MDPro3
     {
         private const string JsonPath = "Data/Settings.json";
         private static SettingData _data;
-        public static SettingData data
+        public static SettingData Data
         {
             get
             {
@@ -102,48 +103,82 @@ namespace MDPro3
             if (!File.Exists(JsonPath))
             {
                 _data = new SettingData();
-                SaveSettings();
+                SaveSettings(_data);
                 return;
             }
 
             var json = File.ReadAllText(JsonPath);
             try
             {
-                _data = EnsureDefaultValues(JsonConvert.DeserializeObject<SettingData>(json));
+                _data = EnsureDefaultValues(json);
             }
             catch(JsonReaderException ex)
             {
-                Debug.LogError("Failed to parse settings JSON: " + ex.Message);
+                MessageManager.Cast("Failed to parse Settings.json: " + ex.Message);
                 _data = new SettingData();
             }
         }
 
-        private static void SaveSettings()
+        private static void SaveSettings(SettingData data)
         {
-            var json = JsonConvert.SerializeObject(_data, Formatting.Indented);
+            var json = JsonConvert.SerializeObject(data, Formatting.Indented);
             File.WriteAllText(JsonPath, json);
         }
 
-        private static SettingData EnsureDefaultValues(SettingData data)
+        private static SettingData EnsureDefaultValues(string json)
         {
+            var data = JsonConvert.DeserializeObject<SettingData>(json);
             var defau = new SettingData();
+            bool needOverwrite = false;
 
-            if (data.FinalAttackBlueEyes == null) 
+            if (data.FinalAttackBlueEyes == null)
+            {
                 data.FinalAttackBlueEyes = defau.FinalAttackBlueEyes;
-            if (data.FinalAttackDarkM == null) 
+                needOverwrite = true;
+            }
+            if (data.FinalAttackDarkM == null)
+            {
                 data.FinalAttackDarkM = defau.FinalAttackDarkM;
-            if (data.FinalAttackRedEyes == null) 
+                needOverwrite = true;
+            }
+            if (data.FinalAttackRedEyes == null)
+            {
                 data.FinalAttackRedEyes = defau.FinalAttackRedEyes;
-            if (data.FinalAttackObelisk == null) 
+                needOverwrite = true;
+            }
+            if (data.FinalAttackObelisk == null)
+            {
                 data.FinalAttackObelisk = defau.FinalAttackObelisk;
-            if (data.FinalAttackRa == null) 
+                needOverwrite = true;
+            }
+            if (data.FinalAttackRa == null)
+            {
                 data.FinalAttackRa = defau.FinalAttackRa;
-            if (data.FinalAttackSlifer == null) 
+                needOverwrite = true;
+            }
+            if (data.FinalAttackSlifer == null)
+            {
                 data.FinalAttackSlifer = defau.FinalAttackSlifer;
-            if (string.IsNullOrEmpty(data.PrereleasePackUrl)) 
+                needOverwrite = true;
+            }
+            if (string.IsNullOrEmpty(data.PrereleasePackUrl))
+            {
                 data.PrereleasePackUrl = defau.PrereleasePackUrl;
-            if (string.IsNullOrEmpty(data.PrereleasePackVersionUrl)) 
+                needOverwrite = true;
+            }
+            if (string.IsNullOrEmpty(data.PrereleasePackVersionUrl))
+            {
                 data.PrereleasePackVersionUrl = defau.PrereleasePackVersionUrl;
+                needOverwrite = true;
+            }
+            if (!json.Contains("CardRenderPassword"))
+            {
+                data.CardRenderPassword = defau.CardRenderPassword;
+                needOverwrite = true;
+            }
+
+            if(needOverwrite)
+                SaveSettings(data);
 
             return data;
         }

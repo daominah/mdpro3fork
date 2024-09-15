@@ -1765,14 +1765,14 @@ namespace MDPro3
 
         IEnumerator UpdatePrereleaseAsync()
         {
-            var filePath = Path.Combine(Program.expansionsPath, Path.GetFileName(Settings.data.PrereleasePackUrl));
+            var filePath = Path.Combine(Program.expansionsPath, Path.GetFileName(Settings.Data.PrereleasePackUrl));
             if (!File.Exists(filePath))
             {
                 Config.Set("Prerelease", "0");
                 Config.Save();
             }
 
-            var www = UnityWebRequest.Get(Settings.data.PrereleasePackVersionUrl);
+            var www = UnityWebRequest.Get(Settings.Data.PrereleasePackVersionUrl);
             www.SendWebRequest();
             while (!www.isDone)
             {
@@ -1787,7 +1787,7 @@ namespace MDPro3
                 {
                     if(!Directory.Exists(Program.expansionsPath))
                         Directory.CreateDirectory(Program.expansionsPath);
-                    var download = UnityWebRequest.Get(Settings.data.PrereleasePackUrl);
+                    var download = UnityWebRequest.Get(Settings.Data.PrereleasePackUrl);
                     download.SendWebRequest();
                     MessageManager.Cast(InterString.Get("正在更新，请耐心等待更待更新完成再进行其他操作。"));
                     while (!download.isDone)

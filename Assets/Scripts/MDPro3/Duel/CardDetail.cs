@@ -5,6 +5,9 @@ using UnityEngine.UI;
 using YgomSystem.ElementSystem;
 using MDPro3.YGOSharp;
 using MDPro3.YGOSharp.OCGWrapper.Enums;
+using System;
+using System.Collections.Generic;
+using System.Collections;
 
 namespace MDPro3
 {
@@ -13,12 +16,35 @@ namespace MDPro3
         ElementObjectManager manager;
         public bool showing;
         float transitionTime = 0.1f;
+        float bigShowTime = 0.2f;
         float hideScale = 0.9f;
         int code;
+        List<int> cards;
+        int cardIndex;
         private void Start()
         {
             manager = GetComponent<ElementObjectManager>();
+            manager.GetElement<CanvasGroup>("Window").alpha = 0f;
         }
+
+        private void Update()
+        {
+            if(!showing || cards == null)
+                return;
+
+            if (Input.GetKeyDown(KeyCode.LeftArrow))
+                OnLeft();
+
+            if (Input.GetKeyDown(KeyCode.RightArrow))
+                OnRight();
+
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+                OnUp();
+
+            if (Input.GetKeyDown(KeyCode.DownArrow))
+                OnDown();
+        }
+
         public void Hide()
         {
             showing = false;
@@ -35,12 +61,18 @@ namespace MDPro3
 
             if (Program.I().currentServant == Program.I().editDeck)
                 UIManager.ShowFPSRight();
-
+            OnDown();
         }
-        public void Show(Card data, Texture cardFace, Material mat)
+        public void Show(Card data, Texture cardFace, Material mat, List<int> cards = null, int cardIndex = -1)
         {
             if (data.Id == 0)
                 return;
+            //OnDown();
+            this.cards = cards;
+            this.cardIndex = cardIndex;
+            manager.GetElement("ButtonLeft").SetActive(cards != null);
+            manager.GetElement("ButtonRight").SetActive(cards != null);
+
             code = data.Id;
             if (Program.I().currentServant == Program.I().editDeck)
                 UIManager.ShowFPSLeft();
@@ -58,8 +90,18 @@ namespace MDPro3
 
             var origin = CardsManager.Get(data.Id);
 
-            manager.GetElement<RawImage>("Card").texture = cardFace;
-            manager.GetElement<RawImage>("Card").material = mat;
+            if (mat != null)
+            {
+                manager.GetElement<RawImage>("Card").texture = cardFace;
+                manager.GetElement<RawImage>("Card").material = mat;
+            }
+            else
+            {
+                if(loadEnumerator != null)
+                    StopCoroutine(loadEnumerator);
+                loadEnumerator = LoadCardPictureAsync();
+                StartCoroutine(loadEnumerator);
+            }
 
             var colors = CardDescription.GetCardFrameColor(origin);
             manager.GetElement<Image>("NameBase").color = colors[0];
@@ -156,14 +198,36 @@ namespace MDPro3
                 manager.GetElement<Image>("Limit").sprite = TextureManager.container.banned;
         }
 
+        IEnumerator loadEnumerator;
+
+        IEnumerator LoadCardPictureAsync()
+        {
+            var mat = TextureManager.GetCardMaterial(code);
+            mat.renderQueue = 3000;
+
+            var task = TextureManager.LoadCardAsync(code);
+            while (!task.IsCompleted)
+                yield return null;
+            mat.mainTexture = task.Result;
+
+            manager.GetElement<RawImage>("Card").material = mat;
+            manager.GetElement<RawImage>("Card").texture = task.Result;
+
+            loadEnumerator = null;
+        }
+
         public void GenerateCard()
         {
             if (!Directory.Exists(Program.cardPicPath))
                 Directory.CreateDirectory(Program.cardPicPath);
             try
             {
-                Texture2D texture = (Texture2D)manager.GetElement<RawImage>("Card").texture;
-                var picture = texture.EncodeToPNG();
+                var texture = manager.GetElement<RawImage>("Card").texture;
+
+                if (texture == null)
+                    texture = manager.GetElement<RawImage>("Card").material.GetTexture("_MainTex");
+
+                var picture = ((Texture2D)texture).EncodeToPNG();
                 var fullPath = Program.cardPicPath + Program.slash + code + Program.pngExpansion;
                 File.WriteAllBytes(Program.cardPicPath + Program.slash + code + Program.pngExpansion, picture);
                 MessageManager.Cast(InterString.Get("卡图已保存于：[?]", fullPath));
@@ -173,6 +237,97 @@ namespace MDPro3
                 MessageManager.Cast(InterString.Get("没有写入权限，无法保存。"));
             }
         }
+
+        public void OnLeft()
+        {
+            if(cards == null)
+                return;
+            if (cardIndex < 0)
+                cardIndex = 0;
+
+            cardIndex = (cardIndex + cards.Count - 1) % cards.Count;
+            var data = CardsManager.Get(cards[cardIndex]);
+
+            while(data.Id == code)
+            {
+                cardIndex = (cardIndex + cards.Count - 1) % cards.Count;
+                data = CardsManager.Get(cards[cardIndex]);
+            }
+            Show(data, null, null, cards, cardIndex);
+        }
+        public void OnRight()
+        {
+            if (cards == null)
+                return;
+            if (cardIndex < 0)
+                cardIndex = 0;
+
+            cardIndex = (cardIndex + 1) % cards.Count;
+            var data = CardsManager.Get(cards[cardIndex]);
+
+            while (data.Id == code)
+            {
+                cardIndex = (cardIndex + 1) % cards.Count;
+                data = CardsManager.Get(cards[cardIndex]);
+            }
+            Show(data, null, null, cards, cardIndex);
+        }
+
+        bool bigShowing = false;
+        public void OnScale()
+        {
+            if(bigShowing)
+                OnDown();
+            else
+                OnUp();
+        }
+
+        public void OnUp()
+        {
+            bigShowing = true;
+#if UNITY_ANDROID
+            BigShowMobile();
+#else
+            BigShowDesktop();
+#endif
+        }
+
+        private void BigShowMobile()
+        {
+            var cardRect = manager.GetElement<RectTransform>("Card");
+            var limit = manager.GetElement<Image>("Limit");
+            limit.DOFade(0f, bigShowTime);
+            var extraWidth = 1080f * Screen.width / Screen.height - 737f * 2f;
+            cardRect.DOAnchorPos(new Vector2(extraWidth / 2f, -1035f), bigShowTime);
+            cardRect.DOLocalRotate(new Vector3(0f, 0f, 90f), bigShowTime);
+            cardRect.DOScale(2f, bigShowTime);
+        }
+        private void BigShowDesktop()
+        {
+            var cardRect = manager.GetElement<RectTransform>("Card");
+            var limit = manager.GetElement<Image>("Limit");
+            limit.DOFade(0f, bigShowTime);
+            cardRect.DOAnchorPos(new Vector2(25f, -25f), bigShowTime);
+            cardRect.DOLocalRotate(Vector3.zero, bigShowTime);
+            cardRect.DOScale(1.4f, bigShowTime);
+
+            var detailRect = manager.GetElement<RectTransform>("Detail");
+            DOTween.To(() => detailRect.offsetMin.x, x => detailRect.offsetMin = new Vector2(x, 0f), 750f, bigShowTime);
+        }
+        public void OnDown()
+        {
+            bigShowing = false;
+            var cardRect = manager.GetElement<RectTransform>("Card");
+            var limit = manager.GetElement<Image>("Limit");
+            limit.DOFade(1f, bigShowTime);
+            cardRect.DOAnchorPos(new Vector2(60f, -145f), bigShowTime);
+            cardRect.DOLocalRotate(Vector3.zero, bigShowTime);
+            cardRect.DOScale(1f, bigShowTime);
+
+            var detailRect = manager.GetElement<RectTransform>("Detail");
+            DOTween.To(() => detailRect.offsetMin.x, x => detailRect.offsetMin = new Vector2(x, 0f), 630f, bigShowTime);
+        }
+
 
         string TextForDetail(string text)
         {

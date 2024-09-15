@@ -735,7 +735,6 @@ namespace MDPro3.Net
             var decksNeedUpdate= new Dictionary<string, Deck>();//找到deckId但本地时间大于服务器时间五秒以上的卡组
             var decksNeedUpdate2 = new Dictionary<string, Deck>();//找到deckId但本地时间小于服务器时间五秒以上的卡组
             var localDeckIds = new List<string>();
-            var decksNeedDelete = new List<string>();//需要删除的卡组
 
             for (int i = 0; i < deckList.Count; i++)
             {
@@ -750,25 +749,16 @@ namespace MDPro3.Net
 
                 bool deckIdFound = false;
                 foreach(var od in OnlineDeck.decks)
+                {
                     if (od.deckId == deckList[i].deckId)
                     {
                         deckIdFound = true;
                         var fileInfo = new FileInfo(deckFiles[i]);
                         if (od.isDelete)
-                        {
-                            decksNeedDelete.Add(deckName);
-                        }
+                            File.Delete(deckFiles[i]);
                         else
                         {
-                            DateTime serverTime;
-                            try
-                            {
-                                serverTime = DateTime.Parse(od.deckUpdateDate);
-                            }
-                            catch
-                            {
-                                serverTime = DateTime.Parse(od.deckUploadDate);
-                            }
+                            DateTime serverTime = OnlineDeck.GetOnlineDeckUpdateDate(od);
                             var diff = serverTime - fileInfo.LastWriteTime;
                             if (diff.TotalSeconds > 5f)
                             {
@@ -777,24 +767,15 @@ namespace MDPro3.Net
                                 else
                                     decksNeedUpdate2.Add(deckName, deckList[i]);
                             }
+                            else
+                                RenameDeck(deckFiles[i], od.deckName);
                         }
-                    }
-
-                if (!deckIdFound)
-                {
-                    var getDeck = OnlineDeck.GetDeck(deckList[i].deckId);
-                    while(!getDeck.IsCompleted)
-                        yield return null;
-                    if(getDeck.Result == null)
-                        decksNeedUpload.Add(deckName, deckList[i]);
-                    else
-                    {
-                        if(getDeck.Result.isDelete)
-                            decksNeedDelete.Add(deckName);
-                        else
-                            decksNeedUpload.Add(deckName, deckList[i]);
+                        break;
                     }
                 }
+
+                if (!deckIdFound)
+                    decksNeedUpload.Add(deckName, deckList[i]);
             }
 
             //上传已经有Id的本地较新卡组
@@ -814,9 +795,11 @@ namespace MDPro3.Net
                 var od = OnlineDeck.GetDeck(deck.Value.deckId);
                 while(!od.IsCompleted) 
                     yield return null;
-                File.WriteAllText(Program.deckPath + deck.Key + Program.ydkExpansion, od.Result.deckYdk);
-                var fileInfo = new FileInfo(Program.deckPath + deck.Key + Program.ydkExpansion);
-                fileInfo.LastWriteTime = DateTime.Parse(od.Result.deckUpdateDate);
+                var oldName = Program.deckPath + deck.Key + Program.ydkExpansion;
+                File.WriteAllText(oldName, od.Result.deckYdk);
+                var newName = RenameDeck(oldName, od.Result.deckName);
+                if(newName != null)
+                    File.SetLastWriteTime(newName, OnlineDeck.GetOnlineDeckUpdateDate(od.Result));
             }
 
             //上传没有Id的本地卡组
@@ -864,10 +847,31 @@ namespace MDPro3.Net
                     info.LastWriteTime = DateTime.Parse(deck.deckUploadDate);
                 }
             }
+            //MessageManager.Cast("Deck Sync Finished.");
+        }
 
-            //删除已经被标记为删除的卡组
-            foreach(var deck in decksNeedDelete)
-                File.Delete(Program.deckPath + deck + Program.ydkExpansion);
+        private string RenameDeck(string deckPath, string newName)
+        {
+            if (!File.Exists(deckPath))
+                return null;
+            var oldDeckName = Path.GetFileNameWithoutExtension(deckPath);
+            if(oldDeckName == newName )
+                return newName;
+            var folderPath = Path.GetDirectoryName(deckPath);
+            if (folderPath == null)
+                return null;
+            var newPath = Path.Combine(folderPath, newName);
+            int avoid = 2;
+            string tail = string.Empty;
+            while (File.Exists(newPath + tail + Program.ydkExpansion))
+            {
+                tail = $" ({avoid})";
+                avoid++;
+            }
+
+            var returnValue = newPath + tail + Program.ydkExpansion;
+            File.Move(deckPath, returnValue);
+            return returnValue;
         }
 
         public void SetWatchRooms(List<MyCardRoom> rooms)
