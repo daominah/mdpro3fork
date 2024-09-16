@@ -9,6 +9,7 @@ using AssetsTools.NET;
 using AssetsTools.NET.Extra;
 using System.Threading;
 using System.Collections.Concurrent;
+using System.Drawing;
 
 public class AssetBundleRobber : MonoBehaviour
 {
@@ -57,8 +58,8 @@ public class AssetBundleRobber : MonoBehaviour
 
         masterDuelAssetBundlePath = masterDuelWindowsAssetBundlePath;
         workingPlace = windowsWorkingPlace;
-        masterDuelAssetBundlePath = masterDuelAndroidAssetBundlePath;
-        workingPlace = androindWorkingPlace;
+        //masterDuelAssetBundlePath = masterDuelAndroidAssetBundlePath;
+        //workingPlace = androindWorkingPlace;
 
         fullCopy = true;
         //fullCopy = false;
@@ -327,9 +328,31 @@ public class AssetBundleRobber : MonoBehaviour
             {
                 if (!Directory.Exists(workingPlace + "Mate"))
                     Directory.CreateDirectory(workingPlace + "Mate");
+                
                 var targetName = workingPlace + "Mate/" + Path.GetFileName(file.name).Replace(".prefab", "").Replace("_model", "_Model").Replace("_sd_", "_SD_").Replace("m", "M").Replace("v", "V");
-                if (!File.Exists(targetName))
-                    File.Copy(GetFullPath(file.path), targetName);
+
+                if (file.dependencies.Count == 0)
+                {
+                    if (!File.Exists(targetName))
+                        File.Copy(GetFullPath(file.path), targetName);
+                }
+                else
+                {
+                    var targetFolder = targetName;
+                    if(!Directory.Exists(targetFolder))
+                        Directory.CreateDirectory(targetFolder);
+                    File.Copy(GetFullPath(file.path), Path.Combine(targetFolder, file.path));
+                    foreach (string depen in file.dependencies)
+                    {
+                        if (File.Exists(GetFullPath(depen)))
+                        {
+                            if (!File.Exists(targetFolder + "/" + depen))
+                                File.Copy(GetFullPath(depen), targetFolder + "/" + depen);
+                        }
+                        else
+                            Debug.Log("Œ¥’“µΩ" + file.path + "µƒ“¿¿µ£∫" + depen + ": " + GetFullPath(depen));
+                    }
+                }
             }
             else if (type == AssetType.Protector)
             {
@@ -420,10 +443,7 @@ public class AssetBundleRobber : MonoBehaviour
                 var targetFolder = workingPlace + "MonsterCutin/" + subDir;
                 if (!Directory.Exists(targetFolder))
                     Directory.CreateDirectory(targetFolder);
-                if (File.Exists(targetFolder + "/" + subDir))
-                    File.Copy(GetFullPath(file.path), targetFolder + "/" + subDir + "----------");
-                else
-                    File.Copy(GetFullPath(file.path), targetFolder + "/" + subDir);
+                File.Copy(GetFullPath(file.path), targetFolder + "/" + file.path);
                 var depens = new List<string>(file.dependencies);
                 foreach (string depen in depens)
                 {

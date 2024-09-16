@@ -684,7 +684,7 @@ namespace MDPro3
         {
             var cardFace = manager.GetElement<RawImage>("Card").texture;
             var mat = manager.GetElement<RawImage>("Card").material;
-            detail.Show(cardShowing, cardFace, mat, cardIndex >= 0 ? CardsInDeck() : null, cardIndex);
+            detail.Show(cardShowing, cardFace, mat, cardIndex >= 0 ? CardsInDeck() : CardsOnList(), cardIndex);
         }
 
         List<int> CardsInDeck()
@@ -696,6 +696,14 @@ namespace MDPro3
             for(int i = 0; i < this.cards.Count; i++)
                 returnValue.Add(cards[i]);
             return returnValue;
+        }
+
+        List<int> CardsOnList()
+        {
+            var cards = new List<int>();
+            for(int i = 0; i < superScrollView.items.Count; i++)
+                cards.Add(int.Parse(superScrollView.items[i].args[0]));
+            return cards;
         }
 
         public override void PerFrameFunction()
@@ -1849,7 +1857,7 @@ namespace MDPro3
         void ItemOnListRefresh(string[] tasks, GameObject item)
         {
             var handler = item.GetComponent<SuperScrollViewItemForDeckEdit>();
-            handler.code = int.Parse(tasks[0].ToString());
+            handler.code = int.Parse(tasks[0]);
             handler.Refresh();
         }
 

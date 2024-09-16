@@ -32,7 +32,16 @@ namespace MDPro3
 
         private void Update()
         {
-            if(!showing || cards == null)
+            if(!showing)
+                return;
+
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+                OnUp();
+
+            if (Input.GetKeyDown(KeyCode.DownArrow))
+                OnDown();
+
+            if (cards == null)
                 return;
 
             if (Input.GetKeyDown(KeyCode.LeftArrow))
@@ -40,12 +49,6 @@ namespace MDPro3
 
             if (Input.GetKeyDown(KeyCode.RightArrow))
                 OnRight();
-
-            if (Input.GetKeyDown(KeyCode.UpArrow))
-                OnUp();
-
-            if (Input.GetKeyDown(KeyCode.DownArrow))
-                OnDown();
         }
 
         public void Hide()
@@ -70,13 +73,26 @@ namespace MDPro3
         {
             if (data.Id == 0)
                 return;
-            //OnDown();
+
             this.cards = cards;
             this.cardIndex = cardIndex;
-            manager.GetElement("ButtonLeft").SetActive(cards != null);
-            manager.GetElement("ButtonRight").SetActive(cards != null);
-
             code = data.Id;
+
+            if (this.cardIndex == -1 && cards != null)
+            {
+                this.cardIndex = 0;
+                for (var i = 0; i < cards.Count; i++)
+                {
+                    if(code == cards[i])
+                    {
+                        this.cardIndex = i;
+                        break;
+                    }
+                }
+            }
+            manager.GetElement("ButtonLeft").SetActive(NeedShowArrow());
+            manager.GetElement("ButtonRight").SetActive(NeedShowArrow());
+
             if (Program.I().currentServant == Program.I().editDeck)
                 UIManager.ShowFPSLeft();
             //CameraManager.UIBlurPlus();
@@ -170,7 +186,7 @@ namespace MDPro3
                 statusRect.sizeDelta = new Vector2(statusRect.sizeDelta.x, 76);
                 manager.GetElement("Pendulum").SetActive(false);
                 manager.GetElement("StatusMonster").SetActive(false);
-                manager.GetElement<Text>("TextEffect").text = origin.Desc;
+                manager.GetElement<Text>("TextEffect").text = TextForDetail(origin.Desc);
                 effectRect.sizeDelta = new Vector2(effectRect.sizeDelta.x, 630);
 
                 manager.GetElement("StatusSpell").SetActive(true);
@@ -199,6 +215,26 @@ namespace MDPro3
                 manager.GetElement<Image>("Limit").sprite = TextureManager.container.limit1;
             else
                 manager.GetElement<Image>("Limit").sprite = TextureManager.container.banned;
+        }
+
+        private bool NeedShowArrow()
+        {
+            if(cards == null)
+                return false;
+            if(cards.Count < 2)
+                return false;
+            List<int> cardKinds = new List<int>();
+            for (int i = 0; i < cards.Count; i++)
+                if (!cardKinds.Contains(cards[i]))
+                {
+                    cardKinds.Add(cards[i]);
+                    if (cardKinds.Count > 1)
+                        break;
+                }
+            if (cardKinds.Count > 1)
+                return true;
+            else
+                return false;
         }
 
         IEnumerator loadEnumerator;
@@ -433,7 +469,7 @@ namespace MDPro3
 
         public void OnLeft()
         {
-            if(cards == null)
+            if (!NeedShowArrow())
                 return;
             if (cardIndex < 0)
                 cardIndex = 0;
@@ -450,7 +486,7 @@ namespace MDPro3
         }
         public void OnRight()
         {
-            if (cards == null)
+            if (!NeedShowArrow())
                 return;
             if (cardIndex < 0)
                 cardIndex = 0;
@@ -525,11 +561,10 @@ namespace MDPro3
         {
             if(string.IsNullOrEmpty(text))
                 text = string.Empty;
-
-            if (!Language.UseLatin())
-                return text.Replace(" ", "\u00A0");
-            else
+            if (Language.NeedBlankToAddWord())
                 return text;
+            else
+                return text.Replace(" ", "\u00A0");
         }
     }
 }

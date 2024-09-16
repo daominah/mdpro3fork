@@ -161,7 +161,7 @@ namespace MDPro3
             if (percy != null)
                 percy.Dispose();
             percy = new PercyOCG();
-            percy.StartPuzzle(Program.puzzlePath + puzzle + ".lua");
+            percy.StartPuzzle(Program.puzzlePath.ToLower() + puzzle + ".lua");
         }
     }
 }

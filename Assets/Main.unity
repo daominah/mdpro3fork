@@ -24336,7 +24336,7 @@ RectTransform:
   m_Father: {fileID: 1625107018}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -30605,6 +30605,7 @@ GameObject:
   - component: {fileID: 416587243}
   - component: {fileID: 416587242}
   - component: {fileID: 416587241}
+  - component: {fileID: 416587244}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -30725,6 +30726,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 416587239}
   m_CullTransparentMesh: 1
+--- !u!114 &416587244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 416587239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c48b628189305e649b63ee28987f282f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  previewClip: {fileID: 0}
+  enterAudio: 
+  clickAudio: SE_MENU_DECIDE
+  exitAudio: 
+  audioType: 0
 --- !u!1 &416667979
 GameObject:
   m_ObjectHideFlags: 0
@@ -54005,7 +54023,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 476827028}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.60808754
+  m_Size: 0.6256983
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -109151,7 +109169,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1562017447
 RectTransform:
   m_ObjectHideFlags: 0
@@ -110133,7 +110151,6 @@ GameObject:
   - component: {fileID: 1585157928}
   - component: {fileID: 1585157927}
   - component: {fileID: 1585157929}
-  - component: {fileID: 1585157930}
   m_Layer: 5
   m_Name: Card
   m_TagString: Untagged
@@ -110210,23 +110227,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   label: Card
---- !u!114 &1585157930
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1585157925}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c48b628189305e649b63ee28987f282f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  previewClip: {fileID: 0}
-  enterAudio: 
-  clickAudio: SE_MENU_DECIDE
-  exitAudio: 
-  audioType: 0
 --- !u!1 &1586019567
 GameObject:
   m_ObjectHideFlags: 0
@@ -111854,7 +111854,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1600937175
 RectTransform:
   m_ObjectHideFlags: 0
@@ -129589,7 +129589,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -804}
-  m_SizeDelta: {x: 500, y: 200}
+  m_SizeDelta: {x: 800, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1864688949
 MonoBehaviour:
@@ -129615,11 +129615,11 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: cdf4c81f8bf6eb248a105d8a5edf19fd, type: 3}
     m_FontSize: 35
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 10
-    m_MaxSize: 52
+    m_MaxSize: 35
     m_Alignment: 1
-    m_AlignByGeometry: 0
+    m_AlignByGeometry: 1
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
@@ -149599,9 +149599,9 @@ RectTransform:
   m_Father: {fileID: 345322693}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -37, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &2140938461
 MonoBehaviour:
