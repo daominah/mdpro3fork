@@ -5,9 +5,11 @@ using UnityEngine.UI;
 using YgomSystem.ElementSystem;
 using MDPro3.YGOSharp;
 using MDPro3.YGOSharp.OCGWrapper.Enums;
+using MDPro3.UI;
 using System;
 using System.Collections.Generic;
 using System.Collections;
+using UnityEngine.AddressableAssets;
 
 namespace MDPro3
 {
@@ -21,6 +23,7 @@ namespace MDPro3
         int code;
         List<int> cards;
         int cardIndex;
+
         private void Start()
         {
             manager = GetComponent<ElementObjectManager>();
@@ -218,25 +221,215 @@ namespace MDPro3
 
         public void GenerateCard()
         {
+            if(Program.I().ocgcore.isShowed 
+                || (Program.I().editDeck.isShowed && Program.I().editDeck.condition == EditDeck.Condition.ChangeSide))
+            {
+                GenerateShowingCard();
+                return;
+            }
+
+            List<string> selections = new List<string>
+            {
+                InterString.Get("保存选项"),
+                InterString.Get("保存当前卡图"),
+                InterString.Get("保存所有卡图"),
+                InterString.Get("保存所有衍生物卡图"),
+            };
+            UIManager.ShowPopupSelection(selections, OnCardPictureSave);
+        }
+        void OnCardPictureSave()
+        {
+            string selected = UnityEngine.EventSystems.EventSystem.current.
+                currentSelectedGameObject.transform.GetChild(0).GetComponent<Text>().text;
+            if (selected == InterString.Get("保存当前卡图"))
+                GenerateShowingCard();
+            else if (selected == InterString.Get("保存所有卡图"))
+                GenerateAllCards();
+            else if (selected == InterString.Get("保存所有衍生物卡图"))
+                GenerateAllTokens();
+        }
+
+        private bool SaveCardPicture(int code, Texture2D tex)
+        {
             if (!Directory.Exists(Program.cardPicPath))
                 Directory.CreateDirectory(Program.cardPicPath);
+
             try
             {
-                var texture = manager.GetElement<RawImage>("Card").texture;
+                var size = Settings.Data.SavedCardSize;
+                if(size.Length > 1 && size[0] > 0 && size[1] > 0)
+                    if (size[0] != tex.width || size[1] != tex.height)
+                        tex = TextureManager.ResizeTexture2D(tex, size[0], size[1]);
 
-                if (texture == null)
-                    texture = manager.GetElement<RawImage>("Card").material.GetTexture("_MainTex");
+                byte[] pic;
+                string fullPath;
+                var format = Settings.Data.SavedCardFormat.ToLower();
+                if(format == Program.pngExpansion)
+                {
+                    pic = tex.EncodeToPNG();
+                    fullPath = Program.cardPicPath + code + Program.pngExpansion;
+                }
+                else
+                {
+                    pic = tex.EncodeToJPG();
+                    fullPath = Program.cardPicPath + code + Program.jpgExpansion;
+                }
 
-                var picture = ((Texture2D)texture).EncodeToPNG();
-                var fullPath = Program.cardPicPath + Program.slash + code + Program.pngExpansion;
-                File.WriteAllBytes(Program.cardPicPath + Program.slash + code + Program.pngExpansion, picture);
-                MessageManager.Cast(InterString.Get("卡图已保存于：[?]", fullPath));
+                File.WriteAllBytes(fullPath, pic);
+                return true;
             }
             catch
+            {
+                return false;
+            }
+        }
+
+        private void GenerateShowingCard()
+        {
+            var rawImage = manager.GetElement<RawImage>("Card");
+            var texture = rawImage.texture;
+            if (texture == null)
+                texture = rawImage.material.mainTexture;
+
+            if (SaveCardPicture(code, (Texture2D)texture))
+            {
+                var fullPath = Program.cardPicPath + code + Program.pngExpansion;
+                MessageManager.Cast(InterString.Get("卡图已保存于：[?]", fullPath));
+            }
+            else
             {
                 MessageManager.Cast(InterString.Get("没有写入权限，无法保存。"));
             }
         }
+
+        private void GenerateAllCards()
+        {
+            saveAllCards = GenerateAllCardsAsync();
+            StartCoroutine(saveAllCards);
+        }
+
+        IEnumerator saveAllCards;
+        IEnumerator GenerateAllCardsAsync()
+        {
+            var handle = Addressables.InstantiateAsync("PopupProgress");
+            while (!handle.IsDone)
+                yield return null;
+            handle.Result.transform.SetParent(Program.I().ui_.popup, false);
+            var popupProgress = handle.Result.GetComponent<PopupProgress>();
+            popupProgress.selections = new List<string> { InterString.Get("卡图保存中") };
+            popupProgress.cancelAction = StopSaving;
+            popupProgress.Show();
+
+            int errorCount = 0;
+            errorLog = string.Empty;
+            var errorLogPath = Program.cardPicPath + "MissingAndFailedCards.txt";
+            if (File.Exists(errorLogPath))
+                File.Delete(errorLogPath);
+
+            var cards = CardsManager.GetAllCards();
+
+            for (int i = 0; i < cards.Count; i++)
+            {
+                var format = Settings.Data.SavedCardFormat;
+                if(format != Program.pngExpansion)
+                    format = Program.jpgExpansion;
+                if (File.Exists(Program.cardPicPath + cards[i] + format))
+                    continue;
+
+                var ie = TextureManager.LoadCardAsync(cards[i]);
+                while (!ie.IsCompleted)
+                    yield return null;
+                if (!SaveCardPicture(cards[i], ie.Result) 
+                    || !TextureManager.lastCardFoundArt 
+                    || !TextureManager.lastCardRenderSucceed)
+                {
+                    errorCount++;
+                    errorLog += cards[i].ToString() + "\r\n";
+                }
+                popupProgress.description.text = i + Program.slash + cards.Count + "\r\n" + InterString.Get("错误：") + errorCount;
+                popupProgress.progressBar.value = (float)i / cards.Count;
+            }
+            popupProgress.Hide();
+            if (errorCount > 0)
+                File.WriteAllText(errorLogPath, errorLog);
+            saveAllCards = null;
+        }
+        private void GenerateAllTokens()
+        {
+            saveAllTokens = GenerateAllTokensAsync();
+            StartCoroutine(saveAllTokens);
+        }
+        IEnumerator saveAllTokens;
+        IEnumerator GenerateAllTokensAsync()
+        {
+            var handle = Addressables.InstantiateAsync("PopupProgress");
+            while(!handle.IsDone)
+                yield return null;
+            handle.Result.transform.SetParent(Program.I().ui_.popup, false);
+            var popupProgress = handle.Result.GetComponent<PopupProgress>();
+            popupProgress.selections = new List<string> { InterString.Get("卡图保存中") };
+            popupProgress.cancelAction = StopSaving;
+            popupProgress.Show();
+
+            int errorCount = 0;
+            errorLog = string.Empty;
+            var errorLogPath = Program.cardPicPath + "MissingAndFailedCards.txt";
+            if(File.Exists(errorLogPath))
+                File.Delete(errorLogPath);
+
+            var cards = CardsManager.GetAllCards();
+            var tokens = new List<int>();
+            for (int i = 0; i < cards.Count; i++)
+            {
+                var data = CardsManager.Get(cards[i]);
+                if ((data.Type & (uint)CardType.Token) > 0)
+                    tokens.Add(cards[i]);
+            }
+
+            for (int i = 0; i < tokens.Count; i++)
+            {
+                var format = Settings.Data.SavedCardFormat;
+                if (format != Program.pngExpansion)
+                    format = Program.jpgExpansion;
+                if (File.Exists(Program.cardPicPath + tokens[i] + format))
+                    continue;
+
+                var data = CardsManager.Get(tokens[i]);
+                if((data.Type & (uint)CardType.Token) == 0)
+                    continue;
+
+                var ie = TextureManager.LoadCardAsync(tokens[i]);
+                while (!ie.IsCompleted)
+                    yield return null;
+                if (!SaveCardPicture(tokens[i], ie.Result)
+                    || !TextureManager.lastCardFoundArt
+                    || !TextureManager.lastCardRenderSucceed)
+                {
+                    errorCount++;
+                    errorLog += tokens[i].ToString() + "\r\n";
+                }
+                popupProgress.description.text = i + Program.slash + tokens.Count + "\r\n" + InterString.Get("错误：") + errorCount;
+                popupProgress.progressBar.value = (float)i / tokens.Count;
+            }
+            popupProgress.Hide();
+            if(errorCount > 0)
+            {
+                File.WriteAllText(errorLogPath, errorLog);
+            }
+            saveAllTokens = null;
+        }
+
+        string errorLog;
+        public void StopSaving()
+        {
+            if(saveAllCards != null)
+                StopCoroutine(saveAllCards);
+            if(saveAllTokens != null)
+                StopCoroutine(saveAllTokens);
+            if (!string.IsNullOrEmpty(errorLog))
+                File.WriteAllText(Program.cardPicPath + "MissingAndFailedCards.txt", errorLog);
+        }
+
 
         public void OnLeft()
         {
@@ -327,7 +520,6 @@ namespace MDPro3
             var detailRect = manager.GetElement<RectTransform>("Detail");
             DOTween.To(() => detailRect.offsetMin.x, x => detailRect.offsetMin = new Vector2(x, 0f), 630f, bigShowTime);
         }
-
 
         string TextForDetail(string text)
         {

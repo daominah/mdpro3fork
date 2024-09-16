@@ -14,7 +14,7 @@ namespace MDPro3.YGOSharp
             StreamReader reader = null;
             if (Config.GetBool("Expansions", true))
             {
-                var confPath = Program.expansionsPath + Program.slash + "lflist.conf";
+                var confPath = Program.expansionsPath + "lflist.conf";
                 if(File.Exists(confPath))
                 {
                     reader = new StreamReader(confPath);

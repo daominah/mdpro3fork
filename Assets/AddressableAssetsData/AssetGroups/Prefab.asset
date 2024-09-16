@@ -220,6 +220,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f9c62b855a1be3b4e9315d0289b84b3d
+    m_Address: PopupProgress
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ff428eeefb7dd3a4680d9b48f4c4c5b0
     m_Address: CharacterItem
     m_ReadOnly: 0

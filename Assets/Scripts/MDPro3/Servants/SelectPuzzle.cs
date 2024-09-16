@@ -58,9 +58,9 @@ namespace MDPro3
         void GetPuzzles()
         {
             puzzles = new List<Puzzle>();
-            if (!Directory.Exists("Puzzle"))
-                Directory.CreateDirectory("Puzzle");
-            FileInfo[] fileInfos = new DirectoryInfo("Puzzle").GetFiles("*.lua");
+            if (!Directory.Exists(Program.puzzlePath))
+                Directory.CreateDirectory(Program.puzzlePath);
+            FileInfo[] fileInfos = new DirectoryInfo(Program.puzzlePath).GetFiles("*.lua");
             foreach (FileInfo fileInfo in fileInfos)
             {
                 string text = File.ReadAllText(fileInfo.FullName);
@@ -161,7 +161,7 @@ namespace MDPro3
             if (percy != null)
                 percy.Dispose();
             percy = new PercyOCG();
-            percy.StartPuzzle("puzzle/" + puzzle + ".lua");
+            percy.StartPuzzle(Program.puzzlePath + puzzle + ".lua");
         }
     }
 }

@@ -534,9 +534,9 @@ namespace MDPro3
                         if (startI > packagesInRecord.Count)
                             startI = packagesInRecord.Count;
                         packagesInRecord.Insert(startI, Program.I().ocgcore.GetNamePacket());
-                        if (File.Exists("Replay/" + replayName + ".yrp3d"))
-                            File.Delete("Replay/" + replayName + ".yrp3d");
-                        var stream = File.Create("Replay/" + replayName + ".yrp3d");
+                        if (File.Exists(Program.replayPath + replayName + Program.yrp3dExpansion))
+                            File.Delete(Program.replayPath + replayName + Program.yrp3dExpansion);
+                        var stream = File.Create(Program.replayPath + replayName + Program.yrp3dExpansion);
                         var writer = new BinaryWriter(stream);
                         int k = 0;
                         for (int j = startI - 1; j < packagesInRecord.Count; j++)

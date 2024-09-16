@@ -32,7 +32,7 @@ namespace MDPro3.Net
         public static MyCardApp ygopro;
         public static Texture2D avatar;
 
-        const int avatarSize = 128;
+        const int avatarSize = 256;
 
         public static async Task<MyCardAccount> Login(string account, string password)
         {
@@ -166,10 +166,7 @@ namespace MDPro3.Net
                     fullPath = avatarSavePath + fileName + Program.pngExpansion;
                     if(downloadImage.width > avatarSize)
                     {
-                        returnValue = new Texture2D(avatarSize, avatarSize);
-                        var resizePixels = TextureManager.ResizePixels(downloadImage.GetPixels(), downloadImage.width, downloadImage.height, avatarSize, avatarSize);
-                        returnValue.SetPixels(resizePixels);
-                        returnValue.Apply();
+                        returnValue = TextureManager.ResizeTexture2D(downloadImage, avatarSize, avatarSize);
                         UnityEngine.Object.Destroy(downloadImage);
                     }
 

@@ -162,7 +162,13 @@ namespace MDPro3.YGOSharp
 
             return returnValue;
         }
-
+        internal static List<int> GetAllCards()
+        {
+            var returnValue = new List<int>();
+            foreach (var card in _cards)
+                returnValue.Add(card.Key);
+            return returnValue;
+        }
         private static void LoadCard(IDataRecord reader, bool render = false)
         {
             Card card = new Card(reader);
@@ -250,10 +256,10 @@ namespace MDPro3.YGOSharp
         }
         internal static List<Card> Search
         (
-        string getName,
-        List<long> filters,
-        Banlist banlist,
-        string pack
+            string getName,
+            List<long> filters,
+            Banlist banlist,
+            string pack
         )
         {
             List<Card> returnValue = new List<Card>();

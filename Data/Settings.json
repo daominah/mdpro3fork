@@ -46,5 +46,10 @@
   "PrereleasePackUrl": "https://cdn02.moecube.com:444/ygopro-super-pre/archive/ygopro-super-pre.ypk",
   "PrereleasePackVersionUrl": "https://cdn02.moecube.com:444/ygopro-super-pre/data/version.txt",
   "MDPro3VersionUrl": "https://code.moenext.com/sherry_chaos/MDPro3/-/raw/master/Version.txt",
-  "CardRenderPassword": true
+  "CardRenderPassword": true,
+  "SavedCardSize": [
+    704,
+    1024
+  ],
+  "SavedCardFormat": ".jpg"
 }

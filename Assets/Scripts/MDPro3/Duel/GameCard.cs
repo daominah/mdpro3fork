@@ -2779,7 +2779,7 @@ namespace MDPro3
                 return false;
             if ((p.position & (uint)CardPosition.FaceDown) > 0)
                 return false;
-            if(!File.Exists(Program.closeupPath + Program.slash + data.Id + Program.pngExpansion))
+            if(!File.Exists(Program.closeupPath + data.Id + Program.pngExpansion))
                 return false;
             return true;
         }

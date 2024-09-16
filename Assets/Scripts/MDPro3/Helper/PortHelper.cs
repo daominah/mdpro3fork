@@ -88,14 +88,14 @@ namespace MDPro3
                         File.Copy(path, Program.deckPath + fileName, true);
                         MessageManager.Cast(InterString.Get("导入卡组「[?]」成功。", fileName.Replace(Program.ydkExpansion, string.Empty)));
                     }
-                    else if (path.ToLower().EndsWith(".yrp") || path.ToLower().EndsWith(".yrp3d"))
+                    else if (path.ToLower().EndsWith(Program.yrpExpansion) || path.ToLower().EndsWith(Program.yrp3dExpansion))
                     {
-                        File.Copy(path, Program.replayPath + Program.slash + fileName, true);
+                        File.Copy(path, Program.replayPath + fileName, true);
                         MessageManager.Cast(InterString.Get("导入回放「[?]」成功。", fileName));
                     }
                     else if (path.ToLower().EndsWith(".ypk") || path.ToLower().EndsWith(".zip") || path.ToLower().EndsWith(".cdb") || path.ToLower().EndsWith(".conf"))
                     {
-                        File.Copy(path, Program.expansionsPath + Program.slash + fileName, true);
+                        File.Copy(path, Program.expansionsPath + fileName, true);
                         newDataAdded = true;
                         if (fileName.ToLower().EndsWith(".ypk") || fileName.ToLower().EndsWith(".zip"))
                             MessageManager.Cast(InterString.Get("导入扩展卡文件「[?]」成功。", fileName));
@@ -125,11 +125,11 @@ namespace MDPro3
                 {
                     if (path.ToLower().EndsWith(Program.ydkExpansion))
                         File.Move(path, Program.deckPath + Path.GetFileName(path));
-                    if (path.ToLower().EndsWith(".yrp") || path.ToLower().EndsWith(".yrp3d"))
-                        File.Move(path, Program.replayPath + Program.slash + Path.GetFileName(path));
+                    if (path.ToLower().EndsWith(Program.yrpExpansion) || path.ToLower().EndsWith(Program.yrp3dExpansion))
+                        File.Move(path, Program.replayPath + Path.GetFileName(path));
                     if (path.ToLower().EndsWith(".ypk") || path.ToLower().EndsWith(".zip") || path.ToLower().EndsWith(".cdb") || path.ToLower().EndsWith(".conf"))
                     {
-                        File.Move(path, Program.expansionsPath + Program.slash + Path.GetFileName(path));
+                        File.Move(path, Program.expansionsPath + Path.GetFileName(path));
                         newDataAdded = true;
                     }
                     if (path.ToLower().EndsWith(Program.pngExpansion) || path.ToLower().EndsWith(Program.jpgExpansion) || path.ToLower().EndsWith(".jpeg"))

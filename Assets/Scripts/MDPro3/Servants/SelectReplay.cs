@@ -63,9 +63,9 @@ namespace MDPro3
         {
             superScrollView?.Clear();
 
-            if (!Directory.Exists("Replay"))
-                Directory.CreateDirectory("Replay");
-            var fileInfos = new DirectoryInfo("Replay").GetFiles();
+            if (!Directory.Exists(Program.replayPath))
+                Directory.CreateDirectory(Program.replayPath);
+            var fileInfos = new DirectoryInfo(Program.replayPath).GetFiles();
             if (sortByName)
                 Array.Sort(fileInfos, Tools.CompareName);
             else
@@ -75,13 +75,13 @@ namespace MDPro3
             int count = 0;
             for (int i = 0; i < fileInfos.Length; i++)
             {
-                if (fileInfos[i].Name.EndsWith(".yrp3d"))
+                if (fileInfos[i].Name.EndsWith(Program.yrp3dExpansion))
                 {
-                    var task = new string[] { count.ToString(), fileInfos[i].Name.Replace(".yrp3d", "") };
+                    var task = new string[] { count.ToString(), fileInfos[i].Name.Replace(Program.yrp3dExpansion, string.Empty) };
                     tasks.Add(task);
                     count++;
                 }
-                else if (fileInfos[i].Name.EndsWith(".yrp"))
+                else if (fileInfos[i].Name.EndsWith(Program.yrpExpansion))
                 {
                     var task = new string[] { count.ToString(), fileInfos[i].Name };
                     tasks.Add(task);
@@ -116,14 +116,14 @@ namespace MDPro3
 
         public void KF_Replay(string name, bool god = false)
         {
-            string fileName = "Replay/" + name + (name.EndsWith(".yrp") ? "" : ".yrp3d");
+            string fileName = Program.replayPath + name + (name.EndsWith(Program.yrpExpansion) ? string.Empty : Program.yrp3dExpansion);
             if (!File.Exists(fileName))
             {
-                fileName = fileName.Replace(".yrp3d", ".yrp");
+                fileName = fileName.Replace(Program.yrp3dExpansion, Program.yrpExpansion);
                 if (!File.Exists(fileName))
                     return;
             }
-            bool yrp3d = fileName.Length > 6 && fileName.ToLower().Substring(fileName.Length - 6, 6) == ".yrp3d";
+            bool yrp3d = fileName.Length > 6 && fileName.ToLower().Substring(fileName.Length - 6, 6) == Program.yrp3dExpansion;
             try
             {
                 if (yrp3d)
@@ -159,7 +159,7 @@ namespace MDPro3
         }
         List<byte[]> GetYRPBuffer(string path)
         {
-            if (path.EndsWith(".yrp"))
+            if (path.EndsWith(Program.yrpExpansion))
                 return new List<byte[]>() { File.ReadAllBytes(path) };
             var returnValue = new List<byte[]>();
             try
@@ -261,11 +261,11 @@ namespace MDPro3
             if (cachedYRPs.ContainsKey(replay))
                 return cachedYRPs[replay];
             YRP yrp;
-            if (File.Exists("Replay/" + replay))
-                yrp = GetYRP(File.ReadAllBytes("Replay/" + replay));
+            if (File.Exists(Program.replayPath + replay))
+                yrp = GetYRP(File.ReadAllBytes(Program.replayPath + replay));
             else
             {
-                var buffer = GetYRPBuffer("Replay/" + replay + ".yrp3d");
+                var buffer = GetYRPBuffer(Program.replayPath + replay + Program.yrp3dExpansion);
                 if (buffer.Count == 0)
                     yrp = null;
                 else
@@ -301,7 +301,7 @@ namespace MDPro3
             var selections = new List<string>()
         {
             InterString.Get("请输入新的回放名称"),
-            superScrollView.items[superScrollView.selected].args[1].Replace(".yrp", "")
+            superScrollView.items[superScrollView.selected].args[1].Replace(Program.yrpExpansion, string.Empty)
         };
             UIManager.ShowPopupInput(selections, ReplayRename, null, InputValidation.ValidationType.Path);
         }
@@ -309,10 +309,10 @@ namespace MDPro3
         void ReplayRename(string newName)
         {
             string replay = superScrollView.items[superScrollView.selected].args[1];
-            if (replay.EndsWith(".yrp"))
-                File.Move("Replay/" + replay, "Replay/" + newName + ".yrp");
+            if (replay.EndsWith(Program.yrpExpansion))
+                File.Move(Program.replayPath + replay, Program.replayPath + newName + Program.yrpExpansion);
             else
-                File.Move("Replay/" + replay + ".yrp3d", "Replay/" + newName + ".yrp3d");
+                File.Move(Program.replayPath + replay + Program.yrp3dExpansion, Program.replayPath + newName + Program.yrp3dExpansion);
             Print();
         }
 
@@ -327,10 +327,10 @@ namespace MDPro3
         public void OnDelete()
         {
             var replay = superScrollView.items[superScrollView.selected].args[1];
-            if (File.Exists("Replay/" + replay))
-                File.Delete("Replay/" + replay);
+            if (File.Exists(Program.replayPath + replay))
+                File.Delete(Program.replayPath + replay);
             else
-                File.Delete("Replay/" + replay + ".yrp3d");
+                File.Delete(Program.replayPath + replay + Program.yrp3dExpansion);
             MessageManager.Cast(InterString.Get("已删除回放「[?]」。", replay));
             Print();
         }
@@ -350,7 +350,7 @@ namespace MDPro3
         {
             var replay = superScrollView.items[superScrollView.selected].args[1];
             var yrp = cachedYRPs[replay];
-            replay = replay.Replace(".yrp", "");
+            replay = replay.Replace(Program.yrpExpansion, string.Empty);
 
             var value = MDPro3.YGOSharp.Deck.deckPrefix + MDPro3.YGOSharp.Deck.defaultDeckAuthor + "\r\n#main\r\n";
             for (int i = 0; i < yrp.playerData[player].main.Count; i++)

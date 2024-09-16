@@ -33,7 +33,10 @@ namespace MDPro3
         static Texture cardHolo4;
 
         static int cardLoadCount;
-        const int cardLoadMax = 200;
+        const int cardLoadMax = 100;
+
+        public static bool lastCardFoundArt;
+        public static bool lastCardRenderSucceed;
         public override void Initialize()
         {
             base.Initialize();
@@ -273,9 +276,13 @@ namespace MDPro3
             }
 
             if (returnValue == null)
+            {
+                lastCardFoundArt = false;
                 return container.unknownArt.texture;
+            }
             else
             {
+                lastCardFoundArt = true;
                 if (cache)
                 {
                     lock (cachedArts)
@@ -298,11 +305,16 @@ namespace MDPro3
             if (cachedCards.TryGetValue(code, out var returnValue))
                 return returnValue;
 
-            while(container == null)
+            lastCardRenderSucceed = true;
+
+            while (container == null)
                 await Task.Delay(100);
             var data = CardsManager.Get(code, true);
             if (data.Id == 0)
+            {
+                lastCardRenderSucceed = false;
                 return container.unknownCard.texture;
+            }
 
             var task = LoadArtAsync(code, false);
             await task;
@@ -314,6 +326,7 @@ namespace MDPro3
                     if (cache)
                         if (!cachedCards.ContainsKey(code))
                             cachedCards.Add(code, container.unknownCard.texture);
+                    lastCardRenderSucceed = false;
                     return container.unknownCard.texture;
                 }
 
@@ -411,7 +424,7 @@ namespace MDPro3
             }
             if (!Directory.Exists(Program.closeupPath))
                 Directory.CreateDirectory(Program.closeupPath);
-            var path = Program.closeupPath + Program.slash + code + Program.pngExpansion;
+            var path = Program.closeupPath + code + Program.pngExpansion;
             if (!File.Exists(path))
                 yield break;
 
@@ -859,7 +872,18 @@ namespace MDPro3
         #endregion
 
         #region Public Static Functions
-        public static Color[] ResizePixels(Color[] originalPixels, int originalWidth, int originalHeight, int newWidth, int newHeight)
+
+        public static Texture2D ResizeTexture2D(Texture2D texture, int newWidth, int newHeight)
+        {
+            var returnValue = new Texture2D(newWidth, newHeight);
+            var resizePixels = ResizePixelsBilinear(texture.GetPixels(), texture.width, texture.height, newWidth, newHeight);
+            returnValue.SetPixels(resizePixels);
+            returnValue.Apply();
+            Destroy(texture);
+            return returnValue;
+        }
+
+        public static Color[] ResizePixelsNearest(Color[] originalPixels, int originalWidth, int originalHeight, int newWidth, int newHeight)
         {
             Color[] newPixels = new Color[newWidth * newHeight];
 
@@ -877,6 +901,171 @@ namespace MDPro3
             return newPixels;
         }
 
+        public static Color BilinearInterpolation(Color c1, Color c2, Color c3, Color c4, float u, float v)
+        {
+            // Perform linear interpolation in the horizontal direction.
+            Color c12 = new Color(
+                c1.r * (1 - u) + c2.r * u,
+                c1.g * (1 - u) + c2.g * u,
+                c1.b * (1 - u) + c2.b * u,
+                c1.a * (1 - u) + c2.a * u);
+
+            Color c34 = new Color(
+                c3.r * (1 - u) + c4.r * u,
+                c3.g * (1 - u) + c4.g * u,
+                c3.b * (1 - u) + c4.b * u,
+                c3.a * (1 - u) + c4.a * u);
+
+            // Then perform linear interpolation in the vertical direction.
+            return new Color(
+                c12.r * (1 - v) + c34.r * v,
+                c12.g * (1 - v) + c34.g * v,
+                c12.b * (1 - v) + c34.b * v,
+                c12.a * (1 - v) + c34.a * v);
+        }
+
+        public static Color[] ResizePixelsBilinear(Color[] originalPixels, int originalWidth, int originalHeight, int newWidth, int newHeight)
+        {
+            Color[] newPixels = new Color[newWidth * newHeight];
+
+            for (int y = 0; y < newHeight; y++)
+            {
+                for (int x = 0; x < newWidth; x++)
+                {
+                    float origX = ((float)x / newWidth) * originalWidth;
+                    float origY = ((float)y / newHeight) * originalHeight;
+
+                    int floorX = (int)Math.Floor(origX);
+                    int floorY = (int)Math.Floor(origY);
+                    int ceilX = Math.Min(floorX + 1, originalWidth - 1); // Ensure not to go out of bounds
+                    int ceilY = Math.Min(floorY + 1, originalHeight - 1); // Ensure not to go out of bounds
+
+                    if (floorX == ceilX || floorY == ceilY)
+                    {
+                        // Avoid division by zero and handle edge cases.
+                        newPixels[y * newWidth + x] = originalPixels[floorY * originalWidth + floorX];
+                        continue;
+                    }
+
+                    Color c1 = originalPixels[floorY * originalWidth + floorX];
+                    Color c2 = originalPixels[floorY * originalWidth + ceilX];
+                    Color c3 = originalPixels[ceilY * originalWidth + floorX];
+                    Color c4 = originalPixels[ceilY * originalWidth + ceilX];
+
+                    float u = origX - floorX;
+                    float v = origY - floorY;
+
+                    newPixels[y * newWidth + x] = BilinearInterpolation(c1, c2, c3, c4, u, v);
+                }
+            }
+
+            return newPixels;
+        }
+
+        public static Color BicubicInterpolation(Color c00, Color c01, Color c02, Color c03,
+                                                Color c10, Color c11, Color c12, Color c13,
+                                                Color c20, Color c21, Color c22, Color c23,
+                                                Color c30, Color c31, Color c32, Color c33,
+                                                float u, float v)
+        {
+            // Implement Catmull-Rom spline kernel.
+            float b = -0.5f;
+            float c = 1.5f;
+            float d = -1.5f;
+            float e = 1.0f;
+            float f = -0.5f;
+            float g = 0.5f;
+            float h = -0.5f;
+
+            // Construct the cubic basis matrix.
+            float[] m = new float[] { b, c, d, e, f, g, h, 0.0f };
+            float[] uMat = new float[] { u * u * u, u * u, u, 1.0f };
+            float[] vMat = new float[] { v * v * v, v * v, v, 1.0f };
+
+            // Interpolate horizontally.
+            Color c0 = new Color(
+                Clamp(uMat[0] * m[0] * c00.r + uMat[1] * m[1] * c00.r + uMat[2] * m[2] * c00.r + uMat[3] * m[3] * c00.r, 0, 1),
+                Clamp(uMat[0] * m[0] * c00.g + uMat[1] * m[1] * c00.g + uMat[2] * m[2] * c00.g + uMat[3] * m[3] * c00.g, 0, 1),
+                Clamp(uMat[0] * m[0] * c00.b + uMat[1] * m[1] * c00.b + uMat[2] * m[2] * c00.b + uMat[3] * m[3] * c00.b, 0, 1),
+                Clamp(uMat[0] * m[0] * c00.a + uMat[1] * m[1] * c00.a + uMat[2] * m[2] * c00.a + uMat[3] * m[3] * c00.a, 0, 1));
+
+            Color c1 = new Color(
+                Clamp(uMat[0] * m[0] * c10.r + uMat[1] * m[1] * c10.r + uMat[2] * m[2] * c10.r + uMat[3] * m[3] * c10.r, 0, 1),
+                Clamp(uMat[0] * m[0] * c10.g + uMat[1] * m[1] * c10.g + uMat[2] * m[2] * c10.g + uMat[3] * m[3] * c10.g, 0, 1),
+                Clamp(uMat[0] * m[0] * c10.b + uMat[1] * m[1] * c10.b + uMat[2] * m[2] * c10.b + uMat[3] * m[3] * c10.b, 0, 1),
+                Clamp(uMat[0] * m[0] * c10.a + uMat[1] * m[1] * c10.a + uMat[2] * m[2] * c10.a + uMat[3] * m[3] * c10.a, 0, 1));
+
+            Color c2 = new Color(
+                Clamp(uMat[0] * m[0] * c20.r + uMat[1] * m[1] * c20.r + uMat[2] * m[2] * c20.r + uMat[3] * m[3] * c20.r, 0, 1),
+                Clamp(uMat[0] * m[0] * c20.g + uMat[1] * m[1] * c20.g + uMat[2] * m[2] * c20.g + uMat[3] * m[3] * c20.g, 0, 1),
+                Clamp(uMat[0] * m[0] * c20.b + uMat[1] * m[1] * c20.b + uMat[2] * m[2] * c20.b + uMat[3] * m[3] * c20.b, 0, 1),
+                Clamp(uMat[0] * m[0] * c20.a + uMat[1] * m[1] * c20.a + uMat[2] * m[2] * c20.a + uMat[3] * m[3] * c20.a, 0, 1));
+
+            Color c3 = new Color(
+                Clamp(uMat[0] * m[0] * c30.r + uMat[1] * m[1] * c30.r + uMat[2] * m[2] * c30.r + uMat[3] * m[3] * c30.r, 0, 1),
+                Clamp(uMat[0] * m[0] * c30.g + uMat[1] * m[1] * c30.g + uMat[2] * m[2] * c30.g + uMat[3] * m[3] * c30.g, 0, 1),
+                Clamp(uMat[0] * m[0] * c30.b + uMat[1] * m[1] * c30.b + uMat[2] * m[2] * c30.b + uMat[3] * m[3] * c30.b, 0, 1),
+                Clamp(uMat[0] * m[0] * c30.a + uMat[1] * m[1] * c30.a + uMat[2] * m[2] * c30.a + uMat[3] * m[3] * c30.a, 0, 1));
+
+            // Interpolate vertically.
+            return new Color(
+                Clamp(vMat[0] * m[0] * c0.r + vMat[1] * m[1] * c0.r + vMat[2] * m[2] * c0.r + vMat[3] * m[3] * c0.r, 0, 1),
+                Clamp(vMat[0] * m[0] * c0.g + vMat[1] * m[1] * c0.g + vMat[2] * m[2] * c0.g + vMat[3] * m[3] * c0.g, 0, 1),
+                Clamp(vMat[0] * m[0] * c0.b + vMat[1] * m[1] * c0.b + vMat[2] * m[2] * c0.b + vMat[3] * m[3] * c0.b, 0, 1),
+                Clamp(vMat[0] * m[0] * c0.a + vMat[1] * m[1] * c0.a + vMat[2] * m[2] * c0.a + vMat[3] * m[3] * c0.a, 0, 1));
+        }
+
+        public static float Clamp(float value, float min, float max)
+        {
+            return value < min ? min : (value > max ? max : value);
+        }
+
+        public static Color[] ResizePixelsBicubic(Color[] originalPixels, int originalWidth, int originalHeight, int newWidth, int newHeight)
+        {
+            Color[] newPixels = new Color[newWidth * newHeight];
+
+            for (int y = 0; y < newHeight; y++)
+            {
+                for (int x = 0; x < newWidth; x++)
+                {
+                    float origX = ((float)x / newWidth) * originalWidth;
+                    float origY = ((float)y / newHeight) * originalHeight;
+
+                    int floorX = (int)Math.Floor(origX);
+                    int floorY = (int)Math.Floor(origY);
+                    int ceilX = Math.Min(floorX + 3, originalWidth - 1); // Ensure not to go out of bounds
+                    int ceilY = Math.Min(floorY + 3, originalHeight - 1); // Ensure not to go out of bounds
+
+                    if (floorX >= ceilX - 1 || floorY >= ceilY - 1)
+                    {
+                        newPixels[y * newWidth + x] = originalPixels[floorY * originalWidth + floorX];
+                        continue;
+                    }
+
+                    // Fetch the 4x4 neighborhood around the pixel.
+                    Color[,] colors = new Color[4, 4];
+                    for (int row = 0; row < 4; row++)
+                    {
+                        for (int col = 0; col < 4; col++)
+                        {
+                            colors[row, col] = originalPixels[(floorY + row) * originalWidth + floorX + col];
+                        }
+                    }
+
+                    // Pass the 4x4 neighborhood to the bicubic interpolation function.
+                    float u = origX - floorX;
+                    float v = origY - floorY;
+
+                    newPixels[y * newWidth + x] = BicubicInterpolation(colors[0, 0], colors[0, 1], colors[0, 2], colors[0, 3],
+                                                                       colors[1, 0], colors[1, 1], colors[1, 2], colors[1, 3],
+                                                                       colors[2, 0], colors[2, 1], colors[2, 2], colors[2, 3],
+                                                                       colors[3, 0], colors[3, 1], colors[3, 2], colors[3, 3],
+                                                                       u, v);
+                }
+            }
+
+            return newPixels;
+        }
         public static Sprite Texture2Sprite(Texture2D texture)
         {
             if (texture == null)

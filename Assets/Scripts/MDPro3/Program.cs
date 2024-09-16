@@ -56,21 +56,23 @@ namespace MDPro3
         public static bool Running = true;
         public const string artPath = "Picture/Art/";
         public const string altArtPath = "Picture/Art2/";
-        public const string cardPicPath = "Picture/CardGenerated";
-        public const string closeupPath = "Picture/Closeup";
+        public const string cardPicPath = "Picture/CardGenerated/";
+        public const string closeupPath = "Picture/Closeup/";
         public const string dataPath = "Data/";
         public const string localesPath = "Data/locales/";
         public const string configPath = "Data/config.conf";
         public const string lflistPath = "Data/lflist.conf";
         public const string deckPath = "Deck/";
-        public const string expansionsPath = "Expansions";
-        public const string puzzlePath = "Puzzle";
-        public const string replayPath = "Replay";
+        public const string expansionsPath = "Expansions/";
+        public const string puzzlePath = "Puzzle/";
+        public const string replayPath = "Replay/";
         public const string diyPath = "Picture/DIY/";
         public const string slash = "/";
         public const string ydkExpansion = ".ydk";
         public const string pngExpansion = ".png";
         public const string jpgExpansion = ".jpg";
+        public const string yrpExpansion = ".yrp";
+        public const string yrp3dExpansion = ".yrp3d";
         #endregion
 
         public static Program I()

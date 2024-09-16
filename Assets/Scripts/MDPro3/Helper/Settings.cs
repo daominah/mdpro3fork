@@ -18,6 +18,8 @@ namespace MDPro3
         public string PrereleasePackVersionUrl;
         public string MDPro3VersionUrl;
         public bool CardRenderPassword;
+        public int[] SavedCardSize;
+        public string SavedCardFormat;
 
         public SettingData()
         {
@@ -81,6 +83,8 @@ namespace MDPro3
             PrereleasePackVersionUrl = "https://cdn02.moecube.com:444/ygopro-super-pre/data/version.txt";
             MDPro3VersionUrl = "https://code.moenext.com/sherry_chaos/MDPro3/-/raw/master/Version.txt";
             CardRenderPassword = true;
+            SavedCardSize = new int[] { 704, 1024 };
+            SavedCardFormat = Program.jpgExpansion;
         }
     }
 
@@ -131,42 +135,42 @@ namespace MDPro3
             var defau = new SettingData();
             bool needOverwrite = false;
 
-            if (data.FinalAttackBlueEyes == null)
+            if (!json.Contains("FinalAttackBlueEyes"))
             {
                 data.FinalAttackBlueEyes = defau.FinalAttackBlueEyes;
                 needOverwrite = true;
             }
-            if (data.FinalAttackDarkM == null)
+            if (!json.Contains("FinalAttackDarkM"))
             {
                 data.FinalAttackDarkM = defau.FinalAttackDarkM;
                 needOverwrite = true;
             }
-            if (data.FinalAttackRedEyes == null)
+            if (!json.Contains("FinalAttackRedEyes"))
             {
                 data.FinalAttackRedEyes = defau.FinalAttackRedEyes;
                 needOverwrite = true;
             }
-            if (data.FinalAttackObelisk == null)
+            if (!json.Contains("FinalAttackObelisk"))
             {
                 data.FinalAttackObelisk = defau.FinalAttackObelisk;
                 needOverwrite = true;
             }
-            if (data.FinalAttackRa == null)
+            if (!json.Contains("FinalAttackRa"))
             {
                 data.FinalAttackRa = defau.FinalAttackRa;
                 needOverwrite = true;
             }
-            if (data.FinalAttackSlifer == null)
+            if (!json.Contains("FinalAttackSlifer"))
             {
                 data.FinalAttackSlifer = defau.FinalAttackSlifer;
                 needOverwrite = true;
             }
-            if (string.IsNullOrEmpty(data.PrereleasePackUrl))
+            if (!json.Contains("PrereleasePackUrl"))
             {
                 data.PrereleasePackUrl = defau.PrereleasePackUrl;
                 needOverwrite = true;
             }
-            if (string.IsNullOrEmpty(data.PrereleasePackVersionUrl))
+            if (!json.Contains("PrereleasePackVersionUrl"))
             {
                 data.PrereleasePackVersionUrl = defau.PrereleasePackVersionUrl;
                 needOverwrite = true;
@@ -176,8 +180,17 @@ namespace MDPro3
                 data.CardRenderPassword = defau.CardRenderPassword;
                 needOverwrite = true;
             }
-
-            if(needOverwrite)
+            if (!json.Contains("SavedCardSize"))
+            {
+                data.SavedCardSize = defau.SavedCardSize;
+                needOverwrite = true;
+            }
+            if (!json.Contains("SavedCardFormat"))
+            {
+                data.SavedCardFormat = defau.SavedCardFormat;
+                needOverwrite = true;
+            }
+            if (needOverwrite)
                 SaveSettings(data);
 
             return data;
