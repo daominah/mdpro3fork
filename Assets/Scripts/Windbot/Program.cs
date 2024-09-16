@@ -6,6 +6,8 @@ using WindBot.Game;
 using WindBot.Game.AI;
 using YGOSharp.OCGWrapper;
 using System.Collections.Specialized;
+using System.Collections.Generic;
+using MDPro3;
 
 namespace WindBot
 {
@@ -64,7 +66,11 @@ namespace WindBot
                 Console.ReadKey();
                 System.Environment.Exit(1);
             }
-            NamedCardsManager.Init(absolutePath);
+            var paths = ZipHelper.GetAllCdbTempPath();
+            paths.Add(absolutePath);
+            foreach(var cdb in Directory.GetFiles(MDPro3.Program.expansionsPath, "*.cdb"))
+                paths.Add(cdb);
+            NamedCardsManager.InitForMulti(paths);
         }
 
         private static void RunFromArgs()

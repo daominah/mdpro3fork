@@ -5159,7 +5159,7 @@ namespace MDPro3
                     var valstring = StringHelper.Get(pvalue);
                     if (pvalue == 38723936)
                     {
-                        valstring = InterString.Get("不能确认墓地里的卡");
+                        valstring = InterString.Get("不能确认墓地中的卡");
                         if (player == 0)
                         {
                             if (ptype == 6)
@@ -5181,9 +5181,9 @@ namespace MDPro3
                     else if (ptype == 7)
                     {
                         if (player == 0)
-                            PrintDuelLog(InterString.Get("我方取消状态：[?]", valstring));
+                            PrintDuelLog(InterString.Get("我方状态结束：[?]", valstring));
                         else
-                            PrintDuelLog(InterString.Get("对方取消状态：[?]", valstring));
+                            PrintDuelLog(InterString.Get("对方状态结束：[?]", valstring));
                     }
                     break;
                 case GameMessage.CardHint:
