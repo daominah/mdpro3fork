@@ -174,13 +174,15 @@ namespace MDPro3.YGOSharp
             Card card = new Card(reader);
             if (!render)
             {
-                if (!_cards.ContainsKey(card.Id))
-                    _cards.Add(card.Id, card);
+                //if (!_cards.ContainsKey(card.Id))
+                //    _cards.Add(card.Id, card);
+                _cards[card.Id] = card;
             }
             else
             {
-                if (!_cardsForRender.ContainsKey(card.Id))
-                    _cardsForRender.Add(card.Id, card);
+                //if (!_cardsForRender.ContainsKey(card.Id))
+                //    _cardsForRender.Add(card.Id, card);
+                _cardsForRender[card.Id] = card;
             }
         }
 

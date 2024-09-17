@@ -59,7 +59,7 @@ namespace MDPro3
             ret.len = 0;
             var fileName2 = fileName.TrimStart('.', '/');
 
-            if (fileName.StartsWith("puzzle"))
+            if (fileName.StartsWith(Program.puzzlePath))
             {
                 if (File.Exists(fileName))
                 {

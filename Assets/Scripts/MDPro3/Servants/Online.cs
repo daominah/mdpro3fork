@@ -789,7 +789,7 @@ namespace MDPro3.Net
                 while (!task.IsCompleted)
                     yield return null;
             }
-            //下载已经有Id的本地较旧卡组
+            //更新已经有Id的本地较旧卡组
             foreach (var deck in decksNeedUpdate2)
             {
                 var od = OnlineDeck.GetDeck(deck.Value.deckId);
@@ -856,7 +856,7 @@ namespace MDPro3.Net
                 return null;
             var oldDeckName = Path.GetFileNameWithoutExtension(deckPath);
             if(oldDeckName == newName )
-                return newName;
+                return deckPath;
             var folderPath = Path.GetDirectoryName(deckPath);
             if (folderPath == null)
                 return null;

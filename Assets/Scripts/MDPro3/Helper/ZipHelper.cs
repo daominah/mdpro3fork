@@ -11,7 +11,6 @@ namespace MDPro3
         public static void Initialize()
         {
             zips.Clear();
-            zips.Add(new ZipFile("Data/script.zip"));
 
             if (!Directory.Exists("Expansions"))
                 Directory.CreateDirectory("Expansions");
@@ -19,6 +18,8 @@ namespace MDPro3
                 zips.Add(new ZipFile(zip));
             foreach (var zip in Directory.GetFiles("Expansions", "*.zip"))
                 zips.Add(new ZipFile(zip));
+
+            zips.Add(new ZipFile("Data/script.zip"));//Make "Data/script.zip" the last one to read.
         }
         public static void Dispose()
         {

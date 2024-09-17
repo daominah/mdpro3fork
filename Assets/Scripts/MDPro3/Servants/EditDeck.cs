@@ -687,7 +687,7 @@ namespace MDPro3
             detail.Show(cardShowing, cardFace, mat, cardIndex >= 0 ? CardsInDeck() : CardsOnList(), cardIndex);
         }
 
-        List<int> CardsInDeck()
+        public List<int> CardsInDeck()
         {
             var cards = new Dictionary<int, int>();
             foreach (var card in this.cards)
