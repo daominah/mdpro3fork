@@ -920,26 +920,46 @@ namespace MDPro3
             #region Playable Guide
             if (condition == Condition.Duel && inAi == false)
             {
-                var ie = ABLoader.LoadFromFileAsync("MasterDuel/BG/timer/playableguide_c001_near", true);
+                IEnumerator<GameObject> ie;
+                if (field0.name.StartsWith("Mat_013"))
+                    ie = ABLoader.LoadFromFileAsync("MasterDuel/BG/Timer/PlayableGuide_C001_Near_Mat13", true);
+                else
+                    ie = ABLoader.LoadFromFileAsync("MasterDuel/BG/Timer/PlayableGuide_C001_Near", true);
                 StartCoroutine(ie);
                 while (ie.MoveNext())
                     yield return null;
                 playableGuide0 = ie.Current;
-                ie = ABLoader.LoadFromFileAsync("MasterDuel/BG/timer/playableguide_c001_far", true);
+                if (field1.name.StartsWith("Mat_013"))
+                    ie = ABLoader.LoadFromFileAsync("MasterDuel/BG/Timer/PlayableGuide_C001_Far_Mat13", true);
+                else
+                    ie = ABLoader.LoadFromFileAsync("MasterDuel/BG/Timer/PlayableGuide_C001_Far", true);
                 StartCoroutine(ie);
                 while (ie.MoveNext())
                     yield return null;
                 playableGuide1 = ie.Current;
 
+                for (int i = 0; i < playableGuide0.transform.childCount; i++)
+                {
+                    if (playableGuide0.transform.GetChild(i).name.EndsWith("Luminous"))
+                        playableGuide0.transform.GetChild(i).GetComponent<MeshRenderer>().material.renderQueue = 4000;
+                    if (playableGuide0.transform.GetChild(i).name.EndsWith("change"))
+                        playableGuide0.transform.GetChild(i).gameObject.SetActive(false);
+                    if (playableGuide0.transform.GetChild(i).name.EndsWith("play"))
+                        playableGuide0.transform.GetChild(i).GetComponent<MeshRenderer>().material.renderQueue = 2500;
+                }
+                for (int i = 0; i < playableGuide1.transform.childCount; i++)
+                {
+                    if (playableGuide1.transform.GetChild(i).name.EndsWith("Luminous"))
+                        playableGuide1.transform.GetChild(i).GetComponent<MeshRenderer>().material.renderQueue = 4000;
+                    if (playableGuide1.transform.GetChild(i).name.EndsWith("change"))
+                        playableGuide1.transform.GetChild(i).gameObject.SetActive(false);
+                    if (playableGuide1.transform.GetChild(i).name.EndsWith("play"))
+                        playableGuide1.transform.GetChild(i).GetComponent<MeshRenderer>().material.renderQueue = 2500;
+                }
                 playableGuide0.transform.SetParent(Program.I().container_3D, false);
                 playableGuide1.transform.SetParent(Program.I().container_3D, false);
                 playableGuide0.SetActive(false);
                 playableGuide1.SetActive(false);
-
-//#if UNITY_ANDROID
-//                Destroy(playableGuide0.transform.GetChild(2).gameObject);
-//                Destroy(playableGuide1.transform.GetChild(2).gameObject);
-//#endif
                 allGameObjects.Add(playableGuide0);
                 allGameObjects.Add(playableGuide1);
             }
@@ -1579,6 +1599,8 @@ namespace MDPro3
             greenBackground.gameObject.SetActive(false);
             inputMode = false;
             returnAction = null;
+            movingToGrave = 0;
+            movingToExclude = 0;
         }
 
         public void AddPackage(Package p)
@@ -1727,6 +1749,45 @@ namespace MDPro3
                 r.ReadGPS();
                 var reason = r.ReadUInt32();
                 if ((reason & (uint)CardReason.MATERIAL) > 0)
+                    return true;
+            }
+            return false;
+        }
+
+        public static int movingToGrave = 0;
+        public static int movingToExclude = 0;
+        public bool NextMessageIsMovingToGrave(uint player)
+        {
+            if (movingToGrave >= 5)
+                return false;
+            if (packages.Count < 2)
+                return false;
+            if (packages[1].Function == (int)GameMessage.Move)
+            {
+                var r = packages[1].Data.reader;
+                r.ReadInt32();
+                var from = r.ReadGPS();
+                var to = r.ReadGPS();
+                r.ReadUInt32();
+                if (player == to.controller && (to.location & (uint)CardLocation.Grave) > 0)
+                    return true;
+            }
+            return false;
+        }
+        public bool NextMessageIsMovingToExclude(uint player)
+        {
+            if (movingToExclude >= 5)
+                return false;
+            if (packages.Count < 2)
+                return false;
+            if (packages[1].Function == (int)GameMessage.Move)
+            {
+                var r = packages[1].Data.reader;
+                r.ReadInt32();
+                var from = r.ReadGPS();
+                var to = r.ReadGPS();
+                r.ReadUInt32();
+                if (player == to.controller && (to.location & (uint)CardLocation.Removed) > 0)
                     return true;
             }
             return false;
@@ -3375,11 +3436,11 @@ namespace MDPro3
                         if (winType == 0x10)//被封印的艾克佐迪亚
                         {
                             ElementObjectManager mner = PlaySpecialWin("33396948");
-                            StartCoroutine(Program.I().texture_.LoadDummyCard(mner.GetElement<ElementObjectManager>("DummyCard"), 33396948, true));
-                            StartCoroutine(Program.I().texture_.LoadDummyCard(mner.GetElement<ElementObjectManager>("DummyCard2"), 7902349, true));
-                            StartCoroutine(Program.I().texture_.LoadDummyCard(mner.GetElement<ElementObjectManager>("DummyCard3"), 70903634, true));
-                            StartCoroutine(Program.I().texture_.LoadDummyCard(mner.GetElement<ElementObjectManager>("DummyCard4"), 44519536, true));
-                            StartCoroutine(Program.I().texture_.LoadDummyCard(mner.GetElement<ElementObjectManager>("DummyCard5"), 8124921, true));
+                            StartCoroutine(Program.I().texture_.LoadDummyCard(mner.GetElement<ElementObjectManager>("DummyCard"), 33396948, 0, true));
+                            StartCoroutine(Program.I().texture_.LoadDummyCard(mner.GetElement<ElementObjectManager>("DummyCard2"), 7902349, 0, true));
+                            StartCoroutine(Program.I().texture_.LoadDummyCard(mner.GetElement<ElementObjectManager>("DummyCard3"), 70903634, 0, true));
+                            StartCoroutine(Program.I().texture_.LoadDummyCard(mner.GetElement<ElementObjectManager>("DummyCard4"), 44519536, 0, true));
+                            StartCoroutine(Program.I().texture_.LoadDummyCard(mner.GetElement<ElementObjectManager>("DummyCard5"), 8124921, 0, true));
                         }
                         else if (winType == 0x11)//终焉的倒计时
                             PlayCommonSpecialWin(new int[] { 95308449 });
@@ -5624,9 +5685,9 @@ namespace MDPro3
 
                             var card1 = manager.GetElement<ElementObjectManager>("DummyCard01");
                             var card2 = manager.GetElement<ElementObjectManager>("DummyCard02");
-                            var i1 = Program.I().texture_.LoadDummyCard(card1, cardsBeTarget[0].GetData().Id);
+                            var i1 = Program.I().texture_.LoadDummyCard(card1, cardsBeTarget[0].GetData().Id, cardsBeTarget[0].p.controller);
                             StartCoroutine(i1);
-                            var i2 = Program.I().texture_.LoadDummyCard(card2, cardsBeTarget[1].GetData().Id);
+                            var i2 = Program.I().texture_.LoadDummyCard(card2, cardsBeTarget[1].GetData().Id, cardsBeTarget[1].p.controller);
                             StartCoroutine(i2);
                             var scale1 = cardsBeTarget[0].GetData().LScale;
                             var scale2 = cardsBeTarget[1].GetData().RScale;
@@ -5706,9 +5767,9 @@ namespace MDPro3
                                 }
                                 var dummy1 = setManager.transform.GetChild(0).GetComponent<ElementObjectManager>();
                                 var dummy2 = setManager.transform.GetChild(1).GetComponent<ElementObjectManager>();
-                                var ie = Program.I().texture_.LoadDummyCard(dummy1, cardsBeTarget[0].GetData().Id, true);
+                                var ie = Program.I().texture_.LoadDummyCard(dummy1, cardsBeTarget[0].GetData().Id, cardsBeTarget[0].p.controller, true);
                                 StartCoroutine(ie);
-                                ie = Program.I().texture_.LoadDummyCard(dummy2, cardsBeTarget[1].GetData().Id, true);
+                                ie = Program.I().texture_.LoadDummyCard(dummy2, cardsBeTarget[1].GetData().Id, cardsBeTarget[1].p.controller, true);
                                 StartCoroutine(ie);
                                 if (cardsBeTarget[0].p.controller != 0)
                                     setManager.transform.localEulerAngles = new Vector3(0, 180, 0);
@@ -6970,7 +7031,7 @@ namespace MDPro3
             var attackTransform = cardSet.transform;
             var cardSetManager = attackTransform.GetChild(0).GetComponent<ElementObjectManager>();
             var subManager = cardSetManager.GetElement<ElementObjectManager>("Card");
-            StartCoroutine(Program.I().texture_.LoadDummyCard(subManager, attackCard.GetData().Id));
+            StartCoroutine(Program.I().texture_.LoadDummyCard(subManager, attackCard.GetData().Id, attackCard.p.controller));
             attackCard.model.SetActive(false);
             Tools.ChangeLayer(cardSet, "DuelOverlay3D");
             var screenEffect = ABLoader.LoadFromFolder("MasterDuel/Timeline/FinalAttack/BlueEyes/ScreenEffect", "BlueEyes ScreenEffect", true);
@@ -7070,7 +7131,7 @@ namespace MDPro3
             var attackTransform = cardSet.transform;
             var cardSetManager = attackTransform.GetChild(0).GetComponent<ElementObjectManager>();
             var subManager = cardSetManager.GetElement<ElementObjectManager>("Card");
-            StartCoroutine(Program.I().texture_.LoadDummyCard(subManager, attackCard.GetData().Id));
+            StartCoroutine(Program.I().texture_.LoadDummyCard(subManager, attackCard.GetData().Id, attackCard.p.controller));
             attackCard.model.SetActive(false);
             screenEffect.transform.SetParent(Program.I().camera_.cameraDuelOverlay3D.transform, true);
 
@@ -7177,7 +7238,7 @@ namespace MDPro3
             var attackTransform = cardSet.transform;
             var cardSetManager = attackTransform.GetChild(0).GetComponent<ElementObjectManager>();
             var subManager = cardSetManager.GetElement<ElementObjectManager>("Card");
-            StartCoroutine(Program.I().texture_.LoadDummyCard(subManager, attackCard.GetData().Id));
+            StartCoroutine(Program.I().texture_.LoadDummyCard(subManager, attackCard.GetData().Id, attackCard.p.controller));
             cardSetManager.GetComponent<PlayableDirector>().Play();
             attackCard.model.SetActive(false);
             screenEffect.transform.SetParent(Program.I().camera_.cameraDuelOverlay3D.transform, true);
@@ -7269,7 +7330,7 @@ namespace MDPro3
             var attackTransform = cardSet.transform;
             var cardSetManager = attackTransform.GetChild(0).GetComponent<ElementObjectManager>();
             var subManager = cardSetManager.GetElement<ElementObjectManager>("Card");
-            StartCoroutine(Program.I().texture_.LoadDummyCard(subManager, attackCard.GetData().Id));
+            StartCoroutine(Program.I().texture_.LoadDummyCard(subManager, attackCard.GetData().Id, attackCard.p.controller));
             cardSetManager.GetComponent<PlayableDirector>().Play();
             attackCard.model.SetActive(false);
             screenEffect.transform.SetParent(Program.I().camera_.cameraDuelOverlay3D.transform, true);
@@ -7354,7 +7415,7 @@ namespace MDPro3
             var attackTransform = cardSet.transform;
             var cardSetManager = attackTransform.GetChild(0).GetComponent<ElementObjectManager>();
             var subManager = cardSetManager.GetElement<ElementObjectManager>("Card");
-            StartCoroutine(Program.I().texture_.LoadDummyCard(subManager, attackCard.GetData().Id));
+            StartCoroutine(Program.I().texture_.LoadDummyCard(subManager, attackCard.GetData().Id, attackCard.p.controller));
             attackCard.model.SetActive(false);
 
             var screenEffect = ABLoader.LoadFromFolder("MasterDuel/Timeline/FinalAttack/Slifer/ScreenEffect", "Slifer ScreenEffect", true);
@@ -7467,7 +7528,7 @@ namespace MDPro3
             var attackTransform = cardSet.transform;
             var cardSetManager = attackTransform.GetChild(0).GetComponent<ElementObjectManager>();
             var subManager = cardSetManager.GetElement<ElementObjectManager>("Card");
-            StartCoroutine(Program.I().texture_.LoadDummyCard(subManager, attackCard.GetData().Id));
+            StartCoroutine(Program.I().texture_.LoadDummyCard(subManager, attackCard.GetData().Id, attackCard.p.controller));
             cardSetManager.GetComponent<PlayableDirector>().Play();
             attackCard.model.SetActive(false);
             screenEffect.transform.SetParent(Program.I().camera_.cameraDuelOverlay3D.transform, true);
@@ -8484,7 +8545,7 @@ namespace MDPro3
                     manager.GetElement<SpriteRenderer>("ChainNumDR_Tens"),
                     chain);
             }
-            StartCoroutine(Program.I().texture_.LoadDummyCard(targetCardD, codesInChain[chain - 1], true));
+            StartCoroutine(Program.I().texture_.LoadDummyCard(targetCardD, codesInChain[chain - 1], 0, true));
 
             if (controllerInChain[chain - 1] == controllerInChain[chain - 2])
             {
@@ -8519,7 +8580,7 @@ namespace MDPro3
                     manager.GetElement<SpriteRenderer>("ChainNumCR_Tens"),
                     chain - 1);
             }
-            StartCoroutine(Program.I().texture_.LoadDummyCard(targetCardC, codesInChain[chain - 2], true));
+            StartCoroutine(Program.I().texture_.LoadDummyCard(targetCardC, codesInChain[chain - 2], 0, true));
 
             if(chain > 2)
             {
@@ -8556,7 +8617,7 @@ namespace MDPro3
                         manager.GetElement<SpriteRenderer>("ChainNumBR_Tens"),
                         chain - 2);
                 }
-                StartCoroutine(Program.I().texture_.LoadDummyCard(targetCardB, codesInChain[chain - 3], true));
+                StartCoroutine(Program.I().texture_.LoadDummyCard(targetCardB, codesInChain[chain - 3], 0, true));
 
                 if(chain > 3)
                 {
@@ -8593,7 +8654,7 @@ namespace MDPro3
                             manager.GetElement<SpriteRenderer>("ChainNumAR_Tens"),
                             chain - 3);
                     }
-                    StartCoroutine(Program.I().texture_.LoadDummyCard(targetCardA, codesInChain[chain - 4], true));
+                    StartCoroutine(Program.I().texture_.LoadDummyCard(targetCardA, codesInChain[chain - 4], 0, true));
                 }
                 else
                 {
@@ -8647,7 +8708,7 @@ namespace MDPro3
                     manager.GetElement<SpriteRenderer>("ChainNumDR_Tens"),
                     chain);
             }
-            StartCoroutine(Program.I().texture_.LoadDummyCard(targetCardD, codesInChain[chain - 1], true));
+            StartCoroutine(Program.I().texture_.LoadDummyCard(targetCardD, codesInChain[chain - 1], 0, true));
 
             if(chain > 1)
             {
@@ -8690,7 +8751,7 @@ namespace MDPro3
                         manager.GetElement<SpriteRenderer>("ChainNumCR_Tens"),
                         chain - 1);
                 }
-                StartCoroutine(Program.I().texture_.LoadDummyCard(targetCardC, codesInChain[chain - 2], true));
+                StartCoroutine(Program.I().texture_.LoadDummyCard(targetCardC, codesInChain[chain - 2], 0, true));
             }
 
             if (chain > 2)
@@ -8729,7 +8790,7 @@ namespace MDPro3
                         manager.GetElement<SpriteRenderer>("ChainNumBR_Tens"),
                         chain - 2);
                 }
-                StartCoroutine(Program.I().texture_.LoadDummyCard(targetCardB, codesInChain[chain - 3], true));
+                StartCoroutine(Program.I().texture_.LoadDummyCard(targetCardB, codesInChain[chain - 3], 0, true));
             }
 
             if (chain == 1)
@@ -8883,16 +8944,16 @@ namespace MDPro3
                     //newWhite.GetComponent<SpriteRenderer>().color = Color.clear;
                     child.gameObject.SetActive(false);
                 }
-            StartCoroutine(Program.I().texture_.LoadDummyCard(mner.GetElement<ElementObjectManager>("DummyCard01"), code[0], true));
+            StartCoroutine(Program.I().texture_.LoadDummyCard(mner.GetElement<ElementObjectManager>("DummyCard01"), code[0], 0, true));
             mner.GetElement<ElementObjectManager>("DummyCard01").GetElement<Renderer>("DummyCardModel_front").material.renderQueue = 4000;
             if (count > 1)
-                StartCoroutine(Program.I().texture_.LoadDummyCard(mner.GetElement<ElementObjectManager>("DummyCard02"), code[1], true));
+                StartCoroutine(Program.I().texture_.LoadDummyCard(mner.GetElement<ElementObjectManager>("DummyCard02"), code[1], 0, true));
             if (count > 2)
-                StartCoroutine(Program.I().texture_.LoadDummyCard(mner.GetElement<ElementObjectManager>("DummyCard03"), code[2], true));
+                StartCoroutine(Program.I().texture_.LoadDummyCard(mner.GetElement<ElementObjectManager>("DummyCard03"), code[2], 0, true));
             if (count > 3)
-                StartCoroutine(Program.I().texture_.LoadDummyCard(mner.GetElement<ElementObjectManager>("DummyCard04"), code[3], true));
+                StartCoroutine(Program.I().texture_.LoadDummyCard(mner.GetElement<ElementObjectManager>("DummyCard04"), code[3], 0, true));
             if (count > 4)
-                StartCoroutine(Program.I().texture_.LoadDummyCard(mner.GetElement<ElementObjectManager>("DummyCard05"), code[4], true));
+                StartCoroutine(Program.I().texture_.LoadDummyCard(mner.GetElement<ElementObjectManager>("DummyCard05"), code[4], 0, true));
             mner.GetComponent<PlayableDirector>().Play();
             var mono = mner.gameObject.AddComponent<DoWhenPlayableDirectorStop>();
             mono.action = () =>

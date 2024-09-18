@@ -404,7 +404,7 @@ namespace MDPro3
             var subManager = manager.GetElement<ElementObjectManager>("DummyCardXYZ");
             dummyCard = subManager.gameObject;
 
-            var ie = Program.I().texture_.LoadDummyCard(subManager, summonCard);
+            var ie = Program.I().texture_.LoadDummyCard(subManager, summonCard, 0);
             StartCoroutine(ie);
 
             Destroy(manager.GetElement("SummonXYZShowUnitCard0" + (materials.Count > 2 ? "3" : materials.Count.ToString())));
@@ -437,7 +437,7 @@ namespace MDPro3
             dummyCard = subManager.GetElement("DummyCardLink");
 
             var cardModel = subManager.GetElement<ElementObjectManager>("DummyCardLink");
-            var ie = Program.I().texture_.LoadDummyCard(cardModel, summonCard);
+            var ie = Program.I().texture_.LoadDummyCard(cardModel, summonCard, 0);
             StartCoroutine(ie);
 
             var postLink = subManager.GetElement<Renderer>("DummyCardLinkAdd");

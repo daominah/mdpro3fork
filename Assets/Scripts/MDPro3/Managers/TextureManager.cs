@@ -383,17 +383,18 @@ namespace MDPro3
             mat.mainTexture = task.Result;
             renderer.material = mat;
         }
-        public IEnumerator LoadDummyCard(ElementObjectManager manager, int code, bool active = false)
+        public IEnumerator LoadDummyCard(ElementObjectManager manager, int code, uint player, bool active = false)
         {
             if (active)
                 manager.gameObject.SetActive(false);
+            manager.GetElement<Renderer>("DummyCardModel_side").material = cardMatSide;
+            manager.GetElement<Renderer>("DummyCardModel_back").material = player == 0 ? Program.I().ocgcore.myProtector : Program.I().ocgcore.opProtector;
 
             var task = LoadCardAsync(code, false);
             while (!task.IsCompleted)
                 yield return null;
 
             var mat = GetCardMaterial(code);
-            manager.GetElement<Renderer>("DummyCardModel_side").material = cardMatSide;
             manager.GetElement<Renderer>("DummyCardModel_front").material = mat;
             manager.GetElement<Renderer>("DummyCardModel_front").material.mainTexture = task.Result;
             if (active)
