@@ -330,7 +330,7 @@ namespace MDPro3
                     return container.unknownCard.texture;
                 }
 
-                returnValue = new Texture2D(RenderTexture.active.width, RenderTexture.active.height, TextureFormat.RGB24, false);
+                returnValue = new Texture2D(RenderTexture.active.width, RenderTexture.active.height, TextureFormat.RGB24, true);
                 returnValue.ReadPixels(new Rect(0, 0, RenderTexture.active.width, RenderTexture.active.height), 0, 0);
                 returnValue.Apply();
                 returnValue.name = "Card_" + code;

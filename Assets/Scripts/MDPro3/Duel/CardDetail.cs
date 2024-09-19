@@ -267,10 +267,10 @@ namespace MDPro3
             List<string> selections = new List<string>
             {
                 InterString.Get("保存选项"),
-                InterString.Get("保存当前卡图"),
-                InterString.Get("保存卡组卡图"),
-                InterString.Get("保存所有衍生物卡图"),
-                InterString.Get("保存所有卡图"),
+                InterString.Get("当前卡片卡图"),
+                InterString.Get("当前卡组卡图"),
+                InterString.Get("所有衍生物卡图"),
+                InterString.Get("所有卡图"),
             };
             UIManager.ShowPopupSelection(selections, CardPictureSaveOption);
         }
@@ -278,13 +278,13 @@ namespace MDPro3
         {
             string selected = UnityEngine.EventSystems.EventSystem.current.
                 currentSelectedGameObject.transform.GetChild(0).GetComponent<Text>().text;
-            if (selected == InterString.Get("保存当前卡图"))
+            if (selected == InterString.Get("当前卡片卡图"))
                 SaveShowingCard();
-            else if (selected == InterString.Get("保存卡组卡图"))
+            else if (selected == InterString.Get("当前卡组卡图"))
                 SaveDeckCards();
-            else if (selected == InterString.Get("保存所有衍生物卡图"))
+            else if (selected == InterString.Get("所有衍生物卡图"))
                 SaveAllTokens();
-            else if (selected == InterString.Get("保存所有卡图"))
+            else if (selected == InterString.Get("所有卡图"))
                 SaveAllCards();
         }
 

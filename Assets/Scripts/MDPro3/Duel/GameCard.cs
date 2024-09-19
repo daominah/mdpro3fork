@@ -997,6 +997,56 @@ namespace MDPro3
                 int needSync = 0;
                 float extraWait = 0f;
 
+                bool handAppeal = false;
+                bool fieldAppeal = false;
+                var ease = Ease.Unset;
+                if (overrideMoveTime > 0f)
+                {
+                    moveTime = overrideMoveTime;
+                }
+                else
+                {
+                    switch (Program.I().ocgcore.currentMessage)
+                    {
+                        case GameMessage.Draw:
+                            if (p.controller == 0)
+                            {
+                                moveTime = 0.6f;
+                                handAppeal = true;
+                            }
+                            else
+                                moveTime = 0.3f;
+                            break;
+                        case GameMessage.Move:
+                            if ((p.location & (uint)CardLocation.Onfield) > 0
+                                && cacheP != null
+                                && (cacheP.location & (uint)CardLocation.Onfield) == 0
+                                && (p.location & (uint)CardLocation.Overlay) == 0)
+                            {
+                                moveTime = 0.4f;
+                                fieldAppeal = true;
+                            }
+                            else if ((p.location & (uint)CardLocation.Hand) > 0
+                                && p.controller == 0)
+                            {
+                                moveTime = 0.6f;
+                                handAppeal = true;
+                            }
+                            else
+                                moveTime = 0.3f;
+                            break;
+                        case GameMessage.FlipSummoning:
+                        case GameMessage.PosChange:
+                            moveTime = 0.1f;
+                            break;
+                        case GameMessage.ShuffleSetCard:
+                        case GameMessage.Swap:
+                            moveTime = 0.2f;
+                            break;
+                    }
+                }
+
+
                 //From Ä¹µØ or ³ýÍâ
                 if ((cacheP.location & ((uint)CardLocation.Grave + (uint)CardLocation.Removed)) > 0)
                     timePassed += SequenceFromGrave(sequence, cacheP);
@@ -1010,6 +1060,8 @@ namespace MDPro3
                     && (cacheP.location & ((uint)CardLocation.Onfield + (uint)CardLocation.Hand)) > 0
                     )
                 {
+                    moveTime = 0.5f;
+                    extraWait = 0.05f;
                     se = "SE_CARDBREAK_01";
                     if ((data.Type & (uint)CardType.Token) == 0)
                     {
@@ -1200,55 +1252,6 @@ namespace MDPro3
                     else
                         SequenceNormalSummon(sequence, position, rotation, cutin ? 1.6f : 0);
                     goto SummonPass;
-                }
-
-                bool handAppeal = false;
-                bool fieldAppeal = false;
-                var ease = Ease.Unset;
-                if (overrideMoveTime > 0f)
-                {
-                    moveTime = overrideMoveTime;
-                }
-                else
-                {
-                    switch (Program.I().ocgcore.currentMessage)
-                    {
-                        case GameMessage.Draw:
-                            if (p.controller == 0)
-                            {
-                                moveTime = 0.6f;
-                                handAppeal = true;
-                            }
-                            else
-                                moveTime = 0.2f;
-                            break;
-                        case GameMessage.Move:
-                            if ((p.location & (uint)CardLocation.Onfield) > 0
-                                && cacheP != null
-                                && (cacheP.location & (uint)CardLocation.Onfield) == 0
-                                && (p.location & (uint)CardLocation.Overlay) == 0)
-                            {
-                                moveTime = 0.4f;
-                                fieldAppeal = true;
-                            }
-                            else if ((p.location & (uint)CardLocation.Hand) > 0
-                                && p.controller == 0)
-                            {
-                                moveTime = 0.6f;
-                                handAppeal = true;
-                            }
-                            else
-                                moveTime = 0.3f;
-                            break;
-                        case GameMessage.FlipSummoning:
-                        case GameMessage.PosChange:
-                            moveTime = 0.1f;
-                            break;
-                        case GameMessage.ShuffleSetCard:
-                        case GameMessage.Swap:
-                            moveTime = 0.2f;
-                            break;
-                    }
                 }
 
                 var cardPlane = manager.GetElement<Transform>("CardPlane");
