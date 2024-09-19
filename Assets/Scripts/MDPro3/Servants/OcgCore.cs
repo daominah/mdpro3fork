@@ -1744,6 +1744,7 @@ namespace MDPro3
             if(packages[1].Function == (int)GameMessage.Move)
             {
                 var r = packages[1].Data.reader;
+                r.BaseStream.Seek(0, 0);
                 r.ReadInt32();
                 r.ReadGPS();
                 r.ReadGPS();
@@ -1765,10 +1766,13 @@ namespace MDPro3
             if (packages[1].Function == (int)GameMessage.Move)
             {
                 var r = packages[1].Data.reader;
+                r.BaseStream.Seek(0, 0);
                 r.ReadInt32();
                 var from = r.ReadGPS();
                 var to = r.ReadGPS();
                 r.ReadUInt32();
+                //if ((from.location & (uint)CardLocation.Overlay) > 0)
+                //    return false;
                 if (player == to.controller && (to.location & (uint)CardLocation.Grave) > 0)
                     return true;
             }
@@ -1783,16 +1787,33 @@ namespace MDPro3
             if (packages[1].Function == (int)GameMessage.Move)
             {
                 var r = packages[1].Data.reader;
+                r.BaseStream.Seek(0, 0);
                 r.ReadInt32();
                 var from = r.ReadGPS();
                 var to = r.ReadGPS();
                 r.ReadUInt32();
+                //if ((from.location & (uint)CardLocation.Overlay) > 0)
+                //    return false;
                 if (player == to.controller && (to.location & (uint)CardLocation.Removed) > 0)
                     return true;
             }
             return false;
         }
-
+        public bool NextMessageIsOverlayOut()
+        {
+            if (packages.Count < 2)
+                return false;
+            if (packages[1].Function == (int)GameMessage.Move)
+            {
+                var r = packages[1].Data.reader;
+                r.BaseStream.Seek(0, 0);
+                r.ReadInt32();
+                var from = r.ReadGPS();
+                if ((from.location & (uint)CardLocation.Overlay) > 0)
+                    return true;
+            }
+            return false;
+        }
         private void Sibyl()
         {
             try
@@ -3742,7 +3763,10 @@ namespace MDPro3
                     }
                     card.SetCode(code);
                     to.reason = reason;
-                    Sleep((int)(card.Move(to) * 100));
+                    if(Settings.Data.BatchMove)
+                        Sleep((int)(card.Move(to) * 100));
+                    else
+                        Sleep((int)(card.Move_Backup(to) * 100));
                     break;
                 case GameMessage.PosChange:
                     ES_hint = StringHelper.GetUnsafe(1600);//卡片改变了表示形式

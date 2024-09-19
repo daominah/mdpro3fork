@@ -20,6 +20,7 @@ namespace MDPro3
         public bool CardRenderPassword;
         public int[] SavedCardSize;
         public string SavedCardFormat;
+        public bool BatchMove;
 
         public SettingData()
         {
@@ -85,6 +86,7 @@ namespace MDPro3
             CardRenderPassword = true;
             SavedCardSize = new int[] { 704, 1024 };
             SavedCardFormat = Program.jpgExpansion;
+            BatchMove = true;
         }
     }
 
@@ -188,6 +190,11 @@ namespace MDPro3
             if (!json.Contains("SavedCardFormat"))
             {
                 data.SavedCardFormat = defau.SavedCardFormat;
+                needOverwrite = true;
+            }
+            if (!json.Contains("BatchMove"))
+            {
+                data.BatchMove = defau.BatchMove;
                 needOverwrite = true;
             }
             if (needOverwrite)

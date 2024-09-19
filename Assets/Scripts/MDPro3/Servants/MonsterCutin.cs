@@ -166,7 +166,7 @@ namespace MDPro3
             if (Program.I().ocgcore.condition == OcgCore.Condition.Replay
                 && Config.Get("ReplayCutin", "1") == "0")
                 return false;
-
+            code = AliasCode(code);
             bool returnValue = false;
             foreach (var card in cards)
             {

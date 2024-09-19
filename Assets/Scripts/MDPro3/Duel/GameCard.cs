@@ -987,6 +987,7 @@ namespace MDPro3
                 var position = GetCardPosition(p, this);
                 var rotation = GetCardRotation(p, data.Id);
                 int needSync = 0;
+                float extraWait = 0f;
 
                 //From Ä¹µØ or ³ýÍâ
                 if ((cacheP.location & ((uint)CardLocation.Grave + (uint)CardLocation.Removed)) > 0)
@@ -1004,9 +1005,24 @@ namespace MDPro3
                     se = "SE_CARDBREAK_01";
                     if ((data.Type & (uint)CardType.Token) == 0)
                     {
-                        var fx = ABLoader.LoadFromFile("MasterDuel/Effects/break/fxp_cardbrk_bff_001", true);
+                        var breakEffectPath = "MasterDuel/Effects/break/fxp_cardbrk_bff_001";
+                        var trail1Path = "MasterDuel/Effects/Grave/fxp_grave_brksol_trail_001";
+                        var trail2Path = "MasterDuel/Effects/Grave/fxp_grave_ReCard_move_001";
+                        if ((p.location & (uint)CardLocation.Removed) > 0)
+                        {
+                            breakEffectPath = "MasterDuel/Effects/Exclude/fxp_exclude_001";
+                            trail1Path = "MasterDuel/Effects/Exclude/fxp_exclude_brksol_trail_001";
+                            trail2Path = "MasterDuel/Effects/Exclude/fxp_exclude_ReCard_move_001";
+                        }
+                        var fx = ABLoader.LoadFromFile(breakEffectPath, true);
                         fx.transform.position = model.transform.position;
                         Destroy(fx, 3f);
+
+                        manager.GetElement<Transform>("CardPlane").localScale = Vector3.zero;
+                        var trail1 = ABLoader.LoadFromFile(trail1Path, true);
+                        var trail2 = ABLoader.LoadFromFile(trail2Path, true);
+                        trail1.transform.SetParent(model.transform, false);
+                        trail2.transform.SetParent(model.transform, false);
                     }
                 }
 
@@ -1036,7 +1052,8 @@ namespace MDPro3
                     Destroy(model);
                     Destroy(fx, 2);
                     OcgCore.messagePass = true;
-                    return Program.I().ocgcore.NextMessageIsMaterial() ? 0f : 0.2f;
+                    //return Program.I().ocgcore.NextMessageIsMaterial() ? 0f : 0.2f;
+                    return 0.2f;
                 }
                 //ÕÙ»½ËØ²Ä
                 if (ThisLocationShouldHaveModel(cacheP)
@@ -1068,10 +1085,10 @@ namespace MDPro3
                     if((p.location & (uint)CardLocation.Extra) > 0
                         && (p.location & (uint)CardLocation.Overlay) == 0)
                         Program.I().ocgcore.SetDeckTop(this);
-                    Destroy(model);
+                    //Destroy(model);
                     Destroy(fx, 2);
-                    OcgCore.messagePass = true;
-                    return Program.I().ocgcore.NextMessageIsMaterial() ? 0f : 0.2f;
+                    //OcgCore.messagePass = true;
+                    //return Program.I().ocgcore.NextMessageIsMaterial() ? 0f : 0.2f;
                 }
 
                 //Token In (from unknow)
@@ -1213,7 +1230,7 @@ namespace MDPro3
                                 handAppeal = true;
                             }
                             else
-                                moveTime = 0.25f;
+                                moveTime = 0.3f;
                             break;
                         case GameMessage.FlipSummoning:
                         case GameMessage.PosChange:
@@ -1327,6 +1344,12 @@ namespace MDPro3
                     var fx = ABLoader.LoadFromFile("MasterDuel/Effects/buff/fxp_bff_overlay/fxp_bff_overlay_out_001", true);
                     fx.transform.position = GetCardPosition(cacheP);
                     Destroy(fx, 3f);
+
+                    var trail = ABLoader.LoadFromFile("MasterDuel/Effects/buff/fxp_bff_overlay/fxp_bff_overlay_trail_001");
+                    trail.transform.SetParent(model.transform, false);
+
+                    if (Program.I().ocgcore.NextMessageIsOverlayOut())
+                        extraWait = 0.1f;
                 }
 
                 //Overlay In
@@ -1343,6 +1366,9 @@ namespace MDPro3
                         fx.transform.position = GetCardPosition(p);
                         Destroy(fx, 3f);
                     });
+
+                    var trail = ABLoader.LoadFromFile("MasterDuel/Effects/buff/fxp_bff_overlay/fxp_bff_overlay_trail_001");
+                    trail.transform.SetParent(model.transform, false);
                 }
 
                 sequence.OnComplete(() =>
@@ -1370,9 +1396,19 @@ namespace MDPro3
                 }
 
                 if(needSync == 1 && Program.I().ocgcore.NextMessageIsMovingToGrave(p.controller))
-                    return 0.1f;
+                {
+                    if ((cacheP.location & ((uint)CardLocation.Deck + (uint)CardLocation.Extra + (uint)CardLocation.Hand)) > 0)
+                        return 0f;
+                    else
+                        return 0.05f + extraWait;
+                }
                 else if (needSync == 2 && Program.I().ocgcore.NextMessageIsMovingToExclude(p.controller))
-                    return 0.1f;
+                {
+                    if ((cacheP.location & ((uint)CardLocation.Deck + (uint)CardLocation.Extra + (uint)CardLocation.Hand)) > 0)
+                        return 0f;
+                    else
+                        return 0.05f + extraWait;
+                }
                 else
                     return moveTime + timePassed + 0.1f;
             }
@@ -1481,7 +1517,7 @@ namespace MDPro3
 
                 var position = GetCardPosition(p, this);
                 var rotation = GetCardRotation(p, data.Id);
-
+                int needSync = 0;
                 //From Ä¹µØ or ³ýÍâ
                 if ((cacheP.location & ((uint)CardLocation.Grave + (uint)CardLocation.Removed)) > 0)
                     timePassed += SequenceFromGrave_Backup(sequence, cacheP);
@@ -1498,9 +1534,24 @@ namespace MDPro3
                     se = "SE_CARDBREAK_01";
                     if ((data.Type & (uint)CardType.Token) == 0)
                     {
-                        var fx = ABLoader.LoadFromFile("MasterDuel/Effects/break/fxp_cardbrk_bff_001", true);
+                        var breakEffectPath = "MasterDuel/Effects/break/fxp_cardbrk_bff_001";
+                        var trail1Path = "MasterDuel/Effects/Grave/fxp_grave_brksol_trail_001";
+                        var trail2Path = "MasterDuel/Effects/Grave/fxp_grave_ReCard_move_001";
+                        if ((p.location & (uint)CardLocation.Removed) > 0)
+                        {
+                            breakEffectPath = "MasterDuel/Effects/Exclude/fxp_exclude_001";
+                            trail1Path = "MasterDuel/Effects/Exclude/fxp_exclude_brksol_trail_001";
+                            trail2Path = "MasterDuel/Effects/Exclude/fxp_exclude_ReCard_move_001";
+                        }
+                        var fx = ABLoader.LoadFromFile(breakEffectPath, true);
                         fx.transform.position = model.transform.position;
                         Destroy(fx, 3f);
+
+                        //manager.GetElement<Transform>("CardPlane").localScale = Vector3.zero;
+                        var trail1 = ABLoader.LoadFromFile(trail1Path, true);
+                        var trail2 = ABLoader.LoadFromFile(trail2Path, true);
+                        trail1.transform.SetParent(model.transform, false);
+                        trail2.transform.SetParent(model.transform, false);
                     }
                 }
 
@@ -1530,7 +1581,8 @@ namespace MDPro3
                     Destroy(model);
                     Destroy(fx, 2);
                     OcgCore.messagePass = true;
-                    return Program.I().ocgcore.NextMessageIsMaterial() ? 0f : 0.2f;
+                    //return Program.I().ocgcore.NextMessageIsMaterial() ? 0f : 0.2f;
+                    return 0.2f;
                 }
                 //ÕÙ»½ËØ²Ä
                 if (ThisLocationShouldHaveModel(cacheP)
@@ -1562,10 +1614,10 @@ namespace MDPro3
                     if ((p.location & (uint)CardLocation.Extra) > 0
                         && (p.location & (uint)CardLocation.Overlay) == 0)
                         Program.I().ocgcore.SetDeckTop(this);
-                    Destroy(model);
+                    //Destroy(model);
                     Destroy(fx, 2);
-                    OcgCore.messagePass = true;
-                    return Program.I().ocgcore.NextMessageIsMaterial() ? 0f : 0.2f;
+                    //OcgCore.messagePass = true;
+                    //return Program.I().ocgcore.NextMessageIsMaterial() ? 0f : 0.2f;
                 }
 
                 //Token In (from unknow)
@@ -1707,7 +1759,7 @@ namespace MDPro3
                                 handAppeal = true;
                             }
                             else
-                                moveTime = 0.25f;
+                                moveTime = 0.3f;
                             break;
                         case GameMessage.FlipSummoning:
                         case GameMessage.PosChange:
@@ -1794,12 +1846,17 @@ namespace MDPro3
                     sequence.Join(pivot.DOLocalMove(Vector3.zero, targetMainMoveTime / 4));
                     sequence.Join(pivot.DOLocalRotate(Vector3.zero, targetMainMoveTime / 4));
                 }
-
+                //TO Grave or Exclude
                 if ((p.location & ((uint)CardLocation.Grave + (uint)CardLocation.Removed)) > 0)
                 {
                     OcgCore.messagePass = true;
-                    SequenceToGrave_Backup(sequence, p);
-                    moveTime = 0.1f;
+                    timePassed += SequenceToGrave_Backup(sequence, p);
+                    //moveTime = 0.1f;
+
+                    if ((p.location & (uint)CardLocation.Grave) > 0)
+                        needSync = 1;
+                    else
+                        needSync = 2;
                 }
 
                 //Overlay Out
@@ -1811,6 +1868,9 @@ namespace MDPro3
                     var fx = ABLoader.LoadFromFile("MasterDuel/Effects/buff/fxp_bff_overlay/fxp_bff_overlay_out_001", true);
                     fx.transform.position = GetCardPosition(cacheP);
                     Destroy(fx, 3f);
+
+                    var trail = ABLoader.LoadFromFile("MasterDuel/Effects/buff/fxp_bff_overlay/fxp_bff_overlay_trail_001");
+                    trail.transform.SetParent(model.transform, false);
                 }
 
                 //Overlay In
@@ -1827,6 +1887,9 @@ namespace MDPro3
                         fx.transform.position = GetCardPosition(p);
                         Destroy(fx, 3f);
                     });
+
+                    var trail = ABLoader.LoadFromFile("MasterDuel/Effects/buff/fxp_bff_overlay/fxp_bff_overlay_trail_001");
+                    trail.transform.SetParent(model.transform, false);
                 }
 
                 sequence.OnComplete(() =>
@@ -1852,7 +1915,13 @@ namespace MDPro3
                     else
                         model.transform.SetParent(Program.I().ocgcore.field1Manager.transform, true);
                 }
-                return moveTime + timePassed + 0.05f;
+
+                if (needSync == 1 && Program.I().ocgcore.NextMessageIsMovingToGrave(p.controller))
+                    return 0.1f;
+                else if (needSync == 2 && Program.I().ocgcore.NextMessageIsMovingToExclude(p.controller))
+                    return 0.1f;
+                else
+                    return moveTime + timePassed + 0.1f;
             }
         }
 
