@@ -984,6 +984,14 @@ namespace MDPro3
                 var sequence = DOTween.Sequence();
                 float timePassed = 0;
 
+                if ((p.location & ((uint)CardLocation.Grave + (uint)CardLocation.Removed)) > 0)
+                {
+                    if ((p.location & (uint)CardLocation.Grave) > 0)
+                        OcgCore.movingToGrave++;
+                    else
+                        OcgCore.movingToExclude++;
+                }
+
                 var position = GetCardPosition(p, this);
                 var rotation = GetCardRotation(p, data.Id);
                 int needSync = 0;
@@ -2055,7 +2063,6 @@ namespace MDPro3
         }
         float SequenceToGrave(Sequence sequence, GPS p)
         {
-            OcgCore.movingToGrave++;
             var dummy = ABLoader.LoadFromFile("MasterDuel/Timeline/DuelCardMove/DuelToGrave0" + OcgCore.movingToGrave, true);
             dummy.transform.position = GetCardPosition(p);
             dummy.transform.eulerAngles = GetCardRotation(p);
@@ -2101,7 +2108,6 @@ namespace MDPro3
         }
         float SequenceToExclude(Sequence sequence, GPS p)
         {
-            OcgCore.movingToExclude++;
             var dummy = ABLoader.LoadFromFile("MasterDuel/Timeline/DuelCardMove/DuelToExclude0" + OcgCore.movingToExclude, true);
             dummy.transform.position = GetCardPosition(p);
             dummy.transform.eulerAngles = GetCardRotation(p);
