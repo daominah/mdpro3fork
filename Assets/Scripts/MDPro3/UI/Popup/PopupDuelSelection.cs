@@ -43,7 +43,6 @@ namespace MDPro3.UI
                 800 :
                 scrollRect.content.sizeDelta.y + 50
                 );
-            tempHideHeight = -540 - baseRect.sizeDelta.y / 2;
         }
     }
 

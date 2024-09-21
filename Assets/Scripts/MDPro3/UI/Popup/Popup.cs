@@ -17,17 +17,27 @@ namespace MDPro3.UI
         public Button btnConfirm;
         public Button btnCancel;
         public float buttomOffest = 180;
+        public float maxUIScale = 1.5f;
+        public float showY = 0f;
+        public float height = 195f;
 
         [HideInInspector]
         public List<string> selections;
-
         public Action whenQuitDo;
+        public float hideY = 0f;
+
 
         public virtual void Initialize()
         {
             if (shadow != null)
                 shadow.color = new Color(0f, 0f, 0f, 0);
-            window.anchoredPosition = new Vector2(0f, -1100f);
+
+            var uiScale = Config.GetUIScale(maxUIScale);
+            window.localScale = Vector3.one * uiScale;
+
+            hideY = -540f - height * uiScale;
+            window.anchoredPosition = new Vector2(0f, hideY);
+
             UIManager.Translate(gameObject);
 
             if (btnConfirm != null && btnCancel != null)
@@ -56,7 +66,7 @@ namespace MDPro3.UI
         public virtual void Show()
         {
             Initialize();
-            window.DOAnchorPos(Vector2.zero, transitionTime);
+            window.DOAnchorPos(new Vector2(0f, showY), transitionTime);
             if (shadow != null)
             {
                 shadow.DOFade(0.8f, transitionTime);
@@ -69,7 +79,7 @@ namespace MDPro3.UI
             if (shadow != null)
                 shadow.DOFade(0f, transitionTime);
             var servant = Program.I().currentServant;
-            window.DOAnchorPos(new Vector2(0f, -1100f), transitionTime).OnComplete(() =>
+            window.DOAnchorPos(new Vector2(0f, hideY), transitionTime).OnComplete(() =>
             {
                 Destroy(gameObject);
                 servant.returnAction = null;

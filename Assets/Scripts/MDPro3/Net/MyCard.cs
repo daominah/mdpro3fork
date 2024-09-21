@@ -23,8 +23,8 @@ namespace MDPro3.Net
         const string expUrl = "https://sapi.moecube.com:444/ygopro/arena/user?username=";
         const string matchUrl = "https://sapi.moecube.com:444/ygopro/match";
         const string userUrl = "https://sapi.moecube.com:444/accounts/users/{username}.json";
-        const string athleticWatchUrl = "wss://tiramisu.moecube.com:8923?filter=started";
-        const string entertainWatchUrl = "wss://tiramisu.moecube.com:7923?filter=started";
+        const string athleticWatchUrl = "wss://tiramisu.moenext.com:8923?filter=started";
+        const string entertainWatchUrl = "wss://tiramisu.moenext.com:7923?filter=started";
         const string contentTypeHeader = "Content-Type";
         const string jsonHeader = "application/json";
         const string authHeader = "Authorization";

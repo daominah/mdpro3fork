@@ -417,6 +417,14 @@ namespace MDPro3
                 return 46986417;
             if (code == 74677425)//ÕæºìÑÛºÚÁú
                 return 74677424;
+            if (code == 44508096)//ĞÇ³¾Áú
+                return 44508094;
+            if (code == 84013240)//»ôÆÕ
+                return 84013237;
+            if (code == 16178684)//ÒìÉ«ÑÛ
+                return 16178681;
+            if (code == 5043013)//·À»ğÁú
+                return 5043010;
             return code;
         }
     }

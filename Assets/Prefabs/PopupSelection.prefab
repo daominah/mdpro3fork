@@ -1119,7 +1119,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 4958936031148409463}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1181,6 +1181,9 @@ MonoBehaviour:
   btnConfirm: {fileID: 0}
   btnCancel: {fileID: 4958936030677350381}
   buttomOffest: 180
+  maxUIScale: 1
+  showY: 0
+  height: 550
   selections: []
   backTop: {fileID: 4958936029209000526}
   backBotton: {fileID: 4958936029224770880}

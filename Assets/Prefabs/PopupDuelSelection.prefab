@@ -901,10 +901,14 @@ MonoBehaviour:
   btnConfirm: {fileID: 0}
   btnCancel: {fileID: 0}
   buttomOffest: 180
+  maxUIScale: 1.5
+  showY: 0
+  height: 150
   selections: []
+  hideY: 0
   btnHide: {fileID: 600230127014596586}
   exitable: 0
-  tempHideHeight: -390
+  extraHeight: 65
   scrollRect: {fileID: 277287947824948181}
   item: {fileID: 8630918461518092683, guid: 5546c023a1a63f44a902a94920974f6a, type: 3}
   baseRect: {fileID: 600230126294668190}

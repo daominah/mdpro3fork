@@ -474,7 +474,7 @@ namespace MDPro3
 #endif
         }
 
-        void ClearDirectoryRecursively(DirectoryInfo directory)
+        public static void ClearDirectoryRecursively(DirectoryInfo directory)
         {
             foreach(var file in directory.GetFiles())
                 file.Delete();

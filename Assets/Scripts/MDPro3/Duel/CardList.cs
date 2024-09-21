@@ -54,6 +54,7 @@ namespace MDPro3.UI
             }
 
             showing = true;
+            baseRect.localScale = Vector3.one * Config.GetUIScale(1.18f);
         }
 
         public void Hide()
@@ -61,7 +62,7 @@ namespace MDPro3.UI
             if (!showing)
                 return;
             showing = false;
-            baseRect.DOAnchorPosX(150, 0.3f);
+            baseRect.DOAnchorPosX(150f * Config.GetUIScale(1.18f), 0.3f);
             if(showWithCloseDuelLog)
             {
                 showWithCloseDuelLog = false;

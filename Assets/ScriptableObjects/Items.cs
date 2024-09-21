@@ -312,15 +312,20 @@ namespace MDPro3
         {
             if (mapCode.Length != 7)
                 mapCode = "1090001";
-            if (mapCode == "1098001")
+            if (mapCode == "1098001" && type != ItemType.Mat)
                 mapCode = "1090009";
-            if (mapCode == "1098002")
+            if (mapCode == "1098002" && type != ItemType.Mat)
                 mapCode = "1090003";
 
             if (type == ItemType.Grave)
                 return "110" + mapCode[3..];
             else if (type == ItemType.Stand)
                 return "111" + mapCode[3..];
+            else if (type == ItemType.Mat)
+            {
+                lastMat1 = lastMat0;
+                return lastMat0;
+            }
             else
                 return mapCode;
         }

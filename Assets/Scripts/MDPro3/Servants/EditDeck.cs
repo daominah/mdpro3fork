@@ -15,20 +15,11 @@ using MDPro3.YGOSharp.OCGWrapper.Enums;
 using MDPro3.UI;
 using Toggle = MDPro3.UI.Toggle;
 using MDPro3.Net;
-using System.Threading.Tasks;
 
 namespace MDPro3
 {
     public class EditDeck : Servant
     {
-        [Serializable]
-        public enum CardRarity
-        {
-            Normal = 1,
-            Shine = 2,
-            Royal = 8
-        }
-
         public InputField input;
         public Text textMainCount;
         public Text textExtraCount;
@@ -81,13 +72,8 @@ namespace MDPro3
         public string onlineDeckID;
         public bool deckIsFromLocalFile;
 
-        Deck book;
         Deck history;
-        public Deck shine;
-        public Deck royal;
-        const string bookPath = "Data/book.ydk";
-        const string shinePath = "Data/sr.ydk";
-        const string royalPath = "Data/ur.ydk";
+
         Card cardShowing;
         int cardIndex;
         public Banlist banlist;
@@ -119,19 +105,6 @@ namespace MDPro3
 
             Program.onScreenChanged += AdjustSize;
             AdjustSize();
-            if (File.Exists(bookPath))
-                book = new Deck(bookPath);
-            else
-                book = new Deck();
-            if (File.Exists(shinePath))
-                shine = new Deck(shinePath);
-            else
-                shine = new Deck();
-            if (File.Exists(royalPath))
-                royal = new Deck(royalPath);
-            else
-                royal = new Deck();
-
             base.Initialize();
 
             var handle = Addressables.LoadAssetAsync<GameObject>("CardOnEdit");
@@ -349,22 +322,8 @@ namespace MDPro3
             if (!intoAppearance)
             {
                 AudioManager.PlayBGM("BGM_MENU_01");
+                CardRarity.Save();
 
-                var content = InterString.Get("#该文件是用于保存【卡片收藏】中的卡的卡组码。");
-                content += "\r\n#main\r\n";
-                for (int i = 0; i < book.Main.Count; i++)
-                    content += book.Main[i] + "\r\n";
-                File.WriteAllText(bookPath, content, Encoding.UTF8);
-                content = InterString.Get("#该文件是用于保存UR卡的卡组码。");
-                content += "\r\n#main\r\n";
-                for (int i = 0; i < royal.Main.Count; i++)
-                    content += royal.Main[i] + "\r\n";
-                File.WriteAllText(royalPath, content, Encoding.UTF8);
-                content = InterString.Get("#该文件是用于保存SR卡的卡组码。");
-                content += "\r\n#main\r\n";
-                for (int i = 0; i < shine.Main.Count; i++)
-                    content += shine.Main[i] + "\r\n";
-                File.WriteAllText(shinePath, content, Encoding.UTF8);
                 DOTween.To(v => { }, 0, 0, transitionTime).OnComplete(() =>
                 {
                     Dispose();
@@ -650,18 +609,16 @@ namespace MDPro3
                 manager.GetElement<TextMeshProUGUI>("TextDescription").text = CardDescription.GetSetName(data.Id) + data.Desc;
             }
             RefreshLimitIcon();
-            if (book.Main.Contains(code))
+            if (CardRarity.CardBooked(code))
                 manager.GetElement<Toggle>("ButtonBook").SwitchOn();
             else
                 manager.GetElement<Toggle>("ButtonBook").SwitchOff();
-            if (shine.Main.Contains(code))
-                manager.GetElement<Toggle>("ButtonSR").SwitchOnWithoutAction();
-            else
-                manager.GetElement<Toggle>("ButtonSR").SwitchOffWithoutAction();
-            if (royal.Main.Contains(code))
-                manager.GetElement<Toggle>("ButtonUR").SwitchOnWithoutAction();
-            else
-                manager.GetElement<Toggle>("ButtonUR").SwitchOffWithoutAction();
+
+            var rarity = CardRarity.GetRarity(code);
+            GetRarityToggle(rarity)?.SwitchOnWithoutAction();
+            TurnOffOtherRarityToggles(rarity);
+
+            manager.GetElement<TextMeshProUGUI>("TextDescription").fontSize = 26f * Config.GetUIScale(1.35f);
         }
 
         void RefreshLimitIcon()
@@ -1716,24 +1673,16 @@ namespace MDPro3
 
         public void BookCard()
         {
-            if (book.Main.Contains(cardShowing.Id))
+            if (CardRarity.CardBooked(cardShowing.Id))
             {
-                book.Main.Remove(cardShowing.Id);
+                CardRarity.UnbookCard(cardShowing.Id);
                 AudioManager.PlaySE("SE_MENU_S_DECIDE_02");
             }
             else
             {
-                book.Main.Add(cardShowing.Id);
+                CardRarity.BookCard(cardShowing.Id);
                 AudioManager.PlaySE("SE_MENU_S_DECIDE_01");
             }
-
-            List<Card> cards = new List<Card>();
-            foreach (var code in book.Main)
-                cards.Add(CardsManager.Get(code));
-            cards.Sort(CardsManager.ComparisonOfCard());
-            book.Main.Clear();
-            foreach (var card in cards)
-                book.Main.Add(card.Id);
 
             if (manager.GetElement<Tab>("TabBook").selected)
                 PrintBookedCards();
@@ -1794,13 +1743,7 @@ namespace MDPro3
 
             superScrollView?.Clear();
 
-            var defau = 1000f;
-#if UNITY_ANDROID
-            defau = 1500f;
-#endif
-            var scale = float.Parse(Config.Get("UIScale", defau.ToString())) / 1000;
-
-
+            var scale = Config.GetUIScale();
             superScrollView = new SuperScrollView
             (
             (int)Math.Floor((manager.GetElement<RectTransform>("ScrollView").rect.width - 30f) / (86f * scale)),
@@ -1842,10 +1785,7 @@ namespace MDPro3
 
         void PrintBookedCards()
         {
-            var list = new List<int>();
-            foreach (var card in book.Main)
-                list.Add(card);
-            PrintCards(list);
+            PrintCards(CardRarity.GetBookCards());
         }
         void PrintHistoryCards()
         {
@@ -1900,43 +1840,45 @@ namespace MDPro3
             }
         }
 
+        Toggle GetRarityToggle(CardRarity.Rarity rarity)
+        {
+            switch(rarity)
+            {
+                case CardRarity.Rarity.Shine:
+                    return manager.GetElement<Toggle>("ButtonR");
+                case CardRarity.Rarity.Royal:
+                    return manager.GetElement<Toggle>("ButtonUR");
+                case CardRarity.Rarity.Gold:
+                    return manager.GetElement<Toggle>("ButtonGR");
+                case CardRarity.Rarity.Millennium:
+                    return manager.GetElement<Toggle>("ButtonMR");
+                default:
+                    return null;
+            }
+        }
+
+        void TurnOffOtherRarityToggles(CardRarity.Rarity rarity)
+        {
+            if (rarity != CardRarity.Rarity.Shine)
+                manager.GetElement<Toggle>("ButtonR").SwitchOffWithoutAction();
+            if (rarity != CardRarity.Rarity.Royal)
+                manager.GetElement<Toggle>("ButtonUR").SwitchOffWithoutAction();
+            if (rarity != CardRarity.Rarity.Gold)
+                manager.GetElement<Toggle>("ButtonGR").SwitchOffWithoutAction();
+            if (rarity != CardRarity.Rarity.Millennium)
+                manager.GetElement<Toggle>("ButtonMR").SwitchOffWithoutAction();
+        }
+
         public void ChangeRarity(int rarity)
         {
-            CardRarity cardRarity = rarity == 1 ? CardRarity.Shine : CardRarity.Royal;
-            if (cardRarity == CardRarity.Shine)
-            {
-                manager.GetElement<Toggle>("ButtonUR").SwitchOffWithoutAction();
-                royal.Main.Remove(cardShowing.Id);
-                if (shine.Main.Contains(cardShowing.Id))
-                {
-                    AudioManager.PlaySE("SE_MENU_S_DECIDE_02");
-                    shine.Main.Remove(cardShowing.Id);
-                    UpdateRarity();
-                }
-                else
-                {
-                    AudioManager.PlaySE("SE_MENU_S_DECIDE_01");
-                    shine.Main.Add(cardShowing.Id);
-                    UpdateRarity();
-                }
-            }
-            else
-            {
-                manager.GetElement<Toggle>("ButtonSR").SwitchOffWithoutAction();
-                shine.Main.Remove(cardShowing.Id);
-                if (royal.Main.Contains(cardShowing.Id))
-                {
-                    AudioManager.PlaySE("SE_MENU_S_DECIDE_02");
-                    royal.Main.Remove(cardShowing.Id);
-                    UpdateRarity();
-                }
-                else
-                {
-                    AudioManager.PlaySE("SE_MENU_S_DECIDE_01");
-                    royal.Main.Add(cardShowing.Id);
-                    UpdateRarity();
-                }
-            }
+            var cardRarity = (CardRarity.Rarity)rarity;
+            TurnOffOtherRarityToggles(cardRarity);
+
+            var toggle = GetRarityToggle(cardRarity);
+            if (toggle.switchOn)
+                cardRarity = CardRarity.Rarity.Normal;
+            CardRarity.SetRarity(cardShowing.Id, cardRarity);
+            UpdateRarity();
         }
 
         void UpdateRarity()
@@ -1955,16 +1897,6 @@ namespace MDPro3
                     if (item.gameObject.GetComponent<SuperScrollViewItemForDeckEdit>().code == cardShowing.Id)
                         item.gameObject.GetComponent<RawImage>().material = mat;
         }
-
-        public static CardRarity GetRarity(int code)
-        {
-            var rarity = CardRarity.Normal;
-            if (Program.I().editDeck.shine.Main.Contains(code))
-                rarity = CardRarity.Shine;
-            else if (Program.I().editDeck.royal.Main.Contains(code))
-                rarity = CardRarity.Royal;
-            return rarity;
-        }
-
     }
 }
+;

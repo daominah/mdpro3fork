@@ -30,11 +30,7 @@ namespace MDPro3.UI
             button.GetComponent<EventDrag>().onBeginDrag = OnBeginDrag;
             button.GetComponent<EventDrag>().onDrag = OnDrag;
             button.GetComponent<EventDrag>().onEndDrag = OnEndDrag;
-            var defau = 1000f;
-#if UNITY_ANDROID
-            defau = 1500f;
-#endif
-            var scale = float.Parse(Config.Get("UIScale", defau.ToString())) / 1000;
+            var scale = Config.GetUIScale();
             transform.localScale = Vector3.one * scale;
         }
         public override void Refresh()
@@ -251,11 +247,7 @@ namespace MDPro3.UI
                 var endPositon = item.transform.position;
 
                 item.transform.position = transform.position;
-                var defau = 1000f;
-#if UNITY_ANDROID
-                defau = 1500f;
-#endif
-                var scale = float.Parse(Config.Get("UIScale", defau.ToString())) / 1000;
+                var scale = Config.GetUIScale();
                 item.transform.localScale = Vector3.one * 1.2f * scale;
 
                 item.transform.DOMove(endPositon, CardOnEdit.moveTime);
@@ -282,12 +274,7 @@ namespace MDPro3.UI
             dragItem.code = code;
             dragItem.id = 99999999;
 
-            var defau = 1000f;
-#if UNITY_ANDROID
-            defau = 1500f;
-#endif
-            var scale = float.Parse(Config.Get("UIScale", defau.ToString())) / 1000;
-
+            var scale = Config.GetUIScale();
             dragItem.transform.SetParent(Program.I().editDeck.cardsOnEditParent, false);
             dragItem.transform.localScale = Vector3.one * 1.2f * scale;
             dragItem.button.GetComponent<Image>().raycastTarget = false;

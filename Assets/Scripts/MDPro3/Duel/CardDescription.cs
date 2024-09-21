@@ -65,6 +65,7 @@ namespace MDPro3
 
             if (origin.Id == 0)
                 return;
+
             var tails = string.Empty;
             if(code == -1)
                 tails = "<color=#0FFF0F>" + card.tails.managedString + "</color>";
@@ -144,6 +145,8 @@ namespace MDPro3
             }
             else
                 manager.GetElement<TextMeshProUGUI>("TextDescription").text = tails + GetSetName(data.Id) + data.Desc;
+
+            manager.GetElement<TextMeshProUGUI>("TextDescription").fontSize = 25f * Config.GetUIScale(1.35f);
 
             bool isMonster = WhetherCardIsMonster(data);
             if (isMonster)

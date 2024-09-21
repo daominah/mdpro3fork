@@ -159,5 +159,15 @@ namespace MDPro3
             public string original = "";
             public string translated = "";
         }
+
+        public static float GetUIScale(float maxUIScale = 1.5f)
+        {
+            var defau = 1000f;
+#if UNITY_ANDROID
+            defau = 1500f;
+#endif
+            var scale = float.Parse(Get("UIScale", defau.ToString())) / 1000;
+            return scale > maxUIScale ? maxUIScale : scale;
+        }
     }
 }

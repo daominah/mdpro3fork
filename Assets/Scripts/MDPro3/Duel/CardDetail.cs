@@ -215,6 +215,9 @@ namespace MDPro3
                 manager.GetElement<Image>("Limit").sprite = TextureManager.container.limit1;
             else
                 manager.GetElement<Image>("Limit").sprite = TextureManager.container.banned;
+
+            manager.GetElement<Text>("TextPendulum").resizeTextMaxSize = (int)(28 * Config.GetUIScale());
+            manager.GetElement<Text>("TextEffect").resizeTextMaxSize = (int)(28 * Config.GetUIScale());
         }
 
         private bool NeedShowArrow()

@@ -29,6 +29,10 @@ namespace MDPro3
         public static Material cardMatShineRD;
         public static Material cardMatRoyal;
         public static Material cardMatRoyalRD;
+        public static Material cardMatGold;
+        public static Material cardMatGoldRD;
+        public static Material cardMatMillennium;
+        public static Material cardMatMillenniumRD;
         public static Material cardMatSide;
         static Texture cardHolo4;
 
@@ -89,27 +93,6 @@ namespace MDPro3
             manager = manager.GetElement<ElementObjectManager>("DummyCardSynchro");
             cardMatShine = Instantiate(manager.GetElement<Renderer>("DummyCardModel_front").material);
 
-            //SR GR-like
-            //cardMatShine.SetFloat("_HighlightAmp", 1.2f);
-            //cardMatShine.SetFloat("_HighlightRotation", -45f);
-            //cardMatShine.SetFloat("_HighlightScrollOffset", 5f);
-            //cardMatShine.SetFloat("_HoloBrightness", 0.75f);
-            //cardMatShine.SetFloat("_IllustBrightness", 1.5f);
-            //cardMatShine.SetFloat("_IllustContrast", -3.8f);
-            //cardMatShine.SetFloat("_IllustHoloPower", 1.4f);
-            //cardMatShine.SetFloat("_IllustRanbowPower", 1.5f);
-            //cardMatShine.SetTexture("_KiraColorTexture", cardHolo4);
-
-            //SR UR-like
-            //cardMatShine.SetFloat("_HighlightAmp", 2f);
-            //cardMatShine.SetFloat("_HighlightRotation", -45f);
-            //cardMatShine.SetFloat("_HoloBrightness", 1f);
-            //cardMatShine.SetFloat("_IllustBrightness", 0f);
-            //cardMatShine.SetFloat("_IllustContrast", -2f);
-            //cardMatShine.SetFloat("_IllustHoloPower", 3f);
-            //cardMatShine.SetTexture("_KiraColorTexture", container.cardRainbowMask);
-
-
             cardMatNormal.SetFloat("_FakeBlend", 1);
             cardMatNormal.SetColor("_AmbientColor", new Color(0.0588f, 0.0588f, 0.0588f, 1f));
             cardMatShine.SetFloat("_FakeBlend", 1);
@@ -131,26 +114,34 @@ namespace MDPro3
             cardMatShine.enableInstancing = true;
             cardMatRoyal.enableInstancing = true;
 
-            cardMatShine = Instantiate(cardMatRoyal);
+            cardMatGold = Instantiate(cardMatRoyal);
+            cardMatGold.SetFloat("_CardDistortion01", 1.2f);
+            cardMatGold.SetFloat("_Kira01_01Tile", 0.25f);
+            cardMatGold.SetFloat("_Kira01_01Power", 3f);
+            cardMatGold.SetColor("_KiraColor02", new Color(1f, 1f, 0f, 0f));
+            cardMatGold.SetColor("_CubemapColor", new Color(0.7f, 0.7f, 0f, 0f));
+
+            cardMatMillennium = Instantiate(cardMatRoyal);
+            cardMatMillennium.SetTexture("_HighlightNormal", container.CardKiraNormal03_Millennium);
+            cardMatMillennium.SetTexture("_Texture2DAsset_3e204bf62e854283be7482d92655b24f_Out_0", container.CardKiraNormal03_Millennium);
+            cardMatMillennium.SetColor("_CubemapColor", new Color(0.898f, 0.3245f, 0.7723f, 0f));
+            cardMatMillennium.SetColor("_KiraColor02", new Color(0.3099f, 0.1633f, 0.2753f, 0f));
+            cardMatMillennium.SetFloat("_Kira01_01Tile", 0.25f);
+            cardMatMillennium.SetFloat("_Kira01_02Tile", 0f);
+            cardMatMillennium.SetFloat("_RanbowPower", 0.5f);
+            cardMatMillennium.SetFloat("_IlluustRanbowPower", 1.5f);
 
             cardMatShineRD = Instantiate(cardMatShine);
-            cardMatShineRD.SetTexture("_FrameMask", container.rd_Mask);
-            cardMatShineRD.SetTexture("_KiraMask", container.rd_KiraMask);
-            cardMatShineRD.SetTexture("_MainNormal", container.rd_CardNormal);
-            cardMatShineRD.SetTexture("_AttributeTex", container.rd_CardAttributeSet);
-            cardMatShineRD.SetVector("_AttributeSize_Pos", new Vector4(8.31f, 12.26f, -3.19f, -5.13f));
-
-
-            cardMatRoyal.SetTexture("_HighlightNormal", container.CardKiraNormal03_Millennium);
-            //cardMatRoyal.SetTexture("_Kira02_01", container.CardKira3_Millennium);
-            cardMatRoyal.SetTexture("_Texture2DAsset_3e204bf62e854283be7482d92655b24f_Out_0", container.CardKiraNormal03_Millennium);
+            MaterialToRD(cardMatShineRD);
 
             cardMatRoyalRD = Instantiate(cardMatRoyal);
-            cardMatRoyalRD.SetTexture("_FrameMask", container.rd_Mask);
-            cardMatRoyalRD.SetTexture("_KiraMask", container.rd_KiraMask);
-            cardMatRoyalRD.SetTexture("_MainNormal", container.rd_CardNormal);
-            cardMatRoyalRD.SetTexture("_AttributeTex", container.rd_CardAttributeSet);
-            cardMatRoyalRD.SetVector("_AttributeSize_Pos", new Vector4(8.31f, 12.26f, -3.19f, -5.13f));
+            MaterialToRD(cardMatRoyalRD);
+
+            cardMatGoldRD = Instantiate(cardMatGold);
+            MaterialToRD(cardMatGoldRD);
+
+            cardMatMillenniumRD = Instantiate(cardMatMillennium);
+            MaterialToRD(cardMatMillenniumRD);
 
 #if UNITY_ANDROID
             var depens = Directory.GetFiles(Program.root + "CrossDuel/Dependency", "*.bundle");
@@ -162,6 +153,15 @@ namespace MDPro3
                     yield return null;
             }
 #endif
+        }
+
+        private void MaterialToRD(Material material)
+        {
+            material.SetTexture("_FrameMask", container.rd_Mask);
+            material.SetTexture("_KiraMask", container.rd_KiraMask);
+            material.SetTexture("_MainNormal", container.rd_CardNormal);
+            material.SetTexture("_AttributeTex", container.rd_CardAttributeSet);
+            material.SetVector("_AttributeSize_Pos", new Vector4(8.31f, 12.26f, -3.19f, -5.13f));
         }
 
         public static async Task<Texture2D> LoadPicFromFileAsync(string path)
@@ -482,21 +482,29 @@ namespace MDPro3
         {
             bool rushDuel = CardRenderer.NeedRushDuelStyle(code);
 
-            var rarity = GetRarity(code);
+            var rarity = CardRarity.GetRarity(code);
 
             Material mat = null;
             bool needChange = false;
             switch (rarity)
             {
-                case CardRarity.Normal:
+                case CardRarity.Rarity.Normal:
                     mat = Instantiate(cardMatNormal);
                     break;
-                case CardRarity.Shine:
+                case CardRarity.Rarity.Shine:
                     mat = Instantiate(rushDuel ? cardMatShineRD : cardMatShine);
                     needChange = true;
                     break;
-                case CardRarity.Royal:
+                case CardRarity.Rarity.Royal:
                     mat = Instantiate(rushDuel ? cardMatRoyalRD : cardMatRoyal);
+                    needChange = true;
+                    break;
+                case CardRarity.Rarity.Gold:
+                    mat = Instantiate(rushDuel ? cardMatGoldRD : cardMatGold);
+                    needChange = true;
+                    break;
+                case CardRarity.Rarity.Millennium:
+                    mat = Instantiate(rushDuel ? cardMatMillenniumRD : cardMatMillennium);
                     needChange = true;
                     break;
             }
@@ -537,6 +545,8 @@ namespace MDPro3
                         mat.SetTexture("_FrameMask", container.cardFrameMaskLink);
                         mat.SetTexture("_KiraMask", container.cardKiraMaskLink);
                         mat.SetTexture("_MainNormal", container.cardNormalLink);
+                        if (rarity == CardRarity.Rarity.Shine)
+                            mat.SetFloat("_LinkOn_Off", 1f);
                     }
                     else if ((data.Type & (uint)CardType.Pendulum) > 0)
                     {
@@ -545,10 +555,64 @@ namespace MDPro3
                         mat.SetTexture("_MainNormal", container.cardNormalPendulum);
                     }
                 }
+                if(rarity == CardRarity.Rarity.Millennium)
+                {
+                    var color1 = mat.GetColor("_KiraColor02");
+                    var color2 = mat.GetColor("_CubemapColor");
+                    if ((data.Type & (uint)CardType.Pendulum) > 0)
+                    {
+                    }
+                    else if ((data.Type & (uint)CardType.Spell) > 0)
+                    {
+                        color1 = new Color(0f, 0.8867f, 1f, 0f);
+                        color2 = new Color(1f, 1f, 0f, 0f);
+                    }
+                    else if ((data.Type & (uint)CardType.Trap) > 0)
+                    {
+                        color1 = new Color(1f, 0f, 1f, 0f);
+                        color2 = new Color(1f, 1f, 0f, 0f);
+                    }
+                    else if ((data.Type & (uint)CardType.Normal) > 0)
+                    {
+                        color1 = new Color(1f, 0.6f, 0f, 0f);
+                        color2 = new Color(0f, 1f, 1f, 0f);
+                    }
+                    else if ((data.Type & (uint)CardType.Fusion) > 0)
+                    {
+                        color1 = new Color(1f, 0f, 1f, 0f);
+                        color2 = new Color(1f, 1f, 0f, 0f);
+                    }
+                    else if ((data.Type & (uint)CardType.Ritual) > 0)
+                    {
+                        color1 = new Color(0f, 0.2f, 1f, 0f);
+                        color2 = new Color(0f, 1f, 1f, 0f);
+                    }
+                    else if ((data.Type & (uint)CardType.Synchro) > 0)
+                    {
+                        color1 = new Color(0.4f, 0.4f, 0.4f, 0f);
+                        color2 = new Color(1f, 0f, 0f, 0f);
+                    }
+                    else if ((data.Type & (uint)CardType.Xyz) > 0)
+                    {
+                        color1 = new Color(0.1f, 0.1f, 0.1f, 0f);
+                        color2 = new Color(1f, 1f, 1f, 0f);
+                    }
+                    else if ((data.Type & (uint)CardType.Link) > 0)
+                    {
+                        color1 = new Color(0f, 0.4f, 1f, 0f);
+                        color2 = new Color(0f, 1f, 1f, 0f);
+                    }
+                    else
+                    {
+                        color1 = new Color(1f, 0.2357f, 0f, 0f);
+                        color2 = new Color(1f, 1f, 0f, 0f);
+                    }
+                    mat.SetColor("_KiraColor02", color1);
+                    mat.SetColor("_CubemapColor", color2);
+                }
             }
             return mat;
         }
-
 
         #endregion
 

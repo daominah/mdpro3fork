@@ -159,7 +159,7 @@ public class NewsManager : Manager
 
     public void OnNewsClick()
     {
-        Application.OpenURL(news.ChineseCN[currentNewsIndex].url);
+        Application.OpenURL(news.ChineseCN[currentNewsIndex].url.Replace("ygobbs.com", "ygobbs2.com"));
     }
 
     public void OnClose()

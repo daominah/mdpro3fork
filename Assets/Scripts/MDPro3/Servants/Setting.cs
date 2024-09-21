@@ -298,11 +298,7 @@ namespace MDPro3
             scale.value = Config.GetFloat("Scale", defau);
             OnScaleChange(scale.value);
 
-            defau = 1f;
-#if UNITY_ANDROID
-            defau = 1.5f;
-#endif
-            uiScale.value = Config.GetFloat("UIScale", defau);
+            uiScale.value = Config.GetUIScale();
             quality.value = Config.GetFloat("Quality", 3f);
             OnQualityChange(quality.value);
             faa.value = Config.GetFloat("FAA", 1);

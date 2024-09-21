@@ -82,11 +82,7 @@ public class OnlineDeckViewer : Servant
             superScrollView.Clear();
         }
 
-        var defau = 1f;
-#if UNITY_ANDROID
-        defau = 1.5f;
-#endif
-        var scale = Config.GetFloat("UIScale", defau);
+        var scale = Config.GetUIScale();
 
         var handle = Addressables.LoadAssetAsync<GameObject>("OnlineDeckOnSelect");
         handle.Completed += (result) =>

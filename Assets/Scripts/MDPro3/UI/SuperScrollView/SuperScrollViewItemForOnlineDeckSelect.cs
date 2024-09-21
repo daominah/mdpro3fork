@@ -31,11 +31,7 @@ namespace MDPro3.UI
         public void Awake()
         {
             Program.I().onlineDeckViewer.items.Add(this);
-            var defau = 1000f;
-#if UNITY_ANDROID
-            defau = 1500f;
-#endif
-            var scale = float.Parse(Config.Get("UIScale", defau.ToString())) / 1000;
+            var scale = Config.GetUIScale();
             transform.localScale = Vector3.one * scale;
 
         }

@@ -24,13 +24,14 @@ public class DuelLog : MonoBehaviour
         showing = true;
         AudioManager.PlaySE("SE_LOG_OPEN");
         baseRect.DOAnchorPosX(-20f, 0.2f);
+        baseRect.localScale = Vector3.one * Config.GetUIScale(1.15f);
     }
 
     public void Hide(bool silent = false)
     {
         showing = false;
         draged = false;
-        baseRect.DOAnchorPosX(400f, 0.2f);
+        baseRect.DOAnchorPosX(400f * Config.GetUIScale(1.15f), 0.2f);
 
         if (!silent)
             AudioManager.PlaySE("SE_LOG_CLOSE");

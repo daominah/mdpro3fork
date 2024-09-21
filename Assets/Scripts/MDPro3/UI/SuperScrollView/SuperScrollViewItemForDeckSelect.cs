@@ -30,11 +30,7 @@ namespace MDPro3.UI
         {
             Program.I().selectDeck.items.Add(this);
             toggle.SetActive(false);
-            var defau = 1000f;
-#if UNITY_ANDROID
-            defau = 1500f;
-#endif
-            var scale = float.Parse(Config.Get("UIScale", defau.ToString())) / 1000;
+            var scale = Config.GetUIScale();
             transform.localScale = Vector3.one * scale;
 
         }

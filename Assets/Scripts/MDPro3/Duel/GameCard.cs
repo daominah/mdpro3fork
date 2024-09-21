@@ -1359,7 +1359,7 @@ namespace MDPro3
                     var trail = ABLoader.LoadFromFile("MasterDuel/Effects/buff/fxp_bff_overlay/fxp_bff_overlay_trail_001");
                     trail.transform.SetParent(model.transform, false);
 
-                    if (Program.I().ocgcore.NextMessageIsOverlayOut())
+                    if (Program.I().ocgcore.NextMessageIsMovingFrom(CardLocation.Overlay))
                         extraWait = 0.1f;
                 }
 

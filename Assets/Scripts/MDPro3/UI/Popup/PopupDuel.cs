@@ -14,6 +14,7 @@ namespace MDPro3.UI
         [HideInInspector]
         public bool exitable;
         bool hided;
+        public float extraHeight = 65f;
 
         public override void Initialize()
         {
@@ -29,21 +30,26 @@ namespace MDPro3.UI
                 else
                     Program.I().ocgcore.returnAction = () => { };
             }
+
+            var uiScale = Config.GetUIScale(maxUIScale);
+            hideY = -540f - height * uiScale - extraHeight;
+            window.anchoredPosition = new Vector2(0f, hideY);
         }
-        public float tempHideHeight = -390;
         public virtual void FieldView()
         {
             if (hided)
             {
                 hided = false;
-                window.DOAnchorPosY(0, transitionTime);
+                window.DOAnchorPosY(showY, transitionTime);
                 AudioManager.PlaySE("SE_MENU_SLIDE_03");
                 btnHide.transform.GetChild(0).gameObject.SetActive(false);
             }
             else
             {
                 hided = true;
-                window.DOAnchorPosY(tempHideHeight, transitionTime);
+                var scale = window.transform.localScale.x;
+                var targetY = -540 - height * scale;
+                window.DOAnchorPosY(targetY, transitionTime);
                 AudioManager.PlaySE("SE_MENU_SLIDE_04");
                 btnHide.transform.GetChild(0).gameObject.SetActive(true);
             }
@@ -52,7 +58,7 @@ namespace MDPro3.UI
         public override void Show()
         {
             Initialize();
-            window.DOAnchorPos(Vector2.zero, transitionTime);
+            window.DOAnchorPos(new Vector2(0f, showY), transitionTime);
             if (shadow != null)
             {
                 shadow.DOFade(0.8f, transitionTime);
@@ -63,7 +69,7 @@ namespace MDPro3.UI
         {
             if (shadow != null)
                 shadow.DOFade(0f, transitionTime);
-            window.DOAnchorPos(new Vector2(0f, -1100f), transitionTime).OnComplete(() =>
+            window.DOAnchorPos(new Vector2(0f, hideY), transitionTime).OnComplete(() =>
             {
                 Destroy(gameObject);
                 Program.I().ocgcore.returnAction = null;

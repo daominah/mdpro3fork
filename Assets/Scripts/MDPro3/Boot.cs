@@ -88,13 +88,15 @@ namespace MDPro3
 
         IEnumerator CheckFile()
         {
-            //V1.2.0.0 Delete Folder MonsterCutin
+            //V1.2.0 Delete Folder MonsterCutin
             if(Application.version == "1.2.0")
             {
-                if(Config.Get("Android-V1.2.0_install", "0") == "0")
+                if(Config.Get("Android-V1.2.0test1_install", "0") == "0")
                 {
-                    Directory.Delete("Android/MonsterCutin");
-
+                    //Program.ClearDirectoryRecursively(new DirectoryInfo("Android/MonsterCutin"));
+                    //Program.ClearDirectoryRecursively(new DirectoryInfo("Android/MasterDuel/Mate"));
+                    Directory.Delete("Android/MonsterCutin", true);
+                    Directory.Delete("Android/MasterDuel/Mate", true);
                 }
             }
 

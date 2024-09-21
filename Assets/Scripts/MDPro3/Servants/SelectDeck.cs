@@ -190,11 +190,7 @@ namespace MDPro3
                 superScrollView.Clear();
                 items.Clear();
             }
-            var defau = 1f;
-#if UNITY_ANDROID
-            defau = 1.5f;
-#endif
-            var scale = Config.GetFloat("UIScale", defau);
+            var scale = Config.GetUIScale();
 
             var handle = Addressables.LoadAssetAsync<GameObject>("DeckOnSelect");
             handle.Completed += (result) =>

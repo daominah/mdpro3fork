@@ -846,6 +846,9 @@ MonoBehaviour:
   btnConfirm: {fileID: 0}
   btnCancel: {fileID: 8804846195371147634}
   buttomOffest: 180
+  maxUIScale: 1
+  showY: 0
+  height: 195
   selections: []
   backTop: {fileID: 8804846194171301073}
   backBotton: {fileID: 8804846194157202399}

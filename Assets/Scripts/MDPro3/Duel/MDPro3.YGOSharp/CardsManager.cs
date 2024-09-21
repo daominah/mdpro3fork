@@ -437,7 +437,7 @@ namespace MDPro3.YGOSharp
                                                             if (filters[8] == 0 || filters[8] == 7)
                                                                 pass = true;
                                                             if (!pass)
-                                                                if ((filters[8] & (long)GetRarity(card.Id)) > 0)
+                                                                if ((filters[8] & (long)CardRarity.GetRarity(card.Id)) > 0)
                                                                     pass = true;
                                                             if (pass)
                                                             {
@@ -1757,12 +1757,12 @@ namespace MDPro3.YGOSharp
                 }
                 else
                 {
-                    var rarity = GetRarity(left.Id);
-                    if ((int)GetRarity(left.Id) > (int)GetRarity(right.Id))
+                    var rarity = CardRarity.GetRarity(left.Id);
+                    if ((int)CardRarity.GetRarity(left.Id) > (int)CardRarity.GetRarity(right.Id))
                     {
                         a = 1;
                     }
-                    else if ((int)GetRarity(left.Id) < (int)GetRarity(right.Id))
+                    else if ((int)CardRarity.GetRarity(left.Id) < (int)CardRarity.GetRarity(right.Id))
                     {
                         a = -1;
                     }
@@ -1881,12 +1881,12 @@ namespace MDPro3.YGOSharp
                 }
                 else
                 {
-                    var rarity = GetRarity(left.Id);
-                    if ((int)GetRarity(left.Id) > (int)GetRarity(right.Id))
+                    var rarity = CardRarity.GetRarity(left.Id);
+                    if ((int)CardRarity.GetRarity(left.Id) > (int)CardRarity.GetRarity(right.Id))
                     {
                         a = -1;
                     }
-                    else if ((int)GetRarity(left.Id) < (int)GetRarity(right.Id))
+                    else if ((int)CardRarity.GetRarity(left.Id) < (int)CardRarity.GetRarity(right.Id))
                     {
                         a = 1;
                     }

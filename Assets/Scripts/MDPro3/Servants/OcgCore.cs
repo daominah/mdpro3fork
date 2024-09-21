@@ -1,4 +1,8 @@
 using DG.Tweening;
+using MDPro3.Net;
+using MDPro3.UI;
+using MDPro3.YGOSharp;
+using MDPro3.YGOSharp.OCGWrapper.Enums;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -15,11 +19,7 @@ using UnityEngine.UI;
 using YgomGame.Bg;
 using YgomSystem.Effect;
 using YgomSystem.ElementSystem;
-using MDPro3.YGOSharp;
-using MDPro3.YGOSharp.OCGWrapper.Enums;
 using static YgomGame.Bg.BgEffectSettingInner;
-using MDPro3.UI;
-using MDPro3.Net;
 
 namespace MDPro3
 {
@@ -1737,81 +1737,60 @@ namespace MDPro3
             return null;
         }
 
-        public bool NextMessageIsMaterial()
+        public static int movingToGrave = 0;
+        public static int movingToExclude = 0;
+
+        public bool NextMessageIsMovingTo(CardLocation location, uint player)
         {
-            if (packages.Count < 2) 
+            var p = GetNextPackage();
+            if (p == null)
                 return false;
-            if(packages[1].Function == (int)GameMessage.Move)
+
+            if (p.Function == (int)GameMessage.Move)
             {
-                var r = packages[1].Data.reader;
+                var r = p.Data.reader;
                 r.BaseStream.Seek(0, 0);
                 r.ReadInt32();
                 r.ReadGPS();
-                r.ReadGPS();
-                var reason = r.ReadUInt32();
-                if ((reason & (uint)CardReason.MATERIAL) > 0)
+                var to = r.ReadGPS();
+                if (player == to.controller && (to.location & (uint)location) > 0)
                     return true;
             }
             return false;
         }
 
-        public static int movingToGrave = 0;
-        public static int movingToExclude = 0;
+        public bool NextMessageIsMovingFrom(CardLocation location)
+        {
+            var p = GetNextPackage();
+            if (p == null)
+                return false;
+
+            if (p.Function == (int)GameMessage.Move)
+            {
+                var r = p.Data.reader;
+                r.BaseStream.Seek(0, 0);
+                r.ReadInt32();
+                var from = r.ReadGPS();
+                if ((from.location & (uint)location) > 0)
+                    return true;
+            }
+            return false;
+        }
+
         public bool NextMessageIsMovingToGrave(uint player)
         {
             if (movingToGrave >= 5)
                 return false;
-            if (packages.Count < 2)
-                return false;
-            if (packages[1].Function == (int)GameMessage.Move)
-            {
-                var r = packages[1].Data.reader;
-                r.BaseStream.Seek(0, 0);
-                r.ReadInt32();
-                var from = r.ReadGPS();
-                var to = r.ReadGPS();
-                r.ReadUInt32();
-                //if ((from.location & (uint)CardLocation.Overlay) > 0)
-                //    return false;
-                if (player == to.controller && (to.location & (uint)CardLocation.Grave) > 0)
-                    return true;
-            }
+            if (NextMessageIsMovingTo(CardLocation.Grave, player))
+                return true;
             return false;
         }
         public bool NextMessageIsMovingToExclude(uint player)
         {
             if (movingToExclude >= 5)
                 return false;
-            if (packages.Count < 2)
-                return false;
-            if (packages[1].Function == (int)GameMessage.Move)
-            {
-                var r = packages[1].Data.reader;
-                r.BaseStream.Seek(0, 0);
-                r.ReadInt32();
-                var from = r.ReadGPS();
-                var to = r.ReadGPS();
-                r.ReadUInt32();
-                //if ((from.location & (uint)CardLocation.Overlay) > 0)
-                //    return false;
-                if (player == to.controller && (to.location & (uint)CardLocation.Removed) > 0)
-                    return true;
-            }
-            return false;
-        }
-        public bool NextMessageIsOverlayOut()
-        {
-            if (packages.Count < 2)
-                return false;
-            if (packages[1].Function == (int)GameMessage.Move)
-            {
-                var r = packages[1].Data.reader;
-                r.BaseStream.Seek(0, 0);
-                r.ReadInt32();
-                var from = r.ReadGPS();
-                if ((from.location & (uint)CardLocation.Overlay) > 0)
-                    return true;
-            }
+            if (NextMessageIsMovingTo(CardLocation.Removed, player))
+                return true;
             return false;
         }
         private void Sibyl()

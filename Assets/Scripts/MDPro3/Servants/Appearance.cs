@@ -576,6 +576,7 @@ namespace MDPro3
         public static string currentContent = "";
         static List<Items.Item> targetItems;
         static List<GameObject> currentList;
+        static List<GameObject> onlyOpSideShowItems = new List<GameObject>();
         public void ShowItems(string type)
         {
             currentContent = type;
@@ -752,6 +753,7 @@ namespace MDPro3
                         itemMono.transform.SetParent(scrollView.content, false);
                         currentList.Add(item);
                     }
+
                     if (Program.items.ListHaveDIY(targetItems))
                     {
                         GameObject item = Instantiate(appearanceItem);
@@ -771,11 +773,28 @@ namespace MDPro3
                         itemMono.transform.SetParent(scrollView.content, false);
                         currentList.Add(item);
                     }
+
+                    if (targetItems == Program.items.mats)
+                    {
+                        GameObject item = Instantiate(appearanceItem);
+                        AppearanceItem itemMono = item.GetComponent<AppearanceItem>();
+                        itemMono.id = ++itemCount;
+                        itemMono.itemID = Items.sameCode;
+                        itemMono.description = InterString.Get("该项设置将与我方场地设置保持一致。");
+                        itemMono.itemName = InterString.Get("一致");
+                        itemMono.path = Items.sameIconPath;
+                        itemMono.transform.SetParent(scrollView.content, false);
+                        currentList.Add(item);
+                        onlyOpSideShowItems.Add(item);
+                    }
                 }
             }
             foreach (var item in currentList)
             {
-                item.SetActive(true);
+                if (player.Contains("0") && onlyOpSideShowItems.Contains(item))
+                    item.SetActive(false);
+                else
+                    item.SetActive(true);
                 item.GetComponent<AppearanceItem>().Show();
             }
             foreach (var item in currentList)
