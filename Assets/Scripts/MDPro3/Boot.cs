@@ -89,9 +89,9 @@ namespace MDPro3
         IEnumerator CheckFile()
         {
             //V1.2.0 Delete Folder MonsterCutin
-            if(Application.version == "1.2.0")
+            if(Application.version == "1.2.0.0")
             {
-                if(Config.Get("Android-V1.2.0test1_install", "0") == "0")
+                if(Config.Get("Android-V1.2.0.0_install", "0") == "0")
                 {
                     //Program.ClearDirectoryRecursively(new DirectoryInfo("Android/MonsterCutin"));
                     //Program.ClearDirectoryRecursively(new DirectoryInfo("Android/MasterDuel/Mate"));
@@ -154,7 +154,7 @@ namespace MDPro3
             progressBar.value = 0;
 
             Config.Initialize(Program.configPath);
-            Config.Set("Version", Application.version.Substring(0, 5));
+            Config.Set("Version", Application.version[..5]);
             Config.Save();
 
             title = InterString.Get("正在初始化");
@@ -258,11 +258,13 @@ namespace MDPro3
                 if(installVersion == installedVersion)
                     return true;
 
-                if(installVersion.Length > 5)
+                if (installVersion.Length > 5)
                 {
                     if(installVersion.EndsWith("0"))
                     {
-                        if(InstallNext(installedVersion, installVersion))
+                        if (InstallNext(installedVersion, installVersion))
+                            return true;
+                        else if (installVersion[..5] == installedVersion)
                             return true;
                         else
                         {

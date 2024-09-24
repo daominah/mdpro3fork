@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
+using UnityEngine;
 
 namespace MDPro3
 {
@@ -30,6 +31,7 @@ namespace MDPro3
             if (!File.Exists(jsonPath))
             {
                 cards = new RarityCards();
+                initialized = true;
                 return;
             }
 
@@ -38,8 +40,9 @@ namespace MDPro3
             {
                 cards = JsonConvert.DeserializeObject<RarityCards>(json);
             }
-            catch 
+            catch (Exception e)
             {
+                Debug.LogException(e);
                 cards = new RarityCards();
             }
             initialized = true;
