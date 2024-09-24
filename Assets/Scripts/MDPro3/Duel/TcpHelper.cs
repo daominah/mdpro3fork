@@ -10,7 +10,6 @@ using MDPro3.YGOSharp.Network.Enums;
 using MDPro3.YGOSharp.OCGWrapper.Enums;
 using MDPro3.Net;
 using System.Net;
-using UnityEditor.Experimental.GraphView;
 
 namespace MDPro3
 {
