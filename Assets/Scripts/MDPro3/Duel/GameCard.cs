@@ -318,7 +318,12 @@ namespace MDPro3
 
         public void SetData(Card d)
         {
-            if(d.Id != data.Id)
+            if (d.Attack < 0)
+                d.Attack = 0;
+            if (d.Defense < 0)
+                d.Defense = 0;
+
+            if (d.Id != data.Id)
             {
                 data = d;
                 if (model != null)

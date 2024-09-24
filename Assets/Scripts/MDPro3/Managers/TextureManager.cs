@@ -9,7 +9,6 @@ using UnityEngine.Networking;
 using YgomSystem.ElementSystem;
 using MDPro3.YGOSharp;
 using MDPro3.YGOSharp.OCGWrapper.Enums;
-using static MDPro3.EditDeck;
 using DG.Tweening;
 using UnityEngine.UI;
 
@@ -118,7 +117,7 @@ namespace MDPro3
             cardMatGold.SetFloat("_CardDistortion01", 1.2f);
             cardMatGold.SetFloat("_Kira01_01Tile", 0.25f);
             cardMatGold.SetFloat("_Kira01_01Power", 3f);
-            cardMatGold.SetColor("_KiraColor02", new Color(1f, 1f, 0f, 0f));
+            cardMatGold.SetColor("_KiraColor02", new Color(0.5f, 0.5f, 0f, 0f));
             cardMatGold.SetColor("_CubemapColor", new Color(0.7f, 0.7f, 0f, 0f));
 
             cardMatMillennium = Instantiate(cardMatRoyal);
@@ -129,7 +128,7 @@ namespace MDPro3
             cardMatMillennium.SetFloat("_Kira01_01Tile", 0.25f);
             cardMatMillennium.SetFloat("_Kira01_02Tile", 0f);
             cardMatMillennium.SetFloat("_RanbowPower", 0.5f);
-            cardMatMillennium.SetFloat("_IlluustRanbowPower", 1.5f);
+            //cardMatMillennium.SetFloat("_IlluustRanbowPower", 1.5f);
 
             cardMatShineRD = Instantiate(cardMatShine);
             MaterialToRD(cardMatShineRD);

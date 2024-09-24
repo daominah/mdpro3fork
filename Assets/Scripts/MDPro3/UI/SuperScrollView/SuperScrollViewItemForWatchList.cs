@@ -73,10 +73,7 @@ public class SuperScrollViewItemForWatchList : SuperScrollViewItem
         base.OnClick();
         var password = MyCard.GetJoinRoomPassword(options, roomId, MyCard.account.user.id);
 
-        (new Thread(() => 
-        { 
-            TcpHelper.Join(MyCard.duelUrl, MyCard.account.user.username, MyCard.athleticPort.ToString(), password); 
-        })).Start();
+        TcpHelper.LinkStart(MyCard.duelUrl, MyCard.account.user.username, MyCard.athleticPort.ToString(), password, 0);
     }
 
 }

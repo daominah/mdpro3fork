@@ -1,3 +1,4 @@
+using System.IO;
 using System.Runtime.InteropServices;
 using System.Threading;
 
@@ -21,10 +22,11 @@ namespace MDPro3.Net
 
             serverThread = new Thread(() =>
             {
-                Dll.start_server(args);
+                int result = Dll.start_server(args);
             });
             serverThread.Start();
         }
+
         public static void StopServer()
         {
             Dll.stop_server();

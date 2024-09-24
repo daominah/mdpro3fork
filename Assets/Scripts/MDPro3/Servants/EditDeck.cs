@@ -1897,6 +1897,19 @@ namespace MDPro3
                     if (item.gameObject.GetComponent<SuperScrollViewItemForDeckEdit>().code == cardShowing.Id)
                         item.gameObject.GetComponent<RawImage>().material = mat;
         }
+
+        public void OnHandTest()
+        {
+            return;
+            if (!deckIsFromLocalFile || dirty)
+            {
+                MessageManager.Cast(InterString.Get("ÇëÏÈ±£´æ¿¨×é¡£"));
+                return;
+            }
+
+            UIManager.UIBlackIn(transitionTime);
+
+        }
     }
 }
 ;

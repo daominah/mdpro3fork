@@ -9,6 +9,8 @@ using MDPro3.YGOSharp;
 using MDPro3.YGOSharp.Network.Enums;
 using MDPro3.YGOSharp.OCGWrapper.Enums;
 using MDPro3.Net;
+using System.Net;
+using UnityEditor.Experimental.GraphView;
 
 namespace MDPro3
 {
@@ -27,7 +29,8 @@ namespace MDPro3
 
         private static readonly Queue<Package> messageQueue = new Queue<Package>();
 
-        static Thread senderThead;
+        static Thread senderThread;
+        static Thread linkThread;
 
         public static int version = 0x1361;
 
@@ -39,12 +42,12 @@ namespace MDPro3
         {
             try
             {
-                senderThead?.Abort();
-                senderThead = new Thread(Sender)
+                senderThread?.Abort();
+                senderThread = new Thread(Sender)
                 {
                     IsBackground = true
                 };
-                senderThead.Start();
+                senderThread.Start();
             }
             catch 
             {
@@ -53,46 +56,50 @@ namespace MDPro3
             }
         }
 
-        public static void Join(string ipString, string name, string portString, string pswString)
+        public static bool LinkStart(string ipString, string name, string portString, string pswString, int delay)
         {
-            if (canJoin)
+            if(!canJoin)
+                return false;
+
+            linkThread?.Abort();
+
+            canJoin = false;
+            linkThread = new Thread(() => { Thread.Sleep(delay); Join(ipString, name, portString, pswString); });
+            linkThread.Start();
+            return true;
+        }
+
+        private static void Join(string ipString, string name, string portString, string pswString)
+        {
+            if (tcpClient == null || tcpClient.Connected == false)
             {
-                if (tcpClient == null || tcpClient.Connected == false)
+                try
                 {
-                    canJoin = false;
-                    try
-                    {
-                        Debug.LogFormat("Try Address: {0}, Port: {1}, Password: {2}", ipString, portString, pswString);
+                    Debug.LogFormat("Try Address: {0}, Port: {1}, Password: {2}", ipString, portString, pswString);
 
-                        tcpClient = new TcpClientWithTimeout(ipString, int.Parse(portString), 3000).Connect();
-                        networkStream = tcpClient.GetStream();
-                        var t = new Thread(Receiver);
-                        t.Start();
-                        messageQueue.Clear();
-                        InitializeSender();
-                        CtosMessage_PlayerInfo(name);
-                        CtosMessage_JoinGame(pswString);
-                        joinedAddress = ipString;
-                        joinedPort = portString;
-                        joinedPassword = pswString;
-                        Program.I().ocgcore.mycardDuel = joinedAddress == MyCard.duelUrl;
+                    tcpClient = new TcpClientWithTimeout(ipString, int.Parse(portString), 3000).Connect();
+                    networkStream = tcpClient.GetStream();
+                    var t = new Thread(Receiver);
+                    t.Start();
+                    messageQueue.Clear();
+                    InitializeSender();
+                    CtosMessage_PlayerInfo(name);
+                    CtosMessage_JoinGame(pswString);
+                    joinedAddress = ipString;
+                    joinedPort = portString;
+                    joinedPassword = pswString;
+                    Program.I().ocgcore.mycardDuel = joinedAddress == MyCard.duelUrl;
 
-                        Debug.LogFormat("Joind Address: {0}, Port: {1}, Password: {2}", joinedAddress, joinedPort, joinedPassword);
-                    }
-                    catch (Exception e)
-                    {
-                        if(Program.I().solo.isShowed)
-                            MessageManager.messageFromSubString = InterString.Get("端口被占用， 请尝试修改端口后再尝试。端口号应大于0，小于65535。");
-                        else
-                            MessageManager.messageFromSubString = "JoinError: " + e;
-                    }
-                    canJoin = true;
+                    Debug.LogFormat("Joind Address: {0}, Port: {1}, Password: {2}", joinedAddress, joinedPort, joinedPassword);
                 }
+                catch (Exception e)
+                {
+                    MessageManager.messageFromSubString = "JoinError: " + e;
+                }
+                canJoin = true;
             }
             else
-            {
                 onDisConnected = true;
-            }
         }
 
         public static void Receiver()
@@ -269,7 +276,7 @@ namespace MDPro3
         {
             while (tcpClient != null && tcpClient.Connected)
             {
-                senderThead.Join(100);
+                senderThread.Join(100);
                 Package currentMessage;
                 lock (locker)
                 {
@@ -564,6 +571,23 @@ namespace MDPro3
         {
             if (Program.I().ocgcore.condition != OcgCore.Condition.Replay)
                 packagesInRecord.Add(p);
+        }
+
+        public static bool IsPortAvailable(int port)
+        {
+            try
+            {
+                using (Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp))
+                {
+                    // 尝试绑定端口
+                    socket.Bind(new IPEndPoint(IPAddress.Loopback, port));
+                    return true; // 成功绑定，端口可用
+                }
+            }
+            catch (SocketException)
+            {
+                return false; // 绑定失败，端口被占用
+            }
         }
     }
 

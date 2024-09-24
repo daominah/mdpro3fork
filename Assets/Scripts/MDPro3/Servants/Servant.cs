@@ -294,6 +294,12 @@ namespace MDPro3
             else
                 Program.I().ShiftToServant(returnServant);
         }
+
+        public virtual void StartResponse()
+        {
+            if(cg != null)
+                cg.blocksRaycasts = true;
+        }
     }
 
 }

@@ -212,7 +212,7 @@ namespace MDPro3
             string aiCommand = GetWindBotCommand(aiCode, diyDeck);
             if (aiCommand != string.Empty)
             {
-                StartWindBot(aiCommand, TcpHelper.joinedAddress, TcpHelper.joinedPort, TcpHelper.joinedPassword, toggleLockHand.isOn);
+                StartWindBot(aiCommand, TcpHelper.joinedAddress, TcpHelper.joinedPort, TcpHelper.joinedPassword, toggleLockHand.isOn, 600);
                 Program.I().ShiftToServant(Program.I().room);
             }
         }
@@ -234,7 +234,7 @@ namespace MDPro3
         }
 
 
-        public void StartWindBot(string command, string ip, string port, string password, bool lockHand)
+        public void StartWindBot(string command, string ip, string port, string password, bool lockHand, int delay)
         {
             command = command.Replace("'", "\"");
             if (lockHand)
@@ -260,7 +260,7 @@ namespace MDPro3
                 }
             }
 
-            (new Thread(() => { Thread.Sleep(300); WindBot.Program.Main(args); })).Start();
+            (new Thread(() => { Thread.Sleep(delay); WindBot.Program.Main(args); })).Start();
         }
 
         public void Launch(string command, bool lockHand, bool noCheck, bool noShuffle)
@@ -282,17 +282,25 @@ namespace MDPro3
             if (string.IsNullOrEmpty(draw) /*|| draw == "0"*/)
                 draw = "5";
             string args = port + " -1 5 0 F " + (noCheck ? "T " : "F ") + (noShuffle ? "T " : "F ") + lp + " " + hand + " " + draw + " 0 0";
-            YgoServer.StartServer(args);
+            if (TcpHelper.IsPortAvailable(int.Parse(port)))
+            {
+                YgoServer.StartServer(args);
+                Room.fromSolo = true;
+                if (lockHand)
+                    Room.soloLockHand = true;
+                else
+                    Room.soloLockHand = false;
+                Room.fromLocalHost = false;
 
-            Room.fromSolo = true;
-            if (lockHand)
-                Room.soloLockHand = true;
+                TcpHelper.LinkStart("127.0.0.1", Config.Get("DuelPlayerName0", "@ui"), port, string.Empty, 500);
+                StartWindBot(command, "127.0.0.1", port, string.Empty, lockHand, 600);
+            }
             else
-                Room.soloLockHand = false;
-            Room.fromLocalHost = false;
-            (new Thread(() => { Thread.Sleep(200); TcpHelper.Join("127.0.0.1", Config.Get("DuelPlayerName0", "@ui"), port, ""); })).Start();
+            {
+                cg.interactable = true;
 
-            StartWindBot(command, "127.0.0.1", port, string.Empty, lockHand);
+                MessageManager.messageFromSubString = InterString.Get("端口被占用， 请尝试修改端口后再尝试。端口号应大于0，小于65535。");
+            }
         }
     }
 }

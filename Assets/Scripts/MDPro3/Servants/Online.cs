@@ -226,8 +226,14 @@ namespace MDPro3.Net
 
         public void CreateServer()
         {
+            int port = 7911;
+            while (!TcpHelper.IsPortAvailable(port))
+            {
+                port++;
+            }
+
             string args = string.Format("{0} {1} {2} {3} {4} {5} {6} {7} {8} {9} {10} {11}",
-                "7911",
+                port.ToString(),
                 BanlistManager.GetIndexByName(serverSelections[1]),
                 GetPoolCodeByName(serverSelections[2]),
                 GetModeCodeByName(serverSelections[3]),
@@ -243,8 +249,7 @@ namespace MDPro3.Net
             Room.fromSolo = false;
             Room.fromLocalHost = true;
             YgoServer.StartServer(args);
-            string name = Config.Get("DuelPlayerName0", "@ui");
-            (new Thread(() => { Thread.Sleep(200); TcpHelper.Join("127.0.0.1", Config.Get("DuelPlayerName0", "@ui"), "7911", ""); })).Start();
+            TcpHelper.LinkStart("127.0.0.1", Config.Get("DuelPlayerName0", "@ui"), port.ToString(), "", 300);
         }
 
         string GetPoolCodeByName(string pool)
@@ -329,11 +334,9 @@ namespace MDPro3.Net
                 MessageManager.Cast(InterString.Get("主机地址和端口不能为空。"));
                 return;
             }
-            if (!TcpHelper.canJoin)
-                return;
             Room.fromSolo = false;
             Room.fromLocalHost = false;
-            new Thread(() => { TcpHelper.Join(ip, Config.Get("DuelPlayerName0", "@ui"), port, password); }).Start();
+            TcpHelper.LinkStart(ip, Config.Get("DuelPlayerName0", "@ui"), port, password, 0);
         }
 
         public void SwitchFunction(int id)
@@ -683,7 +686,7 @@ namespace MDPro3.Net
             if(task.Result != null)
             {
                 textEntertain.text = InterString.Get("娱乐匹配");
-                (new Thread(() => { TcpHelper.Join(task.Result.address, MyCard.account.user.username, task.Result.port.ToString(), task.Result.password); })).Start();
+                TcpHelper.LinkStart(task.Result.address, MyCard.account.user.username, task.Result.port.ToString(), task.Result.password, 0);
             }
             else
             {
@@ -708,7 +711,7 @@ namespace MDPro3.Net
             if (task.Result != null)
             {
                 textAthletic.text = InterString.Get("竞技匹配");
-                (new Thread(() => { TcpHelper.Join(task.Result.address, MyCard.account.user.username, task.Result.port.ToString(), task.Result.password); })).Start();
+                TcpHelper.LinkStart(task.Result.address, MyCard.account.user.username, task.Result.port.ToString(), task.Result.password, 0);
             }
             else
             {
