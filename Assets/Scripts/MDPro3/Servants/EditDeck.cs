@@ -57,7 +57,6 @@ namespace MDPro3
             }
         }
 
-        public CardDetail detail;
         public Transform cardsOnEditParent;
         public GameObject itemOnTable;
         public GameObject itemOnList;
@@ -304,33 +303,60 @@ namespace MDPro3
         public override void Show(int preDepth)
         {
             base.Show(preDepth);
-            if (intoAppearance)
-                intoAppearance = false;
+
+            if (toHandTest)
+            {
+                DOTween.To(v => { }, 0, 0, transitionTime).OnComplete(() =>
+                {
+                    cg.alpha = 1f;
+                    cg.interactable = true;
+                    cg.blocksRaycasts = true;
+                });
+            }
             else
             {
-                AudioManager.PlayBGM("BGM_MENU_02");
-                manager.GetElement("Group").SetActive(false);
-                ScrollViewInstall();
-                StartCoroutine(RefreshAsync());
-                StartCoroutine(RefreshIcons());
+                if (intoAppearance)
+                    intoAppearance = false;
+                else
+                {
+                    AudioManager.PlayBGM("BGM_MENU_02");
+                    manager.GetElement("Group").SetActive(false);
+                    ScrollViewInstall();
+                    StartCoroutine(RefreshAsync());
+                    StartCoroutine(RefreshIcons());
+                }
             }
+            toHandTest = false;
         }
 
         public override void ApplyHideArrangement(int preDepth)
         {
             base.ApplyHideArrangement(preDepth);
-            if (!intoAppearance)
-            {
-                AudioManager.PlayBGM("BGM_MENU_01");
-                CardRarity.Save();
 
-                DOTween.To(v => { }, 0, 0, transitionTime).OnComplete(() =>
+            if (toHandTest)
+            {
+                //cg.interactable = false;
+                //cg.blocksRaycasts = false;
+                //DOTween.To(v => { }, 0, 0, transitionTime).OnComplete(() =>
+                //{
+                //    cg.alpha = 0f;
+                //});
+            }
+            else
+            {
+                if (!intoAppearance)
                 {
-                    Dispose();
-                    if (superScrollView != null)
-                        foreach (var item in superScrollView.items)
-                            item.gameObject.GetComponent<SuperScrollViewItemForDeckEdit>().Dispose();
-                });
+                    AudioManager.PlayBGM("BGM_MENU_01");
+                    CardRarity.Save();
+
+                    DOTween.To(v => { }, 0, 0, transitionTime).OnComplete(() =>
+                    {
+                        Dispose();
+                        if (superScrollView != null)
+                            foreach (var item in superScrollView.items)
+                                item.gameObject.GetComponent<SuperScrollViewItemForDeckEdit>().Dispose();
+                    });
+                }
             }
         }
 
@@ -641,7 +667,7 @@ namespace MDPro3
         {
             var cardFace = manager.GetElement<RawImage>("Card").texture;
             var mat = manager.GetElement<RawImage>("Card").material;
-            detail.Show(cardShowing, cardFace, mat, cardIndex >= 0 ? CardsInDeck() : CardsOnList(), cardIndex);
+            Program.I().ui_.cardDetail.Show(cardShowing, cardFace, mat, cardIndex >= 0 ? CardsInDeck() : CardsOnList(), cardIndex);
         }
 
         public List<int> CardsInDeck()
@@ -667,20 +693,16 @@ namespace MDPro3
         {
             if (isShowed)
             {
-                if (Program.InputGetMouse1Up)
+                if (!Program.I().ui_.subMenu.showing && Program.InputGetMouse1Up)
                 {
-                    if (detail.showing)
-                        detail.Hide();
-                    else if (returnAction != null)
+                    if (!Program.I().ui_.cardDetail.showing && returnAction != null)
                         returnAction();
                 }
-                if (Input.GetKeyDown(KeyCode.Escape))
+                if (!Program.I().ui_.subMenu.showing && Input.GetKeyDown(KeyCode.Escape))
                 {
-                    if (detail.showing)
-                        detail.Hide();
-                    else if (returnAction != null)
+                    if (!Program.I().ui_.cardDetail.showing && returnAction != null)
                         returnAction();
-                    else
+                    else if (!Program.I().ui_.cardDetail.showing)
                         OnReturn();
                 }
             }
@@ -730,22 +752,23 @@ namespace MDPro3
             var startX = 810f;
             var space = 20f;
             var fullWidth = uiWidth - startX - 30 - space * 5;
-            var buttonWidth = fullWidth / 6;
-            manager.GetElement<RectTransform>("ButtonDeckReset").sizeDelta = new Vector2(buttonWidth, 62);
-            manager.GetElement<RectTransform>("ButtonDeckSort").sizeDelta = new Vector2(buttonWidth, 62);
-            manager.GetElement<RectTransform>("ButtonDeckRandom").sizeDelta = new Vector2(buttonWidth, 62);
-            manager.GetElement<RectTransform>("ButtonDeckCopy").sizeDelta = new Vector2(buttonWidth, 62);
-            manager.GetElement<RectTransform>("ButtonDeckShare").sizeDelta = new Vector2(buttonWidth, 62);
-            manager.GetElement<RectTransform>("ButtonDeckSave").sizeDelta = new Vector2(buttonWidth, 62);
-            manager.GetElement<RectTransform>("ButtonChangeSide").sizeDelta = new Vector2(buttonWidth * 4 + space * 3, 62);
 
-            manager.GetElement<RectTransform>("ButtonDeckReset").anchoredPosition = new Vector2(startX, -34);
-            manager.GetElement<RectTransform>("ButtonDeckSort").anchoredPosition = new Vector2(startX + buttonWidth + space, -34);
-            manager.GetElement<RectTransform>("ButtonDeckRandom").anchoredPosition = new Vector2(startX + (buttonWidth + space) * 2, -34);
-            manager.GetElement<RectTransform>("ButtonDeckCopy").anchoredPosition = new Vector2(startX + (buttonWidth + space) * 3, -34);
-            manager.GetElement<RectTransform>("ButtonDeckShare").anchoredPosition = new Vector2(startX + (buttonWidth + space) * 4, -34);
-            manager.GetElement<RectTransform>("ButtonDeckSave").anchoredPosition = new Vector2(startX + (buttonWidth + space) * 5, -34);
-            manager.GetElement<RectTransform>("ButtonChangeSide").anchoredPosition = new Vector2(startX + (buttonWidth + space) * 2, -34);
+            //var buttonWidth = fullWidth / 6;
+            //manager.GetElement<RectTransform>("ButtonDeckReset").sizeDelta = new Vector2(buttonWidth, 62);
+            //manager.GetElement<RectTransform>("ButtonDeckSort").sizeDelta = new Vector2(buttonWidth, 62);
+            //manager.GetElement<RectTransform>("ButtonDeckRandom").sizeDelta = new Vector2(buttonWidth, 62);
+            //manager.GetElement<RectTransform>("ButtonDeckCopy").sizeDelta = new Vector2(buttonWidth, 62);
+            //manager.GetElement<RectTransform>("ButtonDeckShare").sizeDelta = new Vector2(buttonWidth, 62);
+            //manager.GetElement<RectTransform>("ButtonDeckSave").sizeDelta = new Vector2(buttonWidth, 62);
+            //manager.GetElement<RectTransform>("ButtonChangeSide").sizeDelta = new Vector2(buttonWidth * 4 + space * 3, 62);
+
+            //manager.GetElement<RectTransform>("ButtonDeckReset").anchoredPosition = new Vector2(startX, -34);
+            //manager.GetElement<RectTransform>("ButtonDeckSort").anchoredPosition = new Vector2(startX + buttonWidth + space, -34);
+            //manager.GetElement<RectTransform>("ButtonDeckRandom").anchoredPosition = new Vector2(startX + (buttonWidth + space) * 2, -34);
+            //manager.GetElement<RectTransform>("ButtonDeckCopy").anchoredPosition = new Vector2(startX + (buttonWidth + space) * 3, -34);
+            //manager.GetElement<RectTransform>("ButtonDeckShare").anchoredPosition = new Vector2(startX + (buttonWidth + space) * 4, -34);
+            //manager.GetElement<RectTransform>("ButtonDeckSave").anchoredPosition = new Vector2(startX + (buttonWidth + space) * 5, -34);
+            //manager.GetElement<RectTransform>("ButtonChangeSide").anchoredPosition = new Vector2(startX + (buttonWidth + space) * 2, -34);
 
             foreach (var card in cards)
                 card.RefreshPositionInstant();
@@ -1427,8 +1450,7 @@ namespace MDPro3
 
         public void SaveDeckFile(Deck deck, string deckName)
         {
-            var value = FromDeckToYDK(deck);
-
+            var value = Deck.FromDeckToYDK(deck);
             try
             {
                 File.WriteAllText(Program.deckPath + deckName + Program.ydkExpansion, value, Encoding.UTF8);
@@ -1441,37 +1463,6 @@ namespace MDPro3
 
             if (MyCard.account != null)
                 _ = OnlineDeck.SyncDeck(deck.deckId, deckName, value);
-        }
-
-        public static string FromDeckToYDK(Deck deck)
-        {
-            var value = Deck.deckPrefix + deck.author + "\r\n#main\r\n";
-            for (var i = 0; i < deck.Main.Count; i++) value += deck.Main[i] + "\r\n";
-            value += "#extra\r\n";
-            for (var i = 0; i < deck.Extra.Count; i++) value += deck.Extra[i] + "\r\n";
-            value += "!side\r\n";
-            for (var i = 0; i < deck.Side.Count; i++) value += deck.Side[i] + "\r\n";
-            value += "#pickup\r\n";
-            for (var i = 0; i < deck.Pickup.Count; i++) value += deck.Pickup[i] + "#\r\n";
-            value += "#case\r\n";
-            for (var i = 0; i < deck.Case.Count; i++) value += deck.Case[i] + "#\r\n";
-            value += "#protector\r\n";
-            for (var i = 0; i < deck.Protector.Count; i++) value += deck.Protector[i] + "#\r\n";
-            value += "#field\r\n";
-            for (var i = 0; i < deck.Field.Count; i++) value += deck.Field[i] + "#\r\n";
-            value += "#grave\r\n";
-            for (var i = 0; i < deck.Grave.Count; i++) value += deck.Grave[i] + "#\r\n";
-            value += "#stand\r\n";
-            for (var i = 0; i < deck.Stand.Count; i++) value += deck.Stand[i] + "#\r\n";
-            value += "#mate\r\n";
-            for (var i = 0; i < deck.Mate.Count; i++) value += deck.Mate[i] + "#\r\n";
-
-            if (deck.deckId != string.Empty)
-                value += "##" + deck.deckId + "\r\n";
-            if (deck.userId != string.Empty)
-                value += "###" + deck.userId;
-
-            return value;
         }
 
         public void ChangeCurrentDeckAuthor(string author)
@@ -1898,17 +1889,70 @@ namespace MDPro3
                         item.gameObject.GetComponent<RawImage>().material = mat;
         }
 
+        #region HandTest
+        public bool toHandTest;
+        static string handTestPuzzleName = "HandTest.lua";
         public void OnHandTest()
         {
-            return;
-            if (!deckIsFromLocalFile || dirty)
+            toHandTest = true;
+            DeckToPuzzle();
+            Program.I().puzzle.StartPuzzle(Program.tempFolder + handTestPuzzleName.Replace(".lua", string.Empty));
+        }
+
+        void DeckToPuzzle()
+        {
+            var puzzle = string.Format("Debug.SetAIName(\"{0}\")\r\n", deckName);
+            puzzle += "Debug.ReloadFieldBegin(DUEL_ATTACK_FIRST_TURN+DUEL_SIMPLE_AI,5)\r\n";
+            puzzle += "Debug.SetPlayerInfo(0,8000,0,0)\r\n";
+            puzzle += "Debug.SetPlayerInfo(1,8000,0,0)\r\n";
+
+            foreach (var card in cards)
             {
-                MessageManager.Cast(InterString.Get("请先保存卡组。"));
-                return;
+                if (card.id >= 2000)
+                    continue;
+                if (card.id >= 1000)
+                {
+                    puzzle += string.Format("Debug.AddCard({0}, 0, 0, LOCATION_EXTRA, 0, POS_FACEUP_ATTACK)\r\n", card.code);
+                    continue;
+                }
+                if (card.id >= 5)
+                    puzzle += string.Format("Debug.AddCard({0}, 0, 0, LOCATION_DECK, 0, POS_FACEUP_ATTACK)\r\n", card.code);
+                else if(card.id < 5)
+                    puzzle += string.Format("Debug.AddCard({0}, 0, 0, LOCATION_HAND, 0, POS_FACEUP_ATTACK)\r\n", card.code);
             }
 
-            UIManager.UIBlackIn(transitionTime);
+            puzzle += "Debug.ReloadFieldEnd()\r\n";
+            puzzle += "aux.BeginPuzzle()";
 
+            if(!Directory.Exists(Program.tempFolder))
+                Directory.CreateDirectory(Program.tempFolder);
+            File.WriteAllText(Program.tempFolder + handTestPuzzleName, puzzle);
+        }
+        #endregion
+
+        public void OnSubMenu()
+        {
+            var menus = new List<string>()
+            {
+                InterString.Get("副菜单"),
+                InterString.Get("重置"),
+                InterString.Get("排序"),
+                InterString.Get("打乱"),
+                InterString.Get("复制"),
+                InterString.Get("分享"),
+                InterString.Get("测试"),
+            };
+            var actions = new List<Action>()
+            {
+                null,
+                OnReset,
+                OnSort,
+                OnRandom,
+                OnCopy,
+                OnShare,
+                OnHandTest
+            };
+            Program.I().ui_.subMenu.Show(menus, actions);
         }
     }
 }

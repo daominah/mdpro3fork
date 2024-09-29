@@ -59,7 +59,7 @@ namespace MDPro3
             ret.len = 0;
             var fileName2 = fileName.TrimStart('.', '/');
 
-            if (fileName.StartsWith(Program.puzzlePath))
+            if (fileName.StartsWith(Program.puzzlePath) || fileName.StartsWith(Program.tempFolder))
             {
                 if (File.Exists(fileName))
                 {
@@ -128,7 +128,7 @@ namespace MDPro3
             {
                 Program.I().ocgcore.condition = OcgCore.Condition.Duel;
                 Program.I().ocgcore.isFirst = true;
-                Program.I().ocgcore.returnServant = Program.I().puzzle;
+                Program.I().ocgcore.returnServant = Program.I().editDeck.toHandTest ? Program.I().editDeck : Program.I().puzzle;
                 Program.I().ocgcore.timeLimit = 0;
                 Program.I().ocgcore.inAi = true;
                 Program.I().ShiftToServant(Program.I().ocgcore);

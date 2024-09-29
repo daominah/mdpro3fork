@@ -100,7 +100,7 @@ namespace YGOSharp.OCGWrapper
         private static void LoadCard(IDataRecord reader)
         {
             NamedCard card = new NamedCard(reader);
-            _cards.Add(card.Id, card);
+            _cards[card.Id] = card;
         }
     }
 }

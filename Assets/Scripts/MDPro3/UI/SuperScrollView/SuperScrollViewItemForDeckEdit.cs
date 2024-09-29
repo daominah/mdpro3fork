@@ -276,7 +276,7 @@ namespace MDPro3.UI
 
             var scale = Config.GetUIScale();
             dragItem.transform.SetParent(Program.I().editDeck.cardsOnEditParent, false);
-            dragItem.transform.localScale = Vector3.one * 1.2f * scale;
+            dragItem.transform.localScale = Vector3.one * scale * 1.2f;
             dragItem.button.GetComponent<Image>().raycastTarget = false;
         }
         void OnDrag(PointerEventData eventData)
@@ -291,6 +291,8 @@ namespace MDPro3.UI
             Vector3 uiPosition;
             RectTransformUtility.ScreenPointToWorldPointInRectangle(
                 dragTarget, eventData.position, eventData.enterEventCamera, out uiPosition);
+            uiPosition.z = 90f;
+
             dragTarget.position = uiPosition;
         }
         void OnEndDrag(PointerEventData eventData)

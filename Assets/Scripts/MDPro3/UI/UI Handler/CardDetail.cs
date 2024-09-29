@@ -13,27 +13,30 @@ using UnityEngine.AddressableAssets;
 
 namespace MDPro3
 {
-    public class CardDetail : MonoBehaviour
+    public class CardDetail : UIHandler
     {
         ElementObjectManager manager;
-        public bool showing;
-        float transitionTime = 0.1f;
-        float bigShowTime = 0.2f;
-        float hideScale = 0.9f;
+        private readonly float bigShowTime = 0.2f;
+        private readonly float hideScale = 0.9f;
         int code;
         List<int> cards;
         int cardIndex;
 
-        private void Start()
+        public override void Initialize()
         {
+            base.Initialize();
+            transitionTime = 0.1f;
+            shadowColor = 0.9f;
             manager = GetComponent<ElementObjectManager>();
-            manager.GetElement<CanvasGroup>("Window").alpha = 0f;
         }
 
-        private void Update()
+        public override void PerframeFunction()
         {
-            if(!showing)
-                return;
+            base.PerframeFunction();
+            if (!showing) return;
+            if (inTransition) return;
+            if (Program.returnClicked)
+                Hide();
 
             if (Input.GetKeyDown(KeyCode.UpArrow))
                 OnUp();
@@ -51,19 +54,13 @@ namespace MDPro3
                 OnRight();
         }
 
-        public void Hide()
+        public override void Hide()
         {
-            showing = false;
-            //CameraManager.UIBlurMinus();
+            base.Hide();
             AudioManager.PlaySE("SE_DUEL_CANCEL");
-            manager.GetElement<RectTransform>("Window").DOScale(hideScale, transitionTime);
-            manager.GetElement<CanvasGroup>("Window").DOFade(0, transitionTime);
-            manager.GetElement<CanvasGroup>("Window").blocksRaycasts = false;
-            manager.GetElement<CanvasGroup>("Window").interactable = false;
-
-            manager.GetElement<CanvasGroup>("BlackBack").DOFade(0, transitionTime);
-            manager.GetElement<CanvasGroup>("BlackBack").blocksRaycasts = false;
-            manager.GetElement<CanvasGroup>("BlackBack").interactable = false;
+            window.DOScale(hideScale, transitionTime);
+            shadow.DOFade(0f, transitionTime);
+            cg.DOFade(0f, transitionTime);
 
             if (Program.I().currentServant == Program.I().editDeck)
                 UIManager.ShowFPSRight();
@@ -73,10 +70,21 @@ namespace MDPro3
         {
             if (data.Id == 0)
                 return;
+            Show();
+            AudioManager.PlaySE("SE_DECK_WINDOW_OPEN");
+            window.localScale = Vector3.one * hideScale;
+            window.DOScale(1f, transitionTime);
+            var windowCG = window.GetComponent<CanvasGroup>();
+            windowCG.alpha = 0f;
+            window.GetComponent<CanvasGroup>().DOFade(1f, transitionTime);
+            UIManager.ShowFPSLeft();
 
             this.cards = cards;
             this.cardIndex = cardIndex;
             code = data.Id;
+            var needArrow = NeedShowArrow();
+            manager.GetElement("ButtonLeft").SetActive(needArrow);
+            manager.GetElement("ButtonRight").SetActive(needArrow);
 
             if (this.cardIndex == -1 && cards != null)
             {
@@ -90,22 +98,6 @@ namespace MDPro3
                     }
                 }
             }
-            manager.GetElement("ButtonLeft").SetActive(NeedShowArrow());
-            manager.GetElement("ButtonRight").SetActive(NeedShowArrow());
-
-            if (Program.I().currentServant == Program.I().editDeck)
-                UIManager.ShowFPSLeft();
-            //CameraManager.UIBlurPlus();
-            showing = true;
-            AudioManager.PlaySE("SE_DECK_WINDOW_OPEN");
-            manager.GetElement<RectTransform>("Window").localScale = Vector3.one * hideScale;
-            manager.GetElement<RectTransform>("Window").DOScale(1f, transitionTime);
-            manager.GetElement<CanvasGroup>("Window").DOFade(1, transitionTime);
-            manager.GetElement<CanvasGroup>("Window").blocksRaycasts = true;
-            manager.GetElement<CanvasGroup>("Window").interactable = true;
-            manager.GetElement<CanvasGroup>("BlackBack").DOFade(1, transitionTime);
-            manager.GetElement<CanvasGroup>("BlackBack").blocksRaycasts = true;
-            manager.GetElement<CanvasGroup>("BlackBack").interactable = true;
 
             var origin = CardsManager.Get(data.Id);
 
@@ -421,8 +413,6 @@ namespace MDPro3
             saveEnumerator = SaveCardsAsync(CardsManager.GetAllCards());
             StartCoroutine(saveEnumerator);
         }
-
-
 
 
         public void OnLeft()

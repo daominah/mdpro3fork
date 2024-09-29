@@ -7,6 +7,7 @@ using MDPro3.YGOSharp;
 using UnityEngine.EventSystems;
 using UnityEngine.AddressableAssets;
 using MDPro3.Net;
+using UnityEngine.InputSystem;
 
 namespace MDPro3
 {
@@ -44,15 +45,7 @@ namespace MDPro3
         public EditDeck editDeck;
         public OnlineDeckViewer onlineDeckViewer;
 
-        #region Initializement
-
-        private static Program instance;
-        public static Items items;
-
-        List<Manager> managers = new List<Manager>();
-        List<Servant> servants = new List<Servant>();
-
-        #region State
+        #region Const
         public static bool Running = true;
         public const string artPath = "Picture/Art/";
         public const string altArtPath = "Picture/Art2/";
@@ -74,6 +67,14 @@ namespace MDPro3
         public const string yrpExpansion = ".yrp";
         public const string yrp3dExpansion = ".yrp3d";
         #endregion
+
+        #region Initializement
+
+        private static Program instance;
+        public static Items items;
+
+        List<Manager> managers = new List<Manager>();
+        List<Servant> servants = new List<Servant>();
 
         public static Program I()
         {
@@ -194,7 +195,7 @@ namespace MDPro3
             }
             else if (puzzle != null)
             {
-                this.puzzle.StartPuzzle(puzzle);
+                this.puzzle.StartPuzzle(puzzlePath + puzzle);
                 exitOnReturn = true;
             }
         }
@@ -245,7 +246,7 @@ namespace MDPro3
 
         #region MonoBehaviors
 
-        public static string tempFolder = "TempFolder";
+        public const string tempFolder = "TempFolder/";
         public const string rootWindows64 = "StandaloneWindows64/";
         public const string rootAndroid = "Android/";
         public static string root = rootWindows64;
@@ -286,11 +287,13 @@ namespace MDPro3
         public static bool InputGetMouse1;
         public static bool InputGetMouse1Down;
         public static bool InputGetMouse1Up;
-        public static float pressingTime;
 
+        public static bool returnClicked;
 
         void Update()
         {
+
+            #region Input
             InputGetMouse0 = Input.GetMouseButton(0);
             InputGetMouse0Down = Input.GetMouseButtonDown(0);
             InputGetMouse0Up = Input.GetMouseButtonUp(0);
@@ -298,12 +301,14 @@ namespace MDPro3
             InputGetMouse1Down = Input.GetMouseButtonDown(1);
             InputGetMouse1Up = Input.GetMouseButtonUp(1);
 
-            if (InputGetMouse0Down)
-                pressingTime = 0;
-            else if (InputGetMouse0)
-                pressingTime += Time.deltaTime;
-            else if (InputGetMouse0Up)
-                pressingTime = 0;
+            returnClicked = false;
+            if (Mouse.current != null && Mouse.current.rightButton.wasReleasedThisFrame
+                || Input.GetKeyUp(KeyCode.Escape)
+                || Gamepad.current != null && Gamepad.current.bButton.wasReleasedThisFrame
+                )
+                returnClicked = true;
+
+            #endregion
 
             hoverObject = null;
             if (camera_.cameraMain.gameObject.activeInHierarchy
@@ -320,10 +325,14 @@ namespace MDPro3
             if (Screen.width != preWidth || Screen.height != preHeight)
                 OnResize();
 
-
             TcpHelper.PerFrameFunction();
-            foreach (Manager manager in managers) manager.PerFrameFunction();
-            foreach (Servant servant in servants) servant.PerFrameFunction();
+            foreach (Manager manager in managers) 
+                manager.PerFrameFunction();
+            foreach (Servant servant in servants) 
+                servant.PerFrameFunction();
+
+
+
 
 #if UNITY_EDITOR
             timeScale = timeScaleForEdit;

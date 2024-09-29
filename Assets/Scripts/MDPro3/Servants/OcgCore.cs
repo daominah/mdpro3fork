@@ -38,7 +38,6 @@ namespace MDPro3
         public GameObject hintObj;
         public TextMeshProUGUI hintText;
         public CardDescription description;
-        public CardDetail detail;
         public CardList list;
         public DuelLog log;
         public RectTransform popup;
@@ -316,8 +315,8 @@ namespace MDPro3
                 #region Hot Key
                 if (Program.InputGetMouse1Up || Input.GetKeyUp(KeyCode.Escape))
                 {
-                    if (detail.showing)
-                        detail.Hide();
+                    if (Program.I().ui_.cardDetail.showing)
+                        Program.I().ui_.cardDetail.Hide();
                     else if (returnAction != null)
                         returnAction();
                 }
@@ -3175,10 +3174,10 @@ namespace MDPro3
             var length_of_message = r.BaseStream.Length;
             BinaryMaster binaryMaster;
             List<string> selections;
-            //if ((GameMessage)p.Function != GameMessage.UpdateData)
-            //    Debug.Log("----------" + (GameMessage)p.Function);
-            //else
-            //    Debug.Log("|||||||||||" + (GameMessage)p.Function);
+            if ((GameMessage)p.Function != GameMessage.UpdateData)
+                Debug.Log("----------" + (GameMessage)p.Function);
+            else
+                Debug.Log("|||||||||||" + (GameMessage)p.Function);
             switch ((GameMessage)p.Function)
             {
                 case GameMessage.sibyl_chat:
@@ -3478,6 +3477,13 @@ namespace MDPro3
                             PlayCommonSpecialWin(new int[] { 15862758 });
                         else if (winType == 0x22)//席取-六双丸
                             PlaySpecialWin("96637156");
+                        else if (winType == 0x23)//火器的祝台
+                            PlayCommonSpecialWin(new int[] { 77751766 });
+                        else
+                        {
+                            MessageManager.Cast(InterString.Get("请联系开发者修复这张特殊胜利的卡。"));
+                            endingAction.Invoke();
+                        }
                     }
                     else
                         endingAction.Invoke();
@@ -8231,6 +8237,7 @@ namespace MDPro3
                         {
                             var effect = ABLoader.LoadFromFile("MasterDuel/Effects/hitghlight/fxp_hl_active/fxp_hl_active_exdeck_001", true);
                             effect.transform.SetParent(myExtra.transform, false);
+                            effect.transform.position = Tools.GetDeckModelTopPosition(myExtra);
                             foreach (var place in places)
                                 place.ShowHint((uint)CardLocation.Extra, 0u);
                             Destroy(effect, 3f);
@@ -8244,6 +8251,7 @@ namespace MDPro3
                         {
                             var effect = ABLoader.LoadFromFile("MasterDuel/Effects/hitghlight/fxp_hl_active/fxp_hl_active_exdeck_001", true);
                             effect.transform.SetParent(myDeck.transform, false);
+                            effect.transform.position = Tools.GetDeckModelTopPosition(myDeck);
                             foreach (var place in places)
                                 place.ShowHint((uint)CardLocation.Deck, 0u);
                             Destroy(effect, 3f);

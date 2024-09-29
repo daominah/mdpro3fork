@@ -38,7 +38,7 @@ namespace MDPro3
             Program.I().ocgcore.list.Hide();
             var cardFace = manager.GetElement<RawImage>("Card").texture;
             var mat = manager.GetElement<RawImage>("Card").material;
-            Program.I().ocgcore.detail.Show(data, cardFace, mat);
+            Program.I().ui_.cardDetail.Show(data, cardFace, mat);
         }
 
         IEnumerator RefreshFace(int code)

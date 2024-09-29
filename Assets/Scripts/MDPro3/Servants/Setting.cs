@@ -509,6 +509,10 @@ namespace MDPro3
         }
         public void OnFAAChange(float value)
         {
+#if UNITY_ANDROID
+            value = 1f;
+#endif
+
             switch ((int)value)
             {
                 case 1:
@@ -536,7 +540,6 @@ namespace MDPro3
         public void OnAAAChange(float value)
         {
             var cameraData3D = Program.I().camera_.cameraMain.GetUniversalAdditionalCameraData();
-            var cameraData2D = Program.I().camera_.camera2D.GetUniversalAdditionalCameraData();
 
             OnFAAChange(faa.value);
 
@@ -773,6 +776,9 @@ namespace MDPro3
                 if (!selections.Contains(selection))
                     selections.Add(selection);
             }
+
+            selections.Add("3600 x 1620");
+
             UIManager.ShowPopupSelection(selections, OnResolutioSelection);
         }
         public void OnResolutioSelection()

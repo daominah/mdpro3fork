@@ -112,6 +112,9 @@ namespace MDPro3
             cardMatNormal.enableInstancing = true;
             cardMatShine.enableInstancing = true;
             cardMatRoyal.enableInstancing = true;
+            //cardMatNormal.DisableKeyword("_ALPHATEST_ON");
+            //cardMatShine.DisableKeyword("_ALPHATEST_ON");
+            //cardMatRoyal.DisableKeyword("_ALPHATEST_ON");
 
             cardMatGold = Instantiate(cardMatRoyal);
             cardMatGold.SetFloat("_CardDistortion01", 1.2f);

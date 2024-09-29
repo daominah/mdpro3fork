@@ -200,6 +200,7 @@ namespace MDPro3.UI
             Vector3 uiPosition;
             RectTransformUtility.ScreenPointToWorldPointInRectangle(
                 dragTarget, eventData.position, eventData.enterEventCamera, out uiPosition);
+            uiPosition.z = 90f;
             dragTarget.position = uiPosition;
             var anchoredPosition = dragTarget.anchoredPosition3D;
             dragTarget.anchoredPosition3D = (Vector2)anchoredPosition;

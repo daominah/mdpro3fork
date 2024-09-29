@@ -4,8 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.UI;
-using UnityEngine.UIElements;
-using YgomGame.WCS.Portal;
 
 namespace MDPro3.UI
 {

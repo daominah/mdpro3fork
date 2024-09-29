@@ -20,12 +20,16 @@ namespace MDPro3
         public Button btnExit;
         public CanvasGroup line;
         public Image blackBack;
-        public Text fps;
         public RectTransform popup;
         public RectTransform transition;
         public RectTransform duelButton;
-
         public static string currentWallpaper;
+
+        [Header("UI Handler")]
+        public SubMenuHandler subMenu;
+        public FPSHandler fps;
+        public CardDetail cardDetail;
+        List<UIHandler> handlers;
 
         [Header("Source Reference")]
         public Font cnFont;
@@ -41,6 +45,22 @@ namespace MDPro3
             currentWallpaper = Config.Get("Wallpaper", Program.items.wallpapers[0].id.ToString());
             ChangeWallpaper(currentWallpaper);
             InitializeLanguage();
+
+            handlers = new List<UIHandler>() 
+            { 
+                subMenu,
+                fps,
+                cardDetail,
+            };
+            foreach (UIHandler handler in handlers)
+                handler.Initialize();
+        }
+
+        public override void PerFrameFunction()
+        {
+            base.PerFrameFunction();
+            foreach (UIHandler handler in handlers)
+                handler.PerframeFunction();
         }
 
         public static void Translate(GameObject go)
@@ -189,6 +209,7 @@ namespace MDPro3
             Program.I().ui_.fps.GetComponent<RectTransform>().anchorMax = new Vector2(0, 1);
             Program.I().ui_.fps.GetComponent<RectTransform>().anchoredPosition = new Vector2(120, 0);
         }
+
         public static void ShowFPSRight()
         {
             Program.I().ui_.fps.GetComponent<RectTransform>().anchorMin = new Vector2(1, 1);
@@ -198,7 +219,7 @@ namespace MDPro3
 
         public static void SetFpsSize(int size)
         {
-            Program.I().ui_.fps.fontSize = size;
+            Program.I().ui_.fps.text.fontSize = size;
         }
 
         public static void ShowPopupSelection(List<string> selections, Action returnAction, Action closeAction = null)
@@ -251,7 +272,6 @@ namespace MDPro3
                 popupConfirm.Show();
             };
         }
-
         public static void ShowPopupInput(List<string> selections, Action<string> confirmAction, Action cancelAction, InputValidation.ValidationType type = InputValidation.ValidationType.None)
         {
             var handle = Addressables.InstantiateAsync("PopupInput");
@@ -266,7 +286,6 @@ namespace MDPro3
                 popupInput.Show();
             };
         }
-
         public static void ShowPopupFilter()
         {
             var handle = Addressables.InstantiateAsync("PopupSearchFilter");
@@ -289,7 +308,6 @@ namespace MDPro3
                 popupText.Show();
             };
         }
-
         public static void ShowPopupServer(List<string> selections)
         {
             var handle = Addressables.InstantiateAsync("PopupServer");
@@ -311,7 +329,6 @@ namespace MDPro3
         {
             DOTween.To(() => Program.I().ui_.transition.sizeDelta, x => Program.I().ui_.transition.sizeDelta = x, new Vector2(0, 0), time);
         }
-
         public static Vector2 WorldToScreenPoint(Camera camera, Vector3 positon)
         {
             var screenPosition = camera.WorldToScreenPoint(positon);
@@ -328,7 +345,6 @@ namespace MDPro3
             var screenPosition = ScreenToNoScalerScreenPoint(positon);
             return camera.ScreenToWorldPoint(screenPosition);
         }
-
         public static float ScreenLengthWithoutScalerX(float length)
         {
             var sizeDelta = Program.I().ui_.GetComponent<RectTransform>().sizeDelta;
@@ -339,13 +355,11 @@ namespace MDPro3
             var sizeDelta = Program.I().ui_.GetComponent<RectTransform>().sizeDelta;
             return length * Screen.width / sizeDelta.x;
         }
-
         public static float ScreenLengthWithoutScalerY(float length)
         {
             var sizeDelta = Program.I().ui_.GetComponent<RectTransform>().sizeDelta;
             return length * sizeDelta.y / Screen.height;
         }
-
         public static Vector2 GetMousePositionToAnchorPosition()
         {
             var returnValue = Input.mousePosition;

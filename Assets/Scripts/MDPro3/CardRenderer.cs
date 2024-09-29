@@ -134,6 +134,17 @@ namespace MDPro3
                 cardTypeRD.fontSizeMax = 30f;
                 SetFont("RenderFontEnglish");
             }
+
+            if (Language.CardUseLatin())
+            {
+                cardName.fontStyle = FontStyles.SmallCaps;
+                cardNameRD.fontStyle = FontStyles.SmallCaps;
+            }
+            else
+            {
+                cardName.fontStyle = FontStyles.Normal;
+                cardNameRD.fontStyle = FontStyles.Normal;
+            }
         }
 
         private void SetFont(string fontName)

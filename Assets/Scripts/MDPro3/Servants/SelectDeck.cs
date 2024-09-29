@@ -266,10 +266,10 @@ namespace MDPro3
         {
             ExitDeleteDeck();
             var selections = new List<string>()
-        {
-            InterString.Get("请输入卡组名。@n创建卡组时会自动导入剪切板中的卡组码。"),
-            string.Empty
-        };
+            {
+                InterString.Get("请输入卡组名。@n创建卡组时会自动导入剪切板中的卡组码。"),
+                string.Empty
+            };
             UIManager.ShowPopupInput(selections, DeckCheck, null, InputValidation.ValidationType.Path);
         }
 

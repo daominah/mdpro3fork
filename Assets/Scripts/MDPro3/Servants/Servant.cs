@@ -243,26 +243,8 @@ namespace MDPro3
         {
             if (isShowed)
             {
-                if (
-                    Mouse.current != null && Mouse.current.rightButton.wasPressedThisFrame
-                    //|| Keyboard.current != null && (Keyboard.current.escapeKey.wasPressedThisFrame || Keyboard.current.backspaceKey.wasPressedThisFrame)
-                    || Input.GetKeyDown(KeyCode.Escape) //|| Input.GetKeyDown(KeyCode.Backspace)
-                    || Gamepad.current != null && Gamepad.current.bButton.wasPressedThisFrame
-                    )
-                {
-                    exitPressedTime = Program.TimePassed();
-                }
-                if (
-                Mouse.current != null && Mouse.current.rightButton.wasReleasedThisFrame
-                //|| Keyboard.current != null && (Keyboard.current.escapeKey.wasReleasedThisFrame || Keyboard.current.backspaceKey.wasReleasedThisFrame)
-                || Input.GetKeyUp(KeyCode.Escape) //|| Input.GetKeyUp(KeyCode.Backspace)
-                || Gamepad.current != null && Gamepad.current.bButton.wasReleasedThisFrame
-                )
-                {
-                    if (Program.TimePassed() - exitPressedTime < 300 * Time.timeScale)
-                        OnReturn();
-                }
-
+                if (!Program.I().ui_.subMenu.showing && Program.returnClicked)
+                    OnReturn();
             }
         }
 

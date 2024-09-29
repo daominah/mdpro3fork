@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using MDPro3.YGOSharp.OCGWrapper.Enums;
 using MDPro3.Net;
+using System.Text;
 
 namespace MDPro3.YGOSharp
 {
@@ -32,12 +33,12 @@ namespace MDPro3.YGOSharp
             Extra = new List<int>();
             Side = new List<int>();
             Pickup = new List<int>();
-            Protector = new List<int>();
-            Case = new List<int>();
-            Field = new List<int>();
-            Grave = new List<int>();
-            Stand = new List<int>();
-            Mate = new List<int>();
+            Protector = new List<int>() { 1070001 };
+            Case = new List<int>() { 1080001 };
+            Field = new List<int>() { 1090001 };
+            Grave = new List<int>() { 1100001 };
+            Stand = new List<int>() { 1110001 };
+            Mate = new List<int>() { 1000001 };
         }
 
         public Deck(string path)
@@ -101,8 +102,6 @@ namespace MDPro3.YGOSharp
                     if (line.StartsWith("##") && deckId == string.Empty)
                     {
                         deckId = line.Replace("##", string.Empty);
-                        if (!OnlineDeck.StringIsIdFormat(deckId))
-                            deckId = string.Empty;
                         continue;
                     }
 
@@ -202,18 +201,12 @@ namespace MDPro3.YGOSharp
             Extra = extra;
             Side = side;
             Pickup = new List<int>();
-            Protector = new List<int>();
-            Case = new List<int>();
-            Field = new List<int>();
-            Grave = new List<int>();
-            Stand = new List<int>();
-            Mate = new List<int>();
-            Protector.Add(1070001);
-            Case.Add(1080001);
-            Field.Add(1090001);
-            Grave.Add(1100001);
-            Stand.Add(1110001);
-            Mate.Add(1000001);
+            Protector = new List<int>() { 1070001 };
+            Case = new List<int>() { 1080001 };
+            Field = new List<int>() { 1090001 };
+            Grave = new List<int>() { 1100001 };
+            Stand = new List<int>() { 1110001 };
+            Mate = new List<int>() { 1000001 };
         }
 
         public int Check(Banlist ban, bool ocg, bool tcg)
@@ -314,6 +307,54 @@ namespace MDPro3.YGOSharp
                 cards[id]++;
             else
                 cards.Add(id, 1);
+        }
+
+
+        public bool Save(string deckName)
+        {
+            var ydk = FromDeckToYDK(this);
+            try
+            {
+                File.WriteAllText(Program.deckPath + deckName + Program.ydkExpansion, ydk, Encoding.UTF8);
+                if (MyCard.account != null)
+                    _ = OnlineDeck.SyncDeck(deckId, deckName, ydk);
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public static string FromDeckToYDK(Deck deck)
+        {
+            var value = deckPrefix + deck.author + "\r\n#main\r\n";
+            for (var i = 0; i < deck.Main.Count; i++) value += deck.Main[i] + "\r\n";
+            value += "#extra\r\n";
+            for (var i = 0; i < deck.Extra.Count; i++) value += deck.Extra[i] + "\r\n";
+            value += "!side\r\n";
+            for (var i = 0; i < deck.Side.Count; i++) value += deck.Side[i] + "\r\n";
+            value += "#pickup\r\n";
+            for (var i = 0; i < deck.Pickup.Count; i++) value += deck.Pickup[i] + "#\r\n";
+            value += "#case\r\n";
+            for (var i = 0; i < deck.Case.Count; i++) value += deck.Case[i] + "#\r\n";
+            value += "#protector\r\n";
+            for (var i = 0; i < deck.Protector.Count; i++) value += deck.Protector[i] + "#\r\n";
+            value += "#field\r\n";
+            for (var i = 0; i < deck.Field.Count; i++) value += deck.Field[i] + "#\r\n";
+            value += "#grave\r\n";
+            for (var i = 0; i < deck.Grave.Count; i++) value += deck.Grave[i] + "#\r\n";
+            value += "#stand\r\n";
+            for (var i = 0; i < deck.Stand.Count; i++) value += deck.Stand[i] + "#\r\n";
+            value += "#mate\r\n";
+            for (var i = 0; i < deck.Mate.Count; i++) value += deck.Mate[i] + "#\r\n";
+
+            if (deck.deckId != string.Empty)
+                value += "##" + deck.deckId + "\r\n";
+            if (deck.userId != string.Empty)
+                value += "###" + deck.userId;
+
+            return value;
         }
     }
 }

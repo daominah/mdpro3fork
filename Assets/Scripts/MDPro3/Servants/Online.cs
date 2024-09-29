@@ -787,7 +787,7 @@ namespace MDPro3.Net
                 var fileInfo = new FileInfo(Program.deckPath + deck.Key + Program.ydkExpansion);
                 fileInfo.LastWriteTime = DateTime.Now;
                 
-                var ydk = EditDeck.FromDeckToYDK(deck.Value);
+                var ydk = Deck.FromDeckToYDK(deck.Value);
                 var task = OnlineDeck.SyncDeck(deck.Value.deckId, deck.Key, ydk, false);
                 while (!task.IsCompleted)
                     yield return null;
@@ -828,7 +828,7 @@ namespace MDPro3.Net
                 var d = new Deck(deck.deckYdk, Deck.defaultDeckAuthor);
                 d.userId = MyCard.account.user.id.ToString();
                 d.deckId = deck.deckId;
-                var ydk = EditDeck.FromDeckToYDK(d);
+                var ydk = Deck.FromDeckToYDK(d);
                 int avoid = 2;
                 string tail = string.Empty;
                 while(File.Exists(Program.deckPath + deck.deckName + tail + Program.ydkExpansion))
@@ -850,7 +850,7 @@ namespace MDPro3.Net
                     info.LastWriteTime = DateTime.Parse(deck.deckUploadDate);
                 }
             }
-            //MessageManager.Cast("Deck Sync Finished.");
+            MessageManager.Cast("Deck Sync Finished.");
         }
 
         private string RenameDeck(string deckPath, string newName)

@@ -26,7 +26,6 @@ namespace MDPro3.Net
         const string syncSigleAPI = "/api/mdpro3/sync/single";
         const string publicAPI = "/api/mdpro3/deck/public";
 
-
         const string reqHeader = "ReqSource";
         const string reqValue = "MDPro3";
         const string contentTypeHeader = "Content-Type";
@@ -301,6 +300,7 @@ namespace MDPro3.Net
         }
         public static bool StringIsIdFormat(string deckId)
         {
+            return !string.IsNullOrEmpty(deckId);
             if (deckId.Length != 10)
                 return false;
             if (!Tools.StringIsLowerAlphaNumeric(deckId))
@@ -350,7 +350,7 @@ namespace MDPro3.Net
                 var deck = new Deck(Program.deckPath + body.decks[i].deckName + Program.ydkExpansion);
                 deck.userId = body.userId.ToString();
                 deck.deckId = body.decks[i].deckId;
-                var ydk = EditDeck.FromDeckToYDK(deck);
+                var ydk = Deck.FromDeckToYDK(deck);
                 body.decks[i].deckYdk = ydk;
                 File.WriteAllText(Program.deckPath + body.decks[i].deckName + Program.ydkExpansion, ydk);
             }
@@ -392,7 +392,7 @@ namespace MDPro3.Net
                     var ygoDeck = new Deck(ydk, Deck.defaultDeckAuthor);
                     ygoDeck.deckId = response.data;
                     ygoDeck.userId = MyCard.account.user.id.ToString();
-                    File.WriteAllText(Program.deckPath + deckName + Program.ydkExpansion, EditDeck.FromDeckToYDK(ygoDeck));
+                    File.WriteAllText(Program.deckPath + deckName + Program.ydkExpansion, Deck.FromDeckToYDK(ygoDeck));
                     deck = new OnlineDeckData(ygoDeck)
                     {
                         deckName = deckName,
@@ -556,7 +556,7 @@ namespace MDPro3.Net
                 deckCoverCard3 = deck.Pickup.Count > 2 ? deck.Pickup[2] : 0;
                 deckCase = deck.Case[0];
                 deckProtector = deck.Protector[0];
-                deckYdk = EditDeck.FromDeckToYDK(deck);
+                deckYdk = Deck.FromDeckToYDK(deck);
                 userid = int.Parse(deck.userId);
             }
         }

@@ -26,7 +26,7 @@ namespace MDPro3.UI
             title.text = puzzle.name;
             action = () =>
             {
-                Program.I().puzzle.StartPuzzle(puzzle.name);
+                Program.I().puzzle.StartPuzzle(Program.puzzlePath + puzzle.name);
             };
         }
 
