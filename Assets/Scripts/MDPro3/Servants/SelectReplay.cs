@@ -352,15 +352,8 @@ namespace MDPro3
             var yrp = cachedYRPs[replay];
             replay = replay.Replace(Program.yrpExpansion, string.Empty);
 
-            var value = MDPro3.YGOSharp.Deck.deckPrefix + MDPro3.YGOSharp.Deck.defaultDeckAuthor + "\r\n#main\r\n";
-            for (int i = 0; i < yrp.playerData[player].main.Count; i++)
-                value += yrp.playerData[player].main[i] + "\r\n";
-            value += "#extra\r\n";
-            for (int i = 0; i < yrp.playerData[player].extra.Count; i++)
-                value += yrp.playerData[player].extra[i] + "\r\n";
-
-            var deck = new MDPro3.YGOSharp.Deck(value, MDPro3.YGOSharp.Deck.defaultDeckAuthor);
             var deckName = replay +"_" + yrp.playerData[player].name;
+            var deck = new MDPro3.YGOSharp.Deck(yrp.playerData[player].main, yrp.playerData[player].extra, new List<int>());
             Program.I().editDeck.SwitchCondition(EditDeck.Condition.ReplayDeck, deckName, deck);
             Program.I().ShiftToServant(Program.I().editDeck);
         }

@@ -25,7 +25,6 @@ namespace MDPro3
         public ButtonSwitchForDeckPickup btnPickup;
         public ToggleForDeckDelete btnDelete;
         public GameObject btnOnline;
-        public GameObject btnSync;
         public Text title;
 
         public enum Condition
@@ -43,31 +42,23 @@ namespace MDPro3
             {
                 case Condition.ForEdit:
                     returnServant = Program.I().menu;
-                    depth = 1;
                     btnOnline.SetActive(true);
-                    btnSync.SetActive(false);
                     title.text = InterString.Get("编辑卡组");
                     break;
                 case Condition.ForDuel:
                     returnServant = Program.I().room;
-                    depth = 3;
                     btnOnline.SetActive(false);
-                    btnSync.SetActive(false);
                     title.text = InterString.Get("选择卡组");
                     break;
                 case Condition.ForSolo:
                     returnServant = Program.I().solo;
-                    depth = 4;
                     btnOnline.SetActive(false);
-                    btnSync.SetActive(false);
                     title.text = InterString.Get("选择卡组");
                     break;
                 case Condition.MyCard:
                     returnServant = Program.I().online;
-                    depth = 2;
                     btnOnline.SetActive(false);
-                    btnSync.SetActive(false);
-                    title.text = InterString.Get("MyCard卡组");
+                    title.text = InterString.Get("选择卡组");
                     break;
             }
         }
@@ -75,6 +66,7 @@ namespace MDPro3
         public override void Initialize()
         {
             haveLine = true;
+            depth = 3;
             SwitchCondition(Condition.ForEdit);
             base.Initialize();
             search.onEndEdit.AddListener(Print);
@@ -119,7 +111,13 @@ namespace MDPro3
             btnDelete.SwitchOffWithoutAction();
             btnPickup.OnSwitchOff();
 
-            if(condition == Condition.MyCard)
+            bool debug = false;
+
+#if UNITY_EDITOR
+            debug = true;
+#endif
+
+            if(condition == Condition.MyCard && debug)
             {
                 foreach (var d in OnlineDeck.decks)
                 {
@@ -214,9 +212,9 @@ namespace MDPro3
                     var task = new string[8]
                     {
                         deck.Key,
-                        deck.Value.Case[0].ToString(),
+                        deck.Value.Case.ToString(),
                         "0", "0", "0",
-                        deck.Value.Protector[0].ToString(),
+                        deck.Value.Protector.ToString(),
                         "0",//For Delete
                         deck.Value.deckId
                     };
@@ -317,7 +315,7 @@ namespace MDPro3
                 {
                     var uri = new Uri(clipBoard);
                     var deck = DeckShareURL.UriToDeck(uri);
-                    Program.I().editDeck.SaveDeckFile(deck, deckName);
+                    deck.Save(deckName, DateTime.Now);
                 }
                 Config.Set("DeckInUse", deckName);
                 RefreshList();
@@ -330,7 +328,7 @@ namespace MDPro3
         }
 
         bool deleting;
-        public void DeckDelete()
+        public void OnDeckDelete()
         {
             if (!deleting)
             {
@@ -348,12 +346,14 @@ namespace MDPro3
                     {
                         count++;
                         File.Delete(Program.deckPath + item.args[0] + Program.ydkExpansion);
-                        MessageManager.Cast(InterString.Get("已删除本地卡组「[?]」", item.args[0]));
+                        //MessageManager.Cast(InterString.Get("已删除本地卡组「[?]」", item.args[0]));
                         toDelete.Add(item.args[7]);
                     }
-                DeleteOnlineDecks(toDelete);
                 if (count > 0)
+                {
+                    DeleteOnlineDecks(toDelete);
                     RefreshList();
+                }
                 else
                     ExitDeleteDeck();
             }
@@ -363,18 +363,7 @@ namespace MDPro3
         {
             if (MyCard.account == null)
                 return;
-            StartCoroutine(DeleteOnlineDecksAsync(ids));
-        }
-
-        IEnumerator DeleteOnlineDecksAsync(List<string> ids)
-        {
-            var task = OnlineDeck.DeleteDecks(ids);
-            while(!task.IsCompleted)
-                yield return null;
-
-            var task2 = OnlineDeck.GetAllDecks();
-            while (!task2.IsCompleted)
-                yield return null;
+            _ = OnlineDeck.DeleteDecks(ids);
         }
 
         void ExitDeleteDeck()
@@ -386,42 +375,9 @@ namespace MDPro3
             foreach (var item in items)
                 item.HideToggle();
         }
-
         public void OnOnlineDeckView()
         {
             Program.I().ShiftToServant(Program.I().onlineDeckViewer);
-        }
-
-        public void OnSyncDeck()
-        {
-            var hint = InterString.Get("本地卡组数量：");
-            hint += Tools.GetLocalDeckCount() + " ";
-
-            hint += InterString.Get("本地卡组最后编辑时间：");
-            hint += Tools.GetLocalDeckLastEditTime() + "\r\n";
-
-            hint += InterString.Get("云端卡组数量：");
-            hint += OnlineDeck.decks.Length + " ";
-
-            hint += InterString.Get("云端卡组最后编辑时间：");
-            hint += OnlineDeck.GetDeckLastEditTime();
-
-            List<string> selections = new List<string>
-                {
-                    InterString.Get("同步卡组"),
-                    hint,
-                    InterString.Get("本地至云端"),
-                    InterString.Get("云端至本地")
-                };
-            UIManager.ShowPopupYesOrNoOrCancel(selections, SyncDecksFromLocalToServer, SyncDecksFromServerToLocal);
-        }
-
-        void SyncDecksFromLocalToServer()
-        {
-        }
-
-        void SyncDecksFromServerToLocal()
-        {
         }
     }
 }

@@ -9,12 +9,12 @@ namespace MDPro3.UI
         public override void SwitchOn()
         {
             base.SwitchOn();
-            Program.I().selectDeck.DeckDelete();
+            Program.I().selectDeck.OnDeckDelete();
         }
         public override void SwitchOff()
         {
             base.SwitchOff();
-            Program.I().selectDeck.DeckDelete();
+            Program.I().selectDeck.OnDeckDelete();
         }
 
 

@@ -9,6 +9,7 @@ using System.Threading;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.UI;
+using static MDPro3.YGOSharp.PacksManager;
 
 namespace MDPro3.Net
 {
@@ -586,7 +587,7 @@ namespace MDPro3.Net
                 if (deck.deckName == configDeck)
                 {
                     found = true;
-                    deckSelector.SetDeck(new Deck(deck.deckYdk, deck.deckId, deck.deckId, deck.userid.ToString()), deck.deckName);
+                    deckSelector.SetDeck(new Deck(deck.deckYdk, string.Empty, string.Empty), deck.deckName);
                     break;
                 }
             }
@@ -729,152 +730,121 @@ namespace MDPro3.Net
             }
 
             var deckFiles = Directory.GetFiles(Program.deckPath, "*.ydk");
-            var deckList = new List<Deck>();
-            foreach(var deck in deckFiles)
-                deckList.Add(new Deck(deck));
+            var decks = new List<Deck>();
+            foreach(var deckPath in deckFiles)
+                decks.Add(new Deck(deckPath));
 
             var decksNeedUpload = new Dictionary<string, Deck>();//没在服务器找到对应的deckId的本地卡组
+            var decksNeedUpdateToServer= new Dictionary<string, Deck>();//找到deckId但本地时间大于服务器时间五秒以上的卡组
+            var decksNeedUpdateFromServer = new Dictionary<string, Deck>();//找到deckId但本地时间小于服务器时间五秒以上的卡组
+            var localFoundedIds = new List<string>();
 
-            var decksNeedUpdate= new Dictionary<string, Deck>();//找到deckId但本地时间大于服务器时间五秒以上的卡组
-            var decksNeedUpdate2 = new Dictionary<string, Deck>();//找到deckId但本地时间小于服务器时间五秒以上的卡组
-            var localDeckIds = new List<string>();
-
-            for (int i = 0; i < deckList.Count; i++)
+            for (int i = 0; i < decks.Count; i++)
             {
                 var deckName = Path.GetFileNameWithoutExtension(deckFiles[i]);
-                if(OnlineDeck.StringIsIdFormat(deckList[i].deckId))
-                    localDeckIds.Add(deckList[i].deckId);
-                if (deckList[i].userId != MyCard.account.user.id.ToString())
+
+                if (decks[i].userId != MyCard.account.user.id.ToString())
                 {
-                    decksNeedUpload.Add(deckName, deckList[i]);
+                    decksNeedUpload.Add(deckName, decks[i]);
                     continue;
                 }
 
                 bool deckIdFound = false;
+                bool deleted = false;
                 foreach(var od in OnlineDeck.decks)
                 {
-                    if (od.deckId == deckList[i].deckId)
+                    if (od.deckId == decks[i].deckId)
                     {
-                        deckIdFound = true;
-                        var fileInfo = new FileInfo(deckFiles[i]);
                         if (od.isDelete)
+                        {
+                            Debug.LogFormat("Deck Delete: [{0}]", deckName);
                             File.Delete(deckFiles[i]);
+                            deleted = true;
+                        }
                         else
                         {
-                            DateTime serverTime = OnlineDeck.GetOnlineDeckUpdateDate(od);
+                            deckIdFound = true;
+                            localFoundedIds.Add(od.deckId);
+                            var fileInfo = new FileInfo(deckFiles[i]);
+                            var serverTime = od.GetUpdateTime();
                             var diff = serverTime - fileInfo.LastWriteTime;
-                            if (diff.TotalSeconds > 5f)
+                            //Debug.LogFormat("{0}({1}): {2}-{3}={4}", od.deckName, od.deckId, serverTime, fileInfo.LastWriteTime, diff.TotalSeconds);
+
+                            if (diff.TotalSeconds > 5f || diff.TotalSeconds < -5f)
                             {
                                 if (fileInfo.LastWriteTime > serverTime)
-                                    decksNeedUpdate.Add(deckName, deckList[i]);
+                                    decksNeedUpdateToServer.Add(deckName, decks[i]);
                                 else
-                                    decksNeedUpdate2.Add(deckName, deckList[i]);
+                                    decksNeedUpdateFromServer.Add(deckName, decks[i]);
                             }
-                            else
-                                RenameDeck(deckFiles[i], od.deckName);
                         }
                         break;
                     }
                 }
-
-                if (!deckIdFound)
-                    decksNeedUpload.Add(deckName, deckList[i]);
+                if (!deckIdFound && !deleted)
+                    decksNeedUpload.Add(deckName, decks[i]);
             }
 
             //上传已经有Id的本地较新卡组
-            foreach (var deck in decksNeedUpdate)
+            foreach (var deck in decksNeedUpdateToServer)
             {
-                var fileInfo = new FileInfo(Program.deckPath + deck.Key + Program.ydkExpansion);
-                fileInfo.LastWriteTime = DateTime.Now;
-                
-                var ydk = Deck.FromDeckToYDK(deck.Value);
-                var task = OnlineDeck.SyncDeck(deck.Value.deckId, deck.Key, ydk, false);
+                Debug.LogFormat("卡组[{0}]需要更新上传。", deck.Key);
+
+                var task = OnlineDeck.SyncDeck(deck.Value.deckId, deck.Key, deck.Value, false);
                 while (!task.IsCompleted)
                     yield return null;
             }
             //更新已经有Id的本地较旧卡组
-            foreach (var deck in decksNeedUpdate2)
+            foreach (var deck in decksNeedUpdateFromServer)
             {
-                var od = OnlineDeck.GetDeck(deck.Value.deckId);
-                while(!od.IsCompleted) 
-                    yield return null;
-                var oldName = Program.deckPath + deck.Key + Program.ydkExpansion;
-                File.WriteAllText(oldName, od.Result.deckYdk);
-                var newName = RenameDeck(oldName, od.Result.deckName);
-                if(newName != null)
-                    File.SetLastWriteTime(newName, OnlineDeck.GetOnlineDeckUpdateDate(od.Result));
+                Debug.LogFormat("卡组[{0}]需要更新。", deck.Key);
+
+                var od = OnlineDeck.GetByID(deck.Value.deckId);
+                var oldPath = Program.deckPath + deck.Key + Program.ydkExpansion;
+                if(oldPath != od.deckName)
+                    File.Delete(oldPath);
+                var newPath = Program.deckPath + od.deckName + Program.ydkExpansion;
+                File.WriteAllText(newPath, od.deckYdk);
+                File.SetLastWriteTime(newPath, od.GetUpdateTime());
             }
 
             //上传没有Id的本地卡组
-            var decks = new List<Deck>();
-            var deckNames = new List<string>();
-            foreach(var deck in decksNeedUpload)
+            if(decksNeedUpload.Count > 0)
             {
-                deckNames.Add(deck.Key);
-                decks.Add(deck.Value);
+                var decksToUp = new List<Deck>();
+                var deckNames = new List<string>();
+                foreach (var deck in decksNeedUpload)
+                {
+                    var info = string.Format("卡组[{0}]需要上传：{1}。", deck.Key, deck.Value.deckId);
+                    Debug.Log(info);
+
+                    deckNames.Add(deck.Key);
+                    decksToUp.Add(deck.Value);
+                }
+                var task2 = OnlineDeck.UploadDecks(decksToUp, deckNames);
+                while (!task2.IsCompleted)
+                    yield return null;
             }
-            var task2 = OnlineDeck.SyncDecks(decks, deckNames);
-            while (!task2.IsCompleted)
-                yield return null;
 
             //下载本地ID不存在的服务器卡组
             List<OnlineDeck.OnlineDeckData> odtd = new List<OnlineDeck.OnlineDeckData>();
             foreach(var od in OnlineDeck.decks)
                 if(!od.isDelete)
-                    if (!localDeckIds.Contains(od.deckId))
+                    if (!localFoundedIds.Contains(od.deckId))
                         odtd.Add(od);
             foreach(var deck in odtd)
             {
-                var d = new Deck(deck.deckYdk, Deck.defaultDeckAuthor);
+                Debug.LogFormat("卡组[{0}]需要下载。{1}", deck.deckName, deck.isDelete);
+
+                var d = new Deck(deck.deckYdk, string.Empty, string.Empty);
                 d.userId = MyCard.account.user.id.ToString();
                 d.deckId = deck.deckId;
-                var ydk = Deck.FromDeckToYDK(d);
-                int avoid = 2;
-                string tail = string.Empty;
-                while(File.Exists(Program.deckPath + deck.deckName + tail + Program.ydkExpansion))
-                {
-                    tail = $" ({avoid})";
-                    avoid++;
-                }
-
-                File.WriteAllText(Program.deckPath + deck.deckName + tail + Program.ydkExpansion, ydk);
-
-                var info = new FileInfo(Program.deckPath + deck.deckName + Program.ydkExpansion);
-                try
-                {
-                    info.LastWriteTime = DateTime.Parse(deck.deckUpdateDate);
-                }
-                catch
-                {
-                    Debug.Log("ERROR Update Date: " + deck.deckUpdateDate);
-                    info.LastWriteTime = DateTime.Parse(deck.deckUploadDate);
-                }
+                d.Save(deck.deckName, deck.GetUpdateTime());
             }
+
+#if UNITY_EDITOR
             MessageManager.Cast("Deck Sync Finished.");
-        }
-
-        private string RenameDeck(string deckPath, string newName)
-        {
-            if (!File.Exists(deckPath))
-                return null;
-            var oldDeckName = Path.GetFileNameWithoutExtension(deckPath);
-            if(oldDeckName == newName )
-                return deckPath;
-            var folderPath = Path.GetDirectoryName(deckPath);
-            if (folderPath == null)
-                return null;
-            var newPath = Path.Combine(folderPath, newName);
-            int avoid = 2;
-            string tail = string.Empty;
-            while (File.Exists(newPath + tail + Program.ydkExpansion))
-            {
-                tail = $" ({avoid})";
-                avoid++;
-            }
-
-            var returnValue = newPath + tail + Program.ydkExpansion;
-            File.Move(deckPath, returnValue);
-            return returnValue;
+#endif
         }
 
         public void SetWatchRooms(List<MyCardRoom> rooms)

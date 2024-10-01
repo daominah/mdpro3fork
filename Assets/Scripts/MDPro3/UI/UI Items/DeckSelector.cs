@@ -45,8 +45,8 @@ namespace MDPro3.UI
             else
             {
                 var ie = RefreshAsync(
-                    deck.Case[0],
-                    deck.Protector[0],
+                    deck.Case,
+                    deck.Protector,
                     deck.Pickup.Count > 0 ? deck.Pickup[0] : 0,
                     deck.Pickup.Count > 1 ? deck.Pickup[1] : 0,
                     deck.Pickup.Count > 2 ? deck.Pickup[2] : 0

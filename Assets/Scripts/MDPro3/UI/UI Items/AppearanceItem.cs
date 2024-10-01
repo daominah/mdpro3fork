@@ -104,55 +104,55 @@ namespace MDPro3.UI
             {
                 if (path.StartsWith("DeckCase"))
                 {
-                    if (Program.I().editDeck.deck.Case[0] != itemID)
+                    if (Program.I().editDeck.deck.Case != itemID)
                     {
                         Program.I().editDeck.dirty = true;
-                        Program.I().editDeck.deck.Case[0] = itemID;
+                        Program.I().editDeck.deck.Case = itemID;
                         Program.I().editDeck.manager.GetElement<Image>("IconCase").sprite = icon.sprite;
                     }
                 }
                 else if (path.StartsWith("Protector"))
                 {
-                    if (Program.I().editDeck.deck.Protector[0] != itemID)
+                    if (Program.I().editDeck.deck.Protector != itemID)
                     {
                         Program.I().editDeck.dirty = true;
-                        Program.I().editDeck.deck.Protector[0] = itemID;
+                        Program.I().editDeck.deck.Protector = itemID;
                         Program.I().editDeck.manager.GetElement<Image>("IconProtector").material = protector.material;
                     }
                 }
                 else if (path.StartsWith("FieldIcon"))
                 {
-                    if (Program.I().editDeck.deck.Field[0] != itemID)
+                    if (Program.I().editDeck.deck.Field != itemID)
                     {
                         Program.I().editDeck.dirty = true;
-                        Program.I().editDeck.deck.Field[0] = itemID;
+                        Program.I().editDeck.deck.Field = itemID;
                         Program.I().editDeck.manager.GetElement<Image>("IconField").sprite = icon.sprite;
                     }
                 }
                 else if (path.StartsWith("FieldObj"))
                 {
-                    if (Program.I().editDeck.deck.Grave[0] != itemID)
+                    if (Program.I().editDeck.deck.Grave != itemID)
                     {
                         Program.I().editDeck.dirty = true;
-                        Program.I().editDeck.deck.Grave[0] = itemID;
+                        Program.I().editDeck.deck.Grave = itemID;
                         Program.I().editDeck.manager.GetElement<Image>("IconGrave").sprite = icon.sprite;
                     }
                 }
                 else if (path.StartsWith("FieldAvatarBase"))
                 {
-                    if (Program.I().editDeck.deck.Stand[0] != itemID)
+                    if (Program.I().editDeck.deck.Stand != itemID)
                     {
                         Program.I().editDeck.dirty = true;
-                        Program.I().editDeck.deck.Stand[0] = itemID;
+                        Program.I().editDeck.deck.Stand = itemID;
                         Program.I().editDeck.manager.GetElement<Image>("IconStand").sprite = icon.sprite;
                     }
                 }
                 else
                 {
-                    if (Program.I().editDeck.deck.Mate[0] != itemID)
+                    if (Program.I().editDeck.deck.Mate != itemID)
                     {
                         Program.I().editDeck.dirty = true;
-                        Program.I().editDeck.deck.Mate[0] = itemID;
+                        Program.I().editDeck.deck.Mate = itemID;
                         Program.I().editDeck.manager.GetElement<Image>("IconMate").sprite = icon.sprite;
                     }
                 }

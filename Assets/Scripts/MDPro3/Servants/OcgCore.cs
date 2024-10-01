@@ -718,7 +718,7 @@ namespace MDPro3
                 Config.Get(condition.ToString() + "Field0", 
                 Program.items.mats[0].id.ToString()), Items.ItemType.Mat);
             if (deck != null && !Config.GetBool("OverrideDeckAppearance", false))
-                path = Program.items.GetPathByCode(deck.Field[0].ToString(), Items.ItemType.Mat);
+                path = Program.items.GetPathByCode(deck.Field.ToString(), Items.ItemType.Mat);
             path = "MasterDuel/" + path;
             var enumerator = ABLoader.LoadFromFileAsync(path + "_near");
             while (enumerator.MoveNext())
@@ -761,7 +761,7 @@ namespace MDPro3
                 Config.Get(condition.ToString() + "Grave0", 
                 Program.items.graves[0].id.ToString()), Items.ItemType.Grave);
             if (deck != null && !Config.GetBool("OverrideDeckAppearance", false))
-                path = Program.items.GetPathByCode(deck.Grave[0].ToString(), Items.ItemType.Grave);
+                path = Program.items.GetPathByCode(deck.Grave.ToString(), Items.ItemType.Grave);
             path = "MasterDuel/" + path;
             enumerator = ABLoader.LoadFromFileAsync(path + "_near");
             while (enumerator.MoveNext())
@@ -796,7 +796,7 @@ namespace MDPro3
             {
                 path = Program.items.GetPathByCode(standConfig, Items.ItemType.Stand);
                 if (deck != null && !Config.GetBool("OverrideDeckAppearance", false))
-                    path = Program.items.GetPathByCode(deck.Stand[0].ToString(), Items.ItemType.Stand);
+                    path = Program.items.GetPathByCode(deck.Stand.ToString(), Items.ItemType.Stand);
                 path = "MasterDuel/" + path;
                 enumerator = ABLoader.LoadFromFileAsync(path + "_near");
                 while (enumerator.MoveNext())
@@ -832,7 +832,7 @@ namespace MDPro3
             {
                 int mateCode = int.Parse(mateConfig);
                 if (deck != null && !Config.GetBool("OverrideDeckAppearance", false))
-                    mateCode = deck.Mate[0];
+                    mateCode = deck.Mate;
                 var mateLoader = ABLoader.LoadMateAsync(mateCode);
                 while (mateLoader.MoveNext())
                     yield return null;
@@ -1000,7 +1000,7 @@ namespace MDPro3
             var deckMat = Appearance.duelProtector0;
             if (deck != null && !Config.GetBool("OverrideDeckAppearance", false))
             {
-                var ie = ABLoader.LoadProtectorMaterial(deck.Protector[0].ToString());
+                var ie = ABLoader.LoadProtectorMaterial(deck.Protector.ToString());
                 StartCoroutine(ie);
                 while (ie.MoveNext())
                     yield return null;

@@ -24,7 +24,7 @@ public class OnlineDeckViewer : Servant
     public override void Initialize()
     {
         haveLine = true;
-        depth = 5;
+        depth = 4;
         returnServant = Program.I().selectDeck;
         base.Initialize();
     }

@@ -1065,7 +1065,7 @@ namespace MDPro3
                     && (cacheP.location & ((uint)CardLocation.Onfield + (uint)CardLocation.Hand)) > 0
                     )
                 {
-                    moveTime = 0.5f;
+                    moveTime = 0.4f;
                     extraWait = 0.05f;
                     se = "SE_CARDBREAK_01";
                     if ((data.Type & (uint)CardType.Token) == 0)
@@ -1088,6 +1088,8 @@ namespace MDPro3
                         var trail2 = ABLoader.LoadFromFile(trail2Path, true);
                         trail1.transform.SetParent(model.transform, false);
                         trail2.transform.SetParent(model.transform, false);
+                        Destroy(trail1, 3f);
+                        Destroy(trail2, 3f);
                     }
                 }
 
@@ -1286,10 +1288,18 @@ namespace MDPro3
                     if ((p.position & (uint)CardPosition.FaceDown) > 0
                         || (p.location & (uint)CardLocation.MonsterZone) == 0)
                         HideLabel();
+                    if (!fieldAppeal && !handAppeal)
+                    {
+                        var originY = model.transform.GetChild(0).localPosition.y;
+                        model.transform.GetChild(0).DOLocalMoveY(originY + 5f, targetMainMoveTime / 2f).OnComplete(() =>
+                        {
+                            model.transform.GetChild(0).DOLocalMoveY(originY, targetMainMoveTime / 2f);
+                        });
+                    }
                 }));
                 sequence.Join(model.transform.DOLocalRotate(Vector3.zero, targetMainMoveTime));
 
-                if(fieldAppeal)
+                if (fieldAppeal)
                 {
                     sequence.Join(cardPlane.DOLocalMove(Vector3.up * 15f, targetMainMoveTime).SetEase(ease).OnComplete(() =>
                     {
@@ -1391,6 +1401,8 @@ namespace MDPro3
                 {
                     if (!ThisLocationShouldHaveModel(p) && model != null)
                         Destroy(model);
+                    else
+                        manager.GetElement<Transform>("CardPlane").localScale = Vector3.one;
                     inAnimation = false;
                     if ((p.location & ((uint)CardLocation.Grave + (uint)CardLocation.Removed)) == 0)
                         OcgCore.messagePass = true;
@@ -1568,6 +1580,8 @@ namespace MDPro3
                         var trail2 = ABLoader.LoadFromFile(trail2Path, true);
                         trail1.transform.SetParent(model.transform, false);
                         trail2.transform.SetParent(model.transform, false);
+                        Destroy(trail1, 3f);
+                        Destroy(trail2, 3f);
                     }
                 }
 
@@ -1912,6 +1926,8 @@ namespace MDPro3
                 {
                     if (!ThisLocationShouldHaveModel(p) && model != null)
                         Destroy(model);
+                    else
+                        manager.GetElement<Transform>("CardPlane").localScale = Vector3.one;
                     inAnimation = false;
                     if ((p.location & ((uint)CardLocation.Grave + (uint)CardLocation.Removed)) == 0)
                         OcgCore.messagePass = true;
@@ -2071,7 +2087,13 @@ namespace MDPro3
         }
         float SequenceToGrave(Sequence sequence, GPS p)
         {
-            var dummy = ABLoader.LoadFromFile("MasterDuel/Timeline/DuelCardMove/DuelToGrave0" + OcgCore.movingToGrave, true);
+            var count = OcgCore.movingToGrave;
+            if (count > 5)
+            {
+                Debug.Log("Error: OcgCore.movingToGrave Overflow!");
+                count = 5;
+            }
+            var dummy = ABLoader.LoadFromFile("MasterDuel/Timeline/DuelCardMove/DuelToGrave0" + count, true);
             dummy.transform.position = GetCardPosition(p);
             dummy.transform.eulerAngles = GetCardRotation(p);
             var time = (30f / 60f);
@@ -2116,7 +2138,13 @@ namespace MDPro3
         }
         float SequenceToExclude(Sequence sequence, GPS p)
         {
-            var dummy = ABLoader.LoadFromFile("MasterDuel/Timeline/DuelCardMove/DuelToExclude0" + OcgCore.movingToExclude, true);
+            var count = OcgCore.movingToExclude;
+            if(count > 5)
+            {
+                Debug.Log("Error: OcgCore.movingToExclude Overflow!");
+                count = 5;
+            }
+            var dummy = ABLoader.LoadFromFile("MasterDuel/Timeline/DuelCardMove/DuelToExclude0" + count, true);
             dummy.transform.position = GetCardPosition(p);
             dummy.transform.eulerAngles = GetCardRotation(p);
             var time = (30f / 60f);

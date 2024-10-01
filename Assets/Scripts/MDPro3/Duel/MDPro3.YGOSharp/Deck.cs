@@ -9,21 +9,18 @@ namespace MDPro3.YGOSharp
 {
     public class Deck
     {
-        public List<int> Main { get; private set; }
-        public List<int> Extra { get; private set; }
-        public List<int> Side { get; private set; }
-        public List<int> Pickup { get; private set; }
-        public List<int> Protector { get; private set; }
-        public List<int> Case { get; private set; }
-        public List<int> Field { get; private set; }
-        public List<int> Grave { get; private set; }
-        public List<int> Stand { get; private set; }
-        public List<int> Mate { get; private set; }
+        public List<int> Main;
+        public List<int> Extra;
+        public List<int> Side;
+        public List<int> Pickup;
+        public int Protector;
+        public int Case;
+        public int Field;
+        public int Grave;
+        public int Stand;
+        public int Mate;
 
-        public const string deckPrefix = "#created by ";
-        public const string defaultDeckAuthor = "mdpro3";
-
-        public string author = defaultDeckAuthor;
+        public const string deckHint = "#created by MDPro3";
         public string userId;
         public string deckId;
 
@@ -33,36 +30,21 @@ namespace MDPro3.YGOSharp
             Extra = new List<int>();
             Side = new List<int>();
             Pickup = new List<int>();
-            Protector = new List<int>() { 1070001 };
-            Case = new List<int>() { 1080001 };
-            Field = new List<int>() { 1090001 };
-            Grave = new List<int>() { 1100001 };
-            Stand = new List<int>() { 1110001 };
-            Mate = new List<int>() { 1000001 };
+            Protector = 1070001;
+            Case = 1080001;
+            Field = 1090001;
+            Grave = 1100001;
+            Stand = 1110001;
+            Mate = 1000001;
         }
 
-        public Deck(string path)
+        public Deck(string path) : this(File.ReadAllText(path), string.Empty, string.Empty)
         {
-            string text = File.ReadAllText(path);
-            var d = new Deck(text, defaultDeckAuthor);
-            Main = d.Main;
-            Extra = d.Extra;
-            Side = d.Side;
-            Pickup = d.Pickup;
-            Protector = d.Protector;
-            Case = d.Case;
-            Field = d.Field;
-            Grave = d.Grave;
-            Stand = d.Stand;
-            Mate = d.Mate;
-            author = d.author;
-            userId = d.userId;
-            deckId = d.deckId;
+
         }
 
-        public Deck(string text, string author = defaultDeckAuthor, string deckID = "", string userID = "")
+        public Deck(string ydk, string deckID = "", string userID = "")
         {
-            this.author = author;
             deckId = deckID;
             userId = userID;
 
@@ -70,129 +52,100 @@ namespace MDPro3.YGOSharp
             Extra = new List<int>();
             Side = new List<int>();
             Pickup = new List<int>();
-            Protector = new List<int>();
-            Case = new List<int>();
-            Field = new List<int>();
-            Grave = new List<int>();
-            Stand = new List<int>();
-            Mate = new List<int>();
-            try
+            Protector = 1070001;
+            Case = 1080001;
+            Field = 1090001;
+            Grave = 1100001;
+            Stand = 1110001;
+            Mate = 1000001;
+            string st = ydk.Replace("\r", "");
+            string[] lines = st.Split(new string[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
+            int flag = -1;
+
+            foreach (string line in lines)
             {
-                string st = text.Replace("\r", "");
-                string[] lines = st.Split(new string[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
-                int flag = -1;
-
-                foreach (string line in lines)
+                if (line.StartsWith("###") && userId == string.Empty)
                 {
-                    if (line.StartsWith(deckPrefix))
-                    {
-                        if(this.author == defaultDeckAuthor)
-                        {
-                            var authorString = line.Replace(deckPrefix, string.Empty);
-                            if(OnlineDeck.StringIsIdFormat(authorString))
-                                this.author = authorString;
-                        }
-                        continue;
-                    }
-                    if (line.StartsWith("###") && userId == string.Empty)
-                    {
-                        userId = line.Replace("###", string.Empty);
-                        continue;
-                    }
-                    if (line.StartsWith("##") && deckId == string.Empty)
-                    {
-                        deckId = line.Replace("##", string.Empty);
-                        continue;
-                    }
+                    userId = line.Replace("###", string.Empty);
+                    continue;
+                }
+                if (line.StartsWith("##") && deckId == string.Empty)
+                {
+                    deckId = line.Replace("##", string.Empty);
+                    continue;
+                }
 
-                    if (line == "#main")
-                        flag = 1;
-                    else if (line == "#extra")
-                        flag = 2;
-                    else if (line == "!side")
-                        flag = 3;
-                    else if (line == "#pickup")
-                        flag = 4;
-                    else if (line == "#protector")
-                        flag = 5;
-                    else if (line == "#case")
-                        flag = 6;
-                    else if (line == "#field")
-                        flag = 7;
-                    else if (line == "#grave")
-                        flag = 8;
-                    else if (line == "#stand")
-                        flag = 9;
-                    else if (line == "#mate")
-                        flag = 10;
-                    else
+                if (line == "#main")
+                    flag = 1;
+                else if (line == "#extra")
+                    flag = 2;
+                else if (line == "!side")
+                    flag = 3;
+                else if (line == "#pickup")
+                    flag = 4;
+                else if (line == "#protector")
+                    flag = 5;
+                else if (line == "#case")
+                    flag = 6;
+                else if (line == "#field")
+                    flag = 7;
+                else if (line == "#grave")
+                    flag = 8;
+                else if (line == "#stand")
+                    flag = 9;
+                else if (line == "#mate")
+                    flag = 10;
+                else
+                {
+                    int code = 0;
+                    try
                     {
-                        int code = 0;
-                        try
+                        code = int.Parse(line.Replace("#", ""));
+                    }
+                    catch
+                    {
+                        continue;
+                    }
+                    if (code > 100)
+                    {
+                        switch (flag)
                         {
-                            code = int.Parse(line.Replace("#", ""));
-                        }
-                        catch (Exception)
-                        {
-
-                        }
-                        if (code > 100)
-                        {
-                            switch (flag)
-                            {
-                                case 1:
-                                    Main.Add(code);
-                                    break;
-                                case 2:
-                                    Extra.Add(code);
-                                    break;
-                                case 3:
-                                    Side.Add(code);
-                                    break;
-                                case 4:
-                                    Pickup.Add(code);
-                                    break;
-                                case 5:
-                                    Protector.Add(code);
-                                    break;
-                                case 6:
-                                    Case.Add(code);
-                                    break;
-                                case 7:
-                                    Field.Add(code);
-                                    break;
-                                case 8:
-                                    Grave.Add(code);
-                                    break;
-                                case 9:
-                                    Stand.Add(code);
-                                    break;
-                                case 10:
-                                    Mate.Add(code);
-                                    break;
-                                default:
-                                    break;
-                            }
+                            case 1:
+                                Main.Add(code);
+                                break;
+                            case 2:
+                                Extra.Add(code);
+                                break;
+                            case 3:
+                                Side.Add(code);
+                                break;
+                            case 4:
+                                Pickup.Add(code);
+                                break;
+                            case 5:
+                                Protector = code;
+                                break;
+                            case 6:
+                                Case = code;
+                                break;
+                            case 7:
+                                Field = code;
+                                break;
+                            case 8:
+                                Grave = code;
+                                break;
+                            case 9:
+                                Stand = code;
+                                break;
+                            case 10:
+                                Mate = code;
+                                break;
+                            default:
+                                break;
                         }
                     }
                 }
             }
-            catch (Exception e)
-            {
-                UnityEngine.Debug.Log(e);
-            }
-            if (Protector.Count == 0)
-                Protector.Add(1070001);
-            if (Case.Count == 0)
-                Case.Add(1080001);
-            if (Field.Count == 0)
-                Field.Add(1090001);
-            if (Grave.Count == 0)
-                Grave.Add(1100001);
-            if (Stand.Count == 0)
-                Stand.Add(1110001);
-            if (Mate.Count == 0)
-                Mate.Add(1000001);
         }
 
         public Deck(List<int> main, List<int> extra, List<int> side)
@@ -201,12 +154,12 @@ namespace MDPro3.YGOSharp
             Extra = extra;
             Side = side;
             Pickup = new List<int>();
-            Protector = new List<int>() { 1070001 };
-            Case = new List<int>() { 1080001 };
-            Field = new List<int>() { 1090001 };
-            Grave = new List<int>() { 1100001 };
-            Stand = new List<int>() { 1110001 };
-            Mate = new List<int>() { 1000001 };
+            Protector = 1070001;
+            Case = 1080001;
+            Field = 1090001;
+            Grave = 1100001;
+            Stand = 1110001;
+            Mate = 1000001;
         }
 
         public int Check(Banlist ban, bool ocg, bool tcg)
@@ -309,15 +262,17 @@ namespace MDPro3.YGOSharp
                 cards.Add(id, 1);
         }
 
-
-        public bool Save(string deckName)
+        public bool Save(string deckName, DateTime saveTime, bool upload = true)
         {
-            var ydk = FromDeckToYDK(this);
+            var ydk = GetYDK();
             try
             {
-                File.WriteAllText(Program.deckPath + deckName + Program.ydkExpansion, ydk, Encoding.UTF8);
-                if (MyCard.account != null)
-                    _ = OnlineDeck.SyncDeck(deckId, deckName, ydk);
+                var path = Program.deckPath + deckName + Program.ydkExpansion;
+                File.WriteAllText(path, ydk, Encoding.UTF8);
+                File.SetLastWriteTime(path, saveTime);
+
+                if (MyCard.account != null && upload)
+                    _ = OnlineDeck.SyncDeck(deckId, deckName, this, true);
             }
             catch
             {
@@ -326,33 +281,35 @@ namespace MDPro3.YGOSharp
             return true;
         }
 
-        public static string FromDeckToYDK(Deck deck)
+        public string GetYDK()
         {
-            var value = deckPrefix + deck.author + "\r\n#main\r\n";
-            for (var i = 0; i < deck.Main.Count; i++) value += deck.Main[i] + "\r\n";
-            value += "#extra\r\n";
-            for (var i = 0; i < deck.Extra.Count; i++) value += deck.Extra[i] + "\r\n";
-            value += "!side\r\n";
-            for (var i = 0; i < deck.Side.Count; i++) value += deck.Side[i] + "\r\n";
-            value += "#pickup\r\n";
-            for (var i = 0; i < deck.Pickup.Count; i++) value += deck.Pickup[i] + "#\r\n";
-            value += "#case\r\n";
-            for (var i = 0; i < deck.Case.Count; i++) value += deck.Case[i] + "#\r\n";
-            value += "#protector\r\n";
-            for (var i = 0; i < deck.Protector.Count; i++) value += deck.Protector[i] + "#\r\n";
-            value += "#field\r\n";
-            for (var i = 0; i < deck.Field.Count; i++) value += deck.Field[i] + "#\r\n";
-            value += "#grave\r\n";
-            for (var i = 0; i < deck.Grave.Count; i++) value += deck.Grave[i] + "#\r\n";
-            value += "#stand\r\n";
-            for (var i = 0; i < deck.Stand.Count; i++) value += deck.Stand[i] + "#\r\n";
-            value += "#mate\r\n";
-            for (var i = 0; i < deck.Mate.Count; i++) value += deck.Mate[i] + "#\r\n";
+            var value = deckHint + "\r\n#main";
+            for (var i = 0; i < Main.Count; i++)
+                value += "\r\n" + Main[i];
+            value += "\r\n#extra";
+            for (var i = 0; i < Extra.Count; i++)
+                value += "\r\n" + Extra[i];
+            value += "\r\n!side";
+            for (var i = 0; i < Side.Count; i++)
+                value += "\r\n" + Side[i];
+            if(Pickup.Count > 0)
+                value += "\r\n#pickup\r\n" + Pickup[0] + "#";
+            if (Pickup.Count > 1)
+                value += "\r\n" + Pickup[1] + "#";
+            if (Pickup.Count > 2)
+                value += "\r\n" + Pickup[2] + "#";
 
-            if (deck.deckId != string.Empty)
-                value += "##" + deck.deckId + "\r\n";
-            if (deck.userId != string.Empty)
-                value += "###" + deck.userId;
+            value += "\r\n#case\r\n" + Case + "#";
+            value += "\r\n#protector\r\n" + Protector + "#";
+            value += "\r\n#field\r\n" + Field + "#";
+            value += "\r\n#grave\r\n" + Grave + "#";
+            value += "\r\n#stand\r\n" + Stand + "#";
+            value += "\r\n#mate\r\n" + Mate + "#";
+
+            if (!string.IsNullOrEmpty(deckId))
+                value += "\r\n##" + deckId;
+            if (!string.IsNullOrEmpty(userId))
+                value += "\r\n###" + userId;
 
             return value;
         }

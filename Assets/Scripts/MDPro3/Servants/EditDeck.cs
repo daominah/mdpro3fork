@@ -70,6 +70,7 @@ namespace MDPro3
         public Deck deck;
         public string onlineDeckID;
         public bool deckIsFromLocalFile;
+        public static bool liked;
 
         Deck history;
 
@@ -83,7 +84,7 @@ namespace MDPro3
         public override void Initialize()
         {
             haveLine = false;
-            depth = 2;
+            depth = 5;
             returnServant = Program.I().selectDeck;
             deckIsFromLocalFile = true;
 
@@ -129,7 +130,6 @@ namespace MDPro3
         public enum Condition
         {
             EditDeck,
-            EditOnlineDeck,
             OnlineDeck,
             ReplayDeck,
             ChangeSide
@@ -140,7 +140,6 @@ namespace MDPro3
             this.condition = condition;
             if (condition == Condition.EditDeck)
             {
-                depth = 2;
                 returnServant = Program.I().selectDeck;
                 manager.GetElement("ButtonChangeSide").SetActive(false);
                 manager.GetElement("ButtonAppearance").SetActive(true);
@@ -150,35 +149,19 @@ namespace MDPro3
                 deckIsFromLocalFile = true;
                 history = new Deck();
             }
-            else if (condition == Condition.EditOnlineDeck)
-            {
-                depth = 3;
-                returnServant = Program.I().selectDeck;
-                manager.GetElement("ButtonChangeSide").SetActive(false);
-                manager.GetElement("ButtonAppearance").SetActive(true);
-
-                this.deckName = deckName;
-                this.deck = OnlineDeck.GetDeckByName(deckName);
-                deckIsFromLocalFile = true;
-                history = new Deck();
-            }
-
             else if (condition == Condition.ChangeSide)
             {
-                depth = 2;
-                //returnServant = null;
                 manager.GetElement("ButtonChangeSide").SetActive(true);
                 manager.GetElement("ButtonAppearance").SetActive(false);
 
                 this.deckName = Config.Get("DeckInUse", "");
                 this.deck = TcpHelper.deck;
-                deckIsFromLocalFile = true;
+                deckIsFromLocalFile = false;
                 history = Program.I().ocgcore.sideReference;
                 tabs.tabs[2].TabThis();
             }
             else if(condition == Condition.OnlineDeck) 
             {
-                depth = 6;
                 returnServant = Program.I().onlineDeckViewer;
                 manager.GetElement("ButtonChangeSide").SetActive(false);
                 manager.GetElement("ButtonAppearance").SetActive(true);
@@ -189,7 +172,6 @@ namespace MDPro3
             }
             else if (condition == Condition.ReplayDeck)
             {
-                depth = 2;
                 returnServant = Program.I().replay;
                 manager.GetElement("ButtonChangeSide").SetActive(false);
                 manager.GetElement("ButtonAppearance").SetActive(true);
@@ -199,97 +181,37 @@ namespace MDPro3
                 deckIsFromLocalFile = false;
                 history = new Deck();
             }
-            RefreshUploadButton();
+            RefreshLikeButton();
         }
 
-        void RefreshUploadButton()
+        void RefreshLikeButton()
         {
-            switch (condition)
-            {
-                case Condition.EditDeck:
-                    manager.GetElement("ButtonUpload").SetActive(true);
-                    input.interactable = true;
-                    if(MyCard.account != null)
-                    {
-                        var onlineDeck = OnlineDeck.GetOnlineDeckByID(deck.deckId);
-                        if(onlineDeck == null)
-                            manager.GetElement("ButtonUpload").SetActive(false);
-                        else if(onlineDeck.isPublic)
-                            manager.GetElement<Text>("TextUpload").text = InterString.Get("公开中");
-                        else if (!onlineDeck.isPublic)
-                            manager.GetElement<Text>("TextUpload").text = InterString.Get("非公开中");
-                    }
-                    else
-                    {
-                        if (deck.author == Deck.defaultDeckAuthor || !OnlineDeck.StringIsIdFormat(deck.author))
-                            manager.GetElement<Text>("TextUpload").text = InterString.Get("上传");
-                        else
-                            manager.GetElement<Text>("TextUpload").text = deck.author;
-                    }
-                    break;
-                case Condition.ReplayDeck:
-                    manager.GetElement("ButtonUpload").SetActive(deckIsFromLocalFile);
-                    if (deckIsFromLocalFile)
-                    {
-                        input.interactable = true;
+            input.interactable = deckIsFromLocalFile;
 
-                        if (MyCard.account != null)
-                        {
-                            var onlineDeck = OnlineDeck.GetOnlineDeckByID(deck.deckId);
-                            if (onlineDeck == null)
-                                manager.GetElement("ButtonUpload").SetActive(false);
-                            else if (onlineDeck.isPublic)
-                                manager.GetElement<Text>("TextUpload").text = InterString.Get("公开中");
-                            else if (!onlineDeck.isPublic)
-                                manager.GetElement<Text>("TextUpload").text = InterString.Get("非公开中");
-                        }
-                        else
-                        {
-                            if (deck.author == Deck.defaultDeckAuthor || !OnlineDeck.StringIsIdFormat(deck.author))
-                                manager.GetElement<Text>("TextUpload").text = InterString.Get("上传");
-                            else
-                                manager.GetElement<Text>("TextUpload").text = deck.author;
-                        }
-                    }
-                    else
-                    {
-                        input.interactable = false;
-                        manager.GetElement("ButtonUpload").SetActive(false);
-                    }
-                    break;
-                case Condition.OnlineDeck:
-                    manager.GetElement("ButtonUpload").SetActive(true);
-                    if (deckIsFromLocalFile)
-                    {
-                        input.interactable = true;
-                        if (MyCard.account != null)
-                        {
-                            var onlineDeck = OnlineDeck.GetOnlineDeckByID(deck.deckId);
-                            if (onlineDeck == null)
-                                manager.GetElement("ButtonUpload").SetActive(false);
-                            else if (onlineDeck.isPublic)
-                                manager.GetElement<Text>("TextUpload").text = InterString.Get("公开中");
-                            else if (!onlineDeck.isPublic)
-                                manager.GetElement<Text>("TextUpload").text = InterString.Get("非公开中");
-                        }
-                        else
-                        {
-                            if (deck.author == Deck.defaultDeckAuthor || !OnlineDeck.StringIsIdFormat(deck.author))
-                                manager.GetElement<Text>("TextUpload").text = InterString.Get("上传");
-                            else
-                                manager.GetElement<Text>("TextUpload").text = deck.author;
-                        }
-                    }
-                    else
-                    {
-                        input.interactable = false;
-                        manager.GetElement<Text>("TextUpload").text = InterString.Get("点赞");
-                    }
-                    break;
-                case Condition.ChangeSide:
-                    manager.GetElement("ButtonUpload").SetActive(false);
-                    input.interactable = false;
-                    break;
+            if (!deckIsFromLocalFile && condition == Condition.OnlineDeck)
+            {
+                manager.GetElement<Text>("TextLike").text = InterString.Get("点赞");
+                manager.GetElement("ButtonLike").SetActive(!liked);
+                return;
+            }
+
+            if (MyCard.account == null || !deckIsFromLocalFile)
+            {
+                manager.GetElement("ButtonLike").SetActive(false);
+            }
+            else
+            {
+                var onlineDeck = OnlineDeck.GetByID(deck.deckId);
+                if (onlineDeck == null || onlineDeck.isDelete)
+                    manager.GetElement("ButtonLike").SetActive(false);
+                else
+                {
+                    manager.GetElement("ButtonLike").SetActive(true);
+                    if (onlineDeck.isPublic)
+                        manager.GetElement<Text>("TextLike").text = InterString.Get("公开中");
+                    else if (!onlineDeck.isPublic)
+                        manager.GetElement<Text>("TextLike").text = InterString.Get("非公开中");
+                }
             }
         }
 
@@ -327,36 +249,25 @@ namespace MDPro3
                 }
             }
             toHandTest = false;
+            liked = false;
         }
 
         public override void ApplyHideArrangement(int preDepth)
         {
             base.ApplyHideArrangement(preDepth);
 
-            if (toHandTest)
+            if (!toHandTest && !intoAppearance)
             {
-                //cg.interactable = false;
-                //cg.blocksRaycasts = false;
-                //DOTween.To(v => { }, 0, 0, transitionTime).OnComplete(() =>
-                //{
-                //    cg.alpha = 0f;
-                //});
-            }
-            else
-            {
-                if (!intoAppearance)
-                {
-                    AudioManager.PlayBGM("BGM_MENU_01");
-                    CardRarity.Save();
+                AudioManager.PlayBGM("BGM_MENU_01");
+                CardRarity.Save();
 
-                    DOTween.To(v => { }, 0, 0, transitionTime).OnComplete(() =>
-                    {
-                        Dispose();
-                        if (superScrollView != null)
-                            foreach (var item in superScrollView.items)
-                                item.gameObject.GetComponent<SuperScrollViewItemForDeckEdit>().Dispose();
-                    });
-                }
+                DOTween.To(v => { }, 0, 0, transitionTime).OnComplete(() =>
+                {
+                    Dispose();
+                    if (superScrollView != null)
+                        foreach (var item in superScrollView.items)
+                            item.gameObject.GetComponent<SuperScrollViewItemForDeckEdit>().Dispose();
+                });
             }
         }
 
@@ -404,7 +315,7 @@ namespace MDPro3
             sideCount = deck.Side.Count;
             input.text = deckName;
 
-            var casePath = deck.Case[0].ToString();
+            var casePath = deck.Case.ToString();
             var ie = Program.items.LoadItemIconAsync(casePath, Items.ItemType.Case);
             StartCoroutine(ie);
             while (ie.MoveNext())
@@ -471,42 +382,42 @@ namespace MDPro3
                 yield return null;
             }
 
-            var ie = Program.items.LoadItemIconAsync(deck.Case[0].ToString(), Items.ItemType.Case);
+            var ie = Program.items.LoadItemIconAsync(deck.Case.ToString(), Items.ItemType.Case);
             StartCoroutine(ie);
             while (ie.MoveNext())
                 yield return null;
             manager.GetElement<Image>("IconCase").color = Color.white;
             manager.GetElement<Image>("IconCase").sprite = ie.Current;
 
-            var im = ABLoader.LoadProtectorMaterial(deck.Protector[0].ToString());
+            var im = ABLoader.LoadProtectorMaterial(deck.Protector.ToString());
             StartCoroutine(im);
             while (im.MoveNext())
                 yield return null;
             manager.GetElement<Image>("IconProtector").color = Color.white;
             manager.GetElement<Image>("IconProtector").material = im.Current;
 
-            ie = Program.items.LoadItemIconAsync(deck.Field[0].ToString(), Items.ItemType.Mat);
+            ie = Program.items.LoadItemIconAsync(deck.Field.ToString(), Items.ItemType.Mat);
             StartCoroutine(ie);
             while (ie.MoveNext())
                 yield return null;
             manager.GetElement<Image>("IconField").color = Color.white;
             manager.GetElement<Image>("IconField").sprite = ie.Current;
 
-            ie = Program.items.LoadItemIconAsync(deck.Grave[0].ToString(), Items.ItemType.Grave);
+            ie = Program.items.LoadItemIconAsync(deck.Grave.ToString(), Items.ItemType.Grave);
             StartCoroutine(ie);
             while (ie.MoveNext())
                 yield return null;
             manager.GetElement<Image>("IconGrave").color = Color.white;
             manager.GetElement<Image>("IconGrave").sprite = ie.Current;
 
-            ie = Program.items.LoadItemIconAsync(deck.Stand[0].ToString(), Items.ItemType.Stand);
+            ie = Program.items.LoadItemIconAsync(deck.Stand.ToString(), Items.ItemType.Stand);
             StartCoroutine(ie);
             while (ie.MoveNext())
                 yield return null;
             manager.GetElement<Image>("IconStand").color = Color.white;
             manager.GetElement<Image>("IconStand").sprite = ie.Current;
 
-            var mate = deck.Mate[0].ToString();
+            var mate = deck.Mate.ToString();
             if (mate.Length == 7 && mate.StartsWith("100"))
             {
                 ie = Program.items.LoadItemIconAsync(mate, Items.ItemType.Mate);
@@ -518,7 +429,7 @@ namespace MDPro3
             }
             else
             {
-                var task = TextureManager.LoadArtAsync(deck.Mate[0], true);
+                var task = TextureManager.LoadArtAsync(deck.Mate, true);
                 while(!task.IsCompleted)
                     yield return null;
                 manager.GetElement<Image>("IconMate").color = Color.white;
@@ -1279,11 +1190,13 @@ namespace MDPro3
             Application.OpenURL(url);
 
         }
-        public void OnUpload()
+        public void OnLike()
         {
             if (!deckIsFromLocalFile && condition == Condition.OnlineDeck)
             {
                 OnlineDeck.LikeDeck(onlineDeckID);
+                liked = true;
+                manager.GetElement("ButtonLike").SetActive(false);
                 return;
             }
 
@@ -1293,68 +1206,16 @@ namespace MDPro3
                 return;
             }
 
-
             if(MyCard.account != null)
             {
-                var onlineDeck = OnlineDeck.GetOnlineDeckByID(deck.deckId);
-                if (onlineDeck == null)
+                var onlineDeck = OnlineDeck.GetByID(deck.deckId);
+                if (onlineDeck == null || onlineDeck.isDelete)
                     return;
                 _ = OnlineDeck.UpdatePublicState(deck.deckId, !onlineDeck.isPublic);
                 onlineDeck.isPublic = !onlineDeck.isPublic;
-                RefreshUploadButton();
-            }
-            else
-            {
-                if (deck.author != Deck.defaultDeckAuthor && OnlineDeck.StringIsIdFormat(deck.author))
-                {
-                    List<string> selections = new List<string>
-                    {
-                        InterString.Get("在线卡组"),
-                        InterString.Get("更新在线卡组"),
-                        InterString.Get("复制在线卡组分享码"),
-                    };
-                    UIManager.ShowPopupSelection(selections, OnUploadSelection);
-                }
-                else
-                {
-                    OnlineDeck.OnlineDeckData deckData = new OnlineDeck.OnlineDeckData();
-                    deckData.deckContributor = Config.Get("DuelPlayerName0", "@ui");
-                    deckData.deckName = deckName;
-                    deckData.deckCoverCard1 = deck.Pickup.Count > 0 ? deck.Pickup[0] : 0;
-                    deckData.deckCoverCard2 = deck.Pickup.Count > 1 ? deck.Pickup[1] : 0;
-                    deckData.deckCoverCard3 = deck.Pickup.Count > 2 ? deck.Pickup[2] : 0;
-                    deckData.deckCase = deck.Case[0];
-                    deckData.deckProtector = deck.Protector[0];
-                    deckData.deckYdk = File.ReadAllText(Program.deckPath + deckName + Program.ydkExpansion);
-                    OnlineDeck.UploadDeck(deckData);
-                }
+                RefreshLikeButton();
             }
         }
-
-        void OnUploadSelection()
-        {
-            string selected = UnityEngine.EventSystems.EventSystem.current.
-                currentSelectedGameObject.transform.GetChild(0).GetComponent<Text>().text;
-            if(selected == InterString.Get("更新在线卡组"))
-            {
-                OnlineDeck.OnlineDeckData deckData = new OnlineDeck.OnlineDeckData();
-                deckData.deckContributor = Config.Get("DuelPlayerName0", "@ui");
-                deckData.deckName = deckName;
-                deckData.deckCoverCard1 = deck.Pickup.Count > 0 ? deck.Pickup[0] : 0;
-                deckData.deckCoverCard2 = deck.Pickup.Count > 1 ? deck.Pickup[1] : 0;
-                deckData.deckCoverCard3 = deck.Pickup.Count > 2 ? deck.Pickup[2] : 0;
-                deckData.deckCase = deck.Case[0];
-                deckData.deckProtector = deck.Protector[0];
-                deckData.deckYdk = File.ReadAllText(Program.deckPath + deckName + Program.ydkExpansion);
-                deckData.deckId = deck.author;
-                OnlineDeck.UpdateDeck(deckData);
-            }
-            else if (selected == InterString.Get("复制在线卡组分享码"))
-            {
-                GUIUtility.systemCopyBuffer = deck.author;
-            }
-        }
-
 
         public void OnSave()
         {
@@ -1394,7 +1255,7 @@ namespace MDPro3
             if (returnAction != null && deckIsFromLocalFile)
                 OnExit();
             deckIsFromLocalFile = true;
-            RefreshUploadButton();
+            RefreshLikeButton();
         }
 
         Deck FromObjectDeckToCodedDeck()
@@ -1417,17 +1278,14 @@ namespace MDPro3
             }
             foreach (var pickup in this.deck.Pickup)
                 deck.Pickup.Add(pickup);
-            deck.Protector.Add(this.deck.Protector[0]);
-            deck.Case.Add(this.deck.Case[0]);
-            deck.Field.Add(this.deck.Field[0]);
-            deck.Grave.Add(this.deck.Grave[0]);
-            deck.Stand.Add(this.deck.Stand[0]);
-            deck.Mate.Add(this.deck.Mate[0]);
-            if (deckIsFromLocalFile)
-                deck.author = this.deck.author;
-            else
-                deck.author = Deck.defaultDeckAuthor;
+            deck.Protector = this.deck.Protector;
+            deck.Case = this.deck.Case;
+            deck.Field = this.deck.Field;
+            deck.Grave = this.deck.Grave;
+            deck.Stand = this.deck.Stand;
+            deck.Mate = this.deck.Mate;
             deck.deckId = this.deck.deckId;
+            deck.userId = this.deck.userId;
             return deck;
         }
 
@@ -1435,41 +1293,18 @@ namespace MDPro3
         {
             try
             {
-                SaveDeckFile(deck, input.text);
+                deck.Save(input.text, DateTime.Now);
                 if (input.text != deckName)
                     File.Delete(Program.deckPath + deckName + Program.ydkExpansion);
                 deckName = input.text;
                 MessageManager.Cast(InterString.Get("本地卡组「[?]」已保存。", input.text));
                 dirty = false;
             }
-            catch
+            catch(Exception e)
             {
                 MessageManager.Cast(InterString.Get("保存失败！"));
+                Debug.Log(e);
             }
-        }
-
-        public void SaveDeckFile(Deck deck, string deckName)
-        {
-            var value = Deck.FromDeckToYDK(deck);
-            try
-            {
-                File.WriteAllText(Program.deckPath + deckName + Program.ydkExpansion, value, Encoding.UTF8);
-                Config.Set("DeckInUse", deckName);
-            }
-            catch
-            {
-                MessageManager.Cast(InterString.Get("保存失败！"));
-            }
-
-            if (MyCard.account != null)
-                _ = OnlineDeck.SyncDeck(deck.deckId, deckName, value);
-        }
-
-        public void ChangeCurrentDeckAuthor(string author)
-        {
-            deck.author = author;
-            SaveDeckFile(deck, deckName);
-            RefreshUploadButton();
         }
 
         public int GetCardCount(int code)

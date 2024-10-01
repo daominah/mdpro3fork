@@ -189,7 +189,7 @@ namespace MDPro3
             deckIcon.color = Color.clear;
             if(deck != null)
             {
-                var ie = Program.items.LoadItemIconAsync(deck.Case[0].ToString(), Items.ItemType.Case);
+                var ie = Program.items.LoadItemIconAsync(deck.Case.ToString(), Items.ItemType.Case);
                 StartCoroutine(ie);
                 while (ie.MoveNext())
                     yield return null;
@@ -216,7 +216,7 @@ namespace MDPro3
                 {
                     if (pMat == null)
                     {
-                        var ip = ABLoader.LoadProtectorMaterial(deck.Protector[0].ToString());
+                        var ip = ABLoader.LoadProtectorMaterial(deck.Protector.ToString());
                         while (ip.MoveNext())
                             yield return null;
                         pMat = ip.Current;
@@ -237,7 +237,7 @@ namespace MDPro3
                 {
                     if (pMat == null)
                     {
-                        var ip = ABLoader.LoadProtectorMaterial(deck.Protector[0].ToString());
+                        var ip = ABLoader.LoadProtectorMaterial(deck.Protector.ToString());
                         while (ip.MoveNext())
                             yield return null;
                         pMat = ip.Current;
@@ -258,7 +258,7 @@ namespace MDPro3
                 {
                     if (pMat == null)
                     {
-                        var ip = ABLoader.LoadProtectorMaterial(deck.Protector[0].ToString());
+                        var ip = ABLoader.LoadProtectorMaterial(deck.Protector.ToString());
                         while (ip.MoveNext())
                             yield return null;
                         pMat = ip.Current;

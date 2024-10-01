@@ -125,26 +125,22 @@ namespace MDPro3
             switch (condition)
             {
                 case Condition.Duel:
-                    depth = 3;
                     title.text = InterString.Get("决斗外观");
                     break;
                 case Condition.Watch:
-                    depth = 3;
                     title.text = InterString.Get("观战外观");
                     break;
                 case Condition.Replay:
-                    depth = 3;
                     title.text = InterString.Get("回放外观");
                     break;
                 case Condition.Deck:
-                    depth = 7;
                     title.text = InterString.Get("卡组外观");
                     break;
             }
         }
         public override void Initialize()
         {
-            depth = 3;
+            depth = 6;
             haveLine = true;
             subBlackAlpha = 0.9f;
             base.Initialize();
@@ -811,12 +807,12 @@ namespace MDPro3
                 {
                     if (Program.I().appearance.condition == Condition.Deck)
                     {
-                        if (item.GetComponent<AppearanceItem>().itemID == Program.I().editDeck.deck.Case[0]
-                            || item.GetComponent<AppearanceItem>().itemID == Program.I().editDeck.deck.Protector[0]
-                            || item.GetComponent<AppearanceItem>().itemID == Program.I().editDeck.deck.Field[0]
-                            || item.GetComponent<AppearanceItem>().itemID == Program.I().editDeck.deck.Grave[0]
-                            || item.GetComponent<AppearanceItem>().itemID == Program.I().editDeck.deck.Stand[0]
-                            || item.GetComponent<AppearanceItem>().itemID == Program.I().editDeck.deck.Mate[0])
+                        if (item.GetComponent<AppearanceItem>().itemID == Program.I().editDeck.deck.Case
+                            || item.GetComponent<AppearanceItem>().itemID == Program.I().editDeck.deck.Protector
+                            || item.GetComponent<AppearanceItem>().itemID == Program.I().editDeck.deck.Field
+                            || item.GetComponent<AppearanceItem>().itemID == Program.I().editDeck.deck.Grave
+                            || item.GetComponent<AppearanceItem>().itemID == Program.I().editDeck.deck.Stand
+                            || item.GetComponent<AppearanceItem>().itemID == Program.I().editDeck.deck.Mate)
                         {
                             item.GetComponent<AppearanceItem>().SelectThis();
                             break;

@@ -81,7 +81,7 @@ public class SelectCharacter : Servant
 
     public override void Initialize()
     {
-        depth = 3;
+        depth = 2;
         haveLine = false;
         subBlackAlpha = 0.9f;
 
