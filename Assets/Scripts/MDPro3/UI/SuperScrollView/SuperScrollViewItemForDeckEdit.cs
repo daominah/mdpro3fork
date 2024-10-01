@@ -210,7 +210,7 @@ namespace MDPro3.UI
 
                 var item = Instantiate(Program.I().editDeck.itemOnTable);
                 var handler = item.GetComponent<CardOnEdit>();
-                handler.code = code;
+                handler.Code = code;
 
                 var card = CardsManager.Get(code);
                 var isExtra = card.IsExtraCard();
@@ -271,7 +271,7 @@ namespace MDPro3.UI
 
             var item = Instantiate(Program.I().editDeck.itemOnTable);
             dragItem = item.GetComponent<CardOnEdit>();
-            dragItem.code = code;
+            dragItem.Code = code;
             dragItem.id = 99999999;
 
             var scale = Config.GetUIScale();

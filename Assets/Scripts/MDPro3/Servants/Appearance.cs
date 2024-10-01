@@ -563,7 +563,7 @@ namespace MDPro3
                     card.transform.SetParent(Program.I().editDeck.cardsOnEditParent, false);
                     card.RefreshPositionInstant();
                     if (card.picked)
-                        Program.I().editDeck.deck.Pickup.Add(card.code);
+                        Program.I().editDeck.deck.Pickup.Add(card.Code);
                     card.PickUp(false);
                 }
             }
@@ -904,7 +904,7 @@ namespace MDPro3
             {
                 foreach (var card in Program.I().editDeck.cards)
                 {
-                    if (card.code == Program.I().editDeck.deck.Pickup[i])
+                    if (card.Code == Program.I().editDeck.deck.Pickup[i])
                     {
                         pickCount++;
                         card.PickUp(true);

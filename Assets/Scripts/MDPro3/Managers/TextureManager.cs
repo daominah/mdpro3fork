@@ -559,61 +559,60 @@ namespace MDPro3
                 }
                 if(rarity == CardRarity.Rarity.Millennium)
                 {
-                    var color1 = mat.GetColor("_KiraColor02");
-                    var color2 = mat.GetColor("_CubemapColor");
-                    if ((data.Type & (uint)CardType.Pendulum) > 0)
-                    {
-                    }
-                    else if ((data.Type & (uint)CardType.Spell) > 0)
-                    {
-                        color1 = new Color(0f, 0.8867f, 1f, 0f);
-                        color2 = new Color(1f, 1f, 0f, 0f);
-                    }
-                    else if ((data.Type & (uint)CardType.Trap) > 0)
-                    {
-                        color1 = new Color(1f, 0f, 1f, 0f);
-                        color2 = new Color(1f, 1f, 0f, 0f);
-                    }
-                    else if ((data.Type & (uint)CardType.Normal) > 0)
-                    {
-                        color1 = new Color(1f, 0.6f, 0f, 0f);
-                        color2 = new Color(0f, 1f, 1f, 0f);
-                    }
-                    else if ((data.Type & (uint)CardType.Fusion) > 0)
-                    {
-                        color1 = new Color(1f, 0f, 1f, 0f);
-                        color2 = new Color(1f, 1f, 0f, 0f);
-                    }
-                    else if ((data.Type & (uint)CardType.Ritual) > 0)
-                    {
-                        color1 = new Color(0f, 0.2f, 1f, 0f);
-                        color2 = new Color(0f, 1f, 1f, 0f);
-                    }
-                    else if ((data.Type & (uint)CardType.Synchro) > 0)
-                    {
-                        color1 = new Color(0.4f, 0.4f, 0.4f, 0f);
-                        color2 = new Color(1f, 0f, 0f, 0f);
-                    }
-                    else if ((data.Type & (uint)CardType.Xyz) > 0)
-                    {
-                        color1 = new Color(0.1f, 0.1f, 0.1f, 0f);
-                        color2 = new Color(1f, 1f, 1f, 0f);
-                    }
-                    else if ((data.Type & (uint)CardType.Link) > 0)
-                    {
-                        color1 = new Color(0f, 0.4f, 1f, 0f);
-                        color2 = new Color(0f, 1f, 1f, 0f);
-                    }
-                    else
-                    {
-                        color1 = new Color(1f, 0.2357f, 0f, 0f);
-                        color2 = new Color(1f, 1f, 0f, 0f);
-                    }
-                    mat.SetColor("_KiraColor02", color1);
-                    mat.SetColor("_CubemapColor", color2);
+                    mat.SetColor("_KiraColor02", GetMillenniumFrameColor(data));
+                    mat.SetColor("_CubemapColor", GetMillenniumNameColor(data));
                 }
             }
             return mat;
+        }
+
+        static Color GetMillenniumFrameColor(Card data)
+        {
+            var color = new Color(0.3099f, 0.1633f, 0.2753f, 0f);
+            if ((data.Type & (uint)CardType.Pendulum) > 0)
+                color = new Color(0.3099f, 0.1633f, 0.2753f, 0f);
+            else if ((data.Type & (uint)CardType.Spell) > 0)
+                color = new Color(0f, 0.8867f, 1f, 0f);
+            else if ((data.Type & (uint)CardType.Trap) > 0)
+                color = new Color(1f, 0f, 1f, 0f);
+            else if ((data.Type & (uint)CardType.Normal) > 0)
+                color = new Color(1f, 0.6f, 0f, 0f);
+            else if ((data.Type & (uint)CardType.Fusion) > 0)
+                color = new Color(1f, 0f, 1f, 0f);
+            else if ((data.Type & (uint)CardType.Ritual) > 0)
+                color = new Color(0f, 0.2f, 1f, 0f);
+            else if ((data.Type & (uint)CardType.Synchro) > 0)
+                color = new Color(0.4f, 0.4f, 0.4f, 0f);
+            else if ((data.Type & (uint)CardType.Xyz) > 0)
+                color = new Color(0.1f, 0.1f, 0.1f, 0f);
+            else if ((data.Type & (uint)CardType.Link) > 0)
+                color = new Color(0f, 0.4f, 1f, 0f);
+            else
+                color = new Color(1f, 0.2357f, 0f, 0f);
+            return color;
+        }
+        static Color GetMillenniumNameColor(Card data)
+        {
+            if ((data.Type & (uint)CardType.Spell) > 0)
+                return new Color(0f, 1f, 1f, 1f);
+            else if ((data.Type & (uint)CardType.Trap) > 0)
+                return new Color(1f, 0f, 0.5f, 1f);
+            else if ((data.Attribute & (uint)CardAttribute.Light) > 0)
+                return new Color(1f, 1f, 0f, 1f);
+            else if ((data.Attribute & (uint)CardAttribute.Divine) > 0)
+                return new Color(1f, 1f, 0f, 1f);
+            else if ((data.Attribute & (uint)CardAttribute.Dark) > 0)
+                return new Color(1f, 0f, 1f, 1f);
+            else if ((data.Attribute & (uint)CardAttribute.Water) > 0)
+                return new Color(0f, 1f, 1f, 1f);
+            else if ((data.Attribute & (uint)CardAttribute.Fire) > 0)
+                return new Color(1f, 0f, 0f, 1f);
+            else if ((data.Attribute & (uint)CardAttribute.Earth) > 0)
+                return new Color(0.2f, 0.2f, 0.2f, 1f);
+            else if ((data.Attribute & (uint)CardAttribute.Wind) > 0)
+                return new Color(0f, 1f, 0f, 1f);
+            else
+                return new Color(1f, 1f, 0f, 1f);
         }
 
         #endregion

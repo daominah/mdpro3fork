@@ -88,7 +88,7 @@ namespace MDPro3.UI
         }
 
         int m_code;
-        public int code
+        public int Code
         {
             get
             {
@@ -109,11 +109,11 @@ namespace MDPro3.UI
             while (TextureManager.container == null)
                 yield return null;
             GetComponent<RawImage>().texture = TextureManager.container.unknownCard.texture;
-            var task = TextureManager.LoadCardAsync(code, true);
+            var task = TextureManager.LoadCardAsync(Code, true);
             while (!task.IsCompleted)
                 yield return null;
 
-            GetComponent<RawImage>().material = TextureManager.GetCardMaterial(code, true);
+            GetComponent<RawImage>().material = TextureManager.GetCardMaterial(Code, true);
             GetComponent<RawImage>().material.mainTexture = task.Result;
             GetComponent<RawImage>().texture = task.Result;
 
@@ -142,7 +142,7 @@ namespace MDPro3.UI
         {
             while(TextureManager.container == null)
                 yield return null;
-            var limit = Program.I().editDeck.banlist.GetQuantity(code);
+            var limit = Program.I().editDeck.banlist.GetQuantity(Code);
             if (limit == 3)
                 limitIcon.sprite = TextureManager.container.typeNone;
             else if (limit == 2)
@@ -168,22 +168,29 @@ namespace MDPro3.UI
             AudioManager.PlaySE("SE_DUEL_SELECT");
 
             if (Program.I().currentServant == Program.I().editDeck)
-                Program.I().editDeck.Description(code, GetComponent<RawImage>().texture, GetComponent<RawImage>().material, true, transform.GetSiblingIndex());
+                Program.I().editDeck.Description(Code, GetComponent<RawImage>().texture, GetComponent<RawImage>().material, true, transform.GetSiblingIndex());
             else
                 Program.I().appearance.PickThis(this);
         }
 
         void OnClickRight(PointerEventData eventData)
         {
-            if (!Program.I().editDeck.deckIsFromLocalFile)
+            if (!Program.I().editDeck.deckIsFromLocalFile
+                && Program.I().editDeck.condition != EditDeck.Condition.ChangeSide)
                 return;
             if (Program.I().currentServant == Program.I().editDeck)
-                Program.I().editDeck.DeleteCard(this);
+            {
+                if(Program.I().editDeck.condition == EditDeck.Condition.ChangeSide)
+                    Program.I().editDeck.SwitchSide(this);
+                else
+                    Program.I().editDeck.DeleteCard(this);
+            }
         }
 
         void OnBeginDrag(PointerEventData eventData)
         {
-            if (!Program.I().editDeck.deckIsFromLocalFile)
+            if (!Program.I().editDeck.deckIsFromLocalFile 
+                && Program.I().editDeck.condition != EditDeck.Condition.ChangeSide)
                 return;
 
             dragging = true;
@@ -193,7 +200,8 @@ namespace MDPro3.UI
         }
         void OnDrag(PointerEventData eventData)
         {
-            if (!Program.I().editDeck.deckIsFromLocalFile)
+            if (!Program.I().editDeck.deckIsFromLocalFile
+                && Program.I().editDeck.condition != EditDeck.Condition.ChangeSide)
                 return;
 
             var dragTarget = GetComponent<RectTransform>();
@@ -212,10 +220,10 @@ namespace MDPro3.UI
             GetComponent<RectTransform>().DOAnchorPos3D(GetPosition(), moveTime);
         }
 
-
         void OnEndDrag(PointerEventData eventData)
         {
-            if (!Program.I().editDeck.deckIsFromLocalFile)
+            if (!Program.I().editDeck.deckIsFromLocalFile
+                && Program.I().editDeck.condition != EditDeck.Condition.ChangeSide)
                 return;
 
             Program.I().editDeck.RefreshCardID();

@@ -15,6 +15,7 @@ using MDPro3.YGOSharp.OCGWrapper.Enums;
 using MDPro3.UI;
 using Toggle = MDPro3.UI.Toggle;
 using MDPro3.Net;
+using YgomGame.Deck;
 
 namespace MDPro3
 {
@@ -330,7 +331,7 @@ namespace MDPro3
                 card.transform.SetParent(cardsOnEditParent, false);
                 var mono = card.GetComponent<CardOnEdit>();
                 mono.id = i;
-                mono.code = deck.Main[i];
+                mono.Code = deck.Main[i];
                 mono.RefreshPosition();
                 cards.Add(mono);
                 yield return null;
@@ -343,7 +344,7 @@ namespace MDPro3
                 card.transform.SetParent(cardsOnEditParent, false);
                 var mono = card.GetComponent<CardOnEdit>();
                 mono.id = i + 1000;
-                mono.code = deck.Extra[i];
+                mono.Code = deck.Extra[i];
                 mono.RefreshPosition();
                 cards.Add(mono);
                 yield return null;
@@ -356,7 +357,7 @@ namespace MDPro3
                 card.transform.SetParent(cardsOnEditParent, false);
                 var mono = card.GetComponent<CardOnEdit>();
                 mono.id = i + 2000;
-                mono.code = deck.Side[i];
+                mono.Code = deck.Side[i];
                 mono.RefreshPosition();
                 cards.Add(mono);
                 yield return null;
@@ -585,7 +586,7 @@ namespace MDPro3
         {
             var cards = new Dictionary<int, int>();
             foreach (var card in this.cards)
-                cards.Add(card.transform.GetSiblingIndex(), card.code);
+                cards.Add(card.transform.GetSiblingIndex(), card.Code);
             var returnValue = new List<int>();
             for(int i = 0; i < this.cards.Count; i++)
                 returnValue.Add(cards[i]);
@@ -783,7 +784,7 @@ namespace MDPro3
             }
             else
             {
-                var c = CardsManager.Get(cardDrag.code);
+                var c = CardsManager.Get(cardDrag.Code);
                 var isExtra = c.IsExtraCard();
 
                 if (manager.GetElement<UIHover>("DummyMain").hover)
@@ -844,13 +845,61 @@ namespace MDPro3
                 card.Move();
             SetCardSiblingIndex(CardOnEdit.moveTime);
         }
+        public void SwitchSide(CardOnEdit card)
+        {
+            AudioManager.PlaySE("SE_DECK_MINUS");
+
+            var isExtra = CardsManager.Get(card.Code).IsExtraCard();
+            if(card.id >= 2000)
+            {
+                foreach (var c in cards)
+                    if (c.id > card.id)
+                        c.id--;
+                sideCount--;
+
+                if (isExtra)
+                {
+                    card.id = 1000 + extraCount;
+                    extraCount++;
+                }
+                else
+                {
+                    card.id = mainCount;
+                    mainCount++;
+                }
+            }
+            else if (card.id >= 1000)
+            {
+                foreach (var c in cards)
+                    if (c.id > card.id && c.id < 2000)
+                        c.id--;
+                extraCount--;
+
+                card.id = 2000 + sideCount;
+                sideCount++;
+            }
+            else
+            {
+                foreach (var c in cards)
+                    if (c.id > card.id && c.id < 1000)
+                        c.id--;
+                mainCount--;
+
+                card.id = 2000 + sideCount;
+                sideCount++;
+            }
+
+            foreach (var c in Program.I().editDeck.cards)
+                c.Move();
+            Program.I().editDeck.SetCardSiblingIndex(CardOnEdit.moveTime);
+        }
 
         public void SwitchCard(CardOnEdit dragCard, CardOnEdit hoverCard)
         {
             var hover = hoverCard.id;
             if (dragCard.id == 99999999)
             {
-                var data = CardsManager.Get(dragCard.code);
+                var data = CardsManager.Get(dragCard.Code);
                 var isExtra = data.IsExtraCard();
                 if (!isExtra)
                 {
@@ -900,8 +949,6 @@ namespace MDPro3
                         extraCount++;
                     }
                 }
-
-
             }
             else if (dragCard.id < 1000)
             {
@@ -959,7 +1006,7 @@ namespace MDPro3
             }
             else if (dragCard.id > 1999)
             {
-                var c = CardsManager.Get(dragCard.code);
+                var c = CardsManager.Get(dragCard.Code);
                 var isExtra = c.IsExtraCard();
 
                 if (hover < 1000)
@@ -1104,21 +1151,21 @@ namespace MDPro3
             main.Sort((left, right) =>
             {
                 return CardsManager.ComparisonOfCard()
-                (CardsManager.Get(left.code), CardsManager.Get(right.code));
+                (CardsManager.Get(left.Code), CardsManager.Get(right.Code));
             });
             for (int i = 0; i < main.Count; i++)
                 main[i].id = i;
             extra.Sort((left, right) =>
             {
                 return CardsManager.ComparisonOfCard()
-                (CardsManager.Get(left.code), CardsManager.Get(right.code));
+                (CardsManager.Get(left.Code), CardsManager.Get(right.Code));
             });
             for (int i = 0; i < extra.Count; i++)
                 extra[i].id = i + 1000;
             side.Sort((left, right) =>
             {
                 return CardsManager.ComparisonOfCard()
-                (CardsManager.Get(left.code), CardsManager.Get(right.code));
+                (CardsManager.Get(left.Code), CardsManager.Get(right.Code));
             });
             for (int i = 0; i < side.Count; i++)
                 side[i].id = i + 2000;
@@ -1216,7 +1263,6 @@ namespace MDPro3
                 RefreshLikeButton();
             }
         }
-
         public void OnSave()
         {
             if (manager.GetElement<Text>("TextBanlist").text != "N/A")
@@ -1247,7 +1293,6 @@ namespace MDPro3
             else
                 OnSaveConfirmed();
         }
-
         void OnSaveConfirmed()
         {
             deck = FromObjectDeckToCodedDeck();
@@ -1270,11 +1315,11 @@ namespace MDPro3
             foreach (var card in cards)
             {
                 if (card.id < 1000)
-                    deck.Main.Add(card.code);
+                    deck.Main.Add(card.Code);
                 else if (card.id > 1999)
-                    deck.Side.Add(card.code);
+                    deck.Side.Add(card.Code);
                 else
-                    deck.Extra.Add(card.code);
+                    deck.Extra.Add(card.Code);
             }
             foreach (var pickup in this.deck.Pickup)
                 deck.Pickup.Add(pickup);
@@ -1315,7 +1360,7 @@ namespace MDPro3
             int count = 0;
             foreach (var card in cards)
             {
-                var c = CardsManager.Get(card.code);
+                var c = CardsManager.Get(card.Code);
                 if (c == null)
                     break;
                 if (alias == 0)
@@ -1332,23 +1377,19 @@ namespace MDPro3
             return count;
         }
 
-
-
-
         public void OnChangeSideComplete()
         {
             TcpHelper.CtosMessage_UpdateDeck(FromObjectDeckToCodedDeck());
         }
         public void OnPlusOne()
         {
+            if (condition == Condition.ChangeSide)
+                return;
             if (!deckIsFromLocalFile)
             {
                 MessageManager.Cast(InterString.Get("请先保存卡组。"));
                 return;
             }
-
-            if (condition == Condition.ChangeSide)
-                return;
             if (GetCardCount(cardShowing.Id) >= banlist.GetQuantity(cardShowing.Id))
                 return;
             AudioManager.PlaySE("SE_DECK_PLUS");
@@ -1383,7 +1424,7 @@ namespace MDPro3
                     sideCount++;
                 }
             }
-            mono.code = cardShowing.Id;
+            mono.Code = cardShowing.Id;
             mono.RefreshPosition();
             cards.Add(mono);
             foreach (var c in cards)
@@ -1393,17 +1434,18 @@ namespace MDPro3
         }
         public void OnMinusOne()
         {
+            if (condition == Condition.ChangeSide)
+                return;
+
             if (!deckIsFromLocalFile)
             {
                 MessageManager.Cast(InterString.Get("请先保存卡组。"));
                 return;
             }
 
-            if (condition == Condition.ChangeSide)
-                return;
             foreach (var c in cards)
             {
-                var card = CardsManager.Get(c.code);
+                var card = CardsManager.Get(c.Code);
                 if (cardShowing.Alias == 0)
                 {
                     if (card.Id == cardShowing.Id || card.Alias == cardShowing.Id)
@@ -1643,7 +1685,6 @@ namespace MDPro3
             }
         }
 
-
         public void FilterButtonSwitch(bool on)
         {
             if (on)
@@ -1716,7 +1757,7 @@ namespace MDPro3
             if (relatedCard != null && relatedCard.Id == cardShowing.Id)
                 manager.GetElement<RawImage>("RawImageRelatedCard").material = mat;
             foreach (var card in cards)
-                if (card.code == cardShowing.Id)
+                if (card.Code == cardShowing.Id)
                     card.gameObject.GetComponent<RawImage>().material = mat;
             foreach (var item in superScrollView.items)
                 if (item.gameObject != null)
@@ -1747,13 +1788,13 @@ namespace MDPro3
                     continue;
                 if (card.id >= 1000)
                 {
-                    puzzle += string.Format("Debug.AddCard({0}, 0, 0, LOCATION_EXTRA, 0, POS_FACEUP_ATTACK)\r\n", card.code);
+                    puzzle += string.Format("Debug.AddCard({0}, 0, 0, LOCATION_EXTRA, 0, POS_FACEUP_ATTACK)\r\n", card.Code);
                     continue;
                 }
                 if (card.id >= 5)
-                    puzzle += string.Format("Debug.AddCard({0}, 0, 0, LOCATION_DECK, 0, POS_FACEUP_ATTACK)\r\n", card.code);
+                    puzzle += string.Format("Debug.AddCard({0}, 0, 0, LOCATION_DECK, 0, POS_FACEUP_ATTACK)\r\n", card.Code);
                 else if(card.id < 5)
-                    puzzle += string.Format("Debug.AddCard({0}, 0, 0, LOCATION_HAND, 0, POS_FACEUP_ATTACK)\r\n", card.code);
+                    puzzle += string.Format("Debug.AddCard({0}, 0, 0, LOCATION_HAND, 0, POS_FACEUP_ATTACK)\r\n", card.Code);
             }
 
             puzzle += "Debug.ReloadFieldEnd()\r\n";
