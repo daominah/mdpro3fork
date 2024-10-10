@@ -15,7 +15,6 @@ using MDPro3.YGOSharp.OCGWrapper.Enums;
 using MDPro3.UI;
 using Toggle = MDPro3.UI.Toggle;
 using MDPro3.Net;
-using YgomGame.Deck;
 
 namespace MDPro3
 {
@@ -1217,6 +1216,7 @@ namespace MDPro3
 
             deckName += " - " + InterString.Get("∏¥÷∆");
             input.text = deckName;
+            deck.deckId = string.Empty;
         }
         public void OnShare()
         {
@@ -1812,21 +1812,21 @@ namespace MDPro3
             {
                 InterString.Get("∏±≤Àµ•"),
                 InterString.Get("÷ÿ÷√"),
-                InterString.Get("≈≈–Ú"),
+                //InterString.Get("≈≈–Ú"),
                 InterString.Get("¥Ú¬“"),
                 InterString.Get("∏¥÷∆"),
                 InterString.Get("∑÷œÌ"),
-                InterString.Get("≤‚ ‘"),
+                //InterString.Get("≤‚ ‘"),
             };
             var actions = new List<Action>()
             {
                 null,
                 OnReset,
-                OnSort,
+                //OnSort,
                 OnRandom,
                 OnCopy,
                 OnShare,
-                OnHandTest
+                //OnHandTest
             };
             Program.I().ui_.subMenu.Show(menus, actions);
         }

@@ -806,7 +806,7 @@ namespace MDPro3
             if ((flag & (int)Query.Status) != 0)
             {
                 var status = r.ReadInt32();
-                cardToRefresh.disabled = (status & 0x0001) == 0x0001;
+                cardToRefresh.Disabled = (status & 0x0001) == 0x0001;
                 cardToRefresh.SemiNomiSummoned = (status & 0x0008) == 0x0008;
             }
 

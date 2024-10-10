@@ -177,7 +177,10 @@ namespace MDPro3
             fullPath = Environment.CurrentDirectory + Program.slash + path;
 #endif
             using var request = UnityWebRequestTexture.GetTexture(fullPath);
-            await request.SendWebRequest();
+            var send = request.SendWebRequest();
+            await TaskUtility.WaitUntil(() => send.isDone);
+            if(!Application.isPlaying)
+                return null;
 
             if (request.result == UnityWebRequest.Result.Success)
                 return DownloadHandlerTexture.GetContent(request);
@@ -273,7 +276,10 @@ namespace MDPro3
             if (returnValue == null)
             {
                 var task = LoadPicFromFileAsync(path);
-                await task;
+                await TaskUtility.WaitUntil(() => task.IsCompleted);
+                if (!Application.isPlaying)
+                    return null;
+
                 returnValue = task.Result;
             }
 
@@ -285,6 +291,10 @@ namespace MDPro3
             else
             {
                 lastCardFoundArt = true;
+
+                if (Program.I().ocgcore.isShowed)
+                    cache = true;
+
                 if (cache)
                 {
                     lock (cachedArts)
@@ -311,6 +321,9 @@ namespace MDPro3
 
             while (container == null)
                 await Task.Delay(100);
+            if(!Application.isPlaying)
+                return null;
+
             var data = CardsManager.Get(code, true);
             if (data.Id == 0)
             {
@@ -319,7 +332,12 @@ namespace MDPro3
             }
 
             var task = LoadArtAsync(code, false);
-            await task;
+            await TaskUtility.WaitUntil(() => task.IsCompleted);
+            if(!Application.isPlaying)
+                return null;
+
+            if (Program.I().ocgcore.isShowed)
+                cache = true;
 
             lock (cachedCards)
             {

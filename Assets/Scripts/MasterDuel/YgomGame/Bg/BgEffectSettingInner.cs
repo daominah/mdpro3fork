@@ -65,8 +65,24 @@ namespace YgomGame.Bg
 			TapPhase2 = 20,
 			TapPhase3 = 21,
 			TapPhase4 = 22,
-			TapAll = 23
-		}
+            TapAll = 23,
+            OtherSidePhase1ToDamagePhase1 = 24,
+            OtherSideDamagePhase1ToPhase1 = 25,
+            OtherSideDamagePhase1ToPhase2 = 26,
+            OtherSidePhase2ToDamagePhase2 = 27,
+            OtherSideDamagePhase2ToPhase2 = 28,
+            OtherSideDamagePhase2ToPhase3 = 29,
+            OtherSidePhase3ToDamagePhase3 = 30,
+            OtherSideDamagePhase3ToPhase3 = 31,
+            OtherSideDamagePhase3ToPhase4 = 32,
+            OtherSidePhase4ToDamagePhase4 = 33,
+            OtherSideDamagePhase4ToPhase4 = 34,
+            OtherSideDamagePhase4ToEnd = 35,
+            OtherSidePhaseToDamagePhaseAll = 36,
+            OtherSideDamagePhaseToPhaseAll = 37,
+            OtherSideDamagePhaseToNextPhaseAll = 38,
+            StartToPhase1Extra = 39
+        }
 
 		public float delay;
 
@@ -185,7 +201,8 @@ namespace YgomGame.Bg
 			tapPlaying = true;
 			yield return new WaitForSeconds(activeTime == 0 ? 4 : activeTime);
 			tapPlaying = false;
-			if(playingOnlyActive)
+			if(playingOnlyActive &&
+				name != "snakeEyes")
 				gameObject.SetActive(false);
 		}
 

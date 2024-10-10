@@ -37,20 +37,25 @@ namespace MDPro3.Net
         public static async Task<MyCardAccount> Login(string account, string password)
         {
             string json = "{\"account\":\"" + account + "\",\"password\":\"" + password + "\"}";
-            using UnityWebRequest request = UnityWebRequest.Post(loginUrl, json, jsonHeader);
+            using var request = UnityWebRequest.Post(loginUrl, json, jsonHeader);
 
             request.SetRequestHeader("Content-Type", jsonHeader);
             request.SetRequestHeader("Origin", "https://accounts.moecube.com");
             request.SetRequestHeader("Referer", "https://accounts.moecube.com/");
 
-            await request.SendWebRequest();
+            var send = request.SendWebRequest();
+            await TaskUtility.WaitUntil(() => send.isDone);
+            if(!Application.isPlaying)
+                return null;
 
             if (request.result == UnityWebRequest.Result.Success)
             {
                 MyCard.account = JsonUtility.FromJson<MyCardAccount>(request.downloadHandler.text);
 
                 var response = OnlineDeck.GetAllDecks();
-                await response;
+                await TaskUtility.WaitUntil(() => response.IsCompleted);
+                if (!Application.isPlaying)
+                    return null;
 
                 return MyCard.account;
             }
@@ -65,10 +70,13 @@ namespace MDPro3.Net
 
         public static async Task<MyCardAccount> TokenIn(string token)
         {
-            using UnityWebRequest request = UnityWebRequest.Get(authUrl);
+            using var request = UnityWebRequest.Get(authUrl);
             request.SetRequestHeader(authHeader, "Bearer " + token);
 
-            await request.SendWebRequest();
+            var send = request.SendWebRequest();
+            await TaskUtility.WaitUntil(() => send.isDone);
+            if(!Application.isPlaying)
+                return null;
 
             if (request.result == UnityWebRequest.Result.Success)
             {
@@ -79,6 +87,9 @@ namespace MDPro3.Net
 
                 var response =  OnlineDeck.GetAllDecks();
                 await response;
+                await TaskUtility.WaitUntil(() => response.IsCompleted);
+                if (!Application.isPlaying)
+                    return null;
 
                 return account;
             }
@@ -95,17 +106,11 @@ namespace MDPro3.Net
             }
         }
 
-
-
         const string avatarSavePath = "Picture/MyCardAvatars/";
         static Dictionary<string, string> cachedAvatarAddress = new Dictionary<string, string>();
         static Dictionary<string, Texture2D> cachedAvatars = new Dictionary<string, Texture2D>();
         public static async Task<Texture2D> GetAvatarAsync(string userName)
         {
-            //var t = GetDefaultAvatarAsync();
-            //await t;
-            //return t.Result;
-
             if(!Directory.Exists(avatarSavePath))
                 Directory.CreateDirectory(avatarSavePath);
 
@@ -128,7 +133,10 @@ namespace MDPro3.Net
                         return cachedAvatars[avatarName];
 
                 var load = TextureManager.LoadPicFromFileAsync(fullPath);
-                await load;
+                await TaskUtility.WaitUntil(() => load.IsCompleted);
+                if(!Application.isPlaying)
+                    return null;
+
                 lock (cachedAvatars)
                     if (!cachedAvatars.ContainsKey(avatarName))
                         cachedAvatars[avatarName] = load.Result;
@@ -188,26 +196,13 @@ namespace MDPro3.Net
             return returnValue;
         }
 
-        static Texture2D defaultAvatar;
-        public static async Task<Texture2D> GetDefaultAvatarAsync()
-        {
-            if(defaultAvatar == null)
-            {
-                var task = TextureManager.LoadPicFromFileAsync(avatarSavePath + "default_avatar.png");
-                await task;
-                if (task.Result != null)
-                {
-                    defaultAvatar = task.Result;
-                }
-            }
-            return defaultAvatar;
-        }
-
-
         public static async Task<MyCardNews> GetNews()
         {
             using var request = UnityWebRequest.Get(appsUrl);
-            await request.SendWebRequest();
+            var send = request.SendWebRequest();
+            await TaskUtility.WaitUntil(() => send.isDone);
+            if(!Application.isPlaying) 
+                return null;
 
             if (request.result == UnityWebRequest.Result.Success)
             {
@@ -235,7 +230,10 @@ namespace MDPro3.Net
                 return null;
 
             using var request = UnityWebRequest.Get(expUrl + $"{account.user.username}");
-            await request.SendWebRequest();
+            var send = request.SendWebRequest();
+            await TaskUtility.WaitUntil(() => send.isDone);
+            if(!Application.isPlaying)
+                return null;
 
             if (request.result == UnityWebRequest.Result.Success)
                 return JsonConvert.DeserializeObject<MyCardUserExp>(request.downloadHandler.text);
@@ -252,7 +250,11 @@ namespace MDPro3.Net
             request.SetRequestHeader(contentTypeHeader, jsonHeader);
             request.SetRequestHeader(authHeader, "Basic " + CustomBase64Encode(account.user.username + ":" + account.user.id));
 
-            await request.SendWebRequest();
+            var send = request.SendWebRequest();
+            await TaskUtility.WaitUntil(() => send.isDone);
+            if(!Application.isPlaying)
+                return null;
+
             if(request.result == UnityWebRequest.Result.Success)
             {
                 return JsonUtility.FromJson<MyCardMatchInfo>(request.downloadHandler.text);

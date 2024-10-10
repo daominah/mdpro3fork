@@ -89,7 +89,11 @@ public class NewsManager : Manager
         for (int i = 0; i < news.ChineseCN.Length && i < maxLoad; i++)
         {
             var load = Tools.DownloadImageAsync(news.ChineseCN[i].image);
-            await load;
+
+            await TaskUtility.WaitUntil(() => load.IsCompleted);
+            if (!Application.isPlaying)
+                return;
+
             newsPics.Add(load.Result);
             if (i == 0)
                 Show();

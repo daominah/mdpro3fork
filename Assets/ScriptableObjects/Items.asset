@@ -370,6 +370,13 @@ MonoBehaviour:
     functional: 0
     secondFace: 0
     diy: 1
+  - id: 1130052
+    m_name: 
+    m_description: 
+    path: Wallpaper/Front0052
+    functional: 0
+    secondFace: 0
+    diy: 1
   - id: 1130053
     m_name: 
     m_description: 
@@ -953,6 +960,13 @@ MonoBehaviour:
     secondFace: 0
     diy: 0
   - id: 1010076
+    m_name: 
+    m_description: 
+    path: 
+    functional: 0
+    secondFace: 0
+    diy: 0
+  - id: 1010077
     m_name: 
     m_description: 
     path: 
@@ -2059,6 +2073,13 @@ MonoBehaviour:
     functional: 0
     secondFace: 0
     diy: 0
+  - id: 1032008
+    m_name: 
+    m_description: 
+    path: 
+    functional: 0
+    secondFace: 0
+    diy: 0
   - id: 1033001
     m_name: 
     m_description: 
@@ -2718,6 +2739,20 @@ MonoBehaviour:
     functional: 0
     secondFace: 0
     diy: 0
+  - id: 1070093
+    m_name: 
+    m_description: 
+    path: 
+    functional: 0
+    secondFace: 0
+    diy: 0
+  - id: 1070094
+    m_name: 
+    m_description: 
+    path: 
+    functional: 0
+    secondFace: 0
+    diy: 0
   - id: 1070095
     m_name: 
     m_description: 
@@ -2726,6 +2761,13 @@ MonoBehaviour:
     secondFace: 0
     diy: 0
   - id: 1070096
+    m_name: 
+    m_description: 
+    path: 
+    functional: 0
+    secondFace: 0
+    diy: 0
+  - id: 1070097
     m_name: 
     m_description: 
     path: 
@@ -3216,6 +3258,13 @@ MonoBehaviour:
     functional: 0
     secondFace: 0
     diy: 0
+  - id: 1090031
+    m_name: 
+    m_description: 
+    path: Mat/Mat_036
+    functional: 0
+    secondFace: 0
+    diy: 0
   - id: 1092001
     m_name: 
     m_description: 
@@ -3417,6 +3466,13 @@ MonoBehaviour:
     m_name: 
     m_description: 
     path: Grave/Grave_035
+    functional: 0
+    secondFace: 0
+    diy: 0
+  - id: 1100031
+    m_name: 
+    m_description: 
+    path: Grave/Grave_036
     functional: 0
     secondFace: 0
     diy: 0
@@ -3712,6 +3768,13 @@ MonoBehaviour:
     m_name: 
     m_description: 
     path: Avatarstand/AvatarStand_035
+    functional: 0
+    secondFace: 0
+    diy: 0
+  - id: 1110031
+    m_name: 
+    m_description: 
+    path: Avatarstand/AvatarStand_036
     functional: 0
     secondFace: 0
     diy: 0

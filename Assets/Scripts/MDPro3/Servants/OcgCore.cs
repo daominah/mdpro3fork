@@ -1,3 +1,4 @@
+using AssetBundleBrowser.AssetBundleModel;
 using DG.Tweening;
 using MDPro3.Net;
 using MDPro3.UI;
@@ -1096,9 +1097,13 @@ namespace MDPro3
 
             field0Manager.PlayAnimatorTrigger(TriggerLabelDefine.StartToPhase1);
             grave0Manager.PlayAnimatorTrigger(TriggerLabelDefine.StartToPhase1);
+            //field0Manager.PlayAnimatorTrigger(TriggerLabelDefine.StartToPhase1Extra);
+            //grave0Manager.PlayAnimatorTrigger(TriggerLabelDefine.StartToPhase1Extra);
             bgPhase0 = 1;
             field1Manager.PlayAnimatorTrigger(TriggerLabelDefine.StartToPhase1);
             grave1Manager.PlayAnimatorTrigger(TriggerLabelDefine.StartToPhase1);
+            //field1Manager.PlayAnimatorTrigger(TriggerLabelDefine.StartToPhase1Extra);
+            //grave1Manager.PlayAnimatorTrigger(TriggerLabelDefine.StartToPhase1Extra);
             bgPhase1 = 1;
             if(mate0 != null)
             {
@@ -1416,6 +1421,7 @@ namespace MDPro3
 
         #region Message
         public List<GameCard> cards = new List<GameCard>();
+        public List<GameCard> tempCards = new List<GameCard>();
         private int md5Maker;
         public string name_0 = "";
         public string name_0_c = "";
@@ -1510,6 +1516,7 @@ namespace MDPro3
         bool needDamageResponseInstant;
         public Action endingAction;
         public Action nextMoveAction;
+        public Action nextNegateAction;
         Renderer nextMoveActionTargetRenderer;
 
         public int lastSelectedCard = 0;
@@ -1523,6 +1530,7 @@ namespace MDPro3
                 foreach (GameCard card in cards)
                     card.Dispose();
             cards.Clear();
+            tempCards.Clear();
             sideReference = new Deck();
             pause = false;
             duelEnded = false;
@@ -2659,7 +2667,7 @@ namespace MDPro3
             return false;
         }
 
-        public GameCard GCS_Create(GPS p)
+        public GameCard GCS_Create(GPS p, bool temp = false)
         {
             GameCard c = null;
             for (var i = 0; i < cards.Count; i++)
@@ -2675,6 +2683,9 @@ namespace MDPro3
                 c.p = p;
                 c.md5 = md5Maker;
                 cards.Add(c);
+
+                if (temp)
+                    tempCards.Add(c);
             }
 
             md5Maker++;
@@ -2715,24 +2726,25 @@ namespace MDPro3
         {
             var cardsInLocation = new List<GameCard>();
             for (var i = 0; i < cards.Count; i++)
-                if (cards[i].p.location == location)
-                    if (cards[i].p.controller == controller)
-                        cardsInLocation.Add(cards[i]);
+                if (!tempCards.Contains(cards[i]))
+                    if (cards[i].p.location == location)
+                        if (cards[i].p.controller == controller)
+                            cardsInLocation.Add(cards[i]);
             return cardsInLocation;
         }
         public List<GameCard> GCS_GetOverlays(GameCard c)
         {
-            var cards = new List<GameCard>();
+            var overlays = new List<GameCard>();
             if (c != null)
                 if ((c.p.location & (uint)CardLocation.Overlay) == 0)
-                    for (var i = 0; i < this.cards.Count; i++)
-                        if ((this.cards[i].p.location & (uint)CardLocation.Overlay) > 0)
-                            if (this.cards[i].p.controller == c.p.controller)
-                                if ((this.cards[i].p.location | (uint)CardLocation.Overlay) ==
+                    for (var i = 0; i < cards.Count; i++)
+                        if ((cards[i].p.location & (uint)CardLocation.Overlay) > 0)
+                            if (cards[i].p.controller == c.p.controller)
+                                if ((cards[i].p.location | (uint)CardLocation.Overlay) ==
                                     (c.p.location | (uint)CardLocation.Overlay))
-                                    if (this.cards[i].p.sequence == c.p.sequence)
-                                        cards.Add(this.cards[i]);
-            return cards;
+                                    if (cards[i].p.sequence == c.p.sequence)
+                                        overlays.Add(cards[i]);
+            return overlays;
         }
         private void GCS_CreateBundle(int count, int controller, CardLocation location)
         {
@@ -3402,6 +3414,10 @@ namespace MDPro3
                             field1Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase2ToPhase3);
                             field1Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase3ToPhase4);
                             field1Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase4ToEnd, seLabel);
+
+                            field0Manager.PlayAnimatorTrigger(TriggerLabelDefine.EndWin);
+                            field1Manager.PlayAnimatorTrigger(TriggerLabelDefine.EndLose);
+
                             if (stand1Manager != null)
                                 stand1Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase4ToEnd);
                             if (mate0 != null)
@@ -3417,6 +3433,9 @@ namespace MDPro3
                             field0Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase2ToPhase3);
                             field0Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase3ToPhase4);
                             field0Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase4ToEnd, seLabel);
+
+                            field1Manager.PlayAnimatorTrigger(TriggerLabelDefine.EndWin);
+                            field0Manager.PlayAnimatorTrigger(TriggerLabelDefine.EndLose);
 
                             if (stand0Manager != null)
                                 stand0Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase4ToEnd);
@@ -3584,9 +3603,14 @@ namespace MDPro3
                                 val = r.ReadByte();
                                 for (var xyz = 0; xyz < val; ++xyz)
                                 {
-                                    gps.location |= (uint)CardLocation.Overlay;
-                                    gps.position = xyz;
-                                    GCS_Create(gps);
+                                    var overlay = new GPS
+                                    {
+                                        controller = gps.controller,
+                                        location = (uint)CardLocation.MonsterZone | (uint)CardLocation.Overlay,
+                                        position = xyz,
+                                        sequence = gps.sequence
+                                    };
+                                    GCS_Create(overlay);
                                 }
                             }
                         }
@@ -4066,13 +4090,19 @@ namespace MDPro3
                                 messagePass = true;
                                 return;
                             }
-                            if (needPlay && card.disabled)
+                            if (needPlay && card.Disabled)
                             {
                                 needPlay = false;
                                 messagePass = true;
                                 return;
                             }
                             if (needPlay && CurrentChainDisabled(id))
+                            {
+                                needPlay = false;
+                                messagePass = true;
+                                return;
+                            }
+                            if (needPlay && card.disabledInChain)
                             {
                                 needPlay = false;
                                 messagePass = true;
@@ -4094,7 +4124,7 @@ namespace MDPro3
                                 code = card.GetData().Alias > 0 ? card.GetData().Alias : card.GetData().Id;
                                 if (card.GetData().Id == 83764719)//死者苏生 异画
                                     code = 83764719;
-                                if (card.GetData().Id == 63166096)//死者苏生 异画
+                                if (card.GetData().Id == 63166096)//闪刀起动-交闪 异画
                                     code = 63166096;
                                 var targetFolder = Program.root + "MasterDuel/Card/" + code.ToString();
 #if UNITY_STANDALONE_WIN && !UNITY_EDITOR
@@ -4118,6 +4148,7 @@ namespace MDPro3
                                             };
                                         }
                                     }
+                                    //旋风
                                     if (code == 5318639)
                                     {
                                         if (card.effectTargets.Count > 0 && card.effectTargets[0].model != null)
@@ -4133,6 +4164,7 @@ namespace MDPro3
                                             Destroy(effect);
                                         }
                                     }
+                                    //月女神之镞
                                     else if (code == 2263869)
                                     {
                                         if (card.effectTargets.Count > 0 && card.effectTargets[0].model != null)
@@ -4143,6 +4175,7 @@ namespace MDPro3
                                             Destroy(effect);
                                         }
                                     }
+                                    //雷击
                                     else if (code == 12580477)
                                     {
                                         AudioManager.PlaySE("SE_EV_RAIGEKI");
@@ -4163,6 +4196,7 @@ namespace MDPro3
                                             CameraManager.ShakeCamera(true);
                                         });
                                     }
+                                    //灰流丽
                                     else if (code == 14558127)
                                     {
                                         int order = 0;
@@ -4180,6 +4214,7 @@ namespace MDPro3
                                             Destroy(effect);
                                         }
                                     }
+                                    //鹰身女妖的羽毛扫
                                     else if (code == 18144506)
                                     {
                                         AudioManager.PlaySE("SE_EV_HARPIESFEATHER_DUSTER_3D");
@@ -4199,10 +4234,12 @@ namespace MDPro3
                                                     Destroy(effect.transform.GetChild(i).gameObject);
                                         }
                                     }
+                                    //红色重启
                                     else if (code == 23002292)
                                     {
                                         AudioManager.PlaySE("SE_EV_REDREBOOT");
                                     }
+                                    //墓穴的指名者
                                     else if (code == 24224830)
                                     {
                                         AudioManager.PlaySE("SE_EV_CALLED_GRAVE");
@@ -4219,6 +4256,7 @@ namespace MDPro3
                                                     Destroy(effect.transform.GetChild(i).gameObject);
                                         }
                                     }
+                                    //禁忌的一滴
                                     else if (code == 24299458)
                                     {
                                         AudioManager.PlaySE("SE_EV_FORBIDDEN_DROPLET");
@@ -4235,14 +4273,17 @@ namespace MDPro3
                                                     Destroy(effect.transform.GetChild(i).gameObject);
                                         }
                                     }
+                                    //三战之才
                                     else if (code == 25311006)
                                     {
                                         AudioManager.PlaySE("SE_EV_TRIPLETACTICS_TALENT");
                                     }
+                                    //神之宣告
                                     else if (code == 41420027)
                                     {
                                         AudioManager.PlaySE("SE_EV_SOLEMNJUDGMENT");
                                     }
+                                    //神圣防护罩 -反射镜力-
                                     else if (code == 44095762)
                                     {
                                         AudioManager.PlaySE("SE_EV_MIRRORFORCE");
@@ -4259,10 +4300,12 @@ namespace MDPro3
                                                     Destroy(effect.transform.GetChild(i).gameObject);
                                         }
                                     }
+                                    //黑洞
                                     else if (code == 53129443)
                                     {
                                         AudioManager.PlaySE("SE_EV_BLACKHOLE");
                                     }
+                                    //冥王结界波
                                     else if (code == 54693926)
                                     {
                                         AudioManager.PlaySE("SE_EV_DARKRULER_NOMORE");
@@ -4279,10 +4322,12 @@ namespace MDPro3
                                                     Destroy(effect.transform.GetChild(i).gameObject);
                                         }
                                     }
+                                    //王宫的敕命
                                     else if (code == 61740673)
                                     {
                                         AudioManager.PlaySE("SE_EV_IMPERIAL_ORDER");
                                     }
+                                    //魔法筒
                                     else if (code == 62279055)
                                     {
                                         Tools.ChangeLayer(effect, "Default");
@@ -4300,6 +4345,7 @@ namespace MDPro3
                                                     Destroy(effect.transform.GetChild(i).gameObject);
                                         }
                                     }
+                                    //千把刀
                                     else if (code == 63391643)
                                     {
                                         if (card.effectTargets.Count > 0 && card.effectTargets[0].model != null)
@@ -4315,6 +4361,7 @@ namespace MDPro3
                                             Destroy(effect);
                                         }
                                     }
+                                    //抹杀之指名者
                                     else if (code == 65681983)
                                     {
                                         AudioManager.PlaySE("SE_EV_CROSSOUT_DESIGNATOR");
@@ -4331,6 +4378,7 @@ namespace MDPro3
                                                     Destroy(effect.transform.GetChild(i).gameObject);
                                         }
                                     }
+                                    //光之护封剑
                                     else if (code == 72302403)
                                     {
                                         AudioManager.PlaySE("SE_EV_GOFUKEN");
@@ -4347,14 +4395,17 @@ namespace MDPro3
                                                     Destroy(effect.transform.GetChild(i).gameObject);
                                         }
                                     }
+                                    //封印之黄金柜
                                     else if (code == 75500286)
                                     {
                                         AudioManager.PlaySE("SE_EV_GOLD_SARCOPHAGUS");
                                     }
+                                    //死者苏生
                                     else if (code == 83764718 || code == 83764719)
                                     {
                                         AudioManager.PlaySE("SE_EV_MONSTER_REBORN");
                                     }
+                                    //闪刀起动-交闪
                                     else if (code == 63166095 || code == 63166096)//ENGAGE
                                     {
                                         Destroy(effect);
@@ -4374,10 +4425,12 @@ namespace MDPro3
                                             nextMoveActionTargetRenderer = manager.GetElement<Renderer>("SummonPosDummy");
                                         };
                                     }
+                                    //大风暴
                                     else if (code == 19613556)
                                     {
                                         AudioManager.PlaySE("SE_EV_HEAVY_STORM");
                                     }
+                                    //天霆号 阿宙斯
                                     else if (code == 90448279)
                                     {
                                         AudioManager.PlaySE("SE_EV_AZEUS");
@@ -4385,6 +4438,7 @@ namespace MDPro3
                                 }
                                 else
                                 {
+                                    //技能抽取
                                     if (code == 82732705)//技能抽取
                                     {
                                         if (card.model == null)
@@ -4409,6 +4463,7 @@ namespace MDPro3
                                             messagePass = true;
                                         });
                                     }
+                                    //无限泡影
                                     else if (code == 10045474)//无限泡影
                                     {
                                         if (card.effectTargets.Count == 0 || card.effectTargets[0].model == null)
@@ -4456,6 +4511,7 @@ namespace MDPro3
                                             messagePass = true;
                                         });
                                     }
+                                    //闪电风暴
                                     else if (code == 14532163)//闪电风暴
                                     {
                                         var eff = ABLoader.LoadFromFolder("MasterDuel/Effects/MagicTrapEffects/fxp_14876", "fxp_14876", true);
@@ -4476,6 +4532,7 @@ namespace MDPro3
                                             messagePass = true;
                                         });
                                     }
+                                    //效果遮蒙者
                                     else if (code == 97268402)//效果遮蒙者
                                     {
                                         if (card.effectTargets.Count == 0 || card.effectTargets[0].model == null)
@@ -4491,6 +4548,33 @@ namespace MDPro3
                                             Destroy(eff);
                                             messagePass = true;
                                         });
+                                    }
+                                    //屋敷童
+                                    else if (code == 73642296)
+                                    {
+                                        int order = 0;
+                                        for (int i = 0; i < cardsInChain.Count; i++)
+                                            if (cardsInChain[i] == card)
+                                                order = i;
+                                        messagePass = true;
+
+                                        if (order > 0)
+                                        {
+                                            nextNegateAction = () =>
+                                            {
+                                                AudioManager.PlaySE("SE_EV_GHOSTBELLE");
+                                                var eff = ABLoader.LoadFromFolder("MasterDuel/Effects/MonsterEffectProcess/ef13587", "ef13587", true);
+                                                eff.transform.localPosition = GameCard.GetCardPosition(cardsInChain[order - 1].p);
+                                                Tools.ChangeLayer(eff, "DuelOverlay3D");
+                                                CameraManager.DuelOverlay3DPlus();
+                                                DOTween.To(v => { }, 0, 0, 2f).OnComplete(() =>
+                                                {
+                                                    Destroy(eff);
+                                                    CameraManager.DuelOverlay3DMinus();
+                                                });
+
+                                            };
+                                        }
                                     }
                                     else
                                         messagePass = true;
@@ -4518,6 +4602,7 @@ namespace MDPro3
                     foreach (var c in cardsInChain)
                     {
                         c.negated = false;
+                        c.disabledInChain = false;
                         c.RemoveAllChain();
                         c.effectTargets.Clear();
                     }
@@ -4528,6 +4613,9 @@ namespace MDPro3
                     negatedInChain.Clear();
                     materialCards.Clear();
                     currentSolvingCard = null;
+                    foreach (var c in tempCards)
+                        c.Dispose();
+                    tempCards.Clear();
                     break;
                 case GameMessage.ChainNegated:
                     id = r.ReadByte();
@@ -4543,7 +4631,7 @@ namespace MDPro3
                     if (id <= cardsInChain.Count)
                     {
                         card = cardsInChain[id - 1];
-                        card.disabled = true;
+                        card.disabledInChain = true;
                         if (!card.negated)
                         {
                             card.AnimationNegate();
@@ -6163,17 +6251,17 @@ namespace MDPro3
                         gps = r.ReadGPS();
                         desc = StringHelper.Get(r.ReadInt32());
                         card = GCS_Get(gps);
-                        if (card != null)
-                        {
-                            if (!chainCards.Contains(card))
-                                chainCards.Add(card);
-                            card.SetCode(code);
-                            var eff = new Effect();
-                            eff.flag = flag;
-                            eff.ptr = i;
-                            eff.desc = desc;
-                            card.effects.Add(eff);
-                        }
+                        if(card == null)
+                            card = GCS_Create(gps, true);
+
+                        if (!chainCards.Contains(card))
+                            chainCards.Add(card);
+                        card.SetCode(code);
+                        var eff = new Effect();
+                        eff.flag = flag;
+                        eff.ptr = i;
+                        eff.desc = desc;
+                        card.effects.Add(eff);
                     }
 
                     var handleFlag = 0;
@@ -8856,6 +8944,7 @@ namespace MDPro3
                     bgPhase0++;
                     var seLabel = "SE_FIELD_MAT" + field0Manager.name.Substring(4, 3) + "_PHASE1_P";
                     field0Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase1ToPhase2, seLabel);
+                    field1Manager.PlayAnimatorTrigger(TriggerLabelDefine.OtherSideDamagePhase1ToPhase2);
                     grave0Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase1ToPhase2);
                     if (stand0Manager != null)
                         stand0Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase1ToPhase2);
@@ -8865,6 +8954,7 @@ namespace MDPro3
                     bgPhase0++;
                     var seLabel = "SE_FIELD_MAT" + field0Manager.name.Substring(4, 3) + "_PHASE2_P";
                     field0Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase2ToPhase3, seLabel);
+                    field1Manager.PlayAnimatorTrigger(TriggerLabelDefine.OtherSideDamagePhase2ToPhase3);
                     grave0Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase2ToPhase3);
                     if (stand0Manager != null)
                         stand0Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase2ToPhase3);
@@ -8874,6 +8964,7 @@ namespace MDPro3
                     bgPhase0++;
                     var seLabel = "SE_FIELD_MAT" + field0Manager.name.Substring(4, 3) + "_PHASE3_P";
                     field0Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase3ToPhase4, seLabel);
+                    field1Manager.PlayAnimatorTrigger(TriggerLabelDefine.OtherSideDamagePhase3ToPhase4);
                     grave0Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase3ToPhase4);
                     if (stand0Manager != null)
                         stand0Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase3ToPhase4);
@@ -8881,12 +8972,14 @@ namespace MDPro3
                 }
                 if (bgPhase0 == 4 && life0 <= 0)
                 {
-                    bgPhase0++;
-                    var seLabel = "SE_FIELD_MAT" + field0Manager.name.Substring(4, 3) + "_PHASE4_P";
-                    field0Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase4ToEnd, seLabel);
-                    grave0Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase4ToEnd);
-                    if (stand0Manager != null)
-                        stand0Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase4ToEnd);
+                    //bgPhase0++;
+                    //var seLabel = "SE_FIELD_MAT" + field0Manager.name.Substring(4, 3) + "_PHASE4_P";
+                    //field0Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase4ToEnd, seLabel);
+                    //field0Manager.PlayAnimatorTrigger(TriggerLabelDefine.EndLose);
+                    //field1Manager.PlayAnimatorTrigger(TriggerLabelDefine.EndWin);
+                    //grave0Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase4ToEnd);
+                    //if (stand0Manager != null)
+                    //    stand0Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase4ToEnd);
                 }
             }
             else
@@ -8900,6 +8993,7 @@ namespace MDPro3
                     bgPhase1++;
                     var seLabel = "SE_FIELD_MAT" + field1Manager.name.Substring(4, 3) + "_PHASE1_P";
                     field1Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase1ToPhase2, seLabel);
+                    field0Manager.PlayAnimatorTrigger(TriggerLabelDefine.OtherSideDamagePhase1ToPhase2);
                     grave1Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase1ToPhase2);
                     if (stand1Manager != null)
                         stand1Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase1ToPhase2);
@@ -8909,6 +9003,7 @@ namespace MDPro3
                     bgPhase1++;
                     var seLabel = "SE_FIELD_MAT" + field1Manager.name.Substring(4, 3) + "_PHASE2_P";
                     field1Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase2ToPhase3, seLabel);
+                    field0Manager.PlayAnimatorTrigger(TriggerLabelDefine.OtherSideDamagePhase2ToPhase3);
                     grave1Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase2ToPhase3);
                     if (stand1Manager != null)
                         stand1Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase2ToPhase3);
@@ -8918,6 +9013,7 @@ namespace MDPro3
                     bgPhase1++;
                     var seLabel = "SE_FIELD_MAT" + field1Manager.name.Substring(4, 3) + "_PHASE3_P";
                     field1Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase3ToPhase4, seLabel);
+                    field0Manager.PlayAnimatorTrigger(TriggerLabelDefine.OtherSideDamagePhase3ToPhase4);
                     grave1Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase3ToPhase4);
                     if (stand1Manager != null)
                         stand1Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase3ToPhase4);
@@ -8925,12 +9021,14 @@ namespace MDPro3
                 }
                 if (bgPhase1 == 4 && life1 <= 0)
                 {
-                    bgPhase1++;
-                    var seLabel = "SE_FIELD_MAT" + field1Manager.name.Substring(4, 3) + "_PHASE4_P";
-                    field1Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase4ToEnd, seLabel);
-                    grave1Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase4ToEnd);
-                    if (stand1Manager != null)
-                        stand1Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase4ToEnd);
+                    //bgPhase1++;
+                    //var seLabel = "SE_FIELD_MAT" + field1Manager.name.Substring(4, 3) + "_PHASE4_P";
+                    //field1Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase4ToEnd, seLabel);
+                    //field0Manager.PlayAnimatorTrigger(TriggerLabelDefine.EndWin);
+                    //field1Manager.PlayAnimatorTrigger(TriggerLabelDefine.EndLose);
+                    //grave1Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase4ToEnd);
+                    //if (stand1Manager != null)
+                    //    stand1Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase4ToEnd);
                 }
             }
         }

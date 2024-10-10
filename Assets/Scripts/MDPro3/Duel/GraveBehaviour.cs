@@ -102,11 +102,7 @@ namespace MDPro3
         {
             AudioManager.PlaySE("SE_DUEL_SELECT");
 
-            List<GameCard> cards = new List<GameCard>();
-            foreach (var card in Program.I().ocgcore.cards)
-                if ((card.p.location & (uint)CardLocation.Grave) > 0)
-                    if (card.p.controller == controller)
-                        cards.Add(card);
+            List<GameCard> cards = Program.I().ocgcore.GCS_GetLocationCards(controller, (int)CardLocation.Grave);
             Program.I().ocgcore.list.Show(cards, CardLocation.Grave, controller);
 
             if (Program.I().ocgcore.returnAction != null)
@@ -144,11 +140,7 @@ namespace MDPro3
         {
             AudioManager.PlaySE("SE_DUEL_SELECT");
 
-            List<GameCard> cards = new List<GameCard>();
-            foreach (var card in Program.I().ocgcore.cards)
-                if ((card.p.location & (uint)CardLocation.Removed) > 0)
-                    if (card.p.controller == controller)
-                        cards.Add(card);
+            List<GameCard> cards = Program.I().ocgcore.GCS_GetLocationCards(controller, (int)CardLocation.Removed);
             Program.I().ocgcore.list.Show(cards, CardLocation.Removed, controller);
 
             if (Program.I().ocgcore.returnAction != null)

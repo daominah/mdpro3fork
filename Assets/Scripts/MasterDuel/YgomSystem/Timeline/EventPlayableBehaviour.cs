@@ -79,6 +79,8 @@ namespace YgomSystem.Timeline
             }
             else if(label == "Next")//Engage
             {
+                if (Program.I().ocgcore.nextMoveManager == null)
+                    return;
                 var target = Program.I().ocgcore.nextMoveManager.GetElement<Transform>("DummyCard01");
                 var card = Program.I().ocgcore.lastMoveCard;
                 card.model.SetActive(true);

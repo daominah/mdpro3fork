@@ -448,7 +448,6 @@ namespace MDPro3.Net
             textMode.text = selected;
         }
 
-
         #endregion
 
 

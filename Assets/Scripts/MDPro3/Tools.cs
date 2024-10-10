@@ -221,7 +221,12 @@ namespace MDPro3
         {
             using var request = UnityWebRequestTexture.GetTexture(url);
             request.SetRequestHeader("User-Agent", "MDPro3/" + Application.version + " (" + System.Environment.OSVersion.ToString() + "); Unity/" + Application.unityVersion);
-            await request.SendWebRequest();
+
+            var send = request.SendWebRequest();
+            await TaskUtility.WaitUntil(() => send.isDone);
+            if (!Application.isPlaying)
+                return null;
+
             if (request.result == UnityWebRequest.Result.Success)
             {
                 return DownloadHandlerTexture.GetContent(request);

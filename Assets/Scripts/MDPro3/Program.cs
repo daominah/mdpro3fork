@@ -8,6 +8,8 @@ using UnityEngine.EventSystems;
 using UnityEngine.AddressableAssets;
 using MDPro3.Net;
 using UnityEngine.InputSystem;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace MDPro3
 {
@@ -466,7 +468,6 @@ namespace MDPro3
             }
             catch { }
             TcpHelper.tcpClient = null;
-
             MyCard.CloseAthleticWatchListWebSocket();
         }
 
@@ -494,5 +495,6 @@ namespace MDPro3
                 subDir.Delete();
             }
         }
+
     }
 }

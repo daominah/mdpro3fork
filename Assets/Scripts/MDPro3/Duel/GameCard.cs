@@ -31,11 +31,11 @@ namespace MDPro3
 
     public class GameCard : MonoBehaviour
     {
-        private Card data = new Card();
-        private Card cachedData = new Card();
+        private Card data = new ();
+        private Card cachedData = new();
         public GPS p;
         bool m_disabled;
-        public bool disabled
+        public bool Disabled
         {
             get
             {
@@ -48,6 +48,7 @@ namespace MDPro3
             }
         }
         public bool negated;
+        public bool disabledInChain;
         public bool SemiNomiSummoned = false;
         public int md5 = -233;
         public int selectPtr = 0;
@@ -370,7 +371,7 @@ namespace MDPro3
         public void EraseData()
         {
             SetData(CardsManager.Get(0));
-            disabled = false;
+            Disabled = false;
             ClearAllTails();
         }
 
@@ -898,7 +899,7 @@ namespace MDPro3
                 equipedCard = null;
                 foreach (var card in Program.I().ocgcore.cards)
                     card.RemoveTarget(this);
-                disabled = false;
+                Disabled = false;
                 setOverTurn = false;
                 RefreshData();
             }
@@ -1452,7 +1453,7 @@ namespace MDPro3
                 equipedCard = null;
                 foreach (var card in Program.I().ocgcore.cards)
                     card.RemoveTarget(this);
-                disabled = false;
+                Disabled = false;
                 setOverTurn = false;
                 RefreshData();
             }
@@ -2349,7 +2350,14 @@ namespace MDPro3
         }
         public void AnimationNegate()
         {
-            AudioManager.PlaySE("SE_EFFECT_INVALID");
+            if(Program.I().ocgcore.nextNegateAction != null)
+            {
+                Program.I().ocgcore.nextNegateAction.Invoke();
+                Program.I().ocgcore.nextNegateAction = null;
+            }
+            else
+                AudioManager.PlaySE("SE_EFFECT_INVALID");
+
             CameraManager.BlackInOut(0f, 0.2f, 0.5f, 0.3f);
             ElementObjectManager manager;
             GameObject model;
@@ -3447,7 +3455,7 @@ namespace MDPro3
             if ((p.position & (uint)CardPosition.FaceDown) > 0)
                 m_disabled = false;
 
-            if (disabled)
+            if (Disabled)
             {
                 cardFace.material.SetFloat("_Monochrome", 1);
                 manager.GetElement<Renderer>("Closeup").material.SetVector("RGBA", Vector4.zero);

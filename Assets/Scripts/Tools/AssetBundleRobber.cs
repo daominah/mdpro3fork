@@ -61,13 +61,13 @@ public class AssetBundleRobber : MonoBehaviour
         masterDuelAssetBundlePath = masterDuelAndroidAssetBundlePath;
         workingPlace = androindWorkingPlace;
 
-        fullCopy = true;
-        //fullCopy = false;
+        //fullCopy = true;
+        fullCopy = false;
 
         Initialize();
 
-        StartCoroutine(RefreshFileResources());
-        //Copy("a3904972");
+        //StartCoroutine(RefreshFileResources());
+        Copy("91ec73b4");
     }
 
     void Copy(string path)

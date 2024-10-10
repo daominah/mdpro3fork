@@ -43,7 +43,10 @@ namespace MDPro3.Net
 
             try
             {
-                await request.SendWebRequest();
+                var send = request.SendWebRequest();
+                await TaskUtility.WaitUntil(() => send.isDone);
+                if(!Application.isPlaying)
+                    return null;
 
                 if (request.result == UnityWebRequest.Result.Success)
                 {
@@ -77,8 +80,10 @@ namespace MDPro3.Net
 
             try
             {
-                AsyncOperation sendRequestOperation = request.SendWebRequest();
-                await sendRequestOperation;
+                var send = request.SendWebRequest();
+                await TaskUtility.WaitUntil(() => send.isDone);
+                if(!Application.isPlaying)
+                    return null;
 
                 if (request.result == UnityWebRequest.Result.Success)
                 {
@@ -113,7 +118,11 @@ namespace MDPro3.Net
             using UnityWebRequest request = UnityWebRequest.Get(apiUrl);
             request.SetRequestHeader(reqHeader, reqValue);
             request.SetRequestHeader(tokenHeader, MyCard.account.token);
-            await request.SendWebRequest();
+
+            var send = request.SendWebRequest();
+            await TaskUtility.WaitUntil(() => send.isDone);
+            if (!Application.isPlaying)
+                return null;
 
             if (request.result == UnityWebRequest.Result.Success)
             {
@@ -133,7 +142,11 @@ namespace MDPro3.Net
             using UnityWebRequest request = UnityWebRequest.PostWwwForm(apiUrl, jsonHeader);
             request.SetRequestHeader(reqHeader, reqValue);
             request.SetRequestHeader(contentTypeHeader, jsonHeader);
-            await request.SendWebRequest();
+            
+            var send = request.SendWebRequest();
+            await TaskUtility.WaitUntil(() => send.isDone);
+            if (!Application.isPlaying)
+                return;
 
             if (request.result == UnityWebRequest.Result.Success)
             {
@@ -155,7 +168,11 @@ namespace MDPro3.Net
             using var getIDs = UnityWebRequest.Get(apiUrl);
             getIDs.SetRequestHeader(reqHeader, reqValue);
 
-            await getIDs.SendWebRequest();
+            var send = getIDs.SendWebRequest();
+            await TaskUtility.WaitUntil(() => send.isDone);
+            if(!Application.isPlaying)
+                return false;
+
             string[] ids;
             if (getIDs.result == UnityWebRequest.Result.Success)
             {
@@ -208,7 +225,10 @@ namespace MDPro3.Net
             request.SetRequestHeader(contentTypeHeader, jsonHeader);
             request.SetRequestHeader(tokenHeader, MyCard.account.token);
 
-            await request.SendWebRequest();
+            send = request.SendWebRequest();
+            await TaskUtility.WaitUntil(() => send.isDone);
+            if (!Application.isPlaying)
+                return false;
 
             if (request.result == UnityWebRequest.Result.Success)
             {
@@ -228,7 +248,7 @@ namespace MDPro3.Net
 
         public static async Task<bool> SyncDeck(string deckId, string deckName, Deck deck, bool showHint = true)
         {
-            Debug.Log("Sync Deck: " + deckName);
+            //Debug.Log("Sync Deck: " + deckName);
             deck.deckId = deckId;
             deck.userId = MyCard.account.user.id.ToString();
             var ydk = deck.GetYDK();
@@ -253,8 +273,11 @@ namespace MDPro3.Net
             request.SetRequestHeader(contentTypeHeader, jsonHeader);
             request.SetRequestHeader(tokenHeader, MyCard.account.token);
 
-            Debug.LogFormat("{0}, {1}", MyCard.account.user.id, deckId);
-            await request.SendWebRequest();
+            //Debug.LogFormat("{0}, {1}", MyCard.account.user.id, deckId);
+            var send = request.SendWebRequest();
+            await TaskUtility.WaitUntil(() => send.isDone);
+            if (!Application.isPlaying)
+                return false;
 
             if (request.result == UnityWebRequest.Result.Success)
             {
@@ -302,7 +325,10 @@ namespace MDPro3.Net
             request.SetRequestHeader(contentTypeHeader, jsonHeader);
             request.SetRequestHeader(tokenHeader, MyCard.account.token);
 
-            await request.SendWebRequest();
+            var send = request.SendWebRequest();
+            await TaskUtility.WaitUntil(() => send.isDone);
+            if (!Application.isPlaying)
+                return false;
 
             if (request.result == UnityWebRequest.Result.Success)
             {
@@ -336,7 +362,11 @@ namespace MDPro3.Net
             request.SetRequestHeader(contentTypeHeader, jsonHeader);
             request.SetRequestHeader(tokenHeader, MyCard.account.token);
 
-            await request.SendWebRequest();
+            var send = request.SendWebRequest();
+            await TaskUtility.WaitUntil(() => send.isDone);
+            if(!Application.isPlaying)
+                return false;
+
             if (request.result == UnityWebRequest.Result.Success)
             {
                 Debug.Log("UpdatePublicState Success: " + isPublic);

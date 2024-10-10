@@ -156,7 +156,6 @@ namespace MDPro3
 #else
             Application.Quit();
 #endif
-
         }
 
         public override void ApplyShowArrangement(int preDepth)
