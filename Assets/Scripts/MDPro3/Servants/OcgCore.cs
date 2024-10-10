@@ -1,4 +1,3 @@
-using AssetBundleBrowser.AssetBundleModel;
 using DG.Tweening;
 using MDPro3.Net;
 using MDPro3.UI;
