@@ -1094,6 +1094,19 @@ namespace MDPro3
 
             messagePass = true;
 
+            if (condition == Condition.Duel && Config.GetBool("DuelAutoAcc", false)
+                || condition == Condition.Watch && Config.GetBool("WatchAutoAcc", false)
+                || condition == Condition.Replay && Config.GetBool("ReplayAutoAcc", false))
+                OnAcc();
+        }
+
+        private void BackgroundFieldInitialize()
+        {
+            field0.SetActive(false);
+            field1.SetActive(false);
+            field0.SetActive(true);
+            field1.SetActive(true);
+
             field0Manager.PlayAnimatorTrigger(TriggerLabelDefine.StartToPhase1);
             grave0Manager.PlayAnimatorTrigger(TriggerLabelDefine.StartToPhase1);
             //field0Manager.PlayAnimatorTrigger(TriggerLabelDefine.StartToPhase1Extra);
@@ -1104,24 +1117,18 @@ namespace MDPro3
             //field1Manager.PlayAnimatorTrigger(TriggerLabelDefine.StartToPhase1Extra);
             //grave1Manager.PlayAnimatorTrigger(TriggerLabelDefine.StartToPhase1Extra);
             bgPhase1 = 1;
-            if(mate0 != null)
+            if (mate0 != null)
             {
                 mate0.gameObject.SetActive(true);
                 mate0.Play(Mate.MateAction.Entry);
             }
-            if(mate1 != null)
+            if (mate1 != null)
             {
                 mate1.gameObject.SetActive(true);
                 mate1.Play(Mate.MateAction.Entry);
             }
             if (timerHandler != null)
                 timerHandler.DuelStart();
-
-            if (condition == Condition.Duel && Config.GetBool("DuelAutoAcc", false)
-                || condition == Condition.Watch && Config.GetBool("WatchAutoAcc", false)
-                || condition == Condition.Replay && Config.GetBool("ReplayAutoAcc", false))
-                OnAcc();
-
             DOTween.To(v => { }, 0, 0, UnityEngine.Random.Range(8, 16)).OnComplete(() =>
             {
                 mate0Random = true;
@@ -1130,7 +1137,6 @@ namespace MDPro3
             {
                 mate1Random = true;
             });
-
             if (playableGuide0 != null & playableGuide1 != null)
             {
                 playableGuide0.SetActive(true);
@@ -3508,6 +3514,7 @@ namespace MDPro3
                     break;
                 case GameMessage.Start:
                     CoreReset();
+                    BackgroundFieldInitialize();
                     md5Maker = 0;
                     messagePass = false;
                     playerType = r.ReadByte();

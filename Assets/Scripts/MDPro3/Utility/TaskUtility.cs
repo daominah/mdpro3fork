@@ -7,12 +7,7 @@ namespace MDPro3
 {
     public static class TaskUtility
     {
-        private static readonly int DeltaTime;
-
-        static TaskUtility()
-        {
-            DeltaTime = 1000 / Application.targetFrameRate;
-        }
+        private static readonly int DeltaTime = 16;
 
         public static async Task WaitWhile(Func<bool> condition)
         {
