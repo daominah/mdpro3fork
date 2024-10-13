@@ -35,13 +35,23 @@ namespace MDPro3.UI
         ElementObjectManager manager;
         TextMeshPro text;
         Material material;
-        private void Start()
+
+        private void Awake()
         {
             manager = GetComponent<ElementObjectManager>();
             text = manager.GetElement<TextMeshPro>("Text");
             text.font = Program.I().ui_.tmpFontForPhaseButton;
             material = manager.GetElement<Renderer>("Timer").materials[1];
             material.SetFloat("_AddTime", 0);
+        }
+
+        private void Start()
+        {
+            //manager = GetComponent<ElementObjectManager>();
+            //text = manager.GetElement<TextMeshPro>("Text");
+            //text.font = Program.I().ui_.tmpFontForPhaseButton;
+            //material = manager.GetElement<Renderer>("Timer").materials[1];
+            //material.SetFloat("_AddTime", 0);
         }
 
         private void Update()

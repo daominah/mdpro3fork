@@ -581,6 +581,8 @@ namespace MDPro3
 
         IEnumerator LoadAssets()
         {
+            Debug.Log("LoadAssets Start.");
+
             cg.alpha = 0f;
             cg.interactable = false;
             cg.blocksRaycasts = false;
@@ -1092,16 +1094,23 @@ namespace MDPro3
             UIManager.UIBlackOut(transitionTime);
             yield return new WaitForSeconds(transitionTime);
 
+            BackgroundFieldInitialize();
             messagePass = true;
+
 
             if (condition == Condition.Duel && Config.GetBool("DuelAutoAcc", false)
                 || condition == Condition.Watch && Config.GetBool("WatchAutoAcc", false)
                 || condition == Condition.Replay && Config.GetBool("ReplayAutoAcc", false))
                 OnAcc();
+
+            Debug.Log("LoadAssets End.");
         }
 
         private void BackgroundFieldInitialize()
         {
+            if (field0 == null || field1 == null)
+                return;
+
             field0.SetActive(false);
             field1.SetActive(false);
             field0.SetActive(true);
@@ -3191,10 +3200,10 @@ namespace MDPro3
             var length_of_message = r.BaseStream.Length;
             BinaryMaster binaryMaster;
             List<string> selections;
-            //if ((GameMessage)p.Function != GameMessage.UpdateData)
-            //    Debug.Log("----------" + (GameMessage)p.Function);
-            //else
-            //    Debug.Log("|||||||||||" + (GameMessage)p.Function);
+            if ((GameMessage)p.Function != GameMessage.UpdateData)
+                Debug.Log("----------" + (GameMessage)p.Function);
+            else
+                Debug.Log("|||||||||||" + (GameMessage)p.Function);
             switch ((GameMessage)p.Function)
             {
                 case GameMessage.sibyl_chat:
