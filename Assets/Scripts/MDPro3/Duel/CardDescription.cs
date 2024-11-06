@@ -550,12 +550,12 @@ namespace MDPro3
                 splitLines = 2;
                 symbol = "[";
             }
-            if (language == Language.Spanish)
+            else if (language == Language.Spanish)
             {
                 beforePendulum = 2;
                 splitLines = 2;
             }
-            if (language == Language.TraditionalChinese)
+            else if (language == Language.TraditionalChinese)
             {
                 beforePendulum = 0;
             }

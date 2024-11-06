@@ -1,5 +1,7 @@
 using MDPro3.YGOSharp;
 using MDPro3.YGOSharp.OCGWrapper.Enums;
+using System.Collections.Generic;
+using System.Text;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -53,6 +55,7 @@ namespace MDPro3
         public TextMeshProUGUI spellType;
         public Font atkDef;
         public Text cardPassword;
+        public Text cardAuther;
 
         [Header("RD")]
         public RawImage cardArtRD;
@@ -88,7 +91,7 @@ namespace MDPro3
         public GameObject linkBL;
         public GameObject linkL;
         public Text cardPasswordRD;
-
+        public Text cardAutherRD;
         #endregion
 
         public void SwitchLanguage()
@@ -164,6 +167,8 @@ namespace MDPro3
                 cardDescriptionRD.font = result.Result;
                 cardDescriptionPendulum.font = result.Result;
                 cardDescriptionPendulumRD.font = result.Result;
+                cardAuther.font = result.Result;
+                cardAutherRD.font = result.Result;
             };
         }
 
@@ -359,8 +364,12 @@ namespace MDPro3
                     cardArtPendulumRD.texture = art;
                 }
                 var pendulumDescription = CardDescription.GetCardDescriptionSplit(data.Desc, true);
-                cardDescriptionRD.text = TextForRender(pendulumDescription[1]);
                 cardDescriptionPendulumRD.text = TextForRender(pendulumDescription[0]);
+
+                var authorSplit = GetAuthorFromDescription(pendulumDescription[1]);
+                cardAutherRD.text = authorSplit[1];
+                cardDescriptionRD.text = TextForRender(authorSplit[0]);
+
                 lScaleRD.text = data.LScale.ToString();
                 rScaleRD.text = data.RScale.ToString();
                 if ((data.Type & (uint)CardType.Xyz) > 0)
@@ -382,7 +391,9 @@ namespace MDPro3
             {
                 cardArtRD.gameObject.SetActive(true);
                 cardArtRD.texture = art;
-                cardDescriptionRD.text = TextForRender(data.Desc);
+                var authorSplit = GetAuthorFromDescription(data.Desc);
+                cardDescriptionRD.text = TextForRender(authorSplit[0]);
+                cardAutherRD.text = TextForRender(authorSplit[1]);
                 cardDescriptionPendulumRD.text = string.Empty;
 
                 if (code == 10000000)
@@ -541,8 +552,12 @@ namespace MDPro3
                 }
                 var pendulumDescription = CardDescription.GetCardDescriptionSplit(data.Desc, true);
                 cardDescription.text = StringHelper.GetType(data, true).Replace(Program.slash, Language.CardUseLatin() ? smallSlash : bigSlash);
-                cardDescription.text += "\r\n" + TextForRender(pendulumDescription[1]);
                 cardDescriptionPendulum.text = TextForRender(pendulumDescription[0]);
+
+                var authorSplit = GetAuthorFromDescription(pendulumDescription[1]);
+                cardDescription.text += "\r\n" + TextForRender(authorSplit[0]);
+                cardAuther.text = authorSplit[1];
+
                 lScale.text = data.LScale.ToString();
                 rScale.text = data.RScale.ToString();
                 if ((data.Type & (uint)CardType.Xyz) > 0)
@@ -565,8 +580,11 @@ namespace MDPro3
                 var description = "";
                 if ((data.Type & (uint)CardType.Monster) > 0)
                     description = StringHelper.GetType(data, true).Replace(Program.slash,Language.CardUseLatin() ? smallSlash : bigSlash) + "\r\n";
-                description += TextForRender(data.Desc);
+
+                var authorSplit = GetAuthorFromDescription(data.Desc);
+                description += TextForRender(authorSplit[0]);
                 cardDescription.text = description;
+                cardAuther.text = authorSplit[1];
 
                 if (code == 10000000)
                     cardFrame.sprite = TextureManager.container.cardFrameObeliskOF;
@@ -755,6 +773,39 @@ namespace MDPro3
             return description;
         }
 
+        static List<string> GetAuthorFromDescription(string description)
+        {
+            var lines = description.Split("\r\n");
+            var returnValue = new List<string>();
 
+            StringBuilder beforeDiySymbol = new StringBuilder();
+            bool foundDIY = false;
+
+            foreach (var line in lines)
+            {
+                if(!foundDIY && line.StartsWith(Settings.Data.DiySymbol))
+                {
+                    var beforeDiySymbolText = beforeDiySymbol.ToString();
+                    returnValue.Add(beforeDiySymbolText);
+                    returnValue.Add(line);
+                    foundDIY = true;
+                }
+                else if(!foundDIY && !string.IsNullOrEmpty(line))
+                {
+                    beforeDiySymbol.Append(line);
+                }
+
+                if (foundDIY) 
+                    break;
+            }
+
+            if (!foundDIY)
+            {
+                returnValue.Add(description);
+                returnValue.Add(string.Empty);
+            }
+
+            return returnValue;
+        }
     }
 }

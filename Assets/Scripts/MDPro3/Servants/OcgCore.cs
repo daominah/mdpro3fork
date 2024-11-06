@@ -20,6 +20,7 @@ using YgomGame.Bg;
 using YgomSystem.Effect;
 using YgomSystem.ElementSystem;
 using static YgomGame.Bg.BgEffectSettingInner;
+using MDPro3.Duel;
 
 namespace MDPro3
 {
@@ -346,19 +347,19 @@ namespace MDPro3
                 if (Input.GetKeyDown(KeyCode.W))
                     CameraBack();
 
-                if (Input.GetKeyDown(KeyCode.A))
+                if (Input.GetKeyDown(KeyCode.A)/* || Input.GetMouseButton(0)*/)
                 {
-                    chainCondition = ChainCondition.Smart;
+                    chainCondition = ChainCondition.All - 1;
                     OnTiming();
                 }
                 if (Input.GetKeyDown(KeyCode.S))
                 {
-                    chainCondition = ChainCondition.All;
+                    chainCondition = ChainCondition.No - 1;
                     OnTiming();
                 }
-                if (Input.GetKeyDown(KeyCode.D))
+                if (Input.GetKeyDown(KeyCode.D)/* || Input.GetMouseButtonUp(0)*/)
                 {
-                    chainCondition = ChainCondition.No;
+                    chainCondition = ChainCondition.Smart - 1;
                     OnTiming();
                 }
                 if (Input.GetKeyDown(KeyCode.Tab))
@@ -1490,7 +1491,7 @@ namespace MDPro3
         public List<string> confirmedCards = new List<string>();
         public GameCard summonCard;
         public GameCard lastMoveCard;
-        GameCard lastConfirmedCard;
+        public GameCard lastConfirmedCard;
         public GameCard attackingCard;
         Vector3 myPosition = new Vector3(0, 15, -25);
         Vector3 opPosition = new Vector3(0, 15, 25);
@@ -1513,15 +1514,15 @@ namespace MDPro3
         public int ES_min;
         public int ES_level;
         public bool ES_overFlow;
-        private string ES_selectHint = "";
-        private int Es_selectMSGHintData;
-        private int Es_selectMSGHintPlayer;
-        private int Es_selectMSGHintType;
-        private List<int> ES_searchCodes = new List<int>();
-        private string ES_selectUnselectHint = "";
-        private bool ES_selectCardFromFieldFirstFlag = false;
-        private int ES_sortSum;
-        private string ES_turnString = "";
+        public string ES_selectHint = "";
+        public int Es_selectMSGHintData;
+        public int Es_selectMSGHintPlayer;
+        public int Es_selectMSGHintType;
+        public List<int> ES_searchCodes = new List<int>();
+        public string ES_selectUnselectHint = "";
+        public bool ES_selectCardFromFieldFirstFlag = false;
+        public int ES_sortSum;
+        public string ES_turnString = "";
 
         public bool duelEnded;
         //For single duel end
@@ -1537,6 +1538,7 @@ namespace MDPro3
         public ElementObjectManager nextMoveManager;
         public float nextMoveTime = 0f;
 
+        public bool ignoreNextMoveLog;
 
         public void CoreReset()
         {
@@ -1613,9 +1615,9 @@ namespace MDPro3
             log.showing = true;
             OnLog(true);
 
-            chainSolving = 0;
+            log.chainSolving = 0;
             ignoreNextMoveLog = false;
-            psum = false;
+            log.psum = false;
 
             greenBackground.gameObject.SetActive(false);
             inputMode = false;
@@ -1856,769 +1858,6 @@ namespace MDPro3
             }
         }
 
-        #endregion
-
-        #region Duel Log
-        public int chainSolving;
-        uint lastMoveReason;
-        public bool ignoreNextMoveLog;
-        uint lastSpSummonReason;
-        public bool psum;
-        int cacheLp;
-        private void LogMessage(Package p)
-        {
-            var r = p.Data.reader;
-            r.BaseStream.Seek(0, 0);
-            var player = 0;
-            var code = 0;
-            var code2 = 0;
-            var count = 0;
-            var value = 0;
-            var type = 0;
-            Card data;
-            GameCard card;
-            GPS gps;
-            GPS from;
-            GPS to;
-            GameObject item;
-            string textReason;
-            Color targetColor;
-            RawImage cardFace;
-            switch ((GameMessage)p.Function)
-            {
-                #region SingleCard
-                case GameMessage.Move:
-                    code = r.ReadInt32();
-                    from = r.ReadGPS();
-                    to = r.ReadGPS();
-                    if (code > 0)
-                        data = CardsManager.Get(code);
-                    else
-                    {
-                        card = GCS_Get(to);
-                        if (card != null)
-                            data = card.GetData();
-                        else
-                            data = CardsManager.Get(code);
-                        code = data.Id;
-                    }
-
-                    lastMoveReason = r.ReadUInt32();
-                    if (ignoreNextMoveLog)
-                    {
-                        ignoreNextMoveLog = false;
-                        break;
-                    }
-                    if ((from.location & (uint)CardLocation.Hand) > 0
-                        && (to.location & (uint)CardLocation.SpellZone) > 0
-                        && (to.position & (uint)CardPosition.FaceUp) > 0
-                        && (data.Type & (uint)CardType.Monster) == 0)
-                        break;
-                    if ((from.location & (uint)CardLocation.Hand) > 0
-                        && (to.location & (uint)CardLocation.SpellZone) > 0
-                        && (to.position & (uint)CardPosition.FaceUp) > 0
-                        && (data.Type & (uint)CardType.Pendulum) > 0
-                        && (to.sequence == 0 || to.sequence == 4 || to.sequence == 6 || to.sequence == 7))//TODO
-                        break;
-                    if ((from.location & (uint)CardLocation.SpellZone) > 0
-                        && (to.location & (uint)CardLocation.SpellZone) == 0
-                        && (data.Type & (uint)CardType.Monster) == 0
-                        && (lastMoveReason & (uint)CardReason.RULE) > 0)
-                        break;
-                    if ((from.location & (uint)CardLocation.Overlay) > 0
-                        && (to.location & (uint)CardLocation.Overlay) > 0)
-                        break;
-                    if ((from.location & (uint)CardLocation.Deck) > 0
-                        && (to.location & (uint)CardLocation.Deck) > 0)
-                        break;
-                    if ((to.location & (uint)CardLocation.Onfield) > 0
-                        && (to.position & (uint)CardPosition.FaceDown) > 0)
-                        break;
-
-                    bool indent = false;
-                    if ((lastMoveReason & (uint)CardReason.COST) > 0)
-                    {
-                        textReason = InterString.Get("代价");
-                        indent = true;
-                    }
-                    else if ((lastMoveReason & (uint)CardReason.DESTROY) > 0)
-                        textReason = InterString.Get("破坏");
-                    else if ((lastMoveReason & (uint)CardReason.RELEASE) > 0)
-                        textReason = InterString.Get("解放");
-                    else if ((lastMoveReason & (uint)CardReason.BATTLE) > 0)
-                        textReason = InterString.Get("战斗破坏");
-                    else if ((lastMoveReason & (uint)CardReason.FLIP) > 0)
-                        textReason = InterString.Get("反转");
-                    else if ((to.location & (uint)CardLocation.Hand) > 0)
-                    {
-                        textReason = InterString.Get("回到");
-                        if ((from.location & ((uint)CardLocation.Deck + (uint)CardLocation.Extra)) > 0)
-                            textReason = InterString.Get("加入");
-                        if ((from.location & ((uint)CardLocation.Grave + (uint)CardLocation.Removed)) > 0)
-                            textReason = InterString.Get("回收");
-                    }
-                    else if ((to.location & (uint)CardLocation.SpellZone) > 0
-                        && (from.location & (uint)CardLocation.SpellZone) == 0
-                        && (from.location & (uint)CardLocation.Hand) == 0)
-                        textReason = InterString.Get("放置");
-                    else if ((from.location & (uint)CardLocation.SpellZone) > 0
-                        && (to.location & (uint)CardLocation.SpellZone) > 0)
-                        textReason = InterString.Get("移动");
-                    else if ((from.location & (uint)CardLocation.MonsterZone) > 0
-                        && (to.location & (uint)CardLocation.MonsterZone) > 0)
-                        textReason = InterString.Get("移动");
-                    else if ((to.location & (uint)CardLocation.MonsterZone) > 0
-                        && (from.location & (uint)CardLocation.MonsterZone) == 0)
-                        textReason = InterString.Get("回到");
-                    else
-                        textReason = InterString.Get("送至");
-
-                    if ((data.Type & (uint)CardType.Token) == 0)
-                        AddSingleCardMessageToLog(data.Id, from, to, textReason, indent);
-                    else
-                        AddSingleCardMessageToLog(data.Id, from, null, textReason, indent);
-                    break;
-                case GameMessage.Summoning:
-                case GameMessage.SpSummoning:
-                case GameMessage.FlipSummoning:
-                    code = r.ReadInt32();
-                    gps = r.ReadGPS();
-                    card = GCS_Get(gps);
-                    if (card == null)
-                    {
-                        Debug.LogError("Log Summoning: not find card.");
-                        break;
-                    }
-                    lastConfirmedCard = card;
-                    data = card.GetData();
-                    if (currentMessage == GameMessage.Summoning)
-                        textReason = InterString.Get("召唤");
-                    else if (currentMessage == GameMessage.SpSummoning)
-                    {
-                        if ((lastSpSummonReason & (uint)CardReason.Ritual) > 0)
-                            textReason = InterString.Get("仪式召唤");
-                        else if ((lastSpSummonReason & (uint)CardReason.Fusion) > 0)
-                            textReason = InterString.Get("融合召唤");
-                        else if ((lastSpSummonReason & (uint)CardReason.Synchro) > 0)
-                            textReason = InterString.Get("同调召唤");
-                        else if ((lastSpSummonReason & (uint)CardReason.Xyz) > 0)
-                            textReason = InterString.Get("超量召唤");
-                        else if ((lastSpSummonReason & (uint)CardReason.Link) > 0)
-                            textReason = InterString.Get("连接召唤");
-                        else if ((lastSpSummonReason & (uint)CardReason.Pendulum) > 0)
-                            textReason = InterString.Get("灵摆召唤");
-                        else
-                            textReason = InterString.Get("特殊召唤");
-                    }
-                    else if (currentMessage == GameMessage.FlipSummoning)
-                        textReason = InterString.Get("反转召唤");
-                    else
-                        textReason = InterString.Get("送至");
-                    if ((data.Type & (uint)CardType.Token) == 0)
-                        AddSingleCardMessageToLog(code, card.cacheP, gps, textReason);
-                    else
-                        AddSingleCardMessageToLog(code, gps, null, textReason);
-                    break;
-                case GameMessage.Set:
-                    card = lastMoveCard;
-                    if(card == null)
-                    {
-                        Debug.LogError("Log Set: not find card");
-                        break;
-                    }
-                    textReason = InterString.Get("盖放");
-                    AddSingleCardMessageToLog(card.GetData().Id, card.cacheP, card.p, textReason);
-                    break;
-                case GameMessage.Chaining:
-                    code = r.ReadInt32();
-                    gps = r.ReadGPS();
-                    card = GCS_Get(gps);
-                    data = card.GetData();
-
-                    if (card == null)
-                    {
-                        Debug.LogError("Log Chaining: not find card");
-                        break;
-                    }
-                    if (cardsInChain.Count > 1)
-                    {
-                        item = Instantiate(container.duelLogChaining);
-                        item.transform.GetChild(0).GetComponent<Button>().onClick.AddListener(() =>
-                        {
-                            description.Show(card, null);
-                        });
-                        item.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = cardsInChain.Count.ToString();
-                        item.transform.GetChild(1).GetChild(0).GetComponent<Text>().color =
-                            card.p.controller == 0 ? DuelLog.myChainColor : DuelLog.opChainColor;
-                        item.transform.GetChild(2).GetComponent<Text>().text = InterString.Get("连锁");
-                        StartCoroutine(Program.I().texture_.LoadCardToRawImageWithoutMaterialAsync(
-                            item.transform.GetChild(3).GetComponent<RawImage>(), code));
-                        log.AddLog(item);
-                    }
-                    textReason = InterString.Get("发动");
-                    if (card.cacheP != null && (card.cacheP.location & (uint)CardLocation.Hand) > 0
-                        && (gps.location & (uint)CardLocation.SpellZone) > 0
-                        && (gps.position & (uint)CardPosition.FaceUp) > 0
-                        && (data.Type & (uint)CardType.Pendulum) > 0
-                        && (gps.sequence == 0 || gps.sequence == 4 || gps.sequence == 6 || gps.sequence == 7)
-                        && card == lastMoveCard
-                        && card != lastConfirmedCard)
-                        textReason = InterString.Get("灵摆发动");
-                    if (card == lastMoveCard 
-                        && card != lastConfirmedCard
-                        && (gps.location & (uint)CardLocation.SpellZone) > 0
-                        && (card.cacheP.location & (uint)CardLocation.Hand) > 0
-                        )
-                    {
-                        lastConfirmedCard = card;
-                        AddSingleCardMessageToLog(code, card.cacheP, gps, textReason);
-                    }
-                    else
-                        AddSingleCardMessageToLog(code, gps, null, textReason);
-                    break;
-                case GameMessage.ChainNegated:
-                case GameMessage.ChainDisabled:
-                    card = cardsInChain[r.ReadByte() - 1];
-                    if (card == null)
-                    {
-                        Debug.LogError("Log Negated: not find card");
-                        break;
-                    }
-                    if (currentMessage == GameMessage.ChainDisabled)
-                    {
-                        textReason = InterString.Get("效果无效");
-                        if (card.negated)
-                            break;
-                    }
-                    else
-                        textReason = InterString.Get("发动无效");
-                    AddSingleCardMessageToLog(card.GetData().Id, card.p, null, textReason);
-                    break;
-                case GameMessage.Draw:
-                    player = LocalPlayer(r.ReadByte());
-                    count = r.ReadByte();
-                    gps = new GPS()
-                    {
-                        location = (uint)CardLocation.Hand,
-                        controller = (uint)player
-                    };
-                    List<int> codes = new List<int>();
-                    for (var i = 0; i < count; i++)
-                    {
-                        code = r.ReadInt32() & 0x7fffffff;
-                        codes.Add(code);
-                    }
-                    bool allUnknown = true;
-                    for(var i = 0; i < codes.Count; i++)
-                        if (codes[i] != 0)
-                        {
-                            allUnknown = false;
-                            break;
-                        }
-
-                    if (allUnknown)
-                    {
-                        code = 0;
-                        textReason = InterString.Get("抽卡") + " x " + count;
-                        AddSingleCardMessageToLog(code, gps, null, textReason);
-                    }
-                    else
-                    {
-                        for (var i = 0; i < count; i++)
-                        {
-                            code = codes[i];
-                            textReason = InterString.Get("抽卡");
-                            AddSingleCardMessageToLog(code, gps, null, textReason);
-                        }
-                    }
-
-                    break;
-                case GameMessage.RandomSelected:
-                    player = LocalPlayer(r.ReadByte());
-                    count = r.ReadByte();
-                    item = Instantiate(cardsInChain.Count > 0 ? container.duelLogText2 : container.duelLogText);
-                    item.transform.GetChild(1).GetComponent<Text>().text = InterString.Get("对象");
-                    log.AddLog(item);
-                    for (int i = 0; i < count; i++)
-                    {
-                        var tempGPS = r.ReadGPS();
-                        card = GCS_Get(tempGPS);
-                        if (card == null)
-                            continue;
-                        AddSingleCardMessageToLog(card.GetData().Id, tempGPS, null, string.Empty, true);
-                    }
-                    break;
-                case GameMessage.BecomeTarget:
-                    if (cardsInChain.Count == 0
-                        && cardsBeTarget.Count == 1
-                        && cardsBeTarget[0].InPendulumZone())
-                        break;
-                    if (psum)
-                        break;
-                    count = r.ReadByte();
-                    item = Instantiate(cardsInChain.Count > 0 ? container.duelLogText2 : container.duelLogText);
-                    item.transform.GetChild(1).GetComponent<Text>().text = InterString.Get("对象");
-                    log.AddLog(item);
-                    for (int i = 0; i < count; i++)
-                    {
-                        var tempGPS = r.ReadGPS();
-                        card = GCS_Get(tempGPS);
-                        if (card == null)
-                            continue;
-                        AddSingleCardMessageToLog(card.GetData().Id, tempGPS, null, string.Empty, true);
-                    }
-                    break;
-                case GameMessage.AttackDisabled:
-                    if (attackingCard == null)
-                        break;
-                    textReason = InterString.Get("攻击被无效");
-                    AddSingleCardMessageToLog(attackingCard.GetData().Id, attackingCard.p, null, textReason);
-                    break;
-                case GameMessage.ConfirmDecktop:
-                    player = LocalPlayer(r.ReadByte());
-                    count = r.ReadByte();
-                    for (int i = 0; i < count; i++)
-                    {
-                        code = r.ReadInt32();
-                        gps = r.ReadShortGPS();
-                        textReason = InterString.Get("公开卡组");
-                        AddSingleCardMessageToLog(code, gps, null, textReason);
-                    }
-                    break;
-                case GameMessage.ConfirmCards:
-                    player = LocalPlayer(r.ReadByte());
-                    count = r.ReadByte();
-                    for (int i = 0; i < count; i++)
-                    {
-                        code = r.ReadInt32();
-                        gps = r.ReadShortGPS();
-                        textReason = InterString.Get("公开");
-                        if ((gps.location & (uint)CardLocation.Hand) > 0)
-                            textReason = InterString.Get("公开手卡");
-                        else if ((gps.location & (uint)CardLocation.Onfield) > 0)
-                            textReason = InterString.Get("公开盖卡");
-                        AddSingleCardMessageToLog(code, gps, null, textReason);
-                    }
-                    break;
-                case GameMessage.PosChange:
-                    code = r.ReadInt32();
-                    from = r.ReadGPS();
-
-                    textReason = InterString.Get("更改表示形式");
-                    if ((from.location & (uint)CardLocation.SpellZone) > 0
-                        && (from.position & (uint)CardPosition.FaceUp) > 0)
-                        textReason = InterString.Get("盖放");
-                    if ((from.location & (uint)CardLocation.SpellZone) > 0
-                        && (from.position & (uint)CardPosition.FaceDown) > 0)
-                        textReason = InterString.Get("打开盖卡");
-                    to = from;
-                    to.position = r.ReadByte();
-                    if(code == 0)
-                    {
-                        card = GCS_Get(to);
-                        if (card != null)
-                        {
-                            data = card.GetData();
-                            code = data.Id;
-                        }
-                    }
-                    AddSingleCardMessageToLog(code, to, null, textReason);
-                    break;
-                case GameMessage.Swap:
-                    code = r.ReadInt32();
-                    from = r.ReadGPS();
-                    code2 = r.ReadInt32();
-                    to = r.ReadGPS();
-                    var from2 = new GPS
-                    {
-                        controller = from.controller,
-                        location = from.location,
-                        sequence = from.sequence,
-                        position = to.position
-                    };
-                    var to2 = new GPS
-                    {
-                        controller = to.controller,
-                        location = to.location,
-                        sequence = to.sequence,
-                        position = from.position
-                    };
-                    textReason = from.controller == from2.controller ? InterString.Get("移动") : InterString.Get("转移控制权"); ;
-                    AddSingleCardMessageToLog(code, from, to2, textReason);
-                    textReason = to.controller == to2.controller ? InterString.Get("移动") : InterString.Get("转移控制权"); ;
-                    AddSingleCardMessageToLog(code2, to, from2, textReason);
-                    break;
-
-                #endregion
-
-                #region LpChange
-                case GameMessage.Damage:
-                    player = LocalPlayer(r.ReadByte());
-                    value = r.ReadInt32();
-                    textReason = InterString.Get("伤害");
-                    AddLpPChangeMessageToLog(player, textReason, value);
-                    break;
-                case GameMessage.PayLpCost:
-                    player = LocalPlayer(r.ReadByte());
-                    value = r.ReadInt32();
-                    textReason = InterString.Get("代价");
-                    AddLpPChangeMessageToLog(player, textReason, value, true, true);
-                    break;
-                case GameMessage.Recover:
-                    player = LocalPlayer(r.ReadByte());
-                    value = r.ReadInt32();
-                    textReason = InterString.Get("回复");
-                    AddLpPChangeMessageToLog(player, textReason, value, false);
-                    break;
-                case GameMessage.LpUpdate:
-                    player = LocalPlayer(r.ReadByte());
-                    textReason = InterString.Get("基本分改变");
-                    AddLpPChangeMessageToLog(player, textReason, cacheLp > 0 ? cacheLp : -cacheLp, cacheLp < 0);
-                    break;
-                #endregion
-
-                #region Done
-                case GameMessage.ChainSolving:
-                    chainSolving = r.ReadByte();
-                    card = cardsInChain[chainSolving - 1];
-                    item = Instantiate(container.duelLogChaining);
-                    item.transform.GetChild(0).GetComponent<Button>().onClick.AddListener(() =>
-                    {
-                        description.Show(card, null);
-                    });
-                    item.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = chainSolving.ToString();
-                    item.transform.GetChild(1).GetChild(0).GetComponent<Text>().color =
-                        card.p.controller == 0 ? DuelLog.myChainColor : DuelLog.opChainColor;
-                    item.transform.GetChild(2).GetComponent<Text>().text = InterString.Get("效果处理");
-                    StartCoroutine(Program.I().texture_.LoadCardToRawImageWithoutMaterialAsync(
-                        item.transform.GetChild(3).GetComponent<RawImage>(), card.GetData().Id));
-                    log.AddLog(item);
-                    break;
-                case GameMessage.ChainEnd:
-                    item = Instantiate(container.duelLogChaining);
-                    item.transform.GetChild(1).gameObject.SetActive(false);
-                    item.transform.GetChild(3).gameObject.SetActive(false);
-                    textReason = chainSolving > 1 ? InterString.Get("连锁结束") : InterString.Get("处理结束");
-                    item.transform.GetChild(2).GetComponent<Text>().text = textReason;
-                    chainSolving = 0;
-                    log.AddLog(item);
-                    break;
-                case GameMessage.Attack:
-                    from = r.ReadGPS();
-                    to = r.ReadGPS();
-                    var attackCard = GCS_Get(from);
-                    if (attackCard == null)
-                    {
-                        Debug.LogError("Log Attack: not find card.");
-                        break;
-                    }
-                    item = Instantiate(container.duelLogAttack);
-                    targetColor = from.controller == 0 ? DuelLog.myColor : DuelLog.opColor;
-                    targetColor.a = 0.75f;
-                    item.transform.GetChild(1).GetComponent<Image>().color = targetColor;
-                    item.transform.GetChild(2).GetComponent<Text>().text = InterString.Get("攻击");
-                    var cardFace1 = item.transform.GetChild(3).GetComponent<RawImage>();
-                    code = attackCard.GetData().Id;
-                    StartCoroutine(Program.I().texture_.LoadCardToRawImageWithoutMaterialAsync(cardFace1, code, true));
-                    if ((from.position & (uint)CardPosition.Defence) > 0)
-                        cardFace1.transform.localEulerAngles = new Vector3(0f, 0f, 90f);
-                    cardFace1.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(() =>
-                    {
-                        description.Show(null, null, code, from);
-                    });
-                    var icons = TextureManager.container.GetLocationIcons(from);
-                    item.transform.GetChild(4).GetComponent<Image>().sprite = icons[0];
-                    targetColor = from.controller == 0 ? DuelLog.myArrowColor : DuelLog.opArrowColor;
-                    item.transform.GetChild(5).GetComponent<Image>().color = targetColor;
-                    var attackedCard = GCS_Get(to);
-                    if (attackedCard == null)
-                    {
-                        item.transform.GetChild(6).gameObject.SetActive(false);
-                        item.transform.GetChild(7).gameObject.SetActive(false);
-                        item.transform.GetChild(8).GetComponent<Image>().material =
-                            from.controller == 0 ? player1Frame.material : player0Frame.material;
-                        item.transform.GetChild(8).GetComponent<Image>().sprite =
-                            from.controller == 0 ? player1Frame.sprite : player0Frame.sprite;
-                    }
-                    else
-                    {
-                        item.transform.GetChild(8).gameObject.SetActive(false);
-                        icons = TextureManager.container.GetLocationIcons(to);
-                        item.transform.GetChild(6).GetComponent<Image>().sprite = icons[0];
-                        var cardFace2 = item.transform.GetChild(7).GetComponent<RawImage>();
-                        code2 = attackedCard.GetData().Id;
-                        if (code2 > 0)
-                            StartCoroutine(Program.I().texture_.LoadCardToRawImageWithoutMaterialAsync(cardFace2, code2, true));
-                        else
-                        {
-                            cardFace2.texture = null;
-                            cardFace2.material = from.controller == 0 ? opProtector : myProtector;
-                            cardFace2.transform.GetChild(0).gameObject.SetActive(false);
-                        }
-                        if ((to.position & (uint)CardPosition.Defence) > 0)
-                            cardFace2.transform.localEulerAngles = new Vector3(0f, 0f, 90f);
-                        if ((to.position & (uint)CardPosition.FaceUp) > 0)
-                            cardFace2.transform.GetChild(0).gameObject.SetActive(false);
-                        cardFace2.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(() =>
-                        {
-                            description.Show(null, null, code2, to);
-                        });
-                    }
-                    log.AddLog(item);
-                    break;
-                case GameMessage.NewTurn:
-                    item = Instantiate(container.duelLogNewTurn);
-                    if (myTurn)
-                        item.transform.GetChild(1).GetComponent<Image>().color = DuelLog.myColor;
-                    else
-                        item.transform.GetChild(1).GetComponent<Image>().color = DuelLog.opColor;
-                    item.transform.GetChild(2).GetComponent<Text>().text = InterString.Get("第[?]回合", turns.ToString());
-                    item.transform.GetChild(3).GetComponent<Image>().material = player0Frame.material;
-                    item.transform.GetChild(4).GetComponent<Image>().material = player1Frame.material;
-                    item.transform.GetChild(3).GetComponent<Image>().sprite = player0Frame.sprite;
-                    item.transform.GetChild(4).GetComponent<Image>().sprite = player1Frame.sprite;
-                    item.transform.GetChild(7).GetComponent<Text>().text = life0.ToString();
-                    item.transform.GetChild(8).GetComponent<Text>().text = life1.ToString();
-                    log.AddLog(item);
-                    break;
-                case GameMessage.NewPhase:
-                    var ph = r.ReadUInt16();
-                    var textPhase = string.Empty;
-                    if (ph == 0x01)
-                        textPhase = InterString.Get("抽卡阶段");
-                    else if (ph == 0x02)
-                        textPhase = InterString.Get("准备阶段");
-                    else if (ph == 0x04)
-                        textPhase = InterString.Get("主要阶段1");
-                    else if (ph == 0x08)
-                        textPhase = InterString.Get("战斗阶段");
-                    else if (ph == 0x100)
-                        textPhase = InterString.Get("主要阶段2");
-                    else if (ph == 0x200)
-                        textPhase = InterString.Get("结束阶段");
-
-                    if (textPhase != string.Empty)
-                    {
-                        item = Instantiate(container.duelLogNewPhase);
-                        item.transform.GetChild(1).GetComponent<Text>().text = textPhase;
-                        log.AddLog(item);
-                    }
-                    break;
-                case GameMessage.UpdateData:
-                    if (psum)
-                    {
-                        psum = false;
-                        VoiceHelper.ignoreNextPendulumSummon = false;
-                        cardsBeTarget.Clear();
-                        item = Instantiate(chainSolving > 0 ? container.duelLogText2 : container.duelLogText);
-                        item.transform.GetChild(1).GetComponent<Text>().text = InterString.Get("灵摆召唤结束");
-                        log.AddLog(item);
-                    }
-                    break;
-                case GameMessage.Hint:
-                    item = null;
-                    if (Es_selectMSGHintType == 8
-                        || Es_selectMSGHintType == 10)
-                        item = Instantiate(cardsInChain.Count > 0 ? container.duelLogTextWithCard2 : container.duelLogTextWithCard);
-                    else if (Es_selectMSGHintType >= 2
-                        && Es_selectMSGHintType <= 11
-                        && Es_selectMSGHintType != 3)
-                        item = Instantiate(cardsInChain.Count > 0 ? container.duelLogText2 : container.duelLogText);
-                    if (item != null)
-                    {
-                        item.transform.GetChild(1).GetComponent<Text>().text = lastDuelLog;
-                        if (item.transform.childCount > 2)
-                        {
-                            code = Es_selectMSGHintData;
-                            cardFace = item.transform.GetChild(2).GetComponent<RawImage>();
-                            StartCoroutine(Program.I().texture_.LoadCardToRawImageWithoutMaterialAsync(cardFace, code, true));
-                            item.transform.GetChild(0).GetComponent<Button>().onClick.AddListener(() =>
-                            {
-                                description.Show(null, null, code, new GPS());
-                            });
-                        }
-                        log.AddLog(item);
-                    }
-                    break;
-                case GameMessage.AddCounter:
-                case GameMessage.RemoveCounter:
-                    type = r.ReadUInt16();
-                    gps = r.ReadShortGPS();
-                    card = GCS_Get(gps);
-                    count = r.ReadUInt16();
-                    if (card == null)
-                    {
-                        Debug.Log("Log Counter: not find card! ");
-                        break;
-                    }
-                    var counterNow = card.GetCounterCount(type);
-                    var counterBefore = counterNow - count;
-                    if (currentMessage == GameMessage.RemoveCounter)
-                        counterBefore = counterNow + count;
-                    item = Instantiate(container.duelLogCounter);
-                    targetColor = gps.controller == 0 ? DuelLog.myColor : DuelLog.opColor;
-                    item.transform.GetChild(1).GetComponent<Image>().color = targetColor;
-                    item.transform.GetChild(2).GetComponent<Text>().text = card.GetData().Name;
-                    cardFace = item.transform.GetChild(3).GetComponent<RawImage>();
-                    StartCoroutine(Program.I().texture_.LoadCardToRawImageWithoutMaterialAsync(cardFace, card.GetData().Id, true));
-                    cardFace.transform.GetChild(0).GetComponent<Button>().onClick.AddListener(() =>
-                    {
-                        description.Show(null, null, code, gps);
-                    });
-                    icons = TextureManager.container.GetLocationIcons(gps);
-                    if (icons.Count == 2)
-                    {
-                        item.transform.GetChild(4).GetComponent<Image>().sprite = icons[1];
-                        item.transform.GetChild(4).GetChild(0).GetComponent<Image>().sprite = icons[0];
-                    }
-                    else
-                    {
-                        item.transform.GetChild(4).GetComponent<Image>().sprite = icons[0];
-                        item.transform.GetChild(4).GetChild(0).gameObject.SetActive(false);
-                    }
-                    var textCounterTo = item.transform.GetChild(5).GetComponent<Text>();
-                    textCounterTo.text = counterNow.ToString();
-                    var textCounterFrom = textCounterTo.transform.GetChild(0).GetChild(0).GetComponent<Text>();
-                    textCounterFrom.text = counterBefore.ToString();
-                    textCounterFrom.transform.GetChild(0).GetComponent<Image>().sprite =
-                        TextureManager.GetCardCounterIcon(type);
-                    item.transform.GetChild(6).GetComponent<Text>().text = StringHelper.Get("counter", type);
-                    log.AddLog(item);
-                    break;
-
-                #endregion
-
-                case GameMessage.Win:
-                    break;
-                case GameMessage.SwapGraveDeck:
-                    break;
-                case GameMessage.ReverseDeck:
-                    break;
-                case GameMessage.FieldDisabled:
-                    break;
-                case GameMessage.Equip:
-                    break;
-            }
-        }
-
-        void AddSingleCardMessageToLog(int code, GPS from, GPS to, string reason, bool indent = false)
-        {
-            var item = Instantiate(code > 0 ? container.duelLogSingleCard : container.duelLogSingleCard2);
-            Color targetColor;
-            if(to == null)
-                targetColor = from.controller == 0 ? DuelLog.myColor : DuelLog.opColor;
-            else
-                targetColor = to.controller == 0 ? DuelLog.myColor : DuelLog.opColor;
-            targetColor.a = 0.75f;
-            item.transform.GetChild(1).GetComponent<Image>().color = targetColor;
-
-            if (code > 0)
-                item.transform.GetChild(2).GetComponent<Text>().text = CardsManager.Get(code).Name;
-
-            item.transform.GetChild(3).GetComponent<Text>().text = reason;
-
-            var cardFace = item.transform.GetChild(4).GetComponent<RawImage>();
-            if (code > 0)
-                StartCoroutine(Program.I().texture_.LoadCardToRawImageWithoutMaterialAsync(cardFace, code, true));
-            else
-            {
-                cardFace.texture = null;
-                cardFace.material = (to == null ? from : to).controller == 0 ? myProtector : opProtector;
-                cardFace.transform.GetChild(0).gameObject.SetActive(false);
-            }
-            cardFace.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(() =>
-            {
-                description.Show(null, null, code, to == null ? from : to);
-            });
-            if (to != null && (to.position & (uint)CardPosition.Defence) > 0 && (to.location & (uint)CardLocation.MonsterZone) > 0)
-                cardFace.transform.localEulerAngles = new Vector3(0f, 0f, 90f);
-            if (to == null && (from.position & (uint)CardPosition.Defence) > 0 && (from.location & (uint)CardLocation.MonsterZone) > 0)
-                cardFace.transform.localEulerAngles = new Vector3(0f, 0f, 90f);
-
-            if (to != null && (to.position & (uint)CardPosition.FaceUp) > 0)
-                cardFace.transform.GetChild(0).gameObject.SetActive(false);
-            if (to == null && (from.position & (uint)CardPosition.FaceUp) > 0)
-                cardFace.transform.GetChild(0).gameObject.SetActive(false);
-
-            List<Sprite> icons;
-            icons = TextureManager.container.GetLocationIcons(from);
-            if (icons.Count == 2)
-            {
-                item.transform.GetChild(5).GetComponent<Image>().sprite = icons[1];
-                item.transform.GetChild(5).GetChild(0).GetComponent<Image>().sprite = icons[0];
-            }
-            else
-            {
-                item.transform.GetChild(5).GetComponent<Image>().sprite = icons[0];
-                item.transform.GetChild(5).GetChild(0).gameObject.SetActive(false);
-            }
-            if(to != null)
-            {
-                if (to.controller == 0)
-                    item.transform.GetChild(6).GetComponent<Image>().color = DuelLog.myArrowColor;
-                else
-                    item.transform.GetChild(6).GetComponent<Image>().color = DuelLog.opArrowColor;
-                icons = TextureManager.container.GetLocationIcons(to);
-                if (icons.Count == 2)
-                {
-                    item.transform.GetChild(7).GetComponent<Image>().sprite = icons[1];
-                    item.transform.GetChild(7).GetChild(0).GetComponent<Image>().sprite = icons[0];
-                }
-                else
-                {
-                    item.transform.GetChild(7).GetComponent<Image>().sprite = icons[0];
-                    item.transform.GetChild(7).GetChild(0).gameObject.SetActive(false);
-                }
-            }
-            else
-            {
-                item.transform.GetChild(6).gameObject.SetActive(false);
-                item.transform.GetChild(7).gameObject.SetActive(false);
-            }
-            log.AddLog(item, indent);
-#if UNITY_EDITOR
-            if (currentMessage == GameMessage.Move
-                || currentMessage == GameMessage.Summoning
-                || currentMessage == GameMessage.SpSummoning)
-            {
-                var targetReason = lastMoveReason;
-                item.transform.GetChild(3).GetComponent<Button>().onClick.AddListener(() =>
-                {
-                    Debug.LogFormat("{0:X}", targetReason);
-                });
-            }
-
-            item.transform.GetChild(5).GetComponent<Button>().onClick.AddListener(() =>
-            {
-                Debug.LogFormat("Location: {0:X}, Sequence: {1}, Position: {2:X}", from.location, from.sequence, from.position);
-            });
-            if(to != null)
-            {
-                item.transform.GetChild(7).GetComponent<Button>().onClick.AddListener(() =>
-                {
-                    Debug.LogFormat("Location: {0:X}, Sequence: {1}, Position: {2:X}", to.location, to.sequence, to.position);
-                });
-            }
-#endif
-        }
-
-        void AddLpPChangeMessageToLog(int player, string reason, int value, bool red = true, bool indent = false)
-        {
-            var item = Instantiate(container.duelLogLpChange);
-            var targetColor = player == 0 ? DuelLog.myColor : DuelLog.opColor;
-            item.transform.GetChild(1).GetComponent<Image>().color = targetColor;
-            var frame = item.transform.GetChild(2).GetComponent<Image>();
-            frame.material = player == 0 ? player0Frame.material : player1Frame.material;
-            frame.sprite = player == 0 ? player0Frame.sprite : player1Frame.sprite;
-            item.transform.GetChild(3).GetComponent<Text>().text = reason;
-            item.transform.GetChild(4).GetComponent<Text>().text = value.ToString();
-            item.transform.GetChild(4).GetComponent<Text>().color = red ? DuelLog.damageColor : DuelLog.recoverColor;
-            var lp = player == 0 ? life0 : life1;
-            if(lp < 0)
-                lp = 0;
-            item.transform.GetChild(6).GetComponent<Text>().text = lp.ToString();
-            log.AddLog(item, indent);
-        }
         #endregion
 
         #region PracticalizeTools
@@ -3202,8 +2441,8 @@ namespace MDPro3
             List<string> selections;
             if ((GameMessage)p.Function != GameMessage.UpdateData)
                 Debug.Log("----------" + (GameMessage)p.Function);
-            else
-                Debug.Log("|||||||||||" + (GameMessage)p.Function);
+            //else
+            //    Debug.Log("|||||||||||" + (GameMessage)p.Function);
             switch ((GameMessage)p.Function)
             {
                 case GameMessage.sibyl_chat:
@@ -3935,7 +3174,7 @@ namespace MDPro3
                         {
                             tail = "MasterDuel/Effects/summon/fxp_somldg/Link_s1";
                             se = "SE_LAND_LINK_MIDDLE";
-                            lastSpSummonReason = (uint)CardReason.Link;
+                            log.lastSpSummonReason = (uint)CardReason.Link;
                         }
                         else if (materialCards.Count > 0
                             //&& (card.GetData().Reason & (uint)CardReason.Fusion) > 0)
@@ -3943,7 +3182,7 @@ namespace MDPro3
                         {
                             tail = "MasterDuel/Effects/summon/fxp_somldg/Fusion_s1";
                             se = "SE_LAND_FUSION_MIDDLE";
-                            lastSpSummonReason = (uint)CardReason.Fusion;
+                            log.lastSpSummonReason = (uint)CardReason.Fusion;
                         }
                         else if (materialCards.Count > 0
                             //&& (card.GetData().Reason & (uint)CardReason.Synchro) > 0)
@@ -3951,7 +3190,7 @@ namespace MDPro3
                         {
                             tail = "MasterDuel/Effects/summon/fxp_somldg/Synchro_s1";
                             se = "SE_LAND_SYNCHRO_MIDDLE";
-                            lastSpSummonReason = (uint)CardReason.Synchro;
+                            log.lastSpSummonReason = (uint)CardReason.Synchro;
                         }
                         else if (materialCards.Count > 0
                             //&& (card.GetData().Reason & (uint)CardReason.Xyz) > 0)
@@ -3959,7 +3198,7 @@ namespace MDPro3
                         {
                             tail = "MasterDuel/Effects/summon/fxp_somldg/Xyz_s1";
                             se = "SE_LAND_XYZ_MIDDLE";
-                            lastSpSummonReason = (uint)CardReason.Xyz;
+                            log.lastSpSummonReason = (uint)CardReason.Xyz;
                         }
                         else if (materialCards.Count > 0
                             //&& (card.GetData().Reason & (uint)CardReason.Ritual) > 0)
@@ -3967,19 +3206,19 @@ namespace MDPro3
                         {
                             tail = "MasterDuel/Effects/summon/fxp_somldg/Ritual_s1";
                             se = "SE_LAND_RITUAL_MIDDLE";
-                            lastSpSummonReason = (uint)CardReason.Ritual;
+                            log.lastSpSummonReason = (uint)CardReason.Ritual;
                         }
-                        else if (psum)
+                        else if (log.psum)
                         {
                             tail = "MasterDuel/Effects/summon/fxp_somldg/Pendulum_s1";
                             se = "SE_LAND_PENDULUM_MIDDLE";
-                            lastSpSummonReason = (uint)CardReason.Pendulum;
+                            log.lastSpSummonReason = (uint)CardReason.Pendulum;
                         }
                         else
                         {
                             tail = "MasterDuel/Effects/summon/fxp_somldg/Special_s1";
                             se = "SE_LAND_ADVANCE_MIDDLE";
-                            lastSpSummonReason = 0;
+                            log.lastSpSummonReason = 0;
                         }
                         if (GameCard.NeedStrongSummon(card.GetData()))
                         {
@@ -4613,7 +3852,7 @@ namespace MDPro3
                     break;
                 case GameMessage.ChainEnd:
                     //For log
-                    chainSolving = cardsInChain.Count;
+                    log.chainSolving = cardsInChain.Count;
                     foreach (var c in cardsInChain)
                     {
                         c.negated = false;
@@ -5071,12 +4310,12 @@ namespace MDPro3
                     val = r.ReadInt32();
                     if (player == 0)
                     {
-                        cacheLp = val - life0;
+                        log.cacheLp = val - life0;
                         life0 = val;
                     }
                     else
                     {
-                        cacheLp = val - life1;
+                        log.cacheLp = val - life1;
                         life1 = val;
                     }
                     if (life0 <= 0 || life1 <= 0)
@@ -5102,7 +4341,7 @@ namespace MDPro3
                         }
                     }
                     UpdateBgEffect(player);
-                    SetLP(player, cacheLp);
+                    SetLP(player, log.cacheLp);
                     Sleep(50);
                     break;
                 case GameMessage.TossCoin:
@@ -5588,7 +4827,7 @@ namespace MDPro3
                         ShowPopupSelectCard(InterString.Get("确认卡片：[?]张。", count.ToString()), confirmCards, 0, 0, true, true);
                     }
                     else
-                        Sleep(100 * count);
+                        Sleep(100 * count + 10);
                     break;
                 case GameMessage.DeckTop:
                     player = LocalPlayer(r.ReadByte());
@@ -5712,7 +4951,7 @@ namespace MDPro3
                     break;
                 case GameMessage.RandomSelected:
                     int targetTime = 0;
-                    psum = false;
+                    log.psum = false;
                     player = LocalPlayer(r.ReadByte());
                     count = r.ReadByte();
                     for (var i = 0; i < count; i++)
@@ -5729,7 +4968,7 @@ namespace MDPro3
                     break;
                 case GameMessage.BecomeTarget:
                     targetTime = 0;
-                    psum = false;
+                    log.psum = false;
                     count = r.ReadByte();
                     for (int i = 0; i < count; i++)
                     {
@@ -5756,10 +4995,10 @@ namespace MDPro3
                                     if (cardsBeTarget[0].InPendulumZone())
                                         if (cardsBeTarget[1].InPendulumZone())
                                             if (cardsBeTarget[0].p.controller == cardsBeTarget[1].p.controller)
-                                                psum = true;
+                                                log.psum = true;
 
                         config = true;
-                        if (psum)
+                        if (log.psum)
                         {
                             switch (condition)
                             {
@@ -5778,7 +5017,7 @@ namespace MDPro3
                             }
                         }
 
-                        if (psum && config)
+                        if (log.psum && config)
                         {
                             description.Hide();
                             targetTime = 366;
@@ -6767,7 +6006,7 @@ namespace MDPro3
             preload = false;
         }
 
-        static string lastDuelLog;
+        public static string lastDuelLog;
         private static void PrintDuelLog(string content)
         {
             lastDuelLog = content;
@@ -9121,7 +8360,7 @@ namespace MDPro3
                 {
                     speaking = false;
                     PracticalizeMessage(p);
-                    LogMessage(p);
+                    log.LogMessage(p);
                     return;
                 }
             }
@@ -9131,7 +8370,7 @@ namespace MDPro3
 
                 speaking = false;
                 PracticalizeMessage(p);
-                LogMessage(p);
+                log.LogMessage(p);
                 return;
             }
 
@@ -9188,7 +8427,7 @@ namespace MDPro3
                             speaking = false;
                             speakBreaking = false;
                             PracticalizeMessage(p);
-                            LogMessage(p);
+                            log.LogMessage(p);
                             yield break;
                         }
                         handler.time = clips[i][j].length;
@@ -9226,7 +8465,7 @@ namespace MDPro3
                             speaking = false;
                             speakBreaking = false;
                             PracticalizeMessage(p);
-                            LogMessage(p);
+                            log.LogMessage(p);
                             waitForNoWaitingVoice = true;
                         }
                         if (waitForNoWaitingVoice)
@@ -9247,7 +8486,7 @@ namespace MDPro3
                 speaking = false;
                 speakBreaking = false;
                 PracticalizeMessage(p);
-                LogMessage(p);
+                log.LogMessage(p);
             }
             else
                 waitForNoWaitingVoice = false;
@@ -9324,8 +8563,8 @@ namespace MDPro3
         public enum ChainCondition
         {
             No = 0,
-            Smart = 1,
-            All = 2,
+            All = 1,
+            Smart = 2,
         }
 
         #endregion

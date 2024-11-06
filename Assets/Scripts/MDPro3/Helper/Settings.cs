@@ -21,6 +21,7 @@ namespace MDPro3
         public int[] SavedCardSize;
         public string SavedCardFormat;
         public bool BatchMove;
+        public string DiySymbol;
 
         public SettingData()
         {
@@ -87,6 +88,7 @@ namespace MDPro3
             SavedCardSize = new int[] { 704, 1024 };
             SavedCardFormat = Program.jpgExpansion;
             BatchMove = true;
+            DiySymbol = "DIY by";
         }
     }
 
@@ -195,6 +197,11 @@ namespace MDPro3
             if (!json.Contains("BatchMove"))
             {
                 data.BatchMove = defau.BatchMove;
+                needOverwrite = true;
+            }
+            if (!json.Contains("DiySymbol"))
+            {
+                data.DiySymbol = defau.DiySymbol;
                 needOverwrite = true;
             }
             if (needOverwrite)

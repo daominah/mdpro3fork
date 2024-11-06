@@ -2547,14 +2547,14 @@ namespace MDPro3
             {
                 CreateModel();
                 ModelAt(p);
+                model.SetActive(false);
             }
             inAnimation = true;
             var offset = manager.GetElement<Transform>("Offset");
             var offsetPosition = offset.localPosition;
             var turn = manager.GetElement<Transform>("Turn");
             var turnEulerAngles = turn.localEulerAngles;
-            if(!ThisLocationShouldHaveModel(p))
-                model.SetActive(false);
+
             var sequence = DOTween.Sequence();
             sequence.AppendInterval(id);
             sequence.Append(offset.DOLocalMove(new Vector3(0, 2, 3), 0.1f).OnStart(() => 

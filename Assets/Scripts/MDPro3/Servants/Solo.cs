@@ -297,8 +297,6 @@ namespace MDPro3
             }
             else
             {
-                cg.interactable = true;
-
                 MessageManager.messageFromSubString = InterString.Get("端口被占用， 请尝试修改端口后再尝试。端口号应大于0，小于65535。");
             }
         }

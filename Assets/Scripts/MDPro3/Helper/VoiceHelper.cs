@@ -405,7 +405,7 @@ namespace MDPro3
                                 else if ((c.Type & (uint)CardType.Ritual) > 0)
                                     subCategory = (int)SummonSub.Ritual;
                             }
-                            else if (core.psum)
+                            else if (core.log.psum)
                             {
                                 if (ignoreNextPendulumSummon)
                                     break;

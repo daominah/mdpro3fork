@@ -1127,7 +1127,7 @@ namespace MDPro3
         }
         public void OnSort()
         {
-            if (!deckIsFromLocalFile)
+            if (!deckIsFromLocalFile && condition != Condition.ChangeSide)
             {
                 MessageManager.Cast(InterString.Get("ÇëÏÈ±£´æ¿¨×é¡£"));
                 return;
