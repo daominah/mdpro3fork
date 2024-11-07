@@ -76,6 +76,17 @@ namespace MDPro3
             Load();
         }
 
+        public override void ApplyShowArrangement(int preDepth)
+        {
+            base.ApplyShowArrangement(preDepth);
+
+            if(condition == Condition.ForSolo)
+            {
+                YgoServer.StopServer();
+            }
+
+        }
+
         public void Load()
         {
             ReadBots(Program.localesPath + Language.GetConfig() + "/bot.conf");
@@ -203,14 +214,14 @@ namespace MDPro3
         public void StartAIForSolo(int aiCode, bool diyDeck)
         {
             string aiCommand = GetWindBotCommand(aiCode, diyDeck);
-            if(aiCommand != string.Empty)
+            if (!string.IsNullOrEmpty(aiCommand))
                 Launch(aiCommand, toggleLockHand.isOn, toggleNoCheck.isOn, toggleNoShuffle.isOn);
         }
 
         public void StartAIForRoom(int aiCode, bool diyDeck)
         {
             string aiCommand = GetWindBotCommand(aiCode, diyDeck);
-            if (aiCommand != string.Empty)
+            if (!string.IsNullOrEmpty(aiCommand))
             {
                 StartWindBot(aiCommand, TcpHelper.joinedAddress, TcpHelper.joinedPort, TcpHelper.joinedPassword, toggleLockHand.isOn, 600);
                 Program.I().ShiftToServant(Program.I().room);
@@ -232,7 +243,6 @@ namespace MDPro3
             }
             return "";
         }
-
 
         public void StartWindBot(string command, string ip, string port, string password, bool lockHand, int delay)
         {
@@ -292,8 +302,7 @@ namespace MDPro3
                     Room.soloLockHand = false;
                 Room.fromLocalHost = false;
 
-                TcpHelper.LinkStart("127.0.0.1", Config.Get("DuelPlayerName0", "@ui"), port, string.Empty, 500);
-                StartWindBot(command, "127.0.0.1", port, string.Empty, lockHand, 600);
+                TcpHelper.LinkStart("127.0.0.1", Config.Get("DuelPlayerName0", "@ui"), port, string.Empty, true, () => StartWindBot(command, "127.0.0.1", port, string.Empty, lockHand, 0));
             }
             else
             {

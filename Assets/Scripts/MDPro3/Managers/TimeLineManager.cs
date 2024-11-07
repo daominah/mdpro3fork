@@ -348,35 +348,20 @@ namespace MDPro3
                 if (i != tunerLevel)
                     manager.GetElement("NumberTuner" + (i > 9 ? i.ToString() : "0" + i.ToString())).SetActive(false);
 
-            if (level <= 4)
+            if (level < 5)
             {
-                manager.GetElement("SynchroCircle01").SetActive(true);
-                manager.GetElement("SynchroCircle02").SetActive(false);
-                manager.GetElement("SynchroCircle03").SetActive(false);
+                Destroy(manager.GetElement("SynchroCircle02"));
+                Destroy(manager.GetElement("SynchroCircle03"));
             }
-            else if (level <= 6)
+            else if (level < 9)
             {
-                manager.GetElement("SynchroCircle01").SetActive(false);
-                manager.GetElement("SynchroCircle02").SetActive(true);
-                manager.GetElement("SynchroCircle03").SetActive(false);
+                Destroy(manager.GetElement("SynchroCircle01"));
+                Destroy(manager.GetElement("SynchroCircle03"));
             }
-            else if (level <= 8)
+            else
             {
-                manager.GetElement("SynchroCircle01").SetActive(true);
-                manager.GetElement("SynchroCircle02").SetActive(true);
-                manager.GetElement("SynchroCircle03").SetActive(false);
-            }
-            else if (level <= 10)
-            {
-                manager.GetElement("SynchroCircle01").SetActive(false);
-                manager.GetElement("SynchroCircle02").SetActive(true);
-                manager.GetElement("SynchroCircle03").SetActive(true);
-            }
-            else if (level <= 12)
-            {
-                manager.GetElement("SynchroCircle01").SetActive(true);
-                manager.GetElement("SynchroCircle02").SetActive(true);
-                manager.GetElement("SynchroCircle03").SetActive(true);
+                Destroy(manager.GetElement("SynchroCircle01"));
+                Destroy(manager.GetElement("SynchroCircle02"));
             }
 
             yield return null;

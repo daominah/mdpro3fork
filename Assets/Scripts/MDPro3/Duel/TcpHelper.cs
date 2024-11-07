@@ -10,6 +10,7 @@ using MDPro3.YGOSharp.Network.Enums;
 using MDPro3.YGOSharp.OCGWrapper.Enums;
 using MDPro3.Net;
 using System.Net;
+using System.Collections.Concurrent;
 
 namespace MDPro3
 {
@@ -27,7 +28,6 @@ namespace MDPro3
         public static List<Package> packagesInRecord = new List<Package>();
 
         private static readonly Queue<Package> messageQueue = new Queue<Package>();
-
         static Thread senderThread;
         static Thread linkThread;
 
@@ -37,6 +37,72 @@ namespace MDPro3
         public static string joinedPort;
         public static string joinedPassword;
 
+
+        public static bool LinkStart(string ipString, string name, string portString, string pswString, bool local, Action doWhenSuccess)
+        {
+            if(!canJoin)
+                return false;
+
+            linkThread?.Abort();
+
+            canJoin = false;
+            linkThread = new Thread(() => 
+            {
+                bool joined = false;
+                while (YgoServer.ServerRunning() && !joined)
+                {
+                    try
+                    {
+                        joined = Join(ipString, name, portString, pswString, doWhenSuccess);
+                    }
+                    catch (Exception ex)
+                    {
+                        Debug.LogException(ex);
+                        joined = false;
+                    }
+                    Thread.Sleep(100);
+                }
+                canJoin = true;
+            });
+            linkThread.Start();
+            return true;
+        }
+
+        private static bool Join(string ipString, string name, string portString, string pswString, Action doWhenSuccess)
+        {
+            if (tcpClient != null && tcpClient.Connected)
+            {
+                onDisConnected = true;
+                return false;
+            }
+
+            try
+            {
+                Debug.LogFormat("Try Address: {0}, Port: {1}, Password: {2}", ipString, portString, pswString);
+
+                tcpClient = new TcpClientWithTimeout(ipString, int.Parse(portString), 3000).Connect();
+                networkStream = tcpClient.GetStream();
+                var t = new Thread(Receiver);
+                t.Start();
+                messageQueue.Clear();
+                InitializeSender();
+                CtosMessage_PlayerInfo(name);
+                CtosMessage_JoinGame(pswString);
+                joinedAddress = ipString;
+                joinedPort = portString;
+                joinedPassword = pswString;
+                Program.I().ocgcore.mycardDuel = joinedAddress == MyCard.duelUrl;
+                doWhenSuccess?.Invoke();
+
+                Debug.LogFormat("Joind Address: {0}, Port: {1}, Password: {2}", joinedAddress, joinedPort, joinedPassword);
+                return true;
+            }
+            catch (Exception e)
+            {
+                //MessageManager.messageFromSubString = "JoinError: " + e;
+                return false;
+            }
+        }
         public static void InitializeSender()
         {
             try
@@ -48,57 +114,11 @@ namespace MDPro3
                 };
                 senderThread.Start();
             }
-            catch 
+            catch
             {
                 if (Program.I().solo.isShowed)
                     MessageManager.messageFromSubString = InterString.Get("端口被占用， 请尝试修改端口后再尝试。端口号应大于0，小于65535。");
             }
-        }
-
-        public static bool LinkStart(string ipString, string name, string portString, string pswString, int delay)
-        {
-            if(!canJoin)
-                return false;
-
-            linkThread?.Abort();
-
-            canJoin = false;
-            linkThread = new Thread(() => { Thread.Sleep(delay); Join(ipString, name, portString, pswString); });
-            linkThread.Start();
-            return true;
-        }
-
-        private static void Join(string ipString, string name, string portString, string pswString)
-        {
-            if (tcpClient == null || tcpClient.Connected == false)
-            {
-                try
-                {
-                    Debug.LogFormat("Try Address: {0}, Port: {1}, Password: {2}", ipString, portString, pswString);
-
-                    tcpClient = new TcpClientWithTimeout(ipString, int.Parse(portString), 3000).Connect();
-                    networkStream = tcpClient.GetStream();
-                    var t = new Thread(Receiver);
-                    t.Start();
-                    messageQueue.Clear();
-                    InitializeSender();
-                    CtosMessage_PlayerInfo(name);
-                    CtosMessage_JoinGame(pswString);
-                    joinedAddress = ipString;
-                    joinedPort = portString;
-                    joinedPassword = pswString;
-                    Program.I().ocgcore.mycardDuel = joinedAddress == MyCard.duelUrl;
-
-                    Debug.LogFormat("Joind Address: {0}, Port: {1}, Password: {2}", joinedAddress, joinedPort, joinedPassword);
-                }
-                catch (Exception e)
-                {
-                    MessageManager.messageFromSubString = "JoinError: " + e;
-                }
-                canJoin = true;
-            }
-            else
-                onDisConnected = true;
         }
 
         public static void Receiver()

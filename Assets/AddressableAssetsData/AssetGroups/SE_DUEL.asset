@@ -1290,6 +1290,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: db40c11bf84714a46a8b7e15eae55e6c
+    m_Address: SE_EV_038_NORMAL
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: db98a8d99c69e40499f22034ea630e06
     m_Address: SE_LAND_PENDULUM_MIDDLE
     m_ReadOnly: 0

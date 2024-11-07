@@ -294,7 +294,6 @@ namespace MDPro3
 
         void Update()
         {
-
             #region Input
             InputGetMouse0 = Input.GetMouseButton(0);
             InputGetMouse0Down = Input.GetMouseButtonDown(0);

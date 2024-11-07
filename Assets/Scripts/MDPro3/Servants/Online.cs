@@ -250,7 +250,7 @@ namespace MDPro3.Net
             Room.fromSolo = false;
             Room.fromLocalHost = true;
             YgoServer.StartServer(args);
-            TcpHelper.LinkStart("127.0.0.1", Config.Get("DuelPlayerName0", "@ui"), port.ToString(), "", 300);
+            TcpHelper.LinkStart("127.0.0.1", Config.Get("DuelPlayerName0", "@ui"), port.ToString(), "", true, null);
         }
 
         string GetPoolCodeByName(string pool)
@@ -337,7 +337,7 @@ namespace MDPro3.Net
             }
             Room.fromSolo = false;
             Room.fromLocalHost = false;
-            TcpHelper.LinkStart(ip, Config.Get("DuelPlayerName0", "@ui"), port, password, 0);
+            TcpHelper.LinkStart(ip, Config.Get("DuelPlayerName0", "@ui"), port, password, false, null);
         }
 
         public void SwitchFunction(int id)
@@ -686,7 +686,7 @@ namespace MDPro3.Net
             if(task.Result != null)
             {
                 textEntertain.text = InterString.Get("”È¿÷∆•≈‰");
-                TcpHelper.LinkStart(task.Result.address, MyCard.account.user.username, task.Result.port.ToString(), task.Result.password, 0);
+                TcpHelper.LinkStart(task.Result.address, MyCard.account.user.username, task.Result.port.ToString(), task.Result.password, false, null);
             }
             else
             {
@@ -711,7 +711,7 @@ namespace MDPro3.Net
             if (task.Result != null)
             {
                 textAthletic.text = InterString.Get("æ∫ºº∆•≈‰");
-                TcpHelper.LinkStart(task.Result.address, MyCard.account.user.username, task.Result.port.ToString(), task.Result.password, 0);
+                TcpHelper.LinkStart(task.Result.address, MyCard.account.user.username, task.Result.port.ToString(), task.Result.password, false, null);
             }
             else
             {

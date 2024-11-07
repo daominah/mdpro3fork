@@ -17,12 +17,12 @@ namespace MDPro3.Net
         public static Thread serverThread;
         public static void StartServer(string args)
         {
-            if(serverThread != null)
+            if(ServerRunning())
                 StopServer();
 
             serverThread = new Thread(() =>
             {
-                int result = Dll.start_server(args);
+                Dll.start_server(args);
             });
             serverThread.Start();
         }
@@ -31,6 +31,11 @@ namespace MDPro3.Net
         {
             Dll.stop_server();
             serverThread?.Abort();
+        }
+
+        public static bool ServerRunning()
+        {
+            return serverThread != null && serverThread.IsAlive;
         }
     }
 }
