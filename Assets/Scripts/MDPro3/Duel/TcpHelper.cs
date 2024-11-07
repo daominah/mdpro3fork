@@ -49,18 +49,25 @@ namespace MDPro3
             linkThread = new Thread(() => 
             {
                 bool joined = false;
-                while (YgoServer.ServerRunning() && !joined)
+                if (local)
                 {
-                    try
+                    while (YgoServer.ServerRunning() && !joined)
                     {
-                        joined = Join(ipString, name, portString, pswString, doWhenSuccess);
+                        try
+                        {
+                            joined = Join(ipString, name, portString, pswString, doWhenSuccess);
+                        }
+                        catch (Exception ex)
+                        {
+                            Debug.LogException(ex);
+                            joined = false;
+                        }
+                        Thread.Sleep(100);
                     }
-                    catch (Exception ex)
-                    {
-                        Debug.LogException(ex);
-                        joined = false;
-                    }
-                    Thread.Sleep(100);
+                }
+                else
+                {
+                    Join(ipString, name, portString, pswString, doWhenSuccess);
                 }
                 canJoin = true;
             });
