@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace MDPro3.UI
 {
-    public class PopupConfirm : Popup
+    public class PopupConfirm : PopupBase
     {
         [Header("Popup Confirm")]
         public Text description;

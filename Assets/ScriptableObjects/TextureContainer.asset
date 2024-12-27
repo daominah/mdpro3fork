@@ -66,7 +66,6 @@ MonoBehaviour:
   cardNormal: {fileID: 2800000, guid: b552f9fd55ddc7443bfe07c7dbc13b1f, type: 3}
   cardNormalLink: {fileID: 2800000, guid: 875fa980a3eb990419e51879fe12b281, type: 3}
   cardNormalPendulum: {fileID: 2800000, guid: 71402236982fddd41ada1cc6a44e94bd, type: 3}
-  cardRainbowMask: {fileID: 2800000, guid: ce96aab8acee80f4881cd81654d62c5d, type: 3}
   attributeLight: {fileID: 21300000, guid: 157f899e40b269e4bb70d867aa084278, type: 3}
   attributeDark: {fileID: 21300000, guid: 7976b559931f6e840863f07ea92c278a, type: 3}
   attributeWater: {fileID: 21300000, guid: e639e2cab68115f499825b099bd456d5, type: 3}
@@ -349,6 +348,10 @@ MonoBehaviour:
   link6R: {fileID: 21300000, guid: 3b570e271a10bac45b6f8d7e18a2769e, type: 3}
   link7R: {fileID: 21300000, guid: 8f93787833cf38d4b8efd203c474b82b, type: 3}
   link8R: {fileID: 21300000, guid: 56d550cdbb8b8564ba9709053b07f482, type: 3}
+  cardPoolOCG: {fileID: 21300000, guid: 333dbb3cdabfec045a9b847e4346c96e, type: 3}
+  cardPoolTCG: {fileID: 21300000, guid: ecffc09d995d487438d67bc4cec6afac, type: 3}
+  cardPoolDIY: {fileID: 21300000, guid: 33d1884e558d4294fa30b3ff7e4b5669, type: 3}
+  cardPoolPRE: {fileID: 21300000, guid: c7aa25ac8e9b84242a18d26b86e87777, type: 3}
   chainCircleNum0: {fileID: 21300000, guid: 5a9a5c2ffd12abd4c903477752e66cbe, type: 3}
   chainCircleNum1: {fileID: 21300000, guid: 7fd304f2b3202c848afedad0be06438f, type: 3}
   chainCircleNum2: {fileID: 21300000, guid: c071bfc657197e847ae413a854cff06e, type: 3}
@@ -435,12 +438,41 @@ MonoBehaviour:
   rd_KiraMaskPendulum: {fileID: 2800000, guid: ad112383d2d010945965fb587ff62a3d, type: 3}
   rd_CardAttributeSet: {fileID: 2800000, guid: 8e060280489ff074cbc3cfd6122ebdfd, type: 3}
   rd_CardNormal: {fileID: 2800000, guid: 3f5b3131dbe35bb4592393a6adc7ead2, type: 3}
+  gamepad_ButtonSouth_Xbox: {fileID: 21300000, guid: d5977869931a55f458b6ef0ffa413a1f, type: 3}
+  gamepad_ButtonEast_Xbox: {fileID: 21300000, guid: 1d4312ba815631546b3703002b49271f, type: 3}
+  gamepad_ButtonWest_Xbox: {fileID: 21300000, guid: c2c100a0a6077774e822c1b1b5b1f7fd, type: 3}
+  gamepad_ButtonNorth_Xbox: {fileID: 21300000, guid: b157adafef65c9a4f85ced41b4ecbe7b, type: 3}
+  gamepad_ButtonSouth_PlayStation: {fileID: 21300000, guid: 343be281d91ec394d8fe4a68635eb5f2, type: 3}
+  gamepad_ButtonEast_PlayStation: {fileID: 21300000, guid: 970291e23e695d844872ed91cbd51cf3, type: 3}
+  gamepad_ButtonWest_PlayStation: {fileID: 21300000, guid: 9c297afeaab4e3241a5582167750642c, type: 3}
+  gamepad_ButtonNorth_PlayStation: {fileID: 21300000, guid: 3f9ae42bf94fb434ea7bb2c350d131f4, type: 3}
+  gamepad_ButtonSouth_Nintendo: {fileID: 21300000, guid: 1d4312ba815631546b3703002b49271f, type: 3}
+  gamepad_ButtonEast_Nintendo: {fileID: 21300000, guid: d5977869931a55f458b6ef0ffa413a1f, type: 3}
+  gamepad_ButtonWest_Nintendo: {fileID: 21300000, guid: b157adafef65c9a4f85ced41b4ecbe7b, type: 3}
+  gamepad_ButtonNorth_Nintendo: {fileID: 21300000, guid: c2c100a0a6077774e822c1b1b5b1f7fd, type: 3}
+  gamepad_LeftShoulder_Xbox: {fileID: 21300000, guid: d58a68ba8b0231c40a99a6f0842f800d, type: 3}
+  gamepad_RightShoulder_Xbox: {fileID: 21300000, guid: 34391f03bb76acf44a32b2b6a376afe4, type: 3}
+  gamepad_LeftTrigger_Xbox: {fileID: 21300000, guid: b407f8c466c327b4da5e8bee0a63b4ba, type: 3}
+  gamepad_RightTrigger_Xbox: {fileID: 21300000, guid: 25c391fb3c67ae14d9bdb118481b6d66, type: 3}
+  gamepad_LeftShoulder_PlayStation: {fileID: 21300000, guid: e7d27c13523eadd4e95878a60e37eff3, type: 3}
+  gamepad_RightShoulder_PlayStation: {fileID: 21300000, guid: 030587e7416089d4a8827e5309fa21b7, type: 3}
+  gamepad_LeftTrigger_PlayStation: {fileID: 21300000, guid: 212f3c00a7fa5024e8835b82c72db58a, type: 3}
+  gamepad_RightTrigger_PlayStation: {fileID: 21300000, guid: 99975cfe9e0e42d47a5a826b5a3bd828, type: 3}
+  gamepad_LeftShoulder_Nintendo: {fileID: 21300000, guid: e62c35adb930df642b5b974e1b259f01, type: 3}
+  gamepad_RightShoulder_Nintendo: {fileID: 21300000, guid: 3fac5bc892529b04a933395d24b98844, type: 3}
+  gamepad_LeftTrigger_Nintendo: {fileID: 21300000, guid: b5989d49063d2a446b949cfcd5faa8f9, type: 3}
+  gamepad_RightTrigger_Nintendo: {fileID: 21300000, guid: 2bfae9557eaef944884f9ad4fbae0ec0, type: 3}
+  gamepad_LeftStick: {fileID: 21300000, guid: 472f4463512f91e48968a2bea2ce4787, type: 3}
+  gamepad_RightStick: {fileID: 21300000, guid: 08a97bbf5c9575d4b9fd2bc586d52bb4, type: 3}
+  gamepad_Select_Xbox: {fileID: 21300000, guid: 2b0641e22e1e6e54a85bc7eac1607231, type: 3}
+  gamepad_Start_Xbox: {fileID: 21300000, guid: ee48250f44a49d543b5926613fb40ac4, type: 3}
+  gamepad_Select_PlayStation: {fileID: 21300000, guid: 33a30fc600e7ad04eaf7a7ad9552c0ee, type: 3}
+  gamepad_Start_PlayStation: {fileID: 21300000, guid: 114b48f9b41b6a542b167960a7d9ee17, type: 3}
+  gamepad_Select_Nintendo: {fileID: 21300000, guid: 0308e5cde23a96b4bbfaf28d59ec7835, type: 3}
+  gamepad_Start_Nintendo: {fileID: 21300000, guid: 86feb6744b88c6946a73edb7b90b2b1a, type: 3}
   fxt_Arrow: {fileID: 2800000, guid: f7b877a77c7530543815b9cd571203ee, type: 3}
   fxt_Arrow_002: {fileID: 2800000, guid: cc77cec8332acc04eb877183efcec954, type: 3}
   fxt_Arrow_003: {fileID: 2800000, guid: 89ee305204be7844abd1fc33fd0e8db7, type: 3}
   fxt_Arrow_004: {fileID: 2800000, guid: 4c88d66a9e295ce49afb8c45c5fd54e9, type: 3}
   fxt_msk_005: {fileID: 2800000, guid: fc78254fef4709843a3b17422a6bf171, type: 3}
-  CardKira3_Millennium: {fileID: 2800000, guid: 28b0c71205f41c14cafab93528018e21, type: 3}
   CardKiraNormal03_Millennium: {fileID: 2800000, guid: 71d6974fbeeed2c41901e87746fda0cb, type: 3}
-  CardKira3_Gold: {fileID: 2800000, guid: 08ae84d023067ea489f10f6c9fb17eca, type: 3}
-  CardNoise02_Gold: {fileID: 2800000, guid: 680bef0a013b02345bde4fae69e13dfc, type: 3}

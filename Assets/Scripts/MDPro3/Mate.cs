@@ -100,7 +100,7 @@ namespace MDPro3
                 m_collider.size = new Vector3(2, 2, 2);
                 m_collider.center = new Vector3(0, 1, 0);
 
-                if (Program.I().currentServant == Program.I().ocgcore)
+                if (Program.instance.currentServant == Program.instance.ocgcore)
                     Tools.ChangeLayer(gameObject, "Default");
                 for (int i = 0; i < transform.childCount; i++)
                 {
@@ -306,6 +306,13 @@ namespace MDPro3
                             continue;
                         camera.enabled = true;
                         camera.cullingMask = 1 << layerMask;
+                        camera.clearFlags = CameraClearFlags.Nothing;
+                        CameraManager.DuelOverlay2DMinus();
+                        var mono = camera.gameObject.AddComponent<DoWhenDisabled>();
+                        mono.action = () =>
+                        {
+                            CameraManager.DuelOverlay2DPlus();
+                        };
                     }
                     foreach (var light in directorI.transform.parent.GetComponentsInChildren<Light>(true))
                     {

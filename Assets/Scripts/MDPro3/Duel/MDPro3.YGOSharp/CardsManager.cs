@@ -5,8 +5,8 @@ using System.Text.RegularExpressions;
 using Mono.Data.Sqlite;
 using MDPro3.YGOSharp.OCGWrapper.Enums;
 using System.IO;
-using static MDPro3.EditDeck;
 using Ionic.Zip;
+using MDPro3.Utility;
 
 namespace MDPro3.YGOSharp
 {
@@ -46,7 +46,7 @@ namespace MDPro3.YGOSharp
                                 Directory.CreateDirectory(Program.tempFolder);
                             var tempFile = Path.Combine(Path.GetFullPath(Program.tempFolder), file);
                             e.Extract(Path.GetFullPath(Program.tempFolder), ExtractExistingFileAction.OverwriteSilently);
-                            LoadCDB(tempFile);
+                            LoadCDB(tempFile, isPreCards : Path.GetFileName(zip.Name) == "ygopro-super-pre.ypk");
                             File.Delete(tempFile);
                         }
                     }
@@ -79,7 +79,7 @@ namespace MDPro3.YGOSharp
                                 Directory.CreateDirectory(Program.tempFolder);
                             var tempFile = Path.Combine(Path.GetFullPath(Program.tempFolder), file);
                             e.Extract(Path.GetFullPath(Program.tempFolder), ExtractExistingFileAction.OverwriteSilently);
-                            LoadCDB(tempFile, true);
+                            LoadCDB(tempFile, true, isPreCards: Path.GetFileName(zip.Name) == "ygopro-super-pre.ypk");
                             File.Delete(tempFile);
                         }
                     }
@@ -87,7 +87,7 @@ namespace MDPro3.YGOSharp
             }
         }
 
-        internal static void LoadCDB(string databaseFullPath, bool render = false)
+        internal static void LoadCDB(string databaseFullPath, bool render = false, bool isPreCards = false)
         {
             using (SqliteConnection connection = new SqliteConnection("Data Source=" + databaseFullPath))
             {
@@ -100,7 +100,7 @@ namespace MDPro3.YGOSharp
                     {
                         while (reader.Read())
                         {
-                            LoadCard(reader, render);
+                            LoadCard(reader, render, isPreCards);
                         }
                     }
                 }
@@ -162,16 +162,28 @@ namespace MDPro3.YGOSharp
 
             return returnValue;
         }
-        internal static List<int> GetAllCards()
+        internal static List<Card> GetAllCards()
+        {
+            var returnValue = new List<Card>();
+            foreach (var card in _cards)
+                returnValue.Add(card.Value);
+            return returnValue;
+        }
+
+        internal static List<int> GetAllCardCodes()
         {
             var returnValue = new List<int>();
             foreach (var card in _cards)
                 returnValue.Add(card.Key);
             return returnValue;
         }
-        private static void LoadCard(IDataRecord reader, bool render = false)
+
+        private static void LoadCard(IDataRecord reader, bool render = false, bool isPreCards = false)
         {
-            Card card = new Card(reader);
+            Card card = new(reader) 
+            {
+                isPre = isPreCards
+            };
             if (!render)
             {
                 //if (!_cards.ContainsKey(card.Id))
@@ -270,7 +282,7 @@ namespace MDPro3.YGOSharp
             foreach (var item in _cards)
             {
                 Card card = item.Value;
-                if ((card.Type & (uint)CardType.Token) == 0)
+                if (!card.HasType(CardType.Token))
                 {
                     bool pass = true;
                     foreach (string s in strings)
@@ -309,11 +321,11 @@ namespace MDPro3.YGOSharp
                             {
                                 if ((filters[0] & (long)CardType.Ritual) > 0)
                                 {
-                                    if ((filters[0] & (long)CardType.Spell) > 0 && (card.Type & (uint)CardType.Spell) > 0)
+                                    if ((filters[0] & (long)CardType.Spell) > 0 && card.HasType(CardType.Spell))
                                         pass = true;
-                                    if ((filters[0] & (long)CardType.Trap) > 0 && (card.Type & (uint)CardType.Trap) > 0)
+                                    if ((filters[0] & (long)CardType.Trap) > 0 && card.HasType(CardType.Trap))
                                         pass = true;
-                                    if ((card.Type & (uint)CardType.Monster) > 0)
+                                    if (card.HasType(CardType.Monster))
                                         pass = true;
                                 }
                                 else
@@ -325,7 +337,7 @@ namespace MDPro3.YGOSharp
                                 pass = false;
                                 if (filters[1] == 0)
                                     pass = true;
-                                if (!pass && (card.Type & (uint)CardType.Monster) > 0 && (card.Attribute & (uint)filters[1]) > 0)
+                                if (!pass && (card.HasType(CardType.Monster) && (card.Attribute & (uint)filters[1]) > 0))
                                     pass = true;
                                 if (pass)
                                 {
@@ -339,33 +351,33 @@ namespace MDPro3.YGOSharp
                                             if(card.Type == 2)
                                                 pass = true;
                                         if ((filters[2] & (long)CardType.Field) > 0)
-                                            if ((card.Type & (uint)CardType.Field) > 0)
+                                            if (card.HasType(CardType.Field))
                                                 pass = true;
                                         if ((filters[2] & (long)CardType.Equip) > 0)
-                                            if ((card.Type & (uint)CardType.Equip) > 0)
+                                            if (card.HasType(CardType.Equip))
                                                 pass = true;
                                         if ((filters[2] & 0x8000000) > 0)
-                                            if ((card.Type & (uint)CardType.Spell) > 0 &&(card.Type & (uint)CardType.Continuous) > 0)
+                                            if (card.HasType(CardType.Spell) && card.HasType(CardType.Continuous))
                                                 pass = true;
                                         if ((filters[2] & (long)CardType.QuickPlay) > 0)
-                                            if ((card.Type & (uint)CardType.QuickPlay) > 0)
+                                            if (card.HasType(CardType.QuickPlay))
                                                 pass = true;
                                         if ((filters[2] & (long)CardType.Ritual) > 0)
-                                            if ((card.Type & (uint)CardType.Spell) > 0 && (card.Type & (uint)CardType.Ritual) > 0)
+                                            if (card.HasType(CardType.Spell) && card.HasType(CardType.Ritual))
                                                 pass = true;
                                         if ((filters[2] & (long)CardType.Trap) > 0)
                                         {
-                                            if ((card.Type & (uint)CardType.Trap) > 0 
-                                                && (card.Type & (uint)CardType.Continuous) == 0
-                                                && (card.Type & (uint)CardType.Counter) == 0
+                                            if (card.HasType(CardType.Trap)
+                                                && !card.HasType(CardType.Continuous)
+                                                && !card.HasType(CardType.Counter)
                                                 )
                                                 pass = true;
                                         }
                                         if ((filters[2] & 0x10000000) > 0)
-                                            if ((card.Type & (uint)CardType.Trap) > 0 && (card.Type & (uint)CardType.Continuous) > 0)
+                                            if (card.HasType(CardType.Trap) && card.HasType(CardType.Continuous))
                                                 pass = true;
                                         if ((filters[2] & (long)CardType.Counter) > 0)
-                                            if ((card.Type & (uint)CardType.Counter) > 0)
+                                            if (card.HasType(CardType.Counter))
                                                 pass = true;
                                     }
                                     if (pass)
@@ -374,7 +386,7 @@ namespace MDPro3.YGOSharp
                                         pass = false;
                                         if (filters[3] == 0)
                                             pass = true;
-                                        if (!pass && (card.Type & (uint)CardType.Monster) > 0 && (card.Race & filters[3]) > 0)
+                                        if (!pass && card.HasType(CardType.Monster) && (card.Race & filters[3]) > 0)
                                             pass = true;
                                         if (pass)
                                         {
@@ -382,10 +394,10 @@ namespace MDPro3.YGOSharp
                                             pass = false;
                                             if (filters[4] == 0)
                                                 pass = true;
-                                            if (!pass && (card.Type & (uint)CardType.Monster) > 0 && (card.Type & filters[4]) > 0)
+                                            if (!pass && card.HasType(CardType.Monster) && (card.Type & filters[4]) > 0)
                                                 pass = true;
                                             if(!pass && (filters[4] & 0x8000000) > 0)
-                                                if ((card.Type & (uint)CardType.Monster) > 0 && (card.Type & (uint)CardType.Effect) == 0)
+                                                if (card.HasType(CardType.Monster) && !card.HasType(CardType.Effect))
                                                     pass = true;
                                             if (pass)
                                             {
@@ -420,6 +432,8 @@ namespace MDPro3.YGOSharp
                                                         if ((filters[6] & 32) > 0 && (card.Ot & 1) == 0 && (card.Ot & 2) == 2)
                                                             pass = true;
                                                         if ((filters[6] & 64) > 0 && (card.Ot & 3) == 3)
+                                                            pass = true;
+                                                        if ((filters[6] & 128) > 0 && card.isPre)
                                                             pass = true;
                                                     }
                                                     if (pass)
@@ -466,7 +480,7 @@ namespace MDPro3.YGOSharp
                                                                     if (filters[10] == 0)
                                                                         pass = true;
                                                                     if (!pass)
-                                                                        if((card.Type & (uint)CardType.Link) > 0)
+                                                                        if(card.HasType(CardType.Link))
                                                                         {
                                                                             pass = true;
                                                                             for (int i = 0; i < 9; i++)
@@ -569,7 +583,7 @@ namespace MDPro3.YGOSharp
 
             foreach (var item in _cards)
             {
-                if (card.Id != item.Value.Id && (item.Value.Type & (uint)CardType.Token) == 0)
+                if (card.Id != item.Value.Id && !item.Value.HasType(CardType.Token))
                 {
                     bool pass = false;
                     foreach (var n in names)
@@ -962,7 +976,7 @@ namespace MDPro3.YGOSharp
         {
             return (left, right) =>
             {
-                int a = 1;
+                int a = -1;
                 if (left.Name == nameInSearch && right.Name != nameInSearch)
                 {
                     a = -1;
@@ -1074,7 +1088,7 @@ namespace MDPro3.YGOSharp
         {
             return (left, right) =>
             {
-                int a = 1;
+                int a = -1;
                 if (left.Name == nameInSearch && right.Name != nameInSearch)
                 {
                     a = -1;
@@ -1186,7 +1200,7 @@ namespace MDPro3.YGOSharp
         {
             return (left, right) =>
             {
-                int a = 1;
+                int a = -1;
                 if (left.Name == nameInSearch && right.Name != nameInSearch)
                 {
                     a = -1;
@@ -1298,7 +1312,7 @@ namespace MDPro3.YGOSharp
         {
             return (left, right) =>
             {
-                int a = 1;
+                int a = -1;
                 if (left.Name == nameInSearch && right.Name != nameInSearch)
                 {
                     a = -1;
@@ -1410,7 +1424,7 @@ namespace MDPro3.YGOSharp
         {
             return (left, right) =>
             {
-                int a = 1;
+                int a = -1;
                 if (left.Name == nameInSearch && right.Name != nameInSearch)
                 {
                     a = -1;
@@ -1522,7 +1536,7 @@ namespace MDPro3.YGOSharp
         {
             return (left, right) =>
             {
-                int a = 1;
+                int a = -1;
                 if (left.Name == nameInSearch && right.Name != nameInSearch)
                 {
                     a = -1;
@@ -1634,7 +1648,7 @@ namespace MDPro3.YGOSharp
         {
             return (left, right) =>
             {
-                int a = 1;
+                int a = -1;
                 if (left.Name == nameInSearch && right.Name != nameInSearch)
                 {
                     a = -1;
@@ -1746,7 +1760,7 @@ namespace MDPro3.YGOSharp
         {
             return (left, right) =>
             {
-                int a = 1;
+                int a = -1;
                 if (left.Name == nameInSearch && right.Name != nameInSearch)
                 {
                     a = -1;
@@ -1870,7 +1884,7 @@ namespace MDPro3.YGOSharp
         {
             return (left, right) =>
             {
-                int a = 1;
+                int a = -1;
                 if (left.Name == nameInSearch && right.Name != nameInSearch)
                 {
                     a = -1;

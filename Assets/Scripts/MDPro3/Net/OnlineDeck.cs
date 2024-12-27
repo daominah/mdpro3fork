@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Networking;
+using MDPro3.Utility;
 
 namespace MDPro3.Net
 {
@@ -297,6 +298,9 @@ namespace MDPro3.Net
 
         public static async Task<bool> DeleteDecks(List<string> ids)
         {
+            if (ids == null || ids.Count == 0)
+                return false;
+
             var toDelete = new List<string>();
             foreach (var id in ids)
                 foreach (var deck in decks)

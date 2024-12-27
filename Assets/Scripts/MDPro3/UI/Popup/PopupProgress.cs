@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace MDPro3.UI
 {
-    public class PopupProgress : Popup
+    public class PopupProgress : PopupBase
     {
         [Header("Popup Progress")]
         public Text description;

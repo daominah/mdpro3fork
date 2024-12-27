@@ -47,17 +47,17 @@ namespace MDPro3
 
         public IEnumerator SummonMaterial()
         {
-            Program.I().ocgcore.startCard = () =>
+            Program.instance.ocgcore.startCard = () =>
             {
-                if (Program.I().currentServant != Program.I().ocgcore)
+                if (Program.instance.currentServant != Program.instance.ocgcore)
                     return;
                 var t = dummyCard.transform;
                 var position = t.position;
                 var angels = t.eulerAngles;
                 angels = new Vector3(-angels.x, angels.y + 180, -angels.z);
-                Program.I().ocgcore.summonCard.StrongSummonLand(position, angels);
+                Program.instance.ocgcore.summonCard.StrongSummonLand(position, angels);
                 CameraManager.BlackOut(0f, 0.3f);
-                Program.I().ocgcore.startCard = null;
+                Program.instance.ocgcore.startCard = null;
             };
 
             inSummonMaterial = true;
@@ -65,8 +65,8 @@ namespace MDPro3
             skipping = false;
             summoned = 0;
 
-            summonCard = Program.I().ocgcore.summonCard.GetData().Id;
-            materials = Program.I().ocgcore.materialCards;
+            summonCard = Program.instance.ocgcore.summonCard.GetData().Id;
+            materials = Program.instance.ocgcore.materialCards;
             reason = materials[0].GetData().Reason;
             if ((reason & (uint)CardReason.MATERIAL) == 0)
                 reason = (int)materials[0].p.reason;
@@ -81,10 +81,10 @@ namespace MDPro3
             GameObject ms;
 
             //Super Polymerization
-            var data = Program.I().ocgcore.summonCard.GetData();
-            if ((data.Type & (uint)CardType.Fusion) > 0 
-                && Program.I().ocgcore.currentSolvingCard != null
-                && Program.I().ocgcore.currentSolvingCard.GetData().Id == 48130397)
+            var data = Program.instance.ocgcore.summonCard.GetData();
+            if (data.HasType(CardType.Fusion) 
+                && Program.instance.ocgcore.currentSolvingCard != null
+                && Program.instance.ocgcore.currentSolvingCard.GetData().Id == 48130397)
             {
                 if (materials.Count > 8)
                     ms = ABLoader.LoadFromFolder("MasterDuel/Timeline/Summon/SummonFusion/SummonFusion07445ShowUnitCard08",
@@ -103,7 +103,7 @@ namespace MDPro3
                     "SummonFusionShowUnitCard0" + materials.Count, true);
             }
 
-            Program.I().ocgcore.allGameObjects.Add(ms);
+            Program.instance.ocgcore.allGameObjects.Add(ms);
 
             var manager = Tools.GetPlayableDirectorInChildren(ms.transform).GetComponent<ElementObjectManager>();
             manager.GetComponent<PlayableDirector>().playOnAwake = true;
@@ -123,7 +123,7 @@ namespace MDPro3
                 var cardBack02 = dummyCard.transform.parent.GetChild(0).GetChild(0).GetComponent<ParticleSystem>().main;
                 if ((reason & (uint)CardReason.Synchro) > 0)
                 {
-                    if ((materials[i].GetData().Type & (uint)CardType.Tuner) > 0)
+                    if (materials[i].GetData().HasType(CardType.Tuner))
                     {
                         cardBack01.startColor = Color.green;
                         cardBack02.startColor = Color.green;
@@ -169,14 +169,14 @@ namespace MDPro3
 
         void SyncSummonTimeline()
         {
-            var type = CardsManager.Get(summonCard).Type;
-            if ((reason & (uint)CardReason.Ritual) > 0 && (type & (uint)CardType.Ritual) > 0)
+            var data = CardsManager.Get(summonCard);
+            if ((reason & (uint)CardReason.Ritual) > 0 && data.HasType(CardType.Ritual))
                 StartCoroutine(SummonRitual());
-            else if ((reason & (uint)CardReason.Synchro) > 0 && (type & (uint)CardType.Synchro) > 0)
+            else if ((reason & (uint)CardReason.Synchro) > 0 && data.HasType(CardType.Synchro))
                 StartCoroutine(SummonSynchro());
-            else if ((reason & (uint)CardReason.Xyz) > 0 && (type & (uint)CardType.Xyz) > 0)
+            else if ((reason & (uint)CardReason.Xyz) > 0 && data.HasType(CardType.Xyz))
                 StartCoroutine(SummonXyz());
-            else if ((reason & (uint)CardReason.Link) > 0 && (type & (uint)CardType.Link) > 0)
+            else if ((reason & (uint)CardReason.Link) > 0 && data.HasType(CardType.Link))
                 StartCoroutine(SummonLink());
             else
             {
@@ -203,7 +203,7 @@ namespace MDPro3
             else
                 summon = ABLoader.LoadFromFolder("MasterDuel/Timeline/summon/summonfusion/summonfusion0" + materials.Count + "_01",
                 "SummonFusion0" + materials.Count, true);
-            Program.I().ocgcore.allGameObjects.Add(summon);
+            Program.instance.ocgcore.allGameObjects.Add(summon);
             DoWhenStop(summon.transform.GetChild(0).gameObject);
             var manager = summon.transform.GetChild(0).GetComponent<ElementObjectManager>();
             currentManager = manager;
@@ -270,7 +270,7 @@ namespace MDPro3
                 }
             }
 
-            Program.I().ocgcore.allGameObjects.Add(summon);
+            Program.instance.ocgcore.allGameObjects.Add(summon);
             currentSyncManager = manager;
             manager.transform.GetChild(0).gameObject.AddComponent<AutoScaleOnce>();
 
@@ -319,7 +319,7 @@ namespace MDPro3
             else
                 summon = ABLoader.LoadFromFile("MasterDuel/Timeline/summon/summonsynchro/summonsynchro02", true);
 
-            Program.I().ocgcore.allGameObjects.Add(summon);
+            Program.instance.ocgcore.allGameObjects.Add(summon);
             DoWhenStop(summon);
             var manager = summon.GetComponent<ElementObjectManager>();
             currentSyncManager = manager;
@@ -380,7 +380,7 @@ namespace MDPro3
             else
                 summon = ABLoader.LoadFromFile("MasterDuel/Timeline/summon/summonxyz/summonxyz03_01", true);
 
-            Program.I().ocgcore.allGameObjects.Add(summon);
+            Program.instance.ocgcore.allGameObjects.Add(summon);
             DoWhenStop(summon);
             summon.transform.GetChild(0).gameObject.AddComponent<AutoScaleOnce>();
 
@@ -389,7 +389,7 @@ namespace MDPro3
             var subManager = manager.GetElement<ElementObjectManager>("DummyCardXYZ");
             dummyCard = subManager.gameObject;
 
-            var ie = Program.I().texture_.LoadDummyCard(subManager, summonCard, 0);
+            var ie = Program.instance.texture_.LoadDummyCard(subManager, summonCard, 0);
             StartCoroutine(ie);
 
             Destroy(manager.GetElement("SummonXYZShowUnitCard0" + (materials.Count > 2 ? "3" : materials.Count.ToString())));
@@ -412,7 +412,7 @@ namespace MDPro3
             else
                 summon = ABLoader.LoadFromFile("MasterDuel/Timeline/summon/summonlink/summonlink03_01", true);
 
-            Program.I().ocgcore.allGameObjects.Add(summon);
+            Program.instance.ocgcore.allGameObjects.Add(summon);
             DoWhenStop(summon);
             var manager = summon.GetComponent<ElementObjectManager>();
             currentSyncManager = manager;
@@ -422,7 +422,7 @@ namespace MDPro3
             dummyCard = subManager.GetElement("DummyCardLink");
 
             var cardModel = subManager.GetElement<ElementObjectManager>("DummyCardLink");
-            var ie = Program.I().texture_.LoadDummyCard(cardModel, summonCard, 0);
+            var ie = Program.instance.texture_.LoadDummyCard(cardModel, summonCard, 0);
             StartCoroutine(ie);
 
             var postLink = subManager.GetElement<Renderer>("DummyCardLinkAdd");
@@ -571,7 +571,7 @@ namespace MDPro3
             tunerLevel = 0;
             foreach (var material in materials)
             {
-                if ((material.GetData().Type & (uint)CardType.Tuner) > 0)
+                if (material.GetData().HasType(CardType.Tuner))
                 {
                     if (levelForSelect1)
                         tunerLevel += material.levelForSelect_1;
@@ -584,7 +584,7 @@ namespace MDPro3
                 foreach (var material in materials)
                 {
                     var data = material.GetCachedData();
-                    if ((data.Type & (uint)CardType.Tuner) > 0)
+                    if (data.HasType(CardType.Tuner))
                         tunerLevel += data.Level;
                 }
                 if (tunerLevel == 0)
@@ -618,7 +618,7 @@ namespace MDPro3
             }
             else
             {
-                var materials = Program.I().ocgcore.materialCards;
+                var materials = Program.instance.ocgcore.materialCards;
                 for (int i = 0; i < count; i++)
                 {
                     var code = materials[i + order].GetData().Id;
@@ -639,7 +639,7 @@ namespace MDPro3
             {
                 Destroy(currentManager.transform.parent.gameObject);
                 inSummonMaterial = false;
-                Program.I().timeline_.ShiftToSummonTimeline();
+                Program.instance.timeline_.ShiftToSummonTimeline();
                 skipping = true;
             }
             PlayableDirector director;
@@ -676,7 +676,7 @@ namespace MDPro3
             var mono = director.AddComponent<DoWhenPlayableDirectorStop>();
             mono.action = () =>
             {
-                Program.I().ocgcore.startCard?.Invoke();
+                Program.instance.ocgcore.startCard?.Invoke();
                 Destroy(director);
             };
         }

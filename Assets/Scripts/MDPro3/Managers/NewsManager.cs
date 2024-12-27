@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
+using MDPro3.Utility;
 
 public class NewsManager : Manager
 {
@@ -15,11 +16,11 @@ public class NewsManager : Manager
     public Text newsText;
     public Text newsText2;
     public Text textCount;
+    public bool showing;
 
-    List<Texture2D> newsPics = new List<Texture2D>();
-    bool showing;
-    float width = 455f;
-    int maxLoad = 5;
+    private List<Texture2D> newsPics = new List<Texture2D>();
+    private float width = 455f;
+    private int maxLoad = 5;
 
     private void Start()
     {
@@ -32,7 +33,7 @@ public class NewsManager : Manager
     {
         if (!showing)
             return;
-        if (!Program.I().menu.isShowed)
+        if (!Program.instance.menu.showing)
             return;
         idleTime += Time.deltaTime;
         if (idleTime > 5f)
@@ -52,7 +53,6 @@ public class NewsManager : Manager
             return;
         var cg = GetComponent<CanvasGroup>();
         cg.alpha = 1.0f;
-        cg.interactable = true;
         cg.blocksRaycasts = true;
 
         showing = true;
@@ -70,7 +70,6 @@ public class NewsManager : Manager
     {
         var cg = GetComponent<CanvasGroup>();
         cg.alpha = 0f;
-        cg.interactable = false;
         cg.blocksRaycasts = false;
 
         showing = false;

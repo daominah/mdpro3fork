@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using UnityWebSocket;
 using Newtonsoft.Json.Linq;
 using System.IO;
+using MDPro3.Utility;
 
 namespace MDPro3.Net
 {
@@ -291,7 +292,7 @@ namespace MDPro3.Net
             try
             {
                 socket?.CloseAsync();
-                Program.I().online.ClearWatchList();
+                Program.instance.online.ClearWatchList();
             }
             catch { }
 
@@ -349,7 +350,7 @@ namespace MDPro3.Net
                 var roomInstance = room.ToObject<MyCardRoom>();
                 list.Add(roomInstance);
             }
-            Program.I().online.SetWatchRooms(list);
+            Program.instance.online.SetWatchRooms(list);
         }
         private static void HandleSingleRoom(JObject room)
         {
@@ -357,16 +358,16 @@ namespace MDPro3.Net
             switch(currentEventType)
             {
                 case "create":
-                    Program.I().online.CreateWatchRoom(roomInstance); 
+                    Program.instance.online.CreateWatchRoom(roomInstance); 
                     break;
                 case "update":
-                    Program.I().online.UpdateWatchRoom(roomInstance);
+                    Program.instance.online.UpdateWatchRoom(roomInstance);
                     break;
             }
         }
         private static void HandleDelete(string roomId)
         {
-            Program.I().online.DeleteWatchRoom(roomId);
+            Program.instance.online.DeleteWatchRoom(roomId);
         }
         #endregion
 

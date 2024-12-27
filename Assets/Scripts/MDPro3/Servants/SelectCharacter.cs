@@ -1,5 +1,4 @@
 using DG.Tweening;
-using KonamiCommonIAB;
 using MDPro3;
 using MDPro3.UI;
 using System;
@@ -8,38 +7,34 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.UI;
-using YgomSystem;
+using MDPro3.Utility;
+using UnityEngine.EventSystems;
 
 public class SelectCharacter : Servant
 {
-    public Text title;
-    public ButtonList defaultSeries;
-    public ButtonList defaultPlayer;
+    [Header("SelectCharacter")]
+    [SerializeField] private SelectionToggle_CharacterSeries defaultToggle;
 
-    public Text hoverName;
-    public TextMeshProUGUI detailName;
-    public TextMeshProUGUI detailDescription;
-    public Image detailImage;
-    public ScrollRect scrollRect;
-    public ButtonListManager buttonListManager;
+    [HideInInspector] public SelectionToggle_CharacterSeries lastSelectedToggle;
+    [HideInInspector] public SelectionToggle_CharacterItem lastSelectedCharacter;
 
-    public Characters characters;
-    GameObject characterItem;
     public static string player = "0";
-    string currentSerial = "00";
-    List<GameObject> targetItems = new List<GameObject>();
+    public Characters characters;
+    private GameObject characterItem;
+    private string currentSerial = "00";
+    private List<GameObject> targetItems = new List<GameObject>();
 
-    static List<GameObject> dm = new List<GameObject>();
-    static List<GameObject> gx = new List<GameObject>();
-    static List<GameObject> _5ds = new List<GameObject>();
-    static List<GameObject> dsod = new List<GameObject>();
-    static List<GameObject> zexal = new List<GameObject>();
-    static List<GameObject> arcv = new List<GameObject>();
-    static List<GameObject> vrains = new List<GameObject>();
-    static List<GameObject> sevens = new List<GameObject>();
-    static List<GameObject> npc = new List<GameObject>();
+    private static List<GameObject> dm = new();
+    private static List<GameObject> gx = new();
+    private static List<GameObject> _5ds = new();
+    private static List<GameObject> dsod = new();
+    private static List<GameObject> zexal = new();
+    private static List<GameObject> arcv = new();
+    private static List<GameObject> vrains = new();
+    private static List<GameObject> sevens = new();
+    private static List<GameObject> npc = new();
 
-    Dictionary<string, List<GameObject>> pools = new Dictionary<string, List<GameObject>>()
+    private Dictionary<string, List<GameObject>> pools = new()
     {
         { "00", dm},
         { "01", gx},
@@ -62,6 +57,7 @@ public class SelectCharacter : Servant
     public void SwitchCondition(Condition condition)
     {
         this.condition = condition;
+        var title = Manager.GetElement<TextMeshProUGUI>("Title");
         switch (condition)
         {
             case Condition.Duel:
@@ -79,10 +75,11 @@ public class SelectCharacter : Servant
         }
     }
 
+    #region Servant
     public override void Initialize()
     {
         depth = 2;
-        haveLine = false;
+        showLine = false;
         subBlackAlpha = 0.9f;
 
         base.Initialize();
@@ -92,40 +89,108 @@ public class SelectCharacter : Servant
         {
             characters = result.Result;
             LoadCharacters();
-            Program.I().setting.RefreshCharacterName();
+            Program.instance.setting.RefreshCharacterName();
         };
 
-        var handle2 = Addressables.LoadAssetAsync<GameObject>("CharacterItem");
+        var handle2 = Addressables.LoadAssetAsync<GameObject>("ItemCharacter");
         handle2.Completed += (result) =>
         {
             characterItem = result.Result;
         };
-
-        Program.onScreenChanged += RefreshItemsPosition;
     }
+    protected override void ApplyShowArrangement(int preDepth)
+    {
+        Manager.GetElement<SelectionToggle_CharacterPlayer>("PlayerToggle0").SetToggleOn();
+        base.ApplyShowArrangement(preDepth);
+    }
+    protected override void ApplyHideArrangement(int preDepth)
+    {
+        base.ApplyHideArrangement(preDepth);
+        DOTween.To(v => { }, 0, 0, transitionTime).OnComplete(() =>
+        {
+            foreach (var pool in pools)
+                foreach (var c in pool.Value)
+                    Destroy(c);
+            foreach (var pool in pools)
+                pool.Value.Clear();
+        });
+    }
+    public override void PerFrameFunction()
+    {
+        if(!showing) return;
+        if (!NeedResponseInput())
+            return;
+        if (UserInput.WasLeftShoulderPressed)
+            Manager.GetElement<SelectionToggle_CharacterPlayer>("PlayerToggle0").OnLeftSelection();
+        if (UserInput.WasRightShoulderPressed)
+            Manager.GetElement<SelectionToggle_CharacterPlayer>("PlayerToggle0").OnRightSelection();
+
+        if (UserInput.MouseRightDown || UserInput.WasCancelPressed)
+            OnReturn();
+    }
+    public override void SelectLastSelectable()
+    {
+        if (Selected != null)
+        {
+            if (Selected.TryGetComponent<SelectionToggle_CharacterItem>(out _))
+                EventSystem.current.SetSelectedGameObject(Selected.gameObject);
+            else if (Selected.TryGetComponent<SelectionToggle_CharacterSeries>(out _))
+                EventSystem.current.SetSelectedGameObject(Selected.gameObject);
+            else
+                EventSystem.current.SetSelectedGameObject(defaultToggle.gameObject);
+        }
+        else
+            EventSystem.current.SetSelectedGameObject(defaultToggle.gameObject);
+    }
+    public override void OnReturn()
+    {
+        if (inTransition) return;
+        if (returnAction != null)
+        {
+            returnAction.Invoke();
+            return;
+        }
+        AudioManager.PlaySE("SE_MENU_CANCEL");
+        GameObject selected = EventSystem.current.currentSelectedGameObject;
+
+        if (selected == null)
+            OnExit();
+        else if (Cursor.lockState == CursorLockMode.None)
+            OnExit();
+        else if (selected.TryGetComponent<SelectionToggle_CharacterItem>(out _))
+        {
+            if (lastSelectedToggle != null)
+                EventSystem.current.SetSelectedGameObject(lastSelectedToggle.gameObject);
+            else
+                EventSystem.current.SetSelectedGameObject(defaultToggle.gameObject);
+        }
+        else
+            OnExit();
+    }
+    public override void OnExit()
+    {
+        if (Program.instance.currentSubServant == this)
+            Program.instance.ShowSubServant(Program.instance.setting);
+        else
+            Program.instance.ShiftToServant(Program.instance.setting);
+    }
+    #endregion
+
     public void LoadCharacters()
     {
         characters.Initialize();
         characters.ChangeLanguage(Language.GetConfig());
     }
 
-    public override void OnExit()
-    {
-        if (Program.I().currentSubServant == this)
-            Program.I().ShowSubServant(Program.I().setting);
-        else
-            Program.I().ShiftToServant(Program.I().setting);
-    }
-
     public void SwitchPlayer(string player)
     {
         SelectCharacter.player = player;
-        if (!isShowed)
+        if (!showing)
             return;
 
         var configCharacter = Config.Get(condition + "Character" + player, VoiceHelper.defaultCharacter);
         var configSeries = characters.GetCharacterSeries(configCharacter);
-        buttonListManager.GetButtonListByName(configSeries[..2]).SelectThis();
+        Manager.GetElement<SelectionToggle_CharacterSeries>("Page" + configSeries).SetToggleOn();
     }
 
     public void ShowCharacters(string serial)
@@ -140,13 +205,13 @@ public class SelectCharacter : Servant
             if (pool.Key != currentSerial)
             {
                 foreach (var character in pool.Value)
-                    character.GetComponent<CharacterItem>().Hide();
+                    character.SetActive(false);
             }
             else
                 targetItems = pool.Value;
         }
 
-        if(targetItems.Count == 0)
+        if (targetItems.Count == 0)
         {
             var targetCharacters = characters.GetSeriesCharacters(currentSerial);
             int count = 0;
@@ -155,11 +220,11 @@ public class SelectCharacter : Servant
                 if (targetCharacters[i].notReady)
                     continue;
                 var item = Instantiate(characterItem);
-                var mono = item.GetComponent<CharacterItem>();
-                mono.id = count;
+                var mono = item.GetComponent<SelectionToggle_CharacterItem>();
+                mono.index = count;
                 mono.characterID = targetCharacters[i].id;
-                mono.Load();
-                item.transform.SetParent(scrollRect.content, false);
+                mono.Refresh();
+                item.transform.SetParent(Manager.GetElement<ScrollRect>("ScrollRect").content, false);
                 targetItems.Add(item);
                 count++;
             }
@@ -168,55 +233,38 @@ public class SelectCharacter : Servant
         foreach(var item in targetItems)
         {
             item.SetActive(true);
-            var mono = item.GetComponent<CharacterItem>();
-            mono.Show();
+            var mono = item.GetComponent<SelectionToggle_CharacterItem>();
             var config = Config.Get(condition + "Character" + player, VoiceHelper.defaultCharacter);
+
             if (mono.characterID == config)
-                mono.SelectThis();
+                mono.SetToggleOn();
         }
-        RefreshItemsPosition();
-        scrollRect.content.anchoredPosition = Vector2.zero;
     }
 
-    void RefreshItemsPosition()
+    public int GetCurrentSerialCount()
     {
-        var numOfEachLine = (int)(scrollRect.content.rect.width / 130);
-        if (numOfEachLine < 1)
-            numOfEachLine = 1;
+        if (characters == null || characterItem == null)
+            return 0;
 
-        foreach (var item in targetItems)
-        {
-            var mono = item.GetComponent<CharacterItem>();
-            item.GetComponent<RectTransform>().anchoredPosition = new Vector2(
-                (mono.id % numOfEachLine) * 130,
-                -(int)Math.Floor(mono.id / (float)numOfEachLine) * 150);
-        }
-        int lines = (int)Math.Ceiling(targetItems.Count / (float)numOfEachLine);
-        scrollRect.content.sizeDelta = new Vector2(scrollRect.content.sizeDelta.x, 150 * lines);
+        foreach (var pool in pools)
+            if (pool.Key == currentSerial)
+                return pool.Value.Count;
+
+        return 0;
     }
 
-    public override void Show(int preDepth)
+    public GameObject GetFirstActiveCharacterItem()
     {
-        base.Show(preDepth);
-        defaultPlayer.SelectThis();
+        var content = Manager.GetElement<ScrollRect>("ScrollRect").content;
+
+        for (int i = 0; i < content.childCount; i++)
+            if (content.GetChild(i).gameObject.activeSelf)
+                return content.GetChild(i).gameObject;
+        return null;
     }
 
-    public override void ApplyHideArrangement(int preDepth)
+    public void SetHoverText(string text)
     {
-        base.ApplyHideArrangement(preDepth);
-
-        DOTween.To(v => { }, 0, 0, transitionTime).OnComplete(() =>
-        {
-            foreach(var pool in pools)
-                foreach(var c in pool.Value)
-                    Destroy(c);
-            foreach (var pool in pools)
-                pool.Value.Clear();
-        });
-    }
-
-    public void SetHoverText(string hoverText)
-    {
-        hoverName.text = hoverText;
+        Manager.GetElement<TextMeshProUGUI>("HoverText").text = text;
     }
 }

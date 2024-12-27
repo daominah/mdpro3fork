@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 namespace MDPro3.UI
 {
-    public class PopupSelection : Popup
+    public class PopupSelection : PopupBase
     {
         [Header("Popup Select Reference")]
         public RectTransform backTop;
@@ -57,20 +57,23 @@ namespace MDPro3.UI
         void OnClick()
         {
             AudioManager.PlaySE("SE_MENU_DECIDE");
-            Hide();
             returnAction?.Invoke();
+            Hide();
         }
 
         public override void Hide()
         {
             if (shadow != null)
                 shadow.DOFade(0f, transitionTime);
-            var servant = Program.I().currentServant;
+            var servant = Program.instance.currentServant;
             window.DOAnchorPos(new Vector2(0f, -1100f), transitionTime).OnComplete(() =>
             {
                 Destroy(gameObject);
                 servant.returnAction = null;
                 closeAction?.Invoke();
+                Program.instance.ui_.currentPopup = lastPopup;
+                if (lastPopup == null && Cursor.lockState == CursorLockMode.Locked)
+                    Program.instance.currentServant.SelectLastSelectable();
             });
 
         }

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace MDPro3.UI
 {
-    public class PopupText : Popup
+    public class PopupText : PopupBase
     {
         [Header("Popup Select Reference")]
         public RectTransform backTop;

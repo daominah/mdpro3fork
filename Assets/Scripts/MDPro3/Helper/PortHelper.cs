@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+
+#if SUPPORT_WINDOWS_PORT
 using SFB;
+#endif
 
 namespace MDPro3
 {
@@ -29,8 +32,9 @@ namespace MDPro3
 #endif
         }
 
-        static void ChooseFiles()
+        private static void ChooseFiles()
         {
+#if SUPPORT_WINDOWS_PORT
             var extensions = new[]
             {
                 new ExtensionFilter(InterString.Get("所有文件"), "*"),
@@ -45,10 +49,13 @@ namespace MDPro3
             {
                 CopyFilesToGame(paths);
             });
+#endif
         }
 
-        static void ChooseBGPicture()
+        private static void ChooseBGPicture()
         {
+#if SUPPORT_WINDOWS_PORT
+
             var extensions = new[]
             {
                 new ExtensionFilter(InterString.Get("图片文件"), "png", "jpg")
@@ -57,9 +64,10 @@ namespace MDPro3
             {
                 CopyBGToGame(paths);
             });
+#endif
         }
 
-        static void CopyBGToGame(IEnumerable<string> files)
+        private static void CopyBGToGame(IEnumerable<string> files)
         {
             foreach (string path in files)
             {
@@ -67,15 +75,15 @@ namespace MDPro3
                     File.Delete(bgPath);
                 File.Copy(path, bgPath);
                 MessageManager.Cast(InterString.Get("导入背景图成功。"));
-                Program.I().background_.Refresh();
+                Program.instance.background_.Refresh();
             }
         }
-        static void MovePictureToGameBG(string file)
+        private static void MovePictureToGameBG(string file)
         {
             CopyBGToGame(new List<string> { file });
         }
 
-        static void CopyFilesToGame(IEnumerable<string> files)
+        private static void CopyFilesToGame(IEnumerable<string> files)
         {
             bool newDataAdded = false;
             foreach (string path in files)
@@ -113,10 +121,10 @@ namespace MDPro3
                 catch { }
             }
             if (newDataAdded)
-                Program.I().InitializeForDataChange();
+                Program.instance.InitializeForDataChange();
         }
 
-        static void MoveFilesToGame(string[] files)
+        private static void MoveFilesToGame(string[] files)
         {
             bool newDataAdded = false;
             foreach (string path in files)
@@ -138,10 +146,10 @@ namespace MDPro3
                 catch { }
             }
             if (newDataAdded)
-                Program.I().InitializeForDataChange();
+                Program.instance.InitializeForDataChange();
         }
 
-        static void ExportResult(bool sucess)
+        private static void ExportResult(bool sucess)
         {
             if (sucess)
             {
@@ -176,13 +184,13 @@ namespace MDPro3
             Export(filePaths, false);
         }
 
-        static void Export(string[] filePaths, bool copy = true)
+        private static void Export(string[] filePaths, bool copy = true)
         {
 #if UNITY_ANDROID && !UNITY_EDITOR
             NativeFilePicker.ExportMultipleFiles(filePaths, ExportResult);
             if(!copy)
                 filesToDelete = filePaths.ToList();
-#else
+#elif SUPPORT_WINDOWS_PORT
             StandaloneFileBrowser.OpenFolderPanelAsync(InterString.Get("请选择导出目录"), "", false, (string[] paths) =>
             {
                 ExportFiles(paths, filePaths, copy);

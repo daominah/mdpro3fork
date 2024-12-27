@@ -5,7 +5,7 @@ namespace MDPro3.UI
         public override void SelectThis()
         {
             base.SelectThis();
-            Program.I().character.SwitchPlayer(gameObject.name);
+            Program.instance.character.SwitchPlayer(gameObject.name);
         }
     }
 }

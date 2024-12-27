@@ -7,7 +7,7 @@ using MDPro3.YGOSharp;
 
 namespace MDPro3.UI
 {
-    public class PopupSearchFilter : Popup
+    public class PopupSearchFilter : PopupBase
     {
         [Header("Popup Search Filter")]
         public Button btnReset;
@@ -25,7 +25,7 @@ namespace MDPro3.UI
 
         private void Start()
         {
-            var f = Program.I().editDeck.filters;
+            var f = Program.instance.editDeck.filters;
             if (f.Count > 0)
             {
                 foreach (var toggle in transform.GetComponentsInChildren<ToggleForSearchFilter>())
@@ -81,7 +81,7 @@ namespace MDPro3.UI
         public override void Initialize()
         {
             base.Initialize();
-            Program.I().currentServant.returnAction = OnCancel;
+            Program.instance.currentServant.returnAction = OnCancel;
         }
         public override void Show()
         {
@@ -230,18 +230,18 @@ namespace MDPro3.UI
                 dirty = true;
             if (dirty)
             {
-                Program.I().editDeck.FilterButtonSwitch(true);
-                Program.I().editDeck.filters = filters;
+                Program.instance.editDeck.FilterButtonSwitch(true);
+                Program.instance.editDeck.filters = filters;
                 EditDeck.pack = btnPack.GetComponent<ButtonPress>().text.text == InterString.Get("所有卡包") ?
                     string.Empty : btnPack.GetComponent<ButtonPress>().text.text;
             }
             else
             {
-                Program.I().editDeck.FilterButtonSwitch(false);
-                Program.I().editDeck.filters.Clear();
+                Program.instance.editDeck.FilterButtonSwitch(false);
+                Program.instance.editDeck.filters.Clear();
                 EditDeck.pack = string.Empty;
             }
-            Program.I().editDeck.OnClickSearch();
+            Program.instance.editDeck.OnClickSearch();
         }
         public override void Hide()
         {
@@ -275,7 +275,11 @@ namespace MDPro3.UI
 
         public void OnPack()
         {
-            var selections = new List<string>() { InterString.Get("卡包") };
+            var selections = new List<string>() 
+            { 
+                InterString.Get("卡包"),
+                string.Empty
+            };
             foreach (var pack in PacksManager.packs)
                 selections.Add(pack.fullName);
             UIManager.ShowPopupSelection(selections, OnPackSelect, OnPackClose);
@@ -284,12 +288,12 @@ namespace MDPro3.UI
         void OnPackSelect()
         {
             string selected = UnityEngine.EventSystems.EventSystem.current.
-                currentSelectedGameObject.transform.GetChild(0).GetComponent<Text>().text;
+                currentSelectedGameObject.GetComponent<SelectionButton>().GetButtonText();
             btnPack.GetComponent<ButtonPress>().text.text = selected;
         }
         void OnPackClose()
         {
-            Program.I().currentServant.returnAction = Hide;
+            Program.instance.currentServant.returnAction = Hide;
         }
 
         private void Update()

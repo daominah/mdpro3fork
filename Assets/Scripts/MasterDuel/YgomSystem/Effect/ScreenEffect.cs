@@ -36,16 +36,16 @@ namespace YgomSystem.Effect
                 if (cameraViewType == ViewType.View3D)
 				{
 					if(cameraAngle == Vector3.zero)
-                        return Program.I().camera_.cameraDuelOverlayEffect3D;
+                        return Program.instance.camera_.cameraDuelOverlayEffect3D;
                     else
-                        return Program.I().camera_.cameraDuelOverlay3D;
+                        return Program.instance.camera_.cameraDuelOverlay3D;
                 }
                 else
 				{
                     if (overUI)
-                        return Program.I().camera_.cameraDuelOverlayEffect2D;
+                        return Program.instance.camera_.cameraDuelOverlayEffect2D;
 					else
-                        return Program.I().camera_.cameraDuelOverlay2D;
+                        return Program.instance.camera_.cameraDuelOverlay2D;
                 }
             }
 			//[CompilerGenerated]
@@ -69,22 +69,22 @@ namespace YgomSystem.Effect
                 overUI = false;
             }
 
-            if (targetCamera == Program.I().camera_.cameraDuelOverlayEffect2D)
+            if (targetCamera == Program.instance.camera_.cameraDuelOverlayEffect2D)
 			{
                 CameraManager.DuelOverlayEffect2DPlus();
 				SetupLayer("DuelOverlayEffect2D");
             }
-            else if (targetCamera == Program.I().camera_.cameraDuelOverlay2D)
+            else if (targetCamera == Program.instance.camera_.cameraDuelOverlay2D)
 			{
                 CameraManager.DuelOverlay2DPlus();
                 SetupLayer("DuelOverlay2D");
             }
-            else if (targetCamera == Program.I().camera_.cameraDuelOverlayEffect3D)
+            else if (targetCamera == Program.instance.camera_.cameraDuelOverlayEffect3D)
 			{
                 CameraManager.DuelOverlayEffect3DPlus();
                 SetupLayer("DuelOverlayEffect3D");
             }
-            else if (targetCamera == Program.I().camera_.cameraDuelOverlay3D)
+            else if (targetCamera == Program.instance.camera_.cameraDuelOverlay3D)
 			{
                 CameraManager.DuelOverlay3DPlus();
                 SetupLayer("DuelOverlay3D");
@@ -94,7 +94,7 @@ namespace YgomSystem.Effect
 
         public void SetupCamera(Camera target)
 		{
-            if (target == Program.I().camera_.cameraDuelOverlay3D && CameraManager.overlaySticking)
+            if (target == Program.instance.camera_.cameraDuelOverlay3D && CameraManager.overlaySticking)
                 return;
 			target.transform.localPosition = cameraPosition;
 			target.transform.localEulerAngles = cameraAngle;
@@ -130,19 +130,19 @@ namespace YgomSystem.Effect
 
         private void OnDisable()
         {
-            if (targetCamera == Program.I().camera_.cameraDuelOverlayEffect2D)
+            if (targetCamera == Program.instance.camera_.cameraDuelOverlayEffect2D)
             {
                 CameraManager.DuelOverlayEffect2DMinus();
             }
-            else if (targetCamera == Program.I().camera_.cameraDuelOverlay2D)
+            else if (targetCamera == Program.instance.camera_.cameraDuelOverlay2D)
             {
                 CameraManager.DuelOverlay2DMinus();
             }
-            else if (targetCamera == Program.I().camera_.cameraDuelOverlayEffect3D)
+            else if (targetCamera == Program.instance.camera_.cameraDuelOverlayEffect3D)
             {
                 CameraManager.DuelOverlayEffect3DMinus();
             }
-            else if (targetCamera == Program.I().camera_.cameraDuelOverlay3D)
+            else if (targetCamera == Program.instance.camera_.cameraDuelOverlay3D)
             {
                 CameraManager.DuelOverlay3DMinus();
             }

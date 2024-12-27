@@ -62,6 +62,9 @@ namespace MDPro3
         public static string nextMuteSE;
         public static void PlaySE(string path, float volumeScale = 1)
         {
+            if (se == null)
+                return;
+
             if (string.IsNullOrEmpty(path))
                 return;
             if (path == nextMuteSE)
@@ -78,7 +81,8 @@ namespace MDPro3
             var handle = Addressables.LoadAssetAsync<AudioClip>(path);
             handle.Completed += (result) =>
             {
-                se.PlayOneShot(result.Result, volumeScale);
+                if(result.Result != null)
+                    se.PlayOneShot(result.Result, volumeScale);
             };
         }
 
@@ -209,6 +213,10 @@ namespace MDPro3
             new BgmLoop{name = "BGM_DUEL_EX_03_KEYCARD", startTime = 12.463f, endTime = 60 + 46.098f },
             new BgmLoop{name = "BGM_DUEL_EX_03_CLIMAX", startTime = 1.815f, endTime = 120 + 8.792f },
             new BgmLoop{name = "BGM_OUT_TUTORIAL_2", startTime = 7.480f, endTime = 60 + 22.480f },
+            new BgmLoop{name = "BGM_DUEL_F01_ALL", startTime = 24.219f, endTime = 120 + 42.886f },
+            new BgmLoop{name = "BGM_DUEL_F02_PHASE_A", startTime = 13.603f, endTime = 60 + 43.324f },
+            new BgmLoop{name = "BGM_DUEL_F02_PHASE_B", startTime = 14.818f, endTime = 120 + 2.645f },
+
         };
 
 
@@ -318,7 +326,7 @@ namespace MDPro3
             var handle = Addressables.LoadAssetAsync<AudioClip>(path);
             handle.Completed += (result) =>
             {
-                var volume = Program.I().setting.bgmVol.value * currentBGMScale;
+                var volume = Program.instance.setting.GetBGMVolum() * currentBGMScale;
                 DOTween.To(() => volume, x => bgm.volume = x, 0, 0.2f).OnComplete(() =>
                 {
                     SetCurrentBGM(path, result.Result.length);

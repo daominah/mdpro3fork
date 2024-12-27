@@ -91,7 +91,7 @@ namespace MDPro3.UI
                     positionAttack.texture = task.Result;
                 }
                 else
-                    positionAttack.material = Program.I().ocgcore.myProtector;
+                    positionAttack.material = Program.instance.ocgcore.myProtector;
             }
             if (positionDefense != null)
             {
@@ -99,7 +99,7 @@ namespace MDPro3.UI
                 positionDefense.texture = task.Result;
             }
             if (positionDefenseDown != null)
-                positionDefenseDown.material = Program.I().ocgcore.myProtector;
+                positionDefenseDown.material = Program.instance.ocgcore.myProtector;
         }
 
         void OnAttack()
@@ -107,28 +107,28 @@ namespace MDPro3.UI
             Hide();
             var p = new BinaryMaster();
             p.writer.Write(1);
-            Program.I().ocgcore.SendReturn(p.Get());
+            Program.instance.ocgcore.SendReturn(p.Get());
         }
         void OnAttackDown()
         {
             Hide();
             var p = new BinaryMaster();
             p.writer.Write(2);
-            Program.I().ocgcore.SendReturn(p.Get());
+            Program.instance.ocgcore.SendReturn(p.Get());
         }
         void OnDefense()
         {
             Hide();
             var p = new BinaryMaster();
             p.writer.Write(4);
-            Program.I().ocgcore.SendReturn(p.Get());
+            Program.instance.ocgcore.SendReturn(p.Get());
         }
         void OnDefenseDown()
         {
             Hide();
             var p = new BinaryMaster();
             p.writer.Write(8);
-            Program.I().ocgcore.SendReturn(p.Get());
+            Program.instance.ocgcore.SendReturn(p.Get());
         }
     }
 }

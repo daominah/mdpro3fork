@@ -159,7 +159,7 @@ namespace MDPro3.Duel
 
         public void LogMessage(Package p)
         {
-            var core = Program.I().ocgcore;
+            var core = Program.instance.ocgcore;
 
             var r = p.Data.reader;
             r.BaseStream.Seek(0, 0);
@@ -206,17 +206,17 @@ namespace MDPro3.Duel
                     if ((from.location & (uint)CardLocation.Hand) > 0
                         && (to.location & (uint)CardLocation.SpellZone) > 0
                         && (to.position & (uint)CardPosition.FaceUp) > 0
-                        && (data.Type & (uint)CardType.Monster) == 0)
+                        && !data.HasType(CardType.Monster))
                         break;
                     if ((from.location & (uint)CardLocation.Hand) > 0
                         && (to.location & (uint)CardLocation.SpellZone) > 0
                         && (to.position & (uint)CardPosition.FaceUp) > 0
-                        && (data.Type & (uint)CardType.Pendulum) > 0
+                        && data.HasType(CardType.Pendulum)
                         && (to.sequence == 0 || to.sequence == 4 || to.sequence == 6 || to.sequence == 7))//TODO
                         break;
                     if ((from.location & (uint)CardLocation.SpellZone) > 0
                         && (to.location & (uint)CardLocation.SpellZone) == 0
-                        && (data.Type & (uint)CardType.Monster) == 0
+                        && !data.HasType(CardType.Monster)
                         && (lastMoveReason & (uint)CardReason.RULE) > 0)
                         break;
                     if ((from.location & (uint)CardLocation.Overlay) > 0
@@ -267,7 +267,7 @@ namespace MDPro3.Duel
                     else
                         textReason = InterString.Get("送至");
 
-                    if ((data.Type & (uint)CardType.Token) == 0)
+                    if (!data.HasType(CardType.Token))
                         AddSingleCardMessageToLog(data.Id, from, to, textReason, indent);
                     else
                         AddSingleCardMessageToLog(data.Id, from, null, textReason, indent);
@@ -308,7 +308,7 @@ namespace MDPro3.Duel
                         textReason = InterString.Get("反转召唤");
                     else
                         textReason = InterString.Get("送至");
-                    if ((data.Type & (uint)CardType.Token) == 0)
+                    if (!data.HasType(CardType.Token))
                         AddSingleCardMessageToLog(code, card.cacheP, gps, textReason);
                     else
                         AddSingleCardMessageToLog(code, gps, null, textReason);
@@ -345,7 +345,7 @@ namespace MDPro3.Duel
                         item.transform.GetChild(1).GetChild(0).GetComponent<Text>().color =
                             card.p.controller == 0 ? DuelLog.myChainColor : DuelLog.opChainColor;
                         item.transform.GetChild(2).GetComponent<Text>().text = InterString.Get("连锁");
-                        StartCoroutine(Program.I().texture_.LoadCardToRawImageWithoutMaterialAsync(
+                        StartCoroutine(Program.instance.texture_.LoadCardToRawImageWithoutMaterialAsync(
                             item.transform.GetChild(3).GetComponent<RawImage>(), code));
                         AddLog(item);
                     }
@@ -353,7 +353,7 @@ namespace MDPro3.Duel
                     if (card.cacheP != null && (card.cacheP.location & (uint)CardLocation.Hand) > 0
                         && (gps.location & (uint)CardLocation.SpellZone) > 0
                         && (gps.position & (uint)CardPosition.FaceUp) > 0
-                        && (data.Type & (uint)CardType.Pendulum) > 0
+                        && data.HasType(CardType.Pendulum)
                         && (gps.sequence == 0 || gps.sequence == 4 || gps.sequence == 6 || gps.sequence == 7)
                         && card == core.lastMoveCard
                         && card != core.lastConfirmedCard)
@@ -584,7 +584,7 @@ namespace MDPro3.Duel
                     item.transform.GetChild(1).GetChild(0).GetComponent<Text>().color =
                         card.p.controller == 0 ? DuelLog.myChainColor : DuelLog.opChainColor;
                     item.transform.GetChild(2).GetComponent<Text>().text = InterString.Get("效果处理");
-                    StartCoroutine(Program.I().texture_.LoadCardToRawImageWithoutMaterialAsync(
+                    StartCoroutine(Program.instance.texture_.LoadCardToRawImageWithoutMaterialAsync(
                         item.transform.GetChild(3).GetComponent<RawImage>(), card.GetData().Id));
                     AddLog(item);
                     break;
@@ -613,7 +613,7 @@ namespace MDPro3.Duel
                     item.transform.GetChild(2).GetComponent<Text>().text = InterString.Get("攻击");
                     var cardFace1 = item.transform.GetChild(3).GetComponent<RawImage>();
                     code = attackCard.GetData().Id;
-                    StartCoroutine(Program.I().texture_.LoadCardToRawImageWithoutMaterialAsync(cardFace1, code, true));
+                    StartCoroutine(Program.instance.texture_.LoadCardToRawImageWithoutMaterialAsync(cardFace1, code, true));
                     if ((from.position & (uint)CardPosition.Defence) > 0)
                         cardFace1.transform.localEulerAngles = new Vector3(0f, 0f, 90f);
                     cardFace1.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(() =>
@@ -642,7 +642,7 @@ namespace MDPro3.Duel
                         var cardFace2 = item.transform.GetChild(7).GetComponent<RawImage>();
                         code2 = attackedCard.GetData().Id;
                         if (code2 > 0)
-                            StartCoroutine(Program.I().texture_.LoadCardToRawImageWithoutMaterialAsync(cardFace2, code2, true));
+                            StartCoroutine(Program.instance.texture_.LoadCardToRawImageWithoutMaterialAsync(cardFace2, code2, true));
                         else
                         {
                             cardFace2.texture = null;
@@ -725,7 +725,7 @@ namespace MDPro3.Duel
                         {
                             code = core.Es_selectMSGHintData;
                             cardFace = item.transform.GetChild(2).GetComponent<RawImage>();
-                            StartCoroutine(Program.I().texture_.LoadCardToRawImageWithoutMaterialAsync(cardFace, code, true));
+                            StartCoroutine(Program.instance.texture_.LoadCardToRawImageWithoutMaterialAsync(cardFace, code, true));
                             item.transform.GetChild(0).GetComponent<Button>().onClick.AddListener(() =>
                             {
                                 core.description.Show(null, null, code, new GPS());
@@ -754,7 +754,7 @@ namespace MDPro3.Duel
                     item.transform.GetChild(1).GetComponent<Image>().color = targetColor;
                     item.transform.GetChild(2).GetComponent<Text>().text = card.GetData().Name;
                     cardFace = item.transform.GetChild(3).GetComponent<RawImage>();
-                    StartCoroutine(Program.I().texture_.LoadCardToRawImageWithoutMaterialAsync(cardFace, card.GetData().Id, true));
+                    StartCoroutine(Program.instance.texture_.LoadCardToRawImageWithoutMaterialAsync(cardFace, card.GetData().Id, true));
                     cardFace.transform.GetChild(0).GetComponent<Button>().onClick.AddListener(() =>
                     {
                         core.description.Show(null, null, code, gps);
@@ -797,7 +797,7 @@ namespace MDPro3.Duel
 
         void AddSingleCardMessageToLog(int code, GPS from, GPS to, string reason, bool indent = false)
         {
-            var core = Program.I().ocgcore;
+            var core = Program.instance.ocgcore;
 
             var item = Instantiate(code > 0 ? core.container.duelLogSingleCard : core.container.duelLogSingleCard2);
             Color targetColor;
@@ -815,7 +815,7 @@ namespace MDPro3.Duel
 
             var cardFace = item.transform.GetChild(4).GetComponent<RawImage>();
             if (code > 0)
-                StartCoroutine(Program.I().texture_.LoadCardToRawImageWithoutMaterialAsync(cardFace, code, true));
+                StartCoroutine(Program.instance.texture_.LoadCardToRawImageWithoutMaterialAsync(cardFace, code, true));
             else
             {
                 cardFace.texture = null;
@@ -900,7 +900,7 @@ namespace MDPro3.Duel
 
         void AddLpPChangeMessageToLog(int player, string reason, int value, bool red = true, bool indent = false)
         {
-            var core = Program.I().ocgcore;
+            var core = Program.instance.ocgcore;
 
             var item = Instantiate(core.container.duelLogLpChange);
             var targetColor = player == 0 ? DuelLog.myColor : DuelLog.opColor;

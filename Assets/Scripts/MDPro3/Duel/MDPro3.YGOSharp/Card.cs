@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using MDPro3.Utility;
 using MDPro3.YGOSharp.OCGWrapper.Enums;
 
 namespace MDPro3.YGOSharp
@@ -38,6 +39,15 @@ namespace MDPro3.YGOSharp
         public int year = 0;
         public int month = 0;
         public int day = 0;
+        public bool isPre = false;
+
+        public Card()
+        {
+            Id = 0;
+            Str = new string[16];
+            Name = CardsManager.nullName;
+            Desc = CardsManager.nullString;
+        }
 
         public Card Clone()
         {
@@ -61,7 +71,7 @@ namespace MDPro3.YGOSharp
             r.Name = Name;
             r.Desc = Desc;
             r.Str = new string[Str.Length];
-            
+            r.isPre = isPre;
 
             for (int ii = 0; ii < Str.Length; ii++)
             {
@@ -90,7 +100,7 @@ namespace MDPro3.YGOSharp
             r.Name = Name;
             r.Desc = Desc;
             r.Str = new string[Str.Length];
-
+            r.isPre = isPre;
 
             for (int ii = 0; ii < Str.Length; ii++)
             {
@@ -116,6 +126,15 @@ namespace MDPro3.YGOSharp
         public bool IsExtraCard()
         {
             return (HasType(CardType.Fusion) || HasType(CardType.Synchro) || HasType(CardType.Xyz) || HasType(CardType.Link));
+        }
+
+        public int GetLinkCount()
+        {
+            int returnValue = 0;
+            for (int i = 0; i < 9; i++)
+                if (((LinkMarker >> i) & 1u) > 0 && i != 4)
+                    returnValue++;
+            return returnValue;
         }
 
         internal Card(IDataRecord reader)
@@ -147,12 +166,149 @@ namespace MDPro3.YGOSharp
             }
         }
 
-        public Card()
+        public enum LevelType
         {
-            Id = 0;
-            Str = new string[16];
-            Name = CardsManager.nullName;
-            Desc = CardsManager.nullString;
+            Level,
+            Rank,
+            Link
+        }
+
+        public LevelType GetLevelType()
+        {
+            if (HasType(CardType.Link))
+                return LevelType.Link;
+            else if (HasType(CardType.Xyz))
+                return LevelType.Rank;
+            else
+                return LevelType.Level;
+        }
+
+        public string GetAttackString()
+        {
+            return Attack == -2 ? "?" : Attack.ToString();
+        }
+
+        public string GetDefenseString()
+        {
+            return Defense == -2 ? "?" : Defense.ToString();
+        }
+
+        public string GetDescription(bool withSetName = false)
+        {
+            if (HasType(CardType.Pendulum))
+            {
+                var texts = GetDescriptionSplit();
+                string monster = InterString.Get("【怪兽效果】");
+                if (!HasType(CardType.Effect))
+                    monster = InterString.Get("【怪兽描述】");
+
+                return (withSetName ? GetSetName() : string.Empty) + InterString.Get("【灵摆效果】") + "\n" + texts[0] + "\n" + monster + "\n" + texts[1];
+            }
+            else
+                return (withSetName ? GetSetName() : string.Empty) + Desc;
+        }
+
+        public string GetMonsterDescription(bool render = false)
+        {
+            if (HasType(CardType.Pendulum))
+                return GetDescriptionSplit(render)[1];
+            else
+                return Desc;
+        }
+
+        public string GetPendulumDescription(bool render = false)
+        {
+            if (HasType(CardType.Pendulum))
+                return GetDescriptionSplit(render)[0];
+            else
+                return string.Empty;
+        }
+
+        /// <summary>
+        /// 仅在卡片是灵摆卡时使用
+        /// </summary>
+        /// <param name="render"></param>
+        /// <returns></returns>
+        private string[] GetDescriptionSplit(bool render = false)
+        {
+            var returnValue = new string[2];
+            returnValue[0] = string.Empty;
+            returnValue[1] = string.Empty;
+            var lines = Desc.Replace("\r", "").Split('\n');
+            var language = render ? Language.GetCardConfig() : Language.GetConfig();
+
+            int beforePendulum = 1;
+            int splitLines = 1;
+            string symbol = "【";
+            int monsterStart = 0;
+
+            if (language == Language.English)
+            {
+                beforePendulum = 2;
+                splitLines = 2;
+                symbol = "[";
+            }
+            else if (language == Language.Spanish)
+            {
+                beforePendulum = 2;
+                splitLines = 2;
+            }
+            else if (language == Language.TraditionalChinese)
+            {
+                beforePendulum = 0;
+            }
+
+            for (int i = beforePendulum; i < lines.Length; i++)
+                if (lines[i].StartsWith(symbol))
+                {
+                    monsterStart = i;
+                    break;
+                }
+
+            for (int i = beforePendulum; i < lines.Length; i++)
+            {
+                if (i <= monsterStart - splitLines)
+                {
+                    if (monsterStart - i == splitLines)
+                        returnValue[0] += lines[i];
+                    else
+                        returnValue[0] += lines[i] + "\r\n";
+                }
+                else if (i > monsterStart)
+                {
+                    if (i == lines.Length - 1)
+                        returnValue[1] += lines[i];
+                    else
+                        returnValue[1] += lines[i] + "\r\n";
+                }
+            }
+            if (language == Language.Spanish)
+                returnValue[0] = returnValue[0].Replace("-n/a-", string.Empty);
+            return returnValue;
+        }
+
+        public string GetSetName()
+        {
+            var returnValue = StringHelper.GetSetName(Setcode, true);
+            if (returnValue.Length > 0)
+            {
+                returnValue = "<color=#FFF000>" +
+                    StringHelper.GetUnsafe(1329) + returnValue + "</color>" + "\r\n";
+            }
+            return returnValue;
+        }
+
+        public bool IsSameCard(Card data)
+        {
+            return GetOriginalID() == data.GetOriginalID();
+        }
+
+        public int GetOriginalID()
+        {
+            if(Alias == 0)
+                return Id;
+            else
+                return Alias;
         }
     }
 }

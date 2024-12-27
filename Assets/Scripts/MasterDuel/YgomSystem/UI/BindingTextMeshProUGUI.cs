@@ -2,8 +2,8 @@ using TMPro;
 
 namespace YgomSystem.UI
 {
-	public class BindingTextMeshProUGUI// : BindingTextBase<BindingTextMeshProUGUI, TextMeshProUGUI>
-	{
+	public class BindingTextMeshProUGUI : TextMeshProUGUI// : BindingTextBase<BindingTextMeshProUGUI, TextMeshProUGUI>
+    {
 		//protected override string GetText(TextMeshProUGUI target)
 		//{
 		//	return null;

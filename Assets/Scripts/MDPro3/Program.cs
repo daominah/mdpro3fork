@@ -7,14 +7,18 @@ using MDPro3.YGOSharp;
 using UnityEngine.EventSystems;
 using UnityEngine.AddressableAssets;
 using MDPro3.Net;
-using UnityEngine.InputSystem;
-using System.Threading;
-using System.Threading.Tasks;
+using MDPro3.UI;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 namespace MDPro3
 {
     public class Program : MonoBehaviour
     {
+        public bool controlBool;
+        public bool controlBool2;
+
         [Header("Public References")]
         public Transform container_3D;
         public Transform container_2D;
@@ -45,7 +49,17 @@ namespace MDPro3
         public OcgCore ocgcore;
         public Room room;
         public EditDeck editDeck;
+        public DeckEditor deckEditor;
         public OnlineDeckViewer onlineDeckViewer;
+
+        [Header("SidePanels")]
+
+        [HideInInspector]
+        public Servant currentServant;
+        [HideInInspector]
+        public Servant currentSubServant;
+        [HideInInspector]
+        public int depth;
 
         #region Const
         public static bool Running = true;
@@ -72,18 +86,18 @@ namespace MDPro3
 
         #region Initializement
 
-        private static Program instance;
+        public static Program instance;
         public static Items items;
 
         List<Manager> managers = new List<Manager>();
         List<Servant> servants = new List<Servant>();
 
-        public static Program I()
-        {
-            return instance;
-        }
         void Initialize()
         {
+            if (!Directory.Exists(dataPath))
+                Directory.CreateDirectory(dataPath);
+            Config.Initialize(configPath);
+
             Screen.sleepTimeout = SleepTimeout.NeverSleep;
             if (items != null)
                 InitializeRest();
@@ -101,9 +115,6 @@ namespace MDPro3
         void InitializeRest()
         {
             ZipHelper.Initialize();
-            if (!Directory.Exists(dataPath))
-                Directory.CreateDirectory(dataPath);
-            Config.Initialize(configPath);
             items.Initialize();
             BanlistManager.Initialize();
             InitializeAllManagers();
@@ -117,7 +128,7 @@ namespace MDPro3
         void ReadParams()
         {
             var args = Environment.GetCommandLineArgs();
-            //args = new string[11]
+            //args = new string[2]
             //{
             //    //"-r",
             //    //"TURN023"
@@ -128,16 +139,16 @@ namespace MDPro3
             //    "-d",
             //    "LLÌúÊÞ",
 
-            //    "-n",
-            //    "³à×ÓÄÎÂä",
+            //    //"-n",
+            //    //"³à×ÓÄÎÂä",
 
-            //    "-h",
-            //    "mygo.superpre.pro",
-            //    "-p",
-            //    "888",
-            //    "-w",
-            //    "M#1008611",
-            //    "-j"
+            //    //"-h",
+            //    //"mygo.superpre.pro",
+            //    //"-p",
+            //    //"888",
+            //    //"-w",
+            //    //"M#1008611",
+            //    //"-j"
             //};
 
             string nick = null;
@@ -187,7 +198,7 @@ namespace MDPro3
             {
                 Config.Set("DeckInUse", deck);
                 editDeck.SwitchCondition(EditDeck.Condition.EditDeck);
-                StartCoroutine(ShiftToServantAsync(editDeck));
+                ShiftToServant(editDeck);
                 exitOnReturn = true;
             }
             else if (replay != null)
@@ -239,6 +250,7 @@ namespace MDPro3
             servants.Add(ocgcore);
             servants.Add(room);
             servants.Add(editDeck);
+            servants.Add(deckEditor);
             servants.Add(onlineDeckViewer);
             foreach (Servant servant in servants)
                 servant.Initialize();
@@ -258,14 +270,10 @@ namespace MDPro3
 #if UNITY_ANDROID
             root = rootAndroid;
 #endif
-
             instance = this;
             Initialize();
         }
 
-        static int preWidth;
-        static int preHeight;
-        public static GameObject hoverObject;
         public float timeScale
         {
             get 
@@ -283,57 +291,13 @@ namespace MDPro3
         public float timeScaleForEdit = 1;
 #endif
 
-        public static bool InputGetMouse0;
-        public static bool InputGetMouse0Down;
-        public static bool InputGetMouse0Up;
-        public static bool InputGetMouse1;
-        public static bool InputGetMouse1Down;
-        public static bool InputGetMouse1Up;
-
-        public static bool returnClicked;
-
         void Update()
         {
-            #region Input
-            InputGetMouse0 = Input.GetMouseButton(0);
-            InputGetMouse0Down = Input.GetMouseButtonDown(0);
-            InputGetMouse0Up = Input.GetMouseButtonUp(0);
-            InputGetMouse1 = Input.GetMouseButton(1);
-            InputGetMouse1Down = Input.GetMouseButtonDown(1);
-            InputGetMouse1Up = Input.GetMouseButtonUp(1);
-
-            returnClicked = false;
-            if (Mouse.current != null && Mouse.current.rightButton.wasReleasedThisFrame
-                || Input.GetKeyUp(KeyCode.Escape)
-                || Gamepad.current != null && Gamepad.current.bButton.wasReleasedThisFrame
-                )
-                returnClicked = true;
-
-            #endregion
-
-            hoverObject = null;
-            if (camera_.cameraMain.gameObject.activeInHierarchy
-                && !(EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
-                )
-            {
-                Ray ray = camera_.cameraMain.ScreenPointToRay(Input.mousePosition);
-                RaycastHit hit;
-                if (Physics.Raycast(ray, out hit))
-                    hoverObject = hit.collider.gameObject;
-            }
-
-
-            if (Screen.width != preWidth || Screen.height != preHeight)
-                OnResize();
-
             TcpHelper.PerFrameFunction();
             foreach (Manager manager in managers) 
                 manager.PerFrameFunction();
             foreach (Servant servant in servants) 
                 servant.PerFrameFunction();
-
-
-
 
 #if UNITY_EDITOR
             timeScale = timeScaleForEdit;
@@ -354,19 +318,8 @@ namespace MDPro3
             var unload = Resources.UnloadUnusedAssets();
             while (!unload.isDone)
                 yield return null;
-            //GC.Collect();
             gc = null;
         }
-
-        public delegate void OnScreenChanged();
-        public static OnScreenChanged onScreenChanged;
-        static void OnResize()
-        {
-            preWidth = Screen.width;
-            preHeight = Screen.height;
-            onScreenChanged.Invoke();
-        }
-
 
         public static bool noAccess = false;
 
@@ -378,12 +331,6 @@ namespace MDPro3
             return (int)(Time.time * 1000f);
         }
 
-        [HideInInspector]
-        public Servant currentServant;
-        [HideInInspector]
-        public Servant currentSubServant;
-        [HideInInspector]
-        public int depth;
         public void ShiftToServant(Servant servant)
         {
             currentServant = servant;
@@ -394,12 +341,6 @@ namespace MDPro3
                 if (ser == servant)
                     ser.Show(depth);
             depth = servant.depth;
-        }
-        IEnumerator ShiftToServantAsync(Servant servant)
-        {
-            while(!servant.initialized)
-                yield return null;
-            ShiftToServant(servant);
         }
         public void ShowSubServant(Servant servant)
         {
@@ -425,7 +366,7 @@ namespace MDPro3
                 if(currentServant == null)
                 {
                     foreach(var servant in  servants)
-                        if (servant.isShowed)
+                        if (servant.showing)
                         {
                             currentServant = servant;
                             break;
@@ -434,7 +375,7 @@ namespace MDPro3
                 if (currentServant == null)
                 {
                     foreach (var servant in servants)
-                        if (servant.isShowed)
+                        if (servant.showing)
                         {
                             currentServant = servant;
                             break;
@@ -454,6 +395,7 @@ namespace MDPro3
 
         #endregion
 
+        #region System
         private void OnApplicationQuit()
         {
             Running = false;
@@ -470,30 +412,28 @@ namespace MDPro3
             MyCard.CloseAthleticWatchListWebSocket();
         }
 
-        void ClearCache()
+        private void ClearCache()
         {
 #if UNITY_ANDROID && !UNITY_EDITOR
             AndroidJavaClass unityPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
             AndroidJavaObject currentActivity = unityPlayer.GetStatic<AndroidJavaObject>("currentActivity");
             AndroidJavaObject cacheDir = currentActivity.Call<AndroidJavaObject>("getCacheDir");
             string cachePath = cacheDir.Call<string>("getAbsolutePath");
-            ClearDirectoryRecursively(new DirectoryInfo(cachePath));
+            Tools.ClearDirectoryRecursively(new DirectoryInfo(cachePath));
 #else
             if (Directory.Exists(tempFolder))
                 Directory.Delete(tempFolder, true);
 #endif
         }
 
-        public static void ClearDirectoryRecursively(DirectoryInfo directory)
+        public static void GameQuit()
         {
-            foreach(var file in directory.GetFiles())
-                file.Delete();
-            foreach(var subDir in directory.GetDirectories())
-            {
-                ClearDirectoryRecursively(subDir);
-                subDir.Delete();
-            }
+#if UNITY_EDITOR
+            EditorApplication.isPlaying = false;
+#else
+            Application.Quit();
+#endif
         }
-
+        #endregion
     }
 }

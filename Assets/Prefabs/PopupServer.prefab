@@ -734,7 +734,9 @@ MonoBehaviour:
   maxUIScale: 1
   showY: 0
   height: 550
+  defaultSelect: {fileID: 2164013074077263932}
   selections: []
+  hideY: 0
   textLflist: {fileID: 5726967937832263246}
   textPool: {fileID: 5726967938274790349}
   textMode: {fileID: 5726967938900438883}

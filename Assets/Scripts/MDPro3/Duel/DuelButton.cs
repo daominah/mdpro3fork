@@ -50,7 +50,7 @@ namespace MDPro3.UI
         private void Start()
         {
             GetComponent<Button>().onClick.AddListener(OnClick);
-            transform.SetParent(Program.I().ui_.duelButton, false);
+            transform.SetParent(Program.instance.ui_.duelButton, false);
             RefreshPosition();
             text.text = hint;
             if(hint == string.Empty)
@@ -152,12 +152,12 @@ namespace MDPro3.UI
         {
             if (response[0] == -4)
             {
-                var middle = Program.I().ui_.GetComponent<RectTransform>().sizeDelta.x / 2;
+                var middle = Program.instance.ui_.GetComponent<RectTransform>().sizeDelta.x / 2;
                 GetComponent<RectTransform>().anchoredPosition = new Vector2(middle + 340, 620);
             }
             else if (response[0] == -5)
             {
-                var middle = Program.I().ui_.GetComponent<RectTransform>().sizeDelta.x / 2;
+                var middle = Program.instance.ui_.GetComponent<RectTransform>().sizeDelta.x / 2;
                 GetComponent<RectTransform>().anchoredPosition = new Vector2(middle - 340, 620);
             }
             else
@@ -171,14 +171,14 @@ namespace MDPro3.UI
                     gps.controller = controller;
                     gps.sequence = sequence;
                     var position = GameCard.GetCardPosition(gps);
-                    uiPoint = UIManager.WorldToScreenPoint(Program.I().camera_.cameraMain, position);
+                    uiPoint = UIManager.WorldToScreenPoint(Program.instance.camera_.cameraMain, position);
                     if ((location & ((uint)CardLocation.Deck + (uint)CardLocation.Extra)) > 0
                         && controller != 0)
                         height = -100;
                 }
                 else
                 {
-                    uiPoint = UIManager.WorldToScreenPoint(Program.I().camera_.cameraMain, cookieCard.model.transform.position);
+                    uiPoint = UIManager.WorldToScreenPoint(Program.instance.camera_.cameraMain, cookieCard.model.transform.position);
                     if (cookieCard != null)
                     {
                         if((cookieCard.p.location & (uint)CardLocation.Hand) > 0)
@@ -214,7 +214,7 @@ namespace MDPro3.UI
 
             if (response[0] >= 0)
             {
-                switch (Program.I().ocgcore.currentMessage)
+                switch (Program.instance.ocgcore.currentMessage)
                 {
                     case GameMessage.SelectBattleCmd:
                     case GameMessage.SelectIdleCmd:
@@ -222,7 +222,7 @@ namespace MDPro3.UI
                         {
                             var p = new BinaryMaster();
                             p.writer.Write(response[0]);
-                            Program.I().ocgcore.SendReturn(p.Get());
+                            Program.instance.ocgcore.SendReturn(p.Get());
                         }
                         else
                         {
@@ -238,7 +238,7 @@ namespace MDPro3.UI
                             }
                             selections.Add(InterString.Get("放弃"));
                             responses.Add(-233);
-                            Program.I().ocgcore.ShowPopupSelection(selections, responses);
+                            Program.instance.ocgcore.ShowPopupSelection(selections, responses);
                         }
                         break;
                 }
@@ -246,7 +246,7 @@ namespace MDPro3.UI
             else if (response[0] == -1 || response[0] == -2)
             {
                 List<GameCard> responseCards = new List<GameCard>();
-                foreach (var card in Program.I().ocgcore.cards)
+                foreach (var card in Program.instance.ocgcore.cards)
                     if (card.p.controller == controller)
                         if ((card.p.location & location) > 0)
                             foreach (var btn in card.buttons)
@@ -256,13 +256,13 @@ namespace MDPro3.UI
                                     break;
                                 }
                 if (type == ButtonType.Activate)
-                    Program.I().ocgcore.ShowPopupSelectCard(InterString.Get("选择效果发动。"), responseCards, 1, 1, true, false);
+                    Program.instance.ocgcore.ShowPopupSelectCard(InterString.Get("选择效果发动。"), responseCards, 1, 1, true, false);
                 else
-                    Program.I().ocgcore.ShowPopupSelectCard(InterString.Get("选择怪兽特殊召唤。"), responseCards, 1, 1, true, false);
+                    Program.instance.ocgcore.ShowPopupSelectCard(InterString.Get("选择怪兽特殊召唤。"), responseCards, 1, 1, true, false);
             }
             else if (response[0] == -3)
             {
-                foreach (var place in Program.I().ocgcore.places)
+                foreach (var place in Program.instance.ocgcore.places)
                 {
                     if (place.p.controller == controller)
                         if (place.p.location == location)
@@ -272,11 +272,11 @@ namespace MDPro3.UI
             }
             else if (response[0] == -4)
             {
-                Program.I().ocgcore.FieldSelectedSend();
+                Program.instance.ocgcore.FieldSelectedSend();
             }
             else if (response[0] == -5)
             {
-                Program.I().ocgcore.FieldSelectedCancel();
+                Program.instance.ocgcore.FieldSelectedCancel();
             }
         }
     }

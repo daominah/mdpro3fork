@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading;
 using System.Windows.Forms;
 using UnityEngine;
 
@@ -73,6 +74,7 @@ namespace MDPro3
         public static Rarity GetRarity(int card)
         {
             Initialize();
+
             if (cards.ShineCards.Contains(card))
                 return Rarity.Shine;
             if (cards.RoyalCards.Contains(card))
@@ -83,17 +85,17 @@ namespace MDPro3
                 return Rarity.Millennium;
             return Rarity.Normal;
         }
-        public static void BookCard(int card)
+        public static void BookmarkCard(int card)
         {
             Initialize();
             cards.BookCards.Add(card);
         }
-        public static void UnbookCard(int card)
+        public static void UnbookmarkCard(int card)
         {
             Initialize();
             cards.BookCards.Remove(card);
         }
-        public static bool CardBooked(int card)
+        public static bool CardBookmarked(int card)
         {
             Initialize();
             return cards.BookCards.Contains(card);

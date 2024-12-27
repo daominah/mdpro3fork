@@ -38,62 +38,62 @@ namespace MDPro3
 
         private void Update()
         {
-            if (Program.hoverObject == grave)
+            if (UserInput.HoverObject == grave)
             {
                 manager.GetElement<Renderer>("Material01").material.SetFloat("_GraveMouseOver", 1);
-                if (Program.InputGetMouse0)
+                if (UserInput.MouseLeftDown)
                     manager.GetElement<Renderer>("Material01").material.SetFloat("_GravePressButton", 1);
                 else
                     manager.GetElement<Renderer>("Material01").material.SetFloat("_GravePressButton", 0);
-                if (Program.InputGetMouse0Up)
+                if (UserInput.MouseLeftUp)
                     GraveOnClick();
             }
             else
             {
                 manager.GetElement<Renderer>("Material01").material.SetFloat("_GraveMouseOver", 0);
                 manager.GetElement<Renderer>("Material01").material.SetFloat("_GravePressButton", 0);
-                if (Program.InputGetMouse0Up)
+                if (UserInput.MouseLeftUp)
                     HideGraveButtons();
                 if (graveCountShowing)
                 {
                     graveCountShowing = false;
-                    Program.I().ocgcore.HidePlaceCount();
+                    Program.instance.ocgcore.HidePlaceCount();
                 }
             }
 
-            if (Program.hoverObject == exclude)
+            if (UserInput.HoverObject == exclude)
             {
                 manager.GetElement<Renderer>("Material01").material.SetFloat("_ExcludeMouseOver", 1);
-                if (Program.InputGetMouse0)
+                if (UserInput.MouseLeftDown)
                     manager.GetElement<Renderer>("Material01").material.SetFloat("_ExcludePressButton", 1);
                 else
                     manager.GetElement<Renderer>("Material01").material.SetFloat("_ExcludePressButton", 0);
-                if (Program.InputGetMouse0Up)
+                if (UserInput.MouseLeftUp)
                     ExcludeOnClick();
             }
             else
             {
                 manager.GetElement<Renderer>("Material01").material.SetFloat("_ExcludeMouseOver", 0);
                 manager.GetElement<Renderer>("Material01").material.SetFloat("_ExcludePressButton", 0);
-                if (Program.InputGetMouse0Up)
+                if (UserInput.MouseLeftDown)
                     HideExcludeButtons();
                 if (excludeCountShowing)
                 {
                     excludeCountShowing = false;
-                    Program.I().ocgcore.HidePlaceCount();
+                    Program.instance.ocgcore.HidePlaceCount();
                 }
             }
-            if (Program.hoverObject == grave)
+            if (UserInput.HoverObject == grave)
                 if (!graveCountShowing)
                 {
                     graveCountShowing = true;
-                    Program.I().ocgcore.ShowLocationCount(new GPS { location = (uint)CardLocation.Grave, controller = (uint)controller });
+                    Program.instance.ocgcore.ShowLocationCount(new GPS { location = (uint)CardLocation.Grave, controller = (uint)controller });
                 }
-            if (Program.hoverObject == exclude)
+            if (UserInput.HoverObject == exclude)
                 if (!excludeCountShowing)
                 {
                     excludeCountShowing = true;
-                    Program.I().ocgcore.ShowLocationCount(new GPS { location = (uint)CardLocation.Removed, controller = (uint)controller });
+                    Program.instance.ocgcore.ShowLocationCount(new GPS { location = (uint)CardLocation.Removed, controller = (uint)controller });
                 }
         }
         bool graveButtonsCreated = false;
@@ -102,16 +102,16 @@ namespace MDPro3
         {
             AudioManager.PlaySE("SE_DUEL_SELECT");
 
-            List<GameCard> cards = Program.I().ocgcore.GCS_GetLocationCards(controller, (int)CardLocation.Grave);
-            Program.I().ocgcore.list.Show(cards, CardLocation.Grave, controller);
+            List<GameCard> cards = Program.instance.ocgcore.GCS_GetLocationCards(controller, (int)CardLocation.Grave);
+            Program.instance.ocgcore.list.Show(cards, CardLocation.Grave, controller);
 
-            if (Program.I().ocgcore.returnAction != null)
+            if (Program.instance.ocgcore.returnAction != null)
                 return;
             if (!graveButtonsCreated)
             {
                 bool spsummmon = false;
                 bool activate = false;
-                foreach (var card in Program.I().ocgcore.cards)
+                foreach (var card in Program.instance.ocgcore.cards)
                     if ((card.p.location & (uint)CardLocation.Grave) > 0)
                         if (card.p.controller == controller)
                             foreach (var btn in card.buttons)
@@ -140,16 +140,16 @@ namespace MDPro3
         {
             AudioManager.PlaySE("SE_DUEL_SELECT");
 
-            List<GameCard> cards = Program.I().ocgcore.GCS_GetLocationCards(controller, (int)CardLocation.Removed);
-            Program.I().ocgcore.list.Show(cards, CardLocation.Removed, controller);
+            List<GameCard> cards = Program.instance.ocgcore.GCS_GetLocationCards(controller, (int)CardLocation.Removed);
+            Program.instance.ocgcore.list.Show(cards, CardLocation.Removed, controller);
 
-            if (Program.I().ocgcore.returnAction != null)
+            if (Program.instance.ocgcore.returnAction != null)
                 return;
             if (!graveButtonsCreated)
             {
                 bool spsummmon = false;
                 bool activate = false;
-                foreach (var card in Program.I().ocgcore.cards)
+                foreach (var card in Program.instance.ocgcore.cards)
                     if ((card.p.location & (uint)CardLocation.Removed) > 0)
                         if (card.p.controller == controller)
                             foreach (var btn in card.buttons)
@@ -202,11 +202,11 @@ namespace MDPro3
         public List<DuelButton> excludeButtonObjs = new List<DuelButton>();
         void CreateGraveButtons()
         {
-            if (graveButtonsCreated || Program.I().ocgcore.returnAction != null || graveButtons.Count == 0)
+            if (graveButtonsCreated || Program.instance.ocgcore.returnAction != null || graveButtons.Count == 0)
                 return;
             for (int i = 0; i < graveButtons.Count; i++)
             {
-                var obj = Instantiate(Program.I().ocgcore.container.duelButton);
+                var obj = Instantiate(Program.instance.ocgcore.container.duelButton);
                 var mono = obj.GetComponent<DuelButton>();
                 graveButtonObjs.Add(mono);
                 mono.response = graveButtons[i].response;
@@ -223,11 +223,11 @@ namespace MDPro3
         }
         void CreateExcludeButtons()
         {
-            if (excludeButtonsCreated || Program.I().ocgcore.returnAction != null || excludeButtons.Count == 0)
+            if (excludeButtonsCreated || Program.instance.ocgcore.returnAction != null || excludeButtons.Count == 0)
                 return;
             for (int i = 0; i < excludeButtons.Count; i++)
             {
-                var obj = Instantiate(Program.I().ocgcore.container.duelButton);
+                var obj = Instantiate(Program.instance.ocgcore.container.duelButton);
                 var mono = obj.GetComponent<DuelButton>();
                 excludeButtonObjs.Add(mono);
                 mono.response = excludeButtons[i].response;

@@ -40,40 +40,40 @@ namespace MDPro3.UI
             face.material = null;
 
             var data = CardsManager.Get(code);
-            if ((data.Type & (uint)CardType.Pendulum) > 0)
+            if (data.HasType(CardType.Pendulum))
             {
-                if ((data.Type & (uint)CardType.Normal) > 0)
+                if (data.HasType(CardType.Normal))
                     face.texture = TextureManager.container.cardFramePendulumNormal.texture;
-                else if ((data.Type & (uint)CardType.Xyz) > 0)
+                else if (data.HasType(CardType.Xyz))
                     face.texture = TextureManager.container.cardFramePendulumXyz.texture;
-                else if ((data.Type & (uint)CardType.Synchro) > 0)
+                else if (data.HasType(CardType.Synchro))
                     face.texture = TextureManager.container.cardFramePendulumSynchro.texture;
-                else if ((data.Type & (uint)CardType.Fusion) > 0)
+                else if (data.HasType(CardType.Fusion))
                     face.texture = TextureManager.container.cardFramePendulumFusion.texture;
-                else if ((data.Type & (uint)CardType.Ritual) > 0)
+                else if (data.HasType(CardType.Ritual))
                     face.texture = TextureManager.container.cardFramePendulumRitual.texture;
                 else
                     face.texture = TextureManager.container.cardFramePendulumEffect.texture;
             }
             else
             {
-                if ((data.Type & (uint)CardType.Normal) > 0)
+                if (data.HasType(CardType.Normal))
                     face.texture = TextureManager.container.cardFrameNormal.texture;
-                else if ((data.Type & (uint)CardType.Xyz) > 0)
+                else if (data.HasType(CardType.Xyz))
                     face.texture = TextureManager.container.cardFrameXyz.texture;
-                else if ((data.Type & (uint)CardType.Synchro) > 0)
+                else if (data.HasType(CardType.Synchro))
                     face.texture = TextureManager.container.cardFrameSynchro.texture;
-                else if ((data.Type & (uint)CardType.Fusion) > 0)
+                else if (data.HasType(CardType.Fusion))
                     face.texture = TextureManager.container.cardFrameFusion.texture;
-                else if ((data.Type & (uint)CardType.Ritual) > 0 && (data.Type & (uint)CardType.Monster) > 0)
+                else if (data.HasType(CardType.Ritual) && data.HasType(CardType.Monster))
                     face.texture = TextureManager.container.cardFrameRitual.texture;
-                else if ((data.Type & (uint)CardType.Link) > 0)
+                else if (data.HasType(CardType.Link))
                     face.texture = TextureManager.container.cardFrameLink.texture;
-                else if ((data.Type & (uint)CardType.Spell) > 0)
+                else if (data.HasType(CardType.Spell))
                     face.texture = TextureManager.container.cardFrameSpell.texture;
-                else if ((data.Type & (uint)CardType.Trap) > 0)
+                else if (data.HasType(CardType.Trap))
                     face.texture = TextureManager.container.cardFrameTrap.texture;
-                else if ((data.Type & (uint)CardType.Token) > 0)
+                else if (data.HasType(CardType.Token))
                     face.texture = TextureManager.container.cardFrameToken.texture;
                 else
                     face.texture = TextureManager.container.cardFrameEffect.texture;
@@ -89,8 +89,8 @@ namespace MDPro3.UI
 
         public void RefreshCountDot()
         {
-            int max = Program.I().editDeck.banlist.GetQuantity(code);
-            int count = Program.I().editDeck.GetCardCount(code);
+            int max = Program.instance.editDeck.banlist.GetQuantity(code);
+            int count = Program.instance.editDeck.GetCardCount(code);
             dot1.gameObject.SetActive(false);
             dot2.gameObject.SetActive(false);
             dot3.gameObject.SetActive(false);
@@ -135,7 +135,7 @@ namespace MDPro3.UI
 
         public void RefreshLimiteIcon()
         {
-            var limit = Program.I().editDeck.banlist.GetQuantity(code);
+            var limit = Program.instance.editDeck.banlist.GetQuantity(code);
             if (limit == 3)
                 limitIcon.sprite = TextureManager.container.typeNone;
             else if (limit == 2)
@@ -189,59 +189,59 @@ namespace MDPro3.UI
                 return;
             var cardFace = GetComponent<RawImage>().material.mainTexture;
             var mat = GetComponent<RawImage>().material;
-            if (Program.I().editDeck.manager.GetElement<Tab>("TabHistory").selected)
-                Program.I().editDeck.Description(code, cardFace, mat, false);
+            if (Program.instance.editDeck.Manager.GetElement<Tab>("TabHistory").selected)
+                Program.instance.editDeck.Description(code, cardFace, mat, false);
             else
-                Program.I().editDeck.Description(code, cardFace, mat);
+                Program.instance.editDeck.Description(code, cardFace, mat);
         }
 
         void OnClickRight(PointerEventData eventData)
         {
-            if (!Program.I().editDeck.deckIsFromLocalFile)
+            if (!Program.instance.editDeck.deckIsFromLocalFile)
                 return;
 
-            if (Program.I().editDeck.condition == Condition.ChangeSide)
+            if (Program.instance.editDeck.condition == Condition.ChangeSide)
                 return;
-            var max = Program.I().editDeck.banlist.GetQuantity(code);
-            var count = Program.I().editDeck.GetCardCount(code);
+            var max = Program.instance.editDeck.banlist.GetQuantity(code);
+            var count = Program.instance.editDeck.GetCardCount(code);
             if (count < max)
             {
                 AudioManager.PlaySE("SE_DECK_PLUS");
 
-                var item = Instantiate(Program.I().editDeck.itemOnTable);
-                var handler = item.GetComponent<CardOnEdit>();
+                var item = Instantiate(Program.instance.editDeck.itemInDeck);
+                var handler = item.GetComponent<CardInDeck>();
                 handler.Code = code;
 
                 var card = CardsManager.Get(code);
                 var isExtra = card.IsExtraCard();
                 if (!isExtra)
                 {
-                    if (Program.I().editDeck.mainCount < 60)
+                    if (Program.instance.editDeck.mainCount < 60)
                     {
-                        handler.id = Program.I().editDeck.mainCount;
-                        Program.I().editDeck.mainCount++;
+                        handler.id = Program.instance.editDeck.mainCount;
+                        Program.instance.editDeck.mainCount++;
                     }
                     else
                     {
-                        handler.id = Program.I().editDeck.sideCount + 2000;
-                        Program.I().editDeck.sideCount++;
+                        handler.id = Program.instance.editDeck.sideCount + 2000;
+                        Program.instance.editDeck.sideCount++;
                     }
                 }
                 else
                 {
-                    if (Program.I().editDeck.extraCount < 15)
+                    if (Program.instance.editDeck.extraCount < 15)
                     {
-                        handler.id = Program.I().editDeck.extraCount + 1000;
-                        Program.I().editDeck.extraCount++;
+                        handler.id = Program.instance.editDeck.extraCount + 1000;
+                        Program.instance.editDeck.extraCount++;
                     }
                     else
                     {
-                        handler.id = Program.I().editDeck.sideCount + 2000;
-                        Program.I().editDeck.sideCount++;
+                        handler.id = Program.instance.editDeck.sideCount + 2000;
+                        Program.instance.editDeck.sideCount++;
                     }
                 }
 
-                item.transform.SetParent(Program.I().editDeck.cardsOnEditParent, false);
+                item.transform.SetParent(Program.instance.editDeck.cardsOnEditParent, false);
 
                 handler.GetComponent<RectTransform>().anchoredPosition = handler.GetPosition();
                 var endPositon = item.transform.position;
@@ -250,41 +250,41 @@ namespace MDPro3.UI
                 var scale = Config.GetUIScale();
                 item.transform.localScale = Vector3.one * 1.2f * scale;
 
-                item.transform.DOMove(endPositon, CardOnEdit.moveTime);
-                item.transform.DOScale(Vector3.one, CardOnEdit.moveTime);
-                foreach (var c in Program.I().editDeck.cards)
+                item.transform.DOMove(endPositon, CardInDeck.moveTime);
+                item.transform.DOScale(Vector3.one, CardInDeck.moveTime);
+                foreach (var c in Program.instance.editDeck.cards)
                     c.Move();
-                Program.I().editDeck.cards.Add(handler);
-                Program.I().editDeck.RefreshListItemIcons();
+                Program.instance.editDeck.cards.Add(handler);
+                Program.instance.editDeck.RefreshListItemIcons();
             }
         }
 
-        CardOnEdit dragItem;
+        CardInDeck dragItem;
 
         void OnBeginDrag(PointerEventData eventData)
         {
-            if (!Program.I().editDeck.deckIsFromLocalFile)
+            if (!Program.instance.editDeck.deckIsFromLocalFile)
                 return;
 
-            if (Program.I().editDeck.condition == Condition.ChangeSide)
+            if (Program.instance.editDeck.condition == Condition.ChangeSide)
                 return;
 
-            var item = Instantiate(Program.I().editDeck.itemOnTable);
-            dragItem = item.GetComponent<CardOnEdit>();
+            var item = Instantiate(Program.instance.editDeck.itemInDeck);
+            dragItem = item.GetComponent<CardInDeck>();
             dragItem.Code = code;
             dragItem.id = 99999999;
 
             var scale = Config.GetUIScale();
-            dragItem.transform.SetParent(Program.I().editDeck.cardsOnEditParent, false);
+            dragItem.transform.SetParent(Program.instance.editDeck.cardsOnEditParent, false);
             dragItem.transform.localScale = Vector3.one * scale * 1.2f;
             dragItem.button.GetComponent<Image>().raycastTarget = false;
         }
         void OnDrag(PointerEventData eventData)
         {
-            if (!Program.I().editDeck.deckIsFromLocalFile)
+            if (!Program.instance.editDeck.deckIsFromLocalFile)
                 return;
 
-            if (Program.I().editDeck.condition == Condition.ChangeSide)
+            if (Program.instance.editDeck.condition == Condition.ChangeSide)
                 return;
 
             var dragTarget = dragItem.GetComponent<RectTransform>();
@@ -297,14 +297,14 @@ namespace MDPro3.UI
         }
         void OnEndDrag(PointerEventData eventData)
         {
-            if (!Program.I().editDeck.deckIsFromLocalFile)
+            if (!Program.instance.editDeck.deckIsFromLocalFile)
                 return;
 
-            if (Program.I().editDeck.condition == Condition.ChangeSide)
+            if (Program.instance.editDeck.condition == Condition.ChangeSide)
                 return;
 
-            var max = Program.I().editDeck.banlist.GetQuantity(code);
-            var count = Program.I().editDeck.GetCardCount(code);
+            var max = Program.instance.editDeck.banlist.GetQuantity(code);
+            var count = Program.instance.editDeck.GetCardCount(code);
             if (count >= max)
             {
                 Destroy(dragItem.gameObject);
@@ -312,8 +312,8 @@ namespace MDPro3.UI
             }
 
             dragItem.button.GetComponent<Image>().raycastTarget = true;
-            CardOnEdit hover = null;
-            foreach (var card in Program.I().editDeck.cards)
+            CardInDeck hover = null;
+            foreach (var card in Program.instance.editDeck.cards)
                 if (card.hover)
                 {
                     hover = card;
@@ -321,22 +321,22 @@ namespace MDPro3.UI
                 }
             if (hover != null)
             {
-                Program.I().editDeck.cards.Add(dragItem);
-                Program.I().editDeck.SwitchCard(dragItem, hover);
+                Program.instance.editDeck.cards.Add(dragItem);
+                Program.instance.editDeck.SwitchCard(dragItem, hover);
             }
             else
             {
                 var c = CardsManager.Get(code);
                 var isExtra = c.IsExtraCard();
 
-                if (Program.I().editDeck.manager.GetElement<UIHover>("DummyMain").hover)
+                if (Program.instance.editDeck.Manager.GetElement<UIHover>("DummyMain").hover)
                 {
                     if (!isExtra)
                     {
-                        Program.I().editDeck.dirty = true;
-                        Program.I().editDeck.cards.Add(dragItem);
-                        dragItem.id = Program.I().editDeck.mainCount;
-                        Program.I().editDeck.mainCount++;
+                        Program.instance.editDeck.dirty = true;
+                        Program.instance.editDeck.cards.Add(dragItem);
+                        dragItem.id = Program.instance.editDeck.mainCount;
+                        Program.instance.editDeck.mainCount++;
                     }
                     else
                     {
@@ -344,14 +344,14 @@ namespace MDPro3.UI
                         return;
                     }
                 }
-                else if (Program.I().editDeck.manager.GetElement<UIHover>("DummyExtra").hover)
+                else if (Program.instance.editDeck.Manager.GetElement<UIHover>("DummyExtra").hover)
                 {
                     if (isExtra)
                     {
-                        Program.I().editDeck.dirty = true;
-                        Program.I().editDeck.cards.Add(dragItem);
-                        dragItem.id = Program.I().editDeck.extraCount + 1000;
-                        Program.I().editDeck.extraCount++;
+                        Program.instance.editDeck.dirty = true;
+                        Program.instance.editDeck.cards.Add(dragItem);
+                        dragItem.id = Program.instance.editDeck.extraCount + 1000;
+                        Program.instance.editDeck.extraCount++;
                     }
                     else
                     {
@@ -359,12 +359,12 @@ namespace MDPro3.UI
                         return;
                     }
                 }
-                else if (Program.I().editDeck.manager.GetElement<UIHover>("DummySide").hover)
+                else if (Program.instance.editDeck.Manager.GetElement<UIHover>("DummySide").hover)
                 {
-                    Program.I().editDeck.dirty = true;
-                    Program.I().editDeck.cards.Add(dragItem);
-                    dragItem.id = Program.I().editDeck.sideCount + 2000;
-                    Program.I().editDeck.sideCount++;
+                    Program.instance.editDeck.dirty = true;
+                    Program.instance.editDeck.cards.Add(dragItem);
+                    dragItem.id = Program.instance.editDeck.sideCount + 2000;
+                    Program.instance.editDeck.sideCount++;
                 }
                 else
                 {
@@ -372,10 +372,10 @@ namespace MDPro3.UI
                     return;
                 }
             }
-            foreach (var card in Program.I().editDeck.cards)
+            foreach (var card in Program.instance.editDeck.cards)
                 card.Move();
-            Program.I().editDeck.SetCardSiblingIndex(CardOnEdit.moveTime);
-            Program.I().editDeck.RefreshListItemIcons();
+            Program.instance.editDeck.SetCardSiblingIndex(CardInDeck.moveTime);
+            Program.instance.editDeck.RefreshListItemIcons();
         }
 
         private void OnDestroy()

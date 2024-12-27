@@ -113,7 +113,7 @@ namespace MDPro3
         }
         public void Response(byte[] resp)
         {
-            //UnityEngine.Debug.Log(Program.I().ocgcore.currentMessage + ": " + BitConverter.ToString(resp));
+            //UnityEngine.Debug.Log(Program.instance.ocgcore.currentMessage + ": " + BitConverter.ToString(resp));
             ygopro.Response(resp);
         }
 
@@ -126,19 +126,22 @@ namespace MDPro3
             }
             else
             {
-                Program.I().ocgcore.condition = OcgCore.Condition.Duel;
-                Program.I().ocgcore.isFirst = true;
-                Program.I().ocgcore.returnServant = Program.I().editDeck.toHandTest ? Program.I().editDeck : Program.I().puzzle;
-                Program.I().ocgcore.timeLimit = 0;
-                Program.I().ocgcore.inAi = true;
-                Program.I().ShiftToServant(Program.I().ocgcore);
-                Program.I().ocgcore.handler = Response;
+                Config.SetBool(path[..^4] + "_Enter", true);
+                Config.Save();
+
+                Program.instance.ocgcore.condition = OcgCore.Condition.Duel;
+                Program.instance.ocgcore.isFirst = true;
+                Program.instance.ocgcore.returnServant = Program.instance.editDeck.toHandTest ? Program.instance.editDeck : Program.instance.puzzle;
+                Program.instance.ocgcore.timeLimit = 0;
+                Program.instance.ocgcore.inAi = true;
+                Program.instance.ShiftToServant(Program.instance.ocgcore);
+                Program.instance.ocgcore.handler = Response;
             }
         }
 
         public void StartAI()
         {
-            //Program.I().ocgcore.handler = Response;
+            //Program.instance.ocgcore.handler = Response;
         }
         public void StartDuel()
         {

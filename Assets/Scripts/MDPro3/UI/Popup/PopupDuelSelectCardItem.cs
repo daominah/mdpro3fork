@@ -92,7 +92,7 @@ namespace MDPro3.UI
             {
                 chain.SetActive(false);
 
-                if (Program.I().ocgcore.cardsBeTarget.Contains(card))
+                if (Program.instance.ocgcore.cardsBeTarget.Contains(card))
                     target.SetActive(true);
                 else
                     target.SetActive(false);
@@ -100,15 +100,15 @@ namespace MDPro3.UI
 
             var origin = CardsManager.Get(card.GetData().Id);
 
-            if ((origin.Type & (uint)CardType.Monster) > 0)
+            if (origin.HasType(CardType.Monster))
             {
                 levelIcon.sprite = TextureManager.GetCardLevelIcon(card.GetData());
-                if ((card.GetData().Type & (uint)CardType.Link) > 0)
+                if (card.GetData().HasType(CardType.Link))
                     textLevel.text = CardDescription.GetCardLinkCount(card.GetData()).ToString();
                 else
                     textLevel.text = card.GetData().Level.ToString();
 
-                if ((origin.Type & (uint)CardType.Tuner) > 0)
+                if (origin.HasType(CardType.Tuner))
                     tunerIcon.gameObject.SetActive(true);
             }
             else
@@ -117,7 +117,7 @@ namespace MDPro3.UI
                 textLevel.text = string.Empty;
             }
 
-            if ((origin.Type & (uint)CardType.Pendulum) > 0)
+            if (origin.HasType(CardType.Pendulum))
             {
                 pendulumIcon.gameObject.SetActive(true);
                 textPendulum.text = card.GetData().LScale.ToString();
@@ -163,7 +163,7 @@ namespace MDPro3.UI
                 if (manager.arrow == null)
                 {
                     manager.arrow = ABLoader.LoadFromFile("MasterDuel/Effects/other/fxp_arrow_aim_001", true);
-                    Program.I().ocgcore.allGameObjects.Add(manager.arrow);
+                    Program.instance.ocgcore.allGameObjects.Add(manager.arrow);
                 }
                 manager.arrow.transform.position = card.model.transform.position;
             }
@@ -173,7 +173,7 @@ namespace MDPro3.UI
                     manager.arrow.SetActive(false);
             }
 
-            Program.I().ocgcore.description.Show(card, cardFace.material);
+            Program.instance.ocgcore.description.Show(card, cardFace.material);
 
             if (selected)
             {
@@ -201,7 +201,7 @@ namespace MDPro3.UI
                 {
                     if (manager.max == 1 
                         && manager.min == 1
-                        && Program.I().ocgcore.currentMessage != GameMessage.SelectSum)
+                        && Program.instance.ocgcore.currentMessage != GameMessage.SelectSum)
                     {
                         foreach (var card in manager.monos)
                             card.UnselectThis();
@@ -219,7 +219,7 @@ namespace MDPro3.UI
             selected = true;
             manager.selectedCount++;
 
-            if(Program.I().ocgcore.currentMessage == GameMessage.ConfirmCards)
+            if(Program.instance.ocgcore.currentMessage == GameMessage.ConfirmCards)
             {
             }
             else if (!manager.order)

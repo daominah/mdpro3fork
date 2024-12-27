@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace MDPro3.UI
 {
-    public class PopupYesOrNo : Popup
+    public class PopupYesOrNo : PopupBase
     {
         [Header("Popup YesOrNo Reference")]
         public Text description;

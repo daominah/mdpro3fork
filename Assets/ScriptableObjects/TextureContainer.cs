@@ -4,6 +4,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MDPro3.UI;
+using MDPro3.YGOSharp;
+using System.Threading;
 
 namespace MDPro3
 {
@@ -67,7 +70,6 @@ namespace MDPro3
         public Texture2D cardNormal;
         public Texture2D cardNormalLink;
         public Texture2D cardNormalPendulum;
-        public Texture2D cardRainbowMask;
         [Header("Card Attribute")]
         public Sprite attributeLight;
         public Sprite attributeDark;
@@ -292,6 +294,11 @@ namespace MDPro3
         public Sprite link6R;
         public Sprite link7R;
         public Sprite link8R;
+        [Header("Card Pool")]
+        public Sprite cardPoolOCG;
+        public Sprite cardPoolTCG;
+        public Sprite cardPoolDIY;
+        public Sprite cardPoolPRE;
         [Header("Chain Circle Num")]
         public Sprite chainCircleNum0;
         public Sprite chainCircleNum1;
@@ -385,95 +392,52 @@ namespace MDPro3
         public Texture2D rd_CardAttributeSet;
         public Texture2D rd_CardNormal;
 
+        [Header("Gamepad Icon")]
+        public Sprite gamepad_ButtonSouth_Xbox;
+        public Sprite gamepad_ButtonEast_Xbox;
+        public Sprite gamepad_ButtonWest_Xbox;
+        public Sprite gamepad_ButtonNorth_Xbox;
+        public Sprite gamepad_ButtonSouth_PlayStation;
+        public Sprite gamepad_ButtonEast_PlayStation;
+        public Sprite gamepad_ButtonWest_PlayStation;
+        public Sprite gamepad_ButtonNorth_PlayStation;
+        public Sprite gamepad_ButtonSouth_Nintendo;
+        public Sprite gamepad_ButtonEast_Nintendo;
+        public Sprite gamepad_ButtonWest_Nintendo;
+        public Sprite gamepad_ButtonNorth_Nintendo;
+
+        public Sprite gamepad_LeftShoulder_Xbox;
+        public Sprite gamepad_RightShoulder_Xbox;
+        public Sprite gamepad_LeftTrigger_Xbox;
+        public Sprite gamepad_RightTrigger_Xbox;
+        public Sprite gamepad_LeftShoulder_PlayStation;
+        public Sprite gamepad_RightShoulder_PlayStation;
+        public Sprite gamepad_LeftTrigger_PlayStation;
+        public Sprite gamepad_RightTrigger_PlayStation;
+        public Sprite gamepad_LeftShoulder_Nintendo;
+        public Sprite gamepad_RightShoulder_Nintendo;
+        public Sprite gamepad_LeftTrigger_Nintendo;
+        public Sprite gamepad_RightTrigger_Nintendo;
+        public Sprite gamepad_LeftStick;
+        public Sprite gamepad_RightStick;
+
+        public Sprite gamepad_Select_Xbox;
+        public Sprite gamepad_Start_Xbox;
+        public Sprite gamepad_Select_PlayStation;
+        public Sprite gamepad_Start_PlayStation;
+        public Sprite gamepad_Select_Nintendo;
+        public Sprite gamepad_Start_Nintendo;
+
         [Header("Other")]
         public Texture2D fxt_Arrow;
         public Texture2D fxt_Arrow_002;
         public Texture2D fxt_Arrow_003;
         public Texture2D fxt_Arrow_004;
         public Texture2D fxt_msk_005;
-        public Texture2D CardKira3_Millennium;
         public Texture2D CardKiraNormal03_Millennium;
 
-        public List<Sprite> GetLocationIcons(GPS p)
-        {
-            var returnValue = new List<Sprite>();
-            if ((p.location & (uint)CardLocation.Onfield) > 0
-                && (p.location & (uint)CardLocation.Overlay) == 0)
-            {
-                if ((p.location & (uint)CardLocation.SpellZone) > 0 && p.sequence == 5)
-                {
-                    returnValue.Add(locationFieldMagic);
-                    returnValue.Add(p.controller == 0 ? controllerMe : controllerOp);
-                    return returnValue;
-                }
-                if ((p.location & (uint)CardLocation.MonsterZone) > 0)
-                {
-                    switch (p.sequence)
-                    {
-                        case 0:
-                            returnValue.Add(p.controller == 0 ? locationMyMZone0 : locationOpMZone0);
-                            break;
-                        case 1:
-                            returnValue.Add(p.controller == 0 ? locationMyMZone1 : locationOpMZone1);
-                            break;
-                        case 2:
-                            returnValue.Add(p.controller == 0 ? locationMyMZone2 : locationOpMZone2);
-                            break;
-                        case 3:
-                            returnValue.Add(p.controller == 0 ? locationMyMZone3 : locationOpMZone3);
-                            break;
-                        case 4:
-                            returnValue.Add(p.controller == 0 ? locationMyMZone4 : locationOpMZone4);
-                            break;
-                        case 5:
-                            returnValue.Add(p.controller == 0 ? locationMyMZone5 : locationOpMZone5);
-                            break;
-                        case 6:
-                            returnValue.Add(p.controller == 0 ? locationMyMZone6 : locationOpMZone6);
-                            break;
-                    }
-                }
-                else
-                {
-                    switch (p.sequence)
-                    {
-                        case 0:
-                            returnValue.Add(p.controller == 0 ? locationMySZone0 : locationOpSZone0);
-                            break;
-                        case 1:
-                            returnValue.Add(p.controller == 0 ? locationMySZone1 : locationOpSZone1);
-                            break;
-                        case 2:
-                            returnValue.Add(p.controller == 0 ? locationMySZone2 : locationOpSZone2);
-                            break;
-                        case 3:
-                            returnValue.Add(p.controller == 0 ? locationMySZone3 : locationOpSZone3);
-                            break;
-                        case 4:
-                            returnValue.Add(p.controller == 0 ? locationMySZone4 : locationOpSZone4);
-                            break;
-                    }
-                }
-            }
-            else
-            {
-                if ((p.location & (uint)CardLocation.Overlay) > 0)
-                    returnValue.Add(locationOverlay);
-                else if ((p.location & (uint)CardLocation.Deck) > 0)
-                    returnValue.Add(locationDeck);
-                else if ((p.location & (uint)CardLocation.Extra) > 0)
-                    returnValue.Add(locationExtra);
-                else if ((p.location & (uint)CardLocation.Hand) > 0)
-                    returnValue.Add(locationHand);
-                else if ((p.location & (uint)CardLocation.Grave) > 0)
-                    returnValue.Add(locationGrave);
-                else if ((p.location & (uint)CardLocation.Removed) > 0)
-                    returnValue.Add(locationRemoved);
 
-                returnValue.Add(p.controller == 0 ? controllerMe : controllerOp);
-            }
-            return returnValue;
-        }
+        #region MyCard Rank
 
         int[] rankRange = new int[]
         {
@@ -584,8 +548,9 @@ namespace MDPro3
                     return rankTier01;
             }
         }
+        #endregion
 
-
+        #region Duel Icons
         public Sprite GetChainNumSprite(int num)
         {
             switch (num)
@@ -615,6 +580,353 @@ namespace MDPro3
             }
         }
 
+        public Sprite GetGamepadIcon(ShortcutIcon.GamePadButton button)
+        {
+            return button switch
+            {
+                ShortcutIcon.GamePadButton.ButtonSouth => UserInput.gamepadType switch
+                {
+                    UserInput.GamepadType.Xbox => gamepad_ButtonSouth_Xbox,
+                    UserInput.GamepadType.PlayStation => gamepad_ButtonSouth_PlayStation,
+                    UserInput.GamepadType.Nintendo => gamepad_ButtonSouth_Nintendo,
+                    _ => null,
+                },
+                ShortcutIcon.GamePadButton.ButtonEast => UserInput.gamepadType switch
+                {
+                    UserInput.GamepadType.Xbox => gamepad_ButtonEast_Xbox,
+                    UserInput.GamepadType.PlayStation => gamepad_ButtonEast_PlayStation,
+                    UserInput.GamepadType.Nintendo => gamepad_ButtonEast_Nintendo,
+                    _ => null,
+                },
+                ShortcutIcon.GamePadButton.ButtonWest => UserInput.gamepadType switch
+                {
+                    UserInput.GamepadType.Xbox => gamepad_ButtonWest_Xbox,
+                    UserInput.GamepadType.PlayStation => gamepad_ButtonWest_PlayStation,
+                    UserInput.GamepadType.Nintendo => gamepad_ButtonWest_Nintendo,
+                    _ => null,
+                },
+                ShortcutIcon.GamePadButton.ButtonNorth => UserInput.gamepadType switch
+                {
+                    UserInput.GamepadType.Xbox => gamepad_ButtonNorth_Xbox,
+                    UserInput.GamepadType.PlayStation => gamepad_ButtonNorth_PlayStation,
+                    UserInput.GamepadType.Nintendo => gamepad_ButtonNorth_Nintendo,
+                    _ => null,
+                },
+                ShortcutIcon.GamePadButton.LeftShoulder => UserInput.gamepadType switch
+                {
+                    UserInput.GamepadType.Xbox => gamepad_LeftShoulder_Xbox,
+                    UserInput.GamepadType.PlayStation => gamepad_LeftShoulder_PlayStation,
+                    UserInput.GamepadType.Nintendo => gamepad_LeftShoulder_Nintendo,
+                    _ => null,
+                },
+                ShortcutIcon.GamePadButton.RightShoulder => UserInput.gamepadType switch
+                {
+                    UserInput.GamepadType.Xbox => gamepad_RightShoulder_Xbox,
+                    UserInput.GamepadType.PlayStation => gamepad_RightShoulder_PlayStation,
+                    UserInput.GamepadType.Nintendo => gamepad_RightShoulder_Nintendo,
+                    _ => null,
+                },
+                ShortcutIcon.GamePadButton.LeftTrigger => UserInput.gamepadType switch
+                {
+                    UserInput.GamepadType.Xbox => gamepad_LeftTrigger_Xbox,
+                    UserInput.GamepadType.PlayStation => gamepad_LeftTrigger_PlayStation,
+                    UserInput.GamepadType.Nintendo => gamepad_LeftTrigger_Nintendo,
+                    _ => null,
+                },
+                ShortcutIcon.GamePadButton.RightTrigger => UserInput.gamepadType switch
+                {
+                    UserInput.GamepadType.Xbox => gamepad_RightTrigger_Xbox,
+                    UserInput.GamepadType.PlayStation => gamepad_RightTrigger_PlayStation,
+                    UserInput.GamepadType.Nintendo => gamepad_RightTrigger_Nintendo,
+                    _ => null,
+                },
+                ShortcutIcon.GamePadButton.LeftStick => gamepad_LeftStick,
+                ShortcutIcon.GamePadButton.RightStick => gamepad_RightStick,
+                ShortcutIcon.GamePadButton.Select => UserInput.gamepadType switch
+                {
+                    UserInput.GamepadType.Xbox => gamepad_Select_Xbox,
+                    UserInput.GamepadType.PlayStation => gamepad_Select_PlayStation,
+                    UserInput.GamepadType.Nintendo => gamepad_Select_Nintendo,
+                    _ => null,
+                },
+                ShortcutIcon.GamePadButton.Start => UserInput.gamepadType switch
+                {
+                    UserInput.GamepadType.Xbox => gamepad_Start_Xbox,
+                    UserInput.GamepadType.PlayStation => gamepad_Start_PlayStation,
+                    UserInput.GamepadType.Nintendo => gamepad_Start_Nintendo,
+                    _ => null,
+                },
+                _ => null,
+            };
+        }
 
+        public List<Sprite> GetLocationIcons(GPS p)
+        {
+            var returnValue = new List<Sprite>();
+            if ((p.location & (uint)CardLocation.Onfield) > 0
+                && (p.location & (uint)CardLocation.Overlay) == 0)
+            {
+                if ((p.location & (uint)CardLocation.SpellZone) > 0 && p.sequence == 5)
+                {
+                    returnValue.Add(locationFieldMagic);
+                    returnValue.Add(p.controller == 0 ? controllerMe : controllerOp);
+                    return returnValue;
+                }
+                if ((p.location & (uint)CardLocation.MonsterZone) > 0)
+                {
+                    switch (p.sequence)
+                    {
+                        case 0:
+                            returnValue.Add(p.controller == 0 ? locationMyMZone0 : locationOpMZone0);
+                            break;
+                        case 1:
+                            returnValue.Add(p.controller == 0 ? locationMyMZone1 : locationOpMZone1);
+                            break;
+                        case 2:
+                            returnValue.Add(p.controller == 0 ? locationMyMZone2 : locationOpMZone2);
+                            break;
+                        case 3:
+                            returnValue.Add(p.controller == 0 ? locationMyMZone3 : locationOpMZone3);
+                            break;
+                        case 4:
+                            returnValue.Add(p.controller == 0 ? locationMyMZone4 : locationOpMZone4);
+                            break;
+                        case 5:
+                            returnValue.Add(p.controller == 0 ? locationMyMZone5 : locationOpMZone5);
+                            break;
+                        case 6:
+                            returnValue.Add(p.controller == 0 ? locationMyMZone6 : locationOpMZone6);
+                            break;
+                    }
+                }
+                else
+                {
+                    switch (p.sequence)
+                    {
+                        case 0:
+                            returnValue.Add(p.controller == 0 ? locationMySZone0 : locationOpSZone0);
+                            break;
+                        case 1:
+                            returnValue.Add(p.controller == 0 ? locationMySZone1 : locationOpSZone1);
+                            break;
+                        case 2:
+                            returnValue.Add(p.controller == 0 ? locationMySZone2 : locationOpSZone2);
+                            break;
+                        case 3:
+                            returnValue.Add(p.controller == 0 ? locationMySZone3 : locationOpSZone3);
+                            break;
+                        case 4:
+                            returnValue.Add(p.controller == 0 ? locationMySZone4 : locationOpSZone4);
+                            break;
+                    }
+                }
+            }
+            else
+            {
+                if ((p.location & (uint)CardLocation.Overlay) > 0)
+                    returnValue.Add(locationOverlay);
+                else if ((p.location & (uint)CardLocation.Deck) > 0)
+                    returnValue.Add(locationDeck);
+                else if ((p.location & (uint)CardLocation.Extra) > 0)
+                    returnValue.Add(locationExtra);
+                else if ((p.location & (uint)CardLocation.Hand) > 0)
+                    returnValue.Add(locationHand);
+                else if ((p.location & (uint)CardLocation.Grave) > 0)
+                    returnValue.Add(locationGrave);
+                else if ((p.location & (uint)CardLocation.Removed) > 0)
+                    returnValue.Add(locationRemoved);
+
+                returnValue.Add(p.controller == 0 ? controllerMe : controllerOp);
+            }
+            return returnValue;
+        }
+
+        #endregion
+
+        #region Card Icon
+
+        public Sprite GetCardRegulationIcon(int code , Banlist banlist)
+        {
+            var regulation = banlist.GetQuantity(code);
+            return regulation switch
+            {
+                3 => typeNone,
+                2 => limit2,
+                1 => limit1,
+                _ => banned,
+            };
+        }
+
+        public Sprite GetCardAttributeIcon(Card data, bool render = false)
+        {
+            bool rushDuel = CardRenderer.NeedRushDuelStyle(data.Id);
+            if (data.HasType(CardType.Monster))
+            {
+                if ((data.Attribute & (uint)CardAttribute.Light) > 0)
+                    return rushDuel && render ? rd_Attribute_Light : attributeLight;
+                else if ((data.Attribute & (uint)CardAttribute.Dark) > 0)
+                    return rushDuel && render ? rd_Attribute_Dark : attributeDark;
+                else if ((data.Attribute & (uint)CardAttribute.Water) > 0)
+                    return rushDuel && render ? rd_Attribute_Water : attributeWater;
+                else if ((data.Attribute & (uint)CardAttribute.Fire) > 0)
+                    return rushDuel && render ? rd_Attribute_Fire : attributeFire;
+                else if ((data.Attribute & (uint)CardAttribute.Earth) > 0)
+                    return rushDuel && render ? rd_Attribute_Earth : attributeEarth;
+                else if ((data.Attribute & (uint)CardAttribute.Wind) > 0)
+                    return rushDuel && render ? rd_Attribute_Wind : attributeWind;
+                else
+                    return rushDuel && render ? rd_Attribute_Divine : attributeDivine;
+            }
+            else if (data.HasType(CardType.Spell))
+                return attributeSpell;
+            else
+                return attributeTrap;
+        }
+
+        public Sprite GetCardSpellTrapTypeIcon(Card data)
+        {
+            if (data.HasType(CardType.Monster))
+            {
+                return null;
+            }
+            else
+            {
+                if (data.HasType(CardType.Counter))
+                    return typeCounter;
+                else if (data.HasType(CardType.Field))
+                    return typeField;
+                else if (data.HasType(CardType.Equip))
+                    return typeEquip;
+                else if (data.HasType(CardType.Continuous))
+                    return typeContinuous;
+                else if (data.HasType(CardType.QuickPlay))
+                    return typeQuickPlay;
+                else if (data.HasType(CardType.Ritual))
+                    return typeRitual;
+                else
+                    return typeNone;
+            }
+        }
+
+        public Sprite GetCardRaceIcon(Card data)
+        {
+            if (data.HasType(CardType.Monster))
+            {
+                if ((data.Race & (uint)CardRace.Warrior) > 0)
+                    return raceWarrior;
+                else if ((data.Race & (uint)CardRace.SpellCaster) > 0)
+                    return raceSpellCaster;
+                else if ((data.Race & (uint)CardRace.Fairy) > 0)
+                    return raceFairy;
+                else if ((data.Race & (uint)CardRace.Fiend) > 0)
+                    return raceFiend;
+                else if ((data.Race & (uint)CardRace.Zombie) > 0)
+                    return raceZombie;
+                else if ((data.Race & (uint)CardRace.Machine) > 0)
+                    return raceMachine;
+                else if ((data.Race & (uint)CardRace.Aqua) > 0)
+                    return raceAqua;
+                else if ((data.Race & (uint)CardRace.Pyro) > 0)
+                    return racePyro;
+                else if ((data.Race & (uint)CardRace.Rock) > 0)
+                    return raceRock;
+                else if ((data.Race & (uint)CardRace.WindBeast) > 0)
+                    return raceWindBeast;
+                else if ((data.Race & (uint)CardRace.Plant) > 0)
+                    return racePlant;
+                else if ((data.Race & (uint)CardRace.Insect) > 0)
+                    return raceInsect;
+                else if ((data.Race & (uint)CardRace.Thunder) > 0)
+                    return raceThunder;
+                else if ((data.Race & (uint)CardRace.Dragon) > 0)
+                    return raceDragon;
+                else if ((data.Race & (uint)CardRace.Beast) > 0)
+                    return raceBeast;
+                else if ((data.Race & (uint)CardRace.BeastWarrior) > 0)
+                    return raceBeastWarrior;
+                else if ((data.Race & (uint)CardRace.Dinosaur) > 0)
+                    return raceDinosaur;
+                else if ((data.Race & (uint)CardRace.Fish) > 0)
+                    return raceFish;
+                else if ((data.Race & (uint)CardRace.SeaSerpent) > 0)
+                    return raceSeaSerpent;
+                else if ((data.Race & (uint)CardRace.Reptile) > 0)
+                    return raceReptile;
+                else if ((data.Race & (uint)CardRace.Psycho) > 0)
+                    return racePsycho;
+                else if ((data.Race & (uint)CardRace.DivineBeast) > 0)
+                    return raceDivineBeast;
+                else if ((data.Race & (uint)CardRace.CreatorGod) > 0)
+                    return raceCreatorGod;
+                else if ((data.Race & (uint)CardRace.Wyrm) > 0)
+                    return raceWyrm;
+                else if ((data.Race & (uint)CardRace.Cyberse) > 0)
+                    return raceCyberse;
+                else if ((data.Race & (uint)CardRace.Illustion) > 0)
+                    return raceIllustion;
+                else
+                    return typeNone;
+            }
+            else
+                return null;
+        }
+
+        public Sprite GetCardPoolIcon(Card data)
+        {
+            if (data.isPre)
+                return cardPoolPRE;
+            if ((data.Ot & 4) > 0)
+                return cardPoolDIY;
+            if ((data.Ot & 1) > 0 && (data.Ot & 2) == 0)
+                return cardPoolOCG;
+            if ((data.Ot & 2) > 0 && (data.Ot & 1) == 0)
+                return cardPoolTCG;
+            return typeNone;
+        }
+
+        public Texture2D GetCardUnloadTexture(Card data)
+        {
+            if (data.HasType(CardType.Pendulum))
+            {
+                if (data.HasType(CardType.Normal))
+                    return cardFramePendulumNormal.texture;
+                else if (data.HasType(CardType.Xyz))
+                    return cardFramePendulumXyz.texture;
+                else if (data.HasType(CardType.Synchro))
+                    return cardFramePendulumSynchro.texture;
+                else if (data.HasType(CardType.Fusion))
+                    return cardFramePendulumFusion.texture;
+                else if (data.HasType(CardType.Ritual))
+                    return cardFramePendulumRitual.texture;
+                else
+                    return cardFramePendulumEffect.texture;
+            }
+            else
+            {
+                if (data.HasType(CardType.Normal))
+                    return cardFrameNormal.texture;
+                else if (data.HasType(CardType.Xyz))
+                    return cardFrameXyz.texture;
+                else if (data.HasType(CardType.Synchro))
+                    return cardFrameSynchro.texture;
+                else if (data.HasType(CardType.Fusion))
+                    return cardFrameFusion.texture;
+                else if (data.HasType(CardType.Ritual) && data.HasType(CardType.Monster))
+                    return cardFrameRitual.texture;
+                else if (data.HasType(CardType.Link))
+                    return cardFrameLink.texture;
+                else if (data.HasType(CardType.Spell))
+                    return cardFrameSpell.texture;
+                else if (data.HasType(CardType.Trap))
+                    return cardFrameTrap.texture;
+                else if (data.HasType(CardType.Token))
+                    return cardFrameToken.texture;
+                else
+                    return cardFrameEffect.texture;
+            }
+
+        }
+
+        #endregion
     }
 }

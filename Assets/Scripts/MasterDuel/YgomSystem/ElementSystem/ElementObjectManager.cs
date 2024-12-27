@@ -104,7 +104,11 @@ namespace YgomSystem.ElementSystem
 
         public GameObject GetNestedElement(string label)
 		{
-			return null;
+			var paths = label.Split('/');
+			var manager = this;
+			for (int i = 0; i < paths.Length - 1; i++)
+				manager = manager.GetElement<ElementObjectManager>(paths[i]);
+			return manager.GetElement(paths[^1]);
 		}
 
 		public T GetElement<T>(string label) where T : UnityEngine.Object
@@ -117,10 +121,14 @@ namespace YgomSystem.ElementSystem
 
         public T GetNestedElement<T>(string label) where T : UnityEngine.Object
 		{
-			return null;
-		}
+            var paths = label.Split('/');
+            var manager = this;
+            for (int i = 0; i < paths.Length - 1; i++)
+                manager = manager.GetElement<ElementObjectManager>(paths[i]);
+            return manager.GetElement<T>(paths[^1]);
+        }
 
-		public void SetCallback(string label, UnityAction callback)
+        public void SetCallback(string label, UnityAction callback)
 		{
 		}
 

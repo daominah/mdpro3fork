@@ -20,7 +20,7 @@ namespace MDPro3.UI
         {
             base.OnClick();
             if (code == 0) return;
-            Program.I().mate.ViewMate(code);
+            Program.instance.mate.ViewMate(code);
         }
     }
 }

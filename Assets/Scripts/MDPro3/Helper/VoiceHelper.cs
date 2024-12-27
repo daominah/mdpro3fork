@@ -7,6 +7,7 @@ using UnityEngine;
 using MDPro3.YGOSharp.OCGWrapper.Enums;
 using MDPro3.YGOSharp;
 using static MDPro3.VoiceController;
+using MDPro3.Utility;
 
 namespace MDPro3
 {
@@ -48,7 +49,7 @@ namespace MDPro3
 
         public static void Load()
         {
-            var condition = Program.I().ocgcore.condition;
+            var condition = Program.instance.ocgcore.condition;
             var chara = Config.Get(condition + "Character0", defaultCharacter);
             var configLanguage = Language.GetConfig();
 
@@ -125,7 +126,7 @@ namespace MDPro3
 
         public static List<VoiceData> GetVoiceDatas(Package p)
         {
-            var core = Program.I().ocgcore;
+            var core = Program.instance.ocgcore;
             Load();
 
             var returnValue = new List<VoiceData>();
@@ -351,7 +352,7 @@ namespace MDPro3
                         isMe = to.controller == 0;
 
                         if ((reason & (uint)CardReason.RELEASE) > 0 
-                            && (card.GetData().Type & (uint)CardType.Monster) > 0)
+                            && card.GetData().HasType(CardType.Monster))
                         {
                             if (lastVoiceIsRelease)
                                 break;
@@ -394,15 +395,15 @@ namespace MDPro3
                             {
                                 patternIndex = -1;
 
-                                if ((c.Type & (uint)CardType.Link) > 0)
+                                if (c.HasType(CardType.Link))
                                     subCategory = (int)SummonSub.Link;
-                                else if ((c.Type & (uint)CardType.Fusion) > 0)
+                                else if (c.HasType(CardType.Fusion))
                                     subCategory = (int)SummonSub.Fusion;
-                                else if ((c.Type & (uint)CardType.Synchro) > 0)
+                                else if (c.HasType(CardType.Synchro))
                                     subCategory = (int)SummonSub.Sync;
-                                else if ((c.Type & (uint)CardType.Xyz) > 0)
+                                else if (c.HasType(CardType.Xyz))
                                     subCategory = (int)SummonSub.Xyz;
-                                else if ((c.Type & (uint)CardType.Ritual) > 0)
+                                else if (c.HasType(CardType.Ritual))
                                     subCategory = (int)SummonSub.Ritual;
                             }
                             else if (core.log.psum)
@@ -891,9 +892,9 @@ namespace MDPro3
         
         static bool NeedBeforeCardEffect(bool isMe)
         {
-            if(Program.I().ocgcore.cardsInChain.Count == 0)
+            if(Program.instance.ocgcore.cardsInChain.Count == 0)
                 return false;
-            if ((Program.I().ocgcore.cardsInChain[^1].p.controller == 0) == isMe)
+            if ((Program.instance.ocgcore.cardsInChain[^1].p.controller == 0) == isMe)
                 return false;
             else
                 return true;
@@ -947,31 +948,31 @@ namespace MDPro3
                 returnValue.subCategory = (int)CardEffectSub.PendulumScale;
             else if (GameCard.InPendulumZoneIf(gps, code))
                 returnValue.subCategory = (int)CardEffectSub.PendulumEffect;
-            else if ((c.Type & (uint)CardType.Monster) > 0)
+            else if (c.HasType(CardType.Monster))
                 returnValue.subCategory = (int)CardEffectSub.MonsterEffect;
 
             if ((gps.location & (uint)CardLocation.MonsterZone) == 0)
             {
-                if ((c.Type & (uint)CardType.Spell) > 0)
+                if (c.HasType(CardType.Spell))
                 {
                     returnValue.subCategory = (int)CardEffectSub.Magic;
-                    if ((c.Type & (uint)CardType.QuickPlay) > 0)
+                    if (c.HasType(CardType.QuickPlay))
                         returnValue.subCategory = (int)CardEffectSub.QuickPlayMagic;
-                    if ((c.Type & (uint)CardType.Continuous) > 0)
+                    if (c.HasType(CardType.Continuous))
                         returnValue.subCategory = (int)CardEffectSub.PermanentMagic;
-                    if ((c.Type & (uint)CardType.Equip) > 0)
+                    if (c.HasType(CardType.Equip))
                         returnValue.subCategory = (int)CardEffectSub.EquipMagic;
-                    if ((c.Type & (uint)CardType.Ritual) > 0)
+                    if (c.HasType(CardType.Ritual))
                         returnValue.subCategory = (int)CardEffectSub.RitualMagic;
-                    if ((c.Type & (uint)CardType.Field) > 0)
+                    if (c.HasType(CardType.Field))
                         returnValue.subCategory = (int)CardEffectSub.FieldMagic;
                 }
-                if ((c.Type & (uint)CardType.Trap) > 0)
+                if (c.HasType(CardType.Trap))
                 {
                     returnValue.subCategory = (int)CardEffectSub.Trap;
-                    if ((c.Type & (uint)CardType.Continuous) > 0)
+                    if (c.HasType(CardType.Continuous))
                         returnValue.subCategory = (int)CardEffectSub.PermanentTrap;
-                    if ((c.Type & (uint)CardType.Counter) > 0)
+                    if (c.HasType(CardType.Counter))
                         returnValue.subCategory = (int)CardEffectSub.CounterTrap;
                 }
             }
@@ -1034,7 +1035,7 @@ namespace MDPro3
         //2 losing
         static int LeadingStateOfPlayer()
         {
-            var core = Program.I().ocgcore;
+            var core = Program.instance.ocgcore;
 
             if (core.life0 >= core.lpLimit / 2)
             {
@@ -1057,7 +1058,7 @@ namespace MDPro3
 
         static int LeadingStateOfRival()
         {
-            var core = Program.I().ocgcore;
+            var core = Program.instance.ocgcore;
             if (core.life1 >= core.lpLimit / 2)
             {
                 if (core.life0 < core.lpLimit / 2)

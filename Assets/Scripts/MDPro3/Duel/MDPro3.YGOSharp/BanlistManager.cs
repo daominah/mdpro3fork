@@ -7,6 +7,7 @@ namespace MDPro3.YGOSharp
     public static class BanlistManager
     {
         public static List<Banlist> Banlists { get; private set; }
+        public static string EmptyBanlistName = "N/A";
 
         public static void Initialize()
         {
@@ -47,12 +48,12 @@ namespace MDPro3.YGOSharp
             reader = new StreamReader(Program.lflistPath);
             InitializeFromReader(reader);
             reader.Close();
-            current = new Banlist();
-            current.Name ="N/A";
+            current = new();
+            current.Name = EmptyBanlistName;
             Banlists.Add(current);
 
-            Program.I().editDeck.banlist = Banlists[0];
-            Program.I().editDeck.SetBanlistName(Program.I().editDeck.banlist.Name);
+            Program.instance.editDeck.banlist = Banlists[0];
+            Program.instance.editDeck.SetBanlistName(Program.instance.editDeck.banlist.Name);
         }
 
         public static void InitializeFromReader(StreamReader reader)

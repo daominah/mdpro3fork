@@ -11,7 +11,7 @@ namespace MDPro3.UI
         private void Start()
         {
             foreach (Tab tab in tabs)
-                Program.onScreenChanged += tab.AdjustSize;
+                SystemEvent.OnResolutionChange += tab.AdjustSize;
         }
 
         public void Tab(Tab tab)

@@ -16,7 +16,7 @@ namespace MDPro3.UI
         public override void InitializeSelections()
         {
             base.InitializeSelections();
-            Program.I().currentServant.returnAction = null;
+            Program.instance.currentServant.returnAction = null;
             for (int i = 1; i < selections.Count; i++)
             {
                 GameObject newSelection = Instantiate(item);
@@ -31,7 +31,7 @@ namespace MDPro3.UI
                     {
                         var binaryMaster = new BinaryMaster();
                         binaryMaster.writer.Write(int.Parse(selected));
-                        Program.I().ocgcore.SendReturn(binaryMaster.Get());
+                        Program.instance.ocgcore.SendReturn(binaryMaster.Get());
                     }
                     Hide();
                 });

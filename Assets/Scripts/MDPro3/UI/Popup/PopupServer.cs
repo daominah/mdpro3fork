@@ -2,11 +2,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using MDPro3.YGOSharp;
-using System.Data;
 
 namespace MDPro3.UI
 {
-    public class PopupServer : Popup
+    public class PopupServer : PopupBase
     {
         [Header("Popup Server")]
         public Text textLflist;
@@ -38,8 +37,8 @@ namespace MDPro3.UI
         public override void OnConfirm()
         {
             base.OnConfirm();
-            Program.I().online.serverSelections = GetSelections();
-            whenQuitDo = () => { Program.I().online.CreateServer(); };
+            Program.instance.online.serverSelections = GetSelections();
+            whenQuitDo = () => { Program.instance.online.CreateServer(); };
             Hide();
         }
         public override void OnCancel()
@@ -69,7 +68,8 @@ namespace MDPro3.UI
         {
             List<string> selections = new List<string>
             {
-                InterString.Get("禁限卡表")
+                InterString.Get("禁限卡表"),
+                string.Empty
             };
             foreach (var list in BanlistManager.Banlists)
                 selections.Add(list.Name);
@@ -78,7 +78,7 @@ namespace MDPro3.UI
         void ChangeBanlist()
         {
             string selected = UnityEngine.EventSystems.EventSystem.current.
-                currentSelectedGameObject.transform.GetChild(0).GetComponent<Text>().text;
+                currentSelectedGameObject.GetComponent<SelectionButton>().GetButtonText();
             textLflist.text = selected;
         }
 
@@ -86,7 +86,8 @@ namespace MDPro3.UI
         {
             List<string> selections = new List<string>
             {
-                InterString.Get("卡片允许")
+                InterString.Get("卡片允许"),
+                string.Empty
             };
             for (int i = 1481; i < 1487; i++)
                 selections.Add(StringHelper.GetUnsafe(i));
@@ -95,14 +96,15 @@ namespace MDPro3.UI
         void ChangePool()
         {
             string selected = UnityEngine.EventSystems.EventSystem.current.
-                currentSelectedGameObject.transform.GetChild(0).GetComponent<Text>().text;
+                currentSelectedGameObject.GetComponent<SelectionButton>().GetButtonText();
             textPool.text = selected;
         }
         public void OnMode()
         {
             List<string> selections = new List<string>
             {
-                InterString.Get("决斗模式")
+                InterString.Get("决斗模式"),
+                string.Empty
             };
             for (int i = 1244; i < 1247; i++)
                 selections.Add(StringHelper.GetUnsafe(i));
@@ -111,14 +113,14 @@ namespace MDPro3.UI
         void ChangeMode()
         {
             string selected = UnityEngine.EventSystems.EventSystem.current.
-                currentSelectedGameObject.transform.GetChild(0).GetComponent<Text>().text;
+                currentSelectedGameObject.GetComponent<SelectionButton>().GetButtonText();
             textMode.text = selected;
         }
 
 
         void OnSubPopupClose()
         {
-            Program.I().currentServant.returnAction = Hide;
+            Program.instance.currentServant.returnAction = Hide;
         }
 
     }

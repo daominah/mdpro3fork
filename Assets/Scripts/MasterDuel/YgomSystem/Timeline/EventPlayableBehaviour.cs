@@ -38,7 +38,7 @@ namespace YgomSystem.Timeline
                     e.isDone = true;
                     DOTween.To(v => { }, 0, 0, (float)e.time).OnComplete(() =>
                     {
-                        Program.I().ocgcore.endingAction?.Invoke();
+                        Program.instance.ocgcore.endingAction?.Invoke();
                     });
                 }
             }
@@ -66,31 +66,31 @@ namespace YgomSystem.Timeline
 			played = true;
             if (label == "StartCard")
             {
-                Program.I().ocgcore.startCard?.Invoke();
+                Program.instance.ocgcore.startCard?.Invoke();
             }
             else if (label == "StrongSummon")
             {
-                if (Program.I().currentServant != Program.I().ocgcore)
+                if (Program.instance.currentServant != Program.instance.ocgcore)
                     return;
                 MDPro3.TimelineManager.skippable = false;
-                var code = Program.I().ocgcore.summonCard.GetData().Id;
+                var code = Program.instance.ocgcore.summonCard.GetData().Id;
                 if (MonsterCutin.HasCutin(code))
-                    MonsterCutin.Play(code, (int)Program.I().ocgcore.summonCard.p.controller);
+                    MonsterCutin.Play(code, (int)Program.instance.ocgcore.summonCard.p.controller);
             }
             else if(label == "Next")//Engage
             {
-                if (Program.I().ocgcore.nextMoveManager == null)
+                if (Program.instance.ocgcore.nextMoveManager == null)
                     return;
-                var target = Program.I().ocgcore.nextMoveManager.GetElement<Transform>("DummyCard01");
-                var card = Program.I().ocgcore.lastMoveCard;
+                var target = Program.instance.ocgcore.nextMoveManager.GetElement<Transform>("DummyCard01");
+                var card = Program.instance.ocgcore.lastMoveCard;
                 card.model.SetActive(true);
                 card.ResetModelRotation();
                 card.model.transform.position = target.position;
                 card.model.transform.eulerAngles = new Vector3(- target.eulerAngles.x, 0f, 0f);
 
-                Program.I().ocgcore.nextMoveAction = null;
-                card.Move(card.p, false, 0f, Program.I().ocgcore.nextMoveTime);
-                DOTween.To(v => { }, 0, 0, Program.I().ocgcore.nextMoveTime).OnComplete(() =>
+                Program.instance.ocgcore.nextMoveAction = null;
+                card.Move(card.p, false, 0f, Program.instance.ocgcore.nextMoveTime);
+                DOTween.To(v => { }, 0, 0, Program.instance.ocgcore.nextMoveTime).OnComplete(() =>
                 {
                     OcgCore.messagePass = true;
                 });

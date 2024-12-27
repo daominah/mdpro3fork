@@ -10,56 +10,32 @@ using MDPro3.YGOSharp;
 using MDPro3.UI;
 using MDPro3.YGOSharp.OCGWrapper.Enums;
 using MDPro3.Net;
+using TMPro;
+using UnityEngine.EventSystems;
+using static MDPro3.UI.ChatPanel;
 
 namespace MDPro3
 {
     public class Room : Servant
     {
-        GameObject chatItemMe;
-        GameObject chatItemOp;
-        GameObject chatItemSystem;
+        [Header("Room")]
+        private List<SelectionButton_RoomPlayer> roomPlayers;
 
-        public RoomPlayer player0;
-        public RoomPlayer player1;
-        public RoomPlayer player2;
-        public RoomPlayer player3;
-        List<RoomPlayer> roomPlayers = new List<RoomPlayer>();
-
-        public RectTransform left;
-        public RectTransform middle;
-        public RectTransform right;
-        public Button btnToDuel;
-        public Button btnToWatch;
-        public Button btnReady;
-        public Button btnStart;
-        public Button btnSelectAI;
-
-        public Text description;
-        public ScrollRect chatScroll;
-        public InputField chatInput;
-
-        public Button deckBtn;
-        public Image deckIcon;
-        public Text deckName;
-        public RawImage card1;
-        public RawImage card2;
-        public RawImage card3;
-
-        public uint lfList;
-        public byte rule;
-        public byte mode;
-        public bool noCheckDeck;
-        public bool noShuffleDeck;
-        public int startLp = 8000;
-        public byte startHand;
-        public byte drawCount;
-        public short timeLimit = 180;
-        public int observerCount;
-        public int selfType;
-        public bool isHost;
-        public bool needSide;
-        public bool joinWithReconnect;
-        public bool sideWaitingObserver;
+        public static uint lfList;
+        public static byte rule;
+        public static byte mode;
+        public static bool noCheckDeck;
+        public static bool noShuffleDeck;
+        public static int startLp = 8000;
+        public static byte startHand;
+        public static byte drawCount;
+        public static short timeLimit = 180;
+        public static int observerCount;
+        public static int selfType;
+        public static bool isHost;
+        public static bool needSide;
+        public static bool joinWithReconnect;
+        public static bool sideWaitingObserver;
         public static bool fromSolo;
         public static bool soloLockHand;
         public static bool fromLocalHost;
@@ -69,248 +45,95 @@ namespace MDPro3
             public string name = "";
             public bool ready;
         }
-        public Player[] players = new Player[32];
+        public static Player[] players = new Player[32];
 
         Deck deck;
 
         public bool duelEnded;
 
-
         #region Servant
         public override void Initialize()
         {
             depth = 2;
-            haveLine = false;
-            returnServant = Program.I().online;
+            showLine = false;
+            returnServant = Program.instance.online;
             base.Initialize();
-            deckBtn.GetComponent<ButtonHover>().hoverIn = () => Hover(true);
-            deckBtn.GetComponent<ButtonHover>().hoverOut = () => Hover(false);
-
-            var handle = Addressables.LoadAssetAsync<GameObject>("ChatItemMe");
-            handle.Completed += (result) =>
+            roomPlayers = new List<SelectionButton_RoomPlayer>()
             {
-                chatItemMe = result.Result;
+                Manager.GetElement<SelectionButton_RoomPlayer>("ButtonPlayer0"),
+                Manager.GetElement<SelectionButton_RoomPlayer>("ButtonPlayer1"),
+                Manager.GetElement<SelectionButton_RoomPlayer>("ButtonPlayer2"),
+                Manager.GetElement<SelectionButton_RoomPlayer>("ButtonPlayer3")
             };
-            handle = Addressables.LoadAssetAsync<GameObject>("ChatItemOp");
-            handle.Completed += (result) =>
-            {
-                chatItemOp = result.Result;
-            };
-            handle = Addressables.LoadAssetAsync<GameObject>("ChatItemSystem");
-            handle.Completed += (result) =>
-            {
-                chatItemSystem = result.Result;
-            };
-            chatInput.GetComponent<InputFieldSubmit>().onSubmit.AddListener(OnChat);
-            Program.onScreenChanged += OnResize;
 
-            roomPlayers.Add(player0);
-            roomPlayers.Add(player1);
-            roomPlayers.Add(player2);
-            roomPlayers.Add(player3);
-
-            ChatOff(0);
+            transform.GetChild(0).gameObject.SetActive(false);
         }
-
-        public bool chatOn;
-        public bool chatSwitching;
-        public void SwitchChat(float moveTime)
-        {
-            if (chatOn)
-                ChatOff(moveTime);
-            else
-                ChatOn(moveTime);
-        }
-
-        public void ChatOn(float moveTime)
-        {
-            if (chatSwitching)
-                return;
-            chatSwitching = true;
-            chatOn = true;
-            OnResize();
-            var cg = right.GetComponent<CanvasGroup>();
-            cg.alpha = 1f;
-            cg.blocksRaycasts = true;
-            cg.interactable = true;
-            right.DOAnchorPosX(0, moveTime).OnComplete(() => chatSwitching = false);
-            if(!isShowed && Program.root != Program.rootAndroid)
-                chatInput.Select();
-        }
-
-        public void ChatOff(float moveTime)
-        {
-            //if (chatSwitching)
-            //    return;
-            chatSwitching = true;
-            chatOn = false;
-            OnResize();
-            var width = right.sizeDelta.x;
-            right.DOAnchorPosX(width, moveTime).OnComplete(() =>
-            {
-                var cg = right.GetComponent<CanvasGroup>();
-                cg.alpha = 0f;
-                cg.blocksRaycasts = false;
-                cg.interactable = false;
-                chatSwitching = false;
-            });
-        }
-
-        public override void ApplyShowArrangement(int preDepth)
+        protected override void ApplyShowArrangement(int preDepth)
         {
             base.ApplyShowArrangement(preDepth);
             coreShowing = 0;
-            ChatOn(transitionTime);
-            Program.I().ocgcore.handler = Handler;
-            deckName.text = Config.Get("DeckInUse", "@ui");
-            if (File.Exists(Program.deckPath + deckName.text + Program.ydkExpansion))
-                deck = new Deck(Program.deckPath + deckName.text + Program.ydkExpansion);
+            Program.instance.ui_.chatPanel.Show(false);
+            Program.instance.ocgcore.handler = Handler;
+
+             var deckName = Config.Get("DeckInUse", "@ui");
+            if (File.Exists(Program.deckPath + deckName + Program.ydkExpansion))
+                deck = new Deck(Program.deckPath + deckName + Program.ydkExpansion);
             else
             {
                 deck = null;
-                deckName.text = InterString.Get("请点击此处选择卡组");
+                deckName = InterString.Get("请点击此处选择卡组");
             }
-
-            StartCoroutine(RefreshAsync());
-        }
-
-        public override void ApplyHideArrangement(int preDepth)
-        {
-            base.ApplyHideArrangement(preDepth);
-            ChatOff(transitionTime);
-        }
-
-        IEnumerator RefreshAsync()
-        {
-            player0.gameObject.SetActive(false);
-            player1.gameObject.SetActive(false);
-            player2.gameObject.SetActive(false);
-            player3.gameObject.SetActive(false);
-            deckIcon.color = Color.clear;
-            if(deck != null)
-            {
-                var ie = Program.items.LoadItemIconAsync(deck.Case.ToString(), Items.ItemType.Case);
-                StartCoroutine(ie);
-                while (ie.MoveNext())
-                    yield return null;
-                deckIcon.color = Color.white;
-                deckIcon.sprite = ie.Current;
-
-                while (!Appearance.loaded)
-                    yield return null;
-            }
+            Manager.GetElement<SelectionButton_DeckSelector>("DeckSelector").SetDeck(deck, deckName);
             Realize();
-            if (deck != null)
-            {
-                Material pMat = null;
-                if (deck.Pickup.Count > 0 && deck.Pickup[0] != 0)
-                {
-                    var task = TextureManager.LoadCardAsync(deck.Pickup[0], true);
-                    while (!task.IsCompleted)
-                        yield return null;
-                    card1.texture = task.Result;
-                    var mat = TextureManager.GetCardMaterial(deck.Pickup[0]);
-                    card1.material = mat;
-                }
-                else
-                {
-                    if (pMat == null)
-                    {
-                        var ip = ABLoader.LoadProtectorMaterial(deck.Protector.ToString());
-                        while (ip.MoveNext())
-                            yield return null;
-                        pMat = ip.Current;
-                    }
-                    card1.texture = null;
-                    card1.material = pMat;
-                }
-                if (deck.Pickup.Count > 1 && deck.Pickup[1] != 0)
-                {
-                    var task = TextureManager.LoadCardAsync(deck.Pickup[1], true);
-                    while (!task.IsCompleted)
-                        yield return null;
-                    card2.texture = task.Result;
-                    var mat = TextureManager.GetCardMaterial(deck.Pickup[1]);
-                    card2.material = mat;
-                }
-                else
-                {
-                    if (pMat == null)
-                    {
-                        var ip = ABLoader.LoadProtectorMaterial(deck.Protector.ToString());
-                        while (ip.MoveNext())
-                            yield return null;
-                        pMat = ip.Current;
-                    }
-                    card2.texture = null;
-                    card2.material = pMat;
-                }
-                if (deck.Pickup.Count > 2 && deck.Pickup[2] != 0)
-                {
-                    var task = TextureManager.LoadCardAsync(deck.Pickup[2], true);
-                    while (!task.IsCompleted)
-                        yield return null;
-                    card3.texture = task.Result;
-                    var mat = TextureManager.GetCardMaterial(deck.Pickup[2]);
-                    card3.material = mat;
-                }
-                else
-                {
-                    if (pMat == null)
-                    {
-                        var ip = ABLoader.LoadProtectorMaterial(deck.Protector.ToString());
-                        while (ip.MoveNext())
-                            yield return null;
-                        pMat = ip.Current;
-                    }
-                    card3.texture = null;
-                    card3.material = pMat;
-                }
-            }
         }
-
-        public void Hover(bool hover)
+        protected override void ApplyHideArrangement(int preDepth)
         {
-            if (deck == null)
-                return;
-            card1.GetComponent<Animator>().SetBool("Hover", hover);
-            card2.GetComponent<Animator>().SetBool("Hover", hover);
-            card3.GetComponent<Animator>().SetBool("Hover", hover);
+            Program.instance.ui_.chatPanel.Hide();
+            base.ApplyHideArrangement(preDepth);
         }
-
-        void OnResize()
+        public override void OnExit()
         {
-            //left 420 -480
-            //right 500 - 600
-            var uiWidth = Screen.width * 1080f / Screen.height;
-            if (uiWidth >= 1920)
-            {
-                left.sizeDelta = new Vector2(480, 0);
-                right.sizeDelta = new Vector2(600, 0);
-            }
-            else if (uiWidth >= 1920 - 60)
-            {
-                left.sizeDelta = new Vector2(480 - (1920 - uiWidth), 0);
-                right.sizeDelta = new Vector2(600, 0);
-            }
-            else if (uiWidth >= 1920 - 60 - 100)
-            {
-                left.sizeDelta = new Vector2(420, 0);
-                right.sizeDelta = new Vector2(600 - (1920 - 60 - uiWidth), 0);
-            }
+            if (fromSolo)
+                returnServant = Program.instance.solo;
             else
             {
-                left.sizeDelta = new Vector2(420, 0);
-                right.sizeDelta = new Vector2(500, 0);
+                returnServant = Program.instance.online;
+                if (fromLocalHost)
+                    YgoServer.StopServer();
             }
-            middle.offsetMin = new Vector2(left.sizeDelta.x, 0);
-            middle.offsetMax = new Vector2(-right.sizeDelta.x, 0);
+            base.OnExit();
+            Program.instance.ocgcore.CloseConnection();
+        }
+        public override void SelectLastSelectable()
+        {
+            var selected = EventSystem.current.currentSelectedGameObject;
+            if (selected == null || selected != Selected)
+            {
+                if(Selected != null && Selected.gameObject.activeInHierarchy)
+                    EventSystem.current.SetSelectedGameObject(Selected.gameObject);
+                else
+                    EventSystem.current.SetSelectedGameObject(Manager.GetElement("ButtonToDuel"));
+            }
+        }
 
-            float middleWidth = middle.rect.width;
-            btnToDuel.GetComponent<RectTransform>().sizeDelta = new Vector2((middleWidth - 50) / 2f - 50, 80);
-            btnToWatch.GetComponent<RectTransform>().sizeDelta = new Vector2((middleWidth - 50) / 2f - 50, 80);
-            btnReady.GetComponent<RectTransform>().sizeDelta = new Vector2((middleWidth - 50) / 2f - 50, 80);
-            btnStart.GetComponent<RectTransform>().sizeDelta = new Vector2((middleWidth - 50) / 2f - 50, 80);
+        protected override bool NeedResponseInput()
+        {
+            if (Program.instance.ui_.chatPanel.input.isFocused)
+                return false;
+            return base.NeedResponseInput();
+        }
+        #endregion
+
+        public void SelectMiddleSelectableFromRight()
+        {
+            if (!showing)
+                return;
+            UserInput.NextSelectionIsAxis = true;
+
+            if (Manager.GetElement("ButtonStart").activeInHierarchy)
+                EventSystem.current.SetSelectedGameObject(Manager.GetElement("ButtonStart"));
+            else
+                EventSystem.current.SetSelectedGameObject(Manager.GetElement("ButtonToWatch"));
         }
 
         public void OnReady()
@@ -331,21 +154,6 @@ namespace MDPro3
             }
         }
 
-        public override void OnExit()
-        {
-            if (fromSolo)
-                returnServant = Program.I().solo;
-            else
-            {
-                returnServant = Program.I().online;
-                if (fromLocalHost)
-                    YgoServer.StopServer();
-            }
-            base.OnExit();
-            Program.I().ocgcore.CloseConnection();
-        }
-
-        #endregion
         public void Handler(byte[] buffer)
         {
             TcpHelper.CtosMessage_Response(buffer);
@@ -359,12 +167,12 @@ namespace MDPro3
             }
             else
             {
-                Program.I().solo.SwitchCondition(Solo.Condition.ForRoom);
-                Program.I().ShiftToServant(Program.I().solo);
+                Program.instance.solo.SwitchCondition(Solo.Condition.ForRoom);
+                Program.instance.ShiftToServant(Program.instance.solo);
             }
         }
 
-        bool RoomIsFull()
+        private bool RoomIsFull()
         {
             int playerSeats = 2;
             if (mode == 2)
@@ -376,21 +184,6 @@ namespace MDPro3
             return true;
         }
 
-        public void OnChat(string content)
-        {
-            if (content == string.Empty)
-                return;
-            TcpHelper.CtosMessage_Chat(content);
-            chatInput.text = string.Empty;
-        }
-
-        public void OnSend()
-        {
-            if (chatInput.text == string.Empty)
-                return;
-            AudioManager.PlaySE("SE_MENU_DECIDE");
-            OnChat(chatInput.text);
-        }
 
         public void OnToDuel()
         {
@@ -412,8 +205,8 @@ namespace MDPro3
                 MessageManager.Cast(InterString.Get("请先取消准备，再选择卡组。"));
                 return;
             }
-            Program.I().selectDeck.SwitchCondition(SelectDeck.Condition.ForDuel);
-            Program.I().ShiftToServant(Program.I().selectDeck);
+            Program.instance.selectDeck.SwitchCondition(SelectDeck.Condition.ForDuel);
+            Program.instance.ShiftToServant(Program.instance.selectDeck);
         }
 
         public void OnKick(int player)
@@ -421,275 +214,28 @@ namespace MDPro3
             TcpHelper.CtosMessage_HsKick(player);
         }
 
-        List<GameObject> chatItems = new List<GameObject>();
-        public enum PlayerPosition
+        private void Realize()
         {
-            Me,
-            MyTag,
-            Op,
-            OpTag,
-            WatchMe,
-            WatchMyTag,
-            WatchOp,
-            WatchOpTag,
-            Other
-        }
-
-        SortedDictionary<int, string> cachedDialog = new SortedDictionary<int, string>();
-
-        public void AddChatItem(int player, string content)
-        {
-            if(coreShowing == 1)
-            {
-                cachedDialog.Add(player, content);
-                return;
-            }
-            if(coreShowing == 2 && cachedDialog.Count > 0)
-            {
-                var players = new List<int>();
-                var contents = new List<string>();
-                foreach(var element  in cachedDialog)
-                {
-                    players.Add(element.Key);
-                    contents.Add(element.Value);
-                }
-                cachedDialog.Clear();
-                for(int i = 0; i < players.Count; i++)
-                    AddChatItem(players[i], contents[i]);
-            }
-
-            if (player == -2)
-                return;
-
-            if (coreShowing == 2 && player < 4)
-            {
-                if (mode != 2)
-                {
-                    if (Program.I().ocgcore.isFirst && selfType == 1
-                        || !Program.I().ocgcore.isFirst && selfType == 0)
-                        player = (player + 1) % 2;
-                }
-                else
-                {
-                    if (Program.I().ocgcore.isFirst && selfType > 1
-                        || !Program.I().ocgcore.isFirst && selfType < 2)
-                        player = (player + 2) % 4;
-                }
-            }
-
-            var nickName = players[player]?.name;
-            GameObject item = null;
-            var position = GetPlayerPositon(player);
-            switch (position)
-            {
-                case PlayerPosition.Me:
-                    item = Instantiate(chatItemMe);
-                    item.transform.GetChild(2).GetComponent<Image>().material = Appearance.duelFrameMat0;
-                    item.transform.GetChild(2).GetComponent<Image>().sprite = Appearance.duelFace0;
-                    break;
-                case PlayerPosition.MyTag:
-                    item = Instantiate(chatItemMe);
-                    item.transform.GetChild(2).GetComponent<Image>().material = Appearance.duelFrameMat0Tag;
-                    item.transform.GetChild(2).GetComponent<Image>().sprite = Appearance.duelFace0Tag;
-                    break;
-                case PlayerPosition.Op:
-                    item = Instantiate(chatItemOp);
-                    item.transform.GetChild(2).GetComponent<Image>().material = Appearance.duelFrameMat1;
-                    item.transform.GetChild(2).GetComponent<Image>().sprite = Appearance.duelFace1;
-                    break;
-                case PlayerPosition.OpTag:
-                    item = Instantiate(chatItemOp);
-                    item.transform.GetChild(2).GetComponent<Image>().material = Appearance.duelFrameMat1Tag;
-                    item.transform.GetChild(2).GetComponent<Image>().sprite = Appearance.duelFace1Tag;
-                    break;
-                case PlayerPosition.WatchMe:
-                    item = Instantiate(chatItemMe);
-                    item.transform.GetChild(2).GetComponent<Image>().material = Appearance.watchFrameMat0;
-                    item.transform.GetChild(2).GetComponent<Image>().sprite = Appearance.watchFace0;
-                    break;
-                case PlayerPosition.WatchMyTag:
-                    item = Instantiate(chatItemMe);
-                    item.transform.GetChild(2).GetComponent<Image>().material = Appearance.watchFrameMat0Tag;
-                    item.transform.GetChild(2).GetComponent<Image>().sprite = Appearance.watchFace0Tag;
-                    break;
-                case PlayerPosition.WatchOp:
-                    item = Instantiate(chatItemOp);
-                    item.transform.GetChild(2).GetComponent<Image>().material = Appearance.watchFrameMat1;
-                    item.transform.GetChild(2).GetComponent<Image>().sprite = Appearance.watchFace1;
-                    break;
-                case PlayerPosition.WatchOpTag:
-                    item = Instantiate(chatItemOp);
-                    item.transform.GetChild(2).GetComponent<Image>().material = Appearance.watchFrameMat1Tag;
-                    item.transform.GetChild(2).GetComponent<Image>().sprite = Appearance.watchFace1Tag;
-                    break;
-                case PlayerPosition.Other:
-                    item = Instantiate(chatItemSystem);
-                    break;
-            }
-            item.transform.GetChild(0).GetComponent<Text>().text = nickName + ":";
-            item.transform.GetChild(1).GetComponent<Text>().text = content;
-            if(position == PlayerPosition.Other)
-            {
-                item.transform.GetChild(0).GetComponent<Text>().text = string.Empty;
-                item.transform.GetChild(1).GetComponent<Text>().text = string.Empty;
-                item.transform.GetChild(2).GetComponent<Text>().text = content;
-            }
-            item.transform.SetParent(chatScroll.content, false);
-            item.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -chatItems.Count * 150);
-            chatItems.Add(item);
-
-            chatScroll.content.sizeDelta = new Vector2(0, chatItems.Count * 150);
-            DOTween.To(() => chatScroll.verticalScrollbar.value, x => chatScroll.verticalScrollbar.value = x, 0, 0.2f);
-
-            var p = new Package();
-            p.Function = (int)GameMessage.sibyl_chat;
-            p.Data = new BinaryMaster();
-            p.Data.writer.Write(player);
-            p.Data.writer.WriteUnicode(content, content.Length + 1);
-            TcpHelper.AddRecordLine(p);
-
-            if (Program.I().ocgcore.isShowed)
-                Program.I().ocgcore.Chat(player, content);
-            if (Program.I().online.isShowed)
-                MessageManager.Cast(content);
-        }
-
-        public string GetPlayerName(int player)
-        {
-            string nickName = "";
-            switch (player)
-            {
-                case -1: //local name
-                    nickName = Config.Get("DuelPlayerName0", "@ui");
-                    break;
-                case 0: //from host
-                case 1: //from client
-                case 2: //host tag
-                case 3: //client tag
-                    nickName = players[player].name;
-                    var configName = GetConfigPlayerName(GetPlayerPositon(player));
-                    if (configName.Length > 0)
-                        nickName = configName;
-                    break;
-                case 7: //observer
-                    nickName += InterString.Get("观战者");
-                    break;
-                case 8: //system custom message, no prefix.
-                    nickName += "[System]";
-                    break;
-                case 9: //error message
-                    nickName += "[Script error]";
-                    break;
-                default: //from watcher or unknown
-                    nickName += "[---]";
-                    break;
-            }
-            return nickName;
-        }
-
-        public string GetConfigPlayerName(PlayerPosition position)
-        {
-            switch (position)
-            {
-                case PlayerPosition.Me:
-                    return Config.Get("DuelPlayerName0", "@ui");
-                case PlayerPosition.MyTag:
-                    return Config.Get("DuelPlayerName0Tag", "@ui");
-                case PlayerPosition.Op:
-                    return Config.Get("DuelPlayerName1", "@ui");
-                case PlayerPosition.OpTag:
-                    return Config.Get("DuelPlayerName1Tag", "@ui");
-                case PlayerPosition.WatchMe:
-                    return Config.Get("WatchPlayerName0", "@ui");
-                case PlayerPosition.WatchMyTag:
-                    return Config.Get("WatchPlayerName0Tag", "@ui");
-                case PlayerPosition.WatchOp:
-                    return Config.Get("WatchPlayerName1", "@ui");
-                case PlayerPosition.WatchOpTag:
-                    return Config.Get("WatchPlayerName1Tag", "@ui");
-                default:
-                    return string.Empty;
-            }
-        }
-
-        PlayerPosition GetPlayerPositon(int player)
-        {
-            PlayerPosition position;
-            if (player < 4)
-            {
-                if (mode < 2)
-                {
-                    if (selfType != 7)
-                    {
-                        if (selfType == player)
-                            position = PlayerPosition.Me;
-                        else
-                            position = PlayerPosition.Op;
-                    }
-                    else
-                    {
-                        if (player == 0)
-                            position = PlayerPosition.WatchMe;
-                        else
-                            position = PlayerPosition.WatchOp;
-                    }
-                }
-                else
-                {
-                    if (selfType != 7)
-                    {
-                        if (selfType == player)
-                            position = PlayerPosition.Me;
-                        else if ((selfType + player) % 4 == 1)
-                            position = PlayerPosition.MyTag;
-                        else
-                        {
-                            if (player == 0 || player == 2)
-                                position = PlayerPosition.Op;
-                            else
-                                position = PlayerPosition.OpTag;
-                        }
-                    }
-                    else
-                    {
-                        if (player == 0)
-                            position = PlayerPosition.WatchMe;
-                        else if (player == 1)
-                            position = PlayerPosition.WatchMyTag;
-                        else if (player == 2)
-                            position = PlayerPosition.WatchOp;
-                        else
-                            position = PlayerPosition.WatchOpTag;
-                    }
-                }
-            }
-            else
-                position = PlayerPosition.Other;
-            return position;
-        }
-
-        void Realize()
-        {
-            var description = "";
+            var roomInfo = string.Empty;
+            var rn = "\r\n";
             if (fromLocalHost)
             {
                 foreach(var ip in Tools.GetLocalIPv4())
-                    description += InterString.Get("本机地址：") + ip + "\r\n";
-                description += InterString.Get("端口：") + "7911\r\n";
+                    roomInfo += InterString.Get("本机地址：") + ip + rn;
+                roomInfo += InterString.Get("端口：") + "7911" + rn;
             }
-            description += StringHelper.GetUnsafe(1227) + StringHelper.GetUnsafe(1244 + mode) + "\r\n";//决斗模式：
-            description += StringHelper.GetUnsafe(1236) + StringHelper.GetUnsafe(1259 + Program.I().ocgcore.MasterRule) + "\r\n";//规则：
-            description += StringHelper.GetUnsafe(1225) + StringHelper.GetUnsafe(1481 + rule) + "\r\n";//卡片允许：
-            description += StringHelper.GetUnsafe(1226) + BanlistManager.GetName(lfList) + "\r\n";//禁限卡表
-            description += StringHelper.GetUnsafe(1231) + startLp + "\r\n";//初始基本分：
-            description += StringHelper.GetUnsafe(1232) + startHand + "\r\n";//初始手卡数：
-            description += StringHelper.GetUnsafe(1233) + drawCount + "\r\n";//每回合抽卡：
-            description += StringHelper.GetUnsafe(1237) + timeLimit + "\r\n";//每回合时间：
-            description += StringHelper.GetUnsafe(1253) + observerCount + "\r\n";//当前观战人数：
-            if (noCheckDeck) description += StringHelper.GetUnsafe(1229) + "\r\n";//不检查卡组
-            if (noShuffleDeck) description += StringHelper.GetUnsafe(1230);//不洗切卡组
-            this.description.text = description;
-            OnResize();
+            roomInfo += StringHelper.GetUnsafe(1227) + StringHelper.GetUnsafe(1244 + mode) + rn;//决斗模式：
+            roomInfo += StringHelper.GetUnsafe(1236) + StringHelper.GetUnsafe(1259 + Program.instance.ocgcore.MasterRule) + rn;//规则：
+            roomInfo += StringHelper.GetUnsafe(1225) + StringHelper.GetUnsafe(1481 + rule) + rn;//卡片允许：
+            roomInfo += StringHelper.GetUnsafe(1226) + BanlistManager.GetName(lfList) + rn;//禁限卡表
+            roomInfo += StringHelper.GetUnsafe(1231) + startLp + rn;//初始基本分：
+            roomInfo += StringHelper.GetUnsafe(1232) + startHand + rn;//初始手卡数：
+            roomInfo += StringHelper.GetUnsafe(1233) + drawCount + rn;//每回合抽卡：
+            roomInfo += StringHelper.GetUnsafe(1237) + timeLimit + rn;//每回合时间：
+            roomInfo += StringHelper.GetUnsafe(1253) + observerCount + rn;//当前观战人数：
+            if (noCheckDeck) roomInfo += StringHelper.GetUnsafe(1229) + rn;//不检查卡组
+            if (noShuffleDeck) roomInfo += StringHelper.GetUnsafe(1230);//不洗切卡组
+            Manager.GetElement<TextMeshProUGUI>("RoomInfo").text = roomInfo;
 
             if (!Appearance.loaded)
                 return;
@@ -701,112 +247,101 @@ namespace MDPro3
                 else
                 {
                     roomPlayers[i].gameObject.SetActive(true);
-                    roomPlayers[i].playerName.text = players[i].name;
-                    if (players[i].ready)
-                        roomPlayers[i].readyIcon.SetActive(true);
-                    else
-                        roomPlayers[i].readyIcon.SetActive(false);
-                    if (selfType == i)
-                        roomPlayers[i].playerName.color = Color.cyan;
-                    else
-                        roomPlayers[i].playerName.color = Color.white;
+                    roomPlayers[i].SetButtonText(players[i].name);
+                    roomPlayers[i].SetReadyIcon(players[i].ready);
+                    roomPlayers[i].SetButtonTextColor(selfType == i ? Color.cyan : Color.white);
 
                     var position = GetPlayerPositon(i);
                     switch (position)
                     {
                         case PlayerPosition.Me:
-                            roomPlayers[i].frame.material = Appearance.duelFrameMat0;
-                            roomPlayers[i].frame.sprite = Appearance.duelFace0;
+                            roomPlayers[i].GetAvatar().material = Appearance.duelFrameMat0;
+                            roomPlayers[i].GetAvatar().sprite = Appearance.duelFace0;
                             break;
                         case PlayerPosition.MyTag:
-                            roomPlayers[i].frame.material = Appearance.duelFrameMat0Tag;
-                            roomPlayers[i].frame.sprite = Appearance.duelFace0Tag;
+                            roomPlayers[i].GetAvatar().material = Appearance.duelFrameMat0Tag;
+                            roomPlayers[i].GetAvatar().sprite = Appearance.duelFace0Tag;
                             break;
                         case PlayerPosition.Op:
-                            roomPlayers[i].frame.material = Appearance.duelFrameMat1;
-                            roomPlayers[i].frame.sprite = Appearance.duelFace1;
+                            roomPlayers[i].GetAvatar().material = Appearance.duelFrameMat1;
+                            roomPlayers[i].GetAvatar().sprite = Appearance.duelFace1;
                             break;
                         case PlayerPosition.OpTag:
-                            roomPlayers[i].frame.material = Appearance.duelFrameMat1Tag;
-                            roomPlayers[i].frame.sprite = Appearance.duelFace1Tag;
+                            roomPlayers[i].GetAvatar().material = Appearance.duelFrameMat1Tag;
+                            roomPlayers[i].GetAvatar().sprite = Appearance.duelFace1Tag;
                             break;
                         case PlayerPosition.WatchMe:
-                            roomPlayers[i].frame.material = Appearance.watchFrameMat0;
-                            roomPlayers[i].frame.sprite = Appearance.watchFace0;
+                            roomPlayers[i].GetAvatar().material = Appearance.watchFrameMat0;
+                            roomPlayers[i].GetAvatar().sprite = Appearance.watchFace0;
                             break;
                         case PlayerPosition.WatchMyTag:
-                            roomPlayers[i].frame.material = Appearance.watchFrameMat0Tag;
-                            roomPlayers[i].frame.sprite = Appearance.watchFace0Tag;
+                            roomPlayers[i].GetAvatar().material = Appearance.watchFrameMat0Tag;
+                            roomPlayers[i].GetAvatar().sprite = Appearance.watchFace0Tag;
                             break;
                         case PlayerPosition.WatchOp:
-                            roomPlayers[i].frame.material = Appearance.watchFrameMat1;
-                            roomPlayers[i].frame.sprite = Appearance.watchFace1;
+                            roomPlayers[i].GetAvatar().material = Appearance.watchFrameMat1;
+                            roomPlayers[i].GetAvatar().sprite = Appearance.watchFace1;
                             break;
                         case PlayerPosition.WatchOpTag:
-                            roomPlayers[i].frame.material = Appearance.watchFrameMat1Tag;
-                            roomPlayers[i].frame.sprite = Appearance.watchFace1Tag;
+                            roomPlayers[i].GetAvatar().material = Appearance.watchFrameMat1Tag;
+                            roomPlayers[i].GetAvatar().sprite = Appearance.watchFace1Tag;
                             break;
                     }
                 }
             }
             if (isHost)
             {
-                btnStart.gameObject.SetActive(true);
-                roomPlayers[0].kickButton.SetActive(true);
-                roomPlayers[1].kickButton.SetActive(true);
-                roomPlayers[2].kickButton.SetActive(true);
-                roomPlayers[3].kickButton.SetActive(true);
-                btnSelectAI.gameObject.SetActive(true);
+                Manager.GetElement("ButtonStart").SetActive(true);
+                Manager.GetElement("ButtonAddBot").SetActive(true);
             }
             else
             {
-                btnStart.gameObject.SetActive(false);
-                roomPlayers[0].kickButton.SetActive(false);
-                roomPlayers[1].kickButton.SetActive(false);
-                roomPlayers[2].kickButton.SetActive(false);
-                roomPlayers[3].kickButton.SetActive(false);
-                btnSelectAI.gameObject.SetActive(false);
+                Manager.GetElement("ButtonStart").SetActive(false);
+                Manager.GetElement("ButtonAddBot").SetActive(false);
             }
-            if(fromSolo)
-                btnSelectAI.gameObject.SetActive(false);
+
+            if (fromSolo)
+                Manager.GetElement("ButtonAddBot").SetActive(false);
 
             if (selfType == 7)
-                btnReady.gameObject.SetActive(false);
+                Manager.GetElement("ButtonReady").SetActive(false);
             else
-                btnReady.gameObject.SetActive(true);
+                Manager.GetElement("ButtonReady").SetActive(true);
+
+            SelectLastSelectable();
         }
 
-        void ShowOcgCore()
+        private void ShowOcgCore()
         {
             if(coreShowing == 0)
                 coreShowing = 1;
-            if (Program.I().ocgcore.isShowed)
+            if (Program.instance.ocgcore.showing)
                 return;
             if (mode != 2)
             {
                 if (selfType == 7)
                 {
-                    Program.I().ocgcore.name_0 = GetPlayerName(0);
-                    Program.I().ocgcore.name_1 = GetPlayerName(1);
+                    Program.instance.ocgcore.name_0 = GetPlayerName(0);
+                    Program.instance.ocgcore.name_1 = GetPlayerName(1);
                 }
                 else
                 {
-                    Program.I().ocgcore.name_0 = GetPlayerName(selfType);
-                    Program.I().ocgcore.name_1 = GetPlayerName(1 - selfType);
+                    Program.instance.ocgcore.name_0 = GetPlayerName(selfType);
+                    Program.instance.ocgcore.name_1 = GetPlayerName(1 - selfType);
                 }
-                Program.I().ocgcore.name_0_c = Program.I().ocgcore.name_0;
-                Program.I().ocgcore.name_1_c = Program.I().ocgcore.name_1;
-                Program.I().ocgcore.name_0_tag = "---";
-                Program.I().ocgcore.name_1_tag = "---";
+                Program.instance.ocgcore.name_0_c = Program.instance.ocgcore.name_0;
+                Program.instance.ocgcore.name_1_c = Program.instance.ocgcore.name_1;
+                Program.instance.ocgcore.name_0_tag = "---";
+                Program.instance.ocgcore.name_1_tag = "---";
             }
             else
             {
                 if (selfType == 7)
                 {
-                    Program.I().ocgcore.name_0 = GetPlayerName(0);
-                    Program.I().ocgcore.name_0_tag = GetPlayerName(1);
-                    Program.I().ocgcore.name_1 = GetPlayerName(2);
-                    Program.I().ocgcore.name_1_tag = GetPlayerName(3);
+                    Program.instance.ocgcore.name_0 = GetPlayerName(0);
+                    Program.instance.ocgcore.name_0_tag = GetPlayerName(1);
+                    Program.instance.ocgcore.name_1 = GetPlayerName(2);
+                    Program.instance.ocgcore.name_1_tag = GetPlayerName(3);
                 }
                 else
                 {
@@ -825,24 +360,24 @@ namespace MDPro3
                             opTag = 1;
                             break;
                     }
-                    Program.I().ocgcore.name_0 = GetPlayerName((selfType == 0 || selfType == 2) ? selfType : selfType - 1);
-                    Program.I().ocgcore.name_0_tag = GetPlayerName((selfType == 0 || selfType == 2) ? selfType + 1 : selfType);
-                    Program.I().ocgcore.name_1 = GetPlayerName(op);
-                    Program.I().ocgcore.name_1_tag = GetPlayerName(opTag);
+                    Program.instance.ocgcore.name_0 = GetPlayerName((selfType == 0 || selfType == 2) ? selfType : selfType - 1);
+                    Program.instance.ocgcore.name_0_tag = GetPlayerName((selfType == 0 || selfType == 2) ? selfType + 1 : selfType);
+                    Program.instance.ocgcore.name_1 = GetPlayerName(op);
+                    Program.instance.ocgcore.name_1_tag = GetPlayerName(opTag);
                 }
             }
-            Program.I().ocgcore.timeLimit = timeLimit;
-            Program.I().ocgcore.lpLimit = startLp;
+            Program.instance.ocgcore.timeLimit = timeLimit;
+            Program.instance.ocgcore.lpLimit = startLp;
             if(fromSolo)
-                Program.I().ocgcore.returnServant = Program.I().solo;
+                Program.instance.ocgcore.returnServant = Program.instance.solo;
             else
-                Program.I().ocgcore.returnServant = Program.I().online;
+                Program.instance.ocgcore.returnServant = Program.instance.online;
             if (selfType == 7)
-                Program.I().ocgcore.condition = OcgCore.Condition.Watch;
+                Program.instance.ocgcore.condition = OcgCore.Condition.Watch;
             else
-                Program.I().ocgcore.condition = OcgCore.Condition.Duel;
-            Program.I().ocgcore.inAi = false;
-            Program.I().ShiftToServant(Program.I().ocgcore);
+                Program.instance.ocgcore.condition = OcgCore.Condition.Duel;
+            Program.instance.ocgcore.inAi = false;
+            Program.instance.ShiftToServant(Program.instance.ocgcore);
         }
 
         #region STOC
@@ -852,7 +387,7 @@ namespace MDPro3
             var p = new Package();
             p.Function = r.ReadByte();
             p.Data = new BinaryMaster(r.ReadToEnd());
-            Program.I().ocgcore.AddPackage(p);
+            Program.instance.ocgcore.AddPackage(p);
         }
 
         public void StocMessage_ErrorMsg(BinaryReader r)
@@ -942,27 +477,26 @@ namespace MDPro3
         }
         public void StocMessage_SelectHand(BinaryReader r)
         {
-            //DOTween.To(() => cg.alpha, x => cg.alpha = x, 0, transitionTime);
             if (soloLockHand || Config.Get("AutoRPS", "0") == "0")
             {
                 var handle = Addressables.InstantiateAsync("PopupRockPaperScissors");
                 handle.Completed += (result) =>
                 {
-                    result.Result.transform.SetParent(Program.I().ui_.popup, false);
-                    var popupRPS = result.Result.GetComponent<PopupRockPaperScissors>();
-                    popupRPS.selections = new List<string> { InterString.Get("猜拳") };
+                    result.Result.transform.SetParent(Program.instance.ui_.popup, false);
+                    var popupRPS = result.Result.GetComponent<UI.Popup.PopupRockPaperScissors>();
+                    popupRPS.args = new List<string> { InterString.Get("猜拳") };
                     popupRPS.Show();
                 };
             }
             else
-                TcpHelper.CtosMessage_HandResult(UnityEngine.Random.Range(1, 4));
+                TcpHelper.CtosMessage_HandResult(Random.Range(1, 4));
         }
 
         public void StocMessage_SelectTp(BinaryReader r)
         {
             List<string> selections = new List<string>
             {
-                Program.I().currentServant == Program.I().room ?
+                Program.instance.currentServant == Program.instance.room ?
                 InterString.Get("猜拳获胜") :
                 InterString.Get("选择先后手"),
                 InterString.Get("选择是否由我方先手？"),
@@ -971,10 +505,12 @@ namespace MDPro3
             };
             UIManager.ShowPopupYesOrNo(selections, () => { GoFirst(true); }, () => { GoFirst(false); });
         }
-        void GoFirst(bool first)
+
+        private void GoFirst(bool first)
         {
             TcpHelper.CtosMessage_TpResult(first);
         }
+
         public void StocMessage_HandResult(BinaryReader r)
         {
             if (selfType == 7)
@@ -989,6 +525,7 @@ namespace MDPro3
                 || meResult == 3 && opResult == 1)
                 MessageManager.Cast(InterString.Get("猜拳落败。"));
         }
+
         public void StocMessage_TpResult(BinaryReader r)
         {
         }
@@ -996,28 +533,30 @@ namespace MDPro3
         public void StocMessage_ChangeSide(BinaryReader r)
         {
             needSide = true;
-            if (Program.I().ocgcore.condition != OcgCore.Condition.Duel || joinWithReconnect)
-                Program.I().ocgcore.OnDuelResultConfirmed();
+            if (Program.instance.ocgcore.condition != OcgCore.Condition.Duel || joinWithReconnect)
+                Program.instance.ocgcore.OnDuelResultConfirmed();
         }
+
         public void StocMessage_WaitingSide(BinaryReader r)
         {
             sideWaitingObserver = true;
             MessageManager.Cast(InterString.Get("请耐心等待双方玩家更换副卡组。"));
         }
+
         public void StocMessage_DeckCount(BinaryReader r)
         {
-
         }
+
         public void StocMessage_CreateGame(BinaryReader r)
         {
-
         }
+
         public void StocMessage_JoinGame(BinaryReader r)
         {
             lfList = r.ReadUInt32();
             rule = r.ReadByte();
             mode = r.ReadByte();
-            Program.I().ocgcore.MasterRule = r.ReadChar();
+            Program.instance.ocgcore.MasterRule = r.ReadChar();
             noCheckDeck = r.ReadBoolean();
             noShuffleDeck = r.ReadBoolean();
             r.ReadByte();
@@ -1030,8 +569,9 @@ namespace MDPro3
 
             for (int i = 0; i < 4; i++)
                 players[i] = null;
-            Program.I().ShiftToServant(Program.I().room);
+            Program.instance.ShiftToServant(Program.instance.room);
         }
+
         public void StocMessage_TypeChange(BinaryReader r)
         {
             int type = r.ReadByte();
@@ -1041,28 +581,30 @@ namespace MDPro3
                 players[selfType].ready = false;
             Realize();
         }
+
         public void StocMessage_LeaveGame(BinaryReader r)
         {
-
         }
+
         public void StocMessage_DuelStart(BinaryReader r)
         {
             needSide = false;
             joinWithReconnect = true;
-            if (Program.I().editDeck.isShowed)
+            if (Program.instance.editDeck.showing)
             {
-                Program.I().editDeck.Hide(0);
+                Program.instance.editDeck.Hide(0);
                 MessageManager.Cast(InterString.Get("更换副卡组成功，请等待对手更换副卡组。"));
             }
 
-            if (isShowed)
+            if (showing)
                 Hide(0);
         }
         public void StocMessage_DuelEnd(BinaryReader r)
         {
             duelEnded = true;
-            Program.I().ocgcore.ForceMSquit();
+            Program.instance.ocgcore.ForceMSquit();
         }
+
         public void StocMessage_Replay(BinaryReader r)
         {
             var data = r.ReadToEnd();
@@ -1071,6 +613,7 @@ namespace MDPro3
             p.Data.writer.Write(data);
             TcpHelper.AddRecordLine(p);
         }
+
         public void StocMessage_Chat(BinaryReader r)
         {
 
@@ -1079,8 +622,9 @@ namespace MDPro3
             var content = r.ReadUnicode((int)length);
             //Debug.Log("StocMessage_Chat: " + player + "-" + content);
 
-            AddChatItem(player, content);
+            Program.instance.ui_.chatPanel.AddChatItem(player, content);
         }
+
         public void StocMessage_HsPlayerEnter(BinaryReader r)
         {
             AudioManager.PlaySE("SE_ROOM_SITDOWN");
@@ -1092,6 +636,7 @@ namespace MDPro3
             players[pos] = player;
             Realize();
         }
+
         public void StocMessage_HsPlayerChange(BinaryReader r)
         {
             int status = r.ReadByte();
@@ -1124,9 +669,6 @@ namespace MDPro3
             observerCount = r.ReadUInt16();
             Realize();
         }
-
-
-
         #endregion
     }
 }

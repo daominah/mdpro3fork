@@ -97,14 +97,14 @@ namespace MDPro3.UI
         {
             var m = new BinaryMaster();
             m.writer.Write(6);
-            Program.I().ocgcore.SendReturn(m.Get());
+            Program.instance.ocgcore.SendReturn(m.Get());
             Hide();
         }
         void OnMain2()
         {
             var m = new BinaryMaster();
             m.writer.Write(2);
-            Program.I().ocgcore.SendReturn(m.Get());
+            Program.instance.ocgcore.SendReturn(m.Get());
             Hide();
         }
         void OnEnd()
@@ -114,7 +114,7 @@ namespace MDPro3.UI
                 m.writer.Write(3);
             else
                 m.writer.Write(7);
-            Program.I().ocgcore.SendReturn(m.Get());
+            Program.instance.ocgcore.SendReturn(m.Get());
             Hide();
         }
     }

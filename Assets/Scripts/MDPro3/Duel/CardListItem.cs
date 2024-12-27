@@ -28,10 +28,10 @@ namespace MDPro3.UI
             cardBack.SetActive((card.p.position & (uint)CardPosition.FaceUp) == 0);
             if (card.GetData().Id != 0)
             {
-                if ((card.GetData().Type & (uint)CardType.Monster) > 0)
+                if (card.GetData().HasType(CardType.Monster))
                 {
                     levelIcon.sprite = TextureManager.GetCardLevelIcon(card.GetData());
-                    if ((card.GetData().Type & (uint)CardType.Link) > 0)
+                    if (card.GetData().HasType(CardType.Link))
                         textLevel.text = CardDescription.GetCardLinkCount(card.GetData()).ToString();
                     else
                         textLevel.text = card.GetData().Level.ToString();
@@ -54,7 +54,7 @@ namespace MDPro3.UI
                 else
                 {
                     chain.SetActive(false);
-                    if (Program.I().ocgcore.cardsBeTarget.Contains(card))
+                    if (Program.instance.ocgcore.cardsBeTarget.Contains(card))
                         target.SetActive(true);
                     else
                         target.SetActive(false);
@@ -88,7 +88,7 @@ namespace MDPro3.UI
             else
             {
                 face.texture = null;
-                switch (Program.I().ocgcore.condition)
+                switch (Program.instance.ocgcore.condition)
                 {
                     case OcgCore.Condition.Duel:
                         if (card.p.controller == 0)
@@ -114,7 +114,7 @@ namespace MDPro3.UI
 
         void OnClick()
         {
-            Program.I().ocgcore.description.Show(card, face.material);
+            Program.instance.ocgcore.description.Show(card, face.material);
         }
     }
 }

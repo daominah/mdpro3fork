@@ -7,7 +7,7 @@ using System;
 
 namespace MDPro3.UI
 {
-    public class PopupDuel : Popup
+    public class PopupDuel : PopupBase
     {
         [Header("Popup Duel Reference")]
         public Button btnHide;
@@ -19,16 +19,16 @@ namespace MDPro3.UI
         public override void Initialize()
         {
             base.Initialize();
-            Program.I().ocgcore.allGameObjects.Add(gameObject);
+            Program.instance.ocgcore.allGameObjects.Add(gameObject);
             if (btnHide != null)
                 btnHide.onClick.AddListener(FieldView);
-            Program.I().ocgcore.currentPopup = this;
+            Program.instance.ocgcore.currentPopup = this;
             if (!exitable)
             {
                 if (btnHide != null)
-                    Program.I().ocgcore.returnAction = FieldView;
+                    Program.instance.ocgcore.returnAction = FieldView;
                 else
-                    Program.I().ocgcore.returnAction = () => { };
+                    Program.instance.ocgcore.returnAction = () => { };
             }
 
             var uiScale = Config.GetUIScale(maxUIScale);
@@ -72,11 +72,11 @@ namespace MDPro3.UI
             window.DOAnchorPos(new Vector2(0f, hideY), transitionTime).OnComplete(() =>
             {
                 Destroy(gameObject);
-                Program.I().ocgcore.returnAction = null;
+                Program.instance.ocgcore.returnAction = null;
                 whenQuitDo?.Invoke();
             });
-            Program.I().ocgcore.Sleep((int)(transitionTime * 100));
-            Program.I().ocgcore.currentPopup = null;
+            Program.instance.ocgcore.Sleep((int)(transitionTime * 100));
+            Program.instance.ocgcore.currentPopup = null;
         }
         public override void OnConfirm()
         {
@@ -89,7 +89,7 @@ namespace MDPro3.UI
 
         public void OnDestroy()
         {
-            Program.I().ocgcore.returnAction = null;
+            Program.instance.ocgcore.returnAction = null;
         }
     }
 }

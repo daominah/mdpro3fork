@@ -47,7 +47,7 @@ namespace MDPro3.UI
 
         public override void InitializeSelections()
         {
-            core = Program.I().ocgcore;
+            core = Program.instance.ocgcore;
             if(core.currentMessage == GameMessage.ConfirmCards)
             {
                 btnConfirm.gameObject.SetActive(false);
@@ -103,7 +103,7 @@ namespace MDPro3.UI
                             }
                     foreach (var mono in monos)
                         if (!mono.selected)
-                            if (OcgCore.CheckSelectableInSum(Program.I().ocgcore.cardsInSelection, mono.card, core.cardsMustBeSelected, max + core.cardsMustBeSelected.Count))
+                            if (OcgCore.CheckSelectableInSum(Program.instance.ocgcore.cardsInSelection, mono.card, core.cardsMustBeSelected, max + core.cardsMustBeSelected.Count))
                                 mono.SelectableThis();
                             else
                                 mono.UnselectableThis();
@@ -125,11 +125,11 @@ namespace MDPro3.UI
         public override void Show()
         {
             base.Show();
-            Program.I().currentServant.returnAction = OnCancel;
+            Program.instance.currentServant.returnAction = OnCancel;
             if (!exitable)
-                Program.I().currentServant.returnAction = FieldView;
-            if (Program.I().ocgcore.currentMessage == GameMessage.ConfirmCards)
-                Program.I().currentServant.returnAction = OnFinish;
+                Program.instance.currentServant.returnAction = FieldView;
+            if (Program.instance.ocgcore.currentMessage == GameMessage.ConfirmCards)
+                Program.instance.currentServant.returnAction = OnFinish;
         }
 
         void Refresh()
@@ -154,7 +154,7 @@ namespace MDPro3.UI
 
                     foreach (var mono in monos)
                         if (!mono.selected)
-                            if (OcgCore.CheckSelectableInSum(Program.I().ocgcore.cardsInSelection, mono.card, selected, max + core.cardsMustBeSelected.Count))
+                            if (OcgCore.CheckSelectableInSum(Program.instance.ocgcore.cardsInSelection, mono.card, selected, max + core.cardsMustBeSelected.Count))
                                 mono.SelectableThis();
                             else
                                 mono.UnselectableThis();
@@ -256,7 +256,7 @@ namespace MDPro3.UI
             foreach (var mono in monos)
                 if (mono.selected)
                 {
-                    Program.I().ocgcore.lastSelectedCard = mono.card.GetData().Id;
+                    Program.instance.ocgcore.lastSelectedCard = mono.card.GetData().Id;
                     break;
                 }
 
@@ -289,7 +289,7 @@ namespace MDPro3.UI
                                     selections.Add(desc);
                                     responses.Add(mono.card.effects[i].ptr);
                                 }
-                                Program.I().ocgcore.ShowPopupSelection(selections, responses);
+                                Program.instance.ocgcore.ShowPopupSelection(selections, responses);
                             }
                         }
                     break;
@@ -335,7 +335,7 @@ namespace MDPro3.UI
                                         selections.Add(desc);
                                         responses.Add(mono.card.effects[i].ptr);
                                     }
-                                    Program.I().ocgcore.ShowPopupSelection(selections, responses);
+                                    Program.instance.ocgcore.ShowPopupSelection(selections, responses);
                                 }
                             }
                             else
@@ -346,7 +346,7 @@ namespace MDPro3.UI
                             }
                             binaryMaster = new BinaryMaster();
                             binaryMaster.writer.Write(response);
-                            Program.I().ocgcore.SendReturn(binaryMaster.Get());
+                            Program.instance.ocgcore.SendReturn(binaryMaster.Get());
                             break;
                         }
                     break;
@@ -356,9 +356,9 @@ namespace MDPro3.UI
                         {
                             binaryMaster = new BinaryMaster();
                             binaryMaster.writer.Write(mono.card.GetData().Id);
-                            Program.I().ocgcore.SendReturn(binaryMaster.Get());
+                            Program.instance.ocgcore.SendReturn(binaryMaster.Get());
                         }
-                    Program.I().ocgcore.ClearAnnounceCards();
+                    Program.instance.ocgcore.ClearAnnounceCards();
                     break;
                 case GameMessage.SortCard:
                 case GameMessage.SortChain:
@@ -367,7 +367,7 @@ namespace MDPro3.UI
                         bytes[i] = (byte)(monos[i].GetOrder() - 1);
                     binaryMaster = new BinaryMaster();
                     binaryMaster.writer.Write(bytes);
-                    Program.I().ocgcore.SendReturn(binaryMaster.Get());
+                    Program.instance.ocgcore.SendReturn(binaryMaster.Get());
                     break;
             }
             AudioManager.PlaySE("SE_DUEL_DECIDE");
@@ -397,8 +397,8 @@ namespace MDPro3.UI
                     string.Empty,
                     string.Empty
                 };
-                    whenQuitDo = () => { Program.I().ocgcore.ShowPopupInput(ss, Program.I().ocgcore.OnAnnounceCard, null); };
-                    Program.I().ocgcore.ClearAnnounceCards();
+                    whenQuitDo = () => { Program.instance.ocgcore.ShowPopupInput(ss, Program.instance.ocgcore.OnAnnounceCard, null); };
+                    Program.instance.ocgcore.ClearAnnounceCards();
                     break;
                 case GameMessage.SelectIdleCmd:
                     break;
@@ -435,11 +435,11 @@ namespace MDPro3.UI
             window.DOAnchorPos(new Vector2(0f, -1100f), transitionTime).OnComplete(() =>
             {
                 StartCoroutine(DisposeAsync());
-                Program.I().ocgcore.returnAction = null;
+                Program.instance.ocgcore.returnAction = null;
                 whenQuitDo?.Invoke();
             });
-            Program.I().ocgcore.Sleep((int)(transitionTime * 100));
-            Program.I().ocgcore.currentPopup = null;
+            Program.instance.ocgcore.Sleep((int)(transitionTime * 100));
+            Program.instance.ocgcore.currentPopup = null;
 
         }
 

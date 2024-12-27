@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace MDPro3.UI
 {
-    public class PopupInput : Popup
+    public class PopupInput : PopupBase
     {
         [Header("Popup Select Reference")]
         public InputField input;

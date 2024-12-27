@@ -11,6 +11,7 @@ namespace YgomSystem.UI
 		[Serializable]
 		public class OnClickEvent : UnityEvent
 		{
+
 		}
 
 		public delegate void PointerCallback(SelectionItem this_item);

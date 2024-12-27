@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace MDPro3.UI 
 {
-    public class PopupRockPaperScissors : Popup
+    public class PopupRockPaperScissors : PopupBase
     {
         [Header("Popup Rock Paper Scissors Reference")]
         public Button rock;

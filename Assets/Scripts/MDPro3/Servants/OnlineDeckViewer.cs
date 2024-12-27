@@ -8,56 +8,91 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.UI;
+using TMPro;
+using UnityEngine.EventSystems;
+using MDPro3.UI.PropertyOverrider;
 
 public class OnlineDeckViewer : Servant
 {
-    public ScrollRect scrollRect;
-    public InputField searchDeckName;
-    public InputField searchAuthorName;
-    public ButtonSwitchForDeckPickup btnPickup;
-    public Text textCount;
+    [Header("OnlineDeckViewer")]
+    public TMP_InputField inputFieldDeckName;
+    public TMP_InputField inputFieldAuthorName;
 
-    SuperScrollView superScrollView;
-    OnlineDeck.OnlineDeckData[] decks;
-    public List<SuperScrollViewItemForOnlineDeckSelect> items = new List<SuperScrollViewItemForOnlineDeckSelect>();
+    public SuperScrollView superScrollView;
+    private OnlineDeck.OnlineDeckData[] decks;
+    [HideInInspector] public SelectionToggle_DeckOnline lastSelectedDeckItem;
 
+    #region Servant
     public override void Initialize()
     {
-        haveLine = true;
+        showLine = true;
         depth = 4;
-        returnServant = Program.I().selectDeck;
+        returnServant = Program.instance.selectDeck;
         base.Initialize();
+        transform.GetChild(0).gameObject.SetActive(false);
     }
 
-    public override void ApplyShowArrangement(int preDepth)
+    protected override void ApplyShowArrangement(int preDepth)
     {
         base.ApplyShowArrangement(preDepth);
         RefreshList();
     }
 
-    public override void ApplyHideArrangement(int preDepth)
+    protected override void ApplyHideArrangement(int preDepth)
     {
         base.ApplyHideArrangement(preDepth);
-        DOTween.To(v => { }, 0, 0, transitionTime * 0.9f).OnComplete(() =>
+        DOTween.To(v => { }, 0, 0, transitionTime).OnComplete(() =>
         {
-            btnPickup.OnSwitchOff();
-            if (superScrollView != null)
-                foreach (var item in superScrollView.items)
-                    item.gameObject.GetComponent<SuperScrollViewItemForOnlineDeckSelect>().Dispose();
-            Clear();
+            superScrollView?.Clear();
+            decks = null;
         });
     }
 
-    void RefreshList()
+    public override void SelectLastSelectable()
     {
-        Clear();
-        btnPickup.OnSwitchOff();
+        EventSystem.current.SetSelectedGameObject(lastSelectedDeckItem.gameObject);
+    }
+
+    protected override bool NeedResponseInput()
+    {
+        if(inputFieldDeckName.isFocused)
+            return false;
+        if (inputFieldAuthorName.isFocused)
+            return false;
+        return base.NeedResponseInput();
+    }
+
+    public override void PerFrameFunction()
+    {
+        if (!showing) return;
+        if (NeedResponseInput())
+        {
+            if (UserInput.MouseRightDown || UserInput.WasCancelPressed)
+                OnReturn();
+            if (UserInput.WasGamepadButtonWestPressed)
+            {
+                AudioManager.PlaySE("SE_MENU_SELECT_01");
+                inputFieldDeckName.ActivateInputField();
+            }
+            if (UserInput.WasGamepadButtonNorthPressed)
+            {
+                AudioManager.PlaySE("SE_MENU_SELECT_01");
+                inputFieldAuthorName.ActivateInputField();
+            }
+        }
+    }
+
+    #endregion
+
+    private void RefreshList()
+    {
+        decks = null;
         StartCoroutine(RefreshAsync());
     }
 
-    IEnumerator RefreshAsync()
+    private IEnumerator RefreshAsync()
     {
-        var task = OnlineDeck.FetchSimpleDeckList(10000, searchDeckName.text, searchAuthorName.text);
+        var task = OnlineDeck.FetchSimpleDeckList(10000, inputFieldDeckName.text, inputFieldAuthorName.text);
         yield return new WaitUntil(() => task.IsCompleted);
 
         if(task.Status == System.Threading.Tasks.TaskStatus.RanToCompletion)
@@ -68,44 +103,38 @@ public class OnlineDeckViewer : Servant
                 MessageManager.Cast(InterString.Get("网络异常，获取在线卡组列表失败。"));
                 yield break;
             }
-            textCount.text = decks.Length.ToString();
+            Manager.GetElement<TextMeshProUGUI>("TextDeckNumValue").text = decks.Length.ToString();
             Print();
         }
         else
             MessageManager.Cast(InterString.Get("网络异常，获取在线卡组列表失败。"));
     }
 
-    void Print()
+    private void Print()
     {
-        if(superScrollView != null)
-        {
-            superScrollView.Clear();
-        }
+        superScrollView?.Clear();
 
         var scale = Config.GetUIScale();
 
-        var handle = Addressables.LoadAssetAsync<GameObject>("OnlineDeckOnSelect");
+        var handle = Addressables.LoadAssetAsync<GameObject>("ItemDeckOnline");
         handle.Completed += (result) =>
         {
-            superScrollView = new SuperScrollView
-            (
-            (int)Math.Floor(scrollRect.content.rect.width / (260 * scale)),
-            260 * scale,
-            260 * scale,
-            0,
-            128,
-            result.Result,
-            ItemOnListRefresh,
-            scrollRect
-            );
+            var itemWidth = PropertyOverrider.NeedMobileLayout() ? 336f : 260f;
+            var itemHeight = PropertyOverrider.NeedMobileLayout() ? 300f : 232f;
+            var space = PropertyOverrider.NeedMobileLayout() ? 30f : 24f;
+            var bottomPadding = (PropertyOverrider.NeedMobileLayout() ? 196f : 150f) - space;
+            superScrollView = new SuperScrollView(
+                -1,
+                itemWidth + space,
+                itemHeight + space,
+                10,
+                bottomPadding,
+                result.Result,
+                ItemOnListRefresh,
+                Manager.GetElement<ScrollRect>("ScrollRect"));
             List<string[]> tasks = new List<string[]>();
             foreach (var deck in decks)
             {
-                //if (!deck.deckName.ToLower().Contains(searchDeckName.text.ToLower()))
-                //    continue;
-                //if (!deck.deckContributor.ToLower().Contains(searchAuthorName.text.ToLower()))
-                //    continue;
-
                 var task = new string[10]
                 {
                     deck.deckName,
@@ -122,51 +151,31 @@ public class OnlineDeckViewer : Servant
                 tasks.Add(task);
             }
             superScrollView.Print(tasks);
+            if (superScrollView.items.Count > 0)
+                lastSelectedDeckItem = superScrollView.items[0].gameObject.GetComponent<SelectionToggle_DeckOnline>();
+            if (Cursor.lockState == CursorLockMode.Locked)
+                SelectLastSelectable();
+            Manager.GetElement<TextMeshProUGUI>("TextDeckNumValue").text = (superScrollView.items.Count - 1).ToString();
         };
-
     }
 
-    void ItemOnListRefresh(string[] task, GameObject item)
+    private void ItemOnListRefresh(string[] task, GameObject item)
     {
-        var handler = item.GetComponent<SuperScrollViewItemForOnlineDeckSelect>();
+        var handler = item.GetComponent<SelectionToggle_DeckOnline>();
         handler.deckName = task[0];
-        handler.authorName = task[1];
+        handler.deckAuthor = task[1];
         handler.deckId = task[2];
         handler.deckCase = int.Parse(task[3]);
-        handler.card1 = int.Parse(task[4]);
-        handler.card2 = int.Parse(task[5]);
-        handler.card3 = int.Parse(task[6]);
+        handler.card0 = int.Parse(task[4]);
+        handler.card1 = int.Parse(task[5]);
+        handler.card2 = int.Parse(task[6]);
         handler.protector = task[7];
         handler.like = int.Parse(task[8]);
         handler.lastDate = task[9];
         handler.Refresh();
     }
 
-    void Clear()
-    {
-        decks = null;
-        items.Clear();
-    }
-
-
-    public bool hoverOn
-    {
-        get { return m_hoverOn; }
-        set
-        {
-            m_hoverOn = value;
-            DeckHover();
-        }
-    }
-    private bool m_hoverOn = false;
-    public void DeckHover()
-    {
-        foreach (var item in items)
-            item.Hover(m_hoverOn);
-    }
-
-
-    public void OnSearchSubmit(string value)
+    public void OnSearchSubmit()
     {
         RefreshList();
     }

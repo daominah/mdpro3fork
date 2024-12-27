@@ -1,9 +1,5 @@
-using DG.Tweening;
-using DG.Tweening.Core;
-using DG.Tweening.Plugins.Options;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.IO;
 using System.Net;
 using System.Text.RegularExpressions;
@@ -12,24 +8,12 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.Playables;
 using YgomSystem.ElementSystem;
+using MDPro3.Utility;
 
 namespace MDPro3
 {
     public static class Tools
     {
-        public static Transform GetChildByName(Transform parent, string childName)
-        {
-            foreach (var t in parent.GetComponentsInChildren<Transform>())
-            { if (t.name == childName) return t; }
-            return null;
-        }
-
-        public static void DestroyAllChildren(this Transform transform)
-        {
-            for (int i = 0; i < transform.childCount; i++)
-                UnityEngine.Object.Destroy(transform.GetChild(i).gameObject);
-        }
-
         public static void ChangeLayer(GameObject go, string layer, bool setAllChildrenActivate = false)
         {
             //Debug.Log("Change Layer: " + go.name + "-> " + layer);
@@ -253,6 +237,17 @@ namespace MDPro3
             if (position.y > returnValue.y)
                 returnValue = position;
             return returnValue;
+        }
+
+        public static void ClearDirectoryRecursively(DirectoryInfo directory)
+        {
+            foreach (var file in directory.GetFiles())
+                file.Delete();
+            foreach (var subDir in directory.GetDirectories())
+            {
+                ClearDirectoryRecursively(subDir);
+                subDir.Delete();
+            }
         }
     }
 }

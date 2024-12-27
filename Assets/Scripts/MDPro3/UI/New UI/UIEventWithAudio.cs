@@ -3,12 +3,13 @@ using UnityEngine.EventSystems;
 
 namespace MDPro3.UI
 {
-    public class UIEventWithAudio : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
+    public class UIEventWithAudio : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler, ISubmitHandler
     {
         public AudioClip previewClip;
         public string enterAudio;
         public string clickAudio;
         public string exitAudio;
+        public string submitAudio;
 
         public enum AudioType
         {
@@ -44,5 +45,9 @@ namespace MDPro3.UI
                 AudioManager.PlayVoiceByResourcePath(path);
         }
 
+        public void OnSubmit(BaseEventData eventData)
+        {
+            PlayAudio(submitAudio);
+        }
     }
 }

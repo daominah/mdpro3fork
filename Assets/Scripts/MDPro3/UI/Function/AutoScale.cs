@@ -14,7 +14,7 @@ namespace MDPro3.UI
             width = transform.localScale.x;
             height = transform.localScale.y;
             Scale();
-            Program.onScreenChanged += Scale;
+            SystemEvent.OnResolutionChange += Scale;
         }
 
         void Scale()
@@ -28,7 +28,7 @@ namespace MDPro3.UI
 
         private void OnDestroy()
         {
-            Program.onScreenChanged -= Scale;
+            SystemEvent.OnResolutionChange -= Scale;
         }
     }
 }

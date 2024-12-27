@@ -11,7 +11,8 @@ namespace MDPro3
 {
     public class MessageManager : Manager
     {
-        public GameObject messageItem;
+        public GameObject messageCast;
+        public GameObject messageToast;
         public GameObject messageCard;
 
         static MessageManager instance;
@@ -25,10 +26,15 @@ namespace MDPro3
         {
             base.Initialize();
             instance = this;
-            var handle = Addressables.LoadAssetAsync<GameObject>("MessageItem");
+            var handle = Addressables.LoadAssetAsync<GameObject>("MessageCast");
             handle.Completed += (result) =>
             {
-                messageItem = result.Result;
+                messageCast = result.Result;
+            };
+            handle = Addressables.LoadAssetAsync<GameObject>("MessageToast");
+            handle.Completed += (result) =>
+            {
+                messageToast = result.Result;
             };
             handle = Addressables.LoadAssetAsync<GameObject>("MessageCard");
             handle.Completed += (result) =>
@@ -49,8 +55,8 @@ namespace MDPro3
         public void CastCard(int code)
         {
             CameraManager.UIBlurPlus();
-            var item = Instantiate(Program.I().message_.messageCard);
-            Program.I().ocgcore.allGameObjects.Add(item);
+            var item = Instantiate(Program.instance.message_.messageCard);
+            Program.instance.ocgcore.allGameObjects.Add(item);
             item.transform.SetParent(instance.transform, false);
             StartCoroutine(RefreshAsync(item, code));
         }
@@ -81,11 +87,25 @@ namespace MDPro3
 
         static List<string> cachedMessage = new List<string>();
 
+        public static void Toast(string message)
+        {
+            CameraManager.UIBlurPlus();
+            var item = Instantiate(Program.instance.message_.messageToast);
+            item.transform.SetParent(instance.transform, false);
+            item.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = message;
+            Destroy(item, 2f);
+            DOTween.To(v => { }, 0f, 0f, 2f).OnComplete(() =>
+            {
+                Destroy(item);
+                CameraManager.UIBlurMinus();
+            });
+        }
+
         public static void Cast(string message)
         {
             if (items.Count > 10)
                 return;
-            if (Program.I().message_.messageItem == null)
+            if (Program.instance.message_.messageCast == null)
             {
                 cachedMessage.Add(message);
                 return;
@@ -100,7 +120,7 @@ namespace MDPro3
             }
 
             CameraManager.UIBlurPlus();
-            var item = Instantiate(Program.I().message_.messageItem);
+            var item = Instantiate(Program.instance.message_.messageCast);
             item.transform.SetParent(instance.transform, false);
             item.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = message;
             RectTransform rect = item.GetComponent<RectTransform>();

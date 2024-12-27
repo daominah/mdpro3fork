@@ -14,28 +14,34 @@ using YgomSystem.YGomTMPro;
 using MDPro3.YGOSharp;
 using MDPro3.YGOSharp.OCGWrapper.Enums;
 using MDPro3.UI;
+using UnityEngine.EventSystems;
+using TMPro;
+using MDPro3.UI.PropertyOverrider;
 
 namespace MDPro3
 {
     public class MonsterCutin : Servant
     {
-        public ScrollRect scrollView;
-        public InputField inputField;
         public static List<Card> cards = new List<Card>();
         public static List<int> codes = new List<int>();
         public static List<int> codes2 = new List<int>();
         public static int controller = 0;
 
+        [Header("MonsterCutin")]
+        public TMP_InputField inputField;
+        [HideInInspector] public SelectionToggle_Cutin lastSelectedCutinItem;
         static DirectoryInfo[] dirInfos;
         static FileInfo[] fileInfos;
         List<string[]> tasks = new List<string[]>();
         SuperScrollView superScrollView;
 
+
+        #region Servant
         public override void Initialize()
         {
             depth = 1;
-            haveLine = false;
-            returnServant = Program.I().menu;
+            showLine = false;
+            returnServant = Program.instance.menu;
             base.Initialize();
             var targetFolder = Program.root + "MonsterCutin";
             var targetFolder2 = Program.root + "MonsterCutin2";
@@ -52,6 +58,85 @@ namespace MDPro3
             fileInfos = new DirectoryInfo(targetFolder2).GetFiles();
             inputField.onEndEdit.AddListener(Print);
             Load();
+        }
+
+        protected override void ApplyShowArrangement(int preDepth)
+        {
+            base.ApplyShowArrangement(preDepth);
+            UserInput.SetMoveRepeatRate(0.05f);
+        }
+        protected override void ApplyHideArrangement(int nextDepth)
+        {
+            base.ApplyHideArrangement(nextDepth);
+            UserInput.SetMoveRepeatRate(0.1f);
+
+            if (randomBGMPlayed)
+            {
+                randomBGMPlayed = false;
+                AudioManager.PlayBGM("BGM_MENU_01");
+            }
+
+            CameraManager.DuelOverlayEffect3DCount = 0;
+            CameraManager.DuelOverlayEffect3DMinus();
+            DOTween.To(v => { }, 0, 0, 0.7f).OnComplete(() =>
+            {
+                Resources.UnloadUnusedAssets();
+                GC.Collect();
+            });
+
+        }
+        protected override bool NeedResponseInput()
+        {
+            if(inputField.isFocused)
+                return false;
+            return base.NeedResponseInput();
+        }
+        public override void PerFrameFunction()
+        {
+            if (!showing) return;
+            if (NeedResponseInput())
+            {
+                if (UserInput.MouseRightDown || UserInput.WasCancelPressed)
+                    OnReturn();
+
+                if(UserInput.WasGamepadButtonWestPressed)
+                    inputField.ActivateInputField();
+                if (UserInput.WasGamepadButtonNorthPressed)
+                {
+                    EventSystem.current.SetSelectedGameObject(Manager.GetElement("ButtonAutoPlay"));
+                    AutoPlay();
+                }
+            }
+        }
+        public override void OnReturn()
+        {
+            if (returnAction != null) return;
+            if (inTransition) return;
+            AudioManager.PlaySE("SE_MENU_CANCEL");
+            if (cg.alpha == 0)
+            {
+                StopCoroutine(autoPlay);
+                autoPlay = null;
+                foreach (var cutin in cutins)
+                    Destroy(cutin);
+                cutins.Clear();
+                UIManager.ShowExitButton(transitionTime);
+                cg.alpha = 1;
+                cg.blocksRaycasts = true;
+            }
+            else
+                OnExit();
+        }
+        public override void SelectLastSelectable()
+        {
+            EventSystem.current.SetSelectedGameObject(lastSelectedCutinItem.gameObject);
+        }
+        #endregion
+
+        public void SelectLastCutinItem()
+        {
+            UserInput.NextSelectionIsAxis = true;
+            SelectLastSelectable();
         }
 
         public void Load()
@@ -99,71 +184,46 @@ namespace MDPro3
                     tasks.Add(task);
                 }
             }
-            var handle = Addressables.LoadAssetAsync<GameObject>("ButtonMonsterCutin");
+            var handle = Addressables.LoadAssetAsync<GameObject>("ItemCutin");
             handle.Completed += (result) =>
             {
-                superScrollView = new SuperScrollView
-                    (
+                var itemWidth = PropertyOverrider.NeedMobileLayout() ? 460f : 360f;
+                var itemHeight = PropertyOverrider.NeedMobileLayout() ? 80f : 40f;
+
+                superScrollView = new SuperScrollView(
                     1,
-                    360,
-                    40,
+                    itemWidth,
+                    itemHeight,
                     0,
                     0,
                     result.Result,
                     ItemOnListRefresh,
-                    scrollView
-                    );
+                    Manager.GetElement<ScrollRect>("ScrollRect"),
+                    4);
                 superScrollView.Print(tasks);
+                if(superScrollView.items.Count > 0)
+                    lastSelectedCutinItem = superScrollView.items[0].gameObject.GetComponent<SelectionToggle_Cutin>();
+
+                if (showing)
+                {
+                    if (Cursor.lockState == CursorLockMode.Locked)
+                        SelectLastSelectable();
+                }
+                else
+                    transform.GetChild(0).gameObject.SetActive(false);
             };
         }
 
-        public override void OnExit()
-        {
-            base.OnExit();
-            if (randomBGMPlayed)
-            {
-                randomBGMPlayed = false;
-                AudioManager.PlayBGM("BGM_MENU_01");
-            }
-
-            CameraManager.DuelOverlayEffect3DCount = 0;
-            CameraManager.DuelOverlayEffect3DMinus();
-            DOTween.To(v => { }, 0, 0, transitionTime).OnComplete(() =>
-            {
-                Resources.UnloadUnusedAssets();
-                GC.Collect();
-            });
-        }
-
-        public override void OnReturn()
-        {
-            if (returnAction != null) return;
-            if (inTransition) return;
-            AudioManager.PlaySE("SE_MENU_CANCEL");
-            if (cg.alpha == 0)
-            {
-                StopCoroutine(autoPlay);
-                autoPlay = null;
-                foreach(var cutin in cutins)
-                    Destroy(cutin);
-                cutins.Clear();
-                UIManager.ShowExitButton(transitionTime);
-                cg.alpha = 1;
-                cg.blocksRaycasts = true;
-            }
-            else
-                OnExit();
-        }
 
         public static bool HasCutin(int code)
         {
-            if (Program.I().ocgcore.condition == OcgCore.Condition.Duel
+            if (Program.instance.ocgcore.condition == OcgCore.Condition.Duel
                 && Config.Get("DuelCutin", "1") == "0")
                 return false;
-            if (Program.I().ocgcore.condition == OcgCore.Condition.Watch
+            if (Program.instance.ocgcore.condition == OcgCore.Condition.Watch
                 && Config.Get("WatchCutin", "1") == "0")
                 return false;
-            if (Program.I().ocgcore.condition == OcgCore.Condition.Replay
+            if (Program.instance.ocgcore.condition == OcgCore.Condition.Replay
                 && Config.Get("ReplayCutin", "1") == "0")
                 return false;
             code = AliasCode(code);
@@ -185,7 +245,7 @@ namespace MDPro3
             if (playing) 
                 return;
             playing = true;
-            if (Program.I().ocgcore.isShowed)
+            if (Program.instance.ocgcore.showing)
                 AudioManager.PlayBgmKeyCard();
             DOTween.To(v => { }, 0, 0, 1.6f).OnComplete(() =>
             {
@@ -212,7 +272,7 @@ namespace MDPro3
                 diy = isDiy;
             }
 
-            loader.transform.SetParent(Program.I().container_2D, false);
+            loader.transform.SetParent(Program.instance.container_2D, false);
             Destroy(loader, 1.6f);
 
             if (!diy)
@@ -237,7 +297,7 @@ namespace MDPro3
                 back = ABLoader.LoadFromFile("MasterDuel/Timeline/summon/summonmonster/04backeff/summonmonster_bgwid_s2", true);
             else//4
                 back = ABLoader.LoadFromFile("MasterDuel/Timeline/summon/summonmonster/04backeff/summonmonster_bgdve_s2", true);
-            back.transform.SetParent(Program.I().container_2D, false);
+            back.transform.SetParent(Program.instance.container_2D, false);
             Transform eff_flame = back.transform.Find("Eff_Flame");
             eff_flame.localScale = new Vector3(2.76f, 1.55f, 1f);
             eff_flame.gameObject.AddComponent<AutoScaleOnce>();
@@ -258,13 +318,13 @@ namespace MDPro3
             else
                 nameBar = ABLoader.LoadFromFile("MasterDuel/Timeline/summon/summonmonster/01text/summonmonster_name_far", true);
 
-            nameBar.transform.SetParent(Program.I().container_2D, false);
+            nameBar.transform.SetParent(Program.instance.container_2D, false);
             var manager = nameBar.GetComponent<ElementObjectManager>();
             var tmp = manager.GetElement<ExtendedTextMeshPro>("Monster_Name_TMP");
-            tmp.font = Program.I().ui_.tmpFont;
+            tmp.font = Program.instance.ui_.tmpFont;
             tmp.text = card.Name;
             var para = "ATK " + (card.Attack == -2 ? "?" : card.Attack.ToString());
-            if ((card.Type & (uint)CardType.Link) == 0)
+            if (!card.HasType(CardType.Link))
             {
                 para += " DEF " + (card.Defense == -2 ? "?" : card.Defense.ToString());
                 Destroy(manager.GetElement("Icon_LINK"));
@@ -301,7 +361,7 @@ namespace MDPro3
             }
 
             ElementObjectManager subManager;
-            if ((card.Type & (uint)CardType.Xyz) == 0)
+            if (!card.HasType(CardType.Xyz))
             {
                 Destroy(manager.GetElement("Icon_Rank"));
                 Destroy(manager.GetElement("Icon_Rank_Odd"));
@@ -331,7 +391,7 @@ namespace MDPro3
                     Destroy(manager.GetElement("Icon_Rank"));
                 }
             }
-            if ((card.Type & (uint)CardType.Link) == 0)
+            if (!card.HasType(CardType.Link))
                 for (int i = card.Level + 1; i < 14; i++)
                     Destroy(subManager.GetElement("Icon" + i));
             manager.GetElement<TextMesh>("Monster_Para").text = para;
@@ -339,7 +399,7 @@ namespace MDPro3
 
             //front Effect
             var frontEffect = ABLoader.LoadFromFile("MasterDuel/Timeline/summon/summonmonster/02fronteff/summonmonster_thunder_power", true);
-            frontEffect.transform.SetParent(Program.I().container_2D, false);
+            frontEffect.transform.SetParent(Program.instance.container_2D, false);
             Destroy(frontEffect, 1.6f);
         }
 
@@ -357,7 +417,7 @@ namespace MDPro3
         {
             while (playing)
                 yield return null;
-            if(!isShowed)
+            if(!showing)
                 yield break;
 
             AudioManager.PlayRandomKeyCardBGM();
@@ -401,7 +461,7 @@ namespace MDPro3
 
         void ItemOnListRefresh(string[] task, GameObject item)
         {
-            SuperScrollViewItemForCutin handler = item.GetComponent<SuperScrollViewItemForCutin>();
+            var handler = item.GetComponent<SelectionToggle_Cutin>();
             handler.code = int.Parse(task[0]);
             handler.cardName = task[1];
             handler.Refresh();

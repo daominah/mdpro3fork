@@ -11,21 +11,21 @@ using UnityEngine.UI;
 using MDPro3.YGOSharp;
 using MDPro3.UI;
 using MDPro3.Net;
+using TMPro;
+using UnityEngine.EventSystems;
+using MDPro3.UI.PropertyOverrider;
 
 namespace MDPro3
 {
     public class SelectDeck : Servant
     {
-        public ScrollRect scrollRect;
-        public InputField search;
+        [Header("SelectDeck")]
+        public TMP_InputField inputField;
 
-        SuperScrollView superScrollView;
+        public SuperScrollView superScrollView;
         public Dictionary<string, Deck> decks = new Dictionary<string, Deck>();
-        public List<SuperScrollViewItemForDeckSelect> items;
-        public ButtonSwitchForDeckPickup btnPickup;
-        public ToggleForDeckDelete btnDelete;
-        public GameObject btnOnline;
-        public Text title;
+
+        [HideInInspector] public SelectionToggle_Deck lastSelectedDeckItem;
 
         public enum Condition
         {
@@ -38,78 +38,140 @@ namespace MDPro3
         public void SwitchCondition(Condition condition)
         {
             SelectDeck.condition = condition;
+            var btnOnline = Manager.GetElement("ButtonOnline");
+            var title = Manager.GetElement<TextMeshProUGUI>("TextTitle");
             switch (condition)
             {
                 case Condition.ForEdit:
-                    returnServant = Program.I().menu;
+                    returnServant = Program.instance.menu;
                     btnOnline.SetActive(true);
                     title.text = InterString.Get("编辑卡组");
                     break;
                 case Condition.ForDuel:
-                    returnServant = Program.I().room;
+                    returnServant = Program.instance.room;
                     btnOnline.SetActive(false);
                     title.text = InterString.Get("选择卡组");
                     break;
                 case Condition.ForSolo:
-                    returnServant = Program.I().solo;
+                    returnServant = Program.instance.solo;
                     btnOnline.SetActive(false);
                     title.text = InterString.Get("选择卡组");
                     break;
                 case Condition.MyCard:
-                    returnServant = Program.I().online;
+                    returnServant = Program.instance.online;
                     btnOnline.SetActive(false);
                     title.text = InterString.Get("选择卡组");
                     break;
             }
         }
 
+        #region Servant
         public override void Initialize()
         {
-            haveLine = true;
+            showLine = true;
             depth = 3;
-            SwitchCondition(Condition.ForEdit);
             base.Initialize();
-            search.onEndEdit.AddListener(Print);
+            inputField.onEndEdit.AddListener(Print);
+            SwitchCondition(Condition.ForEdit);
+            transform.GetChild(0).gameObject.SetActive(false);
         }
         public override void OnExit()
         {
             if (Program.exitOnReturn)
-                Menu.GameQuit();
+                Program.GameQuit();
             else
-                Program.I().ShiftToServant(returnServant);
+                Program.instance.ShiftToServant(returnServant);
         }
-
-        public override void ApplyShowArrangement(int preDepth)
+        protected override void ApplyShowArrangement(int preDepth)
         {
             base.ApplyShowArrangement(preDepth);
             RefreshList();
+            ShowDefaultButtons();
         }
-
-        public override void ApplyHideArrangement(int preDepth)
+        protected override void ApplyHideArrangement(int preDepth)
         {
             base.ApplyHideArrangement(preDepth);
             Config.Save();
             DOTween.To(v => { }, 0, 0, transitionTime * 0.9f).OnComplete(() =>
             {
-                btnPickup.OnSwitchOff();
-                if(superScrollView != null)
-                    foreach (var item in superScrollView.items)
-                    {
-                        item.gameObject.transform.SetParent(Program.I().container_2D, false);
-                        item.gameObject.GetComponent<SuperScrollViewItemForDeckSelect>().Dispose();
-                    }
-                Clear();
+                Manager.GetElement<SelectionToggle>("ButtonPickupCard").SetToggleOff();
+                superScrollView.Clear();
             });
+        }
+        public override void PerFrameFunction()
+        {
+            if (!showing) return;
+            if (NeedResponseInput())
+            {
+
+                if (UserInput.WasLeftStickPressed)
+                    Manager.GetElement<SelectionToggle>("ButtonPickupCard").SwitchToggle();
+
+                if (UserInput.WasGamepadButtonWestPressed)
+                {
+                    AudioManager.PlaySE("SE_MENU_SELECT_01");
+                    if (Manager.GetElement("ButtonOnline").activeSelf)
+                    {
+                        OnOnlineDeckView();
+                    }
+                    else
+                    {
+                        OnDeleteConfirm();
+                    }
+                }
+                if (UserInput.WasGamepadButtonNorthPressed)
+                {
+                    AudioManager.PlaySE("SE_MENU_SELECT_01");
+                    inputField.ActivateInputField();
+                }
+                if (UserInput.WasRightShoulderPressed)
+                {
+                    if (Manager.GetElement("ButtonOnline").activeSelf)
+                    {
+                        AudioManager.PlaySE("SE_MENU_SELECT_01");
+                        OnDelete();
+                    }
+                }
+                if (UserInput.MouseRightDown || UserInput.WasCancelPressed)
+                {
+                    if (Manager.GetElement("ButtonOnline").activeSelf)
+                        OnReturn();
+                    else
+                    {
+                        AudioManager.PlaySE("SE_MENU_CANCEL");
+                        OnDeleteCancel();
+                    }
+                }
+            }
+        }
+        public override void SelectLastSelectable()
+        {
+            EventSystem.current.SetSelectedGameObject(lastSelectedDeckItem.gameObject);
+        }
+        protected override bool NeedResponseInput()
+        {
+            if (inputField.isFocused)
+                return false;
+            if(buttonLayoutSwitching) 
+                return false;
+            return base.NeedResponseInput();
+        }
+        #endregion
+
+        public void SelectLastDeckItem()
+        {
+            UserInput.NextSelectionIsAxis = true;
+            SelectLastSelectable();
         }
 
         public void RefreshList()
         {
-            if (!isShowed)
+            if (!showing)
                 return;
 
-            Clear();
-            btnDelete.SwitchOffWithoutAction();
-            btnPickup.OnSwitchOff();
+            decks.Clear();
+            ShowDefaultButtons();
+            Manager.GetElement<SelectionToggle>("ButtonPickupCard").SetToggleOff();
 
             bool debug = false;
 
@@ -170,41 +232,32 @@ namespace MDPro3
                     decks.Add(name, new Deck(deck));
                 }
             }
-            Print(search.text);
-        }
-
-        void Clear()
-        {
-            decks.Clear();
-            items.Clear();
+            Print(inputField.text);
         }
 
         public void Print(string search = "")
         {
             ExitDeleteDeck();
 
-            if (superScrollView != null)
-            {
-                superScrollView.Clear();
-                items.Clear();
-            }
-            var scale = Config.GetUIScale();
+            superScrollView?.Clear();
 
-            var handle = Addressables.LoadAssetAsync<GameObject>("DeckOnSelect");
+            var handle = Addressables.LoadAssetAsync<GameObject>("ItemDeck");
             handle.Completed += (result) =>
             {
-                superScrollView = new SuperScrollView
-                (
-                (int)Math.Floor(scrollRect.content.rect.width / (260 * scale)),
-                260 * scale,
-                240 * scale,
-                0,
-                128,
-                result.Result,
-                ItemOnListRefresh,
-                scrollRect
-                );
-                List<string[]> tasks = new List<string[]>();
+                var itemWidth = PropertyOverrider.NeedMobileLayout() ? 336f : 260f;
+                var itemHeight = PropertyOverrider.NeedMobileLayout() ? 300f : 232f;
+                var space = PropertyOverrider.NeedMobileLayout() ? 30f : 24f;
+                var bottomPadding = (PropertyOverrider.NeedMobileLayout() ? 196f : 150f) - space;
+                superScrollView = new SuperScrollView(
+                    -1,
+                    itemWidth + space,
+                    itemHeight + space,
+                    10,
+                    bottomPadding,
+                    result.Result,
+                    ItemOnListRefresh,
+                    Manager.GetElement<ScrollRect>("ScrollRect"));
+                List<string[]> tasks = new() { new string[7] { string.Empty, "0", "0", "0", "0", "0", "0" } };
                 foreach (var deck in decks)
                 {
                     if (!deck.Key.Contains(search))
@@ -227,37 +280,52 @@ namespace MDPro3
                     tasks.Add(task);
                 }
                 superScrollView.Print(tasks);
+                lastSelectedDeckItem = superScrollView.items[0].gameObject.GetComponent<SelectionToggle_Deck>();
+                if (Cursor.lockState == CursorLockMode.Locked)
+                    SelectLastSelectable();
+                Manager.GetElement<TextMeshProUGUI>("TextDeckNumValue").text = (superScrollView.items.Count - 1).ToString();
             };
         }
 
         void ItemOnListRefresh(string[] task, GameObject item)
         {
-            var handler = item.GetComponent<SuperScrollViewItemForDeckSelect>();
+            var handler = item.GetComponent<SelectionToggle_Deck>();
             handler.deckName = task[0];
             handler.deckCase = int.Parse(task[1]);
-            handler.card1 = int.Parse(task[2]);
-            handler.card2 = int.Parse(task[3]);
-            handler.card3 = int.Parse(task[4]);
+            handler.card0 = int.Parse(task[2]);
+            handler.card1 = int.Parse(task[3]);
+            handler.card2 = int.Parse(task[4]);
             handler.protector = task[5];
-            handler.selected = task[6] != "0";
-            handler.deckId = task[7];
+            handler.isOn = task[6] != "0";
             handler.Refresh();
         }
 
-        public bool hoverOn
+        public bool PickupShowing
         {
-            get { return m_hoverOn; }
+            get { return m_pickupShowing; }
             set
             {
-                m_hoverOn = value;
+                m_pickupShowing = value;
                 DeckHover();
             }
         }
-        private bool m_hoverOn = false;
+        private bool m_pickupShowing = false;
         public void DeckHover()
         {
-            foreach (var item in items)
-                item.Hover(m_hoverOn);
+            if (superScrollView == null)
+                return;
+
+            foreach (var item in superScrollView.items)
+            {
+                if(item.gameObject == null)
+                    continue;
+                var handler = item.gameObject.GetComponent<SelectionToggle_Deck>();
+
+                if(PickupShowing)
+                    handler.ShowPickup(true);
+                else
+                    handler.HidePickup(true);
+            }
         }
 
         public void DeckCreate()
@@ -268,7 +336,7 @@ namespace MDPro3
                 InterString.Get("请输入卡组名。@n创建卡组时会自动导入剪切板中的卡组码。"),
                 string.Empty
             };
-            UIManager.ShowPopupInput(selections, DeckCheck, null, InputValidation.ValidationType.Path);
+            UIManager.ShowPopupInput(selections, DeckCheck, null, TmpInputValidation.ValidationType.Path);
         }
 
         void DeckCheck(string deckName)
@@ -327,37 +395,6 @@ namespace MDPro3
             }
         }
 
-        bool deleting;
-        public void OnDeckDelete()
-        {
-            if (!deleting)
-            {
-                deleting = true;
-                foreach (var item in items)
-                    item.ShowToggle();
-            }
-            else
-            {
-                deleting = false;
-                int count = 0;
-                var toDelete = new List<string>();
-                foreach (var item in superScrollView.items)
-                    if (item.args[6] != "0")
-                    {
-                        count++;
-                        File.Delete(Program.deckPath + item.args[0] + Program.ydkExpansion);
-                        //MessageManager.Cast(InterString.Get("已删除本地卡组「[?]」", item.args[0]));
-                        toDelete.Add(item.args[7]);
-                    }
-                if (count > 0)
-                {
-                    DeleteOnlineDecks(toDelete);
-                    RefreshList();
-                }
-                else
-                    ExitDeleteDeck();
-            }
-        }
 
         void DeleteOnlineDecks(List<string> ids)
         {
@@ -366,18 +403,162 @@ namespace MDPro3
             _ = OnlineDeck.DeleteDecks(ids);
         }
 
-        void ExitDeleteDeck()
-        {
-            deleting = false;
-            if(superScrollView != null)
-                foreach(var item in superScrollView.items)
-                    item.args[6] = "0";
-            foreach (var item in items)
-                item.HideToggle();
-        }
         public void OnOnlineDeckView()
         {
-            Program.I().ShiftToServant(Program.I().onlineDeckViewer);
+            Program.instance.ShiftToServant(Program.instance.onlineDeckViewer);
         }
+
+        public void OnShowPickup()
+        {
+            PickupShowing = true;
+        }
+
+        public void OnHidePickup()
+        {
+            PickupShowing = false;
+        }
+
+
+        #region Delete Deck
+        public void OnDelete()
+        {
+            if(buttonLayoutSwitching) return;
+            SwitchButtonLayouts(false);
+        }
+        public void OnDeleteCancel()
+        {
+            if (buttonLayoutSwitching) return;
+            SwitchButtonLayouts(true);
+            foreach (var item in superScrollView.items)
+            {
+                if (item.gameObject == null)
+                    continue;
+                item.gameObject.GetComponent<SelectionToggle_Deck>().HideToggle();
+            }
+        }
+        public void OnDeleteConfirm()
+        {
+            if (buttonLayoutSwitching) return;
+
+            var toDeleteIndex = new List<int>();
+            var toDeleteIds = new List<string>();
+            for(int i = 0; i < superScrollView.items.Count; i++)
+                if (superScrollView.items[i].args[6] != "0")
+                {
+                    File.Delete(Program.deckPath + superScrollView.items[i].args[0] + Program.ydkExpansion);
+                    toDeleteIndex.Add(i);
+                    toDeleteIds.Add(superScrollView.items[i].args[7]);
+                }
+
+            var lastSelect = lastSelectedDeckItem.index;
+            int removedCount = 0;
+            for (int i = 0; i < toDeleteIndex.Count; i++)
+            {
+                superScrollView.RemoveAt(toDeleteIndex[i] - removedCount);
+                removedCount++;
+            }
+            lastSelectedDeckItem = (SelectionToggle_Deck)superScrollView.GetItemByIndex(lastSelect);
+            if (Cursor.lockState == CursorLockMode.Locked)
+                SelectLastSelectable();
+            DeleteOnlineDecks(toDeleteIds);
+
+            ExitDeleteDeck(true);
+        }
+        private void ExitDeleteDeck(bool needSwitch = false)
+        {
+            if(superScrollView == null || superScrollView.items == null)
+                return;
+
+            foreach (var item in superScrollView.items)
+                item.args[6] = "0";
+            foreach (var item in superScrollView.items)
+            {
+                if (item.gameObject == null)
+                    continue;
+                item.gameObject.GetComponent<SelectionToggle_Deck>().HideToggle();
+            }
+
+            buttonLayoutSwitching = true;
+
+            if(needSwitch)
+            {
+                var header = Manager.GetElement<RectTransform>("Header");
+                var footer = Manager.GetElement<RectTransform>("Footer");
+                UIManager.HideExitButton(0.2f);
+
+                DOTween.Sequence()
+                    .Append(header.DOAnchorPosY(PropertyOverrider.NeedMobileLayout() ? 130f : 120f, 0.2f).OnComplete(() =>
+                    {
+                        ShowDefaultButtons();
+                        UIManager.ShowExitButton(0.3f, Ease.OutQuart);
+                    }))
+                    .Append(header.DOAnchorPosY(0f, 0.3f).SetEase(Ease.OutQuart));
+
+                DOTween.Sequence()
+                    .Append(footer.DOAnchorPosY(PropertyOverrider.NeedMobileLayout() ? -186f : -140f, 0.2f))
+                    .Append(footer.DOAnchorPosY(0f, 0.3f).SetEase(Ease.OutQuart)).OnComplete(() =>
+                    {
+                        buttonLayoutSwitching = false;
+                    });
+            }
+            else
+            {
+                ShowDefaultButtons();
+                buttonLayoutSwitching = false;
+            }
+        }
+
+        private bool buttonLayoutSwitching;
+        private void SwitchButtonLayouts(bool showDefault)
+        {
+            buttonLayoutSwitching = true;
+
+            var header = Manager.GetElement<RectTransform>("Header");
+            var footer = Manager.GetElement<RectTransform>("Footer");
+            UIManager.HideExitButton(0.2f);
+
+            DOTween.Sequence()
+                .Append(header.DOAnchorPosY(PropertyOverrider.NeedMobileLayout() ? 130f : 120f, 0.2f).OnComplete(() =>
+                {
+                    if (showDefault)
+                        ShowDefaultButtons();
+                    else
+                        ShowDeleteButtons();
+                    UIManager.ShowExitButton(0.3f, Ease.OutQuart);
+                    if (!showDefault)
+                        foreach (var item in superScrollView.items)
+                        {
+                            if (item.gameObject == null)
+                                continue;
+                            item.gameObject.GetComponent<SelectionToggle_Deck>().ShowToggle();
+                        }
+                }))
+                .Append(header.DOAnchorPosY(0f, 0.3f).SetEase(Ease.OutQuart));
+
+            DOTween.Sequence()
+                .Append(footer.DOAnchorPosY(PropertyOverrider.NeedMobileLayout() ? -186f : -140f, 0.2f))
+                .Append(footer.DOAnchorPosY(0f, 0.3f).SetEase(Ease.OutQuart)).OnComplete(() =>
+                {
+                    buttonLayoutSwitching = false;
+                });
+        }
+        private void ShowDefaultButtons()
+        {
+            Manager.GetElement("ButtonDelete").SetActive(true);
+            Manager.GetElement("ButtonDeleteCancel").SetActive(false);
+            Manager.GetElement("ButtonOnline").SetActive(true);
+            Manager.GetElement("ButtonDeleteConfirm").SetActive(false);
+            inputField.gameObject.SetActive(true);
+        }
+        private void ShowDeleteButtons()
+        {
+            Manager.GetElement("ButtonDelete").SetActive(false);
+            Manager.GetElement("ButtonDeleteCancel").SetActive(true);
+            Manager.GetElement("ButtonOnline").SetActive(false);
+            Manager.GetElement("ButtonDeleteConfirm").SetActive(true);
+            inputField.gameObject.SetActive(false);
+        }
+
+        #endregion
     }
 }

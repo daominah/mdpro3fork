@@ -1,13 +1,14 @@
+using DG.Tweening;
 using MDPro3.UI;
-using MDPro3.YGOSharp;
+using MDPro3.UI.PropertyOverrider;
 using Percy;
 using SevenZip.Compression.LZMA;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using GameMessage = MDPro3.YGOSharp.OCGWrapper.Enums.GameMessage;
 
@@ -15,51 +16,83 @@ namespace MDPro3
 {
     public class SelectReplay : Servant
     {
-        public ScrollRect scrollView;
-        public Text description;
-        public SuperScrollViewTwoStage superScrollView;
-        public GameObject buttons;
-        public Button btnPlayer1;
-        public Button btnPlayer2;
-        public Button btnPlayer3;
-        public Button btnPlayer4;
-        public Text textSort;
-        GameObject item;
+        [Header("SelectReplay")]
+        [SerializeField] private RectTransform overviewContent;
+        [SerializeField] private Scrollbar scrollBar;
 
-        PercyOCG percy;
+        [HideInInspector] public SelectionToggle_Replay lastSelectedReplayItem;
+        public SuperScrollView superScrollView;
+        private PercyOCG percy;
+        private Dictionary<string, YRP> cachedYRPs = new ();
 
+        #region Servant
         public override void Initialize()
         {
             depth = 1;
-            haveLine = true;
-            returnServant = Program.I().menu;
+            showLine = false;
+            returnServant = Program.instance.menu;
             base.Initialize();
-            buttons.SetActive(false);
-            var handle = Addressables.LoadAssetAsync<GameObject>("ButtonTwoStageForReplay");
-            handle.Completed += (result) => { item = result.Result; };
+            transform.GetChild(0).gameObject.SetActive(false);
         }
 
-        public override void ApplyShowArrangement(int preDepth)
+        protected override void ApplyShowArrangement(int preDepth)
         {
             base.ApplyShowArrangement(preDepth);
             Print();
         }
 
+        protected override void ApplyHideArrangement(int nextDepth)
+        {
+            base.ApplyHideArrangement(nextDepth);
+            DOTween.To(v => { }, 0, 0, transitionTime).OnComplete(() =>
+            {
+                superScrollView.Clear();
+            });
+        }
+
+        public override void PerFrameFunction()
+        {
+            if (!showing) return;
+            if (NeedResponseInput())
+            {
+                if (UserInput.MouseRightDown || UserInput.WasCancelPressed)
+                    OnReturn();
+                if (UserInput.RightScrollWheel.y != 0f)
+                {
+                    scrollBar.value = Mathf.Clamp01(scrollBar.value + UserInput.RightScrollWheel.y * 1000f * Time.unscaledDeltaTime / overviewContent.rect.height);
+                }
+            }
+        }
+
         public override void OnExit()
         {
             if (Program.exitOnReturn)
-                Menu.GameQuit();
+                Program.GameQuit();
             else
-                Program.I().ShiftToServant(returnServant);
+                Program.instance.ShiftToServant(returnServant);
         }
 
-        void SelectZero()
+        public override void SelectLastSelectable()
         {
-            var item0 = superScrollView.items[0].gameObject.GetComponent<SuperScrollViewItemTwoStageForReplay>();
-            item0.ToStage1();
+            EventSystem.current.SetSelectedGameObject(lastSelectedReplayItem.gameObject);
         }
 
-        public void Print(string search = "")
+        #endregion
+
+        public void SelecLastReplayItem()
+        {
+            UserInput.NextSelectionIsAxis = true;
+            SelectLastSelectable();
+        }
+
+        private void SelectZero()
+        {
+            var item0 = superScrollView.items[0].gameObject.GetComponent<SelectionToggle_Replay>();
+            item0.SetToggleOn();
+            lastSelectedReplayItem = item0;
+        }
+
+        public void Print(/*string search = ""*/)
         {
             superScrollView?.Clear();
 
@@ -89,27 +122,32 @@ namespace MDPro3
                 }
             }
 
-            superScrollView = new SuperScrollViewTwoStage
-                (
-                1,
-                700,
-                140,
-                0,
-                -10,
-                item,
-                ItemOnListRefresh,
-                scrollView,
-                30
-                );
-            superScrollView.Print(tasks);
-            if (tasks.Count > 0)
-                SelectZero();
+            var handle = Addressables.LoadAssetAsync<GameObject>("ItemReplay");
+            handle.Completed += (result) =>
+            {
+                var itemHeight = PropertyOverrider.NeedMobileLayout() ? 180f : 150f;
+                float topPadding = PropertyOverrider.NeedMobileLayout() ? 148f : 134f;
+                float space = itemHeight - (PropertyOverrider.NeedMobileLayout() ? 152f : 122f);
+                float bottomPadding = (PropertyOverrider.NeedMobileLayout() ? 64f : 54f) - space;
+                superScrollView = new SuperScrollView(
+                        1,
+                        700,
+                        itemHeight,
+                        topPadding,
+                        bottomPadding,
+                        result.Result,
+                        ItemOnListRefresh,
+                        Manager.GetElement<ScrollRect>("ScrollRect"));
+                superScrollView.Print(tasks);
+                if (tasks.Count > 0)
+                    SelectZero();
+            };
         }
 
-        void ItemOnListRefresh(string[] task, GameObject item)
+        private void ItemOnListRefresh(string[] task, GameObject item)
         {
-            var handler = item.GetComponent<SuperScrollViewItemTwoStageForReplay>();
-            handler.id = int.Parse(task[0]);
+            var handler = item.GetComponent<SelectionToggle_Replay>();
+            handler.index = int.Parse(task[0]);
             handler.replayName = task[1];
             handler.Refresh();
         }
@@ -157,7 +195,7 @@ namespace MDPro3
                 MessageManager.Cast(InterString.Get("回放没有录制完整。"));
             }
         }
-        List<byte[]> GetYRPBuffer(string path)
+        private List<byte[]> GetYRPBuffer(string path)
         {
             if (path.EndsWith(Program.yrpExpansion))
                 return new List<byte[]>() { File.ReadAllBytes(path) };
@@ -177,7 +215,7 @@ namespace MDPro3
             return returnValue;
         }
 
-        YRP GetYRP(byte[] buffer)
+        private YRP GetYRP(byte[] buffer)
         {
             var returnValue = new YRP();
             try
@@ -203,7 +241,7 @@ namespace MDPro3
                 reader = new BinaryReader(new MemoryStream(raw));
                 if ((returnValue.Flag & 0x2) > 0)
                 {
-                    Program.I().room.mode = 2;
+                    Room.mode = 2;
                     returnValue.playerData.Add(new YRP.PlayerData());
                     returnValue.playerData.Add(new YRP.PlayerData());
                     returnValue.playerData.Add(new YRP.PlayerData());
@@ -216,7 +254,7 @@ namespace MDPro3
                     returnValue.StartHand = reader.ReadInt32();
                     returnValue.DrawCount = reader.ReadInt32();
                     returnValue.opt = reader.ReadInt32();
-                    Program.I().ocgcore.MasterRule = returnValue.opt >> 16;
+                    Program.instance.ocgcore.MasterRule = returnValue.opt >> 16;
                     for (var i = 0; i < 4; i++)
                     {
                         var count = reader.ReadInt32();
@@ -235,7 +273,7 @@ namespace MDPro3
                     returnValue.StartHand = reader.ReadInt32();
                     returnValue.DrawCount = reader.ReadInt32();
                     returnValue.opt = reader.ReadInt32();
-                    Program.I().ocgcore.MasterRule = returnValue.opt >> 16;
+                    Program.instance.ocgcore.MasterRule = returnValue.opt >> 16;
                     for (var i = 0; i < 2; i++)
                     {
                         var count = reader.ReadInt32();
@@ -255,7 +293,6 @@ namespace MDPro3
             return returnValue;
         }
 
-        Dictionary<string, YRP> cachedYRPs = new Dictionary<string, YRP>();
         public YRP CacheYRP(string replay)
         {
             if (cachedYRPs.ContainsKey(replay))
@@ -278,32 +315,31 @@ namespace MDPro3
 
         void PushCollection(List<Package> collection)
         {
-            Program.I().ocgcore.returnServant = Program.I().replay;
-            Program.I().ocgcore.handler = a => { };
-            Program.I().ocgcore.name_0 = Config.Get("ReplayPlayerName0", "@ui");
-            Program.I().ocgcore.name_0_tag = Config.Get("ReplayPlayerName0Tag", "@ui");
-            Program.I().ocgcore.name_0_c = Program.I().ocgcore.name_0;
-            Program.I().ocgcore.name_1 = Config.Get("ReplayPlayerName1", "@ui");
-            Program.I().ocgcore.name_1_tag = Config.Get("ReplayPlayerName1Tag", "@ui");
-            Program.I().ocgcore.name_1_c = Program.I().ocgcore.name_1;
-            Program.I().ocgcore.timeLimit = 240;
-            Program.I().ocgcore.lpLimit = 8000;
-            Program.I().ocgcore.isFirst = true;
-            //Program.I().ocgcore.inAI = false;
-            Program.I().ocgcore.condition = OcgCore.Condition.Replay;
-            Program.I().ShiftToServant(Program.I().ocgcore);
-            Program.I().ocgcore.FlushPackages(collection);
+            Program.instance.ocgcore.returnServant = Program.instance.replay;
+            Program.instance.ocgcore.handler = a => { };
+            Program.instance.ocgcore.name_0 = Config.Get("ReplayPlayerName0", "@ui");
+            Program.instance.ocgcore.name_0_tag = Config.Get("ReplayPlayerName0Tag", "@ui");
+            Program.instance.ocgcore.name_0_c = Program.instance.ocgcore.name_0;
+            Program.instance.ocgcore.name_1 = Config.Get("ReplayPlayerName1", "@ui");
+            Program.instance.ocgcore.name_1_tag = Config.Get("ReplayPlayerName1Tag", "@ui");
+            Program.instance.ocgcore.name_1_c = Program.instance.ocgcore.name_1;
+            Program.instance.ocgcore.timeLimit = 240;
+            Program.instance.ocgcore.lpLimit = 8000;
+            Program.instance.ocgcore.isFirst = true;
+            //Program.instance.ocgcore.inAI = false;
+            Program.instance.ocgcore.condition = OcgCore.Condition.Replay;
+            Program.instance.ShiftToServant(Program.instance.ocgcore);
+            Program.instance.ocgcore.FlushPackages(collection);
         }
-
 
         public void OnRename()
         {
             var selections = new List<string>()
-        {
-            InterString.Get("请输入新的回放名称"),
-            superScrollView.items[superScrollView.selected].args[1].Replace(Program.yrpExpansion, string.Empty)
-        };
-            UIManager.ShowPopupInput(selections, ReplayRename, null, InputValidation.ValidationType.Path);
+            {
+                InterString.Get("请输入新的回放名称"),
+                superScrollView.items[superScrollView.selected].args[1].Replace(Program.yrpExpansion, string.Empty)
+            };
+            UIManager.ShowPopupInput(selections, ReplayRename, null, TmpInputValidation.ValidationType.Path);
         }
 
         void ReplayRename(string newName)
@@ -318,11 +354,11 @@ namespace MDPro3
 
         public void OnPlay()
         {
-            Program.I().replay.KF_Replay(superScrollView.items[superScrollView.selected].args[1]);
+            Program.instance.replay.KF_Replay(superScrollView.items[superScrollView.selected].args[1]);
         }
         public void OnGod()
         {
-            Program.I().replay.KF_Replay(superScrollView.items[superScrollView.selected].args[1], true);
+            Program.instance.replay.KF_Replay(superScrollView.items[superScrollView.selected].args[1], true);
         }
         public void OnDelete()
         {
@@ -340,9 +376,9 @@ namespace MDPro3
         {
             sortByName = !sortByName;
             if (sortByName)
-                textSort.text = InterString.Get("名称排序");
+                Manager.GetElement<SelectionButton>("ButtonSort").SetButtonText(InterString.Get("名称排序"));
             else
-                textSort.text = InterString.Get("时间排序");
+                Manager.GetElement<SelectionButton>("ButtonSort").SetButtonText(InterString.Get("时间排序"));
 
             Print();
         }
@@ -354,8 +390,8 @@ namespace MDPro3
 
             var deckName = replay +"_" + yrp.playerData[player].name;
             var deck = new MDPro3.YGOSharp.Deck(yrp.playerData[player].main, yrp.playerData[player].extra, new List<int>());
-            Program.I().editDeck.SwitchCondition(EditDeck.Condition.ReplayDeck, deckName, deck);
-            Program.I().ShiftToServant(Program.I().editDeck);
+            Program.instance.editDeck.SwitchCondition(EditDeck.Condition.ReplayDeck, deckName, deck);
+            Program.instance.ShiftToServant(Program.instance.editDeck);
         }
     }
 }

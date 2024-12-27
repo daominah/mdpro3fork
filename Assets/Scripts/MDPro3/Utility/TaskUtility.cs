@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 
 
-namespace MDPro3
+namespace MDPro3.Utility
 {
     public static class TaskUtility
     {
@@ -23,6 +23,11 @@ namespace MDPro3
             {
                 await Task.Delay(DeltaTime);
             }
+        }
+
+        public static async Task WaitOneFrame()
+        {
+            await Task.Delay(DeltaTime);
         }
     }
 }

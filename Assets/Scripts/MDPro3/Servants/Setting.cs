@@ -1,4 +1,5 @@
 ﻿using MDPro3.UI;
+using MDPro3.Utility;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,635 +8,330 @@ using System.Reflection;
 using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.EventSystems;
 using UnityEngine.Networking;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
+using static MDPro3.CardRenderer;
 using ShadowResolution = UnityEngine.Rendering.Universal.ShadowResolution;
 
 namespace MDPro3
 {
     public class Setting : Servant
     {
-        public ButtonList defaultButton;
-        public Button btnSurrender;
+        [Header("Setting")]
+        [SerializeField] private SelectionToggle_Setting defaultToggle;
+        [HideInInspector] public SelectionToggle_Setting lastSelectedToggle;
+        [HideInInspector] public SelectionButton_Setting lastSelectedButton;
 
-        [Header("System")]
-        public Slider bgmVol;
-        public Slider seVol;
-        public Slider voiceVol;
-        public Slider fps;
-        public Text fpsValue;
-        public Slider quality;
-        public Text qualityValue;
-        public Slider faa;
-        public Text faaValue;
-        public Slider aaa;
-        public Text aaaValue;
-        public Slider shadow;
-        public Text shadowValue;
-        public Button showFPS;
-        public Text showFPSValue;
-        public Button screen;
-        public Text screenEx;
-        public Text screenValue;
-        public Button resolution;
-        public Text resolutionValue;
-        public Slider scale;
-        public Text scaleValue;
-        public Button confirm;
-        public Text confirmValue;
-        public Slider uiScale;
-        public Text uiScaleValue;
-        public Button background;
-        public Text backgroundValue;
-        public Button bgmBy;
-        public Text bgmByValue;
-        public Button cardStyle;
-        public Text cardStyleValue;
-        public Button cardLanguage;
-        public Text cardLanguageValue;
-        public Button language;
-        public Text languageValue;
-
-        [Header("Duel")]
-        public Button duelAppearance;
-        public Text duelAppearanceValue;
-        public Button duelCharacter;
-        public Text duelCharacterValue;
-        public Button duelVoice;
-        public Text duelVoiceValue;
-        public Button duelCloseup;
-        public Text duelCloseupValue;
-        public Button duelSummon;
-        public Text duelSummonValue;
-        public Button duelPendulum;
-        public Text duelPendulumValue;
-        public Button duelCutin;
-        public Text duelCutinValue;
-        public Button duelEffect;
-        public Text duelEffectValue;
-        public Button duelChain;
-        public Text duelChainValue;
-        public Button duelDice;
-        public Text duelDiceValue;
-        public Button duelCoin;
-        public Text duelCoinValue;
-        public Button duelAutoInfo;
-        public Text duelAutoInfoValue;
-        public Button duelPlayerMessage;
-        public Text duelPlayerMessageValue;
-        public Button duelSystemMessage;
-        public Text duelSystemMessageValue;
-        public Slider duelAcc;
-        public Text duelAccValue;
-        public Button duelAutoAcc;
-        public Text duelAutoAccValue;
-        public Button duelFaceDown;
-        public Text duelFaceDownValue;
-
-        public Button timing;
-        public Text timingValue;
-        public Button autoRPS;
-        public Text autoRPSValue;
-
-        [Header("Watch")]
-        public Button watchAppearance;
-        public Text watchAppearanceValue;
-        public Button watchCharacter;
-        public Text watchCharacterValue;
-        public Button watchVoice;
-        public Text watchVoiceValue;
-        public Button watchCloseup;
-        public Text watchCloseupValue;
-        public Button watchSummon;
-        public Text watchSummonValue;
-        public Button watchPendulum;
-        public Text watchPendulumValue;
-        public Button watchCutin;
-        public Text watchCutinValue;
-        public Button watchEffect;
-        public Text watchEffectValue;
-        public Button watchChain;
-        public Text watchChainValue;
-        public Button watchDice;
-        public Text watchDiceValue;
-        public Button watchCoin;
-        public Text watchCoinValue;
-        public Button watchAutoInfo;
-        public Text watchAutoInfoValue;
-        public Button watchPlayerMessage;
-        public Text watchPlayerMessageValue;
-        public Button watchSystemMessage;
-        public Text watchSystemMessageValue;
-        public Slider watchAcc;
-        public Text watchAccValue;
-        public Button watchAutoAcc;
-        public Text watchAutoAccValue;
-        public Button watchFaceDown;
-        public Text watchFaceDownValue;
-
-        [Header("Replay")]
-        public Button replayAppearance;
-        public Text replayAppearanceValue;
-        public Button replayCharacter;
-        public Text replayCharacterValue;
-        public Button replayVoice;
-        public Text replayVoiceValue;
-        public Button replayCloseup;
-        public Text replayCloseupValue;
-        public Button replaySummon;
-        public Text replaySummonValue;
-        public Button replayPendulum;
-        public Text replayPendulumValue;
-        public Button replayCutin;
-        public Text replayCutinValue;
-        public Button replayEffect;
-        public Text replayEffectValue;
-        public Button replayChain;
-        public Text replayChainValue;
-        public Button replayDice;
-        public Text replayDiceValue;
-        public Button replayCoin;
-        public Text replayCoinValue;
-        public Button replayAutoInfo;
-        public Text replayAutoInfoValue;
-        public Button replayPlayerMessage;
-        public Text replayPlayerMessageValue;
-        public Button replaySystemMessage;
-        public Text replaySystemMessageValue;
-        public Slider replayAcc;
-        public Text replayAccValue;
-        public Button replayAutoAcc;
-        public Text replayAutoAccValue;
-        public Button replayFaceDown;
-        public Text replayFaceDownValue;
-
-        [Header("Port")]
-        public Button import;
-        public Button importBG;
-        public Button exportDeck;
-        public Button exportReplay;
-        public Button exportPicture;
-        public Button clearPicture;
-
-        [Header("Expansions")]
-        public Button supportExpansions;
-        public Text supportExpansionsValue;
-        public Button clearExpansions;
-        public Button updatePrerelease;
-        public Text updatePrereleaseValue;
-
+        #region Servant
         public override void Initialize()
         {
             depth = 1;
-            haveLine = false;
+            showLine = false;
             blackAlpha = 0.6f;
             subBlackAlpha = 0.9f;
-            returnServant = Program.I().menu;
+            returnServant = Program.instance.menu;
             base.Initialize();
+
+            Manager.GetElement<SelectionButton>("SurrenderButton").SetClickEvent(() => Program.instance.ocgcore.OnDuelResultConfirmed());
 
             QualitySettings.vSyncCount = 0;
 
-            bgmVol.onValueChanged.AddListener(OnBgmVolChange);
-            seVol.onValueChanged.AddListener(OnSeVolChange);
-            voiceVol.onValueChanged.AddListener(OnVoiceVolChange);
-            fps.onValueChanged.AddListener(OnFpsChange);
-            scale.onValueChanged.AddListener(OnScaleChange);
-            uiScale.onValueChanged.AddListener(OnUIScaleChange);
-            quality.onValueChanged.AddListener(OnQualityChange);
-            faa.onValueChanged.AddListener(OnFAAChange);
-            aaa.onValueChanged.AddListener(OnAAAChange);
-            shadow.onValueChanged.AddListener(OnShadowChange);
-            showFPS.onClick.AddListener(OnShowFPSClicked);
-            screen.onClick.AddListener(OnScreenModeChange);
-            resolution.onClick.AddListener(OnResolutionChange);
-            background.onClick.AddListener(OnBackground);
-            cardStyle.onClick.AddListener(OnCardStyleChange);
-            cardLanguage.onClick.AddListener(OnCardLanguageChange);
-            language.onClick.AddListener(OnLanguageChange);
-            confirm.onClick.AddListener(OnConfirmClicked);
-            autoRPS.onClick.AddListener(OnAutoRPS);
-            bgmBy.onClick.AddListener(OnBgmByClicked);
-
-            duelAppearance.onClick.AddListener(OnDuelAppearcanceClick);
-            watchAppearance.onClick.AddListener(OnWatchAppearcanceClick);
-            replayAppearance.onClick.AddListener(OnReplayAppearcanceClick);
-            duelCharacter.onClick.AddListener(OnDuelCharacterClick);
-            watchCharacter.onClick.AddListener(OnWatchCharacterClick);
-            replayCharacter.onClick.AddListener(OnReplayCharacterClick);
-            duelVoice.onClick.AddListener(OnDuelVoiceClick);
-            watchVoice.onClick.AddListener(OnWatchVoiceClick);
-            replayVoice.onClick.AddListener(OnReplayVoiceClick);
-            duelCloseup.onClick.AddListener(OnDuelCloseupClick);
-            watchCloseup.onClick.AddListener(OnWatchCloseupClick);
-            replayCloseup.onClick.AddListener(OnReplayCloseupClick);
-            duelSummon.onClick.AddListener(OnDuelSummonClick);
-            watchSummon.onClick.AddListener(OnWatchSummonClick);
-            replaySummon.onClick.AddListener(OnReplaySummonClick);
-            duelPendulum.onClick.AddListener(OnDuelPendulumClick);
-            watchPendulum.onClick.AddListener(OnWatchPendulumClick);
-            replayPendulum.onClick.AddListener(OnReplayPendulumClick);
-            duelCutin.onClick.AddListener(OnDuelCutinClick);
-            watchCutin.onClick.AddListener(OnWatchCutinClick);
-            replayCutin.onClick.AddListener(OnReplayCutinClick);
-            duelEffect.onClick.AddListener(OnDuelEffectClick);
-            watchEffect.onClick.AddListener(OnWatchEffectClick);
-            replayEffect.onClick.AddListener(OnReplayEffectClick);
-            duelChain.onClick.AddListener(OnDuelChainClick);
-            watchChain.onClick.AddListener(OnWatchChainClick);
-            replayChain.onClick.AddListener(OnReplayChainClick);
-            duelDice.onClick.AddListener(OnDuelDiceClick);
-            watchDice.onClick.AddListener(OnWatchDiceClick);
-            replayDice.onClick.AddListener(OnReplayDiceClick);
-            duelCoin.onClick.AddListener(OnDuelCoinClick);
-            watchCoin.onClick.AddListener(OnWatchCoinClick);
-            replayCoin.onClick.AddListener(OnReplayCoinClick);
-            duelAutoInfo.onClick.AddListener(OnDuelAutoInfoClick);
-            watchAutoInfo.onClick.AddListener(OnWatchAutoInfoClick);
-            replayAutoInfo.onClick.AddListener(OnReplayAutoInfoClick);
-            duelPlayerMessage.onClick.AddListener(OnDuelPlayerMessageClick);
-            watchPlayerMessage.onClick.AddListener(OnWatchPlayerMessageClick);
-            replayPlayerMessage.onClick.AddListener(OnReplayPlayerMessageClick);
-            duelSystemMessage.onClick.AddListener(OnDuelSystemMessageClick);
-            watchSystemMessage.onClick.AddListener(OnWatchSystemMessageClick);
-            replaySystemMessage.onClick.AddListener(OnReplaySystemMessageClick);
-            duelAcc.onValueChanged.AddListener(OnDuelAccChange);
-            watchAcc.onValueChanged.AddListener(OnWatchAccChange);
-            replayAcc.onValueChanged.AddListener(OnReplayAccChange);
-            duelAutoAcc.onClick.AddListener(OnDuelAutoAccClick);
-            watchAutoAcc.onClick.AddListener(OnWatchAutoAccClick);
-            replayAutoAcc.onClick.AddListener(OnReplayAutoAccClick);
-            duelFaceDown.onClick.AddListener(OnDuelFaceDownClick);
-            watchFaceDown.onClick.AddListener(OnWatchFaceDownClick);
-            replayFaceDown.onClick.AddListener(OnReplayFaceDownClick);
-
-            timing.onClick.AddListener(OnTimingClick);
-
-            import.onClick.AddListener(OnImport);
-            importBG.onClick.AddListener(OnImportBG);
-
-            exportDeck.onClick.AddListener(OnExportDecks);
-            exportReplay.onClick.AddListener(OnExportReplays);
-            exportPicture.onClick.AddListener(OnExportPictures);
-            clearPicture.onClick.AddListener(OnClearPictures);
-            clearExpansions.onClick.AddListener(OnClearExpansions);
-            supportExpansions.onClick.AddListener(OnSupportExpansions);
-            updatePrerelease.onClick.AddListener(OnUpdatePrerelease);
-
-            bgmVol.value = Config.GetFloat("BgmVol", 0.7f);
-            OnBgmVolChange(bgmVol.value);
-            seVol.value = Config.GetFloat("SeVol", 0.7f);
-            OnSeVolChange(seVol.value);
-            voiceVol.value = Config.GetFloat("VoiceVol", 0.7f);
-            OnVoiceVolChange(voiceVol.value);
-            fps.value = Config.GetFloat("FPS", 60f);
-            OnFpsChange(fps.value);
-
-            var defau = 1f;
-#if UNITY_ANDROID
-            defau = 0.5f;
-#endif
-            scale.value = Config.GetFloat("Scale", defau);
-            OnScaleChange(scale.value);
-
-            uiScale.value = Config.GetUIScale();
-            quality.value = Config.GetFloat("Quality", 3f);
-            OnQualityChange(quality.value);
-            faa.value = Config.GetFloat("FAA", 1);
-            OnFAAChange(faa.value);
-            aaa.value = Config.GetFloat("AAA", 0);
-            OnAAAChange(aaa.value);
-            shadow.value = Config.GetFloat("Shadow", 0);
-            OnShadowChange(shadow.value);
-
-            duelAcc.value = Config.GetFloat("DuelAcc", 2f);
-            OnDuelAccChange(duelAcc.value);
-            watchAcc.value = Config.GetFloat("WatchAcc", 2f);
-            OnWatchAccChange(watchAcc.value);
-            replayAcc.value = Config.GetFloat("ReplayAcc", 2f);
-            OnReplayAccChange(replayAcc.value);
-
-            InitializeShowFPS();
+            InitializeVolume();
             InitializeScreenMode();
             InitializeResolution();
+            InitializeScale();
+            InitializeQuality();
+            InitializeFAA();
+            InitializeAAA();
+            InitializeShadow();
+            InitializeFPS();
+            InitializeShowFPS();
+            InitializeRumble();
             InitializeConfirm();
+            InitializeLayout();
             InitializeBackground();
+            InitializeBgmBy();
             InitializeCardStyle();
             InitializeCardLanguage();
             InitializeLanguage();
-            InitializeSwitches();
-            InitializeBgmBy();
+
+            InitializeAppearance();
+            InitializeCharacter();
+            InitializeVoice();
+            InitializeCloseup();
+            InitializeSummon();
+            InitializePendulum();
+            InitializeCutin();
+            InitializeEffect();
+            InitializeChain();
+            InitializeDice();
+            InitializeCoin();
+            InitializeAutoInfo();
+            InitializeFaceDown();
+            InitializePlayerMessage();
+            InitializeSystemMessage();
+            InitializeAcc();
+            InitializeAutoAcc();
+            InitializeTimming();
+            InitializeAutoRPS();
+
+            InitializePort();
+
+            InitializeExpansions();
+
+            InitializeAbout();
+
+            transform.GetChild(0).gameObject.SetActive(false);
         }
 
-        public override void Show(int preDepth)
-        {
-            base.Show(preDepth);
-            if (Program.I().currentServant == Program.I().ocgcore)
-            {
-                Program.I().currentSubServant = this;
-                UIManager.ShowFPSRight();
-                btnSurrender.gameObject.SetActive(true);
-            }
-            else
-                btnSurrender.gameObject.SetActive(false);
-        }
-        public override void ApplyShowArrangement(int preDepth)
+        protected override void ApplyShowArrangement(int preDepth)
         {
             base.ApplyShowArrangement(preDepth);
             if (preDepth <= depth)
-                defaultButton.SelectThis();
+            {
+                EventSystem.current.SetSelectedGameObject(defaultToggle.gameObject);
+                defaultToggle.ScrollRectToTop();
+            }
             RefreshCharacterName();
+
+            if (Program.instance.currentServant == Program.instance.ocgcore)
+            {
+                Program.instance.currentSubServant = this;
+                UIManager.ShowFPSRight();
+
+
+                if (Program.instance.ocgcore.condition == OcgCore.Condition.Duel)
+                {
+                    Manager.GetElement("Page1 Duel").SetActive(true);
+                    Manager.GetElement("Page2 Watch").SetActive(false);
+                    Manager.GetElement("Page3 Replay").SetActive(false);
+
+                    Manager.GetElement("RetryButton").SetActive(false);
+                    Manager.GetElement("SurrenderButton").SetActive(true);
+                    Manager.GetElement<SelectionButton>("SurrenderButton").SetButtonText(InterString.Get("投降"));
+                }
+                else if (Program.instance.ocgcore.condition == OcgCore.Condition.Watch)
+                {
+                    Manager.GetElement("Page1 Duel").SetActive(false);
+                    Manager.GetElement("Page2 Watch").SetActive(true);
+                    Manager.GetElement("Page3 Replay").SetActive(false);
+
+                    Manager.GetElement("RetryButton").SetActive(false);
+                    Manager.GetElement("SurrenderButton").SetActive(true);
+                    Manager.GetElement<SelectionButton>("SurrenderButton").SetButtonText(InterString.Get("退出观战"));
+                }
+                else if (Program.instance.ocgcore.condition == OcgCore.Condition.Replay)
+                {
+                    Manager.GetElement("Page1 Duel").SetActive(false);
+                    Manager.GetElement("Page2 Watch").SetActive(false);
+                    Manager.GetElement("Page3 Replay").SetActive(true);
+
+                    Manager.GetElement("RetryButton").SetActive(false);
+                    Manager.GetElement("SurrenderButton").SetActive(true);
+                    Manager.GetElement<SelectionButton>("SurrenderButton").SetButtonText(InterString.Get("退出回放"));
+                }
+                Manager.GetElement("Page4 Port").SetActive(false);
+                Manager.GetElement("Page5 Expansions").SetActive(false);
+
+            }
+            else
+            {
+                Manager.GetElement("Page1 Duel").SetActive(true);
+                Manager.GetElement("Page2 Watch").SetActive(true);
+                Manager.GetElement("Page3 Replay").SetActive(true);
+                Manager.GetElement("Page4 Port").SetActive(true);
+                Manager.GetElement("Page5 Expansions").SetActive(true);
+
+                Manager.GetElement("RetryButton").SetActive(false);
+                Manager.GetElement("SurrenderButton").SetActive(false);
+            }
         }
 
-        public override void OnExit()
+        protected override void ApplyHideArrangement(int nextDepth)
         {
-            base.OnExit();
+            base.ApplyHideArrangement(nextDepth);
             Save();
-            if (Program.I().currentServant == Program.I().ocgcore)
+            if (Program.instance.currentServant == Program.instance.ocgcore)
                 UIManager.ShowFPSLeft();
-
         }
+
+        public override void SelectLastSelectable()
+        {
+            if(Selected != null)
+            {
+                if (Selected.TryGetComponent<SelectionButton_Setting>(out _))
+                    EventSystem.current.SetSelectedGameObject(Selected.gameObject);
+                else if (Selected.TryGetComponent<SelectionToggle_Setting>(out _))
+                    EventSystem.current.SetSelectedGameObject(Selected.gameObject);
+                else
+                    EventSystem.current.SetSelectedGameObject(defaultToggle.gameObject);
+            }
+            else
+                EventSystem.current.SetSelectedGameObject(defaultToggle.gameObject);
+        }
+
+        public override void OnReturn()
+        {
+            if (inTransition) return;
+            if(returnAction != null)
+            {
+                returnAction.Invoke();
+                return;
+            }
+            AudioManager.PlaySE("SE_MENU_CANCEL");
+            GameObject selected = EventSystem.current.currentSelectedGameObject;
+
+            if (selected == null)
+                OnExit();
+            else if (Cursor.lockState == CursorLockMode.None)
+                OnExit();
+            else if (selected.GetComponent<SelectionButton_Setting>() != null)
+            {
+                if (lastSelectedToggle != null)
+                    EventSystem.current.SetSelectedGameObject(lastSelectedToggle.gameObject);
+                else
+                    EventSystem.current.SetSelectedGameObject(defaultToggle.gameObject);
+            }
+            else
+                OnExit();
+        }
+        #endregion
 
         #region setting
-
-        public void RefreshCharacterName()
-        {
-            if (Program.I().character.characters == null)
-                return;
-
-            var character = Config.Get("DuelCharacter0", VoiceHelper.defaultCharacter);
-            duelCharacterValue.text = Program.I().character.characters.GetName(character);
-            character = Config.Get("WatchCharacter0", VoiceHelper.defaultCharacter);
-            watchCharacterValue.text = Program.I().character.characters.GetName(character);
-            character = Config.Get("ReplayCharacter0", VoiceHelper.defaultCharacter);
-            replayCharacterValue.text = Program.I().character.characters.GetName(character);
-        }
-
         public void Save()
         {
-            Config.SetFloat("BgmVol", bgmVol.value);
-            Config.SetFloat("SeVol", seVol.value);
-            Config.SetFloat("VoiceVol", voiceVol.value);
-            Config.SetFloat("FPS", fps.value);
-            Config.SetFloat("Scale", scale.value);
-            Config.SetFloat("UIScale", uiScale.value);
-            Config.SetFloat("Quality", quality.value);
-            Config.SetFloat("FAA", faa.value);
-            Config.SetFloat("AAA", aaa.value);
-            Config.SetFloat("Shadow", shadow.value);
-            Config.Set("ShowFPS", SaveBool(showFPSValue.text));
-            Config.Set("ScreenMode", SaveScreenMode(screenValue.text));
-            Config.Set("Resolution", resolutionValue.text);
-            Config.Set(Language.CardConfigName, InterString.GetOriginal(cardLanguageValue.text));
-            Config.Set(Language.ConfigName, InterString.GetOriginal(languageValue.text));
-            Config.Set("Confirm", SaveBool(confirmValue.text));
+            //Non-WholeNumbers Slider Value Need be saved here;
 
-            Config.Set("DuelSummon", SaveBool(duelSummonValue.text));
-            Config.Set("WatchSummon", SaveBool(watchSummonValue.text));
-            Config.Set("ReplaySummon", SaveBool(replaySummonValue.text));
-            Config.Set("DuelPendulum", SaveBool(duelPendulumValue.text));
-            Config.Set("WatchPendulum", SaveBool(watchPendulumValue.text));
-            Config.Set("ReplayPendulum", SaveBool(replayPendulumValue.text));
-            Config.Set("DuelCutin", SaveBool(duelCutinValue.text));
-            Config.Set("WatchCutin", SaveBool(watchCutinValue.text));
-            Config.Set("ReplayCutin", SaveBool(replayCutinValue.text));
-            Config.Set("DuelEffect", SaveBool(duelEffectValue.text));
-            Config.Set("WatchEffect", SaveBool(watchEffectValue.text));
-            Config.Set("ReplayEffect", SaveBool(replayEffectValue.text));
-            Config.Set("DuelChain", SaveBool(duelChainValue.text));
-            Config.Set("WatchChain", SaveBool(watchChainValue.text));
-            Config.Set("ReplayChain", SaveBool(replayChainValue.text));
-            Config.Set("DuelDice", SaveBool(duelDiceValue.text));
-            Config.Set("WatchDice", SaveBool(watchDiceValue.text));
-            Config.Set("ReplayDice", SaveBool(replayDiceValue.text));
-            Config.Set("DuelCoin", SaveBool(duelCoinValue.text));
-            Config.Set("WatchCoin", SaveBool(watchCoinValue.text));
-            Config.Set("ReplayCoin", SaveBool(replayCoinValue.text));
-            Config.Set("DuelAutoInfo", SaveBool(duelAutoInfoValue.text));
-            Config.Set("WatchAutoInfo", SaveBool(watchAutoInfoValue.text));
-            Config.Set("ReplayAutoInfo", SaveBool(replayAutoInfoValue.text));
-            Config.Set("DuelPlayerMessage", SaveBool(duelPlayerMessageValue.text));
-            Config.Set("WatchPlayerMessage", SaveBool(watchPlayerMessageValue.text));
-            Config.Set("ReplayPlayerMessage", SaveBool(replayPlayerMessageValue.text));
-            Config.Set("DuelSystemMessage", SaveBool(duelSystemMessageValue.text));
-            Config.Set("WatchSystemMessage", SaveBool(watchSystemMessageValue.text));
-            Config.Set("ReplaySystemMessage", SaveBool(replaySystemMessageValue.text));
-            Config.Set("DuelAutoAcc", SaveBool(duelAutoAccValue.text));
-            Config.Set("WatchAutoAcc", SaveBool(watchAutoAccValue.text));
-            Config.Set("ReplayAutoAcc", SaveBool(replayAutoAccValue.text));
+            Config.SetFloat("BgmVol", GetBGMVolum());
+            Config.SetFloat("SEVol", GetSEVolum());
+            Config.SetFloat("VoiceVol", GetVoiceVolum());
+            Config.SetFloat("Scale", Manager.GetElement<SelectionButton_Setting>("Scale").GetSliderValue());
+            FpsSave();
 
-            Config.Set("Timing", SaveBool(timingValue.text));
-            Config.Set("Expansions", SaveBool(supportExpansionsValue.text));
-
+            Config.SetFloat("DuelAcc", Manager.GetElement<SelectionButton_Setting>("DuelAcc").GetSliderValue());
+            Config.SetFloat("WatchAcc", Manager.GetElement<SelectionButton_Setting>("WatchAcc").GetSliderValue());
+            Config.SetFloat("ReplayAcc", Manager.GetElement<SelectionButton_Setting>("ReplayAcc").GetSliderValue());
             Config.Save();
         }
-        public string SaveBool(string value)
+
+        // System
+        #region Volume
+        private void InitializeVolume()
         {
-            string returnValue = Config.stringNo;
-            if (value == InterString.Get("开"))
-                returnValue = Config.stringYes;
-            if (value == InterString.Get("有"))
-                returnValue = Config.stringYes;
-            if (value == InterString.Get("左"))
-                returnValue = Config.stringYes;
-            if (value == InterString.Get("是"))
-                returnValue = Config.stringYes;
-            return returnValue;
+            var btnBGM = Manager.GetElement<SelectionButton_Setting>("BGM");
+            btnBGM.SetSliderEvent(OnBgmVolChange);
+            var volBGM = Config.GetFloat("BgmVol", 0.7f);
+            btnBGM.SetSliderValue(volBGM);
+            OnBgmVolChange(volBGM);
+
+            var btnSE = Manager.GetElement<SelectionButton_Setting>("SE");
+            btnSE.SetSliderEvent(OnSeVolChange);
+            var volSE = Config.GetFloat("SEVol", 0.7f);
+            btnSE.SetSliderValue(volSE);
+            OnSeVolChange(volSE);
+
+            var btnVoice = Manager.GetElement<SelectionButton_Setting>("Voice");
+            btnVoice.SetSliderEvent(OnVoiceVolChange);
+            btnVoice.SetClickEvent(PlayTestVoice);
+            var volVoice = Config.GetFloat("VoiceVol", 0.7f);
+            btnVoice.SetSliderValue(volVoice);
+            OnVoiceVolChange(volVoice);
         }
-        public void OnBgmVolChange(float vol)
+        public float GetBGMVolum()
+        {
+            return Manager.GetElement<SelectionButton_Setting>("BGM").GetSliderValue();
+        }
+        public float GetSEVolum()
+        {
+            return Manager.GetElement<SelectionButton_Setting>("SE").GetSliderValue();
+        }
+        public float GetVoiceVolum()
+        {
+            return Manager.GetElement<SelectionButton_Setting>("Voice").GetSliderValue();
+        }
+        private void PlayTestVoice()
+        {
+            AudioManager.PlayVoiceByResourcePath("VOICE/VoiceSample");
+        }
+        private void OnBgmVolChange(float vol)
         {
             AudioManager.SetBGMVol(vol);
         }
-        public void OnSeVolChange(float vol)
+        private void OnSeVolChange(float vol)
         {
             AudioManager.SetSeVol(vol);
         }
-        public void OnVoiceVolChange(float vol)
+        private void OnVoiceVolChange(float vol)
         {
             AudioManager.SetVoiceVol(vol);
         }
-        public void OnFpsChange(float value)
-        {
-            QualitySettings.vSyncCount = 0;
-            if (value > 0f && value < 30f)
-                value = 30f;
-            Application.targetFrameRate = (int)value;
-            fpsValue.text = ((int)value).ToString();
-        }
+        #endregion
 
-        public void OnScaleChange(float vol)
+        #region Screen Mode
+        private void InitializeScreenMode()
         {
-            string value = vol.ToString();
-            value = value.Length > 4 ? value.Substring(0, 4) : value;
-            scaleValue.text = value;
-            Program.I().camera_.urpAsset.renderScale = float.Parse(value);
-        }
-        public void OnUIScaleChange(float vol)
-        {
-            string value = vol.ToString();
-            value = value.Length > 4 ? value.Substring(0, 4) : value;
-            uiScaleValue.text = value;
-        }
+            var button = Manager.GetElement<SelectionButton_Setting>("Screen");
+            button.SetClickEvent(OnScreenModeChange);
 
-        public void OnQualityChange(float value)
-        {
-            string qualityText;
-            switch ((int)value)
+            string value = Config.Get("ScreenMode", "1");
+            if (value == "0")
             {
-                case 0:
-                    qualityText = InterString.Get("非常低");
-                    break;
-                case 1:
-                    qualityText = InterString.Get("低");
-                    break;
-                case 2:
-                    qualityText = InterString.Get("中等");
-                    break;
-                case 3:
-                    qualityText = InterString.Get("高");
-                    break;
-                case 4:
-                    qualityText = InterString.Get("非常高");
-                    break;
-                case 5:
-                    qualityText = InterString.Get("极致");
-                    break;
-                default:
-                    qualityText = InterString.Get("中等");
-                    break;
+                button.SetModeText(InterString.Get("独占全屏"));
+                button.SetNoteText(InterString.Get("独占全屏（仅Windows端有效）"));
             }
-            Config.SetFloat("Quality", (int)value);
-            qualityValue.text = qualityText;
-        }
-        public void OnFAAChange(float value)
-        {
-#if UNITY_ANDROID
-            value = 1f;
-#endif
-
-            switch ((int)value)
+            else if (value == "1")
             {
-                case 1:
-                    faaValue.text = InterString.Get("Off");
-                    Program.I().camera_.urpAsset.msaaSampleCount = 1;
-                    Program.I().camera_.urpAssetForUI.msaaSampleCount = 1;
-                    break;
-                case 2:
-                    faaValue.text = "MSAA 2x";
-                    Program.I().camera_.urpAsset.msaaSampleCount = 2;
-                    Program.I().camera_.urpAssetForUI.msaaSampleCount = 2;
-                    break;
-                case 3:
-                    faaValue.text = "MSAA 4x";
-                    Program.I().camera_.urpAsset.msaaSampleCount = 4;
-                    Program.I().camera_.urpAssetForUI.msaaSampleCount = 4;
-                    break;
-                case 4:
-                    faaValue.text = "MSAA 8x";
-                    Program.I().camera_.urpAsset.msaaSampleCount = 8;
-                    Program.I().camera_.urpAssetForUI.msaaSampleCount = 8;
-                    break;
-            }
-        }
-        public void OnAAAChange(float value)
-        {
-            var cameraData3D = Program.I().camera_.cameraMain.GetUniversalAdditionalCameraData();
-
-            OnFAAChange(faa.value);
-
-            switch ((int)value)
-            {
-                case 0:
-                    aaaValue.text = InterString.Get("Off");
-                    cameraData3D.antialiasing = AntialiasingMode.None;
-                    break;
-                case 1:
-                    aaaValue.text = "FAA";
-                    cameraData3D.antialiasing = AntialiasingMode.FastApproximateAntialiasing;
-                    break;
-                case 2:
-                    aaaValue.text = "SMAA Low";
-                    cameraData3D.antialiasing = AntialiasingMode.SubpixelMorphologicalAntiAliasing;
-                    cameraData3D.antialiasingQuality = AntialiasingQuality.Low;
-                    break;
-                case 3:
-                    aaaValue.text = "SMAA Medium";
-                    cameraData3D.antialiasing = AntialiasingMode.SubpixelMorphologicalAntiAliasing;
-                    cameraData3D.antialiasingQuality = AntialiasingQuality.Medium;
-                    break;
-                case 4:
-                    aaaValue.text = "SMAA High";
-                    cameraData3D.antialiasing = AntialiasingMode.SubpixelMorphologicalAntiAliasing;
-                    cameraData3D.antialiasingQuality = AntialiasingQuality.High;
-                    break;
-                case 5:
-                    aaaValue.text = "TAA";
-                    cameraData3D.antialiasing = AntialiasingMode.TemporalAntiAliasing;
-                    Program.I().camera_.urpAsset.msaaSampleCount = 1;
-                    Program.I().camera_.urpAssetForUI.msaaSampleCount = 1;
-                    break;
-            }
-        }
-        public void OnShadowChange(float value)
-        {
-            SROptions sr = new SROptions();
-            switch ((int)value)
-            {
-                case 0:
-                    shadowValue.text = InterString.Get("非常低");
-                    sr.MainLightShadowResolution = ShadowResolution._256;
-                    sr.SupportsSoftShadows = false;
-                    break;
-                case 1:
-                    shadowValue.text = InterString.Get("低");
-                    sr.MainLightShadowResolution = ShadowResolution._512;
-                    sr.SupportsSoftShadows = false;
-                    break;
-                case 2:
-                    shadowValue.text = InterString.Get("中等");
-                    sr.MainLightShadowResolution = ShadowResolution._1024;
-                    sr.SupportsSoftShadows = false;
-                    break;
-                case 3:
-                    shadowValue.text = InterString.Get("高");
-                    sr.MainLightShadowResolution = ShadowResolution._2048;
-                    sr.SupportsSoftShadows = true;
-                    break;
-                case 4:
-                    shadowValue.text = InterString.Get("非常高");
-                    sr.MainLightShadowResolution = ShadowResolution._4096;
-                    sr.SupportsSoftShadows = true;
-                    break;
-            }
-        }
-        public void InitializeShowFPS()
-        {
-            var value = Config.GetBool("ShowFPS", true);
-            if (value)
-            {
-                showFPSValue.text = InterString.Get("开");
-                UIManager.ShowFPS();
+                button.SetModeText(InterString.Get("窗口全屏"));
+                button.SetNoteText(InterString.Get("全屏显示"));
             }
             else
             {
-                showFPSValue.text = InterString.Get("关");
-                UIManager.HideFPS();
+                button.SetModeText(InterString.Get("窗口化"));
+                button.SetNoteText(InterString.Get("窗口化（仅桌面端有效）"));
             }
         }
-        public void OnShowFPSClicked()
+        private void OnScreenModeChange()
         {
-            if (showFPSValue.text == InterString.Get("开"))
+            List<string> selections = new List<string>
             {
-                showFPSValue.text = InterString.Get("关");
-                UIManager.HideFPS();
+                InterString.Get("显示模式"),
+                string.Empty,
+                InterString.Get("独占全屏"),
+                InterString.Get("窗口全屏"),
+                InterString.Get("窗口化")
+            };
+            UIManager.ShowPopupSelection(selections, OnScreenModeSelection);
+        }
+        private void OnScreenModeSelection()
+        {
+            string selected = UnityEngine.EventSystems.EventSystem.current.
+                currentSelectedGameObject.GetComponent<SelectionButton>().GetButtonText();
+            var button = Manager.GetElement<SelectionButton_Setting>("Screen");
+
+            if (selected == InterString.Get("独占全屏"))
+            {
+                Screen.SetResolution(Screen.currentResolution.width, Screen.currentResolution.height, FullScreenMode.ExclusiveFullScreen);
+                button.SetModeText(InterString.Get("独占全屏"));
+                button.SetNoteText(InterString.Get("独占全屏（仅Windows端有效）"));
+            }
+            else if (selected == InterString.Get("窗口全屏"))
+            {
+                Screen.SetResolution(Screen.currentResolution.width, Screen.currentResolution.height, FullScreenMode.FullScreenWindow);
+                button.SetModeText(InterString.Get("窗口全屏"));
+                button.SetNoteText(InterString.Get("全屏显示"));
             }
             else
             {
-                showFPSValue.text = InterString.Get("开");
-                UIManager.ShowFPS();
+                Screen.SetResolution(Screen.currentResolution.width, Screen.currentResolution.height, false);
+                button.SetModeText(InterString.Get("窗口化"));
+                button.SetNoteText(InterString.Get("窗口化（仅桌面端有效）"));
             }
+
+            Config.Set("ScreenMode", SaveScreenMode(selected));
         }
-        public string SaveScreenMode(string value)
+        private string SaveScreenMode(string value)
         {
             string returnValue = "1";
             if (value == InterString.Get("独占全屏"))
@@ -646,62 +342,14 @@ namespace MDPro3
                 returnValue = "2";
             return returnValue;
         }
-        public void InitializeScreenMode()
-        {
-            string value = Config.Get("ScreenMode", "1");
+        #endregion
 
-            if (value == "0")
-            {
-                screenEx.text = InterString.Get("独占全屏");
-                screenValue.text = InterString.Get("独占全屏");
-            }
-            else if (value == "1")
-            {
-                screenEx.text = InterString.Get("窗口全屏");
-                screenValue.text = InterString.Get("窗口全屏");
-            }
-            else
-            {
-                screenEx.text = InterString.Get("窗口化（仅桌面端有效）");
-                screenValue.text = InterString.Get("窗口化");
-            }
-        }
-        public void OnScreenModeChange()
+        #region Resolution
+        private void InitializeResolution()
         {
-            List<string> selections = new List<string>
-            {
-                InterString.Get("显示模式"),
-                InterString.Get("独占全屏"),
-                InterString.Get("窗口全屏"),
-                InterString.Get("窗口化")
-            };
-            UIManager.ShowPopupSelection(selections, OnScreenModeSelection);
-        }
-        public void OnScreenModeSelection()
-        {
-            string selected = UnityEngine.EventSystems.EventSystem.current.
-                currentSelectedGameObject.transform.GetChild(0).GetComponent<Text>().text;
-            if (selected == InterString.Get("独占全屏"))
-            {
-                Screen.SetResolution(Screen.currentResolution.width, Screen.currentResolution.height, FullScreenMode.ExclusiveFullScreen);
-                screenEx.text = InterString.Get("独占全屏（仅Windows端有效）");
-                screenValue.text = InterString.Get("独占全屏");
-            }
-            else if (selected == InterString.Get("窗口全屏"))
-            {
-                Screen.SetResolution(Screen.currentResolution.width, Screen.currentResolution.height, FullScreenMode.FullScreenWindow);
-                screenEx.text = InterString.Get("窗口全屏");
-                screenValue.text = InterString.Get("窗口全屏");
-            }
-            else
-            {
-                Screen.SetResolution(Screen.currentResolution.width, Screen.currentResolution.height, false);
-                screenEx.text = InterString.Get("窗口化（仅桌面端有效）");
-                screenValue.text = InterString.Get("窗口化");
-            }
-        }
-        public void InitializeResolution()
-        {
+            var button = Manager.GetElement<SelectionButton_Setting>("Resolution");
+            button.SetClickEvent(OnResolutionChange);
+
             string resolution = $"{Screen.width} x {Screen.height}";
 
 #if UNITY_ANDROID
@@ -709,13 +357,16 @@ namespace MDPro3
                 resolution = Config.Get("Resolution", "1920 x 1080");
             Screen.SetResolution(int.Parse(Regex.Split(resolution, " x ")[0]), int.Parse(Regex.Split(resolution, " x ")[1]), FullScreenMode.FullScreenWindow);
 #endif
-            resolutionValue.text = resolution;
+            button.SetModeText(resolution);
+
+            SystemEvent.OnResolutionChange += SetResolutionText;
         }
-        public void OnResolutionChange()
+        private void OnResolutionChange()
         {
             List<string> selections = new List<string>
             {
-                InterString.Get("分辨率")
+                InterString.Get("分辨率"),
+                string.Empty
             };
             foreach (var resolution in Screen.resolutions)
             {
@@ -777,19 +428,393 @@ namespace MDPro3
                     selections.Add(selection);
             }
 
-            selections.Add("3600 x 1620");
+            //selections.Add("3600 x 1620");
 
             UIManager.ShowPopupSelection(selections, OnResolutioSelection);
         }
-        public void OnResolutioSelection()
+        private void OnResolutioSelection()
         {
-            string selected = UnityEngine.EventSystems.EventSystem.current.
-                currentSelectedGameObject.transform.GetChild(0).GetComponent<Text>().text;
+            string selected = EventSystem.current.
+                currentSelectedGameObject.GetComponent<SelectionButton>().GetButtonText();
             Screen.SetResolution(int.Parse(Regex.Split(selected, " x ")[0]), int.Parse(Regex.Split(selected, " x ")[1]), Screen.fullScreen);
-            resolutionValue.text = selected;
+            SetResolutionText();
+            Config.Set("Resolution", selected);
+        }
+        private void SetResolutionText()
+        {
+            string resolution = $"{Screen.width} x {Screen.height}";
+            var button = Manager.GetElement<SelectionButton_Setting>("Resolution");
+            button.SetModeText(resolution);
+        }
+        #endregion
+
+        #region Scale
+        private void InitializeScale()
+        {
+            var button = Manager.GetElement<SelectionButton_Setting>("Scale");
+            button.SetSliderEvent(OnScaleChange);
+
+            var defau = 1f;
+#if UNITY_ANDROID
+            defau = 0.5f;
+#endif
+            var configScale = Config.GetFloat("Scale", defau);
+            button.SetSliderValue(configScale);
+            OnScaleChange(configScale);
+        }
+        private void OnScaleChange(float vol)
+        {
+            var button = Manager.GetElement<SelectionButton_Setting>("Scale");
+
+            string value = vol.ToString();
+            value = value.Length > 4 ? value.Substring(0, 4) : value;
+            button.SetModeText(value);
+            Program.instance.camera_.urpAsset.renderScale = float.Parse(value);
+        }
+        #endregion
+
+        #region Quality
+        private void InitializeQuality()
+        {
+            var button = Manager.GetElement<SelectionButton_Setting>("Quality");
+            button.SetSliderEvent(OnQualityChange);
+
+            var configQuality = Config.GetFloat("Quality", 2f);
+            button.SetSliderValue(configQuality);
+            OnQualityChange(configQuality);
+        }
+        private void OnQualityChange(float value)
+        {
+            string qualityText = (int)value switch
+            {
+                0 => InterString.Get("非常低"),
+                1 => InterString.Get("低"),
+                2 => InterString.Get("中等"),
+                3 => InterString.Get("高"),
+                4 => InterString.Get("非常高"),
+                5 => InterString.Get("极致"),
+                _ => InterString.Get("中等"),
+            };
+            Config.SetFloat("Quality", (int)value);
+
+            var button = Manager.GetElement<SelectionButton_Setting>("Quality");
+            button.SetModeText(qualityText);
+        }
+        #endregion
+
+        #region FAA
+        private void InitializeFAA()
+        {
+            var button = Manager.GetElement<SelectionButton_Setting>("FAA");
+            button.SetSliderEvent(OnFAAChange);
+
+            var configFAA = Config.GetFloat("FAA", 1f);
+            button.SetSliderValue(configFAA);
+            OnFAAChange(configFAA);
+        }
+        private void OnFAAChange(float value)
+        {
+#if UNITY_ANDROID
+            value = 1f;
+#endif
+            var modeText = "Off";
+            switch ((int)value)
+            {
+                case 1:
+                    modeText = InterString.Get("Off");
+                    Program.instance.camera_.urpAsset.msaaSampleCount = 1;
+                    Program.instance.camera_.urpAssetForUI.msaaSampleCount = 1;
+                    break;
+                case 2:
+                    modeText = "MSAA 2x";
+                    Program.instance.camera_.urpAsset.msaaSampleCount = 2;
+                    Program.instance.camera_.urpAssetForUI.msaaSampleCount = 2;
+                    break;
+                case 3:
+                    modeText = "MSAA 4x";
+                    Program.instance.camera_.urpAsset.msaaSampleCount = 4;
+                    Program.instance.camera_.urpAssetForUI.msaaSampleCount = 4;
+                    break;
+                case 4:
+                    modeText = "MSAA 8x";
+                    Program.instance.camera_.urpAsset.msaaSampleCount = 8;
+                    Program.instance.camera_.urpAssetForUI.msaaSampleCount = 8;
+                    break;
+            }
+
+            var button = Manager.GetElement<SelectionButton_Setting>("FAA");
+            button.SetModeText(modeText);
+            Config.SetFloat("FAA", value);
         }
 
-        public void InitializeBackground()
+        #endregion
+
+        #region AAA
+        private void InitializeAAA()
+        {
+            var button = Manager.GetElement<SelectionButton_Setting>("AAA");
+            button.SetSliderEvent(OnAAAChange);
+
+            var configAAA = Config.GetFloat("AAA", 0f);
+            button.SetSliderValue(configAAA);
+            OnAAAChange(configAAA);
+        }
+        private void OnAAAChange(float value)
+        {
+            var cameraData3D = Program.instance.camera_.cameraMain.GetUniversalAdditionalCameraData();
+            OnFAAChange(Manager.GetElement<SelectionButton_Setting>("FAA").GetSliderValue());
+
+            var modeText = "Off";
+            switch ((int)value)
+            {
+                case 0:
+                    modeText = InterString.Get("Off");
+                    cameraData3D.antialiasing = AntialiasingMode.None;
+                    break;
+                case 1:
+                    modeText = "FAA";
+                    cameraData3D.antialiasing = AntialiasingMode.FastApproximateAntialiasing;
+                    break;
+                case 2:
+                    modeText = "SMAA Low";
+                    cameraData3D.antialiasing = AntialiasingMode.SubpixelMorphologicalAntiAliasing;
+                    cameraData3D.antialiasingQuality = AntialiasingQuality.Low;
+                    break;
+                case 3:
+                    modeText = "SMAA Medium";
+                    cameraData3D.antialiasing = AntialiasingMode.SubpixelMorphologicalAntiAliasing;
+                    cameraData3D.antialiasingQuality = AntialiasingQuality.Medium;
+                    break;
+                case 4:
+                    modeText = "SMAA High";
+                    cameraData3D.antialiasing = AntialiasingMode.SubpixelMorphologicalAntiAliasing;
+                    cameraData3D.antialiasingQuality = AntialiasingQuality.High;
+                    break;
+                case 5:
+                    modeText = "TAA";
+                    cameraData3D.antialiasing = AntialiasingMode.TemporalAntiAliasing;
+                    Program.instance.camera_.urpAsset.msaaSampleCount = 1;
+                    Program.instance.camera_.urpAssetForUI.msaaSampleCount = 1;
+                    break;
+            }
+
+            var button = Manager.GetElement<SelectionButton_Setting>("AAA");
+            button.SetModeText(modeText);
+            Config.SetFloat("AAA", value);
+        }
+
+        #endregion
+
+        #region Shadow
+        private void InitializeShadow()
+        {
+            var button = Manager.GetElement<SelectionButton_Setting>("Shadow");
+            button.SetSliderEvent(OnShadowChange);
+
+            var configShadow = Config.GetFloat("Shadow", 0f);
+            button.SetSliderValue(configShadow);
+            OnShadowChange(configShadow);
+        }
+
+        public void OnShadowChange(float value)
+        {
+            SROptions sr = new SROptions();
+            var modeText = InterString.Get("非常低");
+            switch ((int)value)
+            {
+                case 0:
+                    modeText = InterString.Get("非常低");
+                    sr.MainLightShadowResolution = ShadowResolution._256;
+                    sr.SupportsSoftShadows = false;
+                    break;
+                case 1:
+                    modeText = InterString.Get("低");
+                    sr.MainLightShadowResolution = ShadowResolution._512;
+                    sr.SupportsSoftShadows = false;
+                    break;
+                case 2:
+                    modeText = InterString.Get("中等");
+                    sr.MainLightShadowResolution = ShadowResolution._1024;
+                    sr.SupportsSoftShadows = false;
+                    break;
+                case 3:
+                    modeText = InterString.Get("高");
+                    sr.MainLightShadowResolution = ShadowResolution._2048;
+                    sr.SupportsSoftShadows = true;
+                    break;
+                case 4:
+                    modeText = InterString.Get("非常高");
+                    sr.MainLightShadowResolution = ShadowResolution._4096;
+                    sr.SupportsSoftShadows = true;
+                    break;
+            }
+
+            var button = Manager.GetElement<SelectionButton_Setting>("Shadow");
+            button.SetModeText(modeText);
+
+            Config.SetFloat("Shadow", value);
+        }
+        #endregion
+
+        #region FPS
+        private void InitializeFPS()
+        {
+            var button = Manager.GetElement<SelectionButton_Setting>("FPS");
+            button.SetSliderEvent(OnFpsChange);
+
+            var defau = 60f;
+            if(DeviceInfo.OnMobile())
+                defau = 30f;
+            var configFPS = Config.GetFloat("FPS", defau);
+            if (configFPS == 0f)
+                configFPS = 29f;
+            button.SetSliderValue(configFPS);
+            OnFpsChange(configFPS);
+        }
+        private void OnFpsChange(float value)
+        {
+            QualitySettings.vSyncCount = 0;
+            if (value == 29f)
+                value = 0f;
+            Application.targetFrameRate = (int)value;
+            var button = Manager.GetElement<SelectionButton_Setting>("FPS");
+            button.SetModeText(value.ToString());
+        }
+        private void FpsSave()
+        {
+            var config = Manager.GetElement<SelectionButton_Setting>("FPS").GetSliderValue();
+            if (config == 29f)
+                config = 0f;
+            Config.SetFloat("FPS", config);
+        }
+        #endregion
+
+        #region ShowFPS
+        private void InitializeShowFPS()
+        {
+            var button = Manager.GetElement<SelectionButton_Setting>("ShowFPS");
+            button.SetClickEvent(OnShowFPSClicked);
+
+            var config = Config.GetBool("ShowFPS", true);
+            button.SetModeText(InterString.Get(config ? "开" : "关"));
+            if (config)
+                UIManager.ShowFPS();
+            else
+                UIManager.HideFPS();
+        }
+        private void OnShowFPSClicked()
+        {
+            var button = Manager.GetElement<SelectionButton_Setting>("ShowFPS");
+            var config = Config.GetBool("ShowFPS", true);
+            button.SetModeText(InterString.Get(config ? "关" : "开"));
+            if (config)
+                UIManager.HideFPS();
+            else
+                UIManager.ShowFPS();
+            Config.SetBool("ShowFPS", !config);
+        }
+        #endregion
+
+        #region Rumble
+        private void InitializeRumble()
+        {
+            var button = Manager.GetElement<SelectionButton_Setting>("Rumble");
+            button.SetClickEvent(OnRumbleClicked);
+
+            var config = Config.GetBool("Rumble", true);
+            button.SetModeText(InterString.Get(config ? "开" : "关"));
+        }
+        private void OnRumbleClicked()
+        {
+            var button = Manager.GetElement<SelectionButton_Setting>("Rumble");
+            var config = Config.GetBool("Rumble", true);
+            button.SetModeText(InterString.Get(config ? "关" : "开"));
+            Config.SetBool("Rumble", !config);
+        }
+        #endregion
+
+        #region Confirm
+        private void InitializeConfirm()
+        {
+            var button = Manager.GetElement<SelectionButton_Setting>("Confirm");
+            button.SetClickEvent(OnConfirmClicked);
+
+            var config = Config.GetBool("Confirm", false);
+            button.SetModeText(InterString.Get(config ? "左" : "右"));
+        }
+
+        private void OnConfirmClicked()
+        {
+            var button = Manager.GetElement<SelectionButton_Setting>("Confirm");
+            var config = Config.GetBool("Confirm", false);
+            button.SetModeText(InterString.Get(config ? "右" : "左"));
+            Config.SetBool("Confirm", !config);
+        }
+        #endregion
+
+        #region Layout
+        private void InitializeLayout()
+        {
+            var button = Manager.GetElement<SelectionButton_Setting>("Layout");
+            button.SetClickEvent(OnLayoutClicked);
+
+            var config = Config.GetFloat("Layout", 0f);
+            var value = InterString.Get("自动判断");
+            if(config == 1f)
+                value = InterString.Get("桌面布局");
+            else if (config == 2f)
+                value = InterString.Get("移动布局");
+            button.SetModeText(value);
+        }
+
+        private void OnLayoutClicked()
+        {
+            if (Program.instance.ocgcore.showing)
+            {
+                MessageManager.Cast(InterString.Get("决斗中不能更改此选项。"));
+                return;
+            }
+
+            List<string> selections = new List<string>
+            {
+                InterString.Get("UI布局"),
+                string.Empty,
+                InterString.Get("自动判断"),
+                InterString.Get("桌面布局"),
+                InterString.Get("移动布局")
+            };
+            UIManager.ShowPopupSelection(selections, OnLayoutSelection);
+        }
+        private void OnLayoutSelection()
+        {
+            string selected = EventSystem.current.
+                currentSelectedGameObject.GetComponent<SelectionButton>().GetButtonText();
+            var button = Manager.GetElement<SelectionButton_Setting>("Layout");
+            button.SetModeText(selected);
+
+            var config = 0f;
+            if (selected == InterString.Get("桌面布局"))
+                config = 1f;
+            else if (selected == InterString.Get("移动布局"))
+                config = 2f;
+            Config.SetFloat("Layout", config);
+
+            UIManager.ChangeLayout();
+        }
+        #endregion
+
+        #region Background
+        private void InitializeBackground()
+        {
+            var button = Manager.GetElement<SelectionButton_Setting>("Background");
+            button.SetClickEvent(OnBackgroundClicked);
+
+            var id = int.Parse(Config.Get("Background", "0"));
+            Program.instance.background_.Change(id);
+            ChangeBackgroundModeText();
+        }
+
+        private void ChangeBackgroundModeText()
         {
             var id = int.Parse(Config.Get("Background", "0"));
             var value = InterString.Get("随机");
@@ -801,15 +826,17 @@ namespace MDPro3
                 }
             if (string.IsNullOrEmpty(value))
                 value = InterString.Get("随机");
-            backgroundValue.text = value;
-            Program.I().background_.Change(id);
+
+            var button = Manager.GetElement<SelectionButton_Setting>("Background");
+            button.SetModeText(value);
         }
 
-        public void OnBackground()
+        private void OnBackgroundClicked()
         {
             List<string> selections = new List<string>
             {
                 InterString.Get("更换背景"),
+                string.Empty,
                 InterString.Get("随机"),
             };
             foreach (var background in BackgroundManager.backgrounds)
@@ -818,23 +845,47 @@ namespace MDPro3
             UIManager.ShowPopupSelection(selections, OnBackgroundSelection);
         }
 
-        void OnBackgroundSelection()
+        private void OnBackgroundSelection()
         {
-            string selected = UnityEngine.EventSystems.EventSystem.current.
-                    currentSelectedGameObject.transform.GetChild(0).GetComponent<Text>().text;
-            var id = Program.I().background_.GetIDByName(selected);
+            string selected = EventSystem.current.
+                currentSelectedGameObject.GetComponent<SelectionButton>().GetButtonText();
+            var id = Program.instance.background_.GetIDByName(selected);
             Config.Set("Background", id.ToString());
-            InitializeBackground();
+            Program.instance.background_.Change(id);
+            ChangeBackgroundModeText();
         }
 
-        public void InitializeCardStyle()
+        #endregion
+
+        #region BgmBy
+        private void InitializeBgmBy()
         {
-            cardStyleValue.text = Config.Get("CardStyle", CardRenderer.CardStyle.OCG_TCG.ToString());
+            var button = Manager.GetElement<SelectionButton_Setting>("BgmBy");
+            button.SetClickEvent(OnBgmByClicked);
+            var config = Config.GetBool("BGMbyMySide", true);
+            button.SetModeText(InterString.Get(config ? "我方" : "对方"));
         }
 
-        public void OnCardStyleChange()
+        private void OnBgmByClicked()
         {
-            if (Program.I().ocgcore.isShowed)
+            var button = Manager.GetElement<SelectionButton_Setting>("BgmBy");
+            var config = Config.GetBool("BGMbyMySide", true);
+            button.SetModeText(InterString.Get(config ? "对方" : "我方"));
+            Config.SetBool("BGMbyMySide", !config);
+        }
+        #endregion
+
+        #region CardStyle
+        private void InitializeCardStyle()
+        {
+            var button = Manager.GetElement<SelectionButton_Setting>("CardStyle");
+            button.SetClickEvent(OnCardStyleChange);
+            button.SetModeText(Config.Get("CardStyle", CardStyle.OCG_TCG.ToString()));
+        }
+
+        private void OnCardStyleChange()
+        {
+            if (Program.instance.ocgcore.showing)
             {
                 MessageManager.Cast(InterString.Get("决斗中不能更改此选项。"));
                 return;
@@ -842,29 +893,35 @@ namespace MDPro3
 
             List<string> selections = new List<string>
             {
-                InterString.Get("卡图风格")
+                InterString.Get("卡图风格"),
+                string.Empty
             };
             var values = Enum.GetValues(typeof(CardRenderer.CardStyle));
             foreach (var value in values)
                 selections.Add(value.ToString());
             UIManager.ShowPopupSelection(selections, OnCardStyleSelection);
         }
-        public void OnCardStyleSelection()
+        private void OnCardStyleSelection()
         {
             string selected = UnityEngine.EventSystems.EventSystem.current.
-                    currentSelectedGameObject.transform.GetChild(0).GetComponent<Text>().text;
-            cardStyleValue.text = selected;
+                currentSelectedGameObject.GetComponent<SelectionButton>().GetButtonText();
             Config.Set("CardStyle", selected);
+            var button = Manager.GetElement<SelectionButton_Setting>("CardStyle");
+            button.SetModeText(selected);
             UIManager.ChangeLanguage();
         }
+        #endregion
 
-        public void InitializeCardLanguage()
+        #region CardLanguage
+        private void InitializeCardLanguage()
         {
-            cardLanguageValue.text = InterString.Get(Language.GetCardConfig());
+            var button = Manager.GetElement<SelectionButton_Setting>("CardLanguage");
+            button.SetClickEvent(OnCardLanguageClicked);
+            button.SetModeText(InterString.Get(Language.GetCardConfig()));
         }
-        public void OnCardLanguageChange()
+        private void OnCardLanguageClicked()
         {
-            if (Program.I().ocgcore.isShowed)
+            if (Program.instance.ocgcore.showing)
             {
                 MessageManager.Cast(InterString.Get("决斗中不能更改此选项。"));
                 return;
@@ -872,28 +929,35 @@ namespace MDPro3
 
             List<string> selections = new List<string>
             {
-                InterString.Get("卡图语言")
+                InterString.Get("卡图语言"),
+                string.Empty
             };
             DirectoryInfo[] infos = new DirectoryInfo(Program.localesPath).GetDirectories();
             foreach (DirectoryInfo info in infos)
                 selections.Add(InterString.Get(info.Name));
             UIManager.ShowPopupSelection(selections, OnCardLanguageSelection);
         }
-        public void OnCardLanguageSelection()
+        private void OnCardLanguageSelection()
         {
-            string selected = UnityEngine.EventSystems.EventSystem.current.
-                    currentSelectedGameObject.transform.GetChild(0).GetComponent<Text>().text;
-            cardLanguageValue.text = selected;
+            string selected = EventSystem.current.
+                currentSelectedGameObject.GetComponent<SelectionButton>().GetButtonText();
+            var button = Manager.GetElement<SelectionButton_Setting>("CardLanguage");
+            button.SetModeText(selected);
             Config.Set(Language.CardConfigName, InterString.GetOriginal(selected));
             UIManager.ChangeLanguage();
         }
-        public void InitializeLanguage()
+        #endregion
+
+        #region Language
+        private void InitializeLanguage()
         {
-            languageValue.text = InterString.Get(Language.GetConfig());
+            var button = Manager.GetElement<SelectionButton_Setting>("Language");
+            button.SetClickEvent(OnLanguageClicked);
+            button.SetModeText(InterString.Get(Language.GetConfig()));
         }
-        public void OnLanguageChange()
+        private void OnLanguageClicked()
         {
-            if (Program.I().ocgcore.isShowed)
+            if (Program.instance.ocgcore.showing)
             {
                 MessageManager.Cast(InterString.Get("决斗中不能更改此选项。"));
                 return;
@@ -901,761 +965,844 @@ namespace MDPro3
 
             List<string> selections = new List<string>
             {
-                InterString.Get("语言")
+                InterString.Get("语言"),
+                string.Empty
             };
             DirectoryInfo[] infos = new DirectoryInfo(Program.localesPath).GetDirectories();
             foreach (DirectoryInfo info in infos)
                 selections.Add(InterString.Get(info.Name));
             UIManager.ShowPopupSelection(selections, OnLanguageSelection);
         }
-        public void OnLanguageSelection()
+        private void OnLanguageSelection()
         {
-            string selected = UnityEngine.EventSystems.EventSystem.current.
-                    currentSelectedGameObject.transform.GetChild(0).GetComponent<Text>().text;
-            languageValue.text = selected;
+            string selected = EventSystem.current.
+                currentSelectedGameObject.GetComponent<SelectionButton>().GetButtonText();
+            var button = Manager.GetElement<SelectionButton_Setting>("Language");
+            button.SetModeText(selected);
             Config.Set(Language.ConfigName, InterString.GetOriginal(selected));
             UIManager.ChangeLanguage();
         }
+        #endregion
 
-        public void InitializeConfirm()
+        // Duel
+        #region Appearance
+        private void InitializeAppearance()
         {
-            var value = Config.GetBool("Confirm", true);
-            if (value)
-                confirmValue.text = InterString.Get("左");
-            else
-                confirmValue.text = InterString.Get("右");
-        }
-        public void OnConfirmClicked()
-        {
-            if (confirmValue.text == InterString.Get("右"))
-            {
-                confirmValue.text = InterString.Get("左");
-                Config.SetBool("Confirm", true);
-            }
-            else
-            {
-                confirmValue.text = InterString.Get("右");
-                Config.SetBool("Confirm", false);
-            }
-        }
+            var button = Manager.GetElement<SelectionButton_Setting>("DuelAppearance");
+            button.SetClickEvent(OnDuelAppearcanceClick);
 
-        public void InitializeBgmBy()
-        {
-            var value = Config.GetBool("BGMbyMySide", true);
-            if (value)
-                bgmByValue.text = InterString.Get("我方");
-            else
-                bgmByValue.text = InterString.Get("对方");
-        }
+            button = Manager.GetElement<SelectionButton_Setting>("WatchAppearance");
+            button.SetClickEvent(OnWatchAppearcanceClick);
 
-        public void OnBgmByClicked()
-        {
-            var value = Config.GetBool("BGMbyMySide", true);
+            button = Manager.GetElement<SelectionButton_Setting>("ReplayAppearance");
+            button.SetClickEvent(OnReplayAppearcanceClick);
 
-            if (value)
-            {
-                bgmByValue.text = InterString.Get("对方");
-                Config.SetBool("BGMbyMySide", false);
-            }
-            else
-            {
-                bgmByValue.text = InterString.Get("我方");
-                Config.SetBool("BGMbyMySide", true);
-            }
+            RefreshAppearanceModeText();
         }
+        private void OnDuelAppearcanceClick()
+        {
+            Program.instance.appearance.SwitchCondition(Appearance.Condition.Duel);
+            if (Program.instance.currentSubServant == this)
+                Program.instance.ShowSubServant(Program.instance.appearance);
+            else
+                Program.instance.ShiftToServant(Program.instance.appearance);
+        }
+        private void OnWatchAppearcanceClick()
+        {
+            Program.instance.appearance.SwitchCondition(Appearance.Condition.Watch);
+            if (Program.instance.currentSubServant == this)
+                Program.instance.ShowSubServant(Program.instance.appearance);
+            else
+                Program.instance.ShiftToServant(Program.instance.appearance);
+        }
+        private void OnReplayAppearcanceClick()
+        {
+            Program.instance.appearance.SwitchCondition(Appearance.Condition.Replay);
+            if (Program.instance.currentSubServant == this)
+                Program.instance.ShowSubServant(Program.instance.appearance);
+            else
+                Program.instance.ShiftToServant(Program.instance.appearance);
+        }
+        public void RefreshAppearanceModeText()
+        {
+            var button = Manager.GetElement<SelectionButton_Setting>("DuelAppearance");
+            button.SetModeText(Config.Get("DuelPlayerName0", "@ui"));
 
-        public void OnAutoRPS()
-        {
-            if (autoRPSValue.text == InterString.Get("关"))
-            {
-                autoRPSValue.text = InterString.Get("开");
-                Config.SetBool("AutoRPS", true);
-            }
-            else
-            {
-                autoRPSValue.text = InterString.Get("关");
-                Config.SetBool("AutoRPS", false);
-            }
-        }
-        public void InitializeSwitches()
-        {
-            duelAppearanceValue.text = Config.Get("DuelPlayerName0", "@ui");
-            watchAppearanceValue.text = Config.Get("WatchPlayerName0", "@ui");
-            replayAppearanceValue.text = Config.Get("ReplayPlayerName0", "@ui");
+            button = Manager.GetElement<SelectionButton_Setting>("WatchAppearance");
+            button.SetModeText(Config.Get("WatchPlayerName0", "@ui"));
 
-            var value = Config.GetBool("DuelVoice", false);
-            if (value)
-                duelVoiceValue.text = InterString.Get("开");
-            else
-                duelVoiceValue.text = InterString.Get("关");
-            value = Config.GetBool("WatchVoice", false);
-            if (value)
-                watchVoiceValue.text = InterString.Get("开");
-            else
-                watchVoiceValue.text = InterString.Get("关");
-            value = Config.GetBool("ReplayVoice", false);
-            if (value)
-                replayVoiceValue.text = InterString.Get("开");
-            else
-                replayVoiceValue.text = InterString.Get("关");
+            button = Manager.GetElement<SelectionButton_Setting>("ReplayAppearance");
+            button.SetModeText(Config.Get("ReplayPlayerName0", "@ui"));
+        }
+        #endregion
 
-            value = Config.GetBool("DuelCloseup", true);
-            if (value)
-                duelCloseupValue.text = InterString.Get("开");
-            else
-                duelCloseupValue.text = InterString.Get("关");
-            value = Config.GetBool("WatchCloseup", true);
-            if (value)
-                watchCloseupValue.text = InterString.Get("开");
-            else
-                watchCloseupValue.text = InterString.Get("关");
-            value = Config.GetBool("ReplayCloseup", true);
-            if (value)
-                replayCloseupValue.text = InterString.Get("开");
-            else
-                replayCloseupValue.text = InterString.Get("关");
+        #region Character
 
-            value = Config.GetBool("DuelSummon", true);
-            if (value)
-                duelSummonValue.text = InterString.Get("开");
-            else
-                duelSummonValue.text = InterString.Get("关");
-            value = Config.GetBool("WatchSummon", true);
-            if (value)
-                watchSummonValue.text = InterString.Get("开");
-            else
-                watchSummonValue.text = InterString.Get("关");
-            value = Config.GetBool("ReplaySummon", true);
-            if (value)
-                replaySummonValue.text = InterString.Get("开");
-            else
-                replaySummonValue.text = InterString.Get("关");
+        private void InitializeCharacter()
+        {
+            var button = Manager.GetElement<SelectionButton_Setting>("DuelCharacter");
+            button.SetClickEvent(OnDuelCharacterClick);
 
-            value = Config.GetBool("DuelPendulum", true);
-            if (value)
-                duelPendulumValue.text = InterString.Get("开");
-            else
-                duelPendulumValue.text = InterString.Get("关");
-            value = Config.GetBool("WatchPendulum", true);
-            if (value)
-                watchPendulumValue.text = InterString.Get("开");
-            else
-                watchPendulumValue.text = InterString.Get("关");
-            value = Config.GetBool("ReplayPendulum", true);
-            if (value)
-                replayPendulumValue.text = InterString.Get("开");
-            else
-                replayPendulumValue.text = InterString.Get("关");
+            button = Manager.GetElement<SelectionButton_Setting>("WatchCharacter");
+            button.SetClickEvent(OnWatchCharacterClick);
 
-            value = Config.GetBool("DuelCutin", true);
-            if (value)
-                duelCutinValue.text = InterString.Get("开");
-            else
-                duelCutinValue.text = InterString.Get("关");
-            value = Config.GetBool("WatchCutin", true);
-            if (value)
-                watchCutinValue.text = InterString.Get("开");
-            else
-                watchCutinValue.text = InterString.Get("关");
-            value = Config.GetBool("ReplayCutin", true);
-            if (value)
-                replayCutinValue.text = InterString.Get("开");
-            else
-                replayCutinValue.text = InterString.Get("关");
+            button = Manager.GetElement<SelectionButton_Setting>("ReplayCharacter");
+            button.SetClickEvent(OnReplayCharacterClick);
 
-            value = Config.GetBool("DuelEffect", true);
-            if (value)
-                duelEffectValue.text = InterString.Get("开");
+            RefreshCharacterName();
+        }
+        private void OnDuelCharacterClick()
+        {
+            Program.instance.character.SwitchCondition(SelectCharacter.Condition.Duel);
+            if (Program.instance.currentSubServant == this)
+                Program.instance.ShowSubServant(Program.instance.character);
             else
-                duelEffectValue.text = InterString.Get("关");
-            value = Config.GetBool("WatchEffect", true);
-            if (value)
-                watchEffectValue.text = InterString.Get("开");
+                Program.instance.ShiftToServant(Program.instance.character);
+        }
+        private void OnWatchCharacterClick()
+        {
+            Program.instance.character.SwitchCondition(SelectCharacter.Condition.Watch);
+            if (Program.instance.currentSubServant == this)
+                Program.instance.ShowSubServant(Program.instance.character);
             else
-                watchEffectValue.text = InterString.Get("关");
-            value = Config.GetBool("ReplayEffect", true);
-            if (value)
-                replayEffectValue.text = InterString.Get("开");
+                Program.instance.ShiftToServant(Program.instance.character);
+        }
+        private void OnReplayCharacterClick()
+        {
+            Program.instance.character.SwitchCondition(SelectCharacter.Condition.Replay);
+            if (Program.instance.currentSubServant == this)
+                Program.instance.ShowSubServant(Program.instance.character);
             else
-                replayEffectValue.text = InterString.Get("关");
+                Program.instance.ShiftToServant(Program.instance.character);
+        }
+        public void RefreshCharacterName()
+        {
+            if (Program.instance.character.characters == null)
+                return;
 
-            value = Config.GetBool("DuelChain", true);
-            if (value)
-                duelChainValue.text = InterString.Get("开");
-            else
-                duelChainValue.text = InterString.Get("关");
-            value = Config.GetBool("WatchChain", true);
-            if (value)
-                watchChainValue.text = InterString.Get("开");
-            else
-                watchChainValue.text = InterString.Get("关");
-            value = Config.GetBool("ReplayChain", true);
-            if (value)
-                replayChainValue.text = InterString.Get("开");
-            else
-                replayChainValue.text = InterString.Get("关");
+            var button = Manager.GetElement<SelectionButton_Setting>("DuelCharacter");
+            var characterName = Program.instance.character.characters.GetName(Config.Get("DuelCharacter0", VoiceHelper.defaultCharacter));
+            button.SetModeText(characterName);
 
-            value = Config.GetBool("DuelDice", true);
-            if (value)
-                duelDiceValue.text = InterString.Get("开");
-            else
-                duelDiceValue.text = InterString.Get("关");
-            value = Config.GetBool("WatchDice", true);
-            if (value)
-                watchDiceValue.text = InterString.Get("开");
-            else
-                watchDiceValue.text = InterString.Get("关");
-            value = Config.GetBool("ReplayDice", true);
-            if (value)
-                replayDiceValue.text = InterString.Get("开");
-            else
-                replayDiceValue.text = InterString.Get("关");
+            button = Manager.GetElement<SelectionButton_Setting>("WatchCharacter");
+            characterName = Program.instance.character.characters.GetName(Config.Get("WatchCharacter0", VoiceHelper.defaultCharacter));
+            button.SetModeText(characterName);
 
-            value = Config.GetBool("DuelCoin", true);
-            if (value)
-                duelCoinValue.text = InterString.Get("开");
-            else
-                duelCoinValue.text = InterString.Get("关");
-            value = Config.GetBool("WatchCoin", true);
-            if (value)
-                watchCoinValue.text = InterString.Get("开");
-            else
-                watchCoinValue.text = InterString.Get("关");
-            value = Config.GetBool("ReplayCoin", true);
-            if (value)
-                replayCoinValue.text = InterString.Get("开");
-            else
-                replayCoinValue.text = InterString.Get("关");
-
-            value = Config.GetBool("DuelAutoInfo", true);
-            if (value)
-                duelAutoInfoValue.text = InterString.Get("开");
-            else
-                duelAutoInfoValue.text = InterString.Get("关");
-            value = Config.GetBool("WatchAutoInfo", true);
-            if (value)
-                watchAutoInfoValue.text = InterString.Get("开");
-            else
-                watchAutoInfoValue.text = InterString.Get("关");
-            value = Config.GetBool("ReplayAutoInfo", true);
-            if (value)
-                replayAutoInfoValue.text = InterString.Get("开");
-            else
-                replayAutoInfoValue.text = InterString.Get("关");
-
-            value = Config.GetBool("DuelPlayerMessage", true);
-            if (value)
-                duelPlayerMessageValue.text = InterString.Get("开");
-            else
-                duelPlayerMessageValue.text = InterString.Get("关");
-            value = Config.GetBool("WatchPlayerMessage", true);
-            if (value)
-                watchPlayerMessageValue.text = InterString.Get("开");
-            else
-                watchPlayerMessageValue.text = InterString.Get("关");
-            value = Config.GetBool("ReplayPlayerMessage", true);
-            if (value)
-                replayPlayerMessageValue.text = InterString.Get("开");
-            else
-                replayPlayerMessageValue.text = InterString.Get("关");
-
-            value = Config.GetBool("DuelSystemMessage", true);
-            if (value)
-                duelSystemMessageValue.text = InterString.Get("开");
-            else
-                duelSystemMessageValue.text = InterString.Get("关");
-            value = Config.GetBool("WatchSystemMessage", true);
-            if (value)
-                watchSystemMessageValue.text = InterString.Get("开");
-            else
-                watchSystemMessageValue.text = InterString.Get("关");
-            value = Config.GetBool("ReplaySystemMessage", true);
-            if (value)
-                replaySystemMessageValue.text = InterString.Get("开");
-            else
-                replaySystemMessageValue.text = InterString.Get("关");
-
-            value = Config.GetBool("DuelAutoAcc", false);
-            if (value)
-                duelAutoAccValue.text = InterString.Get("开");
-            else
-                duelAutoAccValue.text = InterString.Get("关");
-            value = Config.GetBool("WatchAutoAcc", false);
-            if (value)
-                watchAutoAccValue.text = InterString.Get("开");
-            else
-                watchAutoAccValue.text = InterString.Get("关");
-            value = Config.GetBool("ReplayAutoAcc", false);
-            if (value)
-                replayAutoAccValue.text = InterString.Get("开");
-            else
-                replayAutoAccValue.text = InterString.Get("关");
-
-            value = Config.GetBool("DuelFaceDown", true);
-            if (value)
-                duelFaceDownValue.text = InterString.Get("开");
-            else
-                duelFaceDownValue.text = InterString.Get("关");
-            value = Config.GetBool("WatchFaceDown", true);
-            if (value)
-                watchFaceDownValue.text = InterString.Get("开");
-            else
-                watchFaceDownValue.text = InterString.Get("关");
-            value = Config.GetBool("ReplayFaceDown", true);
-            if (value)
-                replayFaceDownValue.text = InterString.Get("开");
-            else
-                replayFaceDownValue.text = InterString.Get("关");
-
-            value = Config.GetBool("Timing", true);
-            if (value)
-                timingValue.text = InterString.Get("开");
-            else
-                timingValue.text = InterString.Get("关");
-
-            value = Config.GetBool("AutoRPS", false);
-            if (value)
-                autoRPSValue.text = InterString.Get("开");
-            else
-                autoRPSValue.text = InterString.Get("关");
-
-            value = Config.GetBool("Expansions", true);
-            if (value)
-                supportExpansionsValue.text = InterString.Get("是");
-            else
-                supportExpansionsValue.text = InterString.Get("否");
-        }
-        public void OnDuelAppearcanceClick()
-        {
-            Program.I().appearance.SwitchCondition(Appearance.Condition.Duel);
-            if (Program.I().currentSubServant == this)
-                Program.I().ShowSubServant(Program.I().appearance);
-            else
-                Program.I().ShiftToServant(Program.I().appearance);
-        }
-        public void OnWatchAppearcanceClick()
-        {
-            Program.I().appearance.SwitchCondition(Appearance.Condition.Watch);
-            if (Program.I().currentSubServant == this)
-                Program.I().ShowSubServant(Program.I().appearance);
-            else
-                Program.I().ShiftToServant(Program.I().appearance);
-        }
-        public void OnReplayAppearcanceClick()
-        {
-            Program.I().appearance.SwitchCondition(Appearance.Condition.Replay);
-            if (Program.I().currentSubServant == this)
-                Program.I().ShowSubServant(Program.I().appearance);
-            else
-                Program.I().ShiftToServant(Program.I().appearance);
-        }
-        public void OnDuelCharacterClick()
-        {
-            Program.I().character.SwitchCondition(SelectCharacter.Condition.Duel);
-            if (Program.I().currentSubServant == this)
-                Program.I().ShowSubServant(Program.I().character);
-            else
-                Program.I().ShiftToServant(Program.I().character);
-        }
-        public void OnWatchCharacterClick()
-        {
-            Program.I().character.SwitchCondition(SelectCharacter.Condition.Watch);
-            if (Program.I().currentSubServant == this)
-                Program.I().ShowSubServant(Program.I().character);
-            else
-                Program.I().ShiftToServant(Program.I().character);
-        }
-        public void OnReplayCharacterClick()
-        {
-            Program.I().character.SwitchCondition(SelectCharacter.Condition.Replay);
-            if (Program.I().currentSubServant == this)
-                Program.I().ShowSubServant(Program.I().character);
-            else
-                Program.I().ShiftToServant(Program.I().character);
-        }
-        public void OnDuelVoiceClick()
-        {
-            if (duelVoiceValue.text == InterString.Get("开"))
-                duelVoiceValue.text = InterString.Get("关");
-            else
-                duelVoiceValue.text = InterString.Get("开");
-            Config.Set("DuelVoice", SaveBool(duelVoiceValue.text));
-
-            Program.I().ocgcore.CheckCharaFace();
-        }
-        public void OnWatchVoiceClick()
-        {
-            if (watchVoiceValue.text == InterString.Get("开"))
-                watchVoiceValue.text = InterString.Get("关");
-            else
-                watchVoiceValue.text = InterString.Get("开");
-            Config.Set("WatchVoice", SaveBool(watchVoiceValue.text));
-
-            Program.I().ocgcore.CheckCharaFace();
-        }
-        public void OnReplayVoiceClick()
-        {
-            if (replayVoiceValue.text == InterString.Get("开"))
-                replayVoiceValue.text = InterString.Get("关");
-            else
-                replayVoiceValue.text = InterString.Get("开");
-            Config.Set("ReplayVoice", SaveBool(replayVoiceValue.text));
-
-            Program.I().ocgcore.CheckCharaFace();
-        }
-        public void OnDuelCloseupClick()
-        {
-            if (duelCloseupValue.text == InterString.Get("开"))
-                duelCloseupValue.text = InterString.Get("关");
-            else
-                duelCloseupValue.text = InterString.Get("开");
-            Config.Set("DuelCloseup", SaveBool(duelCloseupValue.text));
-            Program.I().ocgcore.RefreshAllCardsLabel();
-        }
-        public void OnWatchCloseupClick()
-        {
-            if (watchCloseupValue.text == InterString.Get("开"))
-                watchCloseupValue.text = InterString.Get("关");
-            else
-                watchCloseupValue.text = InterString.Get("开");
-            Config.Set("WatchCloseup", SaveBool(watchCloseupValue.text));
-            Program.I().ocgcore.RefreshAllCardsLabel();
-        }
-        public void OnReplayCloseupClick()
-        {
-            if (replayCloseupValue.text == InterString.Get("开"))
-                replayCloseupValue.text = InterString.Get("关");
-            else
-                replayCloseupValue.text = InterString.Get("开");
-            Config.Set("ReplayCloseup", SaveBool(replayCloseupValue.text));
-            Program.I().ocgcore.RefreshAllCardsLabel();
-        }
-        public void OnDuelSummonClick()
-        {
-            if (duelSummonValue.text == InterString.Get("开"))
-                duelSummonValue.text = InterString.Get("关");
-            else
-                duelSummonValue.text = InterString.Get("开");
-        }
-        public void OnWatchSummonClick()
-        {
-            if (watchSummonValue.text == InterString.Get("开"))
-                watchSummonValue.text = InterString.Get("关");
-            else
-                watchSummonValue.text = InterString.Get("开");
-        }
-        public void OnReplaySummonClick()
-        {
-            if (replaySummonValue.text == InterString.Get("开"))
-                replaySummonValue.text = InterString.Get("关");
-            else
-                replaySummonValue.text = InterString.Get("开");
-        }
-        public void OnDuelPendulumClick()
-        {
-            if (duelPendulumValue.text == InterString.Get("开"))
-                duelPendulumValue.text = InterString.Get("关");
-            else
-                duelPendulumValue.text = InterString.Get("开");
-        }
-        public void OnWatchPendulumClick()
-        {
-            if (watchPendulumValue.text == InterString.Get("开"))
-                watchPendulumValue.text = InterString.Get("关");
-            else
-                watchPendulumValue.text = InterString.Get("开");
-        }
-        public void OnReplayPendulumClick()
-        {
-            if (replayPendulumValue.text == InterString.Get("开"))
-                replayPendulumValue.text = InterString.Get("关");
-            else
-                replayPendulumValue.text = InterString.Get("开");
-        }
-        public void OnDuelCutinClick()
-        {
-            if (duelCutinValue.text == InterString.Get("开"))
-                duelCutinValue.text = InterString.Get("关");
-            else
-                duelCutinValue.text = InterString.Get("开");
-        }
-        public void OnWatchCutinClick()
-        {
-            if (watchCutinValue.text == InterString.Get("开"))
-                watchCutinValue.text = InterString.Get("关");
-            else
-                watchCutinValue.text = InterString.Get("开");
-        }
-        public void OnReplayCutinClick()
-        {
-            if (replayCutinValue.text == InterString.Get("开"))
-                replayCutinValue.text = InterString.Get("关");
-            else
-                replayCutinValue.text = InterString.Get("开");
-        }
-        public void OnDuelEffectClick()
-        {
-            if (duelEffectValue.text == InterString.Get("开"))
-                duelEffectValue.text = InterString.Get("关");
-            else
-                duelEffectValue.text = InterString.Get("开");
-        }
-        public void OnWatchEffectClick()
-        {
-            if (watchEffectValue.text == InterString.Get("开"))
-                watchEffectValue.text = InterString.Get("关");
-            else
-                watchEffectValue.text = InterString.Get("开");
-        }
-        public void OnReplayEffectClick()
-        {
-            if (replayEffectValue.text == InterString.Get("开"))
-                replayEffectValue.text = InterString.Get("关");
-            else
-                replayEffectValue.text = InterString.Get("开");
-        }
-        public void OnDuelChainClick()
-        {
-            if (duelChainValue.text == InterString.Get("开"))
-                duelChainValue.text = InterString.Get("关");
-            else
-                duelChainValue.text = InterString.Get("开");
-        }
-        public void OnWatchChainClick()
-        {
-            if (watchChainValue.text == InterString.Get("开"))
-                watchChainValue.text = InterString.Get("关");
-            else
-                watchChainValue.text = InterString.Get("开");
-        }
-        public void OnReplayChainClick()
-        {
-            if (replayChainValue.text == InterString.Get("开"))
-                replayChainValue.text = InterString.Get("关");
-            else
-                replayChainValue.text = InterString.Get("开");
-        }
-        public void OnDuelDiceClick()
-        {
-            if (duelDiceValue.text == InterString.Get("开"))
-                duelDiceValue.text = InterString.Get("关");
-            else
-                duelDiceValue.text = InterString.Get("开");
-        }
-        public void OnWatchDiceClick()
-        {
-            if (watchDiceValue.text == InterString.Get("开"))
-                watchDiceValue.text = InterString.Get("关");
-            else
-                watchDiceValue.text = InterString.Get("开");
-        }
-        public void OnReplayDiceClick()
-        {
-            if (replayDiceValue.text == InterString.Get("开"))
-                replayDiceValue.text = InterString.Get("关");
-            else
-                replayDiceValue.text = InterString.Get("开");
-        }
-        public void OnDuelCoinClick()
-        {
-            if (duelCoinValue.text == InterString.Get("开"))
-                duelCoinValue.text = InterString.Get("关");
-            else
-                duelCoinValue.text = InterString.Get("开");
-        }
-        public void OnWatchCoinClick()
-        {
-            if (watchCoinValue.text == InterString.Get("开"))
-                watchCoinValue.text = InterString.Get("关");
-            else
-                watchCoinValue.text = InterString.Get("开");
-        }
-        public void OnReplayCoinClick()
-        {
-            if (replayCoinValue.text == InterString.Get("开"))
-                replayCoinValue.text = InterString.Get("关");
-            else
-                replayCoinValue.text = InterString.Get("开");
+            button = Manager.GetElement<SelectionButton_Setting>("ReplayCharacter");
+            characterName = Program.instance.character.characters.GetName(Config.Get("ReplayCharacter0", VoiceHelper.defaultCharacter));
+            button.SetModeText(characterName);
         }
 
-        public void OnDuelAutoInfoClick()
-        {
-            if (duelAutoInfoValue.text == InterString.Get("开"))
-                duelAutoInfoValue.text = InterString.Get("关");
-            else
-                duelAutoInfoValue.text = InterString.Get("开");
-        }
-        public void OnWatchAutoInfoClick()
-        {
-            if (watchAutoInfoValue.text == InterString.Get("开"))
-                watchAutoInfoValue.text = InterString.Get("关");
-            else
-                watchAutoInfoValue.text = InterString.Get("开");
-        }
-        public void OnReplayAutoInfoClick()
-        {
-            if (replayAutoInfoValue.text == InterString.Get("开"))
-                replayAutoInfoValue.text = InterString.Get("关");
-            else
-                replayAutoInfoValue.text = InterString.Get("开");
-        }
+        #endregion
 
-        public void OnDuelPlayerMessageClick()
+        #region Voice
+        private void InitializeVoice()
         {
-            if (duelPlayerMessageValue.text == InterString.Get("开"))
-                duelPlayerMessageValue.text = InterString.Get("关");
-            else
-                duelPlayerMessageValue.text = InterString.Get("开");
-        }
-        public void OnWatchPlayerMessageClick()
-        {
-            if (watchPlayerMessageValue.text == InterString.Get("开"))
-                watchPlayerMessageValue.text = InterString.Get("关");
-            else
-                watchPlayerMessageValue.text = InterString.Get("开");
-        }
-        public void OnReplayPlayerMessageClick()
-        {
-            if (replayPlayerMessageValue.text == InterString.Get("开"))
-                replayPlayerMessageValue.text = InterString.Get("关");
-            else
-                replayPlayerMessageValue.text = InterString.Get("开");
-        }
+            var button = Manager.GetElement<SelectionButton_Setting>("DuelVoice");
+            button.SetClickEvent(OnDuelVoiceClick);
+            var config = Config.GetBool("DuelVoice", false);
+            button.SetModeText(InterString.Get(config ? "开" : "关"));
 
-        public void OnDuelSystemMessageClick()
-        {
-            if (duelSystemMessageValue.text == InterString.Get("开"))
-                duelSystemMessageValue.text = InterString.Get("关");
-            else
-                duelSystemMessageValue.text = InterString.Get("开");
-        }
-        public void OnWatchSystemMessageClick()
-        {
-            if (watchSystemMessageValue.text == InterString.Get("开"))
-                watchSystemMessageValue.text = InterString.Get("关");
-            else
-                watchSystemMessageValue.text = InterString.Get("开");
-        }
-        public void OnReplaySystemMessageClick()
-        {
-            if (replaySystemMessageValue.text == InterString.Get("开"))
-                replaySystemMessageValue.text = InterString.Get("关");
-            else
-                replaySystemMessageValue.text = InterString.Get("开");
-        }
+            button = Manager.GetElement<SelectionButton_Setting>("WatchVoice");
+            button.SetClickEvent(OnWatchVoiceClick);
+            config = Config.GetBool("WatchVoice", false);
+            button.SetModeText(InterString.Get(config ? "开" : "关"));
 
-        public void OnDuelAccChange(float value)
-        {
-            string result = value.ToString();
-            duelAccValue.text = result.Length > 4 ? result.Substring(0, 4) : result;
-            Config.SetFloat("DuelAcc", value);
-            if (Program.I().ocgcore.isShowed)
-                if (Program.I().ocgcore.condition == OcgCore.Condition.Duel)
-                    if (Program.I().ocgcore.accing)
-                        Program.I().ocgcore.OnAcc();
+            button = Manager.GetElement<SelectionButton_Setting>("ReplayVoice");
+            button.SetClickEvent(OnReplayVoiceClick);
+            config = Config.GetBool("ReplayVoice", false);
+            button.SetModeText(InterString.Get(config ? "开" : "关"));
         }
+        private void OnDuelVoiceClick()
+        {
+            var button = Manager.GetElement<SelectionButton_Setting>("DuelVoice");
+            var config = Config.GetBool("DuelVoice", false);
+            button.SetModeText(InterString.Get(config ? "关" : "开"));
+            Config.SetBool("DuelVoice", !config);
 
-        public void OnWatchAccChange(float value)
-        {
-            string result = value.ToString();
-            watchAccValue.text = result.Length > 4 ? result.Substring(0, 4) : result;
-            Config.SetFloat("WatchAcc", value);
-            if (Program.I().ocgcore.isShowed)
-                if (Program.I().ocgcore.condition == OcgCore.Condition.Watch)
-                    if (Program.I().ocgcore.accing)
-                        Program.I().ocgcore.OnAcc();
+            Program.instance.ocgcore.CheckCharaFace();
         }
+        private void OnWatchVoiceClick()
+        {
+            var button = Manager.GetElement<SelectionButton_Setting>("WatchVoice");
+            var config = Config.GetBool("WatchVoice", false);
+            button.SetModeText(InterString.Get(config ? "关" : "开"));
+            Config.SetBool("WatchVoice", !config);
 
-        public void OnReplayAccChange(float value)
-        {
-            string result = value.ToString();
-            replayAccValue.text = result.Length > 4 ? result.Substring(0, 4) : result;
-            Config.SetFloat("ReplayAcc", value);
-            if (Program.I().ocgcore.isShowed)
-                if (Program.I().ocgcore.condition == OcgCore.Condition.Replay)
-                    if (Program.I().ocgcore.accing)
-                        Program.I().ocgcore.OnAcc();
+            Program.instance.ocgcore.CheckCharaFace();
         }
+        private void OnReplayVoiceClick()
+        {
+            var button = Manager.GetElement<SelectionButton_Setting>("ReplayVoice");
+            var config = Config.GetBool("ReplayVoice", false);
+            button.SetModeText(InterString.Get(config ? "关" : "开"));
+            Config.SetBool("ReplayVoice", !config);
 
-        public void OnDuelAutoAccClick()
-        {
-            if (duelAutoAccValue.text == InterString.Get("开"))
-                duelAutoAccValue.text = InterString.Get("关");
-            else
-                duelAutoAccValue.text = InterString.Get("开");
+            Program.instance.ocgcore.CheckCharaFace();
         }
-        public void OnWatchAutoAccClick()
-        {
-            if (watchAutoAccValue.text == InterString.Get("开"))
-                watchAutoAccValue.text = InterString.Get("关");
-            else
-                watchAutoAccValue.text = InterString.Get("开");
-        }
-        public void OnReplayAutoAccClick()
-        {
-            if (replayAutoAccValue.text == InterString.Get("开"))
-                replayAutoAccValue.text = InterString.Get("关");
-            else
-                replayAutoAccValue.text = InterString.Get("开");
-        }
+        #endregion
 
-        public void OnDuelFaceDownClick()
+        #region Closeup
+        private void InitializeCloseup()
         {
-            if (duelFaceDownValue.text == InterString.Get("开"))
-            {
-                duelFaceDownValue.text = InterString.Get("关");
-                Config.SetBool("DuelFaceDown", false);
-            }
-            else
-            {
-                duelFaceDownValue.text = InterString.Get("开");
-                Config.SetBool("DuelFaceDown", true);
-            }
-            foreach(var card in Program.I().ocgcore.cards)
+            var button = Manager.GetElement<SelectionButton_Setting>("DuelCloseup");
+            button.SetClickEvent(OnDuelCloseupClick);
+            var config = Config.GetBool("DuelCloseup", false);
+            button.SetModeText(InterString.Get(config ? "开" : "关"));
+
+            button = Manager.GetElement<SelectionButton_Setting>("WatchCloseup");
+            button.SetClickEvent(OnWatchCloseupClick);
+            config = Config.GetBool("WatchCloseup", false);
+            button.SetModeText(InterString.Get(config ? "开" : "关"));
+
+            button = Manager.GetElement<SelectionButton_Setting>("ReplayCloseup");
+            button.SetClickEvent(OnReplayCloseupClick);
+            config = Config.GetBool("ReplayCloseup", false);
+            button.SetModeText(InterString.Get(config ? "开" : "关"));
+        }
+        private void OnDuelCloseupClick()
+        {
+            var button = Manager.GetElement<SelectionButton_Setting>("DuelCloseup");
+            var config = Config.GetBool("DuelCloseup", false);
+            button.SetModeText(InterString.Get(config ? "关" : "开"));
+            Config.SetBool("DuelCloseup", !config);
+
+            Program.instance.ocgcore.RefreshAllCardsLabel();
+        }
+        private void OnWatchCloseupClick()
+        {
+            var button = Manager.GetElement<SelectionButton_Setting>("WatchCloseup");
+            var config = Config.GetBool("WatchCloseup", false);
+            button.SetModeText(InterString.Get(config ? "关" : "开"));
+            Config.SetBool("WatchCloseup", !config);
+
+            Program.instance.ocgcore.RefreshAllCardsLabel();
+        }
+        private void OnReplayCloseupClick()
+        {
+            var button = Manager.GetElement<SelectionButton_Setting>("ReplayCloseup");
+            var config = Config.GetBool("ReplayCloseup", false);
+            button.SetModeText(InterString.Get(config ? "关" : "开"));
+            Config.SetBool("ReplayCloseup", !config);
+
+            Program.instance.ocgcore.RefreshAllCardsLabel();
+        }
+        #endregion
+
+        #region Summon
+        private void InitializeSummon()
+        {
+            var button = Manager.GetElement<SelectionButton_Setting>("DuelSummon");
+            button.SetClickEvent(OnDuelSummonClick);
+            var config = Config.GetBool("DuelSummon", true);
+            button.SetModeText(InterString.Get(config ? "开" : "关"));
+
+            button = Manager.GetElement<SelectionButton_Setting>("WatchSummon");
+            button.SetClickEvent(OnWatchSummonClick);
+            config = Config.GetBool("WatchSummon", true);
+            button.SetModeText(InterString.Get(config ? "开" : "关"));
+
+            button = Manager.GetElement<SelectionButton_Setting>("ReplaySummon");
+            button.SetClickEvent(OnReplaySummonClick);
+            config = Config.GetBool("ReplaySummon", true);
+            button.SetModeText(InterString.Get(config ? "开" : "关"));
+        }
+        private void OnDuelSummonClick()
+        {
+            var button = Manager.GetElement<SelectionButton_Setting>("DuelSummon");
+            var config = Config.GetBool("DuelSummon", true);
+            button.SetModeText(InterString.Get(config ? "关" : "开"));
+            Config.SetBool("DuelSummon", !config);
+        }
+        private void OnWatchSummonClick()
+        {
+            var button = Manager.GetElement<SelectionButton_Setting>("WatchSummon");
+            var config = Config.GetBool("WatchSummon", true);
+            button.SetModeText(InterString.Get(config ? "关" : "开"));
+            Config.SetBool("WatchSummon", !config);
+        }
+        private void OnReplaySummonClick()
+        {
+            var button = Manager.GetElement<SelectionButton_Setting>("ReplaySummon");
+            var config = Config.GetBool("ReplaySummon", true);
+            button.SetModeText(InterString.Get(config ? "关" : "开"));
+            Config.SetBool("ReplaySummon", !config);
+        }
+        #endregion
+
+        #region Pendulum
+        private void InitializePendulum()
+        {
+            var button = Manager.GetElement<SelectionButton_Setting>("DuelPendulum");
+            button.SetClickEvent(OnDuelPendulumClick);
+            var config = Config.GetBool("DuelPendulum", true);
+            button.SetModeText(InterString.Get(config ? "开" : "关"));
+
+            button = Manager.GetElement<SelectionButton_Setting>("WatchPendulum");
+            button.SetClickEvent(OnWatchPendulumClick);
+            config = Config.GetBool("WatchPendulum", true);
+            button.SetModeText(InterString.Get(config ? "开" : "关"));
+
+            button = Manager.GetElement<SelectionButton_Setting>("ReplayPendulum");
+            button.SetClickEvent(OnReplayPendulumClick);
+            config = Config.GetBool("ReplayPendulum", true);
+            button.SetModeText(InterString.Get(config ? "开" : "关"));
+        }
+        private void OnDuelPendulumClick()
+        {
+            var button = Manager.GetElement<SelectionButton_Setting>("DuelPendulum");
+            var config = Config.GetBool("DuelPendulum", true);
+            button.SetModeText(InterString.Get(config ? "关" : "开"));
+            Config.SetBool("DuelPendulum", !config);
+        }
+        private void OnWatchPendulumClick()
+        {
+            var button = Manager.GetElement<SelectionButton_Setting>("WatchPendulum");
+            var config = Config.GetBool("WatchPendulum", true);
+            button.SetModeText(InterString.Get(config ? "关" : "开"));
+            Config.SetBool("WatchPendulum", !config);
+        }
+        private void OnReplayPendulumClick()
+        {
+            var button = Manager.GetElement<SelectionButton_Setting>("ReplayPendulum");
+            var config = Config.GetBool("ReplayPendulum", true);
+            button.SetModeText(InterString.Get(config ? "关" : "开"));
+            Config.SetBool("ReplayPendulum", !config);
+        }
+        #endregion
+
+        #region Cutin
+        private void InitializeCutin()
+        {
+            var button = Manager.GetElement<SelectionButton_Setting>("DuelCutin");
+            button.SetClickEvent(OnDuelCutinClick);
+            var config = Config.GetBool("DuelCutin", true);
+            button.SetModeText(InterString.Get(config ? "开" : "关"));
+
+            button = Manager.GetElement<SelectionButton_Setting>("WatchCutin");
+            button.SetClickEvent(OnWatchCutinClick);
+            config = Config.GetBool("WatchCutin", true);
+            button.SetModeText(InterString.Get(config ? "开" : "关"));
+
+            button = Manager.GetElement<SelectionButton_Setting>("ReplayCutin");
+            button.SetClickEvent(OnReplayCutinClick);
+            config = Config.GetBool("ReplayCutin", true);
+            button.SetModeText(InterString.Get(config ? "开" : "关"));
+        }
+        private void OnDuelCutinClick()
+        {
+            var button = Manager.GetElement<SelectionButton_Setting>("DuelCutin");
+            var config = Config.GetBool("DuelCutin", true);
+            button.SetModeText(InterString.Get(config ? "关" : "开"));
+            Config.SetBool("DuelCutin", !config);
+        }
+        private void OnWatchCutinClick()
+        {
+            var button = Manager.GetElement<SelectionButton_Setting>("WatchCutin");
+            var config = Config.GetBool("WatchCutin", true);
+            button.SetModeText(InterString.Get(config ? "关" : "开"));
+            Config.SetBool("WatchCutin", !config);
+        }
+        private void OnReplayCutinClick()
+        {
+            var button = Manager.GetElement<SelectionButton_Setting>("ReplayCutin");
+            var config = Config.GetBool("ReplayCutin", true);
+            button.SetModeText(InterString.Get(config ? "关" : "开"));
+            Config.SetBool("ReplayCutin", !config);
+        }
+        #endregion
+
+        #region Effect
+        private void InitializeEffect()
+        {
+            var button = Manager.GetElement<SelectionButton_Setting>("DuelEffect");
+            button.SetClickEvent(OnDuelEffectClick);
+            var config = Config.GetBool("DuelEffect", true);
+            button.SetModeText(InterString.Get(config ? "开" : "关"));
+
+            button = Manager.GetElement<SelectionButton_Setting>("WatchEffect");
+            button.SetClickEvent(OnWatchEffectClick);
+            config = Config.GetBool("WatchEffect", true);
+            button.SetModeText(InterString.Get(config ? "开" : "关"));
+
+            button = Manager.GetElement<SelectionButton_Setting>("ReplayEffect");
+            button.SetClickEvent(OnReplayEffectClick);
+            config = Config.GetBool("ReplayEffect", true);
+            button.SetModeText(InterString.Get(config ? "开" : "关"));
+        }
+        private void OnDuelEffectClick()
+        {
+            var button = Manager.GetElement<SelectionButton_Setting>("DuelEffect");
+            var config = Config.GetBool("DuelEffect", true);
+            button.SetModeText(InterString.Get(config ? "关" : "开"));
+            Config.SetBool("DuelEffect", !config);
+        }
+        private void OnWatchEffectClick()
+        {
+            var button = Manager.GetElement<SelectionButton_Setting>("WatchEffect");
+            var config = Config.GetBool("WatchEffect", true);
+            button.SetModeText(InterString.Get(config ? "关" : "开"));
+            Config.SetBool("WatchEffect", !config);
+        }
+        private void OnReplayEffectClick()
+        {
+            var button = Manager.GetElement<SelectionButton_Setting>("ReplayEffect");
+            var config = Config.GetBool("ReplayEffect", true);
+            button.SetModeText(InterString.Get(config ? "关" : "开"));
+            Config.SetBool("ReplayEffect", !config);
+        }
+        #endregion
+
+        #region Chain
+        private void InitializeChain()
+        {
+            var button = Manager.GetElement<SelectionButton_Setting>("DuelChain");
+            button.SetClickEvent(OnDuelChainClick);
+            var config = Config.GetBool("DuelChain", true);
+            button.SetModeText(InterString.Get(config ? "开" : "关"));
+
+            button = Manager.GetElement<SelectionButton_Setting>("WatchChain");
+            button.SetClickEvent(OnWatchChainClick);
+            config = Config.GetBool("WatchChain", true);
+            button.SetModeText(InterString.Get(config ? "开" : "关"));
+
+            button = Manager.GetElement<SelectionButton_Setting>("ReplayChain");
+            button.SetClickEvent(OnReplayChainClick);
+            config = Config.GetBool("ReplayChain", true);
+            button.SetModeText(InterString.Get(config ? "开" : "关"));
+        }
+        private void OnDuelChainClick()
+        {
+            var button = Manager.GetElement<SelectionButton_Setting>("DuelChain");
+            var config = Config.GetBool("DuelChain", true);
+            button.SetModeText(InterString.Get(config ? "关" : "开"));
+            Config.SetBool("DuelChain", !config);
+        }
+        private void OnWatchChainClick()
+        {
+            var button = Manager.GetElement<SelectionButton_Setting>("WatchChain");
+            var config = Config.GetBool("WatchChain", true);
+            button.SetModeText(InterString.Get(config ? "关" : "开"));
+            Config.SetBool("WatchChain", !config);
+        }
+        private void OnReplayChainClick()
+        {
+            var button = Manager.GetElement<SelectionButton_Setting>("ReplayChain");
+            var config = Config.GetBool("ReplayChain", true);
+            button.SetModeText(InterString.Get(config ? "关" : "开"));
+            Config.SetBool("ReplayChain", !config);
+        }
+        #endregion
+
+        #region Dice
+        private void InitializeDice()
+        {
+            var button = Manager.GetElement<SelectionButton_Setting>("DuelDice");
+            button.SetClickEvent(OnDuelDiceClick);
+            var config = Config.GetBool("DuelDice", true);
+            button.SetModeText(InterString.Get(config ? "开" : "关"));
+
+            button = Manager.GetElement<SelectionButton_Setting>("WatchDice");
+            button.SetClickEvent(OnWatchDiceClick);
+            config = Config.GetBool("WatchDice", true);
+            button.SetModeText(InterString.Get(config ? "开" : "关"));
+
+            button = Manager.GetElement<SelectionButton_Setting>("ReplayDice");
+            button.SetClickEvent(OnReplayDiceClick);
+            config = Config.GetBool("ReplayDice", true);
+            button.SetModeText(InterString.Get(config ? "开" : "关"));
+        }
+        private void OnDuelDiceClick()
+        {
+            var button = Manager.GetElement<SelectionButton_Setting>("DuelDice");
+            var config = Config.GetBool("DuelDice", true);
+            button.SetModeText(InterString.Get(config ? "关" : "开"));
+            Config.SetBool("DuelDice", !config);
+        }
+        private void OnWatchDiceClick()
+        {
+            var button = Manager.GetElement<SelectionButton_Setting>("WatchDice");
+            var config = Config.GetBool("WatchDice", true);
+            button.SetModeText(InterString.Get(config ? "关" : "开"));
+            Config.SetBool("WatchDice", !config);
+        }
+        private void OnReplayDiceClick()
+        {
+            var button = Manager.GetElement<SelectionButton_Setting>("ReplayDice");
+            var config = Config.GetBool("ReplayDice", true);
+            button.SetModeText(InterString.Get(config ? "关" : "开"));
+            Config.SetBool("ReplayDice", !config);
+        }
+        #endregion
+
+        #region Coin
+        private void InitializeCoin()
+        {
+            var button = Manager.GetElement<SelectionButton_Setting>("DuelCoin");
+            button.SetClickEvent(OnDuelCoinClick);
+            var config = Config.GetBool("DuelCoin", true);
+            button.SetModeText(InterString.Get(config ? "开" : "关"));
+
+            button = Manager.GetElement<SelectionButton_Setting>("WatchCoin");
+            button.SetClickEvent(OnWatchCoinClick);
+            config = Config.GetBool("WatchCoin", true);
+            button.SetModeText(InterString.Get(config ? "开" : "关"));
+
+            button = Manager.GetElement<SelectionButton_Setting>("ReplayCoin");
+            button.SetClickEvent(OnReplayCoinClick);
+            config = Config.GetBool("ReplayCoin", true);
+            button.SetModeText(InterString.Get(config ? "开" : "关"));
+        }
+        private void OnDuelCoinClick()
+        {
+            var button = Manager.GetElement<SelectionButton_Setting>("DuelCoin");
+            var config = Config.GetBool("DuelCoin", true);
+            button.SetModeText(InterString.Get(config ? "关" : "开"));
+            Config.SetBool("DuelCoin", !config);
+        }
+        private void OnWatchCoinClick()
+        {
+            var button = Manager.GetElement<SelectionButton_Setting>("WatchCoin");
+            var config = Config.GetBool("WatchCoin", true);
+            button.SetModeText(InterString.Get(config ? "关" : "开"));
+            Config.SetBool("WatchCoin", !config);
+        }
+        private void OnReplayCoinClick()
+        {
+            var button = Manager.GetElement<SelectionButton_Setting>("ReplayCoin");
+            var config = Config.GetBool("ReplayCoin", true);
+            button.SetModeText(InterString.Get(config ? "关" : "开"));
+            Config.SetBool("ReplayCoin", !config);
+        }
+        #endregion
+
+        #region AutoInfo
+        private void InitializeAutoInfo()
+        {
+            var button = Manager.GetElement<SelectionButton_Setting>("DuelAutoInfo");
+            button.SetClickEvent(OnDuelAutoInfoClick);
+            var config = Config.GetBool("DuelAutoInfo", true);
+            button.SetModeText(InterString.Get(config ? "开" : "关"));
+
+            button = Manager.GetElement<SelectionButton_Setting>("WatchAutoInfo");
+            button.SetClickEvent(OnWatchAutoInfoClick);
+            config = Config.GetBool("WatchAutoInfo", true);
+            button.SetModeText(InterString.Get(config ? "开" : "关"));
+
+            button = Manager.GetElement<SelectionButton_Setting>("ReplayAutoInfo");
+            button.SetClickEvent(OnReplayAutoInfoClick);
+            config = Config.GetBool("ReplayAutoInfo", true);
+            button.SetModeText(InterString.Get(config ? "开" : "关"));
+        }
+        private void OnDuelAutoInfoClick()
+        {
+            var button = Manager.GetElement<SelectionButton_Setting>("DuelAutoInfo");
+            var config = Config.GetBool("DuelAutoInfo", true);
+            button.SetModeText(InterString.Get(config ? "关" : "开"));
+            Config.SetBool("DuelAutoInfo", !config);
+        }
+        private void OnWatchAutoInfoClick()
+        {
+            var button = Manager.GetElement<SelectionButton_Setting>("WatchAutoInfo");
+            var config = Config.GetBool("WatchAutoInfo", true);
+            button.SetModeText(InterString.Get(config ? "关" : "开"));
+            Config.SetBool("WatchAutoInfo", !config);
+        }
+        private void OnReplayAutoInfoClick()
+        {
+            var button = Manager.GetElement<SelectionButton_Setting>("ReplayAutoInfo");
+            var config = Config.GetBool("ReplayAutoInfo", true);
+            button.SetModeText(InterString.Get(config ? "关" : "开"));
+            Config.SetBool("ReplayAutoInfo", !config);
+        }
+        #endregion
+
+        #region FaceDown
+        private void InitializeFaceDown()
+        {
+            var button = Manager.GetElement<SelectionButton_Setting>("DuelFaceDown");
+            button.SetClickEvent(OnDuelFaceDownClick);
+            var config = Config.GetBool("DuelFaceDown", true);
+            button.SetModeText(InterString.Get(config ? "开" : "关"));
+
+            button = Manager.GetElement<SelectionButton_Setting>("WatchFaceDown");
+            button.SetClickEvent(OnWatchFaceDownClick);
+            config = Config.GetBool("WatchFaceDown", true);
+            button.SetModeText(InterString.Get(config ? "开" : "关"));
+
+            button = Manager.GetElement<SelectionButton_Setting>("ReplayFaceDown");
+            button.SetClickEvent(OnReplayFaceDownClick);
+            config = Config.GetBool("ReplayFaceDown", true);
+            button.SetModeText(InterString.Get(config ? "开" : "关"));
+        }
+        private void OnDuelFaceDownClick()
+        {
+            var button = Manager.GetElement<SelectionButton_Setting>("DuelFaceDown");
+            var config = Config.GetBool("DuelFaceDown", true);
+            button.SetModeText(InterString.Get(config ? "关" : "开"));
+            Config.SetBool("DuelFaceDown", !config);
+
+            foreach (var card in Program.instance.ocgcore.cards)
                 card.ShowFaceDownCardOrNot(card.NeedShowFaceDownCard());
         }
-        public void OnWatchFaceDownClick()
+        private void OnWatchFaceDownClick()
         {
-            if (watchFaceDownValue.text == InterString.Get("开"))
-            {
-                watchFaceDownValue.text = InterString.Get("关");
-                Config.SetBool("WatchFaceDown", false);
-            }
-            else
-            {
-                watchFaceDownValue.text = InterString.Get("开");
-                Config.SetBool("WatchFaceDown", true);
-            }
-            foreach (var card in Program.I().ocgcore.cards)
+            var button = Manager.GetElement<SelectionButton_Setting>("WatchFaceDown");
+            var config = Config.GetBool("WatchFaceDown", true);
+            button.SetModeText(InterString.Get(config ? "关" : "开"));
+            Config.SetBool("WatchFaceDown", !config);
+
+            foreach (var card in Program.instance.ocgcore.cards)
                 card.ShowFaceDownCardOrNot(card.NeedShowFaceDownCard());
         }
-        public void OnReplayFaceDownClick()
+        private void OnReplayFaceDownClick()
         {
-            if (replayFaceDownValue.text == InterString.Get("开"))
-            {
-                replayFaceDownValue.text = InterString.Get("关");
-                Config.SetBool("ReplayFaceDown", false);
-            }
-            else
-            {
-                replayFaceDownValue.text = InterString.Get("开");
-                Config.SetBool("ReplayFaceDown", true);
-            }
-            foreach (var card in Program.I().ocgcore.cards)
+            var button = Manager.GetElement<SelectionButton_Setting>("ReplayFaceDown");
+            var config = Config.GetBool("ReplayFaceDown", true);
+            button.SetModeText(InterString.Get(config ? "关" : "开"));
+            Config.SetBool("ReplayFaceDown", !config);
+
+            foreach (var card in Program.instance.ocgcore.cards)
                 card.ShowFaceDownCardOrNot(card.NeedShowFaceDownCard());
         }
+        #endregion
 
-        public void OnTimingClick()
+        #region PlayerMessage
+        private void InitializePlayerMessage()
         {
-            if (timingValue.text == InterString.Get("开"))
-                timingValue.text = InterString.Get("关");
-            else
-                timingValue.text = InterString.Get("开");
+            var button = Manager.GetElement<SelectionButton_Setting>("DuelPlayerMessage");
+            button.SetClickEvent(OnDuelPlayerMessageClick);
+            var config = Config.GetBool("DuelPlayerMessage", true);
+            button.SetModeText(InterString.Get(config ? "开" : "关"));
+
+            button = Manager.GetElement<SelectionButton_Setting>("WatchPlayerMessage");
+            button.SetClickEvent(OnWatchPlayerMessageClick);
+            config = Config.GetBool("WatchPlayerMessage", true);
+            button.SetModeText(InterString.Get(config ? "开" : "关"));
+
+            button = Manager.GetElement<SelectionButton_Setting>("ReplayPlayerMessage");
+            button.SetClickEvent(OnReplayPlayerMessageClick);
+            config = Config.GetBool("ReplayPlayerMessage", true);
+            button.SetModeText(InterString.Get(config ? "开" : "关"));
+        }
+        private void OnDuelPlayerMessageClick()
+        {
+            var button = Manager.GetElement<SelectionButton_Setting>("DuelPlayerMessage");
+            var config = Config.GetBool("DuelPlayerMessage", true);
+            button.SetModeText(InterString.Get(config ? "关" : "开"));
+            Config.SetBool("DuelPlayerMessage", !config);
+        }
+        private void OnWatchPlayerMessageClick()
+        {
+            var button = Manager.GetElement<SelectionButton_Setting>("WatchPlayerMessage");
+            var config = Config.GetBool("WatchPlayerMessage", true);
+            button.SetModeText(InterString.Get(config ? "关" : "开"));
+            Config.SetBool("WatchPlayerMessage", !config);
+        }
+        private void OnReplayPlayerMessageClick()
+        {
+            var button = Manager.GetElement<SelectionButton_Setting>("ReplayPlayerMessage");
+            var config = Config.GetBool("ReplayPlayerMessage", true);
+            button.SetModeText(InterString.Get(config ? "关" : "开"));
+            Config.SetBool("ReplayPlayerMessage", !config);
+        }
+        #endregion
+
+        #region SystemMessage
+        private void InitializeSystemMessage()
+        {
+            var button = Manager.GetElement<SelectionButton_Setting>("DuelSystemMessage");
+            button.SetClickEvent(OnDuelSystemMessageClick);
+            var config = Config.GetBool("DuelSystemMessage", true);
+            button.SetModeText(InterString.Get(config ? "开" : "关"));
+
+            button = Manager.GetElement<SelectionButton_Setting>("WatchSystemMessage");
+            button.SetClickEvent(OnWatchSystemMessageClick);
+            config = Config.GetBool("WatchSystemMessage", true);
+            button.SetModeText(InterString.Get(config ? "开" : "关"));
+
+            button = Manager.GetElement<SelectionButton_Setting>("ReplaySystemMessage");
+            button.SetClickEvent(OnReplaySystemMessageClick);
+            config = Config.GetBool("ReplaySystemMessage", true);
+            button.SetModeText(InterString.Get(config ? "开" : "关"));
+        }
+        private void OnDuelSystemMessageClick()
+        {
+            var button = Manager.GetElement<SelectionButton_Setting>("DuelSystemMessage");
+            var config = Config.GetBool("DuelSystemMessage", true);
+            button.SetModeText(InterString.Get(config ? "关" : "开"));
+            Config.SetBool("DuelSystemMessage", !config);
+        }
+        private void OnWatchSystemMessageClick()
+        {
+            var button = Manager.GetElement<SelectionButton_Setting>("WatchSystemMessage");
+            var config = Config.GetBool("WatchSystemMessage", true);
+            button.SetModeText(InterString.Get(config ? "关" : "开"));
+            Config.SetBool("WatchSystemMessage", !config);
+        }
+        private void OnReplaySystemMessageClick()
+        {
+            var button = Manager.GetElement<SelectionButton_Setting>("ReplaySystemMessage");
+            var config = Config.GetBool("ReplaySystemMessage", true);
+            button.SetModeText(InterString.Get(config ? "关" : "开"));
+            Config.SetBool("ReplaySystemMessage", !config);
+        }
+        #endregion
+
+        #region Acc
+        private void InitializeAcc()
+        {
+            var button = Manager.GetElement<SelectionButton_Setting>("DuelAcc");
+            button.SetSliderEvent(OnDuelAccChange);
+            var config = Config.GetFloat("DuelAcc", 2f);
+            button.SetSliderValue(config);
+            OnDuelAccChange(config);
+
+            button = Manager.GetElement<SelectionButton_Setting>("WatchAcc");
+            button.SetSliderEvent(OnWatchAccChange);
+            config = Config.GetFloat("WatchAcc", 2f);
+            button.SetSliderValue(config);
+            OnWatchAccChange(config);
+
+            button = Manager.GetElement<SelectionButton_Setting>("ReplayAcc");
+            button.SetSliderEvent(OnReplayAccChange);
+            config = Config.GetFloat("ReplayAcc", 2f);
+            button.SetSliderValue(config);
+            OnReplayAccChange(config);
+        }
+        private void OnDuelAccChange(float value)
+        {
+            string result = value.ToString();
+            var button = Manager.GetElement<SelectionButton_Setting>("DuelAcc");
+            button.SetModeText(result.Length > 4 ? result[..4] : result);
+            if (Program.instance.ocgcore.showing)
+                if (Program.instance.ocgcore.condition == OcgCore.Condition.Duel)
+                    if (Program.instance.ocgcore.accing)
+                        Program.instance.ocgcore.OnAcc();
+        }
+        private void OnWatchAccChange(float value)
+        {
+            string result = value.ToString();
+            var button = Manager.GetElement<SelectionButton_Setting>("WatchAcc");
+            button.SetModeText(result.Length > 4 ? result[..4] : result);
+            if (Program.instance.ocgcore.showing)
+                if (Program.instance.ocgcore.condition == OcgCore.Condition.Watch)
+                    if (Program.instance.ocgcore.accing)
+                        Program.instance.ocgcore.OnAcc();
+        }
+        private void OnReplayAccChange(float value)
+        {
+            string result = value.ToString();
+            var button = Manager.GetElement<SelectionButton_Setting>("ReplayAcc");
+            button.SetModeText(result.Length > 4 ? result[..4] : result);
+            if (Program.instance.ocgcore.showing)
+                if (Program.instance.ocgcore.condition == OcgCore.Condition.Replay)
+                    if (Program.instance.ocgcore.accing)
+                        Program.instance.ocgcore.OnAcc();
         }
 
-        void OnImport()
+        #endregion
+
+        #region AutoAcc
+        private void InitializeAutoAcc()
         {
-            if (Program.I().ocgcore.isShowed)
+            var button = Manager.GetElement<SelectionButton_Setting>("DuelAutoAcc");
+            button.SetClickEvent(OnDuelAutoAccClick);
+            var config = Config.GetBool("DuelAutoAcc", true);
+            button.SetModeText(InterString.Get(config ? "开" : "关"));
+
+            button = Manager.GetElement<SelectionButton_Setting>("WatchAutoAcc");
+            button.SetClickEvent(OnWatchAutoAccClick);
+            config = Config.GetBool("WatchAutoAcc", true);
+            button.SetModeText(InterString.Get(config ? "开" : "关"));
+
+            button = Manager.GetElement<SelectionButton_Setting>("ReplayAutoAcc");
+            button.SetClickEvent(OnReplayAutoAccClick);
+            config = Config.GetBool("ReplayAutoAcc", true);
+            button.SetModeText(InterString.Get(config ? "开" : "关"));
+        }
+        private void OnDuelAutoAccClick()
+        {
+            var button = Manager.GetElement<SelectionButton_Setting>("DuelAutoAcc");
+            var config = Config.GetBool("DuelAutoAcc", true);
+            button.SetModeText(InterString.Get(config ? "关" : "开"));
+            Config.SetBool("DuelAutoAcc", !config);
+        }
+        private void OnWatchAutoAccClick()
+        {
+            var button = Manager.GetElement<SelectionButton_Setting>("WatchAutoAcc");
+            var config = Config.GetBool("WatchAutoAcc", true);
+            button.SetModeText(InterString.Get(config ? "关" : "开"));
+            Config.SetBool("WatchAutoAcc", !config);
+        }
+        private void OnReplayAutoAccClick()
+        {
+            var button = Manager.GetElement<SelectionButton_Setting>("ReplayAutoAcc");
+            var config = Config.GetBool("ReplayAutoAcc", true);
+            button.SetModeText(InterString.Get(config ? "关" : "开"));
+            Config.SetBool("ReplayAutoAcc", !config);
+        }
+        #endregion
+
+        #region Timming
+        private void InitializeTimming()
+        {
+            var button = Manager.GetElement<SelectionButton_Setting>("Timming");
+            button.SetClickEvent(OnTimmingClick);
+            var config = Config.GetBool("Timming", false);
+            button.SetModeText(InterString.Get(config ? "开" : "关"));
+        }
+        private void OnTimmingClick()
+        {
+            var button = Manager.GetElement<SelectionButton_Setting>("Timming");
+            var config = Config.GetBool("Timming", false);
+            button.SetModeText(InterString.Get(config ? "关" : "开"));
+            Config.SetBool("Timming", !config);
+        }
+        #endregion
+
+        #region AutoRPS
+        private void InitializeAutoRPS()
+        {
+            var button = Manager.GetElement<SelectionButton_Setting>("AutoRPS");
+            button.SetClickEvent(OnAutoRPSClick);
+            var config = Config.GetBool("AutoRPS", false);
+            button.SetModeText(InterString.Get(config ? "开" : "关"));
+        }
+        private void OnAutoRPSClick()
+        {
+            var button = Manager.GetElement<SelectionButton_Setting>("AutoRPS");
+            var config = Config.GetBool("AutoRPS", false);
+            button.SetModeText(InterString.Get(config ? "关" : "开"));
+            Config.SetBool("AutoRPS", !config);
+        }
+        #endregion
+
+        // Port
+        #region Port
+        private void InitializePort()
+        {
+            var button = Manager.GetElement<SelectionButton_Setting>("Import");
+            button.SetClickEvent(OnImport);
+
+            button = Manager.GetElement<SelectionButton_Setting>("ImportBG");
+            button.SetClickEvent(OnImportBG);
+
+            button = Manager.GetElement<SelectionButton_Setting>("ExportDeck");
+            button.SetClickEvent(OnExportDeck);
+
+            button = Manager.GetElement<SelectionButton_Setting>("ExportReplay");
+            button.SetClickEvent(OnExportReplay);
+
+            button = Manager.GetElement<SelectionButton_Setting>("ExportPicture");
+            button.SetClickEvent(OnExportPicture);
+
+            button = Manager.GetElement<SelectionButton_Setting>("ClearPicture");
+            button.SetClickEvent(OnClearPicture);
+        }
+        private void OnImport()
+        {
+            if (Program.instance.ocgcore.showing)
             {
                 MessageManager.Cast(InterString.Get("决斗中不能进行此操作。"));
                 return;
@@ -1663,25 +1810,25 @@ namespace MDPro3
 
             PortHelper.ImportFiles();
         }
-        void OnImportBG()
+        private void OnImportBG()
         {
             PortHelper.ImportBG();
         }
-        void OnExportDecks()
+        private void OnExportDeck()
         {
             PortHelper.ExportAllDecks();
         }
-        void OnExportReplays()
+        private void OnExportReplay()
         {
             PortHelper.ExportAllReplays();
         }
-        void OnExportPictures()
+        private void OnExportPicture()
         {
             PortHelper.ExportAllPictures();
         }
-        void OnClearPictures()
+        private void OnClearPicture()
         {
-            if (Program.I().ocgcore.isShowed)
+            if (Program.instance.ocgcore.showing)
             {
                 MessageManager.Cast(InterString.Get("决斗中不能进行此操作。"));
                 return;
@@ -1702,9 +1849,41 @@ namespace MDPro3
                     File.Delete(file);
             }, null);
         }
-        void OnClearExpansions()
+        #endregion
+
+        // Expansions
+        #region Expansion
+        private void InitializeExpansions()
         {
-            if (Program.I().ocgcore.isShowed)
+            var button = Manager.GetElement<SelectionButton_Setting>("ExpansionsSupport");
+            button.SetClickEvent(OnSupportExpansions);
+            var config = Config.GetBool("Expansions", true);
+            button.SetModeText(InterString.Get(config ? "是" : "否"));
+
+            button = Manager.GetElement<SelectionButton_Setting>("ClearExpansions");
+            button.SetClickEvent(OnClearExpansions);
+
+            button = Manager.GetElement<SelectionButton_Setting>("UpdatePrerelease");
+            button.SetClickEvent(OnUpdatePrerelease);
+        }
+        private void OnSupportExpansions()
+        {
+            if (Program.instance.ocgcore.showing)
+            {
+                MessageManager.Cast(InterString.Get("决斗中不能更改此选项。"));
+                return;
+            }
+
+            var config = Config.GetBool("Expansions", true);
+            var button = Manager.GetElement<SelectionButton_Setting>("ExpansionsSupport");
+            button.SetModeText(InterString.Get(config ? "否" : "是"));
+            Config.SetBool("Expansions", !config);
+
+            Program.instance.InitializeForDataChange();
+        }
+        private void OnClearExpansions()
+        {
+            if (Program.instance.ocgcore.showing)
             {
                 MessageManager.Cast(InterString.Get("决斗中不能进行此操作。"));
                 return;
@@ -1720,51 +1899,29 @@ namespace MDPro3
             UIManager.ShowPopupYesOrNo(selections, () =>
             {
                 ZipHelper.Dispose();
-                if(!Directory.Exists(Program.expansionsPath))
+                if (!Directory.Exists(Program.expansionsPath))
                     Directory.CreateDirectory(Program.expansionsPath);
                 foreach (var file in Directory.GetFiles(Program.expansionsPath))
                     File.Delete(file);
-                Program.I().InitializeForDataChange();
+                Program.instance.InitializeForDataChange();
             }, null);
         }
 
-        void OnSupportExpansions()
-        {
-            if (Program.I().ocgcore.isShowed)
-            {
-                MessageManager.Cast(InterString.Get("决斗中不能更改此选项。"));
-                return;
-            }
-
-            if (supportExpansionsValue.text == InterString.Get("否"))
-            {
-                supportExpansionsValue.text = InterString.Get("是");
-                Config.SetBool("Expansions", true);
-            }
-            else
-            {
-                supportExpansionsValue.text = InterString.Get("否");
-                Config.SetBool("Expansions", false);
-            }
-            Program.I().InitializeForDataChange();
-        }
-
-        bool checking;
+        private bool checkingPrereleaseUpdate;
         void OnUpdatePrerelease()
         {
-            if (Program.I().ocgcore.isShowed)
+            if (Program.instance.ocgcore.showing)
             {
                 MessageManager.Cast(InterString.Get("决斗中不能进行此操作。"));
                 return;
             }
 
-            if (!checking)
+            if (!checkingPrereleaseUpdate)
             {
-                checking = true;
+                checkingPrereleaseUpdate = true;
                 StartCoroutine(UpdatePrereleaseAsync());
             }
         }
-
         IEnumerator UpdatePrereleaseAsync()
         {
             var filePath = Path.Combine(Program.expansionsPath, Path.GetFileName(Settings.Data.PrereleasePackUrl));
@@ -1773,13 +1930,14 @@ namespace MDPro3
                 Config.Set("Prerelease", "0");
                 Config.Save();
             }
+            var button = Manager.GetElement<SelectionButton_Setting>("UpdatePrerelease");
 
             var www = UnityWebRequest.Get(Settings.Data.PrereleasePackVersionUrl);
             www.SendWebRequest();
             while (!www.isDone)
             {
                 yield return null;
-                updatePrereleaseValue.text = InterString.Get("检查更新中");
+                button.SetModeText(InterString.Get("检查更新中"));
             }
             if (www.result == UnityWebRequest.Result.Success)
             {
@@ -1787,7 +1945,7 @@ namespace MDPro3
                 var lines = result.Replace("\r", "").Split('\n');
                 if (Config.Get("Prerelease", "0") != lines[0])
                 {
-                    if(!Directory.Exists(Program.expansionsPath))
+                    if (!Directory.Exists(Program.expansionsPath))
                         Directory.CreateDirectory(Program.expansionsPath);
                     var download = UnityWebRequest.Get(Settings.Data.PrereleasePackUrl);
                     download.SendWebRequest();
@@ -1795,16 +1953,16 @@ namespace MDPro3
                     while (!download.isDone)
                     {
                         yield return null;
-                        updatePrereleaseValue.text = (download.downloadProgress * 100f).ToString("0.##") + "%";
+                        button.SetModeText((download.downloadProgress * 100f).ToString("0.##") + "%");
                     }
-                    if(download.result == UnityWebRequest.Result.Success)
+                    if (download.result == UnityWebRequest.Result.Success)
                     {
                         ZipHelper.Dispose();
                         File.WriteAllBytes(filePath, download.downloadHandler.data);
                         MessageManager.Cast(InterString.Get("先行卡更新成功。"));
                         Config.Set("Prerelease", lines[0]);
                         Config.Save();
-                        Program.I().InitializeForDataChange();
+                        Program.instance.InitializeForDataChange();
                     }
                     else
                         MessageManager.Cast(InterString.Get("先行卡更新失败。"));
@@ -1814,13 +1972,28 @@ namespace MDPro3
             }
             else
                 MessageManager.Cast(InterString.Get("检查更新失败！"));
-            updatePrereleaseValue.text = string.Empty;
-            checking = false;
+            button.SetModeText(string.Empty);
+            checkingPrereleaseUpdate = false;
         }
+        #endregion
 
-#endregion
+        // About
+        #region About
+        private void InitializeAbout()
+        {
+            var button = Manager.GetElement<SelectionButton_Setting>("AboutGame");
+            button.SetClickEvent(OnAboutGame);
 
-        public void OnAboutGame()
+            button = Manager.GetElement<SelectionButton_Setting>("VersionHint");
+            button.SetClickEvent(OnAboutVersion);
+
+            button = Manager.GetElement<SelectionButton_Setting>("VersionUpdate");
+            button.SetClickEvent(OnAboutUpdate);
+
+            button = Manager.GetElement<SelectionButton_Setting>("UpdateContent");
+            button.SetClickEvent(OnUpdateContent);
+        }
+        private void OnAboutGame()
         {
             var handle = Addressables.LoadAssetAsync<TextAsset>("AboutGame");
             handle.Completed += (result) =>
@@ -1833,8 +2006,7 @@ namespace MDPro3
                 UIManager.ShowPopupText(selections);
             };
         }
-
-        public void OnAboutVersion()
+        private void OnAboutVersion()
         {
             var handle = Addressables.LoadAssetAsync<TextAsset>("AboutVersion");
             handle.Completed += (result) =>
@@ -1847,7 +2019,7 @@ namespace MDPro3
                 UIManager.ShowPopupText(selections, TMPro.HorizontalAlignmentOptions.Left);
             };
         }
-        public void OnAboutUpdate()
+        private void OnAboutUpdate()
         {
             var handle = Addressables.LoadAssetAsync<TextAsset>("AboutUpdate");
             handle.Completed += (result) =>
@@ -1860,7 +2032,7 @@ namespace MDPro3
                 UIManager.ShowPopupText(selections);
             };
         }
-        public void OnUpdateContent()
+        private void OnUpdateContent()
         {
             var handle = Addressables.LoadAssetAsync<TextAsset>("UpdateContent");
             handle.Completed += (result) =>
@@ -1873,6 +2045,9 @@ namespace MDPro3
                 UIManager.ShowPopupText(selections, TMPro.HorizontalAlignmentOptions.Left);
             };
         }
+        #endregion
+
+        #endregion
 
     }
 

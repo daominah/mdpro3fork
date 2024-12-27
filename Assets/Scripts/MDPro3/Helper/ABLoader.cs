@@ -269,6 +269,17 @@ namespace MDPro3
             TextureManager.ChangeProfileFrameMaterialWrapMode(material);
             yield return material;
         }
+        public static IEnumerator<Material> LoadMaterialAsync(string path)
+        {
+            var abr = AssetBundle.LoadFromFileAsync(Program.root + path);
+            while (!abr.isDone) 
+                yield return null;
+            var ab = abr.assetBundle;
+            var matetial = ab.LoadAsset<Material>(Path.GetFileName(path));
+            ab.Unload(false);
+            yield return matetial;
+        }
+
         public static IEnumerator<Mate> LoadMateAsync(int code)
         {
             Items.Item item = new Items.Item();

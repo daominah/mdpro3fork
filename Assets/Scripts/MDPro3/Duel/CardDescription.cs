@@ -8,6 +8,7 @@ using YgomSystem.ElementSystem;
 using MDPro3.YGOSharp;
 using MDPro3.YGOSharp.OCGWrapper.Enums;
 using static MDPro3.CardRenderer;
+using MDPro3.Utility;
 
 namespace MDPro3
 {
@@ -35,10 +36,10 @@ namespace MDPro3
 
         void ShowDetail()
         {
-            Program.I().ocgcore.list.Hide();
+            Program.instance.ocgcore.list.Hide();
             var cardFace = manager.GetElement<RawImage>("Card").texture;
             var mat = manager.GetElement<RawImage>("Card").material;
-            Program.I().ui_.cardDetail.Show(data, cardFace, mat);
+            Program.instance.ui_.cardDetail.Show(data, cardFace, mat);
         }
 
         IEnumerator RefreshFace(int code)
@@ -88,7 +89,7 @@ namespace MDPro3
             else if (p.controller == 0)
             {
                 manager.GetElement<Image>("Player").color = new Color(0, 0, 1, 0.3f);
-                if (Program.I().ocgcore.myActivated.Contains(data.Id))
+                if (Program.instance.ocgcore.myActivated.Contains(data.Id))
                     manager.GetElement("BaseActivated").SetActive(true);
                 else
                     manager.GetElement("BaseActivated").SetActive(false);
@@ -96,7 +97,7 @@ namespace MDPro3
             else
             {
                 manager.GetElement<Image>("Player").color = new Color(1, 0, 0, 0.3f);
-                if (Program.I().ocgcore.opActivated.Contains(data.Id))
+                if (Program.instance.ocgcore.opActivated.Contains(data.Id))
                     manager.GetElement("BaseActivated").SetActive(true);
                 else
                     manager.GetElement("BaseActivated").SetActive(false);
@@ -121,18 +122,18 @@ namespace MDPro3
             }
 
             manager.GetElement<Text>("TextType").text = StringHelper.GetType(data);
-            if ((data.Type & (uint)CardType.Pendulum) > 0)
+            if (data.HasType(CardType.Pendulum))
             {
                 var texts = GetCardDescriptionSplit(origin.Desc);
                 string monster = InterString.Get("¡¾¹ÖÊÞÐ§¹û¡¿");
-                if ((data.Type & (uint)CardType.Effect) == 0)
+                if (!data.HasType(CardType.Effect))
                     monster = InterString.Get("¡¾¹ÖÊÞÃèÊö¡¿");
                 if (p != null
                     && ((p.location & (uint)CardLocation.PendulumZone) > 0 ||
                     ((p.location & (uint)CardLocation.SpellZone) > 0
-                    && (data.Type & (uint)CardType.Equip) == 0
-                    && (data.Type & (uint)CardType.Continuous) == 0
-                    && (data.Type & (uint)CardType.Trap) == 0)))
+                    && !data.HasType(CardType.Equip)
+                    && !data.HasType(CardType.Continuous)
+                    && !data.HasType(CardType.Trap))))
                     manager.GetElement<TextMeshProUGUI>("TextDescription").text = tails + GetSetName(data.Id) + InterString.Get("¡¾Áé°ÚÐ§¹û¡¿") + "\n" + texts[0] + "\n"
                         + "<color=#666666>" + monster + "\n" + texts[1] + "</color>";
                 else if (p != null && (p.location & (uint)CardLocation.MonsterZone) > 0)
@@ -158,7 +159,7 @@ namespace MDPro3
                 manager.GetElement<Image>("Race").sprite = raceSprite.sprite;
                 manager.GetElement("RaceOutline").SetActive(raceSprite.notOriginal);
                 bool isTuner = false;
-                if ((data.Type & (uint)CardType.Tuner) > 0)
+                if (data.HasType(CardType.Tuner))
                 {
                     isTuner = true;
                     manager.GetElement("Tuner").SetActive(true);
@@ -168,7 +169,7 @@ namespace MDPro3
 
                 if(isTuner)
                 {
-                    if ((origin.Type & (uint)CardType.Tuner) > 0)
+                    if (origin.HasType(CardType.Tuner))
                         manager.GetElement("TunerOutline").SetActive(false);
                     else
                         manager.GetElement("TunerOutline").SetActive(true);
@@ -177,7 +178,7 @@ namespace MDPro3
                     manager.GetElement("TunerOutline").SetActive(false);
 
                 manager.GetElement<Image>("Level").sprite = TextureManager.GetCardLevelIcon(data);
-                if ((data.Type & (uint)CardType.Link) > 0)
+                if (data.HasType(CardType.Link))
                 {
                     manager.GetElement<Text>("TextLevel").text = GetCardLinkCount(data).ToString();
 
@@ -209,7 +210,7 @@ namespace MDPro3
                     else
                         manager.GetElement<Text>("TextDefense").color = equalColor;
 
-                    if ((data.Type & (uint)CardType.Pendulum) > 0)
+                    if (data.HasType(CardType.Pendulum))
                     {
                         manager.GetElement("Scale").SetActive(true);
                         manager.GetElement("TextScale").SetActive(true);
@@ -256,7 +257,7 @@ namespace MDPro3
         }
         void RefreshLimitIcon(int code)
         {
-            var banlist = Program.I().editDeck.banlist;//TODO
+            var banlist = Program.instance.editDeck.banlist;//TODO
             var limit = banlist.GetQuantity(code);
             if (limit == 3)
                 manager.GetElement<Image>("Limit").sprite = TextureManager.container.typeNone;
@@ -272,18 +273,18 @@ namespace MDPro3
         public static bool WhetherCardIsMonster(Card data)
         {
             var origin = CardsManager.Get(data.Id);
-            if ((origin.Type & (uint)CardType.Monster) == 0)
+            if (!origin.HasType(CardType.Monster))
             {
-                if ((data.Type & (uint)CardType.Monster) > 0)
+                if (data.HasType(CardType.Monster))
                     return true;
                 else
                     return false;
             }
             else
             {
-                if ((data.Type & (uint)CardType.Spell) > 0)
+                if (data.HasType(CardType.Spell))
                     return false;
-                else if ((data.Type & (uint)CardType.Trap) > 0)
+                else if (data.HasType(CardType.Trap))
                     return false;
                 else
                     return true;
@@ -303,7 +304,7 @@ namespace MDPro3
             bool isMonster = WhetherCardIsMonster(data);
             if (isMonster)
             {
-                if ((origin.Type & (uint)CardType.Monster) == 0)
+                if (!origin.HasType(CardType.Monster))
                 {
                     returnValue.sprite = TextureManager.GetCardAttributeIcon(data.Attribute, data.Id, render);
                     returnValue.notOriginal = true;
@@ -327,7 +328,7 @@ namespace MDPro3
             }
             else
             {
-                if ((origin.Type & (uint)CardType.Monster) == 0)
+                if (!origin.HasType(CardType.Monster))
                 {
                     if ((data.Type & (uint)CardType.Spell & origin.Type) > 0)
                     {
@@ -342,7 +343,7 @@ namespace MDPro3
                     else
                     {
                         returnValue.notOriginal = true;
-                        if ((data.Type & (uint)CardType.Spell) > 0)
+                        if (data.HasType(CardType.Spell))
                             returnValue.sprite = TextureManager.container.attributeSpell;
                         else
                             returnValue.sprite = TextureManager.container.attributeTrap;
@@ -350,12 +351,12 @@ namespace MDPro3
                 }
                 else
                 {
-                    if ((data.Type & (uint)CardType.Spell) > 0)
+                    if (data.HasType(CardType.Spell))
                     {
                         returnValue.sprite = TextureManager.container.attributeSpell;
                         returnValue.notOriginal = true;
                     }
-                    else// if ((data.Type & (uint)CardType.Trap) > 0)
+                    else
                     {
                         returnValue.sprite = TextureManager.container.attributeTrap;
                         returnValue.notOriginal = true;
@@ -382,7 +383,7 @@ namespace MDPro3
             var returnValue = new RaceSprite();
             returnValue.notOriginal = false;
             var origin = CardsManager.Get(data.Id);
-            if ((origin.Type & (uint)CardType.Monster) == 0)
+            if (!origin.HasType(CardType.Monster))
                 returnValue.notOriginal = true;
             else
                 if (data.Race != origin.Race)
@@ -421,87 +422,87 @@ namespace MDPro3
                 returnValue[0] = new Color(1f, 0.9882f, 0.1882f, 1f);
                 returnValue[1] = returnValue[0];
             }
-            else if ((origin.Type & (uint)CardType.Pendulum) > 0)
+            else if (origin.HasType(CardType.Pendulum))
             {
-                if ((origin.Type & (uint)CardType.Fusion) > 0)
+                if (origin.HasType(CardType.Fusion))
                 {
                     returnValue[0] = new Color(0.8823f, 0.345f, 1f, 1f);
                     returnValue[1] = new Color(0f, 0.8901f, 0.7411f, 1f);
                 }
-                else if ((origin.Type & (uint)CardType.Synchro) > 0)
+                else if (origin.HasType(CardType.Synchro))
                 {
                     returnValue[0] = new Color(1f, 1f, 1f, 1f);
                     returnValue[1] = new Color(0f, 0.8901f, 0.7411f, 1f);
                 }
-                else if ((origin.Type & (uint)CardType.Xyz) > 0)
+                else if (origin.HasType(CardType.Xyz))
                 {
                     returnValue[0] = new Color(0f, 0f, 0f, 1f);
                     returnValue[1] = new Color(0f, 0.8901f, 0.7411f, 1f);
                 }
-                else if ((origin.Type & (uint)CardType.Ritual) > 0)
+                else if (origin.HasType(CardType.Ritual))
                 {
                     returnValue[0] = new Color(0.3176f, 0.5882f, 1f, 1f);
                     returnValue[1] = new Color(0f, 0.8901f, 0.7411f, 1f);
                 }
-                else if ((origin.Type & (uint)CardType.Effect) > 0)
+                else if (origin.HasType(CardType.Effect))
                 {
                     returnValue[0] = new Color(1f, 0.4745f, 0.1882f, 1f);
                     returnValue[1] = new Color(0f, 0.8901f, 0.7411f, 1f);
                 }
-                else if ((origin.Type & (uint)CardType.Normal) > 0)
+                else if (origin.HasType(CardType.Normal))
                 {
                     returnValue[0] = new Color(1f, 0.7450f, 0.3294f, 1f);
                     returnValue[1] = new Color(0f, 0.8901f, 0.7411f, 1f);
                 }
             }
-            else if ((origin.Type & (uint)CardType.Fusion) > 0)
+            else if (origin.HasType(CardType.Fusion))
             {
                 returnValue[0] = new Color(0.8823f, 0.345f, 1f, 1f);
                 returnValue[1] = returnValue[0];
             }
-            else if ((origin.Type & (uint)CardType.Synchro) > 0)
+            else if (origin.HasType(CardType.Synchro))
             {
                 returnValue[0] = new Color(1f, 1f, 1f, 1f);
                 returnValue[1] = returnValue[0];
             }
-            else if ((origin.Type & (uint)CardType.Xyz) > 0)
+            else if (origin.HasType(CardType.Xyz))
             {
                 returnValue[0] = new Color(0f, 0f, 0f, 1f);
                 returnValue[1] = returnValue[0];
             }
-            else if ((origin.Type & (uint)CardType.Link) > 0)
+            else if (origin.HasType(CardType.Link))
             {
                 returnValue[0] = new Color(0f, 0.3764f, 0.7764f, 1f);
                 returnValue[1] = returnValue[0];
             }
-            else if ((origin.Type & (uint)CardType.Ritual) > 0 && (origin.Type & (uint)CardType.Monster) > 0)
+            else if (origin.HasType(CardType.Ritual) && origin.HasType(CardType.Monster))
             {
                 returnValue[0] = new Color(0.3176f, 0.5882f, 1f, 1f);
                 returnValue[1] = returnValue[0];
             }
-            else if ((origin.Type & (uint)CardType.Token) > 0)
+            else if (origin.HasType(CardType.Token))
             {
                 returnValue[0] = new Color(0.7764f, 0.6784f, 0.6274f, 1f);
                 returnValue[1] = returnValue[0];
             }
-            else if ((origin.Type & (uint)CardType.Effect) > 0)
+            else if (origin.HasType(CardType.Effect))
             {
                 returnValue[0] = new Color(1f, 0.4745f, 0.1882f, 1f);
                 returnValue[1] = returnValue[0];
             }
-            else if ((origin.Type & (uint)CardType.Normal) > 0)
+            else if (origin.HasType(CardType.Normal))
             {
                 returnValue[0] = new Color(1f, 0.7450f, 0.3294f, 1f);
                 returnValue[1] = returnValue[0];
             }
-            else if ((origin.Type & (uint)CardType.Spell) > 0)
+            else if (origin.HasType(CardType.Spell))
             {
-                if ((data.Type & (uint)CardType.Effect) > 0)
+                if (data.HasType(CardType.Effect))
                 {
                     returnValue[0] = new Color(1f, 0.4745f, 0.1882f, 1f);
                     returnValue[1] = new Color(0f, 0.8901f, 0.7411f, 1f);
                 }
-                else if ((data.Type & (uint)CardType.Normal) > 0)
+                else if (data.HasType(CardType.Normal))
                 {
                     returnValue[0] = new Color(1f, 0.7450f, 0.3294f, 1f);
                     returnValue[1] = new Color(0f, 0.8901f, 0.7411f, 1f);
@@ -512,14 +513,14 @@ namespace MDPro3
                     returnValue[1] = returnValue[0];
                 }
             }
-            else if ((origin.Type & (uint)CardType.Trap) > 0)
+            else if (origin.HasType(CardType.Trap))
             {
-                if ((data.Type & (uint)CardType.Effect) > 0)
+                if (data.HasType(CardType.Effect))
                 {
                     returnValue[0] = new Color(1f, 0.4745f, 0.1882f, 1f);
                     returnValue[1] = new Color(1f, 0.0509f, 0.6784f, 1f);
                 }
-                else if ((data.Type & (uint)CardType.Normal) > 0)
+                else if (data.HasType(CardType.Normal))
                 {
                     returnValue[0] = new Color(1f, 0.7450f, 0.3294f, 1f);
                     returnValue[1] = new Color(1f, 0.0509f, 0.6784f, 1f);

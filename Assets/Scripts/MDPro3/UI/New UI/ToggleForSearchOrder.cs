@@ -12,9 +12,9 @@ namespace MDPro3.UI
         public override void SwitchOn()
         {
             base.SwitchOn();
-            Program.I().editDeck.manager.GetElement<Transform>("ButtonSort").GetChild(0).GetComponent<Image>().sprite = icon.sprite;
-            Program.I().editDeck.sortOrder = sortOrder;
-            Program.I().editDeck.OnClickSearch();
+            Program.instance.editDeck.Manager.GetElement<Transform>("ButtonSort").GetChild(0).GetComponent<Image>().sprite = icon.sprite;
+            Program.instance.editDeck.sortOrder = sortOrder;
+            Program.instance.editDeck.OnClickSearch();
             transform.parent.parent.GetComponent<PopupSearchOrder>().Hide();
         }
         public override void SwitchOff()

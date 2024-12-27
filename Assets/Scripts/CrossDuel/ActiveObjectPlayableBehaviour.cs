@@ -64,7 +64,7 @@ namespace Willow
             if(m_object == null)
             {
                 m_object = Object.Instantiate(m_prefab);
-                if (Program.I().currentServant == Program.I().mate)
+                if (Program.instance.currentServant == Program.instance.mate)
                     Tools.ChangeLayer(m_object, "DuelOverlay2D");
 
                 if (needRotate != null)
@@ -141,13 +141,13 @@ namespace Willow
         public override void PrepareFrame(Playable playable, FrameData info)
 		{
             //if (m_parentObject != null && m_isLookAtCamera)
-            //             m_parentObject.transform.LookAt(Program.I().camera_.cameraMain.transform);
+            //             m_parentObject.transform.LookAt(Program.instance.camera_.cameraMain.transform);
             if (needRotate != null)
             {
-                if(Program.I().currentServant == Program.I().ocgcore)
-                    needRotate.LookAt(Program.I().camera_.cameraMain.transform);
+                if(Program.instance.currentServant == Program.instance.ocgcore)
+                    needRotate.LookAt(Program.instance.camera_.cameraMain.transform);
                 else
-                    needRotate.LookAt(Program.I().camera_.cameraDuelOverlay2D.transform);
+                    needRotate.LookAt(Program.instance.camera_.cameraDuelOverlay2D.transform);
             }
         }
 

@@ -21,6 +21,7 @@ using YgomSystem.Effect;
 using YgomSystem.ElementSystem;
 using static YgomGame.Bg.BgEffectSettingInner;
 using MDPro3.Duel;
+using UnityEngine.InputSystem;
 
 namespace MDPro3
 {
@@ -112,9 +113,9 @@ namespace MDPro3
         public override void Initialize()
         {
             depth = -1;
-            haveLine = false;
+            showLine = false;
             base.Initialize();
-            Program.onScreenChanged += RefreshHandCardPositionInstant;
+            SystemEvent.OnResolutionChange += RefreshHandCardPositionInstant;
             var handle = Addressables.LoadAssetAsync<DuelPrefabContainer>("DuelPrefabs");
             handle.Completed += (result) =>
             {
@@ -137,8 +138,10 @@ namespace MDPro3
             btnCancel.hint = InterString.Get("取消");
             btnCancel.type = ButtonType.Cancel;
             btnCancel.Hide();
+            if(!showing)
+                transform.GetChild(0).gameObject.SetActive(false);
         }
-        public override void ApplyShowArrangement(int preDepth)
+        protected override void ApplyShowArrangement(int preDepth)
         {
             transform.GetChild(0).gameObject.SetActive(true);
             StartCoroutine(LoadAssets());
@@ -146,10 +149,9 @@ namespace MDPro3
             returnAction = null;
         }
 
-        public override void ApplyHideArrangement(int preDepth)
+        protected override void ApplyHideArrangement(int preDepth)
         {
             StartCoroutine(ExitDuel());
-            CameraBack();
         }
 
         public override void OnExit()
@@ -162,9 +164,9 @@ namespace MDPro3
         public void ReturnTo()
         {
             if (returnServant != null)
-                Program.I().ShiftToServant(returnServant);
+                Program.instance.ShiftToServant(returnServant);
             else
-                Program.I().ShiftToServant(Program.I().online);
+                Program.instance.ShiftToServant(Program.instance.online);
         }
 
 
@@ -186,36 +188,38 @@ namespace MDPro3
         public static bool inputMode;
         public override void PerFrameFunction()
         {
-            if (isShowed)
+            if (showing)
             {
                 if (TimelineManager.skippable
-                    && Program.InputGetMouse0Down)
+                    && UserInput.MouseLeftDown)
                 {
-                    Program.I().timeline_.Skip();
+                    Program.instance.timeline_.Skip();
                     return;
                 }
 
-                if(speaking && Program.InputGetMouse0Down)
+                if(speaking && UserInput.MouseLeftDown)
                 {
                     speaking = false;
                     speakBreaking = true;
                 }
 
-                if (!EventSystem.current.IsPointerOverGameObject() && Program.hoverObject == null && Program.InputGetMouse0Up)
+                if (!EventSystem.current.IsPointerOverGameObject() 
+                    && UserInput.HoverObject == null 
+                    && UserInput.MouseLeftDown)
                 {
                     description.Hide();
                     list.Hide();
                 }
 
                 #region Background
-                if (field0 != null && Program.hoverObject == field0 && Input.GetMouseButtonUp(0))
+                if (field0 != null && UserInput.HoverObject == field0 && UserInput.MouseLeftUp)
                     field0Manager.PlayTapAnimation();
-                if (field1 != null && Program.hoverObject == field1 && Input.GetMouseButtonUp(0))
+                if (field1 != null && UserInput.HoverObject == field1 && UserInput.MouseLeftUp)
                     field1Manager.PlayTapAnimation();
-                if (mate0 != null && Program.hoverObject == mate0.gameObject && Input.GetMouseButtonDown(0))
+                if (mate0 != null && UserInput.HoverObject == mate0.gameObject && UserInput.MouseLeftDown)
                     mate0ClickIntime = Time.time;
 
-                if (mate0 != null && Program.hoverObject == mate0.gameObject && Input.GetMouseButtonUp(0))
+                if (mate0 != null && UserInput.HoverObject == mate0.gameObject && UserInput.MouseLeftUp)
                 {
                     if (Time.time - mate0ClickIntime < 0.3f)
                         mate0.Play(Mate.MateAction.Tap);
@@ -228,10 +232,10 @@ namespace MDPro3
                     }
                 }
 
-                if (mate1 != null && Program.hoverObject == mate1.gameObject && Input.GetMouseButtonDown(0))
+                if (mate1 != null && UserInput.HoverObject == mate1.gameObject && UserInput.MouseLeftDown)
                     mate1ClickIntime = Time.time;
 
-                if (mate1 != null && Program.hoverObject == mate1.gameObject && Input.GetMouseButtonUp(0))
+                if (mate1 != null && UserInput.HoverObject == mate1.gameObject && UserInput.MouseLeftUp)
                 {
                     if (Time.time - mate1ClickIntime < 0.3f)
                         mate1.Play(Mate.MateAction.Tap);
@@ -267,20 +271,20 @@ namespace MDPro3
                 #region HandOffset
                 if (GetMyHandCount() > 10)
                 {
-                    if (Program.hoverObject != null
-                        && Program.hoverObject.name == "CardModel"
-                        && Program.hoverObject.GetComponent<GameCardMono>().cookieCard.p.controller == 0
-                        && (Program.hoverObject.GetComponent<GameCardMono>().cookieCard.p.location & (uint)CardLocation.Hand) > 0
-                        && Program.InputGetMouse0Down
+                    if (UserInput.HoverObject != null
+                        && UserInput.HoverObject.name == "CardModel"
+                        && UserInput.HoverObject.GetComponent<GameCardMono>().cookieCard.p.controller == 0
+                        && (UserInput.HoverObject.GetComponent<GameCardMono>().cookieCard.p.location & (uint)CardLocation.Hand) > 0
+                        && UserInput.MouseLeftDown
                         )
                     {
-                        clickInPosition = Input.mousePosition.x;
+                        clickInPosition = UserInput.MousePos.x;
                         clickingHandCard = true;
                         handCount = GetMyHandCount();
                     }
-                    if (clickingHandCard && Program.InputGetMouse0)
+                    if (clickingHandCard && UserInput.MouseLeftPressing)
                     {
-                        var currentOffset = lastHandOffset + Input.mousePosition.x - clickInPosition;
+                        var currentOffset = lastHandOffset + UserInput.MousePos.x - clickInPosition;
                         var currentHandCellX = UIManager.ScreenLengthWithScalerX(handCellX);
                         handOffset = currentOffset > (handCount * currentHandCellX) ?
                             handCount * currentHandCellX :
@@ -288,7 +292,7 @@ namespace MDPro3
                             -(handCount * currentHandCellX) :
                             currentOffset;
                     }
-                    if (Program.InputGetMouse0Up)
+                    if (UserInput.MouseLeftUp)
                     {
                         handCardDraged = false;
                         if (clickingHandCard)
@@ -315,14 +319,14 @@ namespace MDPro3
 
                 #region Hot Key
 
-                if (Program.InputGetMouse1Up || Input.GetKeyUp(KeyCode.Escape))
+                if (UserInput.MouseRightDown || UserInput.WasCancelPressed)
                 {
-                    if (Program.I().ui_.cardDetail.showing)
-                        Program.I().ui_.cardDetail.Hide();
+                    if (Program.instance.ui_.cardDetail.showing)
+                        Program.instance.ui_.cardDetail.Hide();
                     else if (returnAction != null)
                         returnAction();
                 }
-                if (Program.InputGetMouse0Up)
+                if (UserInput.MouseLeftDown)
                 {
                     if (equipLine != null)
                         equipLine.SetActive(false);
@@ -330,112 +334,112 @@ namespace MDPro3
                         Destroy(line);
                 }
 
-                if ((Input.GetKeyDown(KeyCode.Return)
-                    || Input.GetKeyDown(KeyCode.KeypadEnter))
-                    && (!Program.I().room.chatInput.isFocused
-                    || Program.I().room.chatInput.text == string.Empty))
+                if ((UserInput.WasCancelPressed
+                    || UserInput.WasSubmitPressed))
                 {
                     ToChat();
                 }
 
-                if (Program.I().room.chatOn || inputMode)
+                if (Program.instance.ui_.chatPanel.showing || inputMode)
                     return;
 
-                if (Input.GetKeyDown(KeyCode.Q))
-                    CameraZoomToMate0();
-                if (Input.GetKeyDown(KeyCode.E))
-                    CameraZoomToMate1();
-                if (Input.GetKeyDown(KeyCode.W))
-                    CameraBack();
+                if(Keyboard.current != null)
+                {
+                    // Mate Viewer
+                    if (Keyboard.current.qKey.wasPressedThisFrame)
+                        CameraZoomToMate0();
+                    else if (Keyboard.current.eKey.wasPressedThisFrame)
+                        CameraZoomToMate1();
+                    else if (Keyboard.current.wKey.wasPressedThisFrame)
+                        CameraBack();
 
-                if (Input.GetKeyDown(KeyCode.A)/* || Input.GetMouseButton(0)*/)
-                {
-                    chainCondition = ChainCondition.All - 1;
-                    OnTiming();
-                }
-                if (Input.GetKeyDown(KeyCode.S))
-                {
-                    chainCondition = ChainCondition.No - 1;
-                    OnTiming();
-                }
-                if (Input.GetKeyDown(KeyCode.D)/* || Input.GetMouseButtonUp(0)*/)
-                {
-                    chainCondition = ChainCondition.Smart - 1;
-                    OnTiming();
-                }
-                if (Input.GetKeyDown(KeyCode.Tab))
-                {
-                    OnLog();
-                }
+                    // Timing
+                    if (Keyboard.current.aKey.wasPressedThisFrame)
+                    {
+                        chainCondition = ChainCondition.All - 1;
+                        OnTiming();
+                    }
+                    else if (Keyboard.current.sKey.wasPressedThisFrame)
+                    {
+                        chainCondition = ChainCondition.No - 1;
+                        OnTiming();
+                    }
+                    else if (Keyboard.current.dKey.wasPressedThisFrame)
+                    {
+                        chainCondition = ChainCondition.Smart - 1;
+                        OnTiming();
+                    }
 
-                if(Input.GetKeyDown(KeyCode.G))
-                {
+                    // Log
+                    if (Keyboard.current.tabKey.wasPressedThisFrame)
+                    {
+                        OnLog();
+                    }
+
+                    // Green
+                    if (Keyboard.current.gKey.wasPressedThisFrame)
+                    {
+                        if (greenOn)
+                            GreenBackgroundOff();
+                        else
+                            GreenBackgroundOn();
+                    }
+
                     if (greenOn)
-                        GreenBackgroundOff();
-                    else
-                        GreenBackgroundOn();
+                    {
+                        if (Keyboard.current.numpad0Key.wasPressedThisFrame
+                            || Keyboard.current.digit0Key.wasPressedThisFrame)
+                        {
+                            greenBackground.material.color = Color.black;
+                        }
+                        else if (Keyboard.current.numpad1Key.wasPressedThisFrame
+                            || Keyboard.current.digit1Key.wasPressedThisFrame)
+                        {
+                            greenBackground.material.color = Color.red;
+                        }
+                        else if (Keyboard.current.numpad2Key.wasPressedThisFrame
+                            || Keyboard.current.digit2Key.wasPressedThisFrame)
+                        {
+                            greenBackground.material.color = new Color(1f, 0.5f, 0f);
+                        }
+                        else if (Keyboard.current.numpad3Key.wasPressedThisFrame
+                            || Keyboard.current.digit3Key.wasPressedThisFrame)
+                        {
+                            greenBackground.material.color = new Color(1f, 1f, 0f);
+                        }
+                        else if (Keyboard.current.numpad4Key.wasPressedThisFrame
+                            || Keyboard.current.digit4Key.wasPressedThisFrame)
+                        {
+                            greenBackground.material.color = Color.green;
+                        }
+                        else if (Keyboard.current.numpad5Key.wasPressedThisFrame
+                            || Keyboard.current.digit5Key.wasPressedThisFrame)
+                        {
+                            greenBackground.material.color = new Color(0f, 1f, 1f);
+                        }
+                        else if (Keyboard.current.numpad6Key.wasPressedThisFrame
+                            || Keyboard.current.digit6Key.wasPressedThisFrame)
+                        {
+                            greenBackground.material.color = Color.blue;
+                        }
+                        else if (Keyboard.current.numpad7Key.wasPressedThisFrame
+                            || Keyboard.current.digit7Key.wasPressedThisFrame)
+                        {
+                            greenBackground.material.color = new Color(0.6f, 0f, 1f);
+                        }
+                        else if (Keyboard.current.numpad8Key.wasPressedThisFrame
+                            || Keyboard.current.digit8Key.wasPressedThisFrame)
+                        {
+                            greenBackground.material.color = Color.gray;
+                        }
+                        else if (Keyboard.current.numpad9Key.wasPressedThisFrame
+                            || Keyboard.current.digit9Key.wasPressedThisFrame)
+                        {
+                            greenBackground.material.color = Color.white;
+                        }
+                    }
                 }
 
-                if (greenOn
-                    && (Input.GetKeyDown(KeyCode.Alpha0) 
-                    || Input.GetKeyDown(KeyCode.Keypad0)))
-                {
-                    greenBackground.material.color = Color.black;
-                }
-                if (greenOn
-                    && (Input.GetKeyDown(KeyCode.Alpha1) 
-                    || Input.GetKeyDown(KeyCode.Keypad1)))
-                {
-                    greenBackground.material.color = Color.red;
-                }
-                if (greenOn
-                    && (Input.GetKeyDown(KeyCode.Alpha2) 
-                    || Input.GetKeyDown(KeyCode.Keypad2)))
-                {
-                    greenBackground.material.color = new Color(1f, 0.5f, 0f);
-                }
-                if (greenOn
-                    && (Input.GetKeyDown(KeyCode.Alpha3) 
-                    || Input.GetKeyDown(KeyCode.Keypad3)))
-                {
-                    greenBackground.material.color = new Color(1f, 1f, 0f);
-                }
-                if (greenOn
-                    && (Input.GetKeyDown(KeyCode.Alpha4) 
-                    || Input.GetKeyDown(KeyCode.Keypad4)))
-                {
-                    greenBackground.material.color = Color.green;
-                }
-                if (greenOn
-                    && (Input.GetKeyDown(KeyCode.Alpha5) 
-                    || Input.GetKeyDown(KeyCode.Keypad5)))
-                {
-                    greenBackground.material.color = new Color(0f, 1f, 1f);
-                }
-                if (greenOn
-                    && (Input.GetKeyDown(KeyCode.Alpha6) 
-                    || Input.GetKeyDown(KeyCode.Keypad6)))
-                {
-                    greenBackground.material.color = Color.blue;
-                }
-                if (greenOn
-                    && (Input.GetKeyDown(KeyCode.Alpha7) 
-                    || Input.GetKeyDown(KeyCode.Keypad7)))
-                {
-                    greenBackground.material.color = new Color(0.6f, 0f, 1f);
-                }
-                if (greenOn
-                    && (Input.GetKeyDown(KeyCode.Alpha8) 
-                    || Input.GetKeyDown(KeyCode.Keypad8)))
-                {
-                    greenBackground.material.color = Color.gray;
-                }
-                if (greenOn
-                    && (Input.GetKeyDown(KeyCode.Alpha9) 
-                    || Input.GetKeyDown(KeyCode.Keypad9)))
-                {
-                    greenBackground.material.color = Color.white;
-                }
 
                 #endregion
             }
@@ -446,7 +450,6 @@ namespace MDPro3
         {
             greenBackground.gameObject.SetActive(true);
             cg.alpha = 0f;
-            cg.interactable = false;
             cg.blocksRaycasts = false;
             CameraManager.DuelOverlay3DPlus();
 
@@ -457,7 +460,6 @@ namespace MDPro3
         {
             greenBackground.gameObject.SetActive(false);
             cg.alpha = 1f;
-            cg.interactable = true;
             cg.blocksRaycasts = true;
             CameraManager.DuelOverlay3DMinus();
 
@@ -466,10 +468,9 @@ namespace MDPro3
 
         public void ToChat()
         {
-            if (condition == Condition.Replay || inAi || Program.I().room.chatSwitching)
+            if (condition == Condition.Replay || inAi)
                 return;
-            AudioManager.PlaySE("SE_MENU_SLIDE_0" + (Program.I().room.chatOn ? "2" : "1"));
-            Program.I().room.SwitchChat(0.2f);
+            Program.instance.ui_.chatPanel.Show();
         }
 
         private enum CameraState
@@ -496,13 +497,13 @@ namespace MDPro3
             cameraState = CameraState.Mate0;
             if (mate0.huge)
             {
-                Program.I().camera_.cameraMain.transform.DOMove(new Vector3(0, 95, -37), 0.3f).SetEase(Ease.InOutSine);
-                Program.I().camera_.cameraMain.transform.DORotate(new Vector3(60, -50, -10), 0.3f).SetEase(Ease.InOutSine);
+                Program.instance.camera_.cameraMain.transform.DOMove(new Vector3(0, 95, -37), 0.3f).SetEase(Ease.InOutSine);
+                Program.instance.camera_.cameraMain.transform.DORotate(new Vector3(60, -50, -10), 0.3f).SetEase(Ease.InOutSine);
             }
             else
             {
-                Program.I().camera_.cameraMain.transform.DOMove(new Vector3(-16, 36, -30), 0.3f).SetEase(Ease.InOutSine);
-                Program.I().camera_.cameraMain.transform.DORotate(new Vector3(37, -26, 0), 0.3f).SetEase(Ease.InOutSine);
+                Program.instance.camera_.cameraMain.transform.DOMove(new Vector3(-16, 36, -30), 0.3f).SetEase(Ease.InOutSine);
+                Program.instance.camera_.cameraMain.transform.DORotate(new Vector3(37, -26, 0), 0.3f).SetEase(Ease.InOutSine);
             }
         }
         public void CameraZoomToMate1()
@@ -520,27 +521,28 @@ namespace MDPro3
             cameraState = CameraState.Mate1;
             if (mate1.huge)
             {
-                Program.I().camera_.cameraMain.transform.DOMove(new Vector3(0, 95, -37), 0.3f).SetEase(Ease.InOutSine);
-                Program.I().camera_.cameraMain.transform.DORotate(new Vector3(60, 33, 10), 0.3f).SetEase(Ease.InOutSine);
+                Program.instance.camera_.cameraMain.transform.DOMove(new Vector3(0, 95, -37), 0.3f).SetEase(Ease.InOutSine);
+                Program.instance.camera_.cameraMain.transform.DORotate(new Vector3(60, 33, 10), 0.3f).SetEase(Ease.InOutSine);
             }
             else
             {
-                Program.I().camera_.cameraMain.transform.DOMove(new Vector3(23, 24, -17), 0.3f).SetEase(Ease.InOutSine);
-                Program.I().camera_.cameraMain.transform.DORotate(new Vector3(25, 23, 0), 0.3f).SetEase(Ease.InOutSine);
+                Program.instance.camera_.cameraMain.transform.DOMove(new Vector3(23, 24, -17), 0.3f).SetEase(Ease.InOutSine);
+                Program.instance.camera_.cameraMain.transform.DORotate(new Vector3(25, 23, 0), 0.3f).SetEase(Ease.InOutSine);
             }
         }
 
         public void CameraBack()
         {
             cameraState = CameraState.Main;
-            Program.I().camera_.cameraMain.transform.DOMove(new Vector3(0, 95, -37), 0.3f).SetEase(Ease.InOutSine);
-            Program.I().camera_.cameraMain.transform.DORotate(new Vector3(70, 0, 0), 0.3f).SetEase(Ease.InOutSine);
+            Program.instance.camera_.cameraMain.transform.DOMove(new Vector3(0, 95, -37), 0.3f).SetEase(Ease.InOutSine);
+            Program.instance.camera_.cameraMain.transform.DORotate(new Vector3(70, 0, 0), 0.3f).SetEase(Ease.InOutSine);
         }
 
         IEnumerator ExitDuel()
         {
             ClearResponse();
             CameraManager.BlackOut(0f, 0.3f);
+            CameraBack();
             UIManager.UIBlackIn(transitionTime);
             TimelineManager.inSummonMaterial = false;
             hintObj.SetActive(false);
@@ -571,14 +573,15 @@ namespace MDPro3
             nextMoveAction = null;
             cachedCharaFaces.Clear();
             GC.Collect();
-            yield return null;
             CameraManager.ShiftTo2D();
             buttons.SetActive(false);
             log.ClearLog();
-            Program.I().room.ChatOff(0);
+            Program.instance.ui_.chatPanel.Hide();
+            yield return new WaitForSeconds(0.3f);
             UIManager.UIBlackOut(transitionTime);
             UIManager.ShowFPSRight();
             AudioManager.PlayBGM("BGM_MENU_01");
+            transform.GetChild(0).gameObject.SetActive(false);
         }
 
         IEnumerator LoadAssets()
@@ -586,7 +589,6 @@ namespace MDPro3
             Debug.Log("LoadAssets Start.");
 
             cg.alpha = 0f;
-            cg.interactable = false;
             cg.blocksRaycasts = false;
 
             messagePass = false;
@@ -602,7 +604,7 @@ namespace MDPro3
             while (!Appearance.loaded)
                 yield return null;
 
-            var setRefresh = Program.I().appearance.LoadSettingAssets();
+            var setRefresh = Program.instance.appearance.LoadSettingAssets();
             while (setRefresh.MoveNext())
                 yield return null;
 
@@ -684,7 +686,7 @@ namespace MDPro3
                     myDice = myDice.transform.GetChild(1).gameObject;
                 else
                     myDice = myDice.transform.GetChild(0).gameObject;
-                myDice.transform.SetParent(Program.I().container_3D, false);
+                myDice.transform.SetParent(Program.instance.container_3D, false);
                 myDice.gameObject.SetActive(false);
             }
             if (opDice == null)
@@ -699,7 +701,7 @@ namespace MDPro3
                     opDice = opDice.transform.GetChild(1).gameObject;
                 else
                     opDice = opDice.transform.GetChild(0).gameObject;
-                opDice.transform.SetParent(Program.I().container_3D, false);
+                opDice.transform.SetParent(Program.instance.container_3D, false);
                 opDice.gameObject.SetActive(false);
             }
             #endregion
@@ -712,7 +714,7 @@ namespace MDPro3
                 {
                     fieldSummonRightInfo = result.Result;
                     fieldSummonRightInfo.SetActive(false);
-                    fieldSummonRightInfo.transform.SetParent(Program.I().container_3D);
+                    fieldSummonRightInfo.transform.SetParent(Program.instance.container_3D);
                 };
             }
             #endregion
@@ -728,7 +730,7 @@ namespace MDPro3
             while (enumerator.MoveNext())
                 yield return null;
             field0 = enumerator.Current;
-            field0.transform.SetParent(Program.I().container_3D, false);
+            field0.transform.SetParent(Program.instance.container_3D, false);
 
             enumerator = ABLoader.LoadFromFileAsync("MasterDuel/" + 
                 Program.items.GetPathByCode(Config.Get(condition.ToString() + "Field1", 
@@ -736,7 +738,7 @@ namespace MDPro3
             while (enumerator.MoveNext())
                 yield return null;
             field1 = enumerator.Current;
-            field1.transform.SetParent(Program.I().container_3D, false);
+            field1.transform.SetParent(Program.instance.container_3D, false);
 
             allGameObjects.Add(field0);
             allGameObjects.Add(field1);
@@ -752,12 +754,12 @@ namespace MDPro3
             field0Manager = field0.GetComponent<BgEffectManager>();
             field1Manager = field1.GetComponent<BgEffectManager>();
 
-            Transform pos_Grave_near = Tools.GetChildByName(field0.transform, "POS_Grave_near");
-            Transform pos_Grave_far = Tools.GetChildByName(field1.transform, "POS_Grave_far");
-            Transform pos_AvatarStand_near = Tools.GetChildByName(field0.transform, "POS_AvatarStand_near");
-            Transform pos_AvatarStand_far = Tools.GetChildByName(field1.transform, "POS_AvatarStand_far");
-            Transform pos_Avatar_near = Tools.GetChildByName(field0.transform, "POS_Avatar_near");
-            Transform pos_Avatar_far = Tools.GetChildByName(field1.transform, "POS_Avatar_far");
+            Transform pos_Grave_near = field0.transform.GetChildByName("POS_Grave_near");
+            Transform pos_Grave_far = field1.transform.GetChildByName("POS_Grave_far");
+            Transform pos_AvatarStand_near = field0.transform.GetChildByName("POS_AvatarStand_near");
+            Transform pos_AvatarStand_far = field1.transform.GetChildByName("POS_AvatarStand_far");
+            Transform pos_Avatar_near = field0.transform.GetChildByName("POS_Avatar_near");
+            Transform pos_Avatar_far = field1.transform.GetChildByName("POS_Avatar_far");
             #endregion
 
             #region 墓地
@@ -808,7 +810,7 @@ namespace MDPro3
                 stand0 = enumerator.Current;
                 stand0.transform.SetParent(pos_AvatarStand_near, false);
 
-                pos_Avatar_near = Tools.GetChildByName(stand0.transform, "POS_Avatar_near");
+                pos_Avatar_near = stand0.transform.GetChildByName("POS_Avatar_near");
                 Tools.PlayAnimation(stand0.transform, "StartToPhase1");
                 stand0Manager = stand0.GetComponent<BgEffectManager>();
             }
@@ -823,7 +825,7 @@ namespace MDPro3
                 stand1 = enumerator.Current;
                 stand1.transform.SetParent(pos_AvatarStand_far, false);
 
-                pos_Avatar_far = Tools.GetChildByName(stand1.transform, "POS_Avatar_far");
+                pos_Avatar_far = stand1.transform.GetChildByName("POS_Avatar_far");
                 Tools.PlayAnimation(stand1.transform, "StartToPhase1");
                 stand1Manager = stand1.GetComponent<BgEffectManager>();
             }
@@ -860,7 +862,7 @@ namespace MDPro3
             while (enumerator.MoveNext())
                 yield return null;
             var matBack = enumerator.Current;
-            matBack.transform.SetParent(Program.I().container_3D, false);
+            matBack.transform.SetParent(Program.instance.container_3D, false);
             matBack.transform.localScale = Vector3.one * 2;
             allGameObjects.Add(matBack);
             #endregion
@@ -887,7 +889,7 @@ namespace MDPro3
                 Transform opponentPart = phaseButton.transform.Find("OpponentPart");
                 opponentPart.GetComponent<Renderer>().material.SetTexture("_SampleTexture2D_4791db607d671180b2a839392ec5ea21_Texture_1", texture);
             }
-            phaseButton.transform.SetParent(Program.I().container_3D, false);
+            phaseButton.transform.SetParent(Program.instance.container_3D, false);
             allGameObjects.Add(phaseButton);
             phaseButton.AddComponent<PhaseButtonHandler>();
             #endregion
@@ -906,7 +908,7 @@ namespace MDPro3
                 timer = ie.Current;
                 timerManager = timer.GetComponent<ElementObjectManager>();
                 timerHandler = timer.AddComponent<TimerHandler>();
-                timer.transform.SetParent(Program.I().container_3D, false);
+                timer.transform.SetParent(Program.instance.container_3D, false);
                 timerHandler.timeLimit = timeLimit;
                 timerHandler.time = timeLimit;
                 allGameObjects.Add(timer);
@@ -959,8 +961,8 @@ namespace MDPro3
                     if (playableGuide1.transform.GetChild(i).name.EndsWith("play"))
                         playableGuide1.transform.GetChild(i).GetComponent<MeshRenderer>().material.renderQueue = 2500;
                 }
-                playableGuide0.transform.SetParent(Program.I().container_3D, false);
-                playableGuide1.transform.SetParent(Program.I().container_3D, false);
+                playableGuide0.transform.SetParent(Program.instance.container_3D, false);
+                playableGuide1.transform.SetParent(Program.instance.container_3D, false);
                 playableGuide0.SetActive(false);
                 playableGuide1.SetActive(false);
                 allGameObjects.Add(playableGuide0);
@@ -1087,7 +1089,6 @@ namespace MDPro3
             if (NeedVoice())
             {
                 cg.alpha = 1;
-                cg.interactable = true;
                 cg.blocksRaycasts = true;
             }
             buttons.SetActive(false);
@@ -1197,9 +1198,9 @@ namespace MDPro3
             }
 
 #if UNITY_EDITOR
-            Program.I().timeScaleForEdit = targetSpeed;
+            Program.instance.timeScaleForEdit = targetSpeed;
 #else
-            Program.I().timeScale = targetSpeed;
+            Program.instance.timeScale = targetSpeed;
 #endif
 
             buttonAcc.SetActive(false);
@@ -1211,9 +1212,9 @@ namespace MDPro3
             accing = false;
             float targetSpeed = 1f;
 #if UNITY_EDITOR
-            Program.I().timeScaleForEdit = targetSpeed;
+            Program.instance.timeScaleForEdit = targetSpeed;
 #else
-            Program.I().timeScale = targetSpeed;
+            Program.instance.timeScale = targetSpeed;
 #endif
             buttonAcc.SetActive(true);
             buttonNor.SetActive(false);
@@ -1323,32 +1324,32 @@ namespace MDPro3
 
         public void OnDuelResultConfirmed(bool manual = false)
         {
-            Program.I().room.joinWithReconnect = false;
+            Room.joinWithReconnect = false;
 
-            if (Program.I().room.duelEnded
+            if (Program.instance.room.duelEnded
                 || surrendered
                 || TcpHelper.tcpClient == null
                 || !TcpHelper.tcpClient.Connected)
             {
                 surrendered = false;
-                Program.I().room.duelEnded = false;
-                Program.I().room.needSide = false;
-                Program.I().room.sideWaitingObserver = false;
-                if (Program.I().currentSubServant != null)
+                Program.instance.room.duelEnded = false;
+                Room.needSide = false;
+                Room.sideWaitingObserver = false;
+                if (Program.instance.currentSubServant != null)
                 {
-                    Program.I().currentSubServant.Hide(-1);
-                    Program.I().currentSubServant = null;
+                    Program.instance.currentSubServant.Hide(-1);
+                    Program.instance.currentSubServant = null;
                 }
                 OnExit();
                 return;
             }
 
-            if (Program.I().room.needSide)
+            if (Room.needSide)
             {
-                Program.I().room.needSide = false;
+                Room.needSide = false;
                 MessageManager.Cast(InterString.Get("卡片历史中为您准备了对手上一局使用过的卡。"));
-                returnServant = Program.I().editDeck;
-                Program.I().editDeck.SwitchCondition(EditDeck.Condition.ChangeSide);
+                returnServant = Program.instance.editDeck;
+                Program.instance.editDeck.SwitchCondition(EditDeck.Condition.ChangeSide);
                 ReturnTo();
                 return;
             }
@@ -1358,13 +1359,13 @@ namespace MDPro3
                 if (manual)
                 {
                     surrendered = false;
-                    Program.I().room.duelEnded = false;
-                    Program.I().room.needSide = false;
-                    Program.I().room.sideWaitingObserver = false;
-                    if (Program.I().currentSubServant != null)
+                    Program.instance.room.duelEnded = false;
+                    Room.needSide = false;
+                    Room.sideWaitingObserver = false;
+                    if (Program.instance.currentSubServant != null)
                     {
-                        Program.I().currentSubServant.Hide(-1);
-                        Program.I().currentSubServant = null;
+                        Program.instance.currentSubServant.Hide(-1);
+                        Program.instance.currentSubServant = null;
                     }
                     TcpHelper.CtosMessage_LeaveGame();
                     OnExit();
@@ -1397,8 +1398,8 @@ namespace MDPro3
                 if (TcpHelper.tcpClient != null && TcpHelper.tcpClient.Connected)
                 {
                     TcpHelper.CtosMessage_Surrender();
-                    Program.I().ExitCurrentServant();
-                    if (Program.I().room.mode == 2 && !tagSurrendered)
+                    Program.instance.ExitCurrentServant();
+                    if (Room.mode == 2 && !tagSurrendered)
                         MessageManager.Cast(InterString.Get("您发起了投降。"));
                 }
                 else
@@ -1527,7 +1528,7 @@ namespace MDPro3
 
         public bool duelEnded;
         //For single duel end
-        //Program.I().room.duelEnded: For match End;
+        //Program.instance.room.duelEnded: For match End;
 
         bool needDamageResponseInstant;
         public Action endingAction;
@@ -1551,7 +1552,7 @@ namespace MDPro3
             sideReference = new Deck();
             pause = false;
             duelEnded = false;
-            Program.I().room.duelEnded = false;
+            Program.instance.room.duelEnded = false;
             turns = 0;
             handOffset = 0;
             lastHandOffset = 0;
@@ -1588,12 +1589,12 @@ namespace MDPro3
 
                 if (Config.Get("Timing", "0") == "1")
                 {
-                    chainCondition = ChainCondition.Smart;
+                    chainCondition = ChainCondition.All - 1;
                     OnTiming();
                 }
                 else
                 {
-                    chainCondition = ChainCondition.No;
+                    chainCondition = ChainCondition.Smart - 1;
                     OnTiming();
                 }
             }
@@ -1608,8 +1609,8 @@ namespace MDPro3
             mySpSummonCount = 0;
             opSummonCount = 0;
             opSpSummonCount = 0;
-            Program.I().room.duelEnded = false;
-            Program.I().room.joinWithReconnect = false;
+            Program.instance.room.duelEnded = false;
+            Room.joinWithReconnect = false;
             endingAction = null;
             nextMoveAction = null;
             log.ClearLog();
@@ -1890,9 +1891,9 @@ namespace MDPro3
                 return false;
             bool returnValue = false;
             var sum = GetSelectLevelSum(selectedCards);
-            if (sum[0] + card.levelForSelect_1 == Program.I().ocgcore.ES_level || sum[1] + card.levelForSelect_2 == Program.I().ocgcore.ES_level)
+            if (sum[0] + card.levelForSelect_1 == Program.instance.ocgcore.ES_level || sum[1] + card.levelForSelect_2 == Program.instance.ocgcore.ES_level)
                 return true;
-            if (sum[0] + card.levelForSelect_1 > Program.I().ocgcore.ES_level || sum[1] + card.levelForSelect_2 > Program.I().ocgcore.ES_level)
+            if (sum[0] + card.levelForSelect_1 > Program.instance.ocgcore.ES_level || sum[1] + card.levelForSelect_2 > Program.instance.ocgcore.ES_level)
                 return false;
 
             var newSelectedCards = new List<GameCard>(selectedCards) { card };
@@ -1933,7 +1934,7 @@ namespace MDPro3
 
             if (c == null)
             {
-                c = Program.I().container_3D.gameObject.AddComponent<GameCard>();
+                c = Program.instance.container_3D.gameObject.AddComponent<GameCard>();
                 c.p = p;
                 c.md5 = md5Maker;
                 cards.Add(c);
@@ -2217,7 +2218,7 @@ namespace MDPro3
             p__.Data.writer.WriteUnicode(name_1, 50);
             p__.Data.writer.WriteUnicode(name_1_tag, 50);
             p__.Data.writer.WriteUnicode(name_1_c != "" ? name_1_c : name_1, 50);
-            p__.Data.writer.Write(Program.I().ocgcore.MasterRule);
+            p__.Data.writer.Write(Program.instance.ocgcore.MasterRule);
             return p__;
         }
 
@@ -2238,7 +2239,7 @@ namespace MDPro3
 
         public void RefreshAllCardsLabel()
         {
-            if (!isShowed)
+            if (!showing)
                 return;
             foreach(var card in cards)
             {
@@ -2402,7 +2403,7 @@ namespace MDPro3
                     r.ReadByte();
 
                     int nextConfirmedCard = r.ReadInt32();
-                    StartCoroutine(Program.I().texture_.LoadCardToRendererWithMaterialAsync(nextMoveActionTargetRenderer, nextConfirmedCard, true));
+                    StartCoroutine(Program.instance.texture_.LoadCardToRendererWithMaterialAsync(nextMoveActionTargetRenderer, nextConfirmedCard, true));
                     nextMoveActionTargetRenderer = null;
                     lastMoveCard.SetCode(nextConfirmedCard);
                 }
@@ -2552,7 +2553,7 @@ namespace MDPro3
                     break;
                 case GameMessage.sibyl_quit:
                     duelEnded = true;
-                    Program.I().room.duelEnded = true;
+                    Program.instance.room.duelEnded = true;
                     result = DuelResult.DisLink;
                     break;
                 case GameMessage.Retry:
@@ -2641,7 +2642,6 @@ namespace MDPro3
                     }
                     //防止对方在更换副卡组时拔螺丝
                     UIManager.UIBlackOut(transitionTime);
-                    cg.interactable = true;
                     cg.blocksRaycasts = true;
                     cg.alpha = 1f;
                     buttons.SetActive(true);
@@ -2708,11 +2708,11 @@ namespace MDPro3
                         if (winType == 0x10)//被封印的艾克佐迪亚
                         {
                             ElementObjectManager mner = PlaySpecialWin("33396948");
-                            StartCoroutine(Program.I().texture_.LoadDummyCard(mner.GetElement<ElementObjectManager>("DummyCard"), 33396948, 0, true));
-                            StartCoroutine(Program.I().texture_.LoadDummyCard(mner.GetElement<ElementObjectManager>("DummyCard2"), 7902349, 0, true));
-                            StartCoroutine(Program.I().texture_.LoadDummyCard(mner.GetElement<ElementObjectManager>("DummyCard3"), 70903634, 0, true));
-                            StartCoroutine(Program.I().texture_.LoadDummyCard(mner.GetElement<ElementObjectManager>("DummyCard4"), 44519536, 0, true));
-                            StartCoroutine(Program.I().texture_.LoadDummyCard(mner.GetElement<ElementObjectManager>("DummyCard5"), 8124921, 0, true));
+                            StartCoroutine(Program.instance.texture_.LoadDummyCard(mner.GetElement<ElementObjectManager>("DummyCard"), 33396948, 0, true));
+                            StartCoroutine(Program.instance.texture_.LoadDummyCard(mner.GetElement<ElementObjectManager>("DummyCard2"), 7902349, 0, true));
+                            StartCoroutine(Program.instance.texture_.LoadDummyCard(mner.GetElement<ElementObjectManager>("DummyCard3"), 70903634, 0, true));
+                            StartCoroutine(Program.instance.texture_.LoadDummyCard(mner.GetElement<ElementObjectManager>("DummyCard4"), 44519536, 0, true));
+                            StartCoroutine(Program.instance.texture_.LoadDummyCard(mner.GetElement<ElementObjectManager>("DummyCard5"), 8124921, 0, true));
                         }
                         else if (winType == 0x11)//终焉的倒计时
                             PlayCommonSpecialWin(new int[] { 95308449 });
@@ -2777,7 +2777,7 @@ namespace MDPro3
                     lpLimit = life0;
                     player0Name.text = name_0;
                     player1Name.text = name_1;
-                    if (Program.I().room.mode == 2)
+                    if (Room.mode == 2)
                     {
                         if (isFirst)
                             player1Name.text = name_1_tag;
@@ -2812,7 +2812,6 @@ namespace MDPro3
                             {
                                 Destroy(effect);
                                 cg.alpha = 1;
-                                cg.interactable = true;
                                 cg.blocksRaycasts = true;
                                 buttons.SetActive(true);
                                 messagePass = true;
@@ -2971,7 +2970,6 @@ namespace MDPro3
                     mono.action = () =>
                     {
                         cg.alpha = 1;
-                        cg.interactable = true;
                         cg.blocksRaycasts = true;
                         buttons.SetActive(true);
                         AudioManager.PlayBgmNormal(Config.GetBool("BGMbyMySide", true) ? field0.name : field1.name);
@@ -3151,7 +3149,7 @@ namespace MDPro3
                         mySpSummonCount++;
                     else
                         opSpSummonCount++;
-                    if ((card.GetData().Type & (uint)CardType.Token) > 0)
+                    if (card.GetData().HasType(CardType.Token))
                         goto TokenPasss;
 
                     effect = ABLoader.LoadFromFile("MasterDuel/Effects/summon/fxp_somldg/hand/fxp_somldg_hand_001", true);
@@ -3171,7 +3169,7 @@ namespace MDPro3
 
                         if (materialCards.Count > 0
                             //&& (card.GetData().Reason & (uint)CardReason.Link) > 0)
-                            && (card.GetData().Type & (uint)CardType.Link) > 0)
+                            && card.GetData().HasType(CardType.Link))
                         {
                             tail = "MasterDuel/Effects/summon/fxp_somldg/Link_s1";
                             se = "SE_LAND_LINK_MIDDLE";
@@ -3179,7 +3177,7 @@ namespace MDPro3
                         }
                         else if (materialCards.Count > 0
                             //&& (card.GetData().Reason & (uint)CardReason.Fusion) > 0)
-                            && (card.GetData().Type & (uint)CardType.Fusion) > 0)
+                            && card.GetData().HasType(CardType.Fusion))
                         {
                             tail = "MasterDuel/Effects/summon/fxp_somldg/Fusion_s1";
                             se = "SE_LAND_FUSION_MIDDLE";
@@ -3187,7 +3185,7 @@ namespace MDPro3
                         }
                         else if (materialCards.Count > 0
                             //&& (card.GetData().Reason & (uint)CardReason.Synchro) > 0)
-                            && (card.GetData().Type & (uint)CardType.Synchro) > 0)
+                            && card.GetData().HasType(CardType.Synchro))
                         {
                             tail = "MasterDuel/Effects/summon/fxp_somldg/Synchro_s1";
                             se = "SE_LAND_SYNCHRO_MIDDLE";
@@ -3195,7 +3193,7 @@ namespace MDPro3
                         }
                         else if (materialCards.Count > 0
                             //&& (card.GetData().Reason & (uint)CardReason.Xyz) > 0)
-                            && (card.GetData().Type & (uint)CardType.Xyz) > 0)
+                            && card.GetData().HasType(CardType.Xyz))
                         {
                             tail = "MasterDuel/Effects/summon/fxp_somldg/Xyz_s1";
                             se = "SE_LAND_XYZ_MIDDLE";
@@ -3203,7 +3201,7 @@ namespace MDPro3
                         }
                         else if (materialCards.Count > 0
                             //&& (card.GetData().Reason & (uint)CardReason.Ritual) > 0)
-                            && (card.GetData().Type & (uint)CardType.Ritual) > 0)
+                            && card.GetData().HasType(CardType.Ritual))
                         {
                             tail = "MasterDuel/Effects/summon/fxp_somldg/Ritual_s1";
                             se = "SE_LAND_RITUAL_MIDDLE";
@@ -3248,7 +3246,7 @@ namespace MDPro3
                     foreach (var c in cards)
                         c.AnimationLandShake(card, GameCard.NeedStrongSummon(card.GetData()));
                     TokenPasss:
-                    if ((card.GetData().Type & (uint)CardType.Token) > 0)
+                    if (card.GetData().HasType(CardType.Token))
                         Sleep(20);
                     else
                         Sleep(100);
@@ -3741,7 +3739,7 @@ namespace MDPro3
                                         {
                                             GameObject effArea = ABLoader.LoadFromFolder("MasterDuel/Effects/MagicTrapEffects/fxp_13631_Area", "fxp_13631_Area", true);
                                             GameObject effAreaLoop = ABLoader.LoadFromFolder("MasterDuel/Effects/MagicTrapEffects/fxp_13631_Area_Loop", "fxp_13631_Area_Loop", true);
-                                            foreach (var place in Program.I().ocgcore.places)
+                                            foreach (var place in Program.instance.ocgcore.places)
                                             {
                                                 if (place.InTheSameLine(card.p))
                                                 {
@@ -4175,7 +4173,7 @@ namespace MDPro3
                         quence.Append(attackTransform.DOMove(attackPosition + (attackedPosition - attackPosition) * 0.8f + new Vector3(0f, 0f, 0f), 0.1f).SetEase(Ease.InSine));
                         faceAngle.z = 0;
                         quence.Join(attackTransform.DORotate(faceAngle, 0.1f).SetEase(Ease.InSine));
-                        quence.Join(Program.I().camera_.cameraMain.transform.DOMove(new Vector3(0, 95, -37 + directAttack * 5), 0.1f));
+                        quence.Join(Program.instance.camera_.cameraMain.transform.DOMove(new Vector3(0, 95, -37 + directAttack * 5), 0.1f));
                         quence.AppendCallback(() =>
                         {
                             CameraManager.ShakeCamera();
@@ -4191,7 +4189,7 @@ namespace MDPro3
                         });
                         quence.AppendInterval(0.3f);
                         quence.Append(attackTransform.DOMove(attackPosition, 0.3f).SetEase(Ease.InQuad));
-                        quence.Join(Program.I().camera_.cameraMain.transform.DOMove(new Vector3(0, 95, -37), 0.3f));
+                        quence.Join(Program.instance.camera_.cameraMain.transform.DOMove(new Vector3(0, 95, -37), 0.3f));
                         quence.Join(attackTransform.DORotate(attackAngle, 0.3f).SetEase(Ease.InQuad));
                         Sleep(100);
                     }
@@ -4210,7 +4208,7 @@ namespace MDPro3
                         quence.Append(attackTransform.DOMove(attackPosition + (attackedPosition - attackPosition) * 0.8f + new Vector3(0f, 0f, 0f), 0.15f).SetEase(Ease.InSine));
                         faceAngle.z = 0;
                         quence.Join(attackTransform.DORotate(faceAngle, 0.15f));
-                        quence.Join(Program.I().camera_.cameraMain.transform.DOMove(new Vector3(0, 95, -37 + directAttack * 5), 0.15f));
+                        quence.Join(Program.instance.camera_.cameraMain.transform.DOMove(new Vector3(0, 95, -37 + directAttack * 5), 0.15f));
                         quence.AppendCallback(() =>
                         {
                             CameraManager.ShakeCamera(true);
@@ -4226,7 +4224,7 @@ namespace MDPro3
                         });
                         quence.AppendInterval(0.3f);
                         quence.Append(attackTransform.DOMove(attackPosition, 0.3f).SetEase(Ease.InQuad));
-                        quence.Join(Program.I().camera_.cameraMain.transform.DOMove(new Vector3(0, 95, -37), 0.3f));
+                        quence.Join(Program.instance.camera_.cameraMain.transform.DOMove(new Vector3(0, 95, -37), 0.3f));
                         quence.Join(attackTransform.DORotate(attackAngle, 0.3f).SetEase(Ease.InQuad));
                         Sleep(125);
                     }
@@ -4256,11 +4254,11 @@ namespace MDPro3
                         AudioManager.StopBGM();
                         OnNor();
 #if UNITY_EDITOR
-                        Program.I().timeScaleForEdit = 0.1f;
-                        DOTween.To(() => Program.I().timeScaleForEdit, x => Program.I().timeScaleForEdit = x, 1f, 0.85f).SetEase(Ease.InQuad);
+                        Program.instance.timeScaleForEdit = 0.1f;
+                        DOTween.To(() => Program.instance.timeScaleForEdit, x => Program.instance.timeScaleForEdit = x, 1f, 0.85f).SetEase(Ease.InQuad);
 #else
-                        Program.I().timeScale = 0.1f;
-                        DOTween.To(() => Program.I().timeScale, x => Program.I().timeScale = x, 1f, 0.85f).SetEase(Ease.InQuad);
+                        Program.instance.timeScale = 0.1f;
+                        DOTween.To(() => Program.instance.timeScale, x => Program.instance.timeScale = x, 1f, 0.85f).SetEase(Ease.InQuad);
 #endif
 
                         if (life0 <= 0)
@@ -4322,11 +4320,11 @@ namespace MDPro3
                     if (life0 <= 0 || life1 <= 0)
                     {
 #if UNITY_EDITOR
-                        Program.I().timeScaleForEdit = 0.1f;
-                        DOTween.To(() => Program.I().timeScaleForEdit, x => Program.I().timeScaleForEdit = x, 1, 0.8f).SetEase(Ease.InQuad);
+                        Program.instance.timeScaleForEdit = 0.1f;
+                        DOTween.To(() => Program.instance.timeScaleForEdit, x => Program.instance.timeScaleForEdit = x, 1, 0.8f).SetEase(Ease.InQuad);
 #else
-                        Program.I().timeScale = 0.1f;
-                        DOTween.To(() => Program.I().timeScale, x => Program.I().timeScale = x, 1, 0.8f).SetEase(Ease.InQuad);
+                        Program.instance.timeScale = 0.1f;
+                        DOTween.To(() => Program.instance.timeScale, x => Program.instance.timeScale = x, 1, 0.8f).SetEase(Ease.InQuad);
 #endif
                         if (life0 <= 0)
                         {
@@ -4659,14 +4657,14 @@ namespace MDPro3
                         PrintDuelLog(InterString.Get("属性选择：[?]", StringHelper.Attribute(data)));
                     if (type == 8)
                     {
-                        Program.I().message_.CastCard(data);
+                        Program.instance.message_.CastCard(data);
                         lastDuelLog = InterString.Get("宣言卡片：[?]", CardsManager.Get(data).Name);
                     }
                     if (type == 9)
                         PrintDuelLog(InterString.Get("数字选择：[?]", data.ToString()));
                     if (type == 10)
                     {
-                        Program.I().message_.CastCard(data);
+                        Program.instance.message_.CastCard(data);
                         lastDuelLog = InterString.Get("效果适用：[?]", CardsManager.Get(data).Name);
                     }
                     if (type == 11)
@@ -4789,7 +4787,7 @@ namespace MDPro3
                             card.AnimationConfirmDeckTop(i);
                         }
                     }
-                    var camera = Program.I().camera_.cameraMain.transform;
+                    var camera = Program.instance.camera_.cameraMain.transform;
                     quence = DOTween.Sequence();
                     if (player == 0)
                         quence.Append(camera.DOLocalMove(new Vector3(0, 95, -40), 0.25f));
@@ -4872,7 +4870,7 @@ namespace MDPro3
                             Tools.ChangeLayer(animator.gameObject, "Default");
                             CameraManager.DuelOverlay3DMinus();
                         });
-                        Program.I().audio_.PlayShuffleSE();
+                        Program.instance.audio_.PlayShuffleSE();
                         Sleep(50);
                     }
                     break;
@@ -4886,7 +4884,7 @@ namespace MDPro3
                                     cards[i].AnimationShuffle(0.15f);
                                     cards[i].EraseData();
                                 }
-                    Program.I().audio_.PlayShuffleSE();
+                    Program.instance.audio_.PlayShuffleSE();
                     Sleep(30);
                     messagePass = false;
                     break;
@@ -5032,14 +5030,14 @@ namespace MDPro3
                                     Destroy(pendulum.transform.GetChild(j).gameObject);
                             }
                             manager = manager.GetElement<ElementObjectManager>("SummonPendulumShowCard");
-                            pendulum.transform.SetParent(Program.I().container_3D, false);
+                            pendulum.transform.SetParent(Program.instance.container_3D, false);
                             Tools.ChangeLayer(pendulum, "DuelOverlay3D");
 
                             var card1 = manager.GetElement<ElementObjectManager>("DummyCard01");
                             var card2 = manager.GetElement<ElementObjectManager>("DummyCard02");
-                            var i1 = Program.I().texture_.LoadDummyCard(card1, cardsBeTarget[0].GetData().Id, cardsBeTarget[0].p.controller);
+                            var i1 = Program.instance.texture_.LoadDummyCard(card1, cardsBeTarget[0].GetData().Id, cardsBeTarget[0].p.controller);
                             StartCoroutine(i1);
-                            var i2 = Program.I().texture_.LoadDummyCard(card2, cardsBeTarget[1].GetData().Id, cardsBeTarget[1].p.controller);
+                            var i2 = Program.instance.texture_.LoadDummyCard(card2, cardsBeTarget[1].GetData().Id, cardsBeTarget[1].p.controller);
                             StartCoroutine(i2);
                             var scale1 = cardsBeTarget[0].GetData().LScale;
                             var scale2 = cardsBeTarget[1].GetData().RScale;
@@ -5108,7 +5106,7 @@ namespace MDPro3
                             if (MasterRule >= 4)
                             {
                                 var pendulumSet = ABLoader.LoadFromFolder("MasterDuel/Timeline/summon/summonpendulum/summonpendulumscaleset", "PendulumSet", true);
-                                pendulumSet.transform.SetParent(Program.I().container_3D);
+                                pendulumSet.transform.SetParent(Program.instance.container_3D);
                                 ElementObjectManager setManager = null;
                                 for (int j = 0; j < pendulumSet.transform.childCount; j++)
                                 {
@@ -5119,9 +5117,9 @@ namespace MDPro3
                                 }
                                 var dummy1 = setManager.transform.GetChild(0).GetComponent<ElementObjectManager>();
                                 var dummy2 = setManager.transform.GetChild(1).GetComponent<ElementObjectManager>();
-                                var ie = Program.I().texture_.LoadDummyCard(dummy1, cardsBeTarget[0].GetData().Id, cardsBeTarget[0].p.controller, true);
+                                var ie = Program.instance.texture_.LoadDummyCard(dummy1, cardsBeTarget[0].GetData().Id, cardsBeTarget[0].p.controller, true);
                                 StartCoroutine(ie);
-                                ie = Program.I().texture_.LoadDummyCard(dummy2, cardsBeTarget[1].GetData().Id, cardsBeTarget[1].p.controller, true);
+                                ie = Program.instance.texture_.LoadDummyCard(dummy2, cardsBeTarget[1].GetData().Id, cardsBeTarget[1].p.controller, true);
                                 StartCoroutine(ie);
                                 if (cardsBeTarget[0].p.controller != 0)
                                     setManager.transform.localEulerAngles = new Vector3(0, 180, 0);
@@ -5275,7 +5273,7 @@ namespace MDPro3
                         {
                             card.SetCode(code);
                             if ((card.p.location & (uint)CardLocation.SpellZone) > 0
-                                && (card.GetData().Type & (uint)CardType.Pendulum) > 0
+                                && card.GetData().HasType(CardType.Pendulum)
                                 )
                                 card.AddButton((i << 16) + 1, InterString.Get("灵摆召唤"), ButtonType.PenSummon);
                             else
@@ -5977,9 +5975,8 @@ namespace MDPro3
         {
             if (!GetMessageConfig(player))
                 return;
-            var playerName = Program.I().room.GetPlayerName(player);
             if (player == 7 || player < 4)
-                MessageManager.Cast(playerName + ": " + content);
+                MessageManager.Cast(ChatPanel.GetPlayerName(player) + ": " + content);
             else
                 MessageManager.Cast(content);
         }
@@ -6018,7 +6015,7 @@ namespace MDPro3
         {
             if (condition == Condition.Duel)
             {
-                var selfType = Program.I().room.selfType;
+                var selfType = Room.selfType;
                 if (player0Name.text == name_0)
                 {
                     if (isTag)
@@ -6158,7 +6155,7 @@ namespace MDPro3
 
         public void CheckCharaFace()
         {
-            if (!isShowed)
+            if (!showing)
                 return;
 
             if (NeedVoice())
@@ -6383,11 +6380,11 @@ namespace MDPro3
             var attackTransform = cardSet.transform;
             var cardSetManager = attackTransform.GetChild(0).GetComponent<ElementObjectManager>();
             var subManager = cardSetManager.GetElement<ElementObjectManager>("Card");
-            StartCoroutine(Program.I().texture_.LoadDummyCard(subManager, attackCard.GetData().Id, attackCard.p.controller));
+            StartCoroutine(Program.instance.texture_.LoadDummyCard(subManager, attackCard.GetData().Id, attackCard.p.controller));
             attackCard.model.SetActive(false);
             Tools.ChangeLayer(cardSet, "DuelOverlay3D");
             var screenEffect = ABLoader.LoadFromFolder("MasterDuel/Timeline/FinalAttack/BlueEyes/ScreenEffect", "BlueEyes ScreenEffect", true);
-            screenEffect.transform.SetParent(Program.I().camera_.cameraDuelOverlay3D.transform, true);
+            screenEffect.transform.SetParent(Program.instance.camera_.cameraDuelOverlay3D.transform, true);
 
             var hit = ABLoader.LoadFromFolder("MasterDuel/Timeline/FinalAttack/BlueEyes/Hit" + (attackCard.p.controller == 0 ? "Far" : "Near"), "BlueEyes Hit", true);
             hit.transform.position = attackedPosition;
@@ -6436,7 +6433,7 @@ namespace MDPro3
             offset = new Vector3(0f, 3f, 8f);
             if (attackCard.p.controller != 0)
                 offset.z = -8f;
-            quence.Append(Program.I().camera_.cameraMain.transform.DOLocalMove(CameraManager.mainCameraDefaultPosition + offset, 0.1f));
+            quence.Append(Program.instance.camera_.cameraMain.transform.DOLocalMove(CameraManager.mainCameraDefaultPosition + offset, 0.1f));
             quence.InsertCallback(1.05f, () =>
             {
                 hit.SetActive(true);
@@ -6447,7 +6444,7 @@ namespace MDPro3
             quence.AppendInterval(1f);
             quence.Append(attackTransform.DOMove(attackPosition, 0.5f).SetEase(Ease.InOutCubic));
             quence.Join(attackTransform.DORotate(attackRotation, 0.5f).SetEase(Ease.InOutCubic));
-            quence.Join(Program.I().camera_.cameraMain.transform.DOLocalMove(CameraManager.mainCameraDefaultPosition, 0.2f));
+            quence.Join(Program.instance.camera_.cameraMain.transform.DOLocalMove(CameraManager.mainCameraDefaultPosition, 0.2f));
 
             quence.OnComplete(() =>
             {
@@ -6483,9 +6480,9 @@ namespace MDPro3
             var attackTransform = cardSet.transform;
             var cardSetManager = attackTransform.GetChild(0).GetComponent<ElementObjectManager>();
             var subManager = cardSetManager.GetElement<ElementObjectManager>("Card");
-            StartCoroutine(Program.I().texture_.LoadDummyCard(subManager, attackCard.GetData().Id, attackCard.p.controller));
+            StartCoroutine(Program.instance.texture_.LoadDummyCard(subManager, attackCard.GetData().Id, attackCard.p.controller));
             attackCard.model.SetActive(false);
-            screenEffect.transform.SetParent(Program.I().camera_.cameraDuelOverlay3D.transform, true);
+            screenEffect.transform.SetParent(Program.instance.camera_.cameraDuelOverlay3D.transform, true);
 
             hit.transform.position = attackedPosition;
             hit.SetActive(false);
@@ -6545,7 +6542,7 @@ namespace MDPro3
             offset = new Vector3(0f, 3f, 8f);
             if (attackCard.p.controller != 0)
                 offset.z = -8f;
-            quence.Append(Program.I().camera_.cameraMain.transform.DOLocalMove(CameraManager.mainCameraDefaultPosition + offset, 0.1f));
+            quence.Append(Program.instance.camera_.cameraMain.transform.DOLocalMove(CameraManager.mainCameraDefaultPosition + offset, 0.1f));
             quence.InsertCallback(1.25f, () =>
             {
                 hit.SetActive(true);
@@ -6557,7 +6554,7 @@ namespace MDPro3
             quence.AppendInterval(0.5f);
             quence.Append(attackTransform.DOMove(attackPosition, 0.5f).SetEase(Ease.InOutCubic));
             quence.Join(attackTransform.DORotate(attackRotation, 0.5f).SetEase(Ease.InOutCubic));
-            quence.Join(Program.I().camera_.cameraMain.transform.DOLocalMove(CameraManager.mainCameraDefaultPosition, 0.2f));
+            quence.Join(Program.instance.camera_.cameraMain.transform.DOLocalMove(CameraManager.mainCameraDefaultPosition, 0.2f));
 
             quence.OnComplete(() =>
             {
@@ -6590,10 +6587,10 @@ namespace MDPro3
             var attackTransform = cardSet.transform;
             var cardSetManager = attackTransform.GetChild(0).GetComponent<ElementObjectManager>();
             var subManager = cardSetManager.GetElement<ElementObjectManager>("Card");
-            StartCoroutine(Program.I().texture_.LoadDummyCard(subManager, attackCard.GetData().Id, attackCard.p.controller));
+            StartCoroutine(Program.instance.texture_.LoadDummyCard(subManager, attackCard.GetData().Id, attackCard.p.controller));
             cardSetManager.GetComponent<PlayableDirector>().Play();
             attackCard.model.SetActive(false);
-            screenEffect.transform.SetParent(Program.I().camera_.cameraDuelOverlay3D.transform, true);
+            screenEffect.transform.SetParent(Program.instance.camera_.cameraDuelOverlay3D.transform, true);
 
             hit.transform.position = attackedPosition;
             hit.SetActive(false);
@@ -6629,7 +6626,7 @@ namespace MDPro3
             offset = new Vector3(0f, 3f, 8f);
             if (attackCard.p.controller != 0)
                 offset.z = -8f;
-            quence.Append(Program.I().camera_.cameraMain.transform.DOLocalMove(CameraManager.mainCameraDefaultPosition + offset, 0.3f));
+            quence.Append(Program.instance.camera_.cameraMain.transform.DOLocalMove(CameraManager.mainCameraDefaultPosition + offset, 0.3f));
             quence.InsertCallback(0.95f, () =>
             {
                 bless.SetActive(true);
@@ -6648,7 +6645,7 @@ namespace MDPro3
             quence.AppendInterval(0.5f);
             quence.Append(attackTransform.DOMove(attackPosition, 0.5f).SetEase(Ease.InOutCubic));
             quence.Join(attackTransform.DORotate(attackRotation, 0.5f).SetEase(Ease.InOutCubic));
-            quence.Join(Program.I().camera_.cameraMain.transform.DOLocalMove(CameraManager.mainCameraDefaultPosition, 0.2f));
+            quence.Join(Program.instance.camera_.cameraMain.transform.DOLocalMove(CameraManager.mainCameraDefaultPosition, 0.2f));
 
             quence.OnComplete(() =>
             {
@@ -6682,10 +6679,10 @@ namespace MDPro3
             var attackTransform = cardSet.transform;
             var cardSetManager = attackTransform.GetChild(0).GetComponent<ElementObjectManager>();
             var subManager = cardSetManager.GetElement<ElementObjectManager>("Card");
-            StartCoroutine(Program.I().texture_.LoadDummyCard(subManager, attackCard.GetData().Id, attackCard.p.controller));
+            StartCoroutine(Program.instance.texture_.LoadDummyCard(subManager, attackCard.GetData().Id, attackCard.p.controller));
             cardSetManager.GetComponent<PlayableDirector>().Play();
             attackCard.model.SetActive(false);
-            screenEffect.transform.SetParent(Program.I().camera_.cameraDuelOverlay3D.transform, true);
+            screenEffect.transform.SetParent(Program.instance.camera_.cameraDuelOverlay3D.transform, true);
 
             hit.transform.position = attackedPosition;
             hit.SetActive(false);
@@ -6721,7 +6718,7 @@ namespace MDPro3
                 offset = new Vector3(0f, 3f, 8f);
                 if (attackCard.p.controller != 0)
                     offset.z = -8f;
-                Program.I().camera_.cameraMain.transform.DOLocalMove(CameraManager.mainCameraDefaultPosition + offset, 0.3f);
+                Program.instance.camera_.cameraMain.transform.DOLocalMove(CameraManager.mainCameraDefaultPosition + offset, 0.3f);
             });
 
             offset = new Vector3(0f, 20f, 0f);
@@ -6741,7 +6738,7 @@ namespace MDPro3
             quence.AppendInterval(0.5f);
             quence.Append(attackTransform.DOMove(attackPosition, 0.5f).SetEase(Ease.InOutCubic));
             quence.Join(attackTransform.DORotate(attackRotation, 0.5f).SetEase(Ease.InOutCubic));
-            quence.Join(Program.I().camera_.cameraMain.transform.DOLocalMove(CameraManager.mainCameraDefaultPosition, 0.2f));
+            quence.Join(Program.instance.camera_.cameraMain.transform.DOLocalMove(CameraManager.mainCameraDefaultPosition, 0.2f));
 
             quence.OnComplete(() =>
             {
@@ -6767,11 +6764,11 @@ namespace MDPro3
             var attackTransform = cardSet.transform;
             var cardSetManager = attackTransform.GetChild(0).GetComponent<ElementObjectManager>();
             var subManager = cardSetManager.GetElement<ElementObjectManager>("Card");
-            StartCoroutine(Program.I().texture_.LoadDummyCard(subManager, attackCard.GetData().Id, attackCard.p.controller));
+            StartCoroutine(Program.instance.texture_.LoadDummyCard(subManager, attackCard.GetData().Id, attackCard.p.controller));
             attackCard.model.SetActive(false);
 
             var screenEffect = ABLoader.LoadFromFolder("MasterDuel/Timeline/FinalAttack/Slifer/ScreenEffect", "Slifer ScreenEffect", true);
-            screenEffect.transform.SetParent(Program.I().camera_.cameraDuelOverlay3D.transform, true);
+            screenEffect.transform.SetParent(Program.instance.camera_.cameraDuelOverlay3D.transform, true);
             screenEffect.SetActive(false);
 
             var hit = ABLoader.LoadFromFolder("MasterDuel/Timeline/FinalAttack/Slifer/Hit" + (attackCard.p.controller == 0 ? "Far" : "Near"), "Slifer Hit", true);
@@ -6828,7 +6825,7 @@ namespace MDPro3
                 offset = new Vector3(0f, 3f, 8f);
                 if (attackCard.p.controller != 0)
                     offset.z = -8f;
-                Program.I().camera_.cameraMain.transform.DOLocalMove(CameraManager.mainCameraDefaultPosition + offset, 0.1f);
+                Program.instance.camera_.cameraMain.transform.DOLocalMove(CameraManager.mainCameraDefaultPosition + offset, 0.1f);
             });
 
             quence.InsertCallback(1.2f, () =>
@@ -6841,7 +6838,7 @@ namespace MDPro3
             quence.AppendInterval(0.6f);
             quence.Append(attackTransform.DOMove(attackPosition, 0.5f).SetEase(Ease.InOutCubic));
             quence.Join(attackTransform.DORotate(attackRotation, 0.5f).SetEase(Ease.InOutCubic));
-            quence.Join(Program.I().camera_.cameraMain.transform.DOLocalMove(CameraManager.mainCameraDefaultPosition, 0.2f));
+            quence.Join(Program.instance.camera_.cameraMain.transform.DOLocalMove(CameraManager.mainCameraDefaultPosition, 0.2f));
 
             quence.OnComplete(() =>
             {
@@ -6880,10 +6877,10 @@ namespace MDPro3
             var attackTransform = cardSet.transform;
             var cardSetManager = attackTransform.GetChild(0).GetComponent<ElementObjectManager>();
             var subManager = cardSetManager.GetElement<ElementObjectManager>("Card");
-            StartCoroutine(Program.I().texture_.LoadDummyCard(subManager, attackCard.GetData().Id, attackCard.p.controller));
+            StartCoroutine(Program.instance.texture_.LoadDummyCard(subManager, attackCard.GetData().Id, attackCard.p.controller));
             cardSetManager.GetComponent<PlayableDirector>().Play();
             attackCard.model.SetActive(false);
-            screenEffect.transform.SetParent(Program.I().camera_.cameraDuelOverlay3D.transform, true);
+            screenEffect.transform.SetParent(Program.instance.camera_.cameraDuelOverlay3D.transform, true);
 
             hit.transform.position = attackedPosition;
             hit.SetActive(false);
@@ -6930,7 +6927,7 @@ namespace MDPro3
             offset = new Vector3(0f, 3f, 8f);
             if (attackCard.p.controller != 0)
                 offset.z = -8f;
-            quence.Join(Program.I().camera_.cameraMain.transform.DOLocalMove(CameraManager.mainCameraDefaultPosition + offset, 0.4f));
+            quence.Join(Program.instance.camera_.cameraMain.transform.DOLocalMove(CameraManager.mainCameraDefaultPosition + offset, 0.4f));
 
             quence.InsertCallback(1.8f, () =>
             {
@@ -6946,7 +6943,7 @@ namespace MDPro3
             quence.Join(attackTransform.GetChild(0).DOLocalMove(Vector3.zero, 0.5f).SetEase(Ease.InOutCubic));
             quence.Join(attackTransform.GetChild(0).DOLocalRotate(Vector3.zero, 0.5f).SetEase(Ease.InOutCubic));
 
-            quence.Join(Program.I().camera_.cameraMain.transform.DOLocalMove(CameraManager.mainCameraDefaultPosition, 0.2f));
+            quence.Join(Program.instance.camera_.cameraMain.transform.DOLocalMove(CameraManager.mainCameraDefaultPosition, 0.2f));
 
             quence.OnComplete(() =>
             {
@@ -6963,13 +6960,13 @@ namespace MDPro3
 
         void RefreshHandCardPositionInstant()
         {
-            if (isShowed)
+            if (showing)
                 foreach (var card in cards)
                     card.SetHandDefault();
         }
         public void RefreshHandCardPosition()
         {
-            if (isShowed)
+            if (showing)
                 foreach (var card in cards)
                     card.SetHandToDefault();
         }
@@ -6982,7 +6979,7 @@ namespace MDPro3
             var go = new GameObject("PlaceSelector");
             var mono = go.AddComponent<PlaceSelector>();
             mono.p = p;
-            go.transform.SetParent(Program.I().container_3D);
+            go.transform.SetParent(Program.instance.container_3D);
             allGameObjects.Add(go);
             places.Add(mono);
         }
@@ -7789,7 +7786,7 @@ namespace MDPro3
         public Text placeCountText;
         public void ShowLocationCount(GPS p)
         {
-            var position = UIManager.WorldToScreenPoint(Program.I().camera_.cameraMain, GameCard.GetCardPosition(p));
+            var position = UIManager.WorldToScreenPoint(Program.instance.camera_.cameraMain, GameCard.GetCardPosition(p));
             if ((p.location & ((uint)CardLocation.Deck + (uint)CardLocation.Extra)) > 0 && p.controller == 0)
                 position.y += 80;
             else if ((p.location & ((uint)CardLocation.Deck + (uint)CardLocation.Extra)) > 0 && p.controller == 1)
@@ -7899,7 +7896,7 @@ namespace MDPro3
                     manager.GetElement<SpriteRenderer>("ChainNumDR_Tens"),
                     chain);
             }
-            StartCoroutine(Program.I().texture_.LoadDummyCard(targetCardD, codesInChain[chain - 1], 0, true));
+            StartCoroutine(Program.instance.texture_.LoadDummyCard(targetCardD, codesInChain[chain - 1], 0, true));
 
             if (controllerInChain[chain - 1] == controllerInChain[chain - 2])
             {
@@ -7934,7 +7931,7 @@ namespace MDPro3
                     manager.GetElement<SpriteRenderer>("ChainNumCR_Tens"),
                     chain - 1);
             }
-            StartCoroutine(Program.I().texture_.LoadDummyCard(targetCardC, codesInChain[chain - 2], 0, true));
+            StartCoroutine(Program.instance.texture_.LoadDummyCard(targetCardC, codesInChain[chain - 2], 0, true));
 
             if(chain > 2)
             {
@@ -7971,7 +7968,7 @@ namespace MDPro3
                         manager.GetElement<SpriteRenderer>("ChainNumBR_Tens"),
                         chain - 2);
                 }
-                StartCoroutine(Program.I().texture_.LoadDummyCard(targetCardB, codesInChain[chain - 3], 0, true));
+                StartCoroutine(Program.instance.texture_.LoadDummyCard(targetCardB, codesInChain[chain - 3], 0, true));
 
                 if(chain > 3)
                 {
@@ -8008,7 +8005,7 @@ namespace MDPro3
                             manager.GetElement<SpriteRenderer>("ChainNumAR_Tens"),
                             chain - 3);
                     }
-                    StartCoroutine(Program.I().texture_.LoadDummyCard(targetCardA, codesInChain[chain - 4], 0, true));
+                    StartCoroutine(Program.instance.texture_.LoadDummyCard(targetCardA, codesInChain[chain - 4], 0, true));
                 }
                 else
                 {
@@ -8062,7 +8059,7 @@ namespace MDPro3
                     manager.GetElement<SpriteRenderer>("ChainNumDR_Tens"),
                     chain);
             }
-            StartCoroutine(Program.I().texture_.LoadDummyCard(targetCardD, codesInChain[chain - 1], 0, true));
+            StartCoroutine(Program.instance.texture_.LoadDummyCard(targetCardD, codesInChain[chain - 1], 0, true));
 
             if(chain > 1)
             {
@@ -8105,7 +8102,7 @@ namespace MDPro3
                         manager.GetElement<SpriteRenderer>("ChainNumCR_Tens"),
                         chain - 1);
                 }
-                StartCoroutine(Program.I().texture_.LoadDummyCard(targetCardC, codesInChain[chain - 2], 0, true));
+                StartCoroutine(Program.instance.texture_.LoadDummyCard(targetCardC, codesInChain[chain - 2], 0, true));
             }
 
             if (chain > 2)
@@ -8144,7 +8141,7 @@ namespace MDPro3
                         manager.GetElement<SpriteRenderer>("ChainNumBR_Tens"),
                         chain - 2);
                 }
-                StartCoroutine(Program.I().texture_.LoadDummyCard(targetCardB, codesInChain[chain - 3], 0, true));
+                StartCoroutine(Program.instance.texture_.LoadDummyCard(targetCardB, codesInChain[chain - 3], 0, true));
             }
 
             if (chain == 1)
@@ -8175,7 +8172,7 @@ namespace MDPro3
         {
             if (!duelEnded)
                 return;
-            if (!isShowed)
+            if (!showing)
                 return;
             var selections = new List<string>()
             {
@@ -8308,16 +8305,16 @@ namespace MDPro3
                     //newWhite.GetComponent<SpriteRenderer>().color = Color.clear;
                     child.gameObject.SetActive(false);
                 }
-            StartCoroutine(Program.I().texture_.LoadDummyCard(mner.GetElement<ElementObjectManager>("DummyCard01"), code[0], 0, true));
+            StartCoroutine(Program.instance.texture_.LoadDummyCard(mner.GetElement<ElementObjectManager>("DummyCard01"), code[0], 0, true));
             mner.GetElement<ElementObjectManager>("DummyCard01").GetElement<Renderer>("DummyCardModel_front").material.renderQueue = 4000;
             if (count > 1)
-                StartCoroutine(Program.I().texture_.LoadDummyCard(mner.GetElement<ElementObjectManager>("DummyCard02"), code[1], 0, true));
+                StartCoroutine(Program.instance.texture_.LoadDummyCard(mner.GetElement<ElementObjectManager>("DummyCard02"), code[1], 0, true));
             if (count > 2)
-                StartCoroutine(Program.I().texture_.LoadDummyCard(mner.GetElement<ElementObjectManager>("DummyCard03"), code[2], 0, true));
+                StartCoroutine(Program.instance.texture_.LoadDummyCard(mner.GetElement<ElementObjectManager>("DummyCard03"), code[2], 0, true));
             if (count > 3)
-                StartCoroutine(Program.I().texture_.LoadDummyCard(mner.GetElement<ElementObjectManager>("DummyCard04"), code[3], 0, true));
+                StartCoroutine(Program.instance.texture_.LoadDummyCard(mner.GetElement<ElementObjectManager>("DummyCard04"), code[3], 0, true));
             if (count > 4)
-                StartCoroutine(Program.I().texture_.LoadDummyCard(mner.GetElement<ElementObjectManager>("DummyCard05"), code[4], 0, true));
+                StartCoroutine(Program.instance.texture_.LoadDummyCard(mner.GetElement<ElementObjectManager>("DummyCard05"), code[4], 0, true));
             mner.GetComponent<PlayableDirector>().Play();
             var mono = mner.gameObject.AddComponent<DoWhenPlayableDirectorStop>();
             mono.action = () =>

@@ -4,12 +4,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.UI;
-using YgomSystem.ElementSystem;
 using MDPro3.YGOSharp;
 using MDPro3.YGOSharp.OCGWrapper.Enums;
 using MDPro3.UI;
@@ -58,11 +56,10 @@ namespace MDPro3
         }
 
         public Transform cardsOnEditParent;
-        public GameObject itemOnTable;
+        public GameObject itemInDeck;
         public GameObject itemOnList;
-        public List<CardOnEdit> cards = new List<CardOnEdit>();
+        public List<CardInDeck> cards = new List<CardInDeck>();
 
-        public ElementObjectManager manager;
         Tabs tabs;
 
         public bool dirty;
@@ -83,48 +80,39 @@ namespace MDPro3
 
         public override void Initialize()
         {
-            haveLine = false;
+            showLine = false;
             depth = 5;
-            returnServant = Program.I().selectDeck;
+            returnServant = Program.instance.selectDeck;
             deckIsFromLocalFile = true;
 
-            manager = GetComponent<ElementObjectManager>();
-            manager.GetElement<Button>("CardButton").onClick.AddListener(ShowDetail);
-            tabs = manager.GetElement<Tabs>("List");
+            base.Initialize();
+            Manager.GetElement<Button>("CardButton").onClick.AddListener(ShowDetail);
+            tabs = Manager.GetElement<Tabs>("List");
             tabs.tabs[0].onSelected = OnList;
             tabs.tabs[1].onSelected = OnBook;
             tabs.tabs[2].onSelected = OnHistory;
 
             banlist = BanlistManager.Banlists[0];
-            manager.GetElement<Text>("TextBanlist").text = banlist.Name;
-            manager.GetElement<Button>("ButtonAppearance").onClick.AddListener(ShowAppearance);
-            manager.GetElement<Button>("ButtonBanlist").onClick.AddListener(ShowBanlists);
-            manager.GetElement<InputField>("InputSearch").onEndEdit.AddListener(OnSearch);
-            manager.GetElement<InputField>("InputSearch").onEndEdit.AddListener(OnSearch);
-            manager.GetElement<Button>("ButtonSearch").onClick.AddListener(OnClickSearch);
+            Manager.GetElement<Text>("TextBanlist").text = banlist.Name;
+            Manager.GetElement<Button>("ButtonAppearance").onClick.AddListener(ShowAppearance);
+            Manager.GetElement<Button>("ButtonBanlist").onClick.AddListener(ShowBanlists);
+            Manager.GetElement<InputField>("InputSearch").onEndEdit.AddListener(OnSearch);
+            Manager.GetElement<InputField>("InputSearch").onEndEdit.AddListener(OnSearch);
+            Manager.GetElement<Button>("ButtonSearch").onClick.AddListener(OnClickSearch);
 
-            Program.onScreenChanged += AdjustSize;
+            SystemEvent.OnResolutionChange += AdjustSize;
             AdjustSize();
-            base.Initialize();
 
-            var handle = Addressables.LoadAssetAsync<GameObject>("CardOnEdit");
+            var handle = Addressables.LoadAssetAsync<GameObject>("CardInDeck");
             handle.Completed += (result) =>
             {
-                itemOnTable = result.Result;
+                itemInDeck = result.Result;
             };
-            handle = Addressables.LoadAssetAsync<GameObject>("CardOnList");
+            handle = Addressables.LoadAssetAsync<GameObject>("CardInCollection");
             handle.Completed += (result) =>
             {
                 itemOnList = result.Result;
             };
-        }
-
-        public override bool initialized
-        {
-            get
-            {
-                return (itemOnTable != null && itemOnList != null);
-            }
         }
 
         public enum Condition
@@ -140,31 +128,31 @@ namespace MDPro3
             this.condition = condition;
             if (condition == Condition.EditDeck)
             {
-                returnServant = Program.I().selectDeck;
-                manager.GetElement("ButtonChangeSide").SetActive(false);
-                manager.GetElement("ButtonAppearance").SetActive(true);
+                returnServant = Program.instance.selectDeck;
+                Manager.GetElement("ButtonChangeSide").SetActive(false);
+                Manager.GetElement("ButtonAppearance").SetActive(true);
 
                 this.deckName = Config.Get("DeckInUse", "");
                 this.deck = new Deck(Program.deckPath + this.deckName + Program.ydkExpansion);
                 deckIsFromLocalFile = true;
-                history = new Deck();
+                history = new();
             }
             else if (condition == Condition.ChangeSide)
             {
-                manager.GetElement("ButtonChangeSide").SetActive(true);
-                manager.GetElement("ButtonAppearance").SetActive(false);
+                Manager.GetElement("ButtonChangeSide").SetActive(true);
+                Manager.GetElement("ButtonAppearance").SetActive(false);
 
                 this.deckName = Config.Get("DeckInUse", "");
                 this.deck = TcpHelper.deck;
                 deckIsFromLocalFile = false;
-                history = Program.I().ocgcore.sideReference;
+                history = Program.instance.ocgcore.sideReference;
                 tabs.tabs[2].TabThis();
             }
             else if(condition == Condition.OnlineDeck) 
             {
-                returnServant = Program.I().onlineDeckViewer;
-                manager.GetElement("ButtonChangeSide").SetActive(false);
-                manager.GetElement("ButtonAppearance").SetActive(true);
+                returnServant = Program.instance.onlineDeckViewer;
+                Manager.GetElement("ButtonChangeSide").SetActive(false);
+                Manager.GetElement("ButtonAppearance").SetActive(true);
 
                 this.deck = null;
                 deckIsFromLocalFile = false;
@@ -172,9 +160,9 @@ namespace MDPro3
             }
             else if (condition == Condition.ReplayDeck)
             {
-                returnServant = Program.I().replay;
-                manager.GetElement("ButtonChangeSide").SetActive(false);
-                manager.GetElement("ButtonAppearance").SetActive(true);
+                returnServant = Program.instance.replay;
+                Manager.GetElement("ButtonChangeSide").SetActive(false);
+                Manager.GetElement("ButtonAppearance").SetActive(true);
 
                 this.deckName = deckName;
                 this.deck = deck;
@@ -190,48 +178,45 @@ namespace MDPro3
 
             if (!deckIsFromLocalFile && condition == Condition.OnlineDeck)
             {
-                manager.GetElement<Text>("TextLike").text = InterString.Get("点赞");
-                manager.GetElement("ButtonLike").SetActive(!liked);
+                Manager.GetElement<Text>("TextLike").text = InterString.Get("点赞");
+                Manager.GetElement("ButtonLike").SetActive(!liked);
                 return;
             }
 
             if (MyCard.account == null || !deckIsFromLocalFile)
             {
-                manager.GetElement("ButtonLike").SetActive(false);
+                Manager.GetElement("ButtonLike").SetActive(false);
             }
             else
             {
                 var onlineDeck = OnlineDeck.GetByID(deck.deckId);
                 if (onlineDeck == null || onlineDeck.isDelete)
-                    manager.GetElement("ButtonLike").SetActive(false);
+                    Manager.GetElement("ButtonLike").SetActive(false);
                 else
                 {
-                    manager.GetElement("ButtonLike").SetActive(true);
+                    Manager.GetElement("ButtonLike").SetActive(true);
                     if (onlineDeck.isPublic)
-                        manager.GetElement<Text>("TextLike").text = InterString.Get("公开中");
+                        Manager.GetElement<Text>("TextLike").text = InterString.Get("公开中");
                     else if (!onlineDeck.isPublic)
-                        manager.GetElement<Text>("TextLike").text = InterString.Get("非公开中");
+                        Manager.GetElement<Text>("TextLike").text = InterString.Get("非公开中");
                 }
             }
         }
 
         public void SetBanlistName(string listName)
         {
-            if(manager == null)
-                manager = GetComponent<ElementObjectManager>();
-            manager.GetElement<Text>("TextBanlist").text = listName;
+            Manager.GetElement<Text>("TextBanlist").text = listName;
         }
 
-        public override void Show(int preDepth)
+        protected override void ApplyShowArrangement(int preDepth)
         {
-            base.Show(preDepth);
-
+            base.ApplyShowArrangement(preDepth);
+            UIManager.SetCanvasMatch(0f, transitionTime);
             if (toHandTest)
             {
                 DOTween.To(v => { }, 0, 0, transitionTime).OnComplete(() =>
                 {
                     cg.alpha = 1f;
-                    cg.interactable = true;
                     cg.blocksRaycasts = true;
                 });
             }
@@ -242,7 +227,7 @@ namespace MDPro3
                 else
                 {
                     AudioManager.PlayBGM("BGM_MENU_02");
-                    manager.GetElement("Group").SetActive(false);
+                    Manager.GetElement("Group").SetActive(false);
                     ScrollViewInstall();
                     StartCoroutine(RefreshAsync());
                     StartCoroutine(RefreshIcons());
@@ -252,10 +237,10 @@ namespace MDPro3
             liked = false;
         }
 
-        public override void ApplyHideArrangement(int preDepth)
+        protected override void ApplyHideArrangement(int preDepth)
         {
             base.ApplyHideArrangement(preDepth);
-
+            UIManager.SetCanvasMatch(1f, transitionTime);
             if (!toHandTest && !intoAppearance)
             {
                 AudioManager.PlayBGM("BGM_MENU_01");
@@ -324,11 +309,11 @@ namespace MDPro3
 
             for (int i = 0; i < deck.Main.Count; i++)
             {
-                if (!isShowed)
+                if (!showing)
                     yield break;
-                var card = Instantiate(itemOnTable);
+                var card = Instantiate(itemInDeck);
                 card.transform.SetParent(cardsOnEditParent, false);
-                var mono = card.GetComponent<CardOnEdit>();
+                var mono = card.GetComponent<CardInDeck>();
                 mono.id = i;
                 mono.Code = deck.Main[i];
                 mono.RefreshPosition();
@@ -337,11 +322,11 @@ namespace MDPro3
             }
             for (int i = 0; i < deck.Extra.Count; i++)
             {
-                if (!isShowed)
+                if (!showing)
                     yield break;
-                var card = Instantiate(itemOnTable);
+                var card = Instantiate(itemInDeck);
                 card.transform.SetParent(cardsOnEditParent, false);
-                var mono = card.GetComponent<CardOnEdit>();
+                var mono = card.GetComponent<CardInDeck>();
                 mono.id = i + 1000;
                 mono.Code = deck.Extra[i];
                 mono.RefreshPosition();
@@ -350,11 +335,11 @@ namespace MDPro3
             }
             for (int i = 0; i < deck.Side.Count; i++)
             {
-                if (!isShowed)
+                if (!showing)
                     yield break;
-                var card = Instantiate(itemOnTable);
+                var card = Instantiate(itemInDeck);
                 card.transform.SetParent(cardsOnEditParent, false);
-                var mono = card.GetComponent<CardOnEdit>();
+                var mono = card.GetComponent<CardInDeck>();
                 mono.id = i + 2000;
                 mono.Code = deck.Side[i];
                 mono.RefreshPosition();
@@ -367,13 +352,13 @@ namespace MDPro3
 
         IEnumerator RefreshIcons()
         {
-            manager.GetElement<Image>("IconCase").color = Color.clear;
-            manager.GetElement<Image>("IconProtector").color = Color.clear;
-            manager.GetElement<Image>("IconField").color = Color.clear;
-            manager.GetElement<Image>("IconGrave").color = Color.clear;
-            manager.GetElement<Image>("IconStand").color = Color.clear;
-            manager.GetElement<Image>("IconMate").color = Color.clear;
-            manager.GetElement<Tabs>("List").AdjustSize();
+            Manager.GetElement<Image>("IconCase").color = Color.clear;
+            Manager.GetElement<Image>("IconProtector").color = Color.clear;
+            Manager.GetElement<Image>("IconField").color = Color.clear;
+            Manager.GetElement<Image>("IconGrave").color = Color.clear;
+            Manager.GetElement<Image>("IconStand").color = Color.clear;
+            Manager.GetElement<Image>("IconMate").color = Color.clear;
+            Manager.GetElement<Tabs>("List").AdjustSize();
 
             while (deck == null)
             {
@@ -386,36 +371,36 @@ namespace MDPro3
             StartCoroutine(ie);
             while (ie.MoveNext())
                 yield return null;
-            manager.GetElement<Image>("IconCase").color = Color.white;
-            manager.GetElement<Image>("IconCase").sprite = ie.Current;
+            Manager.GetElement<Image>("IconCase").color = Color.white;
+            Manager.GetElement<Image>("IconCase").sprite = ie.Current;
 
             var im = ABLoader.LoadProtectorMaterial(deck.Protector.ToString());
             StartCoroutine(im);
             while (im.MoveNext())
                 yield return null;
-            manager.GetElement<Image>("IconProtector").color = Color.white;
-            manager.GetElement<Image>("IconProtector").material = im.Current;
+            Manager.GetElement<Image>("IconProtector").color = Color.white;
+            Manager.GetElement<Image>("IconProtector").material = im.Current;
 
             ie = Program.items.LoadItemIconAsync(deck.Field.ToString(), Items.ItemType.Mat);
             StartCoroutine(ie);
             while (ie.MoveNext())
                 yield return null;
-            manager.GetElement<Image>("IconField").color = Color.white;
-            manager.GetElement<Image>("IconField").sprite = ie.Current;
+            Manager.GetElement<Image>("IconField").color = Color.white;
+            Manager.GetElement<Image>("IconField").sprite = ie.Current;
 
             ie = Program.items.LoadItemIconAsync(deck.Grave.ToString(), Items.ItemType.Grave);
             StartCoroutine(ie);
             while (ie.MoveNext())
                 yield return null;
-            manager.GetElement<Image>("IconGrave").color = Color.white;
-            manager.GetElement<Image>("IconGrave").sprite = ie.Current;
+            Manager.GetElement<Image>("IconGrave").color = Color.white;
+            Manager.GetElement<Image>("IconGrave").sprite = ie.Current;
 
             ie = Program.items.LoadItemIconAsync(deck.Stand.ToString(), Items.ItemType.Stand);
             StartCoroutine(ie);
             while (ie.MoveNext())
                 yield return null;
-            manager.GetElement<Image>("IconStand").color = Color.white;
-            manager.GetElement<Image>("IconStand").sprite = ie.Current;
+            Manager.GetElement<Image>("IconStand").color = Color.white;
+            Manager.GetElement<Image>("IconStand").sprite = ie.Current;
 
             var mate = deck.Mate.ToString();
             if (mate.Length == 7 && mate.StartsWith("100"))
@@ -424,23 +409,23 @@ namespace MDPro3
                 StartCoroutine(ie);
                 while (ie.MoveNext())
                     yield return null;
-                manager.GetElement<Image>("IconMate").color = Color.white;
-                manager.GetElement<Image>("IconMate").sprite = ie.Current;
+                Manager.GetElement<Image>("IconMate").color = Color.white;
+                Manager.GetElement<Image>("IconMate").sprite = ie.Current;
             }
             else
             {
                 var task = TextureManager.LoadArtAsync(deck.Mate, true);
                 while(!task.IsCompleted)
                     yield return null;
-                manager.GetElement<Image>("IconMate").color = Color.white;
-                manager.GetElement<Image>("IconMate").sprite = TextureManager.Texture2Sprite(task.Result);
+                Manager.GetElement<Image>("IconMate").color = Color.white;
+                Manager.GetElement<Image>("IconMate").sprite = TextureManager.Texture2Sprite(task.Result);
             }
         }
         void Dispose()
         {
             foreach (var card in cards)
             {
-                card.transform.SetParent(Program.I().container_2D, false);
+                card.transform.SetParent(Program.instance.container_2D, false);
                 card.Dispose();
             }
             cards.Clear();
@@ -448,8 +433,8 @@ namespace MDPro3
 
         public void OnRelatedDescripton()
         {
-            var cardFace = manager.GetElement<RawImage>("RawImageRelatedCard").texture;
-            var mat = manager.GetElement<RawImage>("RawImageRelatedCard").material;
+            var cardFace = Manager.GetElement<RawImage>("RawImageRelatedCard").texture;
+            var mat = Manager.GetElement<RawImage>("RawImageRelatedCard").material;
             Description(relatedCard.Id, cardFace, mat);
         }
 
@@ -464,121 +449,121 @@ namespace MDPro3
                 if (history.Main.Contains(code))
                     history.Main.Remove(code);
                 history.Main.Insert(0, code);
-                if (manager.GetElement<Tab>("TabHistory").selected)
+                if (Manager.GetElement<Tab>("TabHistory").selected)
                     PrintHistoryCards();
             }
-            manager.GetElement("Group").SetActive(true);
+            Manager.GetElement("Group").SetActive(true);
             cardShowing = data;
             this.cardIndex = cardIndex;
             showingFace = cardFace;
-            manager.GetElement<RawImage>("Card").texture = showingFace;
-            manager.GetElement<RawImage>("Card").material = mat;
-            manager.GetElement<Text>("TextName").text = data.Name;
+            Manager.GetElement<RawImage>("Card").texture = showingFace;
+            Manager.GetElement<RawImage>("Card").material = mat;
+            Manager.GetElement<Text>("TextName").text = data.Name;
             var colors = CardDescription.GetCardFrameColor(data);
-            manager.GetElement<Image>("BaseName").color = colors[0];
-            manager.GetElement<Image>("BaseType").color = colors[1];
-            manager.GetElement<Image>("Attribute").sprite = CardDescription.GetCardAttribute(data).sprite;
-            manager.GetElement<Text>("TextType").text = StringHelper.GetType(data);
+            Manager.GetElement<Image>("BaseName").color = colors[0];
+            Manager.GetElement<Image>("BaseType").color = colors[1];
+            Manager.GetElement<Image>("Attribute").sprite = CardDescription.GetCardAttribute(data).sprite;
+            Manager.GetElement<Text>("TextType").text = StringHelper.GetType(data);
 
-            manager.GetElement("Tuner").SetActive(false);
+            Manager.GetElement("Tuner").SetActive(false);
 
-            if ((data.Type & (uint)CardType.Monster) > 0)
+            if (data.HasType(CardType.Monster))
             {
-                manager.GetElement("PropertyMonster").SetActive(true);
-                manager.GetElement("PropertySpell").SetActive(false);
-                manager.GetElement<Image>("Level").sprite = TextureManager.GetCardLevelIcon(data);
-                manager.GetElement<Text>("TextAttack").text = data.Attack == -2 ? "?" : data.Attack.ToString();
-                manager.GetElement<Image>("Race").sprite = CardDescription.GetCardRace(data).sprite;
-                if ((data.Type & (uint)CardType.Tuner) > 0)
-                    manager.GetElement("Tuner").SetActive(true);
-                if ((data.Type & (uint)CardType.Pendulum) > 0)
+                Manager.GetElement("PropertyMonster").SetActive(true);
+                Manager.GetElement("PropertySpell").SetActive(false);
+                Manager.GetElement<Image>("Level").sprite = TextureManager.GetCardLevelIcon(data);
+                Manager.GetElement<Text>("TextAttack").text = data.Attack == -2 ? "?" : data.Attack.ToString();
+                Manager.GetElement<Image>("Race").sprite = CardDescription.GetCardRace(data).sprite;
+                if (data.HasType(CardType.Tuner))
+                    Manager.GetElement("Tuner").SetActive(true);
+                if (data.HasType(CardType.Pendulum))
                 {
                     var texts = CardDescription.GetCardDescriptionSplit(data.Desc);
                     string monster = InterString.Get("【怪兽效果】");
-                    if ((data.Type & (uint)CardType.Effect) == 0)
+                    if (!data.HasType(CardType.Effect))
                         monster = InterString.Get("【怪兽描述】");
 
-                    manager.GetElement<TextMeshProUGUI>("TextDescription").text =
+                    Manager.GetElement<TMP_InputField>("TextDescription").text =
                         CardDescription.GetSetName(data.Id) +
                         InterString.Get("【灵摆效果】") + "\n" + texts[0] + "\n" +
                         monster + "\n" + texts[1];
-                    manager.GetElement("Scale").SetActive(true);
-                    manager.GetElement("TextScale").SetActive(true);
-                    manager.GetElement<Text>("TextScale").text = data.LScale.ToString();
-                    manager.GetElement<RectTransform>("Attack").anchoredPosition = new Vector2(0, -90);
-                    manager.GetElement<RectTransform>("TextAttack").anchoredPosition = new Vector2(40, -90);
-                    manager.GetElement<RectTransform>("Defense").anchoredPosition = new Vector2(0, -135);
-                    manager.GetElement<RectTransform>("TextDefense").anchoredPosition = new Vector2(40, -135);
+                    Manager.GetElement("Scale").SetActive(true);
+                    Manager.GetElement("TextScale").SetActive(true);
+                    Manager.GetElement<Text>("TextScale").text = data.LScale.ToString();
+                    Manager.GetElement<RectTransform>("Attack").anchoredPosition = new Vector2(0, -90);
+                    Manager.GetElement<RectTransform>("TextAttack").anchoredPosition = new Vector2(40, -90);
+                    Manager.GetElement<RectTransform>("Defense").anchoredPosition = new Vector2(0, -135);
+                    Manager.GetElement<RectTransform>("TextDefense").anchoredPosition = new Vector2(40, -135);
                 }
                 else
                 {
-                    manager.GetElement<TextMeshProUGUI>("TextDescription").text = CardDescription.GetSetName(data.Id) + data.Desc;
-                    manager.GetElement("Scale").SetActive(false);
-                    manager.GetElement("TextScale").SetActive(false);
-                    manager.GetElement<RectTransform>("Attack").anchoredPosition = new Vector2(0, -45);
-                    manager.GetElement<RectTransform>("TextAttack").anchoredPosition = new Vector2(40, -45);
-                    manager.GetElement<RectTransform>("Defense").anchoredPosition = new Vector2(0, -90);
-                    manager.GetElement<RectTransform>("TextDefense").anchoredPosition = new Vector2(40, -90);
+                    Manager.GetElement<TMP_InputField>("TextDescription").text = CardDescription.GetSetName(data.Id) + data.Desc;
+                    Manager.GetElement("Scale").SetActive(false);
+                    Manager.GetElement("TextScale").SetActive(false);
+                    Manager.GetElement<RectTransform>("Attack").anchoredPosition = new Vector2(0, -45);
+                    Manager.GetElement<RectTransform>("TextAttack").anchoredPosition = new Vector2(40, -45);
+                    Manager.GetElement<RectTransform>("Defense").anchoredPosition = new Vector2(0, -90);
+                    Manager.GetElement<RectTransform>("TextDefense").anchoredPosition = new Vector2(40, -90);
                 }
 
-                if ((data.Type & (uint)CardType.Link) > 0)
+                if (data.HasType(CardType.Link))
                 {
-                    manager.GetElement<Text>("TextLevel").text = CardDescription.GetCardLinkCount(data).ToString();
-                    manager.GetElement("Defense").SetActive(false);
-                    manager.GetElement("TextDefense").SetActive(false);
-                    manager.GetElement<RectTransform>("Attack").anchoredPosition = new Vector2(0, -45);
-                    manager.GetElement<RectTransform>("TextAttack").anchoredPosition = new Vector2(40, -45);
+                    Manager.GetElement<Text>("TextLevel").text = CardDescription.GetCardLinkCount(data).ToString();
+                    Manager.GetElement("Defense").SetActive(false);
+                    Manager.GetElement("TextDefense").SetActive(false);
+                    Manager.GetElement<RectTransform>("Attack").anchoredPosition = new Vector2(0, -45);
+                    Manager.GetElement<RectTransform>("TextAttack").anchoredPosition = new Vector2(40, -45);
                 }
                 else
                 {
-                    manager.GetElement<Text>("TextLevel").text = data.Level.ToString();
-                    manager.GetElement("Defense").SetActive(true);
-                    manager.GetElement("TextDefense").SetActive(true);
-                    manager.GetElement<Text>("TextDefense").text = data.Defense == -2 ? "?" : data.Defense.ToString();
+                    Manager.GetElement<Text>("TextLevel").text = data.Level.ToString();
+                    Manager.GetElement("Defense").SetActive(true);
+                    Manager.GetElement("TextDefense").SetActive(true);
+                    Manager.GetElement<Text>("TextDefense").text = data.Defense == -2 ? "?" : data.Defense.ToString();
                 }
             }
             else
             {
-                manager.GetElement("PropertyMonster").SetActive(false);
-                manager.GetElement("PropertySpell").SetActive(true);
-                manager.GetElement<Image>("SpellType").sprite = TextureManager.GetSpellTrapTypeIcon(data);
-                manager.GetElement<Text>("TextSpellType").text = StringHelper.SecondType(data.Type) + StringHelper.MainType(data.Type);
-                manager.GetElement<TextMeshProUGUI>("TextDescription").text = CardDescription.GetSetName(data.Id) + data.Desc;
+                Manager.GetElement("PropertyMonster").SetActive(false);
+                Manager.GetElement("PropertySpell").SetActive(true);
+                Manager.GetElement<Image>("SpellType").sprite = TextureManager.GetSpellTrapTypeIcon(data);
+                Manager.GetElement<Text>("TextSpellType").text = StringHelper.SecondType(data.Type) + StringHelper.MainType(data.Type);
+                Manager.GetElement<TMP_InputField>("TextDescription").text = CardDescription.GetSetName(data.Id) + data.Desc;
             }
             RefreshLimitIcon();
-            if (CardRarity.CardBooked(code))
-                manager.GetElement<Toggle>("ButtonBook").SwitchOn();
+            if (CardRarity.CardBookmarked(code))
+                Manager.GetElement<Toggle>("ButtonBook").SwitchOn();
             else
-                manager.GetElement<Toggle>("ButtonBook").SwitchOff();
+                Manager.GetElement<Toggle>("ButtonBook").SwitchOff();
 
             var rarity = CardRarity.GetRarity(code);
             GetRarityToggle(rarity)?.SwitchOnWithoutAction();
             TurnOffOtherRarityToggles(rarity);
 
-            manager.GetElement<TextMeshProUGUI>("TextDescription").fontSize = 26f * Config.GetUIScale(1.35f);
+            //manager.GetElement<TMP_InputField>("TextDescription").fontSize = 26f * Config.GetUIScale(1.35f);
         }
 
         void RefreshLimitIcon()
         {
-            if (!manager.GetElement("Group").activeInHierarchy)
+            if (!Manager.GetElement("Group").activeInHierarchy)
                 return;
 
             var limit = banlist.GetQuantity(cardShowing.Id);
             if (limit == 3)
-                manager.GetElement<Image>("Limit").sprite = TextureManager.container.typeNone;
+                Manager.GetElement<Image>("Limit").sprite = TextureManager.container.typeNone;
             else if (limit == 2)
-                manager.GetElement<Image>("Limit").sprite = TextureManager.container.limit2;
+                Manager.GetElement<Image>("Limit").sprite = TextureManager.container.limit2;
             else if (limit == 1)
-                manager.GetElement<Image>("Limit").sprite = TextureManager.container.limit1;
+                Manager.GetElement<Image>("Limit").sprite = TextureManager.container.limit1;
             else
-                manager.GetElement<Image>("Limit").sprite = TextureManager.container.banned;
+                Manager.GetElement<Image>("Limit").sprite = TextureManager.container.banned;
         }
 
         void ShowDetail()
         {
-            var cardFace = manager.GetElement<RawImage>("Card").texture;
-            var mat = manager.GetElement<RawImage>("Card").material;
-            Program.I().ui_.cardDetail.Show(cardShowing, cardFace, mat, cardIndex >= 0 ? CardsInDeck() : CardsOnList(), cardIndex);
+            var cardFace = Manager.GetElement<RawImage>("Card").texture;
+            var mat = Manager.GetElement<RawImage>("Card").material;
+            Program.instance.ui_.cardDetail.Show(cardShowing, cardFace, mat, cardIndex >= 0 ? CardsInDeck() : CardsOnList(), cardIndex);
         }
 
         public List<int> CardsInDeck()
@@ -602,18 +587,18 @@ namespace MDPro3
 
         public override void PerFrameFunction()
         {
-            if (isShowed)
+            if (showing)
             {
-                if (!Program.I().ui_.subMenu.showing && Program.InputGetMouse1Up)
+                if (!Program.instance.ui_.subMenu.showing && UserInput.MouseRightUp)
                 {
-                    if (!Program.I().ui_.cardDetail.showing && returnAction != null)
+                    if (!Program.instance.ui_.cardDetail.showing && returnAction != null)
                         returnAction();
                 }
-                if (!Program.I().ui_.subMenu.showing && Input.GetKeyDown(KeyCode.Escape))
+                if (!Program.instance.ui_.subMenu.showing && UserInput.WasCancelPressed)
                 {
-                    if (!Program.I().ui_.cardDetail.showing && returnAction != null)
+                    if (!Program.instance.ui_.cardDetail.showing && returnAction != null)
                         returnAction();
-                    else if (!Program.I().ui_.cardDetail.showing)
+                    else if (!Program.instance.ui_.cardDetail.showing)
                         OnReturn();
                 }
             }
@@ -653,12 +638,12 @@ namespace MDPro3
                     innerWidth = 0;
                 }
             }
-            manager.GetElement<RectTransform>("Description").anchoredPosition = new Vector2(outerWidth, -120);
-            manager.GetElement<RectTransform>("Description").sizeDelta = new Vector2(descriptionWidth, 900);
-            manager.GetElement<RectTransform>("Table").anchoredPosition = new Vector2(outerWidth + descriptionWidth + innerWidth, -120);
-            manager.GetElement<RectTransform>("List").anchoredPosition = new Vector2(outerWidth + descriptionWidth + innerWidth + tableWidth + innerWidth, -180);
+            Manager.GetElement<RectTransform>("Description").anchoredPosition = new Vector2(outerWidth, -120);
+            Manager.GetElement<RectTransform>("Description").sizeDelta = new Vector2(descriptionWidth, 900);
+            Manager.GetElement<RectTransform>("Table").anchoredPosition = new Vector2(outerWidth + descriptionWidth + innerWidth, -120);
+            Manager.GetElement<RectTransform>("List").anchoredPosition = new Vector2(outerWidth + descriptionWidth + innerWidth + tableWidth + innerWidth, -180);
             listWidth = uiWidth - (outerWidth * 2 + descriptionWidth + innerWidth * 2 + tableWidth);
-            manager.GetElement<RectTransform>("List").sizeDelta = new Vector2(listWidth, 840);
+            Manager.GetElement<RectTransform>("List").sizeDelta = new Vector2(listWidth, 840);
 
             var startX = 810f;
             var space = 20f;
@@ -684,45 +669,45 @@ namespace MDPro3
             foreach (var card in cards)
                 card.RefreshPositionInstant();
 
-            uiWidth = manager.GetElement<RectTransform>("List").sizeDelta.x - 40;
+            uiWidth = Manager.GetElement<RectTransform>("List").sizeDelta.x - 40;
             if (uiWidth < 0) uiWidth = 0;
-            manager.GetElement<RectTransform>("ButtonFilter").sizeDelta = new Vector2(uiWidth / 3f, 60);
-            manager.GetElement<RectTransform>("ButtonSort").sizeDelta = new Vector2(uiWidth / 3f, 60);
-            manager.GetElement<RectTransform>("ButtonReset").sizeDelta = new Vector2(uiWidth / 3f, 60);
+            Manager.GetElement<RectTransform>("ButtonFilter").sizeDelta = new Vector2(uiWidth / 3f, 60);
+            Manager.GetElement<RectTransform>("ButtonSort").sizeDelta = new Vector2(uiWidth / 3f, 60);
+            Manager.GetElement<RectTransform>("ButtonReset").sizeDelta = new Vector2(uiWidth / 3f, 60);
 
             ScrollViewInstall();
         }
 
         void OnList()
         {
-            manager.GetElement<RectTransform>("ScrollView").sizeDelta = new Vector2(0, 680);
+            Manager.GetElement<RectTransform>("ScrollView").sizeDelta = new Vector2(0, 680);
 
             if (relatedCards.Count == 0)
             {
-                manager.GetElement("SearchComponents").SetActive(true);
-                manager.GetElement("RelatedComponents").SetActive(false);
-                if (isShowed)
+                Manager.GetElement("SearchComponents").SetActive(true);
+                Manager.GetElement("RelatedComponents").SetActive(false);
+                if (showing)
                     OnClickSearch();
             }
             else
             {
-                manager.GetElement("SearchComponents").SetActive(false);
-                manager.GetElement("RelatedComponents").SetActive(true);
+                Manager.GetElement("SearchComponents").SetActive(false);
+                Manager.GetElement("RelatedComponents").SetActive(true);
                 PrintCards(relatedCards);
             }
         }
         void OnBook()
         {
-            manager.GetElement("SearchComponents").SetActive(false);
-            manager.GetElement("RelatedComponents").SetActive(false);
-            manager.GetElement<RectTransform>("ScrollView").sizeDelta = new Vector2(0, 820);
+            Manager.GetElement("SearchComponents").SetActive(false);
+            Manager.GetElement("RelatedComponents").SetActive(false);
+            Manager.GetElement<RectTransform>("ScrollView").sizeDelta = new Vector2(0, 820);
             PrintBookedCards();
         }
         void OnHistory()
         {
-            manager.GetElement("SearchComponents").SetActive(false);
-            manager.GetElement("RelatedComponents").SetActive(false);
-            manager.GetElement<RectTransform>("ScrollView").sizeDelta = new Vector2(0, 820);
+            Manager.GetElement("SearchComponents").SetActive(false);
+            Manager.GetElement("RelatedComponents").SetActive(false);
+            Manager.GetElement<RectTransform>("ScrollView").sizeDelta = new Vector2(0, 820);
             PrintHistoryCards();
         }
         void ShowAppearance()
@@ -730,14 +715,15 @@ namespace MDPro3
             if (!deckIsFromLocalFile)
                 return;
             intoAppearance = true;
-            Program.I().appearance.SwitchCondition(Appearance.Condition.Deck);
-            Program.I().ShiftToServant(Program.I().appearance);
+            Program.instance.appearance.SwitchCondition(Appearance.Condition.Deck);
+            Program.instance.ShiftToServant(Program.instance.appearance);
         }
         void ShowBanlists()
         {
-            List<string> selections = new List<string>
+            List<string> selections = new()
             {
-                InterString.Get("禁限卡表")
+                InterString.Get("禁限卡表"),
+                string.Empty
             };
             foreach (var list in BanlistManager.Banlists)
                 selections.Add(list.Name);
@@ -747,9 +733,9 @@ namespace MDPro3
         void ChangeBanlist()
         {
             string selected = UnityEngine.EventSystems.EventSystem.current.
-                currentSelectedGameObject.transform.GetChild(0).GetComponent<Text>().text;
+                currentSelectedGameObject.GetComponent<SelectionButton>().GetButtonText();
             banlist = BanlistManager.GetByName(selected);
-            manager.GetElement<Text>("TextBanlist").text = selected;
+            Manager.GetElement<Text>("TextBanlist").text = selected;
             foreach (var card in cards)
                 card.RefreshLimitIcon();
             RefreshLimitIcon();
@@ -758,7 +744,7 @@ namespace MDPro3
 
         public void RefreshCardID()
         {
-            CardOnEdit cardDrag = null;
+            CardInDeck cardDrag = null;
 
             foreach (var card in cards)
                 if (card.dragging)
@@ -769,7 +755,7 @@ namespace MDPro3
             if (cardDrag == null)
                 return;
 
-            CardOnEdit cardHover = null;
+            CardInDeck cardHover = null;
             foreach (var card in cards)
                 if (card.hover && !card.dragging)
                 {
@@ -786,7 +772,7 @@ namespace MDPro3
                 var c = CardsManager.Get(cardDrag.Code);
                 var isExtra = c.IsExtraCard();
 
-                if (manager.GetElement<UIHover>("DummyMain").hover)
+                if (Manager.GetElement<UIHover>("DummyMain").hover)
                 {
                     if (cardDrag.id > 1999 && !isExtra)
                     {
@@ -800,7 +786,7 @@ namespace MDPro3
                         sideCount--;
                     }
                 }
-                else if (manager.GetElement<UIHover>("DummyExtra").hover)
+                else if (Manager.GetElement<UIHover>("DummyExtra").hover)
                 {
                     if (cardDrag.id > 1999 && isExtra)
                     {
@@ -814,7 +800,7 @@ namespace MDPro3
                         sideCount--;
                     }
                 }
-                else if (manager.GetElement<UIHover>("DummySide").hover)
+                else if (Manager.GetElement<UIHover>("DummySide").hover)
                 {
                     if (cardDrag.id < 1000)
                     {
@@ -842,9 +828,9 @@ namespace MDPro3
             }
             foreach (var card in cards)
                 card.Move();
-            SetCardSiblingIndex(CardOnEdit.moveTime);
+            SetCardSiblingIndex(CardInDeck.moveTime);
         }
-        public void SwitchSide(CardOnEdit card)
+        public void SwitchSide(CardInDeck card)
         {
             AudioManager.PlaySE("SE_DECK_MINUS");
 
@@ -888,12 +874,12 @@ namespace MDPro3
                 sideCount++;
             }
 
-            foreach (var c in Program.I().editDeck.cards)
+            foreach (var c in Program.instance.editDeck.cards)
                 c.Move();
-            Program.I().editDeck.SetCardSiblingIndex(CardOnEdit.moveTime);
+            Program.instance.editDeck.SetCardSiblingIndex(CardInDeck.moveTime);
         }
 
-        public void SwitchCard(CardOnEdit dragCard, CardOnEdit hoverCard)
+        public void SwitchCard(CardInDeck dragCard, CardInDeck hoverCard)
         {
             var hover = hoverCard.id;
             if (dragCard.id == 99999999)
@@ -972,8 +958,8 @@ namespace MDPro3
                         if (card.id >= hover)
                             card.id++;
                     dragCard.id = hover;
-                    Program.I().editDeck.mainCount--;
-                    Program.I().editDeck.sideCount++;
+                    Program.instance.editDeck.mainCount--;
+                    Program.instance.editDeck.sideCount++;
                 }
             }
             else if (dragCard.id > 999 && dragCard.id < 2000)
@@ -999,8 +985,8 @@ namespace MDPro3
                         if (card.id >= hover)
                             card.id++;
                     dragCard.id = hover;
-                    Program.I().editDeck.extraCount--;
-                    Program.I().editDeck.sideCount++;
+                    Program.instance.editDeck.extraCount--;
+                    Program.instance.editDeck.sideCount++;
                 }
             }
             else if (dragCard.id > 1999)
@@ -1019,8 +1005,8 @@ namespace MDPro3
                             if (card.id >= hover && card.id < 1000)
                                 card.id++;
                         dragCard.id = hover;
-                        Program.I().editDeck.mainCount++;
-                        Program.I().editDeck.sideCount--;
+                        Program.instance.editDeck.mainCount++;
+                        Program.instance.editDeck.sideCount--;
                     }
                 }
                 else if (hover > 999 && hover < 2000)
@@ -1034,8 +1020,8 @@ namespace MDPro3
                             if (card.id >= hover && card.id < 2000)
                                 card.id++;
                         dragCard.id = hover;
-                        Program.I().editDeck.extraCount++;
-                        Program.I().editDeck.sideCount--;
+                        Program.instance.editDeck.extraCount++;
+                        Program.instance.editDeck.sideCount--;
                     }
                 }
                 else if (hover > 1999)
@@ -1061,7 +1047,7 @@ namespace MDPro3
             });
         }
 
-        public void DeleteCard(CardOnEdit card)
+        public void DeleteCard(CardInDeck card)
         {
             if (condition == Condition.ChangeSide)
                 return;
@@ -1073,13 +1059,13 @@ namespace MDPro3
             cards.Remove(card);
             Destroy(card.gameObject, 0.4f);
             Vector3 end;
-            if (manager.GetElement<Tab>("TabList").selected)
+            if (Manager.GetElement<Tab>("TabList").selected)
             {
-                end = manager.GetElement<Transform>("ScrollView").GetChild(0).position;
+                end = Manager.GetElement<Transform>("ScrollView").GetChild(0).position;
             }
             else
             {
-                end = manager.GetElement<Transform>("TabList").GetChild(0).position;
+                end = Manager.GetElement<Transform>("TabList").GetChild(0).position;
             }
             var sequence = DOTween.Sequence();
             sequence.Append(card.transform.DOMove(end, 0.2f));
@@ -1118,7 +1104,7 @@ namespace MDPro3
         {
             if (!deckIsFromLocalFile)
             {
-                MessageManager.Cast(InterString.Get("请先保存卡组。"));
+                MessageManager.Toast(InterString.Get("请先保存卡组"));
                 return;
             }
 
@@ -1129,15 +1115,15 @@ namespace MDPro3
         {
             if (!deckIsFromLocalFile && condition != Condition.ChangeSide)
             {
-                MessageManager.Cast(InterString.Get("请先保存卡组。"));
+                MessageManager.Toast(InterString.Get("请先保存卡组"));
                 return;
             }
 
             dirty = true;
 
-            List<CardOnEdit> main = new List<CardOnEdit>();
-            List<CardOnEdit> extra = new List<CardOnEdit>();
-            List<CardOnEdit> side = new List<CardOnEdit>();
+            List<CardInDeck> main = new List<CardInDeck>();
+            List<CardInDeck> extra = new List<CardInDeck>();
+            List<CardInDeck> side = new List<CardInDeck>();
             foreach (var card in cards)
             {
                 if (card.id < 1000)
@@ -1176,13 +1162,13 @@ namespace MDPro3
         {
             if (!deckIsFromLocalFile)
             {
-                MessageManager.Cast(InterString.Get("请先保存卡组。"));
+                MessageManager.Toast(InterString.Get("请先保存卡组"));
                 return;
             }
 
             dirty = true;
 
-            List<CardOnEdit> main = new List<CardOnEdit>();
+            List<CardInDeck> main = new List<CardInDeck>();
             foreach (var card in cards)
                 if (card.id < 1000)
                     main.Add(card);
@@ -1208,7 +1194,7 @@ namespace MDPro3
         {
             if (!deckIsFromLocalFile)
             {
-                MessageManager.Cast(InterString.Get("请先保存卡组。"));
+                MessageManager.Toast(InterString.Get("请先保存卡组"));
                 return;
             }
 
@@ -1222,7 +1208,7 @@ namespace MDPro3
         {
             if(!deckIsFromLocalFile || dirty || !File.Exists("Deck/" + deckName + Program.ydkExpansion))
             {
-                MessageManager.Cast(InterString.Get("请先保存卡组。"));
+                MessageManager.Toast(InterString.Get("请先保存卡组"));
                 return;
             }
 
@@ -1243,13 +1229,13 @@ namespace MDPro3
             {
                 OnlineDeck.LikeDeck(onlineDeckID);
                 liked = true;
-                manager.GetElement("ButtonLike").SetActive(false);
+                Manager.GetElement("ButtonLike").SetActive(false);
                 return;
             }
 
             if (dirty || !deckIsFromLocalFile)
             {
-                MessageManager.Cast(InterString.Get("请先保存卡组。"));
+                MessageManager.Toast(InterString.Get("请先保存卡组"));
                 return;
             }
 
@@ -1265,7 +1251,7 @@ namespace MDPro3
         }
         public void OnSave()
         {
-            if (manager.GetElement<Text>("TextBanlist").text != "N/A")
+            if (Manager.GetElement<Text>("TextBanlist").text != "N/A")
             {
                 if (mainCount > 60 || extraCount > 15 || sideCount > 15)
                 {
@@ -1362,7 +1348,7 @@ namespace MDPro3
             {
                 var c = CardsManager.Get(card.Code);
                 if (c == null)
-                    break;
+                    continue;
                 if (alias == 0)
                 {
                     if (c.Id == code || c.Alias == code)
@@ -1387,16 +1373,16 @@ namespace MDPro3
                 return;
             if (!deckIsFromLocalFile)
             {
-                MessageManager.Cast(InterString.Get("请先保存卡组。"));
+                MessageManager.Toast(InterString.Get("请先保存卡组"));
                 return;
             }
             if (GetCardCount(cardShowing.Id) >= banlist.GetQuantity(cardShowing.Id))
                 return;
             AudioManager.PlaySE("SE_DECK_PLUS");
 
-            var card = Instantiate(itemOnTable);
+            var card = Instantiate(itemInDeck);
             card.transform.SetParent(cardsOnEditParent, false);
-            var mono = card.GetComponent<CardOnEdit>();
+            var mono = card.GetComponent<CardInDeck>();
 
             if (!cardShowing.IsExtraCard())
             {
@@ -1439,7 +1425,7 @@ namespace MDPro3
 
             if (!deckIsFromLocalFile)
             {
-                MessageManager.Cast(InterString.Get("请先保存卡组。"));
+                MessageManager.Toast(InterString.Get("请先保存卡组"));
                 return;
             }
 
@@ -1472,10 +1458,11 @@ namespace MDPro3
         {
             OnClickSearch();
         }
+
         public void OnClickSearch()
         {
             List<int> cards = new List<int>();
-            var result = CardsManager.Search(manager.GetElement<InputField>("InputSearch").text, filters, banlist, pack);
+            var result = CardsManager.Search(Manager.GetElement<InputField>("InputSearch").text, filters, banlist, pack);
             switch (sortOrder)
             {
                 case SortOrder.ByType:
@@ -1511,7 +1498,7 @@ namespace MDPro3
             }
             foreach (var card in result)
                 cards.Add(card.Id);
-            manager.GetElement<Text>("LabelSearch").text = cards.Count.ToString();
+            Manager.GetElement<Text>("LabelSearch").text = cards.Count.ToString();
             PrintCards(cards);
         }
 
@@ -1534,25 +1521,25 @@ namespace MDPro3
             var handle = Addressables.InstantiateAsync("PopupSearchOrder");
             handle.Completed += (result) =>
             {
-                result.Result.transform.SetParent(Program.I().ui_.popup, false);
-                result.Result.GetComponent<PopupSearchOrder>().Show();
+                result.Result.transform.SetParent(Program.instance.ui_.popup, false);
+                result.Result.GetComponent<UI.Popup.PopupSearchOrder>().Show();
             };
         }
 
         public void BookCard()
         {
-            if (CardRarity.CardBooked(cardShowing.Id))
+            if (CardRarity.CardBookmarked(cardShowing.Id))
             {
-                CardRarity.UnbookCard(cardShowing.Id);
+                CardRarity.UnbookmarkCard(cardShowing.Id);
                 AudioManager.PlaySE("SE_MENU_S_DECIDE_02");
             }
             else
             {
-                CardRarity.BookCard(cardShowing.Id);
+                CardRarity.BookmarkCard(cardShowing.Id);
                 AudioManager.PlaySE("SE_MENU_S_DECIDE_01");
             }
 
-            if (manager.GetElement<Tab>("TabBook").selected)
+            if (Manager.GetElement<Tab>("TabBook").selected)
                 PrintBookedCards();
         }
         Card relatedCard;
@@ -1564,23 +1551,23 @@ namespace MDPro3
             relatedCards = new List<int>();
             foreach (var card in related)
                 relatedCards.Add(card.Id);
-            manager.GetElement<Tab>("TabList").TabThis();
+            Manager.GetElement<Tab>("TabList").TabThis();
 
-            manager.GetElement("SearchComponents").SetActive(false);
-            manager.GetElement("RelatedComponents").SetActive(true);
-            manager.GetElement<RawImage>("RawImageRelatedCard").texture =
-                Instantiate(manager.GetElement<RawImage>("Card").texture);
-            manager.GetElement<RawImage>("RawImageRelatedCard").material =
-                Instantiate(manager.GetElement<RawImage>("Card").material);
-            manager.GetElement<Text>("TextRelatedCard").text = InterString.Get("「[?]」的相关卡片", relatedCard.Name);
+            Manager.GetElement("SearchComponents").SetActive(false);
+            Manager.GetElement("RelatedComponents").SetActive(true);
+            Manager.GetElement<RawImage>("RawImageRelatedCard").texture =
+                Instantiate(Manager.GetElement<RawImage>("Card").texture);
+            Manager.GetElement<RawImage>("RawImageRelatedCard").material =
+                Instantiate(Manager.GetElement<RawImage>("Card").material);
+            Manager.GetElement<Text>("TextRelatedCard").text = InterString.Get("「[?]」的相关卡片", relatedCard.Name);
 
             PrintCards(relatedCards);
         }
 
         public void OnRelatedReturn()
         {
-            manager.GetElement("SearchComponents").SetActive(true);
-            manager.GetElement("RelatedComponents").SetActive(false);
+            Manager.GetElement("SearchComponents").SetActive(true);
+            Manager.GetElement("RelatedComponents").SetActive(false);
             relatedCards.Clear();
             ScrollViewInstall();
         }
@@ -1594,7 +1581,7 @@ namespace MDPro3
         {
             filters.Clear();
             pack = "";
-            manager.GetElement<InputField>("InputSearch").text = "";
+            Manager.GetElement<InputField>("InputSearch").text = "";
             FilterButtonSwitch(false);
             OnClickSearch();
         }
@@ -1614,21 +1601,21 @@ namespace MDPro3
             var scale = Config.GetUIScale();
             superScrollView = new SuperScrollView
             (
-            (int)Math.Floor((manager.GetElement<RectTransform>("ScrollView").rect.width - 30f) / (86f * scale)),
+            (int)Math.Floor((Manager.GetElement<RectTransform>("ScrollView").rect.width - 30f) / (86f * scale)),
             86 * scale,
             140 * scale,
             0,
             0,
             itemOnList,
             ItemOnListRefresh,
-            manager.GetElement<ScrollRect>("ScrollView")
+            Manager.GetElement<ScrollRect>("ScrollView")
             );
 
-            manager.GetElement<Text>("LabelSearch").text = InterString.Get("搜索");
+            Manager.GetElement<Text>("LabelSearch").text = InterString.Get("搜索");
 
-            if (manager.GetElement<Tab>("TabBook").selected)
+            if (Manager.GetElement<Tab>("TabBook").selected)
                 PrintBookedCards();
-            else if (manager.GetElement<Tab>("TabHistory").selected)
+            else if (Manager.GetElement<Tab>("TabHistory").selected)
                 PrintHistoryCards();
             else
             {
@@ -1689,21 +1676,21 @@ namespace MDPro3
         {
             if (on)
             {
-                manager.GetElement<Image>("ButtonFilter").sprite = TextureManager.container.toggleM_On;
-                var state = manager.GetElement<Button>("ButtonFilter").spriteState;
+                Manager.GetElement<Image>("ButtonFilter").sprite = TextureManager.container.toggleM_On;
+                var state = Manager.GetElement<Button>("ButtonFilter").spriteState;
                 state.highlightedSprite = TextureManager.container.toggleM_On;
                 state.pressedSprite = TextureManager.container.toggleM_On;
-                manager.GetElement<Button>("ButtonFilter").spriteState = state;
-                manager.GetElement<Transform>("ButtonFilter").GetChild(0).GetComponent<Image>().color = Color.black;
+                Manager.GetElement<Button>("ButtonFilter").spriteState = state;
+                Manager.GetElement<Transform>("ButtonFilter").GetChild(0).GetComponent<Image>().color = Color.black;
             }
             else
             {
-                manager.GetElement<Image>("ButtonFilter").sprite = TextureManager.container.toggleM;
-                var state = manager.GetElement<Button>("ButtonFilter").spriteState;
+                Manager.GetElement<Image>("ButtonFilter").sprite = TextureManager.container.toggleM;
+                var state = Manager.GetElement<Button>("ButtonFilter").spriteState;
                 state.highlightedSprite = TextureManager.container.toggleM_Over;
                 state.pressedSprite = TextureManager.container.toggleM_Over;
-                manager.GetElement<Button>("ButtonFilter").spriteState = state;
-                manager.GetElement<Transform>("ButtonFilter").GetChild(0).GetComponent<Image>().color = Color.white;
+                Manager.GetElement<Button>("ButtonFilter").spriteState = state;
+                Manager.GetElement<Transform>("ButtonFilter").GetChild(0).GetComponent<Image>().color = Color.white;
             }
         }
 
@@ -1712,13 +1699,13 @@ namespace MDPro3
             switch(rarity)
             {
                 case CardRarity.Rarity.Shine:
-                    return manager.GetElement<Toggle>("ButtonR");
+                    return Manager.GetElement<Toggle>("ButtonR");
                 case CardRarity.Rarity.Royal:
-                    return manager.GetElement<Toggle>("ButtonUR");
+                    return Manager.GetElement<Toggle>("ButtonUR");
                 case CardRarity.Rarity.Gold:
-                    return manager.GetElement<Toggle>("ButtonGR");
+                    return Manager.GetElement<Toggle>("ButtonGR");
                 case CardRarity.Rarity.Millennium:
-                    return manager.GetElement<Toggle>("ButtonMR");
+                    return Manager.GetElement<Toggle>("ButtonMR");
                 default:
                     return null;
             }
@@ -1727,13 +1714,13 @@ namespace MDPro3
         void TurnOffOtherRarityToggles(CardRarity.Rarity rarity)
         {
             if (rarity != CardRarity.Rarity.Shine)
-                manager.GetElement<Toggle>("ButtonR").SwitchOffWithoutAction();
+                Manager.GetElement<Toggle>("ButtonR").SwitchOffWithoutAction();
             if (rarity != CardRarity.Rarity.Royal)
-                manager.GetElement<Toggle>("ButtonUR").SwitchOffWithoutAction();
+                Manager.GetElement<Toggle>("ButtonUR").SwitchOffWithoutAction();
             if (rarity != CardRarity.Rarity.Gold)
-                manager.GetElement<Toggle>("ButtonGR").SwitchOffWithoutAction();
+                Manager.GetElement<Toggle>("ButtonGR").SwitchOffWithoutAction();
             if (rarity != CardRarity.Rarity.Millennium)
-                manager.GetElement<Toggle>("ButtonMR").SwitchOffWithoutAction();
+                Manager.GetElement<Toggle>("ButtonMR").SwitchOffWithoutAction();
         }
 
         public void ChangeRarity(int rarity)
@@ -1751,11 +1738,11 @@ namespace MDPro3
         void UpdateRarity()
         {
             Material mat = TextureManager.GetCardMaterial(cardShowing.Id);
-            var face = manager.GetElement<RawImage>("Card");
+            var face = Manager.GetElement<RawImage>("Card");
             mat.mainTexture = face.texture;
             face.material = mat;
             if (relatedCard != null && relatedCard.Id == cardShowing.Id)
-                manager.GetElement<RawImage>("RawImageRelatedCard").material = mat;
+                Manager.GetElement<RawImage>("RawImageRelatedCard").material = mat;
             foreach (var card in cards)
                 if (card.Code == cardShowing.Id)
                     card.gameObject.GetComponent<RawImage>().material = mat;
@@ -1772,7 +1759,7 @@ namespace MDPro3
         {
             toHandTest = true;
             DeckToPuzzle();
-            Program.I().puzzle.StartPuzzle(Program.tempFolder + handTestPuzzleName.Replace(".lua", string.Empty));
+            Program.instance.puzzle.StartPuzzle(Program.tempFolder + handTestPuzzleName.Replace(".lua", string.Empty));
         }
 
         void DeckToPuzzle()
@@ -1828,7 +1815,7 @@ namespace MDPro3
                 OnShare,
                 //OnHandTest
             };
-            Program.I().ui_.subMenu.Show(menus, actions);
+            Program.instance.ui_.subMenu.Show(menus, actions);
         }
     }
 }

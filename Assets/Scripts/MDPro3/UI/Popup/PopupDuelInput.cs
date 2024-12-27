@@ -28,7 +28,7 @@ namespace MDPro3.UI
             }
 
             OcgCore.inputMode = true;
-            Program.I().ocgcore.GreenBackgroundOff();
+            Program.instance.ocgcore.GreenBackgroundOff();
         }
 
         public override void OnConfirm()

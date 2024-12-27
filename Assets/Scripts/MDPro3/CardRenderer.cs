@@ -6,6 +6,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.UI;
+using MDPro3.Utility;
 
 namespace MDPro3
 {
@@ -215,7 +216,7 @@ namespace MDPro3
             cardAttributeRD.gameObject.SetActive(false);
             cardLegendRD.SetActive(false);
 
-            Program.I().camera_.cameraRenderTexture.Render();
+            Program.instance.camera_.cameraRenderTexture.Render();
         }
 
         private void RenderOcgName(int code)
@@ -250,7 +251,7 @@ namespace MDPro3
             linkMarkers.SetActive(false);
             spellType.text = string.Empty;
             data = AdjustLevelForRender(data);
-            if ((data.Type & (uint)CardType.Xyz) > 0)
+            if (data.HasType(CardType.Xyz))
             {
                 if (data.Level == 13)
                     rank13Mask.SetActive(true);
@@ -267,8 +268,8 @@ namespace MDPro3
                 }
 
             }
-            else if ((data.Type & (uint)CardType.Monster) > 0
-                && (data.Type & (uint)CardType.Link) == 0)
+            else if (data.HasType(CardType.Monster)
+                && !data.HasType(CardType.Link))
             {
                 levelsMask.SetActive(true);
                 for (int i = 0; i < 12; i++)
@@ -279,7 +280,7 @@ namespace MDPro3
                         levelsMask.transform.GetChild(i).gameObject.SetActive(false);
                 }
             }
-            Program.I().camera_.cameraRenderTexture.Render();
+            Program.instance.camera_.cameraRenderTexture.Render();
         }
 
         public bool RenderCard(int code, Texture2D art)
@@ -344,7 +345,7 @@ namespace MDPro3
             else
                 cardTypeRD.text = cardTypeRD.text.Replace(Program.slash, bigSlash);
 
-            if ((data.Type & (uint)CardType.Pendulum) > 0)
+            if (data.HasType(CardType.Pendulum))
             {
                 movePartsRD.anchoredPosition = new Vector2(0f, 133f);
 
@@ -372,17 +373,17 @@ namespace MDPro3
 
                 lScaleRD.text = data.LScale.ToString();
                 rScaleRD.text = data.RScale.ToString();
-                if ((data.Type & (uint)CardType.Xyz) > 0)
+                if (data.HasType(CardType.Xyz))
                     cardFrameRD.sprite = TextureManager.container.rd_Frame_PendulumXyz;
-                else if ((data.Type & (uint)CardType.Synchro) > 0)
+                else if (data.HasType(CardType.Synchro))
                     cardFrameRD.sprite = TextureManager.container.rd_Frame_PendulumSynchro;
-                else if ((data.Type & (uint)CardType.Fusion) > 0)
+                else if (data.HasType(CardType.Fusion))
                     cardFrameRD.sprite = TextureManager.container.rd_Frame_PendulumFusion;
-                else if ((data.Type & (uint)CardType.Ritual) > 0)
+                else if (data.HasType(CardType.Ritual))
                     cardFrameRD.sprite = TextureManager.container.rd_Frame_PendulumRitual;
-                else if ((data.Type & (uint)CardType.Link) > 0)
+                else if (data.HasType(CardType.Link))
                     cardFrameRD.sprite = TextureManager.container.rd_Frame_PendulumLink;
-                else if ((data.Type & (uint)CardType.Normal) > 0)
+                else if (data.HasType(CardType.Normal))
                     cardFrameRD.sprite = TextureManager.container.rd_Frame_PendulumNormal;
                 else
                     cardFrameRD.sprite = TextureManager.container.rd_Frame_PendulumEffect;
@@ -402,19 +403,19 @@ namespace MDPro3
                     cardFrameRD.sprite = TextureManager.container.rd_Frame_Ra;
                 else if (code == 10000020)
                     cardFrameRD.sprite = TextureManager.container.rd_Frame_Slifer;
-                else if ((data.Type & (uint)CardType.Link) > 0)
+                else if (data.HasType(CardType.Link))
                     cardFrameRD.sprite = TextureManager.container.rd_Frame_Link;
-                else if ((data.Type & (uint)CardType.Xyz) > 0)
+                else if (data.HasType(CardType.Xyz))
                     cardFrameRD.sprite = TextureManager.container.rd_Frame_Xyz;
-                else if ((data.Type & (uint)CardType.Synchro) > 0)
+                else if (data.HasType(CardType.Synchro))
                     cardFrameRD.sprite = TextureManager.container.rd_Frame_Synchro;
-                else if ((data.Type & (uint)CardType.Fusion) > 0)
+                else if (data.HasType(CardType.Fusion))
                     cardFrameRD.sprite = TextureManager.container.rd_Frame_Fusion;
-                else if ((data.Type & (uint)CardType.Ritual) > 0 && (data.Type & (uint)CardType.Monster) > 0)
+                else if (data.HasType(CardType.Ritual) && data.HasType(CardType.Monster))
                     cardFrameRD.sprite = TextureManager.container.rd_Frame_Ritual;
-                else if ((data.Type & (uint)CardType.Token) > 0)
+                else if (data.HasType(CardType.Token))
                     cardFrameRD.sprite = TextureManager.container.rd_Frame_Token;
-                else if ((data.Type & (uint)CardType.Normal) > 0)
+                else if (data.HasType(CardType.Normal))
                     cardFrameRD.sprite = TextureManager.container.rd_Frame_Normal;
                 else if ((data.Type & ((uint)CardType.Spell) + (uint)CardType.Trap) > 0)
                 {
@@ -423,7 +424,7 @@ namespace MDPro3
                     atkNumRD.text = string.Empty;
                     defNumRD.text = string.Empty;
 
-                    if ((data.Type & (uint)CardType.Spell) > 0)
+                    if (data.HasType(CardType.Spell))
                         cardFrameRD.sprite = TextureManager.container.rd_Frame_Spell;
                     else
                         cardFrameRD.sprite = TextureManager.container.rd_Frame_Trap;
@@ -434,7 +435,7 @@ namespace MDPro3
 
             data = AdjustLevelForRender(data);
 
-            if ((data.Type & (uint)CardType.Link) > 0)
+            if (data.HasType(CardType.Link))
             {
                 cardNameRD.color = Color.white;
                 //cardTypeRD.color = Color.white;
@@ -462,23 +463,23 @@ namespace MDPro3
                     }
                 }
             }
-            else if ((data.Type & (uint)CardType.Xyz) > 0)
+            else if (data.HasType(CardType.Xyz))
             {
                 cardNameRD.color = Color.white;
-                if((data.Type & (uint)CardType.Pendulum) == 0)
+                if(!data.HasType(CardType.Pendulum))
                     cardTypeRD.color = Color.white;
                 rankRD.SetActive(true);
                 rankNumRD.gameObject.SetActive(true);
                 rankNumRD.text = data.Level.ToString();
             }
-            else if ((data.Type & (uint)CardType.Monster) > 0)
+            else if (data.HasType(CardType.Monster))
             {
                 levelRD.SetActive(true);
                 levelNumRD.gameObject.SetActive(true);
                 levelNumRD.text = data.Level.ToString();
             }
 
-            Program.I().camera_.cameraRenderTexture.Render();
+            Program.instance.camera_.cameraRenderTexture.Render();
             return true;
         }
 
@@ -533,7 +534,7 @@ namespace MDPro3
             cardDescription.GetComponent<RectTransform>().sizeDelta = new Vector2(590f, 160f);
             cardAttribute.sprite = CardDescription.GetCardAttribute(data, true).sprite;
 
-            if ((data.Type & (uint)CardType.Pendulum) > 0)
+            if (data.HasType(CardType.Pendulum))
             {
                 if (art.width == art.height)
                 {
@@ -560,15 +561,15 @@ namespace MDPro3
 
                 lScale.text = data.LScale.ToString();
                 rScale.text = data.RScale.ToString();
-                if ((data.Type & (uint)CardType.Xyz) > 0)
+                if (data.HasType(CardType.Xyz))
                     cardFrame.sprite = TextureManager.container.cardFramePendulumXyzOF;
-                else if ((data.Type & (uint)CardType.Synchro) > 0)
+                else if (data.HasType(CardType.Synchro))
                     cardFrame.sprite = TextureManager.container.cardFramePendulumSynchroOF;
-                else if ((data.Type & (uint)CardType.Fusion) > 0)
+                else if (data.HasType(CardType.Fusion))
                     cardFrame.sprite = TextureManager.container.cardFramePendulumFusionOF;
-                else if ((data.Type & (uint)CardType.Ritual) > 0)
+                else if (data.HasType(CardType.Ritual))
                     cardFrame.sprite = TextureManager.container.cardFramePendulumRitualOF;
-                else if ((data.Type & (uint)CardType.Normal) > 0)
+                else if (data.HasType(CardType.Normal))
                     cardFrame.sprite = TextureManager.container.cardFramePendulumNormalOF;
                 else
                     cardFrame.sprite = TextureManager.container.cardFramePendulumEffectOF;
@@ -578,7 +579,7 @@ namespace MDPro3
                 cardArt.gameObject.SetActive(true);
                 cardArt.texture = art;
                 var description = "";
-                if ((data.Type & (uint)CardType.Monster) > 0)
+                if (data.HasType(CardType.Monster))
                     description = StringHelper.GetType(data, true).Replace(Program.slash,Language.CardUseLatin() ? smallSlash : bigSlash) + "\r\n";
 
                 var authorSplit = GetAuthorFromDescription(data.Desc);
@@ -592,19 +593,19 @@ namespace MDPro3
                     cardFrame.sprite = TextureManager.container.cardFrameRaOF;
                 else if (code == 10000020)
                     cardFrame.sprite = TextureManager.container.cardFrameOsirisOF;
-                else if ((data.Type & (uint)CardType.Link) > 0)
+                else if (data.HasType(CardType.Link))
                     cardFrame.sprite = TextureManager.container.cardFrameLinkOF;
-                else if ((data.Type & (uint)CardType.Xyz) > 0)
+                else if (data.HasType(CardType.Xyz))
                     cardFrame.sprite = TextureManager.container.cardFrameXyzOF;
-                else if ((data.Type & (uint)CardType.Synchro) > 0)
+                else if (data.HasType(CardType.Synchro))
                     cardFrame.sprite = TextureManager.container.cardFrameSynchroOF;
-                else if ((data.Type & (uint)CardType.Fusion) > 0)
+                else if (data.HasType(CardType.Fusion))
                     cardFrame.sprite = TextureManager.container.cardFrameFusionOF;
-                else if ((data.Type & (uint)CardType.Ritual) > 0 && (data.Type & (uint)CardType.Monster) > 0)
+                else if (data.HasType(CardType.Ritual) && data.HasType(CardType.Monster))
                     cardFrame.sprite = TextureManager.container.cardFrameRitualOF;
-                else if ((data.Type & (uint)CardType.Token) > 0)
+                else if (data.HasType(CardType.Token))
                     cardFrame.sprite = TextureManager.container.cardFrameTokenOF;
-                else if ((data.Type & (uint)CardType.Normal) > 0)
+                else if (data.HasType(CardType.Normal))
                     cardFrame.sprite = TextureManager.container.cardFrameNormalOF;
                 else if ((data.Type & ((uint)CardType.Spell) + (uint)CardType.Trap) > 0)
                 {
@@ -617,7 +618,7 @@ namespace MDPro3
                     numDEF.text = "";
                     spellType.text = StringHelper.GetType(data, true, false);
 
-                    if ((data.Type & (uint)CardType.Spell) > 0)
+                    if (data.HasType(CardType.Spell))
                         cardFrame.sprite = TextureManager.container.cardFrameSpellOF;
                     else
                         cardFrame.sprite = TextureManager.container.cardFrameTrapOF;
@@ -628,7 +629,7 @@ namespace MDPro3
 
             data = AdjustLevelForRender(data);
 
-            if ((data.Type & (uint)CardType.Link) > 0)
+            if (data.HasType(CardType.Link))
             {
                 cardName.color = Color.white;
                 linkMarkers.SetActive(true);
@@ -680,7 +681,7 @@ namespace MDPro3
                     }
                 }
             }
-            else if ((data.Type & (uint)CardType.Xyz) > 0)
+            else if (data.HasType(CardType.Xyz))
             {
                 cardName.color = Color.white;
                 cardPassword.color = Color.white;
@@ -699,7 +700,7 @@ namespace MDPro3
                     }
                 }
             }
-            else if ((data.Type & (uint)CardType.Monster) > 0)
+            else if (data.HasType(CardType.Monster))
             {
                 levels.SetActive(true);
                 for (int i = 0; i < 12; i++)
@@ -711,7 +712,7 @@ namespace MDPro3
                 }
             }
 
-            Program.I().camera_.cameraRenderTexture.Render();
+            Program.instance.camera_.cameraRenderTexture.Render();
 
             return true;
         }

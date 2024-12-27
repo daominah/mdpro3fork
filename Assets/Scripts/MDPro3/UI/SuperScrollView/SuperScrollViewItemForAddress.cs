@@ -22,23 +22,23 @@ namespace MDPro3.UI
         public override void OnClick()
         {
             base.OnClick();
-            Program.I().online.inputHost.text = addressHost;
-            Program.I().online.OnHostChange(addressHost);
-            Program.I().online.inputPort.text = addressPort;
-            Program.I().online.OnPortChange(addressPort);
-            Program.I().online.inputPassword.text = addressPassword;
-            Program.I().online.OnPasswordChange(addressPassword);
+            Program.instance.online.inputHost.text = addressHost;
+            Program.instance.online.OnHostChange(addressHost);
+            Program.instance.online.inputPort.text = addressPort;
+            Program.instance.online.OnPortChange(addressPort);
+            Program.instance.online.inputPassword.text = addressPassword;
+            Program.instance.online.OnPasswordChange(addressPassword);
         }
 
         public void OnDelete()
         {
-            foreach (var address in Program.I().online.addresses)
+            foreach (var address in Program.instance.online.addresses)
             {
                 if (address.name == addressName)
                 {
-                    Program.I().online.addresses.Remove(address);
-                    Program.I().online.Save();
-                    Program.I().online.Print();
+                    Program.instance.online.addresses.Remove(address);
+                    Program.instance.online.Save();
+                    Program.instance.online.Print();
                     break;
                 }
             }
@@ -50,13 +50,13 @@ namespace MDPro3.UI
             address.host = addressHost;
             address.port = addressPort;
             address.password = addressPassword;
-            Program.I().online.addresses.RemoveAt(id);
+            Program.instance.online.addresses.RemoveAt(id);
             var targetID = id;
             if (id > 0)
                 targetID--;
-            Program.I().online.addresses.Insert(targetID, address);
-            Program.I().online.Save();
-            Program.I().online.Print();
+            Program.instance.online.addresses.Insert(targetID, address);
+            Program.instance.online.Save();
+            Program.instance.online.Print();
         }
         public void OnMoveDown()
         {
@@ -65,13 +65,13 @@ namespace MDPro3.UI
             address.host = addressHost;
             address.port = addressPort;
             address.password = addressPassword;
-            Program.I().online.addresses.RemoveAt(id);
+            Program.instance.online.addresses.RemoveAt(id);
             var targetID = id;
-            if (id < Program.I().online.addresses.Count)
+            if (id < Program.instance.online.addresses.Count)
                 targetID++;
-            Program.I().online.addresses.Insert(targetID, address);
-            Program.I().online.Save();
-            Program.I().online.Print();
+            Program.instance.online.addresses.Insert(targetID, address);
+            Program.instance.online.Save();
+            Program.instance.online.Print();
         }
     }
 }

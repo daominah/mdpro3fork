@@ -6,7 +6,7 @@ namespace MDPro3.UI
         public override void SelectThis()
         {
             base.SelectThis();
-            Program.I().online.SwitchFunction(id);
+            //Program.instance.online.SwitchFunction(id);
         }
     }
 }

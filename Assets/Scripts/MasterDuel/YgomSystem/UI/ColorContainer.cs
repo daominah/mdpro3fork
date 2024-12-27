@@ -103,30 +103,30 @@ namespace YgomSystem.UI
 
 		protected Color GetColorUnselected()
 		{
-			return default(Color);
+            return colorUnselected * intensityUnselected;
 		}
 
 		protected Color GetColorSelected()
 		{
-			return default(Color);
-		}
+            return colorSelected * intensitySelected;
+        }
 
-		protected Color GetColorButtonDown()
+        protected Color GetColorButtonDown()
 		{
-			return default(Color);
-		}
+            return colorButtonDown * intensityButtonDown;
+        }
 
-		protected Color GetColorButtonEnter()
+        protected Color GetColorButtonEnter()
 		{
-			return default(Color);
-		}
+            return colorButtonEnter * intensityButtonEnter;
+        }
 
-		protected Color GetColorButtonInactive()
+        protected Color GetColorButtonInactive()
 		{
-			return default(Color);
-		}
+            return colorButtonInactive * intensityButtonInactive;
+        }
 
-		public virtual void SetColor(SelectMode select_mode, StatusMode status_mode, bool is_active = true)
+        public virtual void SetColor(SelectMode select_mode, StatusMode status_mode, bool is_active = true)
 		{
 		}
 

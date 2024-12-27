@@ -23,7 +23,7 @@ namespace MDPro3.UI
         bool showWithCloseDuelLog = false;
         public void Show(List<GameCard> cards, CardLocation location, int controller)
         {
-            if(Program.I().ocgcore.cantCheckGrave && location == CardLocation.Grave)
+            if(Program.instance.ocgcore.cantCheckGrave && location == CardLocation.Grave)
             {
                 MessageManager.Cast(InterString.Get("现在不能查看此处的卡片。"));
                 return;
@@ -38,9 +38,9 @@ namespace MDPro3.UI
                 RefreshList();
                 baseRect.DOAnchorPosX(-30, transitionTime);
 
-                if (Program.I().ocgcore.log.showing)
+                if (Program.instance.ocgcore.log.showing)
                 {
-                    Program.I().ocgcore.OnLog(true);
+                    Program.instance.ocgcore.OnLog(true);
                     showWithCloseDuelLog = true;
                 }
             }
@@ -66,7 +66,7 @@ namespace MDPro3.UI
             if(showWithCloseDuelLog)
             {
                 showWithCloseDuelLog = false;
-                Program.I().ocgcore.OnLog();
+                Program.instance.ocgcore.OnLog();
             }
         }
 

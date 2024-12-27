@@ -9,7 +9,6 @@ using AssetsTools.NET;
 using AssetsTools.NET.Extra;
 using System.Threading;
 using System.Collections.Concurrent;
-using System.Drawing;
 
 public class AssetBundleRobber : MonoBehaviour
 {

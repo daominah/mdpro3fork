@@ -1,26 +1,29 @@
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.UI;
 using MDPro3.YGOSharp;
 using MDPro3.UI;
+using MDPro3.UI.PropertyOverrider;
 using System.Text.RegularExpressions;
+using TMPro;
+using UnityEngine.EventSystems;
 
 namespace MDPro3
 {
     public class MateView : Servant
     {
-        public ScrollRect scrollRect;
-        public InputField inputField;
+        [Header("MateView")]
+        public TMP_InputField inputField;
 
         static List<int> crossDuelMates = new List<int>();
         static List<Card> cards = new List<Card>();
         List<string[]> tasks = new List<string[]>();
 
-        SuperScrollView superScrollView;
+        public SuperScrollView superScrollView;
+        [HideInInspector] public SelectionToggle_Mate lastSelectedMateItem;
         Camera targetCamera;
 
         static Mate mate;
@@ -33,13 +36,14 @@ namespace MDPro3
         bool clickInLeft;
         bool clickInRight;
 
+        #region Servant
         public override void Initialize()
         {
             depth = 1;
-            haveLine = false;
-            returnServant = Program.I().menu;
+            showLine = false;
+            returnServant = Program.instance.menu;
             base.Initialize();
-            targetCamera = Program.I().camera_.cameraDuelOverlay2D;
+            targetCamera = Program.instance.camera_.cameraDuelOverlay2D;
             inputField.onEndEdit.AddListener(Print);
 #if UNITY_ANDROID
             var files = Directory.GetFiles(Program.root + "CrossDuel", "*.bundle");
@@ -51,6 +55,142 @@ namespace MDPro3
 #endif
             Load();
             LoadSeData();
+        }
+        protected override void ApplyShowArrangement(int preDepth)
+        {
+            base.ApplyShowArrangement(preDepth);
+            Program.instance.camera_.light.gameObject.SetActive(true);
+            Program.instance.camera_.light.transform.GetChild(0).localEulerAngles = new Vector3(123f, -28f, -40f);
+            Program.instance.camera_.light.transform.GetChild(1).localEulerAngles = new Vector3(-80f, -140f, 0f);
+            CameraManager.DuelOverlay2DPlus();
+            CameraReset();
+            AudioManager.PlayBGM("BGM_OUT_TUTORIAL_2", 0.5f);
+            UserInput.SetMoveRepeatRate(0.05f);
+        }
+        protected override void ApplyHideArrangement(int preDepth)
+        {
+            base.ApplyHideArrangement(preDepth);
+            CameraManager.DuelOverlay2DMinus();
+            Program.instance.camera_.light.gameObject.SetActive(false);
+            Program.instance.camera_.light.transform.GetChild(0).localEulerAngles = new Vector3(96f, -28f, -40f);
+            Program.instance.camera_.light.transform.GetChild(1).localEulerAngles = new Vector3(-15f, -45f, 0f);
+            if (mate != null)
+                Destroy(mate.gameObject);
+            AudioManager.ResetSESource();
+            AudioManager.PlaySE("SE_MENU_CANCEL");
+            AudioManager.PlayBGM("BGM_MENU_01");
+            UserInput.SetMoveRepeatRate(0.1f);
+        }
+        public override void PerFrameFunction()
+        {
+            if (!showing) return;
+            if(NeedResponseInput())
+            {
+                if (UserInput.MouseRightDown || UserInput.WasCancelPressed)
+                    OnReturn();
+                if (UserInput.WasGamepadButtonWestPressed)
+                    inputField.ActivateInputField();
+                if (mate == null)
+                    return;
+
+                if (UserInput.WasGamepadButtonNorthPressed)
+                    OnMateTap();
+
+                var leftOffset = (PropertyOverrider.NeedMobileLayout() ? 532f : 432f) * Screen.height / 1080f;
+
+                if (UserInput.MouseLeftDown && UserInput.MousePos.x > leftOffset)
+                {
+                    var widthOffset = Screen.width - leftOffset;
+
+                    if (UserInput.MousePos.x > leftOffset + widthOffset / 2f)
+                    {
+                        clickInRight = true;
+                        clickInTime = Time.time;
+                        mateAngel = mate.transform.eulerAngles;
+                        clickInPosition = UserInput.MousePos;
+                        oSize = targetCamera.orthographicSize;
+                    }
+                    else
+                    {
+                        clickInLeft = true;
+                        clickInTime = Time.time;
+                        clickInPosition = UserInput.MousePos;
+                        matePosition = mate.transform.position;
+                    }
+                }
+                if (UserInput.MouseLeftPressing && clickInLeft)
+                {
+                    var x = matePosition.x + (clickInPosition.x - UserInput.MousePos.x) * 0.01f;
+                    var y = matePosition.y + (UserInput.MousePos.y - clickInPosition.y) * 0.02f;
+                    if (x > 10) x = 10;
+                    if (x < -10) x = -10;
+                    if (y > 0) y = 0;
+                    if (y < -20) y = -20;
+                    mate.transform.position = new Vector3(x, y, matePosition.z);
+                }
+                if (UserInput.MouseLeftPressing && clickInRight)
+                {
+                    mate.transform.eulerAngles = mateAngel +
+                        new Vector3(0, (clickInPosition.x - UserInput.MousePos.x) * 0.2f, 0);
+                    var size = oSize + (clickInPosition.y - UserInput.MousePos.y) * 0.01f;
+                    if (size < 5) size = 5;
+                    if (size > 20) size = 20;
+                    targetCamera.orthographicSize = size;
+                    targetCamera.transform.localPosition = new Vector3(0, size * 0.95f, 200);
+                }
+                if (UserInput.MouseLeftUp && (clickInLeft || clickInRight))
+                {
+                    clickInLeft = false;
+                    clickInRight = false;
+                    if ((Time.time - clickInTime) < 0.2f)
+                    {
+                        mate.Play(Mate.MateAction.Tap);
+                        mate.ActiveCamera(Mate.MateAction.Tap, targetCamera.gameObject.layer);
+                    }
+                }
+
+                if(UserInput.LeftScrollWheel != Vector2.zero)
+                {
+                    var x = mate.transform.position.x - UserInput.LeftScrollWheel.x * Time.unscaledDeltaTime * 50f;
+                    if (x > 10) x = 10f;
+                    if (x < -10) x = -10;
+                    var y = mate.transform.position.y + UserInput.LeftScrollWheel.y * Time.unscaledDeltaTime * 50f;
+                    if (y > 0) y = 0;
+                    if (y < -20) y = -20;
+                    mate.transform.position = new Vector3(x, y, mate.transform.position.z);
+                }
+                if(UserInput.RightScrollWheel != Vector2.zero)
+                {
+                    var x = UserInput.RightScrollWheel.x * Time.unscaledDeltaTime * 200f;
+                    mate.transform.Rotate(Vector3.up, -x);
+
+                    if(Mathf.Abs( UserInput.RightScrollWheel.y) > 0.3f)
+                    {
+                        var size = targetCamera.orthographicSize - UserInput.RightScrollWheel.y * Time.unscaledDeltaTime * 30f;
+                        if (size < 5) size = 5;
+                        if (size > 20) size = 20;
+                        targetCamera.orthographicSize = size;
+                        targetCamera.transform.localPosition = new Vector3(0, size * 0.95f, 200);
+                    }
+                }
+            }
+        }
+        protected override bool NeedResponseInput()
+        {
+            if (inputField.isFocused)
+                return false;
+            return base.NeedResponseInput();
+        }
+        public override void SelectLastSelectable()
+        {
+            EventSystem.current.SetSelectedGameObject(lastSelectedMateItem.gameObject);
+        }
+        #endregion
+
+        public void SelectLastMateItem()
+        {
+            UserInput.NextSelectionIsAxis = true;
+            SelectLastSelectable();
         }
         public void Load()
         {
@@ -92,33 +232,40 @@ namespace MDPro3
                     tasks.Add(task);
                 }
             }
-            var handle = Addressables.LoadAssetAsync<GameObject>("ButtonMateView");
+            var handle = Addressables.LoadAssetAsync<GameObject>("ItemMate");
             handle.Completed += (result) =>
             {
-                superScrollView = new SuperScrollView
-                    (
+                var itemWidth = PropertyOverrider.NeedMobileLayout() ? 460f : 360f;
+                var itemHeight = PropertyOverrider.NeedMobileLayout() ? 80f : 40f;
+
+                superScrollView = new SuperScrollView(
                     1,
-                    360,
-                    40,
+                    itemWidth,
+                    itemHeight,
                     0,
                     0,
                     result.Result,
                     ItemOnListRefresh,
-                    scrollRect
-                    );
+                    Manager.GetElement<ScrollRect>("ScrollRect"),
+                    4);
                 superScrollView.Print(tasks);
+                if (superScrollView.items.Count > 0)
+                    lastSelectedMateItem = superScrollView.items[0].gameObject.GetComponent<SelectionToggle_Mate>();
+                if (showing)
+                {
+                    if (Cursor.lockState == CursorLockMode.Locked)
+                        SelectLastSelectable();
+                }
+                else
+                    transform.GetChild(0).gameObject.SetActive(false);
             };
         }
 
-        public override void ApplyShowArrangement(int preDepth)
+        public void OnMateTap()
         {
-            base.ApplyShowArrangement(preDepth);
-            Program.I().camera_.light.gameObject.SetActive(true);
-            Program.I().camera_.light.transform.GetChild(0).localEulerAngles = new Vector3(123f, -28f, -40f);
-            Program.I().camera_.light.transform.GetChild(1).localEulerAngles = new Vector3(-80f, -140f, 0f);
-            CameraManager.DuelOverlay2DPlus();
-            CameraReset();
-            AudioManager.PlayBGM("BGM_OUT_TUTORIAL_2", 0.5f);
+            if (mate == null)
+                return;
+            mate.Play(Mate.MateAction.Tap);
         }
 
         void CameraReset()
@@ -128,78 +275,6 @@ namespace MDPro3
             targetCamera.transform.localEulerAngles =
                 new Vector3(0, 180, 0);
             targetCamera.orthographicSize = 20;
-        }
-        public override void ApplyHideArrangement(int preDepth)
-        {
-            base.ApplyHideArrangement(preDepth);
-            CameraManager.DuelOverlay2DMinus();
-            Program.I().camera_.light.gameObject.SetActive(false);
-            Program.I().camera_.light.transform.GetChild(0).localEulerAngles = new Vector3(96f, -28f, -40f);
-            Program.I().camera_.light.transform.GetChild(1).localEulerAngles = new Vector3(-15f, -45f, 0f);
-            if (mate != null)
-                Destroy(mate.gameObject);
-            AudioManager.ResetSESource();
-            AudioManager.PlaySE("SE_MENU_CANCEL");
-            AudioManager.PlayBGM("BGM_MENU_01");
-        }
-
-
-        public override void PerFrameFunction()
-        {
-            base.PerFrameFunction();
-            if (isShowed && mate != null)
-            {
-                if (Program.InputGetMouse0Down && Input.mousePosition.x > 450 * Screen.height / 1080)
-                {
-                    var widthOffset = Screen.width - 450 * Screen.height / 1080f;
-
-                    if (Input.mousePosition.x > 450 * Screen.height / 1080 + widthOffset / 2)
-                    {
-                        clickInRight = true;
-                        clickInTime = Time.time;
-                        mateAngel = mate.transform.eulerAngles;
-                        clickInPosition = Input.mousePosition;
-                        oSize = targetCamera.orthographicSize;
-                    }
-                    else
-                    {
-                        clickInLeft = true;
-                        clickInTime = Time.time;
-                        clickInPosition = Input.mousePosition;
-                        matePosition = mate.transform.position;
-                    }
-                }
-                if (Program.InputGetMouse0 && clickInLeft)
-                {
-                    var x = matePosition.x + (clickInPosition.x - Input.mousePosition.x) * 0.01f;
-                    var y = matePosition.y + (Input.mousePosition.y - clickInPosition.y) * 0.02f;
-                    if (x > 10) x = 10;
-                    if (x < -10) x = -10;
-                    if (y > 0) y = 0;
-                    if (y < -20) y = -20;
-                    mate.transform.position = new Vector3(x, y, matePosition.z);
-                }
-                if (Program.InputGetMouse0 && clickInRight)
-                {
-                    mate.transform.eulerAngles = mateAngel +
-                        new Vector3(0, (clickInPosition.x - Input.mousePosition.x) * 0.2f, 0);
-                    var size = oSize + (clickInPosition.y - Input.mousePosition.y) * 0.01f;
-                    if (size < 5) size = 5;
-                    if (size > 20) size = 20;
-                    targetCamera.orthographicSize = size;
-                    targetCamera.transform.localPosition = new Vector3(0, size * 0.95f, 200);
-                }
-                if (Program.InputGetMouse0Up && (clickInLeft || clickInRight))
-                {
-                    clickInLeft = false;
-                    clickInRight = false;
-                    if ((Time.time - clickInTime) < 0.2f)
-                    {
-                        mate.Play(Mate.MateAction.Tap);
-                        mate.ActiveCamera(Mate.MateAction.Tap, targetCamera.gameObject.layer);
-                    }
-                }
-            }
         }
 
         public void ViewMate(int code)
@@ -232,7 +307,7 @@ namespace MDPro3
 
         void ItemOnListRefresh(string[] task, GameObject item)
         {
-            var handler = item.GetComponent<SuperScrollViewItemForMate>();
+            var handler = item.GetComponent<SelectionToggle_Mate>();
             handler.code = int.Parse(task[0]);
             handler.mateName = task[1];
             handler.Refresh();

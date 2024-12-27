@@ -2,30 +2,25 @@ using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.UI;
-using MDPro3.YGOSharp;
 using MDPro3.UI;
-using DG.Tweening.Plugins.Core.PathCore;
+using TMPro;
+using UnityEngine.EventSystems;
+using System.IO;
+using MDPro3.YGOSharp;
 
 namespace MDPro3
 {
     public class Appearance : Servant
     {
-        public ButtonList defaultButton;
-        public ButtonList defaultButtonDeck;
-        public ButtonList defaultPlayer;
-        public Text title;
+        [Header("Appearance")]
+        [SerializeField] private SelectionToggle_AppearancePlayer defaultPlayerToggle;
+        [HideInInspector] public SelectionToggle_AppearanceGenre lastSelectedToggle;
+        [HideInInspector] public SelectionToggle_AppearanceItem lastSelectedItem;
 
-        public Text detailTitle;
-        public Text description;
-        public Image detailImage;
-        public RawImage detailProtector;
-
-        public Text playerNameEx;
-        public InputField playerName;
+        public TMP_InputField inputPlayerName;
 
         public GameObject table;
         public Text deckName;
@@ -34,9 +29,7 @@ namespace MDPro3
         public Text sideCount;
         public RectTransform cardsRoot;
 
-        public Text hover;
-        public ScrollRect scrollView;
-        public ButtonSwitch btnOverride;
+        #region Assets
 
         public static Sprite duelFace0;
         public static Sprite duelFace1;
@@ -87,17 +80,17 @@ namespace MDPro3
         public const string opTagString = "OpTag";
 
 
-        static List<GameObject> wallpapers = new List<GameObject>();
-        static List<GameObject> faces = new List<GameObject>();
-        static List<GameObject> frames = new List<GameObject>();
-        static List<GameObject> protectors = new List<GameObject>();
-        static List<GameObject> mats = new List<GameObject>();
-        static List<GameObject> graves = new List<GameObject>();
-        static List<GameObject> stands = new List<GameObject>();
-        static List<GameObject> mates = new List<GameObject>();
-        static List<GameObject> cases = new List<GameObject>();
+        private static List<GameObject> wallpapers = new List<GameObject>();
+        private static List<GameObject> faces = new List<GameObject>();
+        private static List<GameObject> frames = new List<GameObject>();
+        private static List<GameObject> protectors = new List<GameObject>();
+        private static List<GameObject> mats = new List<GameObject>();
+        private static List<GameObject> graves = new List<GameObject>();
+        private static List<GameObject> stands = new List<GameObject>();
+        private static List<GameObject> mates = new List<GameObject>();
+        private static List<GameObject> cases = new List<GameObject>();
 
-        Dictionary<string, List<GameObject>> pools = new Dictionary<string, List<GameObject>>
+        private Dictionary<string, List<GameObject>> pools = new Dictionary<string, List<GameObject>>
         {
             { "Wallpaper", wallpapers },
             { "Face", faces },
@@ -111,17 +104,23 @@ namespace MDPro3
         };
 
         public GameObject appearanceItem;
+
+        #endregion
+
+
         public enum Condition
         {
             Duel,
             Watch,
             Replay,
-            Deck
+            Deck,
+            DeckEditor
         }
         public Condition condition = Condition.Duel;
         public void SwitchCondition(Condition condition)
         {
             this.condition = condition;
+            var title = Manager.GetElement<TextMeshProUGUI>("Title");
             switch (condition)
             {
                 case Condition.Duel:
@@ -134,40 +133,236 @@ namespace MDPro3
                     title.text = InterString.Get("回放外观");
                     break;
                 case Condition.Deck:
+                case Condition.DeckEditor:
                     title.text = InterString.Get("卡组外观");
                     break;
             }
+
+            if (condition == Condition.DeckEditor)
+                condition = Condition.Deck;
+
+            Manager.GetElement("Page0 PlayerName").SetActive(condition != Condition.Deck);
+            Manager.GetElement("Page1 Wallpaper").SetActive(condition != Condition.Deck);
+            Manager.GetElement("Page2 Face").SetActive(condition != Condition.Deck);
+            Manager.GetElement("Page3 Frame").SetActive(condition != Condition.Deck);
+            Manager.GetElement("Page4 Case").SetActive(condition == Condition.Deck);
+            Manager.GetElement("Page10 Pickup").SetActive(condition == Condition.Deck);
         }
+
+        #region Servant
         public override void Initialize()
         {
             depth = 6;
-            haveLine = true;
+            showLine = false;
             subBlackAlpha = 0.9f;
             base.Initialize();
-            Program.onScreenChanged += RefreshItemsPosition;
-            playerName.onEndEdit.AddListener(SavePlayerName);
+            inputPlayerName.onEndEdit.AddListener(SavePlayerName);
 
             AssetBundle ab = AssetBundle.LoadFromFile(Program.root + "MasterDuel/Frame/ProfileFrameMat1030001");
             matForFace = ab.LoadAsset<Material>("ProfileFrameMat1030001");
             ab.Unload(false);
-            var handle = Addressables.LoadAssetAsync<GameObject>("AppearanceItem");
+            var handle = Addressables.LoadAssetAsync<GameObject>("ItemAppearance");
             handle.Completed += (result) =>
             {
                 appearanceItem = result.Result;
             };
 
-            btnOverride.onAction = () =>
-            {
-                Config.SetBool("OverrideDeckAppearance", true);
-            };
-            btnOverride.offAction = () =>
-            {
-                Config.SetBool("OverrideDeckAppearance", false);
-            };
 
             StartCoroutine(LoadSettingAssets());
         }
 
+        protected override void ApplyShowArrangement(int preDepth)
+        {
+            if (condition == Condition.Deck || condition == Condition.DeckEditor)
+            {
+                EventSystem.current.SetSelectedGameObject(Manager.GetElement("Page10 Pickup"));
+                Manager.GetElement<SelectionToggle_AppearanceGenre>("Page10 Pickup").SetToggleOn();
+
+                deckName.text = Program.instance.editDeck.input.text;
+                mainCount.text = Program.instance.editDeck.mainCount.ToString();
+                extraCount.text = Program.instance.editDeck.extraCount.ToString();
+                sideCount.text = Program.instance.editDeck.sideCount.ToString();
+                foreach (var card in Program.instance.editDeck.cards)
+                {
+                    card.transform.SetParent(cardsRoot, false);
+                    card.RefreshPositionInstant();
+                }
+                PrePick();
+            }
+            else
+            {
+                EventSystem.current.SetSelectedGameObject(Manager.GetElement("Page0 PlayerName"));
+                Manager.GetElement<SelectionToggle_AppearanceGenre>("Page0 PlayerName").SetToggleOn();
+            }
+
+            defaultPlayerToggle.SetToggleOn();
+
+            base.ApplyShowArrangement(preDepth);
+        }
+
+        public override void OnReturn()
+        {
+            if (inTransition) return;
+            if (returnAction != null)
+            {
+                returnAction.Invoke();
+                return;
+            }
+            AudioManager.PlaySE("SE_MENU_CANCEL");
+            GameObject selected = EventSystem.current.currentSelectedGameObject;
+
+            if (selected == null)
+                OnExit();
+            else if (Cursor.lockState == CursorLockMode.None)
+                OnExit();
+            else if (selected.TryGetComponent<SelectionToggle_AppearanceItem>(out _) 
+                ||selected == inputPlayerName.gameObject)
+            {
+                if (lastSelectedToggle != null)
+                    EventSystem.current.SetSelectedGameObject(lastSelectedToggle.gameObject);
+                else
+                {
+                    if(condition == Condition.Deck || condition == Condition.DeckEditor)
+                        EventSystem.current.SetSelectedGameObject(Manager.GetElement("Page4 Case"));
+                    else
+                        EventSystem.current.SetSelectedGameObject(Manager.GetElement("Page0 PlayerName"));
+                }
+            }
+            else
+                OnExit();
+        }
+
+        public override void OnExit()
+        {
+            if (condition != Condition.Deck && condition != Condition.DeckEditor)
+            {
+                if (Program.instance.currentSubServant == this)
+                    Program.instance.ShowSubServant(Program.instance.setting);
+                else
+                    Program.instance.ShiftToServant(Program.instance.setting);
+
+                Program.instance.setting.RefreshAppearanceModeText();
+
+                DOTween.To(v => { }, 0, 0, transitionTime).OnComplete(() =>
+                {
+                    foreach (var pool in pools)
+                    {
+                        foreach (var item in pool.Value)
+                            item.GetComponent<SelectionToggle_AppearanceItem>().Dispose();
+                        pool.Value.Clear();
+                    }
+                    Config.Save();
+                });
+
+                if (UIManager.currentWallpaper != Config.Get("Wallpaper", Program.items.wallpapers[0].id.ToString()))
+                {
+                    UIManager.currentWallpaper = Config.Get("Wallpaper", Program.items.wallpapers[0].id.ToString());
+                    Program.instance.ui_.ChangeWallpaper(UIManager.currentWallpaper);
+                }
+            }
+            else if (condition == Condition.Deck)
+            {
+                Program.instance.ShiftToServant(Program.instance.editDeck);
+                DOTween.To(v => { }, 0, 0, transitionTime).OnComplete(() =>
+                {
+                    foreach (var pool in pools)
+                    {
+                        foreach (var item in pool.Value)
+                            item.GetComponent<SelectionToggle_AppearanceItem>().Dispose();
+                        pool.Value.Clear();
+                    }
+                });
+                Program.instance.editDeck.deck.Pickup.Clear();
+                foreach (var card in Program.instance.editDeck.cards)
+                {
+                    card.transform.SetParent(Program.instance.editDeck.cardsOnEditParent, false);
+                    card.RefreshPositionInstant();
+                    if (card.picked)
+                        Program.instance.editDeck.deck.Pickup.Add(card.Code);
+                    card.PickUp(false);
+                }
+            }
+            else
+            {
+                Program.instance.ShiftToServant(Program.instance.deckEditor);
+
+            }
+        }
+
+        public override void PerFrameFunction()
+        {
+            if (!showing) return;
+            if (NeedResponseInput())
+            {
+                if (UserInput.WasLeftShoulderPressed)
+                    if(Manager.GetElement("PlayerToggle0").activeInHierarchy)
+                        Manager.GetElement<SelectionToggle_AppearancePlayer>("PlayerToggle0").OnLeftSelection();
+                if (UserInput.WasRightShoulderPressed)
+                    if (Manager.GetElement("PlayerToggle0").activeInHierarchy)
+                        Manager.GetElement<SelectionToggle_AppearancePlayer>("PlayerToggle0").OnRightSelection();
+
+                if (UserInput.MouseRightDown || UserInput.WasCancelPressed)
+                    OnReturn();
+            }
+        }
+
+        protected override bool NeedResponseInput()
+        {
+            if(inputPlayerName.isFocused)
+                return false;
+            return base.NeedResponseInput();
+        }
+
+        public override void SelectLastSelectable()
+        {
+            if (Selected != null)
+            {
+                if (Selected.TryGetComponent<SelectionToggle_CharacterItem>(out _))
+                    EventSystem.current.SetSelectedGameObject(Selected.gameObject);
+                else if (Selected.TryGetComponent<SelectionToggle_CharacterSeries>(out _))
+                    EventSystem.current.SetSelectedGameObject(Selected.gameObject);
+                else
+                    EventSystem.current.SetSelectedGameObject(Manager.GetElement(condition == Condition.Deck 
+                        || condition == Condition.DeckEditor ? "Page10 Pickup" : "Page0 PlayerName"));
+            }
+            else
+                EventSystem.current.SetSelectedGameObject(Manager.GetElement(condition == Condition.Deck 
+                    || condition == Condition.DeckEditor ? "Page10 Pickup" : "Page0 PlayerName"));
+        }
+
+        #endregion
+
+        public void SetDetailName(string itemName)
+        {
+            Manager.GetElement<TextMeshProUGUI>("DetailSetting").text = itemName;
+        }
+
+        public void SetDetailDescription(string description)
+        {
+            Manager.GetElement<TextMeshProUGUI>("DetailDesc").text = description;
+        }
+        public void SetHoverText(string text)
+        {
+            Manager.GetElement<TextMeshProUGUI>("HoverText").text = text;
+        }
+        public void SetDetailImage(Sprite sprite)
+        {
+            Manager.GetElement<Image>("Image").sprite = sprite;
+            Manager.GetElement("Image").SetActive(true);
+            Manager.GetElement("RawImage").SetActive(false);
+        }
+        public void SetDetailImageMaterial(Material mat)
+        {
+            Manager.GetElement<Image>("Image").material = mat;
+            Manager.GetElement("Image").SetActive(true);
+            Manager.GetElement("RawImage").SetActive(false);
+        }
+        public void SetDetailRawImageMaterial(Material mat)
+        {
+            Manager.GetElement<RawImage>("RawImage").material = mat;
+            Manager.GetElement("RawImage").SetActive(true);
+            Manager.GetElement("Image").SetActive(false);
+        }
 
         public static bool loaded;
         public IEnumerator LoadSettingAssets()
@@ -473,126 +668,40 @@ namespace MDPro3
             loaded = true;
         }
 
-        void SavePlayerName(string nameValue)
+        private void SavePlayerName(string nameValue)
         {
             Config.Set(condition.ToString() + "PlayerName" + player, nameValue == "" ? "@ui" : nameValue);
-            playerName.text = Config.Get(condition.ToString() + "PlayerName" + player, "@ui");
+            inputPlayerName.text = Config.Get(condition.ToString() + "PlayerName" + player, "@ui");
         }
 
-        public override void Show(int preDepth)
-        {
-            base.Show(preDepth);
-            if (condition == Condition.Deck)
-            {
-                defaultButton.transform.parent.gameObject.SetActive(false);
-                defaultButtonDeck.transform.parent.gameObject.SetActive(true);
-                defaultButtonDeck.SelectThis();
-                deckName.text = Program.I().editDeck.input.text;
-                mainCount.text = Program.I().editDeck.mainCount.ToString();
-                extraCount.text = Program.I().editDeck.extraCount.ToString();
-                sideCount.text = Program.I().editDeck.sideCount.ToString();
-                foreach (var card in Program.I().editDeck.cards)
-                {
-                    card.transform.SetParent(cardsRoot, false);
-                    card.RefreshPositionInstant();
-                }
-                PrePick();
-            }
-            else
-            {
-                defaultButton.transform.parent.gameObject.SetActive(true);
-                defaultButtonDeck.transform.parent.gameObject.SetActive(false);
-                defaultButton.SelectThis();
-            }
-            defaultPlayer.SelectThis();
-        }
 
-        public override void OnReturn()
-        {
-            base.OnReturn();
-            if (returnAction != null) return;
-            if (inTransition) return;
-            OnExit();
-        }
-
-        public override void OnExit()
-        {
-            if (condition != Condition.Deck)
-            {
-                if (Program.I().currentSubServant == this)
-                    Program.I().ShowSubServant(Program.I().setting);
-                else
-                    Program.I().ShiftToServant(Program.I().setting);
-
-                Program.I().setting.duelAppearanceValue.text = Config.Get("DuelPlayerName0", "@ui");
-                Program.I().setting.watchAppearanceValue.text = Config.Get("WatchPlayerName0", "@ui");
-                Program.I().setting.replayAppearanceValue.text = Config.Get("ReplayPlayerName0", "@ui");
-
-                DOTween.To(v => { }, 0, 0, transitionTime).OnComplete(() =>
-                {
-                    foreach (var pool in pools)
-                    {
-                        foreach (var item in pool.Value)
-                            StartCoroutine(item.GetComponent<AppearanceItem>().Dispose());
-                        pool.Value.Clear();
-                    }
-                    Config.Save();
-                });
-
-                if (UIManager.currentWallpaper != Config.Get("Wallpaper", Program.items.wallpapers[0].id.ToString()))
-                {
-                    UIManager.currentWallpaper = Config.Get("Wallpaper", Program.items.wallpapers[0].id.ToString());
-                    Program.I().ui_.ChangeWallpaper(UIManager.currentWallpaper);
-                }
-            }
-            else
-            {
-                Program.I().ShiftToServant(Program.I().editDeck);
-                DOTween.To(v => { }, 0, 0, transitionTime).OnComplete(() =>
-                {
-                    foreach (var pool in pools)
-                    {
-                        foreach (var item in pool.Value)
-                            StartCoroutine(item.GetComponent<AppearanceItem>().Dispose());
-                        pool.Value.Clear();
-                    }
-                });
-                Program.I().editDeck.deck.Pickup.Clear();
-                foreach (var card in Program.I().editDeck.cards)
-                {
-                    card.transform.SetParent(Program.I().editDeck.cardsOnEditParent, false);
-                    card.RefreshPositionInstant();
-                    if (card.picked)
-                        Program.I().editDeck.deck.Pickup.Add(card.Code);
-                    card.PickUp(false);
-                }
-            }
-        }
-
-        public static string currentContent = "";
-        static List<Items.Item> targetItems;
-        static List<GameObject> currentList;
-        static List<GameObject> onlyOpSideShowItems = new List<GameObject>();
+        public static string currentContent = "PlayerName";
+        private static List<Items.Item> targetItems;
+        private static List<GameObject> currentList;
+        private static List<GameObject> onlyOpSideShowItems = new();
         public void ShowItems(string type)
         {
             currentContent = type;
             pools.TryGetValue(currentContent, out currentList);
-            if (Program.I().appearance.condition == Condition.Deck)
-                defaultPlayer.transform.parent.gameObject.SetActive(false);
+            if (condition == Condition.Deck || condition == Condition.DeckEditor)
+                defaultPlayerToggle.transform.parent.gameObject.SetActive(false);
             else
-                defaultPlayer.transform.parent.gameObject.SetActive(true);
-            table.gameObject.SetActive(false);
+                defaultPlayerToggle.transform.parent.gameObject.SetActive(true);
+            table.SetActive(false);
             cardsRoot.GetComponent<RectTransform>().anchoredPosition = new Vector2(0f, -1080f);
+
+            var detial = Manager.GetElement<CanvasGroup>("Details");
+            var scrollView = Manager.GetElement<ScrollRect>("ScrollRect");
 
             if (currentContent == "PlayerName")
             {
                 scrollView.GetComponent<CanvasGroup>().alpha = 0;
                 scrollView.GetComponent<CanvasGroup>().blocksRaycasts = false;
-                detailTitle.transform.parent.GetComponent<CanvasGroup>().alpha = 0;
-                detailTitle.transform.parent.GetComponent<CanvasGroup>().blocksRaycasts = false;
-                playerName.transform.parent.parent.gameObject.SetActive(true);
+                detial.alpha = 0f;
+                inputPlayerName.transform.parent.parent.gameObject.SetActive(true);
 
-                playerName.text = Config.Get(Program.I().appearance.condition.ToString() + currentContent + player, "");
+                inputPlayerName.text = Config.Get(condition.ToString() + currentContent + player, "");
+                var playerNameEx = Manager.GetElement<TextMeshProUGUI>("InputHint");
                 if (player == "0")
                     playerNameEx.text = InterString.Get("请输入您的昵称：");
                 else if (player == "1")
@@ -605,11 +714,10 @@ namespace MDPro3
             }
             else if (currentContent == "Pickup")
             {
-                scrollView.GetComponent<CanvasGroup>().alpha = 0;
+                scrollView.GetComponent<CanvasGroup>().alpha = 0f;
                 scrollView.GetComponent<CanvasGroup>().blocksRaycasts = false;
-                detailTitle.transform.parent.GetComponent<CanvasGroup>().alpha = 0;
-                detailTitle.transform.parent.GetComponent<CanvasGroup>().blocksRaycasts = false;
-                playerName.transform.parent.parent.gameObject.SetActive(false);
+                detial.alpha = 0f;
+                inputPlayerName.transform.parent.parent.gameObject.SetActive(false);
                 table.gameObject.SetActive(true);
                 cardsRoot.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
 
@@ -617,11 +725,16 @@ namespace MDPro3
             }
             else if (currentContent == "Wallpaper")
             {
-                defaultPlayer.transform.parent.gameObject.SetActive(false);
+                defaultPlayerToggle.transform.parent.gameObject.SetActive(false);
             }
 
-            bool isWallpaper = false;
+            scrollView.GetComponent<CanvasGroup>().alpha = 1.0f;
+            scrollView.GetComponent<CanvasGroup>().blocksRaycasts = true;
+            detial.alpha = 1f;
+            inputPlayerName.transform.parent.parent.gameObject.SetActive(false);
+            table.SetActive(false);
 
+            bool isWallpaper = false;
             switch (currentContent)
             {
                 case "Wallpaper":
@@ -657,17 +770,11 @@ namespace MDPro3
                     break;
             }
 
-            scrollView.GetComponent<CanvasGroup>().alpha = 1;
-            scrollView.GetComponent<CanvasGroup>().blocksRaycasts = true;
-            detailTitle.transform.parent.GetComponent<CanvasGroup>().alpha = 1;
-            detailTitle.transform.parent.GetComponent<CanvasGroup>().blocksRaycasts = true;
-            playerName.transform.parent.parent.gameObject.SetActive(false);
-            table.gameObject.SetActive(false);
 
             foreach (var pool in pools)
                 if (pool.Key != currentContent)
                     foreach (var item in pool.Value)
-                        StartCoroutine(item.GetComponent<AppearanceItem>().Hide());
+                        item.GetComponent<SelectionToggle_AppearanceItem>().Hide();
 
             if (currentList.Count == 0)
             {
@@ -675,14 +782,15 @@ namespace MDPro3
                 for (int i = 0; i < targetItems.Count; i++)
                 {
                     GameObject item = Instantiate(appearanceItem);
-                    AppearanceItem itemMono = item.GetComponent<AppearanceItem>();
-                    itemMono.id = i;
-                    itemCount = itemMono.id;
+                    var itemMono = item.GetComponent<SelectionToggle_AppearanceItem>();
+                    itemMono.index = i;
+                    itemCount = itemMono.index;
                     itemMono.itemID = targetItems[i].id;
                     itemMono.description = targetItems[i].description;
                     itemMono.itemName = targetItems[i].name;
                     itemMono.path = Items.CodeToIconPath(itemMono.itemID.ToString());
                     itemMono.transform.SetParent(scrollView.content, false);
+                    itemMono.Refresh();
                     currentList.Add(item);
                 }
 
@@ -695,66 +803,70 @@ namespace MDPro3
                         int code = int.Parse(files[i].Name.Replace(".bundle", ""));
                         var card = CardsManager.Get(code, true);
                         GameObject item = Instantiate(appearanceItem);
-                        AppearanceItem itemMono = item.GetComponent<AppearanceItem>();
-                        itemMono.id = i + targetItems.Count;
-                        itemCount = itemMono.id;
+                        var itemMono = item.GetComponent<SelectionToggle_AppearanceItem>();
+                        itemMono.index = i + targetItems.Count;
+                        itemCount = itemMono.index;
                         itemMono.itemID = code;
                         if (card.Id == 0)
                             itemMono.itemName = MateView.GetRushDuelMateName(code);
                         else
                             itemMono.itemName = card.Name;
                         itemMono.description = card.Desc;
-                        itemMono.path = "";
+                        itemMono.path = string.Empty;
                         itemMono.transform.SetParent(scrollView.content, false);
+                        itemMono.Refresh();
                         currentList.Add(item);
                     }
                 }
 #endif
-                if(condition != Condition.Deck)
+                if(condition != Condition.Deck && condition != Condition.DeckEditor)
                 {
                     if (Program.items.ListHaveNone(targetItems))
                     {
                         GameObject item = Instantiate(appearanceItem);
-                        AppearanceItem itemMono = item.GetComponent<AppearanceItem>();
-                        itemMono.id = ++itemCount;
+                        var itemMono = item.GetComponent<SelectionToggle_AppearanceItem>();
+                        itemMono.index = ++itemCount;
                         itemMono.itemID = Items.noneCode;
                         itemMono.description = InterString.Get("该项设置将设置为无。");
                         itemMono.itemName = InterString.Get("不设置");
                         itemMono.path = (isWallpaper ? "WallPaperIcon" : string.Empty) + Items.noneIconPath;
                         itemMono.transform.SetParent(scrollView.content, false);
+                        itemMono.Refresh();
                         currentList.Add(item);
                     }
 
                     if (Program.items.ListHaveRandom(targetItems))
                     {
                         GameObject item = Instantiate(appearanceItem);
-                        AppearanceItem itemMono = item.GetComponent<AppearanceItem>();
-                        itemMono.id = ++itemCount;
+                        var itemMono = item.GetComponent<SelectionToggle_AppearanceItem>();
+                        itemMono.index = ++itemCount;
                         itemMono.itemID = Items.randomCode;
                         itemMono.description = InterString.Get("该项设置将随机设置。");
                         itemMono.itemName = InterString.Get("随机");
                         itemMono.path = (isWallpaper ? "WallPaperIcon" : string.Empty) + Items.randomIconPath;
                         itemMono.transform.SetParent(scrollView.content, false);
+                        itemMono.Refresh();
                         currentList.Add(item);
                     }
                     if (Program.items.ListHaveSame(targetItems))
                     {
                         GameObject item = Instantiate(appearanceItem);
-                        AppearanceItem itemMono = item.GetComponent<AppearanceItem>();
-                        itemMono.id = ++itemCount;
+                        var itemMono = item.GetComponent<SelectionToggle_AppearanceItem>();
+                        itemMono.index = ++itemCount;
                         itemMono.itemID = Items.sameCode;
                         itemMono.description = InterString.Get("该项设置将与场地设置保持一致。");
                         itemMono.itemName = InterString.Get("一致");
                         itemMono.path = Items.sameIconPath;
                         itemMono.transform.SetParent(scrollView.content, false);
+                        itemMono.Refresh();
                         currentList.Add(item);
                     }
 
                     if (Program.items.ListHaveDIY(targetItems))
                     {
                         GameObject item = Instantiate(appearanceItem);
-                        AppearanceItem itemMono = item.GetComponent<AppearanceItem>();
-                        itemMono.id = ++itemCount;
+                        var itemMono = item.GetComponent<SelectionToggle_AppearanceItem>();
+                        itemMono.index = ++itemCount;
                         itemMono.itemID = Items.diyCode;
                         itemMono.description = InterString.Get("我方头像：") + 
                                                                 Program.diyPath + meString + Program.pngExpansion + "\n" +
@@ -767,19 +879,21 @@ namespace MDPro3
                         itemMono.itemName = InterString.Get("自定义");
                         itemMono.path = Items.diyIconPath;
                         itemMono.transform.SetParent(scrollView.content, false);
+                        itemMono.Refresh();
                         currentList.Add(item);
                     }
 
                     if (targetItems == Program.items.mats)
                     {
                         GameObject item = Instantiate(appearanceItem);
-                        AppearanceItem itemMono = item.GetComponent<AppearanceItem>();
-                        itemMono.id = ++itemCount;
+                        var itemMono = item.GetComponent<SelectionToggle_AppearanceItem>();
+                        itemMono.index = ++itemCount;
                         itemMono.itemID = Items.sameCode;
                         itemMono.description = InterString.Get("该项设置将与我方场地设置保持一致。");
                         itemMono.itemName = InterString.Get("一致");
                         itemMono.path = Items.sameIconPath;
                         itemMono.transform.SetParent(scrollView.content, false);
+                        itemMono.Refresh();
                         currentList.Add(item);
                         onlyOpSideShowItems.Add(item);
                     }
@@ -791,95 +905,85 @@ namespace MDPro3
                     item.SetActive(false);
                 else
                     item.SetActive(true);
-                item.GetComponent<AppearanceItem>().Show();
+                item.GetComponent<SelectionToggle_AppearanceItem>().Show();
             }
             foreach (var item in currentList)
             {
                 if (currentContent == "Wallpaper")
                 {
-                    if (item.GetComponent<AppearanceItem>().itemID.ToString() == Config.Get("Wallpaper", targetItems[0].id.ToString()))
+                    if (item.GetComponent<SelectionToggle_AppearanceItem>().itemID.ToString() == Config.Get("Wallpaper", targetItems[0].id.ToString()))
                     {
-                        item.GetComponent<AppearanceItem>().SelectThis();
+                        item.GetComponent<SelectionToggle_AppearanceItem>().SetToggleOn();
                         break;
                     }
                 }
                 else
                 {
-                    if (Program.I().appearance.condition == Condition.Deck)
+                    var itemID = item.GetComponent<SelectionToggle_AppearanceItem>().itemID;
+
+                    if (condition == Condition.Deck)
                     {
-                        if (item.GetComponent<AppearanceItem>().itemID == Program.I().editDeck.deck.Case
-                            || item.GetComponent<AppearanceItem>().itemID == Program.I().editDeck.deck.Protector
-                            || item.GetComponent<AppearanceItem>().itemID == Program.I().editDeck.deck.Field
-                            || item.GetComponent<AppearanceItem>().itemID == Program.I().editDeck.deck.Grave
-                            || item.GetComponent<AppearanceItem>().itemID == Program.I().editDeck.deck.Stand
-                            || item.GetComponent<AppearanceItem>().itemID == Program.I().editDeck.deck.Mate)
+                        if (itemID == Program.instance.editDeck.deck.Case
+                            || itemID == Program.instance.editDeck.deck.Protector
+                            || itemID == Program.instance.editDeck.deck.Field
+                            || itemID == Program.instance.editDeck.deck.Grave
+                            || itemID == Program.instance.editDeck.deck.Stand
+                            || itemID == Program.instance.editDeck.deck.Mate)
                         {
-                            item.GetComponent<AppearanceItem>().SelectThis();
+                            item.GetComponent<SelectionToggle_AppearanceItem>().SetToggleOn();
+                            break;
+                        }
+                    }
+                    else if(condition == Condition.DeckEditor)
+                    {
+                        if (itemID == DeckEditor.Deck.Case
+                            || itemID == DeckEditor.Deck.Protector
+                            || itemID == DeckEditor.Deck.Field
+                            || itemID == DeckEditor.Deck.Grave
+                            || itemID == DeckEditor.Deck.Stand
+                            || itemID == DeckEditor.Deck.Mate)
+                        {
+                            item.GetComponent<SelectionToggle_AppearanceItem>().SetToggleOn();
                             break;
                         }
                     }
                     else
                     {
-                        if (item.GetComponent<AppearanceItem>().itemID.ToString() == Config.Get(Program.I().appearance.condition.ToString() + currentContent + player, targetItems[0].id.ToString()))
+                        if (itemID.ToString() == Config.Get(Program.instance.appearance.condition.ToString() + currentContent + player, targetItems[0].id.ToString()))
                         {
-                            item.GetComponent<AppearanceItem>().SelectThis();
+                            item.GetComponent<SelectionToggle_AppearanceItem>().SetToggleOn();
                             break;
                         }
                     }
                 }
             }
-            RefreshItemsPosition();
-            scrollView.content.anchoredPosition = Vector2.zero;
         }
+
         public void SwitchPlayer(string player)
         {
             Appearance.player = player;
-            if(condition == Condition.Duel)
+            var btnOverride = Manager.GetElement<SelectionToggle>("ToggleOverwrite");
+            if (condition == Condition.Duel)
             {
                 if(player == "0")
                 {
                     btnOverride.gameObject.SetActive(true);
                     if (Config.GetBool("OverrideDeckAppearance", false))
-                        btnOverride.OnSwitchOn();
+                        btnOverride.SetToggleOn();
                     else
-                        btnOverride.OnSwitchOff();
+                        btnOverride.SetToggleOff();
                 }
                 else
                     btnOverride.gameObject.SetActive(false);
             }
             else
                 btnOverride.gameObject.SetActive(false);
-            if (isShowed)
+            if (showing)
                 ShowItems(currentContent);
-        }
-        int numOfEachLine;
-        public void ScrollViewResize()
-        {
-            int screenWidth = (int)(1080 * (float)Screen.width / Screen.height);
-            int targetWidth = screenWidth - 450 - 450 - 30 - 10 - 100;
-            numOfEachLine = targetWidth / 160;
-            if (numOfEachLine < 1)
-                numOfEachLine = 1;
-            targetWidth = 160 * numOfEachLine + 30 + 10;
-            scrollView.GetComponent<RectTransform>().sizeDelta = new Vector2(targetWidth, scrollView.GetComponent<RectTransform>().sizeDelta.y);
-        }
-        public void RefreshItemsPosition()
-        {
-            if (currentList == null) return;
-            ScrollViewResize();
-            foreach (var item in scrollView.content.GetComponentsInChildren<AppearanceItem>(true))
-            {
-                item.GetComponent<RectTransform>().anchoredPosition = new Vector2(
-                    10 + (item.id % numOfEachLine) * 160,
-                    -20 - (int)Math.Floor(item.id / (float)numOfEachLine) * 160
-                    );
-            }
-            int lines = (int)Math.Ceiling(currentList.Count / (float)numOfEachLine);
-            scrollView.content.sizeDelta = new Vector2(scrollView.content.sizeDelta.x, lines * 160 + 40);
         }
 
         int pickCount;
-        public void PickThis(CardOnEdit card)
+        public void PickThis(CardInDeck card)
         {
             if (!card.picked)
             {
@@ -899,19 +1003,59 @@ namespace MDPro3
         }
         void PrePick()
         {
-            pickCount = 0;
-            for (int i = 0; i < Program.I().editDeck.deck.Pickup.Count; i++)
+            if (condition == Condition.Deck)
             {
-                foreach (var card in Program.I().editDeck.cards)
+                pickCount = 0;
+                for (int i = 0; i < Program.instance.editDeck.deck.Pickup.Count; i++)
                 {
-                    if (card.Code == Program.I().editDeck.deck.Pickup[i])
+                    foreach (var card in Program.instance.editDeck.cards)
                     {
-                        pickCount++;
-                        card.PickUp(true);
-                        break;
+                        if (card.Code == Program.instance.editDeck.deck.Pickup[i])
+                        {
+                            pickCount++;
+                            card.PickUp(true);
+                            break;
+                        }
                     }
                 }
             }
+            else if(condition == Condition.DeckEditor)
+            {
+
+            }
+        }
+
+        public void SetOverride(bool over)
+        {
+            if (!showing)
+                return;
+            Config.SetBool("OverrideDeckAppearance", over);
+        }
+
+        public int GetCurrentGenreCount()
+        {
+            foreach (var pool in pools)
+                if (pool.Key == currentContent)
+                    return pool.Value.Count;
+            return 0;
+        }
+
+        public GameObject GetCurrentContentItem()
+        {
+            if (currentContent == "PlayerName")
+                return inputPlayerName.gameObject;
+            if (currentContent == "Pickup")
+                return null;
+            //TODO
+            if(lastSelectedItem != null && lastSelectedItem.gameObject.activeSelf)
+                return lastSelectedItem.gameObject;
+            return Manager.GetElement<ScrollRect>("ScrollRect").content.GetChild(0).gameObject;
+        }
+
+        public void SelectPlayerNameToggle()
+        {
+            UserInput.NextSelectionIsAxis = true;
+            EventSystem.current.SetSelectedGameObject(Manager.GetElement("Page0 PlayerName"));
         }
     }
 }

@@ -137,6 +137,7 @@ MonoBehaviour:
   enterAudio: 
   clickAudio: SE_MENU_SELECT_01
   exitAudio: 
+  submitAudio: 
   audioType: 0
 --- !u!1 &4406713484729016820
 GameObject:
@@ -208,8 +209,6 @@ MonoBehaviour:
   checkMark: {fileID: 6019998328854063722}
   id: 0
   characterID: 0002
-  characterName: 
-  characterDescription: 
   selected: 0
 --- !u!114 &6909373896694140379
 MonoBehaviour:

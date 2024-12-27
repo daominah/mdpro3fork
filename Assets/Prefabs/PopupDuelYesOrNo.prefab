@@ -283,6 +283,7 @@ MonoBehaviour:
   maxUIScale: 1.5
   showY: 0
   height: 150
+  defaultSelect: {fileID: 6973610505030821777}
   selections: []
   hideY: 0
   btnHide: {fileID: 3535050539514652950}

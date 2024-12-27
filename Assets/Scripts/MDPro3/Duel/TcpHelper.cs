@@ -10,7 +10,6 @@ using MDPro3.YGOSharp.Network.Enums;
 using MDPro3.YGOSharp.OCGWrapper.Enums;
 using MDPro3.Net;
 using System.Net;
-using System.Collections.Concurrent;
 
 namespace MDPro3
 {
@@ -98,7 +97,7 @@ namespace MDPro3
                 joinedAddress = ipString;
                 joinedPort = portString;
                 joinedPassword = pswString;
-                Program.I().ocgcore.mycardDuel = joinedAddress == MyCard.duelUrl;
+                Program.instance.ocgcore.mycardDuel = joinedAddress == MyCard.duelUrl;
                 doWhenSuccess?.Invoke();
 
                 Debug.LogFormat("Joind Address: {0}, Port: {1}, Password: {2}", joinedAddress, joinedPort, joinedPassword);
@@ -123,7 +122,7 @@ namespace MDPro3
             }
             catch
             {
-                if (Program.I().solo.isShowed)
+                if (Program.instance.solo.showing)
                     MessageManager.messageFromSubString = InterString.Get("端口被占用， 请尝试修改端口后再尝试。端口号应大于0，小于65535。");
             }
         }
@@ -136,7 +135,7 @@ namespace MDPro3
                     && networkStream != null
                     && tcpClient.Connected
                     && Program.Running
-                    && !Program.I().room.duelEnded)
+                    && !Program.instance.room.duelEnded)
                 {
                     var data = SocketMaster.ReadPacket(networkStream);
                     AddDateJumoLine(data);
@@ -177,74 +176,74 @@ namespace MDPro3
                             switch (ms)
                             {
                                 case StocMessage.GameMsg:
-                                    Program.I().room.StocMessage_GameMsg(r);
+                                    Program.instance.room.StocMessage_GameMsg(r);
                                     var p = new Package();
                                     p.Function = r.ReadByte();
                                     p.Data = new BinaryMaster(r.ReadToEnd());
-                                    Program.I().ocgcore.AddPackage(p);
+                                    Program.instance.ocgcore.AddPackage(p);
                                     break;
                                 case StocMessage.ErrorMsg:
-                                    Program.I().room.StocMessage_ErrorMsg(r);
+                                    Program.instance.room.StocMessage_ErrorMsg(r);
                                     break;
                                 case StocMessage.SelectHand:
-                                    Program.I().room.StocMessage_SelectHand(r);
+                                    Program.instance.room.StocMessage_SelectHand(r);
                                     break;
                                 case StocMessage.SelectTp:
-                                    Program.I().room.StocMessage_SelectTp(r);
+                                    Program.instance.room.StocMessage_SelectTp(r);
                                     break;
                                 case StocMessage.HandResult:
-                                    Program.I().room.StocMessage_HandResult(r);
+                                    Program.instance.room.StocMessage_HandResult(r);
                                     break;
                                 case StocMessage.TpResult:
-                                    Program.I().room.StocMessage_TpResult(r);
+                                    Program.instance.room.StocMessage_TpResult(r);
                                     break;
                                 case StocMessage.ChangeSide:
-                                    Program.I().room.StocMessage_ChangeSide(r);
+                                    Program.instance.room.StocMessage_ChangeSide(r);
                                     break;
                                 case StocMessage.WaitingSide:
-                                    Program.I().room.StocMessage_WaitingSide(r);
+                                    Program.instance.room.StocMessage_WaitingSide(r);
                                     break;
                                 case StocMessage.DeckCount:
-                                    Program.I().room.StocMessage_DeckCount(r);
+                                    Program.instance.room.StocMessage_DeckCount(r);
                                     break;
                                 case StocMessage.CreateGame:
-                                    Program.I().room.StocMessage_CreateGame(r);
+                                    Program.instance.room.StocMessage_CreateGame(r);
                                     break;
                                 case StocMessage.JoinGame:
-                                    Program.I().room.StocMessage_JoinGame(r);
+                                    Program.instance.room.StocMessage_JoinGame(r);
                                     break;
                                 case StocMessage.TypeChange:
-                                    Program.I().room.StocMessage_TypeChange(r);
+                                    Program.instance.room.StocMessage_TypeChange(r);
                                     break;
                                 case StocMessage.LeaveGame:
-                                    Program.I().room.StocMessage_LeaveGame(r);
+                                    Program.instance.room.StocMessage_LeaveGame(r);
                                     break;
                                 case StocMessage.DuelStart:
-                                    Program.I().room.StocMessage_DuelStart(r);
+                                    Program.instance.room.StocMessage_DuelStart(r);
                                     break;
                                 case StocMessage.DuelEnd:
-                                    Program.I().room.StocMessage_DuelEnd(r);
+                                    Program.instance.room.StocMessage_DuelEnd(r);
                                     break;
                                 case StocMessage.Replay:
-                                    Program.I().room.StocMessage_Replay(r);
+                                    Program.instance.room.StocMessage_Replay(r);
                                     break;
                                 case StocMessage.TimeLimit:
-                                    Program.I().ocgcore.StocMessage_TimeLimit(r);
+                                    Program.instance.ocgcore.StocMessage_TimeLimit(r);
                                     break;
                                 case StocMessage.Chat:
-                                    Program.I().room.StocMessage_Chat(r);
+                                    Program.instance.room.StocMessage_Chat(r);
                                     break;
                                 case StocMessage.HsPlayerEnter:
-                                    Program.I().room.StocMessage_HsPlayerEnter(r);
+                                    Program.instance.room.StocMessage_HsPlayerEnter(r);
                                     break;
                                 case StocMessage.HsPlayerChange:
-                                    Program.I().room.StocMessage_HsPlayerChange(r);
+                                    Program.instance.room.StocMessage_HsPlayerChange(r);
                                     break;
                                 case StocMessage.HsWatchChange:
-                                    Program.I().room.StocMessage_HsWatchChange(r);
+                                    Program.instance.room.StocMessage_HsWatchChange(r);
                                     break;
                                 case StocMessage.TeammateSurrender:
-                                    Program.I().ocgcore.StocMessage_TeammateSurrender();
+                                    Program.instance.ocgcore.StocMessage_TeammateSurrender();
                                     break;
                             }
                         }
@@ -271,21 +270,21 @@ namespace MDPro3
                 onDisConnected = false;
                 tcpClient = null;
                 canJoin = true;
-                if (Program.I().ocgcore.isShowed)
+                if (Program.instance.ocgcore.showing)
                 {
-                    Program.I().ocgcore.ForceMSquit();
+                    Program.instance.ocgcore.ForceMSquit();
                     MessageManager.Cast(InterString.Get("对方已离开游戏，您现在可以离开。"));
                 }
-                else if (Program.I().editDeck.isShowed)
+                else if (Program.instance.editDeck.showing)
                 {
                     MessageManager.Cast(InterString.Get("对方已离开游戏，您现在可以离开。"));
-                    Program.I().ShiftToServant(Program.I().online);
+                    Program.instance.ShiftToServant(Program.instance.online);
                 }
-                else if (!Program.I().online.isShowed && !Program.I().solo.isShowed)
+                else if (!Program.instance.online.showing && !Program.instance.solo.showing)
                 {
                     MessageManager.Cast(InterString.Get("连接被断开。"));
-                    if (Program.I().room.isShowed)
-                        Program.I().room.OnExit();
+                    if (Program.instance.room.showing)
+                        Program.instance.room.OnExit();
                 }
             }
         }
@@ -567,7 +566,7 @@ namespace MDPro3
                     {
                         if (startI > packagesInRecord.Count)
                             startI = packagesInRecord.Count;
-                        packagesInRecord.Insert(startI, Program.I().ocgcore.GetNamePacket());
+                        packagesInRecord.Insert(startI, Program.instance.ocgcore.GetNamePacket());
                         if (File.Exists(Program.replayPath + replayName + Program.yrp3dExpansion))
                             File.Delete(Program.replayPath + replayName + Program.yrp3dExpansion);
                         var stream = File.Create(Program.replayPath + replayName + Program.yrp3dExpansion);
@@ -583,7 +582,7 @@ namespace MDPro3
                         stream.Flush();
                         writer.Close();
                         stream.Close();
-                        if (Program.I().ocgcore.duelEnded)
+                        if (Program.instance.ocgcore.duelEnded)
                             packagesInRecord.Clear();
                     }
                 }
@@ -596,7 +595,7 @@ namespace MDPro3
 
         public static void AddRecordLine(Package p)
         {
-            if (Program.I().ocgcore.condition != OcgCore.Condition.Replay)
+            if (Program.instance.ocgcore.condition != OcgCore.Condition.Replay)
                 packagesInRecord.Add(p);
         }
 
@@ -723,7 +722,7 @@ namespace MDPro3
         public static GPS ReadGPS(this BinaryReader reader)
         {
             var a = new GPS();
-            a.controller = (uint)Program.I().ocgcore.LocalPlayer(reader.ReadByte());
+            a.controller = (uint)Program.instance.ocgcore.LocalPlayer(reader.ReadByte());
             a.location = reader.ReadByte();
             a.sequence = reader.ReadByte();
             a.position = reader.ReadByte();
@@ -733,7 +732,7 @@ namespace MDPro3
         public static GPS ReadShortGPS(this BinaryReader reader)
         {
             var a = new GPS();
-            a.controller = (uint)Program.I().ocgcore.LocalPlayer(reader.ReadByte());
+            a.controller = (uint)Program.instance.ocgcore.LocalPlayer(reader.ReadByte());
             a.location = reader.ReadByte();
             a.sequence = reader.ReadByte();
             a.position = (int)CardPosition.FaceUpAttack;
@@ -752,7 +751,7 @@ namespace MDPro3
             if ((flag & (int)Query.Position) != 0)
             {
                 gps = r.ReadGPS();
-                cardToRefresh = Program.I().ocgcore.GCS_Get(gps);
+                cardToRefresh = Program.instance.ocgcore.GCS_Get(gps);
             }
 
 
@@ -804,17 +803,17 @@ namespace MDPro3
             if ((flag & (int)Query.ReasonCard) != 0)
                 data.ReasonCard = r.ReadInt32();
             if ((flag & (int)Query.EquipCard) != 0)
-                cardToRefresh.AddTarget(Program.I().ocgcore.GCS_Get(r.ReadGPS()));
+                cardToRefresh.AddTarget(Program.instance.ocgcore.GCS_Get(r.ReadGPS()));
             if ((flag & (int)Query.TargetCard) != 0)
             {
                 var count = r.ReadInt32();
                 for (var i = 0; i < count; ++i)
-                    cardToRefresh.AddTarget(Program.I().ocgcore.GCS_Get(r.ReadGPS()));
+                    cardToRefresh.AddTarget(Program.instance.ocgcore.GCS_Get(r.ReadGPS()));
             }
 
             if ((flag & (int)Query.OverlayCard) != 0)
             {
-                var overs = Program.I().ocgcore.GCS_GetOverlays(cardToRefresh);
+                var overs = Program.instance.ocgcore.GCS_GetOverlays(cardToRefresh);
                 var count = r.ReadInt32();
                 for (var i = 0; i < count; ++i)
                     if (i < overs.Count)

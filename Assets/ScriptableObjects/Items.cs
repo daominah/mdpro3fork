@@ -1,11 +1,10 @@
-using MDPro3.YGOSharp;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using MDPro3.Utility;
 
 namespace MDPro3
 {

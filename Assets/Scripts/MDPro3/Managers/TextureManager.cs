@@ -11,17 +11,19 @@ using MDPro3.YGOSharp;
 using MDPro3.YGOSharp.OCGWrapper.Enums;
 using DG.Tweening;
 using UnityEngine.UI;
+using MDPro3.Utility;
+using System.Collections.Concurrent;
 
 namespace MDPro3
 {
     public class TextureManager : Manager
     {
-
+        public static TextureManager instance;
         public static TextureContainer container;
 
-        static Dictionary<int, Texture2D> cachedArts = new Dictionary<int, Texture2D>();
-        static Dictionary<int, Texture2D> cachedCards = new Dictionary<int, Texture2D>();
-        static Dictionary<int, Texture2D> cachedMasks = new Dictionary<int, Texture2D>();
+        static ConcurrentDictionary<int, Texture2D> cachedArts = new();
+        static ConcurrentDictionary<int, Texture2D> cachedCards = new();
+        static ConcurrentDictionary<int, Texture2D> cachedMasks = new();
 
         public static Material cardMatNormal;
         public static Material cardMatShine;
@@ -33,7 +35,10 @@ namespace MDPro3
         public static Material cardMatMillennium;
         public static Material cardMatMillenniumRD;
         public static Material cardMatSide;
-        static Texture cardHolo4;
+
+        private Material commonShopButtonMat;
+        private Material commonShopButtonOverMat;
+
 
         static int cardLoadCount;
         const int cardLoadMax = 100;
@@ -42,6 +47,7 @@ namespace MDPro3
         public static bool lastCardRenderSucceed;
         public override void Initialize()
         {
+            instance = this;
             base.Initialize();
             var handle = Addressables.LoadAssetAsync<TextureContainer>("TextureContainer");
             handle.Completed += (result) =>
@@ -51,7 +57,7 @@ namespace MDPro3
             StartCoroutine(LoadMaterials());
         }
 
-        IEnumerator LoadMaterials()
+        private IEnumerator LoadMaterials()
         {
             while(container == null)
                 yield return null;
@@ -80,7 +86,6 @@ namespace MDPro3
             manager = manager.GetElement<ElementObjectManager>("SummonSynchroPostSynchro");
             manager = manager.GetElement<ElementObjectManager>("DummyCardSynchro");
             cardMatRoyal = Instantiate(manager.GetElement<Renderer>("DummyCardModel_front").material);
-            cardHolo4 = cardMatRoyal.GetTexture("_KiraColorTexture");
 
             ie = ABLoader.LoadFromFileAsync("MasterDuel/Timeline/summon/summonsynchro/summonsynchro01_shinestyle");
             while (ie.MoveNext())
@@ -144,6 +149,18 @@ namespace MDPro3
 
             cardMatMillenniumRD = Instantiate(cardMatMillennium);
             MaterialToRD(cardMatMillenniumRD);
+
+            var mie = ABLoader.LoadMaterialAsync("MasterDuel/Material/GUI_CommonShopButton_N");
+            while (mie.MoveNext())
+                yield return null;
+            commonShopButtonMat = mie.Current;
+            SetCommonShopButtonMaterial(commonShopButtonMat);
+
+            mie = ABLoader.LoadMaterialAsync("MasterDuel/Material/GUI_CommonShopButton_N_Over");
+            while (mie.MoveNext())
+                yield return null;
+            commonShopButtonOverMat = mie.Current;
+            SetCommonShopButtonMaterial(commonShopButtonOverMat);
 
 #if UNITY_ANDROID
             var depens = Directory.GetFiles(Program.root + "CrossDuel/Dependency", "*.bundle");
@@ -257,12 +274,12 @@ namespace MDPro3
                                     var card = CardsManager.Get(code);
                                     if (code >= 120000000 && code < 130000000)
                                     {
-                                        if ((card.Type & (uint)CardType.Monster) > 0)
+                                        if (card.HasType(CardType.Monster))
                                             returnValue = GetArtFromRushDuelMonsterCard(returnValue);
                                         else
                                             returnValue = GetArtFromRushDuelSpellCard(returnValue);
                                     }
-                                    else if ((card.Type & (uint)CardType.Pendulum) > 0)
+                                    else if (card.HasType(CardType.Pendulum))
                                         returnValue = GetArtFromPendulumCard(returnValue);
                                     else
                                         returnValue = GetArtFromCard(returnValue);
@@ -292,7 +309,7 @@ namespace MDPro3
             {
                 lastCardFoundArt = true;
 
-                if (Program.I().ocgcore.isShowed)
+                if (Program.instance.ocgcore.showing)
                     cache = true;
 
                 if (cache)
@@ -336,16 +353,16 @@ namespace MDPro3
             if(!Application.isPlaying)
                 return null;
 
-            if (Program.I().ocgcore.isShowed)
+            if (Program.instance.ocgcore.showing)
                 cache = true;
 
             lock (cachedCards)
             {
-                if (!Program.I().cardRenderer.RenderCard(code, task.Result))
+                if (!Program.instance.cardRenderer.RenderCard(code, task.Result))
                 {
                     if (cache)
                         if (!cachedCards.ContainsKey(code))
-                            cachedCards.Add(code, container.unknownCard.texture);
+                            cachedCards.TryAdd(code, container.unknownCard.texture);
                     lastCardRenderSucceed = false;
                     return container.unknownCard.texture;
                 }
@@ -358,7 +375,7 @@ namespace MDPro3
                 if (cache)
                 {
                     if (!cachedCards.ContainsKey(code))
-                        cachedCards.Add(code, returnValue);
+                        cachedCards.TryAdd(code, returnValue);
                     else
                     {
                         Destroy(returnValue);
@@ -371,7 +388,7 @@ namespace MDPro3
             if(cardLoadCount >= cardLoadMax)
             {
                 cardLoadCount = 0;
-                Program.I().UnloadUnusedAssets();
+                Program.instance.UnloadUnusedAssets();
             }
 
             return returnValue;
@@ -408,7 +425,7 @@ namespace MDPro3
             if (active)
                 manager.gameObject.SetActive(false);
             manager.GetElement<Renderer>("DummyCardModel_side").material = cardMatSide;
-            manager.GetElement<Renderer>("DummyCardModel_back").material = player == 0 ? Program.I().ocgcore.myProtector : Program.I().ocgcore.opProtector;
+            manager.GetElement<Renderer>("DummyCardModel_back").material = player == 0 ? Program.instance.ocgcore.myProtector : Program.instance.ocgcore.opProtector;
 
             var task = LoadCardAsync(code, false);
             while (!task.IsCompleted)
@@ -428,6 +445,29 @@ namespace MDPro3
             foreach (var mask in cachedMasks.Values)
                 Destroy(mask);
             cachedMasks.Clear();
+        }
+
+        private void SetCommonShopButtonMaterial(Material mat)
+        {
+            mat.SetFloat("_NoiseSize", 500f);
+            mat.SetFloat("_NoiseSpeed", 0.5f);
+            mat.SetVector("_TilingOffset", new Vector4(1f, 1f, 0f, 0f));
+            mat.SetVector("_MainTexMinMax", new Vector4(-0.5f, 1f, -0.5f, 1f));
+        }
+        public IEnumerator SetCommonShopButtonMaterial(Image image, bool hover)
+        {
+            if (hover)
+            {
+                while(commonShopButtonOverMat == null)
+                    yield return null;
+                image.material = commonShopButtonOverMat;
+            }
+            else
+            {
+                while (commonShopButtonMat == null)
+                    yield return null;
+                image.material = commonShopButtonMat;
+            }
         }
 
         #region Closeup
@@ -485,23 +525,25 @@ namespace MDPro3
             if (cachedMasks.ContainsKey(code))
                 return cachedMasks[code];
             Texture2D returnValue;
-            RenderTexture.active = Program.I().cardRenderer.renderTexture;
-            Program.I().cardRenderer.RenderName(code);
+            RenderTexture.active = Program.instance.cardRenderer.renderTexture;
+            Program.instance.cardRenderer.RenderName(code);
             returnValue = new Texture2D(RenderTexture.active.width, 203, TextureFormat.RGBA32, false);
-            var rect = new Rect(0, Program.I().cardRenderer.renderTexture.height - 203, Program.I().cardRenderer.renderTexture.width, 203);
+            var rect = new Rect(0, Program.instance.cardRenderer.renderTexture.height - 203, Program.instance.cardRenderer.renderTexture.width, 203);
             //if (SystemInfo.graphicsUVStartsAtTop)
-            //    rect = new Rect(0, 0, Program.I().cardRenderer.renderTexture.width, 203); 
+            //    rect = new Rect(0, 0, Program.instance.cardRenderer.renderTexture.width, 203); 
             returnValue.ReadPixels(rect, 0, 0);
             returnValue.Apply();
             returnValue.wrapMode = TextureWrapMode.Clamp;
             if (cache)
-                cachedMasks.Add(code, returnValue);
+                cachedMasks.TryAdd(code, returnValue);
             return returnValue;
         }
         public static Material GetCardMaterial(int code, bool cache = false)
         {
-            bool rushDuel = CardRenderer.NeedRushDuelStyle(code);
+            if (code < 0)
+                return Instantiate(cardMatNormal);
 
+            bool rushDuel = CardRenderer.NeedRushDuelStyle(code);
             var rarity = CardRarity.GetRarity(code);
 
             Material mat = null;
@@ -531,9 +573,9 @@ namespace MDPro3
             if (needChange)
             {
                 var data = CardsManager.Get(code);
-                if ((data.Type & (uint)CardType.Spell) > 0)
+                if (data.HasType(CardType.Spell))
                     mat.SetFloat("_AttributeTile", 7);
-                else if ((data.Type & (uint)CardType.Trap) > 0)
+                else if (data.HasType(CardType.Trap))
                     mat.SetFloat("_AttributeTile", 8);
                 else if ((data.Attribute & (uint)CardAttribute.Light) > 0)
                     mat.SetFloat("_AttributeTile", 0);
@@ -549,18 +591,18 @@ namespace MDPro3
                     mat.SetFloat("_AttributeTile", 5);
                 else if ((data.Attribute & (uint)CardAttribute.Divine) > 0)
                     mat.SetFloat("_AttributeTile", 6);
-                var mask = Program.I().texture_.GetNameMask(code, cache);
+                var mask = Program.instance.texture_.GetNameMask(code, cache);
                 mat.SetTexture("_MonsterNameTex", mask);
                 if (rushDuel)
                 {
-                    if ((data.Type & (uint)CardType.Pendulum) > 0)
+                    if (data.HasType(CardType.Pendulum))
                     {
                         mat.SetTexture("_KiraMask", container.rd_KiraMaskPendulum);
                     }
                 }
                 else
                 {
-                    if ((data.Type & (uint)CardType.Link) > 0)
+                    if (data.HasType(CardType.Link))
                     {
                         mat.SetTexture("_FrameMask", container.cardFrameMaskLink);
                         mat.SetTexture("_KiraMask", container.cardKiraMaskLink);
@@ -568,7 +610,7 @@ namespace MDPro3
                         if (rarity == CardRarity.Rarity.Shine)
                             mat.SetFloat("_LinkOn_Off", 1f);
                     }
-                    else if ((data.Type & (uint)CardType.Pendulum) > 0)
+                    else if (data.HasType(CardType.Pendulum))
                     {
                         mat.SetTexture("_FrameMask", container.cardFrameMaskPendulum);
                         mat.SetTexture("_KiraMask", container.cardKiraMaskPendulum);
@@ -587,23 +629,23 @@ namespace MDPro3
         static Color GetMillenniumFrameColor(Card data)
         {
             var color = new Color(0.3099f, 0.1633f, 0.2753f, 0f);
-            if ((data.Type & (uint)CardType.Pendulum) > 0)
+            if (data.HasType(CardType.Pendulum))
                 color = new Color(0.3099f, 0.1633f, 0.2753f, 0f);
-            else if ((data.Type & (uint)CardType.Spell) > 0)
+            else if (data.HasType(CardType.Spell))
                 color = new Color(0f, 0.8867f, 1f, 0f);
-            else if ((data.Type & (uint)CardType.Trap) > 0)
+            else if (data.HasType(CardType.Trap))
                 color = new Color(1f, 0f, 1f, 0f);
-            else if ((data.Type & (uint)CardType.Normal) > 0)
+            else if (data.HasType(CardType.Normal))
                 color = new Color(1f, 0.6f, 0f, 0f);
-            else if ((data.Type & (uint)CardType.Fusion) > 0)
+            else if (data.HasType(CardType.Fusion))
                 color = new Color(1f, 0f, 1f, 0f);
-            else if ((data.Type & (uint)CardType.Ritual) > 0)
+            else if (data.HasType(CardType.Ritual))
                 color = new Color(0f, 0.2f, 1f, 0f);
-            else if ((data.Type & (uint)CardType.Synchro) > 0)
+            else if (data.HasType(CardType.Synchro))
                 color = new Color(0.4f, 0.4f, 0.4f, 0f);
-            else if ((data.Type & (uint)CardType.Xyz) > 0)
+            else if (data.HasType(CardType.Xyz))
                 color = new Color(0.1f, 0.1f, 0.1f, 0f);
-            else if ((data.Type & (uint)CardType.Link) > 0)
+            else if (data.HasType(CardType.Link))
                 color = new Color(0f, 0.4f, 1f, 0f);
             else
                 color = new Color(1f, 0.2357f, 0f, 0f);
@@ -611,9 +653,9 @@ namespace MDPro3
         }
         static Color GetMillenniumNameColor(Card data)
         {
-            if ((data.Type & (uint)CardType.Spell) > 0)
+            if (data.HasType(CardType.Spell))
                 return new Color(0f, 1f, 1f, 1f);
-            else if ((data.Type & (uint)CardType.Trap) > 0)
+            else if (data.HasType(CardType.Trap))
                 return new Color(1f, 0f, 0.5f, 1f);
             else if ((data.Attribute & (uint)CardAttribute.Light) > 0)
                 return new Color(1f, 1f, 0f, 1f);
@@ -739,172 +781,102 @@ namespace MDPro3
         }
         public static Sprite GetSpellTrapTypeIcon(Card data)
         {
-            if ((data.Type & (uint)CardType.Counter) > 0)
+            if (data.HasType(CardType.Counter))
                 return container.typeCounter;
-            else if ((data.Type & (uint)CardType.Field) > 0)
+            else if (data.HasType(CardType.Field))
                 return container.typeField;
-            else if ((data.Type & (uint)CardType.Equip) > 0)
+            else if (data.HasType(CardType.Equip))
                 return container.typeEquip;
-            else if ((data.Type & (uint)CardType.Continuous) > 0)
+            else if (data.HasType(CardType.Continuous))
                 return container.typeContinuous;
-            else if ((data.Type & (uint)CardType.QuickPlay) > 0)
+            else if (data.HasType(CardType.QuickPlay))
                 return container.typeQuickPlay;
-            else if ((data.Type & (uint)CardType.Ritual) > 0)
+            else if (data.HasType(CardType.Ritual))
                 return container.typeRitual;
             else
                 return container.typeNone;
         }
         public static Sprite GetCardLevelIcon(Card data)
         {
-            if ((data.Type & (uint)CardType.Link) > 0)
+            if (data.HasType(CardType.Link))
                 return container.typeLink;
-            else if ((data.Type & (uint)CardType.Xyz) > 0)
+            else if (data.HasType(CardType.Xyz))
                 return container.typeRank;
             else
                 return container.typeLevel;
         }
         public static Sprite GetCardCounterIcon(int counter)
         {
-            switch (counter)
+            return counter switch
             {
-                case 0x1:
-                    return container.counterMagic;
-                case 0x1002:
-                    return container.counterWedge;
-                case 0x3:
-                    return container.counterBushido;
-                case 0x4:
-                    return container.counterPsycho;
-                case 0x5:
-                    return container.counterShine;
-                case 0x6:
-                    return container.counterGem;
-                case 0x8:
-                    return container.counterDeformer;
-                case 0x1009:
-                    return container.counterVenom;
-                case 0xA:
-                    return container.counterGenex;
-                case 0xC:
-                    return container.counterThunder;
-                case 0xD:
-                    return container.counterGreed;
-                case 0x100E:
-                    return container.counterAlien;
-                case 0xF:
-                    return container.counterWorm;
-                case 0x10:
-                    return container.counterBF;
-                case 0x11:
-                    return container.counterHyper;
-                case 0x12:
-                    return container.counterKarakuri;
-                case 0x13:
-                    return container.counterChaos;
-                case 0x1015:
-                    return container.counterIce;
-                case 0x16:
-                    return container.counterStone;
-                case 0x17:
-                    return container.counterDonguri;
-                case 0x18:
-                    return container.counterFlower;
-                case 0x1019:
-                    return container.counterFog;
-                case 0x1A:
-                    return container.counterDouble;
-                case 0x1B:
-                    return container.counterClock;
-                case 0x1C:
-                    return container.counterD;
-                case 0x1D:
-                    return container.counterJunk;
-                case 0x1E:
-                    return container.counterGate;
-                case 0x20:
-                    return container.counterPlant;
-                case 0x1021:
-                    return container.counterGuard2;
-                case 0x22:
-                    return container.counterDragonic;
-                case 0x23:
-                    return container.counterOcean;
-                case 0x1024:
-                    return container.counterString;
-                case 0x25:
-                    return container.counterChronicle;
-                case 0x2B:
-                    return container.counterDestiny;
-                case 0x2C:
-                    return container.counterOrbital;
-                case 0x2E:
-                    return container.counterShark;
-                case 0x2F:
-                    return container.counterPumpkin;
-                case 0x30:
-                    return container.counterKattobing;
-                case 0x31:
-                    return container.counterHopeSlash;
-                case 0x32:
-                    return container.counterBalloon;
-                case 0x33:
-                    return container.counterYosen;
-                case 0x35:
-                    return container.counterSound;
-                case 0x36:
-                    return container.counterEM;
-                case 0x37:
-                    return container.counterKaiju;
-                case 0x1038:
-                    return container.counterHoukai;
-                case 0x1039:
-                    return container.counterZushin;
-                case 0x1041:
-                    return container.counterPredator;
-                case 0x43:
-                    return container.counterDefect;
-                case 0x1045:
-                    return container.counterScales;
-                case 0x1049:
-                    return container.counterPolice;
-                case 0x4A:
-                    return container.counterAthlete;
-                case 0x4B:
-                    return container.counterBarrel;
-                case 0x4C:
-                    return container.counterSummon;
-                case 0x104D:
-                    return container.counterSignal;
-                case 0x104F:
-                    return container.counterVenemy;
-                case 0x56:
-                    return container.counterFireStar;
-                case 0x57:
-                    return container.counterPhantasm;
-                case 0x59:
-                    return container.counterOtoshidama;
-                case 0x105C:
-                    return container.counterBurn;
-                case 0x5E:
-                    return container.counterOunokagi;
-                case 0x5F:
-                    return container.counterPiece;
-                case 0x1063:
-                    return container.counterIllusion;
-                case 0x64:
-                    return container.counterGG;
-                case 0x1065:
-                    return container.counterRabbit;
-
-                case 0x6A:
-                    return container.counterKyoumei;
-
-                case 0x102A:
-                    return container.counterGardna;
-
-                default:
-                    return container.counterNormal;
-            }
+                0x1 => container.counterMagic,
+                0x1002 => container.counterWedge,
+                0x3 => container.counterBushido,
+                0x4 => container.counterPsycho,
+                0x5 => container.counterShine,
+                0x6 => container.counterGem,
+                0x8 => container.counterDeformer,
+                0x1009 => container.counterVenom,
+                0xA => container.counterGenex,
+                0xC => container.counterThunder,
+                0xD => container.counterGreed,
+                0x100E => container.counterAlien,
+                0xF => container.counterWorm,
+                0x10 => container.counterBF,
+                0x11 => container.counterHyper,
+                0x12 => container.counterKarakuri,
+                0x13 => container.counterChaos,
+                0x1015 => container.counterIce,
+                0x16 => container.counterStone,
+                0x17 => container.counterDonguri,
+                0x18 => container.counterFlower,
+                0x1019 => container.counterFog,
+                0x1A => container.counterDouble,
+                0x1B => container.counterClock,
+                0x1C => container.counterD,
+                0x1D => container.counterJunk,
+                0x1E => container.counterGate,
+                0x20 => container.counterPlant,
+                0x1021 => container.counterGuard2,
+                0x22 => container.counterDragonic,
+                0x23 => container.counterOcean,
+                0x1024 => container.counterString,
+                0x25 => container.counterChronicle,
+                0x2B => container.counterDestiny,
+                0x2C => container.counterOrbital,
+                0x2E => container.counterShark,
+                0x2F => container.counterPumpkin,
+                0x30 => container.counterKattobing,
+                0x31 => container.counterHopeSlash,
+                0x32 => container.counterBalloon,
+                0x33 => container.counterYosen,
+                0x35 => container.counterSound,
+                0x36 => container.counterEM,
+                0x37 => container.counterKaiju,
+                0x1038 => container.counterHoukai,
+                0x1039 => container.counterZushin,
+                0x1041 => container.counterPredator,
+                0x43 => container.counterDefect,
+                0x1045 => container.counterScales,
+                0x1049 => container.counterPolice,
+                0x4A => container.counterAthlete,
+                0x4B => container.counterBarrel,
+                0x4C => container.counterSummon,
+                0x104D => container.counterSignal,
+                0x104F => container.counterVenemy,
+                0x56 => container.counterFireStar,
+                0x57 => container.counterPhantasm,
+                0x59 => container.counterOtoshidama,
+                0x105C => container.counterBurn,
+                0x5E => container.counterOunokagi,
+                0x5F => container.counterPiece,
+                0x1063 => container.counterIllusion,
+                0x64 => container.counterGG,
+                0x1065 => container.counterRabbit,
+                0x6A => container.counterKyoumei,
+                0x102A => container.counterGardna,
+                _ => container.counterNormal,
+            };
         }
         #endregion
 
@@ -1238,7 +1210,6 @@ namespace MDPro3
             }
         }
 
-#endregion
-
+        #endregion
     }
 }

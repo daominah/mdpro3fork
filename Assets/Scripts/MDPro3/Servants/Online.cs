@@ -5,66 +5,46 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
-using System.Threading;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.UI;
-using static MDPro3.YGOSharp.PacksManager;
+using TMPro;
+using MDPro3.UI.PropertyOverrider;
+using UnityEngine.EventSystems;
+using MDPro3.Net;
+using YgomSystem.ElementSystem;
 
-namespace MDPro3.Net
+namespace MDPro3
 {
     public class Online : Servant
     {
-        public GameObject goLegacy;
-        public GameObject goLocal;
-        public GameObject goMyCard;
-        public ButtonList defaultFunctionList;
+        [Header("Online")]
+        [SerializeField] private GameObject PageLegacy;
+        [SerializeField] private GameObject PageHost;
+        [SerializeField] private GameObject PageMyCard;
 
-        public InputField inputName;
-        public InputField inputHost;
-        public InputField inputPort;
-        public InputField inputPassword;
-        public ScrollRect scrollView;
-        SuperScrollView superScrollView;
+        [Header("Legacy")]
+        public SelectionToggle_Address lastSelectedAddressItem;
+        public TMP_InputField inputName;
+        public TMP_InputField inputHost;
+        public TMP_InputField inputPort;
+        public TMP_InputField inputPassword;
 
         [Header("Local Server")]
-        public Text textLflist;
-        public Text textPool;
-        public Text textMode;
-        public UI.Toggle toggleNoCheck;
-        public UI.Toggle toggleNoShuffle;
-        public InputField inputTime;
-        public InputField inputLP;
-        public InputField inputHand;
-        public InputField inputDraw;
+        public TMP_InputField inputTime;
+        public TMP_InputField inputLP;
+        public TMP_InputField inputHand;
+        public TMP_InputField inputDraw;
 
         [Header("My Card")]
         public GameObject goMyCardLogin;
         public GameObject goMyCardFunctions;
+        public SelectionToggle_Watch lastSelectedWatchItem;
 
-        public InputField inputMyCardAccount;
-        public InputField inputMyCardPassword;
-        public RawImage rawImageMyCardAvatar;
+        public TMP_InputField inputMyCardAccount;
+        public TMP_InputField inputMyCardPassword;
+        public TMP_InputField inputDuelist;
 
-        public Image iconRankBG;
-        public Image iconRankIcon;
-        public Image iconRankTier;
-        public Image iconRankTier2;
-        public Image iconRankTier3;
-
-        public Text textUserName;
-        public Text textExp;
-        public Text textDP;
-        public Text textAWin;
-        public Text textARatio;
-        public Text textARank;
-        public Text textECount;
-        public Text textERank;
-        public Text textEntertain;
-        public Text textAthletic;
-
-
-        public DeckSelector deckSelector;
         public WatchListHandler watchListHandler;
 
         public struct HostAddress
@@ -75,33 +55,150 @@ namespace MDPro3.Net
             public string password;
         }
 
+        SuperScrollView superScrollView;
+        private List<string[]> tasks = new List<string[]>();
+
         readonly string savePath = "Data/hosts.conf";
         public List<HostAddress> addresses = new List<HostAddress>();
-        List<string[]> tasks = new List<string[]>();
 
+        #region Servant
         public override void Initialize()
         {
             depth = 1;
-            haveLine = true;
-            returnServant = Program.I().menu;
+            showLine = true;
+            returnServant = Program.instance.menu;
             inputName.onEndEdit.AddListener(OnNameChange);
             inputHost.onEndEdit.AddListener(OnHostChange);
             inputPort.onEndEdit.AddListener(OnPortChange);
             inputPassword.onEndEdit.AddListener(OnPasswordChange);
             base.Initialize();
-            defaultFunctionList.SelectThis();
+            Manager.GetElement<SelectionToggle>("ToggleLegacy").SetToggleOn();
             LoadHostAddress();
-            TryTokenin();
-        }
+            TryTokenIn();
 
-        public override void Show(int preDepth)
+            transform.GetChild(0).gameObject.SetActive(false);
+        }
+        protected override void ApplyShowArrangement(int preDepth)
         {
-            if(Program.exitOnReturn)
-                Menu.GameQuit();
-            else
-                base.Show(preDepth);
+            if (Program.exitOnReturn)
+            {
+                Program.GameQuit();
+                return;
+            }
+
+            base.ApplyShowArrangement(preDepth);
+            inputName.text = Config.Get("DuelPlayerName0", "@ui");
+            inputHost.text = Config.Get("Host", "s1.ygo233.com");
+            inputPort.text = Config.Get("Port", "233");
+            inputPassword.text = Config.Get("Password", "@ui");
+            RefreshDeckSelector();
+            StartCoroutine(RefreshMyCardAssets());
         }
 
+        protected override void ApplyHideArrangement(int preDepth)
+        {
+            base.ApplyHideArrangement(preDepth);
+            Config.Save();
+            Save();
+        }
+
+        public override void SelectLastSelectable()
+        {
+            if (!showing)
+                return;
+            if (PageLegacy.activeInHierarchy)
+            {
+                if(Selected != null && Selected.gameObject.activeInHierarchy)
+                    EventSystem.current.SetSelectedGameObject(Selected.gameObject);
+                else
+                    EventSystem.current.SetSelectedGameObject(Manager.GetElement("ButtonJoin"));
+            }
+            else if(PageHost.activeInHierarchy)
+            {
+                if (Selected != null && Selected.gameObject.activeInHierarchy)
+                    EventSystem.current.SetSelectedGameObject(Selected.gameObject);
+                else
+                    EventSystem.current.SetSelectedGameObject(Manager.GetElement("ButtonCreate"));
+            }
+            else if(goMyCardLogin.activeInHierarchy)
+            {
+                if (Selected != null && Selected.gameObject.activeInHierarchy)
+                    EventSystem.current.SetSelectedGameObject(Selected.gameObject);
+                else
+                    EventSystem.current.SetSelectedGameObject(Manager.GetElement("ButtonLogin"));
+            }
+            else if (goMyCardFunctions.activeInHierarchy)
+            {
+                if (Selected != null && Selected.gameObject.activeInHierarchy)
+                    EventSystem.current.SetSelectedGameObject(Selected.gameObject);
+                else
+                    EventSystem.current.SetSelectedGameObject(Manager.GetElement("ButtonAMatch"));
+            }
+        }
+
+        protected override bool NeedResponseInput()
+        {
+            if(!showing)
+                return false;
+            if(inTransition)
+                return false;
+
+            if (PageLegacy.activeInHierarchy)
+            {
+                if(inputName.isFocused)
+                    return false;
+                if(inputHost.isFocused)
+                    return false;
+                if(inputPort.isFocused)
+                    return false;
+                if(inputPassword.isFocused)
+                    return false;
+            }
+            else if (PageHost.activeInHierarchy)
+            {
+                if(inputTime.isFocused)
+                    return false;
+                if(inputLP.isFocused)
+                    return false;
+                if(inputHand.isFocused)
+                    return false;
+                if(inputDraw.isFocused)
+                    return false;
+            }
+            else if (goMyCardLogin.activeInHierarchy)
+            {
+                if (inputMyCardAccount.isFocused)
+                    return false;
+                if(inputMyCardPassword.isFocused)
+                    return false;
+            }
+            else if (goMyCardFunctions.activeInHierarchy)
+            {
+                if (inputDuelist.isFocused)
+                    return false;
+            }
+
+            return base.NeedResponseInput();
+        }
+
+        public override void PerFrameFunction()
+        {
+            if (!showing) return;
+            if (!NeedResponseInput())
+                return;
+
+            if (UserInput.MouseRightDown || UserInput.WasCancelPressed)
+                OnReturn();
+
+            if (UserInput.WasLeftShoulderPressed)
+                Manager.GetElement<SelectionToggle_Online>("ToggleLegacy").OnLeftSelection();
+            if (UserInput.WasRightShoulderPressed)
+                Manager.GetElement<SelectionToggle_Online>("ToggleLegacy").OnRightSelection();
+        }
+
+        #endregion
+
+        #region Legacy
         void LoadHostAddress()
         {
             if (!File.Exists(savePath))
@@ -149,27 +246,30 @@ namespace MDPro3.Net
                     tasks.Add(task);
                 }
             }
-            var handle = Addressables.LoadAssetAsync<GameObject>("ButtonHostAddress");
+            var handle = Addressables.LoadAssetAsync<GameObject>("ItemAddress");
             handle.Completed += (result) =>
             {
-                superScrollView = new SuperScrollView
-                    (
+                var itemWidth = PropertyOverrider.NeedMobileLayout() ? 460f : 360f;
+                var itemHeight = PropertyOverrider.NeedMobileLayout() ? 80f : 40f;
+
+                superScrollView = new SuperScrollView(
                     1,
-                    360,
-                    80,
+                    itemWidth,
+                    itemHeight,
                     0,
                     0,
                     result.Result,
                     ItemOnListRefresh,
-                    scrollView
-                    );
+                    Manager.GetElement<ScrollRect>("ScrollRect"));
                 superScrollView.Print(tasks);
+                if (superScrollView.items.Count > 0)
+                    lastSelectedAddressItem = superScrollView.items[0].gameObject.GetComponent<SelectionToggle_Address>();
             };
         }
 
         void ItemOnListRefresh(string[] task, GameObject item)
         {
-            var handler = item.GetComponent<SuperScrollViewItemForAddress>();
+            var handler = item.GetComponent<SelectionToggle_Address>();
             handler.addressName = task[0];
             handler.addressHost = task[1];
             handler.addressPort = task[2];
@@ -177,23 +277,6 @@ namespace MDPro3.Net
             handler.Refresh();
         }
 
-        public override void ApplyShowArrangement(int preDepth)
-        {
-            base.ApplyShowArrangement(preDepth);
-            inputName.text = Config.Get("DuelPlayerName0", "@ui");
-            inputHost.text = Config.Get("Host", "s1.ygo233.com");
-            inputPort.text = Config.Get("Port", "233");
-            inputPassword.text = Config.Get("Password", "@ui");
-            RefreshDeckSelector();
-            StartCoroutine(RefreshMyCardAssets());
-        }
-
-        public override void ApplyHideArrangement(int preDepth)
-        {
-            base.ApplyHideArrangement(preDepth);
-            Config.Save();
-            Save();
-        }
 
         public void OnSaveAddress()
         {
@@ -203,9 +286,9 @@ namespace MDPro3.Net
             InterString.Get("请输入预设名称"),
             string.Empty
         };
-            UIManager.ShowPopupInput(selections, AddAddress, null, InputValidation.ValidationType.NoSpace);
+            UIManager.ShowPopupInput(selections, AddAddress, null, TmpInputValidation.ValidationType.NoSpace);
         }
-        void AddAddress(string name)
+        private void AddAddress(string name)
         {
             var address = new HostAddress();
             address.name = name;
@@ -224,7 +307,60 @@ namespace MDPro3.Net
             Save();
             Print();
         }
+        void OnNameChange(string name)
+        {
+            Config.Set("DuelPlayerName0", name == "" ? "@ui" : name);
+            Config.Save();
+        }
+        public void OnHostChange(string host)
+        {
+            Config.Set("Host", host);
+            Config.Save();
+        }
+        public void OnPortChange(string port)
+        {
 
+            Config.Set("Port", port);
+            Config.Save();
+        }
+        public void OnPasswordChange(string password)
+        {
+            Config.Set("Password", password == "" ? "@ui" : password);
+            Config.Save();
+        }
+
+        public void Join()
+        {
+            KF_OnlineGame(inputName.text, inputHost.text, inputPort.text, inputPassword.text);
+        }
+        public void KF_OnlineGame(string name, string ip, string port, string password)
+        {
+            if (name == "")
+            {
+                MessageManager.Cast(InterString.Get("用户名不能为空。"));
+                return;
+            }
+
+            if (ip == "" || port == "")
+            {
+                MessageManager.Cast(InterString.Get("主机地址和端口不能为空。"));
+                return;
+            }
+            Room.fromSolo = false;
+            Room.fromLocalHost = false;
+            TcpHelper.LinkStart(ip, Config.Get("DuelPlayerName0", "@ui"), port, password, false, null);
+        }
+        public void SelectLastAddressItem()
+        {
+            if(lastSelectedAddressItem != null)
+            {
+                UserInput.NextSelectionIsAxis = true;
+                EventSystem.current.SetSelectedGameObject(lastSelectedAddressItem.gameObject);
+            }
+        }
+        #endregion
+
+        #region Local Host
         public void CreateServer()
         {
             int port = 7911;
@@ -296,79 +432,13 @@ namespace MDPro3.Net
             }
             UIManager.ShowPopupServer(serverSelections);
         }
-        void OnNameChange(string name)
-        {
-            Config.Set("DuelPlayerName0", name == "" ? "@ui" : name);
-            Config.Save();
-        }
-        public void OnHostChange(string host)
-        {
-            Config.Set("Host", host);
-            Config.Save();
-        }
-        public void OnPortChange(string port)
-        {
-
-            Config.Set("Port", port);
-            Config.Save();
-        }
-        public void OnPasswordChange(string password)
-        {
-            Config.Set("Password", password == "" ? "@ui" : password);
-            Config.Save();
-        }
-
-        public void Join()
-        {
-            KF_OnlineGame(inputName.text, inputHost.text, inputPort.text, inputPassword.text);
-        }
-        public void KF_OnlineGame(string name, string ip, string port, string password)
-        {
-            if (name == "")
-            {
-                MessageManager.Cast(InterString.Get("用户名不能为空。"));
-                return;
-            }
-
-            if (ip == "" || port == "")
-            {
-                MessageManager.Cast(InterString.Get("主机地址和端口不能为空。"));
-                return;
-            }
-            Room.fromSolo = false;
-            Room.fromLocalHost = false;
-            TcpHelper.LinkStart(ip, Config.Get("DuelPlayerName0", "@ui"), port, password, false, null);
-        }
-
-        public void SwitchFunction(int id)
-        {
-            goLegacy.SetActive(false);
-            goLocal.SetActive(false);
-            goMyCard.SetActive(false);
-
-            switch (id)
-            {
-                case 0:
-                    goLegacy.SetActive(true); 
-                    break;
-                case 1:
-                    goLocal.SetActive(true);
-                    break;
-                case 2:
-                    goMyCard.SetActive(true);
-                    break;
-            }
-        }
-
-        #region Local Host
-
         public void LocalHostInitialize()
         {
-            textLflist.text = BanlistManager.Banlists[0].Name;
-            textPool.text = StringHelper.GetUnsafe(1481);
-            textMode.text = StringHelper.GetUnsafe(1244);
-            toggleNoCheck.SwitchOff();
-            toggleNoShuffle.SwitchOff();
+            Manager.GetElement<SelectionButton>("ButtonLFList").SetButtonText(BanlistManager.Banlists[0].Name);
+            Manager.GetElement<SelectionButton>("ButtonPool").SetButtonText(StringHelper.GetUnsafe(1481));
+            Manager.GetElement<SelectionButton>("ButtonMode").SetButtonText(StringHelper.GetUnsafe(1244));
+            Manager.GetElement<SelectionToggle>("ToggleCheck").SetToggleOff();
+            Manager.GetElement<SelectionToggle>("ToggleShuffle").SetToggleOff();
             inputTime.text = "180";
             inputLP.text = "8000";
             inputHand.text = "5";
@@ -386,15 +456,15 @@ namespace MDPro3.Net
             return new List<string>()
             {
                 InterString.Get("创建主机"),
-                textLflist.text,
-                textPool.text,
-                textMode.text,
-                toggleNoCheck.switchOn ? "T" : "F",
-                toggleNoShuffle.switchOn ? "T" : "F",
-                inputTime.text == "" ? "0" : inputTime.text,
-                inputLP.text == "" ? "8000" : inputLP.text,
-                inputHand.text == "" ? "5" : inputHand.text,
-                inputDraw.text == "" ? "1" : inputDraw.text
+                Manager.GetElement<SelectionButton>("ButtonLFList").GetButtonText(),
+                Manager.GetElement<SelectionButton>("ButtonPool").GetButtonText(),
+                Manager.GetElement<SelectionButton>("ButtonMode").GetButtonText(),
+                Manager.GetElement<SelectionToggle>("ToggleCheck").isOn ? "T" : "F",
+                Manager.GetElement<SelectionToggle>("ToggleShuffle").isOn ? "T" : "F",
+                inputTime.text == string.Empty ? "0" : inputTime.text,
+                inputLP.text == string.Empty ? "8000" : inputLP.text,
+                inputHand.text == string.Empty ? "5" : inputHand.text,
+                inputDraw.text == string.Empty ? "1" : inputDraw.text
             };
         }
 
@@ -402,7 +472,8 @@ namespace MDPro3.Net
         {
             List<string> selections = new List<string>
             {
-                InterString.Get("禁限卡表")
+                InterString.Get("禁限卡表"),
+                string.Empty
             };
             foreach (var list in BanlistManager.Banlists)
                 selections.Add(list.Name);
@@ -410,16 +481,17 @@ namespace MDPro3.Net
         }
         void ChangeBanlist()
         {
-            string selected = UnityEngine.EventSystems.EventSystem.current.
-                currentSelectedGameObject.transform.GetChild(0).GetComponent<Text>().text;
-            textLflist.text = selected;
+            string selected = EventSystem.current.
+                currentSelectedGameObject.GetComponent<SelectionButton>().GetButtonText();
+            Manager.GetElement<SelectionButton>("ButtonLFList").SetButtonText(selected);
         }
 
         public void OnPool()
         {
             List<string> selections = new List<string>
             {
-                InterString.Get("卡片允许")
+                InterString.Get("卡片允许"),
+                string.Empty
             };
             for (int i = 1481; i < 1487; i++)
                 selections.Add(StringHelper.GetUnsafe(i));
@@ -427,15 +499,16 @@ namespace MDPro3.Net
         }
         void ChangePool()
         {
-            string selected = UnityEngine.EventSystems.EventSystem.current.
-                currentSelectedGameObject.transform.GetChild(0).GetComponent<Text>().text;
-            textPool.text = selected;
+            string selected = EventSystem.current.
+                currentSelectedGameObject.GetComponent<SelectionButton>().GetButtonText();
+            Manager.GetElement<SelectionButton>("ButtonPool").SetButtonText(selected);
         }
         public void OnMode()
         {
             List<string> selections = new List<string>
             {
-                InterString.Get("决斗模式")
+                InterString.Get("决斗模式"),
+                string.Empty
             };
             for (int i = 1244; i < 1247; i++)
                 selections.Add(StringHelper.GetUnsafe(i));
@@ -443,15 +516,36 @@ namespace MDPro3.Net
         }
         void ChangeMode()
         {
-            string selected = UnityEngine.EventSystems.EventSystem.current.
-                currentSelectedGameObject.transform.GetChild(0).GetComponent<Text>().text;
-            textMode.text = selected;
+            string selected = EventSystem.current.
+                currentSelectedGameObject.GetComponent<SelectionButton>().GetButtonText();
+            Manager.GetElement<SelectionButton>("ButtonMode").SetButtonText(selected);
         }
 
         #endregion
 
-
         #region MyCard
+
+        public void SelectMyCardDefaultButton()
+        {
+            UserInput.NextSelectionIsAxis = true;
+            EventSystem.current.SetSelectedGameObject(Manager.GetElement("ButtonAMatch"));
+        }
+
+        public void SelectDeckSelector()
+        {
+            UserInput.NextSelectionIsAxis = true;
+            EventSystem.current.SetSelectedGameObject(Manager.GetElement("DeckSelector"));
+        }
+
+        public void SelectLastWatchItem()
+        {
+            if(lastSelectedWatchItem != null)
+            {
+                UserInput.NextSelectionIsAxis = true;
+                EventSystem.current.SetSelectedGameObject(lastSelectedWatchItem.gameObject);
+            }
+        }
+
         public void OnMyCardRegister()
         {
             Application.OpenURL("https://accounts.moecube.com/signup");
@@ -490,7 +584,7 @@ namespace MDPro3.Net
             DoWhenLoginSuccess();
         }
 
-        void TryTokenin()
+        private void TryTokenIn()
         {
             StartCoroutine(TryTokenInAsync());
         }
@@ -531,23 +625,22 @@ namespace MDPro3.Net
             if (MyCard.account == null || MyCard.account.user == null)
                 yield break;
 
-            textUserName.text = MyCard.account.user.username;
-
+            Manager.GetElement<TextMeshProUGUI>("TextUserName").text = MyCard.account.user.name;
 
             var task = MyCard.GetExp();
             while (!task.IsCompleted)
                 yield return null;
-            textExp.text = task.Result.exp.ToString();
-            textDP.text = task.Result.pt.ToString();
-            textAWin.text = task.Result.athletic_win.ToString();
-            textARatio.text = task.Result.athletic_wl_ratio + "%";
-            textARank.text = task.Result.arena_rank.ToString();
-            textECount.text = task.Result.entertain_all.ToString();
-            textERank.text = task.Result.exp_rank.ToString();
+            Manager.GetElement<TextMeshProUGUI>("TextExpValue").text = task.Result.exp.ToString();
+            Manager.GetElement<TextMeshProUGUI>("TextDPValue").text = task.Result.pt.ToString();
+            Manager.GetElement<TextMeshProUGUI>("TextAthleticWinValue").text = task.Result.athletic_win.ToString();
+            Manager.GetElement<TextMeshProUGUI>("TextAthleticWinRatioValue").text = task.Result.athletic_wl_ratio + "%";
+            Manager.GetElement<TextMeshProUGUI>("TextAthleticRankValue").text = task.Result.arena_rank.ToString();
+            Manager.GetElement<TextMeshProUGUI>("TextEntertainCountValue").text = task.Result.entertain_all.ToString();
+            Manager.GetElement<TextMeshProUGUI>("TextEntertainRankValue").text = task.Result.exp_rank.ToString();
 
             while (!Appearance.loaded)
                 yield return null;
-            rawImageMyCardAvatar.material = Appearance.duelFrameMat0;
+            Manager.GetElement<RawImage>("RawImageAvatar").material = Appearance.duelFrameMat0;
 
             if (MyCard.avatar == null)
             {
@@ -555,7 +648,7 @@ namespace MDPro3.Net
                 while (!avatarTask.IsCompleted)
                     yield return null;
                 MyCard.avatar = avatarTask.Result;
-                rawImageMyCardAvatar.texture = MyCard.avatar;
+                Manager.GetElement<RawImage>("RawImageAvatar").texture = MyCard.avatar;
             }
 
             goMyCardFunctions.SetActive(true);
@@ -564,15 +657,16 @@ namespace MDPro3.Net
                 yield return null;
 
             var rankSprites = TextureManager.container.GetRankSprites(task.Result.pt);
-            iconRankBG.sprite = rankSprites[0];
-            iconRankIcon.sprite = rankSprites[1];
-            iconRankTier.sprite = rankSprites[2];
-            iconRankTier2.sprite = rankSprites[3];
-            iconRankTier3.sprite = rankSprites[4];
+            Manager.GetElement<Image>("IconBG").sprite = rankSprites[0];
+            Manager.GetElement<Image>("IconRank").sprite = rankSprites[1];
+            Manager.GetElement<Image>("IconTier1").sprite = rankSprites[2];
+            Manager.GetElement<Image>("IconTier2").sprite = rankSprites[3];
+            Manager.GetElement<Image>("IconTier3").sprite = rankSprites[4];
         }
 
         void RefreshDeckSelector()
         {
+            var deckSelector = Manager.GetElement<SelectionButton_DeckSelector>("DeckSelector");
             if (OnlineDeck.decks == null || OnlineDeck.decks.Length == 0)
             {
                 deckSelector.SetDeck(null, InterString.Get("未选中有效卡组"));
@@ -623,8 +717,8 @@ namespace MDPro3.Net
 
         public void OnDeckSelect()
         {
-            Program.I().selectDeck.SwitchCondition(SelectDeck.Condition.MyCard);
-            Program.I().ShiftToServant(Program.I().selectDeck);
+            Program.instance.selectDeck.SwitchCondition(SelectDeck.Condition.MyCard);
+            Program.instance.ShiftToServant(Program.instance.selectDeck);
         }
 
         public void OnEntertainMatch()
@@ -637,11 +731,11 @@ namespace MDPro3.Net
                     StopCoroutine(athleticMatch);
                     athleticMatch = null;
                 }
-                textAthletic.text = InterString.Get("竞技匹配");
+                Manager.GetElement<SelectionButton>("ButtonAMatch").SetButtonText(InterString.Get("竞技匹配"));
             }
             else
             {
-                textEntertain.text = InterString.Get("娱乐匹配");
+                Manager.GetElement<SelectionButton>("ButtonEMatch").SetButtonText(InterString.Get("娱乐匹配"));
                 StopCoroutine(entertainMatch);
                 entertainMatch = null;
             }
@@ -656,11 +750,11 @@ namespace MDPro3.Net
                     StopCoroutine(entertainMatch);
                     entertainMatch = null;
                 }
-                textEntertain.text = InterString.Get("娱乐匹配");
+                Manager.GetElement<SelectionButton>("ButtonEMatch").SetButtonText(InterString.Get("娱乐匹配"));
             }
             else
             {
-                textAthletic.text = InterString.Get("竞技匹配");
+                Manager.GetElement<SelectionButton>("ButtonAMatch").SetButtonText(InterString.Get("竞技匹配"));
                 StopCoroutine(athleticMatch);
                 athleticMatch = null;
             }
@@ -679,18 +773,18 @@ namespace MDPro3.Net
                 var elapsedTimeInSeconds = (DateTime.Now - startTime).TotalSeconds;
                 int minutes = (int)Math.Floor(elapsedTimeInSeconds / 60);
                 int seconds = (int)(elapsedTimeInSeconds % 60);
-                textEntertain.text = $"{minutes:D2}:{seconds:D2}";
+                Manager.GetElement<SelectionButton>("ButtonEMatch").SetButtonText($"{minutes:D2}:{seconds:D2}");
                 yield return new WaitForSeconds(0.5f);
             }
 
             if(task.Result != null)
             {
-                textEntertain.text = InterString.Get("娱乐匹配");
+                Manager.GetElement<SelectionButton>("ButtonEMatch").SetButtonText(InterString.Get("娱乐匹配"));
                 TcpHelper.LinkStart(task.Result.address, MyCard.account.user.username, task.Result.port.ToString(), task.Result.password, false, null);
             }
             else
             {
-                textEntertain.text = InterString.Get("匹配失败");
+                Manager.GetElement<SelectionButton>("ButtonEMatch").SetButtonText(InterString.Get("匹配失败"));
             }
             entertainMatch = null;
         }
@@ -704,18 +798,18 @@ namespace MDPro3.Net
                 var elapsedTimeInSeconds = (DateTime.Now - startTime).TotalSeconds;
                 int minutes = (int)Math.Floor(elapsedTimeInSeconds / 60);
                 int seconds = (int)(elapsedTimeInSeconds % 60);
-                textAthletic.text = $"{minutes:D2}:{seconds:D2}";
+                Manager.GetElement<SelectionButton>("ButtonAMatch").SetButtonText($"{minutes:D2}:{seconds:D2}");
                 yield return new WaitForSeconds(0.5f);
             }
 
             if (task.Result != null)
             {
-                textAthletic.text = InterString.Get("竞技匹配");
+                Manager.GetElement<SelectionButton>("ButtonAMatch").SetButtonText(InterString.Get("竞技匹配"));
                 TcpHelper.LinkStart(task.Result.address, MyCard.account.user.username, task.Result.port.ToString(), task.Result.password, false, null);
             }
             else
             {
-                textAthletic.text = InterString.Get("匹配失败");
+                Manager.GetElement<SelectionButton>("ButtonAMatch").SetButtonText(InterString.Get("匹配失败"));
             }
             athleticMatch = null;
         }

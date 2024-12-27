@@ -5,6 +5,7 @@ using System.Text;
 using UnityEngine;
 using MDPro3.YGOSharp.OCGWrapper.Enums;
 using MDPro3.YGOSharp;
+using MDPro3.Utility;
 
 namespace MDPro3
 {
@@ -395,7 +396,7 @@ namespace MDPro3
                     if (rushDuel)
                     {
                         re = bracketLeft;
-                        if ((data.Type & (uint)CardType.Spell) > 0)
+                        if (data.HasType(CardType.Spell))
                             re += InterString.Get("魔法卡", render);
                         else
                             re += InterString.Get("陷阱卡", render);
@@ -410,17 +411,17 @@ namespace MDPro3
                         {
                             re += Program.slash + secondType;
 
-                            if ((data.Type & (uint)CardType.Equip) > 0)
+                            if (data.HasType(CardType.Equip))
                                 re += "<Sprite=0>";
-                            if ((data.Type & (uint)CardType.QuickPlay) > 0)
+                            if (data.HasType(CardType.QuickPlay))
                                 re += "<Sprite=1>";
-                            if ((data.Type & (uint)CardType.Field) > 0)
+                            if (data.HasType(CardType.Field))
                                 re += "<Sprite=2>";
-                            if ((data.Type & (uint)CardType.Ritual) > 0)
+                            if (data.HasType(CardType.Ritual))
                                 re += "<Sprite=3>";
-                            if ((data.Type & (uint)CardType.Continuous) > 0)
+                            if (data.HasType(CardType.Continuous))
                                 re += "<Sprite=4>";
-                            if ((data.Type & (uint)CardType.Counter) > 0)
+                            if (data.HasType(CardType.Counter))
                                 re += "<Sprite=5>";
                         }
                         re += bracketRight;
@@ -430,7 +431,7 @@ namespace MDPro3
                         if (render)
                         {
                             re = bracketLeft;
-                            if ((data.Type & (uint)CardType.Spell) > 0)
+                            if (data.HasType(CardType.Spell))
                                 re += InterString.Get("魔法卡", render);
                             else
                                 re += InterString.Get("陷阱卡", render);
@@ -438,17 +439,17 @@ namespace MDPro3
                             var secondType = SecondType(data.Type, render);
                             if (secondType != GetUnsafe(1054, render))
                             {
-                                if ((data.Type & (uint)CardType.Equip) > 0)
+                                if (data.HasType(CardType.Equip))
                                     re += "<Sprite=0>";
-                                if ((data.Type & (uint)CardType.QuickPlay) > 0)
+                                if (data.HasType(CardType.QuickPlay))
                                     re += "<Sprite=1>";
-                                if ((data.Type & (uint)CardType.Field) > 0)
+                                if (data.HasType(CardType.Field))
                                     re += "<Sprite=2>";
-                                if ((data.Type & (uint)CardType.Ritual) > 0)
+                                if (data.HasType(CardType.Ritual))
                                     re += "<Sprite=3>";
-                                if ((data.Type & (uint)CardType.Continuous) > 0)
+                                if (data.HasType(CardType.Continuous))
                                     re += "<Sprite=4>";
-                                if ((data.Type & (uint)CardType.Counter) > 0)
+                                if (data.HasType(CardType.Counter))
                                     re += "<Sprite=5>";
                             }
                             re += bracketRight;

@@ -7,7 +7,7 @@ using YgomSystem.YGomTMPro;
 
 namespace YgomSystem.UI
 {
-	public class RubyTextGX : ExtendedTextMeshProUGUI, ILocalizedFontOwner
+	public class RubyTextGX : ExtendedTextMeshProUGUI//, ILocalizedFontOwner
 	{
 		private struct RubyInfo
 		{
