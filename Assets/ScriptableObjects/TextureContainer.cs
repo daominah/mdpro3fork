@@ -386,6 +386,29 @@ namespace MDPro3
         public Sprite rd_Frame_Token;
         public Sprite rd_Frame_Trap;
         public Sprite rd_Frame_Xyz;
+
+        public Sprite rd_Loading_Effect;
+        public Sprite rd_Loading_Fusion;
+        public Sprite rd_Loading_Link;
+        public Sprite rd_Loading_Normal;
+        public Sprite rd_Loading_Obelisk;
+        public Sprite rd_Loading_PendulumEffect;
+        public Sprite rd_Loading_PendulumFusion;
+        public Sprite rd_Loading_PendulumLink;
+        public Sprite rd_Loading_PendulumNormal;
+        public Sprite rd_Loading_PendulumRitual;
+        public Sprite rd_Loading_PendulumSynchro;
+        public Sprite rd_Loading_PendulumXyz;
+        public Sprite rd_Loading_Ra;
+        public Sprite rd_Loading_Ritual;
+        public Sprite rd_Loading_Slifer;
+        public Sprite rd_Loading_Spell;
+        public Sprite rd_Loading_Synchro;
+        public Sprite rd_Loading_Token;
+        public Sprite rd_Loading_Trap;
+        public Sprite rd_Loading_Xyz;
+
+
         public Texture2D rd_Mask;
         public Texture2D rd_KiraMask;
         public Texture2D rd_KiraMaskPendulum;
@@ -884,47 +907,79 @@ namespace MDPro3
             return typeNone;
         }
 
-        public Texture2D GetCardUnloadTexture(Card data)
+        public Texture2D GetCardLoadingTexture(Card data)
         {
+            var rd = CardRenderer.NeedRushDuelStyle(data.Id);
             if (data.HasType(CardType.Pendulum))
             {
                 if (data.HasType(CardType.Normal))
-                    return cardFramePendulumNormal.texture;
+                    return rd ?
+                        rd_Loading_PendulumNormal.texture
+                        : cardFramePendulumNormal.texture;
                 else if (data.HasType(CardType.Xyz))
-                    return cardFramePendulumXyz.texture;
+                    return rd ?
+                        rd_Loading_PendulumXyz.texture
+                        : cardFramePendulumXyz.texture;
                 else if (data.HasType(CardType.Synchro))
-                    return cardFramePendulumSynchro.texture;
+                    return rd ?
+                        rd_Loading_PendulumSynchro.texture
+                        : cardFramePendulumSynchro.texture;
                 else if (data.HasType(CardType.Fusion))
-                    return cardFramePendulumFusion.texture;
+                    return rd ?
+                        rd_Loading_PendulumFusion.texture
+                        : cardFramePendulumFusion.texture;
                 else if (data.HasType(CardType.Ritual))
-                    return cardFramePendulumRitual.texture;
+                    return rd ?
+                        rd_Loading_PendulumRitual.texture
+                        : cardFramePendulumRitual.texture;
                 else
-                    return cardFramePendulumEffect.texture;
+                    return rd ?
+                        rd_Loading_PendulumEffect.texture
+                        : cardFramePendulumEffect.texture;
             }
             else
             {
                 if (data.HasType(CardType.Normal))
-                    return cardFrameNormal.texture;
+                    return rd ?
+                        rd_Loading_Normal.texture
+                        : cardFrameNormal.texture;
                 else if (data.HasType(CardType.Xyz))
-                    return cardFrameXyz.texture;
+                    return rd ?
+                        rd_Loading_Xyz.texture
+                        : cardFrameXyz.texture;
                 else if (data.HasType(CardType.Synchro))
-                    return cardFrameSynchro.texture;
+                    return rd ?
+                        rd_Loading_Synchro.texture
+                        : cardFrameSynchro.texture;
                 else if (data.HasType(CardType.Fusion))
-                    return cardFrameFusion.texture;
+                    return rd ?
+                        rd_Loading_Fusion.texture
+                        : cardFrameFusion.texture;
                 else if (data.HasType(CardType.Ritual) && data.HasType(CardType.Monster))
-                    return cardFrameRitual.texture;
+                    return rd ?
+                        rd_Loading_Ritual.texture
+                        : cardFrameRitual.texture;
                 else if (data.HasType(CardType.Link))
-                    return cardFrameLink.texture;
+                    return rd ?
+                        rd_Loading_Link.texture
+                        : cardFrameLink.texture;
                 else if (data.HasType(CardType.Spell))
-                    return cardFrameSpell.texture;
+                    return rd ?
+                        rd_Loading_Spell.texture
+                        : cardFrameSpell.texture;
                 else if (data.HasType(CardType.Trap))
-                    return cardFrameTrap.texture;
+                    return rd ?
+                        rd_Loading_Trap.texture
+                        : cardFrameTrap.texture;
                 else if (data.HasType(CardType.Token))
-                    return cardFrameToken.texture;
+                    return rd ?
+                        rd_Loading_Token.texture
+                        : cardFrameToken.texture;
                 else
-                    return cardFrameEffect.texture;
+                    return rd ?
+                        rd_Loading_Effect.texture
+                        : cardFrameEffect.texture;
             }
-
         }
 
         #endregion

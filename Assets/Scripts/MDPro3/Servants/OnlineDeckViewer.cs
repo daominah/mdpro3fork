@@ -155,7 +155,6 @@ public class OnlineDeckViewer : Servant
                 lastSelectedDeckItem = superScrollView.items[0].gameObject.GetComponent<SelectionToggle_DeckOnline>();
             if (Cursor.lockState == CursorLockMode.Locked)
                 SelectLastSelectable();
-            Manager.GetElement<TextMeshProUGUI>("TextDeckNumValue").text = (superScrollView.items.Count - 1).ToString();
         };
     }
 

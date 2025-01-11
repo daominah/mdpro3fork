@@ -178,16 +178,16 @@ namespace MDPro3
                 EventSystem.current.SetSelectedGameObject(Manager.GetElement("Page10 Pickup"));
                 Manager.GetElement<SelectionToggle_AppearanceGenre>("Page10 Pickup").SetToggleOn();
 
-                deckName.text = Program.instance.editDeck.input.text;
-                mainCount.text = Program.instance.editDeck.mainCount.ToString();
-                extraCount.text = Program.instance.editDeck.extraCount.ToString();
-                sideCount.text = Program.instance.editDeck.sideCount.ToString();
-                foreach (var card in Program.instance.editDeck.cards)
-                {
-                    card.transform.SetParent(cardsRoot, false);
-                    card.RefreshPositionInstant();
-                }
-                PrePick();
+                //deckName.text = Program.instance.editDeck.input.text;
+                //mainCount.text = Program.instance.editDeck.mainCount.ToString();
+                //extraCount.text = Program.instance.editDeck.extraCount.ToString();
+                //sideCount.text = Program.instance.editDeck.sideCount.ToString();
+                //foreach (var card in Program.instance.editDeck.cards)
+                //{
+                //    card.transform.SetParent(cardsRoot, false);
+                //    card.RefreshPositionInstant();
+                //}
+                //PrePick();
             }
             else
             {
@@ -285,7 +285,15 @@ namespace MDPro3
             else
             {
                 Program.instance.ShiftToServant(Program.instance.deckEditor);
-
+                DOTween.To(v => { }, 0, 0, transitionTime).OnComplete(() =>
+                {
+                    foreach (var pool in pools)
+                    {
+                        foreach (var item in pool.Value)
+                            item.GetComponent<SelectionToggle_AppearanceItem>().Dispose();
+                        pool.Value.Clear();
+                    }
+                });
             }
         }
 

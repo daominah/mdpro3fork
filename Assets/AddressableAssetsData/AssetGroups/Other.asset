@@ -15,28 +15,8 @@ MonoBehaviour:
   m_GroupName: Other
   m_GUID: 68af21b94e2bb764b864c60129ab1c8f
   m_SerializeEntries:
-  - m_GUID: 04291da2ad3ae344b926033dfefd198f
-    m_Address: Ani_Card_2_r
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 15e35e4ecd2d1a240a5a56483d97e416
-    m_Address: Ani_Card_3_r
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 36e335017ad71d54fbb10842863188ae
     m_Address: Packages/com.unity.render-pipelines.core/Runtime/RenderPipelineResources/FallbackShader.shader
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 6041045cc5f3d584d89118dd067076e9
-    m_Address: Ani_Card_2
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 7d6add83727875e46abf826971de7275
-    m_Address: Ani_Card_0
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -45,38 +25,8 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 88563eb5382ef2a42bd9ec54ce8c57fc
-    m_Address: Ani_Card_1
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 96ddbe165b0b31d4e9106b9ab81cbd53
-    m_Address: card_3
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: b4ed7ee5c78ed594cb47593b5753318a
-    m_Address: card_1
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: c719a79a8ba0a8e48935982958ec9454
-    m_Address: Ani_Card_3
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: cc0f40740ba937a4ba929551edc81425
-    m_Address: card_2
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e6e9a19c3678ded42a3bc431ebef7dbd
     m_Address: Packages/com.unity.render-pipelines.universal/Shaders/Utils/FallbackError.shader
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: f4531aa037a11c34e86bb30920ec6259
-    m_Address: Ani_Card_1_r
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

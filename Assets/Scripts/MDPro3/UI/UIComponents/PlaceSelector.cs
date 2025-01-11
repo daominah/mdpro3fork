@@ -140,7 +140,7 @@ namespace MDPro3.UI
             else
             {
                 highlight.SetActive(false);
-                if (UserInput.MouseLeftDown)
+                if (UserInput.MouseLeftUp)
                     HideButtons();
                 if (countShowing)
                 {

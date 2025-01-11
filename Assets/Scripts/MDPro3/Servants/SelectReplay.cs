@@ -390,8 +390,11 @@ namespace MDPro3
 
             var deckName = replay +"_" + yrp.playerData[player].name;
             var deck = new MDPro3.YGOSharp.Deck(yrp.playerData[player].main, yrp.playerData[player].extra, new List<int>());
-            Program.instance.editDeck.SwitchCondition(EditDeck.Condition.ReplayDeck, deckName, deck);
-            Program.instance.ShiftToServant(Program.instance.editDeck);
+            //Program.instance.editDeck.SwitchCondition(EditDeck.Condition.ReplayDeck, deckName, deck);
+            //Program.instance.ShiftToServant(Program.instance.editDeck);
+
+            Program.instance.deckEditor.SwitchCondition(DeckEditor.Condition.ReplayDeck, deckName, deck);
+            Program.instance.ShiftToServant(Program.instance.deckEditor);
         }
     }
 }

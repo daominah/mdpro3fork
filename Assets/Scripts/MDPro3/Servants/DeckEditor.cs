@@ -1,8 +1,8 @@
 using DG.Tweening;
+using MDPro3.Net;
 using MDPro3.UI;
 using MDPro3.UI.PropertyOverrider;
 using MDPro3.YGOSharp;
-using MDPro3.YGOSharp.OCGWrapper.Enums;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -20,16 +20,34 @@ namespace MDPro3
 {
     public class DeckEditor : Servant
     {
+        #region Elements
+
+        private const string LABEL_RT_DRAGCARD = "DragCard";
+        private RectTransform m_DragCard;
+        private RectTransform DragCard =>
+            m_DragCard = m_DragCard != null ? m_DragCard
+            : managerUI.GetElement<RectTransform>(LABEL_RT_DRAGCARD);
+
+        private const string LABEL_RIMG_DRAGCARDIMAGE = "DragCard/ImageCard";
+        private RawImage m_DragCardImage;
+        private RawImage DragCardImage =>
+            m_DragCardImage = m_DragCardImage != null ? m_DragCardImage
+            : managerUI.GetNestedElement<RawImage>(LABEL_RIMG_DRAGCARDIMAGE);
+
+        #endregion
+
         #region Reference
-        public static Deck Deck;
-        public static string DeckName;
+        public static Deck Deck { get; set; }
+        public static string DeckName { get; set; }
         public static bool DeckIsFromLocal;
         public static Banlist banlist;
         public static List<int> historyCards;
         public static bool useMobileLayout;
+        public static string onlineDeckID;
+        private static bool deckLiked;
 
         private ElementObjectManager managerUI;
-        private ElementObjectManager managerOverHeader;
+        public ElementObjectManager managerOverHeader;
         private ElementObjectManager managerHeader;
 
         public DeckView deckView;
@@ -37,7 +55,7 @@ namespace MDPro3
         private CardDetailView cardDetailView;
         private CardActionMenu cardActionMenu;
 
-        private bool needSave;
+        //private bool needSave;
 
         public enum CardInfoType
         {
@@ -92,10 +110,24 @@ namespace MDPro3
                     historyCards = new();
                     break;
                 case Condition.OnlineDeck:
+                    returnServant = Program.instance.onlineDeckViewer;
+                    DeckName = deckName;
+                    Deck = null;
+                    DeckIsFromLocal = false;
+                    historyCards = new();
                     break;
                 case Condition.ReplayDeck:
+                    returnServant = Program.instance.replay;
+                    DeckName = deckName;
+                    Deck = deck;
+                    DeckIsFromLocal = false;
+                    historyCards = new();
                     break;
                 case Condition.ChangeSide:
+                    DeckName = Config.Get("DeckInUse", "@ui");
+                    Deck = TcpHelper.deck;
+                    DeckIsFromLocal = false;
+                    historyCards = Program.instance.ocgcore.sideReference.Main;
                     break;
             }
         }
@@ -104,7 +136,7 @@ namespace MDPro3
 
         #region Servant
         [HideInInspector] public SelectionButton_CardInDeck lastSelectedCardInDeck;
-        [HideInInspector] public SelectionButton_CardInCollection lastSelectedCardOnCollection;
+        [HideInInspector] public SelectionButton_CardInCollection lastSelectedCardInCollection;
         private TMP_InputField inputDeckName;
         private TMP_InputField inputSearch;
         private bool gotoAppearance;
@@ -127,9 +159,6 @@ namespace MDPro3
         {
             if (!gotoAppearance)
             {
-                gotoAppearance = false;
-                needSave = false;
-
                 useMobileLayout = PropertyOverrider.NeedMobileLayout();
                 var address = useMobileLayout ? "DeckEditUIMobile" : "DeckEditUI";
                 var handle = Addressables.InstantiateAsync(address);
@@ -149,19 +178,27 @@ namespace MDPro3
                     InitializeDeckView();
                     cardCollectionView = managerUI.GetElement<CardCollectionView>("CardCollectionView");
                     InitializeCardCollectionView();
-
-                    cardDetailView = managerUI.GetElement<CardDetailView>("CardDetailView");
                     cardActionMenu = managerUI.GetElement<CardActionMenu>("CardActionMenu");
-
+                    InitializeCardActionMenu();
+                    cardDetailView = managerUI.GetElement<CardDetailView>("CardDetailView");
+                    InitializeCardDetailView();
 
                     InitializeOverHeader();
                     InitializeHeader();
 
-                    ShowBackButton();
+                    if (condition != Condition.ChangeSide)
+                        ShowBackButton();
+                    else
+                        HideBackButton();
                 };
             }
             else
+            {
+                gotoAppearance = false;
+
                 base.ApplyShowArrangement(preDepth);
+                ShowBackButton();
+            }
         }
 
         protected override void ApplyHideArrangement(int preDepth)
@@ -182,80 +219,98 @@ namespace MDPro3
         private void Dispose()
         {
             Destroy(transform.GetChild(0).gameObject);
+            if(loadOnlineDeckCoroutine != null)
+                StopCoroutine(loadOnlineDeckCoroutine);
             callExit = false;
+            deckLiked = false;
         }
 
         public override void PerFrameFunction()
         {
-            if (!showing)
+            if (!NeedResponseInput())
                 return;
-            if (NeedResponseInput())
+
+            if (UserInput.WasRightShoulderPressing)
             {
-                if (UserInput.WasCancelPressed)
-                    OnReturn();
+                if (UserInput.WasGamepadButtonNorthPressed)
+                    OnBanlist();
+                else if (UserInput.WasGamepadButtonWestPressed)
+                    SetCardInfoType();
+                else if (UserInput.WasGamepadStartPressed)
+                    ShiftToAppearance();
+                return;
+            }
 
-                if (UserInput.WasLeftTriggerPressed)
-                {
-                    ShowCardActionMenu();
-                }
+            if (UserInput.WasCancelPressed && condition != Condition.ChangeSide)
+                OnReturn();
 
-                if (UserInput.WasRightTriggerPressed)
-                {
-                    if (_ResponseRegion == ResponseRegion.Deck)
-                        SelectLastCollectionViewItem();
-                    else if (_ResponseRegion == ResponseRegion.Collection)
-                        SelectLastDeckViewItem();
-                }
+            if (UserInput.WasGamepadSelectPressed)
+            {
+                if(condition == Condition.ChangeSide)
+                    OnChangeSideComplete();
+                else
+                    OnSave();
+            }
 
-                if (UserInput.WasRightShoulderPressing)
+            if (UserInput.WasGamepadStartPressed)
+                OnSubMenu();
+
+            if (UserInput.WasLeftTriggerPressed)
+                ShowCardActionMenu();
+
+            if (UserInput.WasRightTriggerPressed)
+            {
+                if (_ResponseRegion == ResponseRegion.Deck)
+                    SelectLastCollectionViewItem();
+                else if (_ResponseRegion == ResponseRegion.Collection)
+                    SelectLastDeckViewItem();
+            }
+
+
+            if (_ResponseRegion == ResponseRegion.Deck)
+            {
+                if (UserInput.WasGamepadButtonNorthPressed)
+                    inputDeckName.ActivateInputField();
+                else if (UserInput.WasGamepadButtonWestPressed)
+                    OnDeckButtonClicked();
+            }
+            else if (_ResponseRegion == ResponseRegion.Collection)
+            {
+                if (cardCollectionView.area == CardCollectionView.Area.Collection)
                 {
+                    if (UserInput.WasLeftStickPressed)
+                        cardCollectionView.PrintSearchCards();
+
+                    if (cardCollectionView.showingRelatedCards)
+                        return;
+
                     if (UserInput.WasGamepadButtonNorthPressed)
                     {
-                        OnBanlist();
-                        return;
+                        if (UserInput.WasLeftShoulderPressing)
+                            cardCollectionView.ShowSortOrder();
+                        else if (inputSearch != null)
+                            inputSearch.ActivateInputField();
                     }
                     else if (UserInput.WasGamepadButtonWestPressed)
                     {
-                        SetCardInfoType();
-                        return;
+                        if (UserInput.WasLeftShoulderPressing)
+                            cardCollectionView.ResetFilters();
+                        else
+                            cardCollectionView.ShowFilters();
                     }
                 }
 
-                if (_ResponseRegion == ResponseRegion.Deck)
-                {
-
-                }
-                else if (_ResponseRegion == ResponseRegion.Collection)
-                {
-                    if (cardCollectionView.area == CardCollectionView.Area.Collection)
-                    {
-                        if (UserInput.WasGamepadButtonNorthPressed)
-                        {
-                            if (UserInput.WasLeftShoulderPressing)
-                                cardCollectionView.ShowSortOrder();
-                            else if (inputSearch != null)
-                                inputSearch.ActivateInputField();
-                        }
-                        else if (UserInput.WasGamepadButtonWestPressed)
-                        {
-                            if (UserInput.WasLeftShoulderPressing)
-                                cardCollectionView.ResetFilters();
-                            else
-                                cardCollectionView.ShowFilters();
-                        }
-                        else if (UserInput.WasLeftStickPressed)
-                            cardCollectionView.PrintSearchCards();
-                    }
-                    if (UserInput.WasRightStickPressed)
-                    {
-                        cardCollectionView.OnTabRight();
-                    }
-                }
+                if (UserInput.WasRightStickPressed)
+                    cardCollectionView.OnTabRight();
             }
         }
 
         protected override bool NeedResponseInput()
         {
+            if (!showing)
+                return false;
+            if (inTransition)
+                return false;
             if (inputDeckName != null && inputDeckName.isFocused)
                 return false;
             if (inputSearch != null && inputSearch.isFocused)
@@ -273,7 +328,7 @@ namespace MDPro3
                 SelectLastDeckViewItem();
             else if (_ResponseRegion == ResponseRegion.Action)
             {
-                if(Selected != null)
+                if (Selected != null)
                     EventSystem.current.SetSelectedGameObject(Selected.gameObject);
                 else
                     cardActionMenu.SelectDefaultButton();
@@ -299,9 +354,9 @@ namespace MDPro3
         private void SelectLastCollectionViewItem()
         {
             _ResponseRegion = ResponseRegion.Collection;
-            if (lastSelectedCardOnCollection != null)
+            if (lastSelectedCardInCollection != null)
                 EventSystem.current
-                    .SetSelectedGameObject(lastSelectedCardOnCollection.gameObject);
+                    .SetSelectedGameObject(lastSelectedCardInCollection.gameObject);
             else
                 cardCollectionView.SelectDefaultItem();
         }
@@ -315,7 +370,7 @@ namespace MDPro3
 
         public override void OnReturn()
         {
-            if (!needSave || !DeckIsFromLocal)
+            if (!deckView.GetDirty() || !DeckIsFromLocal)
                 base.OnReturn();
             else
             {
@@ -341,6 +396,17 @@ namespace MDPro3
 
         #region Detail View
 
+        private void InitializeCardDetailView()
+        {
+            if (cardDetailView == null)
+                return;
+
+            cardDetailView.SetRelatedCardEvent(() =>
+            {
+                ShowRelatedCard(cardDetailView.Card);
+            });
+        }
+
         public void ShowDetail(Card data)
         {
             if (cardDetailView != null)
@@ -355,15 +421,15 @@ namespace MDPro3
             else if (cardDetailView != null)
                 code = cardDetailView.Card.Id;
             CardRarity.SetRarity(code, rarity);
-            UpdateRarity(code, rarity);
+            UpdateRarity(code);
         }
 
-        private void UpdateRarity(int code, CardRarity.Rarity rarity)
+        private void UpdateRarity(int code)
         {
             if (cardDetailView != null)
-                cardDetailView.RefreshRarity(code, rarity);
+                cardDetailView.RefreshRarity(code);
             if (cardActionMenu.showing)
-                cardActionMenu.RefreshRarity(code, rarity);
+                cardActionMenu.RefreshRarity(code);
             cardCollectionView.RefreshRarity(code);
             deckView.RefreshRarity(code);
         }
@@ -380,12 +446,47 @@ namespace MDPro3
                 SelectLastCollectionViewItem();
             });
             inputDeckName = deckView.GetInputField();
-            deckView.PrintDeck(Deck, DeckName, DeckView.Condition.Editable);
+            inputDeckName.onEndEdit.AddListener((string text) =>
+            {
+                SelectLastDeckViewItem();
+            });
+            var editConditon = DeckView.Condition.Editable;
+            if (condition == Condition.OnlineDeck
+                || condition == Condition.ReplayDeck)
+                editConditon = DeckView.Condition.NonEditable;
+            else if(condition == Condition.ChangeSide)
+                editConditon = DeckView.Condition.ChangeSide;
+
+            deckView.PrintDeck(Deck, DeckName, editConditon);
+            deckView.ButtonDeck.SetClickEvent(OnDeckButtonClicked);
+            if (Deck == null)
+                loadOnlineDeckCoroutine = StartCoroutine(LoadOnlineDeckAsync());
+
+            SetDeckButtonText();
+        }
+
+        private Coroutine loadOnlineDeckCoroutine;
+        private IEnumerator LoadOnlineDeckAsync()
+        {
+            var task = OnlineDeck.GetDeck(onlineDeckID);
+            while (!task.IsCompleted)
+                yield return null;
+            var onlineDeckData = task.Result;
+            if (onlineDeckData == null)
+            {
+                MessageManager.Cast(InterString.Get("网络异常，获取在线卡组失败。"));
+                yield break;
+            }
+
+            DeckName = onlineDeckData.deckName;
+            Deck = new Deck(onlineDeckData.deckYdk, onlineDeckData.deckContributor);
+
+            loadOnlineDeckCoroutine = null;
         }
 
         private void RefreshShowingCardCount()
         {
-            if(cardDetailView != null)
+            if (cardDetailView != null)
                 cardDetailView.SetCardCount();
             cardCollectionView.RefreshCardCount();
             if (_ResponseRegion == ResponseRegion.Action)
@@ -393,12 +494,13 @@ namespace MDPro3
         }
 
         /// <summary>
-        /// +1按钮添加卡片、CardInDeck中键
+        /// +1按钮、CardInDeck中键添加卡片
         /// </summary>
         public void AddCard(Card data)
         {
             bool playAnimation = _ResponseRegion != ResponseRegion.Action;
-            deckView.AddCard(data, playAnimation, playAnimation);
+            if (!deckView.AddCard(data, playAnimation, playAnimation))
+                return;
             AddHistoryCard(data.Id);
             RefreshShowingCardCount();
         }
@@ -409,8 +511,9 @@ namespace MDPro3
         /// <param name="code"></param>
         public void AddCardFromCollection(Card data)
         {
-            deckView.AddCardFromPosition(data, GetDragCardPositon());
-            if(cardCollectionView.area != CardCollectionView.Area.History)
+            if (!deckView.AddCardFromPosition(data, GetDragCardPositon()))
+                return;
+            if (cardCollectionView.area != CardCollectionView.Area.History)
                 AddHistoryCard(data.Id);
             RefreshShowingCardCount();
         }
@@ -422,19 +525,43 @@ namespace MDPro3
         /// <param name="position"></param>
         public void AddCardFromCollection(Card data, Vector3 position)
         {
-            deckView.AddCardFromPositionWithSequence(data, position);
+            if (!deckView.AddCardFromPositionWithSequence(data, position))
+                return;
             if (cardCollectionView.area != CardCollectionView.Area.History)
                 AddHistoryCard(data.Id);
             RefreshShowingCardCount();
         }
 
-        public void RemoveCard(SelectionButton_CardInDeck card)
+        /// <summary>
+        /// -1按钮删除卡片
+        /// </summary>
+        /// <param name="data"></param>
+        public void RemoveCard(Card data)
         {
-            if (!deckView.deckLoaded) return;
+            if (condition == Condition.ChangeSide)
+                return;
 
+            var card = deckView.GetCardByData(data);
+            if (card == null)
+            {
+                MessageManager.Toast(InterString.Get("无法删除更多卡片"));
+                return;
+            }
+
+            RemoveCardWithAnimation(card);
+        }
+
+        /// <summary>
+        /// -1按钮 调用此方法
+        /// CardInDeck右键删除卡片
+        /// </summary>
+        /// <param name="card"></param>
+        public void RemoveCardWithAnimation(SelectionButton_CardInDeck card)
+        {
             bool needSelect = _ResponseRegion != ResponseRegion.Action;
-            deckView.RemoveCard(card, needSelect);
-            AddHistoryCard(card.Data.Id);
+            if (!deckView.RemoveCard(card, needSelect, true, false))
+                return;
+            AddHistoryCard(card.Card.Id);
 
             AudioManager.PlaySE("SE_DECK_MINUS");
 
@@ -444,15 +571,18 @@ namespace MDPro3
             cg.blocksRaycasts = false;
             RefreshShowingCardCount();
 
-            if(needSelect)
+            if (needSelect)
             {
                 var endPostion = cardCollectionView.GetRubbishBinPositon();
                 endPostion.z -= 1f;
+                var startPostion = card.transform.position;
+                startPostion.z = endPostion.z;
+                card.transform.position = startPostion;
 
                 DOTween.Sequence()
                     .Append(card.transform.DOMove(endPostion, 0.4f).SetEase(Ease.OutCubic))
                     .Append(card.transform.DOScale(1f, 0.2f).SetEase(Ease.InCubic))
-                    .Join(cg.DOFade(0f, 0.2f).SetEase(Ease.InCubic))
+                    .Join(cg.DOFade(0f, 0.2f))
                     .OnComplete(() =>
                     {
                         Destroy(card.gameObject);
@@ -464,24 +594,85 @@ namespace MDPro3
             }
         }
 
-        public void RemoveCard(Card data)
+        /// <summary>
+        /// 拖动Card到DropArea删除卡片
+        /// </summary>
+        /// <param name="card"></param>
+        public void RemoveCardByDrag(SelectionButton_CardInDeck card)
         {
-            if (condition == Condition.ChangeSide)
+            if (!deckView.RemoveCard(card, false, true, true))
                 return;
-            if (!DeckIsFromLocal)
+            AddHistoryCard(card.Card.Id);
+            PlayDragCardShrinkAnimation();
+        }
+
+        public void DragCardTo(SelectionButton_CardInDeck dragCard)
+        {
+            if (!deckView.deckLoaded) return;
+            if(condition != Condition.ChangeSide 
+                && !deckView.CanEditCard()) return;
+
+            var position = GetDragCardPositon();
+            var hoverCard = deckView.GetHoveringCard();
+
+            var location = DeckLocation.All;
+            if (hoverCard == null)
             {
-                MessageManager.Toast(InterString.Get("请先保存卡组"));
+                if(UIHover.HoveringLabel == UIHover.LABEL_REMOVEDECK)
+                {
+                    RemoveCardByDrag(dragCard);
+                    return;
+                }
+                else if(UIHover.HoveringLabel == UIHover.LABEL_ADDBOOKMARK)
+                {
+                    BookmarkCard(dragCard.Card.Id);
+                    PlayDragCardShrinkAnimation();
+                    return;
+                }
+                else if (UIHover.HoveringLabel == UIHover.LABEL_CANNOTADDBOOKMARK)
+                {
+                    MessageManager.Toast(InterString.Get("已加入卡片收藏"));
+                    return;
+                }
+                else if (UIHover.HoveringLabel == UIHover.LABEL_MAINDECK)
+                    location = DeckLocation.MainDeck;
+                else if (UIHover.HoveringLabel == UIHover.LABEL_EXTRADECK)
+                    location = DeckLocation.ExtraDeck;
+                else if (UIHover.HoveringLabel == UIHover.LABEL_SIDEDECK)
+                    location = DeckLocation.SideDeck;
+                else
+                {
+                    dragCard.MoveToParent(position);
+                    return;
+                }
+            }
+            else
+                location = hoverCard.location;
+
+            if(!deckView.CanSwitchPosition(dragCard.Card, location))
+            {
+                dragCard.MoveToParent(position);
                 return;
             }
 
-            var card = deckView.GetCardByData(data);
-            if(card == null)
+            if(hoverCard == null)
             {
-                MessageManager.Toast(InterString.Get("无法删除更多卡片"));
-                return;
+                if (dragCard.location == location)
+                    dragCard.MoveToParent(position);
+                else
+                    deckView.MoveCardToLocation(dragCard, location, GetDragCardPositon());
             }
+            else
+                deckView.MoveCardToLocationWithSiblingIndex(dragCard, location
+                    , hoverCard.transform.GetSiblingIndex(), GetDragCardPositon());
+        }
 
-            RemoveCard(card);
+        public void CardChangeSide(SelectionButton_CardInDeck card)
+        {
+            var location = DeckLocation.SideDeck;
+            if(card.location == DeckLocation.SideDeck)
+                location = card.Card.IsExtraCard() ? DeckLocation.ExtraDeck : DeckLocation.MainDeck;
+            deckView.MoveCardToLocation(card, location, card.transform.position);
         }
 
         public RectTransform GetDragCardImage()
@@ -489,12 +680,101 @@ namespace MDPro3
             if (managerUI == null)
                 return null;
 
-            return managerUI.GetElement<RectTransform>("DragCard");
+            return DragCard;
         }
 
         public Vector3 GetDragCardPositon()
         {
             return managerUI.GetElement<RectTransform>("DragCard").position;
+        }
+
+        private void OnDeckButtonClicked()
+        {
+            if (!deckView.deckLoaded) return;
+
+            if (!deckView.ButtonDeck.gameObject.activeSelf)
+                return;
+
+            if(!DeckIsFromLocal && condition == Condition.OnlineDeck)
+            {
+                OnlineDeck.LikeDeck(onlineDeckID);
+                deckLiked = true;
+                SetDeckButtonText();
+                return;
+            }
+
+            if(deckView.GetDirty() || !DeckIsFromLocal)
+            {
+                if (condition != Condition.ChangeSide)
+                    MessageManager.Toast(InterString.Get("请先保存卡组"));
+                return;
+            }
+
+            if(MyCard.account != null)
+            {
+                var onlineDeck = OnlineDeck.GetByID(Deck.deckId);
+                if (onlineDeck == null || onlineDeck.isDelete)
+                    return;
+                _ = OnlineDeck.UpdatePublicState(Deck.deckId, !onlineDeck.isPublic);
+                onlineDeck.isPublic = !onlineDeck.isPublic;
+            }
+
+            SetDeckButtonText();
+        }
+
+        private void SetDeckButtonText()
+        {
+            string text = string.Empty;
+            if (DeckIsFromLocal)
+            {
+                if(MyCard.account != null)
+                {
+                    var onlineDeck = OnlineDeck.GetByID(Deck.deckId);
+                    if (onlineDeck == null || onlineDeck.isDelete)
+                    {
+                        deckView.ButtonDeck.gameObject.SetActive(false);
+                        return;
+                    }
+                    else
+                    {
+                        if (onlineDeck.isPublic)
+                            text = InterString.Get("公开中");
+                        else
+                            text = InterString.Get("非公开中");
+                    }
+                }
+            }
+            else
+            {
+                if(condition == Condition.OnlineDeck)
+                {
+                    text = InterString.Get("点赞");
+                    if (deckLiked)
+                    {
+                        deckView.ButtonDeck.gameObject.SetActive(false);
+                        return;
+                    }
+                }
+            }
+            deckView.ButtonDeck.SetButtonText(text);
+            deckView.ButtonDeck.gameObject.SetActive(text != string.Empty);
+        }
+
+        private void PlayDragCardShrinkAnimation()
+        {
+            if (managerUI == null)
+                return;
+
+            DragCard.gameObject.SetActive(true);
+            DragCard.localScale = Vector3.one;
+            DragCard.DOScale(0.5f, 0.2f).SetEase(Ease.InCubic);
+            DragCardImage.DOFade(0.5f, 0.2f).SetEase(Ease.InCubic)
+                .OnComplete(() =>
+                {
+                    DragCard.localScale = Vector3.one;
+                    DragCardImage.color = Color.white;
+                    DragCard.gameObject.SetActive(false);
+                });
         }
 
         #endregion
@@ -503,6 +783,7 @@ namespace MDPro3
 
         private void InitializeCardCollectionView()
         {
+            cardCollectionView.historyCards = historyCards;
             cardCollectionView.SetNoItemButtonNavigationEvent(MoveDirection.Left, () =>
             {
                 UserInput.NextSelectionIsAxis = true;
@@ -514,11 +795,11 @@ namespace MDPro3
         public void BookmarkCard(int code)
         {
             CardRarity.BookmarkCard(code);
-            if(cardDetailView != null)
+            if (cardDetailView != null)
                 cardDetailView.RefreshBookmarkToggle();
             if (_ResponseRegion == ResponseRegion.Action)
                 cardActionMenu.RefreshBookmarkToggle();
-            if(cardCollectionView.area == CardCollectionView.Area.Bookmark)
+            if (cardCollectionView.area == CardCollectionView.Area.Bookmark)
                 cardCollectionView.PrintBookmarkCards();
         }
 
@@ -535,7 +816,16 @@ namespace MDPro3
 
         public void AddHistoryCard(int code)
         {
+            if (condition == Condition.ChangeSide)
+                return;
             cardCollectionView.AddHistoryCard(code);
+        }
+
+        public void AddHistoryCards(List<int> codes)
+        {
+            if (condition == Condition.ChangeSide)
+                return;
+            cardCollectionView.AddHistoryCards(codes);
         }
 
         public bool NeedAddCardToHistoryWhenClick()
@@ -543,11 +833,31 @@ namespace MDPro3
             return cardCollectionView.area != CardCollectionView.Area.History;
         }
 
+        public void ShowRelatedCard(Card data)
+        {
+            cardCollectionView.ShowRelatedCard(data);
+        }
+
+        public void HideRelatedCard()
+        {
+            cardCollectionView.HideRelatedCard();
+        }
+
         #endregion
 
         #region Action Menu
 
-        private void ShowCardActionMenu()
+        private void InitializeCardActionMenu()
+        {
+            cardActionMenu.SetRelatedCardEvent(() =>
+            {
+                cardActionMenu.blockMark = ResponseRegion.Collection;
+                cardActionMenu.Hide();
+                ShowRelatedCard(cardActionMenu.Card);
+            });
+        }
+
+        public void ShowCardActionMenu()
         {
             if (_ResponseRegion == ResponseRegion.Deck
                 && lastSelectedCardInDeck != null)
@@ -556,14 +866,37 @@ namespace MDPro3
                 var index = 0;
                 for (int i = 0; i < deckView.cards.Count; i++)
                 {
-                    list.Add(deckView.cards[i].Data);
+                    list.Add(deckView.cards[i].Card);
                     if (deckView.cards[i] == lastSelectedCardInDeck)
                         index = i;
                 }
                 cardActionMenu.Show(list, index, _ResponseRegion);
                 _ResponseRegion = ResponseRegion.Action;
             }
+            else if (_ResponseRegion == ResponseRegion.Collection)
+            {
+                if (cardCollectionView.printedCards == null
+                    || cardCollectionView.printedCards.Count == 0)
+                    return;
+                if (lastSelectedCardInCollection == null
+                    || !lastSelectedCardInCollection.selected)
+                    return;
+                var list = new List<Card>();
+                var index = 0;
+                for (int i = 0; i < cardCollectionView.printedCards.Count; i++)
+                {
+                    if (lastSelectedCardInCollection.card.Id == cardCollectionView.printedCards[i])
+                    {
+                        index = i;
+                        break;
+                    }
+                }
+                cardActionMenu.Show(cardCollectionView.printedCards, index, _ResponseRegion);
+                _ResponseRegion = ResponseRegion.Action;
+            }
         }
+
+
 
         #endregion
 
@@ -589,12 +922,25 @@ namespace MDPro3
                 .SetClickEvent(OnSubMenu);
             managerHeader.GetElement<SelectionButton>("Back")
                 .SetClickEvent(OnReturn);
+            managerHeader.GetElement<SelectionButton>("ButtonChangeSide")
+                .SetClickEvent(OnChangeSideComplete);
+
+            if(condition == Condition.ChangeSide)
+            {
+                Destroy(managerHeader.GetElement("ButtonTest"));
+                Destroy(managerHeader.GetElement("ButtonSave"));
+            }
+            else
+            {
+                Destroy(managerHeader.GetElement("ButtonChangeSide"));
+            }
         }
 
         private void SetCardInfoType()
         {
             var type = (CardInfoType)(((int)_CardInfoType + 1) % 3);
             SetCardInfoType(type);
+            SelectionButton_CardInfoType.instance.SetCardInfoTypeIcon(type);
         }
 
         public void SetCardInfoType(CardInfoType type)
@@ -642,8 +988,8 @@ namespace MDPro3
 
         private void ChangeBanlist()
         {
-            string selected = UnityEngine.EventSystems.EventSystem.current.
-                currentSelectedGameObject.GetComponent<SelectionButton>().GetButtonText();
+            string selected = EventSystem.current.currentSelectedGameObject
+                .GetComponent<SelectionButton>().GetButtonText();
             banlist = BanlistManager.GetByName(selected);
             managerHeader.GetElement<SelectionButton>("ButtonBanlist")
                 .SetButtonText(selected);
@@ -653,58 +999,71 @@ namespace MDPro3
         private void OnSubMenu()
         {
             if (!deckView.deckLoaded) return;
-
             var menus = new List<string>()
-            {
-                InterString.Get("副菜单"),
-                InterString.Get("重置"),
-                InterString.Get("排序"),
-                InterString.Get("打乱"),
-                InterString.Get("复制"),
-                InterString.Get("分享"),
-                InterString.Get("测试"),
-            };
+                {
+                    InterString.Get("副菜单"),
+                    InterString.Get("重置"),
+                    InterString.Get("排序"),
+                    InterString.Get("打乱")
+                };
             var actions = new List<Action>()
+                {
+                    null,
+                    OnReset,
+                    OnSort,
+                    OnRandom
+                };
+
+            if (condition != Condition.ChangeSide)
             {
-                null,
-                OnReset,
-                OnSort,
-                OnRandom,
-                OnCopy,
-                OnShare,
-                OnHandTest
-            };
-            Program.instance.ui_.subMenu.Show(menus, actions);
+                menus.AddRange(new List<string>
+                {
+                    InterString.Get("复制"),
+                    InterString.Get("分享"),
+                    InterString.Get("测试"),
+                    InterString.Get("清空")
+                });
+                actions.AddRange(new List<Action>()
+                {
+                    OnCopy,
+                    OnShare,
+                    OnHandTest,
+                    OnClearDeck
+                });
+            }
+            UIManager.ShowSubMenu(menus, actions);
         }
 
         private void OnSave()
         {
-            if (!needSave) return;
+            if (DeckIsFromLocal && !deckView.GetDirty()) return;
 
-            if (banlist.Name != BanlistManager.EmptyBanlistName)
-            {
-                if (deckView.mainCount > 60 || deckView.extraCount > 15 || deckView.sideCount > 15)
+            if(DeckIsFromLocal)
+                if (banlist.Name != BanlistManager.EmptyBanlistName)
                 {
-                    List<string> tasks = new()
+                    if (deckView.mainCount > 60 || deckView.extraCount > 15 || deckView.sideCount > 15)
                     {
-                        InterString.Get("保存失败"),
-                        InterString.Get("卡组内卡片张数超过限制。@n如需无视限制，请将禁限卡表设置为无（N/A）。")
-                    };
-                    UIManager.ShowPopupConfirm(tasks);
-                    callExit = false;
-                    return;
+                        List<string> tasks = new()
+                        {
+                            InterString.Get("保存失败"),
+                            InterString.Get("卡组内卡片张数超过限制。@n如需无视限制，请将禁限卡表设置为无（N/A）。")
+                        };
+                        UIManager.ShowPopupConfirm(tasks);
+                        callExit = false;
+                        return;
+                    }
                 }
-            }
 
             if (!DeckIsFromLocal && File.Exists(Program.deckPath + DeckName + Program.ydkExpansion))
             {
                 List<string> tasks = new()
-                    {
-                        InterString.Get("该卡组名已存在"),
-                        InterString.Get("该卡组名的文件已存在，是否直接覆盖创建？"),
-                        InterString.Get("覆盖"),
-                        InterString.Get("取消")
-                    };
+                {
+                    InterString.Get("该卡组名已存在"),
+                    InterString.Get("该卡组名的文件已存在，是否直接覆盖创建？"),
+                    InterString.Get("覆盖"),
+                    InterString.Get("取消")
+                };
+
                 UIManager.ShowPopupYesOrNo(tasks, OnSaveConfirmed, () => { callExit = false; });
             }
             else
@@ -713,93 +1072,46 @@ namespace MDPro3
 
         private void OnSaveConfirmed()
         {
-            deckView.Save();
+            if (!deckView.Save())
+                return;
+
             if (callExit)
             {
                 cg.blocksRaycasts = false;
+                inTransition = true;//block input
                 DOTween.To(v => { }, 0, 0, 2f).OnComplete(() =>
                 {
                     OnExit();
                 });
+                return;
             }
             DeckIsFromLocal = true;
-
-            inputDeckName.text = DeckName;
-
-            deckView.SetCondition(DeckView.Condition.Editable);
+            SetDeckButtonText();
         }
 
         private void OnReset()
         {
-            if (!deckView.deckLoaded) return;
-            if (!CheckDeckIsLocal()) return;
-
             deckView.ResetDeck();
         }
 
         private void OnSort()
         {
-            if (!deckView.deckLoaded) return;
-            if (!CheckDeckIsLocal()) return;
-
-            needSave = true;
-
-            List<SelectionButton_CardInDeck> main = new();
-            List<SelectionButton_CardInDeck> extra = new();
-            List<SelectionButton_CardInDeck> side = new();
-            foreach (var card in deckView.cards)
-            {
-                if (card.location == DeckLocation.MainDeck)
-                    main.Add(card);
-                else if (card.location == DeckLocation.ExtraDeck)
-                    extra.Add(card);
-                else if (card.location == DeckLocation.SideDeck)
-                    side.Add(card);
-                card.LockPosition();
-            }
-
-            main.Sort((left, right) =>
-            {
-                return CardsManager.ComparisonOfCard()
-                (left.Data, right.Data);
-            });
-            extra.Sort((left, right) =>
-            {
-                return CardsManager.ComparisonOfCard()
-                (left.Data, right.Data);
-            });
-            side.Sort((left, right) =>
-            {
-                return CardsManager.ComparisonOfCard()
-                (left.Data, right.Data);
-            });
-
-            for (int i = 0; i < main.Count; i++)
-                main[i].transform.SetSiblingIndex(i);
-            for (int i = 0; i < extra.Count; i++)
-                extra[i].transform.SetSiblingIndex(i);
-            for (int i = 0; i < side.Count; i++)
-                side[i].transform.SetSiblingIndex(i);
-
-            deckView.cards.Clear();
-            deckView.cards = new(main);
-            deckView.cards.AddRange(extra);
-            deckView.cards.AddRange(side);
+            deckView.Sort();
         }
 
         private void OnRandom()
         {
-
+            deckView.Randomize();
         }
 
         private void OnCopy()
         {
-
+            deckView.Copy();
         }
 
         private void OnShare()
         {
-
+            deckView.Share();
         }
 
         private void OnHandTest()
@@ -807,20 +1119,28 @@ namespace MDPro3
 
         }
 
-        private bool CheckDeckIsLocal()
+        private void OnClearDeck()
         {
-            if (!DeckIsFromLocal && condition != Condition.ChangeSide)
-            {
-                MessageManager.Toast(InterString.Get("请先保存卡组"));
-                return false;
-            }
-            return true;
+            var codes = new List<int>();
+            foreach (var card in deckView.cards)
+                codes.Add(card.Card.Id);
+            if (!deckView.ClearDeck())
+                return;
+            AudioManager.PlaySE("SE_DECK_MINUS");
+            AddHistoryCards(codes);
+            RefreshShowingCardCount();
+        }
+
+        public void OnChangeSideComplete()
+        {
+            TcpHelper.CtosMessage_UpdateDeck(deckView.FromObjectDeckToCodedDeck());
         }
 
         private void ShowBackButton()
         {
             if (managerHeader == null)
                 return;
+            managerHeader.GetElement("Back").SetActive(true);
 
             var rect = managerHeader.GetElement<RectTransform>("Back");
             rect.anchoredPosition3D = new Vector3(24f, 120f, 0f);
@@ -842,8 +1162,13 @@ namespace MDPro3
         {
             if (managerOverHeader == null)
                 return;
-            managerOverHeader.GetElement<SelectionButton>("AppearanceGroup").SetClickEvent(ShiftToAppearance);
-            StartCoroutine(RefreshOverHeaderIconsAsync());
+            if (condition == Condition.ChangeSide)
+                managerOverHeader.GetElement("AppearanceGroup").SetActive(false);
+            else
+            {
+                managerOverHeader.GetElement<SelectionButton>("AppearanceGroup").SetClickEvent(ShiftToAppearance);
+                StartCoroutine(RefreshOverHeaderIconsAsync());
+            }
         }
 
         private IEnumerator RefreshOverHeaderIconsAsync()
@@ -859,9 +1184,7 @@ namespace MDPro3
             managerOverHeader.GetElement<Image>("IconMate").color = Color.clear;
 
             while (Deck == null)
-            {
                 yield return null;
-            }
 
             var ie = Program.items.LoadItemIconAsync(Deck.Case.ToString(), Items.ItemType.Case);
             StartCoroutine(ie);
@@ -920,7 +1243,16 @@ namespace MDPro3
 
         private void ShiftToAppearance()
         {
-            needSave = true;
+            if (!deckView.deckLoaded)
+                return;
+            if (condition == Condition.ChangeSide)
+                return;
+            if (!DeckIsFromLocal)
+            {
+                if(condition != Condition.ChangeSide)
+                    MessageManager.Toast(InterString.Get("请先保存卡组"));
+                return;
+            }
             gotoAppearance = true;
             Program.instance.appearance.SwitchCondition(Appearance.Condition.DeckEditor);
             Program.instance.ShiftToServant(Program.instance.appearance);

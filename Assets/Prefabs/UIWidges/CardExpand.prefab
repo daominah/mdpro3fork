@@ -215,6 +215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac553023cbab09d4d91058a92ee5e17b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  responseInput: 0
 --- !u!114 &114183656088130082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -246,6 +247,7 @@ GameObject:
   - component: {fileID: 222394602949631731}
   - component: {fileID: 114620792114160214}
   - component: {fileID: 4786707251012157874}
+  - component: {fileID: 6703853494078020738}
   m_Layer: 5
   m_Name: ImageCard
   m_TagString: Untagged
@@ -364,6 +366,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6703853494078020738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1216350034852710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35b333cb30a7d094b997b5a31c5f4b7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cache: 0
 --- !u!1 &1559872800829564
 GameObject:
   m_ObjectHideFlags: 0
@@ -562,6 +577,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
 --- !u!114 &7022736277869102236
 MonoBehaviour:
   m_ObjectHideFlags: 0

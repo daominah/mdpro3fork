@@ -433,6 +433,26 @@ MonoBehaviour:
   rd_Frame_Token: {fileID: 21300000, guid: 7313cfcb261bf8d4ebd5f5bf74cf46e1, type: 3}
   rd_Frame_Trap: {fileID: 21300000, guid: 05ca7e357ac582e499b4c343339363e1, type: 3}
   rd_Frame_Xyz: {fileID: 21300000, guid: 558d37a4a4d179f43be81714516f6256, type: 3}
+  rd_Loading_Effect: {fileID: 21300000, guid: 346991cd551e37c4eb51f77c5524ce96, type: 3}
+  rd_Loading_Fusion: {fileID: 21300000, guid: 9c326bd08ea27cc4a9bb04bf481425db, type: 3}
+  rd_Loading_Link: {fileID: 21300000, guid: e96b12569fc81684682d7caa36d91294, type: 3}
+  rd_Loading_Normal: {fileID: 21300000, guid: 55a766ad9d2cced4dbe2d7c8d4b17bfe, type: 3}
+  rd_Loading_Obelisk: {fileID: 21300000, guid: 407da8749e7bd344daf0533cbc30182b, type: 3}
+  rd_Loading_PendulumEffect: {fileID: 21300000, guid: 87f88190d6af5e746832ee0001398ec5, type: 3}
+  rd_Loading_PendulumFusion: {fileID: 21300000, guid: 5e29026382a14904396c009d1b2d164f, type: 3}
+  rd_Loading_PendulumLink: {fileID: 21300000, guid: 6e585262037016947ac2c366a853c1c6, type: 3}
+  rd_Loading_PendulumNormal: {fileID: 21300000, guid: 1b71d149b37e5ac4ba7abf46a6e3c4e7, type: 3}
+  rd_Loading_PendulumRitual: {fileID: 21300000, guid: 3c4f72d313c9c5e46ae4f77bca1808b6, type: 3}
+  rd_Loading_PendulumSynchro: {fileID: 21300000, guid: 60a958f2550e97b40a3813db0a247d4a, type: 3}
+  rd_Loading_PendulumXyz: {fileID: 21300000, guid: db7be2144a62e7f4aa93941616fb966b, type: 3}
+  rd_Loading_Ra: {fileID: 21300000, guid: fe4d8e61e81ebfd40a6881fb71955017, type: 3}
+  rd_Loading_Ritual: {fileID: 21300000, guid: 6b33ec25c36bada44b568ade663b690c, type: 3}
+  rd_Loading_Slifer: {fileID: 21300000, guid: cac92b83ae869ca47988e1870ba01dd2, type: 3}
+  rd_Loading_Spell: {fileID: 21300000, guid: 848ed4e0ab8abda4fafb085e92c7d770, type: 3}
+  rd_Loading_Synchro: {fileID: 21300000, guid: 2e1dfd1a48757504c8a90fc0c96d4f95, type: 3}
+  rd_Loading_Token: {fileID: 21300000, guid: 2146b6177c628c64596c9690f662c6c6, type: 3}
+  rd_Loading_Trap: {fileID: 21300000, guid: fbfdb4ac60fa02f4b9b2947b30e5dbb8, type: 3}
+  rd_Loading_Xyz: {fileID: 21300000, guid: 7b2364ea77c90164c8521e51063487c8, type: 3}
   rd_Mask: {fileID: 2800000, guid: bfbe466bba9dd284cb160065df847df5, type: 3}
   rd_KiraMask: {fileID: 2800000, guid: b9e3a6194de948e4bb571cf245d5f6d0, type: 3}
   rd_KiraMaskPendulum: {fileID: 2800000, guid: ad112383d2d010945965fb587ff62a3d, type: 3}

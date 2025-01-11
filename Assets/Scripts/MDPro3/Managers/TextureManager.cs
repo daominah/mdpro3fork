@@ -57,6 +57,7 @@ namespace MDPro3
             StartCoroutine(LoadMaterials());
         }
 
+        public static bool loaded;
         private IEnumerator LoadMaterials()
         {
             while(container == null)
@@ -105,8 +106,6 @@ namespace MDPro3
             cardMatShine.SetVector("_AttributeSize_Pos", new Vector4(9.82f, 13.84f, -3.7f, -5.81f));
             cardMatRoyal.SetVector("_AttributeSize_Pos", new Vector4(9.82f, 13.84f, -3.7f, -5.81f));
 
-            while (container == null)
-                yield return null;
             cardMatShine.SetTexture("_KiraMask", container.cardKiraMask);
             cardMatRoyal.SetTexture("_KiraMask", container.cardKiraMask);
             var tempTex = cardMatRoyal.GetTexture("_Texture2DAsset_90c6e35ef4304f289c279037152a03b7_Out_0");
@@ -117,9 +116,6 @@ namespace MDPro3
             cardMatNormal.enableInstancing = true;
             cardMatShine.enableInstancing = true;
             cardMatRoyal.enableInstancing = true;
-            //cardMatNormal.DisableKeyword("_ALPHATEST_ON");
-            //cardMatShine.DisableKeyword("_ALPHATEST_ON");
-            //cardMatRoyal.DisableKeyword("_ALPHATEST_ON");
 
             cardMatGold = Instantiate(cardMatRoyal);
             cardMatGold.SetFloat("_CardDistortion01", 1.2f);
@@ -172,6 +168,7 @@ namespace MDPro3
                     yield return null;
             }
 #endif
+            loaded = true;
         }
 
         private void MaterialToRD(Material material)
@@ -454,6 +451,7 @@ namespace MDPro3
             mat.SetVector("_TilingOffset", new Vector4(1f, 1f, 0f, 0f));
             mat.SetVector("_MainTexMinMax", new Vector4(-0.5f, 1f, -0.5f, 1f));
         }
+
         public IEnumerator SetCommonShopButtonMaterial(Image image, bool hover)
         {
             if (hover)

@@ -1348,8 +1348,10 @@ namespace MDPro3
             {
                 Room.needSide = false;
                 MessageManager.Cast(InterString.Get("卡片历史中为您准备了对手上一局使用过的卡。"));
-                returnServant = Program.instance.editDeck;
-                Program.instance.editDeck.SwitchCondition(EditDeck.Condition.ChangeSide);
+                //returnServant = Program.instance.editDeck;
+                //Program.instance.editDeck.SwitchCondition(EditDeck.Condition.ChangeSide);
+                returnServant = Program.instance.deckEditor;
+                Program.instance.deckEditor.SwitchCondition(DeckEditor.Condition.ChangeSide);
                 ReturnTo();
                 return;
             }

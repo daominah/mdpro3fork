@@ -14,6 +14,8 @@ namespace MDPro3
 {
     public class UserInput : MonoBehaviour
     {
+        public delegate void UserInputAction();
+
         public static UserInput instance;
         public static PlayerInput PlayerInput;
         public static string KeyboardSchemeName = "Keyboard&Mouse";
@@ -21,7 +23,27 @@ namespace MDPro3
         public static bool NextSelectionIsAxis;
         public static GameObject HoverObject;
 
-        public static bool draging;
+        public static event UserInputAction OnDragStart;
+        public static event UserInputAction OnDragEnd;
+        private static bool m_Draging;
+        public static bool Draging 
+        {
+            get => m_Draging;
+            set
+            {
+                m_Draging = value;
+                if (m_Draging)
+                    OnDragStart.Invoke();
+                else
+                    OnDragEnd.Invoke();
+            }
+        }
+
+        public static event UserInputAction OnMouseMovedAction;
+        public static event UserInputAction OnMouseCursorHide;
+
+        public delegate void ControlDeviceChange(string scheme);
+        public static event ControlDeviceChange OnControlDeviceChange;
 
         public enum GamepadType
         {
@@ -53,6 +75,8 @@ namespace MDPro3
         public static bool WasRightShoulderPressing;
         public static bool WasLeftTriggerPressed;
         public static bool WasRightTriggerPressed;
+        public static bool WasGamepadSelectPressed;
+        public static bool WasGamepadStartPressed;
 
         public static bool MouseLeftDown;
         public static bool MouseRightDown;
@@ -63,15 +87,6 @@ namespace MDPro3
         public static bool MouseLeftUp;
         public static bool MouseRightUp;
         public static bool MouseMiddleUp;
-
-        public delegate void MouseMoveAction();
-        public static event MouseMoveAction OnMouseMovedAction;
-
-        public delegate void ControlDeviceChange(string scheme);
-        public static event ControlDeviceChange OnControlDeviceChange;
-
-        public delegate void MouseCursorHide();
-        public static event MouseCursorHide OnMouseCursorHide;
 
         private InputAction moveAction;
         private InputAction cancelAction;
@@ -90,6 +105,8 @@ namespace MDPro3
         private InputAction rightShoulderAction;
         private InputAction leftTriggerAction;
         private InputAction rightTriggerAction;
+        private InputAction gamepadSelectAction;
+        private InputAction gamepadStartAction;
 
         private Vector2 lastMousePos;
 
@@ -128,6 +145,8 @@ namespace MDPro3
             rightShoulderAction = PlayerInput.actions["RightShoulderPress"];
             leftTriggerAction = PlayerInput.actions["LeftTriggerPress"];
             rightTriggerAction = PlayerInput.actions["RightTriggerPress"];
+            gamepadSelectAction = PlayerInput.actions["GamepadSelect"];
+            gamepadStartAction = PlayerInput.actions["GamepadStart"];
 
             OnMouseMovedAction += ShowCursor;
         }
@@ -165,6 +184,8 @@ namespace MDPro3
             WasRightShoulderPressing = rightShoulderAction.IsPressed();
             WasLeftTriggerPressed = leftTriggerAction.WasPressedThisFrame();
             WasRightTriggerPressed = rightTriggerAction.WasPressedThisFrame();
+            WasGamepadSelectPressed = gamepadSelectAction.WasPressedThisFrame();
+            WasGamepadStartPressed = gamepadStartAction.WasPressedThisFrame();
 
             #region Mouse
             MouseLeftDown = leftClickAction.WasPressedThisFrame();
@@ -343,8 +364,10 @@ namespace MDPro3
 
         public static void SetMoveRepeatRate(float rate)
         {
+#if !UNITY_ANDROID || UNITY_EDITOR
             var module = instance.GetComponent<InputSystemUIInputModule>();
             module.moveRepeatRate = rate;
+#endif
         }
 
         #region Rumble

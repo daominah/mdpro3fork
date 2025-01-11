@@ -145,13 +145,13 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 9b73f446639e981429a6406a5d0eba4b
-    m_Address: SubMenuTitle
+  - m_GUID: 9bbe2536540467948b7abef017036aa5
+    m_Address: DeckEditUIMobile
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 9bbe2536540467948b7abef017036aa5
-    m_Address: DeckEditUIMobile
+  - m_GUID: 9e8d10ac8308374479ebf66519f85b95
+    m_Address: SubMenu
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -167,11 +167,6 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a7b6c57d0c1eb5b46bb3350b776ca7fb
     m_Address: CardInCollection
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: b1171a325d5f7474c8c721231aadc956
-    m_Address: SubMenuButton
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

@@ -3870,6 +3870,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -3904,6 +3905,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -7153,6 +7155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -7187,6 +7190,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -10993,6 +10997,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -11027,6 +11032,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   upNum: 10
   rightNum: 1
 --- !u!114 &8540643289100110069
@@ -14341,6 +14347,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -14375,6 +14382,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -18708,6 +18716,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -18742,6 +18751,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -20445,6 +20455,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -20479,6 +20490,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -21301,6 +21313,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -21335,6 +21348,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -21595,6 +21609,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -21629,6 +21644,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -22294,6 +22310,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -22328,6 +22345,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -22882,6 +22900,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -22916,6 +22935,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -26147,6 +26167,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -26181,6 +26202,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -29077,6 +29099,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -29111,6 +29134,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -29761,6 +29785,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -29795,6 +29820,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   upNum: 10
   rightNum: 1
 --- !u!114 &6492720485672928884
@@ -30210,6 +30236,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -30244,6 +30271,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -31270,7 +31298,6 @@ GameObject:
   - component: {fileID: 7520000646779799315}
   - component: {fileID: 2367223438055209488}
   - component: {fileID: 5391058474905291080}
-  - component: {fileID: 7639017267744073194}
   m_Layer: 5
   m_Name: Area Pool
   m_TagString: Untagged
@@ -31365,18 +31392,6 @@ MonoBehaviour:
   m_ConstraintCount:
     m_DefaultValue: 4
     m_MobileValue: 3
---- !u!114 &7639017267744073194
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 814797292334517921}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6734dcf99845ac0449a738c416f95a0f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &814840318786528518
 GameObject:
   m_ObjectHideFlags: 0
@@ -32708,6 +32723,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -32742,6 +32758,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -34201,6 +34218,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -34235,6 +34253,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   upNum: 10
   rightNum: 1
 --- !u!114 &7754467802112636858
@@ -35043,6 +35062,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -35077,6 +35097,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -35818,6 +35839,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -35852,6 +35874,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -38230,6 +38253,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -38264,6 +38288,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -41094,6 +41119,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -41128,6 +41154,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -41388,6 +41415,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -41422,6 +41450,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -41935,6 +41964,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -41969,6 +41999,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -44699,6 +44730,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -44733,6 +44765,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -46102,6 +46135,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -46136,6 +46170,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -49928,6 +49963,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -49962,6 +49998,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -51014,6 +51051,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -51048,6 +51086,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -53805,6 +53844,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -53839,6 +53879,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   upNum: 10
   rightNum: 1
 --- !u!114 &93411477337394159
@@ -54280,6 +54321,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -54314,6 +54356,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -55680,6 +55723,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -55714,6 +55758,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -56933,6 +56978,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -56967,6 +57013,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -59837,6 +59884,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -59871,6 +59919,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -62159,6 +62208,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -62193,6 +62243,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -65383,6 +65434,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -65417,6 +65469,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -66226,6 +66279,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -66260,6 +66314,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -68412,6 +68467,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -68446,6 +68502,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -70950,6 +71007,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -70984,6 +71042,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -71528,6 +71587,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -71562,6 +71622,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -72764,6 +72825,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -72798,6 +72860,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -74116,6 +74179,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -74150,6 +74214,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -76852,6 +76917,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -76886,6 +76952,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -78352,7 +78419,6 @@ GameObject:
   - component: {fileID: 7557961786302896045}
   - component: {fileID: 357610276807621210}
   - component: {fileID: 2235380888305231265}
-  - component: {fileID: 8909860270359473564}
   m_Layer: 5
   m_Name: Area Ability
   m_TagString: Untagged
@@ -78447,18 +78513,6 @@ MonoBehaviour:
   m_ConstraintCount:
     m_DefaultValue: 4
     m_MobileValue: 3
---- !u!114 &8909860270359473564
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2296318127775554574}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6734dcf99845ac0449a738c416f95a0f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2297358013718828043
 GameObject:
   m_ObjectHideFlags: 0
@@ -80252,6 +80306,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -80286,6 +80341,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   upNum: 10
   rightNum: 1
 --- !u!114 &6190750970974088708
@@ -81448,6 +81504,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -81482,6 +81539,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -83403,6 +83461,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -83437,6 +83496,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -88060,6 +88120,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -88094,6 +88155,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -90428,6 +90490,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -90462,6 +90525,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -91395,6 +91459,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -91429,6 +91494,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -92851,6 +92917,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -92885,6 +92952,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -98163,6 +98231,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -98197,6 +98266,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -100397,7 +100467,6 @@ GameObject:
   - component: {fileID: 7519455349108415212}
   - component: {fileID: 1544768108343958795}
   - component: {fileID: 5554634997404346285}
-  - component: {fileID: 6873142333494060333}
   m_Layer: 5
   m_Name: Area Level
   m_TagString: Untagged
@@ -100503,18 +100572,6 @@ MonoBehaviour:
   m_ConstraintCount:
     m_DefaultValue: 4
     m_MobileValue: 3
---- !u!114 &6873142333494060333
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2966766209103385582}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6734dcf99845ac0449a738c416f95a0f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2968443474544491954
 GameObject:
   m_ObjectHideFlags: 0
@@ -102279,6 +102336,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -102313,6 +102371,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -102573,6 +102632,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -102607,6 +102667,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -105510,6 +105571,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -105544,6 +105606,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   upNum: 10
   rightNum: 1
 --- !u!114 &574372038315557599
@@ -107579,6 +107642,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -107613,6 +107677,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -108795,6 +108860,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -108829,6 +108895,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -109067,7 +109134,6 @@ GameObject:
   - component: {fileID: 3037650903583894389}
   - component: {fileID: 3723965936738881754}
   - component: {fileID: 7777730566138497589}
-  - component: {fileID: 8667151586558618949}
   m_Layer: 5
   m_Name: Area Effect
   m_TagString: Untagged
@@ -109186,18 +109252,6 @@ MonoBehaviour:
   m_ConstraintCount:
     m_DefaultValue: 4
     m_MobileValue: 3
---- !u!114 &8667151586558618949
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3265588633188588309}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6734dcf99845ac0449a738c416f95a0f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &3266599498379641658
 GameObject:
   m_ObjectHideFlags: 0
@@ -109727,6 +109781,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -109761,6 +109816,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -110183,6 +110239,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -110217,6 +110274,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -113607,6 +113665,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -113641,6 +113700,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -114720,6 +114780,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -114754,6 +114815,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -115471,6 +115533,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -115505,6 +115568,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -117465,6 +117529,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -117499,6 +117564,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -118163,6 +118229,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 0
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_DECIDE
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -118197,6 +118264,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
 --- !u!114 &2024810862163256034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120496,6 +120564,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -120530,6 +120599,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -121236,6 +121306,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -121270,6 +121341,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -122236,6 +122308,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -122270,6 +122343,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -122530,6 +122604,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -122564,6 +122639,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -123810,6 +123886,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -123844,6 +123921,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -126003,6 +126081,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -126037,6 +126116,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   upNum: 10
   rightNum: 1
 --- !u!114 &5765185207051970373
@@ -130947,7 +131027,6 @@ GameObject:
   - component: {fileID: 4200103795748707669}
   - component: {fileID: 8312727403616166261}
   - component: {fileID: 1382289806118024132}
-  - component: {fileID: 1951995014466403483}
   m_Layer: 5
   m_Name: Area Limit
   m_TagString: Untagged
@@ -131038,18 +131117,6 @@ MonoBehaviour:
   m_ConstraintCount:
     m_DefaultValue: 4
     m_MobileValue: 3
---- !u!114 &1951995014466403483
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3845352809830264865}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6734dcf99845ac0449a738c416f95a0f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &3846843655131538663
 GameObject:
   m_ObjectHideFlags: 0
@@ -131478,6 +131545,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -131512,6 +131580,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -132032,6 +132101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -132066,6 +132136,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   upNum: 10
   rightNum: 1
 --- !u!114 &1788114008760893546
@@ -132390,6 +132461,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -132424,6 +132496,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -132684,6 +132757,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -132718,6 +132792,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -133333,6 +133408,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -133367,6 +133443,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -134209,7 +134286,6 @@ GameObject:
   - component: {fileID: 3157003419676176701}
   - component: {fileID: 3900981979254668422}
   - component: {fileID: 5249193907404346931}
-  - component: {fileID: 2907335215878033490}
   m_Layer: 5
   m_Name: Area Pack
   m_TagString: Untagged
@@ -134297,18 +134373,6 @@ MonoBehaviour:
   m_ConstraintCount:
     m_DefaultValue: 1
     m_MobileValue: 1
---- !u!114 &2907335215878033490
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3906605458060541246}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6734dcf99845ac0449a738c416f95a0f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &3916782919455688782
 GameObject:
   m_ObjectHideFlags: 0
@@ -137711,6 +137775,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -137745,6 +137810,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -141270,6 +141336,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -141304,6 +141371,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -147813,6 +147881,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -147847,6 +147916,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -150448,6 +150518,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -150482,6 +150553,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -153541,6 +153613,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -153575,6 +153648,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -156521,6 +156595,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -156555,6 +156630,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -164445,6 +164521,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -164479,6 +164556,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -165376,6 +165454,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -165410,6 +165489,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -171120,6 +171200,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -171154,6 +171235,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -172199,6 +172281,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -172233,6 +172316,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -173338,6 +173422,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -173372,6 +173457,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -173632,6 +173718,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -173666,6 +173753,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -178809,6 +178897,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -178843,6 +178932,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   upNum: 10
   rightNum: 1
 --- !u!114 &202674968592361386
@@ -180429,6 +180519,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -180463,6 +180554,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -183914,6 +184006,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -183948,6 +184041,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -187325,6 +187419,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -187359,6 +187454,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -189474,6 +189570,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -189508,6 +189605,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -190356,6 +190454,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -190390,6 +190489,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -190650,6 +190750,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -190684,6 +190785,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -191401,6 +191503,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -191435,6 +191538,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -191867,6 +191971,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -191901,6 +192006,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -196709,7 +196815,6 @@ GameObject:
   - component: {fileID: 1096983225423233132}
   - component: {fileID: 185446832559803140}
   - component: {fileID: 2787140139018056937}
-  - component: {fileID: 224798031621648854}
   m_Layer: 5
   m_Name: Area Link
   m_TagString: Untagged
@@ -196807,18 +196912,6 @@ MonoBehaviour:
   m_ConstraintCount:
     m_DefaultValue: 4
     m_MobileValue: 3
---- !u!114 &224798031621648854
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5855833632444552371}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6734dcf99845ac0449a738c416f95a0f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &5861472572890830983
 GameObject:
   m_ObjectHideFlags: 0
@@ -200705,6 +200798,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -200739,6 +200833,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -205554,6 +205649,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -205588,6 +205684,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -207053,6 +207150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -207087,6 +207185,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -211041,6 +211140,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -211075,6 +211175,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -211619,6 +211720,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -211653,6 +211755,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -213972,6 +214075,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -214006,6 +214110,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -214994,6 +215099,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -215028,6 +215134,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -216848,6 +216955,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -216882,6 +216990,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -217142,6 +217251,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -217176,6 +217286,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -217689,6 +217800,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -217723,6 +217835,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -220886,7 +220999,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 6916368814808508253}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.16316135
+  m_Size: 0.16607144
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -222541,6 +222654,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -222575,6 +222689,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -223410,7 +223525,6 @@ GameObject:
   - component: {fileID: 3493954218309364821}
   - component: {fileID: 4217486112443394057}
   - component: {fileID: 8167130824006032461}
-  - component: {fileID: 4728750266006218424}
   m_Layer: 5
   m_Name: Area Attribute
   m_TagString: Untagged
@@ -223504,18 +223618,6 @@ MonoBehaviour:
   m_ConstraintCount:
     m_DefaultValue: 4
     m_MobileValue: 3
---- !u!114 &4728750266006218424
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6736699680586269365}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6734dcf99845ac0449a738c416f95a0f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6737521849000320918
 GameObject:
   m_ObjectHideFlags: 0
@@ -226761,6 +226863,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -226795,6 +226898,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -227821,7 +227925,6 @@ GameObject:
   - component: {fileID: 2230706322525868846}
   - component: {fileID: 7067412528553878370}
   - component: {fileID: 8602043261663191452}
-  - component: {fileID: 5327440299447909317}
   m_Layer: 5
   m_Name: Area Type
   m_TagString: Untagged
@@ -227918,18 +228021,6 @@ MonoBehaviour:
   m_ConstraintCount:
     m_DefaultValue: 4
     m_MobileValue: 3
---- !u!114 &5327440299447909317
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6864308239555430910}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6734dcf99845ac0449a738c416f95a0f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6867597532756070479
 GameObject:
   m_ObjectHideFlags: 0
@@ -232071,6 +232162,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -232105,6 +232197,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -234806,6 +234899,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -234840,6 +234934,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -236981,6 +237076,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -237015,6 +237111,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -240405,6 +240502,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -240439,6 +240537,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -242543,6 +242642,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -242577,6 +242677,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
 --- !u!114 &5628397314923242624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -250720,6 +250821,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -250754,6 +250856,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -251965,6 +252068,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -251999,6 +252103,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -255091,6 +255196,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -255125,6 +255231,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -255385,6 +255492,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -255419,6 +255527,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -259168,6 +259277,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -259202,6 +259312,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -262107,6 +262218,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -262141,6 +262253,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -263269,6 +263382,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 0
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_DECIDE
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -263315,6 +263429,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
 --- !u!114 &2656088074712826829
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -263857,6 +263972,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -263891,6 +264007,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   upNum: 10
   rightNum: 1
 --- !u!114 &4111149247342621456
@@ -265419,6 +265536,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -265453,6 +265571,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -265824,6 +265943,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -265858,6 +265978,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -268197,6 +268318,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -268231,6 +268353,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -273098,6 +273221,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -273132,6 +273256,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -277932,6 +278057,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -277966,6 +278092,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -281759,6 +281886,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -281793,6 +281921,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -282707,6 +282836,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -282741,6 +282871,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -283726,6 +283857,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 0
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_CANCEL
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -283772,6 +283904,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
 --- !u!114 &6375021236380676740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -285407,6 +285540,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -285441,6 +285575,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -286310,6 +286445,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -286344,6 +286480,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -288003,7 +288140,6 @@ GameObject:
   - component: {fileID: 251263399080899432}
   - component: {fileID: 7430026445479458316}
   - component: {fileID: 5530684899826288414}
-  - component: {fileID: 8671460572496549671}
   m_Layer: 5
   m_Name: Area Rarity
   m_TagString: Untagged
@@ -288094,18 +288230,6 @@ MonoBehaviour:
   m_ConstraintCount:
     m_DefaultValue: 4
     m_MobileValue: 3
---- !u!114 &8671460572496549671
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8736470435542146549}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6734dcf99845ac0449a738c416f95a0f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8748284109548233119
 GameObject:
   m_ObjectHideFlags: 0
@@ -288856,7 +288980,6 @@ GameObject:
   - component: {fileID: 5133861380016058418}
   - component: {fileID: 7862584972990368456}
   - component: {fileID: 3852410529119949259}
-  - component: {fileID: 2554007790903853173}
   m_Layer: 5
   m_Name: Area Spell
   m_TagString: Untagged
@@ -288952,18 +289075,6 @@ MonoBehaviour:
   m_ConstraintCount:
     m_DefaultValue: 4
     m_MobileValue: 3
---- !u!114 &2554007790903853173
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8769554950238709214}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6734dcf99845ac0449a738c416f95a0f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8772264592852066080
 GameObject:
   m_ObjectHideFlags: 0
@@ -289831,7 +289942,6 @@ GameObject:
   - component: {fileID: 1012592389059519979}
   - component: {fileID: 3795121091657314434}
   - component: {fileID: 7394925614409612264}
-  - component: {fileID: 4950928526968559253}
   m_Layer: 5
   m_Name: Area Cutin
   m_TagString: Untagged
@@ -289920,18 +290030,6 @@ MonoBehaviour:
   m_ConstraintCount:
     m_DefaultValue: 4
     m_MobileValue: 3
---- !u!114 &4950928526968559253
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8799844160327256707}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6734dcf99845ac0449a738c416f95a0f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8804981097922391369
 GameObject:
   m_ObjectHideFlags: 0
@@ -290076,6 +290174,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -290110,6 +290209,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -292351,6 +292451,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -292385,6 +292486,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -293083,8 +293185,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrollDirection: 0
   scrollSpeed: 50
-  cancelScrollOnInput: 0
-  cancelScrollKeycodes: 
+  topPadding: 0
+  bottomPadding: 0
 --- !u!114 &598398263331024612
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -298298,7 +298400,6 @@ GameObject:
   - component: {fileID: 6831117174999105617}
   - component: {fileID: 117230187061690805}
   - component: {fileID: 6791171284244964115}
-  - component: {fileID: 7272270014646702415}
   m_Layer: 5
   m_Name: Area Race
   m_TagString: Untagged
@@ -298411,18 +298512,6 @@ MonoBehaviour:
   m_ConstraintCount:
     m_DefaultValue: 4
     m_MobileValue: 3
---- !u!114 &7272270014646702415
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9068214326186631053}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6734dcf99845ac0449a738c416f95a0f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &9069032173611607455
 GameObject:
   m_ObjectHideFlags: 0
@@ -299167,6 +299256,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -299201,6 +299291,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -301416,6 +301507,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -301450,6 +301542,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:
@@ -303119,6 +303212,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -303153,6 +303247,7 @@ MonoBehaviour:
     onRightClick:
       m_PersistentCalls:
         m_Calls: []
+  selected: 0
   SoundLabelClickOn: SE_MENU_S_DECIDE_01
   SoundLabelClickOff: SE_MENU_S_DECIDE_02
   toggleEvent:

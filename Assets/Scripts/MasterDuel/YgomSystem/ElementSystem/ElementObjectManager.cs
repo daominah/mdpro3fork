@@ -79,14 +79,10 @@ namespace YgomSystem.ElementSystem
 
 		public bool IsExistsLabel(string label)
 		{
-			bool exist = false;
             foreach (var element in serializedElements)
 				if(element.label == label)
-				{
-					exist = true;
-					break;
-				}
-			return exist;
+				return true;
+            return false;
         }
 
 		public SortedDictionary<string, ElementObject>.KeyCollection GetLabels()

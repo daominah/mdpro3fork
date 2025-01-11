@@ -323,8 +323,6 @@ namespace MDPro3.UI
                 return false;
             if (Program.instance.ui_.currentPopupB != null)
                 return false;
-            if (Program.instance.ui_.subMenu.showing)
-                return false;
             if(Program.instance.ui_.currentSidePanel != null)
                 return false;
             return true;

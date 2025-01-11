@@ -589,12 +589,12 @@ namespace MDPro3
         {
             if (showing)
             {
-                if (!Program.instance.ui_.subMenu.showing && UserInput.MouseRightUp)
+                if (UserInput.MouseRightUp)
                 {
                     if (!Program.instance.ui_.cardDetail.showing && returnAction != null)
                         returnAction();
                 }
-                if (!Program.instance.ui_.subMenu.showing && UserInput.WasCancelPressed)
+                if (UserInput.WasCancelPressed)
                 {
                     if (!Program.instance.ui_.cardDetail.showing && returnAction != null)
                         returnAction();
@@ -772,7 +772,7 @@ namespace MDPro3
                 var c = CardsManager.Get(cardDrag.Code);
                 var isExtra = c.IsExtraCard();
 
-                if (Manager.GetElement<UIHover>("DummyMain").hover)
+                if (Manager.GetElement<UIHover>("DummyMain").Hover)
                 {
                     if (cardDrag.id > 1999 && !isExtra)
                     {
@@ -786,7 +786,7 @@ namespace MDPro3
                         sideCount--;
                     }
                 }
-                else if (Manager.GetElement<UIHover>("DummyExtra").hover)
+                else if (Manager.GetElement<UIHover>("DummyExtra").Hover)
                 {
                     if (cardDrag.id > 1999 && isExtra)
                     {
@@ -800,7 +800,7 @@ namespace MDPro3
                         sideCount--;
                     }
                 }
-                else if (Manager.GetElement<UIHover>("DummySide").hover)
+                else if (Manager.GetElement<UIHover>("DummySide").Hover)
                 {
                     if (cardDrag.id < 1000)
                     {
@@ -1815,7 +1815,7 @@ namespace MDPro3
                 OnShare,
                 //OnHandTest
             };
-            Program.instance.ui_.subMenu.Show(menus, actions);
+            //Program.instance.ui_.subMenu.Show(menus, actions);
         }
     }
 }

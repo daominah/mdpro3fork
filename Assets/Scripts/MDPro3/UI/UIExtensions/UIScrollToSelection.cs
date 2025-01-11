@@ -1,14 +1,13 @@
 /// Credit zero3growlithe
 /// sourced from: http://forum.unity3d.com/threads/scripts-useful-4-6-scripts-collection.264161/page-2#post-2011648
 
-/*USAGE:
-Simply place the script on the ScrollRect that contains the selectable children we'll be scroling to
-and drag'n'drop the RectTransform of the options "container" that we'll be scrolling.*/
+///Edit by MDPro3
 
 using System.Collections.Generic;
 using UnityEngine.EventSystems;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 namespace MDPro3.UI
 {
@@ -18,17 +17,11 @@ namespace MDPro3.UI
     {
 
         //*** ATTRIBUTES ***//
-        [Header("[ Settings ]")]
         [SerializeField]
-        private ScrollType scrollDirection = ScrollType.BOTH;
-        [SerializeField]
-        private float scrollSpeed = 10f;
+        private ScrollType scrollDirection = ScrollType.VERTICAL;
 
-        [Header("[ Input ]")]
-        [SerializeField]
-        private bool cancelScrollOnInput = false;
-        [SerializeField]
-        private List<KeyCode> cancelScrollKeycodes = new List<KeyCode>();
+        public float topPadding = 0f;
+        public float bottomPadding = 0f;
 
         //*** PROPERTIES ***//
         // REFERENCES
@@ -42,25 +35,10 @@ namespace MDPro3.UI
         {
             get { return scrollDirection; }
         }
-        protected float ScrollSpeed
-        {
-            get { return scrollSpeed; }
-        }
-
-        // INPUT
-        protected bool CancelScrollOnInput
-        {
-            get { return cancelScrollOnInput; }
-        }
-        protected List<KeyCode> CancelScrollKeycodes
-        {
-            get { return cancelScrollKeycodes; }
-        }
 
         // CACHED REFERENCES
         protected RectTransform ScrollWindow { get; set; }
         protected ScrollRect TargetScrollRect { get; set; }
-        protected LayoutGroup LayoutGroup { get; set; }
 
         // SCROLLING
         protected EventSystem CurrentEventSystem
@@ -69,34 +47,19 @@ namespace MDPro3.UI
         }
         protected GameObject LastCheckedGameObject { get; set; }
         protected GameObject CurrentSelectedGameObject
-        {
-            get { return EventSystem.current.currentSelectedGameObject; }
-        }
+            => EventSystem.current.currentSelectedGameObject;
         protected RectTransform CurrentTargetRectTransform { get; set; }
-        protected RectTransform CurrentTargetChildrenRectTransform { get; set; }
-        protected bool IsManualScrollingAvailable { get; set; }
-
-        //*** METHODS - PUBLIC ***//
-
 
         //*** METHODS - PROTECTED ***//
         protected virtual void Awake()
         {
             TargetScrollRect = GetComponent<ScrollRect>();
             ScrollWindow = TargetScrollRect.GetComponent<RectTransform>();
-            if(LayoutListGroup != null)
-                LayoutGroup = LayoutListGroup.GetComponent<LayoutGroup>();
-        }
-
-        protected virtual void Start()
-        {
-
         }
 
         protected virtual void Update()
         {
             UpdateReferences();
-            CheckIfScrollingShouldBeLocked();
             ScrollRectToLevelSelection();
         }
 
@@ -110,43 +73,14 @@ namespace MDPro3.UI
                     CurrentSelectedGameObject.GetComponent<RectTransform>() :
                     null;
 
-                CurrentTargetChildrenRectTransform = null;
-
-                if (CurrentTargetRectTransform != null)
-                    if (CurrentSelectedGameObject.transform.parent != null)
-                        if (CurrentSelectedGameObject.transform.parent.TryGetComponent<UIScrollToSelectionMark>(out _))
-                        {
-                            CurrentTargetRectTransform = CurrentSelectedGameObject.transform.parent.GetComponent<RectTransform>();
-                            CurrentTargetChildrenRectTransform = CurrentSelectedGameObject.GetComponent<RectTransform>();
-                        }
-
-                // unlock automatic scrolling
-                if (CurrentTargetRectTransform != null &&
-                    CurrentTargetRectTransform.parent == LayoutListGroup.transform)
-                {
-                    IsManualScrollingAvailable = false;
-                }
+                if(CurrentTargetRectTransform != null 
+                    && !CurrentTargetRectTransform.IsChildOf(LayoutListGroup))
+                    CurrentTargetRectTransform = null;
             }
+            else
+                CurrentTargetRectTransform = null;
 
             LastCheckedGameObject = CurrentSelectedGameObject;
-        }
-
-        private void CheckIfScrollingShouldBeLocked()
-        {
-            if (CancelScrollOnInput == false || IsManualScrollingAvailable == true)
-            {
-                return;
-            }
-
-            for (int i = 0; i < CancelScrollKeycodes.Count; i++)
-            {
-                if (Input.GetKeyDown(CancelScrollKeycodes[i]) == true)
-                {
-                    IsManualScrollingAvailable = true;
-
-                    break;
-                }
-            }
         }
 
         private void ScrollRectToLevelSelection()
@@ -154,7 +88,7 @@ namespace MDPro3.UI
             // check main references
             bool referencesAreIncorrect = (TargetScrollRect == null || LayoutListGroup == null || ScrollWindow == null);
 
-            if (referencesAreIncorrect == true || IsManualScrollingAvailable == true || Cursor.lockState == CursorLockMode.None)
+            if (referencesAreIncorrect == true || Cursor.lockState == CursorLockMode.None)
             {
                 return;
             }
@@ -162,7 +96,7 @@ namespace MDPro3.UI
             RectTransform selection = CurrentTargetRectTransform;
 
             // check if scrolling is possible
-            if (selection == null || selection.transform.parent != LayoutListGroup.transform)
+            if (selection == null)
             {
                 return;
             }
@@ -183,21 +117,24 @@ namespace MDPro3.UI
             }
         }
 
-        private void UpdateVerticalScrollPosition(RectTransform selection)
+        public void VerticalScrollTo(RectTransform selection)
+        {
+            UpdateVerticalScrollPosition(selection, 0f);
+        }
+
+        private Tweener verticalTweener;
+        private void UpdateVerticalScrollPosition(RectTransform selection, float duration = 0.1f)
         {
             // move the current scroll rect to correct position
-            float selectionPosition = -selection.anchoredPosition.y - (selection.rect.height * (1 - selection.pivot.y));
-
-            var childRect = CurrentTargetChildrenRectTransform;
-            if (childRect != null)
-            {
-                selectionPosition += -childRect.anchoredPosition.y - (childRect.rect.height * (1 - childRect.pivot.y));
-            }
-
             float elementHeight = selection.rect.height;
-            if (childRect != null)
+            float selectionPosition = -selection.anchoredPosition.y - (elementHeight * (1f - selection.pivot.y));
+
+            var parent = selection.parent as RectTransform;
+            while (parent != LayoutListGroup)
             {
-                elementHeight = childRect.rect.height;
+                selectionPosition += -parent.anchoredPosition.y
+                    - (parent.rect.height * (1f - parent.pivot.y));
+                parent = parent.parent as RectTransform;
             }
 
             float maskHeight = ScrollWindow.rect.height;
@@ -207,16 +144,27 @@ namespace MDPro3.UI
             float offlimitsValue = GetVerticalScrollOffset(selectionPosition, listAnchorPosition, elementHeight, maskHeight);
 
             // move the target scroll rect
-            TargetScrollRect.verticalNormalizedPosition +=
-                (offlimitsValue / LayoutListGroup.rect.height) * Time.unscaledDeltaTime * scrollSpeed;
+
+            if (verticalTweener != null && verticalTweener.IsActive())
+                verticalTweener.Kill();
+            verticalTweener = LayoutListGroup.DOAnchorPosY(LayoutListGroup.anchoredPosition.y - offlimitsValue, duration);
         }
 
-        private void UpdateHorizontalScrollPosition(RectTransform selection)
+        private Tweener horizontalTweener;
+        private void UpdateHorizontalScrollPosition(RectTransform selection, float duration = 0.1f)
         {
             // move the current scroll rect to correct position
-            float selectionPosition = -selection.anchoredPosition.x - (selection.rect.width * (1 - selection.pivot.x));
-
             float elementWidth = selection.rect.width;
+            float selectionPosition = -selection.anchoredPosition.x - (elementWidth * (1 - selection.pivot.x));
+
+            var parent = selection.parent as RectTransform;
+            while (parent != LayoutListGroup)
+            {
+                selectionPosition += -parent.anchoredPosition.x
+                    - (parent.rect.height * (1f - parent.pivot.x));
+                parent = parent.parent as RectTransform;
+            }
+
             float maskWidth = ScrollWindow.rect.width;
             float listAnchorPosition = -LayoutListGroup.anchoredPosition.x;
 
@@ -224,8 +172,10 @@ namespace MDPro3.UI
             float offlimitsValue = -GetScrollOffset(selectionPosition, listAnchorPosition, elementWidth, maskWidth);
 
             // move the target scroll rect
-            TargetScrollRect.horizontalNormalizedPosition +=
-                (offlimitsValue / LayoutListGroup.rect.width) * Time.unscaledDeltaTime * scrollSpeed;
+            if (horizontalTweener != null && horizontalTweener.IsActive())
+                horizontalTweener.Kill();
+            horizontalTweener = LayoutListGroup.DOAnchorPosX(LayoutListGroup.anchoredPosition.x - offlimitsValue, duration);
+
         }
 
         private float GetScrollOffset(float position, float listAnchorPosition, float targetLength, float maskLength)
@@ -243,15 +193,16 @@ namespace MDPro3.UI
 
         private float GetVerticalScrollOffset(float position, float listAnchorPosition, float targetLength, float maskLength)
         {
-            if (position < listAnchorPosition + (LayoutGroup == null ? PropertyOverrider.PropertyOverrider.NeedMobileLayout() ? 148f : 134f : LayoutGroup.padding.top))
+            if (position < listAnchorPosition + topPadding)
             {
-                return listAnchorPosition - position + (LayoutGroup == null ? PropertyOverrider.PropertyOverrider.NeedMobileLayout() ? 148f : 134f : LayoutGroup.padding.top);
+                return listAnchorPosition + topPadding - position;
             }
-            else if (position + targetLength > listAnchorPosition + maskLength - (LayoutGroup == null ? PropertyOverrider.PropertyOverrider.NeedMobileLayout() ? 64f : 54f : LayoutGroup.padding.bottom))
+            else if (position + targetLength > listAnchorPosition + maskLength - bottomPadding)
             {
-                return (listAnchorPosition + maskLength - (LayoutGroup == null ? PropertyOverrider.PropertyOverrider.NeedMobileLayout() ? 64f : 54f : LayoutGroup.padding.bottom)) - (position + targetLength);
+                return (listAnchorPosition + maskLength - bottomPadding)
+                    - (position + targetLength);
             }
-            return 0;
+            return 0f;
         }
 
         //*** ENUMS ***//

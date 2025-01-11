@@ -9,25 +9,57 @@ namespace MDPro3.UI
 {
     public class UIHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
-        public bool hover;
+        public const string LABEL_LEFT = "Left";
+        public const string LABEL_RIGHT = "Right";
+        public const string LABEL_REMOVEDECK = "RemoveDeck";
+        public const string LABEL_ADDBOOKMARK = "AddBookmark";
+        public const string LABEL_CANNOTADDBOOKMARK = "CanNotAddBookmark";
+        public const string LABEL_MAINDECK = "MainDeck";
+        public const string LABEL_EXTRADECK = "ExtraDeck";
+        public const string LABEL_SIDEDECK = "SideDeck";
+
+        public static string HoveringLabel;
+
+        [SerializeField] private float alpha = 0.2f;
+        [SerializeField] private string label;
+
+        private bool _hover;
+        public bool Hover => _hover;
+
+        private Image m_Image;
+        private Image Image => m_Image = m_Image != null 
+            ? m_Image : GetComponent<Image>();
+
+        private void OnDisable()
+        {
+            Hide();
+        }
+
         public void OnPointerEnter(PointerEventData eventData)
         {
-            hover = true;
-            if(TryGetComponent<Image>(out var image) && UserInput.draging)
-                image.color = new Color(1f, 1f, 1f, 0.2f);
+            _hover = true;
+            if(UserInput.Draging && Image != null)
+            {
+                Image.color = new Color(1f, 1f, 1f, alpha);
+                HoveringLabel = label;
+            }
         }
 
         public void OnPointerExit(PointerEventData eventData)
         {
-            hover = false;
-            if (TryGetComponent<Image>(out var image))
-                image.color = Color.clear;
+            _hover = false;
+            if (Image != null)
+            {
+                Image.color = Color.clear;
+                if(HoveringLabel == label)
+                    HoveringLabel = string.Empty;
+            }
         }
 
         public void Hide()
         {
-            if (TryGetComponent<Image>(out var image))
-                image.color = Color.clear;
+            if (Image != null)
+                Image.color = Color.clear;
         }
     }
 }

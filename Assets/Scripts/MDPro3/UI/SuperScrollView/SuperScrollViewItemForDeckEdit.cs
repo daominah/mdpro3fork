@@ -329,7 +329,7 @@ namespace MDPro3.UI
                 var c = CardsManager.Get(code);
                 var isExtra = c.IsExtraCard();
 
-                if (Program.instance.editDeck.Manager.GetElement<UIHover>("DummyMain").hover)
+                if (Program.instance.editDeck.Manager.GetElement<UIHover>("DummyMain").Hover)
                 {
                     if (!isExtra)
                     {
@@ -344,7 +344,7 @@ namespace MDPro3.UI
                         return;
                     }
                 }
-                else if (Program.instance.editDeck.Manager.GetElement<UIHover>("DummyExtra").hover)
+                else if (Program.instance.editDeck.Manager.GetElement<UIHover>("DummyExtra").Hover)
                 {
                     if (isExtra)
                     {
@@ -359,7 +359,7 @@ namespace MDPro3.UI
                         return;
                     }
                 }
-                else if (Program.instance.editDeck.Manager.GetElement<UIHover>("DummySide").hover)
+                else if (Program.instance.editDeck.Manager.GetElement<UIHover>("DummySide").Hover)
                 {
                     Program.instance.editDeck.dirty = true;
                     Program.instance.editDeck.cards.Add(dragItem);

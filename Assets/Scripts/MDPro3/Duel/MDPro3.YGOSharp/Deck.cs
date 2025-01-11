@@ -262,6 +262,13 @@ namespace MDPro3.YGOSharp
                 cards.Add(id, 1);
         }
 
+        /// <summary>
+        /// 直接保存即可，不需要考虑deckid，deckid会自动添加
+        /// </summary>
+        /// <param name="deckName"></param>
+        /// <param name="saveTime"></param>
+        /// <param name="upload"></param>
+        /// <returns></returns>
         public bool Save(string deckName, DateTime saveTime, bool upload = true)
         {
             var ydk = GetYDK();

@@ -397,7 +397,7 @@ namespace MDPro3
         }
         private void SaveDeckCards()
         {
-            saveEnumerator = SaveCardsAsync(Program.instance.editDeck.CardsInDeck());
+            saveEnumerator = SaveCardsAsync(Program.instance.deckEditor.deckView.GetAllCards());
             StartCoroutine(saveEnumerator);
         }
         private void SaveAllTokens()

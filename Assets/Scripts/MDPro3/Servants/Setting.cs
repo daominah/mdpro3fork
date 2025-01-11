@@ -34,7 +34,8 @@ namespace MDPro3
             returnServant = Program.instance.menu;
             base.Initialize();
 
-            Manager.GetElement<SelectionButton>("SurrenderButton").SetClickEvent(() => Program.instance.ocgcore.OnDuelResultConfirmed());
+            Manager.GetElement<SelectionButton>("SurrenderButton").SetClickEvent(() 
+                => Program.instance.ocgcore.OnDuelResultConfirmed(true));
 
             QualitySettings.vSyncCount = 0;
 

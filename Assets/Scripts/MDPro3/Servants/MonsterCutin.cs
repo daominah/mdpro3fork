@@ -99,6 +99,11 @@ namespace MDPro3
                 if (UserInput.MouseRightDown || UserInput.WasCancelPressed)
                     OnReturn();
 
+#if UNITY_ANDROID
+                if (UserInput.MouseLeftDown)
+                    OnReturn();
+#endif
+
                 if(UserInput.WasGamepadButtonWestPressed)
                     inputField.ActivateInputField();
                 if (UserInput.WasGamepadButtonNorthPressed)
@@ -131,7 +136,7 @@ namespace MDPro3
         {
             EventSystem.current.SetSelectedGameObject(lastSelectedCutinItem.gameObject);
         }
-        #endregion
+#endregion
 
         public void SelectLastCutinItem()
         {

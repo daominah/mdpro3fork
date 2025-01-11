@@ -108,28 +108,28 @@ namespace MDPro3
                 return;
             if (PageLegacy.activeInHierarchy)
             {
-                if(Selected != null && Selected.gameObject.activeInHierarchy)
+                if(Selected != null && Selected.transform.IsChildOf(PageLegacy.transform))
                     EventSystem.current.SetSelectedGameObject(Selected.gameObject);
                 else
                     EventSystem.current.SetSelectedGameObject(Manager.GetElement("ButtonJoin"));
             }
             else if(PageHost.activeInHierarchy)
             {
-                if (Selected != null && Selected.gameObject.activeInHierarchy)
+                if (Selected != null && Selected.transform.IsChildOf(PageHost.transform))
                     EventSystem.current.SetSelectedGameObject(Selected.gameObject);
                 else
                     EventSystem.current.SetSelectedGameObject(Manager.GetElement("ButtonCreate"));
             }
             else if(goMyCardLogin.activeInHierarchy)
             {
-                if (Selected != null && Selected.gameObject.activeInHierarchy)
+                if (Selected != null && Selected.transform.IsChildOf(goMyCardLogin.transform))
                     EventSystem.current.SetSelectedGameObject(Selected.gameObject);
                 else
                     EventSystem.current.SetSelectedGameObject(Manager.GetElement("ButtonLogin"));
             }
             else if (goMyCardFunctions.activeInHierarchy)
             {
-                if (Selected != null && Selected.gameObject.activeInHierarchy)
+                if (Selected != null && Selected.transform.IsChildOf(goMyCardFunctions.transform))
                     EventSystem.current.SetSelectedGameObject(Selected.gameObject);
                 else
                     EventSystem.current.SetSelectedGameObject(Manager.GetElement("ButtonAMatch"));
@@ -577,6 +577,8 @@ namespace MDPro3
             {
                 MessageManager.Cast(InterString.Get("µÇÂ¼Ê§°Ü£º") + task.Result.user.username);
                 goMyCardLogin.SetActive(true);
+                if (Cursor.lockState == CursorLockMode.Locked)
+                    SelectLastSelectable();
                 yield break;
             }
             Config.Set("MyCardToken", task.Result.token);
@@ -652,6 +654,8 @@ namespace MDPro3
             }
 
             goMyCardFunctions.SetActive(true);
+            if (Cursor.lockState == CursorLockMode.Locked)
+                SelectLastSelectable();
 
             while (TextureManager.container == null)
                 yield return null;

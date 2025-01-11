@@ -46,7 +46,7 @@ namespace MDPro3.Net
             {
                 var send = request.SendWebRequest();
                 await TaskUtility.WaitUntil(() => send.isDone);
-                if(!Application.isPlaying)
+                if (!Application.isPlaying)
                     return null;
 
                 if (request.result == UnityWebRequest.Result.Success)
@@ -61,7 +61,7 @@ namespace MDPro3.Net
                     return null;
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Debug.Log("FetchSimpleDeckList Error: " + e);
                 return null;
@@ -69,7 +69,7 @@ namespace MDPro3.Net
             finally
             {
                 request.Dispose();
-                if(request.downloadHandler != null)
+                if (request.downloadHandler != null)
                     request.downloadHandler.Dispose();
             }
         }
@@ -83,7 +83,7 @@ namespace MDPro3.Net
             {
                 var send = request.SendWebRequest();
                 await TaskUtility.WaitUntil(() => send.isDone);
-                if(!Application.isPlaying)
+                if (!Application.isPlaying)
                     return null;
 
                 if (request.result == UnityWebRequest.Result.Success)
@@ -108,6 +108,7 @@ namespace MDPro3.Net
                     request.downloadHandler.Dispose();
             }
         }
+
         public static async Task<OnlineDeckData[]> GetAllDecks()
         {
             if (MyCard.account == null)
@@ -128,6 +129,7 @@ namespace MDPro3.Net
             if (request.result == UnityWebRequest.Result.Success)
             {
                 decks = JsonUtility.FromJson<ResponseMultiSimpleData>(request.downloadHandler.text).data;
+                Debug.Log($"deckloaded: decks.Length: {decks.Length}");
                 return decks;
             }
             else
@@ -143,7 +145,7 @@ namespace MDPro3.Net
             using UnityWebRequest request = UnityWebRequest.PostWwwForm(apiUrl, jsonHeader);
             request.SetRequestHeader(reqHeader, reqValue);
             request.SetRequestHeader(contentTypeHeader, jsonHeader);
-            
+
             var send = request.SendWebRequest();
             await TaskUtility.WaitUntil(() => send.isDone);
             if (!Application.isPlaying)
@@ -171,7 +173,7 @@ namespace MDPro3.Net
 
             var send = getIDs.SendWebRequest();
             await TaskUtility.WaitUntil(() => send.isDone);
-            if(!Application.isPlaying)
+            if (!Application.isPlaying)
                 return false;
 
             string[] ids;
@@ -187,10 +189,12 @@ namespace MDPro3.Net
             }
 
             apiUrl = url + syncAllAPI;
-            var body = new PostAllDecksBody();
-            body.deckContributor = MyCard.account.user.username;
-            body.userId = MyCard.account.user.id;
-            body.decks = new PostDeck[decks.Count];
+            var body = new PostAllDecksBody
+            {
+                deckContributor = MyCard.account.user.username,
+                userId = MyCard.account.user.id,
+                decks = new PostDeck[decks.Count]
+            };
             for (int i = 0; i < decks.Count; i++)
             {
                 var oldName = deckNames[i];
@@ -203,16 +207,18 @@ namespace MDPro3.Net
                     File.Delete(Program.deckPath + oldName + Program.ydkExpansion);
                 }
 
-                body.decks[i] = new PostDeck();
-                body.decks[i].deckId = ids[i];
-                body.decks[i].deckName = newName;
-                body.decks[i].deckCoverCard1 = decks[i].Pickup.Count > 0 ? decks[i].Pickup[0] : 0;
-                body.decks[i].deckCoverCard2 = decks[i].Pickup.Count > 1 ? decks[i].Pickup[1] : 0;
-                body.decks[i].deckCoverCard3 = decks[i].Pickup.Count > 2 ? decks[i].Pickup[2] : 0;
-                body.decks[i].deckCase = decks[i].Case;
-                body.decks[i].deckProtector = decks[i].Protector;
-                body.decks[i].isDelete = false;
-                body.decks[i].deckYdk = decks[i].GetYDK();
+                body.decks[i] = new PostDeck
+                {
+                    deckId = ids[i],
+                    deckName = newName,
+                    deckCoverCard1 = decks[i].Pickup.Count > 0 ? decks[i].Pickup[0] : 0,
+                    deckCoverCard2 = decks[i].Pickup.Count > 1 ? decks[i].Pickup[1] : 0,
+                    deckCoverCard3 = decks[i].Pickup.Count > 2 ? decks[i].Pickup[2] : 0,
+                    deckCase = decks[i].Case,
+                    deckProtector = decks[i].Protector,
+                    isDelete = false,
+                    deckYdk = decks[i].GetYDK()
+                };
 
                 decks[i].deckId = ids[i];
                 decks[i].userId = MyCard.account.user.id.ToString();
@@ -368,7 +374,7 @@ namespace MDPro3.Net
 
             var send = request.SendWebRequest();
             await TaskUtility.WaitUntil(() => send.isDone);
-            if(!Application.isPlaying)
+            if (!Application.isPlaying)
                 return false;
 
             if (request.result == UnityWebRequest.Result.Success)
@@ -399,8 +405,8 @@ namespace MDPro3.Net
         {
             if (decks == null)
                 return false;
-            foreach(var deck in decks)
-                if(deck.deckId == deckId)
+            foreach (var deck in decks)
+                if (deck.deckId == deckId)
                     return deck.isPublic;
             return false;
         }
@@ -559,7 +565,7 @@ namespace MDPro3.Net
             {
                 this.deckId = deckId;
                 this.deckName = deckName;
-                if(deck.Pickup.Count > 0)
+                if (deck.Pickup.Count > 0)
                     deckCoverCard1 = deck.Pickup[0];
                 if (deck.Pickup.Count > 1)
                     deckCoverCard1 = deck.Pickup[1];

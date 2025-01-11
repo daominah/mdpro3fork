@@ -13,6 +13,7 @@ namespace MDPro3.UI
         public int selected = -1;
         public List<Item> items = new();
         public List<GameObject> gameObjects = new();
+        public ScrollRect scrollRect;
 
         protected int columnCount;
         protected float itemWidth;
@@ -23,7 +24,6 @@ namespace MDPro3.UI
 
         protected GameObject itemObject;
         protected Action<string[], GameObject> itemOnListRefresh;
-        protected ScrollRect scrollRect;
         private RectTransform scrollRectWindow;
         private int maxShow;
         private List<Vector3> childrenPosition = new();
@@ -150,7 +150,8 @@ namespace MDPro3.UI
             if (hiddenRows > 0)
                 hiddenRows--;
 
-            if (hiddenRows == lastHiddenRows)
+            if (hiddenRows == lastHiddenRows
+                && obs == null)
                 return;
             lastHiddenRows = hiddenRows;
 
@@ -165,19 +166,32 @@ namespace MDPro3.UI
 
             List<GameObject> objects = obs ?? new List<GameObject>();
 
-            bool found = false;
-            for (int i = 0; i < items.Count; i++)
+            if(obs == null)// not from delete
             {
-                if (items[i].gameObject == null)
+                bool found = false;
+                for (int i = 0; i < items.Count; i++)
                 {
-                    if (!found)
-                        continue;
-                    else
-                        break;
+                    if (items[i].gameObject == null)
+                    {
+                        if (!found)
+                            continue;
+                        else
+                            break;
+                    }
+                    found = true;
+                    if (i < start || i >= end)
+                    {
+                        objects.Add(items[i].gameObject);
+                        items[i].gameObject = null;
+                    }
                 }
-                found = true;
-                if (i < start || i >= end)
+            }
+            else //from delete
+            {
+                for (int i = 0; i < items.Count; i++)
                 {
+                    if (items[i].gameObject == null)
+                        continue;
                     objects.Add(items[i].gameObject);
                     items[i].gameObject = null;
                 }
@@ -193,7 +207,7 @@ namespace MDPro3.UI
                 }
             }
 
-            foreach(var ob in objects)
+            foreach (var ob in objects)
             {
                 gameObjects.Remove(ob);
                 UnityEngine.Object.Destroy(ob);
@@ -275,6 +289,7 @@ namespace MDPro3.UI
             if (maxShow > items.Count)
                 maxShow = items.Count;
 
+            CalculateChildrenPositon();
             RefreshLayout();
         }
 
@@ -282,7 +297,8 @@ namespace MDPro3.UI
         {
             if(items.Count <= removed)
                 return;
-            List<GameObject> objects = new ();
+
+            List<GameObject> objects = new();
             for(int i = removed; i < items.Count; i++)
             {
                 if (items[i].gameObject == null)
@@ -300,6 +316,7 @@ namespace MDPro3.UI
             if (maxShow > items.Count)
                 maxShow = items.Count;
 
+            CalculateChildrenPositon();
             RefreshLayout(objects);
         }
 

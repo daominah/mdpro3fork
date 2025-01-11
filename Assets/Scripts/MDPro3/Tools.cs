@@ -9,6 +9,7 @@ using UnityEngine.Networking;
 using UnityEngine.Playables;
 using YgomSystem.ElementSystem;
 using MDPro3.Utility;
+using System.Linq;
 
 namespace MDPro3
 {
@@ -248,6 +249,51 @@ namespace MDPro3
                 ClearDirectoryRecursively(subDir);
                 subDir.Delete();
             }
+        }
+
+        public static float CalculateWeightedDistance(Vector3 a, Vector3 b, char priorityAxis)
+        {
+            bool isPriorityX = Char.ToLower(priorityAxis) == 'x';
+            bool isPriorityY = Char.ToLower(priorityAxis) == 'y';
+            bool isPriorityZ = Char.ToLower(priorityAxis) == 'z';
+
+            float deltaX = Mathf.Abs(a.x - b.x);
+            float deltaY = Mathf.Abs(a.y - b.y);
+            float deltaZ = Mathf.Abs(a.z - b.z);
+
+            if (isPriorityX)
+            {
+                deltaY *= 10;
+                deltaZ *= 10;
+            }
+            else if (isPriorityY)
+            {
+                deltaX *= 10;
+                deltaZ *= 10;
+            }
+            else if (isPriorityZ)
+            {
+                deltaX *= 10;
+                deltaY *= 10;
+            }
+
+            return Mathf.Sqrt(deltaX * deltaX + deltaY * deltaY + deltaZ * deltaZ);
+        }
+
+        public static bool InLastRow(int index, int  counts, int columes)
+        {
+            if (columes <= 0)
+            {
+                throw new ArgumentException("columes must be greater than 0");
+            }
+
+            int lastRowStartIndex = counts - (counts % columes);
+            if (counts % columes == 0)
+            {
+                lastRowStartIndex = counts - columes;
+            }
+
+            return index >= lastRowStartIndex;
         }
     }
 }

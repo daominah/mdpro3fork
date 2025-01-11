@@ -283,7 +283,7 @@ namespace MDPro3
                 lastSelectedDeckItem = superScrollView.items[0].gameObject.GetComponent<SelectionToggle_Deck>();
                 if (Cursor.lockState == CursorLockMode.Locked)
                     SelectLastSelectable();
-                Manager.GetElement<TextMeshProUGUI>("TextDeckNumValue").text = (superScrollView.items.Count - 1).ToString();
+                UpdateDeckNum();
             };
         }
 
@@ -463,6 +463,7 @@ namespace MDPro3
             DeleteOnlineDecks(toDeleteIds);
 
             ExitDeleteDeck(true);
+            UpdateDeckNum();
         }
         private void ExitDeleteDeck(bool needSwitch = false)
         {
@@ -557,6 +558,14 @@ namespace MDPro3
             Manager.GetElement("ButtonOnline").SetActive(false);
             Manager.GetElement("ButtonDeleteConfirm").SetActive(true);
             inputField.gameObject.SetActive(false);
+        }
+
+        private void UpdateDeckNum()
+        {
+            var num = 0;
+            if(superScrollView != null)
+                num = superScrollView.items.Count - 1;//-1 for add deck button
+            Manager.GetElement<TextMeshProUGUI>("TextDeckNumValue").text = num.ToString();
         }
 
         #endregion

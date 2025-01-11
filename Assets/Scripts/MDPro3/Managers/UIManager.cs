@@ -24,6 +24,7 @@ namespace MDPro3
         public CanvasGroup line;
         public Image blackBack;
         public RectTransform popup;
+        public RectTransform sidePanel;
         public RectTransform transition;
         public RectTransform duelButton;
         public static string currentWallpaper;
@@ -35,7 +36,6 @@ namespace MDPro3
 
         [Header("Side Panel")]
         public ChatPanel chatPanel;
-        public SubMenuHandler subMenu;
 
         [Header("Source Reference")]
         public Font cnFont;
@@ -157,7 +157,7 @@ namespace MDPro3
             }
 
             TextureManager.ClearCache();
-            TextureLoader.DeleteCache();
+            TextureLoader.ClearCache();
             Program.instance.UnloadUnusedAssets();
 
             InitializeLanguage();
@@ -398,7 +398,7 @@ namespace MDPro3
             DOTween.To(() => scaler.matchWidthOrHeight, x => scaler.matchWidthOrHeight = x, match, duration);
         }
 
-        public static void ShowCardExpand(int code)
+        public static void ShowCardExpand(Card data)
         {
             var handle = Addressables.InstantiateAsync("CardExpand");
             handle.Completed += (result) =>
@@ -406,7 +406,19 @@ namespace MDPro3
                 result.Result.transform.SetParent(Program.instance.ui_.popup, false);
                 var handler = result.Result.GetComponent<CardExpand>();
                 InputBlocker = handler;
-                handler.Show(code);
+                handler.Show(data);
+            };
+        }
+
+        public static void ShowSubMenu(List<string> menus, List<Action> actions)
+        {
+            var handle = Addressables.InstantiateAsync("SubMenu");
+            handle.Completed += (result) =>
+            {
+                result.Result.transform.SetParent(Program.instance.ui_.sidePanel, false);
+                var handler = result.Result.GetComponent<SubMenu>();
+                InputBlocker = handler;
+                handler.Show(menus, actions);
             };
         }
 

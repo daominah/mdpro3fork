@@ -1053,7 +1053,7 @@ MonoBehaviour:
   decideByUser: 1
   m_AnchoredPosition:
     m_DefaultValue: {x: 0, y: 37}
-    m_MobileValue: {x: 0, y: 43}
+    m_MobileValue: {x: 0, y: 55}
   m_SizeDelta:
     m_DefaultValue: {x: -20, y: 25}
     m_MobileValue: {x: -20, y: 30}
@@ -2060,11 +2060,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a2a8e5a9317f744ba48e319e7d24522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  index: 0
+  SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_SELECT_01
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: SE_DECK_CARD_SELECT
   SoundLabelSelectedGamePad: SE_DECK_CARD_SELECT
-  navigation:
+  navigationEvent:
     onLeftNavigation:
       m_PersistentCalls:
         m_Calls: []
@@ -2077,10 +2080,46 @@ MonoBehaviour:
     onDownNavigation:
       m_PersistentCalls:
         m_Calls: []
-  refreshed: 0
-  index: 0
+  hoverEvent:
+    onHoverOn:
+      m_PersistentCalls:
+        m_Calls: []
+    onHoverOff:
+      m_PersistentCalls:
+        m_Calls: []
+  selectEvent:
+    onSelect:
+      m_PersistentCalls:
+        m_Calls: []
+    onDeselect:
+      m_PersistentCalls:
+        m_Calls: []
+  clickEvent:
+    onLeftClick:
+      m_PersistentCalls:
+        m_Calls: []
+    onMiddleClick:
+      m_PersistentCalls:
+        m_Calls: []
+    onRightClick:
+      m_PersistentCalls:
+        m_Calls: []
+  selected: 0
   SoundLabelClickOn: 
   SoundLabelClickOff: 
+  toggleEvent:
+    onToggleOn:
+      m_PersistentCalls:
+        m_Calls: []
+    onToggleOff:
+      m_PersistentCalls:
+        m_Calls: []
+  submitEvent:
+    onSubmit:
+      m_PersistentCalls:
+        m_Calls: []
+  isOn: 0
+  refreshed: 0
   deckName: 
   deckCase: 0
   card0: 0
@@ -2088,7 +2127,6 @@ MonoBehaviour:
   card2: 0
   protector: 
   toggleMode: 0
-  isOn: 0
   deckAuthor: 
   deckId: 
   lastDate: 
@@ -2193,10 +2231,10 @@ MonoBehaviour:
   decideByUser: 1
   m_AnchoredPosition:
     m_DefaultValue: {x: 0, y: 20}
-    m_MobileValue: {x: 0, y: 23}
+    m_MobileValue: {x: 0, y: 30}
   m_SizeDelta:
     m_DefaultValue: {x: -20, y: 17}
-    m_MobileValue: {x: -20, y: 20}
+    m_MobileValue: {x: -20, y: 25}
   debug: 0
 --- !u!222 &9019911157429472608
 CanvasRenderer:
@@ -2670,10 +2708,10 @@ MonoBehaviour:
   decideByUser: 1
   m_AnchoredPosition:
     m_DefaultValue: {x: 0, y: 3}
-    m_MobileValue: {x: 0, y: 3}
+    m_MobileValue: {x: 0, y: 5}
   m_SizeDelta:
     m_DefaultValue: {x: -20, y: 17}
-    m_MobileValue: {x: -20, y: 20}
+    m_MobileValue: {x: -20, y: 25}
   debug: 0
 --- !u!222 &2324622346664515358
 CanvasRenderer:
