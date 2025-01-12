@@ -2059,7 +2059,7 @@ MonoBehaviour:
     m_MobileValue: {x: -38, y: 0}
   m_SizeDelta:
     m_DefaultValue: {x: 12, y: -60}
-    m_MobileValue: {x: 12, y: -94}
+    m_MobileValue: {x: 12, y: -96}
   debug: 0
 --- !u!222 &5812940696912985056
 CanvasRenderer:
@@ -2328,6 +2328,7 @@ GameObject:
   - component: {fileID: 4404664260770322903}
   - component: {fileID: 3149411002117231297}
   - component: {fileID: 6503118005512671459}
+  - component: {fileID: 7296573840232688268}
   - component: {fileID: 6854673914501953499}
   m_Layer: 5
   m_Name: EntryButtonsScrollView
@@ -2451,9 +2452,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scrollDirection: 0
-  scrollSpeed: 50
-  cancelScrollOnInput: 0
-  cancelScrollKeycodes: 
+  topPadding: 30
+  bottomPadding: 30
+--- !u!114 &7296573840232688268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5617499678934687526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f31117efca265974c983b2c638f901f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  decideByUser: 1
+  m_TopPadding:
+    m_DefaultValue: 30
+    m_MobileValue: 48
+  m_BottomPadding:
+    m_DefaultValue: 30
+    m_MobileValue: 48
 --- !u!114 &6854673914501953499
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3302,6 +3321,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_CANCEL
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -3338,6 +3358,24 @@ MonoBehaviour:
     onHoverOff:
       m_PersistentCalls:
         m_Calls: []
+  selectEvent:
+    onSelect:
+      m_PersistentCalls:
+        m_Calls: []
+    onDeselect:
+      m_PersistentCalls:
+        m_Calls: []
+  clickEvent:
+    onLeftClick:
+      m_PersistentCalls:
+        m_Calls: []
+    onMiddleClick:
+      m_PersistentCalls:
+        m_Calls: []
+    onRightClick:
+      m_PersistentCalls:
+        m_Calls: []
+  selected: 0
 --- !u!114 &6375021236380676740
 MonoBehaviour:
   m_ObjectHideFlags: 0

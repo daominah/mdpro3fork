@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Collections;
 using UnityEngine.AddressableAssets;
 using MDPro3.Utility;
+using LibJpegTurboUnity;
 
 namespace MDPro3
 {
@@ -307,7 +308,7 @@ namespace MDPro3
                 }
                 else
                 {
-                    pic = tex.EncodeToJPG();
+                    pic = tex.EncodeToJPG(85);
                     fullPath = Program.cardPicPath + code + Program.jpgExpansion;
                 }
 
@@ -324,6 +325,8 @@ namespace MDPro3
         IEnumerator saveEnumerator;
         IEnumerator SaveCardsAsync(List<int> cards)
         {
+            var time = Time.time;
+
             var handle = Addressables.InstantiateAsync("PopupProgress");
             while (!handle.IsDone)
                 yield return null;
@@ -369,6 +372,8 @@ namespace MDPro3
             if (errorCount > 0)
                 File.WriteAllText(errorLogPath, errorLog);
             saveEnumerator = null;
+
+            Debug.Log($"Time Used: {Time.time - time}");
         }
         public void StopSaving()
         {

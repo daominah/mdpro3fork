@@ -13,16 +13,19 @@ namespace MDPro3
 {
     public class SelectPuzzle : Servant
     {
-        [Header("Select Puzzle")]
-        public Scrollbar leftScrollBar;
-        public Scrollbar rightScrollBar;
-        public RectTransform rightContent;
+        public struct Puzzle
+        {
+            public string name;
+            public string firstCard;
+            public string description;
+            public string solution;
+        }
+        private List<Puzzle> puzzles;
 
         [HideInInspector] public string currentPuzzle;
         [HideInInspector] public SelectionToggle_Puzzle lastPuzzleItem;
         public SuperScrollView superScrollView;
-        private List<string[]> tasks = new List<string[]>();
-        private List<Puzzle> puzzles;
+        private List<string[]> tasks = new();
 
         #region Servant
 
@@ -50,23 +53,6 @@ namespace MDPro3
             EventSystem.current.SetSelectedGameObject(lastPuzzleItem.gameObject);
         }
 
-        public override void PerFrameFunction()
-        {
-            if(!showing) return;
-            if(NeedResponseInput())
-            {
-                if (UserInput.MouseRightDown || UserInput.WasCancelPressed)
-                    OnReturn();
-                if(UserInput.LeftScrollWheel.y != 0f)
-                    leftScrollBar.value = Mathf.Clamp01(leftScrollBar.value + UserInput.LeftScrollWheel.y * 2f * Time.unscaledDeltaTime);
-                if (UserInput.RightScrollWheel.y != 0f)
-                {
-                    var rightWheelHeight = rightContent.rect.height;
-                    rightScrollBar.value = Mathf.Clamp01(rightScrollBar.value + UserInput.RightScrollWheel.y * 500f * Time.unscaledDeltaTime / rightWheelHeight);
-                }
-            }
-        }
-
         public override void OnExit()
         {
             if(Program.exitOnReturn)
@@ -91,15 +77,8 @@ namespace MDPro3
                 transform.GetChild(0).gameObject.SetActive(false);
         }
 
-        public struct Puzzle
-        {
-            public string name;
-            public string firstCard;
-            public string description;
-            public string solution;
-        }
 
-        void GetPuzzles()
+        private void GetPuzzles()
         {
             puzzles = new List<Puzzle>();
             if (!Directory.Exists(Program.puzzlePath))
@@ -141,7 +120,7 @@ namespace MDPro3
                     for (int i = solutionStart; i < solutionEnd; i++)
                         solution += lines[i] + "\r\n";
                 description = description.Replace("\r\n\t\r\n\t", "\r\n\t");
-                Puzzle puzzle = new Puzzle
+                Puzzle puzzle = new()
                 {
                     name = fileInfo.Name.Replace(".lua", ""),
                     firstCard = card,

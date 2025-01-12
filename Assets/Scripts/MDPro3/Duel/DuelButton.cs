@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using MDPro3.YGOSharp.OCGWrapper.Enums;
+using UnityEngine.EventSystems;
 
 namespace MDPro3.UI
 {
@@ -150,12 +151,12 @@ namespace MDPro3.UI
 
         void RefreshPosition()
         {
-            if (response[0] == -4)
+            if (response[0] == -4) // 确认
             {
                 var middle = Program.instance.ui_.GetComponent<RectTransform>().sizeDelta.x / 2;
                 GetComponent<RectTransform>().anchoredPosition = new Vector2(middle + 340, 620);
             }
-            else if (response[0] == -5)
+            else if (response[0] == -5) // 取消
             {
                 var middle = Program.instance.ui_.GetComponent<RectTransform>().sizeDelta.x / 2;
                 GetComponent<RectTransform>().anchoredPosition = new Vector2(middle - 340, 620);
@@ -163,18 +164,24 @@ namespace MDPro3.UI
             else
             {
                 Vector2 uiPoint;
-                float height = 130f;
+                float height = 150f;
                 if (cookieCard == null || cookieCard.model == null)
                 {
-                    var gps = new GPS();
-                    gps.location = location;
-                    gps.controller = controller;
-                    gps.sequence = sequence;
+                    var gps = new GPS
+                    {
+                        location = location,
+                        controller = controller,
+                        sequence = sequence
+                    };
                     var position = GameCard.GetCardPosition(gps);
                     uiPoint = UIManager.WorldToScreenPoint(Program.instance.camera_.cameraMain, position);
-                    if ((location & ((uint)CardLocation.Deck + (uint)CardLocation.Extra)) > 0
-                        && controller != 0)
-                        height = -100;
+                    if ((location & ((uint)CardLocation.Deck + (uint)CardLocation.Extra)) > 0)
+                    {
+                        if (controller == 0)
+                            height = 230f;
+                        else
+                            height = -150f;
+                    }
                 }
                 else
                 {
@@ -201,6 +208,7 @@ namespace MDPro3.UI
             showing = true;
             transform.DOScale(1, transitionTime);
         }
+
         public void Hide()
         {
             if (!showing) return;

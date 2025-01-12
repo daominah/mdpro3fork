@@ -9,6 +9,7 @@ using MDPro3.YGOSharp;
 using MDPro3.YGOSharp.OCGWrapper.Enums;
 using static MDPro3.CardRenderer;
 using MDPro3.Utility;
+using MDPro3.UI;
 
 namespace MDPro3
 {
@@ -31,7 +32,7 @@ namespace MDPro3
         public void Hide()
         {
             showing = false;
-            manager.GetElement<RectTransform>("Window").DOAnchorPosX(-420, 0.01f);
+            manager.GetElement<RectTransform>("Window").DOAnchorPosX(-420 - SafeAreaAdapter.GetSafeAreaLeftOffset(), 0.01f);
         }
 
         void ShowDetail()

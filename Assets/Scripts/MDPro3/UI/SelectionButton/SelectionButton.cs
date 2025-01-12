@@ -217,7 +217,7 @@ namespace MDPro3.UI
             HoverOn();
             AudioManager.PlaySE(SoundLabelPointerEnter);
             SetColor(selected ? SelectMode.Selected : SelectMode.Unselected, StatusMode.Enter, Selectable.interactable);
-            if (selectedWhenHover && !CurrentSelectableIsInputField())
+            if (selectedWhenHover && !UserInput.InputFieldActivating())
                 EventSystem.current.SetSelectedGameObject(gameObject);
         }
 
@@ -700,13 +700,6 @@ namespace MDPro3.UI
             colorContainers ??= transform.GetComponentsInChildren<ColorContainerGraphic>(true);
             foreach (var ccg in colorContainers)
                 ccg.SetColor(selectMode, statusMode, interactable);
-        }
-
-        private bool CurrentSelectableIsInputField()
-        {
-            var current = EventSystem.current.currentSelectedGameObject;
-            if (current == null) return false;
-            return current.GetComponent<Selectable>() is TMP_InputField;
         }
 
         #endregion

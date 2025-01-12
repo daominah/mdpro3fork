@@ -18,7 +18,6 @@ namespace MDPro3
     {
         [Header("SelectReplay")]
         [SerializeField] private RectTransform overviewContent;
-        [SerializeField] private Scrollbar scrollBar;
 
         [HideInInspector] public SelectionToggle_Replay lastSelectedReplayItem;
         public SuperScrollView superScrollView;
@@ -48,20 +47,6 @@ namespace MDPro3
             {
                 superScrollView.Clear();
             });
-        }
-
-        public override void PerFrameFunction()
-        {
-            if (!showing) return;
-            if (NeedResponseInput())
-            {
-                if (UserInput.MouseRightDown || UserInput.WasCancelPressed)
-                    OnReturn();
-                if (UserInput.RightScrollWheel.y != 0f)
-                {
-                    scrollBar.value = Mathf.Clamp01(scrollBar.value + UserInput.RightScrollWheel.y * 1000f * Time.unscaledDeltaTime / overviewContent.rect.height);
-                }
-            }
         }
 
         public override void OnExit()

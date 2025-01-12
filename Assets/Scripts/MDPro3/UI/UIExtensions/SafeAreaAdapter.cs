@@ -44,5 +44,10 @@ namespace MDPro3.UI
         {
             return (Screen.width - (Screen.safeArea.x + Screen.safeArea.width)) * Screen.height / 1080f;
         }
+
+        public static float GetSafeAreaLeftOffset() 
+        {
+            return Screen.safeArea.x * Screen.height / 1080f;
+        }
     }
 }

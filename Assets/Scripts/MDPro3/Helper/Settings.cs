@@ -1,6 +1,5 @@
 using System;
 using System.IO;
-using UnityEngine;
 using Newtonsoft.Json;
 
 namespace MDPro3
@@ -83,7 +82,7 @@ namespace MDPro3
 
             PrereleasePackUrl = "https://cdn02.moecube.com:444/ygopro-super-pre/archive/ygopro-super-pre.ypk";
             PrereleasePackVersionUrl = "https://cdn02.moecube.com:444/ygopro-super-pre/data/version.txt";
-            MDPro3VersionUrl = "https://code.moenext.com/sherry_chaos/MDPro3/-/raw/master/Version.txt";
+            MDPro3VersionUrl = "https://cdn02.moecube.com:444/mdpro3-data/version.txt";
             CardRenderPassword = true;
             SavedCardSize = new int[] { 704, 1024 };
             SavedCardFormat = Program.jpgExpansion;
@@ -95,6 +94,9 @@ namespace MDPro3
     public static class Settings
     {
         private const string JsonPath = "Data/Settings.json";
+        private const string MDPRO3_VERSION_URL_OLD = "https://code.moenext.com/sherry_chaos/MDPro3/-/raw/master/Version.txt";
+        private const string MDPRO3_VERSION_URL_DEFAULT = "https://cdn02.moecube.com:444/mdpro3-data/Version.txt";
+
         private static SettingData _data;
         public static SettingData Data
         {
@@ -204,6 +206,13 @@ namespace MDPro3
                 data.DiySymbol = defau.DiySymbol;
                 needOverwrite = true;
             }
+
+            if(data.MDPro3VersionUrl == MDPRO3_VERSION_URL_OLD)
+            {
+                data.MDPro3VersionUrl = MDPRO3_VERSION_URL_DEFAULT;
+                needOverwrite = true;
+            }
+
             if (needOverwrite)
                 SaveSettings(data);
 

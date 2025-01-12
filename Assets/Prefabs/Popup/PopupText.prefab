@@ -2131,6 +2131,7 @@ GameObject:
   - component: {fileID: 5812940696912985056}
   - component: {fileID: 3585028978571335327}
   - component: {fileID: 1452823012685555787}
+  - component: {fileID: 8867177494863556739}
   m_Layer: 5
   m_Name: ScrollBar
   m_TagString: Untagged
@@ -2265,6 +2266,21 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8867177494863556739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5361578048507635609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a0747c0fc3409b45ade31926980a2c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  responseScrollWheel: 1
+  direction: 0
+  parentServant: {fileID: 0}
 --- !u!1 &5496985056417317568
 GameObject:
   m_ObjectHideFlags: 0
@@ -2444,7 +2460,6 @@ GameObject:
   - component: {fileID: 3823576957522071965}
   - component: {fileID: 4404664260770322903}
   - component: {fileID: 3149411002117231297}
-  - component: {fileID: 6503118005512671459}
   - component: {fileID: 6854673914501953499}
   m_Layer: 5
   m_Name: EntryButtonsScrollView
@@ -2555,22 +2570,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &6503118005512671459
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5617499678934687526}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a58ef33cdb2af0941aac4aeadc5809c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scrollDirection: 0
-  scrollSpeed: 50
-  cancelScrollOnInput: 0
-  cancelScrollKeycodes: 
 --- !u!114 &6854673914501953499
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3419,6 +3418,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_CANCEL
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -3455,6 +3455,24 @@ MonoBehaviour:
     onHoverOff:
       m_PersistentCalls:
         m_Calls: []
+  selectEvent:
+    onSelect:
+      m_PersistentCalls:
+        m_Calls: []
+    onDeselect:
+      m_PersistentCalls:
+        m_Calls: []
+  clickEvent:
+    onLeftClick:
+      m_PersistentCalls:
+        m_Calls: []
+    onMiddleClick:
+      m_PersistentCalls:
+        m_Calls: []
+    onRightClick:
+      m_PersistentCalls:
+        m_Calls: []
+  selected: 0
 --- !u!114 &6375021236380676740
 MonoBehaviour:
   m_ObjectHideFlags: 0

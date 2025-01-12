@@ -22,7 +22,7 @@ namespace MDPro3.UI
         protected bool shifting;
 
         protected virtual float TransitionTime => 0.2f;
-        protected virtual float Width => 400f;
+        protected virtual float Width => Window.rect.width;
         protected virtual bool Permanent => false;
         protected virtual bool TakeOverInput => true;
 
@@ -31,6 +31,12 @@ namespace MDPro3.UI
             if (ButtonBG != null)
                 ButtonBG.SetClickEvent(() => Hide());
 
+            if (Permanent)
+            {
+                gameObject.SetActive(false);
+                if(Cg != null)
+                    Cg.alpha = 1.0f;
+            }
         }
 
         protected virtual void OnEnable()
@@ -67,7 +73,6 @@ namespace MDPro3.UI
                 SelectDefaultSelectable();
         }
 
-
         public virtual void Show()
         {
             if (showing || shifting) return;
@@ -77,7 +82,9 @@ namespace MDPro3.UI
             AudioManager.PlaySE("SE_MENU_SLIDE_01");
 
             if (Permanent)
+            {
                 gameObject.SetActive(true);
+            }
 
             Window.DOAnchorPosX(0f, TransitionTime).SetEase(Ease.OutQuart)
                 .OnComplete(() =>

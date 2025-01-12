@@ -116,7 +116,7 @@ namespace MDPro3
             }
         }
 
-        protected override bool NeedResponseInput()
+        public override bool NeedResponseInput()
         {
             if (Program.instance.ui_.chatPanel.input.isFocused)
                 return false;
@@ -202,7 +202,7 @@ namespace MDPro3
         {
             if (players[selfType] != null && players[selfType].ready)
             {
-                MessageManager.Cast(InterString.Get("请先取消准备，再选择卡组。"));
+                MessageManager.Toast(InterString.Get("请先取消准备，再选择卡组。"));
                 return;
             }
             Program.instance.selectDeck.SwitchCondition(SelectDeck.Condition.ForDuel);

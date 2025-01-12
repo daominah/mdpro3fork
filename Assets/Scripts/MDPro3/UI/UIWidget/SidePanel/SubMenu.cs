@@ -43,9 +43,6 @@ namespace MDPro3.UI
 
         #endregion
 
-        protected override float Width => 
-            PropertyOverrider.PropertyOverrider.NeedMobileLayout() ? 940f : 710f;
-
         protected override void Awake()
         {
             base.Awake();

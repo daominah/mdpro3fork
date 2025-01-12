@@ -470,7 +470,7 @@ namespace MDPro3
         {
             if (condition == Condition.Replay || inAi)
                 return;
-            Program.instance.ui_.chatPanel.Show();
+            Program.instance.ui_.chatPanel.Switch();
         }
 
         private enum CameraState

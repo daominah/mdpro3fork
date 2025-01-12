@@ -77,19 +77,19 @@ namespace MDPro3
         {
             EventSystem.current.SetSelectedGameObject(lastSoloItem.gameObject);
         }
-        protected override bool NeedResponseInput()
-        {
-            if (inputPort.isFocused)
-                return false;
-            if (inputLP.isFocused)
-                return false;
-            if(inputHand.isFocused)
-                return false;
-            if(inputDraw.isFocused)
-                return false;
+        //public override bool NeedResponseInput()
+        //{
+        //    if (inputPort.isFocused)
+        //        return false;
+        //    if (inputLP.isFocused)
+        //        return false;
+        //    if(inputHand.isFocused)
+        //        return false;
+        //    if(inputDraw.isFocused)
+        //        return false;
 
-            return base.NeedResponseInput();
-        }
+        //    return base.NeedResponseInput();
+        //}
         #endregion
 
         #region Solo

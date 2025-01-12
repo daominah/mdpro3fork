@@ -136,50 +136,50 @@ namespace MDPro3
             }
         }
 
-        protected override bool NeedResponseInput()
-        {
-            if(!showing)
-                return false;
-            if(inTransition)
-                return false;
+        //public override bool NeedResponseInput()
+        //{
+        //    if(!showing)
+        //        return false;
+        //    if(inTransition)
+        //        return false;
 
-            if (PageLegacy.activeInHierarchy)
-            {
-                if(inputName.isFocused)
-                    return false;
-                if(inputHost.isFocused)
-                    return false;
-                if(inputPort.isFocused)
-                    return false;
-                if(inputPassword.isFocused)
-                    return false;
-            }
-            else if (PageHost.activeInHierarchy)
-            {
-                if(inputTime.isFocused)
-                    return false;
-                if(inputLP.isFocused)
-                    return false;
-                if(inputHand.isFocused)
-                    return false;
-                if(inputDraw.isFocused)
-                    return false;
-            }
-            else if (goMyCardLogin.activeInHierarchy)
-            {
-                if (inputMyCardAccount.isFocused)
-                    return false;
-                if(inputMyCardPassword.isFocused)
-                    return false;
-            }
-            else if (goMyCardFunctions.activeInHierarchy)
-            {
-                if (inputDuelist.isFocused)
-                    return false;
-            }
+        //    if (PageLegacy.activeInHierarchy)
+        //    {
+        //        if(inputName.isFocused)
+        //            return false;
+        //        if(inputHost.isFocused)
+        //            return false;
+        //        if(inputPort.isFocused)
+        //            return false;
+        //        if(inputPassword.isFocused)
+        //            return false;
+        //    }
+        //    else if (PageHost.activeInHierarchy)
+        //    {
+        //        if(inputTime.isFocused)
+        //            return false;
+        //        if(inputLP.isFocused)
+        //            return false;
+        //        if(inputHand.isFocused)
+        //            return false;
+        //        if(inputDraw.isFocused)
+        //            return false;
+        //    }
+        //    else if (goMyCardLogin.activeInHierarchy)
+        //    {
+        //        if (inputMyCardAccount.isFocused)
+        //            return false;
+        //        if(inputMyCardPassword.isFocused)
+        //            return false;
+        //    }
+        //    else if (goMyCardFunctions.activeInHierarchy)
+        //    {
+        //        if (inputDuelist.isFocused)
+        //            return false;
+        //    }
 
-            return base.NeedResponseInput();
-        }
+        //    return base.NeedResponseInput();
+        //}
 
         public override void PerFrameFunction()
         {

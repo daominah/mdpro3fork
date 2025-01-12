@@ -12,6 +12,7 @@ using System.Collections;
 using UnityEngine.UI;
 using DG.Tweening;
 using System.Threading;
+using LibJpegTurboUnity;
 
 namespace MDPro3
 {
@@ -52,6 +53,7 @@ namespace MDPro3
 #else
             fullPath = Environment.CurrentDirectory + Program.slash + path;
 #endif
+
             using var request = UnityWebRequestTexture.GetTexture(fullPath);
             var send = request.SendWebRequest();
             await TaskUtility.WaitUntil(() => send.isDone);
@@ -357,6 +359,5 @@ namespace MDPro3
         }
 
         #endregion
-
     }
 }

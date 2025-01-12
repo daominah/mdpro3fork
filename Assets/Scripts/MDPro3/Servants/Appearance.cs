@@ -314,7 +314,7 @@ namespace MDPro3
             }
         }
 
-        protected override bool NeedResponseInput()
+        public override bool NeedResponseInput()
         {
             if(inputPlayerName.isFocused)
                 return false;

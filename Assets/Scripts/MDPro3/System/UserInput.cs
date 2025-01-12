@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -8,6 +9,7 @@ using UnityEngine.InputSystem.DualShock;
 #if !UNITY_ANDROID || UNITY_EDITOR
 using UnityEngine.InputSystem.Switch;
 using UnityEngine.InputSystem.UI;
+using UnityEngine.UI;
 #endif
 
 namespace MDPro3
@@ -432,6 +434,22 @@ namespace MDPro3
             Cursor.visible = false;
             OnMouseCursorHide?.Invoke();
         }
+        #endregion
+
+        #region State
+
+        public static bool InputFieldActivating()
+        {
+            var current = EventSystem.current.currentSelectedGameObject;
+            if (current == null) return false;
+            if (!current.TryGetComponent<Selectable>(out var selectable))
+                return false;
+            if(selectable is TMP_InputField inputField)
+                return inputField.isFocused;
+            else
+                return false;
+        }
+
         #endregion
     }
 }

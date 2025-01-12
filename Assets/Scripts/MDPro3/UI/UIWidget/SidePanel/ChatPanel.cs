@@ -11,6 +11,8 @@ namespace MDPro3.UI
 {
     public class ChatPanel : SidePanel
     {
+        protected override bool Permanent => true;
+        protected override float TransitionTime => 0.4f;
         [Header("Chat Panel")]
         public TMP_InputField input;
         [SerializeField] private ScrollRect scrollRect;
@@ -42,6 +44,17 @@ namespace MDPro3.UI
             };
         }
 
+        public void Switch()
+        {
+            if (showing)
+            {
+                if(!input.isFocused)
+                    HideWithSound();
+            }
+            else
+                Show();
+        }
+
         public void Show(bool takeOver = true)
         {
             base.Show();
@@ -55,15 +68,10 @@ namespace MDPro3.UI
             if (!showing) return;
             if (!NeedResponse()) return;
 
-            if ((UserInput.WasCancelPressed || UserInput.MouseRightDown)
+            if ((UserInput.WasCancelPressed 
+                || UserInput.MouseRightDown)
                 && Program.instance.currentServant == Program.instance.ocgcore)
-                Hide();
-            if (UserInput.RightScrollWheel.y != 0f)
-            {
-                scrollRect.verticalNormalizedPosition = 
-                    Mathf.Clamp01(scrollRect.verticalNormalizedPosition
-                    + UserInput.RightScrollWheel.y * 1000f * Time.unscaledDeltaTime / scrollRect.content.rect.height);
-            }
+                HideWithSound();
         }
 
         protected override bool NeedResponse()

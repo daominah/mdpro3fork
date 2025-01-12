@@ -313,10 +313,10 @@ namespace MDPro3.UI
                 SelectLastSelectable();
         }
 
-        protected virtual bool NeedResponseInput()
+        public virtual bool NeedResponseInput()
         {
-            if(!showing) 
-                return false;
+            if (!showing) return false;
+            if(inTransition) return false;
             if(UIManager.InputBlocker != null)
                 return false;
             if(Program.instance.ui_.currentPopup != null)
@@ -324,6 +324,8 @@ namespace MDPro3.UI
             if (Program.instance.ui_.currentPopupB != null)
                 return false;
             if(Program.instance.ui_.currentSidePanel != null)
+                return false;
+            if(UserInput.InputFieldActivating())
                 return false;
             return true;
         }

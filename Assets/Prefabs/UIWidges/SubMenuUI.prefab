@@ -548,6 +548,13 @@ MonoBehaviour:
     onHoverOff:
       m_PersistentCalls:
         m_Calls: []
+  selectEvent:
+    onSelect:
+      m_PersistentCalls:
+        m_Calls: []
+    onDeselect:
+      m_PersistentCalls:
+        m_Calls: []
   clickEvent:
     onLeftClick:
       m_PersistentCalls:
@@ -1088,6 +1095,13 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
     onHoverOff:
+      m_PersistentCalls:
+        m_Calls: []
+  selectEvent:
+    onSelect:
+      m_PersistentCalls:
+        m_Calls: []
+    onDeselect:
       m_PersistentCalls:
         m_Calls: []
   clickEvent:

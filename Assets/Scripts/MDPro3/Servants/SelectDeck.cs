@@ -148,7 +148,7 @@ namespace MDPro3
         {
             EventSystem.current.SetSelectedGameObject(lastSelectedDeckItem.gameObject);
         }
-        protected override bool NeedResponseInput()
+        public override bool NeedResponseInput()
         {
             if (inputField.isFocused)
                 return false;

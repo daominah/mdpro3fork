@@ -53,7 +53,7 @@ public class OnlineDeckViewer : Servant
         EventSystem.current.SetSelectedGameObject(lastSelectedDeckItem.gameObject);
     }
 
-    protected override bool NeedResponseInput()
+    public override bool NeedResponseInput()
     {
         if(inputFieldDeckName.isFocused)
             return false;

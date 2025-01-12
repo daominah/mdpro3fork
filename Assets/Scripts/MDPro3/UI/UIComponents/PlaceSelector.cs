@@ -129,7 +129,7 @@ namespace MDPro3.UI
             if (hover)
             {
                 highlight.SetActive(true);
-                if (UserInput.MouseLeftDown)
+                if (UserInput.MouseLeftUp)
                     OnClick();
                 if ((p.location & (uint)CardLocation.Onfield) == 0 && !countShowing)
                 {
@@ -139,9 +139,10 @@ namespace MDPro3.UI
             }
             else
             {
-                highlight.SetActive(false);
                 if (UserInput.MouseLeftUp)
                     HideButtons();
+
+                highlight.SetActive(false);
                 if (countShowing)
                 {
                     countShowing = false;
@@ -154,8 +155,6 @@ namespace MDPro3.UI
             else
                 highlight.SetActive(false);
         }
-
-
 
         void OnClick()
         {
