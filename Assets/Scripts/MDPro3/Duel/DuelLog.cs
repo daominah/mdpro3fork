@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using MDPro3.YGOSharp;
 using MDPro3.YGOSharp.OCGWrapper.Enums;
+using MDPro3.UI;
 
 namespace MDPro3.Duel
 {
@@ -45,7 +46,7 @@ namespace MDPro3.Duel
         {
             showing = false;
             draged = false;
-            baseRect.DOAnchorPosX(400f * Config.GetUIScale(1.15f), 0.2f);
+            baseRect.DOAnchorPosX(400f * Config.GetUIScale(1.15f) + SafeAreaAdapter.GetSafeAreaRightOffset(), 0.2f);
 
             if (!silent)
                 AudioManager.PlaySE("SE_LOG_CLOSE");

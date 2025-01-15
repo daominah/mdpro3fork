@@ -847,20 +847,19 @@ namespace MDPro3
                 }
 
                 bool deckIdFound = false;
-                bool deleted = false;
                 foreach(var od in OnlineDeck.decks)
                 {
                     if (od.deckId == decks[i].deckId)
                     {
+                        deckIdFound = true;
+
                         if (od.isDelete)
                         {
                             Debug.LogFormat("Deck Delete: [{0}]", deckName);
                             File.Delete(deckFiles[i]);
-                            deleted = true;
                         }
                         else
                         {
-                            deckIdFound = true;
                             localFoundedIds.Add(od.deckId);
                             var fileInfo = new FileInfo(deckFiles[i]);
                             var serverTime = od.GetUpdateTime();
@@ -878,7 +877,7 @@ namespace MDPro3
                         break;
                     }
                 }
-                if (!deckIdFound && !deleted)
+                if (!deckIdFound)
                     decksNeedUpload.Add(deckName, decks[i]);
             }
 

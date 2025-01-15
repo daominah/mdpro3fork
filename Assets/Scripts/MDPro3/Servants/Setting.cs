@@ -1748,17 +1748,17 @@ namespace MDPro3
         #region Timming
         private void InitializeTimming()
         {
-            var button = Manager.GetElement<SelectionButton_Setting>("Timming");
+            var button = Manager.GetElement<SelectionButton_Setting>("Timing");
             button.SetClickEvent(OnTimmingClick);
-            var config = Config.GetBool("Timming", false);
+            var config = Config.GetBool(Config.LABEL_TIMING, false);
             button.SetModeText(InterString.Get(config ? "开" : "关"));
         }
         private void OnTimmingClick()
         {
-            var button = Manager.GetElement<SelectionButton_Setting>("Timming");
-            var config = Config.GetBool("Timming", false);
+            var button = Manager.GetElement<SelectionButton_Setting>("Timing");
+            var config = Config.GetBool(Config.LABEL_TIMING, false);
             button.SetModeText(InterString.Get(config ? "关" : "开"));
-            Config.SetBool("Timming", !config);
+            Config.SetBool(Config.LABEL_TIMING, !config);
         }
         #endregion
 

@@ -33,3 +33,11 @@ Unity version: 6000.0.10f1
 * If you want to edit in-game translations, please edit Tools/Translations/translations.csv with Excel. Do not edit translation.conf.
 
 * If you want to edit bot.conf(Windbot), please edit it on YGOMobile(https://github.com/fallenstardust/YGOMobile-cn-ko-en), this project copy these files from it.
+
+### Unity Notes:
+Unity 6000.32f1 Crashes when loading the following Assetbundles:
+fxp_HL_EXdeck_001 (Material 2020.3.48f1)
+PlayableGuide_C001_Far
+PlayableGuide_C001_Far_Mat13
+PlayableGuide_C001_Near
+PlayableGuide_C001_Near_Mat13

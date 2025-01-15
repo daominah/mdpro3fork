@@ -101,7 +101,8 @@ namespace MDPro3
 
 #if UNITY_ANDROID
                 if (UserInput.MouseLeftDown)
-                    OnReturn();
+                    if(cg.alpha == 0)
+                        OnReturn();
 #endif
 
                 if(UserInput.WasGamepadButtonWestPressed)
@@ -181,7 +182,7 @@ namespace MDPro3
             tasks.Clear();
             foreach (var card in cards)
             {
-                if (card.Name.Contains(search))
+                if (card.Name.Contains(search) || card.Id.ToString() == search)
                 {
                     string code = card.Id.ToString();
                     string cardName = card.Name;

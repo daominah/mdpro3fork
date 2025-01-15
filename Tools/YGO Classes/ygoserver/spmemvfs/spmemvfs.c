@@ -32,6 +32,8 @@
 
 #include "spmemvfs.h"
 
+#include "sqlite3.h"
+
 /* Useful macros used in several places */
 #define SPMEMVFS_MIN(x,y) ((x)<(y)?(x):(y))
 #define SPMEMVFS_MAX(x,y) ((x)>(y)?(x):(y))

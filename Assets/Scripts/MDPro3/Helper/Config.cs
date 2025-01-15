@@ -9,6 +9,9 @@ namespace MDPro3
 {
     public static class Config
     {
+        public const string LABEL_TIMING = "Timing";
+
+
         public static uint ClientVersion = 0x1361;
 
         private static readonly List<OneString> translations = new List<OneString>();

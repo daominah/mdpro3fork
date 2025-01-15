@@ -422,12 +422,12 @@ namespace MDPro3
                 float x = p.sequence * 4 - (handsCount - 1) * 2;
 
                 var z0 = -28 + (30 - Program.instance.camera_.cameraMain.fieldOfView) * 0.7f;
-                var z1 = 23 - (30 - Program.instance.camera_.cameraMain.fieldOfView) * 0.7f;
+                var z1 = 17 - (30 - Program.instance.camera_.cameraMain.fieldOfView) * 0.7f;
 
                 if (p.controller == 0)
                     return new Vector3(x + Program.instance.ocgcore.handOffset * UIManager.ScreenLengthWithoutScalerX(0.038f), 15, z0);
                 else
-                    return new Vector3(-x, 5, z1);
+                    return new Vector3(-x, 15, z1);
             }
             else if ((p.location & (uint)CardLocation.Deck) > 0)
             {

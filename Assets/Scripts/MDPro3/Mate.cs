@@ -306,7 +306,7 @@ namespace MDPro3
                             continue;
                         camera.enabled = true;
                         camera.cullingMask = 1 << layerMask;
-                        camera.clearFlags = CameraClearFlags.Nothing;
+                        //camera.clearFlags = CameraClearFlags.Nothing;
                         CameraManager.DuelOverlay2DMinus();
                         var mono = camera.gameObject.AddComponent<DoWhenDisabled>();
                         mono.action = () =>

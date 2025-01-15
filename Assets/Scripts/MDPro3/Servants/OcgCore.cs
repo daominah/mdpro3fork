@@ -22,6 +22,8 @@ using YgomSystem.ElementSystem;
 using static YgomGame.Bg.BgEffectSettingInner;
 using MDPro3.Duel;
 using UnityEngine.InputSystem;
+using MDPro3.Duel.BG;
+using MDPro3.Utility;
 
 namespace MDPro3
 {
@@ -74,8 +76,8 @@ namespace MDPro3
         GameObject timer;
         ElementObjectManager timerManager;
         TimerHandler timerHandler;
-        GameObject playableGuide0;
-        GameObject playableGuide1;
+
+        PlayableGuide playableGuide;
 
         GameObject attackLine;
         GameObject targetLine;
@@ -138,7 +140,7 @@ namespace MDPro3
             btnCancel.hint = InterString.Get("取消");
             btnCancel.type = ButtonType.Cancel;
             btnCancel.Hide();
-            if(!showing)
+            if (!showing)
                 transform.GetChild(0).gameObject.SetActive(false);
         }
         protected override void ApplyShowArrangement(int preDepth)
@@ -197,14 +199,14 @@ namespace MDPro3
                     return;
                 }
 
-                if(speaking && UserInput.MouseLeftDown)
+                if (speaking && UserInput.MouseLeftDown)
                 {
                     speaking = false;
                     speakBreaking = true;
                 }
 
-                if (!EventSystem.current.IsPointerOverGameObject() 
-                    && UserInput.HoverObject == null 
+                if (!EventSystem.current.IsPointerOverGameObject()
+                    && UserInput.HoverObject == null
                     && UserInput.MouseLeftDown)
                 {
                     description.Hide();
@@ -343,7 +345,7 @@ namespace MDPro3
                 if (Program.instance.ui_.chatPanel.showing || inputMode)
                     return;
 
-                if(Keyboard.current != null)
+                if (Keyboard.current != null)
                 {
                     // Mate Viewer
                     if (Keyboard.current.qKey.wasPressedThisFrame)
@@ -586,8 +588,6 @@ namespace MDPro3
 
         IEnumerator LoadAssets()
         {
-            Debug.Log("LoadAssets Start.");
-
             cg.alpha = 0f;
             cg.blocksRaycasts = false;
 
@@ -721,7 +721,7 @@ namespace MDPro3
 
             #region 场地
             var path = Program.items.GetPathByCode(
-                Config.Get(condition.ToString() + "Field0", 
+                Config.Get(condition.ToString() + "Field0",
                 Program.items.mats[0].id.ToString()), Items.ItemType.Mat);
             if (deck != null && !Config.GetBool("OverrideDeckAppearance", false))
                 path = Program.items.GetPathByCode(deck.Field.ToString(), Items.ItemType.Mat);
@@ -732,8 +732,8 @@ namespace MDPro3
             field0 = enumerator.Current;
             field0.transform.SetParent(Program.instance.container_3D, false);
 
-            enumerator = ABLoader.LoadFromFileAsync("MasterDuel/" + 
-                Program.items.GetPathByCode(Config.Get(condition.ToString() + "Field1", 
+            enumerator = ABLoader.LoadFromFileAsync("MasterDuel/" +
+                Program.items.GetPathByCode(Config.Get(condition.ToString() + "Field1",
                 Program.items.mats[0].id.ToString()), Items.ItemType.Mat, 1) + "_far");
             while (enumerator.MoveNext())
                 yield return null;
@@ -764,7 +764,7 @@ namespace MDPro3
 
             #region 墓地
             path = Program.items.GetPathByCode(
-                Config.Get(condition.ToString() + "Grave0", 
+                Config.Get(condition.ToString() + "Grave0",
                 Program.items.graves[0].id.ToString()), Items.ItemType.Grave);
             if (deck != null && !Config.GetBool("OverrideDeckAppearance", false))
                 path = Program.items.GetPathByCode(deck.Grave.ToString(), Items.ItemType.Grave);
@@ -798,7 +798,7 @@ namespace MDPro3
 
             #region 站台
             var standConfig = Config.Get(condition.ToString() + "Stand0", Program.items.stands[0].id.ToString());
-            if(standConfig != Items.noneCode.ToString() || deck != null)
+            if (standConfig != Items.noneCode.ToString() || deck != null)
             {
                 path = Program.items.GetPathByCode(standConfig, Items.ItemType.Stand);
                 if (deck != null && !Config.GetBool("OverrideDeckAppearance", false))
@@ -834,7 +834,7 @@ namespace MDPro3
 
             #region 宠物
             var mateConfig = Config.Get(condition.ToString() + "Mate0", Program.items.mates[0].id.ToString());
-            if(mateConfig != Items.noneCode.ToString() || deck != null)
+            if (mateConfig != Items.noneCode.ToString() || deck != null)
             {
                 int mateCode = int.Parse(mateConfig);
                 if (deck != null && !Config.GetBool("OverrideDeckAppearance", false))
@@ -923,51 +923,14 @@ namespace MDPro3
             #endregion
 
             #region Playable Guide
-            if (condition == Condition.Duel && inAi == false)
-            {
-                IEnumerator<GameObject> ie;
-                if (field0.name.StartsWith("Mat_013"))
-                    ie = ABLoader.LoadFromFileAsync("MasterDuel/BG/Timer/PlayableGuide_C001_Near_Mat13", true);
-                else
-                    ie = ABLoader.LoadFromFileAsync("MasterDuel/BG/Timer/PlayableGuide_C001_Near", true);
-                StartCoroutine(ie);
-                while (ie.MoveNext())
-                    yield return null;
-                playableGuide0 = ie.Current;
-                if (field1.name.StartsWith("Mat_013"))
-                    ie = ABLoader.LoadFromFileAsync("MasterDuel/BG/Timer/PlayableGuide_C001_Far_Mat13", true);
-                else
-                    ie = ABLoader.LoadFromFileAsync("MasterDuel/BG/Timer/PlayableGuide_C001_Far", true);
-                StartCoroutine(ie);
-                while (ie.MoveNext())
-                    yield return null;
-                playableGuide1 = ie.Current;
 
-                for (int i = 0; i < playableGuide0.transform.childCount; i++)
-                {
-                    if (playableGuide0.transform.GetChild(i).name.EndsWith("Luminous"))
-                        playableGuide0.transform.GetChild(i).GetComponent<MeshRenderer>().material.renderQueue = 4000;
-                    if (playableGuide0.transform.GetChild(i).name.EndsWith("change"))
-                        playableGuide0.transform.GetChild(i).gameObject.SetActive(false);
-                    if (playableGuide0.transform.GetChild(i).name.EndsWith("play"))
-                        playableGuide0.transform.GetChild(i).GetComponent<MeshRenderer>().material.renderQueue = 2500;
-                }
-                for (int i = 0; i < playableGuide1.transform.childCount; i++)
-                {
-                    if (playableGuide1.transform.GetChild(i).name.EndsWith("Luminous"))
-                        playableGuide1.transform.GetChild(i).GetComponent<MeshRenderer>().material.renderQueue = 4000;
-                    if (playableGuide1.transform.GetChild(i).name.EndsWith("change"))
-                        playableGuide1.transform.GetChild(i).gameObject.SetActive(false);
-                    if (playableGuide1.transform.GetChild(i).name.EndsWith("play"))
-                        playableGuide1.transform.GetChild(i).GetComponent<MeshRenderer>().material.renderQueue = 2500;
-                }
-                playableGuide0.transform.SetParent(Program.instance.container_3D, false);
-                playableGuide1.transform.SetParent(Program.instance.container_3D, false);
-                playableGuide0.SetActive(false);
-                playableGuide1.SetActive(false);
-                allGameObjects.Add(playableGuide0);
-                allGameObjects.Add(playableGuide1);
-            }
+            playableGuide = Create<PlayableGuide>();
+            playableGuide.Load(field0.name, field1.name);
+            while (!playableGuide.loaded)
+                yield return null;
+            if(DeviceInfo.OnAndroid())
+                playableGuide.SetHeight(0.6f);
+
             #endregion
 
             #region 卡组
@@ -1105,8 +1068,6 @@ namespace MDPro3
                 || condition == Condition.Watch && Config.GetBool("WatchAutoAcc", false)
                 || condition == Condition.Replay && Config.GetBool("ReplayAutoAcc", false))
                 OnAcc();
-
-            Debug.Log("LoadAssets End.");
         }
 
         private void BackgroundFieldInitialize()
@@ -1149,21 +1110,12 @@ namespace MDPro3
             {
                 mate1Random = true;
             });
-            if (playableGuide0 != null & playableGuide1 != null)
-            {
-                playableGuide0.SetActive(true);
-                playableGuide1.SetActive(true);
-
-                if (isFirst)
-                    playableGuide1.GetComponent<Animator>().SetTrigger("Out");
-                else
-                    playableGuide0.GetComponent<Animator>().SetTrigger("Out");
-            }
         }
 
         #endregion
 
         #region Button Function
+
         public void OnStop()
         {
             pause = true;
@@ -1589,7 +1541,7 @@ namespace MDPro3
             {
                 buttonTiming.gameObject.SetActive(true);
 
-                if (Config.Get("Timing", "0") == "1")
+                if (Config.GetBool(Config.LABEL_TIMING, false))
                 {
                     chainCondition = ChainCondition.All - 1;
                     OnTiming();
@@ -1628,6 +1580,8 @@ namespace MDPro3
             returnAction = null;
             movingToGrave = 0;
             movingToExclude = 0;
+            meShowing = false;
+            opShowing = false;
         }
 
         public void AddPackage(Package p)
@@ -1668,7 +1622,7 @@ namespace MDPro3
 
         public void StocMessage_TeammateSurrender()
         {
-            if(surrendered) 
+            if (surrendered)
                 return;
             tagSurrendered = true;
             MessageManager.Cast(InterString.Get("队友发起了投降。"));
@@ -1685,39 +1639,25 @@ namespace MDPro3
                 return;
             timerHandler.time = timeLimit;
             timerHandler.player = player;
-
-            if (playableGuide0 == null || playableGuide1 == null)
-                return;
-            //var animator0 = playableGuide0.GetComponent<Animator>();
-            //var animator1 = playableGuide1.GetComponent<Animator>();
-            //if (player == 0)
-            //{
-            //    StartCoroutine(SetTriggerWhenIdle(animator0, "Change"));
-            //    StartCoroutine(SetTriggerWhenIdle(animator1, "Out"));
-            //}
-            //else
-            //{
-            //    StartCoroutine(SetTriggerWhenIdle(animator1, "Change"));
-            //    StartCoroutine(SetTriggerWhenIdle(animator0, "Out"));
-            //}
-            if (player == 0)
-            {
-                playableGuide0.SetActive(true);
-                playableGuide1.SetActive(false);
-            }
-            else
-            {
-                playableGuide0.SetActive(false);
-                playableGuide1.SetActive(true);
-            }
         }
 
-        bool GetMessageConfig(int player)
+        private Animator playableAnimator0;
+        private Animator playableAnimator1;
+        private bool meShowing;
+        private bool opShowing;
+        private void SetPlayableGuide(bool me)
+        {
+            if (playableGuide == null) return;
+
+            playableGuide.Set(me);
+        }
+
+        private bool GetMessageConfig(int player)
         {
             bool isPlayer = true;
-            if(player > 3 && player != 7)
+            if (player > 3 && player != 7)
                 isPlayer = false;
-            if(isPlayer)
+            if (isPlayer)
             {
                 if (condition == Condition.Duel && Config.Get("DuelPlayerMessage", "1") == "0")
                     return false;
@@ -1754,7 +1694,7 @@ namespace MDPro3
         public Package GetNextPackage()
         {
             int target = 1;
-            while(packages.Count > target)
+            while (packages.Count > target)
             {
                 if (packages[target].Function != (int)GameMessage.UpdateData
                     && packages[target].Function != (int)GameMessage.UpdateCard)
@@ -1843,7 +1783,7 @@ namespace MDPro3
                     {
                         VoiceMessage(packages[0]);
                     }
-                    catch(Exception e)
+                    catch (Exception e)
                     {
                         Debug.Log(e);
                     }
@@ -1889,7 +1829,7 @@ namespace MDPro3
 
         public static bool CheckSelectableInSum(List<GameCard> cards, GameCard card, List<GameCard> selectedCards, int max)
         {
-            if(selectedCards.Count >= max)
+            if (selectedCards.Count >= max)
                 return false;
             bool returnValue = false;
             var sum = GetSelectLevelSum(selectedCards);
@@ -2177,8 +2117,8 @@ namespace MDPro3
                 myHandCards = new List<GameCard>(myPreHandCards);
                 foreach (var card in cards)
                     if (card.p.controller == 0)
-                        if((card.p.location & (uint)CardLocation.Hand) > 0)
-                            if(!myHandCards.Contains(card))
+                        if ((card.p.location & (uint)CardLocation.Hand) > 0)
+                            if (!myHandCards.Contains(card))
                                 myHandCards.Add(card);
                 needRefreshHand0 = false;
             }
@@ -2243,7 +2183,7 @@ namespace MDPro3
         {
             if (!showing)
                 return;
-            foreach(var card in cards)
+            foreach (var card in cards)
             {
                 card.RefreshLabel();
             }
@@ -2637,10 +2577,9 @@ namespace MDPro3
                     allGameObjects.Add(duelText);
                     if (timerHandler != null)
                         timerHandler.DuelEnd();
-                    if (playableGuide0 != null && playableGuide1 != null)
+                    if (playableGuide != null)
                     {
-                        playableGuide0.GetComponent<Animator>().SetTrigger("End");
-                        playableGuide1.GetComponent<Animator>().SetTrigger("End");
+                        playableGuide.End();
                     }
                     //防止对方在更换副卡组时拔螺丝
                     UIManager.UIBlackOut(transitionTime);
@@ -3027,7 +2966,7 @@ namespace MDPro3
                     }
                     card.SetCode(code);
                     to.reason = reason;
-                    if(Settings.Data.BatchMove)
+                    if (Settings.Data.BatchMove)
                         Sleep((int)(card.Move(to) * 100));
                     else
                         Sleep((int)(card.Move_Backup(to) * 100));
@@ -4699,6 +4638,10 @@ namespace MDPro3
                     foreach (var o in turnEndDeleteObjects)
                         Destroy(o);
                     turnEndDeleteObjects.Clear();
+
+                    if (playableGuide != null)
+                        playableGuide.Set(myTurn);
+
                     break;
                 case GameMessage.NewPhase:
                     attackLine.SetActive(false);
@@ -4730,7 +4673,7 @@ namespace MDPro3
                         phase = DuelPhase.BattleStart;
                         PhaseBanner(player, phase);
                         PhaseButtonHandler.SetTextMain("Battle");
-                        if(myTurn && GetAllAtk(true) >= life1)
+                        if (myTurn && GetAllAtk(true) >= life1)
                             AudioManager.PlayBgmClimax();
                         else if (!myTurn && GetAllAtk(false) >= life0)
                             AudioManager.PlayBgmClimax();
@@ -5177,12 +5120,14 @@ namespace MDPro3
                     break;
                 case GameMessage.Waiting:
                     if (InIgnoranceReplay()) break;
+                    SetPlayableGuide(false);
                     break;
                 case GameMessage.RequestDeck:
                     break;
 
                 case GameMessage.AnnounceRace:
                     if (InIgnoranceReplay()) break;
+                    SetPlayableGuide(true);
 
                     player = LocalPlayer(r.ReadByte());
                     ES_min = r.ReadByte();
@@ -5201,6 +5146,7 @@ namespace MDPro3
                     break;
                 case GameMessage.AnnounceAttrib:
                     if (InIgnoranceReplay()) break;
+                    SetPlayableGuide(true);
 
                     player = LocalPlayer(r.ReadByte());
                     ES_min = r.ReadByte();
@@ -5219,6 +5165,7 @@ namespace MDPro3
                     break;
                 case GameMessage.AnnounceNumber:
                     if (InIgnoranceReplay()) break;
+                    SetPlayableGuide(true);
 
                     player = LocalPlayer(r.ReadByte());
                     count = r.ReadByte();
@@ -5234,6 +5181,8 @@ namespace MDPro3
                     break;
                 case GameMessage.AnnounceCard:
                     if (InIgnoranceReplay()) break;
+                    SetPlayableGuide(true);
+
                     player = LocalPlayer(r.ReadByte());
                     ES_searchCodes.Clear();
                     count = r.ReadByte();
@@ -5249,8 +5198,8 @@ namespace MDPro3
                     ShowPopupInput(selections, OnAnnounceCard, null);
                     break;
                 case GameMessage.SelectIdleCmd:
-                    if (InIgnoranceReplay())
-                        break;
+                    if (InIgnoranceReplay()) break;
+                    SetPlayableGuide(true);
 
                     player = LocalPlayer(r.ReadChar());
                     count = r.ReadByte();
@@ -5368,6 +5317,7 @@ namespace MDPro3
                     Destroy(duelFinalBlow, 0.5f);
 
                     if (InIgnoranceReplay()) break;
+                    SetPlayableGuide(true);
 
                     player = LocalPlayer(r.ReadChar());
                     count = r.ReadByte();
@@ -5420,6 +5370,7 @@ namespace MDPro3
                     break;
                 case GameMessage.SelectYesNo:
                     if (InIgnoranceReplay()) break;
+                    SetPlayableGuide(true);
 
                     player = LocalPlayer(r.ReadByte());
                     desc = StringHelper.Get(r.ReadInt32());
@@ -5454,6 +5405,7 @@ namespace MDPro3
                     break;
                 case GameMessage.SelectEffectYn:
                     if (InIgnoranceReplay()) break;
+                    SetPlayableGuide(true);
 
                     player = LocalPlayer(r.ReadByte());
                     code = r.ReadInt32();
@@ -5490,6 +5442,8 @@ namespace MDPro3
                     break;
                 case GameMessage.SelectChain:
                     if (InIgnoranceReplay()) break;
+                    SetPlayableGuide(true);
+
                     player = LocalPlayer(r.ReadChar());
                     count = r.ReadByte();
                     int spcount = r.ReadByte();
@@ -5506,7 +5460,7 @@ namespace MDPro3
                         gps = r.ReadGPS();
                         desc = StringHelper.Get(r.ReadInt32());
                         card = GCS_Get(gps);
-                        if(card == null)
+                        if (card == null)
                             card = GCS_Create(gps, true);
 
                         if (!chainCards.Contains(card))
@@ -5572,6 +5526,7 @@ namespace MDPro3
                     break;
                 case GameMessage.SelectCard:
                     if (InIgnoranceReplay()) break;
+                    SetPlayableGuide(true);
 
                     player = LocalPlayer(r.ReadByte());
                     cancelable = r.ReadByte() != 0;
@@ -5627,6 +5582,7 @@ namespace MDPro3
                     break;
                 case GameMessage.SelectUnselect:
                     if (InIgnoranceReplay()) break;
+                    SetPlayableGuide(true);
 
                     player = LocalPlayer(r.ReadByte());
                     var finishable = r.ReadByte() != 0;
@@ -5667,6 +5623,7 @@ namespace MDPro3
                     break;
                 case GameMessage.SelectSum:
                     if (InIgnoranceReplay()) break;
+                    SetPlayableGuide(true);
 
                     ES_overFlow = r.ReadByte() != 0;
                     player = LocalPlayer(r.ReadByte());
@@ -5781,6 +5738,7 @@ namespace MDPro3
                     break;
                 case GameMessage.SelectTribute:
                     if (InIgnoranceReplay()) break;
+                    SetPlayableGuide(true);
 
                     player = LocalPlayer(r.ReadByte());
                     cancelable = r.ReadByte() != 0;
@@ -5818,6 +5776,7 @@ namespace MDPro3
                     break;
                 case GameMessage.SelectOption:
                     if (InIgnoranceReplay()) break;
+                    SetPlayableGuide(true);
 
                     player = LocalPlayer(r.ReadByte());
                     count = r.ReadByte();
@@ -5843,6 +5802,7 @@ namespace MDPro3
                 case GameMessage.SelectPlace:
                 case GameMessage.SelectDisfield:
                     if (InIgnoranceReplay()) break;
+                    SetPlayableGuide(true);
 
                     player = r.ReadByte();
                     min = r.ReadByte();
@@ -5875,6 +5835,7 @@ namespace MDPro3
                     break;
                 case GameMessage.SelectPosition:
                     if (InIgnoranceReplay()) break;
+                    SetPlayableGuide(true);
 
                     player = LocalPlayer(r.ReadByte());
                     code = r.ReadInt32();
@@ -5910,6 +5871,8 @@ namespace MDPro3
                     break;
                 case GameMessage.SelectCounter:
                     if (InIgnoranceReplay()) break;
+                    SetPlayableGuide(true);
+
                     var version1033b = (length_of_message - 5) % 8 == 0;
                     player = LocalPlayer(r.ReadByte());
                     r.ReadInt16();
@@ -5941,7 +5904,6 @@ namespace MDPro3
                     FieldSelect(InterString.Get("请取除指示物"), cardsInSelection, ES_min, ES_min, true, false);
                     break;
                 case GameMessage.RockPaperScissors:
-                    if (InIgnoranceReplay()) break;
                     //TODO
                     break;
                 case GameMessage.CustomMsg:
@@ -5951,6 +5913,7 @@ namespace MDPro3
                 case GameMessage.SortCard:
                 case GameMessage.SortChain:
                     if (InIgnoranceReplay()) break;
+                    SetPlayableGuide(true);
 
                     player = LocalPlayer(r.ReadByte());
                     ES_sortSum = 0;
@@ -5989,7 +5952,7 @@ namespace MDPro3
             preload = true;
             player0LP.text = string.Empty;
             player1LP.text = string.Empty;
-            for(int i = 0; i < packages.Count; i++)
+            for (int i = 0; i < packages.Count; i++)
             {
                 if ((GameMessage)packages[i].Function == GameMessage.Start
                     || (GameMessage)packages[i].Function == GameMessage.AiName
@@ -6209,7 +6172,7 @@ namespace MDPro3
             }
             else
             {
-                if(!needDamageResponseInstant)
+                if (!needDamageResponseInstant)
                     AudioManager.PlaySE("SE_COST_DAMAGE");
             }
             obj.GetComponent<TextMeshProUGUI>().color = color;
@@ -6335,7 +6298,7 @@ namespace MDPro3
         {
             var data = attackCard.GetData();
             var returnValue = FinalAttackType.Normal;
-            if(Settings.Data.FinalAttackBlueEyes.Contains(data.Id) || Settings.Data.FinalAttackBlueEyes.Contains(data.Alias))
+            if (Settings.Data.FinalAttackBlueEyes.Contains(data.Id) || Settings.Data.FinalAttackBlueEyes.Contains(data.Alias))
                 returnValue = FinalAttackType.BlueEyes;
             if (Settings.Data.FinalAttackDarkM.Contains(data.Id) || Settings.Data.FinalAttackDarkM.Contains(data.Alias))
                 returnValue = FinalAttackType.DarkM;
@@ -6359,7 +6322,7 @@ namespace MDPro3
                 return;
             if (type == FinalAttackType.BlueEyes)
                 AnimationFinalAttack_BlueEyes(attackCard, attackedPosition);
-            else if(type == FinalAttackType.DarkM)
+            else if (type == FinalAttackType.DarkM)
                 AnimationFinalAttack_DarkM(attackCard, attackedPosition);
             else if (type == FinalAttackType.RedEyes)
                 AnimationFinalAttack_RedEyes(attackCard, attackedPosition);
@@ -7000,7 +6963,7 @@ namespace MDPro3
             fieldHint = string.IsNullOrEmpty(hint) ? InterString.Get("请选择卡片") : hint;
             fieldMin = min;
             fieldMax = max;
-            fieldExitable = exitable; 
+            fieldExitable = exitable;
             fieldSendable = sendable;
             fieldCounterCount = 0;
 
@@ -7008,7 +6971,7 @@ namespace MDPro3
             if (currentMessage == GameMessage.SelectCard
                 || currentMessage == GameMessage.SelectCounter)
                 hintText.text = fieldHint + ": " + 0 + Program.slash + fieldMax;
-            else if(currentMessage == GameMessage.SelectSum)
+            else if (currentMessage == GameMessage.SelectSum)
             {
                 if (!ES_overFlow)
                     foreach (var place in places)
@@ -7021,8 +6984,8 @@ namespace MDPro3
                 hintText.text = fieldHint + ": " + GetSelectLevelSum(cardsMustBeSelected)[0] + Program.slash + ES_level;
             }
             else
-                if(!string.IsNullOrEmpty(fieldHint))
-                    hintText.text = fieldHint;
+                if (!string.IsNullOrEmpty(fieldHint))
+                hintText.text = fieldHint;
 
             RefreshButton();
         }
@@ -7165,10 +7128,10 @@ namespace MDPro3
             else if (currentMessage == GameMessage.SelectSum)
             {
                 binaryMaster.writer.Write((byte)selected.Count);
-                foreach(var card in cardsMustBeSelected)
+                foreach (var card in cardsMustBeSelected)
                     binaryMaster.writer.Write((byte)card.selectPtr);
                 foreach (var card in selected)
-                    if(!cardsMustBeSelected.Contains(card))
+                    if (!cardsMustBeSelected.Contains(card))
                         binaryMaster.writer.Write((byte)card.selectPtr);
             }
             else
@@ -7322,7 +7285,7 @@ namespace MDPro3
                                 }
             }
             var targetMat = controller == 0 ? myProtector : opProtector;
-            if(topCard != null)
+            if (topCard != null)
             {
                 var code = topCard.GetData().Id;
                 targetMat = TextureManager.GetCardMaterial(code, true);
@@ -7632,9 +7595,9 @@ namespace MDPro3
 
         private bool PlayerLosing()
         {
-            if(myTurn)
+            if (myTurn)
             {
-                if(GetAllAtk(true) - GetAllAtk(false) > life1)
+                if (GetAllAtk(true) - GetAllAtk(false) > life1)
                 {
                     var defenseCount = 0;
                     var monsters = GCS_GetLocationCards(1, (int)CardLocation.MonsterZone);
@@ -7645,7 +7608,7 @@ namespace MDPro3
                         return true;
                 }
             }
-            else if(!myTurn)
+            else if (!myTurn)
             {
                 if (GetAllAtk(false) - GetAllAtk(true) > life0)
                 {
@@ -7669,7 +7632,7 @@ namespace MDPro3
             foreach (var card in cards)
                 card.ShowHiddenLabel();
 
-            if(fieldSummonRightInfo != null)
+            if (fieldSummonRightInfo != null)
             {
                 CameraManager.DuelOverlay3DPlus();
                 fieldSummonRightInfo.SetActive(true);
@@ -7806,7 +7769,7 @@ namespace MDPro3
                 placeCount.localScale = new Vector3(1, 1, 1);
             }
 
-            if(p.controller == 0 && (p.location & (uint)CardLocation.Extra) > 0
+            if (p.controller == 0 && (p.location & (uint)CardLocation.Extra) > 0
                 || p.controller == 1 && (p.location & (uint)CardLocation.Deck) > 0)
             {
                 position.x += 20;
@@ -7827,7 +7790,7 @@ namespace MDPro3
 
         public void HidePlaceCount()
         {
-            if(placeCount.gameObject.activeSelf)
+            if (placeCount.gameObject.activeSelf)
                 placeCount.gameObject.SetActive(false);
         }
         bool CheckChain()
@@ -7861,9 +7824,9 @@ namespace MDPro3
                 });
                 DOTween.To(v => { }, 0, 0, 0.767f).OnComplete(() =>
                 {
-                    if(chain == 3)
+                    if (chain == 3)
                         AudioManager.PlaySE("SE_DUEL_CHAIN_NUMEFF_01");
-                    else if(chain == 4)
+                    else if (chain == 4)
                         AudioManager.PlaySE("SE_DUEL_CHAIN_NUMEFF_02");
                     else
                         AudioManager.PlaySE("SE_DUEL_CHAIN_NUMEFF_03");
@@ -7935,7 +7898,7 @@ namespace MDPro3
             }
             StartCoroutine(Program.instance.texture_.LoadDummyCard(targetCardC, codesInChain[chain - 2], 0, true));
 
-            if(chain > 2)
+            if (chain > 2)
             {
                 if (controllerInChain[chain - 2] == controllerInChain[chain - 3])
                 {
@@ -7972,7 +7935,7 @@ namespace MDPro3
                 }
                 StartCoroutine(Program.instance.texture_.LoadDummyCard(targetCardB, codesInChain[chain - 3], 0, true));
 
-                if(chain > 3)
+                if (chain > 3)
                 {
                     if (controllerInChain[chain - 3] == controllerInChain[chain - 4])
                     {
@@ -8026,9 +7989,9 @@ namespace MDPro3
                 return 0;
 
             GameObject animation;
-            if(chain == 1)
+            if (chain == 1)
                 animation = ABLoader.LoadFromFile("MasterDuel/Timeline/DuelChain/DuelChainResolve01", true);
-            else if(chain == 2)
+            else if (chain == 2)
                 animation = ABLoader.LoadFromFile("MasterDuel/Timeline/DuelChain/DuelChainResolve02", true);
             else
                 animation = ABLoader.LoadFromFile("MasterDuel/Timeline/DuelChain/DuelChainResolve03", true);
@@ -8063,9 +8026,9 @@ namespace MDPro3
             }
             StartCoroutine(Program.instance.texture_.LoadDummyCard(targetCardD, codesInChain[chain - 1], 0, true));
 
-            if(chain > 1)
+            if (chain > 1)
             {
-                if(chain != cardsInChain.Count)
+                if (chain != cardsInChain.Count)
                 {
                     manager.GetComponent<PlayableDirector>().time = 0.83f;
                     manager.GetElement("ResolveTextSet").SetActive(false);
@@ -8077,7 +8040,7 @@ namespace MDPro3
                 }
                 else
                 {
-                    if(controllerInChain[chain - 1] == 0)
+                    if (controllerInChain[chain - 1] == 0)
                         manager.GetElement("ChainStraightCLtoDR").SetActive(false);
                     else
                         manager.GetElement("ChainStraightCRtoDL").SetActive(false);
@@ -8156,7 +8119,7 @@ namespace MDPro3
 
         void ChangeChainNumber(SpriteRenderer digit, SpriteRenderer one, SpriteRenderer ten, int number)
         {
-            if(number < 10)
+            if (number < 10)
             {
                 one.gameObject.SetActive(false);
                 ten.gameObject.SetActive(false);
@@ -8379,7 +8342,7 @@ namespace MDPro3
 
         private bool NeedVoice()
         {
-            return Config.GetBool(condition + "Voice" , false);
+            return Config.GetBool(condition + "Voice", false);
         }
 
         IEnumerator PlayVoiceAsync(Package p, List<VoiceHelper.VoiceData> data)
@@ -8389,7 +8352,7 @@ namespace MDPro3
             for (int i = 0; i < clips.Length; i++)
                 clips[i] = new List<AudioClip>();
 
-            for(int i = 0; i < paths.Length; i++)
+            for (int i = 0; i < paths.Length; i++)
             {
                 for (int j = 0; j < paths[i].Count; j++)
                 {
@@ -8414,7 +8377,7 @@ namespace MDPro3
                     if (j == 0)
                         yield return new WaitForSeconds(data[i].delay);
 
-                    if(line != null)
+                    if (line != null)
                     {
                         var item = Instantiate(data[i].me ? container.duelChatItemMe : container.duelChatItemOp);
                         item.transform.SetParent(transform.GetChild(0), false);
@@ -8434,7 +8397,7 @@ namespace MDPro3
                         handler.frame = line.frame;
                         if (data[i].me)
                         {
-                            if(duelChat0 != null)
+                            if (duelChat0 != null)
                                 duelChat0.BeGray();
                             duelChat0 = handler;
                         }
@@ -8460,7 +8423,7 @@ namespace MDPro3
                     }
                     else
                     {
-                        if(i == 0 && j == 0 && !waitForNoWaitingVoice)
+                        if (i == 0 && j == 0 && !waitForNoWaitingVoice)
                         {
                             speaking = false;
                             speakBreaking = false;
@@ -8503,7 +8466,7 @@ namespace MDPro3
                 id = 1;
 
             var address = "sn" + chara + "_3_" + id;
-            if(!cachedCharaFaces.TryGetValue(address, out var sprite))
+            if (!cachedCharaFaces.TryGetValue(address, out var sprite))
             {
                 var handle = Addressables.LoadAssetAsync<Sprite>("sn" + chara + "_3_" + id);
                 yield return handle;
@@ -8528,7 +8491,7 @@ namespace MDPro3
                     yield break;
             }
 
-            if(isMe)
+            if (isMe)
                 player0Frame.sprite = sprite;
             else
                 player1Frame.sprite = sprite;
@@ -8565,6 +8528,19 @@ namespace MDPro3
             No = 0,
             All = 1,
             Smart = 2,
+        }
+
+        #endregion
+
+        #region Tools
+
+        private T Create<T>(bool addToList = true) where T : MonoBehaviour
+        {
+            GameObject obj = new(typeof(T).Name);
+            T component = obj.AddComponent<T>();
+            if (addToList)
+                allGameObjects.Add(obj);
+            return component;
         }
 
         #endregion

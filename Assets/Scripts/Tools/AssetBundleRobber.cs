@@ -9,14 +9,15 @@ using AssetsTools.NET;
 using AssetsTools.NET.Extra;
 using System.Threading;
 using System.Collections.Concurrent;
+using System;
 
 public class AssetBundleRobber : MonoBehaviour
 {
     public Text text;
     static Text sText;
     string masterDuelAssetBundlePath;
-    string masterDuelWindowsAssetBundlePath = "../../../Game/Steam/steamapps/common/Yu-Gi-Oh!  Master Duel/LocalData/16165626/0000/";
-    string masterDuelAndroidAssetBundlePath = "../../../Game/Steam/steamapps/common/Yu-Gi-Oh!  Master Duel/LocalData/Android/0000/";
+    string masterDuelWindowsAssetBundlePath = "D:/Game/Steam/steamapps/common/Yu-Gi-Oh!  Master Duel/LocalData/16165626/0000/";
+    string masterDuelAndroidAssetBundlePath = "D:/Game/Steam/steamapps/common/Yu-Gi-Oh!  Master Duel/LocalData/Android/0000/";
     string workingPlace;
     public static int fileCount;
     public static int currentFileCount;
@@ -57,16 +58,16 @@ public class AssetBundleRobber : MonoBehaviour
 
         masterDuelAssetBundlePath = masterDuelWindowsAssetBundlePath;
         workingPlace = windowsWorkingPlace;
-        masterDuelAssetBundlePath = masterDuelAndroidAssetBundlePath;
-        workingPlace = androindWorkingPlace;
+        //masterDuelAssetBundlePath = masterDuelAndroidAssetBundlePath;
+        //workingPlace = androindWorkingPlace;
 
-        //fullCopy = true;
+        fullCopy = true;
         fullCopy = false;
 
         Initialize();
 
         StartCoroutine(RefreshFileResources());
-        //Copy("91ec73b4");
+        //Copy("f9414e30");
     }
 
     void Copy(string path)
@@ -519,7 +520,14 @@ public class AssetBundleRobber : MonoBehaviour
                 if (!Directory.Exists(workingPlace + "Sound/SE_SYS"))
                     Directory.CreateDirectory(workingPlace + "Sound/SE_SYS");
                 var targetName = workingPlace + "Sound/SE_SYS/" + Path.GetFileName(file.name).Replace(".wav", "");
-                File.Copy(GetFullPath(file.path), targetName);
+                try
+                {
+                    File.Copy(GetFullPath(file.path), targetName);
+                }
+                catch(Exception e)
+                {
+                    Debug.LogException(e);
+                }
             }
 
             text.text = "Copying: " + currentFileCount + "/" + fileCount;

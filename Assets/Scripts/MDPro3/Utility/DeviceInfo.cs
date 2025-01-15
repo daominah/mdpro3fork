@@ -35,6 +35,14 @@ namespace MDPro3.Utility
                 return true;
             return false;
         }
+
+        public static bool OnAndroid()
+        {
+#if UNITY_ANDROID
+            return true;
+#endif
+            return false;
+        }
     }
 }
 

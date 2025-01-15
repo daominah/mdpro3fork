@@ -62,7 +62,7 @@ namespace MDPro3.UI
             if (!showing)
                 return;
             showing = false;
-            baseRect.DOAnchorPosX(150f * Config.GetUIScale(1.18f), 0.3f);
+            baseRect.DOAnchorPosX(150f * Config.GetUIScale(1.18f) + SafeAreaAdapter.GetSafeAreaRightOffset(), 0.3f);
             if(showWithCloseDuelLog)
             {
                 showWithCloseDuelLog = false;

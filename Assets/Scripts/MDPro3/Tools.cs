@@ -24,6 +24,7 @@ namespace MDPro3
                 t.gameObject.layer = LayerMask.NameToLayer(layer);
             }
         }
+
         public static void ChangeLayer(GameObject go, int layerMask, bool setAllChildrenActivate = false)
         {
             //Debug.Log("Change Layer: " + go.name + "-> " + layer);
@@ -64,11 +65,13 @@ namespace MDPro3
                     foreach (var p in child.GetComponentsInChildren<ParticleSystem>(true))
                         p.Play();
         }
+
         public static void SetAnimatorTimescale(Transform container, float timeScale)
         {
             foreach (var animator in container.GetComponentsInChildren<Animator>(true))
                 animator.speed = timeScale;
         }
+
         public static void SetParticleSystemSimulationSpeed(Transform container, float timeScale)
         {
             foreach(var particle in container.GetComponentsInChildren<ParticleSystem>(true))
@@ -202,6 +205,7 @@ namespace MDPro3
         }
 
         #region Online
+
         public static async Task<Texture2D> DownloadImageAsync(string url)
         {
             using var request = UnityWebRequestTexture.GetTexture(url);
@@ -222,6 +226,7 @@ namespace MDPro3
                 return null;
             }
         }
+
         #endregion
 
         public static Vector3 GetDeckModelTopPosition(ElementObjectManager manager)
@@ -295,5 +300,6 @@ namespace MDPro3
 
             return index >= lastRowStartIndex;
         }
+
     }
 }

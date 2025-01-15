@@ -107,7 +107,6 @@ namespace MDPro3
 
         #endregion
 
-
         public enum Condition
         {
             Duel,
@@ -1035,8 +1034,6 @@ namespace MDPro3
 
         public void SetOverride(bool over)
         {
-            if (!showing)
-                return;
             Config.SetBool("OverrideDeckAppearance", over);
         }
 

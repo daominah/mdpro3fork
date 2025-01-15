@@ -5,11 +5,11 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.DualShock;
+using UnityEngine.UI;
 
 #if !UNITY_ANDROID || UNITY_EDITOR
 using UnityEngine.InputSystem.Switch;
 using UnityEngine.InputSystem.UI;
-using UnityEngine.UI;
 #endif
 
 namespace MDPro3

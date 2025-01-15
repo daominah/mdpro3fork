@@ -291,7 +291,9 @@ struct {								\
  * tail queue access methods
  */
 #define	TAILQ_FIRST(head)		((head)->tqh_first)
-#define	TAILQ_END(head)			NULL
+#ifndef TAILQ_END
+#define TAILQ_END(head) (NULL)
+#endif
 #define	TAILQ_NEXT(elm, field)		((elm)->field.tqe_next)
 #define TAILQ_LAST(head, headname)					\
 	(*(((struct headname *)((head)->tqh_last))->tqh_last))
