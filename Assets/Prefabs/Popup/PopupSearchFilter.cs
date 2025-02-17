@@ -303,7 +303,7 @@ namespace MDPro3.UI.Popup
         }
         private void OnPackClose()
         {
-            Program.instance.currentServant.returnAction = Hide;
+            //Program.instance.currentServant.returnAction = Hide;
         }
 
         protected override void Update()
