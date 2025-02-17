@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using UnityEngine;
-using MDPro3.YGOSharp.OCGWrapper.Enums;
-using MDPro3.YGOSharp;
+using MDPro3.Duel.YGOSharp;
 using MDPro3.Utility;
 
 namespace MDPro3

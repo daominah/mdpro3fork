@@ -138,7 +138,7 @@ namespace MDPro3.UI
             if (TakeOverInput && Program.instance.ui_.currentSidePanel == this)
             {
                 Program.instance.ui_.currentSidePanel = null;
-                Program.instance.currentServant.SelectLastSelectable();
+                Program.instance.currentServant.Select();
             }
 
             if (Permanent)

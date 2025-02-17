@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace MDPro3.UI.PropertyOverrider
+namespace MDPro3.UI.PropertyOverride
 {
     public class PropertyOverrider_RectMask2D : PropertyOverrider
     {

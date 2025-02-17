@@ -1,3 +1,4 @@
+using MDPro3.UI.ServantUI;
 using UnityEngine;
 
 namespace MDPro3.UI
@@ -12,7 +13,7 @@ namespace MDPro3.UI
             Instance = this;
             SetClickEvent(() =>
             {
-                Program.instance.deckEditor.cardCollectionView.ShowFilters();
+                Program.instance.deckEditor.GetUI<DeckEditorUI>().CardCollectionView.ShowFilters();
             });
         }
 

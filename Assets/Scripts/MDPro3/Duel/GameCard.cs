@@ -8,9 +8,11 @@ using UnityEngine;
 using YgomGame.Duel;
 using YgomSystem.ElementSystem;
 using MDPro3.UI;
-using MDPro3.YGOSharp;
-using MDPro3.YGOSharp.OCGWrapper.Enums;
+using MDPro3.Duel.YGOSharp;
 using System.IO;
+using MDPro3.Servant;
+using MDPro3.UI.ServantUI;
+using NUnit.Framework;
 
 namespace MDPro3
 {
@@ -139,11 +141,11 @@ namespace MDPro3
                 return;
             if ((p.location & (uint)CardLocation.Hand) == 0)
                 AudioManager.PlaySE("SE_DUEL_SELECT");
-            Program.instance.ocgcore.description.Show(this, GetMaterial());
+            Program.instance.ocgcore.GetUI<OcgCoreUI>().CardDescription.Show(this, GetMaterial());
             if (data.HasType(CardType.Xyz) && (p.location & (uint)CardLocation.MonsterZone) > 0)
-                Program.instance.ocgcore.list.Show(Program.instance.ocgcore.GCS_GetOverlays(this), CardLocation.Overlay, (int)p.controller);
+                Program.instance.ocgcore.GetUI<OcgCoreUI>().CardList.Show(Program.instance.ocgcore.GCS_GetOverlays(this), CardLocation.Overlay, (int)p.controller);
             else
-                Program.instance.ocgcore.list.Hide();
+                Program.instance.ocgcore.GetUI<OcgCoreUI>().CardList.Hide();
 
             if (equipedCard != null)
                 Program.instance.ocgcore.ShowEquipLine(model.transform.position, equipedCard.model.transform.position);
@@ -354,7 +356,7 @@ namespace MDPro3
                     SetData(CardsManager.Get(code));
                     data.Id = code;
                     if (p.controller == 1)
-                        if (Program.instance.ocgcore.condition == OcgCore.Condition.Duel)
+                        if (OcgCore.condition == OcgCore.Condition.Duel)
                             if (!Program.instance.ocgcore.sideReference.Main.Contains(code))
                                 Program.instance.ocgcore.sideReference.Main.Add(code);
                 }
@@ -1211,13 +1213,13 @@ namespace MDPro3
                     Program.instance.ocgcore.ignoreNextMoveLog = true;
 
                     bool summonEffect = true;
-                    if (Program.instance.ocgcore.condition == OcgCore.Condition.Duel
+                    if (OcgCore.condition == OcgCore.Condition.Duel
                         && Config.Get("DuelSummon", "1") == "0")
                         summonEffect = false;
-                    if (Program.instance.ocgcore.condition == OcgCore.Condition.Watch
+                    if (OcgCore.condition == OcgCore.Condition.Watch
                         && Config.Get("WatchSummon", "1") == "0")
                         summonEffect = false;
-                    if (Program.instance.ocgcore.condition == OcgCore.Condition.Replay
+                    if (OcgCore.condition == OcgCore.Condition.Replay
                         && Config.Get("ReplaySummon", "1") == "0")
                         summonEffect = false;
 
@@ -1226,17 +1228,17 @@ namespace MDPro3
                         && (OcgCore.TypeMatchReason(data.Type, (int)Program.instance.ocgcore.materialCards[0].p.reason)
                         || OcgCore.TypeMatchReason(data.Type, Program.instance.ocgcore.materialCards[0].GetData().Reason)))
                     {
-                        Program.instance.ocgcore.description.Hide();
-                        Program.instance.ocgcore.list.Hide();
+                        Program.instance.ocgcore.GetUI<OcgCoreUI>().CardDescription.Hide();
+                        Program.instance.ocgcore.GetUI<OcgCoreUI>().CardList.Hide();
                         Program.instance.ocgcore.summonCard = this;
                         StartCoroutine(Program.instance.timeline_.SummonMaterial());
                         goto SummonPass;
                     }
                     else
                     {
-                        bool cutin = MonsterCutin.HasCutin(data.Id);
+                        bool cutin = CutinViewer.HasCutin(data.Id);
                         if (cutin)
-                            MonsterCutin.Play(data.Id, (int)p.controller);
+                            CutinViewer.Play(data.Id, (int)p.controller);
                         if (NeedStrongSummon(data))
                             SequenceStrongSummon(sequence, position, rotation, cutin ? 1.6f : 0, timePassed);
                         else
@@ -1252,9 +1254,9 @@ namespace MDPro3
                 {
                     Program.instance.ocgcore.ignoreNextMoveLog = true;
 
-                    bool cutin = MonsterCutin.HasCutin(data.Id);
+                    bool cutin = CutinViewer.HasCutin(data.Id);
                     if (cutin)
-                        MonsterCutin.Play(data.Id, (int)p.controller);
+                        CutinViewer.Play(data.Id, (int)p.controller);
                     if (NeedStrongSummon(data))
                         SequenceStrongSummon(sequence, position, rotation, cutin ? 1.6f : 0);
                     else
@@ -1703,13 +1705,13 @@ namespace MDPro3
                     Program.instance.ocgcore.ignoreNextMoveLog = true;
 
                     bool summonEffect = true;
-                    if (Program.instance.ocgcore.condition == OcgCore.Condition.Duel
+                    if (OcgCore.condition == OcgCore.Condition.Duel
                         && Config.Get("DuelSummon", "1") == "0")
                         summonEffect = false;
-                    if (Program.instance.ocgcore.condition == OcgCore.Condition.Watch
+                    if (OcgCore.condition == OcgCore.Condition.Watch
                         && Config.Get("WatchSummon", "1") == "0")
                         summonEffect = false;
-                    if (Program.instance.ocgcore.condition == OcgCore.Condition.Replay
+                    if (OcgCore.condition == OcgCore.Condition.Replay
                         && Config.Get("ReplaySummon", "1") == "0")
                         summonEffect = false;
 
@@ -1718,17 +1720,17 @@ namespace MDPro3
                         && (OcgCore.TypeMatchReason(data.Type, (int)Program.instance.ocgcore.materialCards[0].p.reason)
                         || OcgCore.TypeMatchReason(data.Type, Program.instance.ocgcore.materialCards[0].GetData().Reason)))
                     {
-                        Program.instance.ocgcore.description.Hide();
-                        Program.instance.ocgcore.list.Hide();
+                        Program.instance.ocgcore.GetUI<OcgCoreUI>().CardDescription.Hide();
+                        Program.instance.ocgcore.GetUI<OcgCoreUI>().CardList.Hide();
                         Program.instance.ocgcore.summonCard = this;
                         StartCoroutine(Program.instance.timeline_.SummonMaterial());
                         goto SummonPass;
                     }
                     else
                     {
-                        bool cutin = MonsterCutin.HasCutin(data.Id);
+                        bool cutin = CutinViewer.HasCutin(data.Id);
                         if (cutin)
-                            MonsterCutin.Play(data.Id, (int)p.controller);
+                            CutinViewer.Play(data.Id, (int)p.controller);
                         if (NeedStrongSummon(data))
                             SequenceStrongSummon(sequence, position, rotation, cutin ? 1.6f : 0, timePassed);
                         else
@@ -1744,9 +1746,9 @@ namespace MDPro3
                 {
                     Program.instance.ocgcore.ignoreNextMoveLog = true;
 
-                    bool cutin = MonsterCutin.HasCutin(data.Id);
+                    bool cutin = CutinViewer.HasCutin(data.Id);
                     if (cutin)
-                        MonsterCutin.Play(data.Id, (int)p.controller);
+                        CutinViewer.Play(data.Id, (int)p.controller);
                     if (NeedStrongSummon(data))
                         SequenceStrongSummon(sequence, position, rotation, cutin ? 1.6f : 0);
                     else
@@ -1970,7 +1972,7 @@ namespace MDPro3
             var rotaion = GetCardRotation(p);
             var sequence = DOTween.Sequence();
             float interval;
-            if (MonsterCutin.HasCutin(data.Id))
+            if (CutinViewer.HasCutin(data.Id))
             {
                 if (data.HasType(CardType.Fusion))
                     interval = 1f;
@@ -2350,13 +2352,9 @@ namespace MDPro3
         }
         public void AnimationNegate()
         {
-            if(Program.instance.ocgcore.nextNegateAction != null)
-            {
-                Program.instance.ocgcore.nextNegateAction.Invoke();
-                Program.instance.ocgcore.nextNegateAction = null;
-            }
-            else
-                AudioManager.PlaySE("SE_EFFECT_INVALID");
+            Program.instance.ocgcore.nextNegateAction?.Invoke();
+            Program.instance.ocgcore.nextNegateAction = null;
+            AudioManager.PlaySE("SE_EFFECT_INVALID");
 
             CameraManager.BlackInOut(0f, 0.2f, 0.5f, 0.3f);
             ElementObjectManager manager;
@@ -2563,7 +2561,7 @@ namespace MDPro3
                 ShowFaceDownCardOrNot(false);
                 AudioManager.PlaySE("SE_CARDVIEW_02");
                 if(Program.instance.ocgcore.GetAutoInfo())
-                    Program.instance.ocgcore.description.Show(this, null);
+                    Program.instance.ocgcore.GetUI<OcgCoreUI>().CardDescription.Show(this, null);
             }));
             sequence.Join(turn.DOLocalRotate(Vector3.zero, 0.1f).OnComplete(() =>
             {
@@ -2690,7 +2688,7 @@ namespace MDPro3
             sequence.Append(turn.DOLocalMoveY(2, 0.1f).OnStart(() =>
             {
                 if (Program.instance.ocgcore.GetAutoInfo())
-                    Program.instance.ocgcore.description.Show(this, null);
+                    Program.instance.ocgcore.GetUI<OcgCoreUI>().CardDescription.Show(this, null);
 
                 model.SetActive(true);
                 if (Program.instance.ocgcore.GetLocationCardCount(CardLocation.Deck, p.controller) == 1)
@@ -3486,11 +3484,11 @@ namespace MDPro3
 
         bool CloseupConfig()
         {
-            if (Program.instance.ocgcore.condition == OcgCore.Condition.Duel && Config.Get("DuelCloseup", "1") == "0")
+            if (OcgCore.condition == OcgCore.Condition.Duel && Config.Get("DuelCloseup", "1") == "0")
                 return false;
-            if (Program.instance.ocgcore.condition == OcgCore.Condition.Watch && Config.Get("WatchCloseup", "1") == "0")
+            if (OcgCore.condition == OcgCore.Condition.Watch && Config.Get("WatchCloseup", "1") == "0")
                 return false;
-            if (Program.instance.ocgcore.condition == OcgCore.Condition.Replay && Config.Get("ReplayCloseup", "1") == "0")
+            if (OcgCore.condition == OcgCore.Condition.Replay && Config.Get("ReplayCloseup", "1") == "0")
                 return false;
             return true;
         }
@@ -3531,11 +3529,11 @@ namespace MDPro3
             var back = manager.GetElement<Transform>("CardModel").GetChild(0).GetComponent<Renderer>();
             var face = manager.GetElement<Transform>("CardModel").GetChild(1).GetComponent<Renderer>();
 
-            if (Program.instance.ocgcore.condition == OcgCore.Condition.Duel && !Config.GetBool("DuelFaceDown", true))
+            if (OcgCore.condition == OcgCore.Condition.Duel && !Config.GetBool("DuelFaceDown", true))
                 show = false;
-            if (Program.instance.ocgcore.condition == OcgCore.Condition.Watch && !Config.GetBool("WatchFaceDown", true))
+            if (OcgCore.condition == OcgCore.Condition.Watch && !Config.GetBool("WatchFaceDown", true))
                 show = false;
-            if (Program.instance.ocgcore.condition == OcgCore.Condition.Replay && !Config.GetBool("ReplayFaceDown", true))
+            if (OcgCore.condition == OcgCore.Condition.Replay && !Config.GetBool("ReplayFaceDown", true))
                 show = false;
 
             if (show)

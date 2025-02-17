@@ -3,11 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
-using MDPro3.YGOSharp;
+using MDPro3.Duel.YGOSharp;
 using UnityEngine.EventSystems;
 using UnityEngine.AddressableAssets;
 using MDPro3.Net;
 using MDPro3.UI;
+using MDPro3.Servant;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -16,8 +17,6 @@ namespace MDPro3
 {
     public class Program : MonoBehaviour
     {
-        public bool controlBool;
-        public bool controlBool2;
 
         [Header("Public References")]
         public Transform container_3D;
@@ -32,32 +31,30 @@ namespace MDPro3
         public TextureManager texture_;
         public MessageManager message_;
         public TimelineManager timeline_;
-        public NewsManager news_;
 
         [Header("Servants")]
-        public Menu menu;
-        public Solo solo;
-        public Online online;
-        public SelectPuzzle puzzle;
-        public SelectReplay replay;
-        public MonsterCutin cutin;
-        public MateView mate;
-        public SelectDeck selectDeck;
-        public Setting setting;
+        public Servant.MainMenu menu;
+        public SoloSelector solo;
+        public OnlineServant online;
+        public PuzzleSelector puzzle;
+        public ReplaySelector replay;
+        public CutinViewer cutin;
+        public MateViewer mate;
+        public DeckSelector deckSelector;
+        public SettingServant setting;
         public Appearance appearance;
-        public SelectCharacter character;
+        public CharacterSelector character;
         public OcgCore ocgcore;
-        public Room room;
-        public EditDeck editDeck;
+        public RoomServant room;
         public DeckEditor deckEditor;
         public OnlineDeckViewer onlineDeckViewer;
 
         [Header("SidePanels")]
 
         [HideInInspector]
-        public Servant currentServant;
+        public Servant.Servant currentServant;
         [HideInInspector]
-        public Servant currentSubServant;
+        public Servant.Servant currentSubServant;
         [HideInInspector]
         public int depth;
 
@@ -90,7 +87,7 @@ namespace MDPro3
         public static Items items;
 
         List<Manager> managers = new List<Manager>();
-        List<Servant> servants = new List<Servant>();
+        List<Servant.Servant> servants = new List<Servant.Servant>();
 
         void Initialize()
         {
@@ -112,7 +109,7 @@ namespace MDPro3
             }
         }
 
-        void InitializeRest()
+        private void InitializeRest()
         {
             ZipHelper.Initialize();
             items.Initialize();
@@ -121,7 +118,12 @@ namespace MDPro3
             InitializeAllServants();
             ReadParams();
 
-            //VoiceHelper.ExportAllCardsNotFound();
+            var handle = Addressables.InstantiateAsync("CardRenderer");
+            handle.Completed += (result) =>
+            {
+                cardRenderer = result.Result.GetComponent<CardRenderer>();
+                cardRenderer.SwitchLanguage();
+            };
         }
 
         public static bool exitOnReturn = false;
@@ -197,14 +199,14 @@ namespace MDPro3
             else if (deck != null)
             {
                 Config.Set("DeckInUse", deck);
-                editDeck.SwitchCondition(EditDeck.Condition.EditDeck);
-                ShiftToServant(editDeck);
+                deckEditor.SwitchCondition(DeckEditor.Condition.EditDeck);
+                ShiftToServant(deckEditor);
                 exitOnReturn = true;
             }
             else if (replay != null)
             {
-                this.replay.KF_Replay(replay);
                 exitOnReturn = true;
+                this.replay.PlayReplay(replay);
             }
             else if (puzzle != null)
             {
@@ -244,15 +246,14 @@ namespace MDPro3
             servants.Add(replay);
             servants.Add(cutin);
             servants.Add(mate);
-            servants.Add(selectDeck);
+            servants.Add(deckSelector);
             servants.Add(appearance);
             servants.Add(character);
             servants.Add(ocgcore);
             servants.Add(room);
-            servants.Add(editDeck);
             servants.Add(deckEditor);
             servants.Add(onlineDeckViewer);
-            foreach (Servant servant in servants)
+            foreach (Servant.Servant servant in servants)
                 servant.Initialize();
         }
 
@@ -274,21 +275,21 @@ namespace MDPro3
             Initialize();
         }
 
-        public float timeScale
+        public float TimeScale
         {
             get 
             { 
-                return m_timeScale;
+                return m_TimeScale;
             }
             set 
             {
-                m_timeScale = value;
+                m_TimeScale = value;
                 Time.timeScale = value;
             }
         }
-        float m_timeScale = 1f;
+        float m_TimeScale = 1f;
 #if UNITY_EDITOR
-        public float timeScaleForEdit = 1;
+        public float timeScaleForEditor = 1;
 #endif
 
         void Update()
@@ -296,11 +297,11 @@ namespace MDPro3
             TcpHelper.PerFrameFunction();
             foreach (Manager manager in managers) 
                 manager.PerFrameFunction();
-            foreach (Servant servant in servants) 
+            foreach (Servant.Servant servant in servants) 
                 servant.PerFrameFunction();
 
 #if UNITY_EDITOR
-            timeScale = timeScaleForEdit;
+            TimeScale = timeScaleForEditor;
 #endif
         }
 
@@ -326,23 +327,25 @@ namespace MDPro3
         #endregion
 
         #region Tools
+
         public static int TimePassed()
         {
             return (int)(Time.time * 1000f);
         }
 
-        public void ShiftToServant(Servant servant)
+        public void ShiftToServant(Servant.Servant servant)
         {
             currentServant = servant;
             foreach (var ser in servants)
                 if (ser != servant)
-                    ser.Hide(servant.depth);
+                    ser.Hide(servant.Depth);
             foreach (var ser in servants)
                 if (ser == servant)
                     ser.Show(depth);
-            depth = servant.depth;
+            depth = servant.Depth;
         }
-        public void ShowSubServant(Servant servant)
+
+        public void ShowSubServant(Servant.Servant servant)
         {
             if (currentSubServant == null)
             {
@@ -351,8 +354,8 @@ namespace MDPro3
             }
             else
             {
-                currentSubServant.Hide(servant.depth);
-                servant.Show(currentSubServant.depth);
+                currentSubServant.Hide(servant.Depth);
+                servant.Show(currentSubServant.Depth);
                 currentSubServant = servant;
             }
         }
@@ -363,15 +366,6 @@ namespace MDPro3
                 currentSubServant.OnReturn();
             else
             {
-                if(currentServant == null)
-                {
-                    foreach(var servant in  servants)
-                        if (servant.showing)
-                        {
-                            currentServant = servant;
-                            break;
-                        }
-                }
                 if (currentServant == null)
                 {
                     foreach (var servant in servants)
@@ -396,6 +390,7 @@ namespace MDPro3
         #endregion
 
         #region System
+
         private void OnApplicationQuit()
         {
             Running = false;
@@ -404,9 +399,7 @@ namespace MDPro3
             YgoServer.StopServer();
             ZipHelper.Dispose();
             try
-            {
-                TcpHelper.tcpClient.Close();
-            }
+            { TcpHelper.tcpClient.Close(); }
             catch { }
             TcpHelper.tcpClient = null;
             MyCard.CloseAthleticWatchListWebSocket();
@@ -434,6 +427,7 @@ namespace MDPro3
             Application.Quit();
 #endif
         }
+
         #endregion
     }
 }

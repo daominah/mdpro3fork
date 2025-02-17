@@ -21,8 +21,12 @@ namespace MDPro3.Duel.BG
         private Coroutine coroutine1;
         private bool guide0Showing;
         private bool guide1Showing;
+        private float guide0ShowLasted;
+        private float guide1ShowLasted;
 
         private readonly float playTime = 1f;
+        private readonly float noticeTime = 10f;
+
         private float lumiHeight = 0.11f;
 
         public bool loaded;
@@ -30,6 +34,33 @@ namespace MDPro3.Duel.BG
         private void Awake()
         {
             transform.SetParent(Program.instance.container_3D, false);
+        }
+
+        private void Update()
+        {
+            if (!loaded) return;
+
+            if (guide0Showing)
+                guide0ShowLasted += Time.unscaledDeltaTime;
+            else
+                guide0ShowLasted = 0f;
+
+            if(guide1Showing)
+                guide1ShowLasted += Time.unscaledDeltaTime;
+            else
+                guide1ShowLasted = 0f;
+
+            if (guide0ShowLasted > noticeTime && coroutine0 == null)
+            {
+                Notice(true);
+                guide0ShowLasted = 0f;
+            }
+
+            if(guide1ShowLasted > noticeTime && coroutine1 == null)
+            {
+                Notice(false);
+                guide1ShowLasted = 0f;
+            }
         }
 
         public void SetHeight(float height)
@@ -129,6 +160,18 @@ namespace MDPro3.Duel.BG
             animator1.SetTrigger(LABEL_TRIGGER_END);
         }
 
+        private void Notice(bool me)
+        {
+            if (me)
+            {
+                animator0.SetTrigger(LABEL_TRIGGER_NOTICE);
+            }
+            else
+            {
+                animator1.SetTrigger(LABEL_TRIGGER_NOTICE);
+            }
+        }
+
         private IEnumerator PlayAnimator0Async(bool show)
         {
             guide0Showing = show;
@@ -158,7 +201,6 @@ namespace MDPro3.Duel.BG
             else
                 coroutine1 = null;
         }
-
 
     }
 }

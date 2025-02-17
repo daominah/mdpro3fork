@@ -5,6 +5,8 @@ using TMPro;
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using MDPro3.Servant;
+using MDPro3.UI.ServantUI;
 
 namespace MDPro3.UI
 {
@@ -119,7 +121,7 @@ namespace MDPro3.UI
 
         protected override IEnumerator RefreshDeckCaseAsync()
         {
-            while (Program.instance.selectDeck.inTransition)
+            while (Program.instance.deckSelector.inTransition)
                 yield return null;
 
             for (int i = 0; i < transform.GetSiblingIndex(); i++)
@@ -150,7 +152,7 @@ namespace MDPro3.UI
             HoverOn();
             if (playSE)
                 AudioManager.PlaySE(SoundLabelSelectedGamePad);
-            Program.instance.currentServant.Selected = Selectable;
+            Program.instance.currentServant.lastSelectable = Selectable;
             Program.instance.onlineDeckViewer.lastSelectedDeckItem = this;
             SetColor(SelectMode.Selected, hovering ? StatusMode.Enter : StatusMode.Normal, Selectable.interactable);
         }
@@ -180,12 +182,14 @@ namespace MDPro3.UI
         }
         protected override int GetButtonsCount()
         {
-            return Program.instance.onlineDeckViewer.superScrollView.items.Count;
+            return Program.instance.onlineDeckViewer
+                .GetUI<OnlineDeckViewerUI>().superScrollView.items.Count;
         }
 
         protected override int GetColumnsCount()
         {
-            return Program.instance.onlineDeckViewer.superScrollView.GetColumnCount();
+            return Program.instance.onlineDeckViewer
+                .GetUI<OnlineDeckViewerUI>().superScrollView.GetColumnCount();
         }
     }
 }

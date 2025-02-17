@@ -1,6 +1,8 @@
 using MDPro3.Net;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using MDPro3.Servant;
+using MDPro3.UI.ServantUI;
 
 namespace MDPro3.UI
 {
@@ -21,12 +23,8 @@ namespace MDPro3.UI
         {
             base.CallSubmitEvent();
             AudioManager.PlaySE("SE_MENU_DECIDE");
-            Program.instance.online.inputHost.text = addressHost;
-            Program.instance.online.OnHostChange(addressHost);
-            Program.instance.online.inputPort.text = addressPort;
-            Program.instance.online.OnPortChange(addressPort);
-            Program.instance.online.inputPassword.text = addressPassword;
-            Program.instance.online.OnPasswordChange(addressPassword);
+            Program.instance.online.GetUI<OnlineServantUI>().PageLegacy
+                .SetHost(addressHost, addressPort, addressPassword);
         }
 
         protected override void CallToggleOnEvent()
@@ -69,54 +67,20 @@ namespace MDPro3.UI
             if (eventData.moveDir == MoveDirection.Right)
             {
                 UserInput.NextSelectionIsAxis = true;
-                var button = Program.instance.online.Manager.GetElement("ButtonJoin");
-                EventSystem.current.SetSelectedGameObject(button);
+                Program.instance.online.GetUI<OnlineServantUI>().SelectLastSelectable(null);
             }
         }
 
         public void OnDelete()
         {
-            foreach (var address in Program.instance.online.addresses)
-            {
-                if (address.name == addressName)
-                {
-                    Program.instance.online.addresses.Remove(address);
-                    Program.instance.online.Save();
-                    Program.instance.online.Print();
-                    break;
-                }
-            }
-        }
-        public void OnMoveUp()
-        {
-            var address = new Online.HostAddress();
-            address.name = addressName;
-            address.host = addressHost;
-            address.port = addressPort;
-            address.password = addressPassword;
-            Program.instance.online.addresses.RemoveAt(index);
-            var targetID = index;
-            if (index > 0)
-                targetID--;
-            Program.instance.online.addresses.Insert(targetID, address);
-            Program.instance.online.Save();
-            Program.instance.online.Print();
-        }
-        public void OnMoveDown()
-        {
-            var address = new Online.HostAddress();
-            address.name = addressName;
-            address.host = addressHost;
-            address.port = addressPort;
-            address.password = addressPassword;
-            Program.instance.online.addresses.RemoveAt(index);
-            var targetID = index;
-            if (index < Program.instance.online.addresses.Count)
-                targetID++;
-            Program.instance.online.addresses.Insert(targetID, address);
-            Program.instance.online.Save();
-            Program.instance.online.Print();
+            Program.instance.online.GetUI<OnlineServantUI>()
+                .PageLegacy.DeleteAddress(addressName);
         }
 
+        public void OnMoveUp()
+        {
+            Program.instance.online.GetUI<OnlineServantUI>()
+                .PageLegacy.AddressMoveUp(addressName);
+        }
     }
 }

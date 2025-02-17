@@ -1,6 +1,8 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using MDPro3.Servant;
+using MDPro3.UI.ServantUI;
 
 namespace MDPro3.UI
 {
@@ -12,7 +14,7 @@ namespace MDPro3.UI
         protected override void CallHoverOnEvent()
         {
             base.CallHoverOnEvent();
-            if(Room.isHost && playerIndex != Room.selfType)
+            if(RoomServant.IsHost && playerIndex != RoomServant.SelfType)
                 Manager.GetElement("KickIcon").SetActive(true);
         }
 
@@ -25,12 +27,12 @@ namespace MDPro3.UI
         protected override void OnSubmit()
         {
             base.OnSubmit();
-            if (Room.isHost)
+            if (RoomServant.IsHost)
             {
-                if (playerIndex != Room.selfType)
-                    Program.instance.room.OnKick(playerIndex);
+                if (playerIndex != RoomServant.SelfType)
+                    Program.instance.room.GetUI<RoomServantUI>().OnKick(playerIndex);
                 else
-                    Program.instance.room.OnReady();
+                    Program.instance.room.GetUI<RoomServantUI>().OnReady();
             }
         }
 

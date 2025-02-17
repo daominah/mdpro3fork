@@ -1,6 +1,6 @@
 using System;
 
-namespace MDPro3.UI.PropertyOverrider
+namespace MDPro3.UI.PropertyOverride
 {
     [Serializable]
     public class OverridePropertyBase<T>

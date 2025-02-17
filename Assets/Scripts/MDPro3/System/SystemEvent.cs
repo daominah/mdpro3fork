@@ -10,6 +10,9 @@ namespace MDPro3
         public delegate void ResolutionChange();
         public static event ResolutionChange OnResolutionChange;
 
+        public delegate void LanguageChange();
+        public static event LanguageChange OnLanguageChange;
+
         private Rect safeArea;
         private int screenWidth;
         private int screenHeight;
@@ -33,6 +36,11 @@ namespace MDPro3
                 screenHeight = Screen.height;
                 OnResolutionChange.Invoke();
             }
+        }
+
+        public static void CallLanguageChangeEvent()
+        {
+            OnLanguageChange.Invoke();
         }
     }
 }

@@ -1,3 +1,4 @@
+using MDPro3.UI.ServantUI;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -19,7 +20,7 @@ namespace MDPro3.UI
         protected override void CallToggleOnEvent()
         {
             base.CallToggleOnEvent();
-            Program.instance.character.SwitchPlayer(playerCode);
+            Program.instance.character.GetUI<CharacterSelectorUI>().SwitchPlayer(playerCode);
         }
 
         public void OnLeftSelection()

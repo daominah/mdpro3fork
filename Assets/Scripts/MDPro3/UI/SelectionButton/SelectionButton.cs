@@ -21,6 +21,7 @@ namespace MDPro3.UI
         ISelectHandler, IDeselectHandler,
         IMoveHandler
     {
+
         #region Elements
 
         private ElementObjectManager m_Manager;
@@ -46,11 +47,11 @@ namespace MDPro3.UI
 
         private const string LABEL_CG_SELECTCURSOROFFSET = "SelectCursorOffset";
         private CanvasGroup m_SelectCursorOffset;
-        private CanvasGroup SelectCursorOffset =>
+        protected CanvasGroup SelectCursorOffset =>
             m_SelectCursorOffset = m_SelectCursorOffset != null ? m_SelectCursorOffset
             : Manager.GetElement<CanvasGroup>(LABEL_CG_SELECTCURSOROFFSET);
         private DOTweenAnimation m_SelectCursorOffsetAnimation;
-        private DOTweenAnimation SelectCursorOffsetAnimation =>
+        protected DOTweenAnimation SelectCursorOffsetAnimation =>
             m_SelectCursorOffsetAnimation = m_SelectCursorOffsetAnimation != null ? m_SelectCursorOffsetAnimation
             : Manager.GetElement<DOTweenAnimation>(LABEL_CG_SELECTCURSOROFFSET);
 
@@ -93,7 +94,7 @@ namespace MDPro3.UI
         [SerializeField] protected SelectionButtonNavigationEvent navigationEvent;
         [SerializeField] protected SelectionButtonHoverEvent hoverEvent;
         [SerializeField] protected SelectionButtonSelectEvent selectEvent;
-        [SerializeField] protected SelectionClickEvent clickEvent;
+        [SerializeField] protected SelectionButtonClickEvent clickEvent;
 
 
         protected List<Tweener> hoverOnTweens = new();
@@ -110,6 +111,7 @@ namespace MDPro3.UI
         protected bool nonPersistentNavigationEventAdded;
 
         #region InterFace Implementation
+
         public virtual void OnPointerClick(PointerEventData eventData)
         {
             if (eventData.button == PointerEventData.InputButton.Left)
@@ -119,17 +121,20 @@ namespace MDPro3.UI
             else if (eventData.button == PointerEventData.InputButton.Middle)
                 clickEvent.onMiddleClick?.Invoke();
         }
+
         public virtual void OnPointerEnter(PointerEventData eventData)
         {
             hovering = true;
             OnEnter();
         }
+
         public virtual void OnPointerExit(PointerEventData eventData)
         {
             hovering = false;
             pressing = false;
             OnExit();
         }
+
         public virtual void OnPointerDown(PointerEventData eventData)
         {
             if (eventData.button == PointerEventData.InputButton.Left)
@@ -138,6 +143,7 @@ namespace MDPro3.UI
                 OnDown();
             }
         }
+
         public virtual void OnPointerUp(PointerEventData eventData)
         {
             if (eventData.button == PointerEventData.InputButton.Left)
@@ -146,10 +152,12 @@ namespace MDPro3.UI
                 OnUp();
             }
         }
+
         public virtual void OnSubmit(BaseEventData eventData)
         {
             OnSubmit();
         }
+
         public virtual void OnSelect(BaseEventData eventData)
         {
             selected = true;
@@ -159,15 +167,18 @@ namespace MDPro3.UI
                 UserInput.NextSelectionIsAxis = false;
             }
         }
+
         public virtual void OnDeselect(BaseEventData eventData)
         {
             selected = false;
             OnDeselect();
         }
+
         public virtual void OnMove(AxisEventData eventData)
         {
             OnNavigation(eventData);
         }
+
         #endregion
 
         #region Input Control
@@ -195,7 +206,7 @@ namespace MDPro3.UI
                 if (Program.instance.ui_.currentPopupB != null)
                     Program.instance.ui_.currentPopupB.lastSelectable = m_Selectable;
                 else
-                    Program.instance.currentServant.Selected = Selectable;
+                    Program.instance.currentServant.lastSelectable = Selectable;
             }
             clickEvent.onLeftClick?.Invoke();
         }
@@ -268,7 +279,7 @@ namespace MDPro3.UI
                 if (Program.instance.ui_.currentPopupB != null)
                     Program.instance.ui_.currentPopupB.lastSelectable = Selectable;
                 else
-                    Program.instance.currentServant.Selected = Selectable;
+                    Program.instance.currentServant.lastSelectable = Selectable;
             }
 
             SetColor(SelectMode.Selected, hovering ? StatusMode.Enter : StatusMode.Normal, Selectable.interactable);
@@ -450,6 +461,7 @@ namespace MDPro3.UI
         {
             hoverEvent.onHoverOn.AddListener(call);
         }
+
         public virtual void SetHoverOffEvent(UnityAction call)
         {
             hoverEvent.onHoverOff.AddListener(call);
@@ -459,6 +471,7 @@ namespace MDPro3.UI
         {
             selectEvent.onSelect.AddListener(call);
         }
+
         public virtual void SetDeselectEvent(UnityAction call)
         {
             selectEvent.onDeselect.AddListener(call);
@@ -690,6 +703,7 @@ namespace MDPro3.UI
         protected virtual void OnNavigationDownBorder()
         {
         }
+
         #endregion
 
         #region Other
@@ -729,11 +743,12 @@ namespace MDPro3.UI
     }
 
     [Serializable]
-    public class SelectionClickEvent
+    public class SelectionButtonClickEvent
     {
         public UnityEvent onLeftClick;
         public UnityEvent onMiddleClick;
         public UnityEvent onRightClick;
     }
+
 }
 

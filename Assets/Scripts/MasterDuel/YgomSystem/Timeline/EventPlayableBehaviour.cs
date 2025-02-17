@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
+using MDPro3.Servant;
 
 namespace YgomSystem.Timeline
 {
@@ -74,8 +75,8 @@ namespace YgomSystem.Timeline
                     return;
                 MDPro3.TimelineManager.skippable = false;
                 var code = Program.instance.ocgcore.summonCard.GetData().Id;
-                if (MonsterCutin.HasCutin(code))
-                    MonsterCutin.Play(code, (int)Program.instance.ocgcore.summonCard.p.controller);
+                if (CutinViewer.HasCutin(code))
+                    CutinViewer.Play(code, (int)Program.instance.ocgcore.summonCard.p.controller);
             }
             else if(label == "Next")//Engage
             {

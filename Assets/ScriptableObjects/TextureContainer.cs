@@ -1,11 +1,10 @@
 using MDPro3;
-using MDPro3.YGOSharp.OCGWrapper.Enums;
+using MDPro3.Duel.YGOSharp;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using MDPro3.UI;
-using MDPro3.YGOSharp;
 using System.Threading;
 
 namespace MDPro3

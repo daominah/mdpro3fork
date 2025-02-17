@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace MDPro3.UI.PropertyOverrider
+namespace MDPro3.UI.PropertyOverride
 {
     [Serializable]
     public class OverrideProperty_Vector2 : OverridePropertyBase<Vector2>

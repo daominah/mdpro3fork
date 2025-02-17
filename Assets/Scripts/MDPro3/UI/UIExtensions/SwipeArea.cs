@@ -21,14 +21,12 @@ namespace MDPro3.UI
         {
             startTouchPosition = UserInput.MousePos;
             stopTouch = false;
-            Debug.Log($"startTouchPosition: {startTouchPosition}");
         }
 
         public void OnPointerUp(BaseEventData data)
         {
             stopTouch = true;
             DetectSwipe();
-            Debug.Log($"UserInput.MousePos: {UserInput.MousePos}");
         }
 
         private void DetectSwipe()

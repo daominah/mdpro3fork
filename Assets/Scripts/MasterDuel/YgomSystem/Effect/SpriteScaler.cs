@@ -172,8 +172,9 @@ namespace YgomSystem.Effect
             }
             else if (fitMode == FitMode.FitHeightMaintainAspectRatio)
             {
-				heightScale = 6f;
-                transform.localScale = new Vector3(heightScale, heightScale, z);
+				Debug.Log("mark: FitMode.FitHeightMaintainAspectRatio");
+				//heightScale = 6f;
+				//transform.localScale = new Vector3(heightScale, heightScale, z);
             }
             else if (fitMode == FitMode.FitWidthHeight)
             {

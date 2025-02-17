@@ -26,6 +26,7 @@ namespace MDPro3
             {10, "DeepDarkFantasy" },
             //{13, "New" },
             {12, "DIY Green" },
+            {14, "Neos" },
 
             {50, "DIY Classic" },
             {51, "DIY Classic2" },

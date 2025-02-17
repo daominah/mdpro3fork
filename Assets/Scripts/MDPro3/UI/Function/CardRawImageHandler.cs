@@ -1,10 +1,9 @@
-using System.Collections;
-using System.Threading.Tasks;
 using DG.Tweening;
-using MDPro3.Utility;
-using MDPro3.YGOSharp;
+using MDPro3.Duel.YGOSharp;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using MDPro3.Utility;
 
 namespace MDPro3.UI
 {
@@ -28,6 +27,7 @@ namespace MDPro3.UI
 
         protected Coroutine picLoadCoroutine;
         protected Coroutine matLoadCoroutine;
+        protected Coroutine protectorLoadCoroutine;
         protected Tween matTweener;
 
         protected void OnDisable()
@@ -36,22 +36,36 @@ namespace MDPro3.UI
                 StopCoroutine(picLoadCoroutine);
             if(matLoadCoroutine != null)
                 StopCoroutine(matLoadCoroutine);
+            if(protectorLoadCoroutine != null)
+                StopCoroutine(protectorLoadCoroutine);
         }
 
         protected void OnDestroy()
         {
             Destroy(normalMat);
             Destroy(tempMat);
+            DeleteCard();
+        }
+
+        private void DeleteCard()
+        {
             if (card != null)
+            {
                 TextureLoader.DeleteCard(card.Id);
+                card = null;
+            }
+        }
+
+        public void SetCard(int code)
+        {
+            SetCard(CardsManager.Get(code));
         }
 
         public void SetCard(Card data)
         {
             if (card != null && card.Id == data.Id)
                 return;
-            if (card != null)
-                TextureLoader.DeleteCard(card.Id);
+            DeleteCard();
             card = data;
 
             if (picLoadCoroutine != null)
@@ -131,6 +145,31 @@ namespace MDPro3.UI
                 matTweener.Kill();
             matTweener = tempMat.DOFloat(0f, "_LoadingBlend", fadeTime);
             matLoadCoroutine = null;
+        }
+
+        public void SetProtectorMaterial(Material mat)
+        {
+            RawImage.material = mat;
+        }
+
+        public void SetProtector(int code)
+        {
+            StartCoroutine(LoadProtectorAsync(code));
+        }
+
+        protected virtual IEnumerator LoadProtectorAsync(int code)
+        {
+            m_Refreshed = false;
+
+            var im = ABLoader.LoadProtectorMaterial(code.ToString());
+            while (im.MoveNext())
+                yield return null;
+
+            RawImage.material = im.Current;
+            m_Refreshed = true;
+
+            RawImage.texture = null;
+            DeleteCard();
         }
     }
 }

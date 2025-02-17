@@ -1,5 +1,5 @@
 using DG.Tweening;
-using MDPro3.YGOSharp;
+using MDPro3.Duel.YGOSharp;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -7,10 +7,9 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using static YgomSystem.UI.ColorContainer;
 using YgomSystem.UI;
-using MDPro3.YGOSharp.OCGWrapper.Enums;
 using static MDPro3.UI.DeckView;
-using System.Drawing.Printing;
-using UnityEngine.InputSystem.HID;
+using MDPro3.Servant;
+using MDPro3.UI.ServantUI;
 
 namespace MDPro3.UI
 {
@@ -52,43 +51,43 @@ namespace MDPro3.UI
             {
                 if(UserInput.gamepadType == UserInput.GamepadType.None)
                 {
-                    if (DeckEditor.useMobileLayout) 
+                    if (DeckEditor.UseMobileLayout) 
                     {
                         if (dragProcessing)
                             return;
                         AudioManager.PlaySE("SE_MENU_DECIDE");
                         Program.instance.deckEditor.lastSelectedCardInDeck = this;
-                        Program.instance.deckEditor._ResponseRegion = DeckEditor.ResponseRegion.Deck;
-                        Program.instance.deckEditor.ShowCardActionMenu();
+                        Program.instance.deckEditor.ResponseRegion = DeckEditorUI.ResponseRegion.Deck;
+                        Program.instance.deckEditor.GetUI<DeckEditorUI>().ShowCardActionMenu();
                     }
                     else
                     {
-                        Program.instance.deckEditor.AddHistoryCard(Card.Id);
-                        Program.instance.deckEditor.ShowDetail(Card);
+                        Program.instance.deckEditor.GetUI<DeckEditorUI>().AddHistoryCard(Card.Id);
+                        Program.instance.deckEditor.GetUI<DeckEditorUI>().ShowDetail(Card);
                     }
                 }
                 else
                 {
                     if (DeckEditor.condition == DeckEditor.Condition.EditDeck)
-                        Program.instance.deckEditor.RemoveCardWithAnimation(this);
+                        Program.instance.deckEditor.GetUI<DeckEditorUI>().RemoveCardWithAnimation(this);
                 }
             });
             SetRightClickEvent(() =>
             {
                 if(DeckEditor.condition != DeckEditor.Condition.ChangeSide)
                 {
-                    Program.instance.deckEditor.RemoveCardWithAnimation(this);
+                    Program.instance.deckEditor.GetUI<DeckEditorUI>().RemoveCardWithAnimation(this);
                 }
                 else
                 {
-                    Program.instance.deckEditor.CardChangeSide(this);
+                    Program.instance.deckEditor.GetUI<DeckEditorUI>().CardChangeSide(this);
                 }
-                Program.instance.deckEditor.ShowDetail(Card);
+                Program.instance.deckEditor.GetUI<DeckEditorUI>().ShowDetail(Card);
             });
             SetMiddleClickEvent(() =>
             {
-                Program.instance.deckEditor.AddCard(Card);
-                Program.instance.deckEditor.ShowDetail(Card);
+                Program.instance.deckEditor.GetUI<DeckEditorUI>().AddCard(Card);
+                Program.instance.deckEditor.GetUI<DeckEditorUI>().ShowDetail(Card);
             });
         }
 
@@ -100,9 +99,9 @@ namespace MDPro3.UI
                 .GetComponentsInChildren<ColorContainerGraphic>(true))
                 ccg.SetColor(SelectMode.Selected, hovering ? StatusMode.Enter : StatusMode.Normal, Selectable.interactable);
 
-            Program.instance.deckEditor.ShowDetail(Card);
+            Program.instance.deckEditor.GetUI<DeckEditorUI>().ShowDetail(Card);
             Program.instance.deckEditor.lastSelectedCardInDeck = this;
-            Program.instance.deckEditor._ResponseRegion = DeckEditor.ResponseRegion.Deck;
+            Program.instance.deckEditor.ResponseRegion = DeckEditorUI.ResponseRegion.Deck;
         }
 
         private void Refresh()
@@ -155,21 +154,21 @@ namespace MDPro3.UI
 
         public void RefreshIcons()
         {
-            Manager.GetElement("IconAttribute").SetActive(DeckEditor._CardInfoType == DeckEditor.CardInfoType.Detail);
-            Manager.GetElement("IconSpellTrapType").SetActive(DeckEditor._CardInfoType == DeckEditor.CardInfoType.Detail);
-            Manager.GetElement("IconRace").SetActive(DeckEditor._CardInfoType == DeckEditor.CardInfoType.Detail);
-            Manager.GetElement("IconTuner").SetActive(DeckEditor._CardInfoType == DeckEditor.CardInfoType.Detail
+            Manager.GetElement("IconAttribute").SetActive(DeckEditorUI.cardInfoType == DeckEditorUI.CardInfoType.Detail);
+            Manager.GetElement("IconSpellTrapType").SetActive(DeckEditorUI.cardInfoType == DeckEditorUI.CardInfoType.Detail);
+            Manager.GetElement("IconRace").SetActive(DeckEditorUI.cardInfoType == DeckEditorUI.CardInfoType.Detail);
+            Manager.GetElement("IconTuner").SetActive(DeckEditorUI.cardInfoType == DeckEditorUI.CardInfoType.Detail
                 && Card.HasType(CardType.Tuner));
             var levelType = Card.GetLevelType();
-            Manager.GetElement("IconLevel").SetActive(DeckEditor._CardInfoType == DeckEditor.CardInfoType.Detail
+            Manager.GetElement("IconLevel").SetActive(DeckEditorUI.cardInfoType == DeckEditorUI.CardInfoType.Detail
                 && Card.HasType(CardType.Monster) && levelType == Card.LevelType.Level);
-            Manager.GetElement("IconRank").SetActive(DeckEditor._CardInfoType == DeckEditor.CardInfoType.Detail
+            Manager.GetElement("IconRank").SetActive(DeckEditorUI.cardInfoType == DeckEditorUI.CardInfoType.Detail
                 && Card.HasType(CardType.Monster) && levelType == Card.LevelType.Rank);
-            Manager.GetElement("IconLink").SetActive(DeckEditor._CardInfoType == DeckEditor.CardInfoType.Detail
+            Manager.GetElement("IconLink").SetActive(DeckEditorUI.cardInfoType == DeckEditorUI.CardInfoType.Detail
                 && Card.HasType(CardType.Monster) && levelType == Card.LevelType.Link);
-            Manager.GetElement("IconPendulumScale").SetActive(DeckEditor._CardInfoType == DeckEditor.CardInfoType.Detail
+            Manager.GetElement("IconPendulumScale").SetActive(DeckEditorUI.cardInfoType == DeckEditorUI.CardInfoType.Detail
                 && Card.HasType(CardType.Pendulum));
-            Manager.GetElement("IconPool").SetActive(DeckEditor._CardInfoType == DeckEditor.CardInfoType.Pool);
+            Manager.GetElement("IconPool").SetActive(DeckEditorUI.cardInfoType == DeckEditorUI.CardInfoType.Pool);
         }
 
         public void PlayBirthAnimation()
@@ -197,7 +196,7 @@ namespace MDPro3.UI
         public void LockPosition()
         {
             //child.SetParent(Program.instance.ui_.transform, true);
-            child.SetParent(Program.instance.deckEditor.deckView.TempView, true);
+            child.SetParent(Program.instance.deckEditor.GetUI<DeckEditorUI>().DeckView.TempView, true);
             StartCoroutine(AutoMoveToParent());
         }
 
@@ -243,7 +242,7 @@ namespace MDPro3.UI
         
         public void MoveToParentSequence(Vector3 position)
         {
-            if (!DeckEditor.useMobileLayout)
+            if (!DeckEditor.UseMobileLayout)
             {
                 child.SetParent(Program.instance.ui_.transform, true);
                 child.localScale = dragScale;
@@ -254,15 +253,15 @@ namespace MDPro3.UI
 
         private IEnumerator AutoMoveToParentSequence(Vector3 position)
         {
-            if (DeckEditor.useMobileLayout)
+            if (DeckEditor.UseMobileLayout)
             {
                 child.gameObject.SetActive(false);
                 yield return null;
-                Program.instance.deckEditor.deckView.ScrollTo(this);
+                Program.instance.deckEditor.GetUI<DeckEditorUI>().DeckView.ScrollTo(this);
             }
 
             yield return null;
-            if (DeckEditor.useMobileLayout)
+            if (DeckEditor.UseMobileLayout)
             {
                 child.gameObject.SetActive(true);
                 child.SetParent(Program.instance.ui_.transform, true);
@@ -307,7 +306,7 @@ namespace MDPro3.UI
             deckView.ScrollRect.OnBeginDrag(eventData);
             dragStartPosition = eventData.position;
             dragProcessing = true;
-            draging = !DeckEditor.useMobileLayout;
+            draging = !DeckEditor.UseMobileLayout;
             dragIni = false;
         }
 
@@ -320,7 +319,7 @@ namespace MDPro3.UI
             {
                 if(!dragIni)
                 {
-                    dragTarget = Program.instance.deckEditor.GetDragCardImage();
+                    dragTarget = Program.instance.deckEditor.GetUI<DeckEditorUI>().DragCard;
                     dragTarget.gameObject.SetActive(true);
                     dragTarget.GetChild(0).GetComponent<RawImage>().texture
                         = ImageHandler.RawImage.texture;
@@ -329,7 +328,7 @@ namespace MDPro3.UI
                     dragIni = true;
 
                     UIHover.HoveringLabel = string.Empty;
-                    Program.instance.deckEditor.cardCollectionView.SetBookmarkDropArea(Card.Id);
+                    Program.instance.deckEditor.GetUI<DeckEditorUI>().CardCollectionView.SetBookmarkDropArea(Card.Id);
 
                     UserInput.Draging = true;
                     var cg = GetComponent<CanvasGroup>();
@@ -367,8 +366,8 @@ namespace MDPro3.UI
 
                 dragTarget.gameObject.SetActive(false);
 
-                Program.instance.deckEditor.DragCardTo(this);
-                Program.instance.deckEditor.deckView.HideDeckLocationTable();
+                Program.instance.deckEditor.GetUI<DeckEditorUI>().DragCardTo(this);
+                Program.instance.deckEditor.GetUI<DeckEditorUI>().DeckView.HideDeckLocationTable();
             }
         }
 
@@ -401,12 +400,12 @@ namespace MDPro3.UI
         #region Navigation
         protected override int GetButtonsCount()
         {
-            return Program.instance.deckEditor.deckView.GetDeckLocationCount(location);
+            return Program.instance.deckEditor.GetUI<DeckEditorUI>().DeckView.GetDeckLocationCount(location);
         }
 
         protected override int GetColumnsCount()
         {
-            return Program.instance.deckEditor.deckView.GetDeckLocationParent(location)
+            return Program.instance.deckEditor.GetUI<DeckEditorUI>().DeckView.GetDeckLocationParent(location)
                 .GetComponent<GridLayoutGroup>().Size().x;
         }
 
@@ -490,16 +489,16 @@ namespace MDPro3.UI
                 if (location == DeckLocation.MainDeck)
                     return null;
                 else if(location == DeckLocation.ExtraDeck)
-                    return Program.instance.deckEditor.deckView.GetNavigationTarget(DeckLocation.MainDeck, direction, transform.position);
+                    return Program.instance.deckEditor.GetUI<DeckEditorUI>().DeckView.GetNavigationTarget(DeckLocation.MainDeck, direction, transform.position);
                 else if (location == DeckLocation.SideDeck)
-                    return Program.instance.deckEditor.deckView.GetNavigationTarget(DeckLocation.ExtraDeck, direction, transform.position);
+                    return Program.instance.deckEditor.GetUI<DeckEditorUI>().DeckView.GetNavigationTarget(DeckLocation.ExtraDeck, direction, transform.position);
             }
             else if (direction == MoveDirection.Down)
             {
                 if (location == DeckLocation.MainDeck)
-                    return Program.instance.deckEditor.deckView.GetNavigationTarget(DeckLocation.ExtraDeck, direction, transform.position);
+                    return Program.instance.deckEditor.GetUI<DeckEditorUI>().DeckView.GetNavigationTarget(DeckLocation.ExtraDeck, direction, transform.position);
                 else if (location == DeckLocation.ExtraDeck)
-                    return Program.instance.deckEditor.deckView.GetNavigationTarget(DeckLocation.SideDeck, direction, transform.position);
+                    return Program.instance.deckEditor.GetUI<DeckEditorUI>().DeckView.GetNavigationTarget(DeckLocation.SideDeck, direction, transform.position);
                 else if (location == DeckLocation.SideDeck)
                     return null;
             }

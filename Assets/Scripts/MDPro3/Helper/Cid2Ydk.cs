@@ -4,21 +4,21 @@ using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
 using UnityEngine;
-using MDPro3.YGOSharp;
+using MDPro3.Duel.YGOSharp;
 using Newtonsoft.Json;
 
 namespace MDPro3
 {
     public static class Cid2Ydk
     {
-        const string cardsPath = "Data/cards.json";
-        const string cardsAltPath = "Data/cards_Alt.json";
-        const string cardsLitePath = "Data/cards_Lite.json";
-        const string pattern = @"<card mrk='(\d+)'/>";
+        private const string cardsPath = "Data/cards.json";
+        private const string cardsAltPath = "Data/cards_Alt.json";
+        private const string cardsLitePath = "Data/cards_Lite.json";
+        private const string pattern = @"<card mrk='(\d+)'/>";
 
-        static bool initialized;
-        static Dictionary<string, Id2Ydk> dic;
-        static void Initialize()
+        private static bool initialized;
+        private static Dictionary<string, Id2Ydk> dic;
+        private static void Initialize()
         {
             if(initialized) return;
 
@@ -63,7 +63,15 @@ namespace MDPro3
             return ydk;
         }
 
-        static string EvaluatorGetNameFromNumber(Match match)
+        public static string ReplaceWithCardName(string origin)
+        {
+            Initialize();
+
+            origin = origin.Replace(" get=\'name\'", string.Empty);
+            return Regex.Replace(origin, pattern, EvaluatorGetNameFromNumber);
+        }
+
+        private static string EvaluatorGetNameFromNumber(Match match)
         {
             string numberString = match.Groups[1].Value;
             int cid = int.Parse(numberString);
@@ -72,15 +80,6 @@ namespace MDPro3
                 return CardsManager.Get(code.id).Name;
             else
                 return CardsManager.Get(cid).Name;
-        }
-
-
-        public static string ReplaceWithCardName(string origin)
-        {
-            Initialize();
-
-            origin = origin.Replace(" get=\'name\'", string.Empty);
-            return Regex.Replace(origin, pattern, EvaluatorGetNameFromNumber);
         }
 
         public class Id2Ydk

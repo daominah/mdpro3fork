@@ -19,7 +19,7 @@ namespace MDPro3.UI
         {
             base.CallToggleOnEvent();
             targetPage.SetActive(true);
-            Program.instance.online.SelectLastSelectable();
+            Program.instance.online.Select();
         }
 
         protected override void CallToggleOffEvent()

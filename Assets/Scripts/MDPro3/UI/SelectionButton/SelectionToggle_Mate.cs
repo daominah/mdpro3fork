@@ -1,4 +1,6 @@
+using MDPro3.Servant;
 using MDPro3.UI;
+using MDPro3.UI.ServantUI;
 using System;
 using TMPro;
 using UnityEngine;
@@ -62,8 +64,7 @@ namespace MDPro3.UI
             if (eventData.moveDir == MoveDirection.Right)
             {
                 UserInput.NextSelectionIsAxis = true;
-                var button = Program.instance.mate.Manager.GetElement("ButtonInteraction");
-                EventSystem.current.SetSelectedGameObject(button);
+                Program.instance.mate.GetUI<MateViewerUI>().SelectButtonInteract();
             }
         }
     }

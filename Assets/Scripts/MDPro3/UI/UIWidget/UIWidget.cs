@@ -1,5 +1,4 @@
-using MDPro3.YGOSharp;
-using MDPro3.YGOSharp.OCGWrapper.Enums;
+using MDPro3.Duel.YGOSharp;
 using System.Collections;
 using TMPro;
 using UnityEngine;

@@ -1,7 +1,8 @@
 using System.Collections;
 using DG.Tweening;
-using MDPro3.YGOSharp;
+using MDPro3.Duel.YGOSharp;
 using UnityEngine;
+using MDPro3.Utility;
 
 namespace MDPro3.UI
 {

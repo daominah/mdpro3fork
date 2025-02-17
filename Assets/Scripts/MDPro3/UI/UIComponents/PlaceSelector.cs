@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using MDPro3.YGOSharp.OCGWrapper.Enums;
+using MDPro3.Duel.YGOSharp;
 using static MDPro3.GameCard;
+using MDPro3.UI.ServantUI;
 
 namespace MDPro3.UI
 {
@@ -134,7 +135,7 @@ namespace MDPro3.UI
                 if ((p.location & (uint)CardLocation.Onfield) == 0 && !countShowing)
                 {
                     countShowing = true;
-                    Program.instance.ocgcore.ShowLocationCount(p);
+                    Program.instance.ocgcore.GetUI<OcgCoreUI>().ShowLocationCount(p);
                 }
             }
             else
@@ -146,7 +147,7 @@ namespace MDPro3.UI
                 if (countShowing)
                 {
                     countShowing = false;
-                    Program.instance.ocgcore.HidePlaceCount();
+                    Program.instance.ocgcore.GetUI<OcgCoreUI>().HidePlaceCount();
                 }
             }
 
@@ -217,8 +218,8 @@ namespace MDPro3.UI
                         card.OnClick();
                     else
                     {
-                        Program.instance.ocgcore.description.Hide();
-                        Program.instance.ocgcore.list.Hide();
+                        Program.instance.ocgcore.GetUI<OcgCoreUI>().CardDescription.Hide();
+                        Program.instance.ocgcore.GetUI<OcgCoreUI>().CardList.Hide();
                     }
                     foreach (var c in Program.instance.ocgcore.cards)
                         if (c != card)
@@ -232,7 +233,7 @@ namespace MDPro3.UI
                         if ((card.p.location & p.location) > 0)
                             if (card.p.controller == p.controller)
                                 cards.Add(card);
-                    Program.instance.ocgcore.list.Show(cards, (CardLocation)p.location, (int)p.controller);
+                    Program.instance.ocgcore.GetUI<OcgCoreUI>().CardList.Show(cards, (CardLocation)p.location, (int)p.controller);
 
                     if (!buttonsCreated)
                     {

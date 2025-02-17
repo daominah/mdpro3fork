@@ -13,12 +13,12 @@ namespace MDPro3.UI.Popup
         {
             base.Show();
             AudioManager.PlaySE("SE_SYS_VERIFY");
-            foreach (var toggle in transform.GetComponentsInChildren<ToggleForSearchOrder>())
-                if (toggle.sortOrder == Program.instance.editDeck.sortOrder)
-                {
-                    toggle.SwitchOnWithoutAction();
-                    break;
-                }
+            //foreach (var toggle in transform.GetComponentsInChildren<ToggleForSearchOrder>())
+            //    if (toggle.sortOrder == Program.instance.editDeck.sortOrder)
+            //    {
+            //        toggle.SwitchOnWithoutAction();
+            //        break;
+            //    }
         }
 
         protected override void SelectLastSelected()

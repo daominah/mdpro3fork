@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using MDPro3.YGOSharp;
-using MDPro3.YGOSharp.OCGWrapper.Enums;
+using MDPro3.Duel.YGOSharp;
 using YgomSystem.ElementSystem;
 using DG.Tweening;
 using UnityEngine.Events;
+using MDPro3.Servant;
+using MDPro3.UI.ServantUI;
 
 namespace MDPro3.UI
 {
@@ -332,20 +333,20 @@ namespace MDPro3.UI
             {
                 ToggleBookMark.SetToggleOnEvent(() =>
                 {
-                    Program.instance.deckEditor.BookmarkCard(Card.Id);
+                    Program.instance.deckEditor.GetUI<DeckEditorUI>().BookmarkCard(Card.Id);
                 });
                 ToggleBookMark.SetToggleOffEvent(() =>
                 {
-                    Program.instance.deckEditor.UnbookmarkCard(Card.Id);
+                    Program.instance.deckEditor.GetUI<DeckEditorUI>().UnbookmarkCard(Card.Id);
                 });
 
                 ButtonAddCard.SetClickEvent(() =>
                 {
-                    Program.instance.deckEditor.AddCard(Card);
+                    Program.instance.deckEditor.GetUI<DeckEditorUI>().AddCard(Card);
                 });
                 ButtonRemoveCard.SetClickEvent(() =>
                 {
-                    Program.instance.deckEditor.RemoveCard(Card);
+                    Program.instance.deckEditor.GetUI<DeckEditorUI>().RemoveCard(Card);
                 });
             }
         }
@@ -378,7 +379,7 @@ namespace MDPro3.UI
             #region Card Area
 
             IconLimit.sprite = TextureManager.container
-                .GetCardRegulationIcon(data.Id, Program.instance.editDeck.banlist);
+                .GetCardRegulationIcon(data.Id, DeckEditor.banlist);
 
             SetCardCount();
 
@@ -511,7 +512,8 @@ namespace MDPro3.UI
         {
             if (Card == null)
                 return;
-            TextCardNumValue.text = Program.instance.deckEditor.deckView.GetCardCount(Card.Id).ToString();
+            TextCardNumValue.text = Program.instance.deckEditor
+                .GetUI<DeckEditorUI>().DeckView.GetCardCount(Card.Id).ToString();
         }
 
         public virtual void RefreshRarity(int code)

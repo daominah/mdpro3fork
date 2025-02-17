@@ -1,3 +1,4 @@
+using MDPro3.UI.ServantUI;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -30,13 +31,13 @@ namespace MDPro3.UI
         protected override void CallToggleOnEvent()
         {
             base.CallToggleOnEvent();
-            Program.instance.deckEditor.ChangeRarity(rarity);
+            Program.instance.deckEditor.GetUI<DeckEditorUI>().ChangeRarity(rarity);
         }
 
         protected override void CallToggleOffEvent()
         {
             base.CallToggleOffEvent();
-            Program.instance.deckEditor.ChangeRarity(CardRarity.Rarity.Normal);
+            Program.instance.deckEditor.GetUI<DeckEditorUI>().ChangeRarity(CardRarity.Rarity.Normal);
         }
     }
 }

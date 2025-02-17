@@ -1,3 +1,4 @@
+using MDPro3.UI.ServantUI;
 using UnityEngine;
 using static MDPro3.UI.CardCollectionView;
 
@@ -18,14 +19,14 @@ namespace MDPro3.UI
 
         private void Start()
         {
-            if (Program.instance.deckEditor.cardCollectionView.defaultArea == area)
+            if (Program.instance.deckEditor.GetUI<DeckEditorUI>().CardCollectionView.defaultArea == area)
                 SetToggleOn();
         }
 
         protected override void CallToggleOnEvent()
         {
             base.CallToggleOnEvent();
-            Program.instance.deckEditor.cardCollectionView.ShowArea(area);
+            Program.instance.deckEditor.GetUI<DeckEditorUI>().CardCollectionView.ShowArea(area);
             foreach (var toggle in transform.parent.GetComponentsInChildren<SelectionToggle_CardCollectionTab>(true))
                 toggle.SetShortcut(area);
         }

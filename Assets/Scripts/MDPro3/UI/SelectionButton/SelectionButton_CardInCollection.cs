@@ -1,11 +1,12 @@
 using DG.Tweening;
-using MDPro3.YGOSharp;
-using MDPro3.YGOSharp.OCGWrapper.Enums;
+using MDPro3.Duel.YGOSharp;
 using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using MDPro3.Servant;
+using MDPro3.UI.ServantUI;
 
 namespace MDPro3.UI
 {
@@ -43,20 +44,20 @@ namespace MDPro3.UI
                 if(UserInput.gamepadType == UserInput.GamepadType.None)
                 {
 
-                    if (DeckEditor.useMobileLayout)
+                    if (DeckEditor.UseMobileLayout)
                     {
                         if (dragProcessing)
                             return;
                         AudioManager.PlaySE("SE_MENU_DECIDE");
                         Program.instance.deckEditor.lastSelectedCardInCollection = this;
-                        Program.instance.deckEditor._ResponseRegion = DeckEditor.ResponseRegion.Collection;
-                        Program.instance.deckEditor.ShowCardActionMenu();
+                        Program.instance.deckEditor.ResponseRegion = DeckEditorUI.ResponseRegion.Collection;
+                        Program.instance.deckEditor.GetUI<DeckEditorUI>().ShowCardActionMenu();
                     }
                     else
                     {
-                        Program.instance.deckEditor.ShowDetail(card);
+                        Program.instance.deckEditor.GetUI<DeckEditorUI>().ShowDetail(card);
                         if (cardCollectionView.area != CardCollectionView.Area.History)
-                            Program.instance.deckEditor.AddHistoryCard(card.Id);
+                            Program.instance.deckEditor.GetUI<DeckEditorUI>().AddHistoryCard(card.Id);
                     }
                 }
                 else
@@ -73,16 +74,16 @@ namespace MDPro3.UI
         protected override void OnSelect(bool playSE)
         {
             base.OnSelect(playSE);
-            Program.instance.deckEditor.ShowDetail(card);
+            Program.instance.deckEditor.GetUI<DeckEditorUI>().ShowDetail(card);
             Program.instance.deckEditor.lastSelectedCardInCollection = this;
-            Program.instance.deckEditor._ResponseRegion = DeckEditor.ResponseRegion.Collection;
+            Program.instance.deckEditor.ResponseRegion = DeckEditorUI.ResponseRegion.Collection;
         }
 
         private void AddThisToDeck()
         {
             var position = transform.GetChild(0).position;
-            Program.instance.deckEditor.AddCardFromCollection(card, position);
-            Program.instance.deckEditor.ShowDetail(card);
+            Program.instance.deckEditor.GetUI<DeckEditorUI>().AddCardFromCollection(card, position);
+            Program.instance.deckEditor.GetUI<DeckEditorUI>().ShowDetail(card);
         }
 
         public void Refresh()
@@ -136,27 +137,28 @@ namespace MDPro3.UI
 
         public void RefreshIcons()
         {
-            Manager.GetElement("IconAttribute").SetActive(DeckEditor._CardInfoType == DeckEditor.CardInfoType.Detail);
-            Manager.GetElement("IconSpellTrapType").SetActive(DeckEditor._CardInfoType == DeckEditor.CardInfoType.Detail);
-            Manager.GetElement("IconRace").SetActive(DeckEditor._CardInfoType == DeckEditor.CardInfoType.Detail);
-            Manager.GetElement("IconTuner").SetActive(DeckEditor._CardInfoType == DeckEditor.CardInfoType.Detail
+            Manager.GetElement("IconAttribute").SetActive(DeckEditorUI.cardInfoType == DeckEditorUI.CardInfoType.Detail);
+            Manager.GetElement("IconSpellTrapType").SetActive(DeckEditorUI.cardInfoType == DeckEditorUI.CardInfoType.Detail);
+            Manager.GetElement("IconRace").SetActive(DeckEditorUI.cardInfoType == DeckEditorUI.CardInfoType.Detail);
+            Manager.GetElement("IconTuner").SetActive(DeckEditorUI.cardInfoType == DeckEditorUI.CardInfoType.Detail
                 && card.HasType(CardType.Tuner));
             var levelType = card.GetLevelType();
-            Manager.GetElement("IconLevel").SetActive(DeckEditor._CardInfoType == DeckEditor.CardInfoType.Detail
+            Manager.GetElement("IconLevel").SetActive(DeckEditorUI.cardInfoType == DeckEditorUI.CardInfoType.Detail
                 && card.HasType(CardType.Monster) && levelType == Card.LevelType.Level);
-            Manager.GetElement("IconRank").SetActive(DeckEditor._CardInfoType == DeckEditor.CardInfoType.Detail
+            Manager.GetElement("IconRank").SetActive(DeckEditorUI.cardInfoType == DeckEditorUI.CardInfoType.Detail
                 && card.HasType(CardType.Monster) && levelType == Card.LevelType.Rank);
-            Manager.GetElement("IconLink").SetActive(DeckEditor._CardInfoType == DeckEditor.CardInfoType.Detail
+            Manager.GetElement("IconLink").SetActive(DeckEditorUI.cardInfoType == DeckEditorUI.CardInfoType.Detail
                 && card.HasType(CardType.Monster) && levelType == Card.LevelType.Link);
-            Manager.GetElement("IconPendulumScale").SetActive(DeckEditor._CardInfoType == DeckEditor.CardInfoType.Detail
+            Manager.GetElement("IconPendulumScale").SetActive(DeckEditorUI.cardInfoType == DeckEditorUI.CardInfoType.Detail
                 && card.HasType(CardType.Pendulum));
-            Manager.GetElement("IconPool").SetActive(DeckEditor._CardInfoType == DeckEditor.CardInfoType.Pool);
+            Manager.GetElement("IconPool").SetActive(DeckEditorUI.cardInfoType == DeckEditorUI.CardInfoType.Pool);
         }
 
         public void RefreshCountIcon()
         {
             var ragulation = DeckEditor.banlist.GetQuantity(card.Id);
-            var count = Program.instance.deckEditor.deckView.GetCardCount(card.Id);
+            var count = Program.instance.deckEditor
+                .GetUI<DeckEditorUI>().DeckView.GetCardCount(card.Id);
             var color = Color.white;
             if(count == ragulation)
                 color = Color.yellow;
@@ -203,7 +205,7 @@ namespace MDPro3.UI
             {
                 if (!dragIni)
                 {
-                    dragTarget = Program.instance.deckEditor.GetDragCardImage();
+                    dragTarget = Program.instance.deckEditor.GetUI<DeckEditorUI>().DragCard;
                     dragTarget.gameObject.SetActive(true);
                     dragTarget.GetChild(0).GetComponent<RawImage>().texture
                         = ImageHandler.RawImage.texture;
@@ -211,7 +213,7 @@ namespace MDPro3.UI
                         = ImageHandler.RawImage.material;
                     dragIni = true;
 
-                    Program.instance.deckEditor.cardCollectionView.SetDropAreaActive(false);
+                    Program.instance.deckEditor.GetUI<DeckEditorUI>().CardCollectionView.SetDropAreaActive(false);
                     UIHover.HoveringLabel = string.Empty;
                     UserInput.Draging = true;
                 }
@@ -241,10 +243,10 @@ namespace MDPro3.UI
             if (draging)
             {
                 UserInput.Draging = false;
-                Program.instance.deckEditor.cardCollectionView.SetDropAreaActive(true);
+                Program.instance.deckEditor.GetUI<DeckEditorUI>().CardCollectionView.SetDropAreaActive(true);
                 dragTarget.gameObject.SetActive(false);
-                Program.instance.deckEditor.AddCardFromCollection(card);
-                Program.instance.deckEditor.deckView.HideDeckLocationTable();
+                Program.instance.deckEditor.GetUI<DeckEditorUI>().AddCardFromCollection(card);
+                Program.instance.deckEditor.GetUI<DeckEditorUI>().DeckView.HideDeckLocationTable();
             }
         }
 
@@ -285,7 +287,7 @@ namespace MDPro3.UI
 
         protected override int GetButtonsCount()
         {
-            return Program.instance.deckEditor.cardCollectionView.superScrollView.items.Count;
+            return Program.instance.deckEditor.GetUI<DeckEditorUI>().CardCollectionView.superScrollView.items.Count;
         }
 
         protected override int GetColumnsCount()
@@ -302,7 +304,7 @@ namespace MDPro3.UI
         protected override void OnNavigationUpBorder()
         {
             base.OnNavigationUpBorder();
-            var target = Program.instance.deckEditor.cardCollectionView.GetUpNavigationObject();
+            var target = Program.instance.deckEditor.GetUI<DeckEditorUI>().CardCollectionView.GetUpNavigationObject();
             if(target != null)
             {
                 UserInput.NextSelectionIsAxis = true;

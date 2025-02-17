@@ -1,4 +1,5 @@
 using MDPro3.UI;
+using MDPro3.UI.ServantUI;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -20,14 +21,14 @@ namespace MDPro3.UI
         public override void SetToggleOn(bool callEvent = true)
         {
             if (!toggled)
-                Program.instance.appearance.Manager.GetElement<ScrollRect>("ScrollRect").verticalScrollbar.value = 1f;
+                Program.instance.appearance.GetUI<AppearanceUI>().ScrollRect.verticalScrollbar.value = 1f;
             base.SetToggleOn();
         }
 
         protected override void CallToggleOnEvent()
         {
             base.CallToggleOnEvent();
-            Program.instance.appearance.ShowItems(name.Split(" ")[1]);
+            Program.instance.appearance.GetUI<AppearanceUI>().ShowItems(name.Split(" ")[1]);
             Program.instance.appearance.lastSelectedToggle = this;
         }
 
@@ -36,7 +37,7 @@ namespace MDPro3.UI
             base.OnSubmit();
 
             UserInput.NextSelectionIsAxis = true;
-            var target = Program.instance.appearance.GetCurrentContentItem();
+            var target = Program.instance.appearance.GetUI<AppearanceUI>().GetCurrentContentItem();
             if (target == null)
                 return;
             EventSystem.current.SetSelectedGameObject(target);

@@ -3,15 +3,15 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 using YgomSystem.ElementSystem;
-using MDPro3.YGOSharp;
-using MDPro3.YGOSharp.OCGWrapper.Enums;
+using MDPro3.Duel.YGOSharp;
 using MDPro3.UI;
 using System;
 using System.Collections.Generic;
 using System.Collections;
 using UnityEngine.AddressableAssets;
 using MDPro3.Utility;
-using LibJpegTurboUnity;
+using MDPro3.Servant;
+using MDPro3.UI.ServantUI;
 
 namespace MDPro3
 {
@@ -64,7 +64,7 @@ namespace MDPro3
             shadow.DOFade(0f, transitionTime);
             cg.DOFade(0f, transitionTime);
 
-            if (Program.instance.currentServant == Program.instance.editDeck)
+            if (Program.instance.currentServant == Program.instance.deckEditor)
                 UIManager.ShowFPSRight();
             OnDown();
         }
@@ -193,12 +193,12 @@ namespace MDPro3
             }
 
             Banlist banlist;
-            if (Program.instance.currentServant == Program.instance.editDeck)
-                banlist = Program.instance.editDeck.banlist;
+            if (Program.instance.currentServant == Program.instance.deckEditor)
+                banlist = DeckEditor.banlist;
             else
             {
                 //TODO
-                banlist = Program.instance.editDeck.banlist;
+                banlist = DeckEditor.banlist;
             }
             var limit = banlist.GetQuantity(data.Id);
             if (limit == 3)
@@ -255,7 +255,7 @@ namespace MDPro3
         public void OnCardPictureSave()
         {
             if(Program.instance.ocgcore.showing 
-                || (Program.instance.editDeck.showing && Program.instance.editDeck.condition == EditDeck.Condition.ChangeSide))
+                || (Program.instance.deckEditor.showing && DeckEditor.condition == DeckEditor.Condition.ChangeSide))
             {
                 SaveShowingCard();
                 return;
@@ -402,7 +402,8 @@ namespace MDPro3
         }
         private void SaveDeckCards()
         {
-            saveEnumerator = SaveCardsAsync(Program.instance.deckEditor.deckView.GetAllCards());
+            saveEnumerator = SaveCardsAsync(Program.instance.deckEditor
+                .GetUI<DeckEditorUI>().DeckView.GetAllCards());
             StartCoroutine(saveEnumerator);
         }
         private void SaveAllTokens()

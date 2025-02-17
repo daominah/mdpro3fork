@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace MDPro3.UI.PropertyOverrider
+namespace MDPro3.UI.PropertyOverride
 {
     public class PropertyOverrider_RectTransform : PropertyOverrider
     {

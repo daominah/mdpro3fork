@@ -82,9 +82,11 @@ namespace MDPro3.Net
             if (request.result == UnityWebRequest.Result.Success)
             {
                 var user = JsonUtility.FromJson<MyCardUserInfo>(request.downloadHandler.text);
-                account = new MyCardAccount();
-                account.user = user;
-                account.token = token;
+                account = new MyCardAccount
+                {
+                    user = user,
+                    token = token
+                };
 
                 var response =  OnlineDeck.GetAllDecks();
                 await response;
@@ -96,8 +98,10 @@ namespace MDPro3.Net
             }
             else
             {
-                var returnValue = new MyCardAccount();
-                returnValue.user = new MyCardUserInfo();
+                var returnValue = new MyCardAccount
+                {
+                    user = new MyCardUserInfo()
+                };
                 var message = JsonUtility.FromJson<MyCardMessage>(request.downloadHandler.text);
                 if (message != null)
                     returnValue.user.username = JsonUtility.FromJson<MyCardMessage>(request.downloadHandler.text).message;
@@ -107,9 +111,9 @@ namespace MDPro3.Net
             }
         }
 
-        const string avatarSavePath = "Picture/MyCardAvatars/";
-        static Dictionary<string, string> cachedAvatarAddress = new Dictionary<string, string>();
-        static Dictionary<string, Texture2D> cachedAvatars = new Dictionary<string, Texture2D>();
+        private const string avatarSavePath = "Picture/MyCardAvatars/";
+        private static Dictionary<string, string> cachedAvatarAddress = new();
+        private static Dictionary<string, Texture2D> cachedAvatars = new();
         public static async Task<Texture2D> GetAvatarAsync(string userName)
         {
             if(!Directory.Exists(avatarSavePath))

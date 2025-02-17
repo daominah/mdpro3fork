@@ -5,11 +5,13 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using YgomSystem.ElementSystem;
-using MDPro3.YGOSharp;
-using MDPro3.YGOSharp.OCGWrapper.Enums;
+using MDPro3.Duel.YGOSharp;
 using static MDPro3.CardRenderer;
 using MDPro3.Utility;
 using MDPro3.UI;
+using MDPro3.Servant;
+using MDPro3.UI.ServantUI;
+using NUnit.Framework;
 
 namespace MDPro3
 {
@@ -37,7 +39,7 @@ namespace MDPro3
 
         void ShowDetail()
         {
-            Program.instance.ocgcore.list.Hide();
+            Program.instance.ocgcore.GetUI<OcgCoreUI>().CardList.Hide();
             var cardFace = manager.GetElement<RawImage>("Card").texture;
             var mat = manager.GetElement<RawImage>("Card").material;
             Program.instance.ui_.cardDetail.Show(data, cardFace, mat);
@@ -258,7 +260,7 @@ namespace MDPro3
         }
         void RefreshLimitIcon(int code)
         {
-            var banlist = Program.instance.editDeck.banlist;//TODO
+            var banlist = DeckEditor.banlist;
             var limit = banlist.GetQuantity(code);
             if (limit == 3)
                 manager.GetElement<Image>("Limit").sprite = TextureManager.container.typeNone;

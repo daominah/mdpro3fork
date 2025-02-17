@@ -5,9 +5,10 @@ using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.UI;
-using MDPro3.YGOSharp.OCGWrapper.Enums;
+using MDPro3.Duel.YGOSharp;
 using YgomSystem.UI;
-
+using MDPro3.Servant;
+using MDPro3.UI.ServantUI;
 
 namespace MDPro3.UI
 {
@@ -289,7 +290,7 @@ namespace MDPro3.UI
                                     selections.Add(desc);
                                     responses.Add(mono.card.effects[i].ptr);
                                 }
-                                Program.instance.ocgcore.ShowPopupSelection(selections, responses);
+                                Program.instance.ocgcore.GetUI<OcgCoreUI>().ShowPopupSelection(selections, responses);
                             }
                         }
                     break;
@@ -335,7 +336,7 @@ namespace MDPro3.UI
                                         selections.Add(desc);
                                         responses.Add(mono.card.effects[i].ptr);
                                     }
-                                    Program.instance.ocgcore.ShowPopupSelection(selections, responses);
+                                    Program.instance.ocgcore.GetUI<OcgCoreUI>().ShowPopupSelection(selections, responses);
                                 }
                             }
                             else
@@ -397,7 +398,7 @@ namespace MDPro3.UI
                     string.Empty,
                     string.Empty
                 };
-                    whenQuitDo = () => { Program.instance.ocgcore.ShowPopupInput(ss, Program.instance.ocgcore.OnAnnounceCard, null); };
+                    whenQuitDo = () => { Program.instance.ocgcore.GetUI<OcgCoreUI>().ShowPopupInput(ss, Program.instance.ocgcore.OnAnnounceCard, null); };
                     Program.instance.ocgcore.ClearAnnounceCards();
                     break;
                 case GameMessage.SelectIdleCmd:

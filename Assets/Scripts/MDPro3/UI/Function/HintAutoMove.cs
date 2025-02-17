@@ -8,18 +8,22 @@ namespace MDPro3.UI
 {
     public class HintAutoMove : MonoBehaviour, IPointerEnterHandler
     {
-        bool top;
+        private bool top;
+        private RectTransform m_Rect;
+        private RectTransform Rect =>
+            m_Rect = m_Rect != null ? m_Rect : GetComponent<RectTransform>();
+
         public void OnPointerEnter(PointerEventData eventData)
         {
             if (top)
             {
                 top = false;
-                GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -280);
+                Rect.anchoredPosition = new Vector2(0, -280);
             }
             else
             {
                 top = true;
-                GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 280);
+                Rect.anchoredPosition = new Vector2(0, 280);
             }
         }
     }

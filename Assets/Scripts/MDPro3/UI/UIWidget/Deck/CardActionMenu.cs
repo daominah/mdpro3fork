@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
-using MDPro3.YGOSharp;
+using MDPro3.Duel.YGOSharp;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -150,7 +150,7 @@ namespace MDPro3.UI
                 Cg.alpha = 0f;
                 Cg.blocksRaycasts = false;
                 Program.instance.currentServant.JudgeInputBlockerExitMark(blockMark);
-                Program.instance.currentServant.SelectLastSelectable();
+                Program.instance.currentServant.Select();
             });
         }
 

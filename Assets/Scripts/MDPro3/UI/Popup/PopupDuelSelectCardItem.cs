@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using MDPro3.YGOSharp;
-using MDPro3.YGOSharp.OCGWrapper.Enums;
+using MDPro3.Duel.YGOSharp;
 using TMPro;
+using MDPro3.UI.ServantUI;
 
 namespace MDPro3.UI
 {
@@ -173,7 +173,7 @@ namespace MDPro3.UI
                     manager.arrow.SetActive(false);
             }
 
-            Program.instance.ocgcore.description.Show(card, cardFace.material);
+            Program.instance.ocgcore.GetUI<OcgCoreUI>().CardDescription.Show(card, cardFace.material);
 
             if (selected)
             {

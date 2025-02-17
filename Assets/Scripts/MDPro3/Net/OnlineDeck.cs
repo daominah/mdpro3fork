@@ -1,4 +1,4 @@
-using MDPro3.YGOSharp;
+using MDPro3.Duel.YGOSharp;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -129,7 +129,6 @@ namespace MDPro3.Net
             if (request.result == UnityWebRequest.Result.Success)
             {
                 decks = JsonUtility.FromJson<ResponseMultiSimpleData>(request.downloadHandler.text).data;
-                Debug.Log($"deckloaded: decks.Length: {decks.Length}");
                 return decks;
             }
             else

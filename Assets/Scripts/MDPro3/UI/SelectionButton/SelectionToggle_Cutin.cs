@@ -3,6 +3,8 @@ using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using MDPro3.Servant;
+using MDPro3.UI.ServantUI;
 
 namespace MDPro3.UI
 {
@@ -18,8 +20,8 @@ namespace MDPro3.UI
         protected override void CallSubmitEvent()
         {
             AudioManager.PlaySE("SE_MENU_DECIDE");
-            if (MonsterCutin.HasCutin(code))
-                MonsterCutin.Play(code, 0);
+            if (CutinViewer.HasCutin(code))
+                CutinViewer.Play(code, 0);
         }
         protected override void CallToggleOnEvent()
         {
@@ -62,8 +64,7 @@ namespace MDPro3.UI
             if (eventData.moveDir == MoveDirection.Right)
             {
                 UserInput.NextSelectionIsAxis = true;
-                var button = Program.instance.cutin.Manager.GetElement("ButtonAutoPlay");
-                EventSystem.current.SetSelectedGameObject(button);
+                Program.instance.cutin.GetUI<CutinViewerUI>().ButtonAutoPlay.GetSelectable().Select();
             }
         }
     }

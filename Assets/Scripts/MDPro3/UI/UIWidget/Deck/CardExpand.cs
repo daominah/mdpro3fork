@@ -1,6 +1,5 @@
 using DG.Tweening;
-using MDPro3.YGOSharp;
-using MDPro3.YGOSharp.OCGWrapper.Enums;
+using MDPro3.Duel.YGOSharp;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -88,7 +87,7 @@ namespace MDPro3.UI
             BG.DOFade(0f, 0.21f).OnComplete(() =>
             {
                 Destroy(gameObject);
-                Program.instance.currentServant.SelectLastSelectable();
+                Program.instance.currentServant.Select();
             });
 
             DOTween.Sequence()

@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using MDPro3.Servant;
+using MDPro3.UI.ServantUI;
 
 namespace MDPro3.UI
 {
@@ -24,11 +26,11 @@ namespace MDPro3.UI
 
         public void Refresh()
         {
-            if (Program.instance.character.characters == null)
+            if (CharacterSelector.characters == null)
                 return;
 
-            charaName = Program.instance.character.characters.GetName(characterID);
-            charaProfile = Program.instance.character.characters.GetProfile(characterID);
+            charaName = CharacterSelector.characters.GetName(characterID);
+            charaProfile = CharacterSelector.characters.GetProfile(characterID);
             charaProfile = Cid2Ydk.ReplaceWithCardName(charaProfile);
 
             var handle = Addressables.LoadAssetAsync<Sprite>("sn" + characterID);
@@ -43,23 +45,22 @@ namespace MDPro3.UI
         protected override void CallHoverOnEvent()
         {
             base.CallHoverOnEvent();
-            Program.instance.character.SetHoverText(charaName);
+            Program.instance.character.GetUI<CharacterSelectorUI>().SetHoverText(charaName);
         }
 
         protected override void CallToggleOnEvent()
         {
             base.CallToggleOnEvent();
             CallHoverOnEvent();
-            Program.instance.character.Manager.GetElement<TextMeshProUGUI>("DetailName").text = charaName;
-            Program.instance.character.Manager.GetElement<TextMeshProUGUI>("DetailDesc").text = charaProfile;
-            Config.Set(Program.instance.character.condition + "Character" + SelectCharacter.player, characterID);
+            Program.instance.character.GetUI<CharacterSelectorUI>().TextDetailName.text = charaName;
+            Program.instance.character.GetUI<CharacterSelectorUI>().TextDetailDescription.text = charaProfile;
+            Config.Set(CharacterSelector.condition + "Character" + CharacterSelectorUI.player, characterID);
             Program.instance.ocgcore.CheckCharaFace();
             Program.instance.character.lastSelectedCharacter = this;
-            Program.instance.currentServant.Selected = Selectable;
-            if (!EventSystem.current.alreadySelecting)
-                EventSystem.current.SetSelectedGameObject(gameObject);
+            Program.instance.currentServant.lastSelectable = Selectable;
+            GetSelectable().Select();
 
-            var detailImage = Program.instance.character.Manager.GetElement<Image>("DetialImage");
+            var detailImage = Program.instance.character.GetUI<CharacterSelectorUI>().ImageDetail;
             detailImage.color = Color.clear;
 
             var handle = Addressables.LoadAssetAsync<Sprite>("sn" + characterID + "_2");
@@ -76,24 +77,19 @@ namespace MDPro3.UI
         {
             AudioManager.PlaySE(SoundLabelClick);
             SetToggleOn();
-            Program.instance.currentServant.Selected = Selectable;
+            Program.instance.currentServant.lastSelectable = Selectable;
         }
 
         protected override int GetButtonsCount()
         {
-            return Program.instance.character.GetCurrentSerialCount();
+            return Program.instance.character.GetUI<CharacterSelectorUI>().GetCurrentSerialCount();
         }
 
-        private GridLayoutGroup m_grid;
-        private GridLayoutGroup Grid
-        {
-            get
-            {
-                if (m_grid == null)
-                    m_grid = Program.instance.character.Manager.GetElement<ScrollRect>("ScrollRect").content.GetComponent<GridLayoutGroup>();
-                return m_grid;
-            }
-        }
+        private static GridLayoutGroup m_grid;
+        private static GridLayoutGroup Grid =>
+            m_grid = m_grid != null ? m_grid
+            : Program.instance.character.GetUI<CharacterSelectorUI>()
+            .ScrollRect.GetComponent<GridLayoutGroup>();
 
         protected override int GetColumnsCount()
         {

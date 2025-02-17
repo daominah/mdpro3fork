@@ -190,6 +190,7 @@ namespace MDPro3
             WasGamepadStartPressed = gamepadStartAction.WasPressedThisFrame();
 
             #region Mouse
+
             MouseLeftDown = leftClickAction.WasPressedThisFrame();
             MouseRightDown = rightClickAction.WasPressedThisFrame();
             MouseMiddleDown = middleClickAction.WasPressedThisFrame();
@@ -201,9 +202,11 @@ namespace MDPro3
             MouseMiddleUp = middleClickAction.WasReleasedThisFrame();
 
             lastMousePos = MousePos;
+
             #endregion
 
             #region Navigation
+
             if (MoveInput.x > 0f)
             {
                 if(rightPressingTime == 0f)
@@ -311,9 +314,11 @@ namespace MDPro3
                     }
                 }
             }
+
             #endregion
 
             #region Hover Object
+
             HoverObject = null;
             if (Program.instance.camera_.cameraMain.gameObject.activeInHierarchy
                 && !EventSystem.current.IsPointerOverGameObject())
@@ -322,7 +327,9 @@ namespace MDPro3
                 if (Physics.Raycast(ray, out var hit))
                     HoverObject = hit.collider.gameObject;
             }
+
             #endregion
+
         }
 
         private void MouseMovedEvent()
@@ -336,7 +343,7 @@ namespace MDPro3
             StartCoroutine(OnControlsChangedAsync(input));
         }
 
-        IEnumerator OnControlsChangedAsync(PlayerInput input)
+        private IEnumerator OnControlsChangedAsync(PlayerInput input)
         {
             yield return null;
             gamepadType = GamepadType.None;
@@ -373,6 +380,7 @@ namespace MDPro3
         }
 
         #region Rumble
+
         public void Rumble(float lowFrequency, float highFrequence, float duration)
         {
             if (!Config.GetBool("Rumble", true))
@@ -407,6 +415,7 @@ namespace MDPro3
         {
             instance.Rumble(0.1f, 1f, 0.1f);
         }
+
         public static void RumbleForDown()
         {
             instance.Rumble(1f, 0.1f, 0.1f);
@@ -415,7 +424,9 @@ namespace MDPro3
         #endregion
 
         #region CursorVisibility
+
         private bool ignoreNextCursorMove;
+
         private void ShowCursor()
         {
             if (ignoreNextCursorMove)
@@ -434,6 +445,7 @@ namespace MDPro3
             Cursor.visible = false;
             OnMouseCursorHide?.Invoke();
         }
+
         #endregion
 
         #region State

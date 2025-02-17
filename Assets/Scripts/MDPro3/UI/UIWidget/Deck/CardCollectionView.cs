@@ -1,4 +1,4 @@
-using MDPro3.YGOSharp;
+using MDPro3.Duel.YGOSharp;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
@@ -7,11 +7,14 @@ using UnityEngine.AddressableAssets;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using MDPro3.Servant;
+using MDPro3.UI.ServantUI;
 
 namespace MDPro3.UI
 {
     public class CardCollectionView : UIWidget
     {
+
         #region Elements
 
         #region Root
@@ -62,7 +65,7 @@ namespace MDPro3.UI
 
         private const string LABEL_IPT_SEARCH = "FilterAndSortArea/InputField";
         private SelectionInputField m_InputSearch;
-        protected SelectionInputField InputSearch =>
+        public SelectionInputField InputSearch =>
             m_InputSearch = m_InputSearch != null ? m_InputSearch
             : Manager.GetNestedElement<SelectionInputField>(LABEL_IPT_SEARCH);
 
@@ -177,7 +180,7 @@ namespace MDPro3.UI
         }
         [HideInInspector] public Area area = Area.Collection;
         [HideInInspector] public Area defaultArea = Area.Collection;
-        public bool showingRelatedCards;
+        [HideInInspector] public bool showingRelatedCards;
 
         public enum SortOrder
         {
@@ -197,12 +200,13 @@ namespace MDPro3.UI
         public SuperScrollView superScrollView;
         public static List<long> filters = new();
         public static string packName = string.Empty;
-        public List<int> historyCards = new();
-        public List<int> printedCards;
+        [HideInInspector] public List<int> historyCards = new();
+        [HideInInspector] public List<int> printedCards;
 
         #endregion
 
         #region Public Functions
+
         public void SetNoItemButtonNavigationEvent(MoveDirection direction, UnityAction action)
         {
             ButtonNoItem.SetNavigationEvent(direction, action);
@@ -431,7 +435,7 @@ namespace MDPro3.UI
                     .RefreshCountIcon();
         }
 
-        public void SetCardInfoType(DeckEditor.CardInfoType type)
+        public void SetCardInfoType(DeckEditorUI.CardInfoType type)
         {
             foreach (var go in superScrollView.gameObjects)
                 go.GetComponent<SelectionButton_CardInCollection>()
@@ -545,7 +549,7 @@ namespace MDPro3.UI
                 DropArea.SetShowLabel(UIHover.LABEL_CANNOTADDBOOKMARK);
             else
                 DropArea.SetShowLabel(UIHover.LABEL_ADDBOOKMARK);
-            if (DeckEditor.useMobileLayout)
+            if (DeckEditor.UseMobileLayout)
             {
                 DropArea.SetShowLabel(UIHover.LABEL_RIGHT);
                 DropArea.SetShowLabel(UIHover.LABEL_MAINDECK);
@@ -569,10 +573,10 @@ namespace MDPro3.UI
             superScrollView = new SuperScrollView
             (
                 6, 
-                DeckEditor.useMobileLayout ? 158 : 88,
-                DeckEditor.useMobileLayout ? 239 : 143,
-                DeckEditor.useMobileLayout ? 10 : 5,
-                DeckEditor.useMobileLayout ? 10 : 5,
+                DeckEditor.UseMobileLayout ? 158 : 88,
+                DeckEditor.UseMobileLayout ? 239 : 143,
+                DeckEditor.UseMobileLayout ? 10 : 5,
+                DeckEditor.UseMobileLayout ? 10 : 5,
                 Template, ItemOnListRefresh, ScrollRect
             );
 
@@ -585,7 +589,7 @@ namespace MDPro3.UI
 
             ButtonRelatedCard.SetClickEvent(() =>
             {
-                Program.instance.deckEditor.ShowDetail(relatedCardData);
+                Program.instance.deckEditor.GetUI<DeckEditorUI>().ShowDetail(relatedCardData);
             });
             ButtonClose.SetClickEvent(HideRelatedCard);
             if (DeckEditor.condition != DeckEditor.Condition.ChangeSide)
@@ -620,7 +624,7 @@ namespace MDPro3.UI
                 args.Add(arg);
             }
             superScrollView.Print(args);
-            if (Program.instance.deckEditor._ResponseRegion == DeckEditor.ResponseRegion.Collection)
+            if (Program.instance.deckEditor.ResponseRegion == DeckEditorUI.ResponseRegion.Collection)
                 SelectDefaultItem();
         }
 
@@ -637,7 +641,7 @@ namespace MDPro3.UI
                 if(DeckEditor.condition != DeckEditor.Condition.ChangeSide)
                     DropArea.SetShowLabel(UIHover.LABEL_REMOVEDECK);
             }
-            if (DeckEditor.useMobileLayout)
+            if (DeckEditor.UseMobileLayout)
             {
                 DropArea.SetShowLabel(UIHover.LABEL_MAINDECK);
                 DropArea.SetShowLabel(UIHover.LABEL_EXTRADECK);

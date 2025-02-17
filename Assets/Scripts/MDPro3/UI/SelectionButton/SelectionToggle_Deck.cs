@@ -8,6 +8,8 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using MDPro3.Servant;
+using MDPro3.UI.ServantUI;
 
 namespace MDPro3.UI
 {
@@ -96,7 +98,7 @@ namespace MDPro3.UI
             if (index == 0)
                 yield break;
 
-            while (Program.instance.selectDeck.inTransition)
+            while (Program.instance.deckSelector.inTransition)
                 yield return null;
 
             for (int i = 0; i < transform.GetSiblingIndex(); i++)
@@ -115,7 +117,7 @@ namespace MDPro3.UI
             if (index == 0)
                 yield break;
 
-            while (Program.instance.selectDeck.inTransition)
+            while (Program.instance.deckSelector.inTransition)
                 yield return null;
 
             Material pMat = null;
@@ -197,7 +199,7 @@ namespace MDPro3.UI
             if(index == 0)
             {
                 AudioManager.PlaySE(SoundLabelClick);
-                Program.instance.selectDeck.DeckCreate();
+                Program.instance.deckSelector.GetUI<DeckSelectorUI>().DeckCreate();
                 return;
             }
 
@@ -207,12 +209,12 @@ namespace MDPro3.UI
                 if (isOn)
                 {
                     Manager.GetElement("IconOn").SetActive(true);
-                    Program.instance.selectDeck.superScrollView.items[index].args[6] = "1";
+                    Program.instance.deckSelector.GetUI<DeckSelectorUI>().superScrollView.items[index].args[6] = "1";
                 }
                 else
                 {
                     Manager.GetElement("IconOn").SetActive(false);
-                    Program.instance.selectDeck.superScrollView.items[index].args[6] = "0";
+                    Program.instance.deckSelector.GetUI<DeckSelectorUI>().superScrollView.items[index].args[6] = "0";
                 }
                 AudioManager.PlaySE(isOn ? SoundLabelClickOn : SoundLabelClickOff);
             }
@@ -220,32 +222,22 @@ namespace MDPro3.UI
             {
                 AudioManager.PlaySE(SoundLabelClick);
                 Config.Set("DeckInUse", deckName);
-                if (SelectDeck.condition == SelectDeck.Condition.ForEdit)
+                if (DeckSelector.condition == DeckSelector.Condition.ForEdit)
                 {
-                    if (Keyboard.current != null && Keyboard.current.ctrlKey.isPressed)
-                    {
-                        Program.instance.editDeck.SwitchCondition(EditDeck.Condition.EditDeck);
-                        Program.instance.ShiftToServant(Program.instance.editDeck);
-                    }
-                    else
-                    {
-                        Program.instance.deckEditor.SwitchCondition(DeckEditor.Condition.EditDeck);
-                        Program.instance.ShiftToServant(Program.instance.deckEditor);
-                    }
+                    Program.instance.deckEditor.SwitchCondition(DeckEditor.Condition.EditDeck);
+                    Program.instance.ShiftToServant(Program.instance.deckEditor);
                 }
-                else if (SelectDeck.condition == SelectDeck.Condition.MyCard)
+                else if (DeckSelector.condition == DeckSelector.Condition.MyCard)
                 {
                     Program.instance.ShiftToServant(Program.instance.online);
                 }
-                else if (SelectDeck.condition == SelectDeck.Condition.ForDuel)
+                else if (DeckSelector.condition == DeckSelector.Condition.ForDuel)
                 {
                     Program.instance.ShiftToServant(Program.instance.room);
                 }
-                else if (SelectDeck.condition == SelectDeck.Condition.ForSolo)
+                else if (DeckSelector.condition == DeckSelector.Condition.ForSolo)
                 {
                     Program.instance.ShiftToServant(Program.instance.solo);
-                    var btnDeck = Program.instance.solo.Manager.GetElement<SelectionButton>("ButtonDeck");
-                    btnDeck.SetButtonText(deckName);
                 }
             }
         }
@@ -260,8 +252,8 @@ namespace MDPro3.UI
             HoverOn();
             if (playSE)
                 AudioManager.PlaySE(SoundLabelSelectedGamePad);
-            Program.instance.currentServant.Selected = Selectable;
-            Program.instance.selectDeck.lastSelectedDeckItem = this;
+            Program.instance.currentServant.lastSelectable = Selectable;
+            Program.instance.deckSelector.lastSelectedDeckItem = this;
             foreach (var ccg in transform.GetComponentsInChildren<ColorContainerGraphic>(true))
                 ccg.SetColor(SelectMode.Selected, hovering ? StatusMode.Enter : StatusMode.Normal, Selectable.interactable);
         }
@@ -363,7 +355,7 @@ namespace MDPro3.UI
         {
             toggleMode = true;
             isOn = false;
-            Program.instance.selectDeck.superScrollView.items[index].args[6] = "0";
+            Program.instance.deckSelector.GetUI<DeckSelectorUI>().superScrollView.items[index].args[6] = "0";
 
             Manager.GetElement("SelectedStateToggle").SetActive(true);
             Manager.GetElement("IconOn").SetActive(false);
@@ -409,12 +401,12 @@ namespace MDPro3.UI
 
         protected override int GetButtonsCount()
         {
-            return Program.instance.selectDeck.superScrollView.items.Count;
+            return Program.instance.deckSelector.GetUI<DeckSelectorUI>().superScrollView.items.Count;
         }
 
         protected override int GetColumnsCount()
         {
-            return Program.instance.selectDeck.superScrollView.GetColumnCount();
+            return Program.instance.deckSelector.GetUI<DeckSelectorUI>().superScrollView.GetColumnCount();
         }
 
 

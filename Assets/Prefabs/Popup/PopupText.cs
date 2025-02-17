@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using MDPro3.UI.PropertyOverride;
 
 namespace MDPro3.UI.Popup
 {
@@ -19,7 +20,7 @@ namespace MDPro3.UI.Popup
             text.horizontalAlignment = alignment;
 
             text.GetComponent<ContentSizeFitter>().SetLayoutVertical();
-            var preferredHeight = text.GetComponent<RectTransform>().rect.height + (PropertyOverrider.PropertyOverrider.NeedMobileLayout() ? 40f : 32f);
+            var preferredHeight = text.GetComponent<RectTransform>().rect.height + (PropertyOverrider.NeedMobileLayout() ? 40f : 32f);
             Manager.GetElement<LayoutElement>("EntryButtonsScrollView").preferredHeight = preferredHeight;
         }
 

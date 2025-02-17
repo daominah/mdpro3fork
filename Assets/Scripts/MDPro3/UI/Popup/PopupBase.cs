@@ -97,7 +97,7 @@ namespace MDPro3.UI
                 servant.returnAction = null;
                 Program.instance.ui_.currentPopup = lastPopup;
                 if (lastPopup == null && Cursor.lockState == CursorLockMode.Locked)
-                    Program.instance.currentServant.SelectLastSelectable();
+                    Program.instance.currentServant.Select();
 
                 whenQuitDo?.Invoke();
             });

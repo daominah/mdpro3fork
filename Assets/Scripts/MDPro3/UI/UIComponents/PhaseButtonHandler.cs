@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using YgomSystem.ElementSystem;
-using MDPro3.YGOSharp.OCGWrapper.Enums;
+using MDPro3.Duel.YGOSharp;
+using MDPro3.UI.ServantUI;
+using NUnit.Framework;
 
 namespace MDPro3.UI
 {
@@ -75,8 +77,8 @@ namespace MDPro3.UI
                             tasks.Add(DuelPhase.Main2.ToString());
                         if (endPhase)
                             tasks.Add(DuelPhase.End.ToString());
-                        Program.instance.ocgcore.ShowPopupPhase(tasks);
-                        Program.instance.ocgcore.list.Hide();
+                        Program.instance.ocgcore.GetUI<OcgCoreUI>().ShowPopupPhase(tasks);
+                        Program.instance.ocgcore.GetUI<OcgCoreUI>().CardList.Hide();
                     }
                 }
                 if (UserInput.HoverObject == collider_.gameObject && UserInput.MouseLeftDown)

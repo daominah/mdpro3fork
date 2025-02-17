@@ -4,8 +4,9 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using MDPro3.YGOSharp.OCGWrapper.Enums;
+using MDPro3.Duel.YGOSharp;
 using UnityEngine.EventSystems;
+using MDPro3.UI.ServantUI;
 
 namespace MDPro3.UI
 {
@@ -246,7 +247,7 @@ namespace MDPro3.UI
                             }
                             selections.Add(InterString.Get("放弃"));
                             responses.Add(-233);
-                            Program.instance.ocgcore.ShowPopupSelection(selections, responses);
+                            Program.instance.ocgcore.GetUI<OcgCoreUI>().ShowPopupSelection(selections, responses);
                         }
                         break;
                 }
@@ -264,9 +265,9 @@ namespace MDPro3.UI
                                     break;
                                 }
                 if (type == ButtonType.Activate)
-                    Program.instance.ocgcore.ShowPopupSelectCard(InterString.Get("选择效果发动。"), responseCards, 1, 1, true, false);
+                    Program.instance.ocgcore.GetUI<OcgCoreUI>().ShowPopupSelectCard(InterString.Get("选择效果发动。"), responseCards, 1, 1, true, false);
                 else
-                    Program.instance.ocgcore.ShowPopupSelectCard(InterString.Get("选择怪兽特殊召唤。"), responseCards, 1, 1, true, false);
+                    Program.instance.ocgcore.GetUI<OcgCoreUI>().ShowPopupSelectCard(InterString.Get("选择怪兽特殊召唤。"), responseCards, 1, 1, true, false);
             }
             else if (response[0] == -3)
             {

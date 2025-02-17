@@ -1,0 +1,248 @@
+using MDPro3.Duel.YGOSharp;
+using MDPro3.Servant;
+using System.Collections.Generic;
+using System.Data;
+using System.Drawing.Imaging;
+using System.IO;
+using TMPro;
+using UnityEngine;
+using UnityEngine.EventSystems;
+using static MDPro3.UI.ChatPanel;
+using static YgomGame.Duel.BattleAimingEffect;
+using static YgomGame.Room.RoomViewController.RoomBehaviour;
+
+namespace MDPro3.UI.ServantUI
+{
+    public class RoomServantUI : ServantUI
+    {
+
+        #region Elements
+
+        private const string LABEL_TXT_ROOMINFO = "TextRoomInfo";
+        private TextMeshProUGUI m_TextRoomInfo;
+        private TextMeshProUGUI TextRoomInfo =>
+            m_TextRoomInfo = m_TextRoomInfo != null ? m_TextRoomInfo
+            : Manager.GetElement<TextMeshProUGUI>(LABEL_TXT_ROOMINFO);
+
+        private const string LABEL_SBN_DECKSELECTOR = "DeckSelector";
+        private SelectionButton_DeckSelector m_ButtonDeckSelector;
+        private SelectionButton_DeckSelector ButtonDeckSelector =>
+            m_ButtonDeckSelector = m_ButtonDeckSelector != null ? m_ButtonDeckSelector
+            : Manager.GetElement<SelectionButton_DeckSelector>(LABEL_SBN_DECKSELECTOR);
+
+        private const string LABEL_SBN_PLAYER0 = "ButtonPlayer0";
+        private SelectionButton_RoomPlayer m_ButtonPlayer0;
+        private SelectionButton_RoomPlayer ButtonPlayer0 =>
+            m_ButtonPlayer0 = m_ButtonPlayer0 != null ? m_ButtonPlayer0
+            : Manager.GetElement<SelectionButton_RoomPlayer>(LABEL_SBN_PLAYER0);
+
+        private const string LABEL_SBN_PLAYER1 = "ButtonPlayer1";
+        private SelectionButton_RoomPlayer m_ButtonPlayer1;
+        private SelectionButton_RoomPlayer ButtonPlayer1 =>
+            m_ButtonPlayer1 = m_ButtonPlayer1 != null ? m_ButtonPlayer1
+            : Manager.GetElement<SelectionButton_RoomPlayer>(LABEL_SBN_PLAYER1);
+
+        private const string LABEL_SBN_PLAYER2 = "ButtonPlayer2";
+        private SelectionButton_RoomPlayer m_ButtonPlayer2;
+        private SelectionButton_RoomPlayer ButtonPlayer2 =>
+            m_ButtonPlayer2 = m_ButtonPlayer2 != null ? m_ButtonPlayer2
+            : Manager.GetElement<SelectionButton_RoomPlayer>(LABEL_SBN_PLAYER2);
+
+        private const string LABEL_SBN_PLAYER3 = "ButtonPlayer3";
+        private SelectionButton_RoomPlayer m_ButtonPlayer3;
+        private SelectionButton_RoomPlayer ButtonPlayer3 =>
+            m_ButtonPlayer3 = m_ButtonPlayer3 != null ? m_ButtonPlayer3
+            : Manager.GetElement<SelectionButton_RoomPlayer>(LABEL_SBN_PLAYER3);
+
+        private const string LABEL_SBN_TODUEL = "ButtonToDuel";
+        private SelectionButton m_ButtonToDuel;
+        private SelectionButton ButtonToDuel =>
+            m_ButtonToDuel = m_ButtonToDuel != null ? m_ButtonToDuel
+            : Manager.GetElement<SelectionButton>(LABEL_SBN_TODUEL);
+
+        private const string LABEL_SBN_READY = "ButtonReady";
+        private SelectionButton m_ButtonReady;
+        private SelectionButton ButtonReady =>
+            m_ButtonReady = m_ButtonReady != null ? m_ButtonReady
+            : Manager.GetElement<SelectionButton>(LABEL_SBN_READY);
+
+        private const string LABEL_SBN_TOWATCH = "ButtonToWatch";
+        private SelectionButton m_ButtonToWatch;
+        private SelectionButton ButtonToWatch =>
+            m_ButtonToWatch = m_ButtonToWatch != null ? m_ButtonToWatch
+            : Manager.GetElement<SelectionButton>(LABEL_SBN_TOWATCH);
+
+        private const string LABEL_SBN_START = "ButtonStart";
+        private SelectionButton m_ButtonStart;
+        private SelectionButton ButtonStart =>
+            m_ButtonStart = m_ButtonStart != null ? m_ButtonStart
+            : Manager.GetElement<SelectionButton>(LABEL_SBN_START);
+
+        #endregion
+
+        private List<SelectionButton_RoomPlayer> roomPlayers;
+
+        private void Awake()
+        {
+            roomPlayers = new List<SelectionButton_RoomPlayer>()
+            { ButtonPlayer0, ButtonPlayer1, ButtonPlayer2, ButtonPlayer3 };
+
+            Realize();
+        }
+
+        public void SelectMiddleSelectableFromRight()
+        {
+            if (!gameObject.activeSelf)
+                return;
+
+            UserInput.NextSelectionIsAxis = true;
+
+            if (ButtonStart.gameObject.activeSelf)
+                ButtonStart.GetSelectable().Select();
+            else
+                ButtonToWatch.GetSelectable().Select();
+        }
+
+        public void Realize()
+        {
+            var roomInfo = string.Empty;
+            var rn = "\r\n";
+            if (RoomServant.FromLocalHost)
+            {
+                foreach (var ip in Tools.GetLocalIPv4())
+                    roomInfo += InterString.Get("本机地址：") + ip + rn;
+                roomInfo += InterString.Get("端口：") + "7911" + rn;
+            }
+            roomInfo += StringHelper.GetUnsafe(1227) + StringHelper.GetUnsafe(1244 + RoomServant.Mode) + rn;//决斗模式：
+            roomInfo += StringHelper.GetUnsafe(1236) + StringHelper.GetUnsafe(1259 + Program.instance.ocgcore.MasterRule) + rn;//规则：
+            roomInfo += StringHelper.GetUnsafe(1225) + StringHelper.GetUnsafe(1481 + RoomServant.Rule) + rn;//卡片允许：
+            roomInfo += StringHelper.GetUnsafe(1226) + BanlistManager.GetName(RoomServant.LFList) + rn;//禁限卡表
+            roomInfo += StringHelper.GetUnsafe(1231) + RoomServant.StartLp + rn;//初始基本分：
+            roomInfo += StringHelper.GetUnsafe(1232) + RoomServant.StartHand + rn;//初始手卡数：
+            roomInfo += StringHelper.GetUnsafe(1233) + RoomServant.DrawCount + rn;//每回合抽卡：
+            roomInfo += StringHelper.GetUnsafe(1237) + RoomServant.TimeLimit + rn;//每回合时间：
+            roomInfo += StringHelper.GetUnsafe(1253) + RoomServant.ObserverCount + rn;//当前观战人数：
+            if (RoomServant.NoCheckDeck) roomInfo += StringHelper.GetUnsafe(1229) + rn;//不检查卡组
+            if (RoomServant.NoShuffleDeck) roomInfo += StringHelper.GetUnsafe(1230);//不洗切卡组
+            TextRoomInfo.text = roomInfo;
+
+            if (!Appearance.loaded)
+                return;
+
+            for (int i = 0; i < 4; i++)
+            {
+                if (RoomServant.players[i] == null)
+                    roomPlayers[i].gameObject.SetActive(false);
+                else
+                {
+                    roomPlayers[i].gameObject.SetActive(true);
+                    roomPlayers[i].SetButtonText(RoomServant.players[i].name);
+                    roomPlayers[i].SetReadyIcon(RoomServant.players[i].ready);
+                    roomPlayers[i].SetButtonTextColor(RoomServant.SelfType == i ? Color.cyan : Color.white);
+
+                    var position = GetPlayerPositon(i);
+                    switch (position)
+                    {
+                        case PlayerPosition.Me:
+                            roomPlayers[i].GetAvatar().material = Appearance.duelFrameMat0;
+                            roomPlayers[i].GetAvatar().sprite = Appearance.duelFace0;
+                            break;
+                        case PlayerPosition.MyTag:
+                            roomPlayers[i].GetAvatar().material = Appearance.duelFrameMat0Tag;
+                            roomPlayers[i].GetAvatar().sprite = Appearance.duelFace0Tag;
+                            break;
+                        case PlayerPosition.Op:
+                            roomPlayers[i].GetAvatar().material = Appearance.duelFrameMat1;
+                            roomPlayers[i].GetAvatar().sprite = Appearance.duelFace1;
+                            break;
+                        case PlayerPosition.OpTag:
+                            roomPlayers[i].GetAvatar().material = Appearance.duelFrameMat1Tag;
+                            roomPlayers[i].GetAvatar().sprite = Appearance.duelFace1Tag;
+                            break;
+                        case PlayerPosition.WatchMe:
+                            roomPlayers[i].GetAvatar().material = Appearance.watchFrameMat0;
+                            roomPlayers[i].GetAvatar().sprite = Appearance.watchFace0;
+                            break;
+                        case PlayerPosition.WatchMyTag:
+                            roomPlayers[i].GetAvatar().material = Appearance.watchFrameMat0Tag;
+                            roomPlayers[i].GetAvatar().sprite = Appearance.watchFace0Tag;
+                            break;
+                        case PlayerPosition.WatchOp:
+                            roomPlayers[i].GetAvatar().material = Appearance.watchFrameMat1;
+                            roomPlayers[i].GetAvatar().sprite = Appearance.watchFace1;
+                            break;
+                        case PlayerPosition.WatchOpTag:
+                            roomPlayers[i].GetAvatar().material = Appearance.watchFrameMat1Tag;
+                            roomPlayers[i].GetAvatar().sprite = Appearance.watchFace1Tag;
+                            break;
+                    }
+                }
+            }
+            if (RoomServant.IsHost)
+            {
+                Manager.GetElement("ButtonStart").SetActive(true);
+                Manager.GetElement("ButtonAddBot").SetActive(true);
+            }
+            else
+            {
+                Manager.GetElement("ButtonStart").SetActive(false);
+                Manager.GetElement("ButtonAddBot").SetActive(false);
+            }
+
+            if (RoomServant.FromSolo)
+                Manager.GetElement("ButtonAddBot").SetActive(false);
+
+            if (RoomServant.SelfType == 7)
+                Manager.GetElement("ButtonReady").SetActive(false);
+            else
+                Manager.GetElement("ButtonReady").SetActive(true);
+
+        }
+
+        public void RefreshDeckSelector()
+        {
+            ButtonDeckSelector.SetConfigDeck(InterString.Get("请点击此处选择卡组"));
+        }
+
+
+        public void OnReady()
+        {
+            if (RoomServant.players[RoomServant.SelfType] == null)
+                return;
+            if (RoomServant.players[RoomServant.SelfType].ready)
+                TcpHelper.CtosMessage_HsNotReady();
+            else
+            {
+                var deckPath = Program.deckPath + Config.Get("DeckInUse", "") + Program.ydkExpansion;
+                if (File.Exists(deckPath))
+                {
+                    TcpHelper.CtosMessage_UpdateDeck(new Deck(deckPath));
+                    TcpHelper.CtosMessage_HsReady();
+                }
+                else
+                    MessageManager.Cast(InterString.Get("请先选择有效的卡组。"));
+            }
+        }
+
+        public void OnToDuel()
+        {
+            TcpHelper.CtosMessage_HsToDuelist();
+        }
+
+        public void OnToObserver()
+        {
+            TcpHelper.CtosMessage_HsToObserver();
+        }
+
+        public void OnStart()
+        {
+            TcpHelper.CtosMessage_HsStart();
+        }
+
+        public void OnKick(int player)
+        {
+            TcpHelper.CtosMessage_HsKick(player);
+        }
+
+    }
+}

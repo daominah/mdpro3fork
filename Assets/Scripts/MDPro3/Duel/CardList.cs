@@ -2,7 +2,8 @@ using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using MDPro3.YGOSharp.OCGWrapper.Enums;
+using MDPro3.Duel.YGOSharp;
+using MDPro3.UI.ServantUI;
 
 namespace MDPro3.UI
 {
@@ -38,9 +39,9 @@ namespace MDPro3.UI
                 RefreshList();
                 baseRect.DOAnchorPosX(-30, transitionTime);
 
-                if (Program.instance.ocgcore.log.showing)
+                if (Program.instance.ocgcore.GetUI<OcgCoreUI>().DuelLog.showing)
                 {
-                    Program.instance.ocgcore.OnLog(true);
+                    Program.instance.ocgcore.GetUI<OcgCoreUI>().OnLog(true);
                     showWithCloseDuelLog = true;
                 }
             }
@@ -66,7 +67,7 @@ namespace MDPro3.UI
             if(showWithCloseDuelLog)
             {
                 showWithCloseDuelLog = false;
-                Program.instance.ocgcore.OnLog();
+                Program.instance.ocgcore.GetUI<OcgCoreUI>().OnLog();
             }
         }
 

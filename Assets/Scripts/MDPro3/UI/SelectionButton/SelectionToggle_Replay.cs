@@ -1,3 +1,4 @@
+using MDPro3.UI.ServantUI;
 using Percy;
 using System.Collections;
 using TMPro;
@@ -15,7 +16,7 @@ namespace MDPro3.UI
         public override void Refresh()
         {
             Manager.GetElement<TextMeshProUGUI>("Title").text = replayName;
-            yrp = Program.instance.replay.CacheYRP(replayName);
+            yrp = Program.instance.replay.GetUI<ReplaySelectorUI>().CacheYRP(replayName);
 
             Manager.GetElement("NumBadge").SetActive(false);
             Manager.GetElement("TextClear").SetActive(false);
@@ -53,24 +54,23 @@ namespace MDPro3.UI
         {
             base.CallToggleOnEvent();
             Program.instance.replay.lastSelectedReplayItem = this;
-            Program.instance.replay.superScrollView.selected = index;
+            Program.instance.replay.GetUI<ReplaySelectorUI>().superScrollView.selected = index;
 
-            var manager = Program.instance.replay.Manager;
-            var tmp = manager.GetElement<TextMeshProUGUI>("TextOverview");
+            var ui = Program.instance.replay.GetUI<ReplaySelectorUI>();
             if (yrp == null)
             {
-                tmp.text = "";
-                manager.GetElement("ButtonPlayer0").SetActive(false);
-                manager.GetElement("ButtonPlayer1").SetActive(false);
-                manager.GetElement("ButtonPlayer2").SetActive(false);
-                manager.GetElement("ButtonPlayer3").SetActive(false);
+                ui.TextOverview.text = string.Empty;
+                ui.ButtonPlayer0.gameObject.SetActive(false);
+                ui.ButtonPlayer1.gameObject.SetActive(false);
+                ui.ButtonPlayer2.gameObject.SetActive(false);
+                ui.ButtonPlayer3.gameObject.SetActive(false);
             }
             else
             {
-                manager.GetElement("ButtonPlayer0").SetActive(true);
-                manager.GetElement("ButtonPlayer1").SetActive(true);
-                manager.GetElement("ButtonPlayer2").SetActive(true);
-                manager.GetElement("ButtonPlayer3").SetActive(true);
+                ui.ButtonPlayer0.gameObject.SetActive(true);
+                ui.ButtonPlayer1.gameObject.SetActive(true);
+                ui.ButtonPlayer2.gameObject.SetActive(true);
+                ui.ButtonPlayer3.gameObject.SetActive(true);
 
                 var description = "";
                 bool tag = false;
@@ -86,26 +86,26 @@ namespace MDPro3.UI
                 if ((yrp.opt & 0x10) > 0)
                     description += StringHelper.GetUnsafe(1230) + "\r\n";
 
-                manager.GetElement<SelectionButton>("ButtonPlayer0").SetButtonText(yrp.playerData[0].name);
-                manager.GetElement<SelectionButton>("ButtonPlayer1").SetButtonText(yrp.playerData[1].name);
+                ui.ButtonPlayer0.SetButtonText(yrp.playerData[0].name);
+                ui.ButtonPlayer1.SetButtonText(yrp.playerData[1].name);
                 if (tag)
                 {
-                    manager.GetElement<SelectionButton>("ButtonPlayer2").SetButtonText(yrp.playerData[2].name);
-                    manager.GetElement<SelectionButton>("ButtonPlayer3").SetButtonText(yrp.playerData[3].name);
+                    ui.ButtonPlayer2.SetButtonText(yrp.playerData[2].name);
+                    ui.ButtonPlayer3.SetButtonText(yrp.playerData[3].name);
                 }
                 else
                 {
-                    manager.GetElement("ButtonPlayer2").SetActive(false);
-                    manager.GetElement("ButtonPlayer3").SetActive(false);
+                    ui.ButtonPlayer2.gameObject.SetActive(false);
+                    ui.ButtonPlayer3.gameObject.SetActive(false);
                 }
 
-                tmp.text = description;
+                ui.TextOverview.text = description;
             }
         }
 
         protected override void CallSubmitEvent()
         {
-            Program.instance.replay.KF_Replay(replayName);
+            Program.instance.replay.GetUI<ReplaySelectorUI>().KF_Replay(replayName);
         }
 
         protected override void OnNavigation(AxisEventData eventData)
@@ -115,11 +115,11 @@ namespace MDPro3.UI
             if (eventData.moveDir == MoveDirection.Right)
             {
                 UserInput.NextSelectionIsAxis = true;
-                var deckButton = Program.instance.replay.Manager.GetElement("ButtonPlayer0");
-                if (deckButton.activeSelf)
-                    EventSystem.current.SetSelectedGameObject(deckButton);
+                var deckButton = Program.instance.replay.GetUI<ReplaySelectorUI>().ButtonPlayer0;
+                if (deckButton.gameObject.activeSelf)
+                    deckButton.GetSelectable().Select();
                 else
-                    EventSystem.current.SetSelectedGameObject(Program.instance.replay.Manager.GetElement("ButtonGod"));
+                    Program.instance.replay.GetUI<ReplaySelectorUI>().ButtonGodView.GetSelectable().Select();
             }
         }
     }

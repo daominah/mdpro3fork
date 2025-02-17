@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using MDPro3.Servant;
 
 namespace MDPro3.UI
 {
@@ -27,7 +28,7 @@ namespace MDPro3.UI
             m_Scrollbar = m_Scrollbar != null ? m_Scrollbar
             : GetComponent<Scrollbar>();
 
-        [SerializeField] Servant parentServant;
+        [SerializeField] Servant.Servant parentServant;
 
         private void Update()
         {

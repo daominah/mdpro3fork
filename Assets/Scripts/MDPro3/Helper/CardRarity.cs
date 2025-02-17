@@ -1,4 +1,4 @@
-using MDPro3.YGOSharp;
+using MDPro3.Duel.YGOSharp;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;

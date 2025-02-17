@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.EventSystems;
+using MDPro3.Servant;
+using MDPro3.UI.ServantUI;
 
 namespace MDPro3.UI
 {
@@ -103,8 +105,10 @@ namespace MDPro3.UI
             if (selfIndex < 0)
                 selfIndex = transform.GetSiblingIndex();
 
-            var count = Program.instance.online.watchListHandler.superScrollView.items.Count;
-            var columes = Program.instance.online.watchListHandler.superScrollView.GetColumnCount();
+            var count = Program.instance.online.GetUI<OnlineServantUI>()
+                .PageMyCard.WatchList.superScrollView.items.Count;
+            var columes = Program.instance.online.GetUI<OnlineServantUI>()
+                .PageMyCard.WatchList.superScrollView.GetColumnCount();
 
             var targetIndex = selfIndex + 1;
 
@@ -112,7 +116,8 @@ namespace MDPro3.UI
             {
                 if (selfIndex % columes == 0)
                 {
-                    Program.instance.online.SelectDeckSelector();
+                    Program.instance.online.GetUI<OnlineServantUI>()
+                        .PageMyCard.ButtonDeckSelector.GetSelectable().Select();
                     return;
                 }
                 targetIndex = index - 1;
@@ -121,7 +126,7 @@ namespace MDPro3.UI
             {
                 if (selfIndex % columes == columes - 1 || index == count - 1)
                 {
-                    Program.instance.online.SelectMyCardDefaultButton();
+                    Program.instance.online.GetUI<OnlineServantUI>().PageMyCard.SelectDefault();
                     return;
                 }
             }

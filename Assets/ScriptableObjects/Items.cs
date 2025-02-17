@@ -5,6 +5,7 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using MDPro3.Utility;
+using MDPro3.Servant;
 
 namespace MDPro3
 {
@@ -398,8 +399,8 @@ namespace MDPro3
                 return diyIconPath;
 
             var currentContent = id.Substring(0, 3);
-            string pathPrefix = "";
-            string pathSuffix = "";
+            string pathPrefix = string.Empty;
+            string pathSuffix = string.Empty;
             switch (currentContent)
             {
                 case "113":

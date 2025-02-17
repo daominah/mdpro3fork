@@ -1,3 +1,4 @@
+using MDPro3.UI.ServantUI;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -36,9 +37,9 @@ namespace MDPro3.UI
         protected override void CallSubmitEvent()
         {
             _SortOrder = sortOrder;
-            Program.instance.deckEditor.cardCollectionView.SetSortIcon(GetIconSprite());
-            Program.instance.deckEditor.cardCollectionView.SetSortText(GetSortText());
-            Program.instance.deckEditor.cardCollectionView.PrintSearchCards();
+            Program.instance.deckEditor.GetUI<DeckEditorUI>().CardCollectionView.SetSortIcon(GetIconSprite());
+            Program.instance.deckEditor.GetUI<DeckEditorUI>().CardCollectionView.SetSortText(GetSortText());
+            Program.instance.deckEditor.GetUI<DeckEditorUI>().CardCollectionView.PrintSearchCards();
             Program.instance.ui_.currentPopupB.Hide();
         }
 

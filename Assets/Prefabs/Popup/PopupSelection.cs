@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using MDPro3.UI.PropertyOverride;
 
 namespace MDPro3.UI.Popup
 {
@@ -22,10 +23,10 @@ namespace MDPro3.UI.Popup
             Manager.GetElement<TextMeshProUGUI>("MessageText").text = args[1];
             Manager.GetElement("MessageArea").SetActive(args[1] != string.Empty);
 
-            var itemWidth = PropertyOverrider.PropertyOverrider.NeedMobileLayout() ? 940f : 748f;
-            var itemHeight = PropertyOverrider.PropertyOverrider.NeedMobileLayout() ? 98f : 72f;
-            var topPadding = PropertyOverrider.PropertyOverrider.NeedMobileLayout() ? 47f : 30f;
-            var space = PropertyOverrider.PropertyOverrider.NeedMobileLayout() ? 20f : 16f;
+            var itemWidth = PropertyOverrider.NeedMobileLayout() ? 940f : 748f;
+            var itemHeight = PropertyOverrider.NeedMobileLayout() ? 98f : 72f;
+            var topPadding = PropertyOverrider.NeedMobileLayout() ? 47f : 30f;
+            var space = PropertyOverrider.NeedMobileLayout() ? 20f : 16f;
 
             var selectionCount = args.Count - 2;
             var preferredHeight = selectionCount * (itemHeight + space) + topPadding * 2 - space;

@@ -4,9 +4,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using MDPro3.YGOSharp;
-using MDPro3.YGOSharp.OCGWrapper.Enums;
+using MDPro3.Duel.YGOSharp;
 using MDPro3.UI;
+using MDPro3.Servant;
+using MDPro3.UI.ServantUI;
 
 namespace MDPro3.Duel
 {
@@ -340,7 +341,7 @@ namespace MDPro3.Duel
                         item = Instantiate(core.container.duelLogChaining);
                         item.transform.GetChild(0).GetComponent<Button>().onClick.AddListener(() =>
                         {
-                            core.description.Show(card, null);
+                            core.GetUI<OcgCoreUI>().CardDescription.Show(card, null);
                         });
                         item.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = core.cardsInChain.Count.ToString();
                         item.transform.GetChild(1).GetChild(0).GetComponent<Text>().color =
@@ -579,7 +580,7 @@ namespace MDPro3.Duel
                     item = Instantiate(core.container.duelLogChaining);
                     item.transform.GetChild(0).GetComponent<Button>().onClick.AddListener(() =>
                     {
-                        core.description.Show(card, null);
+                        core.GetUI<OcgCoreUI>().CardDescription.Show(card, null);
                     });
                     item.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = chainSolving.ToString();
                     item.transform.GetChild(1).GetChild(0).GetComponent<Text>().color =
@@ -619,7 +620,7 @@ namespace MDPro3.Duel
                         cardFace1.transform.localEulerAngles = new Vector3(0f, 0f, 90f);
                     cardFace1.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(() =>
                     {
-                        core.description.Show(null, null, code, from);
+                        core.GetUI<OcgCoreUI>().CardDescription.Show(null, null, code, from);
                     });
                     var icons = TextureManager.container.GetLocationIcons(from);
                     item.transform.GetChild(4).GetComponent<Image>().sprite = icons[0];
@@ -631,9 +632,13 @@ namespace MDPro3.Duel
                         item.transform.GetChild(6).gameObject.SetActive(false);
                         item.transform.GetChild(7).gameObject.SetActive(false);
                         item.transform.GetChild(8).GetComponent<Image>().material =
-                            from.controller == 0 ? core.player1Frame.material : core.player0Frame.material;
+                            from.controller == 0 
+                            ? core.GetUI<OcgCoreUI>().AvatarPlayer1.material 
+                            : core.GetUI<OcgCoreUI>().AvatarPlayer0.material;
                         item.transform.GetChild(8).GetComponent<Image>().sprite =
-                            from.controller == 0 ? core.player1Frame.sprite : core.player0Frame.sprite;
+                            from.controller == 0 
+                            ? core.GetUI<OcgCoreUI>().AvatarPlayer1.sprite 
+                            : core.GetUI<OcgCoreUI>().AvatarPlayer0.sprite;
                     }
                     else
                     {
@@ -656,7 +661,7 @@ namespace MDPro3.Duel
                             cardFace2.transform.GetChild(0).gameObject.SetActive(false);
                         cardFace2.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(() =>
                         {
-                            core.description.Show(null, null, code2, to);
+                            core.GetUI<OcgCoreUI>().CardDescription.Show(null, null, code2, to);
                         });
                     }
                     AddLog(item);
@@ -668,10 +673,10 @@ namespace MDPro3.Duel
                     else
                         item.transform.GetChild(1).GetComponent<Image>().color = DuelLog.opColor;
                     item.transform.GetChild(2).GetComponent<Text>().text = InterString.Get("µÚ[?]»ØºÏ", core.turns.ToString());
-                    item.transform.GetChild(3).GetComponent<Image>().material = core.player0Frame.material;
-                    item.transform.GetChild(4).GetComponent<Image>().material = core.player1Frame.material;
-                    item.transform.GetChild(3).GetComponent<Image>().sprite = core.player0Frame.sprite;
-                    item.transform.GetChild(4).GetComponent<Image>().sprite = core.player1Frame.sprite;
+                    item.transform.GetChild(3).GetComponent<Image>().material = core.GetUI<OcgCoreUI>().AvatarPlayer0.material;
+                    item.transform.GetChild(4).GetComponent<Image>().material = core.GetUI<OcgCoreUI>().AvatarPlayer1.material;
+                    item.transform.GetChild(3).GetComponent<Image>().sprite = core.GetUI<OcgCoreUI>().AvatarPlayer0.sprite;
+                    item.transform.GetChild(4).GetComponent<Image>().sprite = core.GetUI<OcgCoreUI>().AvatarPlayer1.sprite;
                     item.transform.GetChild(7).GetComponent<Text>().text = core.life0.ToString();
                     item.transform.GetChild(8).GetComponent<Text>().text = core.life1.ToString();
                     AddLog(item);
@@ -729,7 +734,7 @@ namespace MDPro3.Duel
                             StartCoroutine(Program.instance.texture_.LoadCardToRawImageWithoutMaterialAsync(cardFace, code, true));
                             item.transform.GetChild(0).GetComponent<Button>().onClick.AddListener(() =>
                             {
-                                core.description.Show(null, null, code, new GPS());
+                                core.GetUI<OcgCoreUI>().CardDescription.Show(null, null, code, new GPS());
                             });
                         }
                         AddLog(item);
@@ -758,7 +763,7 @@ namespace MDPro3.Duel
                     StartCoroutine(Program.instance.texture_.LoadCardToRawImageWithoutMaterialAsync(cardFace, card.GetData().Id, true));
                     cardFace.transform.GetChild(0).GetComponent<Button>().onClick.AddListener(() =>
                     {
-                        core.description.Show(null, null, code, gps);
+                        core.GetUI<OcgCoreUI>().CardDescription.Show(null, null, code, gps);
                     });
                     icons = TextureManager.container.GetLocationIcons(gps);
                     if (icons.Count == 2)
@@ -825,7 +830,7 @@ namespace MDPro3.Duel
             }
             cardFace.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(() =>
             {
-                core.description.Show(null, null, code, to == null ? from : to);
+                core.GetUI<OcgCoreUI>().CardDescription.Show(null, null, code, to == null ? from : to);
             });
             if (to != null && (to.position & (uint)CardPosition.Defence) > 0 && (to.location & (uint)CardLocation.MonsterZone) > 0)
                 cardFace.transform.localEulerAngles = new Vector3(0f, 0f, 90f);
@@ -907,8 +912,8 @@ namespace MDPro3.Duel
             var targetColor = player == 0 ? DuelLog.myColor : DuelLog.opColor;
             item.transform.GetChild(1).GetComponent<Image>().color = targetColor;
             var frame = item.transform.GetChild(2).GetComponent<Image>();
-            frame.material = player == 0 ? core.player0Frame.material : core.player1Frame.material;
-            frame.sprite = player == 0 ? core.player0Frame.sprite : core.player1Frame.sprite;
+            frame.material = player == 0 ? core.GetUI<OcgCoreUI>().AvatarPlayer0.material : core.GetUI<OcgCoreUI>().AvatarPlayer1.material;
+            frame.sprite = player == 0 ? core.GetUI<OcgCoreUI>().AvatarPlayer0.sprite : core.GetUI<OcgCoreUI>().AvatarPlayer1.sprite;
             item.transform.GetChild(3).GetComponent<Text>().text = reason;
             item.transform.GetChild(4).GetComponent<Text>().text = value.ToString();
             item.transform.GetChild(4).GetComponent<Text>().color = red ? DuelLog.damageColor : DuelLog.recoverColor;

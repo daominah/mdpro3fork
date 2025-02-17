@@ -3,9 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using YgomGame.Bg;
-using MDPro3.YGOSharp.OCGWrapper.Enums;
+using MDPro3.Duel.YGOSharp;
 using MDPro3.UI;
 using static MDPro3.GameCard;
+using MDPro3.UI.ServantUI;
+using NUnit.Framework;
 
 namespace MDPro3
 {
@@ -57,7 +59,7 @@ namespace MDPro3
                 if (graveCountShowing)
                 {
                     graveCountShowing = false;
-                    Program.instance.ocgcore.HidePlaceCount();
+                    Program.instance.ocgcore.GetUI<OcgCoreUI>().HidePlaceCount();
                 }
             }
 
@@ -80,20 +82,20 @@ namespace MDPro3
                 if (excludeCountShowing)
                 {
                     excludeCountShowing = false;
-                    Program.instance.ocgcore.HidePlaceCount();
+                    Program.instance.ocgcore.GetUI<OcgCoreUI>().HidePlaceCount();
                 }
             }
             if (UserInput.HoverObject == grave)
                 if (!graveCountShowing)
                 {
                     graveCountShowing = true;
-                    Program.instance.ocgcore.ShowLocationCount(new GPS { location = (uint)CardLocation.Grave, controller = (uint)controller });
+                    Program.instance.ocgcore.GetUI<OcgCoreUI>().ShowLocationCount(new GPS { location = (uint)CardLocation.Grave, controller = (uint)controller });
                 }
             if (UserInput.HoverObject == exclude)
                 if (!excludeCountShowing)
                 {
                     excludeCountShowing = true;
-                    Program.instance.ocgcore.ShowLocationCount(new GPS { location = (uint)CardLocation.Removed, controller = (uint)controller });
+                    Program.instance.ocgcore.GetUI<OcgCoreUI>().ShowLocationCount(new GPS { location = (uint)CardLocation.Removed, controller = (uint)controller });
                 }
         }
         bool graveButtonsCreated = false;
@@ -103,7 +105,7 @@ namespace MDPro3
             AudioManager.PlaySE("SE_DUEL_SELECT");
 
             List<GameCard> cards = Program.instance.ocgcore.GCS_GetLocationCards(controller, (int)CardLocation.Grave);
-            Program.instance.ocgcore.list.Show(cards, CardLocation.Grave, controller);
+            Program.instance.ocgcore.GetUI<OcgCoreUI>().CardList.Show(cards, CardLocation.Grave, controller);
 
             if (Program.instance.ocgcore.returnAction != null)
                 return;
@@ -141,7 +143,7 @@ namespace MDPro3
             AudioManager.PlaySE("SE_DUEL_SELECT");
 
             List<GameCard> cards = Program.instance.ocgcore.GCS_GetLocationCards(controller, (int)CardLocation.Removed);
-            Program.instance.ocgcore.list.Show(cards, CardLocation.Removed, controller);
+            Program.instance.ocgcore.GetUI<OcgCoreUI>().CardList.Show(cards, CardLocation.Removed, controller);
 
             if (Program.instance.ocgcore.returnAction != null)
                 return;

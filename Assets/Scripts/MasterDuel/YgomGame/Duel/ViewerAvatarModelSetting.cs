@@ -2,8 +2,8 @@ using UnityEngine;
 
 namespace YgomGame.Duel
 {
-	//[CreateAssetMenu]
-	public class ViewerAvatarModelSetting : AvatarModelSetting
-	{
-	}
+    //[CreateAssetMenu(fileName = "ViewerAvatarModelSetting", menuName = "EditScenes/Avatar/CharacterModelSetting")]
+    public class ViewerAvatarModelSetting : AvatarModelSetting
+    {
+    }
 }

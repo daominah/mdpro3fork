@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using MDPro3.YGOSharp.OCGWrapper.Enums;
+using MDPro3.Duel.YGOSharp;
 using TMPro;
+using MDPro3.Servant;
+using MDPro3.UI.ServantUI;
 
 namespace MDPro3.UI
 {
@@ -88,7 +90,7 @@ namespace MDPro3.UI
             else
             {
                 face.texture = null;
-                switch (Program.instance.ocgcore.condition)
+                switch (OcgCore.condition)
                 {
                     case OcgCore.Condition.Duel:
                         if (card.p.controller == 0)
@@ -114,7 +116,7 @@ namespace MDPro3.UI
 
         void OnClick()
         {
-            Program.instance.ocgcore.description.Show(card, face.material);
+            Program.instance.ocgcore.GetUI<OcgCoreUI>().CardDescription.Show(card, face.material);
         }
     }
 }

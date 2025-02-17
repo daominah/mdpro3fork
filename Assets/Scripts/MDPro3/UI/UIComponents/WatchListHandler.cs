@@ -5,8 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.UI;
-using WindBot.Game;
-using MDPro3.UI.PropertyOverrider;
+using MDPro3.UI.PropertyOverride;
 
 namespace MDPro3.UI
 {
@@ -68,8 +67,8 @@ namespace MDPro3.UI
                 };
                 tasks.Add(task);
             }
-            if(gameObject.activeInHierarchy)
-                Print();
+
+            Print();
         }
 
         public void CreateRoom(MyCardRoom room)
@@ -158,10 +157,10 @@ namespace MDPro3.UI
             var handle = Addressables.LoadAssetAsync<GameObject>("ItemWatch");
             handle.Completed += (result) =>
             {
-                var itemWidth = PropertyOverrider.PropertyOverrider.NeedMobileLayout() ? 370f : 300f;
-                var itemHeight = PropertyOverrider.PropertyOverrider.NeedMobileLayout() ? 178f : 140f;
-                var topPadding = PropertyOverrider.PropertyOverrider.NeedMobileLayout() ? 18f : 14f;
-                var bottomPadding = PropertyOverrider.PropertyOverrider.NeedMobileLayout() ? 64f : 54f;
+                var itemWidth = PropertyOverrider.NeedMobileLayout() ? 370f : 300f;
+                var itemHeight = PropertyOverrider.NeedMobileLayout() ? 178f : 140f;
+                var topPadding = PropertyOverrider.NeedMobileLayout() ? 18f : 14f;
+                var bottomPadding = PropertyOverrider.NeedMobileLayout() ? 64f : 54f;
 
                 superScrollView = new SuperScrollView
                 (
@@ -175,14 +174,14 @@ namespace MDPro3.UI
                     scrollRect
                     );
                 superScrollView.Print(GetSearchedTasks());
-                if(superScrollView.items.Count > 0)
+                if(superScrollView.gameObjects.Count > 0)
                 {
-                    Program.instance.online.lastSelectedWatchItem = superScrollView.items[0].gameObject.GetComponent<SelectionToggle_Watch>();
+                    Program.instance.online.lastSelectedWatchItem = superScrollView.gameObjects[0].GetComponent<SelectionToggle_Watch>();
                 }
             };
         }
 
-        void ItemOnListRefresh(string[] task, GameObject item)
+        private void ItemOnListRefresh(string[] task, GameObject item)
         {
             var handler = item.GetComponent<SelectionToggle_Watch>();
             handler.roomId = task[0];

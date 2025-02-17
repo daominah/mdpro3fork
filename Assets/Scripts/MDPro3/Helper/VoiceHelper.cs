@@ -4,10 +4,11 @@ using System.Linq;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using UnityEngine;
-using MDPro3.YGOSharp.OCGWrapper.Enums;
-using MDPro3.YGOSharp;
+using MDPro3.Duel.YGOSharp;
 using static MDPro3.VoiceController;
 using MDPro3.Utility;
+using MDPro3.UI.ServantUI;
+using MDPro3.Servant;
 
 namespace MDPro3
 {
@@ -49,7 +50,7 @@ namespace MDPro3
 
         public static void Load()
         {
-            var condition = Program.instance.ocgcore.condition;
+            var condition = OcgCore.condition;
             var chara = Config.Get(condition + "Character0", defaultCharacter);
             var configLanguage = Language.GetConfig();
 
@@ -406,7 +407,7 @@ namespace MDPro3
                                 else if (c.HasType(CardType.Ritual))
                                     subCategory = (int)SummonSub.Ritual;
                             }
-                            else if (core.log.psum)
+                            else if (core.GetUI<OcgCoreUI>().DuelLog.psum)
                             {
                                 if (ignoreNextPendulumSummon)
                                     break;

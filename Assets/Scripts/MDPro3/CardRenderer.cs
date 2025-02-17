@@ -1,5 +1,4 @@
-using MDPro3.YGOSharp;
-using MDPro3.YGOSharp.OCGWrapper.Enums;
+using MDPro3.Duel.YGOSharp;
 using System.Collections.Generic;
 using System.Text;
 using TMPro;
@@ -20,13 +19,15 @@ namespace MDPro3
             OCG_TCG,
             RUSH_DUEL
         }
+
+        [HideInInspector] public RenderTexture renderTexture;
+
         public const string bigSlash = "£¯";
         public const string smallSlash = " / ";
-        static readonly float cardNameLabelWidthOCG = 520f;
-        static readonly float cardNameLabelWidthRushDuel = 520f;
+        private static readonly float cardNameLabelWidthOCG = 520f;
+        private static readonly float cardNameLabelWidthRushDuel = 520f;
 
         #region Public Reference
-        public RenderTexture renderTexture;
 
         [Header("OCG")]
         public RawImage cardArt;
@@ -93,7 +94,14 @@ namespace MDPro3
         public GameObject linkL;
         public Text cardPasswordRD;
         public Text cardAutherRD;
+
         #endregion
+
+        private void Awake()
+        {
+            GetComponent<Canvas>().worldCamera = Program.instance.camera_.cameraRenderTexture;
+            renderTexture = Program.instance.camera_.cameraRenderTexture.targetTexture;
+        }
 
         public void SwitchLanguage()
         {
@@ -717,7 +725,7 @@ namespace MDPro3
             return true;
         }
 
-        static Card AdjustLevelForRender(Card data)
+        private static Card AdjustLevelForRender(Card data)
         {
             int code = data.Id;
             if (code == 1686814)
@@ -735,7 +743,7 @@ namespace MDPro3
             return data;
         }
 
-        string TextForRender(string description)
+        private string TextForRender(string description)
         {
             if (string.IsNullOrEmpty(description))
                 return string.Empty;
@@ -774,7 +782,7 @@ namespace MDPro3
             return description;
         }
 
-        static List<string> GetAuthorFromDescription(string description)
+        private static List<string> GetAuthorFromDescription(string description)
         {
             var lines = description.Split("\r\n");
             var returnValue = new List<string>();

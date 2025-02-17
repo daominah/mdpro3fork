@@ -9,6 +9,66 @@ namespace MDPro3.UI
 {
     public class SelectionToggle : SelectionButton
     {
+        #region Elements
+
+        private const string LABEL_GO_ON = "On";
+        private GameObject m_PartOn;
+        private GameObject PartOn =>
+            m_PartOn = m_PartOn != null ? m_PartOn
+            : Manager.GetElement(LABEL_GO_ON);
+
+        private const string LABEL_GO_OFF = "Off";
+        private GameObject m_PartOff;
+        private GameObject PartOff =>
+            m_PartOff = m_PartOff != null ? m_PartOff
+            : Manager.GetElement(LABEL_GO_OFF);
+
+        private const string LABEL_CG_HoverOn = "HoverOn";
+        private CanvasGroup m_HoverOnCG;
+        private CanvasGroup HoverOnCG =>
+            m_HoverOnCG = m_HoverOnCG != null ? m_HoverOnCG
+            : Manager.GetElement<CanvasGroup>(LABEL_CG_HoverOn);
+        private DOTweenAnimation m_HoverOnAnimation;
+        private DOTweenAnimation HoverOnAnimation =>
+            m_HoverOnAnimation = m_HoverOnAnimation != null ? m_HoverOnAnimation
+            : Manager.GetElement<DOTweenAnimation>(LABEL_CG_HoverOn);
+
+        private const string LABEL_CG_HoverOff = "HoverOff";
+        private CanvasGroup m_HoverOffCG;
+        private CanvasGroup HoverOffCG =>
+            m_HoverOffCG = m_HoverOffCG != null ? m_HoverOffCG
+            : Manager.GetElement<CanvasGroup>(LABEL_CG_HoverOff);
+        private DOTweenAnimation m_HoverOffAnimation;
+        private DOTweenAnimation HoverOffAnimation =>
+            m_HoverOffAnimation = m_HoverOffAnimation != null ? m_HoverOffAnimation
+            : Manager.GetElement<DOTweenAnimation>(LABEL_CG_HoverOff);
+
+        private const string LABEL_GO_ICONON = "IconOn";
+        private GameObject m_IconOn;
+        private GameObject IconOn =>
+            m_IconOn = m_IconOn != null ? m_IconOn
+            : Manager.GetElement(LABEL_GO_ICONON);
+
+        private const string LABEL_GO_ICONOFF = "IconOff";
+        private GameObject m_IconOff;
+        private GameObject IconOff =>
+            m_IconOff = m_IconOff != null ? m_IconOff
+            : Manager.GetElement(LABEL_GO_ICONOFF);
+
+        private const string LABEL_TXT_ON = "TextOn";
+        private TextMeshProUGUI m_TextOn;
+        private TextMeshProUGUI TextOn =>
+            m_TextOn = m_TextOn != null ? m_TextOn
+            : Manager.GetElement<TextMeshProUGUI>(LABEL_TXT_ON);
+
+        private const string LABEL_TXT_OFF = "TextOff";
+        private TextMeshProUGUI m_TextOff;
+        private TextMeshProUGUI TextOff =>
+            m_TextOff = m_TextOff != null ? m_TextOff
+            : Manager.GetElement<TextMeshProUGUI>(LABEL_TXT_OFF);
+
+        #endregion
+
         [Header("Selection Toggle")]
         [SerializeField] protected string SoundLabelClickOn;
         [SerializeField] protected string SoundLabelClickOff;
@@ -24,11 +84,11 @@ namespace MDPro3.UI
 
         #region Input Control
 
-        protected override void Awake()
-        {
-            base.Awake();
-            ToggleOff();
-        }
+        //protected override void Awake()
+        //{
+        //    base.Awake();
+        //    ToggleOff();
+        //}
 
         protected override void OnClick()
         {
@@ -37,7 +97,7 @@ namespace MDPro3.UI
                 if (Program.instance.ui_.currentPopupB != null)
                     Program.instance.ui_.currentPopupB.lastSelectable = Selectable;
                 else
-                    Program.instance.currentServant.Selected = Selectable;
+                    Program.instance.currentServant.lastSelectable = Selectable;
             }
 
             if (toggled)
@@ -105,74 +165,54 @@ namespace MDPro3.UI
             if (toggled)
                 return;
 
-            var selectCursorOffset = Manager.GetElement("SelectCursorOffset");
-            if (selectCursorOffset != null)
+            if(SelectCursorOffset != null)
             {
-                if (selectCursorOffset.TryGetComponent<CanvasGroup>(out var cg))
-                    cg.alpha = 1.0f;
-                if (selectCursorOffset.TryGetComponent<DOTweenAnimation>(out var animation))
-                    animation.DORestart();
+                SelectCursorOffset.alpha = 1f;
+                SelectCursorOffsetAnimation.DORestart();
             }
 
-            var on = Manager.GetElement("On");
-            if (on != null)
-                on.SetActive(true);
-            var off = Manager.GetElement("Off");
-            if (off != null)
-                off.SetActive(false);
+            if(PartOn != null)
+                PartOn.SetActive(true);
+            if(PartOff != null)
+                PartOff.SetActive(false);
 
-            var hoverOn = Manager.GetElement("HoverOn");
-            if (hoverOn != null)
+            if(HoverOnCG != null)
             {
-                if(hoverOn.TryGetComponent<CanvasGroup>(out var cg))
-                    cg.alpha = 1.0f;
-                if(hoverOn.TryGetComponent<DOTweenAnimation>(out var animation))
-                    animation.DORestart();
+                HoverOnCG.alpha = 1f;
+                if(HoverOnAnimation != null)
+                    HoverOnAnimation.DORestart();
             }
 
-            var iconOn = Manager.GetElement("IconOn");
-            if (iconOn != null)
-                iconOn.SetActive(true);
-
-            var iconOff = Manager.GetElement("IconOff");
-            if (iconOff != null)
-                iconOff.SetActive(false);
+            if(IconOn != null)
+                IconOn.SetActive(true);
+            if(IconOff != null) 
+                IconOff.SetActive(false);
         }
 
         protected virtual void ToggleOff()
         {
-            var selectCursorOffset = Manager.GetElement("SelectCursorOffset");
-            if (selectCursorOffset != null)
+            if (SelectCursorOffset != null)
             {
-                if (selectCursorOffset.TryGetComponent<CanvasGroup>(out var cg))
-                    cg.alpha = 1.0f;
-                if (selectCursorOffset.TryGetComponent<DOTweenAnimation>(out var animation))
-                    animation.DORestart();
+                SelectCursorOffset.alpha = 1f;
+                SelectCursorOffsetAnimation.DORestart();
             }
 
-            var on = Manager.GetElement("On");
-            if (on != null)
-                on.SetActive(false);
-            var off = Manager.GetElement("Off");
-            if(off != null)
-                off.SetActive(true);
+            if (PartOn != null)
+                PartOn.SetActive(false);
+            if (PartOff != null)
+                PartOff.SetActive(true);
 
-            var hoverOff = Manager.GetElement("HoverOff");
-            if (hoverOff != null)
+            if (HoverOffCG != null)
             {
-                if (hoverOff.TryGetComponent<CanvasGroup>(out var cg))
-                    cg.alpha = 1.0f;
-                if (hoverOff.TryGetComponent<DOTweenAnimation>(out var animation))
-                    animation.DORestart();
+                HoverOffCG.alpha = 1f;
+                if(HoverOffAnimation != null)
+                    HoverOffAnimation.DORestart();
             }
 
-            var iconOn = Manager.GetElement("IconOn");
-            if (iconOn != null)
-                iconOn.SetActive(false);
-
-            var iconOff = Manager.GetElement("IconOff");
-            if (iconOff != null)
-                iconOff.SetActive(true);
+            if (IconOn != null)
+                IconOn.SetActive(false);
+            if (IconOff != null)
+                IconOff.SetActive(true);
         }
 
         protected override void HoverOn()
@@ -183,24 +223,20 @@ namespace MDPro3.UI
 
             if (isOn)
             {
-                var hoverOn = Manager.GetElement("HoverOn");
-                if (hoverOn != null)
+                if (HoverOnCG != null)
                 {
-                    if(hoverOn.TryGetComponent<CanvasGroup>(out var cg))
-                        cg.alpha = 1.0f;
-                    if(hoverOn.TryGetComponent <DOTweenAnimation>(out var animation))
-                        animation.DORestart();
+                    HoverOnCG.alpha = 1f;
+                    if (HoverOnAnimation != null)
+                        HoverOnAnimation.DORestart();
                 }
             }
             else
             {
-                var hoverOff = Manager.GetElement("HoverOff");
-                if (hoverOff != null)
+                if (HoverOffCG != null)
                 {
-                    if (hoverOff.TryGetComponent<CanvasGroup>(out var cg))
-                        cg.alpha = 1.0f;
-                    if (hoverOff.TryGetComponent<DOTweenAnimation>(out var animation))
-                        animation.DORestart();
+                    HoverOffCG.alpha = 1f;
+                    if (HoverOffAnimation != null)
+                        HoverOffAnimation.DORestart();
                 }
             }
         }
@@ -213,24 +249,20 @@ namespace MDPro3.UI
 
             if (isOn)
             {
-                var hoverOn = Manager.GetElement("HoverOn");
-                if (hoverOn != null)
+                if(HoverOnCG != null)
                 {
-                    if (hoverOn.TryGetComponent<DOTweenAnimation>(out var animation))
-                        animation.DOPause();
-                    if (hoverOn.TryGetComponent<CanvasGroup>(out var cg))
-                        cg.alpha = 0.0f;
+                    if(HoverOnAnimation != null)
+                        HoverOnAnimation.DOPause();
+                    HoverOnCG.alpha = 0f;
                 }
             }
             else
             {
-                var hoverOff = Manager.GetElement("HoverOff");
-                if (hoverOff != null)
+                if(HoverOffCG != null)
                 {
-                    if (hoverOff.TryGetComponent<DOTweenAnimation>(out var animation))
-                        animation.DOPause();
-                    if (hoverOff.TryGetComponent<CanvasGroup>(out var cg))
-                        cg.alpha = 0.0f;
+                    if(HoverOffAnimation != null)
+                        HoverOffAnimation.DOPause();
+                    HoverOffCG.alpha = 0f;
                 }
             }
         }
@@ -239,10 +271,12 @@ namespace MDPro3.UI
         {
             toggleEvent.onToggleOn?.Invoke();
         }
+
         protected virtual void CallToggleOffEvent()
         {
             toggleEvent.onToggleOff?.Invoke();
         }
+
         protected virtual void CallSubmitEvent()
         {
             submitEvent.onSubmit?.Invoke();
@@ -301,10 +335,12 @@ namespace MDPro3.UI
         {
             toggleEvent.onToggleOn.AddListener(call);
         }
+
         public virtual void SetToggleOffEvent(UnityAction call)
         {
             toggleEvent.onToggleOff.AddListener(call);
         }
+
         public virtual void SetSubmitEvent(UnityAction call)
         {
             submitEvent.onSubmit.AddListener(call);
@@ -337,19 +373,14 @@ namespace MDPro3.UI
             if (returnValue != string.Empty)
                 return returnValue;
 
-            var buttonText = Manager.GetElement("TextOn");
-            if (buttonText != null && buttonText.TryGetComponent<TextMeshProUGUI>(out var textOn))
-                returnValue = textOn.text;
-            if(returnValue != string.Empty) 
-                return returnValue;
+            if(TextOn != null)
+                if(TextOn.text != string.Empty)
+                    return TextOn.text;
+            if(TextOff != null)
+                if(TextOff.text != string.Empty)
+                    return TextOff.text;
 
-            buttonText = Manager.GetElement("TextOff");
-            if (buttonText != null && buttonText.TryGetComponent<TextMeshProUGUI>(out var textOff))
-                returnValue = textOff.text;
-            if (returnValue != string.Empty)
-                return returnValue;
-
-            return string.Empty;
+            return returnValue;
         }
 
         #endregion

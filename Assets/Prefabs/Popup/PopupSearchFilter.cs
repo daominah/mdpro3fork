@@ -1,7 +1,9 @@
-using MDPro3.YGOSharp;
+using MDPro3.Duel.YGOSharp;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using MDPro3.Servant;
+using MDPro3.UI.ServantUI;
 
 namespace MDPro3.UI.Popup
 {
@@ -22,7 +24,7 @@ namespace MDPro3.UI.Popup
 
         private void Start()
         {
-            var f = Program.instance.editDeck.filters;
+            var f = CardCollectionView.filters;
             if (f.Count > 0)
             {
                 foreach (var toggle in transform.GetComponentsInChildren<SelectionToggle_SearchFilter>())
@@ -72,7 +74,9 @@ namespace MDPro3.UI.Popup
                 if (f[20] > 0)
                     inputYearTo.text = f[20].ToString();
             }
-            Manager.GetElement<SelectionButton>("ButtonPack").SetButtonText(EditDeck.pack == string.Empty ? InterString.Get("所有卡包") : EditDeck.pack);
+            Manager.GetElement<SelectionButton>("ButtonPack")
+                .SetButtonText(CardCollectionView.packName == string.Empty 
+                ? InterString.Get("所有卡包") : CardCollectionView.packName);
         }
 
         protected override bool NeedResponseInput()
@@ -246,25 +250,20 @@ namespace MDPro3.UI.Popup
             if(btnPack.GetButtonText() != InterString.Get("所有卡包"))
             {
                 dirty = true;
-                EditDeck.pack = btnPack.GetButtonText();
                 CardCollectionView.packName = btnPack.GetButtonText();
             }
 
             if (dirty)
             {
-                Program.instance.editDeck.FilterButtonSwitch(true);
-                Program.instance.editDeck.filters = filters;
                 SelectionToggle_CardFilter.Instance.SetToggleOn();
                 CardCollectionView.filters = filters;
             }
             else
             {
-                Program.instance.editDeck.FilterButtonSwitch(false);
-                Program.instance.editDeck.filters.Clear();
                 SelectionToggle_CardFilter.Instance.SetToggleOff();
                 CardCollectionView.filters.Clear();
             }
-            Program.instance.deckEditor.cardCollectionView.PrintSearchCards();
+            Program.instance.deckEditor.GetUI<DeckEditorUI>().CardCollectionView.PrintSearchCards();
         }
 
         public void OnReset()

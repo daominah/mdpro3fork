@@ -1,7 +1,6 @@
 using DG.Tweening;
 using MDPro3.Net;
-using MDPro3.YGOSharp;
-using MDPro3.YGOSharp.OCGWrapper.Enums;
+using MDPro3.Duel.YGOSharp;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -12,6 +11,9 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using MDPro3.Servant;
+using MDPro3.UI.ServantUI;
+using MDPro3.Utility;
 
 namespace MDPro3.UI
 {
@@ -444,7 +446,7 @@ namespace MDPro3.UI
             else if (GetDeckLocationCount(DeckLocation.MainDeck) < 60)
                 targetLocaltion = DeckLocation.MainDeck;
 
-            var added = AddCard(data, targetLocaltion, !DeckEditor.useMobileLayout, false);
+            var added = AddCard(data, targetLocaltion, !DeckEditor.UseMobileLayout, false);
             added.MoveToParentSequence(position);
             return true;
         }
@@ -516,7 +518,7 @@ namespace MDPro3.UI
             int siblingIndex = card.transform.GetSiblingIndex();
             for (int i = 0; i < cards.Count; i++)
                 if (cards[i].location == card.location)
-                    if (!DeckEditor.useMobileLayout || cards[i].transform.GetSiblingIndex() > siblingIndex)
+                    if (!DeckEditor.UseMobileLayout || cards[i].transform.GetSiblingIndex() > siblingIndex)
                         if (cards[i] != card)
                             cards[i].LockPosition();
 
@@ -741,7 +743,7 @@ namespace MDPro3.UI
             return count;
         }
 
-        public void SetCardInfoType(DeckEditor.CardInfoType type)
+        public void SetCardInfoType(DeckEditorUI.CardInfoType type)
         {
             foreach (var card in cards)
                 card.RefreshIcons();
@@ -895,6 +897,11 @@ namespace MDPro3.UI
             return returnValue;
         }
 
+        public void ActivateInputField()
+        {
+            InputDeckName.ActivateInputField();
+        }
+
         #endregion
 
         #region Protected Functions
@@ -908,7 +915,7 @@ namespace MDPro3.UI
             ButtonNoItem.SetSelectEvent(() =>
             {
                 if (Program.instance.currentServant == Program.instance.deckEditor)
-                    Program.instance.deckEditor._ResponseRegion = DeckEditor.ResponseRegion.Deck;
+                    Program.instance.deckEditor.ResponseRegion = DeckEditorUI.ResponseRegion.Deck;
             });
         }
 

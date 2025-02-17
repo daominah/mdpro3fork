@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
+using MDPro3.Servant;
+using MDPro3.UI.ServantUI;
 
 namespace MDPro3.UI
 {
@@ -11,32 +13,32 @@ namespace MDPro3.UI
         {
             base.Awake();
             instance = this;
-            SetCardInfoTypeIcon(DeckEditor._CardInfoType);
+            SetCardInfoTypeIcon(DeckEditorUI.cardInfoType);
             SetClickEvent(ClickEvent);
         }
 
         private void ClickEvent()
         {
-            var type = (DeckEditor.CardInfoType)(((int)DeckEditor._CardInfoType + 1) % 3);
-            Program.instance.deckEditor.SetCardInfoType(type);
+            var type = (DeckEditorUI.CardInfoType)(((int)DeckEditorUI.cardInfoType + 1) % 3);
+            Program.instance.deckEditor.GetUI<DeckEditorUI>().SetCardInfoType(type);
             SetCardInfoTypeIcon(type);
         }
 
-        public void SetCardInfoTypeIcon(DeckEditor.CardInfoType type)
+        public void SetCardInfoTypeIcon(DeckEditorUI.CardInfoType type)
         {
             switch (type)
             {
-                case DeckEditor.CardInfoType.None:
+                case DeckEditorUI.CardInfoType.None:
                     Manager.GetElement("IconInfoSwitching0").SetActive(true);
                     Manager.GetElement("IconInfoSwitching1").SetActive(false);
                     Manager.GetElement("IconInfoSwitching2").SetActive(false);
                     break;
-                case DeckEditor.CardInfoType.Detail:
+                case DeckEditorUI.CardInfoType.Detail:
                     Manager.GetElement("IconInfoSwitching0").SetActive(false);
                     Manager.GetElement("IconInfoSwitching1").SetActive(true);
                     Manager.GetElement("IconInfoSwitching2").SetActive(false);
                     break;
-                case DeckEditor.CardInfoType.Pool:
+                case DeckEditorUI.CardInfoType.Pool:
                     Manager.GetElement("IconInfoSwitching0").SetActive(false);
                     Manager.GetElement("IconInfoSwitching1").SetActive(false);
                     Manager.GetElement("IconInfoSwitching2").SetActive(true);

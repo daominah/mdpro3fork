@@ -69,14 +69,7 @@ namespace MDPro3.UI
         protected virtual IEnumerator RefreshAsync()
         {
             refreshed = false;
-            while (TextureManager.container == null)
-                yield return null;
-
-            var face = Manager.GetElement<RawImage>("Image");
-            face.texture = TextureManager.container.black.texture;
-            face.color = Color.white;
-
-            enumerator = null;
+            yield return null;
             refreshed = true;
         }
 

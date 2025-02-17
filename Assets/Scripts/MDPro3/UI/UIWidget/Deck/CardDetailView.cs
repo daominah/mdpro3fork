@@ -1,4 +1,4 @@
-using MDPro3.YGOSharp;
+using MDPro3.Duel.YGOSharp;
 using UnityEngine;
 using UnityEngine.UI;
 using YgomSystem.ElementSystem;

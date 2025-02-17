@@ -15,8 +15,18 @@ MonoBehaviour:
   m_GroupName: Prefab
   m_GUID: 7c094f02978cc7b4381bcbc23867f4a1
   m_SerializeEntries:
+  - m_GUID: 00287e10f15efb845af485b242ebca28
+    m_Address: CharacterSelectorUI
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 02c91043684f6a242881ca48081026b3
     m_Address: CardListItem
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 095c7f8f3147a404cad825dcf60f8a20
+    m_Address: SettingServantUI
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -27,6 +37,21 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0fbf4f8f39c9adb45901555b5550f04f
     m_Address: Characters
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0fcc1f894771723469c21c54c19e1b07
+    m_Address: SoloSelectorUI
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 111a71685ec8ea849b48fdbe36034cdd
+    m_Address: CardRenderer
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 12dc01825bbee3849b7b544326afc495
+    m_Address: RoomServantUI
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -70,13 +95,18 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 379855939c2877c4bbd1a7d6d1e68bbb
-    m_Address: ChatItemSystem
+  - m_GUID: 342dc9528c59ad8498e87108371938f8
+    m_Address: MateViewerUI
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 39697873c1073b9449a94b26523ee5c5
-    m_Address: CardInDeck
+  - m_GUID: 36a6a4626db37934585a3ab3de32a719
+    m_Address: OnlineDeckViewerUI
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 379855939c2877c4bbd1a7d6d1e68bbb
+    m_Address: ChatItemSystem
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -92,6 +122,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 4f4199b27a66f06418ca3a390ca90e11
     m_Address: CardExpand
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5b622d5baae0a5142805ed0edbb203c0
+    m_Address: OcgCoreUI
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -115,13 +150,13 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 7f82328728cccd949a929b323a6ec6ce
-    m_Address: PopupSearchFilterA
+  - m_GUID: 87492367d2e3a034487b680ca8ee0700
+    m_Address: ItemSolo
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 87492367d2e3a034487b680ca8ee0700
-    m_Address: ItemSolo
+  - m_GUID: 8979bcfddb7b47d4d9c49c276cb6d146
+    m_Address: DeckSelectorUI
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -146,7 +181,7 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9bbe2536540467948b7abef017036aa5
-    m_Address: DeckEditUIMobile
+    m_Address: DeckEditorUIMobile
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -160,6 +195,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a1de85f407585454e836240b1192a6b2
+    m_Address: AppearanceUI
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a2f65dc8f11bea544a93cc75ce49c948
     m_Address: ItemMate
     m_ReadOnly: 0
@@ -167,6 +207,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a7b6c57d0c1eb5b46bb3350b776ca7fb
     m_Address: CardInCollection
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: add898cd8d8b0fe4f8a15f2231cf4915
+    m_Address: CutinViewerUI
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -180,13 +225,18 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c0115549732dd7246a50c7eb4d5bb372
+    m_Address: MainMenuUI
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c8300daa1501f0f40883fba841e00b49
     m_Address: PopupConfirm
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c9effe1373443fb4ab85be9f7df99003
-    m_Address: DeckEditUI
+    m_Address: DeckEditorUI
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -207,6 +257,16 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d34127121b618664b9286b778ee407c4
     m_Address: PopupSearchFilter
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d4c6b9f42fea9b24cba446b277419b76
+    m_Address: PuzzleSelectorUI
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d4fdecb79320fa848aa409f68cdec11b
+    m_Address: OnlineServantUI
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -240,8 +300,8 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: e4a26b8c43f7b284abb9e59bb0c66d9b
-    m_Address: PopupServer
+  - m_GUID: e4d6bc5b167da8142aed79baba424b12
+    m_Address: ReplaySelectorUI
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -252,11 +312,6 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f99f1924ec3c98f4fb6b8d9fc1d47b9a
     m_Address: PopupYesOrNo
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: ff428eeefb7dd3a4680d9b48f4c4c5b0
-    m_Address: CharacterItem
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

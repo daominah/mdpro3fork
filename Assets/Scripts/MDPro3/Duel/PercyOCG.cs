@@ -4,8 +4,9 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
 using Percy;
-using MDPro3.YGOSharp;
-using GameMessage = MDPro3.YGOSharp.OCGWrapper.Enums.GameMessage;
+using MDPro3.Duel.YGOSharp;
+using GameMessage = MDPro3.Duel.YGOSharp.GameMessage;
+using MDPro3.Servant;
 
 namespace MDPro3
 {
@@ -129,9 +130,9 @@ namespace MDPro3
                 Config.SetBool(path[..^4] + "_Enter", true);
                 Config.Save();
 
-                Program.instance.ocgcore.condition = OcgCore.Condition.Duel;
+                OcgCore.condition = OcgCore.Condition.Duel;
                 Program.instance.ocgcore.isFirst = true;
-                Program.instance.ocgcore.returnServant = Program.instance.editDeck.toHandTest ? Program.instance.editDeck : Program.instance.puzzle;
+                Program.instance.ocgcore.returnServant = DeckEditor.ToHandTest ? Program.instance.deckEditor : Program.instance.puzzle;
                 Program.instance.ocgcore.timeLimit = 0;
                 Program.instance.ocgcore.inAi = true;
                 Program.instance.ShiftToServant(Program.instance.ocgcore);

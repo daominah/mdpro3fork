@@ -1342,7 +1342,7 @@ namespace Percy
 
             writer.Write(opt >> 16);
             var Rwriter = new BinaryWriter(new MemoryStream());
-            Rwriter.Write((byte)MDPro3.YGOSharp.OCGWrapper.Enums.GameMessage.sibyl_name);
+            Rwriter.Write((byte)MDPro3.Duel.YGOSharp.GameMessage.sibyl_name);
             Rwriter.Write(stream.ToArray());
             return ((MemoryStream)Rwriter.BaseStream).ToArray();
         }

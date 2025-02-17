@@ -5,11 +5,10 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using UnityEngine;
-using MDPro3.YGOSharp;
-using MDPro3.YGOSharp.Network.Enums;
-using MDPro3.YGOSharp.OCGWrapper.Enums;
+using MDPro3.Duel.YGOSharp;
 using MDPro3.Net;
 using System.Net;
+using MDPro3.Servant;
 
 namespace MDPro3
 {
@@ -103,12 +102,13 @@ namespace MDPro3
                 Debug.LogFormat("Joind Address: {0}, Port: {1}, Password: {2}", joinedAddress, joinedPort, joinedPassword);
                 return true;
             }
-            catch (Exception e)
+            catch /*(Exception e)*/
             {
                 //MessageManager.messageFromSubString = "JoinError: " + e;
                 return false;
             }
         }
+
         public static void InitializeSender()
         {
             try
@@ -247,7 +247,7 @@ namespace MDPro3
                                     break;
                             }
                         }
-                        catch (Exception e)
+                        catch /*(Exception e)*/
                         {
                             // Program.DEBUGLOG(e);
                         }
@@ -275,7 +275,7 @@ namespace MDPro3
                     Program.instance.ocgcore.ForceMSquit();
                     MessageManager.Cast(InterString.Get("对方已离开游戏，您现在可以离开。"));
                 }
-                else if (Program.instance.editDeck.showing)
+                else if (Program.instance.deckEditor.showing)
                 {
                     MessageManager.Cast(InterString.Get("对方已离开游戏，您现在可以离开。"));
                     Program.instance.ShiftToServant(Program.instance.online);
@@ -595,7 +595,7 @@ namespace MDPro3
 
         public static void AddRecordLine(Package p)
         {
-            if (Program.instance.ocgcore.condition != OcgCore.Condition.Replay)
+            if (OcgCore.condition != OcgCore.Condition.Replay)
                 packagesInRecord.Add(p);
         }
 
@@ -603,16 +603,13 @@ namespace MDPro3
         {
             try
             {
-                using (Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp))
-                {
-                    // 尝试绑定端口
-                    socket.Bind(new IPEndPoint(IPAddress.Loopback, port));
-                    return true; // 成功绑定，端口可用
-                }
+                using Socket socket = new(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                socket.Bind(new IPEndPoint(IPAddress.Loopback, port));
+                return true;
             }
-            catch (SocketException)
+            catch
             {
-                return false; // 绑定失败，端口被占用
+                return false;
             }
         }
     }

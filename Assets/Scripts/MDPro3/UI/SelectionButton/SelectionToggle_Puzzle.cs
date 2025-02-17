@@ -3,12 +3,14 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using MDPro3.Servant;
+using MDPro3.UI.ServantUI;
 
 namespace MDPro3.UI
 {
     public class SelectionToggle_Puzzle : SelectionToggle_ScrollRectItem
     {
-        public SelectPuzzle.Puzzle puzzle;
+        public PuzzleSelectorUI.Puzzle puzzle;
 
         public override void Refresh()
         {
@@ -32,6 +34,9 @@ namespace MDPro3.UI
                 yield return null;
             face.texture = task.Result;
 
+            if (Program.instance.puzzle.currentPuzzle == Program.puzzlePath + puzzle.name)
+                CallToggleOnEvent();
+
             enumerator = null;
             refreshed = true;
         }
@@ -40,12 +45,10 @@ namespace MDPro3.UI
         {
             base.CallToggleOnEvent();
 
-            var description = Program.instance.puzzle.Manager.GetElement<TextMeshProUGUI>("TextOverview");
-            Program.instance.puzzle.superScrollView.selected = index;
-            description.text = puzzle.description + "\r\n" + puzzle.solution;
-            description.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
-            var cardImage = Program.instance.puzzle.Manager.GetElement<RawImage>("CardImage");
-            cardImage.texture = Manager.GetElement<RawImage>("Image").texture;
+            Program.instance.puzzle.GetUI<PuzzleSelectorUI>().superScrollView.selected = index;
+            Program.instance.puzzle.GetUI<PuzzleSelectorUI>().SetOverview(puzzle.description + "\r\n" + puzzle.solution);
+
+            Program.instance.puzzle.GetUI<PuzzleSelectorUI>().Art.SetArt(int.Parse(puzzle.firstCard));
             Program.instance.puzzle.currentPuzzle = Program.puzzlePath + puzzle.name;
             Program.instance.puzzle.lastPuzzleItem = this;
         }
@@ -53,7 +56,7 @@ namespace MDPro3.UI
         protected override void CallSubmitEvent()
         {
             base.CallSubmitEvent();
-            Program.instance.puzzle.OnStartPuzzle();
+            Program.instance.puzzle.StartCurrentPuzzle();
         }
 
         protected override void OnNavigation(AxisEventData eventData)
@@ -63,7 +66,8 @@ namespace MDPro3.UI
             if (eventData.moveDir == MoveDirection.Right)
             {
                 UserInput.NextSelectionIsAxis = true;
-                EventSystem.current.SetSelectedGameObject(Program.instance.puzzle.Manager.GetElement("ButtonEnter"));
+                Program.instance.puzzle.GetUI<PuzzleSelectorUI>()
+                    .ButtonPlay.GetSelectable().Select();
             }
         }
     }

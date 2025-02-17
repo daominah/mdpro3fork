@@ -5,9 +5,9 @@ using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.Timeline;
 using YgomSystem.ElementSystem;
-using MDPro3.YGOSharp;
-using MDPro3.YGOSharp.OCGWrapper.Enums;
+using MDPro3.Duel.YGOSharp;
 using MDPro3.UI;
+using MDPro3.Servant;
 
 namespace MDPro3
 {
@@ -31,12 +31,12 @@ namespace MDPro3
 
         IEnumerator CacheCutin()
         {
-            if (!MonsterCutin.HasCutin(summonCard))
+            if (!CutinViewer.HasCutin(summonCard))
                 yield break;
 
             string path;
             IEnumerator ie;
-            if (MonsterCutin.codes.Contains(summonCard))
+            if (CutinViewer.codes.Contains(summonCard))
                 ie = ABLoader.LoadFromFolderAsync("MonsterCutin/" + summonCard, "Spine" + summonCard, true, false);
             else
                 ie = ABLoader.LoadFromFileAsync("MonsterCutin2/" + summonCard, true, false);

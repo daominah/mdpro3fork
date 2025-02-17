@@ -87,7 +87,7 @@ namespace MDPro3.UI.Popup
                     if (lastPopup != null)
                         lastPopup.SelectLastSelected();
                     else
-                        Program.instance.currentServant.SelectLastSelectable();
+                        Program.instance.currentServant.Select();
                 }
             });
 

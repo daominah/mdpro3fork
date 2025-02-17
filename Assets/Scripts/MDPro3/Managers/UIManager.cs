@@ -4,20 +4,23 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 using System;
-using MDPro3.YGOSharp;
+using MDPro3.Duel.YGOSharp;
 using Spine.Unity;
 using TMPro;
 using UnityEngine.AddressableAssets;
 using MDPro3.UI;
 using MDPro3.Net;
 using MDPro3.Utility;
-using MDPro3.UI.PropertyOverrider;
+using MDPro3.UI.PropertyOverride;
 using MDPro3.UI.Popup;
+using MDPro3.Servant;
 
 namespace MDPro3
 {
     public class UIManager : Manager
     {
+        private const string TRANSLATE_PREFIX = "#Text";
+
         [Header("Public Reference")]
         public CanvasGroup wallpaper;
         public Button btnExit;
@@ -79,10 +82,10 @@ namespace MDPro3
         {
             //TO DELETE
             foreach (var text in go.GetComponentsInChildren<Text>(true))
-                if (text.name.StartsWith("#Text"))
+                if (text.name.StartsWith(TRANSLATE_PREFIX))
                     text.text = InterString.Get(text.text.Replace("\r\n", "@n"));
             foreach (var text in go.GetComponentsInChildren<TextMeshProUGUI>(true))
-                if (text.name.StartsWith("#Text"))
+                if (text.name.StartsWith(TRANSLATE_PREFIX))
                     text.text = InterString.Get(text.text.Replace("\r\n", "@n"));
         }
 
@@ -92,46 +95,42 @@ namespace MDPro3
             StringHelper.Initialize();
             CardsManager.Initialize();
             Program.items.Initialize();
-            Program.instance.cardRenderer.SwitchLanguage();
-            Program.instance.online.LocalHostInitialize();
-            UIManager instance = Program.instance.ui_;
 
+            if(Program.instance.cardRenderer != null)
+                Program.instance.cardRenderer.SwitchLanguage();
+
+            UIManager instance = Program.instance.ui_;
             foreach (var t in instance.GetComponentsInChildren<Transform>(true))
             {
-                if (t.name.StartsWith("#Text"))
+                if (t.name.StartsWith(TRANSLATE_PREFIX))
                 {
-                    var text = t.GetComponent<Text>();
-                    if (text == null)
-                    {
-                        var tmp = t.GetComponent<TextMeshProUGUI>();
-                        if (tmp != null)
-                        {
-                            tmp.text = InterString.Get(tmp.text);
-
-                            if (tmp.name.EndsWith("Menu"))
-                            {
-                                if ((Language.GetConfig() == Language.English
-                                    || Language.GetConfig() == Language.Japanese))
-                                {
-                                    tmp.font = instance.jpMenuTmpFont;
-                                    tmp.fontSize = 64f;
-                                }
-                                else if (Language.GetConfig() == Language.SimplifiedChinese)
-                                {
-                                    tmp.font = instance.cnMenuTmpFont;
-                                    tmp.fontSize = 62f;
-                                }
-                                else
-                                {
-                                    tmp.font = instance.tmpFont;
-                                    tmp.fontSize = 60f;
-                                }
-                            }
-                        }
-                    }
-                    else
+                    if(t.TryGetComponent<Text>(out var text))
                     {
                         text.text = InterString.Get(text.text);
+                    }
+                    else if(t.TryGetComponent<TextMeshProUGUI>(out var tmp))
+                    {
+                        tmp.text = InterString.Get(tmp.text);
+
+                        if (tmp.name.EndsWith("Menu"))
+                        {
+                            if ((Language.GetConfig() == Language.English
+                                || Language.GetConfig() == Language.Japanese))
+                            {
+                                tmp.font = instance.jpMenuTmpFont;
+                                tmp.fontSize = 64f;
+                            }
+                            else if (Language.GetConfig() == Language.SimplifiedChinese)
+                            {
+                                tmp.font = instance.cnMenuTmpFont;
+                                tmp.fontSize = 62f;
+                            }
+                            else
+                            {
+                                tmp.font = instance.tmpFont;
+                                tmp.fontSize = 60f;
+                            }
+                        }
                     }
                 }
             }
@@ -142,17 +141,12 @@ namespace MDPro3
             UIManager instance = Program.instance.ui_;
             foreach(var t in instance.GetComponentsInChildren<Transform>(true))
             {
-                if (t.name.StartsWith("#Text"))
+                if (t.name.StartsWith(TRANSLATE_PREFIX))
                 {
-                    var text = t.GetComponent<Text>();
-                    if(text == null)
-                    {
-                        var tmp = t.GetComponent<TextMeshProUGUI>();
-                        if(tmp != null)
-                            tmp.text = InterString.GetOriginal(tmp.text);
-                    }
-                    else
+                    if(t.TryGetComponent<Text>(out var text))
                         text.text = InterString.GetOriginal(text.text);
+                    else if (t.TryGetComponent<TextMeshProUGUI>(out var tmp))
+                        tmp.text = InterString.GetOriginal(tmp.text);
                 }
             }
 
@@ -161,12 +155,13 @@ namespace MDPro3
             Program.instance.UnloadUnusedAssets();
 
             InitializeLanguage();
-            Program.instance.cutin.Load();
-            Program.instance.mate.Load();
-            Program.instance.solo.Load();
+            Program.instance.cutin.LoadCutins();
+            Program.instance.mate.LoadMates();
+            Program.instance.solo.LoadBots();
             Program.instance.character.LoadCharacters();
             Program.instance.setting.RefreshCharacterName();
-            Online.severSelectionsInitialized = false;
+
+            SystemEvent.CallLanguageChangeEvent();
         }
 
         public static void ChangeLayout()
@@ -176,11 +171,10 @@ namespace MDPro3
                 overrider.Override();
 
             ShowExitButton(0f);
-            Program.instance.cutin.Load();
-            Program.instance.mate.Load();
-            Program.instance.solo.Load();
-            Program.instance.puzzle.Print();
-            Program.instance.online.Print();
+            Program.instance.cutin.LoadCutins();
+            Program.instance.mate.LoadMates();
+            Program.instance.solo.LoadBots();
+            Program.instance.puzzle.PrintPuzzles();
         }
 
 
@@ -366,29 +360,38 @@ namespace MDPro3
                 popupText.Show();
             };
         }
-        public static void ShowPopupServer(List<string> selections)
-        {
-            var handle = Addressables.InstantiateAsync("PopupServer");
-            handle.Completed += (result) =>
-            {
-                result.Result.transform.SetParent(Program.instance.ui_.popup, false);
-                var popupServer = result.Result.GetComponent<PopupServer>();
-                popupServer.selections = selections;
-                popupServer.Show();
-            };
-        }
+
         #endregion
 
         #region UI Tools
+
         public static void UIBlackIn(float time)
         {
             float width = Screen.width * 1080 * 1.7f / Screen.height;
-            Program.instance.ui_.transition.sizeDelta = new Vector2(0, 0);
+            Program.instance.ui_.transition.sizeDelta = Vector2.zero;
             DOTween.To(() => Program.instance.ui_.transition.sizeDelta, x => Program.instance.ui_.transition.sizeDelta = x, new Vector2(width, width), time);
         }
+
         public static void UIBlackOut(float time)
         {
-            DOTween.To(() => Program.instance.ui_.transition.sizeDelta, x => Program.instance.ui_.transition.sizeDelta = x, new Vector2(0, 0), time);
+            DOTween.To(() => Program.instance.ui_.transition.sizeDelta, x => Program.instance.ui_.transition.sizeDelta = x, Vector2.zero, time);
+        }
+
+        public static void ShowBlackBack(float alpha, float time, Action action = null)
+        {
+            Program.instance.ui_.blackBack.raycastTarget = true;
+            Program.instance.ui_.blackBack.DOFade(alpha, time).OnComplete(() => 
+            {
+                action?.Invoke();
+            });
+        }
+
+        public static void HideBlackBack(float time)
+        {
+            Program.instance.ui_.blackBack.DOFade(0f, time).OnComplete(() => 
+            {
+                Program.instance.ui_.blackBack.raycastTarget = false;
+            });
         }
 
         public static void SetCanvasMatch(float match, float duration)

@@ -1,11 +1,12 @@
 using DG.Tweening;
 using MDPro3.Utility;
-using MDPro3.YGOSharp.OCGWrapper.Enums;
+using MDPro3.Duel.YGOSharp;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.UI;
+using MDPro3.Servant;
 
 namespace MDPro3.UI
 {
@@ -58,6 +59,7 @@ namespace MDPro3.UI
         public void Show(bool takeOver = true)
         {
             base.Show();
+            Debug.Log("Show");
             if (Program.instance.currentServant != Program.instance.room
                 && !DeviceInfo.OnMobile())
                 input.Select();
@@ -120,12 +122,12 @@ namespace MDPro3.UI
 
         public void AddChatItem(int player, string content)
         {
-            if (Room.coreShowing == 1)
+            if (RoomServant.CoreShowing == 1)
             {
                 cachedDialog.Add(player, content);
                 return;
             }
-            if (Room.coreShowing == 2 && cachedDialog.Count > 0)
+            if (RoomServant.CoreShowing == 2 && cachedDialog.Count > 0)
             {
                 var players = new List<int>();
                 var contents = new List<string>();
@@ -142,23 +144,23 @@ namespace MDPro3.UI
             if (player == -2)
                 return;
 
-            if (Room.coreShowing == 2 && player < 4)
+            if (RoomServant.CoreShowing == 2 && player < 4)
             {
-                if (Room.mode != 2)
+                if (RoomServant.Mode != 2)
                 {
-                    if (Program.instance.ocgcore.isFirst && Room.selfType == 1
-                        || !Program.instance.ocgcore.isFirst && Room.selfType == 0)
+                    if (Program.instance.ocgcore.isFirst && RoomServant.SelfType == 1
+                        || !Program.instance.ocgcore.isFirst && RoomServant.SelfType == 0)
                         player = (player + 1) % 2;
                 }
                 else
                 {
-                    if (Program.instance.ocgcore.isFirst && Room.selfType > 1
-                        || !Program.instance.ocgcore.isFirst && Room.selfType < 2)
+                    if (Program.instance.ocgcore.isFirst && RoomServant.SelfType > 1
+                        || !Program.instance.ocgcore.isFirst && RoomServant.SelfType < 2)
                         player = (player + 2) % 4;
                 }
             }
 
-            var nickName = Room.players[player]?.name;
+            var nickName = RoomServant.players[player]?.name;
             GameObject item = null;
             var position = GetPlayerPositon(player);
             switch (position)
@@ -247,7 +249,7 @@ namespace MDPro3.UI
                 case 1: //from client
                 case 2: //host tag
                 case 3: //client tag
-                    nickName = Room.players[player].name;
+                    nickName = RoomServant.players[player].name;
                     var configName = GetConfigPlayerName(GetPlayerPositon(player));
                     if (configName.Length > 0)
                         nickName = configName;
@@ -298,11 +300,11 @@ namespace MDPro3.UI
             PlayerPosition position;
             if (player < 4)
             {
-                if (Room.mode < 2)
+                if (RoomServant.Mode < 2)
                 {
-                    if (Room.selfType != 7)
+                    if (RoomServant.SelfType != 7)
                     {
-                        if (Room.selfType == player)
+                        if (RoomServant.SelfType == player)
                             position = PlayerPosition.Me;
                         else
                             position = PlayerPosition.Op;
@@ -317,11 +319,11 @@ namespace MDPro3.UI
                 }
                 else
                 {
-                    if (Room.selfType != 7)
+                    if (RoomServant.SelfType != 7)
                     {
-                        if (Room.selfType == player)
+                        if (RoomServant.SelfType == player)
                             position = PlayerPosition.Me;
-                        else if ((Room.selfType + player) % 4 == 1)
+                        else if ((RoomServant.SelfType + player) % 4 == 1)
                             position = PlayerPosition.MyTag;
                         else
                         {

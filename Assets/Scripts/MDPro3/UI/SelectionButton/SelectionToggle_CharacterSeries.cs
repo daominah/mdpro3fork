@@ -1,3 +1,4 @@
+using MDPro3.UI.ServantUI;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -19,9 +20,9 @@ namespace MDPro3.UI
         protected override void CallToggleOnEvent()
         {
             base.CallToggleOnEvent();
-            Program.instance.character.SetHoverText(string.Empty);
+            Program.instance.character.GetUI<CharacterSelectorUI>().SetHoverText(string.Empty);
 
-            Program.instance.character.ShowCharacters(serialIndex);
+            Program.instance.character.GetUI<CharacterSelectorUI>().ShowCharacters(serialIndex);
             Program.instance.character.lastSelectedToggle = this;
         }
 
@@ -32,7 +33,7 @@ namespace MDPro3.UI
             UserInput.NextSelectionIsAxis = true;
             var target = Program.instance.character.lastSelectedCharacter.gameObject;
             if (!target.activeSelf)
-                target = Program.instance.character.GetFirstActiveCharacterItem();
+                target = Program.instance.character.GetUI<CharacterSelectorUI>().GetFirstActiveCharacterItem();
             EventSystem.current.SetSelectedGameObject(target);
         }
 

@@ -275,6 +275,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2e8cdec44cdcc0b4495fa0d988f344bc
+    m_Address: SE_EV_037_SPECIAL
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 2ebd576d1d69ca34baeae0f97d68a928
     m_Address: SE_ATTACK_A_DARK_SPECIAL_01
     m_ReadOnly: 0
@@ -755,6 +760,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7c40e6df936deb747aecd0b210d13e6c
+    m_Address: SE_EV_038_SPECIAL
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7cb8ba417b674374bb1d0f42188f086d
     m_Address: SE_ATTACK_A_WATER_DEFAULT_02
     m_ReadOnly: 0
@@ -862,6 +872,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8f514b5868e710949af6fa5b171f0b7a
     m_Address: SE_SMN_PENDULUM_02
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8f57afaedc9fd8e429ea6774888ed848
+    m_Address: SE_EV_039_NORMAL
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -1087,6 +1102,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b7d04b5347f43844bb9093b20a9a8e2e
     m_Address: SE_MONSTERATTACK_OBELISK_01
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b83037f88cafb99478e2df3ca4a0a9f4
+    m_Address: SE_EV_039_SPECIAL
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

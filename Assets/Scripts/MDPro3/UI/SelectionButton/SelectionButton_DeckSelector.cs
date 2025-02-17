@@ -1,7 +1,8 @@
 using DG.Tweening;
-using MDPro3.YGOSharp;
+using MDPro3.Duel.YGOSharp;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -24,6 +25,16 @@ namespace MDPro3.UI
         {
             if (refreshInstance != null)
                 StartCoroutine(refreshInstance);
+        }
+
+        public void SetConfigDeck(string hint)
+        {
+            var configDeck = Config.Get("DeckInUse", "@ui");
+            var path = Program.deckPath + configDeck + Program.ydkExpansion;
+            if (!File.Exists(path))
+                SetDeck(null, hint);
+            else
+                SetDeck(new Deck(path), configDeck);
         }
 
         public void SetDeck(Deck deck,string deckName) 
