@@ -8,6 +8,7 @@ using YgomSystem.ElementSystem;
 using MDPro3.Duel.YGOSharp;
 using MDPro3.UI;
 using MDPro3.Servant;
+using MDPro3.Utility;
 
 namespace MDPro3
 {
@@ -595,14 +596,16 @@ namespace MDPro3
 
         public IEnumerator RefreshCardFace(Renderer face, int code, bool post = false)
         {
-            var task = TextureManager.LoadCardAsync(code, false);
+            var task = CardImageLoader.LoadCardAsync(code, false);
             while (!task.IsCompleted)
                 yield return null;
 
             if (!post)
             {
-                var mat = TextureManager.GetCardMaterial(code);
-                face.material = mat;
+                var matLoad = MaterialLoader.LoadCardMaterialAsync(code);
+                while (!matLoad.IsCompleted)
+                    yield return null;
+                face.material = matLoad.Result;
             }
             face.material.mainTexture = task.Result;
         }
@@ -611,7 +614,7 @@ namespace MDPro3
         {
             if (count > 100)
             {
-                var task = TextureManager.LoadCardAsync(count, false);
+                var task = CardImageLoader.LoadCardAsync(count, false);
                 while (!task.IsCompleted)
                     yield return null;
                 face.material.SetTexture("_CardFrameA", task.Result);
@@ -625,7 +628,7 @@ namespace MDPro3
                     if(code == 0)
                         code = materials[i + order].GetCachedData().Id;
 
-                    var task = TextureManager.LoadCardAsync(code, false);
+                    var task = CardImageLoader.LoadCardAsync(code, false);
                     while (!task.IsCompleted)
                         yield return null;
                     face.material.SetTexture("_CardFrame" + (char)('A' + i), task.Result);

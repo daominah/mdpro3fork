@@ -74,12 +74,10 @@ namespace MDPro3.UI
         private List<HostAddress> addresses = new();
         private const string PATH_ADDRESS_SAVE = "Data/hosts.conf";
         private SuperScrollView hostSuperScrollView;
+        private bool addressedLoaded = false;
 
         private void Awake()
         {
-            LoadHostAddresses();
-            PrintAddresses();
-
             ResetLegacy();
         }
 
@@ -112,6 +110,8 @@ namespace MDPro3.UI
                     addresses.Add(address);
                 }
             }
+
+            addressedLoaded = true;
         }
 
         private void SaveHostAddresses()
@@ -125,48 +125,6 @@ namespace MDPro3.UI
                 content += address.password + "\r\n";
             }
             File.WriteAllText(PATH_ADDRESS_SAVE, content);
-        }
-
-        private void PrintAddresses(string search = "")
-        {
-            hostSuperScrollView?.Clear();
-
-            var tasks = new List<string[]>();
-            foreach (var address in addresses)
-            {
-                if (address.name.Contains(search))
-                {
-                    string[] task = new string[] { address.name, address.host, address.port, address.password };
-                    tasks.Add(task);
-                }
-            }
-
-            var handle = Addressables.LoadAssetAsync<GameObject>("ItemAddress");
-            handle.Completed += (result) =>
-            {
-                var itemWidth = PropertyOverrider.NeedMobileLayout() ? 460f : 360f;
-                var itemHeight = PropertyOverrider.NeedMobileLayout() ? 80f : 40f;
-
-                hostSuperScrollView = new SuperScrollView(
-                    1,
-                    itemWidth,
-                    itemHeight,
-                    0,
-                    0,
-                    result.Result,
-                    ItemOnListRefresh,
-                    ScrollRectPreset);
-                hostSuperScrollView.Print(tasks);
-                if (hostSuperScrollView.items.Count > 0)
-                {
-                    if (Cursor.lockState == CursorLockMode.None)
-                        Program.instance.online.lastSelectedAddressItem
-                            = hostSuperScrollView.items[0].gameObject.GetComponent<SelectionToggle_Address>();
-                    else
-                        hostSuperScrollView.items[0].gameObject.GetComponent<SelectionToggle_Address>()
-                            .GetSelectable().Select();
-                }
-            };
         }
 
         private void ItemOnListRefresh(string[] task, GameObject item)
@@ -198,6 +156,47 @@ namespace MDPro3.UI
             addresses.Add(address);
             SaveHostAddresses();
             PrintAddresses();
+        }
+
+        public void PrintAddresses(string search = "")
+        {
+            if (!addressedLoaded)
+                LoadHostAddresses();
+
+            hostSuperScrollView?.Clear();
+
+            var tasks = new List<string[]>();
+            foreach (var address in addresses)
+            {
+                if (address.name.Contains(search))
+                {
+                    string[] task = new string[] { address.name, address.host, address.port, address.password };
+                    tasks.Add(task);
+                }
+            }
+
+            var handle = Addressables.LoadAssetAsync<GameObject>("ItemAddress");
+            handle.Completed += (result) =>
+            {
+                var itemWidth = PropertyOverrider.NeedMobileLayout() ? 460f : 360f;
+                var itemHeight = PropertyOverrider.NeedMobileLayout() ? 80f : 40f;
+
+                hostSuperScrollView = new SuperScrollView(
+                    1,
+                    itemWidth,
+                    itemHeight,
+                    0,
+                    0,
+                    result.Result,
+                    ItemOnListRefresh,
+                    ScrollRectPreset);
+                hostSuperScrollView.Print(tasks);
+                if (hostSuperScrollView.items.Count > 0)
+                {
+                    Program.instance.online.lastSelectedAddressItem
+                        = hostSuperScrollView.items[0].gameObject.GetComponent<SelectionToggle_Address>();
+                }
+            };
         }
 
         public void SetHost(string host, string port, string passwd)

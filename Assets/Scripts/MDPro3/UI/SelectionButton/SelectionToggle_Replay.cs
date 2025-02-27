@@ -10,44 +10,48 @@ namespace MDPro3.UI
 {
     public class SelectionToggle_Replay : SelectionToggle_ScrollRectItem
     {
+
+        #region Elements
+
+        private const string LABEL_TXT_TITLE = "Title";
+        private TextMeshProUGUI m_Title;
+        private TextMeshProUGUI Title =>
+            m_Title = m_Title != null ? m_Title
+            : Manager.GetElement<TextMeshProUGUI>(LABEL_TXT_TITLE);
+
+        private const string LABEL_ART = "Image";
+        private ArtRawImageHandler m_Art;
+        private ArtRawImageHandler Art =>
+            m_Art = m_Art != null ? m_Art
+            : Manager.GetElement<ArtRawImageHandler>(LABEL_ART);
+
+        private const string LABEL_GO_NUMBADGE = "NumBadge";
+        private GameObject m_NumBadge;
+        private GameObject NumBadge =>
+            m_NumBadge = m_NumBadge != null ? m_NumBadge
+            : Manager.GetElement(LABEL_GO_NUMBADGE);
+
+        private const string LABEL_GO_TEXTCLEAR = "TextClear";
+        private GameObject m_TextClear;
+        private GameObject TextClear =>
+            m_TextClear = m_TextClear != null ? m_TextClear
+            : Manager.GetElement(LABEL_GO_TEXTCLEAR);
+
+        #endregion
+
         public string replayName;
         private YRP yrp;
 
         public override void Refresh()
         {
-            Manager.GetElement<TextMeshProUGUI>("Title").text = replayName;
+            base.Refresh();
+
+            Title.text = replayName;
             yrp = Program.instance.replay.GetUI<ReplaySelectorUI>().CacheYRP(replayName);
 
-            Manager.GetElement("NumBadge").SetActive(false);
-            Manager.GetElement("TextClear").SetActive(false);
-
-            base.Refresh();
-        }
-
-        protected override IEnumerator RefreshAsync()
-        {
-            refreshed = false;
-            while (TextureManager.container == null)
-                yield return null;
-
-            var face = Manager.GetElement<RawImage>("Image");
-            face.texture = TextureManager.container.black.texture;
-
-            if (yrp == null)
-            {
-                face.texture = TextureManager.container.unknownArt.texture;
-                face.color = Color.white;
-                enumerator = null;
-                yield break;
-            }
-
-            var task = TextureManager.LoadArtAsync(yrp.playerData[0].main[0], true);
-            while (!task.IsCompleted)
-                yield return null;
-            face.texture = task.Result;
-
-            enumerator = null;
-            refreshed = true;
+            NumBadge.SetActive(false);
+            TextClear.SetActive(false);
+            Art.SetArt(yrp == null ? 0 : yrp.playerData[0].main[0]);
         }
 
         protected override void CallToggleOnEvent()

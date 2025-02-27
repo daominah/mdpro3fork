@@ -59,7 +59,6 @@ namespace MDPro3.UI
         public void Show(bool takeOver = true)
         {
             base.Show();
-            Debug.Log("Show");
             if (Program.instance.currentServant != Program.instance.room
                 && !DeviceInfo.OnMobile())
                 input.Select();
@@ -89,6 +88,7 @@ namespace MDPro3.UI
                 return;
             OnChat(input.text);
         }
+
         public void OnChat(string content)
         {
             if (content == string.Empty)

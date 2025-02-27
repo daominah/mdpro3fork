@@ -931,8 +931,8 @@ namespace MDPro3.UI
             Viewport.alpha = 0f;
             Viewport.blocksRaycasts = false;
 
-            //while (Program.instance.currentServant.inTransition)
-            //    yield return null;
+            while (Program.instance.deckEditor.inTransition)
+                yield return null;
             TweenLoading.Show();
 
             if (deck == null)//Online Deck
@@ -942,36 +942,20 @@ namespace MDPro3.UI
                 deck = DeckEditor.Deck;
             }
 
-            int count = 0;
             foreach (var card in deck.Main)
             {
-                var handler = AddCard(CardsManager.Get(card), DeckLocation.MainDeck, false, false);
-                count++;
-                if (count == TextureLoader.MAX_LOADPICTURE_THREADS)
-                {
-                    count = 0;
-                    yield return null;
-                }
+                AddCard(CardsManager.Get(card), DeckLocation.MainDeck, false, false);
+                yield return null;
             }
             foreach (var card in deck.Extra)
             {
-                var handler = AddCard(CardsManager.Get(card), DeckLocation.ExtraDeck, false, false);
-                count++;
-                if (count == TextureLoader.MAX_LOADPICTURE_THREADS)
-                {
-                    count = 0;
-                    yield return null;
-                }
+                AddCard(CardsManager.Get(card), DeckLocation.ExtraDeck, false, false);
+                yield return null;
             }
             foreach (var card in deck.Side)
             {
-                var handler = AddCard(CardsManager.Get(card), DeckLocation.SideDeck, false, false);
-                count++;
-                if (count == TextureLoader.MAX_LOADPICTURE_THREADS)
-                {
-                    count = 0;
-                    yield return null;
-                }
+                AddCard(CardsManager.Get(card), DeckLocation.SideDeck, false, false);
+                yield return null;
             }
 
             TweenLoading.Hide();

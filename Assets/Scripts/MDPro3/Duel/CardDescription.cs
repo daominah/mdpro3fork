@@ -11,7 +11,6 @@ using MDPro3.Utility;
 using MDPro3.UI;
 using MDPro3.Servant;
 using MDPro3.UI.ServantUI;
-using NUnit.Framework;
 
 namespace MDPro3
 {
@@ -47,10 +46,13 @@ namespace MDPro3
 
         IEnumerator RefreshFace(int code)
         {
-            var mat = TextureManager.GetCardMaterial(code);
+            var matLoad = MaterialLoader.LoadCardMaterialAsync(code);
+            while(!matLoad.IsCompleted)
+                yield return null;
+            var mat = matLoad.Result;
             mat.renderQueue = 3000;
 
-            var task = TextureManager.LoadCardAsync(code, false);
+            var task = CardImageLoader.LoadCardAsync(code, false);
             while(!task.IsCompleted)
                 yield return null;
             mat.mainTexture = task.Result;

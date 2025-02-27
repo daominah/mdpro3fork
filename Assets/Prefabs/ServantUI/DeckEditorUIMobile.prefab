@@ -66916,7 +66916,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 6524435541314575836}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.64285713
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -76061,7 +76061,7 @@ GameObject:
   - component: {fileID: 1297179804319411560}
   - component: {fileID: 9079190360276452248}
   - component: {fileID: 7415773267348455527}
-  - component: {fileID: 1829505337369514991}
+  - component: {fileID: 6747210968387551690}
   m_Layer: 5
   m_Name: ImageCard
   m_TagString: Untagged
@@ -76148,7 +76148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   label: ImageCard
---- !u!114 &1829505337369514991
+--- !u!114 &6747210968387551690
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -76157,7 +76157,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8166086360927241581}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f28e1d87b10176048bcf5b1dcc6b4486, type: 3}
+  m_Script: {fileID: 11500000, guid: 35b333cb30a7d094b997b5a31c5f4b7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cache: 0
@@ -78775,7 +78775,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 4664753718165055069}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.6923077
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

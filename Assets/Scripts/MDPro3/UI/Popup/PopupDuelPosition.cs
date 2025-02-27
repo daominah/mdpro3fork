@@ -1,4 +1,5 @@
 using DG.Tweening;
+using MDPro3.Utility;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -79,10 +80,13 @@ namespace MDPro3.UI
         }
         IEnumerator RefreshCard(int code)
         {
-            var task = TextureManager.LoadCardAsync(code, false);
+            var task = CardImageLoader.LoadCardAsync(code, false);
             while (!task.IsCompleted)
                 yield return null;
-            var mat = TextureManager.GetCardMaterial(code);
+            var matLoad = MaterialLoader.LoadCardMaterialAsync(code);
+            while (!matLoad.IsCompleted)
+                yield return null;
+            var mat = matLoad.Result;
             if (positionAttack != null)
             {
                 if (option1 == 1)

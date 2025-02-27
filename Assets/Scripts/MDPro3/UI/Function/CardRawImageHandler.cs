@@ -4,6 +4,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using MDPro3.Utility;
+using System.Threading;
 
 namespace MDPro3.UI
 {
@@ -24,6 +25,7 @@ namespace MDPro3.UI
 
         protected Material normalMat;
         protected Material tempMat;
+        private CancellationTokenSource cts;
 
         protected Coroutine picLoadCoroutine;
         protected Coroutine matLoadCoroutine;
@@ -51,7 +53,7 @@ namespace MDPro3.UI
         {
             if (card != null)
             {
-                TextureLoader.DeleteCard(card.Id);
+                CardImageLoader.ReleaseCard(card.Id);
                 card = null;
             }
         }
@@ -78,7 +80,12 @@ namespace MDPro3.UI
             m_Refreshed = false;
 
             if (normalMat == null)
-                normalMat = TextureManager.GetCardMaterial(-1);
+            {
+                var matLoad = MaterialLoader.LoadCardMaterialAsync(-1);
+                while (!matLoad.IsCompleted)
+                    yield return null;
+                normalMat = matLoad.Result;
+            }
             normalMat.SetTexture("_LoadingTex", TextureManager.container
                 .GetCardLoadingTexture(CardsManager.Get(card.Id)));
 
@@ -90,7 +97,12 @@ namespace MDPro3.UI
             if (tempMat != null)
                 DestroyImmediate(tempMat);
 
-            var task = TextureLoader.LoadCardAsync(card.Id, cache);
+            //var task = TextureLoader.LoadCardAsync(card.Id, cache);
+
+            CancelLoading();
+            cts = new CancellationTokenSource();
+            var task = CardImageLoader.LoadCardAsync(card.Id, cache, cts.Token);
+
             while (!task.IsCompleted)
                 yield return null;
             RawImage.texture = task.Result;
@@ -170,6 +182,13 @@ namespace MDPro3.UI
 
             RawImage.texture = null;
             DeleteCard();
+        }
+
+        private void CancelLoading()
+        {
+            cts?.Cancel();
+            cts?.Dispose();
+            cts = null;
         }
     }
 }

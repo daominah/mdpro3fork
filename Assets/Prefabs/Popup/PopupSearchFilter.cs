@@ -79,32 +79,6 @@ namespace MDPro3.UI.Popup
                 ? InterString.Get("ËùÓÐ¿¨°ü") : CardCollectionView.packName);
         }
 
-        protected override bool NeedResponseInput()
-        {
-            if (inputLevelFrom.isFocused)
-                return false;
-            if (inputLevelTo.isFocused)
-                return false;
-            if (inputAttackFrom.isFocused)
-                return false;
-            if (inputAttackTo.isFocused)
-                return false;
-            if (inputDefenceFrom.isFocused)
-                return false;
-            if (inputDefenceTo.isFocused)
-                return false;
-            if (inputScaleFrom.isFocused)
-                return false;
-            if (inputScaleTo.isFocused)
-                return false;
-            if (inputYearFrom.isFocused)
-                return false;
-            if (inputYearTo.isFocused)
-                return false;
-
-            return base.NeedResponseInput();
-        }
-
         public override void Show()
         {
             base.Show();

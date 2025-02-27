@@ -306,12 +306,12 @@ namespace MDPro3.Duel.YGOSharp
             if (Pickup.Count > 2)
                 value += "\r\n" + Pickup[2] + "#";
 
-            value += "\r\n#case\r\n" + Case + "#";
-            value += "\r\n#protector\r\n" + Protector + "#";
-            value += "\r\n#field\r\n" + Field + "#";
-            value += "\r\n#grave\r\n" + Grave + "#";
-            value += "\r\n#stand\r\n" + Stand + "#";
-            value += "\r\n#mate\r\n" + Mate + "#";
+            value += "\r\n#case\r\n#" + Case;
+            value += "\r\n#protector\r\n#" + Protector;
+            value += "\r\n#field\r\n#" + Field;
+            value += "\r\n#grave\r\n#" + Grave;
+            value += "\r\n#stand\r\n#" + Stand;
+            value += "\r\n#mate\r\n#" + Mate;
 
             if (!string.IsNullOrEmpty(deckId))
                 value += "\r\n##" + deckId;

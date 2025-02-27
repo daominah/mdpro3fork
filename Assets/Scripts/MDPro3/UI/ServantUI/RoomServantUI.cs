@@ -30,6 +30,12 @@ namespace MDPro3.UI.ServantUI
             m_ButtonDeckSelector = m_ButtonDeckSelector != null ? m_ButtonDeckSelector
             : Manager.GetElement<SelectionButton_DeckSelector>(LABEL_SBN_DECKSELECTOR);
 
+        private const string LABEL_SBN_ADDBOT = "ButtonAddBot";
+        private SelectionButton m_ButtonAddBot;
+        private SelectionButton ButtonAddBot =>
+            m_ButtonAddBot = m_ButtonAddBot != null ? m_ButtonAddBot
+            : Manager.GetElement<SelectionButton>(LABEL_SBN_ADDBOT);
+
         private const string LABEL_SBN_PLAYER0 = "ButtonPlayer0";
         private SelectionButton_RoomPlayer m_ButtonPlayer0;
         private SelectionButton_RoomPlayer ButtonPlayer0 =>
@@ -90,6 +96,16 @@ namespace MDPro3.UI.ServantUI
             Realize();
         }
 
+        protected override void AfterShowEvent()
+        {
+            base.AfterShowEvent();
+            if (Program.instance.currentServant != Program.instance.room)
+            {
+                ShutDown();
+                Program.instance.ui_.chatPanel.Hide();
+            }
+        }
+
         public void SelectMiddleSelectableFromRight()
         {
             if (!gameObject.activeSelf)
@@ -101,6 +117,11 @@ namespace MDPro3.UI.ServantUI
                 ButtonStart.GetSelectable().Select();
             else
                 ButtonToWatch.GetSelectable().Select();
+        }
+
+        public void SelectMiddleFromLeft()
+        {
+
         }
 
         public void Realize()
@@ -180,22 +201,22 @@ namespace MDPro3.UI.ServantUI
             }
             if (RoomServant.IsHost)
             {
-                Manager.GetElement("ButtonStart").SetActive(true);
-                Manager.GetElement("ButtonAddBot").SetActive(true);
+                ButtonStart.gameObject.SetActive(true);
+                ButtonAddBot.gameObject.SetActive(true);
             }
             else
             {
-                Manager.GetElement("ButtonStart").SetActive(false);
-                Manager.GetElement("ButtonAddBot").SetActive(false);
+                ButtonStart.gameObject.SetActive(false);
+                ButtonAddBot.gameObject.SetActive(false);
             }
 
             if (RoomServant.FromSolo)
-                Manager.GetElement("ButtonAddBot").SetActive(false);
+                ButtonAddBot.gameObject.SetActive(false);
 
             if (RoomServant.SelfType == 7)
-                Manager.GetElement("ButtonReady").SetActive(false);
+                ButtonReady.gameObject.SetActive(false);
             else
-                Manager.GetElement("ButtonReady").SetActive(true);
+                ButtonReady.gameObject.SetActive(true);
 
         }
 
@@ -203,7 +224,6 @@ namespace MDPro3.UI.ServantUI
         {
             ButtonDeckSelector.SetConfigDeck(InterString.Get("请点击此处选择卡组"));
         }
-
 
         public void OnReady()
         {
@@ -242,6 +262,27 @@ namespace MDPro3.UI.ServantUI
         public void OnKick(int player)
         {
             TcpHelper.CtosMessage_HsKick(player);
+        }
+
+        public void OnAddBot()
+        {
+            if (Program.instance.room.RoomIsFull())
+            {
+                MessageManager.Toast(InterString.Get("房间已满，无法继续添加AI。"));
+            }
+            else
+            {
+                Program.instance.solo.SwitchCondition(SoloSelector.Condition.ForRoom);
+                Program.instance.ShiftToServant(Program.instance.solo);
+            }
+        }
+
+        public void OnSelectDeck()
+        {
+            if (!Program.instance.room.CanChangeDeck())
+                return;
+            Program.instance.deckSelector.SwitchCondition(DeckSelector.Condition.ForDuel);
+            Program.instance.ShiftToServant(Program.instance.deckSelector);
         }
 
     }

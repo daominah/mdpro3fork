@@ -40,7 +40,7 @@ namespace MDPro3
 
         public static void CallLanguageChangeEvent()
         {
-            OnLanguageChange.Invoke();
+            OnLanguageChange?.Invoke();
         }
     }
 }

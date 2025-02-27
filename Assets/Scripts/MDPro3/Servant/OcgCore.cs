@@ -920,10 +920,10 @@ namespace MDPro3.Servant
                 yield return null;
             myDeck = deckLoad.Current.GetComponent<ElementObjectManager>();
             var sideManager = myDeck.GetElement<ElementObjectManager>("CardShuffleTop");
-            sideManager.GetElement<MeshRenderer>("CardModel01_side").material = TextureManager.cardMatSide;
-            sideManager.GetElement<MeshRenderer>("CardModel02_side").material = TextureManager.cardMatSide;
-            sideManager.GetElement<MeshRenderer>("CardModel03_side").material = TextureManager.cardMatSide;
-            sideManager.GetElement<MeshRenderer>("CardModel04_side").material = TextureManager.cardMatSide;
+            sideManager.GetElement<MeshRenderer>("CardModel01_side").material = MaterialLoader.cardMatSide;
+            sideManager.GetElement<MeshRenderer>("CardModel02_side").material = MaterialLoader.cardMatSide;
+            sideManager.GetElement<MeshRenderer>("CardModel03_side").material = MaterialLoader.cardMatSide;
+            sideManager.GetElement<MeshRenderer>("CardModel04_side").material = MaterialLoader.cardMatSide;
 
             myExtra = Instantiate(deckLoad.Current).GetComponent<ElementObjectManager>();
             opDeck = Instantiate(deckLoad.Current).GetComponent<ElementObjectManager>();
@@ -6025,7 +6025,7 @@ namespace MDPro3.Servant
             }
             else
             {
-                text = GetUI<OcgCoreUI>().TextPlayer0LP;
+                text = GetUI<OcgCoreUI>().TextPlayer1LP;
                 targetLP = life1;
             }
 
@@ -7018,8 +7018,13 @@ namespace MDPro3.Servant
             if (topCard != null)
             {
                 var code = topCard.GetData().Id;
-                targetMat = TextureManager.GetCardMaterial(code, true);
-                var task = TextureManager.LoadCardAsync(code, true);
+
+                var matLoad = MaterialLoader.LoadCardMaterialAsync(code);
+                while (!matLoad.IsCompleted)
+                    yield return null;
+                targetMat = matLoad.Result;
+
+                var task = CardImageLoader.LoadCardAsync(code, true);
                 while (!task.IsCompleted)
                     yield return null;
                 targetMat.mainTexture = task.Result;

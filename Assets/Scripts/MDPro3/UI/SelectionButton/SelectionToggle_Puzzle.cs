@@ -10,35 +10,44 @@ namespace MDPro3.UI
 {
     public class SelectionToggle_Puzzle : SelectionToggle_ScrollRectItem
     {
+
+        #region Elements
+
+        private const string LABEL_TXT_TITLE = "Title";
+        private TextMeshProUGUI m_Title;
+        private TextMeshProUGUI Title =>
+            m_Title = m_Title != null ? m_Title
+            : Manager.GetElement<TextMeshProUGUI>(LABEL_TXT_TITLE);
+
+        private const string LABEL_ART = "Image";
+        private ArtRawImageHandler m_Art;
+        private ArtRawImageHandler Art =>
+            m_Art = m_Art != null ? m_Art
+            : Manager.GetElement<ArtRawImageHandler>(LABEL_ART);
+
+        private const string LABEL_GO_NUMBADGE = "NumBadge";
+        private GameObject m_NumBadge;
+        private GameObject NumBadge =>
+            m_NumBadge = m_NumBadge != null ? m_NumBadge
+            : Manager.GetElement(LABEL_GO_NUMBADGE);
+
+        private const string LABEL_GO_TEXTCLEAR = "TextClear";
+        private GameObject m_TextClear;
+        private GameObject TextClear =>
+            m_TextClear = m_TextClear != null ? m_TextClear
+            : Manager.GetElement(LABEL_GO_TEXTCLEAR);
+
+        #endregion
+
         public PuzzleSelectorUI.Puzzle puzzle;
 
         public override void Refresh()
         {
             base.Refresh();
-            Manager.GetElement<TextMeshProUGUI>("Title").text = puzzle.name;
-
-            Manager.GetElement("NumBadge").SetActive(!Config.GetBool(Program.puzzlePath + puzzle.name + "_Enter", false));
-            Manager.GetElement("TextClear").SetActive(Config.GetBool(Program.puzzlePath + puzzle.name + "_Clear", false));
-        }
-
-        protected override IEnumerator RefreshAsync()
-        {
-            refreshed = false;
-            while (TextureManager.container == null)
-                yield return null;
-
-            var face = Manager.GetElement<RawImage>("Image");
-            face.texture = TextureManager.container.black.texture;
-            var task = TextureManager.LoadArtAsync(int.Parse(puzzle.firstCard), true);
-            while (!task.IsCompleted)
-                yield return null;
-            face.texture = task.Result;
-
-            if (Program.instance.puzzle.currentPuzzle == Program.puzzlePath + puzzle.name)
-                CallToggleOnEvent();
-
-            enumerator = null;
-            refreshed = true;
+            Title.text = puzzle.name;
+            Art.SetArt(int.Parse(puzzle.firstCard));
+            NumBadge.SetActive(!Config.GetBool(Program.puzzlePath + puzzle.name + "_Enter", false));
+            TextClear.SetActive(Config.GetBool(Program.puzzlePath + puzzle.name + "_Clear", false));
         }
 
         protected override void CallToggleOnEvent()

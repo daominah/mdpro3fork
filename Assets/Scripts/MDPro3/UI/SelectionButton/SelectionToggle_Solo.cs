@@ -11,6 +11,7 @@ namespace MDPro3.UI
 {
     public class SelectionToggle_Solo : SelectionToggle_ScrollRectItem
     {
+
         #region Elements
 
         private const string LABEL_TXT_TITLE = "Title";
@@ -20,10 +21,10 @@ namespace MDPro3.UI
             : Manager.GetElement<TextMeshProUGUI>(LABEL_TXT_TITLE);
 
         private const string LABEL_ART = "Image";
-        private ArtRawImageOnScrollHandler m_Art;
-        private ArtRawImageOnScrollHandler Art =>
+        private ArtRawImageHandler m_Art;
+        private ArtRawImageHandler Art =>
             m_Art = m_Art != null ? m_Art
-            : Manager.GetElement<ArtRawImageOnScrollHandler>(LABEL_ART);
+            : Manager.GetElement<ArtRawImageHandler>(LABEL_ART);
 
         private const string LABEL_GO_NUMBADGE = "NumBadge";
         private GameObject m_NumBadge;

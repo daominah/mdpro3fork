@@ -2,42 +2,31 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using MDPro3.Utility;
+using System.Threading.Tasks;
+using System.Threading;
 
 namespace MDPro3.UI
 {
+    [RequireComponent(typeof(RawImage))]
     public class ArtRawImageHandler : MonoBehaviour
     {
         public bool cache = true;
 
-        protected int code = 0;
-        protected bool m_Refreshed;
-        public bool Refreshed => m_Refreshed;
-
+        private int code = 0;
+        private CancellationTokenSource cts;
         private RawImage m_RawImage;
-        public RawImage RawImage =>
+        private RawImage RawImage =>
             m_RawImage = m_RawImage != null ? m_RawImage
             : GetComponent<RawImage>();
 
-        protected Coroutine artLoadCoroutine;
-
-        protected void OnDisable()
+        private void OnDestroy()
         {
-            if(artLoadCoroutine != null)
-                StopCoroutine(artLoadCoroutine);
+            ReleaseArt();
         }
 
-        protected void OnDestroy()
+        private void ReleaseArt()
         {
-            DeleteArt();
-        }
-
-        private void DeleteArt()
-        {
-            if(code != 0)
-            {
-                TextureLoader.DeleteArt(code);
-                code = 0;
-            }
+            CardImageLoader.ReleaseArt(code);
         }
 
         public void SetArt(int art)
@@ -45,27 +34,33 @@ namespace MDPro3.UI
             if (code == art)
                 return;
 
-            DeleteArt();
+            ReleaseArt();
             code = art;
 
-            if(artLoadCoroutine != null)
-                StopCoroutine(artLoadCoroutine);
-            artLoadCoroutine = StartCoroutine(LoadArtAsync());
+            _ = LoadArtsAsync();
         }
 
-        protected virtual IEnumerator LoadArtAsync()
+        private async Task LoadArtsAsync()
         {
-            m_Refreshed = false;
+            CancelLoading();
 
             RawImage.texture = TextureManager.container.unknownArt.texture;
+            if (code == 0)
+                return;
 
-            var task = TextureLoader.LoadArtAsync(code, cache);
-            while(!task.IsCompleted)
-                yield return null;
-            RawImage.texture = task.Result;
-
-            artLoadCoroutine = null;
-            m_Refreshed = true;
+            cts = new CancellationTokenSource();
+            var task = CardImageLoader.LoadArtAsync(code, cache, cts.Token);
+            await TaskUtility.WaitUntil(() => task.IsCompleted);
+            if(task.Result != null)
+                RawImage.texture = task.Result;
         }
+
+        private void CancelLoading()
+        {
+            cts?.Cancel();
+            cts?.Dispose();
+            cts = null;
+        }
+
     }
 }

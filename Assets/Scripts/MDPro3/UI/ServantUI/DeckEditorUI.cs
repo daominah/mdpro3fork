@@ -1026,7 +1026,7 @@ namespace MDPro3.UI.ServantUI
             }
             else
             {
-                var task = TextureManager.LoadArtAsync(DeckEditor.Deck.Mate, true);
+                var task = CardImageLoader.LoadArtAsync(DeckEditor.Deck.Mate, true);
                 while (!task.IsCompleted)
                     await TaskUtility.WaitOneFrame();
                 if (gameObject == null) return;

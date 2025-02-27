@@ -62,7 +62,7 @@ public class AssetBundleRobber : MonoBehaviour
         //workingPlace = androindWorkingPlace;
 
         fullCopy = true;
-        fullCopy = false;
+        //fullCopy = false;
 
         Initialize();
 

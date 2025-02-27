@@ -18,7 +18,7 @@ namespace MDPro3.UI
             m_Manager = m_Manager != null ? m_Manager 
             : GetComponent<ElementObjectManager>();
 
-        private const string LABEL_IMG_DECKCASE = "Pickup";
+        private const string LABEL_IMG_DECKCASE = "DeckCase";
         private Image m_DeckCase;
         private Image DeckCase =>
             m_DeckCase = m_DeckCase != null ? m_DeckCase
@@ -44,9 +44,8 @@ namespace MDPro3.UI
 
         #endregion
 
-        public void SetDeck(Deck deck)
+        public async void SetDeck(Deck deck)
         {
-            _ = LoadDeckCaseAsync(deck.Case);
 
             if (deck.Pickup.Count > 0)
                 Card1.SetCard(deck.Pickup[0]);
@@ -60,6 +59,8 @@ namespace MDPro3.UI
                 Card3.SetCard(deck.Pickup[2]);
             else
                 Card3.SetProtector(deck.Protector);
+
+            await LoadDeckCaseAsync(deck.Case);
         }
 
         private async Task LoadDeckCaseAsync(int deckCase)

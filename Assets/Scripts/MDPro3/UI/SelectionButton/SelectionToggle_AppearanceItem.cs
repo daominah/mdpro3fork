@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using MDPro3.Servant;
 using MDPro3.UI.ServantUI;
+using MDPro3.Utility;
 
 namespace MDPro3.UI
 {
@@ -82,7 +83,7 @@ namespace MDPro3.UI
             }
             else //CrossDuel Mate
             {
-                var task = TextureManager.LoadArtAsync(itemID, true);
+                var task = CardImageLoader.LoadArtAsync(itemID, true);
                 while (!task.IsCompleted)
                     yield return null;
                 icon.color = Color.white;

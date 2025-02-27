@@ -7,7 +7,6 @@ using MDPro3.Duel.YGOSharp;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using YgomSystem.ElementSystem;
-using static YgomGame.Menu.Common.MateCaptureCreator;
 
 namespace MDPro3
 {
@@ -27,7 +26,7 @@ namespace MDPro3
         private static Material cardMatGoldRD;
         private static Material cardMatMillennium;
         private static Material cardMatMillenniumRD;
-        private static Material cardMatSide;
+        public static Material cardMatSide;
 
         private const string CARD_MAT_PATH = "SummonSynchroPostSynchro/DummyCardSynchro/DummyCardModel_front";
 
@@ -163,6 +162,7 @@ namespace MDPro3
                 color = new Color(1f, 0.2357f, 0f, 0f);
             return color;
         }
+
         private static Color GetMillenniumNameColor(Card data)
         {
             if (data.HasType(CardType.Spell))
@@ -186,7 +186,6 @@ namespace MDPro3
             else
                 return new Color(1f, 1f, 0f, 1f);
         }
-
 
         public static IEnumerator<Material> LoadMaterialByNameAsync(string materialName)
         {
@@ -273,7 +272,7 @@ namespace MDPro3
                 else if ((data.Attribute & (uint)CardAttribute.Divine) > 0)
                     mat.SetFloat("_AttributeTile", 6);
 
-                var nameTask = TextureLoader.LoadCardNameAsync(code);
+                var nameTask = CardImageLoader.LoadCardNameAsync(code);
                 await TaskUtility.WaitUntil(() => nameTask.IsCompleted);
                 mat.SetTexture("_MonsterNameTex", nameTask.Result);
 

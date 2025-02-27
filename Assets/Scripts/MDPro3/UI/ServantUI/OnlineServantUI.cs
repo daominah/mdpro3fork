@@ -60,6 +60,13 @@ namespace MDPro3.UI.ServantUI
             ToggleLegacy.SetToggleOn();
         }
 
+        protected override void ShowEvent()
+        {
+            base.ShowEvent();
+
+            PageLegacy.PrintAddresses();
+        }
+
         public void SelectLastSelectable(Selectable lastSelectable)
         {
             if (PageLegacy.gameObject.activeSelf)

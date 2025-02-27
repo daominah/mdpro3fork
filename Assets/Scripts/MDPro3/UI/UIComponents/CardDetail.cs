@@ -238,10 +238,13 @@ namespace MDPro3
 
         IEnumerator LoadCardPictureAsync()
         {
-            var mat = TextureManager.GetCardMaterial(code);
+            var matLoad = MaterialLoader.LoadCardMaterialAsync(code);
+            while (!matLoad.IsCompleted)
+                yield return null;
+            var mat = matLoad.Result;
             mat.renderQueue = 3000;
 
-            var task = TextureManager.LoadCardAsync(code);
+            var task = CardImageLoader.LoadCardAsync(code);
             while (!task.IsCompleted)
                 yield return null;
             mat.mainTexture = task.Result;
@@ -353,12 +356,12 @@ namespace MDPro3
                 if (File.Exists(Program.cardPicPath + cards[i] + format))
                     continue;
 
-                var ie = TextureManager.LoadCardAsync(cards[i]);
+                var ie = CardImageLoader.LoadCardAsync(cards[i]);
                 while (!ie.IsCompleted)
                     yield return null;
                 if (!SaveCardPicture(cards[i], ie.Result)
-                    || !TextureManager.lastCardFoundArt
-                    || !TextureManager.lastCardRenderSucceed)
+                    || !CardImageLoader.lastCardFoundArt
+                    || !CardImageLoader.lastCardRenderSucceed)
                 {
                     errorCount++;
                     errorLog += cards[i].ToString() + "\r\n";
@@ -373,7 +376,7 @@ namespace MDPro3
                 File.WriteAllText(errorLogPath, errorLog);
             saveEnumerator = null;
 
-            Debug.Log($"Time Used: {Time.time - time}");
+            //Debug.Log($"Time Used: {Time.time - time}");
         }
         public void StopSaving()
         {

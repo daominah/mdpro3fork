@@ -581,6 +581,13 @@ namespace MDPro3.UI.ServantUI
 
         }
 
+        public void ToChat()
+        {
+            if (condition == Condition.Replay || Program.instance.ocgcore.inAi)
+                return;
+            Program.instance.ui_.chatPanel.Switch();
+        }
+
         #endregion
     }
 }

@@ -163,6 +163,8 @@ namespace MDPro3.UI.Popup
                 return false;
             if (Program.instance.ui_.currentPopupB != this)
                 return false;
+            if(UserInput.InputFieldActivating())
+                return false;
 
             return true;
         }

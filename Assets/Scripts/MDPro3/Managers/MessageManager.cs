@@ -1,5 +1,6 @@
 using DG.Tweening;
 using KonamiCommonIAB;
+using MDPro3.Utility;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -63,11 +64,14 @@ namespace MDPro3
 
         IEnumerator RefreshAsync(GameObject item, int code)
         {
-            var task = TextureManager.LoadCardAsync(code, false);
+            var task = CardImageLoader.LoadCardAsync(code, false);
             while(!task.IsCompleted)
                 yield return null;
 
-            var mat = TextureManager.GetCardMaterial(code);
+            var matLoad = MaterialLoader.LoadCardMaterialAsync(code);
+            while (!matLoad.IsCompleted)
+                yield return null;
+            var mat = matLoad.Result;
             item.GetComponent<RawImage>().material = mat;
             item.GetComponent<RawImage>().texture = task.Result;
 

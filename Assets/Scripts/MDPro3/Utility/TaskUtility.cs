@@ -7,27 +7,27 @@ namespace MDPro3.Utility
 {
     public static class TaskUtility
     {
-        private static readonly int DeltaTime = 16;
-
         public static async Task WaitWhile(Func<bool> condition)
         {
-            while(condition() && Application.isPlaying)
+            while(condition())
             {
-                await Task.Delay(DeltaTime);
+                await WaitOneFrame();
             }
         }
 
         public static async Task WaitUntil(Func<bool> condition)
         {
-            while (!condition() && Application.isPlaying)
+            while (!condition())
             {
-                await Task.Delay(DeltaTime);
+                await WaitOneFrame();
             }
         }
 
         public static async Task WaitOneFrame()
         {
-            await Task.Delay(DeltaTime);
+            await Task.Yield();
+            if(!Application.isPlaying)
+                throw new OperationCanceledException();
         }
     }
 }

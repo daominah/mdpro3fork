@@ -107,20 +107,8 @@ namespace MDPro3.Servant
             TcpHelper.CtosMessage_Response(buffer);
         }
 
-        public void OnSelectAI()
-        {
-            if (RoomIsFull())
-            {
-                MessageManager.Cast(InterString.Get("房间已满，无法继续添加AI。"));
-            }
-            else
-            {
-                Program.instance.solo.SwitchCondition(SoloSelector.Condition.ForRoom);
-                Program.instance.ShiftToServant(Program.instance.solo);
-            }
-        }
 
-        private bool RoomIsFull()
+        public bool RoomIsFull()
         {
             int playerSeats = 2;
             if (Mode == 2)
@@ -132,18 +120,15 @@ namespace MDPro3.Servant
             return true;
         }
 
-        public void OnSelectDeck()
+        public bool CanChangeDeck()
         {
             if (players[SelfType] != null && players[SelfType].ready)
             {
                 MessageManager.Toast(InterString.Get("请先取消准备，再选择卡组。"));
-                return;
+                return false;
             }
-            Program.instance.deckSelector.SwitchCondition(DeckSelector.Condition.ForDuel);
-            Program.instance.ShiftToServant(Program.instance.deckSelector);
+            return true;
         }
-
-
 
         private void ShowOcgCore()
         {
@@ -224,6 +209,11 @@ namespace MDPro3.Servant
 
         #region STOC
 
+        private void GoFirst(bool first)
+        {
+            TcpHelper.CtosMessage_TpResult(first);
+        }
+
         public void StocMessage_GameMsg(BinaryReader r)
         {
             ShowOcgCore();
@@ -298,7 +288,7 @@ namespace MDPro3.Servant
                             task = replace.Replace(task, target);
                             break;
                         default:
-                            task = StringHelper.GetUnsafe(1406);
+                            task = StringHelper.GetUnsafe(1406);// 无效卡组。
                             break;
                     }
                     tasks.Add(task);
@@ -317,6 +307,7 @@ namespace MDPro3.Servant
                     break;
             }
         }
+
         public void StocMessage_SelectHand(BinaryReader r)
         {
             if (SoloLockHand || Config.Get("AutoRPS", "0") == "0")
@@ -346,11 +337,6 @@ namespace MDPro3.Servant
                 InterString.Get("后攻")
             };
             UIManager.ShowPopupYesOrNo(selections, () => { GoFirst(true); }, () => { GoFirst(false); });
-        }
-
-        private void GoFirst(bool first)
-        {
-            TcpHelper.CtosMessage_TpResult(first);
         }
 
         public void StocMessage_HandResult(BinaryReader r)
@@ -441,6 +427,7 @@ namespace MDPro3.Servant
             if (showing)
                 Hide(0);
         }
+
         public void StocMessage_DuelEnd(BinaryReader r)
         {
             duelEnded = true;

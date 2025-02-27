@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using MDPro3.Duel.YGOSharp;
 using TMPro;
 using MDPro3.UI.ServantUI;
+using MDPro3.Utility;
 
 namespace MDPro3.UI
 {
@@ -136,10 +137,13 @@ namespace MDPro3.UI
         {
             refreshed = false;
             cardFace.texture = TextureManager.container.unknownCard.texture;
-            var task = TextureManager.LoadCardAsync(code, true);
+            var task = CardImageLoader.LoadCardAsync(code, true);
             while (!task.IsCompleted)
                 yield return null;
-            var mat = TextureManager.GetCardMaterial(code);
+            var matLoad = MaterialLoader.LoadCardMaterialAsync(code);
+            while (!matLoad.IsCompleted)
+                yield return null;
+            var mat = matLoad.Result;
             cardFace.material = mat;
             cardFace.material.mainTexture = task.Result;
             cardFace.texture = task.Result;

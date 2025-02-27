@@ -71,7 +71,7 @@ namespace MDPro3.Servant
 
 #if UNITY_ANDROID
                 if (UserInput.MouseLeftDown)
-                    if(cg.alpha == 0)
+                    if(autoPlay != null)
                         OnReturn();
 #endif
 
@@ -168,13 +168,13 @@ namespace MDPro3.Servant
         public static bool HasCutin(int code)
         {
             if (OcgCore.condition == OcgCore.Condition.Duel
-                && Config.GetBool("DuelCutin", true))
+                && !Config.GetBool("DuelCutin", true))
                 return false;
             if (OcgCore.condition == OcgCore.Condition.Watch
-                && Config.GetBool("WatchCutin", true))
+                && !Config.GetBool("WatchCutin", true))
                 return false;
             if (OcgCore.condition == OcgCore.Condition.Replay
-                && Config.GetBool("ReplayCutin", true))
+                && !Config.GetBool("ReplayCutin", true))
                 return false;
             code = AliasCode(code);
             bool returnValue = false;

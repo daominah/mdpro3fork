@@ -12,7 +12,7 @@ using MDPro3.Duel.YGOSharp;
 using System.IO;
 using MDPro3.Servant;
 using MDPro3.UI.ServantUI;
-using NUnit.Framework;
+using MDPro3.Utility;
 
 namespace MDPro3
 {
@@ -290,10 +290,14 @@ namespace MDPro3
         {
             Renderer cardFace = manager.GetElement<Transform>("CardModel").
                     GetChild(1).GetComponent<Renderer>();
-            cardFace.material = TextureManager.GetCardMaterial(data.Id);
+
+            var matLoad = MaterialLoader.LoadCardMaterialAsync(data.Id);
+            while (!matLoad.IsCompleted)
+                yield return null;
+            cardFace.material = matLoad.Result;
             cardFace.material.renderQueue = 2999;
 
-            var task = TextureManager.LoadCardAsync(data.Id, true);
+            var task = CardImageLoader.LoadCardAsync(data.Id, true);
             while (!task.IsCompleted)
                 yield return null;
 
@@ -2651,6 +2655,8 @@ namespace MDPro3
             }
             Destroy(fx, 1f);
         }
+
+        private float cardShakeTimeOffset = 0.01f;
         public void AnimationLandShake(GameCard card, bool huge)
         {
             if (card == this)
@@ -2659,24 +2665,37 @@ namespace MDPro3
                 return;
             if (model == null)//Overlays
                 return;
-            if (huge)
+
+            var time = cardShakeTimeOffset * Vector3.Distance(card.model.transform.position, model.transform.position);
+            DOTween.To(v => { }, 0, 0, time).OnComplete(() =>
             {
-                model.transform.DOShakePosition(0.6f, Vector3.one * 0.5f, 10, 90, false, true, ShakeRandomnessMode.Harmonic);
-                model.transform.DOShakeRotation(0.6f, 10f);
-                Sequence sequence = DOTween.Sequence();
-                sequence.Append(model.transform.DOLocalMoveY(6, 0.3f));
-                sequence.Append(model.transform.DOLocalMoveY(0.2f, 0.3f));
-            }
-            else
-            {
-                return;
-                model.transform.DOShakePosition(0.4f, Vector3.one * 0.2f, 10, 90, false, true, ShakeRandomnessMode.Harmonic);
-                model.transform.DOShakeRotation(0.4f, 5f);
-                Sequence sequence = DOTween.Sequence();
-                sequence.Append(model.transform.DOLocalMoveY(3, 0.2f));
-                sequence.Append(model.transform.DOLocalMoveY(0.2f, 0.2f));
-            }
+                if (this == null)
+                    return;
+                if ((p.location & (uint)CardLocation.Onfield) == 0)
+                    return;
+                if (model == null)
+                    return;
+
+                if (huge)
+                {
+                    model.transform.DOShakePosition(0.6f, Vector3.one * 0.5f, 10, 90, false, true, ShakeRandomnessMode.Harmonic);
+                    model.transform.DOShakeRotation(0.6f, 10f);
+                    Sequence sequence = DOTween.Sequence();
+                    sequence.Append(model.transform.DOLocalMoveY(6, 0.3f));
+                    sequence.Append(model.transform.DOLocalMoveY(0.2f, 0.3f));
+                }
+                else
+                {
+                    return;
+                    model.transform.DOShakePosition(0.4f, Vector3.one * 0.2f, 10, 90, false, true, ShakeRandomnessMode.Harmonic);
+                    model.transform.DOShakeRotation(0.4f, 5f);
+                    Sequence sequence = DOTween.Sequence();
+                    sequence.Append(model.transform.DOLocalMoveY(3, 0.2f));
+                    sequence.Append(model.transform.DOLocalMoveY(0.2f, 0.2f));
+                }
+            });
         }
+
         public void AnimationConfirmDeckTop(int id)
         {
             CreateModel();

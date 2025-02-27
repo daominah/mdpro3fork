@@ -157,7 +157,7 @@ GameObject:
   - component: {fileID: 2096283483788812499}
   - component: {fileID: 823569012655217840}
   - component: {fileID: 7570842739984132629}
-  - component: {fileID: 7223084372823694245}
+  - component: {fileID: 2276834682769797719}
   m_Layer: 5
   m_Name: ImageGate
   m_TagString: Untagged
@@ -232,7 +232,7 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
---- !u!114 &7223084372823694245
+--- !u!114 &2276834682769797719
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -241,7 +241,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1041395544230056081}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 609c3393995237b45a9cf31794a9327a, type: 3}
+  m_Script: {fileID: 11500000, guid: e78d3e30d10f4fb4a80f7bf66a410288, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cache: 1

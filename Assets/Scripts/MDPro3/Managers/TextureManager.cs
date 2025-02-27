@@ -20,30 +20,9 @@ namespace MDPro3
         public static TextureManager instance;
         public static TextureContainer container;
 
-        static ConcurrentDictionary<int, Texture2D> cachedArts = new();
-        static ConcurrentDictionary<int, Texture2D> cachedCards = new();
-        static ConcurrentDictionary<int, Texture2D> cachedMasks = new();
-
-        public static Material cardMatNormal;
-        public static Material cardMatShine;
-        public static Material cardMatShineRD;
-        public static Material cardMatRoyal;
-        public static Material cardMatRoyalRD;
-        public static Material cardMatGold;
-        public static Material cardMatGoldRD;
-        public static Material cardMatMillennium;
-        public static Material cardMatMillenniumRD;
-        public static Material cardMatSide;
-
         private Material commonShopButtonMat;
         private Material commonShopButtonOverMat;
 
-
-        static int cardLoadCount;
-        const int cardLoadMax = 100;
-
-        public static bool lastCardFoundArt;
-        public static bool lastCardRenderSucceed;
         public override void Initialize()
         {
             instance = this;
@@ -61,89 +40,6 @@ namespace MDPro3
         {
             while(container == null)
                 yield return null;
-
-            var ie = ABLoader.LoadFromFileAsync("MasterDuel/Timeline/summon/summonsynchro/summonsynchro01", true);
-            while (ie.MoveNext())
-                yield return null;
-            var manager = ie.Current.GetComponent<ElementObjectManager>();
-            manager.gameObject.SetActive(false);
-            Destroy(manager.gameObject);
-            manager = manager.GetElement<ElementObjectManager>("SummonSynchroPostSynchro");
-            manager = manager.GetElement<ElementObjectManager>("DummyCardSynchro");
-            cardMatNormal = Instantiate(manager.GetElement<Renderer>("DummyCardModel_front").material);
-            var handle = Addressables.LoadAssetAsync<Material>("MaterialCardModelSide");
-            handle.Completed += (result) =>
-            {
-                cardMatSide = result.Result;
-            };
-
-            ie = ABLoader.LoadFromFileAsync("MasterDuel/Timeline/summon/summonsynchro/summonsynchro01_royalstyle");
-            while (ie.MoveNext())
-                yield return null;
-            manager = ie.Current.GetComponent<ElementObjectManager>();
-            manager.gameObject.SetActive(false);
-            Destroy(manager.gameObject);
-            manager = manager.GetElement<ElementObjectManager>("SummonSynchroPostSynchro");
-            manager = manager.GetElement<ElementObjectManager>("DummyCardSynchro");
-            cardMatRoyal = Instantiate(manager.GetElement<Renderer>("DummyCardModel_front").material);
-
-            ie = ABLoader.LoadFromFileAsync("MasterDuel/Timeline/summon/summonsynchro/summonsynchro01_shinestyle");
-            while (ie.MoveNext())
-                yield return null;
-            manager = ie.Current.GetComponent<ElementObjectManager>();
-            manager.gameObject.SetActive(false);
-            Destroy(manager.gameObject);
-            manager = manager.GetElement<ElementObjectManager>("SummonSynchroPostSynchro");
-            manager = manager.GetElement<ElementObjectManager>("DummyCardSynchro");
-            cardMatShine = Instantiate(manager.GetElement<Renderer>("DummyCardModel_front").material);
-
-            cardMatNormal.SetFloat("_FakeBlend", 1);
-            cardMatNormal.SetColor("_AmbientColor", new Color(0.0588f, 0.0588f, 0.0588f, 1f));
-            cardMatShine.SetFloat("_FakeBlend", 1);
-            cardMatRoyal.SetFloat("_FakeBlend", 1);
-
-            cardMatShine.SetVector("_AttributeSize_Pos", new Vector4(9.82f, 13.84f, -3.7f, -5.81f));
-            cardMatRoyal.SetVector("_AttributeSize_Pos", new Vector4(9.82f, 13.84f, -3.7f, -5.81f));
-
-            cardMatShine.SetTexture("_KiraMask", container.cardKiraMask);
-            cardMatRoyal.SetTexture("_KiraMask", container.cardKiraMask);
-            var tempTex = cardMatRoyal.GetTexture("_Texture2DAsset_90c6e35ef4304f289c279037152a03b7_Out_0");
-            cardMatNormal.SetTexture("_Texture2DAsset_90c6e35ef4304f289c279037152a03b7_Out_0", tempTex);
-            tempTex = cardMatRoyal.GetTexture("_HighlightNormal");
-            cardMatRoyal.SetTexture("_Texture2DAsset_3e204bf62e854283be7482d92655b24f_Out_0", tempTex);
-
-            cardMatNormal.enableInstancing = true;
-            cardMatShine.enableInstancing = true;
-            cardMatRoyal.enableInstancing = true;
-
-            cardMatGold = Instantiate(cardMatRoyal);
-            cardMatGold.SetFloat("_CardDistortion01", 1.2f);
-            cardMatGold.SetFloat("_Kira01_01Tile", 0.25f);
-            cardMatGold.SetFloat("_Kira01_01Power", 3f);
-            cardMatGold.SetColor("_KiraColor02", new Color(0.5f, 0.5f, 0f, 0f));
-            cardMatGold.SetColor("_CubemapColor", new Color(0.7f, 0.7f, 0f, 0f));
-
-            cardMatMillennium = Instantiate(cardMatRoyal);
-            cardMatMillennium.SetTexture("_HighlightNormal", container.CardKiraNormal03_Millennium);
-            cardMatMillennium.SetTexture("_Texture2DAsset_3e204bf62e854283be7482d92655b24f_Out_0", container.CardKiraNormal03_Millennium);
-            cardMatMillennium.SetColor("_CubemapColor", new Color(0.898f, 0.3245f, 0.7723f, 0f));
-            cardMatMillennium.SetColor("_KiraColor02", new Color(0.3099f, 0.1633f, 0.2753f, 0f));
-            cardMatMillennium.SetFloat("_Kira01_01Tile", 0.25f);
-            cardMatMillennium.SetFloat("_Kira01_02Tile", 0f);
-            cardMatMillennium.SetFloat("_RanbowPower", 0.5f);
-            //cardMatMillennium.SetFloat("_IlluustRanbowPower", 1.5f);
-
-            cardMatShineRD = Instantiate(cardMatShine);
-            MaterialToRD(cardMatShineRD);
-
-            cardMatRoyalRD = Instantiate(cardMatRoyal);
-            MaterialToRD(cardMatRoyalRD);
-
-            cardMatGoldRD = Instantiate(cardMatGold);
-            MaterialToRD(cardMatGoldRD);
-
-            cardMatMillenniumRD = Instantiate(cardMatMillennium);
-            MaterialToRD(cardMatMillenniumRD);
 
             var mie = ABLoader.LoadMaterialAsync("MasterDuel/Material/GUI_CommonShopButton_N");
             while (mie.MoveNext())
@@ -204,196 +100,9 @@ namespace MDPro3
             }
         }
 
-        public static async Task<Texture2D> LoadArtAsync(int code, bool cache = false)
-        {
-            Texture2D returnValue = null;
-            var path = Program.altArtPath + code;
-            if (!Directory.Exists(Program.artPath))
-                Directory.CreateDirectory(Program.artPath);
-            if (!Directory.Exists(Program.altArtPath))
-                Directory.CreateDirectory(Program.altArtPath);
-
-            lock (cachedArts)
-            {
-                if(cachedArts.TryGetValue(code, out returnValue))
-                    return returnValue;
-            }
-
-            if (File.Exists(path + Program.jpgExpansion))
-                path += Program.jpgExpansion;
-            else if (File.Exists(path + Program.pngExpansion))
-                path += Program.pngExpansion;
-            else if (File.Exists(Program.artPath + code.ToString() + Program.jpgExpansion))
-                path = Program.artPath + Program.slash + code.ToString() + Program.jpgExpansion;
-            else
-            {
-                //Load From YPK art Folder
-                foreach (var zip in ZipHelper.zips)
-                {
-                    if (zip.Name.ToLower().EndsWith("script.zip"))
-                        continue;
-                    foreach (var file in zip.EntryFileNames)
-                    {
-                        foreach (var extName in new[] { Program.pngExpansion, Program.jpgExpansion })
-                        {
-                            var picPath = $"art/{code}{extName}";
-                            if (file.ToLower() == picPath)
-                            {
-                                returnValue = new Texture2D(0, 0);
-                                MemoryStream stream = new MemoryStream();
-                                var entry = zip[picPath];
-                                entry.Extract(stream);
-                                returnValue.LoadImage(stream.ToArray());
-                            }
-                        }
-                    }
-                }
-                //Load From YPK pics Folder
-                if (returnValue == null)
-                {
-                    foreach (var zip in ZipHelper.zips)
-                    {
-                        if (zip.Name.ToLower().EndsWith("script.zip"))
-                            continue;
-                        foreach (var file in zip.EntryFileNames)
-                        {
-                            foreach (var extName in new[] { Program.pngExpansion, Program.jpgExpansion })
-                            {
-                                var picPath = $"pics/{code}{extName}";
-                                if (file.ToLower() == picPath)
-                                {
-                                    returnValue = new Texture2D(0, 0);
-                                    MemoryStream stream = new MemoryStream();
-                                    var entry = zip[picPath];
-                                    entry.Extract(stream);
-                                    returnValue.LoadImage(stream.ToArray());
-                                    var card = CardsManager.Get(code);
-                                    if (code >= 120000000 && code < 130000000)
-                                    {
-                                        if (card.HasType(CardType.Monster))
-                                            returnValue = GetArtFromRushDuelMonsterCard(returnValue);
-                                        else
-                                            returnValue = GetArtFromRushDuelSpellCard(returnValue);
-                                    }
-                                    else if (card.HasType(CardType.Pendulum))
-                                        returnValue = GetArtFromPendulumCard(returnValue);
-                                    else
-                                        returnValue = GetArtFromCard(returnValue);
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-
-            if (returnValue == null)
-            {
-                var task = LoadPicFromFileAsync(path);
-                await TaskUtility.WaitUntil(() => task.IsCompleted);
-                if (!Application.isPlaying)
-                    return null;
-
-                returnValue = task.Result;
-            }
-
-            if (returnValue == null)
-            {
-                lastCardFoundArt = false;
-                return container.unknownArt.texture;
-            }
-            else
-            {
-                lastCardFoundArt = true;
-
-                if (Program.instance.ocgcore.showing)
-                    cache = true;
-
-                if (cache)
-                {
-                    lock (cachedArts)
-                    {
-                        if (!cachedArts.ContainsKey(code))
-                            cachedArts[code] = returnValue;
-                        else
-                        {
-                            Destroy(returnValue);
-                            returnValue = cachedArts[code];
-                        }
-                    }
-                }
-                return returnValue;
-            }
-        }
-
-        public static async Task<Texture2D> LoadCardAsync(int code, bool cache = false)
-        {
-            if (cachedCards.TryGetValue(code, out var returnValue))
-                return returnValue;
-
-            lastCardRenderSucceed = true;
-
-            while (container == null)
-                await Task.Delay(100);
-            if(!Application.isPlaying)
-                return null;
-
-            var data = CardsManager.Get(code, true);
-            if (data.Id == 0)
-            {
-                lastCardRenderSucceed = false;
-                return container.unknownCard.texture;
-            }
-
-            var task = LoadArtAsync(code, false);
-            await TaskUtility.WaitUntil(() => task.IsCompleted);
-            if(!Application.isPlaying)
-                return null;
-
-            if (Program.instance.ocgcore.showing)
-                cache = true;
-
-            lock (cachedCards)
-            {
-                if (!Program.instance.cardRenderer.RenderCard(code, task.Result))
-                {
-                    if (cache)
-                        if (!cachedCards.ContainsKey(code))
-                            cachedCards.TryAdd(code, container.unknownCard.texture);
-                    lastCardRenderSucceed = false;
-                    return container.unknownCard.texture;
-                }
-
-                returnValue = new Texture2D(RenderTexture.active.width, RenderTexture.active.height, TextureFormat.RGB24, true);
-                returnValue.ReadPixels(new Rect(0, 0, RenderTexture.active.width, RenderTexture.active.height), 0, 0);
-                returnValue.Apply();
-                returnValue.name = "Card_" + code;
-
-                if (cache)
-                {
-                    if (!cachedCards.ContainsKey(code))
-                        cachedCards.TryAdd(code, returnValue);
-                    else
-                    {
-                        Destroy(returnValue);
-                        returnValue = cachedCards[code];
-                    }
-                }
-            }
-
-            cardLoadCount++;
-            if(cardLoadCount >= cardLoadMax)
-            {
-                cardLoadCount = 0;
-                Program.instance.UnloadUnusedAssets();
-            }
-
-            return returnValue;
-
-        }
-
         public IEnumerator LoadCardToRawImageWithoutMaterialAsync(RawImage rawImage, int code, bool cache = true)
         {
-            var task = LoadCardAsync(code, cache);
+            var task = CardImageLoader.LoadCardAsync(code, cache);
             while (!task.IsCompleted)
                 yield return null;
 
@@ -405,42 +114,40 @@ namespace MDPro3
 
         public IEnumerator LoadCardToRendererWithMaterialAsync(Renderer renderer, int code, bool cache = true)
         {
-            var task = LoadCardAsync(code, cache);
+            var task = CardImageLoader.LoadCardAsync(code, cache);
             while (!task.IsCompleted)
                 yield return null;
 
             if (renderer == null)
                 yield break;
 
-            var mat = GetCardMaterial(code, cache);
+            var matLoad = MaterialLoader.LoadCardMaterialAsync(code);
+            while (!matLoad.IsCompleted)
+                yield return null;
+            var mat = matLoad.Result;
             mat.mainTexture = task.Result;
             renderer.material = mat;
         }
+
         public IEnumerator LoadDummyCard(ElementObjectManager manager, int code, uint player, bool active = false)
         {
             if (active)
                 manager.gameObject.SetActive(false);
-            manager.GetElement<Renderer>("DummyCardModel_side").material = cardMatSide;
+            manager.GetElement<Renderer>("DummyCardModel_side").material = MaterialLoader.cardMatSide;
             manager.GetElement<Renderer>("DummyCardModel_back").material = player == 0 ? Program.instance.ocgcore.myProtector : Program.instance.ocgcore.opProtector;
 
-            var task = LoadCardAsync(code, false);
+            var task = CardImageLoader.LoadCardAsync(code, false);
             while (!task.IsCompleted)
                 yield return null;
 
-            var mat = GetCardMaterial(code);
+            var matLoad = MaterialLoader.LoadCardMaterialAsync(code);
+            while (!matLoad.IsCompleted)
+                yield return null;
+            var mat = matLoad.Result;
             manager.GetElement<Renderer>("DummyCardModel_front").material = mat;
             manager.GetElement<Renderer>("DummyCardModel_front").material.mainTexture = task.Result;
             if (active)
                 manager.gameObject.SetActive(true);
-        }
-        public static void ClearCache()
-        {
-            foreach (var card in cachedCards.Values)
-                Destroy(card);
-            cachedCards.Clear();
-            foreach (var mask in cachedMasks.Values)
-                Destroy(mask);
-            cachedMasks.Clear();
         }
 
         private void SetCommonShopButtonMaterial(Material mat)
@@ -468,7 +175,9 @@ namespace MDPro3
         }
 
         #region Closeup
+
         static Dictionary<int, Texture2D> cachedCloseups = new Dictionary<int, Texture2D>();
+
         public IEnumerator<Texture2D> LoadCloseupAsync(int code, MeshRenderer renderer = null)
         {
             if(renderer != null)
@@ -503,6 +212,7 @@ namespace MDPro3
                 ResizeCloseup(renderer, returenValue);
             yield return returenValue;
         }
+
         void ResizeCloseup(MeshRenderer renderer, Texture2D tex)
         {
             renderer.material.mainTexture = tex;
@@ -514,167 +224,11 @@ namespace MDPro3
                 renderer.transform.localScale = new Vector3(x * aspect, x, 1f);
             }, 8f, 0.3f);
         }
-        #endregion
-
-        #region Card Render
-        public Texture2D GetNameMask(int code, bool cache = false)
-        {
-            if (cachedMasks.ContainsKey(code))
-                return cachedMasks[code];
-            Texture2D returnValue;
-            RenderTexture.active = Program.instance.cardRenderer.renderTexture;
-            Program.instance.cardRenderer.RenderName(code);
-            returnValue = new Texture2D(RenderTexture.active.width, 203, TextureFormat.RGBA32, false);
-            var rect = new Rect(0, Program.instance.cardRenderer.renderTexture.height - 203, Program.instance.cardRenderer.renderTexture.width, 203);
-            //if (SystemInfo.graphicsUVStartsAtTop)
-            //    rect = new Rect(0, 0, Program.instance.cardRenderer.renderTexture.width, 203); 
-            returnValue.ReadPixels(rect, 0, 0);
-            returnValue.Apply();
-            returnValue.wrapMode = TextureWrapMode.Clamp;
-            if (cache)
-                cachedMasks.TryAdd(code, returnValue);
-            return returnValue;
-        }
-        public static Material GetCardMaterial(int code, bool cache = false)
-        {
-            if (code < 0)
-                return Instantiate(cardMatNormal);
-
-            bool rushDuel = CardRenderer.NeedRushDuelStyle(code);
-            var rarity = CardRarity.GetRarity(code);
-
-            Material mat = null;
-            bool needChange = false;
-            switch (rarity)
-            {
-                case CardRarity.Rarity.Normal:
-                    mat = Instantiate(cardMatNormal);
-                    break;
-                case CardRarity.Rarity.Shine:
-                    mat = Instantiate(rushDuel ? cardMatShineRD : cardMatShine);
-                    needChange = true;
-                    break;
-                case CardRarity.Rarity.Royal:
-                    mat = Instantiate(rushDuel ? cardMatRoyalRD : cardMatRoyal);
-                    needChange = true;
-                    break;
-                case CardRarity.Rarity.Gold:
-                    mat = Instantiate(rushDuel ? cardMatGoldRD : cardMatGold);
-                    needChange = true;
-                    break;
-                case CardRarity.Rarity.Millennium:
-                    mat = Instantiate(rushDuel ? cardMatMillenniumRD : cardMatMillennium);
-                    needChange = true;
-                    break;
-            }
-            if (needChange)
-            {
-                var data = CardsManager.Get(code);
-                if (data.HasType(CardType.Spell))
-                    mat.SetFloat("_AttributeTile", 7);
-                else if (data.HasType(CardType.Trap))
-                    mat.SetFloat("_AttributeTile", 8);
-                else if ((data.Attribute & (uint)CardAttribute.Light) > 0)
-                    mat.SetFloat("_AttributeTile", 0);
-                else if ((data.Attribute & (uint)CardAttribute.Dark) > 0)
-                    mat.SetFloat("_AttributeTile", 1);
-                else if ((data.Attribute & (uint)CardAttribute.Water) > 0)
-                    mat.SetFloat("_AttributeTile", 2);
-                else if ((data.Attribute & (uint)CardAttribute.Fire) > 0)
-                    mat.SetFloat("_AttributeTile", 3);
-                else if ((data.Attribute & (uint)CardAttribute.Earth) > 0)
-                    mat.SetFloat("_AttributeTile", 4);
-                else if ((data.Attribute & (uint)CardAttribute.Wind) > 0)
-                    mat.SetFloat("_AttributeTile", 5);
-                else if ((data.Attribute & (uint)CardAttribute.Divine) > 0)
-                    mat.SetFloat("_AttributeTile", 6);
-                var mask = Program.instance.texture_.GetNameMask(code, cache);
-                mat.SetTexture("_MonsterNameTex", mask);
-                if (rushDuel)
-                {
-                    if (data.HasType(CardType.Pendulum))
-                    {
-                        mat.SetTexture("_KiraMask", container.rd_KiraMaskPendulum);
-                    }
-                }
-                else
-                {
-                    if (data.HasType(CardType.Link))
-                    {
-                        mat.SetTexture("_FrameMask", container.cardFrameMaskLink);
-                        mat.SetTexture("_KiraMask", container.cardKiraMaskLink);
-                        mat.SetTexture("_MainNormal", container.cardNormalLink);
-                        if (rarity == CardRarity.Rarity.Shine)
-                            mat.SetFloat("_LinkOn_Off", 1f);
-                    }
-                    else if (data.HasType(CardType.Pendulum))
-                    {
-                        mat.SetTexture("_FrameMask", container.cardFrameMaskPendulum);
-                        mat.SetTexture("_KiraMask", container.cardKiraMaskPendulum);
-                        mat.SetTexture("_MainNormal", container.cardNormalPendulum);
-                    }
-                }
-                if(rarity == CardRarity.Rarity.Millennium)
-                {
-                    mat.SetColor("_KiraColor02", GetMillenniumFrameColor(data));
-                    mat.SetColor("_CubemapColor", GetMillenniumNameColor(data));
-                }
-            }
-            return mat;
-        }
-
-        static Color GetMillenniumFrameColor(Card data)
-        {
-            var color = new Color(0.3099f, 0.1633f, 0.2753f, 0f);
-            if (data.HasType(CardType.Pendulum))
-                color = new Color(0.3099f, 0.1633f, 0.2753f, 0f);
-            else if (data.HasType(CardType.Spell))
-                color = new Color(0f, 0.8867f, 1f, 0f);
-            else if (data.HasType(CardType.Trap))
-                color = new Color(1f, 0f, 1f, 0f);
-            else if (data.HasType(CardType.Normal))
-                color = new Color(1f, 0.6f, 0f, 0f);
-            else if (data.HasType(CardType.Fusion))
-                color = new Color(1f, 0f, 1f, 0f);
-            else if (data.HasType(CardType.Ritual))
-                color = new Color(0f, 0.2f, 1f, 0f);
-            else if (data.HasType(CardType.Synchro))
-                color = new Color(0.4f, 0.4f, 0.4f, 0f);
-            else if (data.HasType(CardType.Xyz))
-                color = new Color(0.1f, 0.1f, 0.1f, 0f);
-            else if (data.HasType(CardType.Link))
-                color = new Color(0f, 0.4f, 1f, 0f);
-            else
-                color = new Color(1f, 0.2357f, 0f, 0f);
-            return color;
-        }
-        static Color GetMillenniumNameColor(Card data)
-        {
-            if (data.HasType(CardType.Spell))
-                return new Color(0f, 1f, 1f, 1f);
-            else if (data.HasType(CardType.Trap))
-                return new Color(1f, 0f, 0.5f, 1f);
-            else if ((data.Attribute & (uint)CardAttribute.Light) > 0)
-                return new Color(1f, 1f, 0f, 1f);
-            else if ((data.Attribute & (uint)CardAttribute.Divine) > 0)
-                return new Color(1f, 1f, 0f, 1f);
-            else if ((data.Attribute & (uint)CardAttribute.Dark) > 0)
-                return new Color(1f, 0f, 1f, 1f);
-            else if ((data.Attribute & (uint)CardAttribute.Water) > 0)
-                return new Color(0f, 1f, 1f, 1f);
-            else if ((data.Attribute & (uint)CardAttribute.Fire) > 0)
-                return new Color(1f, 0f, 0f, 1f);
-            else if ((data.Attribute & (uint)CardAttribute.Earth) > 0)
-                return new Color(0.2f, 0.2f, 0.2f, 1f);
-            else if ((data.Attribute & (uint)CardAttribute.Wind) > 0)
-                return new Color(0f, 1f, 0f, 1f);
-            else
-                return new Color(1f, 1f, 0f, 1f);
-        }
 
         #endregion
 
         #region Card UI
+
         public static Sprite GetCardLocationIcon(GPS p)
         {
             if ((p.location & (uint)CardLocation.Hand) > 0)
@@ -701,6 +255,7 @@ namespace MDPro3
             else
                 return container.typeNone;
         }
+
         public static Sprite GetCardAttributeIcon(int attribute, int code, bool render = false)
         {
             bool rushDuel = CardRenderer.NeedRushDuelStyle(code);
@@ -719,6 +274,7 @@ namespace MDPro3
             else
                 return rushDuel && render ? container.rd_Attribute_Divine : container.attributeDivine;
         }
+
         public static Sprite GetCardRaceIcon(int race)
         {
             if ((race & (uint)CardRace.Warrior) > 0)
@@ -776,6 +332,7 @@ namespace MDPro3
             else
                 return container.typeNone;
         }
+
         public static Sprite GetSpellTrapTypeIcon(Card data)
         {
             if (data.HasType(CardType.Counter))
@@ -793,6 +350,7 @@ namespace MDPro3
             else
                 return container.typeNone;
         }
+
         public static Sprite GetCardLevelIcon(Card data)
         {
             if (data.HasType(CardType.Link))
@@ -802,6 +360,7 @@ namespace MDPro3
             else
                 return container.typeLevel;
         }
+
         public static Sprite GetCardCounterIcon(int counter)
         {
             return counter switch
@@ -875,53 +434,7 @@ namespace MDPro3
                 _ => container.counterNormal,
             };
         }
-        #endregion
 
-        #region Crop Texture
-        public static Texture2D GetArtFromCard(Texture2D cardPic)
-        {
-            var startX = Mathf.CeilToInt(cardPic.width * 0.13f);
-            var startY = Mathf.CeilToInt(cardPic.height * 0.3f);
-            var width = Mathf.CeilToInt(cardPic.width * 0.87f);
-            var height = Mathf.CeilToInt(cardPic.height * 0.81f);
-            return GetCroppingTex(cardPic, startX, startY, width, height);
-        }
-        public static Texture2D GetArtFromPendulumCard(Texture2D cardPic)
-        {
-            var startX = Mathf.CeilToInt(cardPic.width * 0.067f);
-            var startY = Mathf.CeilToInt(cardPic.height * 0.38f);
-            var width = Mathf.CeilToInt(cardPic.width * 0.933f);
-            var height = Mathf.CeilToInt(cardPic.height * 0.81f);
-            return GetCroppingTex(cardPic, startX, startY, width, height);
-        }
-        public static Texture2D GetArtFromRushDuelMonsterCard(Texture2D cardPic)
-        {
-            var startX = Mathf.CeilToInt(cardPic.width * 0.067f);
-            var startY = Mathf.CeilToInt(cardPic.height * 0.29f);
-            var width = Mathf.CeilToInt(cardPic.width * 0.933f);
-            var height = Mathf.CeilToInt(cardPic.height * 0.90f);
-            return GetCroppingTex(cardPic, startX, startY, width, height);
-        }
-        public static Texture2D GetArtFromRushDuelSpellCard(Texture2D cardPic)
-        {
-            var startX = Mathf.CeilToInt(cardPic.width * 0.067f);
-            var startY = Mathf.CeilToInt(cardPic.height * 0.29f);
-            var width = Mathf.CeilToInt(cardPic.width * 0.933f);
-            var height = Mathf.CeilToInt(cardPic.height * 0.90f);
-            return GetCroppingTex(cardPic, startX, startY, width, height);
-        }
-        public static Texture2D GetCroppingTex(Texture2D texture, int startX, int startY, int width, int height)
-        {
-            var returnValue = new Texture2D(width - startX, height - startY);
-            var pix = new Color[returnValue.width * returnValue.height];
-            var index = 0;
-            for (var y = startY; y < height; y++)
-                for (var x = startX; x < width; x++)
-                    pix[index++] = texture.GetPixel(x, y);
-            returnValue.SetPixels(pix);
-            returnValue.Apply();
-            return returnValue;
-        }
         #endregion
 
         #region Public Static Functions
@@ -1119,6 +632,7 @@ namespace MDPro3
 
             return newPixels;
         }
+
         public static Sprite Texture2Sprite(Texture2D texture)
         {
             if (texture == null)
@@ -1205,6 +719,19 @@ namespace MDPro3
                     }
                 }
             }
+        }
+
+        public static Texture2D GetCroppingTex(Texture2D texture, int startX, int startY, int width, int height)
+        {
+            var returnValue = new Texture2D(width - startX, height - startY);
+            var pix = new Color[returnValue.width * returnValue.height];
+            var index = 0;
+            for (var y = startY; y < height; y++)
+                for (var x = startX; x < width; x++)
+                    pix[index++] = texture.GetPixel(x, y);
+            returnValue.SetPixels(pix);
+            returnValue.Apply();
+            return returnValue;
         }
 
         #endregion

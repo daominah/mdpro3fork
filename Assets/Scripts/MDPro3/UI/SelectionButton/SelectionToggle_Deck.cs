@@ -10,6 +10,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using MDPro3.Servant;
 using MDPro3.UI.ServantUI;
+using MDPro3.Utility;
 
 namespace MDPro3.UI
 {
@@ -124,7 +125,7 @@ namespace MDPro3.UI
             var cardImage0 = Manager.GetElement<RawImage>("CardImage0");
             if (card0 != 0)
             {
-                var task = TextureManager.LoadCardAsync(card0, true);
+                var task = CardImageLoader.LoadCardAsync(card0, true);
                 while (!task.IsCompleted)
                     yield return null;
                 cardImage0.texture = task.Result;
@@ -147,7 +148,7 @@ namespace MDPro3.UI
             var cardImage1 = Manager.GetElement<RawImage>("CardImage1");
             if (card1 != 0)
             {
-                var task = TextureManager.LoadCardAsync(card1, true);
+                var task = CardImageLoader.LoadCardAsync(card1, true);
                 while (!task.IsCompleted)
                     yield return null;
                 cardImage1.texture = task.Result;
@@ -170,7 +171,7 @@ namespace MDPro3.UI
             var cardImage2 = Manager.GetElement<RawImage>("CardImage2");
             if (card2 != 0)
             {
-                var task = TextureManager.LoadCardAsync(card2, true);
+                var task = CardImageLoader.LoadCardAsync(card2, true);
                 while (!task.IsCompleted)
                     yield return null;
                 cardImage2.texture = task.Result;

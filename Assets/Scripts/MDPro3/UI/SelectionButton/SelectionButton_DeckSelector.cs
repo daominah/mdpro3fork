@@ -1,5 +1,6 @@
 using DG.Tweening;
 using MDPro3.Duel.YGOSharp;
+using MDPro3.Utility;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -95,8 +96,11 @@ namespace MDPro3.UI
             }
             else
             {
-                var mat = TextureManager.GetCardMaterial(card0);
-                var task = TextureManager.LoadCardAsync(card0, true);
+                var matLoad = MaterialLoader.LoadCardMaterialAsync(card0);
+                while (!matLoad.IsCompleted)
+                    yield return null;
+                var mat = matLoad.Result;
+                var task = CardImageLoader.LoadCardAsync(card0, true);
                 while (!task.IsCompleted)
                     yield return null;
                 cardImage0.material = mat;
@@ -114,8 +118,11 @@ namespace MDPro3.UI
             }
             else
             {
-                var mat = TextureManager.GetCardMaterial(card1);
-                var task = TextureManager.LoadCardAsync(card1, true);
+                var matLoad = MaterialLoader.LoadCardMaterialAsync(card1);
+                while (!matLoad.IsCompleted)
+                    yield return null;
+                var mat = matLoad.Result;
+                var task = CardImageLoader.LoadCardAsync(card1, true);
                 while (!task.IsCompleted)
                     yield return null;
                 cardImage1.material = mat;
@@ -133,8 +140,11 @@ namespace MDPro3.UI
             }
             else
             {
-                var mat = TextureManager.GetCardMaterial(card2);
-                var task = TextureManager.LoadCardAsync(card2, true);
+                var matLoad = MaterialLoader.LoadCardMaterialAsync(card2);
+                while (!matLoad.IsCompleted)
+                    yield return null;
+                var mat = matLoad.Result;
+                var task = CardImageLoader.LoadCardAsync(card2, true);
                 while (!task.IsCompleted)
                     yield return null;
                 cardImage2.material = mat;

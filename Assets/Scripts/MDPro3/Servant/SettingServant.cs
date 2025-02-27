@@ -109,8 +109,10 @@ namespace MDPro3.Servant
 
 #if UNITY_ANDROID
             if (Config.Have("Resolution"))
-                resolution = Config.Get("Resolution", "1920 x 1080");
-            Screen.SetResolution(int.Parse(Regex.Split(resolution, " x ")[0]), int.Parse(Regex.Split(resolution, " x ")[1]), FullScreenMode.FullScreenWindow);
+            {
+                var resolution = Config.Get("Resolution", "1920 x 1080");
+                Screen.SetResolution(int.Parse(Regex.Split(resolution, " x ")[0]), int.Parse(Regex.Split(resolution, " x ")[1]), FullScreenMode.FullScreenWindow);
+            }
 #endif
 
             Program.instance.camera_.urpAsset.renderScale = SettingServantUI.GetScale();

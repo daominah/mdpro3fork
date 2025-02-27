@@ -150,8 +150,7 @@ namespace MDPro3
                 }
             }
 
-            TextureManager.ClearCache();
-            TextureLoader.ClearCache();
+            CardImageLoader.ClearCache();
             Program.instance.UnloadUnusedAssets();
 
             InitializeLanguage();
@@ -177,8 +176,7 @@ namespace MDPro3
             Program.instance.puzzle.PrintPuzzles();
         }
 
-
-        IEnumerator LoadDiyWallpaperAsync(string path, Transform parent)
+        private IEnumerator LoadDiyWallpaperAsync(string path, Transform parent)
         {
             var ie = ABLoader.LoadFromFileAsync(path);
             while (ie.MoveNext())
@@ -214,6 +212,7 @@ namespace MDPro3
                 p.Play();
             return front;
         }
+
         public static void ShowWallpaper(float time)
         {
             UIManager instance = Program.instance.ui_;
@@ -231,6 +230,7 @@ namespace MDPro3
 
             }
         }
+
         public static void HideWallpaper(float time)
         {
             DOTween.To(() => Program.instance.ui_.wallpaper.alpha, x => Program.instance.ui_.wallpaper.alpha = x, 0, time).OnComplete(() =>
@@ -240,6 +240,7 @@ namespace MDPro3
             foreach (var skeleton in Program.instance.ui_.wallpaper.transform.GetComponentsInChildren<SkeletonAnimation>())
                 skeleton.GetComponent<Renderer>().material.DOFade(0f, time - 0.1f).OnComplete(() => { });
         }
+
         public static void ShowExitButton(float time, Ease ease = Ease.Linear)
         {
             Program.instance.ui_.btnExit.GetComponent<RectTransform>().DOAnchorPosY(PropertyOverrider.NeedMobileLayout() ? -65f : -60f, time).SetEase(ease);
@@ -254,14 +255,17 @@ namespace MDPro3
         {
             Program.instance.ui_.line.DOFade(1f, time);
         }
+
         public static void HideLine(float time)
         {
             Program.instance.ui_.line.DOFade(0f, time);
         }
+
         public static void ShowFPS()
         {
             Program.instance.ui_.fps.gameObject.SetActive(true);
         }
+
         public static void HideFPS()
         {
             Program.instance.ui_.fps.gameObject.SetActive(false);
@@ -287,7 +291,11 @@ namespace MDPro3
         }
 
         #region Popup
-        public static void ShowPopupSelection(List<string> selections, Action decideAction, Action cancelAction = null)
+
+        public static void ShowPopupSelection(
+            List<string> selections, 
+            Action decideAction, 
+            Action cancelAction = null)
         {
             var handle = Addressables.InstantiateAsync("PopupSelection");
             handle.Completed += (result) =>
@@ -300,7 +308,11 @@ namespace MDPro3
                 popupSelection.Show();
             };
         }
-        public static void ShowPopupYesOrNo(List<string> selections, Action decideAction, Action cancelAction)
+
+        public static void ShowPopupYesOrNo(
+            List<string> selections, 
+            Action decideAction, 
+            Action cancelAction)
         {
             var handle = Addressables.InstantiateAsync("PopupYesOrNo");
             handle.Completed += (result) =>
@@ -313,6 +325,7 @@ namespace MDPro3
                 popupYesOrNo.Show();
             };
         }
+
         public static void ShowPopupConfirm(List<string> selections)
         {
             var handle = Addressables.InstantiateAsync("PopupConfirm");
@@ -324,7 +337,12 @@ namespace MDPro3
                 popupConfirm.Show();
             };
         }
-        public static void ShowPopupInput(List<string> selections, Action<string> decideAction, Action cancelAction, TmpInputValidation.ValidationType type = TmpInputValidation.ValidationType.None)
+
+        public static void ShowPopupInput(
+            List<string> selections, 
+            Action<string> decideAction, 
+            Action cancelAction, 
+            TmpInputValidation.ValidationType type = TmpInputValidation.ValidationType.None)
         {
             var handle = Addressables.InstantiateAsync("PopupInput");
             handle.Completed += (result) =>
@@ -338,6 +356,7 @@ namespace MDPro3
                 popupInput.Show();
             };
         }
+
         public static void ShowPopupFilter()
         {
             var handle = Addressables.InstantiateAsync("PopupSearchFilter");
@@ -348,7 +367,10 @@ namespace MDPro3
                 popupSearchFilter.Show();
             };
         }
-        public static void ShowPopupText(List<string> selections, HorizontalAlignmentOptions alignment = HorizontalAlignmentOptions.Center)
+
+        public static void ShowPopupText(
+            List<string> selections, 
+            HorizontalAlignmentOptions alignment = HorizontalAlignmentOptions.Center)
         {
             var handle = Addressables.InstantiateAsync("PopupText");
             handle.Completed += (result) =>
@@ -428,37 +450,44 @@ namespace MDPro3
         #endregion
 
         #region Public Static Tools
+
         public static Vector2 WorldToScreenPoint(Camera camera, Vector3 positon)
         {
             var screenPosition = camera.WorldToScreenPoint(positon);
             var sizeDelta = Program.instance.ui_.GetComponent<RectTransform>().sizeDelta;
             return new Vector2(screenPosition.x * sizeDelta.x / Screen.width, screenPosition.y * sizeDelta.y / Screen.height);
         }
+
         public static Vector2 ScreenToNoScalerScreenPoint(Vector2 position)
         {
             var sizeDelta = Program.instance.ui_.GetComponent<RectTransform>().sizeDelta;
             return new Vector2(position.x * Screen.width / sizeDelta.x, position.y * Screen.height / sizeDelta.y);
         }
+
         public static Vector3 ScreenToWorldPoint(Camera camera, Vector2 positon)
         {
             var screenPosition = ScreenToNoScalerScreenPoint(positon);
             return camera.ScreenToWorldPoint(screenPosition);
         }
+
         public static float ScreenLengthWithoutScalerX(float length)
         {
             var sizeDelta = Program.instance.ui_.GetComponent<RectTransform>().sizeDelta;
             return length * sizeDelta.x / Screen.width;
         }
+
         public static float ScreenLengthWithScalerX(float length)
         {
             var sizeDelta = Program.instance.ui_.GetComponent<RectTransform>().sizeDelta;
             return length * Screen.width / sizeDelta.x;
         }
+
         public static float ScreenLengthWithoutScalerY(float length)
         {
             var sizeDelta = Program.instance.ui_.GetComponent<RectTransform>().sizeDelta;
             return length * sizeDelta.y / Screen.height;
         }
+
         public static Vector2 GetMousePositionToAnchorPosition()
         {
             var returnValue = UserInput.MousePos;
@@ -469,6 +498,8 @@ namespace MDPro3
             returnValue.y -= 540;
             return returnValue;
         }
+
         #endregion
+
     }
 }

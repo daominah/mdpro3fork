@@ -816,7 +816,7 @@ RectTransform:
   - {fileID: 1324381719982470333}
   - {fileID: 5226543908347655157}
   - {fileID: 417173246547534315}
-  m_Father: {fileID: 4492272978751896200}
+  m_Father: {fileID: 1423509170095765056}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1131,7 +1131,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 8000
+  m_text: 8000-
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6dac441707ef57a4d9063c19bfb51631, type: 2}
   m_sharedMaterial: {fileID: 72307265282866410, guid: 6dac441707ef57a4d9063c19bfb51631, type: 2}
@@ -1488,6 +1488,61 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   label: PropertyMonster
+--- !u!1 &1357136635409228222
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1423509170095765056}
+  - component: {fileID: 7844823817747022854}
+  m_Layer: 5
+  m_Name: SafeArea
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1423509170095765056
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1357136635409228222}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5326531746252307820}
+  - {fileID: 4335930602656653948}
+  - {fileID: 2091882397471354201}
+  - {fileID: 4491304130061668606}
+  - {fileID: 784502473976506089}
+  - {fileID: 7191263775201949160}
+  - {fileID: 4503226469279688499}
+  m_Father: {fileID: 4492272978751896200}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &7844823817747022854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1357136635409228222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 835e75b665084034594ec26b10fcb175, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1471604419163208988
 GameObject:
   m_ObjectHideFlags: 0
@@ -2340,7 +2395,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5484811793682048071}
-  m_Father: {fileID: 4492272978751896200}
+  m_Father: {fileID: 1423509170095765056}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -4016,7 +4071,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 3411319760472490572}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.6103896
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -5960,7 +6015,6 @@ GameObject:
   - component: {fileID: 4874378320297794330}
   - component: {fileID: 6586480796325130100}
   - component: {fileID: 1145659959175042647}
-  - component: {fileID: 6729084671957642662}
   m_Layer: 5
   m_Name: OcgCoreUI
   m_TagString: Untagged
@@ -6036,18 +6090,6 @@ MonoBehaviour:
   - {fileID: 9111500527804315885}
   - {fileID: 4573676136085126169}
   - {fileID: 2570155649303388272}
---- !u!114 &6729084671957642662
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6394455262634497455}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 835e75b665084034594ec26b10fcb175, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6399833938080670395
 GameObject:
   m_ObjectHideFlags: 0
@@ -6672,13 +6714,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5326531746252307820}
-  - {fileID: 4335930602656653948}
-  - {fileID: 2091882397471354201}
-  - {fileID: 4491304130061668606}
-  - {fileID: 784502473976506089}
-  - {fileID: 7191263775201949160}
-  - {fileID: 4503226469279688499}
+  - {fileID: 1423509170095765056}
   - {fileID: 3643489278365583472}
   m_Father: {fileID: 4874378320297794330}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7517,7 +7553,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6447856312569363053}
-  m_Father: {fileID: 4492272978751896200}
+  m_Father: {fileID: 1423509170095765056}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -7663,7 +7699,7 @@ RectTransform:
   - {fileID: 7622787662801803061}
   - {fileID: 2641889428231518685}
   - {fileID: 958583531415047010}
-  m_Father: {fileID: 4492272978751896200}
+  m_Father: {fileID: 1423509170095765056}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -8098,7 +8134,7 @@ RectTransform:
   m_Children:
   - {fileID: 3105590163369620135}
   - {fileID: 8194001846958674834}
-  m_Father: {fileID: 4492272978751896200}
+  m_Father: {fileID: 1423509170095765056}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -8485,7 +8521,7 @@ RectTransform:
   - {fileID: 2440982258321053786}
   - {fileID: 6252861665357633700}
   - {fileID: 8309600688060522201}
-  m_Father: {fileID: 4492272978751896200}
+  m_Father: {fileID: 1423509170095765056}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -9103,9 +9139,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6394455262634497455}
-        m_TargetAssemblyTypeName: OcgCore, Assembly-CSharp
-        m_MethodName: 
+      - m_Target: {fileID: 6586480796325130100}
+        m_TargetAssemblyTypeName: MDPro3.UI.ServantUI.OcgCoreUI, Assembly-CSharp
+        m_MethodName: ToChat
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9441,7 +9477,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7897192796542191706}
-  m_Father: {fileID: 4492272978751896200}
+  m_Father: {fileID: 1423509170095765056}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
