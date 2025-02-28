@@ -36,15 +36,16 @@ namespace MDPro3
             manager.GetElement<RectTransform>("Window").DOAnchorPosX(-420 - SafeAreaAdapter.GetSafeAreaLeftOffset(), 0.01f);
         }
 
-        void ShowDetail()
+        private void ShowDetail()
         {
             Program.instance.ocgcore.GetUI<OcgCoreUI>().CardList.Hide();
+            Program.instance.ui_.chatPanel.Hide();
             var cardFace = manager.GetElement<RawImage>("Card").texture;
             var mat = manager.GetElement<RawImage>("Card").material;
             Program.instance.ui_.cardDetail.Show(data, cardFace, mat);
         }
 
-        IEnumerator RefreshFace(int code)
+        private IEnumerator RefreshFace(int code)
         {
             var matLoad = MaterialLoader.LoadCardMaterialAsync(code);
             while(!matLoad.IsCompleted)
@@ -260,7 +261,8 @@ namespace MDPro3
             }
             RefreshLimitIcon(data.Id);
         }
-        void RefreshLimitIcon(int code)
+
+        private void RefreshLimitIcon(int code)
         {
             var banlist = DeckEditor.banlist;
             var limit = banlist.GetQuantity(code);
@@ -273,7 +275,6 @@ namespace MDPro3
             else
                 manager.GetElement<Image>("Limit").sprite = TextureManager.container.banned;
         }
-
 
         public static bool WhetherCardIsMonster(Card data)
         {
@@ -607,7 +608,6 @@ namespace MDPro3
             }
             return returnValue;
         }
-
 
     }
 }

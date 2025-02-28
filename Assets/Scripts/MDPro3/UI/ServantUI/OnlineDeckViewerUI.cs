@@ -96,10 +96,12 @@ namespace MDPro3.UI.ServantUI
                 }
                 superScrollView.Print(tasks);
                 if (superScrollView.items.Count > 0)
-                    Program.instance.onlineDeckViewer.lastSelectedDeckItem 
-                    = superScrollView.items[0].gameObject.GetComponent<SelectionToggle_DeckOnline>();
-                if (Cursor.lockState == CursorLockMode.Locked)
-                    Program.instance.onlineDeckViewer.Select();
+                {
+                    Program.instance.onlineDeckViewer.lastSelectedDeckItem
+                        = superScrollView.items[0].gameObject.GetComponent<SelectionToggle_DeckOnline>();
+                    if (Cursor.lockState == CursorLockMode.Locked)
+                        Program.instance.onlineDeckViewer.Select();
+                }
             };
         }
 

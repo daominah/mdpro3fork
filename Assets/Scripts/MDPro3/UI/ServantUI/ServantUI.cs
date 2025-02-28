@@ -1,9 +1,9 @@
-using DG.Tweening;
-using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+using DG.Tweening;
 using YgomSystem.ElementSystem;
 using MDPro3.Servant;
-using UnityEngine.UI;
 
 namespace MDPro3.UI.ServantUI
 {

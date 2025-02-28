@@ -113,8 +113,15 @@ namespace MDPro3.UI.ServantUI
                     break;
             }
 
-            RefreshList();
+            UIManager.SetCanvasMatch(1f, 0.4f);
             ShowDefaultButtons();
+        }
+
+        protected override void AfterShowEvent()
+        {
+            base.AfterShowEvent();
+
+            RefreshList();
         }
 
         protected override void AfterHideEvent()
@@ -476,14 +483,6 @@ namespace MDPro3.UI.ServantUI
         }
 
         #endregion
-
-
-
-
-
-
-
-
 
         private void ShowDefaultButtons()
         {

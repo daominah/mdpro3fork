@@ -17,12 +17,12 @@ namespace MDPro3
 {
     public class CardDetail : UIHandler
     {
-        ElementObjectManager manager;
+        private ElementObjectManager manager;
         private readonly float bigShowTime = 0.2f;
         private readonly float hideScale = 0.9f;
-        int code;
-        List<int> cards;
-        int cardIndex;
+        private int code;
+        private List<int> cards;
+        private int cardIndex;
 
         public override void Initialize()
         {
@@ -68,6 +68,7 @@ namespace MDPro3
                 UIManager.ShowFPSRight();
             OnDown();
         }
+
         public void Show(Card data, Texture cardFace, Material mat, List<int> cards = null, int cardIndex = -1)
         {
             if (data.Id == 0)
@@ -234,9 +235,9 @@ namespace MDPro3
                 return false;
         }
 
-        IEnumerator loadEnumerator;
+        private IEnumerator loadEnumerator;
 
-        IEnumerator LoadCardPictureAsync()
+        private IEnumerator LoadCardPictureAsync()
         {
             var matLoad = MaterialLoader.LoadCardMaterialAsync(code);
             while (!matLoad.IsCompleted)
@@ -275,7 +276,8 @@ namespace MDPro3
             };
             UIManager.ShowPopupSelection(selections, CardPictureSaveOption);
         }
-        void CardPictureSaveOption()
+
+        private void CardPictureSaveOption()
         {
             string selected = UnityEngine.EventSystems.EventSystem.current.
                 currentSelectedGameObject.GetComponent<SelectionButton>().GetButtonText();
@@ -324,9 +326,9 @@ namespace MDPro3
             }
         }
 
-        string errorLog;
-        IEnumerator saveEnumerator;
-        IEnumerator SaveCardsAsync(List<int> cards)
+        private string errorLog;
+        private IEnumerator saveEnumerator;
+        private IEnumerator SaveCardsAsync(List<int> cards)
         {
             var time = Time.time;
 
@@ -378,6 +380,7 @@ namespace MDPro3
 
             //Debug.Log($"Time Used: {Time.time - time}");
         }
+
         public void StopSaving()
         {
             if (saveEnumerator != null)
@@ -403,12 +406,14 @@ namespace MDPro3
                 MessageManager.Cast(InterString.Get("没有写入权限，无法保存。"));
             }
         }
+
         private void SaveDeckCards()
         {
             saveEnumerator = SaveCardsAsync(Program.instance.deckEditor
                 .GetUI<DeckEditorUI>().DeckView.GetAllCards());
             StartCoroutine(saveEnumerator);
         }
+
         private void SaveAllTokens()
         {
             var cards = CardsManager.GetAllCards();
@@ -419,12 +424,12 @@ namespace MDPro3
             saveEnumerator = SaveCardsAsync(tokens);
             StartCoroutine(saveEnumerator);
         }
+
         private void SaveAllCards()
         {
             saveEnumerator = SaveCardsAsync(CardsManager.GetAllCardCodes());
             StartCoroutine(saveEnumerator);
         }
-
 
         public void OnLeft()
         {
@@ -443,6 +448,7 @@ namespace MDPro3
             }
             Show(data, null, null, cards, cardIndex);
         }
+
         public void OnRight()
         {
             if (!NeedShowArrow())
@@ -460,7 +466,9 @@ namespace MDPro3
             }
             Show(data, null, null, cards, cardIndex);
         }
+
         bool bigShowing = false;
+
         public void OnScale()
         {
             if(bigShowing)
@@ -468,6 +476,7 @@ namespace MDPro3
             else
                 OnUp();
         }
+
         public void OnUp()
         {
             bigShowing = true;
@@ -477,6 +486,7 @@ namespace MDPro3
             BigShowDesktop();
 #endif
         }
+
         private void BigShowMobile()
         {
             var cardRect = manager.GetElement<RectTransform>("Card");
@@ -487,6 +497,7 @@ namespace MDPro3
             cardRect.DOLocalRotate(new Vector3(0f, 0f, 90f), bigShowTime);
             cardRect.DOScale(2f, bigShowTime);
         }
+
         private void BigShowDesktop()
         {
             var cardRect = manager.GetElement<RectTransform>("Card");
@@ -499,6 +510,7 @@ namespace MDPro3
             var detailRect = manager.GetElement<RectTransform>("Detail");
             DOTween.To(() => detailRect.offsetMin.x, x => detailRect.offsetMin = new Vector2(x, 0f), 750f, bigShowTime);
         }
+
         public void OnDown()
         {
             bigShowing = false;

@@ -62,6 +62,8 @@ namespace MDPro3.UI
             if (Program.instance.currentServant != Program.instance.room
                 && !DeviceInfo.OnMobile())
                 input.Select();
+
+            scrollRect.DOVerticalNormalizedPos(0f, 0f);
         }
 
         protected override void Update()
@@ -85,7 +87,10 @@ namespace MDPro3.UI
         public void OnSend()
         {
             if (input.text == string.Empty)
+            {
+                Hide();
                 return;
+            }
             OnChat(input.text);
         }
 
@@ -222,7 +227,7 @@ namespace MDPro3.UI
             chatItems.Add(item);
 
             scrollRect.content.sizeDelta = new Vector2(0, chatItems.Count * 150);
-            DOTween.To(() => scrollRect.verticalScrollbar.value, x => scrollRect.verticalScrollbar.value = x, 0, 0.2f);
+            scrollRect.DOVerticalNormalizedPos(0, 0.2f);
 
             var p = new Package();
             p.Function = (int)GameMessage.sibyl_chat;

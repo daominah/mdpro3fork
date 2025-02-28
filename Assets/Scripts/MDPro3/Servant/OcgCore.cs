@@ -52,7 +52,7 @@ namespace MDPro3.Servant
         [HideInInspector] public bool inAi;
         [HideInInspector] public bool isTag;
         [HideInInspector] public bool mycardDuel;
-        [HideInInspector] public Deck deck;
+        [HideInInspector] public Deck deck { get; set; }
         [HideInInspector] public Deck sideReference = new();
         [HideInInspector] public float handOffset;
         [HideInInspector] public float lastHandOffset;
@@ -184,7 +184,7 @@ namespace MDPro3.Servant
 
             if (!EventSystem.current.IsPointerOverGameObject()
                 && UserInput.HoverObject == null
-                && UserInput.MouseLeftDown)
+                && UserInput.MouseLeftUp)
             {
                 GetUI<OcgCoreUI>().CardDescription.Hide();
                 GetUI<OcgCoreUI>().CardList.Hide();
@@ -576,6 +576,7 @@ namespace MDPro3.Servant
             mate1Random = false;
             deck = null;
             var deckName = Config.Get("DeckInUse", "");
+
             if (condition == Condition.Duel && inAi == false && File.Exists(Program.deckPath + deckName + Program.ydkExpansion))
                 deck = new Deck(Program.deckPath + deckName + Program.ydkExpansion);
 

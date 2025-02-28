@@ -203,6 +203,8 @@ namespace MDPro3.UI.ServantUI
                 gotoAppearance = false;
                 ShowBackButton();
             }
+
+            UIManager.SetCanvasMatch(Program.instance.deckEditor.GetCanvasMatch(), 0.45f);
         }
 
         protected override void HideEvent()
@@ -210,7 +212,6 @@ namespace MDPro3.UI.ServantUI
             base.HideEvent();
 
             HideBackButton();
-            UIManager.SetCanvasMatch(1f, 0.6f);
             CardRarity.Save();
         }
 

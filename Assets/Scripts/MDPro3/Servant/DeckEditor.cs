@@ -289,11 +289,11 @@ namespace MDPro3.Servant
             UIManager.SetCanvasMatch(GetCanvasMatch(), 0f);
         }
 
-        private int GetCanvasMatch()
+        public float GetCanvasMatch()
         {
             if ((float)Screen.width / Screen.height > 16f / 9f)
-                return 1;
-            else return 0;
+                return 1f;
+            else return 0f;
         }
 
         #endregion
