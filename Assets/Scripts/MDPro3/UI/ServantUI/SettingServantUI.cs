@@ -577,7 +577,7 @@ namespace MDPro3.UI.ServantUI
             defaultToggle.ScrollRectToTop();
         }
 
-        protected override void ShowEvent()
+        public override void ShowEvent()
         {
             base.ShowEvent();
 

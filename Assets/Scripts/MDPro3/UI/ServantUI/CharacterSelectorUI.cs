@@ -134,7 +134,7 @@ namespace MDPro3.UI.ServantUI
 
 
 
-        protected override void ShowEvent()
+        public override void ShowEvent()
         {
             base.ShowEvent();
 

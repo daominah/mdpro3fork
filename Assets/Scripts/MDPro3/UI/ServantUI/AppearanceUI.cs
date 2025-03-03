@@ -211,7 +211,7 @@ namespace MDPro3.UI.ServantUI
                 Page00PlayerName.GetSelectable().Select();
         }
 
-        protected override void ShowEvent()
+        public override void ShowEvent()
         {
             base.ShowEvent();
 

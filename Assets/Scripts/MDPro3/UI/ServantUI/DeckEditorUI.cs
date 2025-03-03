@@ -187,7 +187,7 @@ namespace MDPro3.UI.ServantUI
             CardCollectionView.SetCursor(_ResponseRegion == ResponseRegion.Collection);
         }
 
-        protected override void ShowEvent()
+        public override void ShowEvent()
         {
             base.ShowEvent();
 
@@ -197,6 +197,8 @@ namespace MDPro3.UI.ServantUI
                     ShowBackButton();
                 else
                     HideBackButton();
+
+
             }
             else
             {

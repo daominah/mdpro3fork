@@ -173,6 +173,7 @@ namespace MDPro3.Servant
 
             if (fromDuel)
             {
+                servantUI.ShowEvent();
                 DOTween.To(v => { }, 0, 0, Program.instance.ocgcore.TransitionTime).OnComplete(() =>
                 {
                     servantUI.gameObject.SetActive(true);
@@ -190,6 +191,7 @@ namespace MDPro3.Servant
                         UIManager.HideLine(0);
 
                     UIManager.ShowBlackBack(BlackAlpha, 0f);
+                    servantUI.AfterShowEvent();
                     AfterShowingEvent();
                 });
             }

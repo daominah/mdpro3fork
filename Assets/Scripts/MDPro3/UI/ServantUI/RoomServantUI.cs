@@ -96,7 +96,7 @@ namespace MDPro3.UI.ServantUI
             Realize();
         }
 
-        protected override void AfterShowEvent()
+        public override void AfterShowEvent()
         {
             base.AfterShowEvent();
             if (Program.instance.currentServant != Program.instance.room)

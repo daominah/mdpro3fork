@@ -90,7 +90,7 @@ namespace MDPro3.UI.ServantUI
             ButtonDeck.gameObject.SetActive(false);
         }
 
-        protected override void ShowEvent()
+        public override void ShowEvent()
         {
             base.ShowEvent();
 

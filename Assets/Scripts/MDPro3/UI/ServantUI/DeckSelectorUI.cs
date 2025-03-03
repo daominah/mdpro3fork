@@ -89,7 +89,7 @@ namespace MDPro3.UI.ServantUI
         public Dictionary<string, Deck> decks = new();
         public bool buttonLayoutSwitching;
 
-        protected override void ShowEvent()
+        public override void ShowEvent()
         {
             base.ShowEvent();
 
@@ -117,7 +117,7 @@ namespace MDPro3.UI.ServantUI
             ShowDefaultButtons();
         }
 
-        protected override void AfterShowEvent()
+        public override void AfterShowEvent()
         {
             base.AfterShowEvent();
 

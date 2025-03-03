@@ -60,7 +60,7 @@ namespace MDPro3.UI.ServantUI
             ToggleLegacy.SetToggleOn();
         }
 
-        protected override void ShowEvent()
+        public override void ShowEvent()
         {
             base.ShowEvent();
 

@@ -84,9 +84,32 @@ namespace MDPro3
             foreach (var text in go.GetComponentsInChildren<Text>(true))
                 if (text.name.StartsWith(TRANSLATE_PREFIX))
                     text.text = InterString.Get(text.text.Replace("\r\n", "@n"));
-            foreach (var text in go.GetComponentsInChildren<TextMeshProUGUI>(true))
-                if (text.name.StartsWith(TRANSLATE_PREFIX))
-                    text.text = InterString.Get(text.text.Replace("\r\n", "@n"));
+            foreach (var tmp in go.GetComponentsInChildren<TextMeshProUGUI>(true))
+            {
+                if (tmp.name.StartsWith(TRANSLATE_PREFIX))
+                    tmp.text = InterString.Get(tmp.text.Replace("\r\n", "@n"));
+                if (tmp.name.EndsWith("Menu"))
+                {
+                    UIManager instance = Program.instance.ui_;
+
+                    if ((Language.GetConfig() == Language.English
+                        || Language.GetConfig() == Language.Japanese))
+                    {
+                        tmp.font = instance.jpMenuTmpFont;
+                        tmp.fontSize = 64f;
+                    }
+                    else if (Language.GetConfig() == Language.SimplifiedChinese)
+                    {
+                        tmp.font = instance.cnMenuTmpFont;
+                        tmp.fontSize = 62f;
+                    }
+                    else
+                    {
+                        tmp.font = instance.tmpFont;
+                        tmp.fontSize = 60f;
+                    }
+                }
+            }
         }
 
         public static void InitializeLanguage()

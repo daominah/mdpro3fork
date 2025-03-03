@@ -104,11 +104,11 @@ namespace MDPro3.UI.ServantUI
             ShowEvent();
         }
 
-        protected virtual void ShowEvent()
+        public virtual void ShowEvent()
         {
         }
 
-        protected virtual void AfterShowEvent()
+        public virtual void AfterShowEvent()
         {
         }
 

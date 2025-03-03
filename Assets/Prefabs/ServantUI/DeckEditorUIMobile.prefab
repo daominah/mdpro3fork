@@ -14600,7 +14600,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 7446650972608614846}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.8015
+  m_Size: 0.8355
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -76048,6 +76048,7 @@ MonoBehaviour:
   - {fileID: 4689671317571541554}
   - {fileID: 4420769399430443410}
   - {fileID: 8353873743859406989}
+  - {fileID: 9053682883534065444}
   - {fileID: 7001212255668578964}
 --- !u!1 &8166086360927241581
 GameObject:
