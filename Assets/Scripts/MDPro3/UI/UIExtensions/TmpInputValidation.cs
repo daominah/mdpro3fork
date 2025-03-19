@@ -14,15 +14,16 @@ namespace MDPro3.UI
             Path,
             NoSpace
         }
+
         public int maxLenght = 0;
         TMP_InputField m_InputFied;
 
         public ValidationType type = ValidationType.Path;
 
-        private static readonly List<char> InvalidPathChars = new List<char>()
-    {
-        '\\', '/', ':', '*', '?', '\"', '<', '>', '|'
-    };
+        private static readonly List<char> InvalidPathChars = new()
+        {
+            '\\', '/', ':', '*', '?', '\"', '<', '>', '|'
+        };
 
         private void Awake()
         {
@@ -30,7 +31,7 @@ namespace MDPro3.UI
             m_InputFied.onValueChanged.AddListener(OnInputFieldValueChange);
         }
 
-        void OnInputFieldValueChange(string inputInfo)
+        private void OnInputFieldValueChange(string inputInfo)
         {
             if (type == ValidationType.Path)
             {

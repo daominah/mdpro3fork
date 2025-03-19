@@ -15,3 +15,6 @@
 
  .\quickbms.exe yugioh_ydlz.bms Origin\zh-tw\IDS_ITEM.bytes Decrypted\zh-TW
  .\quickbms.exe yugioh_ydlz.bms Origin\zh-tw\IDS_ITEMDESC.bytes Decrypted\zh-TW
+
+ .\quickbms.exe yugioh_ydlz.bms Origin\pt-br\IDS_ITEM.bytes Decrypted\pt-PT
+ .\quickbms.exe yugioh_ydlz.bms Origin\pt-br\IDS_ITEMDESC.bytes Decrypted\pt-PT

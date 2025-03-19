@@ -320,6 +320,11 @@ namespace MDPro3.UI.ServantUI
                     var deck = DeckShareURL.UriToDeck(uri);
                     deck.Save(deckName, DateTime.Now);
                 }
+                else if (clipBoard.Contains(YdkeConverter.ydkeHeader))
+                {
+                    var deck = YdkeConverter.Ydke2Deck(clipBoard);
+                    deck.Save(deckName, DateTime.Now);
+                }
                 Config.Set("DeckInUse", deckName);
                 RefreshList();
             }
@@ -446,7 +451,6 @@ namespace MDPro3.UI.ServantUI
                 buttonLayoutSwitching = false;
             }
         }
-
 
         private void SwitchButtonLayouts(bool showDefault)
         {

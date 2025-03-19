@@ -18,6 +18,7 @@ namespace MDPro3
 
         private static bool initialized;
         private static Dictionary<string, Id2Ydk> dic;
+
         private static void Initialize()
         {
             if(initialized) return;
