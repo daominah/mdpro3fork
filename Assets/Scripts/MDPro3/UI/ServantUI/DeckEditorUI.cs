@@ -306,6 +306,12 @@ namespace MDPro3.UI.ServantUI
                 CardDetailView.ShowCard(data);
         }
 
+        public void ShowDetail(List<int> cards, int index)
+        {
+            if (CardDetailView != null)
+                CardDetailView.ShowCard(cards, index);
+        }
+
         public void ChangeRarity(CardRarity.Rarity rarity)
         {
             var code = 0;

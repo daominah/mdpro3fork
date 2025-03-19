@@ -33,16 +33,19 @@ namespace MDPro3
         public void Hide()
         {
             showing = false;
-            manager.GetElement<RectTransform>("Window").DOAnchorPosX(-420 - SafeAreaAdapter.GetSafeAreaLeftOffset(), 0.01f);
+            manager.GetElement<RectTransform>("Window").DOAnchorPosX(-1020 - SafeAreaAdapter.GetSafeAreaLeftOffset(), 0.01f);
         }
 
         private void ShowDetail()
         {
             Program.instance.ocgcore.GetUI<OcgCoreUI>().CardList.Hide();
             Program.instance.ui_.chatPanel.Hide();
-            var cardFace = manager.GetElement<RawImage>("Card").texture;
-            var mat = manager.GetElement<RawImage>("Card").material;
-            Program.instance.ui_.cardDetail.Show(data, cardFace, mat);
+
+            //var cardFace = manager.GetElement<RawImage>("Card").texture;
+            //var mat = manager.GetElement<RawImage>("Card").material;
+            //Program.instance.ui_.cardDetail.Show(data, cardFace, mat);
+
+            UIManager.ShowCardInfoDetail(data);
         }
 
         private IEnumerator RefreshFace(int code)

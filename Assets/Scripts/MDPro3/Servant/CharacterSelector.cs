@@ -73,8 +73,11 @@ namespace MDPro3.Servant
                 OnReturn();
         }
 
-        public override void Select()
+        public override void Select(bool forced = false)
         {
+            if (!forced && !UserInput.NeedDefaultSelect())
+                return;
+
             if (lastSelectable != null)
             {
                 if (lastSelectable.TryGetComponent<SelectionToggle_CharacterItem>(out _)

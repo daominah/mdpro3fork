@@ -33,9 +33,12 @@ namespace MDPro3.Servant
                 (GetUI<PuzzleSelectorUI>().ImageHover, true));
         }
 
-        public override void Select()
+        public override void Select(bool forced = false)
         {
-            EventSystem.current.SetSelectedGameObject(lastPuzzleItem.gameObject);
+            if (!forced && !UserInput.NeedDefaultSelect())
+                return;
+
+            lastPuzzleItem.GetSelectable().Select();
         }
 
         public override void OnExit()

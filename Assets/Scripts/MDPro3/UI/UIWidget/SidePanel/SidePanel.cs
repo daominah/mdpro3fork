@@ -34,8 +34,8 @@ namespace MDPro3.UI
             if (Permanent)
             {
                 gameObject.SetActive(false);
-                if(Cg != null)
-                    Cg.alpha = 1.0f;
+                if(CG != null)
+                    CG.alpha = 1.0f;
             }
         }
 
@@ -70,7 +70,7 @@ namespace MDPro3.UI
         protected virtual void OnMouseCursorHide()
         {
             if (showing && NeedResponse())
-                SelectDefaultSelectable();
+                Select();
         }
 
         public virtual void Show()

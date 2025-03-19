@@ -41,8 +41,8 @@ namespace MDPro3.UI
         {
             base.Awake();
 
-            Cg.alpha = 0f;
-            Cg.blocksRaycasts = false;
+            CG.alpha = 0f;
+            CG.blocksRaycasts = false;
 
             ImageCard.GetComponent<Button>().onClick.AddListener(ShowCardExpand);
         }
@@ -68,8 +68,8 @@ namespace MDPro3.UI
             this.cards = cards;
             cardCodes = null;
             this.index = index;
-            Cg.alpha = 1f;
-            Cg.blocksRaycasts = true;
+            CG.alpha = 1f;
+            CG.blocksRaycasts = true;
 
             AudioManager.PlaySE("SE_DECK_WINDOW_OPEN");
             UIManager.ShowFPSLeft();
@@ -92,8 +92,8 @@ namespace MDPro3.UI
             cards = null;
             this.cardCodes = cardCodes;
             this.index = index;
-            Cg.alpha = 1f;
-            Cg.blocksRaycasts = true;
+            CG.alpha = 1f;
+            CG.blocksRaycasts = true;
 
             AudioManager.PlaySE("SE_DECK_WINDOW_OPEN");
             UIManager.ShowFPSLeft();
@@ -147,8 +147,8 @@ namespace MDPro3.UI
             Manager.GetElement<CanvasGroup>("BG").DOFade(0f, 0.2f).OnComplete(() =>
             {
                 showing = false;
-                Cg.alpha = 0f;
-                Cg.blocksRaycasts = false;
+                CG.alpha = 0f;
+                CG.blocksRaycasts = false;
                 Program.instance.currentServant.JudgeInputBlockerExitMark(blockMark);
                 Program.instance.currentServant.Select();
             });

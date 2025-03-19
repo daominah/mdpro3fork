@@ -102,9 +102,11 @@ namespace MDPro3.Servant
                 OnExit();
         }
 
-        public override void Select()
+        public override void Select(bool forced = false)
         {
-            EventSystem.current.SetSelectedGameObject(lastSelectedCutinItem.gameObject);
+            if (!forced && !UserInput.NeedDefaultSelect())
+                return;
+            lastSelectedCutinItem.GetSelectable().Select();
         }
 
 #endregion

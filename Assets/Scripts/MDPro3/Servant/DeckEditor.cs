@@ -196,8 +196,11 @@ namespace MDPro3.Servant
             return base.NeedResponseInput();
         }
 
-        public override void Select()
+        public override void Select(bool forced = false)
         {
+            if (!forced && !UserInput.NeedDefaultSelect())
+                return;
+
             if (ResponseRegion == ResponseRegion.Collection)
                 SelectLastCollectionViewItem();
             else if (ResponseRegion == ResponseRegion.Deck)

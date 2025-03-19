@@ -64,9 +64,12 @@ namespace MDPro3.Servant
             Config.Save();
         }
 
-        public override void Select()
+        public override void Select(bool forced = false)
         {
-            if(servantUI != null)
+            if (!forced && !UserInput.NeedDefaultSelect())
+                return;
+
+            if (servantUI != null)
                 GetUI<OnlineServantUI>().SelectLastSelectable(lastSelectable);
         }
 

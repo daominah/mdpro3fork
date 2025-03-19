@@ -10,6 +10,8 @@ using YgomSystem.UI;
 using static MDPro3.UI.DeckView;
 using MDPro3.Servant;
 using MDPro3.UI.ServantUI;
+using NUnit.Framework;
+using System.Collections.Generic;
 
 namespace MDPro3.UI
 {
@@ -63,7 +65,7 @@ namespace MDPro3.UI
                     else
                     {
                         Program.instance.deckEditor.GetUI<DeckEditorUI>().AddHistoryCard(Card.Id);
-                        Program.instance.deckEditor.GetUI<DeckEditorUI>().ShowDetail(Card);
+                        ShowThisCard();
                     }
                 }
                 else
@@ -82,12 +84,12 @@ namespace MDPro3.UI
                 {
                     Program.instance.deckEditor.GetUI<DeckEditorUI>().CardChangeSide(this);
                 }
-                Program.instance.deckEditor.GetUI<DeckEditorUI>().ShowDetail(Card);
+                ShowThisCard();
             });
             SetMiddleClickEvent(() =>
             {
                 Program.instance.deckEditor.GetUI<DeckEditorUI>().AddCard(Card);
-                Program.instance.deckEditor.GetUI<DeckEditorUI>().ShowDetail(Card);
+                ShowThisCard();
             });
         }
 
@@ -99,7 +101,7 @@ namespace MDPro3.UI
                 .GetComponentsInChildren<ColorContainerGraphic>(true))
                 ccg.SetColor(SelectMode.Selected, hovering ? StatusMode.Enter : StatusMode.Normal, Selectable.interactable);
 
-            Program.instance.deckEditor.GetUI<DeckEditorUI>().ShowDetail(Card);
+            ShowThisCard();
             Program.instance.deckEditor.lastSelectedCardInDeck = this;
             Program.instance.deckEditor.ResponseRegion = DeckEditorUI.ResponseRegion.Deck;
         }
@@ -290,6 +292,25 @@ namespace MDPro3.UI
             return hovering;
         }
 
+        private void ShowThisCard()
+        {
+            var codes = Program.instance.deckEditor.GetUI<DeckEditorUI>().DeckView.GetAllCardCodes();
+            Program.instance.deckEditor.GetUI<DeckEditorUI>().ShowDetail(codes, GetIndex());
+        }
+
+        private int GetIndex()
+        {
+            int index = 0;
+            var cards = Program.instance.deckEditor.GetUI<DeckEditorUI>().DeckView.cards;
+            for (int i = 0; i < cards.Count; i++)
+                if (cards[i] == this)
+                {
+                    index = i;
+                    break;
+                }
+            return index;
+        }
+
         #region Drag
 
         private RectTransform dragTarget;
@@ -398,6 +419,7 @@ namespace MDPro3.UI
         #endregion
 
         #region Navigation
+
         protected override int GetButtonsCount()
         {
             return Program.instance.deckEditor.GetUI<DeckEditorUI>().DeckView.GetDeckLocationCount(location);

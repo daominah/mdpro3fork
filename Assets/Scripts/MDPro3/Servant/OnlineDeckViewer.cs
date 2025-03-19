@@ -37,8 +37,11 @@ namespace MDPro3.Servant
             RefreshList();
         }
 
-        public override void Select()
+        public override void Select(bool forced = false)
         {
+            if (!forced && !UserInput.NeedDefaultSelect())
+                return;
+
             lastSelectedDeckItem.GetSelectable().Select();
         }
 

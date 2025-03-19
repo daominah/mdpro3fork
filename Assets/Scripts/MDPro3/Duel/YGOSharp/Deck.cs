@@ -75,25 +75,25 @@ namespace MDPro3.Duel.YGOSharp
                     continue;
                 }
 
-                if (line == "#main")
+                if (line.StartsWith("#main"))
                     flag = 1;
-                else if (line == "#extra")
+                else if (line.StartsWith( "#extra"))
                     flag = 2;
-                else if (line == "!side")
+                else if (line.StartsWith("!side"))
                     flag = 3;
-                else if (line == "#pickup")
+                else if (line.StartsWith("#pickup"))
                     flag = 4;
-                else if (line == "#protector")
+                else if (line.StartsWith("#protector"))
                     flag = 5;
-                else if (line == "#case")
+                else if (line.StartsWith("#case"))
                     flag = 6;
-                else if (line == "#field")
+                else if (line.StartsWith("#field"))
                     flag = 7;
-                else if (line == "#grave")
+                else if (line.StartsWith("#grave"))
                     flag = 8;
-                else if (line == "#stand")
+                else if (line.StartsWith("#stand"))
                     flag = 9;
-                else if (line == "#mate")
+                else if (line.StartsWith("#mate"))
                     flag = 10;
                 else
                 {

@@ -39,9 +39,12 @@ namespace MDPro3.Servant
                 Program.instance.ShiftToServant(returnServant);
         }
 
-        public override void Select()
+        public override void Select(bool forced = false)
         {
-            EventSystem.current.SetSelectedGameObject(lastSelectedReplayItem.gameObject);
+            if (!forced && !UserInput.NeedDefaultSelect())
+                return;
+
+            lastSelectedReplayItem.GetSelectable().Select();
         }
 
         public void SelecLastReplayItem()

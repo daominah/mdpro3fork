@@ -65,8 +65,11 @@ namespace MDPro3.Servant
             Print();
         }
 
-        public override void Select()
+        public override void Select(bool forced = false)
         {
+            if (!forced && !UserInput.NeedDefaultSelect())
+                return;
+
             if (servantUI == null)
                 return;
 

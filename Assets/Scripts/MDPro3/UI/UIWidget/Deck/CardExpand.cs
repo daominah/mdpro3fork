@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 namespace MDPro3.UI
 {
-    public class CardExpand : UIWidget
+    public class CardExpand : UIWidgetFullScreen
     {
         #region Elements
 
@@ -34,6 +34,9 @@ namespace MDPro3.UI
         private bool isPendulumCard;
         private bool shifting;
 
+        protected override string Label_SE_Show => "SE_CARDEXPAND_DISPLAY";
+        protected override string Label_SE_Hide => "SE_CARDEXPAND_CLOSE";
+
         protected override void Awake()
         {
             ImageCard.GetComponent<Button>()
@@ -43,9 +46,9 @@ namespace MDPro3.UI
             TextShortcut.text = InterString.Get("À©´ó");
         }
 
-        private void Update()
+        protected override void Update()
         {
-            if (shifting) return;
+            if (!NeedResponse()) return;
             if (UserInput.WasCancelPressed || UserInput.MouseRightDown)
             {
                 if (expanded)
@@ -57,37 +60,58 @@ namespace MDPro3.UI
                 Zoom();
         }
 
+        protected override bool NeedResponse()
+        {
+            if(shifting) return false;
+            return base.NeedResponse();
+        }
+
         public void Show(Card data)
         {
             AudioManager.PlaySE("SE_CARDEXPAND_DISPLAY");
-            BG.alpha = 0.3f;
-            BG.DOFade(1f, 0.1f);
             shifting = true;
 
             ImageCard.SetCard(data);
+            isRushDuelCard = CardRenderer.NeedRushDuelStyle(data.Id);
+            isPendulumCard = data.HasType(CardType.Pendulum);
+
+            Show();
+        }
+
+        public override void Show()
+        {
+            if (showing) return;
+            showing = true;
+            ShowEvent();
+
+            BG.alpha = 0.3f;
+            BG.DOFade(1f, 0.1f);
+
             ImageCard.RawImage.color = new Color(1f, 1f, 1f, 0.3f);
             ImageCard.RawImage.DOFade(1f, 0.1f);
-            ImageCard.transform.localScale = new Vector3 (1.3f, 1.3f, 1f);
+            ImageCard.transform.localScale = new Vector3(1.3f, 1.3f, 1f);
             ImageCard.transform.DOScale(new Vector3(1.5f, 1.5f, 1f), 0.25f).SetEase(Ease.OutQuart);
-            ImageCard.transform.localEulerAngles = new Vector3 (8f, 12f, 2f);
+            ImageCard.transform.localEulerAngles = new Vector3(8f, 12f, 2f);
             ImageCard.transform.DOLocalRotate(Vector3.zero, 0.35f).SetEase(Ease.OutQuart)
                 .OnComplete(() => { shifting = false; });
             EventSystem.current.SetSelectedGameObject(ImageCard.gameObject);
-
-            isRushDuelCard = CardRenderer.NeedRushDuelStyle(data.Id);
-            isPendulumCard = data.HasType(CardType.Pendulum);
         }
 
-        private void Hide()
+        protected override void AfterShowEvent()
+        {
+            Select(true);
+        }
+
+        public override void Hide()
         {
             if (shifting) return;
             shifting = true;
-            AudioManager.PlaySE("SE_CARDEXPAND_CLOSE");
+            HideEvent();
 
             BG.DOFade(0f, 0.21f).OnComplete(() =>
             {
                 Destroy(gameObject);
-                Program.instance.currentServant.Select();
+                AfterHideEvent();
             });
 
             DOTween.Sequence()
@@ -140,6 +164,7 @@ namespace MDPro3.UI
                     return 2.82f;
             }
         }
+
         private void ZoomIn()
         {
             if (shifting) return;
@@ -173,5 +198,6 @@ namespace MDPro3.UI
 
             TextShortcut.text = InterString.Get("À©´ó");
         }
+
     }
 }

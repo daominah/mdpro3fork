@@ -215,7 +215,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac553023cbab09d4d91058a92ee5e17b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultSelectable: {fileID: 4786707251012157874}
   responseInput: 0
+  showing: 0
 --- !u!114 &114183656088130082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -543,6 +545,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 0
+  manuallySetNavigation: 1
   SoundLabelClick: 
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -565,6 +568,13 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
     onHoverOff:
+      m_PersistentCalls:
+        m_Calls: []
+  selectEvent:
+    onSelect:
+      m_PersistentCalls:
+        m_Calls: []
+    onDeselect:
       m_PersistentCalls:
         m_Calls: []
   clickEvent:

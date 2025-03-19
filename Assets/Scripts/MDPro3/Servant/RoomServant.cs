@@ -88,8 +88,11 @@ namespace MDPro3.Servant
             Program.instance.ocgcore.CloseConnection();
         }
 
-        public override void Select()
+        public override void Select(bool forced = false)
         {
+            if (!forced && !UserInput.NeedDefaultSelect())
+                return;
+
             var selected = EventSystem.current.currentSelectedGameObject;
             if (selected == null || selected != lastSelectable)
             {

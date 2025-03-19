@@ -88,10 +88,13 @@ namespace MDPro3.Servant
                 }
             }
         }
-        public override void Select()
+        public override void Select(bool forced = false)
         {
+            if (!forced && !UserInput.NeedDefaultSelect())
+                return;
+
             if (lastSelectedButton != null)
-                EventSystem.current.SetSelectedGameObject(lastSelectedButton.gameObject);
+                lastSelectedButton.GetSelectable().Select();
             else
                 GetUI<MainMenuUI>().SelectDefaultSelectable();
         }

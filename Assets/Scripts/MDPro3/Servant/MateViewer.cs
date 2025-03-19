@@ -165,8 +165,10 @@ namespace MDPro3.Servant
             }
         }
 
-        public override void Select()
+        public override void Select(bool forced = false)
         {
+            if (!forced && !UserInput.NeedDefaultSelect())
+                return;
             if (lastSelectedMateItem == null)
                 return;
 

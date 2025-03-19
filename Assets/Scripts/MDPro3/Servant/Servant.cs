@@ -130,8 +130,10 @@ namespace MDPro3.Servant
             return true;
         }
 
-        public virtual void Select()
+        public virtual void Select(bool forced = false)
         {
+            if (!forced && !UserInput.NeedDefaultSelect())
+                return;
             if (lastSelectable != null)
                 lastSelectable.Select();
             else if (servantUI != null)

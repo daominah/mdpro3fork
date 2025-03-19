@@ -453,8 +453,29 @@ namespace MDPro3
             {
                 result.Result.transform.SetParent(Program.instance.ui_.popup, false);
                 var handler = result.Result.GetComponent<CardExpand>();
-                InputBlocker = handler;
                 handler.Show(data);
+            };
+        }
+
+        public static void ShowCardInfoDetail(Card data)
+        {
+            var handle = Addressables.InstantiateAsync("CardInfoDetail");
+            handle.Completed += (result) =>
+            {
+                result.Result.transform.SetParent(Program.instance.ui_.popup, false);
+                var handler = result.Result.GetComponent<CardInfoDetail>();
+                handler.Show(data);
+            };
+        }
+
+        public static void ShowCardInfoDetail(List<int> cards, int index)
+        {
+            var handle = Addressables.InstantiateAsync("CardInfoDetail");
+            handle.Completed += (result) =>
+            {
+                result.Result.transform.SetParent(Program.instance.ui_.popup, false);
+                var handler = result.Result.GetComponent<CardInfoDetail>();
+                handler.Show(cards, index);
             };
         }
 

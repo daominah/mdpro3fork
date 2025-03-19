@@ -889,7 +889,7 @@ namespace MDPro3.UI
             Application.OpenURL(url);
         }
 
-        public List<int> GetAllCards()
+        public List<int> GetAllCardCodes()
         {
             var returnValue = new List<int>();
             foreach (var card in cards)

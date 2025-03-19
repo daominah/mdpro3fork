@@ -410,7 +410,7 @@ namespace MDPro3
         private void SaveDeckCards()
         {
             saveEnumerator = SaveCardsAsync(Program.instance.deckEditor
-                .GetUI<DeckEditorUI>().DeckView.GetAllCards());
+                .GetUI<DeckEditorUI>().DeckView.GetAllCardCodes());
             StartCoroutine(saveEnumerator);
         }
 

@@ -55,7 +55,7 @@ namespace MDPro3.UI
                     }
                     else
                     {
-                        Program.instance.deckEditor.GetUI<DeckEditorUI>().ShowDetail(card);
+                        ShowThis();
                         if (cardCollectionView.area != CardCollectionView.Area.History)
                             Program.instance.deckEditor.GetUI<DeckEditorUI>().AddHistoryCard(card.Id);
                     }
@@ -74,7 +74,7 @@ namespace MDPro3.UI
         protected override void OnSelect(bool playSE)
         {
             base.OnSelect(playSE);
-            Program.instance.deckEditor.GetUI<DeckEditorUI>().ShowDetail(card);
+            ShowThis();
             Program.instance.deckEditor.lastSelectedCardInCollection = this;
             Program.instance.deckEditor.ResponseRegion = DeckEditorUI.ResponseRegion.Collection;
         }
@@ -83,7 +83,7 @@ namespace MDPro3.UI
         {
             var position = transform.GetChild(0).position;
             Program.instance.deckEditor.GetUI<DeckEditorUI>().AddCardFromCollection(card, position);
-            Program.instance.deckEditor.GetUI<DeckEditorUI>().ShowDetail(card);
+            ShowThis();
         }
 
         public void Refresh()
@@ -173,6 +173,20 @@ namespace MDPro3.UI
                 Manager.GetElement("IconCardUse" + i).SetActive(true);
             for (int i = count + 1; i < 4; i++)
                 Manager.GetElement("IconCardUse" + i).SetActive(false);
+        }
+
+        private void ShowThis()
+        {
+            var cards = Program.instance.deckEditor.GetUI<DeckEditorUI>().CardCollectionView.printedCards;
+            int index = 0;
+            for (int i = 0; i < cards.Count; i++)
+                if (cards[i] == card.Id)
+                {
+                    index = i; 
+                    break;
+                }
+
+            Program.instance.deckEditor.GetUI<DeckEditorUI>().ShowDetail(cards, index);
         }
 
         #region Drag

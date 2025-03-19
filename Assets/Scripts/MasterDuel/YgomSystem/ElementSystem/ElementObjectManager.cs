@@ -81,7 +81,7 @@ namespace YgomSystem.ElementSystem
 		{
             foreach (var element in serializedElements)
 				if(element.label == label)
-				return true;
+					return true;
             return false;
         }
 
@@ -151,5 +151,22 @@ namespace YgomSystem.ElementSystem
 		public void SetCallbackString(string label, UnityAction<string> callback)
 		{
 		}
-	}
+
+        #region MDPro3 Add
+
+        private Action OnDestroyAction;
+
+		public void RegisterOnDestroyEvent(Action action)
+		{
+			OnDestroyAction += action;
+		}
+
+        private void OnDestroy()
+        {
+            OnDestroyAction?.Invoke();
+        }
+
+        #endregion
+
+    }
 }

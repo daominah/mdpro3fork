@@ -1,4 +1,6 @@
 using MDPro3.Duel.YGOSharp;
+using NUnit.Framework;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using YgomSystem.ElementSystem;
@@ -23,6 +25,9 @@ namespace MDPro3.UI
 
         #endregion
 
+        private List<int> cards;
+        private int showingCardIndex;
+
         protected override void Awake()
         {
             base.Awake();
@@ -39,14 +44,26 @@ namespace MDPro3.UI
             Content.alpha = 1f;
             Content.blocksRaycasts = true;
 
+            cards = null;
             SetCardData(data);
+        }
+
+        public void ShowCard(List<int> cards, int index)
+        {
+            Content.alpha = 1f;
+            Content.blocksRaycasts = true;
+
+            this.cards = cards;
+            showingCardIndex = index;
+            SetCardData(CardsManager.Get(cards[index]));
         }
 
         private void ShowCardDetail()
         {
-            Program.instance.ui_.cardDetail.Show(Card, null, null);
+            if (cards != null)
+                UIManager.ShowCardInfoDetail(cards, showingCardIndex);
+            else if(Card != null)
+                UIManager.ShowCardInfoDetail(Card);
         }
-
-
     }
 }

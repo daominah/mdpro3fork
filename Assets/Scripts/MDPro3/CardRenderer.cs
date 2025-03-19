@@ -474,7 +474,7 @@ namespace MDPro3
             else if (data.HasType(CardType.Xyz))
             {
                 cardNameRD.color = Color.white;
-                if(!data.HasType(CardType.Pendulum))
+                if (!data.HasType(CardType.Pendulum))
                     cardTypeRD.color = Color.white;
                 rankRD.SetActive(true);
                 rankNumRD.gameObject.SetActive(true);
@@ -514,6 +514,7 @@ namespace MDPro3
 
             cardName.color = Color.black;
             cardPassword.color = Color.black;
+            cardAuther.color = Color.black;
 
             cardArt.gameObject.SetActive(false);
             cardArtPendulum.gameObject.SetActive(false);
@@ -692,7 +693,11 @@ namespace MDPro3
             else if (data.HasType(CardType.Xyz))
             {
                 cardName.color = Color.white;
-                cardPassword.color = Color.white;
+                if (!data.HasType(CardType.Pendulum))
+                {
+                    cardPassword.color = Color.white;
+                    cardAuther.color = Color.white;
+                }
 
                 if (data.Level == 13)
                     rank13.SetActive(true);

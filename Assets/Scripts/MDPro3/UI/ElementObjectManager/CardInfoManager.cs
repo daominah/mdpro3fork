@@ -1,19 +1,15 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
 using MDPro3.Duel.YGOSharp;
-using YgomSystem.ElementSystem;
-using DG.Tweening;
-using UnityEngine.Events;
 using MDPro3.Servant;
 using MDPro3.UI.ServantUI;
+using TMPro;
+using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UI;
+using YgomSystem.ElementSystem;
 
 namespace MDPro3.UI
 {
-    public class UIWidgetCardBase : UIWidget
+    public class CardInfoManager
     {
         #region Elements
 
@@ -40,6 +36,7 @@ namespace MDPro3.UI
         #endregion
 
         #region ParameterArea
+
         private const string LABEL_IMG_LEVEL = "ParameterArea/IconLevel";
         private Image m_IconLevel;
         protected Image IconLevel =>
@@ -141,6 +138,7 @@ namespace MDPro3.UI
         protected TextMeshProUGUI TextDef =>
             m_TextDef = m_TextDef != null ? m_TextDef
             : Manager.GetNestedElement<TextMeshProUGUI>(LABEL_TXT_DEF);
+
         #endregion
 
         #region DescriptionArea
@@ -313,6 +311,7 @@ namespace MDPro3.UI
 
         #endregion
 
+        private readonly ElementObjectManager Manager;
         private Card _card;
         public Card Card
         {
@@ -323,12 +322,17 @@ namespace MDPro3.UI
                 ImageCard.SetCard(value);
             }
         }
-        protected bool pendulumTextNeedSplit = true;
+        private readonly bool pendulumTextNeedSplit = true;
 
-        protected override void Awake()
+        public CardInfoManager(ElementObjectManager manager, bool pendulumTextNeedSplit)
         {
-            base.Awake();
+            Manager = manager;
+            this.pendulumTextNeedSplit = pendulumTextNeedSplit;
+            Initialize();
+        }
 
+        private void Initialize()
+        {
             if (MenuArea != null)
             {
                 ToggleBookMark.SetToggleOnEvent(() =>
@@ -351,7 +355,7 @@ namespace MDPro3.UI
             }
         }
 
-        protected virtual void SetCardData(Card data)
+        private void SetCardData(Card data)
         {
             if (Card != null && Card.Id == data.Id)
                 return;
@@ -361,11 +365,11 @@ namespace MDPro3.UI
 
             TextCardName.text = " " + data.Name;
             PlateTitle.SetMaterialAction((matetial) =>
-                {
-                    var colors = CardDescription.GetCardFrameColor(data);
-                    matetial.SetColor("_Color0", colors[0]);
-                    matetial.SetColor("_Color1", colors[1]);
-                });
+            {
+                var colors = CardDescription.GetCardFrameColor(data);
+                matetial.SetColor("_Color0", colors[0]);
+                matetial.SetColor("_Color1", colors[1]);
+            });
             IconAttribute.sprite = TextureManager.container.GetCardAttributeIcon(data);
 
             #endregion
@@ -436,11 +440,11 @@ namespace MDPro3.UI
             #region Description Area
 
             PlateDescription.SetMaterialAction((matetial) =>
-                {
-                    var colors = CardDescription.GetCardFrameColor(data);
-                    matetial.SetColor("_Color0", colors[0]);
-                    matetial.SetColor("_Color1", colors[1]);
-                });
+            {
+                var colors = CardDescription.GetCardFrameColor(data);
+                matetial.SetColor("_Color0", colors[0]);
+                matetial.SetColor("_Color1", colors[1]);
+            });
             TextDescriptionItem.text = StringHelper.GetType(data);
 
             TextDescriptionValue.text = pendulumTextNeedSplit
@@ -497,33 +501,38 @@ namespace MDPro3.UI
             #endregion
         }
 
-        public virtual void SetCardCount(string cardCount)
+        public void SetCardCount(string cardCount)
         {
+            if (TextCardNumValue == null) return;
+
             TextCardNumValue.text = cardCount;
         }
 
-        public virtual void SetCardCount()
+        public void SetCardCount()
         {
-            if (Card == null)
+            if (TextCardNumValue == null || Card == null)
                 return;
             TextCardNumValue.text = Program.instance.deckEditor
                 .GetUI<DeckEditorUI>().DeckView.GetCardCount(Card.Id).ToString();
         }
 
-        public virtual void RefreshRarity(int code)
+        public void RefreshRarity(int code)
         {
             ImageCard.RefreshRarity(code);
         }
 
-        public virtual void RefreshBookmarkToggle()
+        public void RefreshBookmarkToggle()
         {
-            if(CardRarity.CardBookmarked(Card.Id))
+            if (ToggleBookMark == null)
+                return;
+
+            if (CardRarity.CardBookmarked(Card.Id))
                 ToggleBookMark.SetToggleOn(false);
             else
                 ToggleBookMark.SetToggleOff(false);
         }
 
-        public virtual void SetRelatedCardEvent(UnityAction call)
+        public void SetRelatedCardEvent(UnityAction call)
         {
             if (ButtonRelatedCard == null)
                 return;
