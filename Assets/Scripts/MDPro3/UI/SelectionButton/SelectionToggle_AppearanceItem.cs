@@ -78,6 +78,7 @@ namespace MDPro3.UI
                 else if (path.StartsWith("DeckCase"))
                 {
                     icon.rectTransform.localScale = Vector3.one * 0.8f;
+                    //icon.transform.localPosition = new Vector3(0f, 15f, 0f);
                 }
                 protector.gameObject.SetActive(false);
             }

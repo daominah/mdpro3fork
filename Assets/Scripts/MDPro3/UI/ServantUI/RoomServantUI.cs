@@ -233,7 +233,7 @@ namespace MDPro3.UI.ServantUI
                 TcpHelper.CtosMessage_HsNotReady();
             else
             {
-                var deckPath = Program.deckPath + Config.Get("DeckInUse", "") + Program.ydkExpansion;
+                var deckPath = Program.deckPath + Config.GetConfigDeckName() + Program.ydkExpansion;
                 if (File.Exists(deckPath))
                 {
                     TcpHelper.CtosMessage_UpdateDeck(new Deck(deckPath));

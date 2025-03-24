@@ -116,7 +116,7 @@ namespace MDPro3.UI.ServantUI
                     break;
             }
 
-            ButtonDeck.SetButtonText(Config.Get("DeckInUse", "@ui"));
+            ButtonDeck.SetButtonText(Config.GetConfigDeckName());
         }
 
         public void Print()

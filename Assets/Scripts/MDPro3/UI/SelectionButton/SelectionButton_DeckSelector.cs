@@ -30,7 +30,7 @@ namespace MDPro3.UI
 
         public void SetConfigDeck(string hint)
         {
-            var configDeck = Config.Get("DeckInUse", "@ui");
+            var configDeck = Config.GetConfigDeckName();
             var path = Program.deckPath + configDeck + Program.ydkExpansion;
             if (!File.Exists(path))
                 SetDeck(null, hint);

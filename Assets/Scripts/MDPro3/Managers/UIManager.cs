@@ -213,7 +213,7 @@ namespace MDPro3
         {
             if (wallpaper.transform.childCount > 0)
                 Destroy(wallpaper.transform.GetChild(0).gameObject);
-            if (path == Items.noneCode.ToString())
+            if (path == Items.CODE_NONE.ToString())
                 return null;
 
             path = "MasterDuel/" + Program.items.WallpaperCodeToPath(path);
@@ -351,6 +351,7 @@ namespace MDPro3
 
         public static void ShowPopupConfirm(List<string> selections)
         {
+            Debug.Log("mark");
             var handle = Addressables.InstantiateAsync("PopupConfirm");
             handle.Completed += (result) =>
             {

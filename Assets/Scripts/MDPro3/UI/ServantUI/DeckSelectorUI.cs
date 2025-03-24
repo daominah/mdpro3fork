@@ -147,7 +147,7 @@ namespace MDPro3.UI.ServantUI
             {
                 var fileName = Path.GetFileName(file);
                 fileName = fileName.Substring(0, fileName.Length - 4);
-                if (fileName == Config.Get("DeckInUse", ""))
+                if (fileName == Config.GetConfigDeckName())
                 {
                     fileList.Remove(file);
                     fileList.Insert(0, file);
@@ -281,7 +281,7 @@ namespace MDPro3.UI.ServantUI
             if (File.Exists(path))
             {
                 deckInUse = deckName;
-                List<string> tasks = new List<string>()
+                List<string> tasks = new()
                 {
                     InterString.Get("该卡组名已存在"),
                     InterString.Get("该卡组名的文件已存在，是否直接覆盖创建？"),
@@ -325,7 +325,7 @@ namespace MDPro3.UI.ServantUI
                     var deck = YdkeConverter.Ydke2Deck(clipBoard);
                     deck.Save(deckName, DateTime.Now);
                 }
-                Config.Set("DeckInUse", deckName);
+                Config.SetConfigDeck(deckName);
                 RefreshList();
             }
             catch (Exception e)

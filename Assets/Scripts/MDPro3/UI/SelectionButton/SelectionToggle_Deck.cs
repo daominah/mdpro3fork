@@ -222,7 +222,7 @@ namespace MDPro3.UI
             else
             {
                 AudioManager.PlaySE(SoundLabelClick);
-                Config.Set("DeckInUse", deckName);
+                Config.SetConfigDeck(deckName);
                 if (DeckSelector.condition == DeckSelector.Condition.ForEdit)
                 {
                     Program.instance.deckEditor.SwitchCondition(DeckEditor.Condition.EditDeck);

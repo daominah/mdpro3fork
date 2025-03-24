@@ -158,6 +158,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   SetToResponser: 1
+  manuallySetNavigation: 1
   SoundLabelClick: SE_MENU_DECIDE
   SoundLabelClickInactive: 
   SoundLabelPointerEnter: 
@@ -194,6 +195,24 @@ MonoBehaviour:
     onHoverOff:
       m_PersistentCalls:
         m_Calls: []
+  selectEvent:
+    onSelect:
+      m_PersistentCalls:
+        m_Calls: []
+    onDeselect:
+      m_PersistentCalls:
+        m_Calls: []
+  clickEvent:
+    onLeftClick:
+      m_PersistentCalls:
+        m_Calls: []
+    onMiddleClick:
+      m_PersistentCalls:
+        m_Calls: []
+    onRightClick:
+      m_PersistentCalls:
+        m_Calls: []
+  selected: 0
 --- !u!114 &7981821957412837334
 MonoBehaviour:
   m_ObjectHideFlags: 0

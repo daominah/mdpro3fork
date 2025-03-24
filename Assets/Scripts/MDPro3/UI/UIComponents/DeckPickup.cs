@@ -3,6 +3,7 @@ using MDPro3.Servant;
 using MDPro3.Utility;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.UI;
 using YgomSystem.ElementSystem;
 
@@ -65,10 +66,32 @@ namespace MDPro3.UI
 
         private async Task LoadDeckCaseAsync(int deckCase)
         {
-            var load = Program.items.LoadItemIconAsync(deckCase.ToString(), Items.ItemType.Case);
-            while (load.MoveNext())
+            //var load = Program.items.LoadItemIconAsync(deckCase.ToString(), Items.ItemType.Case);
+            //while (load.MoveNext())
+            //    await TaskUtility.WaitOneFrame();
+            //DeckCase.sprite = load.Current;
+
+            try
+            {
+                await LoadDeckCaseIcon("DeckCase" + deckCase.ToString()[3..] + "_Open_L");
+            }
+            catch
+            {
+                await LoadDefaultDeckCaseIcon();
+            }
+        }
+
+        private async Task LoadDefaultDeckCaseIcon()
+        {
+            await LoadDeckCaseIcon("DeckCase0001_Open_L");
+        }
+
+        private async Task LoadDeckCaseIcon(string address)
+        {
+            var load = Addressables.LoadAssetAsync<Sprite>(address);
+            while (!load.IsDone)
                 await TaskUtility.WaitOneFrame();
-            DeckCase.sprite = load.Current;
+            DeckCase.sprite = load.Result;
         }
     }
 }

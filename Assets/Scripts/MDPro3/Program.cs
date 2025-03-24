@@ -186,7 +186,7 @@ namespace MDPro3
                 if (args[i].ToLower() == "-j")
                 {
                     join = true;
-                    Config.Set("DeckInUse", deck);
+                    Config.SetConfigDeck(deck);
                     Config.Save();
                 }
             }
@@ -198,7 +198,7 @@ namespace MDPro3
             }
             else if (deck != null)
             {
-                Config.Set("DeckInUse", deck);
+                Config.SetConfigDeck(deck);
                 deckEditor.SwitchCondition(DeckEditor.Condition.EditDeck);
                 ShiftToServant(deckEditor);
                 exitOnReturn = true;

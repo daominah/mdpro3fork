@@ -485,10 +485,10 @@ namespace MDPro3.UI.ServantUI
                         GameObject item = Instantiate(appearanceItem);
                         var itemMono = item.GetComponent<SelectionToggle_AppearanceItem>();
                         itemMono.index = ++itemCount;
-                        itemMono.itemID = Items.noneCode;
+                        itemMono.itemID = Items.CODE_NONE;
                         itemMono.description = InterString.Get("该项设置将设置为无。");
                         itemMono.itemName = InterString.Get("不设置");
-                        itemMono.path = (isWallpaper ? "WallPaperIcon" : string.Empty) + Items.noneIconPath;
+                        itemMono.path = (isWallpaper ? "WallPaperIcon" : string.Empty) + Items.PATH_ICON_NONE;
                         itemMono.transform.SetParent(ScrollRect.content, false);
                         itemMono.Refresh();
                         currentList.Add(item);
@@ -499,10 +499,10 @@ namespace MDPro3.UI.ServantUI
                         GameObject item = Instantiate(appearanceItem);
                         var itemMono = item.GetComponent<SelectionToggle_AppearanceItem>();
                         itemMono.index = ++itemCount;
-                        itemMono.itemID = Items.randomCode;
+                        itemMono.itemID = Items.CODE_RANDOM;
                         itemMono.description = InterString.Get("该项设置将随机设置。");
                         itemMono.itemName = InterString.Get("随机");
-                        itemMono.path = (isWallpaper ? "WallPaperIcon" : string.Empty) + Items.randomIconPath;
+                        itemMono.path = (isWallpaper ? "WallPaperIcon" : string.Empty) + Items.PATH_ICON_RANDOM;
                         itemMono.transform.SetParent(ScrollRect.content, false);
                         itemMono.Refresh();
                         currentList.Add(item);
@@ -512,10 +512,10 @@ namespace MDPro3.UI.ServantUI
                         GameObject item = Instantiate(appearanceItem);
                         var itemMono = item.GetComponent<SelectionToggle_AppearanceItem>();
                         itemMono.index = ++itemCount;
-                        itemMono.itemID = Items.sameCode;
+                        itemMono.itemID = Items.CODE_SAME;
                         itemMono.description = InterString.Get("该项设置将与场地设置保持一致。");
                         itemMono.itemName = InterString.Get("一致");
-                        itemMono.path = Items.sameIconPath;
+                        itemMono.path = Items.PATH_ICON_SAME;
                         itemMono.transform.SetParent(ScrollRect.content, false);
                         itemMono.Refresh();
                         currentList.Add(item);
@@ -526,7 +526,7 @@ namespace MDPro3.UI.ServantUI
                         GameObject item = Instantiate(appearanceItem);
                         var itemMono = item.GetComponent<SelectionToggle_AppearanceItem>();
                         itemMono.index = ++itemCount;
-                        itemMono.itemID = Items.diyCode;
+                        itemMono.itemID = Items.CODE_DIY;
                         itemMono.description = InterString.Get("我方头像：") +
                                                                 Program.diyPath + meString + Program.pngExpansion + "\n" +
                                                                 InterString.Get("对方头像：") +
@@ -536,7 +536,7 @@ namespace MDPro3.UI.ServantUI
                                                                 InterString.Get("对方队友头像：") +
                                                                 Program.diyPath + opTagString + Program.pngExpansion;
                         itemMono.itemName = InterString.Get("自定义");
-                        itemMono.path = Items.diyIconPath;
+                        itemMono.path = Items.PATH_ICON_DIY;
                         itemMono.transform.SetParent(ScrollRect.content, false);
                         itemMono.Refresh();
                         currentList.Add(item);
@@ -547,10 +547,10 @@ namespace MDPro3.UI.ServantUI
                         GameObject item = Instantiate(appearanceItem);
                         var itemMono = item.GetComponent<SelectionToggle_AppearanceItem>();
                         itemMono.index = ++itemCount;
-                        itemMono.itemID = Items.sameCode;
+                        itemMono.itemID = Items.CODE_SAME;
                         itemMono.description = InterString.Get("该项设置将与我方场地设置保持一致。");
                         itemMono.itemName = InterString.Get("一致");
-                        itemMono.path = Items.sameIconPath;
+                        itemMono.path = Items.PATH_ICON_SAME;
                         itemMono.transform.SetParent(ScrollRect.content, false);
                         itemMono.Refresh();
                         currentList.Add(item);

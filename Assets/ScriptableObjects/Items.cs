@@ -1,11 +1,11 @@
+using MDPro3.Servant;
+using MDPro3.Utility;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-using MDPro3.Utility;
-using MDPro3.Servant;
 
 namespace MDPro3
 {
@@ -26,7 +26,7 @@ namespace MDPro3
                     if (!nameLoaded)
                     {
                         var listName = instance.GetName(id, m_name);
-                        if(listName != nullString || string.IsNullOrEmpty(m_name))
+                        if(listName != STRING_NULL || string.IsNullOrEmpty(m_name))
                             m_name = listName;
                         nameLoaded = true;
                     }
@@ -45,10 +45,10 @@ namespace MDPro3
                     if (!diy && !descriptionLoaded)
                     {
                         var listDescription = instance.GetDescription(id);
-                        if(listDescription != nullString)
+                        if(listDescription != STRING_NULL)
                             m_description = listDescription;
                         if(string.IsNullOrEmpty(m_description))
-                            m_description = nullString;
+                            m_description = STRING_NULL;
                         descriptionLoaded = true;
                     }
                     if(diy && !descriptionLoaded)
@@ -92,28 +92,28 @@ namespace MDPro3
         public List<Item> stands;
         public List<Item> mates;
         public List<Item> cases;
-
         public List<List<Item>> kinds;
 
-        const string mapPath = "Data/items.txt";
-        public const string nullString = "coming soon";
-        static string language = "";
-        public const int randomCode = 9999;
-        public const int sameCode = 8888;
-        public const int noneCode = 0;
-        public const int diyCode = 9998;
-        public const string randomIconPath = "Menu-Random";
-        public const string sameIconPath = "Menu-Same";
-        public const string noneIconPath = "Menu-NoImage";
-        public const string diyIconPath = "Menu-DIY";
+        private static string language = string.Empty;
+        private static Items instance;
+        private readonly Dictionary<string, int> idsMap = new();
+        private Dictionary<int, string> names = new();
+        private Dictionary<int, string> descriptions = new();
+        private readonly Dictionary<string, Sprite> cachedIcons = new();
 
-        Dictionary<string, int> maps = new Dictionary<string, int>();
-        Dictionary<int, string> names = new Dictionary<int, string>();
-        Dictionary<int, string> descriptions = new Dictionary<int, string>();
-        Dictionary<string, Sprite> cachedIcons = new Dictionary<string, Sprite>();
+        private const string PATH_MAP = "Data/items.txt";
+        public const string STRING_NULL = "coming soon";
+        public const int CODE_RANDOM = 9999;
+        public const int CODE_SAME = 8888;
+        public const int CODE_NONE = 0;
+        public const int CODE_DIY = 9998;
+        public const string PATH_ICON_RANDOM = "Menu-Random";
+        public const string PATH_ICON_SAME = "Menu-Same";
+        public const string PATH_ICON_NONE = "Menu-NoImage";
+        public const string PATH_ICON_DIY = "Menu-DIY";
 
-        static Items instance;
         public static bool initialized = false;
+
         public void Initialize()
         {
             if (!initialized)
@@ -131,7 +131,7 @@ namespace MDPro3
                     mates,
                     cases,
                 };
-                var all = File.ReadAllText(mapPath);
+                var all = File.ReadAllText(PATH_MAP);
                 var lines = all.Replace("\r", string.Empty).Split('\n');
                 foreach(var line in lines)
                 {
@@ -140,7 +140,7 @@ namespace MDPro3
                     {
                         try
                         {
-                            maps.Add(pair[1], int.Parse(pair[0]));
+                            idsMap.Add(pair[1], int.Parse(pair[0]));
                         }
                         catch(Exception e)
                         {
@@ -159,19 +159,21 @@ namespace MDPro3
             }
         }
 
-        void Load()
+        private void Load()
         {
             LoadData(Program.localesPath + language + "/IDS_ITEM.bytes");
             LoadData(Program.localesPath + language + "/IDS_ITEMDESC.bytes");
         }
-        void LoadData(string path)
+
+        private void LoadData(string path)
         {
             int type = 0;
             if (path.EndsWith("IDS_ITEMDESC.bytes"))
                 type = 1;
 
             var bytes = File.ReadAllBytes(path);
-            var languageBytes = Encoding.UTF8.GetBytes(language);
+            var languageBytes = Encoding.UTF8
+                .GetBytes(Language.GetMasterDuelLanguage(language));
             int start = 0;
             for (int i = 0; i < bytes.Length; i++)
             {
@@ -214,7 +216,9 @@ namespace MDPro3
                     length = bytes[i] - 0xB0 + 16;
                 }
                 else
-                    Debug.LogErrorFormat("Items Load: Unknown Lentgh {0:X}", bytes[i]);
+                {
+                    Debug.LogErrorFormat("Items Load: Unknown Lentgh {0:X} at {1}", bytes[i], i);
+                }
 
                 var offset = 1;
                 if (length > 31)
@@ -235,7 +239,7 @@ namespace MDPro3
 
             var dic = new Dictionary<int, string>();
             for (int i = 0; i < ids.Count && i < values.Count; i++)
-                if (maps.TryGetValue(ids[i], out var id))
+                if (idsMap.TryGetValue(ids[i], out var id))
                     dic.Add(id, values[i]);
 
             if (type == 0)
@@ -244,30 +248,31 @@ namespace MDPro3
                 descriptions = dic;
         }
 
-        string GetName(int code, string mName)
+        private string GetName(int code, string mName)
         {
             names.TryGetValue(code, out var returnValue);
             if (string.IsNullOrEmpty(returnValue))
             {
                 if(string.IsNullOrEmpty(mName))
-                    returnValue = nullString;
+                    returnValue = STRING_NULL;
                 else 
                     returnValue = mName;
             }
             return Cid2Ydk.ReplaceWithCardName(returnValue);
         }
-        string GetDescription(int code)
+
+        private string GetDescription(int code)
         {
             descriptions.TryGetValue(code, out var returnValue);
             if (string.IsNullOrEmpty(returnValue))
-                return nullString;
+                return STRING_NULL;
             return Cid2Ydk.ReplaceWithCardName(returnValue);
         }
 
         public string WallpaperCodeToPath(string code)
         {
             string returnValue = "Wallpaper/Front0001";
-            if(code == randomCode.ToString())
+            if(code == CODE_RANDOM.ToString())
                 return GetRandomItem(ItemType.Wallpaper).path;
 
             foreach (var item in wallpapers)
@@ -330,11 +335,11 @@ namespace MDPro3
                 return mapCode;
         }
 
-        string lastMat0;
-        string lastMat1;
+        private string lastMat0;
+        private string lastMat1;
         public string GetPathByCode(string code, ItemType type, int player = 0)
         {
-            if(code == randomCode.ToString())
+            if(code == CODE_RANDOM.ToString())
             {
                 var item = GetRandomItem(type);
                 if (type == ItemType.Mat)
@@ -353,7 +358,7 @@ namespace MDPro3
                 else
                     lastMat1 = code;
             }
-            if (code == sameCode.ToString())
+            if (code == CODE_SAME.ToString())
                 code = GetSameCode(type, player == 0 ? lastMat0 : lastMat1);
 
             if (type == ItemType.Unknown)
@@ -389,14 +394,14 @@ namespace MDPro3
 
         public static string CodeToIconPath(string id)
         {
-            if (id == randomCode.ToString())
-                return randomIconPath;
-            if(id == sameCode.ToString())
-                return sameIconPath;
-            if (id == noneCode.ToString())
-                return noneIconPath;
-            if (id == diyCode.ToString())
-                return diyIconPath;
+            if (id == CODE_RANDOM.ToString())
+                return PATH_ICON_RANDOM;
+            if(id == CODE_SAME.ToString())
+                return PATH_ICON_SAME;
+            if (id == CODE_NONE.ToString())
+                return PATH_ICON_NONE;
+            if (id == CODE_DIY.ToString())
+                return PATH_ICON_DIY;
 
             var currentContent = id.Substring(0, 3);
             string pathPrefix = string.Empty;
@@ -451,7 +456,6 @@ namespace MDPro3
                 return pathPrefix + id + pathSuffix;
         }
 
-
         public IEnumerator<Sprite> LoadItemIconAsync(string id, ItemType type)
         {
             lock (cachedIcons)
@@ -491,14 +495,14 @@ namespace MDPro3
         public static string lastRandomFrameID;
         public IEnumerator<Sprite> LoadConcreteItemIconAsync(string id, ItemType type, int player = 0)
         {
-            if(id == randomCode.ToString())
+            if(id == CODE_RANDOM.ToString())
             {
                 id = GetRandomItem(type).id.ToString();
                 if(type == ItemType.Frame)
                     lastRandomFrameID = id;
             }
 
-            if(id == diyCode.ToString())
+            if(id == CODE_DIY.ToString())
             {
                 var path = Program.diyPath;
                 switch (player)
@@ -599,6 +603,7 @@ namespace MDPro3
             else
                 return false;
         }
+
         public bool ListHaveDIY(List<Item> target)
         {
             if (target == faces)

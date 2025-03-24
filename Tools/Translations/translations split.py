@@ -2,7 +2,7 @@ import csv
 import os
 
 input_file = 'translations.csv'
-languages = ['zh-CN', 'en-US', 'es-ES', 'ja-JP', 'ko-KR', 'zh-TW']
+languages = ['zh-CN', 'en-US', 'es-ES', 'ja-JP', 'ko-KR', 'zh-TW', 'pt-PT']
 base_output_dir = '../../Data/locales'
 
 # 确保目标目录存在

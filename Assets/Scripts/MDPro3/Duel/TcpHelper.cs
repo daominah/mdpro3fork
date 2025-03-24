@@ -247,9 +247,9 @@ namespace MDPro3
                                     break;
                             }
                         }
-                        catch /*(Exception e)*/
+                        catch(Exception e)
                         {
-                            // Program.DEBUGLOG(e);
+                            Debug.LogError(e);
                         }
 
                     datas.Clear();

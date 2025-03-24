@@ -13,6 +13,7 @@ using TMPro;
 using UnityEngine.EventSystems;
 using static MDPro3.UI.ChatPanel;
 using MDPro3.UI.ServantUI;
+using static MDPro3.Duel.YGOSharp.PacksManager;
 
 namespace MDPro3.Servant
 {
@@ -220,9 +221,11 @@ namespace MDPro3.Servant
         public void StocMessage_GameMsg(BinaryReader r)
         {
             ShowOcgCore();
-            var p = new Package();
-            p.Function = r.ReadByte();
-            p.Data = new BinaryMaster(r.ReadToEnd());
+            var p = new Package
+            {
+                Function = r.ReadByte(),
+                Data = new BinaryMaster(r.ReadToEnd())
+            };
             Program.instance.ocgcore.AddPackage(p);
         }
 
@@ -239,33 +242,33 @@ namespace MDPro3.Servant
                     switch (code)
                     {
                         case 0:
-                            MessageManager.Cast(StringHelper.GetUnsafe(1403));
+                            MessageManager.Cast(StringHelper.GetUnsafe(1403)); // 无法加入主机。
                             break;
                         case 1:
-                            MessageManager.Cast(StringHelper.GetUnsafe(1404));
+                            MessageManager.Cast(StringHelper.GetUnsafe(1404)); // 密码错误。
                             break;
                         case 2:
-                            MessageManager.Cast(StringHelper.GetUnsafe(1405));
+                            MessageManager.Cast(StringHelper.GetUnsafe(1405)); // 主机拒绝了连接。
                             break;
                     }
                     break;
-                case 2:
+                case 2: // DECKERROR_LFLIST
                     var flag = code >> 28;
                     code &= 0xFFFFFFF;
                     var cardName = CardsManager.Get(code).Name;
-                    List<string> tasks = new() { StringHelper.GetUnsafe(1406) };
+                    List<string> tasks = new() { StringHelper.GetUnsafe(1406) }; //无效卡组。
                     string task;
                     switch (flag)
                     {
                         case 1:
-                            task = StringHelper.GetUnsafe(1407);//「%ls」的数量不符合当前禁限卡表设定。
+                            task = StringHelper.GetUnsafe(1407); //「%ls」的数量不符合当前禁限卡表设定。
                             var replace = new Regex("%ls");
                             task = replace.Replace(task, cardName);
                             break;
-                        case 2:
-                        case 3:
-                        case 4:
-                        case 5:
+                        case 2: // 「%ls」为OCG独有卡，不允许在当前设定下使用。
+                        case 3: // 「%ls」为TCG独有卡，不允许在当前设定下使用。
+                        case 4: // 卡组中「%ls(%d)」无法被主机识别。
+                        case 5: // 卡组中「%ls」的总数量超过3张。
                             task = StringHelper.GetUnsafe(1411 + flag);
                             replace = new Regex("%ls");
                             task = replace.Replace(task, cardName);
@@ -275,32 +278,39 @@ namespace MDPro3.Servant
                                 task = replace.Replace(task, code.ToString());
                             }
                             break;
-                        case 6:
-                        case 7:
-                        case 8:
-                        case 9:
+                        case 6: // 主卡组数量应为40-60张，当前卡组数量为%d张。
+                        case 7: // 额外卡组数量应不超过15张，当前卡组数量为%d张。
+                        case 8: // 副卡组数量应不超过15张，当前卡组数量为%d张。
+                        case 9: // 有额外卡组卡片存在于主卡组，可能是额外卡组数量超过15张。
                             task = StringHelper.GetUnsafe(1411 + flag);
                             replace = new Regex("%d");
-                            var target = "";
-                            if (flag == 6)
-                                target = deck.Main.Count.ToString();
-                            else if (flag == 7)
-                                target = deck.Extra.Count.ToString();
-                            else if (flag == 8)
-                                target = deck.Side.Count.ToString();
-                            task = replace.Replace(task, target);
+                            deck = new Deck(Program.deckPath + Config.GetConfigDeckName() + Program.ydkExpansion);
+                            if(deck != null)
+                            {
+                                string target;
+                                if (flag == 6)
+                                    target = deck.Main.Count.ToString();
+                                else if (flag == 7)
+                                    target = deck.Extra.Count.ToString();
+                                else if (flag == 8)
+                                    target = deck.Side.Count.ToString();
+                                else
+                                    break;
+                                task = replace.Replace(task, target);
+                            }
                             break;
                         default:
-                            task = StringHelper.GetUnsafe(1406);// 无效卡组。
+                            task = StringHelper.GetUnsafe(1406); // 无效卡组。
                             break;
                     }
                     tasks.Add(task);
+                    Debug.Log("add");
                     UIManager.ShowPopupConfirm(tasks);
                     break;
                 case 3:
                     tasks = new List<string>()
                     {
-                        StringHelper.GetUnsafe(1408),
+                        StringHelper.GetUnsafe(1408), // 更换副卡组失败。
                         StringHelper.GetUnsafe(1410),
                     };
                     UIManager.ShowPopupConfirm(tasks);

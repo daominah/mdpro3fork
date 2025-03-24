@@ -28,39 +28,22 @@ namespace YgomSystem.UI
 		{
 			switch (ease)
 			{
-				case Easing.Linear:
-					return DG.Tweening.Ease.Linear;
-				case Easing.CubicIn:
-                    return DG.Tweening.Ease.Linear;
-                case Easing.CubicOut:
-                    return DG.Tweening.Ease.Linear;
-                case Easing.CubicInOut:
-                    return DG.Tweening.Ease.Linear;
-                case Easing.BackIn:
-                    return DG.Tweening.Ease.Linear;
-                case Easing.BackOut:
-                    return DG.Tweening.Ease.Linear;
-                case Easing.BackInOut:
-                    return DG.Tweening.Ease.Linear;
-                case Easing.BounceIn:
-                    return DG.Tweening.Ease.Linear;
-                case Easing.BounceOut:
-                    return DG.Tweening.Ease.Linear;
-                case Easing.BounceInOut:
-                    return DG.Tweening.Ease.Linear;
-                case Easing.Customize:
-                    return DG.Tweening.Ease.Linear;
-                case Easing.QuartIn:
-                    return DG.Tweening.Ease.Linear;
-                case Easing.QuartOut:
-                    return DG.Tweening.Ease.Linear;
-                case Easing.QuartInOut:
-                    return DG.Tweening.Ease.Linear;
-				default:
-                    return DG.Tweening.Ease.Linear;
+                case Easing.Linear: return DG.Tweening.Ease.Linear;
+                case Easing.CubicIn: return DG.Tweening.Ease.InCubic;
+                case Easing.CubicOut: return DG.Tweening.Ease.OutCubic;
+                case Easing.CubicInOut: return DG.Tweening.Ease.InOutCubic;
+                case Easing.BackIn: return DG.Tweening.Ease.InBack;
+                case Easing.BackOut: return DG.Tweening.Ease.OutBack;
+                case Easing.BackInOut: return DG.Tweening.Ease.InOutBack;
+                case Easing.BounceIn: return DG.Tweening.Ease.InBounce;
+                case Easing.BounceOut: return DG.Tweening.Ease.OutBounce;
+                case Easing.BounceInOut: return DG.Tweening.Ease.InOutBounce;
+                case Easing.QuartIn: return DG.Tweening.Ease.InQuart;
+                case Easing.QuartOut: return DG.Tweening.Ease.OutQuart;
+                case Easing.QuartInOut: return DG.Tweening.Ease.InOutQuart;
+                default: return DG.Tweening.Ease.Linear;
             }
         }
-
 
         public enum Style
 		{
@@ -118,23 +101,50 @@ namespace YgomSystem.UI
 
 		private static float BounceOut(float k)
 		{
-			return 0f;
-		}
+            if (k < (1 / 2.75f))
+                return 7.5625f * k * k;
+            else if (k < (2 / 2.75f))
+                return 7.5625f * (k -= (1.5f / 2.75f)) * k + 0.75f;
+            else if (k < (2.5 / 2.75))
+                return 7.5625f * (k -= (2.25f / 2.75f)) * k + 0.9375f;
+            else
+                return 7.5625f * (k -= (2.625f / 2.75f)) * k + 0.984375f;
+        }
 
 		private static float BounceIn(float k)
 		{
-			return 0f;
-		}
+            return 1 - BounceOut(1 - k);
+        }
 
 		public static float EasingValue(float k, Easing e)
 		{
-			return 0f;
-		}
+            switch (e)
+            {
+                case Easing.Linear: return k;
+                case Easing.CubicIn: return k * k * k;
+                case Easing.CubicOut: return 1 - Mathf.Pow(1 - k, 3);
+                case Easing.CubicInOut: return k < 0.5 ? 4 * k * k * k : 1 - Mathf.Pow(-2 * k + 2, 3) / 2;
+                case Easing.BackIn: return k * k * ((1.70158f + 1) * k - 1.70158f);
+                case Easing.BackOut: return 1 + (--k) * k * ((1.70158f + 1) * k + 1.70158f);
+                case Easing.BackInOut:
+                    float s = 1.70158f * 1.525f;
+                    return (k *= 2) < 1 ?
+                        0.5f * (k * k * ((s + 1) * k - s)) :
+                        0.5f * ((k -= 2) * k * ((s + 1) * k + s) + 2);
+                case Easing.BounceIn: return BounceIn(k);
+                case Easing.BounceOut: return BounceOut(k);
+                case Easing.BounceInOut: return k < 0.5f ? BounceIn(k * 2) * 0.5f : BounceOut(k * 2 - 1) * 0.5f + 0.5f;
+                case Easing.QuartIn: return k * k * k * k;
+                case Easing.QuartOut: return 1 - Mathf.Pow(1 - k, 4);
+                case Easing.QuartInOut: return k < 0.5 ? 8 * k * k * k * k : 1 - Mathf.Pow(-2 * k + 2, 4) / 2;
+                default: return k;
+            }
+        }
 
 		private float GetEasing(float k)
 		{
-			return 0f;
-		}
+            return easing == Easing.Customize ? curve.Evaluate(k) : EasingValue(k, easing);
+        }
 
 		protected virtual void CaptureAwake()
 		{
@@ -156,7 +166,37 @@ namespace YgomSystem.UI
 
 		private void ExecPlay(float time, bool forceUpdate = false)
 		{
-		}
+            crntTime = Mathf.Clamp(time, 0, duration);
+            float t = duration > 0 ? crntTime / duration : 1f;
+
+            // 处理循环类型
+            switch (style)
+            {
+                case Style.Loop:
+                    t %= 1f;
+                    break;
+                case Style.PingPong:
+                    t = Mathf.PingPong(t, 1f);
+                    break;
+                    // 其他样式处理...
+            }
+
+            OnSetValue(GetEasing(t));
+
+            if (crntTime >= duration)
+            {
+                if (style == Style.Once)
+                {
+                    isExecFinished = true;
+                    onFinished?.Invoke();
+                    if (callOnFinishedDestroy) DestroySelf();
+                }
+                else if (style == Style.Loop)
+                {
+                    ResetWithTimeDelta();
+                }
+            }
+        }
 
 		private void OnDestroy()
 		{
@@ -168,11 +208,28 @@ namespace YgomSystem.UI
 
 		private void Update()
 		{
-		}
+            //if (!isExecFinished && setupWaitCount <= 0)
+            //{
+            //    float delta = ignoreTimeScale ? Time.unscaledDeltaTime : Time.deltaTime;
+            //    timeDelta += delta;
+            //    ExecPlay(timeDelta);
+            //}
+
+            //if (setupWaitCount > 0)
+            //{
+            //    setupWaitCount -= ignoreTimeScale ? Time.unscaledDeltaTime : Time.deltaTime;
+            //}
+        }
 
 		public void Play()
 		{
-		}
+            if (setupWait > 0)
+            {
+                setupWaitCount = setupWait;
+            }
+            isExecFinished = false;
+            enabled = true;
+        }
 
 		public void Pause()
 		{
@@ -192,7 +249,9 @@ namespace YgomSystem.UI
 
 		public void ResetWithTimeDelta()
 		{
-		}
+            crntTime = 0;
+            timeDelta = 0;
+        }
 
 		public void GotoAndPlay(float time)
 		{
@@ -279,8 +338,16 @@ namespace YgomSystem.UI
 
 		public static List<Tween> GetTweenTarget(GameObject target, string _label = "", bool includeChildren = false)
 		{
-			return null;
-		}
+            List<Tween> result = new List<Tween>();
+            Tween[] tweens = includeChildren ? target.GetComponentsInChildren<Tween>() : target.GetComponents<Tween>();
+
+            foreach (Tween t in tweens)
+            {
+                if (string.IsNullOrEmpty(_label) || t.label == _label)
+                    result.Add(t);
+            }
+            return result;
+        }
 
 		public static List<Tween> GetTweenAll(string label)
 		{

@@ -48,7 +48,7 @@ namespace MDPro3.Servant
             {
                 case Condition.EditDeck:
                     returnServant = Program.instance.deckSelector;
-                    DeckName = Config.Get("DeckInUse", "@ui");
+                    DeckName = Config.GetConfigDeckName();
                     Deck = new Deck(Program.deckPath + DeckName + Program.ydkExpansion);
                     DeckIsFromLocal = true;
                     historyCards = new();
@@ -68,7 +68,7 @@ namespace MDPro3.Servant
                     historyCards = new();
                     break;
                 case Condition.ChangeSide:
-                    DeckName = Config.Get("DeckInUse", "@ui");
+                    DeckName = Config.GetConfigDeckName();
                     Deck = TcpHelper.deck;
                     DeckIsFromLocal = false;
                     historyCards = Program.instance.ocgcore.sideReference.Main;

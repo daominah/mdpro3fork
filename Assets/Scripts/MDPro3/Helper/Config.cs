@@ -94,6 +94,7 @@ namespace MDPro3
 
             return return_value.Replace("@ui", "");
         }
+
         public static void Set(string original, string setted)
         {
             var found = false;
@@ -112,6 +113,7 @@ namespace MDPro3
                 translations.Add(s);
             }
         }
+
         public static float GetFloat(string v, float defau)
         {
             var getted = 0;
@@ -123,10 +125,12 @@ namespace MDPro3
 
             return getted / 1000f;
         }
+
         public static void SetFloat(string v, float f)
         {
             Set(v, ((int)(f * 1000f)).ToString());
         }
+
         public static bool GetBool(string original, bool value)
         {
             try
@@ -137,10 +141,12 @@ namespace MDPro3
 
             return value;
         }
+
         public static void SetBool(string original, bool value)
         {
             Set(original, value ? stringYes : stringNo);
         }
+
         public static void Save()
         {
             var all = "";
@@ -172,6 +178,16 @@ namespace MDPro3
 #endif
             var scale = float.Parse(Get("UIScale", defau.ToString())) / 1000;
             return scale > maxUIScale ? maxUIScale : scale;
+        }
+
+        public static string GetConfigDeckName()
+        {
+            return Get("DeckInUse", "@ui");
+        }
+
+        public static void SetConfigDeck(string deckName)
+        {
+            Set("DeckInUse", deckName);
         }
     }
 }

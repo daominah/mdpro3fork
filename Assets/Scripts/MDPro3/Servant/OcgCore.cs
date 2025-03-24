@@ -575,7 +575,7 @@ namespace MDPro3.Servant
             mate0Random = false;
             mate1Random = false;
             deck = null;
-            var deckName = Config.Get("DeckInUse", "");
+            var deckName = Config.GetConfigDeckName();
 
             if (condition == Condition.Duel && inAi == false && File.Exists(Program.deckPath + deckName + Program.ydkExpansion))
                 deck = new Deck(Program.deckPath + deckName + Program.ydkExpansion);
@@ -779,7 +779,7 @@ namespace MDPro3.Servant
 
             #region Õ¾Ì¨
             var standConfig = Config.Get(condition.ToString() + "Stand0", Program.items.stands[0].id.ToString());
-            if (standConfig != Items.noneCode.ToString() || deck != null)
+            if (standConfig != Items.CODE_NONE.ToString() || deck != null)
             {
                 path = Program.items.GetPathByCode(standConfig, Items.ItemType.Stand);
                 if (deck != null && !Config.GetBool("OverrideDeckAppearance", false))
@@ -797,7 +797,7 @@ namespace MDPro3.Servant
             }
 
             standConfig = Config.Get(condition.ToString() + "Stand1", Program.items.stands[0].id.ToString());
-            if (standConfig != Items.noneCode.ToString())
+            if (standConfig != Items.CODE_NONE.ToString())
             {
                 enumerator = ABLoader.LoadFromFileAsync("MasterDuel/" +
                 Program.items.GetPathByCode(standConfig, Items.ItemType.Stand, 1) + "_far");
@@ -815,7 +815,7 @@ namespace MDPro3.Servant
 
             #region ³èÎï
             var mateConfig = Config.Get(condition.ToString() + "Mate0", Program.items.mates[0].id.ToString());
-            if (mateConfig != Items.noneCode.ToString() || deck != null)
+            if (mateConfig != Items.CODE_NONE.ToString() || deck != null)
             {
                 int mateCode = int.Parse(mateConfig);
                 if (deck != null && !Config.GetBool("OverrideDeckAppearance", false))
@@ -828,7 +828,7 @@ namespace MDPro3.Servant
             }
 
             mateConfig = Config.Get(condition.ToString() + "Mate1", Program.items.mates[0].id.ToString());
-            if (mateConfig != Items.noneCode.ToString())
+            if (mateConfig != Items.CODE_NONE.ToString())
             {
                 var mateLoader = ABLoader.LoadMateAsync(int.Parse(Config.Get(condition.ToString() + "Mate1", Program.items.mates[0].id.ToString())));
                 while (mateLoader.MoveNext())
