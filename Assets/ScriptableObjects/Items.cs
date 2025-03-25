@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -113,6 +114,8 @@ namespace MDPro3
         public const string PATH_ICON_DIY = "Menu-DIY";
 
         public static bool initialized = false;
+
+        private const string ADDRESS_DEFAULT_DECK_CASE = "DeckCase0001_L";
 
         public void Initialize()
         {
@@ -403,7 +406,7 @@ namespace MDPro3
             if (id == CODE_DIY.ToString())
                 return PATH_ICON_DIY;
 
-            var currentContent = id.Substring(0, 3);
+            var currentContent = id[..3];
             string pathPrefix = string.Empty;
             string pathSuffix = string.Empty;
             switch (currentContent)
@@ -612,5 +615,31 @@ namespace MDPro3
                 return false;
         }
 
+        public async Task<Sprite> LoadDeckCaseIconAsync(int code, string suffix)
+        {
+            try
+            {
+                var load = LoadAddressables($"DeckCase{code.ToString()[3..]}{suffix}");
+                while (load.MoveNext())
+                    await TaskUtility.WaitOneFrame();
+                return load.Current;
+            }
+            catch
+            {
+                Debug.LogError("Addressables Not Found: " + $"DeckCase{code.ToString()[3..]}{suffix}");
+                var load = LoadAddressables(ADDRESS_DEFAULT_DECK_CASE);
+                while (load.MoveNext())
+                    await TaskUtility.WaitOneFrame();
+                return load.Current;
+            }
+        }
+
+        private IEnumerator<Sprite> LoadAddressables(string address)
+        {
+            var load = Addressables.LoadAssetAsync<Sprite>(address);
+            while (!load.IsDone)
+                yield return null;
+            yield return load.Result;
+        }
     }
 }

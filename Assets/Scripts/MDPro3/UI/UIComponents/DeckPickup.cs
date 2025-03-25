@@ -66,32 +66,11 @@ namespace MDPro3.UI
 
         private async Task LoadDeckCaseAsync(int deckCase)
         {
-            //var load = Program.items.LoadItemIconAsync(deckCase.ToString(), Items.ItemType.Case);
-            //while (load.MoveNext())
-            //    await TaskUtility.WaitOneFrame();
-            //DeckCase.sprite = load.Current;
-
-            try
-            {
-                await LoadDeckCaseIcon("DeckCase" + deckCase.ToString()[3..] + "_Open_L");
-            }
-            catch
-            {
-                await LoadDefaultDeckCaseIcon();
-            }
-        }
-
-        private async Task LoadDefaultDeckCaseIcon()
-        {
-            await LoadDeckCaseIcon("DeckCase0001_Open_L");
-        }
-
-        private async Task LoadDeckCaseIcon(string address)
-        {
-            var load = Addressables.LoadAssetAsync<Sprite>(address);
-            while (!load.IsDone)
+            var load = Program.items.LoadDeckCaseIconAsync(deckCase, "_Open_L");
+            while (!load.IsCompleted)
                 await TaskUtility.WaitOneFrame();
             DeckCase.sprite = load.Result;
         }
+
     }
 }

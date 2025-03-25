@@ -249,7 +249,7 @@ namespace MDPro3
                         }
                         catch(Exception e)
                         {
-                            Debug.LogError(e);
+                            //Debug.LogError(e);
                         }
 
                     datas.Clear();

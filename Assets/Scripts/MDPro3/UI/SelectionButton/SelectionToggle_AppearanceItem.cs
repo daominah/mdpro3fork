@@ -13,6 +13,23 @@ namespace MDPro3.UI
 {
     public class SelectionToggle_AppearanceItem : SelectionToggle
     {
+        #region 
+
+        private const string LABEL_RIMG_PROTECTOR = "Protector";
+        private RawImage m_Protector;
+        private RawImage Protector =>
+            m_Protector = m_Protector != null ? m_Protector
+            : Manager.GetElement<RawImage>(LABEL_RIMG_PROTECTOR);
+
+        private const string LABEL_IMG_ICON = "Icon";
+        private Image m_Icon;
+        private Image Icon =>
+            m_Icon = m_Icon != null ? m_Icon
+            : Manager.GetElement<Image>(LABEL_IMG_ICON);
+
+        #endregion
+
+
         public int itemID;
         public string itemName;
         public string description;
@@ -41,59 +58,56 @@ namespace MDPro3.UI
             for (int i = 0; i < index; i++)
                 yield return null;
 
-            var protector = Manager.GetElement<RawImage>("Protector");
-            var icon = Manager.GetElement<Image>("Icon");
-
             if (path.StartsWith("Protector"))
             {
                 var ie = ABLoader.LoadProtectorMaterial(itemID.ToString());
                 StartCoroutine(ie);
                 while (ie.MoveNext())
                     yield return null;
-                protector.material = ie.Current;
-                protector.material.renderQueue = 3000;
-                protector.color = Color.white;
-                icon.gameObject.SetActive(false);
+                Protector.material = ie.Current;
+                Protector.material.renderQueue = 3000;
+                Protector.color = Color.white;
+                Icon.gameObject.SetActive(false);
             }
             else if (path.Length > 0)
             {
                 var load = Program.items.LoadItemIconAsync(itemID.ToString(), Items.ItemType.Unknown);
                 while (load.MoveNext())
                     yield return null;
-                icon.sprite = load.Current;
-                icon.color = Color.white;
+                Icon.sprite = load.Current;
+                Icon.color = Color.white;
                 if (path.StartsWith("ProfileFrame"))
                 {
-                    icon.rectTransform.localScale = Vector3.one * 0.8f;
+                    Icon.rectTransform.localScale = Vector3.one * 0.8f;
                     var ie = ABLoader.LoadFrameMaterial(itemID.ToString());
                     StartCoroutine(ie);
                     while (ie.MoveNext())
                         yield return null;
                     Material mat = ie.Current;
-                    icon.material = mat;
-                    icon.material.SetTexture("_ProfileFrameTex", icon.sprite.texture);
-                    icon.sprite = TextureManager.container.black;
-                    icon.color = Color.white;
+                    Icon.material = mat;
+                    Icon.material.SetTexture("_ProfileFrameTex", Icon.sprite.texture);
+                    Icon.sprite = TextureManager.container.black;
+                    Icon.color = Color.white;
                 }
                 else if (path.StartsWith("DeckCase"))
                 {
-                    icon.rectTransform.localScale = Vector3.one * 0.8f;
-                    //icon.transform.localPosition = new Vector3(0f, 15f, 0f);
+                    Icon.rectTransform.localScale = Vector3.one * 0.8f;
+                    //Icon.transform.localPosition = new Vector3(0f, 15f, 0f);
                 }
-                protector.gameObject.SetActive(false);
+                Protector.gameObject.SetActive(false);
             }
             else //CrossDuel Mate
             {
                 var task = CardImageLoader.LoadArtAsync(itemID, true);
                 while (!task.IsCompleted)
                     yield return null;
-                icon.color = Color.white;
-                icon.sprite = TextureManager.Texture2Sprite(task.Result);
-                protector.gameObject.SetActive(false);
+                Icon.color = Color.white;
+                Icon.sprite = TextureManager.Texture2Sprite(task.Result);
+                Protector.gameObject.SetActive(false);
             }
 
             if (path.StartsWith("ProfileIcon"))
-                icon.material = Appearance.matForFace;
+                Icon.material = Appearance.matForFace;
 
             loaded = true;
             refreshCoroutine = null;

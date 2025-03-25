@@ -158,9 +158,6 @@ namespace MDPro3.Servant
                 Program.instance.ShiftToServant(Program.instance.online);
         }
 
-
-
-
         public override void PerFrameFunction()
         {
             if (!showing)
@@ -487,6 +484,7 @@ namespace MDPro3.Servant
                 Program.instance.camera_.cameraMain.transform.DORotate(new Vector3(37, -26, 0), 0.3f).SetEase(Ease.InOutSine);
             }
         }
+
         public void CameraZoomToMate1()
         {
             if (Program.root == Program.rootAndroid)
@@ -1044,6 +1042,7 @@ namespace MDPro3.Servant
             UIManager.UIBlackOut(TransitionTime);
             yield return new WaitForSeconds(TransitionTime);
 
+            backgroundFieldInitialize = false;
             BackgroundFieldInitialize();
             messagePass = true;
 
@@ -1056,15 +1055,19 @@ namespace MDPro3.Servant
 
         }
 
+        private bool backgroundFieldInitialize = false;
         private void BackgroundFieldInitialize()
         {
             if (field0 == null || field1 == null)
                 return;
 
-            field0.SetActive(false);
-            field1.SetActive(false);
-            field0.SetActive(true);
-            field1.SetActive(true);
+            if (backgroundFieldInitialize)
+            {
+                field0.SetActive(false);
+                field1.SetActive(false);
+                field0.SetActive(true);
+                field1.SetActive(true);
+            }
 
             field0Manager.PlayAnimatorTrigger(TriggerLabelDefine.StartToPhase1);
             grave0Manager.PlayAnimatorTrigger(TriggerLabelDefine.StartToPhase1);
@@ -1096,13 +1099,13 @@ namespace MDPro3.Servant
             {
                 mate1Random = true;
             });
+
+            backgroundFieldInitialize = true;
         }
 
         #endregion
 
         #region Button Function
-
-
 
         public void OnAnnounceCard(string input)
         {
@@ -1130,6 +1133,7 @@ namespace MDPro3.Servant
                 (InterString.Get("请选择需要宣言的卡片。"), cards, 1, 1, true, false); 
             };
         }
+
         public void ClearAnnounceCards()
         {
             List<GameCard> needClean = new List<GameCard>();
@@ -1142,8 +1146,6 @@ namespace MDPro3.Servant
                 card.Dispose();
             }
         }
-
-
 
         public void CloseConnection()
         {

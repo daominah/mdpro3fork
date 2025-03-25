@@ -338,7 +338,6 @@ namespace MDPro3.UI.ServantUI
         }
 
 
-
         public static string currentContent = "PlayerName";
         private static List<Items.Item> targetItems;
         private static List<GameObject> currentList;

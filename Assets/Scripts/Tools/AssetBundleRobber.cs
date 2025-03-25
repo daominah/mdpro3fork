@@ -56,13 +56,13 @@ public class AssetBundleRobber : MonoBehaviour
 
         Application.targetFrameRate = 0;
 
-        masterDuelAssetBundlePath = masterDuelWindowsAssetBundlePath;
-        workingPlace = windowsWorkingPlace;
-        //masterDuelAssetBundlePath = masterDuelAndroidAssetBundlePath;
-        //workingPlace = androindWorkingPlace;
+        //masterDuelAssetBundlePath = masterDuelWindowsAssetBundlePath;
+        //workingPlace = windowsWorkingPlace;
+        masterDuelAssetBundlePath = masterDuelAndroidAssetBundlePath;
+        workingPlace = androindWorkingPlace;
 
-        fullCopy = true;
-        //fullCopy = false;
+        //fullCopy = true;
+        fullCopy = false;
 
         Initialize();
 
