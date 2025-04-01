@@ -106,7 +106,6 @@ namespace MDPro3.Servant
             base.Initialize();
         }
 
-
         public override void PerFrameFunction()
         {
             if (!NeedResponseInput())

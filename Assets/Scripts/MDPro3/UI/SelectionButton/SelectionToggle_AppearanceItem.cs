@@ -13,7 +13,12 @@ namespace MDPro3.UI
 {
     public class SelectionToggle_AppearanceItem : SelectionToggle
     {
-        #region 
+        #region Elements
+
+        private CanvasGroup m_CG;
+        private CanvasGroup CG =>
+            m_CG = m_CG != null ? m_CG
+            : GetComponent<CanvasGroup>();
 
         private const string LABEL_RIMG_PROTECTOR = "Protector";
         private RawImage m_Protector;
@@ -21,14 +26,13 @@ namespace MDPro3.UI
             m_Protector = m_Protector != null ? m_Protector
             : Manager.GetElement<RawImage>(LABEL_RIMG_PROTECTOR);
 
-        private const string LABEL_IMG_ICON = "Icon";
-        private Image m_Icon;
-        private Image Icon =>
-            m_Icon = m_Icon != null ? m_Icon
-            : Manager.GetElement<Image>(LABEL_IMG_ICON);
+        private GridLayoutGroup m_Grid;
+        private GridLayoutGroup Grid =>
+            m_Grid = m_Grid != null ? m_Grid
+            : Program.instance.appearance.GetUI<AppearanceUI>().ScrollRect
+            .content.GetComponent<GridLayoutGroup>();
 
         #endregion
-
 
         public int itemID;
         public string itemName;
@@ -389,12 +393,6 @@ namespace MDPro3.UI
             return Program.instance.appearance.GetUI<AppearanceUI>().GetCurrentGenreCount();
         }
 
-        private GridLayoutGroup m_Grid;
-        private GridLayoutGroup Grid =>
-            m_Grid = m_Grid != null ? m_Grid
-            : Program.instance.appearance.GetUI<AppearanceUI>().ScrollRect
-            .content.GetComponent<GridLayoutGroup>();
-
         protected override int GetColumnsCount()
         {
             return Grid.Size().x;
@@ -409,11 +407,11 @@ namespace MDPro3.UI
             GetComponent<LayoutElement>().ignoreLayout = true;
             GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
         }
+
         private IEnumerator HideAsync()
         {
-            var cg = GetComponent<CanvasGroup>();
-            cg.alpha = 0f;
-            cg.blocksRaycasts = false;
+            CG.alpha = 0f;
+            CG.blocksRaycasts = false;
             while (!loaded)
                 yield return null;
             hideCoroutine = null;
@@ -428,9 +426,8 @@ namespace MDPro3.UI
                 hideCoroutine = null;
             }
             gameObject.SetActive(true);
-            var cg = GetComponent<CanvasGroup>();
-            cg.alpha = 1f;
-            cg.blocksRaycasts = true;
+            CG.alpha = 1f;
+            CG.blocksRaycasts = true;
 
             GetComponent<LayoutElement>().ignoreLayout = false;
             transform.SetSiblingIndex(index);

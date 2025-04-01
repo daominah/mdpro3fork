@@ -15,6 +15,8 @@ namespace MDPro3.UI
 
         public Card card;
 
+        public int protectorCode = 1070001;
+
         protected bool m_Refreshed;
         public bool Refreshed => m_Refreshed;
 
@@ -60,7 +62,10 @@ namespace MDPro3.UI
 
         public void SetCard(int code)
         {
-            SetCard(CardsManager.Get(code));
+            if (code <= 0)
+                SetProtector(protectorCode);
+            else
+                SetCard(CardsManager.Get(code));
         }
 
         public void SetCard(Card data)

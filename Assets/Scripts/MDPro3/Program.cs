@@ -48,6 +48,7 @@ namespace MDPro3
         public RoomServant room;
         public DeckEditor deckEditor;
         public OnlineDeckViewer onlineDeckViewer;
+        public DeckBrowser deckBrowser;
 
         [Header("SidePanels")]
 
@@ -253,6 +254,7 @@ namespace MDPro3
             servants.Add(room);
             servants.Add(deckEditor);
             servants.Add(onlineDeckViewer);
+            servants.Add(deckBrowser);
             foreach (Servant.Servant servant in servants)
                 servant.Initialize();
         }

@@ -75,7 +75,7 @@ namespace MDPro3.UI
 
         private const string LABEL_IMG_ICON = "Icon";
         private Image m_Icon;
-        private Image Icon =>
+        protected Image Icon =>
             m_Icon = m_Icon != null ? m_Icon
             : Manager.GetElement<Image>(LABEL_IMG_ICON);
 
@@ -106,7 +106,7 @@ namespace MDPro3.UI
 
         protected bool clickIsSubmit = true;
         protected bool selectedWhenHover;
-        protected bool pointerExitThenUnselect = true;
+        protected bool pointerExitThenDeselect = true;
 
         protected bool nonPersistentNavigationEventAdded;
 
@@ -229,7 +229,7 @@ namespace MDPro3.UI
             AudioManager.PlaySE(SoundLabelPointerEnter);
             SetColor(selected ? SelectMode.Selected : SelectMode.Unselected, StatusMode.Enter, Selectable.interactable);
             if (selectedWhenHover && !UserInput.InputFieldActivating())
-                EventSystem.current.SetSelectedGameObject(gameObject);
+                Selectable.Select();
         }
 
         /// <summary>
@@ -238,7 +238,7 @@ namespace MDPro3.UI
         /// </summary>
         protected virtual void OnExit()
         {
-            if (pointerExitThenUnselect)
+            if (pointerExitThenDeselect)
                 if (Cursor.lockState == CursorLockMode.None)
                     if(EventSystem.current.currentSelectedGameObject == gameObject)
                             EventSystem.current.SetSelectedGameObject(null);

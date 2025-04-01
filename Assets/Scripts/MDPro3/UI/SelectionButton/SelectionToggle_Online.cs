@@ -32,7 +32,7 @@ namespace MDPro3.UI
         {
             AudioManager.PlaySE(SoundLabelClick);
             var leftSelectable = Selectable.navigation.selectOnLeft;
-            if (toggled)
+            if (isOn)
             {
                 if (leftSelectable != null)
                     leftSelectable.GetComponent<SelectionToggle_Online>().SetToggleOn();
@@ -47,7 +47,7 @@ namespace MDPro3.UI
         {
             AudioManager.PlaySE(SoundLabelClick);
             var rightSelectable = Selectable.navigation.selectOnRight;
-            if (toggled)
+            if (isOn)
             {
                 if (rightSelectable != null)
                     rightSelectable.GetComponent<SelectionToggle_Online>().SetToggleOn();

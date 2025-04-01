@@ -76,7 +76,6 @@ namespace MDPro3.UI
         [SerializeField] protected SelectionSubmitEvent submitEvent;
 
         [HideInInspector] public bool isOn;
-        protected bool toggled;
         protected bool exclusiveToggle;
         protected bool exclusiveCallOffEvent = true;
         protected bool canToggleOffSelf = true;
@@ -100,7 +99,7 @@ namespace MDPro3.UI
                     Program.instance.currentServant.lastSelectable = Selectable;
             }
 
-            if (toggled)
+            if (isOn)
             {
                 if (canToggleOffSelf)
                 {
@@ -125,7 +124,7 @@ namespace MDPro3.UI
 
         protected override void OnSubmit()
         {
-            if (toggled)
+            if (isOn)
             {
                 if (canToggleOffSelf)
                 {
@@ -162,7 +161,7 @@ namespace MDPro3.UI
 
         protected virtual void ToggleOn()
         {
-            if (toggled)
+            if (isOn)
                 return;
 
             if(SelectCursorOffset != null)
@@ -290,7 +289,6 @@ namespace MDPro3.UI
         {
             ToggleOn();
 
-            toggled = true;
             isOn = true;
 
             if (exclusiveToggle)
@@ -310,7 +308,6 @@ namespace MDPro3.UI
 
         public virtual void SetToggleOff(bool callEvent = true)
         {
-            toggled = false;
             isOn = false;
             ToggleOff();
             if(callEvent)

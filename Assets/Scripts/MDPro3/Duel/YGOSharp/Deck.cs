@@ -4,6 +4,7 @@ using System.IO;
 using MDPro3.Duel.YGOSharp;
 using MDPro3.Net;
 using System.Text;
+using System.Linq;
 
 namespace MDPro3.Duel.YGOSharp
 {
@@ -29,7 +30,7 @@ namespace MDPro3.Duel.YGOSharp
             Main = new List<int>();
             Extra = new List<int>();
             Side = new List<int>();
-            Pickup = new List<int>();
+            Pickup = new List<int>() { 0, 0, 0 };
             Protector = 1070001;
             Case = 1080001;
             Field = 1090001;
@@ -39,9 +40,7 @@ namespace MDPro3.Duel.YGOSharp
         }
 
         public Deck(string path) : this(File.ReadAllText(path), string.Empty, string.Empty)
-        {
-
-        }
+        {}
 
         public Deck(string ydk, string deckID = "", string userID = "")
         {
@@ -146,6 +145,9 @@ namespace MDPro3.Duel.YGOSharp
                     }
                 }
             }
+
+            if(Pickup.Count < 3)
+                Pickup.AddRange(Enumerable.Repeat(0, 3 - Pickup.Count));
         }
 
         public Deck(List<int> main, List<int> extra, List<int> side)
@@ -153,7 +155,7 @@ namespace MDPro3.Duel.YGOSharp
             Main = main;
             Extra = extra;
             Side = side;
-            Pickup = new List<int>();
+            Pickup = new List<int>() { 0, 0, 0 };
             Protector = 1070001;
             Case = 1080001;
             Field = 1090001;
@@ -292,31 +294,28 @@ namespace MDPro3.Duel.YGOSharp
         {
             var value = deckHint + "\r\n#main";
             for (var i = 0; i < Main.Count; i++)
-                value += "\r\n" + Main[i];
+                value += $"\r\n{Main[i]}";
             value += "\r\n#extra";
             for (var i = 0; i < Extra.Count; i++)
-                value += "\r\n" + Extra[i];
+                value += $"\r\n{Extra[i]}";
             value += "\r\n!side";
             for (var i = 0; i < Side.Count; i++)
-                value += "\r\n" + Side[i];
-            if(Pickup.Count > 0)
-                value += "\r\n#pickup\r\n" + Pickup[0] + "#";
-            if (Pickup.Count > 1)
-                value += "\r\n" + Pickup[1] + "#";
-            if (Pickup.Count > 2)
-                value += "\r\n" + Pickup[2] + "#";
+                value += $"\r\n{Side[i]}";
+            value += $"\r\n#pickup\r\n#{Pickup[0]}";
+            value += $"\r\n#{Pickup[1]}";
+            value += $"\r\n#{Pickup[2]}";
 
-            value += "\r\n#case\r\n#" + Case;
-            value += "\r\n#protector\r\n#" + Protector;
-            value += "\r\n#field\r\n#" + Field;
-            value += "\r\n#grave\r\n#" + Grave;
-            value += "\r\n#stand\r\n#" + Stand;
-            value += "\r\n#mate\r\n#" + Mate;
+            value += $"\r\n#case\r\n#{Case}";
+            value += $"\r\n#protector\r\n#{Protector}";
+            value += $"\r\n#field\r\n#{Field}";
+            value += $"\r\n#grave\r\n#{Grave}";
+            value += $"\r\n#stand\r\n#{Stand}";
+            value += $"\r\n#mate\r\n#{Mate}";
 
             if (!string.IsNullOrEmpty(deckId))
-                value += "\r\n##" + deckId;
+                value += $"\r\n##{deckId}";
             if (!string.IsNullOrEmpty(userId))
-                value += "\r\n###" + userId;
+                value += $"\r\n###{userId}";
 
             return value;
         }

@@ -197,8 +197,6 @@ namespace MDPro3.UI.ServantUI
                     ShowBackButton();
                 else
                     HideBackButton();
-
-
             }
             else
             {
@@ -212,6 +210,7 @@ namespace MDPro3.UI.ServantUI
         protected override void HideEvent()
         {
             base.HideEvent();
+            UIManager.SetCanvasMatch(1f, 0.4f);
 
             HideBackButton();
             CardRarity.Save();
@@ -975,7 +974,6 @@ namespace MDPro3.UI.ServantUI
                 await TaskUtility.WaitOneFrame();
             if (gameObject == null) return;
 
-
             var ie = Program.items.LoadItemIconAsync(DeckEditor.Deck.Case.ToString(), Items.ItemType.Case);
             StartCoroutine(ie);
             while (ie.MoveNext())
@@ -1064,16 +1062,6 @@ namespace MDPro3.UI.ServantUI
 
         #endregion
 
-
-
-
-
-
-
-
-
-
-
         private void PlayDragCardShrinkAnimation()
         {
             DragCard.gameObject.SetActive(true);
@@ -1087,8 +1075,6 @@ namespace MDPro3.UI.ServantUI
                     DragCard.gameObject.SetActive(false);
                 });
         }
-
-
 
     }
 }

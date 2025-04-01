@@ -172,17 +172,17 @@ namespace MDPro3.UI.ServantUI
 
         #endregion
 
-        private static readonly List<GameObject> wallpapers = new List<GameObject>();
-        private static readonly List<GameObject> faces = new List<GameObject>();
-        private static readonly List<GameObject> frames = new List<GameObject>();
-        private static readonly List<GameObject> protectors = new List<GameObject>();
-        private static readonly List<GameObject> mats = new List<GameObject>();
-        private static readonly List<GameObject> graves = new List<GameObject>();
-        private static readonly List<GameObject> stands = new List<GameObject>();
-        private static readonly List<GameObject> mates = new List<GameObject>();
-        private static readonly List<GameObject> cases = new List<GameObject>();
+        private static readonly List<GameObject> wallpapers = new();
+        private static readonly List<GameObject> faces = new();
+        private static readonly List<GameObject> frames = new();
+        private static readonly List<GameObject> protectors = new();
+        private static readonly List<GameObject> mats = new();
+        private static readonly List<GameObject> graves = new();
+        private static readonly List<GameObject> stands = new();
+        private static readonly List<GameObject> mates = new();
+        private static readonly List<GameObject> cases = new();
 
-        private readonly Dictionary<string, List<GameObject>> pools = new Dictionary<string, List<GameObject>>
+        private readonly Dictionary<string, List<GameObject>> pools = new()
         {
             { "Wallpaper", wallpapers },
             { "Face", faces },
@@ -643,6 +643,11 @@ namespace MDPro3.UI.ServantUI
         {
             UserInput.NextSelectionIsAxis = true;
             Page00PlayerName.GetSelectable().Select();
+        }
+
+        public void OnPickupChange()
+        {
+            Program.instance.ShiftToServant(Program.instance.deckBrowser);
         }
 
     }

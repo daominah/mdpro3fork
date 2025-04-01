@@ -20,23 +20,19 @@ namespace MDPro3.UI.Popup
 
         protected override void ToggleOn()
         {
-            toggled = true;
             isOn = true;
             manager.lastSelectedItem = this;
         }
         public override void ToggleOnNow()
         {
-            toggled = true;
             isOn = true;
         }
         protected override void ToggleOff()
         {
-            toggled = false;
             isOn = false;
         }
         public override void ToggleOffNow()
         {
-            toggled = false;
             isOn = false;
         }
     }

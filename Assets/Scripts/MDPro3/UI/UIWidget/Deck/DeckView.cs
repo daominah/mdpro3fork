@@ -262,7 +262,8 @@ namespace MDPro3.UI
             Pickup,
             NonEditable
         }
-        protected Condition condition;
+        public Condition condition;
+
         protected float contentWidth = 772f - 16f;
         protected float templateWidth = 72f;
         protected Vector2 defaultSpacing = new(4f, 4f);
@@ -278,7 +279,7 @@ namespace MDPro3.UI
         public int extraCount;
         public int sideCount;
         public List<SelectionButton_CardInDeck> cards;
-        public Deck deck;
+        public Deck Deck { get; set; }
 
         protected string deckName;
         protected bool needSave;
@@ -289,7 +290,7 @@ namespace MDPro3.UI
 
         public void PrintDeck(Deck deck, string deckName, Condition condition)
         {
-            this.deck = deck;
+            Deck = deck;
             this.deckName = deckName;
             this.condition = condition;
 
@@ -725,7 +726,7 @@ namespace MDPro3.UI
         {
             if (condition == Condition.Editable && !deckLoaded) return false;
 
-            deck = FromObjectDeckToCodedDeck();
+            Deck = FromObjectDeckToCodedDeck();
             DeckFileSave();
             SetCondition(Condition.Editable);
             return true;
@@ -773,7 +774,7 @@ namespace MDPro3.UI
             if(condition != Condition.ChangeSide)
                 if (!CanEditCard()) return;
 
-            PrintDeck(deck, deckName, condition);
+            PrintDeck(Deck, deckName, condition);
         }
 
         public void Sort()
@@ -870,7 +871,7 @@ namespace MDPro3.UI
 
             deckName += " - " + InterString.Get("¸´ÖÆ");
             InputDeckName.text = deckName;
-            deck.deckId = string.Empty;
+            Deck.deckId = string.Empty;
         }
 
         public void Share()
@@ -884,7 +885,7 @@ namespace MDPro3.UI
                 return;
             }
 
-            var url = DeckShareURL.DeckToUri(deck.Main, deck.Extra, deck.Side).ToString();
+            var url = DeckShareURL.DeckToUri(Deck.Main, Deck.Extra, Deck.Side).ToString();
             GUIUtility.systemCopyBuffer = url;
             Application.OpenURL(url);
         }
@@ -935,24 +936,24 @@ namespace MDPro3.UI
                 yield return null;
             TweenLoading.Show();
 
-            if (deck == null)//Online Deck
+            if (Deck == null)//Online Deck
             {
                 while(DeckEditor.Deck == null)
                     yield return null;
-                deck = DeckEditor.Deck;
+                Deck = DeckEditor.Deck;
             }
 
-            foreach (var card in deck.Main)
+            foreach (var card in Deck.Main)
             {
                 AddCard(CardsManager.Get(card), DeckLocation.MainDeck, false, false);
                 yield return null;
             }
-            foreach (var card in deck.Extra)
+            foreach (var card in Deck.Extra)
             {
                 AddCard(CardsManager.Get(card), DeckLocation.ExtraDeck, false, false);
                 yield return null;
             }
-            foreach (var card in deck.Side)
+            foreach (var card in Deck.Side)
             {
                 AddCard(CardsManager.Get(card), DeckLocation.SideDeck, false, false);
                 yield return null;
@@ -964,8 +965,10 @@ namespace MDPro3.UI
 
             deckLoaded = true;
             SetDirty(false);
-            if (cards.Count > 0)
-                EventSystem.current.SetSelectedGameObject(cards[0].gameObject);
+            if (cards.Count > 0 && UserInput.NeedDefaultSelect())
+                cards[0].GetSelectable().Select();
+            if (Program.instance.currentServant == Program.instance.deckBrowser)
+                PrePick();
         }
 
 
@@ -1166,16 +1169,16 @@ namespace MDPro3.UI
                 else if (card.location == DeckLocation.SideDeck)
                     deck.Side.Add(card.Card.Id);
             }
-            foreach (var pickUp in this.deck.Pickup)
-                deck.Pickup.Add(pickUp);
-            deck.Protector = this.deck.Protector;
-            deck.Case = this.deck.Case;
-            deck.Field = this.deck.Field;
-            deck.Grave = this.deck.Grave;
-            deck.Stand = this.deck.Stand;
-            deck.Mate = this.deck.Mate;
-            deck.deckId = this.deck.deckId;
-            deck.userId = this.deck.userId;
+
+            deck.Pickup = Deck.Pickup;
+            deck.Protector = Deck.Protector;
+            deck.Case = Deck.Case;
+            deck.Field = Deck.Field;
+            deck.Grave = Deck.Grave;
+            deck.Stand = Deck.Stand;
+            deck.Mate = Deck.Mate;
+            deck.deckId = Deck.deckId;
+            deck.userId = Deck.userId;
             return deck;
         }
 
@@ -1184,7 +1187,7 @@ namespace MDPro3.UI
             try
             {
                 var deckName = GetDeckName();
-                deck.Save(deckName, DateTime.Now);
+                Deck.Save(deckName, DateTime.Now);
                 if (deckName != this.deckName)
                     File.Delete(Program.deckPath + this.deckName + Program.ydkExpansion);
                 this.deckName = deckName;
@@ -1198,6 +1201,40 @@ namespace MDPro3.UI
                 MessageManager.Cast(e.Message);
             }
         }
+
+        #region Pickup
+
+        private void PrePick()
+        {
+            for (int i = 0; i < 3; i++) 
+            {
+                foreach (var card in cards)
+                {
+                    if (card.Card.Id == DeckEditor.Deck.Pickup[i]
+                        && !card.picked)
+                    {
+                        card.PrePickThis(i);
+                        break;
+                    }
+                }
+            }
+        }
+
+        public void Pickup(SelectionButton_CardInDeck card)
+        {
+            foreach(var c in cards)
+                if (c != card && c.pickupIndex == card.pickupIndex)
+                    c.DepickupThis();
+        }
+
+        public void Depickup(int index)
+        {
+            foreach (var c in cards)
+                if (c.pickupIndex == index)
+                    c.DepickupThis();
+        }
+
+        #endregion
 
         #endregion
 

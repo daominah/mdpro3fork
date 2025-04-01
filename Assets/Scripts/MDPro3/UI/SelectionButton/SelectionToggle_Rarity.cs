@@ -21,7 +21,6 @@ namespace MDPro3.UI
 
         public override void SetToggleOff(bool fromSelf = true)
         {
-            toggled = false;
             isOn = false;
             ToggleOff();
             if(fromSelf)

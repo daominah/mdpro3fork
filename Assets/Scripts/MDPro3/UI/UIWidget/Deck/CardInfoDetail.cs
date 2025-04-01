@@ -3,18 +3,15 @@ using MDPro3.Duel.YGOSharp;
 using MDPro3.Servant;
 using MDPro3.UI.ServantUI;
 using MDPro3.Utility;
-using Mono.Cecil.Cil;
-using Mono.WebBrowser;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using System.Security.AccessControl;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.UI;
-using YgomGame.Card;
+
 namespace MDPro3.UI
 {
     public class CardInfoDetail : UIWidgetFullScreen

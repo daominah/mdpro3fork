@@ -1,7 +1,9 @@
 using MDPro3.Duel.YGOSharp;
 using MDPro3.Servant;
 using MDPro3.Utility;
+using System.CodeDom;
 using System.Threading.Tasks;
+using TMPro;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.UI;
@@ -43,24 +45,29 @@ namespace MDPro3.UI
             m_Card3 = m_Card3 != null ? m_Card3
             : Manager.GetElement<CardRawImageHandler>(LABEL_CRH_CARD3);
 
+        private const string LABEL_TXT_SETTING = "TextSetting";
+        private TextMeshProUGUI m_TextSetting;
+        private TextMeshProUGUI TextSetting =>
+            m_TextSetting = m_TextSetting != null ? m_TextSetting
+            : Manager.GetElement<TextMeshProUGUI>(LABEL_TXT_SETTING);
+
         #endregion
 
         public async void SetDeck(Deck deck)
         {
+            var setting = string.Empty;
+            setting += GetCardName(deck.Pickup[0], 1);
+            setting += GetCardName(deck.Pickup[1], 2);
+            setting += GetCardName(deck.Pickup[2], 3);
+            TextSetting.text = setting;
 
-            if (deck.Pickup.Count > 0)
-                Card1.SetCard(deck.Pickup[0]);
-            else
-                Card1.SetProtector(deck.Protector);
-            if (deck.Pickup.Count > 1)
-                Card2.SetCard(deck.Pickup[1]);
-            else
-                Card2.SetProtector(deck.Protector);
-            if (deck.Pickup.Count > 2)
-                Card3.SetCard(deck.Pickup[2]);
-            else
-                Card3.SetProtector(deck.Protector);
+            Card1.protectorCode = deck.Protector;
+            Card2.protectorCode = deck.Protector;
+            Card3.protectorCode = deck.Protector;
 
+            Card1.SetCard(deck.Pickup[0]);
+            Card2.SetCard(deck.Pickup[1]);
+            Card3.SetCard(deck.Pickup[2]);
             await LoadDeckCaseAsync(deck.Case);
         }
 
@@ -72,5 +79,16 @@ namespace MDPro3.UI
             DeckCase.sprite = load.Result;
         }
 
+        private string GetCardName(int code, int index)
+        {
+            var result = $"{index} : ";
+            var card = CardsManager.Get(code);
+            if (card == null || card.Id == 0)
+                result += InterString.Get("Œ¥…Ë÷√");
+            else
+                result += card.Name;
+            result += "\r\n";
+            return result;
+        }
     }
 }

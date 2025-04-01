@@ -39,13 +39,11 @@ namespace MDPro3.UI
 
         public virtual void ToggleOnNow()
         {
-            toggled = true;
             isOn = true;
             Manager.GetElement<RectTransform>("Offset").DOAnchorPosX(48f, 0f);
         }
         public virtual void ToggleOffNow()
         {
-            toggled = false;
             isOn = false;
             Manager.GetElement<RectTransform>("Offset").DOAnchorPosX(0f, 0f);
         }

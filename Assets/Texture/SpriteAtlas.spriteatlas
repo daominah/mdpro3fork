@@ -266,6 +266,7 @@ SpriteAtlas:
     - fca413749a7aeb04db50d977e417aad9: 21300000
     - 86feb6744b88c6946a73edb7b90b2b1a: 21300000
     - 767ded74322f86f4a819857783e17209: 21300000
+    - 1f370e74ccfa10b4a859e48eb1a1ea12: 21300000
     - 6d4b3e74a9c01fa4ab771db2ee6956b8: 21300000
     - 12db16943897c0e4f9599de51632e70c: 21300000
     - 97689a949c13fce438357a55b4665eb1: 21300000
@@ -573,6 +574,7 @@ SpriteAtlas:
     - cdadbc7b2fb19fd48b505640eac270c2: 21300000
     - 1feffd7bb0aa57545b4ff1dc431562c2: 21300000
     - 7ac4f38b466e39c40aeb225b4ac5100a: 21300000
+    - 0393578bf125d0d48be7b922695d960f: 21300000
     - b4c69d8bfff61ec4c92730c7f96ed616: 21300000
     - 4d65ae8b11291f6429d680286710791c: 21300000
     - a263cf8bdfa0a7749a156c7b7bebc559: 21300000
@@ -742,6 +744,7 @@ SpriteAtlas:
     - 704a16de18280f04bb6f01af43b8b281: 21300000
     - b39796ee8b82c2c4fa0d8f4e3065221c: 21300000
     - dd40e6ee004a3fe4b85cf2c7f63bfe0a: 21300000
+    - a8b228ee6ecb0b44d9be786b3f208735: 21300000
     - f7b5e6fe89fe9154d95e9061954551a7: 21300000
     - 5ed857fee4dc9c940a14f55ee336cee3: 21300000
     - 9c297afeaab4e3241a5582167750642c: 21300000
@@ -1002,6 +1005,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: fca413749a7aeb04db50d977e417aad9, type: 3}
   - {fileID: 21300000, guid: 86feb6744b88c6946a73edb7b90b2b1a, type: 3}
   - {fileID: 21300000, guid: 767ded74322f86f4a819857783e17209, type: 3}
+  - {fileID: 21300000, guid: 1f370e74ccfa10b4a859e48eb1a1ea12, type: 3}
   - {fileID: 21300000, guid: 6d4b3e74a9c01fa4ab771db2ee6956b8, type: 3}
   - {fileID: 21300000, guid: 12db16943897c0e4f9599de51632e70c, type: 3}
   - {fileID: 21300000, guid: 97689a949c13fce438357a55b4665eb1, type: 3}
@@ -1309,6 +1313,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: cdadbc7b2fb19fd48b505640eac270c2, type: 3}
   - {fileID: 21300000, guid: 1feffd7bb0aa57545b4ff1dc431562c2, type: 3}
   - {fileID: 21300000, guid: 7ac4f38b466e39c40aeb225b4ac5100a, type: 3}
+  - {fileID: 21300000, guid: 0393578bf125d0d48be7b922695d960f, type: 3}
   - {fileID: 21300000, guid: b4c69d8bfff61ec4c92730c7f96ed616, type: 3}
   - {fileID: 21300000, guid: 4d65ae8b11291f6429d680286710791c, type: 3}
   - {fileID: 21300000, guid: a263cf8bdfa0a7749a156c7b7bebc559, type: 3}
@@ -1478,6 +1483,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 704a16de18280f04bb6f01af43b8b281, type: 3}
   - {fileID: 21300000, guid: b39796ee8b82c2c4fa0d8f4e3065221c, type: 3}
   - {fileID: 21300000, guid: dd40e6ee004a3fe4b85cf2c7f63bfe0a, type: 3}
+  - {fileID: 21300000, guid: a8b228ee6ecb0b44d9be786b3f208735, type: 3}
   - {fileID: 21300000, guid: f7b5e6fe89fe9154d95e9061954551a7, type: 3}
   - {fileID: 21300000, guid: 5ed857fee4dc9c940a14f55ee336cee3, type: 3}
   - {fileID: 21300000, guid: 9c297afeaab4e3241a5582167750642c, type: 3}
@@ -1737,6 +1743,7 @@ SpriteAtlas:
   - GUI_T_Icon1_State22
   - button009_Nintendo
   - GUI_CommonItemFrameM_Base
+  - GUI_alpha_CursorCardSelect
   - GUI_T_Icon1_Counter_KATTOBING
   - GUI_T_DuelButtonActIcon01_1
   - button102
@@ -2044,6 +2051,7 @@ SpriteAtlas:
   - GUI_T_Icon1_Counter_SIGNAL
   - GUI_T_ComBadge_Check
   - Icon_CardAffect_Power
+  - GUI_DeckBrowser_PickupCursor
   - GUI_Log_Field_Near5
   - img_rankicon_tier3_l
   - GUI_T_Icon1_Type06
@@ -2213,6 +2221,7 @@ SpriteAtlas:
   - GUI_T_Icon1_Type25
   - GUI_T_Icon1_Attr01_Ruby
   - GUI_T_DuelButtonDecide_1
+  - GUI_CommonSubTitle_Base
   - analog202
   - GUI_DeckEdit_ButtonS_Craft
   - button000_PlayStation

@@ -41,7 +41,7 @@ namespace MDPro3.UI
         {
             AudioManager.PlaySE(SoundLabelClick);
             var rightSelectable = Selectable.navigation.selectOnRight;
-            if (toggled)
+            if (isOn)
             {
                 if (rightSelectable != null)
                     rightSelectable.GetComponent<SelectionToggle_CardCollectionTab>().SetToggleOn();

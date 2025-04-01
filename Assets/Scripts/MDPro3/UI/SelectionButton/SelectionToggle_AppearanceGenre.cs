@@ -20,7 +20,7 @@ namespace MDPro3.UI
 
         public override void SetToggleOn(bool callEvent = true)
         {
-            if (!toggled)
+            if (!isOn)
                 Program.instance.appearance.GetUI<AppearanceUI>().ScrollRect.verticalScrollbar.value = 1f;
             base.SetToggleOn();
         }

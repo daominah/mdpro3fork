@@ -125,6 +125,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5a7c92995f2b6444ea6c0e5073d84d2a
+    m_Address: DeckBrowserUIMobile
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 5b622d5baae0a5142805ed0edbb203c0
     m_Address: OcgCoreUI
     m_ReadOnly: 0
@@ -280,6 +285,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d74457eca3addb6408d4268b2859bfff
+    m_Address: DeckBrowserOptionForPickupCardSelection
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d9bee3b4704004f4da4e04a8e805a69f
     m_Address: PopupSelectionItem
     m_ReadOnly: 0
@@ -287,6 +297,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: dcfc2b5ee4955ff4ab34c37e1bcff876
     m_Address: ChatItemMe
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: df49c72a6dc86db4d9907f55b6454d8e
+    m_Address: DeckBrowserUI
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

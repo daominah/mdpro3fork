@@ -170,7 +170,13 @@ namespace MDPro3.Utility
 
             if (newCount == 0 && !entry.IsPersistent)
                 if (cachedCards.TryRemove(code, out _))
-                    UnityEngine.Object.Destroy(entry.Texture);
+                {
+                    try
+                    {
+                        UnityEngine.Object.Destroy(entry.Texture);
+                    }
+                    catch(Exception e) { Debug.LogException(e); }
+                }
         }
 
         public static async Task<Texture2D> LoadCardNameAsync(

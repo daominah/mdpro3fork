@@ -113,7 +113,6 @@ namespace MDPro3.UI.ServantUI
                     break;
             }
 
-            UIManager.SetCanvasMatch(1f, 0.4f);
             ShowDefaultButtons();
         }
 
