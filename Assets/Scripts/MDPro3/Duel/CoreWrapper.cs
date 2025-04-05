@@ -11,9 +11,9 @@ namespace Percy
 {
     internal class Deck
     {
-        public List<int> Main = new List<int>();
-        public List<int> Extra = new List<int>();
-        public List<int> Side = new List<int>();
+        public List<int> Main = new();
+        public List<int> Extra = new();
+        public List<int> Side = new();
     }
     internal class Package
     {
@@ -264,54 +264,77 @@ namespace Percy
 
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         private delegate IntPtr ScriptReader(string scriptName, int* len);
+
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         private delegate uint CardReader(uint code, CardData* pData);
+
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         private delegate uint MessageHandler(IntPtr pDuel, uint messageType);
 
         [DllImport("ocgcore", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
         private static extern void set_card_reader(CardReader f);
+
         [DllImport("ocgcore", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
         private static extern void set_message_handler(MessageHandler f);
+
         [DllImport("ocgcore", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
         private static extern void set_script_reader(ScriptReader f);
+
         [DllImport("ocgcore", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr create_duel(uint seed);
+
         [DllImport("ocgcore", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
         public static extern void start_duel(IntPtr pduel, int options);
+
         [DllImport("ocgcore", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
         public static extern int get_ai_going_first_second(IntPtr pduel, IntPtr deckname);
+
         [DllImport("ocgcore", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
         public static extern int set_player_going_first_second(IntPtr pduel, int first, IntPtr deckname);
+
         [DllImport("ocgcore", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
         public static extern void set_ai_id(IntPtr pduel, int playerid);
+
         [DllImport("ocgcore", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
         public static extern void end_duel(IntPtr pduel);
+
         [DllImport("ocgcore", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
         public static extern void set_player_info(IntPtr pduel, int playerid, int lp, int startcount, int drawcount);
+
         [DllImport("ocgcore", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
         public static extern void new_card(IntPtr pduel, uint code, byte owner, byte playerid, byte location, byte sequence, byte position);
+
         [DllImport("ocgcore", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
         public static extern void new_tag_card(IntPtr pduel, uint code, byte owner, byte location);
+
         [DllImport("ocgcore", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
         public static extern int process(IntPtr pduel);
+
         [DllImport("ocgcore", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
         public static extern int get_message(IntPtr pduel, IntPtr buf);
+
         [DllImport("ocgcore", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
         //public static extern void get_log_message(IntPtr pduel, IntPtr buf);
         public static extern void get_log_message(IntPtr pduel, byte[] buf);
+
         [DllImport("ocgcore", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
         public static extern void set_responseb(IntPtr pduel, IntPtr buf);
+
         [DllImport("ocgcore", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
         public static extern void set_responsei(IntPtr pduel, uint value);
+
         [DllImport("ocgcore", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
         public static extern int query_card(IntPtr pduel, byte playerid, byte location, byte sequence, int queryFlag, IntPtr buf, int useCache);
+
         [DllImport("ocgcore", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
         public static extern int query_field_count(IntPtr pduel, byte playerid, byte location);
+
         [DllImport("ocgcore", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
         public static extern int query_field_card(IntPtr pduel, byte playerid, byte location, int queryFlag, IntPtr buf, int useCache);
+
         [DllImport("ocgcore", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
         public static extern int query_field_info(IntPtr pduel, IntPtr buf);
+
         [DllImport("ocgcore", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
         public static extern int preload_script(IntPtr pduel, IntPtr script, int len);
 
@@ -320,11 +343,13 @@ namespace Percy
             card_handler = h;
             set_card_reader(OnCardReader);
         }
+
         public static void Set_script_api(Ygopro.ScriptHandler h)
         {
             script_handler = h;
             set_script_reader(OnScriptHandler);
         }
+
         public static void Set_chat_api(Ygopro.ChatHandler h)
         {
             chat_handler = h;
@@ -338,6 +363,7 @@ namespace Percy
             *len = ret.len;
             return ret.buffer;
         }
+
         [MonoPInvokeCallback]
         private static uint OnCardReader(uint code, CardData* pData)
         {
@@ -385,6 +411,7 @@ namespace Percy
             var ran = new System.Random(Environment.TickCount);
             duel = Dll.create_duel((uint)ran.Next(100, 99999));
         }
+
         public void Dispose()
         {
             Dll.end_duel(duel);
@@ -418,16 +445,19 @@ namespace Percy
                         }
             return returnValue;
         }
+
         private void Flush()
         {
             sendToPlayer(((MemoryStream)currentWriter.BaseStream).ToArray());
         }
+
         private int LocalPlayer(int p)
         {
             if (isFirst)
                 return p;
             return 1 - p;
         }
+
         private void Refresh()
         {
             if (godMode)
@@ -475,6 +505,7 @@ namespace Percy
                 }
             }
         }
+
         private byte[] QueryFieldCard(int player, CardLocation location, int flag, bool useCache)
         {
             var len = Dll.query_field_card(duel, (byte)player, (byte)location, flag, _buffer, useCache ? 1 : 0);
@@ -482,6 +513,7 @@ namespace Percy
             Marshal.Copy(_buffer, result, 0, len);
             return result;
         }
+
         private void RefreshMonsters(int player, int flag = 0x81fff | 0x10000)
         {
             var result = QueryFieldCard(player, CardLocation.MonsterZone, flag, false);
@@ -515,6 +547,7 @@ namespace Percy
             }
             sendToPlayer(binary.Get());
         }
+
         private void RefreshSpells(int player, int flag = 0x681fff)
         {
             var result = QueryFieldCard(player, CardLocation.SpellZone, flag, false);
@@ -548,6 +581,7 @@ namespace Percy
             }
             sendToPlayer(binary.Get());
         }
+
         private void RefreshHand(int player, int flag = 0x181fff)
         {
             var result = QueryFieldCard(player, CardLocation.Hand, flag, false);
@@ -558,6 +592,7 @@ namespace Percy
             binary.writer.Write(result);
             sendToPlayer(binary.Get());
         }
+
         private void RefreshGrave(int player, int flag = 0x81fff)
         {
             var result = QueryFieldCard(player, CardLocation.Grave, flag, false);
@@ -568,6 +603,7 @@ namespace Percy
             binary.writer.Write(result);
             sendToPlayer(binary.Get());
         }
+
         private void RefreshDeck(int player, int flag = 0x81fff)
         {
             var result = QueryFieldCard(player, CardLocation.Deck, flag, false);
@@ -578,6 +614,7 @@ namespace Percy
             binary.writer.Write(result);
             sendToPlayer(binary.Get());
         }
+
         private void RefreshExtra(int player, int flag = 0x81fff)
         {
             var result = QueryFieldCard(player, CardLocation.Extra, flag, false);
@@ -588,6 +625,7 @@ namespace Percy
             binary.writer.Write(result);
             sendToPlayer(binary.Get());
         }
+
         private void RefreshRemoved(int player, int flag = 0x81fff)
         {
             var result = QueryFieldCard(player, CardLocation.Removed, flag, false);
@@ -598,6 +636,7 @@ namespace Percy
             binary.writer.Write(result);
             sendToPlayer(binary.Get());
         }
+
         private bool Analyse(BinaryReader reader)
         {
             var returnValue = false;
@@ -1157,6 +1196,7 @@ namespace Percy
                     (byte)playerId, (byte)playerId, (byte)CardLocation.Extra, 0,
                     (byte)CardPosition.FaceDownDefence);
         }
+
         private void AddDeckFromFile(string playerDek, int playerId, bool random)
         {
             AddDeck(FromYDKtoDeck(playerDek), playerId, random);
@@ -1175,6 +1215,7 @@ namespace Percy
             new Thread(Process).Start();
             return true;
         }
+
         public void Response(byte[] resp)
         {
             if (resp.Length > 64) return;
@@ -1186,12 +1227,14 @@ namespace Percy
         }
 
         private BinaryWriter yrp3dbuilder;
+
         private void SendToYrp(byte[] buffer)
         {
             yrp3dbuilder.Write(buffer[0]);
             yrp3dbuilder.Write(buffer.Length - 1);
             for (var i = 1; i < buffer.Length; i++) yrp3dbuilder.Write(buffer[i]);
         }
+
         public byte[] GetYRP3dBuffer(YRP yrp)
         {
             var tempS = sendToPlayer;
@@ -1293,6 +1336,7 @@ namespace Percy
             stream.Close();
             return stream.ToArray();
         }
+
     }
 
     public class YRP
@@ -1359,6 +1403,7 @@ namespace Percy
             writer.Write(result);
         }
     }
+
     internal class MonoPInvokeCallbackAttribute : Attribute
     {
         public MonoPInvokeCallbackAttribute() { }

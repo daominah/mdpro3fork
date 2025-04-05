@@ -1,5 +1,7 @@
 using DG.Tweening;
 using MDPro3.Servant;
+using MDPro3.UI.PropertyOverride;
+using MDPro3.Utility;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -47,7 +49,7 @@ namespace MDPro3.UI.ServantUI
 
         #endregion
 
-        public PickupCardSelection PickupCardSelection;
+        [HideInInspector] public PickupCardSelection PickupCardSelection;
 
         private const string LABEL_WIDGET_PICKUP = "DeckBrowserOptionForPickupCardSelection";
 
@@ -73,6 +75,11 @@ namespace MDPro3.UI.ServantUI
         private void Awake()
         {
             DeckView.PrintDeck(DeckEditor.Deck, DeckEditor.DeckName, DeckView.Condition.Pickup);
+            DeckView.SetNoItemButtonNavigationEvent(UnityEngine.EventSystems.MoveDirection.Right, () =>
+            {
+                UserInput.NextSelectionIsAxis = true;
+                PickupCardSelection.Select();
+            });
         }
 
         public override void ShowEvent()
@@ -151,6 +158,8 @@ namespace MDPro3.UI.ServantUI
 
         private void LoadOptionalArea(string address, int areaIndex)
         {
+            if (PropertyOverrider.NeedMobileLayout())
+                areaIndex = 1;
             var load = Addressables.InstantiateAsync(address);
             load.Completed += (result) =>
             {

@@ -173,6 +173,7 @@ namespace MDPro3
 
             return re;
         }
+
         internal static string Get(int description)
         {
             var a = "";
@@ -242,6 +243,7 @@ namespace MDPro3
                 }
             return r;
         }
+
         public static string Race(long race, bool render = false)
         {
             var r = "";
@@ -255,6 +257,7 @@ namespace MDPro3
                 }
             return r;
         }
+
         public static string Zone(long data)
         {
             var strs = new List<string>();
@@ -313,7 +316,7 @@ namespace MDPro3
 
         public static string MainType(long a, bool render = false)
         {
-            var r = "";
+            var r = string.Empty;
             var passFirst = false;
             for (var i = 0; i < 3; i++)
                 if ((a & (1 << i)) > 0)
@@ -327,8 +330,8 @@ namespace MDPro3
 
         public static string SecondType(long a, bool render = false)
         {
-            var start = "";
-            var end = "";
+            var start = string.Empty;
+            var end = string.Empty;
             if ((a & 0x68020C0) > 0)
             {
                 for (var i = 4; i < 27; i++)
@@ -364,6 +367,50 @@ namespace MDPro3
                 returnValue = returnValue.Substring(1, returnValue.Length - 1);
 
             return returnValue;
+        }
+
+        public static string SecondMainType(long a)
+        {
+            if(Language.GetConfig() == Language.Spanish)
+                return GetSpanishCardType(a);
+            else
+            {
+                if(Language.NeedBlankToAddWord())
+                    return SecondType(a, false) + " " + MainType(a, false);
+                else
+                    return SecondType(a, false) + MainType(a, false);
+            }
+        }
+
+        private static string GetSpanishCardType(long a)
+        {
+            if ((a & (long)CardType.Monster) > 0)
+                return "Monstruo";
+            else if((a & (long)CardType.Spell) > 0)
+            {
+                if ((a & (long)CardType.Field) > 0)
+                    return "Mágica de Campo";
+                else if ((a & (long)CardType.Equip) > 0)
+                    return "Mágica de Equipo";
+                else if ((a & (long)CardType.Continuous) > 0)
+                    return "Mágica Continua";
+                else if ((a & (long)CardType.QuickPlay) > 0)
+                    return "Mágica de Juego Rápido";
+                else if ((a & (long)CardType.Ritual) > 0)
+                    return "Mágica Ritual";
+                else
+                    return "Mágica Normal";
+            }
+            else if ((a & (long)CardType.Trap) > 0)
+            {
+                if ((a & (long)CardType.Counter) > 0)
+                    return "Trampa de Contraefecto";
+                else if ((a & (long)CardType.Continuous) > 0)
+                    return "Trampa Continua";
+                else
+                    return "Trampa Normal";
+            }
+            return string.Empty;
         }
 
         public static string GetType(Card data, bool render = false, bool rushDuel = false)
@@ -494,6 +541,7 @@ namespace MDPro3
             else
                 return string.Empty;
         }
+
         public static int GetSetNameCode(string setName)
         {
             int returnValue = 0;
@@ -506,5 +554,6 @@ namespace MDPro3
             }
             return returnValue;
         }
+
     }
 }

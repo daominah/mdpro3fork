@@ -401,12 +401,9 @@ namespace MDPro3.UI
                 ParamatorAreaBottom.SetActive(false);
                 SpellTrapType.SetActive(true);
                 IconSpellTrapType.sprite = TextureManager.container.GetCardSpellTrapTypeIcon(data);
-                TextSpellTrapType.text
-                    = StringHelper.SecondType(data.Type) + StringHelper.MainType(data.Type);
-
+                TextSpellTrapType.text = StringHelper.SecondMainType(data.Type);
                 PoolGroup.SetParent(ParamatorAreaTop.transform, false);
             }
-
 
             IconOCG.gameObject.SetActive((data.Ot & 1) > 0);
             IconTCG.gameObject.SetActive((data.Ot & 2) > 0);

@@ -357,8 +357,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8190007344841235909}
   m_HandleRect: {fileID: 9107187794868887960}
   m_Direction: 2
-  m_Value: 0
-  m_Size: 1
+  m_Value: 1
+  m_Size: 0.90667164
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2615,10 +2615,10 @@ RectTransform:
   - {fileID: 1405122057963360608}
   m_Father: {fileID: 8972433979884015397}
   m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1920, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8353873743859406989
 MonoBehaviour:
@@ -5075,6 +5075,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cache: 0
+  protectorCode: 1070001
 --- !u!1 &388412803258735649
 GameObject:
   m_ObjectHideFlags: 0
@@ -5739,6 +5740,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb19786d8c568d44dbbd64709c945bd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultSelectable: {fileID: 0}
   responseInput: 0
   showing: 0
 --- !u!1 &448243913980667442
@@ -9637,6 +9639,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7258ed310c5d5c94dbb5d67f08a04577, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultSelectable: {fileID: 0}
   responseInput: 0
   area: 0
   defaultArea: 0
@@ -14600,7 +14603,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 7446650972608614846}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.8355
+  m_Size: 0.6575
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -33708,6 +33711,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cache: 0
+  protectorCode: 1070001
 --- !u!1 &3185043598421145800
 GameObject:
   m_ObjectHideFlags: 0
@@ -35336,6 +35340,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cache: 1
+  protectorCode: 1070001
 --- !u!1 &3340007788902915294
 GameObject:
   m_ObjectHideFlags: 0
@@ -42200,6 +42205,8 @@ MonoBehaviour:
   selected: 0
   deckView: {fileID: 0}
   location: 0
+  picked: 0
+  pickupIndex: -1
 --- !u!114 &1738500918784162785
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59204,7 +59211,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15bed8dce0c17bf4382d674ea7ba0627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultSelectable: {fileID: 0}
   responseInput: 0
+  condition: 0
   deckLoaded: 0
   mainCount: 0
   extraCount: 0
@@ -61362,7 +61371,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
+  m_fontSize: 29
   m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -65952,10 +65961,10 @@ RectTransform:
   - {fileID: 9030126749241404509}
   m_Father: {fileID: 8972433979884015397}
   m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1920, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4420769399430443410
 MonoBehaviour:
@@ -76162,6 +76171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cache: 0
+  protectorCode: 1070001
 --- !u!1 &8200781129390737229
 GameObject:
   m_ObjectHideFlags: 0

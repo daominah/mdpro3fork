@@ -20093,6 +20093,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cache: 1
+  protectorCode: 1070001
 --- !u!1 &3843859620489654303
 GameObject:
   m_ObjectHideFlags: 0
@@ -31865,6 +31866,7 @@ MonoBehaviour:
   selected: 0
   deckView: {fileID: 0}
   location: 0
+  picked: 0
   pickupIndex: -1
 --- !u!114 &9022717209281616408
 MonoBehaviour:
@@ -34001,7 +34003,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5575086150437955810
 RectTransform:
   m_ObjectHideFlags: 0
@@ -41069,6 +41071,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cache: 0
+  protectorCode: 1070001
 --- !u!1 &8883452647142444078
 GameObject:
   m_ObjectHideFlags: 0

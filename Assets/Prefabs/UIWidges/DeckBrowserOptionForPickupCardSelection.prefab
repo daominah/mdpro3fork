@@ -6805,7 +6805,7 @@ MonoBehaviour:
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
+    m_SelectOnRight: {fileID: 7913386810958071228}
   m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
@@ -6853,7 +6853,19 @@ MonoBehaviour:
   navigationEvent:
     onLeftNavigation:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 5168547337653852067}
+          m_TargetAssemblyTypeName: MDPro3.UI.PickupCardSelection, Assembly-CSharp
+          m_MethodName: OnLeftNavigation
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
     onRightNavigation:
       m_PersistentCalls:
         m_Calls: []
@@ -20843,7 +20855,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4577b031a1b163e46b826aff50143c90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultSelectable: {fileID: 0}
+  defaultSelectable: {fileID: 1065110939972471035}
   responseInput: 0
 --- !u!114 &114694397929271185
 MonoBehaviour:
@@ -22522,7 +22534,7 @@ MonoBehaviour:
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnLeft: {fileID: 7913386810958071228}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 0
   m_Colors:
@@ -26346,8 +26358,8 @@ MonoBehaviour:
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
+    m_SelectOnLeft: {fileID: 1065110939972471035}
+    m_SelectOnRight: {fileID: 8678198206944921138}
   m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}

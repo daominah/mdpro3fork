@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using MDPro3.Utility;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace MDPro3.UI
 {
@@ -27,22 +28,10 @@ namespace MDPro3.UI
 
         protected Material normalMat;
         protected Material tempMat;
+
         private CancellationTokenSource cts;
 
-        protected Coroutine picLoadCoroutine;
-        protected Coroutine matLoadCoroutine;
-        protected Coroutine protectorLoadCoroutine;
         protected Tween matTweener;
-
-        protected void OnDisable()
-        {
-            if(picLoadCoroutine != null)
-                StopCoroutine(picLoadCoroutine);
-            if(matLoadCoroutine != null)
-                StopCoroutine(matLoadCoroutine);
-            if(protectorLoadCoroutine != null)
-                StopCoroutine(protectorLoadCoroutine);
-        }
 
         protected void OnDestroy()
         {
@@ -63,7 +52,10 @@ namespace MDPro3.UI
         public void SetCard(int code)
         {
             if (code <= 0)
+            {
+                card = null;
                 SetProtector(protectorCode);
+            }
             else
                 SetCard(CardsManager.Get(code));
         }
@@ -75,20 +67,18 @@ namespace MDPro3.UI
             DeleteCard();
             card = data;
 
-            if (picLoadCoroutine != null)
-                StopCoroutine(picLoadCoroutine);
-            picLoadCoroutine = StartCoroutine(LoadCardPicAsync());
+            _ = LoadCardPicAsync();
         }
 
-        protected virtual IEnumerator LoadCardPicAsync()
+        private async Task LoadCardPicAsync()
         {
             m_Refreshed = false;
 
-            if (normalMat == null)
+            if(normalMat == null)
             {
                 var matLoad = MaterialLoader.LoadCardMaterialAsync(-1);
                 while (!matLoad.IsCompleted)
-                    yield return null;
+                    await TaskUtility.WaitOneFrame(gameObject);
                 normalMat = matLoad.Result;
             }
             normalMat.SetTexture("_LoadingTex", TextureManager.container
@@ -100,32 +90,21 @@ namespace MDPro3.UI
             RawImage.material = normalMat;
 
             if (tempMat != null)
-                DestroyImmediate(tempMat);
-
-            //var task = TextureLoader.LoadCardAsync(card.Id, cache);
+                Destroy(tempMat);
 
             CancelLoading();
             cts = new CancellationTokenSource();
             var task = CardImageLoader.LoadCardAsync(card.Id, cache, cts.Token);
 
             while (!task.IsCompleted)
-                yield return null;
+                await TaskUtility.WaitOneFrame(gameObject);
             RawImage.texture = task.Result;
 
             if (CardRarity.GetRarity(card.Id) == CardRarity.Rarity.Normal)
                 matTweener = normalMat.DOFloat(0f, "_LoadingBlend", 0.1f);
             else
-            {
-                if (matLoadCoroutine != null)
-                    StopCoroutine(matLoadCoroutine);
+                await LoadMatAsync(0.1f);
 
-                var coroutine = LoadMatAsync(0.1f);
-                matLoadCoroutine = StartCoroutine(coroutine);
-                while (coroutine.MoveNext())
-                    yield return null;
-            }
-
-            picLoadCoroutine = null;
             m_Refreshed = true;
         }
 
@@ -141,18 +120,15 @@ namespace MDPro3.UI
                 RawImage.material = normalMat;
             }
             else
-            {
-                if (matLoadCoroutine != null)
-                    StopCoroutine(matLoadCoroutine);
-                matLoadCoroutine = StartCoroutine(LoadMatAsync(0f));
-            }
+                _ = LoadMatAsync(0f);
         }
 
-        protected IEnumerator LoadMatAsync(float fadeTime)
+        protected async Task LoadMatAsync(float fadeTime)
         {
             var task = MaterialLoader.LoadCardMaterialAsync(card.Id);
             while (!task.IsCompleted)
-                yield return null;
+                await TaskUtility.WaitOneFrame(gameObject);
+
             tempMat = task.Result;
             tempMat.SetFloat("_LoadingBlend", 1f);
             tempMat.SetTexture("_LoadingTex"
@@ -161,32 +137,29 @@ namespace MDPro3.UI
             if(matTweener != null && matTweener.IsActive())
                 matTweener.Kill();
             matTweener = tempMat.DOFloat(0f, "_LoadingBlend", fadeTime);
-            matLoadCoroutine = null;
-        }
-
-        public void SetProtectorMaterial(Material mat)
-        {
-            RawImage.material = mat;
         }
 
         public void SetProtector(int code)
         {
-            StartCoroutine(LoadProtectorAsync(code));
+            protectorCode = code;
+            _ = LoadProtectorAsync(code);
         }
 
-        protected virtual IEnumerator LoadProtectorAsync(int code)
+        private async Task LoadProtectorAsync(int code)
         {
             m_Refreshed = false;
 
             var im = ABLoader.LoadProtectorMaterial(code.ToString());
             while (im.MoveNext())
-                yield return null;
+                await TaskUtility.WaitOneFrame(gameObject);
 
             RawImage.material = im.Current;
             m_Refreshed = true;
 
             RawImage.texture = null;
             DeleteCard();
+
+            m_Refreshed = true;
         }
 
         private void CancelLoading()

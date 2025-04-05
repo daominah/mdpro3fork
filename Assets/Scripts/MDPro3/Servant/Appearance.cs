@@ -159,6 +159,10 @@ namespace MDPro3.Servant
                     if (GetUI<AppearanceUI>().CanSwitchPlayer())
                         GetUI<AppearanceUI>().OnPlayerRight();
 
+                if (UserInput.WasGamepadButtonNorthPressed)
+                    if (GetUI<AppearanceUI>().InPickupPage())
+                        GetUI<AppearanceUI>().OnPickupChange();
+
                 if (UserInput.MouseRightDown || UserInput.WasCancelPressed)
                     OnReturn();
             }

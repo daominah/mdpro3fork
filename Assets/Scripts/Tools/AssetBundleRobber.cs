@@ -38,8 +38,8 @@ public class AssetBundleRobber : MonoBehaviour
         public string name;
         public List<string> dependencies;
     }
-    public static List<AssetbundleInfo> files = new List<AssetbundleInfo>();
-    public static List<AssetbundleInfo> newFiles = new List<AssetbundleInfo>();
+    public static List<AssetbundleInfo> files = new();
+    public static List<AssetbundleInfo> newFiles = new();
 
     public static void SetHint(string hint)
     {

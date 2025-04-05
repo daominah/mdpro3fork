@@ -1,5 +1,6 @@
 using MDPro3.Duel.YGOSharp;
 using MDPro3.Servant;
+using MDPro3.UI.PropertyOverride;
 using MDPro3.Utility;
 using System.CodeDom;
 using System.Threading.Tasks;
@@ -76,7 +77,8 @@ namespace MDPro3.UI
             var load = Program.items.LoadDeckCaseIconAsync(deckCase, "_Open_L");
             while (!load.IsCompleted)
                 await TaskUtility.WaitOneFrame();
-            DeckCase.sprite = load.Result;
+            if(gameObject != null)
+                DeckCase.sprite = load.Result;
         }
 
         private string GetCardName(int code, int index)

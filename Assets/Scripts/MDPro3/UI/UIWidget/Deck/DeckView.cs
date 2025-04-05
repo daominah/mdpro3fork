@@ -14,6 +14,7 @@ using UnityEngine.UI;
 using MDPro3.Servant;
 using MDPro3.UI.ServantUI;
 using MDPro3.Utility;
+using System.Threading.Tasks;
 
 namespace MDPro3.UI
 {
@@ -298,7 +299,17 @@ namespace MDPro3.UI
             InputDeckName.text = deckName;
             TextDeckName.text = deckName;
 
+            _ = LoadDeckCaseAsync(deck.Case);
             StartCoroutine(PrintDeckAsync());
+        }
+
+        private async Task LoadDeckCaseAsync(int deckCase)
+        {
+            var load = Program.items.LoadDeckCaseIconAsync(deckCase, string.Empty);
+            while (!load.IsCompleted)
+                await TaskUtility.WaitOneFrame();
+            if (gameObject != null)
+                IconDeck.sprite = load.Result;
         }
 
         public void SetDirty(bool dirty)
@@ -970,7 +981,6 @@ namespace MDPro3.UI
             if (Program.instance.currentServant == Program.instance.deckBrowser)
                 PrePick();
         }
-
 
         protected virtual void ChangeGridSpacing(DeckLocation location)
         {

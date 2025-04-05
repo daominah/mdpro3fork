@@ -43,7 +43,7 @@ namespace MDPro3.UI
 
         private void Show()
         {
-            if(!active)
+            if(!active || !gameObject.activeInHierarchy)
                 return;
             foreach (var label in showLabels)
             {
@@ -55,6 +55,8 @@ namespace MDPro3.UI
 
         private void Hide()
         {
+            if(!gameObject.activeInHierarchy)
+                return;
             foreach (var element in Manager.serializedElements)
                 element.gameObject.SetActive(false);
         }

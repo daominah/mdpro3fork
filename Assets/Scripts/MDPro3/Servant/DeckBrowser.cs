@@ -58,5 +58,15 @@ namespace MDPro3.Servant
             UIManager.SetCanvasMatch(Program.instance.deckEditor.GetCanvasMatch(), 0f);
         }
 
+        public override void Select(bool forced = false)
+        {
+            if (!forced && !UserInput.NeedDefaultSelect())
+                return;
+
+            if (lastSelectedCardInDeck != null)
+                lastSelectedCardInDeck.GetSelectable().Select();
+            else
+                GetUI<DeckBrowserUI>().DeckView.SelectDefaultItem();
+        }
     }
 }

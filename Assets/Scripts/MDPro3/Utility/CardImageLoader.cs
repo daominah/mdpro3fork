@@ -12,7 +12,7 @@ using System.Xml.Linq;
 
 namespace MDPro3.Utility
 {
-    public class CardImageLoader
+    public static class CardImageLoader
     {
 
         private static readonly ConcurrentDictionary<int, CacheEntry> cachedArts = new();
@@ -29,6 +29,7 @@ namespace MDPro3.Utility
         private static readonly int maxArtLoads = 2;
         public static readonly int maxCardLoads = 2;
 #endif
+
         private static readonly SemaphoreSlim artSemaphore = new(maxArtLoads, maxArtLoads);
         private static readonly SemaphoreSlim cardSemaphore = new(maxCardLoads, maxCardLoads);
 

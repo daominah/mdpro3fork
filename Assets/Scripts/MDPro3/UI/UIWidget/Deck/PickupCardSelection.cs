@@ -1,5 +1,6 @@
 using MDPro3.Duel.YGOSharp;
 using MDPro3.Servant;
+using MDPro3.UI.PropertyOverride;
 using MDPro3.UI.ServantUI;
 using MDPro3.Utility;
 using System.Threading.Tasks;
@@ -43,7 +44,10 @@ namespace MDPro3.UI
             base.Awake();
 
             SetPickups(DeckEditor.Deck);
-            _ = LoadDeckCaseAsync(DeckEditor.Deck.Case);
+            if (PropertyOverrider.NeedMobileLayout())
+                IconDeckCase.gameObject.SetActive(false);
+            else
+                _ = LoadDeckCaseAsync(DeckEditor.Deck.Case);
         }
 
         public void SetPickups(Deck deck)
@@ -138,6 +142,16 @@ namespace MDPro3.UI
                 await TaskUtility.WaitOneFrame();
             if(gameObject != null)
                 IconDeckCase.sprite = load.Result;
+        }
+
+        public void Select()
+        {
+            Pickup0.GetSelectable().Select();
+        }
+
+        public void OnLeftNavigation()
+        {
+            Program.instance.deckBrowser.GetUI<DeckBrowserUI>().DeckView.SelectNearestCard(Pickup0.transform.position);
         }
     }
 }

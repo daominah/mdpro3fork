@@ -62,6 +62,5 @@ namespace MDPro3.Utility
                 return MasterDuelPortuguese;
             return language;
         }
-
     }
 }

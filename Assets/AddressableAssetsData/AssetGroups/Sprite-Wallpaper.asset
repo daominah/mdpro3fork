@@ -15,6 +15,11 @@ MonoBehaviour:
   m_GroupName: Sprite-Wallpaper
   m_GUID: 1e6a3e7924d598e4f9f85bdf037b05b6
   m_SerializeEntries:
+  - m_GUID: 024a755f1eddde8438c8419c2feb9194
+    m_Address: WallPaperIcon1130066
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0368571da9537ce458fd70f548fc8c41
     m_Address: WallPaperIcon1135004
     m_ReadOnly: 0
@@ -62,6 +67,16 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 2a60c5c0c25e4c34fbaa6f2c7c668fe6
     m_Address: WallPaperIcon1130017
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2b5db5d42cb84c9478eaf882a44298b2
+    m_Address: WallPaperIcon1130072
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 313b23e2cb4bcd0418bf906d6c7fe518
+    m_Address: WallPaperIcon1130067
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

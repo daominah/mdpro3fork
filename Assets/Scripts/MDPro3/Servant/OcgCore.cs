@@ -1488,6 +1488,18 @@ namespace MDPro3.Servant
             timerHandler.player = player;
         }
 
+        public void StocMessage_Error(string error)
+        {
+            StartCoroutine(ShowErrorMessageAsync(error));
+        }
+        
+        private IEnumerator ShowErrorMessageAsync(string error)
+        {
+            while (servantUI == null)
+                yield return null;
+            GetUI<OcgCoreUI>().DuelErrorLog.Show(error);
+        }
+
         private void SetPlayableGuide(bool me)
         {
             if (playableGuide == null) return;
@@ -1515,7 +1527,6 @@ namespace MDPro3.Servant
             }
             return true;
         }
-
 
         public void ForceMSquit()
         {

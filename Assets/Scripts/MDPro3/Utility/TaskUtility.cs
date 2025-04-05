@@ -29,5 +29,12 @@ namespace MDPro3.Utility
             if(!Application.isPlaying)
                 throw new OperationCanceledException();
         }
+
+        public static async Task WaitOneFrame(GameObject gameObject)
+        {
+            await Task.Yield();
+            if (!Application.isPlaying || gameObject == null)
+                throw new OperationCanceledException();
+        }
     }
 }

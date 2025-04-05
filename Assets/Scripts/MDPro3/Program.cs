@@ -9,6 +9,10 @@ using UnityEngine.AddressableAssets;
 using MDPro3.Net;
 using MDPro3.UI;
 using MDPro3.Servant;
+using YgomGame.Bg;
+using static YgomGame.Bg.BgEffectSettingInner;
+
+
 #if UNITY_EDITOR
 using UnityEditor;
 #endif

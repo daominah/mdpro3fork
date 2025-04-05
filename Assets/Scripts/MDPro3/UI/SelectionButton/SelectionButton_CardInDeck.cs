@@ -10,9 +10,7 @@ using YgomSystem.UI;
 using static MDPro3.UI.DeckView;
 using MDPro3.Servant;
 using MDPro3.UI.ServantUI;
-using NUnit.Framework;
-using System.Collections.Generic;
-using UnityEngine.Animations;
+using MDPro3.UI.PropertyOverride;
 
 namespace MDPro3.UI
 {
@@ -181,6 +179,10 @@ namespace MDPro3.UI
                 }
                 else if (Program.instance.currentServant == Program.instance.deckBrowser)
                 {
+                    if (dragProcessing)
+                        return;
+
+                    AudioManager.PlaySE("SE_MENU_DECIDE");
                     PickupClick();
                 }
             });
@@ -337,7 +339,7 @@ namespace MDPro3.UI
         public void LockPosition()
         {
             //child.SetParent(Program.instance.ui_.transform, true);
-            child.SetParent(Program.instance.deckEditor.GetUI<DeckEditorUI>().DeckView.TempView, true);
+            child.SetParent(deckView.TempView, true);
             StartCoroutine(AutoMoveToParent());
         }
 
@@ -398,7 +400,7 @@ namespace MDPro3.UI
             {
                 child.gameObject.SetActive(false);
                 yield return null;
-                Program.instance.deckEditor.GetUI<DeckEditorUI>().DeckView.ScrollTo(this);
+                deckView.ScrollTo(this);
             }
 
             yield return null;
@@ -472,6 +474,8 @@ namespace MDPro3.UI
 
         private void PickupClick()
         {
+            Program.instance.deckBrowser.lastSelectedCardInDeck = this;
+
             ShowThisCard();
             if (picked)
             {
@@ -490,9 +494,7 @@ namespace MDPro3.UI
         private int GetIndex()
         {
             int index = 0;
-            var cards = Program.instance.deckEditor.GetUI<DeckEditorUI>().DeckView.cards;
-            if(Program.instance.currentServant == Program.instance.deckBrowser)
-                cards = Program.instance.deckBrowser.GetUI<DeckBrowserUI>().DeckView.cards;
+            var cards = deckView.cards;
 
             for (int i = 0; i < cards.Count; i++)
                 if (cards[i] == this)
@@ -511,10 +513,14 @@ namespace MDPro3.UI
         private bool draging;
         private bool dragIni;
 
+        private bool NeedResponseDrag()
+        {
+            return deckView.condition == Condition.Editable;
+        }
+
         public void OnBeginDrag(PointerEventData eventData)
         {
-            if (eventData.button != PointerEventData.InputButton.Left
-                || deckView.condition != Condition.Editable)
+            if (eventData.button != PointerEventData.InputButton.Left)
                 return;
 
             deckView.ScrollRect.OnBeginDrag(eventData);
@@ -526,8 +532,7 @@ namespace MDPro3.UI
 
         public void OnDrag(PointerEventData eventData)
         {
-            if (eventData.button != PointerEventData.InputButton.Left
-                || deckView.condition != Condition.Editable)
+            if (eventData.button != PointerEventData.InputButton.Left)
                 return;
 
             if (draging)
@@ -561,18 +566,19 @@ namespace MDPro3.UI
             else
             {
                 deckView.ScrollRect.OnDrag(eventData);
-                draging = NeedStartDrag(dragStartPosition, eventData.position);
+                draging = NeedResponseDrag() 
+                    & NeedStartDrag(dragStartPosition, eventData.position);
             }
         }
 
         public void OnEndDrag(PointerEventData eventData)
         {
-            if (eventData.button != PointerEventData.InputButton.Left
-                || deckView.condition != Condition.Editable)
+            if (eventData.button != PointerEventData.InputButton.Left)
                 return;
 
             deckView.ScrollRect.OnEndDrag(eventData);
             dragProcessing = false;
+
             UserInput.Draging = false;
 
             if(draging)
@@ -584,7 +590,7 @@ namespace MDPro3.UI
                 dragTarget.gameObject.SetActive(false);
 
                 Program.instance.deckEditor.GetUI<DeckEditorUI>().DragCardTo(this);
-                Program.instance.deckEditor.GetUI<DeckEditorUI>().DeckView.HideDeckLocationTable();
+                deckView.HideDeckLocationTable();
             }
         }
 
@@ -618,19 +624,12 @@ namespace MDPro3.UI
 
         protected override int GetButtonsCount()
         {
-            if(Program.instance.currentServant == Program.instance.deckEditor)
-                return Program.instance.deckEditor.GetUI<DeckEditorUI>().DeckView.GetDeckLocationCount(location);
-            else
-                return Program.instance.deckBrowser.GetUI<DeckBrowserUI>().DeckView.GetDeckLocationCount(location);
+            return deckView.GetDeckLocationCount(location);
         }
 
         protected override int GetColumnsCount()
         {
-            if (Program.instance.currentServant == Program.instance.deckEditor)
-                return Program.instance.deckEditor.GetUI<DeckEditorUI>().DeckView.GetDeckLocationParent(location)
-                .GetComponent<GridLayoutGroup>().Size().x;
-            else
-                return Program.instance.deckBrowser.GetUI<DeckBrowserUI>().DeckView.GetDeckLocationParent(location)
+            return deckView.GetDeckLocationParent(location)
                 .GetComponent<GridLayoutGroup>().Size().x;
         }
 
@@ -659,7 +658,10 @@ namespace MDPro3.UI
                 if (selfIndex % columes == columes - 1
                     || selfIndex == count - 1)
                 {
-                    Program.instance.deckEditor.SelectNearestCollectionViewItem(transform.position);
+                    if (Program.instance.currentServant == Program.instance.deckEditor)
+                        Program.instance.deckEditor.SelectNearestCollectionViewItem(transform.position);
+                    else if (Program.instance.currentServant == Program.instance.deckBrowser)
+                        Program.instance.deckBrowser.GetUI<DeckBrowserUI>().PickupCardSelection.Select();
                     return;
                 }
             }
@@ -714,16 +716,16 @@ namespace MDPro3.UI
                 if (location == DeckLocation.MainDeck)
                     return null;
                 else if(location == DeckLocation.ExtraDeck)
-                    return Program.instance.deckEditor.GetUI<DeckEditorUI>().DeckView.GetNavigationTarget(DeckLocation.MainDeck, direction, transform.position);
+                    return deckView.GetNavigationTarget(DeckLocation.MainDeck, direction, transform.position);
                 else if (location == DeckLocation.SideDeck)
-                    return Program.instance.deckEditor.GetUI<DeckEditorUI>().DeckView.GetNavigationTarget(DeckLocation.ExtraDeck, direction, transform.position);
+                    return deckView.GetNavigationTarget(DeckLocation.ExtraDeck, direction, transform.position);
             }
             else if (direction == MoveDirection.Down)
             {
                 if (location == DeckLocation.MainDeck)
-                    return Program.instance.deckEditor.GetUI<DeckEditorUI>().DeckView.GetNavigationTarget(DeckLocation.ExtraDeck, direction, transform.position);
+                    return deckView.GetNavigationTarget(DeckLocation.ExtraDeck, direction, transform.position);
                 else if (location == DeckLocation.ExtraDeck)
-                    return Program.instance.deckEditor.GetUI<DeckEditorUI>().DeckView.GetNavigationTarget(DeckLocation.SideDeck, direction, transform.position);
+                    return deckView.GetNavigationTarget(DeckLocation.SideDeck, direction, transform.position);
                 else if (location == DeckLocation.SideDeck)
                     return null;
             }
@@ -735,7 +737,7 @@ namespace MDPro3.UI
             if (target == null)
                 return;
             UserInput.NextSelectionIsAxis = true;
-            EventSystem.current.SetSelectedGameObject(target.gameObject);
+            target.GetSelectable().Select();
         }
 
         #endregion

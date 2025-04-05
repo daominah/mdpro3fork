@@ -20,7 +20,7 @@ namespace MDPro3
 
         private static IntPtr _buffer;
 
-        private object locker = new object();
+        //private object locker = new();
 
         public Ygopro ygopro;
 
@@ -31,6 +31,7 @@ namespace MDPro3
             ygopro = new Ygopro(ReceiveHandler, CardHandler, ScriptHandler, ChatHandler);
             //ygopro.m_log = a => UnityEngine.Debug.Log(a);
         }
+
         private CardData CardHandler(long code)
         {
             var card = CardsManager.Get((int)code);
@@ -91,13 +92,16 @@ namespace MDPro3
             }
             return ret;
         }
+
         private void ChatHandler(string result)
         {
-            var p = new BinaryMaster();
-            p.writer.Write((byte)GameMessage.sibyl_chat);
-            result = result.Replace("Error Occurred.", error);
+            //var p = new BinaryMaster();
+            //p.writer.Write((byte)GameMessage.sibyl_chat);
+            ////result = result.Replace("Error Occurred.", error);
             //p.writer.WriteUnicode(result, result.Length + 1);
-            ReceiveHandler(p.Get());
+            //ReceiveHandler(p.Get());
+
+            MDPro3.Program.instance.ocgcore.StocMessage_Error(result);
         }
 
         private void ReceiveHandler(byte[] buffer)
@@ -112,6 +116,7 @@ namespace MDPro3
         {
             ygopro.Dispose();
         }
+
         public void Response(byte[] resp)
         {
             //UnityEngine.Debug.Log(Program.instance.ocgcore.currentMessage + ": " + BitConverter.ToString(resp));
@@ -144,6 +149,7 @@ namespace MDPro3
         {
             //Program.instance.ocgcore.handler = Response;
         }
+
         public void StartDuel()
         {
 

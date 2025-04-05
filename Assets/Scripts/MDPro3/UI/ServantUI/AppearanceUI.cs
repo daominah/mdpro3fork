@@ -645,6 +645,11 @@ namespace MDPro3.UI.ServantUI
             Page00PlayerName.GetSelectable().Select();
         }
 
+        public bool InPickupPage()
+        {
+            return currentContent == "Pickup";
+        }
+
         public void OnPickupChange()
         {
             Program.instance.ShiftToServant(Program.instance.deckBrowser);

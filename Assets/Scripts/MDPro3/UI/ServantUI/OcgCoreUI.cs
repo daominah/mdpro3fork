@@ -1,14 +1,13 @@
 using MDPro3.Duel;
-using System.Collections.Generic;
+using MDPro3.Duel.YGOSharp;
 using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.UI;
-using static MDPro3.Servant.OcgCore;
-using MDPro3.Duel.YGOSharp;
-using MDPro3.Servant;
 using YgomSystem.ElementSystem;
+using static MDPro3.Servant.OcgCore;
 
 namespace MDPro3.UI.ServantUI
 {
@@ -89,23 +88,29 @@ namespace MDPro3.UI.ServantUI
 
         #region Mono
 
-        private const string LABEL_MONO_CARDDESCRIPTION = "CardDescription";
+        private const string LABEL_MONO_CARD_DESCRIPTION = "CardDescription";
         private CardDescription m_CardDescription;
         public CardDescription CardDescription =>
             m_CardDescription = m_CardDescription != null ? m_CardDescription
-            : Manager.GetElement<CardDescription>(LABEL_MONO_CARDDESCRIPTION);
+            : Manager.GetElement<CardDescription>(LABEL_MONO_CARD_DESCRIPTION);
 
-        private const string LABEL_MONO_CARDLIST = "CardList";
+        private const string LABEL_MONO_CARD_LIST = "CardList";
         private CardList m_CardList;
         public CardList CardList =>
             m_CardList = m_CardList != null ? m_CardList
-            : Manager.GetElement<CardList>(LABEL_MONO_CARDLIST);
+            : Manager.GetElement<CardList>(LABEL_MONO_CARD_LIST);
 
-        private const string LABEL_MONO_DUELLOG = "DuelLog";
+        private const string LABEL_MONO_DUEL_LOG = "DuelLog";
         private DuelLog m_DuelLog;
         public DuelLog DuelLog =>
             m_DuelLog = m_DuelLog != null ? m_DuelLog
-            : Manager.GetElement<DuelLog>(LABEL_MONO_DUELLOG);
+            : Manager.GetElement<DuelLog>(LABEL_MONO_DUEL_LOG);
+
+        private const string LABEL_MONO_DUEL_ERROR_LOG = "DuelErrorLog";
+        private DuelErrorLog m_DuelErrorLog;
+        public DuelErrorLog DuelErrorLog =>
+            m_DuelErrorLog = m_DuelErrorLog != null ? m_DuelErrorLog
+            : Manager.GetElement<DuelErrorLog>(LABEL_MONO_DUEL_ERROR_LOG);
 
         #endregion
 
