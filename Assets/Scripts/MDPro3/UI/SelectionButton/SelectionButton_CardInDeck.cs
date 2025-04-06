@@ -515,7 +515,8 @@ namespace MDPro3.UI
 
         private bool NeedResponseDrag()
         {
-            return deckView.condition == Condition.Editable;
+            return deckView.condition == Condition.Editable 
+                || deckView.condition == Condition.ChangeSide;
         }
 
         public void OnBeginDrag(PointerEventData eventData)

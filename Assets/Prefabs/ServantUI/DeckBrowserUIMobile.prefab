@@ -34001,7 +34001,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 3510518714693361067}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.81371814
+  m_Size: 0.8152175
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -39394,8 +39394,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 116, y: 0}
-  m_SizeDelta: {x: 960, y: 44}
+  m_AnchoredPosition: {x: 152, y: 0}
+  m_SizeDelta: {x: 960, y: 60}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &2001270087942882399
 MonoBehaviour:
@@ -39427,8 +39427,8 @@ MonoBehaviour:
     m_DefaultValue: {x: 116, y: 0}
     m_MobileValue: {x: 152, y: 0}
   m_SizeDelta:
-    m_DefaultValue: {x: 960, y: 44}
-    m_MobileValue: {x: 960, y: 44}
+    m_DefaultValue: {x: 960, y: 50}
+    m_MobileValue: {x: 960, y: 60}
   debug: 0
 --- !u!222 &7433859073030925942
 CanvasRenderer:
@@ -39485,7 +39485,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 33
+  m_fontSize: 36
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1

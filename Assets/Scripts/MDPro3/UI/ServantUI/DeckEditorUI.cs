@@ -354,11 +354,11 @@ namespace MDPro3.UI.ServantUI
             else if (condition == Condition.ChangeSide)
                 editConditon = DeckView.Condition.ChangeSide;
 
-            DeckView.PrintDeck(DeckEditor.Deck, DeckName, editConditon);
             DeckView.ButtonDeck.SetClickEvent(OnDeckButtonClicked);
             if (DeckEditor.Deck == null)
                 loadOnlineDeckCoroutine = StartCoroutine(LoadOnlineDeckAsync());
-
+            else
+                DeckView.PrintDeck(DeckEditor.Deck, DeckName, editConditon);
             SetDeckButtonText();
         }
 
@@ -377,6 +377,7 @@ namespace MDPro3.UI.ServantUI
 
             DeckName = onlineDeckData.deckName;
             DeckEditor.Deck = new Deck(onlineDeckData.deckYdk, onlineDeckData.deckContributor);
+            InitializeDeckView();
 
             loadOnlineDeckCoroutine = null;
         }

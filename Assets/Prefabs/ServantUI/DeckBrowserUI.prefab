@@ -3786,7 +3786,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 116, y: 0}
-  m_SizeDelta: {x: 960, y: 44}
+  m_SizeDelta: {x: 960, y: 50}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &114380707930180569
 MonoBehaviour:
@@ -3818,8 +3818,8 @@ MonoBehaviour:
     m_DefaultValue: {x: 116, y: 0}
     m_MobileValue: {x: 152, y: 0}
   m_SizeDelta:
-    m_DefaultValue: {x: 960, y: 44}
-    m_MobileValue: {x: 960, y: 44}
+    m_DefaultValue: {x: 960, y: 50}
+    m_MobileValue: {x: 960, y: 60}
   debug: 0
 --- !u!222 &222223138037354736
 CanvasRenderer:
@@ -3876,7 +3876,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 33
+  m_fontSize: 36
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
