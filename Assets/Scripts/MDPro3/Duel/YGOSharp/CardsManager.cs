@@ -43,10 +43,10 @@ namespace MDPro3.Duel.YGOSharp
                         if (file.ToLower().EndsWith(".cdb"))
                         {
                             var e = zip[file];
-                            if (!Directory.Exists(Program.tempFolder))
-                                Directory.CreateDirectory(Program.tempFolder);
-                            var tempFile = Path.Combine(Path.GetFullPath(Program.tempFolder), file);
-                            e.Extract(Path.GetFullPath(Program.tempFolder), ExtractExistingFileAction.OverwriteSilently);
+                            if (!Directory.Exists(Program.PATH_TEMP_FOLDER))
+                                Directory.CreateDirectory(Program.PATH_TEMP_FOLDER);
+                            var tempFile = Path.Combine(Path.GetFullPath(Program.PATH_TEMP_FOLDER), file);
+                            e.Extract(Path.GetFullPath(Program.PATH_TEMP_FOLDER), ExtractExistingFileAction.OverwriteSilently);
                             LoadCDB(tempFile, isPreCards : Path.GetFileName(zip.Name) == "ygopro-super-pre.ypk");
                             File.Delete(tempFile);
                         }
@@ -76,10 +76,10 @@ namespace MDPro3.Duel.YGOSharp
                         if (file.ToLower().EndsWith(".cdb"))
                         {
                             var e = zip[file];
-                            if (!Directory.Exists(Program.tempFolder))
-                                Directory.CreateDirectory(Program.tempFolder);
-                            var tempFile = Path.Combine(Path.GetFullPath(Program.tempFolder), file);
-                            e.Extract(Path.GetFullPath(Program.tempFolder), ExtractExistingFileAction.OverwriteSilently);
+                            if (!Directory.Exists(Program.PATH_TEMP_FOLDER))
+                                Directory.CreateDirectory(Program.PATH_TEMP_FOLDER);
+                            var tempFile = Path.Combine(Path.GetFullPath(Program.PATH_TEMP_FOLDER), file);
+                            e.Extract(Path.GetFullPath(Program.PATH_TEMP_FOLDER), ExtractExistingFileAction.OverwriteSilently);
                             LoadCDB(tempFile, true, isPreCards: Path.GetFileName(zip.Name) == "ygopro-super-pre.ypk");
                             File.Delete(tempFile);
                         }

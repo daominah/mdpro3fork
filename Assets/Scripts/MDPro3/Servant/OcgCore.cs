@@ -462,7 +462,7 @@ namespace MDPro3.Servant
 
         public void CameraZoomToMate0()
         {
-            if (Program.root == Program.rootAndroid)
+            if (Program.root == Program.PATH_ROOT_ANDROID)
                 return;
 
             if (Config.Get("MateViewTips", "0") == "0")
@@ -487,7 +487,7 @@ namespace MDPro3.Servant
 
         public void CameraZoomToMate1()
         {
-            if (Program.root == Program.rootAndroid)
+            if (Program.root == Program.PATH_ROOT_ANDROID)
                 return;
 
             if (Config.Get("MateViewTips", "0") == "0")

@@ -6,9 +6,13 @@ Unity version: 6000.0.10f1
 
 ### Other required folders
 
-* Android: You can find it from the Android apk.
+* Platforms/Android: You can find it from the Android apk.
 
-* StandaloneWindows64: You can find it from the released MDPro3(windows).
+* Platforms/StandaloneWindows64: You can find it from the released MDPro3(windows).
+
+* Platforms/iOS: You can find it from the released MDPro3(iOS).
+
+* Platforms/Mac: You can find it from the released MDPro3(Mac).
 
 * Picture/Art: https://code.mycard.moe/mycard/hd-arts
 

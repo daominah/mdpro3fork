@@ -23,9 +23,9 @@ namespace YgomSystem.UI.PropertyOverrider
 
         private void Start()
         {
-			if (m_Active.m_DefaultValue && Program.root != Program.rootWindows64)
+			if (m_Active.m_DefaultValue && Program.root != Program.PATH_ROOT_WINDOWS64)
 				Destroy(gameObject);
-            if (m_Active.m_MobileValue && Program.root == Program.rootWindows64)
+            if (m_Active.m_MobileValue && Program.root == Program.PATH_ROOT_WINDOWS64)
                 Destroy(gameObject);
         }
     }

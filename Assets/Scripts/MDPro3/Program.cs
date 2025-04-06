@@ -267,15 +267,23 @@ namespace MDPro3
 
         #region MonoBehaviors
 
-        public const string tempFolder = "TempFolder/";
-        public const string rootWindows64 = "StandaloneWindows64/";
-        public const string rootAndroid = "Android/";
-        public static string root = rootWindows64;
+        public const string PATH_ROOT_EDITOR = "Platforms/";
+        public const string PATH_ROOT_WINDOWS64 = "StandaloneWindows64/";
+        public const string PATH_ROOT_ANDROID = "Android/";
+        public const string PATH_ROOT_IOS = "iOS/";
+        public const string PATH_TEMP_FOLDER = "TempFolder/";
+        public static string root = PATH_ROOT_WINDOWS64;
 
         void Awake()
         {
 #if UNITY_ANDROID
-            root = rootAndroid;
+            root = PATH_ROOT_ANDROID;
+#elif UNITY_IOS
+            root = PATH_ROOT_IOS;
+#endif
+
+#if UNITY_EDITOR
+            root = PATH_ROOT_EDITOR + root;
 #endif
             instance = this;
             Initialize();
@@ -420,8 +428,8 @@ namespace MDPro3
             string cachePath = cacheDir.Call<string>("getAbsolutePath");
             Tools.ClearDirectoryRecursively(new DirectoryInfo(cachePath));
 #else
-            if (Directory.Exists(tempFolder))
-                Directory.Delete(tempFolder, true);
+            if (Directory.Exists(PATH_TEMP_FOLDER))
+                Directory.Delete(PATH_TEMP_FOLDER, true);
 #endif
         }
 

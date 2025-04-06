@@ -14,23 +14,29 @@ using System;
 public class AssetBundleRobber : MonoBehaviour
 {
     public Text text;
-    static Text sText;
-    string masterDuelAssetBundlePath;
-    string masterDuelWindowsAssetBundlePath = "D:/Game/Steam/steamapps/common/Yu-Gi-Oh!  Master Duel/LocalData/16165626/0000/";
-    string masterDuelAndroidAssetBundlePath = "D:/Game/Steam/steamapps/common/Yu-Gi-Oh!  Master Duel/LocalData/Android/0000/";
-    string workingPlace;
+    private static Text sText;
+
+    private string pathAB;
+    private string pathStore;
+
+    private const string PATH_AB_WINDOWS = "D:/Game/Steam/steamapps/common/Yu-Gi-Oh!  Master Duel/LocalData/16165626/0000/";
+    private const string PATH_AB_ANDROID = "D:/Game/Steam/steamapps/common/Yu-Gi-Oh!  Master Duel/LocalData/Android/0000/";
+    private const string PATH_AB_IOS = "D:/Game/Steam/steamapps/common/Yu-Gi-Oh!  Master Duel/LocalData/iOS/0000/";
+
+    private const string PATH_STORE_WINDOWS = "Platforms/StandaloneWindows64/Robber/";
+    private const string PATH_STORE_ANDROID = "Platforms/Android/Robber/";
+    private const string PATH_STORE_IOS = "Platforms/iOS/Robber/";
+
     public static int fileCount;
     public static int currentFileCount;
-    readonly object _lock = new object();
-    bool noSave = false;
-    ConcurrentQueue<string> logQueue = new ConcurrentQueue<string>();
-    int count = 0;
-    AssetStudio.AssetsManager assetManager;
+    private readonly object _lock = new();
+    private bool noSave = false;
+    private readonly ConcurrentQueue<string> logQueue = new();
+    private int count = 0;
+    private AssetStudio.AssetsManager assetManager;
 
-    bool fullCopy;
-    string androindWorkingPlace = "Android/Robber/";
-    string windowsWorkingPlace = "StandaloneWindows64/Robber/";
-    int threads = 32;
+    private bool fullCopy;
+    private readonly int threads = 32;
 
     public struct AssetbundleInfo
     {
@@ -58,11 +64,15 @@ public class AssetBundleRobber : MonoBehaviour
 
         //masterDuelAssetBundlePath = masterDuelWindowsAssetBundlePath;
         //workingPlace = windowsWorkingPlace;
-        masterDuelAssetBundlePath = masterDuelAndroidAssetBundlePath;
-        workingPlace = androindWorkingPlace;
 
-        //fullCopy = true;
-        fullCopy = false;
+        //pathAB = PATH_AB_ANDROID;
+        //pathStore = PATH_STORE_ANDROID;
+
+        pathAB = PATH_AB_IOS;
+        pathStore = PATH_STORE_IOS;
+
+        fullCopy = true;
+        //fullCopy = false;
 
         Initialize();
 
@@ -76,11 +86,11 @@ public class AssetBundleRobber : MonoBehaviour
         {
             if (file.path == path)
             {
-                Directory.CreateDirectory(workingPlace + path);
-                File.Copy(GetFullPath(file.path), workingPlace + path + "/" + file.path);
+                Directory.CreateDirectory(pathStore + path);
+                File.Copy(GetFullPath(file.path), pathStore + path + "/" + file.path);
                 foreach (var dep in file.dependencies)
                 {
-                    File.Copy(GetFullPath(dep), workingPlace + path + "/" + dep);
+                    File.Copy(GetFullPath(dep), pathStore + path + "/" + dep);
 
                 }
             }
@@ -91,11 +101,11 @@ public class AssetBundleRobber : MonoBehaviour
 
     void Initialize()
     {
-        if (!Directory.Exists(workingPlace))
-            Directory.CreateDirectory(workingPlace);
+        if (!Directory.Exists(pathStore))
+            Directory.CreateDirectory(pathStore);
         var fullText = "";
-        if (File.Exists(workingPlace + "FileList.txt"))
-            fullText = File.ReadAllText(workingPlace + "FileList.txt");
+        if (File.Exists(pathStore + "FileList.txt"))
+            fullText = File.ReadAllText(pathStore + "FileList.txt");
         else
             noSave = true;
         var lines = fullText.Replace("\r", "").Split('\n');
@@ -169,7 +179,7 @@ public class AssetBundleRobber : MonoBehaviour
 
     IEnumerator RefreshFileResources()
     {
-        var ie = assetManager.LoadFolderAsync(masterDuelAssetBundlePath);
+        var ie = assetManager.LoadFolderAsync(pathAB);
         StartCoroutine(ie);
         while (ie.MoveNext())
             yield return null;
@@ -192,13 +202,13 @@ public class AssetBundleRobber : MonoBehaviour
         {
             text.text = "Logging: " + count + "/" + assetManager.assetsFileList.Count;
             if (logQueue.TryDequeue(out var log))
-                File.AppendAllText(workingPlace + "FileList.txt", log);
+                File.AppendAllText(pathStore + "FileList.txt", log);
             yield return null;
         }
 
         while (logQueue.TryDequeue(out var log))
         {
-            File.AppendAllText(workingPlace + "FileList.txt", log);
+            File.AppendAllText(pathStore + "FileList.txt", log);
             text.text = "Writing Left: " + logQueue.Count;
             yield return null;
         }
@@ -294,42 +304,42 @@ public class AssetBundleRobber : MonoBehaviour
             var type = GetAssetType(file.name);
             if (type == AssetType.AvatarStand)
             {
-                if (!Directory.Exists(workingPlace + "AvatarStand"))
-                    Directory.CreateDirectory(workingPlace + "AvatarStand");
-                var targetName = workingPlace + "AvatarStand/" + Path.GetFileName(file.name).Replace(".prefab", "").Replace("avatarstand_", "AvatarStand_");
+                if (!Directory.Exists(pathStore + "AvatarStand"))
+                    Directory.CreateDirectory(pathStore + "AvatarStand");
+                var targetName = pathStore + "AvatarStand/" + Path.GetFileName(file.name).Replace(".prefab", "").Replace("avatarstand_", "AvatarStand_");
 
                 if (!File.Exists(targetName))
                     File.Copy(GetFullPath(file.path), targetName);
             }
             else if (type == AssetType.Frame)
             {
-                if (!Directory.Exists(workingPlace + "Frame"))
-                    Directory.CreateDirectory(workingPlace + "Frame");
-                var targetName = workingPlace + "Frame/" + Path.GetFileName(file.name).Replace(".mat", "").Replace("profileframemat", "ProfileFrameMat");
+                if (!Directory.Exists(pathStore + "Frame"))
+                    Directory.CreateDirectory(pathStore + "Frame");
+                var targetName = pathStore + "Frame/" + Path.GetFileName(file.name).Replace(".mat", "").Replace("profileframemat", "ProfileFrameMat");
                 File.Copy(GetFullPath(file.path), targetName);
             }
             else if (type == AssetType.Grave)
             {
-                if (!Directory.Exists(workingPlace + "Grave"))
-                    Directory.CreateDirectory(workingPlace + "Grave");
-                var targetName = workingPlace + "Grave/" + Path.GetFileName(file.name).Replace(".prefab", "").Replace("grave_", "Grave_");
+                if (!Directory.Exists(pathStore + "Grave"))
+                    Directory.CreateDirectory(pathStore + "Grave");
+                var targetName = pathStore + "Grave/" + Path.GetFileName(file.name).Replace(".prefab", "").Replace("grave_", "Grave_");
                 if (!File.Exists(targetName))
                     File.Copy(GetFullPath(file.path), targetName);
             }
             else if (type == AssetType.Mat)
             {
-                if (!Directory.Exists(workingPlace + "Mat"))
-                    Directory.CreateDirectory(workingPlace + "Mat");
-                var targetName = workingPlace + "Mat/" + Path.GetFileName(file.name).Replace(".prefab", "").Replace("mat_", "Mat_");
+                if (!Directory.Exists(pathStore + "Mat"))
+                    Directory.CreateDirectory(pathStore + "Mat");
+                var targetName = pathStore + "Mat/" + Path.GetFileName(file.name).Replace(".prefab", "").Replace("mat_", "Mat_");
                 if (!File.Exists(targetName))
                     File.Copy(GetFullPath(file.path), targetName);
             }
             else if (type == AssetType.Mate)
             {
-                if (!Directory.Exists(workingPlace + "Mate"))
-                    Directory.CreateDirectory(workingPlace + "Mate");
+                if (!Directory.Exists(pathStore + "Mate"))
+                    Directory.CreateDirectory(pathStore + "Mate");
                 
-                var targetName = workingPlace + "Mate/" + Path.GetFileName(file.name).Replace(".prefab", "").Replace("_model", "_Model").Replace("_sd_", "_SD_").Replace("m", "M").Replace("v", "V");
+                var targetName = pathStore + "Mate/" + Path.GetFileName(file.name).Replace(".prefab", "").Replace("_model", "_Model").Replace("_sd_", "_SD_").Replace("m", "M").Replace("v", "V");
 
                 if (file.dependencies.Count == 0)
                 {
@@ -356,10 +366,10 @@ public class AssetBundleRobber : MonoBehaviour
             }
             else if (type == AssetType.Protector)
             {
-                if (!Directory.Exists(workingPlace + "Protector"))
-                    Directory.CreateDirectory(workingPlace + "Protector");
+                if (!Directory.Exists(pathStore + "Protector"))
+                    Directory.CreateDirectory(pathStore + "Protector");
                 string subDir = "107" + Regex.Split(file.name, "/")[4];
-                var targetFolder = workingPlace + "Protector/" + subDir;
+                var targetFolder = pathStore + "Protector/" + subDir;
                 var targetName = targetFolder + "/" + Path.GetFileName(file.name).Replace("pmat.mat", subDir).Replace("protectoricon", "ProtectorIcon").Replace(".png", "");
 
                 if (!Directory.Exists(targetFolder))
@@ -368,10 +378,10 @@ public class AssetBundleRobber : MonoBehaviour
             }
             else if (type == AssetType.Wallpaper)
             {
-                if (!Directory.Exists(workingPlace + "Wallpaper"))
-                    Directory.CreateDirectory(workingPlace + "Wallpaper");
+                if (!Directory.Exists(pathStore + "Wallpaper"))
+                    Directory.CreateDirectory(pathStore + "Wallpaper");
                 var subDir = Path.GetFileName(file.name).Replace(".prefab", "").Replace("front", "Front");
-                var targetFolder = workingPlace + "Wallpaper/" + subDir;
+                var targetFolder = pathStore + "Wallpaper/" + subDir;
                 if (!Directory.Exists(targetFolder))
                     Directory.CreateDirectory(targetFolder);
                 File.Copy(GetFullPath(file.path), targetFolder + "/" + subDir);
@@ -386,10 +396,10 @@ public class AssetBundleRobber : MonoBehaviour
             }
             else if (type == AssetType.Background)
             {
-                if (!Directory.Exists(workingPlace + "Background"))
-                    Directory.CreateDirectory(workingPlace + "Background");
+                if (!Directory.Exists(pathStore + "Background"))
+                    Directory.CreateDirectory(pathStore + "Background");
                 string subDir = Path.GetFileName(file.name).Replace("back", "Back").Replace(".prefab", "");
-                var targetFolder = workingPlace + "Background/" + subDir;
+                var targetFolder = pathStore + "Background/" + subDir;
                 if (!Directory.Exists(targetFolder))
                     Directory.CreateDirectory(targetFolder);
                 if (!File.Exists(targetFolder + "/" + subDir))
@@ -407,15 +417,15 @@ public class AssetBundleRobber : MonoBehaviour
             }
             else if (type == AssetType.Card)
             {
-                if (!Directory.Exists(workingPlace + "Card"))
-                    Directory.CreateDirectory(workingPlace + "Card");
+                if (!Directory.Exists(pathStore + "Card"))
+                    Directory.CreateDirectory(pathStore + "Card");
                 string subDir = int.Parse(Regex.Split(file.name, "/")[6].Replace("ef", "")).ToString();
                 subDir = GetYdkID(subDir);
                 if (file.name.Contains("/highend_hd/"))
                     subDir = "HD" + subDir;
                 else if (file.name.Contains("/sd/"))
                     subDir = "SD" + subDir;
-                var targetFolder = workingPlace + "Card/" + subDir;
+                var targetFolder = pathStore + "Card/" + subDir;
                 if (!Directory.Exists(targetFolder))
                     Directory.CreateDirectory(targetFolder);
                 File.Copy(GetFullPath(file.path), targetFolder + "/" + Path.GetFileName(file.name).Replace(".prefab", "").Replace("ef", "Ef"));
@@ -434,13 +444,13 @@ public class AssetBundleRobber : MonoBehaviour
             else if (type == AssetType.MonsterCutin)
             {
                 if (file.name.Contains("/sd/"))
-                    if (workingPlace.Contains("Windows"))
+                    if (pathStore.Contains("Windows"))
                         continue;
-                if (!Directory.Exists(workingPlace + "MonsterCutin"))
-                    Directory.CreateDirectory(workingPlace + "MonsterCutin");
+                if (!Directory.Exists(pathStore + "MonsterCutin"))
+                    Directory.CreateDirectory(pathStore + "MonsterCutin");
                 string subDir = Regex.Split(file.name, "/")[7].Replace("p", "");
                 subDir = GetYdkID(subDir);
-                var targetFolder = workingPlace + "MonsterCutin/" + subDir;
+                var targetFolder = pathStore + "MonsterCutin/" + subDir;
                 if (!Directory.Exists(targetFolder))
                     Directory.CreateDirectory(targetFolder);
                 File.Copy(GetFullPath(file.path), targetFolder + "/" + file.path);
@@ -459,10 +469,10 @@ public class AssetBundleRobber : MonoBehaviour
             else if (type == AssetType.SpecialWin)
             {
                 if (file.name.Contains("/sd/"))
-                    if (workingPlace.Contains("Windows"))
+                    if (pathStore.Contains("Windows"))
                         continue;
-                if (!Directory.Exists(workingPlace + "SpecialWin"))
-                    Directory.CreateDirectory(workingPlace + "SpecialWin");
+                if (!Directory.Exists(pathStore + "SpecialWin"))
+                    Directory.CreateDirectory(pathStore + "SpecialWin");
                 string subDir = Regex.Split(file.name, "/")[8];
                 if (subDir.Contains(".prefab"))//4027 °¬¿Ë×ôµÏÑÇ
                 {
@@ -471,7 +481,7 @@ public class AssetBundleRobber : MonoBehaviour
                 else
                     subDir = subDir.Replace("p", "");
                 subDir = GetYdkID(subDir);
-                var targetFolder = workingPlace + "SpecialWin/" + subDir;
+                var targetFolder = pathStore + "SpecialWin/" + subDir;
                 if (!Directory.Exists(targetFolder))
                     Directory.CreateDirectory(targetFolder);
                 File.Copy(GetFullPath(file.path), targetFolder + "/" + subDir);
@@ -489,37 +499,37 @@ public class AssetBundleRobber : MonoBehaviour
             }
             else if (type == AssetType.BGM)
             {
-                if (!Directory.Exists(workingPlace + "Sound/BGM"))
-                    Directory.CreateDirectory(workingPlace + "Sound/BGM");
-                var targetName = workingPlace + "Sound/BGM/" + Path.GetFileName(file.name).Replace(".wav", "");
+                if (!Directory.Exists(pathStore + "Sound/BGM"))
+                    Directory.CreateDirectory(pathStore + "Sound/BGM");
+                var targetName = pathStore + "Sound/BGM/" + Path.GetFileName(file.name).Replace(".wav", "");
                 File.Copy(GetFullPath(file.path), targetName);
             }
             else if (type == AssetType.SE_DUEL)
             {
-                if (!Directory.Exists(workingPlace + "Sound/SE_DUEL"))
-                    Directory.CreateDirectory(workingPlace + "Sound/SE_DUEL");
-                var targetName = workingPlace + "Sound/SE_DUEL/" + Path.GetFileName(file.name).Replace(".wav", "");
+                if (!Directory.Exists(pathStore + "Sound/SE_DUEL"))
+                    Directory.CreateDirectory(pathStore + "Sound/SE_DUEL");
+                var targetName = pathStore + "Sound/SE_DUEL/" + Path.GetFileName(file.name).Replace(".wav", "");
                 File.Copy(GetFullPath(file.path), targetName);
             }
             else if (type == AssetType.SE_FIELD)
             {
-                if (!Directory.Exists(workingPlace + "Sound/SE_FIELD"))
-                    Directory.CreateDirectory(workingPlace + "Sound/SE_FIELD");
-                var targetName = workingPlace + "Sound/SE_FIELD/" + Path.GetFileName(file.name).Replace(".wav", "");
+                if (!Directory.Exists(pathStore + "Sound/SE_FIELD"))
+                    Directory.CreateDirectory(pathStore + "Sound/SE_FIELD");
+                var targetName = pathStore + "Sound/SE_FIELD/" + Path.GetFileName(file.name).Replace(".wav", "");
                 File.Copy(GetFullPath(file.path), targetName);
             }
             else if (type == AssetType.SE_MATE)
             {
-                if (!Directory.Exists(workingPlace + "Sound/SE_MATE"))
-                    Directory.CreateDirectory(workingPlace + "Sound/SE_MATE");
-                var targetName = workingPlace + "Sound/SE_MATE/" + Path.GetFileName(file.name).Replace(".wav", "");
+                if (!Directory.Exists(pathStore + "Sound/SE_MATE"))
+                    Directory.CreateDirectory(pathStore + "Sound/SE_MATE");
+                var targetName = pathStore + "Sound/SE_MATE/" + Path.GetFileName(file.name).Replace(".wav", "");
                 File.Copy(GetFullPath(file.path), targetName);
             }
             else if (type == AssetType.SE_SYS)
             {
-                if (!Directory.Exists(workingPlace + "Sound/SE_SYS"))
-                    Directory.CreateDirectory(workingPlace + "Sound/SE_SYS");
-                var targetName = workingPlace + "Sound/SE_SYS/" + Path.GetFileName(file.name).Replace(".wav", "");
+                if (!Directory.Exists(pathStore + "Sound/SE_SYS"))
+                    Directory.CreateDirectory(pathStore + "Sound/SE_SYS");
+                var targetName = pathStore + "Sound/SE_SYS/" + Path.GetFileName(file.name).Replace(".wav", "");
                 try
                 {
                     File.Copy(GetFullPath(file.path), targetName);
@@ -749,7 +759,7 @@ public class AssetBundleRobber : MonoBehaviour
             Debug.Log("Too short: " + path);
             return string.Empty;
         }
-        var returnValue = masterDuelAssetBundlePath + path.Substring(0, 2) + "/" + path;
+        var returnValue = pathAB + path.Substring(0, 2) + "/" + path;
         //Debug.Log(path + ": " + returnValue);
         return returnValue;
     }

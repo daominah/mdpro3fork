@@ -18,6 +18,8 @@ ExportedObj/
 *.svd
 *.pdb
 /.utmp/
+.DS_Store
+.vscode/
 
 # Unity3D generated files
 [Ll]ibrary/
@@ -36,7 +38,6 @@ sysinfo.txt
 *.gradle
 
 # MDPro3 Assets
-/Android/
 /AssetsUnused/
 /[Dd]eck/
 /[Ee]xpansions/
@@ -45,7 +46,7 @@ sysinfo.txt
 /[Pp]uzzle/
 /[Rr]eplay/
 /[Ss]ound/
-/StandaloneWindows64/
+/Platforms/
 /TempFolder/
 Tools/YGO Classes/build/windows/build/
 Tools/YGO Classes/build/android/libs/

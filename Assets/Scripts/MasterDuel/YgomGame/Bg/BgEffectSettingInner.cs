@@ -136,9 +136,9 @@ namespace YgomGame.Bg
 				foreach(var ani in animator.parameters)
 					animatorParams.Add(ani.name);
 			}
-			if (disableLowEndPlatform && Program.root != Program.rootWindows64)
+			if (disableLowEndPlatform && Program.root != Program.PATH_ROOT_WINDOWS64)
 				Destroy(gameObject);
-			if (enableLowEndPlatformOnly && Program.root == Program.rootWindows64)
+			if (enableLowEndPlatformOnly && Program.root == Program.PATH_ROOT_WINDOWS64)
 				Destroy(gameObject);
 
 			if (playingOnlyActive)
@@ -147,12 +147,12 @@ namespace YgomGame.Bg
 
 		public bool PlayEffect(TriggerLabelDefine triggerLabel)
 		{
-			if (disableLowEndPlatform && Program.root != Program.rootWindows64)
+			if (disableLowEndPlatform && Program.root != Program.PATH_ROOT_WINDOWS64)
 			{
                 gameObject.SetActive(false);
 				return false;
             }
-			if(enableLowEndPlatformOnly && Program.root == Program.rootWindows64)
+			if(enableLowEndPlatformOnly && Program.root == Program.PATH_ROOT_WINDOWS64)
 			{
                 gameObject.SetActive(false);
                 return false;

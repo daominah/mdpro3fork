@@ -32,10 +32,10 @@ namespace MDPro3.Duel.YGOSharp
                         if (file.ToLower().EndsWith("lflist.conf"))
                         {
                             var e = zip[file];
-                            if (!Directory.Exists(Program.tempFolder))
-                                Directory.CreateDirectory(Program.tempFolder);
-                            var tempFile = Path.Combine(Path.GetFullPath(Program.tempFolder), file);
-                            e.Extract(Path.GetFullPath(Program.tempFolder), ExtractExistingFileAction.OverwriteSilently);
+                            if (!Directory.Exists(Program.PATH_TEMP_FOLDER))
+                                Directory.CreateDirectory(Program.PATH_TEMP_FOLDER);
+                            var tempFile = Path.Combine(Path.GetFullPath(Program.PATH_TEMP_FOLDER), file);
+                            e.Extract(Path.GetFullPath(Program.PATH_TEMP_FOLDER), ExtractExistingFileAction.OverwriteSilently);
                             reader = new StreamReader(tempFile);
                             InitializeFromReader(reader);
                             reader.Close();
