@@ -2,6 +2,7 @@ using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
@@ -391,10 +392,10 @@ namespace MDPro3
         public static IEnumerator<AudioClip> LoadAudioFileAsync(string path, AudioType audioType)
         {
             string fullPath;
-#if !UNITY_EDITOR && UNITY_ANDROID
+#if !UNITY_EDITOR && (UNITY_ANDROID || UNITY_IOS)
             fullPath = "file://" + Application.persistentDataPath + Program.slash + path;
 #else
-            fullPath = Environment.CurrentDirectory + Program.slash + path;
+            fullPath = Path.Combine(Environment.CurrentDirectory, path);
 #endif
 
             using var request = UnityWebRequestMultimedia.GetAudioClip(fullPath, audioType);

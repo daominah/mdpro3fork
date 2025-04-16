@@ -898,7 +898,7 @@ namespace MDPro3.UI.ServantUI
         public static float GetScale()
         {
             var defau = 1f;
-#if UNITY_ANDROID
+#if UNITY_ANDROID || UNITY_IOS
             defau = 0.5f;
 #endif
             return Config.GetFloat("Scale", defau);

@@ -22,7 +22,7 @@ namespace MDPro3.Utility
         private static readonly ConcurrentDictionary<int, SemaphoreSlim> cardLoadingLocks = new();
         private static readonly ConcurrentDictionary<int, SemaphoreSlim> cardNameLoadingLocks = new();
 
-#if UNITY_ANDROID
+#if UNITY_ANDROID || UNITY_IOS
         private static readonly int maxArtLoads = 1;
         public static readonly int maxCardLoads = 1;
 #else
@@ -438,7 +438,7 @@ namespace MDPro3.Utility
 
             if (!string.IsNullOrEmpty(path))
             {
-#if !UNITY_EDITOR && UNITY_ANDROID
+#if !UNITY_EDITOR && (UNITY_ANDROID || UNITY_IOS)
                 path = Path.Combine("file://" + Application.persistentDataPath, path);
 #elif UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX
                 path = Path.Combine("file://" + Environment.CurrentDirectory, path);

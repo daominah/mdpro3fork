@@ -173,7 +173,7 @@ namespace MDPro3
         public static float GetUIScale(float maxUIScale = 1.5f)
         {
             var defau = 1000f;
-#if UNITY_ANDROID
+#if UNITY_ANDROID || UNITY_IOS
             defau = 1500f;
 #endif
             var scale = float.Parse(Get("UIScale", defau.ToString())) / 1000;

@@ -29,7 +29,7 @@ namespace MDPro3
         {
             Application.targetFrameRate = 0;
 
-#if !UNITY_EDITOR && UNITY_ANDROID
+#if !UNITY_EDITOR && (UNITY_ANDROID || UNITY_IOS)
             Environment.CurrentDirectory = Application.persistentDataPath;
             Directory.SetCurrentDirectory(Application.persistentDataPath);
             if (VersionCheck())

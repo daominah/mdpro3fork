@@ -16,7 +16,7 @@ namespace MDPro3
         const string bgPath = Program.diyPath + "Background.png";
         public static void ImportFiles()
         {
-#if UNITY_ANDROID && !UNITY_EDITOR
+#if (UNITY_ANDROID || UNITY_IOS) && !UNITY_EDITOR
             NativeFilePicker.PickMultipleFiles(MoveFilesToGame, null);
 #else
             ChooseFiles();
@@ -25,7 +25,7 @@ namespace MDPro3
 
         public static void ImportBG()
         {
-#if UNITY_ANDROID && !UNITY_EDITOR
+#if (UNITY_ANDROID || UNITY_IOS) && !UNITY_EDITOR
             NativeFilePicker.PickFile(MovePictureToGameBG, pictureFormat);
 #else
             ChooseBGPicture();
@@ -186,7 +186,7 @@ namespace MDPro3
 
         private static void Export(string[] filePaths, bool copy = true)
         {
-#if UNITY_ANDROID && !UNITY_EDITOR
+#if (UNITY_ANDROID || UNITY_IOS) && !UNITY_EDITOR
             NativeFilePicker.ExportMultipleFiles(filePaths, ExportResult);
             if(!copy)
                 filesToDelete = filePaths.ToList();

@@ -69,7 +69,7 @@ namespace MDPro3.Servant
                 if (UserInput.MouseRightDown || UserInput.WasCancelPressed)
                     OnReturn();
 
-#if UNITY_ANDROID
+#if UNITY_ANDROID || UNITY_IOS
                 if (UserInput.MouseLeftDown)
                     if(autoPlay != null)
                         OnReturn();

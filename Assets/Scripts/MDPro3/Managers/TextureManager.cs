@@ -80,7 +80,7 @@ namespace MDPro3
             if (!File.Exists(path))
                 return null;
             string fullPath;
-#if !UNITY_EDITOR && UNITY_ANDROID
+#if !UNITY_EDITOR && (UNITY_ANDROID || UNITY_IOS)
             fullPath = "file://" + Application.persistentDataPath + Program.slash + path;
 #else
             fullPath = Environment.CurrentDirectory + Program.slash + path;

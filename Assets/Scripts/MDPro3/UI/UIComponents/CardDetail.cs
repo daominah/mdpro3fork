@@ -480,7 +480,7 @@ namespace MDPro3
         public void OnUp()
         {
             bigShowing = true;
-#if UNITY_ANDROID
+#if UNITY_ANDROID || UNITY_IOS
             BigShowMobile();
 #else
             BigShowDesktop();

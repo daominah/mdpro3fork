@@ -110,7 +110,7 @@ namespace MDPro3.Servant
             AudioManager.SetSeVol(Config.GetFloat("SEVol", 0.7f));
             AudioManager.SetVoiceVol(Config.GetFloat("VoiceVol", 0.7f));
 
-#if UNITY_ANDROID
+#if UNITY_ANDROID || UNITY_IOS
             if (Config.Have("Resolution"))
             {
                 var resolution = Config.Get("Resolution", "1920 x 1080");

@@ -29,10 +29,7 @@ namespace MDPro3.Utility
 
         public static bool OnMobile()
         {
-#if UNITY_ANDROID
-            return true;
-#endif
-#if UNITY_IOS
+#if UNITY_ANDROID || UNITY_IOS
             return true;
 #endif
             if (SystemInfo.deviceName == "STEAMDECK")
