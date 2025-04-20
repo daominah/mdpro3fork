@@ -804,7 +804,7 @@ namespace MDPro3.UI.ServantUI
             foreach (var resolution in Screen.resolutions)
             {
                 string selection = Regex.Split(resolution.ToString(), " @ ")[0];
-#if !UNITY_EDITOR && UNITY_ANDROID
+#if !UNITY_EDITOR && (UNITY_ANDROID || UNITY_IOS)
                 int height = int.Parse(Regex.Split(selection, " x ")[0]);
                 int width = int.Parse(Regex.Split(selection, " x ")[1]);
                 if (height > width)

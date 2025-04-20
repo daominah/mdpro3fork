@@ -53,7 +53,7 @@ namespace MDPro3
             commonShopButtonOverMat = mie.Current;
             SetCommonShopButtonMaterial(commonShopButtonOverMat);
 
-#if UNITY_ANDROID
+#if UNITY_ANDROID || UNITY_STANDALONE_LINUX
             var depens = Directory.GetFiles(Program.root + "CrossDuel/Dependency", "*.bundle");
             foreach (var depen in depens)
             {
@@ -81,7 +81,9 @@ namespace MDPro3
                 return null;
             string fullPath;
 #if !UNITY_EDITOR && (UNITY_ANDROID || UNITY_IOS)
-            fullPath = "file://" + Application.persistentDataPath + Program.slash + path;
+            fullPath = Path.Combine("file://" + Application.persistentDataPath, path);
+#elif UNITY_STANDALONE_LINUX || UNITY_STANDALONE_OSX
+            fullPath = Path.Combine("file://" + Environment.CurrentDirectory, path);
 #else
             fullPath = Environment.CurrentDirectory + Program.slash + path;
 #endif

@@ -440,7 +440,7 @@ namespace MDPro3.Utility
             {
 #if !UNITY_EDITOR && (UNITY_ANDROID || UNITY_IOS)
                 path = Path.Combine("file://" + Application.persistentDataPath, path);
-#elif UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX
+#elif UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX || UNITY_STANDALONE_LINUX
                 path = Path.Combine("file://" + Environment.CurrentDirectory, path);
 #else
                 path = Path.Combine(Environment.CurrentDirectory, path);

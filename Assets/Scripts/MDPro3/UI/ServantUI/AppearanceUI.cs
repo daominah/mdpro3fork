@@ -452,7 +452,7 @@ namespace MDPro3.UI.ServantUI
                     currentList.Add(item);
                 }
 
-#if UNITY_ANDROID
+#if UNITY_ANDROID || UNITY_STANDALONE_LINUX
                 if (currentContent == "Mate")
                 {
                     var files = new DirectoryInfo(Program.root + "CrossDuel").GetFiles("*.bundle");

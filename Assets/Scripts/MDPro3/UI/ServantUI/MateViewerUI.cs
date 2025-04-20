@@ -41,7 +41,7 @@ namespace MDPro3.UI.ServantUI
 
         private void Awake()
         {
-#if UNITY_ANDROID
+#if UNITY_ANDROID || UNITY_STANDALONE_LINUX
             var files = Directory.GetFiles(Program.root + "CrossDuel", "*.bundle");
             foreach (var file in files)
             {

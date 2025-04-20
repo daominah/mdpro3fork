@@ -394,6 +394,8 @@ namespace MDPro3
             string fullPath;
 #if !UNITY_EDITOR && (UNITY_ANDROID || UNITY_IOS)
             fullPath = "file://" + Application.persistentDataPath + Program.slash + path;
+#elif UNITY_STANDALONE_LINUX || UNITY_STANDALONE_OSX
+            fullPath = Path.Combine("file://" + Environment.CurrentDirectory, path);
 #else
             fullPath = Path.Combine(Environment.CurrentDirectory, path);
 #endif

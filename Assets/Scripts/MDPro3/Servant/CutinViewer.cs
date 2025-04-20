@@ -119,8 +119,8 @@ namespace MDPro3.Servant
                 var targetFolder2 = Program.root + "MonsterCutin2";
 
 #if UNITY_STANDALONE_WIN && !UNITY_EDITOR
-            targetFolder = Path.Combine(Application.dataPath, Program.root + "MonsterCutin");
-            targetFolder2 = Path.Combine(Application.dataPath, Program.root + "MonsterCutin2");
+                targetFolder = Path.Combine(Application.dataPath, Program.root + "MonsterCutin");
+                targetFolder2 = Path.Combine(Application.dataPath, Program.root + "MonsterCutin2");
 #endif
                 if (!Directory.Exists(targetFolder))
                     Directory.CreateDirectory(targetFolder);

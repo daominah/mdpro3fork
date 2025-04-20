@@ -268,6 +268,7 @@ namespace MDPro3
 
         public const string PATH_ROOT_EDITOR = "Platforms/";
         public const string PATH_ROOT_WINDOWS64 = "StandaloneWindows64/";
+        public const string PATH_ROOT_LINUX = "StandaloneLinux64/";
         public const string PATH_ROOT_ANDROID = "Android/";
         public const string PATH_ROOT_IOS = "iOS/";
         public const string PATH_ROOT_MAC = "StandaloneOSX/";
@@ -282,6 +283,8 @@ namespace MDPro3
             root = PATH_ROOT_IOS;
 #elif UNITY_STANDALONE_OSX
             root = PATH_ROOT_MAC;
+#elif UNITY_STANDALONE_LINUX
+            root = PATH_ROOT_LINUX;
 #endif
 
 #if UNITY_EDITOR
