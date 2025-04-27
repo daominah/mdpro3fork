@@ -16,12 +16,16 @@ namespace MDPro3
         public static Dictionary<string, GameObject> cachedAB = new Dictionary<string, GameObject>();
         public static Dictionary<string, List<GameObject>> cachedABFolder = new Dictionary<string, List<GameObject>>();
         public static Dictionary<string, Material> cachedPMat = new Dictionary<string, Material>();
+        private static readonly object pMatLock = new();
+        private static bool loadingPMat;
+
         public static IEnumerator CacheFromFileAsync(string path)
         {
             var abr = AssetBundle.LoadFromFileAsync(path);
             while (!abr.isDone)
                 yield return null;
         }
+
         public static GameObject LoadFromFile(string path, bool cache = false)
         {
             GameObject returnValue;
@@ -47,6 +51,7 @@ namespace MDPro3
             }
             return null;
         }
+
         public static IEnumerator<GameObject> LoadFromFileAsync(string path, bool cache = false, bool copy = true)
         {
             GameObject returnValue;
@@ -79,6 +84,7 @@ namespace MDPro3
             if (copy)
                 yield return Instantiate(returnValue);
         }
+
         public static GameObject LoadFromFolder(string path, string abName = "GameObject", bool cache = false)
         {
             GameObject returnValue = new GameObject(abName);
@@ -95,7 +101,7 @@ namespace MDPro3
             List<AssetBundle> bundles = new List<AssetBundle>();
 
             DirectoryInfo dir = new DirectoryInfo(Program.root + path);
-#if UNITY_STANDALONE_WIN && !UNITY_EDITOR
+#if !UNITY_EDITOR && UNITY_STANDALONE_OSX
             dir = new DirectoryInfo(Path.Combine(Application.dataPath, Program.root + path));
 #endif
 
@@ -124,6 +130,7 @@ namespace MDPro3
 
             return returnValue;
         }
+
         public static IEnumerator<GameObject> LoadFromFolderAsync(string path, string abName = "GameObject", bool cache = false, bool copy = true)
         {
             GameObject returnValue = new GameObject(abName);
@@ -188,8 +195,6 @@ namespace MDPro3
             }
         }
 
-        static readonly object pMatLock = new object();
-        static bool loadingPMat;
         public static IEnumerator<Material> LoadProtectorMaterial(string code)
         {
             if (code == Items.CODE_RANDOM.ToString())
@@ -255,6 +260,7 @@ namespace MDPro3
             }
             yield return material;
         }
+
         public static IEnumerator<Material> LoadFrameMaterial(string code)
         {
             if (code == Items.CODE_RANDOM.ToString())
@@ -269,6 +275,7 @@ namespace MDPro3
             TextureManager.ChangeProfileFrameMaterialWrapMode(material);
             yield return material;
         }
+
         public static IEnumerator<Material> LoadMaterialAsync(string path)
         {
             var abr = AssetBundle.LoadFromFileAsync(Program.root + path);
@@ -375,7 +382,6 @@ namespace MDPro3
             returnValue.code = code;
             yield return returnValue;
         }
-
 
     }
 }

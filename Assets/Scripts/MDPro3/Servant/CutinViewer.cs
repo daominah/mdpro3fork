@@ -256,19 +256,19 @@ namespace MDPro3.Servant
             //BackEffects
             GameObject back;
             if ((card.Attribute & (uint)CardAttribute.Dark) > 0)//125
-                back = ABLoader.LoadFromFile("MasterDuel/Timeline/summon/summonmonster/04backeff/summonmonster_bgdak_s2", true);
+                back = ABLoader.LoadFromFile("MasterDuel/Timeline/Summon/SummonMonster/04BackEff/SummonMonster_Bgdak_S2", true);
             else if ((card.Attribute & (uint)CardAttribute.Light) > 0)//100
-                back = ABLoader.LoadFromFile("MasterDuel/Timeline/summon/summonmonster/04backeff/summonmonster_bglit_s2", true);
+                back = ABLoader.LoadFromFile("MasterDuel/Timeline/Summon/SummonMonster/04BackEff/SummonMonster_Bglit_S2", true);
             else if ((card.Attribute & (uint)CardAttribute.Earth) > 0)//56
-                back = ABLoader.LoadFromFile("MasterDuel/Timeline/summon/summonmonster/04backeff/summonmonster_bgeah_s2", true);
+                back = ABLoader.LoadFromFile("MasterDuel/Timeline/Summon/SummonMonster/04BackEff/SummonMonster_Bgeah_S2", true);
             else if ((card.Attribute & (uint)CardAttribute.Water) > 0)//35
-                back = ABLoader.LoadFromFile("MasterDuel/Timeline/summon/summonmonster/04backeff/summonmonster_bgwtr_s2", true);
+                back = ABLoader.LoadFromFile("MasterDuel/Timeline/Summon/SummonMonster/04BackEff/SummonMonster_Bgwtr_S2", true);
             else if ((card.Attribute & (uint)CardAttribute.Fire) > 0)//31
-                back = ABLoader.LoadFromFile("MasterDuel/Timeline/summon/summonmonster/04backeff/summonmonster_bgfie_s2", true);
+                back = ABLoader.LoadFromFile("MasterDuel/Timeline/Summon/SummonMonster/04BackEff/SummonMonster_Bgfie_S2", true);
             else if ((card.Attribute & (uint)CardAttribute.Wind) > 0)//25
-                back = ABLoader.LoadFromFile("MasterDuel/Timeline/summon/summonmonster/04backeff/summonmonster_bgwid_s2", true);
+                back = ABLoader.LoadFromFile("MasterDuel/Timeline/Summon/SummonMonster/04BackEff/SummonMonster_Bgwid_S2", true);
             else//4
-                back = ABLoader.LoadFromFile("MasterDuel/Timeline/summon/summonmonster/04backeff/summonmonster_bgdve_s2", true);
+                back = ABLoader.LoadFromFile("MasterDuel/Timeline/Summon/SummonMonster/04BackEff/SummonMonster_Bgdve_S2", true);
             back.transform.SetParent(Program.instance.container_2D, false);
             Transform eff_flame = back.transform.Find("Eff_Flame");
             eff_flame.localScale = new Vector3(2.76f, 1.55f, 1f);
@@ -286,9 +286,9 @@ namespace MDPro3.Servant
             //Name Bar
             GameObject nameBar;
             if (controller == 0)
-                nameBar = ABLoader.LoadFromFile("MasterDuel/Timeline/summon/summonmonster/01text/summonmonster_name_near", true);
+                nameBar = ABLoader.LoadFromFile("MasterDuel/Timeline/Summon/summonmonster/01Text/SummonMonster_Name_near", true);
             else
-                nameBar = ABLoader.LoadFromFile("MasterDuel/Timeline/summon/summonmonster/01text/summonmonster_name_far", true);
+                nameBar = ABLoader.LoadFromFile("MasterDuel/Timeline/Summon/summonmonster/01Text/SummonMonster_Name_far", true);
 
             nameBar.transform.SetParent(Program.instance.container_2D, false);
             var manager = nameBar.GetComponent<ElementObjectManager>();
@@ -370,7 +370,7 @@ namespace MDPro3.Servant
             Destroy(nameBar, CUTIN_PLAY_TIME);
 
             //front Effect
-            var frontEffect = ABLoader.LoadFromFile("MasterDuel/Timeline/summon/summonmonster/02fronteff/summonmonster_thunder_power", true);
+            var frontEffect = ABLoader.LoadFromFile("MasterDuel/Timeline/Summon/summonmonster/02FrontEff/SummonMonster_Thunder_power", true);
             frontEffect.transform.SetParent(Program.instance.container_2D, false);
             Destroy(frontEffect, CUTIN_PLAY_TIME);
         }

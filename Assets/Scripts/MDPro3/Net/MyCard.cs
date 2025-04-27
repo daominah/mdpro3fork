@@ -37,7 +37,9 @@ namespace MDPro3.Net
 
         public static async Task<MyCardAccount> Login(string account, string password)
         {
-            string json = "{\"account\":\"" + account + "\",\"password\":\"" + password + "\"}";
+            var data = new { account = account, password = password};
+            string json = JsonConvert.SerializeObject(data);
+
             using var request = UnityWebRequest.Post(loginUrl, json, jsonHeader);
 
             request.SetRequestHeader("Content-Type", jsonHeader);

@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.DualShock;
 using UnityEngine.UI;
 
-#if (!UNITY_ANDROID && !UNITY_IOS) || UNITY_EDITOR
+#if (!UNITY_ANDROID && !UNITY_IOS && !UNITY_STANDALONE_LINUX) || UNITY_EDITOR
 using UnityEngine.InputSystem.Switch;
 using UnityEngine.InputSystem.UI;
 #endif
@@ -353,7 +353,7 @@ namespace MDPro3
 
                 if (Gamepad.current is DualShockGamepad)
                     gamepadType = GamepadType.PlayStation;
-#if (!UNITY_ANDROID && !UNITY_IOS) || UNITY_EDITOR
+#if (!UNITY_ANDROID && !UNITY_IOS && !UNITY_STANDALONE_LINUX) || UNITY_EDITOR
                 else if (Gamepad.current is SwitchProControllerHID)
                     gamepadType = GamepadType.Nintendo;
 #endif
@@ -373,7 +373,7 @@ namespace MDPro3
 
         public static void SetMoveRepeatRate(float rate)
         {
-#if (!UNITY_ANDROID && !UNITY_IOS) || UNITY_EDITOR
+#if (!UNITY_ANDROID && !UNITY_IOS && !UNITY_STANDALONE_LINUX) || UNITY_EDITOR
             var module = instance.GetComponent<InputSystemUIInputModule>();
             module.moveRepeatRate = rate;
 #endif

@@ -680,7 +680,7 @@ namespace MDPro3.Servant
             #region Dice
             if (myDice == null)
             {
-                var ie = ABLoader.LoadFromFolderAsync("MasterDuel/TimeLine/DuelDice");
+                var ie = ABLoader.LoadFromFolderAsync("MasterDuel/Timeline/DuelDice");
                 StartCoroutine(ie);
                 while (ie.MoveNext())
                     yield return null;
@@ -695,7 +695,7 @@ namespace MDPro3.Servant
             }
             if (opDice == null)
             {
-                var ie = ABLoader.LoadFromFolderAsync("MasterDuel/TimeLine/DuelDiceEn");
+                var ie = ABLoader.LoadFromFolderAsync("MasterDuel/Timeline/DuelDiceEn");
                 StartCoroutine(ie);
                 while (ie.MoveNext())
                     yield return null;
@@ -862,7 +862,7 @@ namespace MDPro3.Servant
             #endregion
 
             #region 场地背景
-            enumerator = ABLoader.LoadFromFileAsync("MasterDuel/BG/celestialsphere_c001");
+            enumerator = ABLoader.LoadFromFileAsync("MasterDuel/BG/CelestialSphere_c001");
             while (enumerator.MoveNext())
                 yield return null;
             var matBack = enumerator.Current;
@@ -2871,7 +2871,7 @@ namespace MDPro3.Servant
                     break;
                 case GameMessage.Set:
                     ES_hint = StringHelper.GetUnsafe(1601);//盖放了卡片
-                    var effect = ABLoader.LoadFromFile("MasterDuel/Effects/summon/fxp_som_mgctrpfld_001", true);
+                    var effect = ABLoader.LoadFromFile("MasterDuel/Effects/Summon/fxp_som_mgctrpfld_001", true);
                     effect.transform.position = lastMoveCard.model.transform.position;
                     Destroy(effect, 3f);
                     AudioManager.PlaySE("SE_LAND_MT_SET");
@@ -2912,7 +2912,7 @@ namespace MDPro3.Servant
                         mySummonCount++;
                     else
                         opSummonCount++;
-                    effect = ABLoader.LoadFromFile("MasterDuel/Effects/summon/fxp_somldg/hand/fxp_somldg_hand_001", true);
+                    effect = ABLoader.LoadFromFile("MasterDuel/Effects/Summon/fxp_somldg/Hand/fxp_somldg_hand_001", true);
                     effect.transform.localPosition = GameCard.GetCardPosition(gps);
                     if ((gps.position & (uint)CardPosition.Attack) > 0)
                         Destroy(effect.transform.GetChild(1).gameObject);
@@ -2931,7 +2931,7 @@ namespace MDPro3.Servant
                         ES_hint = InterString.Get("「[?]」通常召唤宣言时", card.GetData().Name);
                         if (card.GetData().Level > 6)
                         {
-                            effect = ABLoader.LoadFromFolder("MasterDuel/Effects/summon/fxp_somldg/Advance_s2", "Advance_s2", true);
+                            effect = ABLoader.LoadFromFolder("MasterDuel/Effects/Summon/fxp_somldg/Advance_s2", "Advance_s2", true);
                             effect.transform.localPosition = GameCard.GetCardPosition(gps);
                             Destroy(effect, 10);
                             se = "SE_LAND_ADVANCE_HIGH";
@@ -2939,7 +2939,7 @@ namespace MDPro3.Servant
                         }
                         else if (card.GetData().Level > 4)
                         {
-                            effect = ABLoader.LoadFromFolder("MasterDuel/Effects/summon/fxp_somldg/Advance_s1", "Advance_s1", true);
+                            effect = ABLoader.LoadFromFolder("MasterDuel/Effects/Summon/fxp_somldg/Advance_s1", "Advance_s1", true);
                             effect.transform.localPosition = GameCard.GetCardPosition(gps);
                             Destroy(effect, 10);
                             se = "SE_LAND_ADVANCE_MIDDLE";
@@ -2969,7 +2969,7 @@ namespace MDPro3.Servant
                     if (card.GetData().HasType(CardType.Token))
                         goto TokenPasss;
 
-                    effect = ABLoader.LoadFromFile("MasterDuel/Effects/summon/fxp_somldg/hand/fxp_somldg_hand_001", true);
+                    effect = ABLoader.LoadFromFile("MasterDuel/Effects/Summon/fxp_somldg/Hand/fxp_somldg_hand_001", true);
                     effect.transform.localPosition = GameCard.GetCardPosition(gps);
                     if ((gps.position & (uint)CardPosition.Attack) > 0)
                         Destroy(effect.transform.GetChild(1).gameObject);
@@ -2988,7 +2988,7 @@ namespace MDPro3.Servant
                             //&& (card.GetData().Reason & (uint)CardReason.Link) > 0)
                             && card.GetData().HasType(CardType.Link))
                         {
-                            tail = "MasterDuel/Effects/summon/fxp_somldg/Link_s1";
+                            tail = "MasterDuel/Effects/Summon/fxp_somldg/Link_s1";
                             se = "SE_LAND_LINK_MIDDLE";
                             GetUI<OcgCoreUI>().DuelLog.lastSpSummonReason = (uint)CardReason.Link;
                         }
@@ -2996,7 +2996,7 @@ namespace MDPro3.Servant
                             //&& (card.GetData().Reason & (uint)CardReason.Fusion) > 0)
                             && card.GetData().HasType(CardType.Fusion))
                         {
-                            tail = "MasterDuel/Effects/summon/fxp_somldg/Fusion_s1";
+                            tail = "MasterDuel/Effects/Summon/fxp_somldg/Fusion_s1";
                             se = "SE_LAND_FUSION_MIDDLE";
                             GetUI<OcgCoreUI>().DuelLog.lastSpSummonReason = (uint)CardReason.Fusion;
                         }
@@ -3004,7 +3004,7 @@ namespace MDPro3.Servant
                             //&& (card.GetData().Reason & (uint)CardReason.Synchro) > 0)
                             && card.GetData().HasType(CardType.Synchro))
                         {
-                            tail = "MasterDuel/Effects/summon/fxp_somldg/Synchro_s1";
+                            tail = "MasterDuel/Effects/Summon/fxp_somldg/Synchro_s1";
                             se = "SE_LAND_SYNCHRO_MIDDLE";
                             GetUI<OcgCoreUI>().DuelLog.lastSpSummonReason = (uint)CardReason.Synchro;
                         }
@@ -3012,7 +3012,7 @@ namespace MDPro3.Servant
                             //&& (card.GetData().Reason & (uint)CardReason.Xyz) > 0)
                             && card.GetData().HasType(CardType.Xyz))
                         {
-                            tail = "MasterDuel/Effects/summon/fxp_somldg/Xyz_s1";
+                            tail = "MasterDuel/Effects/Summon/fxp_somldg/Xyz_s1";
                             se = "SE_LAND_XYZ_MIDDLE";
                             GetUI<OcgCoreUI>().DuelLog.lastSpSummonReason = (uint)CardReason.Xyz;
                         }
@@ -3020,19 +3020,19 @@ namespace MDPro3.Servant
                             //&& (card.GetData().Reason & (uint)CardReason.Ritual) > 0)
                             && card.GetData().HasType(CardType.Ritual))
                         {
-                            tail = "MasterDuel/Effects/summon/fxp_somldg/Ritual_s1";
+                            tail = "MasterDuel/Effects/Summon/fxp_somldg/Ritual_s1";
                             se = "SE_LAND_RITUAL_MIDDLE";
                             GetUI<OcgCoreUI>().DuelLog.lastSpSummonReason = (uint)CardReason.Ritual;
                         }
                         else if (GetUI<OcgCoreUI>().DuelLog.psum)
                         {
-                            tail = "MasterDuel/Effects/summon/fxp_somldg/Pendulum_s1";
+                            tail = "MasterDuel/Effects/Summon/fxp_somldg/Pendulum_s1";
                             se = "SE_LAND_PENDULUM_MIDDLE";
                             GetUI<OcgCoreUI>().DuelLog.lastSpSummonReason = (uint)CardReason.Pendulum;
                         }
                         else
                         {
-                            tail = "MasterDuel/Effects/summon/fxp_somldg/Special_s1";
+                            tail = "MasterDuel/Effects/Summon/fxp_somldg/Special_s1";
                             se = "SE_LAND_ADVANCE_MIDDLE";
                             GetUI<OcgCoreUI>().DuelLog.lastSpSummonReason = 0;
                         }
@@ -3892,63 +3892,63 @@ namespace MDPro3.Servant
 
                     GameObject tailObj = null;
                     GameObject hitObj = null;
-                    string hit = "";
-                    tail = "";
-                    string sound1 = "";
-                    string sound2 = "";
+                    string hit = string.Empty;
+                    tail = string.Empty;
+                    string sound1 = string.Empty;
+                    string sound2 = string.Empty;
                     if ((attackCard.GetData().Attribute & (uint)CardAttribute.Dark) > 0)
                     {
-                        tail = "MasterDuel/Effects/attack/fxp_atkdak_s2_001";
-                        hit = "MasterDuel/Effects/hit/fxp_hitdak_s2_001";
+                        tail = "MasterDuel/Effects/Attack/fxp_atkdak_S2_001";
+                        hit = "MasterDuel/Effects/Hit/fxp_hitdak_S2_001";
                         sound1 = "SE_ATTACK_A_DARK_SPECIAL_01";
                         sound2 = "SE_ATTACK_A_DARK_SPECIAL_02";
                     }
                     else if ((attackCard.GetData().Attribute & (uint)CardAttribute.Earth) > 0)
                     {
-                        tail = "MasterDuel/Effects/attack/fxp_atkeah_s2_001";
-                        hit = "MasterDuel/Effects/hit/fxp_hiteah_s2_001";
+                        tail = "MasterDuel/Effects/Attack/fxp_atkeah_S2_001";
+                        hit = "MasterDuel/Effects/Hit/fxp_hiteah_S2_001";
                         sound1 = "SE_ATTACK_A_EARTH_SPECIAL_01";
                         sound2 = "SE_ATTACK_A_EARTH_SPECIAL_02";
                     }
                     else if ((attackCard.GetData().Attribute & (uint)CardAttribute.Fire) > 0)
                     {
-                        tail = "MasterDuel/Effects/attack/fxp_atkfie_s2_001";
-                        hit = "MasterDuel/Effects/hit/fxp_hitfie_s2_001";
+                        tail = "MasterDuel/Effects/Attack/fxp_atkfie_S2_001";
+                        hit = "MasterDuel/Effects/Hit/fxp_hitfie_S2_001";
                         sound1 = "SE_ATTACK_A_FIRE_SPECIAL_01";
                         sound2 = "SE_ATTACK_A_FIRE_SPECIAL_02";
                     }
                     else if ((attackCard.GetData().Attribute & (uint)CardAttribute.Light) > 0)
                     {
-                        tail = "MasterDuel/Effects/attack/fxp_atklit_s2_001";
-                        hit = "MasterDuel/Effects/hit/fxp_hitlit_s2_001";
+                        tail = "MasterDuel/Effects/Attack/fxp_atklit_S2_001";
+                        hit = "MasterDuel/Effects/Hit/fxp_hitlit_S2_001";
                         sound1 = "SE_ATTACK_A_LIGHT_SPECIAL_01";
                         sound2 = "SE_ATTACK_A_LIGHT_SPECIAL_02";
                     }
                     else if ((attackCard.GetData().Attribute & (uint)CardAttribute.Water) > 0)
                     {
-                        tail = "MasterDuel/Effects/attack/fxp_atkwtr_s2_001";
-                        hit = "MasterDuel/Effects/hit/fxp_hitwtr_s2_001";
+                        tail = "MasterDuel/Effects/Attack/fxp_atkwtr_S2_001";
+                        hit = "MasterDuel/Effects/Hit/fxp_hitwtr_S2_001";
                         sound1 = "SE_ATTACK_A_WIND_SPECIAL_01";
                         sound2 = "SE_ATTACK_A_WIND_SPECIAL_02";
                     }
                     else if ((attackCard.GetData().Attribute & (uint)CardAttribute.Wind) > 0)
                     {
-                        tail = "MasterDuel/Effects/attack/fxp_atkwid_s2_001";
-                        hit = "MasterDuel/Effects/hit/fxp_hitwid_s2_001";
+                        tail = "MasterDuel/Effects/Attack/fxp_atkwid_S2_001";
+                        hit = "MasterDuel/Effects/Hit/fxp_hitwid_S2_001";
                         sound1 = "SE_ATTACK_A_DARK_SPECIAL_01";
                         sound2 = "SE_ATTACK_A_DARK_SPECIAL_02";
                     }
                     else// if ((attackCard.GetData().Attribute & (uint)CardAttribute.Divine) > 0)
                     {
-                        tail = "MasterDuel/Effects/attack/fxp_atkdve_s2_001";
-                        hit = "MasterDuel/Effects/hit/fxp_hitdve_s2_001";
+                        tail = "MasterDuel/Effects/Attack/fxp_atkdve_S2_001";
+                        hit = "MasterDuel/Effects/Hit/fxp_hitdve_S2_001";
                         sound1 = "SE_ATTACK_A_DIVINE_SPECIAL_01";
                         sound2 = "SE_ATTACK_A_DIVINE_SPECIAL_02";
 
                         if (attackCard.GetData().Attack < 2000)
                         {
-                            tail = tail.Replace("_s2_", "_s1_");
-                            hit = hit.Replace("_s2_", "_s1_");
+                            tail = tail.Replace("_S2_", "_S1_");
+                            hit = hit.Replace("_S2_", "_S1_");
                         }
                         tailObj = ABLoader.LoadFromFolder(tail, Path.GetFileName(tail), true);
                         hitObj = ABLoader.LoadFromFolder(hit, Path.GetFileName(hit), true);
@@ -3957,8 +3957,8 @@ namespace MDPro3.Servant
 
                     if (attackCard.GetData().Attack < 2000)
                     {
-                        tail = tail.Replace("_s2_", "_s1_");
-                        hit = hit.Replace("_s2_", "_s1_");
+                        tail = tail.Replace("_S2_", "_S1_");
+                        hit = hit.Replace("_S2_", "_S1_");
                     }
 
                     if (directAttack == 0)
@@ -3967,13 +3967,13 @@ namespace MDPro3.Servant
                         if ((attackedCard.p.position & (uint)CardPosition.Defence) > 0)
                             if (attackedCard.GetData().Defense >= attackCard.GetData().Attack)
                             {
-                                hit = "MasterDuel/Effects/hit/fxp_hit_guard_001";
+                                hit = "MasterDuel/Effects/Hit/fxp_hit_guard_001";
                                 sound2 = "SE_ATTACK_GUARD";
                             }
                         if ((attackedCard.p.position & (uint)CardPosition.Attack) > 0)
                             if (attackedCard.GetData().Attack > attackCard.GetData().Attack)
                             {
-                                hit = "MasterDuel/Effects/hit/fxp_hit_guard_001";
+                                hit = "MasterDuel/Effects/Hit/fxp_hit_guard_001";
                                 sound2 = "SE_ATTACK_GUARD";
                             }
                     }
@@ -3984,12 +3984,12 @@ namespace MDPro3.Servant
                         attackTransform.LookAt(dummy.transform);
                         if (directAttack == 1)
                         {
-                            hit = "MasterDuel/Effects/hit/fxp_dithit_far_001";
+                            hit = "MasterDuel/Effects/Hit/fxp_dithit_far_001";
                             sound2 = "SE_DIRECT_ATTACK_RIVAL";
                         }
                         else
                         {
-                            hit = "MasterDuel/Effects/hit/fxp_dithit_near_001";
+                            hit = "MasterDuel/Effects/Hit/fxp_dithit_near_001";
                             sound2 = "SE_DIRECT_ATTACK_PLAYER";
                         }
                         Destroy(dummy);
@@ -4111,13 +4111,13 @@ namespace MDPro3.Servant
 
                         if (life0 <= 0)
                         {
-                            hitObj = ABLoader.LoadFromFile("MasterDuel/Effects/hit/fxp_dithit_fin_near_001");
+                            hitObj = ABLoader.LoadFromFile("MasterDuel/Effects/Hit/fxp_dithit_fin_near_001");
                             hitObj.transform.position = new Vector3(0, 15, -25);
                             Destroy(hitObj, 10);
                         }
                         if (life1 <= 0)
                         {
-                            hitObj = ABLoader.LoadFromFile("MasterDuel/Effects/hit/fxp_dithit_fin_far_001");
+                            hitObj = ABLoader.LoadFromFile("MasterDuel/Effects/Hit/fxp_dithit_fin_far_001");
                             hitObj.transform.position = new Vector3(0, 15, 25);
                             Destroy(hitObj, 10);
                         }
@@ -4176,13 +4176,13 @@ namespace MDPro3.Servant
 #endif
                         if (life0 <= 0)
                         {
-                            hitObj = ABLoader.LoadFromFile("MasterDuel/Effects/hit/fxp_dithit_fin_near_001");
+                            hitObj = ABLoader.LoadFromFile("MasterDuel/Effects/Hit/fxp_dithit_fin_near_001");
                             hitObj.transform.position = new Vector3(0, 15, -25);
                             Destroy(hitObj, 10);
                         }
                         if (life1 <= 0)
                         {
-                            hitObj = ABLoader.LoadFromFile("MasterDuel/Effects/hit/fxp_dithit_fin_far_001");
+                            hitObj = ABLoader.LoadFromFile("MasterDuel/Effects/Hit/fxp_dithit_fin_far_001");
                             hitObj.transform.position = new Vector3(0, 15, 25);
                             Destroy(hitObj, 10);
                         }
@@ -4210,7 +4210,7 @@ namespace MDPro3.Servant
                         AudioManager.PlaySE("SE_COIN_THROW");
                         for (var i = 0; i < count; i++)
                         {
-                            var coin = ABLoader.LoadFromFolder("MasterDuel/TimeLine/DuelCoinToss01", "DuelCoinToss", true);
+                            var coin = ABLoader.LoadFromFolder("MasterDuel/Timeline/DuelCoinToss01", "DuelCoinToss", true);
                             var manager = coin.transform.GetChild(0).GetComponent<ElementObjectManager>();
                             manager.GetComponent<PlayableDirector>().Play();
                             Destroy(coin, 3f);
@@ -4878,7 +4878,7 @@ namespace MDPro3.Servant
                         {
                             GetUI<OcgCoreUI>().CardDescription.Hide();
                             targetTime = 366;
-                            GameObject pendulum = ABLoader.LoadFromFolder("MasterDuel/Timeline/summon/summonpendulum/summonpendulum01", "SummonPendulum", true);
+                            GameObject pendulum = ABLoader.LoadFromFolder("MasterDuel/Timeline/Summon/SummonPendulum/SummonPendulum01", "SummonPendulum", true);
                             ElementObjectManager manager = null;
                             for (int j = 0; j < pendulum.transform.childCount; j++)
                             {
@@ -4963,7 +4963,7 @@ namespace MDPro3.Servant
 
                             if (MasterRule >= 4)
                             {
-                                var pendulumSet = ABLoader.LoadFromFolder("MasterDuel/Timeline/summon/summonpendulum/summonpendulumscaleset", "PendulumSet", true);
+                                var pendulumSet = ABLoader.LoadFromFolder("MasterDuel/Timeline/Summon/SummonPendulum/SummonPendulumScaleSet", "PendulumSet", true);
                                 pendulumSet.transform.SetParent(Program.instance.container_3D);
                                 ElementObjectManager setManager = null;
                                 for (int j = 0; j < pendulumSet.transform.childCount; j++)
@@ -7290,7 +7290,7 @@ namespace MDPro3.Servant
                     if (card.p.controller == 0)
                         if (card.buttons.Count > 0)
                         {
-                            var effect = ABLoader.LoadFromFile("MasterDuel/Effects/hitghlight/fxp_hl_active/fxp_hl_active_grave_001", true);
+                            var effect = ABLoader.LoadFromFile("MasterDuel/Effects/Hitghlight/fxp_HL_active/fxp_HL_active_grave_001", true);
                             effect.transform.SetParent(grave0Manager.GetElement<Transform>("GraveHighlightNear"), false);
                             Destroy(effect, 3f);
                             grave0Manager.GetElement<Animator>("GraveHighlightNear").SetBool("On", true);
@@ -7302,7 +7302,7 @@ namespace MDPro3.Servant
                     if (card.p.controller == 0)
                         if (card.buttons.Count > 0)
                         {
-                            var effect = ABLoader.LoadFromFile("MasterDuel/Effects/hitghlight/fxp_hl_active/fxp_hl_active_exclude_001", true);
+                            var effect = ABLoader.LoadFromFile("MasterDuel/Effects/Hitghlight/fxp_HL_active/fxp_HL_active_exclude_001", true);
                             effect.transform.SetParent(grave0Manager.GetElement<Transform>("ExcludeHighlightNear"), false);
                             Destroy(effect, 3f);
                             grave0Manager.GetElement<Animator>("ExcludeHighlightNear").SetBool("On", true);
@@ -7314,7 +7314,7 @@ namespace MDPro3.Servant
                     if (card.p.controller == 0)
                         if (card.buttons.Count > 0)
                         {
-                            var effect = ABLoader.LoadFromFile("MasterDuel/Effects/hitghlight/fxp_hl_active/fxp_hl_active_exdeck_001", true);
+                            var effect = ABLoader.LoadFromFile("MasterDuel/Effects/Hitghlight/fxp_HL_active/fxp_HL_active_Exdeck_001", true);
                             effect.transform.SetParent(myExtra.transform, false);
                             effect.transform.position = Tools.GetDeckModelTopPosition(myExtra);
                             foreach (var place in places)
@@ -7328,7 +7328,7 @@ namespace MDPro3.Servant
                     if (card.p.controller == 0)
                         if (card.buttons.Count > 0)
                         {
-                            var effect = ABLoader.LoadFromFile("MasterDuel/Effects/hitghlight/fxp_hl_active/fxp_hl_active_exdeck_001", true);
+                            var effect = ABLoader.LoadFromFile("MasterDuel/Effects/Hitghlight/fxp_HL_active/fxp_HL_active_Exdeck_001", true);
                             effect.transform.SetParent(myDeck.transform, false);
                             effect.transform.position = Tools.GetDeckModelTopPosition(myDeck);
                             foreach (var place in places)

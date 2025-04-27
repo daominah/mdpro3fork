@@ -185,14 +185,14 @@ namespace MDPro3
             var cardParmUp = ABLoader.LoadFromFile("MasterDuel/Effects/eff_prm/fxp_cardparm_up_001", true);
             var cardParmDown = ABLoader.LoadFromFile("MasterDuel/Effects/eff_prm/fxp_cardparm_down_001", true);
             var cardParmChange = ABLoader.LoadFromFile("MasterDuel/Effects/eff_prm/fxp_cardparm_change_001", true);
-            var cardBuffActive = ABLoader.LoadFromFile("MasterDuel/Effects/buff/fxp_bff_active_001", true);
-            var cardNegate = ABLoader.LoadFromFile("MasterDuel/Effects/buff/fxp_bff_disable_001", true);
-            var cardDisquiet = ABLoader.LoadFromFile("MasterDuel/Effects/buff/fxp_bff_disquiet_001", true);
+            var cardBuffActive = ABLoader.LoadFromFile("MasterDuel/Effects/Buff/fxp_bff_active_001", true);
+            var cardNegate = ABLoader.LoadFromFile("MasterDuel/Effects/Buff/fxp_bff_disable_001", true);
+            var cardDisquiet = ABLoader.LoadFromFile("MasterDuel/Effects/Buff/fxp_bff_disquiet_001", true);
 
-            var cardBlueHighlight = ABLoader.LoadFromFile("MasterDuel/Effects/hitghlight/fxp_hl_set_001", true);
-            var cardBlueHighlightSelect = ABLoader.LoadFromFile("MasterDuel/Effects/hitghlight/fxp_hl_set_sct_001", true);
-            var cardYellowHighlight = ABLoader.LoadFromFile("MasterDuel/Effects/hitghlight/fxp_hl_spsom_001", true);
-            var cardYellowHighlightSelect = ABLoader.LoadFromFile("MasterDuel/Effects/hitghlight/fxp_hl_spsom_sct_001", true);
+            var cardBlueHighlight = ABLoader.LoadFromFile("MasterDuel/Effects/Hitghlight/fxp_HL_set_001", true);
+            var cardBlueHighlightSelect = ABLoader.LoadFromFile("MasterDuel/Effects/Hitghlight/fxp_HL_set_sct_001", true);
+            var cardYellowHighlight = ABLoader.LoadFromFile("MasterDuel/Effects/Hitghlight/fxp_HL_SPsom_001", true);
+            var cardYellowHighlightSelect = ABLoader.LoadFromFile("MasterDuel/Effects/Hitghlight/fxp_HL_SPsom_sct_001", true);
 
             cardParmUp.transform.SetParent(manager.GetElement<Transform>("Turn").GetChild(1), false);
             cardParmDown.transform.SetParent(manager.GetElement<Transform>("Turn").GetChild(1), false);
@@ -1077,7 +1077,7 @@ namespace MDPro3
                     se = "SE_CARDBREAK_01";
                     if (!data.HasType(CardType.Token))
                     {
-                        var breakEffectPath = "MasterDuel/Effects/break/fxp_cardbrk_bff_001";
+                        var breakEffectPath = "MasterDuel/Effects/Break/fxp_cardbrk_bff_001";
                         var trail1Path = "MasterDuel/Effects/Grave/fxp_grave_brksol_trail_001";
                         var trail2Path = "MasterDuel/Effects/Grave/fxp_grave_ReCard_move_001";
                         if ((p.location & (uint)CardLocation.Removed) > 0)
@@ -1108,7 +1108,7 @@ namespace MDPro3
                 {
                     AudioManager.PlaySE(se);
                     AudioManager.PlaySE("SE_SUMMON_EYZ_MATERIAL");
-                    var fx = ABLoader.LoadFromFolder("MasterDuel/Timeline/Summon/SummonFusion/fusiontrailfieldcard01", "FieldCard", true);
+                    var fx = ABLoader.LoadFromFolder("MasterDuel/Timeline/Summon/SummonFusion/FusionTrailFieldCard01", "FieldCard", true);
                     fx.transform.localPosition = model.transform.position;
                     fx.transform.localEulerAngles = GetEffectRotaion(cacheP);
                     var manager = fx.transform.GetChild(0).GetComponent<ElementObjectManager>();
@@ -1137,7 +1137,7 @@ namespace MDPro3
                 {
                     AudioManager.PlaySE(se);
                     AudioManager.PlaySE("SE_SUMMON_EYZ_MATERIAL");
-                    var fx = ABLoader.LoadFromFolder("MasterDuel/Timeline/Summon/SummonFusion/fusiontrailfieldcard01", "FieldCard", true);
+                    var fx = ABLoader.LoadFromFolder("MasterDuel/Timeline/Summon/SummonFusion/FusionTrailFieldCard01", "FieldCard", true);
                     fx.transform.localPosition = model.transform.position;
                     fx.transform.localEulerAngles = GetEffectRotaion(cacheP);
                     var manager = fx.transform.GetChild(0).GetComponent<ElementObjectManager>();
@@ -1191,7 +1191,7 @@ namespace MDPro3
                 if (p.location == 0)
                 {
                     AudioManager.PlaySE("SE_CARD_TOKEN_BREAK");
-                    var fx = ABLoader.LoadFromFolder("MasterDuel/Effects/buff/fxp_bff_tokese", "fxp_bff_tokese", true);
+                    var fx = ABLoader.LoadFromFolder("MasterDuel/Effects/Buff/fxp_bff_tokese", "fxp_bff_tokese", true);
                     fx.transform.position = model.transform.position;
                     fx.transform.localEulerAngles = GetEffectRotaion(p);
                     Destroy(model);
@@ -1203,7 +1203,7 @@ namespace MDPro3
                 if ((p.reason & (uint)CardReason.RELEASE) > 0 && model != null)
                 {
                     se = "SE_SUMMON_ADVANCE";
-                    var fx = ABLoader.LoadFromFile("MasterDuel/Effects/sacrifice/fxp_sacrifice_rls_001", true);
+                    var fx = ABLoader.LoadFromFile("MasterDuel/Effects/Sacrifice/fxp_sacrifice_rls_001", true);
                     fx.transform.position = model.transform.position;
                     Destroy(fx, 5f);
                 }
@@ -1374,11 +1374,11 @@ namespace MDPro3
                     && (p.reason & (uint)CardReason.RULE) == 0)
                 {
                     se = "SE_CARD_XYZ_OUT";
-                    var fx = ABLoader.LoadFromFile("MasterDuel/Effects/buff/fxp_bff_overlay/fxp_bff_overlay_out_001", true);
+                    var fx = ABLoader.LoadFromFile("MasterDuel/Effects/Buff/fxp_bff_overlay/fxp_bff_overlay_out_001", true);
                     fx.transform.position = GetCardPosition(cacheP);
                     Destroy(fx, 3f);
 
-                    var trail = ABLoader.LoadFromFile("MasterDuel/Effects/buff/fxp_bff_overlay/fxp_bff_overlay_trail_001");
+                    var trail = ABLoader.LoadFromFile("MasterDuel/Effects/Buff/fxp_bff_overlay/fxp_bff_overlay_trail_001");
                     trail.transform.SetParent(model.transform, false);
 
                     if (Program.instance.ocgcore.NextMessageIsMovingFrom(CardLocation.Overlay))
@@ -1395,12 +1395,12 @@ namespace MDPro3
                     DOTween.To(v => { }, 0, 0, moveTime + timePassed).OnComplete(() =>
                     {
                         AudioManager.PlaySE("SE_CARD_XYZ_IN");
-                        var fx = ABLoader.LoadFromFile("MasterDuel/Effects/buff/fxp_bff_overlay/fxp_bff_overlay_in_001", true);
+                        var fx = ABLoader.LoadFromFile("MasterDuel/Effects/Buff/fxp_bff_overlay/fxp_bff_overlay_in_001", true);
                         fx.transform.position = GetCardPosition(p);
                         Destroy(fx, 3f);
                     });
 
-                    var trail = ABLoader.LoadFromFile("MasterDuel/Effects/buff/fxp_bff_overlay/fxp_bff_overlay_trail_001");
+                    var trail = ABLoader.LoadFromFile("MasterDuel/Effects/Buff/fxp_bff_overlay/fxp_bff_overlay_trail_001");
                     trail.transform.SetParent(model.transform, false);
                 }
 
@@ -1569,7 +1569,7 @@ namespace MDPro3
                     se = "SE_CARDBREAK_01";
                     if (!data.HasType(CardType.Token))
                     {
-                        var breakEffectPath = "MasterDuel/Effects/break/fxp_cardbrk_bff_001";
+                        var breakEffectPath = "MasterDuel/Effects/Break/fxp_cardbrk_bff_001";
                         var trail1Path = "MasterDuel/Effects/Grave/fxp_grave_brksol_trail_001";
                         var trail2Path = "MasterDuel/Effects/Grave/fxp_grave_ReCard_move_001";
                         if ((p.location & (uint)CardLocation.Removed) > 0)
@@ -1600,7 +1600,7 @@ namespace MDPro3
                 {
                     AudioManager.PlaySE(se);
                     AudioManager.PlaySE("SE_SUMMON_EYZ_MATERIAL");
-                    var fx = ABLoader.LoadFromFolder("MasterDuel/Timeline/Summon/SummonFusion/fusiontrailfieldcard01", "FieldCard", true);
+                    var fx = ABLoader.LoadFromFolder("MasterDuel/Timeline/Summon/SummonFusion/FusionTrailFieldCard01", "FieldCard", true);
                     fx.transform.localPosition = model.transform.position;
                     fx.transform.localEulerAngles = GetEffectRotaion(cacheP);
                     var manager = fx.transform.GetChild(0).GetComponent<ElementObjectManager>();
@@ -1629,7 +1629,7 @@ namespace MDPro3
                 {
                     AudioManager.PlaySE(se);
                     AudioManager.PlaySE("SE_SUMMON_EYZ_MATERIAL");
-                    var fx = ABLoader.LoadFromFolder("MasterDuel/Timeline/Summon/SummonFusion/fusiontrailfieldcard01", "FieldCard", true);
+                    var fx = ABLoader.LoadFromFolder("MasterDuel/Timeline/Summon/SummonFusion/FusionTrailFieldCard01", "FieldCard", true);
                     fx.transform.localPosition = model.transform.position;
                     fx.transform.localEulerAngles = GetEffectRotaion(cacheP);
                     var manager = fx.transform.GetChild(0).GetComponent<ElementObjectManager>();
@@ -1683,7 +1683,7 @@ namespace MDPro3
                 if (p.location == 0)
                 {
                     AudioManager.PlaySE("SE_CARD_TOKEN_BREAK");
-                    var fx = ABLoader.LoadFromFolder("MasterDuel/Effects/buff/fxp_bff_tokese", "fxp_bff_tokese", true);
+                    var fx = ABLoader.LoadFromFolder("MasterDuel/Effects/Buff/fxp_bff_tokese", "fxp_bff_tokese", true);
                     fx.transform.position = model.transform.position;
                     fx.transform.localEulerAngles = GetEffectRotaion(p);
                     Destroy(model);
@@ -1695,7 +1695,7 @@ namespace MDPro3
                 if ((p.reason & (uint)CardReason.RELEASE) > 0 && model != null)
                 {
                     se = "SE_SUMMON_ADVANCE";
-                    var fx = ABLoader.LoadFromFile("MasterDuel/Effects/sacrifice/fxp_sacrifice_rls_001", true);
+                    var fx = ABLoader.LoadFromFile("MasterDuel/Effects/Sacrifice/fxp_sacrifice_rls_001", true);
                     fx.transform.position = model.transform.position;
                     Destroy(fx, 5f);
                 }
@@ -1902,11 +1902,11 @@ namespace MDPro3
                     && (p.reason & (uint)CardReason.RULE) == 0)
                 {
                     se = "SE_CARD_XYZ_OUT";
-                    var fx = ABLoader.LoadFromFile("MasterDuel/Effects/buff/fxp_bff_overlay/fxp_bff_overlay_out_001", true);
+                    var fx = ABLoader.LoadFromFile("MasterDuel/Effects/Buff/fxp_bff_overlay/fxp_bff_overlay_out_001", true);
                     fx.transform.position = GetCardPosition(cacheP);
                     Destroy(fx, 3f);
 
-                    var trail = ABLoader.LoadFromFile("MasterDuel/Effects/buff/fxp_bff_overlay/fxp_bff_overlay_trail_001");
+                    var trail = ABLoader.LoadFromFile("MasterDuel/Effects/Buff/fxp_bff_overlay/fxp_bff_overlay_trail_001");
                     trail.transform.SetParent(model.transform, false);
                 }
 
@@ -1920,12 +1920,12 @@ namespace MDPro3
                     DOTween.To(v => { }, 0, 0, moveTime + timePassed).OnComplete(() =>
                     {
                         AudioManager.PlaySE("SE_CARD_XYZ_IN");
-                        var fx = ABLoader.LoadFromFile("MasterDuel/Effects/buff/fxp_bff_overlay/fxp_bff_overlay_in_001", true);
+                        var fx = ABLoader.LoadFromFile("MasterDuel/Effects/Buff/fxp_bff_overlay/fxp_bff_overlay_in_001", true);
                         fx.transform.position = GetCardPosition(p);
                         Destroy(fx, 3f);
                     });
 
-                    var trail = ABLoader.LoadFromFile("MasterDuel/Effects/buff/fxp_bff_overlay/fxp_bff_overlay_trail_001");
+                    var trail = ABLoader.LoadFromFile("MasterDuel/Effects/Buff/fxp_bff_overlay/fxp_bff_overlay_trail_001");
                     trail.transform.SetParent(model.transform, false);
                 }
 
@@ -2569,7 +2569,7 @@ namespace MDPro3
             }));
             sequence.Join(turn.DOLocalRotate(Vector3.zero, 0.1f).OnComplete(() =>
             {
-                var highlight = ABLoader.LoadFromFile("MasterDuel/Effects/other/fxp_card_decide_001", true);
+                var highlight = ABLoader.LoadFromFile("MasterDuel/Effects/Other/fxp_card_decide_001", true);
                 highlight.transform.position = offset.position;
                 highlight.transform.rotation = offset.rotation;
                 highlight.transform.localScale = GetCardScale(p);
@@ -2641,7 +2641,7 @@ namespace MDPro3
                 Destroy(model, 0.49f);
             }
 
-            var fx = ABLoader.LoadFromFile("MasterDuel/Effects/other/fxp_card_decide_001", true);
+            var fx = ABLoader.LoadFromFile("MasterDuel/Effects/Other/fxp_card_decide_001", true);
             fx.transform.position = model.transform.position;
             if ((p.location & (uint)CardLocation.MonsterZone) > 0 && (p.position & (uint)CardPosition.Defence) > 0)
                 fx.transform.localEulerAngles = new Vector3(0, 90, 0);
@@ -2722,7 +2722,7 @@ namespace MDPro3
             sequence.Append(turn.DOLocalMoveY(0.1f * (id + 1), 0.1f).OnComplete(() =>
             {
                 AudioManager.PlaySE("SE_CARDVIEW_02");
-                var effect = ABLoader.LoadFromFile("MasterDuel/Effects/other/fxp_card_decide_deck_001", true);
+                var effect = ABLoader.LoadFromFile("MasterDuel/Effects/Other/fxp_card_decide_deck_001", true);
                 effect.transform.position = turn.position;
                 effect.transform.rotation = turn.rotation;
                 Destroy(effect, 1f);
