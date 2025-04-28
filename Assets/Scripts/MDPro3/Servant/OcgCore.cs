@@ -874,7 +874,7 @@ namespace MDPro3.Servant
             #region 阶段按钮
             if (field1.name.StartsWith("Mat_013"))
             {
-                enumerator = ABLoader.LoadFromFileAsync("MasterDuel/BG/timer/phasebutton_013");
+                enumerator = ABLoader.LoadFromFileAsync("MasterDuel/BG/Timer/PhaseButton_013");
                 while (enumerator.MoveNext())
                     yield return null;
                 phaseButton = enumerator.Current;
@@ -883,7 +883,7 @@ namespace MDPro3.Servant
             }
             else
             {
-                enumerator = ABLoader.LoadFromFileAsync("MasterDuel/BG/timer/phasebutton_c001");
+                enumerator = ABLoader.LoadFromFileAsync("MasterDuel/BG/Timer/PhaseButton_c001");
                 while (enumerator.MoveNext())
                     yield return null;
                 phaseButton = enumerator.Current;
@@ -903,9 +903,9 @@ namespace MDPro3.Servant
             {
                 IEnumerator<GameObject> ie;
                 if (field1.name.StartsWith("Mat_013"))
-                    ie = ABLoader.LoadFromFileAsync("MasterDuel/BG/timer/timer_013", true);
+                    ie = ABLoader.LoadFromFileAsync("MasterDuel/BG/Timer/Timer_013", true);
                 else
-                    ie = ABLoader.LoadFromFileAsync("MasterDuel/BG/timer/timer_c001", true);
+                    ie = ABLoader.LoadFromFileAsync("MasterDuel/BG/Timer/Timer_c001", true);
                 StartCoroutine(ie);
                 while (ie.MoveNext())
                     yield return null;

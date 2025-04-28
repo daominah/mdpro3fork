@@ -88,9 +88,9 @@ namespace MDPro3.Duel.BG
         {
             IEnumerator<GameObject> ie;
             if (field0Name.StartsWith("Mat_013"))
-                ie = ABLoader.LoadFromFileAsync("MasterDuel/BG/Timer/PlayableGuide_C001_Near_Mat13", true);
+                ie = ABLoader.LoadFromFileAsync("MasterDuel/BG/Timer/PlayableGuide_c001_near_Mat13", true);
             else
-                ie = ABLoader.LoadFromFileAsync("MasterDuel/BG/Timer/PlayableGuide_C001_Near", true);
+                ie = ABLoader.LoadFromFileAsync("MasterDuel/BG/Timer/PlayableGuide_c001_near", true);
             while (ie.MoveNext())
                 yield return null;
 
@@ -99,9 +99,9 @@ namespace MDPro3.Duel.BG
             animator0.SetTrigger(LABEL_TRIGGER_OUT);
 
             if (field1Name.StartsWith("Mat_013"))
-                ie = ABLoader.LoadFromFileAsync("MasterDuel/BG/Timer/PlayableGuide_C001_Far_Mat13", true);
+                ie = ABLoader.LoadFromFileAsync("MasterDuel/BG/Timer/PlayableGuide_c001_far_Mat13", true);
             else
-                ie = ABLoader.LoadFromFileAsync("MasterDuel/BG/Timer/PlayableGuide_C001_Far", true);
+                ie = ABLoader.LoadFromFileAsync("MasterDuel/BG/Timer/PlayableGuide_c001_far", true);
             while (ie.MoveNext())
                 yield return null;
 
