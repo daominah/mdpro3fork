@@ -16,6 +16,7 @@ public class AssetBundleRobber : MonoBehaviour
 {
     public Text text;
     private static Text sText;
+    public TMP_InputField input;
 
     private string pathAB;
     private string pathStore;
@@ -63,14 +64,14 @@ public class AssetBundleRobber : MonoBehaviour
 
         Application.targetFrameRate = 0;
 
-        //masterDuelAssetBundlePath = masterDuelWindowsAssetBundlePath;
-        //workingPlace = windowsWorkingPlace;
+        pathAB = PATH_AB_WINDOWS;
+        pathStore = PATH_STORE_WINDOWS;
 
         //pathAB = PATH_AB_ANDROID;
         //pathStore = PATH_STORE_ANDROID;
 
-        pathAB = PATH_AB_IOS;
-        pathStore = PATH_STORE_IOS;
+        //pathAB = PATH_AB_IOS;
+        //pathStore = PATH_STORE_IOS;
 
         fullCopy = true;
         //fullCopy = false;
@@ -81,7 +82,6 @@ public class AssetBundleRobber : MonoBehaviour
         //Copy("531fb6fa");
     }
 
-    public TMP_InputField input;
 
     public void CopyAB()
     {

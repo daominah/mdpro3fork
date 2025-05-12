@@ -286,9 +286,9 @@ namespace MDPro3.Servant
             //Name Bar
             GameObject nameBar;
             if (controller == 0)
-                nameBar = ABLoader.LoadFromFile("MasterDuel/Timeline/Summon/summonmonster/01Text/SummonMonster_Name_near", true);
+                nameBar = ABLoader.LoadFromFile("MasterDuel/Timeline/Summon/SummonMonster/01Text/SummonMonster_Name_near", true);
             else
-                nameBar = ABLoader.LoadFromFile("MasterDuel/Timeline/Summon/summonmonster/01Text/SummonMonster_Name_far", true);
+                nameBar = ABLoader.LoadFromFile("MasterDuel/Timeline/Summon/SummonMonster/01Text/SummonMonster_Name_far", true);
 
             nameBar.transform.SetParent(Program.instance.container_2D, false);
             var manager = nameBar.GetComponent<ElementObjectManager>();
@@ -370,7 +370,7 @@ namespace MDPro3.Servant
             Destroy(nameBar, CUTIN_PLAY_TIME);
 
             //front Effect
-            var frontEffect = ABLoader.LoadFromFile("MasterDuel/Timeline/Summon/summonmonster/02FrontEff/SummonMonster_Thunder_power", true);
+            var frontEffect = ABLoader.LoadFromFile("MasterDuel/Timeline/Summon/SummonMonster/02FrontEff/SummonMonster_Thunder_power", true);
             frontEffect.transform.SetParent(Program.instance.container_2D, false);
             Destroy(frontEffect, CUTIN_PLAY_TIME);
         }
