@@ -276,7 +276,7 @@ namespace MDPro3.UI.ServantUI
 
         public void ShowPopupYesOrNo(List<string> selections, Action confirmAction, Action cancelAction)
         {
-            var handler = Addressables.InstantiateAsync("PopupDuelYesOrNo");
+            var handler = Addressables.InstantiateAsync("UI/PopupDuelYesOrNo.prefab");
             handler.Completed += (result) =>
             {
                 result.Result.transform.SetParent(RectPopup, false);
@@ -291,7 +291,7 @@ namespace MDPro3.UI.ServantUI
 
         public void ShowPopupPhase(List<string> selections)
         {
-            var handler = Addressables.InstantiateAsync("PopupDuelPhase");
+            var handler = Addressables.InstantiateAsync("UI/PopupDuelPhase.prefab");
             handler.Completed += (result) =>
             {
                 result.Result.transform.SetParent(RectPopup, false);
@@ -306,7 +306,7 @@ namespace MDPro3.UI.ServantUI
         {
             if (string.IsNullOrEmpty(hint))
                 hint = InterString.Get("请选择卡片");
-            var handler = Addressables.InstantiateAsync("PopupDuelSelectCard");
+            var handler = Addressables.InstantiateAsync("UI/PopupDuelSelectCard.prefab");
             handler.Completed += (result) =>
             {
                 result.Result.transform.SetParent(RectPopup, false);
@@ -323,7 +323,7 @@ namespace MDPro3.UI.ServantUI
 
         public void ShowPopupPosition(int code, int count, int option1 = 1, int option2 = 2)
         {
-            var handler = Addressables.InstantiateAsync("PopupDuelPosition");
+            var handler = Addressables.InstantiateAsync("UI/PopupDuelPosition.prefab");
             handler.Completed += (result) =>
             {
                 result.Result.transform.SetParent(RectPopup, false);
@@ -339,7 +339,7 @@ namespace MDPro3.UI.ServantUI
 
         public void ShowPopupSelection(List<string> selections, List<int> responses)
         {
-            var handler = Addressables.InstantiateAsync("PopupDuelSelection");
+            var handler = Addressables.InstantiateAsync("UI/PopupDuelSelection.prefab");
             handler.Completed += (result) =>
             {
                 result.Result.transform.SetParent(RectPopup, false);
@@ -353,7 +353,7 @@ namespace MDPro3.UI.ServantUI
 
         public void ShowPopupInput(List<string> selections, Action<string> confirmAction, Action cancelAction, InputValidation.ValidationType type = InputValidation.ValidationType.None)
         {
-            var handler = Addressables.InstantiateAsync("PopupDuelInput");
+            var handler = Addressables.InstantiateAsync("UI/PopupDuelInput.prefab");
             handler.Completed += (result) =>
             {
                 result.Result.transform.SetParent(RectPopup, false);

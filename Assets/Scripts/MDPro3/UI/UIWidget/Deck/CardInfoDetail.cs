@@ -651,7 +651,7 @@ namespace MDPro3.UI
         {
             var time = Time.time;
 
-            var handle = Addressables.InstantiateAsync("PopupProgress");
+            var handle = Addressables.InstantiateAsync("Popup/PopupProgress.prefab");
             while (!handle.IsDone)
                 yield return null;
             handle.Result.transform.SetParent(Program.instance.ui_.popup, false);

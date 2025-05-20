@@ -140,7 +140,7 @@ namespace MDPro3.UI.ServantUI
                 };
                 tasks.Add(task);
             }
-            var handle = Addressables.LoadAssetAsync<GameObject>("ItemPuzzle");
+            var handle = Addressables.LoadAssetAsync<GameObject>("UI/ItemPuzzle.prefab");
             handle.Completed += (result) =>
             {
                 var itemHeight = PropertyOverrider.NeedMobileLayout() ? 180f : 150f;

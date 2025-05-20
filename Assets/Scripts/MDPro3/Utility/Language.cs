@@ -5,13 +5,18 @@ namespace MDPro3.Utility
     {
         public const string ConfigName = "Language";
         public const string CardConfigName = "CardLanguage";
+
         public const string English = "en-US";
         public const string Spanish = "es-ES";
+        public const string French = "fr-FR";
+        public const string German = "ge-DE";
+        public const string Italian = "it-IT";
         public const string Japanese = "ja-JP";
         public const string Korean = "ko-KR";
+        public const string Portuguese = "pt-PT";
         public const string SimplifiedChinese = "zh-CN";
         public const string TraditionalChinese = "zh-TW";
-        public const string Portuguese = "pt-PT";
+
         private const string MasterDuelPortuguese = "pt-BR";
 
         public static string GetConfig()

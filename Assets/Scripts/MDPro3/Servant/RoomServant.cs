@@ -325,7 +325,7 @@ namespace MDPro3.Servant
         {
             if (SoloLockHand || Config.Get("AutoRPS", "0") == "0")
             {
-                var handle = Addressables.InstantiateAsync("PopupRockPaperScissors");
+                var handle = Addressables.InstantiateAsync("Popup/PopupRockPaperScissors.prefab");
                 handle.Completed += (result) =>
                 {
                     result.Result.transform.SetParent(Program.instance.ui_.popup, false);

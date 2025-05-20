@@ -15,18 +15,8 @@ MonoBehaviour:
   m_GroupName: Text
   m_GUID: 480949c4a54091c458e35b8e6fd7b1be
   m_SerializeEntries:
-  - m_GUID: e4d3bdf0b1ff88045a77627b15706cf9
-    m_Address: AboutGame
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 06286f5e58670e14bb681b8922e763ec
     m_Address: AboutUpdate
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: fc96e3c50f79a2e42962085f7a6db039
-    m_Address: AboutVersion
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -37,6 +27,16 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6c2a363b3f65c99499c33654b3e5c03e
     m_Address: UpdateContent
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e4d3bdf0b1ff88045a77627b15706cf9
+    m_Address: AboutGame
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fc96e3c50f79a2e42962085f7a6db039
+    m_Address: AboutVersion
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

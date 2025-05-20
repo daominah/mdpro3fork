@@ -67,8 +67,8 @@ public class AssetBundleRobber : MonoBehaviour
         pathAB = PATH_AB_WINDOWS;
         pathStore = PATH_STORE_WINDOWS;
 
-        //pathAB = PATH_AB_ANDROID;
-        //pathStore = PATH_STORE_ANDROID;
+        pathAB = PATH_AB_ANDROID;
+        pathStore = PATH_STORE_ANDROID;
 
         //pathAB = PATH_AB_IOS;
         //pathStore = PATH_STORE_IOS;
@@ -297,7 +297,7 @@ public class AssetBundleRobber : MonoBehaviour
             currentFileCount++;
             var type = GetAssetType(file.name);
 
-            if (!pathStore.Contains("Windows") && AssetIsIcon(type))
+            if (!pathStore.Contains("Windows") && AssetIsWindowsOnly(type))
                 continue;
             
             if (type == AssetType.AvatarStand)
@@ -565,9 +565,9 @@ public class AssetBundleRobber : MonoBehaviour
             }
             else if(type == AssetType.DeckCaseIcon)
             {
-                if (!Directory.Exists(pathStore + "Icon/DeckCase"))
-                    Directory.CreateDirectory(pathStore + "Icon/DeckCase");
-                var targetName = pathStore + "Icon/DeckCase/"
+                if (!Directory.Exists(pathStore + "Icon/DeckCase/S"))
+                    Directory.CreateDirectory(pathStore + "Icon/DeckCase/S");
+                var targetName = pathStore + "Icon/DeckCase/S/"
                     + Path.GetFileName(file.name).Replace(EXTENSION_PNG, string.Empty).Replace("deckcase", "DeckCase");
                 if (!File.Exists(targetName))
                     File.Copy(GetFullPath(file.path), targetName);
@@ -658,9 +658,9 @@ public class AssetBundleRobber : MonoBehaviour
             }
             else if(type == AssetType.ProfileIcon)
             {
-                if (!Directory.Exists(pathStore + "Icon/ProfileIcon"))
-                    Directory.CreateDirectory(pathStore + "Icon/ProfileIcon");
-                var targetName = pathStore + "Icon/ProfileIcon/"
+                if (!Directory.Exists(pathStore + "Icon/ProfileIcon/S"))
+                    Directory.CreateDirectory(pathStore + "Icon/ProfileIcon/S");
+                var targetName = pathStore + "Icon/ProfileIcon/S/"
                     + Path.GetFileName(file.name)
                         .Replace(EXTENSION_PNG, string.Empty)
                         .Replace("profileicon", "ProfileIcon");
@@ -704,9 +704,9 @@ public class AssetBundleRobber : MonoBehaviour
             }
             else if(type == AssetType.FrameIcon)
             {
-                if (!Directory.Exists(pathStore + "Icon/ProfileFrame"))
-                    Directory.CreateDirectory(pathStore + "Icon/ProfileFrame");
-                var targetName = pathStore + "Icon/ProfileFrame/"
+                if (!Directory.Exists(pathStore + "Icon/ProfileFrame/S"))
+                    Directory.CreateDirectory(pathStore + "Icon/ProfileFrame/S");
+                var targetName = pathStore + "Icon/ProfileFrame/S/"
                     + Path.GetFileName(file.name)
                         .Replace(EXTENSION_PNG, string.Empty)
                         .Replace("profileframe", "ProfileFrame");
@@ -738,6 +738,18 @@ public class AssetBundleRobber : MonoBehaviour
                     File.Copy(GetFullPath(file.path), targetName);
             }
 
+            // Text
+            else if(type == AssetType.XML)
+            {
+                if (!Directory.Exists(pathStore + "XML"))
+                    Directory.CreateDirectory(pathStore + "XML");
+                var targetName = pathStore + "XML/"
+                    + Path.GetFileName(file.name)
+                        .Replace(EXTENSION_XML, string.Empty);
+                if (!File.Exists(targetName))
+                    File.Copy(GetFullPath(file.path), targetName);
+            }
+
             text.text = "Copying: " + currentFileCount + "/" + fileCount;
             yield return null;
         }
@@ -751,6 +763,7 @@ public class AssetBundleRobber : MonoBehaviour
     private const string EXTENSION_PREFAB = ".prefab";
     private const string EXTENSION_WAV = ".wav";
     private const string EXTENSION_MAT = ".mat";
+    private const string EXTENSION_XML = ".xml";
 
     private AssetType GetAssetType(string name)
     {
@@ -790,6 +803,8 @@ public class AssetBundleRobber : MonoBehaviour
         {
             if (name.EndsWith(EXTENSION_PREFAB))
                 return AssetType.Mate;
+            else if (name.EndsWith(EXTENSION_PNG))
+                return AssetType.MateIcon;
         }
         else if (name.Contains("/protector/"))
         {
@@ -906,13 +921,6 @@ public class AssetBundleRobber : MonoBehaviour
                     return AssetType.GraveIcon;
             }
         }
-        else if (name.StartsWith("assets/resourcesassetbundle/mate/"))
-        {
-            if (name.EndsWith(EXTENSION_PNG))
-            {
-                return AssetType.MateIcon;
-            }
-        }
         else if (name.StartsWith("assets/resourcesassetbundle/images/profileicon/"))
         {
             if (name.EndsWith(EXTENSION_PNG))
@@ -924,6 +932,11 @@ public class AssetBundleRobber : MonoBehaviour
                 else
                     return AssetType.ProfileIcon;
             }
+        }
+        // Text
+        else if (name.StartsWith("/sound/xml/"))
+        {
+            return AssetType.XML;
         }
 
         return AssetType.None;
@@ -968,10 +981,11 @@ public class AssetBundleRobber : MonoBehaviour
         SE_DUEL,
         SE_FIELD,
         SE_MATE,
-        SE_SYS
+        SE_SYS,
+        XML,
     }
 
-    private bool AssetIsIcon(AssetType type)
+    private bool AssetIsWindowsOnly(AssetType type)
     {
         return type switch
         {
@@ -996,6 +1010,7 @@ public class AssetBundleRobber : MonoBehaviour
             AssetType.ProfileIconL => true,
             AssetType.ProfileIconLHD => true,
             AssetType.WallpaperIcon => true,
+            AssetType.XML => true,
             _ => false,
         };
     }

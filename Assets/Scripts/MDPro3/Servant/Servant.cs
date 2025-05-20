@@ -27,7 +27,7 @@ namespace MDPro3.Servant
         protected virtual bool NeedExitButton => true;
         protected virtual float BlackAlpha => 0f;
         protected virtual float SubBlackAlpha => 0f;
-        protected virtual string Label_UI => GetType().Name + "UI";
+        protected virtual string Label_UI => $"ServantUI/{GetType().Name}UI.prefab";
 
         protected ServantUI servantUI;
 

@@ -15,323 +15,33 @@ MonoBehaviour:
   m_GroupName: Prefab
   m_GUID: 7c094f02978cc7b4381bcbc23867f4a1
   m_SerializeEntries:
-  - m_GUID: 00287e10f15efb845af485b242ebca28
-    m_Address: CharacterSelectorUI
+  - m_GUID: 7250f752aaf9cea49aafe1be430e4cc3
+    m_Address: ServantUI
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 02c91043684f6a242881ca48081026b3
-    m_Address: CardListItem
+  - m_GUID: 9d3e8fc6eda1a6b4d9dc6cb614c3efcc
+    m_Address: UIWidges
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 095c7f8f3147a404cad825dcf60f8a20
-    m_Address: SettingServantUI
+  - m_GUID: a380c609519545e4ab40f592fc92ddfd
+    m_Address: UI
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 0c1ed19e19f271747935bb9b5180b960
-    m_Address: ItemPuzzle
+  - m_GUID: af1f3b0c3bf72254cb4dccd54f6bd545
+    m_Address: ScriptableObjects
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 0fbf4f8f39c9adb45901555b5550f04f
-    m_Address: Characters
+  - m_GUID: df12731661b789d439df76a43fe54e05
+    m_Address: Popup
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 0fcc1f894771723469c21c54c19e1b07
-    m_Address: SoloSelectorUI
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 111a71685ec8ea849b48fdbe36034cdd
-    m_Address: CardRenderer
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 12dc01825bbee3849b7b544326afc495
-    m_Address: RoomServantUI
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 1742a846ded491441b8c88bc64d8563f
-    m_Address: PopupDuelSelectCard
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 1c23a57a1f226df41b4e82b4c948e996
-    m_Address: PopupDuelYesOrNo
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 1d621588e7dd4aa4fa301894c1609e91
-    m_Address: ItemCharacter
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 21fc8710f7d3dc4408fb48e24dd5f118
-    m_Address: MessageToast
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 2723f1143ba3d204daba131a91d402b3
-    m_Address: PopupSelection
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 2c2cb86db62fadc4382c6f35f50dca55
-    m_Address: ItemWatch
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 2e1d9a43340d9b94b83075db6658e6ac
-    m_Address: PopupText
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 3166a00cfe00fbe4480a459014a87cf5
-    m_Address: PopupDuelInput
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 342dc9528c59ad8498e87108371938f8
-    m_Address: MateViewerUI
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 36a6a4626db37934585a3ab3de32a719
-    m_Address: OnlineDeckViewerUI
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 379855939c2877c4bbd1a7d6d1e68bbb
-    m_Address: ChatItemSystem
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 39e0c3308730f5c4cb88cb5ce9515b8e
-    m_Address: ItemDeck
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 3efc94c5395f1764ca7a23342daf724f
-    m_Address: MessageCard
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 4f4199b27a66f06418ca3a390ca90e11
-    m_Address: CardExpand
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 5a7c92995f2b6444ea6c0e5073d84d2a
-    m_Address: DeckBrowserUIMobile
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 5b622d5baae0a5142805ed0edbb203c0
-    m_Address: OcgCoreUI
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 618112d28521aa14dadc9410a5857560
-    m_Address: ItemAppearance
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 6cbcf7a776ae5084f873a1d31725fb74
-    m_Address: ItemAddress
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 77f643fc56ffac446bbed3bc50fd5033
-    m_Address: PopupSearchOrder
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 7d4efd242cec1c842a0e4e7265f1c614
-    m_Address: DuelPrefabs
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 87492367d2e3a034487b680ca8ee0700
-    m_Address: ItemSolo
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 8979bcfddb7b47d4d9c49c276cb6d146
-    m_Address: DeckSelectorUI
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 8cac00e64eb18774ba649bde54d7da2e
-    m_Address: FieldSummonRightInfo
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 92023704990539444929b2b66f3adefb
-    m_Address: ItemCutin
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 92618befbaca46b419d8a758dfb18164
-    m_Address: PopupDuelPosition
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 93874019af0c3e54fa8c4fde6561fb3a
-    m_Address: PopupInput
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 9bbe2536540467948b7abef017036aa5
-    m_Address: DeckEditorUIMobile
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 9e8d10ac8308374479ebf66519f85b95
-    m_Address: SubMenu
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: a112c915f64309d44bd2c2ccaaace04f
-    m_Address: PopupProgress
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: a1de85f407585454e836240b1192a6b2
-    m_Address: AppearanceUI
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: a2f65dc8f11bea544a93cc75ce49c948
-    m_Address: ItemMate
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: a713529e14f713444a212bf5306f55a8
-    m_Address: CardInfoDetail
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: a7b6c57d0c1eb5b46bb3350b776ca7fb
-    m_Address: CardInCollection
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: add898cd8d8b0fe4f8a15f2231cf4915
-    m_Address: CutinViewerUI
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: b173fc1b06ebe03429fa63e860dbb9b3
-    m_Address: ItemReplay
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: b3d14bf1e85b69749a45e2e2b6dc16b8
-    m_Address: Items
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: c0115549732dd7246a50c7eb4d5bb372
-    m_Address: MainMenuUI
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: c8300daa1501f0f40883fba841e00b49
-    m_Address: PopupConfirm
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: c9effe1373443fb4ab85be9f7df99003
-    m_Address: DeckEditorUI
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: cd4cb732ca0103e42a6a46056b4d77df
-    m_Address: ChatItemOp
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: ce73ce44e2b27d746b40914a6ec1a5c4
-    m_Address: PopupDuelSelectCardItem
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: cf73eba20bdf7fd48b770a204ba61a35
-    m_Address: PopupRockPaperScissors
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: d34127121b618664b9286b778ee407c4
-    m_Address: PopupSearchFilter
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: d4c6b9f42fea9b24cba446b277419b76
-    m_Address: PuzzleSelectorUI
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: d4fdecb79320fa848aa409f68cdec11b
-    m_Address: OnlineServantUI
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: d56e1c337cc49e94ebfba268e09ea992
-    m_Address: MessageCast
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: d74457eca3addb6408d4268b2859bfff
-    m_Address: DeckBrowserOptionForPickupCardSelection
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: d9bee3b4704004f4da4e04a8e805a69f
-    m_Address: PopupSelectionItem
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: dcfc2b5ee4955ff4ab34c37e1bcff876
-    m_Address: ChatItemMe
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: df49c72a6dc86db4d9907f55b6454d8e
-    m_Address: DeckBrowserUI
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: e0fa18609d04c96409d72c9e5fc78d6c
-    m_Address: PopupDuelSelection
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: e31e0126eb188e34192b03c781d544cc
-    m_Address: PopupDuelPhase
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: e4678b63dcf0142479e84cb5be5b9997
-    m_Address: ItemDeckOnline
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: e4d6bc5b167da8142aed79baba424b12
-    m_Address: ReplaySelectorUI
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: ecdefd6bfde9ff14ba575ae1790d1e23
-    m_Address: TextureContainer
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: f99f1924ec3c98f4fb6b8d9fc1d47b9a
-    m_Address: PopupYesOrNo
+  - m_GUID: fcd68adada8d9b44a9c69256cd0aa90b
+    m_Address: Prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

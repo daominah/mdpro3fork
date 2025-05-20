@@ -26,12 +26,6 @@ namespace MDPro3.UI.ServantUI
             m_ScrollRectCG = m_ScrollRectCG != null ? m_ScrollRectCG
             : ScrollRect.GetComponent<CanvasGroup>();
 
-        private const string LABEL_CG_DETAILS = "Details";
-        private CanvasGroup m_Details;
-        private CanvasGroup Details =>
-            m_Details = m_Details != null ? m_Details
-            : Manager.GetElement<CanvasGroup>(LABEL_CG_DETAILS);
-
         private const string LABEL_TXT_DETAILTITLE = "TextDetailTitle";
         private TextMeshProUGUI m_TextDetailTitle;
         private TextMeshProUGUI TextDetailTitle =>
@@ -170,7 +164,24 @@ namespace MDPro3.UI.ServantUI
             m_InputPlayerName = m_InputPlayerName != null ? m_InputPlayerName
             : Manager.GetElement<TMP_InputField>(LABEL_IPT_PLAYERNAME);
 
+        private const string LABEL_MONO_ITEM_APPEARANCE = "ItemAppearance";
+        private GameObject m_Template;
+        private GameObject Template =>
+            m_Template = m_Template != null ? m_Template
+            : Manager.GetElement(LABEL_MONO_ITEM_APPEARANCE);
+
+        private const string LABEL_MONO_APPEARANCE_DETAIL = "Details";
+        private AppearanceDetail m_Detail;
+        public AppearanceDetail Detail =>
+            m_Detail = m_Detail != null ? m_Detail
+            : Manager.GetElement<AppearanceDetail>(LABEL_MONO_APPEARANCE_DETAIL);
+
         #endregion
+
+        public static string currentContent = "PlayerName";
+        private static List<Items.Item> targetItems;
+        private static List<GameObject> currentList;
+        private static readonly List<GameObject> onlyOpSideShowItems = new();
 
         private static readonly List<GameObject> wallpapers = new();
         private static readonly List<GameObject> faces = new();
@@ -301,47 +312,11 @@ namespace MDPro3.UI.ServantUI
             TogglePlayer0.OnRightSelection();
         }
 
-        public void SetDetailName(string itemName)
-        {
-            TextDetailSetting.text = itemName;
-        }
-
-        public void SetDetailDescription(string desc)
-        {
-            TextDetailDescription.text = desc;
-        }
-
         public void SetHoverText(string hover)
         {
             TextHover.text = hover;
         }
 
-        public void SetDetailImage(Sprite sprite)
-        {
-            Image.sprite = sprite;
-            Image.gameObject.SetActive(true);
-            RawImage.gameObject.SetActive(false);
-        }
-
-        public void SetDetailImageMaterial(Material mat)
-        {
-            Image.material = mat;
-            Image.gameObject.SetActive(true);
-            RawImage.gameObject.SetActive(false);
-        }
-
-        public void SetDetailRawImageMaterial(Material mat)
-        {
-            RawImage.material = mat;
-            RawImage.gameObject.SetActive(true);
-            Image.gameObject.SetActive(false);
-        }
-
-
-        public static string currentContent = "PlayerName";
-        private static List<Items.Item> targetItems;
-        private static List<GameObject> currentList;
-        private static List<GameObject> onlyOpSideShowItems = new();
         public void ShowItems(string type)
         {
             currentContent = type;
@@ -357,7 +332,7 @@ namespace MDPro3.UI.ServantUI
             {
                 ScrollRectCG.alpha = 0;
                 ScrollRectCG.blocksRaycasts = false;
-                Details.alpha = 0f;
+                Detail.Hide();
                 NameTable.SetActive(true);
 
                 InputPlayerName.text = Config.Get(condition.ToString() + currentContent + player, "@ui");
@@ -375,7 +350,7 @@ namespace MDPro3.UI.ServantUI
             {
                 ScrollRectCG.alpha = 0f;
                 ScrollRectCG.blocksRaycasts = false;
-                Details.alpha = 0f;
+                Detail.Hide();
 
                 DeckPickup.gameObject.SetActive(true);
                 DeckPickup.SetDeck(DeckEditor.Deck);
@@ -388,47 +363,23 @@ namespace MDPro3.UI.ServantUI
 
             ScrollRectCG.alpha = 1.0f;
             ScrollRectCG.blocksRaycasts = true;
-            Details.alpha = 1f;
+            Detail.Show();
             NameTable.SetActive(false);
             DeckPickup.gameObject.SetActive(false);
 
-            bool isWallpaper = false;
-            switch (currentContent)
+            targetItems = currentContent switch
             {
-                case "Wallpaper":
-                    targetItems = Program.items.wallpapers;
-                    isWallpaper = true;
-                    break;
-                case "Face":
-                    targetItems = Program.items.faces;
-                    break;
-                case "Frame":
-                    targetItems = Program.items.frames;
-                    break;
-                case "Protector":
-                    targetItems = Program.items.protectors;
-                    break;
-                case "Field":
-                    targetItems = Program.items.mats;
-                    break;
-                case "Grave":
-                    targetItems = Program.items.graves;
-                    break;
-                case "Stand":
-                    targetItems = Program.items.stands;
-                    break;
-                case "Mate":
-                    targetItems = Program.items.mates;
-                    break;
-                case "Case":
-                    targetItems = Program.items.cases;
-                    break;
-                default:
-                    targetItems = Program.items.mates;
-                    break;
-            }
-
-
+                "Wallpaper" => Program.items.wallpapers,
+                "Face" => Program.items.faces,
+                "Frame" => Program.items.frames,
+                "Protector" => Program.items.protectors,
+                "Field" => Program.items.mats,
+                "Grave" => Program.items.graves,
+                "Stand" => Program.items.stands,
+                "Mate" => Program.items.mates,
+                "Case" => Program.items.cases,
+                _ => Program.items.mates,
+            };
             foreach (var pool in pools)
                 if (pool.Key != currentContent)
                     foreach (var item in pool.Value)
@@ -437,16 +388,18 @@ namespace MDPro3.UI.ServantUI
             if (currentList.Count == 0)
             {
                 int itemCount = 0;
-                for (int i = 0; i < targetItems.Count; i++)
+                foreach (var itemInfo in targetItems)
                 {
-                    GameObject item = Instantiate(appearanceItem);
+                    if (itemInfo.notReady) continue;
+
+                    GameObject item = Instantiate(Template);
+                    item.SetActive(true);
                     var itemMono = item.GetComponent<SelectionToggle_AppearanceItem>();
-                    itemMono.index = i;
-                    itemCount = itemMono.index;
-                    itemMono.itemID = targetItems[i].id;
-                    itemMono.description = targetItems[i].description;
-                    itemMono.itemName = targetItems[i].name;
-                    itemMono.path = Items.CodeToIconPath(itemMono.itemID.ToString());
+                    itemMono.index = itemCount++;
+                    itemMono.itemID = itemInfo.id;
+                    itemMono.description = itemInfo.description;
+                    itemMono.itemName = itemInfo.name;
+                    itemMono.path = Items.GetIconAddress(itemMono.itemID.ToString());
                     itemMono.transform.SetParent(ScrollRect.content, false);
                     itemMono.Refresh();
                     currentList.Add(item);
@@ -458,12 +411,11 @@ namespace MDPro3.UI.ServantUI
                     var files = new DirectoryInfo(Program.root + "CrossDuel").GetFiles("*.bundle");
                     for (int i = 0; i < files.Length; i++)
                     {
-                        int code = int.Parse(files[i].Name.Replace(".bundle", ""));
+                        int code = int.Parse(files[i].Name.Replace(".bundle", string.Empty));
                         var card = CardsManager.Get(code, true);
-                        GameObject item = Instantiate(appearanceItem);
+                        GameObject item = Instantiate(Template);
                         var itemMono = item.GetComponent<SelectionToggle_AppearanceItem>();
-                        itemMono.index = i + targetItems.Count;
-                        itemCount = itemMono.index;
+                        itemMono.index = itemCount++;
                         itemMono.itemID = code;
                         if (card.Id == 0)
                             itemMono.itemName = MateViewerUI.GetRushDuelMateName(code);
@@ -477,17 +429,19 @@ namespace MDPro3.UI.ServantUI
                     }
                 }
 #endif
+
                 if (condition != Condition.DeckEditor)
                 {
                     if (Program.items.ListHaveNone(targetItems))
                     {
-                        GameObject item = Instantiate(appearanceItem);
+                        GameObject item = Instantiate(Template);
+                        item.SetActive(true);
                         var itemMono = item.GetComponent<SelectionToggle_AppearanceItem>();
-                        itemMono.index = ++itemCount;
+                        itemMono.index = itemCount++;
                         itemMono.itemID = Items.CODE_NONE;
                         itemMono.description = InterString.Get("该项设置将设置为无。");
                         itemMono.itemName = InterString.Get("不设置");
-                        itemMono.path = (isWallpaper ? "WallPaperIcon" : string.Empty) + Items.PATH_ICON_NONE;
+                        itemMono.path = Items.PATH_ICON_NONE;
                         itemMono.transform.SetParent(ScrollRect.content, false);
                         itemMono.Refresh();
                         currentList.Add(item);
@@ -495,22 +449,24 @@ namespace MDPro3.UI.ServantUI
 
                     if (Program.items.ListHaveRandom(targetItems))
                     {
-                        GameObject item = Instantiate(appearanceItem);
+                        GameObject item = Instantiate(Template);
+                        item.SetActive(true);
                         var itemMono = item.GetComponent<SelectionToggle_AppearanceItem>();
-                        itemMono.index = ++itemCount;
+                        itemMono.index = itemCount++;
                         itemMono.itemID = Items.CODE_RANDOM;
                         itemMono.description = InterString.Get("该项设置将随机设置。");
                         itemMono.itemName = InterString.Get("随机");
-                        itemMono.path = (isWallpaper ? "WallPaperIcon" : string.Empty) + Items.PATH_ICON_RANDOM;
+                        itemMono.path = Items.PATH_ICON_RANDOM;
                         itemMono.transform.SetParent(ScrollRect.content, false);
                         itemMono.Refresh();
                         currentList.Add(item);
                     }
                     if (Program.items.ListHaveSame(targetItems))
                     {
-                        GameObject item = Instantiate(appearanceItem);
+                        GameObject item = Instantiate(Template);
+                        item.SetActive(true);
                         var itemMono = item.GetComponent<SelectionToggle_AppearanceItem>();
-                        itemMono.index = ++itemCount;
+                        itemMono.index = itemCount++;
                         itemMono.itemID = Items.CODE_SAME;
                         itemMono.description = InterString.Get("该项设置将与场地设置保持一致。");
                         itemMono.itemName = InterString.Get("一致");
@@ -522,9 +478,10 @@ namespace MDPro3.UI.ServantUI
 
                     if (Program.items.ListHaveDIY(targetItems))
                     {
-                        GameObject item = Instantiate(appearanceItem);
+                        GameObject item = Instantiate(Template);
+                        item.SetActive(true);
                         var itemMono = item.GetComponent<SelectionToggle_AppearanceItem>();
-                        itemMono.index = ++itemCount;
+                        itemMono.index = itemCount++;
                         itemMono.itemID = Items.CODE_DIY;
                         itemMono.description = InterString.Get("我方头像：") +
                                                                 Program.diyPath + meString + Program.pngExpansion + "\n" +
@@ -543,9 +500,10 @@ namespace MDPro3.UI.ServantUI
 
                     if (targetItems == Program.items.mats)
                     {
-                        GameObject item = Instantiate(appearanceItem);
+                        GameObject item = Instantiate(Template);
+                        item.SetActive(true);
                         var itemMono = item.GetComponent<SelectionToggle_AppearanceItem>();
-                        itemMono.index = ++itemCount;
+                        itemMono.index = itemCount++;
                         itemMono.itemID = Items.CODE_SAME;
                         itemMono.description = InterString.Get("该项设置将与我方场地设置保持一致。");
                         itemMono.itemName = InterString.Get("一致");
@@ -557,6 +515,7 @@ namespace MDPro3.UI.ServantUI
                     }
                 }
             }
+
             foreach (var item in currentList)
             {
                 if (player.Contains("0") && onlyOpSideShowItems.Contains(item))
@@ -564,6 +523,7 @@ namespace MDPro3.UI.ServantUI
                 else
                     item.GetComponent<SelectionToggle_AppearanceItem>().Show();
             }
+
             foreach (var item in currentList)
             {
                 if (currentContent == "Wallpaper")

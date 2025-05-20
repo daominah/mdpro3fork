@@ -26,6 +26,12 @@ namespace MDPro3.UI
             m_Protector = m_Protector != null ? m_Protector
             : Manager.GetElement<RawImage>(LABEL_RIMG_PROTECTOR);
 
+        private const string LABEL_IMG_WALLPAPER_BG = "WallpaperBG";
+        private Image m_WallpaperBG;
+        private Image WallpaperBG =>
+            m_WallpaperBG = m_WallpaperBG != null ? m_WallpaperBG
+            : Manager.GetElement<Image>(LABEL_IMG_WALLPAPER_BG);
+
         private GridLayoutGroup m_Grid;
         private GridLayoutGroup Grid =>
             m_Grid = m_Grid != null ? m_Grid
@@ -98,6 +104,10 @@ namespace MDPro3.UI
                     Icon.rectTransform.localScale = Vector3.one * 0.8f;
                     //Icon.transform.localPosition = new Vector3(0f, 15f, 0f);
                 }
+                else if (path.StartsWith("WallPaperIcon"))
+                {
+                    WallpaperBG.gameObject.SetActive(true);
+                }
                 Protector.gameObject.SetActive(false);
             }
             else //CrossDuel Mate
@@ -128,16 +138,12 @@ namespace MDPro3.UI
             base.CallToggleOnEvent();
             CallHoverOnEvent();
 
-            Program.instance.appearance.GetUI<AppearanceUI>().SetDetailName(itemName);
-            Program.instance.appearance.GetUI<AppearanceUI>().SetDetailDescription(description);
+            Program.instance.appearance.GetUI<AppearanceUI>().Detail.SetItem(itemID, itemName, description, path == string.Empty);
+
             Program.instance.appearance.GetUI<AppearanceUI>().SetHoverText(itemName);
             Program.instance.appearance.lastSelectedItem = this;
             Program.instance.currentServant.lastSelectable = Selectable;
             GetSelectable().Select();
-
-            var protector = Manager.GetElement<RawImage>("Protector");
-            var icon = Manager.GetElement<Image>("Icon");
-
 
             if (Appearance.condition == Appearance.Condition.DeckEditor)
             {
@@ -147,7 +153,7 @@ namespace MDPro3.UI
                     {
                         DeckEditor.Deck.Case = itemID;
                         Program.instance.deckEditor.GetUI<DeckEditorUI>().DeckView.SetDirty(true);
-                        Program.instance.deckEditor.GetUI<DeckEditorUI>().IconCase.sprite = icon.sprite;
+                        Program.instance.deckEditor.GetUI<DeckEditorUI>().IconCase.sprite = Icon.sprite;
                     }
                 }
                 else if (path.StartsWith("Protector"))
@@ -156,7 +162,7 @@ namespace MDPro3.UI
                     {
                         DeckEditor.Deck.Protector = itemID;
                         Program.instance.deckEditor.GetUI<DeckEditorUI>().DeckView.SetDirty(true);
-                        Program.instance.deckEditor.GetUI<DeckEditorUI>().IconProtector.material = protector.material;
+                        Program.instance.deckEditor.GetUI<DeckEditorUI>().IconProtector.material = Protector.material;
                     }
                 }
                 else if (path.StartsWith("FieldIcon"))
@@ -165,7 +171,7 @@ namespace MDPro3.UI
                     {
                         DeckEditor.Deck.Field = itemID;
                         Program.instance.deckEditor.GetUI<DeckEditorUI>().DeckView.SetDirty(true);
-                        Program.instance.deckEditor.GetUI<DeckEditorUI>().IconField.sprite = icon.sprite;
+                        Program.instance.deckEditor.GetUI<DeckEditorUI>().IconField.sprite = Icon.sprite;
                     }
                 }
                 else if (path.StartsWith("FieldObj"))
@@ -174,7 +180,7 @@ namespace MDPro3.UI
                     {
                         DeckEditor.Deck.Grave = itemID;
                         Program.instance.deckEditor.GetUI<DeckEditorUI>().DeckView.SetDirty(true);
-                        Program.instance.deckEditor.GetUI<DeckEditorUI>().IconGrave.sprite = icon.sprite;
+                        Program.instance.deckEditor.GetUI<DeckEditorUI>().IconGrave.sprite = Icon.sprite;
                     }
                 }
                 else if (path.StartsWith("FieldAvatarBase"))
@@ -183,7 +189,7 @@ namespace MDPro3.UI
                     {
                         DeckEditor.Deck.Stand = itemID;
                         Program.instance.deckEditor.GetUI<DeckEditorUI>().DeckView.SetDirty(true);
-                        Program.instance.deckEditor.GetUI<DeckEditorUI>().IconStand.sprite = icon.sprite;
+                        Program.instance.deckEditor.GetUI<DeckEditorUI>().IconStand.sprite = Icon.sprite;
                     }
                 }
                 else
@@ -192,7 +198,7 @@ namespace MDPro3.UI
                     {
                         DeckEditor.Deck.Mate = itemID;
                         Program.instance.deckEditor.GetUI<DeckEditorUI>().DeckView.SetDirty(true);
-                        Program.instance.deckEditor.GetUI<DeckEditorUI>().IconMate.sprite = icon.sprite;
+                        Program.instance.deckEditor.GetUI<DeckEditorUI>().IconMate.sprite = Icon.sprite;
                     }
                 }
             }
@@ -203,104 +209,92 @@ namespace MDPro3.UI
                     Config.Set(Appearance.condition.ToString() + AppearanceUI.currentContent + Appearance.player, itemID.ToString());
             }
 
-            StartCoroutine(ShowDetailAsync());
+            StartCoroutine(ConfigSetAsync());
         }
 
-        private IEnumerator ShowDetailAsync()
+        private IEnumerator ConfigSetAsync()
         {
-
-            Program.instance.appearance.GetUI<AppearanceUI>().SetDetailImage(TextureManager.container.typeNone);
             while (!loaded)
                 yield return null;
 
-            var protector = Manager.GetElement<RawImage>("Protector");
-            var icon = Manager.GetElement<Image>("Icon");
-
-            if (!icon.gameObject.activeSelf)//Protector
+            if (!Icon.gameObject.activeSelf)//Protector
             {
-                Program.instance.appearance.GetUI<AppearanceUI>().SetDetailRawImageMaterial(protector.material);
-
                 if (Appearance.player == "0")
                 {
                     if (Appearance.condition == Appearance.Condition.Duel)
-                        Appearance.duelProtector0 = protector.material;
+                        Appearance.duelProtector0 = Protector.material;
                     else if (Appearance.condition == Appearance.Condition.Watch)
-                        Appearance.watchProtector0 = protector.material;
+                        Appearance.watchProtector0 = Protector.material;
                     else if (Appearance.condition == Appearance.Condition.Replay)
-                        Appearance.replayProtector0 = protector.material;
+                        Appearance.replayProtector0 = Protector.material;
                 }
                 else if (Appearance.player == "1")
                 {
                     if (Appearance.condition == Appearance.Condition.Duel)
-                        Appearance.duelProtector1 = protector.material;
+                        Appearance.duelProtector1 = Protector.material;
                     else if (Appearance.condition == Appearance.Condition.Watch)
-                        Appearance.watchProtector1 = protector.material;
+                        Appearance.watchProtector1 = Protector.material;
                     else if (Appearance.condition == Appearance.Condition.Replay)
-                        Appearance.replayProtector1 = protector.material;
+                        Appearance.replayProtector1 = Protector.material;
                 }
                 else if (Appearance.player == "0Tag")
                 {
                     if (Appearance.condition == Appearance.Condition.Duel)
-                        Appearance.duelProtector0Tag = protector.material;
+                        Appearance.duelProtector0Tag = Protector.material;
                     else if (Appearance.condition == Appearance.Condition.Watch)
-                        Appearance.watchProtector0Tag = protector.material;
+                        Appearance.watchProtector0Tag = Protector.material;
                     else if (Appearance.condition == Appearance.Condition.Replay)
-                        Appearance.replayProtector0Tag = protector.material;
+                        Appearance.replayProtector0Tag = Protector.material;
                 }
                 else if (Appearance.player == "1Tag")
                 {
                     if (Appearance.condition == Appearance.Condition.Duel)
-                        Appearance.duelProtector1Tag = protector.material;
+                        Appearance.duelProtector1Tag = Protector.material;
                     else if (Appearance.condition == Appearance.Condition.Watch)
-                        Appearance.watchProtector1Tag = protector.material;
+                        Appearance.watchProtector1Tag = Protector.material;
                     else if (Appearance.condition == Appearance.Condition.Replay)
-                        Appearance.replayProtector1Tag = protector.material;
+                        Appearance.replayProtector1Tag = Protector.material;
                 }
             }
             else
             {
-                Program.instance.appearance.GetUI<AppearanceUI>().SetDetailImage(icon.sprite);
-                if (path.StartsWith("ProfileIcon"))
-                    Program.instance.appearance.GetUI<AppearanceUI>().SetDetailImageMaterial(null);
-                else
-                    Program.instance.appearance.GetUI<AppearanceUI>().SetDetailImageMaterial(icon.material);
                 if (path.StartsWith("ProfileIcon"))
                 {
                     if (Appearance.player == "0")
                     {
                         if (Appearance.condition == Appearance.Condition.Duel)
-                            Appearance.duelFace0 = icon.sprite;
+                            Appearance.duelFace0 = Icon.sprite;
                         else if (Appearance.condition == Appearance.Condition.Watch)
-                            Appearance.watchFace0 = icon.sprite;
+                            Appearance.watchFace0 = Icon.sprite;
                         else if (Appearance.condition == Appearance.Condition.Replay)
-                            Appearance.replayFace0 = icon.sprite;
+                            Appearance.replayFace0 = Icon.sprite;
                     }
                     else if (Appearance.player == "1")
                     {
                         if (Appearance.condition == Appearance.Condition.Duel)
-                            Appearance.duelFace1 = icon.sprite;
+                            Appearance.duelFace1 = Icon.sprite;
                         else if (Appearance.condition == Appearance.Condition.Watch)
-                            Appearance.watchFace1 = icon.sprite;
+                            Appearance.watchFace1 = Icon.sprite;
                         else if (Appearance.condition == Appearance.Condition.Replay)
-                            Appearance.replayFace1 = icon.sprite;
+                            Appearance.replayFace1 = Icon.sprite;
                     }
                     else if (Appearance.player == "0Tag")
                     {
                         if (Appearance.condition == Appearance.Condition.Duel)
-                            Appearance.duelFace0Tag = icon.sprite;
+                            Appearance.duelFace0Tag = Icon.sprite;
                         else if (Appearance.condition == Appearance.Condition.Watch)
-                            Appearance.watchFace0Tag = icon.sprite;
+                            Appearance.watchFace0Tag = Icon.sprite;
                         else if (Appearance.condition == Appearance.Condition.Replay)
-                            Appearance.replayFace0Tag = icon.sprite;
+                            Appearance.replayFace0Tag = Icon.sprite;
                     }
                     else if (Appearance.player == "1Tag")
                     {
                         if (Appearance.condition == Appearance.Condition.Duel)
-                            Appearance.duelFace1Tag = icon.sprite;
+                            Appearance.duelFace1Tag = Icon.sprite;
                         else if (Appearance.condition == Appearance.Condition.Watch)
-                            Appearance.watchFace1Tag = icon.sprite;
+                            Appearance.watchFace1Tag = Icon.sprite;
                         else if (Appearance.condition == Appearance.Condition.Replay)
-                            Appearance.replayFace1Tag = icon.sprite;
+                            Appearance.replayFace1Tag = Icon.sprite;
                     }
                 }
                 else if (path.StartsWith("ProfileFrame"))
@@ -308,74 +302,38 @@ namespace MDPro3.UI
                     if (Appearance.player == "0")
                     {
                         if (Appearance.condition == Appearance.Condition.Duel)
-                        {
-                            Program.instance.appearance.GetUI<AppearanceUI>().SetDetailImage(Appearance.duelFace0);
-                            Appearance.duelFrameMat0 = icon.material;
-                        }
+                            Appearance.duelFrameMat0 = Icon.material;
                         else if (Appearance.condition == Appearance.Condition.Watch)
-                        {
-                            Program.instance.appearance.GetUI<AppearanceUI>().SetDetailImage(Appearance.watchFace0);
-                            Appearance.watchFrameMat0 = icon.material;
-                        }
+                            Appearance.watchFrameMat0 = Icon.material;
                         else if (Appearance.condition == Appearance.Condition.Replay)
-                        {
-                            Program.instance.appearance.GetUI<AppearanceUI>().SetDetailImage(Appearance.replayFace0);
-                            Appearance.replayFrameMat0 = icon.material;
-                        }
+                            Appearance.replayFrameMat0 = Icon.material;
                     }
                     else if (Appearance.player == "1")
                     {
                         if (Appearance.condition == Appearance.Condition.Duel)
-                        {
-                            Program.instance.appearance.GetUI<AppearanceUI>().SetDetailImage(Appearance.duelFace1);
-                            Appearance.duelFrameMat1 = icon.material;
-                        }
+                            Appearance.duelFrameMat1 = Icon.material;
                         else if (Appearance.condition == Appearance.Condition.Watch)
-                        {
-                            Program.instance.appearance.GetUI<AppearanceUI>().SetDetailImage(Appearance.watchFace1);
-                            Appearance.watchFrameMat1 = icon.material;
-                        }
+                            Appearance.watchFrameMat1 = Icon.material;
                         else if (Appearance.condition == Appearance.Condition.Replay)
-                        {
-                            Program.instance.appearance.GetUI<AppearanceUI>().SetDetailImage(Appearance.replayFace1);
-                            Appearance.replayFrameMat1 = icon.material;
-                        }
+                            Appearance.replayFrameMat1 = Icon.material;
                     }
                     else if (Appearance.player == "0Tag")
                     {
                         if (Appearance.condition == Appearance.Condition.Duel)
-                        {
-                            Program.instance.appearance.GetUI<AppearanceUI>().SetDetailImage(Appearance.duelFace0Tag);
-                            Appearance.duelFrameMat0Tag = icon.material;
-                        }
+                            Appearance.duelFrameMat0Tag = Icon.material;
                         else if (Appearance.condition == Appearance.Condition.Watch)
-                        {
-                            Program.instance.appearance.GetUI<AppearanceUI>().SetDetailImage(Appearance.watchFace0Tag);
-                            Appearance.watchFrameMat0Tag = icon.material;
-                        }
+                            Appearance.watchFrameMat0Tag = Icon.material;
                         else if (Appearance.condition == Appearance.Condition.Replay)
-                        {
-                            Program.instance.appearance.GetUI<AppearanceUI>().SetDetailImage(Appearance.replayFace0Tag);
-                            Appearance.replayFrameMat0Tag = icon.material;
-                        }
+                            Appearance.replayFrameMat0Tag = Icon.material;
                     }
                     else if (Appearance.player == "1Tag")
                     {
                         if (Appearance.condition == Appearance.Condition.Duel)
-                        {
-                            Program.instance.appearance.GetUI<AppearanceUI>().SetDetailImage(Appearance.duelFace1Tag);
-                            Appearance.duelFrameMat1Tag = icon.material;
-                        }
+                            Appearance.duelFrameMat1Tag = Icon.material;
                         else if (Appearance.condition == Appearance.Condition.Watch)
-                        {
-                            Program.instance.appearance.GetUI<AppearanceUI>().SetDetailImage(Appearance.watchFace1Tag);
-                            Appearance.watchFrameMat1Tag = icon.material;
-                        }
+                            Appearance.watchFrameMat1Tag = Icon.material;
                         else if (Appearance.condition == Appearance.Condition.Replay)
-                        {
-                            Program.instance.appearance.GetUI<AppearanceUI>().SetDetailImage(Appearance.replayFace1Tag);
-                            Appearance.replayFrameMat1Tag = icon.material;
-                        }
+                            Appearance.replayFrameMat1Tag = Icon.material;
                     }
                 }
             }

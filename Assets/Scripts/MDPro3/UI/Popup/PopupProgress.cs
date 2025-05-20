@@ -1,22 +1,21 @@
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace MDPro3.UI
+namespace MDPro3.UI.Popup
 {
-    public class PopupProgress : PopupBase
+    public class PopupProgress : Popup
     {
         [Header("Popup Progress")]
-        public Text description;
         public Slider progressBar;
+        public TextMeshProUGUI text;
         public Action cancelAction;
 
-        public override void OnCancel()
+        protected override void OnCancel()
         {
-            base.OnCancel();
             cancelAction?.Invoke();
             Hide();
         }
     }
 }
-

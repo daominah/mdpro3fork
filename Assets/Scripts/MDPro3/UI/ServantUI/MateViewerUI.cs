@@ -89,7 +89,7 @@ namespace MDPro3.UI.ServantUI
                     tasks.Add(task);
                 }
             }
-            var handle = Addressables.LoadAssetAsync<GameObject>("ItemMate");
+            var handle = Addressables.LoadAssetAsync<GameObject>("UI/ItemMate.prefab");
             handle.Completed += (result) =>
             {
                 var itemWidth = PropertyOverrider.NeedMobileLayout() ? 460f : 360f;

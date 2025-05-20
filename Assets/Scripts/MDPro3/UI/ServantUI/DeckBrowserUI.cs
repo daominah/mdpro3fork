@@ -51,7 +51,7 @@ namespace MDPro3.UI.ServantUI
 
         [HideInInspector] public PickupCardSelection PickupCardSelection;
 
-        private const string LABEL_WIDGET_PICKUP = "DeckBrowserOptionForPickupCardSelection";
+        private const string LABEL_WIDGET_PICKUP = "UIWidges/DeckBrowserOptionForPickupCardSelection.prefab";
 
         public static CardInfoType cardInfoType = CardInfoType.None;
 

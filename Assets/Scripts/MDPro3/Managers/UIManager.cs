@@ -216,7 +216,7 @@ namespace MDPro3
             if (path == Items.CODE_NONE.ToString())
                 return null;
 
-            path = "MasterDuel/" + Program.items.WallpaperCodeToPath(path);
+            path = "MasterDuel/" + Program.items.GetWallpaperPath(path);
             if (!path.ToLower().Contains("front"))
             {
                 Transform frontback = ChangeWallpaper("1130002");
@@ -320,7 +320,7 @@ namespace MDPro3
             Action decideAction, 
             Action cancelAction = null)
         {
-            var handle = Addressables.InstantiateAsync("PopupSelection");
+            var handle = Addressables.InstantiateAsync("Popup/PopupSelection.prefab");
             handle.Completed += (result) =>
             {
                 result.Result.transform.SetParent(Program.instance.ui_.popup, false);
@@ -337,7 +337,7 @@ namespace MDPro3
             Action decideAction, 
             Action cancelAction)
         {
-            var handle = Addressables.InstantiateAsync("PopupYesOrNo");
+            var handle = Addressables.InstantiateAsync("Popup/PopupYesOrNo.prefab");
             handle.Completed += (result) =>
             {
                 result.Result.transform.SetParent(Program.instance.ui_.popup, false);
@@ -352,7 +352,7 @@ namespace MDPro3
         public static void ShowPopupConfirm(List<string> selections)
         {
             Debug.Log("mark");
-            var handle = Addressables.InstantiateAsync("PopupConfirm");
+            var handle = Addressables.InstantiateAsync("Popup/PopupConfirm.prefab");
             handle.Completed += (result) =>
             {
                 result.Result.transform.SetParent(Program.instance.ui_.popup, false);
@@ -368,7 +368,7 @@ namespace MDPro3
             Action cancelAction, 
             TmpInputValidation.ValidationType type = TmpInputValidation.ValidationType.None)
         {
-            var handle = Addressables.InstantiateAsync("PopupInput");
+            var handle = Addressables.InstantiateAsync("Popup/PopupInput.prefab");
             handle.Completed += (result) =>
             {
                 result.Result.transform.SetParent(Program.instance.ui_.popup, false);
@@ -383,7 +383,7 @@ namespace MDPro3
 
         public static void ShowPopupFilter()
         {
-            var handle = Addressables.InstantiateAsync("PopupSearchFilter");
+            var handle = Addressables.InstantiateAsync("Popup/PopupSearchFilter.prefab");
             handle.Completed += (result) =>
             {
                 result.Result.transform.SetParent(Program.instance.ui_.popup, false);
@@ -396,7 +396,7 @@ namespace MDPro3
             List<string> selections, 
             HorizontalAlignmentOptions alignment = HorizontalAlignmentOptions.Center)
         {
-            var handle = Addressables.InstantiateAsync("PopupText");
+            var handle = Addressables.InstantiateAsync("Popup/PopupText.prefab");
             handle.Completed += (result) =>
             {
                 result.Result.transform.SetParent(Program.instance.ui_.popup, false);
@@ -449,7 +449,7 @@ namespace MDPro3
 
         public static void ShowCardExpand(Card data)
         {
-            var handle = Addressables.InstantiateAsync("CardExpand");
+            var handle = Addressables.InstantiateAsync("UIWidges/CardExpand.prefab");
             handle.Completed += (result) =>
             {
                 result.Result.transform.SetParent(Program.instance.ui_.popup, false);
@@ -460,7 +460,7 @@ namespace MDPro3
 
         public static void ShowCardInfoDetail(Card data)
         {
-            var handle = Addressables.InstantiateAsync("CardInfoDetail");
+            var handle = Addressables.InstantiateAsync("UIWidges/CardInfoDetail.prefab");
             handle.Completed += (result) =>
             {
                 result.Result.transform.SetParent(Program.instance.ui_.popup, false);
@@ -471,7 +471,7 @@ namespace MDPro3
 
         public static void ShowCardInfoDetail(List<int> cards, int index)
         {
-            var handle = Addressables.InstantiateAsync("CardInfoDetail");
+            var handle = Addressables.InstantiateAsync("UIWidges/CardInfoDetail.prefab");
             handle.Completed += (result) =>
             {
                 result.Result.transform.SetParent(Program.instance.ui_.popup, false);
@@ -482,7 +482,7 @@ namespace MDPro3
 
         public static void ShowSubMenu(List<string> menus, List<Action> actions)
         {
-            var handle = Addressables.InstantiateAsync("SubMenu");
+            var handle = Addressables.InstantiateAsync("UIWidges/SubMenuUI.prefab");
             handle.Completed += (result) =>
             {
                 result.Result.transform.SetParent(Program.instance.ui_.sidePanel, false);

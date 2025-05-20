@@ -110,6 +110,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 28f74d1fd8f2a464b929ea8f00d793fb
+    m_Address: LPendulumNum03
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 2a4d7e7a867a9e140b572af24914da60
     m_Address: RD_Frame_Spell
     m_ReadOnly: 0
@@ -137,6 +142,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 2f6c47661ab25c24da449842edaa44f5
     m_Address: RD_Frame_PendulumXyz
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2fd934cee72f2a444aa8fcd7d848501b
+    m_Address: LPendulumNum09
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -172,6 +182,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 407da8749e7bd344daf0533cbc30182b
     m_Address: RD_Frame_Obelisk_Unknown
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4169564d0d28a1543b6b691e5c6928ae
+    m_Address: Menu-DIY
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -230,6 +245,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5abf7115f7eb5ff48a9845eec38d54b5
+    m_Address: RPendulumNum01
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 5baba89569634da45a69a62efc6dfb37
     m_Address: card_frame01
     m_ReadOnly: 0
@@ -242,6 +262,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 5efad8c9bd93b4e40b47f8b720171c16
     m_Address: card_frame10
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5f3d2317b88c1014fa62f6531a8d9902
+    m_Address: LPendulumNum02
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -290,6 +315,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6eb8fe6bb875fb44ba0f090f354cd36a
+    m_Address: Menu-Random
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 71402236982fddd41ada1cc6a44e94bd
     m_Address: CardNormal_Pen
     m_ReadOnly: 0
@@ -335,6 +365,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7c9e67ec9953d70408bad9a192e39008
+    m_Address: RPendulumNum03
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 80225162284e049419abc1dd88b2cd6b
     m_Address: RD_Frame_Ritual
     m_ReadOnly: 0
@@ -355,8 +390,18 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 88775346731c1474fbf89b3c6d9a936a
+    m_Address: RPendulumNum08
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 89ee305204be7844abd1fc33fd0e8db7
     m_Address: fxt_Arrow_003
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8c205138bc4f14b4bb4696c8ef449fb3
+    m_Address: RPendulumNum07
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -375,8 +420,28 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8ed12c9b90691234bbe0bf001b14819b
+    m_Address: LPendulumNum05
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8f058cbdbf02f4848b0b623b8bbf6e92
     m_Address: DuelChatFrame1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8f6a522d7e367fe478856f09382ba8b4
+    m_Address: Menu-Same
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9336eb39ceb24d34a914a0209e6c5f2d
+    m_Address: RPendulumNum05
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9457a89b6aab2c343af10efeb310dcb0
+    m_Address: Menu-Deck
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -410,6 +475,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a7ae82869fb22f541abc67db893a467e
+    m_Address: LPendulumNum08
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ab1dd000ca931a342958b889832686e6
     m_Address: CardKiraMaskPen01
     m_ReadOnly: 0
@@ -432,6 +502,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: adf99033da310044e84b3b7abe521ec9
     m_Address: card_frame09
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: af9946318be53644f8f56a65c7786f93
+    m_Address: RPendulumNum06
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -460,6 +535,16 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b660a6851dae03447813222bf4300d7e
+    m_Address: LPendulumNum07
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b6bd6067d80c3404b946c6f8bb3228d8
+    m_Address: LPendulumNum04
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b91e64d35f635f7499e24b2e9d931e4a
     m_Address: card_frame16
     m_ReadOnly: 0
@@ -470,8 +555,18 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ba79bac571baecb429d973d2a4f246bc
+    m_Address: LPendulumNum00
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: bc1d3998cfb95d347ac15b01aad285e8
     m_Address: DuelChatFrame0
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bde69db757e8def458ad62886d902703
+    m_Address: RPendulumNum04
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -535,6 +630,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d83aa69d8374c2c4f9808eff5e243832
+    m_Address: RPendulumNum02
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d8b69eb67597e1341919bb437ed716f7
     m_Address: RD_Frame_PendulumEffect
     m_ReadOnly: 0
@@ -560,6 +660,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dde1196e975502e45b5c79a54834c455
+    m_Address: LPendulumNum01
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: de089fd33be403e4e8e96c355a4a3442
     m_Address: RD_Attribute_Earth
     m_ReadOnly: 0
@@ -580,6 +685,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e467c97a6f9e43a4fb9d7db5201cb23d
+    m_Address: RPendulumNum09
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e500c220ab21d9f4f902fb74ed185ff5
     m_Address: card_frame15
     m_ReadOnly: 0
@@ -587,6 +697,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e613d8e7fccd36c4c88fbccbae14db03
     m_Address: RD_Attribute_Dark
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e61977b93616da04d85caedb4a29be9e
+    m_Address: LPendulumNum06
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -635,6 +750,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f1538844518c3ca4c809e7ed682b2ab4
+    m_Address: Menu-NoImage
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f30a78910529670428b988aa6c7012ba
     m_Address: card_frame06
     m_ReadOnly: 0
@@ -667,6 +787,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: fc01ce42cf093a74c8b48797c496c03f
     m_Address: SpriteAtlas_DuelLinks_Logo
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fc2ac4cb3159c2e458ab941f4947ce0b
+    m_Address: RPendulumNum00
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

@@ -1,0 +1,164 @@
+using MDPro3.Servant;
+using MDPro3.Utility;
+using System.Threading;
+using System.Threading.Tasks;
+using TMPro;
+using Unity.Mathematics;
+using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.UI;
+using YgomSystem.ElementSystem;
+
+namespace MDPro3.UI
+{
+    public class AppearanceDetail : MonoBehaviour
+    {
+        #region Elements
+
+        private ElementObjectManager m_Manager;
+        private ElementObjectManager Manager =>
+            m_Manager = m_Manager != null ? m_Manager
+            : GetComponent<ElementObjectManager>();
+
+        private CanvasGroup m_CG;
+        private CanvasGroup CG =>
+             m_CG = m_CG != null ? m_CG
+            : GetComponent<CanvasGroup>();
+
+        private const string LABEL_TXT_SETTING = "TextDetailSetting";
+        private TextMeshProUGUI m_TextSetting;
+        private TextMeshProUGUI TextSetting =>
+            m_TextSetting = m_TextSetting != null ? m_TextSetting
+            : Manager.GetElement<TextMeshProUGUI>(LABEL_TXT_SETTING);
+
+        private const string LABEL_TXT_DESCRIPTION = "TextDetailDescription";
+        private TextMeshProUGUI m_TextDescription;
+        private TextMeshProUGUI TextDescription =>
+            m_TextDescription = m_TextDescription != null ? m_TextDescription
+            : Manager.GetElement<TextMeshProUGUI>(LABEL_TXT_DESCRIPTION);
+
+        private const string LABEL_IMG = "Image";
+        private Image m_Image;
+        private Image Image =>
+            m_Image = m_Image != null ? m_Image
+            : Manager.GetElement<Image>(LABEL_IMG);
+
+        private const string LABEL_RIMG = "RawImage";
+        private RawImage m_RawImage;
+        private RawImage RawImage =>
+            m_RawImage = m_RawImage != null ? m_RawImage
+            : Manager.GetElement<RawImage>(LABEL_RIMG);
+
+        private const string LABEL_IMG_WALLPAPER_BG = "WallpaperBG";
+        private Image m_WallpaperBG;
+        private Image WallpaperBG =>
+            m_WallpaperBG = m_WallpaperBG != null ? m_WallpaperBG
+            : Manager.GetElement<Image>(LABEL_IMG_WALLPAPER_BG);
+
+        #endregion
+
+        private CancellationTokenSource cts;
+
+        public void Show()
+        {
+            CG.alpha = 1;
+            CG.interactable = true;
+            CG.blocksRaycasts = true;
+        }
+
+        public void Hide()
+        {
+            CG.alpha = 0;
+            CG.interactable = false;
+            CG.blocksRaycasts = false;
+        }
+
+        public void SetItem(int code, string itemName, string desc, bool isCard)
+        {
+            TextSetting.text = itemName;
+            TextDescription.text = desc;
+
+            CancelLoading();
+            cts = new CancellationTokenSource();
+            _ = SetIconAsync(code, cts.Token, isCard);
+        }
+
+        private async Task SetIconAsync(int code, CancellationToken token, bool isCard)
+        {
+            var codeString = code.ToString();
+
+            Image.gameObject.SetActive(false);
+            Image.material = null;
+            RawImage.gameObject.SetActive(false);
+            WallpaperBG.gameObject.SetActive(false);
+
+            if (isCard) //Cross Duel Mate
+            {
+                var task = CardImageLoader.LoadArtAsync(code, true, token);
+                while (!task.IsCompleted)
+                    await TaskUtility.WaitOneFrame(gameObject, token);
+                if (task.Result != null)
+                {
+                    Image.sprite = TextureManager.Texture2Sprite(task.Result);
+                    Image.gameObject.SetActive(true);
+                }
+            }
+            else
+            {
+                if (codeString.StartsWith("107")) // Protector
+                {
+                    var ie = ABLoader.LoadProtectorMaterial(code.ToString());
+                    StartCoroutine(ie);
+                    while (ie.MoveNext())
+                        await TaskUtility.WaitOneFrame(gameObject, token);
+                    RawImage.material = ie.Current;
+                    RawImage.material.renderQueue = 3000;
+                    RawImage.gameObject.SetActive(true);
+                }
+                else
+                {
+                    var address = Items.GetIconAddress(codeString, DeviceInfo.OnMobile() ? 1 : 2);
+                    var load = Addressables.LoadAssetAsync<Sprite>(address);
+                    while (!load.IsDone)
+                        await TaskUtility.WaitOneFrame(gameObject, token);
+
+                    if (load.Result != null)
+                    {
+                        if (codeString.StartsWith("103")) // Profile Frame
+                        {
+                            var matLoad = ABLoader.LoadFrameMaterial(codeString);
+                            while(matLoad.MoveNext())
+                                await TaskUtility.WaitOneFrame(gameObject, token);
+                            Image.material = matLoad.Current;
+                            Image.material.SetTexture("_ProfileFrameTex", load.Result.texture);
+
+                            var config = $"{Appearance.condition}Face{Appearance.player}";
+                            var configProfileIcon = Config.Get(config, Program.items.faces[0].id.ToString());
+                            var address2 = Items.GetIconAddress(configProfileIcon, DeviceInfo.OnMobile() ? 1 : 2);
+                            var load2 = Addressables.LoadAssetAsync<Sprite>(address2);
+                            while (!load2.IsDone)
+                                await TaskUtility.WaitOneFrame(gameObject, token);
+                            if (load2.Result != null)
+                                Image.sprite = load2.Result;
+                            else
+                                Image.sprite = TextureManager.container.black;
+                        }
+
+                        if (!codeString.StartsWith("103")) // Profile Frame
+                            Image.sprite = load.Result;
+
+                        Image.gameObject.SetActive(true);
+                        WallpaperBG.gameObject.SetActive(codeString.StartsWith("113"));
+                    }
+                }
+            }
+        }
+
+        private void CancelLoading()
+        {
+            cts?.Cancel();
+            cts?.Dispose();
+            cts = null;
+        }
+    }
+}

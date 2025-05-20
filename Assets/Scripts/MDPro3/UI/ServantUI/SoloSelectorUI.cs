@@ -132,7 +132,7 @@ namespace MDPro3.UI.ServantUI
                 };
                 tasks.Add(task);
             }
-            var handle = Addressables.LoadAssetAsync<GameObject>("ItemSolo");
+            var handle = Addressables.LoadAssetAsync<GameObject>("UI/ItemSolo.prefab");
             handle.Completed += (result) =>
             {
                 var itemHeight = PropertyOverrider.NeedMobileLayout() ? 180f : 150f;

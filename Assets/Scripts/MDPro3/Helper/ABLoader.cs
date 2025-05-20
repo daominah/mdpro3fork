@@ -352,7 +352,7 @@ namespace MDPro3
             else
             {
                 bool mateInFolder = false;
-                var matePath = Program.items.GetPathByCode(code.ToString(), Items.ItemType.Mate);
+                var matePath = Program.items.GetAssetPath(code.ToString(), Items.ItemType.Mate);
                 IEnumerator<GameObject> ie;
                 if (matePath.EndsWith("_Folder"))
                 {

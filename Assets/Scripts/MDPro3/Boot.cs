@@ -178,7 +178,7 @@ namespace MDPro3
             }
 
             title = InterString.Get("正在读取数据");
-            var handle = Addressables.LoadAssetAsync<Items>("Items");
+            var handle = Addressables.LoadAssetAsync<Items>("ScriptableObjects/Items.asset");
             while (!handle.IsDone)
             {
                 progressBar.value = handle.PercentComplete;

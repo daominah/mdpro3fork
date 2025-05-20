@@ -154,7 +154,7 @@ namespace MDPro3.UI
             if (!gameObject.activeInHierarchy)
                 return;
             superScrollView?.Clear();
-            var handle = Addressables.LoadAssetAsync<GameObject>("ItemWatch");
+            var handle = Addressables.LoadAssetAsync<GameObject>("UI/ItemWatch.prefab");
             handle.Completed += (result) =>
             {
                 var itemWidth = PropertyOverrider.NeedMobileLayout() ? 370f : 300f;

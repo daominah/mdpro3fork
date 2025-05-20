@@ -26,8 +26,8 @@ namespace MDPro3.UI
         protected bool pickuping;
         protected bool forcedPickup;
         protected IEnumerator enumeratorCase;
-        private List<Tweener> pickupTweens = new();
-        private List<Tweener> pickdownTweens = new();
+        private readonly List<Tweener> pickupTweens = new();
+        private readonly List<Tweener> pickdownTweens = new();
 
         protected override void Awake()
         {
@@ -81,8 +81,6 @@ namespace MDPro3.UI
                 StartRefresh();
         }
 
-
-
         protected virtual void StartRefresh()
         {
             if (enumerator != null)
@@ -105,12 +103,11 @@ namespace MDPro3.UI
             for (int i = 0; i < transform.GetSiblingIndex(); i++)
                 yield return null;
 
-            var casePath = deckCase.ToString();
-            var load = Program.items.LoadItemIconAsync(casePath, Items.ItemType.Case);
-            while (load.MoveNext())
+            var load = Program.items.LoadDeckCaseIconAsync(deckCase, "_L_SD");
+            while (!load.IsCompleted)
                 yield return null;
-            if (load.Current != null)
-                Manager.GetElement<Image>("DeckImage").sprite = load.Current;
+            if (load.Result != null)
+                Manager.GetElement<Image>("DeckImage").sprite = load.Result;
         }
 
         protected override IEnumerator RefreshAsync()
@@ -259,7 +256,6 @@ namespace MDPro3.UI
                 ccg.SetColor(SelectMode.Selected, hovering ? StatusMode.Enter : StatusMode.Normal, Selectable.interactable);
         }
 
-
         public virtual void ShowPickup(bool forced = false)
         {
             if (forced)
@@ -272,6 +268,7 @@ namespace MDPro3.UI
 
             ApplyShowPickup();
         }
+
         protected virtual void ApplyShowPickup()
         {
             foreach (var tween in pickdownTweens)
@@ -316,6 +313,7 @@ namespace MDPro3.UI
 
             ApplyHidePickup();
         }
+
         protected virtual void ApplyHidePickup(bool instant = false)
         {
             foreach (var tween in pickupTweens)
@@ -352,6 +350,7 @@ namespace MDPro3.UI
 
             ApplyShowToggle();
         }
+
         private void ApplyShowToggle()
         {
             toggleMode = true;
@@ -366,6 +365,7 @@ namespace MDPro3.UI
         {
             ApplyHideToggle();
         }
+
         private void ApplyHideToggle()
         {
             toggleMode = false;
@@ -381,6 +381,7 @@ namespace MDPro3.UI
         public override void ToggleOffNow()
         {
         }
+
         protected override void ToggleOn()
         {
         }
@@ -394,6 +395,7 @@ namespace MDPro3.UI
             base.HoverOn();
             ShowPickup();
         }
+
         protected override void HoverOff(bool force = false)
         {
             base.HoverOff();
@@ -409,7 +411,6 @@ namespace MDPro3.UI
         {
             return Program.instance.deckSelector.GetUI<DeckSelectorUI>().superScrollView.GetColumnCount();
         }
-
 
     }
 }

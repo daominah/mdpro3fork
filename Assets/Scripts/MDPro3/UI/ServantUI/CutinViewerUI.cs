@@ -56,7 +56,7 @@ namespace MDPro3.UI.ServantUI
                     tasks.Add(task);
                 }
             }
-            var handle = Addressables.LoadAssetAsync<GameObject>("ItemCutin");
+            var handle = Addressables.LoadAssetAsync<GameObject>("UI/ItemCutin.prefab");
             handle.Completed += (result) =>
             {
                 var itemWidth = PropertyOverrider.NeedMobileLayout() ? 460f : 360f;

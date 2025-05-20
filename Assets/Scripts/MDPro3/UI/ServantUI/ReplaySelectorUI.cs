@@ -302,7 +302,7 @@ namespace MDPro3.UI.ServantUI
                 }
             }
 
-            var handle = Addressables.LoadAssetAsync<GameObject>("ItemReplay");
+            var handle = Addressables.LoadAssetAsync<GameObject>("UI/ItemReplay.prefab");
             handle.Completed += (result) =>
             {
                 var itemHeight = PropertyOverrider.NeedMobileLayout() ? 180f : 150f;

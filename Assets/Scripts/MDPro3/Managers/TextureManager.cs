@@ -27,7 +27,7 @@ namespace MDPro3
         {
             instance = this;
             base.Initialize();
-            var handle = Addressables.LoadAssetAsync<TextureContainer>("TextureContainer");
+            var handle = Addressables.LoadAssetAsync<TextureContainer>("ScriptableObjects/TextureContainer.asset");
             handle.Completed += (result) =>
             {
                 container = result.Result;

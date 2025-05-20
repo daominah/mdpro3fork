@@ -111,7 +111,7 @@ namespace MDPro3.Servant
 
         private IEnumerator InitializeAsync()
         {
-            var handle = Addressables.LoadAssetAsync<DuelPrefabContainer>("DuelPrefabs");
+            var handle = Addressables.LoadAssetAsync<DuelPrefabContainer>("ScriptableObjects/DuelPrefabs.asset");
             while (!handle.IsDone)
                 yield return null;
             container = handle.Result;
@@ -583,16 +583,10 @@ namespace MDPro3.Servant
 
             if (condition == Condition.Duel && inAi == false && File.Exists(Program.deckPath + deckName + Program.ydkExpansion))
                 deck = new Deck(Program.deckPath + deckName + Program.ydkExpansion);
-
             UIManager.UIBlackIn(TransitionTime);
             yield return new WaitForSeconds(TransitionTime);
             while (!Appearance.loaded)
                 yield return null;
-
-            var setRefresh = Program.instance.appearance.LoadSettingAssets();
-            while (setRefresh.MoveNext())
-                yield return null;
-
             CameraManager.ShiftTo3D();
             UIManager.HideExitButton(0);
             UIManager.HideLine(0);
@@ -713,7 +707,7 @@ namespace MDPro3.Servant
             #region FieldSummonRightInfo
             if (fieldSummonRightInfo == null)
             {
-                var handle = Addressables.InstantiateAsync("FieldSummonRightInfo");
+                var handle = Addressables.InstantiateAsync("Prefab/FieldSummonRightInfo.prefab");
                 handle.Completed += (result) =>
                 {
                     fieldSummonRightInfo = result.Result;
@@ -724,11 +718,11 @@ namespace MDPro3.Servant
             #endregion
 
             #region 场地
-            var path = Program.items.GetPathByCode(
+            var path = Program.items.GetAssetPath(
                 Config.Get(condition.ToString() + "Field0",
                 Program.items.mats[0].id.ToString()), Items.ItemType.Mat);
             if (deck != null && !Config.GetBool("OverrideDeckAppearance", false))
-                path = Program.items.GetPathByCode(deck.Field.ToString(), Items.ItemType.Mat);
+                path = Program.items.GetAssetPath(deck.Field.ToString(), Items.ItemType.Mat);
             path = "MasterDuel/" + path;
             var enumerator = ABLoader.LoadFromFileAsync(path + "_near");
             while (enumerator.MoveNext())
@@ -737,7 +731,7 @@ namespace MDPro3.Servant
             field0.transform.SetParent(Program.instance.container_3D, false);
 
             enumerator = ABLoader.LoadFromFileAsync("MasterDuel/" +
-                Program.items.GetPathByCode(Config.Get(condition.ToString() + "Field1",
+                Program.items.GetAssetPath(Config.Get(condition.ToString() + "Field1",
                 Program.items.mats[0].id.ToString()), Items.ItemType.Mat, 1) + "_far");
             while (enumerator.MoveNext())
                 yield return null;
@@ -767,11 +761,11 @@ namespace MDPro3.Servant
             #endregion
 
             #region 墓地
-            path = Program.items.GetPathByCode(
+            path = Program.items.GetAssetPath(
                 Config.Get(condition.ToString() + "Grave0",
                 Program.items.graves[0].id.ToString()), Items.ItemType.Grave);
             if (deck != null && !Config.GetBool("OverrideDeckAppearance", false))
-                path = Program.items.GetPathByCode(deck.Grave.ToString(), Items.ItemType.Grave);
+                path = Program.items.GetAssetPath(deck.Grave.ToString(), Items.ItemType.Grave);
             path = "MasterDuel/" + path;
             enumerator = ABLoader.LoadFromFileAsync(path + "_near");
             while (enumerator.MoveNext())
@@ -779,7 +773,7 @@ namespace MDPro3.Servant
             grave0 = enumerator.Current;
             grave0.transform.SetParent(pos_Grave_near, false);
             enumerator = ABLoader.LoadFromFileAsync("MasterDuel/" +
-                Program.items.GetPathByCode(Config.Get(condition.ToString() + "Grave1",
+                Program.items.GetAssetPath(Config.Get(condition.ToString() + "Grave1",
                 Program.items.graves[0].id.ToString()), Items.ItemType.Grave, 1) + "_far");
             while (enumerator.MoveNext())
                 yield return null;
@@ -804,9 +798,9 @@ namespace MDPro3.Servant
             var standConfig = Config.Get(condition.ToString() + "Stand0", Program.items.stands[0].id.ToString());
             if (standConfig != Items.CODE_NONE.ToString() || deck != null)
             {
-                path = Program.items.GetPathByCode(standConfig, Items.ItemType.Stand);
+                path = Program.items.GetAssetPath(standConfig, Items.ItemType.Stand);
                 if (deck != null && !Config.GetBool("OverrideDeckAppearance", false))
-                    path = Program.items.GetPathByCode(deck.Stand.ToString(), Items.ItemType.Stand);
+                    path = Program.items.GetAssetPath(deck.Stand.ToString(), Items.ItemType.Stand);
                 path = "MasterDuel/" + path;
                 enumerator = ABLoader.LoadFromFileAsync(path + "_near");
                 while (enumerator.MoveNext())
@@ -823,7 +817,7 @@ namespace MDPro3.Servant
             if (standConfig != Items.CODE_NONE.ToString())
             {
                 enumerator = ABLoader.LoadFromFileAsync("MasterDuel/" +
-                Program.items.GetPathByCode(standConfig, Items.ItemType.Stand, 1) + "_far");
+                Program.items.GetAssetPath(standConfig, Items.ItemType.Stand, 1) + "_far");
                 while (enumerator.MoveNext())
                     yield return null;
                 stand1 = enumerator.Current;
@@ -957,14 +951,14 @@ namespace MDPro3.Servant
             opDeck.transform.SetParent(field1.transform, false);
             myExtra.transform.SetParent(field0.transform, false);
             opExtra.transform.SetParent(field1.transform, false);
-            myDeck.transform.localPosition = new Vector3(26.86f, 1.5f, -23.93f);
-            myDeck.transform.localEulerAngles = new Vector3(0, -19.5f, 0);
-            myExtra.transform.localPosition = new Vector3(-26.86f, 1.5f, -23.93f);
-            myExtra.transform.localEulerAngles = new Vector3(0, 19.5f, 0);
-            opDeck.transform.localPosition = new Vector3(-26.86f, 1.5f, 23.93f);
-            opDeck.transform.localEulerAngles = new Vector3(0, 160.5f, 0);
-            opExtra.transform.localPosition = new Vector3(26.86f, 1.5f, 23.93f);
-            opExtra.transform.localEulerAngles = new Vector3(0, -160.5f, 0);
+            myDeck.transform.localPosition = new Vector3(26.6f, 1.5f, -23.5f);
+            myDeck.transform.localEulerAngles = new Vector3(0, -20f, 0);
+            myExtra.transform.localPosition = new Vector3(-26.6f, 1.5f, -23.5f);
+            myExtra.transform.localEulerAngles = new Vector3(0, 20f, 0);
+            opDeck.transform.localPosition = new Vector3(-26.6f, 1.5f, 23.5f);
+            opDeck.transform.localEulerAngles = new Vector3(0, 160f, 0);
+            opExtra.transform.localPosition = new Vector3(26.6f, 1.5f, 23.5f);
+            opExtra.transform.localEulerAngles = new Vector3(0, -160f, 0);
             allGameObjects.Add(myDeck.gameObject);
             allGameObjects.Add(opDeck.gameObject);
             allGameObjects.Add(myExtra.gameObject);
@@ -3209,7 +3203,9 @@ namespace MDPro3.Servant
                                     for (int i = 0; i < effect.transform.childCount; i++)
                                     {
                                         if (effect.transform.GetChild(i).GetComponent<PlayableDirector>() == null)
+                                        {
                                             Destroy(effect.transform.GetChild(i).gameObject);
+                                        }
                                         else
                                         {
                                             mono = effect.transform.GetChild(i).gameObject.AddComponent<DoWhenPlayableDirectorStop>();
@@ -3517,11 +3513,77 @@ namespace MDPro3.Servant
                                     {
                                         AudioManager.PlaySE("SE_EV_039_SPECIAL");
                                     }
+                                    //幽鬼兔
+                                    else if (code == 59438930)
+                                    {
+                                        int order = 0;
+                                        for (int i = 0; i < cardsInChain.Count; i++)
+                                            if (cardsInChain[i] == card)
+                                                order = i;
+                                        if (order > 0)
+                                        {
+                                            AudioManager.PlaySE("SE_EV_038_NORMAL");
+                                            ElementObjectManager manager = null;
+                                            for (int i = 0; i < effect.transform.childCount; i++)
+                                                if (effect.transform.GetChild(i).TryGetComponent(out manager))
+                                                    break;
+                                            var cardEffect = manager.GetElement<Transform>("EffectOffset");
+                                            cardEffect.localPosition = GameCard.GetCardPosition(cardsInChain[order - 1].p);
+                                            cardEffect.localEulerAngles = GameCard.GetCardRotation(cardsInChain[order - 1].p);
+                                            cardEffect.localScale = GameCard.GetCardScale(cardsInChain[order - 1].p);
+                                            manager.GetNestedElement<MeshRenderer>("CardOffset/DummyCard/DummyCardModel_front")
+                                                .material = cardsInChain[order - 1].GetMaterial();
+                                        }
+                                        else
+                                        {
+                                            messagePass = true;
+                                            Destroy(effect);
+                                        }
+                                    }
+                                    // 欢聚友伴·抖抖海月水母
+                                    else if (code == 84192580)
+                                    {
+                                        AudioManager.PlaySE("SE_EV_040_NORMAL");
+                                        ElementObjectManager manager = null;
+                                        for (int i = 0; i < effect.transform.childCount; i++)
+                                            if (effect.transform.GetChild(i).TryGetComponent(out manager))
+                                                break;
+                                        Destroy(manager.GetElement(card.p.controller == 0 ? "Hand01" : "EnHand01"));
+                                    }
+                                    //欢聚友伴·茸茸长尾山雀
+                                    else if (code == 42141493)
+                                    {
+                                        AudioManager.PlaySE("SE_EV_041_NORMAL");
+                                        ElementObjectManager manager = null;
+                                        for (int i = 0; i < effect.transform.childCount; i++)
+                                            if (effect.transform.GetChild(i).TryGetComponent(out manager))
+                                                break;
+
+                                        if (card.p.controller == 0)
+                                        {
+                                            Destroy(manager.GetElement("MainDeck"));
+                                            Destroy(manager.GetElement("ExDeck"));
+                                            DuelEffectUtil.SetDeckModelAppearance(manager.GetElement<ElementObjectManager>("EnMainDeck")
+                                                , GetLocationCardCount(CardLocation.Deck, 1), opDeck);
+                                            DuelEffectUtil.SetDeckModelAppearance(manager.GetElement<ElementObjectManager>("EnExDeck")
+                                                , GetLocationCardCount(CardLocation.Extra, 1), opExtra);
+                                        }
+                                        else
+                                        {
+                                            Destroy(manager.GetElement("EnMainDeck"));
+                                            Destroy(manager.GetElement("EnExDeck"));
+
+                                            DuelEffectUtil.SetDeckModelAppearance(manager.GetElement<ElementObjectManager>("MainDeck")
+                                                , GetLocationCardCount(CardLocation.Deck, 0), myDeck);
+                                            DuelEffectUtil.SetDeckModelAppearance(manager.GetElement<ElementObjectManager>("ExDeck")
+                                                , GetLocationCardCount(CardLocation.Extra, 0), myExtra);
+                                        }
+                                    }
                                 }
                                 else
                                 {
                                     //技能抽取
-                                    if (code == 82732705)//技能抽取
+                                    if (code == 82732705)
                                     {
                                         if (card.model == null)
                                         {
@@ -3546,7 +3608,7 @@ namespace MDPro3.Servant
                                         });
                                     }
                                     //无限泡影
-                                    else if (code == 10045474)//无限泡影
+                                    else if (code == 10045474)
                                     {
                                         if (card.effectTargets.Count == 0 || card.effectTargets[0].model == null)
                                         {
@@ -3594,7 +3656,7 @@ namespace MDPro3.Servant
                                         });
                                     }
                                     //闪电风暴
-                                    else if (code == 14532163)//闪电风暴
+                                    else if (code == 14532163)
                                     {
                                         var eff = ABLoader.LoadFromFolder("MasterDuel/Effects/MagicTrapEffects/fxp_14876", "fxp_14876", true);
 
@@ -3615,7 +3677,7 @@ namespace MDPro3.Servant
                                         });
                                     }
                                     //效果遮蒙者
-                                    else if (code == 97268402)//效果遮蒙者
+                                    else if (code == 97268402)
                                     {
                                         if (card.effectTargets.Count == 0 || card.effectTargets[0].model == null)
                                         {
@@ -7080,25 +7142,25 @@ namespace MDPro3.Servant
             if (myDeckCount == 0)
                 deckSetOffset.localScale = Vector3.zero;
             else
-                deckSetOffset.localScale = new Vector3(1, myDeckCount, 1);
+                deckSetOffset.localScale = new Vector3(0.9f, myDeckCount, 0.9f);
             var myExtraCount = GetLocationCardCount(CardLocation.Extra, 0);
             deckSetOffset = myExtra.GetElement<Transform>("CardShuffleTop");
             if (myExtraCount == 0)
                 deckSetOffset.localScale = Vector3.zero;
             else
-                deckSetOffset.localScale = new Vector3(1, myExtraCount, 1);
+                deckSetOffset.localScale = new Vector3(0.9f, myExtraCount, 0.9f);
             var opDeckCount = GetLocationCardCount(CardLocation.Deck, 1);
             deckSetOffset = opDeck.GetElement<Transform>("CardShuffleTop");
             if (opDeckCount == 0)
                 deckSetOffset.localScale = Vector3.zero;
             else
-                deckSetOffset.localScale = new Vector3(1, opDeckCount, 1);
+                deckSetOffset.localScale = new Vector3(0.9f, opDeckCount, 0.9f);
             var opExtraCount = GetLocationCardCount(CardLocation.Extra, 1);
             deckSetOffset = opExtra.GetElement<Transform>("CardShuffleTop");
             if (opExtraCount == 0)
                 deckSetOffset.localScale = Vector3.zero;
             else
-                deckSetOffset.localScale = new Vector3(1, opExtraCount, 1);
+                deckSetOffset.localScale = new Vector3(0.9f, opExtraCount, 0.9f);
 
             if (GetLocationCardCount(CardLocation.Grave, 0) > 20)
             {

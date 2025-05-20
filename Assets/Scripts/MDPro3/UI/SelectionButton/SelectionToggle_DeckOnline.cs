@@ -128,12 +128,11 @@ namespace MDPro3.UI
             for (int i = 0; i < transform.GetSiblingIndex(); i++)
                 yield return null;
 
-            var casePath = deckCase.ToString();
-            var load = Program.items.LoadItemIconAsync(casePath, Items.ItemType.Case);
-            while (load.MoveNext())
+            var load = Program.items.LoadDeckCaseIconAsync(deckCase, "_L_SD");
+            while (!load.IsCompleted)
                 yield return null;
-            if (load.Current != null)
-                Manager.GetElement<Image>("DeckImage").sprite = load.Current;
+            if (load.Result != null)
+                Manager.GetElement<Image>("DeckImage").sprite = load.Result;
         }
 
         protected override void OnClick()
@@ -181,6 +180,7 @@ namespace MDPro3.UI
 
             ApplyHidePickup();
         }
+
         protected override int GetButtonsCount()
         {
             return Program.instance.onlineDeckViewer

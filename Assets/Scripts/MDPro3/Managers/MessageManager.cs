@@ -27,17 +27,17 @@ namespace MDPro3
         {
             base.Initialize();
             instance = this;
-            var handle = Addressables.LoadAssetAsync<GameObject>("MessageCast");
+            var handle = Addressables.LoadAssetAsync<GameObject>("UI/MessageCast.prefab");
             handle.Completed += (result) =>
             {
                 messageCast = result.Result;
             };
-            handle = Addressables.LoadAssetAsync<GameObject>("MessageToast");
+            handle = Addressables.LoadAssetAsync<GameObject>("UI/MessageToast.prefab");
             handle.Completed += (result) =>
             {
                 messageToast = result.Result;
             };
-            handle = Addressables.LoadAssetAsync<GameObject>("MessageCard");
+            handle = Addressables.LoadAssetAsync<GameObject>("UI/MessageCard.prefab");
             handle.Completed += (result) =>
             {
                 messageCard = result.Result;

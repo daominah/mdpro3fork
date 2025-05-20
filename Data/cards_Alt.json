@@ -53,7 +53,6 @@
       "attribute": 16
     }
   },
-
   "4041": {
     "cid": 4041,
     "id": 46986417,
@@ -1018,5 +1017,220 @@
       "attribute": 2
     }
   },
-  
+  "13671": {
+    "cid": 13671,
+    "id": 63166095,
+    "cn_name": "闪刀起动-交闪",
+    "sc_name": "闪刀起动－交闪",
+    "md_name": "闪刀起动－交闪",
+    "nwbbs_n": "闪刀起动-交闪",
+    "cnocg_n": "闪刀起动-交战",
+    "jp_ruby": "せんとうきどう－エンゲージ",
+    "jp_name": "閃刀起動－エンゲージ",
+    "en_name": "Sky Striker Mobilize - Engage!",
+    "text": {
+      "types": "[魔法]",
+      "pdesc": "",
+      "desc": "①：自己的主要怪兽区域没有怪兽存在的场合才能发动。从卡组把「闪刀起动-交闪」以外的1张「闪刀」卡加入手卡。那之后，自己墓地有魔法卡3张以上存在的场合，自己可以抽1张。"
+    },
+    "data": {
+      "ot": 11,
+      "setcode": 277,
+      "type": 2,
+      "atk": 0,
+      "def": 0,
+      "level": 0,
+      "race": 0,
+      "attribute": 0
+    }
+  },
+  "3434": {
+    "cid": 3434,
+    "id": 63166096,
+    "cn_name": "闪刀起动-交闪",
+    "sc_name": "闪刀起动－交闪",
+    "md_name": "闪刀起动－交闪",
+    "nwbbs_n": "闪刀起动-交闪",
+    "cnocg_n": "闪刀起动-交战",
+    "jp_ruby": "せんとうきどう－エンゲージ",
+    "jp_name": "閃刀起動－エンゲージ",
+    "en_name": "Sky Striker Mobilize - Engage!",
+    "text": {
+      "types": "[魔法]",
+      "pdesc": "",
+      "desc": "①：自己的主要怪兽区域没有怪兽存在的场合才能发动。从卡组把「闪刀起动-交闪」以外的1张「闪刀」卡加入手卡。那之后，自己墓地有魔法卡3张以上存在的场合，自己可以抽1张。"
+    },
+    "data": {
+      "ot": 11,
+      "setcode": 277,
+      "type": 2,
+      "atk": 0,
+      "def": 0,
+      "level": 0,
+      "race": 0,
+      "attribute": 0
+    }
+  },
+  "12950": {
+    "cid": 12950,
+    "id": 14558127,
+    "cn_name": "灰流丽",
+    "sc_name": "灰流丽",
+    "md_name": "灰流丽",
+    "nwbbs_n": "灰流丽",
+    "cnocg_n": "灰流丽",
+    "jp_ruby": "はるうらら",
+    "jp_name": "灰流うらら",
+    "en_name": "Ash Blossom & Joyous Spring",
+    "text": {
+      "types": "[怪兽|效果|调整] 不死/炎\n[★3] 0/1800",
+      "pdesc": "",
+      "desc": "这个卡名的效果1回合只能使用1次。\r\n①：包含以下其中任意种效果的魔法·陷阱·怪兽的效果发动时，把这张卡从手卡丢弃才能发动。那个效果无效。\r\n●从卡组把卡加入手卡的效果\r\n●从卡组把怪兽特殊召唤的效果\r\n●从卡组把卡送去墓地的效果"
+    },
+    "data": {
+      "ot": 11,
+      "setcode": 0,
+      "type": 4129,
+      "atk": 0,
+      "def": 1800,
+      "level": 3,
+      "race": 16,
+      "attribute": 4
+    }
+  },
+  "3891": {
+    "cid": 3891,
+    "id": 14558128,
+    "cn_name": "灰流丽",
+    "sc_name": "灰流丽",
+    "md_name": "灰流丽",
+    "nwbbs_n": "灰流丽",
+    "cnocg_n": "灰流丽",
+    "jp_ruby": "はるうらら",
+    "jp_name": "灰流うらら",
+    "en_name": "Ash Blossom & Joyous Spring",
+    "text": {
+      "types": "[怪兽|效果|调整] 不死/炎\n[★3] 0/1800",
+      "pdesc": "",
+      "desc": "这个卡名的效果1回合只能使用1次。\r\n①：包含以下其中任意种效果的魔法·陷阱·怪兽的效果发动时，把这张卡从手卡丢弃才能发动。那个效果无效。\r\n●从卡组把卡加入手卡的效果\r\n●从卡组把怪兽特殊召唤的效果\r\n●从卡组把卡送去墓地的效果"
+    },
+    "data": {
+      "ot": 11,
+      "setcode": 0,
+      "type": 4129,
+      "atk": 0,
+      "def": 1800,
+      "level": 3,
+      "race": 16,
+      "attribute": 4
+    }
+  },
+  "13587": {
+    "cid": 13587,
+    "id": 73642296,
+    "cn_name": "屋敷童",
+    "sc_name": "屋敷童子",
+    "md_name": "屋敷童子",
+    "nwbbs_n": "屋敷童",
+    "cnocg_n": "屋敷童子",
+    "jp_ruby": "やしきわらし",
+    "jp_name": "屋敷わらし",
+    "en_name": "Ghost Belle & Haunted Mansion",
+    "text": {
+      "types": "[怪兽|效果|调整] 不死/地\n[★3] 0/1800",
+      "pdesc": "",
+      "desc": "这个卡名的效果1回合只能使用1次。\r\n①：包含以下其中任意种效果的魔法·陷阱·怪兽的效果发动时，把这张卡从手卡丢弃才能发动。那个发动无效。\r\n●从墓地把卡加入手卡·卡组·额外卡组的效果\r\n●从墓地把怪兽特殊召唤的效果\r\n●从墓地把卡除外的效果"
+    },
+    "data": {
+      "ot": 11,
+      "setcode": 0,
+      "type": 4129,
+      "atk": 0,
+      "def": 1800,
+      "level": 3,
+      "race": 16,
+      "attribute": 1
+    }
+  },
+  "3892": {
+    "cid": 3892,
+    "id": 73642297,
+    "cn_name": "屋敷童",
+    "sc_name": "屋敷童子",
+    "md_name": "屋敷童子",
+    "nwbbs_n": "屋敷童",
+    "cnocg_n": "屋敷童子",
+    "jp_ruby": "やしきわらし",
+    "jp_name": "屋敷わらし",
+    "en_name": "Ghost Belle & Haunted Mansion",
+    "text": {
+      "types": "[怪兽|效果|调整] 不死/地\n[★3] 0/1800",
+      "pdesc": "",
+      "desc": "这个卡名的效果1回合只能使用1次。\r\n①：包含以下其中任意种效果的魔法·陷阱·怪兽的效果发动时，把这张卡从手卡丢弃才能发动。那个发动无效。\r\n●从墓地把卡加入手卡·卡组·额外卡组的效果\r\n●从墓地把怪兽特殊召唤的效果\r\n●从墓地把卡除外的效果"
+    },
+    "data": {
+      "ot": 11,
+      "setcode": 0,
+      "type": 4129,
+      "atk": 0,
+      "def": 1800,
+      "level": 3,
+      "race": 16,
+      "attribute": 1
+    }
+  },
+  "5328": {
+    "cid": 5328,
+    "id": 32807846,
+    "cn_name": "增援",
+    "sc_name": "增援",
+    "md_name": "增援",
+    "nwbbs_n": "增援",
+    "cnocg_n": "增援",
+    "jp_ruby": "ぞうえん",
+    "jp_name": "増援",
+    "en_name": "Reinforcement of the Army",
+    "text": {
+      "types": "[魔法]",
+      "pdesc": "",
+      "desc": "①：从卡组把1只4星以下的战士族怪兽加入手卡。"
+    },
+    "data": {
+      "ot": 11,
+      "setcode": 0,
+      "type": 2,
+      "atk": 0,
+      "def": 0,
+      "level": 0,
+      "race": 0,
+      "attribute": 0
+    }
+  },
+  "20040": {
+    "cid": 20040,
+    "id": 32807848,
+    "cn_name": "增援",
+    "sc_name": "增援",
+    "md_name": "增援",
+    "nwbbs_n": "增援",
+    "cnocg_n": "增援",
+    "jp_ruby": "ぞうえん",
+    "jp_name": "増援",
+    "en_name": "Reinforcement of the Army",
+    "text": {
+      "types": "[魔法]",
+      "pdesc": "",
+      "desc": "①：从卡组把1只4星以下的战士族怪兽加入手卡。"
+    },
+    "data": {
+      "ot": 11,
+      "setcode": 0,
+      "type": 2,
+      "atk": 0,
+      "def": 0,
+      "level": 0,
+      "race": 0,
+      "attribute": 0
+    }
+  },
 }

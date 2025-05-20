@@ -28,17 +28,17 @@ namespace MDPro3.UI
         {
             base.Awake();
 
-            var handle = Addressables.LoadAssetAsync<GameObject>("ChatItemMe");
+            var handle = Addressables.LoadAssetAsync<GameObject>("UI/ChatItemMe.prefab");
             handle.Completed += (result) =>
             {
                 chatItemMe = result.Result;
             };
-            var handle2 = Addressables.LoadAssetAsync<GameObject>("ChatItemOp");
+            var handle2 = Addressables.LoadAssetAsync<GameObject>("UI/ChatItemOp.prefab");
             handle2.Completed += (result) =>
             {
                 chatItemOp = result.Result;
             };
-            var handle3 = Addressables.LoadAssetAsync<GameObject>("ChatItemSystem");
+            var handle3 = Addressables.LoadAssetAsync<GameObject>("UI/ChatItemSystem.prefab");
             handle3.Completed += (result) =>
             {
                 chatItemSystem = result.Result;

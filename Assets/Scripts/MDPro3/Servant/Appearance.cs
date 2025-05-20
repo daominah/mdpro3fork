@@ -71,8 +71,6 @@ namespace MDPro3.Servant
         public const string meTagString = "MeTag";
         public const string opTagString = "OpTag";
 
-        [HideInInspector] public static GameObject appearanceItem;
-
         #endregion
 
         public enum Condition
@@ -96,13 +94,6 @@ namespace MDPro3.Servant
         public override void Initialize()
         {
             base.Initialize();
-
-            var handle = Addressables.LoadAssetAsync<GameObject>("ItemAppearance");
-            handle.Completed += (result) =>
-            {
-                appearanceItem = result.Result;
-            };
-
             StartCoroutine(LoadSettingAssets());
         }
 
@@ -268,7 +259,7 @@ namespace MDPro3.Servant
             defaultFace1 = ie.Current;
 
             #endregion
-
+            
             #region Frame
 
             Sprite duelFrame0;
@@ -428,7 +419,7 @@ namespace MDPro3.Servant
             replayFrameMat1Tag.SetTexture("_ProfileFrameTex", replayFrame1Tag.texture);
 
             #endregion
-
+            
             #region Protector
             im = ABLoader.LoadProtectorMaterial(Config.Get("DuelProtector0", Program.items.protectors[0].id.ToString()));
             while (im.MoveNext())

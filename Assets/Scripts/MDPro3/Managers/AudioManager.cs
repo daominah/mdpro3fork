@@ -63,11 +63,12 @@ namespace MDPro3
         public static string nextMuteSE;
         public static void PlaySE(string path, float volumeScale = 1)
         {
+            if (string.IsNullOrEmpty(path))
+                return;
+
             if (se == null)
                 return;
 
-            if (string.IsNullOrEmpty(path))
-                return;
             if (path == nextMuteSE)
             {
                 nextMuteSE = string.Empty;
@@ -124,6 +125,7 @@ namespace MDPro3
         #endregion
 
         #region Voice
+
         public static void PlayVoiceByResourcePath(string path)
         {
             var clip = Resources.Load<AudioClip>(path);
@@ -348,6 +350,7 @@ namespace MDPro3
                 bgm.volume = volume;
             });
         }
+
         public static void PlayRandomKeyCardBGM()
         {
             PlayBGM(GetBgmPathById(bgms[UnityEngine.Random.Range(0, bgms.Count)], BgmType.KEYCARD));

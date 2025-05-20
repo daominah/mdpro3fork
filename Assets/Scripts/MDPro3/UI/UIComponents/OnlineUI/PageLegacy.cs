@@ -175,7 +175,7 @@ namespace MDPro3.UI
                 }
             }
 
-            var handle = Addressables.LoadAssetAsync<GameObject>("ItemAddress");
+            var handle = Addressables.LoadAssetAsync<GameObject>("UI/ItemAddress.prefab");
             handle.Completed += (result) =>
             {
                 var itemWidth = PropertyOverrider.NeedMobileLayout() ? 460f : 360f;

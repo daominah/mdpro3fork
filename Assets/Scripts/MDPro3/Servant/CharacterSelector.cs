@@ -45,7 +45,7 @@ namespace MDPro3.Servant
         {
             base.Initialize();
 
-            var handle = Addressables.LoadAssetAsync<Characters>("Characters");
+            var handle = Addressables.LoadAssetAsync<Characters>("ScriptableObjects/Characters.asset");
             handle.Completed += (result) =>
             {
                 characters = result.Result;
@@ -53,7 +53,7 @@ namespace MDPro3.Servant
                 Program.instance.setting.RefreshCharacterName();
             };
 
-            var handle2 = Addressables.LoadAssetAsync<GameObject>("ItemCharacter");
+            var handle2 = Addressables.LoadAssetAsync<GameObject>("UI/ItemCharacter.prefab");
             handle2.Completed += (result) =>
             {
                 characterItem = result.Result;

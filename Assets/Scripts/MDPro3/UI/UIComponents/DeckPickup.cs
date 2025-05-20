@@ -74,7 +74,7 @@ namespace MDPro3.UI
 
         private async Task LoadDeckCaseAsync(int deckCase)
         {
-            var load = Program.items.LoadDeckCaseIconAsync(deckCase, "_Open_L");
+            var load = Program.items.LoadDeckCaseIconAsync(deckCase, "_Open_L_HD");
             while (!load.IsCompleted)
                 await TaskUtility.WaitOneFrame();
             if(gameObject != null)

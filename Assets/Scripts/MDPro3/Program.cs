@@ -104,7 +104,7 @@ namespace MDPro3
                 InitializeRest();
             else
             {
-                var handle = Addressables.LoadAssetAsync<Items>("Items");
+                var handle = Addressables.LoadAssetAsync<Items>("ScriptableObjects/Items.asset");
                 handle.Completed += (result) =>
                 {
                     items = result.Result;
@@ -122,7 +122,7 @@ namespace MDPro3
             InitializeAllServants();
             ReadParams();
 
-            var handle = Addressables.InstantiateAsync("CardRenderer");
+            var handle = Addressables.InstantiateAsync("Prefab/CardRenderer.prefab");
             handle.Completed += (result) =>
             {
                 cardRenderer = result.Result.GetComponent<CardRenderer>();

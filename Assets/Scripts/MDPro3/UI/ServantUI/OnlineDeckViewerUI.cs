@@ -60,7 +60,7 @@ namespace MDPro3.UI.ServantUI
 
             var scale = Config.GetUIScale();
 
-            var handle = Addressables.LoadAssetAsync<GameObject>("ItemDeckOnline");
+            var handle = Addressables.LoadAssetAsync<GameObject>("UI/ItemDeckOnline.prefab");
             handle.Completed += (result) =>
             {
                 var itemWidth = PropertyOverrider.NeedMobileLayout() ? 336f : 260f;

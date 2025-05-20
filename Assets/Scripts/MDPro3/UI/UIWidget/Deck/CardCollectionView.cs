@@ -389,7 +389,7 @@ namespace MDPro3.UI
 
         public void ShowFilters()
         {
-            var handle = Addressables.InstantiateAsync("PopupSearchFilter");
+            var handle = Addressables.InstantiateAsync("Popup/PopupSearchFilter.prefab");
             handle.Completed += (result) =>
             {
                 result.Result.transform.SetParent(Program.instance.ui_.popup, false);
@@ -410,7 +410,7 @@ namespace MDPro3.UI
 
         public void ShowSortOrder()
         {
-            var handle = Addressables.InstantiateAsync("PopupSearchOrder");
+            var handle = Addressables.InstantiateAsync("Popup/PopupSearchOrder.prefab");
             handle.Completed += (result) =>
             {
                 result.Result.transform.SetParent(Program.instance.ui_.popup, false);

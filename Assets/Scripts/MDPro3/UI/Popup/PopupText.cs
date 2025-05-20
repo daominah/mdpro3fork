@@ -1,44 +1,44 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using MDPro3.UI.PropertyOverride;
 
-namespace MDPro3.UI
+namespace MDPro3.UI.Popup
 {
-    public class PopupText : PopupBase
+    public class PopupText : Popup
     {
-        [Header("Popup Select Reference")]
-        public RectTransform backTop;
-        public RectTransform backBotton;
-        public ScrollRect scrollRect;
-        public TextMeshProUGUI text;
-
+        [Header("Popup Text")]
         public HorizontalAlignmentOptions alignment = HorizontalAlignmentOptions.Center;
-        public override void InitializeSelections()
+        [SerializeField] Scrollbar scrollbar;
+        [SerializeField] RectTransform content;
+
+        protected override void InitializeSelections()
         {
             base.InitializeSelections();
-            text.text = selections[1];
-            text.GetComponent<ContentSizeFitter>().SetLayoutVertical();
-            var height = text.GetComponent<RectTransform>().rect.height;
-            if (height > 825)
-                height = 825;
-            if (height < 300)
-                height = 300;
-            var sizeDelta = new Vector2(-50, height);
-            var rect = scrollRect.GetComponent<RectTransform>();
-            rect.sizeDelta = sizeDelta;
-            backTop.sizeDelta = new Vector2(backTop.sizeDelta.x, (1100 - sizeDelta.y) / 2);
-            backBotton.sizeDelta = new Vector2(backBotton.sizeDelta.x, (1100 - sizeDelta.y) / 2);
-            scrollRect.verticalScrollbar.value = 1;
-
+            var text = Manager.GetElement<TextMeshProUGUI>("Text");
+            text.text = args[1];
             text.horizontalAlignment = alignment;
+
+            text.GetComponent<ContentSizeFitter>().SetLayoutVertical();
+            var preferredHeight = text.GetComponent<RectTransform>().rect.height + (PropertyOverrider.NeedMobileLayout() ? 40f : 32f);
+            Manager.GetElement<LayoutElement>("EntryButtonsScrollView").preferredHeight = preferredHeight;
         }
 
-        public override void OnCancel()
+        protected override void Update()
         {
-            base.OnCancel();
-            Hide();
+            if (!NeedResponseInput())
+                return;
+
+            if ((UserInput.MouseRightDown || UserInput.WasCancelPressed) && cancelCallHide)
+            {
+                AudioManager.PlaySE("SE_MENU_CANCEL");
+                Hide();
+            }
+
+            if (UserInput.RightScrollWheel.y != 0f)
+            {
+                scrollbar.value = Mathf.Clamp01(scrollbar.value + UserInput.RightScrollWheel.y * 1000f * Time.unscaledDeltaTime / content.rect.height);
+            }
         }
     }
 }

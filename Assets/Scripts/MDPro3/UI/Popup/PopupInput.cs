@@ -1,36 +1,36 @@
 using System;
+using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
-namespace MDPro3.UI
+namespace MDPro3.UI.Popup
 {
-    public class PopupInput : PopupBase
+    public class PopupInput : Popup
     {
-        [Header("Popup Select Reference")]
-        public InputField input;
-        public Action<string> confirmAction;
+        [Header("Popup Input Reference")]
+        public TMP_InputField input;
+        public Action<string> decideAction;
         public Action cancelAction;
+        public TmpInputValidation.ValidationType validationType;
 
-        public InputValidation.ValidationType validationType;
-        public override void InitializeSelections()
+        protected override void InitializeSelections()
         {
             base.InitializeSelections();
-            input.GetComponent<InputValidation>().type = validationType;
-            input.text = selections[1];
+            input.GetComponent<TmpInputValidation>().type = validationType;
+            input.text = args[1];
         }
 
-        public override void OnCancel()
+        protected override void OnCancel()
         {
-            base.OnCancel();
             cancelAction?.Invoke();
             Hide();
         }
 
-        public override void OnConfirm()
+        protected override void OnDecide()
         {
-            base.OnConfirm();
-            confirmAction?.Invoke(input.text);
+            decideAction?.Invoke(input.text);
             Hide();
         }
+
     }
 }
+

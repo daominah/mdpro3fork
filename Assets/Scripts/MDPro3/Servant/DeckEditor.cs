@@ -96,7 +96,7 @@ namespace MDPro3.Servant
         public override float TransitionTime => 0.6f;
         protected override string Label_UI =>
             PropertyOverrider.NeedMobileLayout()
-            ? "DeckEditorUIMobile" : "DeckEditorUI";
+            ? "ServantUI/DeckEditorUIMobile.prefab" : "ServantUI/DeckEditorUI.prefab";
 
         public override void Initialize()
         {

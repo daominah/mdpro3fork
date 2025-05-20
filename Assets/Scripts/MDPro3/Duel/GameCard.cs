@@ -438,17 +438,17 @@ namespace MDPro3
             else if ((p.location & (uint)CardLocation.Deck) > 0)
             {
                 if (p.controller == 0)
-                    returnValue = new Vector3(26.86f, 1.5f, -23.93f);
+                    returnValue = new Vector3(26.6f, 1.5f, -23.5f);
                 else
-                    returnValue = new Vector3(-26.86f, 1.5f, 23.93f);
+                    returnValue = new Vector3(-26.6f, 1.5f, 23.5f);
                 returnValue.y += p.sequence * 0.1f;
             }
             else if ((p.location & (uint)CardLocation.Extra) > 0)
             {
                 if (p.controller == 0)
-                    returnValue = new Vector3(-26.86f, 1.5f, -23.93f);
+                    returnValue = new Vector3(-26.6f, 1.5f, -23.5f);
                 else
-                    returnValue = new Vector3(26.86f, 1.5f, 23.93f);
+                    returnValue = new Vector3(26.6f, 1.5f, 23.5f);
                 returnValue.y += p.sequence * 0.1f;
             }
             else if ((p.location & (uint)CardLocation.Grave) > 0)

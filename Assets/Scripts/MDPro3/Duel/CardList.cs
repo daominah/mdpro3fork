@@ -79,6 +79,7 @@ namespace MDPro3.UI
             for (int i = 0; i < cards.Count; i++)
             {
                 var go = Instantiate(item);
+                go.SetActive(true);
                 cardObjs.Add(go);
                 go.transform.SetParent(scrollRect.content, false);
                 go.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -140 * (cards.Count - 1 - i));

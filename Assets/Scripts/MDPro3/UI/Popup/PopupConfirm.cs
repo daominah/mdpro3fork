@@ -1,28 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
-namespace MDPro3.UI
+
+namespace MDPro3.UI.Popup
 {
-    public class PopupConfirm : PopupBase
+    public class PopupConfirm : Popup
     {
-        [Header("Popup Confirm")]
-        public Text description;
-        public override void InitializeSelections()
+        protected override void InitializeSelections()
         {
             base.InitializeSelections();
-            description.text = selections[1];
+            Manager.GetElement<TextMeshProUGUI>("FrameText").text = args[1];
         }
+
         public override void Show()
         {
             base.Show();
             AudioManager.PlaySE("SE_SYS_VERIFY");
         }
-        public override void OnConfirm()
-        {
-            base.OnConfirm();
-            Hide();
-        }
     }
 }
+

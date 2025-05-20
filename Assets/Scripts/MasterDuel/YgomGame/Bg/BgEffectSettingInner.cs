@@ -106,7 +106,9 @@ namespace YgomGame.Bg
 
 		public bool enableLowEndPlatformOnly;
 
-		public bool initialized;
+        public bool disableAudienceReplay;
+
+        public bool initialized;
 
 		public BgEffectManagerInner manager;
 
@@ -114,7 +116,9 @@ namespace YgomGame.Bg
 
 		public Animator animator;
 
-		private float time;
+        private MonoBehaviour monoBehaviour;
+
+        private float time;
 
 		private bool enableTap;
 
@@ -227,7 +231,7 @@ namespace YgomGame.Bg
 		}
 
 		private DeviceInfo.ResourceType GetResourceType()
-		{
+		{ 
 			return default(DeviceInfo.ResourceType);
 		}
 	}

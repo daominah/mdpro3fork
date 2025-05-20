@@ -12,7 +12,8 @@ namespace MDPro3.Servant
         protected override bool ShowLine => true;
         protected override string Label_UI =>
             PropertyOverrider.NeedMobileLayout()
-            ? "DeckBrowserUIMobile" : "DeckBrowserUI";
+            ? "ServantUI/DeckBrowserUIMobile.prefab" : "ServantUI/DeckBrowserUI.prefab";
+
         public ResponseRegion ResponseRegion
         {
             get { return GetUI<DeckBrowserUI>()._ResponseRegion; }

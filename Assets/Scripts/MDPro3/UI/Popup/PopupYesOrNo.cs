@@ -1,18 +1,23 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
-namespace MDPro3.UI
+namespace MDPro3.UI.Popup
 {
-    public class PopupYesOrNo : PopupBase
+    public class PopupYesOrNo : Popup
     {
-        [Header("Popup YesOrNo Reference")]
-        public Text description;
-
-        public Action confirmAction;
+        public Action decideAction;
         public Action cancelAction;
+
+        protected override void InitializeSelections()
+        {
+            base.InitializeSelections();
+            Manager.GetElement<TextMeshProUGUI>("FrameText").text = args[1];
+            Manager.GetElement<SelectionButton>("DecideButton").SetButtonText(args[2]);
+            Manager.GetElement<SelectionButton>("CancelButton").SetButtonText(args[3]);
+            if(args.Count > 4)
+                Manager.GetElement("Icon").SetActive(true);
+        }
 
         public override void Show()
         {
@@ -20,24 +25,16 @@ namespace MDPro3.UI
             AudioManager.PlaySE("SE_SYS_VERIFY");
         }
 
-        public override void InitializeSelections()
+        protected override void OnDecide()
         {
-            base.InitializeSelections();
-            description.text = selections[1];
-            btnConfirm.transform.GetChild(0).GetComponent<Text>().text = selections[2];
-            btnCancel.transform.GetChild(0).GetComponent<Text>().text = selections[3];
-        }
-        public override void OnConfirm()
-        {
-            base.OnConfirm();
+            decideAction?.Invoke();
             Hide();
-            confirmAction?.Invoke();
         }
-        public override void OnCancel()
+
+        protected override void OnCancel()
         {
-            base.OnCancel();
-            Hide();
             cancelAction?.Invoke();
+            Hide();
         }
     }
 }
