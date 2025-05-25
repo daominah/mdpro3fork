@@ -46,8 +46,8 @@ namespace MDPro3.UI
             base.Refresh();
             Title.text = puzzle.name;
             Art.SetArt(int.Parse(puzzle.firstCard));
-            NumBadge.SetActive(!Config.GetBool(Program.puzzlePath + puzzle.name + "_Enter", false));
-            TextClear.SetActive(Config.GetBool(Program.puzzlePath + puzzle.name + "_Clear", false));
+            NumBadge.SetActive(!Config.GetBool(Program.PATH_PUZZLE + puzzle.name + "_Enter", false));
+            TextClear.SetActive(Config.GetBool(Program.PATH_PUZZLE + puzzle.name + "_Clear", false));
         }
 
         protected override void CallToggleOnEvent()
@@ -55,10 +55,10 @@ namespace MDPro3.UI
             base.CallToggleOnEvent();
 
             Program.instance.puzzle.GetUI<PuzzleSelectorUI>().superScrollView.selected = index;
-            Program.instance.puzzle.GetUI<PuzzleSelectorUI>().SetOverview(puzzle.description + "\r\n" + puzzle.solution);
+            Program.instance.puzzle.GetUI<PuzzleSelectorUI>().SetOverview(puzzle.description + Program.STRING_LINE_BREAK + puzzle.solution);
 
             Program.instance.puzzle.GetUI<PuzzleSelectorUI>().Art.SetArt(int.Parse(puzzle.firstCard));
-            Program.instance.puzzle.currentPuzzle = Program.puzzlePath + puzzle.name;
+            Program.instance.puzzle.currentPuzzle = Program.PATH_PUZZLE + puzzle.name;
             Program.instance.puzzle.lastPuzzleItem = this;
         }
 

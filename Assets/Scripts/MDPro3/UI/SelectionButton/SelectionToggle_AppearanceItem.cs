@@ -101,8 +101,7 @@ namespace MDPro3.UI
                 }
                 else if (path.StartsWith("DeckCase"))
                 {
-                    Icon.rectTransform.localScale = Vector3.one * 0.8f;
-                    //Icon.transform.localPosition = new Vector3(0f, 15f, 0f);
+                    Icon.transform.localPosition = new Vector3(0f, 15f, 0f);
                 }
                 else if (path.StartsWith("WallPaperIcon"))
                 {

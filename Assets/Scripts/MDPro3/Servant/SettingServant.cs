@@ -155,7 +155,7 @@ namespace MDPro3.Servant
 
         private IEnumerator UpdatePrereleaseAsync()
         {
-            var filePath = Path.Combine(Program.expansionsPath, Path.GetFileName(Settings.Data.PrereleasePackUrl));
+            var filePath = Path.Combine(Program.PATH_EXPANSIONS, Path.GetFileName(Settings.Data.PrereleasePackUrl));
             if (!File.Exists(filePath))
             {
                 Config.Set("Prerelease", "0");
@@ -175,8 +175,8 @@ namespace MDPro3.Servant
                 var lines = result.Replace("\r", "").Split('\n');
                 if (Config.Get("Prerelease", "0") != lines[0])
                 {
-                    if (!Directory.Exists(Program.expansionsPath))
-                        Directory.CreateDirectory(Program.expansionsPath);
+                    if (!Directory.Exists(Program.PATH_EXPANSIONS))
+                        Directory.CreateDirectory(Program.PATH_EXPANSIONS);
                     var download = UnityWebRequest.Get(Settings.Data.PrereleasePackUrl);
                     download.SendWebRequest();
                     MessageManager.Cast(InterString.Get("正在更新，请耐心等待更待更新完成再进行其他操作。"));

@@ -180,13 +180,13 @@ namespace MDPro3
         {
             if (useBytes)
             {
-                LoadData(Program.localesPath + language + "/IDS_ITEM.bytes");
-                LoadData(Program.localesPath + language + "/IDS_ITEMDESC.bytes");
+                LoadData(Program.PATH_LOCALES + language + "/IDS_ITEM.bytes");
+                LoadData(Program.PATH_LOCALES + language + "/IDS_ITEMDESC.bytes");
             }
             else
             {
-                LoadText(Program.localesPath + language + "/IDS/IDS_ITEM.txt");
-                LoadText(Program.localesPath + language + "/IDS/IDS_ITEMDESC.txt");
+                LoadText(Program.PATH_LOCALES + language + "/IDS/IDS_ITEM.txt");
+                LoadText(Program.PATH_LOCALES + language + "/IDS/IDS_ITEMDESC.txt");
             }
         }
 
@@ -595,7 +595,7 @@ namespace MDPro3
 
             if(id == CODE_DIY.ToString())
             {
-                var path = Program.diyPath;
+                var path = Program.PATH_DIY;
                 switch (player)
                 {
                     case 0:
@@ -611,17 +611,17 @@ namespace MDPro3
                         path += Appearance.opTagString;
                         break;
                 }
-                if(File.Exists(path + Program.pngExpansion))
+                if(File.Exists(path + Program.EXPANSION_PNG))
                 {
-                    var task = TextureManager.LoadPicFromFileAsync(path + Program.pngExpansion);
+                    var task = TextureManager.LoadPicFromFileAsync(path + Program.EXPANSION_PNG);
                     while(!task.IsCompleted)
                         yield return null;
                     yield return TextureManager.Texture2Sprite(task.Result);
                     yield break;
                 }
-                else if (File.Exists(path + Program.jpgExpansion))
+                else if (File.Exists(path + Program.EXPANSION_JPG))
                 {
-                    var task = TextureManager.LoadPicFromFileAsync(path + Program.jpgExpansion);
+                    var task = TextureManager.LoadPicFromFileAsync(path + Program.EXPANSION_JPG);
                     while (!task.IsCompleted)
                         yield return null;
                     yield return TextureManager.Texture2Sprite(task.Result);

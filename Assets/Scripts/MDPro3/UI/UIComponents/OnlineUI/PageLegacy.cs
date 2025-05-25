@@ -83,10 +83,10 @@ namespace MDPro3.UI
 
         private void ResetLegacy()
         {
-            InputName.text = Config.Get("DuelPlayerName0", "@ui");
+            InputName.text = Config.Get("DuelPlayerName0", Config.EMPTY_STRING);
             InputHost.text = Config.Get("Host", "s1.ygo233.com");
             InputPort.text = Config.Get("Port", "233");
-            InputPassword.text = Config.Get("Password", "@ui");
+            InputPassword.text = Config.Get("Password", Config.EMPTY_STRING);
         }
 
         private void LoadHostAddresses()
@@ -122,7 +122,7 @@ namespace MDPro3.UI
                 content += address.name + " ";
                 content += address.host + " ";
                 content += address.port + " ";
-                content += address.password + "\r\n";
+                content += address.password + Program.STRING_LINE_BREAK;
             }
             File.WriteAllText(PATH_ADDRESS_SAVE, content);
         }
@@ -246,7 +246,7 @@ namespace MDPro3.UI
 
         public void OnNameChange(string name)
         {
-            Config.Set("DuelPlayerName0", name == "" ? "@ui" : name);
+            Config.Set("DuelPlayerName0", name == "" ? Config.EMPTY_STRING : name);
             Config.Save();
         }
 
@@ -265,7 +265,7 @@ namespace MDPro3.UI
 
         public void OnPasswordChange(string password)
         {
-            Config.Set("Password", password == "" ? "@ui" : password);
+            Config.Set("Password", password == "" ? Config.EMPTY_STRING : password);
             Config.Save();
         }
 

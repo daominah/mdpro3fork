@@ -26899,6 +26899,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultSelectable: {fileID: 0}
+  needTranslate: 0
   responseInput: 0
   condition: 0
   deckLoaded: 0
@@ -34001,7 +34002,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 3510518714693361067}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.8152175
+  m_Size: 0.8452024
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

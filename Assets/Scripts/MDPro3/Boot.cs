@@ -70,20 +70,20 @@ namespace MDPro3
             if (totalNum == 0)
                 text.text = title + dots;
             else
-                text.text = title + "(" + nowNum + Program.slash + totalNum + ")";
+                text.text = title + "(" + nowNum + Program.STRING_SLASH + totalNum + ")";
         }
 
         bool InitializeLanguage()
         {
-            if (!Directory.Exists(Program.dataPath))
+            if (!Directory.Exists(Program.PATH_DATA))
             {
-                Directory.CreateDirectory(Program.dataPath);
-                Config.Initialize(Program.configPath);
+                Directory.CreateDirectory(Program.PATH_DATA);
+                Config.Initialize(Program.PATH_CONFIG);
                 return true;
             }
             else
             {
-                Config.Initialize(Program.configPath);
+                Config.Initialize(Program.PATH_CONFIG);
                 if(Config.Get("Version", "Version") == "Version")
                     return true;
                 InterString.Initialize();
@@ -165,7 +165,7 @@ namespace MDPro3
             totalNum = 0;
             progressBar.value = 0;
 
-            Config.Initialize(Program.configPath);
+            Config.Initialize(Program.PATH_CONFIG);
             Config.Set("Version", Application.version[..5]);
             Config.Save();
 
@@ -257,7 +257,7 @@ namespace MDPro3
                 if(installVersion.Length > 5 || !installVersion.EndsWith("0"))
                 {
                     title = "不能直接安装更新包。Can not install update apk directly.";
-                    Directory.Delete(Program.dataPath);
+                    Directory.Delete(Program.PATH_DATA);
                     return false;
                 }
                 else

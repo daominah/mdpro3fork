@@ -137,11 +137,13 @@ namespace MDPro3.UI
 
         private async Task LoadDeckCaseAsync(int deckCase)
         {
-            var load = Program.items.LoadDeckCaseIconAsync(deckCase, "_L");
+            var load = Program.items.LoadDeckCaseIconAsync(deckCase, "_L_HD");
             while (!load.IsCompleted)
                 await TaskUtility.WaitOneFrame();
-            if(gameObject != null)
+            if (gameObject != null)
                 IconDeckCase.sprite = load.Result;
+            else
+                IconDeckCase.gameObject.SetActive(false);
         }
 
         public void Select()

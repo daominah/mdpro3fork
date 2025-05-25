@@ -64,25 +64,30 @@ namespace MDPro3
 
         #region Const
         public static bool Running = true;
-        public const string artPath = "Picture/Art/";
-        public const string altArtPath = "Picture/Art2/";
-        public const string cardPicPath = "Picture/CardGenerated/";
-        public const string closeupPath = "Picture/Closeup/";
-        public const string dataPath = "Data/";
-        public const string localesPath = "Data/locales/";
-        public const string configPath = "Data/config.conf";
-        public const string lflistPath = "Data/lflist.conf";
-        public const string deckPath = "Deck/";
-        public const string expansionsPath = "Expansions/";
-        public const string puzzlePath = "Puzzle/";
-        public const string replayPath = "Replay/";
-        public const string diyPath = "Picture/DIY/";
-        public const string slash = "/";
-        public const string ydkExpansion = ".ydk";
-        public const string pngExpansion = ".png";
-        public const string jpgExpansion = ".jpg";
-        public const string yrpExpansion = ".yrp";
-        public const string yrp3dExpansion = ".yrp3d";
+        public const string PATH_ART = "Picture/Art/";
+        public const string PATH_ALT_ART = "Picture/Art2/";
+        public const string PATH_CARD_PIC = "Picture/CardGenerated/";
+        public const string PATH_CLOSEUP = "Picture/Closeup/";
+        public const string PATH_DATA = "Data/";
+        public const string PATH_LOCALES = "Data/locales/";
+        public const string PATH_CONFIG = "Data/config.conf";
+        public const string PATH_LFLIST = "Data/lflist.conf";
+        public const string PATH_DECK = "Deck/";
+        public const string PATH_EXPANSIONS = "Expansions/";
+        public const string PATH_PUZZLE = "Puzzle/";
+        public const string PATH_REPLAY = "Replay/";
+        public const string PATH_DIY = "Picture/DIY/";
+
+        public const string EXPANSION_YDK = ".ydk";
+        public const string EXPANSION_PNG = ".png";
+        public const string EXPANSION_JPG = ".jpg";
+        public const string EXPANSION_YRP = ".yrp";
+        public const string EXPANSION_YRP3D = ".yrp3d";
+        public const string EXPANSION_LUA = ".lua";
+
+        public const string STRING_SLASH = "/";
+        public const string STRING_LINE_BREAK = "\r\n";
+
         #endregion
 
         #region Initializement
@@ -95,9 +100,9 @@ namespace MDPro3
 
         void Initialize()
         {
-            if (!Directory.Exists(dataPath))
-                Directory.CreateDirectory(dataPath);
-            Config.Initialize(configPath);
+            if (!Directory.Exists(PATH_DATA))
+                Directory.CreateDirectory(PATH_DATA);
+            Config.Initialize(PATH_CONFIG);
 
             Screen.sleepTimeout = SleepTimeout.NeverSleep;
             if (items != null)
@@ -214,7 +219,7 @@ namespace MDPro3
             }
             else if (puzzle != null)
             {
-                this.puzzle.StartPuzzle(puzzlePath + puzzle);
+                this.puzzle.StartPuzzle(PATH_PUZZLE + puzzle);
                 exitOnReturn = true;
             }
         }

@@ -61,10 +61,11 @@ namespace MDPro3.UI
         #endregion
 
         [SerializeField] protected Selectable defaultSelectable;
-
+        [SerializeField] protected bool needTranslate = true;
         protected virtual void Awake()
         {
-            UIManager.Translate(gameObject);
+            if(needTranslate)
+                UIManager.Translate(gameObject);
         }
 
         #region Input Response

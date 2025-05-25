@@ -248,7 +248,7 @@ namespace MDPro3.UI
             switch (player)
             {
                 case -1: //local name
-                    nickName = Config.Get("DuelPlayerName0", "@ui");
+                    nickName = Config.Get("DuelPlayerName0", Config.EMPTY_STRING);
                     break;
                 case 0: //from host
                 case 1: //from client
@@ -280,21 +280,21 @@ namespace MDPro3.UI
             switch (position)
             {
                 case PlayerPosition.Me:
-                    return Config.Get("DuelPlayerName0", "@ui");
+                    return Config.Get("DuelPlayerName0", Config.EMPTY_STRING);
                 case PlayerPosition.MyTag:
-                    return Config.Get("DuelPlayerName0Tag", "@ui");
+                    return Config.Get("DuelPlayerName0Tag", Config.EMPTY_STRING);
                 case PlayerPosition.Op:
-                    return Config.Get("DuelPlayerName1", "@ui");
+                    return Config.Get("DuelPlayerName1", Config.EMPTY_STRING);
                 case PlayerPosition.OpTag:
-                    return Config.Get("DuelPlayerName1Tag", "@ui");
+                    return Config.Get("DuelPlayerName1Tag", Config.EMPTY_STRING);
                 case PlayerPosition.WatchMe:
-                    return Config.Get("WatchPlayerName0", "@ui");
+                    return Config.Get("WatchPlayerName0", Config.EMPTY_STRING);
                 case PlayerPosition.WatchMyTag:
-                    return Config.Get("WatchPlayerName0Tag", "@ui");
+                    return Config.Get("WatchPlayerName0Tag", Config.EMPTY_STRING);
                 case PlayerPosition.WatchOp:
-                    return Config.Get("WatchPlayerName1", "@ui");
+                    return Config.Get("WatchPlayerName1", Config.EMPTY_STRING);
                 case PlayerPosition.WatchOpTag:
-                    return Config.Get("WatchPlayerName1Tag", "@ui");
+                    return Config.Get("WatchPlayerName1Tag", Config.EMPTY_STRING);
                 default:
                     return string.Empty;
             }

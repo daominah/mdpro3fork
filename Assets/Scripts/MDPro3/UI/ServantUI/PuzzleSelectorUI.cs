@@ -72,9 +72,9 @@ namespace MDPro3.UI.ServantUI
         private void GetPuzzles()
         {
             puzzles = new List<Puzzle>();
-            if (!Directory.Exists(Program.puzzlePath))
-                Directory.CreateDirectory(Program.puzzlePath);
-            FileInfo[] fileInfos = new DirectoryInfo(Program.puzzlePath).GetFiles("*.lua");
+            if (!Directory.Exists(Program.PATH_PUZZLE))
+                Directory.CreateDirectory(Program.PATH_PUZZLE);
+            FileInfo[] fileInfos = new DirectoryInfo(Program.PATH_PUZZLE).GetFiles("*.lua");
             foreach (FileInfo fileInfo in fileInfos)
             {
                 string text = File.ReadAllText(fileInfo.FullName);
@@ -106,14 +106,14 @@ namespace MDPro3.UI.ServantUI
                 string solution = "";
                 if (messageStart != 0 && messageEnd != 0)
                     for (int i = messageStart; i < messageEnd; i++)
-                        description += lines[i] + "\r\n";
+                        description += lines[i] + Program.STRING_LINE_BREAK;
                 if (solutionStart != 0 && solutionEnd != 0)
                     for (int i = solutionStart; i < solutionEnd; i++)
-                        solution += lines[i] + "\r\n";
+                        solution += lines[i] + Program.STRING_LINE_BREAK;
                 description = description.Replace("\r\n\t\r\n\t", "\r\n\t");
                 Puzzle puzzle = new()
                 {
-                    name = fileInfo.Name.Replace(".lua", ""),
+                    name = fileInfo.Name.Replace(Program.EXPANSION_LUA, string.Empty),
                     firstCard = card,
                     description = description,
                     solution = solution,

@@ -22,19 +22,19 @@ namespace MDPro3.UI
 
         IEnumerator LoadAsync()
         {
-            var task = TextureManager.LoadPicFromFileAsync(Program.diyPath + "Rock.png");
+            var task = TextureManager.LoadPicFromFileAsync(Program.PATH_DIY + "Rock.png");
             while(!task.IsCompleted)
                 yield return null;
             rock.GetComponent<RawImage>().texture = task.Result;
             rock.GetComponent<RawImage>().color = Color.white;
 
-            task = TextureManager.LoadPicFromFileAsync(Program.diyPath + "Paper.png");
+            task = TextureManager.LoadPicFromFileAsync(Program.PATH_DIY + "Paper.png");
             while (!task.IsCompleted)
                 yield return null;
             paper.GetComponent<RawImage>().texture = task.Result;
             paper.GetComponent<RawImage>().color = Color.white;
 
-            task = TextureManager.LoadPicFromFileAsync(Program.diyPath + "Scissors.png");
+            task = TextureManager.LoadPicFromFileAsync(Program.PATH_DIY + "Scissors.png");
             while (!task.IsCompleted)
                 yield return null;
             scissors.GetComponent<RawImage>().texture = task.Result;

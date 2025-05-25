@@ -10,7 +10,8 @@ namespace MDPro3
     public static class Config
     {
         public const string LABEL_TIMING = "Timing";
-
+        private const string SEPARATOR = "->";
+        public const string EMPTY_STRING = "@ui";
 
         public static uint ClientVersion = 0x1361;
 
@@ -44,7 +45,7 @@ namespace MDPro3
             translations.Clear();
             for (var i = 0; i < lines.Length; i++)
             {
-                var mats = Regex.Split(lines[i], "->");
+                var mats = Regex.Split(lines[i], SEPARATOR);
                 if (mats.Length == 2)
                 {
                     var s = new OneString();
@@ -82,7 +83,7 @@ namespace MDPro3
             if (found == false)
                 if (path != null)
                 {
-                    File.AppendAllText(path, original + "->" + defau + "\r\n");
+                    File.AppendAllText(path, original + SEPARATOR + defau + Program.STRING_LINE_BREAK);
                     var s = new OneString
                     {
                         original = original,
@@ -92,7 +93,7 @@ namespace MDPro3
                     translations.Add(s);
                 }
 
-            return return_value.Replace("@ui", "");
+            return return_value.Replace(EMPTY_STRING, string.Empty);
         }
 
         public static void Set(string original, string setted)
@@ -151,7 +152,7 @@ namespace MDPro3
         {
             var all = "";
             for (var i = 0; i < translations.Count; i++)
-                all += translations[i].original + "->" + translations[i].translated + "\r\n";
+                all += translations[i].original + SEPARATOR + translations[i].translated + Program.STRING_LINE_BREAK;
 
             try
             {
@@ -182,7 +183,7 @@ namespace MDPro3
 
         public static string GetConfigDeckName()
         {
-            return Get("DeckInUse", "@ui");
+            return Get("DeckInUse", EMPTY_STRING);
         }
 
         public static void SetConfigDeck(string deckName)

@@ -13,7 +13,7 @@ namespace MDPro3
     {
         static List<string> filesToDelete = new List<string>();
         static string[] pictureFormat = new string[] { "image/png", "image/jpeg" };
-        const string bgPath = Program.diyPath + "Background.png";
+        const string bgPath = Program.PATH_DIY + "Background.png";
         public static void ImportFiles()
         {
 #if (UNITY_ANDROID || UNITY_IOS) && !UNITY_EDITOR
@@ -91,19 +91,19 @@ namespace MDPro3
                 var fileName = Path.GetFileName(path);
                 try
                 {
-                    if (path.ToLower().EndsWith(Program.ydkExpansion))
+                    if (path.ToLower().EndsWith(Program.EXPANSION_YDK))
                     {
-                        File.Copy(path, Program.deckPath + fileName, true);
-                        MessageManager.Cast(InterString.Get("导入卡组「[?]」成功。", fileName.Replace(Program.ydkExpansion, string.Empty)));
+                        File.Copy(path, Program.PATH_DECK + fileName, true);
+                        MessageManager.Cast(InterString.Get("导入卡组「[?]」成功。", fileName.Replace(Program.EXPANSION_YDK, string.Empty)));
                     }
-                    else if (path.ToLower().EndsWith(Program.yrpExpansion) || path.ToLower().EndsWith(Program.yrp3dExpansion))
+                    else if (path.ToLower().EndsWith(Program.EXPANSION_YRP) || path.ToLower().EndsWith(Program.EXPANSION_YRP3D))
                     {
-                        File.Copy(path, Program.replayPath + fileName, true);
+                        File.Copy(path, Program.PATH_REPLAY + fileName, true);
                         MessageManager.Cast(InterString.Get("导入回放「[?]」成功。", fileName));
                     }
                     else if (path.ToLower().EndsWith(".ypk") || path.ToLower().EndsWith(".zip") || path.ToLower().EndsWith(".cdb") || path.ToLower().EndsWith(".conf"))
                     {
-                        File.Copy(path, Program.expansionsPath + fileName, true);
+                        File.Copy(path, Program.PATH_EXPANSIONS + fileName, true);
                         newDataAdded = true;
                         if (fileName.ToLower().EndsWith(".ypk") || fileName.ToLower().EndsWith(".zip"))
                             MessageManager.Cast(InterString.Get("导入扩展卡文件「[?]」成功。", fileName));
@@ -112,9 +112,9 @@ namespace MDPro3
                         else if (fileName.ToLower().EndsWith(".conf"))
                             MessageManager.Cast(InterString.Get("导入字段文件「[?]」成功。", fileName));
                     }
-                    else if (path.ToLower().EndsWith(Program.pngExpansion) || path.ToLower().EndsWith(Program.jpgExpansion))
+                    else if (path.ToLower().EndsWith(Program.EXPANSION_PNG) || path.ToLower().EndsWith(Program.EXPANSION_JPG))
                     {
-                        File.Copy(path, Program.altArtPath + Path.GetFileName(path), true);
+                        File.Copy(path, Program.PATH_ALT_ART + Path.GetFileName(path), true);
                         MessageManager.Cast(InterString.Get("导入自定义卡图「[?]」成功。", fileName));
                     }
                 }
@@ -131,17 +131,17 @@ namespace MDPro3
             {
                 try
                 {
-                    if (path.ToLower().EndsWith(Program.ydkExpansion))
-                        File.Move(path, Program.deckPath + Path.GetFileName(path));
-                    if (path.ToLower().EndsWith(Program.yrpExpansion) || path.ToLower().EndsWith(Program.yrp3dExpansion))
-                        File.Move(path, Program.replayPath + Path.GetFileName(path));
+                    if (path.ToLower().EndsWith(Program.EXPANSION_YDK))
+                        File.Move(path, Program.PATH_DECK + Path.GetFileName(path));
+                    if (path.ToLower().EndsWith(Program.EXPANSION_YRP) || path.ToLower().EndsWith(Program.EXPANSION_YRP3D))
+                        File.Move(path, Program.PATH_REPLAY + Path.GetFileName(path));
                     if (path.ToLower().EndsWith(".ypk") || path.ToLower().EndsWith(".zip") || path.ToLower().EndsWith(".cdb") || path.ToLower().EndsWith(".conf"))
                     {
-                        File.Move(path, Program.expansionsPath + Path.GetFileName(path));
+                        File.Move(path, Program.PATH_EXPANSIONS + Path.GetFileName(path));
                         newDataAdded = true;
                     }
-                    if (path.ToLower().EndsWith(Program.pngExpansion) || path.ToLower().EndsWith(Program.jpgExpansion) || path.ToLower().EndsWith(".jpeg"))
-                        File.Move(path, Program.altArtPath + Path.GetFileName(path));
+                    if (path.ToLower().EndsWith(Program.EXPANSION_PNG) || path.ToLower().EndsWith(Program.EXPANSION_JPG) || path.ToLower().EndsWith(".jpeg"))
+                        File.Move(path, Program.PATH_ALT_ART + Path.GetFileName(path));
                 }
                 catch { }
             }
@@ -164,23 +164,23 @@ namespace MDPro3
 
         public static void ExportAllDecks()
         {
-            if (!Directory.Exists(Program.deckPath))
-                Directory.CreateDirectory(Program.deckPath);
-            var filePaths = Directory.GetFiles(Program.deckPath);
+            if (!Directory.Exists(Program.PATH_DECK))
+                Directory.CreateDirectory(Program.PATH_DECK);
+            var filePaths = Directory.GetFiles(Program.PATH_DECK);
             Export(filePaths);
         }
         public static void ExportAllReplays()
         {
-            if (!Directory.Exists(Program.replayPath))
-                Directory.CreateDirectory(Program.replayPath);
-            var filePaths = Directory.GetFiles(Program.replayPath);
+            if (!Directory.Exists(Program.PATH_REPLAY))
+                Directory.CreateDirectory(Program.PATH_REPLAY);
+            var filePaths = Directory.GetFiles(Program.PATH_REPLAY);
             Export(filePaths);
         }
         public static void ExportAllPictures()
         {
-            if (!Directory.Exists(Program.cardPicPath))
-                Directory.CreateDirectory(Program.cardPicPath);
-            var filePaths = Directory.GetFiles(Program.cardPicPath);
+            if (!Directory.Exists(Program.PATH_CARD_PIC))
+                Directory.CreateDirectory(Program.PATH_CARD_PIC);
+            var filePaths = Directory.GetFiles(Program.PATH_CARD_PIC);
             Export(filePaths, false);
         }
 

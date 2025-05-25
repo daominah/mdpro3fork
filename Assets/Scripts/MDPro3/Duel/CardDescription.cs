@@ -584,14 +584,14 @@ namespace MDPro3
                     if (monsterStart - i == splitLines)
                         returnValue[0] += lines[i];
                     else
-                        returnValue[0] += lines[i] + "\r\n";
+                        returnValue[0] += lines[i] + Program.STRING_LINE_BREAK;
                 }
                 else if (i > monsterStart)
                 {
                     if (i == lines.Length - 1)
                         returnValue[1] += lines[i];
                     else
-                        returnValue[1] += lines[i] + "\r\n";
+                        returnValue[1] += lines[i] + Program.STRING_LINE_BREAK;
                 }
             }
             if (language == Language.Spanish)
@@ -607,7 +607,7 @@ namespace MDPro3
             if (returnValue.Length > 0)
             {
                 returnValue = "<color=#FFF000>" +
-                    StringHelper.GetUnsafe(1329) + returnValue + "</color>" + "\r\n";
+                    StringHelper.GetUnsafe(1329) + returnValue + "</color>" + Program.STRING_LINE_BREAK;
             }
             return returnValue;
         }

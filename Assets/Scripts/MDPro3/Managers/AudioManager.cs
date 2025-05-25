@@ -6,18 +6,25 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
+using static Spine.Unity.Editor.SkeletonBaker.BoneWeightContainer;
 
 namespace MDPro3
 {
     public class AudioManager : Manager
     {
+
+        #region Base
+
         public AudioSource seR;
         public AudioSource bgmR;
         public AudioSource voiceR;
 
-        static AudioSource se;
-        static AudioSource bgm;
-        static AudioSource voice;
+        private static AudioSource se;
+        private static AudioSource bgm;
+        private static AudioSource voice;
+
+        public const string BGM_MENU_MAIN = "BGM_MENU_01";
+
         public override void Initialize()
         {
             base.Initialize();
@@ -26,9 +33,10 @@ namespace MDPro3
             voice = voiceR;
             AudioSettings.OnAudioConfigurationChanged += OnAudioConfigurationChanged;
 
-            PlayBGM("BGM_MENU_01");
+            PlayBGM(BGM_MENU_MAIN);
         }
-        void OnAudioConfigurationChanged(bool deviceWasChanged)
+
+        private void OnAudioConfigurationChanged(bool deviceWasChanged)
         {
 #if !UNITY_EDITOR && UNITY_ANDROID
             if (deviceWasChanged)
@@ -39,28 +47,59 @@ namespace MDPro3
             bgm.Play();
 #endif
         }
+
         public static void SetSeVol(float vol)
         {
             se.volume = vol;
         }
+
         public static void SetBGMVol(float vol)
         {
             bgm.volume = vol * currentBGMScale;
         }
+
         public static void SetVoiceVol(float vol)
         {
             voice.volume = vol;
         }
 
+        public static IEnumerator<AudioClip> LoadAudioFileAsync(string path, AudioType audioType)
+        {
+            string fullPath;
+#if !UNITY_EDITOR && (UNITY_ANDROID || UNITY_IOS)
+            fullPath = "file://" + Application.persistentDataPath + Program.STRING_SLASH + path;
+#elif UNITY_STANDALONE_LINUX || UNITY_STANDALONE_OSX
+            fullPath = Path.Combine("file://" + Environment.CurrentDirectory, path);
+#else
+            fullPath = Path.Combine(Environment.CurrentDirectory, path);
+#endif
+
+            using var request = UnityWebRequestMultimedia.GetAudioClip(fullPath, audioType);
+            var wait = request.SendWebRequest();
+
+            while (!wait.isDone)
+                yield return null;
+
+            if (request.result == UnityWebRequest.Result.Success)
+            {
+                var audioClip = DownloadHandlerAudioClip.GetContent(request);
+                yield return audioClip;
+            }
+        }
+
+        #endregion
+
         #region SE
-        struct LastSE
+
+        private struct LastSE
         {
             public float time;
             public string seName;
         }
 
-        static LastSE lastSE = new LastSE();
+        private static LastSE lastSE = new();
         public static string nextMuteSE;
+
         public static void PlaySE(string path, float volumeScale = 1)
         {
             if (string.IsNullOrEmpty(path))
@@ -83,12 +122,24 @@ namespace MDPro3
             var handle = Addressables.LoadAssetAsync<AudioClip>(path);
             handle.Completed += (result) =>
             {
-                if(result.Result != null)
+                if (result.Result != null)
                     se.PlayOneShot(result.Result, volumeScale);
             };
         }
 
-        static IEnumerator PlaySEGroup(List<string> ses, float volumeScale = 1)
+        public void PlayShuffleSE()
+        {
+            List<string> ses = new()
+            {
+                "SE_CARD_MOVE_01",
+                "SE_CARD_MOVE_02",
+                "SE_CARD_MOVE_03",
+                "SE_CARD_MOVE_04"
+            };
+            StartCoroutine(PlaySEGroup(ses));
+        }
+
+        private static IEnumerator PlaySEGroup(List<string> ses, float volumeScale = 1)
         {
             foreach (string s in ses)
             {
@@ -100,22 +151,11 @@ namespace MDPro3
             }
         }
 
-        public void PlayShuffleSE()
-        {
-            List<string> ses = new List<string>()
-            {
-                "SE_CARD_MOVE_01",
-                "SE_CARD_MOVE_02",
-                "SE_CARD_MOVE_03",
-                "SE_CARD_MOVE_04"
-            };
-            StartCoroutine(PlaySEGroup(ses));
-        }
-
         public static void PlaySEClip(AudioClip clip, float volumeScale = 1)
         {
             se.PlayOneShot(clip, volumeScale);
         }
+
         public static void ResetSESource()
         {
             se.gameObject.SetActive(false);
@@ -129,7 +169,7 @@ namespace MDPro3
         public static void PlayVoiceByResourcePath(string path)
         {
             var clip = Resources.Load<AudioClip>(path);
-            if(clip != null)
+            if (clip != null)
                 voice.PlayOneShot(clip);
         }
 
@@ -142,21 +182,27 @@ namespace MDPro3
 
         #region BGM
 
-        enum BgmType
+        private enum BgmType
         {
             NORMAL,
             KEYCARD,
             CLIMAX
         }
 
-        struct BgmLoop
+        private static List<string> currentBGMs;
+        private static string currentBGM = string.Empty;
+        private static int bgmState = 0;
+        private static float loopStart = 0;
+        private static float loopEnd = 10;
+
+        private struct BgmLoop
         {
             public string name;
             public float startTime;
             public float endTime;
         }
 
-        readonly static List<BgmLoop> loops = new List<BgmLoop>
+        private readonly static List<BgmLoop> loops = new()
         {
             new BgmLoop{name = "BGM_MENU_01", startTime = 12.433f, endTime = 120 + 31.100f },
             new BgmLoop{name = "BGM_MENU_02", startTime = 15.687f, endTime = 120 + 2.354f },
@@ -223,88 +269,86 @@ namespace MDPro3
         };
 
 
-        static readonly List<int> bgms = new List<int>()
+        private static readonly List<int> bgms = new()
         {
             1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16
         };
-        static readonly List<int> exBgms = new List<int>()
+
+        private static readonly List<int> commonBgms = new()
         {
-            2, 3, 4, 5
-        };
-        static readonly List<int> commonBgms = new List<int>()
-        {
-            1,
-            3,
-            7
+            1, 3, 7 
         };
 
-        static readonly Dictionary<int, List<int>> fieldBGMs = new Dictionary<int, List<int>>()
+        private static readonly Dictionary<int, List<int>> fieldBGMs = new()
         {
-            {1, new List<int>{ 2, 12 } },//「森」「未界域－欧玛利亚大陆」
-            {2, new List<int>{ 4, 3, 21 } },//「齿车街」「魔导书廊」「教导的圣堂」
-            {3, new List<int>{ 1, 11 } },//「仪式之间」「荒野的祭殿」
-            {4, new List<int>{ 5, 6 } },//「火山」「星遺物沉眠的废墟」
-            {5, new List<int>{ 7 } },//「异国之都」
-            {6, new List<int>{ 15, 24 } },//「鲜彩之苍海」「辉石的洞窟」
-            {7, new List<int>{ 9 } },//「摩天楼」
+            {1, new List<int>{ 2, 12, 29, 31 } }, //「森」「未界域－欧玛利亚大陆」「染上樱色的森林」「为白色所覆的森林」
+            {2, new List<int>{ 4, 3, 21 } }, //「齿车街」「魔导书廊」「教导的圣堂」
+            {3, new List<int>{ 1, 11 } }, //「仪式之间」「荒野的祭殿」
+            {4, new List<int>{ 5, 6 } }, //「火山」「星遺物沉眠的废墟」
+            {5, new List<int>{ 7 } }, //「异国之都」
+            {6, new List<int>{ 15, 24 } }, //「鲜彩之苍海」「辉石的洞窟」
+            {7, new List<int>{ 9 } }, //「摩天楼」
             {8, new List<int>{  } },
-            {9, new List<int>{ 16, 17 } },//「魔偶甜点城堡」「鬼计之馆」
+            {9, new List<int>{ 16, 17 } }, //「魔偶甜点城堡」「鬼计之馆」
             {10, new List<int>{  } },
-            {11, new List<int>{ } },
-            {12, new List<int>{ 19, 18, 25 } },//「突异变种进化研究所」「电脑的宇宙」「六世坏=天魔世界」
-            {13, new List<int>{ 14 } },//「相剑的灵峰」
-            {14, new List<int>{ 22 } },//「恶魔宫殿」
-            {15, new List<int>{ 10 } },//「冻结的世界」
-            {16, new List<int>{ 20, 27, 28 } },//「古之决斗的记忆」「苏醒的天空殿」「青色眼睛的灵堂」
+            {11, new List<int>{ 26 } },
+            {12, new List<int>{ 19, 18, 25, 36 } }, //「突异变种进化研究所」「电脑的宇宙」「六世坏=天魔世界」「罪宝遗迹」
+            {13, new List<int>{ 14 } }, //「相剑的灵峰」
+            {14, new List<int>{ 22 } }, //「恶魔宫殿」
+            {15, new List<int>{ 10, 35 } }, //「冻结的世界」「冻结的世界」
+            {16, new List<int>{ 20, 27, 28 } }, //「古之决斗的记忆」「苏醒的天空殿」「青色眼睛的灵堂」
         };
 
-        static readonly Dictionary<int, List<int>> exFieldBGMs = new Dictionary<int, List<int>>()
+        private static readonly Dictionary<List<string>, List<int>> specialFieldBGMs = new()
         {
-            {1, new List<int>{  } },
-            {2, new List<int>{ 8 } },//「角斗场」
-            {3, new List<int>{ 13 } },//「WCS」
-            {4, new List<int>{ } },
-            {5, new List<int>{ } },
+            {new List<string>{ "BGM_DUEL_DC01_NORMAL", "BGM_DUEL_DC01_KEYCARD", "BGM_DUEL_DC01_CLIMAX" }, new List<int>{ } },
+            {new List<string>{ "BGM_DUEL_DC02_NORMAL", "BGM_DUEL_DC02_KEYCARD", "BGM_DUEL_DC02_CLIMAX" }, new List<int>{ } },
+
+            {new List<string>{ "BGM_DUEL_EX_01" }, new List<int>{ } },
+            {new List<string>{ "BGM_DUEL_EX_02_NORMAL", "BGM_DUEL_EX_02_KEYCARD", "BGM_DUEL_EX_02_CLIMAX" }, new List<int>{ 8 } }, //「角斗场」
+            {new List<string>{ "BGM_DUEL_EX_03_NORMAL", "BGM_DUEL_EX_03_KEYCARD", "BGM_DUEL_EX_03_CLIMAX" }, new List<int>{ 13 } }, //「WCS」
+            {new List<string>{ "BGM_DUEL_EX_04_NORMAL", "BGM_DUEL_EX_04_KEYCARD", "BGM_DUEL_EX_04_CLIMAX" }, new List<int>{ } },
+            {new List<string>{ "BGM_DUEL_EX_05_NORMAL", "BGM_DUEL_EX_05_KEYCARD", "BGM_DUEL_EX_05_CLIMAX" }, new List<int>{ } },
+            {new List<string>{ "BGM_DUEL_EX_06_ALL" }, new List<int>{ } },
+            {new List<string>{ "BGM_DUEL_EX_07_PHASE_A", "BGM_DUEL_EX_07_PHASE_B" }, new List<int>{ } },
+
+            {new List<string>{ "BGM_DUEL_F01_ALL" }, new List<int>{ 38 } }, //「邪恶双子」
+            {new List<string>{ "BGM_DUEL_F02_PHASE_A", "BGM_DUEL_F02_PHASE_B" }, new List<int>{ } },
+            {new List<string>{ "BGM_DUEL_F03_PHASE_A", "BGM_DUEL_F03_PHASE_B", "BGM_DUEL_F03_PHASE_C" }, new List<int>{ 40 } }, //「闪刀行动模拟区域」
+            {new List<string>{ "BGM_DUEL_F04_PHASE_A", "BGM_DUEL_F04_PHASE_B" }, new List<int>{ } },
+
+            {new List<string>{ "BGM_DUEL_RATE01_NORMAL", "BGM_DUEL_RATE01_KEYCARD", "BGM_DUEL_RATE01_CLIMAX" }, new List<int>{ } },
+
         };
 
-        static int bgmState = 0;
-        static int bgmId = 1;
-        static bool exBgm = false;
-        static int GetFieldIdByFieldName(string fieldName)
+        private static int GetFieldIdByFieldName(string fieldName)
         {
             return int.Parse(fieldName.Substring(4, 3));
         }
 
-        static int GetBgmIdByFieldId(int fieldId)
+        private static List<string> GetBgmsByFieldId(int fieldId)
         {
-            exBgm = false;
-            foreach(var pair in fieldBGMs)
-                if (pair.Value.Contains(fieldId))
-                    return pair.Key;
-            foreach (var pair in exFieldBGMs)
+            foreach (var pair in fieldBGMs)
                 if (pair.Value.Contains(fieldId))
                 {
-                    exBgm = true;
+                    return new List<string>() { $"BGM_DUEL_NORMAL_{pair.Key:D2}", $"BGM_DUEL_KEYCARD_{pair.Key:D2}", $"BGM_DUEL_CLIMAX_{pair.Key:D2}" };
+                }
+            foreach (var pair in specialFieldBGMs)
+                if (pair.Value.Contains(fieldId))
+                {
                     return pair.Key;
                 }
-
-            return commonBgms[UnityEngine.Random.Range(0, commonBgms.Count)];
-        }
-
-        static string GetBgmPathById(int bgmId, BgmType type)
-        {
-            if (exBgm)
-                return "BGM_DUEL_EX_" + bgmId.ToString("D2") + "_" + type;
-            else
-                return "BGM_DUEL_" + type + "_" + bgmId.ToString("D2");
+            var undefined = commonBgms[UnityEngine.Random.Range(0, commonBgms.Count)];
+            return new List<string>() { $"BGM_DUEL_NORMAL_{undefined:D2}", $"BGM_DUEL_KEYCARD_{undefined:D2}", $"BGM_DUEL_CLIMAX_{undefined:D2}" };
         }
 
         public static void PlayBgmNormal(string filedName)
         {
             bgmState = 0;
             var fieldId = GetFieldIdByFieldName(filedName);
-            bgmId = GetBgmIdByFieldId(fieldId);
-            PlayBGM(GetBgmPathById(bgmId, BgmType.NORMAL));
+            currentBGMs = GetBgmsByFieldId(fieldId);
+            if(currentBGMs.Count > 0)
+                PlayBGM(currentBGMs[0]);
         }
 
         public static void PlayBgmKeyCard()
@@ -312,17 +356,21 @@ namespace MDPro3
             if (bgmState > 0)
                 return;
             bgmState = 1;
-            PlayBGM(GetBgmPathById(bgmId, BgmType.KEYCARD));
+            if(currentBGMs.Count > 1)
+                PlayBGM(currentBGMs[1]);
         }
+
         public static void PlayBgmClimax()
         {
             if (bgmState == 2)
                 return;
             bgmState = 2;
-            PlayBGM(GetBgmPathById(bgmId, BgmType.CLIMAX));
+            if (currentBGMs.Count > 2)
+                PlayBGM(currentBGMs[2]);
         }
 
-        static float currentBGMScale = 1f;
+        private static float currentBGMScale = 1f;
+
         public static void PlayBGM(string path, float volumeScale = 1f)
         {
             currentBGMScale = volumeScale;
@@ -353,13 +401,11 @@ namespace MDPro3
 
         public static void PlayRandomKeyCardBGM()
         {
-            PlayBGM(GetBgmPathById(bgms[UnityEngine.Random.Range(0, bgms.Count)], BgmType.KEYCARD));
+            var randomID = bgms[UnityEngine.Random.Range(0, bgms.Count)];
+            PlayBGM($"BGM_DUEL_KEYCARD_{randomID:D2}");
         }
 
-        static string currentBGM = string.Empty;
-        static float loopStart = 0;
-        static float loopEnd = 10;
-        static void SetCurrentBGM(string bgm, float bgmLength)
+        private static void SetCurrentBGM(string bgm, float bgmLength)
         {
             currentBGM = bgm;
             bool found = false;
@@ -388,35 +434,7 @@ namespace MDPro3
                 bgm.time = loopStart;
         }
 
-
         #endregion
 
-        #region PUBLIC STATIC FUNCTION
-        public static IEnumerator<AudioClip> LoadAudioFileAsync(string path, AudioType audioType)
-        {
-            string fullPath;
-#if !UNITY_EDITOR && (UNITY_ANDROID || UNITY_IOS)
-            fullPath = "file://" + Application.persistentDataPath + Program.slash + path;
-#elif UNITY_STANDALONE_LINUX || UNITY_STANDALONE_OSX
-            fullPath = Path.Combine("file://" + Environment.CurrentDirectory, path);
-#else
-            fullPath = Path.Combine(Environment.CurrentDirectory, path);
-#endif
-
-            using var request = UnityWebRequestMultimedia.GetAudioClip(fullPath, audioType);
-            var wait = request.SendWebRequest();
-
-            while (!wait.isDone)
-                yield return null;
-
-            if (request.result == UnityWebRequest.Result.Success)
-            {
-                var audioClip = DownloadHandlerAudioClip.GetContent(request);
-                yield return audioClip;
-            }
-        }
-
-
-        #endregion
     }
 }

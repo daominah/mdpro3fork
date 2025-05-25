@@ -889,7 +889,7 @@ namespace MDPro3.UI
         {
             if (!deckLoaded) return;
             if (!CanEditCard()) return;
-            if (GetDirty() || !File.Exists(Program.deckPath + deckName + Program.ydkExpansion))
+            if (GetDirty() || !File.Exists(Program.PATH_DECK + deckName + Program.EXPANSION_YDK))
             {
                 if(condition != Condition.ChangeSide)
                     MessageManager.Toast(InterString.Get("请先保存卡组"));
@@ -1199,7 +1199,7 @@ namespace MDPro3.UI
                 var deckName = GetDeckName();
                 Deck.Save(deckName, DateTime.Now);
                 if (deckName != this.deckName)
-                    File.Delete(Program.deckPath + this.deckName + Program.ydkExpansion);
+                    File.Delete(Program.PATH_DECK + this.deckName + Program.EXPANSION_YDK);
                 this.deckName = deckName;
                 MessageManager.Toast(InterString.Get("本地卡组「[?]」已保存。", deckName));
                 Config.SetConfigDeck(deckName);

@@ -284,7 +284,7 @@ namespace MDPro3.Servant
                         case 9: // 有额外卡组卡片存在于主卡组，可能是额外卡组数量超过15张。
                             task = StringHelper.GetUnsafe(1411 + flag);
                             replace = new Regex("%d");
-                            deck = new Deck(Program.deckPath + Config.GetConfigDeckName() + Program.ydkExpansion);
+                            deck = new Deck(Program.PATH_DECK + Config.GetConfigDeckName() + Program.EXPANSION_YDK);
                             if(deck != null)
                             {
                                 string target;

@@ -34,7 +34,7 @@ Unity version: 6000.0.10f1
 
 ### For Contributors:
 
-* If you want to edit in-game translations, please edit Tools/Translations/translations.csv with Excel. Do not edit translation.conf.
+* If you want to edit in-game translations, please visit https://docs.google.com/spreadsheets/d/1BbSTxgobDqLyHL7De6uFSqfGiK9WIH3no5fQPW2Xwls/edit?usp=sharing.
 
 * If you want to edit bot.conf(Windbot), please edit it on YGOMobile(https://github.com/fallenstardust/YGOMobile-cn-ko-en), this project copy these files from it.
 

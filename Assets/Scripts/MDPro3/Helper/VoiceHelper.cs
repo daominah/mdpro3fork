@@ -120,7 +120,7 @@ namespace MDPro3
             foreach (var id in ids)
             {
                 if(!Cid2Ydk.HaveCid(id))
-                    text += id + "\r\n";
+                    text += id + Program.STRING_LINE_BREAK;
             }
             File.WriteAllText("Data/Duel Links Ids.txt", text);
         }
@@ -763,7 +763,7 @@ namespace MDPro3
             {
                 for (int j = 0; j < data[i].num; j++)
                 {
-                    var path = voicePath + data[i].name[..5] + Program.slash + data[i].name + "_" + j + ".ogg";
+                    var path = voicePath + data[i].name[..5] + Program.STRING_SLASH + data[i].name + "_" + j + ".ogg";
                     returnValue[i].Add(path);
                 }
             }

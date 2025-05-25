@@ -294,7 +294,7 @@ namespace MDPro3.UI.ServantUI
 
         public void SavePlayerName(string nameValue)
         {
-            Config.Set(condition.ToString() + "PlayerName" + player, nameValue == string.Empty ? "@ui" : nameValue);
+            Config.Set(condition.ToString() + "PlayerName" + player, nameValue == string.Empty ? Config.EMPTY_STRING : nameValue);
         }
 
         public bool CanSwitchPlayer()
@@ -335,7 +335,7 @@ namespace MDPro3.UI.ServantUI
                 Detail.Hide();
                 NameTable.SetActive(true);
 
-                InputPlayerName.text = Config.Get(condition.ToString() + currentContent + player, "@ui");
+                InputPlayerName.text = Config.Get(condition.ToString() + currentContent + player, Config.EMPTY_STRING);
                 if (player == "0")
                     TextInputHint.text = InterString.Get("请输入您的昵称：");
                 else if (player == "1")
@@ -484,13 +484,13 @@ namespace MDPro3.UI.ServantUI
                         itemMono.index = itemCount++;
                         itemMono.itemID = Items.CODE_DIY;
                         itemMono.description = InterString.Get("我方头像：") +
-                                                                Program.diyPath + meString + Program.pngExpansion + "\n" +
+                                                                Program.PATH_DIY + meString + Program.EXPANSION_PNG + "\n" +
                                                                 InterString.Get("对方头像：") +
-                                                                Program.diyPath + opString + Program.pngExpansion + "\n" +
+                                                                Program.PATH_DIY + opString + Program.EXPANSION_PNG + "\n" +
                                                                 InterString.Get("我方队友头像：") +
-                                                                Program.diyPath + meTagString + Program.pngExpansion + "\n" +
+                                                                Program.PATH_DIY + meTagString + Program.EXPANSION_PNG + "\n" +
                                                                 InterString.Get("对方队友头像：") +
-                                                                Program.diyPath + opTagString + Program.pngExpansion;
+                                                                Program.PATH_DIY + opTagString + Program.EXPANSION_PNG;
                         itemMono.itemName = InterString.Get("自定义");
                         itemMono.path = Items.PATH_ICON_DIY;
                         itemMono.transform.SetParent(ScrollRect.content, false);

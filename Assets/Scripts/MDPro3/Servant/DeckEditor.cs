@@ -49,7 +49,7 @@ namespace MDPro3.Servant
                 case Condition.EditDeck:
                     returnServant = Program.instance.deckSelector;
                     DeckName = Config.GetConfigDeckName();
-                    Deck = new Deck(Program.deckPath + DeckName + Program.ydkExpansion);
+                    Deck = new Deck(Program.PATH_DECK + DeckName + Program.EXPANSION_YDK);
                     DeckIsFromLocal = true;
                     historyCards = new();
                     break;

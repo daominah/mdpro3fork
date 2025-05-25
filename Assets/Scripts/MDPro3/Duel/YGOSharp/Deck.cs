@@ -276,7 +276,7 @@ namespace MDPro3.Duel.YGOSharp
             var ydk = GetYDK();
             try
             {
-                var path = Program.deckPath + deckName + Program.ydkExpansion;
+                var path = Program.PATH_DECK + deckName + Program.EXPANSION_YDK;
                 File.WriteAllText(path, ydk, Encoding.UTF8);
                 File.SetLastWriteTime(path, saveTime);
 

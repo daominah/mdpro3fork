@@ -201,9 +201,9 @@ namespace MDPro3.Net
                 if (DeckNameExist(oldName))
                 {
                     newName += " - " + InterString.Get("复制");
-                    while (File.Exists(Program.deckPath + newName + Program.ydkExpansion))
+                    while (File.Exists(Program.PATH_DECK + newName + Program.EXPANSION_YDK))
                         newName += " - " + InterString.Get("复制");
-                    File.Delete(Program.deckPath + oldName + Program.ydkExpansion);
+                    File.Delete(Program.PATH_DECK + oldName + Program.EXPANSION_YDK);
                 }
 
                 body.decks[i] = new PostDeck

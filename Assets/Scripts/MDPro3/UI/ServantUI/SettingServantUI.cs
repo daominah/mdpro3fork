@@ -527,8 +527,10 @@ namespace MDPro3.UI.ServantUI
 
         #endregion
 
-        private void Awake()
+        public override void Initialize(Servant.Servant servant)
         {
+            base.Initialize(servant);
+
             InitializeVolume();
             InitializeScreenMode();
             InitializeResolution();
@@ -1355,7 +1357,7 @@ namespace MDPro3.UI.ServantUI
                 InterString.Get("卡图语言"),
                 string.Empty
             };
-            DirectoryInfo[] infos = new DirectoryInfo(Program.localesPath).GetDirectories();
+            DirectoryInfo[] infos = new DirectoryInfo(Program.PATH_LOCALES).GetDirectories();
             foreach (DirectoryInfo info in infos)
                 selections.Add(InterString.Get(info.Name));
             UIManager.ShowPopupSelection(selections, ChangeCardLanguage);
@@ -1391,7 +1393,7 @@ namespace MDPro3.UI.ServantUI
                 InterString.Get("语言"),
                 string.Empty
             };
-            DirectoryInfo[] infos = new DirectoryInfo(Program.localesPath).GetDirectories();
+            DirectoryInfo[] infos = new DirectoryInfo(Program.PATH_LOCALES).GetDirectories();
             foreach (DirectoryInfo info in infos)
                 selections.Add(InterString.Get(info.Name));
             UIManager.ShowPopupSelection(selections, OnLanguageSelection);
@@ -1446,9 +1448,9 @@ namespace MDPro3.UI.ServantUI
         }
         public void RefreshAppearanceModeText()
         {
-            ButtonDuelAppearance.SetModeText(Config.Get("DuelPlayerName0", "@ui"));
-            ButtonWatchAppearance.SetModeText(Config.Get("WatchPlayerName0", "@ui"));
-            ButtonReplayAppearance.SetModeText(Config.Get("ReplayPlayerName0", "@ui"));
+            ButtonDuelAppearance.SetModeText(Config.Get("DuelPlayerName0", Config.EMPTY_STRING));
+            ButtonWatchAppearance.SetModeText(Config.Get("WatchPlayerName0", Config.EMPTY_STRING));
+            ButtonReplayAppearance.SetModeText(Config.Get("ReplayPlayerName0", Config.EMPTY_STRING));
         }
 
         #endregion
@@ -2171,9 +2173,9 @@ namespace MDPro3.UI.ServantUI
             };
             UIManager.ShowPopupYesOrNo(selections, () =>
             {
-                if (!Directory.Exists(Program.altArtPath))
-                    Directory.CreateDirectory(Program.altArtPath);
-                foreach (var file in Directory.GetFiles(Program.altArtPath))
+                if (!Directory.Exists(Program.PATH_ALT_ART))
+                    Directory.CreateDirectory(Program.PATH_ALT_ART);
+                foreach (var file in Directory.GetFiles(Program.PATH_ALT_ART))
                     File.Delete(file);
             }, null);
         }
@@ -2219,9 +2221,9 @@ namespace MDPro3.UI.ServantUI
             UIManager.ShowPopupYesOrNo(selections, () =>
             {
                 ZipHelper.Dispose();
-                if (!Directory.Exists(Program.expansionsPath))
-                    Directory.CreateDirectory(Program.expansionsPath);
-                foreach (var file in Directory.GetFiles(Program.expansionsPath))
+                if (!Directory.Exists(Program.PATH_EXPANSIONS))
+                    Directory.CreateDirectory(Program.PATH_EXPANSIONS);
+                foreach (var file in Directory.GetFiles(Program.PATH_EXPANSIONS))
                     File.Delete(file);
                 Program.instance.InitializeForDataChange();
             }, null);

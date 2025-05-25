@@ -7,6 +7,11 @@ namespace MDPro3
 {
     public static class InterString
     {
+        public const string CONFIG_LINE_BREAK = "@n";
+        public const string SYSTEM_LINE_BREAK = Program.STRING_LINE_BREAK;
+        private const string SEPARATOR = "->";
+        private const string EMPTY_STRING = "@ui";
+
         private static readonly Dictionary<string, string> translations = new Dictionary<string, string>();
         private static readonly Dictionary<string, string> translationsForRender = new Dictionary<string, string>();
 
@@ -15,7 +20,7 @@ namespace MDPro3
         public static void Initialize()
         {
             translations.Clear();
-            path = Program.localesPath + Language.GetConfig() + "/translation.conf";
+            path = Program.PATH_LOCALES + Language.GetConfig() + "/translation.conf";
             if (!File.Exists(path))
                 File.Create(path).Close();
 
@@ -23,21 +28,21 @@ namespace MDPro3
             var lines = txtString.Replace("\r", "").Split('\n');
             for (var i = 0; i < lines.Length; i++)
             {
-                var mats = Regex.Split(lines[i], "->");
+                var mats = Regex.Split(lines[i], SEPARATOR);
                 if (mats.Length == 2)
                     if (!translations.ContainsKey(mats[0]))
                         translations.Add(mats[0], mats[1]);
             }
 
             translationsForRender.Clear();
-            pathForRender = Program.localesPath + Language.GetCardConfig() + "/translation.conf";
+            pathForRender = Program.PATH_LOCALES + Language.GetCardConfig() + "/translation.conf";
             if (!File.Exists(pathForRender))
                 File.Create(pathForRender).Close();
             txtString = File.ReadAllText(pathForRender);
             lines = txtString.Replace("\r", "").Split('\n');
             for (var i = 0; i < lines.Length; i++)
             {
-                var mats = Regex.Split(lines[i], "->");
+                var mats = Regex.Split(lines[i], SEPARATOR);
                 if (mats.Length == 2)
                     if (!translationsForRender.ContainsKey(mats[0]))
                         translationsForRender.Add(mats[0], mats[1]);
@@ -49,13 +54,15 @@ namespace MDPro3
             var returnValue = original;
             var targetTranslations = render ? translationsForRender : translations;
             if (targetTranslations.TryGetValue(original, out returnValue))
-                return returnValue.Replace("@n", "\r\n").Replace("@ui", "");
+                return returnValue.Replace(CONFIG_LINE_BREAK, Program.STRING_LINE_BREAK).Replace(EMPTY_STRING, string.Empty);
 
-            if (original != "")
+            if (original != string.Empty)
             {
+                UnityEngine.Debug.Log($"Undefined translation: {original}");
+
                 try
                 {
-                    File.AppendAllText(render ? pathForRender : path, original + "->" + original + "\r\n");
+                    File.AppendAllText(render ? pathForRender : path, original + SEPARATOR + original + Program.STRING_LINE_BREAK);
                 }
                 catch
                 {
@@ -63,7 +70,7 @@ namespace MDPro3
                 }
 
                 targetTranslations.Add(original, original);
-                return original.Replace("@n", "\r\n").Replace("@ui", "");
+                return original.Replace(CONFIG_LINE_BREAK, Program.STRING_LINE_BREAK).Replace(EMPTY_STRING, string.Empty);
             }
             return original;
         }

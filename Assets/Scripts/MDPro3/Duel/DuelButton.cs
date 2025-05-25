@@ -183,13 +183,18 @@ namespace MDPro3.UI
                         else
                             height = -150f;
                     }
+                    else if ((location & (uint)CardLocation.SpellZone) >0)
+                    {
+                        if (controller != 0)
+                            height = -150f;
+                    }
                 }
                 else
                 {
                     uiPoint = UIManager.WorldToScreenPoint(Program.instance.camera_.cameraMain, cookieCard.model.transform.position);
                     if (cookieCard != null)
                     {
-                        if((cookieCard.p.location & (uint)CardLocation.Hand) > 0)
+                        if ((cookieCard.p.location & (uint)CardLocation.Hand) > 0)
                         {
                             if(cookieCard.p.controller == 0)
                                 height = 250f;

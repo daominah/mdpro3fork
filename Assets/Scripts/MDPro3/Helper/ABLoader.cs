@@ -101,7 +101,7 @@ namespace MDPro3
             List<AssetBundle> bundles = new List<AssetBundle>();
 
             DirectoryInfo dir = new DirectoryInfo(Program.root + path);
-#if !UNITY_EDITOR && UNITY_STANDALONE_OSX
+#if !UNITY_EDITOR && (UNITY_STANDALONE_OSX || UNITY_STANDALONE_WIN)
             dir = new DirectoryInfo(Path.Combine(Application.dataPath, Program.root + path));
 #endif
 
@@ -153,7 +153,7 @@ namespace MDPro3
             List<AssetBundle> bundles = new List<AssetBundle>();
 
             DirectoryInfo dir = new DirectoryInfo(Program.root + path);
-#if UNITY_STANDALONE_WIN && !UNITY_EDITOR
+#if !UNITY_EDITOR && (UNITY_STANDALONE_OSX || UNITY_STANDALONE_WIN)
             dir = new DirectoryInfo(Path.Combine(Application.dataPath, Program.root + path));
 #endif
 
@@ -224,7 +224,7 @@ namespace MDPro3
             }
 
             var folder = Program.root + "MasterDuel/Protector/" + code;
-#if UNITY_STANDALONE_WIN && !UNITY_EDITOR
+#if !UNITY_EDITOR && (UNITY_STANDALONE_OSX || UNITY_STANDALONE_WIN)
             folder = Path.Combine(Application.dataPath, folder);
 #endif
             if (!Directory.Exists(folder))

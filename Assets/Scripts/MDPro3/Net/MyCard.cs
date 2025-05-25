@@ -128,7 +128,7 @@ namespace MDPro3.Net
             {
                 if (cachedAvatarAddress.TryGetValue(userName, out avatarName))
                 {
-                    fullPath = avatarSavePath + avatarName + Program.pngExpansion;
+                    fullPath = avatarSavePath + avatarName + Program.EXPANSION_PNG;
                     cached = true;
                 }
             }
@@ -178,7 +178,7 @@ namespace MDPro3.Net
                 if(downloadImage != null)
                 {
                     var fileName = Path.GetFileNameWithoutExtension(avatarAddress);
-                    fullPath = avatarSavePath + fileName + Program.pngExpansion;
+                    fullPath = avatarSavePath + fileName + Program.EXPANSION_PNG;
                     if(downloadImage.width > avatarSize)
                     {
                         returnValue = TextureManager.ResizeTexture2D(downloadImage, avatarSize, avatarSize);

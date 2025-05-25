@@ -2350,7 +2350,7 @@ GameObject:
   - component: {fileID: 8818503313617080528}
   - component: {fileID: 2422540708182888763}
   m_Layer: 5
-  m_Name: '#Text_ButtonLTitle'
+  m_Name: Text_ButtonLTitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2788,7 +2788,7 @@ GameObject:
   - component: {fileID: 4029696359855252284}
   - component: {fileID: 4874159283528784942}
   m_Layer: 5
-  m_Name: '#Text_ButtonLTitle'
+  m_Name: Text_ButtonLTitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4475,7 +4475,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25.8
+  m_fontSize: 22.5
   m_fontSizeBase: 0
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -15366,7 +15366,7 @@ GameObject:
   - component: {fileID: 1578552415754960153}
   - component: {fileID: 6901448464442085732}
   m_Layer: 5
-  m_Name: '#Text_ButtonLTitle'
+  m_Name: Text_ButtonLTitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17402,7 +17402,7 @@ GameObject:
   - component: {fileID: 4718129468159042679}
   - component: {fileID: 1736472179740739454}
   m_Layer: 5
-  m_Name: '#Text_ButtonLTitle'
+  m_Name: Text_ButtonLTitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

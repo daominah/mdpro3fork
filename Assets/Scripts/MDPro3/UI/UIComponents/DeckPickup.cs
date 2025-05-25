@@ -76,8 +76,8 @@ namespace MDPro3.UI
         {
             var load = Program.items.LoadDeckCaseIconAsync(deckCase, "_Open_L_HD");
             while (!load.IsCompleted)
-                await TaskUtility.WaitOneFrame();
-            if(gameObject != null)
+                await TaskUtility.WaitOneFrame(gameObject);
+            if (load.Result != null)
                 DeckCase.sprite = load.Result;
         }
 
@@ -89,7 +89,7 @@ namespace MDPro3.UI
                 result += InterString.Get("未设置");
             else
                 result += card.Name;
-            result += "\r\n";
+            result += Program.STRING_LINE_BREAK;
             return result;
         }
     }

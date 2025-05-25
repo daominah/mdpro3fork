@@ -66,7 +66,7 @@ namespace MDPro3.Servant
                 Destroy(mate.gameObject);
             AudioManager.ResetSESource();
             AudioManager.PlaySE("SE_MENU_CANCEL");
-            AudioManager.PlayBGM("BGM_MENU_01");
+            AudioManager.PlayBGM(AudioManager.BGM_MENU_MAIN);
             UserInput.SetMoveRepeatRate(0.1f);
         }
 
@@ -249,7 +249,7 @@ namespace MDPro3.Servant
             handle.Completed += (result) =>
             {
                 var content = handle.Result.text;
-                var lines = Regex.Split(content, "\r\n");
+                var lines = Regex.Split(content, Program.STRING_LINE_BREAK);
                 for(int i = 1; i < lines.Length; i++)
                 {
                     var splits = lines[i].Split(',');

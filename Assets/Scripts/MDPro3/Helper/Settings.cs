@@ -85,7 +85,7 @@ namespace MDPro3
             MDPro3VersionUrl = "https://cdn02.moecube.com:444/mdpro3-data/Version.txt";
             CardRenderPassword = true;
             SavedCardSize = new int[] { 704, 1024 };
-            SavedCardFormat = Program.jpgExpansion;
+            SavedCardFormat = Program.EXPANSION_JPG;
             BatchMove = true;
             DiySymbol = "DIY by";
         }

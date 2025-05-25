@@ -139,7 +139,7 @@ namespace MDPro3.Servant
             RoomServant.FromSolo = false;
             RoomServant.FromLocalHost = true;
             YgoServer.StartServer(args);
-            TcpHelper.LinkStart("127.0.0.1", Config.Get("DuelPlayerName0", "@ui"), port.ToString(), string.Empty, true, null);
+            TcpHelper.LinkStart("127.0.0.1", Config.Get("DuelPlayerName0", Config.EMPTY_STRING), port.ToString(), string.Empty, true, null);
         }
 
         private string GetPoolCodeByName(string pool)
@@ -259,7 +259,7 @@ namespace MDPro3.Servant
                 yield break;
             }
 
-            var deckFiles = Directory.GetFiles(Program.deckPath, "*.ydk");
+            var deckFiles = Directory.GetFiles(Program.PATH_DECK, "*.ydk");
             var decks = new List<Deck>();
             foreach (var deckPath in deckFiles)
                 decks.Add(new Deck(deckPath));
@@ -329,10 +329,10 @@ namespace MDPro3.Servant
                 Debug.LogFormat("卡组[{0}]需要更新。", deck.Key);
 
                 var od = OnlineDeck.GetByID(deck.Value.deckId);
-                var oldPath = Program.deckPath + deck.Key + Program.ydkExpansion;
+                var oldPath = Program.PATH_DECK + deck.Key + Program.EXPANSION_YDK;
                 if (oldPath != od.deckName)
                     File.Delete(oldPath);
-                var newPath = Program.deckPath + od.deckName + Program.ydkExpansion;
+                var newPath = Program.PATH_DECK + od.deckName + Program.EXPANSION_YDK;
                 File.WriteAllText(newPath, od.deckYdk);
                 File.SetLastWriteTime(newPath, od.GetUpdateTime());
             }

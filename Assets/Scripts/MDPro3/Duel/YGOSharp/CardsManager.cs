@@ -25,9 +25,9 @@ namespace MDPro3.Duel.YGOSharp
             nullString = string.Empty;
 ;
             string language = Language.GetConfig();
-            string databaseFullPath = Program.localesPath + language + "/cards.cdb";
+            string databaseFullPath = Program.PATH_LOCALES + language + "/cards.cdb";
             if (!File.Exists(databaseFullPath))
-                databaseFullPath = Program.localesPath + "zh-CN/cards.cdb";
+                databaseFullPath = Program.PATH_LOCALES + "zh-CN/cards.cdb";
             _cards.Clear();
             LoadCDB(databaseFullPath);
             if (Config.Get("Expansions", "1") == "1")
@@ -59,9 +59,9 @@ namespace MDPro3.Duel.YGOSharp
 
             _cardsForRender.Clear();
             var cardLanguage = Language.GetCardConfig();
-            databaseFullPath = Program.localesPath + cardLanguage + "/cards.cdb";
+            databaseFullPath = Program.PATH_LOCALES + cardLanguage + "/cards.cdb";
             if (!File.Exists(databaseFullPath))
-                databaseFullPath = Program.localesPath + "zh-CN/cards.cdb";
+                databaseFullPath = Program.PATH_LOCALES + "zh-CN/cards.cdb";
             LoadCDB(databaseFullPath, true);
             if (Config.Get("Expansions", "1") == "1")
             {
@@ -572,11 +572,11 @@ namespace MDPro3.Duel.YGOSharp
 
             string result = "";
             foreach(string s in setNames)
-                result += s + "\r\n";
+                result += s + Program.STRING_LINE_BREAK;
 
             result = "";
             foreach (string s in names)
-                result += s + "\r\n";
+                result += s + Program.STRING_LINE_BREAK;
 
             List<int> setCodes = new List<int>();
             foreach (var s in setNames)
@@ -2032,7 +2032,7 @@ namespace MDPro3.Duel.YGOSharp
                 var fileInfos = new DirectoryInfo(path).GetFiles();
                 foreach (var file in fileInfos)
                     if (file.Name.ToLower().EndsWith(".db"))
-                        LoadDataBase(path + Program.slash + file.Name);
+                        LoadDataBase(path + Program.STRING_SLASH + file.Name);
                 InitializeSec();
             }
         }

@@ -68,7 +68,7 @@ namespace MDPro3.Servant
         {
             percy?.Dispose();
             percy = new PercyOCG();
-            percy.StartPuzzle(puzzle + ".lua");
+            percy.StartPuzzle(puzzle + Program.EXPANSION_LUA);
         }
 
         public void SelectLastPuzzleItem()

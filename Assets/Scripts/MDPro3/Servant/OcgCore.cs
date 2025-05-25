@@ -561,7 +561,7 @@ namespace MDPro3.Servant
             UIManager.UIBlackOut(TransitionTime);
             yield return new WaitForSeconds(TransitionTime);
             UIManager.ShowFPSRight();
-            AudioManager.PlayBGM("BGM_MENU_01");
+            AudioManager.PlayBGM(AudioManager.BGM_MENU_MAIN);
         }
 
 #if UNITY_STANDALONE_OSX || UNITY_IOS
@@ -581,8 +581,8 @@ namespace MDPro3.Servant
             deck = null;
             var deckName = Config.GetConfigDeckName();
 
-            if (condition == Condition.Duel && inAi == false && File.Exists(Program.deckPath + deckName + Program.ydkExpansion))
-                deck = new Deck(Program.deckPath + deckName + Program.ydkExpansion);
+            if (condition == Condition.Duel && inAi == false && File.Exists(Program.PATH_DECK + deckName + Program.EXPANSION_YDK))
+                deck = new Deck(Program.PATH_DECK + deckName + Program.EXPANSION_YDK);
             UIManager.UIBlackIn(TransitionTime);
             yield return new WaitForSeconds(TransitionTime);
             while (!Appearance.loaded)
@@ -2329,14 +2329,14 @@ namespace MDPro3.Servant
 
                     isTag = !(name_0_tag == "---" && name_1_tag == "---" && name_0 == name_0_c && name_1 == name_1_c);
 
-                    if (Config.Get("ReplayPlayerName0", "@ui").Length > 0)
-                        name_0 = Config.Get("ReplayPlayerName0", "@ui");
-                    if (Config.Get("ReplayPlayerName1", "@ui").Length > 0)
-                        name_1 = Config.Get("ReplayPlayerName1", "@ui");
-                    if (Config.Get("ReplayPlayerName0Tag", "@ui").Length > 0)
-                        name_0_tag = Config.Get("ReplayPlayerName0Tag", "@ui");
-                    if (Config.Get("ReplayPlayerName1Tag", "@ui").Length > 0)
-                        name_1_tag = Config.Get("ReplayPlayerName1Tag", "@ui");
+                    if (Config.Get("ReplayPlayerName0", Config.EMPTY_STRING).Length > 0)
+                        name_0 = Config.Get("ReplayPlayerName0", Config.EMPTY_STRING);
+                    if (Config.Get("ReplayPlayerName1", Config.EMPTY_STRING).Length > 0)
+                        name_1 = Config.Get("ReplayPlayerName1", Config.EMPTY_STRING);
+                    if (Config.Get("ReplayPlayerName0Tag", Config.EMPTY_STRING).Length > 0)
+                        name_0_tag = Config.Get("ReplayPlayerName0Tag", Config.EMPTY_STRING);
+                    if (Config.Get("ReplayPlayerName1Tag", Config.EMPTY_STRING).Length > 0)
+                        name_1_tag = Config.Get("ReplayPlayerName1Tag", Config.EMPTY_STRING);
                     if (isTag)
                     {
                         if (isFirst)
@@ -2381,7 +2381,7 @@ namespace MDPro3.Servant
                     length = r.ReadUInt16();
                     buffer = r.ReadBytes(length + 1);
                     n = Encoding.UTF8.GetString(buffer, 0, buffer.Length);
-                    name_0 = Config.Get("DuelPlayerName0", "@ui");
+                    name_0 = Config.Get("DuelPlayerName0", Config.EMPTY_STRING);
                     name_0_c = name_0;
                     name_1 = n;
                     name_1_c = name_1;
@@ -6891,7 +6891,7 @@ namespace MDPro3.Servant
 
             if (currentMessage == GameMessage.SelectCard
                 || currentMessage == GameMessage.SelectCounter)
-                GetUI<OcgCoreUI>().SetHint(fieldHint + ": " + 0 + Program.slash + fieldMax);
+                GetUI<OcgCoreUI>().SetHint(fieldHint + ": " + 0 + Program.STRING_SLASH + fieldMax);
             else if (currentMessage == GameMessage.SelectSum)
             {
                 if (!ES_overFlow)
@@ -6902,7 +6902,7 @@ namespace MDPro3.Servant
                                     place.CardInThisZoneSelectable();
                                 else
                                     place.CardInThisZoneUnselectable();
-                GetUI<OcgCoreUI>().SetHint(fieldHint + ": " + GetSelectLevelSum(cardsMustBeSelected)[0] + Program.slash + ES_level);
+                GetUI<OcgCoreUI>().SetHint(fieldHint + ": " + GetSelectLevelSum(cardsMustBeSelected)[0] + Program.STRING_SLASH + ES_level);
             }
             else
             {
@@ -6948,13 +6948,13 @@ namespace MDPro3.Servant
                     }
                 }
                 RefreshButton();
-                GetUI<OcgCoreUI>().SetHint(fieldHint + ": " + GetSelectLevelSum(selected)[0] + Program.slash + ES_level);
+                GetUI<OcgCoreUI>().SetHint(fieldHint + ": " + GetSelectLevelSum(selected)[0] + Program.STRING_SLASH + ES_level);
             }
             else if (currentMessage == GameMessage.SelectCounter)
             {
                 fieldCounterCount++;
                 card.counterSelected++;
-                GetUI<OcgCoreUI>().SetHint(fieldHint + ": " + fieldCounterCount + Program.slash + fieldMax);
+                GetUI<OcgCoreUI>().SetHint(fieldHint + ": " + fieldCounterCount + Program.STRING_SLASH + fieldMax);
                 if (fieldCounterCount == ES_min)
                 {
                     FieldSelectedSend();
@@ -6999,7 +6999,7 @@ namespace MDPro3.Servant
                     RefreshButton();
                 }
                 if (currentMessage == GameMessage.SelectCard)
-                    GetUI<OcgCoreUI>().SetHint(fieldHint + ": " + selected.Count + Program.slash + fieldMax);
+                    GetUI<OcgCoreUI>().SetHint(fieldHint + ": " + selected.Count + Program.STRING_SLASH + fieldMax);
             }
         }
 
@@ -7072,7 +7072,7 @@ namespace MDPro3.Servant
                 foreach (var card in cardsInSelection)
                     card.counterSelected = 0;
                 fieldCounterCount = 0;
-                GetUI<OcgCoreUI>().SetHint(fieldHint + ": " + 0 + Program.slash + fieldMax);
+                GetUI<OcgCoreUI>().SetHint(fieldHint + ": " + 0 + Program.STRING_SLASH + fieldMax);
                 foreach (var place in places)
                     if (place.cardSelecting)
                         place.CardInThisZoneSelectable();

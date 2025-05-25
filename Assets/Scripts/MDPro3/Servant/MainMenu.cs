@@ -116,7 +116,7 @@ namespace MDPro3.Servant
             else
                 MessageManager.Cast(InterString.Get("检查更新失败！"));
 
-            var filePath = Path.Combine(Program.expansionsPath, Path.GetFileName(Settings.Data.PrereleasePackUrl));
+            var filePath = Path.Combine(Program.PATH_EXPANSIONS, Path.GetFileName(Settings.Data.PrereleasePackUrl));
             if (!File.Exists(filePath))
             {
                 Config.Set("Prerelease", "0");

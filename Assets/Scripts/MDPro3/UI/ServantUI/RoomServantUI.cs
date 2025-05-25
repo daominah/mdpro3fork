@@ -127,7 +127,7 @@ namespace MDPro3.UI.ServantUI
         public void Realize()
         {
             var roomInfo = string.Empty;
-            var rn = "\r\n";
+            var rn = Program.STRING_LINE_BREAK;
             if (RoomServant.FromLocalHost)
             {
                 foreach (var ip in Tools.GetLocalIPv4())
@@ -233,7 +233,7 @@ namespace MDPro3.UI.ServantUI
                 TcpHelper.CtosMessage_HsNotReady();
             else
             {
-                var deckPath = Program.deckPath + Config.GetConfigDeckName() + Program.ydkExpansion;
+                var deckPath = Program.PATH_DECK + Config.GetConfigDeckName() + Program.EXPANSION_YDK;
                 if (File.Exists(deckPath))
                 {
                     TcpHelper.CtosMessage_UpdateDeck(new Deck(deckPath));

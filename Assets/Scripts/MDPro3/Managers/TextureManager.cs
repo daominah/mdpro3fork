@@ -85,7 +85,7 @@ namespace MDPro3
 #elif UNITY_STANDALONE_LINUX || UNITY_STANDALONE_OSX
             fullPath = Path.Combine("file://" + Environment.CurrentDirectory, path);
 #else
-            fullPath = Environment.CurrentDirectory + Program.slash + path;
+            fullPath = Environment.CurrentDirectory + Program.STRING_SLASH + path;
 #endif
             using var request = UnityWebRequestTexture.GetTexture(fullPath);
             var send = request.SendWebRequest();
@@ -191,9 +191,9 @@ namespace MDPro3
                 yield return returenValue;
                 yield break;
             }
-            if (!Directory.Exists(Program.closeupPath))
-                Directory.CreateDirectory(Program.closeupPath);
-            var path = Program.closeupPath + code + Program.pngExpansion;
+            if (!Directory.Exists(Program.PATH_CLOSEUP))
+                Directory.CreateDirectory(Program.PATH_CLOSEUP);
+            var path = Program.PATH_CLOSEUP + code + Program.EXPANSION_PNG;
             if (!File.Exists(path))
                 yield break;
 

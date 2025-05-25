@@ -99,9 +99,9 @@ namespace MDPro3
             if(initialized) 
                 return;
 
-            var path = Program.dataPath + "DuelLinks_NPC_NAME.json";
+            var path = Program.PATH_DATA + "DuelLinks_NPC_NAME.json";
             names = JsonConvert.DeserializeObject<NPC_Names>(File.ReadAllText(path));
-            path = Program.dataPath + "DuelLinks_Profile.json";
+            path = Program.PATH_DATA + "DuelLinks_Profile.json";
             profiles = JsonConvert.DeserializeObject<NPC_Profiles>(File.ReadAllText(path));
             initialized = true;
             instance = this;

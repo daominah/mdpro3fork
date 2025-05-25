@@ -83,7 +83,7 @@ namespace MDPro3.UI.ServantUI
             }
             foreach (var mate in Program.items.mates)
             {
-                if ((!string.IsNullOrEmpty(mate.name) && mate.name.Contains(search)))
+                if (!string.IsNullOrEmpty(mate.name) && mate.name.Contains(search) && !mate.notReady)
                 {
                     string[] task = new string[] { mate.id.ToString(), mate.name };
                     tasks.Add(task);

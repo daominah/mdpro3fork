@@ -80,7 +80,7 @@ namespace MDPro3.Duel.YGOSharp
             return r;
         }
 
-        public void  CloneTo(Card r)
+        public void CloneTo(Card r)
         {
             r.Id = Id;
             r.Ot = Ot;
@@ -237,12 +237,17 @@ namespace MDPro3.Duel.YGOSharp
             var lines = Desc.Replace("\r", "").Split('\n');
             var language = render ? Language.GetCardConfig() : Language.GetConfig();
 
+            // Chinese Japanese Korean
             int beforePendulum = 1;
             int splitLines = 1;
             string symbol = "【";
             int monsterStart = 0;
 
-            if (language == Language.English)
+            if (language == Language.English
+                || language == Language.Portuguese
+                || language == Language.French
+                || language == Language.German
+                || language == Language.Italian)
             {
                 beforePendulum = 2;
                 splitLines = 2;
@@ -272,14 +277,14 @@ namespace MDPro3.Duel.YGOSharp
                     if (monsterStart - i == splitLines)
                         returnValue[0] += lines[i];
                     else
-                        returnValue[0] += lines[i] + "\r\n";
+                        returnValue[0] += lines[i] + Program.STRING_LINE_BREAK;
                 }
                 else if (i > monsterStart)
                 {
                     if (i == lines.Length - 1)
                         returnValue[1] += lines[i];
                     else
-                        returnValue[1] += lines[i] + "\r\n";
+                        returnValue[1] += lines[i] + Program.STRING_LINE_BREAK;
                 }
             }
             if (language == Language.Spanish)
@@ -293,7 +298,7 @@ namespace MDPro3.Duel.YGOSharp
             if (returnValue.Length > 0)
             {
                 returnValue = "<color=#FFF000>" +
-                    StringHelper.GetUnsafe(1329) + returnValue + "</color>" + "\r\n";
+                    StringHelper.GetUnsafe(1329) + returnValue + "</color>" + Program.STRING_LINE_BREAK;
             }
             return returnValue;
         }
@@ -310,5 +315,44 @@ namespace MDPro3.Duel.YGOSharp
             else
                 return Alias;
         }
+
+        public string GetSpellTrapType()
+        {
+            if (HasType(CardType.Monster))
+                return string.Empty;
+            else if (HasType(CardType.Spell))
+            {
+                if(HasType(CardType.Field))
+                    return InterString.Get("场地魔法");
+                else if (HasType(CardType.QuickPlay))
+                    return InterString.Get("速攻魔法");
+                else if (HasType(CardType.Continuous))
+                    return InterString.Get("永续魔法");
+                else if (HasType(CardType.Equip))
+                    return InterString.Get("装备魔法");
+                else if (HasType(CardType.Ritual))
+                    return InterString.Get("仪式魔法");
+                else
+                    return InterString.Get("通常魔法");
+            }
+            else // Trap
+            {
+                if(HasType(CardType.Continuous))
+                    return InterString.Get("永续陷阱");
+                else if (HasType(CardType.Counter))
+                    return InterString.Get("反击陷阱");
+                else
+                    return InterString.Get("通常陷阱");
+            }
+        }
+
+        public string GetCardInfoType()
+        {
+            if (HasType(CardType.Monster))
+                return string.Empty;
+            else
+                return $"{(Language.CardNeedSmallBracket() ? "[" : "【" )}{GetSpellTrapType()}{(Language.CardNeedSmallBracket() ? "]" : "】")}";
+        }
+
     }
 }

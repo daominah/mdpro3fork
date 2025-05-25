@@ -39,6 +39,7 @@ public class AssetBundleRobber : MonoBehaviour
 
     private bool fullCopy;
     private readonly int threads = 32;
+    private AssetType copyAssetType = AssetType.All;
 
     public struct AssetbundleInfo
     {
@@ -67,14 +68,16 @@ public class AssetBundleRobber : MonoBehaviour
         pathAB = PATH_AB_WINDOWS;
         pathStore = PATH_STORE_WINDOWS;
 
-        pathAB = PATH_AB_ANDROID;
-        pathStore = PATH_STORE_ANDROID;
+        //pathAB = PATH_AB_ANDROID;
+        //pathStore = PATH_STORE_ANDROID;
 
         //pathAB = PATH_AB_IOS;
         //pathStore = PATH_STORE_IOS;
 
         fullCopy = true;
         //fullCopy = false;
+
+        copyAssetType = AssetType.BGM;
 
         Initialize();
 
@@ -296,6 +299,10 @@ public class AssetBundleRobber : MonoBehaviour
         {
             currentFileCount++;
             var type = GetAssetType(file.name);
+
+            if(copyAssetType != AssetType.All)
+                if(type != copyAssetType)
+                    continue;
 
             if (!pathStore.Contains("Windows") && AssetIsWindowsOnly(type))
                 continue;
@@ -945,6 +952,7 @@ public class AssetBundleRobber : MonoBehaviour
     public enum AssetType
     {
         None,
+        All,
         AvatarStand,
         AvatarStandIcon,
         AvatarStandIconHD,
@@ -1010,6 +1018,11 @@ public class AssetBundleRobber : MonoBehaviour
             AssetType.ProfileIconL => true,
             AssetType.ProfileIconLHD => true,
             AssetType.WallpaperIcon => true,
+            AssetType.BGM => true,
+            AssetType.SE_DUEL => true,
+            AssetType.SE_FIELD => true,
+            AssetType.SE_MATE => true,
+            AssetType.SE_SYS => true,
             AssetType.XML => true,
             _ => false,
         };

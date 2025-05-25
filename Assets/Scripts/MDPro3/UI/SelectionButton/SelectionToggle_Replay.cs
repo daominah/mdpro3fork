@@ -80,15 +80,15 @@ namespace MDPro3.UI
                 bool tag = false;
                 if ((yrp.opt & 0x20) > 0)
                 {
-                    description += StringHelper.GetUnsafe(1246) + "\r\n";//双打模式
+                    description += StringHelper.GetUnsafe(1246) + Program.STRING_LINE_BREAK;//双打模式
                     tag = true;
                 }
-                description += StringHelper.GetUnsafe(1259 + (yrp.opt >> 16)) + "\r\n";//规则
-                description += StringHelper.GetUnsafe(1231) + yrp.StartLp + "\r\n";//初始基本分：
-                description += StringHelper.GetUnsafe(1232) + yrp.StartHand + "\r\n";//初始手卡数：
-                description += StringHelper.GetUnsafe(1233) + yrp.DrawCount + "\r\n";//每回合抽卡：
+                description += StringHelper.GetUnsafe(1259 + (yrp.opt >> 16)) + Program.STRING_LINE_BREAK;//规则
+                description += StringHelper.GetUnsafe(1231) + yrp.StartLp + Program.STRING_LINE_BREAK;//初始基本分：
+                description += StringHelper.GetUnsafe(1232) + yrp.StartHand + Program.STRING_LINE_BREAK;//初始手卡数：
+                description += StringHelper.GetUnsafe(1233) + yrp.DrawCount + Program.STRING_LINE_BREAK;//每回合抽卡：
                 if ((yrp.opt & 0x10) > 0)
-                    description += StringHelper.GetUnsafe(1230) + "\r\n";
+                    description += StringHelper.GetUnsafe(1230) + Program.STRING_LINE_BREAK;
 
                 ui.ButtonPlayer0.SetButtonText(yrp.playerData[0].name);
                 ui.ButtonPlayer1.SetButtonText(yrp.playerData[1].name);

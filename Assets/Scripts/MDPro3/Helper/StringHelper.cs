@@ -34,13 +34,13 @@ namespace MDPro3
         public static void Initialize()
         {
             var language = Language.GetConfig();
-            var path = Program.localesPath + language + "/strings.conf";
+            var path = Program.PATH_LOCALES + language + "/strings.conf";
             var text = File.ReadAllText(path);
             if (Config.GetBool("Expansions", true))
             {
                 foreach (var conf in Directory.GetFiles("Expansions", "*.conf"))
                     if(!conf.ToLower().EndsWith("lflist.conf"))
-                        text += "\r\n" + File.ReadAllText(conf);
+                        text += Program.STRING_LINE_BREAK + File.ReadAllText(conf);
                 foreach (var zip in ZipHelper.zips)
                 {
                     if (zip.Name.ToLower().EndsWith("script.zip"))
@@ -53,19 +53,19 @@ namespace MDPro3
                             var ms = new MemoryStream();
                             var e = zip[file];
                             e.Extract(ms);
-                            text += "\r\n" + Encoding.UTF8.GetString(ms.ToArray());
+                            text += Program.STRING_LINE_BREAK + Encoding.UTF8.GetString(ms.ToArray());
                         }
                     }
                 }
             }
 
             language = Language.GetCardConfig();
-            path = Program.localesPath + language + "/strings.conf";
+            path = Program.PATH_LOCALES + language + "/strings.conf";
             string textForRender = File.ReadAllText(path);
             if (Config.Get("Expansions", "1") == "1")
             {
                 foreach (var conf in Directory.GetFiles("Expansions", "*.conf"))
-                    textForRender += "\r\n" + File.ReadAllText(conf);
+                    textForRender += Program.STRING_LINE_BREAK + File.ReadAllText(conf);
                 foreach (var zip in ZipHelper.zips)
                 {
                     if (zip.Name.ToLower().EndsWith("script.zip"))
@@ -77,7 +77,7 @@ namespace MDPro3
                             var ms = new MemoryStream();
                             var e = zip[file];
                             e.Extract(ms);
-                            textForRender += "\r\n" + Encoding.UTF8.GetString(ms.ToArray());
+                            textForRender += Program.STRING_LINE_BREAK + Encoding.UTF8.GetString(ms.ToArray());
                         }
                     }
                 }
@@ -237,7 +237,7 @@ namespace MDPro3
             for (int i = 0; i < 7; i++)
                 if ((attribute & (1u << i)) > 0)
                 {
-                    if (passFirst) r += Program.slash;
+                    if (passFirst) r += Program.STRING_SLASH;
                     r += GetUnsafe(1010 + i);
                     passFirst = true;
                 }
@@ -251,7 +251,7 @@ namespace MDPro3
             for (var i = 0; i < 26; i++)
                 if ((race & (1 << i)) > 0)
                 {
-                    if (passFirst) r += Program.slash;
+                    if (passFirst) r += Program.STRING_SLASH;
                     r += GetUnsafe(1020 + i, render);
                     passFirst = true;
                 }
@@ -321,7 +321,7 @@ namespace MDPro3
             for (var i = 0; i < 3; i++)
                 if ((a & (1 << i)) > 0)
                 {
-                    if (passFirst) r += Program.slash;
+                    if (passFirst) r += Program.STRING_SLASH;
                     r += GetUnsafe(1050 + i, render);
                     passFirst = true;
                 }
@@ -337,14 +337,14 @@ namespace MDPro3
                 for (var i = 4; i < 27; i++)
                     if (((a & 0x68020C0) & (1 << i)) > 0)
                     {
-                        start += Program.slash + GetUnsafe(1050 + i, render);
+                        start += Program.STRING_SLASH + GetUnsafe(1050 + i, render);
                         break;
                     }
                 a -= a & 0x68020C0;
             }
             if ((a & (long)CardType.Pendulum) > 0)
             {
-                start += Program.slash + GetUnsafe(1074, render);
+                start += Program.STRING_SLASH + GetUnsafe(1074, render);
                 a -= (long)CardType.Pendulum;
             }
             if ((a & 0x30) > 0)
@@ -352,14 +352,14 @@ namespace MDPro3
                 for (var i = 4; i < 6; i++)
                     if ((a & (1 << i)) > 0)
                     {
-                        end += Program.slash + GetUnsafe(1050 + i, render);
+                        end += Program.STRING_SLASH + GetUnsafe(1050 + i, render);
                         break;
                     }
                 a -= a & 0x30;
             }
             for (var i = 4; i < 27; i++)
                 if ((a & (1 << i)) > 0)
-                    start += Program.slash + GetUnsafe(1050 + i, render);
+                    start += Program.STRING_SLASH + GetUnsafe(1050 + i, render);
             var returnValue = start + end;
             if (returnValue == string.Empty)
                 returnValue = GetUnsafe(1054, render);
@@ -433,9 +433,9 @@ namespace MDPro3
                 if (CardDescription.WhetherCardIsMonster(data))
                 {
                     if (data.Race != origin.Race)
-                        re = bracketLeft + "<color=#FD3E08>" + InterString.Get("[?]族", Race(data.Race)) + "</color>" + Program.slash + SecondType(data.Type) + bracketRight;
+                        re = bracketLeft + "<color=#FD3E08>" + InterString.Get("[?]族", Race(data.Race)) + "</color>" + Program.STRING_SLASH + SecondType(data.Type) + bracketRight;
                     else
-                        re = bracketLeft + InterString.Get("[?]族", Race(data.Race, render), render) + Program.slash + SecondType(data.Type, render) + bracketRight;
+                        re = bracketLeft + InterString.Get("[?]族", Race(data.Race, render), render) + Program.STRING_SLASH + SecondType(data.Type, render) + bracketRight;
                 }
                 else
                 {
@@ -455,7 +455,7 @@ namespace MDPro3
                         var secondType = SecondType(data.Type, render);
                         if (secondType != GetUnsafe(1054, render))
                         {
-                            re += Program.slash + secondType;
+                            re += Program.STRING_SLASH + secondType;
 
                             if (data.HasType(CardType.Equip))
                                 re += "<Sprite=0>";

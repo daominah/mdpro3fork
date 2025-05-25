@@ -29,7 +29,7 @@ namespace MDPro3.UI
         public void Show(string log)
         {
             lastMessage = text.text;
-            text.text = lastMessage + "\r\n" + log;
+            text.text = lastMessage + Program.STRING_LINE_BREAK + log;
 
             CG.alpha = 1f;
             cg.blocksRaycasts = true;

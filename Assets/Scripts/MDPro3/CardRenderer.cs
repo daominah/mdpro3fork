@@ -349,9 +349,9 @@ namespace MDPro3
             cardAttributeRD.sprite = CardDescription.GetCardAttribute(data, true).sprite;
             cardTypeRD.text = StringHelper.GetType(data, true, true);
             if (Language.CardUseLatin())
-                cardTypeRD.text = cardTypeRD.text.Replace(Program.slash, smallSlash);
+                cardTypeRD.text = cardTypeRD.text.Replace(Program.STRING_SLASH, smallSlash);
             else
-                cardTypeRD.text = cardTypeRD.text.Replace(Program.slash, bigSlash);
+                cardTypeRD.text = cardTypeRD.text.Replace(Program.STRING_SLASH, bigSlash);
 
             if (data.HasType(CardType.Pendulum))
             {
@@ -561,11 +561,11 @@ namespace MDPro3
                     cardArtPendulum.texture = art;
                 }
                 var pendulumDescription = CardDescription.GetCardDescriptionSplit(data.Desc, true);
-                cardDescription.text = StringHelper.GetType(data, true).Replace(Program.slash, Language.CardUseLatin() ? smallSlash : bigSlash);
+                cardDescription.text = StringHelper.GetType(data, true).Replace(Program.STRING_SLASH, Language.CardUseLatin() ? smallSlash : bigSlash);
                 cardDescriptionPendulum.text = TextForRender(pendulumDescription[0]);
 
                 var authorSplit = GetAuthorFromDescription(pendulumDescription[1]);
-                cardDescription.text += "\r\n" + TextForRender(authorSplit[0]);
+                cardDescription.text += Program.STRING_LINE_BREAK + TextForRender(authorSplit[0]);
                 cardAuther.text = authorSplit[1];
 
                 lScale.text = data.LScale.ToString();
@@ -589,7 +589,8 @@ namespace MDPro3
                 cardArt.texture = art;
                 var description = "";
                 if (data.HasType(CardType.Monster))
-                    description = StringHelper.GetType(data, true).Replace(Program.slash,Language.CardUseLatin() ? smallSlash : bigSlash) + "\r\n";
+                    description = StringHelper.GetType(data, true)
+                        .Replace(Program.STRING_SLASH,Language.CardUseLatin() ? smallSlash : bigSlash) + Program.STRING_LINE_BREAK;
 
                 var authorSplit = GetAuthorFromDescription(data.Desc);
                 description += TextForRender(authorSplit[0]);
@@ -760,8 +761,8 @@ namespace MDPro3
                 description = description.Replace("\r\n●", "●●●");
                 description = description.Replace("\r", string.Empty);
                 description = description.Replace("\n", string.Empty);
-                description = description.Replace("\f\f\f", "\r\n");
-                description = description.Replace("●●●", "\r\n●");
+                description = description.Replace("\f\f\f", Program.STRING_LINE_BREAK);
+                description = description.Replace("●●●", $"{Program.STRING_LINE_BREAK}●");
             }
             else
             {
@@ -777,19 +778,19 @@ namespace MDPro3
             }
 
             if (!Language.CardUseLatin())
-                description = description.Replace(Program.slash, bigSlash);
+                description = description.Replace(Program.STRING_SLASH, bigSlash);
             else
-                description = description.Replace(Program.slash, smallSlash);
+                description = description.Replace(Program.STRING_SLASH, smallSlash);
 
             if (!Language.CardUseLatin())
                 description = description.Replace(" ", "\u00A0");
-            description = description.Replace("\r\n\r\n", "\r\n");
+            description = description.Replace($"{Program.STRING_LINE_BREAK}{Program.STRING_LINE_BREAK}", Program.STRING_LINE_BREAK);
             return description;
         }
 
         private static List<string> GetAuthorFromDescription(string description)
         {
-            var lines = description.Split("\r\n");
+            var lines = description.Split(Program.STRING_LINE_BREAK);
             var returnValue = new List<string>();
 
             StringBuilder beforeDiySymbol = new StringBuilder();

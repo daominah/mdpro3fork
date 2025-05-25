@@ -23,7 +23,7 @@ namespace MDPro3.UI.Popup
 
         private IEnumerator LoadAsync()
         {
-            var task = TextureManager.LoadPicFromFileAsync(Program.diyPath + "Rock.png");
+            var task = TextureManager.LoadPicFromFileAsync(Program.PATH_DIY + "Rock.png");
             while (!task.IsCompleted)
                 yield return null;
             if (task.Result != null)
@@ -33,7 +33,7 @@ namespace MDPro3.UI.Popup
                 rock.color = Color.white;
             }
 
-            task = TextureManager.LoadPicFromFileAsync(Program.diyPath + "Paper.png");
+            task = TextureManager.LoadPicFromFileAsync(Program.PATH_DIY + "Paper.png");
             while (!task.IsCompleted)
                 yield return null;
             if (task.Result != null)
@@ -43,7 +43,7 @@ namespace MDPro3.UI.Popup
                 paper.color = Color.white;
             }
 
-            task = TextureManager.LoadPicFromFileAsync(Program.diyPath + "Scissors.png");
+            task = TextureManager.LoadPicFromFileAsync(Program.PATH_DIY + "Scissors.png");
             while (!task.IsCompleted)
                 yield return null;
             if (task.Result != null)

@@ -5,10 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Networking;
-using zFramework.Internal;
-using YgomGame.Duel;
 using MDPro3.Duel.YGOSharp;
-using System.Xml.Linq;
 
 namespace MDPro3.Utility
 {
@@ -171,13 +168,7 @@ namespace MDPro3.Utility
 
             if (newCount == 0 && !entry.IsPersistent)
                 if (cachedCards.TryRemove(code, out _))
-                {
-                    try
-                    {
-                        UnityEngine.Object.Destroy(entry.Texture);
-                    }
-                    catch(Exception e) { Debug.LogException(e); }
-                }
+                    UnityEngine.Object.DestroyImmediate(entry.Texture);
         }
 
         public static async Task<Texture2D> LoadCardNameAsync(
@@ -426,13 +417,13 @@ namespace MDPro3.Utility
 
         private static string GetArtFilePath(int code)
         {
-            var path = Program.altArtPath + code;
-            if (File.Exists(path + Program.jpgExpansion))
-                path += Program.jpgExpansion;
-            else if (File.Exists(path + Program.pngExpansion))
-                path += Program.pngExpansion;
-            else if (File.Exists(Program.artPath + code.ToString() + Program.jpgExpansion))
-                path = Program.artPath + code.ToString() + Program.jpgExpansion;
+            var path = Program.PATH_ALT_ART + code;
+            if (File.Exists(path + Program.EXPANSION_JPG))
+                path += Program.EXPANSION_JPG;
+            else if (File.Exists(path + Program.EXPANSION_PNG))
+                path += Program.EXPANSION_PNG;
+            else if (File.Exists(Program.PATH_ART + code.ToString() + Program.EXPANSION_JPG))
+                path = Program.PATH_ART + code.ToString() + Program.EXPANSION_JPG;
             else
                 path = string.Empty;
 
@@ -459,8 +450,8 @@ namespace MDPro3.Utility
             //token.ThrowIfCancellationRequested();
 
             MemoryStream stream = null;
-            var targetPNG = $"{folder.ToLower()}/{code}{Program.pngExpansion.ToLower()}";
-            var targetJPG = $"{folder.ToLower()}/{code}{Program.jpgExpansion.ToLower()}";
+            var targetPNG = $"{folder.ToLower()}/{code}{Program.EXPANSION_PNG.ToLower()}";
+            var targetJPG = $"{folder.ToLower()}/{code}{Program.EXPANSION_JPG.ToLower()}";
 
             foreach (var zip in ZipHelper.zips)
             {

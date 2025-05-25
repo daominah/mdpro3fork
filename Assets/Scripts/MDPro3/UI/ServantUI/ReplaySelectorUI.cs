@@ -87,14 +87,14 @@ namespace MDPro3.UI.ServantUI
 
         public void KF_Replay(string name, bool god = false)
         {
-            string fileName = Program.replayPath + name + (name.EndsWith(Program.yrpExpansion) ? string.Empty : Program.yrp3dExpansion);
+            string fileName = Program.PATH_REPLAY + name + (name.EndsWith(Program.EXPANSION_YRP) ? string.Empty : Program.EXPANSION_YRP3D);
             if (!File.Exists(fileName))
             {
-                fileName = fileName.Replace(Program.yrp3dExpansion, Program.yrpExpansion);
+                fileName = fileName.Replace(Program.EXPANSION_YRP3D, Program.EXPANSION_YRP);
                 if (!File.Exists(fileName))
                     return;
             }
-            bool yrp3d = fileName.Length > 6 && fileName.ToLower().Substring(fileName.Length - 6, 6) == Program.yrp3dExpansion;
+            bool yrp3d = fileName.Length > 6 && fileName.ToLower().Substring(fileName.Length - 6, 6) == Program.EXPANSION_YRP3D;
             try
             {
                 if (yrp3d)
@@ -131,7 +131,7 @@ namespace MDPro3.UI.ServantUI
 
         private List<byte[]> GetYRPBuffer(string path)
         {
-            if (path.EndsWith(Program.yrpExpansion))
+            if (path.EndsWith(Program.EXPANSION_YRP))
                 return new List<byte[]>() { File.ReadAllBytes(path) };
             var returnValue = new List<byte[]>();
             try
@@ -232,11 +232,11 @@ namespace MDPro3.UI.ServantUI
             if (cachedYRPs.ContainsKey(replay))
                 return cachedYRPs[replay];
             YRP yrp;
-            if (File.Exists(Program.replayPath + replay))
-                yrp = GetYRP(File.ReadAllBytes(Program.replayPath + replay));
+            if (File.Exists(Program.PATH_REPLAY + replay))
+                yrp = GetYRP(File.ReadAllBytes(Program.PATH_REPLAY + replay));
             else
             {
-                var buffer = GetYRPBuffer(Program.replayPath + replay + Program.yrp3dExpansion);
+                var buffer = GetYRPBuffer(Program.PATH_REPLAY + replay + Program.EXPANSION_YRP3D);
                 if (buffer.Count == 0)
                     yrp = null;
                 else
@@ -251,11 +251,11 @@ namespace MDPro3.UI.ServantUI
         {
             Program.instance.ocgcore.returnServant = Program.instance.replay;
             Program.instance.ocgcore.handler = a => { };
-            Program.instance.ocgcore.name_0 = Config.Get("ReplayPlayerName0", "@ui");
-            Program.instance.ocgcore.name_0_tag = Config.Get("ReplayPlayerName0Tag", "@ui");
+            Program.instance.ocgcore.name_0 = Config.Get("ReplayPlayerName0", Config.EMPTY_STRING);
+            Program.instance.ocgcore.name_0_tag = Config.Get("ReplayPlayerName0Tag", Config.EMPTY_STRING);
             Program.instance.ocgcore.name_0_c = Program.instance.ocgcore.name_0;
-            Program.instance.ocgcore.name_1 = Config.Get("ReplayPlayerName1", "@ui");
-            Program.instance.ocgcore.name_1_tag = Config.Get("ReplayPlayerName1Tag", "@ui");
+            Program.instance.ocgcore.name_1 = Config.Get("ReplayPlayerName1", Config.EMPTY_STRING);
+            Program.instance.ocgcore.name_1_tag = Config.Get("ReplayPlayerName1Tag", Config.EMPTY_STRING);
             Program.instance.ocgcore.name_1_c = Program.instance.ocgcore.name_1;
             Program.instance.ocgcore.timeLimit = 240;
             Program.instance.ocgcore.lpLimit = 8000;
@@ -276,9 +276,9 @@ namespace MDPro3.UI.ServantUI
         {
             superScrollView?.Clear();
 
-            if (!Directory.Exists(Program.replayPath))
-                Directory.CreateDirectory(Program.replayPath);
-            var fileInfos = new DirectoryInfo(Program.replayPath).GetFiles();
+            if (!Directory.Exists(Program.PATH_REPLAY))
+                Directory.CreateDirectory(Program.PATH_REPLAY);
+            var fileInfos = new DirectoryInfo(Program.PATH_REPLAY).GetFiles();
             if (sortByName)
                 Array.Sort(fileInfos, Tools.CompareName);
             else
@@ -288,13 +288,13 @@ namespace MDPro3.UI.ServantUI
             int count = 0;
             for (int i = 0; i < fileInfos.Length; i++)
             {
-                if (fileInfos[i].Name.EndsWith(Program.yrp3dExpansion))
+                if (fileInfos[i].Name.EndsWith(Program.EXPANSION_YRP3D))
                 {
-                    var task = new string[] { count.ToString(), fileInfos[i].Name.Replace(Program.yrp3dExpansion, string.Empty) };
+                    var task = new string[] { count.ToString(), fileInfos[i].Name.Replace(Program.EXPANSION_YRP3D, string.Empty) };
                     tasks.Add(task);
                     count++;
                 }
-                else if (fileInfos[i].Name.EndsWith(Program.yrpExpansion))
+                else if (fileInfos[i].Name.EndsWith(Program.EXPANSION_YRP))
                 {
                     var task = new string[] { count.ToString(), fileInfos[i].Name };
                     tasks.Add(task);
@@ -337,7 +337,7 @@ namespace MDPro3.UI.ServantUI
             var selections = new List<string>()
             {
                 InterString.Get("请输入新的回放名称"),
-                superScrollView.items[superScrollView.selected].args[1].Replace(Program.yrpExpansion, string.Empty)
+                superScrollView.items[superScrollView.selected].args[1].Replace(Program.EXPANSION_YRP, string.Empty)
             };
             UIManager.ShowPopupInput(selections, ReplayRename, null, TmpInputValidation.ValidationType.Path);
         }
@@ -345,10 +345,10 @@ namespace MDPro3.UI.ServantUI
         private void ReplayRename(string newName)
         {
             string replay = superScrollView.items[superScrollView.selected].args[1];
-            if (replay.EndsWith(Program.yrpExpansion))
-                File.Move(Program.replayPath + replay, Program.replayPath + newName + Program.yrpExpansion);
+            if (replay.EndsWith(Program.EXPANSION_YRP))
+                File.Move(Program.PATH_REPLAY + replay, Program.PATH_REPLAY + newName + Program.EXPANSION_YRP);
             else
-                File.Move(Program.replayPath + replay + Program.yrp3dExpansion, Program.replayPath + newName + Program.yrp3dExpansion);
+                File.Move(Program.PATH_REPLAY + replay + Program.EXPANSION_YRP3D, Program.PATH_REPLAY + newName + Program.EXPANSION_YRP3D);
             Print();
         }
 
@@ -365,10 +365,10 @@ namespace MDPro3.UI.ServantUI
         public void OnDelete()
         {
             var replay = superScrollView.items[superScrollView.selected].args[1];
-            if (File.Exists(Program.replayPath + replay))
-                File.Delete(Program.replayPath + replay);
+            if (File.Exists(Program.PATH_REPLAY + replay))
+                File.Delete(Program.PATH_REPLAY + replay);
             else
-                File.Delete(Program.replayPath + replay + Program.yrp3dExpansion);
+                File.Delete(Program.PATH_REPLAY + replay + Program.EXPANSION_YRP3D);
             MessageManager.Cast(InterString.Get("已删除回放「[?]」。", replay));
             Print();
         }
@@ -388,7 +388,7 @@ namespace MDPro3.UI.ServantUI
         {
             var replay = superScrollView.items[superScrollView.selected].args[1];
             var yrp = cachedYRPs[replay];
-            replay = replay.Replace(Program.yrpExpansion, string.Empty);
+            replay = replay.Replace(Program.EXPANSION_YRP, string.Empty);
 
             var deckName = replay + "_" + yrp.playerData[player].name;
             var deck = new Duel.YGOSharp.Deck(yrp.playerData[player].main, yrp.playerData[player].extra, new List<int>());

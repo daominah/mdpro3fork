@@ -2604,7 +2604,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 27.2
+  m_fontSize: 31.45
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3510,7 +3510,7 @@ GameObject:
   - component: {fileID: 3478975182000074580}
   - component: {fileID: 6658216458928020558}
   m_Layer: 5
-  m_Name: '#Text_ServantTitle'
+  m_Name: Text_ServantTitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25180,7 +25180,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 27.2
+  m_fontSize: 31.45
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -35943,7 +35943,7 @@ GameObject:
   - component: {fileID: 6220966988498288475}
   - component: {fileID: 5914170427060271739}
   m_Layer: 5
-  m_Name: '#Text_InputHint'
+  m_Name: Text_InputHint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

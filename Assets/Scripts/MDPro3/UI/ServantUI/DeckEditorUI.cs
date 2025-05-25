@@ -855,7 +855,7 @@ namespace MDPro3.UI.ServantUI
                     }
                 }
 
-            if (!DeckIsFromLocal && File.Exists(Program.deckPath + DeckName + Program.ydkExpansion))
+            if (!DeckIsFromLocal && File.Exists(Program.PATH_DECK + DeckName + Program.EXPANSION_YDK))
             {
                 List<string> tasks = new()
                 {
@@ -972,32 +972,29 @@ namespace MDPro3.UI.ServantUI
             IconMate.color = Color.clear;
 
             while (DeckEditor.Deck == null)
-                await TaskUtility.WaitOneFrame();
-            if (gameObject == null) return;
+                await TaskUtility.WaitOneFrame(gameObject);
 
-            var ie = Program.items.LoadItemIconAsync(DeckEditor.Deck.Case.ToString(), Items.ItemType.Case);
-            StartCoroutine(ie);
-            while (ie.MoveNext())
+            var load = Program.items.LoadDeckCaseIconAsync(DeckEditor.Deck.Case, "_L_SD");
+            while (!load.IsCompleted)
                 await TaskUtility.WaitOneFrame();
-            if (gameObject == null) return;
-
-            IconCase.color = Color.white;
-            IconCase.sprite = ie.Current;
+            if (load.Result != null)
+            {
+                IconCase.color = Color.white;
+                IconCase.sprite = load.Result;
+            }
 
             var im = ABLoader.LoadProtectorMaterial(DeckEditor.Deck.Protector.ToString());
             StartCoroutine(im);
             while (im.MoveNext())
-                await TaskUtility.WaitOneFrame();
-            if (gameObject == null) return;
+                await TaskUtility.WaitOneFrame(gameObject);
 
             IconProtector.color = Color.white;
             IconProtector.material = im.Current;
 
-            ie = Program.items.LoadItemIconAsync(DeckEditor.Deck.Field.ToString(), Items.ItemType.Mat);
+            var ie = Program.items.LoadItemIconAsync(DeckEditor.Deck.Field.ToString(), Items.ItemType.Mat);
             StartCoroutine(ie);
             while (ie.MoveNext())
-                await TaskUtility.WaitOneFrame();
-            if (gameObject == null) return;
+                await TaskUtility.WaitOneFrame(gameObject);
 
             IconField.color = Color.white;
             IconField.sprite = ie.Current;
@@ -1005,8 +1002,7 @@ namespace MDPro3.UI.ServantUI
             ie = Program.items.LoadItemIconAsync(DeckEditor.Deck.Grave.ToString(), Items.ItemType.Grave);
             StartCoroutine(ie);
             while (ie.MoveNext())
-                await TaskUtility.WaitOneFrame();
-            if (gameObject == null) return;
+                await TaskUtility.WaitOneFrame(gameObject);
 
             IconGrave.color = Color.white;
             IconGrave.sprite = ie.Current;
@@ -1014,8 +1010,7 @@ namespace MDPro3.UI.ServantUI
             ie = Program.items.LoadItemIconAsync(DeckEditor.Deck.Stand.ToString(), Items.ItemType.Stand);
             StartCoroutine(ie);
             while (ie.MoveNext())
-                await TaskUtility.WaitOneFrame();
-            if (gameObject == null) return;
+                await TaskUtility.WaitOneFrame(gameObject);
 
             IconStand.color = Color.white;
             IconStand.sprite = ie.Current;
@@ -1026,8 +1021,7 @@ namespace MDPro3.UI.ServantUI
                 ie = Program.items.LoadItemIconAsync(mate, Items.ItemType.Mate);
                 StartCoroutine(ie);
                 while (ie.MoveNext())
-                    await TaskUtility.WaitOneFrame();
-                if (gameObject == null) return;
+                    await TaskUtility.WaitOneFrame(gameObject);
 
                 IconMate.color = Color.white;
                 IconMate.sprite = ie.Current;
@@ -1036,8 +1030,7 @@ namespace MDPro3.UI.ServantUI
             {
                 var task = CardImageLoader.LoadArtAsync(DeckEditor.Deck.Mate, true);
                 while (!task.IsCompleted)
-                    await TaskUtility.WaitOneFrame();
-                if (gameObject == null) return;
+                    await TaskUtility.WaitOneFrame(gameObject);
 
                 IconMate.color = Color.white;
                 IconMate.sprite = TextureManager.Texture2Sprite(task.Result);

@@ -579,7 +579,7 @@ namespace MDPro3.UI
 
             if (SaveCardPicture(card.Id, (Texture2D)texture))
             {
-                var fullPath = Program.cardPicPath + card.Id + Program.pngExpansion;
+                var fullPath = Program.PATH_CARD_PIC + card.Id + Program.EXPANSION_PNG;
                 MessageManager.Toast(InterString.Get("卡图已保存于：[?]", fullPath));
             }
             else
@@ -614,8 +614,8 @@ namespace MDPro3.UI
 
         private bool SaveCardPicture(int code, Texture2D tex)
         {
-            if (!Directory.Exists(Program.cardPicPath))
-                Directory.CreateDirectory(Program.cardPicPath);
+            if (!Directory.Exists(Program.PATH_CARD_PIC))
+                Directory.CreateDirectory(Program.PATH_CARD_PIC);
 
             try
             {
@@ -627,15 +627,15 @@ namespace MDPro3.UI
                 byte[] pic;
                 string fullPath;
                 var format = Settings.Data.SavedCardFormat.ToLower();
-                if (format == Program.pngExpansion)
+                if (format == Program.EXPANSION_PNG)
                 {
                     pic = tex.EncodeToPNG();
-                    fullPath = Program.cardPicPath + code + Program.pngExpansion;
+                    fullPath = Program.PATH_CARD_PIC + code + Program.EXPANSION_PNG;
                 }
                 else
                 {
                     pic = tex.EncodeToJPG(85);
-                    fullPath = Program.cardPicPath + code + Program.jpgExpansion;
+                    fullPath = Program.PATH_CARD_PIC + code + Program.EXPANSION_JPG;
                 }
 
                 File.WriteAllBytes(fullPath, pic);
@@ -665,16 +665,16 @@ namespace MDPro3.UI
 
             int errorCount = 0;
             errorLog = string.Empty;
-            var errorLogPath = Program.cardPicPath + "MissingAndFailedCards.txt";
+            var errorLogPath = Program.PATH_CARD_PIC + "MissingAndFailedCards.txt";
             if (File.Exists(errorLogPath))
                 File.Delete(errorLogPath);
 
             for (int i = 0; i < cards.Count; i++)
             {
                 var format = Settings.Data.SavedCardFormat;
-                if (format != Program.pngExpansion)
-                    format = Program.jpgExpansion;
-                if (File.Exists(Program.cardPicPath + cards[i] + format))
+                if (format != Program.EXPANSION_PNG)
+                    format = Program.EXPANSION_JPG;
+                if (File.Exists(Program.PATH_CARD_PIC + cards[i] + format))
                     continue;
 
                 var ie = CardImageLoader.LoadCardAsync(cards[i]);
@@ -685,9 +685,9 @@ namespace MDPro3.UI
                     || !CardImageLoader.lastCardRenderSucceed)
                 {
                     errorCount++;
-                    errorLog += cards[i].ToString() + "\r\n";
+                    errorLog += cards[i].ToString() + Program.STRING_LINE_BREAK;
                 }
-                popupProgress.text.text = i + Program.slash + cards.Count + "\r\n" + InterString.Get("错误：") + errorCount;
+                popupProgress.text.text = i + Program.STRING_SLASH + cards.Count + Program.STRING_LINE_BREAK + InterString.Get("错误：") + errorCount;
                 popupProgress.progressBar.value = (float)i / cards.Count;
                 if (cards.Count <= 100)
                     yield return null;
@@ -705,7 +705,7 @@ namespace MDPro3.UI
             if (saveEnumerator != null)
                 StopCoroutine(saveEnumerator);
             if (!string.IsNullOrEmpty(errorLog))
-                File.WriteAllText(Program.cardPicPath + "MissingAndFailedCards.txt", errorLog);
+                File.WriteAllText(Program.PATH_CARD_PIC + "MissingAndFailedCards.txt", errorLog);
         }
 
         #endregion

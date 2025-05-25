@@ -16,7 +16,7 @@ namespace MDPro3.Duel.YGOSharp
             StreamReader reader = null;
             if (Config.GetBool("Expansions", true))
             {
-                var confPath = Program.expansionsPath + "lflist.conf";
+                var confPath = Program.PATH_EXPANSIONS + "lflist.conf";
                 if(File.Exists(confPath))
                 {
                     reader = new StreamReader(confPath);
@@ -46,7 +46,7 @@ namespace MDPro3.Duel.YGOSharp
             }
 
             Banlist current = null;
-            reader = new StreamReader(Program.lflistPath);
+            reader = new StreamReader(Program.PATH_LFLIST);
             InitializeFromReader(reader);
             reader.Close();
             current = new();

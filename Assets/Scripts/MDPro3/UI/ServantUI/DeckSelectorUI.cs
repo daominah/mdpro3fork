@@ -138,9 +138,9 @@ namespace MDPro3.UI.ServantUI
             ShowDefaultButtons();
             TogglePickupCard.SetToggleOff();
 
-            if (!Directory.Exists(Program.deckPath))
-                Directory.CreateDirectory(Program.deckPath);
-            var files = Directory.GetFiles(Program.deckPath, "*.ydk");
+            if (!Directory.Exists(Program.PATH_DECK))
+                Directory.CreateDirectory(Program.PATH_DECK);
+            var files = Directory.GetFiles(Program.PATH_DECK, "*.ydk");
             List<string> fileList = files.ToList();
             foreach (var file in files)
             {
@@ -275,7 +275,7 @@ namespace MDPro3.UI.ServantUI
 
         private void DeckCheck(string deckName)
         {
-            var path = Program.deckPath + deckName + Program.ydkExpansion;
+            var path = Program.PATH_DECK + deckName + Program.EXPANSION_YDK;
 
             if (File.Exists(path))
             {
@@ -306,7 +306,7 @@ namespace MDPro3.UI.ServantUI
         {
             try
             {
-                var path = Program.deckPath + deckName + Program.ydkExpansion;
+                var path = Program.PATH_DECK + deckName + Program.EXPANSION_YDK;
                 Directory.CreateDirectory(Path.GetDirectoryName(path)!);
                 File.Create(path).Close();
 
@@ -386,7 +386,7 @@ namespace MDPro3.UI.ServantUI
             for (int i = 0; i < superScrollView.items.Count; i++)
                 if (superScrollView.items[i].args[6] != "0")
                 {
-                    File.Delete(Program.deckPath + superScrollView.items[i].args[0] + Program.ydkExpansion);
+                    File.Delete(Program.PATH_DECK + superScrollView.items[i].args[0] + Program.EXPANSION_YDK);
                     toDeleteIndex.Add(i);
                     toDeleteIds.Add(superScrollView.items[i].args[7]);
                 }

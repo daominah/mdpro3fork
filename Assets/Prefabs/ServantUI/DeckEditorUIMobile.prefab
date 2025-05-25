@@ -358,7 +358,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 9107187794868887960}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.908171
+  m_Size: 0.93815595
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -5741,6 +5741,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultSelectable: {fileID: 0}
+  needTranslate: 0
   responseInput: 0
   showing: 0
 --- !u!1 &448243913980667442
@@ -9640,6 +9641,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultSelectable: {fileID: 0}
+  needTranslate: 0
   responseInput: 0
   area: 0
   defaultArea: 0
@@ -14603,7 +14605,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 7446650972608614846}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.6595001
+  m_Size: 0.6995
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -35376,10 +35378,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 563439163761149202}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 41, y: -36}
-  m_SizeDelta: {x: 48, y: 48}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 48}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6555986894017888949
 CanvasRenderer:
@@ -40104,7 +40106,7 @@ GameObject:
   - component: {fileID: 7735219975007032465}
   - component: {fileID: 5131162367539864349}
   m_Layer: 5
-  m_Name: '#Text'
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -59212,6 +59214,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultSelectable: {fileID: 0}
+  needTranslate: 0
   responseInput: 0
   condition: 0
   deckLoaded: 0
@@ -82955,10 +82958,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 563439163761149202}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 89, y: -36}
-  m_SizeDelta: {x: 48, y: 48}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 48}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8440842039889988899
 CanvasRenderer:

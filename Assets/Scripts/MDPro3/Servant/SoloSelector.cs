@@ -85,7 +85,7 @@ namespace MDPro3.Servant
 
         public void LoadBots()
         {
-            ReadBots(Program.localesPath + Language.GetConfig() + "/bot.conf");
+            ReadBots(Program.PATH_LOCALES + Language.GetConfig() + "/bot.conf");
             Print();
         }
 
@@ -113,9 +113,9 @@ namespace MDPro3.Servant
                         string deckName = string.Empty;
                         deckName = newBot.command.Split(new string[] { "Deck=", " Dialog=" }
                         , StringSplitOptions.RemoveEmptyEntries)[1].Replace("'", string.Empty).Replace(" ", string.Empty);
-                        if (File.Exists(DECK_PREFIX + deckName + Program.ydkExpansion))
+                        if (File.Exists(DECK_PREFIX + deckName + Program.EXPANSION_YDK))
                         {
-                            var aiDeck = new Deck(DECK_PREFIX + deckName + Program.ydkExpansion);
+                            var aiDeck = new Deck(DECK_PREFIX + deckName + Program.EXPANSION_YDK);
                             if (aiDeck.Main.Count > 0)
                                 newBot.main0 = aiDeck.Main[0];
                         }
@@ -142,7 +142,7 @@ namespace MDPro3.Servant
             if (diyDeck)
             {
                 string selectedDeck = GetUI<SoloSelectorUI>().GetAIDeck();
-                if (!File.Exists(Program.deckPath + selectedDeck + Program.ydkExpansion))
+                if (!File.Exists(Program.PATH_DECK + selectedDeck + Program.EXPANSION_YDK))
                 {
                     MessageManager.Cast(InterString.Get("请先为AI选择有效的卡组。"));
                     return string.Empty;
@@ -237,7 +237,7 @@ namespace MDPro3.Servant
                     RoomServant.SoloLockHand = false;
                 RoomServant.FromLocalHost = false;
 
-                TcpHelper.LinkStart("127.0.0.1", Config.Get("DuelPlayerName0", "@ui"), port, string.Empty, true
+                TcpHelper.LinkStart("127.0.0.1", Config.Get("DuelPlayerName0", Config.EMPTY_STRING), port, string.Empty, true
                     , () => StartWindBot(command, "127.0.0.1", port, string.Empty, lockHand, 0));
             }
             else

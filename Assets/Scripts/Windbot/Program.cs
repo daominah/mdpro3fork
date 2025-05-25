@@ -68,7 +68,7 @@ namespace WindBot
             }
             var paths = ZipHelper.GetAllCdbTempPath();
             paths.Add(absolutePath);
-            foreach(var cdb in Directory.GetFiles(MDPro3.Program.expansionsPath, "*.cdb"))
+            foreach(var cdb in Directory.GetFiles(MDPro3.Program.PATH_EXPANSIONS, "*.cdb"))
                 paths.Add(cdb);
             NamedCardsManager.InitForMulti(paths);
         }

@@ -80,14 +80,15 @@ namespace MDPro3
 
         public static void Translate(GameObject go)
         {
+            //UnityEngine.Debug.Log($"Translate: {go.name}");
             //TO DELETE
             foreach (var text in go.GetComponentsInChildren<Text>(true))
                 if (text.name.StartsWith(TRANSLATE_PREFIX))
-                    text.text = InterString.Get(text.text.Replace("\r\n", "@n"));
+                    text.text = InterString.Get(text.text.Replace(Program.STRING_LINE_BREAK, InterString.CONFIG_LINE_BREAK).Replace("\n", InterString.CONFIG_LINE_BREAK));
             foreach (var tmp in go.GetComponentsInChildren<TextMeshProUGUI>(true))
             {
                 if (tmp.name.StartsWith(TRANSLATE_PREFIX))
-                    tmp.text = InterString.Get(tmp.text.Replace("\r\n", "@n"));
+                    tmp.text = InterString.Get(tmp.text.Replace(Program.STRING_LINE_BREAK, InterString.CONFIG_LINE_BREAK).Replace("\n", InterString.CONFIG_LINE_BREAK));
                 if (tmp.name.EndsWith("Menu"))
                 {
                     UIManager instance = Program.instance.ui_;

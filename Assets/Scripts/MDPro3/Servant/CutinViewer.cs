@@ -50,7 +50,7 @@ namespace MDPro3.Servant
             if (randomBGMPlayed)
             {
                 randomBGMPlayed = false;
-                AudioManager.PlayBGM("BGM_MENU_01");
+                AudioManager.PlayBGM(AudioManager.BGM_MENU_MAIN);
             }
 
             CameraManager.DuelOverlayEffect3DCount = 0;

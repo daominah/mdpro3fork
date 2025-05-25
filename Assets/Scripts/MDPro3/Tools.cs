@@ -189,13 +189,13 @@ namespace MDPro3
 
         public static int GetLocalDeckCount()
         {
-            return Directory.GetFiles(Program.deckPath, "*.ydk").Length;
+            return Directory.GetFiles(Program.PATH_DECK, "*.ydk").Length;
         }
 
         public static DateTime GetLocalDeckLastEditTime()
         {
             DateTime dateTime = DateTime.MinValue;
-            foreach(var file in Directory.GetFiles(Program.deckPath, "*.ydk"))
+            foreach(var file in Directory.GetFiles(Program.PATH_DECK, "*.ydk"))
             {
                 var fileInfo = new FileInfo(file);
                 if(fileInfo.LastWriteTime > dateTime)
