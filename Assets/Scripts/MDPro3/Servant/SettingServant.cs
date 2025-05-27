@@ -101,7 +101,6 @@ namespace MDPro3.Servant
 
         #endregion
 
-
         private void InitializeSettings()
         {
             QualitySettings.vSyncCount = 0;
@@ -156,13 +155,13 @@ namespace MDPro3.Servant
         private IEnumerator UpdatePrereleaseAsync()
         {
             var filePath = Path.Combine(Program.PATH_EXPANSIONS, Path.GetFileName(Settings.Data.PrereleasePackUrl));
-            if (!File.Exists(filePath))
+            if (!File.Exists(filePath) || Language.GetConfig() != Language.GetPrerelease())
             {
-                Config.Set("Prerelease", "0");
+                Config.Set("Prerelease", Config.STRING_NO);
                 Config.Save();
             }
 
-            var www = UnityWebRequest.Get(Settings.Data.PrereleasePackVersionUrl);
+            var www = UnityWebRequest.Get(Settings.GetPrereleasePackVersionUrl());
             www.SendWebRequest();
             while (!www.isDone)
             {
@@ -172,12 +171,12 @@ namespace MDPro3.Servant
             if (www.result == UnityWebRequest.Result.Success)
             {
                 var result = www.downloadHandler.text;
-                var lines = result.Replace("\r", "").Split('\n');
-                if (Config.Get("Prerelease", "0") != lines[0])
+                var lines = result.Replace("\r", string.Empty).Split('\n');
+                if (Config.Get("Prerelease", Config.STRING_NO) != lines[0])
                 {
                     if (!Directory.Exists(Program.PATH_EXPANSIONS))
                         Directory.CreateDirectory(Program.PATH_EXPANSIONS);
-                    var download = UnityWebRequest.Get(Settings.Data.PrereleasePackUrl);
+                    var download = UnityWebRequest.Get(Settings.GetPrereleasePackUrl());
                     download.SendWebRequest();
                     MessageManager.Cast(InterString.Get("正在更新，请耐心等待更待更新完成再进行其他操作。"));
                     while (!download.isDone)
@@ -192,6 +191,7 @@ namespace MDPro3.Servant
                         File.WriteAllBytes(filePath, download.downloadHandler.data);
                         MessageManager.Cast(InterString.Get("先行卡更新成功。"));
                         Config.Set("Prerelease", lines[0]);
+                        Language.SetPrerelease(Language.GetConfig());
                         Config.Save();
                         Program.instance.InitializeForDataChange();
                     }

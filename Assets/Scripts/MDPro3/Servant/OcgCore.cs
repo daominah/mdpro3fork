@@ -301,9 +301,7 @@ namespace MDPro3.Servant
 
             if (UserInput.MouseRightDown || UserInput.WasCancelPressed)
             {
-                if (Program.instance.ui_.cardDetail.showing)
-                    Program.instance.ui_.cardDetail.Hide();
-                else returnAction?.Invoke();
+                returnAction?.Invoke();
             }
             if (UserInput.MouseLeftDown)
             {

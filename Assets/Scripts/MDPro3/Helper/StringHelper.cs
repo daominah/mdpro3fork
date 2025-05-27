@@ -10,36 +10,45 @@ namespace MDPro3
 {
     public static class StringHelper
     {
-        public static List<HashedString> hashedStrings = new List<HashedString>();
-        public static List<HashedString> hashedStringsForRender = new List<HashedString>();
-        public static List<HashedString> setNames = new List<HashedString>();
-
-        public static int StringToInt(string str)
+        private class HashedString
         {
-            var return_value = 0;
-            try
-            {
-                if (str.Length > 2 && str.Substring(0, 2) == "0x")
-                    return_value = Convert.ToInt32(str, 16);
-                else
-                    return_value = int.Parse(str);
-            }
-            catch (Exception)
-            {
-            }
-
-            return return_value;
+            public string content = string.Empty;
+            public int hashCode;
+            public string region = string.Empty;
         }
+
+        private const string PATH_CONF_FILE = "/strings.conf";
+
+        private static readonly List<HashedString> hashedStrings = new();
+        private static readonly List<HashedString> hashedStringsForRender = new();
+        private static readonly List<HashedString> hashedStringsForPrerelease = new();
+        private static readonly List<HashedString> setNames = new();
 
         public static void Initialize()
         {
-            var language = Language.GetConfig();
-            var path = Program.PATH_LOCALES + language + "/strings.conf";
-            var text = File.ReadAllText(path);
+            hashedStrings.Clear();
+            hashedStringsForRender.Clear();
+            hashedStringsForPrerelease.Clear();
+
+            var text = File.ReadAllText(Program.PATH_LOCALES + Language.GetConfig() + PATH_CONF_FILE);
+            AddExpansionStrings(ref text);
+            InitializeContent(text, 0);
+
+            text = File.ReadAllText(Program.PATH_LOCALES + Language.GetCardConfig() + PATH_CONF_FILE);
+            AddExpansionStrings(ref text);
+            InitializeContent(text, 1);
+
+            text = File.ReadAllText(Program.PATH_LOCALES + Language.GetPrerelease() + PATH_CONF_FILE);
+            AddExpansionStrings(ref text);
+            InitializeContent(text, 2);
+        }
+
+        private static void AddExpansionStrings(ref string text)
+        {
             if (Config.GetBool("Expansions", true))
             {
-                foreach (var conf in Directory.GetFiles("Expansions", "*.conf"))
-                    if(!conf.ToLower().EndsWith("lflist.conf"))
+                foreach (var conf in Directory.GetFiles(Program.PATH_EXPANSIONS, "*.conf"))
+                    if (!conf.ToLower().EndsWith("lflist.conf"))
                         text += Program.STRING_LINE_BREAK + File.ReadAllText(conf);
                 foreach (var zip in ZipHelper.zips)
                 {
@@ -47,7 +56,7 @@ namespace MDPro3
                         continue;
                     foreach (var file in zip.EntryFileNames)
                     {
-                        if (file.ToLower().EndsWith(".conf")
+                        if (file.ToLower().EndsWith(Program.EXPANSION_CONF)
                             && !file.ToLower().EndsWith("lflist.conf"))
                         {
                             var ms = new MemoryStream();
@@ -58,48 +67,26 @@ namespace MDPro3
                     }
                 }
             }
-
-            language = Language.GetCardConfig();
-            path = Program.PATH_LOCALES + language + "/strings.conf";
-            string textForRender = File.ReadAllText(path);
-            if (Config.Get("Expansions", "1") == "1")
-            {
-                foreach (var conf in Directory.GetFiles("Expansions", "*.conf"))
-                    textForRender += Program.STRING_LINE_BREAK + File.ReadAllText(conf);
-                foreach (var zip in ZipHelper.zips)
-                {
-                    if (zip.Name.ToLower().EndsWith("script.zip"))
-                        continue;
-                    foreach (var file in zip.EntryFileNames)
-                    {
-                        if (file.ToLower().EndsWith(".conf"))
-                        {
-                            var ms = new MemoryStream();
-                            var e = zip[file];
-                            e.Extract(ms);
-                            textForRender += Program.STRING_LINE_BREAK + Encoding.UTF8.GetString(ms.ToArray());
-                        }
-                    }
-                }
-            }
-
-            InitializeContent(text, textForRender);
         }
 
-        public static void InitializeContent(string text, string textForRender)
+        private static void InitializeContent(string text, int type)
         {
-            var st = text.Replace("\r", "");
+            var st = text.Replace("\r", string.Empty);
             var lines = st.Split(new[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
-            hashedStrings.Clear();
-            setNames.Clear();
+            var targetStrings = GetHashedStrings(type);
+            targetStrings.Clear();
+            if (type == 0)
+                setNames.Clear();
             foreach (var line in lines)
-                if (line.Length > 1 && line.Substring(0, 1) == "!")
+                if (line.Length > 1 && line[..1] == "!")
                 {
-                    var mats = line.Substring(1, line.Length - 1).Split(new[] { " " }, StringSplitOptions.RemoveEmptyEntries);
+                    var mats = line[1..].Split(new[] { " " }, StringSplitOptions.RemoveEmptyEntries);
                     if (mats.Length > 2)
                     {
-                        var a = new HashedString();
-                        a.region = mats[0];
+                        var a = new HashedString
+                        {
+                            region = mats[0]
+                        };
                         try
                         {
                             a.hashCode = StringToInt(mats[1]);
@@ -109,50 +96,47 @@ namespace MDPro3
                             MessageManager.Cast(e.ToString());
                         }
 
-                        a.content = "";
+                        a.content = string.Empty;
                         for (var i = 2; i < mats.Length; i++) a.content += mats[i] + " ";
-                        a.content = a.content.Substring(0, a.content.Length - 1);
-                        if (Get(a.region, a.hashCode) == "")
+                        a.content = a.content[..^1];
+                        if (Get(a.region, a.hashCode, type) == string.Empty)
                         {
-                            hashedStrings.Add(a);
-                            if (a.region == "setname") setNames.Add(a);
+                            targetStrings.Add(a);
+                            if (a.region == "setname" && type == 0)
+                                setNames.Add(a);
                         }
-                    }
-                }
-            hashedStringsForRender.Clear();
-            st = textForRender.Replace("\r", "");
-            lines = st.Split(new[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
-            foreach (var line in lines)
-                if (line.Length > 1 && line.Substring(0, 1) == "!")
-                {
-                    var mats = line.Substring(1, line.Length - 1).Split(new[] { " " }, StringSplitOptions.RemoveEmptyEntries);
-                    if (mats.Length > 2)
-                    {
-                        var a = new HashedString();
-                        a.region = mats[0];
-                        try
-                        {
-                            a.hashCode = StringToInt(mats[1]);
-                        }
-                        catch (Exception e)
-                        {
-                            MessageManager.Cast(e.ToString());
-                        }
-
-                        a.content = "";
-                        for (var i = 2; i < mats.Length; i++)
-                            a.content += mats[i] + " ";
-                        a.content = a.content.Substring(0, a.content.Length - 1);
-                        if (Get(a.region, a.hashCode, true) == "")
-                            hashedStringsForRender.Add(a);
                     }
                 }
         }
 
-        public static string Get(string region, int hashCode, bool render = false)
+        private static int StringToInt(string str)
         {
-            var re = "";
-            foreach (var s in render ? hashedStringsForRender : hashedStrings)
+            var return_value = 0;
+            try
+            {
+                if (str.Length > 2 && str[..2] == "0x")
+                    return_value = Convert.ToInt32(str, 16);
+                else
+                    return_value = int.Parse(str);
+            }
+            catch { }
+            return return_value;
+        }
+
+        private static List<HashedString> GetHashedStrings(int type)
+        {
+            return type switch
+            {
+                1 => hashedStringsForRender,
+                2 => hashedStringsForPrerelease,
+                _ => hashedStrings,
+            };
+        }
+
+        internal static string Get(string region, int hashCode, int type = 0)
+        {
+            var re = string.Empty;
+            foreach (var s in GetHashedStrings(type))
                 if (s.region == region && s.hashCode == hashCode)
                 {
                     re = s.content;
@@ -161,22 +145,21 @@ namespace MDPro3
             return re;
         }
 
-        internal static string GetUnsafe(int hashCode, bool render = false)
+        internal static string GetUnsafe(int hashCode, int type = 0)
         {
-            var re = "";
-            foreach (var s in render ? hashedStringsForRender : hashedStrings)
+            var re = string.Empty;
+            foreach (var s in GetHashedStrings(type))
                 if (s.region == "system" && s.hashCode == hashCode)
                 {
                     re = s.content;
                     break;
                 }
-
             return re;
         }
 
         internal static string Get(int description)
         {
-            var a = "";
+            var a = string.Empty;
             if (description < 10000)
             {
                 a = Get("system", description);
@@ -223,47 +206,95 @@ namespace MDPro3
             return FormatLocation(gps.location, gps.sequence);
         }
 
-        public class HashedString
+        internal static string Attribute(long attribute, int type = 0)
         {
-            public string content = "";
-            public int hashCode;
-            public string region = "";
-        }
-
-        public static string Attribute(long attribute)
-        {
-            var r = "";
+            var r = string.Empty;
             var passFirst = false;
             for (int i = 0; i < 7; i++)
                 if ((attribute & (1u << i)) > 0)
                 {
                     if (passFirst) r += Program.STRING_SLASH;
-                    r += GetUnsafe(1010 + i);
+                    r += GetUnsafe(1010 + i, type);
                     passFirst = true;
                 }
             return r;
         }
 
-        public static string Race(long race, bool render = false)
+        internal static string Race(long race, int type = 0)
         {
-            var r = "";
+            var r = string.Empty;
             var passFirst = false;
             for (var i = 0; i < 26; i++)
                 if ((race & (1 << i)) > 0)
                 {
                     if (passFirst) r += Program.STRING_SLASH;
-                    r += GetUnsafe(1020 + i, render);
+                    r += GetUnsafe(1020 + i, type);
                     passFirst = true;
                 }
             return r;
         }
 
-        public static string Zone(long data)
+        internal static string MainType(long cardType, int type = 0)
+        {
+            var r = string.Empty;
+            var passFirst = false;
+            for (var i = 0; i < 3; i++)
+                if ((cardType & (1 << i)) > 0)
+                {
+                    if (passFirst) r += Program.STRING_SLASH;
+                    r += GetUnsafe(1050 + i, type);
+                    passFirst = true;
+                }
+            return r;
+        }
+
+        internal static string SecondType(long a, int type = 0)
+        {
+            var start = string.Empty;
+            var end = string.Empty;
+            if ((a & 0x68020C0) > 0)
+            {
+                for (var i = 4; i < 27; i++)
+                    if (((a & 0x68020C0) & (1 << i)) > 0)
+                    {
+                        start += Program.STRING_SLASH + GetUnsafe(1050 + i, type);
+                        break;
+                    }
+                a -= a & 0x68020C0;
+            }
+            if ((a & (long)CardType.Pendulum) > 0)
+            {
+                start += Program.STRING_SLASH + GetUnsafe(1074, type);
+                a -= (long)CardType.Pendulum;
+            }
+            if ((a & 0x30) > 0)
+            {
+                for (var i = 4; i < 6; i++)
+                    if ((a & (1 << i)) > 0)
+                    {
+                        end += Program.STRING_SLASH + GetUnsafe(1050 + i, type);
+                        break;
+                    }
+                a -= a & 0x30;
+            }
+            for (var i = 4; i < 27; i++)
+                if ((a & (1 << i)) > 0)
+                    start += Program.STRING_SLASH + GetUnsafe(1050 + i, type);
+            var returnValue = start + end;
+            if (returnValue == string.Empty)
+                returnValue = GetUnsafe(1054, type);
+            else
+                returnValue = returnValue[1..];
+
+            return returnValue;
+        }
+
+        internal static string Zone(long data)
         {
             var strs = new List<string>();
             for (var filter = 0x1L; filter <= 0x1L << 32; filter <<= 1)
             {
-                var str = "";
+                var str = string.Empty;
                 var s = filter & data;
                 if (s != 0)
                 {
@@ -314,103 +345,44 @@ namespace MDPro3
 
         }
 
-        public static string MainType(long a, bool render = false)
+        internal static string GetSetName(long Setcode)
         {
-            var r = string.Empty;
-            var passFirst = false;
-            for (var i = 0; i < 3; i++)
-                if ((a & (1 << i)) > 0)
+            var setcodes = new int[4];
+            for (var j = 0; j < 4; j++)
+            {
+                setcodes[j] = (int)((Setcode >> j * 16) & 0xffff);
+            }
+            var returnValue = new List<string>();
+            for (var i = 0; i < setNames.Count; i++)
+            {
+                var currentHash = setNames[i].hashCode;
+                for (var j = 0; j < 4; j++)
                 {
-                    if (passFirst) r += Program.STRING_SLASH;
-                    r += GetUnsafe(1050 + i, render);
-                    passFirst = true;
+                    if (currentHash == setcodes[j])
+                    {
+                        var setArray = setNames[i].content.Split('\t');
+                        var setString = setArray[0];
+                        returnValue.Add(setString);
+                    }
                 }
-            return r;
+            }
+            if (returnValue.Count > 0)
+                return string.Join("|", returnValue.ToArray());
+            else
+                return string.Empty;
         }
 
-        public static string SecondType(long a, bool render = false)
+        internal static int GetSetNameCode(string setName)
         {
-            var start = string.Empty;
-            var end = string.Empty;
-            if ((a & 0x68020C0) > 0)
+            int returnValue = 0;
+            for (var i = 0; i < setNames.Count; i++)
             {
-                for (var i = 4; i < 27; i++)
-                    if (((a & 0x68020C0) & (1 << i)) > 0)
-                    {
-                        start += Program.STRING_SLASH + GetUnsafe(1050 + i, render);
-                        break;
-                    }
-                a -= a & 0x68020C0;
+                var setArray = setNames[i].content.Split('\t');
+                var setString = setArray[0];
+                if (setName == setString)
+                    returnValue = setNames[i].hashCode;
             }
-            if ((a & (long)CardType.Pendulum) > 0)
-            {
-                start += Program.STRING_SLASH + GetUnsafe(1074, render);
-                a -= (long)CardType.Pendulum;
-            }
-            if ((a & 0x30) > 0)
-            {
-                for (var i = 4; i < 6; i++)
-                    if ((a & (1 << i)) > 0)
-                    {
-                        end += Program.STRING_SLASH + GetUnsafe(1050 + i, render);
-                        break;
-                    }
-                a -= a & 0x30;
-            }
-            for (var i = 4; i < 27; i++)
-                if ((a & (1 << i)) > 0)
-                    start += Program.STRING_SLASH + GetUnsafe(1050 + i, render);
-            var returnValue = start + end;
-            if (returnValue == string.Empty)
-                returnValue = GetUnsafe(1054, render);
-            else
-                returnValue = returnValue.Substring(1, returnValue.Length - 1);
-
             return returnValue;
-        }
-
-        public static string SecondMainType(long a)
-        {
-            if(Language.GetConfig() == Language.Spanish)
-                return GetSpanishCardType(a);
-            else
-            {
-                if(Language.NeedBlankToAddWord())
-                    return SecondType(a, false) + " " + MainType(a, false);
-                else
-                    return SecondType(a, false) + MainType(a, false);
-            }
-        }
-
-        private static string GetSpanishCardType(long a)
-        {
-            if ((a & (long)CardType.Monster) > 0)
-                return "Monstruo";
-            else if((a & (long)CardType.Spell) > 0)
-            {
-                if ((a & (long)CardType.Field) > 0)
-                    return "Mágica de Campo";
-                else if ((a & (long)CardType.Equip) > 0)
-                    return "Mágica de Equipo";
-                else if ((a & (long)CardType.Continuous) > 0)
-                    return "Mágica Continua";
-                else if ((a & (long)CardType.QuickPlay) > 0)
-                    return "Mágica de Juego Rápido";
-                else if ((a & (long)CardType.Ritual) > 0)
-                    return "Mágica Ritual";
-                else
-                    return "Mágica Normal";
-            }
-            else if ((a & (long)CardType.Trap) > 0)
-            {
-                if ((a & (long)CardType.Counter) > 0)
-                    return "Trampa de Contraefecto";
-                else if ((a & (long)CardType.Continuous) > 0)
-                    return "Trampa Continua";
-                else
-                    return "Trampa Normal";
-            }
-            return string.Empty;
         }
 
         public static string GetType(Card data, bool render = false, bool rushDuel = false)
@@ -421,7 +393,7 @@ namespace MDPro3
 
             var bracketLeft = "【";
             var bracketRight = "】";
-            if (render && Language.CardNeedSmallBracket())
+            if (render && Language.CardNeedSmallBracket(data.isPre ? Language.GetPrerelease() : Language.GetCardConfig()))
             {
                 bracketLeft = "[";
                 bracketRight = "]";
@@ -435,25 +407,33 @@ namespace MDPro3
                     if (data.Race != origin.Race)
                         re = bracketLeft + "<color=#FD3E08>" + InterString.Get("[?]族", Race(data.Race)) + "</color>" + Program.STRING_SLASH + SecondType(data.Type) + bracketRight;
                     else
-                        re = bracketLeft + InterString.Get("[?]族", Race(data.Race, render), render) + Program.STRING_SLASH + SecondType(data.Type, render) + bracketRight;
+                        re = bracketLeft + InterString.Get("[?]族", Race(data.Race, 2), 2) + Program.STRING_SLASH + SecondType(data.Type, 2) + bracketRight;
                 }
                 else
                 {
                     if (rushDuel)
                     {
+                        int translationType = 0;
+                        if (render)
+                        {
+                            translationType = 1;
+                            if (data.isPre)
+                                translationType = 2;
+                        }
+
                         re = bracketLeft;
                         if (data.HasType(CardType.Spell))
-                            re += InterString.Get("魔法卡", render);
+                            re += InterString.Get("魔法卡", translationType);
                         else
-                            re += InterString.Get("陷阱卡", render);
+                            re += InterString.Get("陷阱卡", translationType);
 
                         re = re.Replace("SPELL CARD", "Spell Card")
                                     .Replace("TRAP CARD", "Trap Card")
                                     .Replace("CARTA MÁGICA", "Carta Mágica")
                                     .Replace("CARTA TRAMPA", "Carta Trampa");
 
-                        var secondType = SecondType(data.Type, render);
-                        if (secondType != GetUnsafe(1054, render))
+                        var secondType = SecondType(data.Type, 2);
+                        if (secondType != GetUnsafe(1054, 2))
                         {
                             re += Program.STRING_SLASH + secondType;
 
@@ -476,14 +456,18 @@ namespace MDPro3
                     {
                         if (render)
                         {
+                            int translationType = 1;
+                            if (data.isPre)
+                                translationType = 2;
+
                             re = bracketLeft;
                             if (data.HasType(CardType.Spell))
-                                re += InterString.Get("魔法卡", render);
+                                re += InterString.Get("魔法卡", translationType);
                             else
-                                re += InterString.Get("陷阱卡", render);
+                                re += InterString.Get("陷阱卡", translationType);
 
-                            var secondType = SecondType(data.Type, render);
-                            if (secondType != GetUnsafe(1054, render))
+                            var secondType = SecondType(data.Type, 2);
+                            if (secondType != GetUnsafe(1054, 2))
                             {
                                 if (data.HasType(CardType.Equip))
                                     re += "<Sprite=0>";
@@ -501,7 +485,7 @@ namespace MDPro3
                             re += bracketRight;
                         }
                         else
-                            re = bracketLeft + MainType(data.Type, render) + bracketRight;
+                            re = bracketLeft + MainType(data.Type, 2) + bracketRight;
                     }
                 }
             }
@@ -510,50 +494,6 @@ namespace MDPro3
             return re;
         }
 
-        public static string GetSetName(long Setcode, bool raw = false)
-        {
-            var setcodes = new int[4];
-            for (var j = 0; j < 4; j++)
-            {
-                setcodes[j] = (int)((Setcode >> j * 16) & 0xffff);
-            }
-            var returnValue = new List<string>();
-            for (var i = 0; i < setNames.Count; i++)
-            {
-                var currentHash = setNames[i].hashCode;
-                for (var j = 0; j < 4; j++)
-                {
-                    if (currentHash == setcodes[j])
-                    {
-                        var setArray = setNames[i].content.Split('\t');
-                        var setString = setArray[0];
-                        returnValue.Add(setString);
-                    }
-                }
-            }
-            if (returnValue.Count > 0)
-            {
-                if (raw)
-                    return string.Join("|", returnValue.ToArray());
-                else
-                    return "【" + string.Join("|", returnValue.ToArray()) + "】";
-            }
-            else
-                return string.Empty;
-        }
-
-        public static int GetSetNameCode(string setName)
-        {
-            int returnValue = 0;
-            for (var i = 0; i < setNames.Count; i++)
-            {
-                var setArray = setNames[i].content.Split('\t');
-                var setString = setArray[0];
-                if (setName == setString)
-                    returnValue = setNames[i].hashCode;
-            }
-            return returnValue;
-        }
 
     }
 }

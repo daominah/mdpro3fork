@@ -111,7 +111,7 @@ namespace MDPro3.UI
 
         private void ExitLogin()
         {
-            Config.Set("MyCardToken", Config.stringNo);
+            Config.Set("MyCardToken", Config.STRING_NO);
             Config.Save();
             MyCard.account = null;
             MyCard.CloseAthleticWatchListWebSocket();

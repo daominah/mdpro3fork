@@ -1,3 +1,4 @@
+using MDPro3.Duel.YGOSharp;
 using MDPro3.Utility;
 using UnityEngine;
 
@@ -10,20 +11,20 @@ namespace MDPro3.UI
         public int subCode;
         public int group;
         public long filterCode;
-        public string text_es_ES;
 
         protected override void Awake()
         {
             base.Awake();
             if(code != 0)
             {
+                var originText = GetButtonText();
                 SetButtonText(StringHelper.GetUnsafe(code));
                 if(subCode != 0)
                 {
                     if (subCode == 9999)
                         SetButtonText(InterString.Get("[?]族", GetButtonText()));
-                    else if (Language.GetConfig() == Language.Spanish && text_es_ES != string.Empty)
-                        SetButtonText(text_es_ES);
+                    else if (subCode == 1051 || subCode == 1052)
+                        SetButtonText(InterString.Get(originText));
                     else
                     {
                         var title = GetButtonText();

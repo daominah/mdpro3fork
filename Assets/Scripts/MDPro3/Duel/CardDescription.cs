@@ -29,7 +29,6 @@ namespace MDPro3
             manager.GetElement<Button>("CardButton").onClick.AddListener(ShowDetail);
         }
 
-
         public void Hide()
         {
             showing = false;
@@ -130,10 +129,10 @@ namespace MDPro3
                 manager.GetElement<RawImage>("Card").material.renderQueue = 3000;
             }
 
-            manager.GetElement<Text>("TextType").text = StringHelper.GetType(data);
+            manager.GetElement<Text>("TextType").text = data.GetTypeForUI();
             if (data.HasType(CardType.Pendulum))
             {
-                var texts = GetCardDescriptionSplit(origin.Desc);
+                var texts = origin.GetDescriptionSplit();
                 string monster = InterString.Get("【怪兽效果】");
                 if (!data.HasType(CardType.Effect))
                     monster = InterString.Get("【怪兽描述】");
@@ -143,18 +142,17 @@ namespace MDPro3
                     && !data.HasType(CardType.Equip)
                     && !data.HasType(CardType.Continuous)
                     && !data.HasType(CardType.Trap))))
-                    manager.GetElement<TextMeshProUGUI>("TextDescription").text = tails + GetSetName(data.Id) + InterString.Get("【灵摆效果】") + "\n" + texts[0] + "\n"
+                    manager.GetElement<TextMeshProUGUI>("TextDescription").text = tails + data.GetSetNameWithColor() + InterString.Get("【灵摆效果】") + "\n" + texts[0] + "\n"
                         + "<color=#666666>" + monster + "\n" + texts[1] + "</color>";
                 else if (p != null && (p.location & (uint)CardLocation.MonsterZone) > 0)
-                    manager.GetElement<TextMeshProUGUI>("TextDescription").text = tails + GetSetName(data.Id) + monster + "\n" + texts[1] + "\n"
+                    manager.GetElement<TextMeshProUGUI>("TextDescription").text = tails + data.GetSetNameWithColor() + monster + "\n" + texts[1] + "\n"
                         + "<color=#666666>" + InterString.Get("【灵摆效果】") + "\n" + texts[0] + "</color>";
                 else
-                    manager.GetElement<TextMeshProUGUI>("TextDescription").text = tails + GetSetName(data.Id) + InterString.Get("【灵摆效果】") + "\n" + texts[0] + "\n"
+                    manager.GetElement<TextMeshProUGUI>("TextDescription").text = tails + data.GetSetNameWithColor() + InterString.Get("【灵摆效果】") + "\n" + texts[0] + "\n"
                         + monster + "\n" + texts[1];
-
             }
             else
-                manager.GetElement<TextMeshProUGUI>("TextDescription").text = tails + GetSetName(data.Id) + data.Desc;
+                manager.GetElement<TextMeshProUGUI>("TextDescription").text = tails + data.GetSetNameWithColor() + data.Desc;
 
             manager.GetElement<TextMeshProUGUI>("TextDescription").fontSize = 25f * Config.GetUIScale(1.35f);
 
@@ -189,7 +187,7 @@ namespace MDPro3
                 manager.GetElement<Image>("Level").sprite = TextureManager.GetCardLevelIcon(data);
                 if (data.HasType(CardType.Link))
                 {
-                    manager.GetElement<Text>("TextLevel").text = GetCardLinkCount(data).ToString();
+                    manager.GetElement<Text>("TextLevel").text = data.GetLinkCount().ToString();
 
                     manager.GetElement("Scale").SetActive(false);
                     manager.GetElement("TextScale").SetActive(false);
@@ -305,6 +303,7 @@ namespace MDPro3
             public Sprite sprite;
             public bool notOriginal;
         }
+
         public static AttributeSprite GetCardAttribute(Card data, bool render = false)
         {
             var origin = CardsManager.Get(data.Id);
@@ -382,11 +381,13 @@ namespace MDPro3
 
             return returnValue;
         }
+
         public struct RaceSprite
         {
             public Sprite sprite;
             public bool notOriginal;
         }
+
         public static RaceSprite GetCardRace(Card data)
         {
             var returnValue = new RaceSprite();
@@ -400,14 +401,7 @@ namespace MDPro3
             returnValue.sprite = TextureManager.GetCardRaceIcon(data.Race);
             return returnValue;
         }
-        public static int GetCardLinkCount(Card data)
-        {
-            int returnValue = 0;
-            for (int i = 0; i < 9; i++)
-                if (((data.LinkMarker >> i) & 1u) > 0 && i != 4)
-                    returnValue++;
-            return returnValue;
-        }
+
         public static Color[] GetCardFrameColor(Card data)
         {
             var returnValue = new Color[2];
@@ -539,75 +533,6 @@ namespace MDPro3
                     returnValue[0] = new Color(1f, 0.0509f, 0.6784f, 1f);
                     returnValue[1] = returnValue[0];
                 }
-            }
-            return returnValue;
-        }
-
-        public static string[] GetCardDescriptionSplit(string description, bool render = false)
-        {
-            var returnValue = new string[2];
-            var lines = description.Replace("\r", "").Split('\n');
-            var language = render ? Language.GetCardConfig() : Language.GetConfig();
-
-            int beforePendulum = 1;
-            int splitLines = 1;
-            string symbol = "【";
-            int monsterStart = 0;
-
-            if (language == Language.English)
-            {
-                beforePendulum = 2;
-                splitLines = 2;
-                symbol = "[";
-            }
-            else if (language == Language.Spanish)
-            {
-                beforePendulum = 2;
-                splitLines = 2;
-            }
-            else if (language == Language.TraditionalChinese)
-            {
-                beforePendulum = 0;
-            }
-
-            for (int i = beforePendulum; i < lines.Length; i++)
-                if (lines[i].StartsWith(symbol))
-                {
-                    monsterStart = i;
-                    break;
-                }
-
-            for (int i = beforePendulum; i < lines.Length; i++)
-            {
-                if (i <= monsterStart - splitLines)
-                {
-                    if (monsterStart - i == splitLines)
-                        returnValue[0] += lines[i];
-                    else
-                        returnValue[0] += lines[i] + Program.STRING_LINE_BREAK;
-                }
-                else if (i > monsterStart)
-                {
-                    if (i == lines.Length - 1)
-                        returnValue[1] += lines[i];
-                    else
-                        returnValue[1] += lines[i] + Program.STRING_LINE_BREAK;
-                }
-            }
-            if (language == Language.Spanish)
-                returnValue[0] = returnValue[0].Replace("-n/a-", string.Empty);
-            return returnValue;
-        }
-
-        public static string GetSetName(int code)
-        {
-            var data = CardsManager.Get(code);
-
-            var returnValue = StringHelper.GetSetName(data.Setcode, true);
-            if (returnValue.Length > 0)
-            {
-                returnValue = "<color=#FFF000>" +
-                    StringHelper.GetUnsafe(1329) + returnValue + "</color>" + Program.STRING_LINE_BREAK;
             }
             return returnValue;
         }

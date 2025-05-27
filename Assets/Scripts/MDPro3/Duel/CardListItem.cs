@@ -35,14 +35,14 @@ namespace MDPro3.UI
                 {
                     levelIcon.sprite = TextureManager.GetCardLevelIcon(card.GetData());
                     if (card.GetData().HasType(CardType.Link))
-                        textLevel.text = CardDescription.GetCardLinkCount(card.GetData()).ToString();
+                        textLevel.text = card.GetData().GetLinkCount().ToString();
                     else
                         textLevel.text = card.GetData().Level.ToString();
                 }
                 else
                 {
                     levelIcon.sprite = TextureManager.container.typeNone;
-                    textLevel.text = "";
+                    textLevel.text = string.Empty;
                 }
                 if (card.chains.Count > 0)
                 {

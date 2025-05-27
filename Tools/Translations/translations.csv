@@ -20,7 +20,7 @@
 确认退出,确認退出,Confirm Exit,Confirmez la fermeture,Beenden bestätigen,Confermare Uscita?,Confirmar saída,Confirmar Salida,ゲーム終了確認,게임 종료 확인
 即将退出应用程序，@n是否确认？,即將退出應用程序，@n是否确認？,Are You Sure You Want To Exit The Game?,Êtes-vous sûr de vouloir quitter le jeu ?,Möchtest du das Spiel wirklich beenden?,Sicuro di Volere Uscire?,Realmente deseja sair?,¿Realmente desea salir del juego?,ゲームは終了しますか？,게임을 종료하겠습니까?
 #SubMenu,,,,,,,,,
-副菜单,副菜單,Sub Menu,,,,,,,
+副菜单,副菜單,Sub Menu,Sous-menu,Untermenü,Sottomenu,Submenu,Submenú,サブメニュー,서브 메뉴
 #Solo,,,,,,,,,
 人机概述,人機槪述,AI Deck Description,Description du Deck IA,KI-Deckbeschreibung,Descrizione Deck IA,Visão Geral da IA,Descripción del bot,デッキ説明,덱 설명
 AI始终出剪刀,AI始終出翦刀,Always Plays Scissors (AI),L'IA joue toujours les ciseaux,Spielt immer Schere (KI),Sempre Forbice (IA),IA sempre joga tesoura,La IA siempre elegirá tijeras,チョキ固定（ＡＩ）,가위 고정 (AI)
@@ -128,7 +128,7 @@ MyCard卡组,MyCard牌組,MyCard Deck,Deck MyCard,MyCard Decks,Deck MyCard,Decks
 删除本地卡组失败：,删除牌組卡組失敗：,Failed to Delete Local Deck:,Échec de la suppression du Deck local :,Löschen des lokalen Decks fehlgeschlagen:,Errrore durante la cancellazione del Deck Locale:,Falha ao excluir deck local:,No se pudo eliminar el deck local:,オフラインデッキ削除が失敗した：,오프라인 덱 삭제 실패：
 #Setting,,,,,,,,,
 zh-CN,简体中文,简体中文,简体中文,简体中文,简体中文,简体中文,简体中文,简体中文,简体中文
-zh-TW,繁体中文,繁体中文,繁体中文,繁体中文,繁体中文,繁体中文,繁体中文,繁体中文,繁体中文
+zh-TW,繁體中文,繁體中文,繁體中文,繁體中文,繁體中文,繁體中文,繁體中文,繁體中文,繁體中文
 en-US,English,English,English,English,English,English,English,English,English
 fr-FR,Français,Français,Français,Français,Français,Français,Français,Français,Français
 ge-DE,Deutsch,Deutsch,Deutsch,Deutsch,Deutsch,Deutsch,Deutsch,Deutsch,Deutsch
@@ -169,7 +169,7 @@ ko-KR,한국어,한국어,한국어,한국어,한국어,한국어,한국어,한�
 阴影质量,陰影質量,Shadow Quality,Qualité des ombres,Schattenqualität,Qualità Delle Ombre,Qualidade Sombras,Calidad de sombras,シャドウ画質,그림자 화질
 帧数限制,幀數限制,FPS Limit,Limite FPS,FPS-Limit,Limite Di FPS,Limite de FPS,Límite de FPS,ＦＰＳ制限,FPS 제한
 帧数显示,幀數顯示,FPS Display,Affichage FPS,FPS-Anzeige,Mostra FPS,Exibir FPS,Mostrar FPS,ＦＰＳ表示,FPS 표시
-开启或关闭屏幕右上角的帧数显示,開啓或關閉屛幕右上角的幀數顯示,FPS will be Displayed on the Right Top of Your Screen,Les FPS s’afficheront en haut à droite de votre écran,FPS wird oben rechts auf dem Bildschirm angezeigt,Il Numero Di Fps Sarà Mostrato Nella Parte Superiore Destra Dello Schermo,Desligado,Mostrar FPS en esquina superior derecha,画面右上のＦＰＳ表示をオン／オフする,화면 오른쪽 위의 FPS 표시를 ON/OFF
+开启或关闭屏幕右上角的帧数显示,開啓或關閉屛幕右上角的幀數顯示,FPS will be Displayed on the Right Top of Your Screen,Les FPS s’afficheront en haut à droite de votre écran,FPS wird oben rechts auf dem Bildschirm angezeigt,Il Numero Di Fps Sarà Mostrato Nella Parte Superiore Destra Dello Schermo,O FPS será apresentado no canto superior direito do ecrã,Mostrar FPS en esquina superior derecha,画面右上のＦＰＳ表示をオン／オフする,화면 오른쪽 위의 FPS 표시를 ON/OFF
 震动,震動,Vibration,Vibration,Vibration,Vibrazione,Vibração,Vibración,振動,진동
 开启或关闭手柄震动,開啟或關閉手把振動,Turn On or Off the Controller Vibration,Activer ou désactiver la vibration de la manette,Controller-Vibration ein-/ausschalten,Attiva o Disattiva la Vibrazione del Controller,Ativar vibração do controle,Activar o desactivar la vibración del mando,コントロールの振動をオン／オフする,컨트롤 진동 ON/OFF
 确认按钮,确認按鈕,Confirm Button,Bouton Confirmer,Bestätigungstaste,Bottone Di Conferma,Botão de Confirmação,Botón de confirmación,確認ボタン,확인 버튼
@@ -348,10 +348,10 @@ UI布局,UI佈局,User Interface Layout,Disposition de l’interface utilisateur
 房间已满，无法继续添加AI。,房間已滿，無法繼續添加AI。,"The Room is Full, You Cannot Add Another AI Bot.",La salle est pleine,Raum ist voll – weiterer KI-Bot kann nicht hinzugefügt werden.,"La Stanza È Piena, Non Puoi Aggiungere Altri Bot.",Sala cheia. Não é possível adicionar mais IA.,La sala está llena y no se pueden agregar más IAs.,デュエリスト空きスロットはありません、ＡＩを追加できません。,듀얼리스트 빈 공간은 없습니다. AI를 추가할 수 없습니다.
 #EditDeck,,,,,,,,,
 卡组,牌組,Deck,Deck,Deck,Deck,Deck,Deck,デッキ,덱
-主卡组,主牌組,Main Deck,Main Deck,Hauptdeck,Main Deck,Deck Principal,Main Deck,メインデッキ,메인 덱
-额外卡组,額外牌組,Extra Deck,Extra Deck,Extra Deck,Extra Deck,Deck Extra,Extra Deck,ＥＸデッキ,엑스트라 덱
+主卡组,主牌組,Main Deck,Main Deck,Main Deck,Main Deck,Deck Principal,Deck Principal,メインデッキ,메인 덱
+额外卡组,額外牌組,Extra Deck,Extra Deck,Extra Deck,Extra Deck,Deck Extra,Deck Extra,ＥＸデッキ,엑스트라 덱
 副卡组,副牌組,Side Deck,Side Deck,Side Deck,Side Deck,Side Deck,Side Deck,サイドデッキ,사이드 덱
-菜单,菜單,Menu,Menu,Menü,Menu,Menu,Sub Menú,メニュー,메뉴
+菜单,菜單,Menu,Menu,Menü,Menu,Menu,Menú,メニュー,메뉴
 重置,重置,Reset,Réinitialisation,Zurücksetzen,Ripristina,Resetar,Reiniciar,リセット,리셋
 排序,排序,Sort,Trier,Sortieren,Ordina,Ordenar,Ordenar,整列,정렬
 打乱,打亂,Shuffle,Mélanger,Mischen,Mischia,Embaralhar,Barajar,シャッフル,셔플
@@ -370,12 +370,12 @@ UI布局,UI佈局,User Interface Layout,Disposition de l’interface utilisateur
 卡组中限制卡片不得超过1张，@n如需无视限制，请将禁限卡表设置为无（N/A）。,卡組中限製卡片不得超過1張，@n如需無視限製，請將禁限卡表設置為無（N/A）。,"The Limit Card Should Not Be More Than 1, @n If You Want To Ignore Restrictions, Please Set The Banlist To None (N/a).",La carte Limitée ne doit pas dépasser 1,"Limitierte Karte darf nur 1x enthalten sein. @nRegel auf „Keine (N/a)“ stellen, um zu ignorieren.","Non è possibile inserire più di 1 Carta Limitata, @n. Per ignorare le restrizioni,seleziona 'Nessuna (N/a)' come Lista Carte Proibite & Limitate.","Cartas limitadas: máximo 1.@nPara ignorar, defina lista como N/A.","No puedes agregar más de 1 carta limitada a tu deck. @nPara ignorar las restricciones, establezca la lista de cartas prohibidas y restringidas en (N/A).",制限カードが１枚しかデッキに入れません、@無制限にしたい場合は、リミットレギュレーション設定を（Ｎ／Ａ）に選択してください。,제한 카드가 1장밖에 덱에 들어갈 수 없습니다. 무제한으로 하고 싶은 경우에는 리미트 레귤레이션 설정을 (N/A)으로 선택하세요.
 无法将禁止卡片放入卡组，@n如需无视限制，请将禁限卡表设置为无（N/A）。,無法將禁止卡片放入卡組，@n如需無視限製，請將禁限卡表設置為無（N/A）。,"The Forbidden Card Can Not Be Added To Deck, @n If You Want To Ignore Restrictions, Please Set The Banlist To None (N/a).",La carte Interdite ne peut pas être ajoutée au jeu,"Verbotene Karte kann nicht hinzugefügt werden. @nRegel auf „Keine (N/a)“ stellen, um zu ignorieren.","Non è possibile inserire Carte Bandite, @n. Per ignorare le restrizioni, seleziona 'Nessuna (N/a)' come Lista Carte Proibite & Limitate.","Cartas proibidas não permitidas.@nPara ignorar, defina lista como N/A.","No puedes agregar cartas prohibidas a tu deck. @nPara ignorar las restricciones, establezca la lista de cartas prohibidas y restringidas en (N/A).",禁止カードが デッキに入れません、@無制限にしたい場合は、リミットレギュレーション設定を（Ｎ／Ａ）に選択してください。,금지 카드가 덱에 들어갈 수 없습니다. 무제한으로 하고 싶은 경우에는 리미트 레귤레이션 설정을 (N/A)으로 선택하세요.
 无法删除更多卡片,無法刪除更多卡片,Can Not Delete More,Impossible d’en supprimer davantage,Kann nicht weiter gelöscht werden,Impossibile Rimuoverne Ulteriormente,Não é possível remover mais cartas,No puedes eliminar mas cartas,これ以上のカードを削除できません,이 이상의 카드를 삭제할 수 없습니다.
-无法将该卡片加入主卡组,無法將該卡片加入主卡組,Can Not Add This Card To Main Deck,Impossible d’ajouter cette carte au Main Deck,Diese Karte kann nicht ins Hauptdeck,Non è Possibile Aggiungere Questa Carta al Main Deck,Não pode adicionar ao Deck Principal,No puedes agregar esta carta al Main Deck,カードをデッキに入れません,카드를 덱에 넣을 수 없습니다
-无法将该卡片加入额外卡组,無法將該卡片加入額外卡組,Can Not Add This Card To Side Deck,Impossible d’ajouter cette carte au Side Deck,Diese Karte kann nicht ins Side Deck,Non è Possibile Aggiungere Questa Carta al Side Deck,Não pode adicionar ao Deck Extra,No puedes agregar esta carta al Extra Deck,カードをＥＸデッキに入れません,카드를 엑스트라 덱에 넣을 수 없습니다
+无法将该卡片加入主卡组,無法將該卡片加入主卡組,Can Not Add This Card To Main Deck,Impossible d’ajouter cette carte au Main Deck,Diese Karte kann nicht ins Hauptdeck,Non è Possibile Aggiungere Questa Carta al Main Deck,Não pode adicionar ao Deck Principal,No puedes agregar esta carta al Deck Principal,カードをデッキに入れません,카드를 덱에 넣을 수 없습니다
+无法将该卡片加入额外卡组,無法將該卡片加入額外卡組,Can Not Add This Card To Extra Deck,Impossible d’ajouter cette carte au Extra Deck,Diese Karte kann nicht ins Extradeck,Non è Possibile Aggiungere Questa Carta al Extra Deck,Não pode adicionar ao Deck Adicional,No puedes agregar esta carta al Deck Extra,カードをＥＸデッキに入れません,카드를 엑스트라 덱에 넣을 수 없습니다
 可以向卡组中添加卡片,可以向卡組中添加卡片,You Can Add Cards To Deck,Vous pouvez ajouter des cartes au Deck,Karten können hinzugefügt werden,Puoi Aggiungere Carte al Deck,Cartas podem ser adicionadas,Puedes agregar una carta al deck,カードをデッキにを追加できる,카드를 덱에 추가할 수 있다
 切换到简单显示,切換到簡單顯示,Switch To Simple Display,Passer à l’affichage simple,Wechsle zu einfacher Ansicht,Passa a Schermata Semplice,Modo Simples,Visualización simple,簡易表示に切り替える,단순 표시로 전환
 切换到详情显示,切換到詳情顯示,Switch To Detail Display,Passer à l’affichage détaillé,Wechsle zu Detailansicht,Passa a Schermata Dettagliata,Modo Detalhado,Visualización de detalles,詳細表示に切り替える,상세 표시로 전환
-切换到卡池显示,切換到卡池顯示,Switch To Pool Info,Passer aux infos de groupe,Wechsle zu Pool-Info,Passa a Informazioni,Modo Completo,Visualización de tipo de carta,カードプール表示に切り替える,카드 풀 표시로 전환
+切换到归属显示,切換到歸屬顯示,Switch To Pool Info,Passer aux infos de groupe,Wechsle zu Pool-Info,Passa a Informazioni,Modo Completo,Visualización de tipo de carta,カードプール表示に切り替える,카드 풀 표시로 전환
 已加入卡片收藏,已加入卡片收藏,Added To Card Collection,Ajouté à la collection de cartes,Zur Sammlung hinzugefügt,Aggiungi alla Collezione,Adicionado aos favoritos,Carta agregada a favoritos,カードコレクションに追加されました,카드 컬렉션에 추가됨
 卡组内卡片张数超过限制。@n如需无视限制，请将禁限卡表设置为无（N/A）。,牌組內卡片張數超過限制。@n如需無視限制，請將禁限卡表設定為無（N/A）。,There Are Cards In Your Deck That Exceed The Limit。@nplease Set Forbidden & Limited Lists To Na If You Want.,Il y a des cartes dans votre Deck qui dépassent la limite。 @nDéfinir les listes interdites et limitées sur NA si vous le souhaitez.,"Deck enthält Karten, die die Limits überschreiten。@nBitte stelle die Liste auf N/a, um dies zu ignorieren.",Alcune Carte Nel Tuo Deck Eccedono I Limiti Imposti。@nimposta Su N/a La Lista Di Carte Proibite & Limitate Per Ignorare I Limiti,"Deck excede limite.@nPara ignorar, defina lista como N/A.","El número de cartas en el deck supera el límite. @nSi desea ignorar el límite, establezca la lista de cartas prohibidas y limitadas como N/A.",デッキの禁止・制限枚数に反しています。@n制限なししたい場合はリミットレギュレーションを（Ｎ／Ａ）を選択してください。,덱의 금지·제한 장수에 반합니다. @n제한 없이 하고 싶은 경우에는 리미트 레귤레이션을 (N/A)로 선택하세요.
 卡组未保存,牌組未保存,Deck Not Saved,Deck non enregistré,Deck nicht gespeichert,Il Deck Non È Stato Salvato,Deck não salvo,El deck no se ha guardado,デッキ保存,덱 저장
@@ -458,14 +458,14 @@ Off,Off,Off,Off,Aus,Off,Desligado,Apagado,ＯＦＦ,Off
 结束,結束,End,Fin,Beenden,Termina,Terminar,Finalizar,終了,종료
 扩大,擴大,Maximize,Maximiser,Maximieren,Massimizza,Ampliar,Ampliar,拡大,확대
 缩小,縮小,Minimize,Minimiser,Minimieren,Minimizza,Reduzir,Reducir,縮小,축소
-重试,重試,Retry,,,,,,,
+重试,重試,Retry,Réessayer,Wiederholen,Riprova,Tentar novamente,Revistar,リトライ,재시도
 #Duel,,,,,,,,,
 未知卡片,未知卡片,Unknown Card,Carte inconnue,Unbekannte Karte,Carta Sconosciuta,Carta Desconhecida,Carta desconocida,不明カード,불명 카드
 未知卡表,未知卡表,Unknown Ban-List,Liste de bannissement inconnu,Unbekannte Ban-Liste,Lista Di Carte Probiite & Limitate Sconosciuta,Lista Desconhecida,Banlist desconocida,Ｎ／Ａ,N/A
 【灵摆效果】,【靈擺效果】,【Pendulum Effect】,【Effet Pendule】,【Pendeleffekt】,【Effetto Pendulum】,【Efeito de Pêndulo】,【Efecto de Péndulo】,【ペンデュラム効果】,【펜듈럼 효과】
 【怪兽效果】,【怪獸效果】,【Monster Effect】,【Effet de Monstre】,【Monstereffekt】,【Effetto di un Mostro】,【Efeito de Monstro】,【Efecto de Monstruo】,【モンスター効果】,【몬스터 효과】
 【怪兽描述】,【怪獸描述】,【Monster Description】,【Description du monstre】,【Monster Beschreibung】,【Descrizione Del Mostro】,【Descrição】,【Descripción del Monstruo】,【モンスターテキスト】,【몬스터 텍스트】
-[?]族,[?]族,[?] Type,[?],[?],[?],[?],[?],[?],[?]
+[?]族,[?]族,[?],[?],[?],[?],[?],[?],[?],[?]
 召唤,召喚,Summon,Invoquer,Beschwörung,Evocazione,Invocar,Invocar,召喚,일반 소환
 特殊召唤,特殊召喚,Special Summon,Invocation Spéciale,Spezialbeschwörung,Evocazione Speciale,Invocar Especial,Invocación Especial,特殊召喚,특수 소환
 反转召唤,反轉召喚,Flip Summon,Invocation Flip,Flipbeschwörung,Evocazione Per Scoperta,Invocar por Virar,Invocación por Volteo,反転召喚,반전 소환
@@ -622,7 +622,7 @@ Off,Off,Off,Off,Aus,Off,Desligado,Apagado,ＯＦＦ,Off
 该项设置将与我方场地设置保持一致。,該項設置將與我方場地設置保持一致。,This will Match with My Duel Field.,Cela correspondra à mon terrain de Duel.,Entspricht meinem Spielfeld,Questo si Abbinerà al mio Terreno di Duello Scelto.,Esta configuração será consistente com as configurações do campo aliado.,Esto coincidirá con mi campo de duelo.,この設置は自分のフィールドテーマと一致にする。,이 설정은 자신 필드 테마와 일치합니다.
 不设置,不設定,No Image,Ce paramètre sera défini sur « Pas d’image ».,Kein Bild,Nessuna Immagine,Não definir,Sin Imagen,設置しない,설정 없음
 该项设置将设置为无。,該項設定將設定為無。,"This Setting will be Set to ""No Image"".",Ce paramètre sera défini sur « Pas d’image ».,Diese Einstellung wird auf „Kein Bild“ gesetzt.,"Questa Impostazione Verrà Posizionata Su ""Nessuna Immagine""","Esta configuração será definida como ""Nenhuma"".","Esta configuración se establecerá en ""Sin Imagen"".",設置を無しにする。,설정은 없음으로 합니다.
-卡组设置为准,牌組設置為准,,,,,,,,
+卡组设置为准,牌組設置為准,Use Deck Appearance,Paramètres du Deck,Deck-Erscheinungsbild verwenden,Usa l'aspetto del mazzo,Usar aparência do baralho,Usar la apariencia del mazo,デッキ設定に参照する,덱 외형을 사용
 覆盖卡组设置,覆蓋卡組設置,Override Deck Appearance,Remplacer l’apparence du Deck,Deck-Erscheinung überschreiben,Sovrascrivere Le Impostazioni Del Deck,Substituir configurações do deck,Anular Apariencia del Deck,デッキ設定の上書きにする,덱 설정 덮어쓰기
 自定义,自定義,DIY,Personnalisé,Benutzerdefiniert (DIY),Fai-Da-Te,Personalizar,DIY,カスタマイズ,사용자 지정
 我方头像：,我方頭像：,My Avatar:,Mon avatar :,Mein Avatar:,Il Mio Avatar:,Avatar do Aliado:,Mi Ávatar:,自分のアバター：,자신의 아바타:
@@ -697,4 +697,4 @@ YDK 内容不合法，主卡组必须满 40 张,YDK內容不合法，主牌組�
 仪式魔法,儀式魔法,Ritual Spell,Magie Rituelle,Ritualzauber,Magia Rituale,Magia de Ritual,Mágica de Ritual,儀式魔法,의식 마법
 通常陷阱,通常陷阱,Normal Trap,Piège Normal,Normale Falle,Trappola Normale,Armadilha Normal,Trampa Normal,通常罠,일반 함정
 永续陷阱,永續陷阱,Continuous Trap,Piège Continu,Permanent Falle,Trappola Continua,Armadilha Contínua,Trampa Continua,永続罠,지속 함정
-反击陷阱,反擊陷阱,Counter Trap,Contre-Piège,Konterfalle,Contra-Trapola,Armadilha de Resposta,Trampa de Contraefecto,ウンター罠,카운터 함정
+反击陷阱,反擊陷阱,Counter Trap,Contre-Piège,Konterfalle,Contra-Trapola,Armadilha de Resposta,Trampa de Contraefecto,カウンター罠,카운터 함정

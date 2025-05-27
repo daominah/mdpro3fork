@@ -441,8 +441,7 @@ namespace MDPro3.UI
                     matetial.SetColor("_Color0", colors[0]);
                     matetial.SetColor("_Color1", colors[1]);
                 });
-            TextDescriptionItem.text = StringHelper.GetType(data);
-
+            TextDescriptionItem.text = data.GetTypeForUI();
             TextDescriptionValue.text = pendulumTextNeedSplit
                 ? data.GetMonsterDescription() : data.GetDescription(true);
 

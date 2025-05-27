@@ -13,11 +13,46 @@ namespace MDPro3.Duel.YGOSharp
 {
     internal static class CardsManager
     {
+        public static string nullName = string.Empty;
+        public static string nullString = string.Empty;
+        public static string nameInSearch = string.Empty;
+
         public static IDictionary<int, Card> _cards = new Dictionary<int, Card>();
         public static IDictionary<int, Card> _cardsForRender = new Dictionary<int, Card>();
-        public static string nullName = "";
 
-        public static string nullString = "";
+        public static List<string> setNameHead = new()
+        {
+            "带有"
+        };
+
+        public static List<string> setNameTail = new()
+        {
+            "、",
+            "卡",
+            "怪兽",
+            "魔法",
+            "陷阱",
+            "通常",
+            "效果怪兽",
+            "融合",
+            "仪式",
+            "灵魂",
+            "同盟",
+            "二重",
+            "调整",
+            "同调",
+            "衍生物",
+            "速攻",
+            "永续",
+            "装备",
+            "场地",
+            "反击",
+            "反转",
+            "卡通",
+            "超量",
+            "灵摆",
+            "连接",
+        };
 
         internal static void Initialize()
         {
@@ -113,7 +148,7 @@ namespace MDPro3.Duel.YGOSharp
             foreach (var item in _cards)
             {
                 Card card = item.Value;
-                card.strSetName = StringHelper.GetSetName(card.Setcode, true);
+                card.strSetName = StringHelper.GetSetName(card.Setcode);
             }
         }
 
@@ -123,12 +158,14 @@ namespace MDPro3.Duel.YGOSharp
                 return _cards[id].Clone();
             return null;
         }
+
         internal static Card GetRenderCard(int id)
         {
             if (_cardsForRender.ContainsKey(id))
                 return _cardsForRender[id].Clone();
             return null;
         }
+
         internal static Card GetCardRaw(int id)
         {
             if (_cards.ContainsKey(id))
@@ -163,6 +200,7 @@ namespace MDPro3.Duel.YGOSharp
 
             return returnValue;
         }
+
         internal static List<Card> GetAllCards()
         {
             var returnValue = new List<Card>();
@@ -199,7 +237,6 @@ namespace MDPro3.Duel.YGOSharp
             }
         }
 
-
         public static List<string> GetMiddleStrings(string str, string start, string end)
         {
             List<string> returnValue = new List<string>();
@@ -213,40 +250,7 @@ namespace MDPro3.Duel.YGOSharp
             return returnValue;
         }
 
-        public static List<string> setNameTail = new List<string>
-        {
-            "、",
-            "卡",
-            "怪兽",
-            "魔法",
-            "陷阱",
-            "通常",
-            "效果怪兽",
-            "融合",
-            "仪式",
-            "灵魂",
-            "同盟",
-            "二重",
-            "调整",
-            "同调",
-            "衍生物",
-            "速攻",
-            "永续",
-            "装备",
-            "场地",
-            "反击",
-            "反转",
-            "卡通",
-            "超量",
-            "灵摆",
-            "连接",
-        };
-        public static List<string> setNameHead = new List<string>
-        {
-            "带有"
-        };
-
-        static List<string> GetSetNamesInDescription(string input)
+        private static List<string> GetSetNamesInDescription(string input)
         {
             List <string> returnValue = new List<string>();
             foreach(string s in setNameHead)
@@ -269,6 +273,7 @@ namespace MDPro3.Duel.YGOSharp
             }
             return returnValue;
         }
+
         internal static List<Card> Search
         (
             string getName,
@@ -623,9 +628,6 @@ namespace MDPro3.Duel.YGOSharp
             return cards;
         }
 
-
-        public static string nameInSearch = "";
-
         static bool JudgeInt(int min, int max, int raw)
         {
             bool re = true;
@@ -973,6 +975,7 @@ namespace MDPro3.Duel.YGOSharp
                 return a;
             };
         }
+
         internal static Comparison<Card> ComparisonOfCardReverse()
         {
             return (left, right) =>
@@ -1085,6 +1088,7 @@ namespace MDPro3.Duel.YGOSharp
                 return a;
             };
         }
+
         internal static Comparison<Card> ComparisonOfCard_ATK_Down()
         {
             return (left, right) =>
@@ -1197,6 +1201,7 @@ namespace MDPro3.Duel.YGOSharp
                 return a;
             };
         }
+
         internal static Comparison<Card> ComparisonOfCard_ATK_Up()
         {
             return (left, right) =>
@@ -1309,6 +1314,7 @@ namespace MDPro3.Duel.YGOSharp
                 return a;
             };
         }
+
         internal static Comparison<Card> ComparisonOfCard_DEF_Down()
         {
             return (left, right) =>
@@ -1421,6 +1427,7 @@ namespace MDPro3.Duel.YGOSharp
                 return a;
             };
         }
+
         internal static Comparison<Card> ComparisonOfCard_DEF_Up()
         {
             return (left, right) =>
@@ -1533,6 +1540,7 @@ namespace MDPro3.Duel.YGOSharp
                 return a;
             };
         }
+
         internal static Comparison<Card> ComparisonOfCard_LV_Down()
         {
             return (left, right) =>
@@ -1645,6 +1653,7 @@ namespace MDPro3.Duel.YGOSharp
                 return a;
             };
         }
+
         internal static Comparison<Card> ComparisonOfCard_LV_Up()
         {
             return (left, right) =>
@@ -1757,6 +1766,7 @@ namespace MDPro3.Duel.YGOSharp
                 return a;
             };
         }
+
         internal static Comparison<Card> ComparisonOfCard_Rarity_Up()
         {
             return (left, right) =>
@@ -1881,6 +1891,7 @@ namespace MDPro3.Duel.YGOSharp
                 return a;
             };
         }
+
         internal static Comparison<Card> ComparisonOfCard_Rarity_Down()
         {
             return (left, right) =>
@@ -2019,84 +2030,76 @@ namespace MDPro3.Duel.YGOSharp
             public int day;
         }
 
-        public static List<PackName> packs = new List<PackName>();
-
-        static Dictionary<string, string> pacDic = new Dictionary<string, string>();
-
-        static string path = "Data/pack";
+        public static List<PackName> packs = new();
+        private static readonly Dictionary<string, string> pacDic = new();
+        private const string PATH = "Data/pack";
 
         internal static void Initialize()
         {
-            if (Directory.Exists(path))
+            if (Directory.Exists(PATH))
             {
-                var fileInfos = new DirectoryInfo(path).GetFiles();
+                var fileInfos = new DirectoryInfo(PATH).GetFiles();
                 foreach (var file in fileInfos)
                     if (file.Name.ToLower().EndsWith(".db"))
-                        LoadDataBase(path + Program.STRING_SLASH + file.Name);
+                        LoadDataBase(PATH + Program.STRING_SLASH + file.Name);
                 InitializeSec();
             }
         }
 
         internal static void LoadDataBase(string filePath)
         {
-            using (SqliteConnection connection = new SqliteConnection("Data Source=" + filePath))
+            using SqliteConnection connection = new("Data Source=" + filePath);
+            connection.Open();
+            using IDbCommand command = new SqliteCommand("SELECT pack.* FROM pack;", connection);
+            using IDataReader reader = command.ExecuteReader();
+            while (reader.Read())
             {
-                connection.Open();
-                using (IDbCommand command = new SqliteCommand("SELECT pack.* FROM pack;", connection))
+                try
                 {
-                    using (IDataReader reader = command.ExecuteReader())
+                    int Id = (int)reader.GetInt64(0);
+                    Card c = CardsManager.GetCardRaw(Id);
+                    if (c != null)
                     {
-                        while (reader.Read())
+                        string temp = reader.GetString(1);
+                        c.packFullName = reader.GetString(2);
+                        string[] mats = temp.Split('-');
+                        if (mats.Length > 1)
+                            c.packShortName = mats[0];
+                        else
+                            c.packShortName = c.packFullName.Length > 10 ? c.packFullName.Substring(0, 10) + "..." : c.packFullName;
+                        c.reality = reader.GetString(3);
+                        temp = reader.GetString(4);
+                        mats = temp.Split('/');
+                        if (mats.Length == 3)
                         {
-                            try
-                            {
-                                int Id = (int) reader.GetInt64(0);
-                                Card c = CardsManager.GetCardRaw(Id);
-                                if (c != null)
-                                {
-                                    string temp = reader.GetString(1);
-                                    c.packFullName = reader.GetString(2);
-                                    string[] mats = temp.Split('-');
-                                    if (mats.Length > 1)
-                                        c.packShortName = mats[0];
-                                    else
-                                        c.packShortName = c.packFullName.Length > 10 ? c.packFullName.Substring(0, 10) + "..." : c.packFullName;
-                                    c.reality = reader.GetString(3);
-                                    temp = reader.GetString(4);
-                                    mats = temp.Split('/');
-                                    if (mats.Length == 3)
-                                    {
-                                        c.month = int.Parse(mats[0]);
-                                        c.day = int.Parse(mats[1]);
-                                        c.year = int.Parse(mats[2]);
-                                    }
-                                    mats = temp.Split('-');
-                                    if (mats.Length == 3)
-                                    {
-                                        c.year = int.Parse(mats[0]);
-                                        c.month = int.Parse(mats[1]);
-                                        c.day = int.Parse(mats[2]);
-                                    }
-                                    c.packFullName = c.year + "-" + c.month.ToString("D2") + "-" + c.day.ToString("D2") + " " + c.packFullName;
+                            c.month = int.Parse(mats[0]);
+                            c.day = int.Parse(mats[1]);
+                            c.year = int.Parse(mats[2]);
+                        }
+                        mats = temp.Split('-');
+                        if (mats.Length == 3)
+                        {
+                            c.year = int.Parse(mats[0]);
+                            c.month = int.Parse(mats[1]);
+                            c.day = int.Parse(mats[2]);
+                        }
+                        c.packFullName = c.year + "-" + c.month.ToString("D2") + "-" + c.day.ToString("D2") + " " + c.packFullName;
 
-                                    if (!pacDic.ContainsKey(c.packFullName))    
-                                    {
-                                        pacDic.Add(c.packFullName, c.packShortName);
-                                        PackName p = new PackName();
-                                        p.day = c.day;
-                                        p.year = c.year;
-                                        p.month = c.month;
-                                        p.fullName = c.packFullName;
-                                        p.shortName = c.packShortName;
-                                        packs.Add(p);
-                                    }
-                                }
-                            }
-                            catch (Exception)
-                            {
-                            }
+                        if (!pacDic.ContainsKey(c.packFullName))
+                        {
+                            pacDic.Add(c.packFullName, c.packShortName);
+                            PackName p = new PackName();
+                            p.day = c.day;
+                            p.year = c.year;
+                            p.month = c.month;
+                            p.fullName = c.packFullName;
+                            p.shortName = c.packShortName;
+                            packs.Add(p);
                         }
                     }
+                }
+                catch (Exception)
+                {
                 }
             }
         }
@@ -2138,5 +2141,7 @@ namespace MDPro3.Duel.YGOSharp
                 return 1;
             });
         }
+
     }
+
 }

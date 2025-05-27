@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.UI;
 using MDPro3.Utility;
+using System.Threading.Tasks;
 
 namespace MDPro3
 {
@@ -22,10 +23,11 @@ namespace MDPro3
 
         [HideInInspector] public RenderTexture renderTexture;
 
-        public const string bigSlash = "／";
-        public const string smallSlash = " / ";
+        public const string BIG_SLASH = "／";
+        public const string SMALL_SLASH = " / ";
         private static readonly float cardNameLabelWidthOCG = 520f;
         private static readonly float cardNameLabelWidthRushDuel = 520f;
+        private int fontLoadStage = 0;
 
         #region Public Reference
 
@@ -103,9 +105,9 @@ namespace MDPro3
             renderTexture = Program.instance.camera_.cameraRenderTexture.targetTexture;
         }
 
-        public void SwitchLanguage()
+        public void SwitchLanguage(string language = null)
         {
-            var language = Language.GetCardConfig();
+            language ??= Language.GetCardConfig();
             if (language == Language.SimplifiedChinese)
             {
                 cardName.fontSize = 50f;
@@ -161,6 +163,7 @@ namespace MDPro3
 
         private void SetFont(string fontName)
         {
+            fontLoadStage = 0;
             var handle = Addressables.LoadAssetAsync<TMP_FontAsset>(fontName);
             handle.Completed += (result) =>
             {
@@ -168,6 +171,7 @@ namespace MDPro3
                 cardNameRD.font = result.Result;
                 spellType.font = result.Result;
                 cardTypeRD.font = result.Result;
+                fontLoadStage++;
             };
             var handle2 = Addressables.LoadAssetAsync<Font>(fontName);
             handle2.Completed += (result) =>
@@ -178,6 +182,7 @@ namespace MDPro3
                 cardDescriptionPendulumRD.font = result.Result;
                 cardAuther.font = result.Result;
                 cardAutherRD.font = result.Result;
+                fontLoadStage++;
             };
         }
 
@@ -191,15 +196,15 @@ namespace MDPro3
             return false;
         }
 
-        public void RenderName(int code)
+        public async Task RenderName(int code)
         {
             if (NeedRushDuelStyle(code))
-                RenderRushDuelName(code);
+                await RenderRushDuelName(code);
             else
-                RenderOcgName(code);
+                await RenderOcgName(code);
         }
 
-        private void RenderRushDuelName(int code)
+        private async Task RenderRushDuelName(int code)
         {
             ocg.SetActive(false);
             rd.SetActive(true);
@@ -207,6 +212,14 @@ namespace MDPro3
             var data = CardsManager.GetRenderCard(code);
             if (data.Id == 0)
                 return;
+            if (data.isPre)
+                SwitchLanguage(Language.GetPrerelease());
+            else
+                SwitchLanguage();
+
+            if (fontLoadStage < 2)
+                await TaskUtility.WaitOneFrame();
+
             cardNameRD.GetComponent<RectTransform>().localScale = Vector3.one;
 
             cardNameRD.text = data.Name;
@@ -227,7 +240,7 @@ namespace MDPro3
             Program.instance.camera_.cameraRenderTexture.Render();
         }
 
-        private void RenderOcgName(int code)
+        private async Task RenderOcgName(int code)
         {
             ocg.SetActive(true);
             rd.SetActive(false);
@@ -235,6 +248,14 @@ namespace MDPro3
             var data = CardsManager.GetRenderCard(code);
             if (data.Id == 0)
                 return;
+            if (data.isPre)
+                SwitchLanguage(Language.GetPrerelease());
+            else
+                SwitchLanguage();
+
+            if (fontLoadStage < 2)
+                await TaskUtility.WaitOneFrame();
+
             cardName.GetComponent<RectTransform>().localScale = Vector3.one;
             cardName.text = data.Name;
             cardName.GetComponent<ContentSizeFitter>().SetLayoutHorizontal();
@@ -291,15 +312,15 @@ namespace MDPro3
             Program.instance.camera_.cameraRenderTexture.Render();
         }
 
-        public bool RenderCard(int code, Texture2D art)
+        public async Task<bool> RenderCard(int code, Texture2D art)
         {
             if(NeedRushDuelStyle(code))
-                return RenderRushDuelCard(code, art);
+                return await RenderRushDuelCard(code, art);
             else
-                return RenderOcgCard(code, art);
+                return await RenderOcgCard(code, art);
         }
 
-        private bool RenderRushDuelCard(int code, Texture2D art)
+        private async Task<bool> RenderRushDuelCard(int code, Texture2D art)
         {
             ocg.SetActive(false);
             rd.SetActive(true);
@@ -309,6 +330,14 @@ namespace MDPro3
             Card data = CardsManager.GetRenderCard(code);
             if (data == null || data.Id == 0)
                 return false;
+
+            if (data.isPre)
+                SwitchLanguage(Language.GetPrerelease());
+            else
+                SwitchLanguage();
+
+            if (fontLoadStage < 2)
+                await TaskUtility.WaitOneFrame();
 
             if (Settings.Data.CardRenderPassword)
                 cardPasswordRD.text = code.ToString("D8");
@@ -339,19 +368,15 @@ namespace MDPro3
             linkRD.SetActive(false);
             levelNumRD.gameObject.SetActive(false);
             rankNumRD.gameObject.SetActive(false);
-            atkNumRD.text = data.Attack == -2 ? "?" : data.Attack.ToString();
-            defNumRD.text = data.Defense == -2 ? "?" : data.Defense.ToString();
+            atkNumRD.text = data.GetAttackString();
+            defNumRD.text = data.GetDefenseString();
             atkRD.SetActive(true);
             defRD.SetActive(true);
             movePartsRD.gameObject.SetActive(true);
             movePartsRD.anchoredPosition = Vector2.zero;
 
             cardAttributeRD.sprite = CardDescription.GetCardAttribute(data, true).sprite;
-            cardTypeRD.text = StringHelper.GetType(data, true, true);
-            if (Language.CardUseLatin())
-                cardTypeRD.text = cardTypeRD.text.Replace(Program.STRING_SLASH, smallSlash);
-            else
-                cardTypeRD.text = cardTypeRD.text.Replace(Program.STRING_SLASH, bigSlash);
+            cardTypeRD.text = data.GetTypeForRushDuelRender();
 
             if (data.HasType(CardType.Pendulum))
             {
@@ -372,12 +397,11 @@ namespace MDPro3
                     cardArtPendulumRD.gameObject.SetActive(true);
                     cardArtPendulumRD.texture = art;
                 }
-                var pendulumDescription = CardDescription.GetCardDescriptionSplit(data.Desc, true);
-                cardDescriptionPendulumRD.text = TextForRender(pendulumDescription[0]);
+                cardDescriptionPendulumRD.text = TextForRender(data.GetPendulumDescription(true), data.isPre);
 
-                var authorSplit = GetAuthorFromDescription(pendulumDescription[1]);
+                var authorSplit = GetAuthorFromDescription(data.GetMonsterDescription(true));
                 cardAutherRD.text = authorSplit[1];
-                cardDescriptionRD.text = TextForRender(authorSplit[0]);
+                cardDescriptionRD.text = TextForRender(authorSplit[0], data.isPre);
 
                 lScaleRD.text = data.LScale.ToString();
                 rScaleRD.text = data.RScale.ToString();
@@ -401,8 +425,8 @@ namespace MDPro3
                 cardArtRD.gameObject.SetActive(true);
                 cardArtRD.texture = art;
                 var authorSplit = GetAuthorFromDescription(data.Desc);
-                cardDescriptionRD.text = TextForRender(authorSplit[0]);
-                cardAutherRD.text = TextForRender(authorSplit[1]);
+                cardDescriptionRD.text = TextForRender(authorSplit[0], data.isPre);
+                cardAutherRD.text = TextForRender(authorSplit[1], data.isPre);
                 cardDescriptionPendulumRD.text = string.Empty;
 
                 if (code == 10000000)
@@ -450,7 +474,7 @@ namespace MDPro3
                 defRD.SetActive(false);
                 defNumRD.text = string.Empty;
                 levelNumRD.gameObject.SetActive(true);
-                levelNumRD.text = CardDescription.GetCardLinkCount(data).ToString();
+                levelNumRD.text = data.GetLinkCount().ToString();
 
                 linkRD.SetActive(true);
                 for (int i = 0; i < 8; i++)
@@ -491,7 +515,7 @@ namespace MDPro3
             return true;
         }
 
-        private bool RenderOcgCard(int code, Texture2D art)
+        private async Task<bool> RenderOcgCard(int code, Texture2D art)
         {
             ocg.SetActive(true);
             rd.SetActive(false);
@@ -501,7 +525,16 @@ namespace MDPro3
             Card data = CardsManager.GetRenderCard(code);
             if (data == null || data.Id == 0)
                 return false;
-            if(Settings.Data.CardRenderPassword)
+
+            if (data.isPre)
+                SwitchLanguage(Language.GetPrerelease());
+            else
+                SwitchLanguage();
+
+            if (fontLoadStage < 2)
+                await TaskUtility.WaitOneFrame();
+
+            if (Settings.Data.CardRenderPassword)
                 cardPassword.text = code.ToString("D8");
             else
                 cardPassword.text = string.Empty;
@@ -523,9 +556,9 @@ namespace MDPro3
 
             cardFrame.gameObject.SetActive(true);
             cardAttribute.gameObject.SetActive(true);
-            cardDescriptionPendulum.text = "";
-            lScale.text = "";
-            rScale.text = "";
+            cardDescriptionPendulum.text = string.Empty;
+            lScale.text = string.Empty;
+            rScale.text = string.Empty;
             levels.SetActive(false);
             ranks.SetActive(false);
             rank13.SetActive(false);
@@ -539,7 +572,7 @@ namespace MDPro3
             numATK.text = data.Attack == -2 ? "?" : data.Attack.ToString();
             numDEF.text = data.Defense == -2 ? "?" : data.Defense.ToString();
             linkCount.gameObject.SetActive(false);
-            spellType.text = "";
+            spellType.text = string.Empty;
             cardDescription.GetComponent<RectTransform>().sizeDelta = new Vector2(590f, 160f);
             cardAttribute.sprite = CardDescription.GetCardAttribute(data, true).sprite;
 
@@ -560,12 +593,12 @@ namespace MDPro3
                     cardArtPendulum.gameObject.SetActive(true);
                     cardArtPendulum.texture = art;
                 }
-                var pendulumDescription = CardDescription.GetCardDescriptionSplit(data.Desc, true);
-                cardDescription.text = StringHelper.GetType(data, true).Replace(Program.STRING_SLASH, Language.CardUseLatin() ? smallSlash : bigSlash);
-                cardDescriptionPendulum.text = TextForRender(pendulumDescription[0]);
+                var pendulumDescription = data.GetDescriptionSplit(true);
+                cardDescription.text = data.GetTypeForRushDuelRender();
+                cardDescriptionPendulum.text = TextForRender(pendulumDescription[0], data.isPre);
 
                 var authorSplit = GetAuthorFromDescription(pendulumDescription[1]);
-                cardDescription.text += Program.STRING_LINE_BREAK + TextForRender(authorSplit[0]);
+                cardDescription.text += Program.STRING_LINE_BREAK + TextForRender(authorSplit[0], data.isPre);
                 cardAuther.text = authorSplit[1];
 
                 lScale.text = data.LScale.ToString();
@@ -587,13 +620,12 @@ namespace MDPro3
             {
                 cardArt.gameObject.SetActive(true);
                 cardArt.texture = art;
-                var description = "";
+                var description = string.Empty;
                 if (data.HasType(CardType.Monster))
-                    description = StringHelper.GetType(data, true)
-                        .Replace(Program.STRING_SLASH,Language.CardUseLatin() ? smallSlash : bigSlash) + Program.STRING_LINE_BREAK;
+                    description = data.GetTypeForRushDuelRender() + Program.STRING_LINE_BREAK;
 
                 var authorSplit = GetAuthorFromDescription(data.Desc);
-                description += TextForRender(authorSplit[0]);
+                description += TextForRender(authorSplit[0], data.isPre);
                 cardDescription.text = description;
                 cardAuther.text = authorSplit[1];
 
@@ -624,9 +656,9 @@ namespace MDPro3
                     line.SetActive(false);
                     textATK.SetActive(false);
                     textDEF.SetActive(false);
-                    numATK.text = "";
-                    numDEF.text = "";
-                    spellType.text = StringHelper.GetType(data, true, false);
+                    numATK.text = string.Empty;
+                    numDEF.text = string.Empty;
+                    spellType.text = data.GetSpellTypeForOCGRender();
 
                     if (data.HasType(CardType.Spell))
                         cardFrame.sprite = TextureManager.container.cardFrameSpellOF;
@@ -644,9 +676,9 @@ namespace MDPro3
                 cardName.color = Color.white;
                 linkMarkers.SetActive(true);
                 textDEF.SetActive(false);
-                numDEF.text = "";
+                numDEF.text = string.Empty;
                 linkCount.gameObject.SetActive(true);
-                switch (CardDescription.GetCardLinkCount(data))
+                switch (data.GetLinkCount())
                 {
                     case 1:
                         linkCount.sprite = TextureManager.container.link1R;
@@ -749,11 +781,11 @@ namespace MDPro3
             return data;
         }
 
-        private string TextForRender(string description)
+        private string TextForRender(string description, bool isPre)
         {
             if (string.IsNullOrEmpty(description))
                 return string.Empty;
-            var language = Language.GetCardConfig();
+            var language = isPre ? Language.GetPrerelease() : Language.GetCardConfig();
 
             if (language == Language.Japanese)
             {
@@ -777,12 +809,12 @@ namespace MDPro3
                     .Replace("\r\n⑨", "⑨");
             }
 
-            if (!Language.CardUseLatin())
-                description = description.Replace(Program.STRING_SLASH, bigSlash);
+            if (!Language.CardUseLatin(language))
+                description = description.Replace(Program.STRING_SLASH, BIG_SLASH);
             else
-                description = description.Replace(Program.STRING_SLASH, smallSlash);
+                description = description.Replace(Program.STRING_SLASH, SMALL_SLASH);
 
-            if (!Language.CardUseLatin())
+            if (!Language.CardUseLatin(language))
                 description = description.Replace(" ", "\u00A0");
             description = description.Replace($"{Program.STRING_LINE_BREAK}{Program.STRING_LINE_BREAK}", Program.STRING_LINE_BREAK);
             return description;

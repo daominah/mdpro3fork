@@ -34,7 +34,6 @@ namespace MDPro3
 
         [Header("UI Handler")]
         public FPSHandler fps;
-        public CardDetail cardDetail;
         List<UIHandler> handlers;
 
         [Header("Side Panel")]
@@ -65,7 +64,6 @@ namespace MDPro3
             handlers = new List<UIHandler>() 
             { 
                 fps,
-                cardDetail,
             };
             foreach (UIHandler handler in handlers)
                 handler.Initialize();

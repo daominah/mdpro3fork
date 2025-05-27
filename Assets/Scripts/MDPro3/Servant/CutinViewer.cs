@@ -307,7 +307,7 @@ namespace MDPro3.Servant
                 Destroy(manager.GetElement("Icon_Level_Odd"));
                 Destroy(manager.GetElement("Icon_Rank"));
                 Destroy(manager.GetElement("Icon_Rank_Odd"));
-                switch (CardDescription.GetCardLinkCount(card))
+                switch (card.GetLinkCount())
                 {
                     case 2:
                         manager.GetElement<ElementObjectManager>("Icon_LINK").

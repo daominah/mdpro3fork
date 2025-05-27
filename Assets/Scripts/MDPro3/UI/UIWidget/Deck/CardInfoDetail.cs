@@ -401,7 +401,7 @@ namespace MDPro3.UI
                 ParamatorAreaBottom.SetActive(false);
                 SpellTrapType.SetActive(true);
                 IconSpellTrapType.sprite = TextureManager.container.GetCardSpellTrapTypeIcon(data);
-                TextSpellTrapType.text = StringHelper.SecondMainType(data.Type);
+                TextSpellTrapType.text = data.GetSpellTrapType();
                 PoolGroup.SetParent(ParamatorAreaTop.transform, false);
             }
 
@@ -412,7 +412,6 @@ namespace MDPro3.UI
             IconBETA.gameObject.SetActive(data.isPre);
 
             #endregion
-
 
             #region Description Area
 
@@ -426,7 +425,7 @@ namespace MDPro3.UI
             {
                 PendulumDescriptionArea.SetActive(false);
             }
-            TextDescriptionItem.text = StringHelper.GetType(data);
+            TextDescriptionItem.text = data.GetTypeForUI() + data.GetSetNameWithBracket() + data.GetIdWithBracket();
             TextDescriptionValue.text = data.GetMonsterDescription();
 
             #endregion

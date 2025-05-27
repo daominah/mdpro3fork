@@ -5,6 +5,7 @@ namespace MDPro3.Utility
     {
         public const string ConfigName = "Language";
         public const string CardConfigName = "CardLanguage";
+        public const string PrereleaseName = "PrereleaseLanguage";
 
         public const string English = "en-US";
         public const string Spanish = "es-ES";
@@ -24,15 +25,35 @@ namespace MDPro3.Utility
             return Config.Get(ConfigName, SimplifiedChinese);
         }
 
+        public static void SetConfig(string language)
+        {
+            Config.Set(ConfigName, language);
+        }
+
         public static string GetCardConfig()
         {
             return Config.Get(CardConfigName, SimplifiedChinese);
         }
 
+        public static void SetCardConfig(string language)
+        {
+            Config.Set(CardConfigName, language);
+        }
+
+        public static string GetPrerelease()
+        {
+            return Config.Get(PrereleaseName, SimplifiedChinese);
+        }
+
+        public static void SetPrerelease(string language)
+        {
+            Config.Set(PrereleaseName, language);
+        }
+
         public static bool NeedBlankToAddWord()
         {
             var config = GetConfig();
-            if (config == English || config == Spanish || config == Korean || config == Portuguese)
+            if (UseLatin() || config == Korean)
                 return true;
             return false;
         }
@@ -40,23 +61,41 @@ namespace MDPro3.Utility
         public static bool UseLatin()
         {
             var config = GetConfig();
-            if (config == English || config == Spanish || config == Portuguese)
+            if (config == English
+                || config == Spanish
+                || config == Portuguese
+                || config == French
+                || config == German
+                || config == Italian)
                 return true;
             return false;
         }
 
         public static bool CardUseLatin()
         {
-            var config = GetCardConfig();
-            if (config == English || config == Spanish || config == Portuguese)
+            return CardUseLatin(GetCardConfig());
+        }
+
+        public static bool CardUseLatin(string language)
+        {
+            if (language == English
+                || language == Spanish
+                || language == Portuguese
+                || language == French
+                || language == German
+                || language == Italian)
                 return true;
             return false;
         }
 
         public static bool CardNeedSmallBracket()
         {
-            var config = GetCardConfig();
-            if (config == English || config == Spanish || config == Portuguese || config == Korean)
+            return CardNeedSmallBracket(GetCardConfig());
+        }
+
+        public static bool CardNeedSmallBracket(string language)
+        {
+            if (CardUseLatin() || language == Korean)
                 return true;
             return false;
         }

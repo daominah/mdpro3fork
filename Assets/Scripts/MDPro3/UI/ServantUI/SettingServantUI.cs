@@ -1140,7 +1140,7 @@ namespace MDPro3.UI.ServantUI
         {
             var config = Config.GetBool("ShowFPS", true);
             Config.SetBool("ShowFPS", !config);
-            ButtonShowFPS.SetModeText(config ? "开" : "关");
+            ButtonShowFPS.SetModeText(InterString.Get(config ? "关" : "开"));
             ChangeShowFPS();
         }
         public static void ChangeShowFPS()
@@ -1367,7 +1367,7 @@ namespace MDPro3.UI.ServantUI
             string selected = EventSystem.current.currentSelectedGameObject
                 .GetComponent<SelectionButton>().GetButtonText();
             ButtonCardLanguage.SetModeText(selected);
-            Config.Set(Language.CardConfigName, InterString.GetOriginal(selected));
+            Language.SetCardConfig(InterString.GetOriginal(selected));
             UIManager.ChangeLanguage();
         }
 
@@ -1403,7 +1403,7 @@ namespace MDPro3.UI.ServantUI
             string selected = EventSystem.current.
                 currentSelectedGameObject.GetComponent<SelectionButton>().GetButtonText();
             ButtonLanguage.SetModeText(selected);
-            Config.Set(Language.ConfigName, InterString.GetOriginal(selected));
+            Language.SetConfig(InterString.GetOriginal(selected));
             UIManager.ChangeLanguage();
         }
 

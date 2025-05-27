@@ -6,7 +6,6 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
-using static Spine.Unity.Editor.SkeletonBaker.BoneWeightContainer;
 
 namespace MDPro3
 {

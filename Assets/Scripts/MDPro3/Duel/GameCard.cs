@@ -831,7 +831,7 @@ namespace MDPro3
         {
             if (data.HasType(CardType.Link))
             {
-                if (CardDescription.GetCardLinkCount(data) > 2)
+                if (data.GetLinkCount() > 2)
                     return true;
                 else return false;
             }
@@ -3076,7 +3076,7 @@ namespace MDPro3
                 if (data.HasType(CardType.Link))
                 {
                     manager.GetElement("LinkCount").SetActive(true);
-                    manager.GetElement<TextMeshPro>("TextLinkCount").text = CardDescription.GetCardLinkCount(data).ToString();
+                    manager.GetElement<TextMeshPro>("TextLinkCount").text = data.GetLinkCount().ToString();
                     manager.GetElement("CardLevel").SetActive(false);
                 }
                 else

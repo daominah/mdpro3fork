@@ -12,13 +12,13 @@ namespace MDPro3
         public const string LABEL_TIMING = "Timing";
         private const string SEPARATOR = "->";
         public const string EMPTY_STRING = "@ui";
+        public const string STRING_YES = "1";
+        public const string STRING_NO = "0";
 
         public static uint ClientVersion = 0x1361;
 
         private static readonly List<OneString> translations = new List<OneString>();
         private static string path;
-        public const string stringYes = "1";
-        public const string stringNo = "0";
 
         public static void Initialize(string path)
         {
@@ -27,15 +27,23 @@ namespace MDPro3
             {
                 File.Create(path).Close();
                 if (Application.systemLanguage == SystemLanguage.ChineseSimplified)
-                    Set(Language.ConfigName, Language.SimplifiedChinese);
+                    Language.SetConfig(Language.SimplifiedChinese);
                 else if (Application.systemLanguage == SystemLanguage.ChineseTraditional)
-                    Set(Language.ConfigName, Language.TraditionalChinese);
+                    Language.SetConfig(Language.TraditionalChinese);
                 else if (Application.systemLanguage == SystemLanguage.Spanish)
-                    Set(Language.ConfigName, Language.Spanish);
+                    Language.SetConfig(Language.Spanish);
                 else if (Application.systemLanguage == SystemLanguage.Japanese)
-                    Set(Language.ConfigName, Language.Japanese);
+                    Language.SetConfig(Language.Japanese);
                 else if (Application.systemLanguage == SystemLanguage.Korean)
-                    Set(Language.ConfigName, Language.Korean);
+                    Language.SetConfig(Language.Korean);
+                else if (Application.systemLanguage == SystemLanguage.French)
+                    Language.SetConfig(Language.French);
+                else if (Application.systemLanguage == SystemLanguage.German)
+                    Language.SetConfig(Language.German);
+                else if (Application.systemLanguage == SystemLanguage.Italian)
+                    Language.SetConfig(Language.Italian);
+                else if (Application.systemLanguage == SystemLanguage.Portuguese)
+                    Language.SetConfig(Language.Portuguese);
                 else
                     Set(Language.ConfigName, Language.English);
                 Save();
@@ -48,9 +56,11 @@ namespace MDPro3
                 var mats = Regex.Split(lines[i], SEPARATOR);
                 if (mats.Length == 2)
                 {
-                    var s = new OneString();
-                    s.original = mats[0];
-                    s.translated = mats[1];
+                    var s = new OneString
+                    {
+                        original = mats[0],
+                        translated = mats[1]
+                    };
                     translations.Add(s);
                 }
             }
@@ -136,7 +146,7 @@ namespace MDPro3
         {
             try
             {
-                value = Get(original, value ? stringYes : stringNo) == stringYes;
+                value = Get(original, value ? STRING_YES : STRING_NO) == STRING_YES;
             }
             catch { }
 
@@ -145,7 +155,7 @@ namespace MDPro3
 
         public static void SetBool(string original, bool value)
         {
-            Set(original, value ? stringYes : stringNo);
+            Set(original, value ? STRING_YES : STRING_NO);
         }
 
         public static void Save()

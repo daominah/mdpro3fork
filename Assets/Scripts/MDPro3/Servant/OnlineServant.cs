@@ -198,8 +198,8 @@ namespace MDPro3.Servant
 
         private IEnumerator TryTokenInAsync()
         {
-            var token = Config.Get("MyCardToken", Config.stringNo);
-            if(token == Config.stringNo)
+            var token = Config.Get("MyCardToken", Config.STRING_NO);
+            if(token == Config.STRING_NO)
                 yield break;
             var task = MyCard.TokenIn(token);
             while (!task.IsCompleted)

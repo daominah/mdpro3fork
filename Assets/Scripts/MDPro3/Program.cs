@@ -78,13 +78,13 @@ namespace MDPro3
         public const string PATH_REPLAY = "Replay/";
         public const string PATH_DIY = "Picture/DIY/";
 
+        public const string EXPANSION_CONF = ".conf";
         public const string EXPANSION_YDK = ".ydk";
         public const string EXPANSION_PNG = ".png";
         public const string EXPANSION_JPG = ".jpg";
         public const string EXPANSION_YRP = ".yrp";
         public const string EXPANSION_YRP3D = ".yrp3d";
         public const string EXPANSION_LUA = ".lua";
-
         public const string STRING_SLASH = "/";
         public const string STRING_LINE_BREAK = "\r\n";
 

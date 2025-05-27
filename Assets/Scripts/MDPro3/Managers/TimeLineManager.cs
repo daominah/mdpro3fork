@@ -405,7 +405,7 @@ namespace MDPro3
         {
             summoned = 4;
             GameObject summon;
-            int linkCount = CardDescription.GetCardLinkCount(CardsManager.Get(summonCard));
+            int linkCount = CardsManager.Get(summonCard).GetLinkCount();
             if (linkCount == 1)
                 summon = ABLoader.LoadFromFile("MasterDuel/Timeline/Summon/SummonLink/SummonLink01_01", true);
             else if (linkCount == 2)

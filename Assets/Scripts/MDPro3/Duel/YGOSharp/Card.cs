@@ -2,6 +2,8 @@ using System;
 using System.Data;
 using MDPro3.Utility;
 using MDPro3.Duel.YGOSharp;
+using System.Diagnostics;
+using static YgomSystem.UI.ViewController;
 
 namespace MDPro3.Duel.YGOSharp
 {
@@ -40,6 +42,13 @@ namespace MDPro3.Duel.YGOSharp
         public int month = 0;
         public int day = 0;
         public bool isPre = false;
+
+        public enum LevelType
+        {
+            Level,
+            Rank,
+            Link
+        }
 
         public Card()
         {
@@ -113,30 +122,6 @@ namespace MDPro3.Duel.YGOSharp
             return CardsManager.GetCard(id);
         }
 
-        public bool HasType(CardType type)
-        {
-            return ((Type & (int)type) != 0);
-        }
-
-        public bool HasLinkMarker(CardLinkMarker dir)
-        {
-            return (LinkMarker & (int)dir) != 0;
-        }
-
-        public bool IsExtraCard()
-        {
-            return (HasType(CardType.Fusion) || HasType(CardType.Synchro) || HasType(CardType.Xyz) || HasType(CardType.Link));
-        }
-
-        public int GetLinkCount()
-        {
-            int returnValue = 0;
-            for (int i = 0; i < 9; i++)
-                if (((LinkMarker >> i) & 1u) > 0 && i != 4)
-                    returnValue++;
-            return returnValue;
-        }
-
         internal Card(IDataRecord reader)
         {
             Str = new string[16];
@@ -166,11 +151,45 @@ namespace MDPro3.Duel.YGOSharp
             }
         }
 
-        public enum LevelType
+
+
+        #region Tools
+
+        public bool HasType(CardType type)
         {
-            Level,
-            Rank,
-            Link
+            return ((Type & (int)type) != 0);
+        }
+
+        public bool HasLinkMarker(CardLinkMarker dir)
+        {
+            return (LinkMarker & (int)dir) != 0;
+        }
+
+        public bool IsExtraCard()
+        {
+            return (HasType(CardType.Fusion) || HasType(CardType.Synchro) || HasType(CardType.Xyz) || HasType(CardType.Link));
+        }
+
+        public bool IsSameCard(Card data)
+        {
+            return GetOriginalID() == data.GetOriginalID();
+        }
+
+        public int GetLinkCount()
+        {
+            int returnValue = 0;
+            for (int i = 0; i < 9; i++)
+                if (((LinkMarker >> i) & 1u) > 0 && i != 4)
+                    returnValue++;
+            return returnValue;
+        }
+
+        public int GetOriginalID()
+        {
+            if (Alias == 0)
+                return Id;
+            else
+                return Alias;
         }
 
         public LevelType GetLevelType()
@@ -182,6 +201,10 @@ namespace MDPro3.Duel.YGOSharp
             else
                 return LevelType.Level;
         }
+
+        #endregion
+
+        #region String
 
         public string GetAttackString()
         {
@@ -202,10 +225,10 @@ namespace MDPro3.Duel.YGOSharp
                 if (!HasType(CardType.Effect))
                     monster = InterString.Get("【怪兽描述】");
 
-                return (withSetName ? GetSetName() : string.Empty) + InterString.Get("【灵摆效果】") + "\n" + texts[0] + "\n" + monster + "\n" + texts[1];
+                return (withSetName ? GetSetNameWithColor() : string.Empty) + InterString.Get("【灵摆效果】") + "\n" + texts[0] + "\n" + monster + "\n" + texts[1];
             }
             else
-                return (withSetName ? GetSetName() : string.Empty) + Desc;
+                return (withSetName ? GetSetNameWithColor() : string.Empty) + Desc;
         }
 
         public string GetMonsterDescription(bool render = false)
@@ -229,7 +252,7 @@ namespace MDPro3.Duel.YGOSharp
         /// </summary>
         /// <param name="render"></param>
         /// <returns></returns>
-        private string[] GetDescriptionSplit(bool render = false)
+        public string[] GetDescriptionSplit(bool render = false)
         {
             var returnValue = new string[2];
             returnValue[0] = string.Empty;
@@ -292,67 +315,225 @@ namespace MDPro3.Duel.YGOSharp
             return returnValue;
         }
 
+        /// <summary>
+        /// 获取卡片的字段。
+        /// </summary>
+        /// <returns>e.g: "No.|未来皇 霍普\r\n"</returns>
         public string GetSetName()
         {
-            var returnValue = StringHelper.GetSetName(Setcode, true);
+            return StringHelper.GetSetName(Setcode);
+        }
+
+        /// <summary>
+        /// 获取卡片的字段，用于卡片描述中，不为空时以换行符结尾。
+        /// </summary>
+        /// <returns>e.g: "<color=#FFF000>系列：No.|未来皇 霍普</color>\r\n"</returns>
+        public string GetSetNameWithColor()
+        {
+            var returnValue = GetSetName();
             if (returnValue.Length > 0)
             {
-                returnValue = "<color=#FFF000>" +
-                    StringHelper.GetUnsafe(1329) + returnValue + "</color>" + Program.STRING_LINE_BREAK;
+                returnValue = $"<color=#FFF000>{StringHelper.GetUnsafe(1329)}{returnValue}</color>{Program.STRING_LINE_BREAK}";
             }
             return returnValue;
         }
 
-        public bool IsSameCard(Card data)
+        /// <summary>
+        /// 获取卡片的字段，用于卡片详情页中。
+        /// </summary>
+        /// <returns>e.g: "【No.|未来皇 霍普】"</returns>
+        public string GetSetNameWithBracket()
         {
-            return GetOriginalID() == data.GetOriginalID();
-        }
-
-        public int GetOriginalID()
-        {
-            if(Alias == 0)
-                return Id;
-            else
-                return Alias;
-        }
-
-        public string GetSpellTrapType()
-        {
-            if (HasType(CardType.Monster))
-                return string.Empty;
-            else if (HasType(CardType.Spell))
+            var returnValue = GetSetName();
+            if (returnValue.Length > 0)
             {
-                if(HasType(CardType.Field))
-                    return InterString.Get("场地魔法");
-                else if (HasType(CardType.QuickPlay))
-                    return InterString.Get("速攻魔法");
-                else if (HasType(CardType.Continuous))
-                    return InterString.Get("永续魔法");
-                else if (HasType(CardType.Equip))
-                    return InterString.Get("装备魔法");
-                else if (HasType(CardType.Ritual))
-                    return InterString.Get("仪式魔法");
-                else
-                    return InterString.Get("通常魔法");
+                returnValue = $"【{returnValue}】";
             }
-            else // Trap
-            {
-                if(HasType(CardType.Continuous))
-                    return InterString.Get("永续陷阱");
-                else if (HasType(CardType.Counter))
-                    return InterString.Get("反击陷阱");
-                else
-                    return InterString.Get("通常陷阱");
-            }
+            return returnValue;
         }
 
-        public string GetCardInfoType()
+        public string GetIdWithBracket()
         {
-            if (HasType(CardType.Monster))
-                return string.Empty;
-            else
-                return $"{(Language.CardNeedSmallBracket() ? "[" : "【" )}{GetSpellTrapType()}{(Language.CardNeedSmallBracket() ? "]" : "】")}";
+            var re = $"【{Id}";
+            if (Alias != 0)
+            {
+                re += $"/{Alias}";
+            }
+            re += "】";
+            return re;
         }
+
+        public string GetAttributeString(bool render = false)
+        {
+            var type = render ? 1 : 0;
+            if (render && isPre)
+                type = 2;
+            return StringHelper.Attribute(Attribute, type);
+        }
+
+        public string GetRaceString(bool render = false)
+        {
+            var type = render ? 1 : 0;
+            if (render && isPre)
+                type = 2;
+            return StringHelper.Race(Race, type);
+        }
+
+        public string GetMainTypeString(bool render = false)
+        {
+            var type = render ? 1 : 0;
+            if (render && isPre)
+                type = 2;
+            return StringHelper.MainType(Type, type);
+        }
+
+        public string GetSecondType(bool render = false)
+        {
+            var type = render ? 1 : 0;
+            if (render && isPre)
+                type = 2;
+            return StringHelper.SecondType(Type, type);
+        }
+
+        public string GetSpellTrapType(bool render = false)
+        {
+            var type = 0;
+            if (render)
+            {
+                type = 1;
+                if (isPre)
+                    type = 2;
+            }
+
+            return GetSpellTrapType(Type, type);
+        }
+
+        public static string GetSpellTrapType(int cardType, int type = 0)
+        {
+            if((cardType & (int)CardType.Spell) > 0)
+            {
+                if ((cardType & (int)CardType.Field) > 0)
+                    return InterString.Get("场地魔法", type);
+                else if ((cardType & (int)CardType.QuickPlay) > 0)
+                    return InterString.Get("速攻魔法", type);
+                else if ((cardType & (int)CardType.Continuous) > 0)
+                    return InterString.Get("永续魔法", type);
+                else if ((cardType & (int)CardType.Equip) > 0)
+                    return InterString.Get("装备魔法", type);
+                else if ((cardType & (int)CardType.Ritual) > 0)
+                    return InterString.Get("仪式魔法", type);
+                else
+                    return InterString.Get("通常魔法", type);
+            }
+            else if ((cardType & (int)CardType.Trap) > 0)
+            {
+                if ((cardType & (int)CardType.Continuous) > 0)
+                    return InterString.Get("永续陷阱", type);
+                else if ((cardType & (int)CardType.Counter) > 0)
+                    return InterString.Get("反击陷阱", type);
+                else
+                    return InterString.Get("通常陷阱", type);
+            }
+            return string.Empty;
+        }
+
+        public string GetTypeForUI()
+        {
+            var re = string.Empty;
+            if (Id == 0)
+                return re;
+            var bracketLeft = "【";
+            var bracketRight = "】";
+            if (HasType(CardType.Monster))
+                re = $"{bracketLeft}{InterString.Get("[?]族", GetRaceString())}{Program.STRING_SLASH}{GetSecondType()}{bracketRight}";
+            else
+                re = $"{bracketLeft}{StringHelper.MainType(Type)}{bracketRight}";
+            return re;
+        }
+
+        public string GetTypeForRushDuelRender()
+        {
+            var re = string.Empty;
+            if (Id == 0)
+                return re;
+
+            var bracketLeft = "【";
+            var bracketRight = "】";
+            if (Language.CardNeedSmallBracket(isPre ? Language.GetPrerelease() : Language.GetCardConfig()))
+            {
+                bracketLeft = "[";
+                bracketRight = "]";
+            }
+
+            if (HasType(CardType.Monster))
+            {
+                re = $"{bracketLeft}{InterString.Get("[?]族", GetRaceString(true), isPre ? 2 : 1)}{Program.STRING_SLASH}{GetSecondType(true)}{bracketRight}";
+            }
+            else
+            {
+                var type = 1;
+                if(isPre)
+                    type = 2;
+                re = bracketLeft;
+                if (HasType(CardType.Spell))
+                    re += InterString.Get("魔法卡", type);
+                else
+                    re += InterString.Get("陷阱卡", type);
+                var secondType = GetSecondType(true);
+                if (secondType != StringHelper.GetUnsafe(1054, type))
+                    re += Program.STRING_SLASH + secondType + GetSpellTrapTypeIconCode();
+                re += bracketRight;
+            }
+
+            re = re.Replace(Program.STRING_SLASH, 
+                (isPre ? Language.CardUseLatin(Language.GetPrerelease()) : Language.CardUseLatin()) 
+                ? CardRenderer.SMALL_SLASH : CardRenderer.BIG_SLASH);
+
+            return re;
+        }
+
+        public string GetSpellTypeForOCGRender()
+        {
+            var re = string.Empty;
+            if (Id == 0 || HasType(CardType.Monster))
+                return re;
+
+            var bracketLeft = "【";
+            var bracketRight = "】";
+            if (Language.CardNeedSmallBracket(isPre ? Language.GetPrerelease() : Language.GetCardConfig()))
+            {
+                bracketLeft = "[";
+                bracketRight = "]";
+            }
+            re = bracketLeft;
+            if (HasType(CardType.Spell))
+                re += InterString.Get("魔法卡", isPre ? 2 : 1);
+            else
+                re += InterString.Get("陷阱卡", isPre ? 2 : 1);
+            re += GetSpellTrapTypeIconCode() + bracketRight;
+
+            return re;
+        }
+
+        private string GetSpellTrapTypeIconCode()
+        {
+            var re = string.Empty;
+            if (HasType(CardType.Equip))
+                re += "<Sprite=0>";
+            if (HasType(CardType.QuickPlay))
+                re += "<Sprite=1>";
+            if (HasType(CardType.Field))
+                re += "<Sprite=2>";
+            if (HasType(CardType.Ritual))
+                re += "<Sprite=3>";
+            if (HasType(CardType.Continuous))
+                re += "<Sprite=4>";
+            if (HasType(CardType.Counter))
+                re += "<Sprite=5>";
+            return re;
+        }
+
+        #endregion
 
     }
 }

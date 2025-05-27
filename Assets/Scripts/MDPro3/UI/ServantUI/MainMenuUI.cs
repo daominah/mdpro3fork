@@ -107,7 +107,7 @@ namespace MDPro3.UI.ServantUI
                 InterString.Get("即将退出应用程序，@n是否确认？"),
                 InterString.Get("确认"),
                 InterString.Get("取消"),
-                Config.stringYes
+                Config.STRING_YES
             };
             UIManager.ShowPopupYesOrNo(selections, Program.GameQuit, null);
         }

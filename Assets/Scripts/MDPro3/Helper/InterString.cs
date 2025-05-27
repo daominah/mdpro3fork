@@ -2,6 +2,7 @@ using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using System.IO;
 using MDPro3.Utility;
+using System.Diagnostics;
 
 namespace MDPro3
 {
@@ -10,59 +11,87 @@ namespace MDPro3
         public const string CONFIG_LINE_BREAK = "@n";
         public const string SYSTEM_LINE_BREAK = Program.STRING_LINE_BREAK;
         private const string SEPARATOR = "->";
-        private const string EMPTY_STRING = "@ui";
+        private const string STRING_EMPTY = "@ui";
+        private const string PATH_CONF_FILE = "/translation.conf";
 
-        private static readonly Dictionary<string, string> translations = new Dictionary<string, string>();
-        private static readonly Dictionary<string, string> translationsForRender = new Dictionary<string, string>();
+        private static readonly Dictionary<string, string> translations = new();
+        private static Dictionary<string, string> translationsForRender = new();
+        private static Dictionary<string, string> translationsForPrerelease = new();
 
         private static string path;
         private static string pathForRender;
+        private static string pathForPrerelease;
+
         public static void Initialize()
         {
             translations.Clear();
-            path = Program.PATH_LOCALES + Language.GetConfig() + "/translation.conf";
+            translationsForRender.Clear();
+            translationsForPrerelease.Clear();
+
+            path = Program.PATH_LOCALES + Language.GetConfig() + PATH_CONF_FILE;
             if (!File.Exists(path))
                 File.Create(path).Close();
+            InitializeContent(File.ReadAllText(path), 0);
 
-            var txtString = File.ReadAllText(path);
-            var lines = txtString.Replace("\r", "").Split('\n');
-            for (var i = 0; i < lines.Length; i++)
+            if (Language.GetCardConfig() == Language.GetConfig())
             {
-                var mats = Regex.Split(lines[i], SEPARATOR);
-                if (mats.Length == 2)
-                    if (!translations.ContainsKey(mats[0]))
-                        translations.Add(mats[0], mats[1]);
+                pathForRender = path;
+                translationsForRender = translations;
+            }
+            else
+            {
+                pathForRender = Program.PATH_LOCALES + Language.GetCardConfig() + PATH_CONF_FILE;
+                if (!File.Exists(pathForRender))
+                    File.Create(pathForRender).Close();
+                InitializeContent(File.ReadAllText(pathForRender), 1);
             }
 
-            translationsForRender.Clear();
-            pathForRender = Program.PATH_LOCALES + Language.GetCardConfig() + "/translation.conf";
-            if (!File.Exists(pathForRender))
-                File.Create(pathForRender).Close();
-            txtString = File.ReadAllText(pathForRender);
-            lines = txtString.Replace("\r", "").Split('\n');
-            for (var i = 0; i < lines.Length; i++)
+            if (Language.GetPrerelease() == Language.GetConfig())
             {
-                var mats = Regex.Split(lines[i], SEPARATOR);
-                if (mats.Length == 2)
-                    if (!translationsForRender.ContainsKey(mats[0]))
-                        translationsForRender.Add(mats[0], mats[1]);
+                pathForPrerelease = path;
+                translationsForPrerelease = translations;
+            }
+            else if(Language.GetPrerelease() == Language.GetCardConfig())
+            {
+                pathForPrerelease = pathForRender;
+                translationsForPrerelease = translationsForRender;
+            }
+            else
+            {
+                pathForPrerelease = Program.PATH_LOCALES + Language.GetPrerelease() + PATH_CONF_FILE;
+                if (!File.Exists(pathForPrerelease))
+                    File.Create(pathForPrerelease).Close();
+                InitializeContent(File.ReadAllText(pathForPrerelease), 2);
             }
         }
 
-        public static string Get(string original, bool render = false)
+        private static void InitializeContent(string text, int type)
+        {
+            var dic = GetTranslations(type);
+            var lines = text.Replace("\r", string.Empty).Split('\n');
+            for (var i = 0; i < lines.Length; i++)
+            {
+                var mats = Regex.Split(lines[i], SEPARATOR);
+                if (mats.Length == 2)
+                    if (!dic.ContainsKey(mats[0]))
+                        dic.Add(mats[0], mats[1]);
+            }
+        }
+
+        public static string Get(string original, int type = 0)
         {
             var returnValue = original;
-            var targetTranslations = render ? translationsForRender : translations;
+            var targetTranslations = GetTranslations(type);
             if (targetTranslations.TryGetValue(original, out returnValue))
-                return returnValue.Replace(CONFIG_LINE_BREAK, Program.STRING_LINE_BREAK).Replace(EMPTY_STRING, string.Empty);
+                return returnValue.Replace(CONFIG_LINE_BREAK, Program.STRING_LINE_BREAK).Replace(STRING_EMPTY, string.Empty);
 
             if (original != string.Empty)
             {
-                UnityEngine.Debug.Log($"Undefined translation: {original}");
+                UnityEngine.Debug.Log($"Undefined translation {targetTranslations.Count}: {original}");
 
                 try
                 {
-                    File.AppendAllText(render ? pathForRender : path, original + SEPARATOR + original + Program.STRING_LINE_BREAK);
+                    File.AppendAllText(GetSavePath(type), original + SEPARATOR + original + Program.STRING_LINE_BREAK);
                 }
                 catch
                 {
@@ -70,15 +99,16 @@ namespace MDPro3
                 }
 
                 targetTranslations.Add(original, original);
-                return original.Replace(CONFIG_LINE_BREAK, Program.STRING_LINE_BREAK).Replace(EMPTY_STRING, string.Empty);
+                return original.Replace(CONFIG_LINE_BREAK, Program.STRING_LINE_BREAK).Replace(STRING_EMPTY, string.Empty);
             }
             return original;
         }
 
-        public static string Get(string original, string replace, bool render = false)
+        public static string Get(string original, string replace, int type = 0)
         {
-            return Get(original, render).Replace("[?]", replace);
+            return Get(original, type).Replace("[?]", replace);
         }
+
         public static string GetOriginal(string value)
         {
             var returnValue = value;
@@ -91,6 +121,26 @@ namespace MDPro3
                 }
             }
             return returnValue;
+        }
+
+        private static Dictionary<string, string> GetTranslations(int type)
+        {
+            return type switch
+            {
+                1 => translationsForRender,
+                2 => translationsForPrerelease,
+                _ => translations
+            };
+        }
+
+        private static string GetSavePath(int type)
+        {
+            return type switch
+            {
+                1 => pathForRender,
+                2 => pathForPrerelease,
+                _ => path
+            };
         }
     }
 }

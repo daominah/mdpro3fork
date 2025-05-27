@@ -146,12 +146,12 @@ namespace MDPro3.Utility
                         cachedCards.TryRemove(code, out _);
                         return null;
                     }
-                    catch (Exception e)
-                    {
-                        cachedCards.TryRemove(code, out _);
-                        Debug.LogError($"Load card failed: {e.GetType()} {e.Message}");
-                        return null;
-                    }
+                    //catch (Exception e)
+                    //{
+                    //    cachedCards.TryRemove(code, out _);
+                    //    Debug.LogError($"Load card failed: {e.GetType()} {e.Message}");
+                    //    return null;
+                    //}
                     finally
                     {
                         newEntry.LoadingTask = null;
@@ -213,12 +213,12 @@ namespace MDPro3.Utility
                         cachedCardNames.TryRemove(code, out _);
                         return null;
                     }
-                    catch (Exception e)
-                    {
-                        cachedCardNames.TryRemove(code, out _);
-                        Debug.LogError($"Load card name failed: {e.GetType()} {e.Message}");
-                        return null;
-                    }
+                    //catch (Exception e)
+                    //{
+                    //    cachedCardNames.TryRemove(code, out _);
+                    //    Debug.LogError($"Load card name failed: {e.GetType()} {e.Message}");
+                    //    return null;
+                    //}
                     finally
                     {
                         newEntry.LoadingTask = null;
@@ -355,12 +355,13 @@ namespace MDPro3.Utility
                     var art = task.Result;
                     if (art == null)
                         art = TextureManager.container.unknownArt.texture;
-                    if (!Program.instance.cardRenderer.RenderCard(code, art))
+                    if (!await Program.instance.cardRenderer.RenderCard(code, art))
                     {
                         lastCardRenderSucceed = false;
                         return TextureManager.container.unknownCard.texture;
                     }
 
+                    RenderTexture.active = Program.instance.cardRenderer.renderTexture;
                     var returnValue = new Texture2D(RenderTexture.active.width, RenderTexture.active.height, TextureFormat.RGB24, true);
                     returnValue.ReadPixels(new Rect(0, 0, RenderTexture.active.width, RenderTexture.active.height), 0, 0);
                     returnValue.Apply();
@@ -395,8 +396,8 @@ namespace MDPro3.Utility
                         if (entry.Texture != null)
                             return entry.Texture;
 
+                    await Program.instance.cardRenderer.RenderName(code);
                     RenderTexture.active = Program.instance.cardRenderer.renderTexture;
-                    Program.instance.cardRenderer.RenderName(code);
                     var result = new Texture2D(RenderTexture.active.width, 203, TextureFormat.RGBA32, false);
                     var rect = new Rect(0, Program.instance.cardRenderer.renderTexture.height - 203
                         , Program.instance.cardRenderer.renderTexture.width, 203);
