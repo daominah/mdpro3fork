@@ -97,7 +97,7 @@ namespace MDPro3.UI
             var task = CardImageLoader.LoadCardAsync(card.Id, cache, cts.Token);
 
             while (!task.IsCompleted)
-                await TaskUtility.WaitOneFrame(gameObject);
+                await TaskUtility.WaitOneFrame(gameObject, cts.Token);
             RawImage.texture = task.Result;
 
             if (CardRarity.GetRarity(card.Id) == CardRarity.Rarity.Normal)
