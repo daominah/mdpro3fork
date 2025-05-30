@@ -630,9 +630,11 @@ Une fois que vous avez décidé de continuer les Duels, il n'y a rien de plus à
 Une icône représentant un spectacle grandiose de la troupe d'artistes "<category id='29'/>".
 Cette fois, c'est "<card mrk='16727'/>" qui donne un visage à la bande.
 [IDS_ITEMDESC.ID1010102]
-coming soon
+Une icône représentant un garçon et une fille qui défient leur destin.
+Leur lien s'est renforcé au fil de leurs aventures.
 [IDS_ITEMDESC.ID1010103]
-coming soon
+Une icône représentant la nouvelle forme d'un dragon à l'âme à la fois diabolique et majestueuse.
+La genèse est sculptée par son ardeur débridée.
 [IDS_ITEMDESC.ID1010104]
 coming soon
 [IDS_ITEMDESC.ID1010105]
@@ -640,9 +642,11 @@ coming soon
 [IDS_ITEMDESC.ID1010106]
 coming soon
 [IDS_ITEMDESC.ID1010107]
-coming soon
+Une icône représentant un jeune homme qui se réjouit de l'agitation.
+Il occupe naturellement un rôle de bouffon sur la scène de l'infamie.
 [IDS_ITEMDESC.ID1010108]
-coming soon
+Une icône représentant un être de chaos et de pureté absolue.
+Écrasé par l'amour et le désespoir, il est formé des 666 âmes les plus pures de la "Dogmatika".
 [IDS_ITEMDESC.ID1010109]
 coming soon
 [IDS_ITEMDESC.ID1010110]
@@ -2043,6 +2047,9 @@ Pour ceux qui manient les ténèbres, mais demeurent toujours justes.
 [IDS_ITEMDESC.ID1070114]
 Des protège-cartes représentant deux cartes de jokers.
 Pour ceux qui sont dotés de pouvoirs incroyables.
+[IDS_ITEMDESC.ID1070115]
+Protège-cartes représentant un garçon et une fille réunis par d'étranges événements.
+Pour ceux qui ont décidé de se lancer à l'aventure.
 [IDS_ITEMDESC.ID1071001]
 Des protège-cartes illustrant un guerrier qui a mûri et accepté les cicatrices gravées dans son cœur au cours des batailles. 
 Parfaits pour ceux qui veulent toujours le meilleur pour leurs amis.
@@ -2280,6 +2287,9 @@ Dans une lumière d'un éclat incomparable, ses ailes rayonnantes font des mirac
 [IDS_ITEMDESC.ID1080028]
 Une boîte de cartes illustrée avec "<card mrk='17069'/>".
 Même à bout de forces, rien ne pouvait tarir l'esprit du garçon. Il s'éveilla et se transforma en un dragon à lames, drapé de feu et de glace.
+[IDS_ITEMDESC.ID1080029]
+Une boîte de cartes illustrée avec "<card mrk='19021'/>".
+Un dragon écarlate diabolique dont la fureur réduit tout en cendres.
 [IDS_ITEMDESC.ID1082001]
 Une boîte de Deck qui s'inspire de la grande étendue galactique d'où proviennent les monstres Xyz. 
 Un excellent choix pour les Decks axés sur les Invocations Xyz !
@@ -2434,6 +2444,9 @@ Ce monde regorge d'agents qui opèrent secrètement dans l'ombre.
 [IDS_ITEMDESC.ID1090034]
 Un Terrain de Duel conçu avec une technologie de pointe.
 Conçu pour une opération militaire unique en son genre, il peut être utilisé pour divers scénarios de combat.
+[IDS_ITEMDESC.ID1090036]
+Un Terrain de Duel d'une structure gigantesque dans une atmosphère sinistre.
+En son cœur, la porte du cataclysme s'ouvre, lentement mais inexorablement.
 [IDS_ITEMDESC.ID1092001]
 Un Terrain représentant deux guerriers en plein milieu d'un combat enragé.
 C'est le moment ou jamais de s'affronter !
@@ -2530,6 +2543,9 @@ Tout ce qui est caché ici sera probablement volé dans peu de temps.
 [IDS_ITEMDESC.ID1100034]
 Des Parties de Terrain de la Zone de Simulation du Stratagème Éclatant.
 Fabriquées à l'aide d'une technologie incroyablement avancée, elles fournissent des informations vitales.
+[IDS_ITEMDESC.ID1100036]
+Parties de Terrain inspirées de Despia, Théâtre des Marqués.
+Le niveau de raffinement est à la hauteur de ce château où règne l'obscurité.
 [IDS_ITEMDESC.ID1101001]
 Des parties de Terrain inspirées par une Trappe.
 Poser ce genre de piège est-il le signe d'une grande ruse ou juste de la triche ?
@@ -2757,6 +2773,9 @@ Tout ce qui est placé dessus ressort d'autant plus grâce à son adorable esth�
 [IDS_ITEMDESC.ID1110034]
 Un Stand inspiré de la Zone de Simulation du Stratagème Éclatant.
 Il permet de transporter d'énormes quantités d'armements et de s'adapter à toutes les circonstances.
+[IDS_ITEMDESC.ID1110036]
+Un Stand issu de Despia, Théâtre des Marqués.
+C'est l'une des innombrables crevasses qui ont été creusées dans le ciel.
 [IDS_ITEMDESC.ID1111001]
 Un Stand inspiré d'une certaine planche où sont gravées des lettres, et qu'on utilise dans plusieurs arts occultes.
 Vous avez la sensation de voir un esprit sombre et vengeur vous regarder dans le fond...
@@ -2947,7 +2966,8 @@ Vous devriez avant tout chercher à déployer "<card mrk = '9229'/>", ce qui est
 Ce Deck "<category id='31'/>" se concentre sur les Invocations Spéciales grâce à "<card mrk = '15245'/>".
 Vous pouvez Invoquer par Fusion en utilisant des monstres du Deck grâce à "<card mrk = '17066'/>", une carte extrêmement puissante et vitale pour la stratégie du Deck. Trouvez un moyen de la déployer au plus vite, par exemple en utilisant l'effet de la Carte "<card mrk = '16195'/>". Une fois en place, effectuez des Invocations Fusion successives, d'abord "<card mrk = '17070'/>", puis le monstre fétiche du Deck, "<card mrk = '17069'/>", qui a deux effets : un effet de bannissement de monstre activable pendant le tour de n'importe quel joueur, et un effet de secours qui s'active s'il quitte le Terrain à cause d'une carte adverse, vous permettant de détruire tous les monstres de votre adversaire lors de la End Phase !
 [IDS_ITEMDESC.ID1120029]
-coming soon
+Ce Deck "<category id='55'/>" domine grâce à sa puissance foudroyante.
+En commençant avec une carte comme "<card mrk='19014'/>", vous effectuez une succession d'Invocations Synchro : d'abord "<card mrk='12695'/>", puis "<card mrk='19021'/>". Vous pouvez non seulement Invoquer par Synchro un puissant Monstre Synchro, mais vous pouvez aussi utiliser l'effet de la Carte "<card mrk='19021'/>" pour faire venir "<card mrk='7735'/>". Servez-vous de l'ATK incroyablement élevée de ces Monstres Synchro pour foncer vers la victoire !
 [IDS_ITEMDESC.ID1120030]
 coming soon
 [IDS_ITEMDESC.ID1120031]
@@ -3177,7 +3197,8 @@ Ses qualités de meneuse mèneront à coup sûr son équipe à la victoire.
 La guerre éclate à nouveau, le feu s'opposant à l'eau.
 Une lumière éclatante émane des bracelets portés par chacun d'eux.
 [IDS_ITEMDESC.ID1130075]
-coming soon
+Ils ne se connaissaient pas jusqu'à ce qu'ils soient happés par les rouages du destin.
+Après avoir partagé tant de souvenirs au cours de leur aventure, leur lien s'est renforcé.
 [IDS_ITEMDESC.ID1130076]
 coming soon
 [IDS_ITEMDESC.ID1130077]
@@ -3189,9 +3210,11 @@ coming soon
 [IDS_ITEMDESC.ID1130080]
 coming soon
 [IDS_ITEMDESC.ID1130081]
-coming soon
+Une entité issue des profondeurs des Abysses, possédant un pouvoir draconique.
+Il n'y a rien de plus ennuyeux qu'une histoire qui se déroule exactement comme prévu.
 [IDS_ITEMDESC.ID1130082]
-coming soon
+Prenant la forme d'une jeune fille délicate, ses yeux dévoilent toujours sur un regard vide.
+Son corps, formé d'un amas de rancunes, n'a pas de maître.
 [IDS_ITEMDESC.ID1130083]
 coming soon
 [IDS_ITEMDESC.ID1130084]

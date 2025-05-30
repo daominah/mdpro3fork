@@ -630,9 +630,11 @@ Sobald du dich entschlossen hast, dich weiter zu duellieren, brauchst du keine W
 Ein Symbol, das einen großen Auftritt der Künstlergruppe „<category id='29'/>“ zeigt.
 Dieses Mal ist „<card mrk='16727'/>“ für das Gesicht zuständig.
 [IDS_ITEMDESC.ID1010102]
-coming soon
+Ein Symbol, das einen Jungen und ein Mädchen darstellt, die ihrem Schicksal trotzen.
+Das Band zwischen ihnen wurde auf einer langen Reise immer stärker.
 [IDS_ITEMDESC.ID1010103]
-coming soon
+Ein Symbol, das die neue Form eines Drachen darstellt, der sowohl eine teuflische als auch eine königlich majestätische Seele besitzt.
+Seine Erschaffung wurde durch ihre unbändige Leidenschaft geprägt.
 [IDS_ITEMDESC.ID1010104]
 coming soon
 [IDS_ITEMDESC.ID1010105]
@@ -640,9 +642,11 @@ coming soon
 [IDS_ITEMDESC.ID1010106]
 coming soon
 [IDS_ITEMDESC.ID1010107]
-coming soon
+Ein Symbol, das einen jungen Mann darstellt, der sich über den Aufruhr freut.
+Als Narr nimmt er seinen angestammten Platz auf der Bühne der Schändlichkeit ein.
 [IDS_ITEMDESC.ID1010108]
-coming soon
+Ein Symbol, das ein Wesen des Chaos und der totalen Reinheit darstellt.
+Erdrückt von überwältigender Liebe und Verzweiflung, formte sie sich aus den reinsten 666 „Dogmatika“-Seelen.
 [IDS_ITEMDESC.ID1010109]
 coming soon
 [IDS_ITEMDESC.ID1010110]
@@ -2044,6 +2048,9 @@ Für diejenigen, die sich auf die Dunkelheit verlassen und doch unfehlbar gerech
 [IDS_ITEMDESC.ID1070114]
 Kartenhüllen, die zwei Spielkartenjoker darstellen.
 Für diejenigen mit außergewöhnlichen Kräften.
+[IDS_ITEMDESC.ID1070115]
+Kartenhüllen, auf denen ein Junge und ein Mädchen abgebildet sind, die durch seltsame Ereignisse zusammengebracht wurden.
+Für diejenigen, die beschlossen haben, sich auf eine Reise zu begeben.
 [IDS_ITEMDESC.ID1071001]
 Kartenhüllen, die einen Krieger darstellen, der gereift ist und die Narben, die während der Kämpfe in sein Herz geätzt wurden, akzeptiert hat. 
 Perfekt für alle, die immer das Beste für ihre geliebten Freunde wollen.
@@ -2281,6 +2288,9 @@ Inmitten eines einzigartigen Lichts vollbringen seine strahlenden Flügel Wunder
 [IDS_ITEMDESC.ID1080028]
 Ein Kartenetui, auf dem „<card mrk='17069'/>“ abgebildet ist.
 Obwohl seine Kraft schwand, konnte sein Kampfgeist nicht ausgelöscht werden. Er erwachte und verwandelte sich in einen mit Feuer und Eis umschlungenen Klingendrachen.
+[IDS_ITEMDESC.ID1080029]
+Ein Kartenetui, auf dem „<card mrk='19021'/>“ abgebildet ist.
+Ein alles verschlingender, teuflischer Drache von unvergleichlicher scharlachroter Wildheit.
 [IDS_ITEMDESC.ID1082001]
 Eine Deckbox mit einem Design, das von den großen galaktischen Weiten inspiriert ist, aus denen die Xyz-Monster stammen. 
 Perfekt für Decks, in denen sich alles um Xyz-Beschwörungen dreht!
@@ -2435,6 +2445,9 @@ Unsere Welt wimmelt von verdeckten Ermittlern, die im Geheimen agieren.
 [IDS_ITEMDESC.ID1090034]
 Ein mit hoch entwickelter Technologie konstruiertes Duell-Spielfeld.
 Für eine einzigartige militärische Operation entwickelt. Kann für verschiedene Kampfszenarien verwendet werden.
+[IDS_ITEMDESC.ID1090036]
+Ein Duell-Spielfeld mit einem gigantischen Bauwerk, das in eine unheimliche Atmosphäre gehüllt ist.
+Tief im Inneren öffnet sich langsam, aber unaufhaltsam das Tor zur Katastrophe.
 [IDS_ITEMDESC.ID1092001]
 Ein Spielfeld, das zwei Krieger darstellt, die in einem wilden Kampf verwickelt sind.
 Die beste Zeit für ein Kräftemessen ist immer jetzt!
@@ -2531,6 +2544,9 @@ Alles, was hier versteckt ist, wird wahrscheinlich bald gestohlen.
 [IDS_ITEMDESC.ID1100034]
 Spielfeldteile aus der Schlag-Strategie-Simulationszone.
 Mit ihrer unglaublich fortschrittlichen Technologie liefern sie wichtige Informationen.
+[IDS_ITEMDESC.ID1100036]
+Spielfeldteile aus Despia, Theater der Markierten.
+Der Grad an Raffinesse passt perfekt zu dem Schloss voller Dunkelheit.
 [IDS_ITEMDESC.ID1101001]
 Spielfeldteile inspiriert von einer Fallgrube.
 Ist das Stellen einer solchen Falle ein Zeichen von Gerissenheit, oder einfach nur unfair?
@@ -2759,6 +2775,9 @@ Was auch immer darauf platziert wird, hebt sich dank des bezaubernden Designs um
 [IDS_ITEMDESC.ID1110034]
 Ein Stand aus der Schnellstrategie-Simulationszone.
 Macht den Transport riesiger Waffen möglich und kann sich flexibel an Situationen anpassen.
+[IDS_ITEMDESC.ID1110036]
+Ein Stand aus Despia, Theater der Markierten.
+Sie ist eines von unzähligen Löchern, die in den Himmel gemeißelt wurden.
 [IDS_ITEMDESC.ID1111001]
 Ein Stand inspiriert von einem bestimmten, mit Buchstaben gravierten Brett, das in vielen übernatürlichen Künsten Anwendung findet.
 Du hast das Gefühl, dass dich durch den Schlitz ein dunkler, rachsüchtiger Geist beobachtet …
@@ -2949,7 +2968,8 @@ Dein erstes Ziel sollte sein, „<card mrk = '9229'/>“ ins Spiel zu bringen, w
 Dieses „<category id='31'/>“-Deck konzentriert sich auf Spezialbeschwörungen über „<card mrk = '15245'/>“.
 Du kannst mithilfe von „<card mrk = '17066'/>“, einer äußerst mächtigen und wichtigen Karte, Monster aus dem Deck für Fusionsbeschwörungen benutzen. Finde eine Möglichkeit, die Karte so schnell wie möglich bereit zu machen, z. B. mithilfe des Effekts von „<card mrk = '16195'/>“. Sobald alles vorbereitet ist, führe mehrere Fusionsbeschwörungen hintereinander durch – zuerst „<card mrk = '17070'/>“ und dann das Signaturmonster des Decks, „<card mrk = '17069'/>“, das zwei Effekte hat: einen Effekt, der Monster verbannt und sich während der Spielzüge beider Spieler aktivieren lässt, und einen Fail-Safe-Effekt, der aktiviert wird, wenn das Monster das Spielfeld verlässt, und dich in der End Phase alle Monster deines Gegners zerstören lässt!
 [IDS_ITEMDESC.ID1120029]
-coming soon
+Dieses „<category id='55'/>“-Deck erreicht die Vorherrschaft durch blitzartige Kraft.
+Beginne mit einer Karte wie „<card mrk='19014'/>“ und führe eine Reihe von Synchrobeschwörungen durch – zuerst „<card mrk='12695'/>“ und dann „<card mrk='19021'/>“. Du kannst nicht nur ein mächtiges Synchromonster als Synchrobeschwörung beschwören, sondern auch den Effekt von „<card mrk='19021'/>“ nutzen, um „<card mrk='7735'/>“ herbeizurufen. Nutze die unglaublich hohen ATK dieser Synchromonster, um zum Sieg zu stürmen!
 [IDS_ITEMDESC.ID1120030]
 coming soon
 [IDS_ITEMDESC.ID1120031]
@@ -3179,7 +3199,8 @@ Eine solch brillante Führung wird ihr Team sicher zum Sieg führen.
 Erneut entbrennt ein Krieg, in dem Feuer gegen Wasser kämpft.
 Schimmerndes Licht strömt aus den Armbändern der beiden Kontrahenten.
 [IDS_ITEMDESC.ID1130075]
-coming soon
+Sie waren Fremde, bis sie von den Machenschaften des Schicksals verschluckt wurden.
+Nachdem sie auf ihrer Reise so viele Erinnerungen gesammelt hatten, wurde das Band zwischen ihnen gestärkt.
 [IDS_ITEMDESC.ID1130076]
 coming soon
 [IDS_ITEMDESC.ID1130077]
@@ -3191,9 +3212,11 @@ coming soon
 [IDS_ITEMDESC.ID1130080]
 coming soon
 [IDS_ITEMDESC.ID1130081]
-coming soon
+Ein Wesen, das sich aus den Tiefen des Abgrunds abgespalten hat und drakonische Kräfte in sich trägt.
+Es gibt nichts Langweiligeres als eine Geschichte, die genau nach Plan verläuft.
 [IDS_ITEMDESC.ID1130082]
-coming soon
+Sie nimmt die Form eines zierlichen Mädchens an, und ihre Augen sind immer offen und starren ins Leere.
+Ihr aus einer Ansammlung von Groll geformter Körper ist niemandem untertan.
 [IDS_ITEMDESC.ID1130083]
 coming soon
 [IDS_ITEMDESC.ID1130084]

@@ -146,12 +146,12 @@ namespace MDPro3.Utility
                         cachedCards.TryRemove(code, out _);
                         return null;
                     }
-                    //catch (Exception e)
-                    //{
-                    //    cachedCards.TryRemove(code, out _);
-                    //    Debug.LogError($"Load card failed: {e.GetType()} {e.Message}");
-                    //    return null;
-                    //}
+                    catch (Exception e)
+                    {
+                        cachedCards.TryRemove(code, out _);
+                        Debug.LogError($"Load card failed: {e.GetType()} {e.Message}");
+                        return null;
+                    }
                     finally
                     {
                         newEntry.LoadingTask = null;
@@ -213,12 +213,12 @@ namespace MDPro3.Utility
                         cachedCardNames.TryRemove(code, out _);
                         return null;
                     }
-                    //catch (Exception e)
-                    //{
-                    //    cachedCardNames.TryRemove(code, out _);
-                    //    Debug.LogError($"Load card name failed: {e.GetType()} {e.Message}");
-                    //    return null;
-                    //}
+                    catch (Exception e)
+                    {
+                        cachedCardNames.TryRemove(code, out _);
+                        Debug.LogError($"Load card name failed: {e.GetType()} {e.Message}");
+                        return null;
+                    }
                     finally
                     {
                         newEntry.LoadingTask = null;

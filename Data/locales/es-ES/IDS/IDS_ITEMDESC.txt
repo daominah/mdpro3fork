@@ -630,9 +630,11 @@ Una vez que has decidido seguir luchando, las palabras sobran.
 Un icono que representa una actuación importante de la compañía de artistas "<category id='29'/>".
 Esta vez, "<card mrk='16727'/>" es la voz cantante.
 [IDS_ITEMDESC.ID1010102]
-coming soon
+Un icono que representa a un chico y una chica que plantan cara a su destino.
+Hicieron un largo viaje, durante el cual su vínculo se fortaleció.
 [IDS_ITEMDESC.ID1010103]
-coming soon
+Un icono que representa la nueva forma de un dragón cuya alma alberga maldad y una majestuosidad real.
+Su ardor desenfrenado da forma a la génesis.
 [IDS_ITEMDESC.ID1010104]
 coming soon
 [IDS_ITEMDESC.ID1010105]
@@ -640,9 +642,11 @@ coming soon
 [IDS_ITEMDESC.ID1010106]
 coming soon
 [IDS_ITEMDESC.ID1010107]
-coming soon
+Un icono que representa a un joven que se deleitaba con el caos.
+Desempeña el papel de bufón en el escenario de la infamia.
 [IDS_ITEMDESC.ID1010108]
-coming soon
+Un icono que representa a un ser hecho de caos y pureza absoluta.
+Se formó a partir de las almas de los 666 Dogmátik más puros y acabó abatido por una sobrecogedora carga de amor y desesperación.
 [IDS_ITEMDESC.ID1010109]
 coming soon
 [IDS_ITEMDESC.ID1010110]
@@ -2044,6 +2048,9 @@ Para los que confían en la oscuridad y, sin embargo, actúan siempre con rectit
 [IDS_ITEMDESC.ID1070114]
 Protectores que representan dos comodines.
 Para aquellos con poderes extraordinarios.
+[IDS_ITEMDESC.ID1070115]
+Unos protectores que representan a un chico y una chica que acabaron unidos por sucesos extraños.
+Para quienes decidan emprender un viaje.
 [IDS_ITEMDESC.ID1071001]
 Protectores que ilustran a un guerrero que ha madurado y guarda en su corazón las cicatrices de las batallas. 
 Perfectos para los que siempre quieren lo mejor para sus amigos.
@@ -2281,6 +2288,9 @@ En medio del fulgor de una luz sin igual, sus alas radiantes obran milagros.
 [IDS_ITEMDESC.ID1080028]
 Una caja de cartas que representa a "<card mrk='17069'/>".
 Aunque su fuerza se estaba debilitando, su espíritu se mantenía firme. Al despertar, se transformó en un dragón con cuchillas de fuego y hielo.
+[IDS_ITEMDESC.ID1080029]
+Una caja de cartas que representa el "<card mrk='19021'/>".
+Un dragón demoníaco abrasador cuya ferocidad escarlata no tiene parangón.
 [IDS_ITEMDESC.ID1082001]
 Una caja para Decks con un diseño inspirado en la gran extensión galáctica de la que provienen los Monstruos Xyz. 
 Ideal para los Decks que se centran en la Invocación por Xyz.
@@ -2435,6 +2445,9 @@ El mundo está lleno de agentes encubiertos que trabajan desde las sombras.
 [IDS_ITEMDESC.ID1090034]
 Un Campo de Duelo diseñado con una tecnología superavanzada.
 Está pensado para operaciones militares únicas y se puede usar para recrear diversos escenarios de combate.
+[IDS_ITEMDESC.ID1090036]
+Un Campo de Duelo con una estructura gigante sumergida en una atmósfera inquietante.
+En su interior se abre, lenta pero inexorable, la puerta del cataclismo.
 [IDS_ITEMDESC.ID1092001]
 Un Campo que representa a dos guerreros inmersos en un violento combate.
 ¡No hay mejor momento para un enfrentamiento que ahora!
@@ -2531,6 +2544,9 @@ Si se esconde algo aquí, seguramente no tardarán en robarlo.
 [IDS_ITEMDESC.ID1100034]
 Partes del Campo de la Zona de simulación Estratagema Golpeadora.
 Se han creado mediante una increíble tecnología avanzada y proporcionan información esencial.
+[IDS_ITEMDESC.ID1100036]
+Partes del Campo de Despía, Teatro de los Señalados.
+Su sofisticación está a la altura del castillo del que emanan las sombras.
 [IDS_ITEMDESC.ID1101001]
 Partes del Campo inspiradas en un Agujero Trampa.
 ¿Colocar una trampa como esta tiene algo que ver con la astucia o es una injusticia sin más?
@@ -2759,6 +2775,9 @@ No se sabe bien qué hay en la cima, pero destaca mucho gracias a su adorable di
 [IDS_ITEMDESC.ID1110034]
 Un enclave de la Zona de simulación Estratagema Golpeadora.
 Permite transportar armamentos enormes y se puede adaptar a cualquier situación.
+[IDS_ITEMDESC.ID1110036]
+Un enclave de Despía, Teatro de los Señalados.
+Uno de los innumerables agujeros que perforan el cielo.
 [IDS_ITEMDESC.ID1111001]
 Un enclave inspirado en un determinado tablero con letras grabadas que se usa en diversas artes sobrenaturales.
 Sentirás como si un espíritu oscuro y vengativo te mirara desde la grieta...
@@ -2949,7 +2968,8 @@ Tu primer objetivo será sacar a "<card mrk = '9229'/>", lo que se puede lograr 
 Este Deck "<category id='31'/>" se centra en Invocaciones de Modo Especial gracias a "<card mrk = '15245'/>".
 Puedes realizar Invocaciones por Fusión con monstruos del Deck usando "<card mrk = '17066'/>", una carta estratégica esencial extremadamente poderosa. Busca la forma de acceder a ella tan pronto como puedas, por ejemplo, usando el efecto de "<card mrk = '16195'/>". Una vez preparada, podrás realizar Invocaciones por Fusión sucesivas. Primero "<card mrk = '17070'/>", y luego "<card mrk = '17069'/>", el monstruo insignia del Deck, que tiene dos efectos: uno te permite desterrar un monstruo y se puede activar durante el turno de cualquiera de los duelistas; el otro es un efecto infalible que se activa si tu monstruo insignia abandona el Campo a causa de una carta de tu adversario, lo que te permite destruir todos los monstruos de tu adversario en la End Phase.
 [IDS_ITEMDESC.ID1120029]
-coming soon
+Este Deck "<category id='55'/>" consigue la supremacía a través de un poder abrasador.
+A partir de una carta como el "<card mrk='19014'/>", realiza una serie de Invocaciones por Sincronía: primero el "<card mrk='12695'/>" y después el "<card mrk='19021'/>". No solo puedes Invocar por Sincronía a un poderoso Monstruo de Sincronía, también puedes usar el efecto del "<card mrk='19021'/>" para convocar al "<card mrk='7735'/>". ¡Utiliza el altísimo ATK de estos Monstruos de Sincronía para hacerte con la victoria!
 [IDS_ITEMDESC.ID1120030]
 coming soon
 [IDS_ITEMDESC.ID1120031]
@@ -3179,7 +3199,8 @@ Un liderazgo tan excepcional llevará a su equipo a la victoria.
 La guerra estalla de nuevo, con el fuego enfrentado al agua.
 Sus pulseras emiten una luz resplandeciente.
 [IDS_ITEMDESC.ID1130075]
-coming soon
+Eran desconocidos hasta que se vieron engullidos por las maquinaciones del destino.
+Forjaron muchos recuerdos durante su periplo, lo que hizo que su vínculo se estrechara.
 [IDS_ITEMDESC.ID1130076]
 coming soon
 [IDS_ITEMDESC.ID1130077]
@@ -3191,9 +3212,11 @@ coming soon
 [IDS_ITEMDESC.ID1130080]
 coming soon
 [IDS_ITEMDESC.ID1130081]
-coming soon
+Una entidad que proviene de las profundidades del abismo y que alberga un poder dracónico.
+No hay nada más aburrido que una historia que transcurre exactamente según lo previsto.
 [IDS_ITEMDESC.ID1130082]
-coming soon
+Adopta la forma de una muchacha delicada de cuyos ojos perpetuamente abiertos se desprende una mirada vacía.
+Su cuerpo, formado por un cúmulo de rencores, no tiene dueño.
 [IDS_ITEMDESC.ID1130083]
 coming soon
 [IDS_ITEMDESC.ID1130084]

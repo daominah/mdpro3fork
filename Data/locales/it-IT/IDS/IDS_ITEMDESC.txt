@@ -630,9 +630,11 @@ Quando si è decisi a continuare a duellare, le parole non servono.
 Un'icona che raffigura una grande performance della troupe di artisti "<category id='29'/>".
 Questa volta, è "<card mrk='16727'/>" a occuparsi dei volti.
 [IDS_ITEMDESC.ID1010102]
-coming soon
+Un'icona che raffigura un ragazzo e una ragazza che sfidano il loro destino.
+Il loro legame si è rafforzato nel corso di un lungo viaggio.
 [IDS_ITEMDESC.ID1010103]
-coming soon
+Un'icona che raffigura la nuova forma di un drago che possiede un'anima al contempo demoniaca e regale.
+Dal suo irrefrenabile ardore ha origine il mondo.
 [IDS_ITEMDESC.ID1010104]
 coming soon
 [IDS_ITEMDESC.ID1010105]
@@ -640,9 +642,11 @@ coming soon
 [IDS_ITEMDESC.ID1010106]
 coming soon
 [IDS_ITEMDESC.ID1010107]
-coming soon
+Un'icona che raffigura un giovane che trae piacere dall'instabilità e dalle crisi.
+Il suo posto naturale è quello del giullare sul palcoscenico dell'infamia.
 [IDS_ITEMDESC.ID1010108]
-coming soon
+Un'icona che raffigura un essere sia di Chaos, che di assoluta purezza.
+Travolto dall'amore e dalla disperazione, questo essere ha preso forma dalle 666 anime "Dogmatika" più pure.
 [IDS_ITEMDESC.ID1010109]
 coming soon
 [IDS_ITEMDESC.ID1010110]
@@ -2043,6 +2047,9 @@ Per coloro che si affidano all'oscurità, ma che perseguono incessantemente la g
 [IDS_ITEMDESC.ID1070114]
 Protettori che raffigurano due jolly.
 Per coloro che sono dotati di poteri straordinari.
+[IDS_ITEMDESC.ID1070115]
+Protettori che raffigurano un ragazzo e una ragazza uniti da strani eventi.
+Per coloro che hanno deciso di intraprendere un viaggio.
 [IDS_ITEMDESC.ID1071001]
 Protettori che rappresentano un guerriero che ha imparato a convivere con le ferite inferte al suo cuore durante le battaglie. 
 Perfetti per chi pretende sempre il meglio per gli amici più cari.
@@ -2280,6 +2287,9 @@ In un tripudio di luce purissima, le sue ali radiose compiono miracoli.
 [IDS_ITEMDESC.ID1080028]
 Una custodia per carte che raffigura "<card mrk='17069'/>".
 Anche se le forze lo stavano abbandonando, lo spirito del ragazzo non poteva essere spento. Si risvegliò, trasformandosi in un drago con lame che domina fuoco e ghiaccio.
+[IDS_ITEMDESC.ID1080029]
+Una custodia per carte che raffigura "<card mrk='19021'/>".
+Un drago demoniaco che riduce ogni cosa in cenere con la sua impareggiabile ferocia scarlatta.
 [IDS_ITEMDESC.ID1082001]
 Una custodia per Deck ispirata alla grande distesa galattica da cui provengono i Mostri Xyz. 
 Ideale per Deck incentrati sulle Evocazioni Xyz!
@@ -2434,6 +2444,9 @@ Questo mondo è pieno di agenti operativi sotto copertura che lavorano nell'ombr
 [IDS_ITEMDESC.ID1090034]
 Un Terreno Duello ingegnerizzato con una tecnologia incredibilmente avanzata.
 Realizzato per una specialissima operazione militare, può essere utilizzato per simulare diversi scenari di guerra.
+[IDS_ITEMDESC.ID1090036]
+Un Terreno che raffigura una struttura gigantesca avvolta da un'atmosfera inquietante.
+Nascosta nelle sue profondità, la porta della fine inizia ad aprirsi, lentamente ma inesorabilmente.
 [IDS_ITEMDESC.ID1092001]
 Un Terreno che raffigura due guerrieri intenti a darsi battaglia.
 Non c'è momento migliore di questo per affrontare il tuo rivale!
@@ -2530,6 +2543,9 @@ Tutto ciò che è nascosto qui probabilmente verrà presto rubato.
 [IDS_ITEMDESC.ID1100034]
 Parti del Terreno provenienti dall'Area di simulazione "Stratagemma d'assalto".
 Realizzate con una tecnologia incredibilmente avanzata, consentono di raccogliere informazioni vitali.
+[IDS_ITEMDESC.ID1100036]
+Parti del Terreno provenienti da "Dispia, Teatro dei Marchiati".
+Il livello di raffinatezza si addice al castello da cui emanano le tenebre.
 [IDS_ITEMDESC.ID1101001]
 Parti del Terreno ispirate a un Buco Trappola.
 Preparare una trappola come questa è segno di grande astuzia o di semplice cattiveria?
@@ -2758,6 +2774,9 @@ Qualunque cosa vi venga posta sopra risalta ancora di più grazie all'adorabile 
 [IDS_ITEMDESC.ID1110034]
 Uno stand proveniente dall'Area di simulazione "Stratagemma d'assalto".
 Permette di trasportare enormi armamenti e può adattarsi a qualsiasi circostanza.
+[IDS_ITEMDESC.ID1110036]
+Uno stand proveniente da "Dispia, Teatro dei Marchiati".
+È uno degli innumerevoli squarci che si sono formati nel cielo.
 [IDS_ITEMDESC.ID1111001]
 Uno stand ispirato a un certo piano con delle lettere incise usato in diverse arti paranormali.
 Ti sembra quasi di vedere uno spirito oscuro e rancoroso intento a fissarti dall'altro lato...
@@ -2948,7 +2967,8 @@ Anzitutto, dovresti puntare a schierare "<card mrk = '9229'/>". Puoi farlo in di
 Questo Deck "<category id='31'/>" è incentrato sull'Evocare Specialmente tramite "<card mrk = '15245'/>".
 "<card mrk = '17066'/>" è una carta estremamente potente e importantissima per la tua strategia, dato che ti consente di Evocare tramite Fusione utilizzando mostri dal Deck. Trova un modo per aggiungerla alla tua mano il prima possibile, ad esempio utilizzando l'effetto di "<card mrk = '16195'/>". Una volta che è tutto pronto, effettua una serie di Evocazioni tramite Fusione. Inizia con "<card mrk = '17070'/>", e poi prosegui con "<card mrk = '17069'/>", il mostro migliore del Deck, che ha due effetti: il primo ti consente di bandire 1 mostro sul Terreno, ed è attivabile durante il turno di qualsiasi giocatore; il secondo è un salvavita che ti consente di distruggere tutti i mostri controllati dal tuo avversario durante la End Phase, ed è attivabile quando lascia il Terreno a causa di una sua carta!
 [IDS_ITEMDESC.ID1120029]
-coming soon
+Questo Deck "<category id='55'/>" domina grazie a una potenza impressionante.
+Partendo da carte come "<card mrk='19014'/>", esegui una serie di Synchro Evocazioni: prima "<card mrk='12695'/>", e poi "<card mrk='19021'/>". Non soltanto puoi Synchro Evocare un potente Mostro Synchro, ma puoi anche utilizzare l'effetto di "<card mrk='19021'/>" per far scendere in campo "<card mrk='7735'/>". Brucia tutto, e ottieni la vittoria con l'ATK incredibilmente elevato di questi Mostri Synchro!
 [IDS_ITEMDESC.ID1120030]
 coming soon
 [IDS_ITEMDESC.ID1120031]
@@ -3178,7 +3198,8 @@ Una leadership eccellente che porterà sicuramente la sua squadra alla vittoria.
 La guerra è scoppiata ancora una volta, con il fuoco che si contrappone all'acqua.
 Una luce scintillante si sprigiona dai loro braccialetti.
 [IDS_ITEMDESC.ID1130075]
-coming soon
+Erano estranei, finché non sono stati inghiottiti dalle trame del destino.
+Dopo i tanti ricordi creati durante il viaggio, il loro legame si è rafforzato.
 [IDS_ITEMDESC.ID1130076]
 coming soon
 [IDS_ITEMDESC.ID1130077]
@@ -3190,9 +3211,11 @@ coming soon
 [IDS_ITEMDESC.ID1130080]
 coming soon
 [IDS_ITEMDESC.ID1130081]
-coming soon
+Un'entità staccatasi dalle profondità dell'abisso, che detiene un potere draconico.
+Non c'è niente di più noioso di una storia che va esattamente come previsto.
 [IDS_ITEMDESC.ID1130082]
-coming soon
+Assumendo la forma di una ragazza fragile, i suoi occhi sono sempre aperti e con uno sguardo assente.
+Il suo corpo, formato dai rancori, non ha un padrone.
 [IDS_ITEMDESC.ID1130083]
 coming soon
 [IDS_ITEMDESC.ID1130084]

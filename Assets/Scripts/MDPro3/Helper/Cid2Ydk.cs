@@ -14,7 +14,6 @@ namespace MDPro3
         private const string cardsPath = "Data/cards.json";
         private const string cardsAltPath = "Data/cards_Alt.json";
         private const string cardsLitePath = "Data/cards_Lite.json";
-        private const string pattern = @"<card mrk='(\d+)'/>";
 
         private static bool initialized;
         private static Dictionary<string, Id2Ydk> dic;
@@ -69,7 +68,7 @@ namespace MDPro3
             Initialize();
 
             origin = origin.Replace(" get=\'name\'", string.Empty);
-            return Regex.Replace(origin, pattern, EvaluatorGetNameFromNumber);
+            return Regex.Replace(origin, @"<card mrk='(\d+)'/>", EvaluatorGetNameFromNumber);
         }
 
         private static string EvaluatorGetNameFromNumber(Match match)

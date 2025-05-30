@@ -68,16 +68,16 @@ public class AssetBundleRobber : MonoBehaviour
         pathAB = PATH_AB_WINDOWS;
         pathStore = PATH_STORE_WINDOWS;
 
-        //pathAB = PATH_AB_ANDROID;
-        //pathStore = PATH_STORE_ANDROID;
+        pathAB = PATH_AB_ANDROID;
+        pathStore = PATH_STORE_ANDROID;
 
         //pathAB = PATH_AB_IOS;
         //pathStore = PATH_STORE_IOS;
 
         fullCopy = true;
-        //fullCopy = false;
+        fullCopy = false;
 
-        copyAssetType = AssetType.BGM;
+        copyAssetType = AssetType.All;
 
         Initialize();
 

@@ -19,7 +19,7 @@ namespace MDPro3.Utility
         public const string TraditionalChinese = "zh-TW";
 
         private const string MasterDuelPortuguese = "pt-BR";
-
+        private const string MasterDuelGerman = "de-DE";
         public static string GetConfig()
         {
             return Config.Get(ConfigName, SimplifiedChinese);
@@ -104,6 +104,8 @@ namespace MDPro3.Utility
         {
             if (language == Portuguese)
                 return MasterDuelPortuguese;
+            if(language == German)
+                return MasterDuelGerman;
             return language;
         }
     }

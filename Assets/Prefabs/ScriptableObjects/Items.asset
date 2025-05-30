@@ -1777,14 +1777,14 @@ MonoBehaviour:
     path: 
     secondFace: 0
     diy: 0
-    notReady: 1
+    notReady: 0
   - id: 1010103
     m_name: 
     m_description: 
     path: 
     secondFace: 0
     diy: 0
-    notReady: 1
+    notReady: 0
   - id: 1010104
     m_name: 
     m_description: 
@@ -1812,14 +1812,14 @@ MonoBehaviour:
     path: 
     secondFace: 0
     diy: 0
-    notReady: 1
+    notReady: 0
   - id: 1010108
     m_name: 
     m_description: 
     path: 
     secondFace: 0
     diy: 0
-    notReady: 1
+    notReady: 0
   - id: 1010109
     m_name: 
     m_description: 
@@ -3999,6 +3999,13 @@ MonoBehaviour:
     secondFace: 0
     diy: 0
     notReady: 0
+  - id: 1070115
+    m_name: 
+    m_description: 
+    path: 
+    secondFace: 0
+    diy: 0
+    notReady: 0
   - id: 1071001
     m_name: 
     m_description: 
@@ -4567,6 +4574,13 @@ MonoBehaviour:
     secondFace: 0
     diy: 0
     notReady: 0
+  - id: 1080029
+    m_name: 
+    m_description: 
+    path: 
+    secondFace: 0
+    diy: 0
+    notReady: 0
   - id: 1081001
     m_name: 
     m_description: 
@@ -4805,6 +4819,13 @@ MonoBehaviour:
     secondFace: 0
     diy: 0
     notReady: 0
+  - id: 1082021
+    m_name: 
+    m_description: 
+    path: 
+    secondFace: 0
+    diy: 0
+    notReady: 0
   mats:
   - id: 1090001
     m_name: 
@@ -5020,6 +5041,13 @@ MonoBehaviour:
     m_name: 
     m_description: 
     path: Mat/Mat_040
+    secondFace: 0
+    diy: 0
+    notReady: 0
+  - id: 1090036
+    m_name: 
+    m_description: 
+    path: Mat/Mat_042
     secondFace: 0
     diy: 0
     notReady: 0
@@ -5266,6 +5294,13 @@ MonoBehaviour:
     m_name: 
     m_description: 
     path: Grave/Grave_040
+    secondFace: 0
+    diy: 0
+    notReady: 0
+  - id: 1100036
+    m_name: 
+    m_description: 
+    path: Grave/Grave_042
     secondFace: 0
     diy: 0
     notReady: 0
@@ -5659,6 +5694,13 @@ MonoBehaviour:
     m_name: 
     m_description: 
     path: AvatarStand/AvatarStand_040
+    secondFace: 0
+    diy: 0
+    notReady: 0
+  - id: 1110036
+    m_name: 
+    m_description: 
+    path: AvatarStand/AvatarStand_042
     secondFace: 0
     diy: 0
     notReady: 0
@@ -6444,6 +6486,27 @@ MonoBehaviour:
     m_name: 
     m_description: 
     path: Wallpaper/Front0074
+    secondFace: 0
+    diy: 1
+    notReady: 0
+  - id: 1130075
+    m_name: 
+    m_description: 
+    path: Wallpaper/Front0075
+    secondFace: 0
+    diy: 1
+    notReady: 0
+  - id: 1130081
+    m_name: 
+    m_description: 
+    path: Wallpaper/Front0081
+    secondFace: 0
+    diy: 1
+    notReady: 0
+  - id: 1130082
+    m_name: 
+    m_description: 
+    path: Wallpaper/Front0082
     secondFace: 0
     diy: 1
     notReady: 0

@@ -99,8 +99,6 @@ namespace MDPro3
         public List<Item> wallpapers;   // 113
         public List<List<Item>> kinds;
 
-        private const bool useBytes = false;
-        private const string PATH_MAP = "Data/items.txt";
         private const string ADDRESS_DEFAULT_DECK_CASE = "DeckCase0001_L";
 
         public const string STRING_NULL = "coming soon";
@@ -116,9 +114,9 @@ namespace MDPro3
         public static bool initialized = false;
         private static string language = string.Empty;
         private static Items instance;
-        private readonly Dictionary<string, int> idsMap = new();
-        private Dictionary<int, string> names = new();
-        private Dictionary<int, string> descriptions = new();
+        private readonly Dictionary<int, string> names = new();
+        private readonly Dictionary<int, string> descriptions = new();
+        private readonly Dictionary<int, string> categories = new();
         private readonly Dictionary<string, Sprite> cachedIcons = new();
 
         private string lastMat0;
@@ -145,27 +143,6 @@ namespace MDPro3
                     cases,
                 };
 
-                if (useBytes)
-                {
-                    var all = File.ReadAllText(PATH_MAP);
-                    var lines = all.Replace("\r", string.Empty).Split('\n');
-                    foreach (var line in lines)
-                    {
-                        var pair = line.Split(' ');
-                        if (pair.Length > 1)
-                        {
-                            try
-                            {
-                                idsMap.Add(pair[1], int.Parse(pair[0]));
-                            }
-                            catch (Exception e)
-                            {
-                                Debug.LogError("Read items.txt Error: " + e);
-                            }
-                        }
-                    }
-                }
-
                 initialized = true;
             }
             var currentLanguage = Language.GetConfig();
@@ -178,99 +155,9 @@ namespace MDPro3
 
         private void Load()
         {
-            if (useBytes)
-            {
-                LoadData(Program.PATH_LOCALES + language + "/IDS_ITEM.bytes");
-                LoadData(Program.PATH_LOCALES + language + "/IDS_ITEMDESC.bytes");
-            }
-            else
-            {
-                LoadText(Program.PATH_LOCALES + language + "/IDS/IDS_ITEM.txt");
-                LoadText(Program.PATH_LOCALES + language + "/IDS/IDS_ITEMDESC.txt");
-            }
-        }
-
-        private void LoadData(string path)
-        {
-            int type = 0;
-            if (path.EndsWith("IDS_ITEMDESC.bytes"))
-                type = 1;
-
-            var bytes = File.ReadAllBytes(path);
-            var languageBytes = Encoding.UTF8
-                .GetBytes(Language.GetMasterDuelLanguage(language));
-            int start = 0;
-            for (int i = 0; i < bytes.Length; i++)
-            {
-                bool pass = true;
-                for (int j = 0; j < languageBytes.Length; j++)
-                {
-                    if (bytes[i + j] != languageBytes[j])
-                    {
-                        pass = false;
-                        break;
-                    }
-                }
-                if (pass)
-                {
-                    start = i + 5;
-                    break;
-                }
-            }
-
-            bool isID = true;
-            var ids = new List<string>();
-            var values = new List<string>();
-            for (int i = start; i < bytes.Length;)
-            {
-                int length = 0;
-                if (bytes[i] == 0xDA)
-                {
-                    length = (bytes[i + 1] << 8) | bytes[i + 2];
-                }
-                else if (bytes[i] == 0xD9)
-                {
-                    length = bytes[i + 1];
-                }
-                else if (bytes[i] > 0xA0 && bytes[i] < 0xB0)
-                {
-                    length = bytes[i] - 0xA0;
-                }
-                else if (bytes[i] >= 0xB0 && bytes[i] < 0xC0)
-                {
-                    length = bytes[i] - 0xB0 + 16;
-                }
-                else
-                {
-                    Debug.LogErrorFormat("Items Load: Unknown Lentgh {0:X} at {1}", bytes[i], i);
-                }
-
-                var offset = 1;
-                if (length > 31)
-                    offset = 2;
-                if (length > 255)
-                    offset = 3;
-
-                var newBytes = new byte[length];
-                Array.Copy(bytes, i + offset, newBytes, 0, length);
-                var content = Encoding.UTF8.GetString(newBytes);
-                if (isID)
-                    ids.Add(content);
-                else
-                    values.Add(content);
-                isID = !isID;
-                i += length + offset;
-            }
-
-            var dic = new Dictionary<int, string>();
-            for (int i = 0; i < ids.Count && i < values.Count; i++)
-                if (idsMap.TryGetValue(ids[i], out var id))
-                    dic.Add(id, values[i]);
-
-            if (type == 0)
-                names = dic;
-            else if (type == 1)
-                descriptions = dic;
+            LoadText(Program.PATH_LOCALES + language + "/IDS/IDS_ITEM.txt");
+            LoadText(Program.PATH_LOCALES + language + "/IDS/IDS_ITEMDESC.txt");
+            LoadText(Program.PATH_LOCALES + language + "/IDS/IDS_CATEGORY.txt");
         }
 
         private void LoadText(string path)
@@ -278,12 +165,13 @@ namespace MDPro3
             int type = 0;
             if (path.EndsWith("IDS_ITEMDESC.txt"))
                 type = 1;
+            if (path.EndsWith("IDS_CATEGORY.txt"))
+                type = 2;
+            var targetDic = GetDic(type);
+            targetDic.Clear();
 
             var text = File.ReadAllText(path);
             var lines = text.Replace("\r", string.Empty).Split('\n');
-
-            var targetDic = type == 0 ? names : descriptions;
-            targetDic.Clear();
 
             int currentKey = 0;
             List<string> currentValue = null;
@@ -307,11 +195,20 @@ namespace MDPro3
             }
         }
 
+        private Dictionary<int, string> GetDic(int type)
+        {
+            return type switch
+            {
+                0 => names,
+                1 => descriptions,
+                2 => categories,
+                _ => throw new ArgumentOutOfRangeException(nameof(type), "Invalid type for dictionary retrieval.")
+            };
+        }
+
         private bool TryParseKey(string line, out int key, int type)
         {
-            var match = type == 0 ?
-                Regex.Match(line, @"^\[IDS_ITEM\.ID(\d+)\]$")
-                : Regex.Match(line, @"^\[IDS_ITEMDESC\.ID(\d+)\]$");
+            var match = GetMatch(line, type);
             if (match.Success)
             {
                 key = int.Parse(match.Groups[1].Value);
@@ -319,6 +216,17 @@ namespace MDPro3
             }
             key = 0;
             return false;
+        }
+
+        private Match GetMatch(string line, int type)
+        {
+            return type switch
+            {
+                0 => Regex.Match(line, @"^\[IDS_ITEM\.ID(\d+)\]$"),
+                1 => Regex.Match(line, @"^\[IDS_ITEMDESC\.ID(\d+)\]$"),
+                2 => Regex.Match(line, @"^\[IDS_CATEGORY.NAME_(\d+)\]$"),
+                _ => throw new ArgumentOutOfRangeException(nameof(type), "Invalid type for match retrieval.")
+            };
         }
 
         private string GetName(int code, string mName)
@@ -339,7 +247,22 @@ namespace MDPro3
             descriptions.TryGetValue(code, out var returnValue);
             if (string.IsNullOrEmpty(returnValue))
                 return STRING_NULL;
+            returnValue = ReplaceWithCategory(returnValue);
             return Cid2Ydk.ReplaceWithCardName(returnValue);
+        }
+
+        private string ReplaceWithCategory(string text)
+        {
+            return Regex.Replace(text, @"<category id='(\d+)'/>", EvaluatorReplaceCategory);
+        }
+
+        private string EvaluatorReplaceCategory(Match match)
+        {
+            var key = match.Groups[1].Value;
+            if (categories.TryGetValue(int.Parse(key), out var value))
+                return value;
+            else
+                return match.Value;
         }
 
         #endregion

@@ -50,6 +50,7 @@ SpriteAtlas:
     isAtlasV2: 0
     cachedData: {fileID: 0}
     packedSpriteRenderDataKeys:
+    - c51207103ab4df74c91071b2f4d0cfeb: 21300000
     - da686920dca733645bfcbd97a4516ee7: 21300000
     - bcab0bd0662df2745bf77a2d8dd4ee5e: 21300000
     - 4f06c8616325be949bba8a6af4c78944: 21300000
@@ -77,6 +78,7 @@ SpriteAtlas:
     - ec567d65546c8704583a5cb91ec14f39: 21300000
     - dc6a1cb533de404408e42beab395b8b1: 21300000
     - bee2cef558daa4543aaf9bb5cc796dd6: 21300000
+    - 48fe0b76ef9640f41ac19ee29eab363f: 21300000
     - 2850c3d6aba7a614baa3b9b7cd7a12cd: 21300000
     - 9a0d1817be2d5704d984675cad6479d7: 21300000
     - 55868137e785a0c4aacd51111a6a0fd0: 21300000
@@ -113,6 +115,7 @@ SpriteAtlas:
     - b5b221cfb9240904589e445b9d422c52: 21300000
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
+  - {fileID: 21300000, guid: c51207103ab4df74c91071b2f4d0cfeb, type: 3}
   - {fileID: 21300000, guid: da686920dca733645bfcbd97a4516ee7, type: 3}
   - {fileID: 21300000, guid: bcab0bd0662df2745bf77a2d8dd4ee5e, type: 3}
   - {fileID: 21300000, guid: 4f06c8616325be949bba8a6af4c78944, type: 3}
@@ -140,6 +143,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: ec567d65546c8704583a5cb91ec14f39, type: 3}
   - {fileID: 21300000, guid: dc6a1cb533de404408e42beab395b8b1, type: 3}
   - {fileID: 21300000, guid: bee2cef558daa4543aaf9bb5cc796dd6, type: 3}
+  - {fileID: 21300000, guid: 48fe0b76ef9640f41ac19ee29eab363f, type: 3}
   - {fileID: 21300000, guid: 2850c3d6aba7a614baa3b9b7cd7a12cd, type: 3}
   - {fileID: 21300000, guid: 9a0d1817be2d5704d984675cad6479d7, type: 3}
   - {fileID: 21300000, guid: 55868137e785a0c4aacd51111a6a0fd0, type: 3}
@@ -175,6 +179,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 3e740c9fc8a73994f8fc6bfda341120d, type: 3}
   - {fileID: 21300000, guid: b5b221cfb9240904589e445b9d422c52, type: 3}
   m_PackedSpriteNamesToIndex:
+  - DeckCase2021
   - DeckCase0021
   - DeckCase1005
   - DeckCase0027
@@ -202,6 +207,7 @@ SpriteAtlas:
   - DeckCase2020
   - DeckCase0012
   - DeckCase1006
+  - DeckCase0029
   - DeckCase0028
   - DeckCase2011
   - DeckCase2014
