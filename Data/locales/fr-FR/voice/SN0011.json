@@ -1,0 +1,2086 @@
+{
+    "_GRP_": "SN0011",
+    "_LNG_": "fr-FR",
+    "info": {
+        "V0011_01_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Bien bien..."
+        },
+        "V0011_01_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Espérons que ce ne soit pas ton dernier Duel."
+        },
+        "V0011_01_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Me défier en Duel est ta première erreur, et ce sera ta dernière."
+        },
+        "V0011_01_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                10
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Fanfaronne tant que tu le peux..."
+        },
+        "V0011_01_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "C'est toi qui vivras dans des ténèbres éternelles.  "
+        },
+        "V0011_01_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                1,
+                331
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Tout jeu a une fin. La question est de savoir qui sera le vainqueur."
+        },
+        "V0011_01_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Et qui passera l'éternité à errer dans le Royaume des Ombres !  "
+        },
+        "V0011_01_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                6
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Si tu réussis à me vaincre, tu pourras partir. Mais si tu perds, tu seras piégé dans le Royaume des Ombres ! "
+        },
+        "V0011_02_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Duel !"
+        },
+        "V0011_03_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Ah ah ah !"
+        },
+        "V0011_03_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "À mon tour !"
+        },
+        "V0011_03_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Tu n'as aucune chance de gagner !"
+        },
+        "V0011_03_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "C'est à moi de jouer !"
+        },
+        "V0011_03_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'y vais."
+        },
+        "V0011_03_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "À mon tour !"
+        },
+        "V0011_03_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Hé hé hé..."
+        },
+        "V0011_03_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "C'est à moi de jouer !"
+        },
+        "V0011_03_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Non... C'est impossible..."
+        },
+        "V0011_03_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "À mon tour !"
+        },
+        "V0011_03_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Rrrgh... !"
+        },
+        "V0011_03_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "À mon tour !"
+        },
+        "V0011_04_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Je pioche !"
+        },
+        "V0011_04_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Je pioche !"
+        },
+        "V0011_04_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Argh... Je pioche !"
+        },
+        "V0011_05_00_00_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Cette carte est exactement ce dont j'ai besoin pour t'enterrer dans les ombres."
+        },
+        "V0011_05_00_00_1": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Je pioche !"
+        },
+        "V0011_06_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Hé hé hé..."
+        },
+        "V0011_06_01_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Pas si vite !"
+        },
+        "V0011_06_01_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Dommage !"
+        },
+        "V0011_06_01_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Attends !"
+        },
+        "V0011_07_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Depuis ma main..."
+        },
+        "V0011_07_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'active une Magie !"
+        },
+        "V0011_07_02_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'active une Magie Jeu-Rapide !"
+        },
+        "V0011_07_03_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'active une Magie Continue !"
+        },
+        "V0011_07_04_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'active une Magie d'Équipement !"
+        },
+        "V0011_07_05_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'active une Magie Rituelle !"
+        },
+        "V0011_07_06_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Mon Piège s'active !"
+        },
+        "V0011_07_07_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Mon Piège Continu s'active !"
+        },
+        "V0011_07_08_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Mon Contre-Piège s'active !"
+        },
+        "V0011_07_09_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Voilà ma carte face verso !"
+        },
+        "V0011_07_09_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'active ma carte face verso !"
+        },
+        "V0011_07_10_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Mon effet de monstre s'active !"
+        },
+        "V0011_07_11_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "La Magie de Terrain s'active !"
+        },
+        "V0011_08_00_00_0": {
+            "card": [
+                5224
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Cinq petites lettres signeront ton trépas..."
+        },
+        "V0011_08_00_00_1": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "J'active le Piège Continu, Tableau de la Destinée !"
+        },
+        "V0011_08_00_01_0": {
+            "card": [
+                5785
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "J'active Contrat avec le Maître des Ténèbres !"
+        },
+        "V0011_08_00_02_0": {
+            "card": [
+                5225
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "La Carte Magie, La Porte des Ténèbres !"
+        },
+        "V0011_08_00_03_0": {
+            "card": [
+                5227
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ma carte face verso est Esprit Noir du Silence !"
+        },
+        "V0011_08_00_04_0": {
+            "card": [
+                6682
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "J'active mon Piège Continu, <card mrk='6682.'/> !"
+        },
+        "V0011_08_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "C'est si triste... Comment peux-tu te défausser d'une carte quand tu n'as pas de Cimetière où défausser ?"
+        },
+        "V0011_08_00_05_0": {
+            "card": [
+                6707
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "J'active mon Piège Continu, Fissure Dimensionnelle !"
+        },
+        "V0011_08_00_06_0": {
+            "card": [
+                5935
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ma Carte Piège s'active ! Spectre Zoma !"
+        },
+        "V0011_08_00_07_0": {
+            "card": [
+                5935
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Si un monstre détruit cette carte, tu reçois autant de dommages que les points d'attaque de ce monstre !"
+        },
+        "V0011_08_00_08_0": {
+            "card": [
+                4828
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "J'active la Carte Magie, Ectoplasmer !"
+        },
+        "V0011_08_00_09_0": {
+            "card": [
+                4828
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ectoplasmer, feu !"
+        },
+        "V0011_08_00_09_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Tu reçois autant de dommages que la moitié des points d'attaque du monstre Sacrifié !"
+        },
+        "V0011_08_00_10_0": {
+            "card": [
+                4965
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Le Tombeau Vide, active-toi !"
+        },
+        "V0011_08_00_10_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Nous renvoyons chacun un monstre de nos Cimetières sur le terrain."
+        },
+        "V0011_08_00_11_0": {
+            "card": [
+                4865
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Desserts Seuls, active-toi !"
+        },
+        "V0011_08_00_12_0": {
+            "card": [
+                5224
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Tableau de la Destinée écrira un message spécial juste pour toi !"
+        },
+        "V0011_08_00_13_0": {
+            "card": [
+                14584
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "J'active ma Carte Magie !\nMaîtrise de l'Esprit Noir !"
+        },
+        "V0011_08_00_14_0": {
+            "card": [
+                14584
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Je bannis Maîtrise de l'Esprit Noir du Cimetière !"
+        },
+        "V0011_08_00_15_0": {
+            "card": [
+                12572
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Tu vas voir à quel point mon combo occulte est horrible !"
+        },
+        "V0011_08_00_15_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "J'active ma Magie de Terrain !\nSanctuaire des Ténèbres !"
+        },
+        "V0011_08_00_16_0": {
+            "card": [
+                12572
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "L'effet de la Carte Sanctuaire des Ténèbres s'active !"
+        },
+        "V0011_08_00_17_0": {
+            "card": [
+                5218
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Hé hé hé...\nJe vais m'en servir pour prendre ta carte !"
+        },
+        "V0011_08_00_17_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "La Carte Magie Échange !"
+        },
+        "V0011_08_00_18_0": {
+            "card": [
+                5246
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Ha ha ha ha ha ha !\nJ'active Spiritisme !"
+        },
+        "V0011_08_00_19_0": {
+            "card": [
+                5480
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Tu veux une carte ?\nPermets-moi d'exaucer ton souhait !"
+        },
+        "V0011_08_00_19_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Désignateur des Ténèbres !"
+        },
+        "V0011_08_00_20_0": {
+            "card": [
+                4908
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "J'ai la carte parfaite pour cette situation !"
+        },
+        "V0011_08_00_20_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "La Carte Magie Continue Énergie en Chaîne !"
+        },
+        "V0011_08_00_21_0": {
+            "card": [
+                14585
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Cette carte a prédit ta défaite !"
+        },
+        "V0011_08_00_21_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "J'active mon Piège Continu !\nSentence de Mort !"
+        },
+        "V0011_08_00_22_0": {
+            "card": [
+                14585
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "J'active l'effet de la Carte Sentence de Mort !"
+        },
+        "V0011_08_00_23_0": {
+            "card": [
+                6010
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "La Carte Piège, Invitation de l'Esprit de la Terre !"
+        },
+        "V0011_08_00_24_0": {
+            "card": [
+                5481
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "La Carte Piège, Destruction Multiple !"
+        },
+        "V0011_08_00_24_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Toute carte que je remets dans ton Deck ne peut me menacer !"
+        },
+        "V0011_08_00_25_0": {
+            "card": [
+                6277
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Hé hé hé...\nPénalité ! !"
+        },
+        "V0011_09_00_00_0": {
+            "card": [
+                5222
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "L'effet de la Carte Necrofear des Ténèbres s'active !"
+        },
+        "V0011_09_00_01_0": {
+            "card": [
+                5782
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "L'effet de la Carte Zorc - Maître des Ténèbres s'active ! "
+        },
+        "V0011_09_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Dé de la possession !"
+        },
+        "V0011_09_00_04_0": {
+            "card": [
+                6075
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "L'effet de monstre de la Carte Visage Nécro s'active !"
+        },
+        "V0011_09_00_05_0": {
+            "card": [
+                14581
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Voici l'effet de la Carte Malédiction Necrofear !"
+        },
+        "V0011_09_00_06_0": {
+            "card": [
+                14582
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "J'active l'effet de la Carte Esprit Noir du Bannissement !"
+        },
+        "V0011_09_00_07_0": {
+            "card": [
+                14583
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "J'active l'effet de la Carte Esprit Noir de la Malice !"
+        },
+        "V0011_09_00_08_0": {
+            "card": [
+                12899
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "L'effet de la Carte Noyau Diabound !"
+        },
+        "V0011_09_00_09_0": {
+            "card": [
+                4616
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Subis l'effet de la Carte Lézard Électrique !"
+        },
+        "V0011_09_00_10_0": {
+            "card": [
+                4054
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Quand la Carte Sangan est au Cimetière, son effet s'active !"
+        },
+        "V0011_09_00_11_0": {
+            "card": [
+                5483
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "L'effet de la Carte Gernia s'active depuis le Cimetière !"
+        },
+        "V0011_09_00_12_0": {
+            "card": [
+                8089
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Ha ha ha !\nJ'active l'effet de la Carte Tragoedia depuis ma main !"
+        },
+        "V0011_09_00_13_0": {
+            "card": [
+                8089
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Je vais utiliser l'effet de la Carte Tragoedia !"
+        },
+        "V0011_09_00_14_0": {
+            "card": [
+                4597
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "L'effet de la Carte Morphojarre s'active !"
+        },
+        "V0011_09_00_14_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Jette ta main entière !"
+        },
+        "V0011_09_00_15_0": {
+            "card": [
+                5482
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "L'effet de la Carte Maître des Marionnettes s'active à son Invocation !"
+        },
+        "V0011_09_00_16_0": {
+            "card": [
+                5247
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "J'active l'effet de la Carte Jowgen le Spirit !"
+        },
+        "V0011_09_00_17_0": {
+            "card": [
+                4120
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "L'effet de la Carte Chapeau Magique Blanc t'oblige à défausser une carte !"
+        },
+        "V0011_10_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ce coup va marcher."
+        },
+        "V0011_10_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Observe !"
+        },
+        "V0011_10_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Viens à moi !"
+        },
+        "V0011_10_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Allons-y !"
+        },
+        "V0011_11_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'Invoque un monstre en Position d'Attaque !"
+        },
+        "V0011_11_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'Invoque un monstre en Position de Défense !"
+        },
+        "V0011_11_02_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'Invoque Spécialement un monstre !"
+        },
+        "V0011_11_03_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Je Sacrifie un monstre !"
+        },
+        "V0011_11_04_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'Invoque un monstre par Sacrifice !"
+        },
+        "V0011_11_05_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'Invoque un monstre par Fusion !"
+        },
+        "V0011_11_06_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'Invoque un monstre par Rituel !"
+        },
+        "V0011_11_07_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'Invoque un monstre par Synchro !"
+        },
+        "V0011_11_08_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'Invoque un monstre par Xyz !"
+        },
+        "V0011_11_09_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'Invoque un monstre par Pendulation !"
+        },
+        "V0011_13_00_00_0": {
+            "card": [
+                5222
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "J'Invoque celui qui causera ta perte..."
+        },
+        "V0011_13_00_00_1": {
+            "card": [],
+            "cutin": 2,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Necrofear des Ténèbres !"
+        },
+        "V0011_13_00_01_0": {
+            "card": [
+                5561
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "J'Invoque Zombie Goblin !"
+        },
+        "V0011_13_00_02_0": {
+            "card": [
+                5782
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "La résurrection de Zorc - Maître des Ténèbres est imminente !"
+        },
+        "V0011_13_00_02_1": {
+            "card": [],
+            "cutin": 2,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Ah ah ah !"
+        },
+        "V0011_13_00_03_0": {
+            "card": [
+                4507
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Cette carte va te dévorer !"
+        },
+        "V0011_13_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Insecte Mangeur d'Hommes !"
+        },
+        "V0011_13_00_04_0": {
+            "card": [
+                6075
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "J'Invoque Visage Nécro !"
+        },
+        "V0011_13_00_05_0": {
+            "card": [
+                5935
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "J'Invoque Spécialement Spectre Zoma en Position de Défense !"
+        },
+        "V0011_13_00_06_0": {
+            "card": [
+                6001
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "J'Invoque Cavalier Squelette Deathcalibur !"
+        },
+        "V0011_13_00_07_0": {
+            "card": [
+                14581
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Le conquérant de l'au-delà !\nMalédiction Necrofear !"
+        },
+        "V0011_13_00_08_0": {
+            "card": [
+                14582
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Esprit Noir du Bannissement !"
+        },
+        "V0011_13_00_09_0": {
+            "card": [
+                14583
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Esprit Noir de la Malice !"
+        },
+        "V0011_13_00_10_0": {
+            "card": [
+                12899
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Rejoins-moi !\nNoyau Diabound !"
+        },
+        "V0011_13_00_11_0": {
+            "card": [
+                4616
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Viens ici !\nLézard Électrique !"
+        },
+        "V0011_13_00_12_0": {
+            "card": [
+                4054
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Viens là, Sangan !"
+        },
+        "V0011_13_00_13_0": {
+            "card": [
+                5483
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "J'Invoque la Carte Gernia !"
+        },
+        "V0011_13_00_14_0": {
+            "card": [
+                8089
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Le démon du village de Kul Elna est là !\nTragoedia !"
+        },
+        "V0011_13_00_15_0": {
+            "card": [
+                4597
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Morphojarre !"
+        },
+        "V0011_13_00_16_0": {
+            "card": [
+                5149
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Âmes des Oubliés !"
+        },
+        "V0011_13_00_17_0": {
+            "card": [
+                5219
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Le Secret du Portrait !"
+        },
+        "V0011_13_00_18_0": {
+            "card": [
+                5482
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Maître des Marionnettes !"
+        },
+        "V0011_13_00_19_0": {
+            "card": [
+                5229
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Le Comte Déchu !"
+        },
+        "V0011_13_00_20_0": {
+            "card": [
+                5221
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "C'est la carte que je voulais !\nChevalier sans Tête !"
+        },
+        "V0011_13_00_21_0": {
+            "card": [
+                5247
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Prépare-toi !\nJowgen le Spirit !"
+        },
+        "V0011_13_00_22_0": {
+            "card": [
+                5220
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Le Fantôme des Rêves Enfuis !"
+        },
+        "V0011_13_00_23_0": {
+            "card": [
+                5226
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Esprit Enchaîné à la Terre !"
+        },
+        "V0011_13_00_24_0": {
+            "card": [
+                4120
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Je joue cette carte ! \nChapeau Magique Blanc !"
+        },
+        "V0011_13_00_25_0": {
+            "card": [
+                5301
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Ha Dès le Gouverneur des Ténèbres !"
+        },
+        "V0011_14_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "C'est l'heure de combattre !"
+        },
+        "V0011_14_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Hé hé hé... Combattons !"
+        },
+        "V0011_15_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Essaie d'arrêter ça !"
+        },
+        "V0011_15_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ah ah ah !"
+        },
+        "V0011_15_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Prends ça !"
+        },
+        "V0011_16_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Tu es sur le point de tomber dans le Royaume des Ombres !"
+        },
+        "V0011_16_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "La partie est terminée !"
+        },
+        "V0011_17_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "J'attaque avec mon monstre."
+        },
+        "V0011_17_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Je t'attaque avec un monstre !"
+        },
+        "V0011_17_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "J'attaque !"
+        },
+        "V0011_18_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Je t'attaque directement !"
+        },
+        "V0011_18_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Mon monstre attaque directement tes Life Points !"
+        },
+        "V0011_19_00_00_0": {
+            "card": [
+                5222
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Vas-y, Necrofear des Ténèbres !"
+        },
+        "V0011_19_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Regard Funeste !"
+        },
+        "V0011_19_00_01_0": {
+            "card": [
+                5561
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "J'attaque avec Zombie Goblin !"
+        },
+        "V0011_19_00_02_0": {
+            "card": [
+                5782
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "J'attaque avec Zorc - Maître des Ténèbres ! "
+        },
+        "V0011_19_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Noir Miracle !"
+        },
+        "V0011_19_00_03_0": {
+            "card": [
+                6001
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Vas-y, Cavalier Squelette Deathcalibur !"
+        },
+        "V0011_19_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Abats ta lame sur tes ennemis !"
+        },
+        "V0011_19_00_04_0": {
+            "card": [
+                14581
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Malédiction Necrofear !\nÉcrase-moi ça !"
+        },
+        "V0011_19_00_05_0": {
+            "card": [
+                14582
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Esprit Noir du Bannissement ! À l'attaque !"
+        },
+        "V0011_19_00_06_0": {
+            "card": [
+                14583
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "À l'attaque, Esprit Noir de la Malice !"
+        },
+        "V0011_19_00_07_0": {
+            "card": [
+                12899
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Frappe-les Noyau Diabound !"
+        },
+        "V0011_19_00_07_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Spirale du déclin !"
+        },
+        "V0011_19_00_08_0": {
+            "card": [
+                4616
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Lézard Électrique !\nÉlectrocute-les !"
+        },
+        "V0011_19_00_09_0": {
+            "card": [
+                4054
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Sangan ! À l'attaque !"
+        },
+        "V0011_19_00_10_0": {
+            "card": [
+                5483
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Gernia attaque !"
+        },
+        "V0011_19_00_11_0": {
+            "card": [
+                8089
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Tragoedia ! À l'attaque !"
+        },
+        "V0011_19_00_12_0": {
+            "card": [
+                4597
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Morphojarre attaque !"
+        },
+        "V0011_19_00_13_0": {
+            "card": [
+                5149
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "À l'attaque, Âmes des Oubliés !"
+        },
+        "V0011_19_00_14_0": {
+            "card": [
+                5219
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Le Secret du Portrait attaque !"
+        },
+        "V0011_19_00_15_0": {
+            "card": [
+                5482
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Maître des Marionnettes ! À l'attaque !"
+        },
+        "V0011_19_00_16_0": {
+            "card": [
+                5229
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Le Comte Déchu attaque !\nSens le tranchant de sa lame !"
+        },
+        "V0011_19_00_16_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "L'Épée du péril !"
+        },
+        "V0011_19_00_17_0": {
+            "card": [
+                5221
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Chevalier sans Tête !\nDécoupe-les en morceaux !"
+        },
+        "V0011_19_00_18_0": {
+            "card": [
+                5247
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "À l'attaque, Jowgen le Spirit !"
+        },
+        "V0011_19_00_19_0": {
+            "card": [
+                5220
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Le Fantôme des Rêves Enfuis attaque !"
+        },
+        "V0011_19_00_20_0": {
+            "card": [
+                5226
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Traîne l’ennemi au sol, Esprit Enchaîné à la Terre !"
+        },
+        "V0011_19_00_21_0": {
+            "card": [
+                4120
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Chapeau Magique Blanc ! À l'attaque !"
+        },
+        "V0011_19_00_22_0": {
+            "card": [
+                5301
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Ha Dès le Gouverneur des Ténèbres !\nAnéantis tout !"
+        },
+        "V0011_20_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Je Pose une carte."
+        },
+        "V0011_20_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Je Pose une carte face verso."
+        },
+        "V0011_20_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Je Pose un monstre."
+        },
+        "V0011_20_01_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Je Pose un monstre face verso."
+        },
+        "V0011_21_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Hé hé hé... Mon tour est terminé !"
+        },
+        "V0011_21_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Je termine mon tour."
+        },
+        "V0011_21_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Rrgh... Mon tour est fini."
+        },
+        "V0011_22_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Ughh !"
+        },
+        "V0011_22_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Nngh !"
+        },
+        "V0011_22_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Aggh !"
+        },
+        "V0011_22_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Urrggghh !"
+        },
+        "V0011_22_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Aaaaahhhh !"
+        },
+        "V0011_22_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Aaaaagrhhh !"
+        },
+        "V0011_23_00_00_0": {
+            "card": [],
+            "cutin": 3,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Aaaagh ! Aaaaaaagghhh !"
+        },
+        "V0011_24_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Arrrgghhhhh... !"
+        },
+        "V0011_26_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Rrghh..."
+        },
+        "V0011_26_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Comment oses-tu..."
+        },
+        "V0011_26_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Hmph... Rien de mieux à proposer ?"
+        },
+        "V0011_27_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Ce n'est pas juste..."
+        },
+        "V0011_27_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Tu n'as pas encore gagné..."
+        },
+        "V0011_27_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Nnnggh... Ce n'est pas terminé..."
+        },
+        "V0011_28_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Ah ah ah... J'ai entendu dire que le Royaume des Ombres était très accueillant à cette époque de l'année. "
+        },
+        "V0011_28_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Tu vas découvrir si c'est vrai !"
+        },
+        "V0011_28_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Hé hé hé... Tu as vraiment cru pouvoir me vaincre ?"
+        },
+        "V0011_28_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Ha !"
+        },
+        "V0011_28_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Pauvre mortel pathétique !"
+        },
+        "V0011_29_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Hé hé hé..."
+        },
+        "V0011_29_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Je te laisse cette victoire."
+        },
+        "V0011_29_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Ce n'est pas possible ! Comment ai-je pu perdre contre quelqu'un comme toi ?"
+        },
+        "V0011_29_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                10
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Je n'ai pas encore dit mon dernier mot."
+        },
+        "V0011_29_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                1,
+                331
+            ],
+            "face": 3,
+            "frame": 0,
+            "text": "Je ne me réjouirais pas trop vite si j'étais toi."
+        },
+        "V0011_29_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Je reviendrai te montrer que ta victoire n'a servi à rien !"
+        },
+        "V0011_30_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Ah ah ah ! Aurais-tu trop peur pour réagir ?"
+        },
+        "V0011_30_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ne me dis pas que tu as mis tout ce temps pour comprendre que tu ne peux pas gagner."
+        },
+        "V0011_30_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Si tu veux fuir comme un lâche, c'est maintenant !"
+        },
+        "V0011_31_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Ce n'est pas possible !"
+        },
+        "V0011_31_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Quoi ?!"
+        },
+        "V0011_32_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Yu-Gi-Oh! Duel Links"
+        },
+        "V0011_32_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Yu-Gi-Oh! Duel Links !"
+        },
+        "V0011_33_00_00_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Ah ah ah !"
+        },
+        "V0011_33_00_01_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Tu as fait exactement ce que je voulais !"
+        },
+        "V0011_33_00_02_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Alleeez !!"
+        },
+        "V0011_34_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Que le jeu commence..."
+        },
+        "V0011_34_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Tu erreras dans les ténèbres jusqu'à la fin des temps !"
+        },
+        "V0011_34_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Tu n'as aucune idée de ce que j'ai prévu pour la suite !"
+        },
+        "V0011_34_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Quoi ?! Impossible !"
+        },
+        "V0011_34_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Hé hé... Tu bluffes..."
+        },
+        "V0011_34_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Ah ah ah ah !"
+        },
+        "V0011_34_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "C'est encore pire que de ne rien faire !"
+        },
+        "V0011_34_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Si c'est ce que tu peux faire de mieux, alors j'ai déjà gagné."
+        },
+        "V0011_34_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Ah ah ah ! Montre que tu n'as pas froid aux yeux ! Attaque-moi !"
+        },
+        "V0011_34_00_09_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Tu es tombé droit dans mon piège !"
+        },
+        "V0011_40_00_00_0": {
+            "card": [
+                5782
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Zorc Inferno !"
+        },
+        "V0011_40_00_01_0": {
+            "card": [
+                5782
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Cataclysme des Ténèbres !"
+        },
+        "V0011_40_00_02_0": {
+            "card": [
+                5782
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Quoi ?!\nCeci n'était pas censé arriver !"
+        }
+    }
+}

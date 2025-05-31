@@ -49,7 +49,7 @@ namespace MDPro3.Servant
             }
         }
 
-        public override int Depth => 3;
+        public override int Depth => 4;
         protected override bool ShowLine => true;
 
         public override void Initialize()

@@ -1,0 +1,2147 @@
+{
+    "_GRP_": "SN0214",
+    "_LNG_": "it-IT",
+    "info": {
+        "V0214_01_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Il titolo reciterà: \"Carly Carmine - Campionessa dei Duelli!\""
+        },
+        "V0214_01_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Sarà Carly ad avere lo scoop da mettere in prima pagina!"
+        },
+        "V0214_01_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ho preso alcune lezioni notturne di Duello, posso vincere!"
+        },
+        "V0214_01_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Mi sto innervosendo..."
+        },
+        "V0214_01_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Spero che il mio Deck della Fortuna la spunti!"
+        },
+        "V0214_01_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                202
+            ],
+            "face": 2,
+            "frame": 0,
+            "text": "Devi lasciarmi scrivere la tua esclusiva! Ti prego!"
+        },
+        "V0214_01_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                202
+            ],
+            "face": 2,
+            "frame": 0,
+            "text": "Se vinco, farai tutto ciò che chiedo. Ci stai o ci stai?!"
+        },
+        "V0214_01_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                201,
+                203,
+                204,
+                205,
+                206,
+                209
+            ],
+            "face": 2,
+            "frame": 0,
+            "text": "Parlerò del Team 5D's nel mio articolo!"
+        },
+        "V0214_01_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                208,
+                210,
+                211,
+                231
+            ],
+            "face": 3,
+            "frame": 0,
+            "text": "Mi ricorda il Duello tra Yusei e il tizio col ragno!"
+        },
+        "V0214_01_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                208,
+                210,
+                211,
+                231
+            ],
+            "face": 3,
+            "frame": 0,
+            "text": "Batterò tutti i Predestinati Oscuri, di cui facevo parte!"
+        },
+        "V0214_01_00_08_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Non che ricordi di essere stata una Predestinata Oscura..."
+        },
+        "V0214_02_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Duelliamo!"
+        },
+        "V0214_03_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Guarda cos'ho qui!"
+        },
+        "V0214_03_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "È il mio turno!"
+        },
+        "V0214_03_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "È mia occasione!"
+        },
+        "V0214_03_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "È il mio turno!"
+        },
+        "V0214_03_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ecco qui!"
+        },
+        "V0214_03_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "È il mio turno!"
+        },
+        "V0214_03_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "È il mio turno!"
+        },
+        "V0214_03_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Ecco la mia rimonta!"
+        },
+        "V0214_03_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "È il mio turno!"
+        },
+        "V0214_03_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Niente sembra funzionare... Ma forse questo sì!"
+        },
+        "V0214_03_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "È il mio turno!"
+        },
+        "V0214_04_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Pesco!"
+        },
+        "V0214_04_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Pesco!"
+        },
+        "V0214_04_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Pesco!"
+        },
+        "V0214_05_00_00_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Sai chi ha più fortuna della fortuna stessa? Io!"
+        },
+        "V0214_05_00_00_1": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Pesco!!!"
+        },
+        "V0214_06_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 1,
+            "text": "Non la passerai liscia!"
+        },
+        "V0214_06_01_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Ce la posso fare!"
+        },
+        "V0214_06_01_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Uhm..."
+        },
+        "V0214_06_01_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "In questo caso..."
+        },
+        "V0214_07_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Dalla mia mano..."
+        },
+        "V0214_07_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Attivo una Carta Magia!"
+        },
+        "V0214_07_02_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Attivo una Magia Rapida!"
+        },
+        "V0214_07_03_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Attivo una Magia Continua!"
+        },
+        "V0214_07_04_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Attivo una Magia Equipaggiamento!"
+        },
+        "V0214_07_05_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Attivo una Magia Rituale!"
+        },
+        "V0214_07_06_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Attivo una Carta Trappola!"
+        },
+        "V0214_07_07_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Attivo una Trappola Continua!"
+        },
+        "V0214_07_08_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Attivo una Contro-Trappola!"
+        },
+        "V0214_07_09_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Rivelo la mia carta Posizionata!"
+        },
+        "V0214_07_09_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Uso la mia carta Posizionata!"
+        },
+        "V0214_07_10_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Attivo l'effetto del mio mostro!"
+        },
+        "V0214_07_11_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Attivo una Magia Terreno!"
+        },
+        "V0214_07_12_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Attivo il mio effetto!"
+        },
+        "V0214_07_13_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Imposto il Valore Pendulum!"
+        },
+        "V0214_08_00_00_0": {
+            "card": [
+                14556
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Attivo la Magia Rapida Risultato Inaccettabile!"
+        },
+        "V0214_08_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Evoco Specialmente una Strega Indovina dalla mia mano!"
+        },
+        "V0214_08_00_01_0": {
+            "card": [
+                14557
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ecco la Magia Continua Pietra Miracolosa!"
+        },
+        "V0214_08_00_02_0": {
+            "card": [
+                14557
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Grazie all'effetto di Pietra Miracolosa, pesco una carta!"
+        },
+        "V0214_08_00_03_0": {
+            "card": [
+                14558
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Attivo la mia Carta Magia Prestito Fortunato!"
+        },
+        "V0214_08_00_04_0": {
+            "card": [
+                7917
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Equipaggerò il mio mostro con questi!"
+        },
+        "V0214_08_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Occhiali Protettivi Omega!"
+        },
+        "V0214_08_00_05_0": {
+            "card": [
+                7917
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 1,
+            "text": "Con Occhiali Protettivi Omega posso vedere i tuoi segreti!"
+        },
+        "V0214_08_00_06_0": {
+            "card": [
+                8198
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Questa è la carta che ho usato insieme a Jack! Fiducia Mentale!"
+        },
+        "V0214_09_00_00_0": {
+            "card": [
+                14550
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "La sorte dice che la mia fortuna sarà... super fantastica!"
+        },
+        "V0214_09_00_01_0": {
+            "card": [
+                14550
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Avendo pescato questa carta, posso usare il suo effetto!"
+        },
+        "V0214_09_00_02_0": {
+            "card": [
+                14550
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Si attiva l'effetto di Hikari la Strega Indovina!"
+        },
+        "V0214_09_00_03_0": {
+            "card": [
+                14551
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "La sorte dice che la mia fortuna sarà... davvero fantastica!"
+        },
+        "V0214_09_00_04_0": {
+            "card": [
+                14551
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Uso l'effetto della Strega Indovina che ho pescato!"
+        },
+        "V0214_09_00_05_0": {
+            "card": [
+                14551
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Si attiva l'effetto di En la Strega Indovina!"
+        },
+        "V0214_09_00_06_0": {
+            "card": [
+                14552
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "La sorte dice che la mia fortuna sarà... così così."
+        },
+        "V0214_09_00_07_0": {
+            "card": [
+                14552
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Uso l'effetto della Strega Indovina che ho pescato!"
+        },
+        "V0214_09_00_08_0": {
+            "card": [
+                14552
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Si attiva l'effetto di Fu la Strega Indovina!"
+        },
+        "V0214_09_00_09_0": {
+            "card": [
+                14553
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "La sorte dice che la mia fortuna sarà... poca. Eh, ehm..."
+        },
+        "V0214_09_00_09_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Uff... Ma non posso demoralizzarmi!"
+        },
+        "V0214_09_00_10_0": {
+            "card": [
+                14553
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "La carta che ho pescato è... una Strega Indovina!"
+        },
+        "V0214_09_00_11_0": {
+            "card": [
+                14553
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Si attiva l'effetto di Sui la Strega Indovina!"
+        },
+        "V0214_09_00_12_0": {
+            "card": [
+                14554
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "La sorte dice che la mia fortuna sarà... pochissima."
+        },
+        "V0214_09_00_12_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Beh, questo significa che devo solo impegnarmi di più!"
+        },
+        "V0214_09_00_13_0": {
+            "card": [
+                14554
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "La carta che ho pescato è... questa!"
+        },
+        "V0214_09_00_14_0": {
+            "card": [
+                14554
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Si attiva l'effetto di Ann la Strega Indovina!"
+        },
+        "V0214_09_00_15_0": {
+            "card": [
+                14555
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "La sorte dice che la mia fortuna sarà... praticamente nulla!"
+        },
+        "V0214_09_00_15_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "È il peggio che potesse capitarmi!"
+        },
+        "V0214_09_00_16_0": {
+            "card": [
+                14555
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Questa carta ha un lato negativo, ma attivo il suo effetto!"
+        },
+        "V0214_09_00_17_0": {
+            "card": [
+                14555
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Si attiva l'effetto di Chi la Strega Indovina!"
+        },
+        "V0214_09_00_18_0": {
+            "card": [
+                5650
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Si attiva l'effetto di Mago Apprendista!"
+        },
+        "V0214_09_00_19_0": {
+            "card": [
+                7799
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Si attiva l'effetto di Esemplare Magico!"
+        },
+        "V0214_09_00_20_0": {
+            "card": [
+                7208
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Si attiva l'effetto di Profeta Cristallo!"
+        },
+        "V0214_09_00_21_0": {
+            "card": [
+                7709
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 1,
+            "text": "Te l'ho fatta! Si attiva l'effetto di Difensore Doppio-Scudo!"
+        },
+        "V0214_09_00_22_0": {
+            "card": [
+                8192
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Si attiva l'effetto di Detonatore Ala di Drago!"
+        },
+        "V0214_10_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Vieni a me!"
+        },
+        "V0214_10_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Ok!"
+        },
+        "V0214_10_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Mmh..."
+        },
+        "V0214_10_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Questa carta andrà bene!"
+        },
+        "V0214_11_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Evoco un mostro!"
+        },
+        "V0214_11_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Evoco un mostro in Posizione di Difesa!"
+        },
+        "V0214_11_02_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Evoco Specialmente un mostro!"
+        },
+        "V0214_11_03_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Offro un mostro come Tributo!"
+        },
+        "V0214_11_04_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Evoco un mostro tramite Tributo!"
+        },
+        "V0214_11_05_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Evoco un mostro tramite Fusione!"
+        },
+        "V0214_11_06_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Evoco un mostro tramite Rituale!"
+        },
+        "V0214_11_07_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Synchro Evoco un mostro!"
+        },
+        "V0214_11_08_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Evoco Xyz un mostro!"
+        },
+        "V0214_11_09_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Evoco Pendulum un mostro!"
+        },
+        "V0214_11_10_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Evoco un mostro tramite Link!"
+        },
+        "V0214_13_00_00_0": {
+            "card": [
+                14550
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Andiamo, Hikari la Strega Indovina!"
+        },
+        "V0214_13_00_01_0": {
+            "card": [
+                14550
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Numero fortunato: 1!\nColore fortunato: giallo!"
+        },
+        "V0214_13_00_01_1": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Hikari la Strega Indovina!"
+        },
+        "V0214_13_00_02_0": {
+            "card": [
+                14550
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Ha un portafortuna luminoso che fa avverare i desideri!"
+        },
+        "V0214_13_00_02_1": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Hikari la Strega Indovina!"
+        },
+        "V0214_13_00_03_0": {
+            "card": [
+                14551
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Vieni a me, En la Strega Indovina!"
+        },
+        "V0214_13_00_04_0": {
+            "card": [
+                14551
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Numero fortunato: 2!\nColore fortunato: rosso!"
+        },
+        "V0214_13_00_04_1": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "En la Strega Indovina!"
+        },
+        "V0214_13_00_05_0": {
+            "card": [
+                14551
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Ha un pesce rosso della fortuna che diffonde gioia!"
+        },
+        "V0214_13_00_05_1": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "En la Strega Indovina!"
+        },
+        "V0214_13_00_06_0": {
+            "card": [
+                14552
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ecco Fu la Strega Indovina!"
+        },
+        "V0214_13_00_07_0": {
+            "card": [
+                14552
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Numero fortunato: 3!\nColore fortunato: verde!"
+        },
+        "V0214_13_00_07_1": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Fu la Strega Indovina!"
+        },
+        "V0214_13_00_08_0": {
+            "card": [
+                14552
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "La pianta della fortuna la aiuta a trovare oggetti mancanti!"
+        },
+        "V0214_13_00_08_1": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Fu la Strega Indovina!"
+        },
+        "V0214_13_00_09_0": {
+            "card": [
+                14553
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ecco Sui la Strega Indovina!"
+        },
+        "V0214_13_00_10_0": {
+            "card": [
+                14553
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Numero fortunato: 4!\nColore fortunato: blu!"
+        },
+        "V0214_13_00_10_1": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Sui la Strega Indovina!"
+        },
+        "V0214_13_00_11_0": {
+            "card": [
+                14553
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Punta il suo ombrello verso est per avere fortuna!"
+        },
+        "V0214_13_00_11_1": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Sui la Strega Indovina!"
+        },
+        "V0214_13_00_12_0": {
+            "card": [
+                14554
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ti presento Ann la Strega Indovina!"
+        },
+        "V0214_13_00_13_0": {
+            "card": [
+                14554
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Numero fortunato: 5!\nColore fortunato: viola!"
+        },
+        "V0214_13_00_13_1": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ann la Strega Indovina!"
+        },
+        "V0214_13_00_14_0": {
+            "card": [
+                14554
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Con quegli occhiali da sole, ritrova ciò che ha perso!"
+        },
+        "V0214_13_00_14_1": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ann la Strega Indovina!"
+        },
+        "V0214_13_00_15_0": {
+            "card": [
+                14555
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ecco a te... Chi la Strega Indovina!"
+        },
+        "V0214_13_00_16_0": {
+            "card": [
+                14555
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Numero fortunato: 6!\nColore fortunato: nero!"
+        },
+        "V0214_13_00_16_1": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Chi la Strega Indovina!"
+        },
+        "V0214_13_00_17_0": {
+            "card": [
+                14555
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Con i suoi stivali della fortuna, supero la concorrenza!"
+        },
+        "V0214_13_00_17_1": {
+            "card": [],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Chi la Strega Indovina!"
+        },
+        "V0214_13_00_18_0": {
+            "card": [
+                5650
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Vieni a me, Mago Apprendista!"
+        },
+        "V0214_13_00_19_0": {
+            "card": [
+                4634
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Vieni a me, Apprendista Strega!"
+        },
+        "V0214_13_00_20_0": {
+            "card": [
+                7799
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ecco Esemplare Magico!"
+        },
+        "V0214_13_00_21_0": {
+            "card": [
+                7208
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Andiamo, Profeta Cristallo!"
+        },
+        "V0214_13_00_22_0": {
+            "card": [
+                7991
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Vai, Drago del Vizio!"
+        },
+        "V0214_13_00_22_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 6,
+            "frame": 1,
+            "text": "Mi ricorda quando io e Jack abbiamo fatto squadra..."
+        },
+        "V0214_13_00_23_0": {
+            "card": [
+                8156
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Drago Vento Forte! Colpisci!"
+        },
+        "V0214_13_00_23_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 6,
+            "frame": 1,
+            "text": "Ti è piaciuta la mia imitazione di Jack?"
+        },
+        "V0214_13_00_24_0": {
+            "card": [
+                7708
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 6,
+            "frame": 1,
+            "text": "Anche Jack usa questo Mostro Tuner!"
+        },
+        "V0214_13_00_24_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 6,
+            "frame": 1,
+            "text": "Diapason Oscuro!"
+        },
+        "V0214_13_00_25_0": {
+            "card": [
+                7709
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Jack, dammi una mano! Difensore Doppio-Scudo!"
+        },
+        "V0214_13_00_26_0": {
+            "card": [
+                8192
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Spiega le tue ali, Detonatore Ala di Drago!"
+        },
+        "V0214_14_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Combattiamo!"
+        },
+        "V0214_14_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Ho voglia di combattere!"
+        },
+        "V0214_15_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Ecco qui!"
+        },
+        "V0214_15_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Avanti!"
+        },
+        "V0214_15_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Spero che funzioni..."
+        },
+        "V0214_16_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "A quanto pare, vincerò io!"
+        },
+        "V0214_16_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Non piangere!"
+        },
+        "V0214_17_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Il mio mostro attacca!"
+        },
+        "V0214_17_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Attacco!"
+        },
+        "V0214_17_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Attaccherò con il mio mostro!"
+        },
+        "V0214_18_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ti attacco direttamente!"
+        },
+        "V0214_18_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Prendi questo attacco diretto!"
+        },
+        "V0214_19_00_00_0": {
+            "card": [
+                14550
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Attacca, Hikari la Strega Indovina!"
+        },
+        "V0214_19_00_01_0": {
+            "card": [
+                14551
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Attacca, En la Strega Indovina!"
+        },
+        "V0214_19_00_02_0": {
+            "card": [
+                14552
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Attacca, Fu la Strega Indovina!"
+        },
+        "V0214_19_00_03_0": {
+            "card": [
+                14553
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Attacca, Sui la Strega Indovina!"
+        },
+        "V0214_19_00_04_0": {
+            "card": [
+                14554
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Attacca, Ann la Strega Indovina!"
+        },
+        "V0214_19_00_05_0": {
+            "card": [
+                14555
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Attacca, Chi la Strega Indovina!"
+        },
+        "V0214_19_00_06_0": {
+            "card": [
+                5650
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "All'attacco, Mago Apprendista!"
+        },
+        "V0214_19_00_07_0": {
+            "card": [
+                4634
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Attacca, Apprendista Strega!"
+        },
+        "V0214_19_00_08_0": {
+            "card": [
+                7799
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Attacca, Esemplare Magico!"
+        },
+        "V0214_19_00_09_0": {
+            "card": [
+                7208
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Profeta Cristallo! All'attacco!"
+        },
+        "V0214_19_00_10_0": {
+            "card": [
+                7991
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Attacca, Drago del Vizio!"
+        },
+        "V0214_19_00_11_0": {
+            "card": [
+                8156
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Attacca, Drago Vento Forte!"
+        },
+        "V0214_19_00_11_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Uragano Forte!"
+        },
+        "V0214_19_00_12_0": {
+            "card": [
+                7708
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Attacca, Diapason Oscuro!"
+        },
+        "V0214_19_00_13_0": {
+            "card": [
+                7709
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Attacca, Difensore Doppio-Scudo!"
+        },
+        "V0214_19_00_14_0": {
+            "card": [
+                8192
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Detonatore Ala di Drago! All'attacco!"
+        },
+        "V0214_19_00_14_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Tempesta Reale!"
+        },
+        "V0214_20_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Posiziono una carta!"
+        },
+        "V0214_20_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Uhm... Credo che Posizionerò una carta."
+        },
+        "V0214_20_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Posiziono un mostro."
+        },
+        "V0214_20_01_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Mmh... Posizionerò un mostro!"
+        },
+        "V0214_21_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Questo è solo un assaggio di ciò che posso fare!"
+        },
+        "V0214_21_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Termino il mio turno!"
+        },
+        "V0214_21_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Evviva! Tutto sta andando alla perfezione!"
+        },
+        "V0214_21_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Termino il mio turno!"
+        },
+        "V0214_21_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Terminerò il mio turno."
+        },
+        "V0214_21_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Mmh... Termino il mio turno."
+        },
+        "V0214_21_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Termino il mio turno..."
+        },
+        "V0214_21_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Sono nei guai fino al collo!"
+        },
+        "V0214_21_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Oh no..."
+        },
+        "V0214_21_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Termino il mio turno..."
+        },
+        "V0214_22_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Uff!"
+        },
+        "V0214_22_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Ah!"
+        },
+        "V0214_22_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Eeeh?"
+        },
+        "V0214_23_00_00_0": {
+            "card": [],
+            "cutin": 3,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "N-Nooo!"
+        },
+        "V0214_24_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Ugh!"
+        },
+        "V0214_25_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Qualcuno mi aiuti!"
+        },
+        "V0214_25_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Ne ho abbastanza!"
+        },
+        "V0214_25_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Eeeeeeeeeh!"
+        },
+        "V0214_26_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Ahi..."
+        },
+        "V0214_26_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Posso continuare all'infinito!"
+        },
+        "V0214_26_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Aaah!"
+        },
+        "V0214_27_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Vacci piano!"
+        },
+        "V0214_27_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Non può essere!"
+        },
+        "V0214_27_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Aah..."
+        },
+        "V0214_28_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Dovrei essere il soggetto degli articoli, non l'autore!"
+        },
+        "V0214_28_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Non temere. Manterrai l'anonimato nella mia storia."
+        },
+        "V0214_28_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "La sorte l'aveva detto che oggi sarei stata molto felice!"
+        },
+        "V0214_28_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Pensavi di battermi facilmente, ma ti sbagliavi di grosso!"
+        },
+        "V0214_28_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 6,
+            "frame": 0,
+            "text": "Perché sono la futura moglie di Jack! (Ma non dirglielo!)"
+        },
+        "V0214_28_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                202
+            ],
+            "face": 2,
+            "frame": 0,
+            "text": "Un passo avanti verso il mio sogno!"
+        },
+        "V0214_28_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 6,
+            "frame": 0,
+            "text": "Nel quale i nostri figli sono Duellanti pluripremiati!"
+        },
+        "V0214_28_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                202
+            ],
+            "face": 2,
+            "frame": 0,
+            "text": "Jack! Mi avevi promesso un'esclusiva!"
+        },
+        "V0214_28_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                208,
+                210,
+                211,
+                231
+            ],
+            "face": 3,
+            "frame": 0,
+            "text": "Non posso credere di essere stata una di voi."
+        },
+        "V0214_28_00_06_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Per fortuna, i miei ricordi di quei tempi sono confusi."
+        },
+        "V0214_29_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Argh! La prossima volta non perderò!"
+        },
+        "V0214_29_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Nooo! Ho perso il mio scoop!"
+        },
+        "V0214_29_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "La sorte l'aveva detto che oggi sarei stata triste..."
+        },
+        "V0214_29_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Forse sono più brava a fare il tifo che a duellare..."
+        },
+        "V0214_29_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                202
+            ],
+            "face": 6,
+            "frame": 0,
+            "text": "Ho scritto un articolo su quanto tu sia fantastico!"
+        },
+        "V0214_29_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Se solo l'editore lo pubblicasse..."
+        },
+        "V0214_29_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                208,
+                210,
+                211,
+                231
+            ],
+            "face": 5,
+            "frame": 0,
+            "text": "I Predestinati Oscuri sono tosti! E io ne facevo parte?!"
+        },
+        "V0214_30_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "È uno scoop incredibile!"
+        },
+        "V0214_30_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Non puoi combattere quando hai fame."
+        },
+        "V0214_30_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Puoi sembrare un Duellante, ma non lo sei."
+        },
+        "V0214_31_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Cheee?!?"
+        },
+        "V0214_31_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Non può essere..."
+        },
+        "V0214_32_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Yu-Gi-Oh! Duel Links"
+        },
+        "V0214_32_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "È Yu-Gi-Oh! Duel Links!"
+        },
+        "V0214_33_00_00_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Non mi lascerò sfuggire uno scoop!"
+        },
+        "V0214_33_00_01_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "La mia fortuna oggi sarà..."
+        },
+        "V0214_33_00_02_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Non posso fermarmi ora!"
+        },
+        "V0214_34_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Aspetta! Voglio comunque lo scoop!"
+        },
+        "V0214_34_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Non è facile fare i conti con te."
+        },
+        "V0214_34_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Lavori sodo. Mi piace."
+        },
+        "V0214_34_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "La tua fortuna oggi sarà..."
+        },
+        "V0214_34_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Super fantastica! Tutti i tuoi desideri si avvereranno!"
+        },
+        "V0214_34_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Davvero fantastica! Ottime sorprese in arrivo!"
+        },
+        "V0214_34_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Così così... ma potresti ritrovare qualcosa che hai perduto."
+        },
+        "V0214_34_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Poca... ma potresti avere fortuna se ti volgi a est."
+        },
+        "V0214_34_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Molto poca. Tieni d'occhio le tue cose!"
+        },
+        "V0214_34_00_09_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Praticamente nulla! I tuoi rivali avranno il sopravvento!"
+        },
+        "V0214_35_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Sono Carly la giornalista! Piacere di conoscerti!"
+        },
+        "V0214_35_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Sarò io ad avere lo scoop!"
+        },
+        "V0214_36_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Scrivi la parola fine."
+        },
+        "V0214_36_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Prendi il mio posto!"
+        },
+        "V0214_36_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Oh no! Spiacente!"
+        },
+        "V0214_36_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                202
+            ],
+            "face": 6,
+            "frame": 0,
+            "text": "Falli a pezzi, Jack!"
+        },
+        "V0214_36_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                202
+            ],
+            "face": 6,
+            "frame": 0,
+            "text": "Jack! Vai così!"
+        },
+        "V0214_36_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                202
+            ],
+            "face": 5,
+            "frame": 0,
+            "text": "Mi dispiace, Jack. Se solo fossi più utile alla squadra..."
+        },
+        "V0214_37_00_00_0": {
+            "card": [
+                8192
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Senti il ​ruggito di Jack e il colpo schiacciante della vittoria!"
+        },
+        "V0214_37_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Synchro Evocazione! Evviva! Dovevo dirlo!"
+        },
+        "V0214_38_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Pronti... Ai posti... Via al Duello! Evviva! Dovevo dirlo!"
+        }
+    }
+}

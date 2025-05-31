@@ -1,0 +1,3472 @@
+{
+    "_GRP_": "SN0602",
+    "_LNG_": "pt-BR",
+    "info": {
+        "V0602_01_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "O nome é Queima-almas.\nAquele que mandará você de volta para casa em cinzas!"
+        },
+        "V0602_01_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Parece divertido.\nTudo pronto para o Duelo!"
+        },
+        "V0602_01_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Não tenho tempo para isso!\nVou queimar você rapidamente!"
+        },
+        "V0602_01_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Contanto que eu me atenha às minhas estratégias, eu sei que vou vencer!"
+        },
+        "V0602_01_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "A dor do meu passado não me segurará!"
+        },
+        "V0602_01_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Assim como acontece com Playmaker, os Duelos são a minha vida."
+        },
+        "V0602_01_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Então eu posso ser um pooooouco mais forte do que você pensa."
+        },
+        "V0602_01_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                601,
+                607
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Vamos botar fogo neste Duelo, Playmaker!"
+        },
+        "V0602_01_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                603
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Não acredito que vou Duelar contra meu herói!\nVamos nessa, Gore!"
+        },
+        "V0602_01_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                604
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Uau!\nVou Duelar contra a megaestrela que salvou LINK VRAINS!"
+        },
+        "V0602_01_00_09_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                605
+            ],
+            "face": 3,
+            "frame": 0,
+            "text": "Nem pense em me deixar vencer, Varis!"
+        },
+        "V0602_01_00_10_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                99999
+            ],
+            "face": 3,
+            "frame": 0,
+            "text": "Humano ou IA - esta batalha é entre eu e você!"
+        },
+        "V0602_02_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Duelar!"
+        },
+        "V0602_03_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Chegou a hora de botar fogo neste Duelo!"
+        },
+        "V0602_03_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "É a minha vez!"
+        },
+        "V0602_03_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Agora ninguém me para!"
+        },
+        "V0602_03_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Minha vez!"
+        },
+        "V0602_03_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Aí vou eu!"
+        },
+        "V0602_03_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "É a minha vez!"
+        },
+        "V0602_03_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Pode vir com tudo!"
+        },
+        "V0602_03_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "É a minha vez!"
+        },
+        "V0602_03_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Não celebre cedo demais!"
+        },
+        "V0602_03_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "É a minha vez!"
+        },
+        "V0602_03_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Eu sobrevivi até este momento...\nO momento em que eu venço!"
+        },
+        "V0602_03_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Minha vez!"
+        },
+        "V0602_04_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu compro!"
+        },
+        "V0602_04_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu compro!"
+        },
+        "V0602_04_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Eu compro!"
+        },
+        "V0602_05_00_00_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 9,
+            "frame": 0,
+            "text": "Não posso perder!\nTenho muito pelo que lutar!"
+        },
+        "V0602_05_00_00_1": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Compro!!!"
+        },
+        "V0602_06_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Vou jogar isso!"
+        },
+        "V0602_06_01_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Nem sonhando!"
+        },
+        "V0602_06_01_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Agora é minha chance!"
+        },
+        "V0602_06_01_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Não vou deixar você fazer isso!"
+        },
+        "V0602_07_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Da minha mão..."
+        },
+        "V0602_07_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ativo meu Card de Magia!"
+        },
+        "V0602_07_02_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ativo minha Magia Rápida!"
+        },
+        "V0602_07_03_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ativo minha Magia Contínua!"
+        },
+        "V0602_07_04_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ativo minha Magia de Equipamento!"
+        },
+        "V0602_07_05_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ativo minha Magia de Ritual!"
+        },
+        "V0602_07_06_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ativo minha Armadilha!"
+        },
+        "V0602_07_07_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ativo minha Armadilha Contínua!"
+        },
+        "V0602_07_08_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ativo minha Armadilha de Resposta!"
+        },
+        "V0602_07_09_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Viro meu card Baixado!"
+        },
+        "V0602_07_09_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Este é o card que Baixo!"
+        },
+        "V0602_07_10_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ativo o efeito do meu monstro!"
+        },
+        "V0602_07_11_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ativo minha Magia de Campo!"
+        },
+        "V0602_07_12_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ativo um efeito!"
+        },
+        "V0602_07_13_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Baixo a Escala de Pêndulo!"
+        },
+        "V0602_07_14_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu ativo meu Efeito de Pêndulo!"
+        },
+        "V0602_08_00_00_0": {
+            "card": [
+                13607
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ativo minha Magia Rápida!\nCiclone Cibersal!"
+        },
+        "V0602_08_00_01_0": {
+            "card": [
+                14134
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ativo meu Card de Magia!\nFusão de Fogo!"
+        },
+        "V0602_08_00_02_0": {
+            "card": [
+                14502
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ativo meu Card de Magia!\nFúria de Fogo!"
+        },
+        "V0602_08_00_03_0": {
+            "card": [
+                14501
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ativo minha Magia de Equipamento!\nFogo Ascendente!"
+        },
+        "V0602_08_00_04_0": {
+            "card": [
+                14501
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Fogo Ascendente é ativado!"
+        },
+        "V0602_08_00_05_0": {
+            "card": [
+                15043
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ativo meu Card de Magia!\nCompra Ardente!"
+        },
+        "V0602_08_00_06_0": {
+            "card": [
+                6213
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ativo meu Card de Magia!\nReencarnação de Monstros!"
+        },
+        "V0602_08_00_07_0": {
+            "card": [
+                13940
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ativo minha Magia Contínua!\nDeterminação de Salamagrande!"
+        },
+        "V0602_08_00_08_0": {
+            "card": [
+                13940
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Determinação de Salamagrande é ativado!"
+        },
+        "V0602_08_00_09_0": {
+            "card": [
+                14678
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ativo minha Magia Rápida!\nSalamagrande Casca Ardente!"
+        },
+        "V0602_08_00_10_0": {
+            "card": [
+                14678
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ativo Salamagrande Casca Ardente do meu Cemitério!"
+        },
+        "V0602_08_00_11_0": {
+            "card": [
+                14244
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ativo minha Magia Rápida!\nCírculo Salamagrande!"
+        },
+        "V0602_08_00_12_0": {
+            "card": [
+                13939
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ativo minha Magia de Ritual!\nAscensão da Salamagrande!"
+        },
+        "V0602_08_00_13_0": {
+            "card": [
+                13939
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ascensão da Salamagrande é ativado quando é destruído!"
+        },
+        "V0602_08_00_14_0": {
+            "card": [
+                13938
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ativo minha Magia de Campo!\nSalamagrande Santuário!"
+        },
+        "V0602_08_00_15_0": {
+            "card": [
+                13938
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ativo o efeito de Salamagrande Santuário!"
+        },
+        "V0602_08_00_16_0": {
+            "card": [
+                14679
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ativo minha Magia Rápida!\nTranscendência Salamagrande!"
+        },
+        "V0602_08_00_17_0": {
+            "card": [
+                14245
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ativo minha Magia de Equipamento!\nGarra Salamagrande!"
+        },
+        "V0602_08_00_18_0": {
+            "card": [
+                14302
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ativo meu Card de Magia!\nRecurância Salamagrande!"
+        },
+        "V0602_08_00_19_0": {
+            "card": [
+                14302
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Recurância Salamagrande é ativado quando é destruído!"
+        },
+        "V0602_08_00_20_0": {
+            "card": [
+                14247
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ativo minha Armadilha de Resposta!\nRugido Salamagrande!"
+        },
+        "V0602_08_00_21_0": {
+            "card": [
+                14247
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Rugido Salamagrande é ativado do Cemitério!"
+        },
+        "V0602_08_00_22_0": {
+            "card": [
+                14246
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ativo minha Armadilha!\nFúria Salamagrande!"
+        },
+        "V0602_08_00_23_0": {
+            "card": [
+                13954
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ativo minha Armadilha Contínua!\nDádiva Salamagrande!"
+        },
+        "V0602_08_00_24_0": {
+            "card": [
+                13954
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Dádiva Salamagrande é ativado!"
+        },
+        "V0602_08_00_25_0": {
+            "card": [
+                18913
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ativo minha Magia Rápida!\nInvestida Salamagrande!"
+        },
+        "V0602_08_00_26_0": {
+            "card": [
+                18914
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ativo a Armadilha Reviver Salamagrande!"
+        },
+        "V0602_08_00_27_0": {
+            "card": [
+                18914
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Faço o banimento de Reviver Salamagrande do Cemitério!"
+        },
+        "V0602_08_00_28_0": {
+            "card": [
+                19047
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ativo Gearlâmina Fênix e equipo no meu monstro!"
+        },
+        "V0602_08_00_29_0": {
+            "card": [
+                19047
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Gearlâmina Fênix é ativado!"
+        },
+        "V0602_09_00_00_0": {
+            "card": [
+                13927
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Salamagrande Leardor é ativado quando o card é Invocado por Invocação-Link!"
+        },
+        "V0602_09_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Rugido Retumbante!"
+        },
+        "V0602_09_00_01_0": {
+            "card": [
+                13927
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ao fazer a Invocação-Link por Reencarnação de Salamagrande Leardor, ele pode fazer isto!"
+        },
+        "V0602_09_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Possessão das Chamas!"
+        },
+        "V0602_09_00_02_0": {
+            "card": [
+                14125
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Salamagrande Lobo da Luz do Sol é ativado!"
+        },
+        "V0602_09_00_03_0": {
+            "card": [
+                14125
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Confira o efeito de reencarnação de Salamagrande Lobo da Luz do Sol!"
+        },
+        "V0602_09_00_04_0": {
+            "card": [
+                14666
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Salamagrande Piro Fênix tem um efeito quando é Reencarnado!"
+        },
+        "V0602_09_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ele destrói todos os cards no seu campo!"
+        },
+        "V0602_09_00_05_0": {
+            "card": [
+                14666
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Salamagrande Piro Fênix é ativado!"
+        },
+        "V0602_09_00_06_0": {
+            "card": [
+                14249
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ativo o efeito de Salamagrande Lincegueira!"
+        },
+        "V0602_09_00_07_0": {
+            "card": [
+                14338
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Efeito de Salamagrande Almiraj!"
+        },
+        "V0602_09_00_08_0": {
+            "card": [
+                13920
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Salamagrande Águia Esmeralda pode usar seu efeito quando é Reencarnado!"
+        },
+        "V0602_09_00_08_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ele destrói todos os monstros invocados por Invocação-Especial no seu campo!"
+        },
+        "V0602_09_00_09_0": {
+            "card": [
+                13920
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Salamagrande Águia Esmeralda é ativado!"
+        },
+        "V0602_09_00_10_0": {
+            "card": [
+                14785
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Aqui está o efeito de Salamagrande Dragão de Chamas!"
+        },
+        "V0602_09_00_11_0": {
+            "card": [
+                14785
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Salamagrande Dragão de Chamas pode usar seu efeito quando é Reencarnado!"
+        },
+        "V0602_09_00_11_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ele destrói um monstro no seu campo!"
+        },
+        "V0602_09_00_12_0": {
+            "card": [
+                14248
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ativo o efeito de Salamagrande Migaranhão!"
+        },
+        "V0602_09_00_13_0": {
+            "card": [
+                14111
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Salamagrande Quimera Violeta é ativado!"
+        },
+        "V0602_09_00_14_0": {
+            "card": [
+                14243
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Salamagrande Bisão Brigão é ativado!"
+        },
+        "V0602_09_00_15_0": {
+            "card": [
+                13892
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Salamagrande Jack Jaguar é ativado!"
+        },
+        "V0602_09_00_16_0": {
+            "card": [
+                14080
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Salamagrande Lobi é ativado!"
+        },
+        "V0602_09_00_17_0": {
+            "card": [
+                14240
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Aqui está o efeito de Salamagrande Gazela!"
+        },
+        "V0602_09_00_18_0": {
+            "card": [
+                14241
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ativo o efeito de Salamagrande Espiraloso!"
+        },
+        "V0602_09_00_19_0": {
+            "card": [
+                14989
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Salamagrande Zebroide X é ativado!"
+        },
+        "V0602_09_00_20_0": {
+            "card": [
+                14081
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ativo o efeito de Salamagrande Papaga!"
+        },
+        "V0602_09_00_21_0": {
+            "card": [
+                13891
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Efeito de Salamagrande Falco!"
+        },
+        "V0602_09_00_22_0": {
+            "card": [
+                14242
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Salamagrande Plumático é ativado!"
+        },
+        "V0602_09_00_23_0": {
+            "card": [
+                14082
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Efeito de Salamagrande Raposar!"
+        },
+        "V0602_09_00_24_0": {
+            "card": [
+                13890
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ativo o efeito de Salamagrande Raposax!"
+        },
+        "V0602_09_00_25_0": {
+            "card": [
+                13889
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ativo o efeito de Salamagrande Surica!"
+        },
+        "V0602_09_00_26_0": {
+            "card": [
+                14239
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Salamagrande Toupeira ativa seu efeito!"
+        },
+        "V0602_09_00_27_0": {
+            "card": [
+                14238
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Salamagrande Guaxinim é ativado!"
+        },
+        "V0602_09_00_28_0": {
+            "card": [
+                14543
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Efeito de Salamagrande Coiote!"
+        },
+        "V0602_09_00_29_0": {
+            "card": [
+                14253
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Salamagrande Fennec é ativado!"
+        },
+        "V0602_09_00_30_0": {
+            "card": [
+                10398
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ativo o efeito de Cavaleiro Valquíria!"
+        },
+        "V0602_09_00_31_0": {
+            "card": [
+                8431
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Gearfried Fênix é ativado!"
+        },
+        "V0602_09_00_32_0": {
+            "card": [
+                14962
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ativo o efeito de Decodificar Transmissor Almardente!"
+        },
+        "V0602_09_00_33_0": {
+            "card": [
+                18912
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "O efeito de Salamagrande Fênix Furiosa é ativado quando reencarna!"
+        },
+        "V0602_09_00_34_0": {
+            "card": [
+                18912
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Salamagrande Fênix Furiosa ativa seu efeito do Cemitério!"
+        },
+        "V0602_09_00_35_0": {
+            "card": [
+                18911
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Salamagrande Grifo Explosivo ativa seu efeito!"
+        },
+        "V0602_09_00_36_0": {
+            "card": [
+                18911
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "O efeito de Salamagrande Grifo Explosivo é ativado quando reencarna!"
+        },
+        "V0602_09_00_37_0": {
+            "card": [
+                18910
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ativo o efeito de Salamagrande Tigre da minha mão!"
+        },
+        "V0602_09_00_38_0": {
+            "card": [
+                18910
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ativo o efeito de Salamagrande Tigre!"
+        },
+        "V0602_09_00_39_0": {
+            "card": [
+                18909
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Salamagrande Doninha é ativado da minha mão!"
+        },
+        "V0602_09_00_40_0": {
+            "card": [
+                18909
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Salamagrande Doninha ativa seu efeito do meu Cemitério!"
+        },
+        "V0602_09_00_41_0": {
+            "card": [
+                19723
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Codificar Alma ativa seu efeito da minha mão!"
+        },
+        "V0602_09_00_42_0": {
+            "card": [
+                19723
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ativo o efeito de Codificar Alma!"
+        },
+        "V0602_09_00_43_0": {
+            "card": [
+                19723
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Faço o banimento de Codificar Alma do Cemitério para usar seu efeito!"
+        },
+        "V0602_09_00_44_0": {
+            "card": [
+                18908
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Invocar Salamagrande de Fogo ativa seu efeito!"
+        },
+        "V0602_09_00_45_0": {
+            "card": [
+                18908
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Faço o banimento de Salamagrande de Fogo do meu Cemitério!"
+        },
+        "V0602_09_00_46_0": {
+            "card": [
+                14801
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ativo o efeito de Gearfried Fênix Imortal da minha mão!"
+        },
+        "V0602_09_00_47_0": {
+            "card": [
+                14801
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Gearfried Fênix Imortal ativa seu efeito!"
+        },
+        "V0602_09_00_48_0": {
+            "card": [
+                14801
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Removo um Card de Equipamento para ativar o efeito de Gearfried Fênix Imortal!"
+        },
+        "V0602_10_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Aí vou eu!"
+        },
+        "V0602_10_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Apareça!"
+        },
+        "V0602_10_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Olha isso!"
+        },
+        "V0602_11_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Invoco meu monstro!"
+        },
+        "V0602_11_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Invoco meu monstro em Posição de Defesa!"
+        },
+        "V0602_11_02_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Faço a Invocação-Especial do meu monstro!"
+        },
+        "V0602_11_03_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ofereço como Tributo meu monstro!"
+        },
+        "V0602_11_04_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Faço a Invocação-Tributo do meu monstro!"
+        },
+        "V0602_11_04_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Invocação-Tributo!"
+        },
+        "V0602_11_05_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Faço a Invocação-Fusão do meu monstro!"
+        },
+        "V0602_11_05_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Invocação-Fusão!"
+        },
+        "V0602_11_06_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Faço a Invocação-Ritual do meu monstro!"
+        },
+        "V0602_11_06_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Invocação-Ritual!"
+        },
+        "V0602_11_07_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Faço a Invocação-Sincro do meu monstro!"
+        },
+        "V0602_11_07_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu coloco meus monstros em sintonia!"
+        },
+        "V0602_11_07_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Invocação-Sincro!"
+        },
+        "V0602_11_08_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Faço a Invocação-Xyz do meu monstro!"
+        },
+        "V0602_11_08_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Monto a Rede de Sobreposição!"
+        },
+        "V0602_11_08_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Invocação-Xyz!"
+        },
+        "V0602_11_09_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Faço a Invocação-Pêndulo do meu monstro!"
+        },
+        "V0602_11_09_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Invocação-Pêndulo!"
+        },
+        "V0602_11_10_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Faço a Invocação-Link do meu monstro!"
+        },
+        "V0602_11_10_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu queimo o circuito que abrasa o caminho para o futuro!"
+        },
+        "V0602_11_10_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Faço uma Invocação-Link!"
+        },
+        "V0602_11_10_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu queimo o circuito que abrasa o caminho para o futuro!"
+        },
+        "V0602_11_10_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu baixo meus monstros nas Flechas Elo!\nLigue o circuito!"
+        },
+        "V0602_11_10_02_2": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Faço uma Invocação-Link!"
+        },
+        "V0602_13_00_00_0": {
+            "card": [
+                13927
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Salamagrande Leardor de Link 3!"
+        },
+        "V0602_13_00_01_0": {
+            "card": [
+                14125
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Salamagrande Lobo da Luz do Sol de Link 2!"
+        },
+        "V0602_13_00_02_0": {
+            "card": [
+                14666
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Salamagrande Piro Fênix de Link 4!"
+        },
+        "V0602_13_00_03_0": {
+            "card": [
+                14249
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Apareça!\nSalamagrande Lincegueira de Link 1!"
+        },
+        "V0602_13_00_04_0": {
+            "card": [
+                14338
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Salamagrande Almiraj de Link 1!"
+        },
+        "V0602_13_00_05_0": {
+            "card": [
+                13920
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Acender!"
+        },
+        "V0602_13_00_05_1": {
+            "card": [],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Salamagrande Águia Esmeralda!"
+        },
+        "V0602_13_00_06_0": {
+            "card": [
+                14785
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Salamagrande Dragão de Chamas de Classificação 4!"
+        },
+        "V0602_13_00_07_0": {
+            "card": [
+                14248
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Salamagrande Migaranhão de Classificação 3!"
+        },
+        "V0602_13_00_08_0": {
+            "card": [
+                14111
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Salamagrande Quimera Violeta!"
+        },
+        "V0602_13_00_09_0": {
+            "card": [
+                14243
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Salamagrande Bisão Brigão!"
+        },
+        "V0602_13_00_10_0": {
+            "card": [
+                13892
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Salamagrande Jack Jaguar!"
+        },
+        "V0602_13_00_11_0": {
+            "card": [
+                14080
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Salamagrande Lobi!"
+        },
+        "V0602_13_00_12_0": {
+            "card": [
+                14240
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Salamagrande Gazela!"
+        },
+        "V0602_13_00_13_0": {
+            "card": [
+                14241
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Salamagrande Espiraloso!"
+        },
+        "V0602_13_00_14_0": {
+            "card": [
+                14989
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Salamagrande Zebroide X!"
+        },
+        "V0602_13_00_15_0": {
+            "card": [
+                14081
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Salamagrande Papaga!"
+        },
+        "V0602_13_00_16_0": {
+            "card": [
+                13891
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Salamagrande Falco!"
+        },
+        "V0602_13_00_17_0": {
+            "card": [
+                14242
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Salamagrande Plumático!"
+        },
+        "V0602_13_00_18_0": {
+            "card": [
+                14082
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Salamagrande Raposar!"
+        },
+        "V0602_13_00_19_0": {
+            "card": [
+                13890
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Salamagrande Raposax!"
+        },
+        "V0602_13_00_20_0": {
+            "card": [
+                13889
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Salamagrande Surica!"
+        },
+        "V0602_13_00_21_0": {
+            "card": [
+                14239
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Salamagrande Toupeira!"
+        },
+        "V0602_13_00_22_0": {
+            "card": [
+                14238
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Salamagrande Guaxinim!"
+        },
+        "V0602_13_00_23_0": {
+            "card": [
+                14543
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Salamagrande Coiote!"
+        },
+        "V0602_13_00_24_0": {
+            "card": [
+                14253
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Salamagrande Fennec!"
+        },
+        "V0602_13_00_25_0": {
+            "card": [
+                10398
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Cavaleiro Valquíria!"
+        },
+        "V0602_13_00_26_0": {
+            "card": [
+                8431
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Gearfried Fênix!"
+        },
+        "V0602_13_00_27_0": {
+            "card": [
+                14962
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Apareça!\nDecodificar Transmissor Almardente de Link 3!"
+        },
+        "V0602_13_00_28_0": {
+            "card": [
+                18912
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Apareça!\nSalamagrande Fênix Furiosa de Link 4!"
+        },
+        "V0602_13_00_29_0": {
+            "card": [
+                18911
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Erga-se!\nSalamagrande Grifo Explosivo de Nível 8!"
+        },
+        "V0602_13_00_30_0": {
+            "card": [
+                18910
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O Monstro Regulador, Salamagrande Tigre!"
+        },
+        "V0602_13_00_31_0": {
+            "card": [
+                18909
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O Monstro Regulador, Salamagrande Doninha!"
+        },
+        "V0602_13_00_32_0": {
+            "card": [
+                19723
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Codificar Alma!"
+        },
+        "V0602_13_00_33_0": {
+            "card": [
+                18908
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Salamagrande de Fogo!"
+        },
+        "V0602_13_00_34_0": {
+            "card": [
+                14801
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Incendeie o campo!\nGearfried Fênix Imortal de Nível 9!"
+        },
+        "V0602_14_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Batalhar!"
+        },
+        "V0602_14_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Vamos batalhar!"
+        },
+        "V0602_15_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Vaaaai!"
+        },
+        "V0602_15_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Tome isso!"
+        },
+        "V0602_15_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Certo!"
+        },
+        "V0602_16_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Este Duelo é meu!"
+        },
+        "V0602_16_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Acabou!!!"
+        },
+        "V0602_17_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Meu monstro ataca!"
+        },
+        "V0602_17_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Vou atacar!"
+        },
+        "V0602_18_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Meu monstro ataca você diretamente!"
+        },
+        "V0602_18_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ataque direto!"
+        },
+        "V0602_19_00_00_0": {
+            "card": [
+                13927
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ataque, Salamagrande Leardor!"
+        },
+        "V0602_19_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Golpe Infernal!"
+        },
+        "V0602_19_00_01_0": {
+            "card": [
+                14125
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Salamagrande Lobo da Luz do Sol! Ataque!"
+        },
+        "V0602_19_00_02_0": {
+            "card": [
+                14666
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ataque, Salamagrande Piro Fênix!"
+        },
+        "V0602_19_00_03_0": {
+            "card": [
+                14249
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Salamagrande Lincegueira ataca!"
+        },
+        "V0602_19_00_04_0": {
+            "card": [
+                14338
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Salamagrande Almiraj! Ataque!"
+        },
+        "V0602_19_00_05_0": {
+            "card": [
+                13920
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ataque, Salamagrande Águia Esmeralda!"
+        },
+        "V0602_19_00_06_0": {
+            "card": [
+                14785
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Salamagrande Dragão de Chamas!\nQueime-os!"
+        },
+        "V0602_19_00_07_0": {
+            "card": [
+                14248
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Pisoteie-os, Salamagrande Migaranhão!"
+        },
+        "V0602_19_00_08_0": {
+            "card": [
+                14111
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ataque, Salamagrande Quimera Violeta!"
+        },
+        "V0602_19_00_08_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Corte Violeta!"
+        },
+        "V0602_19_00_09_0": {
+            "card": [
+                14243
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ataque, Salamagrande Bisão Brigão!"
+        },
+        "V0602_19_00_10_0": {
+            "card": [
+                13892
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Salamagrande Jack Jaguar!\nAtaque-os!"
+        },
+        "V0602_19_00_11_0": {
+            "card": [
+                14080
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Salamagrande Lobi!\nAtaque!"
+        },
+        "V0602_19_00_12_0": {
+            "card": [
+                14240
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Salamagrande Gazela! Ataque!"
+        },
+        "V0602_19_00_13_0": {
+            "card": [
+                14241
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ataque, Salamagrande Espiraloso!"
+        },
+        "V0602_19_00_14_0": {
+            "card": [
+                14989
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Salamagrande Zebroide X ataca!"
+        },
+        "V0602_19_00_15_0": {
+            "card": [
+                14081
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Salamagrande Papaga ataca!"
+        },
+        "V0602_19_00_16_0": {
+            "card": [
+                13891
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ataque, Salamagrande Falco!"
+        },
+        "V0602_19_00_17_0": {
+            "card": [
+                14242
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Salamagrande Plumático ataca!"
+        },
+        "V0602_19_00_18_0": {
+            "card": [
+                14082
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Salamagrande Raposar! Ataque!"
+        },
+        "V0602_19_00_19_0": {
+            "card": [
+                13890
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Salamagrande Raposax! Ataque!"
+        },
+        "V0602_19_00_20_0": {
+            "card": [
+                13889
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ataque, Salamagrande Surica!"
+        },
+        "V0602_19_00_21_0": {
+            "card": [
+                14239
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ataque, Salamagrande Toupeira!"
+        },
+        "V0602_19_00_22_0": {
+            "card": [
+                14238
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Salamagrande Guaxinim! Ataque!"
+        },
+        "V0602_19_00_23_0": {
+            "card": [
+                14543
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Salamagrande Coiote! Ataque!"
+        },
+        "V0602_19_00_24_0": {
+            "card": [
+                14253
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Salamagrande Fennec! Ataque!"
+        },
+        "V0602_19_00_25_0": {
+            "card": [
+                10398
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ataque, Cavaleiro Valquíria!"
+        },
+        "V0602_19_00_26_0": {
+            "card": [
+                8431
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Gearfried Fênix ataca!"
+        },
+        "V0602_19_00_27_0": {
+            "card": [
+                14962
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ataque, Decodificar Transmissor Almardente!"
+        },
+        "V0602_19_00_28_0": {
+            "card": [
+                18912
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Salamagrande Fênix Furiosa!\nAtacar!"
+        },
+        "V0602_19_00_29_0": {
+            "card": [
+                18911
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ataque, Salamagrande Grifo Explosivo!"
+        },
+        "V0602_19_00_30_0": {
+            "card": [
+                18910
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ataque, Salamagrande Tigre!"
+        },
+        "V0602_19_00_31_0": {
+            "card": [
+                18909
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Salamagrande Doninha!\nAtacar!"
+        },
+        "V0602_19_00_32_0": {
+            "card": [
+                19723
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Codificar Alma ataca!"
+        },
+        "V0602_19_00_33_0": {
+            "card": [
+                18908
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Salamagrande de Fogo!\nAtacar!"
+        },
+        "V0602_19_00_34_0": {
+            "card": [
+                14801
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Gearfried Fênix Imortal!\nAtacar!"
+        },
+        "V0602_20_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Baixo um card!"
+        },
+        "V0602_20_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Estou Baixando um card!"
+        },
+        "V0602_20_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Baixo um monstro!"
+        },
+        "V0602_20_01_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Estou Baixando um monstro!"
+        },
+        "V0602_21_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Ah sim!"
+        },
+        "V0602_21_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Termino meu turno!"
+        },
+        "V0602_21_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ahh, achei que já teria vencido este Duelo..."
+        },
+        "V0602_21_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Termino meu turno!"
+        },
+        "V0602_21_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Termino meu turno!"
+        },
+        "V0602_21_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Vamos ver o que você sabe fazer."
+        },
+        "V0602_21_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Termino meu turno!"
+        },
+        "V0602_21_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Se eu não desistir, ainda terei uma chance!"
+        },
+        "V0602_21_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Termino meu turno!"
+        },
+        "V0602_21_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "As coisas não estão boas para mim...\nMas poderiam estar piores!"
+        },
+        "V0602_21_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Termino meu turno!"
+        },
+        "V0602_22_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Aii!"
+        },
+        "V0602_22_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Agh!"
+        },
+        "V0602_22_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Ergh!"
+        },
+        "V0602_23_00_00_0": {
+            "card": [],
+            "cutin": 3,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Aaaaaahhhh!"
+        },
+        "V0602_24_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 1,
+            "text": "Aghhh!"
+        },
+        "V0602_25_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Aaaaahhh!"
+        },
+        "V0602_25_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Aaargh!"
+        },
+        "V0602_25_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Aaaah!"
+        },
+        "V0602_26_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Argh..."
+        },
+        "V0602_26_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Ainda não acabou!"
+        },
+        "V0602_26_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Isso vai ter troco!"
+        },
+        "V0602_27_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Nada bom!"
+        },
+        "V0602_27_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Não posso deixar isso acontecer novamente!"
+        },
+        "V0602_27_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Tenho que continuar lutando..."
+        },
+        "V0602_28_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Legal!\nVenci!"
+        },
+        "V0602_28_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Estou feliz que você não tenha se segurado.\nIsso fez com que o Duelo fosse ótimo!"
+        },
+        "V0602_28_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Sei que você não quer perder, mas eu também preciso vencer."
+        },
+        "V0602_28_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Flame é o melhor amigo que podemos ter."
+        },
+        "V0602_28_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ele e o Playmaker são os motivos pelos quais estou aqui hoje!"
+        },
+        "V0602_28_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                601,
+                607
+            ],
+            "face": 2,
+            "frame": 0,
+            "text": "Eu consegui...\nEu realmente consegui...\nEu derrotei o Playmaker!"
+        },
+        "V0602_28_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                603
+            ],
+            "face": 8,
+            "frame": 0,
+            "text": "Você é o meu herói, Gore.\nMas não poderia permitir que você me impedisse!"
+        },
+        "V0602_28_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                604
+            ],
+            "face": 2,
+            "frame": 0,
+            "text": "Você mudou seu avatar?\nQue incrível!"
+        },
+        "V0602_28_00_06_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Talvez eu também devesse mudar o meu avatar."
+        },
+        "V0602_28_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                605
+            ],
+            "face": 3,
+            "frame": 0,
+            "text": "Você criou essa bagunça, por isso certifique-se de que isso nunca mais aconteça."
+        },
+        "V0602_28_00_07_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Ordeno você que impeça qualquer um que crie problemas."
+        },
+        "V0602_28_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                99999
+            ],
+            "face": 3,
+            "frame": 0,
+            "text": "Você não é um Duelista melhor que Flame.\nOu um amigo melhor!"
+        },
+        "V0602_28_00_08_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Nossas duas mentes são um bilhão de vezes maiores que a sua!"
+        },
+        "V0602_28_00_15_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                99999
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "O Chama me ajudou a vencer meus medos e superar meu passado."
+        },
+        "V0602_28_00_18_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                99999
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Nós sobrevivemos à tempestade!"
+        },
+        "V0602_29_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Você sabia de cada jogada que eu ia fazer..."
+        },
+        "V0602_29_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Opa...\nVocê é um grande Duelista!"
+        },
+        "V0602_29_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Aaaaaargh!"
+        },
+        "V0602_29_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                601,
+                607
+            ],
+            "face": 8,
+            "frame": 0,
+            "text": "É por isso que você é o melhor, Playmaker!"
+        },
+        "V0602_29_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                603
+            ],
+            "face": 8,
+            "frame": 0,
+            "text": "Posso ter perdido, mas foi incrível ter Duelado contra você!"
+        },
+        "V0602_29_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                604
+            ],
+            "face": 2,
+            "frame": 0,
+            "text": "Agora entendi por que você é a celebridade mais popular de LINK VRAINS!"
+        },
+        "V0602_29_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                605
+            ],
+            "face": 7,
+            "frame": 0,
+            "text": "Você pode não ser uma boa pessoa, mas é um excelente Duelista."
+        },
+        "V0602_29_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                99999
+            ],
+            "face": 7,
+            "frame": 0,
+            "text": "Lamento, Flame...\nEu decepcionei você..."
+        },
+        "V0602_30_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Este card é legal?"
+        },
+        "V0602_30_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Isso é roubo!"
+        },
+        "V0602_30_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Ah. Não há nada com que se preocupar."
+        },
+        "V0602_31_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "O quê!?"
+        },
+        "V0602_31_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Não é possível!"
+        },
+        "V0602_32_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Yu-Gi-Oh! Duel Links"
+        },
+        "V0602_32_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Yu-Gi-Oh! Duel Links!\nChegou a hora de fazer um link com VRAINS!"
+        },
+        "V0602_33_00_00_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ativo minha Habilidade!"
+        },
+        "V0602_33_00_01_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Se ficar no meu caminho, você vai se queimar!"
+        },
+        "V0602_33_00_02_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Flame e eu vamos esquentar as coisas!"
+        },
+        "V0602_33_00_03_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ativo minha Habilidade!"
+        },
+        "V0602_33_00_03_1": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Vou botar fogo no mundo!\nEmpate Escaldante!"
+        },
+        "V0602_33_00_04_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ativo minha Habilidade!"
+        },
+        "V0602_33_00_04_1": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Pronto para presenciar um milagre?\nEmpate Escaldante!"
+        },
+        "V0602_34_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Você está tirando onda com a minha cara?"
+        },
+        "V0602_34_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 6,
+            "frame": 0,
+            "text": "Hmm... Eu não gosto disso..."
+        },
+        "V0602_34_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Nunca pensei que você fosse recorrer a truques sujos."
+        },
+        "V0602_34_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 10,
+            "frame": 0,
+            "text": "Ah... Ahhhhh!\nPara com isso!\nNão aguento mais!"
+        },
+        "V0602_34_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Adeus ao meu passado!"
+        },
+        "V0602_34_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Meu coração está em chamas! Empate Escaldante!"
+        },
+        "V0602_34_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Esta não é uma forma legal de vencer!"
+        },
+        "V0602_34_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "O que devo dizer a todos que me fizeram chegar até aqui?"
+        },
+        "V0602_34_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Não posso desistir...\nO que Flame pensaria de mim se desistisse?"
+        },
+        "V0602_34_00_09_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Isso é entre eu e você!"
+        },
+        "V0602_34_00_10_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Vamos, relaxa."
+        },
+        "V0602_35_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "O nome é Queima-almas.\nVou chamuscar qualquer um que cruzar o meu caminho!"
+        },
+        "V0602_35_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Meu deck está pronto!\nChegou a hora de fazer um link com VRAINS!"
+        },
+        "V0602_36_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Vença este Duelo!"
+        },
+        "V0602_36_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "Você consegue!"
+        },
+        "V0602_36_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Desculpe... Eu sei que você consegue virar o jogo!"
+        },
+        "V0602_36_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                601,
+                607
+            ],
+            "face": 2,
+            "frame": 0,
+            "text": "Vai, Playmaker!"
+        },
+        "V0602_36_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                601,
+                607
+            ],
+            "face": 2,
+            "frame": 0,
+            "text": "Estou contando com você, Playmaker!"
+        },
+        "V0602_36_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                601,
+                607
+            ],
+            "face": 7,
+            "frame": 0,
+            "text": "Talvez você tenha uma resposta, Playmaker!"
+        },
+        "V0602_37_00_00_0": {
+            "card": [
+                13927
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu queimo o circuito que abrasa o caminho para o futuro!"
+        },
+        "V0602_37_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Faço uma Invocação-Link!"
+        },
+        "V0602_37_00_01_0": {
+            "card": [
+                14125
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Queime o circuito!"
+        },
+        "V0602_37_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Faço uma Invocação-Link!"
+        },
+        "V0602_37_00_02_0": {
+            "card": [
+                14666
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Queime o circuito!"
+        },
+        "V0602_37_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Faço uma Invocação-Link!"
+        },
+        "V0602_37_00_03_0": {
+            "card": [
+                14249
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Queime o circuito!"
+        },
+        "V0602_37_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Faço uma Invocação-Link!"
+        },
+        "V0602_37_00_04_0": {
+            "card": [
+                14338
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Queime o circuito!"
+        },
+        "V0602_37_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Faço uma Invocação-Link!"
+        },
+        "V0602_37_00_05_0": {
+            "card": [
+                13920
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Invocação-Ritual!"
+        },
+        "V0602_37_00_06_0": {
+            "card": [
+                14785
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O dragão abrasador que incinera o céu!"
+        },
+        "V0602_37_00_06_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Faço uma Invocação-Xyz!"
+        },
+        "V0602_37_00_07_0": {
+            "card": [
+                14248
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Este corcel selvagem abrasa a tundra para incendiar todas as ilusões!"
+        },
+        "V0602_37_00_08_0": {
+            "card": [
+                14111
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Quando as chamas consomem o velho, surge uma nova criatura!"
+        },
+        "V0602_37_00_08_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Invocação-Fusão!"
+        },
+        "V0602_37_00_09_0": {
+            "card": [
+                18912
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu queimo o circuito que abrasa o caminho para o futuro!"
+        },
+        "V0602_37_00_09_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Faço uma Invocação-Link!"
+        },
+        "V0602_37_00_10_0": {
+            "card": [
+                18911
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Invocação-Sincro!"
+        },
+        "V0602_46_00_00_0": {
+            "card": [
+                13927
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "As chamas rodopiantes despertam a força verdadeira de Salamagrande Leardor!"
+        },
+        "V0602_46_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Invocação-Link de Reencarnação!"
+        },
+        "V0602_46_00_01_0": {
+            "card": [
+                14125
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Eu queimo o circuito que abrasa o caminho para o futuro!"
+        },
+        "V0602_46_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Invocação-Link de Reencarnação!"
+        },
+        "V0602_46_00_02_0": {
+            "card": [
+                14666
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Que as chamas envolvam o seu corpo!\nRenasça de suas cinzas!"
+        },
+        "V0602_46_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Super Invocação-Link de Reencarnação!"
+        },
+        "V0602_46_00_03_0": {
+            "card": [
+                14249
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Eu queimo o circuito que abrasa o caminho para o futuro!"
+        },
+        "V0602_46_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Invocação-Link de Reencarnação!"
+        },
+        "V0602_46_00_04_0": {
+            "card": [
+                14338
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Eu queimo o circuito que abrasa o caminho para o futuro!"
+        },
+        "V0602_46_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Invocação-Link de Reencarnação!"
+        },
+        "V0602_46_00_05_0": {
+            "card": [
+                13920
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Invocação-Ritual de Reencarnação!"
+        },
+        "V0602_46_00_06_0": {
+            "card": [
+                14785
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Eu reconstruo a Rede de Sobreposição!"
+        },
+        "V0602_46_00_06_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Invocação-Xyz de Reencarnação!"
+        },
+        "V0602_46_00_07_0": {
+            "card": [
+                14248
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Eu reconstruo a Rede de Sobreposição!"
+        },
+        "V0602_46_00_07_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Invocação-Xyz de Reencarnação!"
+        },
+        "V0602_46_00_08_0": {
+            "card": [
+                14111
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Invocação-Fusão de Reencarnação!"
+        },
+        "V0602_46_00_09_0": {
+            "card": [
+                18912
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Que as chamas o envolvam enquanto sua alma volta das cinzas!"
+        },
+        "V0602_46_00_09_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Invocação-Link da Super Reencarnação!  "
+        },
+        "V0602_46_00_10_0": {
+            "card": [
+                18911
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Invocação-Sincro de Reencarnação!"
+        },
+        "V0602_47_00_00_0": {
+            "card": [
+                13927
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ascenda novamente do vale das chamas!"
+        },
+        "V0602_47_00_00_1": {
+            "card": [],
+            "cutin": 2,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Salamagrande Leardor!"
+        },
+        "V0602_47_00_01_0": {
+            "card": [
+                14125
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Renasça!\nSalamagrande Lobo da Luz do Sol de Link 2!"
+        },
+        "V0602_47_00_02_0": {
+            "card": [
+                14666
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Levante voo!\nSalamagrande Piro Fênix de Link 4!"
+        },
+        "V0602_47_00_03_0": {
+            "card": [
+                14249
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ascenda novamente, Salamagrande Lincegueira de Link 1!"
+        },
+        "V0602_47_00_04_0": {
+            "card": [
+                14338
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Você é uma pessoa totalmente nova!\nSalamagrande Almiraj de Link 1!"
+        },
+        "V0602_47_00_05_0": {
+            "card": [
+                13920
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Acender!"
+        },
+        "V0602_47_00_05_1": {
+            "card": [],
+            "cutin": 2,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Salamagrande Águia Esmeralda!"
+        },
+        "V0602_47_00_06_0": {
+            "card": [
+                14785
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Renasça, Salamagrande Dragão de Chamas de Classificação 4!"
+        },
+        "V0602_47_00_07_0": {
+            "card": [
+                14248
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Aí vem Salamagrande Migaranhão de Classificação 3!"
+        },
+        "V0602_47_00_08_0": {
+            "card": [
+                14111
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Reine supremo, Salamagrande Quimera Violeta!"
+        },
+        "V0602_47_00_09_0": {
+            "card": [
+                18912
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Renasça!\nSalamagrande Fênix Furiosa de Link 4!"
+        },
+        "V0602_47_00_10_0": {
+            "card": [
+                18911
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Renasça como o predador alado com asas cerúleas!"
+        },
+        "V0602_47_00_10_1": {
+            "card": [],
+            "cutin": 2,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Salamagrande Grifo Explosivo!"
+        }
+    }
+}

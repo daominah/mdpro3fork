@@ -1,0 +1,1901 @@
+{
+    "_GRP_": "SN0107",
+    "_LNG_": "it-IT",
+    "info": {
+        "V0107_01_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ti farò vedere perché di Duellanti come te ce ne sono a bizzeffe."
+        },
+        "V0107_01_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Non chiamarmi Signor Crowler, sono il Dottor Crowler!"
+        },
+        "V0107_01_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ti insegnerò a rispettare un dottore nell'arte del Duello!"
+        },
+        "V0107_01_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                101,
+                115
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Sei solo uno sfaticato!"
+        },
+        "V0107_01_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Boccerò questo moccioso insolente e lo rispedirò subito a casa! "
+        },
+        "V0107_02_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Duelliamo!"
+        },
+        "V0107_03_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "È il mio turno!"
+        },
+        "V0107_03_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Così è troppo facile!"
+        },
+        "V0107_03_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Ammetto che stai facendo del tuo meglio..."
+        },
+        "V0107_03_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "È il mio turno ora!"
+        },
+        "V0107_03_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Devi studiare di più!"
+        },
+        "V0107_03_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "È il mio turno!"
+        },
+        "V0107_03_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ti darò lezioni private!"
+        },
+        "V0107_03_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "È il mio turno ora!"
+        },
+        "V0107_03_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Non va bene, non va bene!"
+        },
+        "V0107_03_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "È il mio turno!"
+        },
+        "V0107_03_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Gulp... Volevo dire, tutto va come previsto! Ah ah ah..."
+        },
+        "V0107_03_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "È il mio turno ora!"
+        },
+        "V0107_04_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Tocca a me pescare!"
+        },
+        "V0107_04_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Tocca a me pescare!"
+        },
+        "V0107_04_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Oh oh... Tocca a me pescare!"
+        },
+        "V0107_05_00_00_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Prima lezione: un Duellante non si arrende anche se si mette male!"
+        },
+        "V0107_05_00_00_1": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Tocca a me pescare!"
+        },
+        "V0107_06_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Credi di essere intelligente, vero?"
+        },
+        "V0107_06_01_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Non illuderti!"
+        },
+        "V0107_06_01_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Così non funziona!"
+        },
+        "V0107_06_01_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Non riuscirai a ingannarmi in nessun modo!"
+        },
+        "V0107_07_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Mmh, vediamo... Dalla mia mano..."
+        },
+        "V0107_07_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Attivo una Magia!"
+        },
+        "V0107_07_02_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Attivo una Magia Rapida!"
+        },
+        "V0107_07_03_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Attivo una Magia Continua!"
+        },
+        "V0107_07_04_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Attivo una Magia Equipaggiamento!"
+        },
+        "V0107_07_05_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Attivo una Magia Rituale!"
+        },
+        "V0107_07_06_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "La mia Trappola si attiva!"
+        },
+        "V0107_07_07_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "La mia Trappola Continua si attiva!"
+        },
+        "V0107_07_08_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "La mia Contro-Trappola si attiva!"
+        },
+        "V0107_07_09_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Rivelo la mia carta coperta!"
+        },
+        "V0107_07_09_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Rivelo la mia carta coperta!"
+        },
+        "V0107_07_10_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "L'effetto del mio mostro si attiva!"
+        },
+        "V0107_07_11_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Attivo una Magia Terreno!"
+        },
+        "V0107_07_12_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Attivo un effetto!"
+        },
+        "V0107_07_13_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Imposto il Valore Pendulum!"
+        },
+        "V0107_08_00_00_0": {
+            "card": [
+                6578
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Si attiva la mia Magia Continua! Castello-Ingranaggio Antico!"
+        },
+        "V0107_08_00_01_0": {
+            "card": [
+                6842
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "La Magia Equipaggiamento Carro Armato-Ingranaggio Antico!"
+        },
+        "V0107_08_00_02_0": {
+            "card": [
+                6574
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Attivo la Carta Magia Trivella-Ingranaggio Antico!"
+        },
+        "V0107_08_00_03_0": {
+            "card": [
+                6844
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Attivo la mia Magia Equipaggiamento Pugno-Ingranaggio Antico!"
+        },
+        "V0107_08_00_04_0": {
+            "card": [
+                6573
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Attivo la Carta Magia Fabbrica-Ingranaggio Antico!"
+        },
+        "V0107_08_00_05_0": {
+            "card": [
+                6843
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Attivo la Carta Magia Esplosivo-Ingranaggio Antico!"
+        },
+        "V0107_08_00_06_0": {
+            "card": [
+                5443
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Si attiva la mia Carta Trappola! Statua del Malvagio!"
+        },
+        "V0107_08_00_06_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Evoco Specialmente un Segna-Malefico!"
+        },
+        "V0107_08_00_07_0": {
+            "card": [
+                5857
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Attivo la mia Carta Trappola Assenza di Gravità!"
+        },
+        "V0107_08_00_08_0": {
+            "card": [
+                6582
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Attivo la mia Carta Trappola Condensatore di Danno!"
+        },
+        "V0107_08_00_09_0": {
+            "card": [
+                6572
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Attivo la Carta Magia Circolo Magnetico LV2!"
+        },
+        "V0107_08_00_10_0": {
+            "card": [
+                7622
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Attivo Magia Ingranaggio!"
+        },
+        "V0107_08_00_11_0": {
+            "card": [
+                4837
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Attivo la Carta Magia Polimerizzazione!"
+        },
+        "V0107_08_00_12_0": {
+            "card": [
+                5129
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Attivo la mia Magia Rapida Rimozione di Limite!"
+        },
+        "V0107_08_00_13_0": {
+            "card": [
+                6935
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Attivo la Carta Magia Laboratorio-Ingranaggio Antico!"
+        },
+        "V0107_08_00_14_0": {
+            "card": [
+                7683
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Attivo la mia Magia Terreno! Città degli Ingranaggi!"
+        },
+        "V0107_08_00_15_0": {
+            "card": [
+                12680
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Attivo la mia Magia Continua Fortezza-Ingranaggio Antico!"
+        },
+        "V0107_08_00_16_0": {
+            "card": [
+                12679
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Attivo la Carta Magia Catapulta-Ingranaggio Antico!"
+        },
+        "V0107_08_00_17_0": {
+            "card": [
+                12805
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "La Trappola Continua Rinascimento Ingranaggio Antico!"
+        },
+        "V0107_09_00_00_0": {
+            "card": [
+                7616
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Si attiva l'effetto di Golem-Ingranaggio Antico Finale!"
+        },
+        "V0107_09_00_01_0": {
+            "card": [
+                6570
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Si attiva l'effetto di Ingranaggio Antico!"
+        },
+        "V0107_09_00_02_0": {
+            "card": [
+                6841
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Si attiva l'effetto di Ingegnere-Ingranaggio Antico!"
+        },
+        "V0107_09_00_03_0": {
+            "card": [
+                6315
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Si attiva l'effetto di Golem-Ingranaggio Antico!"
+        },
+        "V0107_09_00_04_0": {
+            "card": [
+                12997
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Si attiva l'effetto di Golem-Ingranaggio Antico - Picchiatore Finale!"
+        },
+        "V0107_09_00_05_0": {
+            "card": [
+                6932
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Si attiva l'effetto di Drago Gadjiltron-Ingranaggio Antico!"
+        },
+        "V0107_09_00_06_0": {
+            "card": [
+                6933
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Si attiva l'effetto di Chimera Gadjiltron-Ingranaggio Antico!"
+        },
+        "V0107_09_00_07_0": {
+            "card": [
+                6587
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Si attiva l'effetto di Cannone-Ingranaggio Antico!"
+        },
+        "V0107_09_00_08_0": {
+            "card": [
+                12677
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Si attiva l'effetto di Idra-Ingranaggio Antico!"
+        },
+        "V0107_09_00_09_0": {
+            "card": [
+                12776
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Si attiva l'effetto di Gigante-Ingranaggio Antico Caos!"
+        },
+        "V0107_09_00_10_0": {
+            "card": [
+                12676
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Si attiva l'effetto di Drago Respingi-Ingranaggio Antico!"
+        },
+        "V0107_09_00_11_0": {
+            "card": [
+                11061
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Si attiva l'effetto di Scatola-Ingranaggio Antico!"
+        },
+        "V0107_09_00_12_0": {
+            "card": [
+                12678
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Si attiva l'effetto di Viverna-Ingranaggio Antico!"
+        },
+        "V0107_09_00_13_0": {
+            "card": [
+                12777
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Si attiva l'effetto di Obice-Ingranaggio Antico!"
+        },
+        "V0107_09_00_14_0": {
+            "card": [
+                12748
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Si attiva l'effetto di Segugio da Caccia-Ingranaggio Antico!"
+        },
+        "V0107_09_00_15_0": {
+            "card": [
+                12675
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Si attiva l'effetto di Congegno-Ingranaggio Antico!"
+        },
+        "V0107_10_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Ecco un esempio di tecnica di Duello vincente."
+        },
+        "V0107_10_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Guarda e impara!"
+        },
+        "V0107_10_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Ah, perfetto!"
+        },
+        "V0107_10_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Ih ih ih!"
+        },
+        "V0107_11_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Evoco un mostro in Posizione di Attacco!"
+        },
+        "V0107_11_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Evoco un mostro in Posizione di Difesa!"
+        },
+        "V0107_11_02_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Evoco Specialmente un mostro!"
+        },
+        "V0107_11_03_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Offro un mostro come Tributo!"
+        },
+        "V0107_11_04_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Evoco un mostro tramite Tributo!"
+        },
+        "V0107_11_05_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Evoco un mostro tramite Fusione!"
+        },
+        "V0107_11_06_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Evoco un mostro tramite Rituale!"
+        },
+        "V0107_11_07_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Synchro Evoco un mostro!"
+        },
+        "V0107_11_08_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Evoco Xyz un mostro!"
+        },
+        "V0107_11_09_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Evoco Pendulum un mostro!"
+        },
+        "V0107_11_10_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Evoco un mostro tramite Link!"
+        },
+        "V0107_13_00_00_0": {
+            "card": [
+                7616
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Non pensavo di dover usare questo mostro contro uno studente!"
+        },
+        "V0107_13_00_00_1": {
+            "card": [],
+            "cutin": 2,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Prova l'ira di Golem-Ingranaggio Antico Finale!"
+        },
+        "V0107_13_00_01_0": {
+            "card": [
+                6570
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Vieni qui, Ingranaggio Antico!"
+        },
+        "V0107_13_00_02_0": {
+            "card": [
+                6841
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Vieni qui, Ingegnere-Ingranaggio Antico!"
+        },
+        "V0107_13_00_03_0": {
+            "card": [
+                6315
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Avanza, Golem-Ingranaggio Antico!"
+        },
+        "V0107_13_00_04_0": {
+            "card": [
+                12997
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Andiamo, Golem-Ingranaggio Antico - Picchiatore Finale!"
+        },
+        "V0107_13_00_05_0": {
+            "card": [
+                6317
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Sorgi, Soldato-Ingranaggio Antico!"
+        },
+        "V0107_13_00_06_0": {
+            "card": [
+                6316
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Ecco il mio quadrupede, Bestia-Ingranaggio Antico!"
+        },
+        "V0107_13_00_07_0": {
+            "card": [
+                7294
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Cavaliere-Ingranaggio Antico è qui!"
+        },
+        "V0107_13_00_08_0": {
+            "card": [
+                6932
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Ih ih ih! Librati nell'aria, Drago Gadjiltron-Ingranaggio Antico!"
+        },
+        "V0107_13_00_09_0": {
+            "card": [
+                6933
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Ammira Chimera Gadjiltron-Ingranaggio Antico!"
+        },
+        "V0107_13_00_10_0": {
+            "card": [
+                6587
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Vai, Cannone-Ingranaggio Antico!"
+        },
+        "V0107_13_00_11_0": {
+            "card": [
+                11900
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "La mia carta Golem-Ingranaggio Antico... Ehm, come non detto!"
+        },
+        "V0107_13_00_11_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Adesso arriva Golem-Ingranaggio Antico Toon!"
+        },
+        "V0107_13_00_12_0": {
+            "card": [
+                12677
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Vieni a me, Idra-Ingranaggio Antico!"
+        },
+        "V0107_13_00_13_0": {
+            "card": [
+                12776
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Unisciti a noi, Gigante-Ingranaggio Antico Caos!"
+        },
+        "V0107_13_00_14_0": {
+            "card": [
+                12676
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Questo drago brillerà per sempre!"
+        },
+        "V0107_13_00_14_1": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Drago Respingi-Ingranaggio Antico!"
+        },
+        "V0107_13_00_15_0": {
+            "card": [
+                11061
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Ti presento Scatola-Ingranaggio Antico!"
+        },
+        "V0107_13_00_16_0": {
+            "card": [
+                12678
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Scendi sul Terreno, Viverna-Ingranaggio Antico!"
+        },
+        "V0107_13_00_17_0": {
+            "card": [
+                12777
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Ecco la macchina per eccellenza!"
+        },
+        "V0107_13_00_17_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Obice-Ingranaggio Antico!"
+        },
+        "V0107_13_00_18_0": {
+            "card": [
+                12748
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "All'attacco, Segugio da Caccia-Ingranaggio Antico!"
+        },
+        "V0107_13_00_18_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Ma che brava bestiolina sei!"
+        },
+        "V0107_13_00_19_0": {
+            "card": [
+                12675
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Vieni fuori, Congegno-Ingranaggio Antico!"
+        },
+        "V0107_14_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "È l'ora della battaglia!"
+        },
+        "V0107_14_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eccomi, è ora di combattere!"
+        },
+        "V0107_15_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Non hai scampo!"
+        },
+        "V0107_15_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Preparati per la prossima lezione!"
+        },
+        "V0107_15_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ah ah ah! Ih ih ih!"
+        },
+        "V0107_16_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Questa è la fine della lezione!"
+        },
+        "V0107_16_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Non hai superato l'esame!"
+        },
+        "V0107_17_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Il mio mostro attacca!"
+        },
+        "V0107_17_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "All'attacco!"
+        },
+        "V0107_17_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Mi preparo ad attaccare!"
+        },
+        "V0107_18_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Ti attacco direttamente con il mio mostro!"
+        },
+        "V0107_18_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Ti attacco direttamente!"
+        },
+        "V0107_19_00_00_0": {
+            "card": [
+                7616
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Ti espelleranno! Golem-Ingranaggio Antico Finale, attacca!"
+        },
+        "V0107_19_00_01_0": {
+            "card": [
+                6570
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Attacca, Ingranaggio Antico!"
+        },
+        "V0107_19_00_02_0": {
+            "card": [
+                6841
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Vai, Ingegnere-Ingranaggio Antico!"
+        },
+        "V0107_19_00_03_0": {
+            "card": [
+                6315
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Ah ah ah! Vai, Golem-Ingranaggio Antico!"
+        },
+        "V0107_19_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Mischia Meccanica!"
+        },
+        "V0107_19_00_04_0": {
+            "card": [
+                12997
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Golem-Ingranaggio Antico - Picchiatore Finale attacca!"
+        },
+        "V0107_19_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Mostruosa mischia meccanica! Sembra uno scioglilingua..."
+        },
+        "V0107_19_00_05_0": {
+            "card": [
+                6317
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Soldato-Ingranaggio Antico, attacca!"
+        },
+        "V0107_19_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Raffica di Fuoco Rapida!"
+        },
+        "V0107_19_00_06_0": {
+            "card": [
+                6316
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Fagli vedere chi è il miglior segugio, Bestia-Ingranaggio Antico!"
+        },
+        "V0107_19_00_06_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Zanna Preziosa!"
+        },
+        "V0107_19_00_07_0": {
+            "card": [
+                7294
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Trafiggili, Cavaliere-Ingranaggio Antico!"
+        },
+        "V0107_19_00_08_0": {
+            "card": [
+                6932
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Prendi questo! Drago Gadjiltron-Ingranaggio Antico attacca!"
+        },
+        "V0107_19_00_09_0": {
+            "card": [
+                6933
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "All'assalto, Chimera Gadjiltron-Ingranaggio Antico!"
+        },
+        "V0107_19_00_10_0": {
+            "card": [
+                6587
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Prepara le armi, Cannone-Ingranaggio Antico!"
+        },
+        "V0107_19_00_11_0": {
+            "card": [
+                11900
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Golem-Ingranaggio Antico Toon!"
+        },
+        "V0107_19_00_11_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Attacca con... Non saprei... Colpo Infuocato?"
+        },
+        "V0107_19_00_12_0": {
+            "card": [
+                12677
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Divorali, Idra-Ingranaggio Antico!"
+        },
+        "V0107_19_00_13_0": {
+            "card": [
+                12776
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Ih ih ih... Gigante-Ingranaggio Antico Caos attacca!"
+        },
+        "V0107_19_00_13_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Botta di Oscurità!"
+        },
+        "V0107_19_00_14_0": {
+            "card": [
+                12676
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Prendi questo! Drago Respingi-Ingranaggio Antico, attacca!"
+        },
+        "V0107_19_00_15_0": {
+            "card": [
+                11061
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Scatola-Ingranaggio Antico attacca!"
+        },
+        "V0107_19_00_16_0": {
+            "card": [
+                12678
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Affonda i denti, Viverna-Ingranaggio Antico!"
+        },
+        "V0107_19_00_17_0": {
+            "card": [
+                12777
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Vai, Obice-Ingranaggio Antico!"
+        },
+        "V0107_19_00_18_0": {
+            "card": [
+                12748
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Aggrediscili, Segugio da Caccia-Ingranaggio Antico!"
+        },
+        "V0107_19_00_19_0": {
+            "card": [
+                12675
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Attacca, Congegno-Ingranaggio Antico!"
+        },
+        "V0107_20_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Posiziono una carta!"
+        },
+        "V0107_20_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Posiziono una carta coperta!"
+        },
+        "V0107_20_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Posiziono un mostro!"
+        },
+        "V0107_20_01_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Posiziono un mostro coperto!"
+        },
+        "V0107_21_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Ah ah ah!"
+        },
+        "V0107_21_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Termino il mio turno!"
+        },
+        "V0107_21_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Termino il mio turno."
+        },
+        "V0107_21_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Non è possibile..."
+        },
+        "V0107_21_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Termino il mio turno."
+        },
+        "V0107_22_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Eeeh?"
+        },
+        "V0107_22_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Gulp!"
+        },
+        "V0107_22_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "No!"
+        },
+        "V0107_23_00_00_0": {
+            "card": [],
+            "cutin": 3,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Aaah!"
+        },
+        "V0107_24_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Grrrr..."
+        },
+        "V0107_25_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Gaaah!"
+        },
+        "V0107_25_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Gaaargh!"
+        },
+        "V0107_25_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Noooooo!"
+        },
+        "V0107_26_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Non mi hai fatto niente!"
+        },
+        "V0107_26_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Questo non mi fermerà!"
+        },
+        "V0107_26_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "È ancora tutto sotto controllo!"
+        },
+        "V0107_27_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Che male!"
+        },
+        "V0107_27_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Oh no!"
+        },
+        "V0107_27_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Molto male!"
+        },
+        "V0107_28_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Bah! Quelle mosse non sarebbero dovute uscire dall'aula."
+        },
+        "V0107_28_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Nel mondo reale non funzionano!"
+        },
+        "V0107_28_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Avrai anche perso, ma..."
+        },
+        "V0107_28_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Le tue strategie sono state esemplari. Hai disputato un gran Duello!"
+        },
+        "V0107_28_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Ah, roba da niente, il Duello più facile della mia vita!"
+        },
+        "V0107_28_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "(Non posso credere di aver vinto, per poco non mi viene un infarto!)"
+        },
+        "V0107_28_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                101,
+                115
+            ],
+            "face": 3,
+            "frame": 0,
+            "text": "È quello che ti meriti, scansafatiche che non sei altro!"
+        },
+        "V0107_28_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Al tuo Duello do lo stesso voto dei tuoi compiti in classe: un bel 4!"
+        },
+        "V0107_28_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                102
+            ],
+            "face": 5,
+            "frame": 0,
+            "text": "Zane..."
+        },
+        "V0107_29_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Incomprensibile!"
+        },
+        "V0107_29_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Com'è possibile che questa canaglia sia riuscita a sconfiggermi?"
+        },
+        "V0107_29_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Studenti, vi stavo insegnando cosa NON si dovrebbe fare in un Duello!"
+        },
+        "V0107_29_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Non ripetete nessuna delle mosse che ho fatto. Fine della lezione!"
+        },
+        "V0107_29_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Sniff... Lasciami solo, non voglio che tu mi veda così..."
+        },
+        "V0107_29_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "I 9 anni del mio dottorato nell'arte del Duello sono stati sprecati?"
+        },
+        "V0107_29_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                101,
+                115
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Jaden, da buon professore mi ricordo di tutti i miei studenti."
+        },
+        "V0107_29_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "E di te in particolare mi ricordo perché eri il più scansafatiche!"
+        },
+        "V0107_30_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Ih ih ih! Ti è già passata la voglia di duellare?"
+        },
+        "V0107_30_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Non hai ancora capito che non sei nient'altro che uno scansafatiche?"
+        },
+        "V0107_30_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Adesso capisci perché sono dottore nell'arte del Duello?"
+        },
+        "V0107_31_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Aspetta! Time out!"
+        },
+        "V0107_31_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Incredibile!"
+        },
+        "V0107_32_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Yu-Gi-Oh! Duel Links"
+        },
+        "V0107_32_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Yu-Gi-Oh! Duel Links!"
+        },
+        "V0107_33_00_00_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Guarda il miglior professore dell'Accademia del Duellante in azione!"
+        },
+        "V0107_33_00_01_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Attenzione, questa è una lezione speciale!"
+        },
+        "V0107_33_00_02_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "La lezione è cominciata!"
+        },
+        "V0107_34_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "L'ennesimo errore da dilettanti..."
+        },
+        "V0107_34_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Ricordo quella mossa, la facevo quando ero un ingenuo principiante."
+        },
+        "V0107_34_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Non ho tempo per gli scansafatiche!"
+        },
+        "V0107_34_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Un grande professore sa imparare dai suoi studenti."
+        },
+        "V0107_34_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ricorda che non si chiacchiera in classe né durante un Duello!"
+        },
+        "V0107_34_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "La parola \"errore\" non è nel mio dizionario!"
+        },
+        "V0107_34_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Il Gioco delle Ombre non è una materia che si insegna a scuola!"
+        },
+        "V0107_34_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Posso sembrare duro, ma vedo del potenziale in tutti i miei studenti!"
+        },
+        "V0107_34_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Ben fatto. Ben fatto davvero!"
+        },
+        "V0107_34_00_09_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Non devi parlare quando non è il tuo turno, giovane allievo!"
+        },
+        "V0107_35_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Andiamo, scansafatiche!"
+        },
+        "V0107_35_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "È ora della lezione di Duello!"
+        }
+    }
+}

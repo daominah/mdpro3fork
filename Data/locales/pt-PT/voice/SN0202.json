@@ -1,0 +1,3739 @@
+{
+    "_GRP_": "SN0202",
+    "_LNG_": "pt-BR",
+    "info": {
+        "V0202_01_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Pesada é a coroa do rei - é por isso que só eu posso usá-la!"
+        },
+        "V0202_01_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Vou te mostrar que minha alma ainda brilha!"
+        },
+        "V0202_01_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Para me acompanhar, é hora de tirar as rodas de treinamento!"
+        },
+        "V0202_01_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Ou vou mandar você fazer um pit stop permanente!"
+        },
+        "V0202_01_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Se tem coragem de me encarar, então não tem medo de perder!"
+        },
+        "V0202_01_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                201
+            ],
+            "face": 3,
+            "frame": 0,
+            "text": "Yusei!\nVou me dedicar de corpo e alma nesse duelo!"
+        },
+        "V0202_01_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Portanto, ninguém será um obstáculo!\nNem mesmo você!"
+        },
+        "V0202_01_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                203,
+                204,
+                205,
+                206,
+                209
+            ],
+            "face": 3,
+            "frame": 0,
+            "text": "Como equipe, fizemos tudo o que foi possível."
+        },
+        "V0202_01_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "De agora em diante vou encarar os novos desafios sozinho! "
+        },
+        "V0202_01_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                214
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Entrevista exclusiva?"
+        },
+        "V0202_01_00_06_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "...Pois bem.\nEu te concedo um momento do tempo do rei."
+        },
+        "V0202_01_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                210,
+                231
+            ],
+            "face": 3,
+            "frame": 0,
+            "text": "Carly...\nEu salvarei você, mesmo que isso me custe tudo!"
+        },
+        "V0202_01_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                208
+            ],
+            "face": 4,
+            "frame": 0,
+            "text": "Você... Kalin?"
+        },
+        "V0202_01_00_09_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                208,
+                211,
+                9058,
+                9059,
+                9061,
+                9062
+            ],
+            "face": 3,
+            "frame": 0,
+            "text": "A Marca do Dragão anseia enfrentar um Signatário das Trevas."
+        },
+        "V0202_01_00_09_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "E eu concederei seu desejo!"
+        },
+        "V0202_02_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Duelo!"
+        },
+        "V0202_03_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Não há mais nada que você possa fazer!"
+        },
+        "V0202_03_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Minha vez!"
+        },
+        "V0202_03_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Já dá para ver a linha de chegada!"
+        },
+        "V0202_03_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "É a minha vez!"
+        },
+        "V0202_03_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Não pense que vou desacelerar!"
+        },
+        "V0202_03_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Minha vez!"
+        },
+        "V0202_03_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "É a minha vez!"
+        },
+        "V0202_03_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Vitória se conquista, não se ganha!"
+        },
+        "V0202_03_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Minha vez!"
+        },
+        "V0202_03_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Humpf! Suas jogadas não têm nada de especial!"
+        },
+        "V0202_03_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "É a minha vez!"
+        },
+        "V0202_04_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu compro!"
+        },
+        "V0202_04_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu compro!"
+        },
+        "V0202_04_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Eu compro!"
+        },
+        "V0202_05_00_00_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Deleite-se com o verdadeiro poder do rei Jack Atlas!"
+        },
+        "V0202_05_00_00_1": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Compro!!!"
+        },
+        "V0202_06_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Agora!"
+        },
+        "V0202_06_01_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "É melhor você se esforçar mais!"
+        },
+        "V0202_06_01_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Que patético."
+        },
+        "V0202_06_01_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Conheço todas as suas estratégias!"
+        },
+        "V0202_07_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Da minha mão..."
+        },
+        "V0202_07_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu ativo um card de magia!"
+        },
+        "V0202_07_02_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu ativo uma magia rápida!"
+        },
+        "V0202_07_03_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu ativo uma magia contínua!"
+        },
+        "V0202_07_04_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu ativo uma magia de equipamento!"
+        },
+        "V0202_07_05_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu ativo uma magia de ritual!"
+        },
+        "V0202_07_06_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu ativo meu card de armadilha!"
+        },
+        "V0202_07_07_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu ativo minha armadilha contínua!"
+        },
+        "V0202_07_08_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu ativo minha armadilha de resposta!"
+        },
+        "V0202_07_09_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Meu card com face para baixo!"
+        },
+        "V0202_07_09_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu viro meu card com face para baixo!"
+        },
+        "V0202_07_10_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu ativo meu efeito de monstro!"
+        },
+        "V0202_07_11_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu ativo uma magia de campo!"
+        },
+        "V0202_07_12_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu ativo um efeito!"
+        },
+        "V0202_07_13_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu baixo a Escala de Pêndulo!"
+        },
+        "V0202_08_00_00_0": {
+            "card": [
+                9516
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ativo meu card de magia!\nSegurança Escarlate!"
+        },
+        "V0202_08_00_01_0": {
+            "card": [
+                9518
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ativo meu card de magia, Chamado do Ressonador!"
+        },
+        "V0202_08_00_02_0": {
+            "card": [
+                12339
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Meu card de magia, Delírio do Regulador!"
+        },
+        "V0202_08_00_03_0": {
+            "card": [
+                8198
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ativo meu card de magia!\nConfiança Mental!"
+        },
+        "V0202_08_00_04_0": {
+            "card": [
+                9517
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ativo meu card de magia, Vaso do Dragão Vermelho!"
+        },
+        "V0202_08_00_05_0": {
+            "card": [
+                4837
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Este é o meu card de magia!\nPolimerização!"
+        },
+        "V0202_08_00_06_0": {
+            "card": [
+                9519
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "A magia contínua, Destruição do Ressonante!"
+        },
+        "V0202_08_00_07_0": {
+            "card": [
+                9347
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ativo meu card de magia!\nMotor do Ressonador!"
+        },
+        "V0202_08_00_08_0": {
+            "card": [
+                8046
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Meu card de magia rápida!\nSobrecarga de Assalto!"
+        },
+        "V0202_08_00_09_0": {
+            "card": [
+                8047
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ativo o card de magia, Teleporte de Ataque!"
+        },
+        "V0202_08_00_10_0": {
+            "card": [
+                8048
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ativo minha magia rápida!\nRenascimento de Ataque!"
+        },
+        "V0202_08_00_11_0": {
+            "card": [
+                8848
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O card de armadilha, Espíritos Agressores!"
+        },
+        "V0202_08_00_12_0": {
+            "card": [
+                12469
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ativo minha armadilha contínua!\nRei Escarlate!"
+        },
+        "V0202_08_00_13_0": {
+            "card": [
+                8216
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Minha armadilha de resposta, Fogo Carmesim!"
+        },
+        "V0202_08_00_14_0": {
+            "card": [
+                12894
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu revelo meu card de armadilha!\nChamado Sincro!"
+        },
+        "V0202_08_00_15_0": {
+            "card": [
+                7758
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu revelo meu card de armadilha!\nDefletor Sincro!"
+        },
+        "V0202_08_00_16_0": {
+            "card": [
+                12066
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ativo minha armadilha!\nCasulo Vermelho!"
+        },
+        "V0202_08_00_17_0": {
+            "card": [
+                9141
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ativo minha armadilha contínua, Tela Vermelha!"
+        },
+        "V0202_08_00_18_0": {
+            "card": [
+                7757
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ativo minha armadilha contínua, Portão Espacial!"
+        },
+        "V0202_08_00_19_0": {
+            "card": [
+                8674
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ativo minha armadilha!\nMudar o Destino!"
+        },
+        "V0202_08_00_20_0": {
+            "card": [
+                8217
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ativo minha armadilha!\nCaptura de Regulador!"
+        },
+        "V0202_08_00_21_0": {
+            "card": [
+                8675
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ativo minha armadilha!\nCorrente Demoníaca!"
+        },
+        "V0202_08_00_22_0": {
+            "card": [
+                8063
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ativo minha armadilha!\nArquidemônios dos Pesadelos!"
+        },
+        "V0202_08_00_23_0": {
+            "card": [
+                8062
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ativo minha armadilha!\nMetade ou Nada!"
+        },
+        "V0202_08_00_24_0": {
+            "card": [
+                8058
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ativo minha armadilha!\nAtivar Modo de Ataque!"
+        },
+        "V0202_08_00_25_0": {
+            "card": [
+                7922
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu viro meu card de armadilha!\nRugido Orgulhoso!"
+        },
+        "V0202_08_00_26_0": {
+            "card": [
+                12179
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ativo minha armadilha, Rejeitar Renascimento!"
+        },
+        "V0202_08_00_27_0": {
+            "card": [
+                7923
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ativo minha armadilha!\nPresente de Renovação!"
+        },
+        "V0202_08_00_28_0": {
+            "card": [
+                12272
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ativo a armadilha Supremacia Vermelha!"
+        },
+        "V0202_08_00_29_0": {
+            "card": [
+                8060
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu viro meu card de armadilha!\nEstrela Perdida Descendente!"
+        },
+        "V0202_08_00_30_0": {
+            "card": [
+                4675
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ativo minha armadilha contínua, Feitiço Sombra!"
+        },
+        "V0202_08_00_31_0": {
+            "card": [
+                12271
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ativo meu card de armadilha, Consonância do Rei!"
+        },
+        "V0202_08_00_32_0": {
+            "card": [
+                12657
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Minha armadilha é ativada!\nSincro do Rei!"
+        },
+        "V0202_08_00_33_0": {
+            "card": [
+                10983
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ativo minha armadilha contínua, Renascimento Poderoso!"
+        },
+        "V0202_08_00_34_0": {
+            "card": [
+                7924
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ativo minha armadilha!\nLinhagem de Destruição!"
+        },
+        "V0202_08_00_35_0": {
+            "card": [
+                9534
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ativo minha armadilha!\nTapete Vermelho!"
+        },
+        "V0202_08_00_36_0": {
+            "card": [
+                8069
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ativo minha armadilha!\nCorte de Ataque!"
+        },
+        "V0202_08_00_37_0": {
+            "card": [
+                8070
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Minha armadilha de resposta é ativada!\nContra Ataque!"
+        },
+        "V0202_09_00_00_0": {
+            "card": [
+                8192
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Asa Dragão Explosivo é ativado!"
+        },
+        "V0202_09_00_01_0": {
+            "card": [
+                9801
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Laminador Carmesim é ativado!"
+        },
+        "V0202_09_00_02_0": {
+            "card": [
+                12062
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Ressonador de Sinkron é ativado!"
+        },
+        "V0202_09_00_03_0": {
+            "card": [
+                9119
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Dragão Vermelho Nova!\nAtive seu efeito!"
+        },
+        "V0202_09_00_04_0": {
+            "card": [
+                7734
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Testemunhe o efeito de Dragão da Poeira Estelar!"
+        },
+        "V0202_09_00_05_0": {
+            "card": [
+                7734
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Dragão da Poeira Estelar é ativado! Ressuscite!"
+        },
+        "V0202_09_00_06_0": {
+            "card": [
+                7704
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Este é o efeito de Golem de Fragmento Pequeno!"
+        },
+        "V0202_09_00_07_0": {
+            "card": [
+                8651
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Dragão Vermelho Majestoso!"
+        },
+        "V0202_09_00_08_0": {
+            "card": [
+                8651
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Dragão Vermelho Majestoso absorve o ATK do seu monstro!"
+        },
+        "V0202_09_00_08_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ganho de Poder!"
+        },
+        "V0202_09_00_09_0": {
+            "card": [
+                7707
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Roda Dentada Sinistra!"
+        },
+        "V0202_09_00_10_0": {
+            "card": [
+                12930
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Ressonador Duplo é ativado!"
+        },
+        "V0202_09_00_11_0": {
+            "card": [
+                12063
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ressonador da Corrente ativa seu efeito!"
+        },
+        "V0202_09_00_12_0": {
+            "card": [
+                8816
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Rei do Caos Arquidemônio!"
+        },
+        "V0202_09_00_13_0": {
+            "card": [
+                8617
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Desvanecer da Batalha!"
+        },
+        "V0202_09_00_14_0": {
+            "card": [
+                9297
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ativo o efeito de Ressonador da Barreira da minha mão!"
+        },
+        "V0202_09_00_15_0": {
+            "card": [
+                9477
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Ressonador da Força!"
+        },
+        "V0202_09_00_16_0": {
+            "card": [
+                7732
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Golem de Fragmentos Múltiplos é ativado!"
+        },
+        "V0202_09_00_17_0": {
+            "card": [
+                7705
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Golem de Fragmento Médio faz a Invocação-Especial de um monstro do meu deck!"
+        },
+        "V0202_09_00_18_0": {
+            "card": [
+                12064
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Ressonador do Espelho é ativado!"
+        },
+        "V0202_09_00_19_0": {
+            "card": [
+                12413
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Warg Vermelho é ativado!"
+        },
+        "V0202_09_00_19_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu o invoco por Invocação-Especial da minha mão!"
+        },
+        "V0202_09_00_20_0": {
+            "card": [
+                12414
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu envio Gardna Vermelho da minha mão para o Cemitério!"
+        },
+        "V0202_09_00_20_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Seus efeitos não destroem mais meus monstros neste turno!"
+        },
+        "V0202_09_00_21_0": {
+            "card": [
+                12060
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Corredor Vermelho é ativado!"
+        },
+        "V0202_09_00_21_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Invocação-Especial de regulador Demônio de nível 3 ou menor!"
+        },
+        "V0202_09_00_22_0": {
+            "card": [
+                11990
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Incandescente Dragão Vermelho Arquidemônio é ativado!"
+        },
+        "V0202_09_00_22_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Chama de Poder Absoluto!"
+        },
+        "V0202_09_00_23_0": {
+            "card": [
+                12449
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Tirano Dragão Vermelho Arquidemônio é ativado!"
+        },
+        "V0202_09_00_23_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Inferno de Poder Absoluto!"
+        },
+        "V0202_09_00_24_0": {
+            "card": [
+                12449
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Tirano Dragão Vermelho Arquidemônio é ativado!"
+        },
+        "V0202_09_00_25_0": {
+            "card": [
+                8007
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Dragão Vermelho Arquidemônio/Modo de Ataque é ativado!"
+        },
+        "V0202_09_00_25_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Fim Carmesim!"
+        },
+        "V0202_09_00_26_0": {
+            "card": [
+                8007
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Dragão Vermelho Arquidemônio/Modo de Ataque! Ressuscite meu monstro!"
+        },
+        "V0202_09_00_27_0": {
+            "card": [
+                7735
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Dragão Vermelho Arquidemônio!"
+        },
+        "V0202_09_00_27_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Meteoro do Demônio!"
+        },
+        "V0202_09_00_28_0": {
+            "card": [
+                7735
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Dragão Vermelho Arquidemônio é ativado!"
+        },
+        "V0202_09_00_29_0": {
+            "card": [
+                12540
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Vermelho Nova!"
+        },
+        "V0202_09_00_30_0": {
+            "card": [
+                12415
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Espelho Vermelho é ativado!"
+        },
+        "V0202_09_00_31_0": {
+            "card": [
+                12695
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Dragão da Ascendência Vermelha! Ative seu efeito!"
+        },
+        "V0202_09_00_32_0": {
+            "card": [
+                12061
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Ressonador Vermelho é ativado!"
+        },
+        "V0202_09_00_33_0": {
+            "card": [
+                12065
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Wivern Vermelha destrói o monstro com mais ATK!"
+        },
+        "V0202_09_00_34_0": {
+            "card": [
+                12078
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Abrasador Dragão Vermelho Arquidemônio do Abismo é ativado!"
+        },
+        "V0202_09_00_35_0": {
+            "card": [
+                12079
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Abrasador Dragão Vermelho Arquidemônio do Banimento é ativado!"
+        },
+        "V0202_09_00_36_0": {
+            "card": [
+                10842
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Abrasador Dragão Vermelho Arquidemônio é ativado!"
+        },
+        "V0202_09_00_36_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Queima Carmesim!"
+        },
+        "V0202_09_00_37_0": {
+            "card": [
+                12080
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Abrasador Dragão Vermelho Arquidemônio Rei da Calamidade é ativado!"
+        },
+        "V0202_09_00_38_0": {
+            "card": [
+                12080
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Abrasador Dragão Vermelho Arquidemônio Rei da Calamidade é ativado!"
+        },
+        "V0202_09_00_38_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Meteorito de Calamidade!"
+        },
+        "V0202_09_00_39_0": {
+            "card": [
+                9012
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Gash, o Senhor do Pó!"
+        },
+        "V0202_09_00_40_0": {
+            "card": [
+                9051
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Rei Mágico Estrela Lunar!"
+        },
+        "V0202_09_00_41_0": {
+            "card": [
+                11642
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Rei Absoluto de Mochila a Jato!"
+        },
+        "V0202_09_00_42_0": {
+            "card": [
+                9040
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Highlander das Trevas!"
+        },
+        "V0202_09_00_43_0": {
+            "card": [
+                9718
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Senhor Lobo Celestial, Sirius Azul!"
+        },
+        "V0202_09_00_43_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Sublimação Azul!"
+        },
+        "V0202_09_00_44_0": {
+            "card": [
+                12893
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Rei Vagante Vento Selvagem!"
+        },
+        "V0202_10_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "......Heh."
+        },
+        "V0202_10_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Venha até mim!"
+        },
+        "V0202_10_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Apareça!"
+        },
+        "V0202_10_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Veja isso!"
+        },
+        "V0202_11_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu invoco um monstro!"
+        },
+        "V0202_11_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu invoco um monstro em posição de defesa!"
+        },
+        "V0202_11_02_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Faço a Invocação-Especial de um monstro!"
+        },
+        "V0202_11_03_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ofereço um monstro como tributo!"
+        },
+        "V0202_11_04_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Faço a Invocação-Tributo de um monstro!"
+        },
+        "V0202_11_05_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Faço a Invocação-Fusão de um monstro!"
+        },
+        "V0202_11_06_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Faço a Invocação-Ritual de um monstro!"
+        },
+        "V0202_11_07_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Faço a Invocação-Sincro de um monstro!"
+        },
+        "V0202_11_08_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Faço a Invocação-Xyz de um monstro!"
+        },
+        "V0202_11_09_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Faço a Invocação-Pêndulo de um monstro!"
+        },
+        "V0202_11_10_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Faço a Invocação-Link de um monstro!"
+        },
+        "V0202_13_00_00_0": {
+            "card": [
+                8192
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Abra suas asas, Asa Dragão Explosivo!"
+        },
+        "V0202_13_00_01_0": {
+            "card": [
+                9090
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O monstro regulador, Ressonador da Criação!"
+        },
+        "V0202_13_00_02_0": {
+            "card": [
+                9801
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "A divindade do fogo, Laminador Carmesim!"
+        },
+        "V0202_13_00_03_0": {
+            "card": [
+                9478
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O monstro regulador, Ressonador do Relógio!"
+        },
+        "V0202_13_00_04_0": {
+            "card": [
+                12062
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O monstro regulador, Ressonador de Sinkron!"
+        },
+        "V0202_13_00_05_0": {
+            "card": [
+                9119
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Erga-se! Dragão Vermelho Nova!"
+        },
+        "V0202_13_00_06_0": {
+            "card": [
+                7734
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ruja, Dragão da Poeira Estelar!"
+        },
+        "V0202_13_00_07_0": {
+            "card": [
+                7704
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Venha, Golem de Fragmento Pequeno!"
+        },
+        "V0202_13_00_08_0": {
+            "card": [
+                8651
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu apresento Dragão Vermelho Majestoso!"
+        },
+        "V0202_13_00_09_0": {
+            "card": [
+                7707
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O monstro regulador, Roda Dentada Sinistra!"
+        },
+        "V0202_13_00_10_0": {
+            "card": [
+                7708
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O monstro regulador, Ressonador Negro!"
+        },
+        "V0202_13_00_11_0": {
+            "card": [
+                12930
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O monstro regulador, Ressonador Duplo!"
+        },
+        "V0202_13_00_12_0": {
+            "card": [
+                12063
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O monstro regulador, Ressonador da Corrente!"
+        },
+        "V0202_13_00_13_0": {
+            "card": [
+                8816
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Rei do Caos Arquidemônio!"
+        },
+        "V0202_13_00_14_0": {
+            "card": [
+                7991
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Levante voo! Vice-Dragão!"
+        },
+        "V0202_13_00_15_0": {
+            "card": [
+                8617
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Junte-se a mim, Desvanecer da Batalha!"
+        },
+        "V0202_13_00_16_0": {
+            "card": [
+                9297
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O monstro regulador, Ressonador da Barreira!"
+        },
+        "V0202_13_00_17_0": {
+            "card": [
+                7706
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Apareça! Golem de Fragmento Grande!"
+        },
+        "V0202_13_00_18_0": {
+            "card": [
+                9477
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O monstro regulador, Ressonador da Força!"
+        },
+        "V0202_13_00_19_0": {
+            "card": [
+                8786
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O monstro regulador, Ressonador das Chamas!"
+        },
+        "V0202_13_00_20_0": {
+            "card": [
+                7732
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Combinem-se para formar Golem de Fragmentos Múltiplos!"
+        },
+        "V0202_13_00_21_0": {
+            "card": [
+                7705
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Venha, Golem de Fragmento Médio!"
+        },
+        "V0202_13_00_22_0": {
+            "card": [
+                12064
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O monstro regulador, Ressonador do Espelho!"
+        },
+        "V0202_13_00_23_0": {
+            "card": [
+                12413
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Apareça, Warg Vermelho!"
+        },
+        "V0202_13_00_24_0": {
+            "card": [
+                12414
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Aqui vai Gardna Vermelho!"
+        },
+        "V0202_13_00_25_0": {
+            "card": [
+                12060
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "É Corredor Vermelho!"
+        },
+        "V0202_13_00_26_0": {
+            "card": [
+                11990
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Erga-se, Incandescente Dragão Vermelho Arquidemônio!"
+        },
+        "V0202_13_00_27_0": {
+            "card": [
+                12449
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Curve-se de medo diante de Tirano Dragão Vermelho Arquidemônio!"
+        },
+        "V0202_13_00_28_0": {
+            "card": [
+                8007
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Surge o conquistador, revestido por uma armadura escaldante!"
+        },
+        "V0202_13_00_28_1": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Apareça perante a mim, Dragão Vermelho Arquidemônio/Modo de Ataque!"
+        },
+        "V0202_13_00_29_0": {
+            "card": [
+                7735
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Minha alma! Dragão Vermelho Arquidemônio!"
+        },
+        "V0202_13_00_30_0": {
+            "card": [
+                12540
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O monstro regulador, Vermelho Nova!"
+        },
+        "V0202_13_00_31_0": {
+            "card": [
+                12415
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Apareça!\nEspelho Vermelho!"
+        },
+        "V0202_13_00_32_0": {
+            "card": [
+                12695
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Voe, Dragão da Ascendência Vermelha!"
+        },
+        "V0202_13_00_33_0": {
+            "card": [
+                12061
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O monstro regulador, Ressonador Vermelho!"
+        },
+        "V0202_13_00_34_0": {
+            "card": [
+                12065
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Erga-se, Wivern Vermelha!"
+        },
+        "V0202_13_00_35_0": {
+            "card": [
+                12078
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Abrasador Dragão Vermelho Arquidemônio do Abismo!"
+        },
+        "V0202_13_00_36_0": {
+            "card": [
+                12079
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Abrasador Dragão Vermelho Arquidemônio do Banimento!"
+        },
+        "V0202_13_00_37_0": {
+            "card": [
+                10842
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Abrasador Dragão Vermelho Arquidemônio!"
+        },
+        "V0202_13_00_38_0": {
+            "card": [
+                12080
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Abrasador Dragão Vermelho Arquidemônio Rei da Calamidade!"
+        },
+        "V0202_13_00_39_0": {
+            "card": [
+                9012
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Venha, Gash, o Senhor do Pó!"
+        },
+        "V0202_13_00_40_0": {
+            "card": [
+                9051
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Venha, Rei Mágico Estrela Lunar!"
+        },
+        "V0202_13_00_41_0": {
+            "card": [
+                8436
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O monstro regulador chegou!\nDragão Majestoso!"
+        },
+        "V0202_13_00_42_0": {
+            "card": [
+                9717
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O monstro regulador, Rei Fantasma Hidreto!"
+        },
+        "V0202_13_00_43_0": {
+            "card": [
+                11642
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Aqui vai Rei Absoluto de Mochila a Jato!"
+        },
+        "V0202_13_00_44_0": {
+            "card": [
+                9040
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Venha!\nHighlander das Trevas!"
+        },
+        "V0202_13_00_45_0": {
+            "card": [
+                9718
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Senhor Lobo Celestial, Sirius Azul!"
+        },
+        "V0202_13_00_46_0": {
+            "card": [
+                12893
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Venha!\nRei Vagante Vento Selvagem!"
+        },
+        "V0202_14_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "À batalha!"
+        },
+        "V0202_14_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Vamos batalhar!"
+        },
+        "V0202_15_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Tome isso!"
+        },
+        "V0202_15_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Saia do meu caminho!"
+        },
+        "V0202_15_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Vou aniquilar você!"
+        },
+        "V0202_16_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ajoelhe-se perante o seu rei!"
+        },
+        "V0202_16_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Sinta o rugido do poderoso!"
+        },
+        "V0202_17_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Meu monstro ataca!"
+        },
+        "V0202_17_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ataco!"
+        },
+        "V0202_17_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Atacar!"
+        },
+        "V0202_18_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ataco você diretamente!"
+        },
+        "V0202_18_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Tome esse ataque direto!"
+        },
+        "V0202_19_00_00_0": {
+            "card": [
+                8192
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Asa Dragão Explosivo! Atacar!"
+        },
+        "V0202_19_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Rei Tempestade!"
+        },
+        "V0202_19_00_01_0": {
+            "card": [
+                9090
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Meu card Ressonador da Criação ataca!"
+        },
+        "V0202_19_00_02_0": {
+            "card": [
+                9801
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Laminador Carmesim ataca!"
+        },
+        "V0202_19_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Assassino Vermelho!"
+        },
+        "V0202_19_00_03_0": {
+            "card": [
+                9478
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ressonador do Relógio ataca!"
+        },
+        "V0202_19_00_04_0": {
+            "card": [
+                12062
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ressonador de Sinkron ataca!"
+        },
+        "V0202_19_00_05_0": {
+            "card": [
+                9119
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Dragão Vermelho Nova! Atacar!"
+        },
+        "V0202_19_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Golpe da Alma Ardente!"
+        },
+        "V0202_19_00_06_0": {
+            "card": [
+                7734
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Dragão da Poeira Estelar!\nEu ordeno que você ataque!"
+        },
+        "V0202_19_00_07_0": {
+            "card": [
+                7704
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Golem de Fragmento Pequeno ataca!"
+        },
+        "V0202_19_00_08_0": {
+            "card": [
+                8651
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Dragão Vermelho Majestoso ataca!"
+        },
+        "V0202_19_00_08_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Poderio Supremo!"
+        },
+        "V0202_19_00_09_0": {
+            "card": [
+                7707
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ataque, Roda Dentada Sinistra!"
+        },
+        "V0202_19_00_10_0": {
+            "card": [
+                7708
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Atacar! Ressonador Negro!"
+        },
+        "V0202_19_00_11_0": {
+            "card": [
+                12930
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ressonador Duplo ataca!"
+        },
+        "V0202_19_00_12_0": {
+            "card": [
+                12063
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Meu card Ressonador da Corrente ataca!"
+        },
+        "V0202_19_00_13_0": {
+            "card": [
+                8816
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ataque, Rei do Caos Arquidemônio!"
+        },
+        "V0202_19_00_14_0": {
+            "card": [
+                7991
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Transforme-os em cinzas, Vice-Dragão!"
+        },
+        "V0202_19_00_15_0": {
+            "card": [
+                8617
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Desvanecer da Batalha! Atacar!"
+        },
+        "V0202_19_00_16_0": {
+            "card": [
+                9297
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ressonador da Barreira ataca!"
+        },
+        "V0202_19_00_17_0": {
+            "card": [
+                7706
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Golem de Fragmento Grande ataca!"
+        },
+        "V0202_19_00_17_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Pressão Poderosa!"
+        },
+        "V0202_19_00_18_0": {
+            "card": [
+                9477
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ressonador da Força ataca!"
+        },
+        "V0202_19_00_19_0": {
+            "card": [
+                8786
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ressonador das Chamas ataca!"
+        },
+        "V0202_19_00_20_0": {
+            "card": [
+                7732
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Golem de Fragmentos Múltiplos!\nDestrua!"
+        },
+        "V0202_19_00_21_0": {
+            "card": [
+                7705
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ataque, Golem de Fragmento Médio!"
+        },
+        "V0202_19_00_22_0": {
+            "card": [
+                12064
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ressonador do Espelho ataca!"
+        },
+        "V0202_19_00_23_0": {
+            "card": [
+                12413
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ataque, Warg Vermelho!"
+        },
+        "V0202_19_00_24_0": {
+            "card": [
+                12414
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Gardna Vermelho ataca!"
+        },
+        "V0202_19_00_25_0": {
+            "card": [
+                12060
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Meu card Corredor Vermelho ataca!"
+        },
+        "V0202_19_00_26_0": {
+            "card": [
+                11990
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ataque, Incandescente Dragão Vermelho Arquidemônio!"
+        },
+        "V0202_19_00_26_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Fulgor Carmesim Incandescente!"
+        },
+        "V0202_19_00_27_0": {
+            "card": [
+                12449
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Tirano Dragão Vermelho Arquidemônio ataca!"
+        },
+        "V0202_19_00_27_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Maré Carmesim Incandescente!"
+        },
+        "V0202_19_00_28_0": {
+            "card": [
+                8007
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ataque, Dragão Vermelho Arquidemônio/Modo de Ataque!"
+        },
+        "V0202_19_00_28_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Força Carmesim Extrema!"
+        },
+        "V0202_19_00_29_0": {
+            "card": [
+                7735
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ataque, Dragão Vermelho Arquidemônio!"
+        },
+        "V0202_19_00_29_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Poderio Absoluto!"
+        },
+        "V0202_19_00_30_0": {
+            "card": [
+                12540
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Vermelho Nova ataca!"
+        },
+        "V0202_19_00_31_0": {
+            "card": [
+                12415
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Espelho Vermelho ataca!"
+        },
+        "V0202_19_00_32_0": {
+            "card": [
+                12695
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Dragão da Ascendência Vermelha ataca!"
+        },
+        "V0202_19_00_33_0": {
+            "card": [
+                12061
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ressonador Vermelho ataca!"
+        },
+        "V0202_19_00_34_0": {
+            "card": [
+                12065
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Wivern Vermelha! Vai!"
+        },
+        "V0202_19_00_35_0": {
+            "card": [
+                12078
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ataque, Abrasador Dragão Vermelho Arquidemônio do Abismo!"
+        },
+        "V0202_19_00_35_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Demolidor de Fúria Abissal!"
+        },
+        "V0202_19_00_36_0": {
+            "card": [
+                12079
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ataque, Abrasador Dragão Vermelho Arquidemônio do Banimento!"
+        },
+        "V0202_19_00_36_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Grande Destroçador de Cumes!"
+        },
+        "V0202_19_00_37_0": {
+            "card": [
+                10842
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ataque, Abrasador Dragão Vermelho Arquidemônio!"
+        },
+        "V0202_19_00_37_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Dogma Absoluto!"
+        },
+        "V0202_19_00_38_0": {
+            "card": [
+                12080
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Abrasador Dragão Vermelho Arquidemônio Rei da Calamidade, quebre-os!"
+        },
+        "V0202_19_00_38_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Destroçador Absoluto Carmesim!"
+        },
+        "V0202_19_00_39_0": {
+            "card": [
+                9012
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Gash, o Senhor do Pó ataca!"
+        },
+        "V0202_19_00_40_0": {
+            "card": [
+                9051
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Rei Mágico Estrela Lunar! Atacar!"
+        },
+        "V0202_19_00_40_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Relâmpago Estelar!"
+        },
+        "V0202_19_00_41_0": {
+            "card": [
+                8436
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Dragão Majestoso ataca!"
+        },
+        "V0202_19_00_42_0": {
+            "card": [
+                9717
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ataque, Rei Fantasma Hidreto!"
+        },
+        "V0202_19_00_43_0": {
+            "card": [
+                11642
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Rei Absoluto de Mochila a Jato ataca!"
+        },
+        "V0202_19_00_44_0": {
+            "card": [
+                9040
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Highlander das Trevas!\nDecrete sua sentença!"
+        },
+        "V0202_19_00_44_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Corte Polar!"
+        },
+        "V0202_19_00_45_0": {
+            "card": [
+                9718
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Senhor Lobo Celestial, Sirius Azul ataca!"
+        },
+        "V0202_19_00_45_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Presa do Lobo!"
+        },
+        "V0202_19_00_46_0": {
+            "card": [
+                12893
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Rei Vagante Vento Selvagem ataca!"
+        },
+        "V0202_20_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu baixo um card."
+        },
+        "V0202_20_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Estou baixando um card."
+        },
+        "V0202_20_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu baixo um monstro."
+        },
+        "V0202_20_01_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Estou baixando um monstro."
+        },
+        "V0202_21_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Terminei meu turno!"
+        },
+        "V0202_21_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Não há escapatória, só resta você desistir!"
+        },
+        "V0202_21_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Terminei meu turno."
+        },
+        "V0202_21_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Vá em frente. Ataque-me!"
+        },
+        "V0202_21_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Você ousa me deixar comendo poeira?"
+        },
+        "V0202_21_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Terminei meu turno!"
+        },
+        "V0202_22_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Uf!"
+        },
+        "V0202_22_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Ergh!"
+        },
+        "V0202_22_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Humpf!"
+        },
+        "V0202_23_00_00_0": {
+            "card": [],
+            "cutin": 3,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "Ahhhhhhhhhh!"
+        },
+        "V0202_24_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Grr......"
+        },
+        "V0202_25_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "Aaaaah!"
+        },
+        "V0202_25_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "Urghhh!"
+        },
+        "V0202_25_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "Grrrr!"
+        },
+        "V0202_26_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "... Humpf."
+        },
+        "V0202_26_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Você se acha tão inteligente!"
+        },
+        "V0202_26_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "É o melhor que pode fazer?"
+        },
+        "V0202_27_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Como ousa!"
+        },
+        "V0202_27_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Eu aguento..."
+        },
+        "V0202_27_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Não vou... desistir!"
+        },
+        "V0202_28_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Só existe um Mestre dos Mais Velozes! E sou eu!"
+        },
+        "V0202_28_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Você já se divertiu demais, é hora da minha volta vitoriosa!"
+        },
+        "V0202_28_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "A cada duelo, minhas técnicas ficam mais poderosas!"
+        },
+        "V0202_28_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "E me aproximo cada vez mais do duelo perfeito!"
+        },
+        "V0202_28_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Vou duelar até que minha chama se apague!\nIsto é, nunca!"
+        },
+        "V0202_28_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                201
+            ],
+            "face": 3,
+            "frame": 0,
+            "text": "Yusei!\nSó eu domino o duelo!\nComo o único rei verdadeiro!"
+        },
+        "V0202_28_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                203,
+                204,
+                205,
+                206,
+                209
+            ],
+            "face": 3,
+            "frame": 0,
+            "text": "Quero testar minhas habilidades no cenário mundial!"
+        },
+        "V0202_28_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "E derrotarei todos que ficarem no meu caminho!\nAté a Equipe 5D's!"
+        },
+        "V0202_28_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                214
+            ],
+            "face": 3,
+            "frame": 0,
+            "text": "Diga ao seu editor para deixar a primeira página em aberto!"
+        },
+        "V0202_28_00_06_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "O Mestre dos Mais Velozes, Jack Atlas, será a matéria da capa!"
+        },
+        "V0202_28_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                210,
+                231
+            ],
+            "face": 3,
+            "frame": 0,
+            "text": "Você precisa lembrar, Carly!"
+        },
+        "V0202_28_00_07_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Esse flagelo sombrio não é você!"
+        },
+        "V0202_28_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                213
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Você é só um obstáculo no rumo ao meu verdadeiro oponente!"
+        },
+        "V0202_28_00_09_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                208,
+                211,
+                9058,
+                9059,
+                9061,
+                9062
+            ],
+            "face": 3,
+            "frame": 0,
+            "text": "Imortais Terrestres não são nada contra o verdadeiro rei!"
+        },
+        "V0202_29_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Essa derrota não basta para quebrar meu espírito de duelo!"
+        },
+        "V0202_29_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Humpf!\nNão vou perder na próxima!"
+        },
+        "V0202_29_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Sei o que é o poder verdadeiro e vou usá-lo para te esmagar!"
+        },
+        "V0202_29_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Nunca houve um rei... até eu aparecer!"
+        },
+        "V0202_29_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Portanto, não siga meus passos!\nTrilhe seu próprio caminho!"
+        },
+        "V0202_29_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Não vou desistir do meu estilo poderoso de duelo!"
+        },
+        "V0202_29_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "É só assim que eu sei lutar!"
+        },
+        "V0202_29_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                201
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Então esse é o elo que você tem com seus monstros..."
+        },
+        "V0202_29_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Você despertou algo novo dentro de mim, Yusei!"
+        },
+        "V0202_29_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                203,
+                204,
+                206,
+                209
+            ],
+            "face": 7,
+            "frame": 0,
+            "text": "Parece que você me deu um motivo para voltar aqui."
+        },
+        "V0202_29_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Vou vencer da próxima vez.\nHumpf!"
+        },
+        "V0202_29_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                205
+            ],
+            "face": 5,
+            "frame": 0,
+            "text": "Argh... Leo!\nNão se atreva a pensar que você é melhor que eu!"
+        },
+        "V0202_29_00_06_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Nem mesmo por um segundo!\nEntendeu?"
+        },
+        "V0202_29_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                214
+            ],
+            "face": 7,
+            "frame": 0,
+            "text": "Você diz que, por ser rei, devo tratá-la como minha rainha?"
+        },
+        "V0202_29_00_07_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "... Não, não posso fazer isso!\nPare de tentar me enganar!"
+        },
+        "V0202_29_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                210,
+                231
+            ],
+            "face": 5,
+            "frame": 0,
+            "text": "Não... Não é possível...\nDo fundo do meu coração..."
+        },
+        "V0202_29_00_08_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Eu ainda vou encontrar uma maneira de te salvar..."
+        },
+        "V0202_29_00_09_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                208,
+                211,
+                9058,
+                9059,
+                9061,
+                9062
+            ],
+            "face": 5,
+            "frame": 0,
+            "text": "Não vou perdoar isso, Signatário das Trevas!"
+        },
+        "V0202_30_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Só há um rei! E você está olhando para ele!"
+        },
+        "V0202_30_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Ajoelhe-se perante o seu rei!"
+        },
+        "V0202_30_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "O rei nunca deixa uma oportunidade passar!"
+        },
+        "V0202_31_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "O quê?!"
+        },
+        "V0202_31_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "Impossível!"
+        },
+        "V0202_32_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Yu-Gi-Oh! Duel Links"
+        },
+        "V0202_32_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Yu-Gi-Oh! Duel Links!\nVamos nessa!"
+        },
+        "V0202_33_00_00_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Sinta a fúria da minha alma!"
+        },
+        "V0202_33_00_01_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Há apenas um jeito de se duelar... e é com poder!"
+        },
+        "V0202_33_00_02_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Minha alma queima!"
+        },
+        "V0202_34_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Só um tolo não enxerga minha grandeza."
+        },
+        "V0202_34_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Eu evitei cada arranhão para incendiar a plateia!"
+        },
+        "V0202_34_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Sinto minha alma em fúria de tanto poder!"
+        },
+        "V0202_34_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Nunca se esqueça: o rei está sempre três passos à frente!"
+        },
+        "V0202_34_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Consegue acompanhar o Mestre dos Mais Velozes?"
+        },
+        "V0202_34_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Enquanto você joga, eu domino!"
+        },
+        "V0202_34_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "O duelo do rei deve sempre entreter!"
+        },
+        "V0202_34_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Muito bem."
+        },
+        "V0202_34_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Duele com seu próprio estilo em vez de copiar os outros!"
+        },
+        "V0202_34_00_09_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Em suas marcas... Preparar... Duelo!"
+        },
+        "V0202_35_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Contemple o rei!\nJack Atlas!"
+        },
+        "V0202_35_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Este duelo está prestes a pegar a pista rápida com Jack Atlas!"
+        },
+        "V0202_36_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Avisem a eles que este duelo acabou!"
+        },
+        "V0202_36_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Você cuida disso."
+        },
+        "V0202_36_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Deixo meu destino em suas mãos!"
+        },
+        "V0202_36_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                201
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Acabe com esse duelo, Yusei!"
+        },
+        "V0202_36_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                201
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Você cuida disso, Yusei!"
+        },
+        "V0202_36_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                201
+            ],
+            "face": 5,
+            "frame": 0,
+            "text": "Yusei... Deixo o resto... com você..."
+        },
+        "V0202_36_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                203,
+                204,
+                205,
+                206,
+                209
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Vai!\nMostre a força da Equipe 5D's!"
+        },
+        "V0202_36_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                203,
+                204,
+                205,
+                206,
+                209
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Tenha garra!\nLembrem-se: lutamos juntos!"
+        },
+        "V0202_36_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                203,
+                204,
+                205,
+                206,
+                209
+            ],
+            "face": 5,
+            "frame": 0,
+            "text": "Não desista!\nAcredito em você!"
+        },
+        "V0202_37_00_00_0": {
+            "card": [
+                8192
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ouça o rugido do rei e sinta o impacto esmagador da vitória!"
+        },
+        "V0202_37_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Invocação-Sincro!"
+        },
+        "V0202_37_00_01_0": {
+            "card": [
+                9801
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Esta lâmina vermelha anuncia o veredito do rei!"
+        },
+        "V0202_37_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Um surto de chamas enquanto eu faço uma Invocação-Sincro!"
+        },
+        "V0202_37_00_02_0": {
+            "card": [
+                9119
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Contemple as estrelas no alto do céu..."
+        },
+        "V0202_37_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "E o fogo nas profundezas da terra..."
+        },
+        "V0202_37_00_02_2": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Colidirem em uma explosão cósmica para a Invocação-Sincro!"
+        },
+        "V0202_37_00_03_0": {
+            "card": [
+                7734
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Nas asas da ventania, eu faço uma Invocação-Sincro!"
+        },
+        "V0202_37_00_04_0": {
+            "card": [
+                8651
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Esta luz brilha sobre a terra como seu verdadeiro conquistador!"
+        },
+        "V0202_37_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Invocação-Sincro!"
+        },
+        "V0202_37_00_05_0": {
+            "card": [
+                8816
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O novo soberano emerge do caos!"
+        },
+        "V0202_37_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Invocação-Sincro!"
+        },
+        "V0202_37_00_06_0": {
+            "card": [
+                11990
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Dos abismos ancestrais de um mundo perdido..."
+        },
+        "V0202_37_00_06_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Desperto um grande e terrível poder!\nInvocação-Sincro!"
+        },
+        "V0202_37_00_07_0": {
+            "card": [
+                12449
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Faço uma regulagem dupla!"
+        },
+        "V0202_37_00_07_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu convoco um poder absoluto destinado a dominar este duelo!"
+        },
+        "V0202_37_00_07_2": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Invocação-Sincro!"
+        },
+        "V0202_37_00_08_0": {
+            "card": [
+                7735
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Veja porque sou conhecido como o verdadeiro rei!"
+        },
+        "V0202_37_00_08_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Invocação-Sincro!"
+        },
+        "V0202_37_00_09_0": {
+            "card": [
+                12695
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Meu dragão carmesim ilumina o caminho infernal!"
+        },
+        "V0202_37_00_09_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Invocação-Sincro!"
+        },
+        "V0202_37_00_10_0": {
+            "card": [
+                12065
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Trema diante do rei!"
+        },
+        "V0202_37_00_10_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Invocação-Sincro!"
+        },
+        "V0202_37_00_11_0": {
+            "card": [
+                12078
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O rei do abismo das trevas libera sua fúria!"
+        },
+        "V0202_37_00_11_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Invocação-Sincro!"
+        },
+        "V0202_37_00_12_0": {
+            "card": [
+                12079
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Montanhas cairão e a terra será engolida pelas chamas!"
+        },
+        "V0202_37_00_12_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Invocação-Sincro!"
+        },
+        "V0202_37_00_13_0": {
+            "card": [
+                10842
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Incendeie a terra e chegue ao ápice da existência!"
+        },
+        "V0202_37_00_13_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Domine toda a criação!\nInvocação-Sincro!"
+        },
+        "V0202_37_00_14_0": {
+            "card": [
+                12080
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Faço uma regulagem dupla!"
+        },
+        "V0202_37_00_14_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O destruidor supremo chega para trazer o seu fim!"
+        },
+        "V0202_37_00_14_2": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Invocação-Sincro!"
+        },
+        "V0202_37_00_15_0": {
+            "card": [
+                9040
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "A estrela da perdição chegou para julgar tudo que é vivo!"
+        },
+        "V0202_37_00_15_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Invocação-Sincro!"
+        },
+        "V0202_37_00_16_0": {
+            "card": [
+                9718
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O lobo solitário de olhos azuis incinera os céus!"
+        },
+        "V0202_37_00_16_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Mostre a esses bichinhos de madame quem aqui tem presas!\nInvocação-Sincro!"
+        },
+        "V0202_38_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Em suas marcas... Preparar... Duelo!"
+        }
+    }
+}

@@ -1,0 +1,1807 @@
+{
+    "_GRP_": "SN0210",
+    "_LNG_": "pt-BR",
+    "info": {
+        "V0210_01_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "O mundo inferior lhe aguarda!"
+        },
+        "V0210_01_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Minha marca anseia pelo seu fim!"
+        },
+        "V0210_01_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Prevejo seu futuro..."
+        },
+        "V0210_01_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "E desse destino que você não pode escapar!"
+        },
+        "V0210_01_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Já previ o seu destino.\nSerá que você consegue escapar?"
+        },
+        "V0210_01_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                202
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Fico feliz por você me desafiar, Jackie."
+        },
+        "V0210_01_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Isso prova que você pode liderar o novo mundo como Rei das Trevas!"
+        },
+        "V0210_01_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                201,
+                203,
+                204,
+                206
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Cabe aos Signatários das Trevas eliminar os Signatários!"
+        },
+        "V0210_02_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Duelem!"
+        },
+        "V0210_03_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Veja o que meu deck planejou para você."
+        },
+        "V0210_03_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Minha vez!"
+        },
+        "V0210_03_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Prepare-se para conhecer o mundo inferior!"
+        },
+        "V0210_03_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "É a minha vez!"
+        },
+        "V0210_03_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Vou usar meu deck para prever seu futuro."
+        },
+        "V0210_03_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "É a minha vez!"
+        },
+        "V0210_03_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Minha vez."
+        },
+        "V0210_03_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "Minha vez!"
+        },
+        "V0210_03_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "Vou mandar você para as profundezas do mundo inferior!"
+        },
+        "V0210_03_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "É a minha vez!"
+        },
+        "V0210_04_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Hehehe... Compro!"
+        },
+        "V0210_04_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Compro!"
+        },
+        "V0210_04_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Compro!"
+        },
+        "V0210_05_00_00_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Meus cards falam por si!"
+        },
+        "V0210_05_00_00_1": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Compro!"
+        },
+        "V0210_06_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 1,
+            "text": "Não tão rápido!"
+        },
+        "V0210_06_01_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 1,
+            "text": "Olhe e aprenda!"
+        },
+        "V0210_06_01_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Hehehe..."
+        },
+        "V0210_06_01_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 1,
+            "text": "Hahahahaha!"
+        },
+        "V0210_07_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Da minha mão..."
+        },
+        "V0210_07_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ativo um card de magia!"
+        },
+        "V0210_07_02_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ativo uma magia rápida!"
+        },
+        "V0210_07_03_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ativo uma magia contínua!"
+        },
+        "V0210_07_04_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ativo uma magia de equipamento!"
+        },
+        "V0210_07_05_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ativo uma magia de ritual!"
+        },
+        "V0210_07_06_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ativo um card de armadilha!"
+        },
+        "V0210_07_07_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ativo uma armadilha contínua!"
+        },
+        "V0210_07_08_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ativo uma armadilha de resposta!"
+        },
+        "V0210_07_09_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Viro meu card com face para baixo!"
+        },
+        "V0210_07_09_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu uso meu card com face para baixo!"
+        },
+        "V0210_07_10_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu ativo meu efeito de monstro!"
+        },
+        "V0210_07_11_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ativo uma magia de campo!"
+        },
+        "V0210_07_12_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ativo um efeito!"
+        },
+        "V0210_07_13_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Baixo a escala de pêndulo!"
+        },
+        "V0210_08_00_00_0": {
+            "card": [
+                8341
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ativo a magia de campo, Visões do Futuro!"
+        },
+        "V0210_08_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Permita-me ler o seu futuro!"
+        },
+        "V0210_08_00_01_0": {
+            "card": [
+                8341
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "O efeito da minha magia de campo Visões do Futuro é ativado!"
+        },
+        "V0210_08_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "O monstro invocado é despachado para o próximo turno!"
+        },
+        "V0210_08_00_02_0": {
+            "card": [
+                8341
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Devido ao efeito de Visões do Futuro, o monstro retorna!"
+        },
+        "V0210_08_00_03_0": {
+            "card": [
+                8487
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Eu ativo o card de magia rápida Passagem do Tempo!"
+        },
+        "V0210_08_00_04_0": {
+            "card": [
+                8486
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ativo o card de magia Futuro da Fortuna!"
+        },
+        "V0210_08_00_05_0": {
+            "card": [
+                8600
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Descarto um card para ativar a magia <card mrk=8600'/>!"
+        },
+        "V0210_08_00_06_0": {
+            "card": [
+                8481
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ativo meu card de magia!\nRedemoinho Terrestre!"
+        },
+        "V0210_08_00_07_0": {
+            "card": [
+                8502
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ativo minha armadilha!\nFortuna Herdada!"
+        },
+        "V0210_08_00_08_0": {
+            "card": [
+                8359
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ativo minha armadilha!\nLapso de Fortuna!"
+        },
+        "V0210_08_00_08_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Faço o banimento do alvo para neutralizar o ataque do seu monstro!"
+        },
+        "V0210_08_00_09_0": {
+            "card": [
+                8501
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Pode tentar o quanto quiser, não há como evitar o destino!"
+        },
+        "V0210_08_00_09_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ativo minha armadilha de resposta, Torcer o Destino!"
+        },
+        "V0210_08_00_10_0": {
+            "card": [
+                8500
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Viro meu card de armadilha!\nIluminação!"
+        },
+        "V0210_08_00_10_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Jack, vamos aproveitar nosso futuro juntos."
+        },
+        "V0210_08_00_11_0": {
+            "card": [
+                8679
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ativo o card de armadilha Oferenda aos Imortais!"
+        },
+        "V0210_08_00_12_0": {
+            "card": [
+                8505
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Isso não vai funcionar!\nJogo minha armadilha de resposta Onda Terrestre!"
+        },
+        "V0210_08_00_13_0": {
+            "card": [
+                8506
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ativo minha armadilha contínua!\nRugido do Imortal Terrestre!"
+        },
+        "V0210_08_00_14_0": {
+            "card": [
+                8530
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ativo meu card de armadilha!\nRenascimento dos Imortais!"
+        },
+        "V0210_08_00_15_0": {
+            "card": [
+                3641
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ativo minha armadilha contínua!\nAltar da Divindade Atada!"
+        },
+        "V0210_08_00_16_0": {
+            "card": [
+                3793
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ativo minha armadilha!\nTerra contaminada!"
+        },
+        "V0210_08_00_17_0": {
+            "card": [
+                3499
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Minha armadilha de resposta é ativada!\nPaixão de Baimasse!"
+        },
+        "V0210_08_00_18_0": {
+            "card": [
+                5401
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Vou prever seu futuro e você não vai gostar!"
+        },
+        "V0210_08_00_18_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ativo a armadilha contínua, Previsão Agoirenta!"
+        },
+        "V0210_08_00_19_0": {
+            "card": [
+                5401
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Meu olho interior tudo vê!\nAtivando Previsão Agoirenta!"
+        },
+        "V0210_08_00_20_0": {
+            "card": [
+                14508
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ativo Visão da Fortuna!"
+        },
+        "V0210_08_00_21_0": {
+            "card": [
+                14509
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ativo Chamado da Senhora Fortuna!"
+        },
+        "V0210_08_00_22_0": {
+            "card": [
+                14520
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ativo Rebobinar Senhora Fortuna!"
+        },
+        "V0210_09_00_00_0": {
+            "card": [
+                8448
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ativo o efeito de Mago Solitário!"
+        },
+        "V0210_09_00_01_0": {
+            "card": [
+                8447
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "O efeito de Senhora Fortuna da Terra é ativado!"
+        },
+        "V0210_09_00_02_0": {
+            "card": [
+                8444
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "O efeito de Senhora Fortuna do Vento é ativado!"
+        },
+        "V0210_09_00_03_0": {
+            "card": [
+                8445
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "O efeito de Senhora Fortuna da Água é ativado!"
+        },
+        "V0210_09_00_04_0": {
+            "card": [
+                8446
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "O efeito de Senhora Fortuna das Trevas é ativado!"
+        },
+        "V0210_09_00_05_0": {
+            "card": [
+                8302
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "O efeito de Senhora Fortuna do Fogo é ativado!"
+        },
+        "V0210_09_00_06_0": {
+            "card": [
+                8301
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "O efeito de Senhora Fortuna da Luz é ativado!"
+        },
+        "V0210_09_00_07_0": {
+            "card": [
+                8171
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "O efeito de Imortal Terrestre Aslla piscu é ativado!"
+        },
+        "V0210_09_00_08_0": {
+            "card": [
+                8449
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ativo o efeito de Catóblepa e a Bruxa do Destino!"
+        },
+        "V0210_09_00_09_0": {
+            "card": [
+                14470
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "O efeito de Senhora Fortuna do Passado é ativado!"
+        },
+        "V0210_09_00_10_0": {
+            "card": [
+                14486
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "O efeito de Senhora Fortuna do Sempre é ativado!"
+        },
+        "V0210_10_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Apareça!!"
+        },
+        "V0210_10_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Venha cá!"
+        },
+        "V0210_10_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Apareça!"
+        },
+        "V0210_10_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Vou jogar esse!"
+        },
+        "V0210_11_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Invoco um monstro!"
+        },
+        "V0210_11_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Invoco um monstro em posição de defesa!"
+        },
+        "V0210_11_02_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Faço uma Invocação Especial de monstro!"
+        },
+        "V0210_11_03_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ofereço um monstro como Tributo!"
+        },
+        "V0210_11_04_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Faço uma Invocação-Tributo de monstro!"
+        },
+        "V0210_11_05_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Faço uma Invocação-Fusão de monstro!"
+        },
+        "V0210_11_06_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Faço uma Invocação-Ritual de monstro!"
+        },
+        "V0210_11_07_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Faço uma Invocação-Sincro de monstro!"
+        },
+        "V0210_11_08_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Faço uma Invocação-Xyz de monstro!"
+        },
+        "V0210_11_09_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Faço uma Invocação-Pêndulo de monstro!"
+        },
+        "V0210_11_10_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Faço uma Invocação-Elo de um monstro!"
+        },
+        "V0210_13_00_00_0": {
+            "card": [
+                8448
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Aí vem Mago Solitário!"
+        },
+        "V0210_13_00_01_0": {
+            "card": [
+                8447
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Senhora Fortuna da Terra!\nVamos!"
+        },
+        "V0210_13_00_02_0": {
+            "card": [
+                8444
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Apareça, Senhora Fortuna do Vento!"
+        },
+        "V0210_13_00_03_0": {
+            "card": [
+                8445
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Apareça!\n!Senhora Fortuna da Água!"
+        },
+        "V0210_13_00_04_0": {
+            "card": [
+                8446
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Junte-se a mim, Senhora Fortuna das Trevas!"
+        },
+        "V0210_13_00_05_0": {
+            "card": [
+                8302
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Eis Senhora Fortuna do Fogo!"
+        },
+        "V0210_13_00_06_0": {
+            "card": [
+                8301
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Aí vem Senhora Fortuna da Luz!"
+        },
+        "V0210_13_00_07_0": {
+            "card": [
+                8171
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Após 5.000 anos, a porta para o mundo inferior se abre novamente! "
+        },
+        "V0210_13_00_07_1": {
+            "card": [],
+            "cutin": 2,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Imortal Terrestre Aslla piscu chegou para devorar você!"
+        },
+        "V0210_13_00_08_0": {
+            "card": [
+                8760
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Apareça!\nTerrestre Que Caminha nas Linhas!"
+        },
+        "V0210_13_00_09_0": {
+            "card": [
+                8449
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Eis Catóblepa e a Bruxa do Destino!"
+        },
+        "V0210_13_00_10_0": {
+            "card": [
+                14470
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Entre em campo, Senhora Fortuna do Passado!"
+        },
+        "V0210_13_00_11_0": {
+            "card": [
+                14486
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Senhora Fortuna do Sempre!\nEntre na luta!"
+        },
+        "V0210_14_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "À batalha!"
+        },
+        "V0210_14_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Vamos à batalha!"
+        },
+        "V0210_15_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Aí vou eu!"
+        },
+        "V0210_15_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Que seja!"
+        },
+        "V0210_15_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Hahaha..."
+        },
+        "V0210_16_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "É o fim da linha para você!"
+        },
+        "V0210_16_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Curta bastante o mundo inferior!"
+        },
+        "V0210_17_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Meu monstro ataca!"
+        },
+        "V0210_17_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ataco!"
+        },
+        "V0210_17_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Toma esse ataque!"
+        },
+        "V0210_18_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Meu monstro ataca você diretamente!"
+        },
+        "V0210_18_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Faço um ataque direto!"
+        },
+        "V0210_19_00_00_0": {
+            "card": [
+                8448
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Mago Solitário ataca!"
+        },
+        "V0210_19_00_01_0": {
+            "card": [
+                8447
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ataque, Senhora Fortuna da Terra!"
+        },
+        "V0210_19_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Espinho Maldito!"
+        },
+        "V0210_19_00_02_0": {
+            "card": [
+                8444
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Senhora Fortuna do Vento!\nAtacar!"
+        },
+        "V0210_19_00_03_0": {
+            "card": [
+                8445
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Senhora Fortuna da Água ataca!"
+        },
+        "V0210_19_00_04_0": {
+            "card": [
+                8446
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Vá, Senhora Fortuna das Trevas!"
+        },
+        "V0210_19_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Destino Sombrio!"
+        },
+        "V0210_19_00_05_0": {
+            "card": [
+                8302
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Senhora Fortuna do Fogo ataca!"
+        },
+        "V0210_19_00_06_0": {
+            "card": [
+                8301
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ataque, Senhora Fortuna da Luz!"
+        },
+        "V0210_19_00_07_0": {
+            "card": [
+                8171
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Prevejo seu futuro!\nE ele não é nada bom!"
+        },
+        "V0210_19_00_07_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Imortal Terrestre Aslla piscu! Atacar!"
+        },
+        "V0210_19_00_08_0": {
+            "card": [
+                8760
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ataque, Terrestre Que Caminha nas Linhas!"
+        },
+        "V0210_19_00_09_0": {
+            "card": [
+                8449
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Catóblepa e a Bruxa do Destino! Atacar!"
+        },
+        "V0210_19_00_10_0": {
+            "card": [
+                14470
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Vá, Senhora Fortuna do Passado!\nAtacar!"
+        },
+        "V0210_19_00_11_0": {
+            "card": [
+                14486
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Senhora Fortuna do Sempre!\nAtacar!"
+        },
+        "V0210_20_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Baixo um card!"
+        },
+        "V0210_20_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Estou baixando um card!"
+        },
+        "V0210_20_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Baixo um monstro!"
+        },
+        "V0210_20_01_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Estou baixando um monstro!"
+        },
+        "V0210_21_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Sinta-se à vontade para tentar evitar seu destino."
+        },
+        "V0210_21_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Terminei meu turno!"
+        },
+        "V0210_21_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Ataque-me.\nSe puder, claro."
+        },
+        "V0210_21_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Terminei meu turno!"
+        },
+        "V0210_21_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Terminei meu turno!"
+        },
+        "V0210_21_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Vamos ver o que você sabe fazer."
+        },
+        "V0210_21_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Terminei meu turno."
+        },
+        "V0210_21_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Qual é. Divirta-me."
+        },
+        "V0210_21_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "Terminei meu turno!"
+        },
+        "V0210_21_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "Você não vai escapar dessa!"
+        },
+        "V0210_21_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "Terminei meu turno!"
+        },
+        "V0210_22_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "Aii!"
+        },
+        "V0210_22_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "Ufa!"
+        },
+        "V0210_22_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "Argh!"
+        },
+        "V0210_23_00_00_0": {
+            "card": [],
+            "cutin": 3,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "Ahhhhhhhhhh!"
+        },
+        "V0210_24_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "Argh..."
+        },
+        "V0210_25_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ahhhhhh!"
+        },
+        "V0210_25_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ergh!"
+        },
+        "V0210_25_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Arghhhh!"
+        },
+        "V0210_26_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "É assim?"
+        },
+        "V0210_26_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Hehehe..."
+        },
+        "V0210_26_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Ainda não acabou!"
+        },
+        "V0210_27_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Você me paga!"
+        },
+        "V0210_27_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Ergh..."
+        },
+        "V0210_27_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Grr..."
+        },
+        "V0210_28_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Sua alma está perdida para o mundo inferior!"
+        },
+        "V0210_28_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Hahaha...\nHahahahahaha!"
+        },
+        "V0210_28_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "As trevas tomaram conta de você!"
+        },
+        "V0210_28_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Hahahahahaha!"
+        },
+        "V0210_28_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Eu disse que você não pode escapar do destino."
+        },
+        "V0210_28_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Hahahaha!"
+        },
+        "V0210_28_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "No momento em que joguei meu primeiro card, seu destino estava marcado."
+        },
+        "V0210_28_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Marcado para a derrota!\nHahahaha!"
+        },
+        "V0210_28_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                202
+            ],
+            "face": 2,
+            "frame": 0,
+            "text": "Eu vivia atrás de você, apegado a cada palavra sua."
+        },
+        "V0210_28_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Mas agora, o desespero é seu.\nHahaha!"
+        },
+        "V0210_29_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 0,
+            "text": "Vou derrotar você na próxima!\nE te mandar para o mundo inferior!"
+        },
+        "V0210_29_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "Por que você não aceita seu destino?"
+        },
+        "V0210_29_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Não...\nPerdi..."
+        },
+        "V0210_29_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Rá! Pensou que eu voltaria a ser aquele fracassado?"
+        },
+        "V0210_29_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                202
+            ],
+            "face": 10,
+            "frame": 0,
+            "text": "Jack...\nLiberte-me do controle dos Signatários das Trevas..."
+        },
+        "V0210_30_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Onde estão seus modos?"
+        },
+        "V0210_30_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Vou te dar um último turno para se salvar."
+        },
+        "V0210_30_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Vejo medo em seu rosto."
+        },
+        "V0210_31_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Hã?"
+        },
+        "V0210_31_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "O quê?"
+        },
+        "V0210_32_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Yu-Gi-Oh! Duel Links"
+        },
+        "V0210_32_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Yu-Gi-Oh! Duel Links\nVamos nessa!"
+        },
+        "V0210_33_00_00_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Hora de ler seu futuro."
+        },
+        "V0210_33_00_01_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 7,
+            "frame": 1,
+            "text": "Conheço seu destino como a palma da minha mão."
+        },
+        "V0210_33_00_02_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 7,
+            "frame": 1,
+            "text": "Seu poder é nada comparado ao dos Signatários das Trevas!"
+        },
+        "V0210_34_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Você é só aparência, nenhuma essência!"
+        },
+        "V0210_34_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Você é o Rei das Trevas!"
+        },
+        "V0210_34_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Este duelo vai prever o seu futuro!"
+        },
+        "V0210_34_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Já acabou?\nFácil demais."
+        },
+        "V0210_34_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Gosto de como você finge ser valente."
+        },
+        "V0210_34_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Seria uma pena derrotar você assim, sem resistência.  "
+        },
+        "V0210_34_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Minha marca está ardendo!"
+        },
+        "V0210_34_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 10,
+            "frame": 0,
+            "text": "Jack... Socorro..."
+        },
+        "V0210_34_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Parece que você vai dar trabalho!"
+        },
+        "V0210_34_00_09_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Em suas marcas... Preparar... Duelem!"
+        },
+        "V0210_35_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Voltei... como Signatário das Trevas!"
+        },
+        "V0210_35_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Venha me encontrar, Jack."
+        },
+        "V0210_36_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Arrase com eles."
+        },
+        "V0210_36_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "É a sua vez."
+        },
+        "V0210_36_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "Grr... Você cuida disso."
+        },
+        "V0210_37_00_00_0": {
+            "card": [
+                14486
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Sincro das trevas!"
+        },
+        "V0210_38_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Em suas marcas... Preparar... Duele!"
+        }
+    }
+}

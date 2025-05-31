@@ -116,6 +116,7 @@ namespace MDPro3.UI.ServantUI
         private static readonly List<GameObject> vrains = new();
         private static readonly List<GameObject> sevens = new();
         private static readonly List<GameObject> npc = new();
+        private static readonly List<GameObject> gorush = new();
 
         private List<GameObject> targetItems = new();
 
@@ -130,8 +131,8 @@ namespace MDPro3.UI.ServantUI
             { "06", vrains},
             { "07", sevens},
             { "08", npc},
+            { "09", gorush}
         };
-
 
 
         public override void ShowEvent()

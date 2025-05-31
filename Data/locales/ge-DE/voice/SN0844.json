@@ -1,0 +1,926 @@
+{
+    "_GRP_": "SN0844",
+    "_LNG_": "de-DE",
+    "info": {
+        "V0844_01_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Moment … warte …\nJetzt bin ich bereit!"
+        },
+        "V0844_01_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Nur damit du Bescheid weißt, ich werde nicht verlieren."
+        },
+        "V0844_01_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Bloß keine Fehler machen …\nBloß keine Fehler machen …"
+        },
+        "V0844_01_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Duel Disk, los!\nDuel Gazer, los geht’s!"
+        },
+        "V0844_02_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Duell!"
+        },
+        "V0844_03_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 0,
+            "text": "Ich glaube, ich kann gewinnen."
+        },
+        "V0844_03_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 0,
+            "text": "Mein Zug."
+        },
+        "V0844_03_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 0,
+            "text": "Hurra!"
+        },
+        "V0844_03_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 0,
+            "text": "Ich bin an der Reihe."
+        },
+        "V0844_03_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Mein Zug."
+        },
+        "V0844_03_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Ich bin dran!"
+        },
+        "V0844_03_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Ich bin an der Reihe."
+        },
+        "V0844_03_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Das ist nicht gut …"
+        },
+        "V0844_03_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Ich bin an der Reihe."
+        },
+        "V0844_03_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Hmm …"
+        },
+        "V0844_03_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Mein Zug."
+        },
+        "V0844_04_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Ich ziehe."
+        },
+        "V0844_04_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Ich ziehe."
+        },
+        "V0844_04_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Ich ziehe."
+        },
+        "V0844_05_00_00_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Glück, bitte sei mir hold!"
+        },
+        "V0844_05_00_00_1": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Ich ziehe!!!"
+        },
+        "V0844_06_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Warte mal kurz."
+        },
+        "V0844_06_01_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Perfektes Timing."
+        },
+        "V0844_06_01_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Jetzt!"
+        },
+        "V0844_06_01_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Das glaube ich nicht."
+        },
+        "V0844_07_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Von meiner Hand …"
+        },
+        "V0844_07_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Ich aktiviere meine Zauberkarte."
+        },
+        "V0844_07_02_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Ich aktiviere meinen Schnellzauber!"
+        },
+        "V0844_07_03_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Ich aktiviere meinen Permanenten Zauber!"
+        },
+        "V0844_07_04_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Ich aktiviere meinen Ausrüstungszauber!"
+        },
+        "V0844_07_05_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Ich aktiviere meinen Ritualzauber!"
+        },
+        "V0844_07_06_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Ich aktiviere meine Fallenkarte!"
+        },
+        "V0844_07_07_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Ich aktiviere meine Permanente Falle!"
+        },
+        "V0844_07_08_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Ich aktiviere meine Konterfalle!"
+        },
+        "V0844_07_09_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Ich decke meine gesetzte Karte auf."
+        },
+        "V0844_07_09_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Das ist die Karte, die ich gesetzt habe."
+        },
+        "V0844_07_10_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Ich aktiviere den Effekt meines Monsters."
+        },
+        "V0844_07_11_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Ich aktiviere einen Spielfeldzauber."
+        },
+        "V0844_07_12_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Ich aktiviere einen Effekt."
+        },
+        "V0844_07_13_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Ich lege den Pendelbereich fest."
+        },
+        "V0844_10_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Okay."
+        },
+        "V0844_10_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Ich weiß, was ich zu tun habe."
+        },
+        "V0844_10_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Jetzt komme ich!"
+        },
+        "V0844_10_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Dies ist einer meiner Favoriten."
+        },
+        "V0844_11_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Ich beschwöre mein Monster."
+        },
+        "V0844_11_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Ich beschwöre mein Monster in Verteidigungsposition."
+        },
+        "V0844_11_02_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Ich beschwöre mein Monster als Spezialbeschwörung."
+        },
+        "V0844_11_03_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Ich biete mein Monster als Tribut an."
+        },
+        "V0844_11_04_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Ich beschwöre mein Monster als Tributbeschwörung."
+        },
+        "V0844_11_05_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Ich beschwöre mein Monster als Fusionsbeschwörung."
+        },
+        "V0844_11_06_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Ich beschwöre mein Monster als Ritualbeschwörung."
+        },
+        "V0844_11_07_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Ich beschwöre mein Monster als Synchrobeschwörung."
+        },
+        "V0844_11_08_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Ich beschwöre mein Monster als Xyz-Beschwörung."
+        },
+        "V0844_11_09_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Ich beschwöre mein Monster als Pendelbeschwörung."
+        },
+        "V0844_11_10_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Ich beschwöre mein Monster als Linkbeschwörung."
+        },
+        "V0844_14_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Lass uns kämpfen."
+        },
+        "V0844_14_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Zeit für einen Kampf."
+        },
+        "V0844_15_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Los geht’s!"
+        },
+        "V0844_15_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Ich hoffe, das klappt …"
+        },
+        "V0844_15_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Okay!"
+        },
+        "V0844_16_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Hoffentlich endet hiermit das Duell!"
+        },
+        "V0844_16_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Bitte, funktioniere!"
+        },
+        "V0844_17_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Ich greife mit meinem Monster an."
+        },
+        "V0844_17_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Ich greife an!"
+        },
+        "V0844_17_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Ich greife an."
+        },
+        "V0844_18_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Mein Monster greift dich direkt an!"
+        },
+        "V0844_18_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Ich greife dich direkt an!"
+        },
+        "V0844_20_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Ich setze eine Karte."
+        },
+        "V0844_20_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Ich setze meine Karte."
+        },
+        "V0844_20_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Ich setze ein Monster."
+        },
+        "V0844_20_01_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Ich setze mein Monster."
+        },
+        "V0844_21_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 0,
+            "text": "Hee hee!"
+        },
+        "V0844_21_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 0,
+            "text": "Ich beende meinen Spielzug."
+        },
+        "V0844_21_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Ich hab nichts vergessen … oder etwa doch?"
+        },
+        "V0844_21_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Ich beende meinen Spielzug."
+        },
+        "V0844_21_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Ähm …"
+        },
+        "V0844_21_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Ich beende meinen Spielzug."
+        },
+        "V0844_21_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Ich beende meinen Spielzug."
+        },
+        "V0844_21_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Ähhh …"
+        },
+        "V0844_21_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Ich beende meinen Zug … *Seufz* …"
+        },
+        "V0844_21_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Oh nein …"
+        },
+        "V0844_21_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Ich beende meinen Zug …"
+        },
+        "V0844_22_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 14,
+            "frame": 1,
+            "text": "Uff!"
+        },
+        "V0844_22_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 14,
+            "frame": 1,
+            "text": "Aah!"
+        },
+        "V0844_22_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 14,
+            "frame": 1,
+            "text": "Wah!"
+        },
+        "V0844_23_00_00_0": {
+            "card": [],
+            "cutin": 3,
+            "duelist": [],
+            "face": 14,
+            "frame": 1,
+            "text": "Waaaaaaaaaaah!"
+        },
+        "V0844_24_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "Argh …"
+        },
+        "V0844_25_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 14,
+            "frame": 1,
+            "text": "Ahhhhhh!"
+        },
+        "V0844_25_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 14,
+            "frame": 1,
+            "text": "Waaaaaah!"
+        },
+        "V0844_25_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 14,
+            "frame": 1,
+            "text": "*Schluck*"
+        },
+        "V0844_26_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Urgs …"
+        },
+        "V0844_26_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 0,
+            "text": "Es ist noch nicht vorbei!"
+        },
+        "V0844_26_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 15,
+            "frame": 0,
+            "text": "*Seufz* …"
+        },
+        "V0844_27_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Oje …"
+        },
+        "V0844_27_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Oh nein …"
+        },
+        "V0844_27_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 15,
+            "frame": 0,
+            "text": "*Seufz* …"
+        },
+        "V0844_28_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 0,
+            "text": "Juhu!\nGewonnen!"
+        },
+        "V0844_28_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 16,
+            "frame": 0,
+            "text": "Puh …\nIch hab keine dummen Fehler gemacht."
+        },
+        "V0844_28_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "… Hä?\nKeine Ahnung wie, aber ich hab gewonnen."
+        },
+        "V0844_28_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 16,
+            "frame": 0,
+            "text": "Das hat richtig viel Spaß gemacht!\nBitte duelliere dich noch mal mit mir!"
+        },
+        "V0844_29_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 15,
+            "frame": 0,
+            "text": "*Seufz* …\nMir sind so viele Fehler passiert."
+        },
+        "V0844_29_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Wie kann ich mein Können als Duellant verbessern?"
+        },
+        "V0844_29_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 14,
+            "frame": 0,
+            "text": "… Hä?\nIch hab verloren?"
+        },
+        "V0844_29_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Du bist viel zu stark!\nIch war chancenlos!"
+        },
+        "V0844_30_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Stimmt etwas nicht?"
+        },
+        "V0844_30_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Ich kann geduldig warten."
+        },
+        "V0844_30_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Ähm …"
+        },
+        "V0844_31_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 14,
+            "frame": 1,
+            "text": "Hä?"
+        },
+        "V0844_31_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 14,
+            "frame": 1,
+            "text": "Wer? Wie? Was???"
+        },
+        "V0844_33_00_00_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Ich will nicht verlieren!"
+        },
+        "V0844_33_00_01_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Ich werde mein Bestes geben!"
+        },
+        "V0844_33_00_02_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Looooos!"
+        },
+        "V0844_36_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 0,
+            "text": "Viel Glück!"
+        },
+        "V0844_36_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Ich glaub an dich!"
+        },
+        "V0844_36_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 15,
+            "frame": 0,
+            "text": "Oh nein … Tut mir leid …"
+        }
+    }
+}

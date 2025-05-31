@@ -1,0 +1,3739 @@
+{
+    "_GRP_": "SN0202",
+    "_LNG_": "de-DE",
+    "info": {
+        "V0202_01_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Schwer ist die Königskrone – nur ich kann sie tragen!"
+        },
+        "V0202_01_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Ich werde dir zeigen, dass meine Seele immer noch lodert!"
+        },
+        "V0202_01_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Mach mal ernst, wenn du mit mir Schritt halten willst!"
+        },
+        "V0202_01_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Oder ich schicke dich in einen dauerhaften Boxenstopp!"
+        },
+        "V0202_01_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Wer sich mir stellt, hat den Mut, zu verlieren!"
+        },
+        "V0202_01_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                201
+            ],
+            "face": 3,
+            "frame": 0,
+            "text": "Yusei!\nIch werde meine Seele in dieses Duell stecken!"
+        },
+        "V0202_01_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "So ist eine Herausforderung!\nNicht mal du!"
+        },
+        "V0202_01_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                203,
+                204,
+                205,
+                206,
+                209
+            ],
+            "face": 3,
+            "frame": 0,
+            "text": "Wir haben als Team alles erreicht, was es gibt."
+        },
+        "V0202_01_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Nun werde ich neue Herausforderungen alleine angehen! "
+        },
+        "V0202_01_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                214
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Ein exklusives Interview?"
+        },
+        "V0202_01_00_06_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "… Also gut.\nIch werde dir einen Moment meiner königlichen Zeit gewähren."
+        },
+        "V0202_01_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                210,
+                231
+            ],
+            "face": 3,
+            "frame": 0,
+            "text": "Carly …\nAuch wenn es mich alles kostet, werde ich dich retten!"
+        },
+        "V0202_01_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                208
+            ],
+            "face": 4,
+            "frame": 0,
+            "text": "Du bist … Kalin?"
+        },
+        "V0202_01_00_09_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                208,
+                211,
+                9058,
+                9059,
+                9061,
+                9062
+            ],
+            "face": 3,
+            "frame": 0,
+            "text": "Der Drache will ein Duell gegen einen Finsteren Auserwählten."
+        },
+        "V0202_01_00_09_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Und ich werde seinen Wunsch erfüllen!"
+        },
+        "V0202_02_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Duell!"
+        },
+        "V0202_03_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Es gibt nichts mehr, was du tun kannst!"
+        },
+        "V0202_03_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Mein Zug!"
+        },
+        "V0202_03_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Die Ziellinie ist in Sicht!"
+        },
+        "V0202_03_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich bin an der Reihe!"
+        },
+        "V0202_03_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Erwarte nicht, dass ich langsamer werde!"
+        },
+        "V0202_03_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Mein Zug!"
+        },
+        "V0202_03_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich bin an der Reihe!"
+        },
+        "V0202_03_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Den Sieg muss man sich nehmen, nicht bekommen!"
+        },
+        "V0202_03_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Mein Zug!"
+        },
+        "V0202_03_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Pah! Deine Züge sind nichts Besonderes!"
+        },
+        "V0202_03_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Ich bin an der Reihe!"
+        },
+        "V0202_04_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich ziehe!"
+        },
+        "V0202_04_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich ziehe!"
+        },
+        "V0202_04_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Ich ziehe!"
+        },
+        "V0202_05_00_00_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Bewundere die wahre Macht von König Jack Atlas!"
+        },
+        "V0202_05_00_00_1": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich ziehe!!!"
+        },
+        "V0202_06_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Jetzt!"
+        },
+        "V0202_06_01_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Du solltest dich mehr anstrengen!"
+        },
+        "V0202_06_01_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Wie armselig."
+        },
+        "V0202_06_01_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich kenne alle deine Strategien!"
+        },
+        "V0202_07_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Von meiner Hand …"
+        },
+        "V0202_07_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich aktiviere eine Zauberkarte!"
+        },
+        "V0202_07_02_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich aktiviere einen Schnellzauber!"
+        },
+        "V0202_07_03_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich aktiviere einen Permanenten Zauber!"
+        },
+        "V0202_07_04_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich aktiviere einen Ausrüstungszauber!"
+        },
+        "V0202_07_05_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich aktiviere einen Ritualzauber!"
+        },
+        "V0202_07_06_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich aktiviere meine Fallenkarte!"
+        },
+        "V0202_07_07_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich aktiviere meine Permanente Falle!"
+        },
+        "V0202_07_08_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich aktiviere meine Konterfalle!"
+        },
+        "V0202_07_09_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Meine verdeckte Karte!"
+        },
+        "V0202_07_09_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich decke meine verdeckte Karte auf!"
+        },
+        "V0202_07_10_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich aktiviere den Effekt meines Monsters!"
+        },
+        "V0202_07_11_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich aktiviere einen Spielfeldzauber!"
+        },
+        "V0202_07_12_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich aktiviere einen Effekt!"
+        },
+        "V0202_07_13_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich lege den Pendelbereich fest!"
+        },
+        "V0202_08_00_00_0": {
+            "card": [
+                9516
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere meine Zauberkarte!\nScharlachrote Sicherheit!"
+        },
+        "V0202_08_00_01_0": {
+            "card": [
+                9518
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere meine Zauberkarte Resonatorruf!"
+        },
+        "V0202_08_00_02_0": {
+            "card": [
+                12339
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Meine Zauberkarte: Empfängerhoch!"
+        },
+        "V0202_08_00_03_0": {
+            "card": [
+                8198
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere meine Zauberkarte!\nSeelenvertrauen!"
+        },
+        "V0202_08_00_04_0": {
+            "card": [
+                9517
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere meine Zauberkarte Rote Drachenvase!"
+        },
+        "V0202_08_00_05_0": {
+            "card": [
+                4837
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Hier ist meine Zauberkarte!\nPolymerisation!"
+        },
+        "V0202_08_00_06_0": {
+            "card": [
+                9519
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Der Permanente Zauber Resonanzkatastrophe!"
+        },
+        "V0202_08_00_07_0": {
+            "card": [
+                9347
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere meine Zauberkarte!\nResonatormaschine!"
+        },
+        "V0202_08_00_08_0": {
+            "card": [
+                8046
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Mein Schnellzauber!\nAngriffsüberlastung!"
+        },
+        "V0202_08_00_09_0": {
+            "card": [
+                8047
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere die Zauberkarte Angriffsteleport!"
+        },
+        "V0202_08_00_10_0": {
+            "card": [
+                8048
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Hier ist mein Schnellzauber!\nAngriffs-Wiederbelebung!"
+        },
+        "V0202_08_00_11_0": {
+            "card": [
+                8848
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Die Fallenkarte Geister des Sturmangriffs!"
+        },
+        "V0202_08_00_12_0": {
+            "card": [
+                12469
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere meine Permanente Falle!\nKönig Scharlach!"
+        },
+        "V0202_08_00_13_0": {
+            "card": [
+                8216
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Meine Konterfalle Blutrotes Feuer!"
+        },
+        "V0202_08_00_14_0": {
+            "card": [
+                12894
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich zeige meine Fallenkarte!\nSynchroruf!"
+        },
+        "V0202_08_00_15_0": {
+            "card": [
+                7758
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich zeige meine Fallenkarte!\nSynchro-Ablenker!"
+        },
+        "V0202_08_00_16_0": {
+            "card": [
+                12066
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere meine Falle!\nRoter Kokon!"
+        },
+        "V0202_08_00_17_0": {
+            "card": [
+                9141
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere meine Permanente Falle: Rote Abschirmung!"
+        },
+        "V0202_08_00_18_0": {
+            "card": [
+                7757
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere meine Permanente Falle: Weltraumtor!"
+        },
+        "V0202_08_00_19_0": {
+            "card": [
+                8674
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere meine Falle!\nDas Schicksal verändern!"
+        },
+        "V0202_08_00_20_0": {
+            "card": [
+                8217
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere meine Falle!\nErgreifung des Empfängers!"
+        },
+        "V0202_08_00_21_0": {
+            "card": [
+                8675
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere meine Falle!\nTeuflische Kette!"
+        },
+        "V0202_08_00_22_0": {
+            "card": [
+                8063
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere meine Falle!\nAlbtraum-Erzunterweltler!"
+        },
+        "V0202_08_00_23_0": {
+            "card": [
+                8062
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere meine Falle!\nHalb oder gar nicht!"
+        },
+        "V0202_08_00_24_0": {
+            "card": [
+                8058
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere meine Falle!\nAngriffsmodus aktivieren!"
+        },
+        "V0202_08_00_25_0": {
+            "card": [
+                7922
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich decke meine Fallenkarte auf!\nStolzes Gebrüll!"
+        },
+        "V0202_08_00_26_0": {
+            "card": [
+                12179
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere meine Falle: Ablehnende Wiedergeburt!"
+        },
+        "V0202_08_00_27_0": {
+            "card": [
+                7923
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere meine Falle!\nGeschenk der Auferstehung!"
+        },
+        "V0202_08_00_28_0": {
+            "card": [
+                12272
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere die Falle Rote Übermacht!"
+        },
+        "V0202_08_00_29_0": {
+            "card": [
+                8060
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich decke meine Fallenkarte auf!\nHerabfallender Stern!"
+        },
+        "V0202_08_00_30_0": {
+            "card": [
+                4675
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere meine Permanente Falle: Schattenzauber!"
+        },
+        "V0202_08_00_31_0": {
+            "card": [
+                12271
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere meine Fallenkarte! Übereinstimmung des Königs!"
+        },
+        "V0202_08_00_32_0": {
+            "card": [
+                12657
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Meine Falle wird aktiviert!\nSynchro des Königs!"
+        },
+        "V0202_08_00_33_0": {
+            "card": [
+                10983
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere meine Permanente Falle: Machtvolle Wiedergeburt!"
+        },
+        "V0202_08_00_34_0": {
+            "card": [
+                7924
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere meine Falle!\nSpur der Verwüstung!"
+        },
+        "V0202_08_00_35_0": {
+            "card": [
+                9534
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere meine Falle!\nRoter Teppich!"
+        },
+        "V0202_08_00_36_0": {
+            "card": [
+                8069
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere meine Falle!\nAngriffsschlag!"
+        },
+        "V0202_08_00_37_0": {
+            "card": [
+                8070
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Meine Konterfalle wird aktiviert!\nAngriffskonter!"
+        },
+        "V0202_09_00_00_0": {
+            "card": [
+                8192
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Der Effekt von Sprengstoff-Drachenschwinge wird aktiviert!"
+        },
+        "V0202_09_00_01_0": {
+            "card": [
+                9801
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Der Effekt von Blutroter Klingenkämpfer wird aktiviert!"
+        },
+        "V0202_09_00_02_0": {
+            "card": [
+                12062
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Der Effekt von Synkronresonator wird aktiviert!"
+        },
+        "V0202_09_00_03_0": {
+            "card": [
+                9119
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Roter Nova-Drache!\nAktiviere deinen Effekt!"
+        },
+        "V0202_09_00_04_0": {
+            "card": [
+                7734
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Erlebe den Effekt von Sternenstaubdrache!"
+        },
+        "V0202_09_00_05_0": {
+            "card": [
+                7734
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Der Effekt von Sternenstaubdrache wird aktiviert! Erstehe auf!"
+        },
+        "V0202_09_00_06_0": {
+            "card": [
+                7704
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Hier kommt der Effekt von Kleinteilgolem!"
+        },
+        "V0202_09_00_07_0": {
+            "card": [
+                8651
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Der Effekt von Majestätischer roter Drache!"
+        },
+        "V0202_09_00_08_0": {
+            "card": [
+                8651
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Der Effekt von Majestätischer roter Drache absorbiert die ATK deines Monsters!"
+        },
+        "V0202_09_00_08_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Leistungsgewinn!"
+        },
+        "V0202_09_00_09_0": {
+            "card": [
+                7707
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Der Effekt von Unheimlicher Zahnkranz!"
+        },
+        "V0202_09_00_10_0": {
+            "card": [
+                12930
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Der Effekt von Doppelresonator wird aktiviert!"
+        },
+        "V0202_09_00_11_0": {
+            "card": [
+                12063
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Kettenresonator aktiviert seinen Effekt!"
+        },
+        "V0202_09_00_12_0": {
+            "card": [
+                8816
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Der Effekt von Chaoskönig-Erzunterweltler!"
+        },
+        "V0202_09_00_13_0": {
+            "card": [
+                8617
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Der Effekt von Kampfausblender!"
+        },
+        "V0202_09_00_14_0": {
+            "card": [
+                9297
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere den Effekt von Barriereresonator von meiner Hand!"
+        },
+        "V0202_09_00_15_0": {
+            "card": [
+                9477
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Der Effekt von Machtresonator!"
+        },
+        "V0202_09_00_16_0": {
+            "card": [
+                7732
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Der Effekt von Mehrteilgolem wird aktiviert!"
+        },
+        "V0202_09_00_17_0": {
+            "card": [
+                7705
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Mittelteilgolem spezialbeschwört ein Monster aus meinem Deck!"
+        },
+        "V0202_09_00_18_0": {
+            "card": [
+                12064
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Der Effekt von Spiegelresonator wird aktiviert!"
+        },
+        "V0202_09_00_19_0": {
+            "card": [
+                12413
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Der Effekt von Roter Warg wird aktiviert!"
+        },
+        "V0202_09_00_19_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich beschwöre ihn als Spezialbeschwörung von meiner Hand!"
+        },
+        "V0202_09_00_20_0": {
+            "card": [
+                12414
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich schicke Rote Wache von meiner Hand auf den Friedhof!"
+        },
+        "V0202_09_00_20_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Deine Effekte können diesen Zug meine Monster nicht zerstören!"
+        },
+        "V0202_09_00_21_0": {
+            "card": [
+                12060
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Der Effekt von Roter Renner wird aktiviert!"
+        },
+        "V0202_09_00_21_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich spezialbeschwöre einen Unterweltler-Empfänger bis Stufe 3!"
+        },
+        "V0202_09_00_22_0": {
+            "card": [
+                11990
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Der Effekt von Narblicht-Rotdrachen-Erzunterweltler wird aktiviert!"
+        },
+        "V0202_09_00_22_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Absolute Kraftflamme!"
+        },
+        "V0202_09_00_23_0": {
+            "card": [
+                12449
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Der Effekt von Tyrannen-Rotdrachen-Erzunterweltler wird aktiviert!"
+        },
+        "V0202_09_00_23_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Absolutes Kraftinferno!"
+        },
+        "V0202_09_00_24_0": {
+            "card": [
+                12449
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Der Effekt von Tyrannen-Rotdrachen-Erzunterweltler wird aktiviert!"
+        },
+        "V0202_09_00_25_0": {
+            "card": [
+                8007
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Der Effekt von Rotdrachen-Erzunterweltler/Angriffsmodus wird aktiviert!"
+        },
+        "V0202_09_00_25_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Blutrotes Ende!"
+        },
+        "V0202_09_00_26_0": {
+            "card": [
+                8007
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Rotdrachen-Erzunterweltler/Angriffsmodus! Belebe mein Monster wieder!"
+        },
+        "V0202_09_00_27_0": {
+            "card": [
+                7735
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Der Effekt von Rotdrachen-Erzunterweltler!"
+        },
+        "V0202_09_00_27_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Unterweltler-Meteor!"
+        },
+        "V0202_09_00_28_0": {
+            "card": [
+                7735
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Der Effekt von Rotdrachen-Erzunterweltler wird aktiviert!"
+        },
+        "V0202_09_00_29_0": {
+            "card": [
+                12540
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Der Effekt von Rote Nova!"
+        },
+        "V0202_09_00_30_0": {
+            "card": [
+                12415
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Der Effekt von Roter Spiegel wird aktiviert!"
+        },
+        "V0202_09_00_31_0": {
+            "card": [
+                12695
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Roter aufsteigender Drache! Aktiviere deinen Effekt!"
+        },
+        "V0202_09_00_32_0": {
+            "card": [
+                12061
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Der Effekt von Roter Resonator wird aktiviert!"
+        },
+        "V0202_09_00_33_0": {
+            "card": [
+                12065
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Roter Wyrm zerstört das Monster mit der höchsten ATK!"
+        },
+        "V0202_09_00_34_0": {
+            "card": [
+                12078
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Der Effekt von Glühender Rotdrachen-Erzunterweltler Abyss wird aktiviert!"
+        },
+        "V0202_09_00_35_0": {
+            "card": [
+                12079
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Der Effekt von Glühender Rotdrachen-Erzunterweltler Bann wird aktiviert!"
+        },
+        "V0202_09_00_36_0": {
+            "card": [
+                10842
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Der Effekt von Glühender Rotdrachen-Erzunterweltler wird aktiviert!"
+        },
+        "V0202_09_00_36_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Blutroter Brand!"
+        },
+        "V0202_09_00_37_0": {
+            "card": [
+                12080
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Der Effekt von Glühender Rotdrachen-Erzunterweltler König Elend wird aktiviert!"
+        },
+        "V0202_09_00_38_0": {
+            "card": [
+                12080
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Der Effekt von Glühender Rotdrachen-Erzunterweltler König Elend wird aktiviert!"
+        },
+        "V0202_09_00_38_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Unglücksmeteor!"
+        },
+        "V0202_09_00_39_0": {
+            "card": [
+                9012
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Der Effekt von Gash der Staubherrscher!"
+        },
+        "V0202_09_00_40_0": {
+            "card": [
+                9051
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Der Effekt von Magischer König Mondstern!"
+        },
+        "V0202_09_00_41_0": {
+            "card": [
+                11642
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Der Effekt von Absoluter König Düsen-Jack!"
+        },
+        "V0202_09_00_42_0": {
+            "card": [
+                9040
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Der Effekt von Finsterer Highlander!"
+        },
+        "V0202_09_00_43_0": {
+            "card": [
+                9718
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Der Effekt von Himmlischer Wolfsherrscher, Blauer Sirius!"
+        },
+        "V0202_09_00_43_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Blaue Sublimation!"
+        },
+        "V0202_09_00_44_0": {
+            "card": [
+                12893
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Der Effekt von Wandernder König Wildwind!"
+        },
+        "V0202_10_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "… Heh."
+        },
+        "V0202_10_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Komm her!"
+        },
+        "V0202_10_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Komm raus!"
+        },
+        "V0202_10_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Sieh und staune!"
+        },
+        "V0202_11_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich beschwöre ein Monster!"
+        },
+        "V0202_11_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich beschwöre ein Monster in Verteidigungsposition!"
+        },
+        "V0202_11_02_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich beschwöre ein Monster als Spezialbeschwörung!"
+        },
+        "V0202_11_03_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich biete ein Monster als Tribut an!"
+        },
+        "V0202_11_04_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich beschwöre ein Monster als Tributbeschwörung!"
+        },
+        "V0202_11_05_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich beschwöre ein Monster als Fusionsbeschwörung!"
+        },
+        "V0202_11_06_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich beschwöre ein Monster als Ritualbeschwörung!"
+        },
+        "V0202_11_07_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich beschwöre ein Monster als Synchrobeschwörung!"
+        },
+        "V0202_11_08_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich beschwöre ein Monster als Xyz-Beschwörung!"
+        },
+        "V0202_11_09_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich beschwöre ein Monster als Pendelbeschwörung!"
+        },
+        "V0202_11_10_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich beschwöre ein Monster als Linkbeschwörung!"
+        },
+        "V0202_13_00_00_0": {
+            "card": [
+                8192
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Breite deine Flügel aus, Sprengstoff-Drachenschwinge!"
+        },
+        "V0202_13_00_01_0": {
+            "card": [
+                9090
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Das Empfänger-Monster Schöpfungsresonator!"
+        },
+        "V0202_13_00_02_0": {
+            "card": [
+                9801
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Der Feuergott Blutroter Klingenkämpfer!"
+        },
+        "V0202_13_00_03_0": {
+            "card": [
+                9478
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Das Empfänger-Monster Uhrresonator!"
+        },
+        "V0202_13_00_04_0": {
+            "card": [
+                12062
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Das Empfänger-Monster Synkronresonator!"
+        },
+        "V0202_13_00_05_0": {
+            "card": [
+                9119
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Erhebe dich, Roter Nova-Drache!"
+        },
+        "V0202_13_00_06_0": {
+            "card": [
+                7734
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Brülle, Sternenstaubdrache!"
+        },
+        "V0202_13_00_07_0": {
+            "card": [
+                7704
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Komm, Kleinteilgolem!"
+        },
+        "V0202_13_00_08_0": {
+            "card": [
+                8651
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Schau her: Majestätischer roter Drache!"
+        },
+        "V0202_13_00_09_0": {
+            "card": [
+                7707
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Das Empfänger-Monster Unheimlicher Zahnkranz!"
+        },
+        "V0202_13_00_10_0": {
+            "card": [
+                7708
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Das Empfänger-Monster Finsterer Resonator!"
+        },
+        "V0202_13_00_11_0": {
+            "card": [
+                12930
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Das Empfänger-Monster Doppelresonator!"
+        },
+        "V0202_13_00_12_0": {
+            "card": [
+                12063
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Das Empfänger-Monster Kettenresonator!"
+        },
+        "V0202_13_00_13_0": {
+            "card": [
+                8816
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Chaoskönig-Erzunterweltler!"
+        },
+        "V0202_13_00_14_0": {
+            "card": [
+                7991
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Steig auf, Vizedrache!"
+        },
+        "V0202_13_00_15_0": {
+            "card": [
+                8617
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Komm zu mir, Kampfausblender!"
+        },
+        "V0202_13_00_16_0": {
+            "card": [
+                9297
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Das Empfänger-Monster Barriereresonator!"
+        },
+        "V0202_13_00_17_0": {
+            "card": [
+                7706
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Komm raus, Großteilgolem!"
+        },
+        "V0202_13_00_18_0": {
+            "card": [
+                9477
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Das Empfänger-Monster Machtresonator!"
+        },
+        "V0202_13_00_19_0": {
+            "card": [
+                8786
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Das Empfänger-Monster Flammenresonator!"
+        },
+        "V0202_13_00_20_0": {
+            "card": [
+                7732
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Werdet zu Mehrteilgolem!"
+        },
+        "V0202_13_00_21_0": {
+            "card": [
+                7705
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Komm, Mittelteilgolem!"
+        },
+        "V0202_13_00_22_0": {
+            "card": [
+                12064
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Das Empfänger-Monster Spiegelresonator!"
+        },
+        "V0202_13_00_23_0": {
+            "card": [
+                12413
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Komm raus, Roter Warg!"
+        },
+        "V0202_13_00_24_0": {
+            "card": [
+                12414
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Hier kommt Rote Wache!"
+        },
+        "V0202_13_00_25_0": {
+            "card": [
+                12060
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Hier ist Roter Renner!"
+        },
+        "V0202_13_00_26_0": {
+            "card": [
+                11990
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Erhebe dich, mein Narblicht-Rotdrachen-Erzunterweltler!"
+        },
+        "V0202_13_00_27_0": {
+            "card": [
+                12449
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Verneige dich vor dem Tyrannen-Rotdrachen-Erzunterweltler!"
+        },
+        "V0202_13_00_28_0": {
+            "card": [
+                8007
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Der Eroberer erscheint in glühender Rüstung!"
+        },
+        "V0202_13_00_28_1": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Erscheine, Rotdrachen-Erzunterweltler/Angriffsmodus!"
+        },
+        "V0202_13_00_29_0": {
+            "card": [
+                7735
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Meine Seele! Rotdrachen-Erzunterweltler!"
+        },
+        "V0202_13_00_30_0": {
+            "card": [
+                12540
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Das Empfänger-Monster Rote Nova!"
+        },
+        "V0202_13_00_31_0": {
+            "card": [
+                12415
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Komm raus!\nRoter Spiegel!"
+        },
+        "V0202_13_00_32_0": {
+            "card": [
+                12695
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Flieg, Roter aufsteigender Drache!"
+        },
+        "V0202_13_00_33_0": {
+            "card": [
+                12061
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Das Empfänger-Monster Roter Resonator!"
+        },
+        "V0202_13_00_34_0": {
+            "card": [
+                12065
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Erhebe dich, Roter Wyrm!"
+        },
+        "V0202_13_00_35_0": {
+            "card": [
+                12078
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Glühender Rotdrachen-Erzunterweltler Abyss!"
+        },
+        "V0202_13_00_36_0": {
+            "card": [
+                12079
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Glühender Rotdrachen-Erzunterweltler Bann!"
+        },
+        "V0202_13_00_37_0": {
+            "card": [
+                10842
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Glühender Rotdrachen-Erzunterweltler!"
+        },
+        "V0202_13_00_38_0": {
+            "card": [
+                12080
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Glühender Rotdrachen-Erzunterweltler König Elend!"
+        },
+        "V0202_13_00_39_0": {
+            "card": [
+                9012
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Zeig dich, Gash der Staubherrscher!"
+        },
+        "V0202_13_00_40_0": {
+            "card": [
+                9051
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Komm, Magischer König Mondstern!"
+        },
+        "V0202_13_00_41_0": {
+            "card": [
+                8436
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Das Empfänger-Monster erscheint!\nMajestätischer Drache!"
+        },
+        "V0202_13_00_42_0": {
+            "card": [
+                9717
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Das Empfänger-Monster Phantomkönig Hydride!"
+        },
+        "V0202_13_00_43_0": {
+            "card": [
+                11642
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Hier kommt Absoluter König Düsen-Jack!"
+        },
+        "V0202_13_00_44_0": {
+            "card": [
+                9040
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Steige herab!\nFinsterer Highlander!"
+        },
+        "V0202_13_00_45_0": {
+            "card": [
+                9718
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Himmlischer Wolfsherrscher, Blauer Sirius!"
+        },
+        "V0202_13_00_46_0": {
+            "card": [
+                12893
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Komm!\nWandernder König Wildwind!"
+        },
+        "V0202_14_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Kämpfe!"
+        },
+        "V0202_14_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Kämpfen wir!"
+        },
+        "V0202_15_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Nimm das!"
+        },
+        "V0202_15_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Aus dem Weg!"
+        },
+        "V0202_15_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich werde dich vernichten!"
+        },
+        "V0202_16_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Knie nieder vor deinen König!"
+        },
+        "V0202_16_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Spüre das Gebrüll des Mächtigen!"
+        },
+        "V0202_17_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Mein Monster greift an!"
+        },
+        "V0202_17_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich greife an!"
+        },
+        "V0202_17_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Angriff!"
+        },
+        "V0202_18_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich greife dich direkt an!"
+        },
+        "V0202_18_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Nimm das! Direkter Angriff!"
+        },
+        "V0202_19_00_00_0": {
+            "card": [
+                8192
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Sprengstoff-Drachenschwinge! Angriff!"
+        },
+        "V0202_19_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Königssturm!"
+        },
+        "V0202_19_00_01_0": {
+            "card": [
+                9090
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Mein Schöpfungsresonator greift an!"
+        },
+        "V0202_19_00_02_0": {
+            "card": [
+                9801
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Blutroter Klingenkämpfer greift an!"
+        },
+        "V0202_19_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Roter Schlächter!"
+        },
+        "V0202_19_00_03_0": {
+            "card": [
+                9478
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Uhrresonator greift an!"
+        },
+        "V0202_19_00_04_0": {
+            "card": [
+                12062
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Synkronresonator greift an!"
+        },
+        "V0202_19_00_05_0": {
+            "card": [
+                9119
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Roter Nova-Drache! Angriff!"
+        },
+        "V0202_19_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Brennender Seelenschlag!"
+        },
+        "V0202_19_00_06_0": {
+            "card": [
+                7734
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Sternenstaubdrache!\nIch befehle dir, anzugreifen!"
+        },
+        "V0202_19_00_07_0": {
+            "card": [
+                7704
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Kleinteilgolem greift an!"
+        },
+        "V0202_19_00_08_0": {
+            "card": [
+                8651
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Majestätischer roter Drache greift an!"
+        },
+        "V0202_19_00_08_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ultimative Übermacht!"
+        },
+        "V0202_19_00_09_0": {
+            "card": [
+                7707
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Greif an, Unheimlicher Zahnkranz!"
+        },
+        "V0202_19_00_10_0": {
+            "card": [
+                7708
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Attacke! Finsterer Resonator!"
+        },
+        "V0202_19_00_11_0": {
+            "card": [
+                12930
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Doppelresonator greift an!"
+        },
+        "V0202_19_00_12_0": {
+            "card": [
+                12063
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Mein Kettenresonator greift an!"
+        },
+        "V0202_19_00_13_0": {
+            "card": [
+                8816
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Greif an, Chaoskönig-Erzunterweltler!"
+        },
+        "V0202_19_00_14_0": {
+            "card": [
+                7991
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Mach sie zu Asche, Vizedrache!"
+        },
+        "V0202_19_00_15_0": {
+            "card": [
+                8617
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Kampfausblender! Angriff!"
+        },
+        "V0202_19_00_16_0": {
+            "card": [
+                9297
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Barriereresonator greift an!"
+        },
+        "V0202_19_00_17_0": {
+            "card": [
+                7706
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Großteilgolem greift an!"
+        },
+        "V0202_19_00_17_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Erdrückende Macht!"
+        },
+        "V0202_19_00_18_0": {
+            "card": [
+                9477
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Machtresonator greift an!"
+        },
+        "V0202_19_00_19_0": {
+            "card": [
+                8786
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Flammenresonator greift an!"
+        },
+        "V0202_19_00_20_0": {
+            "card": [
+                7732
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Mehrteilgolem!\nZerstöre!"
+        },
+        "V0202_19_00_21_0": {
+            "card": [
+                7705
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Greif an, Mittelteilgolem!"
+        },
+        "V0202_19_00_22_0": {
+            "card": [
+                12064
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Spiegelresonator greift an!"
+        },
+        "V0202_19_00_23_0": {
+            "card": [
+                12413
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Greif an, Roter Warg!"
+        },
+        "V0202_19_00_24_0": {
+            "card": [
+                12414
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Rote Wache greift an!"
+        },
+        "V0202_19_00_25_0": {
+            "card": [
+                12060
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Mein Roter Renner greift an!"
+        },
+        "V0202_19_00_26_0": {
+            "card": [
+                11990
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Greif an, Narblicht-Rotdrachen-Erzunterweltler!"
+        },
+        "V0202_19_00_26_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Blutrotes Schmelzfeuer!"
+        },
+        "V0202_19_00_27_0": {
+            "card": [
+                12449
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Tyrannen-Rotdrachen-Erzunterweltler greift an!"
+        },
+        "V0202_19_00_27_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Blutrote Feuersbrunst!"
+        },
+        "V0202_19_00_28_0": {
+            "card": [
+                8007
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Greif an, Rotdrachen-Erzunterweltler/Angriffsmodus!"
+        },
+        "V0202_19_00_28_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Blutrote Feuermacht!"
+        },
+        "V0202_19_00_29_0": {
+            "card": [
+                7735
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Greif an, Rotdrachen-Erzunterweltler!"
+        },
+        "V0202_19_00_29_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Absolute Übermacht!"
+        },
+        "V0202_19_00_30_0": {
+            "card": [
+                12540
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Rote Nova greift an!"
+        },
+        "V0202_19_00_31_0": {
+            "card": [
+                12415
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Roter Spiegel greift an!"
+        },
+        "V0202_19_00_32_0": {
+            "card": [
+                12695
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Roter aufsteigender Drache greift an!"
+        },
+        "V0202_19_00_33_0": {
+            "card": [
+                12061
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Roter Resonator greift an!"
+        },
+        "V0202_19_00_34_0": {
+            "card": [
+                12065
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Roter Wyrm! Los!"
+        },
+        "V0202_19_00_35_0": {
+            "card": [
+                12078
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Greif an, Glühender Rotdrachen-Erzunterweltler Abyss!"
+        },
+        "V0202_19_00_35_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Wutaustreiber des Abgrunds!"
+        },
+        "V0202_19_00_36_0": {
+            "card": [
+                12079
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Greif an, Glühender Rotdrachen-Erzunterweltler Bann!"
+        },
+        "V0202_19_00_36_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Großer Gipfelbrecher!"
+        },
+        "V0202_19_00_37_0": {
+            "card": [
+                10842
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Greif an, Glühender Rotdrachen-Erzunterweltler!"
+        },
+        "V0202_19_00_37_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Absolutes Dogma!"
+        },
+        "V0202_19_00_38_0": {
+            "card": [
+                12080
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Glühender Rotdrachen-Erzunterweltler König Elend, brich ihren Geist!"
+        },
+        "V0202_19_00_38_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Blutrote Vernichtung!"
+        },
+        "V0202_19_00_39_0": {
+            "card": [
+                9012
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Gash der Staubherrscher greift an!"
+        },
+        "V0202_19_00_40_0": {
+            "card": [
+                9051
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Magischer König Mondstern! Angriff!"
+        },
+        "V0202_19_00_40_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Sternenblitz!"
+        },
+        "V0202_19_00_41_0": {
+            "card": [
+                8436
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Majestätischer Drache greift an!"
+        },
+        "V0202_19_00_42_0": {
+            "card": [
+                9717
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Greif an, Phantomkönig Hydride!"
+        },
+        "V0202_19_00_43_0": {
+            "card": [
+                11642
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Absoluter König Düsen-Jack greift an!"
+        },
+        "V0202_19_00_44_0": {
+            "card": [
+                9040
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Finsterer Highlander!\nEntfessle dein Urteil!"
+        },
+        "V0202_19_00_44_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Polarhieb!"
+        },
+        "V0202_19_00_45_0": {
+            "card": [
+                9718
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Himmlischer Wolfsherrscher, Blauer Sirius greift an!"
+        },
+        "V0202_19_00_45_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Wolfsbiss!"
+        },
+        "V0202_19_00_46_0": {
+            "card": [
+                12893
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Wandernder König Wildwind greift an!"
+        },
+        "V0202_20_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich setze eine Karte."
+        },
+        "V0202_20_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich setze eine Karte."
+        },
+        "V0202_20_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich setze ein Monster."
+        },
+        "V0202_20_01_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich setze ein Monster."
+        },
+        "V0202_21_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Ich beende meinen Spielzug!"
+        },
+        "V0202_21_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Es gibt keinen Ausweg für dich – außer aufzugeben!"
+        },
+        "V0202_21_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich beende meinen Spielzug."
+        },
+        "V0202_21_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Mach schon. Greif mich an!"
+        },
+        "V0202_21_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Du wagst es, mich im Staub zu lassen?"
+        },
+        "V0202_21_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Ich beende meinen Zug!"
+        },
+        "V0202_22_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Uff!"
+        },
+        "V0202_22_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Urgs!"
+        },
+        "V0202_22_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Pah!"
+        },
+        "V0202_23_00_00_0": {
+            "card": [],
+            "cutin": 3,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "Ahhhhhhhhhh!"
+        },
+        "V0202_24_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Grr …"
+        },
+        "V0202_25_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "Aaaaah!"
+        },
+        "V0202_25_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "Urghhh!"
+        },
+        "V0202_25_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "Grrrr!"
+        },
+        "V0202_26_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "… Hmpf."
+        },
+        "V0202_26_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Du hältst dich für echt schlau!"
+        },
+        "V0202_26_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Ist das schon alles?!"
+        },
+        "V0202_27_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Wie kannst du es wagen?"
+        },
+        "V0202_27_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Ich schaffe das …"
+        },
+        "V0202_27_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Ich … werde nicht aufgeben!"
+        },
+        "V0202_28_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Es gibt nur einen Meister der Geschwindigkeit! Mich!"
+        },
+        "V0202_28_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Du hattest deinen Spaß, aber nun kommt meine Siegrunde!"
+        },
+        "V0202_28_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Mit jedem Duell werden meine Taktiken stärker!"
+        },
+        "V0202_28_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Ein Schritt näher am perfekten Duell!"
+        },
+        "V0202_28_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Ich weiß, wann mein letztes Duell ist!\nNiemals!"
+        },
+        "V0202_28_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                201
+            ],
+            "face": 3,
+            "frame": 0,
+            "text": "Yusei!\nIch regiere das Duell.\nAls der eine wahre König!"
+        },
+        "V0202_28_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                203,
+                204,
+                205,
+                206,
+                209
+            ],
+            "face": 3,
+            "frame": 0,
+            "text": "Ich möchte meine Fähigkeiten auf der Weltbühne testen!"
+        },
+        "V0202_28_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Und ich werde jeden besiegen!\nSogar Team 5D's!"
+        },
+        "V0202_28_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                214
+            ],
+            "face": 3,
+            "frame": 0,
+            "text": "Sag deinem Redakteur, er soll die Titelseite freihalten …"
+        },
+        "V0202_28_00_06_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "für den Meister der Geschwindigkeit – Jack Atlas!"
+        },
+        "V0202_28_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                210,
+                231
+            ],
+            "face": 3,
+            "frame": 0,
+            "text": "Du musst dich erinnern, Carly!"
+        },
+        "V0202_28_00_07_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Diese dunkle Geißel bist nicht du!"
+        },
+        "V0202_28_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                213
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Du bist ein Hindernis auf dem Weg zu meinem wahren Gegner!"
+        },
+        "V0202_28_00_09_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                208,
+                211,
+                9058,
+                9059,
+                9061,
+                9062
+            ],
+            "face": 3,
+            "frame": 0,
+            "text": "Erdgebundene Unsterbliche sind nichts gegen den wahren König!"
+        },
+        "V0202_29_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Diese Niederlage ist nicht genug, um mich zu brechen!"
+        },
+        "V0202_29_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Hmpf!\nNächstes Mal verliere ich nicht!"
+        },
+        "V0202_29_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Ich kenne wahre Macht und ich werde dich damit vernichten!"
+        },
+        "V0202_29_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Es gab nie einen König … bis ich auftauchte!"
+        },
+        "V0202_29_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Folge nicht meinen Fußstapfen!\nFinde deinen eigenen Weg!"
+        },
+        "V0202_29_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Ich werde meinen Power-Duell-Stil nicht aufgeben!"
+        },
+        "V0202_29_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Nur so kann ich kämpfen!"
+        },
+        "V0202_29_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                201
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Das ist also deine Verbindung zu deinen Monstern …"
+        },
+        "V0202_29_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Du hast etwas Neues in mir geweckt, Yusei!"
+        },
+        "V0202_29_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                203,
+                204,
+                206,
+                209
+            ],
+            "face": 7,
+            "frame": 0,
+            "text": "Wegen dir werde ich wohl hierher zurückkommen."
+        },
+        "V0202_29_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Ich werde das nächste Mal gewinnen.\n*Grummel*"
+        },
+        "V0202_29_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                205
+            ],
+            "face": 5,
+            "frame": 0,
+            "text": "Argh … Leo!\nGlaub ja nicht, dass du besser bist als ich!"
+        },
+        "V0202_29_00_06_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Nicht einmal für einen Moment!\nVerstanden?"
+        },
+        "V0202_29_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                214
+            ],
+            "face": 7,
+            "frame": 0,
+            "text": "Muss ich dich als König jetzt wie meine Königin behandeln?"
+        },
+        "V0202_29_00_07_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "… Nein, das kann ich nicht!\nHör auf, mich auszutricksen!"
+        },
+        "V0202_29_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                210,
+                231
+            ],
+            "face": 5,
+            "frame": 0,
+            "text": "Nein … Unmöglich …\nAus den Tiefen meines Herzens …"
+        },
+        "V0202_29_00_08_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Ich werde einen Weg finden, dich noch zu retten …"
+        },
+        "V0202_29_00_09_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                208,
+                211,
+                9058,
+                9059,
+                9061,
+                9062
+            ],
+            "face": 5,
+            "frame": 0,
+            "text": "Das werde ich dir nicht verzeihen, Finsterer Auserwählter!"
+        },
+        "V0202_30_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Es gibt nur einen König. Und du schaust ihn an!"
+        },
+        "V0202_30_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Knie nieder vor deinen König!"
+        },
+        "V0202_30_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Der König lässt niemals eine Gelegenheit ungenutzt!"
+        },
+        "V0202_31_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Was?!"
+        },
+        "V0202_31_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "Unmöglich!"
+        },
+        "V0202_32_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Yu-Gi-Oh! Duel Links"
+        },
+        "V0202_32_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Yu-Gi-Oh! Duell-Links!\nLos geht’s!"
+        },
+        "V0202_33_00_00_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Fühle die Wut meiner Seele!"
+        },
+        "V0202_33_00_01_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Nur mit Macht duelliert man sich richtig!"
+        },
+        "V0202_33_00_02_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Meine Seele brennt!"
+        },
+        "V0202_34_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Nur ein Narr versteht meine Größe nicht."
+        },
+        "V0202_34_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Ich entkomme knapp und die Menge tobt!"
+        },
+        "V0202_34_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Ich fühle, wie meine Seele vor Macht vibriert!"
+        },
+        "V0202_34_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Vergiss nie, dass der König immer drei Schritte voraus ist!"
+        },
+        "V0202_34_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Kannst du mit dem Meister der Geschwindigkeit Schritt halten?"
+        },
+        "V0202_34_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Während du spielst, perfektioniere ich!"
+        },
+        "V0202_34_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Ein Duell des Königs muss immer unterhalten!"
+        },
+        "V0202_34_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Gut gemacht."
+        },
+        "V0202_34_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Duelliere mit eigenem Stil, anstatt andere zu kopieren!"
+        },
+        "V0202_34_00_09_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Auf die Plätze … Fertig … Duell!"
+        },
+        "V0202_35_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Erlebe den König!\nJack Atlas!"
+        },
+        "V0202_35_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Dieses Duell geht mit Jack Atlas auf die Überholspur!"
+        },
+        "V0202_36_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Lass sie wissen, dass dieses Duell vorbei ist!"
+        },
+        "V0202_36_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Kümmere dich darum."
+        },
+        "V0202_36_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Ich überlasse mein Schicksal dir!"
+        },
+        "V0202_36_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                201
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Beende dieses Duell, Yusei!"
+        },
+        "V0202_36_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                201
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Kümmere dich darum, Yusei!"
+        },
+        "V0202_36_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                201
+            ],
+            "face": 5,
+            "frame": 0,
+            "text": "Yusei … Ich überlasse den Rest … dir …"
+        },
+        "V0202_36_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                203,
+                204,
+                205,
+                206,
+                209
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Los!\nZeige ihnen die Stärke von Team 5D's!"
+        },
+        "V0202_36_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                203,
+                204,
+                205,
+                206,
+                209
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Zeig mehr Mut!\nDenk daran – wir kämpfen zusammen!"
+        },
+        "V0202_36_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                203,
+                204,
+                205,
+                206,
+                209
+            ],
+            "face": 5,
+            "frame": 0,
+            "text": "Gib nicht auf!\nIch glaub an dich!"
+        },
+        "V0202_37_00_00_0": {
+            "card": [
+                8192
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Spüre seinen vernichtenden Schlag, wenn der König brüllt!"
+        },
+        "V0202_37_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Synchrobeschwörung!"
+        },
+        "V0202_37_00_01_0": {
+            "card": [
+                9801
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Diese rote Klinge verkündet das Urteil des Königs!"
+        },
+        "V0202_37_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Erhebe dich bei meiner Synchrobeschwörung mit den Flammen!"
+        },
+        "V0202_37_00_02_0": {
+            "card": [
+                9119
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Staune, wie die Sterne hoch oben im Himmel …"
+        },
+        "V0202_37_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "und das Feuer tief unten in der Erde …"
+        },
+        "V0202_37_00_02_2": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "in einer kosmischen Kollision explodieren!"
+        },
+        "V0202_37_00_03_0": {
+            "card": [
+                7734
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eine Synchrobeschwörung mit Flügeln aus Wind!"
+        },
+        "V0202_37_00_04_0": {
+            "card": [
+                8651
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Dieses Licht scheint als sein wahrer Eroberer auf das Land!"
+        },
+        "V0202_37_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Synchrobeschwörung!"
+        },
+        "V0202_37_00_05_0": {
+            "card": [
+                8816
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Der neue Herrscher tritt aus dem Chaos hervor!"
+        },
+        "V0202_37_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Synchrobeschwörung!"
+        },
+        "V0202_37_00_06_0": {
+            "card": [
+                11990
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Aus den uralten Abgründen einer verlorenen Welt …"
+        },
+        "V0202_37_00_06_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "erwecke ich eine schreckliche Macht!\nSynchrobeschwörung!"
+        },
+        "V0202_37_00_07_0": {
+            "card": [
+                12449
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich verwende zwei Monster als Empfänger!"
+        },
+        "V0202_37_00_07_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich rufe eine absolute Macht, die dieses Duell entscheidet!"
+        },
+        "V0202_37_00_07_2": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Synchrobeschwörung!"
+        },
+        "V0202_37_00_08_0": {
+            "card": [
+                7735
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Erfahre, warum ich als der wahre König bekannt bin!"
+        },
+        "V0202_37_00_08_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Synchrobeschwörung!"
+        },
+        "V0202_37_00_09_0": {
+            "card": [
+                12695
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Mein blutroter Drache erhellt den Höllenpfad!"
+        },
+        "V0202_37_00_09_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Synchrobeschwörung!"
+        },
+        "V0202_37_00_10_0": {
+            "card": [
+                12065
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Erzittere vor dem König!"
+        },
+        "V0202_37_00_10_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Synchrobeschwörung!"
+        },
+        "V0202_37_00_11_0": {
+            "card": [
+                12078
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Der König des finsteren Abgrunds entfesselt seine Wut!"
+        },
+        "V0202_37_00_11_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Synchrobeschwörung!"
+        },
+        "V0202_37_00_12_0": {
+            "card": [
+                12079
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Berge werden einstürzen und alles wird in Flammen aufgehen!"
+        },
+        "V0202_37_00_12_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Synchrobeschwörung!"
+        },
+        "V0202_37_00_13_0": {
+            "card": [
+                10842
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Versenge die Erde und stehe an der Spitze der Existenz!"
+        },
+        "V0202_37_00_13_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Gebiete über die gesamte Schöpfung!\nSynchrobeschwörung!"
+        },
+        "V0202_37_00_14_0": {
+            "card": [
+                12080
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich verwende zwei Monster als Empfänger!"
+        },
+        "V0202_37_00_14_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Mit dem ultimativen Zerstörer kommt dein Untergang!"
+        },
+        "V0202_37_00_14_2": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Synchrobeschwörung!"
+        },
+        "V0202_37_00_15_0": {
+            "card": [
+                9040
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Der Stern des Todes kommt, um alles Lebendige zu richten!"
+        },
+        "V0202_37_00_15_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Synchrobeschwörung!"
+        },
+        "V0202_37_00_16_0": {
+            "card": [
+                9718
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Der einsame Wolf mit blauen Augen verbrennt den Himmel!"
+        },
+        "V0202_37_00_16_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Zeig diesen Schoßhunden deine Fangzähne!\nSynchrobeschwörung!"
+        },
+        "V0202_38_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Auf die Plätze … Fertig … Duell!"
+        }
+    }
+}

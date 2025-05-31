@@ -1,0 +1,2491 @@
+{
+    "_GRP_": "SN0706",
+    "_LNG_": "fr-FR",
+    "info": {
+        "V0706_01_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Vous savez que je vous aime !\nEt je sais que vous m'aimez beaucoup plus !"
+        },
+        "V0706_01_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Jamais je ne laisserai tomber mes meilleurs fans !"
+        },
+        "V0706_01_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Commençons ce concert avec un Rush Duel !"
+        },
+        "V0706_01_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Combattons pour savoir qui est le vrai Roi des Duels !"
+        },
+        "V0706_01_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Pourquoi j'ai la sensation que tu te bats sérieusement ?"
+        },
+        "V0706_01_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Fais en sorte que ta camera enregistre bien ma victoire !"
+        },
+        "V0706_01_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Tu es l'adversaire idéal pour me faire briller sur scène !"
+        },
+        "V0706_01_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Avec mes nouvelles cartes, mon Deck est encore plus fort !"
+        },
+        "V0706_01_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                701
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Et si le vainqueur devenait le Roi des Duels ?"
+        },
+        "V0706_01_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                704,
+                707
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Tu penses sincèrement pouvoir me battre, Romin ?"
+        },
+        "V0706_01_00_09_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                704,
+                707
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "N'oublie pas que la superstar, c'est moi !"
+        },
+        "V0706_01_00_10_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                705
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "C'est fou qu'un haut cadre de Goha soit un de mes fans !"
+        },
+        "V0706_01_00_10_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Tiens, voici mon autographe !"
+        },
+        "V0706_01_00_11_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                713,
+                714,
+                715,
+                716,
+                717,
+                718
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "J'ai un invité spécial pour ce Duel !\nLe président de Goha !"
+        },
+        "V0706_01_00_12_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                709
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Si c'est un Duel que tu veux, tu vas l'avoir, Asana !"
+        },
+        "V0706_02_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Duel !"
+        },
+        "V0706_03_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Fini l'échauffement, place aux choses sérieuses !"
+        },
+        "V0706_03_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Au tour du roi des concerts !"
+        },
+        "V0706_03_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Aucune autre star ne m'arrive à la cheville !"
+        },
+        "V0706_03_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Attention à ce tour !"
+        },
+        "V0706_03_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Regarde ça !"
+        },
+        "V0706_03_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ça va swinguer !"
+        },
+        "V0706_03_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ne rate pas une miette de ce moment !"
+        },
+        "V0706_03_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "À moi !"
+        },
+        "V0706_03_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 0,
+            "text": "Je suis en mauvaise posture, mais ça fait partie du script !"
+        },
+        "V0706_03_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 0,
+            "text": "À moi !"
+        },
+        "V0706_03_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Jamais tu ne briseras mon rythme !"
+        },
+        "V0706_03_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "À mon tour !"
+        },
+        "V0706_04_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Même ce que je pioche est génial !"
+        },
+        "V0706_04_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Il est temps de piocher !"
+        },
+        "V0706_04_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Je pioche !"
+        },
+        "V0706_05_00_00_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ce n'est pas terminé tant que je ne l'ai pas décidé !"
+        },
+        "V0706_05_00_00_1": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Cette pioche me conduira vers la victoire !"
+        },
+        "V0706_06_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Maintenant !"
+        },
+        "V0706_06_01_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Tu vas vraiment faire ça ?"
+        },
+        "V0706_06_01_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Sérieux, tu sais bien que ça ne va pas marcher."
+        },
+        "V0706_06_01_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Très bien !"
+        },
+        "V0706_07_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Depuis ma main..."
+        },
+        "V0706_07_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'active une Carte Magie !"
+        },
+        "V0706_07_02_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'active une Magie Jeu-Rapide !"
+        },
+        "V0706_07_03_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'active une Magie Continue !"
+        },
+        "V0706_07_04_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'active une Magie d'Équipement !"
+        },
+        "V0706_07_05_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'active une Magie Rituelle !"
+        },
+        "V0706_07_06_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'active un Piège !"
+        },
+        "V0706_07_07_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'active un Piège Continu !"
+        },
+        "V0706_07_08_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'active un Contre-Piège !"
+        },
+        "V0706_07_09_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Aurais-tu oublié cette carte ?"
+        },
+        "V0706_07_09_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Je vais jouer ma carte Posée !"
+        },
+        "V0706_07_10_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'active l'effet de mon monstre !"
+        },
+        "V0706_07_11_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'active une Magie de Terrain !"
+        },
+        "V0706_07_12_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'active un effet !"
+        },
+        "V0706_07_13_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Je déclare une Échelle Pendule !"
+        },
+        "V0706_07_14_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'active un Effet Pendule !"
+        },
+        "V0706_08_00_00_0": {
+            "card": [
+                17322
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "J'active la Carte Magie Écho des Rebelles Royaux !"
+        },
+        "V0706_08_00_01_0": {
+            "card": [
+                16347
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "J'active ma Carte Magie !\nOrdre des Rebelles Royaux !"
+        },
+        "V0706_08_00_02_0": {
+            "card": [
+                16348
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "J'active la Magie de Terrain, Arène des Rebelles Royaux !"
+        },
+        "V0706_08_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Les Démons LUMIÈRE ne craignent pas les Cartes Pièges !"
+        },
+        "V0706_08_00_03_0": {
+            "card": [
+                15942
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "J'active ma Carte Magie !\nDestruction de Carte !"
+        },
+        "V0706_08_00_04_0": {
+            "card": [
+                16162
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "J'active la Carte Magie Balise d'Étoile Maléfique !"
+        },
+        "V0706_08_00_05_0": {
+            "card": [
+                15673
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "J'active ma Carte Magie !\nSouffle de Feu du Génie !"
+        },
+        "V0706_08_00_06_0": {
+            "card": [
+                15672
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "J'active ma Carte Magie !\nRécompense du Roi !"
+        },
+        "V0706_08_00_06_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Descends de ma scène !"
+        },
+        "V0706_08_00_07_0": {
+            "card": [
+                15674
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Tu ne peux pas régner sur mon royaume !\nJ'active Majesté du Roi !"
+        },
+        "V0706_08_00_07_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ce Piège annule ton attaque !"
+        },
+        "V0706_08_00_08_0": {
+            "card": [
+                16790
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "J'active mon Piège !\nDroit régalien !"
+        },
+        "V0706_08_00_09_0": {
+            "card": [
+                17543
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "J'active ma Carte Piège !\nRestauration de Cartes !"
+        },
+        "V0706_08_00_10_0": {
+            "card": [
+                15675
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "J'active mon Piège !\nHurlement des Rebelles !"
+        },
+        "V0706_09_00_00_0": {
+            "card": [
+                15441
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Heavy Metal des Rebelles Royaux active son effet !"
+        },
+        "V0706_09_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Fais taire son monstre !\nCri métalleux perfide !"
+        },
+        "V0706_09_00_01_0": {
+            "card": [
+                15441
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "J'active l'effet de Heavy Metal des Rebelles Royaux !"
+        },
+        "V0706_09_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Absorbe leur ATK et détruis-les !\nCri métalleux perfide !"
+        },
+        "V0706_09_00_02_0": {
+            "card": [
+                17201
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Hard Rock des Rebelles Royaux !\nActive ton effet !"
+        },
+        "V0706_09_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Bombardement explosif !"
+        },
+        "V0706_09_00_03_0": {
+            "card": [
+                17201
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "L'effet de la Carte Hard Rock des Rebelles Royaux te blesse et gagne de l'ATK !"
+        },
+        "V0706_09_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Bombardement explosif !"
+        },
+        "V0706_09_00_04_0": {
+            "card": [
+                16331
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Doom Metal des Rebelles Royaux active son effet !"
+        },
+        "V0706_09_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Mur de son gémissant !"
+        },
+        "V0706_09_00_05_0": {
+            "card": [
+                15663
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Invasion des Rebelles Royaux active son effet !"
+        },
+        "V0706_09_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Assaut d'octaves !"
+        },
+        "V0706_09_00_06_0": {
+            "card": [
+                15663
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Mon Invasion des Rebelles Royaux enverra tes monstres de bas niveaux à leur perte !"
+        },
+        "V0706_09_00_06_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Assaut d'octaves !"
+        },
+        "V0706_09_00_07_0": {
+            "card": [
+                15664
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "J'active l'effet de la Carte Grognement des Rebelles Royaux !"
+        },
+        "V0706_09_00_08_0": {
+            "card": [
+                15665
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Rocker des Rebelles Royaux !\nActive ton effet !"
+        },
+        "V0706_09_00_09_0": {
+            "card": [
+                15690
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "J'active l'effet de la Carte Blues des Rebelles Royaux !"
+        },
+        "V0706_09_00_10_0": {
+            "card": [
+                15666
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "J'active l'effet de la Carte Cri des Rebelles Royaux !"
+        },
+        "V0706_09_00_11_0": {
+            "card": [
+                16984
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "J'active l'effet de la Carte Break des Rebelles Royaux !"
+        },
+        "V0706_09_00_12_0": {
+            "card": [
+                16330
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "J'active l'effet de la Carte Phaser des Rebelles Royaux !"
+        },
+        "V0706_09_00_13_0": {
+            "card": [
+                15443
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "J'active l'effet de la Carte Flûte d'Invocation de l'Archdémon !"
+        },
+        "V0706_09_00_14_0": {
+            "card": [
+                16691
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "J'active l'effet de la Carte Gargouille de la Porte !"
+        },
+        "V0706_09_00_15_0": {
+            "card": [
+                15667
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "J'active l'effet de la Carte Gargouille du Palais !"
+        },
+        "V0706_10_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Prends le micro !"
+        },
+        "V0706_10_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Le roi requiert ta présence !"
+        },
+        "V0706_10_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "N'hésite pas à me rejoindre !"
+        },
+        "V0706_10_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Allez !"
+        },
+        "V0706_11_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'Invoque un monstre !"
+        },
+        "V0706_11_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'Invoque un monstre en Position de Défense !"
+        },
+        "V0706_11_02_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'Invoque Spécialement un monstre !"
+        },
+        "V0706_11_03_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Je Sacrifie mon monstre... avec style !"
+        },
+        "V0706_11_04_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'Invoque un monstre par Sacrifice !"
+        },
+        "V0706_11_04_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Invocation Sacrifice !"
+        },
+        "V0706_11_05_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'Invoque un monstre par Fusion !"
+        },
+        "V0706_11_05_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Invocation Fusion !"
+        },
+        "V0706_11_06_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'Invoque un monstre par Rituel !"
+        },
+        "V0706_11_06_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Invocation Rituelle !"
+        },
+        "V0706_11_07_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'Invoque un monstre par Synchro !"
+        },
+        "V0706_11_07_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Invocation Synchro !"
+        },
+        "V0706_11_08_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'Invoque un monstre par Xyz !"
+        },
+        "V0706_11_08_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Invocation Xyz !"
+        },
+        "V0706_11_09_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Je fais une Invocation Pendule !"
+        },
+        "V0706_11_09_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Invocation Pendule !"
+        },
+        "V0706_11_10_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'Invoque un monstre par Lien !"
+        },
+        "V0706_11_10_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Invocation Lien !"
+        },
+        "V0706_11_11_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'Invoque un monstre au Maximum !"
+        },
+        "V0706_11_11_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Invocation Maximum !"
+        },
+        "V0706_11_12_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Je vais Invoquer un monstre par Fusion !"
+        },
+        "V0706_11_12_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Invocation Fusion !"
+        },
+        "V0706_13_00_00_0": {
+            "card": [
+                15441
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "L'artiste, le mythe, la légende !\nHeavy Metal des Rebelles Royaux !"
+        },
+        "V0706_13_00_01_0": {
+            "card": [
+                17201
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Hard Rock des Rebelles Royaux !"
+        },
+        "V0706_13_00_02_0": {
+            "card": [
+                17201
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Hard Rock des Rebelles Royaux !"
+        },
+        "V0706_13_00_03_0": {
+            "card": [
+                16331
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Doom Metal des Rebelles Royaux !"
+        },
+        "V0706_13_00_04_0": {
+            "card": [
+                15663
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Invasion des Rebelles Royaux !"
+        },
+        "V0706_13_00_05_0": {
+            "card": [
+                15664
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Rugis sur scène, Grognement des Rebelles Royaux !"
+        },
+        "V0706_13_00_06_0": {
+            "card": [
+                15665
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Donne tout ce que tu as !\nRocker des Rebelles Royaux !"
+        },
+        "V0706_13_00_07_0": {
+            "card": [
+                15690
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Viens là, Blues des Rebelles Royaux !"
+        },
+        "V0706_13_00_08_0": {
+            "card": [
+                15666
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Le roi requiert ta présence !\nCri des Rebelles Royaux !"
+        },
+        "V0706_13_00_09_0": {
+            "card": [
+                16984
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Break des Rebelles Royaux !"
+        },
+        "V0706_13_00_10_0": {
+            "card": [
+                16330
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Phaser des Rebelles Royaux !"
+        },
+        "V0706_13_00_11_0": {
+            "card": [
+                15443
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Flûte d'Invocation de l'Archdémon !"
+        },
+        "V0706_13_00_12_0": {
+            "card": [
+                16691
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Gargouille de la Porte !"
+        },
+        "V0706_13_00_13_0": {
+            "card": [
+                15667
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Gargouille du Palais !"
+        },
+        "V0706_13_00_14_0": {
+            "card": [
+                16310
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "No Wave des Rebelles Royaux !"
+        },
+        "V0706_13_00_15_0": {
+            "card": [
+                15671
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Allons-y, Fanatique des Rebelles Royaux !"
+        },
+        "V0706_13_00_16_0": {
+            "card": [
+                19538
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Débuguitanre des Rebelles Royaux !"
+        },
+        "V0706_13_00_17_0": {
+            "card": [
+                19539
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Bébébasse des Rebelles Royaux !"
+        },
+        "V0706_13_00_18_0": {
+            "card": [
+                19540
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Gabintterie des Rebelles Royaux !"
+        },
+        "V0706_13_00_19_0": {
+            "card": [
+                15668
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Followl de la Sagesse Occulte !"
+        },
+        "V0706_14_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Il est temps de jouer mes plus grands tubes !\nCombattons !"
+        },
+        "V0706_14_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Je suis prêt pour swinguer !"
+        },
+        "V0706_15_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Au revoir !"
+        },
+        "V0706_15_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Tu peux partir maintenant !"
+        },
+        "V0706_15_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Montre-leur ce que tu vaux !"
+        },
+        "V0706_16_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Agenouille-toi devant le roi !"
+        },
+        "V0706_16_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Le spectacle est terminé !"
+        },
+        "V0706_17_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Mon monstre attaque !"
+        },
+        "V0706_17_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "J'attaque avec mon monstre !"
+        },
+        "V0706_17_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Attaque !"
+        },
+        "V0706_18_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Mon monstre t'attaque directement !"
+        },
+        "V0706_18_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Attaque directe !"
+        },
+        "V0706_19_00_00_0": {
+            "card": [
+                15441
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Monte le son pour entendre l'attaque tonitruante de Heavy Metal des Rebelles Royaux ! "
+        },
+        "V0706_19_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Coup du rockeur !"
+        },
+        "V0706_19_00_01_0": {
+            "card": [
+                15441
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Heavy Metal des Rebelles Royaux !\nAttaque !"
+        },
+        "V0706_19_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Coup du rockeur !"
+        },
+        "V0706_19_00_02_0": {
+            "card": [
+                15441
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Attaque, Heavy Metal des Rebelles Royaux !"
+        },
+        "V0706_19_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Annihile-les !\nCoup du rockeur !"
+        },
+        "V0706_19_00_03_0": {
+            "card": [
+                17201
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Hard Rock des Rebelles Royaux !\nExplose l'adversaire !"
+        },
+        "V0706_19_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Cri sonique !"
+        },
+        "V0706_19_00_04_0": {
+            "card": [
+                17201
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Hard Rock des Rebelles Royaux !\nIl n'y aura pas de rappel !"
+        },
+        "V0706_19_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Cri sonique !"
+        },
+        "V0706_19_00_05_0": {
+            "card": [
+                16331
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Doom Metal des Rebelles Royaux !\nAttaque !"
+        },
+        "V0706_19_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Plongeon scénique destructeur !"
+        },
+        "V0706_19_00_06_0": {
+            "card": [
+                16331
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Doom Metal des Rebelles Royaux !\nFrappe-les !"
+        },
+        "V0706_19_00_06_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Plongeon scénique destructeur !"
+        },
+        "V0706_19_00_07_0": {
+            "card": [
+                15663
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Invasion des Rebelles Royaux !\nAttaque !"
+        },
+        "V0706_19_00_07_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Annihilation vocale ! "
+        },
+        "V0706_19_00_08_0": {
+            "card": [
+                15664
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Grognement des Rebelles Royaux !\nAttaque !"
+        },
+        "V0706_19_00_09_0": {
+            "card": [
+                15665
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Rocker des Rebelles Royaux attaque !"
+        },
+        "V0706_19_00_10_0": {
+            "card": [
+                15690
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Blues des Rebelles Royaux !\nC'est l'heure de la raclée !"
+        },
+        "V0706_19_00_11_0": {
+            "card": [
+                15666
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Cri des Rebelles Royaux !\nExplose-leur les tympans !"
+        },
+        "V0706_19_00_12_0": {
+            "card": [
+                16984
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Attaque, Break des Rebelles Royaux !"
+        },
+        "V0706_19_00_13_0": {
+            "card": [
+                16330
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Phaser des Rebelles Royaux attaque !"
+        },
+        "V0706_19_00_14_0": {
+            "card": [
+                15443
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Attaque, Flûte d'Invocation de l'Archdémon !"
+        },
+        "V0706_19_00_15_0": {
+            "card": [
+                16691
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Attaque, Gargouille de la Porte !"
+        },
+        "V0706_19_00_16_0": {
+            "card": [
+                15667
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Gargouille du Palais ! Attaque !"
+        },
+        "V0706_19_00_17_0": {
+            "card": [
+                16310
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "No Wave des Rebelles Royaux !\nAttaque !"
+        },
+        "V0706_19_00_18_0": {
+            "card": [
+                15671
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Attaque, Fanatique des Rebelles Royaux !"
+        },
+        "V0706_19_00_19_0": {
+            "card": [
+                19538
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Débuguitanre des Rebelles Royaux !\nAttaque !"
+        },
+        "V0706_19_00_20_0": {
+            "card": [
+                19539
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Bébébasse des Rebelles Royaux !\nAttaque !"
+        },
+        "V0706_19_00_21_0": {
+            "card": [
+                19540
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Gabintterie des Rebelles Royaux !\nAttaque !"
+        },
+        "V0706_19_00_22_0": {
+            "card": [
+                15668
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Followl de la Sagesse Occulte !\nAttaque !"
+        },
+        "V0706_20_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Je Pose une carte."
+        },
+        "V0706_20_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Je Pose une carte."
+        },
+        "V0706_20_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Protège ton roi."
+        },
+        "V0706_20_01_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Je Pose un monstre."
+        },
+        "V0706_21_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "On n'est pas nés sous la même étoile, toi et moi."
+        },
+        "V0706_21_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Je termine mon tour !"
+        },
+        "V0706_21_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Ce Duel ne doit pas finir trop vite.\nJe dois épater mes fans."
+        },
+        "V0706_21_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Je termine mon tour exceptionnel !"
+        },
+        "V0706_21_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Et voilà, un autre tour formidable qui se termine !"
+        },
+        "V0706_21_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Je vais prendre une pause."
+        },
+        "V0706_21_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Je vais terminer mon tour !"
+        },
+        "V0706_21_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 0,
+            "text": "Hé, dis donc...\nTu pourrais presque me faire peur !"
+        },
+        "V0706_21_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 0,
+            "text": "Je termine mon tour !"
+        },
+        "V0706_21_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Jamais tu ne pourras conquérir mon royaume !"
+        },
+        "V0706_21_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Je termine mon tour !"
+        },
+        "V0706_22_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Gah !"
+        },
+        "V0706_22_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Ouch !"
+        },
+        "V0706_22_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Aaah !"
+        },
+        "V0706_23_00_00_0": {
+            "card": [],
+            "cutin": 3,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Gaaaaaah !"
+        },
+        "V0706_25_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Aaagh !"
+        },
+        "V0706_25_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Aaargh !"
+        },
+        "V0706_25_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Aaah !"
+        },
+        "V0706_26_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Je vais toujours bien !"
+        },
+        "V0706_26_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Hé ! Tu te débrouilles bien !"
+        },
+        "V0706_26_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Hmpf !"
+        },
+        "V0706_27_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Aagh..."
+        },
+        "V0706_27_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Impossible..."
+        },
+        "V0706_27_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "C'est pas possible !"
+        },
+        "V0706_28_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Ton roi des concerts deviendra aussi ton Roi des Duels !"
+        },
+        "V0706_28_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Un seul Duelliste peut briller... et c'est moi !"
+        },
+        "V0706_28_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "Garde la tête haute !\nTu as joué un super Duel !"
+        },
+        "V0706_28_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "La scène me suffit pour me hisser vers la victoire !"
+        },
+        "V0706_28_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Est-ce la route de la gloire dont Yuga parle tout le temps ?"
+        },
+        "V0706_28_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Le Roi des Duels rend l'impossible possible."
+        },
+        "V0706_28_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Si tu ne joues que pour survivre, tu n'auras jamais de fans."
+        },
+        "V0706_28_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Je serai autant le Roi des Duels que du rock !"
+        },
+        "V0706_28_00_07_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "C'est pourquoi je m'appelle Roa !"
+        },
+        "V0706_28_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                99999
+            ],
+            "face": 2,
+            "frame": 0,
+            "text": "Je n'ai pas besoin de Monstres Maximum.\nJuste d'un micro !"
+        },
+        "V0706_28_00_08_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                99999
+            ],
+            "face": 8,
+            "frame": 0,
+            "text": "Et d'un super groupe...\nEt de mes fans..."
+        },
+        "V0706_28_00_09_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                701
+            ],
+            "face": 8,
+            "frame": 0,
+            "text": "On dirait bien que tu dois me rattraper maintenant."
+        },
+        "V0706_28_00_10_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                701
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Je te connais sur le bout des doigts, Yuga.\nMême tes tactiques."
+        },
+        "V0706_28_00_11_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                702
+            ],
+            "face": 9,
+            "frame": 0,
+            "text": "Je pensais que tu serais un obstacle, mais j'avais tort."
+        },
+        "V0706_28_00_11_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 0,
+            "text": "Tu t'es pas amélioré... au contraire !"
+        },
+        "V0706_28_00_12_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                704,
+                707
+            ],
+            "face": 2,
+            "frame": 0,
+            "text": "Tes accords ne sont pas aussi bons que les miens."
+        },
+        "V0706_28_00_13_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                715
+            ],
+            "face": 8,
+            "frame": 0,
+            "text": "Beau Duel, Yuka."
+        },
+        "V0706_28_00_13_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "D'ailleurs...\nC'est pourquoi, le micro ?\nToi aussi, tu chantes ?"
+        },
+        "V0706_28_00_14_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                709
+            ],
+            "face": 2,
+            "frame": 0,
+            "text": "Apprends un peu à te détendre, Asana.\nC'est ce qu'on dit."
+        },
+        "V0706_28_00_14_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "Je ne suis que le meilleur rockeur du monde.\nPas un psychologue."
+        },
+        "V0706_28_00_15_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                99999
+            ],
+            "face": 3,
+            "frame": 0,
+            "text": "J'ai perdu, mais je trouverai ma propre voie du succès !"
+        },
+        "V0706_29_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Arrête d'avoir pitié de moi.\nC'est encore pire."
+        },
+        "V0706_29_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Si tu veux, on peut recommencer un Duel."
+        },
+        "V0706_29_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "Applaudissez chaleureusement mon adversaire !"
+        },
+        "V0706_29_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Je ne suis pas roi.\nJe ne suis même pas assez bien pour être un gueux."
+        },
+        "V0706_29_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 0,
+            "text": "Si je n'ai pas ce que je veux, je continue d'essayer."
+        },
+        "V0706_29_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                702
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Même un médium ne peut prédire tes coups, Luke."
+        },
+        "V0706_29_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Mais je te battrai la prochaine fois !"
+        },
+        "V0706_29_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                704
+            ],
+            "face": 2,
+            "frame": 0,
+            "text": "Tu oses enfin te venir sous les projecteurs, Romin ?"
+        },
+        "V0706_29_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                707
+            ],
+            "face": 5,
+            "frame": 0,
+            "text": "Quand Romin est en colère, rien ne peut l'arrêter."
+        },
+        "V0706_29_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                99999
+            ],
+            "face": 3,
+            "frame": 0,
+            "text": "Otes...\nPourquoi as-tu choisi Yuga plutôt que moi !"
+        },
+        "V0706_30_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "Ce n'est pas sympa de faire attendre un génie comme moi !"
+        },
+        "V0706_30_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Je connais tous mes fans, mais ton visage ne me dit rien."
+        },
+        "V0706_30_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "C'est le bon choix.\nMais pas sûr que ce soit le meilleur."
+        },
+        "V0706_31_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Sérieusement ?!"
+        },
+        "V0706_31_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Impossible !"
+        },
+        "V0706_32_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Yu-Gi-Oh! Duel Links"
+        },
+        "V0706_32_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "La seule application qui déchire plus que moi !\nYu-Gi-Oh! Duel Links"
+        },
+        "V0706_33_00_00_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Swinguons !"
+        },
+        "V0706_33_00_01_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "Je suis plus futé que tu ne le crois !"
+        },
+        "V0706_33_00_02_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "Je ferai tout pour que tu fasses partie de mon fan-club !"
+        },
+        "V0706_33_00_03_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "Ça va résonner en vous !"
+        },
+        "V0706_34_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 0,
+            "text": "Tu peux répéter ce que tu dis, là ?"
+        },
+        "V0706_34_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Arrête de parler comme si tu me connaissais. Tu ne me connais pas."
+        },
+        "V0706_34_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "Merci d'avoir attendu, chers fans !"
+        },
+        "V0706_34_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "Je vais te faire jouer le Duel de ta vie !"
+        },
+        "V0706_34_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "Que le rock t'emporte !"
+        },
+        "V0706_34_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Oui oui, c'est ça. Garde ces sornettes pour plus tard."
+        },
+        "V0706_34_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Vu comment tu t'acharnes, tu dois penser que tu peux gagner."
+        },
+        "V0706_34_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "Tu n'abandonnes pas. J'aime ça !"
+        },
+        "V0706_34_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Voyons voir qui aura la bonne carte pour gagner !"
+        },
+        "V0706_34_00_09_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "J'ai conservé cette carte pour ce moment précis !"
+        },
+        "V0706_34_00_10_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Que la route vers la victoire s'ouvre devant moi !"
+        },
+        "V0706_34_00_11_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Autrefois, nous étions amis ♪\nAttrapant des insectes et faisant des Duels ♪"
+        },
+        "V0706_35_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Je suis Roa Kassidy !\nChanteur de votre groupe préféré !"
+        },
+        "V0706_35_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Vous êtes prêts pour le spectacle de votre vie ?"
+        },
+        "V0706_36_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "À ton tour de briller sur scène."
+        },
+        "V0706_36_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "On dirait que mon heure est venue."
+        },
+        "V0706_36_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Je sais que tu vas enflammer la foule !"
+        },
+        "V0706_36_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Garde bien le rythme."
+        },
+        "V0706_36_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "Nos fans ne s'amusent pas avec un match rapide."
+        },
+        "V0706_36_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 0,
+            "text": "J'espère que tu pourras faire durer le Duel…"
+        },
+        "V0706_36_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                701
+            ],
+            "face": 8,
+            "frame": 0,
+            "text": "À toi de jouer, Yuga."
+        },
+        "V0706_36_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                704,
+                707
+            ],
+            "face": 8,
+            "frame": 0,
+            "text": "Montre-leur que personne ne peut rivaliser avec RoaRomin !"
+        },
+        "V0706_36_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                704
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Ne t'inquiète pas.\nSi tu suis mes conseils, ça va bien se passer."
+        },
+        "V0706_37_00_00_0": {
+            "card": [
+                15441
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Tout droit venu des tréfonds des ténèbres !"
+        },
+        "V0706_37_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Forgé par les flammes de l'anarchie ! \nNourri par les cris de rage !"
+        },
+        "V0706_37_00_01_0": {
+            "card": [
+                17201
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ses accords illuminent la scène !"
+        },
+        "V0706_37_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Son énergie rend la foule hystérique !"
+        },
+        "V0706_37_00_02_0": {
+            "card": [
+                17201
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Crie sous le feu des projecteurs !"
+        },
+        "V0706_37_00_03_0": {
+            "card": [
+                16331
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Sa musique brutale plonge le monde dans les ténèbres !"
+        },
+        "V0706_37_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Dresse-toi et bats tous ceux qui tremblent devant toi !"
+        },
+        "V0706_37_00_04_0": {
+            "card": [
+                15663
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Franchis les frontières du temps pour atteindre ton cœur !"
+        },
+        "V0706_37_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Saisis la scène et domine ce Duel !"
+        },
+        "V0706_37_00_05_0": {
+            "card": [
+                15441
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Tout droit venu des tréfonds des ténèbres !"
+        },
+        "V0706_37_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Forgé par les flammes de l'anarchie ! \nNourri par les cris de rage !"
+        },
+        "V0706_48_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "OK !"
+        },
+        "V0706_48_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Prépare-toi pour le rush !"
+        }
+    }
+}

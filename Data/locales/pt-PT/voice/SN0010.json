@@ -1,0 +1,1505 @@
+{
+    "_GRP_": "SN0010",
+    "_LNG_": "pt-BR",
+    "info": {
+        "V0010_01_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Heheheh..."
+        },
+        "V0010_01_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "A escuridão está faminta..."
+        },
+        "V0010_01_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Heheheh..."
+        },
+        "V0010_01_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Você se renderá às sombras!"
+        },
+        "V0010_01_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                3
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Prepare-se para as trevas famintas!"
+        },
+        "V0010_01_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                1,
+                331
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Yugi... Um Duelo com você é o Jogo Sombrio definitivo..."
+        },
+        "V0010_01_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                4
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Vejo o medo em seus olhos!"
+        },
+        "V0010_01_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Tolinha, o Reino das Sombras quer você!"
+        },
+        "V0010_01_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                11
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Só um de nós sobreviverá a este Jogo Sombrio!"
+        },
+        "V0010_01_00_06_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "E não será você!"
+        },
+        "V0010_01_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                13,
+                36
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Você sempre foi uma pedra no meu caminho. Um dia terei que chutá-la."
+        },
+        "V0010_01_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                14
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Odion, seu tolo patético."
+        },
+        "V0010_01_00_08_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Hora da viagem só de ida para o Reino das Sombras! "
+        },
+        "V0010_02_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Duelo!"
+        },
+        "V0010_03_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu prolongarei seu sofrimento."
+        },
+        "V0010_03_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "É minha vez!"
+        },
+        "V0010_03_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu destruirei você!"
+        },
+        "V0010_03_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Minha vez!"
+        },
+        "V0010_03_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Minha vez..."
+        },
+        "V0010_03_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "É minha vez..."
+        },
+        "V0010_03_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Como posso ficar para trás..."
+        },
+        "V0010_03_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Meu... turno..."
+        },
+        "V0010_03_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Cansei de brincar."
+        },
+        "V0010_03_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Minha vez!"
+        },
+        "V0010_04_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Hehehe... Compro..."
+        },
+        "V0010_04_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Compro..."
+        },
+        "V0010_04_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Nnngh... Compro..."
+        },
+        "V0010_05_00_00_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Os deuses egípcios escolheram a mim para carregar seu poder imensurável!"
+        },
+        "V0010_05_00_00_1": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Compro!"
+        },
+        "V0010_06_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Heh heh heh."
+        },
+        "V0010_06_01_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "É tão bom quando o inimigo cai na armadilha!"
+        },
+        "V0010_06_01_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Acho que não!"
+        },
+        "V0010_06_01_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Não tão rápido."
+        },
+        "V0010_07_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Da minha mão..."
+        },
+        "V0010_07_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu ativo uma Magia!"
+        },
+        "V0010_07_02_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu ativo uma Magia Rápida!"
+        },
+        "V0010_07_03_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu ativo uma Magia Contínua!"
+        },
+        "V0010_07_04_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu ativo uma Magia de Equipamento!"
+        },
+        "V0010_07_05_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu ativo uma Magia de Ritual!"
+        },
+        "V0010_07_06_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Minha Armadilha é ativada!"
+        },
+        "V0010_07_07_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Minha Armadilha Contínua é ativada!"
+        },
+        "V0010_07_08_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Minha Armadilha de Resposta é ativada!"
+        },
+        "V0010_07_09_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Aqui está minha carta virada para baixo!"
+        },
+        "V0010_07_09_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu ativo um card virado!"
+        },
+        "V0010_07_10_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "O efeito do meu monstro é ativado!"
+        },
+        "V0010_07_11_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Minha Magia de Campo é ativada!"
+        },
+        "V0010_08_00_00_0": {
+            "card": [
+                4842
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Eu ativo minha Magia Reviver Monstro!"
+        },
+        "V0010_08_00_01_0": {
+            "card": [
+                5688
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Eu ativo minha Magia Escavação da Pedra Mágica!"
+        },
+        "V0010_08_00_02_0": {
+            "card": [
+                5298
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Prepare-se para viver seu pior pesadelo!"
+        },
+        "V0010_08_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Eu ativo o Card de Armadilha Roda dos Pesadelos!"
+        },
+        "V0010_08_00_03_0": {
+            "card": [
+                5490
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Eu ativo uma armadilha! Soldados Escondidos!"
+        },
+        "V0010_08_00_04_0": {
+            "card": [
+                5492
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Eu ativo minha Armadilha Contínua, Vendedor de Caixões!"
+        },
+        "V0010_08_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Toda vez que seu monstro vai para o Cemitério, você perde 300 Pontos de Vida."
+        },
+        "V0010_08_00_05_0": {
+            "card": [
+                5497
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Eu ativo minha Armadilha!"
+        },
+        "V0010_08_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Socorrer o Monstro!"
+        },
+        "V0010_08_00_06_0": {
+            "card": [
+                5686
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Veja a armadilha dos seus pesadelos: Limo Reflete Metal!"
+        },
+        "V0010_08_00_07_0": {
+            "card": [
+                5297
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Eu ativo a Armadilha Cartão de Última Vontade!"
+        },
+        "V0010_08_00_08_0": {
+            "card": [
+                5493
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Meu Card de Armadilha, Catástrofe Malevolente!"
+        },
+        "V0010_08_00_08_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Destrua tudo!"
+        },
+        "V0010_08_00_09_0": {
+            "card": [
+                4887
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Eu ativo minha Armadilha, Força do Espelho!"
+        },
+        "V0010_09_00_00_0": {
+            "card": [
+                5000
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Com sua habilidade especial, veja a verdadeira aparência de O Dragão Alado de Rá!"
+        },
+        "V0010_09_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Deusa egípcia Fênix!"
+        },
+        "V0010_09_00_01_0": {
+            "card": [
+                5000
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "O efeito de O Dragão Alado de Rá é ativado!"
+        },
+        "V0010_09_00_02_0": {
+            "card": [
+                5489
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "A habilidade especial de Helpoemer não vai lhe fazer bem!"
+        },
+        "V0010_09_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Você tem que descartar 1 card da mão para o Cemitério!"
+        },
+        "V0010_09_00_03_0": {
+            "card": [
+                5687
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Eu ativo a habilidade especial de Bowganian!"
+        },
+        "V0010_09_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Atire sua flecha! Besta da Calamidade!"
+        },
+        "V0010_09_00_04_0": {
+            "card": [
+                5484
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Eu ativo a habilidade especial de Newdoria!"
+        },
+        "V0010_09_00_05_0": {
+            "card": [
+                5453
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Eu ativo a habilidade especial de Demônio Lendário!"
+        },
+        "V0010_09_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Melhor destruí-lo rápido, pois ganha Pontos de Ataque em cada turno!"
+        },
+        "V0010_09_00_06_0": {
+            "card": [
+                5496
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ativando: Lava Golem de Lava!"
+        },
+        "V0010_09_00_07_0": {
+            "card": [
+                11927
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Os deuses egípcios escolheram a mim para carregar seu poder imensurável!"
+        },
+        "V0010_09_00_08_0": {
+            "card": [
+                12234
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Com sua habilidade especial, veja a verdadeira aparência de O Dragão Alado de Rá!"
+        },
+        "V0010_09_00_09_0": {
+            "card": [
+                12234
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Você mexeu com forças além do seu controle e por isso deve pagar!"
+        },
+        "V0010_09_00_09_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Deusa egípcia Fênix!"
+        },
+        "V0010_09_00_10_0": {
+            "card": [
+                12234
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "O efeito de O Dragão Alado de Rá é ativado!"
+        },
+        "V0010_10_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Apareça."
+        },
+        "V0010_10_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Heheheh..."
+        },
+        "V0010_10_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Você vai gostar disso!"
+        },
+        "V0010_10_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Venha para mim!"
+        },
+        "V0010_11_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu Invoco um monstro em Posição de Ataque!"
+        },
+        "V0010_11_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu Invoco um monstro em Posição de Defesa!"
+        },
+        "V0010_11_02_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Faço uma Invocação Especial de monstro!"
+        },
+        "V0010_11_03_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ofereço um monstro como Tributo!"
+        },
+        "V0010_11_04_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Faço uma Invocação-Tributo!"
+        },
+        "V0010_11_05_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Faço uma Invocação-Fusão!"
+        },
+        "V0010_11_06_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Faço uma Invocação por Ritual!"
+        },
+        "V0010_11_07_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Faço uma Invocação-Sincro!"
+        },
+        "V0010_11_08_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Faço uma Invocação-Xyz!"
+        },
+        "V0010_11_09_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Faço uma Invocação-Pêndulo!"
+        },
+        "V0010_13_00_00_0": {
+            "card": [
+                5000
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Veja minha poderosa besta!"
+        },
+        "V0010_13_00_00_1": {
+            "card": [],
+            "cutin": 2,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "O Dragão Alado de Rá!"
+        },
+        "V0010_13_00_01_0": {
+            "card": [
+                5489
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Eu Invoco Helpoemer!"
+        },
+        "V0010_13_00_02_0": {
+            "card": [
+                5496
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Ofereça 2 monstros no seu campo como Tributo e eu darei este monstro poderoso!"
+        },
+        "V0010_13_00_02_1": {
+            "card": [],
+            "cutin": 2,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Golem de Lava!"
+        },
+        "V0010_13_00_03_0": {
+            "card": [
+                5687
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Eu Invoco Bowganian!"
+        },
+        "V0010_13_00_04_0": {
+            "card": [
+                5292
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Eu Invoco Viser Des!"
+        },
+        "V0010_13_00_04_1": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Por que eu mataria rápido se posso fazer você sofrer por 3 dolorosos turnos?!"
+        },
+        "V0010_13_00_05_0": {
+            "card": [
+                5484
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Eu Invoco Newdoria!"
+        },
+        "V0010_13_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Sua habilidade especial vai ser útil."
+        },
+        "V0010_13_00_06_0": {
+            "card": [
+                11927
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "O Dragão Alado de Rá está preso naquela esfera! "
+        },
+        "V0010_13_00_06_1": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Vamos ver se você consegue desbloquear seus poderes ancestrais!"
+        },
+        "V0010_13_00_07_0": {
+            "card": [
+                5453
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Eu Invoco Demônio Lendário!"
+        },
+        "V0010_13_00_08_0": {
+            "card": [
+                12234
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Veja minha poderosa besta!"
+        },
+        "V0010_13_00_08_1": {
+            "card": [],
+            "cutin": 2,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Nasce das cinzas como a fênix imortal!"
+        },
+        "V0010_13_00_08_2": {
+            "card": [],
+            "cutin": 2,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Deusa egípcia Fênix!"
+        },
+        "V0010_14_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Hora da batalha!"
+        },
+        "V0010_14_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Vamos batalhar!"
+        },
+        "V0010_15_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Vamos!"
+        },
+        "V0010_15_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Você tem que comer muito feijão ainda!"
+        },
+        "V0010_15_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu nunca tenho pena!"
+        },
+        "V0010_16_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Espalhe as cinzas!"
+        },
+        "V0010_16_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Hora de acabar com esse Duelo!"
+        },
+        "V0010_17_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ataco com meu monstro!"
+        },
+        "V0010_17_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Meu monstro ataca!"
+        },
+        "V0010_17_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Meu monstro ataca você!"
+        },
+        "V0010_18_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Eu o ataco diretamente com meu monstro!"
+        },
+        "V0010_18_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Meu monstro ataca você diretamente!"
+        },
+        "V0010_19_00_00_0": {
+            "card": [
+                5000,
+                12234
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "O Dragão Alado de Rá, jogue sua fúria contra meu inimigo!"
+        },
+        "V0010_19_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Canhão de Chamas!"
+        },
+        "V0010_19_00_01_0": {
+            "card": [
+                5496
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Golem de Lava ataca!"
+        },
+        "V0010_19_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Golem Vulcão!"
+        },
+        "V0010_20_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Eu posiciono um card."
+        },
+        "V0010_20_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Eu posiciono um card virado."
+        },
+        "V0010_20_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Eu posiciono um monstro."
+        },
+        "V0010_20_01_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Eu posiciono um monstro virado."
+        },
+        "V0010_21_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Meu turno terminou e você também."
+        },
+        "V0010_21_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Meu turno acabou."
+        },
+        "V0010_21_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "E assim... termino meu turno..."
+        },
+        "V0010_22_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Hngh!"
+        },
+        "V0010_22_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Urgh!"
+        },
+        "V0010_22_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Argh!"
+        },
+        "V0010_22_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Aargghhh!"
+        },
+        "V0010_22_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Rrrggghhhh..."
+        },
+        "V0010_22_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Aaarrghh!"
+        },
+        "V0010_23_00_00_0": {
+            "card": [],
+            "cutin": 3,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Aaaaaaaarrgghh!"
+        },
+        "V0010_24_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Urrrgghhhh...!"
+        },
+        "V0010_26_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Grrhh..."
+        },
+        "V0010_26_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Heheheh..."
+        },
+        "V0010_26_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Nada que eu não dê conta."
+        },
+        "V0010_27_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Você realmente me causou dano? A MIM?"
+        },
+        "V0010_27_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Como isso pode estar acontecendo?"
+        },
+        "V0010_27_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "É o melhor que pode fazer?"
+        },
+        "V0010_28_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Aaahahahahaha!"
+        },
+        "V0010_28_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Curta bastante o Reino das Sombras! Hahahahaha!"
+        },
+        "V0010_28_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Heheheh... Eu sempre soube que meu destino era ser o maior. "
+        },
+        "V0010_28_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "As trevas vieram para ficar."
+        },
+        "V0010_28_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                4
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Pobre Mai. Sua mente virou uma sombra do que era antes e está cada vez diminuindo mais."
+        },
+        "V0010_28_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                3
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Aí vai outra alma para o abismo sombrio do Reino das Sombras, vagar pelo vácuo eternamente! "
+        },
+        "V0010_28_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                11
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Hmph. Você diz que tem o poder das sombras, mas eu sou a verdadeira escuridão!"
+        },
+        "V0010_29_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Não é possível..."
+        },
+        "V0010_29_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Eu perdi...?"
+        },
+        "V0010_29_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Ngh... Como pude perder para uma criatura como você?"
+        },
+        "V0010_29_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                1,
+                331
+            ],
+            "face": 4,
+            "frame": 0,
+            "text": "Impossível..."
+        },
+        "V0010_29_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Nãããooo!"
+        },
+        "V0010_29_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                13,
+                36
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Heheheh... Você sempre foi mais matreira do que finge ser, Irmã."
+        },
+        "V0010_30_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Não tem nada que eu goste mais do que mexer com a mente das pessoas! "
+        },
+        "V0010_30_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Ahahaha! Sua frustração é minha alegria!"
+        },
+        "V0010_30_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Faça sua jogada, a não ser que queira admitir a derrota!"
+        },
+        "V0010_31_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "O quê?!"
+        },
+        "V0010_31_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Ai, não!"
+        },
+        "V0010_32_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Yu-Gi-Oh! Duel Links"
+        },
+        "V0010_32_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Yu-Gi-Oh! Duel Links!"
+        },
+        "V0010_33_00_00_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Hahaha... O pior está por vir!"
+        },
+        "V0010_33_00_01_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Que a destruição comece!"
+        },
+        "V0010_33_00_02_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Aaahahahahaha! Excelente!"
+        },
+        "V0010_34_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Você mexeu com forças além do seu controle e por isso deve pagar!"
+        },
+        "V0010_34_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Sofra enquanto as trevas engolem você!"
+        },
+        "V0010_34_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Você irá para dentro das sombras!"
+        },
+        "V0010_34_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Heheh... Nada mal. Vamos ver o que mais sabe fazer."
+        },
+        "V0010_34_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Aaahahahahahaaaa!"
+        },
+        "V0010_34_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Heheheheheh..."
+        },
+        "V0010_34_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "É tão bom quando um Duelo acontece exatamente como planejado."
+        },
+        "V0010_34_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Admito que até agora você está indo bem, mas isso vai acabar."
+        },
+        "V0010_34_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Entretenha-me. Mostre-me do que é capaz. "
+        },
+        "V0010_34_00_09_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Hmph. Vou poupar você, por enquanto..."
+        }
+    }
+}

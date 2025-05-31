@@ -1,0 +1,2556 @@
+{
+    "_GRP_": "SN0112",
+    "_LNG_": "pt-BR",
+    "info": {
+        "V0112_01_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Sempre que as coisas ficam difíceis, eu perco a confiança em mim."
+        },
+        "V0112_01_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Mas agora chega!\nEstá na hora de criar coragem!"
+        },
+        "V0112_01_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Estou cansado de sentir medo!"
+        },
+        "V0112_01_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Vou enfrentar meus medos!\nE vencer!"
+        },
+        "V0112_01_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "É preciso coragem para entrar no campo de duelo."
+        },
+        "V0112_01_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Só por isso você já tem meu respeito."
+        },
+        "V0112_01_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                101,
+                115
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Jay! Você é meu melhor amigo, mas não vou deixar você passar por cima de mim!"
+        },
+        "V0112_01_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                102
+            ],
+            "face": 3,
+            "frame": 0,
+            "text": "Zane não é mais o mesmo.\nApenas eu posso lembrá-lo de quem ele costumava ser!"
+        },
+        "V0112_02_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Duelo!"
+        },
+        "V0112_03_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ok!"
+        },
+        "V0112_03_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "É minha vez!"
+        },
+        "V0112_03_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Isso aí!\nNem mesmo eu posso estragar isso!"
+        },
+        "V0112_03_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Minha vez!"
+        },
+        "V0112_03_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Minha vez!"
+        },
+        "V0112_03_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Aí vou eu!"
+        },
+        "V0112_03_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "É minha vez!"
+        },
+        "V0112_03_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Minhas chances não são boas...Mas me recuso a perder!"
+        },
+        "V0112_03_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Minha vez!"
+        },
+        "V0112_03_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Se eu conseguir me safar dessa..."
+        },
+        "V0112_03_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "É minha vez!"
+        },
+        "V0112_04_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu compro!"
+        },
+        "V0112_04_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu compro!"
+        },
+        "V0112_04_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Eu compro!"
+        },
+        "V0112_05_00_00_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Jay compra o card que precisa porque acredita em seu deck!"
+        },
+        "V0112_05_00_00_1": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Então vou acreditar no meu também!\nEu compro!"
+        },
+        "V0112_06_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Dessa vez não!"
+        },
+        "V0112_06_01_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Não vai mesmo!"
+        },
+        "V0112_06_01_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Agora vem a parte divertida!"
+        },
+        "V0112_06_01_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu sabia que você ia fazer isso!"
+        },
+        "V0112_07_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Da minha mão..."
+        },
+        "V0112_07_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Eu ativo uma magia!"
+        },
+        "V0112_07_02_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Eu ativo uma magia rápida!"
+        },
+        "V0112_07_03_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Eu ativo uma magia contínua!"
+        },
+        "V0112_07_04_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Eu ativo uma magia de equipamento!"
+        },
+        "V0112_07_05_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Eu ativo uma magia de ritual!"
+        },
+        "V0112_07_06_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Minha armadilha é ativada!"
+        },
+        "V0112_07_07_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Minha armadilha contínua é ativada!"
+        },
+        "V0112_07_08_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Minha armadilha de resposta é ativada!"
+        },
+        "V0112_07_09_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Eu revelo meu card com face para baixo!"
+        },
+        "V0112_07_09_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Eu uso meu card com face para baixo!"
+        },
+        "V0112_07_10_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "O efeito do meu monstro é ativado!"
+        },
+        "V0112_07_11_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Eu ativo uma magia de campo!"
+        },
+        "V0112_07_12_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Eu ativo um efeito!"
+        },
+        "V0112_07_13_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Coloco a Escala de Pêndulo!"
+        },
+        "V0112_08_00_00_0": {
+            "card": [
+                5981
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ativo minha magia contínua!\nMudança de Arma!"
+        },
+        "V0112_08_00_01_0": {
+            "card": [
+                7217
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu uso Impacto Cibersombrio! e retorno 3 Cibernegros para o meu deck!"
+        },
+        "V0112_08_00_01_1": {
+            "card": [
+                6833
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O que permite que invoque meu Dragão Cibersombrio!"
+        },
+        "V0112_08_00_02_0": {
+            "card": [
+                6003
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ativo meu cards de magia!\nEsmagar com o Escudo!"
+        },
+        "V0112_08_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu destruo um monstro em posição de defesa!"
+        },
+        "V0112_08_00_03_0": {
+            "card": [
+                6398
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Com este card, serei tão grande quanto Zane algum dia!"
+        },
+        "V0112_08_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ativo meu card de magia!\nVínculo de Poder!"
+        },
+        "V0112_08_00_04_0": {
+            "card": [
+                6748
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ativo a magia Zona de Conexão Veicroide!"
+        },
+        "V0112_08_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Meu monstro invocado por Invocação-Especial não pode ser destruído por efeitos!"
+        },
+        "V0112_08_00_05_0": {
+            "card": [
+                6941
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Minha magia rápida, Enterro de Outra Dimensão!"
+        },
+        "V0112_08_00_06_0": {
+            "card": [
+                4331
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ativo a magia de equipamento!\nFábrica de Conversão de Máquina!"
+        },
+        "V0112_08_00_07_0": {
+            "card": [
+                4844
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ativo minha magia!\nPote da Ganância!"
+        },
+        "V0112_08_00_08_0": {
+            "card": [
+                4842
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Este card vai me tirar de uma enrascada!\nReviver Monstro!"
+        },
+        "V0112_08_00_09_0": {
+            "card": [
+                5906
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ativo Fusão de Dimensões e pago PV!"
+        },
+        "V0112_08_00_09_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ambos invocamos todos os monstros banidos que conseguirmos através de Invocação-Especial! "
+        },
+        "V0112_08_00_10_0": {
+            "card": [
+                5350
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ativo a magia rápida, Provisões de Emergência!"
+        },
+        "V0112_08_00_10_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ganho 1000 PV para cada magia e armadilha que mandar para o cemitério!"
+        },
+        "V0112_08_00_11_0": {
+            "card": [
+                6051
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Sabia que podia contar com meu deck!\nEu ativo Economia de Spells!"
+        },
+        "V0112_08_00_12_0": {
+            "card": [
+                13186
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ativo minha magia de campo!\nBem vindo a Cidade Megaroide!"
+        },
+        "V0112_08_00_13_0": {
+            "card": [
+                5129
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ativo minha magia rápida, Remover Limites!"
+        },
+        "V0112_08_00_14_0": {
+            "card": [
+                4837
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ativo meu card de magia!\nPolimerização!"
+        },
+        "V0112_08_00_15_0": {
+            "card": [
+                6782
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ativo minha magia contínua!\nFusão Futura!"
+        },
+        "V0112_08_00_16_0": {
+            "card": [
+                4909
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ativo uma magia rápida! Tufão Espacial Místico!"
+        },
+        "V0112_08_00_17_0": {
+            "card": [
+                4326
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu vou jogar meu card de magia.\nEu ativo Impedir a Defesa!"
+        },
+        "V0112_08_00_18_0": {
+            "card": [
+                10982
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ativo minha magia rápida!\nSuporte à Fusão Cibernética!"
+        },
+        "V0112_08_00_19_0": {
+            "card": [
+                6737
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ativo minha armadilha contínua!\nDestruidor de Invocação Ciber!"
+        },
+        "V0112_08_00_20_0": {
+            "card": [
+                6747
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ativo minha armadilha!\nSuper Carga!"
+        },
+        "V0112_08_00_21_0": {
+            "card": [
+                6834
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Vai, Barreira de Poder!\nEu coloco cards do meu deck no Cemitério!"
+        },
+        "V0112_08_00_21_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Isso reduz o dano a 0!"
+        },
+        "V0112_08_00_22_0": {
+            "card": [
+                6948
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ativo minha armadilha de resposta!\nGuarda de Fusão neutraliza o efeito!"
+        },
+        "V0112_08_00_22_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Mas preciso colocar um monstro de fusão aleatório no cemitério."
+        },
+        "V0112_08_00_23_0": {
+            "card": [
+                6749
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Enganei você!\nMinha armadilha é ativada!\nGaragem das Maravilhas!"
+        },
+        "V0112_08_00_24_0": {
+            "card": [
+                4836
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Que pena!\nÉ meu card de armadilha, Buraco Armadilha!"
+        },
+        "V0112_08_00_25_0": {
+            "card": [
+                5124
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ativo minha armadilha!\nCilindro Mágico!"
+        },
+        "V0112_08_00_25_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Vou redirecionar o ataque de volta para você!"
+        },
+        "V0112_08_00_26_0": {
+            "card": [
+                6746
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Minha armadilha é ativada!\nNão Entre!!"
+        },
+        "V0112_08_00_26_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Todos os monstros em posição de ataque mudam para posição de defesa!"
+        },
+        "V0112_08_00_27_0": {
+            "card": [
+                13187
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ativo minha armadilha de resposta!\nChamado Emergeroide!"
+        },
+        "V0112_08_00_28_0": {
+            "card": [
+                4989
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ativo Chamado dos Assombrados para ressuscitar meu monstro!"
+        },
+        "V0112_08_00_29_0": {
+            "card": [
+                5987
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ativo meu card de armadilha!\nMicro Raio!"
+        },
+        "V0112_09_00_00_0": {
+            "card": [
+                7057
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Este é o efeito de Armaduroide!"
+        },
+        "V0112_09_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Todos os cards de magia e armadilha no campo são banidos!"
+        },
+        "V0112_09_00_01_0": {
+            "card": [
+                6735
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Expressoroide é ativado!"
+        },
+        "V0112_09_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Passo dois monstros do tipo \"roide\" em meu cemitério para a minha mão!"
+        },
+        "V0112_09_00_02_0": {
+            "card": [
+                6736
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Ambulânciroide é ativado!"
+        },
+        "V0112_09_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu invoco por invocação-especial o \"roide\" que foi para minha mão!"
+        },
+        "V0112_09_00_03_0": {
+            "card": [
+                9402
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Barbaroide, a Máquina de Guerra Definitiva, a Máquina de Guerra Definitiva, é ativado!"
+        },
+        "V0112_09_00_04_0": {
+            "card": [
+                6738
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Submariroide é ativado!"
+        },
+        "V0112_09_00_05_0": {
+            "card": [
+                6835
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Super Veicroide - União Furtiva é ativado!"
+        },
+        "V0112_09_00_06_0": {
+            "card": [
+                13185
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Super Veicroide Base Móvel é ativado!"
+        },
+        "V0112_09_00_07_0": {
+            "card": [
+                6741
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Furtivoroide é ativado!"
+        },
+        "V0112_09_00_07_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Depois de participar de uma batalha, ele destrói um carde de magia ou armadilha!"
+        },
+        "V0112_09_00_08_0": {
+            "card": [
+                6743
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Caminharoide é ativado!"
+        },
+        "V0112_09_00_08_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Caminharoide equipa o monstro que destruiu!"
+        },
+        "V0112_09_00_09_0": {
+            "card": [
+                6387
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Perfuroide é ativado!"
+        },
+        "V0112_09_00_09_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Seu monstro em posição de defesa é destruído!"
+        },
+        "V0112_09_00_10_0": {
+            "card": [
+                7056
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ativo o efeito de Porta-Aviõesroide!"
+        },
+        "V0112_09_00_11_0": {
+            "card": [
+                6384
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Patroide é ativado!"
+        },
+        "V0112_09_00_12_0": {
+            "card": [
+                13184
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Mixeroide é ativado!"
+        },
+        "V0112_09_00_13_0": {
+            "card": [
+                6388
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de UFOroide é ativado!"
+        },
+        "V0112_09_00_14_0": {
+            "card": [
+                6744
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Ambulância Resgateroide é ativado!"
+        },
+        "V0112_09_00_14_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu invoco por Invocação-Especial o monstro que foi destruído em posição de defesa!"
+        },
+        "V0112_09_00_15_0": {
+            "card": [
+                6745
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Resgateroide é ativado!"
+        },
+        "V0112_09_00_15_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Quando um \"roide\" é destruído em batalha, ele retorna para a mão!"
+        },
+        "V0112_09_00_16_0": {
+            "card": [
+                6833
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Dragão Cibersombrio é ativado!"
+        },
+        "V0112_09_00_17_0": {
+            "card": [
+                6663
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Fênix Cibernética é ativado!"
+        },
+        "V0112_09_00_18_0": {
+            "card": [
+                6830
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Chifre Cibersombrio é ativado!"
+        },
+        "V0112_09_00_19_0": {
+            "card": [
+                6831
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Lâmina Cibersombria é ativado!"
+        },
+        "V0112_09_00_20_0": {
+            "card": [
+                6832
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Enquilha Cibersombria é ativado!"
+        },
+        "V0112_10_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Saia daí!"
+        },
+        "V0112_10_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Acredito em você!"
+        },
+        "V0112_10_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Este card vai servir!"
+        },
+        "V0112_10_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Lá vem!"
+        },
+        "V0112_11_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Eu invoco um monstro!"
+        },
+        "V0112_11_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Eu invoco um monstro em posição de defesa!"
+        },
+        "V0112_11_02_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Faço Invocação-Especial de um monstro!"
+        },
+        "V0112_11_03_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Ofereço um monstro como tributo!"
+        },
+        "V0112_11_04_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Faço uma Invocação-Tributo!"
+        },
+        "V0112_11_05_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Faço uma Invocação-Fusão!"
+        },
+        "V0112_11_06_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Faço uma Invocação-Ritual!"
+        },
+        "V0112_11_07_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Faço uma Invocação-Sincro!"
+        },
+        "V0112_11_08_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Faço uma Invocação-Xyz!"
+        },
+        "V0112_11_09_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Faço uma Invocação-Pêndulo!"
+        },
+        "V0112_11_10_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Faço Invocação-Link de um monstro!"
+        },
+        "V0112_13_00_00_0": {
+            "card": [
+                7057
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Armaduroide!\ninvocação combo!"
+        },
+        "V0112_13_00_01_0": {
+            "card": [
+                6735
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Invoco Expressoroide!"
+        },
+        "V0112_13_00_02_0": {
+            "card": [
+                6736
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ambulânciroide para o resgate!"
+        },
+        "V0112_13_00_03_0": {
+            "card": [
+                9402
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Forma Barbaroide, a Máquina de Guerra Definitiva, a Máquina de Guerra Definitiva!"
+        },
+        "V0112_13_00_04_0": {
+            "card": [
+                6383
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu invoco Cycroide!"
+        },
+        "V0112_13_00_05_0": {
+            "card": [
+                6738
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Nade, Submariroide!"
+        },
+        "V0112_13_00_06_0": {
+            "card": [
+                6389
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Voe, Jetroide!"
+        },
+        "V0112_13_00_07_0": {
+            "card": [
+                6385
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu invoco Giroide!"
+        },
+        "V0112_13_00_08_0": {
+            "card": [
+                6739
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Super Veicroide Perfuratriz Gigante está cavando para cá!"
+        },
+        "V0112_13_00_09_0": {
+            "card": [
+                6835
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Unam-se em: Super Veicroide - União Furtiva!"
+        },
+        "V0112_13_00_10_0": {
+            "card": [
+                13185
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Transformar em: Super Veicroide Base Móvel!"
+        },
+        "V0112_13_00_11_0": {
+            "card": [
+                6394
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Este é meu card favorito!\nGiroide a Vapor!"
+        },
+        "V0112_13_00_12_0": {
+            "card": [
+                6386
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu invoco Vaporoide!"
+        },
+        "V0112_13_00_13_0": {
+            "card": [
+                6741
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu invoco Furtivoroide!"
+        },
+        "V0112_13_00_14_0": {
+            "card": [
+                6742
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu invoco Iscaroide!"
+        },
+        "V0112_13_00_15_0": {
+            "card": [
+                6743
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu invoco Caminharoide!"
+        },
+        "V0112_13_00_16_0": {
+            "card": [
+                6387
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu invoco Perfuroide!"
+        },
+        "V0112_13_00_17_0": {
+            "card": [
+                7056
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu invoco Porta-Aviõesroide!"
+        },
+        "V0112_13_00_18_0": {
+            "card": [
+                6384
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu invoco Patroide!"
+        },
+        "V0112_13_00_19_0": {
+            "card": [
+                11164
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu invoco Cycroide por Invocação-Especial!"
+        },
+        "V0112_13_00_20_0": {
+            "card": [
+                13184
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu invoco Mixeroide!"
+        },
+        "V0112_13_00_21_0": {
+            "card": [
+                6388
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu invoco UFOroide!"
+        },
+        "V0112_13_00_22_0": {
+            "card": [
+                6395
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu invoco Lutador UFOroide por Invocação-Especial!"
+        },
+        "V0112_13_00_23_0": {
+            "card": [
+                6744
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu invoco Ambulância Resgateroide por Invocação-Especial!"
+        },
+        "V0112_13_00_24_0": {
+            "card": [
+                6745
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu invoco Resgateroide!"
+        },
+        "V0112_13_00_25_0": {
+            "card": [
+                6833
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Conforme evoluo como duelista, meus cards também evoluem!"
+        },
+        "V0112_13_00_25_1": {
+            "card": [],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Apareça, Dragão Cibersombrio!"
+        },
+        "V0112_13_00_26_0": {
+            "card": [
+                6663
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Erga-se, Fênix Cibernética!"
+        },
+        "V0112_13_00_27_0": {
+            "card": [
+                6830
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu invoco Chifre Cibersombrio!"
+        },
+        "V0112_13_00_28_0": {
+            "card": [
+                6831
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu invoco Lâmina Cibersombria!"
+        },
+        "V0112_13_00_29_0": {
+            "card": [
+                6832
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu invoco Enquilha Cibersombria!"
+        },
+        "V0112_13_00_30_0": {
+            "card": [
+                5028
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "*ruborizado* Eu tenho uma queda por esse card!\nNyan Nyan Trovão!"
+        },
+        "V0112_13_00_31_0": {
+            "card": [
+                4766
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 6,
+            "frame": 1,
+            "text": "Ela não é a senhorita Dorothy fantasiada!\nEle é real mesmo!"
+        },
+        "V0112_13_00_31_1": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 6,
+            "frame": 1,
+            "text": "A nossa heroína: Pequena Maga Negra!"
+        },
+        "V0112_14_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Vamos batalhar!"
+        },
+        "V0112_14_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Hora de batalhar!"
+        },
+        "V0112_15_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Ok!"
+        },
+        "V0112_15_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Lá vai!"
+        },
+        "V0112_15_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Vaaaai!"
+        },
+        "V0112_16_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Se isso funcionar..."
+        },
+        "V0112_16_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "A vitória será minha!"
+        },
+        "V0112_17_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ataco com meu monstro!"
+        },
+        "V0112_17_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Atacar!"
+        },
+        "V0112_17_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Meu monstro ataca!"
+        },
+        "V0112_18_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ataco você diretamente!"
+        },
+        "V0112_18_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Meu monstro ataca você diretamente!"
+        },
+        "V0112_19_00_00_0": {
+            "card": [
+                7057
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ataque, Armaduroide!"
+        },
+        "V0112_19_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Esmagamento Elétrico!"
+        },
+        "V0112_19_00_01_0": {
+            "card": [
+                6735
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Atropela eles, Expressoroide!"
+        },
+        "V0112_19_00_02_0": {
+            "card": [
+                6736
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Meu Ambulânciroide ataca!"
+        },
+        "V0112_19_00_03_0": {
+            "card": [
+                9402
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Barbaroide, a Máquina de Guerra Definitiva ataca!"
+        },
+        "V0112_19_00_04_0": {
+            "card": [
+                6383
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Cycroide ataca!"
+        },
+        "V0112_19_00_05_0": {
+            "card": [
+                6738
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Submariroide! Lance seus torpedos!"
+        },
+        "V0112_19_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ataque Surpresa Subterrâneo!"
+        },
+        "V0112_19_00_06_0": {
+            "card": [
+                6389
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Jetroide! Atacar!"
+        },
+        "V0112_19_00_07_0": {
+            "card": [
+                6385
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Giroide, atacar!"
+        },
+        "V0112_19_00_08_0": {
+            "card": [
+                6739
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Super Veicroide Perfuratriz Gigante!\nRemexe eles!"
+        },
+        "V0112_19_00_09_0": {
+            "card": [
+                6835
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Vai, Super Veicroide - União Furtiva!"
+        },
+        "V0112_19_00_10_0": {
+            "card": [
+                13185
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Super Veicroide Base Móvel ataca!"
+        },
+        "V0112_19_00_11_0": {
+            "card": [
+                6394
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Giroide ataca!"
+        },
+        "V0112_19_00_11_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Trem Tufão!"
+        },
+        "V0112_19_00_12_0": {
+            "card": [
+                6386
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Vaporoide!\nTodo vapor à frente!"
+        },
+        "V0112_19_00_13_0": {
+            "card": [
+                6741
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Furtivoroide ataca!"
+        },
+        "V0112_19_00_13_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Pós-combustão!"
+        },
+        "V0112_19_00_14_0": {
+            "card": [
+                6742
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ataque, Iscaroide!"
+        },
+        "V0112_19_00_15_0": {
+            "card": [
+                6743
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ataque, Caminharoide!"
+        },
+        "V0112_19_00_16_0": {
+            "card": [
+                6387
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Perfuroide ataca!"
+        },
+        "V0112_19_00_17_0": {
+            "card": [
+                7056
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Velocidade máxima, Porta-Aviõesroide!  Atacar!"
+        },
+        "V0112_19_00_18_0": {
+            "card": [
+                6384
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Prenda-os, Patroide!"
+        },
+        "V0112_19_00_18_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Quebra Sirene!"
+        },
+        "V0112_19_00_19_0": {
+            "card": [
+                11164
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Atacar, Par Cycroide!"
+        },
+        "V0112_19_00_19_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ciclone Duplo!"
+        },
+        "V0112_19_00_20_0": {
+            "card": [
+                13184
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Mixeroide ataca!"
+        },
+        "V0112_19_00_21_0": {
+            "card": [
+                6388
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ataque, UFOroide!"
+        },
+        "V0112_19_00_22_0": {
+            "card": [
+                6395
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ataque, Lutador UFOroide!"
+        },
+        "V0112_19_00_22_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Rajada de Fluxo Cósmico!"
+        },
+        "V0112_19_00_23_0": {
+            "card": [
+                6744
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ambulância Resgateroide ataca!"
+        },
+        "V0112_19_00_24_0": {
+            "card": [
+                6745
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Faça barulho, Resgateroide!"
+        },
+        "V0112_19_00_25_0": {
+            "card": [
+                6833
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ataque, Dragão Cibersombrio!"
+        },
+        "V0112_19_00_25_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Fluxo Cibernegro!"
+        },
+        "V0112_19_00_26_0": {
+            "card": [
+                6663
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Fênix Cibernética! Atacar!"
+        },
+        "V0112_19_00_27_0": {
+            "card": [
+                6830
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Chifre Cibersombrio ataca!"
+        },
+        "V0112_19_00_27_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Lança Negra!"
+        },
+        "V0112_19_00_28_0": {
+            "card": [
+                6831
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Lâmina Cibersombria ataca!"
+        },
+        "V0112_19_00_28_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Contrafogo!"
+        },
+        "V0112_19_00_29_0": {
+            "card": [
+                6832
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Enquilha Cibersombria ataca!"
+        },
+        "V0112_19_00_29_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Chicote Negro!"
+        },
+        "V0112_19_00_30_0": {
+            "card": [
+                5028
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Vai! Nyan Nyan Trovão!"
+        },
+        "V0112_19_00_31_0": {
+            "card": [
+                4766
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 6,
+            "frame": 1,
+            "text": "Eu ainda não acredito que estou usando a VERDADEIRA Pequena Maga Negra!"
+        },
+        "V0112_19_00_31_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 6,
+            "frame": 1,
+            "text": "Ataque Ardente das Trevas!"
+        },
+        "V0112_20_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Baixo um card!"
+        },
+        "V0112_20_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Estou baixando um card!"
+        },
+        "V0112_20_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Baixo um monstro!"
+        },
+        "V0112_20_01_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Estou baixando um monstro!"
+        },
+        "V0112_21_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Meu turno acabou!"
+        },
+        "V0112_21_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Termino meu turno!"
+        },
+        "V0112_21_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Só porque estou terminando meu turno, não quer dizer que estou desistindo!"
+        },
+        "V0112_22_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Argh!"
+        },
+        "V0112_22_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Ahh!"
+        },
+        "V0112_22_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Ergh!"
+        },
+        "V0112_23_00_00_0": {
+            "card": [],
+            "cutin": 3,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Nããããããããão!"
+        },
+        "V0112_24_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Argh..."
+        },
+        "V0112_25_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Ahhhhhhh!"
+        },
+        "V0112_25_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Ahhhh!"
+        },
+        "V0112_25_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Urgh!"
+        },
+        "V0112_26_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Ai!"
+        },
+        "V0112_26_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Isso ainda não acabou!"
+        },
+        "V0112_26_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Eu aguento!"
+        },
+        "V0112_27_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Ah não..."
+        },
+        "V0112_27_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Uf..."
+        },
+        "V0112_27_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Eu não vou... desistir!"
+        },
+        "V0112_28_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Não estou mais ficando para trás!"
+        },
+        "V0112_28_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Um duelo não acaba até o último card ser jogado!"
+        },
+        "V0112_28_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Jay me ensinou isso!\nE ele está certo!"
+        },
+        "V0112_28_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Sinto que minhas habilidades melhoram a cada duelo."
+        },
+        "V0112_28_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                101,
+                115
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Jaden, obrigado por me ensinar a nunca desistir."
+        },
+        "V0112_28_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Não sei quem eu seria sem você!"
+        },
+        "V0112_28_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                102
+            ],
+            "face": 3,
+            "frame": 0,
+            "text": "Você costumava se importar, Zane!\nVocê costumava respeitar seus oponentes!"
+        },
+        "V0112_28_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Então, se você não se importa mais, eu vou!"
+        },
+        "V0112_29_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Todos aumentaram suas habilidades de duelo... menos eu..."
+        },
+        "V0112_29_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "Ah...\nAcho que é hora de dar adeus..."
+        },
+        "V0112_29_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "Ah...\nMas não vou fugir e me esconder como antigamente!"
+        },
+        "V0112_29_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "Eu tenho que continuar tentando!"
+        },
+        "V0112_29_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                101,
+                115
+            ],
+            "face": 2,
+            "frame": 0,
+            "text": "Boa partida, Jay!"
+        },
+        "V0112_29_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Mas um dia eu ainda derroto você!\nMais cedo do que você acha!"
+        },
+        "V0112_29_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                102
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Não importa o que você faça, você sempre será meu irmão."
+        },
+        "V0112_29_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Hoje e sempre..."
+        },
+        "V0112_30_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 6,
+            "frame": 0,
+            "text": "Eu posso parecer pequeno, mas sou um grande duelista!"
+        },
+        "V0112_30_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Você é mais patético do que eu!"
+        },
+        "V0112_30_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Esse papo não me atinge, beijinho no ombro pra ti!"
+        },
+        "V0112_31_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Queeeeeee?!"
+        },
+        "V0112_31_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Ah, não!"
+        },
+        "V0112_32_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Yu-Gi-Oh! Duel Links"
+        },
+        "V0112_32_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Yu-Gi-Oh! Duel Links!"
+        },
+        "V0112_33_00_00_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Aí vou eu!"
+        },
+        "V0112_33_00_01_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Você não vai me derrotar!"
+        },
+        "V0112_33_00_02_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Eu também posso ser descolado!"
+        },
+        "V0112_34_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Jaden disse que eu preciso escutar meu deck para vencer!"
+        },
+        "V0112_34_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu gosto do seu estilo!"
+        },
+        "V0112_34_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Hein? Você ainda está jogando?"
+        },
+        "V0112_34_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Preciso pensar como você na hora de planejar minhas jogadas."
+        },
+        "V0112_34_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Este card é meu amorzinho!\nEle nunca me deixa na mão!"
+        },
+        "V0112_34_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Eu convidaria você para comer biscoitos com leite se você não fosse tão malvado!"
+        },
+        "V0112_34_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Vou enfrentar meus medos!\n...mais tarde."
+        },
+        "V0112_34_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Cara, a coisa tá difícil...\nMas ainda acredito no meu deck!"
+        },
+        "V0112_34_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "Por favor, me diz que você já terminou.\nPor favorzinho?"
+        },
+        "V0112_34_00_09_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Xi!"
+        },
+        "V0112_35_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Vou dar tudo de mim!"
+        },
+        "V0112_35_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Você pode contar comigo e com meus Veicuroides!"
+        },
+        "V0112_36_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Vamos acabar com isso!"
+        },
+        "V0112_36_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu confio em você!"
+        },
+        "V0112_36_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Eu sei que estou sendo um peso.\nDesculpa..."
+        },
+        "V0112_36_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                101,
+                115
+            ],
+            "face": 2,
+            "frame": 0,
+            "text": "Você consegue, Jay!"
+        },
+        "V0112_36_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                101,
+                115
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "É com você agora, Jaden!"
+        },
+        "V0112_36_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                101,
+                115
+            ],
+            "face": 5,
+            "frame": 0,
+            "text": "Desculpe, Jaden.\nEu não paro de cometer erros..."
+        },
+        "V0112_36_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                102
+            ],
+            "face": 3,
+            "frame": 0,
+            "text": "Respeite seus oponentes, Zane."
+        },
+        "V0112_36_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                102
+            ],
+            "face": 3,
+            "frame": 0,
+            "text": "É sua vez, Zane."
+        },
+        "V0112_36_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                102
+            ],
+            "face": 5,
+            "frame": 0,
+            "text": "Desculpe, Zane..."
+        }
+    }
+}

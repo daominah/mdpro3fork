@@ -1,0 +1,1702 @@
+{
+    "_GRP_": "SN0013",
+    "_LNG_": "fr-FR",
+    "info": {
+        "V0013_01_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Aussi longtemps qu'il reste une étincelle de lumière..."
+        },
+        "V0013_01_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Je combattrai pour vaincre les ténèbres."
+        },
+        "V0013_01_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'ai prédit que ce Duel se terminerait par ta défaite."
+        },
+        "V0013_01_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Et tu ne peux pas échapper à ta destinée."
+        },
+        "V0013_01_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                2
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Kaiba... J'ai déjà vu que tu perdrais ce Duel face à moi."
+        },
+        "V0013_01_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                10
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Mon cher Marik..."
+        },
+        "V0013_01_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Je te sauverai de toi-même."
+        },
+        "V0013_02_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Duel !"
+        },
+        "V0013_03_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "À mon tour !"
+        },
+        "V0013_03_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "C'est à moi de jouer."
+        },
+        "V0013_03_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "À mon tour..."
+        },
+        "V0013_03_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "À mon tour."
+        },
+        "V0013_03_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "C'est à moi de jouer..."
+        },
+        "V0013_03_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "À... mon tour..."
+        },
+        "V0013_04_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Je pioche !"
+        },
+        "V0013_04_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Je pioche."
+        },
+        "V0013_04_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Nnngh... Je pioche..."
+        },
+        "V0013_05_00_00_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Même lorsque je crains de ne jamais être libérée des ténèbres, je dois toujours avoir foi en la lumière.  "
+        },
+        "V0013_05_00_00_1": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Je pioche !"
+        },
+        "V0013_06_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Maintenant !"
+        },
+        "V0013_06_01_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Je vais mettre un terme à tout ça."
+        },
+        "V0013_06_01_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Exactement ce que j'avais prévu."
+        },
+        "V0013_06_01_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Je savais que tu ferais cela."
+        },
+        "V0013_07_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Depuis ma main..."
+        },
+        "V0013_07_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'active une Magie."
+        },
+        "V0013_07_02_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'active une Magie Jeu-Rapide !"
+        },
+        "V0013_07_03_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'active une Magie Continue."
+        },
+        "V0013_07_04_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'active une Magie d'Équipement."
+        },
+        "V0013_07_05_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'active une Magie Rituelle !"
+        },
+        "V0013_07_06_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Mon Piège s'active !"
+        },
+        "V0013_07_07_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Mon Piège Continu s'active !"
+        },
+        "V0013_07_08_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Mon Contre-Piège s'active !"
+        },
+        "V0013_07_09_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'active une carte face verso !"
+        },
+        "V0013_07_09_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Voilà ma carte face verso !"
+        },
+        "V0013_07_10_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "L'effet de mon monstre s'active."
+        },
+        "V0013_07_11_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'active ma Magie de Terrain."
+        },
+        "V0013_08_00_00_0": {
+            "card": [
+                5352
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Tu vas me révéler ta main."
+        },
+        "V0013_08_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "J'active la Carte Magie, Entraîné dans la Tombe !"
+        },
+        "V0013_08_00_01_0": {
+            "card": [
+                4842
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "J'active la Carte Magie, Monster Reborn !"
+        },
+        "V0013_08_00_02_0": {
+            "card": [
+                5360
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Les cartes de nos Cimetières vont aller dans nos Decks et les cartes de nos Decks vont aller dans nos Cimetières !"
+        },
+        "V0013_08_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "J'active ma carte face verso, Permutation des Mondes !"
+        },
+        "V0013_08_00_03_0": {
+            "card": [
+                5362
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Défausse les cartes que tu as piochées !"
+        },
+        "V0013_08_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "J'active la Carte Piège, Invalidité !"
+        },
+        "V0013_08_00_04_0": {
+            "card": [
+                5357
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "J'active la Magie d'Équipement, Cestus de Dagla !"
+        },
+        "V0013_08_00_05_0": {
+            "card": [
+                5354
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "J'active ma Carte Magie, Duplication de Sort."
+        },
+        "V0013_08_00_06_0": {
+            "card": [
+                5365
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Je t'ai eu !"
+        },
+        "V0013_08_00_06_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "J'active ma Carte Piège ! Contrecoup Sacrificiel !"
+        },
+        "V0013_08_00_06_2": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Le monstre Invoqué par Sacrifice est détruit dès qu'il attaque !"
+        },
+        "V0013_08_00_07_0": {
+            "card": [
+                4354
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "J'active ceci : la Carte Magie, Épées de Révélation de la Lumière."
+        },
+        "V0013_08_00_08_0": {
+            "card": [
+                5533
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ma carte de Magie de Terrain s'active ! Vallée Mortuaire !"
+        },
+        "V0013_08_00_09_0": {
+            "card": [
+                10952
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ma Magie Continue s'active... Temples Cachés de Vallée Mortuaire."
+        },
+        "V0013_08_00_10_0": {
+            "card": [
+                8667
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "J'active la Carte Magie, Stèle des Protecteurs du Tombeau."
+        },
+        "V0013_08_00_10_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "J'ajoute les Monstres \"Protecteurs du Tombeau\" dans mon Cimetière à ma main."
+        },
+        "V0013_08_00_11_0": {
+            "card": [
+                5540
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "J'active la Carte Magie, Sacrifice Royal !"
+        },
+        "V0013_08_00_11_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Nous défaussons tous les monstres dans nos mains !"
+        },
+        "V0013_08_00_12_0": {
+            "card": [
+                10962
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "J'active une carte face verso !"
+        },
+        "V0013_08_00_12_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Tombes Impériales de Vallée Mortuaire ! J'annule cette activation !"
+        },
+        "V0013_08_00_13_0": {
+            "card": [
+                5548
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "J'active ma Carte Piège, Rite de l'Esprit."
+        },
+        "V0013_08_00_13_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Je ressuscite un \"Protecteurs du Tombeau\" de mon Cimetière."
+        },
+        "V0013_08_00_14_0": {
+            "card": [
+                9662
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "La Magie d'Équipement, Baguette Magique !"
+        },
+        "V0013_09_00_00_0": {
+            "card": [
+                5351
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "L'effet de la Carte Keldo s'active !"
+        },
+        "V0013_09_00_01_0": {
+            "card": [
+                5361
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "L'effet de la Carte Kelbek s'active !"
+        },
+        "V0013_09_00_02_0": {
+            "card": [
+                5363
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "L'effet de la Carte Zolga s'active !"
+        },
+        "V0013_09_00_03_0": {
+            "card": [
+                5366
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "L'effet de la Carte Agido s'active !"
+        },
+        "V0013_09_00_04_0": {
+            "card": [
+                8639
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "L'effet de la Carte Héritier des Protecteurs du Tombeau s'active !"
+        },
+        "V0013_09_00_05_0": {
+            "card": [
+                5509
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "L'effet de la Carte Espion des Protecteurs du Tombeau s'active !"
+        },
+        "V0013_09_00_06_0": {
+            "card": [
+                7106
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "L'effet de la Carte Commandant des Protecteurs du Tombeau s'active !"
+        },
+        "V0013_09_00_07_0": {
+            "card": [
+                9282
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "L'effet de la Carte Recruteur des Protecteurs du Tombeau s'active !"
+        },
+        "V0013_09_00_08_0": {
+            "card": [
+                10918
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "L'effet de la Carte Attaquant en Embuscade des Protecteurs du Tombeau s'active !"
+        },
+        "V0013_09_00_09_0": {
+            "card": [
+                5524
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "L'effet de la Carte Charme de Shabti s'active !"
+        },
+        "V0013_10_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Maintenant..."
+        },
+        "V0013_10_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Que vais-je jouer..."
+        },
+        "V0013_10_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Très bien..."
+        },
+        "V0013_10_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Regarde et apprends."
+        },
+        "V0013_11_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'Invoque un monstre en Position d'Attaque."
+        },
+        "V0013_11_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'Invoque un monstre en Position de Défense."
+        },
+        "V0013_11_02_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'Invoque Spécialement un monstre."
+        },
+        "V0013_11_03_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Je Sacrifie un monstre..."
+        },
+        "V0013_11_04_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'Invoque un monstre par Sacrifice !"
+        },
+        "V0013_11_05_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'Invoque un monstre par Fusion !"
+        },
+        "V0013_11_06_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'Invoque un monstre par Rituel !"
+        },
+        "V0013_11_07_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'Invoque un monstre par Synchro !"
+        },
+        "V0013_11_08_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'Invoque un monstre par Xyz !"
+        },
+        "V0013_11_09_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'Invoque un monstre par Pendulation !"
+        },
+        "V0013_13_00_00_0": {
+            "card": [
+                5351
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Viens à moi, Keldo."
+        },
+        "V0013_13_00_01_0": {
+            "card": [
+                5356
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Montre-toi, Mudora !"
+        },
+        "V0013_13_00_02_0": {
+            "card": [
+                5361
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Viens, Kelbek !"
+        },
+        "V0013_13_00_03_0": {
+            "card": [
+                5363
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Viens, Zolga !"
+        },
+        "V0013_13_00_04_0": {
+            "card": [
+                5366
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Contemple Agido !"
+        },
+        "V0013_13_00_05_0": {
+            "card": [
+                8761
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Viens à moi, Prêtresse des Protecteurs du Tombeau !"
+        },
+        "V0013_13_00_06_0": {
+            "card": [
+                8639
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Viens à moi, Héritier des Protecteurs du Tombeau !"
+        },
+        "V0013_13_00_08_0": {
+            "card": [
+                5512
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Bats-toi, Lancier des Protecteurs du Tombeau."
+        },
+        "V0013_13_00_09_0": {
+            "card": [
+                5509
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Bats-toi, Espion des Protecteurs du Tombeau."
+        },
+        "V0013_13_00_10_0": {
+            "card": [
+                7106
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Bats-toi, Commandant des Protecteurs du Tombeau."
+        },
+        "V0013_13_00_11_0": {
+            "card": [
+                8638
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Je vais jouer cette carte."
+        },
+        "V0013_13_00_11_1": {
+            "card": [],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Oracle des Protecteurs du Tombeau."
+        },
+        "V0013_13_00_12_0": {
+            "card": [
+                10920
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Je vais jouer cette carte."
+        },
+        "V0013_13_00_12_1": {
+            "card": [],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Devin des Protecteurs du Tombeau."
+        },
+        "V0013_13_00_13_0": {
+            "card": [
+                5517
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "J'appelle Assaillant des Protecteurs du Tombeau !"
+        },
+        "V0013_13_00_14_0": {
+            "card": [
+                10918
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "J'appelle Attaquant en Embuscade des Protecteurs du Tombeau !"
+        },
+        "V0013_13_00_15_0": {
+            "card": [
+                10917
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "J'appelle Noble des Protecteurs du Tombeau !"
+        },
+        "V0013_13_00_16_0": {
+            "card": [
+                9282
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Viens à moi, Recruteur des Protecteurs du Tombeau !"
+        },
+        "V0013_13_00_17_0": {
+            "card": [
+                10919
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Viens à moi, Shaman des Protecteurs du Tombeau !"
+        },
+        "V0013_13_00_18_0": {
+            "card": [
+                5515
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Viens à moi, Chef des Protecteurs du Tombeau !"
+        },
+        "V0013_13_00_19_0": {
+            "card": [
+                5516
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "J'appelle Canonnier des Protecteurs du Tombeau."
+        },
+        "V0013_14_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "C'est ma Battle Phase."
+        },
+        "V0013_14_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Combattons."
+        },
+        "V0013_15_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Et maintenant..."
+        },
+        "V0013_15_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Permets-moi de jouer ce coup."
+        },
+        "V0013_15_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Me voilà !"
+        },
+        "V0013_16_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Il n'y a aucun futur pour toi."
+        },
+        "V0013_16_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "La fin est proche."
+        },
+        "V0013_17_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Je vais attaquer."
+        },
+        "V0013_17_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Je vais t'attaquer avec mon monstre."
+        },
+        "V0013_17_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Mon monstre attaque."
+        },
+        "V0013_18_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Mon monstre t'attaque directement !"
+        },
+        "V0013_18_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Je t'attaque directement !"
+        },
+        "V0013_19_00_00_0": {
+            "card": [
+                5363
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Zolga, attaque !"
+        },
+        "V0013_19_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Cape de la Destruction !"
+        },
+        "V0013_19_00_01_0": {
+            "card": [
+                5351
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Je t'attaque avec Keldo !"
+        },
+        "V0013_19_00_02_0": {
+            "card": [
+                5356
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Mudora, attaque !"
+        },
+        "V0013_19_00_03_0": {
+            "card": [
+                5361
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "J'attaque avec Kelbek !"
+        },
+        "V0013_19_00_04_0": {
+            "card": [
+                5366
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Je t'attaque avec Agido !"
+        },
+        "V0013_19_00_05_0": {
+            "card": [
+                8761
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Prêtresse des Protecteurs du Tombeau attaque !"
+        },
+        "V0013_19_00_06_0": {
+            "card": [
+                8639
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Héritier des Protecteurs du Tombeau attaque !"
+        },
+        "V0013_19_00_07_0": {
+            "card": [
+                8638
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Oracle des Protecteurs du Tombeau, attaque !"
+        },
+        "V0013_19_00_08_0": {
+            "card": [
+                10920
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Devin des Protecteurs du Tombeau, attaque !"
+        },
+        "V0013_19_00_09_0": {
+            "card": [
+                5517
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Assaillant des Protecteurs du Tombeau, attaque !"
+        },
+        "V0013_19_00_09_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Tranchant Silencieux !"
+        },
+        "V0013_19_00_10_0": {
+            "card": [
+                5515
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Chef des Protecteurs du Tombeau, attaque !"
+        },
+        "V0013_19_00_10_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Rage Royale !"
+        },
+        "V0013_19_00_11_0": {
+            "card": [
+                5516
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Canonnier des Protecteurs du Tombeau, attaque !"
+        },
+        "V0013_19_00_12_0": {
+            "card": [
+                5512
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Lancier des Protecteurs du Tombeau, attaque !"
+        },
+        "V0013_19_00_12_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Charge à la Lance !"
+        },
+        "V0013_19_00_13_0": {
+            "card": [
+                10988
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Hérétique des Protecteurs du Tombeau, attaque !"
+        },
+        "V0013_19_00_14_0": {
+            "card": [
+                10918
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Attaquant en Embuscade des Protecteurs du Tombeau, attaque !"
+        },
+        "V0013_19_00_15_0": {
+            "card": [
+                9282
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Recruteur des Protecteurs du Tombeau, attaque !"
+        },
+        "V0013_19_00_16_0": {
+            "card": [
+                7106
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Commandant des Protecteurs du Tombeau, attaque !"
+        },
+        "V0013_19_00_17_0": {
+            "card": [
+                10919
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Shaman des Protecteurs du Tombeau, attaque !"
+        },
+        "V0013_19_00_18_0": {
+            "card": [
+                5511
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Garde des Protecteurs du Tombeau, attaque !"
+        },
+        "V0013_19_00_18_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Frappe de la Lame Ardente !"
+        },
+        "V0013_19_00_19_0": {
+            "card": [
+                5510
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Malédiction des Protecteurs du Tombeau, attaque !"
+        },
+        "V0013_19_00_19_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Purge du Jugement Dernier !"
+        },
+        "V0013_20_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Je Pose une carte sur le terrain."
+        },
+        "V0013_20_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Je Pose une carte face verso sur le terrain."
+        },
+        "V0013_20_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Je Pose un monstre."
+        },
+        "V0013_20_01_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Je Pose un monstre face verso."
+        },
+        "V0013_21_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Cela termine mon tour."
+        },
+        "V0013_21_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Je termine mon tour."
+        },
+        "V0013_21_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Mon tour s'achève."
+        },
+        "V0013_22_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Agh..."
+        },
+        "V0013_22_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Ngh..."
+        },
+        "V0013_22_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Ungh..."
+        },
+        "V0013_22_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Aaagh !"
+        },
+        "V0013_22_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Aaaghhh..."
+        },
+        "V0013_22_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Aaah- !"
+        },
+        "V0013_23_00_00_0": {
+            "card": [],
+            "cutin": 3,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Aaaaaaaahhhhh !"
+        },
+        "V0013_24_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Aaaaaagghhhh !"
+        },
+        "V0013_26_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Gah..."
+        },
+        "V0013_26_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Tu regretteras cet acte."
+        },
+        "V0013_26_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Hng... !"
+        },
+        "V0013_27_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Non..."
+        },
+        "V0013_27_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Mon futur s'obscurcit..."
+        },
+        "V0013_27_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "La lumière s'affaiblit..."
+        },
+        "V0013_28_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "La destinée s'est accomplie."
+        },
+        "V0013_28_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "J'ai gagné, car je savais dans les moindres détails ce qui allait se passer."
+        },
+        "V0013_28_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "J'ai gagné... Mais j'ai prédit le jour où nous nous affronterons de nouveau."
+        },
+        "V0013_28_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                2
+            ],
+            "face": 2,
+            "frame": 0,
+            "text": "Kaiba, tu ne peux échapper à ta destinée."
+        },
+        "V0013_29_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "J'ai... perdu..."
+        },
+        "V0013_29_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "C'était inattendu... mais très impressionnant."
+        },
+        "V0013_29_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Tu m'as vaincue..."
+        },
+        "V0013_29_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Je n'avais pas prévu cela dans mes visions..."
+        },
+        "V0013_29_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                2
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Très impressionnant, Kaiba."
+        },
+        "V0013_29_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Tu as vaincu ton destin et changé le futur."
+        },
+        "V0013_30_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Notre combat n'amènera que ta défaite."
+        },
+        "V0013_30_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "La résistance est futile. Ton futur est gravé dans la pierre."
+        },
+        "V0013_30_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "La destinée a un rôle pour chacun d'entre nous. Le tien est-il de me faire perdre mon temps ?"
+        },
+        "V0013_30_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Peu importe ce que tu prévois, j'ai déjà vu le futur."
+        },
+        "V0013_31_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Impossible..."
+        },
+        "V0013_31_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Ce n'est pas possible..."
+        },
+        "V0013_32_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Yu-Gi-Oh! Duel Links"
+        },
+        "V0013_32_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Yu-Gi-Oh! Duel Links !"
+        },
+        "V0013_33_00_00_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'ai déjà contemplé ta chute."
+        },
+        "V0013_33_00_01_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Permets-moi de te montrer ce que je sais faire."
+        },
+        "V0013_33_00_02_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Je peux voir le futur très clairement."
+        },
+        "V0013_34_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "La destinée veut que je te terrasse."
+        },
+        "V0013_34_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Le destin m'a guidée ici."
+        },
+        "V0013_34_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Tu verras que mes stratégies sont sans pareil."
+        },
+        "V0013_34_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Tu as joué comme je le voulais et scellé ton destin."
+        },
+        "V0013_34_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'ai déjà vu cela dans mes visions."
+        },
+        "V0013_34_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Tu ne peux plus rien faire."
+        },
+        "V0013_34_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Tu es destiné à perdre. Et tu ne peux pas échapper à ta destinée."
+        },
+        "V0013_34_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Je t'en prie, attaque-moi."
+        },
+        "V0013_34_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Impressionnant..."
+        },
+        "V0013_34_00_09_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Le futur a changé ?"
+        }
+    }
+}

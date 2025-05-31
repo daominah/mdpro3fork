@@ -1,0 +1,2104 @@
+{
+    "_GRP_": "SN0418",
+    "_LNG_": "fr-FR",
+    "info": {
+        "V0418_01_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 0,
+            "text": "Cible verrouillée !\nJe vais t'éliminer !"
+        },
+        "V0418_01_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Une dernière parole ?\nParce que c'est le moment !"
+        },
+        "V0418_01_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Je m'appelle Anna !\nPrépare-toi à en prendre plein la vue !"
+        },
+        "V0418_01_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Personne ne peut arrêter mon Deck quand il est lancé !"
+        },
+        "V0418_01_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 0,
+            "text": "Bats-toi au lieu de parler !"
+        },
+        "V0418_01_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Lunette de Duel, active-toi !"
+        },
+        "V0418_01_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                401,
+                402
+            ],
+            "face": 12,
+            "frame": 0,
+            "text": "Yuma !\nSi je gagne, tu devras sortir avec moi..."
+        },
+        "V0418_01_00_06_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 16,
+            "frame": 0,
+            "text": "B-Bref !\nCommençons ce Duel !"
+        },
+        "V0418_01_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                406
+            ],
+            "face": 12,
+            "frame": 0,
+            "text": "Quoi de neuf, Tori ?\nEt moi qui pensais gâcher la fête !"
+        },
+        "V0418_01_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                424,
+                443
+            ],
+            "face": 13,
+            "frame": 0,
+            "text": "Je ne te laisserai pas toucher à un cheveu de Yuma !"
+        },
+        "V0418_02_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "Duel !"
+        },
+        "V0418_03_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 0,
+            "text": "T'as peur ?\nTu devrais, je vais gagner ce Duel !"
+        },
+        "V0418_03_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 0,
+            "text": "C'est mon tour !"
+        },
+        "V0418_03_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 0,
+            "text": "Ha !\nIl n'y a aucune issue pour toi !"
+        },
+        "V0418_03_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 0,
+            "text": "À mon tour !"
+        },
+        "V0418_03_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Ok, me voilààà !"
+        },
+        "V0418_03_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "À mon tour !"
+        },
+        "V0418_03_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "En voiture, tout le monde !"
+        },
+        "V0418_03_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "C'est mon tour !"
+        },
+        "V0418_03_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 0,
+            "text": "Tu as commis une grave erreur en m'énervant !"
+        },
+        "V0418_03_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 0,
+            "text": "C'est mon tour !"
+        },
+        "V0418_03_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Argh...\nTu ne m'humilieras pas !"
+        },
+        "V0418_03_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "À mon tour !"
+        },
+        "V0418_04_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Je pioche !"
+        },
+        "V0418_04_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Je pioche !"
+        },
+        "V0418_04_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 0,
+            "text": "Je pioche !"
+        },
+        "V0418_05_00_00_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 13,
+            "frame": 0,
+            "text": "Si tu voulais me contrarier, tu as réussi !\nTu vas payer !"
+        },
+        "V0418_05_00_00_1": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Je pioooche !"
+        },
+        "V0418_06_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "Tu t'arrêtes tout de suite !"
+        },
+        "V0418_06_01_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "Même pas en rêve !"
+        },
+        "V0418_06_01_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "Essayons ça !"
+        },
+        "V0418_06_01_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "Exactement ce que j'avais prévu !"
+        },
+        "V0418_07_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Depuis ma main..."
+        },
+        "V0418_07_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "J'active une Carte Magie !"
+        },
+        "V0418_07_02_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "J'active une Magie Jeu-Rapide !"
+        },
+        "V0418_07_03_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "J'active une Carte Magie Continue !"
+        },
+        "V0418_07_04_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "J'active une Magie d'Équipement !"
+        },
+        "V0418_07_05_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "J'active une Magie Rituelle !"
+        },
+        "V0418_07_06_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "J'active un Piège !"
+        },
+        "V0418_07_07_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "J'active un Piège Continu !"
+        },
+        "V0418_07_08_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "J'active un Contre-Piège !"
+        },
+        "V0418_07_09_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Je retourne ma carte Posée !"
+        },
+        "V0418_07_09_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Voilà ma carte Posée !"
+        },
+        "V0418_07_10_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "L'effet de mon monstre s'active !"
+        },
+        "V0418_07_11_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "J'active une Magie de Terrain !"
+        },
+        "V0418_07_12_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "J'active un effet !"
+        },
+        "V0418_07_13_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Je déclare une Échelle Pendule !"
+        },
+        "V0418_07_14_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "J'active un Effet Pendule !"
+        },
+        "V0418_08_00_00_0": {
+            "card": [
+                11184
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "J'active la Magie d'Équipement, Correspondance !"
+        },
+        "V0418_08_00_01_0": {
+            "card": [
+                9763
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "J'active ma Carte Magie Continue !\nContrôle Attractif !"
+        },
+        "V0418_08_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "Si tu contrôles au moins 3 monstres, tu n'attaques pas !"
+        },
+        "V0418_08_00_02_0": {
+            "card": [
+                11607
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "J'active ma Magie de Terrain !\nRotonde Ferroviaire !"
+        },
+        "V0418_08_00_03_0": {
+            "card": [
+                11607
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "J'active l'effet de la Carte Rotonde Ferroviaire !"
+        },
+        "V0418_08_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "J'Invoque Spécialement un monstre et son Niveau devient 10 !"
+        },
+        "V0418_08_00_04_0": {
+            "card": [
+                11607
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "J'envoie une carte au Cimetière pour utiliser Rotonde Ferroviaire !"
+        },
+        "V0418_08_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "J'ajoute un monstre de mon Deck à ma main !"
+        },
+        "V0418_08_00_05_0": {
+            "card": [
+                10862
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "J'active la Carte Magie Programme Spécial !"
+        },
+        "V0418_08_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "Ressuscite un monstre avec 3000 ATK en Position de Défense !"
+        },
+        "V0418_08_00_06_0": {
+            "card": [
+                10862
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "La Carte Programme Spécial s'active une fois envoyée au Cimetière !"
+        },
+        "V0418_08_00_07_0": {
+            "card": [
+                14183
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "J'active ma Magie Jeu-Rapide !\nProgramme Urgent !"
+        },
+        "V0418_08_00_07_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "J'Invoque Spécialement 2 monstres en annulant leurs effets."
+        },
+        "V0418_08_00_08_0": {
+            "card": [
+                14183
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "La Carte Programme Urgent s'active une fois envoyée au Cimetière !"
+        },
+        "V0418_08_00_09_0": {
+            "card": [
+                6737
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "J'active mon Piège Continu !\nCyber Canon d'Invocation !"
+        },
+        "V0418_08_00_10_0": {
+            "card": [
+                6737
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "Cyber Canon d'Invocation t'inflige des dommages d'effet !"
+        },
+        "V0418_08_00_11_0": {
+            "card": [
+                9782
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "J'active mon Piège !\nFerveur Ardente !"
+        },
+        "V0418_08_00_12_0": {
+            "card": [
+                14184
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "J'active mon Piège Continu !\nTir de Barrage !"
+        },
+        "V0418_08_00_13_0": {
+            "card": [
+                14184
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "L'effet de la Carte Tir de Barrage s'active !"
+        },
+        "V0418_08_00_13_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "Elle détruit une carte par unité de couverture retirée !"
+        },
+        "V0418_08_00_14_0": {
+            "card": [
+                14184
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "L'effet de la Carte Tir de Barrage s'active depuis le Cimetière !"
+        },
+        "V0418_08_00_14_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "Elle t'inflige des dommages d'effet !"
+        },
+        "V0418_09_00_00_0": {
+            "card": [
+                9963
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "L'effet de la Carte Super Cuirassé Canon Ferroviaire s'active !"
+        },
+        "V0418_09_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "Une fois par tour, une unité de couverture te blesse !"
+        },
+        "V0418_09_00_00_2": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "Canon Cataclysmique Kaboom !"
+        },
+        "V0418_09_00_01_0": {
+            "card": [
+                9963
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "Voilà la vraie puissance !\nL'effet de la Carte Super Cuirassé Canon Ferroviaire s'active !"
+        },
+        "V0418_09_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "Annihile-les !\nCanon Cataclysmique Kaboom !"
+        },
+        "V0418_09_00_02_0": {
+            "card": [
+                14180
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "J'active l'effet de Super Cuirassé Canon Ferroviaire Juggernaut Liebe !"
+        },
+        "V0418_09_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "Une unité de couverture augmente son ATK et sa DEF !"
+        },
+        "V0418_09_00_03_0": {
+            "card": [
+                11606
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "J'active l'effet de Numéro 81 : Super Cuirassé Canon Ferroviaire Super Dora !"
+        },
+        "V0418_09_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "Elle utilise 1 unité de couverture pour protéger 1 carte !"
+        },
+        "V0418_09_00_04_0": {
+            "card": [
+                12785
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "J'active l'effet de Loupdefer Train Blindé Lourd !"
+        },
+        "V0418_09_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "J'utilise 1 unité de couverture et un monstre t'attaque !"
+        },
+        "V0418_09_00_05_0": {
+            "card": [
+                12785
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "Lorsque la Carte Loupdefer Train Blindé Lourd est détruite, son effet s'active !"
+        },
+        "V0418_09_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "J'ajoute un monstre Machine Niveau 4 de mon Deck à ma main !"
+        },
+        "V0418_09_00_06_0": {
+            "card": [
+                11183
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "Je joue l'effet de la Carte Train de Construction Signal Rouge de ma main !"
+        },
+        "V0418_09_00_07_0": {
+            "card": [
+                11182
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "Train Express Trolley Olley a un effet qui augmente l'ATK !"
+        },
+        "V0418_09_00_08_0": {
+            "card": [
+                10860
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "J'active l'effet de la Carte Chasse-Neige Grande Vitesse depuis ma main !"
+        },
+        "V0418_09_00_09_0": {
+            "card": [
+                14182
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "À son Invocation, la Carte Ruée sur Rails du Pégase Volant active son effet !"
+        },
+        "V0418_09_00_10_0": {
+            "card": [
+                14182
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "J'active l'effet de Ruée sur Rails du Pégase Volant !"
+        },
+        "V0418_09_00_10_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "Ce monstre et un autre monstre prennent le même Niveau !"
+        },
+        "V0418_09_00_11_0": {
+            "card": [
+                10863
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "L'effet de la Carte Train Voyou t'inflige des dommages !"
+        },
+        "V0418_09_00_11_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "Pluie Ferroviaire !"
+        },
+        "V0418_09_00_12_0": {
+            "card": [
+                10863
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "L'effet de la Carte Train Voyou s'active depuis le Cimetière !"
+        },
+        "V0418_09_00_13_0": {
+            "card": [
+                11605
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "L'effet de la Carte Derricrane Train de Fret Lourd s'active depuis ma main !"
+        },
+        "V0418_09_00_13_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "Je l'Invoque Spécialement en réduisant son ATK et sa DEF !"
+        },
+        "V0418_09_00_14_0": {
+            "card": [
+                11605
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "La Carte Derricrane Train de Fret Lourd s'active si elle sert d'unité de couverture !"
+        },
+        "V0418_09_00_14_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "Elle détruit une carte sur ton Terrain !"
+        },
+        "V0418_09_00_15_0": {
+            "card": [
+                14181
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "L'effet de la Carte Train à Grande Vitesse Super Express s'active depuis ma main !"
+        },
+        "V0418_09_00_16_0": {
+            "card": [
+                14181
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "L'effet de la Carte Train à Grande Vitesse Super Express s'active depuis mon Cimetière ce tour !"
+        },
+        "V0418_09_00_17_0": {
+            "card": [
+                14201
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "J'active l'effet de Attelage de la Colère à Double Traction !"
+        },
+        "V0418_09_00_18_0": {
+            "card": [
+                14201
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "L'effet de la Carte Attelage de la Colère à Double Traction s'active depuis mon Cimetière !"
+        },
+        "V0418_09_00_19_0": {
+            "card": [
+                6201
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "L'effet de la Carte Dekoichi, la Locomotive de Guerre Enchantée s'active !"
+        },
+        "V0418_10_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 0,
+            "text": "Je joue cette carte !"
+        },
+        "V0418_10_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 0,
+            "text": "Apparais !"
+        },
+        "V0418_10_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 0,
+            "text": "Oh yeah !"
+        },
+        "V0418_10_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 0,
+            "text": "Rejoins le Duel !"
+        },
+        "V0418_11_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "J'Invoque un monstre !"
+        },
+        "V0418_11_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "J'Invoque un monstre en Position de Défense !"
+        },
+        "V0418_11_02_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "J'Invoque Spécialement un monstre !"
+        },
+        "V0418_11_03_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Je Sacrifie mon monstre !"
+        },
+        "V0418_11_04_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "J'Invoque un monstre par Sacrifice !"
+        },
+        "V0418_11_05_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "J'Invoque un monstre par Fusion !"
+        },
+        "V0418_11_06_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "J'Invoque un monstre par Rituel !"
+        },
+        "V0418_11_07_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "J'Invoque un monstre par Synchro !"
+        },
+        "V0418_11_08_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "J'Invoque un monstre par Xyz !"
+        },
+        "V0418_11_08_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Je construis le Réseau Habillé !\nInvocation Xyz !"
+        },
+        "V0418_11_09_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "J'Invoque un monstre par Pendulation !"
+        },
+        "V0418_11_10_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "J'Invoque un monstre par Lien !"
+        },
+        "V0418_13_00_00_0": {
+            "card": [
+                9963
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "Tchou tchou !\nSuper Cuirassé Canon Ferroviaire !"
+        },
+        "V0418_13_00_01_0": {
+            "card": [
+                14180
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "Allons-y !\nSuper Cuirassé Canon Ferroviaire Juggernaut Liebe !"
+        },
+        "V0418_13_00_02_0": {
+            "card": [
+                11606
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "Alleeez !\nNuméro 81 : Super Cuirassé Canon Ferroviaire Super Dora !"
+        },
+        "V0418_13_00_03_0": {
+            "card": [
+                12785
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "Montre-toi !\nLoupdefer Train Blindé Lourd de Rang 4 !"
+        },
+        "V0418_13_00_04_0": {
+            "card": [
+                11183
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "Voici Train de Construction Signal Rouge !"
+        },
+        "V0418_13_00_05_0": {
+            "card": [
+                11182
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "Train Express Trolley Olley !\nProtège-moi !"
+        },
+        "V0418_13_00_06_0": {
+            "card": [
+                10860
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "Chasse-Neige Grande Vitesse creuse un tunnel vers le Terrain !"
+        },
+        "V0418_13_00_07_0": {
+            "card": [
+                10861
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "Voici Chevalier Night Express !"
+        },
+        "V0418_13_00_08_0": {
+            "card": [
+                14182
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "Tu n'échapperas pas à Ruée sur Rails du Pégase Volant !"
+        },
+        "V0418_13_00_09_0": {
+            "card": [
+                10039
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "J'Invoque Spécialement Flèche Roquette Express !"
+        },
+        "V0418_13_00_10_0": {
+            "card": [
+                10863
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "Apparais, Train Voyou !"
+        },
+        "V0418_13_00_11_0": {
+            "card": [
+                11181
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "Locomotive au Cœur de Lion est là !"
+        },
+        "V0418_13_00_12_0": {
+            "card": [
+                11605
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "Regarde ça !\nDerricrane Train de Fret Lourd !"
+        },
+        "V0418_13_00_13_0": {
+            "card": [
+                14181
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "Viens à moi, Train à Grande Vitesse Super Express !"
+        },
+        "V0418_13_00_14_0": {
+            "card": [
+                14201
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "Allez, Attelage de la Colère à Double Traction !"
+        },
+        "V0418_13_00_15_0": {
+            "card": [
+                6201
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "Voici Dekoichi, la Locomotive de Guerre Enchantée !"
+        },
+        "V0418_13_00_16_0": {
+            "card": [
+                6174
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "Apparais, Bokoichi, le Wagon de Terreur !"
+        },
+        "V0418_14_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Bats-toi !"
+        },
+        "V0418_14_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "C'est l'heure de combattre !"
+        },
+        "V0418_15_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 0,
+            "text": "Prends ça !"
+        },
+        "V0418_15_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 0,
+            "text": "Hors de mon chemin !"
+        },
+        "V0418_15_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 0,
+            "text": "Alleeez !"
+        },
+        "V0418_16_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "Avec ça, tu vas t'arrêter net !"
+        },
+        "V0418_16_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "C'est la fin pour toi !"
+        },
+        "V0418_17_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "J'attaque avec mon monstre !"
+        },
+        "V0418_17_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "Mon monstre attaque !"
+        },
+        "V0418_17_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Boum !"
+        },
+        "V0418_18_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Mon monstre t'attaque directement !"
+        },
+        "V0418_18_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Je t'attaque directement !"
+        },
+        "V0418_19_00_00_0": {
+            "card": [
+                9963
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Allez, Super Cuirassé Canon Ferroviaire !"
+        },
+        "V0418_19_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Train à Grande Vitesse Super Express !"
+        },
+        "V0418_19_00_01_0": {
+            "card": [
+                14180
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Super Cuirassé Canon Ferroviaire Juggernaut Liebe !\nExplose l'adversaire !"
+        },
+        "V0418_19_00_02_0": {
+            "card": [
+                11606
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Numéro 81 : Super Cuirassé Canon Ferroviaire Super Dora !\nPrépare-toi, vise et tire !"
+        },
+        "V0418_19_00_03_0": {
+            "card": [
+                12785
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Allons-y, Loupdefer Train Blindé Lourd ! À l'attaque !"
+        },
+        "V0418_19_00_04_0": {
+            "card": [
+                11183
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Train de Construction Signal Rouge ! À l'attaque !"
+        },
+        "V0418_19_00_05_0": {
+            "card": [
+                11182
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Train Express Trolley Olley attaque !"
+        },
+        "V0418_19_00_06_0": {
+            "card": [
+                10860
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Ouvre la voie, Chasse-Neige Grande Vitesse !"
+        },
+        "V0418_19_00_07_0": {
+            "card": [
+                10861
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Mets-lui une raclée,  Chevalier Night Express !"
+        },
+        "V0418_19_00_08_0": {
+            "card": [
+                14182
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "À l'attaque, Ruée sur Rails du Pégase Volant !\nOuaiiis !"
+        },
+        "V0418_19_00_09_0": {
+            "card": [
+                10039
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Flèche Roquette Express ! Alleeez !"
+        },
+        "V0418_19_00_10_0": {
+            "card": [
+                10863
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Train Voyou attaque !"
+        },
+        "V0418_19_00_11_0": {
+            "card": [
+                11181
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Locomotive au Cœur de Lion attaque !"
+        },
+        "V0418_19_00_12_0": {
+            "card": [
+                11605
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Derricrane Train de Fret Lourd ! À l'attaque !"
+        },
+        "V0418_19_00_13_0": {
+            "card": [
+                14181
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Train à Grande Vitesse Super Express !\nAppuie sur le champignon !"
+        },
+        "V0418_19_00_14_0": {
+            "card": [
+                14201
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Attelage de la Colère à Double Traction ! Dévore-les !"
+        },
+        "V0418_19_00_15_0": {
+            "card": [
+                6201
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Dekoichi, la Locomotive de Guerre Enchantée attaque !"
+        },
+        "V0418_19_00_16_0": {
+            "card": [
+                6174
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Bokoichi, le Wagon de Terreur attaque !"
+        },
+        "V0418_20_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Je Pose une carte !"
+        },
+        "V0418_20_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Je Pose une carte !"
+        },
+        "V0418_20_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Je Pose un monstre !"
+        },
+        "V0418_20_01_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Je Pose un monstre !"
+        },
+        "V0418_21_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 0,
+            "text": "Je ne sais pas comment tu vas pouvoir gagner !"
+        },
+        "V0418_21_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 0,
+            "text": "Je termine mon tour !"
+        },
+        "V0418_21_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 18,
+            "frame": 0,
+            "text": "Youhou !\nLa victoire me tend les bras !"
+        },
+        "V0418_21_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 0,
+            "text": "Je termine mon tour !"
+        },
+        "V0418_21_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Je termine mon tour !"
+        },
+        "V0418_21_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Allez ! À toi !"
+        },
+        "V0418_21_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Je termine mon tour !"
+        },
+        "V0418_21_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Je t'attends !"
+        },
+        "V0418_21_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Pas si vite !"
+        },
+        "V0418_21_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Je termine mon tour !"
+        },
+        "V0418_21_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "J'en ai assez de toi !"
+        },
+        "V0418_21_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Je termine mon tour !"
+        },
+        "V0418_22_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "Aaah !"
+        },
+        "V0418_22_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "Argh !"
+        },
+        "V0418_22_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "Aaah !"
+        },
+        "V0418_23_00_00_0": {
+            "card": [],
+            "cutin": 3,
+            "duelist": [],
+            "face": 14,
+            "frame": 1,
+            "text": "Aaah !"
+        },
+        "V0418_24_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "Errgh !"
+        },
+        "V0418_25_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 14,
+            "frame": 1,
+            "text": "Ouaaah !"
+        },
+        "V0418_25_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 14,
+            "frame": 1,
+            "text": "Aaarf !"
+        },
+        "V0418_25_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 14,
+            "frame": 1,
+            "text": "Aaargh !"
+        },
+        "V0418_26_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 0,
+            "text": "Ça ne se reproduira pas !"
+        },
+        "V0418_26_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 0,
+            "text": "C'est tout ce que tu sais faire !?"
+        },
+        "V0418_26_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 0,
+            "text": "C'est tout ce que tu as dans le ventre ?"
+        },
+        "V0418_27_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Pas possible..."
+        },
+        "V0418_27_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Ergh..."
+        },
+        "V0418_27_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Tu vas payer pour ça !"
+        },
+        "V0418_28_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 18,
+            "frame": 0,
+            "text": "Youhou !\nJ'ai gagné !"
+        },
+        "V0418_28_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 18,
+            "frame": 0,
+            "text": "Super !\nJ'ai réussi, j'ai réussi !\nJ'ai gagné !"
+        },
+        "V0418_28_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 0,
+            "text": "Ha !\nComme si j'allais te laisser me vaincre !"
+        },
+        "V0418_28_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 0,
+            "text": "Gustav Max a écrasé tes monstres minuscules !"
+        },
+        "V0418_28_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                401,
+                402
+            ],
+            "face": 18,
+            "frame": 0,
+            "text": "J'ai gagné, Yuma !\nÇa veut dire que tu vas devoir être mon..."
+        },
+        "V0418_28_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 16,
+            "frame": 0,
+            "text": "Rien !\nTu n'as rien entendu !"
+        },
+        "V0418_28_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                406
+            ],
+            "face": 11,
+            "frame": 0,
+            "text": "Pardon, Tori.\nJe vais lever le pied la prochaine fois."
+        },
+        "V0418_28_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                424,
+                443
+            ],
+            "face": 12,
+            "frame": 0,
+            "text": "L'amour triomphe de tout !"
+        },
+        "V0418_29_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 14,
+            "frame": 0,
+            "text": "Comment ai-je pu perdre !?"
+        },
+        "V0418_29_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "*Soupir*\nJ'aurais dû ramener un plus gros canon !"
+        },
+        "V0418_29_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 16,
+            "frame": 0,
+            "text": "Eh bien...\nJe te laisse la victoire pour cette fois."
+        },
+        "V0418_29_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Argh !\nJe ne l'oublierai pas !"
+        },
+        "V0418_29_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Nooon !\nMon Gustav Max !"
+        },
+        "V0418_29_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Tu verras !\nJe me venge toujours !"
+        },
+        "V0418_29_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                424,
+                443
+            ],
+            "face": 15,
+            "frame": 0,
+            "text": "Pardon, Yuma.\nJ'aurais aimé gagner ce Duel comme tu as gagné mon cœur."
+        },
+        "V0418_30_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Tu mets les voiles ? Poule mouillée !"
+        },
+        "V0418_30_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 0,
+            "text": "Tu ne peux plus rien faire, alors termine ton tour !"
+        },
+        "V0418_30_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 18,
+            "frame": 0,
+            "text": "Super !\nJ'ai réussi, j'ai réussi !"
+        },
+        "V0418_31_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 14,
+            "frame": 1,
+            "text": "Quoi ?!"
+        },
+        "V0418_31_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 14,
+            "frame": 1,
+            "text": "Punaise !"
+        },
+        "V0418_32_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Yu-Gi-Oh! Duel Links !"
+        },
+        "V0418_32_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "C'est Yu-Gi-Oh! Duel Links !"
+        },
+        "V0418_33_00_00_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "Tu n'as jamais vu une telle puissance de feu !"
+        },
+        "V0418_33_00_01_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "Ça va faire un grand boum !"
+        },
+        "V0418_33_00_02_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "Essaie un peu de m'arrêter !"
+        },
+        "V0418_34_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 0,
+            "text": "Installe-toi et regarde !"
+        },
+        "V0418_34_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Ne te prends pas la tête sur des détails."
+        },
+        "V0418_34_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 0,
+            "text": "Les règles autorisent ce coup !"
+        },
+        "V0418_34_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 0,
+            "text": "Oublie ça !"
+        },
+        "V0418_34_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Pourquoi tu utilises cette carte ?"
+        },
+        "V0418_34_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 0,
+            "text": "Arrête de pleurnicher et laisse-moi me battre !"
+        },
+        "V0418_34_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 0,
+            "text": "Humpf. J'ai raté ma cible."
+        },
+        "V0418_34_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 0,
+            "text": "Je tire avec mon blaster !"
+        },
+        "V0418_34_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 16,
+            "frame": 0,
+            "text": "Tu sais ce que je ressens pour toi. Ne me force pas à le dire."
+        },
+        "V0418_34_00_09_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 16,
+            "frame": 0,
+            "text": "C'est bien ce que j'ai dit !\nJe crois que tu es..."
+        },
+        "V0418_34_00_10_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "\"Amour Dévoué ?\" Pourquoi voudrais-je réduire mes LP à 0 ?"
+        },
+        "V0418_35_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Laisse-moi faire !\nAnna s'occupe de tout !"
+        },
+        "V0418_35_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Ouaiiis !\nJe vais écrabouiller toute leur équipe !"
+        },
+        "V0418_36_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 18,
+            "frame": 0,
+            "text": "Je te fais confiance, alors ne t'avise pas de perdre !"
+        },
+        "V0418_36_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Défonce tout !"
+        },
+        "V0418_36_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 0,
+            "text": "Tout ira bien si tu restes hors de mon chemin !"
+        },
+        "V0418_36_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                401,
+                402
+            ],
+            "face": 16,
+            "frame": 0,
+            "text": "Ce n'est pas comme si j'essayais de t'impressionner..."
+        },
+        "V0418_36_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                401,
+                402
+            ],
+            "face": 12,
+            "frame": 0,
+            "text": "Yuma, ne te bats pas comme une mauviette !"
+        },
+        "V0418_36_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                401,
+                402
+            ],
+            "face": 15,
+            "frame": 0,
+            "text": "Je suis totalement inutile...\nJ'aimerais être utile..."
+        },
+        "V0418_37_00_00_0": {
+            "card": [
+                9963
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "Voilà le train qui fera dérailler tes chances de victoire !"
+        },
+        "V0418_37_00_01_0": {
+            "card": [
+                12785
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "Cette forteresse impénétrable est la terreur des rails !"
+        },
+        "V0418_37_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "Invocation Xyz !"
+        }
+    }
+}

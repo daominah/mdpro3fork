@@ -1,0 +1,2061 @@
+{
+    "_GRP_": "SN0406",
+    "_LNG_": "pt-BR",
+    "info": {
+        "V0406_01_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Vamos começar o Duelo!"
+        },
+        "V0406_01_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Tenho que sentir a vibração, como Yuma!"
+        },
+        "V0406_01_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 0,
+            "text": "Não me convide para sua festa triste quando eu vencer!"
+        },
+        "V0406_01_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Disco de Duelo, vamos!\nVisor de Duelo, vamos nessa!"
+        },
+        "V0406_01_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                401,
+                402
+            ],
+            "face": 12,
+            "frame": 0,
+            "text": "Vença este Duelo, Yuma!\n...Oops!"
+        },
+        "V0406_01_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 16,
+            "frame": 0,
+            "text": "Eu disse vença este duelo, Tori!"
+        },
+        "V0406_01_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                403
+            ],
+            "face": 11,
+            "frame": 0,
+            "text": "Isso vai ser duro, mas eu não vou perder, Astral!"
+        },
+        "V0406_02_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Duelo!"
+        },
+        "V0406_03_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 0,
+            "text": "Eu tenho mesmo que ganhar esse!"
+        },
+        "V0406_03_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 0,
+            "text": "Minha vez!"
+        },
+        "V0406_03_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 0,
+            "text": "Só tenho que continuar fazendo o que sei fazer!"
+        },
+        "V0406_03_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 0,
+            "text": "É a minha vez!"
+        },
+        "V0406_03_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Aí vou eu!"
+        },
+        "V0406_03_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "É a minha vez!"
+        },
+        "V0406_03_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Minha vez!"
+        },
+        "V0406_03_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 18,
+            "frame": 0,
+            "text": "Sei que posso duelar melhor do que isso!"
+        },
+        "V0406_03_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 18,
+            "frame": 0,
+            "text": "É a minha vez!"
+        },
+        "V0406_03_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 15,
+            "frame": 0,
+            "text": "Essa não..."
+        },
+        "V0406_03_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 18,
+            "frame": 0,
+            "text": "Minha vez!"
+        },
+        "V0406_04_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Compro!"
+        },
+        "V0406_04_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Compro!"
+        },
+        "V0406_04_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 18,
+            "frame": 0,
+            "text": "Compro!"
+        },
+        "V0406_05_00_00_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 18,
+            "frame": 1,
+            "text": "Consigo fazer um toca aqui até o céu!"
+        },
+        "V0406_05_00_00_1": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 18,
+            "frame": 1,
+            "text": "Compro!!!"
+        },
+        "V0406_06_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "Agora é minha chance!"
+        },
+        "V0406_06_01_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "Espere!"
+        },
+        "V0406_06_01_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 18,
+            "frame": 0,
+            "text": "Hmm..."
+        },
+        "V0406_06_01_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "Qual é!"
+        },
+        "V0406_07_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Da minha mão..."
+        },
+        "V0406_07_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Ativo um Card de Magia!"
+        },
+        "V0406_07_02_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Ativo uma Magia Rápida!"
+        },
+        "V0406_07_03_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Ativo uma Magia Contínua!"
+        },
+        "V0406_07_04_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Ativo uma Magia de Equipamento!"
+        },
+        "V0406_07_05_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Ativo uma Magia de Ritual!"
+        },
+        "V0406_07_06_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Ativo uma Armadilha!"
+        },
+        "V0406_07_07_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Ativo uma Armadilha Contínua!"
+        },
+        "V0406_07_08_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Ativo uma Armadilha de Resposta!"
+        },
+        "V0406_07_09_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Viro meu card Baixado!"
+        },
+        "V0406_07_09_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Dê uma olhada no meu card Baixado!"
+        },
+        "V0406_07_10_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Ativo meu efeito de monstro!"
+        },
+        "V0406_07_11_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Ativo uma Magia de Campo!"
+        },
+        "V0406_07_12_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Ativo um efeito!"
+        },
+        "V0406_07_13_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Baixo a Escala de Pêndulo!"
+        },
+        "V0406_08_00_00_0": {
+            "card": [
+                10541
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 18,
+            "frame": 1,
+            "text": "Ativo Magia de Aumento de Classe Força de Barian!"
+        },
+        "V0406_08_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 18,
+            "frame": 1,
+            "text": "Ele aumenta a classificação de um Monstro Xyz em 1, para um monstro CXyz!"
+        },
+        "V0406_08_00_01_0": {
+            "card": [
+                4344
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "Aqui está o prato especial do chef!\nCaril Mooyan!"
+        },
+        "V0406_08_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "São 200 PV apimentados!"
+        },
+        "V0406_08_00_02_0": {
+            "card": [
+                5978
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "Hora de cozinhar as coisas com Mystik Wok!"
+        },
+        "V0406_08_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "Recupero meus PV!"
+        },
+        "V0406_08_00_03_0": {
+            "card": [
+                5350
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "Vou comer por conta do meu Provisões de Emergência!"
+        },
+        "V0406_08_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "Aumento meus PV!"
+        },
+        "V0406_08_00_04_0": {
+            "card": [
+                5982
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "Ativo a Magia de Campo O Santuário no Céu!"
+        },
+        "V0406_08_00_05_0": {
+            "card": [
+                6709
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "Ativo meu Card de Armadilha!\nAtaque de Ícaro!"
+        },
+        "V0406_08_00_06_0": {
+            "card": [
+                4683
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "Hoje em nosso menu temos Receita do Hambúrguer!"
+        },
+        "V0406_09_00_00_0": {
+            "card": [
+                10487
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "Ativo o efeito de Pequena Fada!"
+        },
+        "V0406_09_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "Descarto um card para aumentar seu Nível em 1!"
+        },
+        "V0406_09_00_01_0": {
+            "card": [
+                10527
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "Ativo o efeito de Fada Menina de Torcida!"
+        },
+        "V0406_09_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "Usando 1 Unidade de Sobreposição, compro 1 card do meu deck!"
+        },
+        "V0406_09_00_02_0": {
+            "card": [
+                10528
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "O efeito de CXyz Fada Negra Menina de Torcida é ativado!"
+        },
+        "V0406_09_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "Compro um card do deck!"
+        },
+        "V0406_09_00_03_0": {
+            "card": [
+                10528
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 18,
+            "frame": 1,
+            "text": "Agora ativo o efeito de CXyz Fada Negra Menina de Torcida!"
+        },
+        "V0406_09_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 18,
+            "frame": 1,
+            "text": "Ela usa 1 Unidade de Sobreposição para causar dano!"
+        },
+        "V0406_09_00_04_0": {
+            "card": [
+                9837
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "Uso 1 Unidade de Sobreposição para ativar o efeito de Elfo Brilhante!"
+        },
+        "V0406_09_00_05_0": {
+            "card": [
+                9604
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "Uso 1 Unidade de Sobreposição para ativar o efeito de Evigishki Merrowgeist!"
+        },
+        "V0406_09_00_06_0": {
+            "card": [
+                9870
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "O efeito de Zenmaines de Corda é ativado!"
+        },
+        "V0406_09_00_07_0": {
+            "card": [
+                9579
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "O Efeito de Virar de Rosquinhas da Perdição é ativado!"
+        },
+        "V0406_09_00_08_0": {
+            "card": [
+                8857
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "Vou comer mais milho!"
+        },
+        "V0406_09_00_09_0": {
+            "card": [
+                11193
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "Lillybô!\nTraga seu amigo de volta!"
+        },
+        "V0406_09_00_10_0": {
+            "card": [
+                11193
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "Ajude-me, Lillybô!"
+        },
+        "V0406_09_00_11_0": {
+            "card": [
+                10379
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "Escute a chefia, Orbital 7!"
+        },
+        "V0406_09_00_12_0": {
+            "card": [
+                10379
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 18,
+            "frame": 1,
+            "text": "Orbital 7!\nUse seu Você Ganhou, Chefia! Marcadores e batalha!"
+        },
+        "V0406_09_00_13_0": {
+            "card": [
+                10379
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 18,
+            "frame": 1,
+            "text": "Orbital 7!\nChame o chefão!"
+        },
+        "V0406_09_00_14_0": {
+            "card": [
+                5952
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "O efeito de O Representante da Sabedoria - Mercúrio é ativado!"
+        },
+        "V0406_09_00_15_0": {
+            "card": [
+                9289
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "O efeito de O Representante dos Milagres - Júpiter é ativado!"
+        },
+        "V0406_09_00_16_0": {
+            "card": [
+                5951
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "O efeito de O Representante do Julgamento - Saturno é ativado!"
+        },
+        "V0406_09_00_17_0": {
+            "card": [
+                5953
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "O efeito de O Representante da Criação - Vênus é ativado!"
+        },
+        "V0406_09_00_18_0": {
+            "card": [
+                8283
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "O efeito de Archlord Kristya é ativado!"
+        },
+        "V0406_09_00_19_0": {
+            "card": [
+                9287
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "Ativo o efeito de Mestre Hyperion!"
+        },
+        "V0406_10_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Ok!"
+        },
+        "V0406_10_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Mostre-se!"
+        },
+        "V0406_10_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Apareça!"
+        },
+        "V0406_10_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Vou jogar esse!"
+        },
+        "V0406_11_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Vou Invocar um monstro!"
+        },
+        "V0406_11_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Invoco um monstro em Posição de Defesa!"
+        },
+        "V0406_11_02_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Faço a Invocação-Especial de um monstro!"
+        },
+        "V0406_11_03_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Ofereço como Tributo meu monstro!"
+        },
+        "V0406_11_04_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Faço a Invocação-Tributo de um monstro!"
+        },
+        "V0406_11_05_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Faço a Invocação-Fusão de um monstro!"
+        },
+        "V0406_11_06_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Faço a Invocação-Ritual de um monstro!"
+        },
+        "V0406_11_07_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Faço a Invocação-Sincro de um monstro!"
+        },
+        "V0406_11_08_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Faço a Invocação-Xyz de um monstro!"
+        },
+        "V0406_11_08_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Construo a Rede de Sobreposição!\nInvocação-Xyz!"
+        },
+        "V0406_11_09_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Faço a Invocação-Pêndulo de um monstro!"
+        },
+        "V0406_11_10_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Faço a Invocação-Link de um monstro!"
+        },
+        "V0406_13_00_00_0": {
+            "card": [
+                10487
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "Apareça, Pequena Fada!"
+        },
+        "V0406_13_00_01_0": {
+            "card": [
+                10527
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "Aqui está Fada Menina de Torcida!"
+        },
+        "V0406_13_00_02_0": {
+            "card": [
+                10528
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 18,
+            "frame": 1,
+            "text": "CXyz Fada Negra Menina de Torcida!"
+        },
+        "V0406_13_00_03_0": {
+            "card": [
+                9837
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "Traga luz para o campo, Elfo Brilhante!"
+        },
+        "V0406_13_00_04_0": {
+            "card": [
+                9604
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "Apareça, Evigishki Merrowgeist!"
+        },
+        "V0406_13_00_05_0": {
+            "card": [
+                9836
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "Aí vem Mira, a Portadora da Estrela!"
+        },
+        "V0406_13_00_06_0": {
+            "card": [
+                9870
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "Apareça, Zenmaines de Corda!"
+        },
+        "V0406_13_00_07_0": {
+            "card": [
+                4014
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "Um pedido de Homem Cogumelo, saindo agora!"
+        },
+        "V0406_13_00_08_0": {
+            "card": [
+                9579
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "Quer um lanche?\nAqui está Rosquinhas da Perdição!"
+        },
+        "V0406_13_00_09_0": {
+            "card": [
+                4708
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "Está com fome de Hambúrguer Esfomeado?"
+        },
+        "V0406_13_00_10_0": {
+            "card": [
+                8857
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "Aqui está Milho Doce, direto da churrasqueira!"
+        },
+        "V0406_13_00_11_0": {
+            "card": [
+                3966
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "Aqui está outra ajuda de Ficha Amido!"
+        },
+        "V0406_13_00_12_0": {
+            "card": [
+                11193
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "Ela não é qualquer robô-gari!"
+        },
+        "V0406_13_00_12_1": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "Ela é Lillybô!"
+        },
+        "V0406_13_00_13_0": {
+            "card": [
+                10379
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "Veja jogar, Orbital 7!"
+        },
+        "V0406_13_00_14_0": {
+            "card": [
+                5952
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "Aí vem O Representante da Sabedoria - Mercúrio!"
+        },
+        "V0406_13_00_15_0": {
+            "card": [
+                9289
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "O Representante dos Milagres - Júpiter!\nVamos!"
+        },
+        "V0406_13_00_16_0": {
+            "card": [
+                5951
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "Aqui está O Representante do Julgamento - Saturno!"
+        },
+        "V0406_13_00_17_0": {
+            "card": [
+                5953
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "Junte-se a mim!\nO Representante da Criação - Vênus!"
+        },
+        "V0406_13_00_18_0": {
+            "card": [
+                5954
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "Apareça!\nO Representante da Força - Marte!"
+        },
+        "V0406_13_00_19_0": {
+            "card": [
+                5949
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "Aqui está Bola com Brilho Místico!"
+        },
+        "V0406_13_00_20_0": {
+            "card": [
+                8283
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "Apareça!\nArchlord Kristya!"
+        },
+        "V0406_13_00_21_0": {
+            "card": [
+                9287
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "Apareça!\nMestre Hyperion!"
+        },
+        "V0406_14_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "À batalha!"
+        },
+        "V0406_14_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Vamos batalhar!"
+        },
+        "V0406_15_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Vamos!"
+        },
+        "V0406_15_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Acabe com eles!"
+        },
+        "V0406_15_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Ok!"
+        },
+        "V0406_16_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 18,
+            "frame": 1,
+            "text": "Aí vai!"
+        },
+        "V0406_16_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 18,
+            "frame": 1,
+            "text": "Você vai perder!"
+        },
+        "V0406_17_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "Ataco com meu monstro!"
+        },
+        "V0406_17_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "Meu monstro vai atacar!"
+        },
+        "V0406_17_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "Meu monstro ataca!"
+        },
+        "V0406_18_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 18,
+            "frame": 1,
+            "text": "Ataque direto!"
+        },
+        "V0406_18_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 18,
+            "frame": 1,
+            "text": "Ataco você diretamente!"
+        },
+        "V0406_19_00_00_0": {
+            "card": [
+                10487
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "Ataque, Pequena Fada!"
+        },
+        "V0406_19_00_01_0": {
+            "card": [
+                10527
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "Fada Menina de Torcida!\nAtacar!"
+        },
+        "V0406_19_00_02_0": {
+            "card": [
+                10528
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 18,
+            "frame": 1,
+            "text": "Ataque, CXyz Fada Negra Menina de Torcida!"
+        },
+        "V0406_19_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 18,
+            "frame": 1,
+            "text": "Fúria da Fada!"
+        },
+        "V0406_19_00_03_0": {
+            "card": [
+                9837
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "Elfo Brilhante vai atacar!"
+        },
+        "V0406_19_00_04_0": {
+            "card": [
+                9604
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "Evigishki Merrowgeist ataca!"
+        },
+        "V0406_19_00_05_0": {
+            "card": [
+                9836
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "Vai, Mira, a Portadora da Estrela!"
+        },
+        "V0406_19_00_06_0": {
+            "card": [
+                9870
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "Zenmaines de Corda! Atacar!"
+        },
+        "V0406_19_00_07_0": {
+            "card": [
+                4014
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "Homem Cogumelo!\nAtacar!"
+        },
+        "V0406_19_00_08_0": {
+            "card": [
+                9579
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "Rosquinhas da Perdição!\nDevore-os!"
+        },
+        "V0406_19_00_09_0": {
+            "card": [
+                4708
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "Hora de comer, Hambúrguer Esfomeado!"
+        },
+        "V0406_19_00_10_0": {
+            "card": [
+                8857
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "Milho Doce ataca!"
+        },
+        "V0406_19_00_11_0": {
+            "card": [
+                11193
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "Lillybô!\nFaça a limpa!"
+        },
+        "V0406_19_00_12_0": {
+            "card": [
+                10379
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 18,
+            "frame": 1,
+            "text": "Mostre como você é corajoso, Orbital 7!"
+        },
+        "V0406_19_00_13_0": {
+            "card": [
+                5952
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "O Representante da Sabedoria - Mercúrio ataca!"
+        },
+        "V0406_19_00_14_0": {
+            "card": [
+                9289
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "O Representante dos Milagres - Júpiter!\nAtacar!"
+        },
+        "V0406_19_00_15_0": {
+            "card": [
+                5951
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "O Representante do Julgamento - Saturno ataca!"
+        },
+        "V0406_19_00_16_0": {
+            "card": [
+                5953
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "O Representante da Criação - Vênus!\nAtacar!"
+        },
+        "V0406_19_00_17_0": {
+            "card": [
+                5954
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "O Representante da Força - Marte!\nAtacar!"
+        },
+        "V0406_19_00_18_0": {
+            "card": [
+                5949
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "Ataque, Bola com Brilho Místico!"
+        },
+        "V0406_19_00_19_0": {
+            "card": [
+                8283
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "Archlord Kristya ataca!"
+        },
+        "V0406_19_00_20_0": {
+            "card": [
+                9287
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "Mestre Hyperion!\nAtacar!"
+        },
+        "V0406_20_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Baixo um card!"
+        },
+        "V0406_20_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Vou Baixar um card!"
+        },
+        "V0406_20_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Baixo um monstro!"
+        },
+        "V0406_20_01_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Estou Baixando um monstro!"
+        },
+        "V0406_21_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 0,
+            "text": "Estou ótimo!"
+        },
+        "V0406_21_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 0,
+            "text": "Termino meu turno!"
+        },
+        "V0406_21_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Acho que vou vencer!"
+        },
+        "V0406_21_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Termino meu turno!"
+        },
+        "V0406_21_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Termino meu turno!"
+        },
+        "V0406_21_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Termino meu turno!"
+        },
+        "V0406_21_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Sua vez!"
+        },
+        "V0406_21_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 15,
+            "frame": 0,
+            "text": "Essa não..."
+        },
+        "V0406_21_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 15,
+            "frame": 0,
+            "text": "Termino meu turno..."
+        },
+        "V0406_21_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 15,
+            "frame": 0,
+            "text": "Termino meu turno..."
+        },
+        "V0406_21_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 15,
+            "frame": 0,
+            "text": "O que devo fazer..."
+        },
+        "V0406_22_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 14,
+            "frame": 1,
+            "text": "Ops!"
+        },
+        "V0406_22_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 14,
+            "frame": 1,
+            "text": "Aah!"
+        },
+        "V0406_22_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 14,
+            "frame": 1,
+            "text": "Uah!"
+        },
+        "V0406_23_00_00_0": {
+            "card": [],
+            "cutin": 3,
+            "duelist": [],
+            "face": 14,
+            "frame": 1,
+            "text": "Ahhhhhhhhh!"
+        },
+        "V0406_24_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 15,
+            "frame": 1,
+            "text": "Argh..."
+        },
+        "V0406_25_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 14,
+            "frame": 1,
+            "text": "Ahhhh!"
+        },
+        "V0406_25_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 14,
+            "frame": 1,
+            "text": "Nãããooo!"
+        },
+        "V0406_25_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 14,
+            "frame": 1,
+            "text": "Uf!"
+        },
+        "V0406_26_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 0,
+            "text": "Afe!"
+        },
+        "V0406_26_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 0,
+            "text": "Ergh..."
+        },
+        "V0406_26_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 15,
+            "frame": 0,
+            "text": "Ai..."
+        },
+        "V0406_27_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 15,
+            "frame": 0,
+            "text": "De jeito nenhum..."
+        },
+        "V0406_27_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 15,
+            "frame": 0,
+            "text": "Argh..."
+        },
+        "V0406_27_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 15,
+            "frame": 0,
+            "text": "Não acabou ainda..."
+        },
+        "V0406_28_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 0,
+            "text": "Viva!\nEu venci!"
+        },
+        "V0406_28_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 0,
+            "text": "Me diverti muito!\nPodemos Duelar de novo?"
+        },
+        "V0406_28_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Agora vejo porque Yuma não para de Duelar!"
+        },
+        "V0406_28_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Eu sabia que conseguiria fazer isso se me concentrasse!"
+        },
+        "V0406_28_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                401,
+                402
+            ],
+            "face": 18,
+            "frame": 0,
+            "text": "Vamos, Yuma!\nTente de novo na próxima vez!"
+        },
+        "V0406_28_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                401,
+                402
+            ],
+            "face": 18,
+            "frame": 0,
+            "text": "Ai, ai...\nPare de cometer erros bobos!"
+        },
+        "V0406_29_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 18,
+            "frame": 0,
+            "text": "Só porque você venceu não significa que seja melhor do que eu!"
+        },
+        "V0406_29_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 16,
+            "frame": 0,
+            "text": "Ai, ai...\nPreciso praticar mais."
+        },
+        "V0406_29_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 0,
+            "text": "Não vou desistir!"
+        },
+        "V0406_29_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 18,
+            "frame": 0,
+            "text": "Vou vencer da próxima vez!"
+        },
+        "V0406_29_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 15,
+            "frame": 0,
+            "text": "Eu não tenho nível suficiente para vencer?"
+        },
+        "V0406_29_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                401
+            ],
+            "face": 17,
+            "frame": 0,
+            "text": "Uau!\nQue surpresa, Yuma!"
+        },
+        "V0406_29_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Ou foi Astral que fez todos os movimentos para você?"
+        },
+        "V0406_29_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                401,
+                402
+            ],
+            "face": 12,
+            "frame": 0,
+            "text": "Fico feliz de você finalmente levar os Duelos a sério."
+        },
+        "V0406_29_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Isso me deixa feliz, Yuma!"
+        },
+        "V0406_30_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 18,
+            "frame": 0,
+            "text": "Pare de bobagem!"
+        },
+        "V0406_30_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 18,
+            "frame": 0,
+            "text": "Vamos! Você pode fazer melhor do que isso!"
+        },
+        "V0406_30_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 18,
+            "frame": 0,
+            "text": "Se estava tentando me tirar do sério, você conseguiu!"
+        },
+        "V0406_31_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 14,
+            "frame": 1,
+            "text": "O quê!?"
+        },
+        "V0406_31_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 14,
+            "frame": 1,
+            "text": "Ah, não!"
+        },
+        "V0406_32_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Yu-Gi-Oh! Duel Links"
+        },
+        "V0406_32_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Yu-Gi-Oh! Duel Links!\nSigam as regras e Duelem!"
+        },
+        "V0406_33_00_00_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 18,
+            "frame": 1,
+            "text": "Tenho que sentir a vibração!"
+        },
+        "V0406_33_00_01_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 18,
+            "frame": 1,
+            "text": "Vou cumprimentar o céu!"
+        },
+        "V0406_33_00_02_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 18,
+            "frame": 1,
+            "text": "Eu represento o Clube Supersecreto de Investigações de Cards de Números!"
+        },
+        "V0406_34_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 18,
+            "frame": 0,
+            "text": "Você vai virar panqueca!"
+        },
+        "V0406_34_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 16,
+            "frame": 0,
+            "text": "Ai, não..."
+        },
+        "V0406_34_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 18,
+            "frame": 0,
+            "text": "Você sempre se esquece do foco."
+        },
+        "V0406_34_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 16,
+            "frame": 0,
+            "text": "Hahahaha..."
+        },
+        "V0406_34_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Sinta a vibração!"
+        },
+        "V0406_34_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 0,
+            "text": "Vamos nos divertir seguindo as regras!"
+        },
+        "V0406_34_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 0,
+            "text": "Uau! Isso é incrível!"
+        },
+        "V0406_34_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 0,
+            "text": "Legal!"
+        },
+        "V0406_34_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 0,
+            "text": "Um pouco de Combustível de Duelo!"
+        },
+        "V0406_34_00_09_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Yuma!"
+        },
+        "V0406_35_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Pode contar comigo!"
+        },
+        "V0406_35_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Vamos aprender a Duelar juntos!"
+        },
+        "V0406_36_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Vamos! Sinta a vibração!"
+        },
+        "V0406_36_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Seu que vocês farão o melhor!"
+        },
+        "V0406_36_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 15,
+            "frame": 0,
+            "text": "Desculpe..."
+        },
+        "V0406_36_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                401,
+                402
+            ],
+            "face": 17,
+            "frame": 0,
+            "text": "Sinta a vibração, Yuma!"
+        },
+        "V0406_36_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                401,
+                402
+            ],
+            "face": 18,
+            "frame": 0,
+            "text": "Não se deixe levar e cometa um erro bobo, Yuma."
+        },
+        "V0406_36_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                401,
+                402
+            ],
+            "face": 15,
+            "frame": 0,
+            "text": "Desculpe...\nMas eu sei que você consegue virar o jogo, Yuma!"
+        },
+        "V0406_36_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                405
+            ],
+            "face": 17,
+            "frame": 0,
+            "text": "Sinta a vibração, Bronk!"
+        },
+        "V0406_36_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                405
+            ],
+            "face": 11,
+            "frame": 0,
+            "text": "Bronk, conto com você!"
+        },
+        "V0406_36_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                405
+            ],
+            "face": 15,
+            "frame": 0,
+            "text": "Desculpe, Bronk. Você consegue consertar isso?"
+        },
+        "V0406_37_00_00_0": {
+            "card": [
+                10528
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 18,
+            "frame": 1,
+            "text": "Evolução Caos Xyz!"
+        },
+        "V0406_37_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 18,
+            "frame": 1,
+            "text": "Venha!"
+        },
+        "V0406_37_00_01_0": {
+            "card": [
+                10528
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 18,
+            "frame": 1,
+            "text": "Evolução Caos Xyz!"
+        },
+        "V0406_37_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 18,
+            "frame": 1,
+            "text": "Poder de Barian, nascido do caos, seja julgado neste mundo!"
+        },
+        "V0406_37_00_02_0": {
+            "card": [
+                9837
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "Ok!\nVou usar os meus Nível 2!"
+        },
+        "V0406_37_00_03_0": {
+            "card": [
+                9604
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 18,
+            "frame": 1,
+            "text": "Eu consigo fazer isso...?\n...Consigo!"
+        },
+        "V0406_37_00_04_0": {
+            "card": [
+                9836
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "Eu precisava de três Nível 1...\nE eu tenho 1... 2... Viva!"
+        },
+        "V0406_37_00_05_0": {
+            "card": [
+                9870
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "Hmm... Eu posso jogar isso?"
+        }
+    }
+}

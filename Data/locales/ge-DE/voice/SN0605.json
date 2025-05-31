@@ -1,0 +1,4317 @@
+{
+    "_GRP_": "SN0605",
+    "_LNG_": "de-DE",
+    "info": {
+        "V0605_01_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich bin zurückgekehrt, um zu kämpfen!\nIm Namen der Hanoi!"
+        },
+        "V0605_01_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Erlaube mir, dich auszulöschen."
+        },
+        "V0605_01_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                609,
+                0
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Dieses Duell ist der Anfang von deinem Ende!"
+        },
+        "V0605_01_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                609,
+                0
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Da du ein würdiger Konkurrent bist, werde ich das Duell genießen."
+        },
+        "V0605_01_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                609,
+                0
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Möge die Party beginnen."
+        },
+        "V0605_01_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Es ist mir gleich, wer du bist."
+        },
+        "V0605_01_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Es gibt viele, die mich verachten.\nDu bist nichts Besonderes."
+        },
+        "V0605_01_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                601
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich werde dieses Duell genießen, Playmaker!"
+        },
+        "V0605_01_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                602,
+                612
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Soulburner …\nWenn du einen Kampf willst, kannst du ihn haben."
+        },
+        "V0605_01_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                603
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich respektiere dich, Gore.\nDeshalb werde ich dich zerquetschen."
+        },
+        "V0605_01_00_09_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                610
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Schnüffelst du herum, Ghost Gal?"
+        },
+        "V0605_01_00_10_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                99999
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Wenn das nicht The Shepherd ist – der einsame Wolf der Einöde."
+        },
+        "V0605_01_00_11_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                99999
+            ],
+            "face": 7,
+            "frame": 0,
+            "text": "Ich werde tun, was mein Vater nicht konnte – dich eliminieren!"
+        },
+        "V0605_01_00_12_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                99999
+            ],
+            "face": 7,
+            "frame": 0,
+            "text": "Es ist meine persönliche Mission, jeden Ignis auszulöschen!"
+        },
+        "V0605_01_00_13_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                99999
+            ],
+            "face": 7,
+            "frame": 0,
+            "text": "Mein Duellstil ist viel großartiger, als du dir jemals vorstellen kannst!"
+        },
+        "V0605_01_00_14_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                99999
+            ],
+            "face": 3,
+            "frame": 0,
+            "text": "Ignis, du solltest stolz darauf sein, dass ich derjenige bin, der dich auslöscht!"
+        },
+        "V0605_01_00_15_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                99999
+            ],
+            "face": 3,
+            "frame": 0,
+            "text": "Die Zukunft, die du dir wünschst, wird zu nichts führen!"
+        },
+        "V0605_02_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 1,
+            "text": "Duell!"
+        },
+        "V0605_03_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Dein Schicksal steht bevor!"
+        },
+        "V0605_03_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Mein Spielzug!"
+        },
+        "V0605_03_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Wenn du nicht aufgibst, habe ich keine andere Wahl, als dich dazu zu zwingen!"
+        },
+        "V0605_03_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich bin am Zug!"
+        },
+        "V0605_03_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Mein Spielzug!"
+        },
+        "V0605_03_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich werde deine Existenz auslöschen!"
+        },
+        "V0605_03_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich bin am Zug!"
+        },
+        "V0605_03_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Dir ist es misslungen, all meine LP auszulöschen."
+        },
+        "V0605_03_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Ich bin am Zug!"
+        },
+        "V0605_03_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Du solltest dich während eines Duells nie in Sicherheit wähnen."
+        },
+        "V0605_03_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Mein Spielzug!"
+        },
+        "V0605_04_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich ziehe!"
+        },
+        "V0605_04_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich ziehe!"
+        },
+        "V0605_04_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Ich ziehe!"
+        },
+        "V0605_05_00_00_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 7,
+            "frame": 1,
+            "text": "Ich werde nicht vor meinem Schicksal davonlaufen!\nIch werde diesen Moment erobern!"
+        },
+        "V0605_05_00_00_1": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ich ziiiiieeeeehe!"
+        },
+        "V0605_06_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ich spiele das hier!"
+        },
+        "V0605_06_01_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Aber jetzt …"
+        },
+        "V0605_06_01_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ha!"
+        },
+        "V0605_06_01_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Glaubst du etwa, ich würde das zulassen?"
+        },
+        "V0605_07_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Von meiner Hand …"
+        },
+        "V0605_07_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich aktiviere eine Zauberkarte!"
+        },
+        "V0605_07_02_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich aktiviere einen Schnellzauber!"
+        },
+        "V0605_07_03_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich aktiviere einen Permanenten Zauber!"
+        },
+        "V0605_07_04_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich aktiviere einen Ausrüstungszauber!"
+        },
+        "V0605_07_05_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich aktiviere einen Ritualzauber!"
+        },
+        "V0605_07_06_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich aktiviere eine Falle!"
+        },
+        "V0605_07_07_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich aktiviere eine Permanente Falle!"
+        },
+        "V0605_07_08_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich aktiviere eine Konterfalle!"
+        },
+        "V0605_07_09_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich decke meine gesetzte Karte auf!"
+        },
+        "V0605_07_09_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich benutze die Karte, die ich gesetzt habe!"
+        },
+        "V0605_07_10_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich aktiviere den Effekt meines Monsters!"
+        },
+        "V0605_07_11_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich aktiviere einen Spielfeldzauber!"
+        },
+        "V0605_07_12_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich aktiviere einen Effekt!"
+        },
+        "V0605_07_13_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich lege den Pendelbereich fest!"
+        },
+        "V0605_07_14_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich aktiviere einen Pendeleffekt!"
+        },
+        "V0605_08_00_00_0": {
+            "card": [
+                13272
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ich aktiviere meinen Schnellzauber!\nSchnellstart!"
+        },
+        "V0605_08_00_01_0": {
+            "card": [
+                13271
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ich aktiviere meinen Schnellzauber!\nKrepierziehen!"
+        },
+        "V0605_08_00_02_0": {
+            "card": [
+                13270
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ich aktiviere meinen Permanenten Zauber!\nDrachonoid-Generator!"
+        },
+        "V0605_08_00_03_0": {
+            "card": [
+                13270
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Der Effekt von Drachonoid-Generator wird aktiviert!"
+        },
+        "V0605_08_00_04_0": {
+            "card": [
+                13424
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ich aktiviere meinen Spielfeldzauber!\nBootsektor-Start!"
+        },
+        "V0605_08_00_05_0": {
+            "card": [
+                13424
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Der Effekt von Bootsektor-Start wird aktiviert!"
+        },
+        "V0605_08_00_06_0": {
+            "card": [
+                15044
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ich aktiviere meine Zauberkarte!\nLinkausbruch!"
+        },
+        "V0605_08_00_07_0": {
+            "card": [
+                14620
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ich aktiviere meinen Permanenten Zauber!\nKalliber-Lieferant!"
+        },
+        "V0605_08_00_08_0": {
+            "card": [
+                14620
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Der Effekt von Kalliber-Lieferant wird aktiviert!"
+        },
+        "V0605_08_00_09_0": {
+            "card": [
+                13769
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ich aktiviere meinen Ausrüstungszauber!\nKalliberregenerator!"
+        },
+        "V0605_08_00_10_0": {
+            "card": [
+                13769
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Kalliberregenerator wird aktiviert, wenn sein Monster zerstört wird!"
+        },
+        "V0605_08_00_11_0": {
+            "card": [
+                13423
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ich aktiviere meinen Spielfeldzauber!\nFeuergefängnis!"
+        },
+        "V0605_08_00_11_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Das Cyberse ist machtlos!"
+        },
+        "V0605_08_00_12_0": {
+            "card": [
+                14786
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ich aktiviere meinen Schnellzauber!\nBajonett-Bestrafer!"
+        },
+        "V0605_08_00_13_0": {
+            "card": [
+                14621
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ich aktiviere meinen Schnellzauber!\nSchnellfeuer!"
+        },
+        "V0605_08_00_14_0": {
+            "card": [
+                16538
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ich aktiviere meinen Ritualzauber!\nStarke Sperre!"
+        },
+        "V0605_08_00_15_0": {
+            "card": [
+                14623
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ich aktiviere meine Permanente Falle!\nProtokolle ausführen!"
+        },
+        "V0605_08_00_16_0": {
+            "card": [
+                14623
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Der Effekt von Protokolle ausführen wird aktiviert!"
+        },
+        "V0605_08_00_17_0": {
+            "card": [
+                13517
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ich aktiviere meine Falle!\nTaktischer Wechsler!"
+        },
+        "V0605_08_00_18_0": {
+            "card": [
+                16557
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ich aktiviere meine Permanente Falle!\nSprengcode!"
+        },
+        "V0605_08_00_19_0": {
+            "card": [
+                16557
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Der Effekt von Sprengcode wird aktiviert!"
+        },
+        "V0605_08_00_20_0": {
+            "card": [
+                16557
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Der Effekt von Sprengcode wird in der Standby Phase aktiviert!"
+        },
+        "V0605_08_00_21_0": {
+            "card": [
+                6147
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Stell dich deinen schlimmsten Albträumen!\nIch aktiviere meine Falle!\nGeisteszersetzung!"
+        },
+        "V0605_08_00_22_0": {
+            "card": [
+                13785
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ich aktiviere meine Permanente Falle!\nSpiegelkraft-Werfer!"
+        },
+        "V0605_08_00_23_0": {
+            "card": [
+                13785
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Es ist so weit!\nIch aktiviere Spiegelkraft-Werfer!"
+        },
+        "V0605_08_00_24_0": {
+            "card": [
+                13785
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Der Effekt von Spiegelkraft-Werfer wird bei Zerstörung aktiviert!"
+        },
+        "V0605_08_00_25_0": {
+            "card": [
+                13285
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ich aktiviere meine Falle!\nFernwiedergeburt!"
+        },
+        "V0605_08_00_26_0": {
+            "card": [
+                16556
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ich aktiviere meine Falle!\nMagische Zylinder!"
+        },
+        "V0605_08_00_27_0": {
+            "card": [
+                16556
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ich verbanne Magische Zylinder von meinem Friedhof!"
+        },
+        "V0605_08_00_28_0": {
+            "card": [
+                13786
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ich aktiviere meine Permanente Falle!\nLink-Geschütz!"
+        },
+        "V0605_08_00_29_0": {
+            "card": [
+                13786
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Der Effekt von Link-Geschütz wird aktiviert!"
+        },
+        "V0605_08_00_30_0": {
+            "card": [
+                13622
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ich aktiviere meine Konterfalle!\nRoter Neustart!"
+        },
+        "V0605_08_00_31_0": {
+            "card": [
+                13439
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ich aktiviere meine Falle!\nKalliberkühlung!"
+        },
+        "V0605_08_00_32_0": {
+            "card": [
+                13439
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Der Effekt von Kalliberkühlung wird aktiviert!"
+        },
+        "V0605_08_00_33_0": {
+            "card": [
+                4960
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Sieh zu und staune!\nIch aktiviere meine Permanente Falle Kaiserlicher Befehl!"
+        },
+        "V0605_08_00_34_0": {
+            "card": [
+                4887
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Fallt vor der Macht der Hanoi auf die Knie!"
+        },
+        "V0605_08_00_34_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ich aktiviere meine Falle!\nSpiegelkraft!"
+        },
+        "V0605_08_00_35_0": {
+            "card": [
+                4887
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ich aktiviere meine Falle!\nJede Hoffnung, die du noch hattest, ist jetzt dahin!"
+        },
+        "V0605_08_00_35_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Spiegelkraft!"
+        },
+        "V0605_08_00_36_0": {
+            "card": [
+                5124
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Deine Selbstüberschätzung wird dir zum Verhängnis werden!\nMagischer Zylinder!"
+        },
+        "V0605_08_00_37_0": {
+            "card": [
+                17265
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ich aktiviere meine Permanente Falle!\nEine neue Zukunft schmieden!"
+        },
+        "V0605_08_00_38_0": {
+            "card": [
+                17265
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Der Effekt von Eine neue Zukunft schmieden wird aktiviert!"
+        },
+        "V0605_09_00_00_0": {
+            "card": [
+                13258
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Kalliberlade-Drache aktiviert den Effekt!"
+        },
+        "V0605_09_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Feind annullieren!"
+        },
+        "V0605_09_00_01_0": {
+            "card": [
+                13258
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Du weißt nicht, in welchen Schwierigkeiten du steckst!\nTu es, Kalliberlade-Drache!"
+        },
+        "V0605_09_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Feind annullieren!"
+        },
+        "V0605_09_00_02_0": {
+            "card": [
+                13258
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Der Effekt von Kalliberlade-Drache!"
+        },
+        "V0605_09_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Seltsamer Trigger!"
+        },
+        "V0605_09_00_03_0": {
+            "card": [
+                13837
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Kalliberwach-Drache aktiviert den Effekt!"
+        },
+        "V0605_09_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Rückspulphase!"
+        },
+        "V0605_09_00_04_0": {
+            "card": [
+                13837
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Der Effekt von Kalliberwach-Drache!"
+        },
+        "V0605_09_00_05_0": {
+            "card": [
+                13750
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Kalliberschwert-Drache aktiviert den Effekt!"
+        },
+        "V0605_09_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Explosionsvernichtung!"
+        },
+        "V0605_09_00_06_0": {
+            "card": [
+                13750
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Kalliberschwert-Drache hat einen zusätzlichen Effekt!"
+        },
+        "V0605_09_00_07_0": {
+            "card": [
+                14963
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Jetzt zum Effekt von Kalliberende-Drache!"
+        },
+        "V0605_09_00_08_0": {
+            "card": [
+                16536
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ich habe 3 Monster für die Linkbeschwörung von Kallibercode-Drache verwendet!"
+        },
+        "V0605_09_00_08_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Rakkete rastern!"
+        },
+        "V0605_09_00_09_0": {
+            "card": [
+                16536
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ich verbanne Kallibercode-Drache von meinem Friedhof und nutze den Effekt!"
+        },
+        "V0605_09_00_10_0": {
+            "card": [
+                13756
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ich aktiviere den Effekt von Minikalliber-Drache von meinem Friedhof!"
+        },
+        "V0605_09_00_11_0": {
+            "card": [
+                14626
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ich werfe eine Karte ab und aktiviere den Effekt von Vierkalliber-Drache!"
+        },
+        "V0605_09_00_12_0": {
+            "card": [
+                14625
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Der Effekt von Kalliberlade-Wut-Drache!"
+        },
+        "V0605_09_00_13_0": {
+            "card": [
+                14625
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ich verbanne Kalliberlade-Wut-Drache von meinem Friedhof!"
+        },
+        "V0605_09_00_14_0": {
+            "card": [
+                14114
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ich habe Kalliberlade-Wilddrache erfolgreich als Synchrobeschwörung beschworen!"
+        },
+        "V0605_09_00_15_0": {
+            "card": [
+                14114
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ich benutze 1 Kalliber-Zählmarke, um den Effekt von Kalliberlade-Wilddrache zu aktivieren!"
+        },
+        "V0605_09_00_16_0": {
+            "card": [
+                14487
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ich benutze 1 Materialeinheit, um den Effekt von Kalliberlade-eXlade-Drache zu aktivieren!"
+        },
+        "V0605_09_00_16_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Feind annullierende Sprengladung!"
+        },
+        "V0605_09_00_17_0": {
+            "card": [
+                16522
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Der Effekt von Kalliberlade-Aufstand-Drache!"
+        },
+        "V0605_09_00_18_0": {
+            "card": [
+                16522
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ich aktiviere den Effekt von Kalliberlade-Aufstand-Drache von meinem Friedhof!"
+        },
+        "V0605_09_00_19_0": {
+            "card": [
+                13085
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Topologik-Bomberdrache aktiviert den Effekt!"
+        },
+        "V0605_09_00_19_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Dezimierende Zerstörung!"
+        },
+        "V0605_09_00_20_0": {
+            "card": [
+                13085
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Mach dich bereit für den Effekt von Topologik-Bomberdrache!"
+        },
+        "V0605_09_00_20_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Zielsprengung!"
+        },
+        "V0605_09_00_21_0": {
+            "card": [
+                13836
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Der Effekt von Topologik-Gumblardrache!"
+        },
+        "V0605_09_00_21_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Unendliche Zerstörung!"
+        },
+        "V0605_09_00_22_0": {
+            "card": [
+                13836
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Topologik-Gumblardrache entfesselt nun seine ultimative Macht auf dich!"
+        },
+        "V0605_09_00_22_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Einschlagende Explosion!"
+        },
+        "V0605_09_00_23_0": {
+            "card": [
+                14624
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Topologik-Zeroboros aktiviert den Effekt!"
+        },
+        "V0605_09_00_23_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Feldausrottung!"
+        },
+        "V0605_09_00_24_0": {
+            "card": [
+                14624
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Der Effekt von Topologik-Zeroboros wird in dieser Standby Phase aktiviert!"
+        },
+        "V0605_09_00_25_0": {
+            "card": [
+                13590
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Topologische Trisbaena aktiviert den Effekt!"
+        },
+        "V0605_09_00_25_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Vergeltung des Exilierten!"
+        },
+        "V0605_09_00_26_0": {
+            "card": [
+                13225
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Der Effekt eines Linkmonsters hat Anesthrakketen-Drache als Ziel gewählt!"
+        },
+        "V0605_09_00_27_0": {
+            "card": [
+                13225
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Der Effekt von Anesthrakketen-Drache wird in der End Phase aktiviert!"
+        },
+        "V0605_09_00_28_0": {
+            "card": [
+                14617
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Der Effekt eines Linkmonsters hat Explodierrakketen-Drache als Ziel gewählt!"
+        },
+        "V0605_09_00_29_0": {
+            "card": [
+                14617
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Der Effekt von Explodierrakketen-Drache wird in dieser End Phase aktiviert!"
+        },
+        "V0605_09_00_30_0": {
+            "card": [
+                13226
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Autorakketen-Drache wurde zum Ziel eines Linkmonstereffekts!"
+        },
+        "V0605_09_00_31_0": {
+            "card": [
+                13226
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Der Effekt von Autorakketen-Drache wird in dieser End Phase aktiviert!"
+        },
+        "V0605_09_00_32_0": {
+            "card": [
+                13377
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Granatrakketen-Drache wurde zum Ziel eines Linkmonstereffekts!"
+        },
+        "V0605_09_00_33_0": {
+            "card": [
+                13377
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Der Effekt von Granatrakketen-Drache wird in dieser End Phase aktiviert!"
+        },
+        "V0605_09_00_34_0": {
+            "card": [
+                14614
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Silberrakketen-Drache wurde zum Ziel eines Linkmonstereffekts!"
+        },
+        "V0605_09_00_35_0": {
+            "card": [
+                14614
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Der Effekt von Silberrakketen-Drache wird in der End Phase aktiviert!"
+        },
+        "V0605_09_00_36_0": {
+            "card": [
+                13227
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Der Effekt eines Linkmonsters hat Magnarakketen-Drache als Ziel gewählt!"
+        },
+        "V0605_09_00_37_0": {
+            "card": [
+                13227
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Der Effekt von Magnarakketen-Drache wird in dieser End Phase aktiviert!"
+        },
+        "V0605_09_00_38_0": {
+            "card": [
+                13378
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Metallrakketen-Drache wurde zum Ziel eines Linkmonstereffekts!"
+        },
+        "V0605_09_00_39_0": {
+            "card": [
+                13378
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Der Effekt von Metallrakketen-Drache wird in dieser End Phase aktiviert!"
+        },
+        "V0605_09_00_40_0": {
+            "card": [
+                16487
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Der Effekt von Rakketen-Kaliber wird aktiviert!"
+        },
+        "V0605_09_00_41_0": {
+            "card": [
+                14084
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Rakketen-Synchron kann seinen Effekt aktivieren, wenn er beschworen wird!"
+        },
+        "V0605_09_00_42_0": {
+            "card": [
+                14615
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Rakketen-Sucher aktiviert den Effekt!"
+        },
+        "V0605_09_00_43_0": {
+            "card": [
+                14616
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ich lege Rakketen-Betanker auf den Friedhof, um seinen Effekt zu nutzen!"
+        },
+        "V0605_09_00_44_0": {
+            "card": [
+                13415
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Drillingsfeuerstoß-Drache aktiviert den Effekt!"
+        },
+        "V0605_09_00_45_0": {
+            "card": [
+                13757
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Der Effekt von Wirbelnder Trommeldrache wird bei Spezialbeschwörung aktiviert!"
+        },
+        "V0605_09_00_46_0": {
+            "card": [
+                13838
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Der Effekt von Blitzangriffs-Drache!"
+        },
+        "V0605_09_00_47_0": {
+            "card": [
+                13262
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Der Effekt von Zwillingsdreieck-Drache wird bei Linkbeschwörung aktiviert!"
+        },
+        "V0605_09_00_48_0": {
+            "card": [
+                14291
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Gefahringer-Drache aktiviert den Effekt!"
+        },
+        "V0605_09_00_49_0": {
+            "card": [
+                14291
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Gefahringer-Drache aktiviert den Effekt aus dem Friedhof!"
+        },
+        "V0605_09_00_50_0": {
+            "card": [
+                13516
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ich aktiviere den Effekt von Booster-Drache!"
+        },
+        "V0605_09_00_51_0": {
+            "card": [
+                13516
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Der Effekt von Booster-Drache wird bei Zerstörung aktiviert!"
+        },
+        "V0605_09_00_52_0": {
+            "card": [
+                13342
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ich aktiviere den Effekt von Extraschub-Drache!"
+        },
+        "V0605_09_00_53_0": {
+            "card": [
+                13342
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Der Effekt von Extraschub-Drache wird bei Zerstörung im Kampf aktiviert!"
+        },
+        "V0605_09_00_54_0": {
+            "card": [
+                14721
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Der Effekt von Schlägerdrache wird aktiviert!"
+        },
+        "V0605_09_00_55_0": {
+            "card": [
+                14453
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ich aktiviere den Effekt von DMZ-Drache!"
+        },
+        "V0605_09_00_56_0": {
+            "card": [
+                14453
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ich verbanne DMZ-Drache von meinem Friedhof und nutze den Effekt!"
+        },
+        "V0605_09_00_57_0": {
+            "card": [
+                14618
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Absorouter-Drache wird aktiviert, wenn er auf den Friedhof gelegt wird!"
+        },
+        "V0605_09_00_58_0": {
+            "card": [
+                14254
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Überflussdrache aktiviert seinen Effekt auf meiner Hand!"
+        },
+        "V0605_09_00_59_0": {
+            "card": [
+                13053
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Spüre den Effekt von Knackdrache!"
+        },
+        "V0605_09_00_59_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Knackfall!"
+        },
+        "V0605_09_00_60_0": {
+            "card": [
+                13223
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Gateway-Drache aktiviert den Effekt!"
+        },
+        "V0605_09_00_61_0": {
+            "card": [
+                13224
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Der Effekt von Sniffer-Drache wird bei der Beschwörung aktiviert!"
+        },
+        "V0605_09_00_62_0": {
+            "card": [
+                14083
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ich aktiviere den Effekt von Geschwindigkeitsschub-Drache von meiner Hand!"
+        },
+        "V0605_09_00_63_0": {
+            "card": [
+                14083
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Die Tributbeschwörung von Geschwindigkeitsschub-Drache aktiviert den Effekt!"
+        },
+        "V0605_09_00_64_0": {
+            "card": [
+                14619
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Der Effekt von Prüfsummen-Drache wird von meiner Hand aktiviert!"
+        },
+        "V0605_09_00_65_0": {
+            "card": [
+                14632
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Der Effekt von Chobham-Panzer-Drache wird von meiner Hand aktiviert!"
+        },
+        "V0605_09_00_66_0": {
+            "card": [
+                14632
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Chobham-Panzer-Drache aktiviert sich bei Benutzung für eine Linkbeschwörung!"
+        },
+        "V0605_09_00_67_0": {
+            "card": [
+                13566
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Defrag-Drache aktiviert seinen Effekt auf meinem Friedhof!"
+        },
+        "V0605_09_00_68_0": {
+            "card": [
+                13835
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ich habe Auslöseraupe für eine FINSTERNIS Linkbeschwörung benutzt!"
+        },
+        "V0605_09_00_69_0": {
+            "card": [
+                13835
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Der Effekt von Auslöseraupe wird aktiviert!"
+        },
+        "V0605_09_00_70_0": {
+            "card": [
+                14993
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ich aktiviere den Effekt von Nachtsicht-Drache von meiner Hand!"
+        },
+        "V0605_09_00_71_0": {
+            "card": [
+                14993
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Nachtsicht-Drache aktiviert sich bei Benutzung für eine Linkbeschwörung!"
+        },
+        "V0605_09_00_72_0": {
+            "card": [
+                14993
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ich verbanne Nachtsicht-Drache von meinem Friedhof und nutze den Effekt!"
+        },
+        "V0605_09_00_73_0": {
+            "card": [
+                13834
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Der Effekt von Ruhezustands-Drache wird bei der Beschwörung aktiviert!"
+        },
+        "V0605_09_00_74_0": {
+            "card": [
+                13834
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ich verbanne Ruhezustands-Drache von meinem Friedhof!"
+        },
+        "V0605_09_00_75_0": {
+            "card": [
+                13567
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Der Effekt von Hintergrund-Drache wird vom Friedhof aktiviert!"
+        },
+        "V0605_09_00_76_0": {
+            "card": [
+                13376
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Linkgurt-Wanddrache aktiviert den Effekt!"
+        },
+        "V0605_09_00_77_0": {
+            "card": [
+                16488
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ich aktiviere den Effekt von Doppelunterbrecher-Drache!"
+        },
+        "V0605_09_00_78_0": {
+            "card": [
+                16488
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ich verbanne Doppelunterbrecher-Drache von meinem Friedhof!"
+        },
+        "V0605_10_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Komm her!"
+        },
+        "V0605_10_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Mach dich gefasst!"
+        },
+        "V0605_10_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Los geht’s!"
+        },
+        "V0605_10_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich weiß, was ich zu tun habe!"
+        },
+        "V0605_11_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich beschwöre ein Monster!"
+        },
+        "V0605_11_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich beschwöre ein Monster in Verteidigungsposition!"
+        },
+        "V0605_11_02_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich beschwöre ein Monster als Spezialbeschwörung!"
+        },
+        "V0605_11_03_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich biete ein Monster als Tribut an!"
+        },
+        "V0605_11_04_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich beschwöre ein Monster als Tributbeschwörung!"
+        },
+        "V0605_11_04_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Tributbeschwörung!"
+        },
+        "V0605_11_05_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich beschwöre ein Monster als Fusionsbeschwörung!"
+        },
+        "V0605_11_05_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Fusionsbeschwörung!"
+        },
+        "V0605_11_06_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich beschwöre ein Monster als Ritualbeschwörung!"
+        },
+        "V0605_11_06_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ritualbeschwörung!"
+        },
+        "V0605_11_07_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich beschwöre ein Monster als Synchrobeschwörung!"
+        },
+        "V0605_11_07_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich verwende meine Monster gemeinsam als Empfänger!"
+        },
+        "V0605_11_07_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Synchrobeschwörung!"
+        },
+        "V0605_11_08_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich beschwöre ein Monster als Xyz-Beschwörung!"
+        },
+        "V0605_11_08_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich baue das Materialnetzwerk!"
+        },
+        "V0605_11_08_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Xyz-Beschwörung!"
+        },
+        "V0605_11_09_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich beschwöre ein Monster als Pendelbeschwörung!"
+        },
+        "V0605_11_09_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Pendelbeschwörung!"
+        },
+        "V0605_11_10_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich beschwöre ein Monster als Linkbeschwörung!"
+        },
+        "V0605_11_10_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich manifestiere meinen Kreislauf!"
+        },
+        "V0605_11_10_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Linkbeschwörung!"
+        },
+        "V0605_11_10_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich manifestiere meinen Kreislauf!"
+        },
+        "V0605_11_10_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich setze meine Monster in die Link-Pfeile!\nVerlinke den Kreislauf!"
+        },
+        "V0605_11_10_02_2": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Linkbeschwörung!"
+        },
+        "V0605_13_00_00_0": {
+            "card": [
+                13258
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Erhebe dich! \nKalliberlade-Drache mit Link-4!"
+        },
+        "V0605_13_00_01_0": {
+            "card": [
+                13258
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Komm her! \nKalliberlade-Drache mit Link-4!"
+        },
+        "V0605_13_00_02_0": {
+            "card": [
+                13837
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Zeig dich!\nKalliberwach-Drache mit Link-4!"
+        },
+        "V0605_13_00_03_0": {
+            "card": [
+                13750
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Hier ist Kalliberschwert-Drache mit Link-4!"
+        },
+        "V0605_13_00_04_0": {
+            "card": [
+                14963
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Los!\nKalliberende-Drache mit Link-5!"
+        },
+        "V0605_13_00_05_0": {
+            "card": [
+                16536
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Erscheine!\nKallibercode-Drache mit Link-3!"
+        },
+        "V0605_13_00_06_0": {
+            "card": [
+                13756
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Los geht’s!\nMinikalliber-Drache mit Link-2!"
+        },
+        "V0605_13_00_07_0": {
+            "card": [
+                14626
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Hier ist Vierkalliber-Drache mit Link-2!"
+        },
+        "V0605_13_00_08_0": {
+            "card": [
+                14625
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Bestaune Kalliberlade-Wut-Drache!"
+        },
+        "V0605_13_00_09_0": {
+            "card": [
+                14114
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Komm her!\nKalliberlade-Wilddrache auf Stufe 8!"
+        },
+        "V0605_13_00_10_0": {
+            "card": [
+                14487
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Looooos!\nKalliberlade-eXlade-Drache mit Rang 4!"
+        },
+        "V0605_13_00_11_0": {
+            "card": [
+                16522
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Steige herab!\nKalliberlade-Aufstand-Drache auf Stufe 8!"
+        },
+        "V0605_13_00_12_0": {
+            "card": [
+                13085
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Zeig dich!\nTopologik-Bomberdrache mit Link-4!"
+        },
+        "V0605_13_00_13_0": {
+            "card": [
+                13836
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Zeige dich!\nTopologik-Gumblardrache mit Link-4!"
+        },
+        "V0605_13_00_14_0": {
+            "card": [
+                14624
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Komm raus!\nTopologik-Zeroboros mit Link-4!"
+        },
+        "V0605_13_00_15_0": {
+            "card": [
+                13590
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Topologische Trisbaena mit Link-3!"
+        },
+        "V0605_13_00_16_0": {
+            "card": [
+                13225
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Anesthrakketen-Drache!"
+        },
+        "V0605_13_00_17_0": {
+            "card": [
+                14617
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Explodierrakketen-Drache!"
+        },
+        "V0605_13_00_18_0": {
+            "card": [
+                13226
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Autorakketen-Drache!"
+        },
+        "V0605_13_00_19_0": {
+            "card": [
+                13377
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Granatrakketen-Drache!"
+        },
+        "V0605_13_00_20_0": {
+            "card": [
+                14614
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Silberrakketen-Drache!"
+        },
+        "V0605_13_00_21_0": {
+            "card": [
+                13227
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Magnarakketen-Drache!"
+        },
+        "V0605_13_00_22_0": {
+            "card": [
+                13378
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Metallrakketen-Drache!"
+        },
+        "V0605_13_00_23_0": {
+            "card": [
+                16487
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Das Empfänger-Monster Rakketen-Kaliber!"
+        },
+        "V0605_13_00_24_0": {
+            "card": [
+                14084
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Das Empfänger-Monster Rakketen-Synchron!"
+        },
+        "V0605_13_00_25_0": {
+            "card": [
+                14615
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Das Empfänger-Monster Rakketen-Sucher!"
+        },
+        "V0605_13_00_26_0": {
+            "card": [
+                14616
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Rakketen-Betanker!"
+        },
+        "V0605_13_00_27_0": {
+            "card": [
+                13415
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Los!\nDrillingsfeuerstoß-Drache mit Link-3!"
+        },
+        "V0605_13_00_28_0": {
+            "card": [
+                13757
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Los geht’s!\nWirbelnder Trommeldrache mit Link-3!"
+        },
+        "V0605_13_00_29_0": {
+            "card": [
+                13838
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Hier ist Blitzangriffs-Drache mit Link-3!"
+        },
+        "V0605_13_00_30_0": {
+            "card": [
+                13262
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Komm zu mir!\nZwillingsdreieck-Drache mit Link-2!"
+        },
+        "V0605_13_00_31_0": {
+            "card": [
+                14291
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Betritt das Duell!\nGefahringer-Drache mit Link-2!"
+        },
+        "V0605_13_00_32_0": {
+            "card": [
+                13516
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Erscheine!\nBooster-Drache mit Link-2!"
+        },
+        "V0605_13_00_33_0": {
+            "card": [
+                13342
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Los!\nExtraschub-Drache mit Link-2!"
+        },
+        "V0605_13_00_34_0": {
+            "card": [
+                14721
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Der Himmel ist dein!\nSchlägerdrache mit Link-1!"
+        },
+        "V0605_13_00_35_0": {
+            "card": [
+                14453
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "DMZ-Drache!"
+        },
+        "V0605_13_00_36_0": {
+            "card": [
+                14618
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Absorouter-Drache!"
+        },
+        "V0605_13_00_37_0": {
+            "card": [
+                14254
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Überflussdrache!"
+        },
+        "V0605_13_00_38_0": {
+            "card": [
+                13053
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Los!\nKnackdrache!"
+        },
+        "V0605_13_00_39_0": {
+            "card": [
+                13223
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Gateway-Drache!"
+        },
+        "V0605_13_00_40_0": {
+            "card": [
+                13224
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Sniffer-Drache!"
+        },
+        "V0605_13_00_41_0": {
+            "card": [
+                14083
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Geschwindigkeitsschub-Drache!"
+        },
+        "V0605_13_00_42_0": {
+            "card": [
+                14619
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Prüfsummen-Drache!"
+        },
+        "V0605_13_00_43_0": {
+            "card": [
+                14632
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Chobham-Panzer-Drache!"
+        },
+        "V0605_13_00_44_0": {
+            "card": [
+                13566
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Defrag-Drache!"
+        },
+        "V0605_13_00_45_0": {
+            "card": [
+                13835
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Auslöseraupe!"
+        },
+        "V0605_13_00_46_0": {
+            "card": [
+                14993
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Nachtsicht-Drache!"
+        },
+        "V0605_13_00_47_0": {
+            "card": [
+                13834
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ruhezustands-Drache!"
+        },
+        "V0605_13_00_48_0": {
+            "card": [
+                13567
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Hintergrund-Drache!"
+        },
+        "V0605_13_00_49_0": {
+            "card": [
+                13376
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ich beschwöre Linkgurt-Wanddrache als Spezialbeschwörung!"
+        },
+        "V0605_13_00_50_0": {
+            "card": [
+                16488
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Doppelunterbrecher-Drache!"
+        },
+        "V0605_13_00_51_0": {
+            "card": [
+                14331
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ich beschwöre Überfluss-Spielmarke als Spezialbeschwörung!"
+        },
+        "V0605_13_00_52_0": {
+            "card": [
+                13297
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ich beschwöre Drachonoid-Spielmarke als Spezialbeschwörung!"
+        },
+        "V0605_14_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Kampf!"
+        },
+        "V0605_14_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Nach diesem Kampf gibt es für dich kein Zurück mehr!"
+        },
+        "V0605_15_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Los!"
+        },
+        "V0605_15_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Verschwinde!"
+        },
+        "V0605_15_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich lasse dich nicht entkommen!"
+        },
+        "V0605_16_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Dieses Match ist vorbei."
+        },
+        "V0605_16_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Was für ein trauriges Ende für dich."
+        },
+        "V0605_17_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Mein Monster greift an!"
+        },
+        "V0605_17_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Angriff!"
+        },
+        "V0605_18_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Mein Monster greift dich direkt an!"
+        },
+        "V0605_18_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ich greife dich direkt an!"
+        },
+        "V0605_19_00_00_0": {
+            "card": [
+                13258
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Los!\nKalliberlade-Drache!"
+        },
+        "V0605_19_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 10,
+            "frame": 1,
+            "text": "Blendschutzschild wird aktiviert!\nSicherheitsvorkehrungen werden zurückgezogen!"
+        },
+        "V0605_19_00_00_2": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 10,
+            "frame": 1,
+            "text": "Feuer!\nDonner-Kalliber-Kanone!"
+        },
+        "V0605_19_00_01_0": {
+            "card": [
+                13258
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 10,
+            "frame": 1,
+            "text": "Kalliberlade-Drache!\nAngriff!"
+        },
+        "V0605_19_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 10,
+            "frame": 1,
+            "text": "Donner-Kalliber-Kanone!"
+        },
+        "V0605_19_00_02_0": {
+            "card": [
+                13837
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Kalliberwach-Drache! Angriff!"
+        },
+        "V0605_19_00_03_0": {
+            "card": [
+                13750
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Angriff, Kalliberschwert-Drache!"
+        },
+        "V0605_19_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Kalliberschwerthieb!"
+        },
+        "V0605_19_00_04_0": {
+            "card": [
+                14963
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Kalliberende-Drache greift an!"
+        },
+        "V0605_19_00_05_0": {
+            "card": [
+                16536
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Angriff, Kallibercode-Drache!"
+        },
+        "V0605_19_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Kalliberverschlüsselung!"
+        },
+        "V0605_19_00_06_0": {
+            "card": [
+                13756
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Angriff, Minikalliber-Drache!"
+        },
+        "V0605_19_00_06_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Feuer!"
+        },
+        "V0605_19_00_07_0": {
+            "card": [
+                14626
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Angriff, Vierkalliber-Drache!"
+        },
+        "V0605_19_00_07_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Feuer!"
+        },
+        "V0605_19_00_08_0": {
+            "card": [
+                14625
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Kalliberlade-Wut-Drache!\nAngriff!"
+        },
+        "V0605_19_00_09_0": {
+            "card": [
+                14114
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Kalliberlade-Wilddrache!\nAngriff!"
+        },
+        "V0605_19_00_09_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Donnerschlag-Kalliberkanone!"
+        },
+        "V0605_19_00_10_0": {
+            "card": [
+                14487
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Angriff, Kalliberlade-eXlade-Drache!"
+        },
+        "V0605_19_00_10_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Sprengkalliberkanone!"
+        },
+        "V0605_19_00_11_0": {
+            "card": [
+                16522
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Kalliberlade-Aufstand-Drache!\nAngriff!"
+        },
+        "V0605_19_00_12_0": {
+            "card": [
+                13085
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Topologik-Bomberdrache greift an!"
+        },
+        "V0605_19_00_12_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Bösartiges Chaos!"
+        },
+        "V0605_19_00_13_0": {
+            "card": [
+                13836
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Angriff, Topologik-Gumblardrache!"
+        },
+        "V0605_19_00_14_0": {
+            "card": [
+                14624
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Topologik-Zeroboros! Angriff!"
+        },
+        "V0605_19_00_14_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Bösartige Zerstörung!"
+        },
+        "V0605_19_00_15_0": {
+            "card": [
+                13590
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Angriff, Topologische Trisbaena!"
+        },
+        "V0605_19_00_15_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Düstere Zerstörung!"
+        },
+        "V0605_19_00_16_0": {
+            "card": [
+                13225
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Anesthrakketen-Drache!\nAngriff!"
+        },
+        "V0605_19_00_17_0": {
+            "card": [
+                14617
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Explodierrakketen-Drache!\nSpreng sie in die Luft!"
+        },
+        "V0605_19_00_18_0": {
+            "card": [
+                13226
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Autorakketen-Drache!\nAngriff!"
+        },
+        "V0605_19_00_19_0": {
+            "card": [
+                13377
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Angriff, Granatrakketen-Drache!"
+        },
+        "V0605_19_00_20_0": {
+            "card": [
+                14614
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Silberrakketen-Drache!\nAngriff!"
+        },
+        "V0605_19_00_21_0": {
+            "card": [
+                13227
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Angriff, Magnarakketen-Drache!"
+        },
+        "V0605_19_00_22_0": {
+            "card": [
+                13378
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Angriff, Metallrakketen-Drache!"
+        },
+        "V0605_19_00_23_0": {
+            "card": [
+                16487
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Rakketen-Kaliber greift an!"
+        },
+        "V0605_19_00_24_0": {
+            "card": [
+                14084
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Los, Rakketen-Synchron!\nAngriff!"
+        },
+        "V0605_19_00_25_0": {
+            "card": [
+                14615
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Rakketen-Sucher! Angriff!"
+        },
+        "V0605_19_00_26_0": {
+            "card": [
+                14616
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Rakketen-Betanker!\nFeuer!"
+        },
+        "V0605_19_00_27_0": {
+            "card": [
+                13415
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Drillingsfeuerstoß-Drache!\nAngriff!"
+        },
+        "V0605_19_00_27_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Präzisionsbahn!"
+        },
+        "V0605_19_00_28_0": {
+            "card": [
+                13757
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Wirbelnder Trommeldrache greift an!"
+        },
+        "V0605_19_00_29_0": {
+            "card": [
+                13838
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Angriff, Blitzangriffs-Drache!"
+        },
+        "V0605_19_00_29_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Bombardierung mit Kanonenschlag!"
+        },
+        "V0605_19_00_30_0": {
+            "card": [
+                13262
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Jag sie in die Luft, Zwillingsdreieck-Drache!"
+        },
+        "V0605_19_00_31_0": {
+            "card": [
+                14291
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Gefahringer-Drache!\nAngriff!"
+        },
+        "V0605_19_00_32_0": {
+            "card": [
+                13516
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Booster-Drache! Angriff!"
+        },
+        "V0605_19_00_33_0": {
+            "card": [
+                13342
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Angriff, Extraschub-Drache!"
+        },
+        "V0605_19_00_34_0": {
+            "card": [
+                14721
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Schlägerdrache!\nAngriff!"
+        },
+        "V0605_19_00_35_0": {
+            "card": [
+                14453
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "DMZ-Drache greift an!"
+        },
+        "V0605_19_00_36_0": {
+            "card": [
+                14618
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Absorouter-Drache! Angriff!"
+        },
+        "V0605_19_00_37_0": {
+            "card": [
+                14254
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Überflussdrache!\nAngriff!"
+        },
+        "V0605_19_00_38_0": {
+            "card": [
+                13053
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Angriff, Knackdrache!"
+        },
+        "V0605_19_00_38_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Verkehrsexplosion!"
+        },
+        "V0605_19_00_39_0": {
+            "card": [
+                13223
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Gateway-Drache!\nEliminiere sie!"
+        },
+        "V0605_19_00_40_0": {
+            "card": [
+                13224
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Angriff, Sniffer-Drache!"
+        },
+        "V0605_19_00_41_0": {
+            "card": [
+                14083
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Mach sie fertig, Geschwindigkeitsschub-Drache!"
+        },
+        "V0605_19_00_42_0": {
+            "card": [
+                14619
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Prüfsummen-Drache! Angriff!"
+        },
+        "V0605_19_00_43_0": {
+            "card": [
+                14632
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Chobham-Panzer-Drache!\nAuf sie!"
+        },
+        "V0605_19_00_44_0": {
+            "card": [
+                13566
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Angriff, Defrag-Drache!"
+        },
+        "V0605_19_00_45_0": {
+            "card": [
+                13835
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Auslöseraupe greift an!"
+        },
+        "V0605_19_00_46_0": {
+            "card": [
+                14993
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Angriff, Nachtsicht-Drache!"
+        },
+        "V0605_19_00_47_0": {
+            "card": [
+                13834
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ruhezustands-Drache!\nAngriff!"
+        },
+        "V0605_19_00_48_0": {
+            "card": [
+                13567
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Hintergrund-Drache greift an!"
+        },
+        "V0605_19_00_49_0": {
+            "card": [
+                13376
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Linkgurt-Wanddrache!\nAngriff!"
+        },
+        "V0605_19_00_50_0": {
+            "card": [
+                16488
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Angriff, Doppelunterbrecher-Drache!"
+        },
+        "V0605_19_00_51_0": {
+            "card": [
+                14331
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Meine Überfluss-Spielmarke greift an!"
+        },
+        "V0605_19_00_52_0": {
+            "card": [
+                13297
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Meine Drachonoid-Spielmarke greift an!"
+        },
+        "V0605_20_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich setze eine Karte!"
+        },
+        "V0605_20_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich setze eine Karte."
+        },
+        "V0605_20_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich setze ein Monster!"
+        },
+        "V0605_20_01_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich setze ein Monster."
+        },
+        "V0605_21_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Du bist stärker, als ich dachte.\nAber du wirst trotzdem verlieren."
+        },
+        "V0605_21_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich beende meinen Spielzug!"
+        },
+        "V0605_21_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich gratuliere dir dafür, dass du überlebt hast.\nAber das wirst du nicht mehr lange!"
+        },
+        "V0605_21_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich beende meinen Spielzug!"
+        },
+        "V0605_21_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Damit beende ich meinen Spielzug."
+        },
+        "V0605_21_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich beende meinen Spielzug!"
+        },
+        "V0605_21_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Du bist am Zug!"
+        },
+        "V0605_21_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Du hast meine Züge aufgehalten.\nAber wie lange wird dir das noch gelingen?"
+        },
+        "V0605_21_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Ich beende meinen Spielzug!"
+        },
+        "V0605_21_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Selbst mit nur noch 1 LP wäre ich Favorit auf den Sieg."
+        },
+        "V0605_21_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Ich beende meinen Spielzug!"
+        },
+        "V0605_22_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Agh!"
+        },
+        "V0605_22_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Argh!"
+        },
+        "V0605_22_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Gah!"
+        },
+        "V0605_23_00_00_0": {
+            "card": [],
+            "cutin": 3,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Aaaaahhhhh!"
+        },
+        "V0605_24_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Arghhh …"
+        },
+        "V0605_25_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Ahhhh!"
+        },
+        "V0605_25_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Gaaah!"
+        },
+        "V0605_25_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Urgs!"
+        },
+        "V0605_26_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Du weißt, wie man kämpft!"
+        },
+        "V0605_26_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "… Interessant!"
+        },
+        "V0605_26_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Du gibst also nicht auf."
+        },
+        "V0605_27_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Argh …"
+        },
+        "V0605_27_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Du wagst es …"
+        },
+        "V0605_27_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Noch ist es nicht vorbei!"
+        },
+        "V0605_28_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Der Gewinner gewinnt alles.\nDer Verlierer verliert alles.\nSo läuft es in einem Duell."
+        },
+        "V0605_28_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich falle nicht auf deine törichten Strategien herein."
+        },
+        "V0605_28_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich werde nicht davor weglaufen, was getan werden muss!"
+        },
+        "V0605_28_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich habe eine Mission.\nUnd ich werde nicht aufhören, bis ich sie erfüllt habe!"
+        },
+        "V0605_28_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Lerne aus diesem Duell."
+        },
+        "V0605_28_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Die Erinnerungen an meinen Vater treiben mich zum Erfolg!"
+        },
+        "V0605_28_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                601,
+                607
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Playmaker, du bist nicht in der Lage, mich zu überlisten."
+        },
+        "V0605_28_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                602,
+                612
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Anstatt zu jammern, solltest du dich duellieren.\nSonst wirst du mich nie besiegen!"
+        },
+        "V0605_28_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                603
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Deine Einstellung gefällt mir.\nAber eine Einstellung gewinnt einem keine Duelle."
+        },
+        "V0605_28_00_09_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                610
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Du duellierst dich so gut wie du jagst.\nAlso überhaupt nicht gut."
+        },
+        "V0605_28_00_10_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                99999
+            ],
+            "face": 9,
+            "frame": 0,
+            "text": "Ich werde beenden, was mein Vater begonnen hat, Ignis!"
+        },
+        "V0605_28_00_11_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                99999
+            ],
+            "face": 7,
+            "frame": 0,
+            "text": "Ich wusste, dass die Ignis nur eine Panne im System waren!"
+        },
+        "V0605_28_00_12_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                99999
+            ],
+            "face": 7,
+            "frame": 0,
+            "text": "Deine Arroganz ist dein Verhängnis, Ignis!"
+        },
+        "V0605_28_00_13_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                99999
+            ],
+            "face": 7,
+            "frame": 0,
+            "text": "Ignis, du bist böse seit dem Tag deiner Erschaffung."
+        },
+        "V0605_28_00_13_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 0,
+            "text": "Gegner wie du verdienen es nicht, zu existieren!"
+        },
+        "V0605_29_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Heute lief es nicht nach meinem Geschmack …"
+        },
+        "V0605_29_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Dieses Duell ist erst der Anfang.\nIch werde wiederkommen!"
+        },
+        "V0605_29_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Mein Vater lehrte mich, dass Misserfolg zu Erfolg führt."
+        },
+        "V0605_29_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "… Gut gemacht."
+        },
+        "V0605_29_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Denk daran … Ich werde nicht vor meinem Schicksal fliehen!"
+        },
+        "V0605_29_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                607
+            ],
+            "face": 2,
+            "frame": 0,
+            "text": "Deshalb bist du mein ärgster Feind, Playmaker."
+        },
+        "V0605_29_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                601
+            ],
+            "face": 2,
+            "frame": 0,
+            "text": "Beeindruckend, Playmaker.\n… Und Ai."
+        },
+        "V0605_29_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                602,
+                612
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Du hast gewonnen, Soulburner."
+        },
+        "V0605_29_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                99999
+            ],
+            "face": 7,
+            "frame": 0,
+            "text": "The Shepherd hat zu viel Stolz, um zu verlieren …"
+        },
+        "V0605_29_00_09_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                99999
+            ],
+            "face": 3,
+            "frame": 0,
+            "text": "Argh …\nSeit wann sind die Ignis so unberechenbar?"
+        },
+        "V0605_30_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 0,
+            "text": "Cyberse! Verschwinde!"
+        },
+        "V0605_30_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich bin nicht so nett wie du denkst."
+        },
+        "V0605_30_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Nichts in der digitalen Welt ist real!"
+        },
+        "V0605_31_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Was?!"
+        },
+        "V0605_31_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Wie kannst du es wagen!"
+        },
+        "V0605_32_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Yu-Gi-Oh! Duel Links"
+        },
+        "V0605_32_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Yu-Gi-Oh! Duel Links!\nLink in die VRAINS!"
+        },
+        "V0605_33_00_00_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ich aktiviere meine Fähigkeit!"
+        },
+        "V0605_33_00_01_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Werde Zeuge eines Duells, das den Verstand überschreitet!"
+        },
+        "V0605_33_00_02_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ich werde dich zerquetschen, bis du nicht mehr existierst!"
+        },
+        "V0605_33_00_03_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Diese Winde wüten für mich …\nUnd nur mich!"
+        },
+        "V0605_33_00_03_1": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ich aktiviere meine Fähigkeit, um zu kriegen, was ich will!\nSturmzugriff!"
+        },
+        "V0605_33_00_03_2": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "… Jetzt gehörst du mir!"
+        },
+        "V0605_33_00_04_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ich aktiviere meine Fähigkeit!\nDer Stärkste ist zum Greifen nah!"
+        },
+        "V0605_33_00_04_1": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Sturmzugriff!"
+        },
+        "V0605_33_00_04_2": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "… Jetzt gehörst du mir!"
+        },
+        "V0605_33_00_05_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ich aktiviere meine Fähigkeit!\nBring mir Macht!"
+        },
+        "V0605_33_00_05_1": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Sturmzugriff!"
+        },
+        "V0605_33_00_05_2": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Die Sternenstaubstraße ist mein Weg zum Sieg."
+        },
+        "V0605_33_00_06_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 10,
+            "frame": 0,
+            "text": "Blendschutzschild wird aktiviert!"
+        },
+        "V0605_34_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Die digitale Welt darf die reale Welt nicht beeinflussen!"
+        },
+        "V0605_34_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Welche von beiden willst du? Eine schnelle Niederlage oder eine schmerzhafte Niederlage?"
+        },
+        "V0605_34_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich muss mich für nichts entschuldigen, was ich getan habe!"
+        },
+        "V0605_34_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich verstehe die Strategien der Schwachen nicht."
+        },
+        "V0605_34_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Du bist ein hervorragendes Versuchskaninchen für mein Deck."
+        },
+        "V0605_34_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Dein Deck scheint endlich zu funktionieren."
+        },
+        "V0605_34_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Wenn ich gewinne, gewinne ich mit Stil."
+        },
+        "V0605_34_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Du hast nicht das Rückgrat, ein Duellant zu sein!"
+        },
+        "V0605_34_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Du bist ein harter Gegner."
+        },
+        "V0605_34_00_09_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 10,
+            "frame": 0,
+            "text": "Blendschutzschild wird aktiviert!"
+        },
+        "V0605_34_00_10_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Ich gebe dir drei Gründe, warum du nicht überleben wirst!"
+        },
+        "V0605_34_00_11_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Nummer eins: Ich habe den Vorteil bei LP, Monstern und Karten."
+        },
+        "V0605_34_00_12_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Nummer zwei: Mein Verlangen zu gewinnen ist größer als deines."
+        },
+        "V0605_34_00_13_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Und Nummer drei: Ich bin schlichtweg ein besserer Duellant als du."
+        },
+        "V0605_35_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich bin zurückgekehrt, um mich meinem Schicksal zu stellen."
+        },
+        "V0605_35_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich duelliere mich für die Ritter von Hanoi!"
+        },
+        "V0605_36_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Vernichte sie um jeden Preis."
+        },
+        "V0605_36_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Jetzt bist du am Zug."
+        },
+        "V0605_36_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Noch haben wir LP übrig."
+        },
+        "V0605_36_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                601
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich überlasse dir den Rest, Playmaker.\n… Und Ai."
+        },
+        "V0605_36_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                607
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Es liegt jetzt an dir, Playmaker."
+        },
+        "V0605_37_00_00_0": {
+            "card": [
+                13258
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ich manifestiere meinen Kreislauf!"
+        },
+        "V0605_37_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Hier kommt dein Untergang!"
+        },
+        "V0605_37_00_00_2": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ich führe eine Linkbeschwörung durch!"
+        },
+        "V0605_37_00_01_0": {
+            "card": [
+                13258
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ich manifestiere meinen Kreislauf!"
+        },
+        "V0605_37_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Dieser Drache dürstet danach, seine Zähne in dir zu versenken!"
+        },
+        "V0605_37_00_01_2": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ich führe eine Linkbeschwörung durch!"
+        },
+        "V0605_37_00_02_0": {
+            "card": [
+                13750
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ich manifestiere meinen Kreislauf!"
+        },
+        "V0605_37_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Du warst von Anfang an nicht in diesen Kampf verwickelt!"
+        },
+        "V0605_37_00_02_2": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ich führe eine Linkbeschwörung durch!"
+        },
+        "V0605_37_00_03_0": {
+            "card": [
+                16536
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ich manifestiere meinen Kreislauf!"
+        },
+        "V0605_37_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Dieser Windsturm öffnet die Türen zu einer neuen Welt!"
+        },
+        "V0605_37_00_03_2": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ich führe eine Linkbeschwörung durch!"
+        },
+        "V0605_37_00_04_0": {
+            "card": [
+                14625
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Brüllen und Zorn verschmelzen zur Quelle aller Wut!"
+        },
+        "V0605_37_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ich führe eine Fusionsbeschwörung durch!"
+        },
+        "V0605_37_00_05_0": {
+            "card": [
+                14114
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Der Kosmos mischt sich mit der Geschwindigkeit, das Jenseits zu überwinden!"
+        },
+        "V0605_37_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ich führe eine Synchrobeschwörung durch!"
+        },
+        "V0605_37_00_06_0": {
+            "card": [
+                14487
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Stahl und Dunkelheit vereinen sich, um ihren einsamen Bewohner einzuladen!"
+        },
+        "V0605_37_00_06_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ich führe eine Xyz-Beschwörung durch!"
+        },
+        "V0605_37_00_07_0": {
+            "card": [
+                13085
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ich manifestiere meinen Kreislauf!"
+        },
+        "V0605_37_00_07_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ich führe eine Linkbeschwörung durch!"
+        },
+        "V0605_37_00_08_0": {
+            "card": [
+                13836
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ich manifestiere meinen Kreislauf!"
+        },
+        "V0605_37_00_08_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ich führe eine Linkbeschwörung durch!"
+        },
+        "V0605_37_00_09_0": {
+            "card": [
+                14624
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ich manifestiere meinen Kreislauf!"
+        },
+        "V0605_37_00_09_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Das Universum verwandelt das Nichts in das Unendliche!"
+        },
+        "V0605_37_00_10_0": {
+            "card": [
+                13590
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ich manifestiere meinen Kreislauf!"
+        },
+        "V0605_37_00_10_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ich führe eine Linkbeschwörung durch!"
+        },
+        "V0605_37_00_11_0": {
+            "card": [
+                14487
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Stahl und Dunkelheit vereinen sich, um ihren einsamen Bewohner einzuladen!"
+        },
+        "V0605_37_00_11_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ich führe eine Xyz-Beschwörung durch!"
+        }
+    }
+}

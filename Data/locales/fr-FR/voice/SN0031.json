@@ -1,0 +1,1748 @@
+{
+    "_GRP_": "SN0031",
+    "_LNG_": "fr-FR",
+    "info": {
+        "V0031_01_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Je suis Lumis, le grand Pilleur de l'Ombre !"
+        },
+        "V0031_01_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "On m'appelle Umbra !"
+        },
+        "V0031_01_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Hé hé hé !\nTu crois sérieusement pouvoir nous vaincre ?"
+        },
+        "V0031_01_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Tu ne pourras jamais me battre."
+        },
+        "V0031_01_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Notre équipe chasse les cartes des Dieux Égyptiens !"
+        },
+        "V0031_01_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Personne n'a jamais résisté à notre travail d'équipe !"
+        },
+        "V0031_01_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                1,
+                331,
+                2
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Tes Dieux Égyptiens sont inutiles contre moi !"
+        },
+        "V0031_01_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Je vais te battre et prendre ta carte de Dieu Égyptien !"
+        },
+        "V0031_01_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                10
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Maître Marik..."
+        },
+        "V0031_01_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'utiliserai ton Deck pour acquérir les Dieux Égyptiens."
+        },
+        "V0031_02_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Duel !"
+        },
+        "V0031_03_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Hi hi hi !"
+        },
+        "V0031_03_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "C'est notre tour !"
+        },
+        "V0031_03_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Ha ha ha ha ha !"
+        },
+        "V0031_03_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "C'est notre tour !"
+        },
+        "V0031_03_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "C'est notre tour !"
+        },
+        "V0031_03_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "C'est notre tour !"
+        },
+        "V0031_03_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Grrr..."
+        },
+        "V0031_03_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "C'est notre tour !"
+        },
+        "V0031_03_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "C'est pas possible..."
+        },
+        "V0031_03_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "C'est notre tour !"
+        },
+        "V0031_04_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Je pioche !"
+        },
+        "V0031_04_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Je pioche !"
+        },
+        "V0031_04_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Argh... Je pioche !"
+        },
+        "V0031_04_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Je pioche !"
+        },
+        "V0031_04_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Je pioche !"
+        },
+        "V0031_04_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Je pioche !"
+        },
+        "V0031_05_00_00_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Je vais calmer ma colère en vous écrasant !"
+        },
+        "V0031_05_00_00_1": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Je pioche !!!"
+        },
+        "V0031_05_00_01_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Ce combat est loin d'être terminé !"
+        },
+        "V0031_05_00_01_1": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Je pioche !!!"
+        },
+        "V0031_06_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Tu as mordu à l'hameçon !"
+        },
+        "V0031_06_01_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Pas si vite !"
+        },
+        "V0031_06_01_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Hi hi hi !"
+        },
+        "V0031_06_01_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Regarde ça !"
+        },
+        "V0031_07_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Depuis ma main..."
+        },
+        "V0031_07_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'active une Carte Magie !"
+        },
+        "V0031_07_02_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'active une Magie Jeu-Rapide !"
+        },
+        "V0031_07_03_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'active une Magie Continue !"
+        },
+        "V0031_07_04_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'active une Magie d'Équipement !"
+        },
+        "V0031_07_05_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'active une Magie Rituelle !"
+        },
+        "V0031_07_06_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'active ma Carte Piège !"
+        },
+        "V0031_07_07_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'active mon Piège Continu !"
+        },
+        "V0031_07_08_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'active mon Contre-Piège !"
+        },
+        "V0031_07_09_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Je retourne ma carte face verso !"
+        },
+        "V0031_07_09_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Je joue ma carte face verso !"
+        },
+        "V0031_07_10_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'active l'effet de mon monstre !"
+        },
+        "V0031_07_11_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'active une Magie de Terrain !"
+        },
+        "V0031_07_12_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'active un effet !"
+        },
+        "V0031_07_13_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Je déclare une Échelle Pendule !"
+        },
+        "V0031_08_00_00_0": {
+            "card": [
+                5098
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "La Carte Magie Masque de Volonté et de Jugement !"
+        },
+        "V0031_08_00_01_0": {
+            "card": [
+                5103
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "J'utilise cette Carte Magie !"
+        },
+        "V0031_08_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "La Magie Rituelle, Malédiction de la Bête Masquée !"
+        },
+        "V0031_08_00_02_0": {
+            "card": [
+                5108
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "La Magie d'Équipement, Masque de Brutalité !"
+        },
+        "V0031_08_00_03_0": {
+            "card": [
+                5107
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "La Magie d'Équipement, Masque du Maudit !"
+        },
+        "V0031_08_00_04_0": {
+            "card": [
+                5101
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Je risque mon Duel sur cette Carte !"
+        },
+        "V0031_08_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "J'active la Magie, \nL'Élu !"
+        },
+        "V0031_08_00_05_0": {
+            "card": [
+                5104
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "La Magie Continue Masque de Dissipation !"
+        },
+        "V0031_08_00_06_0": {
+            "card": [
+                9134
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "La Magie d'Équipement, Boulet des Ténèbres !"
+        },
+        "V0031_08_00_06_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Tu ne peux pas livrer de Duel si tu es enchaîné !"
+        },
+        "V0031_08_00_07_0": {
+            "card": [
+                9134
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "L'effet de la Carte Boulet des Ténèbres t'inflige 250 points de dommages !"
+        },
+        "V0031_08_00_07_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Comme c'est triste !\nAh ah ah !"
+        },
+        "V0031_08_00_08_0": {
+            "card": [
+                5102
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "J'active ma Carte Piège !\nMasque de Faiblesse !"
+        },
+        "V0031_08_00_08_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Ah ah ah !\nLa malédiction réduit ton ATK !"
+        },
+        "V0031_08_00_09_0": {
+            "card": [
+                5106
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "J'active le Piège Continu, Masque de Restriction !"
+        },
+        "V0031_08_00_09_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Tant qu'il est sur le Terrain, il n'y aura aucun Sacrifice !"
+        },
+        "V0031_08_00_10_0": {
+            "card": [
+                5438
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Mon Contre-Piège s'active, Masque de Tutan !"
+        },
+        "V0031_08_00_11_0": {
+            "card": [
+                5396
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "J'active la Carte Piège, Chaîne Explosive !"
+        },
+        "V0031_08_00_11_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Lorsqu'un effet la détruit, une carte explose !"
+        },
+        "V0031_08_00_11_2": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Ce Tag Duel est truffé de pièges !"
+        },
+        "V0031_08_00_12_0": {
+            "card": [
+                5396
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Chaîne Explosive !\nEnflamme-toi !"
+        },
+        "V0031_08_00_13_0": {
+            "card": [
+                4692
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Ce Terrain est couvert d'explosifs !"
+        },
+        "V0031_08_00_13_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "La Carte Piège, Ruines Étendues !"
+        },
+        "V0031_08_00_14_0": {
+            "card": [
+                5100
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "<card mrk=5100/> s'active !"
+        },
+        "V0031_08_00_14_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Ce masque me protège de ta pitoyable attaque !\nAh ah ah !"
+        },
+        "V0031_09_00_00_0": {
+            "card": [
+                5096
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "L'effet de la Carte Nuvia la Malfaisante s'active !"
+        },
+        "V0031_09_00_01_0": {
+            "card": [
+                5097
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Avant que Des Gardius la Bête Masquée ne nous quitte, il t'offrira un masque !"
+        },
+        "V0031_09_00_02_0": {
+            "card": [
+                5002
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "L'effet de la Carte Valkyrion, le Guerrier Magnétique s'active !"
+        },
+        "V0031_09_00_03_0": {
+            "card": [
+                4108
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "L'effet de la Carte Masque des Ténèbres s'active !"
+        },
+        "V0031_09_00_04_0": {
+            "card": [
+                4226
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "L'effet de la Carte Sorcier Masqué s'active !"
+        },
+        "V0031_09_00_05_0": {
+            "card": [
+                7039
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Voici l'effet de la Carte Hacheur Masqué !"
+        },
+        "V0031_10_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Hé hé hé..."
+        },
+        "V0031_10_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "À moi !"
+        },
+        "V0031_10_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Observe !"
+        },
+        "V0031_10_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "OK..."
+        },
+        "V0031_11_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'Invoque un monstre !"
+        },
+        "V0031_11_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'Invoque un monstre en Position de Défense !"
+        },
+        "V0031_11_02_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'Invoque Spécialement un monstre !"
+        },
+        "V0031_11_03_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Je Sacrifie un monstre !"
+        },
+        "V0031_11_04_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'Invoque un monstre par Sacrifice !"
+        },
+        "V0031_11_05_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'Invoque un monstre par Fusion !"
+        },
+        "V0031_11_06_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'Invoque un monstre par Rituel !"
+        },
+        "V0031_11_07_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'Invoque un monstre par Synchro !"
+        },
+        "V0031_11_08_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'Invoque un monstre par Xyz !"
+        },
+        "V0031_11_09_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'Invoque un monstre par Pendulation !"
+        },
+        "V0031_11_10_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'Invoque un monstre par Lien !"
+        },
+        "V0031_13_00_00_0": {
+            "card": [
+                5090
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Abysse Étincelante !"
+        },
+        "V0031_13_00_01_0": {
+            "card": [
+                4050
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Poupée Brigande !"
+        },
+        "V0031_13_00_02_0": {
+            "card": [
+                5096
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Nuvia la Malfaisante !"
+        },
+        "V0031_13_00_03_0": {
+            "card": [
+                5095
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "J'Invoque la Carte Melchid la Bête aux Quatre Visages !"
+        },
+        "V0031_13_00_04_0": {
+            "card": [
+                5093
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Grand Ancien Tiki !"
+        },
+        "V0031_13_00_05_0": {
+            "card": [
+                5097
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "La fin est proche !\nJ'Invoque Spécialement Des Gardius la Bête Masquée !"
+        },
+        "V0031_13_00_06_0": {
+            "card": [
+                5094
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Contemple la toute puissance de la Carte La Bête Masquée ! "
+        },
+        "V0031_13_00_07_0": {
+            "card": [
+                5002
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Valkyrion, le Guerrier Magnétique !"
+        },
+        "V0031_13_00_08_0": {
+            "card": [
+                4108
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Masque des Ténèbres !"
+        },
+        "V0031_13_00_09_0": {
+            "card": [
+                4188
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Clown masqué !"
+        },
+        "V0031_13_00_10_0": {
+            "card": [
+                4226
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Sorcier Masqué !"
+        },
+        "V0031_13_00_11_0": {
+            "card": [
+                7039
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Il s'agit clairement d'un monstre avec un masque !"
+        },
+        "V0031_13_00_11_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Hacheur Masqué !"
+        },
+        "V0031_13_00_12_0": {
+            "card": [
+                4590
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Voilà qui va sceller ton disque de Duel !"
+        },
+        "V0031_13_00_12_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Chaîne d'engagement !"
+        },
+        "V0031_14_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Combat !"
+        },
+        "V0031_14_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Combattons !"
+        },
+        "V0031_15_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Hé hé hé..."
+        },
+        "V0031_15_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Allons-y !"
+        },
+        "V0031_15_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ça fera l'affaire."
+        },
+        "V0031_16_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Il est temps d'éradiquer le reste de tes Life Points !"
+        },
+        "V0031_16_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Ce Duel est terminé !"
+        },
+        "V0031_17_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Mon monstre attaque !"
+        },
+        "V0031_17_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Attaque !"
+        },
+        "V0031_17_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Voici mon attaque !"
+        },
+        "V0031_18_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Tu n'as rien pour te défendre !\nJe t'attaque directement !"
+        },
+        "V0031_18_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Je t'attaque directement !"
+        },
+        "V0031_19_00_00_0": {
+            "card": [
+                5090
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Abysse Étincelante ! Attaque !"
+        },
+        "V0031_19_00_01_0": {
+            "card": [
+                4050
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Poupée Brigande !"
+        },
+        "V0031_19_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Attaque destructrice !"
+        },
+        "V0031_19_00_02_0": {
+            "card": [
+                5096
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "À l'attaque, Nuvia la Malfaisante !"
+        },
+        "V0031_19_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Bombardement de lumière !"
+        },
+        "V0031_19_00_03_0": {
+            "card": [
+                5095
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Melchid la Bête aux Quatre Visages attaque !"
+        },
+        "V0031_19_00_04_0": {
+            "card": [
+                5093
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "À l'attaque, Grand Ancien Tiki !"
+        },
+        "V0031_19_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Explosion mentale !"
+        },
+        "V0031_19_00_05_0": {
+            "card": [
+                5097
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "À l'attaque, Des Gardius la Bête Masquée !"
+        },
+        "V0031_19_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Destruction sombre !"
+        },
+        "V0031_19_00_06_0": {
+            "card": [
+                5094
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Rien ne peut arrêter la colère de La Bête Masquée !"
+        },
+        "V0031_19_00_07_0": {
+            "card": [
+                5002
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Valkyrion, le Guerrier Magnétique !\nAttaque !"
+        },
+        "V0031_19_00_08_0": {
+            "card": [
+                4108
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Masque des Ténèbres ! Attaque !"
+        },
+        "V0031_19_00_09_0": {
+            "card": [
+                4188
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Clown masqué ! Attaque !"
+        },
+        "V0031_19_00_10_0": {
+            "card": [
+                4226
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Sorcier Masqué ! Attaque !"
+        },
+        "V0031_19_00_11_0": {
+            "card": [
+                7039
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Taille-les en morceaux, Hacheur Masqué !"
+        },
+        "V0031_19_00_12_0": {
+            "card": [
+                4590
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "À l'attaque, Chaîne d'engagement !"
+        },
+        "V0031_20_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Je Pose une carte !"
+        },
+        "V0031_20_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Je Pose une carte !"
+        },
+        "V0031_20_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Je Pose un monstre !"
+        },
+        "V0031_20_01_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Je Pose un monstre !"
+        },
+        "V0031_21_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Il faut donner tout ce que tu as pour survivre."
+        },
+        "V0031_21_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Je termine mon tour !"
+        },
+        "V0031_21_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Mon tour est terminé !"
+        },
+        "V0031_21_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "À toi de jouer !"
+        },
+        "V0031_21_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "C'est impossible..."
+        },
+        "V0031_21_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Je termine mon tour !"
+        },
+        "V0031_22_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Ouch !"
+        },
+        "V0031_22_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Ahh !"
+        },
+        "V0031_22_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Ouch !"
+        },
+        "V0031_22_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Grr !"
+        },
+        "V0031_23_00_00_0": {
+            "card": [],
+            "cutin": 3,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Aaaaahhhhhhhh !"
+        },
+        "V0031_23_00_01_0": {
+            "card": [],
+            "cutin": 3,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Aaaaahhhhhhhh !"
+        },
+        "V0031_24_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Grrrr..."
+        },
+        "V0031_24_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Ergh..."
+        },
+        "V0031_25_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Ahhhh !"
+        },
+        "V0031_25_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Aïe !"
+        },
+        "V0031_25_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Erf !"
+        },
+        "V0031_25_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Noooon !"
+        },
+        "V0031_26_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Ergh..."
+        },
+        "V0031_26_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Hé hé..."
+        },
+        "V0031_26_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Tu vas payer pour ça !"
+        },
+        "V0031_26_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Argh..."
+        },
+        "V0031_27_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Tu vas payer pour ça !"
+        },
+        "V0031_27_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Mes Life Points..."
+        },
+        "V0031_27_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Ça va, Umbra ?"
+        },
+        "V0031_27_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Apprends à travailler en équipe, abruti !"
+        },
+        "V0031_27_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Personne ne me traite de crétin, espèce d'empoté !"
+        },
+        "V0031_28_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Tu as encore prouvé que tu étais le meilleur partenaire !"
+        },
+        "V0031_28_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Nous ne perdrons pas tant que je mène la danse !"
+        },
+        "V0031_28_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Hé hé hé !\nLorsque lumière et ténèbres s'unissent, nous gagnons !"
+        },
+        "V0031_28_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Tu ne peux pas vaincre notre combo parfait !"
+        },
+        "V0031_28_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                10
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Je vous servirai fidèlement, Maître Marik !"
+        },
+        "V0031_28_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Votre Deck va capturer les Dieux Égyptiens !"
+        },
+        "V0031_29_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Gloups...\nAïe !"
+        },
+        "V0031_29_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Umbra !\nÇa va ?!"
+        },
+        "V0031_29_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Lumis ! Imbécile ! \nJe n'aurais jamais dû suivre ta stratégie !"
+        },
+        "V0031_29_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Tout est de ta faute, espèce de nigaud !"
+        },
+        "V0031_30_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Ah ah ah !\nJe t'ai laissé sans voix !"
+        },
+        "V0031_30_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Hé hé hé !\nJe t'ai bien eu !"
+        },
+        "V0031_30_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Tu n'arriveras jamais à gagner !"
+        },
+        "V0031_31_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Q-quoi ?"
+        },
+        "V0031_31_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Ce n'est pas possible !"
+        },
+        "V0031_32_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Yu-Gi-Oh! Duel Links"
+        },
+        "V0031_32_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Yu-Gi-Oh! Duel Links!"
+        },
+        "V0031_33_00_00_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Les pouvoirs de la lumière et des ténèbres se combinent !"
+        },
+        "V0031_33_00_01_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Les Dieux Égyptiens tremblent devant mon Deck Masques !"
+        },
+        "V0031_34_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Mon Deck est plus puissant que les Dieux Égyptiens !"
+        },
+        "V0031_34_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Vous n'échapperez pas à mes chaînes !"
+        },
+        "V0031_34_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Ce Tag Duel est vraiment explosif !"
+        },
+        "V0031_34_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Que peux-tu faire, caché ainsi derrière ces minables ?"
+        },
+        "V0031_34_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Ne me traite pas de morveux !"
+        },
+        "V0031_34_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Voici la clé de tes chaînes. Prends-la."
+        },
+        "V0031_34_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Ha ha ! Mes masques renforcent mes monstres !"
+        },
+        "V0031_34_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Les Dieux Égyptiens sont scellés !"
+        },
+        "V0031_34_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Tu vas m'aider, espèce de tocard !"
+        },
+        "V0031_34_00_09_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Noooon ! Mes Life Points !"
+        },
+        "V0031_35_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Cette équipe chasse les Dieux Égyptiens !"
+        },
+        "V0031_35_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Le Duelliste qui force les Dieux Égyptiens à s'agenouiller !"
+        },
+        "V0031_36_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Hé hé hé ! Achève-les !"
+        },
+        "V0031_36_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "C'est ton tour."
+        },
+        "V0031_36_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Grr... J'espère que tu n'es pas TOTALEMENT inutile..."
+        }
+    }
+}

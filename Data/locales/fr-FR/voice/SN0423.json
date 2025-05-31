@@ -1,0 +1,3041 @@
+{
+    "_GRP_": "SN0423",
+    "_LNG_": "fr-FR",
+    "info": {
+        "V0423_01_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "S'il faut que je te batte, autant le faire de suite !"
+        },
+        "V0423_01_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "Il était écrit qu'on livrerait un Duel."
+        },
+        "V0423_01_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "Finissons-en une bonne fois pour toutes !"
+        },
+        "V0423_01_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "Je suis... ici en vacances."
+        },
+        "V0423_01_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                401
+            ],
+            "face": 31,
+            "frame": 0,
+            "text": "Jamais il ne pourra y avoir de paix entre nous, Yuma."
+        },
+        "V0423_01_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "Ma mission est de détruire le Monde Astral."
+        },
+        "V0423_01_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                404
+            ],
+            "face": 31,
+            "frame": 0,
+            "text": "Shark, je suis Dumon.\nCelui qui te vaincra."
+        },
+        "V0423_01_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                99999
+            ],
+            "face": 31,
+            "frame": 0,
+            "text": "Tu nous as trahis pour la dernière fois, Vector !"
+        },
+        "V0423_01_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                99999
+            ],
+            "face": 31,
+            "frame": 0,
+            "text": "Vector !\nTu n'es rien qu'un perfide traître !"
+        },
+        "V0423_01_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                416,
+                417,
+                419,
+                420,
+                422,
+                424,
+                441,
+                442,
+                443,
+                445,
+                446
+            ],
+            "face": 31,
+            "frame": 0,
+            "text": "Inutile de nous battre.\nMais s'il le faut, je gagnerai !"
+        },
+        "V0423_01_00_09_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                416,
+                417,
+                419,
+                420,
+                422,
+                424,
+                441,
+                442,
+                443,
+                445,
+                446
+            ],
+            "face": 31,
+            "frame": 0,
+            "text": "Je suis ton fidèle ami, mais je peux être ton pire ennemi !"
+        },
+        "V0423_01_00_10_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                99999
+            ],
+            "face": 31,
+            "frame": 0,
+            "text": "Don Mille !\nJe ne te laisserai jamais me consumer !"
+        },
+        "V0423_02_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "C'est l'heure du Duel !"
+        },
+        "V0423_03_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "Tu as réussi à survivre jusqu'ici, mais c'est fini !"
+        },
+        "V0423_03_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "C'est mon tour !"
+        },
+        "V0423_03_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "À la fin de ce tour, tu n'auras plus aucun LP !"
+        },
+        "V0423_03_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "À mon tour !"
+        },
+        "V0423_03_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "C'est mon tour !"
+        },
+        "V0423_03_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "Tu ne m'empêcheras pas d'appliquer ma stratégie !"
+        },
+        "V0423_03_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "À mon tour !"
+        },
+        "V0423_03_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 37,
+            "frame": 0,
+            "text": "Je n'ai pas le choix, je dois faire le nécessaire !"
+        },
+        "V0423_03_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 37,
+            "frame": 0,
+            "text": "C'est mon tour !"
+        },
+        "V0423_03_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 37,
+            "frame": 0,
+            "text": "Je dois t'éliminer ce tour si je veux espérer gagner."
+        },
+        "V0423_03_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 37,
+            "frame": 0,
+            "text": "À mon tour !"
+        },
+        "V0423_04_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "Je pioche !"
+        },
+        "V0423_04_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "Je pioche !"
+        },
+        "V0423_04_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 0,
+            "text": "Je pioche !"
+        },
+        "V0423_05_00_00_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Cette pioche va me guider vers la victoire !"
+        },
+        "V0423_05_00_00_1": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Je pioche !!!"
+        },
+        "V0423_06_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 1,
+            "text": "Je sais quoi faire !"
+        },
+        "V0423_06_01_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Maintenant !"
+        },
+        "V0423_06_01_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Pas si vite !"
+        },
+        "V0423_06_01_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 38,
+            "frame": 1,
+            "text": "Ce n'est pas ça qui va t'aider !"
+        },
+        "V0423_07_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "Depuis ma main..."
+        },
+        "V0423_07_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "J'active une Carte Magie !"
+        },
+        "V0423_07_02_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "J'active une Magie Jeu-Rapide !"
+        },
+        "V0423_07_03_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "J'active une Carte Magie Continue !"
+        },
+        "V0423_07_04_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "J'active une Magie d'Équipement !"
+        },
+        "V0423_07_05_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "J'active une Magie Rituelle !"
+        },
+        "V0423_07_06_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "J'active un Piège !"
+        },
+        "V0423_07_07_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "J'active un Piège Continu !"
+        },
+        "V0423_07_08_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "J'active un Contre-Piège !"
+        },
+        "V0423_07_09_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "Je retourne ma carte Posée !"
+        },
+        "V0423_07_09_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "Voici ma carte Posée !"
+        },
+        "V0423_07_10_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "J'active l'effet de mon monstre !"
+        },
+        "V0423_07_11_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "J'active une Magie de Terrain !"
+        },
+        "V0423_07_12_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "J'active un effet !"
+        },
+        "V0423_07_13_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "Je déclare une Échelle Pendule !"
+        },
+        "V0423_07_14_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "J'active un Effet Pendule !"
+        },
+        "V0423_08_00_00_0": {
+            "card": [
+                10541
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Force de Barian Magie-Rang-Plus !"
+        },
+        "V0423_08_00_01_0": {
+            "card": [
+                11087
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "J'active la Carte La Septième - Magie-Rang-Plus !"
+        },
+        "V0423_08_00_02_0": {
+            "card": [
+                17043
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Pioche du Chaos de Barian !"
+        },
+        "V0423_08_00_03_0": {
+            "card": [
+                17256
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "J'active ma Magie de Terrain !\nAntopie Barian !"
+        },
+        "V0423_08_00_04_0": {
+            "card": [
+                17256
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "L'effet de la Carte Antopie Barian s'active !"
+        },
+        "V0423_08_00_05_0": {
+            "card": [
+                17044
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "J'active ma Carte Magie !\nSeptième Ascension !"
+        },
+        "V0423_08_00_06_0": {
+            "card": [
+                17044
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "J'active l'effet de la Carte Septième Ascension depuis mon Cimetière !"
+        },
+        "V0423_08_00_07_0": {
+            "card": [
+                18927
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "J'active ma Magie Jeu-Rapide, Septième Force !"
+        },
+        "V0423_08_00_08_0": {
+            "card": [
+                11186
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "J'active ma Magie Jeu-Rapide !\nChaos Rapide Magie-Rang-Plus !"
+        },
+        "V0423_08_00_09_0": {
+            "card": [
+                10664
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "J'active la Magie de Terrain, Champ de Bataille D.D. de Sargasso !"
+        },
+        "V0423_08_00_10_0": {
+            "card": [
+                10664
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Les utilisateurs de Monstres Xyz vont sentir l'effet de Champ de Bataille D.D. de Sargasso !"
+        },
+        "V0423_08_00_11_0": {
+            "card": [
+                10665
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "J'active la Magie Jeu-Rapide, Phare de Sargasso !"
+        },
+        "V0423_08_00_12_0": {
+            "card": [
+                10665
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Phare de Sargasso s'active une fois au Cimetière !"
+        },
+        "V0423_08_00_13_0": {
+            "card": [
+                5675
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "J'active ma Magie Jeu-Rapide !\nBouclier Humain !"
+        },
+        "V0423_08_00_14_0": {
+            "card": [
+                17107
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "J'active mon Piège !\nRenaissance des Septièmes Empereurs !"
+        },
+        "V0423_08_00_15_0": {
+            "card": [
+                17106
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "J'active mon Piège !\nRéincarnation des Septièmes Empereurs !"
+        },
+        "V0423_08_00_16_0": {
+            "card": [
+                17045
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "J'active mon Piège Continu Septième Éternité !"
+        },
+        "V0423_08_00_17_0": {
+            "card": [
+                17045
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "J'active l'effet de la Carte Septième Éternité !"
+        },
+        "V0423_08_00_18_0": {
+            "card": [
+                10803
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "J'active mon Piège, Bouclier Intrigue !"
+        },
+        "V0423_08_00_19_0": {
+            "card": [
+                11267
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "J'active ma Magie Jeu-Rapide, Satellchevalier Pont Célèste !"
+        },
+        "V0423_08_00_20_0": {
+            "card": [
+                12652
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "J'active ma Magie Jeu-Rapide !\nTellchevalier Genèse !"
+        },
+        "V0423_08_00_21_0": {
+            "card": [
+                11266
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "J'active ma Magie d'Équipement !\nStellchevalier Alpha !"
+        },
+        "V0423_08_00_22_0": {
+            "card": [
+                18527
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "J'active ma Carte Magie Continue !\nConstellée Tellchevaliers !"
+        },
+        "V0423_08_00_23_0": {
+            "card": [
+                18527
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "L'effet de la Carte Constellée Tellchevaliers s'active !"
+        },
+        "V0423_08_00_24_0": {
+            "card": [
+                11395
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "J'active ma Magie de Terrain !\nHexatellchevalier !"
+        },
+        "V0423_08_00_25_0": {
+            "card": [
+                11395
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "J'active l'effet de la Carte Hexatellchevalier !"
+        },
+        "V0423_08_00_26_0": {
+            "card": [
+                11280
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "J'active mon Contre-Piège !\nStellnova Alpha !"
+        },
+        "V0423_08_00_27_0": {
+            "card": [
+                11279
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "J'active mon Piège Continu !\nStellnova Vague !"
+        },
+        "V0423_08_00_28_0": {
+            "card": [
+                11279
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "L'effet de la Carte Stellnova Vague s'active !"
+        },
+        "V0423_09_00_00_0": {
+            "card": [
+                10656
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "J'utilise 1 unité de couverture pour jouer l'effet de Numéro 102 : Sentinelle Séraphin Étoile !"
+        },
+        "V0423_09_00_01_0": {
+            "card": [
+                11073
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Unité de couvertureNuméro C102 : Séraphin Archdémon n'a plus d'unités de couverture Chaos !"
+        },
+        "V0423_09_00_02_0": {
+            "card": [
+                11073
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Avec 1 unité de couverture Chaos j'active l'effet de Numéro C102 : Séraphin Archdémon !"
+        },
+        "V0423_09_00_03_0": {
+            "card": [
+                10702
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "J'utilise 1 unité de couverture pour activer l'effet de Numéro 44 : Pégase Céleste !"
+        },
+        "V0423_09_00_04_0": {
+            "card": [
+                10612
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "L'effet de la Carte Éclaireur Séraphin Étoile s'active à son Invocation !"
+        },
+        "V0423_09_00_05_0": {
+            "card": [
+                11293
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "L'Invocation Spéciale de la Carte Balance Séraphin Étoile active son effet !"
+        },
+        "V0423_09_00_06_0": {
+            "card": [
+                11294
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "L'effet de la Carte Trône Séraphin Étoile s'active depuis ma main !"
+        },
+        "V0423_09_00_07_0": {
+            "card": [
+                11292
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "À son Invocation, la Carte Sceptre Séraphin Étoile active son effet !"
+        },
+        "V0423_09_00_08_0": {
+            "card": [
+                11292
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Utiliser Sceptre Séraphin Étoile pour Invoquer par Xyz active son effet !"
+        },
+        "V0423_09_00_09_0": {
+            "card": [
+                10614
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "J'active l'effet de la Carte Épée Séraphin Étoile !"
+        },
+        "V0423_09_00_10_0": {
+            "card": [
+                10613
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "J'active l'effet de la Carte Sage Séraphin Étoile !"
+        },
+        "V0423_09_00_11_0": {
+            "card": [
+                10739
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "L'effet de la Carte Druide Wid Secte Secrète s'active une fois au Cimetière !"
+        },
+        "V0423_09_00_12_0": {
+            "card": [
+                10740
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "À son Invocation, la Carte Druide Dru Secte Secrète active son effet !"
+        },
+        "V0423_09_00_13_0": {
+            "card": [
+                4924
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "L'effet de la Carte Ange Lumineux s'active !"
+        },
+        "V0423_09_00_14_0": {
+            "card": [
+                7050
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "L'effet de la Carte Invocateur de Nova s'active !"
+        },
+        "V0423_09_00_15_0": {
+            "card": [
+                11571
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Je retire 1 unité de couverture et j'utilise l'effet de Stellchevalier Constellée Diamant !"
+        },
+        "V0423_09_00_16_0": {
+            "card": [
+                12641
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "J'utilise 1 unité de couverture pour activer l'effet de Noirtellchevalier Batlamyus !"
+        },
+        "V0423_09_00_17_0": {
+            "card": [
+                18508
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "L'effet de la Carte Tellchevalier Caducée de la Constellée s'active !"
+        },
+        "V0423_09_00_18_0": {
+            "card": [
+                18508
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "J'utilise 1 unité de couverture pour activer l'effet de Tellchevalier Caducée de la Constellée !"
+        },
+        "V0423_09_00_19_0": {
+            "card": [
+                11725
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Avec des unités de couverture je joue l'effet de la Carte Tellchevalier Ptolemaeus !"
+        },
+        "V0423_09_00_20_0": {
+            "card": [
+                11725
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Tellchevalier Ptolemaeus active son effet !"
+        },
+        "V0423_09_00_21_0": {
+            "card": [
+                11262
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "J'utilise 1 unité de couverture pour activer l'effet de Stellchevalier Delteros !"
+        },
+        "V0423_09_00_22_0": {
+            "card": [
+                11262
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "L'effet de la Carte Stellchevalier Delteros s'active une fois au Cimetière !"
+        },
+        "V0423_09_00_23_0": {
+            "card": [
+                11386
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "L'effet de la Carte Stellchevalier Triwinter s'active à son Invocation par Xyz !"
+        },
+        "V0423_09_00_24_0": {
+            "card": [
+                11386
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "J'utilise 1 unité de couverture pour activer l'effet de Stellchevalier Triwinter !"
+        },
+        "V0423_09_00_25_0": {
+            "card": [
+                11386
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "L'effet de Stellchevalier Triwinter s'active une fois envoyée au Cimetière !"
+        },
+        "V0423_09_00_26_0": {
+            "card": [
+                11228
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "L'effet de la Carte Satellchevalier Altaïr s'active !"
+        },
+        "V0423_09_00_27_0": {
+            "card": [
+                11231
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "J'active l'effet de la Carte Satellchevalier Unukalhai !"
+        },
+        "V0423_09_00_28_0": {
+            "card": [
+                11544
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "L'effet de la Carte Satellchevalier Capella s'active !"
+        },
+        "V0423_09_00_29_0": {
+            "card": [
+                11230
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "L'effet de la Carte Satellchevalier Alsahm s'active !"
+        },
+        "V0423_09_00_30_0": {
+            "card": [
+                11359
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "L'effet de la Carte Satellchevalier Sirius s'active !"
+        },
+        "V0423_09_00_31_0": {
+            "card": [
+                11227
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "L'effet de la Carte Satellchevalier Deneb s'active !"
+        },
+        "V0423_09_00_32_0": {
+            "card": [
+                11360
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "J'active l'effet de la Carte Satellchevalier Procyon !"
+        },
+        "V0423_09_00_33_0": {
+            "card": [
+                11229
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "L'effet de la Carte Satellchevalier Véga s'active !"
+        },
+        "V0423_09_00_34_0": {
+            "card": [
+                11361
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Satellchevalier Bételgeuse active son effet !"
+        },
+        "V0423_09_00_35_0": {
+            "card": [
+                11545
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "L'effet de la Carte Satellchevalier Rigel s'active !"
+        },
+        "V0423_09_00_36_0": {
+            "card": [
+                18483
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "L'effet de la Carte Tellchevalier Altairan s'active !"
+        },
+        "V0423_09_00_37_0": {
+            "card": [
+                18483
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "La Carte Tellchevalier Altairan active son effet depuis le Cimetière !"
+        },
+        "V0423_09_00_38_0": {
+            "card": [
+                18484
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "J'active l'effet de la Carte Tellchevalier Lyran depuis ma main !"
+        },
+        "V0423_09_00_39_0": {
+            "card": [
+                18484
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "L'effet de la Carte Tellchevalier Lyran s'active !"
+        },
+        "V0423_09_00_40_0": {
+            "card": [
+                11695
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Satellchevalier Zefrathuban active son effet !"
+        },
+        "V0423_09_00_41_0": {
+            "card": [
+                11696
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Stellchevalier Zefraxciton active son effet !"
+        },
+        "V0423_10_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "Très bien !"
+        },
+        "V0423_10_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "Viens à moi !"
+        },
+        "V0423_10_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "C'est le moment !"
+        },
+        "V0423_10_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "Viens ici !"
+        },
+        "V0423_11_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "J'Invoque un monstre !"
+        },
+        "V0423_11_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "J'Invoque un monstre en Position de Défense !"
+        },
+        "V0423_11_02_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "J'Invoque Spécialement un monstre !"
+        },
+        "V0423_11_03_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "Je Sacrifie un monstre !"
+        },
+        "V0423_11_04_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "J'Invoque un monstre par Sacrifice !"
+        },
+        "V0423_11_04_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "Invocation Sacrifice !"
+        },
+        "V0423_11_05_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "J'Invoque un monstre par Fusion !"
+        },
+        "V0423_11_05_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "Invocation Fusion !"
+        },
+        "V0423_11_06_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "J'Invoque un monstre par Rituel !"
+        },
+        "V0423_11_06_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "Invocation Rituelle !"
+        },
+        "V0423_11_07_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "J'Invoque un monstre par Synchro !"
+        },
+        "V0423_11_07_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "Invocation Synchro !"
+        },
+        "V0423_11_08_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "J'Invoque un monstre par Xyz !"
+        },
+        "V0423_11_08_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "Je construis le Réseau Habillé !"
+        },
+        "V0423_11_08_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "Invocation Xyz !"
+        },
+        "V0423_11_09_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "J'Invoque un monstre par Pendulation !"
+        },
+        "V0423_11_09_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "Invocation Pendule !"
+        },
+        "V0423_11_10_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "J'Invoque un monstre par Lien !"
+        },
+        "V0423_11_10_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "Invocation Lien !"
+        },
+        "V0423_11_11_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "J'Invoque un monstre au Maximum !"
+        },
+        "V0423_11_11_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "Invocation Maximum !"
+        },
+        "V0423_11_12_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "J'Invoque un monstre par Fusion !"
+        },
+        "V0423_11_12_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "Invocation Fusion !"
+        },
+        "V0423_13_00_00_0": {
+            "card": [
+                10656
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Numéro 102 : Sentinelle Séraphin Étoile !"
+        },
+        "V0423_13_00_01_0": {
+            "card": [
+                10656
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Numéro 102 : Sentinelle Séraphin Étoile !"
+        },
+        "V0423_13_00_02_0": {
+            "card": [
+                11073
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Numéro C102 : Séraphin Archdémon !"
+        },
+        "V0423_13_00_03_0": {
+            "card": [
+                10702
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Numéro 44 : Pégase Céleste !"
+        },
+        "V0423_13_00_04_0": {
+            "card": [
+                10612
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Lève-toi !\nÉclaireur Séraphin Étoile !"
+        },
+        "V0423_13_00_05_0": {
+            "card": [
+                11293
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Allez !\nBalance Séraphin Étoile !"
+        },
+        "V0423_13_00_06_0": {
+            "card": [
+                11294
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Viens à moi !\nTrône Séraphin Étoile !"
+        },
+        "V0423_13_00_07_0": {
+            "card": [
+                11292
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Admirez tous Sceptre Séraphin Étoile !"
+        },
+        "V0423_13_00_08_0": {
+            "card": [
+                10614
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Viens ici !\nÉpée Séraphin Étoile !"
+        },
+        "V0423_13_00_09_0": {
+            "card": [
+                10613
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Viens !\nSage Séraphin Étoile !"
+        },
+        "V0423_13_00_10_0": {
+            "card": [
+                10739
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Druide Wid Secte Secrète !"
+        },
+        "V0423_13_00_11_0": {
+            "card": [
+                10740
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Druide Dru Secte Secrète !"
+        },
+        "V0423_13_00_12_0": {
+            "card": [
+                4924
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Ange Lumineux !"
+        },
+        "V0423_13_00_13_0": {
+            "card": [
+                7050
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Invocateur de Nova !"
+        },
+        "V0423_13_00_14_0": {
+            "card": [
+                11571
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Montre-toi !\nStellchevalier Constellée Diamant !"
+        },
+        "V0423_13_00_15_0": {
+            "card": [
+                12641
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Je te présente Noirtellchevalier Batlamyus !"
+        },
+        "V0423_13_00_16_0": {
+            "card": [
+                18508
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Tellchevalier Caducée de la Constellée est là !"
+        },
+        "V0423_13_00_17_0": {
+            "card": [
+                11725
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Vas-y, Tellchevalier Ptolemaeus !"
+        },
+        "V0423_13_00_18_0": {
+            "card": [
+                11262
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Stellchevalier Delteros !\nAllez !"
+        },
+        "V0423_13_00_19_0": {
+            "card": [
+                11386
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Rejoins-moi !\nStellchevalier Triwinter !"
+        },
+        "V0423_13_00_20_0": {
+            "card": [
+                11228
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Satellchevalier Altaïr !"
+        },
+        "V0423_13_00_21_0": {
+            "card": [
+                11231
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Satellchevalier Unukalhai !"
+        },
+        "V0423_13_00_22_0": {
+            "card": [
+                11544
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Satellchevalier Capella !"
+        },
+        "V0423_13_00_23_0": {
+            "card": [
+                11230
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Satellchevalier Alsahm !"
+        },
+        "V0423_13_00_24_0": {
+            "card": [
+                11359
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Satellchevalier Sirius !"
+        },
+        "V0423_13_00_25_0": {
+            "card": [
+                11227
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Satellchevalier Deneb !"
+        },
+        "V0423_13_00_26_0": {
+            "card": [
+                11360
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Satellchevalier Procyon !"
+        },
+        "V0423_13_00_27_0": {
+            "card": [
+                11229
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Satellchevalier Véga !"
+        },
+        "V0423_13_00_28_0": {
+            "card": [
+                11361
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Satellchevalier Bételgeuse !"
+        },
+        "V0423_13_00_29_0": {
+            "card": [
+                11545
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Satellchevalier Rigel !"
+        },
+        "V0423_13_00_30_0": {
+            "card": [
+                18483
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Tellchevalier Altairan !"
+        },
+        "V0423_13_00_31_0": {
+            "card": [
+                18484
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Tellchevalier Lyran !"
+        },
+        "V0423_13_00_32_0": {
+            "card": [
+                11695
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Satellchevalier Zefrathuban !"
+        },
+        "V0423_13_00_33_0": {
+            "card": [
+                11696
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Stellchevalier Zefraxciton !"
+        },
+        "V0423_14_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "Bats-toi !"
+        },
+        "V0423_14_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "Combattons !"
+        },
+        "V0423_15_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 0,
+            "text": "Allez !"
+        },
+        "V0423_15_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 0,
+            "text": "Prépare-toi !"
+        },
+        "V0423_15_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 0,
+            "text": "Prends ça !"
+        },
+        "V0423_16_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "On dirait que ta fin est proche !"
+        },
+        "V0423_16_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Cette frappe effacera à elle seule le reste de tes LP !"
+        },
+        "V0423_17_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Mon monstre attaque !"
+        },
+        "V0423_17_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "J'attaque avec mon monstre !"
+        },
+        "V0423_17_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "À l'attaque !"
+        },
+        "V0423_18_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Mon monstre t'attaque directement !"
+        },
+        "V0423_18_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Attaque directe !"
+        },
+        "V0423_19_00_00_0": {
+            "card": [
+                10656
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Numéro 102 : Sentinelle Séraphin Étoile !\nÀ l'attaque !"
+        },
+        "V0423_19_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Faisceau d'éclairs !"
+        },
+        "V0423_19_00_01_0": {
+            "card": [
+                11073
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Numéro C102 : Séraphin Archdémon !\nÀ l'attaque !"
+        },
+        "V0423_19_00_02_0": {
+            "card": [
+                10702
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "À l'attaque, Numéro 44 : Pégase Céleste !"
+        },
+        "V0423_19_00_03_0": {
+            "card": [
+                10612
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "À l'attaque, Éclaireur Séraphin Étoile !"
+        },
+        "V0423_19_00_04_0": {
+            "card": [
+                11293
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Balance Séraphin Étoile attaque !"
+        },
+        "V0423_19_00_05_0": {
+            "card": [
+                11294
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Trône Séraphin Étoile !\nÀ l'attaque !"
+        },
+        "V0423_19_00_06_0": {
+            "card": [
+                11292
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Sceptre Séraphin Étoile attaque !"
+        },
+        "V0423_19_00_07_0": {
+            "card": [
+                10614
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Épée Séraphin Étoile !\nLacère l'adversaire !"
+        },
+        "V0423_19_00_08_0": {
+            "card": [
+                10613
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "À l'attaque, Sage Séraphin Étoile !"
+        },
+        "V0423_19_00_09_0": {
+            "card": [
+                10739
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Druide Wid Secte Secrète attaque !"
+        },
+        "V0423_19_00_10_0": {
+            "card": [
+                10740
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Druide Dru Secte Secrète !\nÀ l'attaque !"
+        },
+        "V0423_19_00_11_0": {
+            "card": [
+                4924
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Ange Lumineux ! À l'attaque !"
+        },
+        "V0423_19_00_12_0": {
+            "card": [
+                7050
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "À l’attaque, Invocateur de Nova !"
+        },
+        "V0423_19_00_13_0": {
+            "card": [
+                11571
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "À l'attaque, Stellchevalier Constellée Diamant !"
+        },
+        "V0423_19_00_14_0": {
+            "card": [
+                12641
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "À l'attaque, Noirtellchevalier Batlamyus !"
+        },
+        "V0423_19_00_15_0": {
+            "card": [
+                18508
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Tellchevalier Caducée de la Constellée !\nÀ l'attaque !"
+        },
+        "V0423_19_00_16_0": {
+            "card": [
+                11725
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Tellchevalier Ptolemaeus attaque !"
+        },
+        "V0423_19_00_17_0": {
+            "card": [
+                11262
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Stellchevalier Delteros ! À l'attaque !"
+        },
+        "V0423_19_00_18_0": {
+            "card": [
+                11386
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Stellchevalier Triwinter attaque !"
+        },
+        "V0423_19_00_19_0": {
+            "card": [
+                11228
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Satellchevalier Altaïr ! À l'attaque !"
+        },
+        "V0423_19_00_20_0": {
+            "card": [
+                11231
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Satellchevalier Unukalhai !\nÀ l'attaque !"
+        },
+        "V0423_19_00_21_0": {
+            "card": [
+                11544
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Satellchevalier Capella attaque !"
+        },
+        "V0423_19_00_22_0": {
+            "card": [
+                11230
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "À l’attaque, Satellchevalier Alsahm !"
+        },
+        "V0423_19_00_23_0": {
+            "card": [
+                11359
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Satellchevalier Sirius !\nÀ l'attaque !"
+        },
+        "V0423_19_00_24_0": {
+            "card": [
+                11227
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "À l’attaque, Satellchevalier Deneb !"
+        },
+        "V0423_19_00_25_0": {
+            "card": [
+                11360
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Vas-y, Satellchevalier Procyon !\nÀ l'attaque !"
+        },
+        "V0423_19_00_26_0": {
+            "card": [
+                11229
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Satellchevalier Véga attaque !"
+        },
+        "V0423_19_00_27_0": {
+            "card": [
+                11361
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Satellchevalier Bételgeuse !\nÀ l'attaque !"
+        },
+        "V0423_19_00_28_0": {
+            "card": [
+                11545
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "À l’attaque, Satellchevalier Rigel !"
+        },
+        "V0423_19_00_29_0": {
+            "card": [
+                18483
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Tellchevalier Altairan attaque !"
+        },
+        "V0423_19_00_30_0": {
+            "card": [
+                18484
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "À l'attaque, Tellchevalier Lyran !"
+        },
+        "V0423_19_00_31_0": {
+            "card": [
+                11695
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Satellchevalier Zefrathuban !\nÀ l'attaque !"
+        },
+        "V0423_19_00_32_0": {
+            "card": [
+                11696
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Stellchevalier Zefraxciton !\nÀ l'attaque !"
+        },
+        "V0423_20_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "Je pose une carte !"
+        },
+        "V0423_20_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "Je vais Poser une carte !"
+        },
+        "V0423_20_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "Je Pose un monstre !"
+        },
+        "V0423_20_01_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "Je vais Poser un monstre !"
+        },
+        "V0423_21_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "Tu ne résisteras plus longtemps à mes assauts."
+        },
+        "V0423_21_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "Je termine mon tour !"
+        },
+        "V0423_21_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "Survivre est loin d'être pareil que gagner !"
+        },
+        "V0423_21_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "Je termine mon tour !"
+        },
+        "V0423_21_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "Avec ceci, je termine mon tour !"
+        },
+        "V0423_21_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "Je termine mon tour !"
+        },
+        "V0423_21_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 37,
+            "frame": 0,
+            "text": "Argh...\nÇa ne peut plus durer comme ça..."
+        },
+        "V0423_21_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 37,
+            "frame": 0,
+            "text": "Je termine mon tour !"
+        },
+        "V0423_21_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 37,
+            "frame": 0,
+            "text": "Grr...\nTrès malin..."
+        },
+        "V0423_21_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 37,
+            "frame": 0,
+            "text": "Je termine mon tour !"
+        },
+        "V0423_22_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 34,
+            "frame": 1,
+            "text": "Argh !"
+        },
+        "V0423_22_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 34,
+            "frame": 1,
+            "text": "Aaah !"
+        },
+        "V0423_22_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 34,
+            "frame": 1,
+            "text": "Gah !"
+        },
+        "V0423_23_00_00_0": {
+            "card": [],
+            "cutin": 3,
+            "duelist": [],
+            "face": 37,
+            "frame": 1,
+            "text": "Noooon !"
+        },
+        "V0423_24_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 37,
+            "frame": 1,
+            "text": "Aaargh..."
+        },
+        "V0423_25_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 37,
+            "frame": 1,
+            "text": "Aaah !"
+        },
+        "V0423_25_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 37,
+            "frame": 1,
+            "text": "Aaah !"
+        },
+        "V0423_25_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 37,
+            "frame": 1,
+            "text": "Bah !"
+        },
+        "V0423_26_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 0,
+            "text": "Ce n'était rien !"
+        },
+        "V0423_26_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 0,
+            "text": "Ce n'est pas encore fini !"
+        },
+        "V0423_26_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 37,
+            "frame": 0,
+            "text": "Ergh..."
+        },
+        "V0423_27_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 37,
+            "frame": 0,
+            "text": "Incroyable..."
+        },
+        "V0423_27_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 37,
+            "frame": 0,
+            "text": "Ça ne peut pas durer éternellement..."
+        },
+        "V0423_27_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 37,
+            "frame": 0,
+            "text": "Argh..."
+        },
+        "V0423_28_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "Dis ce que tu voudras.\nJe ferai tout pour sauver mon monde."
+        },
+        "V0423_28_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "Tu as bien combattu.\nMais il est temps de te reposer !"
+        },
+        "V0423_28_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 35,
+            "frame": 0,
+            "text": "J'aurais aimé te rencontrer dans d'autres circonstances."
+        },
+        "V0423_28_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "Je te laisse partir.\nNe prends pas ma bonté pour acquise."
+        },
+        "V0423_28_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                404
+            ],
+            "face": 31,
+            "frame": 0,
+            "text": "Derrière ton air impétueux, je décèle un vrai talent."
+        },
+        "V0423_28_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                416,
+                417
+            ],
+            "face": 32,
+            "frame": 0,
+            "text": "Bons ou mauvais, je chéris chaque moment qu'on a vécu."
+        },
+        "V0423_28_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                417
+            ],
+            "face": 32,
+            "frame": 0,
+            "text": "Je tiens bien plus à Nash et toi que tu ne crois, Marine."
+        },
+        "V0423_28_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                99999
+            ],
+            "face": 33,
+            "frame": 0,
+            "text": "Va-t'en, Vector !"
+        },
+        "V0423_28_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                419,
+                420,
+                422,
+                424,
+                441,
+                442,
+                443,
+                445,
+                446
+            ],
+            "face": 38,
+            "frame": 0,
+            "text": "N'agis jamais de ton propre chef sans mon autorisation."
+        },
+        "V0423_28_00_09_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                419,
+                420,
+                422,
+                424,
+                441,
+                442,
+                443,
+                445,
+                446
+            ],
+            "face": 33,
+            "frame": 0,
+            "text": "Ce n'est pas le moment de se disputer !"
+        },
+        "V0423_28_00_10_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                419,
+                420,
+                422,
+                424,
+                441,
+                442,
+                443,
+                445,
+                446
+            ],
+            "face": 31,
+            "frame": 0,
+            "text": "Ne sous-estime jamais ton adversaire."
+        },
+        "V0423_29_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 37,
+            "frame": 0,
+            "text": "Tu étais bien plus redoutable que je ne l'imaginais."
+        },
+        "V0423_29_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 35,
+            "frame": 0,
+            "text": "C'était un combat féroce.\nBien joué."
+        },
+        "V0423_29_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 37,
+            "frame": 0,
+            "text": "Si seulement j'avais pu utiliser ma vraie puissance..."
+        },
+        "V0423_29_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 37,
+            "frame": 0,
+            "text": "Pardonne-moi ma faiblesse."
+        },
+        "V0423_29_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                404
+            ],
+            "face": 35,
+            "frame": 0,
+            "text": "Tu me rappelles un ami cher..."
+        },
+        "V0423_29_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                412
+            ],
+            "face": 35,
+            "frame": 0,
+            "text": "Tu es plus sage qu'il n'y paraît, ça me rappelle quelqu'un."
+        },
+        "V0423_29_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                424,
+                443
+            ],
+            "face": 37,
+            "frame": 0,
+            "text": "Dragon Tachyon aux Yeux Galactiques est vraiment terrifiant."
+        },
+        "V0423_29_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                99999
+            ],
+            "face": 37,
+            "frame": 0,
+            "text": "Vector...\nEspèce de maniaque vicieux !"
+        },
+        "V0423_29_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                99999
+            ],
+            "face": 37,
+            "frame": 0,
+            "text": "Tu es prêt à toutes les fourberies, Vector !"
+        },
+        "V0423_29_00_09_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                416
+            ],
+            "face": 31,
+            "frame": 0,
+            "text": "Impressionnant, Nash."
+        },
+        "V0423_29_00_09_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "De toute évidence, tu pourrais nous donner un coup de main."
+        },
+        "V0423_29_00_10_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                417
+            ],
+            "face": 31,
+            "frame": 0,
+            "text": "Bien joué, Marine."
+        },
+        "V0423_29_00_10_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 32,
+            "frame": 0,
+            "text": "Marine, Nash...\nC'était un plaisir de vous connaître."
+        },
+        "V0423_29_00_11_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                419,
+                420,
+                422,
+                424,
+                441,
+                442,
+                443,
+                445,
+                446
+            ],
+            "face": 35,
+            "frame": 0,
+            "text": "Utilise tes pouvoirs pour le Monde Barian."
+        },
+        "V0423_29_00_12_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                99999
+            ],
+            "face": 37,
+            "frame": 0,
+            "text": "Pourquoi nous consommer alors que tu es déjà tout-puissant ?"
+        },
+        "V0423_30_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 37,
+            "frame": 0,
+            "text": "Pourquoi tu fais ça ?"
+        },
+        "V0423_30_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 0,
+            "text": "Ton âme est corrompue pour que tu tombes aussi bas !"
+        },
+        "V0423_30_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 35,
+            "frame": 0,
+            "text": "Nash, si seulement tu étais là..."
+        },
+        "V0423_31_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 34,
+            "frame": 1,
+            "text": "Quoi ?!"
+        },
+        "V0423_31_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 34,
+            "frame": 1,
+            "text": "Tu attendais juste ce moment précis !"
+        },
+        "V0423_32_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "Yu-Gi-Oh! Duel Links"
+        },
+        "V0423_33_00_00_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Seule ma technique spéciale peut te vaincre !"
+        },
+        "V0423_33_00_01_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Jamais je n'aurais cru l'utiliser contre toi..."
+        },
+        "V0423_33_00_02_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Je n'ai plus le choix !"
+        },
+        "V0423_33_00_03_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Pioche du Chaos de Barian !"
+        },
+        "V0423_34_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 37,
+            "frame": 0,
+            "text": "Oh non ! Je ne peux plus libérer ma véritable force !"
+        },
+        "V0423_34_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 38,
+            "frame": 0,
+            "text": "C'est cruel de ta part de détruire toutes ces cartes..."
+        },
+        "V0423_34_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 0,
+            "text": "Je dois employer ma technique spéciale pour te vaincre !"
+        },
+        "V0423_34_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 0,
+            "text": "Je continuerai de me battre, même si je n'ai aucune chance !"
+        },
+        "V0423_34_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "Du calme. Observer et attendre est une tactique viable."
+        },
+        "V0423_34_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 0,
+            "text": "Dis ce que tu voudras ! Je dois gagner ce Duel !"
+        },
+        "V0423_34_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 0,
+            "text": "Tu adores les coups bas !"
+        },
+        "V0423_34_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 35,
+            "frame": 0,
+            "text": "Je voulais un Duel équitable, pas ça."
+        },
+        "V0423_34_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 0,
+            "text": "La légende dit que nous devons nous faire confiance !"
+        },
+        "V0423_34_00_09_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 32,
+            "frame": 0,
+            "text": "Pourquoi as-tu l'air surpris ?"
+        },
+        "V0423_34_00_10_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 0,
+            "text": "Tu ne t'échapperas pas ! Je te suivrai pour l'éternité !"
+        },
+        "V0423_34_00_11_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 0,
+            "text": "Je ne te pardonnerai jamais ce que tu as fait !"
+        },
+        "V0423_35_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "C'est une mission dont je dois m'occuper personnellement !"
+        },
+        "V0423_35_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "Je m'appelle Dumon."
+        },
+        "V0423_36_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "Mets un terme à ce Duel !"
+        },
+        "V0423_36_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 31,
+            "frame": 0,
+            "text": "Je crois en toi."
+        },
+        "V0423_36_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 37,
+            "frame": 0,
+            "text": "Tu dois tout faire pour gagner !"
+        },
+        "V0423_36_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                416
+            ],
+            "face": 32,
+            "frame": 0,
+            "text": "Nash, mon ami !\nApporte-nous la victoire !"
+        },
+        "V0423_36_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                416
+            ],
+            "face": 31,
+            "frame": 0,
+            "text": "Ça devrait être facile pour toi, Nash."
+        },
+        "V0423_36_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                416
+            ],
+            "face": 37,
+            "frame": 0,
+            "text": "Pardon, Nash..."
+        },
+        "V0423_36_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                417
+            ],
+            "face": 32,
+            "frame": 0,
+            "text": "Gagne, Marine !"
+        },
+        "V0423_36_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                417
+            ],
+            "face": 31,
+            "frame": 0,
+            "text": "Marine !\nMontrons-leur ce qu'est le travail d'équipe !"
+        },
+        "V0423_36_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                417
+            ],
+            "face": 37,
+            "frame": 0,
+            "text": "Marine, pardon d'être aussi faible."
+        },
+        "V0423_36_00_09_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                424,
+                443
+            ],
+            "face": 31,
+            "frame": 0,
+            "text": "Je compte sur toi, Mizar."
+        },
+        "V0423_36_00_10_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                424,
+                443
+            ],
+            "face": 37,
+            "frame": 0,
+            "text": "Il n'y a que toi qui puisses nous tirer de ce pétrin."
+        },
+        "V0423_36_00_11_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                420,
+                442
+            ],
+            "face": 31,
+            "frame": 0,
+            "text": "J'ai foi en ton talent, Alito."
+        },
+        "V0423_36_00_12_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                419,
+                441
+            ],
+            "face": 31,
+            "frame": 0,
+            "text": "Vas-y, Girag."
+        },
+        "V0423_36_00_13_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                422,
+                445
+            ],
+            "face": 33,
+            "frame": 0,
+            "text": "Qu'est-ce que tu attends ?\nVas-y Vector !"
+        },
+        "V0423_37_00_00_0": {
+            "card": [
+                10656
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "J'Invoque par Xyz !\nViens à moi !"
+        },
+        "V0423_37_00_01_0": {
+            "card": [
+                10656
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Nimbé de lumière, outrepasse les limites du temps et viens !"
+        },
+        "V0423_37_00_02_0": {
+            "card": [
+                11073
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Évolution Xyz Chaos !\nPrésente-toi, mon monstre !"
+        },
+        "V0423_37_00_03_0": {
+            "card": [
+                10702
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Apparais, Numéro 44 !"
+        },
+        "V0423_37_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Sors de ton sommeil ancestral pour t'élever dans les cieux !"
+        },
+        "V0423_43_00_00_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Tu vas voir la véritable force des sept Empereurs barians !"
+        },
+        "V0423_43_00_00_1": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Transformation de combat Barian !"
+        },
+        "V0423_48_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "C'est parti !"
+        },
+        "V0423_48_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 33,
+            "frame": 1,
+            "text": "Prépare-toi pour le rush !"
+        }
+    }
+}

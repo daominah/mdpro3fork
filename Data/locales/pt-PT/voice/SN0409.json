@@ -1,0 +1,2499 @@
+{
+    "_GRP_": "SN0409",
+    "_LNG_": "pt-BR",
+    "info": {
+        "V0409_01_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Estou preparado e afiado para Duelar contra você!"
+        },
+        "V0409_01_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Preciso tomar cuidado.\nSei que você sabe usar seus movimentos com esperteza."
+        },
+        "V0409_01_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Você parece ter certeza de que vai vencer.\nPermita-me mudar sua opinião."
+        },
+        "V0409_01_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Alteração no Modo de Duelo.\nHaaaaaaaa!"
+        },
+        "V0409_01_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                401,
+                402,
+                415
+            ],
+            "face": 11,
+            "frame": 0,
+            "text": "Aí vou eu, Yuma!"
+        },
+        "V0409_01_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Mal posso esperar para ver como você sente a vibração!"
+        },
+        "V0409_01_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                404
+            ],
+            "face": 17,
+            "frame": 0,
+            "text": "Meu irmão está ocupado, então eu enfrentarei você no lugar dele."
+        },
+        "V0409_01_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                410
+            ],
+            "face": 11,
+            "frame": 0,
+            "text": "Vou encarar você, Quattro!"
+        },
+        "V0409_01_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                411
+            ],
+            "face": 11,
+            "frame": 0,
+            "text": "Aí vou eu, Quinton!"
+        },
+        "V0409_01_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                424,
+                443
+            ],
+            "face": 17,
+            "frame": 0,
+            "text": "Não vou decepcionar meus irmãos!\nVou derrotar você!"
+        },
+        "V0409_02_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Duelo!"
+        },
+        "V0409_03_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Está na hora de eu colocar um fim nesse Duelo!"
+        },
+        "V0409_03_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "É a minha vez!"
+        },
+        "V0409_03_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Você deve fazer pouco caso de mim, se ainda acha que pode vencer."
+        },
+        "V0409_03_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Meu turno!"
+        },
+        "V0409_03_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Pronto ou não..."
+        },
+        "V0409_03_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "É a minha vez!"
+        },
+        "V0409_03_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Meu turno!"
+        },
+        "V0409_03_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 0,
+            "text": "Você ainda não venceu..."
+        },
+        "V0409_03_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 0,
+            "text": "É a minha vez!"
+        },
+        "V0409_03_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 0,
+            "text": "Não tenho medo.\nEu antecipei esta série de eventos."
+        },
+        "V0409_03_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 0,
+            "text": "Meu turno!"
+        },
+        "V0409_04_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Compro!"
+        },
+        "V0409_04_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Compro!"
+        },
+        "V0409_04_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 0,
+            "text": "Compro!"
+        },
+        "V0409_05_00_00_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 18,
+            "frame": 0,
+            "text": "Não importa o quão machucado eu esteja, vou vencer com esta compra!"
+        },
+        "V0409_05_00_00_1": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Coooompro!!!"
+        },
+        "V0409_06_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Acho que não!"
+        },
+        "V0409_06_01_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Sabia que você ia fazer isso!"
+        },
+        "V0409_06_01_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Isso não vai funcionar contra mim!"
+        },
+        "V0409_06_01_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Agora é minha chance!"
+        },
+        "V0409_07_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 0,
+            "text": "Da minha mão..."
+        },
+        "V0409_07_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 0,
+            "text": "Ativo um Card de Magia!"
+        },
+        "V0409_07_02_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 0,
+            "text": "Ativo uma Magia Rápida!"
+        },
+        "V0409_07_03_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 0,
+            "text": "Ativo uma Magia Contínua!"
+        },
+        "V0409_07_04_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 0,
+            "text": "Ativo uma Magia de Equipamento!"
+        },
+        "V0409_07_05_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 0,
+            "text": "Ativo uma magia de ritual!"
+        },
+        "V0409_07_06_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 0,
+            "text": "Ativo uma Armadilha!"
+        },
+        "V0409_07_07_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 0,
+            "text": "Ativo uma Armadilha Contínua!"
+        },
+        "V0409_07_08_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 0,
+            "text": "Ativo uma armadilha de resposta!"
+        },
+        "V0409_07_09_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 0,
+            "text": "Viro meu card Baixado!"
+        },
+        "V0409_07_09_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 0,
+            "text": "Vou usar meu card Baixado!"
+        },
+        "V0409_07_10_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 0,
+            "text": "O efeito do meu monstro é ativado!"
+        },
+        "V0409_07_11_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 0,
+            "text": "Ativo minha Magia de Campo!"
+        },
+        "V0409_07_12_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 0,
+            "text": "Ativo meu efeito!"
+        },
+        "V0409_07_13_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 0,
+            "text": "Baixo a Escala de Pêndulo!"
+        },
+        "V0409_08_00_00_0": {
+            "card": [
+                11022
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Ativo Magia de Aumento de Classe Força do Caos Argênteo!"
+        },
+        "V0409_08_00_01_0": {
+            "card": [
+                11022
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "O efeito de Magia de Aumento de Classe Força do Caos Argênteo é ativado do Cemitério!"
+        },
+        "V0409_08_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Adiciono este card à minha mão!"
+        },
+        "V0409_08_00_02_0": {
+            "card": [
+                10185
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Jogo o card de magia contínua Cronomalia Painel do Olho da Pirâmide!"
+        },
+        "V0409_08_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "O monstro Cronomalia no meu campo ganha ATK extra."
+        },
+        "V0409_08_00_03_0": {
+            "card": [
+                10184
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Ativo o Card de Magia Cronomalia Tecnologia!"
+        },
+        "V0409_08_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Olho dois cards em meu Deck e adiciono um deles à minha mão!"
+        },
+        "V0409_08_00_04_0": {
+            "card": [
+                10455
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Ativo a Magia de Campo Cronomalia Cidade Babilônia!"
+        },
+        "V0409_08_00_05_0": {
+            "card": [
+                10455
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Ativo o efeito de Cronomalia Cidade Babilônia!"
+        },
+        "V0409_08_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Faço o banimento de um Cronomalia do meu Cemitério para reviver outro!"
+        },
+        "V0409_08_00_06_0": {
+            "card": [
+                16248
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Jogo minha Magia Contínua Templo da Cronomalia - Trílito!"
+        },
+        "V0409_08_00_07_0": {
+            "card": [
+                16248
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Ativo o efeito de Templo da Cronomalia - Trílito!"
+        },
+        "V0409_08_00_07_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Pago meus PV para invocar um monstro Cronomalia da minha mão."
+        },
+        "V0409_08_00_08_0": {
+            "card": [
+                10199
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Ativo minha Armadilha!\nMétodos de Stonehenge!"
+        },
+        "V0409_08_00_08_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Quando meu Cronomalia é destruído, posso invocar outro!"
+        },
+        "V0409_08_00_09_0": {
+            "card": [
+                10727
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Ativo a Armadilha Contínua Muralha de Números!"
+        },
+        "V0409_08_00_09_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "O efeito de Muralha de Números protege meus Números."
+        },
+        "V0409_08_00_10_0": {
+            "card": [
+                16264
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Ativo minha Armadilha!\nCronomalia Glifo Esperanza!"
+        },
+        "V0409_08_00_10_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Invoco dois monstros Cronomalia e uso-os para uma Invocação-Xyz!"
+        },
+        "V0409_09_00_00_0": {
+            "card": [
+                10173
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Uso uma Unidade de Sobreposição para ativar o efeito de Número 33: Cronomalia Machu Meca!"
+        },
+        "V0409_09_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Canhão da Infinidade!"
+        },
+        "V0409_09_00_01_0": {
+            "card": [
+                10973
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Uso uma Unidade de Sobreposição para ativar o efeito de Número 36: Cronomalia Chateau Huyuk!"
+        },
+        "V0409_09_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "O ATK do seu monstro cai para 0 até o fim do turno."
+        },
+        "V0409_09_00_02_0": {
+            "card": [
+                10973
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Ofereço meu Cronomalia como Tributo para ativar o efeito de Número 36: Cronomalia Chateau Huyuk!"
+        },
+        "V0409_09_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "O ATK do seu monstro mudou, por isso ele é destruído!"
+        },
+        "V0409_09_00_03_0": {
+            "card": [
+                10212
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "O efeito de Número 6: Cronomalia Atlande é ativado!"
+        },
+        "V0409_09_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Quando é invocado por Invocação-Xyz, ele equipa um Número de meu Cemitério!"
+        },
+        "V0409_09_00_04_0": {
+            "card": [
+                10212
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Ativo o efeito de Número 6: Cronomalia Atlande!"
+        },
+        "V0409_09_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Uso uma Unidade de Sobreposição para reduzir seus PV à metade!"
+        },
+        "V0409_09_00_04_2": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Portão Orichalco!"
+        },
+        "V0409_09_00_05_0": {
+            "card": [
+                11013
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "O efeito de Número C6: Cronomalia Atlande do Caos é ativado!"
+        },
+        "V0409_09_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Ele pode equipar um de seus monstros uma vez por turno!"
+        },
+        "V0409_09_00_06_0": {
+            "card": [
+                11013
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Uso três Unidades de Sobreposição para ativar o efeito de Número C6: Cronomalia Atlande do Caos!"
+        },
+        "V0409_09_00_06_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Me livro de seus Números equipados para deixar seus PV em 100."
+        },
+        "V0409_09_00_07_0": {
+            "card": [
+                16233
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Cronomalia Vimana alveja um monstro em campo e no Cemitério!"
+        },
+        "V0409_09_00_07_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "O primeiro ganha ATK e o outro se torna uma Unidade de Sobreposição!"
+        },
+        "V0409_09_00_08_0": {
+            "card": [
+                16233
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Isso não vai funcionar!\nAtivo o efeito de Cronomalia Vimana!"
+        },
+        "V0409_09_00_08_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Ao usar duas Unidade de Sobreposição, eu neutralizo o efeito do seu monstro!"
+        },
+        "V0409_09_00_09_0": {
+            "card": [
+                10172
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Uso uma Unidade de Sobreposição para jogar o efeito de Cronomalia Crononauta de Cristal!"
+        },
+        "V0409_09_00_09_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Quando ele batalha, você sofre o dano que eu sofreria!"
+        },
+        "V0409_09_00_09_2": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Centelha Refletora!"
+        },
+        "V0409_09_00_10_0": {
+            "card": [
+                10895
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Ao invocar este Cronomalia Esfinge Alada, posso reviver um Cronomalia de Nível 5!"
+        },
+        "V0409_09_00_11_0": {
+            "card": [
+                10688
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "O efeito de Cronomalia Trabuco Cabrera é ativado!"
+        },
+        "V0409_09_00_11_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Ofereço como Tributo um Cronomalia para reduzir o ATK do seu monstro!"
+        },
+        "V0409_09_00_12_0": {
+            "card": [
+                10143
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Ativo o efeito de Cronomalia Caveira de Cristal da minha mão!"
+        },
+        "V0409_09_00_12_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Adiciono um Cronomalia do meu deck ou Cemitério à minha mão!"
+        },
+        "V0409_09_00_13_0": {
+            "card": [
+                10142
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "O efeito de Cronomalia Ossos de Cristal é ativado!"
+        },
+        "V0409_09_00_14_0": {
+            "card": [
+                10140
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Ativo o efeito de Cronomalia Cabeça Colossal!"
+        },
+        "V0409_09_00_14_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Faço o banimento dele do meu Cemitério para trocar um monstro para defesa!"
+        },
+        "V0409_09_00_15_0": {
+            "card": [
+                10141
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "O efeito de Cronomalia Jato Dourado é ativado!"
+        },
+        "V0409_09_00_15_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Ele aumenta o Nível de meus monstros Cronomalia em 1!"
+        },
+        "V0409_09_00_16_0": {
+            "card": [
+                11006
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Cronomalia Nó Górdio faz a Invocação-Especial de um Cronomalia da minha mão!"
+        },
+        "V0409_09_00_16_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "E se torna do mesmo Nível do monstro que ele invocou!"
+        },
+        "V0409_09_00_17_0": {
+            "card": [
+                10690
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "O efeito de Cronomalia Monólito do Sol é ativado!"
+        },
+        "V0409_09_00_17_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Uma vez por turno, ele pode mudar o Nível do meu Cronomalia para 6!"
+        },
+        "V0409_09_00_18_0": {
+            "card": [
+                14825
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "O efeito de Cronomalia Foguete de Tushpa é ativado!"
+        },
+        "V0409_09_00_18_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Envio um Cronomalia ao Cemitério para reduzir o ATK de um monstro!"
+        },
+        "V0409_09_00_19_0": {
+            "card": [
+                10972
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Quando Cronomalia Disco de Nebra é invocado, posso ativar o efeito dele!"
+        },
+        "V0409_09_00_19_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Adiciono um card Cronomalia do meu deck à minha mão!"
+        },
+        "V0409_09_00_20_0": {
+            "card": [
+                10972
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "O efeito de Cronomalia Disco de Nebra é ativado do Cemitério!"
+        },
+        "V0409_09_00_20_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Ele ressuscita quando tenho apenas monstros Cronomalia em jogo!"
+        },
+        "V0409_09_00_21_0": {
+            "card": [
+                16202
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Ativo o efeito de Cronomalia Globo Magalhânico!"
+        },
+        "V0409_09_00_21_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Ofereço ele como Tributo para fazer a Invocação-Especial de um Cronomalia do meu Deck!"
+        },
+        "V0409_09_00_22_0": {
+            "card": [
+                16202
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Ativo o efeito de Cronomalia Globo Magalhânico do meu Cemitério!"
+        },
+        "V0409_09_00_22_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Posso recuperá-lo ao fazer o banimento de um Cronomalia em meu Cemitério!"
+        },
+        "V0409_09_00_23_0": {
+            "card": [
+                16203
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "O efeito de Cronomalia Figuras de Acámbaro é ativado do meu Cemitério!"
+        },
+        "V0409_09_00_23_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Pago meus PV para fazer a Invocação-Especial dele do meu Cemitério!"
+        },
+        "V0409_09_00_24_0": {
+            "card": [
+                10065
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Uso uma Unidade de Sobreposição para ativar o efeito de Número 32: Dragonete Tubarão!"
+        },
+        "V0409_09_00_24_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Ele revive seu monstro, mas com ATK menor!"
+        },
+        "V0409_09_00_24_2": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "E então, ele pode batalhar seu monstro novamente!"
+        },
+        "V0409_10_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Vou jogar esse!"
+        },
+        "V0409_10_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Apareça!"
+        },
+        "V0409_10_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Vamos!"
+        },
+        "V0409_10_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Aí vai!"
+        },
+        "V0409_11_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Invoco um monstro!"
+        },
+        "V0409_11_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Invoco um monstro em Posição de Defesa!"
+        },
+        "V0409_11_02_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Faço a Invocação-Especial de um monstro!"
+        },
+        "V0409_11_03_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Ofereço como Tributo meu monstro!"
+        },
+        "V0409_11_04_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Faço a Invocação-Tributo de um monstro!"
+        },
+        "V0409_11_05_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Faço a Invocação-Fusão de um monstro!"
+        },
+        "V0409_11_06_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Faço a Invocação-Ritual de um monstro!"
+        },
+        "V0409_11_07_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Faço a Invocação-Sincro de um monstro!"
+        },
+        "V0409_11_08_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Faço a Invocação-Xyz de um monstro!"
+        },
+        "V0409_11_08_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Construo a Rede de Sobreposição!\nFaço uma Invocação-Xyz!"
+        },
+        "V0409_11_09_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Faço a Invocação-Pêndulo de um monstro!"
+        },
+        "V0409_11_10_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Faço a Invocação-Link de um monstro!"
+        },
+        "V0409_13_00_00_0": {
+            "card": [
+                10173
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Apareça!\nNúmero 33: Cronomalia Machu Meca!"
+        },
+        "V0409_13_00_01_0": {
+            "card": [
+                10973
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Aqui está Número 36: Cronomalia Chateau Huyuk!"
+        },
+        "V0409_13_00_02_0": {
+            "card": [
+                10212
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Revele-se!\nNúmero 6: Cronomalia Atlande!"
+        },
+        "V0409_13_00_03_0": {
+            "card": [
+                11013
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Número C6: Cronomalia Atlande do Caos!"
+        },
+        "V0409_13_00_04_0": {
+            "card": [
+                16233
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Aí vem Cronomalia Vimana!"
+        },
+        "V0409_13_00_05_0": {
+            "card": [
+                10172
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Desperte, Cronomalia Crononauta de Cristal!"
+        },
+        "V0409_13_00_06_0": {
+            "card": [
+                10687
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Vamos!\nCronomalia Golem Máscara Asteca!"
+        },
+        "V0409_13_00_07_0": {
+            "card": [
+                10895
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Cronomalia Esfinge Alada!"
+        },
+        "V0409_13_00_08_0": {
+            "card": [
+                10688
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Cronomalia Trabuco Cabrera!"
+        },
+        "V0409_13_00_09_0": {
+            "card": [
+                10143
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Cronomalia Caveira de Cristal!"
+        },
+        "V0409_13_00_10_0": {
+            "card": [
+                10142
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Cronomalia Ossos de Cristal!"
+        },
+        "V0409_13_00_11_0": {
+            "card": [
+                10140
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Aqui está Cronomalia Cabeça Colossal!"
+        },
+        "V0409_13_00_12_0": {
+            "card": [
+                10141
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Cronomalia Jato Dourado!"
+        },
+        "V0409_13_00_13_0": {
+            "card": [
+                11006
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Cronomalia Nó Górdio!"
+        },
+        "V0409_13_00_14_0": {
+            "card": [
+                10690
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Cronomalia Monólito do Sol!\nApareça!"
+        },
+        "V0409_13_00_15_0": {
+            "card": [
+                10449
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Cronomalia Guardião Tula!"
+        },
+        "V0409_13_00_16_0": {
+            "card": [
+                14825
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Cronomalia Foguete de Tushpa!"
+        },
+        "V0409_13_00_17_0": {
+            "card": [
+                10972
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Cronomalia Disco de Nebra!"
+        },
+        "V0409_13_00_18_0": {
+            "card": [
+                10689
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Cronomalia Golem de Lama!"
+        },
+        "V0409_13_00_19_0": {
+            "card": [
+                10139
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Cronomalia Máquina Maia!"
+        },
+        "V0409_13_00_20_0": {
+            "card": [
+                10144
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Aqui está Cronomalia Moai!"
+        },
+        "V0409_13_00_21_0": {
+            "card": [
+                10894
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Cronomalia Portador Moai!"
+        },
+        "V0409_13_00_22_0": {
+            "card": [
+                16202
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Cronomalia Globo Magalhânico!"
+        },
+        "V0409_13_00_23_0": {
+            "card": [
+                16203
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Cronomalia Figuras de Acámbaro!"
+        },
+        "V0409_13_00_24_0": {
+            "card": [
+                10065
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Número 32: Dragonete Tubarão!"
+        },
+        "V0409_14_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Batalhar!"
+        },
+        "V0409_14_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Vamos batalhar!"
+        },
+        "V0409_15_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Qual é!"
+        },
+        "V0409_15_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Vamos!"
+        },
+        "V0409_15_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Vamos lá!"
+        },
+        "V0409_16_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Acabou!"
+        },
+        "V0409_16_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Você não tem nada para lhe proteger."
+        },
+        "V0409_17_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Meu monstro ataca!"
+        },
+        "V0409_17_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Ataco com meu monstro!"
+        },
+        "V0409_17_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Atacar!"
+        },
+        "V0409_18_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Faço um ataque direto!"
+        },
+        "V0409_18_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Ataque direto!"
+        },
+        "V0409_19_00_00_0": {
+            "card": [
+                10173
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Número 33: Cronomalia Machu Meca! Atacar!"
+        },
+        "V0409_19_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Desastre Meteórico!"
+        },
+        "V0409_19_00_01_0": {
+            "card": [
+                10973
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Número 36: Cronomalia Chateau Huyuk ataca!"
+        },
+        "V0409_19_00_02_0": {
+            "card": [
+                10212
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Vai, Número 6: Cronomalia Atlande!"
+        },
+        "V0409_19_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Devastação Eterna!"
+        },
+        "V0409_19_00_03_0": {
+            "card": [
+                11013
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Pegue-os, Número C6: Cronomalia Atlande do Caos!"
+        },
+        "V0409_19_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Castigo Caótico!"
+        },
+        "V0409_19_00_04_0": {
+            "card": [
+                16233
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Ataque, Cronomalia Vimana!"
+        },
+        "V0409_19_00_05_0": {
+            "card": [
+                10172
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Meu Cronomalia Crononauta de Cristal ataca!"
+        },
+        "V0409_19_00_06_0": {
+            "card": [
+                10687
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Vamos!\nCronomalia Golem Máscara Asteca!"
+        },
+        "V0409_19_00_06_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Soco Poderoso de Palenque!"
+        },
+        "V0409_19_00_07_0": {
+            "card": [
+                10895
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Meu Cronomalia Esfinge Alada ataca!"
+        },
+        "V0409_19_00_08_0": {
+            "card": [
+                10688
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Cronomalia Trabuco Cabrera ataca!"
+        },
+        "V0409_19_00_09_0": {
+            "card": [
+                10143
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Cronomalia Caveira de Cristal! Atacar!"
+        },
+        "V0409_19_00_10_0": {
+            "card": [
+                10142
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Ataque, Cronomalia Ossos de Cristal!"
+        },
+        "V0409_19_00_11_0": {
+            "card": [
+                10140
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Cronomalia Cabeça Colossal!\nAcabe com eles!"
+        },
+        "V0409_19_00_12_0": {
+            "card": [
+                10141
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Cronomalia Jato Dourado ataca!"
+        },
+        "V0409_19_00_13_0": {
+            "card": [
+                11006
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Ataco com meu Cronomalia Nó Górdio!"
+        },
+        "V0409_19_00_14_0": {
+            "card": [
+                10690
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Cronomalia Monólito do Sol! Atacar!"
+        },
+        "V0409_19_00_15_0": {
+            "card": [
+                10449
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Vai lá, Cronomalia Guardião Tula!"
+        },
+        "V0409_19_00_16_0": {
+            "card": [
+                14825
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Cronomalia Foguete de Tushpa!\nFogo!"
+        },
+        "V0409_19_00_17_0": {
+            "card": [
+                10972
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Ataque, Cronomalia Disco de Nebra!"
+        },
+        "V0409_19_00_18_0": {
+            "card": [
+                10689
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Vai, Cronomalia Golem de Lama!"
+        },
+        "V0409_19_00_18_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Laser Lectro!"
+        },
+        "V0409_19_00_19_0": {
+            "card": [
+                10139
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Cronomalia Máquina Maia!\nAtropela eles!"
+        },
+        "V0409_19_00_20_0": {
+            "card": [
+                10144
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Cronomalia Moai! Atacar!"
+        },
+        "V0409_19_00_21_0": {
+            "card": [
+                10894
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Cronomalia Portador Moai ataca!"
+        },
+        "V0409_19_00_22_0": {
+            "card": [
+                16202
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Meu Cronomalia Globo Magalhânico ataca!"
+        },
+        "V0409_19_00_23_0": {
+            "card": [
+                16203
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Cronomalia Figuras de Acámbaro! Atacar!"
+        },
+        "V0409_19_00_24_0": {
+            "card": [
+                10065
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Número 32: Dragonete Tubarão!\nCrave seus dentes com força!"
+        },
+        "V0409_19_00_24_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Destruição do Mar Profundo!"
+        },
+        "V0409_20_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Baixo um card!"
+        },
+        "V0409_20_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Vou Baixar um card!"
+        },
+        "V0409_20_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Baixo um monstro!"
+        },
+        "V0409_20_01_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Vou Baixar um monstro!"
+        },
+        "V0409_21_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Se não fizer alguma coisa, você perderá!"
+        },
+        "V0409_21_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Termino meu turno!"
+        },
+        "V0409_21_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Você não sabe quando parar."
+        },
+        "V0409_21_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Termino meu turno!"
+        },
+        "V0409_21_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Termino meu turno!"
+        },
+        "V0409_21_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Isso encerra meu turno!"
+        },
+        "V0409_21_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 18,
+            "frame": 0,
+            "text": "Isso não parece legal pra mim..."
+        },
+        "V0409_21_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 18,
+            "frame": 0,
+            "text": "Termino meu turno!"
+        },
+        "V0409_21_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 18,
+            "frame": 0,
+            "text": "Termino meu turno!"
+        },
+        "V0409_21_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 18,
+            "frame": 0,
+            "text": "Ainda posso retornar, então é melhor você ficar de olhos abertos."
+        },
+        "V0409_22_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 14,
+            "frame": 1,
+            "text": "Aaah!"
+        },
+        "V0409_22_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 14,
+            "frame": 1,
+            "text": "Argh!"
+        },
+        "V0409_22_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 14,
+            "frame": 1,
+            "text": "Uf!"
+        },
+        "V0409_23_00_00_0": {
+            "card": [],
+            "cutin": 3,
+            "duelist": [],
+            "face": 14,
+            "frame": 1,
+            "text": "Agh! Aaaaaah!"
+        },
+        "V0409_24_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 18,
+            "frame": 1,
+            "text": "Aaaaaaahhhhh!"
+        },
+        "V0409_25_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 14,
+            "frame": 1,
+            "text": "Ahhhhhh!"
+        },
+        "V0409_25_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 14,
+            "frame": 1,
+            "text": "Agh!"
+        },
+        "V0409_25_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 14,
+            "frame": 1,
+            "text": "Gaah!"
+        },
+        "V0409_26_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 18,
+            "frame": 0,
+            "text": "Essa picou!"
+        },
+        "V0409_26_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 18,
+            "frame": 0,
+            "text": "Ainda não acabou!"
+        },
+        "V0409_26_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 0,
+            "text": "Golpe de sorte!"
+        },
+        "V0409_27_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 18,
+            "frame": 0,
+            "text": "Não acredito..."
+        },
+        "V0409_27_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 18,
+            "frame": 0,
+            "text": "Isso não pode estar acontecendo..."
+        },
+        "V0409_27_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 18,
+            "frame": 0,
+            "text": "Urgh..."
+        },
+        "V0409_28_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Foi bom eu não ter subestimado você."
+        },
+        "V0409_28_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 0,
+            "text": "Eu venci este Duelo!"
+        },
+        "V0409_28_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Seus contra-ataques sequer conseguiram me atingir."
+        },
+        "V0409_28_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 0,
+            "text": "Luto por minha família.\nÉ por isso que eu nunca perco!"
+        },
+        "V0409_28_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                401,
+                402,
+                415
+            ],
+            "face": 11,
+            "frame": 0,
+            "text": "Yuma...\nVocê é o único amigo de verdade que eu tenho..."
+        },
+        "V0409_28_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                404
+            ],
+            "face": 11,
+            "frame": 0,
+            "text": "Como você dominou seu Número, eu sabia que você seria dureza."
+        },
+        "V0409_28_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                410
+            ],
+            "face": 11,
+            "frame": 0,
+            "text": "Somos irmãos.\nNão deveríamos estar nos enfrentando."
+        },
+        "V0409_28_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                411
+            ],
+            "face": 11,
+            "frame": 0,
+            "text": "Quinton, este é o poder do meu Deck de Cronomalia!"
+        },
+        "V0409_28_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                424,
+                443
+            ],
+            "face": 11,
+            "frame": 0,
+            "text": "Quando estamos juntos, eu e meus irmãos não podemos ser derrotados!"
+        },
+        "V0409_29_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Você é muito habilidoso.\nNão é uma surpresa você ter me derrotado."
+        },
+        "V0409_29_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 18,
+            "frame": 0,
+            "text": "Quando nos encontrarmos novamente, o resultado será diferente!"
+        },
+        "V0409_29_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 18,
+            "frame": 0,
+            "text": "Como você foi capaz de superar o poder do meu brasão?"
+        },
+        "V0409_29_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 18,
+            "frame": 0,
+            "text": "Não posso desistir, mesmo que isso me custe tudo!"
+        },
+        "V0409_29_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                401,
+                402,
+                415
+            ],
+            "face": 11,
+            "frame": 0,
+            "text": "Ao se unir com Astral, você se tornou muito mais forte, Yuma."
+        },
+        "V0409_29_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                410
+            ],
+            "face": 15,
+            "frame": 0,
+            "text": "Ai...\nVocê está indo longe demais, irmão."
+        },
+        "V0409_29_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                411
+            ],
+            "face": 11,
+            "frame": 0,
+            "text": "Você sempre foi o melhor entre nós, irmão."
+        },
+        "V0409_29_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                424,
+                443
+            ],
+            "face": 18,
+            "frame": 0,
+            "text": "Nunca tinha visto alguém jogar monstros daquela forma!"
+        },
+        "V0409_30_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Não deveríamos estar nos enfrentando."
+        },
+        "V0409_30_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Seus Duelos são cheios de surpresas."
+        },
+        "V0409_30_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 0,
+            "text": "Você dominou todas as formas possíveis de me incomodar?"
+        },
+        "V0409_31_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 14,
+            "frame": 1,
+            "text": "O quê!?"
+        },
+        "V0409_31_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 14,
+            "frame": 1,
+            "text": "Não pode ser!"
+        },
+        "V0409_32_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Yu-Gi-Oh! Duel Links"
+        },
+        "V0409_32_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Yu-Gi-Oh! Duel Links!"
+        },
+        "V0409_33_00_00_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Vou mostrar o que posso fazer de verdade!"
+        },
+        "V0409_33_00_01_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Seu excesso de confiança custará caro!"
+        },
+        "V0409_33_00_02_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Haaaaaaaa!"
+        },
+        "V0409_34_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 0,
+            "text": "Não vou aceitar sua rendição\nPorque eu quero derrotar você!"
+        },
+        "V0409_34_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 0,
+            "text": "Se você acha que o seu jeito é o certo, prove!"
+        },
+        "V0409_34_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Agradeço suas palavras gentis."
+        },
+        "V0409_34_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Encontrei uma minúscula falha em seu combo."
+        },
+        "V0409_34_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 15,
+            "frame": 0,
+            "text": "Você vai segurar a minha mão?"
+        },
+        "V0409_34_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "É um bom combo!"
+        },
+        "V0409_34_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Hora de executar meu combo."
+        },
+        "V0409_34_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Estou feliz de ter você como amigo."
+        },
+        "V0409_34_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 0,
+            "text": "Os artefatos de Cronomalia provam que existe outra dimensão!"
+        },
+        "V0409_34_00_09_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 0,
+            "text": "Os artefatos do passado criaram esperança para o futuro!"
+        },
+        "V0409_35_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "É hora de colocar meu Deck de Cronomalia em ação!"
+        },
+        "V0409_35_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Ok!\nDeixa comigo!"
+        },
+        "V0409_36_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Cuidado.\nNão tenha excesso de confiança!"
+        },
+        "V0409_36_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Deixo o resto com vocês!"
+        },
+        "V0409_36_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 18,
+            "frame": 0,
+            "text": "Desculpe...\nDeixei eles me superarem."
+        },
+        "V0409_36_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                401,
+                402,
+                415
+            ],
+            "face": 11,
+            "frame": 0,
+            "text": "Yuma, sei que seus cards nos levarão à vitória!"
+        },
+        "V0409_36_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                401,
+                402,
+                415
+            ],
+            "face": 17,
+            "frame": 0,
+            "text": "Como somos uma equipe, vou compartilhar meu poder com você."
+        },
+        "V0409_36_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                401,
+                402,
+                415
+            ],
+            "face": 18,
+            "frame": 0,
+            "text": "Estou aqui para proteger você.\nAté meu último Ponto de Vida!"
+        },
+        "V0409_36_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                410
+            ],
+            "face": 17,
+            "frame": 0,
+            "text": "Está tudo pronto para você vencer, irmão."
+        },
+        "V0409_36_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                410
+            ],
+            "face": 17,
+            "frame": 0,
+            "text": "Vença isso, Quattro!"
+        },
+        "V0409_36_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                410
+            ],
+            "face": 18,
+            "frame": 0,
+            "text": "Argh...\nIrmão, será que devemos mudar nossa estratégia?"
+        },
+        "V0409_36_00_09_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                411
+            ],
+            "face": 11,
+            "frame": 0,
+            "text": "Você escolheu a família errada para mexer!"
+        },
+        "V0409_36_00_10_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                411
+            ],
+            "face": 11,
+            "frame": 0,
+            "text": "Vamos vencer essa, Quinton!"
+        },
+        "V0409_36_00_11_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                411
+            ],
+            "face": 18,
+            "frame": 0,
+            "text": "Desculpe, irmão..."
+        },
+        "V0409_37_00_00_0": {
+            "card": [
+                11013
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Haaaaaaaa!\nEvolução Caos Xyz!"
+        },
+        "V0409_37_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Transcende o tempo e o espaço para surgir neste mundo!\nNúmero C6: Cronomalia Atlande do Caos!"
+        },
+        "V0409_37_00_01_0": {
+            "card": [
+                10065
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Este habitante das profundezas está louco por um banquete!"
+        }
+    }
+}

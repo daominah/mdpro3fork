@@ -49,7 +49,7 @@ namespace MDPro3.Servant
 
         #region Servant
 
-        public override int Depth => 1;
+        public override int Depth => 3;
         protected override bool ShowLine => false;
 
         public override void Initialize()

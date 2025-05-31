@@ -193,6 +193,8 @@ MonoBehaviour:
     notReady: 0
   - id: 0420
     notReady: 0
+  - id: 0422
+    notReady: 0
   - id: 0423
     notReady: 0
   - id: 0424
@@ -200,6 +202,8 @@ MonoBehaviour:
   - id: 0443
     notReady: 0
   - id: 0444
+    notReady: 0
+  - id: 0445
     notReady: 0
   arcv:
   - id: 0501
@@ -228,6 +232,8 @@ MonoBehaviour:
     notReady: 0
   - id: 0513
     notReady: 0
+  - id: 0514
+    notReady: 0
   vrains:
   - id: 0601
     notReady: 0
@@ -239,9 +245,13 @@ MonoBehaviour:
     notReady: 0
   - id: 0605
     notReady: 0
+  - id: 0608
+    notReady: 0
   - id: 0609
     notReady: 0
   - id: 0610
+    notReady: 0
+  - id: 0612
     notReady: 0
   - id: 0849
     notReady: 0
@@ -266,6 +276,8 @@ MonoBehaviour:
     notReady: 0
   - id: 0709
     notReady: 0
+  - id: 0717
+    notReady: 0
   - id: 0853
     notReady: 0
   - id: 0854
@@ -275,6 +287,10 @@ MonoBehaviour:
   - id: 0856
     notReady: 0
   - id: 0857
+    notReady: 0
+  - id: 0858
+    notReady: 0
+  - id: 0859
     notReady: 0
   npc:
   - id: 0801
@@ -349,6 +365,27 @@ MonoBehaviour:
     notReady: 0
   - id: 0852
     notReady: 0
+  - id: 0862
+    notReady: 0
+  - id: 0863
+    notReady: 0
+  - id: 0864
+    notReady: 0
+  - id: 0865
+    notReady: 0
+  - id: 0866
+    notReady: 0
   - id: 9995
+    notReady: 0
+  gorush:
+  - id: 0901
+    notReady: 0
+  - id: 0902
+    notReady: 0
+  - id: 0903
+    notReady: 0
+  - id: 0904
+    notReady: 0
+  - id: 0905
     notReady: 0
   language: zh-CN

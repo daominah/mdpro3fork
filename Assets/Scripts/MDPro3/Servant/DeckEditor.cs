@@ -90,7 +90,7 @@ namespace MDPro3.Servant
         [HideInInspector] public SelectionButton_CardInCollection lastSelectedCardInCollection;
         public static bool ToHandTest;
 
-        public override int Depth => 5;
+        public override int Depth => 6;
         protected override bool ShowLine => false;
         protected override bool NeedExitButton => false;
         public override float TransitionTime => 0.6f;

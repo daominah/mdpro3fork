@@ -1,0 +1,2821 @@
+{
+    "_GRP_": "SN0204",
+    "_LNG_": "pt-BR",
+    "info": {
+        "V0204_01_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Quero saber do que realmente sou capaz."
+        },
+        "V0204_01_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Por isso, não vou deixar você me deter!"
+        },
+        "V0204_01_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Não preciso mais da força da minha maldição."
+        },
+        "V0204_01_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Essa marca foi o motivo de todo o meu sofrimento."
+        },
+        "V0204_01_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Aprendo algo novo a cada duelo.\nO que será desta vez?"
+        },
+        "V0204_01_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "O duelo todo gira em torno de um momento crucial.\nNão posso perder o foco."
+        },
+        "V0204_01_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                201
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Yusei, quero saber tudo."
+        },
+        "V0204_01_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "O que você vê, o que sente durante um duelo!"
+        },
+        "V0204_01_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                202,
+                203,
+                209
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Quero conquistar a sua confiança."
+        },
+        "V0204_01_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Então olha só o que eu sei fazer!"
+        },
+        "V0204_01_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                205
+            ],
+            "face": 2,
+            "frame": 0,
+            "text": "Claro, Leo.\nVejamos se você aprendeu umas jogadas novas na escola."
+        },
+        "V0204_01_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                206
+            ],
+            "face": 2,
+            "frame": 0,
+            "text": "Não se preocupe em pegar leve comigo, Luna.\nPode vir com tudo!"
+        },
+        "V0204_01_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                208,
+                210,
+                231,
+                211,
+                9058,
+                9059,
+                9061,
+                9062
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Como Signatário, vou derrotar os Signatários das Trevas!"
+        },
+        "V0204_01_00_08_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Tudo para ajudar meus amigos!"
+        },
+        "V0204_02_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Duelo!"
+        },
+        "V0204_03_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Preciso manter o foco."
+        },
+        "V0204_03_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "É a minha vez!"
+        },
+        "V0204_03_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Certo!"
+        },
+        "V0204_03_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Minha vez!"
+        },
+        "V0204_03_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Aí vou eu!\nÉ a minha vez!"
+        },
+        "V0204_03_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Minha vez!"
+        },
+        "V0204_03_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Minha vez!"
+        },
+        "V0204_03_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "É a minha... vez!"
+        },
+        "V0204_03_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Não posso deixar o medo me dominar..."
+        },
+        "V0204_03_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Minha vez!"
+        },
+        "V0204_04_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu compro!"
+        },
+        "V0204_04_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu compro!"
+        },
+        "V0204_04_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Eu compro!"
+        },
+        "V0204_05_00_00_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Se acreditar em mim, posso mudar o futuro!"
+        },
+        "V0204_05_00_00_1": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Compro!!!"
+        },
+        "V0204_06_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Eu sabia que você ia fazer isso!"
+        },
+        "V0204_06_01_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Exatamente o que eu esperava."
+        },
+        "V0204_06_01_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Nem sonhando!"
+        },
+        "V0204_06_01_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Essa é minha chance!"
+        },
+        "V0204_07_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Da minha mão..."
+        },
+        "V0204_07_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu ativo um card de magia!"
+        },
+        "V0204_07_02_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu ativo uma magia rápida!"
+        },
+        "V0204_07_03_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu ativo uma magia contínua!"
+        },
+        "V0204_07_04_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu ativo uma magia de equipamento!"
+        },
+        "V0204_07_05_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu ativo uma magia de ritual!"
+        },
+        "V0204_07_06_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu ativo meu card de armadilha!"
+        },
+        "V0204_07_07_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu ativo minha armadilha contínua!"
+        },
+        "V0204_07_08_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu ativo minha armadilha de resposta!"
+        },
+        "V0204_07_09_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu viro meu card com face para baixo!"
+        },
+        "V0204_07_09_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Jogo meu card com face para baixo!"
+        },
+        "V0204_07_10_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu ativo meu efeito de monstro!"
+        },
+        "V0204_07_11_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu ativo uma magia de campo!"
+        },
+        "V0204_07_12_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu ativo um efeito!"
+        },
+        "V0204_07_13_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu baixo a Escala de Pêndulo!"
+        },
+        "V0204_08_00_00_0": {
+            "card": [
+                7913
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Eu ativo meu card de magia, Tempestade das Fragrâncias!"
+        },
+        "V0204_08_00_01_0": {
+            "card": [
+                7904
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Eu ativo a magia de campo, Jardim Negro!"
+        },
+        "V0204_08_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "As flores desabrocharão usando as energias dos monstros!"
+        },
+        "V0204_08_00_02_0": {
+            "card": [
+                7904
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "O efeito de Jardim Negro é ativado!"
+        },
+        "V0204_08_00_03_0": {
+            "card": [
+                8200
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Eu ativo meu card de magia!\nPlantador Mágico!"
+        },
+        "V0204_08_00_04_0": {
+            "card": [
+                8201
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Eu ativo meu card de magia!\nTrevo Maravilha!"
+        },
+        "V0204_08_00_05_0": {
+            "card": [
+                7902
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "O card de magia, Semente do Engano!"
+        },
+        "V0204_08_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Invocação-Especial de Planta nível 2 ou inferior da mão!"
+        },
+        "V0204_08_00_06_0": {
+            "card": [
+                8495
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "A magia rápida, Plantas Loucas Furiosas!"
+        },
+        "V0204_08_00_07_0": {
+            "card": [
+                7671
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "A magia contínua, Fertilizador Milagroso!"
+        },
+        "V0204_08_00_08_0": {
+            "card": [
+                8199
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "A magia de equipamento, Espinhos da Malícia!"
+        },
+        "V0204_08_00_09_0": {
+            "card": [
+                8041
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "A magia de equipamento, Servo Vingativo!"
+        },
+        "V0204_08_00_09_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Derrube meu inimigo!"
+        },
+        "V0204_08_00_10_0": {
+            "card": [
+                7903
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "A magia de equipamento, Máscara da Rosa!"
+        },
+        "V0204_08_00_10_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Sinta a dor da traição!"
+        },
+        "V0204_08_00_11_0": {
+            "card": [
+                8065
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "A armadilha contínua, Grilhões de Hera!"
+        },
+        "V0204_08_00_12_0": {
+            "card": [
+                8219
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Eu ativo minha armadilha contínua!\nRenascimento Perverso!"
+        },
+        "V0204_08_00_13_0": {
+            "card": [
+                8218
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Minha armadilha contínua, Linha da Devastação!"
+        },
+        "V0204_08_00_14_0": {
+            "card": [
+                7925
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Eu ativo minha armadilha contínua, Doppelganger!"
+        },
+        "V0204_08_00_15_0": {
+            "card": [
+                9147
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Eu ativo minha armadilha!\nMeio Contra-ataque!"
+        },
+        "V0204_08_00_16_0": {
+            "card": [
+                8849
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Eu revelo meu card de armadilha!\nBombardeio do Florescimento!"
+        },
+        "V0204_08_00_17_0": {
+            "card": [
+                8676
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Eu viro meu card de armadilha, Reflexo da Natureza!"
+        },
+        "V0204_08_00_17_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Eu reflito o dano do seu efeito de volta para você!"
+        },
+        "V0204_08_00_18_0": {
+            "card": [
+                7920
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Eu ativo minha armadilha!\nAfinação Urgente!"
+        },
+        "V0204_08_00_19_0": {
+            "card": [
+                7931
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Meu card de armadilha, Cadeia Alimentar da Planta!"
+        },
+        "V0204_08_00_20_0": {
+            "card": [
+                9146
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Eu ativo meu card de armadilha, Sifão Estrela!"
+        },
+        "V0204_08_00_21_0": {
+            "card": [
+                8074
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "O card de armadilha, Muralha de Espinhos!"
+        },
+        "V0204_09_00_00_0": {
+            "card": [
+                7872
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "O efeito de Muralha de Hera!"
+        },
+        "V0204_09_00_01_0": {
+            "card": [
+                8161
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "O efeito de Espinhos Malignos é ativado!"
+        },
+        "V0204_09_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Estouro Maligno!"
+        },
+        "V0204_09_00_02_0": {
+            "card": [
+                8160
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "O efeito de Cerca Vigia!"
+        },
+        "V0204_09_00_03_0": {
+            "card": [
+                7427
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "O efeito de Gigaplanta!"
+        },
+        "V0204_09_00_04_0": {
+            "card": [
+                9095
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "O efeito de Bulbo Brilhante é ativado!"
+        },
+        "V0204_09_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ressuscite enviando o card do topo do meu deck ao Cemitério!"
+        },
+        "V0204_09_00_05_0": {
+            "card": [
+                7873
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "O efeito de Planta Copiadora é ativado!"
+        },
+        "V0204_09_00_06_0": {
+            "card": [
+                7734
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Por favor, use o seu efeito para me ajudar, Dragão da Poeira Estelar!"
+        },
+        "V0204_09_00_06_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Santuário da Vítima!"
+        },
+        "V0204_09_00_07_0": {
+            "card": [
+                7734
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "O efeito de Dragão da Poeira Estelar o devolve para o meu campo!"
+        },
+        "V0204_09_00_08_0": {
+            "card": [
+                8818
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Eu uso o efeito de Rosa Esplêndida!"
+        },
+        "V0204_09_00_09_0": {
+            "card": [
+                8157
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Toma o efeito de Verger Obscuro!"
+        },
+        "V0204_09_00_10_0": {
+            "card": [
+                8088
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "O efeito de Bruxa Violeta!"
+        },
+        "V0204_09_00_11_0": {
+            "card": [
+                8159
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Tome o efeito de Amarílis de Aglomerado Feníxico!"
+        },
+        "V0204_09_00_11_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Fogo Disperso!"
+        },
+        "V0204_09_00_12_0": {
+            "card": [
+                8159
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Eu recupero esse card banindo uma Planta do meu Cemitério!"
+        },
+        "V0204_09_00_13_0": {
+            "card": [
+                8158
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "O efeito de Semente Feníxica!"
+        },
+        "V0204_09_00_14_0": {
+            "card": [
+                7898
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "O efeito de Dragão da Rosa Negra é ativado!"
+        },
+        "V0204_09_00_14_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ao fazer Invocação-Sincro, todos os cards são destruídos!"
+        },
+        "V0204_09_00_14_2": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Vendaval da Rosa Negra!"
+        },
+        "V0204_09_00_15_0": {
+            "card": [
+                7898
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "O efeito de Dragão da Rosa Negra é ativado!"
+        },
+        "V0204_09_00_15_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Floração Aprisionante Negra!"
+        },
+        "V0204_09_00_16_0": {
+            "card": [
+                9448
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "O efeito de Dragão da Rosa Azul!"
+        },
+        "V0204_09_00_17_0": {
+            "card": [
+                8003
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Este é o efeito adicional de Tentáculos Rosas!"
+        },
+        "V0204_09_00_17_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ao destruir uma Planta em batalha, você sofre 300 de dano!"
+        },
+        "V0204_09_00_18_0": {
+            "card": [
+                5485
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "O efeito de Lorde Veneno é ativado!"
+        },
+        "V0204_09_00_19_0": {
+            "card": [
+                7568
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Eu ativo o efeito de Florescer do Fogo Solitário!"
+        },
+        "V0204_09_00_20_0": {
+            "card": [
+                11123
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Rosa Negra devolve um monstro de Invocação-Especial à sua mão!"
+        },
+        "V0204_09_00_20_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Cante, Dragão do Luar da Rosa Negra!\nRéquiem de Rosas!"
+        },
+        "V0204_09_00_21_0": {
+            "card": [
+                8623
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "O efeito de Bruxa da Rosa Negra!"
+        },
+        "V0204_09_00_22_0": {
+            "card": [
+                9967
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Rosária, a Anja Caída Imponente ativa seu efeito!"
+        },
+        "V0204_09_00_22_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Silencie a terra!\nInverno de Repouso!"
+        },
+        "V0204_09_00_23_0": {
+            "card": [
+                7893
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "O efeito de Tytannial, Princesa das Camélias!"
+        },
+        "V0204_09_00_24_0": {
+            "card": [
+                8792
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "O efeito de Rosa do Renascimento!"
+        },
+        "V0204_09_00_25_0": {
+            "card": [
+                8014
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "O efeito de Cavaleiro da Rosa do Crepúsculo!"
+        },
+        "V0204_09_00_26_0": {
+            "card": [
+                9062
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Anjo Rainha das Rosas destrói o monstro com menos ATK!"
+        },
+        "V0204_09_00_26_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Funeral de Rosas!"
+        },
+        "V0204_09_00_27_0": {
+            "card": [
+                11643
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Eu ativo o efeito de Paladino das Rosas!"
+        },
+        "V0204_09_00_28_0": {
+            "card": [
+                10587
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Eu ativo o efeito de Arqueiro das Rosas da minha mão!"
+        },
+        "V0204_09_00_28_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Mandando-o ao Cemitério, neutralizo e destruo sua armadilha!"
+        },
+        "V0204_09_00_29_0": {
+            "card": [
+                8624
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Eu adicionei Fada das Rosas à minha mão!"
+        },
+        "V0204_09_00_29_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Como foi um efeito, posso invocá-lo por Invocação-Especial!"
+        },
+        "V0204_09_00_30_0": {
+            "card": [
+                9409
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "O efeito de Amante das Rosas é ativado do meu Cemitério!"
+        },
+        "V0204_09_00_30_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ao bani-lo, faço Invocação-Especial de Planta da minha mão!"
+        },
+        "V0204_10_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Aí vou eu!"
+        },
+        "V0204_10_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "............"
+        },
+        "V0204_10_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Agora!"
+        },
+        "V0204_10_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "O que devo fazer..."
+        },
+        "V0204_11_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu invoco um monstro!"
+        },
+        "V0204_11_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu invoco um monstro em posição de defesa!"
+        },
+        "V0204_11_02_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Faço a Invocação-Especial de um monstro!"
+        },
+        "V0204_11_03_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ofereço um monstro como tributo!"
+        },
+        "V0204_11_04_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Faço a Invocação-Tributo de um monstro!"
+        },
+        "V0204_11_05_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Faço a Invocação-Fusão de um monstro!"
+        },
+        "V0204_11_06_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Faço a Invocação-Ritual de um monstro!"
+        },
+        "V0204_11_07_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Faço a Invocação-Sincro de um monstro!"
+        },
+        "V0204_11_08_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Faço a Invocação-Xyz de um monstro!"
+        },
+        "V0204_11_09_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Faço a Invocação-Pêndulo de um monstro!"
+        },
+        "V0204_11_10_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Faço a Invocação-Link de um monstro!"
+        },
+        "V0204_13_00_00_0": {
+            "card": [
+                7872
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Eu invoco meu card Muralha de Hera!"
+        },
+        "V0204_13_00_01_0": {
+            "card": [
+                8161
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Eu invoco Espinhos Malignos!"
+        },
+        "V0204_13_00_02_0": {
+            "card": [
+                8160
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Eu invoco Cerca Vigia!"
+        },
+        "V0204_13_00_03_0": {
+            "card": [
+                7427
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Eu invoco Gigaplanta!"
+        },
+        "V0204_13_00_04_0": {
+            "card": [
+                9095
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Eu invoco Bulbo Brilhante!"
+        },
+        "V0204_13_00_05_0": {
+            "card": [
+                7873
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Eu invoco Planta Copiadora!"
+        },
+        "V0204_13_00_06_0": {
+            "card": [
+                7734
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Voe, Dragão da Poeira Estelar!"
+        },
+        "V0204_13_00_06_1": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 7,
+            "frame": 1,
+            "text": "Yusei...\nCom seu poder ao meu lado, não tenho nada a temer!"
+        },
+        "V0204_13_00_07_0": {
+            "card": [
+                8818
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Surja, Rosa Esplêndida!"
+        },
+        "V0204_13_00_08_0": {
+            "card": [
+                8157
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Eu invoco Verger Obscuro!"
+        },
+        "V0204_13_00_09_0": {
+            "card": [
+                8088
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Com vocês, Bruxa Violeta!"
+        },
+        "V0204_13_00_10_0": {
+            "card": [
+                8159
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Amarílis de Aglomerado Feníxico!"
+        },
+        "V0204_13_00_11_0": {
+            "card": [
+                8158
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Eu invoco Semente Feníxica!"
+        },
+        "V0204_13_00_12_0": {
+            "card": [
+                7898
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Venha, Dragão da Rosa Negra!"
+        },
+        "V0204_13_00_13_0": {
+            "card": [
+                9448
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Eu invoco Dragão da Rosa Azul!"
+        },
+        "V0204_13_00_14_0": {
+            "card": [
+                7143
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Leão Botânico! Grraur!"
+        },
+        "V0204_13_00_15_0": {
+            "card": [
+                9060
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Eu invoco Bruxa das Rosas!"
+        },
+        "V0204_13_00_16_0": {
+            "card": [
+                8003
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Eu invoco Tentáculos Rosas!"
+        },
+        "V0204_13_00_17_0": {
+            "card": [
+                5485
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Eu invoco Lorde Veneno!"
+        },
+        "V0204_13_00_18_0": {
+            "card": [
+                7568
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Eu invoco Florescer do Fogo Solitário!"
+        },
+        "V0204_13_00_19_0": {
+            "card": [
+                11123
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Dragão do Luar da Rosa Negra!"
+        },
+        "V0204_13_00_20_0": {
+            "card": [
+                8623
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Eu invoco o monstro regulador, Bruxa da Rosa Negra!"
+        },
+        "V0204_13_00_21_0": {
+            "card": [
+                9967
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Vindo diretamente do princípio da criação!"
+        },
+        "V0204_13_00_21_1": {
+            "card": [],
+            "cutin": 2,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Rosária, a Anja Caída Imponente!"
+        },
+        "V0204_13_00_22_0": {
+            "card": [
+                7893
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Eu invoco Tytannial, Princesa das Camélias!"
+        },
+        "V0204_13_00_23_0": {
+            "card": [
+                8792
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Floresça novamente!\nRosa do Renascimento!"
+        },
+        "V0204_13_00_24_0": {
+            "card": [
+                9420
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Anjo Caído das Rosas!"
+        },
+        "V0204_13_00_25_0": {
+            "card": [
+                8014
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Eu invoco o monstro regulador, Cavaleiro da Rosa do Crepúsculo!"
+        },
+        "V0204_13_00_26_0": {
+            "card": [
+                9062
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Venha das alturas!"
+        },
+        "V0204_13_00_26_1": {
+            "card": [],
+            "cutin": 2,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Anjo Rainha das Rosas!"
+        },
+        "V0204_13_00_27_0": {
+            "card": [
+                11643
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Estou invocando Paladino das Rosas!"
+        },
+        "V0204_13_00_28_0": {
+            "card": [
+                10587
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Estou invocando Arqueiro das Rosas!"
+        },
+        "V0204_13_00_29_0": {
+            "card": [
+                8624
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Fada das Rosas!"
+        },
+        "V0204_13_00_30_0": {
+            "card": [
+                9409
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Eu invoco Amante das Rosas!"
+        },
+        "V0204_14_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Aí vou eu. Vamos batalhar!"
+        },
+        "V0204_14_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "À batalha!"
+        },
+        "V0204_15_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Lá vai!"
+        },
+        "V0204_15_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu ataco com este!"
+        },
+        "V0204_15_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "É melhor sair da frente!"
+        },
+        "V0204_16_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Não vou desistir!\nEu continuarei insistindo!"
+        },
+        "V0204_16_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ganhei..."
+        },
+        "V0204_17_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ataco com meu monstro!"
+        },
+        "V0204_17_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Atacar!"
+        },
+        "V0204_17_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Meu monstro ataca!"
+        },
+        "V0204_18_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Meu monstro ataca você diretamente!"
+        },
+        "V0204_18_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ataco você diretamente!"
+        },
+        "V0204_19_00_00_0": {
+            "card": [
+                7872
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Muralha de Hera ataca!"
+        },
+        "V0204_19_00_01_0": {
+            "card": [
+                8161
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ataque, Espinhos Malignos!"
+        },
+        "V0204_19_00_02_0": {
+            "card": [
+                8160
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Cerca Vigia ataca!"
+        },
+        "V0204_19_00_03_0": {
+            "card": [
+                7427
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Gigaplanta! Atacar!"
+        },
+        "V0204_19_00_04_0": {
+            "card": [
+                9095
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Bulbo Brilhante ataca!"
+        },
+        "V0204_19_00_05_0": {
+            "card": [
+                7873
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ataco com Planta Copiadora!"
+        },
+        "V0204_19_00_06_0": {
+            "card": [
+                7734
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Dragão da Poeira Estelar! Atacar!"
+        },
+        "V0204_19_00_06_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Fulgor Cósmico!"
+        },
+        "V0204_19_00_07_0": {
+            "card": [
+                8818
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Rosa Esplêndida, castigue-os!"
+        },
+        "V0204_19_00_07_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Virada Aérea!"
+        },
+        "V0204_19_00_08_0": {
+            "card": [
+                8157
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ataque, Verger Obscuro!"
+        },
+        "V0204_19_00_09_0": {
+            "card": [
+                8088
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Bruxa Violeta ataca!"
+        },
+        "V0204_19_00_10_0": {
+            "card": [
+                8159
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Amarílis de Aglomerado Feníxico ataca!"
+        },
+        "V0204_19_00_10_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Pétala Flamejante!"
+        },
+        "V0204_19_00_11_0": {
+            "card": [
+                8158
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Semente Feníxica ataca!"
+        },
+        "V0204_19_00_12_0": {
+            "card": [
+                7898
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Sinta a fúria de Dragão da Rosa Negra!"
+        },
+        "V0204_19_00_12_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Fulgor da Rosa Negra!"
+        },
+        "V0204_19_00_13_0": {
+            "card": [
+                9448
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Dragão da Rosa Azul! Atacar!"
+        },
+        "V0204_19_00_14_0": {
+            "card": [
+                7143
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Leão Botânico ataca!"
+        },
+        "V0204_19_00_15_0": {
+            "card": [
+                9060
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Bruxa das Rosas ataca!"
+        },
+        "V0204_19_00_15_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Chicote de Rosas!"
+        },
+        "V0204_19_00_16_0": {
+            "card": [
+                8003
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ataque, Tentáculos Rosas!"
+        },
+        "V0204_19_00_16_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Retaliação de Rosas!"
+        },
+        "V0204_19_00_17_0": {
+            "card": [
+                8003
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu não acabei!\nTentáculos Rosas pode continuar atacando!"
+        },
+        "V0204_19_00_17_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Chicotada Dupla!"
+        },
+        "V0204_19_00_18_0": {
+            "card": [
+                8003
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Chicotada Tripla!"
+        },
+        "V0204_19_00_19_0": {
+            "card": [
+                8003
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Chicotada Quádrupla!"
+        },
+        "V0204_19_00_20_0": {
+            "card": [
+                8003
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Chicoteie uma última vez!"
+        },
+        "V0204_19_00_21_0": {
+            "card": [
+                5485
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Lorde Veneno ataca!"
+        },
+        "V0204_19_00_22_0": {
+            "card": [
+                7568
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Florescer do Fogo Solitário ataca!"
+        },
+        "V0204_19_00_23_0": {
+            "card": [
+                11123
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ataque, Dragão do Luar da Rosa Negra!"
+        },
+        "V0204_19_00_23_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Balada de Rosas!"
+        },
+        "V0204_19_00_24_0": {
+            "card": [
+                8623
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ataque, Bruxa da Rosa Negra!"
+        },
+        "V0204_19_00_25_0": {
+            "card": [
+                9967
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Vá, Rosária, a Anja Caída Imponente!"
+        },
+        "V0204_19_00_25_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Colheita de Valhalla!"
+        },
+        "V0204_19_00_26_0": {
+            "card": [
+                7893
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Tytannial, Princesa das Camélias ataca!"
+        },
+        "V0204_19_00_27_0": {
+            "card": [
+                8792
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ataque, Rosa do Renascimento!"
+        },
+        "V0204_19_00_28_0": {
+            "card": [
+                9420
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Anjo Caído das Rosas ataca!"
+        },
+        "V0204_19_00_29_0": {
+            "card": [
+                8014
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Cavaleiro da Rosa do Crepúsculo ataca!"
+        },
+        "V0204_19_00_30_0": {
+            "card": [
+                9062
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Anjo Rainha das Rosas golpeia!"
+        },
+        "V0204_19_00_30_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Aparador de Rosas!"
+        },
+        "V0204_19_00_31_0": {
+            "card": [
+                11643
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Paladino das Rosas! Atacar!"
+        },
+        "V0204_19_00_31_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Estaca de Rosas!"
+        },
+        "V0204_19_00_32_0": {
+            "card": [
+                10587
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Arqueiro das Rosas! Fogo!"
+        },
+        "V0204_19_00_33_0": {
+            "card": [
+                8624
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ataque, Fada das Rosas!"
+        },
+        "V0204_19_00_34_0": {
+            "card": [
+                9409
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Amante das Rosas ataca!"
+        },
+        "V0204_20_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu baixo um card."
+        },
+        "V0204_20_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Vou baixar um card."
+        },
+        "V0204_20_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu baixo um monstro."
+        },
+        "V0204_20_01_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Vou baixar um monstro."
+        },
+        "V0204_21_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Terminei meu turno."
+        },
+        "V0204_21_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Sua vez."
+        },
+        "V0204_21_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Vou terminar meu turno."
+        },
+        "V0204_21_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Termino meu turno..."
+        },
+        "V0204_21_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Isso não me soa nada bem..."
+        },
+        "V0204_22_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Uf!"
+        },
+        "V0204_22_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Ah!"
+        },
+        "V0204_22_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Argh!"
+        },
+        "V0204_23_00_00_0": {
+            "card": [],
+            "cutin": 3,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Ahhhhhhhhhh!"
+        },
+        "V0204_24_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Urgh..."
+        },
+        "V0204_25_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Ahhhh!"
+        },
+        "V0204_25_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Unhéééé!"
+        },
+        "V0204_25_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Erghhhh!"
+        },
+        "V0204_26_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu aguento!"
+        },
+        "V0204_26_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Você ainda não me derrotou!"
+        },
+        "V0204_26_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "É o melhor que pode fazer?"
+        },
+        "V0204_27_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Quanta dor..."
+        },
+        "V0204_27_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Isso... ainda... não acabou..."
+        },
+        "V0204_27_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Eu não posso perder... Agora não..."
+        },
+        "V0204_28_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Me sinto livre como o vento!"
+        },
+        "V0204_28_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Agora eu tenho amigos."
+        },
+        "V0204_28_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Amigos que acreditam em mim!\nE eu não vou decepcioná-los!"
+        },
+        "V0204_28_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Não posso parar por aqui.\nTenho que continuar melhorando!"
+        },
+        "V0204_28_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Não preciso mais usar meu poder amaldiçoado."
+        },
+        "V0204_28_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                201
+            ],
+            "face": 2,
+            "frame": 0,
+            "text": "Você me ensinou que meu poder é um dom e não uma maldição."
+        },
+        "V0204_28_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                202,
+                203,
+                209
+            ],
+            "face": 7,
+            "frame": 0,
+            "text": "Vou cumprir minha parte: nunca vou desapontar a equipe!"
+        },
+        "V0204_28_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                205
+            ],
+            "face": 2,
+            "frame": 0,
+            "text": "Venci, Leo.\nVocê tem que se dedicar mais."
+        },
+        "V0204_28_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                206
+            ],
+            "face": 2,
+            "frame": 0,
+            "text": "Não esqueça: somos uma equipe.\nEntão vamos ficar mais fortes juntos!"
+        },
+        "V0204_28_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                208,
+                210,
+                231,
+                211,
+                9058,
+                9059,
+                9061,
+                9062
+            ],
+            "face": 3,
+            "frame": 0,
+            "text": "Eu nunca tive amigos... até agora.\nPor isso, vou lutar por eles!"
+        },
+        "V0204_29_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Não pude fazer nada..."
+        },
+        "V0204_29_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Nesse ritmo, nunca vou chegar no nível de Yusei..."
+        },
+        "V0204_29_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Meus amigos acreditam em mim, mas eu os decepcionei..."
+        },
+        "V0204_29_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Você me mostrou que tenho muito a melhorar como duelista."
+        },
+        "V0204_29_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                201
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Essa marca não faz de mim uma bruxa, ela me faz especial."
+        },
+        "V0204_29_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Obrigada por me ensinar isso, Yusei."
+        },
+        "V0204_29_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                202,
+                203,
+                209
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Posso ter perdido, mas voltarei mais forte!"
+        },
+        "V0204_29_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                205
+            ],
+            "face": 2,
+            "frame": 0,
+            "text": "Muito bem, Leo!\nParece que você não largou seus estudos!"
+        },
+        "V0204_29_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                206
+            ],
+            "face": 2,
+            "frame": 0,
+            "text": "Uau, Luna!\nVocê acabou comigo!"
+        },
+        "V0204_29_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                208,
+                210,
+                231,
+                211,
+                9058,
+                9059,
+                9061,
+                9062
+            ],
+            "face": 5,
+            "frame": 0,
+            "text": "Então esse é o poder dos Signatários das Trevas..."
+        },
+        "V0204_30_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Que efeito devastador!"
+        },
+        "V0204_30_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Você é incrível!"
+        },
+        "V0204_30_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Tenho um mau pressentimento sobre isso..."
+        },
+        "V0204_31_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "De jeito nenhum!"
+        },
+        "V0204_31_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Ah, não!"
+        },
+        "V0204_32_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Yu-Gi-Oh! Duel Links"
+        },
+        "V0204_32_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Yu-Gi-Oh! Duel Links!\nVamos nessa!"
+        },
+        "V0204_33_00_00_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Essa é a minha nova habilidade!"
+        },
+        "V0204_33_00_01_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Não vou deixar o poder me dominar!"
+        },
+        "V0204_33_00_02_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Eu vou dominar essa jogada!"
+        },
+        "V0204_34_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Estou... curtindo a destruição?"
+        },
+        "V0204_34_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "Isso mesmo. Eu sou Rosa Negra."
+        },
+        "V0204_34_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "Adoro causar dor...\nIsso é muito divertido!"
+        },
+        "V0204_34_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "Agora sinta isso!"
+        },
+        "V0204_34_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Muito bem!"
+        },
+        "V0204_34_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "O quê?!?"
+        },
+        "V0204_34_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Com toda essa velocidade...\nO que é isso que estou sentindo?"
+        },
+        "V0204_34_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Só duelistas conhecem essa sensação!"
+        },
+        "V0204_34_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Isso é incrível!"
+        },
+        "V0204_34_00_09_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Em suas marcas... Preparar... Duelo!"
+        },
+        "V0204_35_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Luto pelos meus amigos!"
+        },
+        "V0204_35_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "É Equipe 5D's para sempre!"
+        },
+        "V0204_36_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "O resto é com você."
+        },
+        "V0204_36_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Conto com você."
+        },
+        "V0204_36_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Desculpe..."
+        },
+        "V0204_36_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                201
+            ],
+            "face": 2,
+            "frame": 0,
+            "text": "Yusei! Com você do meu lado, não tenho nada a temer!"
+        },
+        "V0204_36_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                201
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Yusei! Preciso que você cuide disso!"
+        },
+        "V0204_36_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                201
+            ],
+            "face": 5,
+            "frame": 0,
+            "text": "Me desculpe, Yusei.\nNão pude fazer nada."
+        },
+        "V0204_36_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                202,
+                203,
+                205,
+                206,
+                209
+            ],
+            "face": 7,
+            "frame": 0,
+            "text": "Acredito na Equipe 5D's!\nVamos vencer isso!"
+        },
+        "V0204_36_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                202,
+                203,
+                205,
+                206,
+                209
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Mostra pra eles o poder do trabalho em equipe!"
+        },
+        "V0204_36_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                202,
+                203,
+                205,
+                206,
+                209
+            ],
+            "face": 5,
+            "frame": 0,
+            "text": "Desculpe...\nEu fui praticamente inútil..."
+        },
+        "V0204_37_00_01_0": {
+            "card": [
+                7734
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "As esperanças do mundo se consolidam em uma única estrela!"
+        },
+        "V0204_37_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "É hora de acelerar!\nInvocação-Sincro!"
+        },
+        "V0204_37_00_02_0": {
+            "card": [
+                8818
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Este caçador de espinhos se esconde na floresta sagrada!"
+        },
+        "V0204_37_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Invocação-Sincro!"
+        },
+        "V0204_37_00_03_0": {
+            "card": [
+                7898
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Uma chama fria cobre o mundo!\nFlor negra, floresça!"
+        },
+        "V0204_37_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Invocação-Sincro!"
+        },
+        "V0204_37_00_04_0": {
+            "card": [
+                11123
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Esta rosa pura floresce sob o luar plácido!"
+        },
+        "V0204_37_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Invocação-Sincro!"
+        },
+        "V0204_38_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Em suas marcas... Preparar... Duelo!"
+        }
+    }
+}

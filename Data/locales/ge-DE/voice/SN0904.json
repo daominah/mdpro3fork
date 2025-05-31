@@ -1,0 +1,2721 @@
+{
+    "_GRP_": "SN0904",
+    "_LNG_": "de-DE",
+    "info": {
+        "V0904_01_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Du kannst mich in einem Rush Duel besiegen?\nBeweise es!"
+        },
+        "V0904_01_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich kann dieses Duell gar nicht verlieren."
+        },
+        "V0904_01_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Für den Sieg bin ich zu allem bereit!"
+        },
+        "V0904_01_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Wenn du denkst, du könntest mich aufhalten, versuch es doch."
+        },
+        "V0904_01_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich bin Zuwijo Zwil Velgear, Heerführer von Velgear."
+        },
+        "V0904_01_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Wenn du ein Problem mit mir hast, dann stell dich mir!"
+        },
+        "V0904_01_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                901
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Hör zu, Yudias!\nIch werde alles tun, um den Krieg zu beenden!"
+        },
+        "V0904_01_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                901
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Yudias!\nIch erinnere dich daran, wie sehr wir gelitten haben!"
+        },
+        "V0904_01_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                901
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Yudias, du wirst noch lernen, dass mein Weg richtig ist!"
+        },
+        "V0904_01_00_09_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                902,
+                903
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Ihr seid bloß Erdenmenschen.\nDu kannst mich nicht besiegen."
+        },
+        "V0904_01_00_10_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                866
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Terza …"
+        },
+        "V0904_01_00_11_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                99999
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich sage dir meine ehrliche Meinung über deinen Comic."
+        },
+        "V0904_02_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Duell!"
+        },
+        "V0904_03_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Zeit, diesen Unsinn zu beenden!"
+        },
+        "V0904_03_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich bin dran!"
+        },
+        "V0904_03_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Du kannst nichts mehr tun!"
+        },
+        "V0904_03_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Mein Spielzug!"
+        },
+        "V0904_03_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich bin dran!"
+        },
+        "V0904_03_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Los geht’s!"
+        },
+        "V0904_03_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Mein Spielzug!"
+        },
+        "V0904_03_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Du hättest mich schlagen sollen, als du die Chance hattest!"
+        },
+        "V0904_03_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Ich bin dran!"
+        },
+        "V0904_03_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Der Kampf ist noch nicht vorbei!\nDu hältst mich nicht auf!"
+        },
+        "V0904_03_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Mein Spielzug!"
+        },
+        "V0904_04_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Ich ziehe!"
+        },
+        "V0904_04_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Ich ziehe!"
+        },
+        "V0904_04_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Ich ziehe!"
+        },
+        "V0904_05_00_00_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich schwor, das Schicksal meines Volkes zu ändern!"
+        },
+        "V0904_05_00_00_1": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich ziiiiieeeeehe!!!"
+        },
+        "V0904_06_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Es ist so weit!"
+        },
+        "V0904_06_01_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "In diesem Fall …"
+        },
+        "V0904_06_01_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Hättest du gründlicher nachdenken sollen!"
+        },
+        "V0904_06_01_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Ach, wirklich?"
+        },
+        "V0904_07_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Von meiner Hand …"
+        },
+        "V0904_07_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich aktiviere meine Zauberkarte!"
+        },
+        "V0904_07_02_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich aktiviere meinen Schnellzauber!"
+        },
+        "V0904_07_03_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich aktiviere meinen Permanenten Zauber!"
+        },
+        "V0904_07_04_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich aktiviere meinen Ausrüstungszauber!"
+        },
+        "V0904_07_05_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich aktiviere meinen Ritualzauber!"
+        },
+        "V0904_07_06_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich aktiviere meine Falle!"
+        },
+        "V0904_07_07_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich aktiviere meine Permanente Falle!"
+        },
+        "V0904_07_08_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich aktiviere meine Konterfalle!"
+        },
+        "V0904_07_09_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich aktiviere die Karte, die ich gesetzt habe!"
+        },
+        "V0904_07_09_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich habe nicht vergessen, dass ich diese Karte habe!"
+        },
+        "V0904_07_10_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich aktiviere den Effekt meines Monsters!"
+        },
+        "V0904_07_11_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich aktiviere meinen Spielfeldzauber!"
+        },
+        "V0904_07_12_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich aktiviere einen Effekt!"
+        },
+        "V0904_07_13_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich lege den Pendelbereich fest!"
+        },
+        "V0904_07_14_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich aktiviere einen Pendeleffekt!"
+        },
+        "V0904_08_00_00_0": {
+            "card": [
+                18979
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Zerstöre jede Hoffnung!\nIch rüste  aus!"
+        },
+        "V0904_08_00_01_0": {
+            "card": [
+                18980
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Schutz vor den wütenden Flammen!\nIch rüste  aus!"
+        },
+        "V0904_08_00_02_0": {
+            "card": [
+                18276
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Das magische Schwert, das die Wünsche der Bösen erfüllt!"
+        },
+        "V0904_08_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Der Ausrüstungszauber !"
+        },
+        "V0904_08_00_03_0": {
+            "card": [
+                18626
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich rüste mein Monster mit dem Ausrüstungszauber  aus!"
+        },
+        "V0904_08_00_04_0": {
+            "card": [
+                19801
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Die zweifache Kraft der Verwüstung!\nIch rüste Voidvelg-Morgenstein aus!"
+        },
+        "V0904_08_00_05_0": {
+            "card": [
+                17975
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere die Zauberkarte Void-Korridor!"
+        },
+        "V0904_08_00_06_0": {
+            "card": [
+                16934
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere meine Zauberkarte!\nFusionnnn!"
+        },
+        "V0904_08_00_07_0": {
+            "card": [
+                18398
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere meine Zauberkarte!\nSchwarzes Loch!"
+        },
+        "V0904_08_00_07_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Es vernichtet alle Monster auf dem Spielfeld!"
+        },
+        "V0904_08_00_08_0": {
+            "card": [
+                17893
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere meine Zauberkarte Sonnenfinsternis!"
+        },
+        "V0904_08_00_09_0": {
+            "card": [
+                17582
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere meine Zauberkarte!\nUniverseller Sturm!"
+        },
+        "V0904_08_00_10_0": {
+            "card": [
+                15453
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere meine Zauberkarte!\nBombe der Eigenschaftenverlagerung!"
+        },
+        "V0904_08_00_11_0": {
+            "card": [
+                17976
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere meine Falle!\nVoid-Abfangen!"
+        },
+        "V0904_08_00_12_0": {
+            "card": [
+                17977
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere meine Falle!\n!"
+        },
+        "V0904_08_00_13_0": {
+            "card": [
+                18641
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere meine Falle!\nDunkler Nebel!"
+        },
+        "V0904_08_00_14_0": {
+            "card": [
+                17030
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere meine Falle!\n!"
+        },
+        "V0904_08_00_15_0": {
+            "card": [
+                16572
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere meine Falle!\nNotfallrückkehr!"
+        },
+        "V0904_09_00_00_0": {
+            "card": [
+                17873
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere den Effekt von Voidvelg-Requiem!"
+        },
+        "V0904_09_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Chaos-Übermacht!"
+        },
+        "V0904_09_00_01_0": {
+            "card": [
+                17873
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Der Effekt von Voidvelg-Requiem schöpft Kraft aus der Finsternis!"
+        },
+        "V0904_09_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Chaos-Übermacht!"
+        },
+        "V0904_09_00_02_0": {
+            "card": [
+                20048
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere den Effekt von !"
+        },
+        "V0904_09_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Oberherr-Bestrafung!"
+        },
+        "V0904_09_00_03_0": {
+            "card": [
+                20048
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": " aktiviert den Effekt!"
+        },
+        "V0904_09_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Oberherr-Feuer!"
+        },
+        "V0904_09_00_04_0": {
+            "card": [
+                17966
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere den Effekt von Voidvelg-Elysium!"
+        },
+        "V0904_09_00_05_0": {
+            "card": [
+                18937
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere den Effekt von !"
+        },
+        "V0904_09_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Dunkel-Erleuchtung!"
+        },
+        "V0904_09_00_06_0": {
+            "card": [
+                19454
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Voidvelg-Transi aktiviert den Effekt!"
+        },
+        "V0904_09_00_06_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Auslöschungs-Erosion!"
+        },
+        "V0904_09_00_07_0": {
+            "card": [
+                17967
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere den Effekt von Voidvelg-Hekatoncheire!"
+        },
+        "V0904_09_00_07_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Wuchtiger Schlag!"
+        },
+        "V0904_09_00_08_0": {
+            "card": [
+                17967
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere den Effekt von Voidvelg-Hekatoncheire!"
+        },
+        "V0904_09_00_08_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Dunkelfeder-Leere!"
+        },
+        "V0904_09_00_09_0": {
+            "card": [
+                18376
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere den Effekt von Voidvelg-Apokalypse!"
+        },
+        "V0904_09_00_09_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Jenseits der Dunkelheit!"
+        },
+        "V0904_09_00_10_0": {
+            "card": [
+                19763
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere den Effekt von Voidvelg-Chaosmachia!"
+        },
+        "V0904_09_00_11_0": {
+            "card": [
+                18969
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere den Effekt von !"
+        },
+        "V0904_09_00_12_0": {
+            "card": [
+                18968
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": " aktiviert den Effekt!"
+        },
+        "V0904_09_00_13_0": {
+            "card": [
+                18615
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Voidvelg-Protostern aktiviert den Effekt!"
+        },
+        "V0904_09_00_14_0": {
+            "card": [
+                18591
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere den Effekt von Schwarzer Voidvelg-Zwerg!"
+        },
+        "V0904_09_00_15_0": {
+            "card": [
+                18936
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere den Effekt von Voidvelg-Logistikos!"
+        },
+        "V0904_09_00_16_0": {
+            "card": [
+                18590
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Voidvelg-Kataphrakt aktiviert den Effekt!"
+        },
+        "V0904_09_00_17_0": {
+            "card": [
+                17971
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere den Effekt von Voidvelg-Globule!"
+        },
+        "V0904_09_00_18_0": {
+            "card": [
+                18935
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere den Effekt von Voidvelg-Kyrie!"
+        },
+        "V0904_09_00_19_0": {
+            "card": [
+                17972
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere den Effekt von Voidvelg-Meteon!"
+        },
+        "V0904_09_00_20_0": {
+            "card": [
+                17869
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Parapilz-Kolonie aktiviert den Effekt!"
+        },
+        "V0904_09_00_21_0": {
+            "card": [
+                17870
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Sprengstrahl-Schütze aktiviert den Effekt!"
+        },
+        "V0904_09_00_22_0": {
+            "card": [
+                18377
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere den Effekt von Dunkler Prophet!"
+        },
+        "V0904_09_00_23_0": {
+            "card": [
+                17973
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Meteorlarve aktiviert den Effekt!"
+        },
+        "V0904_10_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Los geht’s!"
+        },
+        "V0904_10_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Schau genau hin!"
+        },
+        "V0904_10_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "So mache ich das jetzt!"
+        },
+        "V0904_10_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "He he."
+        },
+        "V0904_11_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich beschwöre ein Monster!"
+        },
+        "V0904_11_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich beschwöre ein Monster in Verteidigungsposition!"
+        },
+        "V0904_11_02_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich beschwöre ein Monster als Spezialbeschwörung!"
+        },
+        "V0904_11_03_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich biete ein Monster als Tribut an!"
+        },
+        "V0904_11_04_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich beschwöre ein Monster als Tributbeschwörung!"
+        },
+        "V0904_11_04_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Tributbeschwörung!"
+        },
+        "V0904_11_05_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich beschwöre ein Monster als Fusionsbeschwörung!"
+        },
+        "V0904_11_05_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Fusionsbeschwörung!"
+        },
+        "V0904_11_06_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich beschwöre ein Monster als Ritualbeschwörung!"
+        },
+        "V0904_11_06_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ritualbeschwörung!"
+        },
+        "V0904_11_07_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich beschwöre ein Monster als Synchrobeschwörung!"
+        },
+        "V0904_11_07_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Synchrobeschwörung!"
+        },
+        "V0904_11_08_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich beschwöre ein Monster als Xyz-Beschwörung!"
+        },
+        "V0904_11_08_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Xyz-Beschwörung!"
+        },
+        "V0904_11_09_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich beschwöre ein Monster als Pendelbeschwörung!"
+        },
+        "V0904_11_09_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Pendelbeschwörung!"
+        },
+        "V0904_11_10_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich beschwöre ein Monster als Linkbeschwörung!"
+        },
+        "V0904_11_10_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Linkbeschwörung!"
+        },
+        "V0904_11_11_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich beschwöre ein Monster als Maximalbeschwörung!"
+        },
+        "V0904_11_11_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Maximalbeschwörung!"
+        },
+        "V0904_11_12_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich beschwöre ein Monster als Fusionsbeschwörung!"
+        },
+        "V0904_11_12_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Fusionsbeschwörung!"
+        },
+        "V0904_11_13_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich beschwöre ein Monster als Kontaktfusion!"
+        },
+        "V0904_11_13_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Kontaktfusion!"
+        },
+        "V0904_13_00_00_0": {
+            "card": [
+                17873
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Mach Platz für Voidvelg-Requiem!"
+        },
+        "V0904_13_00_01_0": {
+            "card": [
+                20048
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "!"
+        },
+        "V0904_13_00_02_0": {
+            "card": [
+                17966
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Voidvelg-Elysium!"
+        },
+        "V0904_13_00_03_0": {
+            "card": [
+                18937
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "!"
+        },
+        "V0904_13_00_04_0": {
+            "card": [
+                19454
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Voidvelg-Transi!"
+        },
+        "V0904_13_00_05_0": {
+            "card": [
+                17967
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Erhebe dich!\nVoidvelg-Hekatoncheire!"
+        },
+        "V0904_13_00_06_0": {
+            "card": [
+                18376
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Voidvelg-Apokalypse!"
+        },
+        "V0904_13_00_07_0": {
+            "card": [
+                18376
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Voidvelg-Apokalypse!"
+        },
+        "V0904_13_00_08_0": {
+            "card": [
+                19763
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Voidvelg-Chaosmachia!"
+        },
+        "V0904_13_00_09_0": {
+            "card": [
+                18969
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "!"
+        },
+        "V0904_13_00_10_0": {
+            "card": [
+                18968
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "!"
+        },
+        "V0904_13_00_11_0": {
+            "card": [
+                18615
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Voidvelg-Protostern!"
+        },
+        "V0904_13_00_12_0": {
+            "card": [
+                18591
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Schwarzer Voidvelg-Zwerg!"
+        },
+        "V0904_13_00_13_0": {
+            "card": [
+                18936
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Voidvelg-Logistikos!"
+        },
+        "V0904_13_00_14_0": {
+            "card": [
+                18590
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Voidvelg-Kataphrakt!"
+        },
+        "V0904_13_00_15_0": {
+            "card": [
+                17968
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Voidvelg-Fahlreiter!"
+        },
+        "V0904_13_00_16_0": {
+            "card": [
+                17969
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Voidvelg-Hoplit!"
+        },
+        "V0904_13_00_17_0": {
+            "card": [
+                17971
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Voidvelg-Globule!"
+        },
+        "V0904_13_00_18_0": {
+            "card": [
+                18935
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Voidvelg-Kyrie!"
+        },
+        "V0904_13_00_19_0": {
+            "card": [
+                17972
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Voidvelg-Meteon!"
+        },
+        "V0904_13_00_20_0": {
+            "card": [
+                17974
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Voidvelg-Peltast!"
+        },
+        "V0904_13_00_21_0": {
+            "card": [
+                17970
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Dimensionsazarth!"
+        },
+        "V0904_13_00_22_0": {
+            "card": [
+                17869
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Parapilz-Kolonie!"
+        },
+        "V0904_13_00_23_0": {
+            "card": [
+                17870
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Sprengstrahl-Schütze!"
+        },
+        "V0904_13_00_24_0": {
+            "card": [
+                18377
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Dunkler Prophet!"
+        },
+        "V0904_13_00_26_0": {
+            "card": [
+                17973
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Meteorlarve!"
+        },
+        "V0904_14_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Kampf!"
+        },
+        "V0904_14_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Kämpfen wir!"
+        },
+        "V0904_15_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Du wirst ausgelöscht!"
+        },
+        "V0904_15_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Das ist zu einfach."
+        },
+        "V0904_15_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Weg mit dir!"
+        },
+        "V0904_15_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Vernichte sie!"
+        },
+        "V0904_15_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Geh mir aus den Augen!"
+        },
+        "V0904_16_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Du bist fertig.\nUnd du kannst nichts dagegen machen!"
+        },
+        "V0904_16_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "Du hast keinen Ausweg!"
+        },
+        "V0904_17_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich greife mit meinem Monster an!"
+        },
+        "V0904_17_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Mein Monster greift an!"
+        },
+        "V0904_17_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Angriff!"
+        },
+        "V0904_18_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Mein Monster greift dich direkt an!"
+        },
+        "V0904_18_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Direkter Angriff!"
+        },
+        "V0904_19_00_00_0": {
+            "card": [
+                17873
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Voidvelg-Requiem!\nAngriff!"
+        },
+        "V0904_19_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Letztes Abschiedslied!"
+        },
+        "V0904_19_00_01_0": {
+            "card": [
+                17873
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Voidvelg-Requiem!\nLass die letzten Noten ihres Daseins erklingen!"
+        },
+        "V0904_19_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Letztes Abschiedslied!"
+        },
+        "V0904_19_00_02_0": {
+            "card": [
+                20048
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "!\nAngriff!"
+        },
+        "V0904_19_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Oberherr-Stecher"
+        },
+        "V0904_19_00_03_0": {
+            "card": [
+                17966
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Greif an, Voidvelg-Elysium!"
+        },
+        "V0904_19_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Leuchtender Todeshieb!"
+        },
+        "V0904_19_00_04_0": {
+            "card": [
+                18937
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "!\nAngriff!"
+        },
+        "V0904_19_00_05_0": {
+            "card": [
+                19454
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Greif an, Voidvelg-Transi!"
+        },
+        "V0904_19_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Speer der Dunkelheit!"
+        },
+        "V0904_19_00_06_0": {
+            "card": [
+                17967
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Voidvelg-Hekatoncheire! Angriff!"
+        },
+        "V0904_19_00_07_0": {
+            "card": [
+                18376
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Voidvelg-Apokalypse!\nDein Angriff wird ihr Ende einläuten!"
+        },
+        "V0904_19_00_07_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Dunkler als dunkel!"
+        },
+        "V0904_19_00_08_0": {
+            "card": [
+                18376
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Hoffnung erhebt sich im Land und durchbricht die Dunkelheit!"
+        },
+        "V0904_19_00_08_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Voidvelg-Apokalypse!\nMach sie platt!"
+        },
+        "V0904_19_00_08_2": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Dunkler als dunkel!"
+        },
+        "V0904_19_00_09_0": {
+            "card": [
+                19763
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Voidvelg-Chaosmachia!\nAngriff!"
+        },
+        "V0904_19_00_09_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Wirbelnder Chaosschlitzer!"
+        },
+        "V0904_19_00_10_0": {
+            "card": [
+                18969
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Greif an, !"
+        },
+        "V0904_19_00_10_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Giganto-Tornado!"
+        },
+        "V0904_19_00_11_0": {
+            "card": [
+                18969
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": " greift wieder an!"
+        },
+        "V0904_19_00_11_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Giganto-Schlag!"
+        },
+        "V0904_19_00_12_0": {
+            "card": [
+                18969
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": " greift zum zweiten Mal an!"
+        },
+        "V0904_19_00_12_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Giganto-Schlag!"
+        },
+        "V0904_19_00_13_0": {
+            "card": [
+                18968
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": " greift an!"
+        },
+        "V0904_19_00_14_0": {
+            "card": [
+                18615
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Mach sie fertig, Voidvelg-Protostern!"
+        },
+        "V0904_19_00_15_0": {
+            "card": [
+                18591
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Schwarzer Voidvelg-Zwerg!\nAngriff!"
+        },
+        "V0904_19_00_16_0": {
+            "card": [
+                18936
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Greif an, Voidvelg-Logistikos!"
+        },
+        "V0904_19_00_17_0": {
+            "card": [
+                18590
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Voidvelg-Kataphrakt!\nAngriff!"
+        },
+        "V0904_19_00_18_0": {
+            "card": [
+                17968
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Voidvelg-Fahlreiter!\nAngriff!"
+        },
+        "V0904_19_00_19_0": {
+            "card": [
+                17969
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Greif an, Voidvelg-Hoplit!"
+        },
+        "V0904_19_00_20_0": {
+            "card": [
+                17971
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Voidvelg-Globule! Angriff!"
+        },
+        "V0904_19_00_21_0": {
+            "card": [
+                18935
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Greif an, Voidvelg-Kyrie!"
+        },
+        "V0904_19_00_22_0": {
+            "card": [
+                17972
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Voidvelg-Meteon! Angriff!"
+        },
+        "V0904_19_00_23_0": {
+            "card": [
+                17974
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Greif an, Voidvelg-Peltast!"
+        },
+        "V0904_19_00_24_0": {
+            "card": [
+                17970
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Dimensionsazarth!\nAngriff!"
+        },
+        "V0904_19_00_25_0": {
+            "card": [
+                17869
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Greif an, Parapilz-Kolonie!"
+        },
+        "V0904_19_00_26_0": {
+            "card": [
+                17870
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Sprengstrahl-Schütze!\nFeuer!"
+        },
+        "V0904_19_00_27_0": {
+            "card": [
+                18377
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Greif an, Dunkler Prophet!"
+        },
+        "V0904_19_00_28_0": {
+            "card": [
+                17973
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Meteorlarve!\nAngriff!"
+        },
+        "V0904_20_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich setze eine Karte!"
+        },
+        "V0904_20_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich setze eine Karte!"
+        },
+        "V0904_20_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich setze ein Monster!"
+        },
+        "V0904_20_01_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich setze ein Monster!"
+        },
+        "V0904_21_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 0,
+            "text": "Zu glauben, dass du gewinnen kannst, war dein erster Fehler."
+        },
+        "V0904_21_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 0,
+            "text": "Ich beende meinen Spielzug!"
+        },
+        "V0904_21_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich bin überrascht, dass du noch lebst!"
+        },
+        "V0904_21_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich beende meinen Spielzug!"
+        },
+        "V0904_21_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Damit endet mein Spielzug!"
+        },
+        "V0904_21_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich beende meinen Spielzug!"
+        },
+        "V0904_21_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Sogar ich habe Schwächen, an denen ich arbeiten muss …"
+        },
+        "V0904_21_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich beende meinen Spielzug!"
+        },
+        "V0904_21_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Ich hätte nicht gedacht, dass du so hart kämpfen würdest …"
+        },
+        "V0904_21_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Ich beende meinen Spielzug!"
+        },
+        "V0904_22_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Agh!"
+        },
+        "V0904_22_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Aah!"
+        },
+        "V0904_22_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Gah!"
+        },
+        "V0904_23_00_00_0": {
+            "card": [],
+            "cutin": 3,
+            "duelist": [],
+            "face": 7,
+            "frame": 1,
+            "text": "Aaaaahhhh!"
+        },
+        "V0904_25_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 1,
+            "text": "Aaaah!"
+        },
+        "V0904_25_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 1,
+            "text": "Haaargh!"
+        },
+        "V0904_25_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 1,
+            "text": "Erghhh!"
+        },
+        "V0904_26_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Argh …"
+        },
+        "V0904_26_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Hmpf!"
+        },
+        "V0904_26_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Das ändert gar nichts!"
+        },
+        "V0904_27_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Wie kannst du es wagen …"
+        },
+        "V0904_27_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Aghhh …"
+        },
+        "V0904_27_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Nein …"
+        },
+        "V0904_28_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Sei das nächste Mal schlauer und geh mir aus dem Weg."
+        },
+        "V0904_28_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Ich werde alles für den Ruhm der Velgearianer tun!"
+        },
+        "V0904_28_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Trotz Differenzen war es eine Ehre, mit dir zu duellieren."
+        },
+        "V0904_28_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 0,
+            "text": "Ich bewundere deinen Kampfgeist.\nAber der reicht nicht aus."
+        },
+        "V0904_28_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 0,
+            "text": "Wenn du nichts mehr zu sagen hast, verschwinde!"
+        },
+        "V0904_28_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                901
+            ],
+            "face": 9,
+            "frame": 0,
+            "text": "Auf meine Strategien zu reagieren hat nicht gereicht!"
+        },
+        "V0904_28_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                901
+            ],
+            "face": 3,
+            "frame": 0,
+            "text": "Yudias!\nWas fällt dir ein, dich als Velgearianer auszugeben!"
+        },
+        "V0904_28_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                99999
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Yudias, du hast keine Ahnung, worum es hier geht."
+        },
+        "V0904_28_00_07_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Zaberi doo gilrai velgeard!\nIch werde unser Schicksal ändern!"
+        },
+        "V0904_28_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                866
+            ],
+            "face": 5,
+            "frame": 0,
+            "text": "Auf Wiedersehen, Terza …"
+        },
+        "V0904_28_00_09_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                99999
+            ],
+            "face": 2,
+            "frame": 0,
+            "text": "Deine Kräfte sind zu gefährlich ohne Kontrolle."
+        },
+        "V0904_28_00_10_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                99999
+            ],
+            "face": 3,
+            "frame": 0,
+            "text": "Dein Comic-Heft geht wohl kaum als unterhaltsam durch!"
+        },
+        "V0904_28_00_11_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                99999
+            ],
+            "face": 2,
+            "frame": 0,
+            "text": "Diesen Teller bekommst du niemals für deine Sammlung."
+        },
+        "V0904_29_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Wir Velgearier können dem Schicksal nicht entfliehen."
+        },
+        "V0904_29_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Dieser Rückschlag kann mich nicht aufhalten!"
+        },
+        "V0904_29_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Deine Kraft hat mich überrascht …"
+        },
+        "V0904_29_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Dieser Kampf ist vorbei …\nWir werden uns wiedersehen."
+        },
+        "V0904_29_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                901
+            ],
+            "face": 8,
+            "frame": 0,
+            "text": "Du hast dich kein Stück verändert!\nTräumst immer von einer besseren Zukunft."
+        },
+        "V0904_29_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Aber du wirst lernen, dass Träume nicht Wirklichkeit sind!"
+        },
+        "V0904_29_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                99999
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Yudias, wieso weigerst du dich, das Notwendige zu tun?"
+        },
+        "V0904_29_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                99999
+            ],
+            "face": 7,
+            "frame": 0,
+            "text": "Warum verstehst du nicht, dass die Zukunft Opfer verlangt!"
+        },
+        "V0904_29_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                99999
+            ],
+            "face": 5,
+            "frame": 0,
+            "text": "Du bist immer noch der gleiche Yudias wie damals."
+        },
+        "V0904_29_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                99999
+            ],
+            "face": 9,
+            "frame": 0,
+            "text": "Lass uns zusammenarbeiten, Yudias!"
+        },
+        "V0904_29_00_09_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                866
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Terza …\nGut gemacht."
+        },
+        "V0904_29_00_10_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                99999
+            ],
+            "face": 5,
+            "frame": 0,
+            "text": "*grummel grummel*\nDieses Duell hat mich ziemlich erschöpft."
+        },
+        "V0904_30_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Das ist völliger Unsinn!"
+        },
+        "V0904_30_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Sei still!"
+        },
+        "V0904_30_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Falls du Beschwerden hast, höre ich dir gerne zu."
+        },
+        "V0904_31_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Was?!"
+        },
+        "V0904_31_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Wie kann das sein?"
+        },
+        "V0904_32_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Yu-Gi-Oh! Duel Links"
+        },
+        "V0904_32_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Yu-Gi-Oh! Duel Links ist der Schlüssel zu unserem Sieg!"
+        },
+        "V0904_33_00_00_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Erlebe Stärke, wie du sie noch nie zuvor gesehen hast!"
+        },
+        "V0904_33_00_01_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Du wirst spüren, wie entschlossen ich bin zu gewinnen!"
+        },
+        "V0904_33_00_02_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich mache, was ich will – auch wenn es dir nicht gefällt!"
+        },
+        "V0904_34_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Erheben wir uns, um gemeinsam stark zu sein!\nBeege bibaldoo!"
+        },
+        "V0904_34_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 0,
+            "text": "Eine Fähigkeit wie diese hast du noch nie gesehen! Egil Velgear!"
+        },
+        "V0904_34_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Diese Kraft ist noch mächtiger, sieh her! Egil Velgear Gyuludo!"
+        },
+        "V0904_34_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Beege bibaldoo!\nBeege bibaldoo!!!"
+        },
+        "V0904_34_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Velgeariva!"
+        },
+        "V0904_34_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich bin Zuwijo Zwil Velgear, Inhaber eines Bagel-Ladens."
+        },
+        "V0904_34_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Während ich zeichne, nimm dir doch einen meiner Bagels."
+        },
+        "V0904_34_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Meine Teller kriegst du nicht."
+        },
+        "V0904_34_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Ich finde den Geschmack von Curry abstoßend."
+        },
+        "V0904_34_00_09_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "*grummel grummel*\nDas war nur mein Magen.  Ignoriere ihn."
+        },
+        "V0904_34_00_10_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Wo ist es denn …"
+        },
+        "V0904_34_00_11_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Genau was ich erwartet habe."
+        },
+        "V0904_35_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich bin Zuwijo Zwil Velgear."
+        },
+        "V0904_35_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich kämpfe für alle Velgearianer."
+        },
+        "V0904_36_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Nimm das."
+        },
+        "V0904_36_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Du bist am Zug."
+        },
+        "V0904_36_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Ich habe getan, was ich konnte.\nBeende diesen Kampf!"
+        },
+        "V0904_36_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                901
+            ],
+            "face": 2,
+            "frame": 0,
+            "text": "Der Sieg ist zum Greifen nah, Yudias."
+        },
+        "V0904_36_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                901
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Los, Yudias."
+        },
+        "V0904_36_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                901
+            ],
+            "face": 3,
+            "frame": 0,
+            "text": "Beende dieses Duell, Yudias!\nNur du bist dazu in der Lage!"
+        },
+        "V0904_36_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                866
+            ],
+            "face": 2,
+            "frame": 0,
+            "text": "Terza.\nDu schaffst das."
+        },
+        "V0904_36_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                866
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Du bist am Zug, Terza."
+        },
+        "V0904_36_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                866
+            ],
+            "face": 5,
+            "frame": 0,
+            "text": "Vergib mir, Terza …"
+        },
+        "V0904_37_00_00_0": {
+            "card": [
+                17873
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Die Plage, die alles in ihrem Weg zu vernichten sucht!"
+        },
+        "V0904_37_00_01_0": {
+            "card": [
+                17966
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Verheißung eines düsteren Paradieses!\nErhebe dich!"
+        },
+        "V0904_37_00_02_0": {
+            "card": [
+                18937
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Das Phantom, das das Schwert des Zwielichts schwingt!"
+        },
+        "V0904_37_00_03_0": {
+            "card": [
+                17967
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Der Schrecken, der nur für Eroberung und Ruhm lebt!"
+        },
+        "V0904_37_00_04_0": {
+            "card": [
+                18376
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Steig aus dem Abgrund auf und bringe den Weltuntergang!"
+        },
+        "V0904_37_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Fusionsbeschwörung!"
+        },
+        "V0904_37_00_05_0": {
+            "card": [
+                18376
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Die Leere, die jeden Funken Licht im Universum verschlingt!"
+        },
+        "V0904_37_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Fusionsbeschwörung!"
+        },
+        "V0904_37_00_06_0": {
+            "card": [
+                19763
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Der Wahnsinn, der die Sterne ins Chaos stürzt!"
+        },
+        "V0904_37_00_07_0": {
+            "card": [
+                18969
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Die Wut, die Ordnung und Gleichgewicht zerstört!"
+        },
+        "V0904_37_00_07_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Fusionsbeschwörung!"
+        },
+        "V0904_51_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Zuwijo Zwil Velgear!"
+        },
+        "V0904_51_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Los geht’s!"
+        }
+    }
+}

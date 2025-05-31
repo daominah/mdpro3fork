@@ -8,7 +8,7 @@ namespace MDPro3.Servant
 {
     public class DeckBrowser : Servant
     {
-        public override int Depth => 7;
+        public override int Depth => 8;
         protected override bool ShowLine => true;
         protected override string Label_UI =>
             PropertyOverrider.NeedMobileLayout()

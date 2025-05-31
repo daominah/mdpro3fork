@@ -88,7 +88,7 @@ namespace MDPro3.Servant
 
         #region Servant
 
-        public override int Depth => 6;
+        public override int Depth => 7;
         protected override bool ShowLine => false;
         protected override float SubBlackAlpha => 0.9f;
         public override void Initialize()

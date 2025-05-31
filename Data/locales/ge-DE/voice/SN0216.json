@@ -1,0 +1,3159 @@
+{
+    "_GRP_": "SN0216",
+    "_LNG_": "de-DE",
+    "info": {
+        "V0216_01_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich bin Aporia.\nDie Wächterin der Verzweiflung."
+        },
+        "V0216_01_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Spüre die Macht, die nur aus Elend und Wut entstehen kann!"
+        },
+        "V0216_01_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Du wirst für eine neue Zukunft der Menschheit geopfert."
+        },
+        "V0216_01_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Emotionen führen zu Fehlern.\nDeshalb bin ich zur Maschine geworden."
+        },
+        "V0216_01_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Die Zukunft kann es nur geben, wenn es dich nicht mehr gibt."
+        },
+        "V0216_01_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Gib die Hoffnung auf.\nÖffne dich für die Verzweiflung."
+        },
+        "V0216_01_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "All mein Leiden wird in einem einzelnen Duell freigesetzt."
+        },
+        "V0216_01_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                218
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich nehm’s mit dir auf, Z-ONE."
+        },
+        "V0216_01_00_06_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Egal wie es ausgeht, wir sind für immer eine Familie."
+        },
+        "V0216_01_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                209,
+                217
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich nehme es mit dir auf."
+        },
+        "V0216_01_00_07_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Egal wie es ausgeht, wir sind für immer eine Familie."
+        },
+        "V0216_01_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                215,
+                235,
+                236
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "… Lass uns anfangen."
+        },
+        "V0216_02_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Duell!"
+        },
+        "V0216_03_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Es gibt keine Hoffnung mehr.\nDich erwartet nur Verzweiflung."
+        },
+        "V0216_03_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Ich bin dran!"
+        },
+        "V0216_03_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Es wird Zeit, dass ich dich auslösche."
+        },
+        "V0216_03_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Mein Spielzug!"
+        },
+        "V0216_03_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich bin dran!"
+        },
+        "V0216_03_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Optimismus ist nichts als eine Illusion."
+        },
+        "V0216_03_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich bin dran!"
+        },
+        "V0216_03_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "Ich lasse dich keine Synchrobeschwörung durchführen!"
+        },
+        "V0216_03_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "Ich bin dran!"
+        },
+        "V0216_03_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "Ich habe keine Angst!\nDenn ich fühle nichts."
+        },
+        "V0216_03_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "Ich bin dran!"
+        },
+        "V0216_04_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Ich ziehe!"
+        },
+        "V0216_04_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich ziehe!"
+        },
+        "V0216_04_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "Ich ziehe!"
+        },
+        "V0216_05_00_00_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "Du wirst dich der Verzweiflung ergeben – nicht ich!"
+        },
+        "V0216_05_00_00_1": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "Ich ziehe!!!"
+        },
+        "V0216_06_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Hmpf."
+        },
+        "V0216_06_01_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Soll mir das etwa Angst machen?"
+        },
+        "V0216_06_01_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Was für eine Zeitverschwendung."
+        },
+        "V0216_06_01_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Das ist gar nichts!"
+        },
+        "V0216_07_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Von meiner Hand …"
+        },
+        "V0216_07_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich aktiviere eine Zauberkarte!"
+        },
+        "V0216_07_02_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich aktiviere einen Schnellzauber!"
+        },
+        "V0216_07_03_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich aktiviere einen Permanenten Zauber!"
+        },
+        "V0216_07_04_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich aktiviere einen Ausrüstungszauber!"
+        },
+        "V0216_07_05_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich aktiviere einen Ritualzauber!"
+        },
+        "V0216_07_06_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich aktiviere eine Falle!"
+        },
+        "V0216_07_07_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich aktiviere eine Permanente Falle!"
+        },
+        "V0216_07_08_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich aktiviere eine Konterfalle!"
+        },
+        "V0216_07_09_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich decke meine gesetzte Karte auf!"
+        },
+        "V0216_07_09_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Das ist die Karte, die ich setze!"
+        },
+        "V0216_07_10_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich aktiviere den Effekt meines Monsters!"
+        },
+        "V0216_07_11_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich aktiviere einen Spielfeldzauber!"
+        },
+        "V0216_07_12_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich aktiviere einen Effekt!"
+        },
+        "V0216_07_13_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich lege den Pendelbereich fest!"
+        },
+        "V0216_07_14_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich aktiviere einen Pendeleffekt!"
+        },
+        "V0216_08_00_00_0": {
+            "card": [
+                9267
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ich aktiviere meinen Spielfeldzauber Meklord-Festung!"
+        },
+        "V0216_08_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Synchromonster können Meklord-Imperatoren nicht beeinflussen!"
+        },
+        "V0216_08_00_01_0": {
+            "card": [
+                9267
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Die Zerstörung von Meklord-Festung aktiviert seinen Effekt!"
+        },
+        "V0216_08_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ich füge meiner Hand einen Meklord-Imperator aus meinem Deck hinzu!"
+        },
+        "V0216_08_00_02_0": {
+            "card": [
+                15341
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ich aktiviere den Permanenten Zauber Meklord-Fertigung!"
+        },
+        "V0216_08_00_03_0": {
+            "card": [
+                15341
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Der Effekt von Meklord-Fertigung wird aktiviert!"
+        },
+        "V0216_08_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ich werfe eine Karte ab, um ein Monster auf dem Spielfeld zu zerstören!"
+        },
+        "V0216_08_00_04_0": {
+            "card": [
+                15341
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Wenn ein Meklord zerstört wird, wird Meklord-Fertigung aktiviert!"
+        },
+        "V0216_08_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Sie zerstört eine offene Zauber- oder Fallenkarte!"
+        },
+        "V0216_08_00_05_0": {
+            "card": [
+                9521
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ich aktiviere Segen des Meklord-Imperators und ziehe 2 Karten!"
+        },
+        "V0216_08_00_06_0": {
+            "card": [
+                15342
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ich aktiviere den Schnellzauber Meklord-Umlenkung!"
+        },
+        "V0216_08_00_07_0": {
+            "card": [
+                15342
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ich aktiviere den Effekt von Meklord-Umlenkung von meinem Friedhof!"
+        },
+        "V0216_08_00_07_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Verbannen, damit ein Meklord nicht zerstört wird!"
+        },
+        "V0216_08_00_08_0": {
+            "card": [
+                9520
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ich aktiviere den Spielfeldzauber Fortissimo die mobile Festung!"
+        },
+        "V0216_08_00_09_0": {
+            "card": [
+                9520
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Der Effekt von Fortissimo die mobile Festung wird aktiviert!"
+        },
+        "V0216_08_00_09_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ich spezialbeschwöre eine Meklord-Armee von meiner Hand!"
+        },
+        "V0216_08_00_10_0": {
+            "card": [
+                9523
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ich aktiviere meine Zauberkarte!\nNeustart!"
+        },
+        "V0216_08_00_10_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ich lege einen Meklord in mein Deck zurück, um eine weitere Meklord-Karte zu erhalten!"
+        },
+        "V0216_08_00_11_0": {
+            "card": [
+                9522
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ich aktiviere meinen Permanenten Zauber!\nDie entschlossene Meklord-Armee!"
+        },
+        "V0216_08_00_11_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Meklord-Armee kann weder Effekte nutzen noch im Kampf zerstört werden!"
+        },
+        "V0216_08_00_12_0": {
+            "card": [
+                5129
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ich aktiviere den Schnellzauber Begrenzer-Entferner!"
+        },
+        "V0216_08_00_13_0": {
+            "card": [
+                15375
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ich lösche dich zum Wohle der Zukunft aus!"
+        },
+        "V0216_08_00_13_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ich aktiviere die Zauberkarte Nachleuchten!"
+        },
+        "V0216_08_00_14_0": {
+            "card": [
+                3475
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ich aktiviere die Zauberkarte Ziehen der Morgenröte!\nIch ziehe zwei Karten!"
+        },
+        "V0216_08_00_15_0": {
+            "card": [
+                3476
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ich aktiviere meine Zauberkarte Chaosblüte!"
+        },
+        "V0216_08_00_16_0": {
+            "card": [
+                3477
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ich aktiviere die Zauberkarte !"
+        },
+        "V0216_08_00_17_0": {
+            "card": [
+                3478
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ich aktiviere die Zauberkarte !"
+        },
+        "V0216_08_00_17_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ich zerstöre mein eigenes Deck!"
+        },
+        "V0216_08_00_18_0": {
+            "card": [
+                9536
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "Ich lasse mich nicht zermalmen!\nIch aktiviere meine Falle!\nChaos-Unendlichkeit!"
+        },
+        "V0216_08_00_19_0": {
+            "card": [
+                9537
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ich aktiviere meine Falle!\nMekgesteuerte Sprengladung!"
+        },
+        "V0216_08_00_19_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Sie zerstört meinen Meklord und eine Karte auf deiner Spielfeldseite!"
+        },
+        "V0216_08_00_20_0": {
+            "card": [
+                15343
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ich aktiviere meine Falle!\nMeklord-Astro der Ausrotter!"
+        },
+        "V0216_08_00_21_0": {
+            "card": [
+                15343
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ich verbanne Meklord-Astro der Ausrotter von meinem Friedhof!"
+        },
+        "V0216_08_00_22_0": {
+            "card": [
+                9538
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ich aktiviere die Fallenkarte Meklord-Fabrik!"
+        },
+        "V0216_08_00_23_0": {
+            "card": [
+                15376
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ich aktiviere meine Falle!\nHocheffizientes Ziehen!"
+        },
+        "V0216_08_00_24_0": {
+            "card": [
+                15376
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ich aktiviere den Effekt von Hocheffizientes Ziehen von meinem Friedhof!"
+        },
+        "V0216_08_00_25_0": {
+            "card": [
+                3695
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ich aktiviere meine Falle!\nDoppelstrudel!"
+        },
+        "V0216_08_00_26_0": {
+            "card": [
+                3698
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ich aktiviere meine Falle!\nSchlachtrückkehr!"
+        },
+        "V0216_08_00_27_0": {
+            "card": [
+                3699
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ich aktiviere meine Permanente Falle!\nDivergenz!"
+        },
+        "V0216_08_00_28_0": {
+            "card": [
+                3699
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Der Effekt von Divergenz wird aktiviert!"
+        },
+        "V0216_08_00_29_0": {
+            "card": [
+                3701
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ich aktiviere meine Falle!\nGeist bekehren!"
+        },
+        "V0216_08_00_30_0": {
+            "card": [
+                3702
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ich aktiviere meine Falle!\nUnendlichkeitsmacht!"
+        },
+        "V0216_08_00_31_0": {
+            "card": [
+                3480
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Da du mich angegriffen hast, kann ich  aktivieren!"
+        },
+        "V0216_08_00_31_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Synchromonster können nicht mehr angreifen!"
+        },
+        "V0216_08_00_32_0": {
+            "card": [
+                3482
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ich aktiviere meine Fallenkarte!\n!"
+        },
+        "V0216_08_00_33_0": {
+            "card": [
+                3483
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ich aktiviere meine Permanente Falle Unendliches Gefängnis!"
+        },
+        "V0216_08_00_34_0": {
+            "card": [
+                3483
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Der Effekt von Unendliches Gefängnis wird aktiviert!"
+        },
+        "V0216_09_00_00_0": {
+            "card": [
+                9553
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Werde Zeuge der überwältigenden Macht von Meklord-Astromaschine!"
+        },
+        "V0216_09_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Er absorbiert dein Synchromonster und erhält seine ATK!"
+        },
+        "V0216_09_00_01_0": {
+            "card": [
+                9553
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Der Effekt von Meklord-Astromaschine wird aktiviert!"
+        },
+        "V0216_09_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Wenn ich absorbierte Monster entsorge, erhältst du Schaden!"
+        },
+        "V0216_09_00_02_0": {
+            "card": [
+                9486
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Bei der Spezialbeschwörung von Meklord-Astrodrache Asterisk aktiviert sich der Effekt!"
+        },
+        "V0216_09_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Er erhält die ATK der auf den Friedhof gelegten Monster."
+        },
+        "V0216_09_00_03_0": {
+            "card": [
+                9486
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Schwerer Fehler!\nDer Effekt von Meklord-Astrodrache Asterisk wird aktiviert!"
+        },
+        "V0216_09_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Schmerz regnet vom Himmel herab!\nNemesis-Tornado!"
+        },
+        "V0216_09_00_04_0": {
+            "card": [
+                9486
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Du wagst es, eine Synchrobeschwörung durchzuführen?!\nIch aktiviere den Effekt von Meklord-Astrodrache Asterisk!"
+        },
+        "V0216_09_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Nemesis-Tornado!"
+        },
+        "V0216_09_00_05_0": {
+            "card": [
+                15337
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Meklord-Astrodrache Triskelion absorbiert mit dem Effekt eine Karte von deinem Deck!"
+        },
+        "V0216_09_00_06_0": {
+            "card": [
+                15339
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ich aktiviere den Effekt von Meklord Nukleus-Unendlichkeitskern!"
+        },
+        "V0216_09_00_07_0": {
+            "card": [
+                15339
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Falls ein Effekt Meklord Nukleus-Unendlichkeitskern zerstört, nutzt er seinen eigenen Effekt!"
+        },
+        "V0216_09_00_08_0": {
+            "card": [
+                9264,
+                9266,
+                9265
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ein Effekt hat mein Monster zerstört, also spezialbeschwöre ich …"
+        },
+        "V0216_09_00_09_0": {
+            "card": [
+                9264
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Mit dem Effekt von Meklord-Imperator Wisel spezialbeschwöre ich ihn!"
+        },
+        "V0216_09_00_10_0": {
+            "card": [
+                9264
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Der Effekt von Meklord-Imperator Wisel wird aktiviert!"
+        },
+        "V0216_09_00_10_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Einmal pro Spielzug kann er dein Synchromonster absorbieren!"
+        },
+        "V0216_09_00_11_0": {
+            "card": [
+                9264
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Dein Synchromonster wird meinen Meklord verstärken!"
+        },
+        "V0216_09_00_11_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Synchroabsorption!"
+        },
+        "V0216_09_00_12_0": {
+            "card": [
+                9264
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Der Effekt von Meklord-Imperator Wisel wird aktiviert!"
+        },
+        "V0216_09_00_12_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Einmal pro Spielzug kann er deinen Zauber annullieren und zerstören!"
+        },
+        "V0216_09_00_13_0": {
+            "card": [
+                9266
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Mit dem Effekt von Meklord-Imperator Skiel spezialbeschwöre ich ihn!"
+        },
+        "V0216_09_00_14_0": {
+            "card": [
+                9266
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Der Effekt von Meklord-Imperator Skiel wird aktiviert!"
+        },
+        "V0216_09_00_14_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Einmal pro Spielzug absorbiert er ein Synchromonster auf deinem Spielfeld!"
+        },
+        "V0216_09_00_15_0": {
+            "card": [
+                9266
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ich lege ein Monster, das meinen Meklord-Imperator Skiel ausrüstet, auf den Friedhof!"
+        },
+        "V0216_09_00_15_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Jetzt kann er dich in diesem Spielzug direkt angreifen!"
+        },
+        "V0216_09_00_16_0": {
+            "card": [
+                9265
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Mit dem Effekt von Meklord-Imperator Granel spezialbeschwöre ich ihn!"
+        },
+        "V0216_09_00_17_0": {
+            "card": [
+                9265
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Der Effekt von Meklord-Imperator Granel wird aktiviert!"
+        },
+        "V0216_09_00_17_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Einmal pro Spielzug absorbiert er ein Synchromonster auf deinem Spielfeld!"
+        },
+        "V0216_09_00_18_0": {
+            "card": [
+                9265
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Der Effekt von Meklord-Imperator Granel wird aktiviert!"
+        },
+        "V0216_09_00_18_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Er spezialbeschwört ein Monster, das ihn ausrüstet!"
+        },
+        "V0216_09_00_19_0": {
+            "card": [
+                15338
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ich lege einen Meklord auf den Friedhof und spezialbeschwöre diese Karte!"
+        },
+        "V0216_09_00_20_0": {
+            "card": [
+                15338
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Dank ihr kann eines deiner Monster nicht angreifen!"
+        },
+        "V0216_09_00_21_0": {
+            "card": [
+                15338
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ich nutze den Effekt von Meklord-Imperator Wisel - Synchroabsorption!"
+        },
+        "V0216_09_00_21_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Mit diesem Tribut annulliere und zerstöre ich die Karte!"
+        },
+        "V0216_09_00_22_0": {
+            "card": [
+                15340
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ich aktiviere den Effekt von Meklord-Armee-Zerstörer Obbligato!"
+        },
+        "V0216_09_00_22_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Zerstören und zwei Meklord-Armee-Monster spezialbeschwören!"
+        },
+        "V0216_09_00_23_0": {
+            "card": [
+                15340
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Wenn Meklord-Armee-Zerstörer Obbligato auf den Friedhof gelegt wird, aktiviert sich der Effekt!"
+        },
+        "V0216_09_00_23_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Du erhältst in der End Phase dieses Spielzugs Schaden!"
+        },
+        "V0216_09_00_24_0": {
+            "card": [
+                9483
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Der Effekt von Meklord-Armee von Wisel wird aktiviert!"
+        },
+        "V0216_09_00_24_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Das angreifende Monster fügt durchschlagenden Schaden zu!"
+        },
+        "V0216_09_00_25_0": {
+            "card": [
+                9484
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Der Effekt von Meklord-Armee von Skiel wird aktiviert!"
+        },
+        "V0216_09_00_25_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Spezialbeschwörung einer Meklord-Armee von meinem Deck!"
+        },
+        "V0216_09_00_26_0": {
+            "card": [
+                9485
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Der Effekt von Meklord-Armee von Granel wird aktiviert!"
+        },
+        "V0216_09_00_26_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Erdrückende Schwerkraft!"
+        },
+        "V0216_09_00_27_0": {
+            "card": [
+                3657
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Der Effekt von Wise-Kern wird aktiviert!"
+        },
+        "V0216_09_00_28_0": {
+            "card": [
+                3661
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Der Effekt von Wisel-Kopfstück wird aktiviert!"
+        },
+        "V0216_09_00_29_0": {
+            "card": [
+                3662
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Der Effekt von Wisel-Angriff wird aktiviert!"
+        },
+        "V0216_09_00_30_0": {
+            "card": [
+                3663
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Der Effekt von Wisel-Wache wird aktiviert!"
+        },
+        "V0216_09_00_31_0": {
+            "card": [
+                3664
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Der Effekt von Wisel-Bote wird aktiviert!"
+        },
+        "V0216_09_00_32_0": {
+            "card": [
+                3675
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Der Effekt von Wisel-Kopfstück 3 wird aktiviert!"
+        },
+        "V0216_09_00_33_0": {
+            "card": [
+                3676
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Der Effekt von Wisel-Angriff 3 wird aktiviert!"
+        },
+        "V0216_09_00_34_0": {
+            "card": [
+                3677
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Der Effekt von Wisel-Wache 3 wird aktiviert!"
+        },
+        "V0216_09_00_35_0": {
+            "card": [
+                3658
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Der Effekt von Himmelskern wird aktiviert!"
+        },
+        "V0216_09_00_36_0": {
+            "card": [
+                3666
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Der Effekt von Skiel-Kopfstück wird aktiviert!"
+        },
+        "V0216_09_00_37_0": {
+            "card": [
+                3667
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Der Effekt von Skiel-Angriff wird aktiviert!"
+        },
+        "V0216_09_00_38_0": {
+            "card": [
+                3668
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Der Effekt von Skiel-Wache wird aktiviert!"
+        },
+        "V0216_09_00_39_0": {
+            "card": [
+                3669
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Der Effekt von Skiel-Bote wird aktiviert!"
+        },
+        "V0216_09_00_40_0": {
+            "card": [
+                3678
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Der Effekt von Skiel-Angriff 3 wird aktiviert!"
+        },
+        "V0216_09_00_41_0": {
+            "card": [
+                3679
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Der Effekt von Skiel-Bote 3 wird aktiviert!"
+        },
+        "V0216_09_00_42_0": {
+            "card": [
+                3680
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Der Effekt von Skiel-Angriff 5 wird aktiviert!"
+        },
+        "V0216_09_00_43_0": {
+            "card": [
+                3681
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Der Effekt von Skiel-Bote 5 wird aktiviert!"
+        },
+        "V0216_09_00_44_0": {
+            "card": [
+                3659
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Der Effekt von Mächtiger Kern wird aktiviert!"
+        },
+        "V0216_09_00_45_0": {
+            "card": [
+                3671
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Der Effekt von Grannel-Kopfstück wird aktiviert!"
+        },
+        "V0216_09_00_46_0": {
+            "card": [
+                3672
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Der Effekt von Grannel-Angriff wird aktiviert!"
+        },
+        "V0216_09_00_47_0": {
+            "card": [
+                3673
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Der Effekt von Grannel-Wache wird aktiviert!"
+        },
+        "V0216_09_00_48_0": {
+            "card": [
+                3674
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Der Effekt von Grannel-Bote wird aktiviert!"
+        },
+        "V0216_10_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich spiele das."
+        },
+        "V0216_10_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Komm raus."
+        },
+        "V0216_10_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Zeig dich."
+        },
+        "V0216_10_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Sieh und staune."
+        },
+        "V0216_11_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich beschwöre ein Monster!"
+        },
+        "V0216_11_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich beschwöre ein Monster in Verteidigungsposition!"
+        },
+        "V0216_11_02_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich beschwöre ein Monster als Spezialbeschwörung!"
+        },
+        "V0216_11_03_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich biete ein Monster als Tribut an!"
+        },
+        "V0216_11_04_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich beschwöre ein Monster als Tributbeschwörung!"
+        },
+        "V0216_11_05_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich beschwöre ein Monster als Fusionsbeschwörung!"
+        },
+        "V0216_11_06_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich beschwöre ein Monster als Ritualbeschwörung!"
+        },
+        "V0216_11_07_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich beschwöre ein Monster als Synchrobeschwörung!"
+        },
+        "V0216_11_08_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich beschwöre ein Monster als Xyz-Beschwörung!"
+        },
+        "V0216_11_09_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich beschwöre ein Monster als Pendelbeschwörung!"
+        },
+        "V0216_11_10_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich beschwöre ein Monster als Linkbeschwörung!"
+        },
+        "V0216_13_00_00_0": {
+            "card": [
+                9553
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Der Dämon der Verzweiflung!\nMeklord-Astromaschine!"
+        },
+        "V0216_13_00_01_0": {
+            "card": [
+                9486
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ich beschwöre Meklord-Astrodrache Asterisk als Spezialbeschwörung!"
+        },
+        "V0216_13_00_02_0": {
+            "card": [
+                15337
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ich beschwöre Meklord-Astrodrache Triskelion als Spezialbeschwörung!"
+        },
+        "V0216_13_00_03_0": {
+            "card": [
+                15339
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Meklord Nukleus-Unendlichkeitskern!"
+        },
+        "V0216_13_00_04_0": {
+            "card": [
+                9264
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Kombiniert euch zu einem!\nMeklord-Imperator Wisel!"
+        },
+        "V0216_13_00_05_0": {
+            "card": [
+                9266
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Kombiniert euch zu Meklord-Imperator Skiel!"
+        },
+        "V0216_13_00_06_0": {
+            "card": [
+                9265
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Werdet zu Meklord-Imperator Granel!"
+        },
+        "V0216_13_00_07_0": {
+            "card": [
+                15338
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Komm schon!\nMeklord-Imperator Wisel - Synchroabsorption!"
+        },
+        "V0216_13_00_08_0": {
+            "card": [
+                15340
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Erhebe dich, Meklord-Armee-Zerstörer Obbligato!"
+        },
+        "V0216_13_00_09_0": {
+            "card": [
+                9483
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Komm raus!\nMeklord-Armee von Wisel!"
+        },
+        "V0216_13_00_10_0": {
+            "card": [
+                9484
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Los, Meklord-Armee von Skiel!"
+        },
+        "V0216_13_00_11_0": {
+            "card": [
+                9485
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Erhebe dich!\nMeklord-Armee von Granel!"
+        },
+        "V0216_13_00_12_0": {
+            "card": [
+                3657
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Wise-Kern!"
+        },
+        "V0216_13_00_13_0": {
+            "card": [
+                3661
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Wisel-Kopfstück!"
+        },
+        "V0216_13_00_14_0": {
+            "card": [
+                3662
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Wisel-Angriff!"
+        },
+        "V0216_13_00_15_0": {
+            "card": [
+                3663
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Wisel-Wache!"
+        },
+        "V0216_13_00_16_0": {
+            "card": [
+                3664
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Wisel-Bote!"
+        },
+        "V0216_13_00_17_0": {
+            "card": [
+                3675
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Wisel-Kopfstück 3!"
+        },
+        "V0216_13_00_18_0": {
+            "card": [
+                3676
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Wisel-Angriff 3!"
+        },
+        "V0216_13_00_19_0": {
+            "card": [
+                3677
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Wisel-Wache 3!"
+        },
+        "V0216_13_00_20_0": {
+            "card": [
+                3658
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Himmelskern!"
+        },
+        "V0216_13_00_21_0": {
+            "card": [
+                3666
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Skiel-Kopfstück!"
+        },
+        "V0216_13_00_22_0": {
+            "card": [
+                3667
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Skiel-Angriff!"
+        },
+        "V0216_13_00_23_0": {
+            "card": [
+                3668
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Skiel-Wache!"
+        },
+        "V0216_13_00_24_0": {
+            "card": [
+                3669
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Skiel-Bote!"
+        },
+        "V0216_13_00_25_0": {
+            "card": [
+                3678
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Skiel-Angriff 3!"
+        },
+        "V0216_13_00_26_0": {
+            "card": [
+                3679
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Skiel-Bote 3!"
+        },
+        "V0216_13_00_27_0": {
+            "card": [
+                3680
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Skiel-Angriff 5!"
+        },
+        "V0216_13_00_28_0": {
+            "card": [
+                3681
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Skiel-Bote 5!"
+        },
+        "V0216_13_00_29_0": {
+            "card": [
+                3659
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Mächtiger Kern!"
+        },
+        "V0216_13_00_30_0": {
+            "card": [
+                3671
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Grannel-Kopfstück!"
+        },
+        "V0216_13_00_31_0": {
+            "card": [
+                3672
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Grannel-Angriff!"
+        },
+        "V0216_13_00_32_0": {
+            "card": [
+                3673
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Grannel-Wache!"
+        },
+        "V0216_13_00_33_0": {
+            "card": [
+                3674
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Grannel-Bote!"
+        },
+        "V0216_14_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Kampf!"
+        },
+        "V0216_14_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Zeit für einen Kampf."
+        },
+        "V0216_15_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Dir zeige ich es."
+        },
+        "V0216_15_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Die Verzweiflung wartet auf dich!"
+        },
+        "V0216_15_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Nimm das!"
+        },
+        "V0216_16_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Spüre den Schmerz, den ich mein ganzes Leben lang spüre!"
+        },
+        "V0216_16_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Dies ist dein Ende – aber der Beginn einer neuen Zukunft!"
+        },
+        "V0216_17_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Mein Monster greift an!"
+        },
+        "V0216_17_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Ich greife an!"
+        },
+        "V0216_18_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 1,
+            "text": "Mein Monster greift dich direkt an!"
+        },
+        "V0216_18_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 1,
+            "text": "Ich greife dich direkt an!"
+        },
+        "V0216_19_00_00_0": {
+            "card": [
+                9553
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Spüre den Zorn von Meklord-Astromaschine!"
+        },
+        "V0216_19_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Mekanisches Chaos!"
+        },
+        "V0216_19_00_01_0": {
+            "card": [
+                9486
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Meklord-Astrodrache Asterisk greift an!"
+        },
+        "V0216_19_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Unendlicher Nemesis-Strom!"
+        },
+        "V0216_19_00_02_0": {
+            "card": [
+                15337
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Meklord-Astrodrache Triskelion! Angriff!"
+        },
+        "V0216_19_00_03_0": {
+            "card": [
+                15339
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Meklord Nukleus-Unendlichkeitskern greift an!"
+        },
+        "V0216_19_00_04_0": {
+            "card": [
+                9264
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Meklord-Imperator Wisel!\nAngriff!"
+        },
+        "V0216_19_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Edelstahlhieb!"
+        },
+        "V0216_19_00_05_0": {
+            "card": [
+                9266
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Meklord-Imperator Skiel!\nZeig es ihnen!"
+        },
+        "V0216_19_00_06_0": {
+            "card": [
+                9265
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Angriff, Meklord-Imperator Granel!"
+        },
+        "V0216_19_00_06_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Endgültige Bombardierung!"
+        },
+        "V0216_19_00_07_0": {
+            "card": [
+                15338
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Meklord-Imperator Wisel - Synchroabsorption!\nMach sie platt!"
+        },
+        "V0216_19_00_07_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Edelstahlhieb!"
+        },
+        "V0216_19_00_08_0": {
+            "card": [
+                15340
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Meklord-Armee-Zerstörer Obbligato! Angriff!"
+        },
+        "V0216_19_00_09_0": {
+            "card": [
+                9483
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Meklord-Armee von Wisel greift an!"
+        },
+        "V0216_19_00_09_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Quark-Schnitt!"
+        },
+        "V0216_19_00_10_0": {
+            "card": [
+                9484
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Meklord-Armee von Skiel greift an!"
+        },
+        "V0216_19_00_10_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Doppelpuls!"
+        },
+        "V0216_19_00_11_0": {
+            "card": [
+                9485
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Meklord-Armee von Granel greift an!"
+        },
+        "V0216_19_00_11_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Schwerkraftexplosion!"
+        },
+        "V0216_19_00_12_0": {
+            "card": [
+                3657
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Wise-Kern! Angriff!"
+        },
+        "V0216_19_00_13_0": {
+            "card": [
+                3661
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Wisel-Kopfstück! Angriff!"
+        },
+        "V0216_19_00_14_0": {
+            "card": [
+                3662
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Los, Wisel-Angriff!"
+        },
+        "V0216_19_00_15_0": {
+            "card": [
+                3663
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Wisel-Wache greift an!"
+        },
+        "V0216_19_00_16_0": {
+            "card": [
+                3664
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Angriff, Wisel-Bote!"
+        },
+        "V0216_19_00_17_0": {
+            "card": [
+                3675
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Wisel-Kopfstück 3! Angriff!"
+        },
+        "V0216_19_00_18_0": {
+            "card": [
+                3676
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Schnapp sie dir, Wisel-Angriff 3!"
+        },
+        "V0216_19_00_19_0": {
+            "card": [
+                3677
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Wisel-Wache 3! Angriff!"
+        },
+        "V0216_19_00_20_0": {
+            "card": [
+                3658
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Himmelskern greift an!"
+        },
+        "V0216_19_00_21_0": {
+            "card": [
+                3666
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Skiel-Kopfstück! Angriff!"
+        },
+        "V0216_19_00_22_0": {
+            "card": [
+                3667
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Los, Skiel-Angriff!"
+        },
+        "V0216_19_00_23_0": {
+            "card": [
+                3668
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Angriff, Skiel-Wache!"
+        },
+        "V0216_19_00_24_0": {
+            "card": [
+                3669
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Skiel-Bote greift an!"
+        },
+        "V0216_19_00_25_0": {
+            "card": [
+                3678
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Skiel-Angriff 3! Auf sie mit Karacho!"
+        },
+        "V0216_19_00_26_0": {
+            "card": [
+                3679
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Skiel-Bote 3 greift an!"
+        },
+        "V0216_19_00_27_0": {
+            "card": [
+                3680
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Los, Skiel-Angriff 5!"
+        },
+        "V0216_19_00_28_0": {
+            "card": [
+                3681
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Angriff, Skiel-Bote 5!"
+        },
+        "V0216_19_00_29_0": {
+            "card": [
+                3659
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Mächtiger Kern greift an!"
+        },
+        "V0216_19_00_30_0": {
+            "card": [
+                3671
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Grannel-Kopfstück! Angriff!"
+        },
+        "V0216_19_00_31_0": {
+            "card": [
+                3672
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Schnapp sie dir, Grannel-Angriff!"
+        },
+        "V0216_19_00_32_0": {
+            "card": [
+                3673
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Grannel-Wache greift an!"
+        },
+        "V0216_19_00_33_0": {
+            "card": [
+                3674
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Angriff, Grannel-Bote!"
+        },
+        "V0216_20_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich setze eine Karte!"
+        },
+        "V0216_20_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich setze eine Karte!"
+        },
+        "V0216_20_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich setze ein Monster!"
+        },
+        "V0216_20_01_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich setze ein Monster!"
+        },
+        "V0216_21_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Aus deiner Niederlage entsteht eine neue Zukunft."
+        },
+        "V0216_21_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Ich beende meinen Spielzug!"
+        },
+        "V0216_21_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Was du jetzt fühlst, nennt man Verzweiflung."
+        },
+        "V0216_21_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich beende meinen Spielzug."
+        },
+        "V0216_21_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Damit beende ich meinen Spielzug."
+        },
+        "V0216_21_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Hmpf."
+        },
+        "V0216_21_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich beende meinen Spielzug."
+        },
+        "V0216_21_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "Genieße deinen Vorsprung.\nAm Ende wirst du keinen mehr haben!"
+        },
+        "V0216_21_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "Ich beende meinen Spielzug!"
+        },
+        "V0216_21_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 0,
+            "text": "Ich bin kein Mensch mehr …\nWarum schmerzt dann mein Herz …?"
+        },
+        "V0216_21_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 0,
+            "text": "Ich beende … meinen Spielzug …"
+        },
+        "V0216_22_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Argh!"
+        },
+        "V0216_22_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Uff!"
+        },
+        "V0216_22_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Hargh!"
+        },
+        "V0216_23_00_00_0": {
+            "card": [],
+            "cutin": 3,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Argh …\nAhhhhhhh!"
+        },
+        "V0216_24_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": ".................."
+        },
+        "V0216_25_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Haaargh!"
+        },
+        "V0216_25_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Gaaaah!"
+        },
+        "V0216_25_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Arrrrgh!"
+        },
+        "V0216_26_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Hmpf."
+        },
+        "V0216_26_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "War’s das schon?"
+        },
+        "V0216_26_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Das kam unerwartet."
+        },
+        "V0216_27_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 0,
+            "text": "Dafür wirst du bezahlen!"
+        },
+        "V0216_27_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 0,
+            "text": "Das reicht!"
+        },
+        "V0216_27_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 0,
+            "text": "Das kann doch nicht sein!"
+        },
+        "V0216_28_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Ich habe Verzweiflung und Niederlage Tür und Tor geöffnet!"
+        },
+        "V0216_28_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Wie fühlt es sich an, vollkommen hilflos zu sein?\nHahahaha!"
+        },
+        "V0216_28_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Es ist der Beginn einer neuen Welt!\nEiner Welt ohne Traurigkeit!"
+        },
+        "V0216_28_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Menschen klammern sich aus Angst an Hoffnung."
+        },
+        "V0216_28_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Wenn alle Hoffnung verloren ist, können sie nicht überleben."
+        },
+        "V0216_28_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ihre Emotionen führen Menschen zur Selbstzerstörung."
+        },
+        "V0216_28_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Menschen! Lernt, wie machtlos ihr seid!"
+        },
+        "V0216_28_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ihr seid nicht würdig, die Zukunft anzuführen."
+        },
+        "V0216_28_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                215,
+                217,
+                218,
+                235,
+                236
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Du kannst nicht gewinnen, wenn wir drei verschmelzen."
+        },
+        "V0216_28_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                215,
+                217,
+                218,
+                235,
+                236
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Du wirst mich nie besiegen können."
+        },
+        "V0216_28_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                205
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Ist dies das erste Mal, dass du Hoffnungslosigkeit spürst?"
+        },
+        "V0216_29_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Unmöglich …\nIch habe verloren …"
+        },
+        "V0216_29_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Ich habe mich von meinen Emotionen besiegen lassen …"
+        },
+        "V0216_29_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 0,
+            "text": "Ich bin kein Mensch mehr, wie kann ich noch Emotionen haben?"
+        },
+        "V0216_29_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 0,
+            "text": "Ich kann meiner Verzweiflung nicht entkommen …"
+        },
+        "V0216_29_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                218
+            ],
+            "face": 5,
+            "frame": 0,
+            "text": "Z-ONE …\nDenk daran, dass es immer Hoffnung gibt …"
+        },
+        "V0216_29_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                209
+            ],
+            "face": 5,
+            "frame": 0,
+            "text": "Antinomy …\nDu glaubst, sie werden die Zukunft retten …"
+        },
+        "V0216_29_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                201,
+                202,
+                203,
+                204,
+                206
+            ],
+            "face": 4,
+            "frame": 0,
+            "text": "Das ist die Macht eines Auserwählten …"
+        },
+        "V0216_29_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                201,
+                202,
+                203,
+                204,
+                205,
+                206
+            ],
+            "face": 5,
+            "frame": 0,
+            "text": "Was ist das, was ich da fühle?\nIst es … Verzweiflung?"
+        },
+        "V0216_29_00_07_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Nein …\nWas ich fühle, ist … Hoffnung."
+        },
+        "V0216_29_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                205
+            ],
+            "face": 4,
+            "frame": 0,
+            "text": "Aus diesem Kind ist ein Auserwählter geworden?!"
+        },
+        "V0216_30_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Beende deinen Spielzug und lerne Hoffnungslosigkeit kennen."
+        },
+        "V0216_30_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Du solltest aufgeben, um unnötiges Leiden zu vermeiden."
+        },
+        "V0216_30_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Das ist Verzweiflung."
+        },
+        "V0216_31_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Was?!"
+        },
+        "V0216_31_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Das reicht."
+        },
+        "V0216_32_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Yu-Gi-Oh! Duel Links"
+        },
+        "V0216_32_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Yu-Gi-Oh! Duel Links!"
+        },
+        "V0216_33_00_00_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Meine Duellkunst ist fehlerfrei."
+        },
+        "V0216_33_00_01_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Lass mich jegliche Hoffnung zerstören, du könntest gewinnen!"
+        },
+        "V0216_33_00_02_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Stürze in die Tiefen der Verzweiflung!"
+        },
+        "V0216_34_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eine Maschine kann nicht von Emotionen fehlgeleitet werden."
+        },
+        "V0216_34_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Je mehr du handelst, desto mehr LP verlierst du."
+        },
+        "V0216_34_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich wusste, dass du ein starker Duellant sein würdest."
+        },
+        "V0216_34_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Hör auf … Hör auf!!!"
+        },
+        "V0216_34_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Warum willst du, das ich leide?"
+        },
+        "V0216_34_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 0,
+            "text": "Wie kann mein Herz schmerzen, wenn ich kein Mensch mehr bin?"
+        },
+        "V0216_34_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "Ich bin kein Mensch mehr, weil ich nichts mehr fühlen will!"
+        },
+        "V0216_34_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Die Verzweiflung, die zu verlieren, die dich lieben."
+        },
+        "V0216_34_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Die Verzweiflung, die zu verlieren, die du liebst."
+        },
+        "V0216_34_00_09_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Die Verzweiflung, die Liebe zu verlieren."
+        },
+        "V0216_35_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Angst, Hoffnungslosigkeit und Schmerz verschmelzen."
+        },
+        "V0216_35_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Mein Name ist Aporia.\nDie Wächterin der Verzweiflung."
+        },
+        "V0216_36_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Beende dieses Duell.\nWeißt du was? Beende alles!"
+        },
+        "V0216_36_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Du bist am Zug."
+        },
+        "V0216_36_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Entschuldigung …"
+        },
+        "V0216_36_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                201,
+                202,
+                203,
+                204,
+                205,
+                206
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Es gibt also noch Hoffnung …"
+        },
+        "V0216_36_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                215,
+                235,
+                236
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Eine neue Zukunft beginnt."
+        },
+        "V0216_36_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                218
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Du bist dran, Z-ONE!"
+        },
+        "V0216_36_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                209
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Antinomy, du bist am Zug."
+        },
+        "V0216_36_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                217
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Du bist am Zug, Paradox."
+        },
+        "V0216_37_00_00_0": {
+            "card": [
+                9553
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Angst, Hoffnungslosigkeit, Schmerz erzeugen eine neue Kraft!"
+        },
+        "V0216_37_00_01_0": {
+            "card": [
+                9486
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Du klammerst dich an die Hoffnung, aber nicht länger!"
+        },
+        "V0216_38_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Auf die Plätze … Fertig … Duell!"
+        }
+    }
+}

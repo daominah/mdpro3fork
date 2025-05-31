@@ -1,0 +1,2487 @@
+{
+    "_GRP_": "SN0420",
+    "_LNG_": "fr-FR",
+    "info": {
+        "V0420_01_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Bien sûr !\nJe gagnerai ce Duel par TKO !"
+        },
+        "V0420_01_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Entre dans le ring et on va régler ça mano à mano !"
+        },
+        "V0420_01_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Les Duels, c'est toute ma vie !\nAllons-y !"
+        },
+        "V0420_01_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Je rêvais de faire un Duel contre toi !\nNe me déçois pas !"
+        },
+        "V0420_01_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Je vais me donner à fond, j'espère que toi aussi !"
+        },
+        "V0420_01_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                401,
+                402,
+                415
+            ],
+            "face": 11,
+            "frame": 0,
+            "text": "Yuma, faisons de ce Duel le combat plus spectaculaire !"
+        },
+        "V0420_01_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                401,
+                415
+            ],
+            "face": 11,
+            "frame": 0,
+            "text": "Yuma ! Astral !\nTu ne peux pas gagner ce combat !"
+        },
+        "V0420_01_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                401,
+                415
+            ],
+            "face": 11,
+            "frame": 0,
+            "text": "Je battrai le meilleur en faisant de mon mieux !"
+        },
+        "V0420_01_00_07_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Faisons un Duel, Yuma !\nToi aussi, Astral !"
+        },
+        "V0420_01_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                419,
+                441
+            ],
+            "face": 11,
+            "frame": 0,
+            "text": "Sois réglo, Girag !\nBattons-nous du début jusqu'à la fin !"
+        },
+        "V0420_01_00_09_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                99999
+            ],
+            "face": 13,
+            "frame": 0,
+            "text": "Don Mille...\nJe vais te mettre hors course !"
+        },
+        "V0420_01_00_10_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                99999
+            ],
+            "face": 13,
+            "frame": 0,
+            "text": "Grrr...\nVector !!!"
+        },
+        "V0420_02_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Place au Duel !"
+        },
+        "V0420_03_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Prêt à jeter l'éponge ?"
+        },
+        "V0420_03_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "C'est mon tour !"
+        },
+        "V0420_03_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 0,
+            "text": "Continuons de jouer, jusqu'à la dernière carte !"
+        },
+        "V0420_03_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 0,
+            "text": "À mon tour !"
+        },
+        "V0420_03_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "J'y vais !"
+        },
+        "V0420_03_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "C'est mon tour !"
+        },
+        "V0420_03_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Ce léger coup me mettra en position de gagner."
+        },
+        "V0420_03_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "À mon tour !"
+        },
+        "V0420_03_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Je vais tenter le tout pour le tout !"
+        },
+        "V0420_03_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "C'est mon tour !"
+        },
+        "V0420_03_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "J'ai encaissé pire que ça !"
+        },
+        "V0420_03_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "À mon tour !"
+        },
+        "V0420_04_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 0,
+            "text": "Je pioche !"
+        },
+        "V0420_04_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Je pioche !"
+        },
+        "V0420_04_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 0,
+            "text": "Je pioche !"
+        },
+        "V0420_05_00_00_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "Si tu tiens à te battre ainsi, je vais tout donner aussi !"
+        },
+        "V0420_05_00_00_1": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Je pioooche !"
+        },
+        "V0420_06_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Sérieusement ?"
+        },
+        "V0420_06_01_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "C'est ce que j'attendais !"
+        },
+        "V0420_06_01_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "Je vais contrer cette attaque !"
+        },
+        "V0420_06_01_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "Je déjouerai toutes tes ruses !"
+        },
+        "V0420_07_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Depuis ma main..."
+        },
+        "V0420_07_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "J'active une Carte Magie !"
+        },
+        "V0420_07_02_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "J'active une Magie Jeu-Rapide !"
+        },
+        "V0420_07_03_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "J'active une Carte Magie Continue !"
+        },
+        "V0420_07_04_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "J'active une Magie d'Équipement !"
+        },
+        "V0420_07_05_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "J'active une Magie Rituelle !"
+        },
+        "V0420_07_06_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "J'active un Piège !"
+        },
+        "V0420_07_07_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "J'active un Piège Continu !"
+        },
+        "V0420_07_08_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "J'active un Contre-Piège !"
+        },
+        "V0420_07_09_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Je retourne ma carte Posée !"
+        },
+        "V0420_07_09_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Voici ma carte Posée !"
+        },
+        "V0420_07_10_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "J'active l'effet de mon monstre !"
+        },
+        "V0420_07_11_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "J'active une Magie de Terrain !"
+        },
+        "V0420_07_12_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "J'active un effet !"
+        },
+        "V0420_07_13_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Je déclare une Échelle Pendule !"
+        },
+        "V0420_07_14_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "J'active un Effet Pendule !"
+        },
+        "V0420_08_00_00_0": {
+            "card": [
+                10541
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "J'active la Carte Force de Barian Magie-Rang-Plus !"
+        },
+        "V0420_08_00_01_0": {
+            "card": [
+                11087
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Avec cette carte, je vais t'éjecter hors du ring !"
+        },
+        "V0420_08_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "La Septième - Magie-Rang-Plus !"
+        },
+        "V0420_08_00_02_0": {
+            "card": [
+                17043
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "J'y vais !\nPioche du Chaos de Barian !"
+        },
+        "V0420_08_00_03_0": {
+            "card": [
+                17256
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "J'active ma Magie de Terrain !\nAntopie Barian !"
+        },
+        "V0420_08_00_04_0": {
+            "card": [
+                17256
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "L'effet de la Carte Antopie Barian s'active !"
+        },
+        "V0420_08_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Je vole ton monstre !"
+        },
+        "V0420_08_00_05_0": {
+            "card": [
+                17044
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "J'active ma Carte Magie !\nSeptième Ascension !"
+        },
+        "V0420_08_00_06_0": {
+            "card": [
+                17044
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Je défausse une Magie-Rang-Plus pour activer l'effet de Septième Ascension !"
+        },
+        "V0420_08_00_06_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Cette carte gagne l'effet Magie-Rang-Plus !"
+        },
+        "V0420_08_00_07_0": {
+            "card": [
+                10791
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "J'active ma Carte Magie !\nCourage de la Boxe Indomptable !"
+        },
+        "V0420_08_00_08_0": {
+            "card": [
+                5849
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "J'active ma Magie Jeu-Rapide !\nRecharge !"
+        },
+        "V0420_08_00_09_0": {
+            "card": [
+                17107
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "J'active mon Piège !\nRenaissance des Septièmes Empereurs !"
+        },
+        "V0420_08_00_10_0": {
+            "card": [
+                17106
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "J'active mon Piège !\nRéincarnation des Septièmes Empereurs !"
+        },
+        "V0420_08_00_11_0": {
+            "card": [
+                17045
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "J'active mon Piège Continu !\nSeptième Éternité !"
+        },
+        "V0420_08_00_12_0": {
+            "card": [
+                17045
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "L'effet de la Carte Septième Éternité s'active !"
+        },
+        "V0420_08_00_13_0": {
+            "card": [
+                11119
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "J'active mon Contre-Piège !\nChoc du Contre !"
+        },
+        "V0420_08_00_14_0": {
+            "card": [
+                11100
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Mon Contre-Piège est déjà prêt !\nJ'active la Carte Dernier Contre !"
+        },
+        "V0420_08_00_15_0": {
+            "card": [
+                10553
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "J'active mon Contre-Piège !\nBlocage Xyz !"
+        },
+        "V0420_08_00_16_0": {
+            "card": [
+                10802
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "J'active mon Piège !\nAugmentation Habillée Numéro !"
+        },
+        "V0420_08_00_17_0": {
+            "card": [
+                5396
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "J'active mon Piège !\nChaîne Explosive !"
+        },
+        "V0420_08_00_18_0": {
+            "card": [
+                5396
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Si la Carte Chaîne Explosive est détruite par un effet, elle s'active !"
+        },
+        "V0420_08_00_19_0": {
+            "card": [
+                11286
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "J'active mon Contre-Piège !\nFace-à-Face !"
+        },
+        "V0420_08_00_20_0": {
+            "card": [
+                13449
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "J'active la Carte Techniques du Parchemin du Sens Secret !"
+        },
+        "V0420_08_00_21_0": {
+            "card": [
+                6712
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "J'active mon Contre-Piège !\nRecul Forcé !"
+        },
+        "V0420_08_00_22_0": {
+            "card": [
+                7236
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Tu ne pourras pas échapper à mon contre !"
+        },
+        "V0420_08_00_22_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "J'active mon Contre-Piège, Anti-Contre !"
+        },
+        "V0420_08_00_23_0": {
+            "card": [
+                9010
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "J'active mon Contre-Piège !\nChevalerie !"
+        },
+        "V0420_08_00_24_0": {
+            "card": [
+                5267
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "J'active mon Piège !\nCoup de Poing Destructeur !"
+        },
+        "V0420_08_00_25_0": {
+            "card": [
+                5678
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Je joue ma Carte Magie Continue !\nFrappe Destructrice Continue !"
+        },
+        "V0420_08_00_26_0": {
+            "card": [
+                10210
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "J'active mon Piège Continu !\nCoup de Poing Chanceux !"
+        },
+        "V0420_08_00_27_0": {
+            "card": [
+                10210
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "L'effet de la Carte Coup de Poing Chanceux s'active !"
+        },
+        "V0420_08_00_28_0": {
+            "card": [
+                14524
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "J'active mon Piège !\nCouppercut !"
+        },
+        "V0420_08_00_29_0": {
+            "card": [
+                6275
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "J'active mon Piège !\nContre Croisé !"
+        },
+        "V0420_09_00_00_0": {
+            "card": [
+                10532
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "La Carte Numéro 105 : Boxeur Indomptable Étoile Cestus utilise 1 unité de couverture et active son effet."
+        },
+        "V0420_09_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Impact de la Poussière d'Étoile !"
+        },
+        "V0420_09_00_01_0": {
+            "card": [
+                10533
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "L'effet de la Carte Numéro C105 : Boxeur Indomptable Comète Cestus s'active quand elle détruit un monstre."
+        },
+        "V0420_09_00_02_0": {
+            "card": [
+                10533
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Je retire 1 unité de couverture et j'utilise l'effet de Numéro C105 : Boxeur Indomptable Comète Cestus !"
+        },
+        "V0420_09_00_03_0": {
+            "card": [
+                10701
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Avec 1 unité de couverture, j'active l'effet de la Carte Numéro 54 : Cœur de Lion !"
+        },
+        "V0420_09_00_04_0": {
+            "card": [
+                10701
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Numéro 54 : Cœur de Lion active son effet !"
+        },
+        "V0420_09_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Coup de poing bondissant !"
+        },
+        "V0420_09_00_05_0": {
+            "card": [
+                11074
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Avec 1 unité de couverture, je joue l'effet de la Carte Numéro 80 : Rhapsodie Furax !"
+        },
+        "V0420_09_00_06_0": {
+            "card": [
+                11074
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Numéro 80 : Rhapsodie Furax active son effet !"
+        },
+        "V0420_09_00_07_0": {
+            "card": [
+                11075
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Numéro C80 : Requiem Furax active son effet !"
+        },
+        "V0420_09_00_08_0": {
+            "card": [
+                11075
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Avec 1 unité de couverture, j'active l'effet de la Carte Numéro C80 : Requiem Furax !"
+        },
+        "V0420_09_00_09_0": {
+            "card": [
+                11118
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Numéro 79 : Boxeur Indomptable Nova Kaiser active son effet !"
+        },
+        "V0420_09_00_10_0": {
+            "card": [
+                11118
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "L'effet de la Carte Numéro 79 : Boxeur Indomptable Nova Kaiser s'active quand elle est détruite !"
+        },
+        "V0420_09_00_11_0": {
+            "card": [
+                10531
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Quand Boxeur Indomptable Enchaîneur perd ses unités de couverture, elle se renforce !"
+        },
+        "V0420_09_00_12_0": {
+            "card": [
+                10780
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Avec 2 unités de couverture, je joue l'effet de la Carte Boxeur Indomptable Commissaire Triche !"
+        },
+        "V0420_09_00_13_0": {
+            "card": [
+                10498
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "L'effet de la Carte Boxeur Indomptable avec Protège-Dents s'active quand elle est ciblée !"
+        },
+        "V0420_09_00_14_0": {
+            "card": [
+                10498
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "L'effet de Boxeur Indomptable avec Protège-Dents s'active une fois envoyée au Cimetière !"
+        },
+        "V0420_09_00_15_0": {
+            "card": [
+                11117
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "J'active l'effet de la Carte Boxeur Indomptable de l'Ombre depuis ma main !"
+        },
+        "V0420_09_00_16_0": {
+            "card": [
+                10500
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "L'effet de la Carte Boxeur Indomptable Ambidextre s'active à son Invocation !"
+        },
+        "V0420_09_00_17_0": {
+            "card": [
+                11038
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Puisque j'ai subi des dommages, l'effet de Boxeur Indomptable Voile s'active !"
+        },
+        "V0420_09_00_18_0": {
+            "card": [
+                10497
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "L'effet de la Carte Boxeur Indomptable avec Casque s'active à son Invocation !"
+        },
+        "V0420_09_00_19_0": {
+            "card": [
+                10501
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "J'active l'effet de la Carte Boxeur Indomptable Contre Coup de Poing !"
+        },
+        "V0420_09_00_20_0": {
+            "card": [
+                10738
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Boxeur Indomptable au Coup du Lapin active son effet !"
+        },
+        "V0420_09_00_21_0": {
+            "card": [
+                10737
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "J'active l'effet de la Carte Boxeur Indomptable Protecteur des Côtes !"
+        },
+        "V0420_09_00_22_0": {
+            "card": [
+                11037
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Boxeur Indomptable Grand Pansement active son effet !"
+        },
+        "V0420_09_00_23_0": {
+            "card": [
+                10782
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Avec 1 unité de couverture, j'active l'effet de la Carte Numéro 64 : Ronin Raton Laveur Sandayu !"
+        },
+        "V0420_10_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "C'est parti !"
+        },
+        "V0420_10_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "À toi de jouer !"
+        },
+        "V0420_10_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Apparais !"
+        },
+        "V0420_10_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Je joue cette carte !"
+        },
+        "V0420_11_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "J'Invoque un monstre !"
+        },
+        "V0420_11_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "J'Invoque un monstre en Position de Défense !"
+        },
+        "V0420_11_02_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "J'Invoque Spécialement un monstre !"
+        },
+        "V0420_11_03_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Je Sacrifie un monstre !"
+        },
+        "V0420_11_04_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "J'Invoque un monstre par Sacrifice !"
+        },
+        "V0420_11_04_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Invocation Sacrifice !"
+        },
+        "V0420_11_05_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "J'Invoque un monstre par Fusion !"
+        },
+        "V0420_11_05_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Invocation Fusion !"
+        },
+        "V0420_11_06_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "J'Invoque un monstre par Rituel !"
+        },
+        "V0420_11_06_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Invocation Rituelle !"
+        },
+        "V0420_11_07_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "J'Invoque un monstre par Synchro !"
+        },
+        "V0420_11_07_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Invocation Synchro !"
+        },
+        "V0420_11_08_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "J'Invoque un monstre par Xyz !"
+        },
+        "V0420_11_08_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Je construis le Réseau Habillé !"
+        },
+        "V0420_11_08_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Invocation Xyz !"
+        },
+        "V0420_11_09_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "J'Invoque un monstre par Pendulation !"
+        },
+        "V0420_11_09_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Invocation Pendule !"
+        },
+        "V0420_11_10_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "J'Invoque un monstre par Lien !"
+        },
+        "V0420_11_10_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Invocation Lien !"
+        },
+        "V0420_13_00_00_0": {
+            "card": [
+                10532
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Entre dans le ring, Numéro 105 : Boxeur Indomptable Étoile Cestus !"
+        },
+        "V0420_13_00_01_0": {
+            "card": [
+                10533
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Numéro C105 : Boxeur Indomptable Comète Cestus !"
+        },
+        "V0420_13_00_02_0": {
+            "card": [
+                10533
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Numéro C105 : Boxeur Indomptable Comète Cestus !"
+        },
+        "V0420_13_00_03_0": {
+            "card": [
+                10701
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Numéro 54 : Cœur de Lion !"
+        },
+        "V0420_13_00_04_0": {
+            "card": [
+                11074
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Numéro 80 : Rhapsodie Furax !"
+        },
+        "V0420_13_00_05_0": {
+            "card": [
+                11075
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Numéro C80 : Requiem Furax !"
+        },
+        "V0420_13_00_06_0": {
+            "card": [
+                11118
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Apparais, Numéro 79 : Boxeur Indomptable Nova Kaiser !"
+        },
+        "V0420_13_00_07_0": {
+            "card": [
+                10531
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Boxeur Indomptable Enchaîneur !"
+        },
+        "V0420_13_00_08_0": {
+            "card": [
+                10780
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Boxeur Indomptable Commissaire Triche !"
+        },
+        "V0420_13_00_09_0": {
+            "card": [
+                10498
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Boxeur Indomptable avec Protège-Dents !"
+        },
+        "V0420_13_00_10_0": {
+            "card": [
+                11117
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Boxeur Indomptable de l'Ombre !"
+        },
+        "V0420_13_00_11_0": {
+            "card": [
+                10500
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Boxeur Indomptable Ambidextre !"
+        },
+        "V0420_13_00_12_0": {
+            "card": [
+                10499
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Boxeur Indomptable d'Entraînement !"
+        },
+        "V0420_13_00_13_0": {
+            "card": [
+                11038
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Boxeur Indomptable Voile !"
+        },
+        "V0420_13_00_14_0": {
+            "card": [
+                10497
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Boxeur Indomptable avec Casque !"
+        },
+        "V0420_13_00_15_0": {
+            "card": [
+                10501
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Boxeur Indomptable Contre Coup de Poing !"
+        },
+        "V0420_13_00_16_0": {
+            "card": [
+                10738
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Boxeur Indomptable au Coup du Lapin !"
+        },
+        "V0420_13_00_17_0": {
+            "card": [
+                10737
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Boxeur Indomptable Protecteur des Côtes !"
+        },
+        "V0420_13_00_18_0": {
+            "card": [
+                11037
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Boxeur Indomptable Grand Pansement !"
+        },
+        "V0420_13_00_19_0": {
+            "card": [
+                10782
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Montre-toi !\nNuméro 64 : Ronin Raton Laveur Sandayu !"
+        },
+        "V0420_13_00_20_0": {
+            "card": [
+                3981
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "J'Invoque Spécialement 1 Jeton Raton Laveur Kagemusha !"
+        },
+        "V0420_14_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Combat !"
+        },
+        "V0420_14_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Très bien ! Combattons !"
+        },
+        "V0420_15_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 0,
+            "text": "Alleeez !"
+        },
+        "V0420_15_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 0,
+            "text": "Charge !"
+        },
+        "V0420_15_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 0,
+            "text": "Tourmente-les !"
+        },
+        "V0420_16_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Prépare-toi pour le K.-O. !"
+        },
+        "V0420_16_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Tu es au tapis !"
+        },
+        "V0420_17_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Mon monstre attaque !"
+        },
+        "V0420_17_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "J'attaque avec mon monstre !"
+        },
+        "V0420_17_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "À l'attaque !"
+        },
+        "V0420_18_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Attaque directe !"
+        },
+        "V0420_18_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Je t'attaque directement !"
+        },
+        "V0420_19_00_00_0": {
+            "card": [
+                10532
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Démolis l'adversaire, Numéro 105 : Boxeur Indomptable Étoile Cestus !"
+        },
+        "V0420_19_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Impact de la Poussière d'Étoile !"
+        },
+        "V0420_19_00_01_0": {
+            "card": [
+                10533
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Numéro C105 : Boxeur Indomptable Comète Cestus attaque !"
+        },
+        "V0420_19_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Explosion céleste !"
+        },
+        "V0420_19_00_02_0": {
+            "card": [
+                10701
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Attaque, Numéro 54 : Cœur de Lion !"
+        },
+        "V0420_19_00_03_0": {
+            "card": [
+                11074
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Numéro 80 : Rhapsodie Furax attaque !"
+        },
+        "V0420_19_00_04_0": {
+            "card": [
+                11075
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Numéro C80 : Requiem Furax !\nÀ l'attaque !"
+        },
+        "V0420_19_00_05_0": {
+            "card": [
+                11118
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Attaque, Numéro 79 : Boxeur Indomptable Nova Kaiser !"
+        },
+        "V0420_19_00_06_0": {
+            "card": [
+                10531
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Attaque, Boxeur Indomptable Enchaîneur !"
+        },
+        "V0420_19_00_06_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "C'est l'heure de cogner !"
+        },
+        "V0420_19_00_07_0": {
+            "card": [
+                10780
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Boxeur Indomptable Commissaire Triche !\nÉcrase-moi tout ça !"
+        },
+        "V0420_19_00_08_0": {
+            "card": [
+                10498
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Vas-y, cogne, Boxeur Indomptable avec Protège-Dents !"
+        },
+        "V0420_19_00_09_0": {
+            "card": [
+                11117
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Boxeur Indomptable de l'Ombre !\nÀ l'attaque !"
+        },
+        "V0420_19_00_10_0": {
+            "card": [
+                10500
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Frappe fort, Boxeur Indomptable Ambidextre !"
+        },
+        "V0420_19_00_11_0": {
+            "card": [
+                10499
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Boxeur Indomptable d'Entraînement !\nÀ l'attaque !"
+        },
+        "V0420_19_00_12_0": {
+            "card": [
+                11038
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Boxeur Indomptable Voile attaque !"
+        },
+        "V0420_19_00_13_0": {
+            "card": [
+                10497
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Montre-nous pourquoi c'est toi le champion, Boxeur Indomptable avec Casque !"
+        },
+        "V0420_19_00_14_0": {
+            "card": [
+                10501
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Frappe-les Boxeur Indomptable Contre Coup de Poing !"
+        },
+        "V0420_19_00_15_0": {
+            "card": [
+                10738
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Attaque, Boxeur Indomptable au Coup du Lapin !"
+        },
+        "V0420_19_00_16_0": {
+            "card": [
+                10737
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Boxeur Indomptable Protecteur des Côtes ! À l'attaque !"
+        },
+        "V0420_19_00_17_0": {
+            "card": [
+                11037
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Boxeur Indomptable Grand Pansement ! À l'attaque !"
+        },
+        "V0420_19_00_18_0": {
+            "card": [
+                10782
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Allez, Numéro 64 : Ronin Raton Laveur Sandayu !\nÀ l'attaque !"
+        },
+        "V0420_19_00_19_0": {
+            "card": [
+                3981
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Ma Carte Jeton Raton Laveur Kagemusha attaque !"
+        },
+        "V0420_20_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Je Pose une carte !"
+        },
+        "V0420_20_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Je Pose une carte !"
+        },
+        "V0420_20_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Je Pose un monstre !"
+        },
+        "V0420_20_01_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Je vais Poser un monstre !"
+        },
+        "V0420_21_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 0,
+            "text": "Je termine mon tour !"
+        },
+        "V0420_21_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 0,
+            "text": "J'ai hâte de voir ce que tu vas tenter !"
+        },
+        "V0420_21_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 0,
+            "text": "Tu t'amuses ?\nOu mes compétences d'élite gâchent la fête ?"
+        },
+        "V0420_21_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 0,
+            "text": "Je termine mon tour !"
+        },
+        "V0420_21_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Avec ceci, je termine mon tour !"
+        },
+        "V0420_21_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Je termine mon tour !"
+        },
+        "V0420_21_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Allez ! À toi de jouer !"
+        },
+        "V0420_21_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 0,
+            "text": "Je sens que ce Duel va devenir encore plus intense !"
+        },
+        "V0420_21_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 0,
+            "text": "Je termine mon tour !"
+        },
+        "V0420_21_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Laisse-la sortir !\nFrappe plus fort encore !"
+        },
+        "V0420_21_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Je termine mon tour !"
+        },
+        "V0420_22_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 14,
+            "frame": 1,
+            "text": "Argh !"
+        },
+        "V0420_22_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 14,
+            "frame": 1,
+            "text": "Ouch !"
+        },
+        "V0420_22_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 14,
+            "frame": 1,
+            "text": "Argh !"
+        },
+        "V0420_23_00_00_0": {
+            "card": [],
+            "cutin": 3,
+            "duelist": [],
+            "face": 14,
+            "frame": 1,
+            "text": "Aaah !"
+        },
+        "V0420_24_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 1,
+            "text": "Argh..."
+        },
+        "V0420_25_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 14,
+            "frame": 1,
+            "text": "Gaaa !"
+        },
+        "V0420_25_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 14,
+            "frame": 1,
+            "text": "Erghhh !"
+        },
+        "V0420_25_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 14,
+            "frame": 1,
+            "text": "Aaaaah !"
+        },
+        "V0420_26_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Je n'ai presque rien senti !"
+        },
+        "V0420_26_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 0,
+            "text": "Il va falloir faire mieux que ça !"
+        },
+        "V0420_26_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 0,
+            "text": "C'est tout ce que tu peux faire ?"
+        },
+        "V0420_27_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Grr... !"
+        },
+        "V0420_27_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "C'est pas possible !"
+        },
+        "V0420_27_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 17,
+            "frame": 0,
+            "text": "Argh..."
+        },
+        "V0420_28_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Je suis Alito !\nTu n'oublieras jamais ce nom !"
+        },
+        "V0420_28_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 0,
+            "text": "Ha ha ha !\nC'est bien le genre de Duel que j'espérais !"
+        },
+        "V0420_28_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 0,
+            "text": "Ouah !\nQuand je sors le grand jeu, je suis invincible !"
+        },
+        "V0420_28_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 0,
+            "text": "C'était sympa !\nOn lance la deuxième manche ?"
+        },
+        "V0420_28_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                401,
+                402,
+                415
+            ],
+            "face": 12,
+            "frame": 0,
+            "text": "J'ai vu à quel point tu voulais la victoire, Yuma !"
+        },
+        "V0420_28_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 0,
+            "text": "C'est ce qui a rendu ce Duel aussi intéressant !"
+        },
+        "V0420_28_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                419,
+                441
+            ],
+            "face": 11,
+            "frame": 0,
+            "text": "Tu continues d'échouer, tandis que je réussis avec brio !"
+        },
+        "V0420_28_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                99999
+            ],
+            "face": 13,
+            "frame": 0,
+            "text": "Personne ne peut me résister !\nHors de ma vue !"
+        },
+        "V0420_29_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 15,
+            "frame": 0,
+            "text": "Ahh...\nMes contre-tactiques n'ont pas du tout fonctionné."
+        },
+        "V0420_29_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Hé hé...\nC'était un plaisir de t'affronter."
+        },
+        "V0420_29_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Retiens mon nom !\nJe resterai ton rival toute ma vie !"
+        },
+        "V0420_29_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 0,
+            "text": "Tes meilleurs coups étaient vraiment impressionnants !"
+        },
+        "V0420_29_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                401,
+                415
+            ],
+            "face": 11,
+            "frame": 0,
+            "text": "Yuma, Astral...\nJ'espère que vous vous êtes bien amusés."
+        },
+        "V0420_29_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                406
+            ],
+            "face": 19,
+            "frame": 0,
+            "text": "Les anges... existent réellement..."
+        },
+        "V0420_29_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                419,
+                441
+            ],
+            "face": 11,
+            "frame": 0,
+            "text": "Voilà pourquoi tu es mon meilleur ami, Girag !"
+        },
+        "V0420_29_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                99999
+            ],
+            "face": 15,
+            "frame": 0,
+            "text": "Argh...\nJ'ai perdu..."
+        },
+        "V0420_30_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Vas-y doucement au début."
+        },
+        "V0420_30_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Utilise l'effet de surprise pour prendre l'avantage."
+        },
+        "V0420_30_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "J'irai doucement avant de sortir ma meilleure attaque."
+        },
+        "V0420_31_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 14,
+            "frame": 1,
+            "text": "Quoi ?!"
+        },
+        "V0420_31_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 14,
+            "frame": 1,
+            "text": "Sérieusement ?!"
+        },
+        "V0420_32_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Yu-Gi-Oh! Duel Links"
+        },
+        "V0420_33_00_00_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Je vais te montrer ce que je peux faire !"
+        },
+        "V0420_33_00_01_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Attends-toi à du grand spectacle !"
+        },
+        "V0420_33_00_02_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Prépare-toi pour ma contre-stratégie !"
+        },
+        "V0420_33_00_03_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Pioche du Chaos de Barian !"
+        },
+        "V0420_34_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Je resterai concentré sur le Duel !"
+        },
+        "V0420_34_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Je ne vais pas me laisser distraire, contrairement à toi !"
+        },
+        "V0420_34_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 19,
+            "frame": 0,
+            "text": "Je... dois être en train de rêver..."
+        },
+        "V0420_34_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 18,
+            "frame": 0,
+            "text": "Est-ce que tu crois au coup de foudre ?"
+        },
+        "V0420_34_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 0,
+            "text": "Tout ça n'a rien d'un Duel ! Hors de ma vue !"
+        },
+        "V0420_34_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 0,
+            "text": "Si tu ne m'attaques pas, je ne peux pas contrer !"
+        },
+        "V0420_34_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 0,
+            "text": "Je passe un excellent moment !"
+        },
+        "V0420_34_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 0,
+            "text": "Voilà le genre de Duel qui me plaît !"
+        },
+        "V0420_34_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 0,
+            "text": "Combattons sans plus attendre !"
+        },
+        "V0420_34_00_09_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 0,
+            "text": "C'est un super Duel !"
+        },
+        "V0420_35_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Le Duel fera toujours partie de ma vie !"
+        },
+        "V0420_35_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Je m'appelle Alito : tâche de t'en souvenir !"
+        },
+        "V0420_36_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 0,
+            "text": "Bats-toi jusqu'à la dernière manche !"
+        },
+        "V0420_36_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "À toi de jouer ! Tu vas y arriver !"
+        },
+        "V0420_36_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "C'est le moment où jamais de contrer !"
+        },
+        "V0420_36_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                401,
+                402,
+                415
+            ],
+            "face": 12,
+            "frame": 0,
+            "text": "Montre ce que tu sais faire, Yuma !"
+        },
+        "V0420_36_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                401,
+                402,
+                415
+            ],
+            "face": 11,
+            "frame": 0,
+            "text": "Tout repose sur toi, Yuma !"
+        },
+        "V0420_36_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                401,
+                402,
+                415
+            ],
+            "face": 11,
+            "frame": 0,
+            "text": "Yuma ! Envoie un contre !"
+        },
+        "V0420_36_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                419,
+                441
+            ],
+            "face": 11,
+            "frame": 0,
+            "text": "Très bien.\nJe vais te laisser jouer, Girag."
+        },
+        "V0420_36_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                419,
+                441
+            ],
+            "face": 11,
+            "frame": 0,
+            "text": "C'est ton tour, Girag."
+        },
+        "V0420_36_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                419,
+                441
+            ],
+            "face": 13,
+            "frame": 0,
+            "text": "Je ne peux pas me relancer si on y va pas à fond d'abord !"
+        },
+        "V0420_37_00_00_0": {
+            "card": [
+                10533
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Une énergie incontrôlable répandra le chaos sur le monde !"
+        },
+        "V0420_37_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Évolution Xyz Chaos !\nMontre-toi, Numéro C105 !"
+        },
+        "V0420_37_00_01_0": {
+            "card": [
+                10533
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Venu des confins de l'inconnu, voici le numéro C105 !"
+        },
+        "V0420_37_00_02_0": {
+            "card": [
+                10701
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Fais entendre ton rugissement, Numéro 54 !"
+        },
+        "V0420_37_00_03_0": {
+            "card": [
+                11074
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "L'armure qui lie l'esprit enragé !\nAllons-y, Numéro 80 !"
+        },
+        "V0420_37_00_04_0": {
+            "card": [
+                11075
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Lève-toi, Numéro C80 !\nLa mélodie qui apaise l'esprit !"
+        },
+        "V0420_37_00_05_0": {
+            "card": [
+                10531
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Le feu dans son âme enflamme aussi ses poings !"
+        },
+        "V0420_37_00_06_0": {
+            "card": [
+                10780
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Il est capable de réussir tout ce qu'il veut ! "
+        },
+        "V0420_39_00_00_0": {
+            "card": [
+                10210
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "Super !\nJe pioche des cartes de mon Deck !"
+        },
+        "V0420_39_00_01_0": {
+            "card": [
+                10210
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 14,
+            "frame": 1,
+            "text": "Quoi ?!\nJ'ai vraiment pas de chance !"
+        },
+        "V0420_43_00_00_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "Transformation de combat Barian !"
+        },
+        "V0420_43_00_00_1": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 13,
+            "frame": 1,
+            "text": "J'y suis allé doucement avec toi, mais c'est fini !"
+        }
+    }
+}

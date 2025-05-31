@@ -1,0 +1,3004 @@
+{
+    "_GRP_": "SN0903",
+    "_LNG_": "es-ES",
+    "info": {
+        "V0903_01_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "¡Soy la presidenta de UTS: Yuamu Ohdo!"
+        },
+        "V0903_01_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "¡Resolvamos esto con un Rush Duel!"
+        },
+        "V0903_01_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "¡Mi responsabilidad es cumplir mi papel!"
+        },
+        "V0903_01_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "¡Si gano, trabajarás gratis para mí!"
+        },
+        "V0903_01_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "¡Si no cedes ni un palmo, yo tampoco!"
+        },
+        "V0903_01_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "¡Me niego a perder este Duelo!"
+        },
+        "V0903_01_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Aceptamos muchos trabajos, pero no todos."
+        },
+        "V0903_01_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                901
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "¡Te enseñaré todo lo que necesitas saber de los Rush Duels!"
+        },
+        "V0903_01_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                901
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Me dijiste que libraríamos un Rush Duel, Yudias. ¿Recuerdas?"
+        },
+        "V0903_01_00_09_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                902
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Con miedo nunca conseguirás ese ascenso que quieres."
+        },
+        "V0903_01_00_10_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                902
+            ],
+            "face": 8,
+            "frame": 0,
+            "text": "Vale.\n¡Yo te entrenaré, Yuhi!"
+        },
+        "V0903_01_00_11_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                99999
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "¡Te recordaré que tus raíces están aquí, en este pueblo!"
+        },
+        "V0903_01_00_12_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                99999
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Si luchas contra mí, conseguirás información que no conoces."
+        },
+        "V0903_01_00_13_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                99999
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "¡Me llevaré todos los coleccionables de tu tienda!"
+        },
+        "V0903_01_00_14_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                99999
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "¡Cuánto te gustan los Rush Duels, Damamu!"
+        },
+        "V0903_02_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "¡Peleemos!"
+        },
+        "V0903_03_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 0,
+            "text": "¡No te daré la oportunidad de contraatacar!"
+        },
+        "V0903_03_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 0,
+            "text": "¡Es mi turno!"
+        },
+        "V0903_03_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "¡No puedo rendirme cuando hay tanto en juego!"
+        },
+        "V0903_03_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "¡Me toca!"
+        },
+        "V0903_03_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "¡Es mi turno!"
+        },
+        "V0903_03_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "¡Allá voy!"
+        },
+        "V0903_03_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "¡Me toca!"
+        },
+        "V0903_03_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "¡Piensa! ¡Piensa!"
+        },
+        "V0903_03_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "¡Es mi turno!"
+        },
+        "V0903_03_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Se nota que has mejorado mucho. ¡Tengo que esforzarme más!"
+        },
+        "V0903_03_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "¡Me toca!"
+        },
+        "V0903_04_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 0,
+            "text": "¡Robo!"
+        },
+        "V0903_04_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "¡Robo!"
+        },
+        "V0903_04_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "¡Robo!"
+        },
+        "V0903_05_00_00_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "No sé qué pasará. ¡Todo es posible!"
+        },
+        "V0903_05_00_00_1": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "¡Rooobo!"
+        },
+        "V0903_06_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡De eso nada!"
+        },
+        "V0903_06_01_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "¿Seguro?"
+        },
+        "V0903_06_01_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "¡Sabía que intentarías eso!"
+        },
+        "V0903_06_01_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "¡Ji, ji!"
+        },
+        "V0903_07_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "De mi mano..."
+        },
+        "V0903_07_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "¡Activo mi Carta Mágica!"
+        },
+        "V0903_07_02_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "¡Activo una Carta Mágica de Juego Rápido!"
+        },
+        "V0903_07_03_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "¡Activo mi Carta Mágica Continua!"
+        },
+        "V0903_07_04_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "¡Activo mi Carta Mágica de Equipo!"
+        },
+        "V0903_07_05_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "¡Activo mi Carta Mágica de Ritual!"
+        },
+        "V0903_07_06_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "¡Activo mi Carta de Trampa!"
+        },
+        "V0903_07_07_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "¡Activo mi Carta de Trampa Continua!"
+        },
+        "V0903_07_08_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "¡Activo una Trampa de Contraefecto!"
+        },
+        "V0903_07_09_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "¡Voy a usar la carta que he Colocado!"
+        },
+        "V0903_07_09_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "¡Jugaré esta carta!"
+        },
+        "V0903_07_10_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "¡Activo el efecto de mi monstruo!"
+        },
+        "V0903_07_11_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "¡Activo una Carta Mágica de Campo!"
+        },
+        "V0903_07_12_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "¡Activo un efecto!"
+        },
+        "V0903_07_13_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "¡Coloco la Escala de Péndulo!"
+        },
+        "V0903_07_14_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "¡Activo un efecto de Péndulo!"
+        },
+        "V0903_08_00_00_0": {
+            "card": [
+                18274
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Aumenta la velocidad!\n¡Voy a darle más poder a mi monstruo! "
+        },
+        "V0903_08_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡La Carta Mágica de Equipo Llavespada Qwerty!"
+        },
+        "V0903_08_00_01_0": {
+            "card": [
+                18625
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡La Carta Mágica de Equipo Garra Resquebrajada!"
+        },
+        "V0903_08_00_02_0": {
+            "card": [
+                16934
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Activo mi Carta Mágica!\n¡Fusión!"
+        },
+        "V0903_08_00_03_0": {
+            "card": [
+                18640
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡La Carta de Trampa !"
+        },
+        "V0903_08_00_04_0": {
+            "card": [
+                17907
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Activo la Carta de Trampa Cilindro Paquete!"
+        },
+        "V0903_08_00_05_0": {
+            "card": [
+                17954
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Activo mi Carta de Trampa!\n¡RB Dragófono!"
+        },
+        "V0903_08_00_06_0": {
+            "card": [
+                18624
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Activo la Carta Mágica Magisigilo!"
+        },
+        "V0903_08_00_07_0": {
+            "card": [
+                17322
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Voy a activar la Carta Mágica Eco del Rebelde Real!"
+        },
+        "V0903_08_00_08_0": {
+            "card": [
+                15162
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Esta es la Carta de Trampa Revelación Oscura!"
+        },
+        "V0903_08_00_09_0": {
+            "card": [
+                20006
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Con mi Carta Mágica ..."
+        },
+        "V0903_08_00_09_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Invoco por Fusión!"
+        },
+        "V0903_08_00_10_0": {
+            "card": [
+                18273
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Une los cortes y las soldaduras!\n¡Únelas y crea una fuerza inquebrantable!"
+        },
+        "V0903_08_00_10_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡La Carta Mágica de Equipo Cuerno Turbo de Tecnojuntas!"
+        },
+        "V0903_08_00_11_0": {
+            "card": [
+                15204
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Activo la Carta Mágica ¡Atraviesa!!"
+        },
+        "V0903_08_00_12_0": {
+            "card": [
+                16712
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Activo mi Carta Mágica Bombardeo de Acero!"
+        },
+        "V0903_08_00_13_0": {
+            "card": [
+                17594
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Activo la Carta de Trampa Bloqueo de Sacrificio!"
+        },
+        "V0903_08_00_14_0": {
+            "card": [
+                17945
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Activo mi Carta de Trampa!\n¡Chispa Atronadora!"
+        },
+        "V0903_08_00_15_0": {
+            "card": [
+                19335
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Activo mi Carta de Trampa!\n¡Arranque de Tecnojuntas!"
+        },
+        "V0903_08_00_16_0": {
+            "card": [
+                18639
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Activo mi Carta de Trampa!\n¡!"
+        },
+        "V0903_08_00_17_0": {
+            "card": [
+                17595
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Activo la Carta de Trampa Parachoques Tecnojuntas!"
+        },
+        "V0903_08_00_18_0": {
+            "card": [
+                17906
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Activo mi Carta de Trampa!\n¡!"
+        },
+        "V0903_09_00_00_0": {
+            "card": [
+                17865
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Mega! ¡Giga! ¡Tera! ¡Peta!\n¡Formatea el disco duro!"
+        },
+        "V0903_09_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Eliminación de Datos de Destrucción!"
+        },
+        "V0903_09_00_01_0": {
+            "card": [
+                17865
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Activo el efecto de la carta Dragón del Estallido Blue-Colmillo!"
+        },
+        "V0903_09_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Eliminación de Datos de Destrucción!"
+        },
+        "V0903_09_00_02_0": {
+            "card": [
+                17946
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Activo el efecto de la carta Dragón de Potencia Red-Boot!"
+        },
+        "V0903_09_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Explosión Multihilos!"
+        },
+        "V0903_09_00_03_0": {
+            "card": [
+                18574
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡La carta Dragón de Hackeo activa su efecto!"
+        },
+        "V0903_09_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Pirateo Vulnerante!"
+        },
+        "V0903_09_00_04_0": {
+            "card": [
+                17947
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Activo el efecto de la carta Dual Coratlus!"
+        },
+        "V0903_09_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "No solo gana ATK, ¡sino que además puede atacar dos veces!"
+        },
+        "V0903_09_00_05_0": {
+            "card": [
+                17948
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡La carta Dragón Quemador Beta activa su efecto!"
+        },
+        "V0903_09_00_06_0": {
+            "card": [
+                17950
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Activo el efecto de la carta Draco SSD!"
+        },
+        "V0903_09_00_08_0": {
+            "card": [
+                17505
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Activo el efecto de la carta Rex de Tecnojuntas!"
+        },
+        "V0903_09_00_08_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Francotirador Trasero!"
+        },
+        "V0903_09_00_09_0": {
+            "card": [
+                19322
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Activo el efecto de la carta Dragón Explosión de Tecnojuntas!"
+        },
+        "V0903_09_00_10_0": {
+            "card": [
+                19320
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡La carta Luchador de Tecnojuntas activa su efecto!"
+        },
+        "V0903_09_00_11_0": {
+            "card": [
+                18965
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Activo el efecto de la carta !"
+        },
+        "V0903_09_00_12_0": {
+            "card": [
+                17937
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Activo el efecto de la carta Tiraceratops de Tecnojuntas y lanzo una moneda!"
+        },
+        "V0903_09_00_13_0": {
+            "card": [
+                19285
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Activo el efecto de la carta Héroe de Tecnojuntas!"
+        },
+        "V0903_09_00_13_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Carga Máxima!"
+        },
+        "V0903_09_00_14_0": {
+            "card": [
+                18588
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Activo el efecto de la carta Tinosaurio de Tecnojuntas!"
+        },
+        "V0903_09_00_14_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Presión de Megatón!"
+        },
+        "V0903_09_00_15_0": {
+            "card": [
+                18373
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Activo el efecto de la carta !"
+        },
+        "V0903_09_00_16_0": {
+            "card": [
+                17939
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡La carta Soldacorcho activa su efecto!"
+        },
+        "V0903_09_00_17_0": {
+            "card": [
+                18333
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡La carta Raptor de Tecnojuntas activa su efecto!"
+        },
+        "V0903_09_00_18_0": {
+            "card": [
+                18401
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Activo el efecto de la carta León de Tecnojuntas!"
+        },
+        "V0903_09_00_19_0": {
+            "card": [
+                17938
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡La carta Palangántula activa su efecto!"
+        },
+        "V0903_09_00_20_0": {
+            "card": [
+                17517
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Activo el efecto de la carta Dron Aplastador!"
+        },
+        "V0903_09_00_21_0": {
+            "card": [
+                16686
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Activo el efecto de la carta Dron Fabricador!"
+        },
+        "V0903_09_00_22_0": {
+            "card": [
+                17941
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Activo el efecto de la carta Tenedalcón!"
+        },
+        "V0903_09_00_23_0": {
+            "card": [
+                17943
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡La carta Erizo Clavo activa su efecto!"
+        },
+        "V0903_09_00_24_0": {
+            "card": [
+                17944
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Activo el efecto de la carta Tornidillo!"
+        },
+        "V0903_09_00_25_0": {
+            "card": [
+                18579
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡La carta  activa su efecto!"
+        },
+        "V0903_10_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "¡Genial!"
+        },
+        "V0903_10_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "¡Venga, sal!"
+        },
+        "V0903_10_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "¡Mira lo que hago!"
+        },
+        "V0903_10_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "¡Allá va!"
+        },
+        "V0903_11_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "¡Invoco un monstruo!"
+        },
+        "V0903_11_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "¡Invoco un monstruo en Posición de Defensa!"
+        },
+        "V0903_11_02_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "¡Invoco un monstruo de Modo Especial!"
+        },
+        "V0903_11_03_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "¡Sacrifico un monstruo!"
+        },
+        "V0903_11_04_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "¡Invoco un monstruo por Sacrificio!"
+        },
+        "V0903_11_04_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "¡Voy a Invocar por Sacrificio!"
+        },
+        "V0903_11_05_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "¡Invoco un monstruo por Fusión!"
+        },
+        "V0903_11_05_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "¡Invocación por Fusión!"
+        },
+        "V0903_11_06_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "¡Invoco un monstruo por Ritual!"
+        },
+        "V0903_11_06_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "¡Invocación por Ritual!"
+        },
+        "V0903_11_07_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "¡Invoco un monstruo por Sincronía!"
+        },
+        "V0903_11_07_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "¡Invocación por Sincronía!"
+        },
+        "V0903_11_08_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "¡Invoco un monstruo por Xyz!"
+        },
+        "V0903_11_08_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "¡Invocación Xyz!"
+        },
+        "V0903_11_09_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "¡Invoco un monstruo por Péndulo!"
+        },
+        "V0903_11_09_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "¡Invocación por Péndulo!"
+        },
+        "V0903_11_10_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "¡Invoco un monstruo por Enlace!"
+        },
+        "V0903_11_10_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "¡Invocación por Enlace!"
+        },
+        "V0903_11_11_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "¡Invoco un monstruo de Modo Máximo!"
+        },
+        "V0903_11_11_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "¡Invocación Máxima!"
+        },
+        "V0903_11_12_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "¡Invoco un monstruo por Fusión!"
+        },
+        "V0903_11_12_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "¡Invocación por Fusión!"
+        },
+        "V0903_11_13_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "¡Fusiono por Contacto un monstruo!"
+        },
+        "V0903_11_13_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "¡Fusión de Contacto!"
+        },
+        "V0903_13_00_00_0": {
+            "card": [
+                17865
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Iníciate, Dragón del Estallido Blue-Colmillo!"
+        },
+        "V0903_13_00_01_0": {
+            "card": [
+                17946
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Arranca!\n¡Dragón de Potencia Red-Boot!"
+        },
+        "V0903_13_00_02_0": {
+            "card": [
+                18574
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Adelante, entra, Dragón de Hackeo!"
+        },
+        "V0903_13_00_03_0": {
+            "card": [
+                18300
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Actualízate a la última versión y mantente a la vanguardia!"
+        },
+        "V0903_13_00_03_1": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Güiverno de Actualizaciones!"
+        },
+        "V0903_13_00_04_0": {
+            "card": [
+                17947
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Activa tus núcleos para procesar paralelamente con potencia."
+        },
+        "V0903_13_00_04_1": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Dual Coratlus!"
+        },
+        "V0903_13_00_05_0": {
+            "card": [
+                17948
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Dragón Quemador Beta!"
+        },
+        "V0903_13_00_06_0": {
+            "card": [
+                17949
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Apligarto!"
+        },
+        "V0903_13_00_07_0": {
+            "card": [
+                17951
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Dragonsitio!"
+        },
+        "V0903_13_00_08_0": {
+            "card": [
+                17950
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Draco SSD!"
+        },
+        "V0903_13_00_09_0": {
+            "card": [
+                17952
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Draco Quemador Alfa!"
+        },
+        "V0903_13_00_11_0": {
+            "card": [
+                17505
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Rex de Tecnojuntas!"
+        },
+        "V0903_13_00_12_0": {
+            "card": [
+                19322
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Vamos!\n¡Dragón Explosión de Tecnojuntas!"
+        },
+        "V0903_13_00_13_0": {
+            "card": [
+                19320
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Luchador de Tecnojuntas!"
+        },
+        "V0903_13_00_14_0": {
+            "card": [
+                18965
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡!"
+        },
+        "V0903_13_00_15_0": {
+            "card": [
+                17937
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Tiraceratops de Tecnojuntas!"
+        },
+        "V0903_13_00_16_0": {
+            "card": [
+                19285
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Héroe de Tecnojuntas!"
+        },
+        "V0903_13_00_17_0": {
+            "card": [
+                18588
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Tinosaurio de Tecnojuntas!"
+        },
+        "V0903_13_00_18_0": {
+            "card": [
+                18373
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡!"
+        },
+        "V0903_13_00_19_0": {
+            "card": [
+                17588
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Muellelefante!"
+        },
+        "V0903_13_00_20_0": {
+            "card": [
+                17940
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Carpindra!"
+        },
+        "V0903_13_00_21_0": {
+            "card": [
+                17939
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Soldacorcho!"
+        },
+        "V0903_13_00_22_0": {
+            "card": [
+                17589
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡As de Tecnojuntas!"
+        },
+        "V0903_13_00_23_0": {
+            "card": [
+                18333
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Raptor de Tecnojuntas!"
+        },
+        "V0903_13_00_24_0": {
+            "card": [
+                18401
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡León de Tecnojuntas!"
+        },
+        "V0903_13_00_25_0": {
+            "card": [
+                17938
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Palangántula!"
+        },
+        "V0903_13_00_26_0": {
+            "card": [
+                17517
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Dron Aplastador!"
+        },
+        "V0903_13_00_27_0": {
+            "card": [
+                16686
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Dron Fabricador!"
+        },
+        "V0903_13_00_28_0": {
+            "card": [
+                17942
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Artesantrol!"
+        },
+        "V0903_13_00_29_0": {
+            "card": [
+                17591
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Cliptera!"
+        },
+        "V0903_13_00_30_0": {
+            "card": [
+                17941
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Tenedalcón!"
+        },
+        "V0903_13_00_31_0": {
+            "card": [
+                17943
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Erizo Clavo!"
+        },
+        "V0903_13_00_32_0": {
+            "card": [
+                17944
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Tornidillo!"
+        },
+        "V0903_13_00_33_0": {
+            "card": [
+                17593
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡He aquí un monstruo pequeño pero matón!"
+        },
+        "V0903_13_00_33_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Es la carta Tamabot!"
+        },
+        "V0903_13_00_34_0": {
+            "card": [
+                17593
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Tamabot!"
+        },
+        "V0903_13_00_35_0": {
+            "card": [
+                18579
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡!"
+        },
+        "V0903_14_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "¡Vamos a combatir!"
+        },
+        "V0903_14_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "¡A luchar!"
+        },
+        "V0903_15_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "¡Prepárate!"
+        },
+        "V0903_15_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "¡Toma esto!"
+        },
+        "V0903_15_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "Ji, ji. ♪"
+        },
+        "V0903_16_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "¡Voy a terminar este Duelo!"
+        },
+        "V0903_16_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "¡Tengo todo lo necesario para ganar!"
+        },
+        "V0903_17_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Mi monstruo ataca!"
+        },
+        "V0903_17_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Ataco con mi monstruo!"
+        },
+        "V0903_17_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Al ataque!"
+        },
+        "V0903_18_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Mi monstruo te ataca directamente!"
+        },
+        "V0903_18_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Te ataco directamente!"
+        },
+        "V0903_19_00_00_0": {
+            "card": [
+                17865
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Mega! ¡Giga! ¡Tera! ¡Peta!\n¡Transmite los datos de destrucción!"
+        },
+        "V0903_19_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Transmisión Relámpago!"
+        },
+        "V0903_19_00_01_0": {
+            "card": [
+                17865
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Dragón del Estallido Blue-Colmillo!\n¡Al ataque!"
+        },
+        "V0903_19_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Transmisión Relámpago!"
+        },
+        "V0903_19_00_02_0": {
+            "card": [
+                17946
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Dragón de Potencia Red-Boot!\n¡Al ataque!"
+        },
+        "V0903_19_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Gigallama Oscura!"
+        },
+        "V0903_19_00_03_0": {
+            "card": [
+                18574
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Ataca, Dragón de Hackeo!"
+        },
+        "V0903_19_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Ataque de ransomware!"
+        },
+        "V0903_19_00_04_0": {
+            "card": [
+                18300
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Güiverno de Actualizaciones!\n¡Al ataque!"
+        },
+        "V0903_19_00_05_0": {
+            "card": [
+                17947
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Dual Coratlus!\n¡Calcínalos!"
+        },
+        "V0903_19_00_06_0": {
+            "card": [
+                17948
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Dragón Quemador Beta!\n¡Al ataque!"
+        },
+        "V0903_19_00_07_0": {
+            "card": [
+                17949
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Ataca la carta Apligarto!"
+        },
+        "V0903_19_00_08_0": {
+            "card": [
+                17951
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Ataca, Dragonsitio!"
+        },
+        "V0903_19_00_09_0": {
+            "card": [
+                17950
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Draco SSD!\n¡Al ataque!"
+        },
+        "V0903_19_00_10_0": {
+            "card": [
+                17952
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Draco Quemador Alfa!\n¡Al ataque!"
+        },
+        "V0903_19_00_12_0": {
+            "card": [
+                17505
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Ataca, Rex de Tecnojuntas!"
+        },
+        "V0903_19_00_12_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Aplastamiento Craneal!"
+        },
+        "V0903_19_00_13_0": {
+            "card": [
+                19322
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Dragón Explosión de Tecnojuntas!\n¡Al ataque!"
+        },
+        "V0903_19_00_13_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Gigarrayo Aplastador!"
+        },
+        "V0903_19_00_14_0": {
+            "card": [
+                19320
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Luchador de Tecnojuntas!\n¡Al ataque!"
+        },
+        "V0903_19_00_15_0": {
+            "card": [
+                18965
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Ataca la carta !"
+        },
+        "V0903_19_00_15_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Corte Creciente!"
+        },
+        "V0903_19_00_16_0": {
+            "card": [
+                17937
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Ataca la carta Tiraceratops de Tecnojuntas!"
+        },
+        "V0903_19_00_16_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Aplastamiento de Trampas!"
+        },
+        "V0903_19_00_17_0": {
+            "card": [
+                19285
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Héroe de Tecnojuntas!\n¡Al ataque!"
+        },
+        "V0903_19_00_17_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Triunfo Triple!"
+        },
+        "V0903_19_00_18_0": {
+            "card": [
+                18588
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Tinosaurio de Tecnojuntas!\n¡Al ataque!"
+        },
+        "V0903_19_00_18_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Cohete Cuerno Turbo!"
+        },
+        "V0903_19_00_19_0": {
+            "card": [
+                18373
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Ataca la carta !"
+        },
+        "V0903_19_00_20_0": {
+            "card": [
+                17588
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Muellelefante! ¡Al ataque!"
+        },
+        "V0903_19_00_21_0": {
+            "card": [
+                17940
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Ataca, Carpindra!"
+        },
+        "V0903_19_00_22_0": {
+            "card": [
+                17939
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Ataca, Soldacorcho!"
+        },
+        "V0903_19_00_23_0": {
+            "card": [
+                17589
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡As de Tecnojuntas!\n¡Al ataque!"
+        },
+        "V0903_19_00_24_0": {
+            "card": [
+                18333
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Raptor de Tecnojuntas!\n¡Al ataque!"
+        },
+        "V0903_19_00_25_0": {
+            "card": [
+                18401
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡León de Tecnojuntas! ¡Salta!"
+        },
+        "V0903_19_00_26_0": {
+            "card": [
+                17938
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Ataca, Palangántula!"
+        },
+        "V0903_19_00_27_0": {
+            "card": [
+                17517
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Dron Aplastador! ¡Al ataque!"
+        },
+        "V0903_19_00_28_0": {
+            "card": [
+                16686
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Ataca, Dron Fabricador!"
+        },
+        "V0903_19_00_29_0": {
+            "card": [
+                17942
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Ataca la carta Artesantrol!"
+        },
+        "V0903_19_00_30_0": {
+            "card": [
+                17591
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Ataca, Cliptera!"
+        },
+        "V0903_19_00_31_0": {
+            "card": [
+                17941
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Cae con toda tu furia, Tenedalcón!"
+        },
+        "V0903_19_00_32_0": {
+            "card": [
+                17943
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Erizo Clavo!\n¡Al ataque!"
+        },
+        "V0903_19_00_33_0": {
+            "card": [
+                17944
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Ataca, Tornidillo!"
+        },
+        "V0903_19_00_34_0": {
+            "card": [
+                17593
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡A por ellos, Tamabot!"
+        },
+        "V0903_19_00_35_0": {
+            "card": [
+                18579
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡!\n¡Al ataque!"
+        },
+        "V0903_20_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "¡Coloco una carta!"
+        },
+        "V0903_20_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "¡Colocaré una carta!"
+        },
+        "V0903_20_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "¡Coloco un monstruo!"
+        },
+        "V0903_20_01_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "¡Voy a Colocar un monstruo!"
+        },
+        "V0903_21_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Seguro que no esperabas que te pusiera contra las cuerdas."
+        },
+        "V0903_21_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "¡Acabo mi turno!"
+        },
+        "V0903_21_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Tienes suerte de no haber perdido aún."
+        },
+        "V0903_21_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "¡Acabo mi turno!"
+        },
+        "V0903_21_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "¡Voy a terminar mi turno!"
+        },
+        "V0903_21_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "¡Termino mi turno!"
+        },
+        "V0903_21_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Aún no tengo las cartas ideales para ganar..."
+        },
+        "V0903_21_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "¡Acabo mi turno!"
+        },
+        "V0903_21_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Aún no has hecho nada que me sorprenda."
+        },
+        "V0903_21_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "¡Acabo mi turno!"
+        },
+        "V0903_22_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 1,
+            "text": "¡Aah!"
+        },
+        "V0903_22_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 1,
+            "text": "¡Aaah!"
+        },
+        "V0903_22_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 1,
+            "text": "¡Agh!"
+        },
+        "V0903_23_00_00_0": {
+            "card": [],
+            "cutin": 3,
+            "duelist": [],
+            "face": 7,
+            "frame": 1,
+            "text": "¡Aaaaahhh!"
+        },
+        "V0903_25_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 1,
+            "text": "¡Aaahhh!"
+        },
+        "V0903_25_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 1,
+            "text": "¡Cómooo!"
+        },
+        "V0903_25_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 1,
+            "text": "¡Aaaaah!"
+        },
+        "V0903_26_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "¡Ya me las pagarás, ya!"
+        },
+        "V0903_26_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "¡Esto aún no ha acabado!"
+        },
+        "V0903_26_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "¡Muy buena jugada!"
+        },
+        "V0903_27_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Ay, no..."
+        },
+        "V0903_27_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Tiene que ser una broma..."
+        },
+        "V0903_27_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Tengo que hacer algo... Lo que sea..."
+        },
+        "V0903_28_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Si necesitas algo, ¡no dudes en llamar a UTS!"
+        },
+        "V0903_28_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 0,
+            "text": "¡Mi Deck Dragón Supertecnológico usa estrategias punteras!"
+        },
+        "V0903_28_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "¡Otro trabajo terminado!"
+        },
+        "V0903_28_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 0,
+            "text": "Nunca sabes qué pasará en un Rush Duel.\n¡Me encanta!"
+        },
+        "V0903_28_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 0,
+            "text": "¡Lucha como quieras!\n¡Por eso los Rush Duels son tan divertidos!"
+        },
+        "V0903_28_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 0,
+            "text": "Mi estrategia era pasármelo bien y ya.\n¡Y así fue!"
+        },
+        "V0903_28_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 0,
+            "text": "El universo es impredecible, debo estar preparada para todo."
+        },
+        "V0903_28_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                901
+            ],
+            "face": 9,
+            "frame": 0,
+            "text": "¡Yudias, tienes que estudiar más!"
+        },
+        "V0903_28_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                902
+            ],
+            "face": 2,
+            "frame": 0,
+            "text": "La Tierradama no puede ayudarte si no tienes habilidad."
+        },
+        "V0903_28_00_09_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                902
+            ],
+            "face": 8,
+            "frame": 0,
+            "text": "A Yuhi nunca se le ha dado bien el juego psicológico."
+        },
+        "V0903_28_00_10_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                99999
+            ],
+            "face": 2,
+            "frame": 0,
+            "text": "¿Recuerdas cuando practicábamos tus frases de niños?"
+        },
+        "V0903_28_00_11_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                99999
+            ],
+            "face": 6,
+            "frame": 0,
+            "text": "¡Recuerdo ese diálogo!\n¡Es del papel que te propulsó al estrellato!"
+        },
+        "V0903_28_00_12_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                99999
+            ],
+            "face": 3,
+            "frame": 0,
+            "text": "¡Nadie en el universo ama un regalo más que yo!"
+        },
+        "V0903_28_00_12_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Así que créeme: ¡esa promoción tuya es una farsa!"
+        },
+        "V0903_29_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Ains...\nNada ha salido como quería."
+        },
+        "V0903_29_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "¡Sabías lo que iba a hacer en cada jugada!"
+        },
+        "V0903_29_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "¡Tus estrategias son increíbles!"
+        },
+        "V0903_29_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Lo he dado todo, pero aun así he perdido."
+        },
+        "V0903_29_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Ains...\nTu Deck contrarresta el mío."
+        },
+        "V0903_29_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                901
+            ],
+            "face": 9,
+            "frame": 0,
+            "text": "¿Fuiste tú quien creó ese Deck, Yudias?\n¡Mola mazo!"
+        },
+        "V0903_29_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                902
+            ],
+            "face": 9,
+            "frame": 0,
+            "text": "Por fin has descubierto cómo funciona ese Deck, Yuhi."
+        },
+        "V0903_29_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                99999
+            ],
+            "face": 9,
+            "frame": 0,
+            "text": "¡Eres la mejor actriz del universo, Immi!"
+        },
+        "V0903_29_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                99999
+            ],
+            "face": 5,
+            "frame": 0,
+            "text": "No sabía ni por dónde me soplaba el viento..."
+        },
+        "V0903_29_00_09_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                99999
+            ],
+            "face": 5,
+            "frame": 0,
+            "text": "¡Pero necesito esa placa!"
+        },
+        "V0903_30_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Alto. Me toca a mí."
+        },
+        "V0903_30_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ese ATK no me preocupa en absoluto."
+        },
+        "V0903_30_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 0,
+            "text": "Sé que las reglas lo permiten, pero..."
+        },
+        "V0903_31_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "¡¿Estás de broma?!"
+        },
+        "V0903_31_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "¡¿En serio?!"
+        },
+        "V0903_32_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Yu-Gi-Oh! Duel Links."
+        },
+        "V0903_32_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "¡Yu-Gi-Oh! Duel Links!"
+        },
+        "V0903_33_00_00_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "¡No puedo divertirme si no pongo toda la carne en el asador!"
+        },
+        "V0903_33_00_01_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "¡Iré a por todas desde el comienzo!"
+        },
+        "V0903_33_00_02_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "¡UTS!"
+        },
+        "V0903_34_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "¡No tienes ni pajolera idea de cómo funciona esa carta!"
+        },
+        "V0903_34_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "Será difícil atravesar esa defensa de monstruos."
+        },
+        "V0903_34_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "¡¿Ya está?!"
+        },
+        "V0903_34_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Qué mal pinta..."
+        },
+        "V0903_34_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Coleccionar no es un pasatiempo.\n¡Es un estilo de vida!"
+        },
+        "V0903_34_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Amo encontrar ese último objeto para completar la colección."
+        },
+        "V0903_34_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "¡No impedirás que la reina consiga lo que quiere!"
+        },
+        "V0903_34_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Cada decisión tuya me da una pista de tu siguiente jugada."
+        },
+        "V0903_34_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "¡Inicio el protocolo de código secreto de UTS! ¡Obmoc ed ourtsnom ocigám ed UTS!"
+        },
+        "V0903_34_00_09_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "Quizá pienses que ya conoces mi Deck, ¡pero lo he cambiado!"
+        },
+        "V0903_34_00_10_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 0,
+            "text": "¡Ji, ji! ¡Esto me viene como anillo al dedo!"
+        },
+        "V0903_34_00_11_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 0,
+            "text": "¡UTS!"
+        },
+        "V0903_34_00_12_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Hay trillones de alienígenas, pero el destino nos ha unido."
+        },
+        "V0903_34_00_13_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 6,
+            "frame": 0,
+            "text": "Pim, pim... ¡Ja, ja, ja!"
+        },
+        "V0903_35_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "¡Soy Yuamu Ohdo, presidenta de UTS!"
+        },
+        "V0903_35_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "¡Yuamu Ohdo de UTS, el escuadrón de búsqueda extraterrestre!"
+        },
+        "V0903_36_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 0,
+            "text": "¡No aflojes la presión!"
+        },
+        "V0903_36_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 0,
+            "text": "¡Es hora de acabar este Duelo!"
+        },
+        "V0903_36_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "¡Es tu turno!"
+        },
+        "V0903_36_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "¡Este Duelo está en buenas manos!"
+        },
+        "V0903_36_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Agh... ¡Perdón!"
+        },
+        "V0903_36_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 10,
+            "frame": 0,
+            "text": "Estamos en las últimas."
+        },
+        "V0903_36_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                901
+            ],
+            "face": 9,
+            "frame": 0,
+            "text": "¡Cuento contigo, Yudias!"
+        },
+        "V0903_36_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                902
+            ],
+            "face": 9,
+            "frame": 0,
+            "text": "Bien, Yuhi.\n¡Muéstrame algo espectacular!"
+        },
+        "V0903_36_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                902
+            ],
+            "face": 10,
+            "frame": 0,
+            "text": "No hay nada que temer, Yuhi."
+        },
+        "V0903_36_00_09_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                99999
+            ],
+            "face": 9,
+            "frame": 0,
+            "text": "¡Esto depende de ti, Immi!"
+        },
+        "V0903_37_00_00_0": {
+            "card": [
+                17865
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Los datos inundan inalámbricamente un mar de electrones!"
+        },
+        "V0903_37_00_01_0": {
+            "card": [
+                17946
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Dales energía a tus procesadores y cruza la red a todo gas!"
+        },
+        "V0903_37_00_02_0": {
+            "card": [
+                18574
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Procesa el programa y descifra los códigos!"
+        },
+        "V0903_37_00_04_0": {
+            "card": [
+                17505
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Únete con pasión!\n¡Únete con coraje!\n¡Únete con poder infinito!"
+        },
+        "V0903_37_00_05_0": {
+            "card": [
+                19322
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Ruge como nunca ante un mar de electrones!"
+        },
+        "V0903_37_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Invocación por Fusión!"
+        },
+        "V0903_37_00_06_0": {
+            "card": [
+                19320
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Únete con el valor para enfrentarte al combate!"
+        },
+        "V0903_37_00_06_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Invocación por Fusión!"
+        },
+        "V0903_37_00_07_0": {
+            "card": [
+                18965
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Aunque sea pequeño, ¡se combina con los más fuertes!"
+        },
+        "V0903_37_00_07_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Invocación por Fusión!"
+        },
+        "V0903_37_00_08_0": {
+            "card": [
+                17937
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Únete con fuerza y furia!\n¡Únete con un poder imparable!"
+        },
+        "V0903_37_00_09_0": {
+            "card": [
+                19285
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Únete con fervor y vigor!\n¡Únete a las herramientas de una victoria heroica!"
+        },
+        "V0903_37_00_10_0": {
+            "card": [
+                18588
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Únete con un poder infinito para aplastar a los rivales!"
+        },
+        "V0903_37_00_11_0": {
+            "card": [
+                18373
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡La paciencia perfecta otorga el poder para arrasar!"
+        },
+        "V0903_37_00_12_0": {
+            "card": [
+                18579
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Aunque sea pequeño, puede controlar lo más grande!"
+        },
+        "V0903_37_00_12_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "¡Invocación por Fusión!"
+        },
+        "V0903_40_00_00_0": {
+            "card": [
+                17937
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 1,
+            "text": "¡Genial! ¡Ha salido cara!"
+        },
+        "V0903_40_00_01_0": {
+            "card": [
+                17937
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 10,
+            "frame": 1,
+            "text": "Vaya, ha salido cruz.\n¡Esta carta cambia a Posición de Defensa!"
+        },
+        "V0903_51_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "¡Yuamu Ohdo!"
+        },
+        "V0903_51_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "¡Que empiece el Rush!"
+        }
+    }
+}

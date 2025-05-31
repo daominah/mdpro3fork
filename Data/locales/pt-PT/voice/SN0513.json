@@ -1,0 +1,3173 @@
+{
+    "_GRP_": "SN0513",
+    "_LNG_": "pt-BR",
+    "info": {
+        "V0513_01_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Boas-vindas ao meu maravilhoso mundo de Dueltaining!"
+        },
+        "V0513_01_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Aproveite o show!"
+        },
+        "V0513_01_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Um Dueltainer nunca recusa um Duelo!"
+        },
+        "V0513_01_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Prepare-se para uma performance que você nunca viu antes!"
+        },
+        "V0513_01_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Uma exibição de Dueltaining de proporções dinâmicas!"
+        },
+        "V0513_01_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu adoro me divertir, mas também adoro vencer!"
+        },
+        "V0513_01_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Vamos fazer deste um Duelo de que nós dois vamos gostar!"
+        },
+        "V0513_01_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Antes do fim do Duelo, a multidão estará gritando meu nome!"
+        },
+        "V0513_01_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                501
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Ninguém emociona uma multidão como dois Dueltainers ousados!"
+        },
+        "V0513_01_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                502
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Quero só ver o que a Escola de Duelo Seu Show lhe ensinou!"
+        },
+        "V0513_01_00_09_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                514
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Você finalmente chegou, Yuri.\nVamos começar!"
+        },
+        "V0513_02_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "Duelo!"
+        },
+        "V0513_03_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "Está pronto para o evento principal?!"
+        },
+        "V0513_03_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "É o meu turno!"
+        },
+        "V0513_03_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "Este Duelo precisa de mais uma pitada de ousadia!"
+        },
+        "V0513_03_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "Meu turno!"
+        },
+        "V0513_03_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "O show está só começando!"
+        },
+        "V0513_03_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "É o meu turno!"
+        },
+        "V0513_03_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Aí vou eu!"
+        },
+        "V0513_03_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Meu turno!"
+        },
+        "V0513_03_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Não se preocupe!\nAinda tenho muito show pela frente!"
+        },
+        "V0513_03_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "É o meu turno!"
+        },
+        "V0513_03_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "A ameaça do perigo e da derrota é o que cria o drama!"
+        },
+        "V0513_03_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Meu turno!"
+        },
+        "V0513_04_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "Compro!"
+        },
+        "V0513_04_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Compro!"
+        },
+        "V0513_04_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Compro!"
+        },
+        "V0513_05_00_00_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 7,
+            "frame": 1,
+            "text": "Se você pagou pelo ingresso, merece ver um show!"
+        },
+        "V0513_05_00_00_1": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu comprooo!"
+        },
+        "V0513_06_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Agora é minha chance!"
+        },
+        "V0513_06_01_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 10,
+            "frame": 1,
+            "text": "Sabia que você ia tentar isso.\nEntretanto!"
+        },
+        "V0513_06_01_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 10,
+            "frame": 1,
+            "text": "Normalmente essa é uma boa jogada."
+        },
+        "V0513_06_01_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ah, não!!!\n...Brincadeirinha."
+        },
+        "V0513_07_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Da minha mão..."
+        },
+        "V0513_07_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ativo meu Card de Magia!"
+        },
+        "V0513_07_02_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ativo minha Magia Rápida!"
+        },
+        "V0513_07_03_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ativo minha Magia Contínua!"
+        },
+        "V0513_07_04_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ativo minha Magia de Equipamento!"
+        },
+        "V0513_07_05_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ativo minha Magia de Ritual!"
+        },
+        "V0513_07_06_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ativo minha Armadilha!"
+        },
+        "V0513_07_07_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ativo minha Armadilha Contínua!"
+        },
+        "V0513_07_08_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ativo minha Armadilha de Resposta!"
+        },
+        "V0513_07_09_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Viro meu card Baixado!"
+        },
+        "V0513_07_09_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Aqui está o card que Baixei!"
+        },
+        "V0513_07_10_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ativo o efeito do meu monstro!"
+        },
+        "V0513_07_11_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ativo minha Magia de Campo!"
+        },
+        "V0513_07_12_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ativo um efeito!"
+        },
+        "V0513_07_13_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Baixo a Escala de Pêndulo!"
+        },
+        "V0513_07_14_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ativo um Efeito de Pêndulo!"
+        },
+        "V0513_08_00_00_0": {
+            "card": [
+                11842
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 10,
+            "frame": 1,
+            "text": "Não há nada mais divertido que se efervescer!"
+        },
+        "V0513_08_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "Ativo a Magia Contínua Barreira de Bolhas!"
+        },
+        "V0513_08_00_01_0": {
+            "card": [
+                11855
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 10,
+            "frame": 1,
+            "text": "Tenho um truque legal para te mostrar!\nUm... dois... três!"
+        },
+        "V0513_08_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "Ativo o Card de Armadilha, Caixa de Truques!"
+        },
+        "V0513_08_00_02_0": {
+            "card": [
+                10074
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "Um! Dois! Três!\nPresto!"
+        },
+        "V0513_08_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 10,
+            "frame": 1,
+            "text": "Magia de equipamento, Varinha Atada!"
+        },
+        "V0513_08_00_03_0": {
+            "card": [
+                10074
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "Varinha Atada é ativado quando é enviado ao Cemitério!"
+        },
+        "V0513_08_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "Um... dois... três!"
+        },
+        "V0513_08_00_04_0": {
+            "card": [
+                10273
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 10,
+            "frame": 1,
+            "text": "Quero ver você fazer malabarismo com isso!\nMagia de equipamento, Varinha Descartável!"
+        },
+        "V0513_08_00_05_0": {
+            "card": [
+                10273
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "Ativo o efeito de Varinha Descartável!"
+        },
+        "V0513_08_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "Um... dois... três!"
+        },
+        "V0513_08_00_06_0": {
+            "card": [
+                9662
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "Preparado para um mundo de maravilhas?\nMagia de equipamento, Varinha das Maravilhas!"
+        },
+        "V0513_08_00_07_0": {
+            "card": [
+                9662
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "É hora do show!\nAtivo o efeito de Varinha das Maravilhas!"
+        },
+        "V0513_08_00_07_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "Um... dois... três!"
+        },
+        "V0513_08_00_08_0": {
+            "card": [
+                5688
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 10,
+            "frame": 1,
+            "text": "Este card vai permitir que eu coma por uma semana!"
+        },
+        "V0513_08_00_08_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "O Card de Magia Escavação da Pedra Mágica!"
+        },
+        "V0513_08_00_09_0": {
+            "card": [
+                4804
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 10,
+            "frame": 1,
+            "text": "Este card é poderoso nas mãos certas, como as minhas!"
+        },
+        "V0513_08_00_09_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "A Armadilha de Resposta, Negativação de Ataque!"
+        },
+        "V0513_08_00_10_0": {
+            "card": [
+                4837
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "É isso que você veio ver?"
+        },
+        "V0513_08_00_10_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Meu Card de Magia, Polimerização!"
+        },
+        "V0513_08_00_11_0": {
+            "card": [
+                4837
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ativo o Card de Magia Polimerização!"
+        },
+        "V0513_08_00_12_0": {
+            "card": [
+                12679
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ativo meu Card de Magia!\nCatapulta do Mecanismo Antigo!"
+        },
+        "V0513_08_00_13_0": {
+            "card": [
+                12679
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ativo o efeito de Catapulta do Mecanismo Antigo do meu Cemitério!"
+        },
+        "V0513_08_00_14_0": {
+            "card": [
+                6935
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ativo meu Card de Magia!\nOficina do Mecanismo Antigo!"
+        },
+        "V0513_08_00_15_0": {
+            "card": [
+                6574
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ativo meu Card de Magia!\nBroca do Mecanismo Antigo!"
+        },
+        "V0513_08_00_16_0": {
+            "card": [
+                6573
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ativo meu Card de Magia, Fábrica do Mecanismo Antigo!"
+        },
+        "V0513_08_00_17_0": {
+            "card": [
+                13482
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ativo o Card de Magia Fusão do Mecanismo Antigo!"
+        },
+        "V0513_08_00_18_0": {
+            "card": [
+                6843
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ativo meu Card de Magia!\nExplosivo do Mecanismo Antigo!"
+        },
+        "V0513_08_00_19_0": {
+            "card": [
+                19896
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ativo minha Magia Contínua!\nAvanço do Mecanismo Antigo!"
+        },
+        "V0513_08_00_20_0": {
+            "card": [
+                19896
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ativo o efeito de Avanço do Mecanismo Antigo!"
+        },
+        "V0513_08_00_21_0": {
+            "card": [
+                6578
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ativo minha Magia Contínua!\nCastelo do Mecanismo Antigo!"
+        },
+        "V0513_08_00_22_0": {
+            "card": [
+                12680
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ativo a Magia Contínua Fortaleza do Mecanismo Antigo!"
+        },
+        "V0513_08_00_23_0": {
+            "card": [
+                12680
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Se Fortaleza do Mecanismo Antigo for destruído, posso usar seu efeito!"
+        },
+        "V0513_08_00_24_0": {
+            "card": [
+                6842
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ativo minha Magia de Equipamento!\nTanque do Mecanismo Antigo!"
+        },
+        "V0513_08_00_25_0": {
+            "card": [
+                6842
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Tanque do Mecanismo Antigo é ativado quando ele é destruído!"
+        },
+        "V0513_08_00_26_0": {
+            "card": [
+                6844
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ativo a Magia de Equipamento Punho do Mecanismo Antigo!"
+        },
+        "V0513_08_00_27_0": {
+            "card": [
+                6844
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Punho do Mecanismo Antigo é ativado!"
+        },
+        "V0513_08_00_28_0": {
+            "card": [
+                12805
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ativo minha Armadilha Contínua!\nRenascimento do Mecanismo Antigo!"
+        },
+        "V0513_08_00_29_0": {
+            "card": [
+                12805
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Renascimento do Mecanismo Antigo é ativado!"
+        },
+        "V0513_08_00_30_0": {
+            "card": [
+                7683
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ativo a Magia de Campo Vila Mecânica!"
+        },
+        "V0513_08_00_31_0": {
+            "card": [
+                7683
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Quando Vila Mecânica é destruído, seu efeito é ativado!"
+        },
+        "V0513_08_00_32_0": {
+            "card": [
+                7622
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ativo meu Card de Magia!\nMecanismo de Magia!"
+        },
+        "V0513_08_00_33_0": {
+            "card": [
+                11959
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "Ativo o Efeito de Pêndulo de Camaramágico Espelho Condutor!"
+        },
+        "V0513_08_00_34_0": {
+            "card": [
+                11960
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "Efeito de Pêndulo de Camaramágico Plushfogo ativado!"
+        },
+        "V0513_09_00_00_0": {
+            "card": [
+                11837
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "Uso 1 Unidade de Sobreposição para ativar o efeito de Camaramágico Mago Trapezista!"
+        },
+        "V0513_09_00_01_0": {
+            "card": [
+                11837
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "Camaramágico Mago Trapezista usa 1 Unidade de Sobreposição para ativar seu efeito!"
+        },
+        "V0513_09_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "Desfrute de um show duas vezes melhor!"
+        },
+        "V0513_09_00_02_0": {
+            "card": [
+                11837
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "O efeito de Camaramágico Mago Trapezista é ativado quando ele é destruído!"
+        },
+        "V0513_09_00_03_0": {
+            "card": [
+                11803
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "Faço o banimento de Camaramágico Lançador Perna de Pau do Cemitério!"
+        },
+        "V0513_09_00_04_0": {
+            "card": [
+                11799
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "Ativo o efeito de Camaramágico Malabarista Danoso da minha mão!"
+        },
+        "V0513_09_00_05_0": {
+            "card": [
+                11799
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "Faço o banimento de Camaramágico Malabarista Danoso do Cemitério para usar seu efeito!"
+        },
+        "V0513_09_00_06_0": {
+            "card": [
+                11802
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "Camaramágico Palhaço Ardiloso é ativado quando é enviado ao Cemitério!"
+        },
+        "V0513_09_00_07_0": {
+            "card": [
+                11801
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "O efeito de Camaramágico Engana Chapéu é ativado!"
+        },
+        "V0513_09_00_08_0": {
+            "card": [
+                11800
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "Ativo o efeito de Camaramágico Come Chamas da minha mão!"
+        },
+        "V0513_09_00_09_0": {
+            "card": [
+                11800
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "O efeito de Camaramágico Come Chamas é ativado quando ele é Invocado!"
+        },
+        "V0513_09_00_10_0": {
+            "card": [
+                11959
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "Camaramágico Espelho Condutor ativa seu efeito!"
+        },
+        "V0513_09_00_11_0": {
+            "card": [
+                11960
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "O efeito de Camaramágico Plushfogo é ativado quando ele é destruído!"
+        },
+        "V0513_09_00_12_0": {
+            "card": [
+                7616
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Golem do Mecanismo Antigo Definitivo é ativado quando é destruído!"
+        },
+        "V0513_09_00_13_0": {
+            "card": [
+                13481
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ativo o efeito de Golem Megaton do Mecanismo Antigo!"
+        },
+        "V0513_09_00_14_0": {
+            "card": [
+                12777
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Howitzer do Mecanismo Antigo ativa seu efeito!"
+        },
+        "V0513_09_00_15_0": {
+            "card": [
+                12777
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Howitzer do Mecanismo Antigo é ativado quando é destruído em batalha!"
+        },
+        "V0513_09_00_16_0": {
+            "card": [
+                12676
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Dragão Reator do Mecanismo Antigo é ativado!"
+        },
+        "V0513_09_00_17_0": {
+            "card": [
+                19847
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Golem Sombrio do Mecanismo Antigo é ativado!"
+        },
+        "V0513_09_00_18_0": {
+            "card": [
+                12997
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ativo o efeito de Golem do Mecanismo Antigo - Murro Definitivo!"
+        },
+        "V0513_09_00_19_0": {
+            "card": [
+                12997
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Golem do Mecanismo Antigo - Murro Definitivo é ativado quando ele é destruído!"
+        },
+        "V0513_09_00_20_0": {
+            "card": [
+                6932
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Dragão Gadjiltron do Mecanismo Antigo é ativado!"
+        },
+        "V0513_09_00_21_0": {
+            "card": [
+                12677
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Hidra do Mecanismo Antigo é ativado!"
+        },
+        "V0513_09_00_22_0": {
+            "card": [
+                6933
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Quimera Gadjiltron do Mecanismo Antigo é ativado!"
+        },
+        "V0513_09_00_23_0": {
+            "card": [
+                6841
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Engenheiro do Mecanismo Antigo é ativado!"
+        },
+        "V0513_09_00_24_0": {
+            "card": [
+                12678
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Wivern do Mecanismo Antigo é ativado!"
+        },
+        "V0513_09_00_25_0": {
+            "card": [
+                11061
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Caixa de Mecanismo Antigo ativa seu efeito!"
+        },
+        "V0513_09_00_26_0": {
+            "card": [
+                13480
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ativo o efeito de Estrutura do Mecanismo Antigo!"
+        },
+        "V0513_09_00_27_0": {
+            "card": [
+                19848
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Tanqueiro do Mecanismo Antigo ativa seu efeito!"
+        },
+        "V0513_09_00_28_0": {
+            "card": [
+                19849
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ativo o efeito de Comandante do Mecanismo Antigo!"
+        },
+        "V0513_09_00_29_0": {
+            "card": [
+                19849
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Faço o banimento de Comandante do Mecanismo Antigo do meu Cemitério!"
+        },
+        "V0513_09_00_30_0": {
+            "card": [
+                12675
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ativo o efeito de Dispositivo do Mecanismo Antigo!"
+        },
+        "V0513_09_00_31_0": {
+            "card": [
+                12748
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Cão de Caça do Mecanismo Antigo é ativado quando ele é Invocado!"
+        },
+        "V0513_09_00_31_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Canhão Canino!"
+        },
+        "V0513_09_00_32_0": {
+            "card": [
+                12748
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito do meu Cão de Caça do Mecanismo Antigo permite que eu faça a Invocação-Fusão!"
+        },
+        "V0513_09_00_33_0": {
+            "card": [
+                6587
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ativo o efeito de Canhão do Mecanismo Antigo!"
+        },
+        "V0513_09_00_34_0": {
+            "card": [
+                14933
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Balista do Mecanismo Antigo é ativado quando o card é Invocado por Link!"
+        },
+        "V0513_09_00_35_0": {
+            "card": [
+                14933
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Balista do Mecanismo Antigo ativa seu efeito!"
+        },
+        "V0513_09_00_36_0": {
+            "card": [
+                11715
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Diva Florescente, a Coral Melodiosa!\nCante uma melodia!"
+        },
+        "V0513_09_00_36_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "Refrão destruidor!"
+        },
+        "V0513_10_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Vamos!"
+        },
+        "V0513_10_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Apareça!"
+        },
+        "V0513_10_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Fique de olho no palco!"
+        },
+        "V0513_10_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Você vai adorar isto!"
+        },
+        "V0513_11_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Invoco um monstro!"
+        },
+        "V0513_11_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Invoco um monstro em Posição de Defesa!"
+        },
+        "V0513_11_02_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Faço a Invocação-Especial de um monstro!"
+        },
+        "V0513_11_03_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ofereço um monstro como Tributo!"
+        },
+        "V0513_11_04_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Faço a Invocação-Tributo de um monstro!"
+        },
+        "V0513_11_04_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Invocação-Tributo!"
+        },
+        "V0513_11_05_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Faço a Invocação-Fusão de um monstro!"
+        },
+        "V0513_11_05_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Invocação-Fusão!"
+        },
+        "V0513_11_06_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Faço a Invocação-Ritual de um monstro!"
+        },
+        "V0513_11_06_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Invocação-Ritual!"
+        },
+        "V0513_11_07_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Faço a Invocação-Sincro de um monstro!"
+        },
+        "V0513_11_07_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Invocação-Sincro!"
+        },
+        "V0513_11_08_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Faço a Invocação-Xyz de um monstro!"
+        },
+        "V0513_11_08_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu construirei a Rede de Sobreposição!\nInvocação-Xyz!"
+        },
+        "V0513_11_09_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Faço a Invocação-Pêndulo de um monstro!"
+        },
+        "V0513_11_09_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Invocação-Pêndulo!"
+        },
+        "V0513_11_09_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Chegou a hora de meus monstros brilharem sob o holofote!"
+        },
+        "V0513_11_10_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Faço a Invocação-Link de um monstro!"
+        },
+        "V0513_11_10_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Invocação-Link!"
+        },
+        "V0513_11_11_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Faço a Invocação Maximum de um monstro!"
+        },
+        "V0513_11_11_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Invocação Maximum!"
+        },
+        "V0513_11_12_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Faço a Invocação-Fusão de um monstro!"
+        },
+        "V0513_11_12_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Invocação-Fusão!"
+        },
+        "V0513_13_00_00_0": {
+            "card": [
+                11837
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "Aqui vai Camaramágico Mago Trapezista de Classificação 4!"
+        },
+        "V0513_13_00_01_0": {
+            "card": [
+                11837
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "Aqui vai Camaramágico Mago Trapezista de Classificação 4!"
+        },
+        "V0513_13_00_02_0": {
+            "card": [
+                11803
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "Camaramágico Lançador Perna de Pau!"
+        },
+        "V0513_13_00_03_0": {
+            "card": [
+                11799
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "Camaramágico Malabarista Danoso!"
+        },
+        "V0513_13_00_04_0": {
+            "card": [
+                11802
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "Camaramágico Palhaço Ardiloso!"
+        },
+        "V0513_13_00_05_0": {
+            "card": [
+                11801
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "Camaramágico Engana Chapéu!"
+        },
+        "V0513_13_00_06_0": {
+            "card": [
+                11800
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "Camaramágico Come Chamas!"
+        },
+        "V0513_13_00_07_0": {
+            "card": [
+                11959
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "O Monstro Pêndulo, Camaramágico Espelho Condutor!"
+        },
+        "V0513_13_00_08_0": {
+            "card": [
+                11960
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "O Monstro Pêndulo, Camaramágico Plushfogo!"
+        },
+        "V0513_13_00_09_0": {
+            "card": [
+                12776
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O tremendo Gigante do Mecanismo Antigo do Caos!"
+        },
+        "V0513_13_00_10_0": {
+            "card": [
+                7616
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Golem do Mecanismo Antigo Definitivo!"
+        },
+        "V0513_13_00_11_0": {
+            "card": [
+                13481
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Aqui está o Golem Megaton do Mecanismo Antigo de nível 9!"
+        },
+        "V0513_13_00_12_0": {
+            "card": [
+                12777
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Howitzer do Mecanismo Antigo!"
+        },
+        "V0513_13_00_13_0": {
+            "card": [
+                12676
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Dragão Reator do Mecanismo Antigo!"
+        },
+        "V0513_13_00_14_0": {
+            "card": [
+                19847
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Golem Sombrio do Mecanismo Antigo!"
+        },
+        "V0513_13_00_15_0": {
+            "card": [
+                6315
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Golem do Mecanismo Antigo!"
+        },
+        "V0513_13_00_16_0": {
+            "card": [
+                12997
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Golem do Mecanismo Antigo - Murro Definitivo!"
+        },
+        "V0513_13_00_17_0": {
+            "card": [
+                6932
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Dragão Gadjiltron do Mecanismo Antigo!"
+        },
+        "V0513_13_00_18_0": {
+            "card": [
+                12677
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Hidra do Mecanismo Antigo!"
+        },
+        "V0513_13_00_19_0": {
+            "card": [
+                6316
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Besta do Mecanismo Antigo!"
+        },
+        "V0513_13_00_20_0": {
+            "card": [
+                6933
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Quimera Gadjiltron do Mecanismo Antigo!"
+        },
+        "V0513_13_00_21_0": {
+            "card": [
+                6841
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Engenheiro do Mecanismo Antigo!"
+        },
+        "V0513_13_00_22_0": {
+            "card": [
+                12678
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Wivern do Mecanismo Antigo!"
+        },
+        "V0513_13_00_23_0": {
+            "card": [
+                11061
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Caixa de Mecanismo Antigo!"
+        },
+        "V0513_13_00_24_0": {
+            "card": [
+                13480
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Estrutura do Mecanismo Antigo!"
+        },
+        "V0513_13_00_25_0": {
+            "card": [
+                7294
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Cavaleiro do Mecanismo Antigo!"
+        },
+        "V0513_13_00_26_0": {
+            "card": [
+                19848
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Tanqueiro do Mecanismo Antigo!"
+        },
+        "V0513_13_00_27_0": {
+            "card": [
+                6317
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Soldado do Mecanismo Antigo!"
+        },
+        "V0513_13_00_28_0": {
+            "card": [
+                19849
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Comandante do Mecanismo Antigo!"
+        },
+        "V0513_13_00_29_0": {
+            "card": [
+                12675
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Dispositivo do Mecanismo Antigo!"
+        },
+        "V0513_13_00_30_0": {
+            "card": [
+                12748
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Cão de Caça do Mecanismo Antigo!"
+        },
+        "V0513_13_00_31_0": {
+            "card": [
+                6587
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Canhão do Mecanismo Antigo!"
+        },
+        "V0513_13_00_32_0": {
+            "card": [
+                6570
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Mecanismo Antigo!"
+        },
+        "V0513_13_00_33_0": {
+            "card": [
+                14933
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Apresentando Balista do Mecanismo Antigo de Link 2!"
+        },
+        "V0513_13_00_34_0": {
+            "card": [
+                11715
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "Sintonize no palco central!"
+        },
+        "V0513_13_00_34_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "Diva Florescente, a Coral Melodiosa!"
+        },
+        "V0513_13_00_35_0": {
+            "card": [
+                3999
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Faço a Invocação-Especial de Ficha de Mecanismo Antigo!"
+        },
+        "V0513_14_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Batalhar!"
+        },
+        "V0513_14_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Vamos batalhar!"
+        },
+        "V0513_15_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Agora!"
+        },
+        "V0513_15_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Aí vai!"
+        },
+        "V0513_15_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Pega!"
+        },
+        "V0513_16_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 10,
+            "frame": 1,
+            "text": "O grande final será fabuloso!"
+        },
+        "V0513_16_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 10,
+            "frame": 1,
+            "text": "Vou terminar este Duelo com muito estilo!"
+        },
+        "V0513_17_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Meu monstro ataca!"
+        },
+        "V0513_17_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ataco com meu monstro!"
+        },
+        "V0513_17_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Atacar!"
+        },
+        "V0513_18_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Meu monstro ataca você diretamente!"
+        },
+        "V0513_18_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ataco você diretamente!"
+        },
+        "V0513_19_00_00_0": {
+            "card": [
+                11837
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "Camaramágico Mago Trapezista!\nAtacar!"
+        },
+        "V0513_19_00_01_0": {
+            "card": [
+                11837
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "Veja voar pela estratosfera em sua direção!"
+        },
+        "V0513_19_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "Ataque eles, Camaramágico Mago Trapezista!"
+        },
+        "V0513_19_00_02_0": {
+            "card": [
+                11803
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "Camaramágico Lançador Perna de Pau!\nAtacar!"
+        },
+        "V0513_19_00_03_0": {
+            "card": [
+                11799
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "Ataque, Camaramágico Malabarista Danoso!"
+        },
+        "V0513_19_00_04_0": {
+            "card": [
+                11802
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "Camaramágico Palhaço Ardiloso!\nAtacar!"
+        },
+        "V0513_19_00_05_0": {
+            "card": [
+                11801
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "Camaramágico Engana Chapéu! Atacar!"
+        },
+        "V0513_19_00_06_0": {
+            "card": [
+                11800
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "Camaramágico Come Chamas!\nDeixe-os sentir o calor!"
+        },
+        "V0513_19_00_07_0": {
+            "card": [
+                11959
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "Camaramágico Espelho Condutor ataca!"
+        },
+        "V0513_19_00_08_0": {
+            "card": [
+                11960
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "Ataque, Camaramágico Plushfogo!"
+        },
+        "V0513_19_00_09_0": {
+            "card": [
+                12776
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Gigante do Mecanismo Antigo do Caos ataca!"
+        },
+        "V0513_19_00_09_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Trevas desoladoras!"
+        },
+        "V0513_19_00_10_0": {
+            "card": [
+                7616
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Golem do Mecanismo Antigo Definitivo ataca!"
+        },
+        "V0513_19_00_11_0": {
+            "card": [
+                13481
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Golem Megaton do Mecanismo Antigo!\nAtacar!"
+        },
+        "V0513_19_00_12_0": {
+            "card": [
+                12777
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ataque, Howitzer do Mecanismo Antigo!"
+        },
+        "V0513_19_00_13_0": {
+            "card": [
+                12676
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Dragão Reator do Mecanismo Antigo!\nAtacar!"
+        },
+        "V0513_19_00_14_0": {
+            "card": [
+                19847
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Golem Sombrio do Mecanismo Antigo!\nAtacar!"
+        },
+        "V0513_19_00_15_0": {
+            "card": [
+                6315
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ataque, Golem do Mecanismo Antigo!"
+        },
+        "V0513_19_00_15_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Disputa das máquinas!"
+        },
+        "V0513_19_00_16_0": {
+            "card": [
+                12997
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Golem do Mecanismo Antigo - Murro Definitivo!\nAtacar!"
+        },
+        "V0513_19_00_17_0": {
+            "card": [
+                6932
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Dragão Gadjiltron do Mecanismo Antigo!\nAtacar!"
+        },
+        "V0513_19_00_18_0": {
+            "card": [
+                12677
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Hidra do Mecanismo Antigo ataca!"
+        },
+        "V0513_19_00_19_0": {
+            "card": [
+                6316
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ataque, Besta do Mecanismo Antigo!"
+        },
+        "V0513_19_00_19_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Preciosa presa!"
+        },
+        "V0513_19_00_20_0": {
+            "card": [
+                6933
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Quimera Gadjiltron do Mecanismo Antigo!\nAtacar!"
+        },
+        "V0513_19_00_21_0": {
+            "card": [
+                6841
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Engenheiro do Mecanismo Antigo!\nPerfure-os!"
+        },
+        "V0513_19_00_22_0": {
+            "card": [
+                12678
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Arrebata, Wivern do Mecanismo Antigo!"
+        },
+        "V0513_19_00_23_0": {
+            "card": [
+                11061
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Caixa de Mecanismo Antigo ataca!"
+        },
+        "V0513_19_00_24_0": {
+            "card": [
+                13480
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Estrutura do Mecanismo Antigo!\nAtacar!"
+        },
+        "V0513_19_00_25_0": {
+            "card": [
+                7294
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Perfure-os, Cavaleiro do Mecanismo Antigo!"
+        },
+        "V0513_19_00_26_0": {
+            "card": [
+                19848
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Tanqueiro do Mecanismo Antigo!\nAtirar!"
+        },
+        "V0513_19_00_27_0": {
+            "card": [
+                6317
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Soldado do Mecanismo Antigo!\nAtacar!"
+        },
+        "V0513_19_00_27_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Turbilhão de chamas!"
+        },
+        "V0513_19_00_28_0": {
+            "card": [
+                19849
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ataque, Comandante do Mecanismo Antigo!"
+        },
+        "V0513_19_00_29_0": {
+            "card": [
+                12675
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ataque, Dispositivo do Mecanismo Antigo!"
+        },
+        "V0513_19_00_30_0": {
+            "card": [
+                12748
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Encontre-os, Cão de Caça do Mecanismo Antigo!"
+        },
+        "V0513_19_00_31_0": {
+            "card": [
+                6587
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Canhão do Mecanismo Antigo!\nAcabe com eles!"
+        },
+        "V0513_19_00_32_0": {
+            "card": [
+                6570
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Mecanismo Antigo! Atacar!"
+        },
+        "V0513_19_00_33_0": {
+            "card": [
+                14933
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Balista do Mecanismo Antigo!\nAtacar!"
+        },
+        "V0513_19_00_34_0": {
+            "card": [
+                11715
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "Diva Florescente, a Coral Melodiosa!\nAtacar!"
+        },
+        "V0513_19_00_35_0": {
+            "card": [
+                3999
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ataque, Ficha de Mecanismo Antigo!"
+        },
+        "V0513_20_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Baixo um card!"
+        },
+        "V0513_20_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Estou Baixando um card!"
+        },
+        "V0513_20_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Baixo um monstro!"
+        },
+        "V0513_20_01_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Estou Baixando um monstro!"
+        },
+        "V0513_21_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 10,
+            "frame": 0,
+            "text": "Muito mais emocionante do que você esperava, não é?"
+        },
+        "V0513_21_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 10,
+            "frame": 0,
+            "text": "Termino meu turno!"
+        },
+        "V0513_21_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 10,
+            "frame": 0,
+            "text": "Vamos ver se você consegue chegar ao meu nível."
+        },
+        "V0513_21_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 10,
+            "frame": 0,
+            "text": "Termino meu turno!"
+        },
+        "V0513_21_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Com isso, termino meu turno!"
+        },
+        "V0513_21_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Termino meu turno!"
+        },
+        "V0513_21_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "É o seu turno!\nNão se esqueça de agitar o público!"
+        },
+        "V0513_21_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Preciso me empenhar mais para surpreender a multidão!"
+        },
+        "V0513_21_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Termino meu turno!"
+        },
+        "V0513_21_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Desistir? Por quê?\nTenho muitos outros segredos guardados!"
+        },
+        "V0513_21_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Termino meu turno!"
+        },
+        "V0513_22_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 1,
+            "text": "Agh!"
+        },
+        "V0513_22_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Aii!"
+        },
+        "V0513_22_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Ai!"
+        },
+        "V0513_23_00_00_0": {
+            "card": [],
+            "cutin": 3,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Haaaaaa!"
+        },
+        "V0513_24_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 1,
+            "text": "Ergh..."
+        },
+        "V0513_25_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 1,
+            "text": "Aaaaghh!"
+        },
+        "V0513_25_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Aargh!"
+        },
+        "V0513_25_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Ah, nããão!"
+        },
+        "V0513_26_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Argh..."
+        },
+        "V0513_26_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 0,
+            "text": "Vai com calma."
+        },
+        "V0513_26_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Ainda não acabou!"
+        },
+        "V0513_27_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Não parece nada bom..."
+        },
+        "V0513_27_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Isso é tão ruim quanto eu penso?"
+        },
+        "V0513_27_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "...Gah!"
+        },
+        "V0513_28_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 10,
+            "frame": 0,
+            "text": "Esse Duelo foi muito divertido para mim também!"
+        },
+        "V0513_28_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Agora que já Duelamos, considero você meu amigo!"
+        },
+        "V0513_28_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Você precisa de muito treino para ser Dueltainer como moi!"
+        },
+        "V0513_28_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Hmm...\nO Duelo foi ok, mas não foi o melhor."
+        },
+        "V0513_28_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 10,
+            "frame": 0,
+            "text": "Você precisa inventar mais algumas surpresas!"
+        },
+        "V0513_28_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 10,
+            "frame": 0,
+            "text": "Não há nada melhor que capturar o coração da multidão!"
+        },
+        "V0513_28_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Desculpe por ter roubado a sua vitória."
+        },
+        "V0513_28_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Depois que aperfeiçoar suas habilidades, Duelamos de novo!"
+        },
+        "V0513_28_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Acha que eu trapaceei?\nPra mim isso é um elogio!"
+        },
+        "V0513_28_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                506,
+                508,
+                509,
+                511
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Se eu fizer as pessoas sorrirem de novo, talvez me perdoem."
+        },
+        "V0513_29_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ei!\nVocê é uma estrela e tanto!"
+        },
+        "V0513_29_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Que Duelo fantástico!"
+        },
+        "V0513_29_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "O público adora um vencedor, esses aplausos são para você!"
+        },
+        "V0513_29_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Gah!\nPerdi..."
+        },
+        "V0513_29_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Uma grande salva de palmas para o vitorioso de hoje!"
+        },
+        "V0513_29_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                501
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Você aprendeu esses truques fazendo Dueltaining com seu pai?"
+        },
+        "V0513_29_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                502
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "A Escola de Duelo Seu Show lhe ensinou muito bem!"
+        },
+        "V0513_29_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                514
+            ],
+            "face": 9,
+            "frame": 0,
+            "text": "Ai, ai...\nNunca conseguirei superar você, Yuri."
+        },
+        "V0513_30_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Isso foi incrível!"
+        },
+        "V0513_30_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Uau!"
+        },
+        "V0513_30_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "Opa!\nQue monstro estranho!"
+        },
+        "V0513_31_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Não pode ser!"
+        },
+        "V0513_31_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "O quê!?"
+        },
+        "V0513_32_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Yu-Gi-Oh! Duel Links"
+        },
+        "V0513_32_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "Yu-Gi-Oh! Duel Links\nÉ hora do show!"
+        },
+        "V0513_33_00_00_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "É hora do show!"
+        },
+        "V0513_33_00_01_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "Prepare-se para uma ilusão que você nunca viu antes!"
+        },
+        "V0513_33_00_02_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "Se eu fizer este truque, espero uma bela salva de palmas!"
+        },
+        "V0513_34_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Não gostei do que você fez no último turno."
+        },
+        "V0513_34_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 10,
+            "frame": 0,
+            "text": "Pronto para presenciar um milagre?\nUm... dois... três!"
+        },
+        "V0513_34_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 0,
+            "text": "Isso era para ser engraçado?"
+        },
+        "V0513_34_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Vou fingir que não vi isso♪"
+        },
+        "V0513_34_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 0,
+            "text": "Oh-oh! Eu vou perder..."
+        },
+        "V0513_34_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 10,
+            "frame": 0,
+            "text": "Você tem uma Magia de Aumento de Classe na sua mão!\nComo eu sei? Mágica!"
+        },
+        "V0513_34_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 10,
+            "frame": 0,
+            "text": "Um mágico nunca revela seus truques!"
+        },
+        "V0513_34_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "O show deve continuar!"
+        },
+        "V0513_34_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "É hora do show!"
+        },
+        "V0513_34_00_09_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Este é o card que você queria ver?"
+        },
+        "V0513_34_00_10_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Eu devia este Duelo mais a sério."
+        },
+        "V0513_34_00_11_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Agora que sabe quem eu sou, prepare-se para virar uma presa!"
+        },
+        "V0513_34_00_12_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Argh!\nA sorte não está do meu lado..."
+        },
+        "V0513_35_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 10,
+            "frame": 0,
+            "text": "Eu sou Dennis!\nSeu Dueltainer favorito!"
+        },
+        "V0513_35_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "Vamos dar o melhor show de sempre a esses fãs de Duel Links!"
+        },
+        "V0513_36_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 10,
+            "frame": 0,
+            "text": "Eu fiz minha parte.\nO grande final fica com você!"
+        },
+        "V0513_36_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Sua vez!"
+        },
+        "V0513_36_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Não se preocupe!\nVocê ainda tem a mim e ao meu Mago Trapezista!"
+        },
+        "V0513_36_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                501
+            ],
+            "face": 10,
+            "frame": 0,
+            "text": "Sua vez, Yuya!\nFaça Dueltain até vencer!"
+        },
+        "V0513_36_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                501
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Estou contando com você, Yuya!"
+        },
+        "V0513_36_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                501
+            ],
+            "face": 2,
+            "frame": 0,
+            "text": "Vai ficar tudo bem, Yuya!\nRelaxe!"
+        },
+        "V0513_36_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                514
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Tudo depende de você, Yuri."
+        },
+        "V0513_36_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                514
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Cuide disso, Yuri."
+        },
+        "V0513_36_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                514
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Isso deveria ser fácil para você, Yuri."
+        },
+        "V0513_37_00_00_0": {
+            "card": [
+                11837
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "Direcione seu olhar para os céus!"
+        },
+        "V0513_37_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "Apresento a você uma estrela oscilante!\nInvocação-Xyz!"
+        },
+        "V0513_37_00_01_0": {
+            "card": [
+                11837
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "Vamos dar as boas-vindas ao evento principal!"
+        },
+        "V0513_37_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "Direcione seu olhar para os céus!"
+        },
+        "V0513_37_00_01_2": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "Apresento a você uma estrela oscilante!\nInvocação-Xyz!"
+        },
+        "V0513_37_00_02_0": {
+            "card": [
+                12776
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Meu canil está pronto para cumprir minhas ordens!"
+        },
+        "V0513_37_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Juntem-se em um Mecanismo Antigo de proporções gigantescas!"
+        },
+        "V0513_37_00_02_2": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Faço uma Invocação-Fusão!"
+        },
+        "V0513_37_00_03_0": {
+            "card": [
+                7616
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Uno a selvageria de eras passadas em um behemoth brutal!"
+        },
+        "V0513_37_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Invocação-Fusão!"
+        },
+        "V0513_37_00_04_0": {
+            "card": [
+                12777
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Use sua experiência de combate e intelecto tático!"
+        },
+        "V0513_37_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Reconfigurar em uma máquina de guerra devastadora!"
+        },
+        "V0513_37_00_04_2": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Faço uma Invocação-Fusão!"
+        },
+        "V0513_38_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "Em suas marcas... Preparar... Duelar!"
+        },
+        "V0513_44_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Duelistas!\nPreparem-se para a batalha!"
+        },
+        "V0513_44_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Apenas um vai comandar o Duelo..."
+        },
+        "V0513_44_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Na fusão suprema de monstros e caos!"
+        },
+        "V0513_44_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "A ação começa agora!"
+        },
+        "V0513_44_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ação..."
+        },
+        "V0513_44_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "Duelar!"
+        },
+        "V0513_45_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Jogo um Card de Ação!"
+        },
+        "V0513_45_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ativo uma Magia de Ação!"
+        },
+        "V0513_48_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 10,
+            "frame": 1,
+            "text": "Isso vai ser divertido!"
+        },
+        "V0513_48_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "Prepare-se para a aceleração!"
+        }
+    }
+}

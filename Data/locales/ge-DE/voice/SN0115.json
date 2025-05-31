@@ -1,0 +1,4201 @@
+{
+    "_GRP_": "SN0115",
+    "_LNG_": "de-DE",
+    "info": {
+        "V0115_01_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Super! Ich bin schon ganz gespannt, wie dein Deck aufgebaut ist!"
+        },
+        "V0115_01_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Egal was du für Monster hast, ich werde mein Duell kämpfen!"
+        },
+        "V0115_01_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Mein HELD-Deck ist besser als je zuvor."
+        },
+        "V0115_01_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Komm – ich zeig’s dir!"
+        },
+        "V0115_01_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Lass uns loslegen!"
+        },
+        "V0115_01_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Bis einer von uns gewinnt!"
+        },
+        "V0115_01_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich werd’s dir nicht leicht machen."
+        },
+        "V0115_01_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Fangen wir doch ganz vom Anfang an!"
+        },
+        "V0115_01_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                105
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Chazz! Du bist kein Weichei! Hör auf, dich wie eins zu benehmen!"
+        },
+        "V0115_01_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                106
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Alexis! So haben wir uns schon lang nicht mehr duelliert."
+        },
+        "V0115_01_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                112
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Sy, hast du endlich ein Deck, das sich nur um dich dreht?"
+        },
+        "V0115_01_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                113
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Zeig keine Gnade, Hassleberry!"
+        },
+        "V0115_01_00_09_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                107
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich zeig dir, was ich die letzten drei Jahre gelernt hab!"
+        },
+        "V0115_01_00_10_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                104
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Duellieren wir uns, Jesse!\nEgal wer gewinnt, das wird sicher ein Spaß!"
+        },
+        "V0115_01_00_11_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                109
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Yubel, ich verspreche, ich werde dich zurückholen!"
+        },
+        "V0115_01_00_12_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                114,
+                133
+            ],
+            "face": 3,
+            "frame": 0,
+            "text": "Sartorius!\nIch werde tun, was ich tun muss, unter allen Umständen!"
+        },
+        "V0115_01_00_13_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                6,
+                303
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Wow! Du bist es wirklich!\nYugi!"
+        },
+        "V0115_01_00_14_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                1,
+                331
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich hörte, der König der Spiele hat noch eine andere Seite."
+        },
+        "V0115_01_00_14_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Und das musst du sein!\nDer Pharao!"
+        },
+        "V0115_01_00_15_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                201
+            ],
+            "face": 2,
+            "frame": 0,
+            "text": "Ich weiß, du liebst Duel Monsters genauso sehr wie ich!"
+        },
+        "V0115_01_00_15_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Lass uns loslegen, Yusei!"
+        },
+        "V0115_01_00_16_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                155
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Der Oberste König ist die Finsternis, die in meiner Seele wohnt."
+        },
+        "V0115_02_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Duell!"
+        },
+        "V0115_03_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich werd nicht locker lassen!"
+        },
+        "V0115_03_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Mein Zug!"
+        },
+        "V0115_03_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich bin dran!"
+        },
+        "V0115_03_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Los geht’s!"
+        },
+        "V0115_03_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich bin dran!"
+        },
+        "V0115_03_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Mein Zug!"
+        },
+        "V0115_03_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Du hättest mich besiegen sollen, dafür musst du jetzt zahlen!"
+        },
+        "V0115_03_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Ich bin dran!"
+        },
+        "V0115_03_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Dieses Duell fängt gerade erst an!"
+        },
+        "V0115_03_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Mein Zug!"
+        },
+        "V0115_04_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich ziehe!"
+        },
+        "V0115_04_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich ziehe!"
+        },
+        "V0115_04_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Ich ziehe!"
+        },
+        "V0115_05_00_00_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich habe fast vergessen, dass ich nicht allein kämpfe!"
+        },
+        "V0115_05_00_00_1": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Ich ziehe!"
+        },
+        "V0115_06_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Jetzt!"
+        },
+        "V0115_06_01_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Da wäre ich mir nicht so sicher!"
+        },
+        "V0115_06_01_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Genau, worauf ich gewartet hab!"
+        },
+        "V0115_06_01_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Hey, mach mal langsam."
+        },
+        "V0115_07_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Von meiner Hand …"
+        },
+        "V0115_07_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich aktiviere eine Zauberkarte!"
+        },
+        "V0115_07_02_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich aktiviere einen Schnellzauber!"
+        },
+        "V0115_07_03_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich aktiviere einen Permanenten Zauber!"
+        },
+        "V0115_07_04_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich aktiviere einen Ausrüstungszauber!"
+        },
+        "V0115_07_05_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich aktiviere einen Ritualzauber!"
+        },
+        "V0115_07_06_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich aktiviere eine Fallenkarte!"
+        },
+        "V0115_07_07_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich aktiviere eine Permanente Falle!"
+        },
+        "V0115_07_08_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich aktiviere eine Konterfalle!"
+        },
+        "V0115_07_09_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich decke meine verdeckte Karte auf!"
+        },
+        "V0115_07_09_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich spiele meine verdeckte Karte!"
+        },
+        "V0115_07_10_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich aktiviere den Effekt meines Monsters!"
+        },
+        "V0115_07_11_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich aktiviere einen Spielfeldzauber!"
+        },
+        "V0115_07_12_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich aktiviere einen Effekt!"
+        },
+        "V0115_07_13_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich lege den Pendelbereich fest!"
+        },
+        "V0115_08_00_00_0": {
+            "card": [
+                4837
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere die Zauberkarte Polymerisation!"
+        },
+        "V0115_08_00_01_0": {
+            "card": [
+                5118
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere meinen Schnellzauber!\n!De-Fusion!"
+        },
+        "V0115_08_00_02_0": {
+            "card": [
+                6399
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere meinen Spielfeldzauber!\nWolkenkratzer!"
+        },
+        "V0115_08_00_03_0": {
+            "card": [
+                6407
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich lege zwei Karten von meiner Hand auf den Friedhof …"
+        },
+        "V0115_08_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere den Schnellzauber Transzendente Flügel!"
+        },
+        "V0115_08_00_04_0": {
+            "card": [
+                6409
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich rüste Elementar-HELD Sparkman mit dem Ausrüstungszauber Spark Pistole aus!"
+        },
+        "V0115_08_00_05_0": {
+            "card": [
+                6409
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Der Effekt von Spark Pistole wird aktiviert!"
+        },
+        "V0115_08_00_06_0": {
+            "card": [
+                6431
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere meine Zauberkarte Fusionsrückerstattung!"
+        },
+        "V0115_08_00_07_0": {
+            "card": [
+                6432
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere meine Zauberkarte Wunderfusion!"
+        },
+        "V0115_08_00_08_0": {
+            "card": [
+                6636
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Hier kommt meinen Schnellzauber Die Flöte der Kuriboh-Beschwörung!"
+        },
+        "V0115_08_00_09_0": {
+            "card": [
+                6671
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Die Zauberkarte H - Heißes Herz!"
+        },
+        "V0115_08_00_10_0": {
+            "card": [
+                6672
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Die Zauberkarte E - Eiliger Notruf!"
+        },
+        "V0115_08_00_11_0": {
+            "card": [
+                6673
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Die Zauberkarte R - Rechtschaffenes Urteil!"
+        },
+        "V0115_08_00_12_0": {
+            "card": [
+                6674
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Die Zauberkarte O - Oberseele!"
+        },
+        "V0115_08_00_13_0": {
+            "card": [
+                6675
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere meine Zauberkarte!\nHero Blitz!!!"
+        },
+        "V0115_08_00_14_0": {
+            "card": [
+                6774
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich spiele meine Zauberkarte Kontakt!"
+        },
+        "V0115_08_00_14_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Kommt heraus, Neo-Weltraum-Monster!"
+        },
+        "V0115_08_00_15_0": {
+            "card": [
+                6775
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere den Spielfeldzauber Neo-Weltraum!"
+        },
+        "V0115_08_00_16_0": {
+            "card": [
+                6901
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere meine Zauberkarte Instantfusion!"
+        },
+        "V0115_08_00_17_0": {
+            "card": [
+                6993
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere den Ausrüstungszauber Neos Macht!"
+        },
+        "V0115_08_00_18_0": {
+            "card": [
+                6993
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Der Effekt von Neos Macht wird aktiviert!"
+        },
+        "V0115_08_00_19_0": {
+            "card": [
+                7004
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere meinen Spielfeldzauber Wolkenkratzer 2 - Heldenstadt!"
+        },
+        "V0115_08_00_20_0": {
+            "card": [
+                7154
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere die Zauberkarte Kokongruppe!"
+        },
+        "V0115_08_00_20_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Jede Neo-Weltraum-Karte im Friedhof gibt ein „Verpuppt“-Monster!"
+        },
+        "V0115_08_00_21_0": {
+            "card": [
+                7161
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere meine Zauberkarte!\nFünfte Hoffnung!"
+        },
+        "V0115_08_00_22_0": {
+            "card": [
+                7162
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere meine Zauberkarte!\nNEX!"
+        },
+        "V0115_08_00_23_0": {
+            "card": [
+                7163
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere den Schnellzauber Umkehrung von Neos!"
+        },
+        "V0115_08_00_24_0": {
+            "card": [
+                7255
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere den Schnellzauber Kontakt nach draußen!"
+        },
+        "V0115_08_00_25_0": {
+            "card": [
+                7444
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere meinen Ausrüstungszauber!\nRegenbogenschleier!"
+        },
+        "V0115_08_00_26_0": {
+            "card": [
+                7445
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Meine Monsterkumpel und ich sind unzertrennlich!"
+        },
+        "V0115_08_00_26_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere meinen Schnellzauber!\nSuperpolymerisation!"
+        },
+        "V0115_08_00_27_0": {
+            "card": [
+                7447
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere meinen Ausrüstungszauber Instant-Neoraum!"
+        },
+        "V0115_08_00_28_0": {
+            "card": [
+                7447
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Der Effekt von Instant-Neoraum wird aktiviert!"
+        },
+        "V0115_08_00_29_0": {
+            "card": [
+                7553
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich hole Neos zurück in mein Deck und zerstöre alle Karten!"
+        },
+        "V0115_08_00_29_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Neos' Zorn!"
+        },
+        "V0115_08_00_30_0": {
+            "card": [
+                7619
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere die Zauberkarte Weltraumgeschenk!"
+        },
+        "V0115_08_00_31_0": {
+            "card": [
+                7620
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Der Schnellzauber Untergang des Landes!"
+        },
+        "V0115_08_00_32_0": {
+            "card": [
+                7942
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere meine Zauberkarte!\nFusion der Parallelwelten!"
+        },
+        "V0115_08_00_33_0": {
+            "card": [
+                10213
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere die Zauberkarte Wunderkontakt!"
+        },
+        "V0115_08_00_34_0": {
+            "card": [
+                11161
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere meinen Schnellzauber!\nBlitzfusion!"
+        },
+        "V0115_08_00_35_0": {
+            "card": [
+                12902
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere meine Zauberkarte!\nHeißer Himmelssturm!"
+        },
+        "V0115_08_00_36_0": {
+            "card": [
+                13976
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere meine Zauberkarte!\nKontakttor!"
+        },
+        "V0115_08_00_37_0": {
+            "card": [
+                14137
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere meine Zauberkarte!\nNeos-Fusion!"
+        },
+        "V0115_08_00_38_0": {
+            "card": [
+                5915
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere meine Falle!\nDie Geburt eines Helden!"
+        },
+        "V0115_08_00_39_0": {
+            "card": [
+                6356
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere meine Falle!\nHeldensignal!"
+        },
+        "V0115_08_00_40_0": {
+            "card": [
+                6495
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere meine Falle!\nHeldenbarriere!"
+        },
+        "V0115_08_00_41_0": {
+            "card": [
+                7158
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere meine Falle!\nKokonschleier!"
+        },
+        "V0115_08_00_42_0": {
+            "card": [
+                7160
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere meine Falle!\nHelden-Gegenangriff!"
+        },
+        "V0115_08_00_43_0": {
+            "card": [
+                7170
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere meine Falle!\nSpiegeltor!"
+        },
+        "V0115_08_00_44_0": {
+            "card": [
+                7467
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere meine Falle!\nAlchemiezyklus!"
+        },
+        "V0115_08_00_45_0": {
+            "card": [
+                7637
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere meine Falle!\nHeldenexplosion!"
+        },
+        "V0115_08_00_46_0": {
+            "card": [
+                14148
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere meine Falle!\nNEXT!"
+        },
+        "V0115_08_00_47_0": {
+            "card": [
+                14217
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere meinen Schnellzauber!\nDoppelhelden-Angriff!"
+        },
+        "V0115_09_00_00_0": {
+            "card": [
+                6344
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Der Effekt von Elementar-HELD Flammenflügelmann wird aktiviert!"
+        },
+        "V0115_09_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Du erhältst Schaden in Höhe der ATK des zerstörten Monsters!"
+        },
+        "V0115_09_00_01_0": {
+            "card": [
+                6393
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Der Effekt von Elementar-HELD Bubbleman wird aktiviert!"
+        },
+        "V0115_09_00_02_0": {
+            "card": [
+                6467
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Der Effekt von Elementar-HELD Glänzender Flügelmann wird aktiviert!"
+        },
+        "V0115_09_00_03_0": {
+            "card": [
+                6487
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere den Effekt von Elementar-HELD Tempest!"
+        },
+        "V0115_09_00_04_0": {
+            "card": [
+                6639
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Schau dir den Effekt von Elementar-HELD Elektrum an!"
+        },
+        "V0115_09_00_05_0": {
+            "card": [
+                7491
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Elementar-HELD Prisma kann jede Farbe des Regenbogens annehmen!"
+        },
+        "V0115_09_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Wechselndes Spiegelbild!"
+        },
+        "V0115_09_00_06_0": {
+            "card": [
+                6314
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Der Effekt von Geflügelter Kuriboh wird aktiviert!"
+        },
+        "V0115_09_00_06_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich nehme bis zum Ende des Spielzugs keinen Schaden!"
+        },
+        "V0115_09_00_07_0": {
+            "card": [
+                7526
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Der Effekt von Geflügelter Kuriboh LV9 wird aktiviert!"
+        },
+        "V0115_09_00_08_0": {
+            "card": [
+                6406
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Der Effekt von Geflügelter Kuriboh LV10 wird aktiviert!"
+        },
+        "V0115_09_00_09_0": {
+            "card": [
+                6654
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Der Effekt von Löwenzahn-Löwe wird aktiviert!"
+        },
+        "V0115_09_00_09_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich spezialbeschwöre 2 Flaum-Spielmarken in Verteidigungsposition!"
+        },
+        "V0115_09_00_10_0": {
+            "card": [
+                6768
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere den Effekt von Neo-Weltraum Aqua Dolphin!"
+        },
+        "V0115_09_00_10_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Sonarwelle!"
+        },
+        "V0115_09_00_11_0": {
+            "card": [
+                6769
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Der Effekt von Neo-Weltraum Air Hummingbird wird aktiviert!"
+        },
+        "V0115_09_00_11_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Honigsauger!"
+        },
+        "V0115_09_00_12_0": {
+            "card": [
+                6770
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere den Effekt von Neo-Weltraum Grand Mole!"
+        },
+        "V0115_09_00_13_0": {
+            "card": [
+                6771
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Der Effekt von Neo-Weltraum Glow Moss wird aktiviert!"
+        },
+        "V0115_09_00_13_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Signalstörung!"
+        },
+        "V0115_09_00_14_0": {
+            "card": [
+                6772
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere den Effekt von Neo-Weltraum Dark Panther!"
+        },
+        "V0115_09_00_14_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Schattenspiel!"
+        },
+        "V0115_09_00_15_0": {
+            "card": [
+                7174
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Der Effekt von Neo-Weltraum Marine Dolphin wird aktiviert!"
+        },
+        "V0115_09_00_16_0": {
+            "card": [
+                7441
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Der Effekt von Neo-Weltraum Twinkle Moss wird aktiviert!"
+        },
+        "V0115_09_00_17_0": {
+            "card": [
+                6764
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere den Effekt von Verpuppter Delfin!"
+        },
+        "V0115_09_00_17_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Dieses Baby wird zu Neo-Weltraum Aqua Dolphin!"
+        },
+        "V0115_09_00_18_0": {
+            "card": [
+                7155
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere den Effekt von Verpupptes Küken!"
+        },
+        "V0115_09_00_18_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Schlüpfe als Neo-Weltraum Air Hummingbird!"
+        },
+        "V0115_09_00_19_0": {
+            "card": [
+                7156
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere den Effekt von Verpuppter Panschwanz!"
+        },
+        "V0115_09_00_19_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Entwickle dich zu Neo-Weltraum Dark Panther!"
+        },
+        "V0115_09_00_20_0": {
+            "card": [
+                7157
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere den Effekt von Verpuppter Pinny!"
+        },
+        "V0115_09_00_20_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Verwandle dich in Neo-Weltraum Glow Moss!"
+        },
+        "V0115_09_00_21_0": {
+            "card": [
+                7172
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere den Effekt von Verpuppte Larve!"
+        },
+        "V0115_09_00_21_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Transformation zu Neo-Weltraum Flare Scarab!"
+        },
+        "V0115_09_00_22_0": {
+            "card": [
+                7173
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere den Effekt von Verpuppter Mole!"
+        },
+        "V0115_09_00_22_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Es wird erwachsen und verwandelt sich in Neo-Weltraum Grand Mole!"
+        },
+        "V0115_09_00_23_0": {
+            "card": [
+                7574
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere den Effekt von Aufrichtig!"
+        },
+        "V0115_09_00_23_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich bringe Aufrichtig auf die Hand zurück!"
+        },
+        "V0115_09_00_24_0": {
+            "card": [
+                7574
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere den Effekt von Aufrichtig von meiner Hand!"
+        },
+        "V0115_09_00_25_0": {
+            "card": [
+                6765
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Der Effekt von Elementar-HELD Dark Neos wird aktiviert!"
+        },
+        "V0115_09_00_26_0": {
+            "card": [
+                6766
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Elementar-HELD Aqua Neos, setze deinen Effekt ein!"
+        },
+        "V0115_09_00_26_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Echoexplosion!"
+        },
+        "V0115_09_00_27_0": {
+            "card": [
+                6766
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Der Effekt von Elementar-HELD Aqua Neos wird aktiviert!"
+        },
+        "V0115_09_00_28_0": {
+            "card": [
+                6767
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Der Effekt von Elementar-HELD Flare Neos!"
+        },
+        "V0115_09_00_29_0": {
+            "card": [
+                6988
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Der Effekt von Elementar-HELD Glow Neos wird aktiviert!"
+        },
+        "V0115_09_00_29_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Signalsprenger!"
+        },
+        "V0115_09_00_30_0": {
+            "card": [
+                6988
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Der Effekt von Elementar-HELD Glow Neos wird aktiviert!"
+        },
+        "V0115_09_00_31_0": {
+            "card": [
+                6989
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Der Effekt von Elementar-HELD Air Neos wird aktiviert!"
+        },
+        "V0115_09_00_32_0": {
+            "card": [
+                6990
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere den Effekt von Elementar-HELD Grand Neos!"
+        },
+        "V0115_09_00_32_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Nebliger Abgrund!"
+        },
+        "V0115_09_00_33_0": {
+            "card": [
+                6990
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Der Effekt von Elementar-HELD Grand Neos wird aktiviert!"
+        },
+        "V0115_09_00_34_0": {
+            "card": [
+                7175
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Der Effekt von Elementar-HELD Marine Neos wird aktiviert!"
+        },
+        "V0115_09_00_35_0": {
+            "card": [
+                7177
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Der Effekt von Elementar-HELD Magma Neos wird aktiviert!"
+        },
+        "V0115_09_00_36_0": {
+            "card": [
+                7275
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Der Effekt von Elementar-HELD Chaos Neos wird aktiviert!"
+        },
+        "V0115_09_00_37_0": {
+            "card": [
+                7442
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Elementar-HELD Storm Neos aktiviert seinen Effekt!"
+        },
+        "V0115_09_00_37_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ultimativer Taifun!"
+        },
+        "V0115_09_00_38_0": {
+            "card": [
+                7442
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Der Effekt von Elementar-HELD Storm Neos wird aktiviert!"
+        },
+        "V0115_09_00_39_0": {
+            "card": [
+                7443
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Regenbogen-Neos nutzt seinen Effekt!"
+        },
+        "V0115_09_00_39_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Hinter dem Regenbogen!"
+        },
+        "V0115_09_00_40_0": {
+            "card": [
+                7805
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Der Effekt von Neos Weiser wird aktiviert!"
+        },
+        "V0115_09_00_41_0": {
+            "card": [
+                7806
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Hier kommt der Effekt von Elementar-HELD Divine Neos!"
+        },
+        "V0115_09_00_42_0": {
+            "card": [
+                12901
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich aktiviere den Effekt von Elementar-HELD Aufrichtiger Neos!"
+        },
+        "V0115_09_00_43_0": {
+            "card": [
+                14112
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Elementar-HELD Tapferer Neos aktiviert seinen Effekt!"
+        },
+        "V0115_09_00_44_0": {
+            "card": [
+                14113
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Der Effekt von Elementar-HELD Kosmo-Neos wird aktiviert!"
+        },
+        "V0115_09_00_45_0": {
+            "card": [
+                13867
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Der Effekt von Elementar-HELD Nebel-Neos wird aktiviert!"
+        },
+        "V0115_09_00_46_0": {
+            "card": [
+                14216
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Der Effekt von Elementar-HELD Grandmerge wird aktiviert!"
+        },
+        "V0115_09_00_47_0": {
+            "card": [
+                7409
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 1,
+            "text": "Der Effekt von Yubel wird aktiviert!"
+        },
+        "V0115_09_00_47_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 1,
+            "text": "Albtraum-Schmerz!"
+        },
+        "V0115_09_00_48_0": {
+            "card": [
+                7409
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 1,
+            "text": "Der Effekt von Yubel wird aktiviert!"
+        },
+        "V0115_09_00_49_0": {
+            "card": [
+                7410
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 1,
+            "text": "Der Effekt von Yubel - Terrorinkarnation wird aktiviert!"
+        },
+        "V0115_09_00_50_0": {
+            "card": [
+                7411
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 1,
+            "text": "Der Effekt von Yubel - Der ultimative Albtraum wird aktiviert!"
+        },
+        "V0115_10_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Hilf mir!"
+        },
+        "V0115_10_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Komm raus!"
+        },
+        "V0115_10_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Das wird ausreichen!"
+        },
+        "V0115_10_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Aufgepasst!"
+        },
+        "V0115_11_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich beschwöre ein Monster!"
+        },
+        "V0115_11_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich beschwöre ein Monster in Verteidigungsposition!"
+        },
+        "V0115_11_02_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich beschwöre ein Monster als Spezialbeschwörung!"
+        },
+        "V0115_11_03_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich biete ein Monster als Tribut an!"
+        },
+        "V0115_11_04_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich beschwöre ein Monster als Tributbeschwörung!"
+        },
+        "V0115_11_05_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich beschwöre ein Monster als Fusionsbeschwörung!"
+        },
+        "V0115_11_06_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich beschwöre ein Monster als Ritualbeschwörung!"
+        },
+        "V0115_11_07_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich beschwöre ein Monster als Synchrobeschwörung!"
+        },
+        "V0115_11_08_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich beschwöre ein Monster als Xyz-Beschwörung!"
+        },
+        "V0115_11_09_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich beschwöre ein Monster als Pendelbeschwörung!"
+        },
+        "V0115_11_10_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich beschwöre ein Monster als Linkbeschwörung!"
+        },
+        "V0115_13_00_00_0": {
+            "card": [
+                6310
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Hier ist Elementar-HELD Avian!"
+        },
+        "V0115_13_00_01_0": {
+            "card": [
+                6311
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich spiele Elementar-HELD Burstinatrix!"
+        },
+        "V0115_13_00_02_0": {
+            "card": [
+                6312
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Erhebe dich, Elementar-HELD Clayman!"
+        },
+        "V0115_13_00_03_0": {
+            "card": [
+                6313
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Dreh voll auf, Elementar-HELD Sparkman!"
+        },
+        "V0115_13_00_04_0": {
+            "card": [
+                6344
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Hier kommt mein absoluter Lieblingsheld!"
+        },
+        "V0115_13_00_04_1": {
+            "card": [],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Elementar-HELD Flammenflügelmann!"
+        },
+        "V0115_13_00_05_0": {
+            "card": [
+                6393
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Los geht’s, Elementar-HELD Bubbleman!"
+        },
+        "V0115_13_00_06_0": {
+            "card": [
+                6467
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Steig auf!\nElementar-HELD Glänzender Flügelmann!"
+        },
+        "V0115_13_00_07_0": {
+            "card": [
+                6477
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Komm, Elementar-HELD Bladedge!"
+        },
+        "V0115_13_00_08_0": {
+            "card": [
+                6478
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Hier kommt Elementar-HELD Wildheart!"
+        },
+        "V0115_13_00_09_0": {
+            "card": [
+                6487
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Erscheine, Elementar-HELD Tempest!"
+        },
+        "V0115_13_00_10_0": {
+            "card": [
+                6488
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Zeit zu kämpfen, Elementar-HELD Wildedge!"
+        },
+        "V0115_13_00_11_0": {
+            "card": [
+                6527
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Elementar-HELD Necroshade!\nLos geht’s!"
+        },
+        "V0115_13_00_12_0": {
+            "card": [
+                6639
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Hier ist Elementar-HELD Elektrum!"
+        },
+        "V0115_13_00_13_0": {
+            "card": [
+                7491
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Los geht’s, Elementar-HELD Prisma!"
+        },
+        "V0115_13_00_14_0": {
+            "card": [
+                6314
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Gestatten: Mein Kumpel!\nGeflügelter Kuriboh!"
+        },
+        "V0115_13_00_15_0": {
+            "card": [
+                7526
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Hier ist Geflügelter Kuriboh LV9!"
+        },
+        "V0115_13_00_16_0": {
+            "card": [
+                6406
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Aus Geflügelter Kuriboh wird Geflügelter Kuriboh LV10!"
+        },
+        "V0115_13_00_17_0": {
+            "card": [
+                6654
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Löwenzahn-Löwe betritt die Bühne!"
+        },
+        "V0115_13_00_18_0": {
+            "card": [
+                6768
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Neo-Weltraum Aqua Dolphin!\nDu bist dran!"
+        },
+        "V0115_13_00_19_0": {
+            "card": [
+                6769
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Lass uns loslegen, Neo-Weltraum Air Hummingbird!"
+        },
+        "V0115_13_00_20_0": {
+            "card": [
+                6770
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Hier kommt Neo-Weltraum Grand Mole!"
+        },
+        "V0115_13_00_21_0": {
+            "card": [
+                6771
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Zeig dich, Neo-Weltraum Glow Moss!"
+        },
+        "V0115_13_00_22_0": {
+            "card": [
+                6772
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Hier ist Neo-Weltraum Dark Panther!"
+        },
+        "V0115_13_00_23_0": {
+            "card": [
+                6773
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Feuer frei, Neo-Weltraum Flare Scarab!"
+        },
+        "V0115_13_00_24_0": {
+            "card": [
+                7174
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Neo-Weltraum Marine Dolphin ist da!"
+        },
+        "V0115_13_00_25_0": {
+            "card": [
+                7441
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Yeah! Hier ist Neo-Weltraum Twinkle Moss!"
+        },
+        "V0115_13_00_26_0": {
+            "card": [
+                6764
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Hier ist Verpuppter Delfin!"
+        },
+        "V0115_13_00_27_0": {
+            "card": [
+                7155
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Los geht’s, Verpupptes Küken!"
+        },
+        "V0115_13_00_28_0": {
+            "card": [
+                7156
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Verpuppter Panschwanz!\nLos geht’s!"
+        },
+        "V0115_13_00_29_0": {
+            "card": [
+                7157
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Hier ist Verpuppter Pinny!"
+        },
+        "V0115_13_00_30_0": {
+            "card": [
+                7172
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Hier kommt Verpuppte Larve!"
+        },
+        "V0115_13_00_31_0": {
+            "card": [
+                7173
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Okay!\nVerpuppter Mole!"
+        },
+        "V0115_13_00_32_0": {
+            "card": [
+                7574
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich könnte deine Hilfe gebrauchen, Aufrichtig!"
+        },
+        "V0115_13_00_33_0": {
+            "card": [
+                6653
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Los geht’s, Elementar-HELD Neos!"
+        },
+        "V0115_13_00_34_0": {
+            "card": [
+                6765
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Kontaktfusion!"
+        },
+        "V0115_13_00_34_1": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich präsentiere: Elementar-HELD Dark Neos!"
+        },
+        "V0115_13_00_35_0": {
+            "card": [
+                6766
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Kontaktfusion!"
+        },
+        "V0115_13_00_35_1": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Hier kommt Elementar-HELD Aqua Neos!"
+        },
+        "V0115_13_00_36_0": {
+            "card": [
+                6767
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Kontaktfusion!"
+        },
+        "V0115_13_00_36_1": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Elementar-HELD Flare Neos betritt die Arena!"
+        },
+        "V0115_13_00_37_0": {
+            "card": [
+                6988
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Kontaktfusion!"
+        },
+        "V0115_13_00_37_1": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Elementar-HELD Glow Neos!\nLass uns loslegen!"
+        },
+        "V0115_13_00_38_0": {
+            "card": [
+                6989
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Kontaktfusion!"
+        },
+        "V0115_13_00_38_1": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Flieg, Elementar-HELD Air Neos!"
+        },
+        "V0115_13_00_39_0": {
+            "card": [
+                6990
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Kontaktfusion!"
+        },
+        "V0115_13_00_39_1": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Hier ist Elementar-HELD Grand Neos!"
+        },
+        "V0115_13_00_40_0": {
+            "card": [
+                7175
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Kontaktfusion!"
+        },
+        "V0115_13_00_40_1": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Elementar-HELD Marine Neos!\nLos geht’s!"
+        },
+        "V0115_13_00_41_0": {
+            "card": [
+                7177
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Dreifache Kontaktfusion!"
+        },
+        "V0115_13_00_41_1": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich präsentiere: Elementar-HELD Magma Neos!"
+        },
+        "V0115_13_00_42_0": {
+            "card": [
+                7275
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Dreifache Kontaktfusion!"
+        },
+        "V0115_13_00_42_1": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Komm, Elementar-HELD Chaos Neos!"
+        },
+        "V0115_13_00_43_0": {
+            "card": [
+                7442
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Dreifache Kontaktfusion!"
+        },
+        "V0115_13_00_43_1": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Aus den Weiten des Weltalls kommt Elementar-HELD Storm Neos!"
+        },
+        "V0115_13_00_44_0": {
+            "card": [
+                7443
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Regenbogendrache und Neos!\nZeigt ihnen die Stärke unserer Verbindung!"
+        },
+        "V0115_13_00_44_1": {
+            "card": [],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Hier ist Regenbogen-Neos!"
+        },
+        "V0115_13_00_45_0": {
+            "card": [
+                7805
+            ],
+            "cutin": 4,
+            "duelist": [],
+            "face": 7,
+            "frame": 1,
+            "text": "Neos und Yubel!\nLass uns loslegen!"
+        },
+        "V0115_13_00_45_1": {
+            "card": [],
+            "cutin": 4,
+            "duelist": [],
+            "face": 7,
+            "frame": 1,
+            "text": "Zeig dich, Neos Weiser!"
+        },
+        "V0115_13_00_46_0": {
+            "card": [
+                7806
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ultimative Kontaktfusion!"
+        },
+        "V0115_13_00_46_1": {
+            "card": [],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Elementar-HELD Divine Neos betritt die Bühne!"
+        },
+        "V0115_13_00_47_0": {
+            "card": [
+                8866
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Zeig dich, Elementar-HELD Neos Knight!"
+        },
+        "V0115_13_00_48_0": {
+            "card": [
+                12901
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Elementar-HELD Aufrichtiger Neos!\nDu schaffst das!"
+        },
+        "V0115_13_00_49_0": {
+            "card": [
+                14112
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Los, Elementar-HELD Tapferer Neos!"
+        },
+        "V0115_13_00_50_0": {
+            "card": [
+                14113
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Vierfache Kontaktfusion!"
+        },
+        "V0115_13_00_50_1": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Hilf mir, Elementar-HELD Kosmo-Neos!"
+        },
+        "V0115_13_00_51_0": {
+            "card": [
+                13867
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Dreifache Kontaktfusion!"
+        },
+        "V0115_13_00_51_1": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Hier ist Elementar-HELD Nebel-Neos!"
+        },
+        "V0115_13_00_52_0": {
+            "card": [
+                14216
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Auf in den Kampf, Elementar-HELD Grandmerge!"
+        },
+        "V0115_13_00_53_0": {
+            "card": [
+                7409
+            ],
+            "cutin": 4,
+            "duelist": [],
+            "face": 7,
+            "frame": 1,
+            "text": "Wir haben viel durchgemacht, um hier zusammen stehen zu können."
+        },
+        "V0115_13_00_53_1": {
+            "card": [],
+            "cutin": 4,
+            "duelist": [],
+            "face": 7,
+            "frame": 1,
+            "text": "Los geht’s, Yubel!"
+        },
+        "V0115_13_00_54_0": {
+            "card": [
+                7410
+            ],
+            "cutin": 4,
+            "duelist": [],
+            "face": 7,
+            "frame": 1,
+            "text": "Yubel!\nEntwickle dich zur Terrorinkarnation!"
+        },
+        "V0115_13_00_55_0": {
+            "card": [
+                7411
+            ],
+            "cutin": 4,
+            "duelist": [],
+            "face": 7,
+            "frame": 1,
+            "text": "Yubels ultimative Form lebt in mir!"
+        },
+        "V0115_13_00_55_1": {
+            "card": [],
+            "cutin": 4,
+            "duelist": [],
+            "face": 7,
+            "frame": 1,
+            "text": "Yubel - Der ultimative Albtraum!"
+        },
+        "V0115_14_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Kämpfen wir!"
+        },
+        "V0115_14_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Kämpfe!"
+        },
+        "V0115_15_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Los!"
+        },
+        "V0115_15_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Nimm das!"
+        },
+        "V0115_15_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Zeig, was du draufhast!"
+        },
+        "V0115_16_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Dieses Duell war spaßig!\nAber alles muss ein Ende haben!"
+        },
+        "V0115_16_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Dieses Duell war spaßig!\nAber alles muss ein Ende haben!"
+        },
+        "V0115_17_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Mein Monster greift an!"
+        },
+        "V0115_17_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich greife mit meinem Monster an!"
+        },
+        "V0115_17_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Angriff!"
+        },
+        "V0115_18_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Mein Monster greift dich direkt an!"
+        },
+        "V0115_18_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich greife dich direkt an!"
+        },
+        "V0115_19_00_00_0": {
+            "card": [
+                6310
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Elementar-HELD Avian greift an!"
+        },
+        "V0115_19_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Federkaskade!"
+        },
+        "V0115_19_00_01_0": {
+            "card": [
+                6311
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Greif an, Elementar-HELD Burstinatrix!"
+        },
+        "V0115_19_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Leuchtfeuersturm!"
+        },
+        "V0115_19_00_02_0": {
+            "card": [
+                6312
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Schnapp sie dir, Elementar-HELD Clayman!"
+        },
+        "V0115_19_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Lehmfaust!"
+        },
+        "V0115_19_00_03_0": {
+            "card": [
+                6313
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Elementar-HELD Sparkman! Angriff!"
+        },
+        "V0115_19_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Statische Schockwelle!"
+        },
+        "V0115_19_00_04_0": {
+            "card": [
+                6344
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Los, Elementar-HELD Flammenflügelmann!"
+        },
+        "V0115_19_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Sengender Sturzflug!"
+        },
+        "V0115_19_00_05_0": {
+            "card": [
+                6393
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Greif an, Elementar-HELD Bubbleman!"
+        },
+        "V0115_19_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Bubble-Strahl!"
+        },
+        "V0115_19_00_06_0": {
+            "card": [
+                6467
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Schnapp sie dir, Elementar-HELD Glänzender Flügelmann!"
+        },
+        "V0115_19_00_06_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Leuchtende Smaragdkugel!"
+        },
+        "V0115_19_00_07_0": {
+            "card": [
+                6477
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Los, Elementar-HELD Bladedge!"
+        },
+        "V0115_19_00_07_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Schnetzelangriff!"
+        },
+        "V0115_19_00_08_0": {
+            "card": [
+                6478
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Elementar-HELD Wildheart! Angriff!"
+        },
+        "V0115_19_00_08_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Wilder Hieb!"
+        },
+        "V0115_19_00_09_0": {
+            "card": [
+                6487
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Elementar-HELD Tempest greift an!"
+        },
+        "V0115_19_00_09_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Chaossturmschlag!"
+        },
+        "V0115_19_00_10_0": {
+            "card": [
+                6488
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Greif an, Elementar-HELD Wildedge!"
+        },
+        "V0115_19_00_10_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Säbelhieb!"
+        },
+        "V0115_19_00_11_0": {
+            "card": [
+                6527
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Elementar-HELD Necroshade! Angriff!"
+        },
+        "V0115_19_00_11_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Dunkler Schattenhieb!"
+        },
+        "V0115_19_00_12_0": {
+            "card": [
+                6639
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Attacke, Elementar-HELD Elektrum!"
+        },
+        "V0115_19_00_12_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Elementarer Strahlenausbruch!"
+        },
+        "V0115_19_00_13_0": {
+            "card": [
+                7491
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Elementar-HELD Prisma greift an!"
+        },
+        "V0115_19_00_14_0": {
+            "card": [
+                6314
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Geflügelter Kuriboh!\nAngriff!"
+        },
+        "V0115_19_00_15_0": {
+            "card": [
+                7526
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Los, Geflügelter Kuriboh LV9!"
+        },
+        "V0115_19_00_15_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Berserkerschlag!"
+        },
+        "V0115_19_00_16_0": {
+            "card": [
+                6406
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Schnapp sie dir, Geflügelter Kuriboh LV10!"
+        },
+        "V0115_19_00_17_0": {
+            "card": [
+                6654
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Löwenzahn-Löwe greift an!"
+        },
+        "V0115_19_00_18_0": {
+            "card": [
+                6768
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Angriff, Neo-Weltraum Aqua Dolphin!"
+        },
+        "V0115_19_00_19_0": {
+            "card": [
+                6769
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Greif an, Neo-Weltraum Air Hummingbird!"
+        },
+        "V0115_19_00_19_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Vernichtender Sturzflug!"
+        },
+        "V0115_19_00_20_0": {
+            "card": [
+                6770
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Attacke, Neo-Weltraum Grand Mole!"
+        },
+        "V0115_19_00_20_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Maulwurfbohrer!"
+        },
+        "V0115_19_00_21_0": {
+            "card": [
+                6771
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Angriff, Neo-Weltraum Glow Moss!"
+        },
+        "V0115_19_00_21_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Sporenspeer!"
+        },
+        "V0115_19_00_22_0": {
+            "card": [
+                6772
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Schlag zu, Neo-Weltraum Dark Panther!"
+        },
+        "V0115_19_00_22_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Dunkle Kralle!"
+        },
+        "V0115_19_00_23_0": {
+            "card": [
+                6773
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Neo-Weltraum Flare Scarab greift an!"
+        },
+        "V0115_19_00_23_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Flammender Pfeil!"
+        },
+        "V0115_19_00_24_0": {
+            "card": [
+                7174
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Neo-Weltraum Marine Dolphin greift an!"
+        },
+        "V0115_19_00_25_0": {
+            "card": [
+                7441
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Greif an, Neo-Weltraum Twinkle Moss!"
+        },
+        "V0115_19_00_25_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Glitzerblitz!"
+        },
+        "V0115_19_00_26_0": {
+            "card": [
+                6764
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Greif an, Verpuppter Delfin!"
+        },
+        "V0115_19_00_27_0": {
+            "card": [
+                7155
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Verpupptes Küken greift an!"
+        },
+        "V0115_19_00_28_0": {
+            "card": [
+                7156
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Verpuppter Panschwanz!\nAngriff!"
+        },
+        "V0115_19_00_29_0": {
+            "card": [
+                7157
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Verpuppter Pinny greift an!"
+        },
+        "V0115_19_00_30_0": {
+            "card": [
+                7172
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Attacke, Verpuppte Larve!"
+        },
+        "V0115_19_00_31_0": {
+            "card": [
+                7173
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Verpuppter Mole!\nAngriff!"
+        },
+        "V0115_19_00_32_0": {
+            "card": [
+                7574
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Los, Aufrichtig!"
+        },
+        "V0115_19_00_32_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Aufrichtiger Schrei!"
+        },
+        "V0115_19_00_33_0": {
+            "card": [
+                6653
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Los, Neos!"
+        },
+        "V0115_19_00_33_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Kosmischer Schlag!"
+        },
+        "V0115_19_00_34_0": {
+            "card": [
+                6765
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Elementar-HELD Dark Neos greift an!"
+        },
+        "V0115_19_00_34_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Dunkler kosmischer Schlag!"
+        },
+        "V0115_19_00_35_0": {
+            "card": [
+                6766
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Greif an, Elementar-HELD Aqua Neos!"
+        },
+        "V0115_19_00_35_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Schallexplosion!"
+        },
+        "V0115_19_00_36_0": {
+            "card": [
+                6767
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Attacke, Elementar-HELD Flare Neos!"
+        },
+        "V0115_19_00_36_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Leuchtfeuersturm!"
+        },
+        "V0115_19_00_37_0": {
+            "card": [
+                6988
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Greif an, Elementar-HELD Glow Neos!"
+        },
+        "V0115_19_00_37_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Blitzangriff!"
+        },
+        "V0115_19_00_38_0": {
+            "card": [
+                6989
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Attacke, Elementar-HELD Air Neos!"
+        },
+        "V0115_19_00_38_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Wolkenreißer-Schwingen!"
+        },
+        "V0115_19_00_39_0": {
+            "card": [
+                6990
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Elementar-HELD Grand Neos!\nAngriff!"
+        },
+        "V0115_19_00_40_0": {
+            "card": [
+                7175
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Greif an, Elementar-HELD Marine Neos!"
+        },
+        "V0115_19_00_40_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Hyperturbo-Sturm!"
+        },
+        "V0115_19_00_41_0": {
+            "card": [
+                7177
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Elementar-HELD Magma Neos! Angriff!"
+        },
+        "V0115_19_00_41_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Meteorschmelze!"
+        },
+        "V0115_19_00_42_0": {
+            "card": [
+                7275
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Elementar-HELD Chaos Neos! Angriff!"
+        },
+        "V0115_19_00_42_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Chaoszornblitz!"
+        },
+        "V0115_19_00_43_0": {
+            "card": [
+                7442
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Los, Elementar-HELD Storm Neos!"
+        },
+        "V0115_19_00_43_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ultimativer Taifun!"
+        },
+        "V0115_19_00_44_0": {
+            "card": [
+                7443
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Los, Regenbogen-Neos!"
+        },
+        "V0115_19_00_44_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Regenbogenstrahlung!"
+        },
+        "V0115_19_00_45_0": {
+            "card": [
+                7805
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Neos Weiser greift an!"
+        },
+        "V0115_19_00_45_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ultimative Nova!"
+        },
+        "V0115_19_00_46_0": {
+            "card": [
+                7806
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Attacke, Elementar-HELD Divine Neos!"
+        },
+        "V0115_19_00_46_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Legendärer Schlag!"
+        },
+        "V0115_19_00_47_0": {
+            "card": [
+                8866
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Schnapp sie dir, Elementar-HELD Neos Knight!"
+        },
+        "V0115_19_00_47_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Finaler Neos-Hieb!"
+        },
+        "V0115_19_00_48_0": {
+            "card": [
+                12901
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Elementar-HELD Aufrichtiger Neos greift an!"
+        },
+        "V0115_19_00_49_0": {
+            "card": [
+                14112
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Attacke, Elementar-HELD Tapferer Neos!"
+        },
+        "V0115_19_00_50_0": {
+            "card": [
+                14113
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Elementar-HELD Kosmo-Neos! Angriff!"
+        },
+        "V0115_19_00_51_0": {
+            "card": [
+                13867
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Mach sie platt, Elementar-HELD Nebel-Neos!"
+        },
+        "V0115_19_00_52_0": {
+            "card": [
+                14216
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Elementar-HELD Grandmerge! Angriff!"
+        },
+        "V0115_19_00_53_0": {
+            "card": [
+                7409
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 1,
+            "text": "Yubel!\nAngriff!"
+        },
+        "V0115_19_00_54_0": {
+            "card": [
+                7410
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 1,
+            "text": "Los, Yubel - Terrorinkarnation!"
+        },
+        "V0115_19_00_55_0": {
+            "card": [
+                7411
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 1,
+            "text": "Yubel - Der ultimative Albtraum!\nAngriff!"
+        },
+        "V0115_20_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich spiele eine verdeckte Karte!"
+        },
+        "V0115_20_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich spiele eine verdeckte Karte!"
+        },
+        "V0115_20_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich setze ein Monster!"
+        },
+        "V0115_20_01_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich setze ein Monster!"
+        },
+        "V0115_21_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Für mich läuft alles nach Plan!\nIch beende meinen Zug!"
+        },
+        "V0115_21_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich beende meinen Spielzug."
+        },
+        "V0115_21_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich beende meinen Zug!"
+        },
+        "V0115_21_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich beende meinen Zug."
+        },
+        "V0115_21_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Ich muss jede Sekunde aufpassen!\nIch beende meinen Zug!"
+        },
+        "V0115_21_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Argh …\nIch beende meinen Zug!"
+        },
+        "V0115_22_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Uff!"
+        },
+        "V0115_22_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Ahh!"
+        },
+        "V0115_22_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Argh!"
+        },
+        "V0115_23_00_00_0": {
+            "card": [],
+            "cutin": 3,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Ahhhhhhhhhhhh!"
+        },
+        "V0115_24_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Urgs!"
+        },
+        "V0115_25_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ahhhhh!"
+        },
+        "V0115_25_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Arghhh …"
+        },
+        "V0115_25_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ahhhhhhhhh!"
+        },
+        "V0115_26_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Nichts, womit ich nicht umgehen könnte!"
+        },
+        "V0115_26_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Urgs!"
+        },
+        "V0115_26_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Ich bin noch nicht geschlagen!"
+        },
+        "V0115_27_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "So leicht lass ich mich nicht besiegen!"
+        },
+        "V0115_27_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Wir haben gerade erst angefangen!"
+        },
+        "V0115_27_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Grr …"
+        },
+        "V0115_28_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Das war’s!"
+        },
+        "V0115_28_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Das war ein schönes Duell!"
+        },
+        "V0115_28_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ohne meine Monster hätte ich nicht gewinnen können!"
+        },
+        "V0115_28_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich darf noch nicht verlieren!"
+        },
+        "V0115_28_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Nicht, wenn ich für jemanden kämpfe, der mir viel bedeutet!"
+        },
+        "V0115_28_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                105
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Ähm … Tust du etwa so, als wärst du ein Schwächling?"
+        },
+        "V0115_28_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                106
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Es gibt da etwas, was ich dir sagen möchte …"
+        },
+        "V0115_28_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Danke für das tolle Duell!\nSo viel Spaß hatte ich lange nicht!"
+        },
+        "V0115_28_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                112
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Hast du einfach das Deck deines Bruders kopiert?"
+        },
+        "V0115_28_00_06_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Du wirst nie gewinnen, bis du dein eigenes Spiel spielst."
+        },
+        "V0115_28_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                107
+            ],
+            "face": 2,
+            "frame": 0,
+            "text": "Und das war’s!"
+        },
+        "V0115_28_00_07_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Sieht aus, als hätte ich den Test bestanden, Dr. Crowler!"
+        },
+        "V0115_28_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                109
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Wir müssen gegen das Licht der Zerstörung kämpfen."
+        },
+        "V0115_28_00_08_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Und wir werden es gemeinsam tun!"
+        },
+        "V0115_28_00_09_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                114,
+                133
+            ],
+            "face": 3,
+            "frame": 0,
+            "text": "Komm schon, niemand kann das Schicksal kontrollieren!"
+        },
+        "V0115_28_00_09_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Du solltest das besser als jeder andere wissen, Sartorius!"
+        },
+        "V0115_28_00_10_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                1,
+                331,
+                6,
+                303
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Yugi, dieses Duell vergesse ich nie!\nEs ist das beste Geschenk!"
+        },
+        "V0115_28_00_11_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                201
+            ],
+            "face": 2,
+            "frame": 0,
+            "text": "Yusei, ich dachte nicht, dass du der Typ bist, der aufgibt."
+        },
+        "V0115_28_00_12_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                155
+            ],
+            "face": 3,
+            "frame": 0,
+            "text": "Der Oberste König und Yubel sind beide in mir am Leben!"
+        },
+        "V0115_29_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Ich wusste nicht, welche Strategien du spielen würdest!"
+        },
+        "V0115_29_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich verliere nicht gern, aber Spaß ist auch wichtig!"
+        },
+        "V0115_29_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Ich gebe niemals auf."
+        },
+        "V0115_29_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Ich und meine HELDEN werden am Ende gewinnen!"
+        },
+        "V0115_29_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Sicher, ich bin vielleicht nicht der Stärkste …"
+        },
+        "V0115_29_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Aber das heißt nicht, dass ich nicht kämpfen werde!"
+        },
+        "V0115_29_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                105
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Siehst du, Chazz?\nDu kannst auch ohne alberne Tricks gewinnen."
+        },
+        "V0115_29_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                106
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Ohne dich wäre ich niemals so weit gekommen."
+        },
+        "V0115_29_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich bin froh, dass wir uns kennengelernt haben, Alexis!"
+        },
+        "V0115_29_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                112
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Dein Deck wollte unbedingt gewinnen – so wie du, Sy!"
+        },
+        "V0115_29_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                113
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Du hast dich klar an mir vorbei entwickelt, Hassleberry!"
+        },
+        "V0115_29_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                107
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich habe echt viel von dir gelernt!"
+        },
+        "V0115_29_00_09_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                104
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Ja, ich bin manchmal frustriert, wenn ich verliere."
+        },
+        "V0115_29_00_09_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Trotzdem macht mich das Duellieren glücklich!"
+        },
+        "V0115_29_00_10_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                109
+            ],
+            "face": 5,
+            "frame": 0,
+            "text": "Ich kenne deinen Schmerz.\nLass uns dieses Duell beenden."
+        },
+        "V0115_29_00_11_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                114,
+                133
+            ],
+            "face": 3,
+            "frame": 0,
+            "text": "Lass dich nicht von der Leere kontrollieren, Sartorius!"
+        },
+        "V0115_29_00_12_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                1,
+                331,
+                6,
+                303
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Yugi, ich werde stärker!\nWir duellieren uns bald wieder!"
+        },
+        "V0115_29_00_13_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                201
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Deine Züge sind unglaublich, Yusei!"
+        },
+        "V0115_29_00_14_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                155
+            ],
+            "face": 3,
+            "frame": 0,
+            "text": "Argh …\nDie dunkle Seite ist echt hart!"
+        },
+        "V0115_30_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Diese dummen Tricks werden bei mir nicht funktionieren."
+        },
+        "V0115_30_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Wow, du hast viele Tricks drauf."
+        },
+        "V0115_30_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich gebe im Duell alles, um 100%ig zu gewinnen!"
+        },
+        "V0115_31_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Was!?"
+        },
+        "V0115_31_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Unmöglich!"
+        },
+        "V0115_32_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Yu-Gi-Oh! Duel Links"
+        },
+        "V0115_32_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Yu-Gi-Oh! Duel Links!"
+        },
+        "V0115_33_00_00_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Ich habe eine ziemlich coole Kraft."
+        },
+        "V0115_33_00_01_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Yubel lebt in mir!"
+        },
+        "V0115_33_00_02_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Ich werde mein Bestes geben!"
+        },
+        "V0115_34_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Habe ich … Angst?"
+        },
+        "V0115_34_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Ich werde die Macht der Schatten nutzen und dich besiegen!"
+        },
+        "V0115_34_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Dies ist das beste Duell, das ich seit langem hatte!"
+        },
+        "V0115_34_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Wenn dir das keinen Spaß macht, bist du kein Duellant!"
+        },
+        "V0115_34_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Dieses Duell wird mich daran erinnern, was ich verlor …"
+        },
+        "V0115_34_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Meine Mission ist größer als das hier!"
+        },
+        "V0115_34_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Keine Sorge, Yubel. Es geht mir gut."
+        },
+        "V0115_34_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Das ist nicht sehr nett, Yubel."
+        },
+        "V0115_34_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Los geht’s, Neos."
+        },
+        "V0115_34_00_09_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Das war’s!"
+        },
+        "V0115_35_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Gib einfach alles in jedem Duell!"
+        },
+        "V0115_35_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "In mir steckt jemand, der an mich glaubt!"
+        },
+        "V0115_36_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Du schaffst das!"
+        },
+        "V0115_36_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich weiß, dass du das schaffst."
+        },
+        "V0115_36_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Mein Fehler. Hoffe, du kriegst das ohne mich hin."
+        },
+        "V0115_36_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                106
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Du schaffst das, Alexis!\nAber achte auf verdeckte Karten."
+        }
+    }
+}

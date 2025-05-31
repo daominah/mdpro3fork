@@ -1,0 +1,2583 @@
+{
+    "_GRP_": "SN0218",
+    "_LNG_": "de-DE",
+    "info": {
+        "V0218_01_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "Diese Ära muss enden, damit eine neue beginnen kann."
+        },
+        "V0218_01_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "Ich habe den Weg der Zerstörung gewählt – akzeptiere es."
+        },
+        "V0218_01_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "Entscheidest du, mich zu bekämpfen, endet deine Existenz."
+        },
+        "V0218_01_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "Ich werde die Welt vernichten, für eine strahlende Zukunft!"
+        },
+        "V0218_01_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                216
+            ],
+            "face": 8,
+            "frame": 0,
+            "text": "Aporia, du weißt, wie stark ich bin.\nDu hast keine Chance."
+        },
+        "V0218_01_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                216
+            ],
+            "face": 8,
+            "frame": 0,
+            "text": "Aporia, Hoffnung ist nur eine Illusion."
+        },
+        "V0218_01_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                209
+            ],
+            "face": 8,
+            "frame": 0,
+            "text": "Antinomy, du bist ein Träumer.\nUnd Träume sind nicht real."
+        },
+        "V0218_01_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                217
+            ],
+            "face": 8,
+            "frame": 0,
+            "text": "Paradox, zeig mir die Ergebnisse deiner Forschung."
+        },
+        "V0218_01_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                201
+            ],
+            "face": 8,
+            "frame": 0,
+            "text": "Yusei, alles, woran du glaubst, ist gegen mich sinnlos."
+        },
+        "V0218_02_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "Duell."
+        },
+        "V0218_03_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Wenn du weiterkämpfst, werde ich tun, was getan werden muss."
+        },
+        "V0218_03_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich bin am Zug."
+        },
+        "V0218_03_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Je länger du weitermachst, desto mehr wirst du leiden."
+        },
+        "V0218_03_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Mein Spielzug."
+        },
+        "V0218_03_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "Mein Spielzug."
+        },
+        "V0218_03_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "Für diese Welt gibt es keine Hoffnung."
+        },
+        "V0218_03_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "Ich bin am Zug."
+        },
+        "V0218_03_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Das ist also die Strategie, die du einsetzen willst."
+        },
+        "V0218_03_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Ich bin am Zug."
+        },
+        "V0218_03_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Der Hauch einer Chance, an den du glaubst, ist nicht real."
+        },
+        "V0218_03_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Mein Spielzug."
+        },
+        "V0218_04_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich ziehe."
+        },
+        "V0218_04_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "Ich ziehe."
+        },
+        "V0218_04_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Ich ziehe."
+        },
+        "V0218_05_00_00_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Egal, was du versuchst, du kannst die Welt nicht retten!"
+        },
+        "V0218_05_00_00_1": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ich ziehe!"
+        },
+        "V0218_06_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 1,
+            "text": "Sinnlos."
+        },
+        "V0218_06_01_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 1,
+            "text": "Für den Moment …"
+        },
+        "V0218_06_01_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 1,
+            "text": "Ich spiele das."
+        },
+        "V0218_06_01_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 1,
+            "text": "Dies wird all deine Illusionen über einen Sieg beenden."
+        },
+        "V0218_07_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Von meiner Hand …"
+        },
+        "V0218_07_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Ich aktiviere eine Zauberkarte."
+        },
+        "V0218_07_02_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Ich aktiviere einen Schnellzauber."
+        },
+        "V0218_07_03_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Ich aktiviere einen Permanenten Zauber."
+        },
+        "V0218_07_04_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Ich aktiviere einen Ausrüstungszauber."
+        },
+        "V0218_07_05_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Ich aktiviere einen Ritualzauber."
+        },
+        "V0218_07_06_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Ich aktiviere eine Falle."
+        },
+        "V0218_07_07_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Ich aktiviere eine Permanente Falle."
+        },
+        "V0218_07_08_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Ich aktiviere eine Konterfalle."
+        },
+        "V0218_07_09_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Ich decke meine gesetzte Karte auf."
+        },
+        "V0218_07_09_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Dies ist die Karte, die ich gesetzt habe."
+        },
+        "V0218_07_10_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Ich aktiviere den Effekt meines Monsters."
+        },
+        "V0218_07_11_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Ich aktiviere einen Spielfeldzauber."
+        },
+        "V0218_07_12_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Ich aktiviere einen Effekt."
+        },
+        "V0218_07_13_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Ich lege den Pendelbereich fest."
+        },
+        "V0218_07_14_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Ich aktiviere einen Pendeleffekt."
+        },
+        "V0218_08_00_00_0": {
+            "card": [
+                13820
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Ich aktiviere meine Permanente Falle, Hohle Maschine."
+        },
+        "V0218_08_00_01_0": {
+            "card": [
+                13820
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Ich aktiviere den Effekt von Hohle Maschine."
+        },
+        "V0218_08_00_02_0": {
+            "card": [
+                13821
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Ich beseitige Hohle Maschine, um Unendliche Maschine zu aktivieren."
+        },
+        "V0218_08_00_03_0": {
+            "card": [
+                13821
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Ich aktiviere den Effekt von Unendliche Maschine."
+        },
+        "V0218_08_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Werde Zeuge der unendlichen Macht der Herren der Zeit."
+        },
+        "V0218_08_00_04_0": {
+            "card": [
+                13822
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Ich lege Unendliche Maschine auf den Friedhof, um Unendliches Licht zu spielen."
+        },
+        "V0218_08_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Meine Herren der Zeit werden nie von meiner Seite weichen."
+        },
+        "V0218_08_00_05_0": {
+            "card": [
+                13822
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Der Effekt von Unendliches Licht wird aktiviert."
+        },
+        "V0218_08_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Ich rufe Herren der Zeit von meiner Hand, meinem Deck und meinem Friedhof."
+        },
+        "V0218_08_00_06_0": {
+            "card": [
+                99999
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Ich aktiviere meine Falle, törichte Entscheidung."
+        },
+        "V0218_08_00_07_0": {
+            "card": [
+                99999
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Ich aktiviere die Falle Sprichwort des Magiers."
+        },
+        "V0218_08_00_08_0": {
+            "card": [
+                3473
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Ich aktiviere meine Falle.\nStab der Kaiserin."
+        },
+        "V0218_08_00_09_0": {
+            "card": [
+                3474
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Ich aktiviere meine Falle.\nKrone der Kaiserin."
+        },
+        "V0218_08_00_10_0": {
+            "card": [
+                9447
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Der Effekt von Z-ONE wird bei Zerstörung aktiviert."
+        },
+        "V0218_08_00_10_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Ich bekomme einen permanenten Zauber oder Spielfeldzauber von meinem Friedhof."
+        },
+        "V0218_08_00_11_0": {
+            "card": [
+                4344
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Ich aktiviere meine Zauberkarte, Mooyan Curry."
+        },
+        "V0218_08_00_12_0": {
+            "card": [
+                4348
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Ich aktiviere meine Zauberkarte, Dian Keto, Meisterheiler."
+        },
+        "V0218_09_00_00_0": {
+            "card": [
+                9708
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Ich aktiviere den Effekt von Sephylon, der ultimative Zeitherrscher."
+        },
+        "V0218_09_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Ich beschwöre ein Fee-Monster als Spezialbeschwörung von meiner Hand oder meinem Friedhof."
+        },
+        "V0218_09_00_00_2": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Die Effekte dieses Monsters werden annulliert, aber seine ATK werden zu 4000."
+        },
+        "V0218_09_00_01_0": {
+            "card": [
+                9708
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Erfahre, wie machtlos du bist."
+        },
+        "V0218_09_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Ich aktiviere den Effekt von Sephylon, der ultimative Zeitherrscher."
+        },
+        "V0218_09_00_02_0": {
+            "card": [
+                13818
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Wenn Gabrion, Herr der Zeit kämpft, wird der Effekt aktiviert."
+        },
+        "V0218_09_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Alle Karten auf deiner Spielfeldseite kommen zurück ins Deck."
+        },
+        "V0218_09_00_02_2": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Dann ziehst du genauso viele Karten neu, wie du zurückgelegt hast."
+        },
+        "V0218_09_00_03_0": {
+            "card": [
+                13818
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Der Effekt von Gabrion, Herr der Zeit wird aktiviert."
+        },
+        "V0218_09_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Diese Karte kommt zurück ins Deck."
+        },
+        "V0218_09_00_04_0": {
+            "card": [
+                13160
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Da Kamion, Herr der Zeit gekämpft hat, wird der Effekt aktiviert."
+        },
+        "V0218_09_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Eine deiner Karten kommt zurück ins Deck, und du erhältst Schaden."
+        },
+        "V0218_09_00_05_0": {
+            "card": [
+                13160
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Der Effekt von Kamion, Herr der Zeit wird aktiviert."
+        },
+        "V0218_09_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Diese Karte kommt zurück ins Deck."
+        },
+        "V0218_09_00_06_0": {
+            "card": [
+                13159
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Da Sadion, Herr der Zeit gekämpft hat, wird der Effekt aktiviert."
+        },
+        "V0218_09_00_07_0": {
+            "card": [
+                13159
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Der Effekt von Sadion, Herr der Zeit wird aktiviert."
+        },
+        "V0218_09_00_07_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Diese Karte kommt zurück ins Deck."
+        },
+        "V0218_09_00_08_0": {
+            "card": [
+                13158
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Da Zaphion, Herr der Zeit gekämpft hat, wird der Effekt aktiviert."
+        },
+        "V0218_09_00_08_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Alle Zauber- und Fallenkarten auf deiner Spielfeldseite kommen zurück ins Deck."
+        },
+        "V0218_09_00_09_0": {
+            "card": [
+                13158
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Zaphion, Herr der Zeit wird aktiviert, wenn sie vom Spielfeld auf den Friedhof gelegt wird."
+        },
+        "V0218_09_00_09_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Ich ziehe eine Karte."
+        },
+        "V0218_09_00_10_0": {
+            "card": [
+                13158
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Der Effekt von Zaphion, Herr der Zeit wird aktiviert."
+        },
+        "V0218_09_00_10_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Diese Karte kommt zurück ins Deck."
+        },
+        "V0218_09_00_11_0": {
+            "card": [
+                13819
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Da Sandaion, Herr der Zeit gekämpft hat, wird der Effekt aktiviert."
+        },
+        "V0218_09_00_11_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Er fügt dir Schaden zu."
+        },
+        "V0218_09_00_12_0": {
+            "card": [
+                13819
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Der Effekt von Sandaion, Herr der Zeit wird aktiviert."
+        },
+        "V0218_09_00_12_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Diese Karte kommt zurück ins Deck."
+        },
+        "V0218_09_00_13_0": {
+            "card": [
+                13816
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Da Hailon, Herr der Zeit gekämpft hat, wird der Effekt aktiviert."
+        },
+        "V0218_09_00_13_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Du erhältst Schaden."
+        },
+        "V0218_09_00_14_0": {
+            "card": [
+                13816
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Der Effekt von Hailon, Herr der Zeit wird aktiviert."
+        },
+        "V0218_09_00_14_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Diese Karte kommt zurück ins Deck."
+        },
+        "V0218_09_00_15_0": {
+            "card": [
+                13815
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Spüre den Effekt von Michion, Herr der Zeit."
+        },
+        "V0218_09_00_15_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Wenn diese Karte gekämpft hat, werden deine LP halbiert."
+        },
+        "V0218_09_00_16_0": {
+            "card": [
+                13815
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Der Effekt von Michion, Herr der Zeit wird aktiviert."
+        },
+        "V0218_09_00_16_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Diese Karte kommt zurück ins Deck."
+        },
+        "V0218_09_00_17_0": {
+            "card": [
+                9698
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Metaion, Herr der Zeit aktiviert den Effekt, wenn sie gekämpft hat."
+        },
+        "V0218_09_00_17_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Alle anderen Monster kommen auf die Hand zurück, und du erhältst Schaden."
+        },
+        "V0218_09_00_18_0": {
+            "card": [
+                9698
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Der Effekt von Metaion, Herr der Zeit wird aktiviert."
+        },
+        "V0218_09_00_18_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Diese Karte kommt zurück ins Deck."
+        },
+        "V0218_09_00_19_0": {
+            "card": [
+                13157
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Da Lazion, Herr der Zeit gekämpft hat, wird der Effekt aktiviert."
+        },
+        "V0218_09_00_19_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Alle Karten auf deinem Friedhof kommen zurück in dein Deck."
+        },
+        "V0218_09_00_20_0": {
+            "card": [
+                13157
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Der Effekt von Lazion, Herr der Zeit wird aktiviert."
+        },
+        "V0218_09_00_20_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Wenn du ziehst, erhältst du Schaden."
+        },
+        "V0218_09_00_21_0": {
+            "card": [
+                13157
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Der Effekt von Lazion, Herr der Zeit wird aktiviert."
+        },
+        "V0218_09_00_21_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Diese Karte kommt zurück ins Deck."
+        },
+        "V0218_09_00_22_0": {
+            "card": [
+                13817
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Da Raphion, Herr der Zeit gekämpft hat, spüre den Effekt."
+        },
+        "V0218_09_00_23_0": {
+            "card": [
+                13817
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Der Effekt von Raphion, Herr der Zeit wird aktiviert."
+        },
+        "V0218_09_00_23_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Diese Karte kommt zurück ins Deck."
+        },
+        "V0218_09_00_24_0": {
+            "card": [
+                14163
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Herr der Zeit Progenitor Vorpgate aktiviert den Effekt."
+        },
+        "V0218_09_00_24_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Nachdem sie gekämpft hat, werden alle Monster auf deiner Spielfeldseite verbannt."
+        },
+        "V0218_09_00_25_0": {
+            "card": [
+                14163
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Der Effekt von Herr der Zeit Progenitor Vorpgate wird aktiviert."
+        },
+        "V0218_09_00_25_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Alle von ihm verbannten Monster werden auf deiner Spielfeldseite spezialbeschworen."
+        },
+        "V0218_09_00_26_0": {
+            "card": [
+                13161
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Ich biete Zeitmaid als Tribut an, um ihren Effekt zu aktivieren."
+        },
+        "V0218_09_00_26_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Ich füge meiner Hand einen Herren der Zeit aus meinem Deck mit 0 ATK hinzu."
+        },
+        "V0218_09_00_27_0": {
+            "card": [
+                13161
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Ich verbanne Zeitmaid von meinem Friedhof, um ihren Effekt zu nutzen."
+        },
+        "V0218_09_00_27_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Sie beschwört einen Herren der Zeit mit 0 ATK als Spezialbeschwörung aus meinem Deck."
+        },
+        "V0218_09_00_28_0": {
+            "card": [
+                3459
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Der Effekt von Time Angel wird aktiviert."
+        },
+        "V0218_09_00_29_0": {
+            "card": [
+                7734
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Ich aktiviere den Effekt von Sternenstaubdrache."
+        },
+        "V0218_09_00_29_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Opferzuflucht!"
+        },
+        "V0218_09_00_30_0": {
+            "card": [
+                7734
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Der Effekt von Sternenstaubdrache wird aktiviert."
+        },
+        "V0218_09_00_31_0": {
+            "card": [
+                9117
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Der Effekt von Sternschnuppen-Drache wird aktiviert."
+        },
+        "V0218_09_00_32_0": {
+            "card": [
+                12998
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Der Effekt von Kosmischer Blazardrache wird aktiviert."
+        },
+        "V0218_10_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Erscheine."
+        },
+        "V0218_10_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Sieh und staune."
+        },
+        "V0218_10_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Okay."
+        },
+        "V0218_10_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "He he."
+        },
+        "V0218_11_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Ich beschwöre ein Monster."
+        },
+        "V0218_11_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Ich beschwöre ein Monster in Verteidigungsposition."
+        },
+        "V0218_11_02_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Ich beschwöre ein Monster als Spezialbeschwörung."
+        },
+        "V0218_11_03_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Ich biete ein Monster als Tribut an."
+        },
+        "V0218_11_04_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Ich beschwöre ein Monster als Tributbeschwörung."
+        },
+        "V0218_11_04_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Tributbeschwörung."
+        },
+        "V0218_11_05_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Ich beschwöre ein Monster als Fusionsbeschwörung."
+        },
+        "V0218_11_05_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Fusionsbeschwörung."
+        },
+        "V0218_11_06_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Ich beschwöre ein Monster als Ritualbeschwörung."
+        },
+        "V0218_11_06_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Ritualbeschwörung."
+        },
+        "V0218_11_07_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Ich beschwöre ein Monster als Synchrobeschwörung."
+        },
+        "V0218_11_07_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Synchrobeschwörung."
+        },
+        "V0218_11_08_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Ich beschwöre ein Monster als Xyz-Beschwörung."
+        },
+        "V0218_11_08_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Xyz-Beschwörung."
+        },
+        "V0218_11_09_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Ich beschwöre ein Monster als Pendelbeschwörung."
+        },
+        "V0218_11_09_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Pendelbeschwörung."
+        },
+        "V0218_11_10_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Ich beschwöre ein Monster als Linkbeschwörung."
+        },
+        "V0218_11_10_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Linkbeschwörung."
+        },
+        "V0218_13_00_00_0": {
+            "card": [
+                9708
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Sephylon, der ultimative Zeitherrscher!"
+        },
+        "V0218_13_00_01_0": {
+            "card": [
+                9708
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Werde Zeuge meiner wahren Macht!\nDie Essenz von allem!"
+        },
+        "V0218_13_00_01_1": {
+            "card": [],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Sephylon, der ultimative Zeitherrscher!"
+        },
+        "V0218_13_00_02_0": {
+            "card": [
+                13818
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Gabrion, Herr der Zeit!"
+        },
+        "V0218_13_00_03_0": {
+            "card": [
+                13160
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Kamion, Herr der Zeit!"
+        },
+        "V0218_13_00_04_0": {
+            "card": [
+                13159
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Sadion, Herr der Zeit!"
+        },
+        "V0218_13_00_05_0": {
+            "card": [
+                13158
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Zaphion, Herr der Zeit!"
+        },
+        "V0218_13_00_06_0": {
+            "card": [
+                13819
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Sandaion, Herr der Zeit!"
+        },
+        "V0218_13_00_07_0": {
+            "card": [
+                13816
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Hailon, Herr der Zeit!"
+        },
+        "V0218_13_00_08_0": {
+            "card": [
+                13815
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Michion, Herr der Zeit!"
+        },
+        "V0218_13_00_09_0": {
+            "card": [
+                9698
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Metaion, Herr der Zeit!"
+        },
+        "V0218_13_00_10_0": {
+            "card": [
+                13157
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Lazion, Herr der Zeit!"
+        },
+        "V0218_13_00_11_0": {
+            "card": [
+                13817
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Raphion, Herr der Zeit!"
+        },
+        "V0218_13_00_12_0": {
+            "card": [
+                14163
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Erhebe dich!\nHerr der Zeit Progenitor Vorpgate!"
+        },
+        "V0218_13_00_13_0": {
+            "card": [
+                13161
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Zeitmaid."
+        },
+        "V0218_13_00_14_0": {
+            "card": [
+                3459
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Time Angel."
+        },
+        "V0218_13_00_15_0": {
+            "card": [
+                7734
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Abflug, Sternenstaubdrache!"
+        },
+        "V0218_13_00_16_0": {
+            "card": [
+                9117
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Erscheine, Sternschnuppen-Drache!"
+        },
+        "V0218_13_00_17_0": {
+            "card": [
+                12998
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Kosmischer Blazardrache!"
+        },
+        "V0218_14_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Zeit für einen Kampf."
+        },
+        "V0218_14_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Bei diesem Kampf wirst du wahrer Macht niederknien."
+        },
+        "V0218_15_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Los."
+        },
+        "V0218_15_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Verschwinde."
+        },
+        "V0218_15_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Du hast nicht einmal ein Fünkchen Hoffnung."
+        },
+        "V0218_16_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Jede Hoffnung, die du noch hattest, ist dahin."
+        },
+        "V0218_16_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Du bist nicht gut genug, um diese Welt zu retten."
+        },
+        "V0218_17_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 1,
+            "text": "Mein Monster greift an."
+        },
+        "V0218_17_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 1,
+            "text": "Angriff."
+        },
+        "V0218_18_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Mein Monster greift dich direkt an."
+        },
+        "V0218_18_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Direkter Angriff."
+        },
+        "V0218_19_00_00_0": {
+            "card": [
+                9708
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Los, Sephylon, der ultimative Zeitherrscher."
+        },
+        "V0218_19_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Akasha-Sturm!"
+        },
+        "V0218_19_00_01_0": {
+            "card": [
+                9708
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Sephylon, der ultimative Zeitherrscher greift an."
+        },
+        "V0218_19_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Akasha-Sturm!"
+        },
+        "V0218_19_00_02_0": {
+            "card": [
+                13818
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 1,
+            "text": "Gabrion, Herr der Zeit greift an."
+        },
+        "V0218_19_00_03_0": {
+            "card": [
+                13160
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 1,
+            "text": "Kamion, Herr der Zeit greift an."
+        },
+        "V0218_19_00_04_0": {
+            "card": [
+                13159
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 1,
+            "text": "Sadion, Herr der Zeit greift an."
+        },
+        "V0218_19_00_05_0": {
+            "card": [
+                13158
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 1,
+            "text": "Zaphion, Herr der Zeit greift an."
+        },
+        "V0218_19_00_06_0": {
+            "card": [
+                13819
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 1,
+            "text": "Sandaion, Herr der Zeit greift an."
+        },
+        "V0218_19_00_07_0": {
+            "card": [
+                13816
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 1,
+            "text": "Hailon, Herr der Zeit greift an."
+        },
+        "V0218_19_00_08_0": {
+            "card": [
+                13815
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 1,
+            "text": "Michion, Herr der Zeit greift an."
+        },
+        "V0218_19_00_09_0": {
+            "card": [
+                9698
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 1,
+            "text": "Metaion, Herr der Zeit greift an."
+        },
+        "V0218_19_00_10_0": {
+            "card": [
+                13157
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 1,
+            "text": "Lazion, Herr der Zeit greift an."
+        },
+        "V0218_19_00_11_0": {
+            "card": [
+                13817
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 1,
+            "text": "Raphion, Herr der Zeit greift an."
+        },
+        "V0218_19_00_12_0": {
+            "card": [
+                14163
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 1,
+            "text": "Angriff, Herr der Zeit Progenitor Vorpgate."
+        },
+        "V0218_19_00_13_0": {
+            "card": [
+                13161
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 1,
+            "text": "Angriff, Zeitmaid."
+        },
+        "V0218_19_00_14_0": {
+            "card": [
+                3459
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 1,
+            "text": "Time Angel greift an."
+        },
+        "V0218_19_00_15_0": {
+            "card": [
+                7734
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 1,
+            "text": "Angriff, Sternenstaubdrache."
+        },
+        "V0218_19_00_15_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 1,
+            "text": "Silberne Kondensstreifen!"
+        },
+        "V0218_19_00_16_0": {
+            "card": [
+                9117
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 1,
+            "text": "Sternschnuppen-Drache greift an."
+        },
+        "V0218_19_00_16_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 1,
+            "text": "Sternenstaub-Illusion!"
+        },
+        "V0218_19_00_17_0": {
+            "card": [
+                12998
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 1,
+            "text": "Angriff, Kosmischer Blazardrache!"
+        },
+        "V0218_20_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Ich setze eine Karte."
+        },
+        "V0218_20_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Ich setze eine Karte."
+        },
+        "V0218_20_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Ich setze ein Monster."
+        },
+        "V0218_20_01_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Ich setze ein Monster."
+        },
+        "V0218_21_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Du kannst mich nicht besiegen, wenn du nur verteidigst."
+        },
+        "V0218_21_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich beende meinen Spielzug."
+        },
+        "V0218_21_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Was kannst du tun?\nDu hast nur noch sehr wenige LP übrig."
+        },
+        "V0218_21_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich beende meinen Spielzug."
+        },
+        "V0218_21_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "Ich beende meinen Spielzug."
+        },
+        "V0218_21_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "Ich beende meinen Spielzug."
+        },
+        "V0218_21_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "Du bist jetzt am Zug."
+        },
+        "V0218_21_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Du glaubst nur, dass du eine Chance hättest."
+        },
+        "V0218_21_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Ich beende meinen Spielzug."
+        },
+        "V0218_21_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Wenn du die Zukunft ändern willst, dann besiege mich."
+        },
+        "V0218_21_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich beende meinen Spielzug."
+        },
+        "V0218_22_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Grr!"
+        },
+        "V0218_22_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ahh!"
+        },
+        "V0218_22_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "…………"
+        },
+        "V0218_23_00_00_0": {
+            "card": [],
+            "cutin": 3,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Unmöglich …\nIch habe verloren …?"
+        },
+        "V0218_24_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 1,
+            "text": "Aaaghhh …"
+        },
+        "V0218_25_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Gaaah!"
+        },
+        "V0218_25_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Aaagh!"
+        },
+        "V0218_25_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Aaaa!"
+        },
+        "V0218_26_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "He he …"
+        },
+        "V0218_26_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ohh …"
+        },
+        "V0218_26_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Diese einfachen Tricks funktionieren gegen mich nicht."
+        },
+        "V0218_27_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Ergh …"
+        },
+        "V0218_27_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Warum …?"
+        },
+        "V0218_27_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Das kann nicht wahr sein …"
+        },
+        "V0218_28_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "Die Herren der Zeit regieren alles.\nEs ist unmöglich, sie zu besiegen."
+        },
+        "V0218_28_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "Du weißt jetzt genauso wie ich, dass es keine Hoffnung gibt."
+        },
+        "V0218_28_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "Du hast heute eine Lektion gelernt.\nEs gibt keine Wunder."
+        },
+        "V0218_28_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "Synchromonster sind gegen meine Herren der Zeit nutzlos."
+        },
+        "V0218_28_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                216
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Es gibt keine Hoffnung in der Zukunft.\nNur Verzweiflung."
+        },
+        "V0218_28_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Du weißt das besser als jeder andere, Aporia."
+        },
+        "V0218_28_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                209
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Antinomy, du hast dich an einen Funken Hoffnung geklammert."
+        },
+        "V0218_28_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Doch die Realität hat bewiesen, dass sie nie existiert hat."
+        },
+        "V0218_28_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                217
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Paradox, du bist machtlos.\nDeine Mission ist fehlgeschlagen."
+        },
+        "V0218_28_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                201
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Yusei Fudo, ich bin du in der Zukunft."
+        },
+        "V0218_28_00_07_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Deshalb kenne ich jede deiner Strategien."
+        },
+        "V0218_28_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                201
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Um eine Person zu retten, muss eine andere geopfert werden."
+        },
+        "V0218_28_00_08_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Du bist naiv, wenn du glaubst, dass du alle retten kannst."
+        },
+        "V0218_29_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Nein …\nSo steht es nicht in den Geschichtsbüchern …"
+        },
+        "V0218_29_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Aporia …\nAntinomy …\nParadox …\nIch schließe mich dir bald an …"
+        },
+        "V0218_29_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Na endlich …"
+        },
+        "V0218_29_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Ich bin müde …"
+        },
+        "V0218_29_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "War alles, was ich getan habe, ein Fehler …"
+        },
+        "V0218_29_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                216
+            ],
+            "face": 2,
+            "frame": 0,
+            "text": "Aporia, das ist also die Hoffnung, die du gefunden hast …"
+        },
+        "V0218_29_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                209
+            ],
+            "face": 2,
+            "frame": 0,
+            "text": "Ich verstehe, warum sie dir Hoffnung gegeben haben."
+        },
+        "V0218_29_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                217
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Gut gemacht, Paradox.\nAber das reicht nicht aus."
+        },
+        "V0218_29_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                201,
+                202,
+                203,
+                204,
+                205,
+                206
+            ],
+            "face": 5,
+            "frame": 0,
+            "text": "Ich wünschte, ich könnte die Zukunft sehen, die du schaffst."
+        },
+        "V0218_29_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                201
+            ],
+            "face": 2,
+            "frame": 0,
+            "text": "Yusei, nur du kannst die Menschheit führen.\nIch weiß es."
+        },
+        "V0218_30_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "Du wirst deinem Potenzial gerecht."
+        },
+        "V0218_30_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "Noch sind alle Zukünfte möglich – welche wirst du ergreifen?"
+        },
+        "V0218_30_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Du musst an den von dir gewählten Weg glauben."
+        },
+        "V0218_31_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Was?!"
+        },
+        "V0218_31_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Warum?!"
+        },
+        "V0218_32_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Yu-Gi-Oh! Duel Links"
+        },
+        "V0218_33_00_00_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Verbeuge dich in Demut."
+        },
+        "V0218_33_00_01_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Alles, woran du glaubst – werde ich zerstören."
+        },
+        "V0218_33_00_02_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Erblicke die unendliche Macht der Herren der Zeit."
+        },
+        "V0218_34_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich habe dies getan, um dir falsche Hoffnungen zu machen."
+        },
+        "V0218_34_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Die Herren der Zeit sind Wesen aus der Unendlichkeit."
+        },
+        "V0218_34_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Was ist los?\nSagtest du nicht, ein Wunder sei immer möglich?"
+        },
+        "V0218_34_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "He he.\nVielleicht hattest du nie die Absicht, anzugreifen?"
+        },
+        "V0218_34_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "He he.\nDu hast die richtige Entscheidung getroffen."
+        },
+        "V0218_34_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Glaubst du, dass du es ewig hinauszögern kannst?"
+        },
+        "V0218_34_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Geschichten über deinen Mut existieren noch in meiner Ära."
+        },
+        "V0218_34_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Um die Welt zu retten, muss ich Yusei Fudo werden."
+        },
+        "V0218_34_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Ich habe nur noch sehr wenig Zeit übrig."
+        },
+        "V0218_34_00_09_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Dafür habe ich bereits eine Gegenstrategie."
+        },
+        "V0218_34_00_10_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Ich habe das Recht, die Geschichte zu ändern."
+        },
+        "V0218_35_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ich bin Z-one, der letzte Überlebende auf der Erde."
+        },
+        "V0218_35_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eine neue Zukunft wird bald beginnen."
+        },
+        "V0218_36_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Bringe es zu Ende."
+        },
+        "V0218_36_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Du bist am Zug."
+        },
+        "V0218_36_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Ich brauche deine Hilfe."
+        },
+        "V0218_36_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                216
+            ],
+            "face": 0,
+            "frame": 0,
+            "text": "Ich verlasse mich auf dich, Aporia."
+        },
+        "V0218_36_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                216
+            ],
+            "face": 0,
+            "frame": 0,
+            "text": "Aporia, hilf mir, die Zukunft zu ändern."
+        },
+        "V0218_36_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                209
+            ],
+            "face": 0,
+            "frame": 0,
+            "text": "Ich überlasse dir den Rest, Antinomy."
+        },
+        "V0218_36_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                209
+            ],
+            "face": 0,
+            "frame": 0,
+            "text": "Antinomy, leih mir deine Stärke."
+        },
+        "V0218_36_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                217
+            ],
+            "face": 0,
+            "frame": 0,
+            "text": "Beende es, Paradox."
+        },
+        "V0218_36_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                217
+            ],
+            "face": 0,
+            "frame": 0,
+            "text": "Paradox, lass deine Macht erstrahlen."
+        },
+        "V0218_37_00_00_0": {
+            "card": [
+                9708
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Jenseits des Lichts der Herren liegt das wahre Geheimnis."
+        },
+        "V0218_37_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Wo Leere sich in Unendlichkeit verwandelt!"
+        },
+        "V0218_37_00_01_0": {
+            "card": [
+                14163
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Die Hoffnungen der Welt öffnen die Tür zu einer neuen Ära!"
+        },
+        "V0218_37_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Synchrobeschwörung!"
+        },
+        "V0218_37_00_02_0": {
+            "card": [
+                7734
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Die Hoffnungen der Welt verschmelzen zu einem Stern."
+        },
+        "V0218_37_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 0,
+            "frame": 0,
+            "text": "Lass uns aufdrehen.\nSynchrobeschwörung!"
+        },
+        "V0218_37_00_03_0": {
+            "card": [
+                9117
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Lass uns aufdrehen!"
+        },
+        "V0218_37_00_04_0": {
+            "card": [
+                9117
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Breite deine Flügel aus und erhebe dich in neue Höhen!"
+        },
+        "V0218_37_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Die Winde des Schicksals verwandeln dich!\nSynchrobeschleunigung!"
+        },
+        "V0218_37_00_05_0": {
+            "card": [
+                12998
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Es ist Zeit, richtig aufzudrehen!"
+        },
+        "V0218_37_00_06_0": {
+            "card": [
+                12998
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Bildet die Straße des Lichts!\nDelta-Synchrobeschleunigung!"
+        },
+        "V0218_38_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 1,
+            "text": "Auf die Plätze … Fertig … Duell!"
+        }
+    }
+}

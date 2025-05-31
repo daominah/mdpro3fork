@@ -25,6 +25,7 @@ namespace MDPro3
         public List<SeriesCharacter> vrains;
         public List<SeriesCharacter> sevens;
         public List<SeriesCharacter> npc;
+        public List<SeriesCharacter> gorush;
 
         NPC_Names names;
         NPC_Profiles profiles;
@@ -61,7 +62,9 @@ namespace MDPro3
             foreach (var c in npc)
                 if (c.id == charaID)
                     return "08";
-
+            foreach (var c in gorush)
+                if (c.id == charaID)
+                    return "09";
             return "00";
         }
 
@@ -87,6 +90,8 @@ namespace MDPro3
                     return sevens;
                 case "08":
                     return npc;
+                case "09":
+                    return gorush;
                 default: 
                     return dm;
             }
@@ -120,33 +125,21 @@ namespace MDPro3
 
             if (names.NPC_NAME.TryGetValue("NAME_ID" + id, out var data))
             {
-                switch(language)
+                return language switch
                 {
-                    case "ja-JP":
-                        return data.japanese;
-                    case "en-US":
-                        return data.english;
-                    case "fr-FR":
-                        return data.french;
-                    case "it-IT":
-                        return data.italian;
-                    case "de-DE":
-                        return data.german;
-                    case "es-ES":
-                        return data.spanish;
-                    case "pt-BR":
-                        return data.portuguese;
-                    case "ru-RU":
-                        return data.russian;
-                    case "ko-KR":
-                        return data.korean;
-                    case "zh-TW":
-                        return data.tChinese;
-                    case "zh-CN":
-                        return data.sChinese;
-                    default: 
-                        return data.english;
-                }
+                    "ja-JP" => data.japanese,
+                    "en-US" => data.english,
+                    "fr-FR" => data.french,
+                    "it-IT" => data.italian,
+                    "de-DE" => data.german,
+                    "es-ES" => data.spanish,
+                    "pt-BR" => data.portuguese,
+                    "ru-RU" => data.russian,
+                    "ko-KR" => data.korean,
+                    "zh-TW" => data.tChinese,
+                    "zh-CN" => data.sChinese,
+                    _ => data.english,
+                };
             }
             else
                 return string.Empty;
@@ -158,33 +151,21 @@ namespace MDPro3
 
             if (profiles.PROFILE.TryGetValue("ID" + id, out var data))
             {
-                switch (language)
+                return language switch
                 {
-                    case "ja-JP":
-                        return data.japanese;
-                    case "en-US":
-                        return data.english;
-                    case "fr-FR":
-                        return data.french;
-                    case "it-IT":
-                        return data.italian;
-                    case "de-DE":
-                        return data.german;
-                    case "es-ES":
-                        return data.spanish;
-                    case "pt-BR":
-                        return data.portuguese;
-                    case "ru-RU":
-                        return data.russian;
-                    case "ko-KR":
-                        return data.korean;
-                    case "zh-TW":
-                        return data.tChinese;
-                    case "zh-CN":
-                        return data.sChinese;
-                    default:
-                        return data.english;
-                }
+                    "ja-JP" => data.japanese,
+                    "en-US" => data.english,
+                    "fr-FR" => data.french,
+                    "it-IT" => data.italian,
+                    "de-DE" => data.german,
+                    "es-ES" => data.spanish,
+                    "pt-BR" => data.portuguese,
+                    "ru-RU" => data.russian,
+                    "ko-KR" => data.korean,
+                    "zh-TW" => data.tChinese,
+                    "zh-CN" => data.sChinese,
+                    _ => data.english,
+                };
             }
             else
                 return string.Empty;

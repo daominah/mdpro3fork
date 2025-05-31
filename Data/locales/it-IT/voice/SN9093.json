@@ -1,0 +1,999 @@
+{
+    "_GRP_": "SN9093",
+    "_LNG_": "it-IT",
+    "info": {
+        "V9093_01_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 0,
+            "text": "Mmh...\nEffettivamente... ci sto provando!\nPiù o meno."
+        },
+        "V9093_02_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Duelliamo."
+        },
+        "V9093_03_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "È il mio turno."
+        },
+        "V9093_03_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Eh...?"
+        },
+        "V9093_03_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "È il mio turno?"
+        },
+        "V9093_03_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "È il mio turno."
+        },
+        "V9093_03_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Oh."
+        },
+        "V9093_03_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "È il mio turno."
+        },
+        "V9093_03_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 0,
+            "text": "Tocca a me."
+        },
+        "V9093_03_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 0,
+            "text": "Mmh..."
+        },
+        "V9093_03_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 0,
+            "text": "Tocca a me."
+        },
+        "V9093_04_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Pesco."
+        },
+        "V9093_04_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Pesco."
+        },
+        "V9093_04_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 0,
+            "text": "Pesco."
+        },
+        "V9093_05_00_00_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Mi piacerebbe proprio avere una bella carta."
+        },
+        "V9093_05_00_00_1": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Pesco."
+        },
+        "V9093_06_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Un momento."
+        },
+        "V9093_06_01_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Mmh..."
+        },
+        "V9093_06_01_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Uhm..."
+        },
+        "V9093_06_01_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Ok. Ecco."
+        },
+        "V9093_07_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Dalla mia mano..."
+        },
+        "V9093_07_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Userò una Carta Magia."
+        },
+        "V9093_07_02_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Userò una Magia Rapida."
+        },
+        "V9093_07_03_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Userò una Magia Continua."
+        },
+        "V9093_07_04_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Userò una Magia Equipaggiamento."
+        },
+        "V9093_07_05_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Userò una Magia Rituale."
+        },
+        "V9093_07_06_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Giocherò una Carta Trappola."
+        },
+        "V9093_07_07_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Giocherò una Trappola Continua."
+        },
+        "V9093_07_08_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Giocherò una Contro-Trappola."
+        },
+        "V9093_07_09_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Scopro la mia carta Posizionata."
+        },
+        "V9093_07_09_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Userò la mia carta Posizionata."
+        },
+        "V9093_07_10_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Userò l'effetto del mio mostro."
+        },
+        "V9093_07_11_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Userò una Magia Terreno."
+        },
+        "V9093_07_12_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Attiverò un effetto."
+        },
+        "V9093_07_13_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Imposterò il Valore Pendulum."
+        },
+        "V9093_09_00_00_0": {
+            "card": [
+                9658,
+                9757,
+                9760,
+                9853,
+                9854,
+                9857,
+                9861,
+                9916,
+                9964,
+                10068,
+                10129,
+                10307,
+                10331,
+                10480,
+                10703,
+                10704,
+                10705,
+                10706,
+                10707,
+                10708,
+                10843,
+                10847,
+                11018,
+                11019,
+                11020,
+                11111,
+                11122,
+                11296,
+                11459,
+                11606,
+                11653,
+                11654,
+                12261,
+                12262,
+                12545,
+                12546,
+                12547,
+                12548,
+                12549,
+                12890,
+                13162,
+                13163,
+                13164,
+                13166,
+                13823,
+                13824,
+                13825,
+                14563,
+                14564,
+                14565
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Attivo l’effetto del mio Numero."
+        },
+        "V9093_10_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Mmh..."
+        },
+        "V9093_10_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Vediamo..."
+        },
+        "V9093_10_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Questo basterà."
+        },
+        "V9093_10_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Questa carta andrà bene."
+        },
+        "V9093_11_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Evoco un mostro."
+        },
+        "V9093_11_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Evoco un mostro in Posizione di Difesa."
+        },
+        "V9093_11_02_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Evoco Specialmente un mostro."
+        },
+        "V9093_11_03_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Offro un mostro come Tributo."
+        },
+        "V9093_11_04_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Evoco un mostro tramite Tributo."
+        },
+        "V9093_11_05_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Evoco un mostro tramite Fusione."
+        },
+        "V9093_11_06_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Evoco un mostro tramite Rituale."
+        },
+        "V9093_11_07_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Synchro Evoco un mostro."
+        },
+        "V9093_11_08_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Evoco Xyz un mostro."
+        },
+        "V9093_11_09_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Evoco Pendulum un mostro."
+        },
+        "V9093_11_10_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Evoco un mostro tramite Link."
+        },
+        "V9093_13_00_00_0": {
+            "card": [
+                9658,
+                9757,
+                9760,
+                9853,
+                9854,
+                9857,
+                9861,
+                9916,
+                9964,
+                10068,
+                10129,
+                10307,
+                10331,
+                10480,
+                10703,
+                10704,
+                10705,
+                10706,
+                10707,
+                10708,
+                10843,
+                10847,
+                11018,
+                11019,
+                11020,
+                11111,
+                11122,
+                11296,
+                11459,
+                11606,
+                11653,
+                11654,
+                12261,
+                12262,
+                12545,
+                12546,
+                12547,
+                12548,
+                12549,
+                12890,
+                13162,
+                13163,
+                13164,
+                13166,
+                13823,
+                13824,
+                13825,
+                14563,
+                14564,
+                14565
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 0,
+            "text": "Eh eh eh!\nIl mio Numero è inarrestabile!\nVieni fuori!"
+        },
+        "V9093_14_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Combattiamo."
+        },
+        "V9093_14_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "È ora di darci battaglia."
+        },
+        "V9093_15_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Ci siamo."
+        },
+        "V9093_15_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Ok... Uhm..."
+        },
+        "V9093_15_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Dovrei fare questo..."
+        },
+        "V9093_16_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Credo che con questo porrò fine al Duello..."
+        },
+        "V9093_16_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Va bene?"
+        },
+        "V9093_17_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Attacco con il mio mostro."
+        },
+        "V9093_17_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Il mio mostro attacca."
+        },
+        "V9093_17_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Attacco."
+        },
+        "V9093_18_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Sferrerò un attacco diretto."
+        },
+        "V9093_18_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Ti attacco direttamente."
+        },
+        "V9093_19_00_00_0": {
+            "card": [
+                9658,
+                9757,
+                9760,
+                9853,
+                9854,
+                9857,
+                9861,
+                9916,
+                9964,
+                10068,
+                10129,
+                10307,
+                10331,
+                10480,
+                10703,
+                10704,
+                10705,
+                10706,
+                10707,
+                10708,
+                10843,
+                10847,
+                11018,
+                11019,
+                11020,
+                11111,
+                11122,
+                11296,
+                11459,
+                11606,
+                11653,
+                11654,
+                12261,
+                12262,
+                12545,
+                12546,
+                12547,
+                12548,
+                12549,
+                12890,
+                13162,
+                13163,
+                13164,
+                13166,
+                13823,
+                13824,
+                13825,
+                14563,
+                14564,
+                14565
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 0,
+            "text": "Numero! All'attacco!"
+        },
+        "V9093_20_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Posiziono una carta."
+        },
+        "V9093_20_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Posizionerò una carta."
+        },
+        "V9093_20_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Posiziono un mostro."
+        },
+        "V9093_20_01_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Posizionerò un mostro."
+        },
+        "V9093_21_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 0,
+            "text": "Termino il mio turno."
+        },
+        "V9093_21_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 0,
+            "text": "Ok."
+        },
+        "V9093_21_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 0,
+            "text": "Termino il mio turno."
+        },
+        "V9093_21_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Termino il mio turno."
+        },
+        "V9093_21_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Termino il mio turno."
+        },
+        "V9093_21_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 0,
+            "text": "Mmh..."
+        },
+        "V9093_21_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 0,
+            "text": "Termino il mio turno."
+        },
+        "V9093_21_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 0,
+            "text": "Oh, beh..."
+        },
+        "V9093_21_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 0,
+            "text": "Termino il mio turno."
+        },
+        "V9093_22_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Uff."
+        },
+        "V9093_22_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Ahi."
+        },
+        "V9093_22_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Oh."
+        },
+        "V9093_23_00_00_0": {
+            "card": [],
+            "cutin": 3,
+            "duelist": [],
+            "face": 14,
+            "frame": 0,
+            "text": "Aaah."
+        },
+        "V9093_24_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 0,
+            "text": "Argh..."
+        },
+        "V9093_25_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 14,
+            "frame": 0,
+            "text": "Aah."
+        },
+        "V9093_25_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 14,
+            "frame": 0,
+            "text": "Wow."
+        },
+        "V9093_25_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 14,
+            "frame": 0,
+            "text": "Ah."
+        },
+        "V9093_26_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Uff."
+        },
+        "V9093_26_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Uff."
+        },
+        "V9093_26_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Ahi, ahi."
+        },
+        "V9093_27_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 0,
+            "text": "Ugh..."
+        },
+        "V9093_27_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 0,
+            "text": "Che male."
+        },
+        "V9093_27_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 13,
+            "frame": 0,
+            "text": "Molto male."
+        },
+        "V9093_28_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 0,
+            "text": "Vorrei tenere questa carta..."
+        },
+        "V9093_29_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 14,
+            "frame": 0,
+            "text": "...Cosa?\nStavo duellando?\nIo?"
+        },
+        "V9093_30_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 15,
+            "frame": 0,
+            "text": "Che sonno..."
+        },
+        "V9093_30_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 15,
+            "frame": 0,
+            "text": "Mi si chiudono gli occhi..."
+        },
+        "V9093_30_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Stai ancora pensando?"
+        },
+        "V9093_31_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 14,
+            "frame": 0,
+            "text": "Eh?"
+        },
+        "V9093_31_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 14,
+            "frame": 0,
+            "text": "Oh oh..."
+        },
+        "V9093_33_00_00_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Ci siamo."
+        },
+        "V9093_33_00_01_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Darò il massimo!"
+        },
+        "V9093_33_00_02_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Questo funzionerà, spero."
+        },
+        "V9093_36_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Puoi terminare il Duello al posto mio."
+        },
+        "V9093_36_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Beh, pensa tu al resto."
+        },
+        "V9093_36_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Spiacente. Tocca a te."
+        }
+    }
+}

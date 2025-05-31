@@ -21,7 +21,7 @@ namespace MDPro3.Servant
         public static OnlineDeck.OnlineDeckData[] decks;
         [HideInInspector] public SelectionToggle_DeckOnline lastSelectedDeckItem;
 
-        public override int Depth => 4;
+        public override int Depth => 5;
         protected override bool ShowLine => true;
 
         #region Servant

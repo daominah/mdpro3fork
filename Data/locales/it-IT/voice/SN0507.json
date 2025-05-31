@@ -1,0 +1,2953 @@
+{
+    "_GRP_": "SN0507",
+    "_LNG_": "it-IT",
+    "info": {
+        "V0507_01_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Non vedo l'ora di duellare con te!"
+        },
+        "V0507_01_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Non ti conviene sfidarmi.\nFinirai col rimanerci male."
+        },
+        "V0507_01_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Ciao a tutti!\nIl mio spettacolo sta per iniziare!"
+        },
+        "V0507_01_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Vediamo se sei alla mia altezza!"
+        },
+        "V0507_01_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 10,
+            "frame": 0,
+            "text": "Fatti sotto.\nTi farò capire quanto sono migliore di te."
+        },
+        "V0507_01_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ti mostrerò delle mosse fantastiche!"
+        },
+        "V0507_01_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 10,
+            "frame": 0,
+            "text": "Forse ci andrò un po' più pesante del solito."
+        },
+        "V0507_02_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Duelliamo!"
+        },
+        "V0507_03_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eh?\nHai già esaurito le mosse?"
+        },
+        "V0507_03_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "È il mio turno!"
+        },
+        "V0507_03_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 10,
+            "frame": 0,
+            "text": "Non mi resta che distruggerti."
+        },
+        "V0507_03_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 10,
+            "frame": 0,
+            "text": "Tocca a me!"
+        },
+        "V0507_03_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Tocca a me!"
+        },
+        "V0507_03_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Preparati!"
+        },
+        "V0507_03_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "È il mio turno!"
+        },
+        "V0507_03_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 10,
+            "frame": 0,
+            "text": "Se vuoi davvero giocare duro, giocherò duro anch'io!"
+        },
+        "V0507_03_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 10,
+            "frame": 0,
+            "text": "Tocca a me!"
+        },
+        "V0507_03_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "Non avresti dovuto farmi arrabbiare!\nOra la pagherai!"
+        },
+        "V0507_03_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "È il mio turno!"
+        },
+        "V0507_04_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 10,
+            "frame": 0,
+            "text": "Pesco!"
+        },
+        "V0507_04_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Pesco!"
+        },
+        "V0507_04_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Pesco!"
+        },
+        "V0507_05_00_00_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "Ti finirò più velocemente di questo lecca-lecca!"
+        },
+        "V0507_05_00_00_1": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "Peeescooo!"
+        },
+        "V0507_06_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Cheee peccatooo!"
+        },
+        "V0507_06_01_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Non credo proprio!"
+        },
+        "V0507_06_01_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "No no!"
+        },
+        "V0507_06_01_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "È il momento!"
+        },
+        "V0507_07_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Dalla mia mano..."
+        },
+        "V0507_07_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Attivo una Carta Magia!"
+        },
+        "V0507_07_02_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Attivo una Magia Rapida!"
+        },
+        "V0507_07_03_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Attivo una Carta Magia Continua!"
+        },
+        "V0507_07_04_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Attivo una Magia Equipaggiamento!"
+        },
+        "V0507_07_05_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Attivo una Magia Rituale!"
+        },
+        "V0507_07_06_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Attivo una Trappola!"
+        },
+        "V0507_07_07_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Attivo una Trappola Continua!"
+        },
+        "V0507_07_08_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Attivo una Contro-Trappola!"
+        },
+        "V0507_07_09_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Scopro la mia carta Posizionata!"
+        },
+        "V0507_07_09_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "La mia carta Posizionata!"
+        },
+        "V0507_07_10_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Attivo l'effetto del mio mostro!"
+        },
+        "V0507_07_11_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Attivo la mia Magia Terreno!"
+        },
+        "V0507_07_12_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Attivo un effetto!"
+        },
+        "V0507_07_13_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Imposto il Valore Pendulum!"
+        },
+        "V0507_07_14_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Attivo un Effetto Pendulum!"
+        },
+        "V0507_08_00_00_0": {
+            "card": [
+                4837
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Ecco la mia Carta Magia!\nPolimerizzazione!"
+        },
+        "V0507_08_00_01_0": {
+            "card": [
+                11731
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Attivo la mia Carta Magia!\nFusione Pellicciaspavento!"
+        },
+        "V0507_08_00_02_0": {
+            "card": [
+                12866
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Attivo la mia Carta Magia!\nPatchwork Pellicciaspavento!"
+        },
+        "V0507_08_00_03_0": {
+            "card": [
+                12886
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Attivo la mia Carta Magia!\nRinascita Pellicciaspavento!"
+        },
+        "V0507_08_00_04_0": {
+            "card": [
+                12886
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Bandisco Rinascita Pellicciaspavento dal Cimitero per usare il suo effetto!"
+        },
+        "V0507_08_00_05_0": {
+            "card": [
+                15292
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Attivo la mia Carta Magia!\nRiparazione Pellicciaspavento!"
+        },
+        "V0507_08_00_06_0": {
+            "card": [
+                15292
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Bandisco Riparazione Pellicciaspavento dal mio Cimitero per usare il suo effetto!"
+        },
+        "V0507_08_00_07_0": {
+            "card": [
+                16431
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Attivo la Carta Magia Parata dei Giocattoli!"
+        },
+        "V0507_08_00_08_0": {
+            "card": [
+                16431
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Bandisco Parata dei Giocattoli dal mio Cimitero per usare il suo effetto!"
+        },
+        "V0507_08_00_09_0": {
+            "card": [
+                12454
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Attivo la mia Carta Magia Continua!\nSantuario Pellicciaspavento!"
+        },
+        "V0507_08_00_10_0": {
+            "card": [
+                12454
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Santuario Pellicciaspavento si attiva quando va nel Cimitero!"
+        },
+        "V0507_08_00_11_0": {
+            "card": [
+                11729
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Attivo la Carta Magia Continua Fabbrica Pellicciaspavento!"
+        },
+        "V0507_08_00_12_0": {
+            "card": [
+                11729
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Attivo l'effetto di Fabbrica Pellicciaspavento!"
+        },
+        "V0507_08_00_13_0": {
+            "card": [
+                11729
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Fabbrica Pellicciaspavento si attiva quando lo mando al Cimitero!"
+        },
+        "V0507_08_00_14_0": {
+            "card": [
+                11730
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Attivo la mia Carta Magia, Rinascita Sutura!"
+        },
+        "V0507_08_00_15_0": {
+            "card": [
+                11392
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Attivo la mia Carta Magia Continua!\nVenditore di Giocattoli!"
+        },
+        "V0507_08_00_16_0": {
+            "card": [
+                11392
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Si attiva l'effetto di Venditore di Giocattoli!"
+        },
+        "V0507_08_00_16_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Mi chiedo cosa sarà!"
+        },
+        "V0507_08_00_17_0": {
+            "card": [
+                11392
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Quando Venditore di Giocattoli va al Cimitero, si attiva il suo effetto!"
+        },
+        "V0507_08_00_18_0": {
+            "card": [
+                6901
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Attivo la mia Carta Magia!\nFusione Istantanea!"
+        },
+        "V0507_08_00_19_0": {
+            "card": [
+                5118
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Attivo la mia Magia Rapida!\nDefusione!"
+        },
+        "V0507_08_00_20_0": {
+            "card": [
+                6431
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Attivo la mia Carta Magia!\nRecupera Fusione!"
+        },
+        "V0507_08_00_21_0": {
+            "card": [
+                11728
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Guarda un po' che Carta Magia!\nAttivo Fusione Coscrizione!"
+        },
+        "V0507_08_00_22_0": {
+            "card": [
+                11744
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Attivo la mia Trappola!\nDesigner Pellicciaspavento!"
+        },
+        "V0507_08_00_23_0": {
+            "card": [
+                15308
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Attivo la mia Trappola Continua!\nGiara Pellicciaspavento!"
+        },
+        "V0507_08_00_24_0": {
+            "card": [
+                15308
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Attivo l'effetto di Giara Pellicciaspavento!"
+        },
+        "V0507_08_00_25_0": {
+            "card": [
+                15308
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Giara Pellicciaspavento si attiva quando lo mando al Cimitero!"
+        },
+        "V0507_08_00_26_0": {
+            "card": [
+                12011
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Attivo la mia Contro-Trappola!\nMarcia Pellicciaspavento!"
+        },
+        "V0507_08_00_27_0": {
+            "card": [
+                12468
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Attivo la mia Trappola!\nFusione Walzer Spaventoso!"
+        },
+        "V0507_08_00_27_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "La danza di questa carta ti travolgerà!"
+        },
+        "V0507_08_00_28_0": {
+            "card": [
+                11743
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Ti salverò io!\nAttivo la mia Carta Trappola!\nGru Fluffal!"
+        },
+        "V0507_08_00_29_0": {
+            "card": [
+                11403
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Attivo la Carta Trappola Pugno in Scatola!"
+        },
+        "V0507_08_00_30_0": {
+            "card": [
+                13991
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Si attiva l'Effetto Pendulum di Padrone Pellicciaspavento!"
+        },
+        "V0507_08_00_31_0": {
+            "card": [
+                13038
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Si attiva l'Effetto Pendulum di Imp Filo Mangiatore di Cotone!"
+        },
+        "V0507_08_00_32_0": {
+            "card": [
+                13701
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Attivo l'Effetto Pendulum di Angelo Fluffal!"
+        },
+        "V0507_09_00_00_0": {
+            "card": [
+                11378
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Si attiva l'effetto di Orso Pellicciaspavento!"
+        },
+        "V0507_09_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Orso Pellicciaspavento si equipaggia con il mostro che ha distrutto!"
+        },
+        "V0507_09_00_01_0": {
+            "card": [
+                11718
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Si attiva l'effetto di Chimera Pellicciaspavento!"
+        },
+        "V0507_09_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ora il tuo mostro appartiene a me!"
+        },
+        "V0507_09_00_02_0": {
+            "card": [
+                11717
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "L'effetto di Pecora Pellicciaspavento si attiva quando viene distrutta!"
+        },
+        "V0507_09_00_03_0": {
+            "card": [
+                11716
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Attivo l'effetto di Leone Pellicciaspavento!"
+        },
+        "V0507_09_00_04_0": {
+            "card": [
+                11617
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Evocando tramite Fusione Tigre Pellicciaspavento, si attiva il suo effetto!"
+        },
+        "V0507_09_00_05_0": {
+            "card": [
+                11987
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Denti-a-Scimitarra Pellicciaspavento si attiva quando viene Evocata tramite Fusione!"
+        },
+        "V0507_09_00_06_0": {
+            "card": [
+                12842
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Attivo l'effetto di Kraken Pellicciaspavento!"
+        },
+        "V0507_09_00_07_0": {
+            "card": [
+                12885
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Si attiva l'effetto di Temerario Pellicciaspavento!"
+        },
+        "V0507_09_00_08_0": {
+            "card": [
+                14344
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Si attiva l'effetto di Incubeggiante Pellicciaspavento Pericoloso!"
+        },
+        "V0507_09_00_09_0": {
+            "card": [
+                15273
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Balena Crudele Pellicciaspavento si attiva quando viene Evocata tramite Fusione!"
+        },
+        "V0507_09_00_10_0": {
+            "card": [
+                15273
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Attivo l'effetto di Balena Crudele Pellicciaspavento!"
+        },
+        "V0507_09_00_11_0": {
+            "card": [
+                13991
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Attivo l'effetto di Padrone Pellicciaspavento!"
+        },
+        "V0507_09_00_12_0": {
+            "card": [
+                11346
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Si attiva l'effetto di Imp Filo di Scimitarre dal mio Cimitero!"
+        },
+        "V0507_09_00_13_0": {
+            "card": [
+                11687
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Evocando Imp Filo di Sega, si attiva il suo effetto!"
+        },
+        "V0507_09_00_14_0": {
+            "card": [
+                11688
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Si attiva l'effetto di Imp Filo di Catena!"
+        },
+        "V0507_09_00_15_0": {
+            "card": [
+                11688
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Imp Filo di Catena si attiva quando va nel Cimitero!"
+        },
+        "V0507_09_00_16_0": {
+            "card": [
+                11689
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Attivo l'effetto di Imp Filo di Tomahawk!"
+        },
+        "V0507_09_00_17_0": {
+            "card": [
+                11690
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Si attiva l'effetto di Imp Filo di Pellicciaspavenoid!"
+        },
+        "V0507_09_00_18_0": {
+            "card": [
+                15256
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Attivo l'effetto di Imp Filo di Falce dalla mia mano!"
+        },
+        "V0507_09_00_19_0": {
+            "card": [
+                13038
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Evocando Specialmente Mangiatore di Cotone attivo l'effetto!"
+        },
+        "V0507_09_00_20_0": {
+            "card": [
+                11348
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Attivo l'effetto di Orso Fluffal dalla mia mano!"
+        },
+        "V0507_09_00_21_0": {
+            "card": [
+                11348
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Offro come Tributo Orso Fluffal per attivare il suo effetto!"
+        },
+        "V0507_09_00_22_0": {
+            "card": [
+                11347
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Si attiva l'effetto di Leone Fluffal!"
+        },
+        "V0507_09_00_23_0": {
+            "card": [
+                11686
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Riporto un Fluffal nella mia mano per usare l'effetto di Pecora Fluffal!"
+        },
+        "V0507_09_00_24_0": {
+            "card": [
+                11794
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Si attiva l'effetto di Topo Fluffal!"
+        },
+        "V0507_09_00_25_0": {
+            "card": [
+                11953
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Bandisco Ali Fluffal dal mio Cimitero per usare il suo effetto!"
+        },
+        "V0507_09_00_26_0": {
+            "card": [
+                11350
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Evocando Gufo Fluffal dalla mia mano, si attiva il suo effetto!"
+        },
+        "V0507_09_00_27_0": {
+            "card": [
+                11350
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Attivo l'effetto di Gufo Fluffal!"
+        },
+        "V0507_09_00_28_0": {
+            "card": [
+                12840
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "L'effetto di Piovra Fluffal si attiva quando viene evocata!"
+        },
+        "V0507_09_00_29_0": {
+            "card": [
+                12840
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "L'effetto di Piovra Fluffal si attiva quando viene usata per Evocare tramite Fusione!"
+        },
+        "V0507_09_00_30_0": {
+            "card": [
+                13701
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Attivo l'effetto di Angelo Fluffal!"
+        },
+        "V0507_09_00_31_0": {
+            "card": [
+                11351
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Gatto Fluffal si attiva quando viene usato per Evocare tramite Fusione!"
+        },
+        "V0507_09_00_32_0": {
+            "card": [
+                11349
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "L'effetto di Cane Fluffal si attiva quando viene evocato!"
+        },
+        "V0507_09_00_33_0": {
+            "card": [
+                15255
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Attivo l'effetto di Delfino Fluffal!"
+        },
+        "V0507_09_00_34_0": {
+            "card": [
+                15255
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Delfino Fluffal si attiva quando viene usato per Evocare tramite Fusione!"
+        },
+        "V0507_09_00_35_0": {
+            "card": [
+                12841
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Si attiva l'effetto di Pinguino Fluffal!"
+        },
+        "V0507_09_00_36_0": {
+            "card": [
+                12841
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Ho usato Pinguino Fluffal per Evocare tramite Fusione un Pellicciaspavento!"
+        },
+        "V0507_09_00_37_0": {
+            "card": [
+                11352
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Ho usato Coniglio Fluffal per Evocare tramite Fusione, ora guarda!"
+        },
+        "V0507_10_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ok!"
+        },
+        "V0507_10_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ci siamo!"
+        },
+        "V0507_10_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ah ah ah!"
+        },
+        "V0507_10_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Guarda qui!"
+        },
+        "V0507_11_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Evoco un mostro!"
+        },
+        "V0507_11_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Evoco un mostro in Posizione di Difesa!"
+        },
+        "V0507_11_02_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Evoco Specialmente un mostro!"
+        },
+        "V0507_11_03_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Offro un mostro come Tributo!"
+        },
+        "V0507_11_04_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Evoco un mostro tramite Tributo!"
+        },
+        "V0507_11_05_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Evoco un mostro tramite Fusione!"
+        },
+        "V0507_11_05_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Evocazione tramite Fusione!"
+        },
+        "V0507_11_06_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Evoco un mostro tramite Rituale!"
+        },
+        "V0507_11_07_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Synchro Evoco un mostro!"
+        },
+        "V0507_11_07_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Synchro Evocazione!"
+        },
+        "V0507_11_08_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Evoco Xyz un mostro!"
+        },
+        "V0507_11_08_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Costruisco la Rete di Sovrapposizioni!\nEvocazione Xyz!"
+        },
+        "V0507_11_09_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Evoco Pendulum un mostro!"
+        },
+        "V0507_11_09_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Oscilla lontano, Pendulum!\nScolpisci l'arco della calamità!"
+        },
+        "V0507_11_09_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Evocazione Pendulum!"
+        },
+        "V0507_11_10_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Evoco un mostro Link!"
+        },
+        "V0507_13_00_00_0": {
+            "card": [
+                11378
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Eccolo qui!\nIl mostro più spaventoso che si sia mai visto!"
+        },
+        "V0507_13_00_00_1": {
+            "card": [],
+            "cutin": 2,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Orso Pellicciaspavento!"
+        },
+        "V0507_13_00_01_0": {
+            "card": [
+                11718
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Fatti avanti, mio potente costrutto!"
+        },
+        "V0507_13_00_01_1": {
+            "card": [],
+            "cutin": 2,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Chimera Pellicciaspavento!"
+        },
+        "V0507_13_00_02_0": {
+            "card": [
+                11717
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Avanza, lanuginosa signora delle catene!"
+        },
+        "V0507_13_00_02_1": {
+            "card": [],
+            "cutin": 2,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Pecora Pellicciaspavento!"
+        },
+        "V0507_13_00_03_0": {
+            "card": [
+                11716
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Ammira!\nIl più forte di tutto il regno animale!"
+        },
+        "V0507_13_00_03_1": {
+            "card": [],
+            "cutin": 2,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Leone Pellicciaspavento!"
+        },
+        "V0507_13_00_04_0": {
+            "card": [
+                11617
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Avanza e conquista la giungla!"
+        },
+        "V0507_13_00_04_1": {
+            "card": [],
+            "cutin": 2,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Tigre Pellicciaspavento!"
+        },
+        "V0507_13_00_05_0": {
+            "card": [
+                11987
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Il felino scellerato tutto artigli, denti e morso affilato!"
+        },
+        "V0507_13_00_05_1": {
+            "card": [],
+            "cutin": 2,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Denti-a-Scimitarra Pellicciaspavento!"
+        },
+        "V0507_13_00_06_0": {
+            "card": [
+                12842
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Stai per affrontare il peggior incubo di ogni marinaio!"
+        },
+        "V0507_13_00_06_1": {
+            "card": [],
+            "cutin": 2,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Kraken Pellicciaspavento!"
+        },
+        "V0507_13_00_07_0": {
+            "card": [
+                12885
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Rivelati!\nTemerario Pellicciaspavento!"
+        },
+        "V0507_13_00_08_0": {
+            "card": [
+                14344
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Ecco Incubeggiante Pellicciaspavento Pericoloso!"
+        },
+        "V0507_13_00_09_0": {
+            "card": [
+                11379
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Unisciti al mio branco, Lupo Pellicciaspavento!"
+        },
+        "V0507_13_00_10_0": {
+            "card": [
+                15273
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Sorgi dalle profondità!\nBalena Crudele Pellicciaspavento!"
+        },
+        "V0507_13_00_11_0": {
+            "card": [
+                13991
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Ecco il mio Mostro Pendulum!\nPadrone Pellicciaspavento!"
+        },
+        "V0507_13_00_12_0": {
+            "card": [
+                11346
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Imp Filo di Scimitarre!"
+        },
+        "V0507_13_00_13_0": {
+            "card": [
+                11687
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Imp Filo di Sega!"
+        },
+        "V0507_13_00_14_0": {
+            "card": [
+                11688
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Imp Filo di Catena!"
+        },
+        "V0507_13_00_15_0": {
+            "card": [
+                11689
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Imp Filo di Tomahawk!"
+        },
+        "V0507_13_00_16_0": {
+            "card": [
+                11690
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Imp Filo di Pellicciaspavenoid!"
+        },
+        "V0507_13_00_17_0": {
+            "card": [
+                15256
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Imp Filo di Falce!"
+        },
+        "V0507_13_00_18_0": {
+            "card": [
+                13038
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Ecco un Mostro Pendulum!\nImp Filo Mangiatore di Cotone!"
+        },
+        "V0507_13_00_19_0": {
+            "card": [
+                11348
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ecco il mio dolce e soffice Orso Fluffal!"
+        },
+        "V0507_13_00_20_0": {
+            "card": [
+                11347
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Leone Fluffal!"
+        },
+        "V0507_13_00_21_0": {
+            "card": [
+                11686
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ti presento il mio animaletto!\nPecora Fluffal!"
+        },
+        "V0507_13_00_22_0": {
+            "card": [
+                11794
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Topo Fluffal!"
+        },
+        "V0507_13_00_23_0": {
+            "card": [
+                11953
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ali Fluffal!"
+        },
+        "V0507_13_00_24_0": {
+            "card": [
+                11350
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Gufo Fluffal!"
+        },
+        "V0507_13_00_25_0": {
+            "card": [
+                12840
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Piovra Fluffal!"
+        },
+        "V0507_13_00_26_0": {
+            "card": [
+                12674
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Patchwork Fluffal!"
+        },
+        "V0507_13_00_27_0": {
+            "card": [
+                13701
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Il Mostro Pendulum Angelo Fluffal!"
+        },
+        "V0507_13_00_28_0": {
+            "card": [
+                11351
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Gatto Fluffal!"
+        },
+        "V0507_13_00_29_0": {
+            "card": [
+                11349
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Cane Fluffal!"
+        },
+        "V0507_13_00_30_0": {
+            "card": [
+                15255
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Delfino Fluffal!"
+        },
+        "V0507_13_00_31_0": {
+            "card": [
+                12841
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Pinguino Fluffal!"
+        },
+        "V0507_13_00_32_0": {
+            "card": [
+                11352
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Coniglio Fluffal!"
+        },
+        "V0507_14_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Combattiamo!"
+        },
+        "V0507_14_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 10,
+            "frame": 0,
+            "text": "È arrivato il momento che tutti stavate aspettando!\nÈ ora di combattere!"
+        },
+        "V0507_15_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Bene..."
+        },
+        "V0507_15_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ora vai!"
+        },
+        "V0507_15_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Distruggili!"
+        },
+        "V0507_16_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "E con questa, ho vinto!"
+        },
+        "V0507_16_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "La vittoria è tutta mia!"
+        },
+        "V0507_17_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 10,
+            "frame": 1,
+            "text": "Il mio mostro attacca!"
+        },
+        "V0507_17_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 10,
+            "frame": 1,
+            "text": "Attacco con il mio mostro!"
+        },
+        "V0507_17_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "All'attacco!"
+        },
+        "V0507_18_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 10,
+            "frame": 1,
+            "text": "Il mio mostro ti attacca direttamente!"
+        },
+        "V0507_18_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 10,
+            "frame": 1,
+            "text": "Attacco diretto!"
+        },
+        "V0507_19_00_00_0": {
+            "card": [
+                11378
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Distruggili, Orso Pellicciaspavento!"
+        },
+        "V0507_19_00_01_0": {
+            "card": [
+                11718
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 10,
+            "frame": 1,
+            "text": "Quando questa carta attacca, non puoi attivare effetti!"
+        },
+        "V0507_19_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 10,
+            "frame": 1,
+            "text": "Attacca, Chimera Pellicciaspavento!"
+        },
+        "V0507_19_00_02_0": {
+            "card": [
+                11717
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 10,
+            "frame": 1,
+            "text": "Quando questa carta attacca, non puoi attivare effetti!"
+        },
+        "V0507_19_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 10,
+            "frame": 1,
+            "text": "Vai, Pecora Pellicciaspavento!"
+        },
+        "V0507_19_00_03_0": {
+            "card": [
+                11716
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 10,
+            "frame": 1,
+            "text": "Non si può sfuggire al re degli animali!"
+        },
+        "V0507_19_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 10,
+            "frame": 1,
+            "text": "Fai piazza pulita, Leone Pellicciaspavento!"
+        },
+        "V0507_19_00_04_0": {
+            "card": [
+                11617
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Tigre Pellicciaspavento!\nAddosso!"
+        },
+        "V0507_19_00_05_0": {
+            "card": [
+                11987
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Squarciali, Denti-a-Scimitarra Pellicciaspavento!"
+        },
+        "V0507_19_00_06_0": {
+            "card": [
+                12842
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Kraken Pellicciaspavento ti trascinerà negli abissi!"
+        },
+        "V0507_19_00_07_0": {
+            "card": [
+                12885
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Temerario Pellicciaspavento! All'attacco!"
+        },
+        "V0507_19_00_08_0": {
+            "card": [
+                14344
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Incubeggiante Pellicciaspavento Pericoloso attacca!"
+        },
+        "V0507_19_00_09_0": {
+            "card": [
+                11379
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Lupo Pellicciaspavento!\nAll'attacco!"
+        },
+        "V0507_19_00_10_0": {
+            "card": [
+                15273
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Balena Crudele Pellicciaspavento attacca!"
+        },
+        "V0507_19_00_11_0": {
+            "card": [
+                13991
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Padrone Pellicciaspavento attacca!"
+        },
+        "V0507_19_00_12_0": {
+            "card": [
+                11346
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Attacca, Imp Filo di Scimitarre!"
+        },
+        "V0507_19_00_13_0": {
+            "card": [
+                11687
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Imp Filo di Sega!\nAll'assalto!"
+        },
+        "V0507_19_00_14_0": {
+            "card": [
+                11688
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Attacca, Imp Filo di Catena!"
+        },
+        "V0507_19_00_15_0": {
+            "card": [
+                11689
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Imp Filo di Tomahawk! All'attacco!"
+        },
+        "V0507_19_00_16_0": {
+            "card": [
+                11690
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Imp Filo di Pellicciaspavenoid attacca!"
+        },
+        "V0507_19_00_17_0": {
+            "card": [
+                15256
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Imp Filo di Falce! All'attacco!"
+        },
+        "V0507_19_00_18_0": {
+            "card": [
+                13038
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Attacca, Imp Filo Mangiatore di Cotone!"
+        },
+        "V0507_19_00_19_0": {
+            "card": [
+                11348
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Attacca, Orso Fluffal!"
+        },
+        "V0507_19_00_20_0": {
+            "card": [
+                11347
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Attacca, Leone Fluffal!"
+        },
+        "V0507_19_00_21_0": {
+            "card": [
+                11686
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Questo attacco sarà davvero carino!\nVai, Pecora Fluffal!"
+        },
+        "V0507_19_00_22_0": {
+            "card": [
+                11794
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Topo Fluffal! All'attacco!"
+        },
+        "V0507_19_00_23_0": {
+            "card": [
+                11953
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Attacca, Ali Fluffal!"
+        },
+        "V0507_19_00_24_0": {
+            "card": [
+                11350
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Gufo Fluffal! All'attacco!"
+        },
+        "V0507_19_00_25_0": {
+            "card": [
+                12840
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Attacca, Piovra Fluffal!"
+        },
+        "V0507_19_00_26_0": {
+            "card": [
+                12674
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Patchwork Fluffal attacca!"
+        },
+        "V0507_19_00_27_0": {
+            "card": [
+                13701
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Attacca, Angelo Fluffal!"
+        },
+        "V0507_19_00_28_0": {
+            "card": [
+                11351
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Gioca con loro, Gatto Fluffal!"
+        },
+        "V0507_19_00_29_0": {
+            "card": [
+                11349
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Cane Fluffal! Riporta!"
+        },
+        "V0507_19_00_30_0": {
+            "card": [
+                15255
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Attacca, Delfino Fluffal!"
+        },
+        "V0507_19_00_31_0": {
+            "card": [
+                12841
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Attacca, Pinguino Fluffal!"
+        },
+        "V0507_19_00_32_0": {
+            "card": [
+                11352
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Coniglio Fluffal attacca!"
+        },
+        "V0507_20_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Posiziono una carta!"
+        },
+        "V0507_20_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Posizionerò una carta!"
+        },
+        "V0507_20_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Posiziono un mostro!"
+        },
+        "V0507_20_01_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Posizionerò un mostro!"
+        },
+        "V0507_21_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 10,
+            "frame": 0,
+            "text": "Eh? Mi sembravi ottimista fino a un attimo fa.\nCos'è successo?"
+        },
+        "V0507_21_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 10,
+            "frame": 0,
+            "text": "Termino il mio turno!"
+        },
+        "V0507_21_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Dai, non ti arrabbiare."
+        },
+        "V0507_21_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Termino il mio turno!"
+        },
+        "V0507_21_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Termino il mio turno!"
+        },
+        "V0507_21_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Tocca a te!"
+        },
+        "V0507_21_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Con questo termino il mio turno!"
+        },
+        "V0507_21_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 0,
+            "text": "Ti raggiungerò comunque!\nAspetta e vedrai!"
+        },
+        "V0507_21_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 0,
+            "text": "Termino il mio turno!"
+        },
+        "V0507_21_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 10,
+            "frame": 0,
+            "text": "Ti sto dando vantaggio per rendere le cose interessanti."
+        },
+        "V0507_21_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 10,
+            "frame": 0,
+            "text": "Termino il mio turno!"
+        },
+        "V0507_22_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Aah!"
+        },
+        "V0507_22_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Argh!"
+        },
+        "V0507_22_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Aaaaaah!"
+        },
+        "V0507_23_00_00_0": {
+            "card": [],
+            "cutin": 3,
+            "duelist": [],
+            "face": 7,
+            "frame": 1,
+            "text": "Aaaaaaaah!"
+        },
+        "V0507_24_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 1,
+            "text": "Urgh..."
+        },
+        "V0507_25_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 1,
+            "text": "Aaargh!"
+        },
+        "V0507_25_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 1,
+            "text": "Aaah!"
+        },
+        "V0507_25_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 1,
+            "text": "Aaaaaaah!"
+        },
+        "V0507_26_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 10,
+            "frame": 0,
+            "text": "Tutto qui?"
+        },
+        "V0507_26_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Sto beniiissimo!"
+        },
+        "V0507_26_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Questo Duello non è ancora finito!"
+        },
+        "V0507_27_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Cominci a darmi sui nervi!"
+        },
+        "V0507_27_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Come ho potuto permettere che finisse così..."
+        },
+        "V0507_27_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Grrrr..."
+        },
+        "V0507_28_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Uff...\nPensavo che il nostro Duello sarebbe stato più divertente."
+        },
+        "V0507_28_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Non mi sorprende, data la mia bravura."
+        },
+        "V0507_28_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Questo era il meglio che potevi fare?\nStai scherzando, vero?"
+        },
+        "V0507_28_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Ah ah!\nOra sai quanto sono incredibile!"
+        },
+        "V0507_28_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Eh eh eh!\nSembra che sia stata dura!"
+        },
+        "V0507_28_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "I Duelli sono cose serie.\nLa vittoria è tutto!"
+        },
+        "V0507_28_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                501
+            ],
+            "face": 2,
+            "frame": 0,
+            "text": "Ehi, Yuya!\nHai usato delle mosse nuove!"
+        },
+        "V0507_28_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                502
+            ],
+            "face": 3,
+            "frame": 0,
+            "text": "Uff...\nHai duellato davvero male!"
+        },
+        "V0507_28_00_07_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "È come se avessi dimenticato tutto ciò che ti ho insegnato."
+        },
+        "V0507_29_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Ah ah ah ah!\nQuesto Duello è stato proprio divertente!"
+        },
+        "V0507_29_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 10,
+            "frame": 0,
+            "text": "Ma la prossima volta vincerò io!\nPuoi contarci!"
+        },
+        "V0507_29_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Argh!\nMi prenderò la mia rivincita, vedrai!"
+        },
+        "V0507_29_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 0,
+            "text": "Aspetta!\nIl nostro Duello Duello non è ancora finito!\nÈ impossibile che perda!"
+        },
+        "V0507_29_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Come ho potuto farmi battere da un dilettante?"
+        },
+        "V0507_29_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Ehi! Torna qui!\nSfidiamoci di nuovo!"
+        },
+        "V0507_29_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 0,
+            "text": "Non può essere vero!\nIo non perdo mai! Mai!"
+        },
+        "V0507_29_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                501
+            ],
+            "face": 2,
+            "frame": 0,
+            "text": "Ah ah ah!\nNon ci si annoia mai con te, Yuya!"
+        },
+        "V0507_29_00_06_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ecco perché mi piace duellare con te!"
+        },
+        "V0507_29_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                502
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Wow!\nHai davvero alzato il tiro."
+        },
+        "V0507_29_00_07_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Sono fiero di essere il tuo insegnante."
+        },
+        "V0507_29_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                503
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Wow, mega sopracciglia.\nOggi hai fatto faville."
+        },
+        "V0507_30_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Il mio più grande difetto è che sono troppo gentile."
+        },
+        "V0507_30_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Quella mossa non mi piace."
+        },
+        "V0507_30_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Che succede?\nPer caso ti senti male?"
+        },
+        "V0507_31_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Cooosa?!"
+        },
+        "V0507_31_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Cosa?!"
+        },
+        "V0507_32_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Yu-Gi-Oh! Duel Links"
+        },
+        "V0507_32_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Yu-Gi-Oh! Duel Links!"
+        },
+        "V0507_33_00_00_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 10,
+            "frame": 1,
+            "text": "Ammira il mio potere!"
+        },
+        "V0507_33_00_01_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 10,
+            "frame": 1,
+            "text": "L'Evocazione tramite Fusione dell'Accademia è perfetta!"
+        },
+        "V0507_33_00_02_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Mi preparo a entrare in azione!"
+        },
+        "V0507_34_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Ho infiammato il mio pubblico.\nDovresti cercare di fare lo stesso. "
+        },
+        "V0507_34_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Perché devi fare il guastafeste? Siamo qui per fare uno spettacolo."
+        },
+        "V0507_34_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Non provi nemmeno a contrattaccare?"
+        },
+        "V0507_34_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Riesci a malapena a difenderti."
+        },
+        "V0507_34_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 9,
+            "frame": 0,
+            "text": "Mi interessa più il mio lecca-lecca di questo Duello."
+        },
+        "V0507_34_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 10,
+            "frame": 0,
+            "text": "Cosa intendi fare?"
+        },
+        "V0507_34_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "Per quanto ancora hai intenzione di continuare così?"
+        },
+        "V0507_34_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 10,
+            "frame": 0,
+            "text": "Sei tutte chiacchiere."
+        },
+        "V0507_34_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 0,
+            "text": "So che ci stai andando piano con me. Smettila!"
+        },
+        "V0507_34_00_09_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 6,
+            "frame": 0,
+            "text": "Così va bene, vero?\nVero, vero, vero?"
+        },
+        "V0507_34_00_10_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 6,
+            "frame": 0,
+            "text": "Wow! Fantastico!"
+        },
+        "V0507_35_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Sono Sora! Giochiamo!"
+        },
+        "V0507_35_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ti insegnerò quanto è potente l'Evocazione tramite Fusione!"
+        },
+        "V0507_36_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Falli fuori con un botto!"
+        },
+        "V0507_36_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Facciamo cambio.\nÈ il tuo turno."
+        },
+        "V0507_36_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "Non è ancora finita!\nÈ qui che inizia la ripresa!"
+        },
+        "V0507_36_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                501
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Tocca a te, Yuya."
+        },
+        "V0507_36_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                502
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Puoi farcela, Zuzu."
+        },
+        "V0507_36_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                503
+            ],
+            "face": 2,
+            "frame": 0,
+            "text": "Spazzali via, mega sopracciglia!"
+        },
+        "V0507_36_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                506,
+                508
+            ],
+            "face": 8,
+            "frame": 0,
+            "text": "Vediamo cosa sanno fare gli Xyz."
+        },
+        "V0507_37_00_00_0": {
+            "card": [
+                11378
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Furia di orso e lame taglienti!"
+        },
+        "V0507_37_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Contro questa doppia unione, meglio stare attenti!"
+        },
+        "V0507_37_00_01_0": {
+            "card": [
+                11718
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Pioggia di pugni, mostro di calamità, del dolore il sovrano!"
+        },
+        "V0507_37_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Con questa tripla unione, la vittoria è nella mia mano!  "
+        },
+        "V0507_37_00_02_0": {
+            "card": [
+                11717
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Catena di distruzione, volontà di guerriero!"
+        },
+        "V0507_37_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Con questa doppia unione, conquisto il mondo intero!"
+        },
+        "V0507_37_00_03_0": {
+            "card": [
+                11716
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Re dell'acciaio affilato e padrone del terreno!"
+        },
+        "V0507_37_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Con questa doppia unione, al tuo regno metto freno!"
+        },
+        "V0507_37_00_04_0": {
+            "card": [
+                11617
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Contro i miei mostri uniti, i miei avversari sono finiti!"
+        },
+        "V0507_37_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Evoco tramite Fusione!"
+        },
+        "V0507_37_00_05_0": {
+            "card": [
+                11987
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Contro i miei mostri uniti, i miei avversari sono finiti!"
+        },
+        "V0507_37_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Evoco tramite Fusione!"
+        },
+        "V0507_37_00_06_0": {
+            "card": [
+                12842
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Lame affilate e visioni di sciagure!"
+        },
+        "V0507_37_00_06_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Con questa doppia unione, ti si fermerà il cuore!"
+        },
+        "V0507_38_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Pronti... Partenza... Duelliamo!"
+        },
+        "V0507_44_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Duellanti!\nPreparatevi alla battaglia!"
+        },
+        "V0507_44_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Solo uno vincerà il Duello..."
+        },
+        "V0507_44_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Nella fusione suprema tra mostri e caos!"
+        },
+        "V0507_44_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "L'azione comincia ora!"
+        },
+        "V0507_44_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Azioneee..."
+        },
+        "V0507_44_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Via al Duello!"
+        },
+        "V0507_45_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "È il momento di giocare una Carta Action!"
+        },
+        "V0507_45_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Attivo una Magia Azione!"
+        }
+    }
+}

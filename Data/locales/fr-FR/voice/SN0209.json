@@ -1,0 +1,2488 @@
+{
+    "_GRP_": "SN0209",
+    "_LNG_": "fr-FR",
+    "info": {
+        "V0209_01_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Voyons comment tu te bats !"
+        },
+        "V0209_01_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Tu dois dépasser tes limites pour atteindre la victoire !"
+        },
+        "V0209_01_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Je vais te montrer une stratégie dont j'ai le secret !"
+        },
+        "V0209_01_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Peux-tu trouver la Solution Synchro ?"
+        },
+        "V0209_01_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                201
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Yusei, tu dois dépasser tes limites si tu veux me battre !"
+        },
+        "V0209_01_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                215,
+                216,
+                217,
+                235,
+                236
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "J'ai pour mission de protéger Yusei de toutes les menaces !"
+        },
+        "V0209_01_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                215,
+                235,
+                236
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Tu as peur de moi ?\nC'est normal."
+        },
+        "V0209_01_00_06_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Je suis ici pour t'empêcher d'atteindre ton but !"
+        },
+        "V0209_01_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                215,
+                235,
+                236
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Je vais t'affronter en Duel !"
+        },
+        "V0209_01_00_07_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Tu vas être victime de ma Synchro Axel !"
+        },
+        "V0209_01_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                215
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Pas besoin de te dire qui je suis, tu vas disparaître !"
+        },
+        "V0209_01_00_09_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                216,
+                217,
+                218
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Je vais sauver mes alliés, et je te sauverai aussi !"
+        },
+        "V0209_02_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Duel !"
+        },
+        "V0209_03_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Réfléchis à une nouvelle stratégie si tu veux gagner !"
+        },
+        "V0209_03_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "C'est mon tour !"
+        },
+        "V0209_03_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Tu ne peux plus rien faire !"
+        },
+        "V0209_03_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "À mon tour !"
+        },
+        "V0209_03_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "C'est mon tour !"
+        },
+        "V0209_03_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "À moi !"
+        },
+        "V0209_03_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "À mon tour !"
+        },
+        "V0209_03_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "À mon tour !"
+        },
+        "V0209_03_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Tu prends enfin ce Duel au sérieux."
+        },
+        "V0209_03_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "C'est mon tour !"
+        },
+        "V0209_04_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Je pioche !"
+        },
+        "V0209_04_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Je pioche !"
+        },
+        "V0209_04_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Je pioche !"
+        },
+        "V0209_05_00_00_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Je pioche, et tu vas découvrir ce qui t'attend !"
+        },
+        "V0209_05_00_00_1": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Je pioche !!!"
+        },
+        "V0209_06_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Observe !"
+        },
+        "V0209_06_01_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Une petite minute !"
+        },
+        "V0209_06_01_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ça ne va pas marcher !"
+        },
+        "V0209_06_01_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 1,
+            "text": "Pas si vite !"
+        },
+        "V0209_07_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Depuis ma main..."
+        },
+        "V0209_07_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'active une Magie !"
+        },
+        "V0209_07_02_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'active une Magie Jeu-Rapide !"
+        },
+        "V0209_07_03_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'active une Magie Continue !"
+        },
+        "V0209_07_04_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'active une Magie d'Équipement !"
+        },
+        "V0209_07_05_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'active une Magie Rituelle !"
+        },
+        "V0209_07_06_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'active un Piège !"
+        },
+        "V0209_07_07_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'active un Piège Continu !"
+        },
+        "V0209_07_08_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'active un Contre-Piège !"
+        },
+        "V0209_07_09_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Je retourne ma carte Posée !"
+        },
+        "V0209_07_09_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Voici ma carte Posée !"
+        },
+        "V0209_07_10_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'active l'effet de mon monstre !"
+        },
+        "V0209_07_11_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'active une Magie de Terrain !"
+        },
+        "V0209_07_12_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'active un effet !"
+        },
+        "V0209_07_13_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Je déclare une Échelle Pendule !"
+        },
+        "V0209_08_00_00_0": {
+            "card": [
+                9524
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "J'active ma Magie Jeu-Rapide !\nTGX1-HL !"
+        },
+        "V0209_08_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Je divise l'ATK/DEF d'1 T.G. pour détruire 1 Magie ou Piège."
+        },
+        "V0209_08_00_01_0": {
+            "card": [
+                9525
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "J'active ma Magie Continue !\nTGX300 !"
+        },
+        "V0209_08_00_02_0": {
+            "card": [
+                9540
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "J'active mon Piège !\nTG-SX1 !"
+        },
+        "V0209_08_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "J'Invoque Spécialement un Monstre Synchro T.G. du Cimetière."
+        },
+        "V0209_08_00_03_0": {
+            "card": [
+                9539
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "J'active mon Piège !\nTGX3-DX2 !"
+        },
+        "V0209_08_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Je renvoie 3 T.G. du Cimetière au deck et pioche 2 cartes !"
+        },
+        "V0209_08_00_04_0": {
+            "card": [
+                9541
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "J'active mon Piège !\nTG1-EM1 !"
+        },
+        "V0209_08_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "J'échange le contrôle de mon monstre T.G. avec ton monstre !"
+        },
+        "V0209_08_00_05_0": {
+            "card": [
+                14562
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Tu crois que ça va marcher contre moi ?"
+        },
+        "V0209_08_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "J'active la Carte Piège, Assommement Sonique !"
+        },
+        "V0209_08_00_06_0": {
+            "card": [
+                9144
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "J'active mon Contre-Piège !\nFracture de Gravité !"
+        },
+        "V0209_08_00_06_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Cette carte t'empêche d'Invoquer un monstre et le détruit !"
+        },
+        "V0209_08_00_07_0": {
+            "card": [
+                8217
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "J'active ma Carte Piège, Attrape-Syntoniseurs !"
+        },
+        "V0209_08_00_07_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "J'Invoque un Syntoniseur de ton Cimetière sur mon Terrain !"
+        },
+        "V0209_08_00_08_0": {
+            "card": [
+                9241
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "J'active mon Piège, Matériel Synchro !"
+        },
+        "V0209_08_00_08_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "J'utilise ton monstre pour Invoquer par Synchro ce tour !"
+        },
+        "V0209_08_00_09_0": {
+            "card": [
+                7920
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "J'active mon Piège !\nSyntonisation Urgente !"
+        },
+        "V0209_08_00_09_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Je peux Invoquer par Synchro un Monstre Synchro !"
+        },
+        "V0209_08_00_10_0": {
+            "card": [
+                5914
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "J'active mon Piège !\nDispositif d'Évacuation Obligatoire !"
+        },
+        "V0209_08_00_10_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Je renvoie un monstre sur le Terrain à la main !"
+        },
+        "V0209_09_00_00_0": {
+            "card": [
+                9493
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "L'effet de la Carte Buster Blaster s'active !"
+        },
+        "V0209_09_00_01_0": {
+            "card": [
+                9493
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Équiper Buster Blaster active son effet !"
+        },
+        "V0209_09_00_02_0": {
+            "card": [
+                14087
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Avec l'effet de Raptor Boost T.G., j'ajoute un monstre T.G. à ma main !"
+        },
+        "V0209_09_00_03_0": {
+            "card": [
+                14560
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Quand tous mes monstres sont T.G., je peux Invoquer ceci !"
+        },
+        "V0209_09_00_04_0": {
+            "card": [
+                14560
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "L'effet de la Carte Poisson Perceuse T.G. s'active !\nJe détruis ton monstre !"
+        },
+        "V0209_09_00_05_0": {
+            "card": [
+                14088
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "L'effet de la Carte Larve Tank T.G. s'active !"
+        },
+        "V0209_09_00_06_0": {
+            "card": [
+                9487
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Grâce à Magicien Cyber T.G., j'ajoute un T.G. de mon Deck à ma main !"
+        },
+        "V0209_09_00_07_0": {
+            "card": [
+                14559
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "En baissant l'ATK de mon T.G., je peux Invoquer cette carte."
+        },
+        "V0209_09_00_08_0": {
+            "card": [
+                14561
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Quand un monstre est détruit, je peux Invoquer cette carte."
+        },
+        "V0209_09_00_09_0": {
+            "card": [
+                9488
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Attaquant T.G. me permet d'ajouter un T.G. de mon deck à ma main !"
+        },
+        "V0209_09_00_10_0": {
+            "card": [
+                9490
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Catapulte Dragon T.G. Invoque Spécialement 1 Syntoniseur T.G. !"
+        },
+        "V0209_09_00_11_0": {
+            "card": [
+                9491
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Comme ce monstre était de Niv. 4 ou moins, j'Invoque ceci."
+        },
+        "V0209_09_00_12_0": {
+            "card": [
+                9491
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Loup de Guerre T.G. ajoute un autre monstre de mon deck à ma main !"
+        },
+        "V0209_09_00_13_0": {
+            "card": [
+                9489
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Avec une Invocation Synchro, l'effet de Faucon Jet T.G. s'active !"
+        },
+        "V0209_09_00_14_0": {
+            "card": [
+                9492
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Rhino Rueur T.G. ajoute un autre monstre de mon Deck à ma main !"
+        },
+        "V0209_09_00_15_0": {
+            "card": [
+                14086
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "L'effet de la Carte Serpent à Vis T.G. s'active !"
+        },
+        "V0209_09_00_15_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "J'Invoque Spé. un T.G. de Niv. 4 ou moins de mon Cimetière !"
+        },
+        "V0209_09_00_16_0": {
+            "card": [
+                14086
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "L'effet de la Carte Serpent à Vis T.G. s'active depuis le Cimetière !"
+        },
+        "V0209_09_00_17_0": {
+            "card": [
+                9510
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "L'effet de la Carte Libellule Alternative T.G. s'active !"
+        },
+        "V0209_09_00_18_0": {
+            "card": [
+                9511
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Magicienne des Merveilles T.G. peut détruire une Magie ou un Piège !"
+        },
+        "V0209_09_00_19_0": {
+            "card": [
+                9511
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Observe la véritable puissance de l'Invocation Synchro !"
+        },
+        "V0209_09_00_20_0": {
+            "card": [
+                9511
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Quand la Carte Magicienne des Merveilles T.G. est détruite, je pioche une carte !"
+        },
+        "V0209_09_00_21_0": {
+            "card": [
+                9512
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Quand la Carte Gladiateur de Puissance T.G. est détruite, je pioche une carte !"
+        },
+        "V0209_09_00_22_0": {
+            "card": [
+                9554
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "En Invoquant par Synchro, Hyper Bibliothécaire T.G. me permet de piocher !"
+        },
+        "V0209_09_00_23_0": {
+            "card": [
+                9513
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "En défaussant une carte, Blade Blaster T.G. annule 1 Magie ou Piège !"
+        },
+        "V0209_09_00_24_0": {
+            "card": [
+                9513
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "L'effet de la Carte Blade Blaster T.G. s'active !"
+        },
+        "V0209_09_00_24_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Je bannis 1 T.G. de mon Cimetière pour bannir cette carte !"
+        },
+        "V0209_09_00_25_0": {
+            "card": [
+                9513
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Blade Blaster T.G. retourne sur mon Terrain pendant la Standby Phase !"
+        },
+        "V0209_09_00_26_0": {
+            "card": [
+                9514
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Canon Hallebarde T.G. !\nEmpêche l'Invocation de ce monstre !"
+        },
+        "V0209_09_00_26_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Invocation interdite !"
+        },
+        "V0209_09_00_27_0": {
+            "card": [
+                9514
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Canon Hallebarde T.G. n'est plus là, mais un autre T.G. arrive !"
+        },
+        "V0209_09_00_28_0": {
+            "card": [
+                14262
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "L'effet de la Carte Canon Hallebarde T.G./Mode Assaut s'active !"
+        },
+        "V0209_09_00_28_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ce monstre et ceux Invoqués Spécialement sont bannis !"
+        },
+        "V0209_09_00_29_0": {
+            "card": [
+                14262
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Quand cette carte est détruite, je peux ressusciter Canon Hallebarde T.G. !"
+        },
+        "V0209_09_00_30_0": {
+            "card": [
+                14116
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Gardien des Étoiles T.G. me permet de récupérer un T.G. de mon Cimetière !"
+        },
+        "V0209_09_00_31_0": {
+            "card": [
+                14116
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Gardien des Étoiles T.G. Invoque Spécialement un T.G. depuis ma main !"
+        },
+        "V0209_09_00_32_0": {
+            "card": [
+                14116
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Tu vas voir ce qui se trouve aux confins de la réalité !"
+        },
+        "V0209_10_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Je sais quoi faire !"
+        },
+        "V0209_10_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Regarde ça !"
+        },
+        "V0209_10_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Apparais !"
+        },
+        "V0209_10_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Viens !"
+        },
+        "V0209_11_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'Invoque un monstre !"
+        },
+        "V0209_11_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'Invoque un monstre en Position de Défense !"
+        },
+        "V0209_11_02_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'Invoque Spécialement un monstre !"
+        },
+        "V0209_11_03_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Je Sacrifie un monstre !"
+        },
+        "V0209_11_04_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'Invoque un monstre par Sacrifice !"
+        },
+        "V0209_11_05_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'Invoque un monstre par Fusion !"
+        },
+        "V0209_11_06_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'Invoque un monstre par Rituel !"
+        },
+        "V0209_11_07_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'Invoque un monstre par Synchro !"
+        },
+        "V0209_11_08_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'Invoque un monstre par Xyz !"
+        },
+        "V0209_11_09_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'Invoque un monstre par Pendulation !"
+        },
+        "V0209_11_10_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'Invoque un monstre par Lien !"
+        },
+        "V0209_13_00_00_0": {
+            "card": [
+                9493
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Buster Blaster !"
+        },
+        "V0209_13_00_01_0": {
+            "card": [
+                14087
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Raptor Boost T.G. !"
+        },
+        "V0209_13_00_02_0": {
+            "card": [
+                14560
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Poisson Perceuse T.G. !"
+        },
+        "V0209_13_00_03_0": {
+            "card": [
+                14088
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Larve Tank T.G. !"
+        },
+        "V0209_13_00_04_0": {
+            "card": [
+                9487
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Magicien Cyber T.G. !"
+        },
+        "V0209_13_00_05_0": {
+            "card": [
+                14559
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Zombie Engrenage T.G. !"
+        },
+        "V0209_13_00_06_0": {
+            "card": [
+                14561
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Squelette Métallique T.G. !"
+        },
+        "V0209_13_00_07_0": {
+            "card": [
+                9488
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Attaquant T.G. !"
+        },
+        "V0209_13_00_08_0": {
+            "card": [
+                9490
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Catapulte Dragon T.G. !"
+        },
+        "V0209_13_00_09_0": {
+            "card": [
+                9491
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Loup de Guerre T.G. !"
+        },
+        "V0209_13_00_10_0": {
+            "card": [
+                9489
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Faucon Jet T.G. !"
+        },
+        "V0209_13_00_11_0": {
+            "card": [
+                9492
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Rhino Rueur T.G. !"
+        },
+        "V0209_13_00_12_0": {
+            "card": [
+                14086
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Serpent à Vis T.G. !"
+        },
+        "V0209_13_00_13_0": {
+            "card": [
+                9510
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Allons-y, Libellule Alternative T.G. !"
+        },
+        "V0209_13_00_14_0": {
+            "card": [
+                9511
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Voici Magicienne des Merveilles T.G. !"
+        },
+        "V0209_13_00_15_0": {
+            "card": [
+                9512
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Allez, Gladiateur de Puissance T.G. !"
+        },
+        "V0209_13_00_16_0": {
+            "card": [
+                9554
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "À toi, Hyper Bibliothécaire T.G. !"
+        },
+        "V0209_13_00_17_0": {
+            "card": [
+                9513
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Allez, Blade Blaster T.G. !"
+        },
+        "V0209_13_00_18_0": {
+            "card": [
+                9514
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Allez, Canon Hallebarde T.G. !"
+        },
+        "V0209_13_00_19_0": {
+            "card": [
+                14262
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Allez, Canon Hallebarde T.G./Mode Assaut !"
+        },
+        "V0209_13_00_20_0": {
+            "card": [
+                14116
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Émerge, Gardien des Étoiles T.G. !"
+        },
+        "V0209_13_00_21_0": {
+            "card": [
+                14158
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "J'Invoque Spécialement la Carte Jeton T.G. !"
+        },
+        "V0209_14_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Bats-toi !"
+        },
+        "V0209_14_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Combattons !"
+        },
+        "V0209_15_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "OK !"
+        },
+        "V0209_15_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Prends ça !"
+        },
+        "V0209_15_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Me voilà !"
+        },
+        "V0209_16_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "C'est terminé !"
+        },
+        "V0209_16_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Il n'y a aucune issue."
+        },
+        "V0209_17_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Mon monstre attaque !"
+        },
+        "V0209_17_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "J'attaque avec mon monstre !"
+        },
+        "V0209_17_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Attaque !"
+        },
+        "V0209_18_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Je t'attaque directement !"
+        },
+        "V0209_18_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Prends ça ! Attaque directe !"
+        },
+        "V0209_19_00_00_0": {
+            "card": [
+                9493
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Buster Blaster ! Explose tout !"
+        },
+        "V0209_19_00_01_0": {
+            "card": [
+                14087
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "À l'attaque, Raptor Boost T.G. !"
+        },
+        "V0209_19_00_02_0": {
+            "card": [
+                14560
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "À l'attaque, Poisson Perceuse T.G. !"
+        },
+        "V0209_19_00_03_0": {
+            "card": [
+                14088
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "À l'attaque, Larve Tank T.G. !"
+        },
+        "V0209_19_00_04_0": {
+            "card": [
+                9487
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "À l'attaque, Magicien Cyber T.G. !"
+        },
+        "V0209_19_00_05_0": {
+            "card": [
+                14559
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "À l'attaque, Zombie Engrenage T.G. !"
+        },
+        "V0209_19_00_06_0": {
+            "card": [
+                14561
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "À l'attaque, Squelette Métallique T.G. !"
+        },
+        "V0209_19_00_07_0": {
+            "card": [
+                9488
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "À l'attaque, Attaquant T.G. !"
+        },
+        "V0209_19_00_08_0": {
+            "card": [
+                9490
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "À l'attaque, Catapulte Dragon T.G. !"
+        },
+        "V0209_19_00_09_0": {
+            "card": [
+                9491
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "À l'attaque, Loup de Guerre T.G. !"
+        },
+        "V0209_19_00_10_0": {
+            "card": [
+                9489
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "À l'attaque, Faucon Jet T.G. !"
+        },
+        "V0209_19_00_11_0": {
+            "card": [
+                9492
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "À l'attaque, Rhino Rueur T.G. !"
+        },
+        "V0209_19_00_12_0": {
+            "card": [
+                14086
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "À l'attaque, Serpent à Vis T.G. !"
+        },
+        "V0209_19_00_13_0": {
+            "card": [
+                9510
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "À l'attaque, Libellule Alternative T.G. !"
+        },
+        "V0209_19_00_14_0": {
+            "card": [
+                9511
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "À l'attaque, Magicienne des Merveilles T.G. !"
+        },
+        "V0209_19_00_14_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Sorcellerie mécanique !"
+        },
+        "V0209_19_00_15_0": {
+            "card": [
+                9512
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Gladiateur de Puissance T.G. !\nMontre la puissance de ta hache !"
+        },
+        "V0209_19_00_15_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Rafale mécanique !"
+        },
+        "V0209_19_00_16_0": {
+            "card": [
+                9554
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "À l'attaque, Hyper Bibliothécaire T.G. !"
+        },
+        "V0209_19_00_17_0": {
+            "card": [
+                9513
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "À l'attaque, Blade Blaster T.G. !"
+        },
+        "V0209_19_00_17_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Lame explosive !"
+        },
+        "V0209_19_00_18_0": {
+            "card": [
+                9514
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "À l'attaque, Canon Hallebarde T.G. !"
+        },
+        "V0209_19_00_19_0": {
+            "card": [
+                14262
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "À l'attaque, Canon Hallebarde T.G./Mode Assaut !"
+        },
+        "V0209_19_00_20_0": {
+            "card": [
+                14116
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "À l'attaque, Gardien des Étoiles T.G. !"
+        },
+        "V0209_20_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Je Pose une carte !"
+        },
+        "V0209_20_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Je Pose une carte !"
+        },
+        "V0209_20_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Je Pose un monstre !"
+        },
+        "V0209_20_01_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Je Pose un monstre !"
+        },
+        "V0209_21_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "J'ai fini."
+        },
+        "V0209_21_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Que vas-tu faire à présent ?"
+        },
+        "V0209_21_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Je termine mon tour !"
+        },
+        "V0209_21_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Qu'est-ce qui ne va pas ?\nTu tiens à peine debout."
+        },
+        "V0209_21_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Je termine mon tour !"
+        },
+        "V0209_21_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Je termine mon tour !"
+        },
+        "V0209_21_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Allez ! Essaie de me battre !"
+        },
+        "V0209_21_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Je vois... Bien joué !"
+        },
+        "V0209_21_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Je termine mon tour !"
+        },
+        "V0209_21_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "C'est ça la bonne attitude."
+        },
+        "V0209_21_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Je termine mon tour !"
+        },
+        "V0209_22_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 1,
+            "text": "Ouch !"
+        },
+        "V0209_22_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 1,
+            "text": "Argh !"
+        },
+        "V0209_22_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 1,
+            "text": "Aaah !"
+        },
+        "V0209_23_00_00_0": {
+            "card": [],
+            "cutin": 3,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Aaah !"
+        },
+        "V0209_24_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 1,
+            "text": "Argh..."
+        },
+        "V0209_25_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Aaah !"
+        },
+        "V0209_25_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Erghhh !"
+        },
+        "V0209_25_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Gah !"
+        },
+        "V0209_26_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Maintenant je réalise l'étendue de ton talent..."
+        },
+        "V0209_26_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Intéressant..."
+        },
+        "V0209_26_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Argh..."
+        },
+        "V0209_27_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Ergh..."
+        },
+        "V0209_27_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Ouch..."
+        },
+        "V0209_27_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Non..."
+        },
+        "V0209_28_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ton insécurité est un frein pour tes progrès en Duel."
+        },
+        "V0209_28_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Tu ne vas pas pouvoir me suivre."
+        },
+        "V0209_28_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'ai dépassé mes limites, tu ne peux rien face à moi."
+        },
+        "V0209_28_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Tu ne peux pas gagner si tu te bats sans conviction !"
+        },
+        "V0209_28_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                201
+            ],
+            "face": 10,
+            "frame": 0,
+            "text": "Cette puissance va au-delà de la Synchro !"
+        },
+        "V0209_28_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                201
+            ],
+            "face": 10,
+            "frame": 0,
+            "text": "Qu'est-ce qui ne va pas, Yusei ?\nTa peur te retient !"
+        },
+        "V0209_28_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                215,
+                216,
+                217,
+                218,
+                235,
+                236
+            ],
+            "face": 8,
+            "frame": 0,
+            "text": "Le futur va dans une nouvelle direction."
+        },
+        "V0209_28_00_06_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 10,
+            "frame": 0,
+            "text": "Une direction créée par mes amis et moi !"
+        },
+        "V0209_29_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Je ne peux pas te révéler tous mes secrets de Synchro Axel."
+        },
+        "V0209_29_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Je savais que tu avais quelque chose de spécial."
+        },
+        "V0209_29_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Tu as le potentiel pour faire des choses incroyables."
+        },
+        "V0209_29_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "J'ai hâte que nous nous affrontions à nouveau."
+        },
+        "V0209_29_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                201
+            ],
+            "face": 9,
+            "frame": 0,
+            "text": "Yusei, je crois en toi pour un avenir meilleur."
+        },
+        "V0209_29_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 10,
+            "frame": 0,
+            "text": "Un avenir plus brillant que ma Synchro Axel !"
+        },
+        "V0209_29_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                201
+            ],
+            "face": 2,
+            "frame": 0,
+            "text": "Yusei, tu as démontré pourquoi je crois en toi."
+        },
+        "V0209_29_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                215,
+                235,
+                236
+            ],
+            "face": 7,
+            "frame": 0,
+            "text": "Voilà donc ta véritable force..."
+        },
+        "V0209_29_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                215,
+                216,
+                217,
+                218,
+                235,
+                236
+            ],
+            "face": 14,
+            "frame": 0,
+            "text": "Argh...\nPardonne-moi, Yusei..."
+        },
+        "V0209_29_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                216
+            ],
+            "face": 14,
+            "frame": 0,
+            "text": "Aporia...\nJe suis si triste pour toi..."
+        },
+        "V0209_29_00_09_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                218
+            ],
+            "face": 14,
+            "frame": 0,
+            "text": "Z-one...\nEst-ce vraiment impossible de te sauver ?"
+        },
+        "V0209_30_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Tu as peur de moi ?"
+        },
+        "V0209_30_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Vas-tu oser faire quelque chose ?"
+        },
+        "V0209_30_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Je commençais à m'ennuyer en y allant doucement avec toi."
+        },
+        "V0209_31_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Quoi ?!"
+        },
+        "V0209_31_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Impossible !"
+        },
+        "V0209_32_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Yu-Gi-Oh! Duel Links"
+        },
+        "V0209_32_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Yu-Gi-Oh! Duel Links"
+        },
+        "V0209_33_00_00_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Je te monterai ce qu'il y a au-delà de l'au-delà !"
+        },
+        "V0209_33_00_01_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Mon âme atteint des sommets inimaginables !"
+        },
+        "V0209_33_00_02_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Tu vas arriver à me suivre ?"
+        },
+        "V0209_34_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Qu'est-ce qui ne va pas ? Tu es sur le point de t'évanouir !"
+        },
+        "V0209_34_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Je n'arrive pas à croire que tu aies fait ce combo !"
+        },
+        "V0209_34_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Tu m’as prouvé que tu avais un grand potentiel."
+        },
+        "V0209_34_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Tu as bien le courage de transcender tes limites !"
+        },
+        "V0209_34_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Je pense que cette carte, c'est du bluff."
+        },
+        "V0209_34_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Tu oses entraver ma Synchro Axel !"
+        },
+        "V0209_34_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "À vos marques... Prêt... Duel !"
+        },
+        "V0209_34_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "La synchronicité est la clé.\nUn esprit lucide."
+        },
+        "V0209_34_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Rien ne peut me retenir ! Esprit super lucide !"
+        },
+        "V0209_34_00_09_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Synchro Axel !"
+        },
+        "V0209_34_00_10_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Synchro Axel Delta !"
+        },
+        "V0209_34_00_11_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "C'est moi !"
+        },
+        "V0209_35_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Je fais passer l'Invocation Synchro au niveau supérieur !"
+        },
+        "V0209_35_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Admire ma Synchro Axel !"
+        },
+        "V0209_35_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "C'est à moi ?"
+        },
+        "V0209_35_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Je savais que tout le monde m'aimait !"
+        },
+        "V0209_36_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Je te laisse le reste !"
+        },
+        "V0209_36_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "J'ai hâte de voir comment tu t'en sors en Duel."
+        },
+        "V0209_36_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Pardon, mais je sais que tu peux y arriver !"
+        },
+        "V0209_36_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                201
+            ],
+            "face": 2,
+            "frame": 0,
+            "text": "À toi, Yusei !"
+        },
+        "V0209_36_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                201
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Yusei ! C'est ton tour !"
+        },
+        "V0209_36_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                201
+            ],
+            "face": 14,
+            "frame": 0,
+            "text": "Dépasse tes limites, Yusei !"
+        },
+        "V0209_36_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                216,
+                217,
+                218
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Occupe-toi du reste !"
+        },
+        "V0209_36_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                216,
+                217,
+                218
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "C'est ton tour."
+        },
+        "V0209_36_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                216,
+                217,
+                218
+            ],
+            "face": 14,
+            "frame": 0,
+            "text": "Tu dois sauver l'avenir !"
+        },
+        "V0209_37_00_00_0": {
+            "card": [
+                9510
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Limiteur niv. 2 retiré.\nRégulateurs ouverts.\nNavigation OK !"
+        },
+        "V0209_37_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Invocation Synchro !"
+        },
+        "V0209_37_00_01_0": {
+            "card": [
+                9511
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Limiteur niveau 5 retiré.\nFusées activées.\nSystèmes OK !"
+        },
+        "V0209_37_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Invocation Synchro !"
+        },
+        "V0209_37_00_02_0": {
+            "card": [
+                9512
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Commandes en vol.\nLimiteur niveau 5 retiré.\nFusées à 120 % !"
+        },
+        "V0209_37_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Réseau rétabli.\nSystèmes opérationnels.\nInvocation Synchro !"
+        },
+        "V0209_37_00_03_0": {
+            "card": [
+                9554
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Limiteur niv. 5 retiré.\nRégulateurs ouverts.\nLiaison établie."
+        },
+        "V0209_37_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Invocation Synchro !"
+        },
+        "V0209_37_00_04_0": {
+            "card": [
+                9513
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Esprit lucide !"
+        },
+        "V0209_37_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Limiteur niveau 10 retiré.\nCommandes de fusées OK."
+        },
+        "V0209_37_00_04_2": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Sors des ombres et viens dans la lumière !\nSynchro Axel !"
+        },
+        "V0209_37_00_05_0": {
+            "card": [
+                9514
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Esprit super lucide !"
+        },
+        "V0209_37_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Limiteur max retiré.\nRégulateurs ouverts.\nSystèmes OK !"
+        },
+        "V0209_37_00_05_2": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ce pouvoir infini créera un nouvel avenir.\nAllez, Axel Delta."
+        },
+        "V0209_37_00_06_0": {
+            "card": [
+                14116
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Limiteur niv. 5 retiré.\nRégulateurs ouverts.\nSystèmes OK !"
+        },
+        "V0209_37_00_06_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Invocation Synchro !"
+        },
+        "V0209_38_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "À vos marques... Prêt... Duel !"
+        }
+    }
+}

@@ -1,0 +1,3611 @@
+{
+    "_GRP_": "SN0203",
+    "_LNG_": "pt-BR",
+    "info": {
+        "V0203_01_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Fiquei sabendo que você estava me procurando.\nParece que encontrou."
+        },
+        "V0203_01_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Observem, crianças!\nVou mostrar como se duela!"
+        },
+        "V0203_01_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Você se coçando para duelar?\nBeleza! Vamos nessa!"
+        },
+        "V0203_01_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Vem com tudo!\nVocê vai ver como meus Asanegras são durões!"
+        },
+        "V0203_01_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                201,
+                202,
+                204,
+                205,
+                206,
+                209
+            ],
+            "face": 7,
+            "frame": 0,
+            "text": "Só porque você é meu amigo não quer dizer que vou pegar leve!"
+        },
+        "V0203_01_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                208
+            ],
+            "face": 3,
+            "frame": 0,
+            "text": "Óóó, você passou por momentos difíceis?\nQuem não passou?"
+        },
+        "V0203_01_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                210,
+                231,
+                211,
+                9058,
+                9059,
+                9061,
+                9062
+            ],
+            "face": 3,
+            "frame": 0,
+            "text": "Não ligo que você seja Signatário ou sei lá o quê!"
+        },
+        "V0203_01_00_06_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Só quero é puxar seu freio!"
+        },
+        "V0203_01_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                215,
+                216,
+                217,
+                218,
+                235,
+                236
+            ],
+            "face": 3,
+            "frame": 0,
+            "text": "Este duelo não vai ser como você pensa!"
+        },
+        "V0203_01_00_07_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Sei que posso derrotar você!\nPorque quando eu luto, é PRA VALER!"
+        },
+        "V0203_02_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Duelo!"
+        },
+        "V0203_03_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Ainda tenho muito mais guardado!"
+        },
+        "V0203_03_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Minha vez!"
+        },
+        "V0203_03_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Sei que você já vê seu fim chegando!"
+        },
+        "V0203_03_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "É a minha vez!"
+        },
+        "V0203_03_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Aí vou eu!"
+        },
+        "V0203_03_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Minha vez!"
+        },
+        "V0203_03_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "É a minha vez!"
+        },
+        "V0203_03_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Você ainda não quebrou o nosso elo!"
+        },
+        "V0203_03_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Minha vez!"
+        },
+        "V0203_03_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Cara, meu tanque tá secando..."
+        },
+        "V0203_03_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "É a minha vez!"
+        },
+        "V0203_04_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Eu compro!"
+        },
+        "V0203_04_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu compro!"
+        },
+        "V0203_04_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Eu compro!"
+        },
+        "V0203_05_00_00_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Tudo depende dessa compra...\nMas eu acredito no meu deck!"
+        },
+        "V0203_05_00_00_1": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Compro!!!"
+        },
+        "V0203_06_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 1,
+            "text": "Até parece!"
+        },
+        "V0203_06_01_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 1,
+            "text": "Meus instintos estão formigando!"
+        },
+        "V0203_06_01_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 1,
+            "text": "Acha que isso vai funcionar comigo?"
+        },
+        "V0203_06_01_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 1,
+            "text": "Estava esperando que você fizesse isso!"
+        },
+        "V0203_07_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Da minha mão..."
+        },
+        "V0203_07_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu ativo um card de magia!"
+        },
+        "V0203_07_02_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu ativo uma magia rápida!"
+        },
+        "V0203_07_03_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu ativo uma magia contínua!"
+        },
+        "V0203_07_04_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu ativo uma magia de equipamento!"
+        },
+        "V0203_07_05_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu ativo uma magia de ritual!"
+        },
+        "V0203_07_06_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu ativo meu card de armadilha!"
+        },
+        "V0203_07_07_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu ativo minha armadilha contínua!"
+        },
+        "V0203_07_08_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu ativo minha armadilha de resposta!"
+        },
+        "V0203_07_09_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu viro meu card com face para baixo!"
+        },
+        "V0203_07_09_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Jogo meu card com face para baixo!"
+        },
+        "V0203_07_10_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu ativo meu efeito de monstro!"
+        },
+        "V0203_07_11_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu ativo uma magia de campo!"
+        },
+        "V0203_07_12_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu ativo um efeito!"
+        },
+        "V0203_07_13_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu baixo a Escala de Pêndulo!"
+        },
+        "V0203_08_00_00_0": {
+            "card": [
+                8202
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ativo meu card de magia!\nContra o Vento!"
+        },
+        "V0203_08_00_01_0": {
+            "card": [
+                7743
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ativo o card de magia, Se-Sincro!"
+        },
+        "V0203_08_00_02_0": {
+            "card": [
+                8043
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ativo meu card de magia, Golpe de Asa da Ave de Rapina!"
+        },
+        "V0203_08_00_03_0": {
+            "card": [
+                8820
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ativo meu card de magia!\nOfensiva de Asas Negras!"
+        },
+        "V0203_08_00_04_0": {
+            "card": [
+                5849
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ativo meu card de magia rápida!\nRecarregar!"
+        },
+        "V0203_08_00_05_0": {
+            "card": [
+                8203
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Minha magia contínua, Redemoinho Negro!"
+        },
+        "V0203_08_00_06_0": {
+            "card": [
+                8821
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Olha só essa magia!\nCards por Penas Negras!"
+        },
+        "V0203_08_00_07_0": {
+            "card": [
+                13855
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Aqui está minha magia de equipamento, Besta Brilhante!"
+        },
+        "V0203_08_00_08_0": {
+            "card": [
+                8840
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Meus monstros trabalham juntos para chegar à vitória!"
+        },
+        "V0203_08_00_08_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu viro meu card de armadilha!\nAsanegra - Bombardeio!"
+        },
+        "V0203_08_00_09_0": {
+            "card": [
+                8839
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Uma única armadilha acabará com todos os seus monstros!"
+        },
+        "V0203_08_00_09_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ativo minha armadilha!\nAsanegra - Choque de Retorno!"
+        },
+        "V0203_08_00_10_0": {
+            "card": [
+                9145
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ativo o efeito da minha armadilha, Asanegra - Carga Explosiva!"
+        },
+        "V0203_08_00_11_0": {
+            "card": [
+                6709
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Olha só meu card de armadilha!\nAtaque de Ícaro!"
+        },
+        "V0203_08_00_12_0": {
+            "card": [
+                11177
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu viro meu card de armadilha!\nImpulso Sombrio!"
+        },
+        "V0203_08_00_13_0": {
+            "card": [
+                9143
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu revelo meu card de armadilha!\nCruzamento de Defensores!"
+        },
+        "V0203_08_00_14_0": {
+            "card": [
+                8220
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Esta armadilha explode em você!\nCorvo Delta - Anti Reversão!"
+        },
+        "V0203_08_00_15_0": {
+            "card": [
+                8223
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ativo minha armadilha!\nAtordoar Armadilha!"
+        },
+        "V0203_08_00_15_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Outros efeitos de armadilha ficam neutralizados neste turno!"
+        },
+        "V0203_08_00_16_0": {
+            "card": [
+                8222
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ativo minha armadilha, Pena Falsa!"
+        },
+        "V0203_08_00_17_0": {
+            "card": [
+                8064
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ativo a armadilha Flecha de Ébano!"
+        },
+        "V0203_08_00_18_0": {
+            "card": [
+                8841
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ativo minha armadilha!\nTrovão Negro!"
+        },
+        "V0203_08_00_19_0": {
+            "card": [
+                11175
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Seu melhor não é nada para mim!"
+        },
+        "V0203_08_00_19_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ativo minha armadilha!\nSonido Negro!"
+        },
+        "V0203_08_00_20_0": {
+            "card": [
+                9142
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu viro meu card de armadilha!\nCostas Negras!"
+        },
+        "V0203_08_00_21_0": {
+            "card": [
+                9356
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu revelo meu card de armadilha!\nIntensificação Negra!"
+        },
+        "V0203_08_00_22_0": {
+            "card": [
+                9246
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu estava esperando por esse momento!"
+        },
+        "V0203_08_00_22_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu viro meu card de armadilha!\nRetorno Negro!"
+        },
+        "V0203_08_00_23_0": {
+            "card": [
+                11176
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Não vou deixar que seu sacrifício seja em vão!"
+        },
+        "V0203_08_00_23_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu viro meu card de armadilha!\nVingança da Asa Negra!"
+        },
+        "V0203_08_00_24_0": {
+            "card": [
+                8842
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Não vou deixar que você faça isso!\nEu ativo minha armadilha, Minas Guardiãs!"
+        },
+        "V0203_08_00_25_0": {
+            "card": [
+                8221
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ativo minha armadilha!\nCalibrador de Nível!"
+        },
+        "V0203_08_00_26_0": {
+            "card": [
+                7920
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Minha armadilha é ativada!\nAfinação Urgente!"
+        },
+        "V0203_08_00_27_0": {
+            "card": [
+                9245
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ativo minha armadilha!\nFarol de Pena Negra!"
+        },
+        "V0203_08_00_28_0": {
+            "card": [
+                4988
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ativo a armadilha Tornado de Pó!"
+        },
+        "V0203_08_00_29_0": {
+            "card": [
+                9144
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Minha armadilha de resposta é ativada!\nColapso da Gravidade!"
+        },
+        "V0203_08_00_30_0": {
+            "card": [
+                13856
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Minha armadilha de resposta é ativada!\nFinalização do Pássaro Negro!"
+        },
+        "V0203_09_00_00_0": {
+            "card": [
+                12447
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Asanegra Agressor - Sohaya, a Chuva Tempestuosa é ativado!"
+        },
+        "V0203_09_00_01_0": {
+            "card": [
+                12448
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Asanegra Agressor - Onimaru, o Trovão Divino é ativado!"
+        },
+        "V0203_09_00_02_0": {
+            "card": [
+                11962
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Asanegra Agressor - Kunai, o Alvejador é ativado!"
+        },
+        "V0203_09_00_03_0": {
+            "card": [
+                12323
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Asanegra Agressor - Chidori, o Borrifo de Chuva é ativado!"
+        },
+        "V0203_09_00_04_0": {
+            "card": [
+                11991
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Asanegra Agressor - Raikiri, o Banho de Chuva é ativado!"
+        },
+        "V0203_09_00_05_0": {
+            "card": [
+                9463
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Domador Asanegra - Falcão Joe de Obsidiana!\nUse seu efeito!"
+        },
+        "V0203_09_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Domine as aves de rapina para despertar um Asanegra!"
+        },
+        "V0203_09_00_06_0": {
+            "card": [
+                9463
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Domador Asanegra - Falcão Joe de Obsidiana ativa seu efeito!"
+        },
+        "V0203_09_00_06_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O alvo troca do Falcão Joe para outro Asanegra!"
+        },
+        "V0203_09_00_07_0": {
+            "card": [
+                8779
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Já que um efeito adicionou Asanegra - Brisa, o Zéfiro à minha mão, eu posso invocá-lo!"
+        },
+        "V0203_09_00_08_0": {
+            "card": [
+                8036
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ele vai cravar uma cunha em você!"
+        },
+        "V0203_09_00_09_0": {
+            "card": [
+                8036
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Mestre de Armaduras Asanegra é ativado!"
+        },
+        "V0203_09_00_09_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ao remover um Marcador de Cunha, seu ATK e DEF ficam 0!"
+        },
+        "V0203_09_00_10_0": {
+            "card": [
+                11173
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Asanegra - Vapor, o Manto é ativado!"
+        },
+        "V0203_09_00_11_0": {
+            "card": [
+                9437
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Asanegra - Jin, a Sombra da Chuva é ativado!"
+        },
+        "V0203_09_00_12_0": {
+            "card": [
+                12411
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Asanegra - Tornado, o Giro Reverso é ativado!"
+        },
+        "V0203_09_00_13_0": {
+            "card": [
+                8013
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Asanegra - Sirocco, o Amanhecer é ativado!"
+        },
+        "V0203_09_00_13_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "A força do rebanho se concentra em um único Asanegra!"
+        },
+        "V0203_09_00_14_0": {
+            "card": [
+                9093
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Asanegra - Aurora, as Luzes do Norte é ativado!"
+        },
+        "V0203_09_00_15_0": {
+            "card": [
+                8162
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Asanegra - Nevasca, o Norte Distante é ativado!"
+        },
+        "V0203_09_00_16_0": {
+            "card": [
+                10303
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ativo o efeito de Asanegra - Damascus, a Noite Polar da minha mão!"
+        },
+        "V0203_09_00_17_0": {
+            "card": [
+                8295
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Asanegra - Mistral, o Escudo Prateado é ativado!"
+        },
+        "V0203_09_00_17_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Apenas uma vez, o dano de batalha fica 0!"
+        },
+        "V0203_09_00_18_0": {
+            "card": [
+                9094
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Asanegra - Abrolhos, o Grande Terremoto é ativado!"
+        },
+        "V0203_09_00_19_0": {
+            "card": [
+                8164
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ativo o efeito de Asanegra - Kalut, a Lua Sombria da minha mão!"
+        },
+        "V0203_09_00_20_0": {
+            "card": [
+                8476
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Asanegra - Vento Prateado, o Ascendente é ativado!"
+        },
+        "V0203_09_00_20_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Tempestade Perfeita!"
+        },
+        "V0203_09_00_21_0": {
+            "card": [
+                12122
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Asanegra - Harmattan, a Poeira é ativado!"
+        },
+        "V0203_09_00_22_0": {
+            "card": [
+                8165
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Asanegra - Elphin, o Corvo é ativado!"
+        },
+        "V0203_09_00_23_0": {
+            "card": [
+                8011
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Asanegra - Ventoa, o Furacão é ativado!"
+        },
+        "V0203_09_00_24_0": {
+            "card": [
+                9459
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Asanegra - Pinaki, a Lua Crescente é ativado!"
+        },
+        "V0203_09_00_25_0": {
+            "card": [
+                11649
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Asanegra - Nothung, a Luz Estrelada é ativado!"
+        },
+        "V0203_09_00_25_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Espada Perseguidora!"
+        },
+        "V0203_09_00_26_0": {
+            "card": [
+                9244
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ativo o efeito de Asanegra - Zéfiro, a Elite do meu Cemitério!"
+        },
+        "V0203_09_00_27_0": {
+            "card": [
+                9298
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Faço o banimento de Asanegra - Boreas, o Afiado do meu Cemitério para usar seu efeito!"
+        },
+        "V0203_09_00_28_0": {
+            "card": [
+                8163
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Asanegra - Shura, a Chama Azul é ativado!"
+        },
+        "V0203_09_00_29_0": {
+            "card": [
+                9243
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ativo o efeito de Asanegra - Jetstream, o Céu Azul da minha mão!"
+        },
+        "V0203_09_00_30_0": {
+            "card": [
+                8296
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Asanegra - Vayu, o Emblema de Honra é ativado!"
+        },
+        "V0203_09_00_31_0": {
+            "card": [
+                12289
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Asanegra - Decadência do Vento Enfermo é ativado!"
+        },
+        "V0203_09_00_32_0": {
+            "card": [
+                9299
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Asanegra - Brisote, o Vento Lateral é ativado!"
+        },
+        "V0203_09_00_33_0": {
+            "card": [
+                8297
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Asanegra - Fane, o Corrente de Aço é ativado!"
+        },
+        "V0203_09_00_34_0": {
+            "card": [
+                9479
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ativo o efeito de Asanegra - Hillen, o Vento-Tengu do meu Cemitério!"
+        },
+        "V0203_09_00_35_0": {
+            "card": [
+                11172
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ativo o efeito de Asanegra - Oroshi, a Rajada de Vento!"
+        },
+        "V0203_09_00_36_0": {
+            "card": [
+                9092
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Da minha mão, eu ativo o efeito de Asanegra - Etesian, as Duas Espadas!"
+        },
+        "V0203_09_00_37_0": {
+            "card": [
+                8777
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ativo o efeito de Asanegra - Ghibil, o Vento Cortante!"
+        },
+        "V0203_09_00_38_0": {
+            "card": [
+                9300
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Faço o banimento de Asanegra - Calima, a Neblina para ressuscitar um monstro Sincro!"
+        },
+        "V0203_09_00_39_0": {
+            "card": [
+                9480
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Asanegra - Kogarashi, o Andarilho é ativado!"
+        },
+        "V0203_09_00_40_0": {
+            "card": [
+                11174
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Asanegra - Furacão, o Tornado é ativado!"
+        },
+        "V0203_09_00_41_0": {
+            "card": [
+                12412
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Asanegra - Gofu, a Sombra Oscilante é ativado!"
+        },
+        "V0203_09_00_42_0": {
+            "card": [
+                9464
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Asanegra - Gram, a Estrela Brilhante é ativado!"
+        },
+        "V0203_09_00_43_0": {
+            "card": [
+                6980
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu vou ativar o efeito de D.D. Corvo da minha mão!"
+        },
+        "V0203_09_00_43_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu vou banir um card de seu Cemitério!"
+        },
+        "V0203_09_00_44_0": {
+            "card": [
+                8815
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Dragão de Asas Negras é ativado!"
+        },
+        "V0203_09_00_44_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Rajada do Orbe Negro!"
+        },
+        "V0203_09_00_45_0": {
+            "card": [
+                11012
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ativo o efeito de Dragão Penanegra Fúria-obscura!"
+        },
+        "V0203_09_00_46_0": {
+            "card": [
+                13852
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Mestre de Armadura Completa Asanegra é ativado!"
+        },
+        "V0203_09_00_47_0": {
+            "card": [
+                13853
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Asanegra - Simum, o Vento Venenoso é ativado!"
+        },
+        "V0203_09_00_48_0": {
+            "card": [
+                13854
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O efeito de Asanegra - Austro, o Vento do Sul é ativado!"
+        },
+        "V0203_10_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Aí vou eu!"
+        },
+        "V0203_10_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Lá vem!"
+        },
+        "V0203_10_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Mostre-se!"
+        },
+        "V0203_10_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Veja isso!"
+        },
+        "V0203_11_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu invoco um monstro!"
+        },
+        "V0203_11_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Eu invoco um monstro em posição de defesa!"
+        },
+        "V0203_11_02_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Faço a Invocação-Especial de um monstro!"
+        },
+        "V0203_11_03_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ofereço um monstro como tributo!"
+        },
+        "V0203_11_04_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Faço a Invocação-Tributo de um monstro!"
+        },
+        "V0203_11_05_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Faço a Invocação-Fusão de um monstro!"
+        },
+        "V0203_11_06_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Faço a Invocação-Ritual de um monstro!"
+        },
+        "V0203_11_07_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Faço a Invocação-Sincro de um monstro!"
+        },
+        "V0203_11_08_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Faço a Invocação-Xyz de um monstro!"
+        },
+        "V0203_11_09_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Faço a Invocação-Pêndulo de um monstro!"
+        },
+        "V0203_11_10_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Faço a Invocação-Link de um monstro!"
+        },
+        "V0203_13_00_00_0": {
+            "card": [
+                12446
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Voe, Asanegra Agressor - Sayo, o que se Esconde na Chuva!"
+        },
+        "V0203_13_00_01_0": {
+            "card": [
+                12447
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Levante voo! Asanegra Agressor - Sohaya, a Chuva Tempestuosa!"
+        },
+        "V0203_13_00_02_0": {
+            "card": [
+                12448
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Vai rasgando!\nAsanegra Agressor - Onimaru, o Trovão Divino!"
+        },
+        "V0203_13_00_03_0": {
+            "card": [
+                11962
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Apareça!\nAsanegra Agressor - Kunai, o Alvejador!"
+        },
+        "V0203_13_00_04_0": {
+            "card": [
+                12323
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Vamos, Asanegra Agressor - Chidori, o Borrifo de Chuva!"
+        },
+        "V0203_13_00_05_0": {
+            "card": [
+                11991
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Vá, Asanegra Agressor - Raikiri, o Banho de Chuva!"
+        },
+        "V0203_13_00_06_0": {
+            "card": [
+                9463
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu convido Domador Asanegra - Falcão Joe de Obsidiana!"
+        },
+        "V0203_13_00_07_0": {
+            "card": [
+                8779
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O monstro regulador, Asanegra - Brisa, o Zéfiro!"
+        },
+        "V0203_13_00_08_0": {
+            "card": [
+                8036
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Mestre de Armaduras Asanegra!"
+        },
+        "V0203_13_00_09_0": {
+            "card": [
+                8193
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Asanegra Armado!"
+        },
+        "V0203_13_00_10_0": {
+            "card": [
+                11173
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O monstro regulador, Asanegra - Vapor, o Manto!"
+        },
+        "V0203_13_00_11_0": {
+            "card": [
+                9437
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O monstro regulador, Asanegra - Jin, a Sombra da Chuva!"
+        },
+        "V0203_13_00_12_0": {
+            "card": [
+                12411
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Diga olá para a Asanegra - Tornado, o Giro Reverso!"
+        },
+        "V0203_13_00_13_0": {
+            "card": [
+                8778
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Apareça, Asanegra - Sopro, o Vento Traseiro!"
+        },
+        "V0203_13_00_14_0": {
+            "card": [
+                8013
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Aqui vai Asanegra - Sirocco, o Amanhecer!"
+        },
+        "V0203_13_00_15_0": {
+            "card": [
+                9093
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu faço uma Invocação-Especial de Asanegra - Aurora, as Luzes do Norte!"
+        },
+        "V0203_13_00_16_0": {
+            "card": [
+                8162
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O monstro regulador, Asanegra - Nevasca, o Norte Distante!"
+        },
+        "V0203_13_00_17_0": {
+            "card": [
+                10303
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Aqui está Asanegra - Damascus, a Noite Polar!"
+        },
+        "V0203_13_00_18_0": {
+            "card": [
+                8295
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O monstro regulador, Asanegra - Mistral, o Escudo Prateado!"
+        },
+        "V0203_13_00_19_0": {
+            "card": [
+                9094
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Apareça!\nAsanegra - Abrolhos, o Grande Terremoto!"
+        },
+        "V0203_13_00_20_0": {
+            "card": [
+                8164
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Vamos nessa, Asanegra - Kalut, a Lua Sombria!"
+        },
+        "V0203_13_00_21_0": {
+            "card": [
+                8476
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Deem as boas-vindas para Asanegra - Vento Prateado, o Ascendente!"
+        },
+        "V0203_13_00_22_0": {
+            "card": [
+                8012
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Vamos, Asanegra - Bora, a Lança!"
+        },
+        "V0203_13_00_23_0": {
+            "card": [
+                12122
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Vamos!\nAsanegra - Harmattan, a Poeira!"
+        },
+        "V0203_13_00_24_0": {
+            "card": [
+                9460
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Aqui está Asanegra - Kris, a Luz do Amanhecer!"
+        },
+        "V0203_13_00_25_0": {
+            "card": [
+                8165
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Rumo aos céus, Asanegra - Elphin, o Corvo!"
+        },
+        "V0203_13_00_26_0": {
+            "card": [
+                8011
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O monstro regulador, Asanegra - Ventoa, o Furacão!"
+        },
+        "V0203_13_00_27_0": {
+            "card": [
+                9459
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O monstro regulador, Asanegra - Pinaki, a Lua Crescente!"
+        },
+        "V0203_13_00_28_0": {
+            "card": [
+                11649
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Asanegra - Nothung, a Luz Estrelada!"
+        },
+        "V0203_13_00_29_0": {
+            "card": [
+                9244
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Voe, Asanegra - Zéfiro, a Elite!"
+        },
+        "V0203_13_00_30_0": {
+            "card": [
+                9298
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Mostre-se!\nAsanegra - Boreas, o Afiado!"
+        },
+        "V0203_13_00_31_0": {
+            "card": [
+                8163
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Vem com tudo, Asanegra - Shura, a Chama Azul!"
+        },
+        "V0203_13_00_32_0": {
+            "card": [
+                9243
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Aqui está Asanegra - Jetstream, o Céu Azul!"
+        },
+        "V0203_13_00_33_0": {
+            "card": [
+                8296
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O monstro regulador, Asanegra - Vayu, o Emblema de Honra!"
+        },
+        "V0203_13_00_34_0": {
+            "card": [
+                12289
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O monstro regulador, Asanegra - Decadência do Vento Enfermo!"
+        },
+        "V0203_13_00_35_0": {
+            "card": [
+                9299
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Junte-se a mim, Asanegra - Brisote, o Vento Lateral!"
+        },
+        "V0203_13_00_36_0": {
+            "card": [
+                8297
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Vamos, Asanegra - Fane, o Corrente de Aço!"
+        },
+        "V0203_13_00_37_0": {
+            "card": [
+                9479
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O monstro regulador, Asanegra - Hillen, o Vento-Tengu!"
+        },
+        "V0203_13_00_38_0": {
+            "card": [
+                9242
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O monstro regulador, Asanegra - Kochi, o Amanhecer!"
+        },
+        "V0203_13_00_39_0": {
+            "card": [
+                11172
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O monstro regulador, Asanegra - Oroshi, a Rajada de Vento!"
+        },
+        "V0203_13_00_40_0": {
+            "card": [
+                9092
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Junte-se a mim, Asanegra - Etesian, as Duas Espadas!"
+        },
+        "V0203_13_00_41_0": {
+            "card": [
+                8777
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Entre em campo, Asanegra - Ghibil, o Vento Cortante!"
+        },
+        "V0203_13_00_42_0": {
+            "card": [
+                9461
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Aqui está Asanegra - Gladius, o Sol da Meia-noite!"
+        },
+        "V0203_13_00_43_0": {
+            "card": [
+                9300
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Vamos nessa, Asanegra - Calima, a Neblina!"
+        },
+        "V0203_13_00_44_0": {
+            "card": [
+                9480
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O monstro regulador, Asanegra - Kogarashi, o Andarilho!"
+        },
+        "V0203_13_00_45_0": {
+            "card": [
+                11174
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O monstro regulador, Asanegra - Furacão, o Tornado!"
+        },
+        "V0203_13_00_46_0": {
+            "card": [
+                12412
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu faço uma Invocação-Especial de Asanegra - Gofu, a Sombra Oscilante!"
+        },
+        "V0203_13_00_47_0": {
+            "card": [
+                9464
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Asanegra - Gram, a Estrela Brilhante!"
+        },
+        "V0203_13_00_48_0": {
+            "card": [
+                6980
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "D.D. Corvo chega voando!"
+        },
+        "V0203_13_00_49_0": {
+            "card": [
+                4583
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Goblin Corvo!\nEstou contando com você!"
+        },
+        "V0203_13_00_50_0": {
+            "card": [
+                8815
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Voe rumo ao poder!\nDragão de Asas Negras!"
+        },
+        "V0203_13_00_51_0": {
+            "card": [
+                11012
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Dragão Penanegra Fúria-obscura!"
+        },
+        "V0203_13_00_52_0": {
+            "card": [
+                13852
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Mestre de Armadura Completa Asanegra!"
+        },
+        "V0203_13_00_53_0": {
+            "card": [
+                13853
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Aqui vai Asanegra - Simum, o Vento Venenoso!"
+        },
+        "V0203_13_00_54_0": {
+            "card": [
+                13854
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Vamos, Asanegra - Austro, o Vento do Sul!"
+        },
+        "V0203_14_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Vamos batalhar!"
+        },
+        "V0203_14_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "À batalha!"
+        },
+        "V0203_15_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Vai!"
+        },
+        "V0203_15_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Acabe com eles!"
+        },
+        "V0203_15_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Tome isso!"
+        },
+        "V0203_16_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Que pena, chapa!"
+        },
+        "V0203_16_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Essa é a linha de chegada!"
+        },
+        "V0203_17_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ataco com meu monstro!"
+        },
+        "V0203_17_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Meu monstro ataca!"
+        },
+        "V0203_17_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Atacar!"
+        },
+        "V0203_18_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Meu monstro ataca você diretamente!"
+        },
+        "V0203_18_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Eu ataco você diretamente!"
+        },
+        "V0203_19_00_00_0": {
+            "card": [
+                12446
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Asanegra Agressor - Sayo, o que se Esconde na Chuva ataca!"
+        },
+        "V0203_19_00_01_0": {
+            "card": [
+                12447
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Derrube-os, Asanegra Agressor - Sohaya, a Chuva Tempestuosa!"
+        },
+        "V0203_19_00_02_0": {
+            "card": [
+                12448
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Asanegra Agressor - Onimaru, o Trovão Divino ataca!"
+        },
+        "V0203_19_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Lixo Trovejante!"
+        },
+        "V0203_19_00_03_0": {
+            "card": [
+                11962
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Asanegra Agressor - Kunai, o Alvejador! Atacar!"
+        },
+        "V0203_19_00_04_0": {
+            "card": [
+                12323
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Asanegra Agressor - Chidori, o Borrifo de Chuva ataca!"
+        },
+        "V0203_19_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Corte-relâmpago!"
+        },
+        "V0203_19_00_05_0": {
+            "card": [
+                11991
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ataque, Asanegra Agressor - Raikiri, o Banho de Chuva!"
+        },
+        "V0203_19_00_06_0": {
+            "card": [
+                9463
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Domador Asanegra - Falcão Joe de Obsidiana ataca!"
+        },
+        "V0203_19_00_06_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Garra de Assalto!"
+        },
+        "V0203_19_00_07_0": {
+            "card": [
+                8779
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Asanegra - Brisa, o Zéfiro! Atacar!"
+        },
+        "V0203_19_00_08_0": {
+            "card": [
+                8036
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Mestre de Armaduras Asanegra! Atacar!"
+        },
+        "V0203_19_00_08_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Furacão Negro!"
+        },
+        "V0203_19_00_09_0": {
+            "card": [
+                8193
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Vá, Asanegra Armado! Atacar!"
+        },
+        "V0203_19_00_09_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Carga Negra!"
+        },
+        "V0203_19_00_10_0": {
+            "card": [
+                11173
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Dê um jeito neles, Asanegra - Vapor, o Manto!"
+        },
+        "V0203_19_00_11_0": {
+            "card": [
+                9437
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Asanegra - Jin, a Sombra da Chuva ataca!"
+        },
+        "V0203_19_00_12_0": {
+            "card": [
+                12411
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Asanegra - Tornado, o Giro Reverso!\nVarra todos para longe!"
+        },
+        "V0203_19_00_13_0": {
+            "card": [
+                8778
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Exploda-os, Asanegra - Sopro, o Vento Traseiro!"
+        },
+        "V0203_19_00_14_0": {
+            "card": [
+                8013
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Asanegra - Sirocco, o Amanhecer! Atacar!"
+        },
+        "V0203_19_00_14_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Golpe de Asanegra!"
+        },
+        "V0203_19_00_15_0": {
+            "card": [
+                9093
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ataque, Asanegra - Aurora, as Luzes do Norte!"
+        },
+        "V0203_19_00_16_0": {
+            "card": [
+                8162
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Congele todos, Asanegra - Nevasca, o Norte Distante!"
+        },
+        "V0203_19_00_17_0": {
+            "card": [
+                10303
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Asanegra - Damascus, a Noite Polar! Atacar!"
+        },
+        "V0203_19_00_18_0": {
+            "card": [
+                8295
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Asanegra - Mistral, o Escudo Prateado ataca!"
+        },
+        "V0203_19_00_19_0": {
+            "card": [
+                9094
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Dê uma sacudida neles, Asanegra - Abrolhos, o Grande Terremoto!"
+        },
+        "V0203_19_00_20_0": {
+            "card": [
+                8164
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Golpeie-os, Asanegra - Kalut, a Lua Sombria!"
+        },
+        "V0203_19_00_21_0": {
+            "card": [
+                8476
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Asanegra - Vento Prateado, o Ascendente ataca!"
+        },
+        "V0203_19_00_22_0": {
+            "card": [
+                8012
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Asanegra - Bora, a Lança! Atacar!"
+        },
+        "V0203_19_00_22_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Lança Rodopiante!"
+        },
+        "V0203_19_00_23_0": {
+            "card": [
+                12122
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Asanegra - Harmattan, a Poeira ataca!"
+        },
+        "V0203_19_00_24_0": {
+            "card": [
+                9460
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Asanegra - Kris, a Luz do Amanhecer! Atacar!"
+        },
+        "V0203_19_00_25_0": {
+            "card": [
+                8165
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ataque, Asanegra - Elphin, o Corvo!"
+        },
+        "V0203_19_00_26_0": {
+            "card": [
+                8011
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ataque, Asanegra - Ventoa, o Furacão!"
+        },
+        "V0203_19_00_26_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Arranhão Negro!"
+        },
+        "V0203_19_00_27_0": {
+            "card": [
+                9459
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Meu card Asanegra - Pinaki, a Lua Crescente ataca!"
+        },
+        "V0203_19_00_28_0": {
+            "card": [
+                11649
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Asanegra - Nothung, a Luz Estrelada! Atacar!"
+        },
+        "V0203_19_00_29_0": {
+            "card": [
+                9244
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ataque, Asanegra - Zéfiro, a Elite!"
+        },
+        "V0203_19_00_30_0": {
+            "card": [
+                9298
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Asanegra - Boreas, o Afiado ataca!"
+        },
+        "V0203_19_00_31_0": {
+            "card": [
+                8163
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Asanegra - Shura, a Chama Azul! Atacar!"
+        },
+        "V0203_19_00_32_0": {
+            "card": [
+                9243
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Asanegra - Jetstream, o Céu Azul ataca!"
+        },
+        "V0203_19_00_33_0": {
+            "card": [
+                8296
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ataque, Asanegra - Vayu, o Emblema de Honra!"
+        },
+        "V0203_19_00_34_0": {
+            "card": [
+                12289
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Asanegra - Decadência do Vento Enfermo! Atacar!"
+        },
+        "V0203_19_00_35_0": {
+            "card": [
+                9299
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Vá, Asanegra - Brisote, o Vento Lateral! Atacar!"
+        },
+        "V0203_19_00_36_0": {
+            "card": [
+                8297
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Dê um jeito neles, Asanegra - Fane, o Corrente de Aço!"
+        },
+        "V0203_19_00_37_0": {
+            "card": [
+                9479
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Asanegra - Hillen, o Vento-Tengu! Atacar!"
+        },
+        "V0203_19_00_38_0": {
+            "card": [
+                9242
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Asanegra - Kochi, o Amanhecer ataca!"
+        },
+        "V0203_19_00_39_0": {
+            "card": [
+                11172
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ataque, Asanegra - Oroshi, a Rajada de Vento!"
+        },
+        "V0203_19_00_40_0": {
+            "card": [
+                9092
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Asanegra - Etesian, as Duas Espadas! Atacar!"
+        },
+        "V0203_19_00_41_0": {
+            "card": [
+                8777
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Asanegra - Ghibil, o Vento Cortante!\nFaça-os voar daqui!"
+        },
+        "V0203_19_00_42_0": {
+            "card": [
+                9461
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Asanegra - Gladius, o Sol da Meia-noite! Atacar!"
+        },
+        "V0203_19_00_43_0": {
+            "card": [
+                9300
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Asanegra - Calima, a Neblina ataca!"
+        },
+        "V0203_19_00_44_0": {
+            "card": [
+                9480
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Asanegra - Kogarashi, o Andarilho! Atacar!"
+        },
+        "V0203_19_00_45_0": {
+            "card": [
+                11174
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Asanegra - Furacão, o Tornado ataca!"
+        },
+        "V0203_19_00_46_0": {
+            "card": [
+                12412
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ataque, Asanegra - Gofu, a Sombra Oscilante!"
+        },
+        "V0203_19_00_47_0": {
+            "card": [
+                9464
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ataque, Asanegra - Gram, a Estrela Brilhante!"
+        },
+        "V0203_19_00_47_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Esfatiar Crescente!"
+        },
+        "V0203_19_00_48_0": {
+            "card": [
+                6980
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "D.D. Corvo! Atacar!"
+        },
+        "V0203_19_00_49_0": {
+            "card": [
+                4583
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Goblin Corvo! Atacar!"
+        },
+        "V0203_19_00_50_0": {
+            "card": [
+                8815
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ataque, Dragão de Asas Negras!"
+        },
+        "V0203_19_00_50_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Rajada Tempestuosa Sombria!"
+        },
+        "V0203_19_00_51_0": {
+            "card": [
+                11012
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Voe com fúria, Dragão Penanegra Fúria-obscura!"
+        },
+        "V0203_19_00_51_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Entrada Furiosa Negra!"
+        },
+        "V0203_19_00_52_0": {
+            "card": [
+                13852
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Mestre de Armadura Completa Asanegra ataca!"
+        },
+        "V0203_19_00_53_0": {
+            "card": [
+                13853
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Asanegra - Simum, o Vento Venenoso ataca!"
+        },
+        "V0203_19_00_54_0": {
+            "card": [
+                13854
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Asanegra - Austro, o Vento do Sul ataca!"
+        },
+        "V0203_20_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Baixo um card!"
+        },
+        "V0203_20_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Estou baixando um card!"
+        },
+        "V0203_20_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Baixo um monstro!"
+        },
+        "V0203_20_01_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Estou baixando um monstro!"
+        },
+        "V0203_21_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Terminei meu turno!"
+        },
+        "V0203_21_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "E agora, o que vai fazer?"
+        },
+        "V0203_21_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Terminei meu turno!"
+        },
+        "V0203_21_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Argh! Isso não é nada bom!"
+        },
+        "V0203_21_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Terminei meu turno!"
+        },
+        "V0203_22_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Argh..."
+        },
+        "V0203_22_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Ahhh!"
+        },
+        "V0203_22_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Ergh!"
+        },
+        "V0203_23_00_00_0": {
+            "card": [],
+            "cutin": 3,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Ahhhhhhhhhh!"
+        },
+        "V0203_24_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Erggghhh..."
+        },
+        "V0203_25_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Ahhhhhh!"
+        },
+        "V0203_25_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Urgh..."
+        },
+        "V0203_25_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Uuufa!"
+        },
+        "V0203_26_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "É o melhor que consegue?"
+        },
+        "V0203_26_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Heh!"
+        },
+        "V0203_26_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Nada mal!"
+        },
+        "V0203_27_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Ainda não acabou!"
+        },
+        "V0203_27_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Isso não foi nada!"
+        },
+        "V0203_27_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Eu aguento isso!"
+        },
+        "V0203_28_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Aquele com mais vontade vence no final!"
+        },
+        "V0203_28_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Para continuar herói dessas crianças, devo continuar melhorando!"
+        },
+        "V0203_28_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Desculpe, colega.\nMas eu conheço todos os seus truques."
+        },
+        "V0203_28_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Se acha que pode me enganar, pode esquecer!"
+        },
+        "V0203_28_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                201,
+                202,
+                204,
+                206,
+                209
+            ],
+            "face": 7,
+            "frame": 0,
+            "text": "Vou levar a Equipe 5D's ao futuro!"
+        },
+        "V0203_28_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                205
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Hã?\nDisse alguma coisa, Leo?"
+        },
+        "V0203_28_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                213
+            ],
+            "face": 7,
+            "frame": 0,
+            "text": "Eu pensei em reformar os Executores. O que disse?"
+        },
+        "V0203_28_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                208,
+                210,
+                231,
+                211,
+                9058,
+                9059,
+                9061,
+                9062
+            ],
+            "face": 3,
+            "frame": 0,
+            "text": "Se você vai machucar crianças inocentes..."
+        },
+        "V0203_28_00_07_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Acha que eu vou deixar você se safar?"
+        },
+        "V0203_28_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                215,
+                216,
+                217,
+                218,
+                235,
+                236
+            ],
+            "face": 3,
+            "frame": 0,
+            "text": "É, amigos também brigam...\nMas nem sempre isso é ruim."
+        },
+        "V0203_28_00_08_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Porque isso pode nos aproximar!\nE fortalecer nosso vínculo!"
+        },
+        "V0203_29_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Óóó, cara...\nComo vou encarar as crianças?"
+        },
+        "V0203_29_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "Isso foi bem complicado..."
+        },
+        "V0203_29_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Não vou cair nesses truques de novo na próxima vez!"
+        },
+        "V0203_29_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Você pode ter me derrotado desta vez..."
+        },
+        "V0203_29_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Mas não vai quebrar o vínculo que tenho com meus amigos!"
+        },
+        "V0203_29_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                201,
+                202,
+                204,
+                205,
+                206,
+                209
+            ],
+            "face": 7,
+            "frame": 0,
+            "text": "Ei, não se preocupe com isso.\nNós ainda somos colegas."
+        },
+        "V0203_29_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                208,
+                210,
+                231,
+                211,
+                9058,
+                9059,
+                9061,
+                9062
+            ],
+            "face": 3,
+            "frame": 0,
+            "text": "Não vou desistir até acabar com os Signatários das Trevas!"
+        },
+        "V0203_29_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                215,
+                216,
+                217,
+                218,
+                235,
+                236
+            ],
+            "face": 5,
+            "frame": 0,
+            "text": "Mesmo que não possa fazer nada, sei que meus amigos podem!"
+        },
+        "V0203_29_00_06_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Por isso, minha derrota vai abrir caminho para meu time vencer!"
+        },
+        "V0203_30_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "Não sabia que um duelo podia ser tão chato."
+        },
+        "V0203_30_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Qualé, não dá para relaxar um pouco?"
+        },
+        "V0203_30_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Ei! Isso não é justo!"
+        },
+        "V0203_31_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "O-o quê?!"
+        },
+        "V0203_31_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Isso é sério?"
+        },
+        "V0203_32_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Yu-Gi-Oh! Duel Links"
+        },
+        "V0203_32_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Yu-Gi-Oh! Duel Links!\nVamos nessa!"
+        },
+        "V0203_33_00_00_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 7,
+            "frame": 1,
+            "text": "Vou mostrar movimentos que você nunca viu antes!"
+        },
+        "V0203_33_00_01_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 7,
+            "frame": 1,
+            "text": "Não me subestime!"
+        },
+        "V0203_33_00_02_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 7,
+            "frame": 1,
+            "text": "Quando estou com tudo, você não tem chance!"
+        },
+        "V0203_34_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Chega desses efeitos! Isso é tão injusto!"
+        },
+        "V0203_34_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Esse monstro não tem nada de justo!"
+        },
+        "V0203_34_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Leve essas táticas fracas para longe daqui!"
+        },
+        "V0203_34_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Eu estava esperando para arrasar você desde o começo!"
+        },
+        "V0203_34_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Movimentos rápidos são a especialidade dos meus Asanegras!"
+        },
+        "V0203_34_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Calculei mal! Estou perdendo a vantagem!"
+        },
+        "V0203_34_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Mesmo que eu esteja com apenas 1 PV, meu coração tem um bilhão de PV!"
+        },
+        "V0203_34_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Vão escrever lendas sobre mim!"
+        },
+        "V0203_34_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Essa jogada foi incrível!"
+        },
+        "V0203_34_00_09_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Em suas marcas... Preparar... Duelo!"
+        },
+        "V0203_35_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Crow vai acabar com seus problemas!"
+        },
+        "V0203_35_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Quando a Equipe 5D's precisa vencer, eles recorrem a mim! Crow!"
+        },
+        "V0203_36_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Você pode acabar com isso!"
+        },
+        "V0203_36_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Agora só depende de você!"
+        },
+        "V0203_36_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 8,
+            "frame": 0,
+            "text": "Desculpe... Mas sei que você pode mudar isso!"
+        },
+        "V0203_36_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                201
+            ],
+            "face": 7,
+            "frame": 0,
+            "text": "Vença, Yusei! Por todos nós!"
+        },
+        "V0203_36_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                201
+            ],
+            "face": 7,
+            "frame": 0,
+            "text": "Estou contando com você, Yusei!"
+        },
+        "V0203_36_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                201
+            ],
+            "face": 3,
+            "frame": 0,
+            "text": "Yusei! Enquanto você viver, nosso vínculo será eterno!"
+        },
+        "V0203_36_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                202,
+                204,
+                205,
+                206,
+                209
+            ],
+            "face": 7,
+            "frame": 0,
+            "text": "Nosso vínculo está mais forte que nunca!"
+        },
+        "V0203_36_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                202,
+                204,
+                205,
+                206,
+                209
+            ],
+            "face": 7,
+            "frame": 0,
+            "text": "Eu passo o bastão para você!"
+        },
+        "V0203_36_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                202,
+                204,
+                205,
+                206,
+                209
+            ],
+            "face": 8,
+            "frame": 0,
+            "text": "Desculpe... Você é a última esperança!"
+        },
+        "V0203_37_00_00_0": {
+            "card": [
+                12446
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Vou transformar poder de voo em poder de luta!"
+        },
+        "V0203_37_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Invocação-Sincro!"
+        },
+        "V0203_37_00_01_0": {
+            "card": [
+                12447
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Uma tempestade se aproxima, trazendo um dilúvio devastador!"
+        },
+        "V0203_37_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Invocação-Sincro!"
+        },
+        "V0203_37_00_02_0": {
+            "card": [
+                12448
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Prepare-se para uma estrondosa demonstração de poder!"
+        },
+        "V0203_37_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Invocação-Sincro!"
+        },
+        "V0203_37_00_03_0": {
+            "card": [
+                12323
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "O trovão traz destruição sobre tudo que encontra!"
+        },
+        "V0203_37_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Invocação-Sincro!"
+        },
+        "V0203_37_00_04_0": {
+            "card": [
+                11991
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Estou desencadeando uma tempestade de problemas!"
+        },
+        "V0203_37_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Invocação-Sincro!"
+        },
+        "V0203_37_00_05_0": {
+            "card": [
+                8036
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Estou criando uma ave de rapina totalmente nova!"
+        },
+        "V0203_37_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Invocação-Sincro!"
+        },
+        "V0203_37_00_06_0": {
+            "card": [
+                8193
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Crie um turbilhão gigante agitando suas asas!"
+        },
+        "V0203_37_00_06_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Invocação-Sincro!"
+        },
+        "V0203_37_00_07_0": {
+            "card": [
+                8476
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "A ira da tempestade combina vontade ferrenha e velocidade da luz!"
+        },
+        "V0203_37_00_07_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Invocação-Sincro!"
+        },
+        "V0203_37_00_08_0": {
+            "card": [
+                11649
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Esta ave de rapina heroica empunha a espada lendária!"
+        },
+        "V0203_37_00_08_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Invocação-Sincro!"
+        },
+        "V0203_37_00_09_0": {
+            "card": [
+                9464
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Esse espadachim alado vai te pegar de surpresa!"
+        },
+        "V0203_37_00_09_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Invocação-Sincro!"
+        },
+        "V0203_37_00_10_0": {
+            "card": [
+                8815
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Prepare-se para uma surpresa e tanto!"
+        },
+        "V0203_37_00_10_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Invocação-Sincro!"
+        },
+        "V0203_37_00_11_0": {
+            "card": [
+                11012
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Paira no ar um vento sombrio dos últimos dias de batalha!"
+        },
+        "V0203_37_00_11_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Invocação-Sincro!"
+        },
+        "V0203_38_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Em suas marcas... Preparar... Duelo!"
+        }
+    }
+}

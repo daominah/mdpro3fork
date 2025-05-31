@@ -1,0 +1,2824 @@
+{
+    "_GRP_": "SN0155",
+    "_LNG_": "pt-BR",
+    "info": {
+        "V0155_01_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Sou o Rei Supremo.\nE vou governar este mundo."
+        },
+        "V0155_01_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Vou onde meus poderes me levam."
+        },
+        "V0155_01_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Para derrotar a escuridão, devo me tornar a escuridão."
+        },
+        "V0155_01_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Posso lhe vencer facilmente, mas prefiro saborear sua morte."
+        },
+        "V0155_01_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Você ousa me desafiar?\nVocê pagará por sua insolência."
+        },
+        "V0155_01_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Quando os fortes devoram os fracos, força é tudo."
+        },
+        "V0155_01_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                153
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Você fugiu de mim uma vez.\nO que faz você pensar que não fugirá novamente?"
+        },
+        "V0155_02_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Duelo!"
+        },
+        "V0155_03_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Nada que você faça será capaz de se opor ao meu poder absoluto."
+        },
+        "V0155_03_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "É a minha vez."
+        },
+        "V0155_03_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "É a minha vez."
+        },
+        "V0155_03_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Minha vez."
+        },
+        "V0155_03_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "............"
+        },
+        "V0155_03_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "A luta de verdade está apenas começando."
+        },
+        "V0155_03_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "É a minha vez."
+        },
+        "V0155_03_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Ainda não revelei minha força verdadeira."
+        },
+        "V0155_03_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Minha vez."
+        },
+        "V0155_04_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Compro."
+        },
+        "V0155_04_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Compro."
+        },
+        "V0155_04_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Compro."
+        },
+        "V0155_05_00_00_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Quando o poder é tudo, preciso da escuridão para vencer!"
+        },
+        "V0155_05_00_00_1": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Compro!!!"
+        },
+        "V0155_06_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Inútil."
+        },
+        "V0155_06_01_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Isso não vai funcionar."
+        },
+        "V0155_06_01_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Idiota."
+        },
+        "V0155_06_01_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Humpf."
+        },
+        "V0155_07_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Da minha mão..."
+        },
+        "V0155_07_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ativo um Card de Magia."
+        },
+        "V0155_07_02_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ativo uma Magia Rápida."
+        },
+        "V0155_07_03_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ativo uma Magia Contínua."
+        },
+        "V0155_07_04_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ativo uma Magia de Equipamento."
+        },
+        "V0155_07_05_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ativo uma Magia de Ritual."
+        },
+        "V0155_07_06_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ativo uma Armadilha."
+        },
+        "V0155_07_07_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ativo uma Armadilha Contínua."
+        },
+        "V0155_07_08_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ativo uma Armadilha de Resposta."
+        },
+        "V0155_07_09_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Viro meu card Baixado."
+        },
+        "V0155_07_09_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Aqui está meu card Baixado."
+        },
+        "V0155_07_10_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ativo meu efeito de monstro."
+        },
+        "V0155_07_11_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ativo uma Magia de Campo."
+        },
+        "V0155_07_12_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ativo um efeito."
+        },
+        "V0155_07_13_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Baixo a Escala de Pêndulo."
+        },
+        "V0155_08_00_00_0": {
+            "card": [
+                14590
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ativo o Card de Magia Mente Maligna."
+        },
+        "V0155_08_00_01_0": {
+            "card": [
+                7381
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ativo meu Card de Magia, Chamado Negro."
+        },
+        "V0155_08_00_02_0": {
+            "card": [
+                7262
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ativo o Card de Magia Fusão Negra."
+        },
+        "V0155_08_00_03_0": {
+            "card": [
+                7262
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Este card é perfeito para meus Demônios.\nFusão Negra!"
+        },
+        "V0155_08_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Seus efeitos não podem alvejar meu Monstro de Fusão neste turno."
+        },
+        "V0155_08_00_04_0": {
+            "card": [
+                7446
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "A Magia de Equipamento, Garra Maligna."
+        },
+        "V0155_08_00_05_0": {
+            "card": [
+                7446
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "O efeito de Garra Maligna é ativado."
+        },
+        "V0155_08_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "O monstro equipado não é destruído, mas seu monstro sim."
+        },
+        "V0155_08_00_05_2": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Então eu faço a Invocação-Especial de uma Ficha Maligna no seu campo."
+        },
+        "V0155_08_00_06_0": {
+            "card": [
+                7445
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Você provocou isso!\nDescubra o caminho da escuridão!"
+        },
+        "V0155_08_00_06_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ativo Super Polimerização!"
+        },
+        "V0155_08_00_07_0": {
+            "card": [
+                7445
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "A Magia Rápida Super Polimerização!"
+        },
+        "V0155_08_00_08_0": {
+            "card": [
+                14589
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ativo a Magia de Campo Castelo do Rei Supremo."
+        },
+        "V0155_08_00_09_0": {
+            "card": [
+                14589
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Envio um HERÓI Maligno ao Cemitério para ativar meu Castelo."
+        },
+        "V0155_08_00_10_0": {
+            "card": [
+                4837
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ativo meu Card de Magia, Polimerização."
+        },
+        "V0155_08_00_11_0": {
+            "card": [
+                4872
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ativo meu Card de Magia, Sábio da Fusão."
+        },
+        "V0155_08_00_12_0": {
+            "card": [
+                5118
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ativo a Magia Rápida Desfusão."
+        },
+        "V0155_08_00_13_0": {
+            "card": [
+                6399
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ativo a Magia de Campo Arranha-Céu."
+        },
+        "V0155_08_00_14_0": {
+            "card": [
+                6409
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ativo a Magia de Equipamento Arma Spark."
+        },
+        "V0155_08_00_15_0": {
+            "card": [
+                6409
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ativo o efeito de Arma Spark."
+        },
+        "V0155_08_00_16_0": {
+            "card": [
+                6431
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ativo o Card de Magia Recuperação de Fusão."
+        },
+        "V0155_08_00_17_0": {
+            "card": [
+                6491
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ativo meu Card de Magia, Disparo de Pena."
+        },
+        "V0155_08_00_18_0": {
+            "card": [
+                6571
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ativo meu Card de Magia, Coração do Herói."
+        },
+        "V0155_08_00_19_0": {
+            "card": [
+                6576
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ativo a Magia de Equipamento Bumerangue Ciclônico."
+        },
+        "V0155_08_00_20_0": {
+            "card": [
+                6576
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "O efeito de Bumerangue Ciclônico é ativado."
+        },
+        "V0155_08_00_20_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Todas Magias e Armadilhas são destruídas, e você sofre dano."
+        },
+        "V0155_08_00_21_0": {
+            "card": [
+                6671
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ativo o Card de Magia H - Coração Ardente."
+        },
+        "V0155_08_00_22_0": {
+            "card": [
+                6672
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ativo o Card de Magia E - Chamada de Emergência."
+        },
+        "V0155_08_00_23_0": {
+            "card": [
+                6673
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ativo o Card de Magia R - Justiça Honrada."
+        },
+        "V0155_08_00_24_0": {
+            "card": [
+                6674
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ativo o Card de Magia O - Sobrealma."
+        },
+        "V0155_08_00_25_0": {
+            "card": [
+                6675
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ativo o Card de Magia Relâmpago de Heroísmo!!."
+        },
+        "V0155_08_00_26_0": {
+            "card": [
+                6779
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ativo meu Card de Magia, Herói Falso."
+        },
+        "V0155_08_00_27_0": {
+            "card": [
+                6901
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ativo o Card de Magia, Fusão Instantânea."
+        },
+        "V0155_08_00_28_0": {
+            "card": [
+                6941
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "O Card de Magia Rápida Enterro de Outra Dimensão."
+        },
+        "V0155_08_00_29_0": {
+            "card": [
+                7004
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "A Magia de Campo, Arranha-Céu 2 - Cidade de Heróis."
+        },
+        "V0155_08_00_30_0": {
+            "card": [
+                7004
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ativo o efeito de Arranha-Céu 2 - Cidade de Heróis."
+        },
+        "V0155_08_00_31_0": {
+            "card": [
+                7161
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ativo meu Card de Magia, Quinta Esperança."
+        },
+        "V0155_08_00_32_0": {
+            "card": [
+                7187
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ativo o Card de Magia Um Herói Vive."
+        },
+        "V0155_08_00_33_0": {
+            "card": [
+                7382
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ativo meu Card de Magia, Revogar Fusão."
+        },
+        "V0155_08_00_34_0": {
+            "card": [
+                7493
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ativo o Card de Magia Arsenal Oculto."
+        },
+        "V0155_08_00_34_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Envio um card em meu Deck ao Cemitério para obter uma Magia de Equipamento."
+        },
+        "V0155_08_00_35_0": {
+            "card": [
+                7618
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ativo o Card de Magia Máscara do Herói."
+        },
+        "V0155_08_00_36_0": {
+            "card": [
+                11161
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "O Card de Magia Rápida Fusão Cintilante."
+        },
+        "V0155_08_00_37_0": {
+            "card": [
+                11162
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ativo a Magia Rápida Fusão de Batalha."
+        },
+        "V0155_08_00_38_0": {
+            "card": [
+                3754
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ativo o Card de Magia, Impacto Explosivo."
+        },
+        "V0155_08_00_38_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Todos os monstros, exceto Burstinatrix, o HERÓI do Elemento, são destruídos."
+        },
+        "V0155_08_00_38_2": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Explosão de Impacto Explosivo!"
+        },
+        "V0155_08_00_39_0": {
+            "card": [
+                6536
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ativo o Card de Magia, Retorno Explosivo."
+        },
+        "V0155_08_00_39_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "HERÓIS do Elemento, exceto Burstinatrix, o HERÓI do Elemento, são devolvidos para a mão."
+        },
+        "V0155_08_00_40_0": {
+            "card": [
+                7495
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ativo a Armadilha Explosão Maligna."
+        },
+        "V0155_08_00_40_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Seu monstro ganha ATK, mas você sofre dano a cada turno."
+        },
+        "V0155_08_00_41_0": {
+            "card": [
+                5915
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ativo a Armadilha Um Herói Aparece."
+        },
+        "V0155_08_00_42_0": {
+            "card": [
+                5994
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ativo minha armadilha, Escudo Drenador."
+        },
+        "V0155_08_00_43_0": {
+            "card": [
+                6356
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ativo minha armadilha, Sinal do Herói."
+        },
+        "V0155_08_00_44_0": {
+            "card": [
+                6496
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ativo minha Armadilha de Resposta, Vento de Pena."
+        },
+        "V0155_08_00_45_0": {
+            "card": [
+                6584
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ativo a Armadilha Espírito do Herói."
+        },
+        "V0155_08_00_46_0": {
+            "card": [
+                7160
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ativo a Armadilha Contra-Ataque de Herói."
+        },
+        "V0155_08_00_47_0": {
+            "card": [
+                7170
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ativo a Armadilha Portão do Espelho."
+        },
+        "V0155_08_00_48_0": {
+            "card": [
+                7637
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ativo a Armadilha Explosão do Herói."
+        },
+        "V0155_08_00_49_0": {
+            "card": [
+                6617
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "A Magia de Ritual Fim do Mundo."
+        },
+        "V0155_09_00_00_0": {
+            "card": [
+                7257
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Sofre dano do efeito de HERÓI Maligno Asa do Inferno!"
+        },
+        "V0155_09_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Choque de Retorno Infernal!"
+        },
+        "V0155_09_00_01_0": {
+            "card": [
+                7261
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "O efeito de HERÓI Maligno Gaia das Trevas é ativado."
+        },
+        "V0155_09_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Seus monstros em Posição de Defesa mudam para Posição de Ataque."
+        },
+        "V0155_09_00_02_0": {
+            "card": [
+                7379
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "O efeito de HERÓI Maligno Franco-Atiradora Infernal é ativado!"
+        },
+        "V0155_09_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ferroada Infernal!"
+        },
+        "V0155_09_00_03_0": {
+            "card": [
+                14586
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ativo o efeito de HERÓI Maligno Perdição Maliciosa!"
+        },
+        "V0155_09_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ele destrói seus monstros com ATK igual ou inferior."
+        },
+        "V0155_09_00_04_0": {
+            "card": [
+                7260
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ativo o efeito de HERÓI Maligno Golem Relâmpago!"
+        },
+        "V0155_09_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Assalto de Saraivada de Voltica, o HERÓI do Elemento!"
+        },
+        "V0155_09_00_05_0": {
+            "card": [
+                7378
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Quando HERÓI Maligno Ciclone Selvagem causa dano a você, seus cards Baixados são destruídos."
+        },
+        "V0155_09_00_06_0": {
+            "card": [
+                14587
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Descarto HERÓI Maligno Ouro Ardente para ativar o efeito dele."
+        },
+        "V0155_09_00_06_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Posso escolher um card em meu Deck e adicioná-lo à minha mão."
+        },
+        "V0155_09_00_07_0": {
+            "card": [
+                7259
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ativo o efeito de HERÓI Maligno Gainer Infernal."
+        },
+        "V0155_09_00_07_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ao enviá-lo para o futuro, meu Demônio pode atacar duas vezes."
+        },
+        "V0155_09_00_08_0": {
+            "card": [
+                7259
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "HERÓI Maligno Gainer Infernal agora retorna."
+        },
+        "V0155_09_00_09_0": {
+            "card": [
+                7376
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "O efeito de HERÓI Maligno Prodígio Infernal é ativado do Cemitério."
+        },
+        "V0155_09_00_09_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Posso comprar um card."
+        },
+        "V0155_09_00_10_0": {
+            "card": [
+                14588
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Faço o banimento de HERÓI Maligno Necrom Sinistro do meu Cemitério para usar o efeito dele."
+        },
+        "V0155_09_00_10_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Posso fazer a Invocação-Especial de um HERÓI Maligno da minha mão ou meu Deck."
+        },
+        "V0155_09_00_11_0": {
+            "card": [
+                7491
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ativo o efeito de Prisma, o HERÓI do Elemento!"
+        },
+        "V0155_09_00_11_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Mudança de Reflexo!"
+        },
+        "V0155_09_00_12_0": {
+            "card": [
+                8126
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Descarto um card para ativar o efeito de Ice Edge, Herói Elemental."
+        },
+        "V0155_09_00_12_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Agora ele pode atacar você diretamente neste turno."
+        },
+        "V0155_09_00_13_0": {
+            "card": [
+                8126
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Quando Ice Edge, Herói Elemental ataca você diretamente, o efeito dele é ativado."
+        },
+        "V0155_09_00_13_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ele destrói um card Baixado."
+        },
+        "V0155_09_00_14_0": {
+            "card": [
+                6728
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ativo o efeito de Lenhador, o HERÓI do Elemento."
+        },
+        "V0155_09_00_14_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ele me traz Polimerização do meu Deck ou do meu Cemitério."
+        },
+        "V0155_09_00_15_0": {
+            "card": [
+                6733
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ativo o efeito de Oceano."
+        },
+        "V0155_09_00_15_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Devolvo um HERÓI do campo ou Cemitério para a mão."
+        },
+        "V0155_09_00_16_0": {
+            "card": [
+                6784
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ativo o efeito de Stratos."
+        },
+        "V0155_09_00_17_0": {
+            "card": [
+                8543
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Quando Flash for destruído, o efeito dele será ativado."
+        },
+        "V0155_09_00_17_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Adiciono um Card de Magia à minha mão."
+        },
+        "V0155_09_00_18_0": {
+            "card": [
+                7058
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "O efeito de Voltica, o HERÓI do Elemento é ativado."
+        },
+        "V0155_09_00_18_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ele faz a Invocação-Especial de um HERÓI do Elemento banido."
+        },
+        "V0155_09_00_19_0": {
+            "card": [
+                7024
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "O efeito de Sra. Cálida, o HERÓI do Elemento é ativado."
+        },
+        "V0155_09_00_20_0": {
+            "card": [
+                11419
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ativo o efeito de Homem em Chamas, o HERÓI do Elemento!"
+        },
+        "V0155_09_00_21_0": {
+            "card": [
+                13638
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "O efeito de Soldado Sólido, o HERÓI do Elemento é ativado."
+        },
+        "V0155_09_00_22_0": {
+            "card": [
+                14911
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "O efeito de Soldado Líquido, o HERÓI do Elemento é ativado."
+        },
+        "V0155_09_00_23_0": {
+            "card": [
+                5833
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "O efeito de Feiticeiro do Caos é ativado."
+        },
+        "V0155_09_00_24_0": {
+            "card": [
+                5649
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "O efeito de Mago Negro Habilidoso é ativado."
+        },
+        "V0155_09_00_25_0": {
+            "card": [
+                5648
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "O efeito de Mago Branco Habilidoso é ativado."
+        },
+        "V0155_09_00_26_0": {
+            "card": [
+                6613
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 1,
+            "text": "Ativo o efeito de Demise, o Rei do Armagedom!"
+        },
+        "V0155_10_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Junte-se a mim."
+        },
+        "V0155_10_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Apareça."
+        },
+        "V0155_10_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Deixe-me mostrar isso."
+        },
+        "V0155_11_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Invoco um monstro."
+        },
+        "V0155_11_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Invoco um monstro em Posição de Defesa."
+        },
+        "V0155_11_02_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Faço a Invocação-Especial de um monstro."
+        },
+        "V0155_11_03_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ofereço um monstro como Tributo."
+        },
+        "V0155_11_04_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Faço uma Invocação-Tributo."
+        },
+        "V0155_11_05_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Faço uma Invocação-Fusão."
+        },
+        "V0155_11_06_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Faço uma Invocação-Ritual."
+        },
+        "V0155_11_07_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Faço uma Invocação-Sincro."
+        },
+        "V0155_11_08_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Faço uma Invocação-Xyz."
+        },
+        "V0155_11_09_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Faço uma Invocação-Pêndulo."
+        },
+        "V0155_11_10_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Faço uma Invocação-Link."
+        },
+        "V0155_13_00_00_0": {
+            "card": [
+                7257
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Apareça, HERÓI Maligno Asa do Inferno!"
+        },
+        "V0155_13_00_01_0": {
+            "card": [
+                7261
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Mostre-se!\nHERÓI Maligno Gaia das Trevas!"
+        },
+        "V0155_13_00_02_0": {
+            "card": [
+                7379
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Aqui está HERÓI Maligno Franco-Atiradora Infernal!"
+        },
+        "V0155_13_00_03_0": {
+            "card": [
+                7380
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Testemunhe a escuridão!\nHERÓI Maligno Demônio Malicioso!"
+        },
+        "V0155_13_00_04_0": {
+            "card": [
+                14586
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Apareça, HERÓI Maligno Perdição Maliciosa!"
+        },
+        "V0155_13_00_05_0": {
+            "card": [
+                7260
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Aí vem HERÓI Maligno Golem Relâmpago!"
+        },
+        "V0155_13_00_06_0": {
+            "card": [
+                7378
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Voe!\nHERÓI Maligno Ciclone Selvagem!"
+        },
+        "V0155_13_00_07_0": {
+            "card": [
+                14587
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Aqui está HERÓI Maligno Ouro Ardente!"
+        },
+        "V0155_13_00_08_0": {
+            "card": [
+                7259
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "HERÓI Maligno Gainer Infernal!"
+        },
+        "V0155_13_00_09_0": {
+            "card": [
+                7376
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "HERÓI Maligno Prodígio Infernal!"
+        },
+        "V0155_13_00_10_0": {
+            "card": [
+                14588
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "HERÓI Maligno Necrom Sinistro!"
+        },
+        "V0155_13_00_11_0": {
+            "card": [
+                7258
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "HERÓI Maligno Malicious Edge! Apareça!"
+        },
+        "V0155_13_00_12_0": {
+            "card": [
+                6310
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Aviário, o HERÓI do Elemento!"
+        },
+        "V0155_13_00_13_0": {
+            "card": [
+                6311
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Burstinatrix, o HERÓI do Elemento!"
+        },
+        "V0155_13_00_14_0": {
+            "card": [
+                6312
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Clayman, o HERÓI do Elemento!"
+        },
+        "V0155_13_00_15_0": {
+            "card": [
+                6313
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Sparkman, o HERÓI do Elemento!"
+        },
+        "V0155_13_00_16_0": {
+            "card": [
+                6478
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Coração Selvagem, o HERÓI do Elemento!"
+        },
+        "V0155_13_00_17_0": {
+            "card": [
+                7491
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Prisma, o HERÓI do Elemento!"
+        },
+        "V0155_13_00_18_0": {
+            "card": [
+                8126
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ice Edge, Herói Elemental!"
+        },
+        "V0155_13_00_19_0": {
+            "card": [
+                6728
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Lenhador, o HERÓI do Elemento!"
+        },
+        "V0155_13_00_20_0": {
+            "card": [
+                6733
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Oceano, o HERÓI do Elemento!"
+        },
+        "V0155_13_00_21_0": {
+            "card": [
+                6784
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Stratos, o HERÓI do Elemento!"
+        },
+        "V0155_13_00_22_0": {
+            "card": [
+                6927
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Calor, o HERÓI do Elemento!"
+        },
+        "V0155_13_00_23_0": {
+            "card": [
+                8543
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Flash, o HERÓI do Elemento!"
+        },
+        "V0155_13_00_24_0": {
+            "card": [
+                7058
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Voltica, o HERÓI do Elemento!"
+        },
+        "V0155_13_00_25_0": {
+            "card": [
+                7024
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Sra. Cálida, o HERÓI do Elemento!"
+        },
+        "V0155_13_00_26_0": {
+            "card": [
+                11419
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Homem em Chamas, o HERÓI do Elemento!"
+        },
+        "V0155_13_00_27_0": {
+            "card": [
+                13638
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Soldado Sólido, o HERÓI do Elemento!"
+        },
+        "V0155_13_00_28_0": {
+            "card": [
+                14911
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Soldado Líquido, o HERÓI do Elemento!"
+        },
+        "V0155_13_00_29_0": {
+            "card": [
+                3939
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Faço a Invocação-Especial de uma Ficha Maligna."
+        },
+        "V0155_13_00_30_0": {
+            "card": [
+                5833
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Você fará o que eu digo, Feiticeiro do Caos!"
+        },
+        "V0155_13_00_31_0": {
+            "card": [
+                5709
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Guardião Baou!\nCurve-se à minha vontade!"
+        },
+        "V0155_13_00_32_0": {
+            "card": [
+                4713
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Obedeça-me, Cavaleiro Caveira!"
+        },
+        "V0155_13_00_33_0": {
+            "card": [
+                4181
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Tire seu disfarce, Cérebro Ancião!"
+        },
+        "V0155_13_00_34_0": {
+            "card": [
+                5649
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Junte-se às minhas forças, Mago Negro Habilidoso!"
+        },
+        "V0155_13_00_35_0": {
+            "card": [
+                5648
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Seja minha vanguarda, Mago Branco Habilidoso!"
+        },
+        "V0155_13_00_36_0": {
+            "card": [
+                6613
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Revele sua presença!\nDemise, o Rei do Armagedom!"
+        },
+        "V0155_14_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Vamos batalhar."
+        },
+        "V0155_14_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Hora de batalhar."
+        },
+        "V0155_15_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Vamos."
+        },
+        "V0155_15_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Acabe com eles."
+        },
+        "V0155_15_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Tome isso."
+        },
+        "V0155_16_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Suma da minha frente!"
+        },
+        "V0155_16_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Com isso, sua existência termina."
+        },
+        "V0155_17_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Meu monstro ataca!"
+        },
+        "V0155_17_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Atacar!"
+        },
+        "V0155_18_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Faço um ataque direto!"
+        },
+        "V0155_18_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Meu monstro ataca você diretamente!"
+        },
+        "V0155_19_00_00_0": {
+            "card": [
+                7257
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Vai, HERÓI Maligno Asa do Inferno!"
+        },
+        "V0155_19_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Explosão do Inferno!"
+        },
+        "V0155_19_00_01_0": {
+            "card": [
+                7261
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "HERÓI Maligno Gaia das Trevas ataca!"
+        },
+        "V0155_19_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Desapareça!\nCatástrofe das Trevas!"
+        },
+        "V0155_19_00_02_0": {
+            "card": [
+                7379
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "HERÓI Maligno Franco-Atiradora Infernal! Atacar!"
+        },
+        "V0155_19_00_03_0": {
+            "card": [
+                7380
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ataque, HERÓI Maligno Demônio Malicioso!"
+        },
+        "V0155_19_00_04_0": {
+            "card": [
+                14586
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "HERÓI Maligno Perdição Maliciosa! Atacar!"
+        },
+        "V0155_19_00_05_0": {
+            "card": [
+                7260
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ataque, HERÓI Maligno Golem Relâmpago!"
+        },
+        "V0155_19_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Relâmpago Infernal!"
+        },
+        "V0155_19_00_06_0": {
+            "card": [
+                7378
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ataque, HERÓI Maligno Ciclone Selvagem!"
+        },
+        "V0155_19_00_06_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Corte do Ciclone Centrifugo"
+        },
+        "V0155_19_00_07_0": {
+            "card": [
+                14587
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "HERÓI Maligno Ouro Ardente ataca!"
+        },
+        "V0155_19_00_08_0": {
+            "card": [
+                7259
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "HERÓI Maligno Gainer Infernal ataca!"
+        },
+        "V0155_19_00_09_0": {
+            "card": [
+                7376
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "HERÓI Maligno Prodígio Infernal! Atacar!"
+        },
+        "V0155_19_00_10_0": {
+            "card": [
+                14588
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ataque, HERÓI Maligno Necrom Sinistro!"
+        },
+        "V0155_19_00_11_0": {
+            "card": [
+                7258
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Vai, HERÓI Maligno Malicious Edge!"
+        },
+        "V0155_19_00_11_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Estouro de Agulhas!"
+        },
+        "V0155_19_00_12_0": {
+            "card": [
+                6310
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Meu Aviário, o HERÓI do Elemento ataca!"
+        },
+        "V0155_19_00_12_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Cascata de Penas!"
+        },
+        "V0155_19_00_13_0": {
+            "card": [
+                6311
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ataque, Burstinatrix, o HERÓI do Elemento!"
+        },
+        "V0155_19_00_13_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Tempestade de Chamas!"
+        },
+        "V0155_19_00_14_0": {
+            "card": [
+                6312
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Clayman, o HERÓI do Elemento! Atacar!"
+        },
+        "V0155_19_00_14_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Surra de Barro!"
+        },
+        "V0155_19_00_15_0": {
+            "card": [
+                6313
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ilumine-os, Sparkman, o HERÓI do Elemento!"
+        },
+        "V0155_19_00_15_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Choque Estático!"
+        },
+        "V0155_19_00_16_0": {
+            "card": [
+                6478
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ataque, Coração Selvagem, o HERÓI do Elemento!"
+        },
+        "V0155_19_00_16_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Golpe Selvagem!"
+        },
+        "V0155_19_00_17_0": {
+            "card": [
+                7491
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Prisma, o HERÓI do Elemento! Atacar!"
+        },
+        "V0155_19_00_18_0": {
+            "card": [
+                8126
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ice Edge, Herói Elemental! Atacar!"
+        },
+        "V0155_19_00_19_0": {
+            "card": [
+                6728
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ataque, Lenhador, o HERÓI do Elemento!"
+        },
+        "V0155_19_00_20_0": {
+            "card": [
+                6733
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Oceano, o HERÓI do Elemento! Atacar!"
+        },
+        "V0155_19_00_20_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Grande Onda Destruidora!"
+        },
+        "V0155_19_00_21_0": {
+            "card": [
+                6784
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Stratos, o HERÓI do Elemento! Varra todos para longe!"
+        },
+        "V0155_19_00_22_0": {
+            "card": [
+                6927
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Calor, o HERÓI do Elemento! Atacar!"
+        },
+        "V0155_19_00_23_0": {
+            "card": [
+                8543
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Flash, o HERÓI do Elemento! Atacar!"
+        },
+        "V0155_19_00_24_0": {
+            "card": [
+                7058
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Voltica, o HERÓI do Elemento! Atacar!"
+        },
+        "V0155_19_00_24_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Trovão Voltech!"
+        },
+        "V0155_19_00_25_0": {
+            "card": [
+                7024
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Sra. Cálida, o HERÓI do Elemento! Transforme-os em cinzas!"
+        },
+        "V0155_19_00_26_0": {
+            "card": [
+                11419
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Homem em Chamas, o HERÓI do Elemento! Atacar!"
+        },
+        "V0155_19_00_27_0": {
+            "card": [
+                13638
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Soldado Sólido, o HERÓI do Elemento! Atacar!"
+        },
+        "V0155_19_00_28_0": {
+            "card": [
+                14911
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Soldado Líquido, o HERÓI do Elemento! Atacar!"
+        },
+        "V0155_19_00_29_0": {
+            "card": [
+                3939
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ataco com minha Ficha Maligna!"
+        },
+        "V0155_19_00_30_0": {
+            "card": [
+                5833
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Vai, Feiticeiro do Caos!"
+        },
+        "V0155_19_00_31_0": {
+            "card": [
+                5709
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Arrase com eles, Guardião Baou!"
+        },
+        "V0155_19_00_32_0": {
+            "card": [
+                4713
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Acabe com eles, Cavaleiro Caveira!"
+        },
+        "V0155_19_00_33_0": {
+            "card": [
+                4181
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Vai lá, Cérebro Ancião!"
+        },
+        "V0155_19_00_34_0": {
+            "card": [
+                5649
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Vai, Mago Negro Habilidoso!"
+        },
+        "V0155_19_00_35_0": {
+            "card": [
+                5648
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Vai, Mago Branco Habilidoso!"
+        },
+        "V0155_19_00_36_0": {
+            "card": [
+                6613
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Demise, o Rei do Armagedom!\nAniquile-os!"
+        },
+        "V0155_20_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Baixo um card."
+        },
+        "V0155_20_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Vou Baixar um card."
+        },
+        "V0155_20_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Baixo um monstro."
+        },
+        "V0155_20_01_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Vou Baixar um monstro."
+        },
+        "V0155_21_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Termino meu turno."
+        },
+        "V0155_21_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Não importa o que você tente, o único fim será sua derrota."
+        },
+        "V0155_21_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Termino meu turno."
+        },
+        "V0155_21_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Termino meu turno."
+        },
+        "V0155_21_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Mostre-me o quão forte você realmente é."
+        },
+        "V0155_21_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Termino meu turno."
+        },
+        "V0155_21_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Termino meu turno."
+        },
+        "V0155_21_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Termino meu turno."
+        },
+        "V0155_21_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Não esperava que você Duelasse tão bem."
+        },
+        "V0155_22_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "............"
+        },
+        "V0155_22_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "............"
+        },
+        "V0155_22_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "............"
+        },
+        "V0155_23_00_00_0": {
+            "card": [],
+            "cutin": 3,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Ahhhhhhhhh!"
+        },
+        "V0155_24_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "............"
+        },
+        "V0155_25_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Ahh!"
+        },
+        "V0155_25_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Argh!"
+        },
+        "V0155_25_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Ergh!"
+        },
+        "V0155_26_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "É assim?"
+        },
+        "V0155_26_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Hehe."
+        },
+        "V0155_26_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "............"
+        },
+        "V0155_27_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Grr..."
+        },
+        "V0155_27_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Como ousa..."
+        },
+        "V0155_27_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Você..."
+        },
+        "V0155_28_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Não se irrite.\nVocê mesmo causou essa destruição."
+        },
+        "V0155_28_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "A vitória prova que meu jeito é o certo!"
+        },
+        "V0155_28_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Como você perdeu, tudo que você defende é insignificante."
+        },
+        "V0155_28_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Devo me tornar a escuridão para conquistar este mundo."
+        },
+        "V0155_28_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Nenhum poder pode derrotar a escuridão!"
+        },
+        "V0155_28_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                153
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Você não é nenhum herói.\nVocê é apenas outra das minhas vítimas."
+        },
+        "V0155_29_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 5,
+            "frame": 0,
+            "text": "As trevas...\n...em meu coração...\n... ainda estão aqui..."
+        },
+        "V0155_29_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Não é possível...\nVocê não pode ser mais forte que eu..."
+        },
+        "V0155_29_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Como você derrotou meu poder infinito...?"
+        },
+        "V0155_29_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Como você foi capaz de fazer isso...?"
+        },
+        "V0155_30_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Não tenho medo de Duelar sozinho."
+        },
+        "V0155_30_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ninguém escapa da escuridão que espreita em seu próprio coração."
+        },
+        "V0155_30_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Você está tentando me enganar."
+        },
+        "V0155_31_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "O quê?"
+        },
+        "V0155_31_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 0,
+            "text": "Impossível!"
+        },
+        "V0155_32_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Yu-Gi-Oh! Duel Links"
+        },
+        "V0155_32_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Yu-Gi-Oh! Duel Links\nSinta o poder das sombras!"
+        },
+        "V0155_33_00_00_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Vou lhe mostrar a sensação do verdadeiro poder!"
+        },
+        "V0155_33_00_01_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "As almas que roubei partilharão seu poder comigo!"
+        },
+        "V0155_33_00_02_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "A escuridão em meu coração é a fonte da minha força!"
+        },
+        "V0155_34_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Este erro vai levá-lo à morte."
+        },
+        "V0155_34_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Não há uma palavra de verdade no que você diz."
+        },
+        "V0155_34_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Não tenho tempo para covardes que não querem lutar."
+        },
+        "V0155_34_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Você não pode me deter... você não é nada além de uma lombada."
+        },
+        "V0155_34_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "O que foi?\nO Duelo recém começou."
+        },
+        "V0155_34_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Estou mais forte do que antes."
+        },
+        "V0155_34_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Preciso da escuridão para conquistar este mundo."
+        },
+        "V0155_34_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Deixe seu ódio alimentar sua força."
+        },
+        "V0155_34_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Não esperava que você Duelasse tão bem!"
+        },
+        "V0155_34_00_09_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "............"
+        },
+        "V0155_35_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Sou o Rei Supremo.\nAquele que conquistará este mundo."
+        },
+        "V0155_35_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Meu poder me conduzirá ao meu destino."
+        }
+    }
+}
