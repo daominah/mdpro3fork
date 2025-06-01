@@ -39,7 +39,6 @@ namespace MDPro3
                 var paths = BetterStreamingAssets.GetFiles("\\", "*.zip");
                 foreach (var zip in paths)
                     zips.Add(Path.GetFileName(zip).Replace(".zip", ""));
-
                 StartCoroutine(CheckFile());
             }
 #elif !UNITY_EDITOR && UNITY_STANDALONE_OSX
@@ -93,22 +92,10 @@ namespace MDPro3
 
         IEnumerator CheckFile()
         {
-            //V1.2.0 Delete Folder MonsterCutin
-            if(Application.version == "1.2.0.0")
-            {
-                if(Config.Get("Android-V1.2.0.0_install", "0") == "0")
-                {
-                    //Program.ClearDirectoryRecursively(new DirectoryInfo("Android/MonsterCutin"));
-                    //Program.ClearDirectoryRecursively(new DirectoryInfo("Android/MasterDuel/Mate"));
-                    Directory.Delete("Android/MonsterCutin", true);
-                    Directory.Delete("Android/MasterDuel/Mate", true);
-                }
-            }
-
             IEnumerator enumerator;
             foreach (string zip in zips)
             {
-                if (Config.Get(zip + "_install", "0") == "0")
+                if (!Config.GetBool(zip + "_install", false))
                 {
                     enumerator = Check(zip);
                     StartCoroutine(enumerator);
@@ -129,10 +116,9 @@ namespace MDPro3
             nowNum = 0;
             totalNum = 0;
 
-            string filePath = Path.Combine("file://" + Application.streamingAssetsPath, type + ".zip");
+            string filePath = Path.Combine(Application.streamingAssetsPath, type + ".zip");
             using UnityWebRequest request = UnityWebRequest.Get(filePath);
             request.SendWebRequest();
-
             while (!request.isDone)
             {
                 float progress = Mathf.Clamp01(request.downloadProgress / 0.9f);
