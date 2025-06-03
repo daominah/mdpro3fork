@@ -1,3 +1,4 @@
+using MDPro3.Net;
 using MDPro3.Servant;
 using MDPro3.Utility;
 using System;
@@ -6,6 +7,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.EventSystems;
@@ -522,6 +524,12 @@ namespace MDPro3.UI.ServantUI
         public SelectionButton_Setting ButtonUpdatePrerelease =>
             m_ButtonUpdatePrerelease = m_ButtonUpdatePrerelease != null ? m_ButtonUpdatePrerelease
             : Manager.GetElement<SelectionButton_Setting>(LABEL_SBN_UPDATEPRERELEASE);
+
+        private const string LABEL_SBN_DOWNLOAD_YPK = "DonwloadYPK";
+        private SelectionButton_Setting m_ButtonDownloadYPK;
+        public SelectionButton_Setting ButtonDownloadYPK =>
+            m_ButtonDownloadYPK = m_ButtonDownloadYPK != null ? m_ButtonDownloadYPK
+            : Manager.GetElement<SelectionButton_Setting>(LABEL_SBN_DOWNLOAD_YPK);
 
         #endregion
 
@@ -2189,6 +2197,7 @@ namespace MDPro3.UI.ServantUI
             var config = Config.GetBool("Expansions", true);
             ButtonExpansionSupport.SetModeText(InterString.Get(config ? "是" : "否"));
         }
+
         public void OnSupportExpansions()
         {
             if (Program.instance.ocgcore.showing)
@@ -2203,6 +2212,7 @@ namespace MDPro3.UI.ServantUI
 
             Program.instance.InitializeForDataChange();
         }
+
         public void OnClearExpansions()
         {
             if (Program.instance.ocgcore.showing)
@@ -2220,7 +2230,6 @@ namespace MDPro3.UI.ServantUI
             };
             UIManager.ShowPopupYesOrNo(selections, () =>
             {
-                ZipHelper.Dispose();
                 if (!Directory.Exists(Program.PATH_EXPANSIONS))
                     Directory.CreateDirectory(Program.PATH_EXPANSIONS);
                 foreach (var file in Directory.GetFiles(Program.PATH_EXPANSIONS))
@@ -2237,6 +2246,17 @@ namespace MDPro3.UI.ServantUI
                 return;
             }
             Program.instance.setting.UpdatePrerelease();
+        }
+
+        public void OnDownloadYPK()
+        {
+            if (Program.instance.ocgcore.showing)
+            {
+                MessageManager.Toast(InterString.Get("决斗中不能进行此操作。"));
+                return;
+            }
+
+            Program.instance.setting.DownloadYPK();
         }
 
         #endregion

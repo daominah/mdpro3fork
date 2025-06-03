@@ -1,3 +1,4 @@
+using MDPro3.Net;
 using MDPro3.UI;
 using MDPro3.UI.ServantUI;
 using MDPro3.Utility;
@@ -143,6 +144,7 @@ namespace MDPro3.Servant
         }
 
         private bool checkingPrereleaseUpdate;
+
         public void UpdatePrerelease()
         {
             if (!checkingPrereleaseUpdate)
@@ -187,7 +189,6 @@ namespace MDPro3.Servant
                     }
                     if (download.result == UnityWebRequest.Result.Success)
                     {
-                        ZipHelper.Dispose();
                         File.WriteAllBytes(filePath, download.downloadHandler.data);
                         MessageManager.Cast(InterString.Get("先行卡更新成功。"));
                         Config.Set("Prerelease", lines[0]);
@@ -205,6 +206,61 @@ namespace MDPro3.Servant
                 MessageManager.Cast(InterString.Get("检查更新失败！"));
             GetUI<SettingServantUI>().ButtonUpdatePrerelease.SetModeText(string.Empty);
             checkingPrereleaseUpdate = false;
+        }
+
+        private bool downloadingYPK;
+
+        public void DownloadYPK()
+        {
+            if (!downloadingYPK)
+            {
+                var selections = new List<string>()
+                {
+                    InterString.Get("下载卡包@n请输入卡包的下载地址"),
+                    string.Empty
+                };
+                UIManager.ShowPopupInput(selections, DownloadYPK, null, TmpInputValidation.ValidationType.None);
+            }
+            else
+                MessageManager.Toast(InterString.Get("正在下载中，请稍后再试。"));
+        }
+
+        private void DownloadYPK(string url)
+        {
+            string[] supportedExts = new string[] { ".zip", ".ypk" };
+            if (!NetUtil.IsValidDownloadUrl(url, supportedExts))
+            {
+                MessageManager.Toast(InterString.Get("无效的下载地址。"));
+                return;
+            }
+            StartCoroutine(DownloadYpkAsync(url));
+        }
+
+        private IEnumerator DownloadYpkAsync(string url)
+        {
+            downloadingYPK = true;
+
+            using var request = UnityWebRequest.Get(url);
+            request.SendWebRequest();
+            while (!request.isDone)
+            {
+                GetUI<SettingServantUI>().ButtonDownloadYPK.SetModeText((request.downloadProgress * 100f).ToString("0.##") + "%");
+                yield return null;
+            }
+
+            if (request.result == UnityWebRequest.Result.Success)
+            {
+                var filePath = Path.Combine(Program.PATH_EXPANSIONS, Path.GetFileName(url));
+                if (!Directory.Exists(Program.PATH_EXPANSIONS))
+                    Directory.CreateDirectory(Program.PATH_EXPANSIONS);
+                File.WriteAllBytes(filePath, request.downloadHandler.data);
+                MessageManager.Cast(InterString.Get("下载成功。"));
+                Program.instance.InitializeForDataChange();
+            }
+            else
+                MessageManager.Cast(InterString.Get("下载失败。"));
+            GetUI<SettingServantUI>().ButtonDownloadYPK.SetModeText(string.Empty);
+            downloadingYPK = false;
         }
 
     }

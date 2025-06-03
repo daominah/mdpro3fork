@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-#if SUPPORT_WINDOWS_PORT
+#if UNITY_EDITOR || (!UNITY_ANDROID && !UNITY_IOS)
 using SFB;
 #endif
 
@@ -34,7 +34,6 @@ namespace MDPro3
 
         private static void ChooseFiles()
         {
-#if SUPPORT_WINDOWS_PORT
             var extensions = new[]
             {
                 new ExtensionFilter(InterString.Get("所有文件"), "*"),
@@ -49,13 +48,10 @@ namespace MDPro3
             {
                 CopyFilesToGame(paths);
             });
-#endif
         }
 
         private static void ChooseBGPicture()
         {
-#if SUPPORT_WINDOWS_PORT
-
             var extensions = new[]
             {
                 new ExtensionFilter(InterString.Get("图片文件"), "png", "jpg")
@@ -64,7 +60,6 @@ namespace MDPro3
             {
                 CopyBGToGame(paths);
             });
-#endif
         }
 
         private static void CopyBGToGame(IEnumerable<string> files)
@@ -190,7 +185,7 @@ namespace MDPro3
             NativeFilePicker.ExportMultipleFiles(filePaths, ExportResult);
             if(!copy)
                 filesToDelete = filePaths.ToList();
-#elif SUPPORT_WINDOWS_PORT
+#else
             StandaloneFileBrowser.OpenFolderPanelAsync(InterString.Get("请选择导出目录"), "", false, (string[] paths) =>
             {
                 ExportFiles(paths, filePaths, copy);
@@ -216,7 +211,6 @@ namespace MDPro3
                 ExportResult(false);
             }
         }
-
     }
 
 }

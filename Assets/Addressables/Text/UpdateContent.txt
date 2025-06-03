@@ -1,4 +1,10 @@
 
+MDPro3 v1.3.1更新：
+1.【设置-扩展卡包】中新增输入下载地址自动下载并部署自定义卡包的功能。
+2.修复Linux端决斗中需要显示“解放怪兽”特效时，游戏卡死的问题。
+3.*修复Mac端非Apple Silicon芯片的设备无法本地决斗的错误。
+4.*修复非Windows端无法导入、导出文件的错误。
+
 MDPro3 v1.3.0更新：
 0.本次更新跳过了v1.2.9版本，仅提供完整包安装。
 1.新增对Linux、macOS的支持。
@@ -6,65 +12,3 @@ MDPro3 v1.3.0更新：
 3.渲染先行卡卡图时，原以卡图设置语言为准，现改为先行卡语言（更新先行卡时的系统语言）为准。
 4.修复登录MyCard账号时，账号或密码中包含特殊字符时无法登录的错误。
 5.修复部分场地的BGM与预期不符的错误。
-
-# MDPro3 Translation Credits
-
-Below is the list of contributors who have generously donated their time and expertise to localise **MDPro3**. Thank you all for keeping the project alive!
-
-## English
-
-* **SenatorJohn** — Project lead; maintainer of the Discord community [MDPro3 Requiem](https://discord.gg/GVZb4dC44b) and of the card database. Pre‑release translations courtesy of [YGOrganization](https://ygorganization.com/category/news/ocg-tcg/).
-* **Reinen** — Original initiator of the English translation.
-* **ShinTheAbsol** — Provided fixes and improvements to the English translation.
-
-## French
-
-* **Takatuktuk** — Initiated the French translation; translated `strings.conf` and the UI.
-* **Zilco** — Translated pre‑release cards, corrected .cdb errors, proof‑read translations, and wrote WindBot dialogues.
-* **SenatorJohn** — Maintains the French database.
-
-## German
-
-* **Pazze** — Translated part of `strings.conf` and the entire UI.
-* **SenatorJohn** — Completed the remaining `strings.conf`, proof‑read, and maintains the database.
-* **dennisw100** — Translated a large number of cards.
-* **Fabio (Umbra Lunar)** — Translated the remaining cards together with dennisw100.
-* **Tyliion** — Contributed 15 card translations.
-
-## Italian
-
-* **GigioFede & Berry** — Started the Italian localisation project.
-* **SevenSaske** — Translated `strings.conf` and the UI.
-* **RashFaustino** — Translated the remaining 212 cards, all pre‑release cards, and proof‑read the UI and `strings.conf`.
-* **Unlucky** — Assisted RashFaustino with card translations.
-* **SenatorJohn** — Maintains the Italian database.
-
-## Portuguese
-
-* **Kewyn** — Main translator for Portuguese pre‑release cards.
-* **SenatorJohn** — Maintains the Portuguese database.
-
-## Spanish
-
-* **Dårk Zånë** — Main translator for Spanish pre‑release cards; maintains the Spanish database.
-* **Termo‑DAK** — Developed the “Evolution Server”.
-
-## Japanese
-
-* **SenatorJohn** — Main translator for Japanese pre‑release cards (source: [OCG‑Card](https://ocg-card.com/)).
-
-## Korean
-
-* **응애** — Main translator for Korean cards.
-* **JSY1728** — Provided card errata and UI fixes.
-* **SenatorJohn** — Maintains the Korean database.
-
----
-
-### Special Thanks
-
-* **BullyWiiPlaza** — Development of tools and extraction of Duel Links voice lines, and good tutorials for new users.
-* **Sherry Chaos** — Creator of this amazing project.
-* **ggezeee** — For doing the "How to Install" Manual.
-
-END_

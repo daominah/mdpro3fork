@@ -13,10 +13,10 @@ namespace MDPro3.UI
     public class SelectionButton_Setting : SelectionButton
     {
         [Header("Setting")]
-        [SerializeField] Slider slider;
-        [SerializeField] RectTransform arrow;
-        [SerializeField] TextMeshProUGUI modeText;
-        [SerializeField] TextMeshProUGUI noteText;
+        [SerializeField] private Slider slider;
+        [SerializeField] private RectTransform arrow;
+        [SerializeField] private TextMeshProUGUI modeText;
+        [SerializeField] private TextMeshProUGUI noteText;
 
         public void SetModeText(string text)
         {
@@ -88,12 +88,6 @@ namespace MDPro3.UI
                 return 0f;
             }
             return slider.value;
-        }
-
-        public void SetClickEvent(UnityAction call)
-        {
-            if(Selectable is Button button)
-                button.onClick.AddListener(call);
         }
 
         protected override void HoverOn()

@@ -1203,7 +1203,7 @@ namespace MDPro3
                 if ((p.reason & (uint)CardReason.RELEASE) > 0 && model != null)
                 {
                     se = "SE_SUMMON_ADVANCE";
-                    var fx = ABLoader.LoadFromFile("MasterDuel/Effects/Sacrifice/fxp_sacrifice_rls_001", true);
+                    var fx = ABLoader.LoadFromFile("MasterDuel/Effects/Sacrifice/fxp_Sacrifice_rls_001", true);
                     fx.transform.position = model.transform.position;
                     Destroy(fx, 5f);
                 }
@@ -1695,7 +1695,7 @@ namespace MDPro3
                 if ((p.reason & (uint)CardReason.RELEASE) > 0 && model != null)
                 {
                     se = "SE_SUMMON_ADVANCE";
-                    var fx = ABLoader.LoadFromFile("MasterDuel/Effects/Sacrifice/fxp_sacrifice_rls_001", true);
+                    var fx = ABLoader.LoadFromFile("MasterDuel/Effects/Sacrifice/fxp_Sacrifice_rls_001", true);
                     fx.transform.position = model.transform.position;
                     Destroy(fx, 5f);
                 }

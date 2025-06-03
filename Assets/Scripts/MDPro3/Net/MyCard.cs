@@ -33,7 +33,10 @@ namespace MDPro3.Net
         public static MyCardApp ygopro;
         public static Texture2D avatar;
 
-        const int avatarSize = 256;
+        private const string avatarSavePath = "Picture/MyCardAvatars/";
+        private static readonly Dictionary<string, string> cachedAvatarAddress = new();
+        private static readonly Dictionary<string, Texture2D> cachedAvatars = new();
+        private const int avatarSize = 256;
 
         public static async Task<MyCardAccount> Login(string account, string password)
         {
@@ -113,9 +116,6 @@ namespace MDPro3.Net
             }
         }
 
-        private const string avatarSavePath = "Picture/MyCardAvatars/";
-        private static Dictionary<string, string> cachedAvatarAddress = new();
-        private static Dictionary<string, Texture2D> cachedAvatars = new();
         public static async Task<Texture2D> GetAvatarAsync(string userName)
         {
             if(!Directory.Exists(avatarSavePath))
@@ -281,7 +281,10 @@ namespace MDPro3.Net
 
         #region WebSocket Athletic Watch
 
+        private static string currentEventType;
+
         private static WebSocket socket;
+
         public static void ConnectToAthleticWatchListWebSocket()
         {
             socket = new WebSocket(athleticWatchUrl);
@@ -309,21 +312,22 @@ namespace MDPro3.Net
         {
             Debug.Log(string.Format("Socket Connected: {0}", athleticWatchUrl));
         }
+
         private static void OnSocketClose(object sender, CloseEventArgs e)
         {
             Debug.Log(string.Format("Socket Closed: StatusCode: {0}, Reason: {1}", e.StatusCode, e.Reason));
         }
+
         private static void OnSocketError(object sender, UnityWebSocket.ErrorEventArgs e)
         {
             Debug.Log(string.Format("Socket Error: {0}", e.Message));
         }
+
         private static void OnSocketMessage(object sender, MessageEventArgs e)
         {
             //Debug.Log(string.Format("Receive: {0}", e.Data));
             HandleWatchInfo(e.Data);
         }
-
-        static string currentEventType;
 
         private static void HandleWatchInfo(string json)
         {
@@ -348,6 +352,7 @@ namespace MDPro3.Net
                     break;
             }
         }
+
         private static void HandleRooms(JArray rooms)
         {
             var list = new List<MyCardRoom>();
@@ -358,6 +363,7 @@ namespace MDPro3.Net
             }
             Program.instance.online.SetWatchRooms(list);
         }
+
         private static void HandleSingleRoom(JObject room)
         {
             var roomInstance = room.ToObject<MyCardRoom>();
@@ -371,13 +377,24 @@ namespace MDPro3.Net
                     break;
             }
         }
+
         private static void HandleDelete(string roomId)
         {
             Program.instance.online.DeleteWatchRoom(roomId);
         }
+
         #endregion
 
-        #region Mycard Tools
+        #region MyCard Tools
+
+        public enum RoomAction
+        {
+            CreatePublic = 1,
+            CreatePrivate = 2,
+            JoinPublic = 3,
+            JoinPrivate = 5,
+        }
+
         public static string GetJoinRoomPassword(MyCardRoomOptions options, string roomId, int userId, bool _private = false)
         {
             byte[] optionsBuffer = new byte[6];
@@ -389,6 +406,7 @@ namespace MDPro3.Net
 
             return base64String + roomId;
         }
+
         public static string GetCreateRoomPasswd(MyCardRoomOptions options, string roomID, int userId, bool _private = false)
         {
             byte[] optionsBuffer = new byte[6];
@@ -440,13 +458,7 @@ namespace MDPro3.Net
             buffer[offset] = (byte)(value & 0xff);
             buffer[offset + 1] = (byte)((value >> 8) & 0xff);
         }
-        public enum RoomAction
-        {
-            CreatePublic = 1,
-            CreatePrivate = 2,
-            JoinPublic = 3,
-            JoinPrivate = 5,
-        }
+
         #endregion
     }
 
@@ -456,11 +468,13 @@ namespace MDPro3.Net
         public MyCardUserInfo user;
         public string token;
     }
+
     [Serializable]
     public class MyCardRoomUserInfo
     {
         public MyCardUserInfo user;
     }
+
     [Serializable]
     public class MyCardUserInfo
     {
@@ -507,6 +521,7 @@ namespace MDPro3.Net
         public string address;
         public string[] windbot;
     }
+
     [Serializable]
     public class MyCardWindbots
     {
@@ -515,6 +530,7 @@ namespace MDPro3.Net
         [JsonProperty("zh-CN")]
         public string[] ChineseCN { get; set; }
     }
+
     [Serializable]
     public class MyCardNews
     {
@@ -523,6 +539,7 @@ namespace MDPro3.Net
         [JsonProperty("zh-CN")]
         public News[] ChineseCN { get; set; }
     }
+
     [Serializable]
     public class News
     {
@@ -532,6 +549,7 @@ namespace MDPro3.Net
         public string title;
         public string updated_at;
     }
+
     [Serializable]
     public class MyCardUserExp
     {
@@ -550,6 +568,7 @@ namespace MDPro3.Net
         public string athletic_wl_ratio;
         public int arena_rank;
     }
+
     [Serializable]
     public class MyCardMatchInfo
     {
@@ -565,6 +584,7 @@ namespace MDPro3.Net
         public string eventType;
         public object data;
     }
+
     [Serializable]
     public class MyCardRoom
     {
@@ -575,12 +595,14 @@ namespace MDPro3.Net
         public MyCardRoomOptions options;
         public string arena;
     }
+
     [Serializable]
     public class MyCardRoomUser
     {
         public string username;
         public int position;
     }
+
     [Serializable]
     public class MyCardRoomOptions
     {
@@ -598,4 +620,5 @@ namespace MDPro3.Net
         public bool auto_death;
         public int replay_mode;
     }
+
 }

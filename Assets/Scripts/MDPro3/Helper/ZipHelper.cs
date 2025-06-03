@@ -6,11 +6,11 @@ namespace MDPro3
 {
     public class ZipHelper
     {
-        public static List<ZipFile> zips = new List<ZipFile>();
+        public static List<ZipFile> zips = new();
 
         public static void Initialize()
         {
-            zips.Clear();
+            Dispose();
 
             if (!Directory.Exists("Expansions"))
                 Directory.CreateDirectory("Expansions");
@@ -21,10 +21,12 @@ namespace MDPro3
 
             zips.Add(new ZipFile("Data/script.zip"));//Make "Data/script.zip" the last one to read.
         }
+
         public static void Dispose()
         {
             foreach (var zip in zips)
                 zip.Dispose();
+            zips.Clear();
         }
 
         public static List<string> GetAllCdbTempPath()
