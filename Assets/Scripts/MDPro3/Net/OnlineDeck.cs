@@ -16,6 +16,7 @@ namespace MDPro3.Net
         public static OnlineDeckData[] decks;
 
         #region Const
+
         const string url = "http://rarnu.xyz:38383";
         const string liteAPI = "/api/mdpro3/deck/list/lite";
         const string getAPI = "/api/mdpro3/deck/";
@@ -33,9 +34,11 @@ namespace MDPro3.Net
         const string contentTypeHeader = "Content-Type";
         const string jsonHeader = "application/json";
         const string tokenHeader = "token";
+
         #endregion
 
         #region Online Get
+
         public static async Task<OnlineDeckData[]> FetchSimpleDeckList(int size, string keyWord = "", string contributor = "", bool sortLike = true)
         {
             string apiUrl = url + liteAPI + $"?size={size}&keyWord={keyWord}&contributor={contributor}&sortLike={sortLike}";
@@ -73,6 +76,7 @@ namespace MDPro3.Net
                     request.downloadHandler.Dispose();
             }
         }
+
         public static async Task<OnlineDeckData> GetDeck(string deckID)
         {
             string apiUrl = url + getAPI + deckID;
@@ -128,6 +132,7 @@ namespace MDPro3.Net
 
             if (request.result == UnityWebRequest.Result.Success)
             {
+                //UnityEngine.Debug.Log(request.downloadHandler.text);
                 decks = JsonUtility.FromJson<ResponseMultiSimpleData>(request.downloadHandler.text).data;
                 return decks;
             }
@@ -137,6 +142,7 @@ namespace MDPro3.Net
                 return null;
             }
         }
+
         public static async void LikeDeck(string deckId)
         {
             string apiUrl = url + likeAPI + deckId;
@@ -161,9 +167,11 @@ namespace MDPro3.Net
             else
                 MessageManager.Cast(InterString.Get("点赞卡组失败：") + request.error);
         }
+
         #endregion
 
         #region Online Post
+
         public static async Task<bool> UploadDecks(List<Deck> decks, List<string> deckNames)
         {
             string apiUrl = url + getIdsAPI + decks.Count;
@@ -355,6 +363,7 @@ namespace MDPro3.Net
                 return false;
             }
         }
+
         public static async Task<bool> UpdatePublicState(string deckId, bool isPublic)
         {
             var apiUrl = url + publicAPI;
@@ -391,6 +400,7 @@ namespace MDPro3.Net
         #endregion
 
         #region Functions
+
         public static OnlineDeckData GetByID(string deckId)
         {
             if (decks == null)
@@ -400,6 +410,7 @@ namespace MDPro3.Net
                     return deck;
             return null;
         }
+
         public static bool GetDeckPublicState(string deckId)
         {
             if (decks == null)
@@ -409,6 +420,7 @@ namespace MDPro3.Net
                     return deck.isPublic;
             return false;
         }
+
         public static bool StringIsIdFormat(string deckId)
         {
             return !string.IsNullOrEmpty(deckId);
@@ -418,6 +430,7 @@ namespace MDPro3.Net
                 return false;
             return true;
         }
+
         private static bool DeckNameExist(string deckName)
         {
             if (decks == null)
@@ -468,6 +481,7 @@ namespace MDPro3.Net
                     return DateTime.Parse(deckUploadDate);
                 }
             }
+
         }
 
         [Serializable]
@@ -494,6 +508,7 @@ namespace MDPro3.Net
             public string message;
             public bool data;
         }
+
         [Serializable]
         public class ResponseMultiSimpleData
         {
@@ -512,6 +527,7 @@ namespace MDPro3.Net
             public int pages;
             public OnlineDeckData[] records;
         }
+
         [Serializable]
         public class ResponseDeckID
         {
@@ -519,6 +535,7 @@ namespace MDPro3.Net
             public int message;
             public string data;
         }
+
         [Serializable]
         public class ResponseDeckIDs
         {
@@ -584,6 +601,8 @@ namespace MDPro3.Net
             public string deckId;
             public bool isPublic;
         }
+
         #endregion
+
     }
 }

@@ -10,6 +10,7 @@ using TMPro;
 using UnityEngine.EventSystems;
 using MDPro3.Net;
 using MDPro3.UI.ServantUI;
+using static MDPro3.Duel.YGOSharp.PacksManager;
 
 namespace MDPro3.Servant
 {
@@ -215,11 +216,12 @@ namespace MDPro3.Servant
 
         private void LoginSuccessEvent()
         {
-            if (servantUI == null || MyCard.account == null)
+            if (MyCard.account == null)
                 return;
-
-            StartCoroutine(RefreshMyCardAssets());
             StartCoroutine(SyncDecks());
+            if (servantUI == null)
+                return;
+            StartCoroutine(RefreshMyCardAssets());
         }
 
         private IEnumerator RefreshMyCardAssets()
@@ -272,7 +274,6 @@ namespace MDPro3.Servant
             for (int i = 0; i < decks.Count; i++)
             {
                 var deckName = Path.GetFileNameWithoutExtension(deckFiles[i]);
-
                 if (decks[i].userId != MyCard.account.user.id.ToString())
                 {
                     decksNeedUpload.Add(deckName, decks[i]);
@@ -282,6 +283,7 @@ namespace MDPro3.Servant
                 bool deckIdFound = false;
                 foreach (var od in OnlineDeck.decks)
                 {
+                    Debug.Log(od.deckId);
                     if (od.deckId == decks[i].deckId)
                     {
                         deckIdFound = true;

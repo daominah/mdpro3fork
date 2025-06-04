@@ -414,6 +414,7 @@ namespace MDPro3.UI.ServantUI
                         int code = int.Parse(files[i].Name.Replace(".bundle", string.Empty));
                         var card = CardsManager.Get(code, true);
                         GameObject item = Instantiate(Template);
+                        item.SetActive(true);
                         var itemMono = item.GetComponent<SelectionToggle_AppearanceItem>();
                         itemMono.index = itemCount++;
                         itemMono.itemID = code;
