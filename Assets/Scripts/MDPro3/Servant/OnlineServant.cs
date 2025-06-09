@@ -283,7 +283,6 @@ namespace MDPro3.Servant
                 bool deckIdFound = false;
                 foreach (var od in OnlineDeck.decks)
                 {
-                    Debug.Log(od.deckId);
                     if (od.deckId == decks[i].deckId)
                     {
                         deckIdFound = true;

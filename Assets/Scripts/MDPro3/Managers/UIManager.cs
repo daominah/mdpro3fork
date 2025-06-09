@@ -350,7 +350,6 @@ namespace MDPro3
 
         public static void ShowPopupConfirm(List<string> selections)
         {
-            Debug.Log("mark");
             var handle = Addressables.InstantiateAsync("Popup/PopupConfirm.prefab");
             handle.Completed += (result) =>
             {

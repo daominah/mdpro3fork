@@ -27,8 +27,14 @@ namespace MDPro3
         public UniversalRenderPipelineAsset urpAssetForUI;
         public UniversalRendererData forwardRendererDataForUI;
 
-        public static Vector3 mainCameraDefaultPosition = new Vector3(0f, 95f, -37f);
-        public static Vector3 mainCameraDefaultRotation = new Vector3(70f, 0f, 0f);
+        public static Vector3 mainCameraDefaultPosition = new(0f, 95f, -37f);
+        public static Vector3 mainCameraDefaultRotation = new(70f, 0f, 0f);
+        public static int DuelOverlay2DCount = 0;
+        public static int DuelOverlayEffect2DCount = 0;
+        public static int DuelOverlay3DCount = 0;
+        public static int DuelOverlayEffect3DCount = 0;
+        public static int uiBlurCount = 0;
+        public static bool overlaySticking;
 
         public override void Initialize()
         {
@@ -81,6 +87,7 @@ namespace MDPro3
 
             QualitySettings.SetQualityLevel(6);
         }
+
         public static void ShiftTo3D()
         {
             Program.instance.camera_.cameraMain.gameObject.SetActive(true);
@@ -88,18 +95,19 @@ namespace MDPro3
             Program.instance.camera_.camera2D.gameObject.SetActive(false);
             QualitySettings.SetQualityLevel((int)Config.GetFloat("Quality", 2f));
         }
+
         public static void Overlay3DReset()
         {
             Program.instance.camera_.cameraDuelOverlay3D.transform.localPosition = new Vector3(0, 95, -37);
             Program.instance.camera_.cameraDuelOverlay3D.transform.localEulerAngles = new Vector3(70, 0, 0);
         }
 
-        public static int DuelOverlay2DCount = 0;
         public static void DuelOverlay2DPlus()
         {
             DuelOverlay2DCount++;
             Program.instance.camera_.cameraDuelOverlay2D.gameObject.SetActive(true);
         }
+
         public static void DuelOverlay2DMinus()
         {
             DuelOverlay2DCount--;
@@ -109,12 +117,12 @@ namespace MDPro3
                 Program.instance.camera_.cameraDuelOverlay2D.gameObject.SetActive(false);
         }
 
-        public static int DuelOverlayEffect2DCount = 0;
         public static void DuelOverlayEffect2DPlus()
         {
             DuelOverlayEffect2DCount++;
             Program.instance.camera_.cameraDuelOverlayEffect2D.gameObject.SetActive(true);
         }
+
         public static void DuelOverlayEffect2DMinus()
         {
             DuelOverlayEffect2DCount--;
@@ -124,12 +132,12 @@ namespace MDPro3
                 Program.instance.camera_.cameraDuelOverlayEffect2D.gameObject.SetActive(false);
         }
 
-        public static int DuelOverlay3DCount = 0;
         public static void DuelOverlay3DPlus()
         {
             DuelOverlay3DCount++;
             Program.instance.camera_.cameraDuelOverlay3D.gameObject.SetActive(true);
         }
+
         public static void DuelOverlay3DMinus()
         {
             DuelOverlay3DCount--;
@@ -139,12 +147,12 @@ namespace MDPro3
                 Program.instance.camera_.cameraDuelOverlay3D.gameObject.SetActive(false);
         }
 
-        public static int DuelOverlayEffect3DCount = 0;
         public static void DuelOverlayEffect3DPlus()
         {
             DuelOverlayEffect3DCount++;
             Program.instance.camera_.cameraDuelOverlayEffect3D.gameObject.SetActive(true);
         }
+
         public static void DuelOverlayEffect3DMinus()
         {
             DuelOverlayEffect3DCount--;
@@ -154,8 +162,6 @@ namespace MDPro3
                 Program.instance.camera_.cameraDuelOverlayEffect3D.gameObject.SetActive(false);
         }
 
-
-        public static int uiBlurCount = 0;
         public static void UIBlurPlus()
         {
             uiBlurCount++;
@@ -167,6 +173,7 @@ namespace MDPro3
             //    if (feature is KawaseBlur)
             //        feature.SetActive(true);
         }
+
         public static void UIBlurMinus()
         {
             uiBlurCount--;
@@ -192,12 +199,14 @@ namespace MDPro3
             sequence.AppendInterval(time);
             sequence.Append(Program.instance.camera_.black.DOFade(0, outTime));
         }
+
         public static void BlackIn(float delay, float inTime)
         {
             var sequence = DOTween.Sequence();
             sequence.AppendInterval(delay);
             sequence.Append(Program.instance.camera_.black.DOFade(0.75f, inTime));
         }
+
         public static void BlackOut(float delay, float outTime)
         {
             var sequence = DOTween.Sequence();
@@ -217,7 +226,6 @@ namespace MDPro3
             }
         }
 
-        public static bool overlaySticking;
         public static void Duel3DOverlayStickWithMain(bool stick)
         {
             if (stick)
@@ -233,7 +241,6 @@ namespace MDPro3
                 Program.instance.camera_.cameraDuelOverlay3D.transform.SetParent(Program.instance.camera_.transform, false);
                 Program.instance.camera_.cameraDuelOverlay3D.transform.localPosition = mainCameraDefaultPosition;
                 Program.instance.camera_.cameraDuelOverlay3D.transform.localEulerAngles = mainCameraDefaultRotation;
-
             }
         }
 
@@ -241,5 +248,6 @@ namespace MDPro3
         {
             cameraRenderTexture.targetTexture = null;
         }
+
     }
 }
