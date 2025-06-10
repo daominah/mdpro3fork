@@ -24,6 +24,7 @@ using UnityEngine.InputSystem;
 using MDPro3.Duel.BG;
 using MDPro3.Utility;
 using MDPro3.UI.ServantUI;
+using System.Net.Sockets;
 
 namespace MDPro3.Servant
 {
@@ -1181,22 +1182,25 @@ namespace MDPro3.Servant
         {
             RoomServant.JoinWithReconnect = false;
 
-            if (Program.instance.room.duelEnded
-                || surrendered
-                || TcpHelper.tcpClient == null
-                || !TcpHelper.tcpClient.Connected)
+            if(condition != Condition.Watch)
             {
-                surrendered = false;
-                Program.instance.room.duelEnded = false;
-                RoomServant.NeedSide = false;
-                RoomServant.SideWaitingObserver = false;
-                if (Program.instance.currentSubServant != null)
+                if (Program.instance.room.duelEnded
+                    || surrendered
+                    || TcpHelper.tcpClient == null
+                    || !TcpHelper.tcpClient.Connected)
                 {
-                    Program.instance.currentSubServant.Hide(-1);
-                    Program.instance.currentSubServant = null;
+                    surrendered = false;
+                    Program.instance.room.duelEnded = false;
+                    RoomServant.NeedSide = false;
+                    RoomServant.SideWaitingObserver = false;
+                    if (Program.instance.currentSubServant != null)
+                    {
+                        Program.instance.currentSubServant.Hide(-1);
+                        Program.instance.currentSubServant = null;
+                    }
+                    OnExit();
+                    return;
                 }
-                OnExit();
-                return;
             }
 
             if (RoomServant.NeedSide)
@@ -1230,7 +1234,13 @@ namespace MDPro3.Servant
                 else
                 {
                     if (duelEnded)
-                        Hide(0);
+                    {
+                        if (TcpHelper.tcpClient == null
+                            || !TcpHelper.tcpClient.Connected)
+                            OnExit();
+                        else
+                            Hide(0);
+                    }
                     else
                     {
                         field0.SetActive(false);
@@ -1249,22 +1259,22 @@ namespace MDPro3.Servant
                 InterString.Get("是"),
                 InterString.Get("否")
             };
-            Action yes = () =>
-            {
-                surrendered = true;
-                if (TcpHelper.tcpClient != null && TcpHelper.tcpClient.Connected)
-                {
-                    TcpHelper.CtosMessage_Surrender();
-                    Program.instance.ExitCurrentServant();
-                    if (RoomServant.Mode == 2 && !tagSurrendered)
-                        MessageManager.Cast(InterString.Get("您发起了投降。"));
-                }
-                else
-                    OnExit();
-            };
-            UIManager.ShowPopupYesOrNo(selections, yes, null);
+            UIManager.ShowPopupYesOrNo(selections, ActionSurrender, null);
         }
 
+        private void ActionSurrender()
+        {
+            surrendered = true;
+            if (TcpHelper.tcpClient != null && TcpHelper.tcpClient.Connected)
+            {
+                TcpHelper.CtosMessage_Surrender();
+                Program.instance.ExitCurrentServant();
+                if (RoomServant.Mode == 2 && !tagSurrendered)
+                    MessageManager.Cast(InterString.Get("您发起了投降。"));
+            }
+            else
+                OnExit();
+        }
 
         #endregion
 
@@ -1354,11 +1364,11 @@ namespace MDPro3.Servant
         [HideInInspector] public int Es_selectMSGHintData;
         [HideInInspector] public int Es_selectMSGHintPlayer;
         [HideInInspector] public int Es_selectMSGHintType;
-        [HideInInspector] public List<int> ES_searchCodes = new List<int>();
-        [HideInInspector] public string ES_selectUnselectHint = "";
+        [HideInInspector] public List<int> ES_searchCodes = new();
+        [HideInInspector] public string ES_selectUnselectHint = string.Empty;
         [HideInInspector] public bool ES_selectCardFromFieldFirstFlag = false;
         [HideInInspector] public int ES_sortSum;
-        [HideInInspector] public string ES_turnString = "";
+        [HideInInspector] public string ES_turnString = string.Empty;
 
         [HideInInspector] public bool duelEnded;
         //For single duel end
