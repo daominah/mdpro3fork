@@ -816,11 +816,14 @@ Dado aos que alcançaram resultados consideráveis na Copa de Duelistas.
 Um ícone com um logotipo "DC 2025 MAR" de bronze. 
 Dado aos que conquistaram inúmeras batalhas na Copa de Duelistas.
 [IDS_ITEMDESC.ID1011049]
-coming soon
+Um Ícone com um logotipo dourado das "Eliminatórias do WCS 2025".
+Um Ícone dado àqueles que se saíram muito bem na rodada de 2025 contra o mundo.
 [IDS_ITEMDESC.ID1011050]
-coming soon
+Um Ícone com um logotipo prateado das "Eliminatórias do WCS 2025".
+Um Ícone dado àqueles que atingiram resultados impressionantes na rodada de 2025 contra o mundo.
 [IDS_ITEMDESC.ID1011051]
-coming soon
+Um Ícone com um logotipo de bronze das "Eliminatórias do WCS 2025".
+Um Ícone dado àqueles que venceram diversas batalhas na rodada de 2025 contra o mundo.
 [IDS_ITEMDESC.ID1011052]
 coming soon
 [IDS_ITEMDESC.ID1011053]
@@ -1049,6 +1052,9 @@ Trata-se de um agente da elite exclusiva que passou por um treinamento exaustivo
 [IDS_ITEMDESC.ID1012072]
 Um ícone representando uma líder cuja equipe usa poderes milagrosos de exorcismo.
 Ela havia feito um juramento com seu antigo parceiro, cujo paradeiro se tornou desconhecido após uma batalha.
+[IDS_ITEMDESC.ID1012073]
+Um Ícone que representa uma chama indisciplinada e amante de travessuras.
+Apesar de seu tamanho diminuto, ele queima com uma intensidade notável, sugerindo seu potencial de crescimento exponencial.
 [IDS_ITEMDESC.ID1013001]
 Um Ícone representando um jovem rapaz que realmente gosta de beisebol.
 Você pode ter encontrado ele na escola em alguma era, sendo encorajado à grandeza pela sua paixão pelo basebol.
@@ -1632,6 +1638,9 @@ A vitalidade das cores faz com que o Duelista se sinta refrescado e otimista.
 [IDS_ITEMDESC.ID1030034]
 Uma Moldura de Ícone azul e púrpura que evoca a calma da água e o prazer da escuridão.
 As águas serenas são gradualmente engolidas pelas sombras sedutoras.
+[IDS_ITEMDESC.ID1030035]
+Uma Moldura de Ícone que evoca os espíritos travessos das chamas que se alimentam das ondas de choque das explosões.
+A intensa energia térmica das chamas causa explosões incrivelmente poderosas.
 [IDS_ITEMDESC.ID1031001]
 Uma Moldura de Ícone lembra o portão utilizado pelas Forças Celestes para transferir seus armamentos.
 Quando o caminho abre àqueles que lutam pela paz, um novo poder para superar as dificuldades desperta.
@@ -2051,6 +2060,12 @@ Para aqueles com poderes extraordinários.
 [IDS_ITEMDESC.ID1070115]
 Protetores representando um garoto e uma garota que se uniram em razão de eventos estranhos.
 Para aqueles que decidiram embarcar em uma jornada.
+[IDS_ITEMDESC.ID1070116]
+Protetores que retratam uma estranha forma de vida que chegou de repente de outro mundo.
+Para aqueles que buscam aprender a verdadeira natureza de tais seres misteriosos.
+[IDS_ITEMDESC.ID1070117]
+Protetores que representam um "<category id='44'/>" dourado brilhante.
+Para aqueles que se sentem atraídos pelo brilho dos cristais.
 [IDS_ITEMDESC.ID1071001]
 Protetores que ilustram um guerreiro que amadureceu e tirou as cicatrizes gravadas em seu coração durante as batalhas. 
 Perfeito para aqueles que querem sempre o melhor para os seus amigos mais queridos.
@@ -2150,6 +2165,9 @@ Para aqueles com muita fé no poder da coesão.
 [IDS_ITEMDESC.ID1071033]
 Protetores retratando uma garota escolhida para portar armas tecnológicas superavançadas.
 Para aqueles que desejam encerrar os conflitos.
+[IDS_ITEMDESC.ID1071034]
+Protetores que representam o líder que mantém os guerreiros escarlates unidos.
+Para aqueles cujo fogo interior lhes dá uma vantagem em combate.
 [IDS_ITEMDESC.ID1072001]
 Um Protetor com o design de "<card mrk='13670'/>" em sua armadura do modo Destruição.
 Para os jogadores que se agarrarão à vitória saindo das chamas do campo de batalha.
@@ -2608,7 +2626,8 @@ Embora já estejam transbordando de energia, aparentemente não serão descarreg
 [IDS_ITEMDESC.ID1101021]
 coming soon
 [IDS_ITEMDESC.ID1101022]
-coming soon
+Componentes de Campo modelados com base em dois monstros conhecidos catar lixo.
+Mesmo que você coloque algo que não foi originalmente planejado para ser coletado, parece bom por enquanto.
 [IDS_ITEMDESC.ID1101023]
 Componentes de Campo inspirados em um jogo em que é necessário lançar um dado para se mover.
 Mesmo se estiver navegando de vento em popa, uma tempestade pode surgir do nada.
@@ -2892,6 +2911,12 @@ O poder do oceano narrado nas lendas se manifestou na forma de bolhas na superf�
 [IDS_ITEMDESC.ID1111057]
 Um Suporte inspirado no modelo de um escudo dos tempos antigos.
 Capaz de bloquear qualquer ataque forte, é um Suporte incrivelmente resistente.
+[IDS_ITEMDESC.ID1111061]
+Um Pedestal inspirado em baús de tesouro que aguardam os aventureiros.
+Já se perguntou por que uma masmorra conteria esses baús e objetos preciosos? Bem, você deveria.
+[IDS_ITEMDESC.ID1111062]
+Um Pedestal inspirado em um grupo de guerreiros escarlates.
+O espírito de luta ardente está imbuído nele, instaurando uma sede de batalha em qualquer pessoa que entre em contato com ele.
 [IDS_ITEMDESC.ID1112001]
 Um pedestal de um Coliseu.
 A chama brilhante dança como se cantasse a ode dos bravos guerreiros que lutam aqui.
@@ -3307,3 +3332,33 @@ O Duelo ajuda você a descobrir muitos cards.
 O número máximo de Decks que você pode ter pode ser aumentado em 1.
 [IDS_ITEMDESC.ID1160001]
 Aumenta o número máximo de reprises que você pode manter salvas em 1.
+[IDS_ITEMDESC.ID1020158]
+Um título concedido a Duelistas que obtiveram resultados no evento "Rally de Dados - Fusão e Xyz e Link".
+Um futuro brilhante aguarda todos aqueles que são corajosos o suficiente para confiar em si próprios.
+[IDS_ITEMDESC.ID1020159]
+Um Título dado aos Duelistas que ficaram entre os 10 melhores nas "Eliminatórias do WCS 2025".
+Muitos testemunharam suas habilidades como um Duelista capaz de desafiar o mundo.
+[IDS_ITEMDESC.ID1020160]
+Um Título dado aos Duelistas que ficaram entre os 100 melhores nas "Eliminatórias do WCS 2025".
+Prova de um Duelista que demonstrou seu conhecimento de muitos Duelistas e o domínio de seus cards na batalha contra o mundo.
+[IDS_ITEMDESC.ID1020161]
+Um Título dado aos Duelistas que ficaram entre os 500 melhores nas "Eliminatórias do WCS 2025".
+Prova de um Duelista que aperfeiçoou suas habilidades e conquistou a vitória em muitas batalhas para desafiar o mundo.
+[IDS_ITEMDESC.ID1020162]
+Um Título dado aos Duelistas que ficaram entre os 1000 melhores nas "Eliminatórias do WCS 2025".
+Uma medalha de honra atribuída ao Duelista infalível que lutou de forma destemida entre os melhores Duelistas do mundo.
+[IDS_ITEMDESC.ID1020163]
+Um Título dado aos Duelistas que ficaram entre os 10000 melhores nas "Eliminatórias do WCS 2025".
+Para aqueles que venceram rivais formidáveis e contaram suas vitórias.
+[IDS_ITEMDESC.ID1020164]
+Um título dado a Duelistas que atingiram o NvD MÁXIMO nas "Eliminatórias do WCS 2025".
+Para aqueles que demonstraram sua habilidade como Duelista capaz de avançar para as Eliminatórias Regionais.
+[IDS_ITEMDESC.ID1073013]
+Um protetor com o logotipo das "Eliminatórias do WCS 2025".
+Para aqueles que participaram da divisão MASTER DUEL e fizeram do evento um sucesso.
+[IDS_ITEMDESC.ID1075002]
+Protetores com visual chave para Yu-Gi-Oh! CARD GAME THE CHRONICLES.
+Atravessando o campo de batalha, a garota equipada com armamento tecnológico superavançado tem um encontro que muda o mundo.
+[IDS_ITEMDESC.ID1082021]
+Um Porta-cards mostrando um conflito que englobou todo um continente.
+Perfeito para os Decks daqueles que batalham nos territórios do norte.

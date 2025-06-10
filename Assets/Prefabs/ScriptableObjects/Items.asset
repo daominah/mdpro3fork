@@ -2751,6 +2751,13 @@ MonoBehaviour:
     secondFace: 0
     diy: 0
     notReady: 0
+  - id: 1012073
+    m_name: 
+    m_description: 
+    path: 
+    secondFace: 0
+    diy: 0
+    notReady: 0
   - id: 1013001
     m_name: 
     m_description: 
@@ -3012,6 +3019,13 @@ MonoBehaviour:
     diy: 0
     notReady: 0
   - id: 1030034
+    m_name: 
+    m_description: 
+    path: 
+    secondFace: 0
+    diy: 0
+    notReady: 0
+  - id: 1030035
     m_name: 
     m_description: 
     path: 
@@ -4006,6 +4020,20 @@ MonoBehaviour:
     secondFace: 0
     diy: 0
     notReady: 0
+  - id: 1070116
+    m_name: 
+    m_description: 
+    path: 
+    secondFace: 0
+    diy: 0
+    notReady: 0
+  - id: 1070117
+    m_name: 
+    m_description: 
+    path: 
+    secondFace: 0
+    diy: 0
+    notReady: 0
   - id: 1071001
     m_name: 
     m_description: 
@@ -4231,6 +4259,13 @@ MonoBehaviour:
     diy: 0
     notReady: 0
   - id: 1071033
+    m_name: 
+    m_description: 
+    path: 
+    secondFace: 0
+    diy: 0
+    notReady: 0
+  - id: 1071034
     m_name: 
     m_description: 
     path: 
@@ -5444,6 +5479,13 @@ MonoBehaviour:
     secondFace: 0
     diy: 0
     notReady: 0
+  - id: 1101022
+    m_name: 
+    m_description: 
+    path: Grave/Grave_u028
+    secondFace: 0
+    diy: 0
+    notReady: 0
   - id: 1101023
     m_name: 
     m_description: 
@@ -5960,6 +6002,20 @@ MonoBehaviour:
     m_name: 
     m_description: 
     path: AvatarStand/AvatarStand_u057
+    secondFace: 0
+    diy: 0
+    notReady: 0
+  - id: 1111061
+    m_name: 
+    m_description: 
+    path: AvatarStand/AvatarStand_u075
+    secondFace: 0
+    diy: 0
+    notReady: 0
+  - id: 1111062
+    m_name: 
+    m_description: 
+    path: AvatarStand/AvatarStand_u076
     secondFace: 0
     diy: 0
     notReady: 0

@@ -816,11 +816,14 @@ Conferita a chi ha ottenuto notevoli risultati nella Duelist Cup.
 Un'icona con il logo di bronzo "DC 2025 MAR". 
 Conferita a chi ha vinto innumerevoli battaglie nella Duelist Cup.
 [IDS_ITEMDESC.ID1011049]
-coming soon
+Un'icona con il logo dorato "Qualificazioni del WCS 2025".
+Un'icona conferita a chi ha superato le aspettative durante le qualificazioni contro il resto del mondo tenutesi nel 2025.
 [IDS_ITEMDESC.ID1011050]
-coming soon
+Un'icona con il logo d'argento "Qualificazioni del WCS 2025".
+Un'icona conferita a chi ha ottenuto grandi risultati durante le qualificazioni contro il resto del mondo tenutesi nel 2025.
 [IDS_ITEMDESC.ID1011051]
-coming soon
+Un'icona con il logo di bronzo "Qualificazioni del WCS 2025".
+Un'icona conferita a chi ha vinto diverse battaglie durante le qualificazioni contro il resto del mondo tenutesi nel 2025.
 [IDS_ITEMDESC.ID1011052]
 coming soon
 [IDS_ITEMDESC.ID1011053]
@@ -1049,6 +1052,9 @@ Si tratta una super-élite di agenti che hanno seguito un addestramento estenuan
 [IDS_ITEMDESC.ID1012072]
 Un'icona che raffigura la guida di un gruppo dotato di miracolosi poteri esorcizzanti.
 Aveva fatto un giuramento con la sua vecchia partner, poi scomparsa in seguito a una battaglia.
+[IDS_ITEMDESC.ID1012073]
+Un'icona che raffigura una fiamma indisciplinata e dispettosa.
+Nonostante le dimensioni ridotte, brucia con notevole intensità, lasciando intendere il suo potenziale di crescita esponenziale.
 [IDS_ITEMDESC.ID1013001]
 Un'icona che rappresenta un ragazzo appassionato di baseball.
 Potresti averlo incontrato in una scuola in passato, spronato a raggiungere la grandezza grazie alla sua passione per il baseball.
@@ -1632,6 +1638,9 @@ La vitalità dei colori rinvigorisce e rallegra i Duellanti.
 [IDS_ITEMDESC.ID1030034]
 Una cornice icona dai colori blu e viola che evoca la quiete dell'acqua e le meraviglie dell'oscurità.
 Le acque serene vengono gradualmente inghiottite dalle ammalianti ombre.
+[IDS_ITEMDESC.ID1030035]
+Una cornice icona che rievoca le fiamme dispettose che cavalcano le onde d'urto delle esplosioni.
+L'intensa energia termica delle fiamme provoca delle esplosioni potentissime.
 [IDS_ITEMDESC.ID1031001]
 Una cornice icona che ricorda il cancello usato dalle Assaltatrici del Cielo per spostare i loro armamenti.
 Quando il cammino si apre a coloro che lottano per la pace, un nuovo potere che consente di superare le avversità si risveglia.
@@ -2050,6 +2059,12 @@ Per coloro che sono dotati di poteri straordinari.
 [IDS_ITEMDESC.ID1070115]
 Protettori che raffigurano un ragazzo e una ragazza uniti da strani eventi.
 Per coloro che hanno deciso di intraprendere un viaggio.
+[IDS_ITEMDESC.ID1070116]
+Protettori che raffigurano una strana forma di vita, apparsa improvvisamente da un altro mondo.
+Per coloro che vogliono scoprire la vera natura di tali esseri misteriosi.
+[IDS_ITEMDESC.ID1070117]
+Protettori che raffigurano un mostro "<category id='44'/>" dorato e scintillante.
+Per coloro che sono attratti dallo scintillio dei cristalli.
 [IDS_ITEMDESC.ID1071001]
 Protettori che rappresentano un guerriero che ha imparato a convivere con le ferite inferte al suo cuore durante le battaglie. 
 Perfetti per chi pretende sempre il meglio per gli amici più cari.
@@ -2149,6 +2164,9 @@ Per coloro che credono fino al midollo nel potere della coesione.
 [IDS_ITEMDESC.ID1071033]
 Protettori che raffigurano una ragazza scelta per brandire un'arma tecnologica incredibilmente avanzata.
 Per coloro che desiderano porre fine alle guerre.
+[IDS_ITEMDESC.ID1071034]
+Protettori che raffigurano il leader che unisce i guerrieri scarlatti.
+Per coloro che ottengono un vantaggio in combattimento grazie al proprio fuoco interiore.
 [IDS_ITEMDESC.ID1072001]
 Un Protettore con l'aspetto di "<card mrk='13670'/>" che indossa l'armatura della sua modalità Distruzione.
 L'ideale per i giocatori che attraverserebbero le fiamme sul campo di battaglia per conquistare la vittoria.
@@ -2607,7 +2625,8 @@ Anche se traboccano di energia, sembra che la carica non venga dissipata.
 [IDS_ITEMDESC.ID1101021]
 coming soon
 [IDS_ITEMDESC.ID1101022]
-coming soon
+Parti del Terreno modellate su due mostri noti per la loro attività di recupero di oggetti.
+Anche se vi collochi qualcosa che non era pensato per essere recuperato, la cosa non sembra creare problemi. Per ora.
 [IDS_ITEMDESC.ID1101023]
 Parti del Terreno modellate su un gioco in cui si avanza lanciando dadi.
 Anche se stai navigando in acque tranquille, una tempesta potrebbe sempre coglierti alla sprovvista.
@@ -2891,6 +2910,12 @@ La potenza oceanica di cui si parla nelle leggende si manifesta con un crescendo
 [IDS_ITEMDESC.ID1111057]
 Uno stand modellato su uno scudo famoso dell'antichità.
 Dato che può bloccare qualsiasi forte attacco, si tratta di uno stand robustissimo.
+[IDS_ITEMDESC.ID1111061]
+Uno Stand modellato su forzieri del tesoro che attendono gli avventurieri.
+Hai mai pensato al perché all'interno di un dungeon dovrebbero esserci forzieri e oggetti preziosi? Beh, dovresti.
+[IDS_ITEMDESC.ID1111062]
+Uno Stand ispirato a un gruppo di guerrieri scarlatti.
+Al suo interno è infuso un ardente spirito combattivo, che infonde in chiunque ne venga in contatto la voglia di combattere.
 [IDS_ITEMDESC.ID1112001]
 Uno stand proveniente da un Colosseo.
 La fiamma vivace danza come se stesse cantando le lodi dei coraggiosi guerrieri che si sfidano qui.
@@ -3306,3 +3331,33 @@ I Duelli ti aiuteranno a scoprire molte carte.
 Il numero massimo di Deck che puoi possedere può essere aumentato di 1.
 [IDS_ITEMDESC.ID1160001]
 Aumenta di 1 il numero massimo di replay che puoi salvare.
+[IDS_ITEMDESC.ID1020158]
+Un titolo dato ai Duellanti che hanno raggiunto risultati importanti nell'evento "Dice Rally Fusione, Xyz e Link".
+Un futuro brillante attende coloro che sono abbastanza coraggiosi da credere in se stessi.
+[IDS_ITEMDESC.ID1020159]
+Titolo conferito ai Duellanti che hanno raggiunto la top 10 nelle "Qualificazioni del WCS 2025".
+In tanti hanno assistito alle abilità di questo Duellante in grado di competere con tutto il mondo.
+[IDS_ITEMDESC.ID1020160]
+Titolo conferito ai Duellanti che hanno raggiunto la top 100 nelle "Qualificazioni del WCS 2025".
+La prova che questo Duellante ha saputo dimostrare di conoscere molti Duellanti e di padroneggiare le sue carte in battaglie contro il resto del mondo.
+[IDS_ITEMDESC.ID1020161]
+Titolo conferito ai Duellanti che hanno raggiunto la top 500 nelle "Qualificazioni del WCS 2025".
+La prova che questo Duellante ha saputo affinare le proprie abilità e vincere molte battaglie contro il resto del mondo.
+[IDS_ITEMDESC.ID1020162]
+Titolo conferito ai Duellanti che hanno raggiunto la top 1000 nelle "Qualificazioni del WCS 2025".
+Una medaglia d'onore assegnata a questo instancabile Duellante, che ha combattuto valorosamente con i migliori Duellanti al mondo.
+[IDS_ITEMDESC.ID1020163]
+Titolo conferito ai Duellanti che hanno raggiunto la top 10000 nelle "Qualificazioni del WCS 2025".
+Per coloro che sono usciti vittoriosi in molteplici scontri contro avversari formidabili.
+[IDS_ITEMDESC.ID1020164]
+Titolo conferito ai Duellanti che hanno raggiunto il Liv. D MAX nelle "Qualificazioni del WCS 2025".
+Per coloro che hanno messo in mostra le loro abilità di Duellanti, tanto da raggiungere le qualificazioni regionali.
+[IDS_ITEMDESC.ID1073013]
+Un Protettore con il logo delle "Qualificazioni del WCS 2025".
+Per chi ha partecipato nella sezione di MASTER DUEL rendendo l'evento un successo.
+[IDS_ITEMDESC.ID1075002]
+Protettori che raffigurano una protagonista di Yu-Gi-Oh! CARD GAME THE CHRONICLES.
+Attraversando il campo di battaglia, la ragazza dotata di un'arma tecnologica incredibilmente avanzata ha un incontro che potrebbe cambiare le sorti del mondo.
+[IDS_ITEMDESC.ID1082021]
+Una custodia per carte che raffigura un conflitto su larghissima scala.
+Perfetta per i Deck di coloro che combattono nei territori del nord.

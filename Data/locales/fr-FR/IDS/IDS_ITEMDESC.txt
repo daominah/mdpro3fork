@@ -816,11 +816,14 @@ Offerte à ceux qui ont atteint des résultats brillants lors de la Duelist Cup.
 Une icône avec un logo "DC 2025 MAR" en bronze. 
 Offerte à ceux qui ont remporté de nombreuses batailles lors de la Duelist Cup.
 [IDS_ITEMDESC.ID1011049]
-coming soon
+Une icône avec un logo doré "Qualifications pour le WCS 2025".
+Une icône offerte à ceux qui ont réalisé des exploits lors des qualifications 2025 organisées face au reste du monde.
 [IDS_ITEMDESC.ID1011050]
-coming soon
+Une icône avec un logo argenté "Qualifications pour le WCS 2025".
+Une icône offerte à ceux qui ont obtenu des résultats impressionnants lors des qualifications 2025 organisées face au reste du monde.
 [IDS_ITEMDESC.ID1011051]
-coming soon
+Une icône avec un logo couleur bronze "Qualifications pour le WCS 2025".
+Une icône offerte à ceux qui ont remporté de nombreux Duels lors des qualifications 2025 organisées face au reste du monde.
 [IDS_ITEMDESC.ID1011052]
 coming soon
 [IDS_ITEMDESC.ID1011053]
@@ -1049,6 +1052,9 @@ Il s'agit d'un agent d'élite du plus haut niveau qui a suivi une formation épr
 [IDS_ITEMDESC.ID1012072]
 Une icône représentant un chef dont l'équipe possède de formidables pouvoirs d'exorcisme.
 Elle avait prêté un serment avec son partenaire plus âgé, dont la trace a été perdue à la suite d'une bataille.
+[IDS_ITEMDESC.ID1012073]
+Une icône représentant une flamme espiègle et turbulente.
+Elle est minuscule mais brûle intensément, ce qui laisse entrevoir son potentiel de croissance exponentielle.
 [IDS_ITEMDESC.ID1013001]
 Une icône représentant un jeune garçon qui aime vraiment le baseball.
 Vous l'avez peut-être rencontré dans une école à une époque ou à une autre, poussé à la grandeur par sa passion pour le baseball.
@@ -1632,6 +1638,9 @@ La vivacité des couleurs donne au Duelliste un sentiment de fraîcheur revigora
 [IDS_ITEMDESC.ID1030034]
 Un cadre d'icône bleu et violet qui évoque la quiétude de l'eau et l'obscurité paisible.
 Les eaux sereines sont progressivement englouties par les ombres séduisantes.
+[IDS_ITEMDESC.ID1030035]
+Un cadre d'icône évoquant les facétieux esprits des flammes qui chevauchent les ondes de choc des explosions.
+L'intense énergie thermique libérée par les flammes provoque des explosions d'une puissance phénoménale.
 [IDS_ITEMDESC.ID1031001]
 Un Cadre d'icône qui évoque le portail utilisé par l'Assaut de l'Air afin de transférer leur armement.
 Lorsque la voie s'ouvre à ceux qui luttent pour la paix, un nouveau pouvoir pour surmonter les épreuves s'éveille.
@@ -2050,6 +2059,12 @@ Pour ceux qui sont dotés de pouvoirs incroyables.
 [IDS_ITEMDESC.ID1070115]
 Protège-cartes représentant un garçon et une fille réunis par d'étranges événements.
 Pour ceux qui ont décidé de se lancer à l'aventure.
+[IDS_ITEMDESC.ID1070116]
+Protège-cartes représentant une forme de vie étrange venue soudainement d'un autre monde.
+Pour ceux qui cherchent à connaître la véritable nature de ces êtres mystérieux.
+[IDS_ITEMDESC.ID1070117]
+Protège-cartes représentant un "<category id='44'/>" dans un halo doré.
+Pour ceux qui sont attirés par l'éclat des cristaux.
 [IDS_ITEMDESC.ID1071001]
 Des protège-cartes illustrant un guerrier qui a mûri et accepté les cicatrices gravées dans son cœur au cours des batailles. 
 Parfaits pour ceux qui veulent toujours le meilleur pour leurs amis.
@@ -2149,6 +2164,9 @@ Pour ceux qui croient jusqu'à la moelle en la puissance de la cohésion.
 [IDS_ITEMDESC.ID1071033]
 Des protège-cartes représentant une jeune fille élue pour manier des armes technologiques de pointe.
 Pour ceux qui veulent mettre fin aux conflits.
+[IDS_ITEMDESC.ID1071034]
+Un protège-cartes représentant celui sans qui les guerriers écarlates ne seraient pas aussi unis.
+Pour ceux dont la flamme intérieure leur donne un avantage au combat.
 [IDS_ITEMDESC.ID1072001]
 Un protège-cartes orné du motif de "<card mrk='13670'/>" en mode d'armure Destruction.
 Pour les joueurs qui s'emparent de la victoire en bravant le feu du champ de bataille.
@@ -2607,7 +2625,8 @@ Elles débordent déjà d'énergie, mais celle-ci ne semble pas se libérer.
 [IDS_ITEMDESC.ID1101021]
 coming soon
 [IDS_ITEMDESC.ID1101022]
-coming soon
+Des Parties de Terrain sur le modèle de deux monstres connus pour fouiller dans les moindres recoins.
+Même si l'on y place quelque chose qui ne devait pas être récupéré, cela ne semble pas poser de problème.
 [IDS_ITEMDESC.ID1101023]
 Des parties de Terrain inspirées d'un jeu où il faut lancer des dés pour avancer.
 Même quand vous voguez tranquillement, une tempête peut éclater soudainement.
@@ -2890,6 +2909,12 @@ La puissance océanique dont parlent les légendes s'est manifestée sous la for
 [IDS_ITEMDESC.ID1111057]
 Un Stand inspiré d'un célèbre bouclier de l'Antiquité.
 Capable de bloquer n'importe quelle attaque, il constitue un socle incroyablement robuste.
+[IDS_ITEMDESC.ID1111061]
+Un Stand inspiré de coffres aux trésors destinés aux aventuriers.
+Vous êtes-vous déjà demandé pourquoi un donjon contenait des coffres et des objets précieux ? Vous devriez.
+[IDS_ITEMDESC.ID1111062]
+Un Stand inspiré d'un groupe de guerriers écarlates.
+Il est empreint d'un esprit combatif ardent qui réveille une soif de combat inextinguible chez quiconque entre en contact avec lui.
 [IDS_ITEMDESC.ID1112001]
 Un Stand issu d'un colisée.
 La flamme brillante danse comme si elle chantait les louanges des braves guerriers qui ont combattu ici.
@@ -3305,3 +3330,33 @@ Les Duels vous permettent de découvrir un grand nombre de cartes.
 Le nombre maximum de Decks que vous pouvez posséder a augmenté de 1.
 [IDS_ITEMDESC.ID1160001]
 Augmente de 1 le nombre de Replays que vous pouvez conserver en mémoire.
+[IDS_ITEMDESC.ID1020158]
+Un titre donné aux Duellistes qui obtenu des résultats au cours de l'événement de Course de dés - Fusion, Xyz, Link.
+L'avenir sourit à ceux qui ont le courage de croire en leurs capacités.
+[IDS_ITEMDESC.ID1020159]
+Un titre donné aux Duellistes qui ont atteint le top 10 dans les "Qualifications pour le WCS 2025".
+Nombreux sont ceux qui ont pu voir leurs talents de Duellistes dignes de défier le monde.
+[IDS_ITEMDESC.ID1020160]
+Un titre donné aux Duellistes qui ont atteint le top 100 lors des "Qualifications pour le WCS 2025".
+Preuve qu'un Duelliste a démontré ses talents et la maîtrise de ses cartes dans des Duels contre le reste du monde.
+[IDS_ITEMDESC.ID1020161]
+Un titre donné aux Duellistes qui ont atteint le top 500 lors des "Qualifications pour le WCS 2025".
+Preuve qu'un Duelliste a affiné ses compétences au point de l'emporter dans de nombreux Duels face au reste du monde.
+[IDS_ITEMDESC.ID1020162]
+Un titre donné aux Duellistes qui ont atteint le top 1000 lors des "Qualifications pour le WCS 2025".
+Médaille d'honneur décernée à un Duelliste infatigable qui s'est battu vaillamment face aux meilleurs Duellistes du monde.
+[IDS_ITEMDESC.ID1020163]
+Un titre donné aux Duellistes qui ont atteint le top 10000 lors des "Qualifications pour le WCS 2025".
+Pour ceux qui se sont imposés face à des adversaires redoutables et qui ont remporté des victoires.
+[IDS_ITEMDESC.ID1020164]
+Un titre donné aux Duellistes qui ont atteint le DNV max lors des "Qualifications pour le WCS 2025."
+Pour ceux qui ont démontré leur capacité en tant que Duellistes dignes d'accéder aux qualifications régionales.
+[IDS_ITEMDESC.ID1073013]
+Un Protège-cartes avec un logo "Qualifications pour le WCS 2025".
+Pour ceux qui ont participé à la division MASTER DUEL et qui ont fait de cet événement un succès.
+[IDS_ITEMDESC.ID1075002]
+Protège-cartes affichant un visuel pour Yu-Gi-Oh! CARD GAME THE CHRONICLES.
+En traversant le champ de bataille, la jeune fille équipée d'armes technologiques super-avancées fait une rencontre qui va changer le monde.
+[IDS_ITEMDESC.ID1082021]
+Une boîte de cartes illustrée avec un conflit de grande échelle.
+Parfait pour ceux qui se battent dans les territoires du Nord.

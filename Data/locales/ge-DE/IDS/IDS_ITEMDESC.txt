@@ -816,11 +816,14 @@ Wurde an diejenigen verliehen, die beim Duelist Cup beachtliche Leistungen erbra
 Ein Symbol mit einem bronzenen „DC 2025 MAR“-Logo. 
 Wurde an diejenigen verliehen, die beim Duelist Cup viele Kämpfe für sich entschieden haben.
 [IDS_ITEMDESC.ID1011049]
-coming soon
+Ein Symbol mit einem goldenen „WCS 2025 Qualifier“-Logo.
+Ein Symbol, das an diejenigen verliehen wird, die in den Qualifier-Runden 2025 gegen die Welt überdurchschnittliche Leistungen erbracht haben.
 [IDS_ITEMDESC.ID1011050]
-coming soon
+Ein Symbol mit einem silbernen „WCS 2025 Qualifier“-Logo.
+Ein Symbol, das an diejenigen verliehen wird, die in den Qualifier-Runden 2025 gegen die Welt beeindruckende Ergebnisse erzielt haben.
 [IDS_ITEMDESC.ID1011051]
-coming soon
+Ein Symbol mit einem bronzenen „WCS 2025 Qualifier“-Logo.
+Ein Symbol, das an diejenigen verliehen wird, die in den Qualifier-Runden 2025 gegen die Welt zahlreiche Kämpfe gewonnen haben.
 [IDS_ITEMDESC.ID1011052]
 coming soon
 [IDS_ITEMDESC.ID1011053]
@@ -1049,6 +1052,9 @@ Es handelt sich um einen Super-Elite-Agenten, der eine zermürbende Ausbildung a
 [IDS_ITEMDESC.ID1012072]
 Ein Symbol, dass eine Anführerin darstellt, deren Team über wundersame Kräfte des Exorzismus verfügt.
 Sie hatte ein Gelübde mit ihrem älteren Partner abgelegt, dessen Verbleib nach einem Kampf nun unbekannt ist.
+[IDS_ITEMDESC.ID1012073]
+Ein Symbol, das eine unbändige, schelmische Flamme darstellt.
+Trotz ihrer geringen Größe brennt sie mit bemerkenswerter Intensität, was auf ihr Potenzial für exponentielles Wachstum schließen lässt.
 [IDS_ITEMDESC.ID1013001]
 Ein Symbol, das einen kleinen Jungen darstellt, der sich für Baseball begeistert.
 Vielleicht bist du ihm schon einmal an einer Schule begegnet, wo er durch seine Leidenschaft für Baseball zu Höchstleistungen angespornt wurde.
@@ -1632,6 +1638,9 @@ Die Lebendigkeit der Farben gibt dem Duellanten ein erfrischtes und optimistisch
 [IDS_ITEMDESC.ID1030034]
 Ein blau-lila Symbol-Rahmen, der an stilles Wasser und die Reize der Dunkelheit erinnert.
 Die ruhigen Gewässer werden allmählich von den betörenden Schatten verschluckt.
+[IDS_ITEMDESC.ID1030035]
+Ein Symbol-Rahmen, der die schelmischen Flammengeister beschwört, die auf den Schockwellen von Explosionen reiten.
+Die intensive thermische Energie der Flammen führt zu phänomenal starken Explosionen.
 [IDS_ITEMDESC.ID1031001]
 Ein Symbol-Rahmen, der an das Tor erinnert, das die Himmelsjäger benutzen, um ihre Ausrüstung zu transferieren.
 Wenn sich der Weg für diejenigen öffnet, die für den Frieden kämpfen, erwacht eine neue Kraft zur Überwindung der Not.
@@ -2051,6 +2060,12 @@ Für diejenigen mit außergewöhnlichen Kräften.
 [IDS_ITEMDESC.ID1070115]
 Kartenhüllen, auf denen ein Junge und ein Mädchen abgebildet sind, die durch seltsame Ereignisse zusammengebracht wurden.
 Für diejenigen, die beschlossen haben, sich auf eine Reise zu begeben.
+[IDS_ITEMDESC.ID1070116]
+Kartenhüllen, auf denen ein eine seltsame Lebensform abgebildet ist, die plötzlich aus einer anderen Welt eingeflogen ist.
+Für diejenigen, die die wahre Natur dieser mysteriösen Wesen kennenlernen wollen.
+[IDS_ITEMDESC.ID1070117]
+Kartenhüllen, auf denen ein glänzender goldener „<category id='44'/>“ abgebildet ist.
+Für alle, die sich vom Funkeln der Kristalle angezogen fühlen.
 [IDS_ITEMDESC.ID1071001]
 Kartenhüllen, die einen Krieger darstellen, der gereift ist und die Narben, die während der Kämpfe in sein Herz geätzt wurden, akzeptiert hat. 
 Perfekt für alle, die immer das Beste für ihre geliebten Freunde wollen.
@@ -2150,6 +2165,9 @@ Für diejenigen, die bis tief in die Knochen an die Kraft des Zusammenhalts glau
 [IDS_ITEMDESC.ID1071033]
 Kartenhüllen, auf denen ein Mädchen abgebildet ist, das dazu auserwählt wurde, Waffe mit super fortschrittlicher Technologie zu führen.
 Für diejenigen, die den Streit beenden wollen.
+[IDS_ITEMDESC.ID1071034]
+Kartenhüllen, auf denen der Anführer abgebildet sind, der die scharlachroten Krieger zusammenhält.
+Für diejenigen, deren inneres Feuer ihnen einen Vorteil im Kampf verschafft.
 [IDS_ITEMDESC.ID1072001]
 Eine Kartenhülle mit dem Design von „<card mrk='13670'/>“ in ihrer Rüstung im Zerstörungsmodus.
 Für Spieler, die sich aus den Flammen des Schlachtfelds den Weg zum Sieg bahnen.
@@ -2608,7 +2626,8 @@ Trotz der angestauten Energie kommt es offenbar nicht zur Entladung.
 [IDS_ITEMDESC.ID1101021]
 coming soon
 [IDS_ITEMDESC.ID1101022]
-coming soon
+Spielfeldteile, die zwei Monstern nachempfunden sind, die für das Plündern bekannt sind.
+Selbst wenn du dort etwas platzierst, das ursprünglich nicht zum Sammeln gedacht war, ist das erst einmal in Ordnung.
 [IDS_ITEMDESC.ID1101023]
 Spielfeldteile, die an ein Spiel angelehnt sind, bei dem man mit Würfeln vorwärts kommt.
 Auch wenn du auf Kreuzfahrt bist, kann plötzlich ein Sturm aufziehen.
@@ -2892,6 +2911,12 @@ Die Kraft der Ozeane, von der in Legenden die Rede ist, hat sich als aufsteigend
 [IDS_ITEMDESC.ID1111057]
 Ein Stand nach dem Vorbild eines berühmten Schildes aus uralten Zeiten.
 Kann jeden starken Angriff blocken und dient als unglaublich stabiler Stand.
+[IDS_ITEMDESC.ID1111061]
+Ein Stand nach dem Vorbild von Schatztruhen, die auf Abenteurer warten.
+Hast du dich jemals gefragt, warum ein Dungeon solche Truhen und wertvollen Gegenstände enthält? Nun, das solltest du.
+[IDS_ITEMDESC.ID1111062]
+Ein Stand, inspiriert von einer Gruppe scharlachroter Krieger.
+In ihm steckt ein lodernder Kampfgeist, der jeden, der mit ihm in Berührung kommt, mit seinem Kampfeswillen ansteckt.
 [IDS_ITEMDESC.ID1112001]
 Der Stand eines Kolosseums.
 Die leuchtende Flamme tanzt, als ob sie die mutigen Krieger lobpreisen will, die hier kämpfen.
@@ -3307,3 +3332,33 @@ Durch Duelle kannst du viele Karten entdecken.
 Die maximale Anzahl der Decks, die du besitzen kannst, kann um 1 erhöht werden.
 [IDS_ITEMDESC.ID1160001]
 Erhöht die maximale Anzahl der Wiederholungen, die du speichern kannst, um 1.
+[IDS_ITEMDESC.ID1020158]
+Ein Titel, der an Duellanten vergeben wird, die beim Festival „Würfel-Rallye – Fusion & Xyz & Link“ Ergebnisse erzielt haben.
+Eine glänzende Zukunft wartet auf diejenigen, die mutig genug sind, sich selbst zu vertrauen.
+[IDS_ITEMDESC.ID1020159]
+Ein Titel, der an Duellanten vergeben wird, die in den „WCS 2025 Qualifiern“ die Top 10 erreicht haben.
+Viele haben sich von ihren Fähigkeiten als Duellanten überzeugt, die Welt herauszufordern.
+[IDS_ITEMDESC.ID1020160]
+Ein Titel, der an Duellanten vergeben wird, die in den „WCS 2025 Qualifiern“ die Top 100 erreicht haben.
+Ein Beweis für einen Duellanten, der sein Wissen über viele Duellanten und die Beherrschung ihrer Karten im Kampf gegen die Welt unter Beweis gestellt hat.
+[IDS_ITEMDESC.ID1020161]
+Ein Titel, der an Duellanten vergeben wird, die in den „WCS 2025 Qualifiern“ die Top 500 erreicht haben.
+Der Beweis für einen Duellanten, der seine Fähigkeiten verfeinert hat, um in vielen Kämpfen siegreich zu sein und die Welt herauszufordern.
+[IDS_ITEMDESC.ID1020162]
+Ein Titel, der an Duellanten vergeben wird, die in den „WCS 2025 Qualifiern“ die Top 1000 erreicht haben.
+Eine Ehrenmedaille, die den unbeugsamen Duellanten verliehen wird, die sich unter den besten Duellanten der Welt tapfer geschlagen haben.
+[IDS_ITEMDESC.ID1020163]
+Ein Titel, der an Duellanten vergeben wird, die in den „WCS 2025 Qualifiern“ die Top 10000 erreicht haben.
+Für diejenigen, die sich gegen starke Konkurrenten durchgesetzt und Siege verbucht haben.
+[IDS_ITEMDESC.ID1020164]
+Ein Titel, der Duellanten verliehen wird, die in den „WCS 2025 Qualifiern“ DLv. MAX erreicht haben.
+Für diejenigen, die ihre Fähigkeiten als Duellanten unter Beweis gestellt haben und die würdig sind, zu den Regional Qualifiern aufzusteigen.
+[IDS_ITEMDESC.ID1073013]
+Eine Kartenhülle mit einem „WCS 2025 Qualifier“-Logo.
+Für diejenigen, die in der MASTER DUEL Division teilgenommen und das Event zu einem Erfolg gemacht haben.
+[IDS_ITEMDESC.ID1075002]
+Kartenhüllen mit einem Hauptmotiv für Yu-Gi-Oh! CARD GAME THE CHRONICLES.
+Mit futuristischen High-Tech-Waffen ausgerüstet, stürmt das Mädchen über das Schlachtfeld und erlebt eine Begegnung, die die Welt verändern wird.
+[IDS_ITEMDESC.ID1082021]
+Ein Kartenetui, auf dem ein kontinentweiter Konflikt abgebildet ist.
+Perfekt für die Decks derjenigen, die in den nördlichen Territorien kämpfen.

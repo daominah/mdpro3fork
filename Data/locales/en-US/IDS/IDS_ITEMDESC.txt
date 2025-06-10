@@ -816,11 +816,14 @@ Given to those who achieved considerable results in the Duelist Cup.
 An Icon with a bronze "DC 2025 MAR" logo. 
 Given to those who conquered numerous battles in the Duelist Cup.
 [IDS_ITEMDESC.ID1011049]
-coming soon
+An Icon with a golden "WCS 2025 Qualifiers" logo.
+An Icon given to those who performed above and beyond in the qualifier round held in 2025 against the world.
 [IDS_ITEMDESC.ID1011050]
-coming soon
+An Icon with a silver "WCS 2025 Qualifiers" logo.
+An Icon given to those who left impressive results in the qualifier round held in 2025 against the world.
 [IDS_ITEMDESC.ID1011051]
-coming soon
+An Icon with a bronze "WCS 2025 Qualifiers" logo.
+An Icon given to those who won numerous battles in the qualifier round held in 2025 against the world.
 [IDS_ITEMDESC.ID1011052]
 coming soon
 [IDS_ITEMDESC.ID1011053]
@@ -1049,6 +1052,9 @@ This is a super-elite operative who has endured grueling training and passed rig
 [IDS_ITEMDESC.ID1012072]
 An Icon depicting a leader whose team wields miraculous powers of exorcism.
 She had sworn a vow with her older partner, whose whereabouts are now unknown following a battle.
+[IDS_ITEMDESC.ID1012073]
+An Icon depicting an unruly, mischief-loving flame.
+Despite its diminutive size, it burns with remarkable intensity, hinting at its potential for exponential growth.
 [IDS_ITEMDESC.ID1013001]
 An Icon depicting a young boy who truly enjoys baseball.
 You may have encountered him at a school in some era or other, being spurred on to greatness by his passion for baseball.
@@ -1632,6 +1638,9 @@ A yellow- and lime-colored Icon Frame that evokes the intermingling of warm ligh
 [IDS_ITEMDESC.ID1030034]
 A blue- and purple-colored Icon Frame that evokes the stillness of water and delights of darkness.
 The serene waters are gradually engulfed by the beguiling shadows.
+[IDS_ITEMDESC.ID1030035]
+An Icon Frame evoking the mischievous flame spirits who ride on the shockwaves of explosions.
+The flames' intense thermal energy causes phenomenally powerful explosions.
 [IDS_ITEMDESC.ID1031001]
 An Icon Frame that is reminiscent of the gate used by Sky Strikers, to transfer their armaments.
 When the path opens to those who fight for peace, a new power to overcome hardship awakens.
@@ -2051,6 +2060,12 @@ For those with extraordinary powers.
 [IDS_ITEMDESC.ID1070115]
 Protectors depicting a boy and a girl who were brought together by strange events.
 For those who have decided to embark on a journey.
+[IDS_ITEMDESC.ID1070116]
+Protectors depicting a strange lifeform that suddenly flew in from another world.
+For those who seek to learn the true nature of such mysterious beings.
+[IDS_ITEMDESC.ID1070117]
+Protectors depicting a gleaming golden "<category id='44'/>".
+For those drawn to crystals' sparkle.
 [IDS_ITEMDESC.ID1071001]
 Protectors that illustrate a warrior who has matured and taken the scars etched in his heart during battles. 
 Perfect for those who always want the best for their dear friends.
@@ -2150,6 +2165,9 @@ For those with bone-deep faith in the power of cohesion.
 [IDS_ITEMDESC.ID1071033]
 Protectors depicting a girl who was chosen to wield super-advanced technological weaponry.
 For those who wish to end strife.
+[IDS_ITEMDESC.ID1071034]
+Protectors depicting the leader who holds the scarlet warriors together.
+For those whose inner fire gives them an edge in combat.
 [IDS_ITEMDESC.ID1072001]
 A Protector with the design of "<card mrk='13670'/>" in her Destruction mode armor.
 For players who will claw their way to victory from the flames of the battlefield.
@@ -2608,7 +2626,8 @@ Field Parts modelled on seven stone columns used to seal away tremendous powers.
 [IDS_ITEMDESC.ID1101021]
 coming soon
 [IDS_ITEMDESC.ID1101022]
-coming soon
+Field Parts modeled after two monsters known for scavenging.
+Even if you place something there that wasn't originally meant for collecting, it seems fine for now.
 [IDS_ITEMDESC.ID1101023]
 Field Parts modeled on a game where you roll dice to move.
 Even when you're cruising, a storm can come out of nowhere.
@@ -2892,6 +2911,12 @@ The oceanic power spoken of in legends has manifested as surging bubbles.
 [IDS_ITEMDESC.ID1111057]
 A Stand modeled on a famous shield from ancient times.
 Able to block any strong attack, it makes an incredibly sturdy Stand.
+[IDS_ITEMDESC.ID1111061]
+A Stand modeled on treasure chests that await adventurers.
+Ever wondered why a dungeon would contain these chests and precious objects? Well, you should.
+[IDS_ITEMDESC.ID1111062]
+A Stand inspired by a group of scarlet warriors.
+Blazing fighting spirit is imbued within, instilling anyone who comes into contact with it with a thirst for battle.
 [IDS_ITEMDESC.ID1112001]
 A Stand from a Colosseum.
 The brilliant flame dances as if singing the praise of the brave warriors who battle here.
@@ -3307,3 +3332,33 @@ Dueling will help you discover many cards.
 The max. number of Decks you can possess can be increased by 1.
 [IDS_ITEMDESC.ID1160001]
 Increases the maximum number of replays you can keep saved by 1.
+[IDS_ITEMDESC.ID1020158]
+A Title given to Duelists who achieved results in the "Dice Rally - Fusion & Xyz & Link" event.
+A brilliant future awaits those courageous enough to trust themselves.
+[IDS_ITEMDESC.ID1020159]
+A Title given to Duelists who made it to the top 10 in "WCS 2025 Qualifiers."
+Many have witnessed their ability as a Duelist worthy of challenging the world.
+[IDS_ITEMDESC.ID1020160]
+A Title given to Duelists who made it to the top 100 in "WCS 2025 Qualifiers."
+Proof of a Duelist that demonstrated their knowledge of many Duelists and mastery of their cards in the battle against the world.
+[IDS_ITEMDESC.ID1020161]
+A Title given to Duelists who made it to the top 500 in "WCS 2025 Qualifiers."
+Proof of a Duelist who honed their skills to come out victorious in many battles to challenge the world.
+[IDS_ITEMDESC.ID1020162]
+A Title given to Duelists who made it to the top 1000 in "WCS 2025 Qualifiers."
+A medal of honor given to the unfaltering Duelist that fought valiantly among the world's best Duelists.
+[IDS_ITEMDESC.ID1020163]
+A Title given to Duelists who made it to the top 10000 in "WCS 2025 Qualifiers."
+For those who came out victorious over formidable rivals and tallied their victories.
+[IDS_ITEMDESC.ID1020164]
+A Title given to Duelists who reached DLv. MAX in "WCS 2025 Qualifiers."
+For those that displayed their ability as a Duelist worthy of advancing to the Regional Qualifiers.
+[IDS_ITEMDESC.ID1073013]
+A Protector with a "WCS 2025 Qualifiers" logo.
+To those who participated in the MASTER DUEL division and made the event a success.
+[IDS_ITEMDESC.ID1075002]
+Protectors featuring a key visual for Yu-Gi-Oh! CARD GAME THE CHRONICLES.
+Tearing across the battlefield, the girl equipped with super-advanced technological weaponry has a world-changing encounter.
+[IDS_ITEMDESC.ID1082021]
+A Card Case depicting a continent-wide conflict.
+Perfect for the Decks of those battling in the northern territories.
