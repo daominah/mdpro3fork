@@ -34,6 +34,8 @@ namespace MDPro3
 
         private static void ChooseFiles()
         {
+#if UNITY_EDITOR || (!UNITY_ANDROID && !UNITY_IOS)
+
             var extensions = new[]
             {
                 new ExtensionFilter(InterString.Get("所有文件"), "*"),
@@ -48,10 +50,14 @@ namespace MDPro3
             {
                 CopyFilesToGame(paths);
             });
+
+#endif
         }
 
         private static void ChooseBGPicture()
         {
+#if UNITY_EDITOR || (!UNITY_ANDROID && !UNITY_IOS)
+
             var extensions = new[]
             {
                 new ExtensionFilter(InterString.Get("图片文件"), "png", "jpg")
@@ -60,6 +66,8 @@ namespace MDPro3
             {
                 CopyBGToGame(paths);
             });
+
+#endif
         }
 
         private static void CopyBGToGame(IEnumerable<string> files)

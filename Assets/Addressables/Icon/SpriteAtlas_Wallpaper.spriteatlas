@@ -100,6 +100,7 @@ SpriteAtlas:
     - abaae6a8ab082e141aa03e85df501c85: 21300000
     - f1b086b83b913204bb0bd2b7b79ffb31: 21300000
     - 094f58c8284055242baca11f74eba315: 21300000
+    - 48d76c0968217f94aa3415bb4238ae4a: 21300000
     - cd818f697fb004e47aa51bbd990ba905: 21300000
     - c02f6479da2d6484b8d35aca24f27e56: 21300000
     - 00e28fa9e8e4a854abb855efae1babd4: 21300000
@@ -186,6 +187,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: abaae6a8ab082e141aa03e85df501c85, type: 3}
   - {fileID: 21300000, guid: f1b086b83b913204bb0bd2b7b79ffb31, type: 3}
   - {fileID: 21300000, guid: 094f58c8284055242baca11f74eba315, type: 3}
+  - {fileID: 21300000, guid: 48d76c0968217f94aa3415bb4238ae4a, type: 3}
   - {fileID: 21300000, guid: cd818f697fb004e47aa51bbd990ba905, type: 3}
   - {fileID: 21300000, guid: c02f6479da2d6484b8d35aca24f27e56, type: 3}
   - {fileID: 21300000, guid: 00e28fa9e8e4a854abb855efae1babd4, type: 3}
@@ -271,6 +273,7 @@ SpriteAtlas:
   - WallPaperIcon1130070
   - WallPaperIcon1130057
   - WallPaperIcon1130048
+  - WallPaperIcon1135007
   - WallPaperIcon1130050
   - WallPaperIcon1130015
   - WallPaperIcon1130074
