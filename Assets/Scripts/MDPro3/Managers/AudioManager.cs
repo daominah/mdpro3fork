@@ -203,8 +203,6 @@ namespace MDPro3
 
         private readonly static List<BgmLoop> loops = new()
         {
-            new BgmLoop{name = "BGM_MENU_01", startTime = 12.433f, endTime = 120 + 31.100f },
-            new BgmLoop{name = "BGM_MENU_02", startTime = 15.687f, endTime = 120 + 2.354f },
             new BgmLoop{name = "BGM_DUEL_NORMAL_01", startTime = 9.600f, endTime = 60 + 55.200f },
             new BgmLoop{name = "BGM_DUEL_NORMAL_02", startTime = 16.500f, endTime = 60 + 48.500f },
             new BgmLoop{name = "BGM_DUEL_NORMAL_03", startTime = 5.727f, endTime = 120 + 11.444f },
@@ -221,6 +219,7 @@ namespace MDPro3
             new BgmLoop{name = "BGM_DUEL_NORMAL_14", startTime = 5.538f, endTime = 60 +34.142f },
             new BgmLoop{name = "BGM_DUEL_NORMAL_15", startTime = 8.455f, endTime = 60 +34.855f },
             new BgmLoop{name = "BGM_DUEL_NORMAL_16", startTime = 14.440f, endTime = 60 + 44.440f },
+
             new BgmLoop{name = "BGM_DUEL_KEYCARD_01", startTime = 11.744f, endTime = 60 + 49.390f },
             new BgmLoop{name = "BGM_DUEL_KEYCARD_02", startTime = 10.500f, endTime = 60 + 46.500f },
             new BgmLoop{name = "BGM_DUEL_KEYCARD_03", startTime = 13.697f, endTime = 60 + 38.150f },
@@ -237,6 +236,7 @@ namespace MDPro3
             new BgmLoop{name = "BGM_DUEL_KEYCARD_14", startTime = 2.269f, endTime = 60 + 35.830f },
             new BgmLoop{name = "BGM_DUEL_KEYCARD_15", startTime = 11.369f, endTime = 60 + 41.369f },
             new BgmLoop{name = "BGM_DUEL_KEYCARD_16", startTime = 6.348f, endTime = 60 + 36.151f },
+
             new BgmLoop{name = "BGM_DUEL_CLIMAX_01", startTime = 6.300f, endTime = 60 + 37.800f },
             new BgmLoop{name = "BGM_DUEL_CLIMAX_02", startTime = 12.883f, endTime = 60 + 53.958f },
             new BgmLoop{name = "BGM_DUEL_CLIMAX_03", startTime = 12.579f, endTime = 120 + 7.444f },
@@ -253,6 +253,14 @@ namespace MDPro3
             new BgmLoop{name = "BGM_DUEL_CLIMAX_14", startTime = 12.169f, endTime = 60 + 48.165f },
             new BgmLoop{name = "BGM_DUEL_CLIMAX_15", startTime = 7.056f, endTime = 60 + 39.847f },
             new BgmLoop{name = "BGM_DUEL_CLIMAX_16", startTime = 9.606f, endTime = 60 + 28.067f },
+
+            new BgmLoop{name = "BGM_DUEL_DC01_NORMAL", startTime = 3.830f, endTime = 120 + 1.649f },
+            new BgmLoop{name = "BGM_DUEL_DC01_KEYCARD", startTime = 3.128f, endTime = 120 + 4.974f },
+            new BgmLoop{name = "BGM_DUEL_DC01_CLIMAX", startTime = 7.650f, endTime = 120 + 2.620f },
+            new BgmLoop{name = "BGM_DUEL_DC02_NORMAL", startTime = 6.892f, endTime = 120 + 4.404f },
+            new BgmLoop{name = "BGM_DUEL_DC02_KEYCARD", startTime = 21.349f, endTime = 120 + 0.908f },
+            new BgmLoop{name = "BGM_DUEL_DC02_CLIMAX", startTime = 1.858f, endTime = 60 + 55.380f },
+
             new BgmLoop{name = "BGM_DUEL_EX_01", startTime = 21.014f, endTime = 60 + 57.026f },
             new BgmLoop{name = "BGM_DUEL_EX_02_NORMAL", startTime = 2.466f, endTime = 60 + 47.193f },
             new BgmLoop{name = "BGM_DUEL_EX_02_KEYCARD", startTime = 6.941f, endTime = 60 + 46.766f },
@@ -260,11 +268,38 @@ namespace MDPro3
             new BgmLoop{name = "BGM_DUEL_EX_03_NORMAL", startTime = 11.478f, endTime = 60 + 56.473f },
             new BgmLoop{name = "BGM_DUEL_EX_03_KEYCARD", startTime = 12.463f, endTime = 60 + 46.098f },
             new BgmLoop{name = "BGM_DUEL_EX_03_CLIMAX", startTime = 1.815f, endTime = 120 + 8.792f },
-            new BgmLoop{name = "BGM_OUT_TUTORIAL_2", startTime = 7.480f, endTime = 60 + 22.480f },
+            new BgmLoop{name = "BGM_DUEL_EX_04_NORMAL", startTime = 3.391f, endTime = 60 + 46.250f },
+            new BgmLoop{name = "BGM_DUEL_EX_04_KEYCARD", startTime = 3.139f, endTime = 60 + 30.436f },
+            new BgmLoop{name = "BGM_DUEL_EX_04_CLIMAX", startTime = 3.063f, endTime = 60 + 52.417f },
+            new BgmLoop{name = "BGM_DUEL_EX_05_NORMAL", startTime = 8.796f, endTime = 120 + 5.869f },
+            new BgmLoop{name = "BGM_DUEL_EX_05_KEYCARD", startTime = 7.832f, endTime = 120 + 2.615f },
+            new BgmLoop{name = "BGM_DUEL_EX_05_CLIMAX", startTime = 2.039f, endTime = 120 + 6.835f },
+            new BgmLoop{name = "BGM_DUEL_EX_06_ALL", startTime = 4.950f, endTime = 180 + 7.141f },
+            new BgmLoop{name = "BGM_DUEL_EX_07_PHASE_A", startTime = 20.499f, endTime = 120 + 25.909f },
+            new BgmLoop{name = "BGM_DUEL_EX_07_PHASE_B", startTime = 7.757f, endTime = 120 + 27.756f },
+
             new BgmLoop{name = "BGM_DUEL_F01_ALL", startTime = 24.219f, endTime = 120 + 42.886f },
             new BgmLoop{name = "BGM_DUEL_F02_PHASE_A", startTime = 13.603f, endTime = 60 + 43.324f },
             new BgmLoop{name = "BGM_DUEL_F02_PHASE_B", startTime = 14.818f, endTime = 120 + 2.645f },
+            new BgmLoop{name = "BGM_DUEL_F03_PHASE_A", startTime = 2.905f, endTime = 60 + 42.120f },
+            new BgmLoop{name = "BGM_DUEL_F03_PHASE_B", startTime = 9.520f, endTime = 60 + 30.959f },
+            new BgmLoop{name = "BGM_DUEL_F03_PHASE_C", startTime = 28.667f, endTime = 60 + 49.794f },
+            new BgmLoop{name = "BGM_DUEL_F04_PHASE_A", startTime = 32.952f, endTime = 60 + 56.523f },
+            new BgmLoop{name = "BGM_DUEL_F04_PHASE_B", startTime = 19.020f, endTime = 120 + 26.755f },
 
+            new BgmLoop{name = "BGM_DUEL_RATE01_NORMAL", startTime = 1.119f, endTime = 120 + 5.607f },
+            new BgmLoop{name = "BGM_DUEL_RATE01_KEYCARD", startTime = 1.761f, endTime = 60 + 55.984f },
+            new BgmLoop{name = "BGM_DUEL_RATE01_CLIMAX", startTime = 0.822f, endTime = 60 + 53.925f },
+
+            new BgmLoop{name = "BGM_MENU_01", startTime = 12.433f, endTime = 120 + 31.100f },
+            new BgmLoop{name = "BGM_MENU_02", startTime = 15.687f, endTime = 120 + 2.354f },
+            new BgmLoop{name = "BGM_MENU_RETRO", startTime = 0.000f, endTime = 120 + 18.666f },
+
+            new BgmLoop{name = "BGM_DICERALLY", startTime = 17.720f, endTime = 60 + 12.578f },
+            new BgmLoop{name = "BGM_MD_TEST_QUIZ", startTime = 0.226f, endTime = 49.559f },
+            new BgmLoop{name = "BGM_SOLO_GATE", startTime = 10.053f, endTime = 60 + 36.454f },
+            new BgmLoop{name = "BGM_TUTORIAL_01", startTime = 13.992f, endTime = 43.326f },
+            new BgmLoop{name = "BGM_OUT_TUTORIAL_2", startTime = 7.480f, endTime = 60 + 22.480f },
         };
 
 
