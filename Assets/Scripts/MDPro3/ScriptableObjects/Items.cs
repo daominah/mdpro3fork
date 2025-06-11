@@ -175,6 +175,7 @@ namespace MDPro3
 
             int currentKey = 0;
             List<string> currentValue = null;
+            bool notNeed = false;
 
             foreach (var line in lines)
             {
@@ -184,9 +185,17 @@ namespace MDPro3
                         targetDic.Add(currentKey, string.Join(Environment.NewLine, currentValue));
                     currentKey = key;
                     currentValue = new List<string>();
+                    notNeed = false;
+                }
+                else if (line.StartsWith("[IDS_ITEM."))// [IDS_ITEM.CATEGORY_0001] [IDS_ITEM.SPCATEGORY_0003]
+                {
+                    notNeed = true;
                 }
                 else
-                    currentValue?.Add(line);
+                {
+                    if(!notNeed)
+                        currentValue?.Add(line);
+                }
             }
 
             if (currentValue != null)

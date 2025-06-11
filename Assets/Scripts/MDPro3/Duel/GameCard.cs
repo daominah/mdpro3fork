@@ -36,7 +36,7 @@ namespace MDPro3
         private Card data = new ();
         private Card cachedData = new();
         public GPS p;
-        bool m_disabled;
+        private bool m_disabled;
         public bool Disabled
         {
             get
@@ -63,23 +63,25 @@ namespace MDPro3
         public List<GameCard> overlays = new List<GameCard>();
         public GameCard overlayParent;
         public GameCard equipedCard;
-        public List<Effect> effects = new List<Effect>();
-
+        public List<Effect> effects = new();
 
         public int overFatherCount;
+        private const float closeupLineColorIntensity = 1.5f;
 
         public GameObject model;
         public ElementObjectManager manager;
-        float closeupLineColorIntensity = 1.5f;
+        public GPS cacheP;
+
+        private bool inAnimation;
+        private bool clicked;
+        private bool hover;
+        private bool hoving;
+
         public void Dispose()
         {
             Destroy(model);
             Destroy(this);
         }
-
-        bool clicked;
-        bool hover;
-        bool hoving;
 
         private void LateUpdate()
         {
@@ -286,7 +288,8 @@ namespace MDPro3
                 return go;
             }
         }
-        IEnumerator SetFace()
+
+        private IEnumerator SetFace()
         {
             Renderer cardFace = manager.GetElement<Transform>("CardModel").
                     GetChild(1).GetComponent<Renderer>();
@@ -312,12 +315,14 @@ namespace MDPro3
         {
             return data;
         }
+
         public Card CacheData()
         {
             if(data.Id > 0)
                 cachedData = data.Clone();
             return cachedData;
         }
+
         public Card GetCachedData()
         {
             return cachedData;
@@ -397,6 +402,7 @@ namespace MDPro3
             if (!effectTargets.Contains(card))
                 effectTargets.Add(card);
         }
+
         public void RemoveEffectTarget(GameCard card)
         {
             effectTargets.Remove(card);
@@ -612,6 +618,7 @@ namespace MDPro3
             }
             return returnValue;
         }
+
         public static Vector3 GetCardRotation(GPS p, int code = 0)
         {
             var condition = CardRuleCondition.MeUpAtk;
@@ -791,6 +798,7 @@ namespace MDPro3
                     return Vector3.zero;
             }
         }
+
         public static Vector3 GetEffectRotaion(GPS p)
         {
             if ((p.controller == 0))
@@ -808,6 +816,7 @@ namespace MDPro3
                     return new Vector3(0, 90, 0);
             }
         }
+
         public static Vector3 GetCardScale(GPS p)
         {
             if ((p.location & (uint)CardLocation.SpellZone) > 0)
@@ -815,7 +824,8 @@ namespace MDPro3
             else
                 return Vector3.one;
         }
-        bool ThisLocationShouldHaveModel(GPS p)
+
+        private bool ThisLocationShouldHaveModel(GPS p)
         {
             if ((p.location & (uint)CardLocation.Hand) > 0)
                 return true;
@@ -890,9 +900,6 @@ namespace MDPro3
                 return false;
             return true;
         }
-
-        public GPS cacheP;
-        bool inAnimation;
 
         public float Move(GPS gps, bool rush = false, float wait = 0f, float overrideMoveTime = 0)
         {
@@ -1448,6 +1455,7 @@ namespace MDPro3
                     return moveTime + timePassed + 0.1f;
             }
         }
+
         public float Move_Backup(GPS gps, bool rush = false, float wait = 0f, float overrideMoveTime = 0)
         {
             Program.instance.ocgcore.lastMoveCard = this;
@@ -1993,7 +2001,7 @@ namespace MDPro3
             SequenceStrongSummon(sequence, position, rotaion, interval);
         }
 
-        void SequenceStrongSummon(Sequence sequence, Vector3 position, Vector3 angle, float interval, float timeBefore = 0)
+        private void SequenceStrongSummon(Sequence sequence, Vector3 position, Vector3 angle, float interval, float timeBefore = 0)
         {
             sequence.AppendInterval(interval);
             sequence.Append(manager.transform.DOMove(position, 0.2f).OnStart(() =>
@@ -2024,7 +2032,8 @@ namespace MDPro3
                 OcgCore.messagePass = true;
             });
         }
-        void SequenceNormalSummon(Sequence sequence, Vector3 position, Vector3 angle, float interval, float timeBefore = 0)
+
+        private void SequenceNormalSummon(Sequence sequence, Vector3 position, Vector3 angle, float interval, float timeBefore = 0)
         {
             sequence.AppendInterval(interval);
             sequence.Append(model.transform.DOMove(position, 0.2f));
@@ -2050,7 +2059,7 @@ namespace MDPro3
             });
         }
 
-        float SequenceFromGrave(Sequence sequence, GPS p)
+        private float SequenceFromGrave(Sequence sequence, GPS p)
         {
             var dummy = ABLoader.LoadFromFile("MasterDuel/Timeline/DuelCardMove/DuelFromGrave01", true);
             dummy.transform.position = GetCardPosition(p);
@@ -2076,7 +2085,8 @@ namespace MDPro3
 
             return time;
         }
-        float SequenceFromGrave_Backup(Sequence sequence, GPS p)
+
+        private float SequenceFromGrave_Backup(Sequence sequence, GPS p)
         {
             var timeUp = 0.3f;
             var timeStay = 0.2f;
@@ -2092,7 +2102,8 @@ namespace MDPro3
             Program.instance.ocgcore.GraveBgEffect(p, false);
             return timeUp + timeStay;
         }
-        float SequenceToGrave(Sequence sequence, GPS p)
+
+        private float SequenceToGrave(Sequence sequence, GPS p)
         {
             var count = OcgCore.movingToGrave;
             if (count > 5)
@@ -2125,7 +2136,8 @@ namespace MDPro3
 
             return time;
         }
-        float SequenceToGrave_Backup(Sequence sequence, GPS p)
+
+        private float SequenceToGrave_Backup(Sequence sequence, GPS p)
         {
             var timeDown = 0.3f;
             var timeStay = 0.2f;
@@ -2143,7 +2155,8 @@ namespace MDPro3
             sequence.Join(pivot.DOLocalMove(new Vector3(0, -5, 0), timeDown).SetEase(Ease.OutCubic));
             return timeDown + timeStay;
         }
-        float SequenceToExclude(Sequence sequence, GPS p)
+
+        private float SequenceToExclude(Sequence sequence, GPS p)
         {
             var count = OcgCore.movingToExclude;
             if(count > 5)
@@ -2176,7 +2189,8 @@ namespace MDPro3
 
             return time;
         }
-        void ResetModelPositon()
+
+        private void ResetModelPositon()
         {
             if (model == null)
                 return;
@@ -2207,8 +2221,11 @@ namespace MDPro3
         #region Animation
 
         public static float handAngle = -10f;
+        private bool handDefault;
+        private bool appealed = false;
+        private float cardShakeTimeOffset = 0.01f;
 
-        void ModelAt(GPS gps, GameObject model = null)
+        private void ModelAt(GPS gps, GameObject model = null)
         {
             ElementObjectManager manager;
             if (model == null)
@@ -2277,12 +2294,12 @@ namespace MDPro3
             });
         }
 
-        bool handDefault;
         public float HandOffsetRotationByX(float x)
         {
             var abs = x > 0 ? x : -x;
             return x * (abs * -0.006f + 1.2f) * ((p.controller == 0) ? 1 : -1);
         }
+
         public float HandOffsetPositionByX(float x)
         {
             var abs = x > 0 ? x : -x;
@@ -2315,6 +2332,7 @@ namespace MDPro3
             else
                 turn.DOLocalRotate(Vector3.zero, time);
         }
+
         public void SetHandToDefault()
         {
             if (model == null || (p.location & (uint)CardLocation.Hand) == 0 || inAnimation)
@@ -2323,6 +2341,7 @@ namespace MDPro3
             clicked = false;
             handDefault = false;
         }
+
         public void SetHandDefault()
         {
             if (model == null || (p.location & (uint)CardLocation.Hand) == 0)
@@ -2335,7 +2354,8 @@ namespace MDPro3
             manager.GetElement<Transform>("Offset").localEulerAngles = new Vector3(0, HandOffsetRotationByX(x), handAngle);
             manager.GetElement<Transform>("Turn").localEulerAngles = new Vector3(0, 0, (data.Id == 0) ? 180 : 0);
         }
-        void AnimationHandHover()
+
+        private void AnimationHandHover()
         {
             if (inAnimation)
                 return;
@@ -2343,7 +2363,6 @@ namespace MDPro3
             offset.DOLocalMove(new Vector3(0, 2, 1), 0.1f);
         }
 
-        bool appealed = false;
         public void AnimationHandAppeal()
         {
             if (appealed || inAnimation)
@@ -2354,6 +2373,7 @@ namespace MDPro3
             manager.GetElement<Transform>("Offset").DOLocalMove(Vector3.zero, 0.1f);
             AudioManager.PlaySE("SE_CARD_MOVE_0" + UnityEngine.Random.Range(1, 5));
         }
+
         public void AnimationNegate()
         {
             Program.instance.ocgcore.nextNegateAction?.Invoke();
@@ -2454,6 +2474,7 @@ namespace MDPro3
                 });
             }
         }
+
         public void AnimationActivate()
         {
             AudioManager.PlaySE("SE_CARDVIEW_01");
@@ -2594,6 +2615,7 @@ namespace MDPro3
                 ShowFaceDownCardOrNot(NeedShowFaceDownCard());
             });
         }
+
         public void AnimationPositon(float delay = 0)
         {
             if (model == null)
@@ -2627,6 +2649,7 @@ namespace MDPro3
                 sequence.Append(positionManager.GetElement<SpriteRenderer>("Defense").DOFade(0, 0.3f).SetEase(Ease.InCubic));
             }
         }
+
         public void AnimationTarget()
         {
             AudioManager.PlaySE("SE_CEMETERY_CARD");
@@ -2656,7 +2679,6 @@ namespace MDPro3
             Destroy(fx, 1f);
         }
 
-        private float cardShakeTimeOffset = 0.01f;
         public void AnimationLandShake(GameCard card, bool huge)
         {
             if (card == this)
@@ -2751,8 +2773,11 @@ namespace MDPro3
             public string hint;
             public ButtonType type;
         }
-        public List<DuelButtonInfo> buttons = new List<DuelButtonInfo>();
-        List<DuelButton> buttonObjs = new List<DuelButton>();
+
+        private bool hightYellow = false;
+
+        public List<DuelButtonInfo> buttons = new();
+        private readonly List<DuelButton> buttonObjs = new();
 
         public void AddButton(int response, string hint, ButtonType type)
         {
@@ -2766,7 +2791,6 @@ namespace MDPro3
             if (!exist)
                 buttons.Add(new DuelButtonInfo() { response = new List<int>() { response }, hint = hint, type = type });
         }
-        bool hightYellow = false;
         public void CreateButtons()
         {
             if (model == null || buttons.Count == 0)
@@ -2820,25 +2844,29 @@ namespace MDPro3
             manager.GetElement("EffectHighlightYellowSelect").SetActive(false);
         }
 
-
         #endregion
 
         #region Label
-        public bool labelShowing = false;
-        static readonly string upColor = "<color=#00FFFF>";
-        static readonly string upGrayColor = "<color=#009999>";
-        static readonly string normalColor = "<color=#FFFFFF>";
-        static readonly string normalGrayColor = "<color=#999999>";
-        static readonly string downColor = "<color=#FF0000>";
-        static readonly string downGrayColor = "<color=#990000>";
-        static readonly string smallSize = "<size=20>";
-        static readonly string normalSize = "<size=25>";
 
-        int attack = 0;
-        int defense = 0;
-        float changeTime = 0.6f;
-        int lastAttribute;
-        int lastRace;
+        public bool labelShowing = false;
+        private const string upColor = "<color=#00FFFF>";
+        private const string upGrayColor = "<color=#009999>";
+        private const string normalColor = "<color=#FFFFFF>";
+        private const string normalGrayColor = "<color=#999999>";
+        private const string downColor = "<color=#FF0000>";
+        private const string downGrayColor = "<color=#990000>";
+        private const string smallSize = "<size=20>";
+        private const string normalSize = "<size=25>";
+
+        private int attack = 0;
+        private int defense = 0;
+        private float changeTime = 0.6f;
+        private int lastAttribute;
+        private int lastRace;
+        private bool closeupShowing;
+        private int setTurn = 0;
+        public bool setOverTurn;
+
         public void RefreshLabel()
         {
             if(model == null) 
@@ -3389,7 +3417,6 @@ namespace MDPro3
             ShowLabel();
         }
 
-        bool closeupShowing;
         public void ShowLabel()
         {
             labelShowing = true;
@@ -3415,6 +3442,7 @@ namespace MDPro3
 
             HideHiddenLabel();
         }
+
         public void HideLabel()
         {
             labelShowing = false;
@@ -3437,6 +3465,7 @@ namespace MDPro3
             foreach (var sr in linkMarker.GetComponentsInChildren<SpriteRenderer>(true))
                 sr.sortingLayerName = "CardStatus";
         }
+
         public void HideHiddenLabel()
         {
             if (model == null || !labelShowing)
@@ -3462,7 +3491,7 @@ namespace MDPro3
                 sr.sortingLayerName = "Default";
         }
 
-        void SetDisabled()
+        private void SetDisabled()
         {
             if (model == null)
                 return;
@@ -3486,7 +3515,7 @@ namespace MDPro3
             }
         }
 
-        bool NeedShowCloseup()
+        private bool NeedShowCloseup()
         {
             if (model == null)
                 return false;
@@ -3501,7 +3530,7 @@ namespace MDPro3
             return true;
         }
 
-        bool CloseupConfig()
+        private bool CloseupConfig()
         {
             if (OcgCore.condition == OcgCore.Condition.Duel && Config.Get("DuelCloseup", "1") == "0")
                 return false;
@@ -3534,8 +3563,6 @@ namespace MDPro3
             return true;
         }
 
-        int setTurn = 0;
-        public bool setOverTurn;
         public void ShowFaceDownCardOrNot(bool show)
         {
             if (model == null)
@@ -3570,6 +3597,7 @@ namespace MDPro3
                 manager.GetElement("EffectDisquiet").SetActive(false);
             }
         }
+
         public void ShowDisquiet()
         {
             if (model == null)
@@ -3590,7 +3618,9 @@ namespace MDPro3
         #endregion
 
         #region CardCounter
+
         Dictionary<int, int> cardCounters = new Dictionary<int, int>();
+
         public void AddCounter(int counter, int count)
         {
             AudioManager.PlaySE("SE_CARD_COUNTER");
@@ -3611,6 +3641,7 @@ namespace MDPro3
                 AddStringTail(counterName);
             RefreshLabel();
         }
+
         public void RemoveCounter(int counter, int count)
         {
             AudioManager.PlaySE("SE_CARD_COUNTER");
@@ -3624,41 +3655,51 @@ namespace MDPro3
                 RemoveStringTail(counterName);
             RefreshLabel();
         }
+
         public void ClearCounter()
         {
             cardCounters.Clear();
         }
+
         public int GetCounterCount(int type)
         {
             cardCounters.TryGetValue(type, out var count);
             return count;
         }
+
         #endregion
 
         #region String Tail
-        public MultiStringMaster tails = new MultiStringMaster();
+
+        public MultiStringMaster tails = new();
+
         public void AddStringTail(string tail)
         {
             tails.Add(tail);
         }
+
         public void RemoveStringTail(string tail, bool all = false)
         {
             tails.Remove(tail, all);
         }
+
         public void ClearAllTails()
         {
             ClearCounter();
             tails.Clear();
         }
+
         #endregion
 
         #region Chain
+
         public class Chain
         {
             public int i;
             public DuelChainSpot chainSpot;
         }
-        public List<Chain> chains = new List<Chain>();
+
+        public List<Chain> chains = new();
 
         public void AddChain(int i)
         {
@@ -3668,6 +3709,7 @@ namespace MDPro3
             bool turn = (p.location & (uint)CardLocation.MonsterZone) > 0 && (p.position & (uint)CardPosition.Defence) > 0;
             chains[chains.Count - 1].chainSpot.Play(i, p.location, model != null, turn, GetCardPosition(p, this), i == 1);
         }
+
         public void ResolveChain(int i)
         {
             foreach (var chain in chains)
@@ -3679,6 +3721,7 @@ namespace MDPro3
                 }
             }
         }
+
         public void RemoveChain(int i)
         {
             foreach (var chain in chains)
@@ -3692,21 +3735,25 @@ namespace MDPro3
                 }
             }
         }
+
         public void RemoveAllChain()
         {
             foreach (var chain in chains)
                 Destroy(chain.chainSpot.gameObject, 1f);
             chains.Clear();
         }
+
         #endregion
 
         #region enum
+
         public enum Condition
         {
             None,
             Chaining,
             Selected
         }
+
         private enum CardRuleCondition
         {
             MeUpAtk,
@@ -3738,6 +3785,9 @@ namespace MDPro3
             OpUpHand,
             OpDownHand
         }
+
         #endregion
+
     }
+
 }

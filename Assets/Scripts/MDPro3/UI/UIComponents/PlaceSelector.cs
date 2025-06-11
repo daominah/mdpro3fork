@@ -548,7 +548,7 @@ namespace MDPro3.UI
                 hintObj = ABLoader.LoadFromFile("MasterDuel/Effects/Hitghlight/fxp_HL_EXdeck_001", true);
                 hintObj.transform.SetParent(transform, false);
                 int cardCount = Program.instance.ocgcore.GetLocationCardCount((CardLocation)location, controller);
-                hintObj.transform.localScale = new Vector3(1.1f, cardCount * 0.1f, 1.1f);
+                hintObj.transform.localScale = new Vector3(1f, cardCount * 0.1f, 1f);
             }
         }
 
