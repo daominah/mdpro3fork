@@ -1,3 +1,4 @@
+using MDPro3.Net;
 using Meisui.Random;
 using System;
 using System.Collections.Generic;
@@ -284,7 +285,10 @@ namespace Percy
         public static extern IntPtr create_duel(uint seed);
 
         [DllImport("ocgcore", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void start_duel(IntPtr pduel, int options);
+        public static extern IntPtr create_duel_v2([In] uint[] seeds);
+
+        [DllImport("ocgcore", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void start_duel(IntPtr pduel, uint options);
 
         [DllImport("ocgcore", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
         public static extern int get_ai_going_first_second(IntPtr pduel, IntPtr deckname);
@@ -336,7 +340,7 @@ namespace Percy
         public static extern int query_field_info(IntPtr pduel, IntPtr buf);
 
         [DllImport("ocgcore", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int preload_script(IntPtr pduel, IntPtr script, int len);
+        public static extern int preload_script(IntPtr pduel, IntPtr script);
 
         public static void Set_card_api(Ygopro.CardHandler h)
         {
@@ -1081,6 +1085,7 @@ namespace Percy
                 : ""));
             return returnValue;
         }
+
         private void Process()
         {
             while (true)
@@ -1089,9 +1094,9 @@ namespace Percy
                 var len = result & 0xFFFF;
                 if (len > 0)
                 {
-                    var arr = new byte[4096];
+                    var arr = new byte[0x2000];
                     Dll.get_message(duel, _buffer);
-                    Marshal.Copy(_buffer, arr, 0, 4096);
+                    Marshal.Copy(_buffer, arr, 0, 0x2000);
                     var breakOut = false;
                     var stream = new MemoryStream(arr);
                     var reader = new BinaryReader(stream);
@@ -1103,7 +1108,6 @@ namespace Percy
             }
         }
 
-
         private IntPtr GetPtrString(string path)
         {
             var s = Encoding.UTF8.GetBytes(path);
@@ -1112,8 +1116,10 @@ namespace Percy
             s = list.ToArray();
             var ptrFileName = Marshal.AllocHGlobal(s.Length);
             Marshal.Copy(s, 0, ptrFileName, s.Length);
+            Marshal.WriteByte(ptrFileName, s.Length, 0);
             return ptrFileName;
         }
+
         private Deck FromYDKtoDeck(string path)
         {
             var deck = new Deck();
@@ -1208,8 +1214,7 @@ namespace Percy
             isFirst = true;
             Dll.set_player_info(duel, 0, 8000, 5, 1);
             Dll.set_player_info(duel, 1, 8000, 5, 1);
-            var result = Dll.preload_script(duel, GetPtrString(path), 0);
-            if (result == 0) return false;
+            Dll.preload_script(duel, GetPtrString(path));
             Dll.start_duel(duel, 0);
             Refresh();
             new Thread(Process).Start();
@@ -1243,8 +1248,18 @@ namespace Percy
             yrp3dbuilder = new BinaryWriter(stream);
             sendToPlayer(yrp.GetNamePacket());
             Dll.end_duel(duel);
-            var mtrnd = new MersenneTwister(yrp.Seed);
-            duel = Dll.create_duel(mtrnd.genrand_Int32());
+
+            if (yrp.ID == 0x32707279) // REPLAY_ID_YRP2
+            {
+                duel = Dll.create_duel_v2(yrp.SeedsV2);
+            }
+            else
+            {
+                var mtrnd = new MersenneTwister(yrp.Seed);
+                duel = Dll.create_duel(mtrnd.genrand_Int32());
+            }
+
+
             godMode = true;
             isFirst = true;
             Dll.set_player_info(duel, 0, yrp.StartLp, yrp.StartHand, yrp.DrawCount);
@@ -1347,10 +1362,11 @@ namespace Percy
         public List<byte[]> gameData = new List<byte[]>();
         public int Hash = 0;
         public int ID = 0;
-        public int opt = 0;
+        public uint opt = 0;
         public List<PlayerData> playerData = new List<PlayerData>();
         public byte[] Props = new byte[8];
         public uint Seed = 0;
+        public uint[] SeedsV2 = new uint[8];
         public int StartHand = 0;
         public int StartLp = 0;
         public int Version = 0;

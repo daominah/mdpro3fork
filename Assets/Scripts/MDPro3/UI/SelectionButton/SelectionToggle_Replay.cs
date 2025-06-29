@@ -83,7 +83,7 @@ namespace MDPro3.UI
                     description += StringHelper.GetUnsafe(1246) + Program.STRING_LINE_BREAK;//双打模式
                     tag = true;
                 }
-                description += StringHelper.GetUnsafe(1259 + (yrp.opt >> 16)) + Program.STRING_LINE_BREAK;//规则
+                description += StringHelper.GetUnsafe((int)(1259 + (yrp.opt >> 16))) + Program.STRING_LINE_BREAK;//规则
                 description += StringHelper.GetUnsafe(1231) + yrp.StartLp + Program.STRING_LINE_BREAK;//初始基本分：
                 description += StringHelper.GetUnsafe(1232) + yrp.StartHand + Program.STRING_LINE_BREAK;//初始手卡数：
                 description += StringHelper.GetUnsafe(1233) + yrp.DrawCount + Program.STRING_LINE_BREAK;//每回合抽卡：

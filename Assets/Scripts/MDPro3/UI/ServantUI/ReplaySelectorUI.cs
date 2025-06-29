@@ -162,6 +162,17 @@ namespace MDPro3.UI.ServantUI
                 returnValue.DataSize = reader.ReadInt32();
                 returnValue.Hash = reader.ReadInt32();
                 returnValue.Props = reader.ReadBytes(8);
+                if (returnValue.ID == 0x32707279) // REPLAY_ID_YRP2
+                {
+                    for (int i = 0; i < 8; i++)
+                    {
+                        returnValue.SeedsV2[i] = reader.ReadUInt32();
+                    }
+                    for (int i = 0; i < 4; i++) // other flags, unused for now
+                    {
+                        reader.ReadUInt32();
+                    }
+                }
                 var raw = reader.ReadToEnd();
                 if ((returnValue.Flag & 0x1) > 0)
                 {
@@ -187,8 +198,8 @@ namespace MDPro3.UI.ServantUI
                     returnValue.StartLp = reader.ReadInt32();
                     returnValue.StartHand = reader.ReadInt32();
                     returnValue.DrawCount = reader.ReadInt32();
-                    returnValue.opt = reader.ReadInt32();
-                    Program.instance.ocgcore.MasterRule = returnValue.opt >> 16;
+                    returnValue.opt = reader.ReadUInt32();
+                    Program.instance.ocgcore.MasterRule = (int)(returnValue.opt >> 16);
                     for (var i = 0; i < 4; i++)
                     {
                         var count = reader.ReadInt32();
@@ -206,8 +217,8 @@ namespace MDPro3.UI.ServantUI
                     returnValue.StartLp = reader.ReadInt32();
                     returnValue.StartHand = reader.ReadInt32();
                     returnValue.DrawCount = reader.ReadInt32();
-                    returnValue.opt = reader.ReadInt32();
-                    Program.instance.ocgcore.MasterRule = returnValue.opt >> 16;
+                    returnValue.opt = reader.ReadUInt32();
+                    Program.instance.ocgcore.MasterRule = (int)(returnValue.opt >> 16);
                     for (var i = 0; i < 2; i++)
                     {
                         var count = reader.ReadInt32();
