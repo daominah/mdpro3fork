@@ -1,4 +1,5 @@
 using MDPro3.Net;
+using MDPro3.Servant;
 using Meisui.Random;
 using System;
 using System.Collections.Generic;
@@ -400,7 +401,7 @@ namespace Percy
         private readonly ChatHandler cast;
         public Action<string> m_log;
 
-        private readonly IntPtr _buffer = Marshal.AllocHGlobal(4096);
+        private readonly IntPtr _buffer = Marshal.AllocHGlobal(0x2000);
         private IntPtr duel;
         private Action<byte[]> sendToPlayer;
         private bool godMode;
@@ -750,11 +751,11 @@ namespace Percy
                     Move(1);
                     count = Move(1);
                     Move(1);
-                    Move(1);
                     Move(4);
                     Move(4);
                     for (var i = 0; i < count; i++)
                     {
+                        Move(1);
                         Move(1);
                         Move(4);
                         Move(4);
@@ -791,6 +792,7 @@ namespace Percy
                     Move(Move(1) * 7);
                     break;
                 case GameMessage.ConfirmCards:
+                    Move(1);
                     Move(1);
                     Move(Move(1) * 7);
                     break;
@@ -1252,13 +1254,14 @@ namespace Percy
             if (yrp.ID == 0x32707279) // REPLAY_ID_YRP2
             {
                 duel = Dll.create_duel_v2(yrp.SeedsV2);
+                OcgCore.CurrentReplayUseYRP2 = true;
             }
             else
             {
                 var mtrnd = new MersenneTwister(yrp.Seed);
                 duel = Dll.create_duel(mtrnd.genrand_Int32());
+                OcgCore.CurrentReplayUseYRP2 = false;
             }
-
 
             godMode = true;
             isFirst = true;

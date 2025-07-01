@@ -15,7 +15,7 @@ namespace MDPro3
         public const string STRING_YES = "1";
         public const string STRING_NO = "0";
 
-        public static uint ClientVersion = 0x1361;
+        public static uint ClientVersion = 0x1362;
 
         private static readonly List<OneString> translations = new List<OneString>();
         private static string path;

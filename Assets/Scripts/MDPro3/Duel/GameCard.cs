@@ -29,6 +29,7 @@ namespace MDPro3
         public string desc;
         public int flag;
         public int ptr;
+        public bool forced;
     }
 
     public class GameCard : MonoBehaviour

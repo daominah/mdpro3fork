@@ -1,30 +1,30 @@
 using DG.Tweening;
+using MDPro3.Duel;
+using MDPro3.Duel.BG;
+using MDPro3.Duel.YGOSharp;
 using MDPro3.Net;
 using MDPro3.UI;
-using MDPro3.Duel.YGOSharp;
+using MDPro3.UI.ServantUI;
+using MDPro3.Utility;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using System.Text.RegularExpressions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using UnityEngine.Playables;
 using UnityEngine.UI;
 using YgomGame.Bg;
 using YgomSystem.Effect;
 using YgomSystem.ElementSystem;
 using static YgomGame.Bg.BgEffectSettingInner;
-using MDPro3.Duel;
-using UnityEngine.InputSystem;
-using MDPro3.Duel.BG;
-using MDPro3.Utility;
-using MDPro3.UI.ServantUI;
-using System.Net.Sockets;
 
 namespace MDPro3.Servant
 {
@@ -61,6 +61,7 @@ namespace MDPro3.Servant
         [HideInInspector] public bool handCardDraged;
         public static bool inputMode;
         public static bool Accing;
+        public static bool CurrentReplayUseYRP2;
         public static Condition condition = Condition.N;
         public static ChainCondition chainCondition = ChainCondition.Smart;
         public Action startCard;
@@ -1342,6 +1343,8 @@ namespace MDPro3.Servant
         private Vector3 myPosition = new(0, 15, -25);
         private Vector3 opPosition = new(0, 15, 25);
 
+        private List<GameCard> chainCards = new();
+
         [HideInInspector] public List<GameCard> materialCards = new List<GameCard>();
         [HideInInspector] public List<GameCard> cardsInChain = new List<GameCard>();
         [HideInInspector] public GameCard currentSolvingCard;
@@ -1983,10 +1986,10 @@ namespace MDPro3.Servant
 
         [HideInInspector] public bool needRefreshHand0 = true;
         [HideInInspector] public bool needRefreshHand1 = true;
-        [HideInInspector] public List<GameCard> myHandCards = new List<GameCard>();
-        [HideInInspector] public List<GameCard> opHandCards = new List<GameCard>();
-        private List<GameCard> myPreHandCards = new List<GameCard>();
-        private List<GameCard> opPreHandCards = new List<GameCard>();
+        [HideInInspector] public List<GameCard> myHandCards = new();
+        [HideInInspector] public List<GameCard> opHandCards = new();
+        private List<GameCard> myPreHandCards = new();
+        private List<GameCard> opPreHandCards = new();
 
         public int GetMyHandCount()
         {
@@ -2165,7 +2168,8 @@ namespace MDPro3.Servant
             }
             return false;
         }
-        void ClearResponse()
+
+        private void ClearResponse()
         {
             var myMaxDeck = GetLocationCardCount(CardLocation.Deck, 0);
             var opMaxDeck = GetLocationCardCount(CardLocation.Deck, 1);
@@ -2209,6 +2213,7 @@ namespace MDPro3.Servant
             FieldSelectReset();
             ES_selectHint = string.Empty;
         }
+
         private void GetConfirmedCard()
         {
             if (nextMoveAction == null || nextMoveActionTargetRenderer == null)
@@ -4728,6 +4733,8 @@ namespace MDPro3.Servant
                     break;
                 case GameMessage.ConfirmCards:
                     player = LocalPlayer(r.ReadByte());
+                    if(condition != Condition.Replay || CurrentReplayUseYRP2)
+                        r.ReadByte();
                     count = r.ReadByte();
                     var listShow = false;
                     if (count > 3 && condition == Condition.Duel)
@@ -5430,15 +5437,15 @@ namespace MDPro3.Servant
                     player = LocalPlayer(r.ReadChar());
                     count = r.ReadByte();
                     int spcount = r.ReadByte();
-                    int forced = r.ReadByte();
                     var hint0 = r.ReadInt32();
                     var hint1 = r.ReadInt32();
-                    var chainCards = new List<GameCard>();
+                    chainCards = new List<GameCard>();
+                    var forceCount = 0;
                     for (var i = 0; i < count; i++)
                     {
-                        var flag = 0;
-                        if (((length_of_message - 12) / count) % 12 != 0)
-                            flag = r.ReadChar();
+                        var flag = r.ReadChar();
+                        var forced = r.ReadByte();
+                        forceCount += forced;
                         code = r.ReadInt32() % 1000000000;
                         gps = r.ReadGPS();
                         desc = StringHelper.Get(r.ReadInt32());
@@ -5453,59 +5460,147 @@ namespace MDPro3.Servant
                         eff.flag = flag;
                         eff.ptr = i;
                         eff.desc = desc;
+                        eff.forced = forced > 0;
                         card.effects.Add(eff);
                     }
 
                     var handleFlag = 0;
-                    if (forced == 0)
+
+                    if (forceCount == 0)
                     {
+                        //无强制发动的卡
                         if (spcount == 0)
                         {
-                            switch (chainCondition)
+                            //无关键卡
+                            if (chainCondition == ChainCondition.No)
                             {
-                                case ChainCondition.All:
-                                    if (chainCards.Count == 0)
-                                        handleFlag = -1;
-                                    else
+                                //无关键卡 连锁被无视 直接回答---
+                                handleFlag = 0;
+                            }
+                            else if (chainCondition == ChainCondition.All)
+                            {
+                                //无关键卡但是连锁被监控
+                                if (chainCards.Count == 0)
+                                {
+                                    //欺骗--
+                                    handleFlag = -1;
+                                }
+                                else
+                                {
+                                    if (chainCards.Count == 1 && chainCards[0].effects.Count == 1)
+                                        //只有一张要处理的卡 常规处理 一张---
                                         handleFlag = 1;
-                                    break;
-                                default:
+                                    else
+                                        //常规处理 多张---
+                                        handleFlag = 2;
+                                }
+                            }
+                            else if (chainCondition == ChainCondition.Smart)
+                            {
+                                //无关键卡但是连锁被智能过滤
+                                if (chainCards.Count == 0)
+                                {
+                                    //根本没卡 直接回答---
                                     handleFlag = 0;
-                                    break;
+                                }
+                                else
+                                {
+                                    if (chainCards.Count == 1 && chainCards[0].effects.Count == 1)
+                                        //只有一张要处理的卡 常规处理 一张---
+                                        handleFlag = 1;
+                                    else
+                                        //常规处理 多张---
+                                        handleFlag = 2;
+                                }
+                            }
+                            else
+                            {
+                                //无关键卡而且连锁没有被监控    直接回答---
+                                handleFlag = 0;
                             }
                         }
                         else
                         {
+                            //有关键卡
                             if (chainCards.Count == 0)
                             {
+                                //根本没卡 直接回答---
                                 handleFlag = 0;
                                 if (chainCondition == ChainCondition.All)
+                                    //欺骗--
                                     handleFlag = -1;
+                            }
+                            else if (chainCondition == ChainCondition.No)
+                            {
+                                //有关键卡 连锁被无视 直接回答---
+                                handleFlag = 0;
                             }
                             else
                             {
-                                if (chainCondition == ChainCondition.No)
-                                    handleFlag = 0;
-                                else
+                                if (chainCards.Count == 1 && chainCards[0].effects.Count == 1)
+                                    //只有一张要处理的卡 常规处理 一张---
                                     handleFlag = 1;
+                                else
+                                    //常规处理 多张---
+                                    handleFlag = 2;
                             }
                         }
                     }
                     else
-                        handleFlag = 3;
+                    {
+                        if (chainCards.Count == 1 && chainCards[0].effects.Count == 1)
+                        {
+                            //有一张强制发动的卡 回应--
+                            handleFlag = 4;
+                        }
+                        else
+                        {
+                            //有强制发动的卡 处理强制发动的卡--
+                            handleFlag = 3;
+                            //if (autoForceChainHandler == autoForceChainHandlerType.autoHandleAll) handle_flag = 4;
+                            //if (autoForceChainHandler == autoForceChainHandlerType.afterClickManDo) handle_flag = 5;
+                        }
+
+                        //if (UIHelper.fromStringToBool(Config.Get("autoChain_", "0")))
+                        //    //自动回应--
+                        //    handleFlag = 4;
+                    }
+
+                    // handleFlag
+                    // -1   无卡 需要提醒
+                    // 0    无卡 直接回应
+                    // 1    一张卡需要处理
+                    // 2    多张卡需要处理
+                    // 3    多张卡需要处理（强制发动）
+                    // 4    一张卡需要处理（强制发动）
+                    // 5    多张卡需要处理（强制发动）AfterClick 未实装
+
+                    Debug.Log($"handleFlag = {handleFlag}");
+
+                    if (handleFlag == 4)
+                    {
+                        Debug.Log("handleFlag == 4");
+                    }
+
+                    if (handleFlag == 1)
+                        handleFlag = 2;
 
                     switch (handleFlag)
                     {
                         case 1:
+                        case 2:
                             GetUI<OcgCoreUI>().ShowPopupSelectCard(InterString.Get("[?]，是否连锁？", ES_hint), chainCards, 1, 1, true, false);
                             break;
                         case 3:
+                        case 4:
+                        case 5:
                             GetUI<OcgCoreUI>().ShowPopupSelectCard(InterString.Get("[?]，请选择效果发动。", ES_hint), chainCards, 1, 1, false, false);
                             break;
                         default:
                             OnResend();
                             break;
                     }
+
                     break;
                 case GameMessage.SelectCard:
                     if (InIgnoranceReplay()) break;
@@ -5631,6 +5726,11 @@ namespace MDPro3.Servant
                             card.selectPtr = i;
                             card.levelForSelect_1 = para & 0xffff;
                             card.levelForSelect_2 = para >> 16;
+                            if ((para & 0x80000000) > 0)
+                            {
+                                card.levelForSelect_1 = para & 0x7fffffff;
+                                card.levelForSelect_2 = card.levelForSelect_1;
+                            }
                             if (card.levelForSelect_2 == 0)
                                 card.levelForSelect_2 = card.levelForSelect_1;
                             cardsInSelection.Add(card);
@@ -5675,6 +5775,11 @@ namespace MDPro3.Servant
                             card.selectPtr = i;
                             card.levelForSelect_1 = para & 0xffff;
                             card.levelForSelect_2 = para >> 16;
+                            if ((para & 0x80000000) > 0)
+                            {
+                                card.levelForSelect_1 = para & 0x7fffffff;
+                                card.levelForSelect_2 = card.levelForSelect_1;
+                            }
                             if (card.levelForSelect_2 == 0)
                                 card.levelForSelect_2 = card.levelForSelect_1;
                             cardsInSelection.Add(card);

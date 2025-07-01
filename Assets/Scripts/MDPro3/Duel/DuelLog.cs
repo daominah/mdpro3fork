@@ -483,6 +483,7 @@ namespace MDPro3.Duel
                     break;
                 case GameMessage.ConfirmCards:
                     player = core.LocalPlayer(r.ReadByte());
+                    r.ReadByte();
                     count = r.ReadByte();
                     for (int i = 0; i < count; i++)
                     {

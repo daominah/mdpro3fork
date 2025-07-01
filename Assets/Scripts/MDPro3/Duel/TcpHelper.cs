@@ -29,8 +29,6 @@ namespace MDPro3
         static Thread senderThread;
         static Thread linkThread;
 
-        public static int version = 0x1361;
-
         public static string joinedAddress;
         public static string joinedPort;
         public static string joinedPassword;
@@ -91,6 +89,7 @@ namespace MDPro3
                 t.Start();
                 messageQueue.Clear();
                 InitializeSender();
+                CtosMessage_ExternalAddress(ipString);
                 CtosMessage_PlayerInfo(name);
                 CtosMessage_JoinGame(pswString);
                 joinedAddress = ipString;
@@ -390,6 +389,15 @@ namespace MDPro3
                 message.Data.writer.Write((byte)1);
             else
                 message.Data.writer.Write((byte)0);
+            Send(message);
+        }
+
+        public static void CtosMessage_ExternalAddress(string hostname)
+        {
+            var message = new Package();
+            message.Function = (int)CtosMessage.ExternalAddress;
+            message.Data.writer.Write((UInt32)0);
+            message.Data.writer.WriteUnicode(hostname, hostname.Length + 1);
             Send(message);
         }
 

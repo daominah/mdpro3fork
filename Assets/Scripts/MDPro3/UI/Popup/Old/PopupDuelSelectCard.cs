@@ -133,7 +133,7 @@ namespace MDPro3.UI
                 Program.instance.currentServant.returnAction = OnFinish;
         }
 
-        void Refresh()
+        private void Refresh()
         {
             if (core.currentMessage == GameMessage.SelectSum)
             {
@@ -210,7 +210,7 @@ namespace MDPro3.UI
                 mono.RemoveOrder(i);
         }
 
-        List<GameCard> GetSelected()
+        private List<GameCard> GetSelected()
         {
             var list = new List<GameCard>();
             foreach (var mono in monos)
@@ -218,7 +218,7 @@ namespace MDPro3.UI
                     list.Add(mono.card);
             return list;
         }
-        bool CheckSelectable(GameCard card, List<GameCard> addedCards = null)
+        private bool CheckSelectable(GameCard card, List<GameCard> addedCards = null)
         {
             bool returnValue = false;
 

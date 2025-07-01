@@ -188,7 +188,7 @@ namespace MDPro3
             CLIMAX
         }
 
-        private static List<string> currentBGMs;
+        private static List<string> currentBGMs = new();
         private static string currentBGM = string.Empty;
         private static int bgmState = 0;
         private static float loopStart = 0;
