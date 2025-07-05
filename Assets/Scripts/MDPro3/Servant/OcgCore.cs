@@ -2233,6 +2233,8 @@ namespace MDPro3.Servant
                     var r = packages[i].Data.reader;
                     r.BaseStream.Seek(0, 0);
                     r.ReadByte();
+                    if (condition != Condition.Replay || CurrentReplayUseYRP2)
+                        r.ReadByte();
                     r.ReadByte();
 
                     int nextConfirmedCard = r.ReadInt32();
