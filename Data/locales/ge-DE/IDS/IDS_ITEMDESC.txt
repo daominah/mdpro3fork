@@ -199,7 +199,8 @@ Seine Macht reicht bis in die heutige Zeit.
 [IDS_ITEMDESC.ID1001033]
 coming soon
 [IDS_ITEMDESC.ID1001034]
-coming soon
+Mit einer Stimmgabel erzeugt dieses Monster Töne, die bedeutungsvoller sind als Worte.
+Durch das Stimmen mit anderen erzeugt es Kräfte, die die Erde selbst zerschmettern.
 [IDS_ITEMDESC.ID1001035]
 coming soon
 [IDS_ITEMDESC.ID1001036]
@@ -271,7 +272,8 @@ Es heißt, dass der Besitz eines solchen Fahrzeugs den Umfang der eigenen Aktivi
 [IDS_ITEMDESC.ID1002013]
 coming soon
 [IDS_ITEMDESC.ID1002014]
-coming soon
+Der Stuhl hat eine Liegefunktion und ist für den Einsatz im Freien geeignet.
+Der Sonnenschutz, den der Sonnenschirm bietet, ermöglicht dir stundenlanges Duellieren.
 [IDS_ITEMDESC.ID1002015]
 coming soon
 [IDS_ITEMDESC.ID1002016]
@@ -636,9 +638,11 @@ Das Band zwischen ihnen wurde auf einer langen Reise immer stärker.
 Ein Symbol, das die neue Form eines Drachen darstellt, der sowohl eine teuflische als auch eine königlich majestätische Seele besitzt.
 Seine Erschaffung wurde durch ihre unbändige Leidenschaft geprägt.
 [IDS_ITEMDESC.ID1010104]
-coming soon
+Ein Symbol, das eine selbstverwaltete KI darstellt, deren Zweck es ist, eine böse Welt zu erobern.
+Sie wagt sich in unbekannte Domänen, in denen kein normaler Verstand sich behaupten könnte.
 [IDS_ITEMDESC.ID1010105]
-coming soon
+Ein Symbol, das die souveräne Kraft darstellt, die ein großer Forscher seinem Sohn hinterlassen hat.
+Sie ist durch eine mächtige Bindung entstanden und führt mit unerschütterlichem Zielbewusstsein die Oberherrschaft.
 [IDS_ITEMDESC.ID1010106]
 coming soon
 [IDS_ITEMDESC.ID1010107]
@@ -1641,6 +1645,9 @@ Die ruhigen Gewässer werden allmählich von den betörenden Schatten verschluck
 [IDS_ITEMDESC.ID1030035]
 Ein Symbol-Rahmen, der die schelmischen Flammengeister beschwört, die auf den Schockwellen von Explosionen reiten.
 Die intensive thermische Energie der Flammen führt zu phänomenal starken Explosionen.
+[IDS_ITEMDESC.ID1030036]
+Ein lila-gelber Symbol-Rahmen, der betörende Dunkelheit und wärmendes Licht ausstrahlt.
+Die Farben, die an die Dämmerung erinnert, ruft eine Flut von Emotionen wach.
 [IDS_ITEMDESC.ID1031001]
 Ein Symbol-Rahmen, der an das Tor erinnert, das die Himmelsjäger benutzen, um ihre Ausrüstung zu transferieren.
 Wenn sich der Weg für diejenigen öffnet, die für den Frieden kämpfen, erwacht eine neue Kraft zur Überwindung der Not.
@@ -1683,6 +1690,9 @@ Wenn du einmal der Spiegelkraft zum Opfer gefallen bist, sieht jede gesetzte Kar
 [IDS_ITEMDESC.ID1031014]
 Ein Symbol-Rahmen, der an die verborgene Kraft von „<card mrk='4064'/>“ erinnert.
 „<card mrk='4064'/>“-Kombos hat es im Laufe der Jahre in vielen Formen gegeben, wie es sich für ein Multitalent von einem Monster gehört.
+[IDS_ITEMDESC.ID1031015]
+Ein Symbol-Rahmen, der die weite unbekannte Domäne einfängt, die durch eine riesige Fallgrube zugänglich ist.
+Im Abgrund wirbeln enorme Sturmfluten an gefährlichen Daten, die aus der Bosheit der Menschheit geboren sind.
 [IDS_ITEMDESC.ID1032001]
 Ein Symbol-Rahmen in der Form einer runden Dekoration, die in manchen Regionen zum Jahresende zu sehen ist.
 Sie werden mit dem aufrichtigen Wunsch nach Glück und Freude in der kommenden Zeit aufgehängt.
@@ -1710,6 +1720,9 @@ Er ruft Szenen von großer Schönheit in Erinnerung.
 [IDS_ITEMDESC.ID1032009]
 Ein Symbol-Rahmen, der die Eleganz des Schneefalls einfängt.
 Die Art und Weise, wie er schließlich schmilzt und aus der Existenz verblasst, macht ihn umso schöner.
+[IDS_ITEMDESC.ID1032010]
+Ein Symbol-Rahmen in Form eines kreisrunden Schwimmreifens.
+Treibe neben eleganten Meeresgeschöpfen und mache deinen Sommer unvergesslich.
 [IDS_ITEMDESC.ID1033001]
 Ein Symbol-Rahmen, das den Teilnehmern des MASTER DUEL-Events der Yu-Gi-Oh! World Championship 2023 verliehen wird.
 Die nächste Stufe wartet auf dich!
@@ -2066,6 +2079,15 @@ Für diejenigen, die die wahre Natur dieser mysteriösen Wesen kennenlernen woll
 [IDS_ITEMDESC.ID1070117]
 Kartenhüllen, auf denen ein glänzender goldener „<category id='44'/>“ abgebildet ist.
 Für alle, die sich vom Funkeln der Kristalle angezogen fühlen.
+[IDS_ITEMDESC.ID1070118]
+Kartenhüllen, auf denen ein Weltenzerstörer abgebildet ist, der unter den Arkanen an letzter Stelle steht.
+Für diejenigen, die dieses Schicksal für unausweichlich halten.
+[IDS_ITEMDESC.ID1070119]
+Kartenhüllen, auf denen ein tapfer Meister der Kriegsführung abgebildet ist, jetzt entfesselt.
+Für diejenigen, die im Kampf ihr Leben aufs Spiel setzen.
+[IDS_ITEMDESC.ID1070120]
+Kartenhüllen, auf denen rebellische Reißzähne mit eisernem Willen abgebildet sind.
+Für diejenigen, die sich der Unterdrückung widersetzen.
 [IDS_ITEMDESC.ID1071001]
 Kartenhüllen, die einen Krieger darstellen, der gereift ist und die Narben, die während der Kämpfe in sein Herz geätzt wurden, akzeptiert hat. 
 Perfekt für alle, die immer das Beste für ihre geliebten Freunde wollen.
@@ -2184,6 +2206,9 @@ Für alle, die saisonale Feste richtig auskosten wollen.
 [IDS_ITEMDESC.ID1072005]
 Kartenhüllen, die ein dynamisches Duo in neuen Outfits darstellen.
 Für alle, die ein Gespür für Mode haben.
+[IDS_ITEMDESC.ID1072007]
+Kartenhüllen, auf denen ein Duo mit einer perfekten Partnerschaft, aber gegensätzlichen Persönlichkeiten, abgebildet ist.
+Für diejenigen, die sich in unerforschte Gebiete wagen.
 [IDS_ITEMDESC.ID1073001]
 Kartenhüllen mit einem visuellen Design für die Yu-Gi-Oh! World Championship 2023: MASTER DUEL.
 Für diejenigen, die die Besten der Welt werden wollen.
@@ -2457,6 +2482,9 @@ Sie verwirren ein Opfer nach dem anderen durch die Verlockungen ihrer einzigarti
 [IDS_ITEMDESC.ID1090031]
 Ein Duell-Spielfeld mit trostlosen Ruinen, die erscheinen, wenn du von einer gewissen unterirdischen Stadt aus nach Südosten reist.
 Der verfluchte Schatz hier hält dieses Land wie in einem Schraubstock fest und verbreitet Katastrophen und Elend.
+[IDS_ITEMDESC.ID1090032]
+Ein Duell-Spielfeld, auf dem der Puls einer fernen, alten Ära zu spüren ist.
+Kolossale, längst vergessene Kreaturen kämpfen um die Vorherrschaft und erschüttern Himmel und Erde.
 [IDS_ITEMDESC.ID1090033]
 Ein Duell-Spielfeld, das als Revier eines gewieften Diebespaars dient, welches bereits sein nächstes Beuteziel ins Visier nimmt.
 Unsere Welt wimmelt von verdeckten Ermittlern, die im Geheimen agieren.
@@ -2556,6 +2584,9 @@ Wenn du einen Blick hineinwirfst, wirst du Knochen und Wertgegenstände sehen, d
 [IDS_ITEMDESC.ID1100031]
 Spielfeldteile aus den Ruinen der sündhaften Beute.
 Obwohl sich in dem Loch keine verfluchten Objekte zu befinden scheinen, fühlt es sich an, als würde dich etwas aus dem Inneren beobachten.
+[IDS_ITEMDESC.ID1100032]
+Spielfeldteile aus der Untergegangenen Welt.
+Das sind Löcher, die von kolossalen Kreaturen benutzt werden – sei auf alles vorbereitet, wenn du es wagst, hineinzuschauen.
 [IDS_ITEMDESC.ID1100033]
 Spielfeldteile aus dem Evil★Zwilling-Duell-Spielfeld.
 Alles, was hier versteckt ist, wird wahrscheinlich bald gestohlen.
@@ -2647,7 +2678,8 @@ coming soon
 [IDS_ITEMDESC.ID1101030]
 coming soon
 [IDS_ITEMDESC.ID1101031]
-coming soon
+Spielfeldteile, die einem leuchtenden, Kummer verbreitenden Samen nachempfunden sind.
+Ein Fluch beginnt sich auszubreiten, als die Verstorbenen zurückkehren, um erneut zu blühen.
 [IDS_ITEMDESC.ID1101032]
 Spielfeldteile, die dem Modell Nr. 6, einer Serie von magisch angetriebenen Landmecha, nachempfunden sind.
 Ihr Abzeichen zeigt die Stärke ihrer Verbindung mit ihrem Partner.
@@ -2660,7 +2692,8 @@ Selbst wenn es nicht besetzt ist, fühlt man sich irgendwie unbehaglich.
 Spielfeldteile, die einer Krone aus Blumen nachempfunden sind.
 Solche Kronen erhalten ihre Bedeutung durch die Verwendung verschiedener Blumen.
 [IDS_ITEMDESC.ID1101036]
-coming soon
+Spielfeldteile, die einem Ring nachempfunden sind, der auf dem Wasser schwimmt.
+Der Auftrieb wirkt nicht auf Karten, die darin platziert werden.
 [IDS_ITEMDESC.ID1101037]
 coming soon
 [IDS_ITEMDESC.ID1101038]
@@ -2788,6 +2821,9 @@ Kreaturen, die sich in den Wald verirren, werden von der größten Blume angezog
 [IDS_ITEMDESC.ID1110031]
 Ein Stand aus den Ruinen der sündhaften Beute.
 Seine bläuliche Flamme ist vielleicht das letzte verbleibende Memento der früheren Schutzgottheit dieses Landes.
+[IDS_ITEMDESC.ID1110032]
+Ein Stand aus der Untergegangenen Welt. 
+Die Ausgrabung von Fossilien ist mit Gefahren verbunden, doch der Entdeckungsdrang ist nicht zu bremsen.
 [IDS_ITEMDESC.ID1110033]
 Ein Stand aus dem Evil★Zwilling Duell-Spielfeld.
 Was auch immer darauf platziert wird, hebt sich dank des bezaubernden Designs umso mehr ab.
@@ -2902,9 +2938,15 @@ Seit Anbeginn der Zeit hat sich das Licht immer mit der Dunkelheit gepaart.
 [IDS_ITEMDESC.ID1111048]
 Ein Stand nach dem Vorbild des LICHT Emblems.
 Obwohl LICHT Monster im Allgemeinen strahlen, könnte man sagen, dass FINSTERNIS Monster die andere Seite derselben Medaille sind.
+[IDS_ITEMDESC.ID1111049]
+Ein Stand nach dem Vorbild des ERDE Emblems.
+Der alles umschließende Boden unter unseren Füßen schenkt allen gleichermaßen Prüfungen und Segnungen.
 [IDS_ITEMDESC.ID1111050]
 Ein Stand nach dem Vorbild des WASSER Emblems.
 Er hilft, Leben zu schaffen und verkörpert die Dualität – freundlich und gelassen, aber auch durchsetzungsfähig und ruhelos.
+[IDS_ITEMDESC.ID1111052]
+Ein Stand nach dem Vorbild des WIND Emblems.
+Sanfte Brisen bringen Segen, während plötzliche Böen Eindringlinge wegfegen.
 [IDS_ITEMDESC.ID1111056]
 Ein Stand, der Armbändern und anderen Objekten nachempfunden ist, denen der Geist eines Königs innewohnt.
 Die Kraft der Ozeane, von der in Legenden die Rede ist, hat sich als aufsteigende Blasen manifestiert.
@@ -3227,15 +3269,20 @@ Schimmerndes Licht strömt aus den Armbändern der beiden Kontrahenten.
 Sie waren Fremde, bis sie von den Machenschaften des Schicksals verschluckt wurden.
 Nachdem sie auf ihrer Reise so viele Erinnerungen gesammelt hatten, wurde das Band zwischen ihnen gestärkt.
 [IDS_ITEMDESC.ID1130076]
-coming soon
+Eben war sie noch hinter einem Kaninchen hergejagt, dann fiel sie in ein Wurmloch …
+Willkommen in einem wundersamen digitalen Reich, in dem Realität und Fiktion miteinander verwoben sind.
 [IDS_ITEMDESC.ID1130077]
-coming soon
+Es ist unermesslich riesig und unheilvoll, aber seine Gestalt gleicht keinem lebenden Wesen.
+Verzweiflung ist angesichts seiner blutroten Aura unvermeidlich.
 [IDS_ITEMDESC.ID1130078]
-coming soon
+Ein flüchtiger Moment, bevor die Sonne unter den Horizont taucht.
+Sanfte Wellen rollen an den Strand, mit einem unglaublichen Sonnenuntergang im Hintergrund.
 [IDS_ITEMDESC.ID1130079]
-coming soon
+Die Gestalt, die „<card mrk='14492'/>“ nach ihrer schicksalhaften Begegnung mit „<card mrk='14646'/>“ annimmt.
+Sie vereint die Macht von drei Drachen und steht für die kommenden Kämpfe bereit.
 [IDS_ITEMDESC.ID1130080]
-coming soon
+Kinder haben viel Spaß am Korkenschießstand auf einem Festival.
+Einem Pechvogel ist es wieder schlechter ergangen als den anderen und er hat kein Geld mehr.
 [IDS_ITEMDESC.ID1130081]
 Ein Wesen, das sich aus den Tiefen des Abgrunds abgespalten hat und drakonische Kräfte in sich trägt.
 Es gibt nichts Langweiligeres als eine Geschichte, die genau nach Plan verläuft.
@@ -3353,6 +3400,18 @@ Für diejenigen, die sich gegen starke Konkurrenten durchgesetzt und Siege verbu
 [IDS_ITEMDESC.ID1020164]
 Ein Titel, der Duellanten verliehen wird, die in den „WCS 2025 Qualifiern“ DLv. MAX erreicht haben.
 Für diejenigen, die ihre Fähigkeiten als Duellanten unter Beweis gestellt haben und die würdig sind, zu den Regional Qualifiern aufzusteigen.
+[IDS_ITEMDESC.ID1020165]
+Ein Titel, der an Duellanten vergeben wird, die beim Festival „UNDER☆5“ Ergebnisse erzielt haben.
+Der Stolz der Duellanten erwacht durch die Karten, die sie am meisten schätzen.
+[IDS_ITEMDESC.ID1020166]
+Ein Titel, der an Duellanten vergeben wird, die beim Festival „Fusion x Link“ erfolgreich waren.
+Der Stolz der Duellanten erwacht durch die Karten, die sie am meisten schätzen.
+[IDS_ITEMDESC.ID1070121]
+Kartenhüllen, auf denen ein Wesen abgebildet ist, das sich über seine langjährige Fehde mit seinem Erzrivalen erhoben hat.
+Für diejenigen, die sich im Netzwerk aufhalten.
+[IDS_ITEMDESC.ID1070122]
+Kartenhüllen, auf denen „Maliss“ abgebildet ist, das ultimative Werkzeug der Königin, die Macht über verschiedene Kartentypen hat.
+Für diejenigen, die über wundersame virtuelle Welten herrschen wollen.
 [IDS_ITEMDESC.ID1073013]
 Eine Kartenhülle mit einem „WCS 2025 Qualifier“-Logo.
 Für diejenigen, die in der MASTER DUEL Division teilgenommen und das Event zu einem Erfolg gemacht haben.

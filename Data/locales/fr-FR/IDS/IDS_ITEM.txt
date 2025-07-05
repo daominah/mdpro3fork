@@ -134,6 +134,8 @@ Accélérateur de Flammes
 Ryko le Chasseur, Seigneur Lumière
 [IDS_ITEM.ID1001032]
 Sarcophage du Roi
+[IDS_ITEM.ID1001034]
+Diapason des Ténèbres 
 [IDS_ITEM.ID1002001]
 Ballon de foot
 [IDS_ITEM.ID1002002]
@@ -158,6 +160,8 @@ Rollers
 Fléchettes
 [IDS_ITEM.ID1002012]
 Vélo
+[IDS_ITEM.ID1002014]
+Chaise longue et Parasol
 [IDS_ITEM.ID1003001]
 Gaïa le Chevalier Implacable
 [IDS_ITEM.ID1003002]
@@ -372,6 +376,10 @@ FIÈVRE P.U.N.K. JAM !
 Déchéance et Vertu
 [IDS_ITEM.ID1010103]
 Dragon Supernova Rouge
+[IDS_ITEM.ID1010104]
+Maliss dans le Miroir
+[IDS_ITEM.ID1010105]
+Go ! - D/D/D Rage, Roi du Zéro Divin
 [IDS_ITEM.ID1010107]
 Aluber le Fou de Despia
 [IDS_ITEM.ID1010108]
@@ -1016,6 +1024,8 @@ Cadre jaune et citron vert
 Cadre bleu et violet
 [IDS_ITEM.ID1030035]
 Explosion Infernale
+[IDS_ITEM.ID1030036]
+Cadre violet et jaune
 [IDS_ITEM.ID1031001]
 La Voie de l'Assaut de l'Air Bleu
 [IDS_ITEM.ID1031002]
@@ -1044,6 +1054,8 @@ Assaut de l'Air - As - Raye
 Force de Miroir
 [IDS_ITEM.ID1031014]
 Kuriboh Détonateur
+[IDS_ITEM.ID1031015]
+Maliss
 [IDS_ITEM.ID1032001]
 Ornement festif
 [IDS_ITEM.ID1032002]
@@ -1062,6 +1074,8 @@ Panneau de néon
 Demoiselle d'Érable
 [IDS_ITEM.ID1032009]
 Rikka
+[IDS_ITEM.ID1032010]
+Bouée
 [IDS_ITEM.ID1033001]
 Fête du WCS 2023
 [IDS_ITEM.ID1033002]
@@ -1303,11 +1317,11 @@ Matériacteur Exagard
 [IDS_ITEM.ID1070117]
 Quariongandrax Crystron
 [IDS_ITEM.ID1070118]
-coming soon
+Force Arcane XXI - Le Monde
 [IDS_ITEM.ID1070119]
-coming soon
+Gyzarus, Bête Gladiateur
 [IDS_ITEM.ID1070120]
-coming soon
+Dragon Xyz de la Rébellion de l'Arc
 [IDS_ITEM.ID1071001]
 Maximus Croisédia
 [IDS_ITEM.ID1071002]
@@ -1386,6 +1400,8 @@ Armure Assaut de l'Air - Habit Noir Flamboyant
 Hallo et Ween
 [IDS_ITEM.ID1072005]
 Evil★Jumelle
+[IDS_ITEM.ID1072007]
+Maliss ＜Q＞
 [IDS_ITEM.ID1073001]
 Fête du WCS 2023
 [IDS_ITEM.ID1073002]
@@ -1574,6 +1590,8 @@ Forêt de blanc infini
 Forêt de Traptrix
 [IDS_ITEM.ID1090031]
 Ruines du Butin du Péché
+[IDS_ITEM.ID1090032]
+Monde Perdu
 [IDS_ITEM.ID1090033]
 Evil★Jumelle
 [IDS_ITEM.ID1090034]
@@ -1644,6 +1662,8 @@ Forêt de blanc infini
 Forêt de Traptrix
 [IDS_ITEM.ID1100031]
 Ruines du Butin du Péché
+[IDS_ITEM.ID1100032]
+Monde Perdu
 [IDS_ITEM.ID1100033]
 Evil★Jumelle
 [IDS_ITEM.ID1100034]
@@ -1696,12 +1716,16 @@ Recycleur de Ferraille et Ramasse-Miettes
 Retour à la Case Départ
 [IDS_ITEM.ID1101025]
 Sanctuaire du Roi du Feu
+[IDS_ITEM.ID1101031]
+Ragnaraika la Graine Maléfique
 [IDS_ITEM.ID1101032]
 Centur-Ion Emeth VI
 [IDS_ITEM.ID1101034]
 Hinamatsuri de Kochobo
 [IDS_ITEM.ID1101035]
 Couronne Florale
+[IDS_ITEM.ID1101036]
+Bouée
 [IDS_ITEM.ID1102001]
 Colisée
 [IDS_ITEM.ID1102002]
@@ -1766,6 +1790,8 @@ Forêt de blanc infini
 Forêt de Traptrix
 [IDS_ITEM.ID1110031]
 Ruines du Butin du Péché
+[IDS_ITEM.ID1110032]
+Monde Perdu
 [IDS_ITEM.ID1110033]
 Evil★Jumelle
 [IDS_ITEM.ID1110034]
@@ -1842,8 +1868,12 @@ Poussinocolats Magidolce
 TÉNÈBRES
 [IDS_ITEM.ID1111048]
 LUMIÈRE
+[IDS_ITEM.ID1111049]
+TERRE
 [IDS_ITEM.ID1111050]
 EAU
+[IDS_ITEM.ID1111052]
+VENT
 [IDS_ITEM.ID1111056]
 Légende des Mers Souveraines
 [IDS_ITEM.ID1111057]
@@ -2078,6 +2108,16 @@ Argostars
 Tempêtes de Feu sur Atlantis
 [IDS_ITEM.ID1130075]
 Déchéance et Vertu
+[IDS_ITEM.ID1130076]
+Maliss sous Terre
+[IDS_ITEM.ID1130077]
+Libérateur Eto
+[IDS_ITEM.ID1130078]
+Coup de Coucher du Soleil
+[IDS_ITEM.ID1130079]
+Esprit Tenyi - Suruya
+[IDS_ITEM.ID1130080]
+Shateki
 [IDS_ITEM.ID1130081]
 Aluber le Fou de Despia
 [IDS_ITEM.ID1130082]
@@ -2178,5 +2218,13 @@ Top 1000 des qualifications pour le WCS 2025
 Top 10000 des qualifications pour le WCS 2025
 [IDS_ITEM.ID1020164]
 DNV max lors des qualifications pour le WCS 2025
+[IDS_ITEM.ID1020165]
+Cinq étoiles
+[IDS_ITEM.ID1020166]
+Assassin en Bleu et Violet
+[IDS_ITEM.ID1070121]
+Dragon Furieux Chargeborrelle
+[IDS_ITEM.ID1070122]
+Maliss dans le Miroir
 [IDS_ITEM.ID1075002]
 THE CHRONICLES: Assaut de l'Air - As

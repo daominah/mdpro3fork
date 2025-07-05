@@ -134,6 +134,8 @@ Acelerador de Llama
 Ryko, Cazador Luminoso
 [IDS_ITEM.ID1001032]
 Sarcófago del Rey
+[IDS_ITEM.ID1001034]
+Resonador Oscuro
 [IDS_ITEM.ID1002001]
 Balón de fútbol
 [IDS_ITEM.ID1002002]
@@ -158,6 +160,8 @@ Patines de línea
 Dardos
 [IDS_ITEM.ID1002012]
 Bicicleta
+[IDS_ITEM.ID1002014]
+Silla y sombrilla de playa
 [IDS_ITEM.ID1003001]
 Gaia el Caballero Feroz
 [IDS_ITEM.ID1003002]
@@ -372,6 +376,10 @@ Mago Silencioso LV8
 Los Caídos y los Virtuosos
 [IDS_ITEM.ID1010103]
 Dragón Supernova Rojo
+[IDS_ITEM.ID1010104]
+Maliss Reflejada
+[IDS_ITEM.ID1010105]
+¡Vamos! - D/D/D Furia, Rey Cero Divino
 [IDS_ITEM.ID1010107]
 Aluber el Bufón de Despía
 [IDS_ITEM.ID1010108]
@@ -1016,6 +1024,8 @@ Marco amarillo y lima
 Marco azul y púrpura
 [IDS_ITEM.ID1030035]
 Reencender
+[IDS_ITEM.ID1030036]
+Marco púrpura y amarillo
 [IDS_ITEM.ID1031001]
 El Camino del Caza del Cielo Azul
 [IDS_ITEM.ID1031002]
@@ -1044,6 +1054,8 @@ Caza del Cielo As - Raye
 Fuerza de Espejo
 [IDS_ITEM.ID1031014]
 Kuriboh Detonando
+[IDS_ITEM.ID1031015]
+Maliss
 [IDS_ITEM.ID1032001]
 Ornamento Festivo
 [IDS_ITEM.ID1032002]
@@ -1062,6 +1074,8 @@ Cartel de Neón
 Doncella del Arce
 [IDS_ITEM.ID1032009]
 Rikka
+[IDS_ITEM.ID1032010]
+Flotador
 [IDS_ITEM.ID1033001]
 Recuerdo del WCS 2023
 [IDS_ITEM.ID1033002]
@@ -1303,11 +1317,11 @@ Materiactor Exagard
 [IDS_ITEM.ID1070117]
 Cristron Quariongandrax
 [IDS_ITEM.ID1070118]
-coming soon
+Fuerza Arcana XXI - El Mundo
 [IDS_ITEM.ID1070119]
-coming soon
+Bestia Gladiador Gyzarus
 [IDS_ITEM.ID1070120]
-coming soon
+Dragón Xyz Rebelión Arc
 [IDS_ITEM.ID1071001]
 Cruzadia Maximus
 [IDS_ITEM.ID1071002]
@@ -1386,6 +1400,8 @@ Armadura de Caza del Cielo - Vestidura oscura
 Hallo y Ween
 [IDS_ITEM.ID1072005]
 Evil★Gemela
+[IDS_ITEM.ID1072007]
+Maliss ＜Q＞
 [IDS_ITEM.ID1073001]
 Recuerdo del WCS 2023
 [IDS_ITEM.ID1073002]
@@ -1574,6 +1590,8 @@ Bosque del Blanco Infinito
 Bosque de las Atrapadoras
 [IDS_ITEM.ID1090031]
 Ruinas del Botín del Pecado
+[IDS_ITEM.ID1090032]
+Mundo Perdido
 [IDS_ITEM.ID1090033]
 Evil★Gemela
 [IDS_ITEM.ID1090034]
@@ -1644,6 +1662,8 @@ Bosque del Blanco Infinito
 Bosque de las Atrapadoras
 [IDS_ITEM.ID1100031]
 Ruinas del Botín del Pecado
+[IDS_ITEM.ID1100032]
+Mundo Perdido
 [IDS_ITEM.ID1100033]
 Evil★Gemela
 [IDS_ITEM.ID1100034]
@@ -1696,12 +1716,16 @@ Reciclador de Chatarra y Recolector de Residuos
 Atrás a la Casilla Uno
 [IDS_ITEM.ID1101025]
 Santuario del Rey de Fuego
+[IDS_ITEM.ID1101031]
+Ragnaraika la Semilla del Mal
 [IDS_ITEM.ID1101032]
 Centur-Ión Emeth VI
 [IDS_ITEM.ID1101034]
 Hinamatsuri de Kochobo
 [IDS_ITEM.ID1101035]
 Corona de flores
+[IDS_ITEM.ID1101036]
+Flotador
 [IDS_ITEM.ID1102001]
 Coliseo
 [IDS_ITEM.ID1102002]
@@ -1766,6 +1790,8 @@ Bosque del Blanco Infinito
 Bosque de las Atrapadoras
 [IDS_ITEM.ID1110031]
 Ruinas del Botín del Pecado
+[IDS_ITEM.ID1110032]
+Mundo Perdido
 [IDS_ITEM.ID1110033]
 Evil★Gemela
 [IDS_ITEM.ID1110034]
@@ -1842,8 +1868,12 @@ Chickolates Magidulce
 OSCURIDAD
 [IDS_ITEM.ID1111048]
 LUZ
+[IDS_ITEM.ID1111049]
+TIERRA
 [IDS_ITEM.ID1111050]
 AGUA
+[IDS_ITEM.ID1111052]
+VIENTO
 [IDS_ITEM.ID1111056]
 Leyenda de los Mares Soberanos
 [IDS_ITEM.ID1111057]
@@ -2078,6 +2108,16 @@ Argostars
 Tormentas de Fuego Sobre Atlántida
 [IDS_ITEM.ID1130075]
 Los Caídos y los Virtuosos
+[IDS_ITEM.ID1130076]
+Maliss Subterránea
+[IDS_ITEM.ID1130077]
+Liberador Eto
+[IDS_ITEM.ID1130078]
+Golpe del Atardecer
+[IDS_ITEM.ID1130079]
+Espíritu Tenyi - Suruya
+[IDS_ITEM.ID1130080]
+Shateki
 [IDS_ITEM.ID1130081]
 Aluber el Bufón de Despía
 [IDS_ITEM.ID1130082]
@@ -2178,5 +2218,13 @@ Top 1000 de las eliminatorias del WCS 2025
 Top 10000 de las eliminatorias del WCS 2025
 [IDS_ITEM.ID1020164]
 DLv. MÁX en las eliminatorias del WCS 2025
+[IDS_ITEM.ID1020165]
+Cinco estrellas
+[IDS_ITEM.ID1020166]
+Asesino de azul y púrpura
+[IDS_ITEM.ID1070121]
+Dragón Furioso Borrecarga
+[IDS_ITEM.ID1070122]
+Maliss Reflejada
 [IDS_ITEM.ID1075002]
 THE CHRONICLES: Caza del Cielo As

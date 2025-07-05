@@ -134,6 +134,8 @@ Acceleratore Fiammata
 Ryko, Cacciatore Fedele della Luce
 [IDS_ITEM.ID1001032]
 Sarcofago del Re
+[IDS_ITEM.ID1001034]
+Diapason Oscuro
 [IDS_ITEM.ID1002001]
 Pallone da calcio
 [IDS_ITEM.ID1002002]
@@ -158,6 +160,8 @@ Pattini in linea
 Freccette
 [IDS_ITEM.ID1002012]
 Bicicletta
+[IDS_ITEM.ID1002014]
+Sedia e ombrellone da spiaggia
 [IDS_ITEM.ID1003001]
 Gaia il Cavaliere
 [IDS_ITEM.ID1003002]
@@ -372,6 +376,10 @@ P.U.N.K. JAM FEBBRE!
 Il Caduto e la Virtuosa
 [IDS_ITEM.ID1010103]
 Drago Supernova Rosso
+[IDS_ITEM.ID1010104]
+Maliss nello Specchio
+[IDS_ITEM.ID1010105]
+Vai! - D/D/D Rabbia Re dello Zero Divino
 [IDS_ITEM.ID1010107]
 Aluber il Giullare di Dispia
 [IDS_ITEM.ID1010108]
@@ -1016,6 +1024,8 @@ Cornice gialla e lime
 Cornice blu e viola
 [IDS_ITEM.ID1030035]
 Riaccendere
+[IDS_ITEM.ID1030036]
+Cornice viola e gialla
 [IDS_ITEM.ID1031001]
 Il cammino dell'Assaltatrice del Cielo blu
 [IDS_ITEM.ID1031002]
@@ -1044,6 +1054,8 @@ Assaltatrice del Cielo Asso - Raye
 Forza Riflessa
 [IDS_ITEM.ID1031014]
 Kuriboh Detonante
+[IDS_ITEM.ID1031015]
+Maliss
 [IDS_ITEM.ID1032001]
 Ornamento festivo
 [IDS_ITEM.ID1032002]
@@ -1062,6 +1074,8 @@ Insegna Neon
 Fanciulla Acero
 [IDS_ITEM.ID1032009]
 Rikka
+[IDS_ITEM.ID1032010]
+Salvagente
 [IDS_ITEM.ID1033001]
 Premio di partecipazione al "WCS 2023"
 [IDS_ITEM.ID1033002]
@@ -1303,11 +1317,11 @@ Materiattore Exagard
 [IDS_ITEM.ID1070117]
 Crystron Quariongandrax
 [IDS_ITEM.ID1070118]
-coming soon
+Energia Arcana XXI - Il Mondo
 [IDS_ITEM.ID1070119]
-coming soon
+Gladiatore Bestia Gyzarus
 [IDS_ITEM.ID1070120]
-coming soon
+Drago Xyz Ribellione Arc
 [IDS_ITEM.ID1071001]
 Crociatia Maximus
 [IDS_ITEM.ID1071002]
@@ -1386,6 +1400,8 @@ Assaltatrice del Cielo Armatura - Lampo Nero
 Hallo & Ween
 [IDS_ITEM.ID1072005]
 Evil★Gemella
+[IDS_ITEM.ID1072007]
+Maliss ＜Q＞
 [IDS_ITEM.ID1073001]
 Premio di partecipazione al "WCS 2023"
 [IDS_ITEM.ID1073002]
@@ -1574,6 +1590,8 @@ Foresta bianco eterno
 Foresta delle Trappolatrice
 [IDS_ITEM.ID1090031]
 Rovine delle Spoglie del Peccato
+[IDS_ITEM.ID1090032]
+Mondo Perduto
 [IDS_ITEM.ID1090033]
 Evil★Gemella
 [IDS_ITEM.ID1090034]
@@ -1644,6 +1662,8 @@ Foresta bianco eterno
 Foresta delle Trappolatrice
 [IDS_ITEM.ID1100031]
 Rovine delle Spoglie del Peccato
+[IDS_ITEM.ID1100032]
+Mondo Perduto
 [IDS_ITEM.ID1100033]
 Evil★Gemella
 [IDS_ITEM.ID1100034]
@@ -1696,12 +1716,16 @@ Riciclatore di Frammenti e Gestore Garbage Collection
 Torna all'Inizio
 [IDS_ITEM.ID1101025]
 Santuario del Re del Fuoco
+[IDS_ITEM.ID1101031]
+Ragnaraika il Seme Malvagio
 [IDS_ITEM.ID1101032]
 Centur-Ion Emeth VI
 [IDS_ITEM.ID1101034]
 Hinamatsuri di Kochobo
 [IDS_ITEM.ID1101035]
 Corona Floreale
+[IDS_ITEM.ID1101036]
+Salvagente
 [IDS_ITEM.ID1102001]
 Colosseo
 [IDS_ITEM.ID1102002]
@@ -1766,6 +1790,8 @@ Foresta bianco eterno
 Foresta delle Trappolatrice
 [IDS_ITEM.ID1110031]
 Rovine delle Spoglie del Peccato
+[IDS_ITEM.ID1110032]
+Mondo Perduto
 [IDS_ITEM.ID1110033]
 Evil★Gemella
 [IDS_ITEM.ID1110034]
@@ -1842,8 +1868,12 @@ Magidolce Cioccopollo
 OSCURITÀ
 [IDS_ITEM.ID1111048]
 LUCE
+[IDS_ITEM.ID1111049]
+TERRA
 [IDS_ITEM.ID1111050]
 ACQUA
+[IDS_ITEM.ID1111052]
+VENTO
 [IDS_ITEM.ID1111056]
 La Leggenda dei Mari Reali
 [IDS_ITEM.ID1111057]
@@ -2078,6 +2108,16 @@ Argostars
 Tempeste di Fuoco Sopra Atlantide
 [IDS_ITEM.ID1130075]
 Il Caduto e la Virtuosa
+[IDS_ITEM.ID1130076]
+Maliss nel Sottosuolo
+[IDS_ITEM.ID1130077]
+Liberatore Eto
+[IDS_ITEM.ID1130078]
+Battito del Tramonto
+[IDS_ITEM.ID1130079]
+Spirito Tenyi - Suruya
+[IDS_ITEM.ID1130080]
+Shateki
 [IDS_ITEM.ID1130081]
 Aluber il Giullare di Dispia
 [IDS_ITEM.ID1130082]
@@ -2178,5 +2218,13 @@ Top 1000 "Qualificazioni del WCS 2025"
 Top 10000 "Qualificazioni del WCS 2025"
 [IDS_ITEM.ID1020164]
 Liv. D MAX "Qualificazioni del WCS 2025"
+[IDS_ITEM.ID1020165]
+Cinque stelle
+[IDS_ITEM.ID1020166]
+Assassino in blu e viola
+[IDS_ITEM.ID1070121]
+Drago Furioso Callibrocarica
+[IDS_ITEM.ID1070122]
+Maliss nello Specchio
 [IDS_ITEM.ID1075002]
 THE CHRONICLES: Assaltatrice del Cielo Asso
