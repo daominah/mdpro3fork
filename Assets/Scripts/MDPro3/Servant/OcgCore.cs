@@ -840,8 +840,11 @@ namespace MDPro3.Servant
                 var mateLoader = ABLoader.LoadMateAsync(mateCode);
                 while (mateLoader.MoveNext())
                     yield return null;
-                mate0 = mateLoader.Current;
-                mate0.parent = pos_Avatar_near;
+                if(mateLoader.Current != null)
+                {
+                    mate0 = mateLoader.Current;
+                    mate0.parent = pos_Avatar_near;
+                }
             }
 
             mateConfig = Config.Get(condition.ToString() + "Mate1", Program.items.mates[0].id.ToString());
@@ -850,8 +853,11 @@ namespace MDPro3.Servant
                 var mateLoader = ABLoader.LoadMateAsync(int.Parse(Config.Get(condition.ToString() + "Mate1", Program.items.mates[0].id.ToString())));
                 while (mateLoader.MoveNext())
                     yield return null;
-                mate1 = mateLoader.Current;
-                mate1.parent = pos_Avatar_far;
+                if (mateLoader.Current != null)
+                {
+                    mate1 = mateLoader.Current;
+                    mate1.parent = pos_Avatar_far;
+                }
             }
             #endregion
 

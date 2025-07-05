@@ -289,7 +289,7 @@ namespace MDPro3
 
         public static IEnumerator<Mate> LoadMateAsync(int code)
         {
-            Items.Item item = new Items.Item();
+            Items.Item item = new();
             foreach (var mate in Program.items.mates)
             {
                 if (mate.id == code)
@@ -353,6 +353,7 @@ namespace MDPro3
             {
                 bool mateInFolder = false;
                 var matePath = Program.items.GetAssetPath(code.ToString(), Items.ItemType.Mate);
+
                 IEnumerator<GameObject> ie;
                 if (matePath.EndsWith("_Folder"))
                 {

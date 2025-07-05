@@ -597,10 +597,10 @@ MonoBehaviour:
   - id: 1001034
     m_name: 
     m_description: 
-    path: 
+    path: Mate/M07708_Model
     secondFace: 1
     diy: 0
-    notReady: 1
+    notReady: 0
   - id: 1001035
     m_name: 
     m_description: 
@@ -807,10 +807,10 @@ MonoBehaviour:
   - id: 1002014
     m_name: 
     m_description: 
-    path: 
+    path:  Mate/V00014_Model
     secondFace: 0
     diy: 0
-    notReady: 1
+    notReady: 0
   - id: 1002015
     m_name: 
     m_description: 
@@ -1791,14 +1791,14 @@ MonoBehaviour:
     path: 
     secondFace: 0
     diy: 0
-    notReady: 1
+    notReady: 0
   - id: 1010105
     m_name: 
     m_description: 
     path: 
     secondFace: 0
     diy: 0
-    notReady: 1
+    notReady: 0
   - id: 1010106
     m_name: 
     m_description: 
@@ -3032,6 +3032,13 @@ MonoBehaviour:
     secondFace: 0
     diy: 0
     notReady: 0
+  - id: 1030036
+    m_name: 
+    m_description: 
+    path: 
+    secondFace: 0
+    diy: 0
+    notReady: 0
   - id: 1031001
     m_name: 
     m_description: 
@@ -3130,6 +3137,13 @@ MonoBehaviour:
     secondFace: 0
     diy: 0
     notReady: 0
+  - id: 1031015
+    m_name: 
+    m_description: 
+    path: 
+    secondFace: 0
+    diy: 0
+    notReady: 0
   - id: 1032001
     m_name: 
     m_description: 
@@ -3187,6 +3201,13 @@ MonoBehaviour:
     diy: 0
     notReady: 0
   - id: 1032009
+    m_name: 
+    m_description: 
+    path: 
+    secondFace: 0
+    diy: 0
+    notReady: 0
+  - id: 1032010
     m_name: 
     m_description: 
     path: 
@@ -5065,6 +5086,13 @@ MonoBehaviour:
     secondFace: 0
     diy: 0
     notReady: 0
+  - id: 1090032
+    m_name: 
+    m_description: 
+    path: Mat/Mat_034
+    secondFace: 0
+    diy: 0
+    notReady: 0
   - id: 1090033
     m_name: 
     m_description: 
@@ -5318,6 +5346,13 @@ MonoBehaviour:
     secondFace: 0
     diy: 0
     notReady: 0
+  - id: 1100032
+    m_name: 
+    m_description: 
+    path: Grave/Grave_034
+    secondFace: 0
+    diy: 0
+    notReady: 0
   - id: 1100033
     m_name: 
     m_description: 
@@ -5500,6 +5535,13 @@ MonoBehaviour:
     secondFace: 0
     diy: 0
     notReady: 0
+  - id: 1101031
+    m_name: 
+    m_description: 
+    path: Grave/Grave_u041
+    secondFace: 0
+    diy: 0
+    notReady: 0
   - id: 1101032
     m_name: 
     m_description: 
@@ -5518,6 +5560,13 @@ MonoBehaviour:
     m_name: 
     m_description: 
     path: Grave/Grave_u046
+    secondFace: 0
+    diy: 0
+    notReady: 0
+  - id: 1101036
+    m_name: 
+    m_description: 
+    path: Grave/Grave_u048
     secondFace: 0
     diy: 0
     notReady: 0
@@ -5722,6 +5771,13 @@ MonoBehaviour:
     m_name: 
     m_description: 
     path: AvatarStand/AvatarStand_036
+    secondFace: 0
+    diy: 0
+    notReady: 0
+  - id: 1110032
+    m_name: 
+    m_description: 
+    path: AvatarStand/AvatarStand_034
     secondFace: 0
     diy: 0
     notReady: 0
@@ -5984,10 +6040,24 @@ MonoBehaviour:
     secondFace: 0
     diy: 0
     notReady: 0
+  - id: 1111049
+    m_name: 
+    m_description: 
+    path: AvatarStand/AvatarStand_u068
+    secondFace: 0
+    diy: 0
+    notReady: 0
   - id: 1111050
     m_name: 
     m_description: 
     path: AvatarStand/AvatarStand_u069
+    secondFace: 0
+    diy: 0
+    notReady: 0
+  - id: 1111052
+    m_name: 
+    m_description: 
+    path: AvatarStand/AvatarStand_u071
     secondFace: 0
     diy: 0
     notReady: 0
@@ -6552,6 +6622,41 @@ MonoBehaviour:
     secondFace: 0
     diy: 0
     notReady: 0
+  - id: 1130076
+    m_name: 
+    m_description: 
+    path: Wallpaper/Front0076
+    secondFace: 0
+    diy: 0
+    notReady: 0
+  - id: 1130077
+    m_name: 
+    m_description: 
+    path: Wallpaper/Front0077
+    secondFace: 0
+    diy: 0
+    notReady: 0
+  - id: 1130078
+    m_name: 
+    m_description: 
+    path: Wallpaper/Front0078
+    secondFace: 0
+    diy: 0
+    notReady: 0
+  - id: 1130079
+    m_name: 
+    m_description: 
+    path: Wallpaper/Front0079
+    secondFace: 0
+    diy: 0
+    notReady: 0
+  - id: 1130080
+    m_name: 
+    m_description: 
+    path: Wallpaper/Front0080
+    secondFace: 0
+    diy: 0
+    notReady: 0
   - id: 1130081
     m_name: 
     m_description: 
@@ -6619,6 +6724,27 @@ MonoBehaviour:
     m_name: <card mrk='26077389'/>
     m_description: "@ \u4E0D\u60F3\u8D77\u5E8A\u7684\u9C7C\u9C7C"
     path: Wallpaper/26077389
+    secondFace: 0
+    diy: 1
+    notReady: 0
+  - id: 1135008
+    m_name: <card mrk='5043011'/>
+    m_description: "@ \u4E0D\u60F3\u8D77\u5E8A\u7684\u9C7C\u9C7C"
+    path: Wallpaper/5043011
+    secondFace: 0
+    diy: 1
+    notReady: 0
+  - id: 1135009
+    m_name: <card mrk='68304193'/>
+    m_description: "@ \u4E0D\u60F3\u8D77\u5E8A\u7684\u9C7C\u9C7C"
+    path: Wallpaper/68304193
+    secondFace: 0
+    diy: 1
+    notReady: 0
+  - id: 1135010
+    m_name: <card mrk='88177324'/>
+    m_description: "@ \u4E0D\u60F3\u8D77\u5E8A\u7684\u9C7C\u9C7C"
+    path: Wallpaper/88177324
     secondFace: 0
     diy: 1
     notReady: 0

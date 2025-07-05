@@ -278,7 +278,7 @@ namespace MDPro3
 
         public Item GetRandomItem(ItemType type)
         {
-            return type switch
+            var result = type switch
             {
                 ItemType.Wallpaper => wallpapers[UnityEngine.Random.Range(0, wallpapers.Count)],
                 ItemType.Face => faces[UnityEngine.Random.Range(0, faces.Count)],
@@ -291,6 +291,11 @@ namespace MDPro3
                 ItemType.Case => cases[UnityEngine.Random.Range(0, cases.Count)],
                 _ => mats[UnityEngine.Random.Range(0, mats.Count)],
             };
+
+            if(result.notReady)
+                return GetRandomItem(type);
+            else
+                return result;
         }
 
         public string GetWallpaperPath(string code)
