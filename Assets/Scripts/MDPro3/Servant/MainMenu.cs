@@ -61,12 +61,14 @@ namespace MDPro3.Servant
 
             UIManager.ShowWallpaper(TransitionTime);
         }
+
         protected override void ApplyHideArrangement(int preDepth)
         {
             base.ApplyHideArrangement(preDepth);
 
             UIManager.HideWallpaper(TransitionTime);
         }
+
         public override void PerFrameFunction()
         {
             if (NeedResponseInput())
@@ -88,6 +90,7 @@ namespace MDPro3.Servant
                 }
             }
         }
+
         public override void Select(bool forced = false)
         {
             if (!forced && !UserInput.NeedDefaultSelect())
@@ -123,7 +126,7 @@ namespace MDPro3.Servant
                 Config.Save();
             }
 
-            using var www2 = UnityWebRequest.Get(Settings.Data.PrereleasePackVersionUrl);
+            using var www2 = UnityWebRequest.Get(Settings.GetPrereleasePackVersionUrl());
             yield return www2.SendWebRequest();
             if (www2.result == UnityWebRequest.Result.Success)
             {

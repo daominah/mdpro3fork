@@ -1989,12 +1989,12 @@ namespace MDPro3.UI.ServantUI
             ButtonDuelSystemMessage.SetModeText(InterString.Get(config ? "开" : "关"));
 
             config = Config.GetBool("WatchSystemMessage", true);
-            ButtonDuelSystemMessage.SetClickEvent(OnWatchSystemMessageClick);
-            ButtonDuelSystemMessage.SetModeText(InterString.Get(config ? "开" : "关"));
+            ButtonWatchSystemMessage.SetClickEvent(OnWatchSystemMessageClick);
+            ButtonWatchSystemMessage.SetModeText(InterString.Get(config ? "开" : "关"));
 
             config = Config.GetBool("ReplaySystemMessage", true);
-            ButtonDuelSystemMessage.SetClickEvent(OnReplaySystemMessageClick);
-            ButtonDuelSystemMessage.SetModeText(InterString.Get(config ? "开" : "关"));
+            ButtonReplaySystemMessage.SetClickEvent(OnReplaySystemMessageClick);
+            ButtonReplaySystemMessage.SetModeText(InterString.Get(config ? "开" : "关"));
         }
         private void OnDuelSystemMessageClick()
         {
@@ -2005,13 +2005,13 @@ namespace MDPro3.UI.ServantUI
         private void OnWatchSystemMessageClick()
         {
             var config = Config.GetBool("WatchSystemMessage", true);
-            ButtonDuelSystemMessage.SetModeText(InterString.Get(config ? "关" : "开"));
+            ButtonWatchSystemMessage.SetModeText(InterString.Get(config ? "关" : "开"));
             Config.SetBool("WatchSystemMessage", !config);
         }
         private void OnReplaySystemMessageClick()
         {
             var config = Config.GetBool("ReplaySystemMessage", true);
-            ButtonDuelSystemMessage.SetModeText(InterString.Get(config ? "关" : "开"));
+            ButtonReplaySystemMessage.SetModeText(InterString.Get(config ? "关" : "开"));
             Config.SetBool("ReplaySystemMessage", !config);
         }
 

@@ -1549,7 +1549,9 @@ namespace MDPro3.Servant
             {
                 if (condition == Condition.Duel && !Config.GetBool("DuelPlayerMessage", true))
                     return false;
-                if (condition == Condition.Watch && !!Config.GetBool("ReplayPlayerMessage", true))
+                if (condition == Condition.Watch && !Config.GetBool("WatchPlayerMessage", true))
+                    return false;
+                if (condition == Condition.Replay && !Config.GetBool("ReplayPlayerMessage", true))
                     return false;
             }
             else
