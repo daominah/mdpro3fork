@@ -95,10 +95,11 @@ namespace MDPro3
         public static Program instance;
         public static Items items;
 
-        List<Manager> managers = new List<Manager>();
-        List<Servant.Servant> servants = new List<Servant.Servant>();
+        private readonly List<Manager> managers = new();
+        private readonly List<Servant.Servant> servants = new();
+        public static bool exitOnReturn = false;
 
-        void Initialize()
+        private void Initialize()
         {
             if (!Directory.Exists(PATH_DATA))
                 Directory.CreateDirectory(PATH_DATA);
@@ -125,7 +126,6 @@ namespace MDPro3
             BanlistManager.Initialize();
             InitializeAllManagers();
             InitializeAllServants();
-            ReadParams();
 
             var handle = Addressables.InstantiateAsync("Prefab/CardRenderer.prefab");
             handle.Completed += (result) =>
@@ -135,31 +135,30 @@ namespace MDPro3
             };
         }
 
-        public static bool exitOnReturn = false;
-        void ReadParams()
+        public void ReadParams()
         {
             var args = Environment.GetCommandLineArgs();
-            //args = new string[2]
+            //args = new string[11]
             //{
-            //    //"-r",
-            //    //"TURN023"
+                //"-r",
+                //"TURN023"
 
-            //    //"-s",
-            //    //"6ace for win!"
+                //"-s",
+                //"6ace for win!"
 
             //    "-d",
             //    "LL铁兽",
 
-            //    //"-n",
-            //    //"赤子奈落",
+            //    "-n",
+            //    "赤子奈落",
 
-            //    //"-h",
-            //    //"mygo.superpre.pro",
-            //    //"-p",
-            //    //"888",
-            //    //"-w",
-            //    //"M#1008611",
-            //    //"-j"
+            //    "-h",
+            //    "mygo.superpre.pro",
+            //    "-p",
+            //    "888",
+            //    "-w",
+            //    "M#1008611",
+            //    "-j"
             //};
 
             string nick = null;
@@ -245,6 +244,7 @@ namespace MDPro3
             foreach (Manager manager in managers)
                 manager.Initialize();
         }
+
         private void InitializeAllServants()
         {
             servants.Add(setting);
@@ -280,7 +280,7 @@ namespace MDPro3
         public const string PATH_TEMP_FOLDER = "TempFolder/";
         public static string root = PATH_ROOT_WINDOWS64;
 
-        void Awake()
+        private void Awake()
         {
 #if UNITY_ANDROID
             root = PATH_ROOT_ANDROID;
@@ -311,12 +311,12 @@ namespace MDPro3
                 Time.timeScale = value;
             }
         }
-        float m_TimeScale = 1f;
+        private float m_TimeScale = 1f;
 #if UNITY_EDITOR
         public float timeScaleForEditor = 1;
 #endif
 
-        void Update()
+        private void Update()
         {
             TcpHelper.PerFrameFunction();
             foreach (Manager manager in managers) 
@@ -337,8 +337,10 @@ namespace MDPro3
                 StartCoroutine(gc);
             }
         }
-        IEnumerator gc;
-        IEnumerator UnloadUnusedAssetsAsync()
+
+        private IEnumerator gc;
+
+        private IEnumerator UnloadUnusedAssetsAsync()
         {
             var unload = Resources.UnloadUnusedAssets();
             while (!unload.isDone)

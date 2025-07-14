@@ -148,7 +148,11 @@ namespace MDPro3.UI.ServantUI
             TextRoomInfo.text = roomInfo;
 
             if (!Appearance.loaded)
+            {
+                foreach(var rp in roomPlayers)
+                    rp.gameObject.SetActive(false);
                 return;
+            }
 
             for (int i = 0; i < 4; i++)
             {

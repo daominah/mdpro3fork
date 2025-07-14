@@ -66,7 +66,7 @@ namespace MDPro3.Servant
             if (servantUI == null)
             {
                 this.replayName = replayName;
-                LoadUI();
+                Program.instance.ShiftToServant(this);
             }
             else
                 GetUI<ReplaySelectorUI>().KF_Replay(replayName);

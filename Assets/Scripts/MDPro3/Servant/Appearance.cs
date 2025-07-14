@@ -484,6 +484,9 @@ namespace MDPro3.Servant
             #endregion
 
             loaded = true;
+
+            if(Program.instance.currentServant == Program.instance.room)
+                Program.instance.room.Realize();
         }
 
 

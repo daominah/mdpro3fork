@@ -1,12 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Networking;
-using System.IO;
 using MDPro3.Net;
 using MDPro3.UI;
-using UnityEngine.EventSystems;
 using MDPro3.UI.ServantUI;
+using System.Collections;
+using System.Collections.Generic;
+using System.IO;
+using UnityEngine;
+using UnityEngine.Networking;
 
 namespace MDPro3.Servant
 {
@@ -53,6 +52,8 @@ namespace MDPro3.Servant
             base.FirstLoadEvent();
             servantUI.ResetUI();
             StartCoroutine(LoadMyCardNewsAsync());
+
+            Program.instance.ReadParams();
         }
 
         protected override void ApplyShowArrangement(int preDepth)

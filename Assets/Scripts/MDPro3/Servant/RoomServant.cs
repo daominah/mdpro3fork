@@ -203,7 +203,7 @@ namespace MDPro3.Servant
             Program.instance.ShiftToServant(Program.instance.ocgcore);
         }
 
-        private void Realize()
+        public void Realize()
         {
             if (servantUI == null)
                 return;
@@ -304,7 +304,6 @@ namespace MDPro3.Servant
                             break;
                     }
                     tasks.Add(task);
-                    Debug.Log("add");
                     UIManager.ShowPopupConfirm(tasks);
                     break;
                 case 3:
@@ -410,6 +409,7 @@ namespace MDPro3.Servant
 
             for (int i = 0; i < 4; i++)
                 players[i] = null;
+
             Program.instance.ShiftToServant(Program.instance.room);
         }
 

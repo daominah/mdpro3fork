@@ -18,6 +18,12 @@ public class AssetBundleRobber : MonoBehaviour
     private static Text sText;
     public TMP_InputField input;
 
+    public bool mode_Window = true;
+    public bool mode_Android = false;
+    public bool mode_IOS = false;
+
+    public bool fullCopy;
+
     private string pathAB;
     private string pathStore;
 
@@ -37,7 +43,6 @@ public class AssetBundleRobber : MonoBehaviour
     private int count = 0;
     private AssetStudio.AssetsManager assetManager;
 
-    private bool fullCopy;
     private readonly int threads = 32;
     private AssetType copyAssetType = AssetType.All;
 
@@ -65,17 +70,21 @@ public class AssetBundleRobber : MonoBehaviour
 
         Application.targetFrameRate = 0;
 
-        pathAB = PATH_AB_WINDOWS;
-        pathStore = PATH_STORE_WINDOWS;
-
-        pathAB = PATH_AB_ANDROID;
-        pathStore = PATH_STORE_ANDROID;
-
-        //pathAB = PATH_AB_IOS;
-        //pathStore = PATH_STORE_IOS;
-
-        //fullCopy = true;
-        fullCopy = false;
+        if (mode_Android)
+        {
+            pathAB = PATH_AB_ANDROID;
+            pathStore = PATH_STORE_ANDROID;
+        }
+        else if (mode_IOS)
+        {
+            pathAB = PATH_AB_IOS;
+            pathStore = PATH_STORE_IOS;
+        }
+        else
+        {
+            pathAB = PATH_AB_WINDOWS;
+            pathStore = PATH_STORE_WINDOWS;
+        }
 
         copyAssetType = AssetType.All;
 
