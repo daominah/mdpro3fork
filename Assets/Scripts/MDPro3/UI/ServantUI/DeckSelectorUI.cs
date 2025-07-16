@@ -317,12 +317,12 @@ namespace MDPro3.UI.ServantUI
                 {
                     var uri = new Uri(clipBoard);
                     var deck = DeckShareURL.UriToDeck(uri);
-                    deck.Save(deckName, DateTime.Now);
+                    deck.Save(deckName, DateTime.UtcNow);
                 }
                 else if (clipBoard.Contains(YdkeConverter.ydkeHeader))
                 {
                     var deck = YdkeConverter.Ydke2Deck(clipBoard);
-                    deck.Save(deckName, DateTime.Now);
+                    deck.Save(deckName, DateTime.UtcNow);
                 }
                 Config.SetConfigDeck(deckName);
                 RefreshList();

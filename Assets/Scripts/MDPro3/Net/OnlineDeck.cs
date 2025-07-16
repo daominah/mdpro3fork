@@ -54,7 +54,6 @@ namespace MDPro3.Net
 
                 if (request.result == UnityWebRequest.Result.Success)
                 {
-                    string jsonResult = request.downloadHandler.text;
                     var responseData = JsonUtility.FromJson<ResponseMultiSimpleData>(request.downloadHandler.text);
                     return responseData.data;
                 }
@@ -162,7 +161,10 @@ namespace MDPro3.Net
                 if (responseData.code == 0)
                     MessageManager.Cast(InterString.Get("点赞卡组成功。"));
                 else
-                    MessageManager.Cast(InterString.Get("点赞卡组失败：") + InterString.Get(responseData.message, responseData.messageValue));
+                    MessageManager.Cast(InterString.Get("点赞卡组失败：") +
+                        //InterString.Get(responseData.message, responseData.messageValue)
+                        responseData.message
+                        );
             }
             else
                 MessageManager.Cast(InterString.Get("点赞卡组失败：") + request.error);
@@ -229,7 +231,7 @@ namespace MDPro3.Net
 
                 decks[i].deckId = ids[i];
                 decks[i].userId = MyCard.account.user.id.ToString();
-                decks[i].Save(newName, DateTime.Now, false);
+                decks[i].Save(newName, DateTime.UtcNow, false);
             }
 
             var json = JsonUtility.ToJson(body);
@@ -296,10 +298,9 @@ namespace MDPro3.Net
             if (request.result == UnityWebRequest.Result.Success)
             {
                 var responseData = JsonUtility.FromJson<SyncResponseSingleData>(request.downloadHandler.text);
-                Debug.LogFormat("Sync Deck: {0}, Result: {1} {2} {3}.", deckName, responseData.code, responseData.message, responseData.data);
                 if (showHint)
                     MessageManager.Cast(InterString.Get("云端卡组「[?]」已同步。", deckName));
-                deck.Save(deckName, DateTime.Now, false);
+                deck.Save(deckName, DateTime.UtcNow, false);
                 return true;
             }
             else
@@ -451,37 +452,33 @@ namespace MDPro3.Net
             public string deckId;
             public string deckContributor;
             public string deckName;
+            public string deckType;
             public int deckRank = 0;
             public int deckLike = 0;
-            public string deckUploadDate;
-            public string deckUpdateDate;
+            public long deckUploadDate;
+            public long deckUpdateDate;
             public int deckCoverCard1 = 0;
             public int deckCoverCard2 = 0;
             public int deckCoverCard3 = 0;
             public int deckCase = 0;
             public int deckProtector = 0;
-            public string lastDate;
-            public string deckYdk;
             public string deckMainSerial;
+            public string deckYdk;
             public int userid;
             public bool isPublic;
             public string description;
             public bool isDelete;
 
+            //List Only
+            public string lastDate;
+
             public OnlineDeckData() { }
 
-            public DateTime GetUpdateTime()
+            public DateTime GetUpdateUtcTime()
             {
-                try
-                {
-                    return DateTime.Parse(deckUpdateDate);
-                }
-                catch
-                {
-                    return DateTime.Parse(deckUploadDate);
-                }
+                var dataTimeOffset = DateTimeOffset.FromUnixTimeSeconds(deckUpdateDate);
+                return dataTimeOffset.UtcDateTime;
             }
-
         }
 
         [Serializable]
@@ -489,7 +486,7 @@ namespace MDPro3.Net
         {
             public int code = 0;
             public string message;
-            public string messageValue;
+            //public string messageValue;
             public OnlineDeckData data;
         }
 

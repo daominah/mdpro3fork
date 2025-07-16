@@ -81,16 +81,16 @@ namespace MDPro3.UI.ServantUI
                 {
                     var task = new string[10]
                     {
-                    deck.deckName,
-                    deck.deckContributor,
-                    deck.deckId,
-                    deck.deckCase == 0 ? "1080001" : deck.deckCase.ToString(),
-                    deck.deckCoverCard1.ToString(),
-                    deck.deckCoverCard2.ToString(),
-                    deck.deckCoverCard3.ToString(),
-                    deck.deckProtector == 0 ? "1070001" : deck.deckProtector.ToString(),
-                    deck.deckLike.ToString(),
-                    deck.lastDate
+                        deck.deckName,
+                        deck.deckContributor,
+                        deck.deckId,
+                        deck.deckCase == 0 ? "1080001" : deck.deckCase.ToString(),
+                        deck.deckCoverCard1.ToString(),
+                        deck.deckCoverCard2.ToString(),
+                        deck.deckCoverCard3.ToString(),
+                        deck.deckProtector == 0 ? "1070001" : deck.deckProtector.ToString(),
+                        deck.deckLike.ToString(),
+                        deck.lastDate
                     };
                     tasks.Add(task);
                 }

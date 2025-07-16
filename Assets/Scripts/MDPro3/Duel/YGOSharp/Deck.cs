@@ -57,8 +57,8 @@ namespace MDPro3.Duel.YGOSharp
             Grave = 1100001;
             Stand = 1110001;
             Mate = 1000001;
-            string st = ydk.Replace("\r", "");
-            string[] lines = st.Split(new string[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
+            string st = ydk.Replace("\r", string.Empty).Replace("\\r", string.Empty).Replace("\\n", "\n");
+            string[] lines = st.Split("\n", StringSplitOptions.RemoveEmptyEntries);
             int flag = -1;
 
             foreach (string line in lines)
@@ -278,7 +278,7 @@ namespace MDPro3.Duel.YGOSharp
             {
                 var path = Program.PATH_DECK + deckName + Program.EXPANSION_YDK;
                 File.WriteAllText(path, ydk, Encoding.UTF8);
-                File.SetLastWriteTime(path, saveTime);
+                File.SetLastWriteTimeUtc(path, saveTime);
 
                 if (MyCard.account != null && upload)
                     _ = OnlineDeck.SyncDeck(deckId, deckName, this, true);

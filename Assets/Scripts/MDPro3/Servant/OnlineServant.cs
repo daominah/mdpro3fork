@@ -296,9 +296,10 @@ namespace MDPro3.Servant
                         {
                             localFoundedIds.Add(od.deckId);
                             var fileInfo = new FileInfo(deckFiles[i]);
-                            var serverTime = od.GetUpdateTime();
-                            var diff = serverTime - fileInfo.LastWriteTime;
-                            //Debug.LogFormat("{0}({1}): {2}-{3}={4}", od.deckName, od.deckId, serverTime, fileInfo.LastWriteTime, diff.TotalSeconds);
+                            var serverTime = od.GetUpdateUtcTime();
+                            var diff = serverTime - fileInfo.LastWriteTimeUtc;
+
+                            //Debug.Log($"{od.deckName}: serverTime: {serverTime} localTime: {fileInfo.LastWriteTimeUtc}");
 
                             if (diff.TotalSeconds > 5f || diff.TotalSeconds < -5f)
                             {
@@ -323,6 +324,7 @@ namespace MDPro3.Servant
                 var task = OnlineDeck.SyncDeck(deck.Value.deckId, deck.Key, deck.Value, false);
                 while (!task.IsCompleted)
                     yield return null;
+                deck.Value.Save(deck.Key, DateTime.UtcNow, false);
             }
             //更新已经有Id的本地较旧卡组
             foreach (var deck in decksNeedUpdateFromServer)
@@ -335,7 +337,7 @@ namespace MDPro3.Servant
                     File.Delete(oldPath);
                 var newPath = Program.PATH_DECK + od.deckName + Program.EXPANSION_YDK;
                 File.WriteAllText(newPath, od.deckYdk);
-                File.SetLastWriteTime(newPath, od.GetUpdateTime());
+                File.SetLastWriteTimeUtc(newPath, od.GetUpdateUtcTime());
             }
 
             //上传没有Id的本地卡组
@@ -369,7 +371,7 @@ namespace MDPro3.Servant
                 var d = new Deck(deck.deckYdk, string.Empty, string.Empty);
                 d.userId = MyCard.account.user.id.ToString();
                 d.deckId = deck.deckId;
-                d.Save(deck.deckName, deck.GetUpdateTime());
+                d.Save(deck.deckName, deck.GetUpdateUtcTime());
             }
 
 #if UNITY_EDITOR

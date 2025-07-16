@@ -1197,7 +1197,7 @@ namespace MDPro3.UI
             try
             {
                 var deckName = GetDeckName();
-                Deck.Save(deckName, DateTime.Now);
+                Deck.Save(deckName, DateTime.UtcNow);
                 if (deckName != this.deckName)
                     File.Delete(Program.PATH_DECK + this.deckName + Program.EXPANSION_YDK);
                 this.deckName = deckName;
