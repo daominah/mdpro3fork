@@ -269,7 +269,7 @@ namespace MDPro3.Servant
             var decksNeedUpload = new Dictionary<string, Deck>();//没在服务器找到对应的deckId的本地卡组
             var decksNeedUpdateToServer = new Dictionary<string, Deck>();//找到deckId但本地时间大于服务器时间五秒以上的卡组
             var decksNeedUpdateFromServer = new Dictionary<string, Deck>();//找到deckId但本地时间小于服务器时间五秒以上的卡组
-            var localFoundedIds = new List<string>();
+            var localFoundIds = new List<string>();
 
             for (int i = 0; i < decks.Count; i++)
             {
@@ -294,14 +294,14 @@ namespace MDPro3.Servant
                         }
                         else
                         {
-                            localFoundedIds.Add(od.deckId);
+                            localFoundIds.Add(od.deckId);
                             var fileInfo = new FileInfo(deckFiles[i]);
                             var serverTime = od.GetUpdateUtcTime();
                             var diff = serverTime - fileInfo.LastWriteTimeUtc;
 
-                            //Debug.Log($"{od.deckName}: serverTime: {serverTime} localTime: {fileInfo.LastWriteTimeUtc}");
+                            //Debug.Log($"{od.deckName}: serverTime: {serverTime} localTime: {fileInfo.LastWriteTimeUtc} diff: {diff.TotalSeconds}");
 
-                            if (diff.TotalSeconds > 5f || diff.TotalSeconds < -5f)
+                            if (diff.TotalSeconds > 1f || diff.TotalSeconds < -1f)
                             {
                                 if (fileInfo.LastWriteTime > serverTime)
                                     decksNeedUpdateToServer.Add(deckName, decks[i]);
@@ -320,11 +320,11 @@ namespace MDPro3.Servant
             foreach (var deck in decksNeedUpdateToServer)
             {
                 Debug.LogFormat("卡组[{0}]需要更新上传。", deck.Key);
-
-                var task = OnlineDeck.SyncDeck(deck.Value.deckId, deck.Key, deck.Value, false);
+                var time = DateTime.UtcNow;
+                var task = OnlineDeck.SyncDeck(deck.Value.deckId, deck.Key, deck.Value, time, false);
                 while (!task.IsCompleted)
                     yield return null;
-                deck.Value.Save(deck.Key, DateTime.UtcNow, false);
+                deck.Value.Save(deck.Key, time, false);
             }
             //更新已经有Id的本地较旧卡组
             foreach (var deck in decksNeedUpdateFromServer)
@@ -338,6 +338,23 @@ namespace MDPro3.Servant
                 var newPath = Program.PATH_DECK + od.deckName + Program.EXPANSION_YDK;
                 File.WriteAllText(newPath, od.deckYdk);
                 File.SetLastWriteTimeUtc(newPath, od.GetUpdateUtcTime());
+            }
+
+            //下载本地ID不存在的服务器卡组
+            //OnlineDeck.UploadDecks() 会刷新OnlineDeck.decks，因此本功能需要在[上传没有Id的本地卡组]之前执行
+            List<OnlineDeck.OnlineDeckData> odtd = new List<OnlineDeck.OnlineDeckData>();
+            foreach (var od in OnlineDeck.decks)
+                if (!od.isDelete)
+                    if (!localFoundIds.Contains(od.deckId))
+                        odtd.Add(od);
+            foreach (var deck in odtd)
+            {
+                Debug.LogFormat("卡组[{0}]需要下载。{1}", deck.deckName, deck.isDelete);
+
+                var d = new Deck(deck.deckYdk, string.Empty, string.Empty);
+                d.userId = MyCard.account.user.id.ToString();
+                d.deckId = deck.deckId;
+                d.Save(deck.deckName, deck.GetUpdateUtcTime());
             }
 
             //上传没有Id的本地卡组
@@ -358,21 +375,6 @@ namespace MDPro3.Servant
                     yield return null;
             }
 
-            //下载本地ID不存在的服务器卡组
-            List<OnlineDeck.OnlineDeckData> odtd = new List<OnlineDeck.OnlineDeckData>();
-            foreach (var od in OnlineDeck.decks)
-                if (!od.isDelete)
-                    if (!localFoundedIds.Contains(od.deckId))
-                        odtd.Add(od);
-            foreach (var deck in odtd)
-            {
-                Debug.LogFormat("卡组[{0}]需要下载。{1}", deck.deckName, deck.isDelete);
-
-                var d = new Deck(deck.deckYdk, string.Empty, string.Empty);
-                d.userId = MyCard.account.user.id.ToString();
-                d.deckId = deck.deckId;
-                d.Save(deck.deckName, deck.GetUpdateUtcTime());
-            }
 
 #if UNITY_EDITOR
             MessageManager.Cast("Deck Sync Finished.");

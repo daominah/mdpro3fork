@@ -281,7 +281,7 @@ namespace MDPro3.Duel.YGOSharp
                 File.SetLastWriteTimeUtc(path, saveTime);
 
                 if (MyCard.account != null && upload)
-                    _ = OnlineDeck.SyncDeck(deckId, deckName, this, true);
+                    _ = OnlineDeck.SyncDeck(deckId, deckName, this, saveTime, true);
             }
             catch
             {

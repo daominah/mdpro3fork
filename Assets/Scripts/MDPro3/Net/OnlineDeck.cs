@@ -1,13 +1,11 @@
 using MDPro3.Duel.YGOSharp;
+using MDPro3.Utility;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Networking;
-using MDPro3.Utility;
 
 namespace MDPro3.Net
 {
@@ -131,7 +129,7 @@ namespace MDPro3.Net
 
             if (request.result == UnityWebRequest.Result.Success)
             {
-                //UnityEngine.Debug.Log(request.downloadHandler.text);
+                //Debug.Log(request.downloadHandler.text);
                 decks = JsonUtility.FromJson<ResponseMultiSimpleData>(request.downloadHandler.text).data;
                 return decks;
             }
@@ -226,7 +224,8 @@ namespace MDPro3.Net
                     deckCase = decks[i].Case,
                     deckProtector = decks[i].Protector,
                     isDelete = false,
-                    deckYdk = decks[i].GetYDK()
+                    deckYdk = decks[i].GetYDK(),
+                    timeStamp = ((DateTimeOffset)DateTime.UtcNow).ToUnixTimeMilliseconds()
                 };
 
                 decks[i].deckId = ids[i];
@@ -262,7 +261,7 @@ namespace MDPro3.Net
             }
         }
 
-        public static async Task<bool> SyncDeck(string deckId, string deckName, Deck deck, bool showHint = true)
+        public static async Task<bool> SyncDeck(string deckId, string deckName, Deck deck, DateTime time, bool showHint = true)
         {
             //Debug.Log("Sync Deck: " + deckName);
             deck.deckId = deckId;
@@ -280,7 +279,7 @@ namespace MDPro3.Net
             {
                 userId = MyCard.account.user.id,
                 deckContributor = MyCard.account.user.username,
-                deck = new PostDeck(deck, deckId, deckName, ydk)
+                deck = new PostDeck(deck, deckId, deckName, ydk, time)
             };
 
             var json = JsonUtility.ToJson(body);
@@ -331,9 +330,11 @@ namespace MDPro3.Net
             body.decks = new PostDeck[toDelete.Count];
             for (int i = 0; i < toDelete.Count; i++)
             {
-                body.decks[i] = new PostDeck();
-                body.decks[i].deckId = toDelete[i];
-                body.decks[i].isDelete = true;
+                body.decks[i] = new PostDeck
+                {
+                    deckId = toDelete[i],
+                    isDelete = true
+                };
             }
 
             var json = JsonUtility.ToJson(body);
@@ -476,7 +477,7 @@ namespace MDPro3.Net
 
             public DateTime GetUpdateUtcTime()
             {
-                var dataTimeOffset = DateTimeOffset.FromUnixTimeSeconds(deckUpdateDate);
+                var dataTimeOffset = DateTimeOffset.FromUnixTimeSeconds(deckUpdateDate / 1000);
                 return dataTimeOffset.UtcDateTime;
             }
         }
@@ -569,12 +570,14 @@ namespace MDPro3.Net
             public int deckProtector;
             public string deckYdk;
             public bool isDelete;
+            public long timeStamp;
 
             public PostDeck()
             {
+                timeStamp = ((DateTimeOffset)DateTime.UtcNow).ToUnixTimeMilliseconds();
             }
 
-            public PostDeck(Deck deck, string deckId, string deckName, string ydk)
+            public PostDeck(Deck deck, string deckId, string deckName, string ydk, DateTime time)
             {
                 this.deckId = deckId;
                 this.deckName = deckName;
@@ -588,7 +591,9 @@ namespace MDPro3.Net
                 deckProtector = deck.Protector;
                 deckYdk = ydk;
                 isDelete = false;
+                timeStamp = ((DateTimeOffset)time.ToUniversalTime()).ToUnixTimeMilliseconds();
             }
+
         }
 
         [Serializable]
