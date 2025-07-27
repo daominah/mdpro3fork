@@ -6,6 +6,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Net;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using UnityEngine;
@@ -15,6 +16,7 @@ using UnityEngine.Networking;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
 using static MDPro3.CardRenderer;
+using static MDPro3.Net.NetUtil;
 
 namespace MDPro3.Servant
 {
@@ -236,16 +238,17 @@ namespace MDPro3.Servant
             StartCoroutine(DownloadYpkAsync(url));
         }
 
+
         private IEnumerator DownloadYpkAsync(string url)
         {
             downloadingYPK = true;
-
             using var request = UnityWebRequest.Get(url);
+            request.certificateHandler = new AcceptAllCertificateHandler();
             request.SendWebRequest();
             while (!request.isDone)
             {
                 GetUI<SettingServantUI>().ButtonDownloadYPK.SetModeText((request.downloadProgress * 100f).ToString("0.##") + "%");
-                yield return null;
+                yield return new WaitForSeconds(0.3f);
             }
 
             if (request.result == UnityWebRequest.Result.Success)

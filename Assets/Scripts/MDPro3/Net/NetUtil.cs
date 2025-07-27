@@ -1,9 +1,11 @@
 using System;
+using UnityEngine.Networking;
 
 namespace MDPro3.Net
 {
     public static class NetUtil
     {
+
         public static bool IsValidUrl(string inputUrl)
         {
             if(string.IsNullOrEmpty(inputUrl))
@@ -36,6 +38,14 @@ namespace MDPro3.Net
             }
             else
                 return false;
+        }
+
+        public class AcceptAllCertificateHandler : CertificateHandler
+        {
+            protected override bool ValidateCertificate(byte[] certificateData)
+            {
+                return true;
+            }
         }
 
     }
