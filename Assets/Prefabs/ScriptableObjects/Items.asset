@@ -3235,6 +3235,13 @@ MonoBehaviour:
     secondFace: 0
     diy: 0
     notReady: 0
+  - id: 1033004
+    m_name: 
+    m_description: 
+    path: 
+    secondFace: 0
+    diy: 0
+    notReady: 0
   protectors:
   - id: 1070001
     m_name: 
@@ -4090,6 +4097,13 @@ MonoBehaviour:
     secondFace: 0
     diy: 0
     notReady: 0
+  - id: 1070123
+    m_name: 
+    m_description: 
+    path: 
+    secondFace: 0
+    diy: 0
+    notReady: 0
   - id: 1071001
     m_name: 
     m_description: 
@@ -4461,6 +4475,13 @@ MonoBehaviour:
     secondFace: 0
     diy: 0
     notReady: 0
+  - id: 1073014
+    m_name: 
+    m_description: 
+    path: 
+    secondFace: 0
+    diy: 0
+    notReady: 0
   - id: 1075001
     m_name: 
     m_description: 
@@ -4475,6 +4496,20 @@ MonoBehaviour:
     secondFace: 0
     diy: 0
     notReady: 0
+  - id: 1075006
+    m_name: 
+    m_description: 
+    path: 
+    secondFace: 0
+    diy: 0
+    notReady: 0
+  - id: 1075007
+    m_name: 
+    m_description: 
+    path: 
+    secondFace: 0
+    diy: 0
+    notReady: 1
   cases:
   - id: 1080001
     m_name: 
@@ -6096,6 +6131,13 @@ MonoBehaviour:
     secondFace: 0
     diy: 0
     notReady: 0
+  - id: 1111051
+    m_name: 
+    m_description: 
+    path: AvatarStand/AvatarStand_u070
+    secondFace: 0
+    diy: 0
+    notReady: 0
   - id: 1111052
     m_name: 
     m_description: 
@@ -6710,6 +6752,20 @@ MonoBehaviour:
     m_name: 
     m_description: 
     path: Wallpaper/Front0082
+    secondFace: 0
+    diy: 0
+    notReady: 0
+  - id: 1130083
+    m_name: 
+    m_description: 
+    path: Wallpaper/Front0083
+    secondFace: 0
+    diy: 0
+    notReady: 0
+  - id: 1130084
+    m_name: 
+    m_description: 
+    path: Wallpaper/Front0084
     secondFace: 0
     diy: 0
     notReady: 0

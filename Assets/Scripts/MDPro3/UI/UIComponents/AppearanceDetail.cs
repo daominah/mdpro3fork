@@ -76,6 +76,9 @@ namespace MDPro3.UI
         public void SetItem(int code, string itemName, string desc, bool isCard)
         {
             TextSetting.text = itemName;
+#if UNITY_EDITOR
+            TextSetting.text = $"{itemName} ({code})";
+#endif
             TextDescription.text = desc;
 
             CancelLoading();

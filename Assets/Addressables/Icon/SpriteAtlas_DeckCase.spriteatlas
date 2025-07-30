@@ -52,6 +52,7 @@ SpriteAtlas:
     packedSpriteRenderDataKeys:
     - c51207103ab4df74c91071b2f4d0cfeb: 21300000
     - da686920dca733645bfcbd97a4516ee7: 21300000
+    - 3d6f8650bcbf7164fafef0a3c407dc0f: 21300000
     - bcab0bd0662df2745bf77a2d8dd4ee5e: 21300000
     - 4f06c8616325be949bba8a6af4c78944: 21300000
     - 76a928b17afde3340adfe2039e2480f6: 21300000
@@ -117,6 +118,7 @@ SpriteAtlas:
   m_PackedSprites:
   - {fileID: 21300000, guid: c51207103ab4df74c91071b2f4d0cfeb, type: 3}
   - {fileID: 21300000, guid: da686920dca733645bfcbd97a4516ee7, type: 3}
+  - {fileID: 21300000, guid: 3d6f8650bcbf7164fafef0a3c407dc0f, type: 3}
   - {fileID: 21300000, guid: bcab0bd0662df2745bf77a2d8dd4ee5e, type: 3}
   - {fileID: 21300000, guid: 4f06c8616325be949bba8a6af4c78944, type: 3}
   - {fileID: 21300000, guid: 76a928b17afde3340adfe2039e2480f6, type: 3}
@@ -181,6 +183,7 @@ SpriteAtlas:
   m_PackedSpriteNamesToIndex:
   - DeckCase2021
   - DeckCase0021
+  - DeckCase1015
   - DeckCase1005
   - DeckCase0027
   - DeckCase1002
