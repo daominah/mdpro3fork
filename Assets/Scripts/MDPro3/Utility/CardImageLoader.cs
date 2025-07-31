@@ -460,7 +460,7 @@ namespace MDPro3.Utility
                     continue;
                 foreach (var file in zip.EntryFileNames)
                 {
-                    if (file.ToLower() == targetPNG || file.ToLower() == targetJPG)
+                    if (file.ToLower().Replace("\\", "/") == targetPNG || file.ToLower().Replace("\\", "/") == targetJPG)
                     {
                         stream = new();
                         var entry = zip[file];
