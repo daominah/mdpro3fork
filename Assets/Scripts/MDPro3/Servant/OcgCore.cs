@@ -1387,6 +1387,9 @@ namespace MDPro3.Servant
         public Action endingAction;
         public Action nextMoveAction;
         public Action nextNegateAction;
+        public Action nextNegateAction_Additional;
+        public float nextNegateAction_AdditionalTime;
+        public ElementObjectManager nextNegateAction_AdditionalManager;
         private Renderer nextMoveActionTargetRenderer;
 
         [HideInInspector] public int lastSelectedCard = 0;
@@ -3225,11 +3228,7 @@ namespace MDPro3.Servant
                                     allGameObjects.Add(effect);
                                     for (int i = 0; i < effect.transform.childCount; i++)
                                     {
-                                        if (effect.transform.GetChild(i).GetComponent<PlayableDirector>() == null)
-                                        {
-                                            Destroy(effect.transform.GetChild(i).gameObject);
-                                        }
-                                        else
+                                        if (effect.transform.GetChild(i).TryGetComponent<PlayableDirector>(out _))
                                         {
                                             mono = effect.transform.GetChild(i).gameObject.AddComponent<DoWhenPlayableDirectorStop>();
                                             mono.action = () =>
@@ -3238,8 +3237,12 @@ namespace MDPro3.Servant
                                                 Destroy(effect);
                                             };
                                         }
+                                        else
+                                        {
+                                            Destroy(effect.transform.GetChild(i).gameObject);
+                                        }
                                     }
-                                    //旋风
+                                    // 旋风
                                     if (code == 5318639)
                                     {
                                         if (card.effectTargets.Count > 0 && card.effectTargets[0].model != null)
@@ -3255,7 +3258,7 @@ namespace MDPro3.Servant
                                             Destroy(effect);
                                         }
                                     }
-                                    //月女神之镞
+                                    // 月女神之镞
                                     else if (code == 2263869)
                                     {
                                         if (card.effectTargets.Count > 0 && card.effectTargets[0].model != null)
@@ -3266,7 +3269,7 @@ namespace MDPro3.Servant
                                             Destroy(effect);
                                         }
                                     }
-                                    //雷击
+                                    // 雷击
                                     else if (code == 12580477)
                                     {
                                         AudioManager.PlaySE("SE_EV_RAIGEKI");
@@ -3287,13 +3290,16 @@ namespace MDPro3.Servant
                                             CameraManager.ShakeCamera(true);
                                         });
                                     }
-                                    //灰流丽
+                                    // 灰流丽
                                     else if (code == 14558127)
                                     {
                                         int order = 0;
                                         for (int i = 0; i < cardsInChain.Count; i++)
                                             if (cardsInChain[i] == card)
+                                            {
                                                 order = i;
+                                                break;
+                                            }
                                         if (order > 0)
                                         {
                                             AudioManager.PlaySE("SE_EV_ASH_BLOSSOM_v2");
@@ -3305,7 +3311,7 @@ namespace MDPro3.Servant
                                             Destroy(effect);
                                         }
                                     }
-                                    //鹰身女妖的羽毛扫
+                                    // 鹰身女妖的羽毛扫
                                     else if (code == 18144506)
                                     {
                                         AudioManager.PlaySE("SE_EV_HARPIESFEATHER_DUSTER_3D");
@@ -3325,12 +3331,12 @@ namespace MDPro3.Servant
                                                     Destroy(effect.transform.GetChild(i).gameObject);
                                         }
                                     }
-                                    //红色重启
+                                    // 红色重启
                                     else if (code == 23002292)
                                     {
                                         AudioManager.PlaySE("SE_EV_REDREBOOT");
                                     }
-                                    //墓穴的指名者
+                                    // 墓穴的指名者
                                     else if (code == 24224830)
                                     {
                                         AudioManager.PlaySE("SE_EV_CALLED_GRAVE");
@@ -3347,7 +3353,7 @@ namespace MDPro3.Servant
                                                     Destroy(effect.transform.GetChild(i).gameObject);
                                         }
                                     }
-                                    //禁忌的一滴
+                                    // 禁忌的一滴
                                     else if (code == 24299458)
                                     {
                                         AudioManager.PlaySE("SE_EV_FORBIDDEN_DROPLET");
@@ -3364,17 +3370,17 @@ namespace MDPro3.Servant
                                                     Destroy(effect.transform.GetChild(i).gameObject);
                                         }
                                     }
-                                    //三战之才
+                                    // 三战之才
                                     else if (code == 25311006)
                                     {
                                         AudioManager.PlaySE("SE_EV_TRIPLETACTICS_TALENT");
                                     }
-                                    //神之宣告
+                                    // 神之宣告
                                     else if (code == 41420027)
                                     {
                                         AudioManager.PlaySE("SE_EV_SOLEMNJUDGMENT");
                                     }
-                                    //神圣防护罩 -反射镜力-
+                                    // 神圣防护罩 -反射镜力-
                                     else if (code == 44095762)
                                     {
                                         AudioManager.PlaySE("SE_EV_MIRRORFORCE");
@@ -3391,12 +3397,12 @@ namespace MDPro3.Servant
                                                     Destroy(effect.transform.GetChild(i).gameObject);
                                         }
                                     }
-                                    //黑洞
+                                    // 黑洞
                                     else if (code == 53129443)
                                     {
                                         AudioManager.PlaySE("SE_EV_BLACKHOLE");
                                     }
-                                    //冥王结界波
+                                    // 冥王结界波
                                     else if (code == 54693926)
                                     {
                                         AudioManager.PlaySE("SE_EV_DARKRULER_NOMORE");
@@ -3413,12 +3419,12 @@ namespace MDPro3.Servant
                                                     Destroy(effect.transform.GetChild(i).gameObject);
                                         }
                                     }
-                                    //王宫的敕命
+                                    // 王宫的敕命
                                     else if (code == 61740673)
                                     {
                                         AudioManager.PlaySE("SE_EV_IMPERIAL_ORDER");
                                     }
-                                    //魔法筒
+                                    // 魔法筒
                                     else if (code == 62279055)
                                     {
                                         Tools.ChangeLayer(effect, "Default");
@@ -3436,7 +3442,7 @@ namespace MDPro3.Servant
                                                     Destroy(effect.transform.GetChild(i).gameObject);
                                         }
                                     }
-                                    //千把刀
+                                    // 千把刀
                                     else if (code == 63391643)
                                     {
                                         if (card.effectTargets.Count > 0 && card.effectTargets[0].model != null)
@@ -3452,7 +3458,7 @@ namespace MDPro3.Servant
                                             Destroy(effect);
                                         }
                                     }
-                                    //抹杀之指名者
+                                    // 抹杀之指名者
                                     else if (code == 65681983)
                                     {
                                         AudioManager.PlaySE("SE_EV_CROSSOUT_DESIGNATOR");
@@ -3469,7 +3475,7 @@ namespace MDPro3.Servant
                                                     Destroy(effect.transform.GetChild(i).gameObject);
                                         }
                                     }
-                                    //光之护封剑
+                                    // 光之护封剑
                                     else if (code == 72302403)
                                     {
                                         AudioManager.PlaySE("SE_EV_GOFUKEN");
@@ -3486,17 +3492,17 @@ namespace MDPro3.Servant
                                                     Destroy(effect.transform.GetChild(i).gameObject);
                                         }
                                     }
-                                    //封印之黄金柜
+                                    // 封印之黄金柜
                                     else if (code == 75500286)
                                     {
                                         AudioManager.PlaySE("SE_EV_GOLD_SARCOPHAGUS");
                                     }
-                                    //死者苏生
+                                    // 死者苏生
                                     else if (code == 83764718 || code == 83764719)
                                     {
                                         AudioManager.PlaySE("SE_EV_MONSTER_REBORN");
                                     }
-                                    //闪刀起动-交闪
+                                    // 闪刀起动-交闪
                                     else if (code == 63166095 || code == 63166096)//ENGAGE
                                     {
                                         Destroy(effect);
@@ -3516,27 +3522,27 @@ namespace MDPro3.Servant
                                             nextMoveActionTargetRenderer = manager.GetElement<Renderer>("SummonPosDummy");
                                         };
                                     }
-                                    //大风暴
+                                    // 大风暴
                                     else if (code == 19613556)
                                     {
                                         AudioManager.PlaySE("SE_EV_HEAVY_STORM");
                                     }
-                                    //天霆号 阿宙斯
+                                    // 天霆号 阿宙斯
                                     else if (code == 90448279)
                                     {
                                         AudioManager.PlaySE("SE_EV_AZEUS");
                                     }
-                                    //增援
+                                    // 增援
                                     else if (code == 32807846)
                                     {
                                         AudioManager.PlaySE("SE_EV_039_NORMAL");
                                     }
-                                    //增援 异画
+                                    // 增援 异画
                                     else if (code == 32807848)
                                     {
                                         AudioManager.PlaySE("SE_EV_039_SPECIAL");
                                     }
-                                    //幽鬼兔
+                                    // 幽鬼兔
                                     else if (code == 59438930)
                                     {
                                         int order = 0;
@@ -3573,7 +3579,7 @@ namespace MDPro3.Servant
                                                 break;
                                         Destroy(manager.GetElement(card.p.controller == 0 ? "Hand01" : "EnHand01"));
                                     }
-                                    //欢聚友伴·茸茸长尾山雀
+                                    // 欢聚友伴·茸茸长尾山雀
                                     else if (code == 42141493)
                                     {
                                         AudioManager.PlaySE("SE_EV_041_NORMAL");
@@ -3602,10 +3608,88 @@ namespace MDPro3.Servant
                                                 , GetLocationCardCount(CardLocation.Extra, 0), myExtra);
                                         }
                                     }
+                                    // 灵王的波动
+                                    else if (code == 40366667)
+                                    {
+                                        int order = 0;
+                                        for (int i = 0; i < cardsInChain.Count; i++)
+                                            if (cardsInChain[i] == card)
+                                            {
+                                                order = i;
+                                                break;
+                                            }
+                                        messagePass = true;
+                                        effect.SetActive(false);
+
+                                        if (order > 0)
+                                        {
+                                            effect.transform.DestroyChildByName("BG");
+                                            ElementObjectManager manager = null;
+                                            for (int i = 0; i < effect.transform.childCount; i++)
+                                                if (effect.transform.GetChild(i).TryGetComponent(out manager))
+                                                    break;
+                                            manager.GetNestedElement("CardOffset/DummyCard").SetActive(false);
+                                            var targetEff = cardsInChain[order].setOverTurn ? "CardOffset/nomalEf" : "CardOffset/handEf";
+                                            manager.GetNestedElement(targetEff).SetActive(true);
+                                            manager.gameObject.SetActive(false);
+                                            nextNegateAction_AdditionalManager = manager;
+                                            nextNegateAction_AdditionalTime = 0.5f;
+                                            nextNegateAction_Additional = () =>
+                                            {
+                                                manager.gameObject.SetActive(true);
+                                                AudioManager.PlaySE("SE_EV_044_NORMAL");
+
+                                                Destroy(effect);
+                                                Destroy(manager.gameObject, 2f);
+                                            };
+                                        }
+                                        else
+                                        {
+                                            Destroy(effect);
+                                        }
+                                    }
+                                    // 圣王的粉碎
+                                    else if (code == 97045737)
+                                    {
+                                        int order = 0;
+                                        for (int i = 0; i < cardsInChain.Count; i++)
+                                            if (cardsInChain[i] == card)
+                                            {
+                                                order = i;
+                                                break;
+                                            }
+                                        messagePass = true;
+                                        effect.SetActive(false);
+
+                                        if (order > 0)
+                                        {
+                                            effect.transform.DestroyChildByName("BG");
+                                            ElementObjectManager manager = null;
+                                            for (int i = 0; i < effect.transform.childCount; i++)
+                                                if (effect.transform.GetChild(i).TryGetComponent(out manager))
+                                                    break;
+                                            manager.GetElement("CardOffset").SetActive(false);
+                                            manager.gameObject.SetActive(false);
+                                            nextNegateAction_AdditionalManager = manager;
+                                            nextNegateAction_AdditionalTime = 0.8f;
+                                            nextNegateAction_Additional = () =>
+                                            {
+                                                manager.gameObject.SetActive(true);
+                                                AudioManager.PlaySE("SE_EV_043_NORMAL");
+
+                                                Destroy(effect);
+                                                Destroy(manager.gameObject, 2f);
+                                            };
+                                        }
+                                        else
+                                        {
+                                            Destroy(effect);
+                                        }
+                                    }
                                 }
                                 else
                                 {
-                                    //技能抽取
+                                    // 技能抽取
                                     if (code == 82732705)
                                     {
                                         if (card.model == null)
@@ -3630,7 +3714,7 @@ namespace MDPro3.Servant
                                             messagePass = true;
                                         });
                                     }
-                                    //无限泡影
+                                    // 无限泡影
                                     else if (code == 10045474)
                                     {
                                         if (card.effectTargets.Count == 0 || card.effectTargets[0].model == null)
@@ -3678,7 +3762,7 @@ namespace MDPro3.Servant
                                             messagePass = true;
                                         });
                                     }
-                                    //闪电风暴
+                                    // 闪电风暴
                                     else if (code == 14532163)
                                     {
                                         var eff = ABLoader.LoadFromFolder("MasterDuel/Effects/MagicTrapEffects/fxp_14876", "fxp_14876", true);
@@ -3699,7 +3783,7 @@ namespace MDPro3.Servant
                                             messagePass = true;
                                         });
                                     }
-                                    //效果遮蒙者
+                                    // 效果遮蒙者
                                     else if (code == 97268402)
                                     {
                                         if (card.effectTargets.Count == 0 || card.effectTargets[0].model == null)
@@ -3716,13 +3800,16 @@ namespace MDPro3.Servant
                                             messagePass = true;
                                         });
                                     }
-                                    //屋敷童
+                                    // 屋敷童
                                     else if (code == 73642296)
                                     {
                                         int order = 0;
                                         for (int i = 0; i < cardsInChain.Count; i++)
                                             if (cardsInChain[i] == card)
+                                            {
                                                 order = i;
+                                                break;
+                                            }
                                         messagePass = true;
 
                                         if (order > 0)

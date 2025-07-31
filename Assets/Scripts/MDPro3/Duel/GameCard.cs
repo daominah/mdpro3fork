@@ -2395,6 +2395,7 @@ namespace MDPro3
                 ModelAt(p, model);
                 manager = model.GetComponent<ElementObjectManager>();
             }
+
             var cardFace = manager.GetElement<Transform>("CardModel").GetChild(1).GetComponent<Renderer>();
             var originMono = cardFace.material.GetFloat("_Monochrome");
             Tools.ChangeLayer(model, "DuelOverlay3D");
@@ -2404,6 +2405,20 @@ namespace MDPro3
             var pivot = manager.GetElement<Transform>("Pivot");
             var offset = manager.GetElement<Transform>("Offset");
             var scale = pivot.localScale;
+
+            bool additional = false;
+            if (Program.instance.ocgcore.nextNegateAction_Additional != null)
+            {
+                Program.instance.ocgcore.nextNegateAction_AdditionalManager.transform.SetParent(offset, false);
+                Program.instance.ocgcore.nextNegateAction_Additional?.Invoke();
+                Program.instance.ocgcore.nextNegateAction_Additional = null;
+                additional = true;
+            }
+
+            var showTime = 0.5f;
+            if (additional)
+                showTime += Program.instance.ocgcore.nextNegateAction_AdditionalTime;
+
             var sequence = DOTween.Sequence();
             if ((p.location & (uint)CardLocation.Onfield) > 0
             || (p.location & (uint)CardLocation.Extra) > 0
@@ -2412,11 +2427,11 @@ namespace MDPro3
                 HideLabel();
                 sequence.Append(offset.DOLocalMoveY(5, 0.1f));
                 sequence.Join(DOTween.To(() => originMono, x => cardFace.material.SetFloat("_Monochrome", x), 1, 0.1f));
-                sequence.AppendInterval(0.5f);
+                sequence.AppendInterval(showTime);
                 sequence.Append(offset.DOLocalMoveY(0f, 0.2f));
                 sequence.Join(DOTween.To(() => 1, x => cardFace.material.SetFloat("_Monochrome", x), 0, 0.2f));
                 sequence.Insert(0, pivot.DOScale(1f, 0.1f));
-                sequence.Insert(0.6f, pivot.DOScale(scale, 0.2f));
+                sequence.Insert(0.1f + showTime, pivot.DOScale(scale, 0.2f));
                 sequence.OnComplete(() =>
                 {
                     Tools.ChangeLayer(model, "Default");
@@ -2440,14 +2455,14 @@ namespace MDPro3
                 sequence.Join(pivot.DOLocalRotate(Vector3.zero, 0.1f));
                 sequence.Join(manager.GetElement<Transform>("Turn").DOLocalRotate(Vector3.zero, 0.1f));
                 sequence.Join(DOTween.To(() => originMono, x => cardFace.material.SetFloat("_Monochrome", x), 1, 0.1f));
-                sequence.Append(offset.DOLocalMoveY(1.2f, 0.5f));
-                sequence.Join(offset.DOLocalMoveZ(5.5f, 0.5f));
+                sequence.Append(offset.DOLocalMoveY(1.2f, showTime));
+                sequence.Join(offset.DOLocalMoveZ(5.5f, showTime));
                 sequence.Append(offset.DOLocalMoveY(0f, 0.2f));
                 sequence.Join(offset.DOLocalMoveZ(0f, 0.2f));
                 sequence.Join(pivot.DOLocalRotate(originRotaion, 0.15f));
                 sequence.Join(DOTween.To(() => 1, x => cardFace.material.SetFloat("_Monochrome", x), 0, 0.2f));
                 sequence.Insert(0, pivot.DOScale(1.2f, 0.2f));
-                sequence.Insert(0.6f, pivot.DOScale(scale, 0.2f));
+                sequence.Insert(showTime + 0.1f, pivot.DOScale(scale, 0.2f));
                 sequence.OnComplete(() =>
                 {
                     Tools.ChangeLayer(model, "Default");
@@ -2462,11 +2477,11 @@ namespace MDPro3
                 offset.localPosition = new Vector3(0, -5, 0);
                 sequence.Append(offset.DOLocalMoveY(0, 0.1f));
                 sequence.Join(DOTween.To(() => originMono, x => cardFace.material.SetFloat("_Monochrome", x), 1, 0.1f));
-                sequence.AppendInterval(0.5f);
+                sequence.AppendInterval(showTime);
                 sequence.Append(offset.DOLocalMoveY(-5f, 0.2f));
                 sequence.Join(DOTween.To(() => 1, x => cardFace.material.SetFloat("_Monochrome", x), 0, 0.2f));
                 sequence.Insert(0, offset.DOScale(1f, 0.1f));
-                sequence.Insert(0.6f, offset.DOScale(Vector3.one * 0.2f, 0.2f));
+                sequence.Insert(showTime + 0.1f, offset.DOScale(Vector3.one * 0.2f, 0.2f));
                 sequence.OnComplete(() =>
                 {
                     Destroy(model);
