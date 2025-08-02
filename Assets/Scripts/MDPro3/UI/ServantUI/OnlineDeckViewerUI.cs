@@ -90,7 +90,7 @@ namespace MDPro3.UI.ServantUI
                         deck.deckCoverCard3.ToString(),
                         deck.deckProtector == 0 ? "1070001" : deck.deckProtector.ToString(),
                         deck.deckLike.ToString(),
-                        deck.lastDate
+                        deck.GetOnlineDeckLocalTime().ToString()
                     };
                     tasks.Add(task);
                 }

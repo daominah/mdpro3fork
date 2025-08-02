@@ -471,7 +471,7 @@ namespace MDPro3.Net
             public bool isDelete;
 
             //List Only
-            public string lastDate;
+            public long lastDate;
 
             public OnlineDeckData() { }
 
@@ -479,6 +479,12 @@ namespace MDPro3.Net
             {
                 var dataTimeOffset = DateTimeOffset.FromUnixTimeSeconds(deckUpdateDate / 1000);
                 return dataTimeOffset.UtcDateTime;
+            }
+
+            public DateTime GetOnlineDeckLocalTime()
+            {
+                var dataTimeOffset = DateTimeOffset.FromUnixTimeSeconds(lastDate / 1000);
+                return dataTimeOffset.LocalDateTime;
             }
         }
 

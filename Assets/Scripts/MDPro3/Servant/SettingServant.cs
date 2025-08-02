@@ -26,6 +26,8 @@ namespace MDPro3.Servant
         [HideInInspector] public SelectionToggle_Setting lastSelectedToggle;
         [HideInInspector] public SelectionButton_Setting lastSelectedButton;
 
+        private string unsafeDownloadUrl;
+
         #region Servant
 
         public override int Depth => 1;
@@ -243,6 +245,80 @@ namespace MDPro3.Servant
         {
             downloadingYPK = true;
             using var request = UnityWebRequest.Get(url);
+            request.SendWebRequest();
+            while (!request.isDone)
+            {
+                GetUI<SettingServantUI>().ButtonDownloadYPK.SetModeText((request.downloadProgress * 100f).ToString("0.##") + "%");
+                yield return new WaitForSeconds(0.3f);
+            }
+
+            if (request.result == UnityWebRequest.Result.Success)
+            {
+                var filePath = Path.Combine(Program.PATH_EXPANSIONS, Path.GetFileName(url));
+                if (!Directory.Exists(Program.PATH_EXPANSIONS))
+                    Directory.CreateDirectory(Program.PATH_EXPANSIONS);
+                File.WriteAllBytes(filePath, request.downloadHandler.data);
+                MessageManager.Cast(InterString.Get("下载成功。"));
+                Program.instance.InitializeForDataChange();
+            }
+            else
+            {
+                //MessageManager.Cast(InterString.Get("下载失败。"));
+
+                string errorMessage = string.Empty;
+
+                // 1. 证书安全问题（SSL错误）
+                if (request.result == UnityWebRequest.Result.ConnectionError &&
+                    (request.error.Contains("SSL") || request.error.Contains("certificate")))
+                {
+                    List<string> selections = new()
+                    {
+                        InterString.Get("下载链接不安全"),
+                        InterString.Get("安全证书验证失败！连接可能不安全。@n是否继续下载？"),
+                        InterString.Get("确认"),
+                        InterString.Get("取消"),
+                        Config.STRING_YES
+                    };
+                    unsafeDownloadUrl = url;
+                    UIManager.ShowPopupYesOrNo(selections, DownloadYpkUnsafe, null);
+                }
+                // 2. 网络连接错误
+                else if (request.result == UnityWebRequest.Result.ConnectionError)
+                {
+                    errorMessage = InterString.Get("网络连接失败：") + request.error;
+                }
+                // 3. HTTP协议错误（404, 500等）
+                else if (request.result == UnityWebRequest.Result.ProtocolError)
+                {
+                    errorMessage = InterString.Get("服务器返回错误：") + request.responseCode;
+                }
+                // 4. 数据处理错误
+                else if (request.result == UnityWebRequest.Result.DataProcessingError)
+                {
+                    errorMessage = InterString.Get("数据处理错误：") + request.error;
+                }
+                // 5. 其他未知错误
+                else
+                {
+                    errorMessage = InterString.Get("未知错误：") + request.error;
+                }
+
+                if(errorMessage != string.Empty)
+                    MessageManager.Cast(errorMessage);
+            }
+            GetUI<SettingServantUI>().ButtonDownloadYPK.SetModeText(string.Empty);
+            downloadingYPK = false;
+        }
+
+        private void DownloadYpkUnsafe()
+        {
+            StartCoroutine(DownloadYpkUnsafeAsync(unsafeDownloadUrl));
+        }
+
+        private IEnumerator DownloadYpkUnsafeAsync(string url)
+        {
+            downloadingYPK = true;
+            using var request = UnityWebRequest.Get(url);
             request.certificateHandler = new AcceptAllCertificateHandler();
             request.SendWebRequest();
             while (!request.isDone)
@@ -265,6 +341,5 @@ namespace MDPro3.Servant
             GetUI<SettingServantUI>().ButtonDownloadYPK.SetModeText(string.Empty);
             downloadingYPK = false;
         }
-
     }
 }

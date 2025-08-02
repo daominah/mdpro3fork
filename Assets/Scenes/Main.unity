@@ -6758,6 +6758,7 @@ MonoBehaviour:
   ES_sortSum: 0
   ES_turnString: 
   duelEnded: 0
+  nextNegateAction_AdditionalTime: 0
   nextNegateAction_AdditionalManager: {fileID: 0}
   lastSelectedCard: 0
   nextMoveManager: {fileID: 0}
