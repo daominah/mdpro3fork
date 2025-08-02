@@ -2230,6 +2230,7 @@ namespace MDPro3.UI.ServantUI
             };
             UIManager.ShowPopupYesOrNo(selections, () =>
             {
+                ZipHelper.Dispose();
                 if (!Directory.Exists(Program.PATH_EXPANSIONS))
                     Directory.CreateDirectory(Program.PATH_EXPANSIONS);
                 foreach (var file in Directory.GetFiles(Program.PATH_EXPANSIONS))
