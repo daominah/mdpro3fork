@@ -787,27 +787,27 @@ namespace MDPro3
                 return string.Empty;
             var language = isPre ? Language.GetPrerelease() : Language.GetCardConfig();
 
-            if (language == Language.Japanese)
-            {
+            //if (language == Language.Japanese)
+            //{
                 description = description.Replace("\t\r\n", "\f\f\f");
                 description = description.Replace("\r\n●", "●●●");
                 description = description.Replace("\r", string.Empty);
                 description = description.Replace("\n", string.Empty);
                 description = description.Replace("\f\f\f", Program.STRING_LINE_BREAK);
                 description = description.Replace("●●●", $"{Program.STRING_LINE_BREAK}●");
-            }
-            else
-            {
-                description = description
-                    .Replace("\r\n②", "②")
-                    .Replace("\r\n③", "③")
-                    .Replace("\r\n④", "④")
-                    .Replace("\r\n⑤", "⑤")
-                    .Replace("\r\n⑥", "⑥")
-                    .Replace("\r\n⑦", "⑦")
-                    .Replace("\r\n⑧", "⑧")
-                    .Replace("\r\n⑨", "⑨");
-            }
+            //}
+            //else
+            //{
+            //    description = description
+            //        .Replace("\r\n②", "②")
+            //        .Replace("\r\n③", "③")
+            //        .Replace("\r\n④", "④")
+            //        .Replace("\r\n⑤", "⑤")
+            //        .Replace("\r\n⑥", "⑥")
+            //        .Replace("\r\n⑦", "⑦")
+            //        .Replace("\r\n⑧", "⑧")
+            //        .Replace("\r\n⑨", "⑨");
+            //}
 
             if (!Language.CardUseLatin(language))
                 description = description.Replace(Program.STRING_SLASH, BIG_SLASH);

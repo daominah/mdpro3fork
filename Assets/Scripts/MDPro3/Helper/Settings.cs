@@ -37,6 +37,8 @@ namespace MDPro3
         public string PrereleasePackVersionUrl_KR;
         public string PrereleasePackUrl_PT;
         public string PrereleasePackVersionUrl_PT;
+        public string PrereleasePackUrl_TW;
+        public string PrereleasePackVersionUrl_TW;
 
         public string MDPro3VersionUrl;
         public bool CardRenderPassword;
@@ -122,6 +124,8 @@ namespace MDPro3
             PrereleasePackVersionUrl_KR = "https://github.com/ElderLich/TransSuperpre/raw/main/KR/version.txt";
             PrereleasePackUrl_PT = "https://github.com/ElderLich/TransSuperpre/raw/main/PT/ygopro-super-pre.ypk";
             PrereleasePackVersionUrl_PT = "https://github.com/ElderLich/TransSuperpre/raw/main/PT/version.txt";
+            PrereleasePackUrl_TW = "https://github.com/ElderLich/TransSuperpre/raw/main/ZH-TW/ygopro-super-pre.ypk";
+            PrereleasePackVersionUrl_TW = "https://github.com/ElderLich/TransSuperpre/raw/main/ZH-TW/version.txt";
 
             MDPro3VersionUrl = "https://cdn02.moecube.com:444/mdpro3-data/Version.txt";
             CardRenderPassword = true;
@@ -183,6 +187,7 @@ namespace MDPro3
                 Language.Japanese => Data.PrereleasePackUrl_JP,
                 Language.Korean => Data.PrereleasePackUrl_KR,
                 Language.Portuguese => Data.PrereleasePackUrl_PT,
+                Language.TraditionalChinese => Data.PrereleasePackUrl_TW,
                 _ => Data.PrereleasePackUrl
             };
         }
@@ -199,6 +204,7 @@ namespace MDPro3
                 Language.Japanese => Data.PrereleasePackVersionUrl_JP,
                 Language.Korean => Data.PrereleasePackVersionUrl_KR,
                 Language.Portuguese => Data.PrereleasePackVersionUrl_PT,
+                Language.TraditionalChinese => Data.PrereleasePackVersionUrl_TW,
                 _ => Data.PrereleasePackVersionUrl
             };
         }
