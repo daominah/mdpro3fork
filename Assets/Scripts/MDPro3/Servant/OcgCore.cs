@@ -3608,6 +3608,18 @@ namespace MDPro3.Servant
                                                 , GetLocationCardCount(CardLocation.Extra, 0), myExtra);
                                         }
                                     }
+                                    // 欢聚友伴·喵喵豹猫
+                                    else if (code == 87126721)
+                                    {
+                                        AudioManager.PlaySE("SE_EV_042_NORMAL");
+                                        foreach(var sr in effect.transform.GetComponentsInChildren<SpriteRenderer>(true))
+                                            sr.maskInteraction = SpriteMaskInteraction.None;
+
+                                        if (card.p.controller == 0)
+                                            Destroy(effect.transform.GetChildByName("GraveSet").gameObject);
+                                        else
+                                            Destroy(effect.transform.GetChildByName("EnGraveSet").gameObject);
+                                    }
                                     // 灵王的波动
                                     else if (code == 40366667)
                                     {
