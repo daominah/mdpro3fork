@@ -1826,14 +1826,14 @@ MonoBehaviour:
     path: 
     secondFace: 0
     diy: 0
-    notReady: 1
+    notReady: 0
   - id: 1010110
     m_name: 
     m_description: 
     path: 
     secondFace: 0
     diy: 0
-    notReady: 1
+    notReady: 0
   - id: 1011001
     m_name: 
     m_description: 
@@ -3144,6 +3144,13 @@ MonoBehaviour:
     secondFace: 0
     diy: 0
     notReady: 0
+  - id: 1031016
+    m_name: 
+    m_description: 
+    path: 
+    secondFace: 0
+    diy: 0
+    notReady: 0
   - id: 1032001
     m_name: 
     m_description: 
@@ -4104,6 +4111,13 @@ MonoBehaviour:
     secondFace: 0
     diy: 0
     notReady: 0
+  - id: 1070124
+    m_name: 
+    m_description: 
+    path: 
+    secondFace: 0
+    diy: 0
+    notReady: 0
   - id: 1071001
     m_name: 
     m_description: 
@@ -4476,6 +4490,13 @@ MonoBehaviour:
     diy: 0
     notReady: 0
   - id: 1073014
+    m_name: 
+    m_description: 
+    path: 
+    secondFace: 0
+    diy: 0
+    notReady: 0
+  - id: 1073015
     m_name: 
     m_description: 
     path: 
@@ -5205,6 +5226,13 @@ MonoBehaviour:
     secondFace: 0
     diy: 0
     notReady: 0
+  - id: 1092006
+    m_name: 
+    m_description: 
+    path: Mat/Mat_504
+    secondFace: 0
+    diy: 0
+    notReady: 0
   - id: 1098001
     m_name: Skyscraper Parking Lot
     m_description: https://www.nexusmods.com/yugiohmasterduel/mods/1731
@@ -5462,6 +5490,13 @@ MonoBehaviour:
     m_name: 
     m_description: 
     path: Grave/Grave_013
+    secondFace: 0
+    diy: 0
+    notReady: 0
+  - id: 1102006
+    m_name: 
+    m_description: 
+    path: Grave/Grave_504
     secondFace: 0
     diy: 0
     notReady: 0
@@ -5893,6 +5928,13 @@ MonoBehaviour:
     secondFace: 0
     diy: 0
     notReady: 0
+  - id: 1112006
+    m_name: 
+    m_description: 
+    path: AvatarStand/AvatarStand_504
+    secondFace: 0
+    diy: 0
+    notReady: 0
   - id: 1111001
     m_name: 
     m_description: 
@@ -6096,6 +6138,13 @@ MonoBehaviour:
     secondFace: 0
     diy: 0
     notReady: 0
+  - id: 1111044
+    m_name: 
+    m_description: 
+    path: AvatarStand/AvatarStand_u055
+    secondFace: 0
+    diy: 0
+    notReady: 0
   - id: 1111045
     m_name: 
     m_description: 
@@ -6170,6 +6219,13 @@ MonoBehaviour:
     m_name: 
     m_description: 
     path: AvatarStand/AvatarStand_u076
+    secondFace: 0
+    diy: 0
+    notReady: 0
+  - id: 1111064
+    m_name: 
+    m_description: 
+    path: AvatarStand/AvatarStand_u063
     secondFace: 0
     diy: 0
     notReady: 0
@@ -6766,6 +6822,13 @@ MonoBehaviour:
     m_name: 
     m_description: 
     path: Wallpaper/Front0084
+    secondFace: 0
+    diy: 0
+    notReady: 0
+  - id: 1130085
+    m_name: 
+    m_description: 
+    path: Wallpaper/Front0085
     secondFace: 0
     diy: 0
     notReady: 0

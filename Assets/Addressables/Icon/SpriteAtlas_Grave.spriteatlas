@@ -79,6 +79,7 @@ SpriteAtlas:
     - 5d1066362ceec9246b2671d063341045: 21300000
     - f4e6c156a866cd945aa3b7c4ad9c68bb: 21300000
     - ff9f0e56bfaaa144caa9763d1cfe64c5: 21300000
+    - 611be6660fef2f24188b3ba3d6224416: 21300000
     - 82a086a6208751c4dba3be719049dfa3: 21300000
     - 92d839076d5705249876048a992963a2: 21300000
     - 1a18cd2731f6aea43b7cf526f34cdb65: 21300000
@@ -142,6 +143,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 5d1066362ceec9246b2671d063341045, type: 3}
   - {fileID: 21300000, guid: f4e6c156a866cd945aa3b7c4ad9c68bb, type: 3}
   - {fileID: 21300000, guid: ff9f0e56bfaaa144caa9763d1cfe64c5, type: 3}
+  - {fileID: 21300000, guid: 611be6660fef2f24188b3ba3d6224416, type: 3}
   - {fileID: 21300000, guid: 82a086a6208751c4dba3be719049dfa3, type: 3}
   - {fileID: 21300000, guid: 92d839076d5705249876048a992963a2, type: 3}
   - {fileID: 21300000, guid: 1a18cd2731f6aea43b7cf526f34cdb65, type: 3}
@@ -204,6 +206,7 @@ SpriteAtlas:
   - FieldObjIcon1101032
   - FieldObjIcon1101019
   - FieldObjIcon1101008
+  - FieldObjIcon1102006
   - FieldObjIcon1101009
   - FieldObjIcon1101011
   - FieldObjIcon1100026
