@@ -13,6 +13,7 @@ using System.IO;
 using MDPro3.Servant;
 using MDPro3.UI.ServantUI;
 using MDPro3.Utility;
+using UnityEngine.UIElements;
 
 namespace MDPro3
 {
@@ -2224,7 +2225,6 @@ namespace MDPro3
         public static float handAngle = -10f;
         private bool handDefault;
         private bool appealed = false;
-        private float cardShakeTimeOffset = 0.01f;
 
         private void ModelAt(GPS gps, GameObject model = null)
         {
@@ -2695,43 +2695,55 @@ namespace MDPro3
             Destroy(fx, 1f);
         }
 
+        private readonly float[] bounceDutations = new float[6] { 0.4f, 0.2f, 0.133f, 0.133f, 0.067f, 0.067f };
+
         public void AnimationLandShake(GameCard card, bool huge)
         {
             if (card == this)
                 return;
             if ((p.location & (uint)CardLocation.Onfield) == 0)
                 return;
-            if (model == null)//Overlays
+            if (model == null) // Overlays
                 return;
 
-            var time = cardShakeTimeOffset * Vector3.Distance(card.model.transform.position, model.transform.position);
-            DOTween.To(v => { }, 0, 0, time).OnComplete(() =>
+            if (huge)
             {
-                if (this == null)
-                    return;
-                if ((p.location & (uint)CardLocation.Onfield) == 0)
-                    return;
-                if (model == null)
-                    return;
+                const float minCardsDistance = 8.6f;
+                const float delayOffset = 0.01f;
+                float distance = Vector3.Distance(card.model.transform.position, model.transform.position);
+                float delay = Math.Max(0, distance - minCardsDistance) * delayOffset;
+                Vector3 direction = (card.model.transform.position - model.transform.position).normalized;
+                direction.y = 0;
 
-                if (huge)
+                int bounceCount = 6;
+                float height = 3f;
+                float angle = 30f;
+
+                Sequence seq = DOTween.Sequence();
+                seq.AppendInterval(delay);
+                model.transform.GetPositionAndRotation(out Vector3 originalPosition, out Quaternion originalRotation);
+                float heightDecrement = height / bounceCount;
+
+                for (int i = 0; i < bounceCount; i++)
                 {
-                    model.transform.DOShakePosition(0.6f, Vector3.one * 0.5f, 10, 90, false, true, ShakeRandomnessMode.Harmonic);
-                    model.transform.DOShakeRotation(0.6f, 10f);
-                    Sequence sequence = DOTween.Sequence();
-                    sequence.Append(model.transform.DOLocalMoveY(6, 0.3f));
-                    sequence.Append(model.transform.DOLocalMoveY(0.2f, 0.3f));
+                    float decay = Mathf.Pow(0.5f, i);
+
+                    float duration = bounceDutations[i];
+                    float currentHeight = height - (heightDecrement * i);
+                    float currentAngle = angle * decay;
+
+                    Vector3 bounceDirection = (i % 2 == 0) ? direction : -direction;
+                    Vector3 axis = Vector3.Cross(bounceDirection, Vector3.up).normalized;
+                    Quaternion rotation = Quaternion.AngleAxis(currentAngle, axis);
+
+                    seq.Append(model.transform.DOMoveY(originalPosition.y + currentHeight, duration / 2)
+                        .SetEase(Ease.OutQuad))
+                        .Join(model.transform.DORotateQuaternion(rotation, duration / 2).SetEase(Ease.OutQuad));
+
+                    seq.Append(model.transform.DOMoveY(originalPosition.y, duration / 2).SetEase(Ease.InQuad))
+                        .Join(model.transform.DORotateQuaternion(originalRotation, duration / 2).SetEase(Ease.InQuad));
                 }
-                else
-                {
-                    return;
-                    model.transform.DOShakePosition(0.4f, Vector3.one * 0.2f, 10, 90, false, true, ShakeRandomnessMode.Harmonic);
-                    model.transform.DOShakeRotation(0.4f, 5f);
-                    Sequence sequence = DOTween.Sequence();
-                    sequence.Append(model.transform.DOLocalMoveY(3, 0.2f));
-                    sequence.Append(model.transform.DOLocalMoveY(0.2f, 0.2f));
-                }
-            });
+            }
         }
 
         public void AnimationConfirmDeckTop(int id)
