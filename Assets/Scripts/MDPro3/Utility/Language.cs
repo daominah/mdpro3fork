@@ -58,6 +58,13 @@ namespace MDPro3.Utility
             return false;
         }
 
+        public static string GetBlankIfNeed()
+        {
+            if (NeedBlankToAddWord())
+                return " ";
+            return string.Empty;
+        }
+
         public static bool UseLatin()
         {
             var config = GetConfig();

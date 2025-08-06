@@ -1,5 +1,6 @@
 using MDPro3.Duel.YGOSharp;
 using MDPro3.Servant;
+using MDPro3.Utility;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing.Imaging;
@@ -131,18 +132,18 @@ namespace MDPro3.UI.ServantUI
             if (RoomServant.FromLocalHost)
             {
                 foreach (var ip in Tools.GetLocalIPv4())
-                    roomInfo += InterString.Get("本机地址：") + ip + rn;
-                roomInfo += InterString.Get("端口：") + "7911" + rn;
+                    roomInfo += InterString.Get("本机地址：") + Language.GetBlankIfNeed() + ip + rn;
+                roomInfo += InterString.Get("端口：") + Language.GetBlankIfNeed() + "7911" + rn;
             }
-            roomInfo += StringHelper.GetUnsafe(1227) + StringHelper.GetUnsafe(1244 + RoomServant.Mode) + rn;//决斗模式：
-            roomInfo += StringHelper.GetUnsafe(1236) + StringHelper.GetUnsafe(1259 + Program.instance.ocgcore.MasterRule) + rn;//规则：
-            roomInfo += StringHelper.GetUnsafe(1225) + StringHelper.GetUnsafe(1481 + RoomServant.Rule) + rn;//卡片允许：
-            roomInfo += StringHelper.GetUnsafe(1226) + BanlistManager.GetName(RoomServant.LFList) + rn;//禁限卡表
-            roomInfo += StringHelper.GetUnsafe(1231) + RoomServant.StartLp + rn;//初始基本分：
-            roomInfo += StringHelper.GetUnsafe(1232) + RoomServant.StartHand + rn;//初始手卡数：
-            roomInfo += StringHelper.GetUnsafe(1233) + RoomServant.DrawCount + rn;//每回合抽卡：
-            roomInfo += StringHelper.GetUnsafe(1237) + RoomServant.TimeLimit + rn;//每回合时间：
-            roomInfo += StringHelper.GetUnsafe(1253) + RoomServant.ObserverCount + rn;//当前观战人数：
+            roomInfo += StringHelper.GetUnsafe(1227) + Language.GetBlankIfNeed() + StringHelper.GetUnsafe(1244 + RoomServant.Mode) + rn;//决斗模式：
+            roomInfo += StringHelper.GetUnsafe(1236) + Language.GetBlankIfNeed() + StringHelper.GetUnsafe(1259 + Program.instance.ocgcore.MasterRule) + rn;//规则：
+            roomInfo += StringHelper.GetUnsafe(1225) + Language.GetBlankIfNeed() + StringHelper.GetUnsafe(1481 + RoomServant.Rule) + rn;//卡片允许：
+            roomInfo += StringHelper.GetUnsafe(1226) + Language.GetBlankIfNeed() + BanlistManager.GetName(RoomServant.LFList) + rn;//禁限卡表
+            roomInfo += StringHelper.GetUnsafe(1231) + Language.GetBlankIfNeed() + RoomServant.StartLp + rn;//初始基本分：
+            roomInfo += StringHelper.GetUnsafe(1232) + Language.GetBlankIfNeed() + RoomServant.StartHand + rn;//初始手卡数：
+            roomInfo += StringHelper.GetUnsafe(1233) + Language.GetBlankIfNeed() + RoomServant.DrawCount + rn;//每回合抽卡：
+            roomInfo += StringHelper.GetUnsafe(1237) + Language.GetBlankIfNeed() + RoomServant.TimeLimit + rn;//每回合时间：
+            roomInfo += StringHelper.GetUnsafe(1253) + Language.GetBlankIfNeed() + RoomServant.ObserverCount + rn;//当前观战人数：
             if (RoomServant.NoCheckDeck) roomInfo += StringHelper.GetUnsafe(1229) + rn;//不检查卡组
             if (RoomServant.NoShuffleDeck) roomInfo += StringHelper.GetUnsafe(1230);//不洗切卡组
             TextRoomInfo.text = roomInfo;

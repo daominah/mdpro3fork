@@ -258,7 +258,7 @@ namespace MDPro3
                 manager.GetElement("PropertyMonster").SetActive(false);
                 manager.GetElement("PropertySpell").SetActive(true);
                 manager.GetElement<Image>("SpellType").sprite = TextureManager.GetSpellTrapTypeIcon(data);
-                manager.GetElement<Text>("TextSpellType").text = StringHelper.SecondType(data.Type) + StringHelper.MainType(data.Type);
+                manager.GetElement<Text>("TextSpellType").text = data.GetSpellTrapType();
             }
             RefreshLimitIcon(data.Id);
         }
