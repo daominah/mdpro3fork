@@ -970,6 +970,8 @@ namespace MDPro3.UI
                 yield return null;
             }
 
+            RefreshCardsCount(DeckLocation.All);
+
             TweenLoading.Hide();
             Viewport.alpha = 1f;
             Viewport.blocksRaycasts = true;
