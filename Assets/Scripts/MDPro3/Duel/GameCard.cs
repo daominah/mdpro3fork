@@ -2722,14 +2722,13 @@ namespace MDPro3
                 Sequence seq = DOTween.Sequence();
                 seq.AppendInterval(delay);
                 model.transform.GetPositionAndRotation(out Vector3 originalPosition, out Quaternion originalRotation);
-                float heightDecrement = height / bounceCount;
 
                 for (int i = 0; i < bounceCount; i++)
                 {
-                    float decay = Mathf.Pow(0.5f, i);
+                    float decay = Mathf.Pow(0.7f, i);
 
                     float duration = bounceDutations[i];
-                    float currentHeight = height - (heightDecrement * i);
+                    float currentHeight = height * decay;
                     float currentAngle = angle * decay;
 
                     Vector3 bounceDirection = (i % 2 == 0) ? direction : -direction;

@@ -5575,124 +5575,79 @@ namespace MDPro3.Servant
 
                     var handleFlag = 0;
 
+                    // 无强制发动的卡
                     if (forceCount == 0)
                     {
-                        //无强制发动的卡
+                        // 无关键卡
                         if (spcount == 0)
                         {
-                            //无关键卡
                             if (chainCondition == ChainCondition.No)
                             {
-                                //无关键卡 连锁被无视 直接回答---
                                 handleFlag = 0;
                             }
                             else if (chainCondition == ChainCondition.All)
                             {
-                                //无关键卡但是连锁被监控
                                 if (chainCards.Count == 0)
                                 {
-                                    //欺骗--
                                     handleFlag = -1;
                                 }
                                 else
                                 {
                                     if (chainCards.Count == 1 && chainCards[0].effects.Count == 1)
-                                        //只有一张要处理的卡 常规处理 一张---
                                         handleFlag = 1;
                                     else
-                                        //常规处理 多张---
                                         handleFlag = 2;
                                 }
                             }
                             else if (chainCondition == ChainCondition.Smart)
                             {
-                                //无关键卡但是连锁被智能过滤
-                                if (chainCards.Count == 0)
-                                {
-                                    //根本没卡 直接回答---
-                                    handleFlag = 0;
-                                }
-                                else
-                                {
-                                    if (chainCards.Count == 1 && chainCards[0].effects.Count == 1)
-                                        //只有一张要处理的卡 常规处理 一张---
-                                        handleFlag = 1;
-                                    else
-                                        //常规处理 多张---
-                                        handleFlag = 2;
-                                }
-                            }
-                            else
-                            {
-                                //无关键卡而且连锁没有被监控    直接回答---
                                 handleFlag = 0;
                             }
                         }
+                        // 有关键卡
                         else
                         {
-                            //有关键卡
                             if (chainCards.Count == 0)
                             {
-                                //根本没卡 直接回答---
                                 handleFlag = 0;
                                 if (chainCondition == ChainCondition.All)
-                                    //欺骗--
                                     handleFlag = -1;
                             }
                             else if (chainCondition == ChainCondition.No)
                             {
-                                //有关键卡 连锁被无视 直接回答---
                                 handleFlag = 0;
                             }
                             else
                             {
                                 if (chainCards.Count == 1 && chainCards[0].effects.Count == 1)
-                                    //只有一张要处理的卡 常规处理 一张---
                                     handleFlag = 1;
                                 else
-                                    //常规处理 多张---
                                     handleFlag = 2;
                             }
                         }
                     }
+                    // 有强制发动的卡
                     else
                     {
                         if (chainCards.Count == 1 && chainCards[0].effects.Count == 1)
                         {
-                            //有一张强制发动的卡 回应--
-                            handleFlag = 4;
+                            handleFlag = 3;
                         }
                         else
                         {
-                            //有强制发动的卡 处理强制发动的卡--
-                            handleFlag = 3;
-                            //if (autoForceChainHandler == autoForceChainHandlerType.autoHandleAll) handle_flag = 4;
-                            //if (autoForceChainHandler == autoForceChainHandlerType.afterClickManDo) handle_flag = 5;
+                            handleFlag = 4;
                         }
-
-                        //if (UIHelper.fromStringToBool(Config.Get("autoChain_", "0")))
-                        //    //自动回应--
-                        //    handleFlag = 4;
                     }
+
+                    //Debug.Log($"ChainCondition: {chainCondition} spcount: {spcount} handleFlag: {handleFlag}");
 
                     // handleFlag
                     // -1   无卡 需要提醒
                     // 0    无卡 直接回应
                     // 1    一张卡需要处理
                     // 2    多张卡需要处理
-                    // 3    多张卡需要处理（强制发动）
-                    // 4    一张卡需要处理（强制发动）
-                    // 5    多张卡需要处理（强制发动）AfterClick 未实装
-
-                    Debug.Log($"handleFlag = {handleFlag}");
-
-                    if (handleFlag == 4)
-                    {
-                        Debug.Log("handleFlag == 4");
-                    }
-
-                    if (handleFlag == 1)
-                        handleFlag = 2;
+                    // 3    一张卡需要处理（强制发动）
+                    // 4    多张卡需要处理（强制发动）
 
                     switch (handleFlag)
                     {
@@ -5702,7 +5657,6 @@ namespace MDPro3.Servant
                             break;
                         case 3:
                         case 4:
-                        case 5:
                             GetUI<OcgCoreUI>().ShowPopupSelectCard(InterString.Get("[?]，请选择效果发动。", ES_hint), chainCards, 1, 1, false, false);
                             break;
                         default:
