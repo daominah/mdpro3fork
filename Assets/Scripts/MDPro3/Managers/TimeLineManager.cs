@@ -81,11 +81,12 @@ namespace MDPro3
 
             GameObject ms;
 
-            //Super Polymerization
+            // Super Polymerization
             var data = Program.instance.ocgcore.summonCard.GetData();
             if (data.HasType(CardType.Fusion) 
                 && Program.instance.ocgcore.currentSolvingCard != null
-                && Program.instance.ocgcore.currentSolvingCard.GetData().Id == 48130397)
+                && (Program.instance.ocgcore.currentSolvingCard.GetData().Id == 48130397
+                        || Program.instance.ocgcore.currentSolvingCard.GetData().Alias == 48130397))
             {
                 if (materials.Count > 8)
                     ms = ABLoader.LoadFromFolder("MasterDuel/Timeline/Summon/SummonFusion/SummonFusion07445ShowUnitCard08",
@@ -93,6 +94,21 @@ namespace MDPro3
                 else
                     ms = ABLoader.LoadFromFolder("MasterDuel/Timeline/Summon/SummonFusion/SummonFusion07445ShowUnitCard0" + materials.Count,
                     "SummonFusion07445ShowUnitCard0" + materials.Count, true);
+            }
+            // Invocation
+            else if (data.HasType(CardType.Fusion)
+                && Program.instance.ocgcore.currentSolvingCard != null
+                && (Program.instance.ocgcore.currentSolvingCard.GetData().Id == 74063034
+                        || Program.instance.ocgcore.currentSolvingCard.GetData().Alias == 74063034))
+            {
+                if (materials.Count > 8)
+                    ms = ABLoader.LoadFromFolder("MasterDuel/Timeline/Summon/SummonFusion/SummonFusion12852ShowUnitCard08",
+                    "SummonFusion07445ShowUnitCard08", true);
+                else
+                    ms = ABLoader.LoadFromFolder("MasterDuel/Timeline/Summon/SummonFusion/SummonFusion12852ShowUnitCard0" + materials.Count,
+                    "SummonFusion07445ShowUnitCard0" + materials.Count, true);
+
+                Destroy(ms.transform.GetChildByName("BG(Dummy)").gameObject);
             }
             else
             {
