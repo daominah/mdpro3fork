@@ -103,10 +103,10 @@ namespace MDPro3
             {
                 if (materials.Count > 8)
                     ms = ABLoader.LoadFromFolder("MasterDuel/Timeline/Summon/SummonFusion/SummonFusion12852ShowUnitCard08",
-                    "SummonFusion07445ShowUnitCard08", true);
+                    "SummonFusion12852ShowUnitCard08", true);
                 else
                     ms = ABLoader.LoadFromFolder("MasterDuel/Timeline/Summon/SummonFusion/SummonFusion12852ShowUnitCard0" + materials.Count,
-                    "SummonFusion07445ShowUnitCard0" + materials.Count, true);
+                    "SummonFusion12852ShowUnitCard0" + materials.Count, true);
 
                 Destroy(ms.transform.GetChildByName("BG(Dummy)").gameObject);
             }
