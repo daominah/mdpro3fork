@@ -201,7 +201,7 @@ namespace MDPro3.Servant
                         Program.instance.InitializeForDataChange();
                     }
                     else
-                        MessageManager.Cast(InterString.Get("先行卡更新失败。"));
+                        MessageManager.Cast(InterString.Get("先行卡更新失败。") + download.error);
                 }
                 else
                     MessageManager.Cast(InterString.Get("先行卡已是最新版。"));
