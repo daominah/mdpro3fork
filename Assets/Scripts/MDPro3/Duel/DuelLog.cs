@@ -17,17 +17,18 @@ namespace MDPro3.Duel
 
         public static Color myColor = Color.blue;
         public static Color opColor = Color.red;
-        public static Color myArrowColor = new Color(0f, 0.5f, 1f, 1f);
-        public static Color opArrowColor = new Color(1f, 0.2f, 0.2f, 1f);
-        public static Color myChainColor = new Color(0.2f, 0.6f, 1f, 1f);
-        public static Color opChainColor = new Color(1f, 0.2f, 0.2f, 1f);
+        public static Color myArrowColor = new(0f, 0.5f, 1f, 1f);
+        public static Color opArrowColor = new(1f, 0.2f, 0.2f, 1f);
+        public static Color myChainColor = new(0.2f, 0.6f, 1f, 1f);
+        public static Color opChainColor = new(1f, 0.2f, 0.2f, 1f);
         public static Color damageColor = Color.red;
-        public static Color recoverColor = new Color(0, 0.7f, 1f, 1f);
+        public static Color recoverColor = new(0, 0.7f, 1f, 1f);
 
         public RectTransform baseRect;
         public ScrollRect scrollRect;
         public bool showing;
-        bool draged = false;
+        private bool draged = false;
+        private float fullHeight;
 
         private void Start()
         {
@@ -53,7 +54,6 @@ namespace MDPro3.Duel
                 AudioManager.PlaySE("SE_LOG_CLOSE");
         }
 
-        float fullHeight;
         public void AddLog(GameObject item, bool indent = false)
         {
             var rect = item.GetComponent<RectTransform>();
@@ -74,7 +74,7 @@ namespace MDPro3.Duel
             if (!showing && fullHeight > scrollRect.viewport.rect.height)
                 item.SetActive(false);
             if (!draged)
-                scrollRect.verticalScrollbar.value = 0f;
+                scrollRect.DOVerticalNormalizedPos(0f, 0.1f);
         }
 
         public void ClearLog()
@@ -83,7 +83,7 @@ namespace MDPro3.Duel
             fullHeight = 0;
         }
 
-        void Refresh(float value)
+        private void Refresh(float value)
         {
             if (!showing)
                 return;
@@ -130,7 +130,7 @@ namespace MDPro3.Duel
             }
         }
 
-        Rect GetVisibleRect()
+        private Rect GetVisibleRect()
         {
             Rect viewportRect = scrollRect.viewport.rect;
 
@@ -141,7 +141,7 @@ namespace MDPro3.Duel
             return visibleRect;
         }
 
-        bool IsRectVisible(RectTransform rectTransform, Rect visibleRect)
+        private bool IsRectVisible(RectTransform rectTransform, Rect visibleRect)
         {
             float top = rectTransform.anchoredPosition.y;
             float bottom = top - rectTransform.rect.height;
@@ -149,7 +149,6 @@ namespace MDPro3.Duel
         }
 
         #endregion
-
 
         #region Message
 
@@ -483,7 +482,8 @@ namespace MDPro3.Duel
                     break;
                 case GameMessage.ConfirmCards:
                     player = core.LocalPlayer(r.ReadByte());
-                    r.ReadByte();
+                    if(OcgCore.condition != OcgCore.Condition.Replay || OcgCore.CurrentReplayUseYRP2)
+                        r.ReadByte();
                     count = r.ReadByte();
                     for (int i = 0; i < count; i++)
                     {
@@ -802,7 +802,7 @@ namespace MDPro3.Duel
             }
         }
 
-        void AddSingleCardMessageToLog(int code, GPS from, GPS to, string reason, bool indent = false)
+        private void AddSingleCardMessageToLog(int code, GPS from, GPS to, string reason, bool indent = false)
         {
             var core = Program.instance.ocgcore;
 
@@ -905,7 +905,7 @@ namespace MDPro3.Duel
 #endif
         }
 
-        void AddLpPChangeMessageToLog(int player, string reason, int value, bool red = true, bool indent = false)
+        private void AddLpPChangeMessageToLog(int player, string reason, int value, bool red = true, bool indent = false)
         {
             var core = Program.instance.ocgcore;
 
