@@ -91,8 +91,6 @@ namespace YgomSystem.Timeline
 			}
 		}
 
-
-
 		public LoopMixerBehaviour loopMixerBehaviour;
 
 		public static LabeledPlayableController Create(PlayableDirector target)

@@ -1,6 +1,5 @@
 using DG.Tweening;
 using MDPro3.Duel;
-using MDPro3.Duel.BG;
 using MDPro3.Duel.YGOSharp;
 using MDPro3.Net;
 using MDPro3.UI;
@@ -90,7 +89,7 @@ namespace MDPro3.Servant
         private GameObject equipLine;
         private GameObject myDice;
         private GameObject opDice;
-        private GameObject duelFinalBlow;
+        private DuelFinalBlow duelFinalBlow;
         private ElementObjectManager timerManager;
         private TimerHandler timerHandler;
         private PlayableGuide playableGuide;
@@ -526,7 +525,8 @@ namespace MDPro3.Servant
             TimelineManager.inSummonMaterial = false;
             GetUI<OcgCoreUI>().CloseHint();
             attackLine.SetActive(false);
-            Destroy(duelFinalBlow, 0.5f);
+            if (duelFinalBlow != null)
+                duelFinalBlow.Destroy();
             yield return new WaitForSeconds(TransitionTime);
             servantUI.ShutDown();
             speaking = false;
@@ -3979,9 +3979,9 @@ namespace MDPro3.Servant
                         if (finalBlow)
                         {
                             if (duelFinalBlow != null)
-                                Destroy(duelFinalBlow);
+                                duelFinalBlow.Destroy();
                             //duelFinalBlow = ABLoader.LoadFromFile("MasterDuel/Timeline/DuelText/DuelFinalBlow", true);
-                            duelFinalBlow = Instantiate(container.duelFinalBlow);
+                            duelFinalBlow = Instantiate(container.duelFinalBlow).GetComponent<DuelFinalBlow>();
                         }
                         Sleep(20);
                     }
@@ -3991,7 +3991,8 @@ namespace MDPro3.Servant
                 case GameMessage.AttackDisabled:
                     ES_hint = InterString.Get("攻击被无效时");
                     attackLine.SetActive(false);
-                    Destroy(duelFinalBlow, 0.5f);
+                    if (duelFinalBlow != null)
+                        duelFinalBlow.Destroy();
                     break;
                 case GameMessage.DamageStepStart:
                     break;
@@ -4068,7 +4069,8 @@ namespace MDPro3.Servant
                     if (duelFinalBlow != null)
                     {
                         isFinalAttack = true;
-                        Destroy(duelFinalBlow);
+                        if (duelFinalBlow != null)
+                            duelFinalBlow.Destroy();
                     }
                     needDamageResponseInstant = true;
                     messagePass = false;
@@ -4736,7 +4738,8 @@ namespace MDPro3.Servant
                     break;
                 case GameMessage.NewPhase:
                     attackLine.SetActive(false);
-                    Destroy(duelFinalBlow, 0.5f);
+                    if (duelFinalBlow != null)
+                        duelFinalBlow.Destroy();
 
                     cardsInSelection.Clear();
                     var ph = r.ReadUInt16();
@@ -5414,7 +5417,8 @@ namespace MDPro3.Servant
                     break;
                 case GameMessage.SelectBattleCmd:
                     attackLine.SetActive(false);
-                    Destroy(duelFinalBlow, 0.5f);
+                    if (duelFinalBlow != null)
+                        duelFinalBlow.Destroy();
 
                     if (InIgnoranceReplay()) break;
                     SetPlayableGuide(true);

@@ -1,4 +1,5 @@
 using AssetStudio;
+using MDPro3.Duel;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -49,16 +50,16 @@ namespace YgomSystem.Timeline
 				if(!inied)
 					Ini(playable);
 
-                if (m_Director.GetComponent<LabeledPlayableController>() != null)
+                if (m_Director.TryGetComponent<LabeledPlayableController>(out var lpc))
 				{
-                    m_Director.GetComponent<LabeledPlayableController>().loopMixerBehaviour = this;
+                    lpc.loopMixerBehaviour = this;
                     m_Initialized = true;
                 }
             }
         }
 
-		bool inied;
-		void Ini(Playable playable)
+        private bool inied;
+        private void Ini(Playable playable)
 		{
             var resolver = playable.GetGraph().GetResolver();
             if (resolver is PlayableDirector)
@@ -76,18 +77,23 @@ namespace YgomSystem.Timeline
 					}
 				}
             }
+
+			if(m_Director.TryGetComponent<LoopTrackManager>(out var ltm))
+			{
+				ltm.loopMixerBehaviour = this;
+            }
+
             inied = true;
-
-
-
         }
+
+		public bool needLoop = true;
 
         public override void PrepareFrame(Playable playable, FrameData info)
 		{
-			if(currentClip != null)
-                if (m_Director.time > currentClip.extrapolatedStart + currentClip.duration - 0.02f)
-                    m_Director.time = currentClip.extrapolatedStart;
-        }
+			if (currentClip != null && needLoop)
+				if (m_Director.time > currentClip.extrapolatedStart + currentClip.duration - 0.02f)
+					m_Director.time = currentClip.extrapolatedStart;
+		}
 
 		public void PlayClip(string label, TimelineClip loopClip)
 		{
