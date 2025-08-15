@@ -41,7 +41,7 @@ namespace YgomSystem.UI
 			TweenColor();
         }
 
-		void TweenColor()
+		private void TweenColor()
 		{
 			m_spriteRenderer.color = from;
 			m_spriteRenderer.DOColor(to, duration).SetEase(GetDGTweenEase(easing)).OnComplete(() =>

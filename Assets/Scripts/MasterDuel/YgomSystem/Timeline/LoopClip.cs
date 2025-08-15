@@ -8,9 +8,10 @@ namespace YgomSystem.Timeline
 	[Serializable]
 	public class LoopClip : PlayableAsset
 	{
-		public LoopBehaviour template;
+		[HideInInspector] public LoopBehaviour template;
 
-		public TimelineClip loopClip;
+		[HideInInspector] public TimelineClip loopClip;
+
 		public override Playable CreatePlayable(PlayableGraph graph, GameObject go)
 		{
 			var playable = ScriptPlayable<LoopBehaviour>.Create(graph);

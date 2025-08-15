@@ -43,3 +43,5 @@ MonoBehaviour:
   duelLogTextWithCard2: {fileID: 1387090791483376203, guid: 817f6d2fe893e014fa8cb27ee51d0b7c, type: 3}
   duelLogLpChange: {fileID: 3150024044697431290, guid: dc378e95e2ba7464b978203e6a5108b1, type: 3}
   duelLogCounter: {fileID: 4080254034130760786, guid: ab80aff3c66e22a45bc8388643a8e1c2, type: 3}
+  duelDirectAtk00: {fileID: 1574167293659148, guid: eb337d7e36edac348ab745105d1f93c9, type: 3}
+  duelFinalBlow: {fileID: 1348777536908202, guid: 1c29c2fea33e06042abc03b98b118a8c, type: 3}

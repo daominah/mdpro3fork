@@ -28,10 +28,10 @@ namespace YgomSystem.UI
 			PlayDIY();
         }
 
-		void PlayDIY()
+		private void PlayDIY()
 		{
             transform.localPosition = startPosition;
-            GetComponent<Transform>().DOLocalMove(to, duration).SetEase(GetDGTweenEase(easing)).OnComplete(() => 
+            transform.DOLocalMove(to, duration).SetEase(GetDGTweenEase(easing)).OnComplete(() => 
 			{ 
 				if(style == Style.Loop)
 				{

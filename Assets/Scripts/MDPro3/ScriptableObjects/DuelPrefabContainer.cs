@@ -25,9 +25,11 @@ namespace MDPro3
         public GameObject duelMain2PhaseFar;
         public GameObject duelEndPhaseNear;
         public GameObject duelEndPhaseFar;
+
         [Header("Duel Turn Change")]
         public GameObject duelTurnChangeNear;
         public GameObject duelTurnChangeFar;
+
         [Header("Duel Log")]
         public GameObject duelLogNewTurn;
         public GameObject duelLogNewPhase;
@@ -41,5 +43,10 @@ namespace MDPro3
         public GameObject duelLogTextWithCard2;
         public GameObject duelLogLpChange;
         public GameObject duelLogCounter;
+
+        [Header("Duel Text")]
+        public GameObject duelDirectAtk00;
+        public GameObject duelFinalBlow;
+
     }
 }

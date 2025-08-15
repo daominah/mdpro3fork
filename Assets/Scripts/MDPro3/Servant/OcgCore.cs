@@ -3980,7 +3980,8 @@ namespace MDPro3.Servant
                         {
                             if (duelFinalBlow != null)
                                 Destroy(duelFinalBlow);
-                            duelFinalBlow = ABLoader.LoadFromFile("MasterDuel/Timeline/DuelText/DuelFinalBlow", true);
+                            //duelFinalBlow = ABLoader.LoadFromFile("MasterDuel/Timeline/DuelText/DuelFinalBlow", true);
+                            duelFinalBlow = Instantiate(container.duelFinalBlow);
                         }
                         Sleep(20);
                     }

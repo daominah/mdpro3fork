@@ -56,6 +56,7 @@ SpriteAtlas:
     - f142aaa313b80f94fa03b5c8d7fd1bda: 21300000
     - 9fba1f041a692c149841c2ec988f27cc: 21300000
     - 5b68c444be1cdef4884405c3172b5036: 21300000
+    - be3fe644859e20446934b60517107569: 21300000
     - 7f3e20c4846a8404ba4c5c79f1b0bfa0: 21300000
     - a42aa5c5b4414c043b0208d2290e708e: 21300000
     - 51cabd9642ff4ff4a91b612d52f679c6: 21300000
@@ -63,6 +64,7 @@ SpriteAtlas:
     - 8870f9d6b5a34104bbb3db7eab3196ed: 21300000
     - ed5b337882592c64286405ccd6e2d372: 21300000
     - ba79f6dae7a5b6b41aa8c44b3756e182: 21300000
+    - 4a987d6e80450e5459db3a8546d8fd1e: 21300000
     - 22ef429e034a01f4386e35ba706a28b0: 21300000
     - 4357fdde4141cf54d866df31a14be017: 21300000
     - ef58582f971703b45885c27d06e4f400: 21300000
@@ -74,6 +76,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: f142aaa313b80f94fa03b5c8d7fd1bda, type: 3}
   - {fileID: 21300000, guid: 9fba1f041a692c149841c2ec988f27cc, type: 3}
   - {fileID: 21300000, guid: 5b68c444be1cdef4884405c3172b5036, type: 3}
+  - {fileID: 21300000, guid: be3fe644859e20446934b60517107569, type: 3}
   - {fileID: 21300000, guid: 7f3e20c4846a8404ba4c5c79f1b0bfa0, type: 3}
   - {fileID: 21300000, guid: a42aa5c5b4414c043b0208d2290e708e, type: 3}
   - {fileID: 21300000, guid: 51cabd9642ff4ff4a91b612d52f679c6, type: 3}
@@ -81,6 +84,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 8870f9d6b5a34104bbb3db7eab3196ed, type: 3}
   - {fileID: 21300000, guid: ed5b337882592c64286405ccd6e2d372, type: 3}
   - {fileID: 21300000, guid: ba79f6dae7a5b6b41aa8c44b3756e182, type: 3}
+  - {fileID: 21300000, guid: 4a987d6e80450e5459db3a8546d8fd1e, type: 3}
   - {fileID: 21300000, guid: 22ef429e034a01f4386e35ba706a28b0, type: 3}
   - {fileID: 21300000, guid: 4357fdde4141cf54d866df31a14be017, type: 3}
   - {fileID: 21300000, guid: ef58582f971703b45885c27d06e4f400, type: 3}
@@ -91,6 +95,7 @@ SpriteAtlas:
   - img_text_DuelDirectAtk_k01
   - img_text_DuelDirectAtk_t00
   - img_text_DuelDirectAtk_e01
+  - DuelFinalBlowText01
   - img_text_DuelDirectAtk_c00
   - img_text_DuelDirectAtk_d00
   - img_text_DuelDirectAtk_a01
@@ -98,6 +103,7 @@ SpriteAtlas:
   - img_text_DuelDirectAtk_t01
   - img_text_DuelDirectAtk_i01
   - img_text_DuelDirectAtk_e00
+  - DuelFinalBlow01
   - img_text_DuelDirectAtk_c01
   - img_text_DuelDirectAtk_k00
   - img_text_DuelDirectAtk_a00
