@@ -4,6 +4,7 @@ using MDPro3.UI;
 using System.Collections;
 using System.IO;
 using static UnityEngine.UI.Image;
+using YgomSystem.Effect;
 
 namespace MDPro3
 {
@@ -79,7 +80,11 @@ namespace MDPro3
 
             var endString = id.ToString("D4");
             back = ABLoader.LoadFromFolder("MasterDuel/Background/Back" + endString, "Background" + endString, true);
-            back.transform.GetChild(0).gameObject.AddComponent<AutoScale>();
+            if (back.transform.GetChild(0).gameObject.TryGetComponent<SpriteScaler>(out var spriteScaler))
+            {
+                spriteScaler.isApplyOnUpdate = true;
+                spriteScaler.SetFitMode(SpriteScaler.FitMode.FitHighestResolutionMaintainAspectRatio);
+            }
             Tools.ChangeLayer(back, "2D");
             back.transform.SetParent(transform, false);
 

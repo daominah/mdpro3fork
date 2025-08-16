@@ -433,7 +433,6 @@ namespace MDPro3
             DoWhenStop(summon);
             var manager = summon.GetComponent<ElementObjectManager>();
             currentSyncManager = manager;
-            manager.GetElement("BlackNormal").AddComponent<AutoScaleOnce>();
 
             var subManager = manager.GetElement<ElementObjectManager>("SummonLinkpostLink");
             dummyCard = subManager.GetElement("DummyCardLink");

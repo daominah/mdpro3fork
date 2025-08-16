@@ -270,17 +270,6 @@ namespace MDPro3.Servant
             else//4
                 back = ABLoader.LoadFromFile("MasterDuel/Timeline/Summon/SummonMonster/04BackEff/SummonMonster_Bgdve_S2", true);
             back.transform.SetParent(Program.instance.container_2D, false);
-            Transform eff_flame = back.transform.Find("Eff_Flame");
-            eff_flame.localScale = new Vector3(2.76f, 1.55f, 1f);
-            eff_flame.gameObject.AddComponent<AutoScaleOnce>();
-            Transform eff_bg00 = back.transform.Find("Eff_Bg00");
-            eff_bg00.localScale = new Vector3(250f, 25f, 1f);
-            Transform flame_re = back.transform.Find("flame_re");
-            if (flame_re == null)
-                flame_re = back.transform.Find("Eff_group/flame_re");
-            if (flame_re == null)
-                flame_re = back.transform.Find("Eff_Flame01_re");
-            flame_re.gameObject.AddComponent<AutoScaleOnce>();
             Destroy(back, CUTIN_PLAY_TIME);
 
             //Name Bar

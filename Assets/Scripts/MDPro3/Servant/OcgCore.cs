@@ -2643,7 +2643,8 @@ namespace MDPro3.Servant
                         var mono = myDeck.gameObject.AddComponent<DoWhenPlayableDirectorStop>();
                         mono.action = () =>
                         {
-                            var effect = ABLoader.LoadFromFile("MasterDuel/Timeline/DuelText/DuelTextStart", true);
+                            //var effect = ABLoader.LoadFromFile("MasterDuel/Timeline/DuelText/DuelTextStart", true);
+                            var effect = Instantiate(container.duelTextStart);
                             var mono = effect.AddComponent<DoWhenPlayableDirectorStop>();
                             mono.action = () =>
                             {
