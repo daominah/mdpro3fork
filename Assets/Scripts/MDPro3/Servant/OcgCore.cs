@@ -2438,7 +2438,8 @@ namespace MDPro3.Servant
                     if (player == 2)
                     {
                         result = DuelResult.Draw;
-                        duelText = ABLoader.LoadFromFile("MasterDuel/Timeline/DuelText/DuelTextDraw", true);
+                        //duelText = ABLoader.LoadFromFile("MasterDuel/Timeline/DuelText/DuelTextDraw", true);
+                        duelText = Instantiate(container.duelTextDraw);
                     }
                     else if (player == 0 || winType == 4)
                     {

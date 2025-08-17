@@ -67,8 +67,10 @@ SpriteAtlas:
     - c9d4b3c61865b6840bb2255e8df28b1f: 21300000
     - 8870f9d6b5a34104bbb3db7eab3196ed: 21300000
     - ed5b337882592c64286405ccd6e2d372: 21300000
+    - bc7074881517d2e49b03d45388fbfda4: 21300000
     - 7fab3eb8fd79f4d4e8f2f3d147822b50: 21300000
     - ba79f6dae7a5b6b41aa8c44b3756e182: 21300000
+    - 325753fa167ebac44a17cea9366d2ac0: 21300000
     - ae21032c887c8f1408bbdb131f5032da: 21300000
     - 2c2ee90db6fd6ab45b15c48b1d335435: 21300000
     - 4a987d6e80450e5459db3a8546d8fd1e: 21300000
@@ -97,8 +99,10 @@ SpriteAtlas:
   - {fileID: 21300000, guid: c9d4b3c61865b6840bb2255e8df28b1f, type: 3}
   - {fileID: 21300000, guid: 8870f9d6b5a34104bbb3db7eab3196ed, type: 3}
   - {fileID: 21300000, guid: ed5b337882592c64286405ccd6e2d372, type: 3}
+  - {fileID: 21300000, guid: bc7074881517d2e49b03d45388fbfda4, type: 3}
   - {fileID: 21300000, guid: 7fab3eb8fd79f4d4e8f2f3d147822b50, type: 3}
   - {fileID: 21300000, guid: ba79f6dae7a5b6b41aa8c44b3756e182, type: 3}
+  - {fileID: 21300000, guid: 325753fa167ebac44a17cea9366d2ac0, type: 3}
   - {fileID: 21300000, guid: ae21032c887c8f1408bbdb131f5032da, type: 3}
   - {fileID: 21300000, guid: 2c2ee90db6fd6ab45b15c48b1d335435, type: 3}
   - {fileID: 21300000, guid: 4a987d6e80450e5459db3a8546d8fd1e, type: 3}
@@ -126,8 +130,10 @@ SpriteAtlas:
   - img_text_DuelDirectAtk_r00
   - img_text_DuelDirectAtk_t01
   - img_text_DuelDirectAtk_i01
+  - img_text_DuelTextDraw_w00
   - img_text_DuelTextStart_u02
   - img_text_DuelDirectAtk_e00
+  - img_text_DuelTextDraw_w01
   - img_text_DuelTextStart_e02
   - img_text_DuelTextStart_d02
   - DuelFinalBlow01

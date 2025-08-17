@@ -152,6 +152,9 @@ namespace YgomSystem.Effect
             return null;
         }
 
+        private bool colorGetted;
+        private Color originalColor;
+
         private void OnEnable()
         {
 			StartCoroutine(SetupAsync());
@@ -160,7 +163,11 @@ namespace YgomSystem.Effect
 		private IEnumerator SetupAsync()
 		{
             if (targetSprite == null) targetSprite = GetComponent<SpriteRenderer>();
-            var originalColor = targetSprite.color;
+            if (!colorGetted)
+            {
+                originalColor = targetSprite.color;
+                colorGetted = true;
+            }
             targetSprite.color = Color.clear;
 
             // Wait for the next frame to ensure script changes are ready.
@@ -289,7 +296,7 @@ namespace YgomSystem.Effect
             isApplied = true;
             appliedScreenSize = new Vector2(screenWidth, screenHeight);
 
-            Debug.Log($"SpriteScaler applied: {gameObject.name}, Camera: {viewCamera}, Mode: {fitMode}, Scale: {transform.localScale}, Screen Size: {appliedScreenSize}");
+            //Debug.Log($"SpriteScaler applied: {gameObject.name}, Camera: {viewCamera}, Mode: {fitMode}, Scale: {transform.localScale}, Screen Size: {appliedScreenSize}");
         }
 
 		public void Reapply()
