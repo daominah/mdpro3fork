@@ -49,5 +49,6 @@ namespace MDPro3
         public GameObject duelFinalBlow;
         public GameObject duelTextStart;
         public GameObject duelTextDraw;
+        public GameObject duelTextFinished;
     }
 }

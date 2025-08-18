@@ -47,3 +47,4 @@ MonoBehaviour:
   duelFinalBlow: {fileID: 1348777536908202, guid: 1c29c2fea33e06042abc03b98b118a8c, type: 3}
   duelTextStart: {fileID: 1853063056925814, guid: 06c4301da3292f14dad49a9664d8560b, type: 3}
   duelTextDraw: {fileID: 1192508514770904, guid: 944f3d5063837fa46abdc23a922aa3cc, type: 3}
+  duelTextFinished: {fileID: 1849005885123107, guid: 245c02bd2aebf3c47907e28896de7380, type: 3}

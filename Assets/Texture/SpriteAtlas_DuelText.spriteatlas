@@ -51,6 +51,7 @@ SpriteAtlas:
     cachedData: {fileID: 0}
     packedSpriteRenderDataKeys:
     - e20937113a7d1db4ebe97bd1cd1db06b: 21300000
+    - 7e96081144e781943a4fc8478d1d5b29: 21300000
     - 7814c9f1e92dd824c930077d531f1ab0: 21300000
     - 4658cf12ec8f4dc4f81c6f514b452bab: 21300000
     - 7b9b634379d3ea84f94fbebfaf600ded: 21300000
@@ -61,6 +62,7 @@ SpriteAtlas:
     - 1869a2147c5ba0144b55c6a4ae8f481c: 21300000
     - 5b68c444be1cdef4884405c3172b5036: 21300000
     - be3fe644859e20446934b60517107569: 21300000
+    - 26887c74db0c00d4db44bb2f10993cc1: 21300000
     - 7f3e20c4846a8404ba4c5c79f1b0bfa0: 21300000
     - a42aa5c5b4414c043b0208d2290e708e: 21300000
     - 51cabd9642ff4ff4a91b612d52f679c6: 21300000
@@ -83,6 +85,7 @@ SpriteAtlas:
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: 21300000, guid: e20937113a7d1db4ebe97bd1cd1db06b, type: 3}
+  - {fileID: 21300000, guid: 7e96081144e781943a4fc8478d1d5b29, type: 3}
   - {fileID: 21300000, guid: 7814c9f1e92dd824c930077d531f1ab0, type: 3}
   - {fileID: 21300000, guid: 4658cf12ec8f4dc4f81c6f514b452bab, type: 3}
   - {fileID: 21300000, guid: 7b9b634379d3ea84f94fbebfaf600ded, type: 3}
@@ -93,6 +96,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 1869a2147c5ba0144b55c6a4ae8f481c, type: 3}
   - {fileID: 21300000, guid: 5b68c444be1cdef4884405c3172b5036, type: 3}
   - {fileID: 21300000, guid: be3fe644859e20446934b60517107569, type: 3}
+  - {fileID: 21300000, guid: 26887c74db0c00d4db44bb2f10993cc1, type: 3}
   - {fileID: 21300000, guid: 7f3e20c4846a8404ba4c5c79f1b0bfa0, type: 3}
   - {fileID: 21300000, guid: a42aa5c5b4414c043b0208d2290e708e, type: 3}
   - {fileID: 21300000, guid: 51cabd9642ff4ff4a91b612d52f679c6, type: 3}
@@ -114,6 +118,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 0544b2df9c738bf40872138e996752ec, type: 3}
   m_PackedSpriteNamesToIndex:
   - img_text_DuelDirectAtk_r01
+  - img_text_DuelTextFinished_00
   - img_text_DuelDirectAtk_d01
   - img_text_DuelTextStart_u01
   - img_DuelText_bg01
@@ -124,6 +129,7 @@ SpriteAtlas:
   - img_text_DuelTextStart_l02
   - img_text_DuelDirectAtk_e01
   - DuelFinalBlowText01
+  - img_text_DuelTextFinished_01
   - img_text_DuelDirectAtk_c00
   - img_text_DuelDirectAtk_d00
   - img_text_DuelDirectAtk_a01
