@@ -1,0 +1,1982 @@
+{
+    "_GRP_": "SN0715",
+    "_LNG_": "it-IT",
+    "info": {
+        "V0715_01_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ahahah!\nSiamo pronti per giocare?!"
+        },
+        "V0715_01_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Si scende in campo solo per una partita all'ultimo sangue!"
+        },
+        "V0715_01_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "E ora alla battuta va...\nYuka Goha!"
+        },
+        "V0715_01_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Ecco quello che succederà!\nTi spedirò fuori dallo stadio!"
+        },
+        "V0715_01_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "La prima lanciatrice di oggi è... Yuka Goha!"
+        },
+        "V0715_01_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Più forte tu batti, più veloce io lancio!"
+        },
+        "V0715_01_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Sono una Goha!\nNon perderò mai questo Duello!"
+        },
+        "V0715_01_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Io e te!\nUno contro uno!"
+        },
+        "V0715_01_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                704,
+                707
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "C'è solo una lanciatrice degna di sfidarmi!"
+        },
+        "V0715_01_00_06_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Romin Kassidy!"
+        },
+        "V0715_01_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                704,
+                707
+            ],
+            "face": 11,
+            "frame": 0,
+            "text": "Puoi lanciare come meglio sai fare.\nMa non vincerai oggi!"
+        },
+        "V0715_01_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                717
+            ],
+            "face": 3,
+            "frame": 0,
+            "text": "Non sei tu a comandare, Yuo!\nLo facciamo tutti e sei insieme!"
+        },
+        "V0715_02_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Combattiamo!"
+        },
+        "V0715_03_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "È tempo di segnare altri punti!"
+        },
+        "V0715_03_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "È il mio turno!"
+        },
+        "V0715_03_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Sto lanciando alla perfezione!"
+        },
+        "V0715_03_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Tocca a me!"
+        },
+        "V0715_03_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Mi servono solo tre eliminazioni!"
+        },
+        "V0715_03_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "È il mio turno!"
+        },
+        "V0715_03_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Questo andrà negli highlights!"
+        },
+        "V0715_03_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Tocca a me!"
+        },
+        "V0715_03_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Due strike, due eliminazioni, seconda metà del nono..."
+        },
+        "V0715_03_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "È il mio turno!"
+        },
+        "V0715_03_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Ah!\nHo bisogno di ghiaccio sulla mia spalla..."
+        },
+        "V0715_03_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Tocca a me!"
+        },
+        "V0715_04_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Pesco!"
+        },
+        "V0715_04_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Pesco!"
+        },
+        "V0715_04_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Argh... Pesco!"
+        },
+        "V0715_05_00_00_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 7,
+            "frame": 1,
+            "text": "Mi fa male il braccio...\nMa ho giocato con dolori più forti!"
+        },
+        "V0715_05_00_00_1": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 7,
+            "frame": 1,
+            "text": "Peeescooo!"
+        },
+        "V0715_06_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 1,
+            "text": "Non credo che funzionerà."
+        },
+        "V0715_06_01_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Tocca al battitore!"
+        },
+        "V0715_06_01_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Non riuscirai a rubarmi le basi!"
+        },
+        "V0715_06_01_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Farò un'eliminazione!"
+        },
+        "V0715_07_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Dalla mia mano..."
+        },
+        "V0715_07_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Attivo una Carta Magia!"
+        },
+        "V0715_07_02_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Attivo una Magia Rapida!"
+        },
+        "V0715_07_03_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Attivo una Carta Magia Continua!"
+        },
+        "V0715_07_04_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Attivo una Magia Equipaggiamento!"
+        },
+        "V0715_07_05_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Attivo una Magia Rituale!"
+        },
+        "V0715_07_06_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Attivo una Trappola!"
+        },
+        "V0715_07_07_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Attivo una Trappola Continua!"
+        },
+        "V0715_07_08_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Attivo una Contro-Trappola!"
+        },
+        "V0715_07_09_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Avevo pronta questa carta nel caso servisse!"
+        },
+        "V0715_07_09_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Ecco perché ho Posizionato questa carta!"
+        },
+        "V0715_07_10_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Attivo l'effetto del mio mostro!"
+        },
+        "V0715_07_11_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Attivo una Magia Terreno!"
+        },
+        "V0715_07_12_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Attivo un effetto!"
+        },
+        "V0715_07_13_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Imposto il Valore Pendulum!"
+        },
+        "V0715_07_14_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Attivo un Effetto Pendulum!"
+        },
+        "V0715_07_15_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Attivo una Magia Rituale!"
+        },
+        "V0715_08_00_00_0": {
+            "card": [
+                17013
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Attivo la Magia Terreno Stadio Spirito Febbricitante!"
+        },
+        "V0715_08_00_01_0": {
+            "card": [
+                16958
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Attivo la Carta Magia Rullo Pesante!"
+        },
+        "V0715_08_00_02_0": {
+            "card": [
+                17325
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ora attivo Tag-Up-Magico Forza di Sacrificio!"
+        },
+        "V0715_08_00_03_0": {
+            "card": [
+                17326
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Attivo la Carta Magia Elmetto Doppiofare!"
+        },
+        "V0715_08_00_04_0": {
+            "card": [
+                16932
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "La mia Carta Magia leggendaria!\nIl Guerriero Sopravvissuto!"
+        },
+        "V0715_08_00_05_0": {
+            "card": [
+                17025
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Attivo la Carta Trappola Fegato Gagaga!"
+        },
+        "V0715_08_00_06_0": {
+            "card": [
+                17026
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Perfetto!\nAttivo la Carta Trappola Richiesta 9!"
+        },
+        "V0715_08_00_07_0": {
+            "card": [
+                20054
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Attivo \"\"!\nSei fuori!"
+        },
+        "V0715_09_00_00_0": {
+            "card": [
+                16993
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Attivo l'effetto di Giocatore #39: Battitore di Fuori Campo!"
+        },
+        "V0715_09_00_01_0": {
+            "card": [
+                17292
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Attivo l'effetto di Giocatore #C39: Fenomeno dei Fuori Campo!"
+        },
+        "V0715_09_00_02_0": {
+            "card": [
+                16994
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Attivo l'effetto di Giocatore #99: Drago Grande Slam!"
+        },
+        "V0715_09_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ecco che rientra il mio battitore di potenza!"
+        },
+        "V0715_09_00_03_0": {
+            "card": [
+                16992
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Attivo l'effetto di Secondo Dododo!"
+        },
+        "V0715_09_00_04_0": {
+            "card": [
+                16991
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Attivo l'effetto di Arbitro Gogogo!"
+        },
+        "V0715_09_00_05_0": {
+            "card": [
+                21109
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Con l'effetto di Cavalletta Pungente chiamo un sostituto!"
+        },
+        "V0715_10_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Ci siamo!"
+        },
+        "V0715_10_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "È il momento!"
+        },
+        "V0715_10_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 0,
+            "text": "Proprio quello che volevo!"
+        },
+        "V0715_10_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Non farò un bunt, la spedirò lontano!"
+        },
+        "V0715_10_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Manterrò lo sguardo sulla palla!"
+        },
+        "V0715_11_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Evoco un mostro!"
+        },
+        "V0715_11_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Evoco un mostro in Posizione di Difesa!"
+        },
+        "V0715_11_02_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Evoco Specialmente un mostro!"
+        },
+        "V0715_11_03_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Offro un mostro come Tributo!"
+        },
+        "V0715_11_04_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Evoco un mostro tramite Tributo!"
+        },
+        "V0715_11_04_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Evocazione tramite Tributo!"
+        },
+        "V0715_11_05_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Evoco un mostro tramite Fusione!"
+        },
+        "V0715_11_05_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Evocazione tramite Fusione!"
+        },
+        "V0715_11_06_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Evoco un mostro tramite Rituale!"
+        },
+        "V0715_11_06_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Evocazione tramite Rituale!"
+        },
+        "V0715_11_07_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Synchro Evoco un mostro!"
+        },
+        "V0715_11_07_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Synchro Evocazione!"
+        },
+        "V0715_11_08_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Evoco Xyz un mostro!"
+        },
+        "V0715_11_08_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Ti avviso: porterò a casa questo Duello!"
+        },
+        "V0715_11_08_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Evocazione Xyz!"
+        },
+        "V0715_11_09_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Evoco Pendulum un mostro!"
+        },
+        "V0715_11_09_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Evocazione Pendulum!"
+        },
+        "V0715_11_10_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Evoco Link un mostro!"
+        },
+        "V0715_11_10_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Evocazione Link!"
+        },
+        "V0715_11_11_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Evoco Maximum un mostro!"
+        },
+        "V0715_11_11_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Evocazione Maximum!"
+        },
+        "V0715_11_12_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Evoco un mostro tramite Fusione!"
+        },
+        "V0715_11_12_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Evocazione tramite Fusione!"
+        },
+        "V0715_11_13_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Evoco un mostro tramite Fusione Contatto!"
+        },
+        "V0715_11_13_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Fusione Contatto!"
+        },
+        "V0715_11_14_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Evoco un mostro tramite Rituale!"
+        },
+        "V0715_11_14_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Evocazione tramite Rituale!"
+        },
+        "V0715_13_00_00_0": {
+            "card": [
+                16993
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Spediscila oltre la recinzione!\nGiocatore #39: Battitore di Fuori Campo!"
+        },
+        "V0715_13_00_01_0": {
+            "card": [
+                17292
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Giocatore #C39: Fenomeno dei Fuori Campo!"
+        },
+        "V0715_13_00_02_0": {
+            "card": [
+                16994
+            ],
+            "cutin": 2,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Facci fare quattro punti!\nGiocatore #99: Drago Grande Slam!"
+        },
+        "V0715_13_00_03_0": {
+            "card": [
+                16971
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ricevitore Achacha!"
+        },
+        "V0715_13_00_04_0": {
+            "card": [
+                16970
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Esterno Gagaga!"
+        },
+        "V0715_13_00_05_0": {
+            "card": [
+                16972
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Battitore Zubaba!"
+        },
+        "V0715_13_00_06_0": {
+            "card": [
+                16992
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Secondo Dododo!"
+        },
+        "V0715_13_00_07_0": {
+            "card": [
+                16991
+            ],
+            "cutin": 1,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Arbitro Gogogo"
+        },
+        "V0715_13_00_08_0": {
+            "card": [
+                21109
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Cavalletta Pungente colpirà pungendo!"
+        },
+        "V0715_14_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Combattiamo!"
+        },
+        "V0715_14_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Combattiamo!"
+        },
+        "V0715_15_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Lanciala forte e precisa!"
+        },
+        "V0715_15_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Colpisci con la mazza!"
+        },
+        "V0715_15_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Dacci dentro!"
+        },
+        "V0715_16_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ti sto distruggendo!"
+        },
+        "V0715_16_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Seconda metà del nono, due eliminazioni, basi piene!\nÈ tempo di mettersi in luce!"
+        },
+        "V0715_17_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Il mio mostro attacca!"
+        },
+        "V0715_17_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Una palla bassa e a rientrare!"
+        },
+        "V0715_17_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Batti e attacca!"
+        },
+        "V0715_18_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Sferro un attacco diretto!"
+        },
+        "V0715_18_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "E l'attacco diretto vola e... è un fuoricampo!"
+        },
+        "V0715_19_00_00_0": {
+            "card": [
+                16993
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Giocatore #39: Battitore di Fuori Campo!\nAttacca!"
+        },
+        "V0715_19_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Colpo dello Slam Nascente!"
+        },
+        "V0715_19_00_01_0": {
+            "card": [
+                16993
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Giocatore #39: Battitore di Fuori Campo ti spedirà fuori dallo stadio!"
+        },
+        "V0715_19_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "È l'ora di una grande battuta!\nDoppio Colpo dello Slam Nascente!"
+        },
+        "V0715_19_00_02_0": {
+            "card": [
+                17292
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Giocatore #C39: Fenomeno dei Fuori Campo!\nAttacca!"
+        },
+        "V0715_19_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Colpo dello Slam Nascente del Capitano!"
+        },
+        "V0715_19_00_03_0": {
+            "card": [
+                16994
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Giocatore #99: Drago Grande Slam!\nAttacca!"
+        },
+        "V0715_19_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Tabellone Esplosivo!"
+        },
+        "V0715_19_00_04_0": {
+            "card": [
+                16971
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Ricevitore Achacha! Attacca!"
+        },
+        "V0715_19_00_05_0": {
+            "card": [
+                16970
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Attacca, Esterno Gagaga!"
+        },
+        "V0715_19_00_06_0": {
+            "card": [
+                16972
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Battitore Zubaba!\nColpisci una palla tesa!"
+        },
+        "V0715_19_00_07_0": {
+            "card": [
+                16992
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Secondo Dododo!\nAttacca!"
+        },
+        "V0715_19_00_08_0": {
+            "card": [
+                16991
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Arbitro Gogogo!\nMandali a fare la doccia!"
+        },
+        "V0715_19_00_09_0": {
+            "card": [
+                21109
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Attacca, Cavalletta Pungente!"
+        },
+        "V0715_20_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Posiziono una carta."
+        },
+        "V0715_20_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Posiziono una carta."
+        },
+        "V0715_20_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Posiziono un mostro."
+        },
+        "V0715_20_01_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Posizionerò un mostro."
+        },
+        "V0715_21_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "È la seconda metà del nono, e sono in grande vantaggio!"
+        },
+        "V0715_21_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Termino il mio turno!"
+        },
+        "V0715_21_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Andremo agli inning supplementari?"
+        },
+        "V0715_21_00_01_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Termino il mio turno!"
+        },
+        "V0715_21_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Oggi sto lanciando delle perle!"
+        },
+        "V0715_21_00_02_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Termino il mio turno!"
+        },
+        "V0715_21_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Vediamo come lanci."
+        },
+        "V0715_21_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Termino il mio turno!"
+        },
+        "V0715_21_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "La mia spalla potrebbe cedere in qualsiasi momento..."
+        },
+        "V0715_21_00_04_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Termino il mio turno!"
+        },
+        "V0715_21_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "È presto per cantar vittoria!"
+        },
+        "V0715_21_00_05_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Termino il mio turno!"
+        },
+        "V0715_22_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Ah!"
+        },
+        "V0715_22_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Ugh!"
+        },
+        "V0715_22_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Aaah!"
+        },
+        "V0715_23_00_00_0": {
+            "card": [],
+            "cutin": 3,
+            "duelist": [],
+            "face": 7,
+            "frame": 1,
+            "text": "Aaaaahhhh!"
+        },
+        "V0715_23_00_01_0": {
+            "card": [],
+            "cutin": 3,
+            "duelist": [],
+            "face": 7,
+            "frame": 1,
+            "text": "La partita... è finitaaaaa!"
+        },
+        "V0715_25_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 1,
+            "text": "Aaaahhh!"
+        },
+        "V0715_25_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 1,
+            "text": "Aaah!"
+        },
+        "V0715_25_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 1,
+            "text": "Argh!"
+        },
+        "V0715_26_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Sembra che ci sai fare!"
+        },
+        "V0715_26_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Mancano ancora tanti inning da giocare!"
+        },
+        "V0715_26_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Continua pure così! Io e continuerò a resistere!"
+        },
+        "V0715_27_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Non è possibile..."
+        },
+        "V0715_27_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Che battuta potente...!"
+        },
+        "V0715_27_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 7,
+            "frame": 0,
+            "text": "Non mi ha fatto male... per niente!"
+        },
+        "V0715_28_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "La palla vola e... è un fuoricampo!\nUn grande slam in tutta tranquillità!"
+        },
+        "V0715_28_00_00_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "La miglior giocatrice della partita è... Yuka Goha!"
+        },
+        "V0715_28_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 2,
+            "frame": 0,
+            "text": "Ho vinto!\nEvviva!"
+        },
+        "V0715_28_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "La mia è stata una partita perfetta!"
+        },
+        "V0715_28_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 0,
+            "text": "Strike tre! Eliminato!"
+        },
+        "V0715_28_00_03_1": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 0,
+            "text": "Nessuno può sconfiggermi quando sono in giornata!"
+        },
+        "V0715_28_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 32,
+            "frame": 0,
+            "text": "Hai superato il provino!\nOra, entra nella mia squadra!"
+        },
+        "V0715_28_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 32,
+            "frame": 0,
+            "text": "Un passo in più verso lo scudetto!"
+        },
+        "V0715_28_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 42,
+            "frame": 0,
+            "text": "La squadra dei Mostri Goha vincerà il titolo!"
+        },
+        "V0715_28_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                704,
+                707
+            ],
+            "face": 32,
+            "frame": 0,
+            "text": "Sei la miglior lanciatrice che abbia affrontato."
+        },
+        "V0715_28_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                706
+            ],
+            "face": 3,
+            "frame": 0,
+            "text": "Chi sono i RoaRomin?\nE per quale squadra giocano?"
+        },
+        "V0715_28_00_09_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                706
+            ],
+            "face": 3,
+            "frame": 0,
+            "text": "Non mi importa della tua band!\nE nemmeno di te!"
+        },
+        "V0715_28_00_10_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                717
+            ],
+            "face": 3,
+            "frame": 0,
+            "text": "Yuo!\nFinché ci sono io, non prenderai il controllo della Goha!"
+        },
+        "V0715_28_00_11_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                718
+            ],
+            "face": 10,
+            "frame": 0,
+            "text": "Potresti smettere di giocare con la mente degli altri?!"
+        },
+        "V0715_28_00_12_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                713,
+                714,
+                716
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Uno per sei!\nE sei per la Goha!"
+        },
+        "V0715_29_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 39,
+            "frame": 0,
+            "text": "Aaaaaaaaaah!\nHo perso!"
+        },
+        "V0715_29_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 39,
+            "frame": 0,
+            "text": "Smettila di provare a rallegrarmi!\nStammi lontano!"
+        },
+        "V0715_29_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 37,
+            "frame": 0,
+            "text": "Argh... Ho pescato oltre 100 carte oggi..."
+        },
+        "V0715_29_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 12,
+            "frame": 0,
+            "text": "Siamo avversari, ma apprezzo chi sa giocare!"
+        },
+        "V0715_29_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "È una sconfitta, ma non è finita qui!"
+        },
+        "V0715_29_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                706
+            ],
+            "face": 39,
+            "frame": 0,
+            "text": "Non verserò mai più altre lacrime...\nUaaaaaaa!"
+        },
+        "V0715_29_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                709
+            ],
+            "face": 10,
+            "frame": 0,
+            "text": "...Tsk.\nNiente male per una principiante."
+        },
+        "V0715_29_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                717
+            ],
+            "face": 39,
+            "frame": 0,
+            "text": "Devo impedire che Yuo diventi presidente!"
+        },
+        "V0715_29_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                718
+            ],
+            "face": 7,
+            "frame": 0,
+            "text": "Non è divertente!\nProprio per nulla!"
+        },
+        "V0715_29_00_09_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                713,
+                714,
+                716
+            ],
+            "face": 31,
+            "frame": 0,
+            "text": "Uff...\nE ora, intervistiamo la squadra vincente..."
+        },
+        "V0715_30_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Yuka Goha è qui per commentare la partita."
+        },
+        "V0715_30_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "È uno strike!"
+        },
+        "V0715_30_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "La spedisce lontano e fa una doppia!"
+        },
+        "V0715_31_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Che cosa?!"
+        },
+        "V0715_31_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 4,
+            "frame": 1,
+            "text": "Perché?!"
+        },
+        "V0715_32_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Yu-Gi-Oh! Duel Links! Links... Links..."
+        },
+        "V0715_32_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Yu-Gi-Oh! Duel Links!\nQuesto gioco è offerto da Konami."
+        },
+        "V0715_32_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Yu-Gi-Oh! Duel Links!\nQuesto gioco è offerto da Konami."
+        },
+        "V0715_33_00_00_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "È l'ora di una grande battuta!"
+        },
+        "V0715_33_00_01_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "La spedirò oltre la recinzione!\nÈ una promessa!"
+        },
+        "V0715_33_00_02_0": {
+            "card": [],
+            "cutin": 1,
+            "duelist": [],
+            "face": 11,
+            "frame": 1,
+            "text": "Lanciatore e battitore! Uno contro uno!"
+        },
+        "V0715_34_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Tocca al battitore!"
+        },
+        "V0715_34_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Ooooh!\nIl lanciatore sembra nervoso!"
+        },
+        "V0715_34_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 11,
+            "frame": 0,
+            "text": "È l'ora di una grande battuta!"
+        },
+        "V0715_34_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Potrei spiegarti cosa sia l'effetto, ma non capiresti."
+        },
+        "V0715_34_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Il lanciatore è alle strette! Chi sa come finirà questa partita!"
+        },
+        "V0715_34_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Quella carta ha cambiato il corso della partita!"
+        },
+        "V0715_34_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Wow!\nTutta la panchina si alza per protestare!"
+        },
+        "V0715_34_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Il pubblico non gradisce la decisione! Buuuuu!"
+        },
+        "V0715_34_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Stare lontano dai problemi è da persone intelligenti."
+        },
+        "V0715_34_00_09_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Il lanciatore non sa dove lanciare."
+        },
+        "V0715_34_00_10_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 10,
+            "frame": 0,
+            "text": "Correrai qua e là solo per fare una giocata."
+        },
+        "V0715_34_00_11_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Uno per sei!\nE sei per la Goha!"
+        },
+        "V0715_35_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Alla battuta per i Sei della Goha c'è Yuka Goha!"
+        },
+        "V0715_35_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Tocca a me battere!"
+        },
+        "V0715_36_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Chiudi la partita!"
+        },
+        "V0715_36_00_01_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Spediscili alla prossima partita!"
+        },
+        "V0715_36_00_02_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "Faccio entrare un battitore di rimpiazzo."
+        },
+        "V0715_36_00_03_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 1,
+            "frame": 0,
+            "text": "La nostra tattica sarà...\nEliminiamoli!"
+        },
+        "V0715_36_00_04_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Dobbiamo ingoiare il rospo e giocare meglio!"
+        },
+        "V0715_36_00_05_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 0,
+            "text": "Seconda metà del nono, due eliminati...\nFacci vincere!"
+        },
+        "V0715_36_00_06_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                713
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Tocca a te, Yuro!"
+        },
+        "V0715_36_00_07_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                714
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Tocca a te, Yujin!"
+        },
+        "V0715_36_00_08_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                716
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Tocca a te, Yuran!"
+        },
+        "V0715_36_00_09_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                717
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Conto su di te, Yuo!"
+        },
+        "V0715_36_00_10_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                718
+            ],
+            "face": 1,
+            "frame": 0,
+            "text": "Fagliela vedere, Yuga!"
+        },
+        "V0715_36_00_11_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [
+                704,
+                707
+            ],
+            "face": 12,
+            "frame": 0,
+            "text": "Pensaci tu, Romin."
+        },
+        "V0715_37_00_00_0": {
+            "card": [
+                16993
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Al piatto appare il battitore che non subisce strike!"
+        },
+        "V0715_37_00_01_0": {
+            "card": [
+                17292
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Punta alle grate per fare un grande slam!"
+        },
+        "V0715_37_00_02_0": {
+            "card": [
+                16994
+            ],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Questo battitore di potenza la spedirà fuori!"
+        },
+        "V0715_48_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Giochiamo!"
+        },
+        "V0715_48_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Preparati per l'azione!"
+        },
+        "V0715_49_00_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Vai, vai, vai!"
+        },
+        "V0715_49_01_00_0": {
+            "card": [],
+            "cutin": 0,
+            "duelist": [],
+            "face": 3,
+            "frame": 1,
+            "text": "Rush Duel Turbo!"
+        }
+    }
+}
