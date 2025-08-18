@@ -14,24 +14,28 @@ namespace MDPro3.UI
         public List<DuelButtonInfo> buttons = new List<DuelButtonInfo>();
         public List<DuelButton> buttonObjs = new List<DuelButton>();
 
-        DuelButton selectButton;
+        private DuelButton selectButton;
 
-        GameObject highlight;
-        GameObject select;
-        GameObject selectPush;
-        GameObject selectCard;
-        GameObject selectCardPush;
-        GameObject disable;
+        private GameObject highlight;
+        private GameObject select;
+        private GameObject selectPush;
+        private GameObject selectCard;
+        private GameObject selectCardPush;
+        private GameObject disable;
         public GameCard cookieCard;
 
-        bool hover;
-        bool selecting;
-        bool selected;
+        private bool hover;
+        private bool selecting;
+        private bool selected;
 
         public bool cardSelecting;
         public bool cardSelected;
-        bool cardPreselected;
-        bool cardUnselectable;
+        private bool cardPreselected;
+        private bool cardUnselectable;
+
+        private bool countShowing;
+        private bool buttonsCreated = false;
+        private GameObject hintObj;
 
         private void Start()
         {
@@ -119,8 +123,6 @@ namespace MDPro3.UI
             }
         }
 
-        bool countShowing;
-
         private void Update()
         {
             hover = false;
@@ -157,7 +159,7 @@ namespace MDPro3.UI
                 highlight.SetActive(false);
         }
 
-        void OnClick()
+        private void OnClick()
         {
             if (selecting)
             {
@@ -228,7 +230,7 @@ namespace MDPro3.UI
                 else
                 {
                     AudioManager.PlaySE("SE_DUEL_SELECT");
-                    List<GameCard> cards = new List<GameCard>();
+                    List<GameCard> cards = new();
                     foreach (var card in Program.instance.ocgcore.cards)
                         if ((card.p.location & p.location) > 0)
                             if (card.p.controller == p.controller)
@@ -270,11 +272,13 @@ namespace MDPro3.UI
             }
         }
 
-        bool buttonsCreated = false;
-        void CreateButtons()
+        private void CreateButtons()
         {
             if (buttonsCreated || Program.instance.ocgcore.returnAction != null || buttons.Count == 0)
+            {
+                buttons.Clear();
                 return;
+            }
 
             for (int i = 0; i < buttons.Count; i++)
             {
@@ -294,7 +298,7 @@ namespace MDPro3.UI
             buttonsCreated = true;
         }
 
-        void CreateSelectButton()
+        private void CreateSelectButton()
         {
             var obj = Instantiate(Program.instance.ocgcore.container.duelButton);
             selectButton = obj.GetComponent<DuelButton>();
@@ -309,7 +313,6 @@ namespace MDPro3.UI
             selectButton.sequence = p.sequence;
             selectButton.Hide();
         }
-
 
         public void ShowButtons()
         {
@@ -333,7 +336,6 @@ namespace MDPro3.UI
             buttons.Clear();
             buttonsCreated = false;
         }
-
 
         public void StopResponse()
         {
@@ -540,7 +542,6 @@ namespace MDPro3.UI
             return null;
         }
 
-        GameObject hintObj;
         public void ShowHint(uint location, uint controller)
         {
             if ((location & p.location) > 0 && controller == p.controller)
