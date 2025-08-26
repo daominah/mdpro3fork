@@ -1,6 +1,5 @@
 using MDPro3;
 using System.Collections;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace YgomSystem.Effect
@@ -75,6 +74,7 @@ namespace YgomSystem.Effect
 			}
 			set
 			{
+                _useDirectSizeSetting = value;
 			}
 		}
 
@@ -86,7 +86,8 @@ namespace YgomSystem.Effect
 			}
 			set
 			{
-			}
+                _directSizeSetting = value;
+            }
 		}
 
 		public bool changePosition
@@ -97,7 +98,8 @@ namespace YgomSystem.Effect
 			}
 			set
 			{
-			}
+                _changePosition = value;
+            }
 		}
 
 		public bool useFixedDepth
@@ -108,6 +110,7 @@ namespace YgomSystem.Effect
 			}
 			set
 			{
+                _isUseFixedDepth = value;
 			}
 		}
 
@@ -119,7 +122,8 @@ namespace YgomSystem.Effect
 			}
 			set
 			{
-			}
+                _fixedDepth = value;
+            }
 		}
 
         public Camera viewCamera { get; private set; }
@@ -132,6 +136,7 @@ namespace YgomSystem.Effect
             }
             set
             {
+                m_ScaleYtoZ = value;
             }
         }
 
@@ -152,9 +157,6 @@ namespace YgomSystem.Effect
             return null;
         }
 
-        private bool colorGetted;
-        private Color originalColor;
-
         private void OnEnable()
         {
 			StartCoroutine(SetupAsync());
@@ -162,18 +164,16 @@ namespace YgomSystem.Effect
 
 		private IEnumerator SetupAsync()
 		{
-            if (targetSprite == null) targetSprite = GetComponent<SpriteRenderer>();
-            if (!colorGetted)
-            {
-                originalColor = targetSprite.color;
-                colorGetted = true;
-            }
-            targetSprite.color = Color.clear;
+            if (targetSprite == null)
+                if (!gameObject.TryGetComponent(out targetSprite))
+                    yield break;
+
+            targetSprite.enabled = false;
 
             // Wait for the next frame to ensure script changes are ready.
             yield return null;
 
-            targetSprite.color = originalColor;
+            targetSprite.enabled = true;
 
             Camera viewCamera = gameObject.layer switch
             {
@@ -199,8 +199,8 @@ namespace YgomSystem.Effect
             if (viewCamera == null)
                 return;
 
-            if (_changePosition)
-                transform.position = viewCamera.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, _fixedDepth));
+            //if (_changePosition)
+            //    transform.position = viewCamera.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, _fixedDepth));
 
             //float depth = _isUseFixedDepth ? _fixedDepth : viewCamera.WorldToScreenPoint(transform.position).z;
             float depth = viewCamera.WorldToScreenPoint(transform.position).z;
@@ -230,13 +230,13 @@ namespace YgomSystem.Effect
                 return;
 
             if (targetSprite == null) targetSprite = GetComponent<SpriteRenderer>();
-            if (targetMask == null) targetMask = GetComponent<SpriteMask>();
+            if(targetSprite == null) return;
 
             Sprite sprite = TryGetTargetSprite();
             if (sprite == null) return;
 
             Vector2 spriteSize = sprite.rect.size / sprite.pixelsPerUnit;
-            Vector2 targetSize = Vector2.zero;
+            Vector2 targetSize;
 
             if (_useDirectSizeSetting)
             {

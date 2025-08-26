@@ -297,6 +297,8 @@ namespace MDPro3
 #endif
             instance = this;
             Initialize();
+
+            //ABLoader.LoadFromFile("Robber/CardSR");
         }
 
         public float TimeScale
