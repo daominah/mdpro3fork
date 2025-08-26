@@ -296,7 +296,7 @@ namespace MDPro3
             Renderer cardFace = manager.GetElement<Transform>("CardModel").
                     GetChild(1).GetComponent<Renderer>();
 
-            var matLoad = MaterialLoader.LoadCardMaterialAsync(data.Id);
+            var matLoad = MaterialLoader.LoadCardMaterialAsync(data.Id, true);
             while (!matLoad.IsCompleted)
                 yield return null;
             cardFace.material = matLoad.Result;

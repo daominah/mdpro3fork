@@ -5,7 +5,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using MDPro3.UI;
-using System.Threading;
 
 namespace MDPro3
 {
@@ -18,6 +17,7 @@ namespace MDPro3
         public Sprite unknownCard;
         public Sprite unknownArt;
         public Sprite cardBackDefault;
+
         [Header("Card Frame")]
         public Sprite cardFrameNormal;
         public Sprite cardFrameEffect;
@@ -59,6 +59,7 @@ namespace MDPro3
         public Sprite cardFramePendulumFusionOF;
         public Sprite cardFrameLinkOF;
         public Sprite cardFramePendulumRitualOF;
+
         [Header("Card Frame Mask")]
         public Texture2D cardFrameMask;
         public Texture2D cardFrameMaskLink;
@@ -69,6 +70,7 @@ namespace MDPro3
         public Texture2D cardNormal;
         public Texture2D cardNormalLink;
         public Texture2D cardNormalPendulum;
+
         [Header("Card Attribute")]
         public Sprite attributeLight;
         public Sprite attributeDark;
@@ -79,6 +81,7 @@ namespace MDPro3
         public Sprite attributeDivine;
         public Sprite attributeSpell;
         public Sprite attributeTrap;
+
         [Header("CardType")]
         public Sprite typeNone;
         public Sprite typeCounter;
@@ -95,10 +98,12 @@ namespace MDPro3
         public Sprite typeLinkOff;
         public Sprite typeLevelNone;
         public Sprite typeLevelRank;
+
         [Header("CardLimit")]
         public Sprite banned;
         public Sprite limit1;
         public Sprite limit2;
+
         [Header("CardRace")]
         public Sprite raceDragon;
         public Sprite raceZombie;
@@ -255,11 +260,13 @@ namespace MDPro3
         public Sprite locationOpSZone2;
         public Sprite locationOpSZone3;
         public Sprite locationOpSZone4;
+
         [Header("Card Controller Icon")]
         public Sprite controllerMe;
         public Sprite controllerOp;
         public Sprite controllerOther;
         public Sprite controllerOther2;
+
         [Header("Card List Location Icon")]
         public Sprite listMyDeck;
         public Sprite listOpDeck;
@@ -271,6 +278,7 @@ namespace MDPro3
         public Sprite listOpRemoved;
         public Sprite listMyXyz;
         public Sprite listOpXyz;
+
         [Header("Card Affect")]
         public Sprite CardAffectDisable;
         public Sprite CardAffectEquip;
@@ -278,6 +286,7 @@ namespace MDPro3
         public Sprite CardAffectPermanent;
         public Sprite CardAffectPower;
         public Sprite CardAffectTarget;
+
         [Header("Link Count")]
         public Sprite link1;
         public Sprite link2;
@@ -293,11 +302,13 @@ namespace MDPro3
         public Sprite link6R;
         public Sprite link7R;
         public Sprite link8R;
+
         [Header("Card Pool")]
         public Sprite cardPoolOCG;
         public Sprite cardPoolTCG;
         public Sprite cardPoolDIY;
         public Sprite cardPoolPRE;
+
         [Header("Chain Circle Num")]
         public Sprite chainCircleNum0;
         public Sprite chainCircleNum1;
@@ -309,6 +320,7 @@ namespace MDPro3
         public Sprite chainCircleNum7;
         public Sprite chainCircleNum8;
         public Sprite chainCircleNum9;
+
         [Header("Chain Num Set")]
         public Sprite chainNumSet0;
         public Sprite chainNumSet1;
@@ -320,6 +332,7 @@ namespace MDPro3
         public Sprite chainNumSet7;
         public Sprite chainNumSet8;
         public Sprite chainNumSet9;
+
         [Header("Window")]
         public Sprite toggleM;
         public Sprite toggleM_On;
@@ -347,6 +360,7 @@ namespace MDPro3
         public Sprite rankTier03;
         public Sprite rankTier04;
         public Sprite rankTier05;
+
         [Header("Rush Duel")]
         public Sprite rd_Arrow_B;
         public Sprite rd_Arrow_BL;
@@ -407,7 +421,6 @@ namespace MDPro3
         public Sprite rd_Loading_Trap;
         public Sprite rd_Loading_Xyz;
 
-
         public Texture2D rd_Mask;
         public Texture2D rd_KiraMask;
         public Texture2D rd_KiraMaskPendulum;
@@ -457,7 +470,7 @@ namespace MDPro3
         public Texture2D fxt_Arrow_004;
         public Texture2D fxt_msk_005;
         public Texture2D CardKiraNormal03_Millennium;
-
+        public Texture2D CardMask001;
 
         #region MyCard Rank
 

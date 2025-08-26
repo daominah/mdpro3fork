@@ -85,6 +85,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1e44a49148661234193ff74f70da44d4
+    m_Address: CardAttributeSet
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 204c60cc4288d7f429fb7ee1b57962b3
     m_Address: RD_Arrow_BR
     m_ReadOnly: 0
@@ -230,6 +235,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 54e4fc99b03a29347ae85df16a6af2bf
+    m_Address: CardHolo10
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 558d37a4a4d179f43be81714516f6256
     m_Address: RD_Frame_Xyz
     m_ReadOnly: 0
@@ -255,8 +265,18 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5c363db696962dc43a0067d467c0f2f5
+    m_Address: CardHolo4
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 5e29026382a14904396c009d1b2d164f
     m_Address: RD_Frame_PendulumFusion_Unknown
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5e8658364381f1940b2c6a4057d503ea
+    m_Address: CardPnoise
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -277,6 +297,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 60a958f2550e97b40a3813db0a247d4a
     m_Address: RD_Frame_PendulumSynchro_Unknown
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 612710dce86e2214687808b8208d69e8
+    m_Address: CardHoloR03
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -435,6 +460,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 90c6e35ef4304f289c279037152a03b7
+    m_Address: CardMask001
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9336eb39ceb24d34a914a0209e6c5f2d
     m_Address: RPendulumNum05
     m_ReadOnly: 0
@@ -477,6 +507,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a7ae82869fb22f541abc67db893a467e
     m_Address: LPendulumNum08
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a885df8d14949ac4d8f2a9280ea4a8d0
+    m_Address: CardKiraNormal03
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -525,6 +560,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b1661655758a8a246923f03567093b9e
+    m_Address: CardKira3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b552f9fd55ddc7443bfe07c7dbc13b1f
     m_Address: CardNormal_RNA
     m_ReadOnly: 0
@@ -542,6 +582,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b6bd6067d80c3404b946c6f8bb3228d8
     m_Address: LPendulumNum04
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b709041a17a0dfa44a2a7a46b32426dd
+    m_Address: CardNoise02
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -572,6 +617,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: bfbe466bba9dd284cb160065df847df5
     m_Address: RD_Mask
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c072e55511ebc1a4d82d4db20a9f374a
+    m_Address: CardHolo12
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

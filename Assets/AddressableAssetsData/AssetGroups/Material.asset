@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Material
+  m_EditorClassIdentifier: 
+  m_GroupName: Material
+  m_GUID: d665f98a2cd2ccb45b329e9720e8f472
+  m_SerializeEntries:
+  - m_GUID: 44112efa9edfd684a997a4ce71413aae
+    m_Address: ShineStyle3D
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 441196a2ad830214f8478da1a6eb80c5
+    m_Address: NormalStyleUI
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 79fa6137d557034459b301fe6c1283d2
+    m_Address: RoyalStyleUI
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 98be17226f70b0f40b86c94ea9d04c37
+    m_Address: ShineStyleUI
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a4f57d2337499e14fbd885519104b941
+    m_Address: RoyalStyle3D
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e21cb5f9b1ad6444cab7905d5832fc76
+    m_Address: NormalStyle3D
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: e38330e9272b0a94a916f68bd5115c96, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 0b81b78722a719641a0650e27f5c6bd9, type: 2}
+    - {fileID: 11400000, guid: 3b18dd613848d2d45934f913fecc7c2c, type: 2}

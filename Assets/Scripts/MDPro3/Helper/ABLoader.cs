@@ -1,12 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
-using Willow;
 using UnityEngine.Playables;
-using Willow.InGameField;
 using UnityEngine.Rendering;
-using System;
+using Willow;
+using Willow.InGameField;
 using YgomGame;
 
 namespace MDPro3
@@ -285,6 +285,17 @@ namespace MDPro3
             var matetial = ab.LoadAsset<Material>(Path.GetFileName(path));
             ab.Unload(false);
             yield return matetial;
+        }
+
+        public static IEnumerator<Shader> LoadShaderAsync(string name)
+        {
+            var abr = AssetBundle.LoadFromFileAsync(Path.Combine(Program.root, "MasterDuel/Shader/" + name));
+            while (!abr.isDone)
+                yield return null;
+            var ab = abr.assetBundle;
+            var shader = ab.LoadAsset<Shader>(name);
+            ab.Unload(false);
+            yield return shader;
         }
 
         public static IEnumerator<Mate> LoadMateAsync(int code)
