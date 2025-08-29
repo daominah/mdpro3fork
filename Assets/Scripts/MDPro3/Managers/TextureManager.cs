@@ -123,7 +123,7 @@ namespace MDPro3
             if (renderer == null)
                 yield break;
 
-            var matLoad = MaterialLoader.LoadCardMaterialAsync(code);
+            var matLoad = MaterialLoader.LoadCardMaterialAsync(code, true);
             while (!matLoad.IsCompleted)
                 yield return null;
             var mat = matLoad.Result;
@@ -142,7 +142,7 @@ namespace MDPro3
             while (!task.IsCompleted)
                 yield return null;
 
-            var matLoad = MaterialLoader.LoadCardMaterialAsync(code);
+            var matLoad = MaterialLoader.LoadCardMaterialAsync(code, true);
             while (!matLoad.IsCompleted)
                 yield return null;
             var mat = matLoad.Result;

@@ -11,10 +11,15 @@ namespace MDPro3
 {
     public class MaterialLoader : MonoBehaviour
     {
-        private static readonly ConcurrentDictionary<string, Material> _loadedMaterials = new();
-        private static readonly ConcurrentDictionary<string, IEnumerator<Material>> _loadingCoroutines = new();
 
         private static MaterialLoader instance;
+        private void Awake()
+        {
+            instance = this;
+            StartCoroutine(LoadCardMaterials());
+        }
+
+        #region Card Materials
 
         private static Material cardMatNormalUI;
         private static Material cardMatShineUI;
@@ -40,15 +45,9 @@ namespace MDPro3
 
         private const string cardMatMaskName = "_Texture2DAsset_90c6e35ef4304f289c279037152a03b7_Out_0_Texture2D";
 
-        private void Awake()
+        private IEnumerator LoadCardMaterials()
         {
-            instance = this;
-            StartCoroutine(LoadMaterials());
-        }
-
-        private IEnumerator LoadMaterials()
-        {
-            while(!TextureManager.loaded)
+            while (!TextureManager.loaded)
                 yield return null;
             while (TextureManager.container == null)
                 yield return null;
@@ -57,11 +56,11 @@ namespace MDPro3
             handle.Completed += (result) => { cardMatSide = result.Result; };
 
             var matLoad = Addressables.LoadAssetAsync<Material>("NormalStyleUI");
-            while(!matLoad.IsDone)
+            while (!matLoad.IsDone)
                 yield return null;
             cardMatNormalUI = matLoad.Result;
-            var shaderLoad = ABLoader.LoadShaderAsync("Shader Graphs_NormalStyleUI");
-            while(shaderLoad.MoveNext())
+            var shaderLoad = LoadShaderByNameAsync("Shader Graphs_NormalStyleUI");
+            while (shaderLoad.MoveNext())
                 yield return null;
             cardMatNormalUI.shader = shaderLoad.Current;
 
@@ -69,7 +68,7 @@ namespace MDPro3
             while (!matLoad.IsDone)
                 yield return null;
             cardMatShineUI = matLoad.Result;
-            shaderLoad = ABLoader.LoadShaderAsync("Shader Graphs_ShineStyleUI");
+            shaderLoad = LoadShaderByNameAsync("Shader Graphs_ShineStyleUI");
             while (shaderLoad.MoveNext())
                 yield return null;
             cardMatShineUI.shader = shaderLoad.Current;
@@ -78,7 +77,7 @@ namespace MDPro3
             while (!matLoad.IsDone)
                 yield return null;
             cardMatRoyalUI = matLoad.Result;
-            shaderLoad = ABLoader.LoadShaderAsync("Shader Graphs_RoyalStyleUI");
+            shaderLoad = LoadShaderByNameAsync("Shader Graphs_RoyalStyleUI");
             while (shaderLoad.MoveNext())
                 yield return null;
             cardMatRoyalUI.shader = shaderLoad.Current;
@@ -112,7 +111,7 @@ namespace MDPro3
             while (!matLoad.IsDone)
                 yield return null;
             cardMatNormal3D = matLoad.Result;
-            shaderLoad = ABLoader.LoadShaderAsync("Shader Graphs_NormalStyle3D");
+            shaderLoad = LoadShaderByNameAsync("Shader Graphs_NormalStyle3D");
             while (shaderLoad.MoveNext())
                 yield return null;
             cardMatNormal3D.shader = shaderLoad.Current;
@@ -121,7 +120,7 @@ namespace MDPro3
             while (!matLoad.IsDone)
                 yield return null;
             cardMatShine3D = matLoad.Result;
-            shaderLoad = ABLoader.LoadShaderAsync("Shader Graphs_ShineStyle3D");
+            shaderLoad = LoadShaderByNameAsync("Shader Graphs_ShineStyle3D");
             while (shaderLoad.MoveNext())
                 yield return null;
             cardMatShine3D.shader = shaderLoad.Current;
@@ -130,7 +129,7 @@ namespace MDPro3
             while (!matLoad.IsDone)
                 yield return null;
             cardMatRoyal3D = matLoad.Result;
-            shaderLoad = ABLoader.LoadShaderAsync("Shader Graphs_RoyalStyle3D");
+            shaderLoad = LoadShaderByNameAsync("Shader Graphs_RoyalStyle3D");
             while (shaderLoad.MoveNext())
                 yield return null;
             cardMatRoyal3D.shader = shaderLoad.Current;
@@ -169,17 +168,6 @@ namespace MDPro3
             material.SetTexture("_MainNormal", TextureManager.container.rd_CardNormal);
             material.SetTexture("_AttributeTex", TextureManager.container.rd_CardAttributeSet);
             material.SetVector("_AttributeSize_Pos", new Vector4(8.31f, 12.26f, -3.19f, -5.13f));
-        }
-
-        private IEnumerator<Material> LoadMaterialCoroutine(string materialName)
-        {
-            var loadOperation = ABLoader.LoadMaterialAsync("MasterDuel/Material/" + materialName);
-            while (loadOperation.MoveNext())
-                yield return null;
-
-            _loadedMaterials.TryAdd(materialName, loadOperation.Current);
-            _loadingCoroutines.TryRemove(materialName, out _);
-            yield return loadOperation.Current;
         }
 
         private static Color GetMillenniumFrameColor(Card data)
@@ -225,51 +213,18 @@ namespace MDPro3
             else if ((data.Attribute & (uint)CardAttribute.Fire) > 0)
                 return new Color(1f, 0f, 0f, 1f);
             else if ((data.Attribute & (uint)CardAttribute.Earth) > 0)
-                return new Color(0.2f, 0.2f, 0.2f, 1f);
+                return new Color(0.8f, 0.8f, 0.8f, 1f);
             else if ((data.Attribute & (uint)CardAttribute.Wind) > 0)
                 return new Color(0f, 1f, 0f, 1f);
             else
                 return new Color(1f, 1f, 0f, 1f);
         }
 
-        public static IEnumerator<Material> LoadMaterialByNameAsync(string materialName)
-        {
-            if (_loadedMaterials.TryGetValue(materialName, out var material))
-            {
-                yield return material;
-                yield break;
-            }
-
-            if (_loadingCoroutines.TryGetValue(materialName, out var loading))
-            {
-                while (loading.MoveNext())
-                    yield return null;
-                yield return loading.Current;
-            }
-            else
-            {
-                var coroutine = instance.LoadMaterialCoroutine(materialName);
-                if(_loadingCoroutines.TryAdd(materialName, coroutine))
-                {
-                    while (coroutine.MoveNext())
-                        yield return null;
-                    yield return coroutine.Current;
-                }
-                else
-                {
-                    instance.StopCoroutine(coroutine);
-                    while (_loadingCoroutines[materialName].MoveNext())
-                        yield return null;
-                    yield return _loadingCoroutines[materialName].Current;
-                }
-            }
-        }
-
         public static async Task<Material> LoadCardMaterialAsync(int code, bool use3D = false)
         {
             Material mat = null;
 
-            if(code < 0)
+            if (code < 0)
             {
                 mat = Instantiate(use3D ? cardMatNormal3D : cardMatNormalUI);
                 mat.SetTexture(cardMatMaskName, TextureManager.container.CardMask001);
@@ -360,6 +315,109 @@ namespace MDPro3
 
             return mat;
         }
+
+        #endregion
+
+        #region Load Material
+
+        private static readonly ConcurrentDictionary<string, Material> _loadedMaterials = new();
+        private static readonly ConcurrentDictionary<string, IEnumerator<Material>> _loadMaterialCoroutines = new();
+
+        private IEnumerator<Material> LoadMaterialCoroutine(string materialName)
+        {
+            var loadOperation = ABLoader.LoadMaterialAsync("MasterDuel/Material/" + materialName);
+            while (loadOperation.MoveNext())
+                yield return null;
+
+            _loadedMaterials.TryAdd(materialName, loadOperation.Current);
+            _loadMaterialCoroutines.TryRemove(materialName, out _);
+            yield return loadOperation.Current;
+        }
+
+        public static IEnumerator<Material> LoadMaterialByNameAsync(string materialName)
+        {
+            if (_loadedMaterials.TryGetValue(materialName, out var material))
+            {
+                yield return material;
+                yield break;
+            }
+
+            if (_loadMaterialCoroutines.TryGetValue(materialName, out var loading))
+            {
+                while (loading.MoveNext())
+                    yield return null;
+                yield return loading.Current;
+            }
+            else
+            {
+                var coroutine = instance.LoadMaterialCoroutine(materialName);
+                if (_loadMaterialCoroutines.TryAdd(materialName, coroutine))
+                {
+                    while (coroutine.MoveNext())
+                        yield return null;
+                    yield return coroutine.Current;
+                }
+                else
+                {
+                    instance.StopCoroutine(coroutine);
+                    while (_loadMaterialCoroutines[materialName].MoveNext())
+                        yield return null;
+                    yield return _loadMaterialCoroutines[materialName].Current;
+                }
+            }
+        }
+
+        #endregion
+
+        #region Load Shader
+
+        private static readonly ConcurrentDictionary<string, Shader> _loadedShaders = new();
+        private static readonly ConcurrentDictionary<string, IEnumerator<Shader>> _loadShaderCoroutines = new();
+
+        private IEnumerator<Shader> LoadShaderCoroutine(string shaderName)
+        {
+            var loadOperation = ABLoader.LoadShaderAsync("MasterDuel/Shader/" + shaderName);
+            while (loadOperation.MoveNext())
+                yield return null;
+            _loadedShaders.TryAdd(shaderName, loadOperation.Current);
+            _loadShaderCoroutines.TryRemove(shaderName, out _);
+            yield return loadOperation.Current;
+        }
+
+        public static IEnumerator<Shader> LoadShaderByNameAsync(string shaderName)
+        {
+            if (_loadedShaders.TryGetValue(shaderName, out var shader))
+            {
+                yield return shader;
+                yield break;
+            }
+
+            if (_loadShaderCoroutines.TryGetValue(shaderName, out var loading))
+            {
+                while (loading.MoveNext())
+                    yield return null;
+                yield return loading.Current;
+            }
+            else
+            {
+                var coroutine = instance.LoadShaderCoroutine(shaderName);
+                if (_loadShaderCoroutines.TryAdd(shaderName, coroutine))
+                {
+                    while (coroutine.MoveNext())
+                        yield return null;
+                    yield return coroutine.Current;
+                }
+                else
+                {
+                    instance.StopCoroutine(coroutine);
+                    while (_loadShaderCoroutines[shaderName].MoveNext())
+                        yield return null;
+                    yield return _loadShaderCoroutines[shaderName].Current;
+                }
+            }
+        }
+
+        #endregion
 
     }
 }

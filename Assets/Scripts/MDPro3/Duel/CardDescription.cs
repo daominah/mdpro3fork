@@ -53,7 +53,6 @@ namespace MDPro3
             while(!matLoad.IsCompleted)
                 yield return null;
             var mat = matLoad.Result;
-            mat.renderQueue = 3000;
 
             var task = CardImageLoader.LoadCardAsync(code, false);
             while(!task.IsCompleted)

@@ -617,7 +617,7 @@ namespace MDPro3
 
             if (!post)
             {
-                var matLoad = MaterialLoader.LoadCardMaterialAsync(code);
+                var matLoad = MaterialLoader.LoadCardMaterialAsync(code, true);
                 while (!matLoad.IsCompleted)
                     yield return null;
                 face.material = matLoad.Result;

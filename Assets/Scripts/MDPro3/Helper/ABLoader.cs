@@ -287,13 +287,13 @@ namespace MDPro3
             yield return matetial;
         }
 
-        public static IEnumerator<Shader> LoadShaderAsync(string name)
+        public static IEnumerator<Shader> LoadShaderAsync(string path)
         {
-            var abr = AssetBundle.LoadFromFileAsync(Path.Combine(Program.root, "MasterDuel/Shader/" + name));
+            var abr = AssetBundle.LoadFromFileAsync(Path.Combine(Program.root, path));
             while (!abr.isDone)
                 yield return null;
             var ab = abr.assetBundle;
-            var shader = ab.LoadAsset<Shader>(name);
+            var shader = ab.LoadAsset<Shader>(Path.GetFileNameWithoutExtension(path));
             ab.Unload(false);
             yield return shader;
         }

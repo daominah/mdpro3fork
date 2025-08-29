@@ -1694,6 +1694,8 @@ namespace MDPro3.Servant
             }
         }
 
+        
+
         #endregion
 
         #region PracticalizeTools
@@ -2492,10 +2494,11 @@ namespace MDPro3.Servant
                         mono.action = () =>
                         {
                             PrintDuelLog(endingReason);
+                            Destroy(duelText);
+
                             if (condition != Condition.Replay)
                             {
                                 GetUI<OcgCoreUI>().ShowSaveReplay();
-                                Destroy(mono.gameObject);
                             }
                         };
                         if (result == DuelResult.Win)
@@ -7303,7 +7306,7 @@ namespace MDPro3.Servant
             {
                 var code = topCard.GetData().Id;
 
-                var matLoad = MaterialLoader.LoadCardMaterialAsync(code);
+                var matLoad = MaterialLoader.LoadCardMaterialAsync(code, true);
                 while (!matLoad.IsCompleted)
                     yield return null;
                 targetMat = matLoad.Result;
