@@ -28,7 +28,7 @@ namespace MDPro3.UI
 
         public GameObject arrow;
 
-        public int selectedCount
+        public int SelectedCount
         {
             get
             {
@@ -40,11 +40,10 @@ namespace MDPro3.UI
                 Refresh();
             }
         }
+        private int m_selectedCount;
+        private OcgCore core;
 
-        int m_selectedCount;
-        OcgCore core;
-
-        public List<PopupDuelSelectCardItem> monos = new List<PopupDuelSelectCardItem>();
+        public List<PopupDuelSelectCardItem> monos = new();
 
         public override void InitializeSelections()
         {
@@ -183,12 +182,12 @@ namespace MDPro3.UI
             }
             else
             {
-                if (selectedCount >= min)
+                if (SelectedCount >= min)
                     btnConfirm.GetComponent<ButtonPress>().SetInteractable(true);
                 else
                     btnConfirm.GetComponent<ButtonPress>().SetInteractable(false);
 
-                if (selectedCount >= max)
+                if (SelectedCount >= max)
                 {
                     foreach (var mono in monos)
                         if (!mono.selected)
@@ -218,6 +217,7 @@ namespace MDPro3.UI
                     list.Add(mono.card);
             return list;
         }
+
         private bool CheckSelectable(GameCard card, List<GameCard> addedCards = null)
         {
             bool returnValue = false;
@@ -316,40 +316,51 @@ namespace MDPro3.UI
                     break;
                 case GameMessage.SelectIdleCmd:
                 case GameMessage.SelectBattleCmd:
-                    foreach (var mono in monos)
+                    PopupDuelSelectCardItem selectedCard = null;
+                    foreach(var mono in monos)
                         if (mono.selected)
                         {
-                            int response = 0;
-                            if (hint == InterString.Get("选择效果发动。"))
-                            {
-                                if (mono.card.effects.Count == 1)
-                                    response = mono.card.effects[0].ptr;
-                                else
-                                {
-                                    var selections = new List<string>() { InterString.Get("效果选择") };
-                                    var responses = new List<int> { };
-                                    for (var i = 0; i < mono.card.effects.Count; i++)
-                                    {
-                                        var desc = mono.card.effects[i].desc;
-                                        if (desc.Length <= 2)
-                                            desc = InterString.Get("发动效果");
-                                        selections.Add(desc);
-                                        responses.Add(mono.card.effects[i].ptr);
-                                    }
-                                    Program.instance.ocgcore.GetUI<OcgCoreUI>().ShowPopupSelection(selections, responses);
-                                }
-                            }
-                            else
-                            {
-                                foreach (var btn in mono.card.buttons)
-                                    if (btn.type == ButtonType.SpSummon)
-                                        response = btn.response[0];
-                            }
-                            binaryMaster = new BinaryMaster();
-                            binaryMaster.writer.Write(response);
-                            Program.instance.ocgcore.SendReturn(binaryMaster.Get());
+                            selectedCard = mono;
                             break;
                         }
+
+                    if (selectedCard == null)
+                        break;
+
+                    int response = 0;
+                    bool needSend = true;
+                    if (hint == InterString.Get("选择效果发动。"))
+                    {
+                        if (selectedCard.card.effects.Count == 1)
+                            response = selectedCard.card.effects[0].ptr;
+                        else
+                        {
+                            var selections = new List<string>() { InterString.Get("效果选择") };
+                            var responses = new List<int> { };
+                            for (var i = 0; i < selectedCard.card.effects.Count; i++)
+                            {
+                                var desc = selectedCard.card.effects[i].desc;
+                                if (desc.Length <= 2)
+                                    desc = InterString.Get("发动效果");
+                                selections.Add(desc);
+                                responses.Add(selectedCard.card.effects[i].ptr);
+                            }
+                            Program.instance.ocgcore.GetUI<OcgCoreUI>().ShowPopupSelection(selections, responses);
+                            needSend = false;
+                        }
+                    }
+                    else
+                    {
+                        foreach (var btn in selectedCard.card.buttons)
+                            if (btn.type == ButtonType.SpSummon)
+                                response = btn.response[0];
+                    }
+                    if (needSend)
+                    {
+                        binaryMaster = new BinaryMaster();
+                        binaryMaster.writer.Write(response);
+                        Program.instance.ocgcore.SendReturn(binaryMaster.Get());
+                    }
                     break;
                 case GameMessage.AnnounceCard:
                     foreach (var mono in monos)
@@ -444,7 +455,7 @@ namespace MDPro3.UI
 
         }
 
-        IEnumerator DisposeAsync()
+        private IEnumerator DisposeAsync()
         {
             foreach(var mono in monos)
                 yield return mono.DisposeAsync();

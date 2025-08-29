@@ -185,7 +185,7 @@ namespace MDPro3.UI
                 {
                     if ((Time.time - clickTime) < doubleClickTime * Time.timeScale)
                     {
-                        if (manager.selectedCount == 1 && manager.min == 1 && manager.max == 1)
+                        if (manager.SelectedCount == 1 && manager.min == 1 && manager.max == 1)
                             manager.OnConfirm();
                         else
                             UnselectThis();
@@ -221,7 +221,7 @@ namespace MDPro3.UI
         {
             if (selected) return;
             selected = true;
-            manager.selectedCount++;
+            manager.SelectedCount++;
 
             if(Program.instance.ocgcore.currentMessage == GameMessage.ConfirmCards)
             {
@@ -231,7 +231,7 @@ namespace MDPro3.UI
             else
             {
                 orderBase.SetActive(true);
-                orderText.text = manager.selectedCount.ToString();
+                orderText.text = manager.SelectedCount.ToString();
             }
         }
 
@@ -253,7 +253,7 @@ namespace MDPro3.UI
         {
             if (!selected || unselectable) return;
             selected = false;
-            manager.selectedCount--;
+            manager.SelectedCount--;
 
             if (!manager.order)
                 checkOn.SetActive(false);
