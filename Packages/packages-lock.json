@@ -7,6 +7,13 @@
       "dependencies": {},
       "hash": "53df26692e7545daccbea387fef6fbd611f89fd7"
     },
+    "com.cysharp.unitask": {
+      "version": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "64285ae060c9fe2aeb2a73b076b160939ce3be1a"
+    },
     "com.psygames.unitywebsocket": {
       "version": "https://github.com/psygames/UnityWebSocket.git#upm",
       "depth": 0,
