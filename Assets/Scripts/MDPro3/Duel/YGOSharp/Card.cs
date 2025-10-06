@@ -186,10 +186,9 @@ namespace MDPro3.Duel.YGOSharp
 
         public int GetOriginalID()
         {
-            if (Alias == 0)
-                return Id;
-            else
+            if (Alias > 0)
                 return Alias;
+            return Id;
         }
 
         public LevelType GetLevelType()
@@ -200,6 +199,22 @@ namespace MDPro3.Duel.YGOSharp
                 return LevelType.Rank;
             else
                 return LevelType.Level;
+        }
+
+        public bool IsHighLevel()
+        {
+            if(HasType(CardType.Link) && GetLinkCount() > 2)
+                return true;
+            if(HasType(CardType.Xyz) && Level > 3)
+                return true;
+            if(Level > 6)
+                return true;
+            return false;
+        }
+
+        public bool IsAttribute(CardAttribute attribute)
+        {
+            return (Attribute & (uint)attribute) > 0;
         }
 
         #endregion

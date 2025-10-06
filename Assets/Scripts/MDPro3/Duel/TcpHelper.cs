@@ -73,6 +73,8 @@ namespace MDPro3
 
         private static bool Join(string ipString, string name, string portString, string pswString, Action doWhenSuccess)
         {
+            Program.instance.room.duelEnded = false;
+
             if (tcpClient != null && tcpClient.Connected)
             {
                 onDisConnected = true;
@@ -95,7 +97,7 @@ namespace MDPro3
                 joinedAddress = ipString;
                 joinedPort = portString;
                 joinedPassword = pswString;
-                Program.instance.ocgcore.mycardDuel = joinedAddress == MyCard.duelUrl;
+                OcgCore.mycardDuel = joinedAddress == MyCard.duelUrl;
                 doWhenSuccess?.Invoke();
 
                 Debug.LogFormat("Joind Address: {0}, Port: {1}, Password: {2}", joinedAddress, joinedPort, joinedPassword);
@@ -176,10 +178,6 @@ namespace MDPro3
                             {
                                 case StocMessage.GameMsg:
                                     Program.instance.room.StocMessage_GameMsg(r);
-                                    var p = new Package();
-                                    p.Function = r.ReadByte();
-                                    p.Data = new BinaryMaster(r.ReadToEnd());
-                                    Program.instance.ocgcore.AddPackage(p);
                                     break;
                                 case StocMessage.ErrorMsg:
                                     Program.instance.room.StocMessage_ErrorMsg(r);
@@ -246,7 +244,7 @@ namespace MDPro3
                                     break;
                             }
                         }
-                        catch(Exception e)
+                        catch//(Exception e)
                         {
                             //Debug.LogError(e);
                         }
@@ -271,6 +269,7 @@ namespace MDPro3
                 canJoin = true;
                 if (Program.instance.ocgcore.showing)
                 {
+                    Program.instance.room.duelEnded = true;
                     Program.instance.ocgcore.ForceMSquit();
                     MessageManager.Cast(InterString.Get("对方已离开游戏，您现在可以离开。"));
                 }
@@ -590,7 +589,7 @@ namespace MDPro3
                         stream.Flush();
                         writer.Close();
                         stream.Close();
-                        if (Program.instance.ocgcore.duelEnded)
+                        if (OcgCore.duelEnded)
                             packagesInRecord.Clear();
                     }
                 }
@@ -727,7 +726,7 @@ namespace MDPro3
         public static GPS ReadGPS(this BinaryReader reader)
         {
             var a = new GPS();
-            a.controller = (uint)Program.instance.ocgcore.LocalPlayer(reader.ReadByte());
+            a.controller = (uint)OcgCore.LocalPlayer(reader.ReadByte());
             a.location = reader.ReadByte();
             a.sequence = reader.ReadByte();
             a.position = reader.ReadByte();
@@ -737,7 +736,7 @@ namespace MDPro3
         public static GPS ReadShortGPS(this BinaryReader reader)
         {
             var a = new GPS();
-            a.controller = (uint)Program.instance.ocgcore.LocalPlayer(reader.ReadByte());
+            a.controller = (uint)OcgCore.LocalPlayer(reader.ReadByte());
             a.location = reader.ReadByte();
             a.sequence = reader.ReadByte();
             a.position = (int)CardPosition.FaceUpAttack;

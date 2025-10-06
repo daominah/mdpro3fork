@@ -15,6 +15,7 @@ using MDPro3.Servant;
 using MDPro3.UI.ServantUI;
 using MDPro3.Utility;
 using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 
 namespace MDPro3.UI
 {
@@ -303,13 +304,11 @@ namespace MDPro3.UI
             StartCoroutine(PrintDeckAsync());
         }
 
-        private async Task LoadDeckCaseAsync(int deckCase)
+        private async UniTask LoadDeckCaseAsync(int deckCase)
         {
-            var load = Program.items.LoadDeckCaseIconAsync(deckCase, string.Empty);
-            while (!load.IsCompleted)
-                await TaskUtility.WaitOneFrame();
+            var icon = await Program.items.LoadDeckCaseIconAsync(deckCase, string.Empty);
             if (gameObject != null)
-                IconDeck.sprite = load.Result;
+                IconDeck.sprite = icon;
         }
 
         public void SetDirty(bool dirty)

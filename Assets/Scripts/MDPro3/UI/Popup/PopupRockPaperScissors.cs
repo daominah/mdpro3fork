@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,38 +19,32 @@ namespace MDPro3.UI.Popup
 
         private void Start()
         {
-            StartCoroutine(LoadAsync());
+            _ = LoadAsync();
         }
 
-        private IEnumerator LoadAsync()
+        private async UniTask LoadAsync()
         {
-            var task = TextureManager.LoadPicFromFileAsync(Program.PATH_DIY + "Rock.png");
-            while (!task.IsCompleted)
-                yield return null;
-            if (task.Result != null)
+            var pic = await TextureManager.LoadPicFromFileAsync(Program.PATH_DIY + "Rock.png");
+            if (pic != null)
             {
                 var rock = Manager.GetElement<RawImage>("RockButton");
-                rock.texture = task.Result;
+                rock.texture = pic;
                 rock.color = Color.white;
             }
 
-            task = TextureManager.LoadPicFromFileAsync(Program.PATH_DIY + "Paper.png");
-            while (!task.IsCompleted)
-                yield return null;
-            if (task.Result != null)
+            pic = await TextureManager.LoadPicFromFileAsync(Program.PATH_DIY + "Paper.png");
+            if (pic != null)
             {
                 var paper = Manager.GetElement<RawImage>("PaperButton");
-                paper.texture = task.Result;
+                paper.texture = pic;
                 paper.color = Color.white;
             }
 
-            task = TextureManager.LoadPicFromFileAsync(Program.PATH_DIY + "Scissors.png");
-            while (!task.IsCompleted)
-                yield return null;
-            if (task.Result != null)
+            pic = await TextureManager.LoadPicFromFileAsync(Program.PATH_DIY + "Scissors.png");
+            if (pic != null)
             {
                 var scissors = Manager.GetElement<RawImage>("ScissorsButton");
-                scissors.texture = task.Result;
+                scissors.texture = pic;
                 scissors.color = Color.white;
             }
         }

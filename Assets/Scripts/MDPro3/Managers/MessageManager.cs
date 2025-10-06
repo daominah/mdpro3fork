@@ -1,5 +1,7 @@
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using KonamiCommonIAB;
+using MDPro3.Servant;
 using MDPro3.Utility;
 using System.Collections;
 using System.Collections.Generic;
@@ -59,21 +61,14 @@ namespace MDPro3
             var item = Instantiate(Program.instance.message_.messageCard);
             Program.instance.ocgcore.allGameObjects.Add(item);
             item.transform.SetParent(instance.transform, false);
-            StartCoroutine(RefreshAsync(item, code));
+            _ = RefreshAsync(item, code);
         }
 
-        IEnumerator RefreshAsync(GameObject item, int code)
+        private async UniTask RefreshAsync(GameObject item, int code)
         {
-            var task = CardImageLoader.LoadCardAsync(code, false);
-            while(!task.IsCompleted)
-                yield return null;
-
-            var matLoad = MaterialLoader.LoadCardMaterialAsync(code);
-            while (!matLoad.IsCompleted)
-                yield return null;
-            var mat = matLoad.Result;
-            item.GetComponent<RawImage>().material = mat;
-            item.GetComponent<RawImage>().texture = task.Result;
+            var ri = item.GetComponent<RawImage>();
+            ri.texture = await CardImageLoader.LoadCardAsync(code, false, ri.destroyCancellationToken);
+            ri.material = MaterialLoader.GetCardMaterial(code);
 
             var rect = item.GetComponent<RectTransform>();
             rect.anchoredPosition = new Vector2(200, -160);
@@ -93,6 +88,8 @@ namespace MDPro3
 
         public static void Toast(string message)
         {
+            if (string.IsNullOrEmpty(message))
+                return;
             CameraManager.UIBlurPlus();
             var item = Instantiate(Program.instance.message_.messageToast);
             item.transform.SetParent(instance.transform, false);
@@ -107,6 +104,8 @@ namespace MDPro3
 
         public static void Cast(string message)
         {
+            if (string.IsNullOrEmpty(message))
+                return;
             if (items.Count > 10)
                 return;
             if (Program.instance.message_.messageCast == null)

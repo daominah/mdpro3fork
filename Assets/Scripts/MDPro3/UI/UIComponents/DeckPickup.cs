@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using MDPro3.Duel.YGOSharp;
 using MDPro3.Servant;
 using MDPro3.UI.PropertyOverride;
@@ -72,13 +73,11 @@ namespace MDPro3.UI
             await LoadDeckCaseAsync(deck.Case);
         }
 
-        private async Task LoadDeckCaseAsync(int deckCase)
+        private async UniTask LoadDeckCaseAsync(int deckCase)
         {
-            var load = Program.items.LoadDeckCaseIconAsync(deckCase, "_Open_L_HD");
-            while (!load.IsCompleted)
-                await TaskUtility.WaitOneFrame(gameObject);
-            if (load.Result != null)
-                DeckCase.sprite = load.Result;
+            var sprite = await Program.items.LoadDeckCaseIconAsync(deckCase, "_Open_L_HD");
+            if (sprite != null)
+                DeckCase.sprite = sprite;
         }
 
         private string GetCardName(int code, int index)

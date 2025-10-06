@@ -68,7 +68,5 @@ namespace MDPro3.UI
             return maxC * charaWidth;
         }
 
-
-
     }
 }

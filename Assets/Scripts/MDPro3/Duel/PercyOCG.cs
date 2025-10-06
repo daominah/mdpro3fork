@@ -1,12 +1,13 @@
+using MDPro3.Duel.YGOSharp;
+using MDPro3.Servant;
+using MDPro3.UI.ServantUI;
+using Percy;
 using System;
 using System.Diagnostics;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
-using Percy;
-using MDPro3.Duel.YGOSharp;
 using GameMessage = MDPro3.Duel.YGOSharp.GameMessage;
-using MDPro3.Servant;
 
 namespace MDPro3
 {
@@ -136,12 +137,12 @@ namespace MDPro3
                 Config.Save();
 
                 OcgCore.condition = OcgCore.Condition.Duel;
-                Program.instance.ocgcore.isFirst = true;
+                OcgCore.isFirst = true;
                 Program.instance.ocgcore.returnServant = DeckEditor.ToHandTest ? Program.instance.deckEditor : Program.instance.puzzle;
-                Program.instance.ocgcore.timeLimit = 0;
-                Program.instance.ocgcore.inAi = true;
+                OcgCore.timeLimit = 0;
+                OcgCore.inPuzzle = true;
                 Program.instance.ShiftToServant(Program.instance.ocgcore);
-                Program.instance.ocgcore.handler = Response;
+                OcgCore.handler = Response;
             }
         }
 

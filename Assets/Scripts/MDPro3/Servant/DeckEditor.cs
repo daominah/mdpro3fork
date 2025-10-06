@@ -71,7 +71,7 @@ namespace MDPro3.Servant
                     DeckName = Config.GetConfigDeckName();
                     Deck = TcpHelper.deck;
                     DeckIsFromLocal = false;
-                    historyCards = Program.instance.ocgcore.sideReference.Main;
+                    historyCards = OcgCore.sideReference.Main;
                     break;
             }
         }

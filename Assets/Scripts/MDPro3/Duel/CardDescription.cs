@@ -7,10 +7,12 @@ using UnityEngine.UI;
 using YgomSystem.ElementSystem;
 using MDPro3.Duel.YGOSharp;
 using static MDPro3.CardRenderer;
+using static MDPro3.Servant.OcgCore;
 using MDPro3.Utility;
 using MDPro3.UI;
 using MDPro3.Servant;
 using MDPro3.UI.ServantUI;
+using Cysharp.Threading.Tasks;
 
 namespace MDPro3
 {
@@ -47,18 +49,10 @@ namespace MDPro3
             UIManager.ShowCardInfoDetail(data);
         }
 
-        private IEnumerator RefreshFace(int code)
+        private async UniTask RefreshFace(int code)
         {
-            var matLoad = MaterialLoader.LoadCardMaterialAsync(code);
-            while(!matLoad.IsCompleted)
-                yield return null;
-            var mat = matLoad.Result;
-
-            var task = CardImageLoader.LoadCardAsync(code, false);
-            while(!task.IsCompleted)
-                yield return null;
-            mat.mainTexture = task.Result;
-
+            var mat = MaterialLoader.GetCardMaterial(code);
+            mat.mainTexture = await CardImageLoader.LoadCardAsync(code, false, destroyCancellationToken);
             manager.GetElement<RawImage>("Card").material = mat;
         }
 
@@ -96,7 +90,7 @@ namespace MDPro3
             else if (p.controller == 0)
             {
                 manager.GetElement<Image>("Player").color = new Color(0, 0, 1, 0.3f);
-                if (Program.instance.ocgcore.myActivated.Contains(data.Id))
+                if (myActivated.Contains(data.Id))
                     manager.GetElement("BaseActivated").SetActive(true);
                 else
                     manager.GetElement("BaseActivated").SetActive(false);
@@ -104,7 +98,7 @@ namespace MDPro3
             else
             {
                 manager.GetElement<Image>("Player").color = new Color(1, 0, 0, 0.3f);
-                if (Program.instance.ocgcore.opActivated.Contains(data.Id))
+                if (opActivated.Contains(data.Id))
                     manager.GetElement("BaseActivated").SetActive(true);
                 else
                     manager.GetElement("BaseActivated").SetActive(false);
@@ -120,7 +114,7 @@ namespace MDPro3
             manager.GetElement<Image>("BaseActivated").color = frameColors[1];
 
             if (mat == null)
-                StartCoroutine(RefreshFace(data.Id));
+            _ = RefreshFace(data.Id);
             else
             {
                 manager.GetElement<RawImage>("Card").material = Instantiate(mat);

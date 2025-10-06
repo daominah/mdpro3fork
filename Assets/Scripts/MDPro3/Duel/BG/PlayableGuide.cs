@@ -1,5 +1,6 @@
+using Cysharp.Threading.Tasks;
 using System.Collections;
-using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace MDPro3.Duel
@@ -81,36 +82,23 @@ namespace MDPro3.Duel
             this.field0Name = field0Name;
             this.field1Name = field1Name;
             loaded = false;
-            StartCoroutine(LoadAsync());
+            _ = LoadAsync();
         }
 
-        private IEnumerator LoadAsync()
+        private async UniTask LoadAsync()
         {
-            IEnumerator<GameObject> ie;
-            if (field0Name.StartsWith("Mat_013"))
-                ie = ABLoader.LoadFromFileAsync("MasterDuel/BG/Timer/PlayableGuide_c001_near_Mat13", true);
-            else
-                ie = ABLoader.LoadFromFileAsync("MasterDuel/BG/Timer/PlayableGuide_c001_near", true);
-            while (ie.MoveNext())
-                yield return null;
-
-            animator0 = ie.Current.GetComponent<Animator>();
+            animator0 = ABLoader.LoadMasterDuelGameObject("PlayableGuide_c001_near").GetComponent<Animator>();
             animator0.transform.SetParent(transform, false);
             animator0.SetTrigger(LABEL_TRIGGER_OUT);
 
-            if (field1Name.StartsWith("Mat_013"))
-                ie = ABLoader.LoadFromFileAsync("MasterDuel/BG/Timer/PlayableGuide_c001_far_Mat13", true);
-            else
-                ie = ABLoader.LoadFromFileAsync("MasterDuel/BG/Timer/PlayableGuide_c001_far", true);
-            while (ie.MoveNext())
-                yield return null;
-
-            animator1 = ie.Current.GetComponent<Animator>();
+            animator1 = ABLoader.LoadMasterDuelGameObject("PlayableGuide_c001_far").GetComponent<Animator>();
             animator1.transform.SetParent(transform, false);
             animator1.SetTrigger(LABEL_TRIGGER_OUT);
 
             animator0.transform.GetChild(2).localPosition = new Vector3(0f, lumiHeight, 0);
             animator1.transform.GetChild(2).localPosition = new Vector3(0f, lumiHeight, 0);
+
+            await UniTask.Yield();
             loaded = true;
         }
 

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using MDPro3.Duel.YGOSharp;
 using MDPro3.UI.ServantUI;
+using MDPro3.Servant;
 
 namespace MDPro3.UI
 {
@@ -24,7 +25,7 @@ namespace MDPro3.UI
         bool showWithCloseDuelLog = false;
         public void Show(List<GameCard> cards, CardLocation location, int controller)
         {
-            if(Program.instance.ocgcore.cantCheckGrave && location == CardLocation.Grave)
+            if(OcgCore.cantCheckGrave && location == CardLocation.Grave)
             {
                 MessageManager.Cast(InterString.Get("现在不能查看此处的卡片。"));
                 return;

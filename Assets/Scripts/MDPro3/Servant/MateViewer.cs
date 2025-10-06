@@ -12,6 +12,7 @@ using System.Text.RegularExpressions;
 using TMPro;
 using UnityEngine.EventSystems;
 using MDPro3.UI.ServantUI;
+using Cysharp.Threading.Tasks;
 
 namespace MDPro3.Servant
 {
@@ -209,18 +210,14 @@ namespace MDPro3.Servant
                 else
                     Destroy(mate.gameObject);
             }
-            StartCoroutine(LoadMateAsync(code));
+            _ = LoadMateAsync(code);
         }
 
-        IEnumerator LoadMateAsync(int code)
+        private async UniTask LoadMateAsync(int code)
         {
-            var ie = ABLoader.LoadMateAsync(code);
-            StartCoroutine(ie);
-            while (ie.MoveNext())
-                yield return null;
-            mate = ie.Current;
+            mate = await ABLoader.LoadMateAsync(code);
             Tools.ChangeLayer(mate.gameObject, targetCamera.gameObject.layer);
-            yield return new WaitForSeconds(0.1f);
+            await UniTask.WaitForSeconds(0.1f);
             AudioManager.ResetSESource();
             mate.gameObject.SetActive(true);
             mate.Play(Mate.MateAction.Entry);

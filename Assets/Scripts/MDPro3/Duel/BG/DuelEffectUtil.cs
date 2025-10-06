@@ -1,7 +1,7 @@
 using UnityEngine;
 using YgomSystem.ElementSystem;
 
-namespace MDPro3
+namespace MDPro3.Duel
 {
     public static class DuelEffectUtil
     {

@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -14,15 +15,12 @@ namespace MDPro3.UI
 
         private void Awake()
         {
-            StartCoroutine(SetMaterialAsync());
+            _ = SetMaterialAsync();
         }
 
-        private IEnumerator SetMaterialAsync()
+        private async UniTask SetMaterialAsync()
         {
-            var ie = MaterialLoader.LoadMaterialByNameAsync(materialName);
-            while (ie.MoveNext())
-                yield return null;
-            var returnValue = ie.Current;
+            var returnValue = await MaterialLoader.LoadMaterialByNameAsync(materialName);
             if (needInstantiate)
                 returnValue = Instantiate(returnValue);
 
@@ -45,13 +43,12 @@ namespace MDPro3.UI
 
         public void SetMaterialAction(Action<Material> action)
         {
-            StartCoroutine(SetMaterialActionAsync(action));
+            _ = SetMaterialActionAsync(action);
         }
 
-        private IEnumerator SetMaterialActionAsync(Action<Material> action)
+        private async UniTask SetMaterialActionAsync(Action<Material> action)
         {
-            while(!setted)
-                yield return null;
+            await UniTask.WaitUntil(() => setted);
             Material mat;
             if (TryGetComponent<Image>(out var image))
                 mat = image.material;

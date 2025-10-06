@@ -1,19 +1,23 @@
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using MDPro3.Duel.YGOSharp;
+using MDPro3.Servant;
+using MDPro3.UI;
+using MDPro3.UI.ServantUI;
+using MDPro3.Utility;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Playables;
 using YgomGame.Duel;
 using YgomSystem.ElementSystem;
-using MDPro3.UI;
-using MDPro3.Duel.YGOSharp;
-using System.IO;
-using MDPro3.Servant;
-using MDPro3.UI.ServantUI;
-using MDPro3.Utility;
-using UnityEngine.UIElements;
+using static MDPro3.Servant.OcgCore;
 
 namespace MDPro3
 {
@@ -24,7 +28,48 @@ namespace MDPro3
         public uint sequence;
         public int position;
         public uint reason;
+
+        public GPS Copy()
+        {
+            return (GPS)MemberwiseClone();
+        }
+
+        public bool InMyControl()
+        {
+            return controller == 0;
+        }
+
+        public bool InLocation(CardLocation location)
+        {
+            return (this.location & (uint)location) > 0;
+        }
+
+        public bool InLocation(CardLocation location1, CardLocation location2)
+        {
+            return InLocation(location1) || InLocation(location2);
+        }
+
+        public bool InPosition(CardPosition position)
+        {
+            return (this.position & (uint)position) > 0;
+        }
+
+        public bool InPendulumSequence() //TODO
+        {
+            return sequence == 0 || sequence == 4 || sequence == 6 || sequence == 7;
+        }
+
+        public bool IsReason(CardReason reason)
+        {
+            return IsReason(this.reason, reason);
+        }
+
+        public static bool IsReason(uint reason, CardReason cardReason)
+        {
+            return (reason & (uint)cardReason) > 0;
+        }
     }
+
     public class Effect
     {
         public string desc;
@@ -54,7 +99,6 @@ namespace MDPro3
         public bool negated;
         public bool disabledInChain;
         public bool SemiNomiSummoned = false;
-        public int md5 = -233;
         public int selectPtr = 0;
         public int levelForSelect_1 = 0;
         public int levelForSelect_2 = 0;
@@ -92,7 +136,7 @@ namespace MDPro3
                 hover = UserInput.HoverObject == manager.GetElement("CardModel");
                 if (!hover) hoving = false;
 
-                if (hover && UserInput.MouseLeftUp && !Program.instance.ocgcore.handCardDraged)
+                if (hover && UserInput.MouseLeftUp && !handCardDraged)
                     OnClick();
                 else if (!hover && UserInput.MouseLeftUp)
                 {
@@ -101,7 +145,7 @@ namespace MDPro3
                     else if (UserInput.HoverObject.name != "PlaceSelector")
                         NotClickThis();
                 }
-                if (Math.Abs(Program.instance.ocgcore.handOffset - Program.instance.ocgcore.lastHandOffset) > 10)
+                if (Math.Abs(handOffset - lastHandOffset) > 10)
                     NotClickThis();
 
                 if ((p.location & (uint)CardLocation.Hand) > 0)
@@ -112,7 +156,7 @@ namespace MDPro3
                         handDefault = false;
                         AnimationHandHover();
                     }
-                    if (hover && UserInput.MouseLeftUp && !Program.instance.ocgcore.handCardDraged)
+                    if (hover && UserInput.MouseLeftUp && !handCardDraged)
                     {
                         clicked = true;
                         handDefault = false;
@@ -126,7 +170,7 @@ namespace MDPro3
                     {
                         AnimationHandDefault(0.1f);
                     }
-                    if (Math.Abs(Program.instance.ocgcore.handOffset - Program.instance.ocgcore.lastHandOffset) > 10)
+                    if (Math.Abs(handOffset - lastHandOffset) > 10)
                         SetHandDefault();
                 }
             }
@@ -180,23 +224,26 @@ namespace MDPro3
 
         private GameObject CreateModel(bool real = true)
         {
-            model = Instantiate(Program.instance.ocgcore.container.cardModel);
+            //model = Instantiate(Program.instance.ocgcore.container.cardModel);
+            model = ABLoader.LoadMasterDuelGameObject("DuelCardModel");
             manager = model.GetComponent<ElementObjectManager>();
+
+            manager.GetElement("StatusLabelRoot").SetActive(false);
 
             var cardMono = manager.GetElement<GameCardMono>("CardModel");
             cardMono.cookieCard = this;
 
-            var cardParmUp = ABLoader.LoadFromFile("MasterDuel/Effects/eff_prm/fxp_cardparm_up_001", true);
-            var cardParmDown = ABLoader.LoadFromFile("MasterDuel/Effects/eff_prm/fxp_cardparm_down_001", true);
-            var cardParmChange = ABLoader.LoadFromFile("MasterDuel/Effects/eff_prm/fxp_cardparm_change_001", true);
-            var cardBuffActive = ABLoader.LoadFromFile("MasterDuel/Effects/Buff/fxp_bff_active_001", true);
-            var cardNegate = ABLoader.LoadFromFile("MasterDuel/Effects/Buff/fxp_bff_disable_001", true);
-            var cardDisquiet = ABLoader.LoadFromFile("MasterDuel/Effects/Buff/fxp_bff_disquiet_001", true);
+            var cardParmUp = ABLoader.LoadMasterDuelGameObject("fxp_cardparm_up_001");
+            var cardParmDown = ABLoader.LoadMasterDuelGameObject("fxp_cardparm_down_001");
+            var cardParmChange = ABLoader.LoadMasterDuelGameObject("fxp_cardparm_change_001");
 
-            var cardBlueHighlight = ABLoader.LoadFromFile("MasterDuel/Effects/Hitghlight/fxp_HL_set_001", true);
-            var cardBlueHighlightSelect = ABLoader.LoadFromFile("MasterDuel/Effects/Hitghlight/fxp_HL_set_sct_001", true);
-            var cardYellowHighlight = ABLoader.LoadFromFile("MasterDuel/Effects/Hitghlight/fxp_HL_SPsom_001", true);
-            var cardYellowHighlightSelect = ABLoader.LoadFromFile("MasterDuel/Effects/Hitghlight/fxp_HL_SPsom_sct_001", true);
+            var cardBuffActive = ABLoader.LoadMasterDuelGameObject("fxp_bff_active_001");
+            var cardNegate = ABLoader.LoadMasterDuelGameObject("fxp_bff_disable_001");
+            var cardDisquiet = ABLoader.LoadMasterDuelGameObject("fxp_bff_disquiet_001");
+            var cardBlueHighlight = ABLoader.LoadMasterDuelGameObject("fxp_HL_set_001");
+            var cardBlueHighlightSelect = ABLoader.LoadMasterDuelGameObject("fxp_HL_set_sct_001");
+            var cardYellowHighlight = ABLoader.LoadMasterDuelGameObject("fxp_HL_SPsom_001");
+            var cardYellowHighlightSelect = ABLoader.LoadMasterDuelGameObject("fxp_HL_SPsom_sct_001");
 
             cardParmUp.transform.SetParent(manager.GetElement<Transform>("Turn").GetChild(1), false);
             cardParmDown.transform.SetParent(manager.GetElement<Transform>("Turn").GetChild(1), false);
@@ -272,15 +319,11 @@ namespace MDPro3
 
             var back = manager.GetElement<Transform>("CardModel").GetChild(0).GetComponent<Renderer>();
 
-            back.material = p.controller ==0 ? Program.instance.ocgcore.myProtector : Program.instance.ocgcore.opProtector;
+            back.material = p.controller ==0 ? myProtector : opProtector;
             back.material.renderQueue = 3000;
-            StartCoroutine(SetFace());
+            SetFace();
 
-            if (p.controller == 0)
-                model.transform.SetParent(Program.instance.ocgcore.field0Manager.transform, true);
-            else
-                model.transform.SetParent(Program.instance.ocgcore.field1Manager.transform, true);
-
+            model.transform.SetParent(Program.instance.ocgcore.GetFieldTransform(p.controller));
             if (real)
                 return model;
             else
@@ -291,25 +334,35 @@ namespace MDPro3
             }
         }
 
-        private IEnumerator SetFace()
+        private CancellationTokenSource cts;
+
+        private void SetFace()
+        {
+            if(cts != null)
+            {
+                cts.Cancel();
+                cts.Dispose();
+            }
+
+            cts = new CancellationTokenSource();
+            _ = SetFaceAsync(cts.Token);
+        }
+
+        private async UniTask SetFaceAsync(CancellationToken cancellationToken)
         {
             Renderer cardFace = manager.GetElement<Transform>("CardModel").
                     GetChild(1).GetComponent<Renderer>();
 
-            var matLoad = MaterialLoader.LoadCardMaterialAsync(data.Id, true);
-            while (!matLoad.IsCompleted)
-                yield return null;
-            cardFace.material = matLoad.Result;
+            var mat = MaterialLoader.GetCardMaterial(data.Id, true);
+            if (model == null)
+                return;
+            cardFace.material = mat;
             cardFace.material.renderQueue = 2999;
 
-            var task = CardImageLoader.LoadCardAsync(data.Id, true);
-            while (!task.IsCompleted)
-                yield return null;
-
+            var texture = await CardImageLoader.LoadCardAsync(data.Id, true, cancellationToken);
             if (model == null)
-                yield break;
-
-            cardFace.material.mainTexture = task.Result;
+                return;
+            cardFace.material.mainTexture = texture;
             SetDisabled();
         }
 
@@ -344,18 +397,14 @@ namespace MDPro3
                 {
                     if (data.Id > 0)
                     {
-                        StartCoroutine(SetFace());
+                        SetFace();
                         ShowFaceDownCardOrNot(NeedShowFaceDownCard());
                     }
                 }
             }
             data = d;
             RefreshLabel();
-            if (d.Id > 0)
-                if ((p.location & (uint)CardLocation.Extra) > 0)
-                    if ((p.position & (uint)CardPosition.FaceUp) > 0)
-                        if (p.sequence == Program.instance.ocgcore.GetLocationCardCount(CardLocation.Extra, p.controller) - 1)
-                            StartCoroutine(Program.instance.ocgcore.UpdateDeckTop(p.controller, this));
+            UpdateExDeckTop();
         }
 
         public void SetCode(int code)
@@ -367,9 +416,9 @@ namespace MDPro3
                     SetData(CardsManager.Get(code));
                     data.Id = code;
                     if (p.controller == 1)
-                        if (OcgCore.condition == OcgCore.Condition.Duel)
-                            if (!Program.instance.ocgcore.sideReference.Main.Contains(code))
-                                Program.instance.ocgcore.sideReference.Main.Add(code);
+                        if (condition == OcgCore.Condition.Duel)
+                            if (!sideReference.Main.Contains(code))
+                                sideReference.Main.Add(code);
                 }
             }
         }
@@ -414,21 +463,21 @@ namespace MDPro3
         {
             var returnValue = Vector3.zero;
 
-            if ((p.location & (uint)CardLocation.Search) > 0)
+            if (p.InLocation(CardLocation.Search))
             {
                 return new Vector3(0, -50, 0);
             }
-            else if ((p.location & (uint)CardLocation.Unknown) > 0)
+            else if (p.InLocation(CardLocation.Unknown))
             {
                 return new Vector3(0, 10, 0);
             }
-            else if ((p.location & (uint)CardLocation.Hand) > 0)
+            else if (p.InLocation(CardLocation.Hand))
             {
                 int handsCount;
                 if(c == null)
                     return Vector3.zero;
 
-                if (c.p.controller == 0)
+                if (c.p.InMyControl())
                     handsCount = Program.instance.ocgcore.GetMyHandCount();
                 else
                     handsCount = Program.instance.ocgcore.GetOpHandCount();
@@ -439,39 +488,39 @@ namespace MDPro3
                 var z1 = 17 - (30 - Program.instance.camera_.cameraMain.fieldOfView) * 0.7f;
 
                 if (p.controller == 0)
-                    return new Vector3(x + Program.instance.ocgcore.handOffset * UIManager.ScreenLengthWithoutScalerX(0.038f), 15, z0);
+                    return new Vector3(x + handOffset * UIManager.ScreenLengthWithoutScalerX(0.038f), 15, z0);
                 else
                     return new Vector3(-x, 15, z1);
             }
-            else if ((p.location & (uint)CardLocation.Deck) > 0)
+            else if (p.InLocation(CardLocation.Deck))
             {
                 if (p.controller == 0)
                     returnValue = new Vector3(26.6f, 1.5f, -23.5f);
                 else
                     returnValue = new Vector3(-26.6f, 1.5f, 23.5f);
-                returnValue.y += p.sequence * 0.1f;
+                returnValue.y += p.sequence * 0.11f;
             }
-            else if ((p.location & (uint)CardLocation.Extra) > 0)
+            else if (p.InLocation(CardLocation.Extra))
             {
-                if (p.controller == 0)
+                if (p.InMyControl())
                     returnValue = new Vector3(-26.6f, 1.5f, -23.5f);
                 else
                     returnValue = new Vector3(26.6f, 1.5f, 23.5f);
-                returnValue.y += p.sequence * 0.1f;
+                returnValue.y += p.sequence * 0.11f;
             }
-            else if ((p.location & (uint)CardLocation.Grave) > 0)
+            else if (p.InLocation(CardLocation.Grave))
             {
-                var offset = OcgCore.movingToGrave - 1;
+                var offset = (p.InMyControl() ? movingToMyGrave : movingToOpGrave) - 1;
                 if (offset < 0)
                     offset = 0;
-                if (p.controller == 0)
+                if (p.InMyControl())
                     returnValue = new Vector3(25.74f - 3.75f * offset, 5f + 0.1f * offset, -14.26f);
                 else
                     returnValue = new Vector3(-25.74f + 3.75f * offset, 5f + 0.1f * offset, 14.26f);
             }
-            else if ((p.location & (uint)CardLocation.Removed) > 0)
+            else if (p.InLocation(CardLocation.Removed))
             {
-                var offset = OcgCore.movingToExclude - 1;
+                var offset = (p.InMyControl() ? movingToMyExclude : movingToOpExclude) - 1;
                 if (offset < 0)
                     offset = 0;
                 if (p.controller == 0)
@@ -480,7 +529,7 @@ namespace MDPro3
                     returnValue = new Vector3(-25.74f - 1.842971f + 3.75f * offset, 5f + 0.1f * offset, 14.26f - 6.236011f);
             }
 
-            else if ((p.location & (uint)CardLocation.MonsterZone) > 0)
+            else if (p.InLocation(CardLocation.MonsterZone))
             {
                 var realIndex = p.sequence;
                 if (p.controller == 0)
@@ -528,9 +577,9 @@ namespace MDPro3
                 }
             }
 
-            else if ((p.location & (uint)CardLocation.SpellZone) > 0)
+            else if (p.InLocation(CardLocation.SpellZone))
             {
-                if (p.sequence < 5 || (p.sequence == 6 || p.sequence == 7) && Program.instance.ocgcore.MasterRule >= 4)
+                if (p.sequence < 5 || (p.sequence == 6 || p.sequence == 7) && OcgCore.MasterRule >= 4)
                 {
                     var realIndex = p.sequence;
                     if (p.controller == 0)
@@ -584,7 +633,7 @@ namespace MDPro3
                         returnValue = new Vector3(25f, 0.1f, 10f);
                 }
 
-                if (Program.instance.ocgcore.MasterRule <= 3)
+                if (MasterRule <= 3)
                 {
                     if (p.sequence == 6)
                     {
@@ -604,7 +653,7 @@ namespace MDPro3
                 }
             }
 
-            if ((p.location & (uint)CardLocation.Overlay) > 0)
+            if (p.InLocation(CardLocation.Overlay))
             {
                 if (overlayParent != null)
                 {
@@ -624,35 +673,35 @@ namespace MDPro3
         public static Vector3 GetCardRotation(GPS p, int code = 0)
         {
             var condition = CardRuleCondition.MeUpAtk;
-            if ((p.location & (uint)CardLocation.Deck) > 0)
+            if (p.InLocation(CardLocation.Deck))
             {
                 if ((p.position & (uint)CardPosition.FaceUp) > 0)
                     condition = CardRuleCondition.MeUpDeck;
                 else
                     condition = CardRuleCondition.MeDownDeck;
             }
-            else if ((p.location & (uint)CardLocation.Extra) > 0)
+            else if (p.InLocation(CardLocation.Extra))
             {
                 if ((p.position & (uint)CardPosition.FaceUp) > 0)
                     condition = CardRuleCondition.MeUpExDeck;
                 else
                     condition = CardRuleCondition.MeDownExDeck;
             }
-            else if ((p.location & (uint)CardLocation.Grave) > 0)
+            else if (p.InLocation(CardLocation.Grave))
             {
                 if ((p.position & (uint)CardPosition.FaceUp) > 0)
                     condition = CardRuleCondition.MeUpGrave;
                 else
                     condition = CardRuleCondition.MeDownGrave;
             }
-            else if ((p.location & (uint)CardLocation.Removed) > 0)
+            else if (p.InLocation(CardLocation.Removed))
             {
                 if ((p.position & (uint)CardPosition.FaceUp) > 0)
                     condition = CardRuleCondition.MeUpRemoved;
                 else
                     condition = CardRuleCondition.MeDownRemoved;
             }
-            else if ((p.location & (uint)CardLocation.MonsterZone) > 0)
+            else if (p.InLocation(CardLocation.MonsterZone))
             {
                 if ((p.position & (uint)CardPosition.FaceUp) > 0)
                 {
@@ -670,14 +719,14 @@ namespace MDPro3
 
                 }
             }
-            else if ((p.location & (uint)CardLocation.SpellZone) > 0)
+            else if (p.InLocation(CardLocation.SpellZone))
             {
                 if ((p.position & (uint)CardPosition.FaceUp) > 0)
                     condition = CardRuleCondition.MeUpAtk;
                 else
                     condition = CardRuleCondition.MeDownAtk;
             }
-            else if ((p.location & (uint)CardLocation.Hand) > 0)
+            else if (p.InLocation(CardLocation.Hand))
             {
                 if (code != 0)
                     condition = CardRuleCondition.MeUpHand;
@@ -685,7 +734,7 @@ namespace MDPro3
                     condition = CardRuleCondition.MeDownHand;
             }
 
-            if ((p.location & (uint)CardLocation.Overlay) > 0)
+            if (p.InLocation(CardLocation.Overlay))
                 condition = CardRuleCondition.MeUpAtk;
 
             if (p.controller != 0)
@@ -737,82 +786,52 @@ namespace MDPro3
                 }
             }
 
-            switch (condition)
+            return condition switch
             {
-                case CardRuleCondition.MeUpAtk:
-                    return new Vector3(0, 0, 0);
-                case CardRuleCondition.MeUpDef:
-                    return new Vector3(0, 270, 0);
-                case CardRuleCondition.MeDownAtk:
-                    return new Vector3(0, 0, 180);
-                case CardRuleCondition.MeDownDef:
-                    return new Vector3(0, 270, 180);
-                case CardRuleCondition.MeUpDeck:
-                    return new Vector3(0, -19.5f, 0);
-                case CardRuleCondition.MeDownDeck:
-                    return new Vector3(0, -19.5f, 180);
-                case CardRuleCondition.MeUpExDeck:
-                    return new Vector3(0, 19.5f, 0);
-                case CardRuleCondition.MeDownExDeck:
-                    return new Vector3(0, 19.5f, 180);
-                case CardRuleCondition.MeUpGrave:
-                    return new Vector3(0, 0, 0);
-                case CardRuleCondition.MeDownGrave:
-                    return new Vector3(0, 270, 0);
-                case CardRuleCondition.MeUpRemoved:
-                    return new Vector3(0, 90, 0);
-                case CardRuleCondition.MeDownRemoved:
-                    return new Vector3(0, 90, 180);
-                case CardRuleCondition.MeUpHand:
-                    return new Vector3(-20, 0, 0);
-                case CardRuleCondition.MeDownHand:
-                    return new Vector3(-20, 0, 180);
-
-                case CardRuleCondition.OpUpAtk:
-                    return new Vector3(0, 180, 0);
-                case CardRuleCondition.OpUpDef:
-                    return new Vector3(0, 90, 0);
-                case CardRuleCondition.OpDownAtk:
-                    return new Vector3(0, 180, 180);
-                case CardRuleCondition.OpDownDef:
-                    return new Vector3(0, 90, 180);
-                case CardRuleCondition.OpUpDeck:
-                    return new Vector3(0, 160.5f, 0);
-                case CardRuleCondition.OpDownDeck:
-                    return new Vector3(0, 160.5f, 180);
-                case CardRuleCondition.OpUpExDeck:
-                    return new Vector3(0, 199.5f, 0);
-                case CardRuleCondition.OpDownExDeck:
-                    return new Vector3(0, 199.5f, 180);
-                case CardRuleCondition.OpUpGrave:
-                    return new Vector3(0, 180, 0);
-                case CardRuleCondition.OpDownGrave:
-                    return new Vector3(0, 180, 180);
-                case CardRuleCondition.OpUpRemoved:
-                    return new Vector3(0, 270, 0);
-                case CardRuleCondition.OpDownRemoved:
-                    return new Vector3(0, 270, 180);
-                case CardRuleCondition.OpUpHand:
-                    return new Vector3(20, 180, 0);
-                case CardRuleCondition.OpDownHand:
-                    return new Vector3(20, 180, 180);
-                default:
-                    return Vector3.zero;
-            }
+                CardRuleCondition.MeUpAtk => new Vector3(0, 0, 0),
+                CardRuleCondition.MeUpDef => new Vector3(0, 270, 0),
+                CardRuleCondition.MeDownAtk => new Vector3(0, 0, 180),
+                CardRuleCondition.MeDownDef => new Vector3(0, 270, 180),
+                CardRuleCondition.MeUpDeck => new Vector3(0, -19.5f, 0),
+                CardRuleCondition.MeDownDeck => new Vector3(0, -19.5f, 180),
+                CardRuleCondition.MeUpExDeck => new Vector3(0, 19.5f, 0),
+                CardRuleCondition.MeDownExDeck => new Vector3(0, 19.5f, 180),
+                CardRuleCondition.MeUpGrave => new Vector3(0, 0, 0),
+                CardRuleCondition.MeDownGrave => new Vector3(0, 270, 0),
+                CardRuleCondition.MeUpRemoved => new Vector3(0, 90, 0),
+                CardRuleCondition.MeDownRemoved => new Vector3(0, 90, 180),
+                CardRuleCondition.MeUpHand => new Vector3(-20, 0, 0),
+                CardRuleCondition.MeDownHand => new Vector3(-20, 0, 180),
+                CardRuleCondition.OpUpAtk => new Vector3(0, 180, 0),
+                CardRuleCondition.OpUpDef => new Vector3(0, 90, 0),
+                CardRuleCondition.OpDownAtk => new Vector3(0, 180, 180),
+                CardRuleCondition.OpDownDef => new Vector3(0, 90, 180),
+                CardRuleCondition.OpUpDeck => new Vector3(0, 160.5f, 0),
+                CardRuleCondition.OpDownDeck => new Vector3(0, 160.5f, 180),
+                CardRuleCondition.OpUpExDeck => new Vector3(0, 199.5f, 0),
+                CardRuleCondition.OpDownExDeck => new Vector3(0, 199.5f, 180),
+                CardRuleCondition.OpUpGrave => new Vector3(0, 180, 0),
+                CardRuleCondition.OpDownGrave => new Vector3(0, 180, 180),
+                CardRuleCondition.OpUpRemoved => new Vector3(0, 270, 0),
+                CardRuleCondition.OpDownRemoved => new Vector3(0, 270, 180),
+                CardRuleCondition.OpUpHand => new Vector3(20, 180, 0),
+                CardRuleCondition.OpDownHand => new Vector3(20, 180, 180),
+                _ => Vector3.zero,
+            };
         }
 
         public static Vector3 GetEffectRotaion(GPS p)
         {
-            if ((p.controller == 0))
+            if (p.InMyControl())
             {
-                if ((p.position & (uint)CardPosition.Attack) > 0)
+                if (p.InPosition(CardPosition.Attack))
                     return new Vector3(0, 0, 0);
                 else
                     return new Vector3(0, 270, 0);
             }
             else
             {
-                if ((p.position & (uint)CardPosition.Attack) > 0)
+                if (p.InPosition(CardPosition.Attack))
                     return new Vector3(0, 180, 0);
                 else
                     return new Vector3(0, 90, 0);
@@ -821,62 +840,23 @@ namespace MDPro3
 
         public static Vector3 GetCardScale(GPS p)
         {
-            if ((p.location & (uint)CardLocation.SpellZone) > 0)
-                return Vector3.one * 0.8f;
-            else
-                return Vector3.one;
+            if (p.InLocation(CardLocation.SpellZone))
+                return new Vector3(0.8f, 1f, 0.8f);
+            else if (p.InLocation(CardLocation.Deck, CardLocation.Extra))
+                return new Vector3(0.9f, 1f, 0.9f);
+            return Vector3.one;
         }
 
         private bool ThisLocationShouldHaveModel(GPS p)
         {
-            if ((p.location & (uint)CardLocation.Hand) > 0)
+            if (p.InLocation(CardLocation.Hand))
                 return true;
-            else if ((p.location & (uint)CardLocation.Overlay) > 0)
+            else if (p.InLocation(CardLocation.Overlay))
                 return false;
-            else if ((p.location & (uint)CardLocation.Onfield) > 0)
+            else if (p.InLocation(CardLocation.Onfield))
                 return true;
             else
                 return false;
-        }
-
-        public static bool NeedStrongSummon(Card data)
-        {
-            if (data.HasType(CardType.Link))
-            {
-                if (data.GetLinkCount() > 2)
-                    return true;
-                else return false;
-            }
-            else if (data.HasType(CardType.Xyz))
-            {
-                if (data.Level > 3)
-                    return true;
-                else return false;
-            }
-            else if (data.HasType(CardType.Synchro))
-            {
-                if (data.Level > 5)
-                    return true;
-                else return false;
-            }
-            else if (data.HasType(CardType.Fusion))
-            {
-                if (data.Level > 5)
-                    return true;
-                else return false;
-            }
-            else if (data.HasType(CardType.Ritual))
-            {
-                if (data.Level > 5)
-                    return true;
-                else return false;
-            }
-            else
-            {
-                if (data.Level > 6)
-                    return true;
-                else return false;
-            }
         }
 
         public bool InPendulumZone()
@@ -889,7 +869,7 @@ namespace MDPro3
             var data = CardsManager.Get(code);
             if ((p.location & (uint)CardLocation.SpellZone) == 0)
                 return false;
-            if (Program.instance.ocgcore.MasterRule > 3)
+            if (MasterRule > 3)
             {
                 if (p.sequence != 0 && p.sequence != 4)
                     return false;
@@ -903,16 +883,33 @@ namespace MDPro3
             return true;
         }
 
-        public float Move(GPS gps, bool rush = false, float wait = 0f, float overrideMoveTime = 0)
+        public void UpdateExDeckTop()
         {
-            Program.instance.ocgcore.lastMoveCard = this;
+            if (cacheP == null)
+                return;
 
-            //Move Analyse
-            if (p.location != gps.location || (gps.position & (uint)CardPosition.FaceDown) > 0)
+            if (cacheP.InLocation(CardLocation.Extra)
+                && !p.InLocation(CardLocation.Extra)
+                && cacheP.sequence - 1 == Program.instance.ocgcore.GetLocationCardCount(CardLocation.Extra, cacheP.controller) - 1)
+                _ = Program.instance.ocgcore.UpdateExDeckTop(cacheP.controller);
+            else if(p.InLocation(CardLocation.Extra)
+                && p.sequence == Program.instance.ocgcore.GetLocationCardCount(CardLocation.Extra, p.controller) - 1)
+                _ = Program.instance.ocgcore.UpdateExDeckTop(cacheP.controller);
+        }
+
+        public async UniTask MoveAsync(GPS gps, bool rush = false, float wait = 0f, float overrideMoveTime = 0f)
+        {
+
+            #region Analyze
+
+            lastMoveCard = this;
+
+            //Reset State
+            if (p.location != gps.location || gps.InPosition(CardPosition.FaceDown))
             {
                 targets.Clear();
                 equipedCard = null;
-                foreach (var card in Program.instance.ocgcore.cards)
+                foreach (var card in cards)
                     card.RemoveTarget(this);
                 Disabled = false;
                 setOverTurn = false;
@@ -920,19 +917,20 @@ namespace MDPro3
             }
 
             overlays = Program.instance.ocgcore.GCS_GetOverlays(this);
-
             cacheP = p;
             p = gps;
+
+            if (p.InLocation(CardLocation.Hand)
+                && p.InMyControl())
+                p.position = (int)CardPosition.FaceUpAttack;
 
             if (!SemiNomiSummoned
                 && CardsManager.Get(data.Id).HasType(CardType.Monster)
                 && (CardsManager.Get(data.Id).Type & 0x68020C0) > 0
-                && (p.location & ((uint)CardLocation.Grave + (uint)CardLocation.Removed)) > 0
-                )
+                && p.InLocation(CardLocation.Grave, CardLocation.Removed))
                 AddStringTail(InterString.Get("未正规登场"));
             else
                 RemoveStringTail(InterString.Get("未正规登场"), true);
-
             //Debug.LogFormat("{0}: reason: {1:X} location: {2:X}", data.Name, p.reason, p.location);
 
             for (int i = 0; i < overlays.Count; i++)
@@ -945,17 +943,22 @@ namespace MDPro3
             }
             Program.instance.ocgcore.ArrangeCards();
 
-            if (Program.instance.ocgcore.currentMessage == GameMessage.Move
+            if (currentMessage == GameMessage.Move
                 && cacheP.location != p.location
-                && (p.reason & (uint)CardReason.MATERIAL) > 0
-                && (cacheP.location & (uint)CardLocation.Overlay) == 0)
-                Program.instance.ocgcore.materialCards.Add(this);
+                && p.IsReason(CardReason.MATERIAL)
+                && !cacheP.InLocation(CardLocation.Overlay))
+                materialCards.Add(this);
 
             if (!ThisLocationShouldHaveModel(p) && cacheP.location == p.location)
-                return 0;
-            if ((cacheP.location & (uint)CardLocation.Overlay) > 0
-                && ((p.reason & (uint)CardReason.RULE) > 0 || (p.location & (uint)CardLocation.Extra) > 0))
-                return 0;
+                return;
+            if (cacheP.InLocation(CardLocation.Overlay)
+                && (p.IsReason(CardReason.RULE) || p.InLocation(CardLocation.Extra)))
+                return;
+
+            #endregion
+
+            #region Pre
+
 
             float moveTime = 0.3f;
 
@@ -968,1016 +971,497 @@ namespace MDPro3
                     ShowFaceDownCardOrNot(NeedShowFaceDownCard());
                     if (IsFaceDownOnSpellZone())
                         setOverTurn = true;
+                    if (p.InLocation(CardLocation.Hand))
+                    {
+                        if (p.InMyControl())
+                            needRefreshMyHand = true;
+                        else
+                            needRefreshOpHand = true;
+                    }
                 }
-                return 0;
+                return;
+            }
+
+            if (!ThisLocationShouldHaveModel(cacheP) && model != null)
+            {
+                Destroy(model, 1f);
+                model = null;
+            }
+            if (model == null)
+            {
+                CreateModel();
+                if (cacheP.InLocation(CardLocation.Deck))
+                    cacheP.position = (int)CardPosition.FaceDownAttack;
+                model.transform.SetParent(Program.instance.ocgcore.GetFieldTransform(p.controller));
+                ModelAt(cacheP);
+            }
+            if ( nextMoveAction != null)
+            {
+                model.SetActive(false);
+                nextMoveAction.Invoke();
+                await UniTask.WaitForSeconds(nextMoveActionDuration);
+                return;
+            }
+
+            inAnimation = true;
+            needRefreshMyHand = true;
+            needRefreshOpHand = true;
+            Program.instance.ocgcore.RefreshHandCardPosition();
+            Program.instance.ocgcore.RefreshBgState();
+
+            string se = string.Empty;
+            var sequence = DOTween.Sequence();
+            float timePassed = 0f;
+
+            if (p.InLocation(CardLocation.Grave, CardLocation.Removed))
+            {
+                if (p.InLocation(CardLocation.Grave))
+                {
+                    if (p.InMyControl())
+                        movingToMyGrave++;
+                    else
+                        movingToOpGrave++;
+                }
+                else
+                {
+                    if (p.InMyControl())
+                        movingToMyExclude++;
+                    else
+                        movingToOpExclude++;
+                }
+            }
+
+            var position = GetCardPosition(p, this);
+            var rotation = GetCardRotation(p, data.Id);
+
+            bool handAppeal = false;
+            float curveHeight = 20;
+            var ease = Ease.Unset;
+            if (overrideMoveTime > 0f)
+            {
+                moveTime = overrideMoveTime;
             }
             else
             {
-                OcgCore.messagePass = false;
-
-                if (!ThisLocationShouldHaveModel(cacheP) && model != null)
+                switch (currentMessage)
                 {
-                    Destroy(model, 1f);
-                    model = null;
+                    case GameMessage.Draw:
+                        curveHeight = 5f;
+                        if (p.controller == 0)
+                        {
+                            moveTime = 0.6f;
+                            handAppeal = true;
+                        }
+                        else
+                            moveTime = 0.3f;
+                        break;
+                    case GameMessage.Move:
+                        moveTime = 0.5f;
+                        if (p.InLocation(CardLocation.Hand)
+                            && p.InMyControl())
+                        {
+                            moveTime = 0.6f;
+                            handAppeal = true;
+                        }
+                        if(cacheP != null 
+                            && !cacheP.InLocation(CardLocation.Onfield)
+                            && p.InLocation(CardLocation.Onfield))
+                        {
+                            curveHeight = 40f;
+                        }
+                        if (p.InLocation(CardLocation.Overlay))
+                            curveHeight = 0f;
+                        break;
+                    case GameMessage.FlipSummoning:
+                    case GameMessage.PosChange:
+                    case GameMessage.ShuffleSetCard:
+                    case GameMessage.Swap:
+                        curveHeight = 10f;
+                        moveTime = 0.2f;
+                        break;
                 }
-                if (model == null)
+            }
+
+            #endregion
+
+            #region Special Move SE and Effect
+
+            //From Grave or Exclude
+            if (cacheP.InLocation(CardLocation.Grave, CardLocation.Removed))
+                timePassed += SequenceFromGrave(sequence, cacheP);
+            //From Deck to Hand
+            if (cacheP.InLocation(CardLocation.Deck)
+                && p.InLocation(CardLocation.Hand))
+                se = "SE_CARD_MOVE_0" + UnityEngine.Random.Range(1, 5);
+            //Destroy
+            if(p.IsReason(CardReason.DESTROY)
+                && model != null
+                && cacheP.InLocation(CardLocation.Onfield, CardLocation.Hand))
+            {
+                moveTime = 0.4f;
+                se = "SE_CARDBREAK_01";
+                if (!data.HasType(CardType.Token))
                 {
-                    CreateModel();
-                    if ((cacheP.location & (uint)CardLocation.Deck) > 0)
-                        cacheP.position = (int)CardPosition.FaceDownAttack;
-                    ModelAt(cacheP);
+                    var breakEffectPath = "fxp_cardbrk_bff_001";
+                    var trail1Path = "fxp_grave_brksol_trail_001";
+                    var trail2Path = "fxp_grave_ReCard_move_001";
+                    if (p.InLocation(CardLocation.Removed))
+                    {
+                        breakEffectPath = "fxp_exclude_001";
+                        trail1Path = "fxp_exclude_brksol_trail_001";
+                        trail2Path = "fxp_exclude_ReCard_move_001";
+                    }
+                    var fx = ABLoader.LoadMasterDuelGameObject(breakEffectPath);
+                    fx.transform.position = model.transform.position;
+                    Destroy(fx, 3f);
+
+                    manager.GetElement<Transform>("CardPlane").localScale = Vector3.zero;
+                    var trail1 = ABLoader.LoadMasterDuelGameObject(trail1Path);
+                    var trail2 = ABLoader.LoadMasterDuelGameObject(trail2Path);
+                    trail1.transform.SetParent(model.transform, false);
+                    trail2.transform.SetParent(model.transform, false);
+                    Destroy(trail1, 3f);
+                    Destroy(trail2, 3f);
                 }
-                if (Program.instance.ocgcore.nextMoveAction != null)
+            }
+            //Xyz Material
+            if (cacheP.InLocation(CardLocation.MonsterZone)
+                && p.InLocation(CardLocation.Overlay)
+                && p.InLocation(CardLocation.Extra))
+            {
+                AudioManager.PlaySE(se);
+                AudioManager.PlaySE("SE_SUMMON_XYZ_MATERIAL");
+                var fx = ABLoader.LoadMasterDuelGameObject("XYZTrailFieldCard01");
+                fx.transform.localPosition = model.transform.position;
+                fx.transform.localEulerAngles = GetEffectRotaion(cacheP);
+                var manager = fx.GetComponent<ElementObjectManager>();
+                var dummyFace = manager.GetNestedElement<MeshRenderer>("DummyCard01/DummyCardModel_front");
+                dummyFace.material = GetMaterial();
+                if (cacheP.InPosition(CardPosition.Defence))
+                    fx.transform.eulerAngles = new Vector3(0, 90, 0);
+                Destroy(model);
+                var director = fx.GetComponent<PlayableDirector>();
+                _ = director.AutoDestroy();
+                //TODO 送去墓地的特效
+                await UniTask.WaitForSeconds(0.2f);
+                return;
+            }
+            //Material
+            if (ThisLocationShouldHaveModel(cacheP)
+                && p.IsReason(CardReason.MATERIAL)
+                && !p.InLocation(CardLocation.Onfield)
+                && ((p.reason & ((uint)CardReason.Ritual) + (uint)CardReason.Fusion + (uint)CardReason.Synchro + (uint)CardReason.Link) > 0))
+            {
+                AudioManager.PlaySE(se);
+                var se2 = string.Empty;
+                var trail = string.Empty;
+                if (p.IsReason(CardReason.Ritual))
                 {
-                    OcgCore.messagePass = false;
-                    Program.instance.ocgcore.nextMoveAction.Invoke();
-                    model.SetActive(false);
-                    return 0;
+                    se2 = "SE_SUMMON_RITUAL_MATERIAL";
+                    trail = "RitualTrailFieldCard01";
                 }
-
-                inAnimation = true;
-                Program.instance.ocgcore.needRefreshHand0 = true;
-                Program.instance.ocgcore.needRefreshHand1 = true;
-                Program.instance.ocgcore.RefreshHandCardPosition();
-                Program.instance.ocgcore.RefreshBgState();
-
-                string se = "";
-                var sequence = DOTween.Sequence();
-                float timePassed = 0;
-
-                if ((p.location & ((uint)CardLocation.Grave + (uint)CardLocation.Removed)) > 0)
+                else if (p.IsReason(CardReason.Fusion))
                 {
-                    if ((p.location & (uint)CardLocation.Grave) > 0)
-                        OcgCore.movingToGrave++;
+                    se2 = "SE_SUMMON_FUS_MATERIAL";
+                    trail = "FusionTrailFieldCard01";
+                }
+                else if (p.IsReason(CardReason.Synchro))
+                {
+                    se2 = "SE_SUMMON_SYNC_MATERIAL";
+                    if(GetData().HasType(CardType.Tuner))
+                        trail = "Synchro00TrailFieldCard01";
                     else
-                        OcgCore.movingToExclude++;
+                        trail = "Synchro01TrailFieldCard01";
+                }
+                else if (p.IsReason(CardReason.Link))
+                {
+                    se2 = "SE_SUMMON_LINK_MATERIAL";
+                    trail = "LinkTrailFieldCard01";
                 }
 
-                var position = GetCardPosition(p, this);
-                var rotation = GetCardRotation(p, data.Id);
-                int needSync = 0;
-                float extraWait = 0f;
+                AudioManager.PlaySE(se2);
+                var fx = ABLoader.LoadMasterDuelGameObject(trail);
+                fx.transform.localPosition = model.transform.position;
+                fx.transform.localEulerAngles = GetEffectRotaion(cacheP);
+                var manager = fx.GetComponent<ElementObjectManager>();
+                var dummyFace = manager.GetNestedElement<MeshRenderer>("DummyCard01/DummyCardModel_front");
+                dummyFace.material = GetMaterial();
 
-                bool handAppeal = false;
-                bool fieldAppeal = false;
-                var ease = Ease.Unset;
-                if (overrideMoveTime > 0f)
+                if (p.InLocation(CardLocation.Extra)
+                    && !p.InLocation(CardLocation.Overlay)
+                    && p.InPosition(CardPosition.FaceUp))
+                    Program.instance.ocgcore.SetExDeckTop(this);
+                var director = fx.GetComponent<PlayableDirector>();
+                _ = director.AutoDestroy();
+            }
+            //Token In (from unknow)
+            if (cacheP.location == 0)
+            {
+                AudioManager.PlaySE("SE_CARD_TOKEN_SUMMON");
+                var fx = ABLoader.LoadMasterDuelGameObject("SummonToken01");
+                fx.transform.position = GetCardPosition(p);
+                fx.transform.localEulerAngles = GetEffectRotaion(p);
+                ModelAt(p);
+                model.SetActive(false);
+                var tokenManager = fx.GetComponent<ElementObjectManager>();
+                _ = Program.instance.texture_.LoadDummyCard(tokenManager.GetElement<ElementObjectManager>("DummyCard01"), data.Id, cacheP.controller);
+                DOTween.To(v => { }, 0, 0, 1.25f).OnComplete(() =>
                 {
-                    moveTime = overrideMoveTime;
+                    model.SetActive(true);
+                });
+                Destroy(fx, 2f);
+                await UniTask.WaitForSeconds(0.5f);
+                return;
+            }
+            //Token Out (to unknow)
+            if (p.location == 0)
+            {
+                AudioManager.PlaySE("SE_CARD_TOKEN_BREAK");
+                var fx = ABLoader.LoadMasterDuelGameObject("fxp_bff_tokese_001");
+                fx.transform.position = model.transform.position;
+                fx.transform.localEulerAngles = GetEffectRotaion(p);
+                Destroy(model);
+                Destroy(fx, 3f);
+                await UniTask.WaitForSeconds(0.2f);
+                return;
+            }
+            //Release
+            if ((p.reason & (uint)CardReason.RELEASE) > 0 && model != null)
+            {
+                se = "SE_SUMMON_ADVANCE";
+                var fx = ABLoader.LoadMasterDuelGameObject("fxp_sacrifice_rls_001");
+                fx.transform.position = model.transform.position;
+                Destroy(fx, 5f);
+            }
+            //SpSummon
+            if (p.IsReason(CardReason.SPSUMMON)
+                && p.InLocation(CardLocation.MonsterZone)
+                && !cacheP.InLocation(CardLocation.MonsterZone)
+                && !p.InLocation(CardLocation.Overlay))
+            {
+                bool needSummonEffect = true;
+                if (condition == OcgCore.Condition.Duel
+                    && !Config.GetBool("DuelSummon", true))
+                    needSummonEffect = false;
+                if (condition == OcgCore.Condition.Watch
+                    && !Config.GetBool("WatchSummon", true))
+                    needSummonEffect = false;
+                if (condition == OcgCore.Condition.Replay
+                    && !Config.GetBool("ReplaySummon", true))
+                    needSummonEffect = false;
+
+                if (needSummonEffect
+                    && materialCards.Count > 0
+                    && (TypeMatchReason(data.Type, (int)materialCards[0].p.reason)
+                    || TypeMatchReason(data.Type, materialCards[0].GetData().Reason)))
+                {
+                    Program.instance.ocgcore.GetUI<OcgCoreUI>().CardDescription.Hide();
+                    Program.instance.ocgcore.GetUI<OcgCoreUI>().CardList.Hide();
+
+                    AudioManager.PlaySE(se);
+                    summonCard = this;
+                    await TimelineHelper.PlaySummonTimelineAsync();
+                    return;
                 }
                 else
                 {
-                    switch (Program.instance.ocgcore.currentMessage)
-                    {
-                        case GameMessage.Draw:
-                            if (p.controller == 0)
-                            {
-                                moveTime = 0.6f;
-                                handAppeal = true;
-                            }
-                            else
-                                moveTime = 0.3f;
-                            break;
-                        case GameMessage.Move:
-                            if ((p.location & (uint)CardLocation.Onfield) > 0
-                                && cacheP != null
-                                && (cacheP.location & (uint)CardLocation.Onfield) == 0
-                                && (p.location & (uint)CardLocation.Overlay) == 0)
-                            {
-                                moveTime = 0.4f;
-                                fieldAppeal = true;
-                            }
-                            else if ((p.location & (uint)CardLocation.Hand) > 0
-                                && p.controller == 0)
-                            {
-                                moveTime = 0.6f;
-                                handAppeal = true;
-                            }
-                            else
-                                moveTime = 0.3f;
-                            break;
-                        case GameMessage.FlipSummoning:
-                        case GameMessage.PosChange:
-                            moveTime = 0.1f;
-                            break;
-                        case GameMessage.ShuffleSetCard:
-                        case GameMessage.Swap:
-                            moveTime = 0.2f;
-                            break;
-                    }
-                }
-
-
-                //From 墓地 or 除外
-                if ((cacheP.location & ((uint)CardLocation.Grave + (uint)CardLocation.Removed)) > 0)
-                    timePassed += SequenceFromGrave(sequence, cacheP);
-                //从卡组到手卡
-                if ((cacheP.location & (uint)CardLocation.Deck) > 0
-                    && (p.location & (uint)CardLocation.Hand) > 0)
-                    se = "SE_CARD_MOVE_0" + UnityEngine.Random.Range(1, 5);
-                //破坏
-                if ((p.reason & (uint)CardReason.DESTROY) > 0
-                    && model != null
-                    && (cacheP.location & ((uint)CardLocation.Onfield + (uint)CardLocation.Hand)) > 0
-                    )
-                {
-                    moveTime = 0.4f;
-                    extraWait = 0.05f;
-                    se = "SE_CARDBREAK_01";
-                    if (!data.HasType(CardType.Token))
-                    {
-                        var breakEffectPath = "MasterDuel/Effects/Break/fxp_cardbrk_bff_001";
-                        var trail1Path = "MasterDuel/Effects/Grave/fxp_grave_brksol_trail_001";
-                        var trail2Path = "MasterDuel/Effects/Grave/fxp_grave_ReCard_move_001";
-                        if ((p.location & (uint)CardLocation.Removed) > 0)
-                        {
-                            breakEffectPath = "MasterDuel/Effects/Exclude/fxp_exclude_001";
-                            trail1Path = "MasterDuel/Effects/Exclude/fxp_exclude_brksol_trail_001";
-                            trail2Path = "MasterDuel/Effects/Exclude/fxp_exclude_ReCard_move_001";
-                        }
-                        var fx = ABLoader.LoadFromFile(breakEffectPath, true);
-                        fx.transform.position = model.transform.position;
-                        Destroy(fx, 3f);
-
-                        manager.GetElement<Transform>("CardPlane").localScale = Vector3.zero;
-                        var trail1 = ABLoader.LoadFromFile(trail1Path, true);
-                        var trail2 = ABLoader.LoadFromFile(trail2Path, true);
-                        trail1.transform.SetParent(model.transform, false);
-                        trail2.transform.SetParent(model.transform, false);
-                        Destroy(trail1, 3f);
-                        Destroy(trail2, 3f);
-                    }
-                }
-
-                //超量素材
-                if ((cacheP.location & (uint)CardLocation.MonsterZone) > 0
-                    && (p.location & (uint)CardLocation.Overlay) > 0
-                    && (p.location & (uint)CardLocation.Extra) > 0
-                    )
-                {
                     AudioManager.PlaySE(se);
-                    AudioManager.PlaySE("SE_SUMMON_EYZ_MATERIAL");
-                    var fx = ABLoader.LoadFromFolder("MasterDuel/Timeline/Summon/SummonFusion/FusionTrailFieldCard01", "FieldCard", true);
-                    fx.transform.localPosition = model.transform.position;
-                    fx.transform.localEulerAngles = GetEffectRotaion(cacheP);
-                    var manager = fx.transform.GetChild(0).GetComponent<ElementObjectManager>();
-                    manager = manager.GetElement<ElementObjectManager>("DummyCard01");
-                    var dummyFace = manager.GetElement<MeshRenderer>("DummyCardModel_front");
-                    dummyFace.material = this.manager.GetElement<Transform>("CardModel").GetChild(1).GetComponent<Renderer>().material;
-                    if ((cacheP.position & (uint)CardPosition.Defence) > 0)
-                        fx.transform.eulerAngles = new Vector3(0, 90, 0);
-                    foreach (var p in fx.GetComponentsInChildren<ParticleSystem>(true))
-                    {
-                        var main = p.main;
-                        main.startColor = Color.yellow;
-                    }
-
-                    Destroy(model);
-                    Destroy(fx, 2);
-                    OcgCore.messagePass = true;
-                    //return Program.instance.ocgcore.NextMessageIsMaterial() ? 0f : 0.2f;
-                    return 0.2f;
-                }
-                //召唤素材
-                if (ThisLocationShouldHaveModel(cacheP)
-                    && (p.reason & (uint)CardReason.MATERIAL) > 0
-                    && (p.location & (uint)CardLocation.Onfield) == 0
-                    && ((p.reason & ((uint)CardReason.Ritual) + (uint)CardReason.Fusion + (uint)CardReason.Synchro + (uint)CardReason.Link) > 0))
-                {
-                    AudioManager.PlaySE(se);
-                    AudioManager.PlaySE("SE_SUMMON_EYZ_MATERIAL");
-                    var fx = ABLoader.LoadFromFolder("MasterDuel/Timeline/Summon/SummonFusion/FusionTrailFieldCard01", "FieldCard", true);
-                    fx.transform.localPosition = model.transform.position;
-                    fx.transform.localEulerAngles = GetEffectRotaion(cacheP);
-                    var manager = fx.transform.GetChild(0).GetComponent<ElementObjectManager>();
-                    manager = manager.GetElement<ElementObjectManager>("DummyCard01");
-                    var dummyFace = manager.GetElement<MeshRenderer>("DummyCardModel_front");
-                    dummyFace.material = this.manager.GetElement<Transform>("CardModel").GetChild(1).GetComponent<Renderer>().material;
-
-                    foreach (var particle in fx.GetComponentsInChildren<ParticleSystem>(true))
-                    {
-                        var main = particle.main;
-                        if ((p.reason & (uint)CardReason.Ritual) > 0)
-                            main.startColor = new Color(0f, 0.5f, 1f, 1f);
-                        else if ((p.reason & (uint)CardReason.Synchro) > 0)
-                            main.startColor = Color.green;
-                        else if ((p.reason & (uint)CardReason.Link) > 0)
-                            main.startColor = Color.red;
-                    }
-
-                    if((p.location & (uint)CardLocation.Extra) > 0
-                        && (p.location & (uint)CardLocation.Overlay) == 0)
-                        Program.instance.ocgcore.SetDeckTop(this);
-                    //Destroy(model);
-                    Destroy(fx, 2);
-                    //OcgCore.messagePass = true;
-                    //return Program.instance.ocgcore.NextMessageIsMaterial() ? 0f : 0.2f;
-                }
-
-                //Token In (from unknow)
-                if (cacheP.location == 0)
-                {
-                    Program.instance.ocgcore.ignoreNextMoveLog = true;
-
-                    AudioManager.PlaySE("SE_CARD_TOKEN_SUMMON");
-                    var fx = ABLoader.LoadFromFolder("MasterDuel/Timeline/Summon/SummonToken", "SummonToken", true);
-                    fx.transform.position = GetCardPosition(p);
-                    fx.transform.localEulerAngles = GetEffectRotaion(p);
-                    ModelAt(p);
-                    model.SetActive(false);
-                    var tokenManager = fx.transform.GetChild(0).GetComponent<ElementObjectManager>();
-                    var ie = Program.instance.texture_.LoadDummyCard(tokenManager.GetElement<ElementObjectManager>("DummyCard01"), data.Id, cacheP.controller);
-                    StartCoroutine(ie);
-                    DOTween.To(v => { }, 0, 0, 1.25f).OnComplete(() =>
-                    {
-                        OcgCore.messagePass = true;
-                        model.SetActive(true);
-                    });
-                    Destroy(fx, 2f);
-                    return 0.5f;
-                }
-                //Token Out (to unknow)
-                if (p.location == 0)
-                {
-                    AudioManager.PlaySE("SE_CARD_TOKEN_BREAK");
-                    var fx = ABLoader.LoadFromFolder("MasterDuel/Effects/Buff/fxp_bff_tokese", "fxp_bff_tokese", true);
-                    fx.transform.position = model.transform.position;
-                    fx.transform.localEulerAngles = GetEffectRotaion(p);
-                    Destroy(model);
-                    Destroy(fx, 3f);
-                    OcgCore.messagePass = true;
-                    return 0.2f;
-                }
-                //解放
-                if ((p.reason & (uint)CardReason.RELEASE) > 0 && model != null)
-                {
-                    se = "SE_SUMMON_ADVANCE";
-                    var fx = ABLoader.LoadFromFile("MasterDuel/Effects/Sacrifice/fxp_Sacrifice_rls_001", true);
-                    fx.transform.position = model.transform.position;
-                    Destroy(fx, 5f);
-                }
-
-                //特殊召唤
-                if ((p.reason & (uint)CardReason.SPSUMMON) > 0
-                    && (p.location & (uint)CardLocation.MonsterZone) > 0
-                    && (cacheP.location & (uint)CardLocation.MonsterZone) == 0
-                    && (p.location & (uint)CardLocation.Overlay) == 0)
-                {
-                    Program.instance.ocgcore.ignoreNextMoveLog = true;
-
-                    bool summonEffect = true;
-                    if (OcgCore.condition == OcgCore.Condition.Duel
-                        && Config.Get("DuelSummon", "1") == "0")
-                        summonEffect = false;
-                    if (OcgCore.condition == OcgCore.Condition.Watch
-                        && Config.Get("WatchSummon", "1") == "0")
-                        summonEffect = false;
-                    if (OcgCore.condition == OcgCore.Condition.Replay
-                        && Config.Get("ReplaySummon", "1") == "0")
-                        summonEffect = false;
-
-                    if (summonEffect
-                        && Program.instance.ocgcore.materialCards.Count > 0
-                        && (OcgCore.TypeMatchReason(data.Type, (int)Program.instance.ocgcore.materialCards[0].p.reason)
-                        || OcgCore.TypeMatchReason(data.Type, Program.instance.ocgcore.materialCards[0].GetData().Reason)))
-                    {
-                        Program.instance.ocgcore.GetUI<OcgCoreUI>().CardDescription.Hide();
-                        Program.instance.ocgcore.GetUI<OcgCoreUI>().CardList.Hide();
-                        Program.instance.ocgcore.summonCard = this;
-                        StartCoroutine(Program.instance.timeline_.SummonMaterial());
-                        goto SummonPass;
-                    }
-                    else
-                    {
-                        bool cutin = CutinViewer.HasCutin(data.Id);
-                        if (cutin)
-                            CutinViewer.Play(data.Id, (int)p.controller);
-                        if (NeedStrongSummon(data))
-                            SequenceStrongSummon(sequence, position, rotation, cutin ? 1.6f : 0, timePassed);
-                        else
-                            SequenceNormalSummon(sequence, position, rotation, cutin ? 1.6f : 0, timePassed);
-                        goto SummonPass;
-                    }
-                }
-                //召唤
-                else if ((p.position & (uint)CardPosition.FaceUp) > 0
-                    && (p.location & (uint)CardLocation.MonsterZone) > 0
-                    && (cacheP.location & (uint)CardLocation.Hand) > 0
-                    && (p.location & (uint)CardLocation.Overlay) == 0)
-                {
-                    Program.instance.ocgcore.ignoreNextMoveLog = true;
 
                     bool cutin = CutinViewer.HasCutin(data.Id);
+                    sequence.Pause();
                     if (cutin)
-                        CutinViewer.Play(data.Id, (int)p.controller);
-                    if (NeedStrongSummon(data))
-                        SequenceStrongSummon(sequence, position, rotation, cutin ? 1.6f : 0);
-                    else
-                        SequenceNormalSummon(sequence, position, rotation, cutin ? 1.6f : 0);
-                    goto SummonPass;
-                }
-
-                var cardPlane = manager.GetElement<Transform>("CardPlane");
-                var pivot = manager.GetElement<Transform>("Pivot");
-                var offset = manager.GetElement<Transform>("Offset");
-                var turn = manager.GetElement<Transform>("Turn");
-
-                //主体移动
-                sequence.AppendInterval(wait);
-                var targetMainMoveTime = moveTime;
-                if (handAppeal)
-                {
-                    targetMainMoveTime *= 0.666f;
-                    ease = Ease.OutCubic;
-                }
-                if (fieldAppeal)
-                {
-                    targetMainMoveTime *= 0.666f;
-                    ease = Ease.OutSine;
-                }
-                sequence.Append(model.transform.DOLocalMove(position, targetMainMoveTime).SetEase(ease).OnStart(() =>
-                {
-                    if ((cacheP.location & (uint)CardLocation.Extra) > 0
-                        && (p.location & (uint)CardLocation.Extra) == 0
-                        && cacheP.sequence == Program.instance.ocgcore.GetLocationCardCount(CardLocation.Extra, cacheP.controller) - 1)
-                        StartCoroutine(Program.instance.ocgcore.UpdateDeckTop(cacheP.controller));
-                    if ((p.position & (uint)CardPosition.FaceDown) > 0
-                        || (p.location & (uint)CardLocation.MonsterZone) == 0)
-                        HideLabel();
-                    if (!fieldAppeal && !handAppeal)
                     {
-                        var originY = model.transform.GetChild(0).localPosition.y;
-                        model.transform.GetChild(0).DOLocalMoveY(originY + 5f, targetMainMoveTime / 2f).OnComplete(() =>
-                        {
-                            model.transform.GetChild(0).DOLocalMoveY(originY, targetMainMoveTime / 2f);
-                        });
+                        if (cacheP.InLocation(CardLocation.Grave, CardLocation.Removed))
+                            model?.SetActive(false);
+                        await CutinViewer.Play(data.Id, (int)p.controller);
                     }
+                    if (data.IsHighLevel())
+                        await SequenceStrongSummon(sequence, position, rotation, 0, 0).WaitAsync();
+                    else
+                        await SequenceNormalSummon(sequence, position, rotation, 0, 0).WaitAsync();
+                    return;
+                }
+            }
+            //Summon
+            else if (p.InPosition(CardPosition.FaceUp)
+                && p.InLocation(CardLocation.MonsterZone)
+                && cacheP.InLocation(CardLocation.Hand)
+                && !p.InLocation(CardLocation.Overlay))
+            {
+                AudioManager.PlaySE(se);
+                sequence.Pause();
+                bool cutin = CutinViewer.HasCutin(data.Id);
+                if (cutin)
+                    await CutinViewer.Play(data.Id, (int)p.controller);
+                if (data.IsHighLevel())
+                    await SequenceStrongSummon(sequence, position, rotation, 0, 0).WaitAsync();
+                else
+                    await SequenceNormalSummon(sequence, position, rotation, 0, 0).WaitAsync();
+                return;
+            }
+
+            #endregion
+
+            #region Normal Move
+
+            var cardPlane = manager.GetElement<Transform>("CardPlane");
+            var pivot = manager.GetElement<Transform>("Pivot");
+            var offset = manager.GetElement<Transform>("Offset");
+            var turn = manager.GetElement<Transform>("Turn");
+
+            sequence.AppendInterval(wait);
+            if (handAppeal)
+            {
+                ease = Ease.OutCubic;
+            }
+
+            sequence.Append(model.transform.DOPath(GenerateCurvePath(model.transform.position, position, curveHeight),
+                moveTime, PathType.Linear, PathMode.Full3D, 10).OnStart(() =>
+            //sequence.Append(model.transform.DOLocalMove(position, moveTime).SetEase(ease).OnStart(() =>
+            {
+                UpdateExDeckTop();
+                if ((p.position & (uint)CardPosition.FaceDown) > 0
+                    || (p.location & (uint)CardLocation.MonsterZone) == 0)
+                    HideLabel();
+            }));
+            sequence.Join(model.transform.DOLocalRotate(Vector3.zero, moveTime));
+
+            sequence.Join(pivot.DOScale(GetCardScale(p), moveTime * 0.95f));
+            //Turn
+            if (p.InLocation(CardLocation.Removed)
+                || p.InLocation(CardLocation.Deck)
+                || p.InLocation(CardLocation.Extra))
+                sequence.Join(turn.DOLocalRotate(new Vector3(0, 0, rotation.z), moveTime * 0.8f));
+            else
+                sequence.Join(turn.DOLocalRotate(new Vector3(0, (rotation.y == 0) || (rotation.y == 180) ? 0 : 270, rotation.z), moveTime * 0.8f).SetEase(ease));
+            if (handAppeal && overrideMoveTime == 0)
+            {
+                sequence.Join(turn.DOLocalMove(new Vector3(0, 0, 10), moveTime).SetEase(Ease.OutCubic).OnComplete(() =>
+                {
+                    turn.DOLocalMove(Vector3.zero, 0.2f).SetEase(Ease.InCubic);
                 }));
-                sequence.Join(model.transform.DOLocalRotate(Vector3.zero, targetMainMoveTime));
+            }
 
-                if (fieldAppeal)
-                {
-                    sequence.Join(cardPlane.DOLocalMove(Vector3.up * 15f, targetMainMoveTime).SetEase(ease).OnComplete(() =>
-                    {
-                        sequence.Join(cardPlane.DOLocalMove(Vector3.zero, targetMainMoveTime * 0.5f).SetEase(Ease.InSine));
-                    }));
-                }
+            //CardPlane
+            if (p.InLocation(CardLocation.Deck)
+                || p.InLocation(CardLocation.Extra)
+                || p.InLocation(CardLocation.Removed))
+                sequence.Join(cardPlane.DOLocalRotate(new Vector3(rotation.x, rotation.y, 0), moveTime * 0.5f));
+            else
+                sequence.Join(cardPlane.DOLocalRotate(new Vector3(rotation.x, (rotation.y == 0 || rotation.y == 270) ? 0 : 180, 0), moveTime * 0.5f));
 
-                sequence.Join(pivot.DOScale(GetCardScale(p), targetMainMoveTime * 0.95f));
-                //Turn
-                if ((p.location & (uint)CardLocation.Removed) > 0
-                    || (p.location & (uint)CardLocation.Deck) > 0
-                    || (p.location & (uint)CardLocation.Extra) > 0)
-                    sequence.Join(turn.DOLocalRotate(new Vector3(0, 0, rotation.z), targetMainMoveTime * 0.8f));
+            //Pivot && Offset
+            if (p.InLocation(CardLocation.Hand))
+            {
+                sequence.Join(pivot.DOLocalMove(new Vector3(0, 0, HandOffsetPositionByX(position.x)), moveTime / 4));
+                sequence.Join(offset.DOLocalRotate(new Vector3(0, HandOffsetRotationByX(position.x), handAngle), moveTime / 4));
+                handDefault = true;
+            }
+            else
+            {
+                sequence.Join(offset.DOLocalMove(Vector3.zero, moveTime / 4));
+                sequence.Join(offset.DOLocalRotate(Vector3.zero, 0.21f));
+                sequence.Join(pivot.DOLocalMove(Vector3.zero, moveTime / 4));
+                sequence.Join(pivot.DOLocalRotate(Vector3.zero, moveTime / 4));
+            }
+
+            //To Grave or Exclude
+            if (p.InLocation(CardLocation.Grave, CardLocation.Removed))
+            {
+                if (p.InLocation(CardLocation.Grave))
+                    timePassed += SequenceToGrave(sequence, p);
                 else
-                    sequence.Join(turn.DOLocalRotate(new Vector3(0, (rotation.y == 0) || (rotation.y == 180) ? 0 : 270, rotation.z), targetMainMoveTime * 0.8f).SetEase(ease));
-                if (handAppeal)
-                    sequence.Join(turn.DOLocalMove(new Vector3(0, 0, 10), targetMainMoveTime).SetEase(Ease.OutCubic).OnComplete(() =>
-                    {
-                        turn.DOLocalMove(Vector3.zero, targetMainMoveTime * 0.5f).SetEase(Ease.InCubic);
-                    }));
+                    timePassed += SequenceToExclude(sequence, p);
+            }
 
-                //CardPlane
-                if ((p.location & (uint)CardLocation.Deck) > 0
-                    || (p.location & (uint)CardLocation.Extra) > 0
-                    || (p.location & (uint)CardLocation.Removed) > 0)
-                    sequence.Join(cardPlane.DOLocalRotate(new Vector3(rotation.x, rotation.y, 0), targetMainMoveTime * 0.5f));
-                else
-                    sequence.Join(cardPlane.DOLocalRotate(new Vector3(rotation.x, (rotation.y == 0 || rotation.y == 270) ? 0 : 180, 0), targetMainMoveTime * 0.5f));
+            //Overlay Out
+            if (cacheP.InLocation(CardLocation.Overlay)
+                && (p.IsReason(CardReason.EFFECT) || !p.InLocation(CardLocation.Overlay))
+                && !p.IsReason(CardReason.RULE))
+            {
+                se = "SE_CARD_XYZ_OUT";
+                var fx = ABLoader.LoadMasterDuelGameObject("fxp_bff_overlay_out_001");
+                fx.transform.position = GetCardPosition(cacheP);
+                Destroy(fx, 3f);
 
-                //Pivot && Offset
-                if ((p.location & (uint)CardLocation.Hand) > 0)
+                var trail = ABLoader.LoadMasterDuelGameObject("fxp_bff_overlay_trail_001");
+                trail.transform.SetParent(model.transform, false);
+            }
+
+            //Overlay In
+            if (!cacheP.InLocation(CardLocation.Overlay)
+                && !p.InLocation(CardLocation.Extra)
+                && p.InLocation(CardLocation.Overlay)
+                && p.IsReason(CardReason.Xyz))
+            {
+                se = string.Empty;
+                DOTween.To(v => { }, 0, 0, moveTime + timePassed).OnComplete(() =>
                 {
-                    sequence.Join(pivot.DOLocalMove(new Vector3(0, 0, HandOffsetPositionByX(position.x)), targetMainMoveTime / 4));
-                    sequence.Join(offset.DOLocalRotate(new Vector3(0, HandOffsetRotationByX(position.x), handAngle), targetMainMoveTime / 4));
-                    handDefault = true;
-                }
-                else
-                {
-                    sequence.Join(offset.DOLocalMove(Vector3.zero, targetMainMoveTime / 4));
-                    sequence.Join(offset.DOLocalRotate(Vector3.zero, 0.21f));
-                    sequence.Join(pivot.DOLocalMove(Vector3.zero, targetMainMoveTime / 4));
-                    sequence.Join(pivot.DOLocalRotate(Vector3.zero, targetMainMoveTime / 4));
-                }
-
-                //To Grave or Exclude
-                if ((p.location & ((uint)CardLocation.Grave + (uint)CardLocation.Removed)) > 0)
-                {
-                    OcgCore.messagePass = true;
-
-                    if ((p.location & (uint)CardLocation.Grave) > 0)
-                    {
-                        timePassed += SequenceToGrave(sequence, p);
-                        needSync = 1;
-                    }
-                    else
-                    {
-                        timePassed += SequenceToExclude(sequence, p);
-                        needSync = 2;
-                    }
-                }
-
-                //Overlay Out
-                if ((cacheP.location & (uint)CardLocation.Overlay) > 0
-                    && ((p.reason & (uint)CardReason.EFFECT) > 0 || (p.location & (uint)CardLocation.Overlay) == 0)
-                    && (p.reason & (uint)CardReason.RULE) == 0)
-                {
-                    se = "SE_CARD_XYZ_OUT";
-                    var fx = ABLoader.LoadFromFile("MasterDuel/Effects/Buff/fxp_bff_overlay/fxp_bff_overlay_out_001", true);
-                    fx.transform.position = GetCardPosition(cacheP);
+                    AudioManager.PlaySE("SE_CARD_XYZ_IN");
+                    var fx = ABLoader.LoadMasterDuelGameObject("fxp_bff_overlay_in_001");
+                    fx.transform.position = GetCardPosition(p);
                     Destroy(fx, 3f);
-
-                    var trail = ABLoader.LoadFromFile("MasterDuel/Effects/Buff/fxp_bff_overlay/fxp_bff_overlay_trail_001");
-                    trail.transform.SetParent(model.transform, false);
-
-                    if (Program.instance.ocgcore.NextMessageIsMovingFrom(CardLocation.Overlay))
-                        extraWait = 0.1f;
-                }
-
-                //Overlay In
-                if ((cacheP.location & (uint)CardLocation.Overlay) == 0
-                    && (p.location & (uint)CardLocation.Extra) == 0
-                    && (p.location & (uint)CardLocation.Overlay) > 0
-                    && (p.reason & (uint)CardReason.Xyz) > 0)
-                {
-                    se = "";
-                    DOTween.To(v => { }, 0, 0, moveTime + timePassed).OnComplete(() =>
-                    {
-                        AudioManager.PlaySE("SE_CARD_XYZ_IN");
-                        var fx = ABLoader.LoadFromFile("MasterDuel/Effects/Buff/fxp_bff_overlay/fxp_bff_overlay_in_001", true);
-                        fx.transform.position = GetCardPosition(p);
-                        Destroy(fx, 3f);
-                    });
-
-                    var trail = ABLoader.LoadFromFile("MasterDuel/Effects/Buff/fxp_bff_overlay/fxp_bff_overlay_trail_001");
-                    trail.transform.SetParent(model.transform, false);
-                }
-
-                sequence.OnComplete(() =>
-                {
-                    if (!ThisLocationShouldHaveModel(p) && model != null)
-                        Destroy(model);
-                    else
-                        manager.GetElement<Transform>("CardPlane").localScale = Vector3.one;
-                    inAnimation = false;
-                    if ((p.location & ((uint)CardLocation.Grave + (uint)CardLocation.Removed)) == 0)
-                        OcgCore.messagePass = true;
-                    if((p.location & (uint)CardLocation.Extra) > 0 
-                        && (cacheP.location & (uint)CardLocation.Extra) == 0)
-                        Program.instance.ocgcore.SetDeckTop(this);
-                    ShowFaceDownCardOrNot(NeedShowFaceDownCard());
                 });
 
-            SummonPass:
-                AudioManager.PlaySE(se);
-
-                if (model != null)
-                {
-                    if (p.controller == 0)
-                        model.transform.SetParent(Program.instance.ocgcore.field0Manager.transform, true);
-                    else
-                        model.transform.SetParent(Program.instance.ocgcore.field1Manager.transform, true);
-                }
-
-                if(needSync == 1 && Program.instance.ocgcore.NextMessageIsMovingToGrave(p.controller))
-                {
-                    if ((cacheP.location & ((uint)CardLocation.Deck + (uint)CardLocation.Extra + (uint)CardLocation.Hand)) > 0)
-                        return 0f;
-                    else
-                        return 0.05f + extraWait;
-                }
-                else if (needSync == 2 && Program.instance.ocgcore.NextMessageIsMovingToExclude(p.controller))
-                {
-                    if ((cacheP.location & ((uint)CardLocation.Deck + (uint)CardLocation.Extra + (uint)CardLocation.Hand)) > 0)
-                        return 0f;
-                    else
-                        return 0.05f + extraWait;
-                }
-                else
-                    return moveTime + timePassed + 0.1f;
+                var trail = ABLoader.LoadMasterDuelGameObject("fxp_bff_overlay_trail_001");
+                trail.transform.SetParent(model.transform, false);
             }
+
+            if (handAppeal)
+            {
+                sequence.AppendInterval(0.2f);
+            }
+
+            sequence.OnComplete(() =>
+            {
+                if (!ThisLocationShouldHaveModel(p) && model != null)
+                    Destroy(model);
+                else
+                    manager.GetElement<Transform>("CardPlane").localScale = Vector3.one;
+                inAnimation = false;
+                if (p.InLocation(CardLocation.Extra)
+                    && !p.InLocation(CardLocation.Overlay)
+                    && p.InPosition(CardPosition.FaceUp))
+                    Program.instance.ocgcore.SetExDeckTop(this);
+                ShowFaceDownCardOrNot(NeedShowFaceDownCard());
+            });
+
+            AudioManager.PlaySE(se);
+
+            await sequence.WaitAsync();
+
+            #endregion
+
         }
 
-        public float Move_Backup(GPS gps, bool rush = false, float wait = 0f, float overrideMoveTime = 0)
+
+        private Vector3[] GenerateCurvePath(Vector3 start, Vector3 end, float curveHeight = 40f)
         {
-            Program.instance.ocgcore.lastMoveCard = this;
+            //curveHeight = Program.instance.testFloat;
+            var endBias = 0.9f;
+            Vector3 midPoint = start * (1 - endBias) + end * endBias;
+            Vector3 controlPoint = midPoint + Vector3.up * curveHeight;
 
-            //Move Analyse
-            if (p.location != gps.location || (gps.position & (uint)CardPosition.FaceDown) > 0)
+            Vector3[] path = new Vector3[10];
+            for (int i = 0; i < 10; i++)
             {
-                targets.Clear();
-                equipedCard = null;
-                foreach (var card in Program.instance.ocgcore.cards)
-                    card.RemoveTarget(this);
-                Disabled = false;
-                setOverTurn = false;
-                RefreshData();
+                float rawT = i / 9.0f;
+                float mappedT = Mathf.Pow(rawT, 0.5f);
+                path[i] = CalculateBezierPoint(start, controlPoint, end, mappedT);
             }
-
-            overlays = Program.instance.ocgcore.GCS_GetOverlays(this);
-
-            cacheP = p;
-            p = gps;
-
-            if (!SemiNomiSummoned
-                && CardsManager.Get(data.Id).HasType(CardType.Monster)
-                && (CardsManager.Get(data.Id).Type & 0x68020C0) > 0
-                && (p.location & ((uint)CardLocation.Grave + (uint)CardLocation.Removed)) > 0
-                )
-                AddStringTail(InterString.Get("未正规登场"));
-            else
-                RemoveStringTail(InterString.Get("未正规登场"), true);
-
-            //Debug.LogFormat("{0}: reason: {1:X} location: {2:X}", data.Name, p.reason, p.location);
-
-            for (int i = 0; i < overlays.Count; i++)
-            {
-                overlays[i].overlayParent = this;
-                overlays[i].p.controller = gps.controller;
-                overlays[i].p.location = gps.location | (uint)CardLocation.Overlay;
-                overlays[i].p.sequence = gps.sequence;
-                overlays[i].p.position = i;
-            }
-            Program.instance.ocgcore.ArrangeCards();
-
-            if (Program.instance.ocgcore.currentMessage == GameMessage.Move
-                && cacheP.location != p.location
-                && (p.reason & (uint)CardReason.MATERIAL) > 0
-                && (cacheP.location & (uint)CardLocation.Overlay) == 0)
-                Program.instance.ocgcore.materialCards.Add(this);
-
-            if (!ThisLocationShouldHaveModel(p) && cacheP.location == p.location)
-                return 0;
-            if ((cacheP.location & (uint)CardLocation.Overlay) > 0
-                && ((p.reason & (uint)CardReason.RULE) > 0 || (p.location & (uint)CardLocation.Extra) > 0))
-                return 0;
-
-            float moveTime = 0.3f;
-
-            if (rush)
-            {
-                if (ThisLocationShouldHaveModel(p) && model == null)
-                {
-                    CreateModel();
-                    ModelAt(p);
-                    ShowFaceDownCardOrNot(NeedShowFaceDownCard());
-                    if (IsFaceDownOnSpellZone())
-                        setOverTurn = true;
-                }
-                return 0;
-            }
-            else
-            {
-                OcgCore.messagePass = false;
-
-                if (!ThisLocationShouldHaveModel(cacheP) && model != null)
-                {
-                    Destroy(model, 1f);
-                    model = null;
-                }
-                if (model == null)
-                {
-                    CreateModel();
-                    if ((cacheP.location & (uint)CardLocation.Deck) > 0)
-                        cacheP.position = (int)CardPosition.FaceDownAttack;
-                    ModelAt(cacheP);
-                }
-                if (Program.instance.ocgcore.nextMoveAction != null)
-                {
-                    OcgCore.messagePass = false;
-                    Program.instance.ocgcore.nextMoveAction.Invoke();
-                    model.SetActive(false);
-                    return 0;
-                }
-
-                inAnimation = true;
-                Program.instance.ocgcore.needRefreshHand0 = true;
-                Program.instance.ocgcore.needRefreshHand1 = true;
-                Program.instance.ocgcore.RefreshHandCardPosition();
-                Program.instance.ocgcore.RefreshBgState();
-
-                string se = "";
-                var sequence = DOTween.Sequence();
-                float timePassed = 0;
-
-                var position = GetCardPosition(p, this);
-                var rotation = GetCardRotation(p, data.Id);
-                int needSync = 0;
-                //From 墓地 or 除外
-                if ((cacheP.location & ((uint)CardLocation.Grave + (uint)CardLocation.Removed)) > 0)
-                    timePassed += SequenceFromGrave_Backup(sequence, cacheP);
-                //从卡组到手卡
-                if ((cacheP.location & (uint)CardLocation.Deck) > 0
-                    && (p.location & (uint)CardLocation.Hand) > 0)
-                    se = "SE_CARD_MOVE_0" + UnityEngine.Random.Range(1, 5);
-                //破坏
-                if ((p.reason & (uint)CardReason.DESTROY) > 0
-                    && model != null
-                    && (cacheP.location & ((uint)CardLocation.Onfield + (uint)CardLocation.Hand)) > 0
-                    )
-                {
-                    se = "SE_CARDBREAK_01";
-                    if (!data.HasType(CardType.Token))
-                    {
-                        var breakEffectPath = "MasterDuel/Effects/Break/fxp_cardbrk_bff_001";
-                        var trail1Path = "MasterDuel/Effects/Grave/fxp_grave_brksol_trail_001";
-                        var trail2Path = "MasterDuel/Effects/Grave/fxp_grave_ReCard_move_001";
-                        if ((p.location & (uint)CardLocation.Removed) > 0)
-                        {
-                            breakEffectPath = "MasterDuel/Effects/Exclude/fxp_exclude_001";
-                            trail1Path = "MasterDuel/Effects/Exclude/fxp_exclude_brksol_trail_001";
-                            trail2Path = "MasterDuel/Effects/Exclude/fxp_exclude_ReCard_move_001";
-                        }
-                        var fx = ABLoader.LoadFromFile(breakEffectPath, true);
-                        fx.transform.position = model.transform.position;
-                        Destroy(fx, 3f);
-
-                        //manager.GetElement<Transform>("CardPlane").localScale = Vector3.zero;
-                        var trail1 = ABLoader.LoadFromFile(trail1Path, true);
-                        var trail2 = ABLoader.LoadFromFile(trail2Path, true);
-                        trail1.transform.SetParent(model.transform, false);
-                        trail2.transform.SetParent(model.transform, false);
-                        Destroy(trail1, 3f);
-                        Destroy(trail2, 3f);
-                    }
-                }
-
-                //超量素材
-                if ((cacheP.location & (uint)CardLocation.MonsterZone) > 0
-                    && (p.location & (uint)CardLocation.Overlay) > 0
-                    && (p.location & (uint)CardLocation.Extra) > 0
-                    )
-                {
-                    AudioManager.PlaySE(se);
-                    AudioManager.PlaySE("SE_SUMMON_EYZ_MATERIAL");
-                    var fx = ABLoader.LoadFromFolder("MasterDuel/Timeline/Summon/SummonFusion/FusionTrailFieldCard01", "FieldCard", true);
-                    fx.transform.localPosition = model.transform.position;
-                    fx.transform.localEulerAngles = GetEffectRotaion(cacheP);
-                    var manager = fx.transform.GetChild(0).GetComponent<ElementObjectManager>();
-                    manager = manager.GetElement<ElementObjectManager>("DummyCard01");
-                    var dummyFace = manager.GetElement<MeshRenderer>("DummyCardModel_front");
-                    dummyFace.material = this.manager.GetElement<Transform>("CardModel").GetChild(1).GetComponent<Renderer>().material;
-                    if ((cacheP.position & (uint)CardPosition.Defence) > 0)
-                        fx.transform.eulerAngles = new Vector3(0, 90, 0);
-                    foreach (var p in fx.GetComponentsInChildren<ParticleSystem>(true))
-                    {
-                        var main = p.main;
-                        main.startColor = Color.yellow;
-                    }
-
-                    Destroy(model);
-                    Destroy(fx, 2);
-                    OcgCore.messagePass = true;
-                    //return Program.instance.ocgcore.NextMessageIsMaterial() ? 0f : 0.2f;
-                    return 0.2f;
-                }
-                //召唤素材
-                if (ThisLocationShouldHaveModel(cacheP)
-                    && (p.reason & (uint)CardReason.MATERIAL) > 0
-                    && (p.location & (uint)CardLocation.Onfield) == 0
-                    && ((p.reason & ((uint)CardReason.Ritual) + (uint)CardReason.Fusion + (uint)CardReason.Synchro + (uint)CardReason.Link) > 0))
-                {
-                    AudioManager.PlaySE(se);
-                    AudioManager.PlaySE("SE_SUMMON_EYZ_MATERIAL");
-                    var fx = ABLoader.LoadFromFolder("MasterDuel/Timeline/Summon/SummonFusion/FusionTrailFieldCard01", "FieldCard", true);
-                    fx.transform.localPosition = model.transform.position;
-                    fx.transform.localEulerAngles = GetEffectRotaion(cacheP);
-                    var manager = fx.transform.GetChild(0).GetComponent<ElementObjectManager>();
-                    manager = manager.GetElement<ElementObjectManager>("DummyCard01");
-                    var dummyFace = manager.GetElement<MeshRenderer>("DummyCardModel_front");
-                    dummyFace.material = this.manager.GetElement<Transform>("CardModel").GetChild(1).GetComponent<Renderer>().material;
-
-                    foreach (var particle in fx.GetComponentsInChildren<ParticleSystem>(true))
-                    {
-                        var main = particle.main;
-                        if ((p.reason & (uint)CardReason.Ritual) > 0)
-                            main.startColor = new Color(0f, 0.5f, 1f, 1f);
-                        else if ((p.reason & (uint)CardReason.Synchro) > 0)
-                            main.startColor = Color.green;
-                        else if ((p.reason & (uint)CardReason.Link) > 0)
-                            main.startColor = Color.red;
-                    }
-
-                    if ((p.location & (uint)CardLocation.Extra) > 0
-                        && (p.location & (uint)CardLocation.Overlay) == 0)
-                        Program.instance.ocgcore.SetDeckTop(this);
-                    //Destroy(model);
-                    Destroy(fx, 2);
-                    //OcgCore.messagePass = true;
-                    //return Program.instance.ocgcore.NextMessageIsMaterial() ? 0f : 0.2f;
-                }
-
-                //Token In (from unknow)
-                if (cacheP.location == 0)
-                {
-                    Program.instance.ocgcore.ignoreNextMoveLog = true;
-
-                    AudioManager.PlaySE("SE_CARD_TOKEN_SUMMON");
-                    var fx = ABLoader.LoadFromFolder("MasterDuel/Timeline/Summon/SummonToken", "SummonToken", true);
-                    fx.transform.position = GetCardPosition(p);
-                    fx.transform.localEulerAngles = GetEffectRotaion(p);
-                    ModelAt(p);
-                    model.SetActive(false);
-                    var tokenManager = fx.transform.GetChild(0).GetComponent<ElementObjectManager>();
-                    var ie = Program.instance.texture_.LoadDummyCard(tokenManager.GetElement<ElementObjectManager>("DummyCard01"), data.Id, cacheP.controller);
-                    StartCoroutine(ie);
-                    DOTween.To(v => { }, 0, 0, 1.25f).OnComplete(() =>
-                    {
-                        OcgCore.messagePass = true;
-                        model.SetActive(true);
-                    });
-                    Destroy(fx, 2f);
-                    return 0.5f;
-                }
-                //Token Out (to unknow)
-                if (p.location == 0)
-                {
-                    AudioManager.PlaySE("SE_CARD_TOKEN_BREAK");
-                    var fx = ABLoader.LoadFromFolder("MasterDuel/Effects/Buff/fxp_bff_tokese", "fxp_bff_tokese", true);
-                    fx.transform.position = model.transform.position;
-                    fx.transform.localEulerAngles = GetEffectRotaion(p);
-                    Destroy(model);
-                    Destroy(fx, 3f);
-                    OcgCore.messagePass = true;
-                    return 0.2f;
-                }
-                //解放
-                if ((p.reason & (uint)CardReason.RELEASE) > 0 && model != null)
-                {
-                    se = "SE_SUMMON_ADVANCE";
-                    var fx = ABLoader.LoadFromFile("MasterDuel/Effects/Sacrifice/fxp_Sacrifice_rls_001", true);
-                    fx.transform.position = model.transform.position;
-                    Destroy(fx, 5f);
-                }
-
-                //特殊召唤
-                if ((p.reason & (uint)CardReason.SPSUMMON) > 0
-                    && (p.location & (uint)CardLocation.MonsterZone) > 0
-                    && (cacheP.location & (uint)CardLocation.MonsterZone) == 0
-                    && (p.location & (uint)CardLocation.Overlay) == 0)
-                {
-                    Program.instance.ocgcore.ignoreNextMoveLog = true;
-
-                    bool summonEffect = true;
-                    if (OcgCore.condition == OcgCore.Condition.Duel
-                        && Config.Get("DuelSummon", "1") == "0")
-                        summonEffect = false;
-                    if (OcgCore.condition == OcgCore.Condition.Watch
-                        && Config.Get("WatchSummon", "1") == "0")
-                        summonEffect = false;
-                    if (OcgCore.condition == OcgCore.Condition.Replay
-                        && Config.Get("ReplaySummon", "1") == "0")
-                        summonEffect = false;
-
-                    if (summonEffect
-                        && Program.instance.ocgcore.materialCards.Count > 0
-                        && (OcgCore.TypeMatchReason(data.Type, (int)Program.instance.ocgcore.materialCards[0].p.reason)
-                        || OcgCore.TypeMatchReason(data.Type, Program.instance.ocgcore.materialCards[0].GetData().Reason)))
-                    {
-                        Program.instance.ocgcore.GetUI<OcgCoreUI>().CardDescription.Hide();
-                        Program.instance.ocgcore.GetUI<OcgCoreUI>().CardList.Hide();
-                        Program.instance.ocgcore.summonCard = this;
-                        StartCoroutine(Program.instance.timeline_.SummonMaterial());
-                        goto SummonPass;
-                    }
-                    else
-                    {
-                        bool cutin = CutinViewer.HasCutin(data.Id);
-                        if (cutin)
-                            CutinViewer.Play(data.Id, (int)p.controller);
-                        if (NeedStrongSummon(data))
-                            SequenceStrongSummon(sequence, position, rotation, cutin ? 1.6f : 0, timePassed);
-                        else
-                            SequenceNormalSummon(sequence, position, rotation, cutin ? 1.6f : 0, timePassed);
-                        goto SummonPass;
-                    }
-                }
-                //召唤
-                else if ((p.position & (uint)CardPosition.FaceUp) > 0
-                    && (p.location & (uint)CardLocation.MonsterZone) > 0
-                    && (cacheP.location & (uint)CardLocation.Hand) > 0
-                    && (p.location & (uint)CardLocation.Overlay) == 0)
-                {
-                    Program.instance.ocgcore.ignoreNextMoveLog = true;
-
-                    bool cutin = CutinViewer.HasCutin(data.Id);
-                    if (cutin)
-                        CutinViewer.Play(data.Id, (int)p.controller);
-                    if (NeedStrongSummon(data))
-                        SequenceStrongSummon(sequence, position, rotation, cutin ? 1.6f : 0);
-                    else
-                        SequenceNormalSummon(sequence, position, rotation, cutin ? 1.6f : 0);
-                    goto SummonPass;
-                }
-
-                bool handAppeal = false;
-                bool fieldAppeal = false;
-                var ease = Ease.Unset;
-                if (overrideMoveTime > 0f)
-                {
-                    moveTime = overrideMoveTime;
-                }
-                else
-                {
-                    switch (Program.instance.ocgcore.currentMessage)
-                    {
-                        case GameMessage.Draw:
-                            if (p.controller == 0)
-                            {
-                                moveTime = 0.6f;
-                                handAppeal = true;
-                            }
-                            else
-                                moveTime = 0.2f;
-                            break;
-                        case GameMessage.Move:
-                            if ((p.location & (uint)CardLocation.Onfield) > 0
-                                && cacheP != null
-                                && (cacheP.location & (uint)CardLocation.Onfield) == 0
-                                && (p.location & (uint)CardLocation.Overlay) == 0)
-                            {
-                                moveTime = 0.4f;
-                                fieldAppeal = true;
-                            }
-                            else if ((p.location & (uint)CardLocation.Hand) > 0
-                                && p.controller == 0)
-                            {
-                                moveTime = 0.6f;
-                                handAppeal = true;
-                            }
-                            else
-                                moveTime = 0.3f;
-                            break;
-                        case GameMessage.FlipSummoning:
-                        case GameMessage.PosChange:
-                            moveTime = 0.1f;
-                            break;
-                        case GameMessage.ShuffleSetCard:
-                        case GameMessage.Swap:
-                            moveTime = 0.2f;
-                            break;
-                    }
-                }
-
-                var cardPlane = manager.GetElement<Transform>("CardPlane");
-                var pivot = manager.GetElement<Transform>("Pivot");
-                var offset = manager.GetElement<Transform>("Offset");
-                var turn = manager.GetElement<Transform>("Turn");
-
-                //主体移动
-                sequence.AppendInterval(wait);
-                var targetMainMoveTime = moveTime;
-                if (handAppeal)
-                {
-                    targetMainMoveTime *= 0.666f;
-                    ease = Ease.OutCubic;
-                }
-                if (fieldAppeal)
-                {
-                    targetMainMoveTime *= 0.666f;
-                    ease = Ease.OutSine;
-                }
-                sequence.Append(model.transform.DOLocalMove(position, targetMainMoveTime).SetEase(ease).OnStart(() =>
-                {
-                    if ((cacheP.location & (uint)CardLocation.Extra) > 0
-                        && (p.location & (uint)CardLocation.Extra) == 0
-                        && cacheP.sequence == Program.instance.ocgcore.GetLocationCardCount(CardLocation.Extra, cacheP.controller) - 1)
-                        StartCoroutine(Program.instance.ocgcore.UpdateDeckTop(cacheP.controller));
-                    if ((p.position & (uint)CardPosition.FaceDown) > 0
-                        || (p.location & (uint)CardLocation.MonsterZone) == 0)
-                        HideLabel();
-                }));
-                sequence.Join(model.transform.DOLocalRotate(Vector3.zero, targetMainMoveTime));
-
-                if (fieldAppeal)
-                {
-                    sequence.Join(cardPlane.DOLocalMove(Vector3.up * 15f, targetMainMoveTime).SetEase(ease).OnComplete(() =>
-                    {
-                        sequence.Join(cardPlane.DOLocalMove(Vector3.zero, targetMainMoveTime * 0.5f).SetEase(Ease.InSine));
-                    }));
-                }
-
-                sequence.Join(pivot.DOScale(GetCardScale(p), targetMainMoveTime * 0.95f));
-                //Turn
-                if ((p.location & (uint)CardLocation.Removed) > 0
-                    || (p.location & (uint)CardLocation.Deck) > 0
-                    || (p.location & (uint)CardLocation.Extra) > 0)
-                    sequence.Join(turn.DOLocalRotate(new Vector3(0, 0, rotation.z), targetMainMoveTime * 0.8f));
-                else
-                    sequence.Join(turn.DOLocalRotate(new Vector3(0, (rotation.y == 0) || (rotation.y == 180) ? 0 : 270, rotation.z), targetMainMoveTime * 0.8f).SetEase(ease));
-                if (handAppeal)
-                    sequence.Join(turn.DOLocalMove(new Vector3(0, 0, 10), targetMainMoveTime).SetEase(Ease.OutCubic).OnComplete(() =>
-                    {
-                        turn.DOLocalMove(Vector3.zero, targetMainMoveTime * 0.5f).SetEase(Ease.InCubic);
-                    }));
-
-                //CardPlane
-                if ((p.location & (uint)CardLocation.Deck) > 0
-                    || (p.location & (uint)CardLocation.Extra) > 0
-                    || (p.location & (uint)CardLocation.Removed) > 0)
-                    sequence.Join(cardPlane.DOLocalRotate(new Vector3(rotation.x, rotation.y, 0), targetMainMoveTime * 0.5f));
-                else
-                    sequence.Join(cardPlane.DOLocalRotate(new Vector3(rotation.x, (rotation.y == 0 || rotation.y == 270) ? 0 : 180, 0), targetMainMoveTime * 0.5f));
-
-                //Pivot && Offset
-                if ((p.location & (uint)CardLocation.Hand) > 0)
-                {
-                    sequence.Join(pivot.DOLocalMove(new Vector3(0, 0, HandOffsetPositionByX(position.x)), targetMainMoveTime / 4));
-                    sequence.Join(offset.DOLocalRotate(new Vector3(0, HandOffsetRotationByX(position.x), handAngle), targetMainMoveTime / 4));
-                    handDefault = true;
-                }
-                else
-                {
-                    sequence.Join(offset.DOLocalMove(Vector3.zero, targetMainMoveTime / 4));
-                    sequence.Join(offset.DOLocalRotate(Vector3.zero, 0.21f));
-                    sequence.Join(pivot.DOLocalMove(Vector3.zero, targetMainMoveTime / 4));
-                    sequence.Join(pivot.DOLocalRotate(Vector3.zero, targetMainMoveTime / 4));
-                }
-                //TO Grave or Exclude
-                if ((p.location & ((uint)CardLocation.Grave + (uint)CardLocation.Removed)) > 0)
-                {
-                    OcgCore.messagePass = true;
-                    timePassed += SequenceToGrave_Backup(sequence, p);
-                    //moveTime = 0.1f;
-
-                    if ((p.location & (uint)CardLocation.Grave) > 0)
-                        needSync = 1;
-                    else
-                        needSync = 2;
-                }
-
-                //Overlay Out
-                if ((cacheP.location & (uint)CardLocation.Overlay) > 0
-                    && ((p.reason & (uint)CardReason.EFFECT) > 0 || (p.location & (uint)CardLocation.Overlay) == 0)
-                    && (p.reason & (uint)CardReason.RULE) == 0)
-                {
-                    se = "SE_CARD_XYZ_OUT";
-                    var fx = ABLoader.LoadFromFile("MasterDuel/Effects/Buff/fxp_bff_overlay/fxp_bff_overlay_out_001", true);
-                    fx.transform.position = GetCardPosition(cacheP);
-                    Destroy(fx, 3f);
-
-                    var trail = ABLoader.LoadFromFile("MasterDuel/Effects/Buff/fxp_bff_overlay/fxp_bff_overlay_trail_001");
-                    trail.transform.SetParent(model.transform, false);
-                }
-
-                //Overlay In
-                if ((cacheP.location & (uint)CardLocation.Overlay) == 0
-                    && (p.location & (uint)CardLocation.Extra) == 0
-                    && (p.location & (uint)CardLocation.Overlay) > 0
-                    && (p.reason & (uint)CardReason.Xyz) > 0)
-                {
-                    se = "";
-                    DOTween.To(v => { }, 0, 0, moveTime + timePassed).OnComplete(() =>
-                    {
-                        AudioManager.PlaySE("SE_CARD_XYZ_IN");
-                        var fx = ABLoader.LoadFromFile("MasterDuel/Effects/Buff/fxp_bff_overlay/fxp_bff_overlay_in_001", true);
-                        fx.transform.position = GetCardPosition(p);
-                        Destroy(fx, 3f);
-                    });
-
-                    var trail = ABLoader.LoadFromFile("MasterDuel/Effects/Buff/fxp_bff_overlay/fxp_bff_overlay_trail_001");
-                    trail.transform.SetParent(model.transform, false);
-                }
-
-                sequence.OnComplete(() =>
-                {
-                    if (!ThisLocationShouldHaveModel(p) && model != null)
-                        Destroy(model);
-                    else
-                        manager.GetElement<Transform>("CardPlane").localScale = Vector3.one;
-                    inAnimation = false;
-                    if ((p.location & ((uint)CardLocation.Grave + (uint)CardLocation.Removed)) == 0)
-                        OcgCore.messagePass = true;
-                    if ((p.location & (uint)CardLocation.Extra) > 0
-                        && (cacheP.location & (uint)CardLocation.Extra) == 0)
-                        Program.instance.ocgcore.SetDeckTop(this);
-                    ShowFaceDownCardOrNot(NeedShowFaceDownCard());
-                });
-
-            SummonPass:
-                AudioManager.PlaySE(se);
-
-                if (model != null)
-                {
-                    if (p.controller == 0)
-                        model.transform.SetParent(Program.instance.ocgcore.field0Manager.transform, true);
-                    else
-                        model.transform.SetParent(Program.instance.ocgcore.field1Manager.transform, true);
-                }
-
-                if (needSync == 1 && Program.instance.ocgcore.NextMessageIsMovingToGrave(p.controller))
-                    return 0.1f;
-                else if (needSync == 2 && Program.instance.ocgcore.NextMessageIsMovingToExclude(p.controller))
-                    return 0.1f;
-                else
-                    return moveTime + timePassed + 0.1f;
-            }
+            return path;
         }
 
-        public void StrongSummonLand(Vector3 fromPosition, Vector3 fromRotation)
+        private Vector3 CalculateBezierPoint(Vector3 p0, Vector3 p1, Vector3 p2, float t)
+        {
+            float u = 1 - t;
+            return u * u * p0 + 2 * u * t * p1 + t * t * p2;
+        }
+
+        public Sequence StartCardSequence(Vector3 fromPosition, Vector3 fromRotation, float waitTime = 0f)
         {
             if (model == null)
-                return;
+                return null;
 
             ResetModelPositon();
             model.transform.localPosition = fromPosition;
@@ -1985,71 +1469,73 @@ namespace MDPro3
             var position = GetCardPosition(p);
             var rotaion = GetCardRotation(p);
             var sequence = DOTween.Sequence();
-            float interval;
-            if (CutinViewer.HasCutin(data.Id))
-            {
-                if (data.HasType(CardType.Fusion))
-                    interval = 1f;
-                else
-                    interval = 1.3f;
-            }
+            if(data.IsHighLevel())
+                return SequenceStrongSummon(sequence, position, rotaion, waitTime);
             else
-            {
-                if (data.HasType(CardType.Fusion))
-                    interval = 0.6f;
-                else
-                    interval = 0.8f;
-            }
-            SequenceStrongSummon(sequence, position, rotaion, interval);
+                return SequenceNormalSummon(sequence, position, rotaion, waitTime);
         }
 
-        private void SequenceStrongSummon(Sequence sequence, Vector3 position, Vector3 angle, float interval, float timeBefore = 0)
+        private Sequence SequenceStrongSummon(Sequence sequence, Vector3 position, Vector3 angle, float interval, float timeBefore = 0)
         {
             sequence.AppendInterval(interval);
-            sequence.Append(manager.transform.DOMove(position, 0.2f).OnStart(() =>
+            sequence.AppendCallback(() =>
             {
-                if ((cacheP.location & (uint)CardLocation.Extra) > 0
-                && (p.location & (uint)CardLocation.Extra) == 0
-                && cacheP.sequence == Program.instance.ocgcore.GetLocationCardCount(CardLocation.Extra, cacheP.controller))
-                    StartCoroutine(Program.instance.ocgcore.UpdateDeckTop(cacheP.controller));
+                UpdateExDeckTop();
+            });
+
+            var midP = position;
+            midP.y = 15;
+
+            sequence.Append(manager.transform.DOMove(midP, 0.5f).SetEase(Ease.InOutSine));
+            sequence.Join(manager.transform.DOLocalRotate(Vector3.zero, 0.5f).SetEase(Ease.InOutSine));
+            sequence.Join(manager.GetElement<Transform>("CardPlane").DOLocalRotate(new Vector3(0, (angle.y == 0) || (angle.y == 270) ? 0 : 180, 0), 0.5f).SetEase(Ease.InOutSine));
+            sequence.Join(manager.GetElement<Transform>("Pivot").DOScale(GetCardScale(p), 0.26f).SetEase(Ease.InOutSine));
+            sequence.Join(manager.GetElement<Transform>("Pivot").DOLocalMove(Vector3.zero, 0.26f).SetEase(Ease.InOutSine));
+            sequence.Join(manager.GetElement<Transform>("Pivot").DOLocalRotate(Vector3.zero, 0.26f).SetEase(Ease.InOutSine).OnComplete(() =>
+            {
+                manager.GetElement<Transform>("Pivot").DOLocalMoveY(10, 0.5f).SetEase(Ease.InOutQuart);
+                manager.GetElement<Transform>("Pivot").DOLocalRotate(new Vector3(-35, 0, 0), 0.5f).SetEase(Ease.InOutQuart);
             }));
-            sequence.Join(manager.transform.DOLocalRotate(Vector3.zero, 0.1f));
-            sequence.Join(manager.GetElement<Transform>("CardPlane").DOLocalRotate(new Vector3(0, (angle.y == 0) || (angle.y == 270) ? 0 : 180, 0), 0.2f));
-            sequence.Join(manager.GetElement<Transform>("Turn").DOLocalRotate(new Vector3(0, (angle.y == 0) || (angle.y == 180) ? 0 : 270, angle.z), 0.2f));
-            sequence.Join(manager.GetElement<Transform>("Pivot").DOLocalMove(Vector3.zero, 0.1f));
-            sequence.Join(manager.GetElement<Transform>("Pivot").DOLocalRotate(Vector3.zero, 0.1f));
-            sequence.Join(manager.GetElement<Transform>("Pivot").DOScale(GetCardScale(p), 0.2f));
-            sequence.Join(manager.GetElement<Transform>("Offset").DOLocalMove(Vector3.zero, 0.1f));
-            sequence.Join(manager.GetElement<Transform>("Offset").DOLocalRotate(Vector3.zero, 0.1f));
+            sequence.Join(manager.GetElement<Transform>("Offset").DOLocalMove(Vector3.zero, 0.5f).SetEase(Ease.InOutSine));
+            sequence.Join(manager.GetElement<Transform>("Offset").DOLocalRotate(Vector3.zero, 0.5f).SetEase(Ease.InOutSine));
+            sequence.Join(manager.GetElement<Transform>("Turn").DOLocalRotate(new Vector3(0, (angle.y == 0) || (angle.y == 180) ? 0 : 270, angle.z), 0.3f).SetEase(Ease.InOutSine));
 
-            sequence.Insert(timeBefore + interval + 0.1f, manager.GetElement<Transform>("Pivot").DOLocalRotate(new Vector3(-30, 0, 0), 0.4f).SetEase(Ease.OutQuart));
-            sequence.Insert(timeBefore + interval + 0.1f, manager.GetElement<Transform>("Pivot").DOLocalMoveY(22, 0.4f).SetEase(Ease.OutQuart));
+            sequence.Append(DOTween.To(v => { }, 0, 0, 0.26f));
 
-            sequence.Append(manager.GetElement<Transform>("Pivot").DOLocalRotate(Vector3.zero, 0.1f).SetEase(Ease.InExpo));
-            sequence.Join(manager.GetElement<Transform>("Pivot").DOLocalMoveY(0, 0.1f).SetEase(Ease.InExpo));
+            sequence.Append(manager.GetElement<Transform>("Pivot").DOLocalRotate(Vector3.zero, 0.14f).SetEase(Ease.InQuart));
+            sequence.Join(manager.GetElement<Transform>("Pivot").DOLocalMoveY(0, 0.14f).SetEase(Ease.InQuart));
+            sequence.Join(manager.transform.DOMove(position, 0.14f).SetEase(Ease.InQuart));
 
             sequence.OnComplete(() =>
             {
                 inAnimation = false;
-                OcgCore.messagePass = true;
             });
+            return sequence;
         }
 
-        private void SequenceNormalSummon(Sequence sequence, Vector3 position, Vector3 angle, float interval, float timeBefore = 0)
+        private Sequence SequenceNormalSummon(Sequence sequence, Vector3 position, Vector3 angle, float interval, float timeBefore = 0)
         {
             sequence.AppendInterval(interval);
-            sequence.Append(model.transform.DOMove(position, 0.2f));
-            sequence.Join(manager.transform.DOLocalRotate(Vector3.zero, 0.1f));
+            sequence.AppendCallback(() =>
+            {
+                UpdateExDeckTop();
+            });
+
+            sequence.Append(manager.transform.DOLocalRotate(Vector3.zero, 0.1f).OnComplete(() =>
+            {
+                manager.GetElement<Transform>("Pivot").DOLocalRotate(new Vector3(-10, 0, 0), 0.2f).SetEase(Ease.OutQuart);
+                manager.GetElement<Transform>("Pivot").DOLocalMoveY(10, 0.2f).SetEase(Ease.OutQuart);
+            }));
+            sequence.Join(model.transform.DOMove(position, 0.2f));
             sequence.Join(manager.GetElement<Transform>("CardPlane").DOLocalRotate(new Vector3(0, (angle.y == 0) || (angle.y == 270) ? 0 : 180, 0), 0.2f));
-            sequence.Join(manager.GetElement<Transform>("Turn").DOLocalRotate(new Vector3(0, (angle.y == 0) || (angle.y == 180) ? 0 : 270, angle.z), 0.2f));
+            sequence.Join(manager.GetElement<Transform>("Pivot").DOScale(GetCardScale(p), 0.2f));
             sequence.Join(manager.GetElement<Transform>("Pivot").DOLocalMove(Vector3.zero, 0.1f));
             sequence.Join(manager.GetElement<Transform>("Pivot").DOLocalRotate(Vector3.zero, 0.1f));
-            sequence.Join(manager.GetElement<Transform>("Pivot").DOScale(GetCardScale(p), 0.2f));
             sequence.Join(manager.GetElement<Transform>("Offset").DOLocalMove(Vector3.zero, 0.1f));
             sequence.Join(manager.GetElement<Transform>("Offset").DOLocalRotate(Vector3.zero, 0.1f));
+            sequence.Join(manager.GetElement<Transform>("Turn").DOLocalRotate(new Vector3(0, (angle.y == 0) || (angle.y == 180) ? 0 : 270, angle.z), 0.2f));
 
-            sequence.Insert(timeBefore + interval + 0.1f, manager.GetElement<Transform>("Pivot").DOLocalRotate(new Vector3(-10, 0, 0), 0.2f).SetEase(Ease.OutQuart));
-            sequence.Insert(timeBefore + interval + 0.1f, manager.GetElement<Transform>("Pivot").DOLocalMoveY(10, 0.2f).SetEase(Ease.OutQuart));
+            sequence.AppendInterval(0.1f);
 
             sequence.Append(manager.GetElement<Transform>("Pivot").DOLocalRotate(Vector3.zero, 0.1f).SetEase(Ease.InExpo));
             sequence.Join(manager.GetElement<Transform>("Pivot").DOLocalMoveY(0, 0.1f).SetEase(Ease.InExpo));
@@ -2057,26 +1543,25 @@ namespace MDPro3
             sequence.OnComplete(() =>
             {
                 inAnimation = false;
-                OcgCore.messagePass = true;
             });
+
+            return sequence;
         }
 
         private float SequenceFromGrave(Sequence sequence, GPS p)
         {
-            var dummy = ABLoader.LoadFromFile("MasterDuel/Timeline/DuelCardMove/DuelFromGrave01", true);
+            var dummy = ABLoader.LoadMasterDuelGameObject(p.InLocation(CardLocation.Grave) ? "DuelFromGrave01" : "DuelFromExclude01");
             dummy.transform.position = GetCardPosition(p);
             dummy.transform.eulerAngles = GetCardRotation(p);
             dummy.SetActive(false);
             var time = (35f / 60f);
             var dummyManager = dummy.GetComponent<ElementObjectManager>();
-            var ie = Program.instance.texture_.LoadDummyCard(dummyManager.GetElement<ElementObjectManager>("DummyCard01"), data.Id, p.controller);
-            StartCoroutine(ie);
-
+            _ = Program.instance.texture_.LoadDummyCard(dummyManager.GetElement<ElementObjectManager>("DummyCard01"), data.Id, p.controller);
             sequence.AppendCallback(() =>
             {
                 model?.SetActive(false);
                 dummy.SetActive(true);
-                Program.instance.ocgcore.GraveBgEffect(p, false);
+                Program.instance.ocgcore.PlayGraveEffect(p, false);
             });
             sequence.AppendInterval(time);
             sequence.AppendCallback(() =>
@@ -2088,105 +1573,82 @@ namespace MDPro3
             return time;
         }
 
-        private float SequenceFromGrave_Backup(Sequence sequence, GPS p)
-        {
-            var timeUp = 0.3f;
-            var timeStay = 0.2f;
-            var pivot = manager.GetElement<Transform>("Pivot");
-            pivot.localPosition = new Vector3(0, -5, 0);
-            pivot.localScale = Vector3.one * 0.2f;
-            pivot.localEulerAngles = new Vector3(270, 0, 0);
-
-            sequence.Append(pivot.DOScale(Vector3.one, timeUp).SetEase(Ease.InCubic));
-            sequence.Join(pivot.DOLocalRotate(Vector3.zero, timeUp).SetEase(Ease.InCubic));
-            sequence.Join(pivot.DOLocalMove(Vector3.zero, timeUp).SetEase(Ease.InCubic));
-            sequence.AppendInterval(timeStay);
-            Program.instance.ocgcore.GraveBgEffect(p, false);
-            return timeUp + timeStay;
-        }
-
         private float SequenceToGrave(Sequence sequence, GPS p)
         {
-            var count = OcgCore.movingToGrave;
+            var count = p.InMyControl() ? movingToMyGrave : movingToOpGrave;
             if (count > 5)
             {
-                Debug.Log("Error: OcgCore.movingToGrave Overflow!");
+                Debug.Log("movingToGrave Over 5");
                 count = 5;
             }
-            var dummy = ABLoader.LoadFromFile("MasterDuel/Timeline/DuelCardMove/DuelToGrave0" + count, true);
+            if (count < 1)
+            {
+                Debug.Log("movingToGrave Less than 1");
+                count = 1;
+            }
+            var dummy = ABLoader.LoadMasterDuelGameObject("DuelToGrave0" + count);
             dummy.transform.position = GetCardPosition(p);
             dummy.transform.eulerAngles = GetCardRotation(p);
             var time = (30f / 60f);
             dummy.SetActive(false);
             var dummyManager = dummy.GetComponent<ElementObjectManager>();
-            var ie = Program.instance.texture_.LoadDummyCard(dummyManager.GetElement<ElementObjectManager>("DummyCard01"), data.Id, p.controller);
-            StartCoroutine(ie);
-
+            _ = Program.instance.texture_.LoadDummyCard(dummyManager.GetElement<ElementObjectManager>("DummyCard01"), data.Id, p.controller);
             sequence.AppendCallback(() =>
             {
                 Destroy(model);
                 dummy.SetActive(true);
-                if(!Program.instance.ocgcore.NextMessageIsMovingToGrave(p.controller))
-                    Program.instance.ocgcore.GraveBgEffect(p, false);
+                if(!NextMessageIsMovingToGrave(p.controller))
+                    Program.instance.ocgcore.PlayGraveEffect(p, false);
+                if (p.InMyControl())
+                    movingToMyGrave--;
+                else
+                    movingToOpGrave--;
             });
             sequence.AppendInterval(time);
             sequence.AppendCallback(() =>
             {
                 Destroy(dummy);
-                OcgCore.movingToGrave--;
             });
 
             return time;
         }
 
-        private float SequenceToGrave_Backup(Sequence sequence, GPS p)
-        {
-            var timeDown = 0.3f;
-            var timeStay = 0.2f;
-            var pivot = manager.GetElement<Transform>("Pivot");
-
-            sequence.AppendInterval(timeStay).OnStart(() =>
-            {
-                Program.instance.ocgcore.GraveBgEffect(p, true);
-            });
-            sequence.Append(pivot.DOScale(Vector3.one * 0.2f, timeDown).SetEase(Ease.OutCubic).OnStart(() =>
-            {
-                //Program.instance.ocgcore.GraveBgEffect(p, true);
-            }));
-            sequence.Join(pivot.DOLocalRotate(new Vector3(270, 0, 0), timeDown).SetEase(Ease.OutCubic));
-            sequence.Join(pivot.DOLocalMove(new Vector3(0, -5, 0), timeDown).SetEase(Ease.OutCubic));
-            return timeDown + timeStay;
-        }
-
         private float SequenceToExclude(Sequence sequence, GPS p)
         {
-            var count = OcgCore.movingToExclude;
-            if(count > 5)
+            var count = p.InMyControl() ? movingToMyExclude : movingToOpExclude;
+            if (count > 5)
             {
-                Debug.Log("Error: OcgCore.movingToExclude Overflow!");
+                Debug.Log("movingToExclude Over 5");
                 count = 5;
             }
-            var dummy = ABLoader.LoadFromFile("MasterDuel/Timeline/DuelCardMove/DuelToExclude0" + count, true);
+            if (count < 1)
+            {
+                Debug.Log("movingToExclude Less than 1");
+                count = 1;
+            }
+
+            var dummy = ABLoader.LoadMasterDuelGameObject("DuelToExclude0" + count);
             dummy.transform.position = GetCardPosition(p);
             dummy.transform.eulerAngles = GetCardRotation(p);
             var time = (30f / 60f);
             dummy.SetActive(false);
             var dummyManager = dummy.GetComponent<ElementObjectManager>();
-            var ie = Program.instance.texture_.LoadDummyCard(dummyManager.GetElement<ElementObjectManager>("DummyCard01"), data.Id, p.controller);
-            StartCoroutine(ie);
-
+            _ = Program.instance.texture_.LoadDummyCard(dummyManager.GetElement<ElementObjectManager>("DummyCard01"), data.Id, p.controller);
             sequence.AppendCallback(() =>
             {
                 Destroy(model);
                 dummy.SetActive(true);
-                if(!Program.instance.ocgcore.NextMessageIsMovingToExclude(p.controller))
-                    Program.instance.ocgcore.GraveBgEffect(p, false);
+                if(!NextMessageIsMovingToExclude(p.controller))
+                    Program.instance.ocgcore.PlayGraveEffect(p, false);
+                if (p.InMyControl())
+                    movingToMyExclude--;
+                else
+                    movingToOpExclude--;
             });
             sequence.AppendInterval(time);
             sequence.AppendCallback(() =>
             {
                 Destroy(dummy);
-                OcgCore.movingToExclude--;
             });
 
             return time;
@@ -2258,7 +1720,7 @@ namespace MDPro3
         public void AnimationShuffle(float shuffleTime)
         {
             inAnimation = true;
-            if ((p.location & (uint)CardLocation.Hand) == 0)
+            if (!p.InLocation(CardLocation.Hand))
                 return;
             if (model != null)
             {
@@ -2266,16 +1728,15 @@ namespace MDPro3
                 manager.GetElement<Transform>("Offset").DOLocalRotate(Vector3.zero, shuffleTime);
                 manager.GetElement<Transform>("Turn").DOLocalRotate(new Vector3(0, 0, 180), shuffleTime);
 
-                var x = model.transform.position.x;
                 model.transform.DOLocalMoveX(0, shuffleTime).OnComplete(() =>
                 {
-                    if (Program.instance.ocgcore.cards.Contains(this))
+                    if (cards.Contains(this))
                         AnimationHandDefault(shuffleTime, true);
                     else
-                        Dispose();
+                        Dispose();// null for TagSwap
                 });
             }
-            else// model == null for TagSwap
+            else// null for TagSwap
             {
                 DOTween.To(v => { }, 0, 0, shuffleTime).OnComplete(() =>
                 {
@@ -2289,10 +1750,6 @@ namespace MDPro3
                     AnimationHandDefault(shuffleTime, true);
                 });
             }
-            DOTween.To(v => { }, 0, 0, shuffleTime - 0.1f).OnComplete(() =>
-            {
-                OcgCore.messagePass = true;
-            });
         }
 
         public float HandOffsetRotationByX(float x)
@@ -2309,7 +1766,7 @@ namespace MDPro3
 
         public void AnimationHandDefault(float time, bool ignore = false)
         {
-            if (model == null || (p.location & (uint)CardLocation.Hand) == 0 || (inAnimation && !ignore))
+            if (model == null || !p.InLocation(CardLocation.Hand) || (inAnimation && !ignore))
                 return;
             model.transform.SetParent(null, true);
             handDefault = true;
@@ -2375,10 +1832,10 @@ namespace MDPro3
             AudioManager.PlaySE("SE_CARD_MOVE_0" + UnityEngine.Random.Range(1, 5));
         }
 
-        public void AnimationNegate()
+        public Sequence AnimationNegate()
         {
-            Program.instance.ocgcore.nextNegateAction?.Invoke();
-            Program.instance.ocgcore.nextNegateAction = null;
+            nextNegateAction?.Invoke();
+            nextNegateAction = null;
             AudioManager.PlaySE("SE_EFFECT_INVALID");
 
             CameraManager.BlackInOut(0f, 0.2f, 0.5f, 0.3f);
@@ -2407,17 +1864,17 @@ namespace MDPro3
             var scale = pivot.localScale;
 
             bool additional = false;
-            if (Program.instance.ocgcore.nextNegateAction_Additional != null)
+            if (nextNegateAction_Additional != null)
             {
-                Program.instance.ocgcore.nextNegateAction_AdditionalManager.transform.SetParent(offset, false);
-                Program.instance.ocgcore.nextNegateAction_Additional?.Invoke();
-                Program.instance.ocgcore.nextNegateAction_Additional = null;
+                nextNegateAction_Additional?.Invoke();
+                nextNegateAction_AdditionalManager.transform.SetParent(offset, false);
+                nextNegateAction_Additional = null;
                 additional = true;
             }
 
             var showTime = 0.5f;
             if (additional)
-                showTime += Program.instance.ocgcore.nextNegateAction_AdditionalTime;
+                showTime += nextNegateAction_AdditionalTime;
 
             var sequence = DOTween.Sequence();
             if ((p.location & (uint)CardLocation.Onfield) > 0
@@ -2489,6 +1946,8 @@ namespace MDPro3
                     cardFace.material.SetFloat("_Monochrome", originMono);
                 });
             }
+
+            return sequence;
         }
 
         public void AnimationActivate()
@@ -2580,7 +2039,7 @@ namespace MDPro3
             }
         }
 
-        public void AnimationConfirm(int id)
+        public Sequence AnimationConfirm(int id)
         {
             if (!ThisLocationShouldHaveModel(p))
             {
@@ -2595,8 +2054,14 @@ namespace MDPro3
             var turnEulerAngles = turn.localEulerAngles;
 
             var sequence = DOTween.Sequence();
-            sequence.AppendInterval(id);
-            sequence.Append(offset.DOLocalMove(new Vector3(0, 2, 3), 0.1f).OnStart(() => 
+            if(id > 0)
+                sequence.AppendInterval(id);
+
+            var endPosition = new Vector3(0f, 2f, 3f);
+            if (p.InLocation(CardLocation.Grave, CardLocation.Removed))
+                endPosition.z = 0f;
+
+            sequence.Append(offset.DOLocalMove(endPosition, 0.1f).OnStart(() => 
             {
                 model.SetActive(true);
                 ShowFaceDownCardOrNot(false);
@@ -2606,17 +2071,15 @@ namespace MDPro3
             }));
             sequence.Join(turn.DOLocalRotate(Vector3.zero, 0.1f).OnComplete(() =>
             {
-                var highlight = ABLoader.LoadFromFile("MasterDuel/Effects/Other/fxp_card_decide_001", true);
-                highlight.transform.position = offset.position;
-                highlight.transform.rotation = offset.rotation;
+                var highlight = ABLoader.LoadMasterDuelGameObject("fxp_card_decide_001");
+                highlight.transform.SetPositionAndRotation(offset.position, offset.rotation);
                 highlight.transform.localScale = GetCardScale(p);
                 Destroy(highlight, 1f);
             }));
             sequence.AppendInterval(0.8f);
-            sequence.OnComplete(() =>
+            sequence.AppendCallback(() =>
             {
                 inAnimation = false;
-
                 if ((p.location & (uint)CardLocation.Hand) > 0)
                     SetHandToDefault();
                 else
@@ -2630,6 +2093,7 @@ namespace MDPro3
                 }
                 ShowFaceDownCardOrNot(NeedShowFaceDownCard());
             });
+            return sequence;
         }
 
         public void AnimationPositon(float delay = 0)
@@ -2680,18 +2144,16 @@ namespace MDPro3
                 Destroy(model, 0.49f);
             }
 
-            var fx = ABLoader.LoadFromFile("MasterDuel/Effects/Other/fxp_card_decide_001", true);
+            var fx = ABLoader.LoadMasterDuelGameObject("fxp_card_decide_001");
             fx.transform.position = model.transform.position;
-            if ((p.location & (uint)CardLocation.MonsterZone) > 0 && (p.position & (uint)CardPosition.Defence) > 0)
+            if (p.InLocation(CardLocation.MonsterZone) && p.InPosition(CardPosition.Defence))
                 fx.transform.localEulerAngles = new Vector3(0, 90, 0);
-            if ((p.location & (uint)CardLocation.Removed) > 0)
+            if (p.InLocation(CardLocation.Removed))
                 fx.transform.localEulerAngles = new Vector3(0, 90, 0);
-            if ((p.location & (uint)CardLocation.SpellZone) > 0)
+            if (p.InLocation(CardLocation.SpellZone))
                 fx.transform.localScale = Vector3.one * 0.8f;
-            if ((p.location & ((uint)CardLocation.Deck + (uint)CardLocation.Extra)) > 0)
-            {
+            if (p.InLocation(CardLocation.Deck, CardLocation.Extra))
                 fx.transform.localEulerAngles = new Vector3(0, GetCardRotation(p).y, 0);
-            }
             Destroy(fx, 1f);
         }
 
@@ -2716,8 +2178,8 @@ namespace MDPro3
                 direction.y = 0;
 
                 int bounceCount = 6;
-                float height = 3f;
-                float angle = 30f;
+                float height = 5f;
+                float angle = 50f;
 
                 Sequence seq = DOTween.Sequence();
                 seq.AppendInterval(delay);
@@ -2745,10 +2207,13 @@ namespace MDPro3
             }
         }
 
-        public void AnimationConfirmDeckTop(int id)
+        public Sequence AnimationConfirmDeckTop(int id)
         {
             CreateModel();
-            ModelAt(p);
+            var pTop = p.Copy();
+            pTop.sequence = (uint)Program.instance.ocgcore.GetLocationCardCount((CardLocation)p.location, p.controller) - 1;
+
+            ModelAt(pTop);
             model.SetActive(false);
             var turn = manager.GetElement<Transform>("Turn");
             var sequence = DOTween.Sequence();
@@ -2761,19 +2226,17 @@ namespace MDPro3
                 model.SetActive(true);
                 if (Program.instance.ocgcore.GetLocationCardCount(CardLocation.Deck, p.controller) == 1)
                 {
-                    if (p.controller == 0)
-                        Program.instance.ocgcore.myDeck.gameObject.SetActive(false);
-                    else
-                        Program.instance.ocgcore.opDeck.gameObject.SetActive(false);
+                    var deckModel = Program.instance.ocgcore.GetDeckModel(p.controller, CardLocation.Deck);
+                    Program.instance.ocgcore.SetDeckModelActive(deckModel, false);
                 }
             }));
             sequence.Join(turn.DOLocalRotate(Vector3.zero, 0.1f));
             sequence.Append(turn.DOLocalMoveY(0.1f * (id + 1), 0.1f).OnComplete(() =>
             {
                 AudioManager.PlaySE("SE_CARDVIEW_02");
-                var effect = ABLoader.LoadFromFile("MasterDuel/Effects/Other/fxp_card_decide_deck_001", true);
-                effect.transform.position = turn.position;
-                effect.transform.rotation = turn.rotation;
+                var effect = ABLoader.LoadMasterDuelGameObject("fxp_card_decide_deck_001");
+                effect.transform.SetPositionAndRotation(turn.position, turn.rotation);
+                effect.transform.localScale = GetCardScale(p);
                 Destroy(effect, 1f);
             }));
             sequence.AppendInterval(0.6f);
@@ -2783,11 +2246,11 @@ namespace MDPro3
             sequence.OnComplete(() =>
             {
                 Destroy(model);
-                if (p.controller == 0)
-                    Program.instance.ocgcore.myDeck.gameObject.SetActive(true);
-                else
-                    Program.instance.ocgcore.opDeck.gameObject.SetActive(true);
+                var deckModel = Program.instance.ocgcore.GetDeckModel(p.controller, CardLocation.Deck);
+                Program.instance.ocgcore.SetDeckModelActive(deckModel, true);
             });
+
+            return sequence;
         }
 
         #endregion
@@ -2825,7 +2288,7 @@ namespace MDPro3
             buttons.Sort((x, y) => x.type.CompareTo(y.type));
             for (int i = 0; i < buttons.Count; i++)
             {
-                var obj = Instantiate(Program.instance.ocgcore.container.duelButton);
+                var obj = ABLoader.LoadMasterDuelGameObject("DuelButton");
                 var mono = obj.GetComponent<DuelButton>();
                 buttonObjs.Add(mono);
                 mono.response = buttons[i].response;
@@ -2882,8 +2345,9 @@ namespace MDPro3
         private const string normalGrayColor = "<color=#999999>";
         private const string downColor = "<color=#FF0000>";
         private const string downGrayColor = "<color=#990000>";
-        private const string smallSize = "<size=20>";
-        private const string normalSize = "<size=25>";
+        private const string colorEndLabel = "</color>";
+        private const string smallSize = "<size=75%>";
+        private const string sizeEndLabel = "</size>";
 
         private int attack = 0;
         private int defense = 0;
@@ -2938,16 +2402,16 @@ namespace MDPro3
                 var text = manager.GetElement<TextMeshPro>("TextPowerPoint");
                 if (!labelShowing)
                 {
-                    string atkDef = "";
+                    string atkDef = string.Empty;
 
                     if (data.HasType(CardType.Link))
                     {
                         if (data.Attack > data.rAttack)
-                            atkDef = upColor + data.Attack.ToString() + "</color>";
+                            atkDef = upColor + data.Attack.ToString() + colorEndLabel;
                         else if (data.Attack < data.rAttack)
-                            atkDef = downColor + data.Attack.ToString() + "</color>";
+                            atkDef = downColor + data.Attack.ToString() + colorEndLabel;
                         else
-                            atkDef = normalColor + data.Attack.ToString() + "</color>";
+                            atkDef = normalColor + data.Attack.ToString() + colorEndLabel;
                     }
                     else
                     {
@@ -2957,48 +2421,51 @@ namespace MDPro3
                         if (rDef < 0) rDef = 0;
                         if (data.Attack > rAtk)
                         {
-                            if ((p.position & (uint)CardPosition.Attack) > 0)
-                                atkDef += upColor + normalSize;
+                            if (p.InPosition(CardPosition.Attack))
+                                atkDef += upColor;
                             else
                                 atkDef += upGrayColor + smallSize;
                         }
                         else if (data.Attack < rAtk)
                         {
-                            if ((p.position & (uint)CardPosition.Attack) > 0)
-                                atkDef += downColor + normalSize;
+                            if (p.InPosition(CardPosition.Attack))
+                                atkDef += downColor;
                             else
                                 atkDef += downGrayColor + smallSize;
                         }
                         else
                         {
-                            if ((p.position & (uint)CardPosition.Attack) > 0)
-                                atkDef += normalColor + normalSize;
+                            if (p.InPosition(CardPosition.Attack))
+                                atkDef += normalColor;
                             else
                                 atkDef += normalGrayColor + smallSize;
                         }
-                        atkDef += data.Attack.ToString() + "</size></color>/";
+                        atkDef += data.Attack.ToString() + colorEndLabel;
+                        if (!p.InPosition(CardPosition.Attack))
+                            atkDef += sizeEndLabel;
+                        atkDef += "/";
                         if (data.Defense > rDef)
                         {
                             if ((p.position & (uint)CardPosition.Attack) > 0)
                                 atkDef += upGrayColor + smallSize;
                             else
-                                atkDef += upColor + normalSize;
+                                atkDef += upColor;
                         }
                         else if (data.Defense < rDef)
                         {
                             if ((p.position & (uint)CardPosition.Attack) > 0)
                                 atkDef += downGrayColor + smallSize;
                             else
-                                atkDef += downColor + normalSize;
+                                atkDef += downColor;
                         }
                         else
                         {
                             if ((p.position & (uint)CardPosition.Attack) > 0)
                                 atkDef += normalGrayColor + smallSize;
                             else
-                                atkDef += normalColor + normalSize;
+                                atkDef += normalColor;
                         }
-                        atkDef += data.Defense.ToString() + "</color></size>";
+                        atkDef += data.Defense.ToString() + colorEndLabel;
                     }
                     text.text = atkDef;
                 }
@@ -3021,7 +2488,7 @@ namespace MDPro3
 
                     if (data.HasType(CardType.Link))
                     {
-                        var s1 = "";
+                        var s1 = string.Empty;
                         if (data.Attack > data.rAttack)
                             s1 = upColor;
                         else if (data.Attack < data.rAttack)
@@ -3034,11 +2501,11 @@ namespace MDPro3
                             var originAttack = attack;
                             DOTween.To(() => originAttack, x =>
                             {
-                                text.text = s1 + x + "</color>";
+                                text.text = s1 + x + colorEndLabel;
                             }, data.Attack, changeTime);
                         }
                         else
-                            text.text = s1 + data.Attack.ToString() + "</color>";
+                            text.text = s1 + data.Attack.ToString() + colorEndLabel;
                     }
                     else
                     {
@@ -3046,53 +2513,58 @@ namespace MDPro3
                         int rDef = data.rDefense;
                         if (rAtk < 0) rAtk = 0;
                         if (rDef < 0) rDef = 0;
-                        string s1 = "";
+                        string s1 = string.Empty;
 
                         if (data.Attack > rAtk)
                         {
-                            if ((p.position & (uint)CardPosition.Attack) > 0)
-                                s1 += upColor + normalSize;
+                            if (p.InPosition(CardPosition.Attack))
+                                s1 += upColor;
                             else
                                 s1 += upGrayColor + smallSize;
                         }
                         else if (data.Attack < rAtk)
                         {
-                            if ((p.position & (uint)CardPosition.Attack) > 0)
-                                s1 += downColor + normalSize;
+                            if (p.InPosition(CardPosition.Attack))
+                                s1 += downColor;
                             else
                                 s1 += downGrayColor + smallSize;
                         }
                         else
                         {
-                            if ((p.position & (uint)CardPosition.Attack) > 0)
-                                s1 += normalColor + normalSize;
+                            if (p.InPosition(CardPosition.Attack))
+                                s1 += normalColor;
                             else
                                 s1 += normalGrayColor + smallSize;
                         }
-                        string s2 = "</size></color>/";
-                        string s3 = "";
+                        string s2 = colorEndLabel;
+                        if (!p.InPosition(CardPosition.Attack))
+                            s2 += sizeEndLabel;
+                        s2 += "/";
+                        string s3 = string.Empty;
                         if (data.Defense > rDef)
                         {
-                            if ((p.position & (uint)CardPosition.Attack) > 0)
+                            if (p.InPosition(CardPosition.Attack))
                                 s3 += upGrayColor + smallSize;
                             else
-                                s3 += upColor + normalSize;
+                                s3 += upColor;
                         }
                         else if (data.Defense < rDef)
                         {
-                            if ((p.position & (uint)CardPosition.Attack) > 0)
+                            if (p.InPosition(CardPosition.Attack))
                                 s3 += downGrayColor + smallSize;
                             else
-                                s3 += downColor + normalSize;
+                                s3 += downColor;
                         }
                         else
                         {
-                            if ((p.position & (uint)CardPosition.Attack) > 0)
+                            if (p.InPosition(CardPosition.Attack))
                                 s3 += normalGrayColor + smallSize;
                             else
-                                s3 += normalColor + normalSize;
+                                s3 += normalColor;
                         }
-                        string s4 = "</color></size>";
+                        string s4 = colorEndLabel;
+                        if (p.InPosition(CardPosition.Attack))
+                            s4 += sizeEndLabel;
                         var originAttack = attack;
                         var originDefense = defense;
                         if (data.Attack != attack && data.Defense == defense)
@@ -3289,7 +2761,7 @@ namespace MDPro3
                 manager.GetElement("CardAttackBody").SetActive(false);
                 int p1 = 0;
                 int p2 = 4;
-                if (Program.instance.ocgcore.MasterRule <= 3)
+                if (MasterRule <= 3)
                 {
                     p1 = 6;
                     p2 = 7;
@@ -3458,7 +2930,7 @@ namespace MDPro3
                 if (!closeupShowing)
                 {
                     closeupShowing = true;
-                    StartCoroutine(Program.instance.texture_.LoadCloseupAsync(data.Id, renderer));
+                    _ = Program.instance.texture_.LoadCloseupAsync(data.Id, renderer);
                 }
             }
             else
@@ -3559,11 +3031,11 @@ namespace MDPro3
 
         private bool CloseupConfig()
         {
-            if (OcgCore.condition == OcgCore.Condition.Duel && Config.Get("DuelCloseup", "1") == "0")
+            if (condition == OcgCore.Condition.Duel && !Config.GetBool("DuelCloseup", true))
                 return false;
-            if (OcgCore.condition == OcgCore.Condition.Watch && Config.Get("WatchCloseup", "1") == "0")
+            if (condition == OcgCore.Condition.Watch && !Config.GetBool("WatchCloseup", true))
                 return false;
-            if (OcgCore.condition == OcgCore.Condition.Replay && Config.Get("ReplayCloseup", "1") == "0")
+            if (condition == OcgCore.Condition.Replay && !Config.GetBool("ReplayCloseup", true))
                 return false;
             return true;
         }
@@ -3595,18 +3067,18 @@ namespace MDPro3
             if (model == null)
                 return;
             if (IsFaceDownOnSpellZone())
-                setTurn = Program.instance.ocgcore.turns;
+                setTurn = OcgCore.turns;
             else
                 setTurn = 0;
 
             var back = manager.GetElement<Transform>("CardModel").GetChild(0).GetComponent<Renderer>();
             var face = manager.GetElement<Transform>("CardModel").GetChild(1).GetComponent<Renderer>();
 
-            if (OcgCore.condition == OcgCore.Condition.Duel && !Config.GetBool("DuelFaceDown", true))
+            if (condition == OcgCore.Condition.Duel && !Config.GetBool("DuelFaceDown", true))
                 show = false;
-            if (OcgCore.condition == OcgCore.Condition.Watch && !Config.GetBool("WatchFaceDown", true))
+            if (condition == OcgCore.Condition.Watch && !Config.GetBool("WatchFaceDown", true))
                 show = false;
-            if (OcgCore.condition == OcgCore.Condition.Replay && !Config.GetBool("ReplayFaceDown", true))
+            if (condition == OcgCore.Condition.Replay && !Config.GetBool("ReplayFaceDown", true))
                 show = false;
 
             if (show)
@@ -3631,7 +3103,7 @@ namespace MDPro3
                 return;
             if (setTurn == 0)
                 return;
-            if (setTurn >= Program.instance.ocgcore.turns)
+            if (setTurn >= turns)
                 return;
             if ((p.location & (uint)CardLocation.SpellZone) == 0)
                 return;
@@ -3651,12 +3123,11 @@ namespace MDPro3
         public void AddCounter(int counter, int count)
         {
             AudioManager.PlaySE("SE_CARD_COUNTER");
-            bool have = false;
-            foreach (var cc in cardCounters)
-                if (cc.Key == counter)
-                    have = true;
+
             int fullCount = count;
-            if (have)
+
+            bool haveCounter = cardCounters.Any(cc => cc.Key == counter);
+            if (haveCounter)
             {
                 fullCount += cardCounters[counter];
                 cardCounters.Remove(counter);
@@ -3730,11 +3201,11 @@ namespace MDPro3
 
         public void AddChain(int i)
         {
-            var obj = ABLoader.LoadFromFile("MasterDuel/Timeline/DuelChain/ChainSpot");
+            var obj = ABLoader.LoadMasterDuelGameObject("ChainSpot");
             Program.instance.ocgcore.allGameObjects.Add(obj);
             chains.Add(new Chain() { i = i, chainSpot = obj.GetComponent<DuelChainSpot>() });
             bool turn = (p.location & (uint)CardLocation.MonsterZone) > 0 && (p.position & (uint)CardPosition.Defence) > 0;
-            chains[chains.Count - 1].chainSpot.Play(i, p.location, model != null, turn, GetCardPosition(p, this), i == 1);
+            chains[^1].chainSpot.Play(i, p.location, model != null, turn, GetCardPosition(p, this), i == 1);
         }
 
         public void ResolveChain(int i)

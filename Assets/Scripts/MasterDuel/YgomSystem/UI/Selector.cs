@@ -14,7 +14,8 @@ namespace YgomSystem.UI
 			Loop = 1
 		}
 
-		public enum InputMode
+        [Flags]
+        public enum InputMode
 		{
 			Select = 1,
 			Callback = 2
@@ -31,7 +32,8 @@ namespace YgomSystem.UI
 			RectTransformAreaAllPoints = 2
 		}
 
-		public enum MaskOperation
+        [Flags]
+        public enum MaskOperation
 		{
 			ScreenInput = 1,
 			KeyInput = 2

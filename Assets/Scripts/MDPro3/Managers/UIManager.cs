@@ -14,6 +14,9 @@ using MDPro3.Utility;
 using MDPro3.UI.PropertyOverride;
 using MDPro3.UI.Popup;
 using MDPro3.Servant;
+using Cysharp.Threading.Tasks;
+using MDPro3.Duel;
+using UnityEngine.Playables;
 
 namespace MDPro3
 {
@@ -73,7 +76,7 @@ namespace MDPro3
         {
             base.PerFrameFunction();
             foreach (UIHandler handler in handlers)
-                handler.PerframeFunction();
+                    handler.PerframeFunction();
         }
 
         public static void Translate(GameObject go)
@@ -117,9 +120,6 @@ namespace MDPro3
             StringHelper.Initialize();
             CardsManager.Initialize();
             Program.items.Initialize();
-
-            if(Program.instance.cardRenderer != null)
-                Program.instance.cardRenderer.SwitchLanguage();
 
             UIManager instance = Program.instance.ui_;
             foreach (var t in instance.GetComponentsInChildren<Transform>(true))
@@ -198,13 +198,9 @@ namespace MDPro3
             Program.instance.puzzle.PrintPuzzles();
         }
 
-        private IEnumerator LoadDiyWallpaperAsync(string path, Transform parent)
+        private async UniTask LoadDiyWallpaperAsync(string path, Transform parent)
         {
-            var ie = ABLoader.LoadFromFileAsync(path);
-            while (ie.MoveNext())
-                yield return null;
-
-            GameObject dynamic = ie.Current;
+            GameObject dynamic = await ABLoader.LoadFromFileAsync(path, false, true);
             dynamic.transform.SetParent(parent, false);
         }
 
@@ -220,12 +216,12 @@ namespace MDPro3
             {
                 Transform frontback = ChangeWallpaper("1130002");
                 Destroy(frontback.GetChild(1).gameObject);
-                StartCoroutine(LoadDiyWallpaperAsync(path, frontback));
+                _ = LoadDiyWallpaperAsync(path, frontback);
                 return frontback;
             }
-            GameObject frontLoader = ABLoader.LoadFromFolder(path);
-            Destroy(frontLoader);
-            var front = frontLoader.transform.GetChild(0).GetComponent<RectTransform>();
+            GameObject frontLoader = ABLoader.LoadFromFolder<RectTransform>(path, false, true);
+            frontLoader = Instantiate(frontLoader);
+            var front = frontLoader.transform;
             front.SetParent(wallpaper.transform, false);
             for (int i = 0; i < front.transform.childCount; i++)
                 front.transform.GetChild(i).gameObject.AddComponent<RectLoopMoveY>();
@@ -409,16 +405,31 @@ namespace MDPro3
 
         #region UI Tools
 
+        private static GameObject duelTransition;
+
         public static void UIBlackIn(float time)
         {
-            float width = Screen.width * 1080 * 1.7f / Screen.height;
-            Program.instance.ui_.transition.sizeDelta = Vector2.zero;
-            DOTween.To(() => Program.instance.ui_.transition.sizeDelta, x => Program.instance.ui_.transition.sizeDelta = x, new Vector2(width, width), time);
+            if (duelTransition == null)
+            {
+                duelTransition = ABLoader.LoadMasterDuelGameObject("DuelEndTransition");
+                duelTransition.transform.SetParent(Program.instance.container_2D, false);
+                duelTransition.GetComponent<PlayableDirector>().Play();
+            }
+
+            //float width = Screen.width * 1080 * 1.7f / Screen.height;
+            //Program.instance.ui_.transition.sizeDelta = Vector2.zero;
+            //DOTween.To(() => Program.instance.ui_.transition.sizeDelta, x => Program.instance.ui_.transition.sizeDelta = x, new Vector2(width, width), time);
         }
 
         public static void UIBlackOut(float time)
         {
-            DOTween.To(() => Program.instance.ui_.transition.sizeDelta, x => Program.instance.ui_.transition.sizeDelta = x, Vector2.zero, time);
+            if(duelTransition != null)
+            {
+                duelTransition.GetComponent<LoopTrackManager>().StopLoop();
+                Destroy(duelTransition, 1f);
+                duelTransition = null;
+            }
+            //DOTween.To(() => Program.instance.ui_.transition.sizeDelta, x => Program.instance.ui_.transition.sizeDelta = x, Vector2.zero, time);
         }
 
         public static void ShowBlackBack(float alpha, float time, Action action = null)

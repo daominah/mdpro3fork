@@ -5,6 +5,8 @@ using System.Collections;
 using System.IO;
 using static UnityEngine.UI.Image;
 using YgomSystem.Effect;
+using Cysharp.Threading.Tasks;
+using System.Threading.Tasks;
 
 namespace MDPro3
 {
@@ -79,8 +81,8 @@ namespace MDPro3
                 id = 10;
 
             var endString = id.ToString("D4");
-            back = ABLoader.LoadFromFolder("MasterDuel/Background/Back" + endString, "Background" + endString, true);
-            if (back.transform.GetChild(0).gameObject.TryGetComponent<SpriteScaler>(out var spriteScaler))
+            back = ABLoader.LoadFromFolder<SpriteScaler>("MasterDuel/Background/Back" + endString, true, true);
+            if (back.TryGetComponent<SpriteScaler>(out var spriteScaler))
             {
                 spriteScaler.isApplyOnUpdate = true;
                 spriteScaler.SetFitMode(SpriteScaler.FitMode.FitHighestResolutionMaintainAspectRatio);
@@ -90,11 +92,11 @@ namespace MDPro3
 
             if(id == 12 || cid >= 50)
             {
-                StartCoroutine(SetDIYBGAsync(back.transform.GetChild(0).GetComponent<SpriteRenderer>(), id));
+                _ = SetDIYBGAsync(back.transform.GetChild(0).GetComponent<SpriteRenderer>(), id);
             }
         }
 
-        IEnumerator SetDIYBGAsync(SpriteRenderer renderer, int id)
+        private async UniTask SetDIYBGAsync(SpriteRenderer renderer, int id)
         {
             var bg = Program.PATH_DIY + "Background";
             if (File.Exists(bg + Program.EXPANSION_PNG))
@@ -102,21 +104,18 @@ namespace MDPro3
             else if (File.Exists(bg + Program.EXPANSION_JPG))
                 bg += Program.EXPANSION_JPG;
             else
-                yield break;
+                return;
 
-            var load = TextureManager.LoadPicFromFileAsync(bg);
-            while(!load.IsCompleted)
-                yield return null;
-
+            var pic = await TextureManager.LoadPicFromFileAsync(bg);
             int targetHeight = 1080;
             Texture2D scaledTexture;
-            if(load.Result.height != targetHeight)
+            if(pic.height != targetHeight)
             {
-                int newWidth = Mathf.RoundToInt(load.Result.width * (targetHeight / (float)load.Result.height));
-                scaledTexture = TextureManager.ResizeTexture2D(load.Result, newWidth, targetHeight);
+                int newWidth = Mathf.RoundToInt(pic.width * (targetHeight / (float)pic.height));
+                scaledTexture = TextureManager.ResizeTexture2D(pic, newWidth, targetHeight);
             }
             else
-                scaledTexture = load.Result;
+                scaledTexture = pic;
 
             if (renderer != null)
                 renderer.sprite = TextureManager.Texture2Sprite(scaledTexture);

@@ -153,14 +153,14 @@ namespace MDPro3.UI
             {
                 if (RoomServant.Mode != 2)
                 {
-                    if (Program.instance.ocgcore.isFirst && RoomServant.SelfType == 1
-                        || !Program.instance.ocgcore.isFirst && RoomServant.SelfType == 0)
+                    if (OcgCore.isFirst && RoomServant.SelfType == 1
+                        || !OcgCore.isFirst && RoomServant.SelfType == 0)
                         player = (player + 1) % 2;
                 }
                 else
                 {
-                    if (Program.instance.ocgcore.isFirst && RoomServant.SelfType > 1
-                        || !Program.instance.ocgcore.isFirst && RoomServant.SelfType < 2)
+                    if (OcgCore.isFirst && RoomServant.SelfType > 1
+                        || !OcgCore.isFirst && RoomServant.SelfType < 2)
                         player = (player + 2) % 4;
                 }
             }

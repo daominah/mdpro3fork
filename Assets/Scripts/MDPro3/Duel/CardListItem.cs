@@ -7,6 +7,7 @@ using TMPro;
 using MDPro3.Servant;
 using MDPro3.UI.ServantUI;
 using MDPro3.Utility;
+using Cysharp.Threading.Tasks;
 
 namespace MDPro3.UI
 {
@@ -27,7 +28,7 @@ namespace MDPro3.UI
         public GameCard card;
         void Start()
         {
-            StartCoroutine(RefreshFace());
+            _ = RefreshFace();
             cardBack.SetActive((card.p.position & (uint)CardPosition.FaceUp) == 0);
             if (card.GetData().Id != 0)
             {
@@ -57,7 +58,7 @@ namespace MDPro3.UI
                 else
                 {
                     chain.SetActive(false);
-                    if (Program.instance.ocgcore.cardsBeTarget.Contains(card))
+                    if (OcgCore.cardsBeTarget.Contains(card))
                         target.SetActive(true);
                     else
                         target.SetActive(false);
@@ -73,24 +74,15 @@ namespace MDPro3.UI
             button.onClick.AddListener(OnClick);
         }
 
-        IEnumerator RefreshFace()
+        private async UniTask RefreshFace()
         {
             face.texture = TextureManager.container.unknownCard.texture;
             var code = card.GetData().Id;
             if (code != 0)
             {
-                var task = CardImageLoader.LoadCardAsync(code, false);
-                while(!task.IsCompleted)
-                    yield return null;
-
-                var matLoad = MaterialLoader.LoadCardMaterialAsync(code);
-                while (!matLoad.IsCompleted)
-                    yield return null;
-                var mat = matLoad.Result;
-
-                face.material = mat;
-                face.material.mainTexture = task.Result;
-                face.texture = task.Result;
+                face.texture = await CardImageLoader.LoadCardAsync(code, false);
+                face.material = MaterialLoader.GetCardMaterial(code);
+                face.material.mainTexture = face.texture;
             }
             else
             {

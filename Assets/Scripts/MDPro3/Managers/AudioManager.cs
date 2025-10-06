@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using System;
 using System.Collections;
@@ -84,6 +85,29 @@ namespace MDPro3
                 var audioClip = DownloadHandlerAudioClip.GetContent(request);
                 yield return audioClip;
             }
+        }
+
+        public static async UniTask<AudioClip> LoadAudioFileUniAsync(string path, AudioType audioType)
+        {
+            string fullPath;
+#if !UNITY_EDITOR && (UNITY_ANDROID || UNITY_IOS)
+            fullPath = "file://" + Application.persistentDataPath + Program.STRING_SLASH + path;
+#elif UNITY_STANDALONE_LINUX || UNITY_STANDALONE_OSX
+            fullPath = Path.Combine("file://" + Environment.CurrentDirectory, path);
+#else
+            fullPath = Path.Combine(Environment.CurrentDirectory, path);
+#endif
+
+            using var request = UnityWebRequestMultimedia.GetAudioClip(fullPath, audioType);
+            await request.SendWebRequest();
+
+            if (request.result == UnityWebRequest.Result.Success)
+            {
+                var audioClip = DownloadHandlerAudioClip.GetContent(request);
+                return audioClip;
+            }
+
+            return null;
         }
 
         #endregion

@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,27 +18,16 @@ namespace MDPro3.UI
             rock.onClick.AddListener(() => { TcpHelper.CtosMessage_HandResult(2); Hide(); });
             paper.onClick.AddListener(() => { TcpHelper.CtosMessage_HandResult(3); Hide(); });
             scissors.onClick.AddListener(() => { TcpHelper.CtosMessage_HandResult(1); Hide(); });
-            StartCoroutine(LoadAsync());
+            _ = LoadAsync();
         }
 
-        IEnumerator LoadAsync()
+        private async UniTask LoadAsync()
         {
-            var task = TextureManager.LoadPicFromFileAsync(Program.PATH_DIY + "Rock.png");
-            while(!task.IsCompleted)
-                yield return null;
-            rock.GetComponent<RawImage>().texture = task.Result;
+            rock.GetComponent<RawImage>().texture = await TextureManager.LoadPicFromFileAsync(Program.PATH_DIY + "Rock.png");
             rock.GetComponent<RawImage>().color = Color.white;
-
-            task = TextureManager.LoadPicFromFileAsync(Program.PATH_DIY + "Paper.png");
-            while (!task.IsCompleted)
-                yield return null;
-            paper.GetComponent<RawImage>().texture = task.Result;
+            paper.GetComponent<RawImage>().texture = await TextureManager.LoadPicFromFileAsync(Program.PATH_DIY + "Paper.png");
             paper.GetComponent<RawImage>().color = Color.white;
-
-            task = TextureManager.LoadPicFromFileAsync(Program.PATH_DIY + "Scissors.png");
-            while (!task.IsCompleted)
-                yield return null;
-            scissors.GetComponent<RawImage>().texture = task.Result;
+            scissors.GetComponent<RawImage>().texture = await TextureManager.LoadPicFromFileAsync(Program.PATH_DIY + "Scissors.png");
             scissors.GetComponent<RawImage>().color = Color.white;
         }
     }

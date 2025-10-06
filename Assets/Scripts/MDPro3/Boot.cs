@@ -17,16 +17,16 @@ namespace MDPro3
         public Slider progressBar;
         public Text text;
 
-        string title;
-        string dots;
-        float time;
-        bool extracting;
-        int totalNum;
-        int nowNum;
+        private string title;
+        private string dots;
+        private float time;
+        private bool extracting;
+        private int totalNum;
+        private int nowNum;
 
-        List<string> zips = new List<string>();
+        private readonly List<string> zips = new();
 
-        void Start()
+        private void Start()
         {
             Application.targetFrameRate = 0;
 
@@ -51,7 +51,7 @@ namespace MDPro3
 #endif
         }
 
-        void Update()
+        private void Update()
         {
             time += Time.deltaTime;
             if (time > 0.33f)
@@ -72,7 +72,7 @@ namespace MDPro3
                 text.text = title + "(" + nowNum + Program.STRING_SLASH + totalNum + ")";
         }
 
-        bool InitializeLanguage()
+        private bool InitializeLanguage()
         {
             if (!Directory.Exists(Program.PATH_DATA))
             {
@@ -90,7 +90,7 @@ namespace MDPro3
             }
         }
 
-        IEnumerator CheckFile()
+        private IEnumerator CheckFile()
         {
             IEnumerator enumerator;
             foreach (string zip in zips)
@@ -110,7 +110,7 @@ namespace MDPro3
             StartCoroutine(LoadMainSceneAsync());
         }
 
-        IEnumerator Check(string type)
+        private IEnumerator Check(string type)
         {
             title = InterString.Get("正在读取[?]", type + ".zip");
             nowNum = 0;
@@ -145,17 +145,23 @@ namespace MDPro3
                 title = $"Decompression failed: {request.error}";
         }
 
-        IEnumerator LoadMainSceneAsync()
+        private IEnumerator LoadMainSceneAsync()
         {
             nowNum = 0;
             totalNum = 0;
             progressBar.value = 0;
 
+            title = InterString.Get("正在初始化");
+
+            Program.SetRoot();
+            _ = ABLoader.CacheMasterDuelBundles();
+            while (!ABLoader.mdCached)
+                yield return null;
+
             Config.Initialize(Program.PATH_CONFIG);
             Config.Set("Version", Application.version[..5]);
             Config.Save();
 
-            title = InterString.Get("正在初始化");
             var ini = Addressables.InitializeAsync();
             while (!ini.IsDone)
             {
@@ -191,7 +197,7 @@ namespace MDPro3
             zip.ExtractZip(file, dir, "");
         }
 
-        IEnumerator ExtractZipFile(byte[] data, string outFolder)
+        private IEnumerator ExtractZipFile(byte[] data, string outFolder)
         {
             ZipFile zf = null;
             using MemoryStream mstrm = new(data);
@@ -229,7 +235,7 @@ namespace MDPro3
             }
         }
 
-        bool VersionCheck()
+        private bool VersionCheck()
         {
             var firstInstall = InitializeLanguage();
 
@@ -300,7 +306,7 @@ namespace MDPro3
             }
         }
 
-        bool InstallNext(string installedVersion, string installVersion)
+        private bool InstallNext(string installedVersion, string installVersion)
         {
             var installedInt = GetVersionInt(installedVersion);
             var installInt = GetVersionInt(installVersion);
@@ -310,14 +316,14 @@ namespace MDPro3
                 return false;
         }
 
-        string VersionPre(string version)
+        private string VersionPre(string version)
         {
             var versionInt = GetVersionInt(version);
             string returnValue = (versionInt - 1).ToString("D3");
             return returnValue.Substring(0, 1) + "." + returnValue.Substring(1, 1) + "." + returnValue.Substring(2, 1);
         }
 
-        int GetVersionInt(string version)
+        private int GetVersionInt(string version)
         {
             string textInt = version.Substring(0, 1) + version.Substring(2, 1) + version.Substring(4, 1);
             return int.Parse(textInt);

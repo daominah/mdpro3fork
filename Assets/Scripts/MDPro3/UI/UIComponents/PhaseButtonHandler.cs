@@ -1,12 +1,13 @@
 using DG.Tweening;
+using MDPro3.Duel.YGOSharp;
+using MDPro3.Servant;
+using MDPro3.UI.ServantUI;
+using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using YgomSystem.ElementSystem;
-using MDPro3.Duel.YGOSharp;
-using MDPro3.UI.ServantUI;
-using NUnit.Framework;
 
 namespace MDPro3.UI
 {
@@ -69,7 +70,7 @@ namespace MDPro3.UI
                     if (Program.instance.ocgcore.currentPopup == null)
                     {
                         var tasks = new List<string>
-                        {Program.instance.ocgcore.phase.ToString()};
+                        {OcgCore.duelPhase.ToString()};
 
                         if (battlePhase)
                             tasks.Add(DuelPhase.BattleStart.ToString());

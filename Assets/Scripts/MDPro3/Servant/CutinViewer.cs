@@ -11,6 +11,8 @@ using MDPro3.Duel.YGOSharp;
 using MDPro3.UI;
 using UnityEngine.EventSystems;
 using MDPro3.UI.ServantUI;
+using Cysharp.Threading.Tasks;
+using System.Threading;
 
 namespace MDPro3.Servant
 {
@@ -25,10 +27,12 @@ namespace MDPro3.Servant
         public static List<int> codes2 = new();
         private static DirectoryInfo[] dirInfos;
         private static FileInfo[] fileInfos;
-        private static bool playing;
         private bool randomBGMPlayed;
-        private readonly List<GameObject> cutins = new();
         [HideInInspector] public SelectionToggle_Cutin lastSelectedCutinItem;
+
+        private static bool playing;
+        private static bool autoPlaying;
+        private CancellationTokenSource cts;
 
         #region Servant
 
@@ -70,9 +74,9 @@ namespace MDPro3.Servant
                     OnReturn();
 
 #if UNITY_ANDROID || UNITY_IOS
-                if (UserInput.MouseLeftDown)
-                    if(autoPlay != null)
-                        OnReturn();
+                //if (UserInput.MouseLeftDown)
+                //    if(autoPlay != null)
+                //        OnReturn();
 #endif
 
                 if (UserInput.WasGamepadButtonWestPressed)
@@ -87,13 +91,12 @@ namespace MDPro3.Servant
             if (returnAction != null) return;
             if (inTransition) return;
             AudioManager.PlaySE("SE_MENU_CANCEL");
-            if (autoPlay != null)
+            if (cts != null)
             {
-                StopCoroutine(autoPlay);
-                autoPlay = null;
-                foreach (var cutin in cutins)
-                    Destroy(cutin);
-                cutins.Clear();
+                cts.Cancel();
+                cts.Dispose();
+                cts = null;
+
                 UIManager.ShowExitButton(TransitionTime);
                 servantUI.CG.alpha = 1;
                 servantUI.CG.blocksRaycasts = true;
@@ -212,73 +215,69 @@ namespace MDPro3.Servant
             return code;
         }
 
-        public static void Play(int code, int controller, bool isDiy = false, GameObject cutin = null)
+        public static async UniTask Play(int code, int controller)
         {
             if (playing) 
                 return;
             playing = true;
-            if (Program.instance.ocgcore.showing)
-                AudioManager.PlayBgmKeyCard();
-            DOTween.To(v => { }, 0, 0, CUTIN_PLAY_TIME).OnComplete(() =>
-            {
-                playing = false;
-            });
+
             code = AliasCode(code);
             Card card = CardsManager.Get(code);
 
-            GameObject loader = null;
+            GameObject cutin = null;
             bool diy = false;
-            if(cutin == null)
-            {
-                if (codes.Contains(code))
-                    loader = ABLoader.LoadFromFolder("MonsterCutin/" + code, "Spine" + code);
-                else
-                {
-                    loader = ABLoader.LoadFromFile("MonsterCutin2/" + code);
-                    diy = true;
-                }
-            }
+            if (codes.Contains(code))
+                cutin = await ABLoader.LoadFromFolderAsync<PlayableDirector>("MonsterCutin/" + code, false, false);
             else
             {
-                loader = cutin;
-                diy = isDiy;
-            }
-
-            loader.transform.SetParent(Program.instance.container_2D, false);
-            Destroy(loader, CUTIN_PLAY_TIME);
-
-            if (!diy)
-            {
-                loader.transform.GetChild(0).localPosition = Vector3.zero;
-                loader.transform.GetChild(0).GetComponent<PlayableDirector>().time = 0;
+                cutin = await ABLoader.LoadFromFileAsync("MonsterCutin2/" + code, false, false);
+                diy = true;
             }
 
             //BackEffects
-            GameObject back;
-            if ((card.Attribute & (uint)CardAttribute.Dark) > 0)//125
-                back = ABLoader.LoadFromFile("MasterDuel/Timeline/Summon/SummonMonster/04BackEff/SummonMonster_Bgdak_S2", true);
-            else if ((card.Attribute & (uint)CardAttribute.Light) > 0)//100
-                back = ABLoader.LoadFromFile("MasterDuel/Timeline/Summon/SummonMonster/04BackEff/SummonMonster_Bglit_S2", true);
-            else if ((card.Attribute & (uint)CardAttribute.Earth) > 0)//56
-                back = ABLoader.LoadFromFile("MasterDuel/Timeline/Summon/SummonMonster/04BackEff/SummonMonster_Bgeah_S2", true);
-            else if ((card.Attribute & (uint)CardAttribute.Water) > 0)//35
-                back = ABLoader.LoadFromFile("MasterDuel/Timeline/Summon/SummonMonster/04BackEff/SummonMonster_Bgwtr_S2", true);
-            else if ((card.Attribute & (uint)CardAttribute.Fire) > 0)//31
-                back = ABLoader.LoadFromFile("MasterDuel/Timeline/Summon/SummonMonster/04BackEff/SummonMonster_Bgfie_S2", true);
-            else if ((card.Attribute & (uint)CardAttribute.Wind) > 0)//25
-                back = ABLoader.LoadFromFile("MasterDuel/Timeline/Summon/SummonMonster/04BackEff/SummonMonster_Bgwid_S2", true);
-            else//4
-                back = ABLoader.LoadFromFile("MasterDuel/Timeline/Summon/SummonMonster/04BackEff/SummonMonster_Bgdve_S2", true);
-            back.transform.SetParent(Program.instance.container_2D, false);
-            Destroy(back, CUTIN_PLAY_TIME);
+            string backPath = "MasterDuel/Timeline/Summon/SummonMonster/04BackEff/";
+            if ((card.Attribute & (uint)CardAttribute.Dark) > 0) // 125
+                backPath += "SummonMonster_Bgdak_S2";
+            else if ((card.Attribute & (uint)CardAttribute.Light) > 0) // 100
+                backPath += "SummonMonster_Bglit_S2";
+            else if ((card.Attribute & (uint)CardAttribute.Earth) > 0) // 56
+                backPath += "SummonMonster_Bgeah_S2";
+            else if ((card.Attribute & (uint)CardAttribute.Water) > 0) // 35
+                backPath += "SummonMonster_Bgwtr_S2";
+            else if ((card.Attribute & (uint)CardAttribute.Fire) > 0) // 31
+                backPath += "SummonMonster_Bgfie_S2";
+            else if ((card.Attribute & (uint)CardAttribute.Wind) > 0) // 25
+                backPath += "SummonMonster_Bgwid_S2";
+            else // 4
+                backPath += "SummonMonster_Bgdve_S2";
+            GameObject back = await ABLoader.LoadFromFileAsync(backPath, true, false);
 
             //Name Bar
             GameObject nameBar;
             if (controller == 0)
-                nameBar = ABLoader.LoadFromFile("MasterDuel/Timeline/Summon/SummonMonster/01Text/SummonMonster_Name_near", true);
+                nameBar = await ABLoader.LoadFromFileAsync("MasterDuel/Timeline/Summon/SummonMonster/01Text/SummonMonster_Name_near", true, false);
             else
-                nameBar = ABLoader.LoadFromFile("MasterDuel/Timeline/Summon/SummonMonster/01Text/SummonMonster_Name_far", true);
+                nameBar = await ABLoader.LoadFromFileAsync("MasterDuel/Timeline/Summon/SummonMonster/01Text/SummonMonster_Name_far", true, false);
 
+            //front Effect
+            var frontEffect = await ABLoader.LoadFromFileAsync("MasterDuel/Timeline/Summon/SummonMonster/02FrontEff/SummonMonster_Thunder_power", true, false);
+
+            //Instantiate
+            if (Program.instance.ocgcore.showing)
+                AudioManager.PlayBgmKeyCard();
+
+            cutin = Instantiate(cutin);
+            cutin.transform.SetParent(Program.instance.container_2D, false);
+            if (!diy)
+            {
+                cutin.transform.localPosition = Vector3.zero;
+                cutin.transform.GetComponent<PlayableDirector>().time = 0;
+            }
+
+            back = Instantiate(back);
+            back.transform.SetParent(Program.instance.container_2D, false);
+
+            nameBar = Instantiate(nameBar);
             nameBar.transform.SetParent(Program.instance.container_2D, false);
             var manager = nameBar.GetComponent<ElementObjectManager>();
             var tmp = manager.GetElement<ExtendedTextMeshPro>("Monster_Name_TMP");
@@ -320,7 +319,6 @@ namespace MDPro3.Servant
                         break;
                 }
             }
-
             ElementObjectManager subManager;
             if (!card.HasType(CardType.Xyz))
             {
@@ -356,28 +354,33 @@ namespace MDPro3.Servant
                 for (int i = card.Level + 1; i < 14; i++)
                     Destroy(subManager.GetElement("Icon" + i));
             manager.GetElement<TextMesh>("Monster_Para").text = para;
-            Destroy(nameBar, CUTIN_PLAY_TIME);
 
-            //front Effect
-            var frontEffect = ABLoader.LoadFromFile("MasterDuel/Timeline/Summon/SummonMonster/02FrontEff/SummonMonster_Thunder_power", true);
+            frontEffect = Instantiate(frontEffect);
             frontEffect.transform.SetParent(Program.instance.container_2D, false);
-            Destroy(frontEffect, CUTIN_PLAY_TIME);
+
+
+            await UniTask.WaitForSeconds(CUTIN_PLAY_TIME).ContinueWith(() =>
+            {
+                Destroy(cutin);
+                Destroy(back);
+                Destroy(nameBar);
+                Destroy(frontEffect);
+
+                playing = false;
+            });
         }
 
-        Coroutine autoPlay;
         public void AutoPlay()
         {
-            if (autoPlay != null) 
-                return;
-            autoPlay = StartCoroutine(AutoPlayAsync());
+            cts = new();
+            _ = AutoPlayAsync(cts.Token);
         }
 
-        private IEnumerator AutoPlayAsync()
+        private async UniTask AutoPlayAsync(CancellationToken token)
         {
-            while (playing)
-                yield return null;
+            await UniTask.WaitWhile(() => playing, cancellationToken : token);
             if(!showing)
-                yield break;
+                return;
 
             AudioManager.PlayRandomKeyCardBGM();
             randomBGMPlayed = true;
@@ -387,35 +390,19 @@ namespace MDPro3.Servant
             int count = 0;
             foreach (var card in cards)
             {
-                IEnumerator<GameObject> ie;
-                bool diy = false;
-                if (codes.Contains(card.Id))
-                    ie = ABLoader.LoadFromFolderAsync("MonsterCutin/" + card.Id, "Spine" + card.Id, false, true);
-                else
-                {
-                    ie = ABLoader.LoadFromFileAsync("MonsterCutin2/" + card.Id, false, true);
-                    diy = true;
-                }
-                while (ie.MoveNext())
-                    yield return null;
-                ie.Current.SetActive(false);
-                cutins.Add(ie.Current);
-                while (playing)
-                    yield return null;
-                ie.Current.SetActive(true);
-                Play(card.Id, 0, diy, ie.Current);
+                await Play(card.Id, 0);
                 count++;
                 if (count % 20 == 0)
-                {
-                    var unload =  Resources.UnloadUnusedAssets();
-                    while (!unload.isDone)
-                        yield return null;
-                }
+                    await Resources.UnloadUnusedAssets();
+                if (token.IsCancellationRequested)
+                    return;
             }
             servantUI.CG.alpha = 1f;
             servantUI.CG.blocksRaycasts = true;
             UIManager.ShowExitButton(TransitionTime);
-            autoPlay = null;
+            autoPlaying = false;
+            cts.Dispose();
+            cts = null;
         }
 
     }

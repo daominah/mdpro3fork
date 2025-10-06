@@ -1,4 +1,6 @@
+using Cysharp.Threading.Tasks;
 using MDPro3;
+using System.Collections;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
@@ -30,7 +32,6 @@ namespace YgomSystem.Effect
 
 		public Camera targetCamera
 		{
-			//[CompilerGenerated]
 			get
 			{
                 if (cameraViewType == ViewType.View3D)
@@ -48,15 +49,17 @@ namespace YgomSystem.Effect
                         return Program.instance.camera_.cameraDuelOverlay2D;
                 }
             }
-			//[CompilerGenerated]
-			private set
-			{
-			}
 		}
 
 		private void OnEnable()
 		{
-			Setup();
+            _ = DelaySetupAsync();
+        }
+
+        private async UniTask DelaySetupAsync()
+        {
+            await UniTask.Yield(destroyCancellationToken);
+            Setup();
         }
 
         public void Setup()
@@ -65,7 +68,7 @@ namespace YgomSystem.Effect
             {
                 cameraViewType = ViewType.View3D;
                 cameraPosition = CameraManager.mainCameraDefaultPosition;
-                cameraAngle = CameraManager.mainCameraDefaultRotation;
+                cameraAngle = CameraManager.mainCameraDefaultAngle;
                 overUI = false;
             }
 

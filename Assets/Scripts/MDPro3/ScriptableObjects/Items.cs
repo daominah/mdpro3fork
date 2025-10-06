@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using MDPro3.Servant;
 using MDPro3.Utility;
 using System;
@@ -485,23 +486,17 @@ namespace MDPro3
                 return pathPrefix + id + pathSuffix;
         }
 
-        public IEnumerator<Sprite> LoadItemIconAsync(string id, ItemType type)
+        public async UniTask<Sprite> LoadItemIconAsync(string id, ItemType type)
         {
             lock (cachedIcons)
-            {
                 if (cachedIcons.ContainsKey(id))
-                {
-                    yield return cachedIcons[id];
-                    yield break;
-                }
-            }
+                    return cachedIcons[id];
 
             var handle = Addressables.LoadAssetAsync<Sprite>(GetIconAddress(id));
-            while (!handle.IsDone)
-                yield return null;
+            var result = await handle;
 
-            if (handle.Result == null)
-                yield break;
+            if (result == null)
+                return null;
 
             Sprite returnValue;
             lock (cachedIcons)
@@ -518,10 +513,10 @@ namespace MDPro3
                 }
             }
 
-            yield return returnValue;
+            return returnValue;
         }
 
-        public IEnumerator< Sprite> LoadConcreteItemIconAsync(string id, ItemType type, int player = 0)
+        public async UniTask<Sprite> LoadConcreteItemIconAsync(string id, ItemType type, int player = 0)
         {
             if(id == CODE_RANDOM.ToString())
             {
@@ -550,28 +545,19 @@ namespace MDPro3
                 }
                 if(File.Exists(path + Program.EXPANSION_PNG))
                 {
-                    var task = TextureManager.LoadPicFromFileAsync(path + Program.EXPANSION_PNG);
-                    while(!task.IsCompleted)
-                        yield return null;
-                    yield return TextureManager.Texture2Sprite(task.Result);
-                    yield break;
+                    var tex = await TextureManager.LoadPicFromFileAsync(path + Program.EXPANSION_PNG);
+                    return TextureManager.Texture2Sprite(tex);
                 }
                 else if (File.Exists(path + Program.EXPANSION_JPG))
                 {
-                    var task = TextureManager.LoadPicFromFileAsync(path + Program.EXPANSION_JPG);
-                    while (!task.IsCompleted)
-                        yield return null;
-                    yield return TextureManager.Texture2Sprite(task.Result);
-                    yield break;
+                    var tex = await TextureManager.LoadPicFromFileAsync(path + Program.EXPANSION_JPG);
+                    return TextureManager.Texture2Sprite(tex);
                 }
                 else
                     id = faces[0].id.ToString();
             }
 
-            var ie = LoadItemIconAsync(id, type);
-            while(ie.MoveNext())
-                yield return null;
-            yield return ie.Current;
+            return await LoadItemIconAsync(id, type);
         }
 
         public bool ListHaveRandom(List<Item> target)
@@ -640,31 +626,22 @@ namespace MDPro3
                 return false;
         }
 
-        public async Task<Sprite> LoadDeckCaseIconAsync(int code, string suffix)
+        public async UniTask<Sprite> LoadDeckCaseIconAsync(int code, string suffix)
         {
             try
             {
-                var load = LoadAddressableSprite($"DeckCase{code.ToString()[3..]}{suffix}");
-                while (load.MoveNext())
-                    await TaskUtility.WaitOneFrame();
-                return load.Current;
+                return await LoadAddressableSprite($"DeckCase{code.ToString()[3..]}{suffix}");
             }
             catch
             {
                 Debug.LogError("Addressables Not Found: " + $"DeckCase{code.ToString()[3..]}{suffix}");
-                var load = LoadAddressableSprite(ADDRESS_DEFAULT_DECK_CASE);
-                while (load.MoveNext())
-                    await TaskUtility.WaitOneFrame();
-                return load.Current;
+                return await LoadAddressableSprite(ADDRESS_DEFAULT_DECK_CASE);
             }
         }
 
-        private IEnumerator<Sprite> LoadAddressableSprite(string address)
+        private async UniTask<Sprite> LoadAddressableSprite(string address)
         {
-            var load = Addressables.LoadAssetAsync<Sprite>(address);
-            while (!load.IsDone)
-                yield return null;
-            yield return load.Result;
+            return await Addressables.LoadAssetAsync<Sprite>(address);
         }
 
     }

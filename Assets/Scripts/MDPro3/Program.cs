@@ -4,13 +4,11 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using MDPro3.Duel.YGOSharp;
-using UnityEngine.EventSystems;
 using UnityEngine.AddressableAssets;
 using MDPro3.Net;
-using MDPro3.UI;
 using MDPro3.Servant;
-using YgomGame.Bg;
-using static YgomGame.Bg.BgEffectSettingInner;
+using Cysharp.Threading.Tasks;
+
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -33,7 +31,6 @@ namespace MDPro3
         public AudioManager audio_;
         public TextureManager texture_;
         public MessageManager message_;
-        public TimelineManager timeline_;
 
         [Header("Servants")]
         public Servant.MainMenu menu;
@@ -53,7 +50,14 @@ namespace MDPro3
         public OnlineDeckViewer onlineDeckViewer;
         public DeckBrowser deckBrowser;
 
-        [Header("SidePanels")]
+#if UNITY_EDITOR
+        [Header("Test")]
+        public float testFloat = 1f;
+        public float testFloat2 = 1f;
+        public float testFloat3 = 1f;
+        public float testFloat4 = 1f;
+        public float testFloat5 = 1f;
+#endif
 
         [HideInInspector]
         public Servant.Servant currentServant;
@@ -99,40 +103,33 @@ namespace MDPro3
         private readonly List<Servant.Servant> servants = new();
         public static bool exitOnReturn = false;
 
-        private void Initialize()
+        private async UniTask Initialize()
         {
             if (!Directory.Exists(PATH_DATA))
                 Directory.CreateDirectory(PATH_DATA);
             Config.Initialize(PATH_CONFIG);
 
             Screen.sleepTimeout = SleepTimeout.NeverSleep;
-            if (items != null)
-                InitializeRest();
-            else
+
+            if(!ABLoader.mdCached)
+                await ABLoader.CacheMasterDuelBundles();
+
+            if(items == null)
             {
                 var handle = Addressables.LoadAssetAsync<Items>("ScriptableObjects/Items.asset");
-                handle.Completed += (result) =>
-                {
-                    items = result.Result;
-                    InitializeRest();
-                };
+                await handle.Task;
+                items = handle.Result;
             }
-        }
 
-        private void InitializeRest()
-        {
+            var handle2 = Addressables.InstantiateAsync("Prefab/CardRenderer.prefab");
+            await handle2.Task;
+            cardRenderer = handle2.Result.GetComponent<CardRenderer>();
+
             ZipHelper.Initialize();
             items.Initialize();
             BanlistManager.Initialize();
             InitializeAllManagers();
             InitializeAllServants();
-
-            var handle = Addressables.InstantiateAsync("Prefab/CardRenderer.prefab");
-            handle.Completed += (result) =>
-            {
-                cardRenderer = result.Result.GetComponent<CardRenderer>();
-                cardRenderer.SwitchLanguage();
-            };
         }
 
         public void ReadParams()
@@ -237,7 +234,6 @@ namespace MDPro3
             managers.Add(ui_);
             managers.Add(camera_);
             managers.Add(audio_);
-            managers.Add(timeline_);
             managers.Add(background_);
             managers.Add(message_);
 
@@ -282,6 +278,15 @@ namespace MDPro3
 
         private void Awake()
         {
+            SetRoot();
+            instance = this;
+            _ = Initialize();
+        }
+
+        public static void SetRoot()
+        {
+            root = PATH_ROOT_WINDOWS64;
+
 #if UNITY_ANDROID
             root = PATH_ROOT_ANDROID;
 #elif UNITY_IOS
@@ -295,10 +300,6 @@ namespace MDPro3
 #if UNITY_EDITOR
             root = PATH_ROOT_EDITOR + root;
 #endif
-            instance = this;
-            Initialize();
-
-            //ABLoader.LoadFromFile("Robber/CardSR");
         }
 
         public float TimeScale
@@ -333,21 +334,13 @@ namespace MDPro3
 
         public void UnloadUnusedAssets()
         {
-            if (gc == null)
-            {
-                gc = UnloadUnusedAssetsAsync();
-                StartCoroutine(gc);
-            }
+            _ = UnloadUnusedAssetsAsync();
         }
 
-        private IEnumerator gc;
-
-        private IEnumerator UnloadUnusedAssetsAsync()
+        private async UniTask UnloadUnusedAssetsAsync()
         {
-            var unload = Resources.UnloadUnusedAssets();
-            while (!unload.isDone)
-                yield return null;
-            gc = null;
+            ABLoader.ClearTemp();
+            await Resources.UnloadUnusedAssets();
         }
 
         public static bool noAccess = false;
@@ -356,20 +349,13 @@ namespace MDPro3
 
         #region Tools
 
-        public static int TimePassed()
-        {
-            return (int)(Time.time * 1000f);
-        }
-
         public void ShiftToServant(Servant.Servant servant)
         {
             currentServant = servant;
             foreach (var ser in servants)
                 if (ser != servant)
                     ser.Hide(servant.Depth);
-            foreach (var ser in servants)
-                if (ser == servant)
-                    ser.Show(depth);
+            servant.Show(depth);
             depth = servant.Depth;
         }
 

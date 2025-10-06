@@ -9,6 +9,7 @@ using UnityWebSocket;
 using Newtonsoft.Json.Linq;
 using System.IO;
 using MDPro3.Utility;
+using Cysharp.Threading.Tasks;
 
 namespace MDPro3.Net
 {
@@ -116,7 +117,7 @@ namespace MDPro3.Net
             }
         }
 
-        public static async Task<Texture2D> GetAvatarAsync(string userName)
+        public static async UniTask<Texture2D> GetAvatarAsync(string userName)
         {
             if(!Directory.Exists(avatarSavePath))
                 Directory.CreateDirectory(avatarSavePath);
@@ -139,15 +140,12 @@ namespace MDPro3.Net
                     if (cachedAvatars.ContainsKey(avatarName))
                         return cachedAvatars[avatarName];
 
-                var load = TextureManager.LoadPicFromFileAsync(fullPath);
-                await TaskUtility.WaitUntil(() => load.IsCompleted);
-                if(!Application.isPlaying)
-                    return null;
+                var pic = await TextureManager.LoadPicFromFileAsync(fullPath);
 
                 lock (cachedAvatars)
                     if (!cachedAvatars.ContainsKey(avatarName))
-                        cachedAvatars[avatarName] = load.Result;
-                return load.Result;
+                        cachedAvatars[avatarName] = pic;
+                return pic;
             }
 
             string avatarAddress;

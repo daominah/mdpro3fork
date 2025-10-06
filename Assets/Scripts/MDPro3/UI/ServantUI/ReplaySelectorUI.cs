@@ -199,7 +199,7 @@ namespace MDPro3.UI.ServantUI
                     returnValue.StartHand = reader.ReadInt32();
                     returnValue.DrawCount = reader.ReadInt32();
                     returnValue.opt = reader.ReadUInt32();
-                    Program.instance.ocgcore.MasterRule = (int)(returnValue.opt >> 16);
+                    OcgCore.MasterRule = (int)(returnValue.opt >> 16);
                     for (var i = 0; i < 4; i++)
                     {
                         var count = reader.ReadInt32();
@@ -218,7 +218,7 @@ namespace MDPro3.UI.ServantUI
                     returnValue.StartHand = reader.ReadInt32();
                     returnValue.DrawCount = reader.ReadInt32();
                     returnValue.opt = reader.ReadUInt32();
-                    Program.instance.ocgcore.MasterRule = (int)(returnValue.opt >> 16);
+                    OcgCore.MasterRule = (int)(returnValue.opt >> 16);
                     for (var i = 0; i < 2; i++)
                     {
                         var count = reader.ReadInt32();
@@ -261,16 +261,16 @@ namespace MDPro3.UI.ServantUI
         private void PushCollection(List<Package> collection)
         {
             Program.instance.ocgcore.returnServant = Program.instance.replay;
-            Program.instance.ocgcore.handler = a => { };
-            Program.instance.ocgcore.name_0 = Config.Get("ReplayPlayerName0", Config.EMPTY_STRING);
-            Program.instance.ocgcore.name_0_tag = Config.Get("ReplayPlayerName0Tag", Config.EMPTY_STRING);
-            Program.instance.ocgcore.name_0_c = Program.instance.ocgcore.name_0;
-            Program.instance.ocgcore.name_1 = Config.Get("ReplayPlayerName1", Config.EMPTY_STRING);
-            Program.instance.ocgcore.name_1_tag = Config.Get("ReplayPlayerName1Tag", Config.EMPTY_STRING);
-            Program.instance.ocgcore.name_1_c = Program.instance.ocgcore.name_1;
-            Program.instance.ocgcore.timeLimit = 240;
-            Program.instance.ocgcore.lpLimit = 8000;
-            Program.instance.ocgcore.isFirst = true;
+            OcgCore.handler = a => { };
+            OcgCore.name_0 = Config.Get("ReplayPlayerName0", Config.EMPTY_STRING);
+            OcgCore.name_0_tag = Config.Get("ReplayPlayerName0Tag", Config.EMPTY_STRING);
+            OcgCore.name_0_c = OcgCore.name_0;
+            OcgCore.name_1 = Config.Get("ReplayPlayerName1", Config.EMPTY_STRING);
+            OcgCore.name_1_tag = Config.Get("ReplayPlayerName1Tag", Config.EMPTY_STRING);
+            OcgCore.name_1_c = OcgCore.name_1;
+            OcgCore.timeLimit = 240;
+            OcgCore.lpLimit = 8000;
+            OcgCore.isFirst = true;
             OcgCore.condition = OcgCore.Condition.Replay;
             Program.instance.ShiftToServant(Program.instance.ocgcore);
             Program.instance.ocgcore.FlushPackages(collection);

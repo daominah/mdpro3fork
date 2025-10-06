@@ -1,11 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+using Cysharp.Threading.Tasks;
 using MDPro3.Duel.YGOSharp;
-using TMPro;
+using MDPro3.Servant;
 using MDPro3.UI.ServantUI;
 using MDPro3.Utility;
+using System.Collections;
+using System.Collections.Generic;
+using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
 
 namespace MDPro3.UI
 {
@@ -45,7 +47,7 @@ namespace MDPro3.UI
 
         private void Start()
         {
-            StartCoroutine(RefreshCard(card.GetData().Id));
+            _ = RefreshCard(card.GetData().Id);
 
             if ((card.p.location & (uint)CardLocation.Search) > 0)
             {
@@ -93,7 +95,7 @@ namespace MDPro3.UI
             {
                 chain.SetActive(false);
 
-                if (Program.instance.ocgcore.cardsBeTarget.Contains(card))
+                if (OcgCore.cardsBeTarget.Contains(card))
                     target.SetActive(true);
                 else
                     target.SetActive(false);
@@ -132,29 +134,13 @@ namespace MDPro3.UI
             button.onClick.AddListener(OnClick);
         }
 
-        bool refreshed;
-        IEnumerator RefreshCard(int code)
+        private async UniTask RefreshCard(int code)
         {
-            refreshed = false;
             cardFace.texture = TextureManager.container.unknownCard.texture;
-            var task = CardImageLoader.LoadCardAsync(code, true);
-            while (!task.IsCompleted)
-                yield return null;
-            var matLoad = MaterialLoader.LoadCardMaterialAsync(code);
-            while (!matLoad.IsCompleted)
-                yield return null;
-            var mat = matLoad.Result;
-            cardFace.material = mat;
-            cardFace.material.mainTexture = task.Result;
-            cardFace.texture = task.Result;
-            refreshed = true;
-        }
 
-        public IEnumerator DisposeAsync()
-        {
-            while (!refreshed)
-                yield return null;
-            Destroy(gameObject);
+            cardFace.material = MaterialLoader.GetCardMaterial(code);
+            cardFace.material.mainTexture = await CardImageLoader.LoadCardAsync(code, false, destroyCancellationToken);
+            cardFace.texture = cardFace.material.mainTexture;
         }
 
         float clickTime;
@@ -166,7 +152,7 @@ namespace MDPro3.UI
             {
                 if (manager.arrow == null)
                 {
-                    manager.arrow = ABLoader.LoadFromFile("MasterDuel/Effects/Other/fxp_arrow_aim_001", true);
+                    manager.arrow = ABLoader.LoadMasterDuelGameObject("fxp_arrow_aim_001");
                     Program.instance.ocgcore.allGameObjects.Add(manager.arrow);
                 }
                 manager.arrow.transform.position = card.model.transform.position;
@@ -205,7 +191,7 @@ namespace MDPro3.UI
                 {
                     if (manager.max == 1 
                         && manager.min == 1
-                        && Program.instance.ocgcore.currentMessage != GameMessage.SelectSum)
+                        && OcgCore.currentMessage != GameMessage.SelectSum)
                     {
                         foreach (var card in manager.monos)
                             card.UnselectThis();
@@ -223,7 +209,7 @@ namespace MDPro3.UI
             selected = true;
             manager.SelectedCount++;
 
-            if(Program.instance.ocgcore.currentMessage == GameMessage.ConfirmCards)
+            if(OcgCore.currentMessage == GameMessage.ConfirmCards)
             {
             }
             else if (!manager.order)

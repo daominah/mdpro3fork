@@ -2,15 +2,10 @@ using MDPro3.Duel.YGOSharp;
 using MDPro3.Servant;
 using MDPro3.Utility;
 using System.Collections.Generic;
-using System.Data;
-using System.Drawing.Imaging;
 using System.IO;
 using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using static MDPro3.UI.ChatPanel;
-using static YgomGame.Duel.BattleAimingEffect;
-using static YgomGame.Room.RoomViewController.RoomBehaviour;
 
 namespace MDPro3.UI.ServantUI
 {
@@ -136,7 +131,7 @@ namespace MDPro3.UI.ServantUI
                 roomInfo += InterString.Get("端口：") + Language.GetBlankIfNeed() + "7911" + rn;
             }
             roomInfo += StringHelper.GetUnsafe(1227) + Language.GetBlankIfNeed() + StringHelper.GetUnsafe(1244 + RoomServant.Mode) + rn;//决斗模式：
-            roomInfo += StringHelper.GetUnsafe(1236) + Language.GetBlankIfNeed() + StringHelper.GetUnsafe(1259 + Program.instance.ocgcore.MasterRule) + rn;//规则：
+            roomInfo += StringHelper.GetUnsafe(1236) + Language.GetBlankIfNeed() + StringHelper.GetUnsafe(1259 + OcgCore.MasterRule) + rn;//规则：
             roomInfo += StringHelper.GetUnsafe(1225) + Language.GetBlankIfNeed() + StringHelper.GetUnsafe(1481 + RoomServant.Rule) + rn;//卡片允许：
             roomInfo += StringHelper.GetUnsafe(1226) + Language.GetBlankIfNeed() + BanlistManager.GetName(RoomServant.LFList) + rn;//禁限卡表
             roomInfo += StringHelper.GetUnsafe(1231) + Language.GetBlankIfNeed() + RoomServant.StartLp + rn;//初始基本分：

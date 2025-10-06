@@ -8,6 +8,7 @@ using UnityEngine.UI;
 using MDPro3.Servant;
 using MDPro3.UI.ServantUI;
 using MDPro3.Utility;
+using Cysharp.Threading.Tasks;
 
 namespace MDPro3.UI
 {
@@ -60,41 +61,29 @@ namespace MDPro3.UI
 
         public void Refresh()
         {
-            refreshCoroutine = StartCoroutine(RefreshAsync());
+            _ = RefreshAsync();
         }
 
-        private IEnumerator RefreshAsync()
+        private async UniTask RefreshAsync()
         {
             for (int i = 0; i < index; i++)
-                yield return null;
+                await UniTask.Yield();
 
             if (path.StartsWith("Protector"))
             {
-                var ie = ABLoader.LoadProtectorMaterial(itemID.ToString());
-                StartCoroutine(ie);
-                while (ie.MoveNext())
-                    yield return null;
-                Protector.material = ie.Current;
+                Protector.material = await ABLoader.LoadProtectorMaterial(itemID.ToString(), destroyCancellationToken);
                 Protector.material.renderQueue = 3000;
                 Protector.color = Color.white;
                 Icon.gameObject.SetActive(false);
             }
             else if (path.Length > 0)
             {
-                var load = Program.items.LoadItemIconAsync(itemID.ToString(), Items.ItemType.Unknown);
-                while (load.MoveNext())
-                    yield return null;
-                Icon.sprite = load.Current;
+                Icon.sprite = await Program.items.LoadItemIconAsync(itemID.ToString(), Items.ItemType.Unknown);
                 Icon.color = Color.white;
                 if (path.StartsWith("ProfileFrame"))
                 {
                     Icon.rectTransform.localScale = Vector3.one * 0.8f;
-                    var ie = ABLoader.LoadFrameMaterial(itemID.ToString());
-                    StartCoroutine(ie);
-                    while (ie.MoveNext())
-                        yield return null;
-                    Material mat = ie.Current;
-                    Icon.material = mat;
+                    Icon.material = await ABLoader.LoadFrameMaterial(itemID.ToString());
                     Icon.material.SetTexture("_ProfileFrameTex", Icon.sprite.texture);
                     Icon.sprite = TextureManager.container.black;
                     Icon.color = Color.white;
@@ -111,11 +100,9 @@ namespace MDPro3.UI
             }
             else //CrossDuel Mate
             {
-                var task = CardImageLoader.LoadArtAsync(itemID, true);
-                while (!task.IsCompleted)
-                    yield return null;
+                var art = await CardImageLoader.LoadArtAsync(itemID, true, destroyCancellationToken);
                 Icon.color = Color.white;
-                Icon.sprite = TextureManager.Texture2Sprite(task.Result);
+                Icon.sprite = TextureManager.Texture2Sprite(art);
                 Protector.gameObject.SetActive(false);
             }
 

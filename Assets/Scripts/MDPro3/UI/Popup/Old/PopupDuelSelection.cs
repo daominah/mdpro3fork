@@ -31,7 +31,7 @@ namespace MDPro3.UI
                     {
                         var binaryMaster = new BinaryMaster();
                         binaryMaster.writer.Write(int.Parse(selected));
-                        Program.instance.ocgcore.SendReturn(binaryMaster.Get());
+                        SendReturn(binaryMaster.Get());
                     }
                     Hide();
                 });

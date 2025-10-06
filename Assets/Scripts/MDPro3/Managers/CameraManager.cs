@@ -18,7 +18,7 @@ namespace MDPro3
         public Camera cameraDuelOverlayEffect2D;
         public Camera cameraUI;
         public Camera cameraUIBlur;
-        public Camera cameraRenderTexture;
+        //public Camera cameraRenderTexture;
         public GameObject light;
         public SpriteRenderer black;
 
@@ -28,7 +28,7 @@ namespace MDPro3
         public UniversalRendererData forwardRendererDataForUI;
 
         public static Vector3 mainCameraDefaultPosition = new(0f, 95f, -37f);
-        public static Vector3 mainCameraDefaultRotation = new(70f, 0f, 0f);
+        public static Vector3 mainCameraDefaultAngle = new(70f, 0f, 0f);
         public static int DuelOverlay2DCount = 0;
         public static int DuelOverlayEffect2DCount = 0;
         public static int DuelOverlay3DCount = 0;
@@ -75,15 +75,15 @@ namespace MDPro3
             Program.instance.camera_.light.SetActive(false);
             Program.instance.camera_.camera2D.gameObject.SetActive(true);
 
-            DuelOverlay3DCount = 0;
-            DuelOverlay2DCount = 0;
-            DuelOverlayEffect3DCount = 0;
-            DuelOverlayEffect2DCount = 0;
+            //DuelOverlay3DCount = 0;
+            //DuelOverlay2DCount = 0;
+            //DuelOverlayEffect3DCount = 0;
+            //DuelOverlayEffect2DCount = 0;
 
-            DuelOverlay3DMinus();
-            DuelOverlayEffect3DMinus();
-            DuelOverlay2DMinus();
-            DuelOverlayEffect2DMinus();
+            //DuelOverlay3DMinus();
+            //DuelOverlayEffect3DMinus();
+            //DuelOverlay2DMinus();
+            //DuelOverlayEffect2DMinus();
 
             QualitySettings.SetQualityLevel(6);
         }
@@ -191,6 +191,8 @@ namespace MDPro3
             }
         }
 
+        #region Black Transition
+
         public static void BlackInOut(float delay, float inTime, float time, float outTime)
         {
             var sequence = DOTween.Sequence();
@@ -213,6 +215,8 @@ namespace MDPro3
             sequence.AppendInterval(delay);
             sequence.Append(Program.instance.camera_.black.DOFade(0f, outTime));
         }
+
+        #endregion
 
         public static void ShakeCamera(bool heavy = false)
         {
@@ -240,14 +244,8 @@ namespace MDPro3
                 overlaySticking = false;
                 Program.instance.camera_.cameraDuelOverlay3D.transform.SetParent(Program.instance.camera_.transform, false);
                 Program.instance.camera_.cameraDuelOverlay3D.transform.localPosition = mainCameraDefaultPosition;
-                Program.instance.camera_.cameraDuelOverlay3D.transform.localEulerAngles = mainCameraDefaultRotation;
+                Program.instance.camera_.cameraDuelOverlay3D.transform.localEulerAngles = mainCameraDefaultAngle;
             }
         }
-
-        private void OnApplicationQuit()
-        {
-            cameraRenderTexture.targetTexture = null;
-        }
-
     }
 }

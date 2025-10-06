@@ -29,7 +29,7 @@ namespace MDPro3.Servant
         protected virtual float SubBlackAlpha => 0f;
         protected virtual string Label_UI => $"ServantUI/{GetType().Name}UI.prefab";
 
-        protected ServantUI servantUI;
+        public ServantUI servantUI;
 
         public virtual void Initialize()
         {

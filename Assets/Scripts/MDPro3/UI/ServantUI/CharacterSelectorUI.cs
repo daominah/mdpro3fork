@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using static MDPro3.Servant.CharacterSelector;
+using MDPro3.Duel;
 
 namespace MDPro3.UI.ServantUI
 {
@@ -170,7 +171,7 @@ namespace MDPro3.UI.ServantUI
         {
             CharacterSelectorUI.player = player;
 
-            var configCharacter = Config.Get(condition + "Character" + player, VoiceHelper.defaultCharacter);
+            var configCharacter = Config.Get(condition + "Character" + player, VoicePlayer.defaultCharacter);
             var configSeries = characters.GetCharacterSeries(configCharacter);
             Manager.GetElement<SelectionToggle_CharacterSeries>("Page" + configSeries).SetToggleOn();
         }
@@ -216,7 +217,7 @@ namespace MDPro3.UI.ServantUI
             {
                 item.SetActive(true);
                 var mono = item.GetComponent<SelectionToggle_CharacterItem>();
-                var config = Config.Get(condition + "Character" + player, VoiceHelper.defaultCharacter);
+                var config = Config.Get(condition + "Character" + player, VoicePlayer.defaultCharacter);
 
                 if (mono.characterID == config)
                     mono.SetToggleOn();

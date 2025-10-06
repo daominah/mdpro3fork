@@ -1,7 +1,8 @@
-using System;
-using System.Collections;
+using Cysharp.Threading.Tasks;
+using Org.Brotli.Dec;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.Rendering;
@@ -11,28 +12,28 @@ using YgomGame;
 
 namespace MDPro3
 {
-    public class ABLoader : MonoBehaviour
+    public class ABLoader
     {
-        public static Dictionary<string, GameObject> cachedAB = new Dictionary<string, GameObject>();
-        public static Dictionary<string, List<GameObject>> cachedABFolder = new Dictionary<string, List<GameObject>>();
-        public static Dictionary<string, Material> cachedPMat = new Dictionary<string, Material>();
-        private static readonly object pMatLock = new();
-        private static bool loadingPMat;
+        public static Dictionary<string, GameObject> cachedAB = new();
+        public static Dictionary<string, GameObject> cachedABFolder = new();
+        public static Dictionary<string, Material> cachedPMat = new();
+        private static readonly List<GameObject> tempGameObjects = new();
 
-        public static IEnumerator CacheFromFileAsync(string path)
+        private static SemaphoreSlim protectorSemaphoreSlim = new(1, 1);
+
+        public static async UniTask<AssetBundle> CacheFromFileAsync(string path)
         {
-            var abr = AssetBundle.LoadFromFileAsync(path);
-            while (!abr.isDone)
-                yield return null;
+            return await AssetBundle.LoadFromFileAsync(path);
         }
 
-        public static GameObject LoadFromFile(string path, bool cache = false)
+        public static GameObject LoadFromFile(string path, bool cache, bool instantiate)
         {
-            GameObject returnValue;
-            if (cachedAB.TryGetValue(path, out returnValue))
+            if (cachedAB.TryGetValue(path, out var returnValue))
             {
-                returnValue = Instantiate(returnValue);
-                return returnValue;
+                if (instantiate && returnValue != null)
+                    return UnityEngine.Object.Instantiate(returnValue);
+                else
+                    return returnValue;
             }
 
             AssetBundle ab;
@@ -43,32 +44,35 @@ namespace MDPro3
                 if (typeof(GameObject).IsInstanceOfType(prefab))
                 {
                     if (cache)
-                        cachedAB.Add(path, prefab as GameObject);
-                    returnValue = Instantiate(prefab as GameObject);
-                    ab.Unload(false);
-                    return returnValue;
+                    {
+                        if (!cachedAB.TryAdd(path, prefab as GameObject))
+                            Debug.LogWarning($"Failed to cache {path}");
+                    }
+                    else
+                        tempGameObjects.Add(prefab as GameObject);
+                    returnValue = prefab as GameObject;
+                    break;
                 }
             }
-            return null;
+
+            ab.Unload(false);
+            if (instantiate && returnValue != null)
+                return UnityEngine.Object.Instantiate(returnValue);
+            else
+                return returnValue;
         }
 
-        public static IEnumerator<GameObject> LoadFromFileAsync(string path, bool cache = false, bool copy = true)
+        public static async UniTask<GameObject> LoadFromFileAsync(string path, bool cache, bool instantiate)
         {
-            GameObject returnValue;
-            if (cachedAB.TryGetValue(path, out returnValue))
+            if (cachedAB.TryGetValue(path, out GameObject returnValue))
             {
-                if (copy)
-                {
-                    returnValue = Instantiate(returnValue);
-                    yield return returnValue;
-                }
-                yield break;
+                if (instantiate)
+                    return UnityEngine.Object.Instantiate(returnValue);
+                else
+                    return returnValue;
             }
 
-            var abr = AssetBundle.LoadFromFileAsync(Program.root + path);
-            while (!abr.isDone)
-                yield return null;
-            AssetBundle ab = abr.assetBundle;
+            AssetBundle ab = await AssetBundle.LoadFromFileAsync(Program.root + path);
             var prefabs = ab.LoadAllAssets();
 
             foreach (UnityEngine.Object prefab in prefabs)
@@ -76,54 +80,173 @@ namespace MDPro3
                 if (typeof(GameObject).IsInstanceOfType(prefab))
                 {
                     if (cache)
-                        cachedAB.Add(path, prefab as GameObject);
+                    {
+                        if (!cachedAB.TryAdd(path, prefab as GameObject))
+                            Debug.LogWarning($"Failed to cache {path}");
+                    }
+                    else
+                        tempGameObjects.Add(prefab as GameObject);
                     returnValue = prefab as GameObject;
+                    //break;
                 }
             }
             ab.Unload(false);
-            if (copy)
-                yield return Instantiate(returnValue);
+
+            if (instantiate && returnValue != null)
+                return UnityEngine.Object.Instantiate(returnValue);
+            else
+                return returnValue;
         }
 
-        public static GameObject LoadFromFolder(string path, string abName = "GameObject", bool cache = false)
+        public static GameObject LoadFromFolder<T>(string path, bool cache, bool instantiate) where T : Component
         {
-            GameObject returnValue = new GameObject(abName);
-            if (cachedABFolder.TryGetValue(path, out var cachedPrefabs))
+            if (cachedABFolder.TryGetValue(path, out var returnValue))
             {
-                foreach (var prefab in cachedPrefabs)
-                {
-                    var go = Instantiate(prefab);
-                    go.transform.SetParent(returnValue.transform, false);
-                }
-                return returnValue;
+                if (instantiate)
+                    return UnityEngine.Object.Instantiate(returnValue);
+                else
+                    return returnValue;
             }
 
-            List<AssetBundle> bundles = new List<AssetBundle>();
-
-            DirectoryInfo dir = new DirectoryInfo(Program.root + path);
+            DirectoryInfo dir = new(Program.root + path);
 #if !UNITY_EDITOR && (UNITY_STANDALONE_OSX || UNITY_STANDALONE_WIN)
             dir = new DirectoryInfo(Path.Combine(Application.dataPath, Program.root + path));
 #endif
 
             FileInfo[] files = dir.GetFiles("*");
+            List<AssetBundle> bundles = new();
             for (int i = 0; i < files.Length; i++)
                 bundles.Add(AssetBundle.LoadFromFile(files[i].FullName));
-            List<GameObject> cached = new List<GameObject>();
+            List<GameObject> loadedPrefabs = new();
             foreach (AssetBundle bundle in bundles)
             {
                 var prefabs = bundle.LoadAllAssets();
                 for (int j = 0; j < prefabs.Length; j++)
                     if (typeof(GameObject).IsInstanceOfType(prefabs[j]))
-                        cached.Add(prefabs[j] as GameObject);
+                        loadedPrefabs.Add(prefabs[j] as GameObject);
             }
-            if (cache)
-                if (!cachedABFolder.ContainsKey(path))
-                    cachedABFolder.Add(path, cached);
-            foreach (var prefab in cached)
+
+            foreach (var prefab in loadedPrefabs)
+                if (prefab.TryGetComponent<T>(out _))
+                {
+                    returnValue = prefab;
+                    break;
+                }
+            foreach (AssetBundle bundle in bundles)
+                bundle.Unload(false);
+            if(cache && returnValue != null)
+                cachedABFolder.TryAdd(path, returnValue);
+            else if(!cache)
+                tempGameObjects.AddRange(loadedPrefabs);
+
+            if (returnValue == null)
+                Debug.Log($"LoadFromFolderAsync get null: {path}");
+
+            if (instantiate)
             {
-                var go = Instantiate(prefab);
-                go.transform.SetParent(returnValue.transform, false);
+                if (returnValue != null)
+                    return UnityEngine.Object.Instantiate(returnValue);
+                else
+                    return UnityEngine.Object.Instantiate(loadedPrefabs[0]);
             }
+            else
+            {
+                if (returnValue != null)
+                    return returnValue;
+                else
+                    return loadedPrefabs[0];
+            }
+        }
+
+        public static async UniTask<GameObject> LoadFromFolderAsync<T>(string path, bool cache, bool instantiate) where T : Component
+        {
+            if (cachedABFolder.TryGetValue(path, out var returnValue))
+            {
+                if (instantiate)
+                    return UnityEngine.Object.Instantiate(returnValue);
+                else
+                    return returnValue;
+            }
+
+            DirectoryInfo dir = new(Program.root + path);
+#if !UNITY_EDITOR && (UNITY_STANDALONE_OSX || UNITY_STANDALONE_WIN)
+            dir = new DirectoryInfo(Path.Combine(Application.dataPath, Program.root + path));
+#endif
+
+            FileInfo[] files = dir.GetFiles("*");
+            List<AssetBundle> bundles = new();
+            for (int i = 0; i < files.Length; i++)
+                bundles.Add(await AssetBundle.LoadFromFileAsync(files[i].FullName));
+
+            var loadedPrefabs = new List<GameObject>();
+            foreach (AssetBundle bundle in bundles)
+            {
+                var prefabs = bundle.LoadAllAssets();
+                for (int j = 0; j < prefabs.Length; j++)
+                    if (typeof(GameObject).IsInstanceOfType(prefabs[j]))
+                        loadedPrefabs.Add(prefabs[j] as GameObject);
+            }
+
+            foreach (var prefab in loadedPrefabs)
+            {
+                if(prefab.TryGetComponent<T>(out _))
+                {
+                    returnValue = prefab;
+                    break;
+                }
+            }
+            foreach (AssetBundle bundle in bundles)
+                bundle.Unload(false);
+            if (cache && returnValue != null)
+                cachedABFolder.TryAdd(path, returnValue);
+            else if (!cache)
+                tempGameObjects.AddRange(loadedPrefabs);
+
+            if (returnValue == null)
+                Debug.Log($"LoadFromFolderAsync get null: {path}");
+
+            if (instantiate)
+            {
+                if(returnValue != null)
+                    return UnityEngine.Object.Instantiate(returnValue);
+                else
+                    return UnityEngine.Object.Instantiate(loadedPrefabs[0]);
+            }
+            else
+            {
+                if (returnValue != null)
+                    return returnValue;
+                else
+                    return loadedPrefabs[0];
+            }
+        }
+
+        public static async UniTask<List<GameObject>> LoadsFromFolderAsync<T>(string path)
+        {
+            var returnValue = new List<GameObject>();
+
+            DirectoryInfo dir = new(Program.root + path);
+#if !UNITY_EDITOR && (UNITY_STANDALONE_OSX || UNITY_STANDALONE_WIN)
+            dir = new DirectoryInfo(Path.Combine(Application.dataPath, Program.root + path));
+#endif
+
+            FileInfo[] files = dir.GetFiles("*");
+            List<AssetBundle> bundles = new();
+            for (int i = 0; i < files.Length; i++)
+                bundles.Add(await AssetBundle.LoadFromFileAsync(files[i].FullName));
+
+            var loadedPrefabs = new List<GameObject>();
+            foreach (AssetBundle bundle in bundles)
+            {
+                var prefabs = bundle.LoadAllAssets();
+                foreach(var prefab in prefabs)
+                    if (typeof(GameObject).IsInstanceOfType(prefab))
+                        loadedPrefabs.Add(prefab as GameObject);
+            }
+
+            foreach (var prefab in loadedPrefabs)
+                if (prefab.TryGetComponent<T>(out _))
+                    returnValue.Add(prefab);
 
             foreach (AssetBundle bundle in bundles)
                 bundle.Unload(false);
@@ -131,174 +254,87 @@ namespace MDPro3
             return returnValue;
         }
 
-        public static IEnumerator<GameObject> LoadFromFolderAsync(string path, string abName = "GameObject", bool cache = false, bool copy = true)
+        public static async UniTask<Material> LoadProtectorMaterial(string code, CancellationToken token)
         {
-            GameObject returnValue = new GameObject(abName);
-            if (cachedABFolder.TryGetValue(path, out var cachedPrefabs))
-            {
-                if (copy)
-                {
-                    foreach (var prefab in cachedPrefabs)
-                    {
-                        var go = Instantiate(prefab);
-                        go.transform.SetParent(returnValue.transform, false);
-                    }
-                    yield return returnValue;
-                }
-                else
-                    Destroy(returnValue);
-                yield break;
-            }
+            await protectorSemaphoreSlim.WaitAsync(token);
 
-            List<AssetBundle> bundles = new List<AssetBundle>();
-
-            DirectoryInfo dir = new DirectoryInfo(Program.root + path);
-#if !UNITY_EDITOR && (UNITY_STANDALONE_OSX || UNITY_STANDALONE_WIN)
-            dir = new DirectoryInfo(Path.Combine(Application.dataPath, Program.root + path));
-#endif
-
-            FileInfo[] files = dir.GetFiles("*");
-            for (int i = 0; i < files.Length; i++)
+            try
             {
-                var abr = AssetBundle.LoadFromFileAsync(files[i].FullName);
-                while (!abr.isDone)
-                    yield return null;
-                bundles.Add(abr.assetBundle);
-            }
-            var cached = new List<GameObject>();
-            foreach (AssetBundle bundle in bundles)
-            {
-                var prefabs = bundle.LoadAllAssets();
-                for (int j = 0; j < prefabs.Length; j++)
-                    if (typeof(GameObject).IsInstanceOfType(prefabs[j]))
-                        cached.Add(prefabs[j] as GameObject);
-            }
+                if (code == Items.CODE_RANDOM.ToString())
+                    code = Program.items.GetRandomItem(Items.ItemType.Protector).id.ToString();
 
-            if (cache)
-                if (!cachedABFolder.ContainsKey(path))
-                    cachedABFolder.Add(path, cached);
-            foreach (AssetBundle bundle in bundles)
-                bundle.Unload(false);
-            if (copy)
-            {
-                foreach (var prefab in cached)
-                {
-                    var go = Instantiate(prefab);
-                    go.transform.SetParent(returnValue.transform, false);
-                }
-                yield return returnValue;
-            }
-            else
-            {
-                Destroy(returnValue);
-                yield return null;
-            }
-        }
+                if (cachedPMat.TryGetValue(code, out var material))
+                    if (material != null)
+                        return material;
 
-        public static IEnumerator<Material> LoadProtectorMaterial(string code)
-        {
-            if (code == Items.CODE_RANDOM.ToString())
-                code = Program.items.GetRandomItem(Items.ItemType.Protector).id.ToString();
-
-            if (cachedPMat.TryGetValue(code, out var material))
-            {
-                if (material != null)
-                {
-                    yield return material;
-                    yield break;
-                }
-                else
-                    cachedPMat.Remove(code);
-            }
-            while (true)
-            {
-                lock (pMatLock)
-                {
-                    if (!loadingPMat)
-                    {
-                        loadingPMat = true;
-                        break;
-                    }
-                }
-                yield return null;
-            }
-
-            var folder = Program.root + "MasterDuel/Protector/" + code;
+                var folder = Program.root + "MasterDuel/Protector/" + code;
 #if !UNITY_EDITOR && (UNITY_STANDALONE_OSX || UNITY_STANDALONE_WIN)
             folder = Path.Combine(Application.dataPath, folder);
 #endif
-            if (!Directory.Exists(folder))
-                yield break;
-            var files = Directory.GetFiles(folder);
+                if (!Directory.Exists(folder))
+                    return null;
 
-            AssetBundle matAB = null;
-            List<AssetBundle> abs = new List<AssetBundle>();
-            foreach (var file in files)
-            {
-                var abr = AssetBundle.LoadFromFileAsync(file);
-                while(!abr.isDone)
-                    yield return null;
-                abs.Add(abr.assetBundle);
-                if (Path.GetFileName(file) == code)
-                    matAB = abr.assetBundle;
+                var files = Directory.GetFiles(folder);
+
+                AssetBundle matAB = null;
+                List<AssetBundle> abs = new();
+                foreach (var file in files)
+                {
+                    var ab = await AssetBundle.LoadFromFileAsync(file).WithCancellation(token);
+                    abs.Add(ab);
+                    if (Path.GetFileName(file) == code)
+                        matAB = ab;
+                }
+                if (matAB == null)
+                    return null;
+
+                material = matAB.LoadAsset<Material>("PMat");
+                material.renderQueue = 3000;
+                foreach (var ab in abs)
+                    ab.Unload(false);
+
+                if (cachedPMat.ContainsKey(code))
+                    material = cachedPMat[code];
+                else
+                    cachedPMat.Add(code, material);
+
+                return material;
             }
-            if(matAB == null)
-                yield break;
-
-            material = matAB.LoadAsset<Material>("PMat");
-            material.renderQueue = 3000;
-            foreach (var ab in abs)
-                ab.Unload(false);
-
-            if (cachedPMat.ContainsKey(code))
-                material = cachedPMat[code];
-            else
-                cachedPMat.Add(code, material);
-            lock (pMatLock)
+            finally
             {
-                loadingPMat = false;
+                protectorSemaphoreSlim.Release();
             }
-            yield return material;
         }
 
-        public static IEnumerator<Material> LoadFrameMaterial(string code)
+        public static async UniTask<Material> LoadFrameMaterial(string code)
         {
             if (code == Items.CODE_RANDOM.ToString())
                 code = Items.lastRandomFrameID;
 
-            var abr = AssetBundle.LoadFromFileAsync(Program.root + "MasterDuel/Frame/ProfileFrameMat" + code);
-            while (!abr.isDone)
-                yield return null;
-            var ab = abr.assetBundle;
+            var ab = await AssetBundle.LoadFromFileAsync(Program.root + "MasterDuel/Frame/ProfileFrameMat" + code);
             var material = ab.LoadAsset<Material>("ProfileFrameMat" + code);
             ab.Unload(false);
             TextureManager.ChangeProfileFrameMaterialWrapMode(material);
-            yield return material;
+            return material;
         }
 
-        public static IEnumerator<Material> LoadMaterialAsync(string path)
+        public static async UniTask<Material> LoadMaterialAsync(string path, CancellationToken token)
         {
-            var abr = AssetBundle.LoadFromFileAsync(Program.root + path);
-            while (!abr.isDone) 
-                yield return null;
-            var ab = abr.assetBundle;
+            var ab = await AssetBundle.LoadFromFileAsync(Program.root + path).WithCancellation(token);
             var matetial = ab.LoadAsset<Material>(Path.GetFileName(path));
             ab.Unload(false);
-            yield return matetial;
+            return matetial;
         }
 
-        public static IEnumerator<Shader> LoadShaderAsync(string path)
+        public static async UniTask<Shader> LoadShaderAsync(string path, CancellationToken token)
         {
-            var abr = AssetBundle.LoadFromFileAsync(Path.Combine(Program.root, path));
-            while (!abr.isDone)
-                yield return null;
-            var ab = abr.assetBundle;
+            var ab = await AssetBundle.LoadFromFileAsync(Path.Combine(Program.root, path)).WithCancellation(token);
             var shader = ab.LoadAsset<Shader>(Path.GetFileNameWithoutExtension(path));
             ab.Unload(false);
-            yield return shader;
+            return shader;
         }
 
-        public static IEnumerator<Mate> LoadMateAsync(int code)
+        public static async UniTask<Mate> LoadMateAsync(int code)
         {
             Items.Item item = new();
             foreach (var mate in Program.items.mates)
@@ -315,10 +351,7 @@ namespace MDPro3
             Mate returnValue = null;
             if (type == Mate.MateType.CrossDuel)
             {
-                var abr = AssetBundle.LoadFromFileAsync(Program.root + "CrossDuel/" + code + ".bundle");
-                while (!abr.isDone)
-                    yield return null;
-                var ab = abr.assetBundle;
+                var ab = await AssetBundle.LoadFromFileAsync(Program.root + "CrossDuel/" + code + ".bundle");
                 var all = ab.LoadAllAssets();
                 ab.Unload(false);
                 foreach (var asset in all)
@@ -328,20 +361,20 @@ namespace MDPro3
                         container.TryGet<GameObject>("prefab", out var prefab);
                         container.TryGet<NamedAssetContainer>("Timelines", out var timelines);
                         container.TryGet<ParameterContainer>("Settings", out var settings);
-                        var mateGo = Instantiate(prefab);
+                        var mateGo = UnityEngine.Object.Instantiate(prefab);
                         mateGo.AddComponent<FieldParamEventController_AnimationEventReceiver>();
                         foreach (var s in timelines.AllNamedAssetNames())
                         {
                             timelines.TryGet<GameObject>(s, out var timeline);
-                            var newT = Instantiate(timeline);
+                            var newT = UnityEngine.Object.Instantiate(timeline);
                             newT.transform.SetParent(mateGo.transform, false);
                             newT.SetActive(true);
                             for (int i = 0; i < newT.transform.childCount; i++)
                             {
                                 if (newT.transform.GetChild(i).GetComponent<Volume>() != null)
-                                    Destroy(newT.transform.GetChild(i).gameObject);
+                                    UnityEngine.Object.Destroy(newT.transform.GetChild(i).gameObject);
                                 if (newT.transform.GetChild(i).name == "UIBattleDownAni")
-                                    Destroy(newT.transform.GetChild(i).gameObject);
+                                    UnityEngine.Object.Destroy(newT.transform.GetChild(i).gameObject);
                             }
                             var controller = newT.GetComponent<CustomTimelineController>();
                             var bindTrackInfo = controller.checkReplacer.m_bindTrackInfo;
@@ -362,39 +395,112 @@ namespace MDPro3
             }
             else
             {
-                bool mateInFolder = false;
                 var matePath = Program.items.GetAssetPath(code.ToString(), Items.ItemType.Mate);
 
-                IEnumerator<GameObject> ie;
+                GameObject mateGo;
                 if (matePath.EndsWith("_Folder"))
-                {
-                    mateInFolder = true;
-                    ie = LoadFromFolderAsync("MasterDuel/" + matePath.Replace("_Folder", string.Empty));
-                }
+                    mateGo = await LoadFromFolderAsync<CharacterCollision>("MasterDuel/" + matePath.Replace("_Folder", string.Empty), false, true);
                 else
-                    ie = LoadFromFileAsync("MasterDuel/" + matePath);
-                while (ie.MoveNext())
-                    yield return null;
-                var mateGo = ie.Current;
-                if(mateInFolder)
-                {
-                    for (int i = 0; i < ie.Current.transform.childCount; i++)
-                    {
-                        if (ie.Current.transform.GetChild(i).GetComponent<CharacterCollision>() != null)
-                        {
-                            mateGo = Instantiate(ie.Current.transform.GetChild(i).gameObject);
-                            Destroy(ie.Current);
-                            break;
-                        }
-                    }
-                }
+                    mateGo = await LoadFromFileAsync("MasterDuel/" + matePath, false, true);
                 returnValue = mateGo.AddComponent<Mate>();
             }
             returnValue.type = type;
             returnValue.code = code;
-            yield return returnValue;
+            return returnValue;
         }
 
+        public static void ClearTemp()
+        {
+            foreach (var go in tempGameObjects)
+                UnityEngine.Object.Destroy(go);
+            tempGameObjects.Clear();
+        }
+
+
+        #region MasterDuel
+
+        public static bool mdCached;
+
+        private static AssetBundle mdBundleDuel;
+        private static AssetBundle mdBundleMaterials;
+        private static AssetBundle mdBundleSprites;
+        private static AssetBundle mdBundleTextures;
+
+        public static async UniTask CacheMasterDuelBundles()
+        {
+            await CacheFromFileAsync(Program.root + "MasterDuel/Built-in/shaders");
+            mdBundleMaterials = await CacheFromFileAsync(Program.root + "MasterDuel/Built-in/materials");
+            mdBundleSprites = await CacheFromFileAsync(Program.root + "MasterDuel/Built-in/sprites");
+            mdBundleTextures = await CacheFromFileAsync(Program.root + "MasterDuel/Built-in/textures");
+            mdBundleDuel = await CacheFromFileAsync(Program.root + "MasterDuel/Built-in/duel");
+            mdCached = true;
+        }
+
+        public static GameObject LoadMasterDuelGameObject(string oName)
+        {
+            if(mdBundleDuel == null)
+            {
+                Debug.LogError("MasterDuel AssetBundles not cached!");
+                return null;
+            }
+
+            var prefab = mdBundleDuel.LoadAsset<GameObject>(oName);
+            if(prefab == null)
+            {
+                Debug.LogError($"MasterDuel AssetBundle does not contain [{oName}]!");
+                return null;
+            }
+            return Object.Instantiate(prefab);
+        }
+
+        public static Material LoadMasterDuelMaterial(string mName)
+        {
+            if (mdBundleMaterials == null)
+            {
+                Debug.LogError("MasterDuel AssetBundles not cached!");
+                return null;
+            }
+            var mat = mdBundleMaterials.LoadAsset<Material>(mName);
+            if (mat == null)
+            {
+                Debug.LogError($"MasterDuel AssetBundle does not contain material [{mName}]!");
+                return null;
+            }
+            return Object.Instantiate(mat);
+        }
+
+        public static Sprite LoadMasterDuelSprite(string sName)
+        {
+            if (mdBundleSprites == null)
+            {
+                Debug.LogError("MasterDuel AssetBundles not cached!");
+                return null;
+            }
+            var sprite = mdBundleSprites.LoadAsset<Sprite>(sName);
+            if (sprite == null)
+            {
+                Debug.LogError($"MasterDuel AssetBundle does not contain sprite [{sName}]!");
+                return null;
+            }
+            return sprite;
+        }
+
+        public static Texture2D LoadMasterDuelTexture(string tName)
+        {
+            if (mdBundleTextures == null)
+            {
+                Debug.LogError("MasterDuel AssetBundles not cached!");
+                return null;
+            }
+            var tex = mdBundleTextures.LoadAsset<Texture2D>(tName);
+            if (tex == null)
+            {
+                Debug.LogError($"MasterDuel AssetBundle does not contain texture [{tName}]!");
+                return null;
+            }
+            return tex;
+        }
+
+        #endregion
     }
 }
-

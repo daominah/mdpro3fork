@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using MDPro3;
 using System.Collections;
 using UnityEngine;
@@ -159,20 +160,17 @@ namespace YgomSystem.Effect
 
         private void OnEnable()
         {
-			StartCoroutine(SetupAsync());
+			_ = SetupAsync();
         }
 
-		private IEnumerator SetupAsync()
-		{
+        private async UniTask SetupAsync()
+        {
             if (targetSprite == null)
                 if (!gameObject.TryGetComponent(out targetSprite))
-                    yield break;
-
+                    return;
             targetSprite.enabled = false;
-
-            // Wait for the next frame to ensure script changes are ready.
-            yield return null;
-
+            await UniTask.Yield(destroyCancellationToken);
+            await UniTask.Yield(destroyCancellationToken);
             targetSprite.enabled = true;
 
             Camera viewCamera = gameObject.layer switch
@@ -199,11 +197,16 @@ namespace YgomSystem.Effect
             if (viewCamera == null)
                 return;
 
-            //if (_changePosition)
-            //    transform.position = viewCamera.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, _fixedDepth));
+            var cameraToSprite = transform.position - viewCamera.transform.position;
+            var depth = Vector3.Dot(cameraToSprite, viewCamera.transform.forward);
+            if(_isUseFixedDepth)
+                depth = _fixedDepth;
 
-            //float depth = _isUseFixedDepth ? _fixedDepth : viewCamera.WorldToScreenPoint(transform.position).z;
-            float depth = viewCamera.WorldToScreenPoint(transform.position).z;
+            if (_changePosition)
+            {
+                transform.position = viewCamera.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, depth));
+                transform.eulerAngles = viewCamera.transform.eulerAngles;
+            }
 
             float screenWidth;
             float screenHeight;

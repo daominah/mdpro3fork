@@ -6,6 +6,7 @@ using System.Collections;
 using UnityEngine.EventSystems;
 using MDPro3.Servant;
 using MDPro3.UI.ServantUI;
+using Cysharp.Threading.Tasks;
 
 namespace MDPro3.UI
 {
@@ -28,34 +29,17 @@ namespace MDPro3.UI
             Manager.GetElement<TextMeshProUGUI>("Player1Name").text = player1Name;
         }
 
-        protected override IEnumerator RefreshAsync()
+        protected override async UniTask RefreshAsync()
         {
             refreshed = false;
 
             Manager.GetElement<RawImage>("Face0").texture = Appearance.defaultFace0.texture;
             Manager.GetElement<RawImage>("Face1").texture = Appearance.defaultFace1.texture;
 
-            var load = MyCard.GetAvatarAsync(player0Name);
-            while (!load.IsCompleted)
-                yield return null;
-            if (load.Result != null)
-                Manager.GetElement<RawImage>("Face0").texture = load.Result;
+            Manager.GetElement<RawImage>("Face0").texture = await MyCard.GetAvatarAsync(player0Name);
+            Manager.GetElement<RawImage>("Face1").texture = await MyCard.GetAvatarAsync(player1Name);
 
-            load = MyCard.GetAvatarAsync(player1Name);
-            while (!load.IsCompleted)
-                yield return null;
-            if (load.Result != null)
-                Manager.GetElement<RawImage>("Face1").texture = load.Result;
-
-            enumerator = null;
             refreshed = true;
-        }
-
-        protected override void OnDisable()
-        {
-            base.OnDisable();
-            if(enumerator != null)
-                StopCoroutine(enumerator);
         }
 
         protected override void CallToggleOnEvent()

@@ -1,9 +1,10 @@
+using MDPro3.Duel.YGOSharp;
+using MDPro3.Servant;
+using MDPro3.UI.ServantUI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using MDPro3.Duel.YGOSharp;
 using static MDPro3.GameCard;
-using MDPro3.UI.ServantUI;
 
 namespace MDPro3.UI
 {
@@ -42,24 +43,24 @@ namespace MDPro3.UI
             var collider = gameObject.AddComponent<BoxCollider>();
             if ((p.location & (uint)CardLocation.Deck) > 0)
             {
-                highlight = ABLoader.LoadFromFile("MasterDuel/Effects/eff_highlight/eff_duel_highlight10", true);
+                highlight = ABLoader.LoadMasterDuelGameObject("eff_duel_highlight10");
                 transform.localEulerAngles = new Vector3(0, -19.5f, 0);
                 collider.size = new Vector3(8f, 1f, 10f);
             }
             else if ((p.location & (uint)CardLocation.Extra) > 0)
             {
-                highlight = ABLoader.LoadFromFile("MasterDuel/Effects/eff_highlight/eff_duel_highlight10", true);
+                highlight = ABLoader.LoadMasterDuelGameObject("eff_duel_highlight10");
                 transform.localEulerAngles = new Vector3(0, 19.5f, 0);
                 collider.size = new Vector3(8f, 1f, 10f);
             }
             else if ((p.location & (uint)CardLocation.MonsterZone) > 0)
             {
-                highlight = ABLoader.LoadFromFile("MasterDuel/Effects/eff_highlight/eff_duel_highlight11", true);
+                highlight = ABLoader.LoadMasterDuelGameObject("eff_duel_highlight11");
                 collider.size = new Vector3(8f, 1f, 8f);
-                select = ABLoader.LoadFromFile("MasterDuel/Effects/Hitghlight/fxp_HL_Select/fxp_HL_Select_mst_001", true);
-                selectPush = ABLoader.LoadFromFile("MasterDuel/Effects/Hitghlight/fxp_HL_Select/fxp_HL_Select_mst_Push_001", true);
-                selectCard = ABLoader.LoadFromFile("MasterDuel/Effects/Hitghlight/fxp_HL_Select/fxp_HL_Select_card_001", true);
-                selectCardPush = ABLoader.LoadFromFile("MasterDuel/Effects/Hitghlight/fxp_HL_Select/fxp_HL_Select_card_Push_001", true);
+                select = ABLoader.LoadMasterDuelGameObject("fxp_HL_Select_mst_001");
+                selectPush = ABLoader.LoadMasterDuelGameObject("fxp_HL_Select_mst_Push_001");
+                selectCard = ABLoader.LoadMasterDuelGameObject("fxp_HL_Select_card_001");
+                selectCardPush = ABLoader.LoadMasterDuelGameObject("fxp_HL_Select_card_Push_001");
                 disable = new GameObject("Disable");
                 CreateSelectButton();
             }
@@ -67,23 +68,23 @@ namespace MDPro3.UI
             {
                 if (p.sequence == 5)
                 {
-                    highlight = ABLoader.LoadFromFile("MasterDuel/Effects/eff_highlight/eff_duel_highlight13", true);
+                    highlight = ABLoader.LoadMasterDuelGameObject("eff_duel_highlight13");
                     collider.size = new Vector3(6f, 1f, 7f);
-                    select = ABLoader.LoadFromFile("MasterDuel/Effects/Hitghlight/fxp_HL_Select/fxp_HL_Select_card_001", true);
-                    selectPush = ABLoader.LoadFromFile("MasterDuel/Effects/Hitghlight/fxp_HL_Select/fxp_HL_Select_card_Push_001", true);
-                    selectCard = ABLoader.LoadFromFile("MasterDuel/Effects/Hitghlight/fxp_HL_Select/fxp_HL_Select_card_001", true);
-                    selectCardPush = ABLoader.LoadFromFile("MasterDuel/Effects/Hitghlight/fxp_HL_Select/fxp_HL_Select_card_Push_001", true);
+                    select = ABLoader.LoadMasterDuelGameObject("fxp_HL_Select_card_001");
+                    selectPush = ABLoader.LoadMasterDuelGameObject("fxp_HL_Select_card_Push_001");
+                    selectCard = ABLoader.LoadMasterDuelGameObject("fxp_HL_Select_card_001");
+                    selectCardPush = ABLoader.LoadMasterDuelGameObject("fxp_HL_Select_card_Push_001");
                     select.transform.localScale = Vector3.one * 0.8f;
                     selectPush.transform.localScale = Vector3.one * 0.8f;
                 }
                 else
                 {
-                    highlight = ABLoader.LoadFromFile("MasterDuel/Effects/eff_highlight/eff_duel_highlight12", true);
+                    highlight = ABLoader.LoadMasterDuelGameObject("eff_duel_highlight12");
                     collider.size = new Vector3(8f, 1f, 7f);
-                    select = ABLoader.LoadFromFile("MasterDuel/Effects/Hitghlight/fxp_HL_Select/fxp_HL_Select_trpmgc_001", true);
-                    selectPush = ABLoader.LoadFromFile("MasterDuel/Effects/Hitghlight/fxp_HL_Select/fxp_HL_Select_trpmgc_Push_001", true);
-                    selectCard = ABLoader.LoadFromFile("MasterDuel/Effects/Hitghlight/fxp_HL_Select/fxp_HL_Select_card_001", true);
-                    selectCardPush = ABLoader.LoadFromFile("MasterDuel/Effects/Hitghlight/fxp_HL_Select/fxp_HL_Select_card_Push_001", true);
+                    select = ABLoader.LoadMasterDuelGameObject("fxp_HL_Select_trpmgc_001");
+                    selectPush = ABLoader.LoadMasterDuelGameObject("fxp_HL_Select_trpmgc_Push_001");
+                    selectCard = ABLoader.LoadMasterDuelGameObject("fxp_HL_Select_card_001");
+                    selectCardPush = ABLoader.LoadMasterDuelGameObject("fxp_HL_Select_card_Push_001");
                 }
                 selectCard.transform.localScale = Vector3.one * 0.8f;
                 selectCardPush.transform.localScale = Vector3.one * 0.8f;
@@ -180,14 +181,14 @@ namespace MDPro3.UI
                 foreach(var place in Program.instance.ocgcore.places)
                     if(place.selected)
                         selectedCount++;
-                if (selectedCount == Program.instance.ocgcore.ES_min)
+                if (selectedCount == OcgCore.ES_min)
                 {
                     var binaryMaster = new BinaryMaster();
                     foreach (var place in Program.instance.ocgcore.places)
                         if (place.selected)
                         {
                             var response = new byte[3];
-                            response[0] = Program.instance.ocgcore.isFirst ? (byte)place.p.controller : (byte)(1 - place.p.controller);
+                            response[0] = OcgCore.isFirst ? (byte)place.p.controller : (byte)(1 - place.p.controller);
                             response[1] = (byte)place.p.location;
                             response[2] = (byte)place.p.sequence;
                             binaryMaster.writer.Write(response);
@@ -198,7 +199,7 @@ namespace MDPro3.UI
             else if (cardSelecting)
             {
                 AudioManager.PlaySE("SE_DUEL_SELECT");
-                if (Program.instance.ocgcore.currentMessage == GameMessage.SelectCounter)
+                if (OcgCore.currentMessage == GameMessage.SelectCounter)
                 {
                     if (!cardUnselectable)
                         selectButton.Show();
@@ -223,7 +224,7 @@ namespace MDPro3.UI
                         Program.instance.ocgcore.GetUI<OcgCoreUI>().CardDescription.Hide();
                         Program.instance.ocgcore.GetUI<OcgCoreUI>().CardList.Hide();
                     }
-                    foreach (var c in Program.instance.ocgcore.cards)
+                    foreach (var c in OcgCore.cards)
                         if (c != card)
                             c.NotClickThis();
                 }
@@ -231,7 +232,7 @@ namespace MDPro3.UI
                 {
                     AudioManager.PlaySE("SE_DUEL_SELECT");
                     List<GameCard> cards = new();
-                    foreach (var card in Program.instance.ocgcore.cards)
+                    foreach (var card in OcgCore.cards)
                         if ((card.p.location & p.location) > 0)
                             if (card.p.controller == p.controller)
                                 cards.Add(card);
@@ -241,7 +242,7 @@ namespace MDPro3.UI
                     {
                         bool spsummmon = false;
                         bool activate = false;
-                        foreach (var card in Program.instance.ocgcore.cards)
+                        foreach (var card in OcgCore.cards)
                             if ((card.p.location & p.location) > 0)
                                 if (card.p.controller == p.controller)
                                     foreach (var btn in card.buttons)
@@ -282,7 +283,7 @@ namespace MDPro3.UI
 
             for (int i = 0; i < buttons.Count; i++)
             {
-                var obj = Instantiate(Program.instance.ocgcore.container.duelButton);
+                var obj = ABLoader.LoadMasterDuelGameObject("DuelButton");
                 var mono = obj.GetComponent<DuelButton>();
                 buttonObjs.Add(mono);
                 mono.response = buttons[i].response;
@@ -300,7 +301,7 @@ namespace MDPro3.UI
 
         private void CreateSelectButton()
         {
-            var obj = Instantiate(Program.instance.ocgcore.container.duelButton);
+            var obj = ABLoader.LoadMasterDuelGameObject("DuelButton");
             selectButton = obj.GetComponent<DuelButton>();
             selectButton.response.Add(-3);
             selectButton.hint = "";
@@ -404,9 +405,9 @@ namespace MDPro3.UI
                     }
                 }
             }
-            if (cardSelecting && Program.instance.ocgcore.currentMessage == GameMessage.SelectSum)
+            if (cardSelecting && OcgCore.currentMessage == GameMessage.SelectSum)
             {
-                if (Program.instance.ocgcore.cardsMustBeSelected.Contains(cookieCard))
+                if (OcgCore.cardsMustBeSelected.Contains(cookieCard))
                 {
                     cardPreselected = true;
                     cardSelected = true;
@@ -419,7 +420,7 @@ namespace MDPro3.UI
         {
             cardSelected = true;
 
-            if (Program.instance.ocgcore.currentMessage != GameMessage.SelectCounter)
+            if (OcgCore.currentMessage != GameMessage.SelectCounter)
                 selectCard.SetActive(false);
             selectCardPush.SetActive(false);
             selectCardPush.SetActive(true);
@@ -428,7 +429,7 @@ namespace MDPro3.UI
 
         public void UnselectCardInThisZone()
         {
-            if (Program.instance.ocgcore.currentMessage == GameMessage.SelectCounter)
+            if (OcgCore.currentMessage == GameMessage.SelectCounter)
                 return;
             cardSelected = false;
             Program.instance.ocgcore.FieldSelectRefresh(cookieCard);
@@ -506,7 +507,7 @@ namespace MDPro3.UI
         public GameCard FindCardInThisPlace()
         {
             if ((p.location & (uint)CardLocation.MonsterZone) > 0 && p.sequence == 5)
-                foreach (var card in Program.instance.ocgcore.cards)
+                foreach (var card in OcgCore.cards)
                 {
                     if ((card.p.location & (uint)CardLocation.MonsterZone) > 0)
                     {
@@ -519,7 +520,7 @@ namespace MDPro3.UI
                     }
                 }
             else if ((p.location & (uint)CardLocation.MonsterZone) > 0 && p.sequence == 6)
-                foreach (var card in Program.instance.ocgcore.cards)
+                foreach (var card in OcgCore.cards)
                 {
                     if ((card.p.location & (uint)CardLocation.MonsterZone) > 0)
                     {
@@ -532,7 +533,7 @@ namespace MDPro3.UI
                     }
                 }
             else
-                foreach (var card in Program.instance.ocgcore.cards)
+                foreach (var card in OcgCore.cards)
                     if (p.controller == card.p.controller)
                         if ((card.p.location & (uint)CardLocation.Overlay) == 0)
                             if (p.location == card.p.location)
@@ -546,7 +547,7 @@ namespace MDPro3.UI
         {
             if ((location & p.location) > 0 && controller == p.controller)
             {
-                hintObj = ABLoader.LoadFromFile("MasterDuel/Effects/Hitghlight/fxp_HL_EXdeck_001", true);
+                hintObj = ABLoader.LoadMasterDuelGameObject("fxp_HL_EXdeck_001");
                 hintObj.transform.SetParent(transform, false);
                 int cardCount = Program.instance.ocgcore.GetLocationCardCount((CardLocation)location, controller);
                 hintObj.transform.localScale = new Vector3(1f, cardCount * 0.1f, 1f);
@@ -568,8 +569,8 @@ namespace MDPro3.UI
                 return;
 
             int order = 0;
-            if (p.controller != 0 && Program.instance.ocgcore.isFirst
-                || p.controller == 0 && !Program.instance.ocgcore.isFirst)
+            if (p.controller != 0 && OcgCore.isFirst
+                || p.controller == 0 && !OcgCore.isFirst)
                 order += 16;
 
             if (p.location == (uint)CardLocation.SpellZone)

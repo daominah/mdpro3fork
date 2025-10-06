@@ -1,4 +1,6 @@
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using MDPro3.Servant;
 using MDPro3.Utility;
 using System.Collections;
 using System.Collections.Generic;
@@ -25,7 +27,7 @@ namespace MDPro3.UI
 
         public override void InitializeSelections()
         {
-            StartCoroutine(RefreshCard(code));
+            _ = RefreshCard(code);
             if (count == 3)
             {
                 btnPositionAttack.onClick.AddListener(OnAttack);
@@ -78,61 +80,56 @@ namespace MDPro3.UI
                     Destroy(positionDefenseDown.gameObject);
             }
         }
-        IEnumerator RefreshCard(int code)
+        private async UniTask RefreshCard(int code)
         {
-            var task = CardImageLoader.LoadCardAsync(code, false);
-            while (!task.IsCompleted)
-                yield return null;
-            var matLoad = MaterialLoader.LoadCardMaterialAsync(code);
-            while (!matLoad.IsCompleted)
-                yield return null;
-            var mat = matLoad.Result;
+            var texture = await CardImageLoader.LoadCardAsync(code, false, destroyCancellationToken);
+            var mat = MaterialLoader.GetCardMaterial(code);
             if (positionAttack != null)
             {
                 if (option1 == 1)
                 {
                     positionAttack.material = mat;
-                    positionAttack.texture = task.Result;
+                    positionAttack.texture = texture;
                 }
                 else
-                    positionAttack.material = Program.instance.ocgcore.myProtector;
+                    positionAttack.material = OcgCore.myProtector;
             }
             if (positionDefense != null)
             {
                 positionDefense.material = mat;
-                positionDefense.texture = task.Result;
+                positionDefense.texture = texture;
             }
             if (positionDefenseDown != null)
-                positionDefenseDown.material = Program.instance.ocgcore.myProtector;
+                positionDefenseDown.material = OcgCore.myProtector;
         }
 
-        void OnAttack()
+        private void OnAttack()
         {
             Hide();
             var p = new BinaryMaster();
             p.writer.Write(1);
-            Program.instance.ocgcore.SendReturn(p.Get());
+            SendReturn(p.Get());
         }
-        void OnAttackDown()
+        private void OnAttackDown()
         {
             Hide();
             var p = new BinaryMaster();
             p.writer.Write(2);
-            Program.instance.ocgcore.SendReturn(p.Get());
+            SendReturn(p.Get());
         }
-        void OnDefense()
+        private void OnDefense()
         {
             Hide();
             var p = new BinaryMaster();
             p.writer.Write(4);
-            Program.instance.ocgcore.SendReturn(p.Get());
+            SendReturn(p.Get());
         }
-        void OnDefenseDown()
+        private void OnDefenseDown()
         {
             Hide();
             var p = new BinaryMaster();
             p.writer.Write(8);
-            Program.instance.ocgcore.SendReturn(p.Get());
+            SendReturn(p.Get());
         }
     }
 }

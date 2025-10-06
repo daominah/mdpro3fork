@@ -65,7 +65,7 @@ namespace MDPro3.Servant
             base.ApplyShowArrangement(preDepth);
             CoreShowing = 0;
             Program.instance.ui_.chatPanel.Show(false);
-            Program.instance.ocgcore.handler = Handler;
+            OcgCore.handler = Handler;
             GetUI<RoomServantUI>().RefreshDeckSelector();
         }
 
@@ -144,27 +144,27 @@ namespace MDPro3.Servant
             {
                 if (SelfType == 7)
                 {
-                    Program.instance.ocgcore.name_0 = GetPlayerName(0);
-                    Program.instance.ocgcore.name_1 = GetPlayerName(1);
+                    OcgCore.name_0 = GetPlayerName(0);
+                    OcgCore.name_1 = GetPlayerName(1);
                 }
                 else
                 {
-                    Program.instance.ocgcore.name_0 = GetPlayerName(SelfType);
-                    Program.instance.ocgcore.name_1 = GetPlayerName(1 - SelfType);
+                    OcgCore.name_0 = GetPlayerName(SelfType);
+                    OcgCore.name_1 = GetPlayerName(1 - SelfType);
                 }
-                Program.instance.ocgcore.name_0_c = Program.instance.ocgcore.name_0;
-                Program.instance.ocgcore.name_1_c = Program.instance.ocgcore.name_1;
-                Program.instance.ocgcore.name_0_tag = "---";
-                Program.instance.ocgcore.name_1_tag = "---";
+                OcgCore.name_0_c = OcgCore.name_0;
+                OcgCore.name_1_c = OcgCore.name_1;
+                OcgCore.name_0_tag = "---";
+                OcgCore.name_1_tag = "---";
             }
             else
             {
                 if (SelfType == 7)
                 {
-                    Program.instance.ocgcore.name_0 = GetPlayerName(0);
-                    Program.instance.ocgcore.name_0_tag = GetPlayerName(1);
-                    Program.instance.ocgcore.name_1 = GetPlayerName(2);
-                    Program.instance.ocgcore.name_1_tag = GetPlayerName(3);
+                    OcgCore.name_0 = GetPlayerName(0);
+                    OcgCore.name_0_tag = GetPlayerName(1);
+                    OcgCore.name_1 = GetPlayerName(2);
+                    OcgCore.name_1_tag = GetPlayerName(3);
                 }
                 else
                 {
@@ -183,14 +183,14 @@ namespace MDPro3.Servant
                             opTag = 1;
                             break;
                     }
-                    Program.instance.ocgcore.name_0 = GetPlayerName((SelfType == 0 || SelfType == 2) ? SelfType : SelfType - 1);
-                    Program.instance.ocgcore.name_0_tag = GetPlayerName((SelfType == 0 || SelfType == 2) ? SelfType + 1 : SelfType);
-                    Program.instance.ocgcore.name_1 = GetPlayerName(op);
-                    Program.instance.ocgcore.name_1_tag = GetPlayerName(opTag);
+                    OcgCore.name_0 = GetPlayerName((SelfType == 0 || SelfType == 2) ? SelfType : SelfType - 1);
+                    OcgCore.name_0_tag = GetPlayerName((SelfType == 0 || SelfType == 2) ? SelfType + 1 : SelfType);
+                    OcgCore.name_1 = GetPlayerName(op);
+                    OcgCore.name_1_tag = GetPlayerName(opTag);
                 }
             }
-            Program.instance.ocgcore.timeLimit = TimeLimit;
-            Program.instance.ocgcore.lpLimit = StartLp;
+            OcgCore.timeLimit = TimeLimit;
+            OcgCore.lpLimit = StartLp;
             if(FromSolo)
                 Program.instance.ocgcore.returnServant = Program.instance.solo;
             else
@@ -199,7 +199,7 @@ namespace MDPro3.Servant
                 OcgCore.condition = OcgCore.Condition.Watch;
             else
                 OcgCore.condition = OcgCore.Condition.Duel;
-            Program.instance.ocgcore.inAi = false;
+            OcgCore.inPuzzle = false;
             Program.instance.ShiftToServant(Program.instance.ocgcore);
         }
 
@@ -396,7 +396,7 @@ namespace MDPro3.Servant
             LFList = r.ReadUInt32();
             Rule = r.ReadByte();
             Mode = r.ReadByte();
-            Program.instance.ocgcore.MasterRule = r.ReadChar();
+            OcgCore.MasterRule = r.ReadChar();
             NoCheckDeck = r.ReadBoolean();
             NoShuffleDeck = r.ReadBoolean();
             r.ReadByte();

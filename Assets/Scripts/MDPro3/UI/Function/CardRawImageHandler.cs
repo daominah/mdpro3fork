@@ -1,4 +1,3 @@
-using DG.Tweening;
 using MDPro3.Duel.YGOSharp;
 using System.Collections;
 using UnityEngine;
@@ -6,16 +5,17 @@ using UnityEngine.UI;
 using MDPro3.Utility;
 using System.Threading;
 using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 
 namespace MDPro3.UI
 {
     [RequireComponent(typeof(RawImage))]
     public class CardRawImageHandler : MonoBehaviour
     {
+        #region 字段和属性
+
         public bool cache;
-
         public Card card;
-
         public int protectorCode = 1070001;
 
         protected bool m_Refreshed;
@@ -28,26 +28,26 @@ namespace MDPro3.UI
 
         protected Material normalMat;
         protected Material tempMat;
-
         private CancellationTokenSource cts;
 
-        protected Tween matTweener;
+        private int currentLoadId = 0;
+        private int loadedCardId = 0;
+
+        #endregion
+
+        #region Unity生命周期
 
         protected void OnDestroy()
         {
+            CancelCurrentLoad();
             Destroy(normalMat);
             Destroy(tempMat);
-            DeleteCard();
+            ReleaseCard();
         }
 
-        private void DeleteCard()
-        {
-            if (card != null)
-            {
-                CardImageLoader.ReleaseCard(card.Id);
-                card = null;
-            }
-        }
+        #endregion
+
+        #region 公共API
 
         public void SetCard(int code)
         {
@@ -62,81 +62,61 @@ namespace MDPro3.UI
 
         public void SetCard(Card data)
         {
-            if (card != null && card.Id == data.Id)
+            if (data == null)
+            {
+                ReleaseCard();
                 return;
-            DeleteCard();
-            card = data;
+            }
 
-            _ = LoadCardPicAsync();
+            if (card != null && card.Id == data.Id && m_Refreshed)
+                return;
+
+            CancelCurrentLoad();
+            card = data;
+            if (card != null)
+            {
+                _ = LoadCardPicAsync();
+            }
+            else
+            {
+                ReleaseCard();
+            }
         }
 
-        private async Task LoadCardPicAsync()
+        public void CancelCurrentLoad()
         {
-            m_Refreshed = false;
-
-            if(normalMat == null)
+            try
             {
-                var matLoad = MaterialLoader.LoadCardMaterialAsync(-1);
-                while (!matLoad.IsCompleted)
-                    await TaskUtility.WaitOneFrame(gameObject);
-                normalMat = matLoad.Result;
+                currentLoadId++;
+                cts?.Cancel();
+                cts?.Dispose();
             }
-            normalMat.SetTexture("_LoadingTex", TextureManager.container
-                .GetCardLoadingTexture(CardsManager.Get(card.Id)));
-
-            if (matTweener != null && matTweener.IsActive())
-                matTweener.Kill();
-            normalMat.SetFloat("_LoadingBlend", 1f);
-            RawImage.material = normalMat;
-
-            if (tempMat != null)
-                Destroy(tempMat);
-
-            CancelLoading();
-            cts = new CancellationTokenSource();
-            var task = CardImageLoader.LoadCardAsync(card.Id, cache, cts.Token);
-
-            while (!task.IsCompleted)
-                await TaskUtility.WaitOneFrame(gameObject, cts.Token);
-            RawImage.texture = task.Result;
-
-            if (CardRarity.GetRarity(card.Id) == CardRarity.Rarity.Normal)
-                matTweener = normalMat.DOFloat(0f, "_LoadingBlend", 0.1f);
-            else
-                await LoadMatAsync(0.1f);
-
-            m_Refreshed = true;
+            finally
+            {
+                cts = null;
+            }
         }
 
         public void RefreshRarity(int code)
         {
-            if (card.Id != code)
+            if (card == null || card.Id != code)
                 return;
-            if(tempMat != null)
+
+            if (tempMat != null)
                 DestroyImmediate(tempMat);
+
             if (CardRarity.GetRarity(card.Id) == CardRarity.Rarity.Normal)
             {
-                normalMat.SetFloat("_LoadingBlend", 0f);
-                RawImage.material = normalMat;
+                if (normalMat != null)
+                {
+                    normalMat.SetFloat("_LoadingBlend", 0f);
+                    RawImage.material = normalMat;
+                }
             }
             else
-                _ = LoadMatAsync(0f);
-        }
-
-        protected async Task LoadMatAsync(float fadeTime)
-        {
-            var task = MaterialLoader.LoadCardMaterialAsync(card.Id);
-            while (!task.IsCompleted)
-                await TaskUtility.WaitOneFrame(gameObject);
-
-            tempMat = task.Result;
-            tempMat.SetFloat("_LoadingBlend", 1f);
-            tempMat.SetTexture("_LoadingTex"
-                , normalMat.GetTexture("_LoadingTex"));
-            RawImage.material = tempMat;
-            if(matTweener != null && matTweener.IsActive())
-                matTweener.Kill();
-            matTweener = tempMat.DOFloat(0f, "_LoadingBlend", fadeTime);
+            {
+                _ = LoadMatAsync(0f, default);
+            }
         }
 
         public void SetProtector(int code)
@@ -145,28 +125,180 @@ namespace MDPro3.UI
             _ = LoadProtectorAsync(code);
         }
 
-        private async Task LoadProtectorAsync(int code)
+        #endregion
+
+        #region 私有实现
+
+        private void ReleaseCard()
+        {
+            if (loadedCardId != 0)
+            {
+                CardImageLoader.ReleaseCard(loadedCardId);
+                loadedCardId = 0;
+            }
+            RawImage.texture = null;
+            m_Refreshed = false;
+        }
+
+        private async UniTaskVoid LoadCardPicAsync()
+        {
+            if (card == null)
+                return;
+
+            int targetCardId = card.Id;
+            int loadId = ++currentLoadId;
+            m_Refreshed = false;
+
+            try
+            {
+                cts = new CancellationTokenSource();
+                var token = cts.Token;
+
+                await UniTask.Yield(PlayerLoopTiming.Update, token);
+
+                if (card == null || card.Id != targetCardId || loadId != currentLoadId)
+                    return;
+
+                if (normalMat == null)
+                    normalMat = MaterialLoader.GetCardMaterial(-1);
+
+                if (card == null || card.Id != targetCardId || loadId != currentLoadId)
+                    return;
+
+                normalMat.SetTexture("_LoadingTex", TextureManager.container
+                    .GetCardLoadingTexture(CardsManager.Get(card.Id)));
+                normalMat.SetFloat("_LoadingBlend", 1f);
+                RawImage.material = normalMat;
+
+                if (tempMat != null)
+                {
+                    Destroy(tempMat);
+                    tempMat = null;
+                }
+
+                await UniTask.Yield(PlayerLoopTiming.Update, token);
+                if (card == null || card.Id != targetCardId || loadId != currentLoadId)
+                    return;
+
+                var cardTex = await CardImageLoader.LoadCardAsync(
+                    card.Id,
+                    cache,
+                    token);
+                if (card == null || card.Id != targetCardId || loadId != currentLoadId)
+                {
+                    // 如果卡片已更改，释放刚加载的纹理
+                    if (cardTex != null)
+                        CardImageLoader.ReleaseCard(card.Id);
+
+                    return;
+                }
+
+                if (cardTex == null)
+                {
+                    Debug.LogError($"Failed to load texture for card {card.Id}");
+                    return;
+                }
+
+                if (loadedCardId != 0 && loadedCardId != card.Id)
+                {
+                    CardImageLoader.ReleaseCard(loadedCardId);
+                }
+
+                loadedCardId = card.Id;
+                RawImage.texture = cardTex;
+
+                if (CardRarity.GetRarity(card.Id) == CardRarity.Rarity.Normal)
+                    await SetMaterialFloatAsync(normalMat, "_LoadingBlend", 0f, 0.1f, token);
+                else
+                    await LoadMatAsync(0.1f, token);
+
+                if (card == null || card.Id != targetCardId || loadId != currentLoadId)
+                    return;
+
+                m_Refreshed = true;
+            }
+            catch (System.OperationCanceledException)
+            {
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogError($"Load card picture failed: {e.Message}");
+            }
+        }
+
+        protected async UniTask LoadMatAsync(float fadeTime, CancellationToken token)
+        {
+            if (card == null) return;
+
+            try
+            {
+                tempMat = MaterialLoader.GetCardMaterial(card.Id);
+
+                if (cts.Token.IsCancellationRequested || card == null)
+                    return;
+
+                tempMat.SetFloat("_LoadingBlend", 1f);
+                tempMat.SetTexture("_LoadingTex", normalMat.GetTexture("_LoadingTex"));
+                RawImage.material = tempMat;
+                await SetMaterialFloatAsync(tempMat, "_LoadingBlend", 0f, fadeTime, token);
+            }
+            catch (System.OperationCanceledException)
+            {
+                // 任务被取消，不做处理
+            }
+        }
+
+        private async UniTask LoadProtectorAsync(int code)
         {
             m_Refreshed = false;
 
-            var im = ABLoader.LoadProtectorMaterial(code.ToString());
-            while (im.MoveNext())
-                await TaskUtility.WaitOneFrame(gameObject);
+            CancelCurrentLoad();
+            ReleaseCard();
+            card = null;
 
-            RawImage.material = im.Current;
-            m_Refreshed = true;
+            try
+            {
+                var material = await ABLoader.LoadProtectorMaterial(
+                    code.ToString(),
+                    destroyCancellationToken);
 
-            RawImage.texture = null;
-            DeleteCard();
-
-            m_Refreshed = true;
+                if (material != null)
+                {
+                    RawImage.material = material;
+                    RawImage.texture = null;
+                    m_Refreshed = true;
+                }
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogError($"Load protector failed: {e.Message}");
+            }
         }
 
-        private void CancelLoading()
+        private async UniTask SetMaterialFloatAsync(Material mat, string propertyName, float endValue, float duration, CancellationToken token)
         {
-            cts?.Cancel();
-            cts?.Dispose();
-            cts = null;
+            if (mat == null)
+                return;
+
+            float startValue = mat.GetFloat(propertyName);
+            float elapsedTime = 0f;
+
+            while (elapsedTime < duration && !token.IsCancellationRequested)
+            {
+                await UniTask.Yield(cancellationToken: token);
+                if (mat == null || token.IsCancellationRequested)
+                    return;
+
+                float t = elapsedTime / duration;
+                float currentValue = Mathf.Lerp(startValue, endValue, t);
+                mat.SetFloat(propertyName, currentValue);
+                elapsedTime += Time.deltaTime;
+            }
+
+            if (mat != null && !token.IsCancellationRequested)
+                mat.SetFloat(propertyName, endValue);
         }
+
+        #endregion
     }
 }

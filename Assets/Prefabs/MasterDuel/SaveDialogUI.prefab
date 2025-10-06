@@ -2693,12 +2693,12 @@ MonoBehaviour:
   _groupLabel: SaveDialogGroup
   storedGroupPriority: -1
   _overAreaDirectionMode: 0
-  upInputMode: 3
-  downInputMode: 3
-  rightInputMode: 3
-  leftInputMode: 3
+  upInputMode: -1
+  downInputMode: -1
+  rightInputMode: -1
+  leftInputMode: -1
   _maskMode: 0
-  _maskOperation: 3
+  _maskOperation: -1
   selectionParentSelector: {fileID: 0}
   selectionChildrenSelector: []
   selectionTargetItem: {fileID: 0}

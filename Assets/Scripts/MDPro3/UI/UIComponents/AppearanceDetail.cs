@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using MDPro3.Servant;
 using MDPro3.Utility;
 using System.Threading;
@@ -86,7 +87,7 @@ namespace MDPro3.UI
             _ = SetIconAsync(code, cts.Token, isCard);
         }
 
-        private async Task SetIconAsync(int code, CancellationToken token, bool isCard)
+        private async UniTask SetIconAsync(int code, CancellationToken token, bool isCard)
         {
             var codeString = code.ToString();
 
@@ -97,12 +98,10 @@ namespace MDPro3.UI
 
             if (isCard) //Cross Duel Mate
             {
-                var task = CardImageLoader.LoadArtAsync(code, true, token);
-                while (!task.IsCompleted)
-                    await TaskUtility.WaitOneFrame(gameObject, token);
-                if (task.Result != null)
+                var art = await CardImageLoader.LoadArtAsync(code, true, token);
+                if (art != null)
                 {
-                    Image.sprite = TextureManager.Texture2Sprite(task.Result);
+                    Image.sprite = TextureManager.Texture2Sprite(art);
                     Image.gameObject.SetActive(true);
                 }
             }
@@ -110,11 +109,7 @@ namespace MDPro3.UI
             {
                 if (codeString.StartsWith("107")) // Protector
                 {
-                    var ie = ABLoader.LoadProtectorMaterial(code.ToString());
-                    StartCoroutine(ie);
-                    while (ie.MoveNext())
-                        await TaskUtility.WaitOneFrame(gameObject, token);
-                    RawImage.material = ie.Current;
+                    RawImage.material = await ABLoader.LoadProtectorMaterial(code.ToString(), token);
                     RawImage.material.renderQueue = 3000;
                     RawImage.gameObject.SetActive(true);
                 }
@@ -129,10 +124,7 @@ namespace MDPro3.UI
                     {
                         if (codeString.StartsWith("103")) // Profile Frame
                         {
-                            var matLoad = ABLoader.LoadFrameMaterial(codeString);
-                            while(matLoad.MoveNext())
-                                await TaskUtility.WaitOneFrame(gameObject, token);
-                            Image.material = matLoad.Current;
+                            Image.material = await ABLoader.LoadFrameMaterial(codeString);
                             Image.material.SetTexture("_ProfileFrameTex", load.Result.texture);
 
                             var config = $"{Appearance.condition}Face{Appearance.player}";

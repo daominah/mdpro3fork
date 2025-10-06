@@ -16,6 +16,7 @@ namespace MDPro3.Duel.YGOSharp
         PendulumZone = 0x200,
         Search = 0x800
     }
+
     public enum CardPosition
     {
         FaceUpAttack = 0x1,
@@ -27,6 +28,7 @@ namespace MDPro3.Duel.YGOSharp
         Attack = 0x3,
         Defence = 0xC
     }
+
     public enum CardType
     {
         Monster = 0x1,
@@ -68,6 +70,7 @@ namespace MDPro3.Duel.YGOSharp
         All = 0x7f,
         Count = 7
     }
+
     public enum CardRace
     {
         Warrior = 0x1,
@@ -135,6 +138,7 @@ namespace MDPro3.Duel.YGOSharp
         Link = 0x10000000,
         LOST_OVERLAY = 0x20000000,
     }
+
     public enum CardStatus
     {
         Disabled = 0x1,
@@ -208,6 +212,7 @@ namespace MDPro3.Duel.YGOSharp
         Top = 0x80,
         TopRight = 0x100
     }
+
     public enum GameMessage
     {
         Retry = 1,
@@ -313,6 +318,7 @@ namespace MDPro3.Duel.YGOSharp
         sibyl_name = 235,
         sibyl_quit = 236,
     }
+
     public enum DuelHint
     {
         Event = 1,
@@ -341,6 +347,7 @@ namespace MDPro3.Duel.YGOSharp
         Main2 = 0x100,
         End = 0x200
     }
+
     public enum SearchCode
     {
         OPCODE_ADD = 0x40000000,

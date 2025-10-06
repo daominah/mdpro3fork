@@ -15,6 +15,8 @@ using UnityEngine.Networking;
 using UnityEngine.Rendering.Universal;
 using static MDPro3.CardRenderer;
 using ShadowResolution = UnityEngine.Rendering.Universal.ShadowResolution;
+using MDPro3.Duel;
+
 
 namespace MDPro3.UI.ServantUI
 {
@@ -1501,13 +1503,13 @@ namespace MDPro3.UI.ServantUI
             if (CharacterSelector.characters == null)
                 return;
 
-            var characterName = CharacterSelector.characters.GetName(Config.Get("DuelCharacter0", VoiceHelper.defaultCharacter));
+            var characterName = CharacterSelector.characters.GetName(Config.Get("DuelCharacter0", VoicePlayer.defaultCharacter));
             ButtonDuelCharacter.SetModeText(characterName);
 
-            characterName = CharacterSelector.characters.GetName(Config.Get("WatchCharacter0", VoiceHelper.defaultCharacter));
+            characterName = CharacterSelector.characters.GetName(Config.Get("WatchCharacter0", VoicePlayer.defaultCharacter));
             ButtonWatchCharacter.SetModeText(characterName);
 
-            characterName = CharacterSelector.characters.GetName(Config.Get("ReplayCharacter0", VoiceHelper.defaultCharacter));
+            characterName = CharacterSelector.characters.GetName(Config.Get("ReplayCharacter0", VoicePlayer.defaultCharacter));
             ButtonReplayCharacter.SetModeText(characterName);
         }
 
@@ -1919,7 +1921,7 @@ namespace MDPro3.UI.ServantUI
             ButtonDuelFaceDown.SetModeText(InterString.Get(config ? "关" : "开"));
             Config.SetBool("DuelFaceDown", !config);
 
-            foreach (var card in Program.instance.ocgcore.cards)
+            foreach (var card in OcgCore.cards)
                 card.ShowFaceDownCardOrNot(card.NeedShowFaceDownCard());
         }
         private void OnWatchFaceDownClick()
@@ -1928,7 +1930,7 @@ namespace MDPro3.UI.ServantUI
             ButtonWatchFaceDown.SetModeText(InterString.Get(config ? "关" : "开"));
             Config.SetBool("WatchFaceDown", !config);
 
-            foreach (var card in Program.instance.ocgcore.cards)
+            foreach (var card in OcgCore.cards)
                 card.ShowFaceDownCardOrNot(card.NeedShowFaceDownCard());
         }
         private void OnReplayFaceDownClick()
@@ -1937,7 +1939,7 @@ namespace MDPro3.UI.ServantUI
             ButtonReplayFaceDown.SetModeText(InterString.Get(config ? "关" : "开"));
             Config.SetBool("ReplayFaceDown", !config);
 
-            foreach (var card in Program.instance.ocgcore.cards)
+            foreach (var card in OcgCore.cards)
                 card.ShowFaceDownCardOrNot(card.NeedShowFaceDownCard());
         }
 

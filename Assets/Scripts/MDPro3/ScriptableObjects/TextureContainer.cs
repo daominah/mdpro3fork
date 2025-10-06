@@ -70,6 +70,7 @@ namespace MDPro3
         public Texture2D cardNormal;
         public Texture2D cardNormalLink;
         public Texture2D cardNormalPendulum;
+        public Texture2D CardKiraNormal03_Millennium;
 
         [Header("Card Attribute")]
         public Sprite attributeLight;
@@ -463,15 +464,6 @@ namespace MDPro3
         public Sprite gamepad_Select_Nintendo;
         public Sprite gamepad_Start_Nintendo;
 
-        [Header("Other")]
-        public Texture2D fxt_Arrow;
-        public Texture2D fxt_Arrow_002;
-        public Texture2D fxt_Arrow_003;
-        public Texture2D fxt_Arrow_004;
-        public Texture2D fxt_msk_005;
-        public Texture2D CardKiraNormal03_Millennium;
-        public Texture2D CardMask001;
-
         #region MyCard Rank
 
         int[] rankRange = new int[]
@@ -698,39 +690,39 @@ namespace MDPro3
         public List<Sprite> GetLocationIcons(GPS p)
         {
             var returnValue = new List<Sprite>();
-            if ((p.location & (uint)CardLocation.Onfield) > 0
-                && (p.location & (uint)CardLocation.Overlay) == 0)
+            if (p.InLocation(CardLocation.Onfield)
+                && !p.InLocation(CardLocation.Overlay))
             {
-                if ((p.location & (uint)CardLocation.SpellZone) > 0 && p.sequence == 5)
+                if (p.InLocation(CardLocation.SpellZone) && p.sequence == 5)
                 {
                     returnValue.Add(locationFieldMagic);
-                    returnValue.Add(p.controller == 0 ? controllerMe : controllerOp);
+                    returnValue.Add(p.InMyControl() ? controllerMe : controllerOp);
                     return returnValue;
                 }
-                if ((p.location & (uint)CardLocation.MonsterZone) > 0)
+                if (p.InLocation(CardLocation.MonsterZone))
                 {
                     switch (p.sequence)
                     {
                         case 0:
-                            returnValue.Add(p.controller == 0 ? locationMyMZone0 : locationOpMZone0);
+                            returnValue.Add(p.InMyControl() ? locationMyMZone0 : locationOpMZone0);
                             break;
                         case 1:
-                            returnValue.Add(p.controller == 0 ? locationMyMZone1 : locationOpMZone1);
+                            returnValue.Add(p.InMyControl() ? locationMyMZone1 : locationOpMZone1);
                             break;
                         case 2:
-                            returnValue.Add(p.controller == 0 ? locationMyMZone2 : locationOpMZone2);
+                            returnValue.Add(p.InMyControl() ? locationMyMZone2 : locationOpMZone2);
                             break;
                         case 3:
-                            returnValue.Add(p.controller == 0 ? locationMyMZone3 : locationOpMZone3);
+                            returnValue.Add(p.InMyControl() ? locationMyMZone3 : locationOpMZone3);
                             break;
                         case 4:
-                            returnValue.Add(p.controller == 0 ? locationMyMZone4 : locationOpMZone4);
+                            returnValue.Add(p.InMyControl() ? locationMyMZone4 : locationOpMZone4);
                             break;
                         case 5:
-                            returnValue.Add(p.controller == 0 ? locationMyMZone5 : locationOpMZone5);
+                            returnValue.Add(p.InMyControl() ? locationMyMZone5 : locationOpMZone5);
                             break;
                         case 6:
-                            returnValue.Add(p.controller == 0 ? locationMyMZone6 : locationOpMZone6);
+                            returnValue.Add(p.InMyControl() ? locationMyMZone6 : locationOpMZone6);
                             break;
                     }
                 }
@@ -739,19 +731,19 @@ namespace MDPro3
                     switch (p.sequence)
                     {
                         case 0:
-                            returnValue.Add(p.controller == 0 ? locationMySZone0 : locationOpSZone0);
+                            returnValue.Add(p.InMyControl() ? locationMySZone0 : locationOpSZone0);
                             break;
                         case 1:
-                            returnValue.Add(p.controller == 0 ? locationMySZone1 : locationOpSZone1);
+                            returnValue.Add(p.InMyControl() ? locationMySZone1 : locationOpSZone1);
                             break;
                         case 2:
-                            returnValue.Add(p.controller == 0 ? locationMySZone2 : locationOpSZone2);
+                            returnValue.Add(p.InMyControl() ? locationMySZone2 : locationOpSZone2);
                             break;
                         case 3:
-                            returnValue.Add(p.controller == 0 ? locationMySZone3 : locationOpSZone3);
+                            returnValue.Add(p.InMyControl() ? locationMySZone3 : locationOpSZone3);
                             break;
                         case 4:
-                            returnValue.Add(p.controller == 0 ? locationMySZone4 : locationOpSZone4);
+                            returnValue.Add(p.InMyControl() ? locationMySZone4 : locationOpSZone4);
                             break;
                     }
                 }
@@ -995,5 +987,6 @@ namespace MDPro3
         }
 
         #endregion
+
     }
 }

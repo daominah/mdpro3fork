@@ -1,5 +1,6 @@
 using MDPro3.Duel;
 using MDPro3.Duel.YGOSharp;
+using MDPro3.Servant;
 using System;
 using System.Collections.Generic;
 using TMPro;
@@ -237,37 +238,6 @@ namespace MDPro3.UI.ServantUI
         {
             if (RectPlaceCount.gameObject.activeSelf)
                 RectPlaceCount.gameObject.SetActive(false);
-        }
-
-        public void ShowPhaseBanner(int controller, DuelPhase phase)
-        {
-            var container = Program.instance.ocgcore.container;
-            GameObject banner;
-            if (controller == 0)
-            {
-                banner = phase switch
-                {
-                    DuelPhase.Draw => Instantiate(container.duelDrawPhaseNear),
-                    DuelPhase.Standby => Instantiate(container.duelStandbyPhaseNear),
-                    DuelPhase.Main1 => Instantiate(container.duelMain1PhaseNear),
-                    DuelPhase.Main2 => Instantiate(container.duelMain2PhaseNear),
-                    DuelPhase.End => Instantiate(container.duelEndPhaseNear),
-                    _ => Instantiate(container.duelBattlePhaseNear),
-                };
-            }
-            else
-            {
-                banner = phase switch
-                {
-                    DuelPhase.Draw => Instantiate(container.duelDrawPhaseFar),
-                    DuelPhase.Standby => Instantiate(container.duelStandbyPhaseFar),
-                    DuelPhase.Main1 => Instantiate(container.duelMain1PhaseFar),
-                    DuelPhase.Main2 => Instantiate(container.duelMain2PhaseFar),
-                    DuelPhase.End => Instantiate(container.duelEndPhaseFar),
-                    _ => Instantiate(container.duelBattlePhaseFar),
-                };
-            }
-            Destroy(banner, 1f);
         }
 
         #endregion
@@ -532,26 +502,27 @@ namespace MDPro3.UI.ServantUI
         private void ShowBgDetail()
         {
             var core = Program.instance.ocgcore;
+            var info = Program.instance.ocgcore.messageDispatcher.duel.duelBGManager.fieldSummonRightInfo;
 
             if (bgDetailShowing)
                 return;
             bgDetailShowing = true;
-            foreach (var card in core.cards)
+            foreach (var card in cards)
                 card.ShowHiddenLabel();
 
-            if (core.fieldSummonRightInfo != null)
+            if (info != null)
             {
                 CameraManager.DuelOverlay3DPlus();
-                core.fieldSummonRightInfo.SetActive(true);
+                info.SetActive(true);
 
-                var summonInfoManager = core.fieldSummonRightInfo.GetComponent<ElementObjectManager>();
+                var summonInfoManager = info.GetComponent<ElementObjectManager>();
                 var nearManager = summonInfoManager.GetElement<ElementObjectManager>("RootNear");
                 var farManager = summonInfoManager.GetElement<ElementObjectManager>("RootFar");
-                nearManager.GetElement<TextMeshPro>("TextSummon").text = core.mySummonCount.ToString();
+                nearManager.GetElement<TextMeshPro>("TextSummon").text = mySummonCount.ToString();
 
-                nearManager.GetElement<TextMeshPro>("TextSpSummon").text = core.mySpSummonCount.ToString();
-                farManager.GetElement<TextMeshPro>("TextSummon").text = core.opSummonCount.ToString();
-                farManager.GetElement<TextMeshPro>("TextSpSummon").text = core.opSpSummonCount.ToString();
+                nearManager.GetElement<TextMeshPro>("TextSpSummon").text = mySpSummonCount.ToString();
+                farManager.GetElement<TextMeshPro>("TextSummon").text = opSummonCount.ToString();
+                farManager.GetElement<TextMeshPro>("TextSpSummon").text = opSpSummonCount.ToString();
 
                 nearManager.GetElement<TextMeshPro>("TextTotalAtk").text = core.GetAllAtk(true).ToString();
                 farManager.GetElement<TextMeshPro>("TextTotalAtk").text = core.GetAllAtk(false).ToString();
@@ -571,24 +542,24 @@ namespace MDPro3.UI.ServantUI
 
         private void HideBgDetail()
         {
-            var core = Program.instance.ocgcore;
+            var info = Program.instance.ocgcore.messageDispatcher.duel.duelBGManager.fieldSummonRightInfo;
 
             if (!bgDetailShowing)
                 return;
             bgDetailShowing = false;
-            foreach (var card in core.cards)
+            foreach (var card in cards)
                 card.HideHiddenLabel();
-            if (core.fieldSummonRightInfo != null)
+            if (info != null)
             {
                 CameraManager.DuelOverlay3DMinus();
-                core.fieldSummonRightInfo.SetActive(false);
+                info.SetActive(false);
             }
 
         }
 
         public void ToChat()
         {
-            if (condition == Condition.Replay || Program.instance.ocgcore.inAi)
+            if (condition == Condition.Replay || inPuzzle)
                 return;
             Program.instance.ui_.chatPanel.Switch();
         }

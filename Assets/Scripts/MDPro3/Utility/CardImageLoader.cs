@@ -1,56 +1,83 @@
+using Cysharp.Threading.Tasks;
+using MDPro3.Duel.YGOSharp;
 using System;
-using System.IO;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
+using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Networking;
-using MDPro3.Duel.YGOSharp;
 
 namespace MDPro3.Utility
 {
     public static class CardImageLoader
     {
 
+        #region 字段和属性
+
         private static readonly ConcurrentDictionary<int, CacheEntry> cachedArts = new();
         private static readonly ConcurrentDictionary<int, CacheEntry> cachedCards = new();
-        private static readonly ConcurrentDictionary<int, CacheEntry> cachedCardNames = new();
+        private static readonly ConcurrentDictionary<int, Texture2D> cachedCardNames = new();
+
         private static readonly ConcurrentDictionary<int, SemaphoreSlim> artLoadingLocks = new();
         private static readonly ConcurrentDictionary<int, SemaphoreSlim> cardLoadingLocks = new();
-        private static readonly ConcurrentDictionary<int, SemaphoreSlim> cardNameLoadingLocks = new();
-
-#if UNITY_ANDROID || UNITY_IOS
-        private static readonly int maxArtLoads = 1;
-        public static readonly int maxCardLoads = 1;
-#else
-        private static readonly int maxArtLoads = 2;
-        public static readonly int maxCardLoads = 2;
-#endif
-
-        private static readonly SemaphoreSlim artSemaphore = new(maxArtLoads, maxArtLoads);
-        private static readonly SemaphoreSlim cardSemaphore = new(maxCardLoads, maxCardLoads);
-
-        #region Public
 
         public static bool lastCardFoundArt;
         public static bool lastCardRenderSucceed;
+
+        private static SemaphoreSlim artSemaphore;
+        private static SemaphoreSlim cardSemaphore;
+        private static int maxLoads;
+
+        #endregion
+
+        #region 初始化
+
+        [RuntimeInitializeOnLoadMethod]
+        private static void Initialize()
+        {
+            maxLoads = GetOptimalConcurrency();
+
+            artSemaphore = new SemaphoreSlim(maxLoads, maxLoads);
+            cardSemaphore = new SemaphoreSlim(maxLoads, maxLoads);
+
+            _ = InitializeArtFileListAsync();
+        }
+
+        private static int GetOptimalConcurrency()
+        {
+            if (DeviceInfo.OnMobile())
+                return 1;
+            else
+                return 2;
+        }
+
+        #endregion
+
+        #region API
 
         public static async Task<Texture2D> LoadArtAsync(
             int code,
             bool persistent = false,
             CancellationToken token = default)
         {
-            while (true)
+            var lockObj = artLoadingLocks.GetOrAdd(code, _ => new SemaphoreSlim(1, 1));
+            await lockObj.WaitAsync(token);
+
+            try
             {
                 if (cachedArts.TryGetValue(code, out var entry))
                 {
                     if (entry.LoadingTask != null)
+                        await entry.LoadingTask.AsUniTask().AttachExternalCancellation(token);
+                    if (entry.Texture != null)
                     {
-                        await entry.LoadingTask;
-                        continue;
+                        Interlocked.Increment(ref entry.ReferenceCount);
+                        entry.IsPersistent |= persistent;
                     }
-                    Interlocked.Increment(ref entry.ReferenceCount);
-                    entry.IsPersistent |= persistent;
+                    else
+                        Debug.LogError($"Art texture is null for code {code}");
                     return entry.Texture;
                 }
 
@@ -61,34 +88,37 @@ namespace MDPro3.Utility
 
                 if (cachedArts.TryAdd(code, newEntry))
                 {
+                    newEntry.ReferenceCount = 1;
+                    newEntry.IsPersistent = persistent;
                     try
                     {
                         newEntry.Texture = await newEntry.LoadingTask;
-                        newEntry.ReferenceCount = 1;
-                        newEntry.IsPersistent = persistent;
-                        return newEntry.Texture;
                     }
-                    catch (OperationCanceledException)
+                    catch(OperationCanceledException ex)
                     {
                         cachedArts.TryRemove(code, out _);
-                        return null;
+                        throw ex;
                     }
-                    catch (AggregateException)
-                    {
-                        cachedArts.TryRemove(code, out _);
-                        return null;
-                    }
-                    catch (Exception e)
-                    {
-                        cachedArts.TryRemove(code, out _);
-                        Debug.LogError($"Load art failed: {e.GetType()} {e.Message}");
-                        return null;
-                    }
-                    finally
-                    {
-                        newEntry.LoadingTask = null;
-                    }
+                    if (newEntry.Texture == null)
+                        Debug.Log($"{code} art is null");
+
+                    newEntry.LoadingTask = null;
+                    return newEntry.Texture;
                 }
+                else
+                {
+                    Debug.LogError("CardImageLoader: Unexpected Errror.");
+                    return null;
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                lockObj.Release();
+                artLoadingLocks.TryRemove(code, out _);
             }
         }
 
@@ -97,6 +127,9 @@ namespace MDPro3.Utility
             if (!cachedArts.TryGetValue(code, out var entry)) return;
 
             var newCount = Interlocked.Decrement(ref entry.ReferenceCount);
+
+            if(newCount < 0)
+                Debug.LogError($"Art reference count for code {code} is less than zero.");
 
             if (newCount == 0 && !entry.IsPersistent)
                 if (cachedArts.TryRemove(code, out _))
@@ -108,17 +141,22 @@ namespace MDPro3.Utility
             bool persistent = false,
             CancellationToken token = default)
         {
-            while (true)
+            var lockObj = cardLoadingLocks.GetOrAdd(code, _ => new SemaphoreSlim(1, 1));
+            await lockObj.WaitAsync(token);
+
+            try
             {
                 if (cachedCards.TryGetValue(code, out var entry))
                 {
                     if (entry.LoadingTask != null)
+                        await entry.LoadingTask.AsUniTask().AttachExternalCancellation(token);
+                    if (entry.Texture != null)
                     {
-                        await entry.LoadingTask;
-                        continue;
+                        Interlocked.Increment(ref entry.ReferenceCount);
+                        entry.IsPersistent |= persistent;
                     }
-                    Interlocked.Increment(ref entry.ReferenceCount);
-                    entry.IsPersistent |= persistent;
+                    else
+                        Debug.LogError($"Card texture is null for code {code}");
                     return entry.Texture;
                 }
 
@@ -129,34 +167,35 @@ namespace MDPro3.Utility
 
                 if (cachedCards.TryAdd(code, newEntry))
                 {
+                    newEntry.ReferenceCount = 1;
+                    newEntry.IsPersistent = persistent;
                     try
                     {
                         newEntry.Texture = await newEntry.LoadingTask;
-                        newEntry.ReferenceCount = 1;
-                        newEntry.IsPersistent = persistent;
-                        return newEntry.Texture;
                     }
-                    catch (OperationCanceledException)
+                    catch (OperationCanceledException ex)
                     {
                         cachedCards.TryRemove(code, out _);
-                        return null;
+                        throw ex;
                     }
-                    catch (AggregateException)
-                    {
-                        cachedCards.TryRemove(code, out _);
-                        return null;
-                    }
-                    catch (Exception e)
-                    {
-                        cachedCards.TryRemove(code, out _);
-                        Debug.LogError($"Load card failed: {e.GetType()} {e.Message}");
-                        return null;
-                    }
-                    finally
-                    {
-                        newEntry.LoadingTask = null;
-                    }
+                    newEntry.LoadingTask = null;
+
+                    return newEntry.Texture;
                 }
+                else
+                {
+                    Debug.LogError("CardImageLoader: Unexpected Errror.");
+                    return null;
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                lockObj.Release();
+                cardLoadingLocks.TryRemove(code, out _);
             }
         }
 
@@ -171,60 +210,15 @@ namespace MDPro3.Utility
                     UnityEngine.Object.DestroyImmediate(entry.Texture);
         }
 
-        public static async Task<Texture2D> LoadCardNameAsync(
-            int code,
-            CancellationToken token = default)
+        public static Texture2D LoadCardName(int code)
         {
-            while (true)
-            {
-                if (cachedCardNames.TryGetValue(code, out var entry))
-                {
-                    if (entry.LoadingTask != null)
-                    {
-                        await entry.LoadingTask;
-                        continue;
-                    }
-                    Interlocked.Increment(ref entry.ReferenceCount);
-                    entry.IsPersistent = true;
-                    return entry.Texture;
-                }
+            if (cachedCardNames.TryGetValue(code, out var tex))
+                return tex;
 
-                CacheEntry newEntry = new()
-                {
-                    LoadingTask = InternalLoadCardNameAsync(code, token)
-                };
+            tex = InternalLoadCardName(code);
+            cachedCardNames.TryAdd(code, tex);
 
-                if (cachedCardNames.TryAdd(code, newEntry))
-                {
-                    try
-                    {
-                        newEntry.Texture = await newEntry.LoadingTask;
-                        newEntry.ReferenceCount = 1;
-                        newEntry.IsPersistent = true;
-                        return newEntry.Texture;
-                    }
-                    catch (OperationCanceledException)
-                    {
-                        cachedCardNames.TryRemove(code, out _);
-                        return null;
-                    }
-                    catch (AggregateException)
-                    {
-                        cachedCardNames.TryRemove(code, out _);
-                        return null;
-                    }
-                    catch (Exception e)
-                    {
-                        cachedCardNames.TryRemove(code, out _);
-                        Debug.LogError($"Load card name failed: {e.GetType()} {e.Message}");
-                        return null;
-                    }
-                    finally
-                    {
-                        newEntry.LoadingTask = null;
-                    }
-                }
-            }
+            return tex;
         }
 
         public static void ClearCache()
@@ -233,8 +227,8 @@ namespace MDPro3.Utility
                 UnityEngine.Object.Destroy(card.Texture);
             cachedCards.Clear();
 
-            foreach (var cardName in cachedCardNames.Values)
-                UnityEngine.Object.Destroy(cardName.Texture);
+            foreach (var cardNameTex in cachedCardNames.Values)
+                UnityEngine.Object.Destroy(cardNameTex);
             cachedCardNames.Clear();
         }
 
@@ -259,65 +253,50 @@ namespace MDPro3.Utility
 
             try
             {
-                var lockObj = artLoadingLocks.GetOrAdd(code, _ => new SemaphoreSlim(1, 1));
-                await lockObj.WaitAsync(token);
-
-                try
+                var path = GetArtFilePath(code);
+                if (string.IsNullOrEmpty(path))
                 {
-                    if (cachedArts.TryGetValue(code, out var entry))
-                        if (entry.Texture != null)
-                            return entry.Texture;
-
-                    var path = GetArtFilePath(code);
-                    if (string.IsNullOrEmpty(path))
+                    bool needCrop = false;
+                    var art = await LoadArtFromZipAsync("art", code, token);
+                    if (art == null)
                     {
-                        bool needCrop = false;
-                        var zipLoad = LoadArtFromZip("art", code, token);
-                        await TaskUtility.WaitUntil(() => zipLoad.IsCompleted);
-                        if (zipLoad.Result == null)
-                        {
-                            needCrop = true;
-                            zipLoad = LoadArtFromZip("pics", code, token);
-                            await TaskUtility.WaitUntil(() => zipLoad.IsCompleted);
-                        }
-                        if (zipLoad.Result == null)
-                        {
-                            lastCardFoundArt = false;
-                            return null;
-                        }
-                        else
-                        {
-                            if (needCrop)
-                                return CropCardToArt(zipLoad.Result, code);
-                            else
-                                return zipLoad.Result;
-                        }
+                        needCrop = true;
+                        art = await  LoadArtFromZipAsync("pics", code, token);
                     }
-
-                    using var request = UnityWebRequestTexture.GetTexture(path);
-                    var option = request.SendWebRequest();
-                    using (token.Register(() => request.Abort()))
+                    if (art == null)
                     {
-                        while (!option.isDone)
-                        {
-                            await TaskUtility.WaitOneFrame();
-                            token.ThrowIfCancellationRequested();
-                        }
-                    }
-
-                    if (request.result != UnityWebRequest.Result.Success)
-                    {
-                        Debug.LogError($"加载失败: {request.error}");
                         lastCardFoundArt = false;
                         return null;
                     }
-                    return DownloadHandlerTexture.GetContent(request);
+                    if (needCrop)
+                        art = CropCardToArt(art, code);
+                    return art;
                 }
-                finally
+
+                using var request = UnityWebRequestTexture.GetTexture(path);
+                try
                 {
-                    lockObj.Release();
-                    artLoadingLocks.TryRemove(code, out _);
+                    await request.SendWebRequest().ToUniTask(cancellationToken: token);
                 }
+                catch (OperationCanceledException ex) when (token.IsCancellationRequested)
+                {
+                    request.Abort();
+                    throw ex;
+                }
+                catch (Exception ex)
+                {
+                    Debug.LogError($"加载失败: {ex.Message}");
+                    lastCardFoundArt = false;
+                    throw ex;
+                }
+
+                if (request.result != UnityWebRequest.Result.Success)
+                {
+                    Debug.LogError($"加载失败: {request.error}");
+                    lastCardFoundArt = false;
+                    return null;
+                }
+                return DownloadHandlerTexture.GetContent(request);
             }
             finally { artSemaphore.Release(); }
         }
@@ -326,165 +305,105 @@ namespace MDPro3.Utility
             int code,
             CancellationToken token)
         {
+            await UniTask.WaitUntil(() => TextureManager.container != null, cancellationToken: token);
+            await cardSemaphore.WaitAsync(token);
             lastCardRenderSucceed = true;
 
-            await TaskUtility.WaitWhile(() => TextureManager.container == null);
-            await cardSemaphore.WaitAsync(token);
-
             try
             {
-                var lockObj = cardLoadingLocks.GetOrAdd(code, _ => new SemaphoreSlim(1, 1));
-                await lockObj.WaitAsync(token);
-
-                try
+                var data = CardsManager.Get(code, true);
+                if (data.Id == 0)
                 {
-                    if (cachedCards.TryGetValue(code, out var entry))
-                        if (entry.Texture != null)
-                            return entry.Texture;
-
-                    var data = CardsManager.Get(code, true);
-                    if (data.Id == 0)
-                    {
-                        lastCardRenderSucceed = false;
-                        return TextureManager.container.unknownCard.texture;
-                    }
-
-                    var task = LoadArtAsync(code, false, token);
-                    await TaskUtility.WaitUntil(() => task.IsCompleted);
-
-                    var art = task.Result;
-                    if (art == null)
-                        art = TextureManager.container.unknownArt.texture;
-                    if (!await Program.instance.cardRenderer.RenderCard(code, art))
-                    {
-                        lastCardRenderSucceed = false;
-                        return TextureManager.container.unknownCard.texture;
-                    }
-
-                    RenderTexture.active = Program.instance.cardRenderer.renderTexture;
-                    var returnValue = new Texture2D(RenderTexture.active.width, RenderTexture.active.height, TextureFormat.RGB24, true);
-                    returnValue.ReadPixels(new Rect(0, 0, RenderTexture.active.width, RenderTexture.active.height), 0, 0);
-                    returnValue.Apply();
-                    returnValue.name = "Card_" + code;
-                    await TaskUtility.WaitOneFrame();
-
-                    ReleaseArt(code);
-                    return returnValue;
+                    lastCardRenderSucceed = false;
+                    return TextureManager.container.unknownCard.texture;
                 }
-                finally
+
+                var art = await LoadArtAsync(code, false, token).AsUniTask().AttachExternalCancellation(token);
+                if (token.IsCancellationRequested)
+                    throw new OperationCanceledException(token);
+
+                if (art == null)
                 {
-                    lockObj.Release();
-                    cardLoadingLocks.TryRemove(code, out _);
+                    Debug.Log($"Get null from ArtLoad for Card {data.Id}:");
+                    art = TextureManager.container.unknownArt.texture;
                 }
+                if (!Program.instance.cardRenderer.RenderCard(code, art))
+                {
+                    lastCardRenderSucceed = false;
+                    return TextureManager.container.unknownCard.texture;
+                }
+
+                RenderTexture.active = Program.instance.cardRenderer.renderTexture;
+                var returnValue = new Texture2D(RenderTexture.active.width, RenderTexture.active.height, TextureFormat.RGB24, true);
+                returnValue.ReadPixels(new Rect(0, 0, RenderTexture.active.width, RenderTexture.active.height), 0, 0);
+                returnValue.Apply();
+                returnValue.name = "Card_" + code;
+                ReleaseArt(code);
+                return returnValue;
             }
             finally { cardSemaphore.Release(); }
         }
 
-        private static async Task<Texture2D> InternalLoadCardNameAsync(
-            int code,
-            CancellationToken token)
+        private static Texture2D InternalLoadCardName(int code)
         {
-            await cardSemaphore.WaitAsync(token);
-            try
-            {
-                var lockObj = cardNameLoadingLocks.GetOrAdd(code, _ = new SemaphoreSlim(1, 1));
-                await lockObj.WaitAsync(token);
-
-                try
-                {
-                    if (cachedCardNames.TryGetValue(code, out var entry))
-                        if (entry.Texture != null)
-                            return entry.Texture;
-
-                    await Program.instance.cardRenderer.RenderName(code);
-                    RenderTexture.active = Program.instance.cardRenderer.renderTexture;
-                    var result = new Texture2D(RenderTexture.active.width, 203, TextureFormat.RGBA32, false);
-                    var rect = new Rect(0, Program.instance.cardRenderer.renderTexture.height - 203
-                        , Program.instance.cardRenderer.renderTexture.width, 203);
-                    result.ReadPixels(rect, 0, 0);
-                    result.Apply();
-                    result.wrapMode = TextureWrapMode.Clamp;
-                    await TaskUtility.WaitOneFrame();
-                    return result;
-                }
-                finally
-                {
-                    lockObj.Release();
-                    cardNameLoadingLocks.TryRemove(code, out _);
-                }
-            }
-            finally { cardSemaphore.Release(); }
+            Program.instance.cardRenderer.RenderName(code);
+            RenderTexture.active = Program.instance.cardRenderer.renderTexture;
+            var result = new Texture2D(RenderTexture.active.width, 203, TextureFormat.RGBA32, false);
+            var rect = new Rect(0, Program.instance.cardRenderer.renderTexture.height - 203
+                , Program.instance.cardRenderer.renderTexture.width, 203);
+            result.ReadPixels(rect, 0, 0);
+            result.Apply();
+            result.wrapMode = TextureWrapMode.Clamp;
+            return result;
         }
 
-        private static string GetArtFilePath(int code)
-        {
-            var path = Program.PATH_ALT_ART + code;
-            if (File.Exists(path + Program.EXPANSION_JPG))
-                path += Program.EXPANSION_JPG;
-            else if (File.Exists(path + Program.EXPANSION_PNG))
-                path += Program.EXPANSION_PNG;
-            else if (File.Exists(Program.PATH_ART + code.ToString() + Program.EXPANSION_JPG))
-                path = Program.PATH_ART + code.ToString() + Program.EXPANSION_JPG;
-            else
-                path = string.Empty;
-
-            if (!string.IsNullOrEmpty(path))
-            {
-#if !UNITY_EDITOR && (UNITY_ANDROID || UNITY_IOS)
-                path = Path.Combine("file://" + Application.persistentDataPath, path);
-#elif UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX || UNITY_STANDALONE_LINUX
-                path = Path.Combine("file://" + Environment.CurrentDirectory, path);
-#else
-                path = Path.Combine(Environment.CurrentDirectory, path);
-#endif
-            }
-
-            return path;
-        }
-
-        private static async Task<Texture2D> LoadArtFromZip(
+        private static async UniTask<Texture2D> LoadArtFromZipAsync(
             string folder,
             int code,
             CancellationToken token)
         {
-            //await Loom.ToOtherThread;
-            //token.ThrowIfCancellationRequested();
-
             MemoryStream stream = null;
             var targetPNG = $"{folder.ToLower()}/{code}{Program.EXPANSION_PNG.ToLower()}";
             var targetJPG = $"{folder.ToLower()}/{code}{Program.EXPANSION_JPG.ToLower()}";
 
-            foreach (var zip in ZipHelper.zips)
+            try
             {
-                if (zip.Name.ToLower().EndsWith("script.zip"))
-                    continue;
-                foreach (var file in zip.EntryFileNames)
+                foreach (var zip in ZipHelper.zips)
                 {
-                    if (file.ToLower().Replace("\\", "/") == targetPNG || file.ToLower().Replace("\\", "/") == targetJPG)
+                    if (zip.Name.ToLower().EndsWith("script.zip"))
+                        continue;
+                    foreach (var file in zip.EntryFileNames)
                     {
-                        stream = new();
-                        var entry = zip[file];
-                        entry.Extract(stream);
-                        await TaskUtility.WaitOneFrame();
-                        token.ThrowIfCancellationRequested();
-                        break;
+                        if (file.ToLower().Replace("\\", "/") == targetPNG || file.ToLower().Replace("\\", "/") == targetJPG)
+                        {
+                            stream = Tools.GetStream();
+                            var entry = zip[file];
+                            entry.Extract(stream);
+                            break;
+                        }
                     }
                 }
+
+                await UniTask.Yield(cancellationToken: token);
+
+                if (stream != null)
+                {
+                    Texture2D returnValue = new(0, 0);
+                    returnValue.LoadImage(stream.ToArray());
+                    return returnValue;
+                }
+                else
+                    return null;
             }
-
-            //await Loom.ToMainThread;
-            //token.ThrowIfCancellationRequested();
-
-            if (stream != null)
+            catch (Exception e)
             {
-                Texture2D returnValue = new(0, 0);
-                returnValue.LoadImage(stream.ToArray());
-                await TaskUtility.WaitOneFrame();
-                token.ThrowIfCancellationRequested();
-                return returnValue;
+                throw e;
+            }            
+            finally
+            {
+                if(stream != null)
+                    Tools.ReturnStream(stream);
             }
-            else
-                return null;
         }
 
         private static Texture2D CropCardToArt(Texture2D pic, int code)
@@ -555,6 +474,89 @@ namespace MDPro3.Utility
             returnValue.SetPixels32(pix);
             returnValue.Apply();
             return returnValue;
+        }
+
+        #endregion
+
+        #region Art File List Cache
+
+        private static readonly List<int> artFileList = new();
+        private static readonly Dictionary<int, string> artAltFileList = new();
+        private static bool artFileListInitialized;
+
+        private static async UniTask InitializeArtFileListAsync()
+        {
+            if (artFileListInitialized) return;
+            await UniTask.SwitchToThreadPool();
+
+            var path = Program.PATH_ART;
+#if !UNITY_EDITOR && (UNITY_ANDROID || UNITY_IOS)
+                path = Path.Combine(Application.persistentDataPath, path);
+#elif UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX || UNITY_STANDALONE_LINUX
+                path = Path.Combine(Environment.CurrentDirectory, path);
+#else
+            path = Path.Combine(Environment.CurrentDirectory, path);
+#endif
+
+            if (Directory.Exists(path))
+            {
+                foreach (var file in Directory.GetFiles(path, "*.jpg"))
+                {
+                    var fileName = Path.GetFileNameWithoutExtension(file);
+                    if (int.TryParse(fileName, out var code))
+                        artFileList.Add(code);
+                }
+            }
+
+            path = Program.PATH_ALT_ART;
+#if !UNITY_EDITOR && (UNITY_ANDROID || UNITY_IOS)
+                path = Path.Combine(Application.persistentDataPath, path);
+#elif UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX || UNITY_STANDALONE_LINUX
+                path = Path.Combine(Environment.CurrentDirectory, path);
+#else
+            path = Path.Combine(Environment.CurrentDirectory, path);
+#endif
+
+            if (Directory.Exists(path))
+            {
+                foreach (var file in Directory.GetFiles(path, "*.jpg"))
+                {
+                    var fileName = Path.GetFileNameWithoutExtension(file);
+                    if (int.TryParse(fileName, out var code))
+                        artAltFileList.Add(code, Program.EXPANSION_JPG);
+                }
+                foreach (var file in Directory.GetFiles(path, "*.png"))
+                {
+                    var fileName = Path.GetFileNameWithoutExtension(file);
+                    if (int.TryParse(fileName, out var code))
+                        if (!artAltFileList.ContainsKey(code))
+                            artAltFileList.Add(code, Program.EXPANSION_PNG);
+                }
+            }
+            artFileListInitialized = true;
+            await UniTask.SwitchToMainThread();
+        }
+
+        private static string GetArtFilePath(int code)
+        {
+            string path = string.Empty;
+            if (artAltFileList.ContainsKey(code))
+                path = Program.PATH_ALT_ART + code + artAltFileList[code];
+            else if (artFileList.Contains(code))
+                path = Program.PATH_ART + code + Program.EXPANSION_JPG;
+
+            if (!string.IsNullOrEmpty(path))
+            {
+#if !UNITY_EDITOR && (UNITY_ANDROID || UNITY_IOS)
+                path = Path.Combine("file://" + Application.persistentDataPath, path);
+#elif UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX || UNITY_STANDALONE_LINUX
+                path = Path.Combine("file://" + Environment.CurrentDirectory, path);
+#else
+                path = Path.Combine(Environment.CurrentDirectory, path);
+#endif
+            }
+
+            return path;
         }
 
         #endregion

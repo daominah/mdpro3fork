@@ -7,6 +7,7 @@ using UnityEngine.UI;
 using MDPro3.Duel.YGOSharp;
 using UnityEngine.EventSystems;
 using MDPro3.UI.ServantUI;
+using MDPro3.Servant;
 
 namespace MDPro3.UI
 {
@@ -228,7 +229,7 @@ namespace MDPro3.UI
 
             if (response[0] >= 0)
             {
-                switch (Program.instance.ocgcore.currentMessage)
+                switch (OcgCore.currentMessage)
                 {
                     case GameMessage.SelectBattleCmd:
                     case GameMessage.SelectIdleCmd:
@@ -260,7 +261,7 @@ namespace MDPro3.UI
             else if (response[0] == -1 || response[0] == -2)
             {
                 List<GameCard> responseCards = new List<GameCard>();
-                foreach (var card in Program.instance.ocgcore.cards)
+                foreach (var card in OcgCore.cards)
                     if (card.p.controller == controller)
                         if ((card.p.location & location) > 0)
                             foreach (var btn in card.buttons)

@@ -6,14 +6,13 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.UI;
 using MDPro3.Utility;
+using Cysharp.Threading.Tasks;
 using System.Threading.Tasks;
 
 namespace MDPro3
 {
     public class CardRenderer : MonoBehaviour
     {
-        public GameObject ocg;
-        public GameObject rd;
 
         public enum CardStyle
         {
@@ -21,15 +20,20 @@ namespace MDPro3
             RUSH_DUEL
         }
 
-        [HideInInspector] public RenderTexture renderTexture;
-
         public const string BIG_SLASH = "／";
         public const string SMALL_SLASH = " / ";
         private static readonly float cardNameLabelWidthOCG = 520f;
         private static readonly float cardNameLabelWidthRushDuel = 520f;
-        private int fontLoadStage = 0;
+        private static string currentFontLanguage;
+        private static bool fontsLoaded;
 
-        #region Public Reference
+        #region Reference
+
+        [Header("CardRenderer")]
+        [SerializeField] private GameObject ocg;
+        [SerializeField] private GameObject rd;
+        [SerializeField] private Camera renderCamera;
+        public RenderTexture renderTexture;
 
         [Header("OCG")]
         public RawImage cardArt;
@@ -99,22 +103,73 @@ namespace MDPro3
 
         #endregion
 
+        #region Fonts
+
+        private static Font fontChineseSimplified;
+        private static Font fontChineseTraditional;
+        private static Font fontKorean;
+        private static Font fontJapanese;
+        private static Font fontEnglish;
+
+        private static TMP_FontAsset tmpFontChineseSimplified;
+        private static TMP_FontAsset tmpFontChineseTraditional;
+        private static TMP_FontAsset tmpFontKorean;
+        private static TMP_FontAsset tmpFontJapanese;
+        private static TMP_FontAsset tmpFontEnglish;
+
+        private static async UniTask LoadFontsAsync()
+        {
+            fontChineseSimplified = await Addressables.LoadAssetAsync<Font>("RenderFontChineseSimplified").ToUniTask();
+            tmpFontChineseSimplified = await Addressables.LoadAssetAsync<TMP_FontAsset>("RenderFontChineseSimplified").ToUniTask();
+            fontChineseTraditional = await Addressables.LoadAssetAsync<Font>("RenderFontChineseTraditional").ToUniTask();
+            tmpFontChineseTraditional = await Addressables.LoadAssetAsync<TMP_FontAsset>("RenderFontChineseTraditional").ToUniTask();
+            fontKorean = await Addressables.LoadAssetAsync<Font>("RenderFontKorean").ToUniTask();
+            tmpFontKorean = await Addressables.LoadAssetAsync<TMP_FontAsset>("RenderFontKorean").ToUniTask();
+            fontJapanese = await Addressables.LoadAssetAsync<Font>("RenderFontJapanese").ToUniTask();
+            tmpFontJapanese = await Addressables.LoadAssetAsync<TMP_FontAsset>("RenderFontJapanese").ToUniTask();
+            fontEnglish = await Addressables.LoadAssetAsync<Font>("RenderFontEnglish").ToUniTask();
+            tmpFontEnglish = await Addressables.LoadAssetAsync<TMP_FontAsset>("RenderFontEnglish").ToUniTask();
+
+            fontsLoaded = true;
+        }
+
+        private void SetFonts(Font font, TMP_FontAsset tmpFont)
+        {
+            cardDescription.font = font;
+            cardDescriptionRD.font = font;
+            cardDescriptionPendulum.font = font;
+            cardDescriptionPendulumRD.font = font;
+            cardAuther.font = font;
+            cardAutherRD.font = font;
+
+            cardName.font = tmpFont;
+            cardNameRD.font = tmpFont;
+            spellType.font = tmpFont;
+            cardTypeRD.font = tmpFont;
+        }
+
+        #endregion
+
         private void Awake()
         {
-            GetComponent<Canvas>().worldCamera = Program.instance.camera_.cameraRenderTexture;
-            renderTexture = Program.instance.camera_.cameraRenderTexture.targetTexture;
+            _ = LoadFontsAsync();
         }
 
         public void SwitchLanguage(string language = null)
         {
+            if (!fontsLoaded)
+                return;
             language ??= Language.GetCardConfig();
+            if (currentFontLanguage == language)
+                return;
+            currentFontLanguage = language;
             if (language == Language.SimplifiedChinese)
             {
                 cardName.fontSize = 50f;
                 cardNameRD.fontSize = 50f;
                 spellType.fontSize = 40f;
                 cardTypeRD.fontSizeMax = 27f;
-                SetFont("RenderFontChineseSimplified");
+                SetFonts(fontChineseSimplified, tmpFontChineseSimplified);
             }
             else if (language == Language.TraditionalChinese)
             {
@@ -122,7 +177,7 @@ namespace MDPro3
                 cardNameRD.fontSize = 55f;
                 spellType.fontSize = 40f;
                 cardTypeRD.fontSizeMax = 28f;
-                SetFont("RenderFontChineseTraditional");
+                SetFonts(fontChineseTraditional, tmpFontChineseTraditional);
             }
             else if (language == Language.Korean)
             {
@@ -130,7 +185,7 @@ namespace MDPro3
                 cardNameRD.fontSize = 50f;
                 spellType.fontSize = 40f;
                 cardTypeRD.fontSizeMax = 27f;
-                SetFont("RenderFontKorean");
+                SetFonts(fontKorean, tmpFontKorean);
             }
             else if (language == Language.Japanese)
             {
@@ -138,7 +193,7 @@ namespace MDPro3
                 cardNameRD.fontSize = 55f;
                 spellType.fontSize = 40f;
                 cardTypeRD.fontSizeMax = 29f;
-                SetFont("RenderFontJapanese");
+                SetFonts(fontJapanese, tmpFontJapanese);
             }
             else
             {
@@ -146,7 +201,7 @@ namespace MDPro3
                 cardNameRD.fontSize = 63f;
                 spellType.fontSize = 43f;
                 cardTypeRD.fontSizeMax = 30f;
-                SetFont("RenderFontEnglish");
+                SetFonts(fontEnglish, tmpFontEnglish);
             }
 
             if (Language.CardUseLatin())
@@ -161,31 +216,6 @@ namespace MDPro3
             }
         }
 
-        private void SetFont(string fontName)
-        {
-            fontLoadStage = 0;
-            var handle = Addressables.LoadAssetAsync<TMP_FontAsset>(fontName);
-            handle.Completed += (result) =>
-            {
-                cardName.font = result.Result;
-                cardNameRD.font = result.Result;
-                spellType.font = result.Result;
-                cardTypeRD.font = result.Result;
-                fontLoadStage++;
-            };
-            var handle2 = Addressables.LoadAssetAsync<Font>(fontName);
-            handle2.Completed += (result) =>
-            {
-                cardDescription.font = result.Result;
-                cardDescriptionRD.font = result.Result;
-                cardDescriptionPendulum.font = result.Result;
-                cardDescriptionPendulumRD.font = result.Result;
-                cardAuther.font = result.Result;
-                cardAutherRD.font = result.Result;
-                fontLoadStage++;
-            };
-        }
-
         public static bool NeedRushDuelStyle(int code)
         {
             var config = Config.Get("CardStyle", CardStyle.OCG_TCG.ToString());
@@ -196,15 +226,15 @@ namespace MDPro3
             return false;
         }
 
-        public async Task RenderName(int code)
+        public void RenderName(int code)
         {
             if (NeedRushDuelStyle(code))
-                await RenderRushDuelName(code);
+                RenderRushDuelName(code);
             else
-                await RenderOcgName(code);
+                RenderOcgName(code);
         }
 
-        private async Task RenderRushDuelName(int code)
+        private void RenderRushDuelName(int code)
         {
             ocg.SetActive(false);
             rd.SetActive(true);
@@ -216,9 +246,6 @@ namespace MDPro3
                 SwitchLanguage(Language.GetPrerelease());
             else
                 SwitchLanguage();
-
-            if (fontLoadStage < 2)
-                await TaskUtility.WaitOneFrame();
 
             cardNameRD.GetComponent<RectTransform>().localScale = Vector3.one;
 
@@ -237,10 +264,10 @@ namespace MDPro3
             cardAttributeRD.gameObject.SetActive(false);
             cardLegendRD.SetActive(false);
 
-            Program.instance.camera_.cameraRenderTexture.Render();
+            renderCamera.Render();
         }
 
-        private async Task RenderOcgName(int code)
+        private void RenderOcgName(int code)
         {
             ocg.SetActive(true);
             rd.SetActive(false);
@@ -252,9 +279,6 @@ namespace MDPro3
                 SwitchLanguage(Language.GetPrerelease());
             else
                 SwitchLanguage();
-
-            if (fontLoadStage < 2)
-                await TaskUtility.WaitOneFrame();
 
             cardName.GetComponent<RectTransform>().localScale = Vector3.one;
             cardName.text = data.Name;
@@ -309,23 +333,22 @@ namespace MDPro3
                         levelsMask.transform.GetChild(i).gameObject.SetActive(false);
                 }
             }
-            Program.instance.camera_.cameraRenderTexture.Render();
+
+            renderCamera.Render();
         }
 
-        public async Task<bool> RenderCard(int code, Texture2D art)
+        public bool RenderCard(int code, Texture2D art)
         {
-            if(NeedRushDuelStyle(code))
-                return await RenderRushDuelCard(code, art);
+            if (NeedRushDuelStyle(code))
+                return RenderRushDuelCard(code, art);
             else
-                return await RenderOcgCard(code, art);
+                return RenderOcgCard(code, art);
         }
 
-        private async Task<bool> RenderRushDuelCard(int code, Texture2D art)
+        private bool RenderRushDuelCard(int code, Texture2D art)
         {
             ocg.SetActive(false);
             rd.SetActive(true);
-
-            RenderTexture.active = renderTexture;
 
             Card data = CardsManager.GetRenderCard(code);
             if (data == null || data.Id == 0)
@@ -335,9 +358,6 @@ namespace MDPro3
                 SwitchLanguage(Language.GetPrerelease());
             else
                 SwitchLanguage();
-
-            if (fontLoadStage < 2)
-                await TaskUtility.WaitOneFrame();
 
             if (Settings.Data.CardRenderPassword)
                 cardPasswordRD.text = code.ToString("D8");
@@ -511,16 +531,14 @@ namespace MDPro3
                 levelNumRD.text = data.Level.ToString();
             }
 
-            Program.instance.camera_.cameraRenderTexture.Render();
+            renderCamera.Render();
             return true;
         }
 
-        private async Task<bool> RenderOcgCard(int code, Texture2D art)
+        private bool RenderOcgCard(int code, Texture2D art)
         {
             ocg.SetActive(true);
             rd.SetActive(false);
-
-            RenderTexture.active = renderTexture;
 
             Card data = CardsManager.GetRenderCard(code);
             if (data == null || data.Id == 0)
@@ -530,9 +548,6 @@ namespace MDPro3
                 SwitchLanguage(Language.GetPrerelease());
             else
                 SwitchLanguage();
-
-            if (fontLoadStage < 2)
-                await TaskUtility.WaitOneFrame();
 
             if (Settings.Data.CardRenderPassword)
                 cardPassword.text = code.ToString("D8");
@@ -758,8 +773,7 @@ namespace MDPro3
                 }
             }
 
-            Program.instance.camera_.cameraRenderTexture.Render();
-
+            renderCamera.Render();
             return true;
         }
 
@@ -818,6 +832,28 @@ namespace MDPro3
                 description = description.Replace(" ", "\u00A0");
             description = description.Replace($"{Program.STRING_LINE_BREAK}{Program.STRING_LINE_BREAK}", Program.STRING_LINE_BREAK);
             return description;
+        }
+
+        private string ConvertToSmallCapsByRichText(string input, float fontSize, float scale)
+        {
+            if (string.IsNullOrEmpty(input)) return input;
+
+            StringBuilder sb = new();
+
+            foreach (char c in input)
+            {
+                if (char.IsLower(c))
+                {
+                    char upperChar = char.ToUpper(c);
+                    sb.Append($"<size={fontSize * scale}>{upperChar}</size>");
+                }
+                else
+                {
+                    sb.Append(c);
+                }
+            }
+
+            return sb.ToString();
         }
 
         private static List<string> GetAuthorFromDescription(string description)

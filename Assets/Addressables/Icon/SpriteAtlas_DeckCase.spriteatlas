@@ -63,6 +63,7 @@ SpriteAtlas:
     - bdad33527d590e540bf1c1eee0f3aa91: 21300000
     - 4b7ed06242c958f42b41fd965883a31d: 21300000
     - 352edf92ba25f304f8cc74551dc9d686: 21300000
+    - 2e8bc4b2a37b8734489568086f875b56: 21300000
     - e76f9ed27e301a542937cea773c35cfa: 21300000
     - 56e526f2355e4e548874188cb40db83b: 21300000
     - abdebff2dea9c7643832f22ed3c9824e: 21300000
@@ -129,6 +130,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: bdad33527d590e540bf1c1eee0f3aa91, type: 3}
   - {fileID: 21300000, guid: 4b7ed06242c958f42b41fd965883a31d, type: 3}
   - {fileID: 21300000, guid: 352edf92ba25f304f8cc74551dc9d686, type: 3}
+  - {fileID: 21300000, guid: 2e8bc4b2a37b8734489568086f875b56, type: 3}
   - {fileID: 21300000, guid: e76f9ed27e301a542937cea773c35cfa, type: 3}
   - {fileID: 21300000, guid: 56e526f2355e4e548874188cb40db83b, type: 3}
   - {fileID: 21300000, guid: abdebff2dea9c7643832f22ed3c9824e, type: 3}
@@ -194,6 +196,7 @@ SpriteAtlas:
   - DeckCase0020
   - DeckCase0026
   - DeckCase1007
+  - DeckCase0030
   - DeckCase1011
   - DeckCase0018
   - DeckCase1009

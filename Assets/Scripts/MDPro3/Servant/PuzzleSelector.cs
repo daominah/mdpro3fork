@@ -27,10 +27,8 @@ namespace MDPro3.Servant
         protected override void FirstLoadEvent()
         {
             base.FirstLoadEvent();
-            StartCoroutine(Program.instance.texture_.SetCommonShopButtonMaterial
-                (GetUI<PuzzleSelectorUI>().ImageOut, false));
-            StartCoroutine(Program.instance.texture_.SetCommonShopButtonMaterial
-                (GetUI<PuzzleSelectorUI>().ImageHover, true));
+            _ = Program.instance.texture_.SetCommonShopButtonMaterial(GetUI<PuzzleSelectorUI>().ImageOut, false);
+            _ = Program.instance.texture_.SetCommonShopButtonMaterial(GetUI<PuzzleSelectorUI>().ImageHover, true);
         }
 
         public override void Select(bool forced = false)
@@ -61,6 +59,10 @@ namespace MDPro3.Servant
 
         public void StartCurrentPuzzle()
         {
+            //·ÀÖ¹¶à´Îµã»÷
+            if (Program.instance.currentServant != Program.instance.puzzle)
+                return;
+
             StartPuzzle(currentPuzzle);
         }
 

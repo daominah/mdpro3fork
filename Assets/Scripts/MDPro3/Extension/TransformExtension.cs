@@ -1,3 +1,5 @@
+using NUnit.Framework;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace MDPro3
@@ -18,10 +20,25 @@ namespace MDPro3
             return null;
         }
 
+        public static List<Transform> GetChildrenByName(this Transform parent, string childrenName)
+        {
+            var value = new List<Transform>();
+            foreach (var t in parent.GetComponentsInChildren<Transform>(true))
+                if (t.name == childrenName)
+                    value.Add(t);
+            return value;
+        }
+
         public static void DestroyChildByName(this Transform parent, string childName)
         {
             Object.Destroy(parent.GetChildByName(childName).gameObject);
         }
 
+        public static void DestroyChildrenByName(this Transform parent, string childrenName)
+        {
+            var cs = parent.GetChildrenByName(childrenName);
+            foreach (var c in cs)
+                Object.Destroy(c.gameObject);
+        }
     }
 }

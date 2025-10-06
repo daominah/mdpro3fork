@@ -1,0 +1,105 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfc972f6728141141b4c2bfb30b95cf4, type: 3}
+  m_Name: ScriptReplacementConfig
+  m_EditorClassIdentifier: 
+  replacementPairs:
+  - scriptName: TimelineAsset
+    oldGuid: 1f79187d04fa6fdd168e19d4bafe7dfa
+    newGuid: bfda56da833e2384a9677cd3c976a436
+    oldFileId: 337831424
+    newFileId: 11500000
+  - scriptName: SignalTrack
+    oldGuid: 1f79187d04fa6fdd168e19d4bafe7dfa
+    newGuid: b46e36075dd1c124a8422c228e75e1fb
+    oldFileId: 661751997
+    newFileId: 11500000
+  - scriptName: ActivationPlayableAsset
+    oldGuid: 1f79187d04fa6fdd168e19d4bafe7dfa
+    newGuid: fde0d25a170598d46a0b9dc16b4527a5
+    oldFileId: 442072544
+    newFileId: 11500000
+  - scriptName: PlayableTrack
+    oldGuid: 1f79187d04fa6fdd168e19d4bafe7dfa
+    newGuid: 82cd92ffc29383742932b27ca414c80f
+    oldFileId: 1778877366
+    newFileId: 11500000
+  - scriptName: SignalAsset
+    oldGuid: 1f79187d04fa6fdd168e19d4bafe7dfa
+    newGuid: d6fa2d92fc1b3f34da284357edf89c3b
+    oldFileId: -561356381
+    newFileId: 11500000
+  - scriptName: ActivationTrack
+    oldGuid: 1f79187d04fa6fdd168e19d4bafe7dfa
+    newGuid: 21bf7f712d84d26478ebe6a299f21738
+    oldFileId: 46519060
+    newFileId: 11500000
+  - scriptName: TrackAsset
+    oldGuid: 1f79187d04fa6fdd168e19d4bafe7dfa
+    newGuid: 3ad53269c7421084ab67f804591994e0
+    oldFileId: -1261509315
+    newFileId: 11500000
+  - scriptName: SignalReceiver
+    oldGuid: 1f79187d04fa6fdd168e19d4bafe7dfa
+    newGuid: e52de21a22b6dd44c9cc19f810c65059
+    oldFileId: -1490623707
+    newFileId: 11500000
+  - scriptName: AnimationTrack
+    oldGuid: 1f79187d04fa6fdd168e19d4bafe7dfa
+    newGuid: d21dcc2386d650c4597f3633c75a1f98
+    oldFileId: 1467732076
+    newFileId: 11500000
+  - scriptName: ControlTrack
+    oldGuid: 1f79187d04fa6fdd168e19d4bafe7dfa
+    newGuid: 15e0374501f39d54eb30235764636e0e
+    oldFileId: -1095772578
+    newFileId: 11500000
+  - scriptName: Marker
+    oldGuid: 1f79187d04fa6fdd168e19d4bafe7dfa
+    newGuid: 89b48a03f6f43e94e87cc8d2104d3d4d
+    oldFileId: 1935730151
+    newFileId: 11500000
+  - scriptName: AnimationPlayableAsset
+    oldGuid: 1f79187d04fa6fdd168e19d4bafe7dfa
+    newGuid: 030f85c3f73729f4f976f66ffb23b875
+    oldFileId: 2024714994
+    newFileId: 11500000
+  - scriptName: AudioTrack
+    oldGuid: 1f79187d04fa6fdd168e19d4bafe7dfa
+    newGuid: 8b22792c3b570444eb18cb78c2af3a74
+    oldFileId: -2113462093
+    newFileId: 11500000
+  - scriptName: AudioPlayableAsset
+    oldGuid: 1f79187d04fa6fdd168e19d4bafe7dfa
+    newGuid: 4f10dd60657c6004587f237a7e90f8e4
+    oldFileId: -1977359656
+    newFileId: 11500000
+  - scriptName: SignalEmitter
+    oldGuid: 1f79187d04fa6fdd168e19d4bafe7dfa
+    newGuid: 15c38f6fa1940124db1ab7f6fe7268d1
+    oldFileId: 619702795
+    newFileId: 11500000
+  - scriptName: MarkerTrack
+    oldGuid: 1f79187d04fa6fdd168e19d4bafe7dfa
+    newGuid: 2a16748d9461eae46a725db9776d5390
+    oldFileId: -119666388
+    newFileId: 11500000
+  - scriptName: GroupTrack
+    oldGuid: 1f79187d04fa6fdd168e19d4bafe7dfa
+    newGuid: d0fc6f5187a81dc47999eefade6f0935
+    oldFileId: -1544527758
+    newFileId: 11500000
+  - scriptName: ControlPlayableAsset
+    oldGuid: 1f79187d04fa6fdd168e19d4bafe7dfa
+    newGuid: 48853ae485fa386428341ac1ea122570
+    oldFileId: -1670381969
+    newFileId: 11500000

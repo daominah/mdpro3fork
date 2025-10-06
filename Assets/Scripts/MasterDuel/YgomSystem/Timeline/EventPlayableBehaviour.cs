@@ -1,10 +1,11 @@
 using DG.Tweening;
 using MDPro3;
+using MDPro3.Servant;
+using MDPro3.UI.ServantUI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
-using MDPro3.Servant;
 
 namespace YgomSystem.Timeline
 {
@@ -39,7 +40,7 @@ namespace YgomSystem.Timeline
                     e.isDone = true;
                     DOTween.To(v => { }, 0, 0, (float)e.time).OnComplete(() =>
                     {
-                        Program.instance.ocgcore.endingAction?.Invoke();
+                        OcgCore.endingAction?.Invoke();
                     });
                 }
             }
@@ -67,34 +68,23 @@ namespace YgomSystem.Timeline
 			played = true;
             if (label == "StartCard")
             {
-                Program.instance.ocgcore.startCard?.Invoke();
+                OcgCore.startCard?.Invoke();
             }
             else if (label == "StrongSummon")
             {
+                if (Program.instance == null)
+                    return;
                 if (Program.instance.currentServant != Program.instance.ocgcore)
                     return;
-                MDPro3.TimelineManager.skippable = false;
-                var code = Program.instance.ocgcore.summonCard.GetData().Id;
-                if (CutinViewer.HasCutin(code))
-                    CutinViewer.Play(code, (int)Program.instance.ocgcore.summonCard.p.controller);
-            }
-            else if(label == "Next")//Engage
-            {
-                if (Program.instance.ocgcore.nextMoveManager == null)
+                if (OcgCore.summonCard == null)
                     return;
-                var target = Program.instance.ocgcore.nextMoveManager.GetElement<Transform>("DummyCard01");
-                var card = Program.instance.ocgcore.lastMoveCard;
-                card.model.SetActive(true);
-                card.ResetModelRotation();
-                card.model.transform.position = target.position;
-                card.model.transform.eulerAngles = new Vector3(- target.eulerAngles.x, 0f, 0f);
-
-                Program.instance.ocgcore.nextMoveAction = null;
-                card.Move(card.p, false, 0f, Program.instance.ocgcore.nextMoveTime);
-                DOTween.To(v => { }, 0, 0, Program.instance.ocgcore.nextMoveTime).OnComplete(() =>
-                {
-                    OcgCore.messagePass = true;
-                });
+                var code = OcgCore.summonCard.GetData().Id;
+                if (CutinViewer.HasCutin(code))
+                    _ = CutinViewer.Play(code, (int)OcgCore.summonCard.p.controller);
+            }
+            else if(label == "Next")
+            {
+                OcgCore.nextEventAction?.Invoke();
             }
         }
 

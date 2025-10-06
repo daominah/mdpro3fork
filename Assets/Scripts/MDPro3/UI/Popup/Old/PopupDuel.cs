@@ -1,9 +1,10 @@
+using DG.Tweening;
+using MDPro3.Servant;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using DG.Tweening;
-using System;
 
 namespace MDPro3.UI
 {
@@ -35,6 +36,7 @@ namespace MDPro3.UI
             hideY = -540f - height * uiScale - extraHeight;
             window.anchoredPosition = new Vector2(0f, hideY);
         }
+
         public virtual void FieldView()
         {
             if (hided)
@@ -65,6 +67,7 @@ namespace MDPro3.UI
                 shadow.raycastTarget = true;
             }
         }
+
         public override void Hide()
         {
             if (shadow != null)
@@ -75,13 +78,14 @@ namespace MDPro3.UI
                 Program.instance.ocgcore.returnAction = null;
                 whenQuitDo?.Invoke();
             });
-            Program.instance.ocgcore.Sleep((int)(transitionTime * 100));
             Program.instance.ocgcore.currentPopup = null;
         }
+
         public override void OnConfirm()
         {
             AudioManager.PlaySE("SE_DUEL_DECIDE");
         }
+
         public override void OnCancel()
         {
             AudioManager.PlaySE("SE_DUEL_CANCEL");
@@ -91,5 +95,11 @@ namespace MDPro3.UI
         {
             Program.instance.ocgcore.returnAction = null;
         }
+
+        protected void SendReturn(byte[] buffer)
+        {
+            Program.instance.ocgcore.SendReturn(buffer, transitionTime);
+        }
+
     }
 }

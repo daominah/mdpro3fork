@@ -1,14 +1,15 @@
 using DG.Tweening;
+using MDPro3.Duel;
+using MDPro3.Duel.YGOSharp;
+using MDPro3.Servant;
+using MDPro3.UI.ServantUI;
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.UI;
-using MDPro3.Duel.YGOSharp;
 using YgomSystem.UI;
-using MDPro3.Servant;
-using MDPro3.UI.ServantUI;
 
 namespace MDPro3.UI
 {
@@ -48,7 +49,7 @@ namespace MDPro3.UI
         public override void InitializeSelections()
         {
             core = Program.instance.ocgcore;
-            if(core.currentMessage == GameMessage.ConfirmCards)
+            if(OcgCore.currentMessage == GameMessage.ConfirmCards)
             {
                 btnConfirm.gameObject.SetActive(false);
                 btnCancel.gameObject.SetActive(false);
@@ -92,30 +93,30 @@ namespace MDPro3.UI
                     mono.manager = this;
                 }
 
-                if (core.currentMessage == GameMessage.SelectSum)
+                if (OcgCore.currentMessage == GameMessage.SelectSum)
                 {
-                    foreach (var card in core.cardsMustBeSelected)
+                    foreach (var card in OcgCore.cardsMustBeSelected)
                         foreach (var mono in monos)
-                            if (mono.card.md5 == card.md5)
+                            if (mono.card == card)
                             {
                                 mono.PreSelectThis();
                                 break;
                             }
                     foreach (var mono in monos)
                         if (!mono.selected)
-                            if (OcgCore.CheckSelectableInSum(Program.instance.ocgcore.cardsInSelection, mono.card, core.cardsMustBeSelected, max + core.cardsMustBeSelected.Count))
+                            if (OcgCore.CheckSelectableInSum(OcgCore.cardsInSelection, mono.card, OcgCore.cardsMustBeSelected, max + OcgCore.cardsMustBeSelected.Count))
                                 mono.SelectableThis();
                             else
                                 mono.UnselectableThis();
-                    title.text = hint + "-" + OcgCore.GetSelectLevelSum(GetSelected())[0].ToString() + Program.STRING_SLASH + core.ES_level;
+                    title.text = hint + "-" + OcgCore.GetSelectLevelSum(GetSelected())[0].ToString() + Program.STRING_SLASH + OcgCore.ES_level;
                 }
-                else if (core.currentMessage == GameMessage.SortCard
-                || core.currentMessage == GameMessage.SortChain)
+                else if (OcgCore.currentMessage == GameMessage.SortCard
+                || OcgCore.currentMessage == GameMessage.SortChain)
                 {
                     order = true;
                     title.text = hint;
                 }
-                else if (core.currentMessage == GameMessage.SelectCard)
+                else if (OcgCore.currentMessage == GameMessage.SelectCard)
                     title.text = hint + "-0/" + max;
                 else
                     title.text = hint;
@@ -128,24 +129,24 @@ namespace MDPro3.UI
             Program.instance.currentServant.returnAction = OnCancel;
             if (!exitable)
                 Program.instance.currentServant.returnAction = FieldView;
-            if (Program.instance.ocgcore.currentMessage == GameMessage.ConfirmCards)
+            if (OcgCore.currentMessage == GameMessage.ConfirmCards)
                 Program.instance.currentServant.returnAction = OnFinish;
         }
 
         private void Refresh()
         {
-            if (core.currentMessage == GameMessage.SelectSum)
+            if (OcgCore.currentMessage == GameMessage.SelectSum)
             {
                 var sum = OcgCore.GetSelectLevelSum(GetSelected());
-                if ((core.ES_overFlow && (core.ES_level <= sum[0] || core.ES_level <= sum[1]))
+                if ((OcgCore.ES_overFlow && (OcgCore.ES_level <= sum[0] || OcgCore.ES_level <= sum[1]))
                     ||
-                    (!core.ES_overFlow && (core.ES_level == sum[0] || core.ES_level == sum[1]))
+                    (!OcgCore.ES_overFlow && (OcgCore.ES_level == sum[0] || OcgCore.ES_level == sum[1]))
                     )
                     btnConfirm.interactable = true;
                 else
                     btnConfirm.interactable = false;
 
-                if (!core.ES_overFlow)
+                if (!OcgCore.ES_overFlow)
                 {
                     var selected = new List<GameCard>();
                     foreach (var mono in monos)
@@ -154,29 +155,29 @@ namespace MDPro3.UI
 
                     foreach (var mono in monos)
                         if (!mono.selected)
-                            if (OcgCore.CheckSelectableInSum(Program.instance.ocgcore.cardsInSelection, mono.card, selected, max + core.cardsMustBeSelected.Count))
+                            if (OcgCore.CheckSelectableInSum(OcgCore.cardsInSelection, mono.card, selected, max + OcgCore.cardsMustBeSelected.Count))
                                 mono.SelectableThis();
                             else
                                 mono.UnselectableThis();
                 }
                 var selectedSum = OcgCore.GetSelectLevelSum(GetSelected());
-                if (!core.ES_overFlow)
+                if (!OcgCore.ES_overFlow)
                 {
-                    if (selectedSum[0] == core.ES_level || selectedSum[1] == core.ES_level)
+                    if (selectedSum[0] == OcgCore.ES_level || selectedSum[1] == OcgCore.ES_level)
                         btnConfirm.GetComponent<ButtonPress>().SetInteractable(true);
                     else
                         btnConfirm.GetComponent<ButtonPress>().SetInteractable(false);
                 }
                 else
                 {
-                    if (selectedSum[0] > core.ES_level || selectedSum[1] > core.ES_level)
+                    if (selectedSum[0] > OcgCore.ES_level || selectedSum[1] > OcgCore.ES_level)
                         btnConfirm.GetComponent<ButtonPress>().SetInteractable(true);
                     else
                         btnConfirm.GetComponent<ButtonPress>().SetInteractable(false);
                 }
-                title.text = hint + "-" + selectedSum[0].ToString() + Program.STRING_SLASH + core.ES_level;
+                title.text = hint + "-" + selectedSum[0].ToString() + Program.STRING_SLASH + OcgCore.ES_level;
             }
-            else if(core.currentMessage == GameMessage.ConfirmCards)
+            else if(OcgCore.currentMessage == GameMessage.ConfirmCards)
             {
 
             }
@@ -198,7 +199,7 @@ namespace MDPro3.UI
                     foreach (var mono in monos)
                         mono.SelectableThis();
                 }
-                if (core.currentMessage == GameMessage.SelectCard)
+                if (OcgCore.currentMessage == GameMessage.SelectCard)
                     title.text = hint + "-" + GetSelected().Count + Program.STRING_SLASH + max.ToString();
             }
         }
@@ -231,7 +232,7 @@ namespace MDPro3.UI
                     sum[1] += c.levelForSelect_2;
                 }
             }
-            if (sum[0] + card.levelForSelect_1 == core.ES_level || sum[1] + card.levelForSelect_2 == core.ES_level)
+            if (sum[0] + card.levelForSelect_1 == OcgCore.ES_level || sum[1] + card.levelForSelect_2 == OcgCore.ES_level)
                 return true;
             else
             {
@@ -254,19 +255,12 @@ namespace MDPro3.UI
         public override void OnConfirm()
         {
             base.OnConfirm();
-            foreach (var mono in monos)
-                if (mono.selected)
-                {
-                    Program.instance.ocgcore.lastSelectedCard = mono.card.GetData().Id;
-                    break;
-                }
-
-            switch (core.currentMessage)
+            switch (OcgCore.currentMessage)
             {
                 case GameMessage.SelectEffectYn:
                     var binaryMaster = new BinaryMaster();
                     binaryMaster.writer.Write(1);
-                    core.SendReturn(binaryMaster.Get());
+                    SendReturn(binaryMaster.Get());
                     break;
                 case GameMessage.SelectChain:
                     foreach (var mono in monos)
@@ -276,7 +270,7 @@ namespace MDPro3.UI
                             {
                                 binaryMaster = new BinaryMaster();
                                 binaryMaster.writer.Write(mono.card.effects[0].ptr);
-                                core.SendReturn(binaryMaster.Get());
+                                SendReturn(binaryMaster.Get());
                             }
                             else
                             {
@@ -303,7 +297,7 @@ namespace MDPro3.UI
                         if (mono.selected)
                             count++;
                     binaryMaster = new BinaryMaster();
-                    if (core.currentMessage == GameMessage.SelectUnselect && count == 0)
+                    if (OcgCore.currentMessage == GameMessage.SelectUnselect && count == 0)
                         binaryMaster.writer.Write(-1);
                     else
                     {
@@ -312,7 +306,7 @@ namespace MDPro3.UI
                             if (mono.selected)
                                 binaryMaster.writer.Write((byte)mono.card.selectPtr);
                     }
-                    core.SendReturn(binaryMaster.Get());
+                    SendReturn(binaryMaster.Get());
                     break;
                 case GameMessage.SelectIdleCmd:
                 case GameMessage.SelectBattleCmd:
@@ -359,7 +353,7 @@ namespace MDPro3.UI
                     {
                         binaryMaster = new BinaryMaster();
                         binaryMaster.writer.Write(response);
-                        Program.instance.ocgcore.SendReturn(binaryMaster.Get());
+                        SendReturn(binaryMaster.Get());
                     }
                     break;
                 case GameMessage.AnnounceCard:
@@ -368,7 +362,7 @@ namespace MDPro3.UI
                         {
                             binaryMaster = new BinaryMaster();
                             binaryMaster.writer.Write(mono.card.GetData().Id);
-                            Program.instance.ocgcore.SendReturn(binaryMaster.Get());
+                            SendReturn(binaryMaster.Get());
                         }
                     Program.instance.ocgcore.ClearAnnounceCards();
                     break;
@@ -379,11 +373,10 @@ namespace MDPro3.UI
                         bytes[i] = (byte)(monos[i].GetOrder() - 1);
                     binaryMaster = new BinaryMaster();
                     binaryMaster.writer.Write(bytes);
-                    Program.instance.ocgcore.SendReturn(binaryMaster.Get());
+                    SendReturn(binaryMaster.Get());
                     break;
             }
             AudioManager.PlaySE("SE_DUEL_DECIDE");
-            core.Sleep(35);
             Hide();
         }
 
@@ -394,26 +387,25 @@ namespace MDPro3.UI
                 return;
 
             AudioManager.PlaySE("SE_DUEL_CANCEL");
-            switch (core.currentMessage)
+            switch (OcgCore.currentMessage)
             {
                 case GameMessage.SelectEffectYn:
                     var binaryMaster = new BinaryMaster();
                     binaryMaster.writer.Write(0);
-                    core.SendReturn(binaryMaster.Get());
+                    SendReturn(binaryMaster.Get());
                     break;
                 case GameMessage.AnnounceCard:
                     var ss = new List<string>()
-                {
-                    InterString.Get("请输入关键字："),
-                    InterString.Get("搜索"),
-                    string.Empty,
-                    string.Empty
-                };
+                    {
+                        InterString.Get("请输入关键字："),
+                        InterString.Get("搜索"),
+                        string.Empty,
+                        string.Empty
+                    };
                     whenQuitDo = () => { Program.instance.ocgcore.GetUI<OcgCoreUI>().ShowPopupInput(ss, Program.instance.ocgcore.OnAnnounceCard, null); };
                     Program.instance.ocgcore.ClearAnnounceCards();
                     break;
                 case GameMessage.SelectIdleCmd:
-                    break;
                 case GameMessage.SelectBattleCmd:
                     break;
                 case GameMessage.SelectTribute:
@@ -423,18 +415,19 @@ namespace MDPro3.UI
                 default:
                     binaryMaster = new BinaryMaster();
                     binaryMaster.writer.Write(-1);
-                    core.SendReturn(binaryMaster.Get());
+                    SendReturn(binaryMaster.Get());
                     break;
             }
-            core.Sleep(20);
             Hide();
         }
 
         public void OnFinish()
         {
+            DOTween.To(v => { }, 0, 0, transitionTime).OnComplete(() =>
+            {
+                Program.instance.ocgcore.messageDispatcher.playerResponed = true;
+            });
             AudioManager.PlaySE("SE_DUEL_DECIDE");
-            core.Sleep(20);
-            OcgCore.messagePass = true;
             Hide();
         }
 
@@ -446,20 +439,11 @@ namespace MDPro3.UI
                 shadow.DOFade(0f, transitionTime);
             window.DOAnchorPos(new Vector2(0f, -1100f), transitionTime).OnComplete(() =>
             {
-                StartCoroutine(DisposeAsync());
+                Destroy(gameObject);
                 Program.instance.ocgcore.returnAction = null;
                 whenQuitDo?.Invoke();
             });
-            Program.instance.ocgcore.Sleep((int)(transitionTime * 100));
             Program.instance.ocgcore.currentPopup = null;
-
-        }
-
-        private IEnumerator DisposeAsync()
-        {
-            foreach(var mono in monos)
-                yield return mono.DisposeAsync();
-            Destroy(gameObject);
         }
     }
 }

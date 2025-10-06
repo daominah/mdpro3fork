@@ -12,6 +12,7 @@ using System;
 using System.IO;
 using System.Threading.Tasks;
 using MDPro3.Utility;
+using Cysharp.Threading.Tasks;
 
 namespace MDPro3.UI.ServantUI
 {
@@ -962,7 +963,7 @@ namespace MDPro3.UI.ServantUI
             }
         }
 
-        private async Task RefreshOverHeaderIconsAsync()
+        private async UniTask RefreshOverHeaderIconsAsync()
         {
             IconCase.color = Color.clear;
             IconProtector.color = Color.clear;
@@ -974,66 +975,36 @@ namespace MDPro3.UI.ServantUI
             while (DeckEditor.Deck == null)
                 await TaskUtility.WaitOneFrame(gameObject);
 
-            var load = Program.items.LoadDeckCaseIconAsync(DeckEditor.Deck.Case, "_L_SD");
-            while (!load.IsCompleted)
-                await TaskUtility.WaitOneFrame();
-            if (load.Result != null)
+            var sprite = await Program.items.LoadDeckCaseIconAsync(DeckEditor.Deck.Case, "_L_SD");
+            if (sprite != null)
             {
                 IconCase.color = Color.white;
-                IconCase.sprite = load.Result;
+                IconCase.sprite = sprite;
             }
 
-            var im = ABLoader.LoadProtectorMaterial(DeckEditor.Deck.Protector.ToString());
-            StartCoroutine(im);
-            while (im.MoveNext())
-                await TaskUtility.WaitOneFrame(gameObject);
-
+            IconProtector.material = await ABLoader.LoadProtectorMaterial(DeckEditor.Deck.Protector.ToString(), Application.exitCancellationToken);
             IconProtector.color = Color.white;
-            IconProtector.material = im.Current;
 
-            var ie = Program.items.LoadItemIconAsync(DeckEditor.Deck.Field.ToString(), Items.ItemType.Mat);
-            StartCoroutine(ie);
-            while (ie.MoveNext())
-                await TaskUtility.WaitOneFrame(gameObject);
-
+            IconField.sprite = await Program.items.LoadItemIconAsync(DeckEditor.Deck.Field.ToString(), Items.ItemType.Mat);
             IconField.color = Color.white;
-            IconField.sprite = ie.Current;
 
-            ie = Program.items.LoadItemIconAsync(DeckEditor.Deck.Grave.ToString(), Items.ItemType.Grave);
-            StartCoroutine(ie);
-            while (ie.MoveNext())
-                await TaskUtility.WaitOneFrame(gameObject);
-
+            IconGrave.sprite = await Program.items.LoadItemIconAsync(DeckEditor.Deck.Grave.ToString(), Items.ItemType.Grave);
             IconGrave.color = Color.white;
-            IconGrave.sprite = ie.Current;
 
-            ie = Program.items.LoadItemIconAsync(DeckEditor.Deck.Stand.ToString(), Items.ItemType.Stand);
-            StartCoroutine(ie);
-            while (ie.MoveNext())
-                await TaskUtility.WaitOneFrame(gameObject);
-
+            IconStand.sprite = await Program.items.LoadItemIconAsync(DeckEditor.Deck.Stand.ToString(), Items.ItemType.Stand);
             IconStand.color = Color.white;
-            IconStand.sprite = ie.Current;
 
             var mate = DeckEditor.Deck.Mate.ToString();
             if (mate.Length == 7 && mate.StartsWith("100"))
             {
-                ie = Program.items.LoadItemIconAsync(mate, Items.ItemType.Mate);
-                StartCoroutine(ie);
-                while (ie.MoveNext())
-                    await TaskUtility.WaitOneFrame(gameObject);
-
+                IconMate.sprite = await Program.items.LoadItemIconAsync(mate, Items.ItemType.Mate);
                 IconMate.color = Color.white;
-                IconMate.sprite = ie.Current;
             }
             else
             {
-                var task = CardImageLoader.LoadArtAsync(DeckEditor.Deck.Mate, true);
-                while (!task.IsCompleted)
-                    await TaskUtility.WaitOneFrame(gameObject);
-
+                var art = await CardImageLoader.LoadArtAsync(DeckEditor.Deck.Mate, true);
+                IconMate.sprite = TextureManager.Texture2Sprite(art);
                 IconMate.color = Color.white;
-                IconMate.sprite = TextureManager.Texture2Sprite(task.Result);
             }
         }
 

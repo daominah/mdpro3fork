@@ -1,17 +1,19 @@
+using Cysharp.Threading.Tasks;
+using DG.Tweening;
+using MDPro3.Duel.YGOSharp;
+using MDPro3.Servant;
+using MDPro3.Utility;
 using System;
-using System.Threading.Tasks;
 using System.Collections;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
-using YgomSystem.ElementSystem;
-using MDPro3.Duel.YGOSharp;
-using DG.Tweening;
 using UnityEngine.UI;
-using MDPro3.Utility;
-using System.Collections.Concurrent;
+using YgomSystem.ElementSystem;
 
 namespace MDPro3
 {
@@ -32,50 +34,29 @@ namespace MDPro3
             {
                 container = result.Result;
             };
-            StartCoroutine(LoadMaterials());
+            _ = LoadMaterials();
         }
 
         public static bool loaded;
-        private IEnumerator LoadMaterials()
+        private async UniTask LoadMaterials()
         {
-            while(container == null)
-                yield return null;
+            await UniTask.WaitUntil(() => container != null);
 
-            var mie = ABLoader.LoadMaterialAsync("MasterDuel/Material/GUI_CommonShopButton_N");
-            while (mie.MoveNext())
-                yield return null;
-            commonShopButtonMat = mie.Current;
+            commonShopButtonMat = await ABLoader.LoadMaterialAsync("MasterDuel/Material/GUI_CommonShopButton_N", default);
             SetCommonShopButtonMaterial(commonShopButtonMat);
 
-            mie = ABLoader.LoadMaterialAsync("MasterDuel/Material/GUI_CommonShopButton_N_Over");
-            while (mie.MoveNext())
-                yield return null;
-            commonShopButtonOverMat = mie.Current;
+            commonShopButtonOverMat = await ABLoader.LoadMaterialAsync("MasterDuel/Material/GUI_CommonShopButton_N_Over", default);
             SetCommonShopButtonMaterial(commonShopButtonOverMat);
 
 #if UNITY_ANDROID || UNITY_STANDALONE_LINUX
             var depens = Directory.GetFiles(Program.root + "CrossDuel/Dependency", "*.bundle");
             foreach (var depen in depens)
-            {
-                var cache = ABLoader.CacheFromFileAsync(Program.root + "CrossDuel/Dependency/" + Path.GetFileName(depen));
-                StartCoroutine(cache);
-                while (cache.MoveNext())
-                    yield return null;
-            }
+                await ABLoader.CacheFromFileAsync(Program.root + "CrossDuel/Dependency/" + Path.GetFileName(depen));
 #endif
             loaded = true;
         }
 
-        private void MaterialToRD(Material material)
-        {
-            material.SetTexture("_FrameMask", container.rd_Mask);
-            material.SetTexture("_KiraMask", container.rd_KiraMask);
-            material.SetTexture("_MainNormal", container.rd_CardNormal);
-            material.SetTexture("_AttributeTex", container.rd_CardAttributeSet);
-            material.SetVector("_AttributeSize_Pos", new Vector4(8.31f, 12.26f, -3.19f, -5.13f));
-        }
-
-        public static async Task<Texture2D> LoadPicFromFileAsync(string path)
+        public static async UniTask<Texture2D> LoadPicFromFileAsync(string path)
         {
             if (!File.Exists(path))
                 return null;
@@ -88,10 +69,7 @@ namespace MDPro3
             fullPath = Environment.CurrentDirectory + Program.STRING_SLASH + path;
 #endif
             using var request = UnityWebRequestTexture.GetTexture(fullPath);
-            var send = request.SendWebRequest();
-            await TaskUtility.WaitUntil(() => send.isDone);
-            if(!Application.isPlaying)
-                return null;
+            await request.SendWebRequest().WithCancellation(Application.exitCancellationToken);
 
             if (request.result == UnityWebRequest.Result.Success)
                 return DownloadHandlerTexture.GetContent(request);
@@ -102,52 +80,28 @@ namespace MDPro3
             }
         }
 
-        public IEnumerator LoadCardToRawImageWithoutMaterialAsync(RawImage rawImage, int code, bool cache = true)
+        public async UniTask LoadCardToRawImageWithoutMaterialAsync(RawImage rawImage, int code, bool cache = true)
         {
-            var task = CardImageLoader.LoadCardAsync(code, cache);
-            while (!task.IsCompleted)
-                yield return null;
-
-            if (rawImage == null)
-                yield break;
-
-            rawImage.texture = task.Result;
+            rawImage.texture =await CardImageLoader.LoadCardAsync(code, cache, rawImage.destroyCancellationToken);
         }
 
-        public IEnumerator LoadCardToRendererWithMaterialAsync(Renderer renderer, int code, bool cache = true)
+        public async UniTask LoadCardToRendererWithMaterialAsync(Renderer renderer, int code, bool cache = true)
         {
-            var task = CardImageLoader.LoadCardAsync(code, cache);
-            while (!task.IsCompleted)
-                yield return null;
-
-            if (renderer == null)
-                yield break;
-
-            var matLoad = MaterialLoader.LoadCardMaterialAsync(code, true);
-            while (!matLoad.IsCompleted)
-                yield return null;
-            var mat = matLoad.Result;
-            mat.mainTexture = task.Result;
-            renderer.material = mat;
+            var mat = MaterialLoader.GetCardMaterial(code, true);
+            mat.mainTexture = await CardImageLoader.LoadCardAsync(code, cache, renderer.GetCancellationTokenOnDestroy());
+            if(renderer != null)
+                renderer.material = mat;
         }
 
-        public IEnumerator LoadDummyCard(ElementObjectManager manager, int code, uint player, bool active = false)
+        public async UniTask LoadDummyCard(ElementObjectManager manager, int code, uint player, bool active = false)
         {
             if (active)
                 manager.gameObject.SetActive(false);
-            manager.GetElement<Renderer>("DummyCardModel_side").material = MaterialLoader.cardMatSide;
-            manager.GetElement<Renderer>("DummyCardModel_back").material = player == 0 ? Program.instance.ocgcore.myProtector : Program.instance.ocgcore.opProtector;
+            manager.GetElement<Renderer>("DummyCardModel_back").material = player == 0 ? OcgCore.myProtector : OcgCore.opProtector;
 
-            var task = CardImageLoader.LoadCardAsync(code, false);
-            while (!task.IsCompleted)
-                yield return null;
-
-            var matLoad = MaterialLoader.LoadCardMaterialAsync(code, true);
-            while (!matLoad.IsCompleted)
-                yield return null;
-            var mat = matLoad.Result;
-            manager.GetElement<Renderer>("DummyCardModel_front").material = mat;
-            manager.GetElement<Renderer>("DummyCardModel_front").material.mainTexture = task.Result;
+            var renderer = manager.GetElement<Renderer>("DummyCardModel_front");
+            renderer.material = MaterialLoader.GetCardMaterial(code, true);
+            renderer.material.mainTexture = await CardImageLoader.LoadCardAsync(code, false, manager.destroyCancellationToken);
             if (active)
                 manager.gameObject.SetActive(true);
         }
@@ -160,18 +114,16 @@ namespace MDPro3
             mat.SetVector("_MainTexMinMax", new Vector4(-0.5f, 1f, -0.5f, 1f));
         }
 
-        public IEnumerator SetCommonShopButtonMaterial(Image image, bool hover)
+        public async UniTask SetCommonShopButtonMaterial(Image image, bool hover)
         {
             if (hover)
             {
-                while(commonShopButtonOverMat == null)
-                    yield return null;
+                await UniTask.WaitUntil(() => commonShopButtonOverMat != null, cancellationToken : image.destroyCancellationToken);
                 image.material = commonShopButtonOverMat;
             }
             else
             {
-                while (commonShopButtonMat == null)
-                    yield return null;
+                await UniTask.WaitUntil(() => commonShopButtonMat != null, cancellationToken: image.destroyCancellationToken);
                 image.material = commonShopButtonMat;
             }
         }
@@ -180,7 +132,7 @@ namespace MDPro3
 
         static Dictionary<int, Texture2D> cachedCloseups = new Dictionary<int, Texture2D>();
 
-        public IEnumerator<Texture2D> LoadCloseupAsync(int code, MeshRenderer renderer = null)
+        public async UniTask<Texture2D> LoadCloseupAsync(int code, MeshRenderer renderer = null)
         {
             if(renderer != null)
                 renderer.gameObject.SetActive(false);
@@ -188,19 +140,15 @@ namespace MDPro3
             {
                 if (renderer != null)
                     ResizeCloseup(renderer, returenValue);
-                yield return returenValue;
-                yield break;
+                return returenValue;
             }
             if (!Directory.Exists(Program.PATH_CLOSEUP))
                 Directory.CreateDirectory(Program.PATH_CLOSEUP);
             var path = Program.PATH_CLOSEUP + code + Program.EXPANSION_PNG;
             if (!File.Exists(path))
-                yield break;
+                return null;
 
-            var task = LoadPicFromFileAsync(path);
-            while(!task.IsCompleted)
-                yield return null;
-            returenValue = task.Result;
+            returenValue = await LoadPicFromFileAsync(path);
 
             returenValue.name = "Closeup_" + code;
             if (cachedCloseups.ContainsKey(code))
@@ -212,7 +160,7 @@ namespace MDPro3
                 cachedCloseups.Add(code, returenValue);
             if (renderer != null)
                 ResizeCloseup(renderer, returenValue);
-            yield return returenValue;
+            return returenValue;
         }
 
         void ResizeCloseup(MeshRenderer renderer, Texture2D tex)

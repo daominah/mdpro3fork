@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using MDPro3.Duel.YGOSharp;
 using MDPro3.Servant;
@@ -7,6 +8,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Security.AccessControl;
+using System.Threading;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -531,8 +534,7 @@ namespace MDPro3.UI
         #region Save Card Picture
 
         private string errorLog;
-
-        private IEnumerator saveEnumerator;
+        private CancellationTokenSource cts;
 
         public void OnCardPictureSave()
         {
@@ -589,9 +591,9 @@ namespace MDPro3.UI
 
         private void SaveDeckCards()
         {
-            saveEnumerator = SaveCardsAsync(Program.instance.deckEditor
-                .GetUI<DeckEditorUI>().DeckView.GetAllCardCodes());
-            StartCoroutine(saveEnumerator);
+            cts = new();
+            _ = SaveCardsAsync(Program.instance.deckEditor
+                .GetUI<DeckEditorUI>().DeckView.GetAllCardCodes(), cts.Token);
         }
 
         private void SaveAllTokens()
@@ -601,14 +603,15 @@ namespace MDPro3.UI
             foreach (var card in cards)
                 if (card.HasType(CardType.Token))
                     tokens.Add(card.Id);
-            saveEnumerator = SaveCardsAsync(tokens);
-            StartCoroutine(saveEnumerator);
+
+            cts = new();
+            _ = SaveCardsAsync(tokens, cts.Token);
         }
 
         private void SaveAllCards()
         {
-            saveEnumerator = SaveCardsAsync(CardsManager.GetAllCardCodes());
-            StartCoroutine(saveEnumerator);
+            cts = new();
+            _ = SaveCardsAsync(CardsManager.GetAllCardCodes(), cts.Token);
         }
 
         private bool SaveCardPicture(int code, Texture2D tex)
@@ -646,21 +649,19 @@ namespace MDPro3.UI
             }
         }
 
-        private IEnumerator SaveCardsAsync(List<int> cards)
+        private async UniTask SaveCardsAsync(List<int> cards, CancellationToken token)
         {
             var time = Time.time;
 
-            var handle = Addressables.InstantiateAsync("Popup/PopupProgress.prefab");
-            while (!handle.IsDone)
-                yield return null;
-            handle.Result.transform.SetParent(Program.instance.ui_.popup, false);
-            var popupProgress = handle.Result.GetComponent<UI.Popup.PopupProgress>();
+            var pop = await Addressables.InstantiateAsync("Popup/PopupProgress.prefab").WithCancellation(token);
+            pop.transform.SetParent(Program.instance.ui_.popup, false);
+            var popupProgress = pop.GetComponent<UI.Popup.PopupProgress>();
             popupProgress.args = new List<string> { InterString.Get("卡图保存中") };
             popupProgress.cancelAction = StopSaving;
             popupProgress.text.text = string.Empty;
             popupProgress.progressBar.value = 0f;
             popupProgress.Show();
-            yield return new WaitForSeconds(popupProgress.transitionTime);
+            await UniTask.WaitForSeconds(popupProgress.transitionTime, cancellationToken : token);
 
             int errorCount = 0;
             errorLog = string.Empty;
@@ -676,10 +677,8 @@ namespace MDPro3.UI
                 if (File.Exists(Program.PATH_CARD_PIC + cards[i] + format))
                     continue;
 
-                var ie = CardImageLoader.LoadCardAsync(cards[i]);
-                while (!ie.IsCompleted)
-                    yield return null;
-                if (!SaveCardPicture(cards[i], ie.Result)
+                var tex = await CardImageLoader.LoadCardAsync(cards[i], false, token);
+                if (!SaveCardPicture(cards[i], tex)
                     || !CardImageLoader.lastCardFoundArt
                     || !CardImageLoader.lastCardRenderSucceed)
                 {
@@ -689,20 +688,18 @@ namespace MDPro3.UI
                 popupProgress.text.text = i + Program.STRING_SLASH + cards.Count + Program.STRING_LINE_BREAK + InterString.Get("错误：") + errorCount;
                 popupProgress.progressBar.value = (float)i / cards.Count;
                 if (cards.Count <= 100)
-                    yield return null;
+                    await UniTask.Yield(cancellationToken : token);
             }
             popupProgress.Hide();
             if (errorCount > 0)
                 File.WriteAllText(errorLogPath, errorLog);
-            saveEnumerator = null;
-
             //Debug.Log($"Time Used: {Time.time - time}");
         }
 
         private void StopSaving()
         {
-            if (saveEnumerator != null)
-                StopCoroutine(saveEnumerator);
+            cts?.Cancel();
+            cts?.Dispose();
             if (!string.IsNullOrEmpty(errorLog))
                 File.WriteAllText(Program.PATH_CARD_PIC + "MissingAndFailedCards.txt", errorLog);
         }

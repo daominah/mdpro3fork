@@ -11,6 +11,7 @@ using UnityEngine.InputSystem;
 using MDPro3.Servant;
 using MDPro3.UI.ServantUI;
 using MDPro3.Utility;
+using Cysharp.Threading.Tasks;
 
 namespace MDPro3.UI
 {
@@ -71,10 +72,7 @@ namespace MDPro3.UI
                 }
             }
 
-            if (enumeratorCase != null)
-                StopCoroutine(enumeratorCase);
-            enumeratorCase = RefreshDeckCaseAsync();
-            StartCoroutine(enumeratorCase);
+            _ = RefreshDeckCaseAsync();
 
             refreshed = false;
             if (pickuping)
@@ -83,61 +81,52 @@ namespace MDPro3.UI
 
         protected virtual void StartRefresh()
         {
-            if (enumerator != null)
-                StopCoroutine(enumerator);
             if (gameObject.activeInHierarchy)
             {
-                enumerator = RefreshAsync();
-                StartCoroutine(enumerator);
+                try
+                {
+                    cts?.Cancel();
+                    cts?.Dispose();
+                }
+                catch { };
+                cts = new();
+                _ = RefreshAsync();
             }
         }
 
-        protected virtual IEnumerator RefreshDeckCaseAsync()
+        protected virtual async UniTask RefreshDeckCaseAsync()
         {
             if (index == 0)
-                yield break;
+                return;
 
-            while (Program.instance.deckSelector.inTransition)
-                yield return null;
+            await UniTask.WaitWhile(() => Program.instance.deckSelector.inTransition);
 
             for (int i = 0; i < transform.GetSiblingIndex(); i++)
-                yield return null;
+                await UniTask.Yield();
 
-            var load = Program.items.LoadDeckCaseIconAsync(deckCase, "_L_SD");
-            while (!load.IsCompleted)
-                yield return null;
-            if (load.Result != null)
-                Manager.GetElement<Image>("DeckImage").sprite = load.Result;
+            var sprite = await Program.items.LoadDeckCaseIconAsync(deckCase, "_L_SD");
+            if (sprite != null)
+                Manager.GetElement<Image>("DeckImage").sprite = sprite;
         }
 
-        protected override IEnumerator RefreshAsync()
+        protected override async UniTask RefreshAsync()
         {
             if (index == 0)
-                yield break;
+                return;
 
-            while (Program.instance.deckSelector.inTransition)
-                yield return null;
+            await UniTask.WaitWhile(() => Program.instance.deckSelector.inTransition);
 
             Material pMat = null;
             var cardImage0 = Manager.GetElement<RawImage>("CardImage0");
             if (card0 != 0)
             {
-                var task = CardImageLoader.LoadCardAsync(card0, true);
-                while (!task.IsCompleted)
-                    yield return null;
-                cardImage0.texture = task.Result;
-                //var mat = TextureManager.GetCardMaterial(card0);
-                //cardImage0.material = mat;
+                cardImage0.texture = await CardImageLoader.LoadCardAsync(card0, true);
+                //cardImage0.material = await MaterialLoader.LoadCardMaterialAsync(card0, cts.Token);
             }
             else
             {
                 if (pMat == null)
-                {
-                    var im = ABLoader.LoadProtectorMaterial(protector);
-                    while (im.MoveNext())
-                        yield return null;
-                    pMat = im.Current;
-                }
+                    pMat = await ABLoader.LoadProtectorMaterial(protector, cts.Token);
                 cardImage0.texture = null;
                 cardImage0.material = pMat;
             }
@@ -145,22 +134,13 @@ namespace MDPro3.UI
             var cardImage1 = Manager.GetElement<RawImage>("CardImage1");
             if (card1 != 0)
             {
-                var task = CardImageLoader.LoadCardAsync(card1, true);
-                while (!task.IsCompleted)
-                    yield return null;
-                cardImage1.texture = task.Result;
-                //var mat = TextureManager.GetCardMaterial(card1);
-                //cardImage1.material = mat;
+                cardImage1.texture = await CardImageLoader.LoadCardAsync(card1, true);
+                //cardImage1.material = await MaterialLoader.LoadCardMaterialAsync(card1, cts.Token);
             }
             else
             {
                 if (pMat == null)
-                {
-                    var im = ABLoader.LoadProtectorMaterial(protector);
-                    while (im.MoveNext())
-                        yield return null;
-                    pMat = im.Current;
-                }
+                    pMat = await ABLoader.LoadProtectorMaterial(protector, cts.Token);
                 cardImage1.texture = null;
                 cardImage1.material = pMat;
             }
@@ -168,28 +148,16 @@ namespace MDPro3.UI
             var cardImage2 = Manager.GetElement<RawImage>("CardImage2");
             if (card2 != 0)
             {
-                var task = CardImageLoader.LoadCardAsync(card2, true);
-                while (!task.IsCompleted)
-                    yield return null;
-                cardImage2.texture = task.Result;
-                //var mat = TextureManager.GetCardMaterial(card2);
-                //cardImage2.material = mat;
+                cardImage2.texture = await CardImageLoader.LoadCardAsync(card2, true);
+                //cardImage2.material = await MaterialLoader.LoadCardMaterialAsync(card2, cts.Token);
             }
             else
             {
                 if (pMat == null)
-                {
-                    var im = ABLoader.LoadProtectorMaterial(protector);
-                    while (im.MoveNext())
-                        yield return null;
-                    pMat = im.Current;
-                }
+                    pMat = await ABLoader.LoadProtectorMaterial(protector, cts.Token);
                 cardImage2.texture = null;
                 cardImage2.material = pMat;
             }
-
-            enumerator = null;
-            refreshed = true;
         }
 
         protected override void OnClick()

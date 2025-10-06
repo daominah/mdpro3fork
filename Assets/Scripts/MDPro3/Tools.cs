@@ -1,6 +1,9 @@
+using MDPro3.Utility;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -8,8 +11,6 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.Playables;
 using YgomSystem.ElementSystem;
-using MDPro3.Utility;
-using System.Linq;
 
 namespace MDPro3
 {
@@ -301,5 +302,25 @@ namespace MDPro3
             return index >= lastRowStartIndex;
         }
 
+        #region Pools
+
+        private static readonly ConcurrentBag<MemoryStream> streamPool = new();
+
+        public static MemoryStream GetStream()
+        {
+            if (streamPool.TryTake(out var stream))
+            {
+                stream.SetLength(0);
+                return stream;
+            }
+            return new MemoryStream();
+        }
+
+        public static void ReturnStream(MemoryStream stream)
+        {
+            streamPool.Add(stream);
+        }
+
+        #endregion
     }
 }

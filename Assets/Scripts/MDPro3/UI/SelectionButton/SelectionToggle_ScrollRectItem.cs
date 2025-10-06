@@ -3,18 +3,27 @@ using UnityEngine.UI;
 using System.Collections;
 using DG.Tweening;
 using UnityEngine.EventSystems;
+using System.Threading;
+using Cysharp.Threading.Tasks;
 
 namespace MDPro3.UI
 {
     public class SelectionToggle_ScrollRectItem : SelectionToggle
     {
         [HideInInspector] public bool refreshed;
-        protected IEnumerator enumerator;
         protected float switchTime = 0.2f;
-
         protected bool simpleMove = true;
 
+        protected CancellationTokenSource cts;
+
+        protected override void OnDisable()
+        {
+            base.OnDisable();
+            Cancel();
+        }
+
         #region Input Reaction
+
         protected override void Awake()
         {
             base.Awake();
@@ -28,11 +37,13 @@ namespace MDPro3.UI
             base.ToggleOn();
             Manager.GetElement<RectTransform>("Offset").DOAnchorPosX(48f, switchTime).SetEase(Ease.OutQuart);
         }
+
         protected override void ToggleOff()
         {
             base.ToggleOff();
             Manager.GetElement<RectTransform>("Offset").DOAnchorPosX(0f, switchTime).SetEase(Ease.OutQuart);
         }
+
         #endregion
 
         #region Public Function
@@ -42,6 +53,7 @@ namespace MDPro3.UI
             isOn = true;
             Manager.GetElement<RectTransform>("Offset").DOAnchorPosX(48f, 0f);
         }
+
         public virtual void ToggleOffNow()
         {
             isOn = false;
@@ -50,25 +62,38 @@ namespace MDPro3.UI
 
         public virtual void Dispose()
         {
-            if (enumerator != null)
-                StopCoroutine(enumerator);
             Destroy(gameObject);
         }
+
         public virtual void Refresh()
         {
-            if (enumerator != null)
-                StopCoroutine(enumerator);
+            Cancel();
+
             if (gameObject.activeInHierarchy)
             {
-                enumerator = RefreshAsync();
-                StartCoroutine(enumerator);
+                cts = new();
+                _ = RefreshAsync();
             }
         }
-        protected virtual IEnumerator RefreshAsync()
+
+        protected virtual async UniTask RefreshAsync()
         {
             refreshed = false;
-            yield return null;
+            await UniTask.Yield();
             refreshed = true;
+        }
+
+        private void Cancel()
+        {
+            try
+            {
+                cts?.Cancel();
+                cts?.Dispose();
+            }
+            finally
+            {
+                cts = null;
+            }
         }
 
         #endregion
