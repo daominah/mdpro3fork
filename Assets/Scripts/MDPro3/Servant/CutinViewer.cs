@@ -1,18 +1,19 @@
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using MDPro3.Duel.YGOSharp;
+using MDPro3.UI;
+using MDPro3.UI.ServantUI;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading;
+using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.Playables;
 using UnityEngine.UI;
 using YgomSystem.ElementSystem;
 using YgomSystem.YGomTMPro;
-using MDPro3.Duel.YGOSharp;
-using MDPro3.UI;
-using UnityEngine.EventSystems;
-using MDPro3.UI.ServantUI;
-using Cysharp.Threading.Tasks;
-using System.Threading;
 
 namespace MDPro3.Servant
 {
@@ -227,46 +228,12 @@ namespace MDPro3.Servant
             GameObject cutin = null;
             bool diy = false;
             if (codes.Contains(code))
-                cutin = await ABLoader.LoadFromFolderAsync<PlayableDirector>("MonsterCutin/" + code, false, false);
+                cutin = await ABLoader.LoadFromFolderAsync<PlayableDirector>("MonsterCutin/" + code, false, true);
             else
             {
-                cutin = await ABLoader.LoadFromFileAsync("MonsterCutin2/" + code, false, false);
+                cutin = await ABLoader.LoadFromFileAsync("MonsterCutin2/" + code, false, true);
                 diy = true;
             }
-
-            //BackEffects
-            string backPath = "MasterDuel/Timeline/Summon/SummonMonster/04BackEff/";
-            if ((card.Attribute & (uint)CardAttribute.Dark) > 0) // 125
-                backPath += "SummonMonster_Bgdak_S2";
-            else if ((card.Attribute & (uint)CardAttribute.Light) > 0) // 100
-                backPath += "SummonMonster_Bglit_S2";
-            else if ((card.Attribute & (uint)CardAttribute.Earth) > 0) // 56
-                backPath += "SummonMonster_Bgeah_S2";
-            else if ((card.Attribute & (uint)CardAttribute.Water) > 0) // 35
-                backPath += "SummonMonster_Bgwtr_S2";
-            else if ((card.Attribute & (uint)CardAttribute.Fire) > 0) // 31
-                backPath += "SummonMonster_Bgfie_S2";
-            else if ((card.Attribute & (uint)CardAttribute.Wind) > 0) // 25
-                backPath += "SummonMonster_Bgwid_S2";
-            else // 4
-                backPath += "SummonMonster_Bgdve_S2";
-            GameObject back = await ABLoader.LoadFromFileAsync(backPath, true, false);
-
-            //Name Bar
-            GameObject nameBar;
-            if (controller == 0)
-                nameBar = await ABLoader.LoadFromFileAsync("MasterDuel/Timeline/Summon/SummonMonster/01Text/SummonMonster_Name_near", true, false);
-            else
-                nameBar = await ABLoader.LoadFromFileAsync("MasterDuel/Timeline/Summon/SummonMonster/01Text/SummonMonster_Name_far", true, false);
-
-            //front Effect
-            var frontEffect = await ABLoader.LoadFromFileAsync("MasterDuel/Timeline/Summon/SummonMonster/02FrontEff/SummonMonster_Thunder_power", true, false);
-
-            //Instantiate
-            if (Program.instance.ocgcore.showing)
-                AudioManager.PlayBgmKeyCard();
-
-            cutin = Instantiate(cutin);
             cutin.transform.SetParent(Program.instance.container_2D, false);
             if (!diy)
             {
@@ -274,14 +241,34 @@ namespace MDPro3.Servant
                 cutin.transform.GetComponent<PlayableDirector>().time = 0;
             }
 
-            back = Instantiate(back);
+            //BackEffects
+            string backPath;
+            if ((card.Attribute & (uint)CardAttribute.Dark) > 0) // 125
+                backPath = "SummonMonster_Bgdak_S2";
+            else if ((card.Attribute & (uint)CardAttribute.Light) > 0) // 100
+                backPath = "SummonMonster_Bglit_S2";
+            else if ((card.Attribute & (uint)CardAttribute.Earth) > 0) // 56
+                backPath = "SummonMonster_Bgeah_S2";
+            else if ((card.Attribute & (uint)CardAttribute.Water) > 0) // 35
+                backPath = "SummonMonster_Bgwtr_S2";
+            else if ((card.Attribute & (uint)CardAttribute.Fire) > 0) // 31
+                backPath = "SummonMonster_Bgfie_S2";
+            else if ((card.Attribute & (uint)CardAttribute.Wind) > 0) // 25
+                backPath = "SummonMonster_Bgwid_S2";
+            else // 4
+                backPath = "SummonMonster_Bgdve_S2";
+            GameObject back = ABLoader.LoadMasterDuelGameObject(backPath);
             back.transform.SetParent(Program.instance.container_2D, false);
 
-            nameBar = Instantiate(nameBar);
+            //Name Bar
+            GameObject nameBar;
+            if (controller == 0)
+                nameBar = ABLoader.LoadMasterDuelGameObject("SummonMonster_Name_near");
+            else
+                nameBar = ABLoader.LoadMasterDuelGameObject("SummonMonster_Name_far");
             nameBar.transform.SetParent(Program.instance.container_2D, false);
             var manager = nameBar.GetComponent<ElementObjectManager>();
-            var tmp = manager.GetElement<ExtendedTextMeshPro>("Monster_Name_TMP");
-            tmp.font = Program.instance.ui_.tmpFont;
+            var tmp = manager.GetElement<TextMeshPro>("Monster_Name_TMP");
             tmp.text = card.Name;
             var para = "ATK " + card.GetAttackString();
             if (!card.HasType(CardType.Link))
@@ -355,9 +342,13 @@ namespace MDPro3.Servant
                     Destroy(subManager.GetElement("Icon" + i));
             manager.GetElement<TextMesh>("Monster_Para").text = para;
 
-            frontEffect = Instantiate(frontEffect);
+            //front Effect
+            //var frontEffect = ABLoader.LoadMasterDuelGameObject(card.IsHighLevel() ? "SummonMonster_Thunder_power" : "SummonMonster_Thunder_normal");
+            var frontEffect = ABLoader.LoadMasterDuelGameObject("SummonMonster_Thunder_power");
             frontEffect.transform.SetParent(Program.instance.container_2D, false);
 
+            if (Program.instance.ocgcore.showing)
+                AudioManager.PlayBgmKeyCard();
 
             await UniTask.WaitForSeconds(CUTIN_PLAY_TIME).ContinueWith(() =>
             {
