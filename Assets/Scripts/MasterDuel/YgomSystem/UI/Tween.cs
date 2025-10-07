@@ -169,7 +169,7 @@ namespace YgomSystem.UI
             crntTime = Mathf.Clamp(time, 0, duration);
             float t = duration > 0 ? crntTime / duration : 1f;
 
-            // 处理循环类型
+            // 澶勭悊寰幆绫诲瀷
             switch (style)
             {
                 case Style.Loop:
@@ -178,7 +178,7 @@ namespace YgomSystem.UI
                 case Style.PingPong:
                     t = Mathf.PingPong(t, 1f);
                     break;
-                    // 其他样式处理...
+                    // 鍏朵粬鏍峰紡澶勭悊...
             }
 
             OnSetValue(GetEasing(t));

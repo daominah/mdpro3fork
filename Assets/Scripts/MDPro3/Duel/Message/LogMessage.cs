@@ -114,7 +114,7 @@ namespace MDPro3.Duel
 
             var item = ABLoader.LoadMasterDuelGameObject("DuelLogNewTurn");
             item.transform.GetChild(1).GetComponent<Image>().color = myTurn ? DuelLog.myColor : DuelLog.opColor;
-            item.transform.GetChild(2).GetComponent<Text>().text = InterString.Get("µÚ[?]»ØºÏ", turns.ToString());
+            item.transform.GetChild(2).GetComponent<Text>().text = InterString.Get("ç¬¬[?]å›åˆ", turns.ToString());
             item.transform.GetChild(3).GetComponent<Image>().material = Core.GetUI<OcgCoreUI>().AvatarPlayer0.material;
             item.transform.GetChild(4).GetComponent<Image>().material = Core.GetUI<OcgCoreUI>().AvatarPlayer1.material;
             item.transform.GetChild(3).GetComponent<Image>().sprite = Core.GetUI<OcgCoreUI>().AvatarPlayer0.sprite;
@@ -131,12 +131,12 @@ namespace MDPro3.Duel
             duelPhase = (DuelPhase)reader.ReadInt16();
             string textPhase = duelPhase switch
             {
-                DuelPhase.Draw => InterString.Get("³é¿¨½×¶Î"),
-                DuelPhase.Standby => InterString.Get("×¼±¸½×¶Î"),
-                DuelPhase.Main1 => InterString.Get("Ö÷Òª½×¶Î1"),
-                DuelPhase.Battle => InterString.Get("Õ½¶·½×¶Î"),
-                DuelPhase.Main2 => InterString.Get("Ö÷Òª½×¶Î2"),
-                DuelPhase.End => InterString.Get("½áÊø½×¶Î"),
+                DuelPhase.Draw => InterString.Get("æŠ½å¡é˜¶æ®µ"),
+                DuelPhase.Standby => InterString.Get("å‡†å¤‡é˜¶æ®µ"),
+                DuelPhase.Main1 => InterString.Get("ä¸»è¦é˜¶æ®µ1"),
+                DuelPhase.Battle => InterString.Get("æˆ˜æ–—é˜¶æ®µ"),
+                DuelPhase.Main2 => InterString.Get("ä¸»è¦é˜¶æ®µ2"),
+                DuelPhase.End => InterString.Get("ç»“æŸé˜¶æ®µ"),
                 _ => string.Empty,
             };
 
@@ -163,7 +163,7 @@ namespace MDPro3.Duel
             {
                 if(from.location == 0)
                 {
-                    //ÕÙ»½ÑÜÉúÎï
+                    //å¬å”¤è¡ç”Ÿç‰©
                 }
                 else
                 {
@@ -179,14 +179,14 @@ namespace MDPro3.Duel
             else
                 data = card.GetData();
 
-            //²»¼ÇÂ¼ÕÙ»½¹ÖÊŞµÄÒÆ¶¯
+            //ä¸è®°å½•å¬å”¤æ€ªå…½çš„ç§»åŠ¨
             if (to.InPosition(CardPosition.FaceUp)
                 && to.InLocation(CardLocation.MonsterZone)
                 && from.InLocation(CardLocation.Hand)
                 && !to.InLocation(CardLocation.Overlay))
                 return UniTask.CompletedTask;
 
-            //²»¼ÇÂ¼ÌØÊâÕÙ»½¹ÖÊŞµÄÒÆ¶¯
+            //ä¸è®°å½•ç‰¹æ®Šå¬å”¤æ€ªå…½çš„ç§»åŠ¨
             if ((reason & (uint)CardReason.SPSUMMON) > 0
                 && to.InLocation(CardLocation.MonsterZone)
                 && !from.InLocation(CardLocation.MonsterZone)
@@ -196,14 +196,14 @@ namespace MDPro3.Duel
                 return UniTask.CompletedTask;
             }
 
-            //²»¼ÇÂ¼ÊÖ¿¨·¢¶¯Ä§ÏİµÄÒÆ¶¯
+            //ä¸è®°å½•æ‰‹å¡å‘åŠ¨é­”é™·çš„ç§»åŠ¨
             if (from.InLocation(CardLocation.Hand)
                 && to.InLocation(CardLocation.SpellZone)
                 && to.InPosition(CardPosition.FaceUp)
                 && !data.HasType(CardType.Monster))
                 return UniTask.CompletedTask;
 
-            //²»¼ÇÂ¼ÊÖ¿¨·¢¶¯µÄÁé°Ú¿¨µÄÒÆ¶¯
+            //ä¸è®°å½•æ‰‹å¡å‘åŠ¨çš„çµæ‘†å¡çš„ç§»åŠ¨
             if (from.InLocation(CardLocation.Hand)
                 && to.InLocation(CardLocation.SpellZone)
                 && to.InPosition(CardPosition.FaceUp)
@@ -211,24 +211,24 @@ namespace MDPro3.Duel
                 && to.InPendulumSequence())
                 return UniTask.CompletedTask;
 
-            //²»¼ÇÂ¼·¢¶¯¹ıµÄÄ§Ïİ×Ô¶¯ËÍÄ¹µÄÒÆ¶¯
+            //ä¸è®°å½•å‘åŠ¨è¿‡çš„é­”é™·è‡ªåŠ¨é€å¢“çš„ç§»åŠ¨
             if(from.InLocation(CardLocation.SpellZone)
                 && !to.InLocation(CardLocation.SpellZone)
                 && !data.HasType(CardType.Monster)
                 && (reason & (uint)CardReason.RULE) > 0)
                 return UniTask.CompletedTask;
 
-            //²»¼ÇÂ¼³ÉÎª³¬Á¿ËØ²ÄµÄ¿¨µÄÒÆ¶¯
+            //ä¸è®°å½•æˆä¸ºè¶…é‡ç´ æçš„å¡çš„ç§»åŠ¨
             if (from.InLocation(CardLocation.Overlay)
                 && to.InLocation(CardLocation.Overlay))
                 return UniTask.CompletedTask;
 
-            //²»¼ÇÂ¼¿¨×éÏ´ÅÆµÄ¿¨µÄÒÆ¶¯
+            //ä¸è®°å½•å¡ç»„æ´—ç‰Œçš„å¡çš„ç§»åŠ¨
             if (from.InLocation(CardLocation.Deck)
                 && to.InLocation(CardLocation.Deck))
                 return UniTask.CompletedTask;
 
-            //²»¼ÇÂ¼³¡ÉÏ±»¸Ç·ÅµÄ¿¨µÄÒÆ¶¯
+            //ä¸è®°å½•åœºä¸Šè¢«ç›–æ”¾çš„å¡çš„ç§»åŠ¨
             if (to.InLocation(CardLocation.Onfield)
                 && to.InPosition(CardPosition.FaceDown))
                 return UniTask.CompletedTask;
@@ -237,40 +237,40 @@ namespace MDPro3.Duel
             bool indent = false;
             if ((reason & (uint)CardReason.COST) > 0)
             {
-                textReason = InterString.Get("´ú¼Û");
+                textReason = InterString.Get("ä»£ä»·");
                 indent = true;
             }
             else if ((reason & (uint)CardReason.DESTROY) > 0)
-                textReason = InterString.Get("ÆÆ»µ");
+                textReason = InterString.Get("ç ´å");
             else if ((reason & (uint)CardReason.RELEASE) > 0)
-                textReason = InterString.Get("½â·Å");
+                textReason = InterString.Get("è§£æ”¾");
             else if ((reason & (uint)CardReason.BATTLE) > 0)
-                textReason = InterString.Get("Õ½¶·ÆÆ»µ");
+                textReason = InterString.Get("æˆ˜æ–—ç ´å");
             else if ((reason & (uint)CardReason.FLIP) > 0)
-                textReason = InterString.Get("·´×ª");
+                textReason = InterString.Get("åè½¬");
             else if (to.InLocation(CardLocation.Hand))
             {
-                textReason = InterString.Get("»Øµ½");
+                textReason = InterString.Get("å›åˆ°");
                 if (from.InLocation(CardLocation.Deck, CardLocation.Extra))
-                    textReason = InterString.Get("¼ÓÈë");
+                    textReason = InterString.Get("åŠ å…¥");
                 if (from.InLocation(CardLocation.Grave, CardLocation.Removed))
-                    textReason = InterString.Get("»ØÊÕ");
+                    textReason = InterString.Get("å›æ”¶");
             }
             else if (to.InLocation(CardLocation.SpellZone)
                 && !from.InLocation(CardLocation.SpellZone)
                 && !from.InLocation(CardLocation.Hand))
-                textReason = InterString.Get("·ÅÖÃ");
+                textReason = InterString.Get("æ”¾ç½®");
             else if (from.InLocation(CardLocation.SpellZone)
                 && to.InLocation(CardLocation.SpellZone))
-                textReason = InterString.Get("ÒÆ¶¯");
+                textReason = InterString.Get("ç§»åŠ¨");
             else if (from.InLocation(CardLocation.MonsterZone)
                 && to.InLocation(CardLocation.MonsterZone))
-                textReason = InterString.Get("ÒÆ¶¯");
+                textReason = InterString.Get("ç§»åŠ¨");
             else if (to.InLocation(CardLocation.MonsterZone)
                 && !from.InLocation(CardLocation.MonsterZone))
-                textReason = InterString.Get("»Øµ½");
+                textReason = InterString.Get("å›åˆ°");
             else
-                textReason = InterString.Get("ËÍÖÁ");
+                textReason = InterString.Get("é€è‡³");
 
             if (data.HasType(CardType.Token))
                 DuelLog.AddSingleCardMessageToLog(data.Id, null, from, textReason, indent);
@@ -294,28 +294,28 @@ namespace MDPro3.Duel
             var data = card.GetData();
             string textReason;
             if(OcgCore.currentMessage == GameMessage.Summoning)
-                textReason = InterString.Get("ÕÙ»½");
+                textReason = InterString.Get("å¬å”¤");
             else if (OcgCore.currentMessage == GameMessage.SpSummoning)
             {
                 if ((lastSpSummonReason & (uint)CardReason.Ritual) > 0)
-                    textReason = InterString.Get("ÒÇÊ½ÕÙ»½");
+                    textReason = InterString.Get("ä»ªå¼å¬å”¤");
                 else if ((lastSpSummonReason & (uint)CardReason.Fusion) > 0)
-                    textReason = InterString.Get("ÈÚºÏÕÙ»½");
+                    textReason = InterString.Get("èåˆå¬å”¤");
                 else if ((lastSpSummonReason & (uint)CardReason.Synchro) > 0)
-                    textReason = InterString.Get("Í¬µ÷ÕÙ»½");
+                    textReason = InterString.Get("åŒè°ƒå¬å”¤");
                 else if ((lastSpSummonReason & (uint)CardReason.Xyz) > 0)
-                    textReason = InterString.Get("³¬Á¿ÕÙ»½");
+                    textReason = InterString.Get("è¶…é‡å¬å”¤");
                 else if ((lastSpSummonReason & (uint)CardReason.Link) > 0)
-                    textReason = InterString.Get("Á¬½ÓÕÙ»½");
+                    textReason = InterString.Get("è¿æ¥å¬å”¤");
                 else if ((lastSpSummonReason & (uint)CardReason.Pendulum) > 0)
-                    textReason = InterString.Get("Áé°ÚÕÙ»½");
+                    textReason = InterString.Get("çµæ‘†å¬å”¤");
                 else
-                    textReason = InterString.Get("ÌØÊâÕÙ»½");
+                    textReason = InterString.Get("ç‰¹æ®Šå¬å”¤");
             }
             else if (OcgCore.currentMessage == GameMessage.FlipSummoning)
-                textReason = InterString.Get("·´×ªÕÙ»½");
+                textReason = InterString.Get("åè½¬å¬å”¤");
             else
-                textReason = InterString.Get("ËÍÖÁ");
+                textReason = InterString.Get("é€è‡³");
 
             if (data.HasType(CardType.Token))
                 DuelLog.AddSingleCardMessageToLog(code, null, gps, textReason);
@@ -344,7 +344,7 @@ namespace MDPro3.Duel
                 return UniTask.CompletedTask;
             }
 
-            string textReason = InterString.Get("¸Ç·Å");
+            string textReason = InterString.Get("ç›–æ”¾");
             DuelLog.AddSingleCardMessageToLog(card.GetData().Id, card.cacheP, card.p, textReason);
             return UniTask.CompletedTask;
         }
@@ -374,13 +374,13 @@ namespace MDPro3.Duel
                 item.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = cardsInChain.Count.ToString();
                 item.transform.GetChild(1).GetChild(0).GetComponent<Text>().color =
                     card.p.controller == 0 ? DuelLog.myChainColor : DuelLog.opChainColor;
-                item.transform.GetChild(2).GetComponent<Text>().text = InterString.Get("Á¬Ëø");
+                item.transform.GetChild(2).GetComponent<Text>().text = InterString.Get("è¿é”");
                 _ = Program.instance.texture_.LoadCardToRawImageWithoutMaterialAsync(
                     item.transform.GetChild(3).GetComponent<RawImage>(), code);
                 DuelLog.AddLog(item);
             }
             
-            var textReason = InterString.Get("·¢¶¯");
+            var textReason = InterString.Get("å‘åŠ¨");
             if(card.cacheP != null 
                 && card.cacheP.InLocation(CardLocation.Hand)
                 && gps.InLocation(CardLocation.SpellZone)
@@ -389,7 +389,7 @@ namespace MDPro3.Duel
                 && gps.InPendulumSequence()
                 && card == lastMoveCard
                 && card != lastConfirmedCard)
-                textReason = InterString.Get("Áé°Ú·¢¶¯");
+                textReason = InterString.Get("çµæ‘†å‘åŠ¨");
 
             if(card == lastMoveCard
                 && card != lastConfirmedCard
@@ -421,10 +421,10 @@ namespace MDPro3.Duel
                 return UniTask.CompletedTask;
             }
 
-            var textReason = InterString.Get("·¢¶¯ÎŞĞ§");
+            var textReason = InterString.Get("å‘åŠ¨æ— æ•ˆ");
             if (OcgCore.currentMessage == GameMessage.ChainDisabled)
             {
-                textReason = InterString.Get("Ğ§¹ûÎŞĞ§");
+                textReason = InterString.Get("æ•ˆæœæ— æ•ˆ");
                 if(card.negated)
                     return UniTask.CompletedTask;
             }
@@ -458,7 +458,7 @@ namespace MDPro3.Duel
             var allUnknow = codes.All(x => x == 0);
             if (allUnknow)
             {
-                var textReason = InterString.Get("³é¿¨") + " x " + count;
+                var textReason = InterString.Get("æŠ½å¡") + " x " + count;
                 DuelLog.AddSingleCardMessageToLog(0, null, gps, textReason);
             }
             else
@@ -466,7 +466,7 @@ namespace MDPro3.Duel
                 for (var i = 0; i < count; i++)
                 {
                     var code = codes[i];
-                    var textReason = InterString.Get("³é¿¨");
+                    var textReason = InterString.Get("æŠ½å¡");
                     DuelLog.AddSingleCardMessageToLog(code, null, gps, textReason);
                 }
             }
@@ -482,7 +482,7 @@ namespace MDPro3.Duel
             var count = reader.ReadByte();
             var item = ABLoader.LoadMasterDuelGameObject(cardsInChain.Count > 0 ? "DuelLogText2" : "DuelLogText");
 
-            item.transform.GetChild(1).GetComponent<Text>().text = InterString.Get("¶ÔÏó");
+            item.transform.GetChild(1).GetComponent<Text>().text = InterString.Get("å¯¹è±¡");
             DuelLog.AddLog(item);
             for(int i = 0; i < count; i++)
             {
@@ -535,7 +535,7 @@ namespace MDPro3.Duel
                 return UniTask.CompletedTask;
 
             var item = ABLoader.LoadMasterDuelGameObject(cardsInChain.Count > 0 ? "DuelLogText2" : "DuelLogText");
-            item.transform.GetChild(1).GetComponent<Text>().text = InterString.Get("¶ÔÏó");
+            item.transform.GetChild(1).GetComponent<Text>().text = InterString.Get("å¯¹è±¡");
             DuelLog.AddLog(item);
             for (int i = 0; i < tempList.Count; i++)
                 DuelLog.AddSingleCardMessageToLog(tempList[i].GetData().Id, null, tempList[i].p, string.Empty, true);
@@ -550,7 +550,7 @@ namespace MDPro3.Duel
                 DebugNoCard();
                 return UniTask.CompletedTask;
             }
-            var textReason = InterString.Get("¹¥»÷±»ÎŞĞ§");
+            var textReason = InterString.Get("æ”»å‡»è¢«æ— æ•ˆ");
             DuelLog.AddSingleCardMessageToLog(attackingCard.GetData().Id, null, attackingCard.p, textReason);
 
             return UniTask.CompletedTask;
@@ -565,7 +565,7 @@ namespace MDPro3.Duel
             {
                 var code = reader.ReadInt32();
                 var gps = reader.ReadShortGPS();
-                var textReason = InterString.Get("¹«¿ª¿¨×é");
+                var textReason = InterString.Get("å…¬å¼€å¡ç»„");
                 DuelLog.AddSingleCardMessageToLog(code, null, gps, textReason);
             }
 
@@ -585,11 +585,11 @@ namespace MDPro3.Duel
             {
                 var code = reader.ReadInt32();
                 var gps = reader.ReadShortGPS();
-                var textReason = InterString.Get("¹«¿ª");
+                var textReason = InterString.Get("å…¬å¼€");
                 if (gps.InLocation(CardLocation.Hand))
-                    textReason = InterString.Get("¹«¿ªÊÖ¿¨");
+                    textReason = InterString.Get("å…¬å¼€æ‰‹å¡");
                 else if (gps.InLocation(CardLocation.Onfield))
-                    textReason = InterString.Get("¹«¿ª¸Ç¿¨");
+                    textReason = InterString.Get("å…¬å¼€ç›–å¡");
                 DuelLog.AddSingleCardMessageToLog(code, null, gps, textReason);
             }
 
@@ -601,13 +601,13 @@ namespace MDPro3.Duel
             var code = reader.ReadInt32();
             var from = reader.ReadGPS();
 
-            var textReason = InterString.Get("¸ü¸Ä±íÊ¾ĞÎÊ½");
+            var textReason = InterString.Get("æ›´æ”¹è¡¨ç¤ºå½¢å¼");
             if(from.InLocation(CardLocation.SpellZone)
                 && from.InPosition(CardPosition.FaceUp))
-                textReason = InterString.Get("¸Ç·Å");
+                textReason = InterString.Get("ç›–æ”¾");
             if (from.InLocation(CardLocation.SpellZone)
                 && from.InPosition(CardPosition.FaceDown))
-                textReason = InterString.Get("¸Ç·Å");
+                textReason = InterString.Get("ç›–æ”¾");
 
             if(code == 0)
             {
@@ -643,7 +643,7 @@ namespace MDPro3.Duel
                 position = from.position
             };
 
-            var textReason = InterString.Get(from.controller == to.controller ? "ÒÆ¶¯" : "×ªÒÆ¿ØÖÆÈ¨");
+            var textReason = InterString.Get(from.controller == to.controller ? "ç§»åŠ¨" : "è½¬ç§»æ§åˆ¶æƒ");
             DuelLog.AddSingleCardMessageToLog(code, from, to2, textReason);
             DuelLog.AddSingleCardMessageToLog(code2, to, from2, textReason);
 
@@ -673,7 +673,7 @@ namespace MDPro3.Duel
             item.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = chainSolvingIndex.ToString();
             item.transform.GetChild(1).GetChild(0).GetComponent<Text>().color =
                 card.p.controller == 0 ? DuelLog.myChainColor : DuelLog.opChainColor;
-            item.transform.GetChild(2).GetComponent<Text>().text = InterString.Get("Ğ§¹û´¦Àí");
+            item.transform.GetChild(2).GetComponent<Text>().text = InterString.Get("æ•ˆæœå¤„ç†");
             _ = Program.instance.texture_.LoadCardToRawImageWithoutMaterialAsync(
                 item.transform.GetChild(3).GetComponent<RawImage>(), card.GetData().Id);
             DuelLog.AddLog(item);
@@ -689,7 +689,7 @@ namespace MDPro3.Duel
             var item = ABLoader.LoadMasterDuelGameObject("DuelLogChaining");
             item.transform.GetChild(1).gameObject.SetActive(false);
             item.transform.GetChild(3).gameObject.SetActive(false);
-            var textReason = InterString.Get(chainSolvingIndex > 1 ? "Á¬Ëø½áÊø" : "´¦Àí½áÊø");
+            var textReason = InterString.Get(chainSolvingIndex > 1 ? "è¿é”ç»“æŸ" : "å¤„ç†ç»“æŸ");
             item.transform.GetChild(2).GetComponent<Text>().text = textReason;
             chainSolvingIndex = 0;
             DuelLog.AddLog(item);
@@ -713,7 +713,7 @@ namespace MDPro3.Duel
             var targetColor = from.InMyControl() ? DuelLog.myColor : DuelLog.opColor;
             targetColor.a = 0.75f;
             item.transform.GetChild(1).GetComponent<Image>().color = targetColor;
-            item.transform.GetChild(2).GetComponent<Text>().text = InterString.Get("¹¥»÷");
+            item.transform.GetChild(2).GetComponent<Text>().text = InterString.Get("æ”»å‡»");
             var cardFace1 = item.transform.GetChild(3).GetComponent<RawImage>();
             _ = Program.instance.texture_.LoadCardToRawImageWithoutMaterialAsync(cardFace1, code, true);
             if(from.InPosition(CardPosition.Defence))
@@ -778,7 +778,7 @@ namespace MDPro3.Duel
                 cardsBeTarget.Clear();
                 
                 var item = ABLoader.LoadMasterDuelGameObject(chainSolvingIndex > 0 ? "DuelLogText2" : "DuelLogText");
-                item.transform.GetChild(1).GetComponent<Text>().text = InterString.Get("Áé°ÚÕÙ»½½áÊø");
+                item.transform.GetChild(1).GetComponent<Text>().text = InterString.Get("çµæ‘†å¬å”¤ç»“æŸ");
                 DuelLog.AddLog(item);
             }
 
@@ -799,9 +799,9 @@ namespace MDPro3.Duel
             {
                 item = ABLoader.LoadMasterDuelGameObject(cardsInChain.Count > 0 ? "DuelLogTextWithCard2" : "DuelLogTextWithCard");
                 if (type == 8)
-                    hint = InterString.Get("ĞûÑÔ¿¨Æ¬£º[?]", CardsManager.Get(data).Name);
+                    hint = InterString.Get("å®£è¨€å¡ç‰‡ï¼š[?]", CardsManager.Get(data).Name);
                 else if (type == 10)
-                    hint = InterString.Get("Ğ§¹ûÊÊÓÃ£º[?]", CardsManager.Get(data).Name);
+                    hint = InterString.Get("æ•ˆæœé€‚ç”¨ï¼š[?]", CardsManager.Get(data).Name);
             }
             else if(type >= 2
                 && type <= 11
@@ -812,20 +812,20 @@ namespace MDPro3.Duel
                 if (type == 2)
                     hint = StringHelper.Get(data);
                 else if (type == 4)
-                    hint = InterString.Get("Ğ§¹ûÑ¡Ôñ£º[?]", StringHelper.Get(data));
+                    hint = InterString.Get("æ•ˆæœé€‰æ‹©ï¼š[?]", StringHelper.Get(data));
                 else if (type == 5)
                     hint = StringHelper.Get(data);
                 else if (type == 6)
-                    hint = InterString.Get("ÖÖ×åÑ¡Ôñ£º[?]", StringHelper.Race(data));
+                    hint = InterString.Get("ç§æ—é€‰æ‹©ï¼š[?]", StringHelper.Race(data));
                 else if (type == 7)
-                    hint = InterString.Get("ÊôĞÔÑ¡Ôñ£º[?]", StringHelper.Attribute(data));
+                    hint = InterString.Get("å±æ€§é€‰æ‹©ï¼š[?]", StringHelper.Attribute(data));
                 else if (type == 9)
-                    hint = InterString.Get("Êı×ÖÑ¡Ôñ£º[?]", data.ToString());
+                    hint = InterString.Get("æ•°å­—é€‰æ‹©ï¼š[?]", data.ToString());
                 else if (type == 11)
                 {
                     if (player == 1)
                         data = (data >> 16) | (data << 16);
-                    hint = InterString.Get("ÇøÓòÑ¡Ôñ£º[?]", StringHelper.Zone(data));
+                    hint = InterString.Get("åŒºåŸŸé€‰æ‹©ï¼š[?]", StringHelper.Zone(data));
                 }
             }
 
@@ -907,7 +907,7 @@ namespace MDPro3.Duel
         {
             var player = LocalPlayer(reader.ReadByte());
             var value = reader.ReadInt32();
-            var textReason = InterString.Get("ÉËº¦");
+            var textReason = InterString.Get("ä¼¤å®³");
 
             if(player == 0)
                 life0 -= value;
@@ -922,7 +922,7 @@ namespace MDPro3.Duel
         {
             var player = LocalPlayer(reader.ReadByte());
             var value = reader.ReadInt32();
-            var textReason = InterString.Get("´ú¼Û");
+            var textReason = InterString.Get("ä»£ä»·");
             if (player == 0)
                 life0 -= value;
             else
@@ -936,7 +936,7 @@ namespace MDPro3.Duel
         {
             var player = LocalPlayer(reader.ReadByte());
             var value = reader.ReadInt32();
-            var textReason = InterString.Get("»Ø¸´");
+            var textReason = InterString.Get("å›å¤");
             if (player == 0)
                 life0 += value;
             else
@@ -950,7 +950,7 @@ namespace MDPro3.Duel
         {
             var player = LocalPlayer(reader.ReadByte());
             var value = reader.ReadInt32();
-            var textReason = InterString.Get("»ù±¾·Ö¸Ä±ä");
+            var textReason = InterString.Get("åŸºæœ¬åˆ†æ”¹å˜");
 
             var diff = player == 0 ? value - life0 : value - life1;
             if(player == 0)

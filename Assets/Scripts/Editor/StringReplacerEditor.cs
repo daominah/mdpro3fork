@@ -12,28 +12,28 @@ public class StringReplacerEditor : EditorWindow
     private bool processTextFiles = true;
     private bool processSerializedAssets = true;
 
-    [MenuItem("Assets/Ìæ»»×Ö·û´®", false, 103)]
+    [MenuItem("Assets/æ›¿æ¢å­—ç¬¦ä¸²", false, 103)]
     private static void ReplaceStringsInAsset()
     {
-        // Ê×ÏÈÏÔÊ¾È·ÈÏµ¯´°
+        // é¦–å…ˆæ˜¾ç¤ºç¡®è®¤å¼¹çª—
         bool userConfirmed = EditorUtility.DisplayDialog(
-            "Î£ÏÕ²Ù×÷È·ÈÏ", // ±êÌâ
-            $"ÄãÈ·¶¨Òª½øĞĞ¡¾Ìæ»»×Ö·û´®¡¿' Âğ£¿´Ë²Ù×÷²»¿ÉÄæ£¡\n\n½¨ÒéÌáÇ°±¸·İÏîÄ¿¡£", // ÏûÏ¢
-            "¼ÌĞø", // È·¶¨°´Å¥
-            "È¡Ïû" // È¡Ïû°´Å¥
+            "å±é™©æ“ä½œç¡®è®¤", // æ ‡é¢˜
+            $"ä½ ç¡®å®šè¦è¿›è¡Œã€æ›¿æ¢å­—ç¬¦ä¸²ã€‘' å—ï¼Ÿæ­¤æ“ä½œä¸å¯é€†ï¼\n\nå»ºè®®æå‰å¤‡ä»½é¡¹ç›®ã€‚", // æ¶ˆæ¯
+            "ç»§ç»­", // ç¡®å®šæŒ‰é’®
+            "å–æ¶ˆ" // å–æ¶ˆæŒ‰é’®
         );
 
-        // Èç¹ûÓÃ»§µã»÷ÁË¡°È¡Ïû¡±£¬ÔòÖÕÖ¹²Ù×÷
+        // å¦‚æœç”¨æˆ·ç‚¹å‡»äº†â€œå–æ¶ˆâ€ï¼Œåˆ™ç»ˆæ­¢æ“ä½œ
         if (!userConfirmed)
         {
-            Debug.Log("ÓÃ»§È¡ÏûÁË²Ù×÷¡£");
+            Debug.Log("ç”¨æˆ·å–æ¶ˆäº†æ“ä½œã€‚");
             return;
         }
 
         ProcessSelectedAsset(AssetDatabase.GetAssetPath(Selection.activeObject));
     }
 
-    [MenuItem("Assets/Ìæ»»×Ö·û´®", true)]
+    [MenuItem("Assets/æ›¿æ¢å­—ç¬¦ä¸²", true)]
     private static bool ValidateReplaceStringsInAsset()
     {
         return Selection.activeObject != null &&
@@ -48,15 +48,15 @@ public class StringReplacerEditor : EditorWindow
 
     private static void ProcessSelectedAsset(string assetPath)
     {
-        // ²éÕÒÅäÖÃÎÄ¼ş
+        // æŸ¥æ‰¾é…ç½®æ–‡ä»¶
         StringReplacementConfig config = FindConfig();
         if (config == null || !config.HasRules())
         {
-            Debug.LogError("ÇëÏÈ´´½¨StringReplacementConfig²¢ÅäÖÃÌæ»»¹æÔò");
+            Debug.LogError("è¯·å…ˆåˆ›å»ºStringReplacementConfigå¹¶é…ç½®æ›¿æ¢è§„åˆ™");
             return;
         }
 
-        // ¸ù¾İÎÄ¼şÀàĞÍÑ¡Ôñ´¦Àí·½·¨
+        // æ ¹æ®æ–‡ä»¶ç±»å‹é€‰æ‹©å¤„ç†æ–¹æ³•
         string extension = Path.GetExtension(assetPath).ToLower();
         bool isTextFile = IsTextFileExtension(extension);
         bool isSerializedAsset = IsSerializedAssetExtension(extension);
@@ -73,18 +73,18 @@ public class StringReplacerEditor : EditorWindow
         }
         else
         {
-            Debug.LogWarning($"²»Ö§³ÖµÄÎÄ¼şÀàĞÍ: {extension}");
+            Debug.LogWarning($"ä¸æ”¯æŒçš„æ–‡ä»¶ç±»å‹: {extension}");
             return;
         }
 
         if (processed)
         {
-            Debug.Log($"³É¹¦´¦Àí: {assetPath}");
+            Debug.Log($"æˆåŠŸå¤„ç†: {assetPath}");
             AssetDatabase.ImportAsset(assetPath, ImportAssetOptions.ForceUpdate);
         }
         else
         {
-            Debug.Log($"Î´ÕÒµ½Æ¥ÅäµÄ×Ö·û´®: {assetPath}");
+            Debug.Log($"æœªæ‰¾åˆ°åŒ¹é…çš„å­—ç¬¦ä¸²: {assetPath}");
         }
     }
 
@@ -102,7 +102,7 @@ public class StringReplacerEditor : EditorWindow
             {
                 content = content.Replace(rule.findString, rule.replaceString);
                 modified = true;
-                Debug.Log($"Ìæ»»ÎÄ±¾: {rule.findString} -> {rule.replaceString}");
+                Debug.Log($"æ›¿æ¢æ–‡æœ¬: {rule.findString} -> {rule.replaceString}");
             }
         }
 
@@ -117,8 +117,8 @@ public class StringReplacerEditor : EditorWindow
 
     private static bool ProcessSerializedAsset(string assetPath, StringReplacementConfig config)
     {
-        // ¶ÔÓÚĞòÁĞ»¯×Ê²ú£¬ÎÒÃÇĞèÒª¸ü½÷É÷µÄ´¦Àí
-        // ÕâÀïÊ¹ÓÃUnityµÄĞòÁĞ»¯APIÀ´°²È«µØĞŞ¸Ä×Ê²ú
+        // å¯¹äºåºåˆ—åŒ–èµ„äº§ï¼Œæˆ‘ä»¬éœ€è¦æ›´è°¨æ…çš„å¤„ç†
+        // è¿™é‡Œä½¿ç”¨Unityçš„åºåˆ—åŒ–APIæ¥å®‰å…¨åœ°ä¿®æ”¹èµ„äº§
         bool modified = false;
 
         SerializedObject serializedObject = new SerializedObject(AssetDatabase.LoadAllAssetsAtPath(assetPath)[0]);
@@ -143,7 +143,7 @@ public class StringReplacerEditor : EditorWindow
                 {
                     property.stringValue = newValue;
                     modified = true;
-                    Debug.Log($"Ìæ»»ÊôĞÔ {property.name}: {originalValue} -> {newValue}");
+                    Debug.Log($"æ›¿æ¢å±æ€§ {property.name}: {originalValue} -> {newValue}");
                 }
             }
         }
@@ -198,31 +198,31 @@ public class StringReplacerEditor : EditorWindow
 
     private void OnGUI()
     {
-        GUILayout.Label("×Ö·û´®ÅúÁ¿Ìæ»»¹¤¾ß", EditorStyles.boldLabel);
+        GUILayout.Label("å­—ç¬¦ä¸²æ‰¹é‡æ›¿æ¢å·¥å…·", EditorStyles.boldLabel);
         EditorGUILayout.Space();
 
-        // ÅäÖÃÑ¡Ôñ
-        config = (StringReplacementConfig)EditorGUILayout.ObjectField("Ìæ»»ÅäÖÃ", config, typeof(StringReplacementConfig), false);
+        // é…ç½®é€‰æ‹©
+        config = (StringReplacementConfig)EditorGUILayout.ObjectField("æ›¿æ¢é…ç½®", config, typeof(StringReplacementConfig), false);
 
         if (config == null)
         {
-            EditorGUILayout.HelpBox("ÇëÏÈ´´½¨»òÖ¸¶¨Ò»¸öStringReplacementConfig×Ê²ú", MessageType.Warning);
-            if (GUILayout.Button("´´½¨ĞÂÅäÖÃ"))
+            EditorGUILayout.HelpBox("è¯·å…ˆåˆ›å»ºæˆ–æŒ‡å®šä¸€ä¸ªStringReplacementConfigèµ„äº§", MessageType.Warning);
+            if (GUILayout.Button("åˆ›å»ºæ–°é…ç½®"))
             {
                 CreateNewConfig();
             }
             return;
         }
 
-        // ´¦ÀíÑ¡Ïî
+        // å¤„ç†é€‰é¡¹
         EditorGUILayout.Space();
-        GUILayout.Label("´¦ÀíÑ¡Ïî", EditorStyles.boldLabel);
-        processTextFiles = EditorGUILayout.Toggle("´¦ÀíÎÄ±¾ÎÄ¼ş", processTextFiles);
-        processSerializedAssets = EditorGUILayout.Toggle("´¦ÀíĞòÁĞ»¯×Ê²ú", processSerializedAssets);
+        GUILayout.Label("å¤„ç†é€‰é¡¹", EditorStyles.boldLabel);
+        processTextFiles = EditorGUILayout.Toggle("å¤„ç†æ–‡æœ¬æ–‡ä»¶", processTextFiles);
+        processSerializedAssets = EditorGUILayout.Toggle("å¤„ç†åºåˆ—åŒ–èµ„äº§", processSerializedAssets);
 
-        // ÏÔÊ¾ºÍ±à¼­ÅäÖÃ
+        // æ˜¾ç¤ºå’Œç¼–è¾‘é…ç½®
         EditorGUILayout.Space();
-        GUILayout.Label("Ìæ»»¹æÔòÅäÖÃ", EditorStyles.boldLabel);
+        GUILayout.Label("æ›¿æ¢è§„åˆ™é…ç½®", EditorStyles.boldLabel);
 
         scrollPosition = EditorGUILayout.BeginScrollView(scrollPosition);
         SerializedObject serializedConfig = new SerializedObject(config);
@@ -231,9 +231,9 @@ public class StringReplacerEditor : EditorWindow
         serializedConfig.ApplyModifiedProperties();
         EditorGUILayout.EndScrollView();
 
-        // ²Ù×÷°´Å¥
+        // æ“ä½œæŒ‰é’®
         EditorGUILayout.Space();
-        if (GUILayout.Button("´¦ÀíÑ¡ÖĞ×Ê²ú"))
+        if (GUILayout.Button("å¤„ç†é€‰ä¸­èµ„äº§"))
         {
             if (Selection.activeObject != null)
             {
@@ -242,11 +242,11 @@ public class StringReplacerEditor : EditorWindow
             }
             else
             {
-                Debug.LogWarning("ÇëÏÈÑ¡ÔñÒ»¸ö×Ê²ú");
+                Debug.LogWarning("è¯·å…ˆé€‰æ‹©ä¸€ä¸ªèµ„äº§");
             }
         }
 
-        if (GUILayout.Button("´¦ÀíÎÄ¼ş¼ĞÖĞËùÓĞ×Ê²ú"))
+        if (GUILayout.Button("å¤„ç†æ–‡ä»¶å¤¹ä¸­æ‰€æœ‰èµ„äº§"))
         {
             if (Selection.activeObject != null)
             {
@@ -257,7 +257,7 @@ public class StringReplacerEditor : EditorWindow
                 }
                 else
                 {
-                    Debug.LogWarning("ÇëÑ¡ÔñÒ»¸öÎÄ¼ş¼Ğ");
+                    Debug.LogWarning("è¯·é€‰æ‹©ä¸€ä¸ªæ–‡ä»¶å¤¹");
                 }
             }
         }
@@ -266,10 +266,10 @@ public class StringReplacerEditor : EditorWindow
     private void CreateNewConfig()
     {
         string path = EditorUtility.SaveFilePanelInProject(
-            "´´½¨Ìæ»»ÅäÖÃ",
+            "åˆ›å»ºæ›¿æ¢é…ç½®",
             "StringReplacementConfig",
             "asset",
-            "ÇëÊäÈëÅäÖÃÎÄ¼şÃû");
+            "è¯·è¾“å…¥é…ç½®æ–‡ä»¶å");
 
         if (!string.IsNullOrEmpty(path))
         {
@@ -286,11 +286,11 @@ public class StringReplacerEditor : EditorWindow
         StringReplacementConfig config = FindConfig();
         if (config == null || !config.HasRules())
         {
-            Debug.LogError("ÇëÏÈÅäÖÃÌæ»»¹æÔò");
+            Debug.LogError("è¯·å…ˆé…ç½®æ›¿æ¢è§„åˆ™");
             return;
         }
 
-        // »ñÈ¡ÎÄ¼ş¼ĞÖĞµÄËùÓĞ×Ê²ú
+        // è·å–æ–‡ä»¶å¤¹ä¸­çš„æ‰€æœ‰èµ„äº§
         string[] allFiles = Directory.GetFiles(folderPath, "*", SearchOption.AllDirectories);
         int processedCount = 0;
 
@@ -314,6 +314,6 @@ public class StringReplacerEditor : EditorWindow
         }
 
         AssetDatabase.Refresh();
-        Debug.Log($"´¦ÀíÍê³É£¡¹²´¦ÀíÁË {processedCount} ¸öÎÄ¼ş");
+        Debug.Log($"å¤„ç†å®Œæˆï¼å…±å¤„ç†äº† {processedCount} ä¸ªæ–‡ä»¶");
     }
 }

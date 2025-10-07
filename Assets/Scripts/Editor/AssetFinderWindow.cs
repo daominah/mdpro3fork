@@ -3,9 +3,9 @@ using UnityEditor;
 
 public class AssetFinderWindow : EditorWindow
 {
-    private string searchGUID = "";
+    private string searchGUID = string.Empty;
     private UnityEngine.Object foundAsset;
-    private string searchMessage = "";
+    private string searchMessage = string.Empty;
     private MessageType messageType;
 
     [MenuItem("Tools/Asset Finder by GUID")]
@@ -20,51 +20,51 @@ public class AssetFinderWindow : EditorWindow
         EditorGUILayout.LabelField("Asset Finder by GUID", EditorStyles.boldLabel);
         GUILayout.Space(10);
 
-        // ÏÔÊ¾µ±Ç°Ñ¡ÖĞ×ÊÔ´µÄGUID
+        // æ˜¾ç¤ºå½“å‰é€‰ä¸­èµ„æºçš„GUID
         DrawSelectedAssetInfo();
 
         GUILayout.Space(20);
-        EditorGUILayout.LabelField("²éÕÒ×ÊÔ´", EditorStyles.boldLabel);
+        EditorGUILayout.LabelField("æŸ¥æ‰¾èµ„æº", EditorStyles.boldLabel);
 
-        // ÊäÈëGUID
+        // è¾“å…¥GUID
         EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField("ÊäÈëGUID:", GUILayout.Width(80));
+        EditorGUILayout.LabelField("è¾“å…¥GUID:", GUILayout.Width(80));
         searchGUID = EditorGUILayout.TextField(searchGUID);
         EditorGUILayout.EndHorizontal();
 
         GUILayout.Space(10);
 
-        // ²éÕÒ°´Å¥
-        if (GUILayout.Button("Í¨¹ıGUID²éÕÒ×ÊÔ´", GUILayout.Height(30)))
+        // æŸ¥æ‰¾æŒ‰é’®
+        if (GUILayout.Button("é€šè¿‡GUIDæŸ¥æ‰¾èµ„æº", GUILayout.Height(30)))
         {
             FindAssetByGUID();
         }
 
-        // ÏÔÊ¾²éÕÒÏûÏ¢
+        // æ˜¾ç¤ºæŸ¥æ‰¾æ¶ˆæ¯
         if (!string.IsNullOrEmpty(searchMessage))
         {
             EditorGUILayout.HelpBox(searchMessage, messageType);
         }
 
-        // ÏÔÊ¾ÕÒµ½µÄ×ÊÔ´
+        // æ˜¾ç¤ºæ‰¾åˆ°çš„èµ„æº
         if (foundAsset != null)
         {
             GUILayout.Space(10);
-            EditorGUILayout.LabelField("ÕÒµ½µÄ×ÊÔ´:");
+            EditorGUILayout.LabelField("æ‰¾åˆ°çš„èµ„æº:");
             EditorGUILayout.ObjectField(foundAsset, foundAsset.GetType(), false);
 
             EditorGUILayout.BeginHorizontal();
-            if (GUILayout.Button("ÔÚProject´°¿ÚÖĞ¶¨Î»"))
+            if (GUILayout.Button("åœ¨Projectçª—å£ä¸­å®šä½"))
             {
                 Selection.activeObject = foundAsset;
                 EditorGUIUtility.PingObject(foundAsset);
             }
 
-            if (GUILayout.Button("¸´ÖÆ×ÊÔ´Â·¾¶"))
+            if (GUILayout.Button("å¤åˆ¶èµ„æºè·¯å¾„"))
             {
                 string path = AssetDatabase.GetAssetPath(foundAsset);
                 EditorGUIUtility.systemCopyBuffer = path;
-                ShowNotification(new GUIContent("Â·¾¶ÒÑ¸´ÖÆµ½¼ôÌù°å"));
+                ShowNotification(new GUIContent("è·¯å¾„å·²å¤åˆ¶åˆ°å‰ªè´´æ¿"));
             }
             EditorGUILayout.EndHorizontal();
         }
@@ -77,28 +77,28 @@ public class AssetFinderWindow : EditorWindow
             string path = AssetDatabase.GetAssetPath(Selection.activeObject);
             string guid = AssetDatabase.AssetPathToGUID(path);
 
-            EditorGUILayout.LabelField("µ±Ç°Ñ¡ÖĞ×ÊÔ´:");
+            EditorGUILayout.LabelField("å½“å‰é€‰ä¸­èµ„æº:");
             EditorGUILayout.ObjectField(Selection.activeObject, Selection.activeObject.GetType(), false);
 
             EditorGUILayout.BeginHorizontal();
             EditorGUILayout.LabelField("GUID:", GUILayout.Width(40));
             EditorGUILayout.TextField(guid);
 
-            if (GUILayout.Button("¸´ÖÆ", GUILayout.Width(40)))
+            if (GUILayout.Button("å¤åˆ¶", GUILayout.Width(40)))
             {
                 EditorGUIUtility.systemCopyBuffer = guid;
-                ShowNotification(new GUIContent("GUIDÒÑ¸´ÖÆµ½¼ôÌù°å"));
+                ShowNotification(new GUIContent("GUIDå·²å¤åˆ¶åˆ°å‰ªè´´æ¿"));
             }
             EditorGUILayout.EndHorizontal();
 
             EditorGUILayout.BeginHorizontal();
-            EditorGUILayout.LabelField("Â·¾¶:", GUILayout.Width(40));
+            EditorGUILayout.LabelField("è·¯å¾„:", GUILayout.Width(40));
             EditorGUILayout.TextField(path);
 
-            if (GUILayout.Button("¸´ÖÆ", GUILayout.Width(40)))
+            if (GUILayout.Button("å¤åˆ¶", GUILayout.Width(40)))
             {
                 EditorGUIUtility.systemCopyBuffer = path;
-                ShowNotification(new GUIContent("Â·¾¶ÒÑ¸´ÖÆµ½¼ôÌù°å"));
+                ShowNotification(new GUIContent("è·¯å¾„å·²å¤åˆ¶åˆ°å‰ªè´´æ¿"));
             }
             EditorGUILayout.EndHorizontal();
         }
@@ -108,18 +108,18 @@ public class AssetFinderWindow : EditorWindow
     {
         if (string.IsNullOrEmpty(searchGUID))
         {
-            searchMessage = "ÇëÊäÈëGUID";
+            searchMessage = "è¯·è¾“å…¥GUID";
             messageType = MessageType.Error;
             return;
         }
 
-        // ÒÆ³ı¿ÉÄÜµÄÇ°ºó¿Õ¸ñ
+        // ç§»é™¤å¯èƒ½çš„å‰åç©ºæ ¼
         searchGUID = searchGUID.Trim();
 
-        // ÑéÖ¤GUID¸ñÊ½
+        // éªŒè¯GUIDæ ¼å¼
         if (searchGUID.Length != 32)
         {
-            searchMessage = "GUID¸ñÊ½²»ÕıÈ·£¬Ó¦Îª32¸ö×Ö·û";
+            searchMessage = "GUIDæ ¼å¼ä¸æ­£ç¡®ï¼Œåº”ä¸º32ä¸ªå­—ç¬¦";
             messageType = MessageType.Error;
             foundAsset = null;
             return;
@@ -129,7 +129,7 @@ public class AssetFinderWindow : EditorWindow
 
         if (string.IsNullOrEmpty(assetPath))
         {
-            searchMessage = "Î´ÕÒµ½¶ÔÓ¦GUIDµÄ×ÊÔ´";
+            searchMessage = "æœªæ‰¾åˆ°å¯¹åº”GUIDçš„èµ„æº";
             messageType = MessageType.Error;
             foundAsset = null;
             return;
@@ -139,12 +139,12 @@ public class AssetFinderWindow : EditorWindow
 
         if (foundAsset != null)
         {
-            searchMessage = "×ÊÔ´²éÕÒ³É¹¦!";
+            searchMessage = "èµ„æºæŸ¥æ‰¾æˆåŠŸ!";
             messageType = MessageType.Info;
         }
         else
         {
-            searchMessage = "ÕÒµ½Â·¾¶µ«ÎŞ·¨¼ÓÔØ×ÊÔ´";
+            searchMessage = "æ‰¾åˆ°è·¯å¾„ä½†æ— æ³•åŠ è½½èµ„æº";
             messageType = MessageType.Error;
         }
     }

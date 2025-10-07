@@ -9,15 +9,15 @@ public class StringReplacementConfig : ScriptableObject
     [Serializable]
     public class ReplacementRule
     {
-        public string findString;    // Òª²éÕÒµÄ×Ö·û´®
-        public string replaceString; // Ìæ»»³ÉµÄ×Ö·û´®
-        [Tooltip("ÊÇ·ñÇø·Ö´óĞ¡Ğ´")]
+        public string findString;    // è¦æŸ¥æ‰¾çš„å­—ç¬¦ä¸²
+        public string replaceString; // æ›¿æ¢æˆçš„å­—ç¬¦ä¸²
+        [Tooltip("æ˜¯å¦åŒºåˆ†å¤§å°å†™")]
         public bool caseSensitive = true;
     }
 
     public List<ReplacementRule> replacementRules = new List<ReplacementRule>();
 
-    // ¿ÉÑ¡£ºÌí¼ÓÒ»Ğ©ÊµÓÃ·½·¨
+    // å¯é€‰ï¼šæ·»åŠ ä¸€äº›å®ç”¨æ–¹æ³•
     public bool HasRules()
     {
         return replacementRules != null && replacementRules.Count > 0;

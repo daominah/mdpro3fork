@@ -12,7 +12,7 @@ namespace MDPro3.UI
     [RequireComponent(typeof(RawImage))]
     public class CardRawImageHandler : MonoBehaviour
     {
-        #region ×Ö¶ÎºÍÊôĞÔ
+        #region å­—æ®µå’Œå±æ€§
 
         public bool cache;
         public Card card;
@@ -35,7 +35,7 @@ namespace MDPro3.UI
 
         #endregion
 
-        #region UnityÉúÃüÖÜÆÚ
+        #region Unityç”Ÿå‘½å‘¨æœŸ
 
         protected void OnDestroy()
         {
@@ -47,7 +47,7 @@ namespace MDPro3.UI
 
         #endregion
 
-        #region ¹«¹²API
+        #region å…¬å…±API
 
         public void SetCard(int code)
         {
@@ -127,7 +127,7 @@ namespace MDPro3.UI
 
         #endregion
 
-        #region Ë½ÓĞÊµÏÖ
+        #region ç§æœ‰å®ç°
 
         private void ReleaseCard()
         {
@@ -186,7 +186,7 @@ namespace MDPro3.UI
                     token);
                 if (card == null || card.Id != targetCardId || loadId != currentLoadId)
                 {
-                    // Èç¹û¿¨Æ¬ÒÑ¸ü¸Ä£¬ÊÍ·Å¸Õ¼ÓÔØµÄÎÆÀí
+                    // å¦‚æœå¡ç‰‡å·²æ›´æ”¹ï¼Œé‡Šæ”¾åˆšåŠ è½½çš„çº¹ç†
                     if (cardTex != null)
                         CardImageLoader.ReleaseCard(card.Id);
 
@@ -244,7 +244,7 @@ namespace MDPro3.UI
             }
             catch (System.OperationCanceledException)
             {
-                // ÈÎÎñ±»È¡Ïû£¬²»×ö´¦Àí
+                // ä»»åŠ¡è¢«å–æ¶ˆï¼Œä¸åšå¤„ç†
             }
         }
 

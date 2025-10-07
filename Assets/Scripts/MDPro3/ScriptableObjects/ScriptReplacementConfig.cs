@@ -9,11 +9,11 @@ public class ScriptReplacementConfig : ScriptableObject
     [Serializable]
     public class ScriptReplacementPair
     {
-        public string scriptName; // 脚本名称
-        public string oldGuid; // 旧的GUID
-        public string newGuid; // 新的GUID
-        public long oldFileId; // 旧的FileID
-        public long newFileId; // 新的FileID
+        public string scriptName; // 鑴氭湰鍚嶇О
+        public string oldGuid; // 鏃х殑GUID
+        public string newGuid; // 鏂扮殑GUID
+        public long oldFileId; // 鏃х殑FileID
+        public long newFileId; // 鏂扮殑FileID
     }
 
     public List<ScriptReplacementPair> replacementPairs = new List<ScriptReplacementPair>();

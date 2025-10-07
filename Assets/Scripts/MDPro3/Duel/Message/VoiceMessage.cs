@@ -336,7 +336,7 @@ namespace MDPro3.Duel
             var nextPack = OcgCore.GetNextPackage();
             if(nextPack == null)
                 return UniTask.CompletedTask;
-            //½ö¼ì²â¸Ç¿¨´ò¿ª
+            //ä»…æ£€æµ‹ç›–å¡æ‰“å¼€
             if ((GameMessage)nextPack.Function != GameMessage.Chaining)
                 return UniTask.CompletedTask;
 

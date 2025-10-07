@@ -430,7 +430,7 @@ namespace MDPro3.Duel
             }
 
             if (player == 7)
-                name = InterString.Get("¹ÛÕ½Õß");
+                name = InterString.Get("è§‚æˆ˜è€…");
             if (name != string.Empty)
                 name += ": ";
 
@@ -504,7 +504,7 @@ namespace MDPro3.Duel
 
         protected override async UniTask GameMessage_Retry(BinaryReader reader)
         {
-            MessageManager.Cast(InterString.Get("ÓÎÏ·³ö´í£¬ÇëÖØÊÔ¡£»òÕß±£´æ»Ø·Å²¢ÁªÏµ¿ª·¢Õß¡£"));
+            MessageManager.Cast(InterString.Get("æ¸¸æˆå‡ºé”™ï¼Œè¯·é‡è¯•ã€‚æˆ–è€…ä¿å­˜å›æ”¾å¹¶è”ç³»å¼€å‘è€…ã€‚"));
             //Todo Show SaveReplay.
             await dispatcher.RetryMessage();
         }
@@ -571,12 +571,12 @@ namespace MDPro3.Duel
                 if (cookie_matchKill > 0)
                 {
                     winReason = CardsManager.Get(cookie_matchKill).Name;
-                    endingReason = InterString.Get("±ÈÈüÊ¤Àû£¬¿¨Æ¬£º[?]", winReason);
+                    endingReason = InterString.Get("æ¯”èµ›èƒœåˆ©ï¼Œå¡ç‰‡ï¼š[?]", winReason);
                 }
                 else
                 {
                     winReason = StringHelper.Get("victory", winType);
-                    endingReason = InterString.Get("ÓÎÏ·Ê¤Àû£¬Ô­Òò£º[?]", winReason);
+                    endingReason = InterString.Get("æ¸¸æˆèƒœåˆ©ï¼ŒåŸå› ï¼š[?]", winReason);
                 }
             }
             else
@@ -586,17 +586,17 @@ namespace MDPro3.Duel
                 if (cookie_matchKill > 0)
                 {
                     winReason = CardsManager.Get(cookie_matchKill).Name;
-                    endingReason = InterString.Get("±ÈÈü°Ü±±£¬¿¨Æ¬£º[?]", winReason);
+                    endingReason = InterString.Get("æ¯”èµ›è´¥åŒ—ï¼Œå¡ç‰‡ï¼š[?]", winReason);
                 }
                 else
                 {
                     winReason = StringHelper.Get("victory", winType);
-                    endingReason = InterString.Get("ÓÎÏ·°Ü±±£¬Ô­Òò£º[?]", winReason);
+                    endingReason = InterString.Get("æ¸¸æˆè´¥åŒ—ï¼ŒåŸå› ï¼š[?]", winReason);
                 }
             }
 
             duelBGManager.DuelEndEvent();
-            //·ÀÖ¹¶Ô·½ÔÚ¸ü»»¸±¿¨×éÊ±°ÎÂİË¿
+            //é˜²æ­¢å¯¹æ–¹åœ¨æ›´æ¢å‰¯å¡ç»„æ—¶æ‹”èºä¸
             UIManager.UIBlackOut(Core.TransitionTime);
             Core.GetUI<OcgCoreUI>().CG.blocksRaycasts = true;
             Core.GetUI<OcgCoreUI>().CG.alpha = 1f;
@@ -608,7 +608,7 @@ namespace MDPro3.Duel
             }
             else if (winType >= 0x10)
             {
-                if (winType == 0x10)//±»·âÓ¡µÄ°¬¿Ë×ôµÏÑÇ
+                if (winType == 0x10)//è¢«å°å°çš„è‰¾å…‹ä½è¿ªäºš
                 {
                     static void Action(ElementObjectManager mner)
                     {
@@ -620,46 +620,46 @@ namespace MDPro3.Duel
                     }
                     await duelBGManager.PlaySpecialWin("33396948", Action);
                 }
-                else if (winType == 0x11)//ÖÕÑÉµÄµ¹¼ÆÊ±
+                else if (winType == 0x11)//ç»ˆç„‰çš„å€’è®¡æ—¶
                     await duelBGManager.PlayCommonSpecialWin(new int[] { 95308449 });
-                else if (winType == 0x12)//¶¾ÉßÉñ Î¬ÅµÃ×ÄÉåÈ
+                else if (winType == 0x12)//æ¯’è›‡ç¥ ç»´è¯ºç±³çº³è¿¦
                     await duelBGManager.PlayCommonSpecialWin(new int[] { 8062132 });
-                else if (winType == 0x13)//¹âÖ®´´ÔìÉñ ¹şÀ­¿ËÌá
+                else if (winType == 0x13)//å…‰ä¹‹åˆ›é€ ç¥ å“ˆæ‹‰å…‹æ
                     await duelBGManager.PlayCommonSpecialWin(new int[] { 10000040 });
-                else if (winType == 0x14)//¾¿¼«·âÓ¡Éñ °¬¿Ë×ôµÏ°ÂË¹
+                else if (winType == 0x14)//ç©¶æå°å°ç¥ è‰¾å…‹ä½è¿ªå¥¥æ–¯
                     await duelBGManager.PlayCommonSpecialWin(new int[] { 13893596 });
-                else if (winType == 0x15)//Í¨ÁéÅÌ
+                else if (winType == 0x15)//é€šçµç›˜
                     await duelBGManager.PlaySpecialWin("40771118");
-                else if (winType == 0x16)//×îÖÕÒ»Õ½£¡
+                else if (winType == 0x16)//æœ€ç»ˆä¸€æˆ˜ï¼
                     await duelBGManager.PlayCommonSpecialWin(new int[] { 28566710 });
-                else if (winType == 0x17)//No.88 »ú¹Ø¿şÀÜ-ÃüÔËÊ¨×Ó
+                else if (winType == 0x17)//No.88 æœºå…³å‚€å„¡-å‘½è¿ç‹®å­
                     await duelBGManager.PlayCommonSpecialWin(new int[] { 48995978 });
-                else if (winType == 0x18)//»ìãçNo.88 »ú¹Ø¿şÀÜ-ÔÖ¶òÊ¨×Ó
+                else if (winType == 0x18)//æ··æ²ŒNo.88 æœºå…³å‚€å„¡-ç¾å„ç‹®å­
                     await duelBGManager.PlayCommonSpecialWin(new int[] { 6165656 });
-                else if (winType == 0x19)//Í·½±ºø7
+                else if (winType == 0x19)//å¤´å¥–å£¶7
                     await duelBGManager.PlayCommonSpecialWin(new int[] { 81171949, 81171949, 81171949 });
-                else if (winType == 0x1A)//»êÖ®½ÓÁ¦
+                else if (winType == 0x1A)//é­‚ä¹‹æ¥åŠ›
                     await duelBGManager.PlayCommonSpecialWin(new int[] { 42776960 });
-                else if (winType == 0x1B)//¹í¼Æ¶èÌìÊ¹
+                else if (winType == 0x1B)//é¬¼è®¡æƒ°å¤©ä½¿
                     await duelBGManager.PlaySpecialWin("53334641");
-                else if (winType == 0x1C)//»Ã»ÍÁúµÄÌìÎĞ
+                else if (winType == 0x1C)//å¹»ç…Œé¾™çš„å¤©æ¶¡
                     await duelBGManager.PlayCommonSpecialWin(new int[] { 97795930 });
-                else if (winType == 0x1D)//·½³ÌÊ½ÔË¶¯Ô±Ê¤ÀûÍÅ¶Ó
+                else if (winType == 0x1D)//æ–¹ç¨‹å¼è¿åŠ¨å‘˜èƒœåˆ©å›¢é˜Ÿ
                     await duelBGManager.PlayCommonSpecialWin(new int[] { 69553552 });
-                else if (winType == 0x1E)//·ÉĞĞÏó
+                else if (winType == 0x1E)//é£è¡Œè±¡
                     await duelBGManager.PlayCommonSpecialWin(new int[] { 66765023 });
-                else if (winType == 0x1F)//ÊØ»¤Éñ °¬¿Ë×ôµÏÑÇ
+                else if (winType == 0x1F)//å®ˆæŠ¤ç¥ è‰¾å…‹ä½è¿ªäºš
                     await duelBGManager.PlayCommonSpecialWin(new int[] { 5008836 });
-                else if (winType == 0x20)//Õæ°¬¿Ë×ôµÏÑÇ
+                else if (winType == 0x20)//çœŸè‰¾å…‹ä½è¿ªäºš
                     await duelBGManager.PlayCommonSpecialWin(new int[] { 37984331 });
-                else if (winType == 0x21)//»ìãçĞéÊıNo.1000 ÃÎ»ÃĞé¹âÉñ Ô­ÊıÌìÁé¡¤Ô­ÊıÌìµØ
+                else if (winType == 0x21)//æ··æ²Œè™šæ•°No.1000 æ¢¦å¹»è™šå…‰ç¥ åŸæ•°å¤©çµÂ·åŸæ•°å¤©åœ°
                     await duelBGManager.PlayCommonSpecialWin(new int[] { 15862758 });
-                else if (winType == 0x22)//Ï¯È¡-ÁùË«Íè
+                else if (winType == 0x22)//å¸­å–-å…­åŒä¸¸
                     await duelBGManager.PlaySpecialWin("96637156");
-                else if (winType == 0x23)//»ğÆ÷µÄ×£Ì¨
+                else if (winType == 0x23)//ç«å™¨çš„ç¥å°
                     await duelBGManager.PlayCommonSpecialWin(new int[] { 77751766 });
                 else
-                    MessageManager.Cast(InterString.Get("ÇëÁªÏµ¿ª·¢ÕßĞŞ¸´ÕâÕÅÌØÊâÊ¤ÀûµÄ¿¨¡£"));
+                    MessageManager.Cast(InterString.Get("è¯·è”ç³»å¼€å‘è€…ä¿®å¤è¿™å¼ ç‰¹æ®Šèƒœåˆ©çš„å¡ã€‚"));
             }
 
             await duelBGManager.ShowDuelResultText(duelText);
@@ -736,7 +736,7 @@ namespace MDPro3.Duel
 
         protected override async UniTask GameMessage_PosChange(BinaryReader reader)
         {
-            ES_hint = StringHelper.GetUnsafe(1600);//¿¨Æ¬¸Ä±äÁË±íÊ¾ĞÎÊ½
+            ES_hint = StringHelper.GetUnsafe(1600);//å¡ç‰‡æ”¹å˜äº†è¡¨ç¤ºå½¢å¼
             var code = reader.ReadInt32();
             var from = reader.ReadGPS();
             var card = Core.GCS_Get(from);
@@ -761,7 +761,7 @@ namespace MDPro3.Duel
 
         protected override UniTask GameMessage_Set(BinaryReader reader)
         {
-            ES_hint = StringHelper.GetUnsafe(1601);//¸Ç·ÅÁË¿¨Æ¬
+            ES_hint = StringHelper.GetUnsafe(1601);//ç›–æ”¾äº†å¡ç‰‡
             var effect = ABLoader.LoadMasterDuelGameObject("fxp_som_mgctrpfld_001");
             effect.transform.position = lastMoveCard.model.transform.position;
             UnityEngine.Object.Destroy(effect, 3f);
@@ -777,7 +777,7 @@ namespace MDPro3.Duel
             var to = reader.ReadGPS();
 
             if(from.controller != to.controller)
-                ES_hint = StringHelper.GetUnsafe(1602);//¿¨µÄ¿ØÖÆÈ¨¸Ä±äÁË
+                ES_hint = StringHelper.GetUnsafe(1602);//å¡çš„æ§åˆ¶æƒæ”¹å˜äº†
 
             var from2 = new GPS
             {
@@ -828,9 +828,9 @@ namespace MDPro3.Duel
             var se = "SE_LAND_NORMAL";
 
             card.SetCode(code);
-            card.AddStringTail(InterString.Get("Í¨³£ÕÙ»½µÇ³¡"));
+            card.AddStringTail(InterString.Get("é€šå¸¸å¬å”¤ç™»åœº"));
             card.AnimationPositon();
-            ES_hint = InterString.Get("¡¸[?]¡¹Í¨³£ÕÙ»½ĞûÑÔÊ±", card.GetData().Name);
+            ES_hint = InterString.Get("ã€Œ[?]ã€é€šå¸¸å¬å”¤å®£è¨€æ—¶", card.GetData().Name);
 
             if (card.GetData().Level > 6)
             {
@@ -884,7 +884,7 @@ namespace MDPro3.Duel
 
         protected override UniTask GameMessage_Summoned(BinaryReader reader)
         {
-            ES_hint = StringHelper.GetUnsafe(1604);//¹ÖÊŞÕÙ»½³É¹¦
+            ES_hint = StringHelper.GetUnsafe(1604);//æ€ªå…½å¬å”¤æˆåŠŸ
 
             return UniTask.CompletedTask;
         }
@@ -916,7 +916,7 @@ namespace MDPro3.Duel
 
             card.SetCode(code);
             card.AnimationPositon();
-            ES_hint = InterString.Get("¡¸[?]¡¹ÌØÊâÕÙ»½ĞûÑÔÊ±", card.GetData().Name);
+            ES_hint = InterString.Get("ã€Œ[?]ã€ç‰¹æ®Šå¬å”¤å®£è¨€æ—¶", card.GetData().Name);
 
             if(materialCards.Count > 0)
             {
@@ -1008,7 +1008,7 @@ namespace MDPro3.Duel
 
         protected override UniTask GameMessage_SpSummoned(BinaryReader reader)
         {
-            ES_hint = StringHelper.GetUnsafe(1606);//¹ÖÊŞÌØÊâÕÙ»½³É¹¦
+            ES_hint = StringHelper.GetUnsafe(1606);//æ€ªå…½ç‰¹æ®Šå¬å”¤æˆåŠŸ
 
             return UniTask.CompletedTask;
         }
@@ -1029,7 +1029,7 @@ namespace MDPro3.Duel
             card.SetCode(code);
             gps.position = (int)CardPosition.FaceUpAttack;
             card.RefreshData();
-            ES_hint = InterString.Get("¡¸[?]¡¹·´×ªÕÙ»½ĞûÑÔÊ±", card.GetData().Name);
+            ES_hint = InterString.Get("ã€Œ[?]ã€åè½¬å¬å”¤å®£è¨€æ—¶", card.GetData().Name);
             if (Core.GetAutoInfo())
                 Core.GetUI<OcgCoreUI>().CardDescription.Show(card, card.GetMaterial());
             materialCards.Clear();
@@ -1040,7 +1040,7 @@ namespace MDPro3.Duel
 
         protected override UniTask GameMessage_FlipSummoned(BinaryReader reader)
         {
-            ES_hint = StringHelper.GetUnsafe(1608);//¹ÖÊŞ·´×ªÕÙ»½³É¹¦
+            ES_hint = StringHelper.GetUnsafe(1608);//æ€ªå…½åè½¬å¬å”¤æˆåŠŸ
 
             return UniTask.CompletedTask;
         }
@@ -1061,7 +1061,7 @@ namespace MDPro3.Duel
             codesInChain.Add(code);
             controllerInChain.Add(gps.controller);
             card.AnimationActivate();
-            ES_hint = InterString.Get("¡¸[?]¡¹±»·¢¶¯Ê±", card.GetData().Name);
+            ES_hint = InterString.Get("ã€Œ[?]ã€è¢«å‘åŠ¨æ—¶", card.GetData().Name);
             if (gps.InMyControl())
             {
                 if (!myActivated.Contains(code))
@@ -1179,7 +1179,7 @@ namespace MDPro3.Duel
             }
 
             attackingCard = attackCard;
-            ES_hint = InterString.Get("¡¸[?]¡¹¹¥»÷Ê±", attackCard.GetData().Name);
+            ES_hint = InterString.Get("ã€Œ[?]ã€æ”»å‡»æ—¶", attackCard.GetData().Name);
             Vector3 endPosition;
             var attackedCard = Core.GCS_Get(to);
             var finalBlow = false;
@@ -1229,7 +1229,7 @@ namespace MDPro3.Duel
 
         protected override UniTask GameMessage_AttackDisabled(BinaryReader reader)
         {
-            ES_hint = InterString.Get("¹¥»÷±»ÎŞĞ§Ê±");
+            ES_hint = InterString.Get("æ”»å‡»è¢«æ— æ•ˆæ—¶");
             duelBGManager.HideAttackLine();
             duelBGManager.HideDuelFinalBlowText();
 
@@ -1497,13 +1497,13 @@ namespace MDPro3.Duel
             {
                 life0 -= value;
                 if(currentMessage == GameMessage.Damage)
-                    ES_hint = InterString.Get("ÎÒ·½ÊÜµ½ÉËº¦Ê±");
+                    ES_hint = InterString.Get("æˆ‘æ–¹å—åˆ°ä¼¤å®³æ—¶");
             }
             else
             {
                 life1 -= value;
                 if (currentMessage == GameMessage.Damage)
-                    ES_hint = InterString.Get("¶Ô·½ÊÜµ½ÉËº¦Ê±");
+                    ES_hint = InterString.Get("å¯¹æ–¹å—åˆ°ä¼¤å®³æ—¶");
             }
 
             if(life0 <= 0 || life1 <= 0)
@@ -1528,12 +1528,12 @@ namespace MDPro3.Duel
             if(player == 0)
             {
                 life0 += value;
-                ES_hint = InterString.Get("ÎÒ·½ÉúÃüÖµ»Ø¸´Ê±");
+                ES_hint = InterString.Get("æˆ‘æ–¹ç”Ÿå‘½å€¼å›å¤æ—¶");
             }
             else
             {
                 life1 += value;
-                ES_hint = InterString.Get("¶Ô·½ÉúÃüÖµ»Ø¸´Ê±");
+                ES_hint = InterString.Get("å¯¹æ–¹ç”Ÿå‘½å€¼å›å¤æ—¶");
             }
 
             Core.SetLP(player, value);
@@ -1628,9 +1628,9 @@ namespace MDPro3.Duel
                 {
                     var data = reader.ReadByte();
                     if (data == 1)
-                        MessageManager.Cast(InterString.Get("Ó²±ÒÕıÃæ"));
+                        MessageManager.Cast(InterString.Get("ç¡¬å¸æ­£é¢"));
                     else
-                        MessageManager.Cast(InterString.Get("Ó²±Ò·´Ãæ"));
+                        MessageManager.Cast(InterString.Get("ç¡¬å¸åé¢"));
                 }
             }
         }
@@ -1696,7 +1696,7 @@ namespace MDPro3.Duel
                 for(var i = 0; i < count; i++)
                 {
                     var data = reader.ReadByte();
-                    MessageManager.Cast(InterString.Get("÷»×Ó½á¹û£º[?]", data.ToString()));
+                    MessageManager.Cast(InterString.Get("éª°å­ç»“æœï¼š[?]", data.ToString()));
                 }
             }
         }
@@ -1704,7 +1704,7 @@ namespace MDPro3.Duel
         protected override async UniTask GameMessage_Draw(BinaryReader reader)
         {
             var player = LocalPlayer(reader.ReadByte());
-            ES_hint = player == 0 ? InterString.Get("ÎÒ·½³é¿¨Ê±") : InterString.Get("¶Ô·½³é¿¨Ê±");
+            ES_hint = player == 0 ? InterString.Get("æˆ‘æ–¹æŠ½å¡æ—¶") : InterString.Get("å¯¹æ–¹æŠ½å¡æ—¶");
             var count = reader.ReadByte();
             var deckCount = Core.GetLocationCardCount(CardLocation.Deck, (uint)player);
             var handCount = Core.GetLocationCardCount(CardLocation.Hand, (uint)player);
@@ -1809,7 +1809,7 @@ namespace MDPro3.Duel
             var valString = StringHelper.Get(pValue);
             if (pValue == 38723936)
             {
-                valString = InterString.Get("²»ÄÜÈ·ÈÏÄ¹µØÖĞµÄ¿¨");
+                valString = InterString.Get("ä¸èƒ½ç¡®è®¤å¢“åœ°ä¸­çš„å¡");
                 if (player == 0)
                 {
                     if (pType == 6)
@@ -1824,16 +1824,16 @@ namespace MDPro3.Duel
             if (pType == 6)
             {
                 if (player == 0)
-                    PrintDuelLog(InterString.Get("ÎÒ·½×´Ì¬£º[?]", valString));
+                    PrintDuelLog(InterString.Get("æˆ‘æ–¹çŠ¶æ€ï¼š[?]", valString));
                 else
-                    PrintDuelLog(InterString.Get("¶Ô·½×´Ì¬£º[?]", valString));
+                    PrintDuelLog(InterString.Get("å¯¹æ–¹çŠ¶æ€ï¼š[?]", valString));
             }
             else if (pType == 7)
             {
                 if (player == 0)
-                    PrintDuelLog(InterString.Get("ÎÒ·½×´Ì¬½áÊø£º[?]", valString));
+                    PrintDuelLog(InterString.Get("æˆ‘æ–¹çŠ¶æ€ç»“æŸï¼š[?]", valString));
                 else
-                    PrintDuelLog(InterString.Get("¶Ô·½×´Ì¬½áÊø£º[?]", valString));
+                    PrintDuelLog(InterString.Get("å¯¹æ–¹çŠ¶æ€ç»“æŸï¼š[?]", valString));
             }
 
             return UniTask.CompletedTask;
@@ -1854,24 +1854,24 @@ namespace MDPro3.Duel
             switch (cType)
             {
                 case 1:
-                    card.RemoveStringTail(InterString.Get("Êı×Ö¼ÇÂ¼£º"));
-                    card.AddStringTail(InterString.Get("Êı×Ö¼ÇÂ¼£º") + value);
+                    card.RemoveStringTail(InterString.Get("æ•°å­—è®°å½•ï¼š"));
+                    card.AddStringTail(InterString.Get("æ•°å­—è®°å½•ï¼š") + value);
                     break;
                 case 2:
-                    card.RemoveStringTail(InterString.Get("¿¨Æ¬¼ÇÂ¼£º"));
-                    card.AddStringTail(InterString.Get("¿¨Æ¬¼ÇÂ¼£º") + CardsManager.Get(value).Name);
+                    card.RemoveStringTail(InterString.Get("å¡ç‰‡è®°å½•ï¼š"));
+                    card.AddStringTail(InterString.Get("å¡ç‰‡è®°å½•ï¼š") + CardsManager.Get(value).Name);
                     break;
                 case 3:
-                    card.RemoveStringTail(InterString.Get("ÖÖ×å¼ÇÂ¼£º"));
-                    card.AddStringTail(InterString.Get("ÖÖ×å¼ÇÂ¼£º") + StringHelper.Race(value));
+                    card.RemoveStringTail(InterString.Get("ç§æ—è®°å½•ï¼š"));
+                    card.AddStringTail(InterString.Get("ç§æ—è®°å½•ï¼š") + StringHelper.Race(value));
                     break;
                 case 4:
-                    card.RemoveStringTail(InterString.Get("ÊôĞÔ¼ÇÂ¼£º"));
-                    card.AddStringTail(InterString.Get("ÊôĞÔ¼ÇÂ¼£º") + StringHelper.Attribute(value));
+                    card.RemoveStringTail(InterString.Get("å±æ€§è®°å½•ï¼š"));
+                    card.AddStringTail(InterString.Get("å±æ€§è®°å½•ï¼š") + StringHelper.Attribute(value));
                     break;
                 case 5:
-                    card.RemoveStringTail(InterString.Get("Êı×Ö¼ÇÂ¼£º"));
-                    card.AddStringTail(InterString.Get("Êı×Ö¼ÇÂ¼£º") + value);
+                    card.RemoveStringTail(InterString.Get("æ•°å­—è®°å½•ï¼š"));
+                    card.AddStringTail(InterString.Get("æ•°å­—è®°å½•ï¼š") + value);
                     break;
                 case 6:
                     card.AddStringTail(StringHelper.Get(value));
@@ -1899,30 +1899,30 @@ namespace MDPro3.Duel
             else if (type == 3)
                 ES_selectHint = StringHelper.Get(data);
             else if (type == 4)
-                PrintDuelLog(InterString.Get("Ğ§¹ûÑ¡Ôñ£º[?]", StringHelper.Get(data)));
+                PrintDuelLog(InterString.Get("æ•ˆæœé€‰æ‹©ï¼š[?]", StringHelper.Get(data)));
             else if (type == 5)
                 PrintDuelLog(StringHelper.Get(data));
             else if (type == 6)
-                PrintDuelLog(InterString.Get("ÖÖ×åÑ¡Ôñ£º[?]", StringHelper.Race(data)));
+                PrintDuelLog(InterString.Get("ç§æ—é€‰æ‹©ï¼š[?]", StringHelper.Race(data)));
             else if (type == 7)
-                PrintDuelLog(InterString.Get("ÊôĞÔÑ¡Ôñ£º[?]", StringHelper.Attribute(data)));
+                PrintDuelLog(InterString.Get("å±æ€§é€‰æ‹©ï¼š[?]", StringHelper.Attribute(data)));
             else if (type == 8)
             {
                 Program.instance.message_.CastCard(data);
-                lastDuelLog = InterString.Get("ĞûÑÔ¿¨Æ¬£º[?]", CardsManager.Get(data).Name);
+                lastDuelLog = InterString.Get("å®£è¨€å¡ç‰‡ï¼š[?]", CardsManager.Get(data).Name);
             }
             else if (type == 9)
-                PrintDuelLog(InterString.Get("Êı×ÖÑ¡Ôñ£º[?]", data.ToString()));
+                PrintDuelLog(InterString.Get("æ•°å­—é€‰æ‹©ï¼š[?]", data.ToString()));
             else if (type == 10)
             {
                 Program.instance.message_.CastCard(data);
-                lastDuelLog = InterString.Get("Ğ§¹ûÊÊÓÃ£º[?]", CardsManager.Get(data).Name);
+                lastDuelLog = InterString.Get("æ•ˆæœé€‚ç”¨ï¼š[?]", CardsManager.Get(data).Name);
             }
             else if (type == 11)
             {
                 if (player == 1)
                     data = (data >> 16) | (data << 16);
-                PrintDuelLog(InterString.Get("ÇøÓòÑ¡Ôñ£º[?]", StringHelper.Zone(data)));
+                PrintDuelLog(InterString.Get("åŒºåŸŸé€‰æ‹©ï¼š[?]", StringHelper.Zone(data)));
             }
             ES_selectCardFromFieldFirstFlag = (type == 3 && data == 575);
 
@@ -2063,7 +2063,7 @@ namespace MDPro3.Duel
             if (listShow)
             {
                 Core.GetUI<OcgCoreUI>().ShowPopupSelectCard
-                    (InterString.Get("È·ÈÏ¿¨Æ¬£º[?]ÕÅ¡£", count.ToString()), confirmCards, 0, 0, true, true);
+                    (InterString.Get("ç¡®è®¤å¡ç‰‡ï¼š[?]å¼ ã€‚", count.ToString()), confirmCards, 0, 0, true, true);
                 await UniTask.WaitUntil(() => dispatcher.playerResponed);
             }
             else
@@ -2088,7 +2088,7 @@ namespace MDPro3.Duel
                 return;
             }
             card.SetCode(code);
-            PrintDuelLog(InterString.Get("È·ÈÏ¿¨Æ¬£º[?]", CardsManager.Get(code).Name));
+            PrintDuelLog(InterString.Get("ç¡®è®¤å¡ç‰‡ï¼š[?]", CardsManager.Get(code).Name));
             await card.AnimationConfirm(0).WaitAsync();
         }
 
@@ -2361,7 +2361,7 @@ namespace MDPro3.Duel
             ES_min = reader.ReadByte();
 
             var available = reader.ReadUInt32();
-            var selections = new List<string>() { InterString.Get("ĞûÑÔÖÖ×å") };
+            var selections = new List<string>() { InterString.Get("å®£è¨€ç§æ—") };
             var responses = new List<int>();
             for (int i = 0; i < (uint)CardRace.Count; i++)
             {
@@ -2388,7 +2388,7 @@ namespace MDPro3.Duel
             ES_min = reader.ReadByte();
 
             var available = reader.ReadUInt32();
-            var selections = new List<string>() { InterString.Get("ĞûÑÔÊôĞÔ") };
+            var selections = new List<string>() { InterString.Get("å®£è¨€å±æ€§") };
             var responses = new List<int>();
             for (int i = 0; i < (uint)CardAttribute.Count; i++)
             {
@@ -2415,7 +2415,7 @@ namespace MDPro3.Duel
             var count = reader.ReadByte();
             ES_min = 1;
 
-            var selections = new List<string>() { InterString.Get("ĞûÑÔÊı×Ö") };
+            var selections = new List<string>() { InterString.Get("å®£è¨€æ•°å­—") };
             var responses = new List<int>();
             for (int i = 0; i < count; i++)
             {
@@ -2442,8 +2442,8 @@ namespace MDPro3.Duel
                 ES_searchCodes.Add(reader.ReadInt32());
             var selections = new List<string>()
                     {
-                        InterString.Get("ÇëÊäÈë¹Ø¼ü×Ö£º"),
-                        InterString.Get("ËÑË÷"),
+                        InterString.Get("è¯·è¾“å…¥å…³é”®å­—ï¼š"),
+                        InterString.Get("æœç´¢"),
                         string.Empty,
                         string.Empty
                     };
@@ -2473,7 +2473,7 @@ namespace MDPro3.Duel
                     continue;
                 }
                 card.SetCode(code);
-                card.AddButton((i << 16) + 0, InterString.Get("ÕÙ»½"), ButtonType.Summon);
+                card.AddButton((i << 16) + 0, InterString.Get("å¬å”¤"), ButtonType.Summon);
             }
 
             count = reader.ReadByte();
@@ -2489,9 +2489,9 @@ namespace MDPro3.Duel
                 }
                 card.SetCode(code);
                 if (card.InPendulumZone())
-                    card.AddButton((i << 16) + 1, InterString.Get("Áé°ÚÕÙ»½"), ButtonType.PenSummon);
+                    card.AddButton((i << 16) + 1, InterString.Get("çµæ‘†å¬å”¤"), ButtonType.PenSummon);
                 else
-                    card.AddButton((i << 16) + 1, InterString.Get("ÌØÊâÕÙ»½"), ButtonType.SpSummon);
+                    card.AddButton((i << 16) + 1, InterString.Get("ç‰¹æ®Šå¬å”¤"), ButtonType.SpSummon);
             }
 
             count = reader.ReadByte();
@@ -2507,9 +2507,9 @@ namespace MDPro3.Duel
                 }
                 card.SetCode(code);
                 if (card.p.InPosition(CardPosition.Defence))
-                    card.AddButton((i << 16) + 2, InterString.Get("±äÎª¹¥»÷±íÊ¾"), ButtonType.ToAttackPosition);
+                    card.AddButton((i << 16) + 2, InterString.Get("å˜ä¸ºæ”»å‡»è¡¨ç¤º"), ButtonType.ToAttackPosition);
                 else
-                    card.AddButton((i << 16) + 2, InterString.Get("±äÎªÊØ±¸±íÊ¾"), ButtonType.ToDefensePosition);
+                    card.AddButton((i << 16) + 2, InterString.Get("å˜ä¸ºå®ˆå¤‡è¡¨ç¤º"), ButtonType.ToDefensePosition);
             }
 
             count = reader.ReadByte();
@@ -2521,7 +2521,7 @@ namespace MDPro3.Duel
                 if (card != null)
                 {
                     card.SetCode(code);
-                    card.AddButton((i << 16) + 3, InterString.Get("ÉèÖÃ"), ButtonType.SetMonster);
+                    card.AddButton((i << 16) + 3, InterString.Get("è®¾ç½®"), ButtonType.SetMonster);
                 }
             }
 
@@ -2534,7 +2534,7 @@ namespace MDPro3.Duel
                 if (card != null)
                 {
                     card.SetCode(code);
-                    card.AddButton((i << 16) + 4, InterString.Get("ÉèÖÃ"), ButtonType.SetSpell);
+                    card.AddButton((i << 16) + 4, InterString.Get("è®¾ç½®"), ButtonType.SetSpell);
                 }
             }
 
@@ -2550,7 +2550,7 @@ namespace MDPro3.Duel
                 {
                     card.SetCode(code);
                     if (descP == 1160)
-                        card.AddButton((i << 16) + 5, InterString.Get("Áé°Ú·¢¶¯"), ButtonType.SetPendulum);
+                        card.AddButton((i << 16) + 5, InterString.Get("çµæ‘†å‘åŠ¨"), ButtonType.SetPendulum);
                     else
                     {
                         var eff = new Effect
@@ -2559,7 +2559,7 @@ namespace MDPro3.Duel
                             desc = desc
                         };
                         card.effects.Add(eff);
-                        card.AddButton((i << 16) + 5, InterString.Get("·¢¶¯Ğ§¹û"), ButtonType.Activate);
+                        card.AddButton((i << 16) + 5, InterString.Get("å‘åŠ¨æ•ˆæœ"), ButtonType.Activate);
                     }
                 }
             }
@@ -2613,7 +2613,7 @@ namespace MDPro3.Duel
                         desc = desc
                     };
                     card.effects.Add(eff);
-                    card.AddButton((i << 16) + 0, InterString.Get("·¢¶¯Ğ§¹û"), ButtonType.Activate);
+                    card.AddButton((i << 16) + 0, InterString.Get("å‘åŠ¨æ•ˆæœ"), ButtonType.Activate);
                 }
             }
             count = reader.ReadByte();
@@ -2626,7 +2626,7 @@ namespace MDPro3.Duel
                 if (card != null)
                 {
                     card.SetCode(code);
-                    card.AddButton((i << 16) + 1, InterString.Get("¹¥»÷"), ButtonType.Battle);
+                    card.AddButton((i << 16) + 1, InterString.Get("æ”»å‡»"), ButtonType.Battle);
                 }
             }
             foreach (var c in cards)
@@ -2658,13 +2658,13 @@ namespace MDPro3.Duel
             reader.ReadByte();
 
             var desc = StringHelper.Get(reader.ReadInt32());
-            var title = InterString.Get("Ñ¡Ôñ");
+            var title = InterString.Get("é€‰æ‹©");
             var selections = new List<string>
                     {
                         title,
                         desc,
-                        InterString.Get("ÊÇ"),
-                        InterString.Get("·ñ")
+                        InterString.Get("æ˜¯"),
+                        InterString.Get("å¦")
                     };
 
             void yes()
@@ -2708,20 +2708,20 @@ namespace MDPro3.Duel
             }
 
             var desc = string.Empty;
-            var displayname = "¡¸" + card.GetData().Name + "¡¹";
+            var displayname = "ã€Œ" + card.GetData().Name + "ã€";
             var forReplaceFirst = new Regex("\\[%ls\\]");
             if (cr == 0)
             {
-                desc = StringHelper.Get(200);//ÊÇ·ñÔÚ[%ls]·¢¶¯[%ls]µÄĞ§¹û£¿
+                desc = StringHelper.Get(200);//æ˜¯å¦åœ¨[%ls]å‘åŠ¨[%ls]çš„æ•ˆæœï¼Ÿ
                 desc = forReplaceFirst.Replace(desc, StringHelper.FormatLocation(gps), 1);
-                desc = ES_hint + "£¬" + forReplaceFirst.Replace(desc, displayname, 1);
+                desc = ES_hint + "ï¼Œ" + forReplaceFirst.Replace(desc, displayname, 1);
             }
             else if (cr == 221)
             {
-                desc = StringHelper.Get(221);//ÊÇ·ñÔÚ[%ls]·¢¶¯[%ls]µÄÓÕ·¢ÀàĞ§¹û£¿
+                desc = StringHelper.Get(221);//æ˜¯å¦åœ¨[%ls]å‘åŠ¨[%ls]çš„è¯±å‘ç±»æ•ˆæœï¼Ÿ
                 desc = forReplaceFirst.Replace(desc, StringHelper.FormatLocation(gps), 1);
                 desc = forReplaceFirst.Replace(desc, displayname, 1);
-                desc = ES_hint + "£¬" + desc + "\n" + StringHelper.Get(223);//ÉÔºó½«Ñ¯ÎÊÆäËû¿ÉÒÔ·¢¶¯µÄĞ§¹û¡£
+                desc = ES_hint + "ï¼Œ" + desc + "\n" + StringHelper.Get(223);//ç¨åå°†è¯¢é—®å…¶ä»–å¯ä»¥å‘åŠ¨çš„æ•ˆæœã€‚
             }
             else
             {
@@ -2775,10 +2775,10 @@ namespace MDPro3.Duel
 
             var handleFlag = 0;
 
-            // ÎŞÇ¿ÖÆ·¢¶¯µÄ¿¨
+            // æ— å¼ºåˆ¶å‘åŠ¨çš„å¡
             if (forceCount == 0)
             {
-                // ÎŞ¹Ø¼ü¿¨
+                // æ— å…³é”®å¡
                 if (spcount == 0)
                 {
                     if (chainCondition == ChainCondition.No)
@@ -2804,7 +2804,7 @@ namespace MDPro3.Duel
                         handleFlag = 0;
                     }
                 }
-                // ÓĞ¹Ø¼ü¿¨
+                // æœ‰å…³é”®å¡
                 else
                 {
                     if (chainCards.Count == 0)
@@ -2826,7 +2826,7 @@ namespace MDPro3.Duel
                     }
                 }
             }
-            // ÓĞÇ¿ÖÆ·¢¶¯µÄ¿¨
+            // æœ‰å¼ºåˆ¶å‘åŠ¨çš„å¡
             else
             {
                 if (chainCards.Count == 1 && chainCards[0].effects.Count == 1)
@@ -2842,22 +2842,22 @@ namespace MDPro3.Duel
             //Debug.Log($"ChainCondition: {chainCondition} spcount: {spcount} handleFlag: {handleFlag}");
 
             // handleFlag
-            // -1   ÎŞ¿¨ ĞèÒªÌáĞÑ
-            // 0    ÎŞ¿¨ Ö±½Ó»ØÓ¦
-            // 1    Ò»ÕÅ¿¨ĞèÒª´¦Àí
-            // 2    ¶àÕÅ¿¨ĞèÒª´¦Àí
-            // 3    Ò»ÕÅ¿¨ĞèÒª´¦Àí£¨Ç¿ÖÆ·¢¶¯£©
-            // 4    ¶àÕÅ¿¨ĞèÒª´¦Àí£¨Ç¿ÖÆ·¢¶¯£©
+            // -1   æ— å¡ éœ€è¦æé†’
+            // 0    æ— å¡ ç›´æ¥å›åº”
+            // 1    ä¸€å¼ å¡éœ€è¦å¤„ç†
+            // 2    å¤šå¼ å¡éœ€è¦å¤„ç†
+            // 3    ä¸€å¼ å¡éœ€è¦å¤„ç†ï¼ˆå¼ºåˆ¶å‘åŠ¨ï¼‰
+            // 4    å¤šå¼ å¡éœ€è¦å¤„ç†ï¼ˆå¼ºåˆ¶å‘åŠ¨ï¼‰
 
             switch (handleFlag)
             {
                 case 1:
                 case 2:
-                    Core.GetUI<OcgCoreUI>().ShowPopupSelectCard(InterString.Get("[?]£¬ÊÇ·ñÁ¬Ëø£¿", ES_hint), chainCards, 1, 1, true, false);
+                    Core.GetUI<OcgCoreUI>().ShowPopupSelectCard(InterString.Get("[?]ï¼Œæ˜¯å¦è¿é”ï¼Ÿ", ES_hint), chainCards, 1, 1, true, false);
                     break;
                 case 3:
                 case 4:
-                    Core.GetUI<OcgCoreUI>().ShowPopupSelectCard(InterString.Get("[?]£¬ÇëÑ¡ÔñĞ§¹û·¢¶¯¡£", ES_hint), chainCards, 1, 1, false, false);
+                    Core.GetUI<OcgCoreUI>().ShowPopupSelectCard(InterString.Get("[?]ï¼Œè¯·é€‰æ‹©æ•ˆæœå‘åŠ¨ã€‚", ES_hint), chainCards, 1, 1, false, false);
                     break;
                 default:
                     Core.OnResend();
@@ -2953,7 +2953,7 @@ namespace MDPro3.Duel
             if (!string.IsNullOrEmpty(ES_selectHint))
                 ES_selectUnselectHint = ES_selectHint;
             if (string.IsNullOrEmpty(ES_selectUnselectHint))
-                ES_selectUnselectHint = InterString.Get("ÇëÑ¡Ôñ¿¨Æ¬");
+                ES_selectUnselectHint = InterString.Get("è¯·é€‰æ‹©å¡ç‰‡");
 
             if (allOnfield)
                 Core.FieldSelect(ES_selectUnselectHint, cardsInSelection, 1, 1, cancelable, finishable);
@@ -3141,7 +3141,7 @@ namespace MDPro3.Duel
             var count = reader.ReadByte();
             if (count > 1)
             {
-                var selections = new List<string>() { InterString.Get("Ğ§¹ûÑ¡Ôñ") };
+                var selections = new List<string>() { InterString.Get("æ•ˆæœé€‰æ‹©") };
                 var responses = new List<int> { };
                 for (var i = 0; i < count; i++)
                 {
@@ -3182,13 +3182,13 @@ namespace MDPro3.Duel
                 if (Es_selectMSGHintType == 3)
                 {
                     if (Es_selectMSGHintPlayer == 0)
-                        ES_selectHint = InterString.Get("ÇëÎªÎÒ·½µÄ¡¸[?]¡¹Ñ¡ÔñÎ»ÖÃ¡£", CardsManager.Get(Es_selectMSGHintData).Name);
+                        ES_selectHint = InterString.Get("è¯·ä¸ºæˆ‘æ–¹çš„ã€Œ[?]ã€é€‰æ‹©ä½ç½®ã€‚", CardsManager.Get(Es_selectMSGHintData).Name);
                     else
-                        ES_selectHint = InterString.Get("ÇëÎª¶Ô·½µÄ¡¸[?]¡¹Ñ¡ÔñÎ»ÖÃ¡£", CardsManager.Get(Es_selectMSGHintData).Name);
+                        ES_selectHint = InterString.Get("è¯·ä¸ºå¯¹æ–¹çš„ã€Œ[?]ã€é€‰æ‹©ä½ç½®ã€‚", CardsManager.Get(Es_selectMSGHintData).Name);
                 }
             }
             else if (ES_selectHint == string.Empty)
-                ES_selectHint = StringHelper.GetUnsafe(570);//ÇëÑ¡ÔñÒª±ä³É²»ÄÜÊ¹ÓÃµÄ¿¨Æ¬ÇøÓò
+                ES_selectHint = StringHelper.GetUnsafe(570);//è¯·é€‰æ‹©è¦å˜æˆä¸èƒ½ä½¿ç”¨çš„å¡ç‰‡åŒºåŸŸ
             Core.GetUI<OcgCoreUI>().SetHint(ES_selectHint);
 
             await UniTask.WaitUntil(() => dispatcher.playerResponed);
@@ -3276,7 +3276,7 @@ namespace MDPro3.Duel
                     cardsInSelection.Add(card);
                 }
             }
-            Core.FieldSelect(InterString.Get("ÇëÈ¡³ıÖ¸Ê¾Îï"), cardsInSelection, ES_min, ES_min, true, false);
+            Core.FieldSelect(InterString.Get("è¯·å–é™¤æŒ‡ç¤ºç‰©"), cardsInSelection, ES_min, ES_min, true, false);
 
             await UniTask.WaitUntil(() => dispatcher.playerResponed);
         }
@@ -3304,7 +3304,7 @@ namespace MDPro3.Duel
                     ES_sortSum++;
                 }
             }
-            Core.GetUI<OcgCoreUI>().ShowPopupSelectCard(InterString.Get("ÇëÎª¿¨Æ¬ÅÅĞò¡£"), sortingCards, sortingCards.Count, sortingCards.Count, false, false);
+            Core.GetUI<OcgCoreUI>().ShowPopupSelectCard(InterString.Get("è¯·ä¸ºå¡ç‰‡æ’åºã€‚"), sortingCards, sortingCards.Count, sortingCards.Count, false, false);
 
             await UniTask.WaitUntil(() => dispatcher.playerResponed);
         }

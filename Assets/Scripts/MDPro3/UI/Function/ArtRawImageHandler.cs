@@ -11,7 +11,7 @@ namespace MDPro3.UI
     [RequireComponent(typeof(RawImage))]
     public class ArtRawImageHandler : MonoBehaviour
     {
-        #region ×Ö¶ÎºÍÊôÐÔ
+        #region å­—æ®µå’Œå±žæ€§
 
         public bool cache = true;
 

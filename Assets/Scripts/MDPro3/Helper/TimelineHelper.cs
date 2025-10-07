@@ -105,7 +105,7 @@ namespace MDPro3
                 else
                     unitCards = ABLoader.LoadFromFolder<PlayableDirector>
                         ("MasterDuel/Timeline/Summon/SummonFusion/SummonFusion07445ShowUnitCard0" + materials.Count, true, true);
-                //TODO: Èç¹ûÔÚawaitÖ®Ç°´¥·¢Ìø¹ıTL£¬unitCardsÎŞ·¨±»Á¢¼´É¾³ı
+                //TODO: å¦‚æœåœ¨awaitä¹‹å‰è§¦å‘è·³è¿‡TLï¼ŒunitCardsæ— æ³•è¢«ç«‹å³åˆ é™¤
             }
             // Invocation
             else if (data.HasType(CardType.Fusion)

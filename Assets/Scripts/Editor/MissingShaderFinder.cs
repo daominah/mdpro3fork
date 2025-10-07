@@ -7,37 +7,37 @@ public class MissingShaderFinder : EditorWindow
 {
     private List<Material> _materialsWithMissingShader = new List<Material>();
 
-    [MenuItem("Tools/¼ì²é¶ªÊ§ShaderµÄ²ÄÖÊ")]
+    [MenuItem("Tools/æ£€æŸ¥ä¸¢å¤±Shaderçš„æè´¨")]
     public static void ShowWindow()
     {
-        GetWindow<MissingShaderFinder>("¶ªÊ§ShaderµÄ²ÄÖÊÁĞ±í");
+        GetWindow<MissingShaderFinder>("ä¸¢å¤±Shaderçš„æè´¨åˆ—è¡¨");
     }
 
     void OnGUI()
     {
-        if (GUILayout.Button("É¨ÃèÏîÄ¿", GUILayout.Height(40)))
+        if (GUILayout.Button("æ‰«æé¡¹ç›®", GUILayout.Height(40)))
         {
             FindMaterialsWithMissingShader();
         }
 
-        GUILayout.Label($"·¢ÏÖ {_materialsWithMissingShader.Count} ¸ö²ÄÖÊ¶ªÊ§Shader:");
+        GUILayout.Label($"å‘ç° {_materialsWithMissingShader.Count} ä¸ªæè´¨ä¸¢å¤±Shader:");
         scrollPos = EditorGUILayout.BeginScrollView(scrollPos);
 
         foreach (Material mat in _materialsWithMissingShader)
         {
             EditorGUILayout.BeginHorizontal();
-            // ÏÔÊ¾²ÄÖÊÃû³ÆºÍÂ·¾¶
+            // æ˜¾ç¤ºæè´¨åç§°å’Œè·¯å¾„
             EditorGUILayout.ObjectField(mat, typeof(Material), false);
 
-            // ¶¨Î»°´Å¥
-            if (GUILayout.Button("¶¨Î»", GUILayout.Width(60)))
+            // å®šä½æŒ‰é’®
+            if (GUILayout.Button("å®šä½", GUILayout.Width(60)))
             {
                 Selection.activeObject = mat;
                 EditorGUIUtility.PingObject(mat);
             }
 
-            // ĞŞ¸´°´Å¥
-            if (GUILayout.Button("ĞŞ¸´(Standard)", GUILayout.Width(80)))
+            // ä¿®å¤æŒ‰é’®
+            if (GUILayout.Button("ä¿®å¤(Standard)", GUILayout.Width(80)))
             {
                 FixShader(mat, Shader.Find("Standard"));
             }
@@ -71,7 +71,7 @@ public class MissingShaderFinder : EditorWindow
             Undo.RecordObject(mat, "Fix Missing Shader");
             mat.shader = replacementShader;
             EditorUtility.SetDirty(mat);
-            Debug.Log($"ÒÑĞŞ¸´²ÄÖÊ: {mat.name}", mat);
+            Debug.Log($"å·²ä¿®å¤æè´¨: {mat.name}", mat);
         }
     }
 }

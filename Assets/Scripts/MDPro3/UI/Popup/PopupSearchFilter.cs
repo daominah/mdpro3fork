@@ -76,7 +76,7 @@ namespace MDPro3.UI.Popup
             }
             Manager.GetElement<SelectionButton>("ButtonPack")
                 .SetButtonText(CardCollectionView.packName == string.Empty 
-                ? InterString.Get("ËùÓĞ¿¨°ü") : CardCollectionView.packName);
+                ? InterString.Get("æ‰€æœ‰å¡åŒ…") : CardCollectionView.packName);
         }
 
         public override void Show()
@@ -221,7 +221,7 @@ namespace MDPro3.UI.Popup
                 filters.Add(-233);
 
             var btnPack = Manager.GetElement<SelectionButton>("ButtonPack");
-            if(btnPack.GetButtonText() != InterString.Get("ËùÓĞ¿¨°ü"))
+            if(btnPack.GetButtonText() != InterString.Get("æ‰€æœ‰å¡åŒ…"))
             {
                 dirty = true;
                 CardCollectionView.packName = btnPack.GetButtonText();
@@ -254,14 +254,14 @@ namespace MDPro3.UI.Popup
             inputScaleTo.text = string.Empty;
             inputYearFrom.text = string.Empty;
             inputYearTo.text = string.Empty;
-            Manager.GetElement<SelectionButton>("ButtonPack").SetButtonText(InterString.Get("ËùÓĞ¿¨°ü"));
+            Manager.GetElement<SelectionButton>("ButtonPack").SetButtonText(InterString.Get("æ‰€æœ‰å¡åŒ…"));
         }
 
         public void OnPack()
         {
             var selections = new List<string>()
             {
-                InterString.Get("¿¨°ü"),
+                InterString.Get("å¡åŒ…"),
                 string.Empty
             };
             foreach (var pack in PacksManager.packs)

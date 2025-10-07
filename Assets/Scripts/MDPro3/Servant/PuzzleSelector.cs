@@ -59,7 +59,7 @@ namespace MDPro3.Servant
 
         public void StartCurrentPuzzle()
         {
-            //·ÀÖ¹¶à´Îµã»÷
+            //é˜²æ­¢å¤šæ¬¡ç‚¹å‡»
             if (Program.instance.currentServant != Program.instance.puzzle)
                 return;
 

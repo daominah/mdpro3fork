@@ -1,4 +1,3 @@
-// ScriptReferenceReplacerEditor.cs
 using System.IO;
 using UnityEditor;
 using UnityEngine;
@@ -8,25 +7,25 @@ public class ScriptReferenceReplacerEditor : EditorWindow
     private ScriptReplacementConfig replacementConfig;
     private Vector2 scrollPosition;
 
-    [MenuItem("Assets/Ìæ»»½Å±¾ÒıÓÃ", false, 102)]
+    [MenuItem("Assets/æ›¿æ¢è„šæœ¬å¼•ç”¨", false, 102)]
     private static void ReplaceScriptReferences()
     {
-        // Ê×ÏÈÏÔÊ¾È·ÈÏµ¯´°
+        // é¦–å…ˆæ˜¾ç¤ºç¡®è®¤å¼¹çª—
         bool userConfirmed = EditorUtility.DisplayDialog(
-            "Î£ÏÕ²Ù×÷È·ÈÏ", // ±êÌâ
-            $"ÄãÈ·¶¨Òª½øĞĞ¡¾Ìæ»»½Å±¾ÒıÓÃ¡¿' Âğ£¿´Ë²Ù×÷²»¿ÉÄæ£¡\n\n½¨ÒéÌáÇ°±¸·İÏîÄ¿¡£", // ÏûÏ¢
-            "¼ÌĞø", // È·¶¨°´Å¥
-            "È¡Ïû" // È¡Ïû°´Å¥
+            "å±é™©æ“ä½œç¡®è®¤", // æ ‡é¢˜
+            $"ä½ ç¡®å®šè¦è¿›è¡Œã€æ›¿æ¢è„šæœ¬å¼•ç”¨ã€‘' å—ï¼Ÿæ­¤æ“ä½œä¸å¯é€†ï¼\n\nå»ºè®®æå‰å¤‡ä»½é¡¹ç›®ã€‚", // æ¶ˆæ¯
+            "ç»§ç»­", // ç¡®å®šæŒ‰é’®
+            "å–æ¶ˆ" // å–æ¶ˆæŒ‰é’®
         );
 
-        // Èç¹ûÓÃ»§µã»÷ÁË¡°È¡Ïû¡±£¬ÔòÖÕÖ¹²Ù×÷
+        // å¦‚æœç”¨æˆ·ç‚¹å‡»äº†â€œå–æ¶ˆâ€ï¼Œåˆ™ç»ˆæ­¢æ“ä½œ
         if (!userConfirmed)
         {
-            Debug.Log("ÓÃ»§È¡ÏûÁË²Ù×÷¡£");
+            Debug.Log("ç”¨æˆ·å–æ¶ˆäº†æ“ä½œã€‚");
             return;
         }
 
-        // ³¢ÊÔ²éÕÒÏÖÓĞµÄÅäÖÃ
+        // å°è¯•æŸ¥æ‰¾ç°æœ‰çš„é…ç½®
         string[] configGUIDs = AssetDatabase.FindAssets("t:ScriptReplacementConfig");
         ScriptReplacementConfig config = null;
         if (configGUIDs.Length > 0)
@@ -41,12 +40,12 @@ public class ScriptReferenceReplacerEditor : EditorWindow
             return;
         }
 
-        // ´¦Àí×Ê²ú
+        // å¤„ç†èµ„äº§
         var assetPath = AssetDatabase.GetAssetPath(Selection.activeObject);
         ProcessAsset(assetPath, config);
     }
 
-    [MenuItem("Assets/Ìæ»»½Å±¾ÒıÓÃ", true)]
+    [MenuItem("Assets/æ›¿æ¢è„šæœ¬å¼•ç”¨", true)]
     private static bool ValidateReplaceStringsInAsset()
     {
         return Selection.activeObject != null &&
@@ -55,19 +54,19 @@ public class ScriptReferenceReplacerEditor : EditorWindow
 
     private static void ProcessAsset(string assetPath, ScriptReplacementConfig config)
     {
-        // ¶ÁÈ¡×Ê²úµÄÎÄ±¾ÄÚÈİ
+        // è¯»å–èµ„äº§çš„æ–‡æœ¬å†…å®¹
         string assetContent = File.ReadAllText(assetPath);
         bool modified = false;
 
-        // ±éÀúËùÓĞĞèÒªÌæ»»µÄÅäÖÃ
+        // éå†æ‰€æœ‰éœ€è¦æ›¿æ¢çš„é…ç½®
         foreach (var pair in config.replacementPairs)
         {
-            // ¹¹Ôì¾ÉµÄm_ScriptĞĞÄÚÈİ
+            // æ„é€ æ—§çš„m_Scriptè¡Œå†…å®¹
             string oldScriptLine = $"m_Script: {{fileID: {pair.oldFileId}, guid: {pair.oldGuid}, type: 3}}";
-            // ¹¹ÔìĞÂµÄm_ScriptĞĞÄÚÈİ
+            // æ„é€ æ–°çš„m_Scriptè¡Œå†…å®¹
             string newScriptLine = $"m_Script: {{fileID: {pair.newFileId}, guid: {pair.newGuid}, type: 3}}";
 
-            // ¼ì²é²¢Ìæ»»
+            // æ£€æŸ¥å¹¶æ›¿æ¢
             if (assetContent.Contains(oldScriptLine))
             {
                 assetContent = assetContent.Replace(oldScriptLine, newScriptLine);
@@ -76,7 +75,7 @@ public class ScriptReferenceReplacerEditor : EditorWindow
             }
         }
 
-        // Èç¹ûÄÚÈİ±»ĞŞ¸Ä£¬Ğ´»ØÎÄ¼ş²¢ÖØĞÂµ¼Èë×Ê²ú
+        // å¦‚æœå†…å®¹è¢«ä¿®æ”¹ï¼Œå†™å›æ–‡ä»¶å¹¶é‡æ–°å¯¼å…¥èµ„äº§
         if (modified)
         {
             File.WriteAllText(assetPath, assetContent);
@@ -89,7 +88,7 @@ public class ScriptReferenceReplacerEditor : EditorWindow
         }
     }
 
-    // Ìá¹©Ò»¸ö±à¼­Æ÷´°¿ÚÒÔ±ãÓÚ²Ù×÷ºÍ²é¿´ÅäÖÃ£¨¿ÉÑ¡£©
+    // æä¾›ä¸€ä¸ªç¼–è¾‘å™¨çª—å£ä»¥ä¾¿äºæ“ä½œå’ŒæŸ¥çœ‹é…ç½®ï¼ˆå¯é€‰ï¼‰
     [MenuItem("Tools/Script Reference Replacer")]
     public static void ShowWindow()
     {
@@ -101,7 +100,7 @@ public class ScriptReferenceReplacerEditor : EditorWindow
         GUILayout.Label("Script Reference Replacer Tool", EditorStyles.boldLabel);
         EditorGUILayout.Space();
 
-        // ÔÊĞíÍÏ×§¸³Öµ
+        // å…è®¸æ‹–æ‹½èµ‹å€¼
         replacementConfig = (ScriptReplacementConfig)EditorGUILayout.ObjectField("Replacement Config", replacementConfig, typeof(ScriptReplacementConfig), false);
 
         if (replacementConfig == null)

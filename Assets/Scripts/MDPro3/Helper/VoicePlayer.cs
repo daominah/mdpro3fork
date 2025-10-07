@@ -276,9 +276,9 @@ namespace MDPro3.Duel
         public static int GetCidDefaultAltCard(int card)
         {
             var data = CardsManager.Get(card);
-            if (card == 89631139 || data.Alias == 89631139)//ÇàÑÛ°×Áú
+            if (card == 89631139 || data.Alias == 89631139)//é’çœ¼ç™½é¾™
                 return 89631141;
-            if (card == 46986414 || data.Alias == 46986414)//ºÚÄ§ÊõÊ¦
+            if (card == 46986414 || data.Alias == 46986414)//é»‘é­”æœ¯å¸ˆ
                 return 46986417;
             return card;
         }

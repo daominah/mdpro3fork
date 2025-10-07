@@ -1,8 +1,6 @@
 using UnityEngine;
 using UnityEditor;
 using System.Collections.Generic;
-using System.Linq;
-using System.IO;
 
 public class CheckFolderAssetReferences : EditorWindow
 {
@@ -11,22 +9,22 @@ public class CheckFolderAssetReferences : EditorWindow
     private List<string> zeroReferenceAssets = new List<string>();
     private Vector2 scrollPosition;
 
-    [MenuItem("Assets/¼ì²éÎÄ¼ş¼ĞÒıÓÃÇé¿ö", false, 106)]
+    [MenuItem("Assets/æ£€æŸ¥æ–‡ä»¶å¤¹å¼•ç”¨æƒ…å†µ", false, 106)]
     private static void CheckFolderReferences()
     {
         string folderPath = AssetDatabase.GetAssetPath(Selection.activeObject);
         if (!AssetDatabase.IsValidFolder(folderPath))
         {
-            EditorUtility.DisplayDialog("´íÎó", "ÇëÑ¡ÔñÒ»¸öÓĞĞ§µÄÎÄ¼ş¼Ğ", "È·¶¨");
+            EditorUtility.DisplayDialog("é”™è¯¯", "è¯·é€‰æ‹©ä¸€ä¸ªæœ‰æ•ˆçš„æ–‡ä»¶å¤¹", "ç¡®å®š");
             return;
         }
 
-        CheckFolderAssetReferences window = GetWindow<CheckFolderAssetReferences>("×Ê²úÒıÓÃ¼ì²éÆ÷");
+        CheckFolderAssetReferences window = GetWindow<CheckFolderAssetReferences>("èµ„äº§å¼•ç”¨æ£€æŸ¥å™¨");
         window.targetFolderPath = folderPath;
         window.AnalyzeReferences();
     }
 
-    [MenuItem("Assets/¼ì²éÎÄ¼ş¼ĞÒıÓÃÇé¿ö", true, 106)]
+    [MenuItem("Assets/æ£€æŸ¥æ–‡ä»¶å¤¹å¼•ç”¨æƒ…å†µ", true, 106)]
     private static bool ValidateCheckFolderReferences()
     {
         return Selection.activeObject != null &&
@@ -38,11 +36,11 @@ public class CheckFolderAssetReferences : EditorWindow
         referenceCounts.Clear();
         zeroReferenceAssets.Clear();
 
-        // »ñÈ¡ÎÄ¼ş¼ĞÄÚËùÓĞ×Ê²ú
+        // è·å–æ–‡ä»¶å¤¹å†…æ‰€æœ‰èµ„äº§
         string[] allAssetGUIDs = AssetDatabase.FindAssets("", new[] { targetFolderPath });
         Dictionary<string, List<string>> referenceCache = new Dictionary<string, List<string>>();
 
-        // ¹¹½¨È«¾ÖÒıÓÃ»º´æ
+        // æ„å»ºå…¨å±€å¼•ç”¨ç¼“å­˜
         string[] allProjectGUIDs = AssetDatabase.FindAssets("");
         int total = allProjectGUIDs.Length;
         int current = 0;
@@ -52,17 +50,17 @@ public class CheckFolderAssetReferences : EditorWindow
             current++;
             string assetPath = AssetDatabase.GUIDToAssetPath(guid);
 
-            // Ìø¹ı·ÇAssetsÎÄ¼şºÍ·ÇÄ¿±êÎÄ¼ş¼ĞÄÚµÄÎÄ¼ş
+            // è·³è¿‡éAssetsæ–‡ä»¶å’Œéç›®æ ‡æ–‡ä»¶å¤¹å†…çš„æ–‡ä»¶
             if (!assetPath.StartsWith("Assets/")) continue;
 
-            EditorUtility.DisplayProgressBar("·ÖÎöÒıÓÃ¹ØÏµ",
-                $"É¨ÃèÖĞ... ({current}/{total})", (float)current / total);
+            EditorUtility.DisplayProgressBar("åˆ†æå¼•ç”¨å…³ç³»",
+                $"æ‰«æä¸­... ({current}/{total})", (float)current / total);
 
             string[] dependencies = AssetDatabase.GetDependencies(assetPath, false);
 
             foreach (string dependency in dependencies)
             {
-                if (dependency == assetPath) continue; // Ìø¹ı×ÔÉíÒıÓÃ
+                if (dependency == assetPath) continue; // è·³è¿‡è‡ªèº«å¼•ç”¨
 
                 if (!referenceCache.ContainsKey(dependency))
                     referenceCache[dependency] = new List<string>();
@@ -71,7 +69,7 @@ public class CheckFolderAssetReferences : EditorWindow
             }
         }
 
-        // ¼ÆËãÄ¿±êÎÄ¼ş¼ĞÄÚ×Ê²úµÄÒıÓÃ´ÎÊı
+        // è®¡ç®—ç›®æ ‡æ–‡ä»¶å¤¹å†…èµ„äº§çš„å¼•ç”¨æ¬¡æ•°
         foreach (string guid in allAssetGUIDs)
         {
             string assetPath = AssetDatabase.GUIDToAssetPath(guid);
@@ -88,13 +86,13 @@ public class CheckFolderAssetReferences : EditorWindow
 
     private void OnGUI()
     {
-        EditorGUILayout.LabelField($"Ä¿±êÎÄ¼ş¼Ğ: {targetFolderPath}", EditorStyles.boldLabel);
+        EditorGUILayout.LabelField($"ç›®æ ‡æ–‡ä»¶å¤¹: {targetFolderPath}", EditorStyles.boldLabel);
 
-        if (GUILayout.Button("ÖØĞÂ·ÖÎö"))
+        if (GUILayout.Button("é‡æ–°åˆ†æ"))
             AnalyzeReferences();
 
         EditorGUILayout.Space();
-        EditorGUILayout.LabelField($"ÁãÒıÓÃ×Ê²ú ({zeroReferenceAssets.Count}¸ö):", EditorStyles.boldLabel);
+        EditorGUILayout.LabelField($"é›¶å¼•ç”¨èµ„äº§ ({zeroReferenceAssets.Count}ä¸ª):", EditorStyles.boldLabel);
 
         scrollPosition = EditorGUILayout.BeginScrollView(scrollPosition);
 
@@ -102,18 +100,18 @@ public class CheckFolderAssetReferences : EditorWindow
         {
             EditorGUILayout.BeginHorizontal();
 
-            // ÏÔÊ¾×Ê²ú¶ÔÏó×Ö¶Î
+            // æ˜¾ç¤ºèµ„äº§å¯¹è±¡å­—æ®µ
             Object asset = AssetDatabase.LoadAssetAtPath<Object>(assetPath);
             EditorGUILayout.ObjectField(asset, typeof(Object), false, GUILayout.Width(300));
 
-            // ÏÔÊ¾Â·¾¶±êÇ©
+            // æ˜¾ç¤ºè·¯å¾„æ ‡ç­¾
             EditorGUILayout.LabelField(assetPath, GUILayout.Width(400));
 
-            // É¾³ı°´Å¥
-            if (GUILayout.Button("É¾³ı", GUILayout.Width(60)))
+            // åˆ é™¤æŒ‰é’®
+            if (GUILayout.Button("åˆ é™¤", GUILayout.Width(60)))
             {
-                if (EditorUtility.DisplayDialog("È·ÈÏÉ¾³ı",
-                    $"È·¶¨ÒªÉ¾³ı {assetPath} Âğ£¿", "É¾³ı", "È¡Ïû"))
+                if (EditorUtility.DisplayDialog("ç¡®è®¤åˆ é™¤",
+                    $"ç¡®å®šè¦åˆ é™¤ {assetPath} å—ï¼Ÿ", "åˆ é™¤", "å–æ¶ˆ"))
                 {
                     AssetDatabase.DeleteAsset(assetPath);
                     zeroReferenceAssets.Remove(assetPath);

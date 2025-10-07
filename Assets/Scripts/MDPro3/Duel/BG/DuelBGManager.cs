@@ -1428,11 +1428,11 @@ namespace MDPro3.Duel
                 return;
             
             var code = card.GetData().GetOriginalID();
-            if (card.GetData().Id == 83764719)//ËÀÕßËÕÉú Òì»­
+            if (card.GetData().Id == 83764719)//æ­»è€…è‹ç”Ÿ å¼‚ç”»
                 code = 83764719;
-            if (card.GetData().Id == 63166096)//ÉÁµ¶Æğ¶¯-½»ÉÁ Òì»­
+            if (card.GetData().Id == 63166096)//é—ªåˆ€èµ·åŠ¨-äº¤é—ª å¼‚ç”»
                 code = 63166096;
-            if (card.GetData().Id == 32807848)//ÉÁµ¶Æğ¶¯-½»ÉÁ Òì»­
+            if (card.GetData().Id == 32807848)//é—ªåˆ€èµ·åŠ¨-äº¤é—ª å¼‚ç”»
                 code = 32807848;
 
             var targetFolder = Program.root + "MasterDuel/Card/" + code.ToString();
@@ -1455,7 +1455,7 @@ namespace MDPro3.Duel
 
                 GameObject effect = null;
 
-                // Ğı·ç
+                // æ—‹é£
                 if (code == 5318639)
                 {
                     if (card.effectTargets.Count > 0 && card.effectTargets[0].model != null)
@@ -1469,7 +1469,7 @@ namespace MDPro3.Duel
                     else
                         return;
                 }
-                // ÔÂÅ®ÉñÖ®ïß
+                // æœˆå¥³ç¥ä¹‹é•
                 else if (code == 2263869)
                 {
                     if (card.effectTargets.Count > 0 && card.effectTargets[0].model != null)
@@ -1480,7 +1480,7 @@ namespace MDPro3.Duel
                     else
                         return;
                 }
-                // À×»÷
+                // é›·å‡»
                 else if (code == 12580477)
                 {
                     AudioManager.PlaySE("SE_EV_RAIGEKI");
@@ -1490,7 +1490,7 @@ namespace MDPro3.Duel
                         CameraManager.ShakeCamera(true);
                     });
                 }
-                // »ÒÁ÷Àö
+                // ç°æµä¸½
                 else if (code == 14558127)
                 {
                     if (chainSolvingIndex > 1)
@@ -1502,68 +1502,68 @@ namespace MDPro3.Duel
                     else
                         return;
                 }
-                // Ó¥ÉíÅ®ÑıµÄÓğÃ«É¨
+                // é¹°èº«å¥³å¦–çš„ç¾½æ¯›æ‰«
                 else if (code == 18144506)
                 {
                     AudioManager.PlaySE("SE_EV_HARPIESFEATHER_DUSTER_3D");
                     effect = GetCardEffectPrefab(card.p.InMyControl() ? "Ef04678" : "Ef04678Op");
                     effect.transform.DestroyChildrenByName("DistPlane");
                 }
-                // ºìÉ«ÖØÆô
+                // çº¢è‰²é‡å¯
                 else if (code == 23002292)
                 {
                     AudioManager.PlaySE("SE_EV_REDREBOOT");
                     effect = GetCardEffectPrefab("Ef13622");
                 }
-                // Ä¹Ñ¨µÄÖ¸ÃûÕß
+                // å¢“ç©´çš„æŒ‡åè€…
                 else if (code == 24224830)
                 {
                     AudioManager.PlaySE("SE_EV_CALLED_GRAVE");
                     effect = GetCardEffectPrefab(card.p.InMyControl() ? "Ef13619" : "Ef13619Op");
                 }
-                // ½û¼ÉµÄÒ»µÎ
+                // ç¦å¿Œçš„ä¸€æ»´
                 else if (code == 24299458)
                 {
                     AudioManager.PlaySE("SE_EV_FORBIDDEN_DROPLET");
                     effect = GetCardEffectPrefab(card.p.InMyControl() ? "Ef15299_Far" : "Ef15299_Near");
                 }
-                // ÈıÕ½Ö®²Å
+                // ä¸‰æˆ˜ä¹‹æ‰
                 else if (code == 25311006)
                 {
                     AudioManager.PlaySE("SE_EV_TRIPLETACTICS_TALENT");
                     effect = GetCardEffectPrefab("Ef15296");
                 }
-                // ÉñÖ®Ğû¸æ
+                // ç¥ä¹‹å®£å‘Š
                 else if (code == 41420027)
                 {
                     AudioManager.PlaySE("SE_EV_SOLEMNJUDGMENT");
                     effect = GetCardEffectPrefab("Ef04861");
                 }
-                // ÉñÊ¥·À»¤ÕÖ -·´Éä¾µÁ¦-
+                // ç¥åœ£é˜²æŠ¤ç½© -åå°„é•œåŠ›-
                 else if (code == 44095762)
                 {
                     AudioManager.PlaySE("SE_EV_MIRRORFORCE");
                     effect = GetCardEffectPrefab(card.p.InMyControl() ? "Ef04887" : "Ef04887Op");
                 }
-                // ºÚ¶´
+                // é»‘æ´
                 else if (code == 53129443)
                 {
                     AudioManager.PlaySE("SE_EV_BLACKHOLE");
                     effect = GetCardEffectPrefab("Ef04342");
                 }
-                // Ú¤Íõ½á½ç²¨
+                // å†¥ç‹ç»“ç•Œæ³¢
                 else if (code == 54693926)
                 {
                     AudioManager.PlaySE("SE_EV_DARKRULER_NOMORE");
                     effect = GetCardEffectPrefab(card.p.InMyControl() ? "Ef14742" : "Ef14742Op");
                 }
-                // Íõ¹¬µÄë·Ãü
+                // ç‹å®«çš„æ••å‘½
                 else if (code == 61740673)
                 {
                     AudioManager.PlaySE("SE_EV_IMPERIAL_ORDER");
                     effect = GetCardEffectPrefab("Ef04960");
                 }
-                // Ä§·¨Í²
+                // é­”æ³•ç­’
                 else if (code == 62279055)
                 {
                     AudioManager.PlaySE("SE_EV_MAGIC_CYLINDER");
@@ -1574,7 +1574,7 @@ namespace MDPro3.Duel
 
                     //Tools.ChangeLayer(effect, "Default");
                 }
-                // Ç§°Ñµ¶
+                // åƒæŠŠåˆ€
                 else if (code == 63391643)
                 {
                     if (card.effectTargets.Count > 0 && card.effectTargets[0].model != null)
@@ -1588,31 +1588,31 @@ namespace MDPro3.Duel
                     else
                         return;
                 }
-                // Ä¨É±Ö®Ö¸ÃûÕß
+                // æŠ¹æ€ä¹‹æŒ‡åè€…
                 else if (code == 65681983)
                 {
                     AudioManager.PlaySE("SE_EV_CROSSOUT_DESIGNATOR");
                     effect = GetCardEffectPrefab(card.p.InMyControl() ? "Ef14627_Far" : "Ef14627_Near");
                 }
-                // ¹âÖ®»¤·â½£
+                // å…‰ä¹‹æŠ¤å°å‰‘
                 else if (code == 72302403)
                 {
                     AudioManager.PlaySE("SE_EV_GOFUKEN");
                     effect = GetCardEffectPrefab(card.p.InMyControl() ? "Ef04354" : "Ef04354Op");
                 }
-                // ·âÓ¡Ö®»Æ½ğ¹ñ
+                // å°å°ä¹‹é»„é‡‘æŸœ
                 else if (code == 75500286)
                 {
                     AudioManager.PlaySE("SE_EV_GOLD_SARCOPHAGUS");
                     effect = GetCardEffectPrefab("Ef06161");
                 }
-                // ËÀÕßËÕÉú
+                // æ­»è€…è‹ç”Ÿ
                 else if (code == 83764718 || code == 83764719)
                 {
                     AudioManager.PlaySE("SE_EV_MONSTER_REBORN");
                     effect = GetCardEffectPrefab("Ef" + code);
                 }
-                // ÉÁµ¶Æğ¶¯-½»ÉÁ
+                // é—ªåˆ€èµ·åŠ¨-äº¤é—ª
                 else if (code == 63166095 || code == 63166096)
                 {
                     int code2 = 0;
@@ -1649,31 +1649,31 @@ namespace MDPro3.Duel
 
                     return;
                 }
-                // ´ó·ç±©
+                // å¤§é£æš´
                 else if (code == 19613556)
                 {
                     AudioManager.PlaySE("SE_EV_HEAVY_STORM");
                     effect = GetCardEffectPrefab("Ef04891");
                 }
-                // ÌìöªºÅ °¢ÖæË¹
+                // å¤©éœ†å· é˜¿å®™æ–¯
                 else if (code == 90448279)
                 {
                     AudioManager.PlaySE("SE_EV_AZEUS");
                     effect = GetCardEffectPrefab("Ef15524");
                 }
-                // ÔöÔ®
+                // å¢æ´
                 else if (code == 32807846)
                 {
                     AudioManager.PlaySE("SE_EV_039_NORMAL");
                     effect = GetCardEffectPrefab("Ef05328");
                 }
-                // ÔöÔ® Òì»­
+                // å¢æ´ å¼‚ç”»
                 else if (code == 32807848)
                 {
                     AudioManager.PlaySE("SE_EV_039_SPECIAL");
                     effect = GetCardEffectPrefab("Ef20040");
                 }
-                // ÓÄ¹íÍÃ
+                // å¹½é¬¼å…”
                 else if (code == 59438930)
                 {
                     if (chainSolvingIndex > 1)
@@ -1694,7 +1694,7 @@ namespace MDPro3.Duel
                     else
                         return;
                 }
-                // »¶¾ÛÓÑ°é¡¤¶¶¶¶º£ÔÂË®Ä¸
+                // æ¬¢èšå‹ä¼´Â·æŠ–æŠ–æµ·æœˆæ°´æ¯
                 else if (code == 84192580)
                 {
                     AudioManager.PlaySE("SE_EV_040_NORMAL");
@@ -1702,7 +1702,7 @@ namespace MDPro3.Duel
                     var manager = effect.GetComponent<ElementObjectManager>();
                     UnityEngine.Object.Destroy(manager.GetElement(card.p.InMyControl() ? "Hand01" : "EnHand01"));
                 }
-                // »¶¾ÛÓÑ°é¡¤È×È×³¤Î²É½È¸
+                // æ¬¢èšå‹ä¼´Â·èŒ¸èŒ¸é•¿å°¾å±±é›€
                 else if (code == 42141493)
                 {
                     AudioManager.PlaySE("SE_EV_041_NORMAL");
@@ -1728,7 +1728,7 @@ namespace MDPro3.Duel
                             , Core.GetLocationCardCount(CardLocation.Extra, 0), myExtra);
                     }
                 }
-                // »¶¾ÛÓÑ°é¡¤ß÷ß÷±ªÃ¨
+                // æ¬¢èšå‹ä¼´Â·å–µå–µè±¹çŒ«
                 else if (code == 87126721)
                 {
                     AudioManager.PlaySE("SE_EV_042_NORMAL");
@@ -1742,7 +1742,7 @@ namespace MDPro3.Duel
                     else
                         UnityEngine.Object.Destroy(effect.transform.GetChildByName("EnGraveSet").gameObject);
                 }
-                // ÁéÍõµÄ²¨¶¯
+                // çµç‹çš„æ³¢åŠ¨
                 else if (code == 40366667)
                 {
                     if (chainSolvingIndex > 1)
@@ -1763,7 +1763,7 @@ namespace MDPro3.Duel
                     }
                     return;
                 }
-                // Ê¥ÍõµÄ·ÛËé
+                // åœ£ç‹çš„ç²‰ç¢
                 else if (code == 97045737)
                 {
                     if (chainSolvingIndex > 1)
@@ -1789,7 +1789,7 @@ namespace MDPro3.Duel
             }
             else
             {
-                // ¼¼ÄÜ³éÈ¡
+                // æŠ€èƒ½æŠ½å–
                 if (code == 82732705)
                 {
                     if (card.model == null)
@@ -1806,7 +1806,7 @@ namespace MDPro3.Duel
                     UnityEngine.Object.Destroy(effArea);
                     UnityEngine.Object.Destroy(effCard);
                 }
-                // ÎŞÏŞÅİÓ°
+                // æ— é™æ³¡å½±
                 else if (code == 10045474)
                 {
                     if (card.effectTargets.Count == 0 || card.effectTargets[0].model == null)
@@ -1844,7 +1844,7 @@ namespace MDPro3.Duel
                     await UniTask.WaitForSeconds(time);
                     UnityEngine.Object.Destroy(effCard);
                 }
-                // ÉÁµç·ç±©
+                // é—ªç”µé£æš´
                 else if (code == 14532163)
                 {
                     var eff = await ABLoader.LoadFromFolderAsync<ParticleSystem>("MasterDuel/Effects/MagicTrapEffects/fxp_14876", true, true);
@@ -1862,7 +1862,7 @@ namespace MDPro3.Duel
                     await UniTask.WaitForSeconds(1f);
                     UnityEngine.Object.Destroy(eff);
                 }
-                // Ğ§¹ûÕÚÃÉÕß
+                // æ•ˆæœé®è’™è€…
                 else if (code == 97268402)
                 {
                     if (card.effectTargets.Count == 0 || card.effectTargets[0].model == null)
@@ -1873,7 +1873,7 @@ namespace MDPro3.Duel
                     await UniTask.WaitForSeconds(1f);
                     UnityEngine.Object.Destroy(eff);
                 }
-                // Îİ·óÍ¯
+                // å±‹æ•·ç«¥
                 else if (code == 73642296)
                 {
                     if (chainSolvingIndex < 2)

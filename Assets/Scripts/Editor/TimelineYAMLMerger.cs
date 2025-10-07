@@ -3,7 +3,6 @@ using UnityEngine;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 
 public class TimelineYAMLMerger
@@ -11,18 +10,18 @@ public class TimelineYAMLMerger
     private class FileIDMapper
     {
         private Dictionary<string, Dictionary<long, long>> _fileToOldNewIDMap = new Dictionary<string, Dictionary<long, long>>();
-        private long _nextAvailableID = 1140000000000000000; // Ê¹ÓÃ¸ü·ûºÏUnity·ç¸ñµÄÆğÊ¼Öµ
+        private long _nextAvailableID = 1140000000000000000; // ä½¿ç”¨æ›´ç¬¦åˆUnityé£æ ¼çš„èµ·å§‹å€¼
 
         public long GetNewID(string assetPath, long oldID)
         {
-            // »ñÈ¡»ò´´½¨¸Ã×Ê²úÂ·¾¶µÄIDÓ³Éä×Öµä
+            // è·å–æˆ–åˆ›å»ºè¯¥èµ„äº§è·¯å¾„çš„IDæ˜ å°„å­—å…¸
             if (!_fileToOldNewIDMap.TryGetValue(assetPath, out var idMap))
             {
                 idMap = new Dictionary<long, long>();
                 _fileToOldNewIDMap[assetPath] = idMap;
             }
 
-            // »ñÈ¡»òÉú³É¸Ã¾ÉID¶ÔÓ¦µÄĞÂID
+            // è·å–æˆ–ç”Ÿæˆè¯¥æ—§IDå¯¹åº”çš„æ–°ID
             if (!idMap.TryGetValue(oldID, out var newID))
             {
                 newID = _nextAvailableID++;
@@ -31,52 +30,52 @@ public class TimelineYAMLMerger
             return newID;
         }
 
-        // ¼ì²éÊÇ·ñÒÑ¾­´¦Àí¹ıÄ³¸ö×Ê²úµÄÄ³¸öID
+        // æ£€æŸ¥æ˜¯å¦å·²ç»å¤„ç†è¿‡æŸä¸ªèµ„äº§çš„æŸä¸ªID
         public bool HasMappingFor(string assetPath, long oldID)
         {
             return _fileToOldNewIDMap.TryGetValue(assetPath, out var idMap) && idMap.ContainsKey(oldID);
         }
 
-        // »ñÈ¡ËùÓĞ´¦Àí¹ıµÄ×Ê²úÂ·¾¶
+        // è·å–æ‰€æœ‰å¤„ç†è¿‡çš„èµ„äº§è·¯å¾„
         public IEnumerable<string> GetAllProcessedAssetPaths() => _fileToOldNewIDMap.Keys;
 
-        // ¸ù¾İ¾ÉID»ñÈ¡ĞÂID
+        // æ ¹æ®æ—§IDè·å–æ–°ID
         public long GetNewIDFromOld(string assetPath, long oldID)
         {
             if (_fileToOldNewIDMap.TryGetValue(assetPath, out var idMap) && idMap.TryGetValue(oldID, out var newID))
             {
                 return newID;
             }
-            return oldID; // Èç¹ûÕÒ²»µ½Ó³Éä£¬·µ»ØÔ­Öµ
+            return oldID; // å¦‚æœæ‰¾ä¸åˆ°æ˜ å°„ï¼Œè¿”å›åŸå€¼
         }
     }
 
-    [MenuItem("Assets/ºÏ²¢Timeline¼°ÆäËùÓĞÒÀÀµ (YAML)", false, 104)]
+    [MenuItem("Assets/åˆå¹¶TimelineåŠå…¶æ‰€æœ‰ä¾èµ– (YAML)", false, 104)]
     private static void MergeTimelineAndDependencies()
     {
         string assetPath = AssetDatabase.GetAssetPath(Selection.activeObject);
 
-        // »ñÈ¡Ô­ÎÄ¼şÃû£¨²»º¬À©Õ¹Ãû£©
+        // è·å–åŸæ–‡ä»¶åï¼ˆä¸å«æ‰©å±•åï¼‰
         string originalFileName = Path.GetFileNameWithoutExtension(assetPath);
 
-        // »ñÈ¡ËùÓĞÒÀÀµ£¬°üÀ¨¼ä½ÓºÍÖØ¸´µÄÒÀÀµ
+        // è·å–æ‰€æœ‰ä¾èµ–ï¼ŒåŒ…æ‹¬é—´æ¥å’Œé‡å¤çš„ä¾èµ–
         string[] allDependencies = AssetDatabase.GetDependencies(assetPath, true);
 
-        // ³õÊ¼»¯IDÓ³ÉäÆ÷
+        // åˆå§‹åŒ–IDæ˜ å°„å™¨
         FileIDMapper idMapper = new FileIDMapper();
 
-        // ¶ÁÈ¡Ö÷ÎÄ¼şµÄYAMLÍ·
+        // è¯»å–ä¸»æ–‡ä»¶çš„YAMLå¤´
         string mainFileHeader = ExtractYamlHeader(assetPath);
 
-        // ÓÃÓÚ´æ´¢ËùÓĞĞèÒªºÏ²¢µÄYAMLÄÚÈİ
+        // ç”¨äºå­˜å‚¨æ‰€æœ‰éœ€è¦åˆå¹¶çš„YAMLå†…å®¹
         List<string> allYamlBlocks = new List<string>();
-        // ÓÃÓÚ¼ÇÂ¼ÒÑ¾­´¦Àí¹ıµÄ×Ê²ú£¬±ÜÃâÖØ¸´£¨ÀıÈç¶à¸ö×Ê²úÒÀÀµÍ¬Ò»¸ö²ÄÖÊ£©
+        // ç”¨äºè®°å½•å·²ç»å¤„ç†è¿‡çš„èµ„äº§ï¼Œé¿å…é‡å¤ï¼ˆä¾‹å¦‚å¤šä¸ªèµ„äº§ä¾èµ–åŒä¸€ä¸ªæè´¨ï¼‰
         HashSet<string> processedAssets = new HashSet<string>();
 
-        // ¼ÇÂ¼Ö÷×Ê²úµÄfileID£¬ÓÃÓÚºóĞøĞŞ¸Äm_Name
+        // è®°å½•ä¸»èµ„äº§çš„fileIDï¼Œç”¨äºåç»­ä¿®æ”¹m_Name
         long mainAssetNewFileID = -1;
 
-        // µÚÒ»½×¶Î£ºÊÕ¼¯ËùÓĞ×Ê²úµÄfileIDÓ³Éä
+        // ç¬¬ä¸€é˜¶æ®µï¼šæ”¶é›†æ‰€æœ‰èµ„äº§çš„fileIDæ˜ å°„
         CollectFileIDMappings(assetPath, idMapper, processedAssets);
         foreach (var dependencyPath in allDependencies)
         {
@@ -85,9 +84,9 @@ public class TimelineYAMLMerger
             CollectFileIDMappings(dependencyPath, idMapper, processedAssets);
         }
 
-        processedAssets.Clear(); // Çå¿Õ£¬ÎªµÚ¶ş½×¶Î×ö×¼±¸
+        processedAssets.Clear(); // æ¸…ç©ºï¼Œä¸ºç¬¬äºŒé˜¶æ®µåšå‡†å¤‡
 
-        // µÚ¶ş½×¶Î£º´¦ÀíËùÓĞ×Ê²úÄÚÈİ
+        // ç¬¬äºŒé˜¶æ®µï¼šå¤„ç†æ‰€æœ‰èµ„äº§å†…å®¹
         ProcessAsset(assetPath, idMapper, allYamlBlocks, processedAssets, true, originalFileName, ref mainAssetNewFileID);
         foreach (var dependencyPath in allDependencies)
         {
@@ -96,22 +95,22 @@ public class TimelineYAMLMerger
             ProcessAsset(dependencyPath, idMapper, allYamlBlocks, processedAssets, false, originalFileName, ref mainAssetNewFileID);
         }
 
-        // 3. ½«ËùÓĞYAML¿éºÏ²¢ÎªÒ»¸ö×Ö·û´®£¬¼ÓÉÏÖ÷ÎÄ¼şµÄÍ·
+        // 3. å°†æ‰€æœ‰YAMLå—åˆå¹¶ä¸ºä¸€ä¸ªå­—ç¬¦ä¸²ï¼ŒåŠ ä¸Šä¸»æ–‡ä»¶çš„å¤´
         string combinedYaml = mainFileHeader + string.Join("\n", allYamlBlocks);
 
-        // 4. Ğ´ÈëĞÂÎÄ¼ş
+        // 4. å†™å…¥æ–°æ–‡ä»¶
         string originalDirectory = Path.GetDirectoryName(assetPath);
         string originalExtension = Path.GetExtension(assetPath);
         string newFileName = $"{originalFileName}_merged{originalExtension}";
         string newFilePath = Path.Combine(originalDirectory, newFileName);
 
-        // È·±£ÎÄ¼şÃû²»ÖØ¸´
+        // ç¡®ä¿æ–‡ä»¶åä¸é‡å¤
         newFilePath = AssetDatabase.GenerateUniqueAssetPath(newFilePath);
 
-        // »ñÈ¡ĞÂÎÄ¼şÃû£¨²»º¬À©Õ¹Ãû£©
+        // è·å–æ–°æ–‡ä»¶åï¼ˆä¸å«æ‰©å±•åï¼‰
         string newFileNameWithoutExt = Path.GetFileNameWithoutExtension(newFilePath);
 
-        // ¸üĞÂÖ÷×Ê²úµÄm_NameÒÔÆ¥ÅäĞÂÎÄ¼şÃû
+        // æ›´æ–°ä¸»èµ„äº§çš„m_Nameä»¥åŒ¹é…æ–°æ–‡ä»¶å
         if (mainAssetNewFileID != -1)
         {
             combinedYaml = UpdateMainAssetName(combinedYaml, mainAssetNewFileID, newFileNameWithoutExt);
@@ -121,23 +120,23 @@ public class TimelineYAMLMerger
 
         File.WriteAllText(newFilePath, combinedYaml);
 
-        // 5. Ë¢ĞÂÊı¾İ¿â²¢Ñ¡ÖĞĞÂÎÄ¼ş
+        // 5. åˆ·æ–°æ•°æ®åº“å¹¶é€‰ä¸­æ–°æ–‡ä»¶
         AssetDatabase.Refresh();
         EditorUtility.FocusProjectWindow();
         var newAsset = AssetDatabase.LoadAssetAtPath<Object>(newFilePath);
         Selection.activeObject = newAsset;
 
-        Debug.Log($"ºÏ²¢Íê³É£¡ĞÂÎÄ¼şÒÑ±£´æÖÁ: {newFilePath}");
+        Debug.Log($"åˆå¹¶å®Œæˆï¼æ–°æ–‡ä»¶å·²ä¿å­˜è‡³: {newFilePath}");
     }
 
-    [MenuItem("Assets/ºÏ²¢Timeline¼°ÆäËùÓĞÒÀÀµ (YAML)", true)]
+    [MenuItem("Assets/åˆå¹¶TimelineåŠå…¶æ‰€æœ‰ä¾èµ– (YAML)", true)]
     private static bool ValidateReplaceStringsInAsset()
     {
         return Selection.activeObject != null &&
                !AssetDatabase.IsValidFolder(AssetDatabase.GetAssetPath(Selection.activeObject));
     }
 
-    // µÚÒ»½×¶Î£ºÊÕ¼¯ËùÓĞ×Ê²úµÄfileIDÓ³Éä
+    // ç¬¬ä¸€é˜¶æ®µï¼šæ”¶é›†æ‰€æœ‰èµ„äº§çš„fileIDæ˜ å°„
     private static void CollectFileIDMappings(string assetPath, FileIDMapper idMapper, HashSet<string> processedAssets)
     {
         if (processedAssets.Contains(assetPath)) return;
@@ -145,19 +144,19 @@ public class TimelineYAMLMerger
         string fullPath = Path.GetFullPath(assetPath);
         string[] yamlLines = File.ReadAllLines(fullPath);
 
-        // ÕıÔò±í´ïÊ½Æ¥ÅäYAMLÎÄµµ¿ªÍ·ºÍfileIDĞĞ£¬ÀıÈç£º--- !u!114 &11400000
+        // æ­£åˆ™è¡¨è¾¾å¼åŒ¹é…YAMLæ–‡æ¡£å¼€å¤´å’ŒfileIDè¡Œï¼Œä¾‹å¦‚ï¼š--- !u!114 &11400000
         Regex headerRegex = new Regex(@"^--- !u!([0-9]+) &([0-9]+)$");
 
         foreach (var line in yamlLines)
         {
-            // ¼ì²éÊÇ·ñÊÇYAMLÎÄµµµÄ¿ªÊ¼
+            // æ£€æŸ¥æ˜¯å¦æ˜¯YAMLæ–‡æ¡£çš„å¼€å§‹
             if (line.StartsWith("---"))
             {
-                // ³¢ÊÔ´ÓÎÄµµÍ·ÖĞÌáÈ¡¾ÉµÄfileIDºÍÀàĞÍ
+                // å°è¯•ä»æ–‡æ¡£å¤´ä¸­æå–æ—§çš„fileIDå’Œç±»å‹
                 Match headerMatch = headerRegex.Match(line);
                 if (headerMatch.Success && long.TryParse(headerMatch.Groups[2].Value, out long oldID))
                 {
-                    // Ô¤ÏÈÉú³ÉĞÂID£¬µ«²»Á¢¼´Ê¹ÓÃ£¨ÔÚµÚ¶ş½×¶ÎÊ¹ÓÃ£©
+                    // é¢„å…ˆç”Ÿæˆæ–°IDï¼Œä½†ä¸ç«‹å³ä½¿ç”¨ï¼ˆåœ¨ç¬¬äºŒé˜¶æ®µä½¿ç”¨ï¼‰
                     idMapper.GetNewID(assetPath, oldID);
                 }
             }
@@ -166,7 +165,7 @@ public class TimelineYAMLMerger
         processedAssets.Add(assetPath);
     }
 
-    // ÌáÈ¡YAMLÎÄ¼şÍ·£¨---Ö®Ç°µÄĞĞ£©
+    // æå–YAMLæ–‡ä»¶å¤´ï¼ˆ---ä¹‹å‰çš„è¡Œï¼‰
     private static string ExtractYamlHeader(string assetPath)
     {
         string[] lines = File.ReadAllLines(assetPath);
@@ -183,13 +182,13 @@ public class TimelineYAMLMerger
         return header.ToString();
     }
 
-    // ¸üĞÂÖ÷×Ê²úµÄm_NameÒÔÆ¥ÅäĞÂÎÄ¼şÃû
+    // æ›´æ–°ä¸»èµ„äº§çš„m_Nameä»¥åŒ¹é…æ–°æ–‡ä»¶å
     private static string UpdateMainAssetName(string yamlContent, long mainAssetFileID, string newName)
     {
-        // ¹¹½¨Ö÷×Ê²úµÄfileIDĞĞÄ£Ê½
+        // æ„å»ºä¸»èµ„äº§çš„fileIDè¡Œæ¨¡å¼
         string mainAssetHeaderPattern = $"--- !u!114 &{mainAssetFileID}";
 
-        // ·Ö¸îYAMLÄÚÈİÎªĞĞ
+        // åˆ†å‰²YAMLå†…å®¹ä¸ºè¡Œ
         string[] lines = yamlContent.Split('\n');
         bool isInsideMainAsset = false;
         bool nameUpdated = false;
@@ -198,7 +197,7 @@ public class TimelineYAMLMerger
 
         foreach (string line in lines)
         {
-            // ¼ì²éÊÇ·ñ½øÈëÖ÷×Ê²ú¿é
+            // æ£€æŸ¥æ˜¯å¦è¿›å…¥ä¸»èµ„äº§å—
             if (line.StartsWith(mainAssetHeaderPattern))
             {
                 isInsideMainAsset = true;
@@ -206,7 +205,7 @@ public class TimelineYAMLMerger
                 continue;
             }
 
-            // ¼ì²éÊÇ·ñÀë¿ªÖ÷×Ê²ú¿é£¨½øÈëÏÂÒ»¸ö×Ê²ú¿é£©
+            // æ£€æŸ¥æ˜¯å¦ç¦»å¼€ä¸»èµ„äº§å—ï¼ˆè¿›å…¥ä¸‹ä¸€ä¸ªèµ„äº§å—ï¼‰
             if (isInsideMainAsset && line.StartsWith("--- !u!"))
             {
                 isInsideMainAsset = false;
@@ -214,10 +213,10 @@ public class TimelineYAMLMerger
                 continue;
             }
 
-            // Èç¹ûÔÚÖ÷×Ê²ú¿éÄÚÇÒÕÒµ½m_NameĞĞ£¬Ôò¸üĞÂËü
+            // å¦‚æœåœ¨ä¸»èµ„äº§å—å†…ä¸”æ‰¾åˆ°m_Nameè¡Œï¼Œåˆ™æ›´æ–°å®ƒ
             if (isInsideMainAsset && !nameUpdated && line.TrimStart().StartsWith("m_Name:"))
             {
-                // ±£ÁôËõ½ø£¬Ö»¸üĞÂÃû³Æ
+                // ä¿ç•™ç¼©è¿›ï¼Œåªæ›´æ–°åç§°
                 int indentLength = line.IndexOf("m_Name:");
                 string indent = new string(' ', indentLength);
                 result.AppendLine($"{indent}m_Name: {newName}");
@@ -241,33 +240,33 @@ public class TimelineYAMLMerger
 
         List<string> currentBlock = new List<string>();
         bool isInsideAsset = false;
-        bool skipHeader = !isMainAsset; // ·ÇÖ÷×Ê²úÌø¹ıYAMLÍ·
+        bool skipHeader = !isMainAsset; // éä¸»èµ„äº§è·³è¿‡YAMLå¤´
 
-        // ÓÃÓÚ¼ÇÂ¼µ±Ç°ÕıÔÚ´¦ÀíµÄYAMLÎÄµµµÄÔ­Ê¼fileID
+        // ç”¨äºè®°å½•å½“å‰æ­£åœ¨å¤„ç†çš„YAMLæ–‡æ¡£çš„åŸå§‹fileID
         long currentOldFileID = -1;
         long currentNewFileID = -1;
 
-        // ÕıÔò±í´ïÊ½Æ¥ÅäYAMLÎÄµµ¿ªÍ·ºÍfileIDĞĞ£¬ÀıÈç£º--- !u!114 &11400000
+        // æ­£åˆ™è¡¨è¾¾å¼åŒ¹é…YAMLæ–‡æ¡£å¼€å¤´å’ŒfileIDè¡Œï¼Œä¾‹å¦‚ï¼š--- !u!114 &11400000
         Regex headerRegex = new Regex(@"^--- !u!([0-9]+) &([0-9]+)$");
-        // ÕıÔò±í´ïÊ½Æ¥Åä¼òµ¥ÒıÓÃ£º{fileID: 12345678}
+        // æ­£åˆ™è¡¨è¾¾å¼åŒ¹é…ç®€å•å¼•ç”¨ï¼š{fileID: 12345678}
         Regex simpleRefRegex = new Regex(@"{fileID:\s*([0-9]+)\s*}");
-        // ÕıÔò±í´ïÊ½Æ¥Åä¸´ÔÓÒıÓÃ£º{fileID: 7400000, guid: aa54d0da6b3cc424dbdb7130447a5662, type: 2}
+        // æ­£åˆ™è¡¨è¾¾å¼åŒ¹é…å¤æ‚å¼•ç”¨ï¼š{fileID: 7400000, guid: aa54d0da6b3cc424dbdb7130447a5662, type: 2}
         Regex complexRefRegex = new Regex(@"{fileID:\s*([0-9]+)\s*,\s*guid:\s*([0-9a-fA-F]+)\s*,\s*type:\s*([0-9]+)\s*}");
-        // ÕıÔò±í´ïÊ½Æ¥Åäm_ScriptĞĞ
+        // æ­£åˆ™è¡¨è¾¾å¼åŒ¹é…m_Scriptè¡Œ
         Regex mScriptRegex = new Regex(@"m_Script:\s*{fileID:\s*([0-9]+)\s*(,\s*guid:\s*[0-9a-fA-F]+\s*,\s*type:\s*[0-9]+\s*)?}");
 
         foreach (var line in yamlLines)
         {
-            // Ìø¹ı·ÇÖ÷×Ê²úµÄYAMLÍ·
+            // è·³è¿‡éä¸»èµ„äº§çš„YAMLå¤´
             if (skipHeader && !line.StartsWith("---"))
                 continue;
 
-            skipHeader = false; // Óöµ½µÚÒ»¸ö---ºó¾Í²»ÔÙÌø¹ıÍ·
+            skipHeader = false; // é‡åˆ°ç¬¬ä¸€ä¸ª---åå°±ä¸å†è·³è¿‡å¤´
 
-            // ¼ì²éÊÇ·ñÊÇYAMLÎÄµµµÄ¿ªÊ¼
+            // æ£€æŸ¥æ˜¯å¦æ˜¯YAMLæ–‡æ¡£çš„å¼€å§‹
             if (line.StartsWith("---"))
             {
-                // Èç¹ûÓöµ½Ò»¸öĞÂµÄÎÄµµ¿ªÍ·£¬ÇÒµ±Ç°ÒÑ¾­ÓĞÒ»¸öÕıÔÚ´¦ÀíµÄ¿é£¬ÔòÏÈ´¦Àí²¢±£´æÇ°Ò»¸ö¿é
+                // å¦‚æœé‡åˆ°ä¸€ä¸ªæ–°çš„æ–‡æ¡£å¼€å¤´ï¼Œä¸”å½“å‰å·²ç»æœ‰ä¸€ä¸ªæ­£åœ¨å¤„ç†çš„å—ï¼Œåˆ™å…ˆå¤„ç†å¹¶ä¿å­˜å‰ä¸€ä¸ªå—
                 if (isInsideAsset && currentBlock.Count > 0)
                 {
                     string processedBlock = ProcessYamlBlock(currentBlock, assetPath, idMapper, simpleRefRegex, complexRefRegex, mScriptRegex);
@@ -275,21 +274,21 @@ public class TimelineYAMLMerger
                     currentBlock.Clear();
                 }
 
-                // ¿ªÊ¼Ò»¸öĞÂµÄYAMLÎÄµµ¿é
+                // å¼€å§‹ä¸€ä¸ªæ–°çš„YAMLæ–‡æ¡£å—
                 isInsideAsset = true;
 
-                // ³¢ÊÔ´ÓÎÄµµÍ·ÖĞÌáÈ¡¾ÉµÄfileIDºÍÀàĞÍ
+                // å°è¯•ä»æ–‡æ¡£å¤´ä¸­æå–æ—§çš„fileIDå’Œç±»å‹
                 Match headerMatch = headerRegex.Match(line);
                 if (headerMatch.Success && long.TryParse(headerMatch.Groups[2].Value, out long oldID))
                 {
                     currentOldFileID = oldID;
-                    // »ñÈ¡Ó³ÉäµÄĞÂID
+                    // è·å–æ˜ å°„çš„æ–°ID
                     currentNewFileID = idMapper.GetNewIDFromOld(assetPath, currentOldFileID);
-                    // ±£Áô!u!²¿·Ö£¬Ö»Ìæ»»&ºóÃæµÄfileID
+                    // ä¿ç•™!u!éƒ¨åˆ†ï¼Œåªæ›¿æ¢&åé¢çš„fileID
                     string newLine = $"--- !u!{headerMatch.Groups[1].Value} &{currentNewFileID}";
                     currentBlock.Add(newLine);
 
-                    // Èç¹ûÊÇÖ÷×Ê²ú£¬¼ÇÂ¼ÆäĞÂfileID
+                    // å¦‚æœæ˜¯ä¸»èµ„äº§ï¼Œè®°å½•å…¶æ–°fileID
                     if (isMainAsset && mainAssetNewFileID == -1)
                     {
                         mainAssetNewFileID = currentNewFileID;
@@ -297,68 +296,68 @@ public class TimelineYAMLMerger
                 }
                 else
                 {
-                    // Èç¹ûÃ»ÓĞÆ¥Åäµ½fileID£¬Ö±½ÓÌí¼ÓÔ­ĞĞ
+                    // å¦‚æœæ²¡æœ‰åŒ¹é…åˆ°fileIDï¼Œç›´æ¥æ·»åŠ åŸè¡Œ
                     currentBlock.Add(line);
-                    currentOldFileID = -1; // ÎŞĞ§»òÃ»ÓĞfileID
+                    currentOldFileID = -1; // æ— æ•ˆæˆ–æ²¡æœ‰fileID
                     currentNewFileID = -1;
                 }
             }
             else if (isInsideAsset)
             {
-                // ´¦ÀíÎÄµµÄÚ²¿µÄĞĞ
+                // å¤„ç†æ–‡æ¡£å†…éƒ¨çš„è¡Œ
                 if (!string.IsNullOrEmpty(line) && currentOldFileID != -1)
                 {
                     string processedLine = line;
 
-                    // ¼ì²éÊÇ·ñÊÇm_ScriptĞĞ£¬Èç¹ûÊÇÔòÌø¹ı´¦Àí
+                    // æ£€æŸ¥æ˜¯å¦æ˜¯m_Scriptè¡Œï¼Œå¦‚æœæ˜¯åˆ™è·³è¿‡å¤„ç†
                     if (mScriptRegex.IsMatch(processedLine))
                     {
                         currentBlock.Add(processedLine);
                         continue;
                     }
 
-                    // 1. ´¦Àí¸´ÔÓÒıÓÃ£¨Íâ²¿ÎÄ¼şÒıÓÃ£©
+                    // 1. å¤„ç†å¤æ‚å¼•ç”¨ï¼ˆå¤–éƒ¨æ–‡ä»¶å¼•ç”¨ï¼‰
                     processedLine = complexRefRegex.Replace(processedLine, match =>
                     {
                         if (long.TryParse(match.Groups[1].Value, out long referencedOldID))
                         {
                             string guid = match.Groups[2].Value;
 
-                            // ²éÕÒGUID¶ÔÓ¦µÄ×Ê²úÂ·¾¶
+                            // æŸ¥æ‰¾GUIDå¯¹åº”çš„èµ„äº§è·¯å¾„
                             string refAssetPath = AssetDatabase.GUIDToAssetPath(guid);
                             if (!string.IsNullOrEmpty(refAssetPath) && refAssetPath != assetPath)
                             {
-                                // ÕâÊÇÒ»¸öÍâ²¿ÒıÓÃ£¬ÎÒÃÇĞèÒª»ñÈ¡ËüµÄĞÂID
+                                // è¿™æ˜¯ä¸€ä¸ªå¤–éƒ¨å¼•ç”¨ï¼Œæˆ‘ä»¬éœ€è¦è·å–å®ƒçš„æ–°ID
                                 long referencedNewID = idMapper.GetNewIDFromOld(refAssetPath, referencedOldID);
                                 return $"{{fileID: {referencedNewID}}}";
                             }
                             else if (!string.IsNullOrEmpty(refAssetPath) && refAssetPath == assetPath)
                             {
-                                // ÕâÊÇ¶ÔÍ¬Ò»ÎÄ¼şµÄÒıÓÃ
+                                // è¿™æ˜¯å¯¹åŒä¸€æ–‡ä»¶çš„å¼•ç”¨
                                 long referencedNewID = idMapper.GetNewIDFromOld(assetPath, referencedOldID);
                                 return $"{{fileID: {referencedNewID}}}";
                             }
                         }
-                        return match.Value; // Èç¹û½âÎöÊ§°Ü»òÎŞĞèÌæ»»£¬·µ»ØÔ­Öµ
+                        return match.Value; // å¦‚æœè§£æå¤±è´¥æˆ–æ— éœ€æ›¿æ¢ï¼Œè¿”å›åŸå€¼
                     });
 
-                    // 2. ´¦Àí¼òµ¥ÒıÓÃ£¨Í¬Ò»ÎÄ¼şÄÚµÄÒıÓÃ£©
+                    // 2. å¤„ç†ç®€å•å¼•ç”¨ï¼ˆåŒä¸€æ–‡ä»¶å†…çš„å¼•ç”¨ï¼‰
                     processedLine = simpleRefRegex.Replace(processedLine, match =>
                     {
                         if (long.TryParse(match.Groups[1].Value, out long referencedOldID))
                         {
-                            // Ìø¹ıfileID: 0£¨¿ÕÒıÓÃ£©
+                            // è·³è¿‡fileID: 0ï¼ˆç©ºå¼•ç”¨ï¼‰
                             if (referencedOldID == 0)
                                 return match.Value;
 
-                            // ¼ì²éÊÇ·ñÔÚÍ¬Ò»ÎÄ¼şÖĞ
+                            // æ£€æŸ¥æ˜¯å¦åœ¨åŒä¸€æ–‡ä»¶ä¸­
                             long referencedNewID = idMapper.GetNewIDFromOld(assetPath, referencedOldID);
                             if (referencedNewID != referencedOldID)
                             {
                                 return $"{{fileID: {referencedNewID}}}";
                             }
                         }
-                        return match.Value; // Èç¹û½âÎöÊ§°Ü»òÎŞĞèÌæ»»£¬·µ»ØÔ­Öµ
+                        return match.Value; // å¦‚æœè§£æå¤±è´¥æˆ–æ— éœ€æ›¿æ¢ï¼Œè¿”å›åŸå€¼
                     });
 
                     currentBlock.Add(processedLine);
@@ -370,7 +369,7 @@ public class TimelineYAMLMerger
             }
         }
 
-        // ´¦ÀíÎÄ¼şÄ©Î²µÄ×îºóÒ»¸ö¿é
+        // å¤„ç†æ–‡ä»¶æœ«å°¾çš„æœ€åä¸€ä¸ªå—
         if (isInsideAsset && currentBlock.Count > 0)
         {
             string processedBlock = ProcessYamlBlock(currentBlock, assetPath, idMapper, simpleRefRegex, complexRefRegex, mScriptRegex);
@@ -382,8 +381,8 @@ public class TimelineYAMLMerger
 
     private static string ProcessYamlBlock(List<string> yamlBlock, string assetPath, FileIDMapper idMapper, Regex simpleRefRegex, Regex complexRefRegex, Regex mScriptRegex)
     {
-        // Õâ¸öº¯ÊıÏÖÔÚÒÑ¾­ÔÚProcessAssetÖĞÖğĞĞ´¦ÀíÊ±Íê³ÉÁË´ó²¿·Ö¹¤×÷
-        // ÕâÀïÖ÷ÒªÆğÒ»¸ö¶µµ×ºÍ¸ñÊ½»¯µÄ×÷ÓÃ£¬È·±£¿éÒÔ»»ĞĞ·û½áÊø
+        // è¿™ä¸ªå‡½æ•°ç°åœ¨å·²ç»åœ¨ProcessAssetä¸­é€è¡Œå¤„ç†æ—¶å®Œæˆäº†å¤§éƒ¨åˆ†å·¥ä½œ
+        // è¿™é‡Œä¸»è¦èµ·ä¸€ä¸ªå…œåº•å’Œæ ¼å¼åŒ–çš„ä½œç”¨ï¼Œç¡®ä¿å—ä»¥æ¢è¡Œç¬¦ç»“æŸ
         return string.Join("\n", yamlBlock);
     }
 

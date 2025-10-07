@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.IO;
 using UnityEditor;
-using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.Playables;
 
@@ -10,29 +9,29 @@ public class PlayableDirectorCleaner : EditorWindow
     private static GameObject targetPrefab;
     private static string originalPrefabPath;
 
-    [MenuItem("Assets/ÇåÀíPlayableDirectorÒıÓÃ", false, 105)]
+    [MenuItem("Assets/æ¸…ç†PlayableDirectorå¼•ç”¨", false, 105)]
     private static void CleanPlayableDirectorReferences()
     {
-        // »ñÈ¡Ñ¡ÖĞµÄPrefab
+        // è·å–é€‰ä¸­çš„Prefab
         targetPrefab = Selection.activeGameObject;
         if (targetPrefab == null)
         {
-            EditorUtility.DisplayDialog("´íÎó", "ÇëÑ¡ÔñÒ»¸öPrefab×Ê²ú", "È·¶¨");
+            EditorUtility.DisplayDialog("é”™è¯¯", "è¯·é€‰æ‹©ä¸€ä¸ªPrefabèµ„äº§", "ç¡®å®š");
             return;
         }
 
         originalPrefabPath = AssetDatabase.GetAssetPath(targetPrefab);
         if (string.IsNullOrEmpty(originalPrefabPath))
         {
-            EditorUtility.DisplayDialog("´íÎó", "Ñ¡ÖĞµÄ¶ÔÏó²»ÊÇPrefab×Ê²ú", "È·¶¨");
+            EditorUtility.DisplayDialog("é”™è¯¯", "é€‰ä¸­çš„å¯¹è±¡ä¸æ˜¯Prefabèµ„äº§", "ç¡®å®š");
             return;
         }
 
-        // ÏÔÊ¾±£´æÑ¡Ïî´°¿Ú
+        // æ˜¾ç¤ºä¿å­˜é€‰é¡¹çª—å£
         ShowSaveOptionWindow();
     }
 
-    [MenuItem("Assets/ÇåÀíPlayableDirectorÒıÓÃ", true)]
+    [MenuItem("Assets/æ¸…ç†PlayableDirectorå¼•ç”¨", true)]
     private static bool Validate()
     {
         return Selection.activeObject != null &&
@@ -41,15 +40,15 @@ public class PlayableDirectorCleaner : EditorWindow
 
     private static void ShowSaveOptionWindow()
     {
-        if (EditorUtility.DisplayDialog("ÇåÀíÑ¡Ïî",
-            "ÇëÑ¡Ôñ±£´æ·½Ê½", "Ğ´ÈëÔ´ÎÄ¼ş", "ĞÂ½¨ÎÄ¼ş±£´æ"))
+        if (EditorUtility.DisplayDialog("æ¸…ç†é€‰é¡¹",
+            "è¯·é€‰æ‹©ä¿å­˜æ–¹å¼", "å†™å…¥æºæ–‡ä»¶", "æ–°å»ºæ–‡ä»¶ä¿å­˜"))
         {
-            // Ğ´ÈëÔ´ÎÄ¼ş
+            // å†™å…¥æºæ–‡ä»¶
             CleanAndSavePrefab(originalPrefabPath);
         }
         else
         {
-            // ĞÂ½¨ÎÄ¼ş±£´æ
+            // æ–°å»ºæ–‡ä»¶ä¿å­˜
             string newPath = GetNewPrefabPath(originalPrefabPath);
             CleanAndSavePrefab(newPath);
         }
@@ -64,22 +63,22 @@ public class PlayableDirectorCleaner : EditorWindow
         string newFileName = fileName + "_Cleaned";
         string newPath = Path.Combine(directory, newFileName + extension);
 
-        // È·±£Â·¾¶Î¨Ò»
+        // ç¡®ä¿è·¯å¾„å”¯ä¸€
         return AssetDatabase.GenerateUniqueAssetPath(newPath);
     }
 
     private static void CleanAndSavePrefab(string savePath)
     {
-        Debug.Log($"[PlayableDirectorÇåÀí] ¿ªÊ¼ÇåÀí: {originalPrefabPath}");
+        Debug.Log($"[PlayableDirectoræ¸…ç†] å¼€å§‹æ¸…ç†: {originalPrefabPath}");
 
-        // ¼ÓÔØPrefabÊµÀı½øĞĞ±à¼­
+        // åŠ è½½Prefabå®ä¾‹è¿›è¡Œç¼–è¾‘
         GameObject prefabInstance = PrefabUtility.LoadPrefabContents(originalPrefabPath);
 
         bool cleaned = false;
         int directorsCleaned = 0;
         PlayableDirector[] directors = prefabInstance.GetComponentsInChildren<PlayableDirector>(true);
 
-        Debug.Log($"[PlayableDirectorÇåÀí] ÕÒµ½ {directors.Length} ¸öPlayableDirector×é¼ş");
+        Debug.Log($"[PlayableDirectoræ¸…ç†] æ‰¾åˆ° {directors.Length} ä¸ªPlayableDirectorç»„ä»¶");
 
         foreach (PlayableDirector director in directors)
         {
@@ -87,33 +86,33 @@ public class PlayableDirectorCleaner : EditorWindow
             {
                 cleaned = true;
                 directorsCleaned++;
-                Debug.Log($"[PlayableDirectorÇåÀí] ÒÑÇåÀíDirector: {director.gameObject.name}", director);
+                Debug.Log($"[PlayableDirectoræ¸…ç†] å·²æ¸…ç†Director: {director.gameObject.name}", director);
             }
         }
 
         if (cleaned)
         {
-            // ±£´æPrefab
+            // ä¿å­˜Prefab
             PrefabUtility.SaveAsPrefabAsset(prefabInstance, savePath, out bool success);
 
             if (success)
             {
-                Debug.Log($"[PlayableDirectorÇåÀí] ³É¹¦ÇåÀí²¢±£´æµ½: {savePath}\nÇåÀíÁË {directorsCleaned} ¸öDirectorµÄÎŞĞ§ÒıÓÃ");
-                EditorUtility.DisplayDialog("³É¹¦", $"PlayableDirectorÒıÓÃÒÑÇåÀí²¢±£´æµ½: {savePath}\nÇåÀíÁË {directorsCleaned} ¸öDirectorµÄÎŞĞ§ÒıÓÃ", "È·¶¨");
+                Debug.Log($"[PlayableDirectoræ¸…ç†] æˆåŠŸæ¸…ç†å¹¶ä¿å­˜åˆ°: {savePath}\næ¸…ç†äº† {directorsCleaned} ä¸ªDirectorçš„æ— æ•ˆå¼•ç”¨");
+                EditorUtility.DisplayDialog("æˆåŠŸ", $"PlayableDirectorå¼•ç”¨å·²æ¸…ç†å¹¶ä¿å­˜åˆ°: {savePath}\næ¸…ç†äº† {directorsCleaned} ä¸ªDirectorçš„æ— æ•ˆå¼•ç”¨", "ç¡®å®š");
             }
             else
             {
-                Debug.LogError("[PlayableDirectorÇåÀí] ±£´æPrefabÊ§°Ü");
-                EditorUtility.DisplayDialog("´íÎó", "±£´æPrefabÊ§°Ü", "È·¶¨");
+                Debug.LogError("[PlayableDirectoræ¸…ç†] ä¿å­˜Prefabå¤±è´¥");
+                EditorUtility.DisplayDialog("é”™è¯¯", "ä¿å­˜Prefabå¤±è´¥", "ç¡®å®š");
             }
         }
         else
         {
-            Debug.Log("[PlayableDirectorÇåÀí] Î´ÕÒµ½ĞèÒªÇåÀíµÄPlayableDirectorÒıÓÃ");
-            EditorUtility.DisplayDialog("ĞÅÏ¢", "Î´ÕÒµ½ĞèÒªÇåÀíµÄPlayableDirectorÒıÓÃ", "È·¶¨");
+            Debug.Log("[PlayableDirectoræ¸…ç†] æœªæ‰¾åˆ°éœ€è¦æ¸…ç†çš„PlayableDirectorå¼•ç”¨");
+            EditorUtility.DisplayDialog("ä¿¡æ¯", "æœªæ‰¾åˆ°éœ€è¦æ¸…ç†çš„PlayableDirectorå¼•ç”¨", "ç¡®å®š");
         }
 
-        // Ğ¶ÔØPrefabÊµÀı
+        // å¸è½½Prefabå®ä¾‹
         PrefabUtility.UnloadPrefabContents(prefabInstance);
     }
 
@@ -122,19 +121,19 @@ public class PlayableDirectorCleaner : EditorWindow
         bool modified = false;
         SerializedObject so = new SerializedObject(director);
 
-        // »ñÈ¡TimelineAssetÒıÓÃ
+        // è·å–TimelineAssetå¼•ç”¨
         PlayableAsset timelineAsset = director.playableAsset;
         SerializedProperty playableAssetProp = so.FindProperty("m_PlayableAsset");
 
         if (timelineAsset == null)
         {
-            Debug.LogWarning($"[PlayableDirectorÇåÀí] Director {director.gameObject.name} Ã»ÓĞÉèÖÃTimelineAsset£¬½«Çå¿ÕËùÓĞ°ó¶¨", director);
+            Debug.LogWarning($"[PlayableDirectoræ¸…ç†] Director {director.gameObject.name} æ²¡æœ‰è®¾ç½®TimelineAssetï¼Œå°†æ¸…ç©ºæ‰€æœ‰ç»‘å®š", director);
 
-            // ÇåÀíËùÓĞ°ó¶¨ºÍ±©Â¶ÒıÓÃ
+            // æ¸…ç†æ‰€æœ‰ç»‘å®šå’Œæš´éœ²å¼•ç”¨
             SerializedProperty sceneBindingsProp2 = so.FindProperty("m_SceneBindings");
             if (sceneBindingsProp2 != null && sceneBindingsProp2.isArray && sceneBindingsProp2.arraySize > 0)
             {
-                Debug.Log($"[PlayableDirectorÇåÀí] Çå¿Õ {sceneBindingsProp2.arraySize} ¸ö³¡¾°°ó¶¨");
+                Debug.Log($"[PlayableDirectoræ¸…ç†] æ¸…ç©º {sceneBindingsProp2.arraySize} ä¸ªåœºæ™¯ç»‘å®š");
                 sceneBindingsProp2.ClearArray();
                 modified = true;
             }
@@ -145,7 +144,7 @@ public class PlayableDirectorCleaner : EditorWindow
                 SerializedProperty referencesProp = exposedReferencesProp2.FindPropertyRelative("m_References");
                 if (referencesProp != null && referencesProp.isArray && referencesProp.arraySize > 0)
                 {
-                    Debug.Log($"[PlayableDirectorÇåÀí] Çå¿Õ {referencesProp.arraySize} ¸ö±©Â¶ÒıÓÃ");
+                    Debug.Log($"[PlayableDirectoræ¸…ç†] æ¸…ç©º {referencesProp.arraySize} ä¸ªæš´éœ²å¼•ç”¨");
                     referencesProp.ClearArray();
                     modified = true;
                 }
@@ -159,9 +158,9 @@ public class PlayableDirectorCleaner : EditorWindow
             return modified;
         }
 
-        Debug.Log($"[PlayableDirectorÇåÀí] ´¦ÀíDirector: {director.gameObject.name}, Timeline: {timelineAsset.name}");
+        Debug.Log($"[PlayableDirectoræ¸…ç†] å¤„ç†Director: {director.gameObject.name}, Timeline: {timelineAsset.name}");
 
-        // »ñÈ¡µ±Ç°TimelineAssetµÄËùÓĞ¹ìµÀ°ó¶¨ĞÅÏ¢
+        // è·å–å½“å‰TimelineAssetçš„æ‰€æœ‰è½¨é“ç»‘å®šä¿¡æ¯
         Dictionary<Object, bool> validBindings = new Dictionary<Object, bool>();
         SerializedObject timelineSo = new SerializedObject(timelineAsset);
         SerializedProperty tracksProp = timelineSo.FindProperty("m_Tracks");
@@ -179,9 +178,9 @@ public class PlayableDirectorCleaner : EditorWindow
             }
         }
 
-        Debug.Log($"[PlayableDirectorÇåÀí] Timeline {timelineAsset.name} °üº¬ {validBindings.Count} ¸öÓĞĞ§¹ìµÀ");
+        Debug.Log($"[PlayableDirectoræ¸…ç†] Timeline {timelineAsset.name} åŒ…å« {validBindings.Count} ä¸ªæœ‰æ•ˆè½¨é“");
 
-        // ÇåÀím_SceneBindings
+        // æ¸…ç†m_SceneBindings
         SerializedProperty sceneBindingsProp = so.FindProperty("m_SceneBindings");
         if (sceneBindingsProp != null && sceneBindingsProp.isArray)
         {
@@ -196,7 +195,7 @@ public class PlayableDirectorCleaner : EditorWindow
 
                 if (keyObject == null)
                 {
-                    Debug.Log($"[PlayableDirectorÇåÀí: {i}");
+                    Debug.Log($"[PlayableDirectoræ¸…ç†: {i}");
                     sceneBindingsProp.DeleteArrayElementAtIndex(i);
                     modified = true;
                 }
@@ -204,11 +203,11 @@ public class PlayableDirectorCleaner : EditorWindow
 
             if (modified)
             {
-                Debug.Log($"[PlayableDirectorÇåÀí] ³¡¾°°ó¶¨ÇåÀí: {initialCount} ¡ú {sceneBindingsProp.arraySize}");
+                Debug.Log($"[PlayableDirectoræ¸…ç†] åœºæ™¯ç»‘å®šæ¸…ç†: {initialCount} â†’ {sceneBindingsProp.arraySize}");
             }
         }
 
-        // ÇåÀím_ExposedReferences
+        // æ¸…ç†m_ExposedReferences
         SerializedProperty exposedReferencesProp = so.FindProperty("m_ExposedReferences");
         if (exposedReferencesProp != null)
         {
@@ -222,13 +221,13 @@ public class PlayableDirectorCleaner : EditorWindow
                 {
                     SerializedProperty referenceProp = referencesProp.GetArrayElementAtIndex(i);
 
-                    // ¼ì²éÁ½ÖÖĞòÁĞ»¯¸ñÊ½£º
+                    // æ£€æŸ¥ä¸¤ç§åºåˆ—åŒ–æ ¼å¼ï¼š
                     // 1. - fileID: {fileID: 0}
                     // 2. - 903425b99fe89ab4ea3d8f4394881b4a: {fileID: 0}
 
                     bool shouldRemove = false;
 
-                    // ¼ì²éµÚÒ»ÖÖ¸ñÊ½£ºÖ±½Ó¼ì²éfileIDÊôĞÔ
+                    // æ£€æŸ¥ç¬¬ä¸€ç§æ ¼å¼ï¼šç›´æ¥æ£€æŸ¥fileIDå±æ€§
                     SerializedProperty fileIDProp = referenceProp.FindPropertyRelative("fileID");
                     if (fileIDProp != null)
                     {
@@ -240,7 +239,7 @@ public class PlayableDirectorCleaner : EditorWindow
                     }
                     else
                     {
-                        // ¼ì²éµÚ¶şÖÖ¸ñÊ½£º±éÀúËùÓĞ×ÓÊôĞÔ
+                        // æ£€æŸ¥ç¬¬äºŒç§æ ¼å¼ï¼šéå†æ‰€æœ‰å­å±æ€§
                         var iterator = referenceProp.Copy();
                         var endProperty = referenceProp.GetEndProperty();
 
@@ -281,7 +280,7 @@ public class PlayableDirectorCleaner : EditorWindow
 
                 if (removedCount > 0)
                 {
-                    Debug.Log($"[PlayableDirectorÇåÀí] ÒÆ³ı {removedCount} ¸ö¿Õ±©Â¶ÒıÓÃ");
+                    Debug.Log($"[PlayableDirectoræ¸…ç†] ç§»é™¤ {removedCount} ä¸ªç©ºæš´éœ²å¼•ç”¨");
                 }
             }
         }
@@ -289,11 +288,11 @@ public class PlayableDirectorCleaner : EditorWindow
         if (modified)
         {
             so.ApplyModifiedProperties();
-            Debug.Log($"[PlayableDirectorÇåÀí] Director {director.gameObject.name} ÒıÓÃÇåÀíÍê³É", director);
+            Debug.Log($"[PlayableDirectoræ¸…ç†] Director {director.gameObject.name} å¼•ç”¨æ¸…ç†å®Œæˆ", director);
         }
         else
         {
-            Debug.Log($"[PlayableDirectorÇåÀí] Director {director.gameObject.name} ÎŞĞèÇåÀí", director);
+            Debug.Log($"[PlayableDirectoræ¸…ç†] Director {director.gameObject.name} æ— éœ€æ¸…ç†", director);
         }
 
         return modified;

@@ -7,30 +7,30 @@ using System.Linq;
 
 public class AssetReferenceChecker : EditorWindow
 {
-    private string targetGuid = "";
-    private string targetPath = "";
+    private string targetGuid = string.Empty;
+    private string targetPath = string.Empty;
     private int referenceCount = 0;
     private List<string> referencingAssets = new List<string>();
     private Vector2 scrollPosition;
     private bool isSearching = false;
     private double searchStartTime;
-    private string newGuid = "";
+    private string newGuid = string.Empty;
     private Object targetAsset;
 
     [MenuItem("Tools/Asset Reference Checker")]
     public static void ShowWindow()
     {
-        GetWindow<AssetReferenceChecker>("×ÊÔ´ÒıÓÃ²é¿´Æ÷");
+        GetWindow<AssetReferenceChecker>("èµ„æºå¼•ç”¨æŸ¥çœ‹å™¨");
     }
 
-    [MenuItem("Assets/¼ì²é×ÊÔ´ÒıÓÃ", false, 100)]
+    [MenuItem("Assets/æ£€æŸ¥èµ„æºå¼•ç”¨", false, 100)]
     private static void CheckAssetReferences()
     {
         ShowWindow();
         GetWindow<AssetReferenceChecker>().FindReferencesForSelectedAsset();
     }
 
-    [MenuItem("Assets/¼ì²é×ÊÔ´ÒıÓÃ", true)]
+    [MenuItem("Assets/æ£€æŸ¥èµ„æºå¼•ç”¨", true)]
     private static bool ValidateReplaceStringsInAsset()
     {
         return Selection.activeObject != null &&
@@ -45,29 +45,29 @@ public class AssetReferenceChecker : EditorWindow
         targetGuid = AssetDatabase.AssetPathToGUID(path);
         targetPath = path;
         targetAsset = Selection.activeObject;
-        // Ñ¡ÔñĞÂ×Ê²úÊ±£¬ÖØÖÃÒıÓÃÏÔÊ¾
+        // é€‰æ‹©æ–°èµ„äº§æ—¶ï¼Œé‡ç½®å¼•ç”¨æ˜¾ç¤º
         ResetReferenceDisplay();
-        // Èç¹ûÄãÏ£ÍûÓÒ¼ü²Ëµ¥Ñ¡Ôñºó×Ô¶¯¿ªÊ¼¼ì²é£¬ÔòÈ¡ÏûÏÂÒ»ĞĞµÄ×¢ÊÍ
+        // å¦‚æœä½ å¸Œæœ›å³é”®èœå•é€‰æ‹©åè‡ªåŠ¨å¼€å§‹æ£€æŸ¥ï¼Œåˆ™å–æ¶ˆä¸‹ä¸€è¡Œçš„æ³¨é‡Š
         // FindReferences(); 
     }
 
-    // ĞÂÔö·½·¨£ºÖØÖÃÒıÓÃÏà¹ØµÄÏÔÊ¾
+    // æ–°å¢æ–¹æ³•ï¼šé‡ç½®å¼•ç”¨ç›¸å…³çš„æ˜¾ç¤º
     private void ResetReferenceDisplay()
     {
         referenceCount = 0;
         referencingAssets.Clear();
         isSearching = false;
-        newGuid = ""; // Çå¿ÕÖ®Ç°Éú³ÉµÄĞÂGUIDÊäÈë
+        newGuid = ""; // æ¸…ç©ºä¹‹å‰ç”Ÿæˆçš„æ–°GUIDè¾“å…¥
     }
 
     private void OnGUI()
     {
-        GUILayout.Label("×ÊÔ´ÒıÓÃ¼ì²éÆ÷", EditorStyles.boldLabel);
+        GUILayout.Label("èµ„æºå¼•ç”¨æ£€æŸ¥å™¨", EditorStyles.boldLabel);
 
-        // Ê¹ÓÃ ObjectField Ìæ´úÎÄ±¾×Ö¶Î£¬Ö§³ÖÍÏ×§ºÍÑ¡Ôñ
+        // ä½¿ç”¨ ObjectField æ›¿ä»£æ–‡æœ¬å­—æ®µï¼Œæ”¯æŒæ‹–æ‹½å’Œé€‰æ‹©
         EditorGUI.BeginChangeCheck();
-        targetAsset = EditorGUILayout.ObjectField("Ä¿±ê×ÊÔ´", targetAsset, typeof(Object), false);
-        // Èç¹ûÄ¿±ê×ÊÔ´×Ö¶Î·¢ÉúÁË¸Ä±ä£¨ÓÃ»§ÍÏÈë»òÑ¡ÔñÁËĞÂ×Ê²ú£©
+        targetAsset = EditorGUILayout.ObjectField("ç›®æ ‡èµ„æº", targetAsset, typeof(Object), false);
+        // å¦‚æœç›®æ ‡èµ„æºå­—æ®µå‘ç”Ÿäº†æ”¹å˜ï¼ˆç”¨æˆ·æ‹–å…¥æˆ–é€‰æ‹©äº†æ–°èµ„äº§ï¼‰
         if (EditorGUI.EndChangeCheck())
         {
             if (targetAsset != null)
@@ -75,12 +75,12 @@ public class AssetReferenceChecker : EditorWindow
                 string path = AssetDatabase.GetAssetPath(targetAsset);
                 targetGuid = AssetDatabase.AssetPathToGUID(path);
                 targetPath = path;
-                // ÖØÒª£ºµ±Ä¿±ê×ÊÔ´¸Ä±äÊ±£¬Á¢¼´ÖØÖÃÒıÓÃÏÔÊ¾
+                // é‡è¦ï¼šå½“ç›®æ ‡èµ„æºæ”¹å˜æ—¶ï¼Œç«‹å³é‡ç½®å¼•ç”¨æ˜¾ç¤º
                 ResetReferenceDisplay();
             }
             else
             {
-                // Èç¹ûÇå¿ÕÁËÄ¿±ê×ÊÔ´£¬Ò²ÖØÖÃËùÓĞ×´Ì¬
+                // å¦‚æœæ¸…ç©ºäº†ç›®æ ‡èµ„æºï¼Œä¹Ÿé‡ç½®æ‰€æœ‰çŠ¶æ€
                 targetGuid = "";
                 targetPath = "";
                 ResetReferenceDisplay();
@@ -94,7 +94,7 @@ public class AssetReferenceChecker : EditorWindow
 
         EditorGUILayout.Space();
 
-        if (GUILayout.Button("¼ì²éÒıÓÃ", GUILayout.Height(30)) && !string.IsNullOrEmpty(targetGuid))
+        if (GUILayout.Button("æ£€æŸ¥å¼•ç”¨", GUILayout.Height(30)) && !string.IsNullOrEmpty(targetGuid))
         {
             FindReferences();
         }
@@ -102,8 +102,8 @@ public class AssetReferenceChecker : EditorWindow
         if (isSearching)
         {
             double elapsedTime = EditorApplication.timeSinceStartup - searchStartTime;
-            EditorGUILayout.HelpBox($"ÕıÔÚ¼ì²éÖĞ... ÒÑÓÃÊ±: {elapsedTime:F2}Ãë", MessageType.Info);
-            if (GUILayout.Button("È¡Ïû"))
+            EditorGUILayout.HelpBox($"æ­£åœ¨æ£€æŸ¥ä¸­... å·²ç”¨æ—¶: {elapsedTime:F2}ç§’", MessageType.Info);
+            if (GUILayout.Button("å–æ¶ˆ"))
             {
                 isSearching = false;
                 EditorUtility.ClearProgressBar();
@@ -115,14 +115,14 @@ public class AssetReferenceChecker : EditorWindow
         if (!string.IsNullOrEmpty(targetGuid))
         {
             EditorGUILayout.BeginHorizontal();
-            // ÏÔÊ¾ÒıÓÃÊıÁ¿£¬Èç¹û»¹Î´¼ì²éÔòÏÔÊ¾¡°´ı¼ì²é¡±
-            GUILayout.Label($"ÒıÓÃÊıÁ¿: {(referenceCount > 0 || isSearching ? referenceCount.ToString() : "´ı¼ì²é")}");
+            // æ˜¾ç¤ºå¼•ç”¨æ•°é‡ï¼Œå¦‚æœè¿˜æœªæ£€æŸ¥åˆ™æ˜¾ç¤ºâ€œå¾…æ£€æŸ¥â€
+            GUILayout.Label($"å¼•ç”¨æ•°é‡: {(referenceCount > 0 || isSearching ? referenceCount.ToString() : "å¾…æ£€æŸ¥")}");
             EditorGUILayout.EndHorizontal();
 
-            // Ö»ÓĞÔÚÓĞÒıÓÃ½á¹û»òÕßÕıÔÚËÑË÷Ê±²ÅÏÔÊ¾ÁĞ±í
+            // åªæœ‰åœ¨æœ‰å¼•ç”¨ç»“æœæˆ–è€…æ­£åœ¨æœç´¢æ—¶æ‰æ˜¾ç¤ºåˆ—è¡¨
             if (referencingAssets.Count > 0 || isSearching)
             {
-                GUILayout.Label("ÒıÓÃ´Ë×ÊÔ´µÄ×Ê²ú:");
+                GUILayout.Label("å¼•ç”¨æ­¤èµ„æºçš„èµ„äº§:");
                 scrollPosition = EditorGUILayout.BeginScrollView(scrollPosition, GUILayout.ExpandHeight(true));
 
                 foreach (string assetPath in referencingAssets)
@@ -130,7 +130,7 @@ public class AssetReferenceChecker : EditorWindow
                     EditorGUILayout.BeginHorizontal();
                     EditorGUILayout.TextField(assetPath);
 
-                    if (GUILayout.Button("¶¨Î»", GUILayout.Width(40)))
+                    if (GUILayout.Button("å®šä½", GUILayout.Width(40)))
                     {
                         Object obj = AssetDatabase.LoadAssetAtPath<Object>(assetPath);
                         Selection.activeObject = obj;
@@ -145,25 +145,25 @@ public class AssetReferenceChecker : EditorWindow
             EditorGUILayout.Space();
             EditorGUILayout.Space();
 
-            // Ìí¼ÓGUIDĞŞ¸Ä¹¦ÄÜ
-            GUILayout.Label("¸ü¸ÄGUID (Î£ÏÕ²Ù×÷!)", EditorStyles.boldLabel);
-            EditorGUILayout.HelpBox("¾¯¸æ: ¸ü¸ÄGUIDÊÇ¸ß·çÏÕ²Ù×÷£¬¿ÉÄÜµ¼ÖÂÏîÄ¿Ëğ»µ¡£ÇëÈ·±£ÒÑ±¸·İÏîÄ¿!", MessageType.Warning);
+            // æ·»åŠ GUIDä¿®æ”¹åŠŸèƒ½
+            GUILayout.Label("æ›´æ”¹GUID (å±é™©æ“ä½œ!)", EditorStyles.boldLabel);
+            EditorGUILayout.HelpBox("è­¦å‘Š: æ›´æ”¹GUIDæ˜¯é«˜é£é™©æ“ä½œï¼Œå¯èƒ½å¯¼è‡´é¡¹ç›®æŸåã€‚è¯·ç¡®ä¿å·²å¤‡ä»½é¡¹ç›®!", MessageType.Warning);
 
             EditorGUILayout.BeginHorizontal();
-            GUILayout.Label("ĞÂGUID:", GUILayout.Width(60));
+            GUILayout.Label("æ–°GUID:", GUILayout.Width(60));
             newGuid = EditorGUILayout.TextField(newGuid);
-            if (GUILayout.Button("Éú³É", GUILayout.Width(50)))
+            if (GUILayout.Button("ç”Ÿæˆ", GUILayout.Width(50)))
             {
                 newGuid = GenerateNewGUID();
             }
             EditorGUILayout.EndHorizontal();
 
-            EditorGUI.BeginDisabledGroup(string.IsNullOrEmpty(newGuid) || newGuid == targetGuid/* || referenceCount == 0*/); // Í¬Ê±ÔÚÃ»ÓĞÒıÓÃ½á¹ûÊ±½ûÓÃ°´Å¥
-            if (GUILayout.Button("¸ü¸ÄGUID²¢¸üĞÂËùÓĞÒıÓÃ", GUILayout.Height(30)))
+            EditorGUI.BeginDisabledGroup(string.IsNullOrEmpty(newGuid) || newGuid == targetGuid/* || referenceCount == 0*/); // åŒæ—¶åœ¨æ²¡æœ‰å¼•ç”¨ç»“æœæ—¶ç¦ç”¨æŒ‰é’®
+            if (GUILayout.Button("æ›´æ”¹GUIDå¹¶æ›´æ–°æ‰€æœ‰å¼•ç”¨", GUILayout.Height(30)))
             {
-                if (EditorUtility.DisplayDialog("È·ÈÏ¸ü¸ÄGUID",
-                    "ÕâÊÇÒ»¸ö¸ß·çÏÕ²Ù×÷!\n\n¸ü¸ÄGUID¿ÉÄÜµ¼ÖÂÏîÄ¿Ëğ»µ¡£ÇëÈ·±£ÒÑ±¸·İÏîÄ¿¡£\n\nÊÇ·ñ¼ÌĞø?",
-                    "¼ÌĞø", "È¡Ïû"))
+                if (EditorUtility.DisplayDialog("ç¡®è®¤æ›´æ”¹GUID",
+                    "è¿™æ˜¯ä¸€ä¸ªé«˜é£é™©æ“ä½œ!\n\næ›´æ”¹GUIDå¯èƒ½å¯¼è‡´é¡¹ç›®æŸåã€‚è¯·ç¡®ä¿å·²å¤‡ä»½é¡¹ç›®ã€‚\n\næ˜¯å¦ç»§ç»­?",
+                    "ç»§ç»­", "å–æ¶ˆ"))
                 {
                     ChangeAssetGuidAndUpdateReferences(targetGuid, newGuid, targetPath);
                 }
@@ -172,8 +172,8 @@ public class AssetReferenceChecker : EditorWindow
         }
         else
         {
-            // µ±Ã»ÓĞÑ¡ÔñÓĞĞ§×ÊÔ´Ê±¸ø³öÌáÊ¾
-            EditorGUILayout.HelpBox("Çë´ÓÉÏ·½ÍÏÈë»òÑ¡ÔñÒ»¸öÓĞĞ§µÄ×ÊÔ´¡£", MessageType.Info);
+            // å½“æ²¡æœ‰é€‰æ‹©æœ‰æ•ˆèµ„æºæ—¶ç»™å‡ºæç¤º
+            EditorGUILayout.HelpBox("è¯·ä»ä¸Šæ–¹æ‹–å…¥æˆ–é€‰æ‹©ä¸€ä¸ªæœ‰æ•ˆçš„èµ„æºã€‚", MessageType.Info);
         }
     }
 
@@ -181,19 +181,19 @@ public class AssetReferenceChecker : EditorWindow
     {
         if (string.IsNullOrEmpty(targetGuid)) return;
 
-        // ÉèÖÃĞòÁĞ»¯Ä£Ê½ÎªÎÄ±¾ÒÔ±ã²éÕÒ
+        // è®¾ç½®åºåˆ—åŒ–æ¨¡å¼ä¸ºæ–‡æœ¬ä»¥ä¾¿æŸ¥æ‰¾
         EditorSettings.serializationMode = SerializationMode.ForceText;
 
-        // Ã¿´Î¼ì²éÇ°ÏÈÖØÖÃÒıÓÃÏÔÊ¾£¬È·±£½á¹ûÊÇ×îĞÂµÄ
+        // æ¯æ¬¡æ£€æŸ¥å‰å…ˆé‡ç½®å¼•ç”¨æ˜¾ç¤ºï¼Œç¡®ä¿ç»“æœæ˜¯æœ€æ–°çš„
         ResetReferenceDisplay();
         isSearching = true;
         searchStartTime = EditorApplication.timeSinceStartup;
 
-        // »ñÈ¡ÏîÄ¿ÖĞËùÓĞ×ÊÔ´Â·¾¶
+        // è·å–é¡¹ç›®ä¸­æ‰€æœ‰èµ„æºè·¯å¾„
         string[] allAssetPaths = AssetDatabase.GetAllAssetPaths();
         List<string> validPaths = new List<string>();
 
-        // É¸Ñ¡ĞèÒª¼ì²éµÄ×ÊÔ´ÀàĞÍ
+        // ç­›é€‰éœ€è¦æ£€æŸ¥çš„èµ„æºç±»å‹
         foreach (string path in allAssetPaths)
         {
             if (path.StartsWith("Assets/") &&
@@ -217,19 +217,19 @@ public class AssetReferenceChecker : EditorWindow
             {
                 string path = validPaths[i];
 
-                // Ìø¹ıÄ¿±ê×ÊÔ´×ÔÉí
+                // è·³è¿‡ç›®æ ‡èµ„æºè‡ªèº«
                 if (path == targetPath) continue;
 
-                // ÏÔÊ¾½ø¶ÈÌõ
-                if (EditorUtility.DisplayCancelableProgressBar("¼ì²é×ÊÔ´ÒıÓÃ",
-                    $"ÕıÔÚ¼ì²é: {Path.GetFileName(path)}", (float)i / validPaths.Count))
+                // æ˜¾ç¤ºè¿›åº¦æ¡
+                if (EditorUtility.DisplayCancelableProgressBar("æ£€æŸ¥èµ„æºå¼•ç”¨",
+                    $"æ­£åœ¨æ£€æŸ¥: {Path.GetFileName(path)}", (float)i / validPaths.Count))
                 {
                     break;
                 }
 
                 try
                 {
-                    // ¶ÁÈ¡ÎÄ¼şÄÚÈİ²¢¼ì²éÊÇ·ñ°üº¬Ä¿±êGUID
+                    // è¯»å–æ–‡ä»¶å†…å®¹å¹¶æ£€æŸ¥æ˜¯å¦åŒ…å«ç›®æ ‡GUID
                     string content = File.ReadAllText(path);
                     if (Regex.IsMatch(content, $"guid: {targetGuid}\\b"))
                     {
@@ -239,7 +239,7 @@ public class AssetReferenceChecker : EditorWindow
                 }
                 catch
                 {
-                    // ºöÂÔÎŞ·¨¶ÁÈ¡µÄÎÄ¼ş
+                    // å¿½ç•¥æ— æ³•è¯»å–çš„æ–‡ä»¶
                     continue;
                 }
             }
@@ -261,51 +261,51 @@ public class AssetReferenceChecker : EditorWindow
     {
         if (string.IsNullOrEmpty(oldGuid) || string.IsNullOrEmpty(newGuid) || string.IsNullOrEmpty(assetPath))
         {
-            Debug.LogError("ÎŞ·¨¸ü¸ÄGUID: ²ÎÊı²»ÄÜÎª¿Õ");
+            Debug.LogError("æ— æ³•æ›´æ”¹GUID: å‚æ•°ä¸èƒ½ä¸ºç©º");
             return;
         }
 
         if (oldGuid == newGuid)
         {
-            Debug.LogError("ĞÂGUID²»ÄÜÓë¾ÉGUIDÏàÍ¬");
+            Debug.LogError("æ–°GUIDä¸èƒ½ä¸æ—§GUIDç›¸åŒ");
             return;
         }
 
-        // Ê×ÏÈÈ·±£ÎÒÃÇÓĞ×îĞÂµÄÒıÓÃÁĞ±í
+        // é¦–å…ˆç¡®ä¿æˆ‘ä»¬æœ‰æœ€æ–°çš„å¼•ç”¨åˆ—è¡¨
         if (referencingAssets == null || referencingAssets.Count == 0)
         {
             FindReferences();
         }
 
-        // 1. ¸üĞÂËùÓĞÒÑÖªÒıÓÃ
+        // 1. æ›´æ–°æ‰€æœ‰å·²çŸ¥å¼•ç”¨
         UpdateKnownReferences(oldGuid, newGuid);
 
-        // 2. ¼ì²é²¢¸üĞÂ¿ÉÄÜ°üº¬ÒıÓÃµÄÆäËûÎÄ¼şÀàĞÍ
+        // 2. æ£€æŸ¥å¹¶æ›´æ–°å¯èƒ½åŒ…å«å¼•ç”¨çš„å…¶ä»–æ–‡ä»¶ç±»å‹
         UpdateAdditionalReferences(oldGuid, newGuid);
 
-        // 3. È»ºó¸ü¸ÄÄ¿±ê×ÊÔ´µÄGUID
+        // 3. ç„¶åæ›´æ”¹ç›®æ ‡èµ„æºçš„GUID
         ChangeAssetGuid(assetPath, newGuid);
 
-        // 4. Ë¢ĞÂÊı¾İ¿â
+        // 4. åˆ·æ–°æ•°æ®åº“
         AssetDatabase.Refresh();
 
-        // 5. ÖØĞÂ¼ÓÔØµ±Ç°×ÊÔ´£¬¸üĞÂÒıÓÃÒÔ±ÜÃâObjectFieldÏÔÊ¾Missing
-        // ÖØµã£ºÔÚË¢ĞÂºóÖØĞÂ¼ÓÔØ×ÊÔ´²¢¸üĞÂtargetAsset
+        // 5. é‡æ–°åŠ è½½å½“å‰èµ„æºï¼Œæ›´æ–°å¼•ç”¨ä»¥é¿å…ObjectFieldæ˜¾ç¤ºMissing
+        // é‡ç‚¹ï¼šåœ¨åˆ·æ–°åé‡æ–°åŠ è½½èµ„æºå¹¶æ›´æ–°targetAsset
         targetAsset = AssetDatabase.LoadAssetAtPath<Object>(assetPath);
         if (targetAsset == null)
         {
-            Debug.LogWarning($"ÖØĞÂ¼ÓÔØ×ÊÔ´Ê§°Ü: {assetPath}¡£ObjectField¿ÉÄÜÈÔÏÔÊ¾ÎªMissing¡£");
+            Debug.LogWarning($"é‡æ–°åŠ è½½èµ„æºå¤±è´¥: {assetPath}ã€‚ObjectFieldå¯èƒ½ä»æ˜¾ç¤ºä¸ºMissingã€‚");
         }
 
-        // 6. ¸üĞÂUIÏÔÊ¾
+        // 6. æ›´æ–°UIæ˜¾ç¤º
         targetGuid = newGuid;
 
-        // 7. ÖØĞÂ²éÕÒÒıÓÃÒÔ¸üĞÂUI
+        // 7. é‡æ–°æŸ¥æ‰¾å¼•ç”¨ä»¥æ›´æ–°UI
         FindReferences();
 
-        Debug.Log($"³É¹¦¸ü¸ÄGUID: {oldGuid} -> {newGuid}");
+        Debug.Log($"æˆåŠŸæ›´æ”¹GUID: {oldGuid} -> {newGuid}");
 
-        // 8. Ç¿ÖÆÖØ»æ´°¿Ú£¬È·±£UIÁ¢¼´¸üĞÂ
+        // 8. å¼ºåˆ¶é‡ç»˜çª—å£ï¼Œç¡®ä¿UIç«‹å³æ›´æ–°
         Repaint();
     }
 
@@ -317,34 +317,34 @@ public class AssetReferenceChecker : EditorWindow
             {
                 string path = referencingAssets[i];
 
-                // ÏÔÊ¾½ø¶ÈÌõ
-                if (EditorUtility.DisplayCancelableProgressBar("¸üĞÂÒıÓÃ",
-                    $"ÕıÔÚ´¦Àí: {Path.GetFileName(path)}", (float)i / referencingAssets.Count))
+                // æ˜¾ç¤ºè¿›åº¦æ¡
+                if (EditorUtility.DisplayCancelableProgressBar("æ›´æ–°å¼•ç”¨",
+                    $"æ­£åœ¨å¤„ç†: {Path.GetFileName(path)}", (float)i / referencingAssets.Count))
                 {
                     break;
                 }
 
                 try
                 {
-                    // Ìø¹ıÄ¿±ê×ÊÔ´×ÔÉí
+                    // è·³è¿‡ç›®æ ‡èµ„æºè‡ªèº«
                     if (path == targetPath) continue;
 
-                    // ¶ÁÈ¡ÎÄ¼şÄÚÈİ
+                    // è¯»å–æ–‡ä»¶å†…å®¹
                     string content = File.ReadAllText(path);
 
-                    // Ê¹ÓÃÕıÔò±í´ïÊ½Ìæ»»GUIDÒıÓÃ
+                    // ä½¿ç”¨æ­£åˆ™è¡¨è¾¾å¼æ›¿æ¢GUIDå¼•ç”¨
                     string newContent = Regex.Replace(content, $"guid: {oldGuid}\\b", $"guid: {newGuid}");
 
-                    // Èç¹ûÄÚÈİÓĞ±ä»¯£¬ÔòĞ´»ØÎÄ¼ş
+                    // å¦‚æœå†…å®¹æœ‰å˜åŒ–ï¼Œåˆ™å†™å›æ–‡ä»¶
                     if (content != newContent)
                     {
                         File.WriteAllText(path, newContent);
-                        Debug.Log($"ÒÑ¸üĞÂÒıÓÃ: {path}");
+                        Debug.Log($"å·²æ›´æ–°å¼•ç”¨: {path}");
                     }
                 }
                 catch (System.Exception e)
                 {
-                    Debug.LogWarning($"´¦ÀíÎÄ¼ş {path} Ê±³ö´í: {e.Message}");
+                    Debug.LogWarning($"å¤„ç†æ–‡ä»¶ {path} æ—¶å‡ºé”™: {e.Message}");
                     continue;
                 }
             }
@@ -357,7 +357,7 @@ public class AssetReferenceChecker : EditorWindow
 
     private void UpdateAdditionalReferences(string oldGuid, string newGuid)
     {
-        // ¼ì²éÒ»Ğ©¿ÉÄÜ°üº¬ÒıÓÃµÄ¶îÍâÎÄ¼şÀàĞÍ
+        // æ£€æŸ¥ä¸€äº›å¯èƒ½åŒ…å«å¼•ç”¨çš„é¢å¤–æ–‡ä»¶ç±»å‹
         string[] additionalPaths = AssetDatabase.GetAllAssetPaths()
             .Where(p => p.StartsWith("Assets/") &&
                        (p.EndsWith(".shader") || p.EndsWith(".compute") ||
@@ -372,33 +372,33 @@ public class AssetReferenceChecker : EditorWindow
             {
                 string path = additionalPaths[i];
 
-                // Ìø¹ıÒÑ¾­´¦Àí¹ıµÄÎÄ¼ş
+                // è·³è¿‡å·²ç»å¤„ç†è¿‡çš„æ–‡ä»¶
                 if (referencingAssets.Contains(path)) continue;
 
-                // ÏÔÊ¾½ø¶ÈÌõ
-                if (EditorUtility.DisplayCancelableProgressBar("¼ì²é¶îÍâÒıÓÃ",
-                    $"ÕıÔÚ¼ì²é: {Path.GetFileName(path)}", (float)i / additionalPaths.Length))
+                // æ˜¾ç¤ºè¿›åº¦æ¡
+                if (EditorUtility.DisplayCancelableProgressBar("æ£€æŸ¥é¢å¤–å¼•ç”¨",
+                    $"æ­£åœ¨æ£€æŸ¥: {Path.GetFileName(path)}", (float)i / additionalPaths.Length))
                 {
                     break;
                 }
 
                 try
                 {
-                    // ¶ÁÈ¡ÎÄ¼şÄÚÈİ
+                    // è¯»å–æ–‡ä»¶å†…å®¹
                     string content = File.ReadAllText(path);
 
-                    // ¼ì²éÊÇ·ñ°üº¬Ä¿±êGUID
+                    // æ£€æŸ¥æ˜¯å¦åŒ…å«ç›®æ ‡GUID
                     if (Regex.IsMatch(content, $"guid: {oldGuid}\\b"))
                     {
-                        // ¸üĞÂÒıÓÃ
+                        // æ›´æ–°å¼•ç”¨
                         string newContent = Regex.Replace(content, $"guid: {oldGuid}\\b", $"guid: {newGuid}");
                         File.WriteAllText(path, newContent);
-                        Debug.Log($"·¢ÏÖ²¢¸üĞÂ¶îÍâÒıÓÃ: {path}");
+                        Debug.Log($"å‘ç°å¹¶æ›´æ–°é¢å¤–å¼•ç”¨: {path}");
                     }
                 }
                 catch (System.Exception e)
                 {
-                    Debug.LogWarning($"´¦ÀíÎÄ¼ş {path} Ê±³ö´í: {e.Message}");
+                    Debug.LogWarning($"å¤„ç†æ–‡ä»¶ {path} æ—¶å‡ºé”™: {e.Message}");
                     continue;
                 }
             }
@@ -415,26 +415,26 @@ public class AssetReferenceChecker : EditorWindow
 
         if (!File.Exists(metaFilePath))
         {
-            Debug.LogError($"ÕÒ²»µ½metaÎÄ¼ş: {metaFilePath}");
+            Debug.LogError($"æ‰¾ä¸åˆ°metaæ–‡ä»¶: {metaFilePath}");
             return;
         }
 
         try
         {
-            // ¶ÁÈ¡metaÎÄ¼şÄÚÈİ
+            // è¯»å–metaæ–‡ä»¶å†…å®¹
             string content = File.ReadAllText(metaFilePath);
 
-            // Ê¹ÓÃÕıÔò±í´ïÊ½Ìæ»»GUID
+            // ä½¿ç”¨æ­£åˆ™è¡¨è¾¾å¼æ›¿æ¢GUID
             string newContent = Regex.Replace(content, "guid: [a-f0-9]{32}", $"guid: {newGuid}");
 
-            // Ğ´»ØmetaÎÄ¼ş
+            // å†™å›metaæ–‡ä»¶
             File.WriteAllText(metaFilePath, newContent);
 
-            Debug.Log($"ÒÑ¸ü¸Ä×ÊÔ´GUID: {assetPath}");
+            Debug.Log($"å·²æ›´æ”¹èµ„æºGUID: {assetPath}");
         }
         catch (System.Exception e)
         {
-            Debug.LogError($"¸ü¸ÄGUIDÊ±³ö´í: {e.Message}");
+            Debug.LogError($"æ›´æ”¹GUIDæ—¶å‡ºé”™: {e.Message}");
         }
     }
 }

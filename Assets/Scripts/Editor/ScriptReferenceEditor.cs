@@ -20,7 +20,7 @@ public class ScriptReferenceEditor : EditorWindow
     private string searchFilter = "";
     private bool caseSensitiveSearch = false;
 
-    [MenuItem("Assets/编辑脚本引用", false, 101)]
+    [MenuItem("Assets/缂栬緫鑴氭湰寮曠敤", false, 101)]
     public static void InspectScriptReferences()
     {
         var selected = Selection.activeObject;
@@ -34,7 +34,7 @@ public class ScriptReferenceEditor : EditorWindow
         }
     }
 
-    [MenuItem("Assets/编辑脚本引用", true)]
+    [MenuItem("Assets/缂栬緫鑴氭湰寮曠敤", true)]
     private static bool ValidateReplaceStringsInAsset()
     {
         return Selection.activeObject != null &&
