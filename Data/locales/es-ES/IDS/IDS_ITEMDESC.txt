@@ -96,6 +96,9 @@ Su inmenso poder, acorde con su caótico apodo, desata su látigo de aniquilaci�
 [IDS_ITEMDESC.ID1000034]
 Un ser que ayuda a un hombre en su andadura para reclamar su verdadero yo.
 Aunque debería haber desaparecido, reapareció, quizá porque la identidad del hombre aún seguía incompleta.
+[IDS_ITEMDESC.ID1000036]
+Un talentoso mago de tiempos ancestrales que ha dominado multitud de artes prohibidas.
+Desapareció sin dejar ni rastro con la llegada de "<card mrk='10282'/>".
 [IDS_ITEMDESC.ID1000041]
 Una bestia demoníaca que duerme como un tronco.
 Para alimentarse de los sueños de otros, su cuerpo produce un olor somnoliento, pero que también la duerme a ella.
@@ -206,7 +209,8 @@ coming soon
 [IDS_ITEMDESC.ID1001036]
 coming soon
 [IDS_ITEMDESC.ID1001037]
-coming soon
+Los guerreros Piroxénicos, unos caballeros ecuánimes cuyos corazones anhelan la justicia en secreto.
+Ellos poseen la habilidad de fusionarse según lo vean necesario.
 [IDS_ITEMDESC.ID1001038]
 coming soon
 [IDS_ITEMDESC.ID1001039]
@@ -330,6 +334,8 @@ coming soon
 [IDS_ITEMDESC.ID1003009]
 coming soon
 [IDS_ITEMDESC.ID1003010]
+coming soon
+[IDS_ITEMDESC.ID1005001]
 coming soon
 [IDS_ITEMDESC.ID1010001]
 Un icono que representa a un duelista anónimo.
@@ -652,21 +658,28 @@ Desempeña el papel de bufón en el escenario de la infamia.
 Un icono que representa a un ser hecho de caos y pureza absoluta.
 Se formó a partir de las almas de los 666 Dogmátik más puros y acabó abatido por una sobrecogedora carga de amor y desesperación.
 [IDS_ITEMDESC.ID1010109]
-coming soon
+Un icono que representa a una niña atada a una tenue sombra.
+Un ente maligno, desconcertado por su mirada, le concedió su deseo.
 [IDS_ITEMDESC.ID1010110]
-coming soon
+Un icono que representa el emblema de los samuráis, conocidos por su excelente dominio de las artes marciales.
+Son tan indomables como nobles y fuertes sus corazones, y nada puede doblegar sus convicciones ni la lealtad hacia su señor.
 [IDS_ITEMDESC.ID1010111]
-coming soon
+Un icono que tiene un diseño clave del Yu-Gi-Oh! World Championship 2025.
+Sé testigo de los mejores duelistas del mundo.
 [IDS_ITEMDESC.ID1010112]
 coming soon
 [IDS_ITEMDESC.ID1010113]
-coming soon
+Un icono que representa a un talentoso mago de tiempos ancestrales.
+Fue conocido por haber dominado incluso las artes prohibidas para invocar a espíritus divinos de otros mundos.
 [IDS_ITEMDESC.ID1010114]
-coming soon
+Un icono que representa a "<card mrk='13346'/>" tras obtener un nuevo poder.
+Puede que sea pequeño, pero arriesgaría su vida y su pequeña extremidad para proteger a sus amigos.
 [IDS_ITEMDESC.ID1010115]
-coming soon
+Un icono que representa a un joven que sobrevivió a los horrores de la guerra.
+Juró proteger a los supervivientes mientras soportaba el peso de las almas de quienes murieron.
 [IDS_ITEMDESC.ID1010116]
-coming soon
+Un icono que representa a un monstruo formado por bloques de construcción.
+Se asemeja un poco a un dragón, aunque no lo es.
 [IDS_ITEMDESC.ID1010117]
 coming soon
 [IDS_ITEMDESC.ID1010118]
@@ -829,23 +842,38 @@ Un icono que se entrega a quienes han logrado unos resultados impresionantes en 
 Un icono con un logotipo de bronce de las eliminatorias del WCS 2025.
 Un icono que se entrega a quienes han ganado numerosas batallas en la ronda eliminatoria celebrada en 2025 contra el mundo.
 [IDS_ITEMDESC.ID1011052]
-coming soon
+Un icono con el logotipo dorado de la Copa Sincronía. 
+Se concede a quienes han destacado por encima del resto en la Copa Sincronía.
 [IDS_ITEMDESC.ID1011053]
-coming soon
+Un icono con el logotipo plateado de la Copa Sincronía. 
+Se concede a quienes han logrado grandes resultados en la Copa Sincronía.
 [IDS_ITEMDESC.ID1011054]
-coming soon
+Un icono con el logotipo broncíneo de la Copa Sincronía. 
+Se concede a quienes han triunfado en numerosas batallas en la Copa Sincronía.
 [IDS_ITEMDESC.ID1011055]
-coming soon
+Un icono con el prestigioso y esplendoroso logotipo de la Copa Sincronía.
+Se otorga al duelista que gana la Copa Sincronía.
 [IDS_ITEMDESC.ID1011056]
-coming soon
+Un icono que se otorga a los duelistas campeones del evento Yu-Gi-Oh! World Championship 2025: MASTER DUEL.
+La batalla final sigue siendo una fuente de inspiración para muchos duelistas.
 [IDS_ITEMDESC.ID1011057]
-coming soon
+Un icono que se otorga a los duelistas subcampeones del evento Yu-Gi-Oh! World Championship 2025: MASTER DUEL.
+La batalla final sigue siendo una fuente de inspiración para muchos duelistas.
 [IDS_ITEMDESC.ID1011058]
-coming soon
+Un icono que se otorga a los duelistas que terminaron entre los 4 mejores del evento Yu-Gi-Oh! World Championship 2025: MASTER DUEL.
+Su increíble instinto de lucha cautivó a todo el público.
 [IDS_ITEMDESC.ID1011059]
-coming soon
+Un icono que se otorga a los participantes del evento Yu-Gi-Oh! World Championship 2025: MASTER DUEL.
+Es el símbolo de los que lucharon por dejar su huella en la historia.
 [IDS_ITEMDESC.ID1011060]
-coming soon
+Un icono con el logotipo dorado de la DC 2025 SEP. 
+Se concede a quienes han destacado por encima del resto en la Duelist Cup.
+[IDS_ITEMDESC.ID1011061]
+Un icono con el logotipo plateado de la DC 2025 SEP. 
+Se concede a quienes han logrado grandes resultados en la Duelist Cup.
+[IDS_ITEMDESC.ID1011062]
+Un icono con el logotipo broncíneo de la DC 2025 SEP. 
+Se concede a quienes han triunfado en numerosas batallas en la Duelist Cup.
 [IDS_ITEMDESC.ID1012001]
 Un icono que representa a un Krawler, monstruos que han invadido cierto mundo. Este forma parte de la nobleza.
 Destruyen sin piedad los esfuerzos de la civilización humana que lleva generaciones en pie.
@@ -1059,6 +1087,12 @@ Había hecho un juramento con su antigua compañera, que desapareció tras una b
 [IDS_ITEMDESC.ID1012073]
 Un icono que representa una llama rebelde y traviesa.
 A pesar de su diminuto tamaño, arde con mucha intensidad, lo que deja entrever su potencial de crecimiento exponencial.
+[IDS_ITEMDESC.ID1012074]
+Un icono que representa a un gobernante del mar insaciable.
+Reunió a un ejército para ampliar todavía más su ambicioso reino acuático.
+[IDS_ITEMDESC.ID1012075]
+Un icono que representa a un pájaro divino que protege siempre vigilante.
+Incinera a todo aquel que ose entrar en su santuario.
 [IDS_ITEMDESC.ID1013001]
 Un icono que representa a un joven al que le encanta el béisbol.
 Puedes haber coincidido con él en el colegio en algún momento que otro y haber sido testigo de su grandeza motivada por su pasión por el béisbol.
@@ -1071,6 +1105,9 @@ Los duelistas del lugar profirieron un grito de alegría para conmemorar este pr
 [IDS_ITEMDESC.ID1013004]
 Un icono que representa una escena de Yu-Gi-Oh! CARD GAME THE CHRONICLES.
 La muchacha, equipada con armas tecnológicas superavanzadas, atraviesa el campo de batalla para afrontar un encuentro trascendental.
+[IDS_ITEMDESC.ID1013005]
+Un icono que representa una escena de Yu-Gi-Oh! CARD GAME THE CHRONICLES.
+¿Su encuentro fue obra del destino o del azar? Lo que provocó fue una serie de sucesos que dejaron una marca indeleble en el mundo abisal.
 [IDS_ITEMDESC.ID1020001]
 Un título que se concede a los duelistas que comienzan su trayectoria en los Duelos de Yu-Gi-Oh! MASTER DUEL.
 Nunca es demasiado tarde para empezar a luchar.
@@ -1541,6 +1578,87 @@ Con la fuerza de un tornado, el intenso fuego lo reduce todo a cenizas.
 [IDS_ITEMDESC.ID1020157]
 Un título que se concede a los duelistas con una determinación inigualable al enfrentarse a innumerables batallas.
 Su ansia de victoria aporta un gran carisma a estos guerreros.
+[IDS_ITEMDESC.ID1020158]
+Un título que se otorga a los duelistas que han logrado buenos resultados en el evento "Carrera de dados - Fusion, Xyz y Enlace".
+Un brillante futuro aguarda a aquellos valientes que confían en sí mismos.
+[IDS_ITEMDESC.ID1020159]
+Un título otorgado a los duelistas que terminaron entre los 10 mejores de las eliminatorias del WCS 2025.
+Muchos han sido testigos de que este duelista es capaz de desafiar al mundo.
+[IDS_ITEMDESC.ID1020160]
+Un título otorgado a los duelistas que terminaron entre los 100 mejores de las eliminatorias del WCS 2025.
+La prueba de que este duelista ha demostrado su conocimiento en muchos Duelos y un gran dominio de sus cartas en la batalla contra el mundo.
+[IDS_ITEMDESC.ID1020161]
+Un título otorgado a los duelistas que terminaron entre los 500 mejores de las eliminatorias del WCS 2025.
+La prueba de que este duelista ha perfeccionado sus habilidades para alzarse con la victoria en muchas batallas para desafiar al mundo.
+[IDS_ITEMDESC.ID1020162]
+Un título otorgado a los duelistas que terminaron entre los 1000 mejores de las eliminatorias del WCS 2025.
+Una medalla de honor otorgada a un duelista infatigable que ha luchado con valentía entre los mejores duelistas del mundo.
+[IDS_ITEMDESC.ID1020163]
+Un título otorgado a los duelistas que terminaron entre los 10000 mejores de las eliminatorias del WCS 2025.
+Para quienes han salido victoriosos contra rivales formidables y se han anotado sus victorias.
+[IDS_ITEMDESC.ID1020164]
+Un título otorgado a los duelistas que alcanzaron el DLv. MÁX en las eliminatorias del WCS 2025.
+Para quienes han demostrado su capacidad como duelistas dignos de avanzar hasta las eliminatorias regionales.
+[IDS_ITEMDESC.ID1020165]
+Un título que se otorga a los duelistas que han logrado buenos resultados en el festival UNDER☆5.
+El orgullo de los duelistas despierta a causa de las cartas que más atesoran.
+[IDS_ITEMDESC.ID1020166]
+Un título que se otorga a los duelistas que han logrado buenos resultados en el festival de Fusión y Enlace.
+El orgullo de los duelistas despierta a causa de las cartas que más atesoran.
+[IDS_ITEMDESC.ID1020167]
+Un título que se concede al duelista campeón de la Copa Sincronía.
+Es una prueba de que este duelista alcanzó la cima y dejó su huella en la historia de Yu-Gi-Oh! MASTER DUEL.
+[IDS_ITEMDESC.ID1020168]
+Un título otorgado a los duelistas que hayan logrado estar entre los 10 primeros en la Copa Sincronía.
+Las historias de sus numerosos e impresionantes duelos, así como de su valentía al competir por el trono perdurarán en el tiempo.
+[IDS_ITEMDESC.ID1020169]
+Un título otorgado a los duelistas que hayan logrado estar entre los 100 primeros en la Copa Sincronía.
+Es la prueba de un logro al que muchos duelistas aspiran.
+[IDS_ITEMDESC.ID1020170]
+Un título otorgado a los duelistas que hayan logrado estar entre los 500 primeros en la Copa Sincronía.
+Solo los que se alzan victoriosos de entre los más fuertes pueden poseer un corazón como el tuyo, templado por muchos Duelos reñidos.
+[IDS_ITEMDESC.ID1020171]
+Un título otorgado a los duelistas que hayan logrado estar entre los 1000 primeros en la Copa Sincronía.
+Enhorabuena a los duelistas que han seguido desarrollando sus Decks y sus tácticas hasta alcanzar este objetivo.
+[IDS_ITEMDESC.ID1020172]
+Un título otorgado a los duelistas que hayan logrado estar entre los 10000 primeros en la Copa Sincronía.
+Ganado victoria tras victoria frente a feroces competidores en la 2nd STAGE.
+[IDS_ITEMDESC.ID1020173]
+Un título otorgado a los duelistas que llegaron a la 2nd Stage en la Copa Sincronía.
+Es la prueba de tu logro de haber superado la reñida 1st Stage.
+[IDS_ITEMDESC.ID1020174]
+Un título que se otorga a los duelistas campeones del evento Yu-Gi-Oh! World Championship 2025: MASTER DUEL.
+Esta aventura a través de Duelos encarnizados junto a sus amigos perdurará en el tiempo y será recordada a lo largo de las generaciones.
+[IDS_ITEMDESC.ID1020175]
+Un título que se otorga a los duelistas subcampeones del evento Yu-Gi-Oh! World Championship 2025: MASTER DUEL.
+Esta aventura a través de Duelos encarnizados junto a sus amigos perdurará en el tiempo y será recordada a lo largo de las generaciones.
+[IDS_ITEMDESC.ID1020176]
+Un título que se otorga a los duelistas que terminaron entre los 4 mejores del evento Yu-Gi-Oh! World Championship 2025: MASTER DUEL.
+Su desempeño se convertirá en una meta para muchos otros duelistas cuyos logros se elogiarán para siempre.
+[IDS_ITEMDESC.ID1020177]
+Un título que se otorga a los duelistas que terminaron entre los 12 mejores del evento Yu-Gi-Oh! World Championship 2025: MASTER DUEL.
+Solo unos pocos pueden alcanzar este nivel. Semejante logro destaca como una prueba innegable de su talento.
+[IDS_ITEMDESC.ID1020179]
+Un título que se otorga a los duelistas que han logrado buenos resultados en una determinada historia con el poder de varias cartas.
+Las historias hiladas en torno a la batalla dejan algo que cala en muchos duelistas.
+[IDS_ITEMDESC.ID1020180]
+Un título otorgado a los duelistas que hayan logrado estar entre los 10 primeros en la DC 2025 SEP.
+Las historias de sus numerosos e impresionantes duelos, así como de su valentía al competir por el trono perdurarán en el tiempo.
+[IDS_ITEMDESC.ID1020181]
+Un título otorgado a los duelistas que hayan logrado estar entre los 100 primeros en la DC 2025 SEP.
+Es la prueba de un logro al que muchos duelistas aspiran.
+[IDS_ITEMDESC.ID1020182]
+Un título otorgado a los duelistas que hayan logrado estar entre los 500 primeros en la DC 2025 SEP.
+Solo los que se alzan victoriosos de entre los más fuertes pueden poseer un corazón como el tuyo, templado por muchos Duelos reñidos.
+[IDS_ITEMDESC.ID1020183]
+Un título otorgado a los duelistas que hayan logrado estar entre los 1000 primeros en la DC 2025 SEP.
+Enhorabuena a los duelistas que han seguido desarrollando sus Decks y sus tácticas hasta alcanzar este objetivo.
+[IDS_ITEMDESC.ID1020184]
+Un título otorgado a los duelistas que hayan logrado estar entre los 10000 primeros en la DC 2025 SEP.
+Ganado victoria tras victoria frente a feroces competidores en la 2nd STAGE.
+[IDS_ITEMDESC.ID1020185]
+Un título otorgado a los duelistas que llegaron a la 2nd Stage en la DC 2025 SEP.
+Es la prueba de tu logro de haber superado la reñida 1st Stage.
 [IDS_ITEMDESC.ID1021001]
 Un título que solo se otorga en una ocasión especial.
 [IDS_ITEMDESC.ID1021002]
@@ -1648,6 +1766,12 @@ La gran energía térmica de las llamas provoca explosiones fantásticamente dev
 [IDS_ITEMDESC.ID1030036]
 Un marco de icono púrpura y amarillo que evoca una oscuridad cautivadora y una luz acogedora.
 Sus colores, que recuerdan al crepúsculo, despiertan un torrente de emociones.
+[IDS_ITEMDESC.ID1030037]
+Un marco de icono amarillo y azul que recuerda a un sol dorado que surge del mar.
+Recuerda a los animados días de verano en los que las cristalinas aguas del mar resplandecen con el brillo del sol.
+[IDS_ITEMDESC.ID1030039]
+Un marco de icono que evoca el poder de la fusión, los cimientos de los guerreros Piroxénicos.
+Esto agota su núcleo, pero se puede usar una vez tras otra.
 [IDS_ITEMDESC.ID1031001]
 Un marco de icono que recuerda al portal usado por los Cazas del Cielo para transferir su armamento.
 Cuando el camino se abre para quienes luchan por la paz, un nuevo poder despierta para superar la adversidad.
@@ -1693,6 +1817,12 @@ Los combos de "<card mrk='4064'/>" han adoptado muchas formas a lo largo de los 
 [IDS_ITEMDESC.ID1031015]
 Un marco de icono que evoca un extenso territorio inexplorado al que se llega a través de un gran agujero.
 Dentro del abismo azotan enormes torrentes de datos peligrosos engendrados por la mezquindad humana.
+[IDS_ITEMDESC.ID1031016]
+Un marco de icono que recuerda a los orbes de luz brillantes que hay alrededor de los Monstruos Xyz.
+Rebosan de la fuerza de voluntad inquebrantable de quienes construyeron la Red Revestida.
+[IDS_ITEMDESC.ID1031017]
+Un marco de icono que evoca a las Mágicas Fusión de ciertas A.I.
+Parece que no alberga odio alguno hacia el ser humano.
 [IDS_ITEMDESC.ID1032001]
 Un marco de icono con forma de adorno circular que se puede ver en ciertas regiones a medida que el año se acerca a su fin.
 Se cuelgan con un deseo sincero de felicidad y alegría para los tiempos venideros.
@@ -1732,6 +1862,12 @@ Marco de icono que se otorga a los participantes del evento MASTER DUEL del Yu-G
 [IDS_ITEMDESC.ID1033003]
 Un marco de icono que recuerda a los orbes de luz brillantes que hay alrededor de los Monstruos Xyz.
 Se otorga a los duelistas que consiguieron buenos resultados en la Copa Xyz.
+[IDS_ITEMDESC.ID1033004]
+Un marco de icono que recuerda a los anillos de luz brillantes que se ven al Invocar por Sincronía.
+Se otorga a los duelistas que consiguieron buenos resultados en la Copa Sincronía.
+[IDS_ITEMDESC.ID1033005]
+Marco de icono que se otorga a los participantes del evento MASTER DUEL del Yu-Gi-Oh! World Championship 2025.
+¡Te espera la siguiente fase!
 [IDS_ITEMDESC.ID1070001]
 Fundas de cartas con el mismo diseño que el reverso de las cartas de Yu-Gi-Oh! Juego de cartas intercambiables.
 Si no está roto, ¿por qué arreglarlo?
@@ -2088,6 +2224,27 @@ Para quienes arriesgan su vida en los combates.
 [IDS_ITEMDESC.ID1070120]
 Protectores que representan unos colmillos rebeldes con una voluntad de hierro.
 Para quienes plantan cara a la opresión.
+[IDS_ITEMDESC.ID1070121]
+Protectores que representan a una entidad que ha dejado atrás su eterna contienda con su archienemigo.
+Para quienes viven en la red.
+[IDS_ITEMDESC.ID1070122]
+Protectores que representan los "<category id='45'/>", la herramienta definitiva de la reina que domina varios tipos de cartas.
+Para quienes ansían dominar mundos virtuales maravillosos.
+[IDS_ITEMDESC.ID1070123]
+Protectores que representan un dragón que abre sus gloriosas y asombrosas alas de par en par.
+Para quienes atacan antes de que sus adversarios se lo esperen.
+[IDS_ITEMDESC.ID1070124]
+Protectores que representan las atronadoras armas mecánicas que liberan las fuerzas de FUEGO y de LUZ.
+ Para los que siempre están a tope.
+[IDS_ITEMDESC.ID1070125]
+Protectores que representan a un monstruo as con una lanza colosal.
+Para quienes osarían surcar el viento que sopla hacia un mundo desconocido.
+[IDS_ITEMDESC.ID1070126]
+Protectores que representan a una fuerza capaz de reunir la energía para crear mundos.
+Para quienes prosiguen el ciclo del renacimiento.
+[IDS_ITEMDESC.ID1070130]
+Protectores que tienen un diseño clave del Yu-Gi-Oh! World Championship 2025.
+Para quienes desafían al mundo.
 [IDS_ITEMDESC.ID1071001]
 Protectores que ilustran a un guerrero que ha madurado y guarda en su corazón las cicatrices de las batallas. 
 Perfectos para los que siempre quieren lo mejor para sus amigos.
@@ -2190,6 +2347,12 @@ Para quienes desean poner fin al conflicto.
 [IDS_ITEMDESC.ID1071034]
 Protectores que representan un líder que es el pegamento de los guerreros escarlata.
 Para aquellos cuyo fuego interno les da la ventaja en la batalla.
+[IDS_ITEMDESC.ID1071035]
+Protectores que representan a un pájaro divino que muere para renacer de sus cenizas.
+Para quienes protegen su santuario.
+[IDS_ITEMDESC.ID1071036]
+Protectores que representan a una Serpiente Marina con un apetito de dominio insaciable.
+Para quienes tienen un deseo insaciable.
 [IDS_ITEMDESC.ID1072001]
 Un protector con el diseño del "<card mrk='13670'/>" con su armadura en modo de destrucción.
 Para aquellos jugadores que se abrirán camino hacia la victoria con uñas y dientes desde las llamas del campo de batalla.
@@ -2245,9 +2408,30 @@ Para los que participaron la Duelist Cup e hicieron que el evento sea todo un é
 [IDS_ITEMDESC.ID1073012]
 Un protector con el logotipo de la DC 2025 MAR. 
 Para los que participaron la Duelist Cup e hicieron que el evento sea todo un éxito.
+[IDS_ITEMDESC.ID1073013]
+Un protector con el logotipo de las eliminatorias del WCS 2025.
+Para los que habéis participado en la sección de MASTER DUEL y habéis hecho que el evento sea todo un éxito.
+[IDS_ITEMDESC.ID1073014]
+Protectores con el logotipo de la "Copa Sincronía".
+Para los que participaron en la Copa Sincronía e hicieron que el evento fuera todo un éxito.
+[IDS_ITEMDESC.ID1073015]
+Un protector con una imagen del Yu-Gi-Oh! World Championship 2025: MASTER DUEL.
+Para aquellos que vivieron este momento histórico.
+[IDS_ITEMDESC.ID1073016]
+Protectores con un diseño del Yu-Gi-Oh! World Championship 2025: MASTER DUEL.
+Para aquellos que aspiran a convertirse en los mejores del mundo.
+[IDS_ITEMDESC.ID1073017]
+Un protector con el logotipo de la DC 2025 SEP. 
+Para los que participaron la Duelist Cup e hicieron que el evento sea todo un éxito.
 [IDS_ITEMDESC.ID1075001]
 Protectores que representan una escena de Yu-Gi-Oh! CARD GAME THE CHRONICLES.
 Los duelistas del lugar profirieron un grito de alegría para conmemorar este prestigioso evento.
+[IDS_ITEMDESC.ID1075002]
+Protectores que tienen un diseño clave de Yu-Gi-Oh! CARD GAME THE CHRONICLES.
+La muchacha, equipada con armas tecnológicas superavanzadas, atraviesa el campo de batalla para afrontar un encuentro trascendental.
+[IDS_ITEMDESC.ID1075006]
+Protectores que tienen un diseño clave de Yu-Gi-Oh! CARD GAME THE CHRONICLES.
+¿Su encuentro fue obra del destino o del azar? Lo que provocó fue una serie de sucesos que dejaron una marca indeleble en el mundo abisal.
 [IDS_ITEMDESC.ID1080001]
 Una sencilla caja de Decks de tonos rojos.
 La primera caja de Decks que recibes siempre es especial, ¿no crees?
@@ -2334,6 +2518,9 @@ Aunque su fuerza se estaba debilitando, su espíritu se mantenía firme. Al desp
 [IDS_ITEMDESC.ID1080029]
 Una caja de cartas que representa el "<card mrk='19021'/>".
 Un dragón demoníaco abrasador cuya ferocidad escarlata no tiene parangón.
+[IDS_ITEMDESC.ID1080030]
+Una caja de cartas que representa a "<card mrk='19500'/>".
+Después de evolucionar a una forma trascendental, este halcón de voluntad férrea despliega sus alas de rebelión.
 [IDS_ITEMDESC.ID1082001]
 Una caja para Decks con un diseño inspirado en la gran extensión galáctica de la que provienen los Monstruos Xyz. 
 Ideal para los Decks que se centran en la Invocación por Xyz.
@@ -2394,6 +2581,9 @@ Perfecta para Decks precoces.
 [IDS_ITEMDESC.ID1082020]
 Una caja de cartas basadas en el Caza del Cielo que usa "<card mrk='14829'/>".
 Perfecta para Decks que priorizan el camino más eficiente hacia la victoria.
+[IDS_ITEMDESC.ID1082021]
+Una caja de cartas que representa un conflicto que abarca todo un continente.
+Perfecta para los Decks de quienes luchan en territorios septentrionales.
 [IDS_ITEMDESC.ID1090001]
 Un Campo que representa un bosque verde y frondoso de una profundidad desconocida.
 Aunque la naturaleza puede ser muy serena, también puede albergar muchos peligros. Avanza con cuidado.
@@ -2473,6 +2663,9 @@ El poder que descendió desde lo alto no tardará en retumbar y sacudir el cielo
 [IDS_ITEMDESC.ID1090026]
 Un Campo de Duelo con un bosque teñido por los cerezos rosas.
 Aunque los pétalos que caen representan lo efímero, en este mundo pueden disfrutarse durante más tiempo.
+[IDS_ITEMDESC.ID1090027]
+Un Campo de Duelo que muestra un bosque en todo su esplendor otoñal.
+Una débil brisa susurra entre las hojas mientras unas sombras silenciosas perfilan unas alas plegadas.
 [IDS_ITEMDESC.ID1090028]
 Un Campo de Duelo con un bosque donde no para de nevar.
 En este mundo, hay que ser precavido incluso con los muñecos de nieve.
@@ -2575,6 +2768,9 @@ La artesanía, el orgullo y el alma de los artesanos que viven y respiran en las
 [IDS_ITEMDESC.ID1100026]
 Partes del Campo de un bosque teñido por los cerezos rosas.
 El viento ha soplado los pétalos hasta el agujero y lo ha colmado.
+[IDS_ITEMDESC.ID1100027]
+Partes del Campo de un bosque otoñal.
+En medio del silencio, dos grietas se abren de pleno para recoger las hojas caídas.
 [IDS_ITEMDESC.ID1100028]
 Partes del Campo de un bosque en el que la blancura se extiende sin fin.
 El agujero permanece abierto por mucho que nieve.
@@ -2812,6 +3008,9 @@ La gente desea y reza sobre este diseño que simboliza al dragón legendario par
 [IDS_ITEMDESC.ID1110026]
 Un enclave en un bosque teñido por los cerezos rosas.
 No hay suficientes flores de cerezos para formar una alfombra, pero sí que construyen un bonito patrón.
+[IDS_ITEMDESC.ID1110027]
+Un enclave de un bosque otoñal.
+Serenidad y esplendor forman la pareja perfecta en este escenario lleno de hojas que flotan en el aire.
 [IDS_ITEMDESC.ID1110028]
 Un enclave de un bosque en el que la blancura se extiende sin fin.
 Aquellos que prefieren el frío apreciarán el grueso manto de nieve.
@@ -2904,6 +3103,9 @@ coming soon
 [IDS_ITEMDESC.ID1111024]
 Un enclave inspirado en el diseño nostálgico de un velocímetro.
 Aunque sea técnicamente posible, alcanzar tal velocidad pondrá a prueba a tu máquina hasta el límite.
+[IDS_ITEMDESC.ID1111025]
+Un enclave inspirado en un tesoro capaz de controlar todo tipo de rituales.
+Se trata de una réplica que no alberga nada del poder original.
 [IDS_ITEMDESC.ID1111026]
 Un enclave con la forma del tocón favorito de alguien.
 Ese alguien no podría resistirse a sentarse en él.
@@ -2929,6 +3131,9 @@ Aunque es hora de empezar el día, el peso de la depresión lo mantiene anclado 
 [IDS_ITEMDESC.ID1111043]
 Un enclave que muestra los "<card mrk='20237'/>".
 Hay que andarse con sumo cuidado en el Bosque Blanco, lugar en el que habita una bruja aterradora.
+[IDS_ITEMDESC.ID1111044]
+Un enclave inspirado en un ser mecánico que porta un reactor de energía revolucionario.
+Puede que la situación se pueda resolver gracias a la potencia y a la resistencia del reactor.
 [IDS_ITEMDESC.ID1111045]
 Un dulce enclave ideal para saborear un mundo de azúcar junto a la fauna local.
 Te convendría asegurarte de que no haya ninguna criatura a la que se le antojen tus chuches favoritas.
@@ -2944,6 +3149,9 @@ La vasta tierra sobre la que caminamos nos ofrece desafíos y regalos a todos po
 [IDS_ITEMDESC.ID1111050]
 Un enclave inspirado en el emblema del AGUA.
 Ayuda a dar vida y encarna la dualidad: amable y sereno, pero resuelto e impaciente.
+[IDS_ITEMDESC.ID1111051]
+Un enclave inspirado en el emblema del FUEGO.
+Lo que empieza como una chispa, va volviéndose más cálido y brillante, hasta que se transforma en una conflagración que todo lo incinera.
 [IDS_ITEMDESC.ID1111052]
 Un enclave inspirado en el emblema del VIENTO.
 Una brisa agradable insufla una bendición tras otra, mientras que ráfagas súbitas se llevan volando a cualquier intruso.
@@ -2953,12 +3161,21 @@ El poder oceánico del que hablan las leyendas se manifiesta a modo de potentes 
 [IDS_ITEMDESC.ID1111057]
 Un enclave inspirado en un escudo famoso de la antigüedad.
 Se trata de un enclave muy sólido, ya que es capaz de bloquear cualquier ataque contundente.
+[IDS_ITEMDESC.ID1111058]
+Un Enclave inspirado en el santuario que apareció después de una actividad sísmica que cambió el terreno.
+La energía que emana el anillo sagrado de la isla se puede palpar.
 [IDS_ITEMDESC.ID1111061]
 Un enclave inspirado en los cofres del tesoro que aguardan a los aventureros.
 ¿Alguna vez te has preguntado por qué hay cofres y objetos preciados en una mazmorra? Pues deberías.
 [IDS_ITEMDESC.ID1111062]
 Un enclave inspirado en un grupo de guerreros escarlata.
 En su interior arde un espíritu desafiante que infunde a quien entre en contacto con él una gran ansia por luchar.
+[IDS_ITEMDESC.ID1111064]
+Un enclave inspirado en unas criaturas extrañas e inestables.
+Parece que estas burbujas rosas con forma de huevo no van a crecer más.
+[IDS_ITEMDESC.ID1111066]
+Un enclave inspirado en un círculo mágico cuyo inmenso poder se ha desbordado.
+Existen incluso casos en los que su invocador se ha fusionado con los monstruos, y ha conocido un trágico fin.
 [IDS_ITEMDESC.ID1112001]
 Un enclave de un Coliseo.
 El fuego brillante baila como si cantara las alabanzas de los valientes guerreros que allí combaten.
@@ -2967,6 +3184,9 @@ Un enclave que conmemora la participación en el evento MASTER DUEL del Yu-Gi-Oh
 Su diseño austero pone de manifiesto el prestigio de la competición.
 [IDS_ITEMDESC.ID1113002]
 Un enclave que conmemora la participación en el evento MASTER DUEL del Yu-Gi-Oh! World Championship 2024.
+Su diseño austero pone de manifiesto el prestigio de la competición.
+[IDS_ITEMDESC.ID1113003]
+Un enclave que conmemora la participación en el evento MASTER DUEL del Yu-Gi-Oh! World Championship 2025.
 Su diseño austero pone de manifiesto el prestigio de la competición.
 [IDS_ITEMDESC.ID1120001]
 ¡Prueba a luchar con este Deck repleto de cartas fáciles de usar! ¡Contra los adversarios más complicados, utiliza Cartas Mágicas, Cartas de Trampa e Invocaciones Xyz, por Sincronía y por Enlace!
@@ -3038,7 +3258,8 @@ Puedes realizar Invocaciones por Fusión con monstruos del Deck usando "<card mr
 Este Deck "<category id='55'/>" consigue la supremacía a través de un poder abrasador.
 A partir de una carta como el "<card mrk='19014'/>", realiza una serie de Invocaciones por Sincronía: primero el "<card mrk='12695'/>" y después el "<card mrk='19021'/>". No solo puedes Invocar por Sincronía a un poderoso Monstruo de Sincronía, también puedes usar el efecto del "<card mrk='19021'/>" para convocar al "<card mrk='7735'/>". ¡Utiliza el altísimo ATK de estos Monstruos de Sincronía para hacerte con la victoria!
 [IDS_ITEMDESC.ID1120030]
-coming soon
+Este Deck de "<category id='106'/>" simboliza el poder de los monstruos reunidos.
+Comienza tu ofensiva con monstruos de Nivel 4, como "<card mrk='19460'/>", que puede allanar el camino a "<card mrk='15519'/>", "<card mrk='19501'/>" y "<card mrk='12868'/>". Usa sus efectos para Invocar a "<card mrk='19459'/>" y reunir a una temible banda de monstruos de "<category id='106'/>". Después usa "<card mrk='12868'/>" con Material Xyz para Invocar por Enlace a "<card mrk='14205'/>" y convocar a poderosos Monstruos Xyz mientras sigues Invocando a otros monstruos. Cuando todo esté en su lugar, usa cartas como "<card mrk='19511'/>" en el turno de tu adversario para convocar a "<card mrk='19500'/>". Esta carta te facilitará la victoria de inmediato al aniquilar las cartas del Campo del adversario y causarles daño directo, todo ello sin sufrir los efectos de otras cartas.
 [IDS_ITEMDESC.ID1120031]
 coming soon
 [IDS_ITEMDESC.ID1120032]
@@ -3290,21 +3511,28 @@ No hay nada más aburrido que una historia que transcurre exactamente según lo 
 Adopta la forma de una muchacha delicada de cuyos ojos perpetuamente abiertos se desprende una mirada vacía.
 Su cuerpo, formado por un cúmulo de rencores, no tiene dueño.
 [IDS_ITEMDESC.ID1130083]
-coming soon
+Estos dos magos con habilidades extraordinarias se conocen desde jóvenes.
+Una sonrisa alegre adorna sus caras cuando reciben el medallón de su clan a una edad temprana.
 [IDS_ITEMDESC.ID1130084]
-coming soon
+Uno de los dragones de los que se dice que se aparece ante los elegidos que portan la Marca del Dragón.
+Sus pétalos, fríos y bellos en su oscuridad, se esparcen y dañan a todo lo que rodean.
 [IDS_ITEMDESC.ID1130085]
-coming soon
+Con la llegada de sus últimos días, una chica ciega busca la luz y se encuentra con un ser maligno.
+Juego de sombras, falsa luz. Una historia de sombras sin luces.
 [IDS_ITEMDESC.ID1130086]
-coming soon
+El diseño clave del Yu-Gi-Oh! World Championship 2025.
+Duelistas, el éxito os espera al final del camino.
 [IDS_ITEMDESC.ID1130087]
 coming soon
 [IDS_ITEMDESC.ID1130088]
-coming soon
+Una <card mrk='12852'/> con la que Aleister lo arriesgó todo para albergar a un sinfín de monstruos en su interior.
+La consolidación de la magia sobrenatural por fin hecha realidad.
 [IDS_ITEMDESC.ID1130089]
-coming soon
+Fruto de un entendimiento y un esfuerzo mutuos, surge el milagro.
+¡Únete a los vientos de la incertidumbre y crea un futuro que conecte al mundo!
 [IDS_ITEMDESC.ID1130090]
-coming soon
+Una peculiar diablesa famosa por sus lágrimas carmesí.
+Necesita unas palabras amorosas para poder usar todo su poder.
 [IDS_ITEMDESC.ID1130091]
 coming soon
 [IDS_ITEMDESC.ID1130092]
@@ -3325,6 +3553,47 @@ coming soon
 coming soon
 [IDS_ITEMDESC.ID1130100]
 coming soon
+[IDS_ITEMDESC.ID1132003]
+"He creado mi propia y perversa página web que recrea a la perfección el pueblo donde nací".
+Dicho esto, corrió felizmente a los foros a medida que la décima visita llegaba.
+[IDS_ITEMDESC.ID1140001]
+Un tique que te permite comprar un sobre del Legado.
+¿Cuál será tu legado?
+[IDS_ITEMDESC.ID1141001]
+Un tique que te permite comprar una recompensa Xyz.
+Uno de los grandes misterios del universo del Campo de Duelo son los materiales revestidos que convocan a un gran poder.
+[IDS_ITEMDESC.ID1141002]
+Un tique que te permite comprar una recompensa de Fusión.
+La unidad se produce de muchas formas y una de ellas es la Fusión. Evoluciona y hazte más fuerte gracias al poder de la Fusión.
+[IDS_ITEMDESC.ID1141003]
+Un tique que te permite comprar una recompensa de Sincronía.
+Hazte con más estrellas para que tus monstruos brillen con más intensidad.
+[IDS_ITEMDESC.ID1141004]
+Un tique que te permite comprar recompensas de la Duelist Cup.
+Si luchas en Duelos, podrás descubrir muchas cartas.
+[IDS_ITEMDESC.ID1150001]
+El número máximo de Decks que puedes tener puede aumentar en 1.
+[IDS_ITEMDESC.ID1160001]
+Aumenta en 1 el número máximo de repeticiones que puedes guardar.
+[IDS_ITEMDESC.ID1170001]
+coming soon
+[IDS_ITEMDESC.ID1170002]
+coming soon
+[IDS_ITEMDESC.ID1180001]
+Una moneda en la que aparece el dragón brillante que trae una nueva leyenda.
+Sus ojos celestes resplandecen.
+[IDS_ITEMDESC.ID1180002]
+Una moneda en la que aparece una olla mágica que, según se dice, trae la felicidad.
+Su expresión codiciosa resplandece.
+[IDS_ITEMDESC.ID1180003]
+coming soon
+[IDS_ITEMDESC.ID1180004]
+Una moneda en la que aparece el rompecabezas tridimensional que se descubrió entre ruinas antiguas.
+La insignia del Ojo de Wdjat resplandece.
+[IDS_ITEMDESC.ID1180005]
+coming soon
+[IDS_ITEMDESC.ID1190001]
+El número máximo de marcadores que puedes tener se puede aumentar.
 [IDS_ITEMDESC.ID0000]
 No se ha encontrado.
 [IDS_ITEMDESC.ID0001]
@@ -3360,64 +3629,3 @@ Un orbe de AGUA para desbloquear capítulos bloqueados en el Mode Solo.
 Un orbe de FUEGO para desbloquear capítulos bloqueados en el Mode Solo.
 [IDS_ITEMDESC.ID0013]
 Un orbe de VIENTO para desbloquear capítulos bloqueados en el Mode Solo.
-[IDS_ITEMDESC.ID1140001]
-Un tique que te permite comprar un sobre del Legado.
-¿Cuál será tu legado?
-[IDS_ITEMDESC.ID1141001]
-Un tique que te permite comprar una recompensa Xyz.
-Uno de los grandes misterios del universo del Campo de Duelo son los materiales revestidos que convocan a un gran poder.
-[IDS_ITEMDESC.ID1141002]
-Un tique que te permite comprar una recompensa de Fusión.
-La unidad se produce de muchas formas y una de ellas es la Fusión. Evoluciona y hazte más fuerte gracias al poder de la Fusión.
-[IDS_ITEMDESC.ID1141003]
-Un tique que te permite comprar una recompensa de Sincronía.
-Hazte con más estrellas para que tus monstruos brillen con más intensidad.
-[IDS_ITEMDESC.ID1141004]
-Un tique que te permite comprar recompensas de la Duelist Cup.
-Si luchas en Duelos, podrás descubrir muchas cartas.
-[IDS_ITEMDESC.ID1150001]
-El número máximo de Decks que puedes tener puede aumentar en 1.
-[IDS_ITEMDESC.ID1160001]
-Aumenta en 1 el número máximo de repeticiones que puedes guardar.
-[IDS_ITEMDESC.ID1020158]
-Un título que se otorga a los duelistas que han logrado buenos resultados en el evento "Carrera de dados - Fusion, Xyz y Enlace".
-Un brillante futuro aguarda a aquellos valientes que confían en sí mismos.
-[IDS_ITEMDESC.ID1020159]
-Un título otorgado a los duelistas que terminaron entre los 10 mejores de las eliminatorias del WCS 2025.
-Muchos han sido testigos de que este duelista es capaz de desafiar al mundo.
-[IDS_ITEMDESC.ID1020160]
-Un título otorgado a los duelistas que terminaron entre los 100 mejores de las eliminatorias del WCS 2025.
-La prueba de que este duelista ha demostrado su conocimiento en muchos Duelos y un gran dominio de sus cartas en la batalla contra el mundo.
-[IDS_ITEMDESC.ID1020161]
-Un título otorgado a los duelistas que terminaron entre los 500 mejores de las eliminatorias del WCS 2025.
-La prueba de que este duelista ha perfeccionado sus habilidades para alzarse con la victoria en muchas batallas para desafiar al mundo.
-[IDS_ITEMDESC.ID1020162]
-Un título otorgado a los duelistas que terminaron entre los 1000 mejores de las eliminatorias del WCS 2025.
-Una medalla de honor otorgada a un duelista infatigable que ha luchado con valentía entre los mejores duelistas del mundo.
-[IDS_ITEMDESC.ID1020163]
-Un título otorgado a los duelistas que terminaron entre los 10000 mejores de las eliminatorias del WCS 2025.
-Para quienes han salido victoriosos contra rivales formidables y se han anotado sus victorias.
-[IDS_ITEMDESC.ID1020164]
-Un título otorgado a los duelistas que alcanzaron el DLv. MÁX en las eliminatorias del WCS 2025.
-Para quienes han demostrado su capacidad como duelistas dignos de avanzar hasta las eliminatorias regionales.
-[IDS_ITEMDESC.ID1020165]
-Un título que se otorga a los duelistas que han logrado buenos resultados en el festival UNDER☆5.
-El orgullo de los duelistas despierta a causa de las cartas que más atesoran.
-[IDS_ITEMDESC.ID1020166]
-Un título que se otorga a los duelistas que han logrado buenos resultados en el festival de Fusión y Enlace.
-El orgullo de los duelistas despierta a causa de las cartas que más atesoran.
-[IDS_ITEMDESC.ID1070121]
-Protectores que representan a una entidad que ha dejado atrás su eterna contienda con su archienemigo.
-Para quienes viven en la red.
-[IDS_ITEMDESC.ID1070122]
-Protectores que representan los "", la herramienta definitiva de la reina que domina varios tipos de cartas.
-Para quienes ansían dominar mundos virtuales maravillosos.
-[IDS_ITEMDESC.ID1073013]
-Un protector con el logotipo de las eliminatorias del WCS 2025.
-Para los que habéis participado en la sección de MASTER DUEL y habéis hecho que el evento sea todo un éxito.
-[IDS_ITEMDESC.ID1075002]
-Protectores que tienen un diseño clave de Yu-Gi-Oh! CARD GAME THE CHRONICLES.
-La muchacha, equipada con armas tecnológicas superavanzadas, atraviesa el campo de batalla para afrontar un encuentro trascendental.
-[IDS_ITEMDESC.ID1082021]
-Una caja de cartas que representa un conflicto que abarca todo un continente.
-Perfecta para los Decks de quienes luchan en territorios septentrionales.

@@ -96,6 +96,9 @@ Its immense power, fitting of its chaotic moniker, mercifully unleashes its whip
 [IDS_ITEMDESC.ID1000034]
 A being that helps a man on a journey to reclaim his true self.
 Although it should have disappeared, it appeared once again, perhaps because the man's sense of self was still incomplete.
+[IDS_ITEMDESC.ID1000036]
+A gifted magician from ancient times who mastered many forbidden arts.
+He disappeared from history without a trace upon the advent of "<card mrk='10282'/>".
 [IDS_ITEMDESC.ID1000041]
 A demonic beast that sleeps like mud.
 In order to eat others' dreams, it releases a sleep-inducing odor from its body, but it always puts itself to sleep.
@@ -206,7 +209,8 @@ coming soon
 [IDS_ITEMDESC.ID1001036]
 coming soon
 [IDS_ITEMDESC.ID1001037]
-coming soon
+The Pyroxene Warriors, even-tempered knights with hearts that secretly yearn for justice.
+They possess the ability to fuse as they require.
 [IDS_ITEMDESC.ID1001038]
 coming soon
 [IDS_ITEMDESC.ID1001039]
@@ -330,6 +334,8 @@ coming soon
 [IDS_ITEMDESC.ID1003009]
 coming soon
 [IDS_ITEMDESC.ID1003010]
+coming soon
+[IDS_ITEMDESC.ID1005001]
 coming soon
 [IDS_ITEMDESC.ID1010001]
 An Icon depicting an anonymous Duelist.
@@ -652,21 +658,28 @@ He takes his natural place as a jester on the stage of infamy.
 An Icon depicting a being of chaos and total purity.
 Crushed by overwhelming love and despair, it was formed from the purest 666 "Dogmatika" souls.
 [IDS_ITEMDESC.ID1010109]
-coming soon
+An Icon depicting a girl tethered to evanescent shadows.
+ An evil entity was stricken by her gaze and granted her wish.
 [IDS_ITEMDESC.ID1010110]
-coming soon
+An Icon depicting the crest of samurai famed for their outstanding martial prowess.
+They are as fearless as their stalwart hearts are strong, and nothing can shake their convictions or the loyalty they have for their master.
 [IDS_ITEMDESC.ID1010111]
-coming soon
+An Icon featuring a key visual for the Yu-Gi-Oh! World Championship 2025.
+Witness the strongest Duelists in the world.
 [IDS_ITEMDESC.ID1010112]
 coming soon
 [IDS_ITEMDESC.ID1010113]
-coming soon
+An Icon depicting a gifted magician from ancient times.
+He was known to have even mastered the forbidden art of summoning divine spirits from other worlds.
 [IDS_ITEMDESC.ID1010114]
-coming soon
+An Icon depicting "<card mrk='13346'/>" after obtaining a new power.
+It may be small, but it would risk life and tiny limb to protect its friends.
 [IDS_ITEMDESC.ID1010115]
-coming soon
+An Icon depicting a young man who survived the horrors of war.
+Shouldering the spirits of those who perished, he swore to protect those that remain.
 [IDS_ITEMDESC.ID1010116]
-coming soon
+An Icon depicting a monster that was assembled from building blocks.
+Vaguely resembles a dragon despite not actually being one.
 [IDS_ITEMDESC.ID1010117]
 coming soon
 [IDS_ITEMDESC.ID1010118]
@@ -829,23 +842,38 @@ An Icon given to those who left impressive results in the qualifier round held i
 An Icon with a bronze "WCS 2025 Qualifiers" logo.
 An Icon given to those who won numerous battles in the qualifier round held in 2025 against the world.
 [IDS_ITEMDESC.ID1011052]
-coming soon
+An Icon with a golden "Synchro Cup" logo. 
+Given to those who performed above and beyond in the Synchro Cup.
 [IDS_ITEMDESC.ID1011053]
-coming soon
+An Icon with a silver "Synchro Cup" logo. 
+Given to those who achieved considerable results in the Synchro Cup.
 [IDS_ITEMDESC.ID1011054]
-coming soon
+An Icon with a bronze "Synchro Cup" logo. 
+Given to those who conquered numerous battles in the Synchro Cup.
 [IDS_ITEMDESC.ID1011055]
-coming soon
+An Icon with the prestigious and splendorous Synchro Cup logo.
+This is awarded to the winning Duelist in the Synchro Cup.
 [IDS_ITEMDESC.ID1011056]
-coming soon
+An Icon given to Champion Duelists in the Yu-Gi-Oh! World Championship 2025: MASTER DUEL event.
+Many Duelists watched the final battle play out and are still inspired by it to this day.
 [IDS_ITEMDESC.ID1011057]
-coming soon
+An Icon given to the runner-up Duelists in the Yu-Gi-Oh! World Championship 2025: MASTER DUEL event.
+Many Duelists watched the final battle play out and are still inspired by it to this day.
 [IDS_ITEMDESC.ID1011058]
-coming soon
+An Icon given to those who finished in the top 4 in the Yu-Gi-Oh! World Championship 2025: MASTER DUEL event.
+Their incredible Dueling instincts captivated the entire venue.
 [IDS_ITEMDESC.ID1011059]
-coming soon
+An Icon given to participants in the Yu-Gi-Oh! World Championship 2025: MASTER DUEL event.
+It is a symbol of those who fought to make their mark in history.
 [IDS_ITEMDESC.ID1011060]
-coming soon
+An Icon with a golden "DC 2025 SEP" logo. 
+Given to those who performed above and beyond in the Duelist Cup.
+[IDS_ITEMDESC.ID1011061]
+An Icon with a silver "DC 2025 SEP" logo. 
+Given to those who achieved considerable results in the Duelist Cup.
+[IDS_ITEMDESC.ID1011062]
+An Icon with a bronze "DC 2025 SEP" logo. 
+Given to those who conquered numerous battles in the Duelist Cup.
 [IDS_ITEMDESC.ID1012001]
 An Icon depicting a "Krawler," Monsters who have overrun a certain world. This one is part of the higher class.
 They mercilessly destroy the efforts of human civilization that have lasted generations.
@@ -1059,6 +1087,12 @@ She had sworn a vow with her older partner, whose whereabouts are now unknown fo
 [IDS_ITEMDESC.ID1012073]
 An Icon depicting an unruly, mischief-loving flame.
 Despite its diminutive size, it burns with remarkable intensity, hinting at its potential for exponential growth.
+[IDS_ITEMDESC.ID1012074]
+An Icon depicting an insatiable ruler of the sea.
+He amassed an army to further expand his ambitious aquatic kingdom.
+[IDS_ITEMDESC.ID1012075]
+An Icon depicting a divine bird that guards ever vigilantly.
+It incinerates all who would dare intrude upon its sanctuary.
 [IDS_ITEMDESC.ID1013001]
 An Icon depicting a young boy who truly enjoys baseball.
 You may have encountered him at a school in some era or other, being spurred on to greatness by his passion for baseball.
@@ -1071,6 +1105,9 @@ The Duelists at the venue let out a great cheer to mark this prestigious event.
 [IDS_ITEMDESC.ID1013004]
 An Icon depicting a scene from Yu-Gi-Oh! CARD GAME THE CHRONICLES.
 Tearing across the battlefield, the girl equipped with super-advanced technological weaponry has a world-changing encounter.
+[IDS_ITEMDESC.ID1013005]
+An Icon depicting a scene from Yu-Gi-Oh! CARD GAME THE CHRONICLES.
+Was their meeting the work of fate, or unavoidable? What unfolds is a recollection of events that left an indelible mark on an abyssal world.
 [IDS_ITEMDESC.ID1020001]
 A Title given to Duelists who began their Dueling journey with Yu-Gi-Oh! MASTER DUEL.
 It's never too late to start Dueling.
@@ -1541,6 +1578,87 @@ Impelled by a swirling gale, the intense blaze reduces all to ash.
 [IDS_ITEMDESC.ID1020157]
 A Title given to Duelists of incomparable determination in the face of endless battles.
 Their intense warrior's thirst for victory gives them great charisma.
+[IDS_ITEMDESC.ID1020158]
+A Title given to Duelists who achieved results in the "Dice Rally - Fusion & Xyz & Link" event.
+A brilliant future awaits those courageous enough to trust themselves.
+[IDS_ITEMDESC.ID1020159]
+A Title given to Duelists who made it to the top 10 in "WCS 2025 Qualifiers."
+Many have witnessed their ability as a Duelist worthy of challenging the world.
+[IDS_ITEMDESC.ID1020160]
+A Title given to Duelists who made it to the top 100 in "WCS 2025 Qualifiers."
+Proof of a Duelist that demonstrated their knowledge of many Duelists and mastery of their cards in the battle against the world.
+[IDS_ITEMDESC.ID1020161]
+A Title given to Duelists who made it to the top 500 in "WCS 2025 Qualifiers."
+Proof of a Duelist who honed their skills to come out victorious in many battles to challenge the world.
+[IDS_ITEMDESC.ID1020162]
+A Title given to Duelists who made it to the top 1000 in "WCS 2025 Qualifiers."
+A medal of honor given to the unfaltering Duelist that fought valiantly among the world's best Duelists.
+[IDS_ITEMDESC.ID1020163]
+A Title given to Duelists who made it to the top 10000 in "WCS 2025 Qualifiers."
+For those who came out victorious over formidable rivals and tallied their victories.
+[IDS_ITEMDESC.ID1020164]
+A Title given to Duelists who reached DLv. MAX in "WCS 2025 Qualifiers."
+For those that displayed their ability as a Duelist worthy of advancing to the Regional Qualifiers.
+[IDS_ITEMDESC.ID1020165]
+A Title given to Duelists who achieved results in the UNDER☆5 Festival.
+The pride of Duelists is awoken by the cards they hold dearest.
+[IDS_ITEMDESC.ID1020166]
+A Title given to Duelists who achieved results in the Fusion x Link Festival.
+The pride of Duelists is awoken by the cards they hold dearest.
+[IDS_ITEMDESC.ID1020167]
+A Title awarded to the champion Duelist of the Synchro Cup.
+It is proof that this Duelist reached the top, making their mark in Yu-Gi-Oh! MASTER DUEL history.
+[IDS_ITEMDESC.ID1020168]
+A Title given to Duelists who made it to the top 10 in Synchro Cup.
+Tales of their many great Duels and their bravery in competing for the throne will continue to be told for years to come.
+[IDS_ITEMDESC.ID1020169]
+A Title given to Duelists who made it to the top 100 in Synchro Cup.
+This is proof of a feat that many Duelists strive to achieve.
+[IDS_ITEMDESC.ID1020170]
+A Title given to Duelists who made it to the top 500 in Synchro Cup.
+Only the strongest of the strong may possess a heart like yours, tempered by many hard-fought Duels.
+[IDS_ITEMDESC.ID1020171]
+A Title given to Duelists who made it to the top 1,000 in Synchro Cup.
+Kudos to the Duelists who have continuously polished their Decks and tactics to achieve this result.
+[IDS_ITEMDESC.ID1020172]
+A Title given to Duelists who made it to the top 10000 in Synchro Cup.
+It was earned through victory after victory against fierce competitors in the 2nd STAGE.
+[IDS_ITEMDESC.ID1020173]
+A Title given to Duelists who made it to the 2nd Stage in Synchro Cup.
+It is proof of your accomplishment in making it through the hotly contested 1st Stage.
+[IDS_ITEMDESC.ID1020174]
+A Title given to the Champion Duelists in the Yu-Gi-Oh! World Championship 2025: MASTER DUEL event.
+Their journey through fierce Duels fought alongside their friends will echo through time, remembered and retold for generations to come.
+[IDS_ITEMDESC.ID1020175]
+A Title given to the runner-up Duelists in the Yu-Gi-Oh! World Championship 2025: MASTER DUEL event.
+Their journey through fierce Duels fought alongside their friends will echo through time, remembered and retold for generations to come.
+[IDS_ITEMDESC.ID1020176]
+A Title given to those who finished in the top 4 in the Yu-Gi-Oh! World Championship 2025: MASTER DUEL event.
+Their performance will become a goal for many Duelists with voices of praise resounding endlessly.
+[IDS_ITEMDESC.ID1020177]
+A Title given to those who finished in the top 12 in the Yu-Gi-Oh! World Championship 2025: MASTER DUEL event.
+Only a very few can reach this level. Their achievement stands as undeniable proof of their skill.
+[IDS_ITEMDESC.ID1020179]
+A Title given to Duelists who achieved results in a chosen narrative with the power of various cards.
+The stories spun through battle will leave something that will resonate with many Duelists.
+[IDS_ITEMDESC.ID1020180]
+A Title given to Duelists who made it to the top 10 in DC 2025 SEP.
+Tales of their many great Duels and their bravery in competing for the throne will continue to be told for years to come.
+[IDS_ITEMDESC.ID1020181]
+A Title given to Duelists who made it to the top 100 in DC 2025 SEP.
+This is proof of a feat that many Duelists strive to achieve.
+[IDS_ITEMDESC.ID1020182]
+A Title given to Duelists who made it to the top 500 in DC 2025 SEP.
+Only the strongest of the strong may possess a heart like yours, tempered by many hard-fought Duels.
+[IDS_ITEMDESC.ID1020183]
+A Title given to Duelists who made it to the top 1,000 in DC 2025 SEP.
+Kudos to the Duelists who have continuously polished their Decks and tactics to achieve this result.
+[IDS_ITEMDESC.ID1020184]
+A Title given to Duelists who made it to the top 10000 in DC 2025 SEP.
+It was earned through victory after victory against fierce competitors in the 2nd STAGE.
+[IDS_ITEMDESC.ID1020185]
+A Title given to Duelists who made it to the 2nd Stage in DC 2025 SEP.
+It is proof of your accomplishment in making it through the hotly contested 1st Stage.
 [IDS_ITEMDESC.ID1021001]
 A Title only bestowed upon a special occasion.
 [IDS_ITEMDESC.ID1021002]
@@ -1648,6 +1766,12 @@ The flames' intense thermal energy causes phenomenally powerful explosions.
 [IDS_ITEMDESC.ID1030036]
 A purple and yellow Icon Frame that evokes beguiling darkness and warming light.
 The colors, reminiscent of twilight, stir a flood of emotions.
+[IDS_ITEMDESC.ID1030037]
+A yellow and blue Icon Frame that evokes a golden sun rising over the sea.
+It calls to mind bright summer days with sparkling ocean waters set aglow by sunlight.
+[IDS_ITEMDESC.ID1030039]
+An Icon Frame that evokes the power of Fusion—the foundation of the Pyroxene Warriors.
+ It strains their Core but can be used consecutively.
 [IDS_ITEMDESC.ID1031001]
 An Icon Frame that is reminiscent of the gate used by Sky Strikers, to transfer their armaments.
 When the path opens to those who fight for peace, a new power to overcome hardship awakens.
@@ -1693,6 +1817,12 @@ An Icon Frame evoking the hidden power of "<card mrk='4064'/>".
 [IDS_ITEMDESC.ID1031015]
 An Icon Frame that evokes the vast uncharted domain accessed through a huge hole.
 Churning within the abyss are great torrents of dangerous data born out of humanity's malice.
+[IDS_ITEMDESC.ID1031016]
+An Icon Frame reminiscent of the shining orbs of light that surround Xyz Monsters.
+ They brim with the intense willpower of those who build the Overlay Network.
+[IDS_ITEMDESC.ID1031017]
+An Icon Frame evoking the Fusion Spell of certain A.I.s.
+It appears to bear no malice towards the human race.
 [IDS_ITEMDESC.ID1032001]
 An Icon Frame in the shape of a circular decoration, which can be seen in a certain region as the year draws to a close.
 They are hung with the sincere wish for happiness and joy in times to come.
@@ -1732,6 +1862,12 @@ The next stage is waiting for you!
 [IDS_ITEMDESC.ID1033003]
 An Icon Frame reminiscent of the shining orbs of light that surround Xyz Monsters.
 This is awarded to Duelists who achieved good results in the Xyz Cup.
+[IDS_ITEMDESC.ID1033004]
+An Icon Frame reminiscent of the rings of light visible when Synchro Summoning.
+ This is awarded to Duelists who achieved good results in the Synchro Cup.
+[IDS_ITEMDESC.ID1033005]
+An Icon awarded to the participants in the MASTER DUEL event of the Yu-Gi-Oh! World Championship 2025.
+The next stage is waiting for you!
 [IDS_ITEMDESC.ID1070001]
 Card Sleeves that bear the same design as the backs of Yu-Gi-Oh! TCG Cards.
 If it ain't broke, why fix it?
@@ -2088,6 +2224,26 @@ For those who put their lives on the line in battle.
 [IDS_ITEMDESC.ID1070120]
 Protectors depicting rebellious fangs that bear an iron will.
 For those who resist oppression.
+[IDS_ITEMDESC.ID1070121]
+Protectors depicting an entity that has risen above its long-standing feud with its arch-rival.
+For those who reside in the network.
+[IDS_ITEMDESC.ID1070122]
+Protectors depicting "<category id='45'/>", the ultimate tool of the queen who wields power over different card Types.
+For those who desire dominion over wondrous virtual worlds.
+[IDS_ITEMDESC.ID1070123]
+Protectors depicting a dragon unfurling its striking, glorious wings.
+For those who strike before opponents know what's coming.
+[IDS_ITEMDESC.ID1070124]
+Protectors depicting roaring mecha-weapons who unleash the forces of FIRE and LIGHT. For those always at full throttle.
+[IDS_ITEMDESC.ID1070125]
+Protectors depicting an ace monster wielding a colossal spear. 
+For those who would seize the winds blowing to a yet unseen world.
+[IDS_ITEMDESC.ID1070126]
+Protectors depicting a force capable of amalgamating the energy to create worlds.
+For those who continue the cycle of rebirth.
+[IDS_ITEMDESC.ID1070130]
+Protectors featuring a key visual for the Yu-Gi-Oh! World Championship 2025.
+For those who challenge the world.
 [IDS_ITEMDESC.ID1071001]
 Protectors that illustrate a warrior who has matured and taken the scars etched in his heart during battles. 
 Perfect for those who always want the best for their dear friends.
@@ -2190,6 +2346,12 @@ For those who wish to end strife.
 [IDS_ITEMDESC.ID1071034]
 Protectors depicting the leader who holds the scarlet warriors together.
 For those whose inner fire gives them an edge in combat.
+[IDS_ITEMDESC.ID1071035]
+Protectors depicting a divine bird that dies to be reborn from the ashes.
+For those protecting their sanctuary.
+[IDS_ITEMDESC.ID1071036]
+Protectors depicting a Sea Serpent with an insatiable appetite for dominion.
+For those whose desire cannot be sated.
 [IDS_ITEMDESC.ID1072001]
 A Protector with the design of "<card mrk='13670'/>" in her Destruction mode armor.
 For players who will claw their way to victory from the flames of the battlefield.
@@ -2245,9 +2407,30 @@ For those who participated in the Duelist Cup and made the event a success.
 [IDS_ITEMDESC.ID1073012]
 A Protector with a "DC 2025 MAR" logo. 
 For those who participated in the Duelist Cup and made the event a success.
+[IDS_ITEMDESC.ID1073013]
+A Protector with a "WCS 2025 Qualifiers" logo.
+To those who participated in the MASTER DUEL division and made the event a success.
+[IDS_ITEMDESC.ID1073014]
+Protectors with the "Synchro Cup" logo.
+ For those who participated in the Synchro Cup and made the event a success.
+[IDS_ITEMDESC.ID1073015]
+A Protector designed with a "Yu-Gi-Oh! World Championship 2025: MASTER DUEL" image.
+To those who witnessed the historical moment.
+[IDS_ITEMDESC.ID1073016]
+Protectors with a Yu-Gi-Oh! World Championship 2025: MASTER DUEL visual design.
+For those who aim to become the best in the world.
+[IDS_ITEMDESC.ID1073017]
+A Protector with a "DC 2025 SEP" logo. 
+For those who participated in the Duelist Cup and made the event a success.
 [IDS_ITEMDESC.ID1075001]
 Protectors depicting a scene from Yu-Gi-Oh! CARD GAME THE CHRONICLES.
 The Duelists at the venue let out a great cheer to mark this prestigious event.
+[IDS_ITEMDESC.ID1075002]
+Protectors featuring a key visual for Yu-Gi-Oh! CARD GAME THE CHRONICLES.
+Tearing across the battlefield, the girl equipped with super-advanced technological weaponry has a world-changing encounter.
+[IDS_ITEMDESC.ID1075006]
+Protectors featuring a key visual for Yu-Gi-Oh! CARD GAME THE CHRONICLES.
+Was their meeting the work of fate, or unavoidable? What unfolds is a recollection of events that left an indelible mark on an abyssal world.
 [IDS_ITEMDESC.ID1080001]
 A simple Deck Box with red accents.
 The first Deck Box you get always grows on you, doesn't it?
@@ -2334,6 +2517,9 @@ Though his strength was fading, the boy's spirit could not be extinguished. He a
 [IDS_ITEMDESC.ID1080029]
 A Card Case depicting "<card mrk='19021'/>".
 An all-incinerating fiendish dragon of unrivaled scarlet ferocity.
+[IDS_ITEMDESC.ID1080030]
+A Card Case depicting "<card mrk='19500'/>".
+Having evolved into a transcendent form, this iron-willed falcon spreads out its wings of rebellion.
 [IDS_ITEMDESC.ID1082001]
 A Deck Case with a design inspired by the great galactic expanse from which Xyz Monsters appear. 
 A great fit for Decks that revolve around Xyz Summoning!
@@ -2394,6 +2580,9 @@ Perfect for precocious Decks.
 [IDS_ITEMDESC.ID1082020]
 A Card Case based on the Sky Striker wielded by "<card mrk='14829'/>".
 Perfect for Decks that prioritize the most efficient path to victory.
+[IDS_ITEMDESC.ID1082021]
+A Card Case depicting a continent-wide conflict.
+Perfect for the Decks of those battling in the northern territories.
 [IDS_ITEMDESC.ID1090001]
 A Field depicting a luscious, green forest of unknown depth.
 As tranquil as nature can be, it can also harbor many dangers. Proceed with caution.
@@ -2473,6 +2662,9 @@ A field where people who believe in a great dragon pray.
 [IDS_ITEMDESC.ID1090026]
 A Duel Field with a forest colored cherry pink.
 Although the falling petals represent transience, they can be enjoyed for an extended time in this world.
+[IDS_ITEMDESC.ID1090027]
+A Duel Field depicting a forest in all its autumnal glory.
+A gentle breeze rustles through the leaves as silent shadows limn ruffled wings.
 [IDS_ITEMDESC.ID1090028]
 A Duel Field with a forest where snow continues to fall.
 In this world, even if it's just a snowman, proceed with caution.
@@ -2575,6 +2767,9 @@ Field Parts from the Blue-Eyes Mausoleum.
 [IDS_ITEMDESC.ID1100026]
 Field Parts from a forest colored cherry pink.
 The wind has blown petals into the hole, filling it up.
+[IDS_ITEMDESC.ID1100027]
+Field Parts from an autumnal forest.
+In the middle of the silence, two crevices yawn wide to welcome fallen leaves.
 [IDS_ITEMDESC.ID1100028]
 Field Parts from a forest where white stretches out endlessly.
 The hole remains gaping no matter how much it snows.
@@ -2812,6 +3007,9 @@ A Stand from the Blue-Eyes Mausoleum.
 [IDS_ITEMDESC.ID1110026]
 A Stand from a forest colored cherry pink.
 The cherry blossoms aren't numerous enough to form a carpet, and instead form a beautiful pattern.
+[IDS_ITEMDESC.ID1110027]
+A Stand from an autumnal forest.
+Serenity and splendor form a perfect pair on this stage amidst drifting autumn leaves.
 [IDS_ITEMDESC.ID1110028]
 A Stand from a forest where white stretches out endlessly.
 The thick sheet of snow is likely to be appreciated by those who favor the cold.
@@ -2904,6 +3102,9 @@ coming soon
 [IDS_ITEMDESC.ID1111024]
 A Stand inspired by the nostalgic design of a speedometer.
 Even if technically possible, speeding at such speed will test your machine to its limit.
+[IDS_ITEMDESC.ID1111025]
+A Stand inspired by a treasure capable of controlling all manner of rituals.
+Being merely a replica, it possesses none of the original's power.
 [IDS_ITEMDESC.ID1111026]
 A Stand in the shape of a certain someone's favorite tree stump.
 That someone wouldn't be able to help but take a seat.
@@ -2929,6 +3130,9 @@ Although it's time to start the day, the weight of depression keeps it pinned to
 [IDS_ITEMDESC.ID1111043]
 A Stand that displays the "<card mrk='20237'/>".
 One must beware of the White Forest, the home of a horrifying witch.
+[IDS_ITEMDESC.ID1111044]
+A Stand modeled on a mechanical life-form shouldering a revolutionary energy reactor.
+The current predicament may be reversed thanks to the reactor's high output and endurance.
 [IDS_ITEMDESC.ID1111045]
 A sweet Stand suited for savoring a sugary world alongside its resident animals.
 You'll want to make sure there are no sweet-toothed creatures submerged inside your snack of choice.
@@ -2944,6 +3148,9 @@ The all-embracing ground beneath our feet gives trials and blessings to all alik
 [IDS_ITEMDESC.ID1111050]
 A Stand modeled on the WATER emblem.
 Helping give rise to life, it embodies duality - kind and serene yet assertive and restless.
+[IDS_ITEMDESC.ID1111051]
+A Stand modeled on the FIRE emblem.
+What starts out as a spark grows hotter and brighter, transforming into a conflagration that incinerates all.
 [IDS_ITEMDESC.ID1111052]
 A Stand modeled on the WIND emblem.
 Gentle breezes bring blessings, while sudden gusts sweep away interlopers.
@@ -2953,12 +3160,21 @@ The oceanic power spoken of in legends has manifested as surging bubbles.
 [IDS_ITEMDESC.ID1111057]
 A Stand modeled on a famous shield from ancient times.
 Able to block any strong attack, it makes an incredibly sturdy Stand.
+[IDS_ITEMDESC.ID1111058]
+A Stand inspired by the sanctuary that appeared after seismic activity reshaped the land.
+The energy flowing from the sacred ring on the solitary island is palpable.
 [IDS_ITEMDESC.ID1111061]
 A Stand modeled on treasure chests that await adventurers.
 Ever wondered why a dungeon would contain these chests and precious objects? Well, you should.
 [IDS_ITEMDESC.ID1111062]
 A Stand inspired by a group of scarlet warriors.
 Blazing fighting spirit is imbued within, instilling anyone who comes into contact with it with a thirst for battle.
+[IDS_ITEMDESC.ID1111064]
+A Stand inspired by weird, wobbly creatures.
+ It appears that the pink bubble-egg-like forms won't grow any further.
+[IDS_ITEMDESC.ID1111066]
+A Stand inspired by a magical circle gone haywire after an immense influx of power.
+There are even cases of the caster fusing with monsters—truly a terrible fate.
 [IDS_ITEMDESC.ID1112001]
 A Stand from a Colosseum.
 The brilliant flame dances as if singing the praise of the brave warriors who battle here.
@@ -2967,6 +3183,9 @@ A Stand commemorating participation in the MASTER DUEL event of the Yu-Gi-Oh! Wo
 Its austere design speaks to the prestigious nature of the competition.
 [IDS_ITEMDESC.ID1113002]
 A Stand commemorating participation in the MASTER DUEL event of the Yu-Gi-Oh! World Championship 2024.
+Its austere design speaks to the prestigious nature of the competition.
+[IDS_ITEMDESC.ID1113003]
+A Stand commemorating participation in the MASTER DUEL event of the Yu-Gi-Oh! World Championship 2025.
 Its austere design speaks to the prestigious nature of the competition.
 [IDS_ITEMDESC.ID1120001]
 Try a Duel with this Deck full of easy-to-use Cards! Against tougher opponents use Spells, Traps, Synchro, Xyz and Link Summons!
@@ -3038,7 +3257,8 @@ You can Fusion Summon using monsters from the Deck using "<card mrk = '17066'/>"
 This "<category id='55'/>" Deck achieves supremacy through blistering power.
 Starting with a card like "<card mrk='19014'/>", perform a series of Synchro Summons - first "<card mrk='12695'/>", and then "<card mrk='19021'/>". You can not only Synchro Summon a powerhouse Synchro Monster, but also use the effect of "<card mrk='19021'/>" to bring forth "<card mrk='7735'/>". Use these Synchro Monsters' incredibly high ATK to blaze to victory!
 [IDS_ITEMDESC.ID1120030]
-coming soon
+This "<category id='106'/>" Deck symbolizes the power of monsters united.
+Start your offense with Level 4 monsters such as "<card mrk='19460'/>", which can pave the way for "<card mrk='15519'/>", "<card mrk='19501'/>", and "<card mrk='12868'/>". Use their effects to Summon "<card mrk='19459'/>" and amass a fearsome band of "<category id='106'/>" monsters. Then, use "<card mrk='12868'/>" with Xyz Material to Link Summon "<card mrk='14205'/>" and bring forth powerful Xyz Monsters while continuing to Summon other monsters. When everything is in place, use cards like "<card mrk='19511'/>" on your opponent's turn to call upon "<card mrk='19500'/>". This card will bring you instantly closer to victory by obliterating the cards on your opponent's field and dealing direct damage to them, all while being unaffected to other card effects!
 [IDS_ITEMDESC.ID1120031]
 coming soon
 [IDS_ITEMDESC.ID1120032]
@@ -3290,21 +3510,28 @@ There is nothing more boring than a story that goes exactly as planned.
 Taking the form of delicate girl, her eyes always open with a vacant stare.
 Her body, formed by a mass of grudges, has no master.
 [IDS_ITEMDESC.ID1130083]
-coming soon
+These two mages with extraordinary abilities have known each other since childhood.
+Hopeful, joyful smiles lit up their faces when they received their clan's medallion at a young age.
 [IDS_ITEMDESC.ID1130084]
-coming soon
+One of the dragons said to appear before the chosen ones bearing the Mark of the Dragon.
+Its cold yet beautiful dark petals splay out and wound all they envelop.
 [IDS_ITEMDESC.ID1130085]
-coming soon
+With her final days approaching, a blind girl seeks light and encounters an evil being.
+ It is a tale of a lightless shadow - false light that a shadow fabricates.
 [IDS_ITEMDESC.ID1130086]
-coming soon
+The key visual for the Yu-Gi-Oh! World Championship 2025.
+Duelists, the road to the top of the world awaits.
 [IDS_ITEMDESC.ID1130087]
 coming soon
 [IDS_ITEMDESC.ID1130088]
-coming soon
+An <card mrk='12852'/> in which Aleister risked everything by amassing countless monsters within himself.
+The consolidation of otherworldly magic finally comes to fruition.
 [IDS_ITEMDESC.ID1130089]
-coming soon
+Through mutual understanding and effort, a miracle is born.
+Become one with the winds of uncertainty and create a future that shall link the world!
 [IDS_ITEMDESC.ID1130090]
-coming soon
+A peculiar Fiend known for her crimson tears.
+She requires amorous words in order to use her power to its fullest.
 [IDS_ITEMDESC.ID1130091]
 coming soon
 [IDS_ITEMDESC.ID1130092]
@@ -3325,6 +3552,47 @@ coming soon
 coming soon
 [IDS_ITEMDESC.ID1130100]
 coming soon
+[IDS_ITEMDESC.ID1132003]
+"I've made my very own wicked website that perfectly recreates my beloved hometown."
+She gleefully scurried off to the forums as the 10th visitor arrived.
+[IDS_ITEMDESC.ID1140001]
+A ticket that allows you to purchase a Legacy Pack.
+What will your legacy be?
+[IDS_ITEMDESC.ID1141001]
+A ticket that allows you to purchase an Xyz Reward.
+One of the great mysteries of the universe of the Duel Field is the overlaid materials that bring forth great power.
+[IDS_ITEMDESC.ID1141002]
+A ticket that allows you to purchase a Fusion Reward.
+Unity comes in many forms, and one of them is Fusion. Evolve and grow stronger with the power of Fusion.
+[IDS_ITEMDESC.ID1141003]
+A ticket that allows you to purchase a Synchro Reward.
+Make your Monsters shine even brighter by gathering more stars.
+[IDS_ITEMDESC.ID1141004]
+A ticket that allows you to purchase Duelist Cup Rewards.
+Dueling will help you discover many cards.
+[IDS_ITEMDESC.ID1150001]
+The max. number of Decks you can possess can be increased by 1.
+[IDS_ITEMDESC.ID1160001]
+Increases the maximum number of replays you can keep saved by 1.
+[IDS_ITEMDESC.ID1170001]
+coming soon
+[IDS_ITEMDESC.ID1170002]
+coming soon
+[IDS_ITEMDESC.ID1180001]
+A Coin whose motif is the luminous dragon who brings about a new legend.
+Its cerulean eyes glimmer.
+[IDS_ITEMDESC.ID1180002]
+A coin whose motif is a magic pot said to bring well-being.
+ Its greedy expression glimmers.
+[IDS_ITEMDESC.ID1180003]
+coming soon
+[IDS_ITEMDESC.ID1180004]
+A Coin whose motif is the three-dimensional puzzle that was discovered in ancient ruins.
+The Eye of Wdjat insignia glimmers.
+[IDS_ITEMDESC.ID1180005]
+coming soon
+[IDS_ITEMDESC.ID1190001]
+The max. number of bookmarks you can possess can be increased.
 [IDS_ITEMDESC.ID0000]
 Not found.
 [IDS_ITEMDESC.ID0001]
@@ -3360,64 +3628,3 @@ A WATER Orb for unlocking Locked Chapters in Solo Mode.
 A FIRE Orb for unlocking Locked Chapters in Solo Mode.
 [IDS_ITEMDESC.ID0013]
 A WIND Orb for unlocking Locked Chapters in Solo Mode.
-[IDS_ITEMDESC.ID1140001]
-A ticket that allows you to purchase a Legacy Pack.
-What will your legacy be?
-[IDS_ITEMDESC.ID1141001]
-A ticket that allows you to purchase an Xyz Reward.
-One of the great mysteries of the universe of the Duel Field is the overlaid materials that bring forth great power.
-[IDS_ITEMDESC.ID1141002]
-A ticket that allows you to purchase a Fusion Reward.
-Unity comes in many forms, and one of them is Fusion. Evolve and grow stronger with the power of Fusion.
-[IDS_ITEMDESC.ID1141003]
-A ticket that allows you to purchase a Synchro Reward.
-Make your Monsters shine even brighter by gathering more stars.
-[IDS_ITEMDESC.ID1141004]
-A ticket that allows you to purchase Duelist Cup Rewards.
-Dueling will help you discover many cards.
-[IDS_ITEMDESC.ID1150001]
-The max. number of Decks you can possess can be increased by 1.
-[IDS_ITEMDESC.ID1160001]
-Increases the maximum number of replays you can keep saved by 1.
-[IDS_ITEMDESC.ID1020158]
-A Title given to Duelists who achieved results in the "Dice Rally - Fusion & Xyz & Link" event.
-A brilliant future awaits those courageous enough to trust themselves.
-[IDS_ITEMDESC.ID1020159]
-A Title given to Duelists who made it to the top 10 in "WCS 2025 Qualifiers."
-Many have witnessed their ability as a Duelist worthy of challenging the world.
-[IDS_ITEMDESC.ID1020160]
-A Title given to Duelists who made it to the top 100 in "WCS 2025 Qualifiers."
-Proof of a Duelist that demonstrated their knowledge of many Duelists and mastery of their cards in the battle against the world.
-[IDS_ITEMDESC.ID1020161]
-A Title given to Duelists who made it to the top 500 in "WCS 2025 Qualifiers."
-Proof of a Duelist who honed their skills to come out victorious in many battles to challenge the world.
-[IDS_ITEMDESC.ID1020162]
-A Title given to Duelists who made it to the top 1000 in "WCS 2025 Qualifiers."
-A medal of honor given to the unfaltering Duelist that fought valiantly among the world's best Duelists.
-[IDS_ITEMDESC.ID1020163]
-A Title given to Duelists who made it to the top 10000 in "WCS 2025 Qualifiers."
-For those who came out victorious over formidable rivals and tallied their victories.
-[IDS_ITEMDESC.ID1020164]
-A Title given to Duelists who reached DLv. MAX in "WCS 2025 Qualifiers."
-For those that displayed their ability as a Duelist worthy of advancing to the Regional Qualifiers.
-[IDS_ITEMDESC.ID1020165]
-A Title given to Duelists who achieved results in the UNDER☆5 Festival.
-The pride of Duelists is awoken by the cards they hold dearest.
-[IDS_ITEMDESC.ID1020166]
-A Title given to Duelists who achieved results in the Fusion x Link Festival.
-The pride of Duelists is awoken by the cards they hold dearest.
-[IDS_ITEMDESC.ID1070121]
-Protectors depicting an entity that has risen above its long-standing feud with its arch-rival.
-For those who reside in the network.
-[IDS_ITEMDESC.ID1070122]
-Protectors depicting "", the ultimate tool of the queen who wields power over different card Types.
-For those who desire dominion over wondrous virtual worlds.
-[IDS_ITEMDESC.ID1073013]
-A Protector with a "WCS 2025 Qualifiers" logo.
-To those who participated in the MASTER DUEL division and made the event a success.
-[IDS_ITEMDESC.ID1075002]
-Protectors featuring a key visual for Yu-Gi-Oh! CARD GAME THE CHRONICLES.
-Tearing across the battlefield, the girl equipped with super-advanced technological weaponry has a world-changing encounter.
-[IDS_ITEMDESC.ID1082021]
-A Card Case depicting a continent-wide conflict.
-Perfect for the Decks of those battling in the northern territories.

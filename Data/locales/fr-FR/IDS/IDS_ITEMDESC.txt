@@ -96,6 +96,9 @@ Sa puissance colossale, chaotique, fouette ses ennemis et les détruit instantan
 [IDS_ITEMDESC.ID1000034]
 Un être qui aide un homme dans son voyage vers la reconquête de son vrai moi.
 Alors qu'il aurait dû disparaître, il est réapparu, peut-être parce que le sentiment d'identité de l'homme était encore incomplet.
+[IDS_ITEMDESC.ID1000036]
+Un magicien talentueux des temps anciens, qui maîtrisait une forme de magie interdite.
+Il a disparu de l'Histoire sans laisser de trace après l'arrivée de "<card mrk='10282'/>".
 [IDS_ITEMDESC.ID1000041]
 Une bête démoniaque profondément endormie.
 Afin de dévorer les rêves des autres, elle dégage une odeur somnifère de son corps, mais elle s'endort toujours elle-même.
@@ -206,7 +209,8 @@ coming soon
 [IDS_ITEMDESC.ID1001036]
 coming soon
 [IDS_ITEMDESC.ID1001037]
-coming soon
+Les Guerriers Pyroxènes sont des chevaliers au tempérament doux, dont le cœur rêve secrètement de justice.
+Ils possèdent la capacité de fusionner, selon leurs besoins.
 [IDS_ITEMDESC.ID1001038]
 coming soon
 [IDS_ITEMDESC.ID1001039]
@@ -330,6 +334,8 @@ coming soon
 [IDS_ITEMDESC.ID1003009]
 coming soon
 [IDS_ITEMDESC.ID1003010]
+coming soon
+[IDS_ITEMDESC.ID1005001]
 coming soon
 [IDS_ITEMDESC.ID1010001]
 Une icône représentant un Duelliste anonyme.
@@ -652,21 +658,28 @@ Il occupe naturellement un rôle de bouffon sur la scène de l'infamie.
 Une icône représentant un être de chaos et de pureté absolue.
 Écrasé par l'amour et le désespoir, il est formé des 666 âmes les plus pures de la "Dogmatika".
 [IDS_ITEMDESC.ID1010109]
-coming soon
+Une icône représentant une enfant enveloppée d’ombres évanescentes.
+Une entité maléfique tombée sous son charme a exhaussé son souhait.
 [IDS_ITEMDESC.ID1010110]
-coming soon
+Une icône représentant les armoiries de samouraïs connus pour leurs prouesses martiales hors du commun.
+Ils sont aussi intrépides que leurs cœurs sont vaillants, et rien ne peut ébranler leurs convictions ou leur loyauté.
 [IDS_ITEMDESC.ID1010111]
-coming soon
+Une icône représentant un visuel du Yu-Gi-Oh! World Championship 2025.
+Admirez les meilleurs Duellistes du monde.
 [IDS_ITEMDESC.ID1010112]
 coming soon
 [IDS_ITEMDESC.ID1010113]
-coming soon
+Une icône représentant un magicien talentueux des temps anciens.
+Il était connu pour maîtriser une forme de magie interdite et pouvait invoquer des esprits célestes d'autres mondes.
 [IDS_ITEMDESC.ID1010114]
-coming soon
+Une icône représentant "<card mrk='13346'/>" après avoir obtenu un nouveau pouvoir.
+Il est peut-être petit, mais il risquerait sa vie et ses petites pattes pour protéger ses amis.
 [IDS_ITEMDESC.ID1010115]
-coming soon
+Une icône représentant un jeune homme qui a survécu aux horreurs de la guerre.
+Renforcé par les esprits de ceux qui ont péri, il a juré de protéger tous les survivants.
 [IDS_ITEMDESC.ID1010116]
-coming soon
+Une icône représentant un monstre assemblé avec des briques de construction.
+Ressemble vaguement à un dragon, mais n'en est pas un.
 [IDS_ITEMDESC.ID1010117]
 coming soon
 [IDS_ITEMDESC.ID1010118]
@@ -829,23 +842,38 @@ Une icône offerte à ceux qui ont obtenu des résultats impressionnants lors de
 Une icône avec un logo couleur bronze "Qualifications pour le WCS 2025".
 Une icône offerte à ceux qui ont remporté de nombreux Duels lors des qualifications 2025 organisées face au reste du monde.
 [IDS_ITEMDESC.ID1011052]
-coming soon
+Une icône avec un logo "Coupe Synchro" en or. 
+Offerte à ceux qui ont réalisé des exploits lors de la Coupe Synchro.
 [IDS_ITEMDESC.ID1011053]
-coming soon
+Une icône avec un logo "Coupe Synchro" en argent. 
+Offerte à ceux qui ont atteint des résultats brillants lors de la Coupe Synchro.
 [IDS_ITEMDESC.ID1011054]
-coming soon
+Une icône avec un logo "Coupe Synchro" en bronze. 
+Offerte à ceux qui ont remporté de nombreuses batailles lors de la Coupe Synchro.
 [IDS_ITEMDESC.ID1011055]
-coming soon
+Une icône arborant le splendide et prestigieux logo de la Coupe Synchro.
+Elle est offerte au Duelliste qui remporte la Coupe Synchro.
 [IDS_ITEMDESC.ID1011056]
-coming soon
+Une icône donnée aux Duellistes champions du Yu-Gi-Oh! World Championship 2025: MASTER DUEL.
+De nombreux Duellistes ont suivi cette finale et s'en inspirent encore aujourd'hui.
 [IDS_ITEMDESC.ID1011057]
-coming soon
+Une icône donnée aux Duellistes finalistes du Yu-Gi-Oh! World Championship 2025: MASTER DUEL.
+De nombreux Duellistes ont suivi cette finale et s'en inspirent encore aujourd'hui.
 [IDS_ITEMDESC.ID1011058]
-coming soon
+Une icône donnée à ceux qui ont fini dans le top 4 du Yu-Gi-Oh! World Championship 2025: MASTER DUEL.
+Leur incroyable instinct pour le Duel a fasciné l'ensemble du public.
 [IDS_ITEMDESC.ID1011059]
-coming soon
+Une icône donnée aux participants du Yu-Gi-Oh! World Championship 2025: MASTER DUEL.
+C'est un hommage à ceux qui se sont battus pour laisser leur empreinte dans l'histoire.
 [IDS_ITEMDESC.ID1011060]
-coming soon
+Une icône avec un logo "DC 2025 SEP" en or. 
+Offerte à ceux qui ont réalisé des exploits lors de la Duelist Cup.
+[IDS_ITEMDESC.ID1011061]
+Une icône avec un logo "DC 2025 SEP" en argent. 
+Offerte à ceux qui ont atteint des résultats brillants lors de la Duelist Cup.
+[IDS_ITEMDESC.ID1011062]
+Une icône avec un logo "DC 2025 SEP" en bronze. 
+Offerte à ceux qui ont remporté de nombreuses batailles lors de la Duelist Cup.
 [IDS_ITEMDESC.ID1012001]
 Une icône représentant un "Krawler", des monstres ayant envahi un certain monde. Celui-ci fait partie de la classe supérieure.
 Ils s'efforcent de réduire à néant les efforts de la civilisation humaine qui perdure depuis des générations.
@@ -1059,6 +1087,12 @@ Elle avait prêté un serment avec son partenaire plus âgé, dont la trace a é
 [IDS_ITEMDESC.ID1012073]
 Une icône représentant une flamme espiègle et turbulente.
 Elle est minuscule mais brûle intensément, ce qui laisse entrevoir son potentiel de croissance exponentielle.
+[IDS_ITEMDESC.ID1012074]
+Une icône représentant un souverain aquatique insatiable.
+Il a amassé toute une armée pour agrandir son ambitieux royaume sous-marin.
+[IDS_ITEMDESC.ID1012075]
+Une icône représentant un oiseau divin qui monte la garde.
+Il incinère tous ceux qui oseraient s'aventurer dans le sanctuaire qu'il protège.
 [IDS_ITEMDESC.ID1013001]
 Une icône représentant un jeune garçon qui aime vraiment le baseball.
 Vous l'avez peut-être rencontré dans une école à une époque ou à une autre, poussé à la grandeur par sa passion pour le baseball.
@@ -1071,6 +1105,9 @@ Les Duellistes présents sur place ont ovationné cet événement prestigieux.
 [IDS_ITEMDESC.ID1013004]
 Une icône représentant une scène du JEU DE CARTES Yu-Gi-Oh! LES CHRONIQUES.
 En traversant le champ de bataille, la jeune fille équipée d'armes technologiques super-avancées fait une rencontre qui va changer le monde.
+[IDS_ITEMDESC.ID1013005]
+Une icône représentant une scène du JEU DE CARTES Yu-Gi-Oh! LES CHRONIQUES.
+Leur rencontre était-elle le fruit du hasard, ou du destin ? S'ensuivit une série d'événements qui a laissé une trace indélébile dans un monde abyssal.
 [IDS_ITEMDESC.ID1020001]
 Un titre donné aux Duellistes ayant commencé leur aventure dans Yu-Gi-Oh! MASTER DUEL.
 Il n'est jamais trop tard pour se mettre aux Duels.
@@ -1541,6 +1578,87 @@ Attisé par un vent déferlant, le brasier intense réduit tout en cendres.
 [IDS_ITEMDESC.ID1020157]
 Titre donné aux Duellistes qui font preuve d'une détermination incomparable face à des batailles sans fin.
 Leur soif intense de victoire en tant que guerriers leur confère un grand charisme.
+[IDS_ITEMDESC.ID1020158]
+Un titre donné aux Duellistes qui obtenu des résultats au cours de l'événement de Course de dés - Fusion, Xyz, Link.
+L'avenir sourit à ceux qui ont le courage de croire en leurs capacités.
+[IDS_ITEMDESC.ID1020159]
+Un titre donné aux Duellistes qui ont atteint le top 10 dans les "Qualifications pour le WCS 2025".
+Nombreux sont ceux qui ont pu voir leurs talents de Duellistes dignes de défier le monde.
+[IDS_ITEMDESC.ID1020160]
+Un titre donné aux Duellistes qui ont atteint le top 100 lors des "Qualifications pour le WCS 2025".
+Preuve qu'un Duelliste a démontré ses talents et la maîtrise de ses cartes dans des Duels contre le reste du monde.
+[IDS_ITEMDESC.ID1020161]
+Un titre donné aux Duellistes qui ont atteint le top 500 lors des "Qualifications pour le WCS 2025".
+Preuve qu'un Duelliste a affiné ses compétences au point de l'emporter dans de nombreux Duels face au reste du monde.
+[IDS_ITEMDESC.ID1020162]
+Un titre donné aux Duellistes qui ont atteint le top 1000 lors des "Qualifications pour le WCS 2025".
+Médaille d'honneur décernée à un Duelliste infatigable qui s'est battu vaillamment face aux meilleurs Duellistes du monde.
+[IDS_ITEMDESC.ID1020163]
+Un titre donné aux Duellistes qui ont atteint le top 10000 lors des "Qualifications pour le WCS 2025".
+Pour ceux qui se sont imposés face à des adversaires redoutables et qui ont remporté des victoires.
+[IDS_ITEMDESC.ID1020164]
+Un titre donné aux Duellistes qui ont atteint le DNV max lors des "Qualifications pour le WCS 2025."
+Pour ceux qui ont démontré leur capacité en tant que Duellistes dignes d'accéder aux qualifications régionales.
+[IDS_ITEMDESC.ID1020165]
+Un titre donné aux Duellistes qui ont obtenu des résultats au Festival UNDER☆5.
+Les Duellistes sont fiers des cartes auxquelles ils tiennent le plus.
+[IDS_ITEMDESC.ID1020166]
+Un titre donné aux Duellistes qui ont obtenu des résultats dans le Festival Fusion x Lien.
+Les Duellistes sont fiers des cartes auxquelles ils tiennent le plus.
+[IDS_ITEMDESC.ID1020167]
+Un titre décerné au Duelliste champion de la Coupe Synchro.
+La preuve que ce Duelliste a atteint le sommet et marqué l'histoire de Yu-Gi-Oh! MASTER DUEL.
+[IDS_ITEMDESC.ID1020168]
+Un titre donné aux Duellistes qui ont atteint le top 10 dans la Coupe Synchro.
+Les récits de leurs innombrables grands Duels et de leur bravoure dans la bataille pour le trône perdureront dans le temps.
+[IDS_ITEMDESC.ID1020169]
+Un titre donné aux Duellistes qui ont atteint le top 100 dans la Coupe Synchro.
+La preuve d'un exploit que de nombreux Duellistes essayent d'accomplir.
+[IDS_ITEMDESC.ID1020170]
+Un titre donné aux Duellistes qui ont atteint le top 500 dans la Coupe Synchro.
+Seul le plus fort peut posséder un cœur comme le votre, que les nombreux Duels acharnés ont permis de tempérer.
+[IDS_ITEMDESC.ID1020171]
+Un titre donné aux Duellistes qui ont atteint le top 1000 dans la Coupe Synchro.
+Bravo aux Duellistes qui ont continuellement perfectionné leurs Decks et leurs tactiques pour parvenir à ce résultat.
+[IDS_ITEMDESC.ID1020172]
+Un titre donné aux Duellistes qui ont atteint le top 10000 dans la Coupe Synchro.
+Remporté grâce à des victoires successives contre des concurrents féroces lors de la 2nd STAGE.
+[IDS_ITEMDESC.ID1020173]
+Un titre donné aux Duellistes qui ont atteint la 2nd Stage dans la Coupe Synchro.
+La preuve que vous avez réussi à passer la très disputée 1st Stage.
+[IDS_ITEMDESC.ID1020174]
+Un titre donné aux Duellistes champions du Yu-Gi-Oh! World Championship 2025: MASTER DUEL.
+Leur combat lors de Duels féroces aux côtés de leurs amis restera dans les annales, et leur légende perdurera sur des générations.
+[IDS_ITEMDESC.ID1020175]
+Un titre donné aux Duellistes finalistes du Yu-Gi-Oh! World Championship 2025: MASTER DUEL.
+Leur combat lors de Duels féroces aux côtés de leurs amis restera dans les annales, et leur légende perdurera sur des générations.
+[IDS_ITEMDESC.ID1020176]
+Une icône donnée à ceux qui ont fini dans le top 4 du Yu-Gi-Oh! World Championship 2025: MASTER DUEL.
+Leur performance deviendra un but à atteindre pour de nombreux Duellistes, et les éloges abonderont.
+[IDS_ITEMDESC.ID1020177]
+Un titre donné à ceux qui ont fini dans le top 12 du Yu-Gi-Oh! World Championship 2025: MASTER DUEL.
+Seule une poignée de personnes peut atteindre ce niveau. Cet exploit est la preuve indéniable de leur talent.
+[IDS_ITEMDESC.ID1020179]
+Un titre donné aux Duellistes qui ont obtenu des résultats dans un récit choisi grâce au pouvoir de diverses cartes.
+Les histoires racontées au cours des combats laisseront des traces chez de nombreux Duellistes.
+[IDS_ITEMDESC.ID1020180]
+Un titre donné aux Duellistes qui ont atteint le top 10 dans la DC 2025 SEP.
+Les récits de leurs innombrables grands Duels et de leur bravoure dans la bataille pour le trône perdureront dans le temps.
+[IDS_ITEMDESC.ID1020181]
+Un titre donné aux Duellistes qui ont atteint le top 100 dans la DC 2025 SEP.
+La preuve d'un exploit que de nombreux Duellistes essayent d'accomplir.
+[IDS_ITEMDESC.ID1020182]
+Un titre donné aux Duellistes qui ont atteint le top 500 dans la DC 2025 SEP.
+Seul le plus fort peut posséder un cœur comme le votre, que les nombreux Duels acharnés ont permis de tempérer.
+[IDS_ITEMDESC.ID1020183]
+Un titre donné aux Duellistes qui ont atteint le top 1000 dans la DC 2025 SEP.
+Bravo aux Duellistes qui ont continuellement perfectionné leurs Decks et leurs tactiques pour parvenir à ce résultat.
+[IDS_ITEMDESC.ID1020184]
+Un titre donné aux Duellistes qui ont atteint le top 10000 dans la DC 2025 SEP.
+Remporté grâce à des victoires successives contre des concurrents féroces lors de la 2nd STAGE.
+[IDS_ITEMDESC.ID1020185]
+Un titre donné aux Duellistes qui ont atteint la 2nd Stage dans la DC 2025 SEP.
+La preuve que vous avez réussi à passer la très disputée 1st Stage.
 [IDS_ITEMDESC.ID1021001]
 Un titre qui n'est décerné que lors d'une occasion spéciale.
 [IDS_ITEMDESC.ID1021002]
@@ -1648,6 +1766,12 @@ L'intense énergie thermique libérée par les flammes provoque des explosions d
 [IDS_ITEMDESC.ID1030036]
 Un cadre d'icône violet et jaune qui évoque les ténèbres hypnotiques et la lumière chaleureuse.
 Les couleurs rappellent le crépuscule et suscitent tout un flot d'émotions.
+[IDS_ITEMDESC.ID1030037]
+Un cadre d'icône jaune et bleu qui évoque un soleil doré se levant au-dessus de la mer.
+Il rappelle ces belles journées d'été pendant lesquels la lumière du soleil se reflète sur l'eau étincelante de l'océan.
+[IDS_ITEMDESC.ID1030039]
+Un cadre d'icône qui évoque le pouvoir de la Fusion, la fondation même des Guerriers Pyroxènes.
+Elle affaiblit leur cœur, mais peut être utilisée en continu.
 [IDS_ITEMDESC.ID1031001]
 Un Cadre d'icône qui évoque le portail utilisé par l'Assaut de l'Air afin de transférer leur armement.
 Lorsque la voie s'ouvre à ceux qui luttent pour la paix, un nouveau pouvoir pour surmonter les épreuves s'éveille.
@@ -1693,6 +1817,12 @@ Les combos avec "<card mrk='4064'/>" ont connu bien des formes au fil des année
 [IDS_ITEMDESC.ID1031015]
 Un cadre d'icône qui évoque le vaste domaine inexploré auquel on accède via un trou immense.
 Dans les abysses tournoient d'immenses torrents de données dangereuses nées de la malveillance de l'humanité.
+[IDS_ITEMDESC.ID1031016]
+Un cadre d'icône rappelant les orbes de lumière qui entourent les monstres Xyz.
+Ils scintillent du pouvoir intense de ceux qui constituent le Réseau Habillé.
+[IDS_ITEMDESC.ID1031017]
+Un cadre d'icône évoquant la Magie de Fusion de certains A.I.
+Il ne semble nourrir aucune animosité envers les humains.
 [IDS_ITEMDESC.ID1032001]
 Un Cadre d'icône de forme circulaire pouvant être aperçu dans certaines régions du monde lorsque l'année arrive à son terme.
 On l'accroche en faisant le vœu sincère que les jours à venir apportent joie et bonheur.
@@ -1732,6 +1862,12 @@ La prochaine étape vous attend !
 [IDS_ITEMDESC.ID1033003]
 Un cadre d'icône rappelant les orbes de lumière qui entourent les monstres Xyz.
 Il est offert aux Duellistes qui ont obtenus de bons résultats lors de la Coupe Xyz.
+[IDS_ITEMDESC.ID1033004]
+Un cadre d'icône rappelant les cercles lumineux qui apparaissent lors d’Invocations Synchro.
+Une récompense pour les Duellistes qui ont obtenu de bons résultats lors de la Coupe Synchro.
+[IDS_ITEMDESC.ID1033005]
+Un cadre d'icône décernée aux participants de l'événement MASTER DUEL du Yu-Gi-Oh! World Championship 2025.
+La prochaine étape vous attend !
 [IDS_ITEMDESC.ID1070001]
 Un protège-cartes orné du même motif que le verso des cartes du jeu de cartes à collectionner Yu-Gi-Oh!
 Si ce n'est pas cassé, à quoi bon le réparer ?
@@ -2087,6 +2223,27 @@ Pour ceux qui risquent leur vie au combat.
 [IDS_ITEMDESC.ID1070120]
 Des protège-cartes représentant des crocs rebelles avec une volonté de fer.
 Pour ceux qui résistent à l'oppression.
+[IDS_ITEMDESC.ID1070121]
+Des protège-cartes représentant une entité qui s'est élevée au-dessus de sa longue querelle avec son grand rival.
+Pour ceux qui résident dans le réseau.
+[IDS_ITEMDESC.ID1070122]
+Des protège-cartes qui représentent "<category id='45'/>", l'outil ultime de la reine qui possède une emprise sur plusieurs Types de carte.
+Pour ceux qui désirent dominer des mondes virtuels merveilleux.
+[IDS_ITEMDESC.ID1070123]
+Des protège-cartes représentant un dragon qui déploie ses magnifiques ailes.
+Pour ceux qui frappent avant que l'adversaire n'ait pu voir venir quoi que ce soit.
+[IDS_ITEMDESC.ID1070124]
+Des protège-cartes représentant des armes méchas rugissantes déchaînant les forces du FEU et de la LUMIÈRE.
+ Pour ceux qui se donnent toujours à fond.
+[IDS_ITEMDESC.ID1070125]
+Des protège-cartes représentant un monstre fétiche maniant une lance colossale.
+Pour ceux qui aspirent à exploiter les vents soufflant vers un monde encore inconnu.
+[IDS_ITEMDESC.ID1070126]
+Des protège-cartes représentant une force capable d'amasser l'énergie nécessaire pour créer un nouveau monde.
+Pour ceux qui perpétuent le cycle de la réincarnation.
+[IDS_ITEMDESC.ID1070130]
+Protège-cartes affichant un visuel du Yu-Gi-Oh! World Championship 2025.
+Pour tous ceux qui défient le reste du monde.
 [IDS_ITEMDESC.ID1071001]
 Des protège-cartes illustrant un guerrier qui a mûri et accepté les cicatrices gravées dans son cœur au cours des batailles. 
 Parfaits pour ceux qui veulent toujours le meilleur pour leurs amis.
@@ -2189,6 +2346,11 @@ Pour ceux qui veulent mettre fin aux conflits.
 [IDS_ITEMDESC.ID1071034]
 Un protège-cartes représentant celui sans qui les guerriers écarlates ne seraient pas aussi unis.
 Pour ceux dont la flamme intérieure leur donne un avantage au combat.
+[IDS_ITEMDESC.ID1071035]
+Protège-cartes représentant un oiseau divin qui renaît de ses cendres quand il meurt.
+Pour tous ceux qui veillent sur leur sanctuaire.
+[IDS_ITEMDESC.ID1071036]
+Protège-cartes représentant un Serpent de Mer avec une soif insatiable de domination.Pour tous ceux dont les désirs ne peuvent être assouvis.
 [IDS_ITEMDESC.ID1072001]
 Un protège-cartes orné du motif de "<card mrk='13670'/>" en mode d'armure Destruction.
 Pour les joueurs qui s'emparent de la victoire en bravant le feu du champ de bataille.
@@ -2244,9 +2406,30 @@ Pour ceux qui ont participé à la Duelist Cup et qui ont fait de cet événemen
 [IDS_ITEMDESC.ID1073012]
 Un protège-cartes avec un logo "DC 2025 MAR". 
 Pour ceux qui ont participé à la Duelist Cup et qui ont fait de cet événement un succès.
+[IDS_ITEMDESC.ID1073013]
+Un Protège-cartes avec un logo "Qualifications pour le WCS 2025".
+Pour ceux qui ont participé à la division MASTER DUEL et qui ont fait de cet événement un succès.
+[IDS_ITEMDESC.ID1073014]
+Des protège-cartes avec le logo de la Coupe Synchro.
+Pour ceux qui ont participé à la Coupe Synchro et qui ont fait de cet événement un succès.
+[IDS_ITEMDESC.ID1073015]
+Un Protège-cartes avec un logo "Yu-Gi-Oh! World Championship 2025 : MASTER DUEL".
+Pour ceux qui ont été témoins de ce moment historique.
+[IDS_ITEMDESC.ID1073016]
+Un Protège-cartes à l'effigie du Yu-Gi-Oh! World Championship 2025 : MASTER DUEL.
+Pour ceux qui aspirent à devenir le meilleur Duelliste au monde.
+[IDS_ITEMDESC.ID1073017]
+Un protège-cartes avec un logo "DC 2025 SEP". 
+Pour ceux qui ont participé à la Duelist Cup et qui ont fait de cet événement un succès.
 [IDS_ITEMDESC.ID1075001]
 Protège-cartes représentant une scène du JEU DE CARTES Yu-Gi-Oh! LES CHRONIQUES.
 Les Duellistes présents sur place ont ovationné cet événement prestigieux.
+[IDS_ITEMDESC.ID1075002]
+Protège-cartes affichant un visuel pour Yu-Gi-Oh! CARD GAME THE CHRONICLES.
+En traversant le champ de bataille, la jeune fille équipée d'armes technologiques super-avancées fait une rencontre qui va changer le monde.
+[IDS_ITEMDESC.ID1075006]
+Protège-cartes affichant un visuel pour Yu-Gi-Oh! CARD GAME THE CHRONICLES.
+Leur rencontre était-elle le fruit du hasard, ou du destin ? S'ensuivit une série d'événements qui a laissé une trace indélébile dans un monde abyssal.
 [IDS_ITEMDESC.ID1080001]
 Une boîte de Deck simple soulignée de rouge.
 On tient toujours à sa première boîte de Deck, pas vrai ?
@@ -2333,6 +2516,9 @@ Même à bout de forces, rien ne pouvait tarir l'esprit du garçon. Il s'éveill
 [IDS_ITEMDESC.ID1080029]
 Une boîte de cartes illustrée avec "<card mrk='19021'/>".
 Un dragon écarlate diabolique dont la fureur réduit tout en cendres.
+[IDS_ITEMDESC.ID1080030]
+Une boîte de cartes illustrée avec "<card mrk='19500'/>".
+Ayant évolué vers une forme transcendante, ce faucon à la volonté de fer déploie ses ailes de rébellion.
 [IDS_ITEMDESC.ID1082001]
 Une boîte de Deck qui s'inspire de la grande étendue galactique d'où proviennent les monstres Xyz. 
 Un excellent choix pour les Decks axés sur les Invocations Xyz !
@@ -2393,6 +2579,9 @@ Idéale pour les Decks aux capacités remarquables.
 [IDS_ITEMDESC.ID1082020]
 Une boîte de cartes basée sur l'Assaut de l'Air manié par "<card mrk='14829'/>".
 Idéale pour les Decks qui privilégient la ligne la plus directe vers la victoire.
+[IDS_ITEMDESC.ID1082021]
+Une boîte de cartes illustrée avec un conflit de grande échelle.
+Parfait pour ceux qui se battent dans les territoires du Nord.
 [IDS_ITEMDESC.ID1090001]
 Un Terrain représentant une forêt verte et luxuriante dont on ignore la profondeur.
 Aussi tranquille que puisse être la nature, elle recèle aussi de nombreux dangers. Faites preuve de précaution.
@@ -2472,6 +2661,9 @@ Le pouvoir descendant des cieux commencera bientôt à vibrer et à faire trembl
 [IDS_ITEMDESC.ID1090026]
 Un Terrain de Duel avec une forêt rouge cerise.
 Bien que les pétales qui tombent représentent l'éphémère, ils peuvent être appréciés longuement dans ce monde.
+[IDS_ITEMDESC.ID1090027]
+Un Terrain de Duel représentant une forêt revêtue de son plus beau feuillage d'automne.
+Une légère brise souffle dans les feuilles, tandis que des ombres silencieuses dessinent des ailes ébouriffées.
 [IDS_ITEMDESC.ID1090028]
 Un Terrain de Duel avec une forêt où la neige tombe sans cesse.
 Dans ce monde, prenez garde même aux bonshommes de neige.
@@ -2574,6 +2766,9 @@ La qualité du travail, la fierté et l’âme que les artisans ont infusés dan
 [IDS_ITEMDESC.ID1100026]
 Des parties de Terrain d'une forêt rouge cerise.
 Le vent a soufflé des pétales dans le trou, désormais rempli.
+[IDS_ITEMDESC.ID1100027]
+Des Parties de Terrain inspirées par une forêt à l'automne.
+Au milieu du silence, deux crevasses s'ouvrent afin de recueillir les feuilles qui tombent.
 [IDS_ITEMDESC.ID1100028]
 Des parties de Terrain d'une forêt où la blancheur s'étend à perte de vue.
 Peu importe la quantité de neige qui tombe, la crevasse reste béante.
@@ -2810,6 +3005,9 @@ Les croyants placent leurs espoirs et leurs prières dans l’image symbolisant 
 [IDS_ITEMDESC.ID1110026]
 Un Stand issu d'une forêt rouge cerise.
 Les fleurs de cerisier ne sont pas assez nombreuses pour former un tapis, dessinant à la place un superbe motif.
+[IDS_ITEMDESC.ID1110027]
+Un Stand issu d'une forêt à l'automne.
+La sérénité et la splendeur s'allient parfaitement dans ce paysage, au milieu des feuilles d'automne emportées par le vent.
 [IDS_ITEMDESC.ID1110028]
 Un Stand issu d'une forêt où la blancheur s'étend à perte de vue.
 L'épaisse couche de neige plaira sûrement à ceux qui aiment le froid.
@@ -2902,6 +3100,9 @@ coming soon
 [IDS_ITEMDESC.ID1111024]
 Un Stand inspiré de l'aspect rétro d'un compteur de vitesse.
 Même si cela est techniquement possible, une telle vitesse mettra votre machine à rude épreuve.
+[IDS_ITEMDESC.ID1111025]
+Un Stand inspiré d'un trésor capable de contrôler toutes sortes de rituels.
+N'étant qu'une simple réplique, il ne possède aucun des pouvoirs de l'original.
 [IDS_ITEMDESC.ID1111026]
 Un piédestal ayant la forme de la souche d'arbre préférée d'une certaine personne.
 Cette personne ne pourrait résister à l'envie de s'assoir.
@@ -2927,6 +3128,9 @@ Même s'il est temps de commencer la journée, il est cloué au lieu par le poid
 [IDS_ITEMDESC.ID1111043]
 Un Stand sur lequel est exposée la Carte "<card mrk='20237'/>".
 Il faut se méfier de la Forêt Blanche, territoire d'une horrible sorcière.
+[IDS_ITEMDESC.ID1111044]
+Un Stand représentant une forme de vie mécanique soutenant un réacteur énergétique révolutionnaire.
+La situation actuelle pourrait s'améliorer grâce au rendement élevé et à la longévité du réacteur.
 [IDS_ITEMDESC.ID1111045]
 Un Stand exquis où savourer un monde de délices en compagnie des animaux qui y vivent.
 Vérifiez bien la friandise de votre choix au cas où il y ait une créature amatrice de sucre à l'intérieur.
@@ -2942,6 +3146,9 @@ Le sol qui s'étend sous nos pieds est source d'épreuves et de bénédictions p
 [IDS_ITEMDESC.ID1111050]
 Un Stand inspiré de l'emblème EAU.
 Contribuant à l'éclosion de la vie, il incarne la dualité : gentil et serein, mais aussi sûr de lui et agité.
+[IDS_ITEMDESC.ID1111051]
+Un Stand inspiré de l'emblème FEU.
+Ce qui n'est au début qu'une étincelle brûle de plus en plus fort, et se transforme en incendie qui consume tout.
 [IDS_ITEMDESC.ID1111052]
 Un Stand inspiré de l'emblème VENT.
 La douce brise apporte des bénédictions, tandis que les rafales soudaines emportent les intrus.
@@ -2951,12 +3158,21 @@ La puissance océanique dont parlent les légendes s'est manifestée sous la for
 [IDS_ITEMDESC.ID1111057]
 Un Stand inspiré d'un célèbre bouclier de l'Antiquité.
 Capable de bloquer n'importe quelle attaque, il constitue un socle incroyablement robuste.
+[IDS_ITEMDESC.ID1111058]
+Un Stand inspiré du sanctuaire apparu après qu'une activité sismique ait remodelé le paysage.
+L'énergie qui émane de l'anneau sacré sur l'île solitaire est palpable.
 [IDS_ITEMDESC.ID1111061]
 Un Stand inspiré de coffres aux trésors destinés aux aventuriers.
 Vous êtes-vous déjà demandé pourquoi un donjon contenait des coffres et des objets précieux ? Vous devriez.
 [IDS_ITEMDESC.ID1111062]
 Un Stand inspiré d'un groupe de guerriers écarlates.
 Il est empreint d'un esprit combatif ardent qui réveille une soif de combat inextinguible chez quiconque entre en contact avec lui.
+[IDS_ITEMDESC.ID1111064]
+Un Stand inspiré d'un groupe de créatures étranges et chancelantes.
+Il semble que ces ovoïdes roses ne grossiront pas davantage.
+[IDS_ITEMDESC.ID1111066]
+Un Stand inspiré par un cercle magique ayant mal tourné après une immense surcharge d'énergie.
+Certains cas de fusion entre le lanceur et les monstres ont été reportés, un sort des plus tragiques.
 [IDS_ITEMDESC.ID1112001]
 Un Stand issu d'un colisée.
 La flamme brillante danse comme si elle chantait les louanges des braves guerriers qui ont combattu ici.
@@ -2965,6 +3181,9 @@ Un Stand commémorant la participation à l'événement MASTER DUEL du Yu-Gi-Oh!
 Son design austère témoigne du caractère prestigieux du concours.
 [IDS_ITEMDESC.ID1113002]
 Un Stand commémorant la participation à l'événement MASTER DUEL du Yu-Gi-Oh! World Championship 2024.
+Son design austère témoigne du caractère prestigieux du concours.
+[IDS_ITEMDESC.ID1113003]
+Un Stand commémorant la participation à l'événement MASTER DUEL du Yu-Gi-Oh! World Championship 2025.
 Son design austère témoigne du caractère prestigieux du concours.
 [IDS_ITEMDESC.ID1120001]
 Essayez de livrer un Duel avec ce Deck rempli de cartes faciles à utiliser ! Contre les adversaires plus coriaces, utilisez des Magies, des Pièges, ainsi que des Invocations Synchro, Xyz et Lien !
@@ -3036,7 +3255,8 @@ Vous pouvez Invoquer par Fusion en utilisant des monstres du Deck grâce à "<ca
 Ce Deck "<category id='55'/>" domine grâce à sa puissance foudroyante.
 En commençant avec une carte comme "<card mrk='19014'/>", vous effectuez une succession d'Invocations Synchro : d'abord "<card mrk='12695'/>", puis "<card mrk='19021'/>". Vous pouvez non seulement Invoquer par Synchro un puissant Monstre Synchro, mais vous pouvez aussi utiliser l'effet de la Carte "<card mrk='19021'/>" pour faire venir "<card mrk='7735'/>". Servez-vous de l'ATK incroyablement élevée de ces Monstres Synchro pour foncer vers la victoire !
 [IDS_ITEMDESC.ID1120030]
-coming soon
+Ce Deck "<category id='106'/>" symbolise le pouvoir de l'union des monstres.
+Commencez votre attaque avec des monstres de Niveau 4 comme "<card mrk='19460'/>", qui peuvent ouvrir la voie à "<card mrk='15519'/>", "<card mrk='19501'/>" et "<card mrk='12868'/>". Utilisez leurs effets pour Invoquer "<card mrk='19459'/>" et amasser un groupe de monstres "<category id='106'/>" redoutables. Puis, utilisez "<card mrk='12868'/>" avec du Matériel Xyz pour Invoquer par Lien "<card mrk='14205'/>" et libérez des Monstres Xyz puissants tout en continuant à Invoquer d'autres monstres. Quand tout est en place, utilisez des cartes comme "<card mrk='19511'/>" durant le tour de votre adversaire pour appeler "<card mrk='19500'/>". Cette carte vous rapproche instantanément de la victoire en oblitérant les cartes sur le Terrain de votre adversaire et en lui infligeant des dégâts directs, tout en étant immunisé aux effets d'autres cartes !
 [IDS_ITEMDESC.ID1120031]
 coming soon
 [IDS_ITEMDESC.ID1120032]
@@ -3288,21 +3508,28 @@ Il n'y a rien de plus ennuyeux qu'une histoire qui se déroule exactement comme 
 Prenant la forme d'une jeune fille délicate, ses yeux dévoilent toujours sur un regard vide.
 Son corps, formé d'un amas de rancunes, n'a pas de maître.
 [IDS_ITEMDESC.ID1130083]
-coming soon
+Ces deux mages aux capacités extraordinaires se connaissent depuis l'enfance.
+Encore jeunes, des sourires joyeux et pleins d'espoir éclairent leurs visages lorsqu'ils reçoivent le médaillon de leur clan.
 [IDS_ITEMDESC.ID1130084]
-coming soon
+Un des dragons censés apparaître devant les élus porteurs d'une Marque du Dragon.
+Ses pétales aussi froids que magnifiques se dispersent et blessent tout ce qu'ils enveloppent.
 [IDS_ITEMDESC.ID1130085]
-coming soon
+À l’approche de ses derniers jours, une fille aveugle en recherche de la lumière rencontre un être maléfique.
+L’histoire d’une ombre sans autre lumière que l’illusion créée par l’obscurité.
 [IDS_ITEMDESC.ID1130086]
-coming soon
+Visuel du Yu-Gi-Oh! World Championship 2025.
+Duellistes, le chemin vers le sommet n’attend plus que vous.
 [IDS_ITEMDESC.ID1130087]
 coming soon
 [IDS_ITEMDESC.ID1130088]
-coming soon
+Une <card mrk='12852'/> pour laquelle Aleister a misé tout ce qu'il avait, en amassant d'innombrables monstres en lui.
+La consolidation de la magie d'autres mondes porte enfin ses fruits.
 [IDS_ITEMDESC.ID1130089]
-coming soon
+Grâce à une compréhension mutuelle et quelques efforts, un miracle a vu le jour.
+Ne faites plus qu'un avec les vents de l'incertitude et bâtissez un avenir qui unira le monde !
 [IDS_ITEMDESC.ID1130090]
-coming soon
+Un démon redoutable connu pour ses larmes pourpres.
+Elle a besoin de mots doux pour utiliser ses pleins pouvoirs.
 [IDS_ITEMDESC.ID1130091]
 coming soon
 [IDS_ITEMDESC.ID1130092]
@@ -3323,6 +3550,47 @@ coming soon
 coming soon
 [IDS_ITEMDESC.ID1130100]
 coming soon
+[IDS_ITEMDESC.ID1132003]
+"J'ai créé mon propre site web qui recrée parfaitement mon village adoré."
+Elle s'est joyeusement précipitée sur les forums quand le dixième visiteur est arrivé.
+[IDS_ITEMDESC.ID1140001]
+Un ticket permettant d'acheter un Pack Héritage.
+Quel sera votre héritage ?
+[IDS_ITEMDESC.ID1141001]
+Un ticket permettant d'acheter une récompense Xyz.
+Les matériels imbriqués permettant d'appeler une immense puissance constituent l'un des grands mystères de l'univers du Terrain de Duel.
+[IDS_ITEMDESC.ID1141002]
+Un ticket permettant d'acheter une récompense Fusion.
+L'unité prend différentes formes et l'une d'elles est la Fusion. Évoluez et gagnez en puissance avec le pouvoir de la Fusion.
+[IDS_ITEMDESC.ID1141003]
+Un ticket permettant d'acheter une récompense Synchro.
+Faites briller encore plus vos monstres en rassemblant davantage d'étoiles.
+[IDS_ITEMDESC.ID1141004]
+Un ticket permettant d'acheter des récompenses de la Duelist Cup.
+Les Duels vous permettent de découvrir un grand nombre de cartes.
+[IDS_ITEMDESC.ID1150001]
+Le nombre maximum de Decks que vous pouvez posséder a augmenté de 1.
+[IDS_ITEMDESC.ID1160001]
+Augmente de 1 le nombre de Replays que vous pouvez conserver en mémoire.
+[IDS_ITEMDESC.ID1170001]
+coming soon
+[IDS_ITEMDESC.ID1170002]
+coming soon
+[IDS_ITEMDESC.ID1180001]
+Une pièce dont le motif est le dragon lumineux qui écrit une nouvelle légende.
+Ses yeux céruléens brillent.
+[IDS_ITEMDESC.ID1180002]
+Une pièce dont le motif est une marmite censée apporter le bien-être.
+Elle reluit d’une expression avide.
+[IDS_ITEMDESC.ID1180003]
+coming soon
+[IDS_ITEMDESC.ID1180004]
+Une pièce dont le motif est le puzzle tridimensionnel découvert dans des ruines anciennes.
+L'Œil de l’insigne Wdjat brille.
+[IDS_ITEMDESC.ID1180005]
+coming soon
+[IDS_ITEMDESC.ID1190001]
+Le nombre maximum de marque-pages que vous pouvez posséder peut être augmenté.
 [IDS_ITEMDESC.ID0000]
 Non trouvé.
 [IDS_ITEMDESC.ID0001]
@@ -3358,64 +3626,3 @@ Un Orbe EAU requis pour déverrouiller des chapitres verrouillés en Mode Solo.
 Un Orbe FEU requis pour déverrouiller des chapitres verrouillés en Mode Solo.
 [IDS_ITEMDESC.ID0013]
 Un Orbe VENT requis pour déverrouiller des chapitres verrouillés en Mode Solo.
-[IDS_ITEMDESC.ID1140001]
-Un ticket permettant d'acheter un Pack Héritage.
-Quel sera votre héritage ?
-[IDS_ITEMDESC.ID1141001]
-Un ticket permettant d'acheter une récompense Xyz.
-Les matériels imbriqués permettant d'appeler une immense puissance constituent l'un des grands mystères de l'univers du Terrain de Duel.
-[IDS_ITEMDESC.ID1141002]
-Un ticket permettant d'acheter une récompense Fusion.
-L'unité prend différentes formes et l'une d'elles est la Fusion. Évoluez et gagnez en puissance avec le pouvoir de la Fusion.
-[IDS_ITEMDESC.ID1141003]
-Un ticket permettant d'acheter une récompense Synchro.
-Faites briller encore plus vos monstres en rassemblant davantage d'étoiles.
-[IDS_ITEMDESC.ID1141004]
-Un ticket permettant d'acheter des récompenses de la Duelist Cup.
-Les Duels vous permettent de découvrir un grand nombre de cartes.
-[IDS_ITEMDESC.ID1150001]
-Le nombre maximum de Decks que vous pouvez posséder a augmenté de 1.
-[IDS_ITEMDESC.ID1160001]
-Augmente de 1 le nombre de Replays que vous pouvez conserver en mémoire.
-[IDS_ITEMDESC.ID1020158]
-Un titre donné aux Duellistes qui obtenu des résultats au cours de l'événement de Course de dés - Fusion, Xyz, Link.
-L'avenir sourit à ceux qui ont le courage de croire en leurs capacités.
-[IDS_ITEMDESC.ID1020159]
-Un titre donné aux Duellistes qui ont atteint le top 10 dans les "Qualifications pour le WCS 2025".
-Nombreux sont ceux qui ont pu voir leurs talents de Duellistes dignes de défier le monde.
-[IDS_ITEMDESC.ID1020160]
-Un titre donné aux Duellistes qui ont atteint le top 100 lors des "Qualifications pour le WCS 2025".
-Preuve qu'un Duelliste a démontré ses talents et la maîtrise de ses cartes dans des Duels contre le reste du monde.
-[IDS_ITEMDESC.ID1020161]
-Un titre donné aux Duellistes qui ont atteint le top 500 lors des "Qualifications pour le WCS 2025".
-Preuve qu'un Duelliste a affiné ses compétences au point de l'emporter dans de nombreux Duels face au reste du monde.
-[IDS_ITEMDESC.ID1020162]
-Un titre donné aux Duellistes qui ont atteint le top 1000 lors des "Qualifications pour le WCS 2025".
-Médaille d'honneur décernée à un Duelliste infatigable qui s'est battu vaillamment face aux meilleurs Duellistes du monde.
-[IDS_ITEMDESC.ID1020163]
-Un titre donné aux Duellistes qui ont atteint le top 10000 lors des "Qualifications pour le WCS 2025".
-Pour ceux qui se sont imposés face à des adversaires redoutables et qui ont remporté des victoires.
-[IDS_ITEMDESC.ID1020164]
-Un titre donné aux Duellistes qui ont atteint le DNV max lors des "Qualifications pour le WCS 2025."
-Pour ceux qui ont démontré leur capacité en tant que Duellistes dignes d'accéder aux qualifications régionales.
-[IDS_ITEMDESC.ID1020165]
-Un titre donné aux Duellistes qui ont obtenu des résultats au Festival UNDER☆5.
-Les Duellistes sont fiers des cartes auxquelles ils tiennent le plus.
-[IDS_ITEMDESC.ID1020166]
-Un titre donné aux Duellistes qui ont obtenu des résultats dans le Festival Fusion x Lien.
-Les Duellistes sont fiers des cartes auxquelles ils tiennent le plus.
-[IDS_ITEMDESC.ID1070121]
-Des protège-cartes représentant une entité qui s'est élevée au-dessus de sa longue querelle avec son grand rival.
-Pour ceux qui résident dans le réseau.
-[IDS_ITEMDESC.ID1070122]
-Des protège-cartes qui représentent "", l'outil ultime de la reine qui possède une emprise sur plusieurs Types de carte.
-Pour ceux qui désirent dominer des mondes virtuels merveilleux.
-[IDS_ITEMDESC.ID1073013]
-Un Protège-cartes avec un logo "Qualifications pour le WCS 2025".
-Pour ceux qui ont participé à la division MASTER DUEL et qui ont fait de cet événement un succès.
-[IDS_ITEMDESC.ID1075002]
-Protège-cartes affichant un visuel pour Yu-Gi-Oh! CARD GAME THE CHRONICLES.
-En traversant le champ de bataille, la jeune fille équipée d'armes technologiques super-avancées fait une rencontre qui va changer le monde.
-[IDS_ITEMDESC.ID1082021]
-Une boîte de cartes illustrée avec un conflit de grande échelle.
-Parfait pour ceux qui se battent dans les territoires du Nord.

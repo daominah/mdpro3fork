@@ -1616,7 +1616,7 @@ namespace MDPro3.Duel
                 else if (code == 63166095 || code == 63166096)
                 {
                     int code2 = 0;
-                    nextMoveActionDuration = 2.2f + 0.5f + 0.1f;
+                    nextMoveActionDuration = 2.2f + 0.5f;
                     nextMoveAction = () =>
                     {
                         effect = GetCardEffectPrefab(code == 63166095 ? "Ef13671" : "Ef03434");

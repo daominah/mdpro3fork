@@ -69,7 +69,7 @@ coming soon
 [IDS_ITEM.ID1000035]
 coming soon
 [IDS_ITEM.ID1000036]
-coming soon
+召喚師アレイスター
 [IDS_ITEM.ID1000037]
 coming soon
 [IDS_ITEM.ID1000038]
@@ -171,7 +171,7 @@ coming soon
 [IDS_ITEM.ID1001036]
 coming soon
 [IDS_ITEM.ID1001037]
-coming soon
+ジェムタートル 
 [IDS_ITEM.ID1001038]
 coming soon
 [IDS_ITEM.ID1001039]
@@ -277,6 +277,8 @@ coming soon
 [IDS_ITEM.ID1003009]
 coming soon
 [IDS_ITEM.ID1003010]
+coming soon
+[IDS_ITEM.ID1005001]
 coming soon
 [IDS_ITEM.ID1010001]
 新たなデュエリスト
@@ -495,21 +497,21 @@ coming soon
 [IDS_ITEM.ID1010108]
 赫の聖女カルテシア
 [IDS_ITEM.ID1010109]
-coming soon
+光なき影 ア＝バオ・ア・クゥー
 [IDS_ITEM.ID1010110]
-coming soon
+六武衆
 [IDS_ITEM.ID1010111]
-coming soon
+封印されしエクゾディア (WCS2025)
 [IDS_ITEM.ID1010112]
 coming soon
 [IDS_ITEM.ID1010113]
-coming soon
+召喚師アレイスター
 [IDS_ITEM.ID1010114]
-coming soon
+クリクリンク@イグニスター
 [IDS_ITEM.ID1010115]
-coming soon
+影霊衣の魔剣士 アバンス
 [IDS_ITEM.ID1010116]
-coming soon
+ブロックドラゴン
 [IDS_ITEM.ID1010117]
 coming soon
 [IDS_ITEM.ID1010118]
@@ -621,23 +623,27 @@ WCS2025予選　シルバーファイナリスト
 [IDS_ITEM.ID1011051]
 WCS2025予選　ブロンズファイナリスト
 [IDS_ITEM.ID1011052]
-coming soon
+シンクロカップ　ゴールドファイナリスト
 [IDS_ITEM.ID1011053]
-coming soon
+シンクロカップ　シルバーファイナリスト
 [IDS_ITEM.ID1011054]
-coming soon
+シンクロカップ　ブロンズファイナリスト
 [IDS_ITEM.ID1011055]
-coming soon
+シンクロカップ Champion
 [IDS_ITEM.ID1011056]
-coming soon
+WCS2025 Champion
 [IDS_ITEM.ID1011057]
-coming soon
+WCS2025 Finalist
 [IDS_ITEM.ID1011058]
-coming soon
+WCS2025 BEST4
 [IDS_ITEM.ID1011059]
-coming soon
+WCS2025 BEST12
 [IDS_ITEM.ID1011060]
-coming soon
+DC2025 SEP　ゴールドファイナリスト
+[IDS_ITEM.ID1011061]
+DC2025 SEP　シルバーファイナリスト
+[IDS_ITEM.ID1011062]
+DC2025 SEP　ブロンズファイナリスト
 [IDS_ITEM.ID1012001]
 エクスクローラー・シナプシス
 [IDS_ITEM.ID1012002]
@@ -785,9 +791,9 @@ R－ACEインパルス
 [IDS_ITEM.ID1012073]
 フレムベル・ベビー
 [IDS_ITEM.ID1012074]
-coming soon
+海皇龍 ポセイドラ
 [IDS_ITEM.ID1012075]
-coming soon
+炎王神獣 ガルドニクス
 [IDS_ITEM.ID1012076]
 coming soon
 [IDS_ITEM.ID1012077]
@@ -827,7 +833,7 @@ Yu-Gi-Oh! CARD GAME THE CHRONICLES
 [IDS_ITEM.ID1013004]
 閃刀姫－カガリ
 [IDS_ITEM.ID1013005]
-coming soon
+教導の騎士フルルドリス
 [IDS_ITEM.ID1013006]
 coming soon
 [IDS_ITEM.ID1013007]
@@ -1172,6 +1178,60 @@ DC2025 MAR 2nd STAGE進出
 狂風煽る劫火
 [IDS_ITEM.ID1020157]
 バーサーカー
+[IDS_ITEM.ID1020158]
+乾坤一擲
+[IDS_ITEM.ID1020159]
+WCS2025予選 TOP10
+[IDS_ITEM.ID1020160]
+WCS2025予選 TOP100
+[IDS_ITEM.ID1020161]
+WCS2025予選 TOP500
+[IDS_ITEM.ID1020162]
+WCS2025予選 TOP1000
+[IDS_ITEM.ID1020163]
+WCS2025予選 TOP10000
+[IDS_ITEM.ID1020164]
+WCS2025予選 DLv.MAX
+[IDS_ITEM.ID1020165]
+ファイブスター
+[IDS_ITEM.ID1020166]
+瑠璃装の刺客
+[IDS_ITEM.ID1020167]
+白銀の覇者
+[IDS_ITEM.ID1020168]
+シンクロカップ TOP10
+[IDS_ITEM.ID1020169]
+シンクロカップ TOP100
+[IDS_ITEM.ID1020170]
+シンクロカップ TOP500
+[IDS_ITEM.ID1020171]
+シンクロカップ TOP1000
+[IDS_ITEM.ID1020172]
+シンクロカップ TOP10000
+[IDS_ITEM.ID1020173]
+シンクロカップ 2nd STAGE進出
+[IDS_ITEM.ID1020174]
+WCS2025 Champion
+[IDS_ITEM.ID1020175]
+WCS2025 Finalist
+[IDS_ITEM.ID1020176]
+WCS2025 BEST4
+[IDS_ITEM.ID1020177]
+WCS2025 BEST12
+[IDS_ITEM.ID1020179]
+武士道
+[IDS_ITEM.ID1020180]
+DC2025 SEP TOP10
+[IDS_ITEM.ID1020181]
+DC2025 SEP TOP100
+[IDS_ITEM.ID1020182]
+DC2025 SEP TOP500
+[IDS_ITEM.ID1020183]
+DC2025 SEP TOP1000
+[IDS_ITEM.ID1020184]
+DC2025 SEP TOP10000
+[IDS_ITEM.ID1020185]
+DC2025 SEP 2nd STAGE進出
 [IDS_ITEM.ID1021001]
 盤石の布陣
 [IDS_ITEM.ID1021002]
@@ -1249,11 +1309,11 @@ DC2025 MAR 2nd STAGE進出
 [IDS_ITEM.ID1030036]
 パープル＆イエローフレーム
 [IDS_ITEM.ID1030037]
-coming soon
+イエロー&ブルーフレーム
 [IDS_ITEM.ID1030038]
 coming soon
 [IDS_ITEM.ID1030039]
-coming soon
+ジェムナイト・フュージョン
 [IDS_ITEM.ID1030040]
 coming soon
 [IDS_ITEM.ID1030041]
@@ -1347,9 +1407,9 @@ coming soon
 [IDS_ITEM.ID1031015]
 M∀LICE
 [IDS_ITEM.ID1031016]
-coming soon
+オーバーレイ・ユニット β
 [IDS_ITEM.ID1031017]
-coming soon
+Aiラブ融合
 [IDS_ITEM.ID1031018]
 coming soon
 [IDS_ITEM.ID1031019]
@@ -1403,9 +1463,9 @@ WCS2024 出場記念
 [IDS_ITEM.ID1033003]
 オーバーレイ・ユニット
 [IDS_ITEM.ID1033004]
-coming soon
+シンクロリング
 [IDS_ITEM.ID1033005]
-coming soon
+WCS2025 出場記念
 [IDS_ITEM.ID1033006]
 coming soon
 [IDS_ITEM.ID1033007]
@@ -1656,6 +1716,26 @@ FA－ダーク・ナイト・ランサー
 剣闘獣ガイザレス
 [IDS_ITEM.ID1070120]
 アーク・リベリオン・エクシーズ・ドラゴン
+[IDS_ITEM.ID1070121]
+ヴァレルロード・F・ドラゴン
+[IDS_ITEM.ID1070122]
+M∀LICE IN THE MIRROR
+[IDS_ITEM.ID1070123]
+クリアウィング・シンクロ・ドラゴン
+[IDS_ITEM.ID1070124]
+ライゼオル・デッドネーダー
+[IDS_ITEM.ID1070125]
+アクセスコード・トーカー
+[IDS_ITEM.ID1070126]
+創世の神 デウテロノミオン
+[IDS_ITEM.ID1070127]
+coming soon
+[IDS_ITEM.ID1070128]
+coming soon
+[IDS_ITEM.ID1070129]
+coming soon
+[IDS_ITEM.ID1070130]
+封印されしエクゾディア (WCS2025)
 [IDS_ITEM.ID1071001]
 天穹のパラディオン
 [IDS_ITEM.ID1071002]
@@ -1725,9 +1805,9 @@ FA－ダーク・ナイト・ランサー
 [IDS_ITEM.ID1071034]
 フレムベル・ウルキサス
 [IDS_ITEM.ID1071035]
-coming soon
+炎王神獣 ガルドニクス
 [IDS_ITEM.ID1071036]
-coming soon
+海皇龍 ポセイドラ
 [IDS_ITEM.ID1071037]
 coming soon
 [IDS_ITEM.ID1071038]
@@ -1923,13 +2003,13 @@ DC2025 MAR 開催記念
 [IDS_ITEM.ID1073013]
 WCS2025予選　開催記念
 [IDS_ITEM.ID1073014]
-coming soon
+シンクロカップ 開催記念
 [IDS_ITEM.ID1073015]
-coming soon
+WCS2025 開催記念
 [IDS_ITEM.ID1073016]
-coming soon
+WCS2025 出場記念
 [IDS_ITEM.ID1073017]
-coming soon
+DC2025 SEP 開催記念
 [IDS_ITEM.ID1073018]
 coming soon
 [IDS_ITEM.ID1073019]
@@ -1938,6 +2018,16 @@ coming soon
 coming soon
 [IDS_ITEM.ID1075001]
 Yu-Gi-Oh! CARD GAME THE CHRONICLES
+[IDS_ITEM.ID1075002]
+THE CHRONICLES 閃刀姫
+[IDS_ITEM.ID1075003]
+coming soon
+[IDS_ITEM.ID1075004]
+coming soon
+[IDS_ITEM.ID1075005]
+coming soon
+[IDS_ITEM.ID1075006]
+THE CHRONICLES 白の物語
 [IDS_ITEM.ID1080001]
 デュエリストカードケース　レッド
 [IDS_ITEM.ID1080002]
@@ -1997,7 +2087,7 @@ coming soon
 [IDS_ITEM.ID1080029]
 クリムゾン・パワーフォース
 [IDS_ITEM.ID1080030]
-coming soon
+リユニオン・オブ・レイダーズ
 [IDS_ITEM.ID1080031]
 coming soon
 [IDS_ITEM.ID1080032]
@@ -2171,7 +2261,7 @@ coming soon
 [IDS_ITEM.ID1090026]
 桜色に染まる森
 [IDS_ITEM.ID1090027]
-coming soon
+紅く色づく森
 [IDS_ITEM.ID1090028]
 白く覆われた森
 [IDS_ITEM.ID1090029]
@@ -2228,6 +2318,8 @@ coming soon
 coming soon
 [IDS_ITEM.ID1092015]
 coming soon
+[IDS_ITEM.ID1095001]
+coming soon
 [IDS_ITEM.ID1100001]
 森
 [IDS_ITEM.ID1100002]
@@ -2281,7 +2373,7 @@ coming soon
 [IDS_ITEM.ID1100026]
 桜色に染まる森
 [IDS_ITEM.ID1100027]
-coming soon
+紅く色づく森
 [IDS_ITEM.ID1100028]
 白く覆われた森
 [IDS_ITEM.ID1100029]
@@ -2418,6 +2510,8 @@ coming soon
 coming soon
 [IDS_ITEM.ID1102015]
 coming soon
+[IDS_ITEM.ID1105001]
+coming soon
 [IDS_ITEM.ID1110001]
 森
 [IDS_ITEM.ID1110002]
@@ -2471,7 +2565,7 @@ coming soon
 [IDS_ITEM.ID1110026]
 桜色に染まる森
 [IDS_ITEM.ID1110027]
-coming soon
+紅く色づく森
 [IDS_ITEM.ID1110028]
 白く覆われた森
 [IDS_ITEM.ID1110029]
@@ -2547,7 +2641,7 @@ coming soon
 [IDS_ITEM.ID1111024]
 リミッター解除
 [IDS_ITEM.ID1111025]
-coming soon
+リチュアの儀水鏡
 [IDS_ITEM.ID1111026]
 お気に入りの切り株
 [IDS_ITEM.ID1111027]
@@ -2585,7 +2679,7 @@ coming soon
 [IDS_ITEM.ID1111043]
 白き森のいいつたえ
 [IDS_ITEM.ID1111044]
-coming soon
+レアル・ジェネクス・チューリング 
 [IDS_ITEM.ID1111045]
 マドルチェ・ピョコレート
 [IDS_ITEM.ID1111046]
@@ -2599,7 +2693,7 @@ coming soon
 [IDS_ITEM.ID1111050]
 水属性
 [IDS_ITEM.ID1111051]
-coming soon
+炎属性
 [IDS_ITEM.ID1111052]
 風属性
 [IDS_ITEM.ID1111053]
@@ -2613,7 +2707,7 @@ coming soon
 [IDS_ITEM.ID1111057]
 千年王朝の盾
 [IDS_ITEM.ID1111058]
-coming soon
+孤島に宿る聖域の力
 [IDS_ITEM.ID1111059]
 coming soon
 [IDS_ITEM.ID1111060]
@@ -2625,11 +2719,11 @@ coming soon
 [IDS_ITEM.ID1111063]
 coming soon
 [IDS_ITEM.ID1111064]
-coming soon
+マルチャミー・ピンク
 [IDS_ITEM.ID1111065]
 coming soon
 [IDS_ITEM.ID1111066]
-coming soon
+暴走魔法陣
 [IDS_ITEM.ID1111067]
 coming soon
 [IDS_ITEM.ID1111068]
@@ -2673,10 +2767,12 @@ WCS2023 出場記念
 [IDS_ITEM.ID1113002]
 WCS2024 出場記念
 [IDS_ITEM.ID1113003]
-coming soon
+WCS2025 出場記念
 [IDS_ITEM.ID1113004]
 coming soon
 [IDS_ITEM.ID1113005]
+coming soon
+[IDS_ITEM.ID1115001]
 coming soon
 [IDS_ITEM.ID1120001]
 始まりのデッキ
@@ -2737,7 +2833,7 @@ coming soon
 [IDS_ITEM.ID1120029]
 クリムゾン・パワーフォース
 [IDS_ITEM.ID1120030]
-coming soon
+リユニオン・オブ・レイダーズ
 [IDS_ITEM.ID1120031]
 coming soon
 [IDS_ITEM.ID1120032]
@@ -2913,21 +3009,21 @@ M∀LICE IN UNDERGROUND
 [IDS_ITEM.ID1130082]
 赫の聖女カルテシア
 [IDS_ITEM.ID1130083]
-coming soon
+氷結界の紋章
 [IDS_ITEM.ID1130084]
-coming soon
+ブラック・ローズ・ドラゴン
 [IDS_ITEM.ID1130085]
-coming soon
+光なき影 ア＝バオ・ア・クゥー
 [IDS_ITEM.ID1130086]
-coming soon
+封印されしエクゾディア (WCS2025)
 [IDS_ITEM.ID1130087]
 coming soon
 [IDS_ITEM.ID1130088]
-coming soon
+召喚獣マギストス・セリオン
 [IDS_ITEM.ID1130089]
-coming soon
+アコード・トーカー＠イグニスター
 [IDS_ITEM.ID1130090]
-coming soon
+紅涙の魔ラクリモーサ
 [IDS_ITEM.ID1130091]
 coming soon
 [IDS_ITEM.ID1130092]
@@ -2948,6 +3044,78 @@ coming soon
 coming soon
 [IDS_ITEM.ID1130100]
 coming soon
+[IDS_ITEM.ID1132001]
+coming soon
+[IDS_ITEM.ID1132002]
+coming soon
+[IDS_ITEM.ID1132003]
+BBS
+[IDS_ITEM.ID1140001]
+レガシーパックチケット
+[IDS_ITEM.ID1140002]
+トーナメントパックチケット１
+[IDS_ITEM.ID1141001]
+エクシーズ・リワードチケット
+[IDS_ITEM.ID1141002]
+フュージョン・リワードチケット
+[IDS_ITEM.ID1141003]
+シンクロ・リワードチケット
+[IDS_ITEM.ID1141004]
+デュエリストカップ・リワードチケット
+[IDS_ITEM.ID1141005]
+スペシャル・リワードチケット（仮）
+[IDS_ITEM.ID1141006]
+イベント・リワードチケット２（仮）
+[IDS_ITEM.ID1141007]
+スペシャル・リワードチケット２（仮）
+[IDS_ITEM.ID1150001]
+デッキ枠
+[IDS_ITEM.ID1160001]
+リプレイ保存枠
+[IDS_ITEM.ID1170001]
+coming soon
+[IDS_ITEM.ID1170002]
+coming soon
+[IDS_ITEM.ID1180001]
+青眼の亜白龍
+[IDS_ITEM.ID1180002]
+強欲な壺
+[IDS_ITEM.ID1180003]
+coming soon
+[IDS_ITEM.ID1180004]
+千年パズル
+[IDS_ITEM.ID1180005]
+coming soon
+[IDS_ITEM.ID1190001]
+ブックマーク枠
+[IDS_ITEM.ID0000]
+設定なし
+[IDS_ITEM.ID0001]
+ジェム
+[IDS_ITEM.ID0002]
+ジェム
+[IDS_ITEM.ID0003]
+CP-N
+[IDS_ITEM.ID0004]
+CP-R
+[IDS_ITEM.ID0005]
+CP-SR
+[IDS_ITEM.ID0006]
+CP-UR
+[IDS_ITEM.ID0007]
+オーブ
+[IDS_ITEM.ID0008]
+オーブ-闇
+[IDS_ITEM.ID0009]
+オーブ-光
+[IDS_ITEM.ID0010]
+オーブ-地
+[IDS_ITEM.ID0011]
+オーブ-水
+[IDS_ITEM.ID0012]
+オーブ-炎
+[IDS_ITEM.ID0013]
+オーブ-風
 [IDS_ITEM.CATEGORY_0001]
 消費アイテム
 [IDS_ITEM.CATEGORY_0002]
@@ -2978,87 +3146,19 @@ coming soon
 パックチケット
 [IDS_ITEM.CATEGORY_0015]
 デッキ枠
+[IDS_ITEM.CATEGORY_0017]
+coming soon
+[IDS_ITEM.CATEGORY_0018]
+コイン
+[IDS_ITEM.CATEGORY_0019]
+ブックマーク枠
 [IDS_ITEM.SPCATEGORY_0003]
 デラックスメイト
 [IDS_ITEM.SPCATEGORY_0006]
 デラックスアイコンフレーム
 [IDS_ITEM.SPCATEGORY_0007]
 デラックスプロテクター
-[IDS_ITEM.ID0000]
-設定なし
-[IDS_ITEM.ID0001]
-ジェム
-[IDS_ITEM.ID0002]
-ジェム
 [IDS_ITEM.FREEGEM]
 無償ジェム
 [IDS_ITEM.PAIDGEM]
 有償ジェム
-[IDS_ITEM.ID0003]
-CP-N
-[IDS_ITEM.ID0004]
-CP-R
-[IDS_ITEM.ID0005]
-CP-SR
-[IDS_ITEM.ID0006]
-CP-UR
-[IDS_ITEM.ID0007]
-オーブ
-[IDS_ITEM.ID0008]
-オーブ-闇
-[IDS_ITEM.ID0009]
-オーブ-光
-[IDS_ITEM.ID0010]
-オーブ-地
-[IDS_ITEM.ID0011]
-オーブ-水
-[IDS_ITEM.ID0012]
-オーブ-炎
-[IDS_ITEM.ID0013]
-オーブ-風
-[IDS_ITEM.ID1140001]
-レガシーパックチケット
-[IDS_ITEM.ID1140002]
-トーナメントパックチケット１
-[IDS_ITEM.ID1141001]
-エクシーズ・リワードチケット
-[IDS_ITEM.ID1141002]
-フュージョン・リワードチケット
-[IDS_ITEM.ID1141003]
-シンクロ・リワードチケット
-[IDS_ITEM.ID1141004]
-デュエリストカップ・リワードチケット
-[IDS_ITEM.ID1141005]
-スペシャル・リワードチケット（仮）
-[IDS_ITEM.ID1141006]
-イベント・リワードチケット２（仮）
-[IDS_ITEM.ID1141007]
-スペシャル・リワードチケット２（仮）
-[IDS_ITEM.ID1150001]
-デッキ枠
-[IDS_ITEM.ID1160001]
-リプレイ保存枠
-[IDS_ITEM.ID1020158]
-乾坤一擲
-[IDS_ITEM.ID1020159]
-WCS2025予選 TOP10
-[IDS_ITEM.ID1020160]
-WCS2025予選 TOP100
-[IDS_ITEM.ID1020161]
-WCS2025予選 TOP500
-[IDS_ITEM.ID1020162]
-WCS2025予選 TOP1000
-[IDS_ITEM.ID1020163]
-WCS2025予選 TOP10000
-[IDS_ITEM.ID1020164]
-WCS2025予選 DLv.MAX
-[IDS_ITEM.ID1020165]
-ファイブスター
-[IDS_ITEM.ID1020166]
-瑠璃装の刺客
-[IDS_ITEM.ID1070121]
-ヴァレルロード・F・ドラゴン
-[IDS_ITEM.ID1070122]
-M∀LICE IN THE MIRROR
-[IDS_ITEM.ID1075002]
-THE CHRONICLES 閃刀姫
