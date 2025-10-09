@@ -13,9 +13,11 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Playables;
+using UnityEngine.Timeline;
 using YgomGame.Bg;
 using YgomSystem.Effect;
 using YgomSystem.ElementSystem;
+using YgomSystem.Timeline;
 using static MDPro3.Servant.OcgCore;
 using static UnityEngine.Rendering.DebugUI;
 using static YgomGame.Bg.BgEffectSettingInner;
@@ -1122,6 +1124,14 @@ namespace MDPro3.Duel
             }
             var director = animation.GetComponent<PlayableDirector>();
             var manager = animation.GetComponent<ElementObjectManager>();
+
+            if(chain >= 4)
+            {
+                director.GetTrackAsset("LCardLightSetScaleC03").muted = true;
+                director.GetTrackAsset("LCardLightSetScaleC04").muted = false;
+                director.GetTrackAsset("RCardLightSetScaleC03").muted = true;
+                director.GetTrackAsset("RCardLightSetScaleC04").muted = false;
+            }
 
             ElementObjectManager targetCardD;
             if (controllerInChain[chain - 1] == 0)

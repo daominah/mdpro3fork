@@ -161,7 +161,7 @@ namespace MDPro3.Servant
         private IEnumerator UpdatePrereleaseAsync()
         {
             var filePath = Path.Combine(Program.PATH_EXPANSIONS, Path.GetFileName(Settings.Data.PrereleasePackUrl));
-            if (!File.Exists(filePath) || Language.GetConfig() != Language.GetPrerelease())
+            if (!File.Exists(filePath) || Language.GetConfig() != Language.GetPrereleaseConfig())
             {
                 Config.Set("Prerelease", Config.STRING_NO);
                 Config.Save();
@@ -196,7 +196,7 @@ namespace MDPro3.Servant
                         File.WriteAllBytes(filePath, download.downloadHandler.data);
                         MessageManager.Cast(InterString.Get("先行卡更新成功。"));
                         Config.Set("Prerelease", lines[0]);
-                        Language.SetPrerelease(Language.GetConfig());
+                        Language.SetPrereleaseConfig(Language.GetConfig());
                         Config.Save();
                         Program.instance.InitializeForDataChange();
                     }

@@ -917,7 +917,7 @@ namespace MDPro3.Servant
                     currentMessage = (GameMessage)currentPackage.Function;
 
                     //if (currentMessage != GameMessage.UpdateData)
-                    //    Debug.Log($"GameMessage: {currentMessage}");
+                        //Debug.Log($"GameMessage: {currentMessage}");
 
                     try
                     {

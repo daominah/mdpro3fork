@@ -474,7 +474,7 @@ namespace MDPro3.Duel.YGOSharp
 
             var bracketLeft = "【";
             var bracketRight = "】";
-            if (Language.CardNeedSmallBracket(isPre ? Language.GetPrerelease() : Language.GetCardConfig()))
+            if (Language.CardNeedSmallBracket(isPre ? Language.GetPrereleaseConfig() : Language.GetCardConfig()))
             {
                 bracketLeft = "[";
                 bracketRight = "]";
@@ -501,7 +501,7 @@ namespace MDPro3.Duel.YGOSharp
             }
 
             re = re.Replace(Program.STRING_SLASH, 
-                (isPre ? Language.CardUseLatin(Language.GetPrerelease()) : Language.CardUseLatin()) 
+                (isPre ? Language.CardUseLatin(Language.GetPrereleaseConfig()) : Language.CardUseLatin()) 
                 ? CardRenderer.SMALL_SLASH : CardRenderer.BIG_SLASH);
 
             return re;
@@ -515,7 +515,7 @@ namespace MDPro3.Duel.YGOSharp
 
             var bracketLeft = "【";
             var bracketRight = "】";
-            if (Language.CardNeedSmallBracket(isPre ? Language.GetPrerelease() : Language.GetCardConfig()))
+            if (Language.CardNeedSmallBracket(isPre ? Language.GetPrereleaseConfig() : Language.GetCardConfig()))
             {
                 bracketLeft = "[";
                 bracketRight = "]";

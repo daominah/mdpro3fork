@@ -40,12 +40,12 @@ namespace MDPro3.Utility
             Config.Set(CardConfigName, language);
         }
 
-        public static string GetPrerelease()
+        public static string GetPrereleaseConfig()
         {
             return Config.Get(PrereleaseName, SimplifiedChinese);
         }
 
-        public static void SetPrerelease(string language)
+        public static void SetPrereleaseConfig(string language)
         {
             Config.Set(PrereleaseName, language);
         }
@@ -105,6 +105,11 @@ namespace MDPro3.Utility
             if (CardUseLatin() || language == Korean)
                 return true;
             return false;
+        }
+
+        public static bool NeedSpSummonString(string language)
+        {
+            return !CardUseLatin(language);
         }
 
         public static string GetMasterDuelLanguage(string language)

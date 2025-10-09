@@ -243,7 +243,7 @@ namespace MDPro3
             if (data.Id == 0)
                 return;
             if (data.isPre)
-                SwitchLanguage(Language.GetPrerelease());
+                SwitchLanguage(Language.GetPrereleaseConfig());
             else
                 SwitchLanguage();
 
@@ -276,7 +276,7 @@ namespace MDPro3
             if (data.Id == 0)
                 return;
             if (data.isPre)
-                SwitchLanguage(Language.GetPrerelease());
+                SwitchLanguage(Language.GetPrereleaseConfig());
             else
                 SwitchLanguage();
 
@@ -355,7 +355,7 @@ namespace MDPro3
                 return false;
 
             if (data.isPre)
-                SwitchLanguage(Language.GetPrerelease());
+                SwitchLanguage(Language.GetPrereleaseConfig());
             else
                 SwitchLanguage();
 
@@ -545,7 +545,7 @@ namespace MDPro3
                 return false;
 
             if (data.isPre)
-                SwitchLanguage(Language.GetPrerelease());
+                SwitchLanguage(Language.GetPrereleaseConfig());
             else
                 SwitchLanguage();
 
@@ -799,7 +799,7 @@ namespace MDPro3
         {
             if (string.IsNullOrEmpty(description))
                 return string.Empty;
-            var language = isPre ? Language.GetPrerelease() : Language.GetCardConfig();
+            var language = isPre ? Language.GetPrereleaseConfig() : Language.GetCardConfig();
 
             //if (language == Language.Japanese)
             //{

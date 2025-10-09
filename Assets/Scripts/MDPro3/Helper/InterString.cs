@@ -46,19 +46,19 @@ namespace MDPro3
                 InitializeContent(File.ReadAllText(pathForRender), 1);
             }
 
-            if (Language.GetPrerelease() == Language.GetConfig())
+            if (Language.GetPrereleaseConfig() == Language.GetConfig())
             {
                 pathForPrerelease = path;
                 translationsForPrerelease = translations;
             }
-            else if(Language.GetPrerelease() == Language.GetCardConfig())
+            else if(Language.GetPrereleaseConfig() == Language.GetCardConfig())
             {
                 pathForPrerelease = pathForRender;
                 translationsForPrerelease = translationsForRender;
             }
             else
             {
-                pathForPrerelease = Program.PATH_LOCALES + Language.GetPrerelease() + PATH_CONF_FILE;
+                pathForPrerelease = Program.PATH_LOCALES + Language.GetPrereleaseConfig() + PATH_CONF_FILE;
                 if (!File.Exists(pathForPrerelease))
                     File.Create(pathForPrerelease).Close();
                 InitializeContent(File.ReadAllText(pathForPrerelease), 2);

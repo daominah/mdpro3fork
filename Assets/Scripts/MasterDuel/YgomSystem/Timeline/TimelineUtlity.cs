@@ -8,6 +8,14 @@ namespace YgomSystem.Timeline
 	{
 		public static TrackAsset GetTrackAsset(this PlayableDirector pd, string tracklabel)
 		{
+			foreach(var pb in pd.playableAsset.outputs)
+			{
+				var track = pb.sourceObject as TrackAsset;
+				if (track == null) continue;
+				if(track.name == tracklabel) 
+					return track;
+			}
+
 			return null;
 		}
 

@@ -3309,6 +3309,11 @@ namespace MDPro3.Duel
             await UniTask.WaitUntil(() => dispatcher.playerResponed);
         }
 
+        protected override async UniTask GameMessage_SortCard(BinaryReader reader)
+        {
+            await GameMessage_SortChain(reader);
+        }
+
         #endregion
     }
 }

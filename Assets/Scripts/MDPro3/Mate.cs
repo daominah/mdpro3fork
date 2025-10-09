@@ -338,7 +338,6 @@ namespace MDPro3
                         light.enabled = true;
                         light.cullingMask = 1 << layerMask;
                     }
-
                 }
             }
         }

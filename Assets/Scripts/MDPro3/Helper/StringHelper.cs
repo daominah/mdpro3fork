@@ -38,7 +38,7 @@ namespace MDPro3
             AddExpansionStrings(ref text);
             InitializeContent(text, 1);
 
-            text = File.ReadAllText(Program.PATH_LOCALES + Language.GetPrerelease() + PATH_CONF_FILE);
+            text = File.ReadAllText(Program.PATH_LOCALES + Language.GetPrereleaseConfig() + PATH_CONF_FILE);
             AddExpansionStrings(ref text);
             InitializeContent(text, 2);
         }
@@ -257,6 +257,13 @@ namespace MDPro3
                 for (var i = 4; i < 27; i++)
                     if (((a & 0x68020C0) & (1 << i)) > 0)
                     {
+                        if (type == 0 && i == 25 && !Language.NeedSpSummonString(Language.GetConfig()))
+                            continue;
+                        if (type == 1 && i == 25 && !Language.NeedSpSummonString(Language.GetCardConfig()))
+                            continue;
+                        if (type == 2 && i == 25 && !Language.NeedSpSummonString(Language.GetPrereleaseConfig()))
+                            continue;
+
                         start += Program.STRING_SLASH + GetUnsafe(1050 + i, type);
                         break;
                     }
@@ -393,7 +400,7 @@ namespace MDPro3
 
             var bracketLeft = "【";
             var bracketRight = "】";
-            if (render && Language.CardNeedSmallBracket(data.isPre ? Language.GetPrerelease() : Language.GetCardConfig()))
+            if (render && Language.CardNeedSmallBracket(data.isPre ? Language.GetPrereleaseConfig() : Language.GetCardConfig()))
             {
                 bracketLeft = "[";
                 bracketRight = "]";
