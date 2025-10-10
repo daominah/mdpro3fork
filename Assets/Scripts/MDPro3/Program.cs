@@ -283,6 +283,7 @@ namespace MDPro3
             SetRoot();
             instance = this;
             _ = Initialize();
+
         }
 
         public static void SetRoot()

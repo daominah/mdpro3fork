@@ -158,6 +158,37 @@ namespace MDPro3
             }
         }
 
+        public static GameObject LoadFromFolder(string path)
+        {
+            DirectoryInfo dir = new(Program.root + path);
+#if !UNITY_EDITOR && (UNITY_STANDALONE_OSX || UNITY_STANDALONE_WIN)
+            dir = new DirectoryInfo(Path.Combine(Application.dataPath, Program.root + path));
+#endif
+            FileInfo[] files = dir.GetFiles("*");
+            List<AssetBundle> bundles = new();
+            for (int i = 0; i < files.Length; i++)
+                bundles.Add(AssetBundle.LoadFromFile(files[i].FullName));
+
+            var go = new GameObject(Path.GetFileName(path));
+            foreach(var bundle in bundles)
+            {
+                var prefabs = bundle.LoadAllAssets();
+                for (int i = 0; i < prefabs.Length; i++)
+                {
+                    if (typeof(GameObject).IsInstanceOfType(prefabs[i]))
+                    {
+                        var p =UnityEngine.Object.Instantiate((GameObject)prefabs[i]);
+                        p.transform.SetParent(go.transform);
+                    }
+                }
+            }
+
+            foreach (AssetBundle bundle in bundles)
+                bundle.Unload(false);
+
+            return go;
+        }
+
         public static async UniTask<GameObject> LoadFromFolderAsync<T>(string path, bool cache, bool instantiate) where T : Component
         {
             if (cachedABFolder.TryGetValue(path, out var returnValue))

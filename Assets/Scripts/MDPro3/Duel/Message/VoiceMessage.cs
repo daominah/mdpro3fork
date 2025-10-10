@@ -8,7 +8,6 @@ using System.IO;
 using UnityEngine;
 using static MDPro3.Duel.VoicePlayer;
 using static MDPro3.VoiceController;
-using static YgomGame.Colosseum.ColosseumUtil;
 
 namespace MDPro3.Duel
 {
@@ -42,8 +41,7 @@ namespace MDPro3.Duel
 
         private void LogDebug(string text)
         {
-            Debug.LogError(text);
-            MessageManager.Cast(text);
+            Program.Debug(text);
         }
 
         private void DebugNoCard()
@@ -161,9 +159,7 @@ namespace MDPro3.Duel
             {
                 if (!Core.charaFaceSetting)
                     Core.SetCharacterDefaultFace();
-
-                if (voiceData == null || voiceData.Count == 0)
-                    return;
+                LoadData();
             }
             else
             {

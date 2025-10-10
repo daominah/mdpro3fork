@@ -63,6 +63,7 @@ SpriteAtlas:
     - 512231d0cbfd3014fa4180f09e26eab4: 21300000
     - 833df4d018ce4484181fe3d7d9d19958: 21300000
     - 71b01dd0e33c2d642b507deeb842dbc2: 21300000
+    - da6081e07f794ef40aa5578d09f8f2fc: 21300000
     - 9b1905e02c2dbe642a9aaae465254894: 21300000
     - 053e5de00dcdfdd44ac335092f4608a4: 21300000
     - e55da8f083f0d9e48b65356a0408cb4c: 21300000
@@ -122,6 +123,7 @@ SpriteAtlas:
     - bffa1745f563e9941bc54c5eccce65ea: 21300000
     - e2b51765c8631a74a98bb5b07916df12: 21300000
     - 0fff2b657ba4b00458b75cea475647e1: 21300000
+    - 5c866b957bbd846419efcd3262a6c816: 21300000
     - 066a9c9516b34c8418afad18a4da27ed: 21300000
     - 126ec3c5b752d3b4fa7ec59d20225062: 21300000
     - e8e509d5ecf45014b83fd82ec1593c58: 21300000
@@ -191,6 +193,7 @@ SpriteAtlas:
     - a9067e3ae47baef49951aa29e8ee67b7: 21300000
     - dc90804afd766424aa768e2e2df6668c: 21300000
     - a716f44a1f60cc745a8f6062c704430e: 21300000
+    - 06d5ff5a15e69784fa348463cd5e3118: 21300000
     - a59c116a38e946c44b475b8de5d2545a: 21300000
     - c7fb856a962f27a4e81fbd1fcd0a8c71: 21300000
     - c1632f6a45a874045a24e80f045c0ab1: 21300000
@@ -264,6 +267,7 @@ SpriteAtlas:
     - 8c8ff90f9c75a4f488ec59a5d15e3d7e: 21300000
     - c38f611f0da55d349b3c8e21ab046bdd: 21300000
     - 0878062f1a8750b40908b8d46e4ba7b4: 21300000
+    - 9db4cf3fcca133443a33e225ae71cf97: 21300000
     - 3560735fe0c100c4ba684e5c13ae55f8: 21300000
     - 4e972f8f363c4954a81f9b3aad31b2d0: 21300000
     - 9593939f32017be4bad8edd48d970d52: 21300000
@@ -285,6 +289,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 512231d0cbfd3014fa4180f09e26eab4, type: 3}
   - {fileID: 21300000, guid: 833df4d018ce4484181fe3d7d9d19958, type: 3}
   - {fileID: 21300000, guid: 71b01dd0e33c2d642b507deeb842dbc2, type: 3}
+  - {fileID: 21300000, guid: da6081e07f794ef40aa5578d09f8f2fc, type: 3}
   - {fileID: 21300000, guid: 9b1905e02c2dbe642a9aaae465254894, type: 3}
   - {fileID: 21300000, guid: 053e5de00dcdfdd44ac335092f4608a4, type: 3}
   - {fileID: 21300000, guid: e55da8f083f0d9e48b65356a0408cb4c, type: 3}
@@ -344,6 +349,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: bffa1745f563e9941bc54c5eccce65ea, type: 3}
   - {fileID: 21300000, guid: e2b51765c8631a74a98bb5b07916df12, type: 3}
   - {fileID: 21300000, guid: 0fff2b657ba4b00458b75cea475647e1, type: 3}
+  - {fileID: 21300000, guid: 5c866b957bbd846419efcd3262a6c816, type: 3}
   - {fileID: 21300000, guid: 066a9c9516b34c8418afad18a4da27ed, type: 3}
   - {fileID: 21300000, guid: 126ec3c5b752d3b4fa7ec59d20225062, type: 3}
   - {fileID: 21300000, guid: e8e509d5ecf45014b83fd82ec1593c58, type: 3}
@@ -413,6 +419,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: a9067e3ae47baef49951aa29e8ee67b7, type: 3}
   - {fileID: 21300000, guid: dc90804afd766424aa768e2e2df6668c, type: 3}
   - {fileID: 21300000, guid: a716f44a1f60cc745a8f6062c704430e, type: 3}
+  - {fileID: 21300000, guid: 06d5ff5a15e69784fa348463cd5e3118, type: 3}
   - {fileID: 21300000, guid: a59c116a38e946c44b475b8de5d2545a, type: 3}
   - {fileID: 21300000, guid: c7fb856a962f27a4e81fbd1fcd0a8c71, type: 3}
   - {fileID: 21300000, guid: c1632f6a45a874045a24e80f045c0ab1, type: 3}
@@ -486,6 +493,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 8c8ff90f9c75a4f488ec59a5d15e3d7e, type: 3}
   - {fileID: 21300000, guid: c38f611f0da55d349b3c8e21ab046bdd, type: 3}
   - {fileID: 21300000, guid: 0878062f1a8750b40908b8d46e4ba7b4, type: 3}
+  - {fileID: 21300000, guid: 9db4cf3fcca133443a33e225ae71cf97, type: 3}
   - {fileID: 21300000, guid: 3560735fe0c100c4ba684e5c13ae55f8, type: 3}
   - {fileID: 21300000, guid: 4e972f8f363c4954a81f9b3aad31b2d0, type: 3}
   - {fileID: 21300000, guid: 9593939f32017be4bad8edd48d970d52, type: 3}
@@ -506,6 +514,7 @@ SpriteAtlas:
   - sn0114
   - sn0155
   - sn0304
+  - sn0048
   - sn0433
   - sn0240
   - sn0703
@@ -565,6 +574,7 @@ SpriteAtlas:
   - sn0424
   - sn0407
   - sn0112
+  - sn0712
   - sn0856
   - sn0601
   - sn0434
@@ -634,6 +644,7 @@ SpriteAtlas:
   - sn9998
   - sn0306
   - sn0501
+  - sn0047
   - sn0235
   - sn0014
   - sn0838
@@ -707,6 +718,7 @@ SpriteAtlas:
   - sn0140
   - sn0102
   - sn0009
+  - sn0040
   - sn0030
   - sn0017
   - sn0303
