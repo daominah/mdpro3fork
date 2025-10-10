@@ -1,4 +1,6 @@
 using Cysharp.Threading.Tasks;
+using Newtonsoft.Json;
+using Percy;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -13,6 +15,7 @@ namespace MDPro3.Net
         public static void Initialize()
         {
             _ = InitializeGenesysLflist();
+            _ = InitializeMyCardAppsAsync();
         }
 
         #region Genesys lflist
@@ -21,6 +24,7 @@ namespace MDPro3.Net
         private const string PATH_GENESYS_LFLIST = "Data/lflist_genesys.conf";
         private static readonly List<int> genesysBannedCards = new();
         private static readonly List<GenesysPoint> genesysPoints = new();
+        private static int officialGenesysLimit = 100;
 
         private static async UniTask InitializeGenesysLflist()
         {
@@ -34,9 +38,7 @@ namespace MDPro3.Net
                     await DownloadGenesysLflist(eTag);
                 }
                 else
-                {
                     Program.Debug("Genesys Lflist do not need update.");
-                }
             }
 
             ParseGenesysLflist();
@@ -138,19 +140,17 @@ namespace MDPro3.Net
         /// <summary>
         /// color for Genesys Points one card score
         /// </summary>
-        /// <param name="gp"></param>
-        /// <returns></returns>
         public static Color GetGenesysPointColor(int gp)
         {
             if (gp < 0)
                 return Color.red;
             if (gp == 0)
                 return Color.gray;
-            if (gp < 10)
+            if (gp <= officialGenesysLimit / 10)
                 return Color.green;
-            if (gp < 50)
+            if (gp <= officialGenesysLimit / 2)
                 return Color.yellow;
-            if (gp < 100)
+            if (gp <= officialGenesysLimit)
                 return Color.magenta;
             return Color.red;
         }
@@ -158,16 +158,73 @@ namespace MDPro3.Net
         /// <summary>
         /// color for Genesys Points total score
         /// </summary>
-        /// <param name="gp"></param>
-        /// <returns></returns>
         public static Color GetGenesysPointsColor(int gp)
         {
-            if (gp < 100)
+            if (gp <= officialGenesysLimit)
                 return Color.white;
             return Color.red;
         }
 
         #endregion
+
+        #region MyCard Apps
+
+        private const string URL_MYCARD_APPS = "https://cdntx.moecube.com/apps.json";
+        private const string PATH_MYCARD_APPS = "Data/mycard_apps.json";
+        public static MyCardNews myCardNews;
+
+        private static async UniTask InitializeMyCardAppsAsync()
+        {
+            var eTag = await GetETagAsync(URL_MYCARD_APPS);
+            if (!string.IsNullOrEmpty(eTag))
+            {
+                var configTag = Config.Get(GetLocalETagKey(URL_MYCARD_APPS), Config.EMPTY_STRING);
+                if (!string.Equals(eTag, configTag, StringComparison.Ordinal))
+                {
+                    Program.Debug("Update MyCard Apps.");
+                    await DownloadMyCardApps(eTag);
+                }
+                else
+                    Program.Debug("MyCard Apps do not need update.");
+            }
+
+            ParseMyCardNews();
+        }
+
+        private static async UniTask DownloadMyCardApps(string ETag)
+        {
+            using var request = UnityWebRequest.Get(URL_MYCARD_APPS);
+            request.timeout = 15;
+
+            await request.SendWebRequest();
+            if (request.result == UnityWebRequest.Result.Success)
+            {
+                File.WriteAllText(PATH_MYCARD_APPS, request.downloadHandler.text);
+                Config.Set(GetLocalETagKey(URL_MYCARD_APPS), ETag);
+                Config.Save();
+            }
+            else
+                Program.Debug("下载MyCard apps.json失败。");
+        }
+
+        private static void ParseMyCardNews()
+        {
+            if (!File.Exists(PATH_MYCARD_APPS))
+                return;
+
+            var json = File.ReadAllText(PATH_MYCARD_APPS);
+            json = json.Replace("\"news\":[]", "\"news\":{}");
+            var apps = JsonConvert.DeserializeObject<MyCardApp[]>(json);
+            foreach (var app in apps)
+                if (app.id == "ygopro")
+                {
+                    myCardNews = app.news;
+                    return;
+                }
+        }
+
+        #endregion
+
 
         #region Online Tools
 

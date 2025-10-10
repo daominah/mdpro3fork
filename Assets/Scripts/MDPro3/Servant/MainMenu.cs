@@ -140,10 +140,10 @@ namespace MDPro3.Servant
 
         private IEnumerator LoadMyCardNewsAsync()
         {
-            var news = MyCard.GetNews();
-            while (!news.IsCompleted)
+            while(OnlineService.myCardNews == null)
                 yield return null;
-            GetUI<MainMenuUI>().News.news = news.Result;
+            var news = OnlineService.myCardNews;
+            GetUI<MainMenuUI>().News.news = news;
             GetUI<MainMenuUI>().News.LoadNews();
         }
 
