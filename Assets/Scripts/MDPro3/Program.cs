@@ -111,6 +111,8 @@ namespace MDPro3
 
             Screen.sleepTimeout = SleepTimeout.NeverSleep;
 
+            OnlineService.Initialize();
+
             if(!ABLoader.mdCached)
                 await ABLoader.CacheMasterDuelBundles();
 
@@ -348,6 +350,13 @@ namespace MDPro3
         #endregion
 
         #region Tools
+
+        public static void Debug(string text)
+        {
+#if UNITY_EDITOR
+            UnityEngine.Debug.Log(text);
+#endif
+        }
 
         public void ShiftToServant(Servant.Servant servant)
         {

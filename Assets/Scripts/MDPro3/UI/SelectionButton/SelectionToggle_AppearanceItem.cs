@@ -79,6 +79,8 @@ namespace MDPro3.UI
             else if (path.Length > 0)
             {
                 Icon.sprite = await Program.items.LoadItemIconAsync(itemID.ToString(), Items.ItemType.Unknown);
+                if (Manager == null)
+                    return;
                 Icon.color = Color.white;
                 if (path.StartsWith("ProfileFrame"))
                 {

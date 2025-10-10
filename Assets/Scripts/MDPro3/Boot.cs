@@ -156,7 +156,10 @@ namespace MDPro3
             Program.SetRoot();
             _ = ABLoader.CacheMasterDuelBundles();
             while (!ABLoader.mdCached)
+            {
+                progressBar.value = ABLoader.mdCachedProgress;
                 yield return null;
+            }
 
             Config.Initialize(Program.PATH_CONFIG);
             Config.Set("Version", Application.version[..5]);

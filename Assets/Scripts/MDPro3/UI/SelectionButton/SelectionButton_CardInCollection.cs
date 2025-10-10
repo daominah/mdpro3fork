@@ -7,11 +7,28 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using MDPro3.Servant;
 using MDPro3.UI.ServantUI;
+using MDPro3.Net;
 
 namespace MDPro3.UI
 {
     public class SelectionButton_CardInCollection : SelectionButton, IBeginDragHandler, IEndDragHandler, IDragHandler
     {
+        #region Elements
+
+        private const string LABEL_GO_CARD_POINT = "CardPointRoot";
+        private GameObject m_CardPoint;
+        private GameObject CardPoint =>
+            m_CardPoint = m_CardPoint != null ? m_CardPoint
+            : Manager.GetElement(LABEL_GO_CARD_POINT);
+
+        private const string LABEL_TXT_CARD_POINT = "TextCardPointValue";
+        private TextMeshProUGUI m_TextCardPoint;
+        private TextMeshProUGUI TextCardPoint =>
+            m_TextCardPoint = m_TextCardPoint != null ? m_TextCardPoint
+            : Manager.GetElement<TextMeshProUGUI>(LABEL_TXT_CARD_POINT);
+
+        #endregion
+
         private int _cardCode;
         public int CardCode
         {
@@ -29,6 +46,7 @@ namespace MDPro3.UI
         }
         public Card card;
         public CardCollectionView cardCollectionView;
+        public int genesysPoint;
 
         private CardRawImageHandler m_ImageHandler;
         private CardRawImageHandler ImageHandler =>
@@ -131,6 +149,13 @@ namespace MDPro3.UI
             Manager.GetElement<TextMeshProUGUI>("TextLink").text = card.GetLinkCount().ToString();
             Manager.GetElement<TextMeshProUGUI>("TextPendulumScale").text = card.LScale.ToString();
 
+            genesysPoint = OnlineService.GetGenesysPoint(card.GetOriginalID());
+            var text = genesysPoint.ToString();
+            if (genesysPoint < 0)
+                text = "X";
+            TextCardPoint.text = text;
+            TextCardPoint.color = OnlineService.GetGenesysPointColor(genesysPoint);
+
             RefreshIcons();
             RefreshCountIcon();
         }
@@ -152,6 +177,8 @@ namespace MDPro3.UI
             Manager.GetElement("IconPendulumScale").SetActive(DeckEditorUI.cardInfoType == DeckEditorUI.CardInfoType.Detail
                 && card.HasType(CardType.Pendulum));
             Manager.GetElement("IconPool").SetActive(DeckEditorUI.cardInfoType == DeckEditorUI.CardInfoType.Pool);
+
+            CardPoint.SetActive(DeckEditorUI.cardInfoType == DeckEditorUI.CardInfoType.Genesys);
         }
 
         public void RefreshCountIcon()

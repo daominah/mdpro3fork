@@ -11,6 +11,7 @@ using static MDPro3.UI.DeckView;
 using MDPro3.Servant;
 using MDPro3.UI.ServantUI;
 using MDPro3.UI.PropertyOverride;
+using MDPro3.Net;
 
 namespace MDPro3.UI
 {
@@ -120,6 +121,18 @@ namespace MDPro3.UI
             m_TextPickupCursor = m_TextPickupCursor != null ? m_TextPickupCursor
             : Manager.GetNestedElement<TextMeshProUGUI>(LABEL_TXT_PICKUP_CURSOR);
 
+        private const string LABEL_GO_CARD_POINT = "CardPointRoot";
+        private GameObject m_CardPoint;
+        private GameObject CardPoint =>
+            m_CardPoint = m_CardPoint != null ? m_CardPoint
+            : Manager.GetElement(LABEL_GO_CARD_POINT);
+
+        private const string LABEL_TXT_CARD_POINT = "TextCardPointValue";
+        private TextMeshProUGUI m_TextCardPoint;
+        private TextMeshProUGUI TextCardPoint =>
+            m_TextCardPoint = m_TextCardPoint != null ? m_TextCardPoint 
+            : Manager.GetElement<TextMeshProUGUI>(LABEL_TXT_CARD_POINT);
+
         #endregion
 
         [Header("SelectionButton CardInDeck")]
@@ -143,6 +156,7 @@ namespace MDPro3.UI
         public DeckLocation location;
         private Vector3 dragScale = new(1.7f, 1.7f, 1f);
         private RectTransform child;
+        public int genesysPoint;
 
         protected override void Awake()
         {
@@ -277,6 +291,13 @@ namespace MDPro3.UI
             TextLink.text = Card.GetLinkCount().ToString();
             TextPendulumScale.text = Card.LScale.ToString();
 
+            genesysPoint = OnlineService.GetGenesysPoint(Card.GetOriginalID());
+            var text = genesysPoint.ToString();
+            if (genesysPoint < 0)
+                text = "X";
+            TextCardPoint.text = text;
+            TextCardPoint.color = OnlineService.GetGenesysPointColor(genesysPoint);
+
             RefreshIcons();
         }
 
@@ -299,6 +320,8 @@ namespace MDPro3.UI
                 IconPendulumScale.gameObject.SetActive(DeckEditorUI.cardInfoType == DeckEditorUI.CardInfoType.Detail
                     && Card.HasType(CardType.Pendulum));
                 IconPool.gameObject.SetActive(DeckEditorUI.cardInfoType == DeckEditorUI.CardInfoType.Pool);
+                CardPoint.SetActive(DeckEditorUI.cardInfoType == DeckEditorUI.CardInfoType.Genesys);
+                IconLimit.gameObject.SetActive(DeckEditorUI.cardInfoType != DeckEditorUI.CardInfoType.Genesys);
             }
             else if (Program.instance.currentServant == Program.instance.deckBrowser)
             {
@@ -311,6 +334,7 @@ namespace MDPro3.UI
                 IconLink.gameObject.SetActive(false);
                 IconPendulumScale.gameObject.SetActive(false);
                 IconPool.gameObject.SetActive(false);
+                CardPoint.SetActive(false);
             }
         }
 
@@ -489,7 +513,6 @@ namespace MDPro3.UI
         }
 
         #endregion
-
 
         private int GetIndex()
         {

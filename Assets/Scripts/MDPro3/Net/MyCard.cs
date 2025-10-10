@@ -21,7 +21,7 @@ namespace MDPro3.Net
 
         const string loginUrl = "https://sapi.moecube.com:444/accounts/signin";
         const string authUrl = "https://sapi.moecube.com:444/accounts/authUser";
-        const string appsUrl = "https://sapi.moecube.com:444/release/update/apps.json";
+        const string appsUrl = "https://cdntx.moecube.com/apps.json";
         const string expUrl = "https://sapi.moecube.com:444/ygopro/arena/user?username=";
         const string matchUrl = "https://sapi.moecube.com:444/ygopro/match";
         const string userUrl = "https://sapi.moecube.com:444/accounts/users/{username}.json";

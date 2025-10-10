@@ -146,17 +146,29 @@ namespace MDPro3.UI
             m_TextMainDeckTrapNum = m_TextMainDeckTrapNum != null ? m_TextMainDeckTrapNum
             : Manager.GetNestedElement<TextMeshProUGUI>(LABEL_TXT_MAINDECKTRAPNUM);
 
-        private const string LABEL_GLG_MainDeckContent = "MainDeckView/MainDeckContent";
+        private const string LABEL_GLG_MAIN_DECK_CONTENT = "MainDeckView/MainDeckContent";
         private GridLayoutGroup m_MainDeckContent;
         protected GridLayoutGroup MainDeckContent =>
             m_MainDeckContent = m_MainDeckContent != null ? m_MainDeckContent
-            : Manager.GetNestedElement<GridLayoutGroup>(LABEL_GLG_MainDeckContent);
+            : Manager.GetNestedElement<GridLayoutGroup>(LABEL_GLG_MAIN_DECK_CONTENT);
 
         private const string LABEL_GO_TEMPLATE = "MainDeckView/template";
         private GameObject m_Template;
         protected GameObject Template =>
             m_Template = m_Template != null ? m_Template
             : Manager.GetNestedElement(LABEL_GO_TEMPLATE);
+
+        private const string LABEL_GO_MAIN_GENESYS = "MainDeckView/TextMainDeckGenesys";
+        private GameObject m_MainDeckGenesys;
+        protected GameObject MainDeckGenesys =>
+            m_MainDeckGenesys = m_MainDeckGenesys != null ? m_MainDeckGenesys
+            : Manager.GetNestedElement(LABEL_GO_MAIN_GENESYS);
+
+        private const string LABEL_TXT_MAIN_DECK_GP = "MainDeckView/TextMainDeckGP";
+        private TextMeshProUGUI m_TextMainDeckGP;
+        protected TextMeshProUGUI TextMainDeckGP =>
+            m_TextMainDeckGP = m_TextMainDeckGP != null ? m_TextMainDeckGP
+            : Manager.GetNestedElement<TextMeshProUGUI>(LABEL_TXT_MAIN_DECK_GP);
 
         #endregion
 
@@ -204,6 +216,18 @@ namespace MDPro3.UI
             m_ExtraDeckContent = m_ExtraDeckContent != null ? m_ExtraDeckContent
             : Manager.GetNestedElement<GridLayoutGroup>(LABEL_GLG_EXTRADeckContent);
 
+        private const string LABEL_GO_EXTRA_GENESYS = "ExtraDeckView/TextExtraDeckGenesys";
+        private GameObject m_ExtraDeckGenesys;
+        protected GameObject ExtraDeckGenesys =>
+            m_ExtraDeckGenesys = m_ExtraDeckGenesys != null ? m_ExtraDeckGenesys
+            : Manager.GetNestedElement(LABEL_GO_EXTRA_GENESYS);
+
+        private const string LABEL_TXT_EXTRA_DECK_GP = "ExtraDeckView/TextExtraDeckGP";
+        private TextMeshProUGUI m_TextExtraDeckGP;
+        protected TextMeshProUGUI TextExtraDeckGP =>
+            m_TextExtraDeckGP = m_TextExtraDeckGP != null ? m_TextExtraDeckGP
+            : Manager.GetNestedElement<TextMeshProUGUI>(LABEL_TXT_EXTRA_DECK_GP);
+
         #endregion
 
         #region SideDeckView
@@ -243,6 +267,18 @@ namespace MDPro3.UI
         protected GridLayoutGroup SideDeckContent =>
             m_SideDeckContent = m_SideDeckContent != null ? m_SideDeckContent
             : Manager.GetNestedElement<GridLayoutGroup>(LABEL_GLG_SideDeckContent);
+
+        private const string LABEL_GO_SIDE_GENESYS = "SideDeckView/TextSideDeckGenesys";
+        private GameObject m_SideDeckGenesys;
+        protected GameObject SideDeckGenesys =>
+            m_SideDeckGenesys = m_SideDeckGenesys != null ? m_SideDeckGenesys
+            : Manager.GetNestedElement(LABEL_GO_SIDE_GENESYS);
+
+        private const string LABEL_TXT_SIDE_DECK_GP = "SideDeckView/TextSideDeckGP";
+        private TextMeshProUGUI m_TextSideDeckGP;
+        protected TextMeshProUGUI TextSideDeckGP =>
+            m_TextSideDeckGP = m_TextSideDeckGP != null ? m_TextSideDeckGP
+            : Manager.GetNestedElement<TextMeshProUGUI>(LABEL_TXT_SIDE_DECK_GP);
 
         #endregion
 
@@ -302,6 +338,9 @@ namespace MDPro3.UI
 
             _ = LoadDeckCaseAsync(deck.Case);
             StartCoroutine(PrintDeckAsync());
+
+            if(Program.instance.currentServant == Program.instance.deckEditor)
+                SetCardInfoTypeInternal(DeckEditorUI.cardInfoType);
         }
 
         private async UniTask LoadDeckCaseAsync(int deckCase)
@@ -758,6 +797,29 @@ namespace MDPro3.UI
         {
             foreach (var card in cards)
                 card.RefreshIcons();
+            SetCardInfoTypeInternal(type);
+        }
+
+        private void SetCardInfoTypeInternal(DeckEditorUI.CardInfoType type)
+        {
+            if (Program.instance.currentServant == Program.instance.deckEditor)
+            {
+                MainDeckGenesys.SetActive(type == DeckEditorUI.CardInfoType.Genesys);
+                TextMainDeckGP.gameObject.SetActive(type == DeckEditorUI.CardInfoType.Genesys);
+                ExtraDeckGenesys.SetActive(type == DeckEditorUI.CardInfoType.Genesys);
+                TextExtraDeckGP.gameObject.SetActive(type == DeckEditorUI.CardInfoType.Genesys);
+                SideDeckGenesys.SetActive(type == DeckEditorUI.CardInfoType.Genesys);
+                TextSideDeckGP.gameObject.SetActive(type == DeckEditorUI.CardInfoType.Genesys);
+            }
+            else
+            {
+                MainDeckGenesys.SetActive(false);
+                TextMainDeckGP.gameObject.SetActive(false);
+                ExtraDeckGenesys.SetActive(false);
+                TextExtraDeckGP.gameObject.SetActive(false);
+                SideDeckGenesys.SetActive(false);
+                TextSideDeckGP.gameObject.SetActive(false);
+            }
         }
 
         public TMP_InputField GetInputField()
@@ -913,6 +975,41 @@ namespace MDPro3.UI
             InputDeckName.ActivateInputField();
         }
 
+        public Deck FromObjectDeckToCodedDeck()
+        {
+            SortCards();
+            Deck deck = new();
+            foreach (var card in cards)
+            {
+                if (card.location == DeckLocation.MainDeck)
+                    deck.Main.Add(card.Card.Id);
+                else if (card.location == DeckLocation.ExtraDeck)
+                    deck.Extra.Add(card.Card.Id);
+                else if (card.location == DeckLocation.SideDeck)
+                    deck.Side.Add(card.Card.Id);
+            }
+
+            deck.Pickup = Deck.Pickup;
+            deck.Protector = Deck.Protector;
+            deck.Case = Deck.Case;
+            deck.Field = Deck.Field;
+            deck.Grave = Deck.Grave;
+            deck.Stand = Deck.Stand;
+            deck.Mate = Deck.Mate;
+            deck.deckId = Deck.deckId;
+            deck.userId = Deck.userId;
+            return deck;
+        }
+
+        public int GetGenesysPoints()
+        {
+            var value = 0;
+            foreach (var card in cards)
+                if(card.genesysPoint > 0)
+                    value += card.genesysPoint;
+            return value;
+        }
+
         #endregion
 
         #region Protected Functions
@@ -1031,6 +1128,7 @@ namespace MDPro3.UI
                 int monsterCount = 0;
                 int spellCount = 0;
                 int trapCount = 0;
+                int gp = 0;
 
                 foreach (var card in cards)
                     if (card.location == DeckLocation.MainDeck)
@@ -1042,11 +1140,14 @@ namespace MDPro3.UI
                             trapCount++;
                         else
                             monsterCount++;
+                        if (card.genesysPoint > 0)
+                            gp += card.genesysPoint;
                     }
                 TextMainDeckCardNum.text = mainCount.ToString();
                 TextMainDeckMonsterNum.text = monsterCount.ToString();
                 TextMainDeckSpellNum.text = spellCount.ToString();
                 TextMainDeckTrapNum.text = trapCount.ToString();
+                TextMainDeckGP.text = gp.ToString();
             }
             if ((location & DeckLocation.ExtraDeck) > 0)
             {
@@ -1055,6 +1156,7 @@ namespace MDPro3.UI
                 int synchroCount = 0;
                 int xyzCount = 0;
                 int linkCount = 0;
+                int gp = 0;
 
                 foreach (var card in cards)
                     if (card.location == DeckLocation.ExtraDeck)
@@ -1068,12 +1170,15 @@ namespace MDPro3.UI
                             xyzCount++;
                         else if (card.Card.HasType(CardType.Link))
                             linkCount++;
+                        if (card.genesysPoint > 0)
+                            gp += card.genesysPoint;
                     }
                 TextExtraDeckCardNum.text = extraCount.ToString();
                 TextExtraDeckFusionNum.text = fusionCount.ToString();
                 TextExtraDeckSynchroNum.text = synchroCount.ToString();
                 TextExtraDeckXyzNum.text = xyzCount.ToString();
                 TextExtraDeckLinkNum.text = linkCount.ToString();
+                TextExtraDeckGP.text = gp.ToString();
             }
             if ((location & DeckLocation.SideDeck) > 0)
             {
@@ -1081,6 +1186,7 @@ namespace MDPro3.UI
                 int monsterCount = 0;
                 int spellCount = 0;
                 int trapCount = 0;
+                int gp = 0;
 
                 foreach (var card in cards)
                     if (card.location == DeckLocation.SideDeck)
@@ -1092,12 +1198,18 @@ namespace MDPro3.UI
                             trapCount++;
                         else
                             monsterCount++;
+                        if (card.genesysPoint > 0)
+                            gp += card.genesysPoint;
                     }
                 TextSideDeckCardNum.text = sideCount.ToString();
                 TextSideDeckMonsterNum.text = monsterCount.ToString();
                 TextSideDeckSpellNum.text = spellCount.ToString();
                 TextSideDeckTrapNum.text = trapCount.ToString();
+                TextSideDeckGP.text = gp.ToString();
             }
+
+            if(Program.instance.currentServant == Program.instance.deckEditor)
+                SelectionButton_CardInfoType.SetGenesysPoints(GetGenesysPoints());
         }
 
         protected void SortCards()
@@ -1167,31 +1279,6 @@ namespace MDPro3.UI
             return DeckLocation.All;
         }
 
-        public Deck FromObjectDeckToCodedDeck()
-        {
-            SortCards();
-            Deck deck = new();
-            foreach (var card in cards)
-            {
-                if (card.location == DeckLocation.MainDeck)
-                    deck.Main.Add(card.Card.Id);
-                else if (card.location == DeckLocation.ExtraDeck)
-                    deck.Extra.Add(card.Card.Id);
-                else if (card.location == DeckLocation.SideDeck)
-                    deck.Side.Add(card.Card.Id);
-            }
-
-            deck.Pickup = Deck.Pickup;
-            deck.Protector = Deck.Protector;
-            deck.Case = Deck.Case;
-            deck.Field = Deck.Field;
-            deck.Grave = Deck.Grave;
-            deck.Stand = Deck.Stand;
-            deck.Mate = Deck.Mate;
-            deck.deckId = Deck.deckId;
-            deck.userId = Deck.userId;
-            return deck;
-        }
 
         protected void DeckFileSave()
         {

@@ -71,7 +71,6 @@ namespace MDPro3.UI.ServantUI
             }
         }
 
-
         private void Awake()
         {
             DeckView.PrintDeck(DeckEditor.Deck, DeckEditor.DeckName, DeckView.Condition.Pickup);
@@ -120,7 +119,7 @@ namespace MDPro3.UI.ServantUI
 
         public void SetCardInfoType()
         {
-            var type = (CardInfoType)(((int)cardInfoType + 1) % 3);
+            var type = (CardInfoType)(((int)cardInfoType + 1) % 4);
             SetCardInfoType(type);
             SelectionButton_CardInfoType.instance.SetCardInfoTypeIcon(type);
         }

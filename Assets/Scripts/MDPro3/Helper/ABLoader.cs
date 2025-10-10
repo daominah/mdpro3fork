@@ -420,6 +420,7 @@ namespace MDPro3
         #region MasterDuel
 
         public static bool mdCached;
+        public static float mdCachedProgress;
 
         private static AssetBundle mdBundleDuel;
         private static AssetBundle mdBundleMaterials;
@@ -428,11 +429,17 @@ namespace MDPro3
 
         public static async UniTask CacheMasterDuelBundles()
         {
+            mdCachedProgress = 0;
             await CacheFromFileAsync(Program.root + "MasterDuel/Built-in/shaders");
+            mdCachedProgress = 0.2f;
             mdBundleMaterials = await CacheFromFileAsync(Program.root + "MasterDuel/Built-in/materials");
+            mdCachedProgress = 0.4f;
             mdBundleSprites = await CacheFromFileAsync(Program.root + "MasterDuel/Built-in/sprites");
+            mdCachedProgress = 0.6f;
             mdBundleTextures = await CacheFromFileAsync(Program.root + "MasterDuel/Built-in/textures");
+            mdCachedProgress = 0.8f;
             mdBundleDuel = await CacheFromFileAsync(Program.root + "MasterDuel/Built-in/duel");
+            mdCachedProgress = 1f;
             mdCached = true;
         }
 

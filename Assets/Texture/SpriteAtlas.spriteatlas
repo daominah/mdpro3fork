@@ -66,6 +66,7 @@ SpriteAtlas:
     - 02a9fa006db2d704a88e5625e0c7742f: 21300000
     - 212f3c00a7fa5024e8835b82c72db58a: 21300000
     - 7b76ce0056763d14c9097b50c9d4b138: 21300000
+    - fd60d01041982c8428e0055b98c21437: 21300000
     - a550611052e33f14ca86edd376fb9be3: 21300000
     - 660ef11066558a94f9749236687c37d3: 21300000
     - ba4724101d99f484d82b1e92a16791b8: 21300000
@@ -299,6 +300,7 @@ SpriteAtlas:
     - 9b5e0735b7fc0bf478bc70a055fea1c7: 21300000
     - c4dc57352ad56b34dbec17a57ccbadd2: 21300000
     - e466974582869b545afa5ad4f03b5d17: 21300000
+    - 7a5c4c4587d49184982a93011271b877: 21300000
     - dfa2b0552469cf0438ccbce71ee3a965: 21300000
     - 172bb355f7da22f488dc0791ae5eeafc: 21300000
     - f3a0375556492314e8e0b0c6c1ff51f4: 21300000
@@ -795,6 +797,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 02a9fa006db2d704a88e5625e0c7742f, type: 3}
   - {fileID: 21300000, guid: 212f3c00a7fa5024e8835b82c72db58a, type: 3}
   - {fileID: 21300000, guid: 7b76ce0056763d14c9097b50c9d4b138, type: 3}
+  - {fileID: 21300000, guid: fd60d01041982c8428e0055b98c21437, type: 3}
   - {fileID: 21300000, guid: a550611052e33f14ca86edd376fb9be3, type: 3}
   - {fileID: 21300000, guid: 660ef11066558a94f9749236687c37d3, type: 3}
   - {fileID: 21300000, guid: ba4724101d99f484d82b1e92a16791b8, type: 3}
@@ -1028,6 +1031,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 9b5e0735b7fc0bf478bc70a055fea1c7, type: 3}
   - {fileID: 21300000, guid: c4dc57352ad56b34dbec17a57ccbadd2, type: 3}
   - {fileID: 21300000, guid: e466974582869b545afa5ad4f03b5d17, type: 3}
+  - {fileID: 21300000, guid: 7a5c4c4587d49184982a93011271b877, type: 3}
   - {fileID: 21300000, guid: dfa2b0552469cf0438ccbce71ee3a965, type: 3}
   - {fileID: 21300000, guid: 172bb355f7da22f488dc0791ae5eeafc, type: 3}
   - {fileID: 21300000, guid: f3a0375556492314e8e0b0c6c1ff51f4, type: 3}
@@ -1523,6 +1527,7 @@ SpriteAtlas:
   - GUI_Attack_Arrow
   - button006_PlayStation
   - GUI_DeckEdit_Icon_InfoSwitching1
+  - GUI_DeckEdit_Icon_InfoSwitching3
   - GUI_T_DuelButtonActIcon09_3
   - GUI_Log_Summon
   - GUI_T_Icon1_Counter_YOSEN
@@ -1756,6 +1761,7 @@ SpriteAtlas:
   - GUI_T_Icon1_State07
   - GUI_T_Icon1_Type13
   - GUI_T_Icon1_Type04
+  - GUI_CommonCardNumBase2
   - GUI_DeckEdit_CardActionMenu_IconCardRelated
   - GUI_DeckEdit_CardActionMenu_IconFavorite
   - GUI_T_Icon1_Attr06_Ruby

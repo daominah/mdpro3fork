@@ -69,6 +69,12 @@ namespace MDPro3.UI.ServantUI
             m_RectBack = m_RectBack != null ? m_RectBack
             : ButtonBack.GetComponent<RectTransform>();
 
+        private const string LABEL_SBN_INFO = "Header/ButtonInfoSwitching";
+        private SelectionButton m_ButtonInfo;
+        private SelectionButton ButtonInfo =>
+            m_ButtonInfo = m_ButtonInfo != null ? m_ButtonInfo
+            : Manager.GetNestedElement<SelectionButton>(LABEL_SBN_INFO);
+
         private const string LABEL_SBN_REGULATION = "Header/ButtonRegulation";
         private SelectionButton m_ButtonRegulation;
         private SelectionButton ButtonRegulation =>
@@ -151,7 +157,8 @@ namespace MDPro3.UI.ServantUI
         {
             None = 0,
             Detail = 1,
-            Pool = 2
+            Pool = 2,
+            Genesys = 3
         }
         public static CardInfoType cardInfoType = CardInfoType.None;
 
@@ -719,9 +726,6 @@ namespace MDPro3.UI.ServantUI
 
         #endregion
 
-
-
-
         #region Header
 
         private void InitializeHeader()
@@ -741,7 +745,7 @@ namespace MDPro3.UI.ServantUI
 
         public void SetCardInfoType()
         {
-            var type = (CardInfoType)(((int)cardInfoType + 1) % 3);
+            var type = (CardInfoType)(((int)cardInfoType + 1) % 4);
             SetCardInfoType(type);
             SelectionButton_CardInfoType.instance.SetCardInfoTypeIcon(type);
         }
@@ -761,10 +765,14 @@ namespace MDPro3.UI.ServantUI
                 case CardInfoType.Pool:
                     MessageManager.Toast(InterString.Get("切换到归属显示"));
                     break;
+                case CardInfoType.Genesys:
+                    MessageManager.Toast(InterString.Get("切换到Genesys积分显示"));
+                    break;
             }
 
             DeckView.SetCardInfoType(type);
             CardCollectionView.SetCardInfoType(type);
+
         }
 
         private void RefreshRegulationIcons()
