@@ -238,6 +238,8 @@ namespace MDPro3.UI
         /// </summary>
         protected virtual void OnExit()
         {
+            if (!Program.Running)
+                return;
             if (pointerExitThenDeselect)
                 if (Cursor.lockState == CursorLockMode.None)
                     if(EventSystem.current.currentSelectedGameObject == gameObject)
