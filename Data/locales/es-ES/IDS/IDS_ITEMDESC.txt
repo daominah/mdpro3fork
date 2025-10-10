@@ -99,6 +99,9 @@ Aunque debería haber desaparecido, reapareció, quizá porque la identidad del 
 [IDS_ITEMDESC.ID1000036]
 Un talentoso mago de tiempos ancestrales que ha dominado multitud de artes prohibidas.
 Desapareció sin dejar ni rastro con la llegada de "<card mrk='10282'/>".
+[IDS_ITEMDESC.ID1000037]
+La lanza de una deidad robótica que fue forjada en respuesta al deseo de una muñeca mecánica.
+Se ha fabricado con los restos de "<category id='89'/>".
 [IDS_ITEMDESC.ID1000041]
 Una bestia demoníaca que duerme como un tronco.
 Para alimentarse de los sueños de otros, su cuerpo produce un olor somnoliento, pero que también la duerme a ella.
@@ -336,7 +339,8 @@ coming soon
 [IDS_ITEMDESC.ID1003010]
 coming soon
 [IDS_ITEMDESC.ID1005001]
-coming soon
+Conejo Rescatador de una realidad en la que se unió a un club de fútbol.
+Gracias a su excepcional sentido del oído, entiende la situación para crear una ventaja numérica de 2c1.
 [IDS_ITEMDESC.ID1010001]
 Un icono que representa a un duelista anónimo.
 Su imagen puede existir en diversos lugares del mundo...
@@ -681,9 +685,11 @@ Juró proteger a los supervivientes mientras soportaba el peso de las almas de q
 Un icono que representa a un monstruo formado por bloques de construcción.
 Se asemeja un poco a un dragón, aunque no lo es.
 [IDS_ITEMDESC.ID1010117]
-coming soon
+Un icono que representa al defensor renacido del mundo.
+Este ser vela por el viaje de ella y recorre los cielos nocturnos para eliminar las amenazas que se ciernen sobre su mundo.
 [IDS_ITEMDESC.ID1010118]
-coming soon
+Un icono que representa a un monstruo que se asemeja a una espora.
+Vuela a través del bosque sagrado para que todo pueda ser revelado.
 [IDS_ITEMDESC.ID1010119]
 coming soon
 [IDS_ITEMDESC.ID1010120]
@@ -1108,6 +1114,12 @@ La muchacha, equipada con armas tecnológicas superavanzadas, atraviesa el campo
 [IDS_ITEMDESC.ID1013005]
 Un icono que representa una escena de Yu-Gi-Oh! CARD GAME THE CHRONICLES.
 ¿Su encuentro fue obra del destino o del azar? Lo que provocó fue una serie de sucesos que dejaron una marca indeleble en el mundo abisal.
+[IDS_ITEMDESC.ID1013006]
+Un icono que representa una escena de Yu-Gi-Oh! CARD GAME THE CHRONICLES.
+¿Su encuentro fue obra del destino o del azar? Lo que provocó fue una serie de sucesos que dejaron una marca indeleble en el mundo abisal.
+[IDS_ITEMDESC.ID1013010]
+Un icono que representa el logotipo de un partido de fútbol en el que equipos reales y de ensueño de 11 jugadores compiten por ser el mejor.
+Una acción emocionante de la mano de quienes nunca dejan de ponerse a prueba.
 [IDS_ITEMDESC.ID1020001]
 Un título que se concede a los duelistas que comienzan su trayectoria en los Duelos de Yu-Gi-Oh! MASTER DUEL.
 Nunca es demasiado tarde para empezar a luchar.
@@ -1638,6 +1650,9 @@ Su desempeño se convertirá en una meta para muchos otros duelistas cuyos logro
 [IDS_ITEMDESC.ID1020177]
 Un título que se otorga a los duelistas que terminaron entre los 12 mejores del evento Yu-Gi-Oh! World Championship 2025: MASTER DUEL.
 Solo unos pocos pueden alcanzar este nivel. Semejante logro destaca como una prueba innegable de su talento.
+[IDS_ITEMDESC.ID1020178]
+Un título que se otorga a los duelistas que han logrado buenos resultados en el evento "Carrera de dados - Sincronía/Xyz/Enlace".
+Un brillante futuro aguarda a aquellos valientes que confían en sí mismos.
 [IDS_ITEMDESC.ID1020179]
 Un título que se otorga a los duelistas que han logrado buenos resultados en una determinada historia con el poder de varias cartas.
 Las historias hiladas en torno a la batalla dejan algo que cala en muchos duelistas.
@@ -1823,6 +1838,9 @@ Rebosan de la fuerza de voluntad inquebrantable de quienes construyeron la Red R
 [IDS_ITEMDESC.ID1031017]
 Un marco de icono que evoca a las Mágicas Fusión de ciertas A.I.
 Parece que no alberga odio alguno hacia el ser humano.
+[IDS_ITEMDESC.ID1031018]
+Un marco de icono que se formó al crear un receptáculo capaz de albergar un alma.
+En su interior alberga tecnología ancestral y una férrea determinación.
 [IDS_ITEMDESC.ID1032001]
 Un marco de icono con forma de adorno circular que se puede ver en ciertas regiones a medida que el año se acerca a su fin.
 Se cuelgan con un deseo sincero de felicidad y alegría para los tiempos venideros.
@@ -2242,6 +2260,12 @@ Para quienes osarían surcar el viento que sopla hacia un mundo desconocido.
 [IDS_ITEMDESC.ID1070126]
 Protectores que representan a una fuerza capaz de reunir la energía para crear mundos.
 Para quienes prosiguen el ciclo del renacimiento.
+[IDS_ITEMDESC.ID1070127]
+Protectores que representan a una serpiente gigante de ocho cabezas envuelta en una furiosa tormenta.
+Para aquellos con poderes mitológicos.
+[IDS_ITEMDESC.ID1070128]
+Protectores que representan un conflicto entre los dragones que gobiernan la luz y la oscuridad.
+Para quienes quieren traer el Armagedón.
 [IDS_ITEMDESC.ID1070130]
 Protectores que tienen un diseño clave del Yu-Gi-Oh! World Championship 2025.
 Para quienes desafían al mundo.
@@ -2369,6 +2393,9 @@ Para quienes siempre les hincan el diente a las fiestas.
 [IDS_ITEMDESC.ID1072005]
 Protectores que representan a un dúo dinámico adornado con nuevos atuendos.
 Para los amantes de la moda.
+[IDS_ITEMDESC.ID1072006]
+Protectores que representan al caballero que protege el mundo y al hada que siempre lo acompaña.
+Para quienes nunca quieren mostrarse como son ante la persona que más quieren.
 [IDS_ITEMDESC.ID1072007]
 Protectores que representan un dúo con una colaboración impecable, pero personalidades en discordia.
 Para quienes se aventuran en dominios inexplorados.
@@ -2429,7 +2456,16 @@ Los duelistas del lugar profirieron un grito de alegría para conmemorar este pr
 [IDS_ITEMDESC.ID1075002]
 Protectores que tienen un diseño clave de Yu-Gi-Oh! CARD GAME THE CHRONICLES.
 La muchacha, equipada con armas tecnológicas superavanzadas, atraviesa el campo de batalla para afrontar un encuentro trascendental.
+[IDS_ITEMDESC.ID1075004]
+Protectores que se inspiran en el juego de fútbol que te deja construir tu equipo soñado.
+Perfectos para aquellos a los que les gusta tener su propio Deck.
+[IDS_ITEMDESC.ID1075005]
+Protectores que se inspiran en un tesoro nacional brasileño que arrasa por el campo.
+Para aquellos que tienen una táctica sin igual.
 [IDS_ITEMDESC.ID1075006]
+Protectores que tienen un diseño clave de Yu-Gi-Oh! CARD GAME THE CHRONICLES.
+¿Su encuentro fue obra del destino o del azar? Lo que provocó fue una serie de sucesos que dejaron una marca indeleble en el mundo abisal.
+[IDS_ITEMDESC.ID1075007]
 Protectores que tienen un diseño clave de Yu-Gi-Oh! CARD GAME THE CHRONICLES.
 ¿Su encuentro fue obra del destino o del azar? Lo que provocó fue una serie de sucesos que dejaron una marca indeleble en el mundo abisal.
 [IDS_ITEMDESC.ID1080001]
@@ -2584,6 +2620,9 @@ Perfecta para Decks que priorizan el camino más eficiente hacia la victoria.
 [IDS_ITEMDESC.ID1082021]
 Una caja de cartas que representa un conflicto que abarca todo un continente.
 Perfecta para los Decks de quienes luchan en territorios septentrionales.
+[IDS_ITEMDESC.ID1082022]
+Una caja de cartas que representa a un ejército mecanizado creado como derivado.
+Es perfecta para Decks que han llevado a cabo numerosas pruebas.
 [IDS_ITEMDESC.ID1090001]
 Un Campo que representa un bosque verde y frondoso de una profundidad desconocida.
 Aunque la naturaleza puede ser muy serena, también puede albergar muchos peligros. Avanza con cuidado.
@@ -2687,6 +2726,9 @@ Está pensado para operaciones militares únicas y se puede usar para recrear di
 [IDS_ITEMDESC.ID1090036]
 Un Campo de Duelo con una estructura gigante sumergida en una atmósfera inquietante.
 En su interior se abre, lenta pero inexorable, la puerta del cataclismo.
+[IDS_ITEMDESC.ID1090040]
+Un Campo de Duelo de un estadio de fútbol.
+Los vítores de los hinchas se oyen por todo el campo.
 [IDS_ITEMDESC.ID1092001]
 Un Campo que representa a dos guerreros inmersos en un violento combate.
 ¡No hay mejor momento para un enfrentamiento que ahora!
@@ -2792,6 +2834,9 @@ Se han creado mediante una increíble tecnología avanzada y proporcionan inform
 [IDS_ITEMDESC.ID1100036]
 Partes del Campo de Despía, Teatro de los Señalados.
 Su sofisticación está a la altura del castillo del que emanan las sombras.
+[IDS_ITEMDESC.ID1100040]
+Partes del Campo de un estadio de fútbol.
+Su salida temporal es parte del espectáculo. El jugador insignia sale del hoyo dispuesto a contraatacar.
 [IDS_ITEMDESC.ID1101001]
 Partes del Campo inspiradas en un Agujero Trampa.
 ¿Colocar una trampa como esta tiene algo que ver con la astucia o es una injusticia sin más?
@@ -3032,6 +3077,8 @@ Permite transportar armamentos enormes y se puede adaptar a cualquier situación
 [IDS_ITEMDESC.ID1110036]
 Un enclave de Despía, Teatro de los Señalados.
 Uno de los innumerables agujeros que perforan el cielo.
+[IDS_ITEMDESC.ID1110040]
+Un enclave de un estado de fútbol. El campo vibra con la emoción y se estremece con cada disparo.
 [IDS_ITEMDESC.ID1111001]
 Un enclave inspirado en un determinado tablero con letras grabadas que se usa en diversas artes sobrenaturales.
 Sentirás como si un espíritu oscuro y vengativo te mirara desde la grieta...
@@ -3155,6 +3202,9 @@ Lo que empieza como una chispa, va volviéndose más cálido y brillante, hasta 
 [IDS_ITEMDESC.ID1111052]
 Un enclave inspirado en el emblema del VIENTO.
 Una brisa agradable insufla una bendición tras otra, mientras que ráfagas súbitas se llevan volando a cualquier intruso.
+[IDS_ITEMDESC.ID1111054]
+Un enclave inspirado en el emblema de la magia.
+Da lugar a fenómenos misteriosos que podrían llegar a calificarse como místicos.
 [IDS_ITEMDESC.ID1111056]
 Un enclave inspirado en pulseras y otros artículos impregnados del espíritu de un rey.
 El poder oceánico del que hablan las leyendas se manifiesta a modo de potentes burbujas.
@@ -3188,6 +3238,9 @@ Su diseño austero pone de manifiesto el prestigio de la competición.
 [IDS_ITEMDESC.ID1113003]
 Un enclave que conmemora la participación en el evento MASTER DUEL del Yu-Gi-Oh! World Championship 2025.
 Su diseño austero pone de manifiesto el prestigio de la competición.
+[IDS_ITEMDESC.ID1115001]
+Un Enclave inspirado en un juego de fútbol en el que puedes crear partidos entre clubes y selecciones nacionales de todo el mundo.
+Contiene las raíces de la historia y la evolución del fútbol.
 [IDS_ITEMDESC.ID1120001]
 ¡Prueba a luchar con este Deck repleto de cartas fáciles de usar! ¡Contra los adversarios más complicados, utiliza Cartas Mágicas, Cartas de Trampa e Invocaciones Xyz, por Sincronía y por Enlace!
 [IDS_ITEMDESC.ID1120002]
@@ -3534,7 +3587,8 @@ Fruto de un entendimiento y un esfuerzo mutuos, surge el milagro.
 Una peculiar diablesa famosa por sus lágrimas carmesí.
 Necesita unas palabras amorosas para poder usar todo su poder.
 [IDS_ITEMDESC.ID1130091]
-coming soon
+Aquellas almas que avanzan con paso firme volverán a adquirir receptáculos de acero.
+Ella esbozará una sonrisa tan pura, de pie junto a quien ama por encima de los demás.
 [IDS_ITEMDESC.ID1130092]
 coming soon
 [IDS_ITEMDESC.ID1130093]
@@ -3553,6 +3607,12 @@ coming soon
 coming soon
 [IDS_ITEMDESC.ID1130100]
 coming soon
+[IDS_ITEMDESC.ID1132001]
+Él tampoco tiene muy claro por qué, pero ahora el conejo es miembro de un club de fútbol.
+Espera poder liderar a su equipo hasta la victoria con toda su habilidad de apoyo natural.
+[IDS_ITEMDESC.ID1132002]
+Una leyenda de Brasil que ilumina el campo con su creatividad.
+Siempre sorprende a los aficionados con su técnica insuperable y sus jugadas inesperadas.
 [IDS_ITEMDESC.ID1132003]
 "He creado mi propia y perversa página web que recrea a la perfección el pueblo donde nací".
 Dicho esto, corrió felizmente a los foros a medida que la décima visita llegaba.
@@ -3576,7 +3636,8 @@ El número máximo de Decks que puedes tener puede aumentar en 1.
 [IDS_ITEMDESC.ID1160001]
 Aumenta en 1 el número máximo de repeticiones que puedes guardar.
 [IDS_ITEMDESC.ID1170001]
-coming soon
+Un Archivo de Coleccionista que alberga tecnología ancestral y una férrea determinación.
+Cuentan que cuando los <category id='89'/> se reúnan, la puerta de la melodía resplandecerá.
 [IDS_ITEMDESC.ID1170002]
 coming soon
 [IDS_ITEMDESC.ID1180001]
@@ -3586,7 +3647,8 @@ Sus ojos celestes resplandecen.
 Una moneda en la que aparece una olla mágica que, según se dice, trae la felicidad.
 Su expresión codiciosa resplandece.
 [IDS_ITEMDESC.ID1180003]
-coming soon
+Una moneda cuyo motivo es el subproducto que se forma al fabricar un receptáculo para el alma.
+El emblema del ejército brilla intensamente.
 [IDS_ITEMDESC.ID1180004]
 Una moneda en la que aparece el rompecabezas tridimensional que se descubrió entre ruinas antiguas.
 La insignia del Ojo de Wdjat resplandece.

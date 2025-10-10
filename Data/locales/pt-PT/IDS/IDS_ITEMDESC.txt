@@ -99,6 +99,9 @@ Embora devesse ter desaparecido, ele apareceu mais uma vez, talvez porque o sens
 [IDS_ITEMDESC.ID1000036]
 Um mago talentoso da antiguidade que dominou muitas artes proibidas.
 Ele desapareceu da história sem deixar rastros com o advento de "<card mrk='10282'/>".
+[IDS_ITEMDESC.ID1000037]
+Lança de máquina divina, forjada em resposta ao desejo de uma boneca mecânica.
+Proveniente dos restos de "<category id='89'/>".
 [IDS_ITEMDESC.ID1000041]
 Uma fera demoníaca que dorme como lama.
 Para comer os sonhos dos outros, ele libera um odor indutor de sono de seu corpo, mas sempre coloca a si mesmo para dormir.
@@ -336,7 +339,8 @@ coming soon
 [IDS_ITEMDESC.ID1003010]
 coming soon
 [IDS_ITEMDESC.ID1005001]
-coming soon
+Coelho de Socorro de uma realidade onde ele entrou para um clube de futebol.
+Com sua audição excepcional, ele analisa a situação para criar uma vantagem numérica de 2 contra 1.
 [IDS_ITEMDESC.ID1010001]
 Um ícone representando um Duelista anônimo.
 A imagem pode existir em vários lugares ao redor do mundo...
@@ -681,9 +685,11 @@ Carregando o peso dos espíritos daqueles que sucumbiram, ele jurou proteger os 
 Um ícone representando um monstro feito com blocos de montar.
 Embora não seja, lembra vagamente um dragão.
 [IDS_ITEMDESC.ID1010117]
-coming soon
+Ícone que retrata o protetor renascido do mundo.
+Ele toma conta dela ao longo da jornada e patrulha o céu noturno para eliminar ameaças ao mundo deles.
 [IDS_ITEMDESC.ID1010118]
-coming soon
+Ícone que retrata um monstro que lembra um esporo.
+Voa pela floresta sagrada para que tudo venha à tona.
 [IDS_ITEMDESC.ID1010119]
 coming soon
 [IDS_ITEMDESC.ID1010120]
@@ -1108,6 +1114,12 @@ Atravessando o campo de batalha, a garota equipada com armamento tecnológico su
 [IDS_ITEMDESC.ID1013005]
 Um ícone representando uma cena de Yu-Gi-Oh! CARD GAME THE CHRONICLES.
 O encontro deles foi obra do destino ou foi inevitável? O que se revela é uma lembrança de eventos que deixaram uma marca indelével em um mundo abissal.
+[IDS_ITEMDESC.ID1013006]
+Um ícone representando uma cena de Yu-Gi-Oh! CARD GAME THE CHRONICLES.
+O encontro deles foi obra do destino ou foi inevitável? O que se revela é uma lembrança de eventos que deixaram uma marca indelével em um mundo abissal.
+[IDS_ITEMDESC.ID1013010]
+Um ícone representando o logotipo de um jogo de futebol onde times de 11, reais e ideais, competem pela vitória.
+Muita ação emocionante, trazida pelos que nunca param de desafiar a si mesmos.
 [IDS_ITEMDESC.ID1020001]
 Um título dado a Duelistas que começaram sua jornada de Duelos em Yu-Gi-Oh! MASTER DUEL.
 Nunca é tarde para começar a Duelar.
@@ -1638,6 +1650,9 @@ O desempenho deles será a inspiração de muitos Duelistas, os elogios deles re
 [IDS_ITEMDESC.ID1020177]
 Um Título dado aos doze Duelistas mais bem colocados do evento Yu-Gi-Oh! World Championship 2025: MASTER DUEL.
 Apenas alguns podem chegar a esse nível. As conquistas deles são uma prova inegável de habilidade.
+[IDS_ITEMDESC.ID1020178]
+Um Título concedido a Duelistas que obtiveram resultados no evento "Rally de Dados - Sincro/Xyz/Link".
+Um futuro brilhante aguarda os que são corajosos o suficiente para confiar em si mesmos.
 [IDS_ITEMDESC.ID1020179]
 Um Título dado aos Duelistas que alcançaram resultados em uma narrativa escolhida com o poder de vários cards.
 As histórias criadas em batalha deixarão algo que vai marcar muitos Duelistas.
@@ -1823,6 +1838,9 @@ Eles irradiam a intensa vontade daqueles que constroem a Rede de Camadas.
 [IDS_ITEMDESC.ID1031017]
 Uma Moldura de Ícone que evoca a Magia de Fusão de certas I.A.
 Não parece nutrir nenhuma malícia pela raça humana.
+[IDS_ITEMDESC.ID1031018]
+Moldura de Ícone proveniente da criação de um receptáculo capaz de abrigar uma alma.
+Local que abriga tecnologia antiga e determinação inabalável.
 [IDS_ITEMDESC.ID1032001]
 Uma Moldura de Ícone em forma de decoração circular que pode ser vista em uma certa região conforme o ano chega ao fim.
 São penduradas com o desejo sincero de felicidade e alegria nos tempos vindouros.
@@ -2242,6 +2260,12 @@ Para aqueles que agarrariam os ventos soprando para um mundo ainda não visto.
 [IDS_ITEMDESC.ID1070126]
 Protetores representando uma força capaz de amalgamar energia para criar mundos.
 Para aqueles que perpetuam o ciclo do renascimento.
+[IDS_ITEMDESC.ID1070127]
+Protetores que retratam uma serpente gigante de oito cabeças em uma tormenta voraz.
+Para aqueles com poderes mitológicos.
+[IDS_ITEMDESC.ID1070128]
+Protetores que retratam um confronto entre dragões que governam a luz e as trevas.
+Para aqueles que desejam promover o Armagedom.
 [IDS_ITEMDESC.ID1070130]
 Protetores com um visual chave do Yu-Gi-Oh! World Championship 2025.
 Para aqueles que desafiaram o mundo.
@@ -2369,6 +2393,9 @@ Para aqueles que gostam de degustar as melhores festas sazonais.
 [IDS_ITEMDESC.ID1072005]
 Protetores representando uma dupla dinâmica com novos trajes.
 Para aqueles que são apaixonados pela moda.
+[IDS_ITEMDESC.ID1072006]
+Protetores que retratam o cavaleiro que defende o mundo e a fada que sempre está do lado dele.
+Para aqueles que nunca se revelam àqueles que mais estimam.
 [IDS_ITEMDESC.ID1072007]
 Protetores representando uma dupla com uma parceria perfeita mas personalidades conflitantes.
 Para aqueles que se aventuram por terras inexploradas.
@@ -2429,7 +2456,16 @@ Os Duelistas no local soltaram um grande grito de alegria para marcar esse event
 [IDS_ITEMDESC.ID1075002]
 Protetores com visual chave para Yu-Gi-Oh! CARD GAME THE CHRONICLES.
 Atravessando o campo de batalha, a garota equipada com armamento tecnológico superavançado tem um encontro que muda o mundo.
+[IDS_ITEMDESC.ID1075004]
+Protetores inspirados no jogo de futebol que deixa você montar seu Time Ideal.
+Perfeito para quem gosta de ter seu próprio Deck.
+[IDS_ITEMDESC.ID1075005]
+Protetores inspirados em um tesouro nacional brasileiro dominando o campo.
+Para aqueles cuja técnica é sem igual.
 [IDS_ITEMDESC.ID1075006]
+Protetores com visual chave para Yu-Gi-Oh! CARD GAME THE CHRONICLES.
+O encontro deles foi obra do destino ou foi inevitável? O que se revela é uma lembrança de eventos que deixaram uma marca indelével em um mundo abissal.
+[IDS_ITEMDESC.ID1075007]
 Protetores com visual chave para Yu-Gi-Oh! CARD GAME THE CHRONICLES.
 O encontro deles foi obra do destino ou foi inevitável? O que se revela é uma lembrança de eventos que deixaram uma marca indelével em um mundo abissal.
 [IDS_ITEMDESC.ID1080001]
@@ -2584,6 +2620,9 @@ Perfeito para Decks que priorizam o caminho mais eficiente até a vitória.
 [IDS_ITEMDESC.ID1082021]
 Um Porta-cards mostrando um conflito que englobou todo um continente.
 Perfeito para os Decks daqueles que batalham nos territórios do norte.
+[IDS_ITEMDESC.ID1082022]
+Porta-cards que retrata um exército mecânico que surgiu como subproduto.
+Ideal para Decks que passaram por inúmeras provações.
 [IDS_ITEMDESC.ID1090001]
 Um campo representando uma floresta verdejante e voluptuosa de profundeza desconhecida.
 Tranquila como a natureza possa ser, ela também esconde muitos perigos. Prossiga com cautela.
@@ -2687,6 +2726,9 @@ Feito para uma operação militar sem igual, ele pode ser usado em vários cená
 [IDS_ITEMDESC.ID1090036]
 Um Campo de Duelo com uma estrutura gigantesca envolta em uma atmosfera sinistra.
 Em suas profundezas, o portão do cataclismo se abre de forma lenta porém inexorável.
+[IDS_ITEMDESC.ID1090040]
+Um Campo de Duelo de um estádio de futebol.
+Os gritos de empolgação da torcida ecoam pelo gramado.
 [IDS_ITEMDESC.ID1092001]
 Um campo representando dois guerreiros presos em uma batalha ferrenha.
 O melhor momento para um confronto é agora!
@@ -2792,6 +2834,9 @@ Fabricados com tecnologia incrivelmente avançada, eles fornecem informações v
 [IDS_ITEMDESC.ID1100036]
 Componentes de Campo de Despia, o Teatro dos Marcados.
 O nível de refinamento condiz com o castelo que emana escuridão.
+[IDS_ITEMDESC.ID1100040]
+Componentes de Campo de um estádio de futebol.
+Uma saída temporária faz parte do desempenho. O ás retorna do buraco, pronto para contra-atacar.
 [IDS_ITEMDESC.ID1101001]
 Componentes de campo inspirados por um Buraco Armadilha.
 Colocar uma armadilha dessas seria a marca de esperteza ou pura injustiça?
@@ -3032,6 +3077,8 @@ Ele permite o transporte de armamentos enormes e pode se adaptar com flexibilida
 [IDS_ITEMDESC.ID1110036]
 Um Pedestal de Despia, o Teatro dos Marcados.
 Esse é um dos inúmeros buracos que foram esculpidos no céu.
+[IDS_ITEMDESC.ID1110040]
+Um pedestal de um estádio de futebol. A paixão percorre todo o campo, um palco verdejante que vibra a cada jogada.
 [IDS_ITEMDESC.ID1111001]
 Um pedestal inspirado em um certo tabuleiro encrustado com letras, usado em várias artes sobrenaturais.
 Você sente como se visse um espírito vingativo e sombrio olhando para você através do vão...
@@ -3155,6 +3202,9 @@ O que começou como uma centelha fica cada vez mais brilhante, transformando-se 
 [IDS_ITEMDESC.ID1111052]
 Um Pedestal inspirado no modelo do emblema do VENTO.
 Brisas suaves trazem bênçãos, enquanto vendavais repentinos afastam intrusos.
+[IDS_ITEMDESC.ID1111054]
+Pedestal inspirado no modelo do emblema da Magia.
+Fomenta um fenômeno misterioso, quiçá místico.
 [IDS_ITEMDESC.ID1111056]
 Um Suporte inspirado em braceletes e outros itens infundidos com o espírito de um rei.
 O poder do oceano narrado nas lendas se manifestou na forma de bolhas na superfície.
@@ -3188,6 +3238,9 @@ A aparência austera advém do prestígio da competição.
 [IDS_ITEMDESC.ID1113003]
 Pedestal comemorando a participação no evento MASTER DUEL do Yu-Gi-Oh! World Championship 2025.
 A aparência austera advém do prestígio da competição.
+[IDS_ITEMDESC.ID1115001]
+Um pedestal inspirado em um jogo de futebol onde você pode organizar partidas entre clubes e seleções nacionais de todo o mundo.
+Contém as raízes da história e da evolução do futebol.
 [IDS_ITEMDESC.ID1120001]
 Faça um Duelo com este deck cheio de Cards fáceis de usar! Contra oponentes difíceis, use Magias, Armadilhas e Invocações-Sincro, Xyz e Elo!
 [IDS_ITEMDESC.ID1120002]
@@ -3534,7 +3587,8 @@ Una-se aos ventos da incerteza e crie um futuro que conectará o mundo!
 Uma Demônia peculiar, conhecida por suas lágrimas carmesins.
 Ela precisa de palavras de amor para usar todo o seu poder.
 [IDS_ITEMDESC.ID1130091]
-coming soon
+As almas que trilham um caminho resoluto voltarão a ocupar receptáculos de aço.
+Ela esbanjará um sorriso puro, ao lado daquele que ela ama acima de tudo.
 [IDS_ITEMDESC.ID1130092]
 coming soon
 [IDS_ITEMDESC.ID1130093]
@@ -3553,6 +3607,12 @@ coming soon
 coming soon
 [IDS_ITEMDESC.ID1130100]
 coming soon
+[IDS_ITEMDESC.ID1132001]
+Ele também não sabe muito bem por que, mas o coelho agora é membro de um clube de futebol.
+Seu objetivo é levar o time à vitória com suas habilidades naturais de suporte.
+[IDS_ITEMDESC.ID1132002]
+Uma lenda brasileira que ilumina o campo com sua criatividade.
+Sempre surpreende os fãs com sua técnica imbatível e jogadas inesperadas.
 [IDS_ITEMDESC.ID1132003]
 "Criei meu próprio site nefasto, que recria com perfeição minha amada cidade natal."
 Ela se retira alegremente para os fóruns enquanto o décimo visitante chega.
@@ -3576,7 +3636,8 @@ O número máximo de Decks que você pode ter pode ser aumentado em 1.
 [IDS_ITEMDESC.ID1160001]
 Aumenta o número máximo de reprises que você pode manter salvas em 1.
 [IDS_ITEMDESC.ID1170001]
-coming soon
+Acervo de Colecionador que contém tecnologia antiga e determinação inabalável.
+Dizem que ao reunir <category id='89'/>, o portão da melodia brilhará com fulgor.
 [IDS_ITEMDESC.ID1170002]
 coming soon
 [IDS_ITEMDESC.ID1180001]
@@ -3586,7 +3647,8 @@ Seus olhos cerúleos brilham.
 Uma moeda gravada com um caldeirão mágico que traz bem-estar.
 Sua expressão gananciosa reluz.
 [IDS_ITEMDESC.ID1180003]
-coming soon
+Moeda com um emblema resultante da produção de um receptáculo para a alma.
+O emblema do exército reluz com vigor.
 [IDS_ITEMDESC.ID1180004]
 Uma Moeda gravada com o quebra-cabeça tridimensional descoberto nas ruínas antigas.
 A insígnia do Olho de Wdjat brilha.

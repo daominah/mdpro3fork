@@ -99,6 +99,9 @@ Obwohl es hätte verschwinden müssen, tauchte es wieder auf, vielleicht weil da
 [IDS_ITEMDESC.ID1000036]
 Ein begnadeter Magier aus alten Zeiten, der viele verbotene Künste beherrschte.
 Mit dem Aufkommen von „<card mrk='10282'/>“ verschwand er spurlos aus den Geschichtsbüchern.
+[IDS_ITEMDESC.ID1000037]
+Der Speer einer Maschinengottheit, geschmiedet als Reaktion auf den Willen einer mechanischen Puppe.
+Er wurde aus „<category id='89'/>“-Resten hergestellt.
 [IDS_ITEMDESC.ID1000041]
 Ein dämonisches Ungeheuer, das schläft wie Schlamm.
 Um sich von den Träumen anderer zu ernähren, stößt es ein einschläferndes Aroma aus, schläft aber immer selbst ein.
@@ -336,7 +339,8 @@ coming soon
 [IDS_ITEMDESC.ID1003010]
 coming soon
 [IDS_ITEMDESC.ID1005001]
-coming soon
+Rette Rettungskaninchen aus einer Realität, in der es einem Fußballverein beigetreten ist.
+Mit seinem außergewöhnlichen Gehör erfasst es die Lage und schafft sich einen zahlenmäßigen Vorteil von 2 zu 1.
 [IDS_ITEMDESC.ID1010001]
 Ein Symbol, das einen anonymen Duellanten darstellt.
 Sein Bild könnte auf verschiedenen Orten in der Welt existieren …
@@ -681,9 +685,11 @@ Auf den Schultern trägt er die Geister derer, die umgekommen sind, und hat gesc
 Ein Symbol, das ein Monster darstellt, das aus Bausteinen zusammengesetzt wurde.
 Es ähnelt vage einem Drachen, obwohl es keiner ist.
 [IDS_ITEMDESC.ID1010117]
-coming soon
+Ein Symbol, das den wiedergeborenen Beschützer der Welt darstellt.
+Er beobachtet ihre Reise und durchstreift den Abendhimmel, um Bedrohungen für ihre Welt zu beseitigen.
 [IDS_ITEMDESC.ID1010118]
-coming soon
+Ein Symbol, das ein Monster darstellt, das einer Spore ähnelt.
+Es fliegt durch den heiligen Wald, damit alles enthüllt wird.
 [IDS_ITEMDESC.ID1010119]
 coming soon
 [IDS_ITEMDESC.ID1010120]
@@ -1108,6 +1114,12 @@ Mit futuristischen High-Tech-Waffen ausgerüstet, stürmt das Mädchen über das
 [IDS_ITEMDESC.ID1013005]
 Ein Symbol, auf dem eine Szene aus Yu-Gi-Oh!-Kartenspiel THE CHRONICLES abgebildet ist.
 War ihre Begegnung vorherbestimmt? War sie unvermeidbar? Es entfaltet sich eine Erinnerung an Geschehnisse, die eine Welt der Abgründe auf ewig geprägt haben.
+[IDS_ITEMDESC.ID1013006]
+Ein Symbol, auf dem eine Szene aus Yu-Gi-Oh!-Kartenspiel THE CHRONICLES abgebildet ist.
+War ihre Begegnung vorherbestimmt? War sie unvermeidbar? Es entfaltet sich eine Erinnerung an Geschehnisse, die eine Welt der Abgründe auf ewig geprägt haben.
+[IDS_ITEMDESC.ID1013010]
+Ein Symbol, das das Logo eines Fußballspiels darstellt, bei dem echte und Traumteams mit jeweils 11 Spielern um den Sieg kämpfen.
+Spannende Action, präsentiert von denen, die sich selbst immer wieder neuen Herausforderungen stellen.
 [IDS_ITEMDESC.ID1020001]
 Ein Titel, der Duellanten verliehen wird, die ihre Duellantenreise mit Yu-Gi-Oh! MASTER DUEL.
 Es ist nie zu spät, das Duellieren zu erlernen.
@@ -1638,6 +1650,9 @@ Ihre Leistung wird für viele Duellanten zum Ziel werden und endlose Lobeshymnen
 [IDS_ITEMDESC.ID1020177]
 Ein Titel, der an diejenigen verliehen wird, welche unter den Top 12 im Event „Yu-Gi-Oh! World Championship 2025: MASTER DUEL Event“ gelandet sind.
 Nur sehr wenige können dieses Niveau erreichen. Ihre Errungenschaft ist ein unbestreitbarer Beweis ihres Könnens.
+[IDS_ITEMDESC.ID1020178]
+Ein Titel, der an Duellanten vergeben wird, die beim Festival „Würfel-Rallye – Synchro/Xyz/Link“ Ergebnisse erzielt haben.
+Eine glänzende Zukunft wartet auf diejenigen, die mutig genug sind, sich selbst zu vertrauen.
 [IDS_ITEMDESC.ID1020179]
 Ein Titel, der an Duellanten vergeben wird, die mit der Kraft verschiedenster Karten Ergebnisse in einer ausgewählten Erzählungen erzielt haben.
 Die Geschichten, die durch Kämpfe erzählt werden, werden bei vielen Duellanten einen bleibenden Eindruck hinterlassen.
@@ -1823,6 +1838,9 @@ Sie strotzen vor dem intensiven Willen derjenigen, die das Materialnetzwerk baue
 [IDS_ITEMDESC.ID1031017]
 Ein Symbol-Rahmen, der an den Fusionszauber gewisser A.I.s erinnert.
 Sie scheint der Menschheit nichts Böses zu wollen.
+[IDS_ITEMDESC.ID1031018]
+Ein Symbol-Rahmen, der bei der Erschaffung eines Gefäßes entstand, das die Seele beherbergen kann.
+Darin stecken uralte Technologie und ein starker Sinn für Entschlossenheit.
 [IDS_ITEMDESC.ID1032001]
 Ein Symbol-Rahmen in der Form einer runden Dekoration, die in manchen Regionen zum Jahresende zu sehen ist.
 Sie werden mit dem aufrichtigen Wunsch nach Glück und Freude in der kommenden Zeit aufgehängt.
@@ -2242,6 +2260,12 @@ Für diejenigen, die die Winde ergreifen wollen, die in eine noch unsichtbare We
 [IDS_ITEMDESC.ID1070126]
 Kartenhüllen, auf denen eine Kraft dargestellt ist, die in der Lage ist, die Energie zu vereinen, um Welten zu erschaffen.
 Für diejenigen, die den Kreislauf der Wiedergeburt fortsetzen.
+[IDS_ITEMDESC.ID1070127]
+Schutzhüllen, die eine riesige achtköpfige Schlange darstellen, die in einen tobenden Sturm gehüllt ist.
+Für diejenigen mit mythologischen Kräften.
+[IDS_ITEMDESC.ID1070128]
+Schutzhüllen, die eine Konfrontation zwischen den Drachen darstellen, die über Licht und Dunkelheit herrschen.
+Für diejenigen, die Armageddon herbeiführen wollen.
 [IDS_ITEMDESC.ID1070130]
 Kartenhüllen mit einem Hauptmotiv für die Yu-Gi-Oh! World Championship 2025.
 Für diejenigen, die die Welt herausfordern.
@@ -2369,6 +2393,9 @@ Für alle, die saisonale Feste richtig auskosten wollen.
 [IDS_ITEMDESC.ID1072005]
 Kartenhüllen, die ein dynamisches Duo in neuen Outfits darstellen.
 Für alle, die ein Gespür für Mode haben.
+[IDS_ITEMDESC.ID1072006]
+Schutzhüllen, die den Ritter darstellen, der die Welt verteidigt, und die Fee, die an seiner Seite steht.
+Für diejenigen, die sich dem Menschen, der ihnen am liebsten ist, nie offenbaren.
 [IDS_ITEMDESC.ID1072007]
 Kartenhüllen, auf denen ein Duo mit einer perfekten Partnerschaft, aber gegensätzlichen Persönlichkeiten, abgebildet ist.
 Für diejenigen, die sich in unerforschte Gebiete wagen.
@@ -2429,7 +2456,16 @@ Die Duellanten in der Szene jubeln zur Feier dieses prestigeträchtigen Events.
 [IDS_ITEMDESC.ID1075002]
 Kartenhüllen mit einem Hauptmotiv für Yu-Gi-Oh! CARD GAME THE CHRONICLES.
 Mit futuristischen High-Tech-Waffen ausgerüstet, stürmt das Mädchen über das Schlachtfeld und erlebt eine Begegnung, die die Welt verändern wird.
+[IDS_ITEMDESC.ID1075004]
+Kartenhüllen, die von einem Fußballspiel inspiriert sind, das dich dein Dream Team aufstellen lässt.
+Perfekt für alle, die gerne ihr ganz eigenes Deck haben wollen.
+[IDS_ITEMDESC.ID1075005]
+Kartenhüllen, die von einem brasilianischen Nationalhelden inspiriert sind, der über das Spielfeld sprintet.
+Für diejenigen, deren Technik ihresgleichen sucht.
 [IDS_ITEMDESC.ID1075006]
+Kartenhüllen mit einem Hauptmotiv für Yu-Gi-Oh! CARD GAME THE CHRONICLES.
+War ihre Begegnung vorherbestimmt? War sie unvermeidbar? Es entfaltet sich eine Erinnerung an Geschehnisse, die eine Welt der Abgründe auf ewig geprägt haben.
+[IDS_ITEMDESC.ID1075007]
 Kartenhüllen mit einem Hauptmotiv für Yu-Gi-Oh! CARD GAME THE CHRONICLES.
 War ihre Begegnung vorherbestimmt? War sie unvermeidbar? Es entfaltet sich eine Erinnerung an Geschehnisse, die eine Welt der Abgründe auf ewig geprägt haben.
 [IDS_ITEMDESC.ID1080001]
@@ -2584,6 +2620,8 @@ Perfekt für Decks, die den effizientesten Weg zum Sieg bevorzugen.
 [IDS_ITEMDESC.ID1082021]
 Ein Kartenetui, auf dem ein kontinentweiter Konflikt abgebildet ist.
 Perfekt für die Decks derjenigen, die in den nördlichen Territorien kämpfen.
+[IDS_ITEMDESC.ID1082022]
+Ein Kartenetui, auf dem eine mechanisierte Armee, die als Nebenprodukt entstanden ist, abgebildet ist.Perfekt für Decks, die unzählige Tests durchlaufen haben.
 [IDS_ITEMDESC.ID1090001]
 Ein Spielfeld, das einen üppigen, grünen Wald von unbekannter Tiefe darstellt.
 So friedlich Natur auch sein kann, sie kann ebenso viele Gefahren bergen. Schreite achtsam voran.
@@ -2687,6 +2725,9 @@ Für eine einzigartige militärische Operation entwickelt. Kann für verschieden
 [IDS_ITEMDESC.ID1090036]
 Ein Duell-Spielfeld mit einem gigantischen Bauwerk, das in eine unheimliche Atmosphäre gehüllt ist.
 Tief im Inneren öffnet sich langsam, aber unaufhaltsam das Tor zur Katastrophe.
+[IDS_ITEMDESC.ID1090040]
+Ein Duell-Spielfeld in Form eines Fußballstadions.
+Der Jubel der begeisterten Fans hallt über den Rasen.
 [IDS_ITEMDESC.ID1092001]
 Ein Spielfeld, das zwei Krieger darstellt, die in einem wilden Kampf verwickelt sind.
 Die beste Zeit für ein Kräftemessen ist immer jetzt!
@@ -2792,6 +2833,9 @@ Mit ihrer unglaublich fortschrittlichen Technologie liefern sie wichtige Informa
 [IDS_ITEMDESC.ID1100036]
 Spielfeldteile aus Despia, Theater der Markierten.
 Der Grad an Raffinesse passt perfekt zu dem Schloss voller Dunkelheit.
+[IDS_ITEMDESC.ID1100040]
+Spielfeldteile eines Fußballstadions.
+Ein temporäres Verlassen ist Teil der Leistung. Das Ass kommt aus dem Loch zurück und ist bereit, zurückzuschlagen.
 [IDS_ITEMDESC.ID1101001]
 Spielfeldteile inspiriert von einer Fallgrube.
 Ist das Stellen einer solchen Falle ein Zeichen von Gerissenheit, oder einfach nur unfair?
@@ -3032,6 +3076,8 @@ Macht den Transport riesiger Waffen möglich und kann sich flexibel an Situation
 [IDS_ITEMDESC.ID1110036]
 Ein Stand aus Despia, Theater der Markierten.
 Sie ist eines von unzähligen Löchern, die in den Himmel gemeißelt wurden.
+[IDS_ITEMDESC.ID1110040]
+Eine Tribüne eines Fußballstadions. Leidenschaft rast über das Feld, die grüne Bühne hallt bei jedem Schuss wider.
 [IDS_ITEMDESC.ID1111001]
 Ein Stand inspiriert von einem bestimmten, mit Buchstaben gravierten Brett, das in vielen übernatürlichen Künsten Anwendung findet.
 Du hast das Gefühl, dass dich durch den Schlitz ein dunkler, rachsüchtiger Geist beobachtet …
@@ -3155,6 +3201,9 @@ Was als Funke beginnt, wird immer heißer und heller und verwandelt sich in eine
 [IDS_ITEMDESC.ID1111052]
 Ein Stand nach dem Vorbild des WIND Emblems.
 Sanfte Brisen bringen Segen, während plötzliche Böen Eindringlinge wegfegen.
+[IDS_ITEMDESC.ID1111054]
+Ein Stand nach dem Vorbild des Zauber Emblems.
+Er lässt mysteriöse Phänomene entstehen, die man sogar als mystisch bezeichnen könnte.
 [IDS_ITEMDESC.ID1111056]
 Ein Stand, der Armbändern und anderen Objekten nachempfunden ist, denen der Geist eines Königs innewohnt.
 Die Kraft der Ozeane, von der in Legenden die Rede ist, hat sich als aufsteigende Blasen manifestiert.
@@ -3188,6 +3237,9 @@ Das majestätische Design unterstreicht den prestigeträchtigen Charakter des We
 [IDS_ITEMDESC.ID1113003]
 Ein Symbol zum Andenken an die Teilnahme am MASTER DUEL-Event der Yu-Gi-Oh! World Championship 2025.
 Das majestätische Design unterstreicht den prestigeträchtigen Charakter des Wettbewerbs.
+[IDS_ITEMDESC.ID1115001]
+Ein Stand, inspiriert von einem Fußballspiel, an dem du Spiele zwischen Clubs und Nationalmannschaften aus aller Welt veranstalten kannst.
+Enthält die Wurzeln der Geschichte und Entwicklung des Fußballs.
 [IDS_ITEMDESC.ID1120001]
 Duelliere dich mit diesem Deck voller Karten, die einfach einzusetzen sind! Benutze Zauber, Fallen, Synchro-, Xyz- und Linkbeschwörungen gegen härtere Gegner!
 [IDS_ITEMDESC.ID1120002]
@@ -3534,7 +3586,8 @@ Werde eins mit den Winden der Ungewissheit und erschaffe eine Zukunft, die die W
 Eine eigenartige Unterweltlerin, bekannt für ihre karmesinroten Tränen.
 Sie braucht eine Liebeserklärung, um ihre Kraft voll ausschöpfen zu können.
 [IDS_ITEMDESC.ID1130091]
-coming soon
+Jene Seelen, die einen entschlossenen Weg gehen, werden erneut stählerne Gefäße erlangen.
+Sie soll ein so reines Lächeln aufsetzen und neben dem Menschen stehen, den sie über alle anderen liebt.
 [IDS_ITEMDESC.ID1130092]
 coming soon
 [IDS_ITEMDESC.ID1130093]
@@ -3553,6 +3606,12 @@ coming soon
 coming soon
 [IDS_ITEMDESC.ID1130100]
 coming soon
+[IDS_ITEMDESC.ID1132001]
+Warum auch immer, aber das Kaninchen ist jetzt Mitglied in einem Fußballverein.
+Es hofft, sein Team mit all seinen angeborenen Führungsqualitäten zum Sieg zu führen.
+[IDS_ITEMDESC.ID1132002]
+Eine Legende aus Brasilien, die mit ihrer Kreativität das Spielfeld bereichert.
+Sie verblüfft ihre Fans immer wieder mit unübertroffener Technik und unerwarteten Spielzügen.
 [IDS_ITEMDESC.ID1132003]
 „Ich habe meine eigene abgefahrene Website erstellt, die meine geliebte Heimatstadt perfekt wiedergibt.“
 Als der 10. Besucher kam, verschwand sie vergnügt in den Foren.
@@ -3576,7 +3635,8 @@ Die maximale Anzahl der Decks, die du besitzen kannst, kann um 1 erhöht werden.
 [IDS_ITEMDESC.ID1160001]
 Erhöht die maximale Anzahl der Wiederholungen, die du speichern kannst, um 1.
 [IDS_ITEMDESC.ID1170001]
-coming soon
+Ein Collector’s File mit uralter Technologie und einem starken Sinn für Entschlossenheit.
+Es heißt, dass das Tor der Melodie hell erstrahlen wird, wenn die <category id='89'/> versammelt sind.
 [IDS_ITEMDESC.ID1170002]
 coming soon
 [IDS_ITEMDESC.ID1180001]
@@ -3586,7 +3646,8 @@ Seine himmelblauen Augen schimmern.
 Eine Münze, deren Motiv ein magischer Topf ist, der angeblich Wohlbefinden bringt.
 Sein gieriger Ausdruck schimmert.
 [IDS_ITEMDESC.ID1180003]
-coming soon
+Eine Münze, deren Motiv das Nebenprodukt ist, das bei der Herstellung eines Gefäßes für die Seele entsteht.
+Das Emblem der Armee leuchtet hell.
 [IDS_ITEMDESC.ID1180004]
 Eine Münze, deren Motiv ein dreidimensionales Puzzle ist, das in alten Ruinen entdeckt wurde.
 Das Emblem des Auges von Wdjat schimmert darauf.

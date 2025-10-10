@@ -99,6 +99,9 @@ Anche se sarebbe dovuto scomparire, è apparso di nuovo, forse perché la percez
 [IDS_ITEMDESC.ID1000036]
 Un mago molto dotato dei tempi antichi in grado di padroneggiare diverse arti proibite.
 È scomparso senza lasciare traccia con l'arrivo di "<card mrk='10282'/>".
+[IDS_ITEMDESC.ID1000037]
+La lancia di una divinità meccanica forgiata in risposta alla volontà di una bambola meccanica.
+È stata creata dai resti di "<category id='89'/>".
 [IDS_ITEMDESC.ID1000041]
 Una bestia demoniaca che dorme come un sasso.
 Per nutrirsi dei sogni altrui, emana un odore dal proprio corpo che provoca sonnolenza, ma finisce sempre per addormentare se stesso.
@@ -336,7 +339,8 @@ coming soon
 [IDS_ITEMDESC.ID1003010]
 coming soon
 [IDS_ITEMDESC.ID1005001]
-coming soon
+Salva il Coniglio da questa realtà nella quale si è unito a una squadra di calcio.
+Grazie al suo udito eccezionale, ne approfitta per creare un vantaggio numerico di 2 contro 1.
 [IDS_ITEMDESC.ID1010001]
 Un'icona che rappresenta un Duellante anonimo.
 È possibile che quest'immagine sia conosciuta in diverse zone del mondo...
@@ -681,9 +685,11 @@ Facendosi carico degli spiriti dei caduti, ha giurato di proteggere chi è ancor
 Un'icona che raffigura un mostro assemblato con blocchi da costruzione.
 Somiglia vagamente a un drago, pur non essendolo realmente.
 [IDS_ITEMDESC.ID1010117]
-coming soon
+Un'icona che raffigura il protettore rinato del mondo.
+Veglia sul suo cammino e vaga nei cieli serali per eliminare le minacce dal loro mondo.
 [IDS_ITEMDESC.ID1010118]
-coming soon
+Un'icona che raffigura un mostro che ricorda una spora.
+Vola nella foresta sacra per svelare ogni cosa.
 [IDS_ITEMDESC.ID1010119]
 coming soon
 [IDS_ITEMDESC.ID1010120]
@@ -1108,6 +1114,11 @@ Attraversando il campo di battaglia, la ragazza dotata di un'arma tecnologica in
 [IDS_ITEMDESC.ID1013005]
 Un'icona che raffigura una scena tratta da Yu-Gi-Oh! CARD GAME THE CHRONICLES.
 Il loro incontro è opera del fato, o della necessità? Si aprono ricordi di eventi che hanno lasciato un segno indelebile in un mondo abissale.
+[IDS_ITEMDESC.ID1013006]
+Un'icona che raffigura una scena tratta da Yu-Gi-Oh! CARD GAME THE CHRONICLES.
+Il loro incontro è opera del fato, o della necessità? Si aprono ricordi di eventi che hanno lasciato un segno indelebile in un mondo abissale.
+[IDS_ITEMDESC.ID1013010]
+Un'icona che raffigura il logo di una partita di calcio nella quale competono squadre reali e da sogno.Assisti ad azioni esaltanti di coloro che non smettono mai di sfidarsi.
 [IDS_ITEMDESC.ID1020001]
 Un titolo dato ai Duellanti che hanno iniziato il loro viaggio nel mondo dei Duelli con Yu-Gi-Oh! MASTER DUEL.
 Non è mai troppo tardi per iniziare a Duellare.
@@ -1638,6 +1649,9 @@ La loro prestazione diventerà un obiettivo per molti Duellanti che saranno loda
 [IDS_ITEMDESC.ID1020177]
 Un titolo dato ai Duellanti che si sono piazzati nella top 12 nell'evento "Yu-Gi-Oh! World Championship 2025: MASTER DUEL".
 Solo pochi riescono a raggiungere un tale livello. Questo risultato è una prova della loro indubbia abilità.
+[IDS_ITEMDESC.ID1020178]
+Un titolo dato ai Duellanti che hanno raggiunto risultati importanti nell'evento "Dice Rally Synchro/Xyz/Link".
+Un futuro brillante attende coloro che sono abbastanza coraggiosi da credere in se stessi.
 [IDS_ITEMDESC.ID1020179]
 Titolo conferito ai Duellanti che hanno ottenuto risultati in una narrazione scelta con il potere di varie carte.
 Le storie raccontate in battaglia lasceranno qualcosa che risuonerà in molti Duellanti.
@@ -1823,6 +1837,9 @@ Brillano grazie all'intensa volontà di coloro che costruiscono la Rete di Sovra
 [IDS_ITEMDESC.ID1031017]
 Una cornice icona che evoca la Magia Fusione di determinate A.I.
 A quanto pare non serba alcun rancore nei confronti dell'umanità.
+[IDS_ITEMDESC.ID1031018]
+Una cornice icona che è stata formata durante la creazione di un contenitore in grado di ospitare l'anima.
+Al suo interno risiedono un'antica tecnologia e una forte determinazione.
 [IDS_ITEMDESC.ID1032001]
 Una cornice icona a forma di decorazione circolare, che viene usata in determinate regioni quando l'anno volge al termine.
 Vengono appese in segno di sincero augurio di felicità e gioia per il futuro.
@@ -2241,6 +2258,12 @@ Per chi intende afferrare i venti che soffiano verso un mondo ancora invisibile.
 [IDS_ITEMDESC.ID1070126]
 Protettori che raffigurano una forza in grado di amalgamare l'energia per creare nuovi mondi.
 Per chi perpetua il ciclo della rinascita.
+[IDS_ITEMDESC.ID1070127]
+Protettori che raffigurano un gigantesco serpente a otto teste avvolto in una tempesta furiosa.
+Per coloro che sono dotati di poteri mitologici.
+[IDS_ITEMDESC.ID1070128]
+Protettori che raffigurano un confronto tra i draghi che regnano su luce e oscurità.
+Per chi intende scatenare l'Armageddon.
 [IDS_ITEMDESC.ID1070130]
 Protettori che raffigurano l'illustrazione principale utilizzata per l'evento "Yu-Gi-Oh! World Championship 2025".
 Per coloro che sfidano il mondo.
@@ -2368,6 +2391,9 @@ Per coloro che amano le feste.
 [IDS_ITEMDESC.ID1072005]
 Protettori che raffigurano un duo dinamico con un nuovo abbigliamento.
 Per coloro che vestono alla moda.
+[IDS_ITEMDESC.ID1072006]
+Protettori che raffigurano il cavaliere che difende il mondo e la fata che resta al suo fianco.
+Per chi non si rivela mai davanti a chi ama di più.
 [IDS_ITEMDESC.ID1072007]
 Protettori che raffigurano un duo che funziona alla perfezione, anche se le loro personalità sono contrastanti.
 Per coloro che si avventurano in terre sconosciute.
@@ -2428,7 +2454,16 @@ I Duellanti presenti alla location sono esplosi in un grande applauso per celebr
 [IDS_ITEMDESC.ID1075002]
 Protettori che raffigurano una protagonista di Yu-Gi-Oh! CARD GAME THE CHRONICLES.
 Attraversando il campo di battaglia, la ragazza dotata di un'arma tecnologica incredibilmente avanzata ha un incontro che potrebbe cambiare le sorti del mondo.
+[IDS_ITEMDESC.ID1075004]
+Protettori ispirati dalla partita di calcio che ti lasciano formare la tua Squadra dei sogni.
+Perfetto per coloro che voglio avere un proprio Deck.
+[IDS_ITEMDESC.ID1075005]
+Protettori ispirati da un campione brasiliano che si muove sul Terreno.
+Per coloro con una tecnica impareggiabile.
 [IDS_ITEMDESC.ID1075006]
+Protettori che raffigurano dei protagonisti di Yu-Gi-Oh! CARD GAME THE CHRONICLES.
+Il loro incontro è opera del fato, o della necessità? Si aprono ricordi di eventi che hanno lasciato un segno indelebile in un mondo abissale.
+[IDS_ITEMDESC.ID1075007]
 Protettori che raffigurano dei protagonisti di Yu-Gi-Oh! CARD GAME THE CHRONICLES.
 Il loro incontro è opera del fato, o della necessità? Si aprono ricordi di eventi che hanno lasciato un segno indelebile in un mondo abissale.
 [IDS_ITEMDESC.ID1080001]
@@ -2583,6 +2618,9 @@ Perfetta per i Deck che cercano di ottenere la vittoria nel modo più efficiente
 [IDS_ITEMDESC.ID1082021]
 Una custodia per carte che raffigura un conflitto su larghissima scala.
 Perfetta per i Deck di coloro che combattono nei territori del nord.
+[IDS_ITEMDESC.ID1082022]
+Una custodia carte che raffigura un esercito meccanizzato creato come sottoprodotto.
+Perfetta per i Deck che hanno svolto infinite prove.
 [IDS_ITEMDESC.ID1090001]
 Un Terreno che raffigura una rigogliosa foresta dalle profondità sconosciute.
 Per quanto possa essere placida la natura, può anche celare molti pericoli. Procedi con cautela.
@@ -2686,6 +2724,9 @@ Realizzato per una specialissima operazione militare, può essere utilizzato per
 [IDS_ITEMDESC.ID1090036]
 Un Terreno che raffigura una struttura gigantesca avvolta da un'atmosfera inquietante.
 Nascosta nelle sue profondità, la porta della fine inizia ad aprirsi, lentamente ma inesorabilmente.
+[IDS_ITEMDESC.ID1090040]
+Un Terreno Duello pari a uno stadio di calcio.
+Le grida dei tifosi appassionati risuonano in tutto il campo.
 [IDS_ITEMDESC.ID1092001]
 Un Terreno che raffigura due guerrieri intenti a darsi battaglia.
 Non c'è momento migliore di questo per affrontare il tuo rivale!
@@ -2791,6 +2832,9 @@ Realizzate con una tecnologia incredibilmente avanzata, consentono di raccoglier
 [IDS_ITEMDESC.ID1100036]
 Parti del Terreno provenienti da "Dispia, Teatro dei Marchiati".
 Il livello di raffinatezza si addice al castello da cui emanano le tenebre.
+[IDS_ITEMDESC.ID1100040]
+Parti del Terreno provenienti da uno stadio di calcio.
+Un'uscita temporanea fa parte della prestazione. L'asso esce dalla manica, pronto a contrattaccare.
 [IDS_ITEMDESC.ID1101001]
 Parti del Terreno ispirate a un Buco Trappola.
 Preparare una trappola come questa è segno di grande astuzia o di semplice cattiveria?
@@ -3031,6 +3075,8 @@ Permette di trasportare enormi armamenti e può adattarsi a qualsiasi circostanz
 [IDS_ITEMDESC.ID1110036]
 Uno stand proveniente da "Dispia, Teatro dei Marchiati".
 È uno degli innumerevoli squarci che si sono formati nel cielo.
+[IDS_ITEMDESC.ID1110040]
+Uno stand proveniente da uno stadio di calcio. La passione corre sul campo, un palcoscenico verdeggiante che risuona a ogni tiro.
 [IDS_ITEMDESC.ID1111001]
 Uno stand ispirato a un certo piano con delle lettere incise usato in diverse arti paranormali.
 Ti sembra quasi di vedere uno spirito oscuro e rancoroso intento a fissarti dall'altro lato...
@@ -3154,6 +3200,9 @@ Ciò che inizia come una piccola scintilla, diventa qualcosa di molto caldo e lu
 [IDS_ITEMDESC.ID1111052]
 Uno stand modellato sullo stemma VENTO.
 Una brezza leggera porta benefici, mentre le raffiche improvvise spazzano via gli intrusi.
+[IDS_ITEMDESC.ID1111054]
+Uno stand modellato sullo stemma Magia.
+Genera fenomeni misteriosi che potrebbero essere perfino definiti di natura mistica.
 [IDS_ITEMDESC.ID1111056]
 Uno stand modellato su braccialetti e altri oggetti infusi dello spirito di un re.
 La potenza oceanica di cui si parla nelle leggende si manifesta con un crescendo di bolle.
@@ -3187,6 +3236,9 @@ Il suo design solenne indica la prestigiosa natura della competizione.
 [IDS_ITEMDESC.ID1113003]
 Uno stand per celebrare la partecipazione nell'evento di MASTER DUEL allo "Yu-Gi-Oh! World Championship 2025".
 Il suo design solenne indica la prestigiosa natura della competizione.
+[IDS_ITEMDESC.ID1115001]
+Uno stand ispirato a una partita di calcio nella quale puoi far scontrare squadre di club e nazionali da tutto il mondo.
+Contiene le radici storiche e l'evoluzione del calcio.
 [IDS_ITEMDESC.ID1120001]
 Prova a Duellare con questo Deck pieno di carte facili da usare! Usa Magie, Trappole, Synchro Evocazioni, Evocazioni Xyz ed Evocazioni tramite Link contro gli avversari più impegnativi!
 [IDS_ITEMDESC.ID1120002]
@@ -3533,7 +3585,8 @@ Unisciti ai venti dell'incertezza e crea un futuro che unirà il mondo!
 Una Demone singolare nota per le sue lacrime cremisi.
 Richiede parole d'amore per usare al massimo il suo potere.
 [IDS_ITEMDESC.ID1130091]
-coming soon
+Le anime che percorrono un sentiero risoluto acquisiranno nuovamente contenitori temprati.
+Ella darà vita a un sorriso così puro, restando accanto a colui che ama più di ogni altro.
 [IDS_ITEMDESC.ID1130092]
 coming soon
 [IDS_ITEMDESC.ID1130093]
@@ -3552,6 +3605,12 @@ coming soon
 coming soon
 [IDS_ITEMDESC.ID1130100]
 coming soon
+[IDS_ITEMDESC.ID1132001]
+Non si capisce il motivo, ma ora il coniglio è un membro di una squadra di calcio.
+Si spera possa portare la sua squadra alla vittoria grazie alle sue abilità di supporto.
+[IDS_ITEMDESC.ID1132002]
+Una leggenda brasiliana che illumina il Terreno con il suo estro.
+I fan rimangono sempre stupiti dalla sua tecnica sopraffina e dalle sue giocate improvvise.
 [IDS_ITEMDESC.ID1132003]
 "Ho creato un fantastico sito web che riproduce alla perfezione la mia amata città natale".
 Si è precipitata con entusiasmo nei forum non appena è giunto il decimo visitatore.
@@ -3575,7 +3634,8 @@ Il numero massimo di Deck che puoi possedere può essere aumentato di 1.
 [IDS_ITEMDESC.ID1160001]
 Aumenta di 1 il numero massimo di replay che puoi salvare.
 [IDS_ITEMDESC.ID1170001]
-coming soon
+Un Raccoglitore del Collezionista contenente un'antica tecnologia e una forte determinazione.
+Si dice che quando si ottengono più carte <category id='89'/>, il cancello della melodia risplenderà luminoso.
 [IDS_ITEMDESC.ID1170002]
 coming soon
 [IDS_ITEMDESC.ID1180001]
@@ -3585,7 +3645,8 @@ I suoi occhi blu risplendono.
 Una moneta con il motivo di un'anfora magica che si dice porti prosperità.
 L'avidità risplende sul suo volto.
 [IDS_ITEMDESC.ID1180003]
-coming soon
+Una moneta il cui motivo rappresenta il sottoprodotto formato durante la creazione di un contenitore per l'anima.
+Lo stemma dell'esercito brilla intensamente.
 [IDS_ITEMDESC.ID1180004]
 Una moneta con il motivo del puzzle tridimensionale che fu scoperto in antiche rovine.
 L'insegna dell'Occhio di Wdjat risplende.

@@ -89,7 +89,7 @@ One of the most iconic Machine monsters.
 Countless Duelists relying on Trap Cards have been utterly thwarted by its arrival on the field.
 [IDS_ITEMDESC.ID1000032]
 Favorite Hero of Duelists who enjoys Dueling more than anybody else. 
- His special Infernal Rage burns everything to a crisp.
+His special Infernal Rage burns everything to a crisp.
 [IDS_ITEMDESC.ID1000033]
 A strong and invincible dragon descended with the Chaos Form. 
 Its immense power, fitting of its chaotic moniker, mercifully unleashes its whip of annihilation onto its opponents.
@@ -99,6 +99,9 @@ Although it should have disappeared, it appeared once again, perhaps because the
 [IDS_ITEMDESC.ID1000036]
 A gifted magician from ancient times who mastered many forbidden arts.
 He disappeared from history without a trace upon the advent of "<card mrk='10282'/>".
+[IDS_ITEMDESC.ID1000037]
+A machine deity's spear forged in response to a mechanical doll's will.
+It has been created from "<category id='89'/>" remains.
 [IDS_ITEMDESC.ID1000041]
 A demonic beast that sleeps like mud.
 In order to eat others' dreams, it releases a sleep-inducing odor from its body, but it always puts itself to sleep.
@@ -336,7 +339,8 @@ coming soon
 [IDS_ITEMDESC.ID1003010]
 coming soon
 [IDS_ITEMDESC.ID1005001]
-coming soon
+Rescue Rabbit from a reality where it joined a football club.
+Using its exceptional hearing, it grasps the situation to create a 2v1 numerical advantage.
 [IDS_ITEMDESC.ID1010001]
 An Icon depicting an anonymous Duelist.
 Their image may exist in various places around the world...
@@ -659,7 +663,7 @@ An Icon depicting a being of chaos and total purity.
 Crushed by overwhelming love and despair, it was formed from the purest 666 "Dogmatika" souls.
 [IDS_ITEMDESC.ID1010109]
 An Icon depicting a girl tethered to evanescent shadows.
- An evil entity was stricken by her gaze and granted her wish.
+An evil entity was stricken by her gaze and granted her wish.
 [IDS_ITEMDESC.ID1010110]
 An Icon depicting the crest of samurai famed for their outstanding martial prowess.
 They are as fearless as their stalwart hearts are strong, and nothing can shake their convictions or the loyalty they have for their master.
@@ -681,9 +685,11 @@ Shouldering the spirits of those who perished, he swore to protect those that re
 An Icon depicting a monster that was assembled from building blocks.
 Vaguely resembles a dragon despite not actually being one.
 [IDS_ITEMDESC.ID1010117]
-coming soon
+An Icon depicting the reborn protector of the world.
+He watches over her journey and wanders the evening skies to eliminate threats to their world.
 [IDS_ITEMDESC.ID1010118]
-coming soon
+An Icon depicting a monster that resembles a spore.
+It flies through the sacred forest so that all may be revealed.
 [IDS_ITEMDESC.ID1010119]
 coming soon
 [IDS_ITEMDESC.ID1010120]
@@ -1065,7 +1071,7 @@ An Icon depicting a high-performance unit with superlative tuning abilities.
 It was developed using alien matter from a meteorite.
 [IDS_ITEMDESC.ID1012066]
 An Icon depicting the chief of an elite warrior unit that lives in a mist-filled valley.
- Outstandingly brave, he fights with unstoppable fury.
+Outstandingly brave, he fights with unstoppable fury.
 [IDS_ITEMDESC.ID1012067]
 An Icon depicting a skeletal ghost who turns up here, there, and everywhere.
 It isn't strong but can mean trouble in large numbers.
@@ -1108,6 +1114,12 @@ Tearing across the battlefield, the girl equipped with super-advanced technologi
 [IDS_ITEMDESC.ID1013005]
 An Icon depicting a scene from Yu-Gi-Oh! CARD GAME THE CHRONICLES.
 Was their meeting the work of fate, or unavoidable? What unfolds is a recollection of events that left an indelible mark on an abyssal world.
+[IDS_ITEMDESC.ID1013006]
+An Icon depicting a scene from Yu-Gi-Oh! CARD GAME THE CHRONICLES.
+Was their meeting the work of fate, or unavoidable? What unfolds is a recollection of events that left an indelible mark on an abyssal world.
+[IDS_ITEMDESC.ID1013010]
+An Icon depicting the logo of a soccer game where real and dream teams of 11 compete to be the best.
+Exhilarating action brought to you by those who never stop challenging themselves.
 [IDS_ITEMDESC.ID1020001]
 A Title given to Duelists who began their Dueling journey with Yu-Gi-Oh! MASTER DUEL.
 It's never too late to start Dueling.
@@ -1638,6 +1650,9 @@ Their performance will become a goal for many Duelists with voices of praise res
 [IDS_ITEMDESC.ID1020177]
 A Title given to those who finished in the top 12 in the Yu-Gi-Oh! World Championship 2025: MASTER DUEL event.
 Only a very few can reach this level. Their achievement stands as undeniable proof of their skill.
+[IDS_ITEMDESC.ID1020178]
+A Title given to Duelists who achieved results in the "Dice Rally - Synchro/Xyz/Link" event.
+A brilliant future awaits those courageous enough to trust themselves.
 [IDS_ITEMDESC.ID1020179]
 A Title given to Duelists who achieved results in a chosen narrative with the power of various cards.
 The stories spun through battle will leave something that will resonate with many Duelists.
@@ -1819,10 +1834,13 @@ An Icon Frame that evokes the vast uncharted domain accessed through a huge hole
 Churning within the abyss are great torrents of dangerous data born out of humanity's malice.
 [IDS_ITEMDESC.ID1031016]
 An Icon Frame reminiscent of the shining orbs of light that surround Xyz Monsters.
- They brim with the intense willpower of those who build the Overlay Network.
+They brim with the intense willpower of those who build the Overlay Network.
 [IDS_ITEMDESC.ID1031017]
 An Icon Frame evoking the Fusion Spell of certain A.I.s.
 It appears to bear no malice towards the human race.
+[IDS_ITEMDESC.ID1031018]
+An Icon Frame that was formed while creating a vessel capable of housing the soul.
+Within it resides ancient technology and a strong sense of purpose.
 [IDS_ITEMDESC.ID1032001]
 An Icon Frame in the shape of a circular decoration, which can be seen in a certain region as the year draws to a close.
 They are hung with the sincere wish for happiness and joy in times to come.
@@ -2241,6 +2259,12 @@ For those who would seize the winds blowing to a yet unseen world.
 [IDS_ITEMDESC.ID1070126]
 Protectors depicting a force capable of amalgamating the energy to create worlds.
 For those who continue the cycle of rebirth.
+[IDS_ITEMDESC.ID1070127]
+Protectors depicting a giant eight-headed serpent cloaked in a raging storm.
+For those with mythological powers.
+[IDS_ITEMDESC.ID1070128]
+Protectors depicting a confrontation between the dragons that rule over light and darkness.
+For those who wish to bring about Armageddon.
 [IDS_ITEMDESC.ID1070130]
 Protectors featuring a key visual for the Yu-Gi-Oh! World Championship 2025.
 For those who challenge the world.
@@ -2368,6 +2392,9 @@ For those who love to get their teeth into seasonal celebrations.
 [IDS_ITEMDESC.ID1072005]
 Protectors depicting a dynamic duo decked out in new outfits.
 For those with a flair for fashion.
+[IDS_ITEMDESC.ID1072006]
+Protectors depicting the knight that defends the world and the fairy who stays by his side.
+For those who never reveal themselves before the one they hold most dear.
 [IDS_ITEMDESC.ID1072007]
 Protectors depicting a duo with a perfect partnership but conflicting personalities.
 For those who venture into uncharted domains.
@@ -2428,7 +2455,16 @@ The Duelists at the venue let out a great cheer to mark this prestigious event.
 [IDS_ITEMDESC.ID1075002]
 Protectors featuring a key visual for Yu-Gi-Oh! CARD GAME THE CHRONICLES.
 Tearing across the battlefield, the girl equipped with super-advanced technological weaponry has a world-changing encounter.
+[IDS_ITEMDESC.ID1075004]
+Protectors inspired by the soccer game that lets you build your Dream Team.
+Perfect for those who like to have their very own Deck.
+[IDS_ITEMDESC.ID1075005]
+Protectors inspired by a Brazilian national treasure tearing across the field.
+For those whose technique has no peers.
 [IDS_ITEMDESC.ID1075006]
+Protectors featuring a key visual for Yu-Gi-Oh! CARD GAME THE CHRONICLES.
+Was their meeting the work of fate, or unavoidable? What unfolds is a recollection of events that left an indelible mark on an abyssal world.
+[IDS_ITEMDESC.ID1075007]
 Protectors featuring a key visual for Yu-Gi-Oh! CARD GAME THE CHRONICLES.
 Was their meeting the work of fate, or unavoidable? What unfolds is a recollection of events that left an indelible mark on an abyssal world.
 [IDS_ITEMDESC.ID1080001]
@@ -2555,7 +2591,7 @@ A Deck Box commemorating the start of a New Year.
 Recommended for building new Decks.
 [IDS_ITEMDESC.ID1082012]
 A Deck Box inspired by the briefcase of a certain president. 
- As you push forward on the path of battle, the time will come when you will unsheathe the sword of the cards from your Deck.
+As you push forward on the path of battle, the time will come when you will unsheathe the sword of the cards from your Deck.
 [IDS_ITEMDESC.ID1082013]
 A Deck Box depicting magicians to commemorate Yu-Gi-Oh! Card Game 25th Anniversary. 
 Recommended for a Deck that represents the vast history and bonds of Duels.
@@ -2583,6 +2619,9 @@ Perfect for Decks that prioritize the most efficient path to victory.
 [IDS_ITEMDESC.ID1082021]
 A Card Case depicting a continent-wide conflict.
 Perfect for the Decks of those battling in the northern territories.
+[IDS_ITEMDESC.ID1082022]
+A Card Case depicting a mechanized army created as a by-product.
+Perfect for Decks that have conducted countless trials.
 [IDS_ITEMDESC.ID1090001]
 A Field depicting a luscious, green forest of unknown depth.
 As tranquil as nature can be, it can also harbor many dangers. Proceed with caution.
@@ -2686,6 +2725,9 @@ Made for a one-of-a-kind military operation, it can be used for various combat s
 [IDS_ITEMDESC.ID1090036]
 A Duel Field of a gigantic structure enveloped in an eerie atmosphere.
 Deep within, the gate of cataclysm is opening, slowly but inexorably.
+[IDS_ITEMDESC.ID1090040]
+A Duel Field of a football stadium.
+The cheers of enthusiastic fans echo across the turf.
 [IDS_ITEMDESC.ID1092001]
 A Field depicting two warriors locked in a fierce battle.
 There's no better time for a showdown than now!
@@ -2791,6 +2833,9 @@ Made with unbelievably advanced technology, they provide vital information.
 [IDS_ITEMDESC.ID1100036]
 Field Parts from Despia, Theater of the Branded.
 The level of refinement befits the darkness-emanating castle.
+[IDS_ITEMDESC.ID1100040]
+Field Parts from a football stadium.
+A temporary exit is part of the performance. The ace returns from the hole, ready to strike back.
 [IDS_ITEMDESC.ID1101001]
 Field Parts inspired by a Trap Hole.
 Would setting a trap like this be a mark of cunning wit, or just plain unfair?
@@ -3031,6 +3076,8 @@ It enables enormous armaments to be transported and can flexibly adapt to circum
 [IDS_ITEMDESC.ID1110036]
 A Stand from Despia, Theater of the Branded.
 It is one of countless holes that have been carved in the sky.
+[IDS_ITEMDESC.ID1110040]
+A Stand from a football stadium. Passion races across the field, the verdant stage reverberating with each shot.
 [IDS_ITEMDESC.ID1111001]
 A Stand inspired by a certain board engraved with letters, used in various supernatural arts.
 You feel as if you can see a dark, vengeful spirit staring back at you from the gap...
@@ -3154,6 +3201,9 @@ What starts out as a spark grows hotter and brighter, transforming into a confla
 [IDS_ITEMDESC.ID1111052]
 A Stand modeled on the WIND emblem.
 Gentle breezes bring blessings, while sudden gusts sweep away interlopers.
+[IDS_ITEMDESC.ID1111054]
+A Stand modeled on the Spell emblem.
+It gives rise to mysterious phenomena that could even be called mystical in nature.
 [IDS_ITEMDESC.ID1111056]
 A Stand modeled on bracelets and other items infused with a king's spirit.
 The oceanic power spoken of in legends has manifested as surging bubbles.
@@ -3187,6 +3237,9 @@ Its austere design speaks to the prestigious nature of the competition.
 [IDS_ITEMDESC.ID1113003]
 A Stand commemorating participation in the MASTER DUEL event of the Yu-Gi-Oh! World Championship 2025.
 Its austere design speaks to the prestigious nature of the competition.
+[IDS_ITEMDESC.ID1115001]
+A Stand inspired by a soccer game where you can set up matches between clubs and national teams from all around the world.
+Contains the roots of soccer's history and evolution.
 [IDS_ITEMDESC.ID1120001]
 Try a Duel with this Deck full of easy-to-use Cards! Against tougher opponents use Spells, Traps, Synchro, Xyz and Link Summons!
 [IDS_ITEMDESC.ID1120002]
@@ -3517,7 +3570,7 @@ One of the dragons said to appear before the chosen ones bearing the Mark of the
 Its cold yet beautiful dark petals splay out and wound all they envelop.
 [IDS_ITEMDESC.ID1130085]
 With her final days approaching, a blind girl seeks light and encounters an evil being.
- It is a tale of a lightless shadow - false light that a shadow fabricates.
+It is a tale of a lightless shadow - false light that a shadow fabricates.
 [IDS_ITEMDESC.ID1130086]
 The key visual for the Yu-Gi-Oh! World Championship 2025.
 Duelists, the road to the top of the world awaits.
@@ -3533,7 +3586,8 @@ Become one with the winds of uncertainty and create a future that shall link the
 A peculiar Fiend known for her crimson tears.
 She requires amorous words in order to use her power to its fullest.
 [IDS_ITEMDESC.ID1130091]
-coming soon
+Those souls who walk a resolute path will acquire steeled vessels once more.
+She shall orchestrate a smile so pure, standing beside the one she loves above all others.
 [IDS_ITEMDESC.ID1130092]
 coming soon
 [IDS_ITEMDESC.ID1130093]
@@ -3552,6 +3606,12 @@ coming soon
 coming soon
 [IDS_ITEMDESC.ID1130100]
 coming soon
+[IDS_ITEMDESC.ID1132001]
+It's not so sure why either, but the rabbit is now a member of a football club.
+It hopes to lead its team to victory with all its natural supportive skill.
+[IDS_ITEMDESC.ID1132002]
+A legend from Brazil who illuminates the field with his creativity.
+Always stuns fans with his unbeatable technique and unexpected plays.
 [IDS_ITEMDESC.ID1132003]
 "I've made my very own wicked website that perfectly recreates my beloved hometown."
 She gleefully scurried off to the forums as the 10th visitor arrived.
@@ -3575,7 +3635,8 @@ The max. number of Decks you can possess can be increased by 1.
 [IDS_ITEMDESC.ID1160001]
 Increases the maximum number of replays you can keep saved by 1.
 [IDS_ITEMDESC.ID1170001]
-coming soon
+A Collector's File containing ancient technology and a strong sense of purpose within it.
+It is said that when the <category id='89'/> are gathered, the gate of melody will shine brightly.
 [IDS_ITEMDESC.ID1170002]
 coming soon
 [IDS_ITEMDESC.ID1180001]
@@ -3583,9 +3644,10 @@ A Coin whose motif is the luminous dragon who brings about a new legend.
 Its cerulean eyes glimmer.
 [IDS_ITEMDESC.ID1180002]
 A coin whose motif is a magic pot said to bring well-being.
- Its greedy expression glimmers.
+Its greedy expression glimmers.
 [IDS_ITEMDESC.ID1180003]
-coming soon
+A Coin whose motif is the by-product formed when crafting a vessel for the soul.
+The emblem of the army gleams brightly.
 [IDS_ITEMDESC.ID1180004]
 A Coin whose motif is the three-dimensional puzzle that was discovered in ancient ruins.
 The Eye of Wdjat insignia glimmers.
