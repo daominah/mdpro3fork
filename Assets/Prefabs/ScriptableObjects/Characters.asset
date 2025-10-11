@@ -73,6 +73,14 @@ MonoBehaviour:
     notReady: 0
   - id: 0034
     notReady: 0
+  - id: 0040
+    notReady: 0
+  - id: 0047
+    notReady: 0
+  - id: 0048
+    notReady: 0
+  - id: 0053
+    notReady: 0
   gx:
   - id: 0101
     notReady: 0
@@ -275,6 +283,8 @@ MonoBehaviour:
   - id: 0708
     notReady: 0
   - id: 0709
+    notReady: 0
+  - id: 0712
     notReady: 0
   - id: 0715
     notReady: 0

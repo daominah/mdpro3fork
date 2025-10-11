@@ -71,8 +71,15 @@ namespace MDPro3.Duel
             {
                 for (int j = 0; j < paths[i].Count; j++)
                 {
-                    var clip = await AudioManager.LoadAudioFileUniAsync(paths[i][j], AudioType.OGGVORBIS);
-                    clips[i].Add(clip);
+                    try
+                    {
+                        var clip = await AudioManager.LoadAudioFileUniAsync(paths[i][j], AudioType.OGGVORBIS);
+                        clips[i].Add(clip);
+                    }
+                    catch (Exception ex) 
+                    {
+                        Debug.LogException(ex);
+                    }
                 }
             }
 

@@ -1,5 +1,7 @@
 using Cysharp.Threading.Tasks;
 using MDPro3.Duel.YGOSharp;
+using System;
+using System.Diagnostics;
 
 namespace MDPro3.Duel
 {
@@ -27,9 +29,21 @@ namespace MDPro3.Duel
 
             playerResponed = false;
 
-            await log.Process(p);
-            await voice.Process(p);
-            await duel.Process(p);
+            try
+            {
+                await log.Process(p);
+            } 
+            catch(Exception e) { UnityEngine.Debug.Log(e.Message); }
+            try
+            {
+                await voice.Process(p);
+            }
+            catch (Exception e) { UnityEngine.Debug.Log(e.Message); }
+            try
+            {
+                await duel.Process(p);
+            }
+            catch (Exception e) { UnityEngine.Debug.Log(e.Message); }
         }
 
         public async UniTask RetryMessage()
