@@ -1,6 +1,7 @@
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using MDPro3.Duel.YGOSharp;
+using MDPro3.Net;
 using MDPro3.Servant;
 using MDPro3.UI.ServantUI;
 using MDPro3.Utility;
@@ -239,6 +240,12 @@ namespace MDPro3.UI
             m_IconBETA = m_IconBETA != null ? m_IconBETA
             : Manager.GetNestedElement<Image>(LABEL_IMG_ICON_BETA);
 
+        private const string LABEL_TXT_GP = "TextGP";
+        private TextMeshProUGUI m_TextGP;
+        protected TextMeshProUGUI TextGP =>
+            m_TextGP = m_TextGP != null ? m_TextGP
+            : Manager.GetElement<TextMeshProUGUI>(LABEL_TXT_GP);
+
         #endregion
 
         #region Pendulum Description Area
@@ -413,6 +420,11 @@ namespace MDPro3.UI
             IconCCG.gameObject.SetActive((data.Ot & 8) > 0);
             IconDIY.gameObject.SetActive((data.Ot & 4) > 0);
             IconBETA.gameObject.SetActive(data.isPre);
+
+            var gp = OnlineService.GetGenesysPoint(data.GetOriginalID());
+            var gpString = OnlineService.GetGenesysPointString(data.GetOriginalID());
+            TextGP.text = string.Format("G:{0}", gpString);
+            TextGP.color = OnlineService.GetGenesysPointColor(gp);
 
             #endregion
 

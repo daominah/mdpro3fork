@@ -137,6 +137,15 @@ namespace MDPro3.Net
             return 0;
         }
 
+        public static string GetGenesysPointString(int code)
+        {
+            var gp = GetGenesysPoint(code);
+            if (gp < 0)
+                return "X";
+            return gp.ToString();
+        }
+
+
         /// <summary>
         /// color for Genesys Points one card score
         /// </summary>

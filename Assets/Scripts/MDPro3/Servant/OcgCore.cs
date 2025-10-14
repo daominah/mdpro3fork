@@ -447,7 +447,7 @@ namespace MDPro3.Servant
 
         }
 
-        bool greenOn;
+        private bool greenOn;
         public void GreenBackgroundOn()
         {
             greenBackground.gameObject.SetActive(true);
@@ -888,7 +888,6 @@ namespace MDPro3.Servant
             return false;
         }
 
-
         private async UniTask ProcessMessage()
         {
             messageDispatcher.Dispose();
@@ -1234,7 +1233,6 @@ namespace MDPro3.Servant
                     preSequence = cards[i].p.sequence;
                 }
         }
-
 
         public int GetMyHandCount()
         {
