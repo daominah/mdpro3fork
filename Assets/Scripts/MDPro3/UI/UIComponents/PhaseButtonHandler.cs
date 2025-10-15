@@ -7,6 +7,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using YgomSystem.ElementSystem;
 
 namespace MDPro3.UI
@@ -64,8 +65,11 @@ namespace MDPro3.UI
             if (battlePhase || main2Phase || endPhase)
             {
                 playerMaterial.SetFloat("_Active", 1);
+
                 //Click
-                if (UserInput.HoverObject == collider_.gameObject && UserInput.MouseLeftUp)
+                if (!EventSystem.current.IsPointerOverGameObject() 
+                    && UserInput.HoverObject == collider_.gameObject 
+                    && UserInput.MouseLeftUp)
                 {
                     if (Program.instance.ocgcore.currentPopup == null)
                     {
@@ -82,17 +86,25 @@ namespace MDPro3.UI
                         Program.instance.ocgcore.GetUI<OcgCoreUI>().CardList.Hide();
                     }
                 }
-                if (UserInput.HoverObject == collider_.gameObject && UserInput.MouseLeftDown)
+
+                if (!EventSystem.current.IsPointerOverGameObject()
+                    && UserInput.HoverObject == collider_.gameObject 
+                    && UserInput.MouseLeftPressing)
                     playerMaterial.SetFloat("_PressButton", 1);
                 else
                     playerMaterial.SetFloat("_PressButton", 0);
+
                 //MouseOver
-                if (UserInput.HoverObject == collider_.gameObject && !hover)
+                if (!EventSystem.current.IsPointerOverGameObject() 
+                    && UserInput.HoverObject == collider_.gameObject 
+                    && !hover)
                 {
                     hover = true;
                     DOTween.To(() => mouseOver, x => mouseOver = x, 1, 0.2f);
                 }
-                else if (UserInput.HoverObject != collider_ && hover)
+                else if (!EventSystem.current.IsPointerOverGameObject()
+                    && UserInput.HoverObject != collider_ 
+                    && hover)
                 {
                     hover = false;
                     DOTween.To(() => mouseOver, x => mouseOver = x, 0, 0.2f);

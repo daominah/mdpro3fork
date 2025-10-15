@@ -14,13 +14,19 @@ namespace MDPro3.Duel
     public class GraveBehaviour : MonoBehaviour
     {
         public int controller;
-        BgEffectManager manager;
-
-        BoxCollider graveCollider;
-        BoxCollider excludeCollider;
-
-        GameObject grave;
-        GameObject exclude;
+        private BgEffectManager manager;
+        private BoxCollider graveCollider;
+        private BoxCollider excludeCollider;
+        private GameObject grave;
+        private GameObject exclude;
+        private bool graveCountShowing;
+        private bool excludeCountShowing;
+        private bool graveButtonsCreated;
+        private bool excludeButtonsCreated;
+        public List<DuelButtonInfo> graveButtons = new();
+        public List<DuelButton> graveButtonObjs = new();
+        public List<DuelButtonInfo> excludeButtons = new();
+        public List<DuelButton> excludeButtonObjs = new();
 
         private void Start()
         {
@@ -35,15 +41,12 @@ namespace MDPro3.Duel
             excludeCollider.size = new Vector3(6, 2, 6);
         }
 
-        bool graveCountShowing;
-        bool excludeCountShowing;
-
         private void Update()
         {
             if (UserInput.HoverObject == grave)
             {
                 manager.GetElement<Renderer>("Material01").material.SetFloat("_GraveMouseOver", 1);
-                if (UserInput.MouseLeftDown)
+                if (UserInput.MouseLeftPressing)
                     manager.GetElement<Renderer>("Material01").material.SetFloat("_GravePressButton", 1);
                 else
                     manager.GetElement<Renderer>("Material01").material.SetFloat("_GravePressButton", 0);
@@ -66,7 +69,7 @@ namespace MDPro3.Duel
             if (UserInput.HoverObject == exclude)
             {
                 manager.GetElement<Renderer>("Material01").material.SetFloat("_ExcludeMouseOver", 1);
-                if (UserInput.MouseLeftDown)
+                if (UserInput.MouseLeftPressing)
                     manager.GetElement<Renderer>("Material01").material.SetFloat("_ExcludePressButton", 1);
                 else
                     manager.GetElement<Renderer>("Material01").material.SetFloat("_ExcludePressButton", 0);
@@ -77,7 +80,7 @@ namespace MDPro3.Duel
             {
                 manager.GetElement<Renderer>("Material01").material.SetFloat("_ExcludeMouseOver", 0);
                 manager.GetElement<Renderer>("Material01").material.SetFloat("_ExcludePressButton", 0);
-                if (UserInput.MouseLeftDown)
+                if (UserInput.MouseLeftUp)
                     HideExcludeButtons();
                 if (excludeCountShowing)
                 {
@@ -85,6 +88,7 @@ namespace MDPro3.Duel
                     Program.instance.ocgcore.GetUI<OcgCoreUI>().HidePlaceCount();
                 }
             }
+
             if (UserInput.HoverObject == grave)
                 if (!graveCountShowing)
                 {
@@ -98,9 +102,8 @@ namespace MDPro3.Duel
                     Program.instance.ocgcore.GetUI<OcgCoreUI>().ShowLocationCount(new GPS { location = (uint)CardLocation.Removed, controller = (uint)controller });
                 }
         }
-        bool graveButtonsCreated = false;
-        bool excludeButtonsCreated = false;
-        void GraveOnClick()
+
+        private void GraveOnClick()
         {
             AudioManager.PlaySE("SE_DUEL_SELECT");
 
@@ -138,7 +141,8 @@ namespace MDPro3.Duel
             else
                 ShowGraveButtons();
         }
-        void ExcludeOnClick()
+
+        private void ExcludeOnClick()
         {
             AudioManager.PlaySE("SE_DUEL_SELECT");
 
@@ -147,7 +151,7 @@ namespace MDPro3.Duel
 
             if (Program.instance.ocgcore.returnAction != null)
                 return;
-            if (!graveButtonsCreated)
+            if (!excludeButtonsCreated)
             {
                 bool spsummmon = false;
                 bool activate = false;
@@ -177,32 +181,31 @@ namespace MDPro3.Duel
                 ShowExcludeButtons();
         }
 
-        void ShowGraveButtons()
+        private void ShowGraveButtons()
         {
             foreach (var button in graveButtonObjs)
                 button.Show();
         }
-        void ShowExcludeButtons()
+
+        private void ShowExcludeButtons()
         {
             foreach (var button in excludeButtonObjs)
                 button.Show();
         }
-        void HideGraveButtons()
+
+        private void HideGraveButtons()
         {
             foreach (var button in graveButtonObjs)
                 button.Hide();
         }
-        void HideExcludeButtons()
+
+        private void HideExcludeButtons()
         {
             foreach (var button in excludeButtonObjs)
                 button.Hide();
         }
 
-        public List<DuelButtonInfo> graveButtons = new List<DuelButtonInfo>();
-        public List<DuelButton> graveButtonObjs = new List<DuelButton>();
-        public List<DuelButtonInfo> excludeButtons = new List<DuelButtonInfo>();
-        public List<DuelButton> excludeButtonObjs = new List<DuelButton>();
-        void CreateGraveButtons()
+        private void CreateGraveButtons()
         {
             if (graveButtonsCreated || Program.instance.ocgcore.returnAction != null || graveButtons.Count == 0)
                 return;
@@ -223,7 +226,8 @@ namespace MDPro3.Duel
             }
             graveButtonsCreated = true;
         }
-        void CreateExcludeButtons()
+
+        private void CreateExcludeButtons()
         {
             if (excludeButtonsCreated || Program.instance.ocgcore.returnAction != null || excludeButtons.Count == 0)
                 return;
@@ -253,6 +257,7 @@ namespace MDPro3.Duel
             graveButtons.Clear();
             graveButtonsCreated = false;
         }
+
         public void ClearExcludeButtons()
         {
             foreach (var go in excludeButtonObjs)
@@ -261,7 +266,6 @@ namespace MDPro3.Duel
             excludeButtons.Clear();
             excludeButtonsCreated = false;
         }
-
 
     }
 }

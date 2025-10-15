@@ -62,7 +62,7 @@ namespace MDPro3.UI
             StartCoroutine(RefreshIcons());
         }
 
-        IEnumerator RefreshIcons()
+        private IEnumerator RefreshIcons()
         {
             while (TextureManager.container == null)
                 yield return null;
@@ -151,7 +151,7 @@ namespace MDPro3.UI
             GetComponent<Button>().spriteState = spriteState;
         }
 
-        void RefreshPosition()
+        private void RefreshPosition()
         {
             if (response[0] == -4) // 确认
             {
@@ -223,7 +223,7 @@ namespace MDPro3.UI
             transform.DOScale(0, transitionTime);
         }
 
-        void OnClick()
+        private void OnClick()
         {
             AudioManager.PlaySE("SE_DUEL_DECIDE");
 
@@ -260,7 +260,7 @@ namespace MDPro3.UI
             }
             else if (response[0] == -1 || response[0] == -2)
             {
-                List<GameCard> responseCards = new List<GameCard>();
+                var responseCards = new List<GameCard>();
                 foreach (var card in OcgCore.cards)
                     if (card.p.controller == controller)
                         if ((card.p.location & location) > 0)
