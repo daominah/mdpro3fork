@@ -125,21 +125,15 @@ namespace MDPro3.Duel.YGOSharp
 
         internal static void LoadCDB(string databaseFullPath, bool render = false, bool isPreCards = false)
         {
-            using (SqliteConnection connection = new SqliteConnection("Data Source=" + databaseFullPath))
-            {
-                connection.Open();
+            using SqliteConnection connection = new("Data Source=" + databaseFullPath);
+            connection.Open();
 
-                using (IDbCommand command =
-                    new SqliteCommand("SELECT datas.*, texts.* FROM datas,texts WHERE datas.id=texts.id;", connection))
-                {
-                    using (IDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            LoadCard(reader, render, isPreCards);
-                        }
-                    }
-                }
+            using IDbCommand command =
+                new SqliteCommand("SELECT datas.*, texts.* FROM datas,texts WHERE datas.id=texts.id;", connection);
+            using IDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                LoadCard(reader, render, isPreCards);
             }
         }
 
@@ -175,7 +169,7 @@ namespace MDPro3.Duel.YGOSharp
 
         internal static Card Get(int id, bool noneIsZero = false)
         {
-            Card returnValue = new Card();
+            var returnValue = new Card();
             if (id > 0)
             {
                 for (int i = 0; i < 10; i++)
@@ -240,7 +234,7 @@ namespace MDPro3.Duel.YGOSharp
         public static List<string> GetMiddleStrings(string str, string start, string end)
         {
             List<string> returnValue = new List<string>();
-            Regex reg = new Regex("(?<=(" + start + "))[.\\s\\S]*?(?=(" + end + "))", RegexOptions.RightToLeft);
+            var reg = new Regex("(?<=(" + start + "))[.\\s\\S]*?(?=(" + end + "))", RegexOptions.RightToLeft);
             while (reg.Match(str).Value != "")
             {
                 string s = reg.Match(str).Value;
@@ -252,7 +246,7 @@ namespace MDPro3.Duel.YGOSharp
 
         private static List<string> GetSetNamesInDescription(string input)
         {
-            List <string> returnValue = new List<string>();
+            var returnValue = new List<string>();
             foreach(string s in setNameHead)
             {
                 List<string> setNames = GetMiddleStrings(input, s + "「", "」");
@@ -282,7 +276,7 @@ namespace MDPro3.Duel.YGOSharp
             string pack
         )
         {
-            List<Card> returnValue = new List<Card>();
+            var returnValue = new List<Card>();
             string[] strings = getName.Split(' ');
             nameInSearch = getName;
             foreach (var item in _cards)
@@ -501,16 +495,17 @@ namespace MDPro3.Duel.YGOSharp
                                                                             if (JudgeInt((int)filters[13], (int)filters[14], card.Attack))
                                                                                 if (JudgeInt((int)filters[15], (int)filters[16], card.Defense))
                                                                                     if (JudgeInt((int)filters[17], (int)filters[18], card.LScale))
-                                                                                        if (JudgeInt((int)filters[19], (int)filters[20], card.year))
-                                                                                        {
-                                                                                            if (pack == string.Empty)
-                                                                                                returnValue.Add(card);
-                                                                                            else
+                                                                                        if (JudgeInt((int)filters[19], (int)filters[20], card.GetGenesysPoint()))
+                                                                                            if (JudgeInt((int)filters[21], (int)filters[22], card.year))
                                                                                             {
-                                                                                                if (card.packFullName == pack)
+                                                                                                if (pack == string.Empty)
                                                                                                     returnValue.Add(card);
+                                                                                                else
+                                                                                                {
+                                                                                                    if (card.packFullName == pack)
+                                                                                                        returnValue.Add(card);
+                                                                                                }
                                                                                             }
-                                                                                        }
                                                                     }
                                                                 }
                                                             }
@@ -1913,6 +1908,254 @@ namespace MDPro3.Duel.YGOSharp
                         a = -1;
                     }
                     else if ((int)CardRarity.GetRarity(left.Id) < (int)CardRarity.GetRarity(right.Id))
+                    {
+                        a = 1;
+                    }
+                    else
+                    {
+                        if ((left.Type & 7) < (right.Type & 7))
+                        {
+                            a = -1;
+                        }
+                        else if ((left.Type & 7) > (right.Type & 7))
+                        {
+                            a = 1;
+                        }
+                        else
+                        {
+                            //if ((left.Type >> 3) > (right.Type >> 3))
+                            //{
+                            //    a = 1;
+                            //}
+                            //else if ((left.Type >> 3) < (right.Type >> 3))
+                            //{
+                            //    a = -1;
+                            //}
+                            if ((left.Type & 0x58020f0) < (right.Type & 0x58020f0))
+                            {
+                                a = -1;
+                            }
+                            else if ((left.Type & 0x58020f0) > (right.Type & 0x58020f0))
+                            {
+                                a = 1;
+                            }
+                            else
+                            {
+                                if (left.Level > right.Level)
+                                {
+                                    a = -1;
+                                }
+                                else if (left.Level < right.Level)
+                                {
+                                    a = 1;
+                                }
+                                else
+                                {
+                                    if (left.Attack > right.Attack)
+                                    {
+                                        a = -1;
+                                    }
+                                    else if (left.Attack < right.Attack)
+                                    {
+                                        a = 1;
+                                    }
+                                    else
+                                    {
+                                        if (left.Attribute > right.Attribute)
+                                        {
+                                            a = 1;
+                                        }
+                                        else if (left.Attribute < right.Attribute)
+                                        {
+                                            a = -1;
+                                        }
+                                        else
+                                        {
+                                            if (left.Race > right.Race)
+                                            {
+                                                a = 1;
+                                            }
+                                            else if (left.Race < right.Race)
+                                            {
+                                                a = -1;
+                                            }
+                                            else
+                                            {
+                                                if (left.Category > right.Category)
+                                                {
+                                                    a = 1;
+                                                }
+                                                else if (left.Category < right.Category)
+                                                {
+                                                    a = -1;
+                                                }
+                                                else
+                                                {
+                                                    if (left.Id > right.Id)
+                                                    {
+                                                        a = 1;
+                                                    }
+                                                    else if (left.Id < right.Id)
+                                                    {
+                                                        a = -1;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                return a;
+            };
+        }
+
+        internal static Comparison<Card> ComparisonOfCard_GP_Up()
+        {
+            return (left, right) =>
+            {
+                int a = 1;
+                if(left.GetGenesysPoint() < right.GetGenesysPoint())
+                {
+                    a = -1;
+                }
+                else if (left.GetGenesysPoint() > right.GetGenesysPoint())
+                {
+                    a = 1;
+                }
+                else
+                {
+                    if (left.Name == nameInSearch && right.Name != nameInSearch)
+                    {
+                        a = -1;
+                    }
+                    else if (right.Name == nameInSearch && left.Name != nameInSearch)
+                    {
+                        a = 1;
+                    }
+                    else
+                    {
+                        if ((left.Type & 7) < (right.Type & 7))
+                        {
+                            a = -1;
+                        }
+                        else if ((left.Type & 7) > (right.Type & 7))
+                        {
+                            a = 1;
+                        }
+                        else
+                        {
+                            //if ((left.Type >> 3) > (right.Type >> 3))
+                            //{
+                            //    a = 1;
+                            //}
+                            //else if ((left.Type >> 3) < (right.Type >> 3))
+                            //{
+                            //    a = -1;
+                            //}
+                            if ((left.Type & 0x58020f0) < (right.Type & 0x58020f0))
+                            {
+                                a = -1;
+                            }
+                            else if ((left.Type & 0x58020f0) > (right.Type & 0x58020f0))
+                            {
+                                a = 1;
+                            }
+                            else
+                            {
+                                if (left.Level > right.Level)
+                                {
+                                    a = -1;
+                                }
+                                else if (left.Level < right.Level)
+                                {
+                                    a = 1;
+                                }
+                                else
+                                {
+                                    if (left.Attack > right.Attack)
+                                    {
+                                        a = -1;
+                                    }
+                                    else if (left.Attack < right.Attack)
+                                    {
+                                        a = 1;
+                                    }
+                                    else
+                                    {
+                                        if (left.Attribute > right.Attribute)
+                                        {
+                                            a = 1;
+                                        }
+                                        else if (left.Attribute < right.Attribute)
+                                        {
+                                            a = -1;
+                                        }
+                                        else
+                                        {
+                                            if (left.Race > right.Race)
+                                            {
+                                                a = 1;
+                                            }
+                                            else if (left.Race < right.Race)
+                                            {
+                                                a = -1;
+                                            }
+                                            else
+                                            {
+                                                if (left.Category > right.Category)
+                                                {
+                                                    a = 1;
+                                                }
+                                                else if (left.Category < right.Category)
+                                                {
+                                                    a = -1;
+                                                }
+                                                else
+                                                {
+                                                    if (left.Id > right.Id)
+                                                    {
+                                                        a = 1;
+                                                    }
+                                                    else if (left.Id < right.Id)
+                                                    {
+                                                        a = -1;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                return a;
+            };
+        }
+
+        internal static Comparison<Card> ComparisonOfCard_GP_Down()
+        {
+            return (left, right) =>
+            {
+                int a = 1;
+                if (left.GetGenesysPoint() < right.GetGenesysPoint())
+                {
+                    a = 1;
+                }
+                else if (left.GetGenesysPoint() > right.GetGenesysPoint())
+                {
+                    a = -1;
+                }
+                else
+                {
+                    if (left.Name == nameInSearch && right.Name != nameInSearch)
+                    {
+                        a = -1;
+                    }
+                    else if (right.Name == nameInSearch && left.Name != nameInSearch)
                     {
                         a = 1;
                     }

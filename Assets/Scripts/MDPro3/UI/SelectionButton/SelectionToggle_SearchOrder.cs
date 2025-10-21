@@ -57,6 +57,8 @@ namespace MDPro3.UI
                 SortOrder.ByDefenceDown => InterString.Get("守备力"),
                 SortOrder.ByRarityUp => InterString.Get("稀有度"),
                 SortOrder.ByRarityDown => InterString.Get("稀有度"),
+                SortOrder.ByGPUp => InterString.Get("Genesys分数"),
+                SortOrder.ByGPDown => InterString.Get("Genesys分数"),
                 _ => string.Empty
             };
         }

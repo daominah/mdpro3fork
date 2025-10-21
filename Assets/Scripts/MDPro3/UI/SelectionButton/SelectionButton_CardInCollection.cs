@@ -179,6 +179,8 @@ namespace MDPro3.UI
             Manager.GetElement("IconPool").SetActive(DeckEditorUI.cardInfoType == DeckEditorUI.CardInfoType.Pool);
 
             CardPoint.SetActive(DeckEditorUI.cardInfoType == DeckEditorUI.CardInfoType.Genesys);
+            Manager.GetElement("IconLimit").SetActive(DeckEditorUI.cardInfoType != DeckEditorUI.CardInfoType.Genesys);
+
         }
 
         public void RefreshCountIcon()

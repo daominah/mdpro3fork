@@ -193,7 +193,9 @@ namespace MDPro3.UI
             ByDefenceUp = 7,
             ByDefenceDown = 8,
             ByRarityUp = 9,
-            ByRarityDown = 10
+            ByRarityDown = 10,
+            ByGPUp = 11,
+            ByGPDown = 12
         }
         public static SortOrder _SortOrder = SortOrder.ByType;
 
@@ -240,39 +242,7 @@ namespace MDPro3.UI
         {
             var cards = new List<int>();
             var results = CardsManager.Search(InputSearch.InputField.text, filters, DeckEditor.banlist, packName);
-            switch (_SortOrder)
-            {
-                case SortOrder.ByType:
-                    results.Sort(CardsManager.ComparisonOfCard());
-                    break;
-                case SortOrder.ByTypeReverse:
-                    results.Sort(CardsManager.ComparisonOfCardReverse());
-                    break;
-                case SortOrder.ByLevelUp:
-                    results.Sort(CardsManager.ComparisonOfCard_LV_Up());
-                    break;
-                case SortOrder.ByLevelDown:
-                    results.Sort(CardsManager.ComparisonOfCard_LV_Down());
-                    break;
-                case SortOrder.ByAttackUp:
-                    results.Sort(CardsManager.ComparisonOfCard_ATK_Up());
-                    break;
-                case SortOrder.ByAttackDown:
-                    results.Sort(CardsManager.ComparisonOfCard_ATK_Down());
-                    break;
-                case SortOrder.ByDefenceUp:
-                    results.Sort(CardsManager.ComparisonOfCard_DEF_Up());
-                    break;
-                case SortOrder.ByDefenceDown:
-                    results.Sort(CardsManager.ComparisonOfCard_DEF_Down());
-                    break;
-                case SortOrder.ByRarityUp:
-                    results.Sort(CardsManager.ComparisonOfCard_Rarity_Up());
-                    break;
-                case SortOrder.ByRarityDown:
-                    results.Sort(CardsManager.ComparisonOfCard_Rarity_Down());
-                    break;
-            }
+            SortCards(results);
             foreach(var card in results)
                 cards.Add(card.Id);
 
@@ -287,39 +257,7 @@ namespace MDPro3.UI
             relatedCardData = data;
             var cards = new List<int>();
             var results = CardsManager.RelatedSearch(data.Id);
-            switch (_SortOrder)
-            {
-                case SortOrder.ByType:
-                    results.Sort(CardsManager.ComparisonOfCard());
-                    break;
-                case SortOrder.ByTypeReverse:
-                    results.Sort(CardsManager.ComparisonOfCardReverse());
-                    break;
-                case SortOrder.ByLevelUp:
-                    results.Sort(CardsManager.ComparisonOfCard_LV_Up());
-                    break;
-                case SortOrder.ByLevelDown:
-                    results.Sort(CardsManager.ComparisonOfCard_LV_Down());
-                    break;
-                case SortOrder.ByAttackUp:
-                    results.Sort(CardsManager.ComparisonOfCard_ATK_Up());
-                    break;
-                case SortOrder.ByAttackDown:
-                    results.Sort(CardsManager.ComparisonOfCard_ATK_Down());
-                    break;
-                case SortOrder.ByDefenceUp:
-                    results.Sort(CardsManager.ComparisonOfCard_DEF_Up());
-                    break;
-                case SortOrder.ByDefenceDown:
-                    results.Sort(CardsManager.ComparisonOfCard_DEF_Down());
-                    break;
-                case SortOrder.ByRarityUp:
-                    results.Sort(CardsManager.ComparisonOfCard_Rarity_Up());
-                    break;
-                case SortOrder.ByRarityDown:
-                    results.Sort(CardsManager.ComparisonOfCard_Rarity_Down());
-                    break;
-            }
+            SortCards(results);
             foreach (var card in results)
                 cards.Add(card.Id);
 
@@ -336,6 +274,49 @@ namespace MDPro3.UI
         public void PrintHistoryCards()
         {
             PrintCards(historyCards);
+        }
+
+        private void SortCards(List<Card> cards)
+        {
+            switch (_SortOrder)
+            {
+                case SortOrder.ByType:
+                    cards.Sort(CardsManager.ComparisonOfCard());
+                    break;
+                case SortOrder.ByTypeReverse:
+                    cards.Sort(CardsManager.ComparisonOfCardReverse());
+                    break;
+                case SortOrder.ByLevelUp:
+                    cards.Sort(CardsManager.ComparisonOfCard_LV_Up());
+                    break;
+                case SortOrder.ByLevelDown:
+                    cards.Sort(CardsManager.ComparisonOfCard_LV_Down());
+                    break;
+                case SortOrder.ByAttackUp:
+                    cards.Sort(CardsManager.ComparisonOfCard_ATK_Up());
+                    break;
+                case SortOrder.ByAttackDown:
+                    cards.Sort(CardsManager.ComparisonOfCard_ATK_Down());
+                    break;
+                case SortOrder.ByDefenceUp:
+                    cards.Sort(CardsManager.ComparisonOfCard_DEF_Up());
+                    break;
+                case SortOrder.ByDefenceDown:
+                    cards.Sort(CardsManager.ComparisonOfCard_DEF_Down());
+                    break;
+                case SortOrder.ByRarityUp:
+                    cards.Sort(CardsManager.ComparisonOfCard_Rarity_Up());
+                    break;
+                case SortOrder.ByRarityDown:
+                    cards.Sort(CardsManager.ComparisonOfCard_Rarity_Down());
+                    break;
+                case SortOrder.ByGPUp:
+                    cards.Sort(CardsManager.ComparisonOfCard_GP_Up());
+                    break;
+                case SortOrder.ByGPDown:
+                    cards.Sort(CardsManager.ComparisonOfCard_GP_Down());
+                    break;
+            }
         }
 
         public void AddHistoryCard(int code)

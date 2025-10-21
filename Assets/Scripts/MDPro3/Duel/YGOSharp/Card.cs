@@ -4,6 +4,7 @@ using MDPro3.Utility;
 using MDPro3.Duel.YGOSharp;
 using System.Diagnostics;
 using static YgomSystem.UI.ViewController;
+using MDPro3.Net;
 
 namespace MDPro3.Duel.YGOSharp
 {
@@ -215,6 +216,11 @@ namespace MDPro3.Duel.YGOSharp
         public bool IsAttribute(CardAttribute attribute)
         {
             return (Attribute & (uint)attribute) > 0;
+        }
+
+        public int GetGenesysPoint()
+        {
+            return OnlineService.GetGenesysPoint(GetOriginalID());
         }
 
         #endregion

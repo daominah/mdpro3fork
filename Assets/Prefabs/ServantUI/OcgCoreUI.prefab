@@ -2582,11 +2582,6 @@ MonoBehaviour:
   baseRect: {fileID: 5484811793682048071}
   scrollRect: {fileID: 2740834218755119401}
   showing: 0
-  chainSolving: 0
-  lastMoveReason: 0
-  lastSpSummonReason: 0
-  psum: 0
-  cacheLp: 0
 --- !u!1 &2680087416863519693
 GameObject:
   m_ObjectHideFlags: 0
