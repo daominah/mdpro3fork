@@ -1421,6 +1421,11 @@ namespace Percy
             result[unicode.Length + 1] = 0;
             writer.Write(result);
         }
+
+        public bool IsNew()
+        {
+            return ID == 0x32707279;
+        }
     }
 
     internal class MonoPInvokeCallbackAttribute : Attribute

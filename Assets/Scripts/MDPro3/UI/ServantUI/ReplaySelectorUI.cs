@@ -105,11 +105,16 @@ namespace MDPro3.UI.ServantUI
                         percy?.Dispose();
                         percy = new PercyOCG();
                         var replays = GetYRPBuffer(fileName);
-                        var collections = TcpHelper.GetPackages(percy.ygopro.GetYRP3dBuffer(GetYRP(replays[replays.Count - 1])));
+                        var collections = TcpHelper.GetPackages(percy.ygopro.GetYRP3dBuffer(GetYRP(replays[^1])));
                         PushCollection(collections);
                     }
                     else
                     {
+                        var replays = GetYRPBuffer(fileName);
+                        if (replays.Count == 0)
+                            OcgCore.CurrentReplayUseYRP2 = true;
+                        OcgCore.CurrentReplayUseYRP2 = GetYRP(replays[^1]).IsNew();
+
                         var collection = TcpHelper.ReadPackagesInRecord(fileName);
                         PushCollection(collection);
                     }

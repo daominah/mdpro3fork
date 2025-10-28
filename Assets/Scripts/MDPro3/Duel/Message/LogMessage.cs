@@ -2,6 +2,7 @@ using Cysharp.Threading.Tasks;
 using MDPro3.Duel.YGOSharp;
 using MDPro3.Servant;
 using MDPro3.UI.ServantUI;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -574,6 +575,21 @@ namespace MDPro3.Duel
 
         protected override UniTask GameMessage_ConfirmCards(BinaryReader reader)
         {
+            try
+            {
+                return GameMessage_ConfirmCardsForTry(reader);
+            }
+            catch
+            {
+                OcgCore.CurrentReplayUseYRP2 = !OcgCore.CurrentReplayUseYRP2;
+                return GameMessage_ConfirmCardsForTry(reader);
+            }
+        }
+
+        private UniTask GameMessage_ConfirmCardsForTry(BinaryReader reader)
+        {
+            reader.BaseStream.Position = 0;
+
             //var player = LocalPlayer(reader.ReadByte());
             reader.ReadByte();
 
@@ -592,7 +608,6 @@ namespace MDPro3.Duel
                     textReason = InterString.Get("公开盖卡");
                 DuelLog.AddSingleCardMessageToLog(code, null, gps, textReason);
             }
-
             return UniTask.CompletedTask;
         }
 

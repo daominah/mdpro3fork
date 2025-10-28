@@ -164,11 +164,6 @@ namespace MDPro3.Duel
 
         #region Message Process
 
-        public override async UniTask Process(Package p)
-        {
-            await base.Process(p);
-        }
-
         protected override async UniTask GameMessage_Start(BinaryReader reader)
         {
             ResetState();
@@ -2038,11 +2033,13 @@ namespace MDPro3.Duel
             var player = LocalPlayer(reader.ReadByte());
             if (condition != Condition.Replay || CurrentReplayUseYRP2)
                 reader.ReadByte();
+
             var count = reader.ReadByte();
             var listShow = false;
             if (count > 3 && condition == Condition.Duel)
                 listShow = true;
             var confirmCards = new List<GameCard>();
+
             Sequence sequence = null;
             for (int i = 0; i < count; i++)
             {
@@ -2060,6 +2057,7 @@ namespace MDPro3.Duel
                 else
                     sequence = card.AnimationConfirm(i);
             }
+
             if (listShow)
             {
                 Core.GetUI<OcgCoreUI>().ShowPopupSelectCard
@@ -2067,7 +2065,9 @@ namespace MDPro3.Duel
                 await UniTask.WaitUntil(() => dispatcher.playerResponed);
             }
             else
+            {
                 await UniTask.WaitForSeconds(sequence.Duration() + 0.1f);
+            }
         }
 
         protected override async UniTask GameMessage_DeckTop(BinaryReader reader)
