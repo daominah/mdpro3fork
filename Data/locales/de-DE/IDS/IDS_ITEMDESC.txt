@@ -691,7 +691,8 @@ Er beobachtet ihre Reise und durchstreift den Abendhimmel, um Bedrohungen für i
 Ein Symbol, das ein Monster darstellt, das einer Spore ähnelt.
 Es fliegt durch den heiligen Wald, damit alles enthüllt wird.
 [IDS_ITEMDESC.ID1010119]
-coming soon
+Ein Symbol, das eine große Hexe darstellt, deren Augen die Gedanken anderer kontrollieren können.
+Sie hat sich „<card mrk='20747'/>“ in einem tödlichen Überlebenskampf gestellt.
 [IDS_ITEMDESC.ID1010120]
 coming soon
 [IDS_ITEMDESC.ID1011001]
@@ -2266,9 +2267,52 @@ Für diejenigen mit mythologischen Kräften.
 [IDS_ITEMDESC.ID1070128]
 Schutzhüllen, die eine Konfrontation zwischen den Drachen darstellen, die über Licht und Dunkelheit herrschen.
 Für diejenigen, die Armageddon herbeiführen wollen.
+[IDS_ITEMDESC.ID1070129]
+Kartenhüllen mit der Darstellung eines Kochs, der die feinsten Gerichte zubereitet hat.
+Für alle, die teuflisch leckere kulinarische Genüsse suchen.
 [IDS_ITEMDESC.ID1070130]
 Kartenhüllen mit einem Hauptmotiv für die Yu-Gi-Oh! World Championship 2025.
 Für diejenigen, die die Welt herausfordern.
+[IDS_ITEMDESC.ID1070131]
+Kartenhüllen, die ein Dienstmädchen darstellen, die das oberste Dienstmädchen mit der Federpflege beschäftigt.
+Für alle, die ihre Dankbarkeit mit einer besonderen Überraschung zum Ausdruck bringen möchten.
+[IDS_ITEMDESC.ID1070132]
+coming soon
+[IDS_ITEMDESC.ID1070133]
+coming soon
+[IDS_ITEMDESC.ID1070134]
+coming soon
+[IDS_ITEMDESC.ID1070135]
+coming soon
+[IDS_ITEMDESC.ID1070136]
+coming soon
+[IDS_ITEMDESC.ID1070137]
+coming soon
+[IDS_ITEMDESC.ID1070138]
+coming soon
+[IDS_ITEMDESC.ID1070139]
+coming soon
+[IDS_ITEMDESC.ID1070140]
+coming soon
+[IDS_ITEMDESC.ID1070141]
+coming soon
+[IDS_ITEMDESC.ID1070142]
+coming soon
+[IDS_ITEMDESC.ID1070143]
+coming soon
+[IDS_ITEMDESC.ID1070144]
+coming soon
+[IDS_ITEMDESC.ID1070145]
+coming soon
+[IDS_ITEMDESC.ID1070146]
+coming soon
+[IDS_ITEMDESC.ID1070147]
+coming soon
+[IDS_ITEMDESC.ID1070148]
+coming soon
+[IDS_ITEMDESC.ID1070149]
+Kartenhüllen, die einen hochmodernen, leistungsstarken Düsenjäger darstellen.
+Für diejenigen, die variable Angriffsfähigkeiten nutzen.
 [IDS_ITEMDESC.ID1071001]
 Kartenhüllen, die einen Krieger darstellen, der gereift ist und die Narben, die während der Kämpfe in sein Herz geätzt wurden, akzeptiert hat. 
 Perfekt für alle, die immer das Beste für ihre geliebten Freunde wollen.
@@ -2722,6 +2766,9 @@ Unsere Welt wimmelt von verdeckten Ermittlern, die im Geheimen agieren.
 [IDS_ITEMDESC.ID1090034]
 Ein mit hoch entwickelter Technologie konstruiertes Duell-Spielfeld.
 Für eine einzigartige militärische Operation entwickelt. Kann für verschiedene Kampfszenarien verwendet werden.
+[IDS_ITEMDESC.ID1090035]
+Ein Duell-Spielfeld von einem Friedhof, auf dem unzählige Seelen zur Ruhe gebettet wurden.
+Sogar an diesem Abend zieht die Stille dieses Ortes einen endlosen Strom von Toten an.
 [IDS_ITEMDESC.ID1090036]
 Ein Duell-Spielfeld mit einem gigantischen Bauwerk, das in eine unheimliche Atmosphäre gehüllt ist.
 Tief im Inneren öffnet sich langsam, aber unaufhaltsam das Tor zur Katastrophe.
@@ -2830,6 +2877,9 @@ Alles, was hier versteckt ist, wird wahrscheinlich bald gestohlen.
 [IDS_ITEMDESC.ID1100034]
 Spielfeldteile aus der Schlag-Strategie-Simulationszone.
 Mit ihrer unglaublich fortschrittlichen Technologie liefern sie wichtige Informationen.
+[IDS_ITEMDESC.ID1100035]
+Spielfeldteile von einem Friedhof, auf dem unzählige Seelen zur Ruhe gebettet wurden.
+Die Gräber scheinen erst vor Kurzem ausgehoben worden zu sein.
 [IDS_ITEMDESC.ID1100036]
 Spielfeldteile aus Despia, Theater der Markierten.
 Der Grad an Raffinesse passt perfekt zu dem Schloss voller Dunkelheit.
@@ -2941,7 +2991,8 @@ coming soon
 [IDS_ITEMDESC.ID1101039]
 coming soon
 [IDS_ITEMDESC.ID1101040]
-coming soon
+Spielfeldteile nach dem Vorbild zweier weißer Geister.
+Heute Abend findet ein Fest für seltsame und ungewöhnliche Monster statt. Lasst uns die bevorstehende Fröhlichkeit genießen.
 [IDS_ITEMDESC.ID1102001]
 Spielfeldteile für ein Kolosseum.
 Um ein Schicksal, das hier endet, muss nicht getrauert werden. Sei stolz darauf, dass alle, die hier kämpfen, sich für einen wackeren Kampf opfern dürfen.
@@ -3073,6 +3124,9 @@ Was auch immer darauf platziert wird, hebt sich dank des bezaubernden Designs um
 [IDS_ITEMDESC.ID1110034]
 Ein Stand aus der Schnellstrategie-Simulationszone.
 Macht den Transport riesiger Waffen möglich und kann sich flexibel an Situationen anpassen.
+[IDS_ITEMDESC.ID1110035]
+Ein Stand von einem Friedhof, auf dem unzählige Seelen zur Ruhe gebettet wurden.
+Die Bedeutung der eingravierten Markierungen ist noch unklar, man sollte jedoch unbedingt vorsichtig damit umgehen.
 [IDS_ITEMDESC.ID1110036]
 Ein Stand aus Despia, Theater der Markierten.
 Sie ist eines von unzähligen Löchern, die in den Himmel gemeißelt wurden.
@@ -3589,7 +3643,8 @@ Sie braucht eine Liebeserklärung, um ihre Kraft voll ausschöpfen zu können.
 Jene Seelen, die einen entschlossenen Weg gehen, werden erneut stählerne Gefäße erlangen.
 Sie soll ein so reines Lächeln aufsetzen und neben dem Menschen stehen, den sie über alle anderen liebt.
 [IDS_ITEMDESC.ID1130092]
-coming soon
+Dienstmädchen bereiten eine Teeparty in einem prunkvollen Raum vor.
+Wieder einmal scheinen einige Süßigkeiten verschwunden zu sein.
 [IDS_ITEMDESC.ID1130093]
 coming soon
 [IDS_ITEMDESC.ID1130094]
@@ -3638,7 +3693,8 @@ Erhöht die maximale Anzahl der Wiederholungen, die du speichern kannst, um 1.
 Ein Collector’s File mit uralter Technologie und einem starken Sinn für Entschlossenheit.
 Es heißt, dass das Tor der Melodie hell erstrahlen wird, wenn die <category id='89'/> versammelt sind.
 [IDS_ITEMDESC.ID1170002]
-coming soon
+Eine Collector’s File mit Darstellungen von Dienstmädchen, die für ihren Herrn die Hausarbeit erledigen.
+Es heißt, dass die Prestigetore hell erstrahlen werden, wenn die <category id='101'/> versammelt sind.
 [IDS_ITEMDESC.ID1180001]
 Eine Münze, deren Motiv der leuchtende Drache ist, der eine neue Legende hervorbringt.
 Seine himmelblauen Augen schimmern.
@@ -3652,7 +3708,8 @@ Das Emblem der Armee leuchtet hell.
 Eine Münze, deren Motiv ein dreidimensionales Puzzle ist, das in alten Ruinen entdeckt wurde.
 Das Emblem des Auges von Wdjat schimmert darauf.
 [IDS_ITEMDESC.ID1180005]
-coming soon
+Eine Münze, deren Motiv das Wappen der Frauen ist, die ihrem Herrn pflichtbewusst dienen.
+Der in ihre Oberfläche eingravierte Drache schimmert hell.
 [IDS_ITEMDESC.ID1190001]
 Die maximale Anzahl der Lesezeichen, die du besitzen kannst, kann erhöht werden.
 [IDS_ITEMDESC.ID0000]
