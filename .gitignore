@@ -48,6 +48,7 @@ sysinfo.txt
 /[Ss]ound/
 /Platforms/
 /TempFolder/
+/[Vv]ideo/
 Tools/YGO Classes/build/windows/build/
 Tools/YGO Classes/build/android/libs/
 Data/book.ydk
@@ -62,5 +63,6 @@ Data/ur.ydk
 /Assets/Wallpaper/
 Data/lflist_genesys.conf
 Data/mycard_apps.json
+Data/Rarity.json
 Data/Rarity.json
 Data/Rarity.json

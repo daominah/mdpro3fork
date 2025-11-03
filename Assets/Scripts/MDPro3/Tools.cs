@@ -322,5 +322,34 @@ namespace MDPro3
         }
 
         #endregion
+
+        #region Path
+
+        public static string FormatPlatformUrl(string filePath)
+        {
+#if UNITY_EDITOR || UNITY_STANDALONE_WIN || UNITY_STANDALONE_OSX || UNITY_STANDALONE_LINUX
+            return "file://" + filePath.Replace("\\", "/");
+#elif UNITY_ANDROID
+            return "jar:file://" + filePath.Replace("\\", "/");
+#elif UNITY_IOS
+            return "file://" + filePath.Replace("\\", "/");
+#else
+            return filePath;
+#endif
+        }
+
+        public static string GetPlatformPath(string path)
+        {
+#if UNITY_EDITOR || UNITY_STANDALONE_WIN || UNITY_STANDALONE_OSX || UNITY_STANDALONE_LINUX
+            return Path.Combine(Environment.CurrentDirectory, path);
+#elif UNITY_ANDROID || UNITY_IOS
+            return Path.Combine(Application.persistentDataPath, path);
+#else
+            return path;
+#endif
+        }
+
+        #endregion
+
     }
 }

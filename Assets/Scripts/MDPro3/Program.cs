@@ -8,6 +8,8 @@ using UnityEngine.AddressableAssets;
 using MDPro3.Net;
 using MDPro3.Servant;
 using Cysharp.Threading.Tasks;
+using MDPro3.Utility;
+
 
 
 #if UNITY_EDITOR
@@ -81,6 +83,7 @@ namespace MDPro3
         public const string PATH_PUZZLE = "Puzzle/";
         public const string PATH_REPLAY = "Replay/";
         public const string PATH_DIY = "Picture/DIY/";
+        public const string PATH_VIDEO_ART = "Video/Art/";
 
         public const string EXPANSION_CONF = ".conf";
         public const string EXPANSION_YDK = ".ydk";
@@ -89,6 +92,7 @@ namespace MDPro3
         public const string EXPANSION_YRP = ".yrp";
         public const string EXPANSION_YRP3D = ".yrp3d";
         public const string EXPANSION_LUA = ".lua";
+        public const string EXPANSION_MP4 = ".mp4";
         public const string STRING_SLASH = "/";
         public const string STRING_LINE_BREAK = "\r\n";
 
@@ -123,9 +127,7 @@ namespace MDPro3
                 items = handle.Result;
             }
 
-            var handle2 = Addressables.InstantiateAsync("Prefab/CardRenderer.prefab");
-            await handle2.Task;
-            cardRenderer = handle2.Result.GetComponent<CardRenderer>();
+            cardRenderer = (await Addressables.InstantiateAsync("Prefab/CardRenderer.prefab")).GetComponent<CardRenderer>();
 
             ZipHelper.Initialize();
             items.Initialize();

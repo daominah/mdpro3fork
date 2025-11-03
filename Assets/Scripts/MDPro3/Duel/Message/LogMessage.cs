@@ -597,6 +597,8 @@ namespace MDPro3.Duel
                 reader.ReadByte();
 
             var count = reader.ReadByte();
+            if (count == 0)
+                throw new Exception();
             for (int i = 0; i < count; i++)
             {
                 var code = reader.ReadInt32();

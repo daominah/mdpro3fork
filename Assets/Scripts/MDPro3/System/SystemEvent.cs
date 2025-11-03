@@ -13,6 +13,9 @@ namespace MDPro3
         public delegate void LanguageChange();
         public static event LanguageChange OnLanguageChange;
 
+        public delegate void VideoCardConfigChange();
+        public static event VideoCardConfigChange OnVideoCardConfigChange;
+
         private Rect safeArea;
         private int screenWidth;
         private int screenHeight;
@@ -28,19 +31,25 @@ namespace MDPro3
             if (safeArea != Screen.safeArea)
             {
                 safeArea = Screen.safeArea;
-                OnSafeAreaUpdate.Invoke();
+                OnSafeAreaUpdate?.Invoke();
             }
             if (screenWidth != Screen.width || screenHeight != Screen.height)
             {
                 screenWidth = Screen.width;
                 screenHeight = Screen.height;
-                OnResolutionChange.Invoke();
+                OnResolutionChange?.Invoke();
             }
         }
 
         public static void CallLanguageChangeEvent()
         {
             OnLanguageChange?.Invoke();
+        }
+
+        public static void CallVideoCardConfigChangeEvent()
+        {
+            Debug.Log("CallVideoCardConfigChangeEvent");
+            OnVideoCardConfigChange?.Invoke();
         }
     }
 }

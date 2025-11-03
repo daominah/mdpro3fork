@@ -123,10 +123,16 @@ namespace MDPro3
         private bool hover;
         private bool hoving;
 
+        private void Awake()
+        {
+            SystemEvent.OnVideoCardConfigChange += ReloadFaceWhenConfigChange;
+        }
+
         public void Dispose()
         {
             Destroy(model);
             Destroy(this);
+            SystemEvent.OnVideoCardConfigChange -= ReloadFaceWhenConfigChange;
         }
 
         private void LateUpdate()
@@ -348,6 +354,17 @@ namespace MDPro3
             _ = SetFaceAsync(cts.Token);
         }
 
+        private bool isRenderTexture;
+
+        private void ReloadFaceWhenConfigChange()
+        {
+            var config = Config.GetBool("VideoCard", true);
+            if (config && CardImageLoader.CardHasVideoArt(data.Id))
+                SetFace();
+            else if(!config && isRenderTexture)
+                SetFace();
+        }
+
         private async UniTask SetFaceAsync(CancellationToken cancellationToken)
         {
             Renderer cardFace = manager.GetElement<Transform>("CardModel").
@@ -360,6 +377,7 @@ namespace MDPro3
             cardFace.material.renderQueue = 2999;
 
             var texture = await CardImageLoader.LoadCardAsync(data.Id, true, cancellationToken);
+            isRenderTexture = texture is RenderTexture;
             if (model == null)
                 return;
             cardFace.material.mainTexture = texture;
@@ -1477,6 +1495,11 @@ namespace MDPro3
 
         private Sequence SequenceStrongSummon(Sequence sequence, Vector3 position, Vector3 angle, float interval, float timeBefore = 0)
         {
+            var cardPlane = manager.GetElement<Transform>("CardPlane");
+            var pivot = manager.GetElement<Transform>("Pivot");
+            var offset = manager.GetElement<Transform>("Offset");
+            var turn = manager.GetElement<Transform>("Turn");
+
             sequence.AppendInterval(interval);
             sequence.AppendCallback(() =>
             {
@@ -1488,63 +1511,89 @@ namespace MDPro3
 
             sequence.Append(manager.transform.DOMove(midP, 0.5f).SetEase(Ease.InOutSine));
             sequence.Join(manager.transform.DOLocalRotate(Vector3.zero, 0.5f).SetEase(Ease.InOutSine));
-            sequence.Join(manager.GetElement<Transform>("CardPlane").DOLocalRotate(new Vector3(0, (angle.y == 0) || (angle.y == 270) ? 0 : 180, 0), 0.5f).SetEase(Ease.InOutSine));
-            sequence.Join(manager.GetElement<Transform>("Pivot").DOScale(GetCardScale(p), 0.26f).SetEase(Ease.InOutSine));
-            sequence.Join(manager.GetElement<Transform>("Pivot").DOLocalMove(Vector3.zero, 0.26f).SetEase(Ease.InOutSine));
-            sequence.Join(manager.GetElement<Transform>("Pivot").DOLocalRotate(Vector3.zero, 0.26f).SetEase(Ease.InOutSine).OnComplete(() =>
+            sequence.Join(cardPlane.DOLocalRotate(new Vector3(0, (angle.y == 0) || (angle.y == 270) ? 0 : 180, 0), 0.5f).SetEase(Ease.InOutSine));
+            sequence.Join(pivot.DOScale(GetCardScale(p), 0.26f).SetEase(Ease.InOutSine));
+            sequence.Join(pivot.DOLocalMove(Vector3.zero, 0.26f).SetEase(Ease.InOutSine));
+            sequence.Join(pivot.DOLocalRotate(Vector3.zero, 0.26f).SetEase(Ease.InOutSine).OnComplete(() =>
             {
-                manager.GetElement<Transform>("Pivot").DOLocalMoveY(10, 0.5f).SetEase(Ease.InOutQuart);
-                manager.GetElement<Transform>("Pivot").DOLocalRotate(new Vector3(-35, 0, 0), 0.5f).SetEase(Ease.InOutQuart);
+                pivot.DOLocalMoveY(10, 0.5f).SetEase(Ease.InOutQuart);
+                pivot.DOLocalRotate(new Vector3(-35, 0, 0), 0.5f).SetEase(Ease.InOutQuart);
             }));
-            sequence.Join(manager.GetElement<Transform>("Offset").DOLocalMove(Vector3.zero, 0.5f).SetEase(Ease.InOutSine));
-            sequence.Join(manager.GetElement<Transform>("Offset").DOLocalRotate(Vector3.zero, 0.5f).SetEase(Ease.InOutSine));
-            sequence.Join(manager.GetElement<Transform>("Turn").DOLocalRotate(new Vector3(0, (angle.y == 0) || (angle.y == 180) ? 0 : 270, angle.z), 0.3f).SetEase(Ease.InOutSine));
+            sequence.Join(offset.DOLocalMove(Vector3.zero, 0.5f).SetEase(Ease.InOutSine));
+            sequence.Join(offset.DOLocalRotate(Vector3.zero, 0.5f).SetEase(Ease.InOutSine));
+            sequence.Join(turn.DOLocalRotate(new Vector3(0, (angle.y == 0) || (angle.y == 180) ? 0 : 270, angle.z), 0.3f).SetEase(Ease.InOutSine));
 
             sequence.Append(DOTween.To(v => { }, 0, 0, 0.26f));
 
-            sequence.Append(manager.GetElement<Transform>("Pivot").DOLocalRotate(Vector3.zero, 0.14f).SetEase(Ease.InQuart));
-            sequence.Join(manager.GetElement<Transform>("Pivot").DOLocalMoveY(0, 0.14f).SetEase(Ease.InQuart));
+            sequence.Append(pivot.DOLocalRotate(Vector3.zero, 0.14f).SetEase(Ease.InQuart));
+            sequence.Join(pivot.DOLocalMoveY(0, 0.14f).SetEase(Ease.InQuart));
             sequence.Join(manager.transform.DOMove(position, 0.14f).SetEase(Ease.InQuart));
 
             sequence.OnComplete(() =>
             {
                 inAnimation = false;
+                manager.transform.position = position;
+                manager.transform.eulerAngles = Vector3.zero;
+                cardPlane.localEulerAngles = new Vector3(0, (angle.y == 0) || (angle.y == 270) ? 0 : 180, 0);
+                pivot.localScale = GetCardScale(p);
+                pivot.localPosition = Vector3.zero;
+                pivot.localEulerAngles = Vector3.zero;
+                offset.localPosition = Vector3.zero;
+                offset.localEulerAngles = Vector3.zero;
+                turn.localEulerAngles = new Vector3(0, (angle.y == 0) || (angle.y == 180) ? 0 : 270, angle.z);
             });
             return sequence;
         }
 
         private Sequence SequenceNormalSummon(Sequence sequence, Vector3 position, Vector3 angle, float interval, float timeBefore = 0)
         {
+            var cardPlane = manager.GetElement<Transform>("CardPlane");
+            var pivot = manager.GetElement<Transform>("Pivot");
+            var offset = manager.GetElement<Transform>("Offset");
+            var turn = manager.GetElement<Transform>("Turn");
+
             sequence.AppendInterval(interval);
             sequence.AppendCallback(() =>
             {
                 UpdateExDeckTop();
             });
 
-            sequence.Append(manager.transform.DOLocalRotate(Vector3.zero, 0.1f).OnComplete(() =>
+            var midP = position;
+            midP.y = 15;
+
+            sequence.Append(manager.transform.DOMove(midP, 0.4f).SetEase(Ease.InOutSine));
+            sequence.Join(manager.transform.DOLocalRotate(Vector3.zero, 0.4f).SetEase(Ease.InOutSine));
+            sequence.Join(cardPlane.DOLocalRotate(new Vector3(0, (angle.y == 0) || (angle.y == 270) ? 0 : 180, 0), 0.4f).SetEase(Ease.InOutSine));
+            sequence.Join(pivot.DOScale(GetCardScale(p), 0.16f).SetEase(Ease.InOutSine));
+            sequence.Join(pivot.DOLocalMove(Vector3.zero, 0.16f).SetEase(Ease.InOutSine));
+            sequence.Join(pivot.DOLocalRotate(Vector3.zero, 0.16f).SetEase(Ease.InOutSine).OnComplete(() =>
             {
-                manager.GetElement<Transform>("Pivot").DOLocalRotate(new Vector3(-10, 0, 0), 0.2f).SetEase(Ease.OutQuart);
-                manager.GetElement<Transform>("Pivot").DOLocalMoveY(10, 0.2f).SetEase(Ease.OutQuart);
+                pivot.DOLocalMoveY(5, 0.4f).SetEase(Ease.InOutQuart);
+                pivot.DOLocalRotate(new Vector3(-15, 0, 0), 0.4f).SetEase(Ease.InOutQuart);
             }));
-            sequence.Join(model.transform.DOMove(position, 0.2f));
-            sequence.Join(manager.GetElement<Transform>("CardPlane").DOLocalRotate(new Vector3(0, (angle.y == 0) || (angle.y == 270) ? 0 : 180, 0), 0.2f));
-            sequence.Join(manager.GetElement<Transform>("Pivot").DOScale(GetCardScale(p), 0.2f));
-            sequence.Join(manager.GetElement<Transform>("Pivot").DOLocalMove(Vector3.zero, 0.1f));
-            sequence.Join(manager.GetElement<Transform>("Pivot").DOLocalRotate(Vector3.zero, 0.1f));
-            sequence.Join(manager.GetElement<Transform>("Offset").DOLocalMove(Vector3.zero, 0.1f));
-            sequence.Join(manager.GetElement<Transform>("Offset").DOLocalRotate(Vector3.zero, 0.1f));
-            sequence.Join(manager.GetElement<Transform>("Turn").DOLocalRotate(new Vector3(0, (angle.y == 0) || (angle.y == 180) ? 0 : 270, angle.z), 0.2f));
+            sequence.Join(offset.DOLocalMove(Vector3.zero, 0.4f).SetEase(Ease.InOutSine));
+            sequence.Join(offset.DOLocalRotate(Vector3.zero, 0.4f).SetEase(Ease.InOutSine));
+            sequence.Join(turn.DOLocalRotate(new Vector3(0, (angle.y == 0) || (angle.y == 180) ? 0 : 270, angle.z), 0.2f).SetEase(Ease.InOutSine));
 
-            sequence.AppendInterval(0.1f);
+            sequence.Append(DOTween.To(v => { }, 0, 0, 0.16f));
 
-            sequence.Append(manager.GetElement<Transform>("Pivot").DOLocalRotate(Vector3.zero, 0.1f).SetEase(Ease.InExpo));
-            sequence.Join(manager.GetElement<Transform>("Pivot").DOLocalMoveY(0, 0.1f).SetEase(Ease.InExpo));
+            sequence.Append(pivot.DOLocalRotate(Vector3.zero, 0.14f).SetEase(Ease.InQuart));
+            sequence.Join(pivot.DOLocalMoveY(0, 0.14f).SetEase(Ease.InQuart));
+            sequence.Join(manager.transform.DOMove(position, 0.14f).SetEase(Ease.InQuart));
 
             sequence.OnComplete(() =>
             {
                 inAnimation = false;
+                manager.transform.position = position;
+                manager.transform.eulerAngles = Vector3.zero;
+                cardPlane.localEulerAngles = new Vector3(0, (angle.y == 0) || (angle.y == 270) ? 0 : 180, 0);
+                pivot.localScale = GetCardScale(p);
+                pivot.localPosition = Vector3.zero;
+                pivot.localEulerAngles = Vector3.zero;
+                offset.localPosition = Vector3.zero;
+                offset.localEulerAngles = Vector3.zero;
+                turn.localEulerAngles = new Vector3(0, (angle.y == 0) || (angle.y == 180) ? 0 : 270, angle.z);
             });
-
             return sequence;
         }
 

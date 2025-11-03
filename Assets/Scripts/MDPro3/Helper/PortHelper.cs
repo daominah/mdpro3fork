@@ -44,7 +44,8 @@ namespace MDPro3
                 new ExtensionFilter(InterString.Get("扩展卡文件"), "ypk"),
                 new ExtensionFilter(InterString.Get("数据库文件"), "cdb"),
                 new ExtensionFilter(InterString.Get("字段文件"), "conf"),
-                new ExtensionFilter(InterString.Get("图片文件"), "png", "jpg")
+                new ExtensionFilter(InterString.Get("图片文件"), "png", "jpg"),
+                new ExtensionFilter(InterString.Get("动态卡图"), "mp4"),
             };
             StandaloneFileBrowser.OpenFilePanelAsync(InterString.Get("请选择需要导入的文件"), "", extensions, true, (string[] paths) =>
             {
@@ -89,6 +90,8 @@ namespace MDPro3
         private static void CopyFilesToGame(IEnumerable<string> files)
         {
             bool newDataAdded = false;
+            bool newArtVideosAdded = false;
+
             foreach (string path in files)
             {
                 var fileName = Path.GetFileName(path);
@@ -120,16 +123,26 @@ namespace MDPro3
                         File.Copy(path, Program.PATH_ALT_ART + Path.GetFileName(path), true);
                         MessageManager.Cast(InterString.Get("导入自定义卡图「[?]」成功。", fileName));
                     }
+                    else if (path.ToLower().EndsWith(Program.EXPANSION_MP4))
+                    {
+                        File.Copy(path, Program.PATH_VIDEO_ART + Path.GetFileName(path), true);
+                        MessageManager.Cast(InterString.Get("导入动态卡图「[?]」成功。", fileName));
+                        newArtVideosAdded = true;
+                    }
                 }
                 catch { }
             }
+
             if (newDataAdded)
                 Program.instance.InitializeForDataChange();
+            if (newArtVideosAdded)
+                Utility.CardImageLoader.ReloadArtVideos();
         }
 
         private static void MoveFilesToGame(string[] files)
         {
             bool newDataAdded = false;
+            bool newArtVideosAdded = false;
             foreach (string path in files)
             {
                 try
@@ -145,11 +158,19 @@ namespace MDPro3
                     }
                     if (path.ToLower().EndsWith(Program.EXPANSION_PNG) || path.ToLower().EndsWith(Program.EXPANSION_JPG) || path.ToLower().EndsWith(".jpeg"))
                         File.Move(path, Program.PATH_ALT_ART + Path.GetFileName(path));
+                    if (path.ToLower().EndsWith(Program.EXPANSION_MP4))
+                    {
+                        File.Move(path, Program.PATH_VIDEO_ART + Path.GetFileName(path));
+                        newArtVideosAdded = true;
+                    }
                 }
                 catch { }
             }
+
             if (newDataAdded)
                 Program.instance.InitializeForDataChange();
+            if(newArtVideosAdded)
+                Utility.CardImageLoader.ReloadArtVideos();
         }
 
         private static void ExportResult(bool sucess)

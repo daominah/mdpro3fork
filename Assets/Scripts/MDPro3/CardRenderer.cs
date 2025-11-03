@@ -1,13 +1,17 @@
+using Cysharp.Threading.Tasks;
 using MDPro3.Duel.YGOSharp;
+using MDPro3.Utility;
+using Mono.Cecil.Cil;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
+using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
-using MDPro3.Utility;
-using Cysharp.Threading.Tasks;
-using System.Threading.Tasks;
+using UnityEngine.Video;
 
 namespace MDPro3
 {
@@ -26,6 +30,7 @@ namespace MDPro3
         private static readonly float cardNameLabelWidthRushDuel = 520f;
         private static string currentFontLanguage;
         private static bool fontsLoaded;
+        private static int prefabIndex = 0;
 
         #region Reference
 
@@ -33,6 +38,8 @@ namespace MDPro3
         [SerializeField] private GameObject ocg;
         [SerializeField] private GameObject rd;
         [SerializeField] private Camera renderCamera;
+        [SerializeField] private VideoPlayer videoPlayer;
+        [SerializeField] private RawImage renderedCardFrame;
         public RenderTexture renderTexture;
 
         [Header("OCG")]
@@ -119,16 +126,29 @@ namespace MDPro3
 
         private static async UniTask LoadFontsAsync()
         {
-            fontChineseSimplified = await Addressables.LoadAssetAsync<Font>("RenderFontChineseSimplified").ToUniTask();
-            tmpFontChineseSimplified = await Addressables.LoadAssetAsync<TMP_FontAsset>("RenderFontChineseSimplified").ToUniTask();
-            fontChineseTraditional = await Addressables.LoadAssetAsync<Font>("RenderFontChineseTraditional").ToUniTask();
-            tmpFontChineseTraditional = await Addressables.LoadAssetAsync<TMP_FontAsset>("RenderFontChineseTraditional").ToUniTask();
-            fontKorean = await Addressables.LoadAssetAsync<Font>("RenderFontKorean").ToUniTask();
-            tmpFontKorean = await Addressables.LoadAssetAsync<TMP_FontAsset>("RenderFontKorean").ToUniTask();
-            fontJapanese = await Addressables.LoadAssetAsync<Font>("RenderFontJapanese").ToUniTask();
-            tmpFontJapanese = await Addressables.LoadAssetAsync<TMP_FontAsset>("RenderFontJapanese").ToUniTask();
-            fontEnglish = await Addressables.LoadAssetAsync<Font>("RenderFontEnglish").ToUniTask();
-            tmpFontEnglish = await Addressables.LoadAssetAsync<TMP_FontAsset>("RenderFontEnglish").ToUniTask();
+            if (fontsLoaded)
+                return;
+
+            //if(fontChineseSimplified != null)
+                fontChineseSimplified = await Addressables.LoadAssetAsync<Font>("RenderFontChineseSimplified").ToUniTask();
+            //if(tmpFontChineseSimplified != null)
+                tmpFontChineseSimplified = await Addressables.LoadAssetAsync<TMP_FontAsset>("RenderFontChineseSimplified").ToUniTask();
+            //if (fontChineseTraditional != null)
+                fontChineseTraditional = await Addressables.LoadAssetAsync<Font>("RenderFontChineseTraditional").ToUniTask();
+            //if (tmpFontChineseTraditional != null)
+                tmpFontChineseTraditional = await Addressables.LoadAssetAsync<TMP_FontAsset>("RenderFontChineseTraditional").ToUniTask();
+            //if (fontKorean != null)
+                fontKorean = await Addressables.LoadAssetAsync<Font>("RenderFontKorean").ToUniTask();
+            //if (tmpFontKorean != null)
+                tmpFontKorean = await Addressables.LoadAssetAsync<TMP_FontAsset>("RenderFontKorean").ToUniTask();
+            //if (fontJapanese != null)
+                fontJapanese = await Addressables.LoadAssetAsync<Font>("RenderFontJapanese").ToUniTask();
+            //if (tmpFontJapanese != null)
+                tmpFontJapanese = await Addressables.LoadAssetAsync<TMP_FontAsset>("RenderFontJapanese").ToUniTask();
+            //if (fontEnglish != null)
+                fontEnglish = await Addressables.LoadAssetAsync<Font>("RenderFontEnglish").ToUniTask();
+            //if (tmpFontEnglish != null)
+                tmpFontEnglish = await Addressables.LoadAssetAsync<TMP_FontAsset>("RenderFontEnglish").ToUniTask();
 
             fontsLoaded = true;
         }
@@ -153,6 +173,9 @@ namespace MDPro3
         private void Awake()
         {
             _ = LoadFontsAsync();
+
+            prefabIndex++;
+            transform.position = new Vector3(0f, 200f * prefabIndex, 0f);
         }
 
         public void SwitchLanguage(string language = null)
@@ -228,17 +251,6 @@ namespace MDPro3
 
         public void RenderName(int code)
         {
-            if (NeedRushDuelStyle(code))
-                RenderRushDuelName(code);
-            else
-                RenderOcgName(code);
-        }
-
-        private void RenderRushDuelName(int code)
-        {
-            ocg.SetActive(false);
-            rd.SetActive(true);
-
             var data = CardsManager.GetRenderCard(code);
             if (data.Id == 0)
                 return;
@@ -246,6 +258,19 @@ namespace MDPro3
                 SwitchLanguage(Language.GetPrereleaseConfig());
             else
                 SwitchLanguage();
+
+            if (NeedRushDuelStyle(code))
+                SetRushDuelCardName(data);
+            else
+                SetOcgCardName(data);
+
+            renderCamera.Render();
+        }
+
+        private void SetRushDuelCardName(Card data)
+        {
+            ocg.SetActive(false);
+            rd.SetActive(true);
 
             cardNameRD.GetComponent<RectTransform>().localScale = Vector3.one;
 
@@ -263,22 +288,12 @@ namespace MDPro3
             cardFrameRD.gameObject.SetActive(false);
             cardAttributeRD.gameObject.SetActive(false);
             cardLegendRD.SetActive(false);
-
-            renderCamera.Render();
         }
 
-        private void RenderOcgName(int code)
+        private void SetOcgCardName(Card data)
         {
             ocg.SetActive(true);
             rd.SetActive(false);
-
-            var data = CardsManager.GetRenderCard(code);
-            if (data.Id == 0)
-                return;
-            if (data.isPre)
-                SwitchLanguage(Language.GetPrereleaseConfig());
-            else
-                SwitchLanguage();
 
             cardName.GetComponent<RectTransform>().localScale = Vector3.one;
             cardName.text = data.Name;
@@ -333,23 +348,10 @@ namespace MDPro3
                         levelsMask.transform.GetChild(i).gameObject.SetActive(false);
                 }
             }
-
-            renderCamera.Render();
         }
 
         public bool RenderCard(int code, Texture2D art)
         {
-            if (NeedRushDuelStyle(code))
-                return RenderRushDuelCard(code, art);
-            else
-                return RenderOcgCard(code, art);
-        }
-
-        private bool RenderRushDuelCard(int code, Texture2D art)
-        {
-            ocg.SetActive(false);
-            rd.SetActive(true);
-
             Card data = CardsManager.GetRenderCard(code);
             if (data == null || data.Id == 0)
                 return false;
@@ -359,8 +361,22 @@ namespace MDPro3
             else
                 SwitchLanguage();
 
+            if (NeedRushDuelStyle(code))
+                SetRushDuelCard(data, art);
+            else
+                SetOcgCard(data, art);
+
+            renderCamera.Render();
+            return true;
+        }
+
+        private void SetRushDuelCard(Card data, Texture2D art)
+        {
+            ocg.SetActive(false);
+            rd.SetActive(true);
+
             if (Settings.Data.CardRenderPassword)
-                cardPasswordRD.text = code.ToString("D8");
+                cardPasswordRD.text = data.Id.ToString("D8");
             else
                 cardPasswordRD.text = string.Empty;
 
@@ -449,11 +465,11 @@ namespace MDPro3
                 cardAutherRD.text = TextForRender(authorSplit[1], data.isPre);
                 cardDescriptionPendulumRD.text = string.Empty;
 
-                if (code == 10000000)
+                if (data.Id == 10000000)
                     cardFrameRD.sprite = TextureManager.container.rd_Frame_Obelisk;
-                else if (code == 10000010)
+                else if (data.Id == 10000010)
                     cardFrameRD.sprite = TextureManager.container.rd_Frame_Ra;
-                else if (code == 10000020)
+                else if (data.Id == 10000020)
                     cardFrameRD.sprite = TextureManager.container.rd_Frame_Slifer;
                 else if (data.HasType(CardType.Link))
                     cardFrameRD.sprite = TextureManager.container.rd_Frame_Link;
@@ -490,7 +506,6 @@ namespace MDPro3
             if (data.HasType(CardType.Link))
             {
                 cardNameRD.color = Color.white;
-                //cardTypeRD.color = Color.white;
                 defRD.SetActive(false);
                 defNumRD.text = string.Empty;
                 levelNumRD.gameObject.SetActive(true);
@@ -530,27 +545,15 @@ namespace MDPro3
                 levelNumRD.gameObject.SetActive(true);
                 levelNumRD.text = data.Level.ToString();
             }
-
-            renderCamera.Render();
-            return true;
         }
 
-        private bool RenderOcgCard(int code, Texture2D art)
+        private void SetOcgCard(Card data, Texture2D art)
         {
             ocg.SetActive(true);
             rd.SetActive(false);
 
-            Card data = CardsManager.GetRenderCard(code);
-            if (data == null || data.Id == 0)
-                return false;
-
-            if (data.isPre)
-                SwitchLanguage(Language.GetPrereleaseConfig());
-            else
-                SwitchLanguage();
-
             if (Settings.Data.CardRenderPassword)
-                cardPassword.text = code.ToString("D8");
+                cardPassword.text = data.Id.ToString("D8");
             else
                 cardPassword.text = string.Empty;
             cardName.GetComponent<RectTransform>().localScale = Vector3.one;
@@ -644,11 +647,11 @@ namespace MDPro3
                 cardDescription.text = description;
                 cardAuther.text = authorSplit[1];
 
-                if (code == 10000000)
+                if (data.Id == 10000000)
                     cardFrame.sprite = TextureManager.container.cardFrameObeliskOF;
-                else if (code == 10000010)
+                else if (data.Id == 10000010)
                     cardFrame.sprite = TextureManager.container.cardFrameRaOF;
-                else if (code == 10000020)
+                else if (data.Id == 10000020)
                     cardFrame.sprite = TextureManager.container.cardFrameOsirisOF;
                 else if (data.HasType(CardType.Link))
                     cardFrame.sprite = TextureManager.container.cardFrameLinkOF;
@@ -772,9 +775,6 @@ namespace MDPro3
                         levels.transform.GetChild(i).gameObject.SetActive(false);
                 }
             }
-
-            renderCamera.Render();
-            return true;
         }
 
         private static Card AdjustLevelForRender(Card data)
@@ -834,28 +834,6 @@ namespace MDPro3
             return description;
         }
 
-        private string ConvertToSmallCapsByRichText(string input, float fontSize, float scale)
-        {
-            if (string.IsNullOrEmpty(input)) return input;
-
-            StringBuilder sb = new();
-
-            foreach (char c in input)
-            {
-                if (char.IsLower(c))
-                {
-                    char upperChar = char.ToUpper(c);
-                    sb.Append($"<size={fontSize * scale}>{upperChar}</size>");
-                }
-                else
-                {
-                    sb.Append(c);
-                }
-            }
-
-            return sb.ToString();
-        }
-
         private static List<string> GetAuthorFromDescription(string description)
         {
             var lines = description.Split(Program.STRING_LINE_BREAK);
@@ -890,5 +868,126 @@ namespace MDPro3
 
             return returnValue;
         }
+
+        #region Video Card
+
+        public static bool CardHasVideoArt(int code)
+        {
+            if (!Config.GetBool("VideoCard", true))
+                return false;
+            if (File.Exists(Program.PATH_VIDEO_ART + code.ToString() + Program.EXPANSION_MP4))
+                return true;
+            return false;
+        }
+
+        private static string GetVideoURL(int code)
+        {
+            string path = Program.PATH_VIDEO_ART + code.ToString() + Program.EXPANSION_MP4;
+            path = Tools.GetPlatformPath(path);
+            path = Tools.FormatPlatformUrl(path);
+
+            return path;
+        }
+
+        public async UniTask<Texture> GetVideoCardAsync(int code)
+        {
+            if (!CardHasVideoArt(code))
+                return null;
+
+            Card data = CardsManager.GetRenderCard(code);
+            if (data == null || data.Id == 0)
+                return null;
+
+            if (data.isPre)
+                SwitchLanguage(Language.GetPrereleaseConfig());
+            else
+                SwitchLanguage();
+
+            var isRD = NeedRushDuelStyle(data.Id);
+            var isPendulum = data.HasType(CardType.Pendulum);
+
+            if (isRD)
+            {
+                SetRushDuelCard(data, null);
+                cardArtRD.gameObject.SetActive(false);
+                cardArtPendulumRD.gameObject.SetActive(false);
+                cardArtPendulumWidthRD.gameObject.SetActive(false);
+            }
+            else
+            {
+                SetOcgCard(data, null);
+                cardArt.gameObject.SetActive(false);
+                cardArtPendulum.gameObject.SetActive(false);
+                cardArtPendulumSquare.gameObject.SetActive(false);
+                cardArtPendulumWidth.gameObject.SetActive(false);
+            }
+
+            videoPlayer.gameObject.SetActive(true);
+            videoPlayer.url = GetVideoURL(code);
+            videoPlayer.targetTexture = Instantiate(videoPlayer.targetTexture);
+
+            RawImage targetImage;
+            if (isRD)
+            {
+                if (isPendulum)
+                    targetImage = cardArtPendulumRD;
+                else
+                    targetImage = cardArtRD;
+            }
+            else
+            {
+                if (isPendulum)
+                    targetImage = cardArtPendulumSquare;
+                else
+                    targetImage = cardArt;
+            }
+
+            renderCamera.Render();
+            RenderTexture.active = renderTexture;
+            var onlyFrame = new Texture2D(RenderTexture.active.width, RenderTexture.active.height, TextureFormat.RGBA32, true);
+            onlyFrame.ReadPixels(new Rect(0, 0, RenderTexture.active.width, RenderTexture.active.height), 0, 0);
+            onlyFrame.Apply();
+            onlyFrame.name = "Card_" + code;
+            renderedCardFrame.texture = onlyFrame;
+            renderedCardFrame.gameObject.SetActive(true);
+
+            targetImage.gameObject.SetActive(true);
+            targetImage.texture = videoPlayer.targetTexture;
+            targetImage.transform.SetParent(transform);
+            renderedCardFrame.transform.SetAsLastSibling();
+            Destroy(ocg);
+            Destroy(rd);
+
+            videoPlayer.Prepare();
+            await UniTask.WaitUntil(() => videoPlayer.isPrepared);
+
+            renderCamera.gameObject.SetActive(true);
+            renderCamera.targetTexture = Instantiate(renderTexture);
+            renderCamera.SetVolumeFrameworkUpdateMode(VolumeFrameworkUpdateMode.EveryFrame);
+            renderTexture = renderCamera.targetTexture;
+
+            return renderTexture;
+        }
+
+        public void PauseVideo()
+        {
+            renderCamera.gameObject.SetActive(false);
+            videoPlayer.Pause();
+        }
+
+        public void PlayVideo()
+        {
+            renderCamera.gameObject.SetActive(true);
+            videoPlayer.Play();
+        }
+
+        public void Dispose()
+        {
+            Destroy(renderTexture);
+            Destroy(gameObject);
+        }
+
+        #endregion
+
     }
 }

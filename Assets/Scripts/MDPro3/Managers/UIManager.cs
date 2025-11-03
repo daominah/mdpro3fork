@@ -183,6 +183,7 @@ namespace MDPro3
             Program.instance.setting.RefreshCharacterName();
 
             SystemEvent.CallLanguageChangeEvent();
+            SystemEvent.CallVideoCardConfigChangeEvent();
         }
 
         public static void ChangeLayout()

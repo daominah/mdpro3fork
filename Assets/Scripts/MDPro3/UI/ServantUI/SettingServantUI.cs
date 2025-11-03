@@ -1,3 +1,5 @@
+using MDPro3.Duel;
+using MDPro3.Duel.YGOSharp;
 using MDPro3.Net;
 using MDPro3.Servant;
 using MDPro3.Utility;
@@ -15,7 +17,6 @@ using UnityEngine.Networking;
 using UnityEngine.Rendering.Universal;
 using static MDPro3.CardRenderer;
 using ShadowResolution = UnityEngine.Rendering.Universal.ShadowResolution;
-using MDPro3.Duel;
 
 
 namespace MDPro3.UI.ServantUI
@@ -194,6 +195,12 @@ namespace MDPro3.UI.ServantUI
         private SelectionButton_Setting ButtonCardStyle =>
             m_ButtonCardStyle = m_ButtonCardStyle != null ? m_ButtonCardStyle
             : Manager.GetElement<SelectionButton_Setting>(LABEL_SBN_CARDSTYLE);
+
+        private const string LABEL_SBN_VIDEO_CARD = "VideoCard";
+        private SelectionButton_Setting m_ButtonVideoCard;
+        private SelectionButton_Setting ButtonVideoCard =>
+            m_ButtonVideoCard = m_ButtonVideoCard != null ? m_ButtonVideoCard
+            : Manager.GetElement<SelectionButton_Setting>(LABEL_SBN_VIDEO_CARD);
 
         private const string LABEL_SBN_CARDLANGUAGE = "CardLanguage";
         private SelectionButton_Setting m_ButtonCardLanguage;
@@ -557,6 +564,7 @@ namespace MDPro3.UI.ServantUI
             InitializeBackground();
             InitializeBgmBy();
             InitializeCardStyle();
+            InitializeVideoCard();
             InitializeCardLanguage();
             InitializeLanguage();
 
@@ -649,6 +657,12 @@ namespace MDPro3.UI.ServantUI
             {
                 UIManager.HideBlackBack(Program.instance.setting.TransitionTime);
                 UIManager.HideExitButton(Program.instance.setting.TransitionTime);
+            }
+
+            if (videoCardConfigChanged)
+            {
+                videoCardConfigChanged = false;
+                SystemEvent.CallVideoCardConfigChangeEvent();
             }
         }
 
@@ -1318,6 +1332,7 @@ namespace MDPro3.UI.ServantUI
             ButtonCardStyle.SetClickEvent(OnCardStyleChange);
             ButtonCardStyle.SetModeText(Config.Get("CardStyle", CardStyle.OCG_TCG.ToString()));
         }
+
         private void OnCardStyleChange()
         {
             if (Program.instance.ocgcore.showing)
@@ -1336,6 +1351,7 @@ namespace MDPro3.UI.ServantUI
                 selections.Add(value.ToString());
             UIManager.ShowPopupSelection(selections, ChangeCardStyle);
         }
+
         private void ChangeCardStyle()
         {
             string selected = EventSystem.current.currentSelectedGameObject
@@ -1343,6 +1359,28 @@ namespace MDPro3.UI.ServantUI
             Config.Set("CardStyle", selected);
             ButtonCardStyle.SetModeText(selected);
             UIManager.ChangeLanguage();
+        }
+
+        #endregion
+
+        #region Video Card
+
+        private bool videoCardConfigChanged;
+
+        private void InitializeVideoCard()
+        {
+            ButtonVideoCard.SetClickEvent(OnVideoCardClicked);
+
+            var config = Config.GetBool("VideoCard", true);
+            ButtonVideoCard.SetModeText(InterString.Get(config ? "开" : "关"));
+        }
+
+        private void OnVideoCardClicked()
+        {
+            var config = Config.GetBool("VideoCard", true);
+            Config.SetBool("VideoCard", !config);
+            ButtonVideoCard.SetModeText(InterString.Get(config ? "关" : "开"));
+            videoCardConfigChanged = true;
         }
 
         #endregion
@@ -2189,7 +2227,30 @@ namespace MDPro3.UI.ServantUI
                     File.Delete(file);
             }, null);
         }
+        public void OnClearArtVideos()
+        {
+            if (Program.instance.ocgcore.showing)
+            {
+                MessageManager.Toast(InterString.Get("决斗中不能进行此操作。"));
+                return;
+            }
 
+            var selections = new List<string>
+            {
+                InterString.Get("确定清空"),
+                InterString.Get("是否确认删除所有的动态卡图？@n您可以在系统设置中选择关闭动态卡图的显示。"),
+                InterString.Get("确认"),
+                InterString.Get("取消")
+            };
+            UIManager.ShowPopupYesOrNo(selections, () =>
+            {
+                if (!Directory.Exists(Program.PATH_VIDEO_ART))
+                    Directory.CreateDirectory(Program.PATH_ALT_ART);
+                foreach (var file in Directory.GetFiles(Program.PATH_VIDEO_ART))
+                    File.Delete(file);
+                CardImageLoader.ReloadArtVideos();
+            }, null);
+        }
         #endregion
 
         #region Expansion

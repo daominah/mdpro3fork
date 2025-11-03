@@ -1,13 +1,14 @@
-using System;
-using System.Data;
-using System.Collections.Generic;
-using System.Text.RegularExpressions;
-using Mono.Data.Sqlite;
-using MDPro3.Duel.YGOSharp;
-using System.IO;
 using Ionic.Zip;
-using MDPro3.Utility;
+using MDPro3.Duel.YGOSharp;
 using MDPro3.Servant;
+using MDPro3.Utility;
+using Mono.Data.Sqlite;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.IO;
+using System.Text.RegularExpressions;
+using YGOSharp.OCGWrapper;
 
 namespace MDPro3.Duel.YGOSharp
 {
@@ -475,37 +476,51 @@ namespace MDPro3.Duel.YGOSharp
                                                                 }
                                                                 if (pass)
                                                                 {
-                                                                    //Link Markers
+                                                                    //Video Art
                                                                     pass = false;
-                                                                    if (filters[10] == 0)
+                                                                    if (filters[10] == 0 || filters[10] == 3)
                                                                         pass = true;
                                                                     if (!pass)
-                                                                        if(card.HasType(CardType.Link))
-                                                                        {
+                                                                    {
+                                                                        if(filters[10] == 1 && CardImageLoader.CardHasVideoArt(card.Id))
                                                                             pass = true;
-                                                                            for (int i = 0; i < 9; i++)
-                                                                            {
-                                                                                if ((filters[10] >> i & 1) > 0 && (card.LinkMarker >> i & 1) == 0)
-                                                                                    pass = false;
-                                                                            }
-                                                                        }
+                                                                        if (filters[10] == 2 && !CardImageLoader.CardHasVideoArt(card.Id))
+                                                                            pass = true;
+                                                                    }
                                                                     if (pass)
                                                                     {
-                                                                        if (JudgeInt((int)filters[11], (int)filters[12], card.Level))
-                                                                            if (JudgeInt((int)filters[13], (int)filters[14], card.Attack))
-                                                                                if (JudgeInt((int)filters[15], (int)filters[16], card.Defense))
-                                                                                    if (JudgeInt((int)filters[17], (int)filters[18], card.LScale))
-                                                                                        if (JudgeInt((int)filters[19], (int)filters[20], card.GetGenesysPoint()))
-                                                                                            if (JudgeInt((int)filters[21], (int)filters[22], card.year))
-                                                                                            {
-                                                                                                if (pack == string.Empty)
-                                                                                                    returnValue.Add(card);
-                                                                                                else
+                                                                        //Link Markers
+                                                                        pass = false;
+                                                                        if (filters[11] == 0)
+                                                                            pass = true;
+                                                                        if (!pass)
+                                                                            if (card.HasType(CardType.Link))
+                                                                            {
+                                                                                pass = true;
+                                                                                for (int i = 0; i < 9; i++)
+                                                                                {
+                                                                                    if ((filters[11] >> i & 1) > 0 && (card.LinkMarker >> i & 1) == 0)
+                                                                                        pass = false;
+                                                                                }
+                                                                            }
+                                                                        if (pass)
+                                                                        {
+                                                                            if (JudgeInt((int)filters[12], (int)filters[13], card.Level))
+                                                                                if (JudgeInt((int)filters[14], (int)filters[15], card.Attack))
+                                                                                    if (JudgeInt((int)filters[16], (int)filters[17], card.Defense))
+                                                                                        if (JudgeInt((int)filters[18], (int)filters[19], card.LScale))
+                                                                                            if (CheckGenesysPoint((int)filters[20], (int)filters[21], card))
+                                                                                                if (JudgeInt((int)filters[22], (int)filters[23], card.year))
                                                                                                 {
-                                                                                                    if (card.packFullName == pack)
+                                                                                                    if (pack == string.Empty)
                                                                                                         returnValue.Add(card);
+                                                                                                    else
+                                                                                                    {
+                                                                                                        if (card.packFullName == pack)
+                                                                                                            returnValue.Add(card);
+                                                                                                    }
                                                                                                 }
-                                                                                            }
+                                                                        }
                                                                     }
                                                                 }
                                                             }
@@ -522,6 +537,13 @@ namespace MDPro3.Duel.YGOSharp
                 }
             }
             return returnValue;
+        }
+
+        private static bool CheckGenesysPoint(int min, int max, Card card)
+        {
+            if(min == -233 && max == -233)
+                return true;
+            return JudgeInt(min, max, card.GetGenesysPoint());
         }
 
         internal static List<Card> AnnounceSearch(string announced, List<int> searchCodes)
@@ -623,7 +645,7 @@ namespace MDPro3.Duel.YGOSharp
             return cards;
         }
 
-        static bool JudgeInt(int min, int max, int raw)
+        private static bool JudgeInt(int min, int max, int raw)
         {
             bool re = true;
             if (min == -233 && max == -233)

@@ -7,6 +7,7 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
 
 namespace MDPro3.Utility
@@ -19,9 +20,12 @@ namespace MDPro3.Utility
         private static readonly ConcurrentDictionary<int, CacheEntry> cachedArts = new();
         private static readonly ConcurrentDictionary<int, CacheEntry> cachedCards = new();
         private static readonly ConcurrentDictionary<int, Texture2D> cachedCardNames = new();
+        private static readonly ConcurrentDictionary<int, Texture> cachedVideoCards = new();
 
         private static readonly ConcurrentDictionary<int, SemaphoreSlim> artLoadingLocks = new();
         private static readonly ConcurrentDictionary<int, SemaphoreSlim> cardLoadingLocks = new();
+
+        private static readonly List<CardRenderer> videos = new();
 
         public static bool lastCardFoundArt;
         public static bool lastCardRenderSucceed;
@@ -43,6 +47,9 @@ namespace MDPro3.Utility
             cardSemaphore = new SemaphoreSlim(maxLoads, maxLoads);
 
             _ = InitializeArtFileListAsync();
+            _ = InitializeVideoArtFileListAsync();
+
+            SystemEvent.OnVideoCardConfigChange += CheckArtVideoConfig;
         }
 
         private static int GetOptimalConcurrency()
@@ -136,56 +143,69 @@ namespace MDPro3.Utility
                     UnityEngine.Object.Destroy(entry.Texture);
         }
 
-        public static async Task<Texture2D> LoadCardAsync(
+        public static async Task<Texture> LoadCardAsync(
             int code,
             bool persistent = false,
-            CancellationToken token = default)
+            CancellationToken token = default,
+            bool forceTexture = false)
         {
             var lockObj = cardLoadingLocks.GetOrAdd(code, _ => new SemaphoreSlim(1, 1));
             await lockObj.WaitAsync(token);
 
             try
             {
-                if (cachedCards.TryGetValue(code, out var entry))
+                if (!CardRenderer.CardHasVideoArt(code) || forceTexture)
                 {
-                    if (entry.LoadingTask != null)
-                        await entry.LoadingTask.AsUniTask().AttachExternalCancellation(token);
-                    if (entry.Texture != null)
+                    if (cachedCards.TryGetValue(code, out var entry))
                     {
-                        Interlocked.Increment(ref entry.ReferenceCount);
-                        entry.IsPersistent |= persistent;
+                        if (entry.LoadingTask != null)
+                            await entry.LoadingTask.AsUniTask().AttachExternalCancellation(token);
+                        if (entry.Texture != null)
+                        {
+                            Interlocked.Increment(ref entry.ReferenceCount);
+                            entry.IsPersistent |= persistent;
+                        }
+                        else
+                            Debug.LogError($"Card texture is null for code {code}");
+                        return entry.Texture;
+                    }
+
+                    CacheEntry newEntry = new()
+                    {
+                        LoadingTask = InternalLoadCardAsync(code, token)
+                    };
+
+                    if (cachedCards.TryAdd(code, newEntry))
+                    {
+                        newEntry.ReferenceCount = 1;
+                        newEntry.IsPersistent = persistent;
+                        try
+                        {
+                            newEntry.Texture = await newEntry.LoadingTask;
+                        }
+                        catch (OperationCanceledException ex)
+                        {
+                            cachedCards.TryRemove(code, out _);
+                            throw ex;
+                        }
+                        newEntry.LoadingTask = null;
+
+                        return newEntry.Texture;
                     }
                     else
-                        Debug.LogError($"Card texture is null for code {code}");
-                    return entry.Texture;
-                }
-
-                CacheEntry newEntry = new()
-                {
-                    LoadingTask = InternalLoadCardAsync(code, token)
-                };
-
-                if (cachedCards.TryAdd(code, newEntry))
-                {
-                    newEntry.ReferenceCount = 1;
-                    newEntry.IsPersistent = persistent;
-                    try
                     {
-                        newEntry.Texture = await newEntry.LoadingTask;
+                        Debug.LogError("CardImageLoader: Unexpected Errror.");
+                        return null;
                     }
-                    catch (OperationCanceledException ex)
-                    {
-                        cachedCards.TryRemove(code, out _);
-                        throw ex;
-                    }
-                    newEntry.LoadingTask = null;
-
-                    return newEntry.Texture;
                 }
                 else
                 {
-                    Debug.LogError("CardImageLoader: Unexpected Errror.");
-                    return null;
+                    if(cachedVideoCards.TryGetValue(code, out var tex))
+                        return tex;
+                    Texture texture = null;
+                    texture = await InternalLoadVideoCardAsync(code, token);
+                    cachedVideoCards[code] = texture;
+                    return texture;
                 }
             }
             catch (Exception e)
@@ -230,7 +250,9 @@ namespace MDPro3.Utility
             foreach (var cardNameTex in cachedCardNames.Values)
                 UnityEngine.Object.Destroy(cardNameTex);
             cachedCardNames.Clear();
-        }
+
+            ClearArtVideos();
+        }        
 
         #endregion
 
@@ -344,6 +366,40 @@ namespace MDPro3.Utility
             finally { cardSemaphore.Release(); }
         }
 
+        private static async Task<Texture> InternalLoadVideoCardAsync(
+            int code,
+            CancellationToken token)
+        {
+            await UniTask.WaitUntil(() => TextureManager.container != null, cancellationToken: token);
+            await cardSemaphore.WaitAsync(token);
+            lastCardRenderSucceed = true;
+
+            try
+            {
+                var data = CardsManager.Get(code, true);
+                if (data.Id == 0)
+                {
+                    lastCardRenderSucceed = false;
+                    return TextureManager.container.unknownCard.texture;
+                }
+
+                var art = await LoadArtAsync(code, false, token).AsUniTask().AttachExternalCancellation(token);
+                if (token.IsCancellationRequested)
+                    throw new OperationCanceledException(token);
+
+                if (art == null)
+                {
+                    Debug.Log($"Get null from ArtLoad for Card {data.Id}:");
+                    art = TextureManager.container.unknownArt.texture;
+                }
+
+                var cardRenderer = (await Addressables.InstantiateAsync("Prefab/CardRenderer.prefab")).GetComponent<CardRenderer>();
+                videos.Add(cardRenderer);
+                return await cardRenderer.GetVideoCardAsync(code);
+            }
+            finally { cardSemaphore.Release(); }
+        }
+
         private static Texture2D InternalLoadCardName(int code)
         {
             Program.instance.cardRenderer.RenderName(code);
@@ -420,6 +476,21 @@ namespace MDPro3.Utility
                 return GetArtFromPendulumCard(pic);
             else
                 return GetArtFromCard(pic);
+        }
+
+        private static void CheckArtVideoConfig()
+        {
+            var config = Config.GetBool("VideoCard", true);
+            if (!config)
+                ClearArtVideos();
+        }
+
+        private static void ClearArtVideos()
+        {
+            foreach (var video in videos)
+                video.Dispose();
+            videos.Clear();
+            cachedVideoCards.Clear();
         }
 
         #endregion
@@ -533,8 +604,8 @@ namespace MDPro3.Utility
                             artAltFileList.Add(code, Program.EXPANSION_PNG);
                 }
             }
+
             artFileListInitialized = true;
-            await UniTask.SwitchToMainThread();
         }
 
         private static string GetArtFilePath(int code)
@@ -557,6 +628,51 @@ namespace MDPro3.Utility
             }
 
             return path;
+        }
+
+        #endregion
+
+        #region Video Art File List Cache
+
+        private static readonly List<int> videoArtFileList = new();
+        private static bool videoArtFileListInitialized;
+        private static async UniTask InitializeVideoArtFileListAsync()
+        {
+            if (videoArtFileListInitialized) return;
+            await UniTask.SwitchToThreadPool();
+
+            var path = Program.PATH_VIDEO_ART;
+#if !UNITY_EDITOR && (UNITY_ANDROID || UNITY_IOS)
+                path = Path.Combine(Application.persistentDataPath, path);
+#elif UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX || UNITY_STANDALONE_LINUX
+                path = Path.Combine(Environment.CurrentDirectory, path);
+#else
+            path = Path.Combine(Environment.CurrentDirectory, path);
+#endif
+
+            if (Directory.Exists(path))
+            {
+                foreach (var file in Directory.GetFiles(path, "*.mp4"))
+                {
+                    var fileName = Path.GetFileNameWithoutExtension(file);
+                    if (int.TryParse(fileName, out var code))
+                        videoArtFileList.Add(code);
+                }
+            }
+
+            videoArtFileListInitialized = true;
+        }
+
+        public static bool CardHasVideoArt(int code)
+        {
+            return videoArtFileList.Contains(code);
+        }
+
+        public static void ReloadArtVideos()
+        {
+            videoArtFileListInitialized = false;
+            _ = InitializeVideoArtFileListAsync();
+            ClearArtVideos();
         }
 
         #endregion

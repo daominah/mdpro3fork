@@ -32,10 +32,16 @@ namespace MDPro3.UI
 
         private int currentLoadId = 0;
         private int loadedCardId = 0;
+        private bool isRenderTexture;
 
         #endregion
 
         #region Unity生命周期
+
+        private void Awake()
+        {
+            SystemEvent.OnVideoCardConfigChange += OnVideoCardConfigChange;
+        }
 
         protected void OnDestroy()
         {
@@ -43,6 +49,8 @@ namespace MDPro3.UI
             Destroy(normalMat);
             Destroy(tempMat);
             ReleaseCard();
+
+            SystemEvent.OnVideoCardConfigChange -= OnVideoCardConfigChange;
         }
 
         #endregion
@@ -155,15 +163,11 @@ namespace MDPro3.UI
                 var token = cts.Token;
 
                 await UniTask.Yield(PlayerLoopTiming.Update, token);
-
                 if (card == null || card.Id != targetCardId || loadId != currentLoadId)
                     return;
 
                 if (normalMat == null)
                     normalMat = MaterialLoader.GetCardMaterial(-1);
-
-                if (card == null || card.Id != targetCardId || loadId != currentLoadId)
-                    return;
 
                 normalMat.SetTexture("_LoadingTex", TextureManager.container
                     .GetCardLoadingTexture(CardsManager.Get(card.Id)));
@@ -186,10 +190,8 @@ namespace MDPro3.UI
                     token);
                 if (card == null || card.Id != targetCardId || loadId != currentLoadId)
                 {
-                    // 如果卡片已更改，释放刚加载的纹理
                     if (cardTex != null)
                         CardImageLoader.ReleaseCard(card.Id);
-
                     return;
                 }
 
@@ -200,18 +202,16 @@ namespace MDPro3.UI
                 }
 
                 if (loadedCardId != 0 && loadedCardId != card.Id)
-                {
                     CardImageLoader.ReleaseCard(loadedCardId);
-                }
 
                 loadedCardId = card.Id;
                 RawImage.texture = cardTex;
+                isRenderTexture = cardTex is RenderTexture;
 
                 if (CardRarity.GetRarity(card.Id) == CardRarity.Rarity.Normal)
                     await SetMaterialFloatAsync(normalMat, "_LoadingBlend", 0f, 0.1f, token);
                 else
                     await LoadMatAsync(0.1f, token);
-
                 if (card == null || card.Id != targetCardId || loadId != currentLoadId)
                     return;
 
@@ -297,6 +297,22 @@ namespace MDPro3.UI
 
             if (mat != null && !token.IsCancellationRequested)
                 mat.SetFloat(propertyName, endValue);
+        }
+
+        private void OnVideoCardConfigChange()
+        {
+            var config = Config.GetBool("VideoCard", true);
+            if (config && CardImageLoader.CardHasVideoArt(card.Id))
+                _ = ReloadAsync();
+            else if (!config && isRenderTexture)
+                _ = ReloadAsync();
+        }
+
+        private async UniTask ReloadAsync()
+        {
+            await UniTask.Yield();
+            CancelCurrentLoad();
+            _ = LoadCardPicAsync();
         }
 
         #endregion
