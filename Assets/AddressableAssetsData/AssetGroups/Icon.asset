@@ -455,6 +455,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 044f9e2db80424546b9d3ae7a5b1420b
+    m_Address: FieldObjIcon1100035_HD
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 045313e730c54524dbcd839d97f89b02
     m_Address: sn0803_3_5
     m_ReadOnly: 0
@@ -487,6 +492,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 049a9c8a99a07bb40b120e05f9f7c863
     m_Address: sn0003_3_9
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 049f9db312f45264f9cc0017ffb4b0d7
+    m_Address: FieldIcon1090035_SD
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -3810,6 +3820,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 27acef2f503da8b45b14ea9242e7861a
+    m_Address: FieldAvatarBaseIcon1110035_HD
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 27c16e5a5a862274a9aa21008a6cee82
     m_Address: sn0608_3_1
     m_ReadOnly: 0
@@ -4412,6 +4427,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 2e8bc4b2a37b8734489568086f875b56
     m_Address: DeckCase0030
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2e8cb69b45b895142b45260dc6a4b894
+    m_Address: FieldIcon1090035_HD
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -6602,6 +6622,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 44e03f94fb57c7747afaecf8b3ed97c1
     m_Address: sn0204_3_2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 44e53bc56e2c0fd4c9438bf99c407a76
+    m_Address: ProfileIcon1010119
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -11015,6 +11040,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 71bb9ee315884dd45a01b1add2d60169
+    m_Address: FieldObjIcon1101040_HD
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 71c0342fc10165943a8497d2ad2db9f8
     m_Address: sn0509_2
     m_ReadOnly: 0
@@ -11277,6 +11307,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 74a3c656fe944344aa711f1bfda918b1
     m_Address: sn0405
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 74abe0881c1c2384dba20f893fc740d4
+    m_Address: FieldObjIcon1100035_SD
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -13197,6 +13232,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8907c51fd8c0ab04d85249e971588ca1
     m_Address: sn0207_2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 891200b232cc92f43983f26f36904e63
+    m_Address: FieldObjIcon1101040_SD
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -17630,6 +17670,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b7c8e326d6a6c9b43ae5d1abcee16f81
+    m_Address: FieldAvatarBaseIcon1110035_SD
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b7dd607edca6c3243aad0b5af430cb6d
     m_Address: sn0734_3_6
     m_ReadOnly: 0
@@ -20995,6 +21040,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d8471a207e5d35a4aaefd7f9d2935c3d
+    m_Address: ProfileIcon1010119_L_SD
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d84cbbd45ba40ac41a49638a8b8dca81
     m_Address: sn0053_3_8
     m_ReadOnly: 0
@@ -21157,6 +21207,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d978cb38e4795a949888ee6afae8b822
     m_Address: sn0803_3_3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d998f3cf017e0ff449fa83de56a4b61a
+    m_Address: ProfileIcon1010119_L_HD
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -24742,6 +24797,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ff0c1d7cc6cbe9143b77d8a822f1caf1
     m_Address: sn0438_3_7
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ff236fa0875202d459e8db4238756a3f
+    m_Address: WallPaperIcon1130092
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
