@@ -60,16 +60,23 @@ namespace MDPro3
         {
             base.Initialize();
 
-            currentWallpaper = Config.Get("Wallpaper", Program.items.wallpapers[0].id.ToString());
-            ChangeWallpaper(currentWallpaper);
-            InitializeLanguage();
-
-            handlers = new List<UIHandler>() 
-            { 
+            handlers = new List<UIHandler>()
+            {
                 fps,
             };
             foreach (UIHandler handler in handlers)
                 handler.Initialize();
+
+            try
+            {
+                currentWallpaper = Config.Get("Wallpaper", Program.items.wallpapers[0].id.ToString());
+                ChangeWallpaper(currentWallpaper);
+                InitializeLanguage();
+            }
+            catch (Exception e)
+            {
+                UnityEngine.Debug.LogError($"UIManager Initialize Error: {e}");
+            }
         }
 
         public override void PerFrameFunction()

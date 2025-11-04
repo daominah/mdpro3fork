@@ -26,7 +26,7 @@ namespace MDPro3
         public const string SMALL_SLASH = " / ";
         private static readonly float cardNameLabelWidthOCG = 520f;
         private static readonly float cardNameLabelWidthRushDuel = 520f;
-        private static string currentFontLanguage;
+        private string currentFontLanguage;
         private static bool fontsLoaded;
         private static int prefabIndex = 0;
 
