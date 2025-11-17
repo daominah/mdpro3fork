@@ -6,12 +6,10 @@ using MDPro3.UI;
 using MDPro3.UI.ServantUI;
 using MDPro3.Utility;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading;
-using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Playables;
@@ -64,10 +62,16 @@ namespace MDPro3
             return IsReason(this.reason, reason);
         }
 
+        public bool InSequence(uint player, CardLocation location, int targetSequence)
+        {
+            return player == controller && InLocation(location) && sequence == targetSequence;
+        }
+
         public static bool IsReason(uint reason, CardReason cardReason)
         {
             return (reason & (uint)cardReason) > 0;
         }
+
     }
 
     public class Effect
@@ -903,16 +907,13 @@ namespace MDPro3
 
         public void UpdateExDeckTop()
         {
-            if (cacheP == null)
-                return;
+            var player = p.controller;
+            if(cacheP != null)
+                player = cacheP.controller;
 
-            if (cacheP.InLocation(CardLocation.Extra)
-                && !p.InLocation(CardLocation.Extra)
-                && cacheP.sequence - 1 == Program.instance.ocgcore.GetLocationCardCount(CardLocation.Extra, cacheP.controller) - 1)
-                _ = Program.instance.ocgcore.UpdateExDeckTop(cacheP.controller);
-            else if(p.InLocation(CardLocation.Extra)
-                && p.sequence == Program.instance.ocgcore.GetLocationCardCount(CardLocation.Extra, p.controller) - 1)
-                _ = Program.instance.ocgcore.UpdateExDeckTop(cacheP.controller);
+            if (p.InLocation(CardLocation.Extra) ||
+                (cacheP != null && cacheP.InLocation(CardLocation.Extra)))
+                Program.instance.ocgcore.UpdateExDeckTop(player);
         }
 
         public async UniTask MoveAsync(GPS gps, bool rush = false, float wait = 0f, float overrideMoveTime = 0f)
@@ -976,7 +977,6 @@ namespace MDPro3
             #endregion
 
             #region Pre
-
 
             float moveTime = 0.3f;
 
@@ -1294,9 +1294,9 @@ namespace MDPro3
                         await CutinViewer.Play(data.Id, (int)p.controller);
                     }
                     if (data.IsHighLevel())
-                        await SequenceStrongSummon(sequence, position, rotation, 0, 0).WaitAsync();
+                        await SequenceStrongSummon(sequence, position, rotation, 0).WaitAsync();
                     else
-                        await SequenceNormalSummon(sequence, position, rotation, 0, 0).WaitAsync();
+                        await SequenceNormalSummon(sequence, position, rotation, 0).WaitAsync();
                     return;
                 }
             }
@@ -1312,9 +1312,9 @@ namespace MDPro3
                 if (cutin)
                     await CutinViewer.Play(data.Id, (int)p.controller);
                 if (data.IsHighLevel())
-                    await SequenceStrongSummon(sequence, position, rotation, 0, 0).WaitAsync();
+                    await SequenceStrongSummon(sequence, position, rotation, 0).WaitAsync();
                 else
-                    await SequenceNormalSummon(sequence, position, rotation, 0, 0).WaitAsync();
+                    await SequenceNormalSummon(sequence, position, rotation, 0).WaitAsync();
                 return;
             }
 
@@ -1356,7 +1356,7 @@ namespace MDPro3
             {
                 sequence.Join(turn.DOLocalMove(new Vector3(0, 0, 10), moveTime).SetEase(Ease.OutCubic).OnComplete(() =>
                 {
-                    turn.DOLocalMove(Vector3.zero, 0.2f).SetEase(Ease.InCubic);
+                    turn.DOLocalMove(Vector3.zero, 0.2f).SetEase(Ease.InCubic); // TODO: tween in tween
                 }));
             }
 
@@ -1452,7 +1452,6 @@ namespace MDPro3
 
         }
 
-
         private Vector3[] GenerateCurvePath(Vector3 start, Vector3 end, float curveHeight = 40f)
         {
             //curveHeight = Program.instance.testFloat;
@@ -1493,7 +1492,7 @@ namespace MDPro3
                 return SequenceNormalSummon(sequence, position, rotaion, waitTime);
         }
 
-        private Sequence SequenceStrongSummon(Sequence sequence, Vector3 position, Vector3 angle, float interval, float timeBefore = 0)
+        private Sequence SequenceStrongSummon(Sequence sequence, Vector3 position, Vector3 angle, float interval)
         {
             var cardPlane = manager.GetElement<Transform>("CardPlane");
             var pivot = manager.GetElement<Transform>("Pivot");
@@ -1510,21 +1509,21 @@ namespace MDPro3
             midP.y = 15;
 
             sequence.Append(manager.transform.DOMove(midP, 0.5f).SetEase(Ease.InOutSine));
+
             sequence.Join(manager.transform.DOLocalRotate(Vector3.zero, 0.5f).SetEase(Ease.InOutSine));
             sequence.Join(cardPlane.DOLocalRotate(new Vector3(0, (angle.y == 0) || (angle.y == 270) ? 0 : 180, 0), 0.5f).SetEase(Ease.InOutSine));
             sequence.Join(pivot.DOScale(GetCardScale(p), 0.26f).SetEase(Ease.InOutSine));
             sequence.Join(pivot.DOLocalMove(Vector3.zero, 0.26f).SetEase(Ease.InOutSine));
-            sequence.Join(pivot.DOLocalRotate(Vector3.zero, 0.26f).SetEase(Ease.InOutSine).OnComplete(() =>
-            {
-                pivot.DOLocalMoveY(10, 0.5f).SetEase(Ease.InOutQuart);
-                pivot.DOLocalRotate(new Vector3(-35, 0, 0), 0.5f).SetEase(Ease.InOutQuart);
-            }));
+            sequence.Join(pivot.DOLocalRotate(Vector3.zero, 0.26f).SetEase(Ease.InOutSine));
+
+            sequence.Insert(interval + 0.26f, pivot.DOLocalMoveY(10, 0.5f).SetEase(Ease.InOutQuart));
+            sequence.Insert(interval + 0.26f, pivot.DOLocalRotate(new Vector3(-35, 0, 0), 0.5f).SetEase(Ease.InOutQuart));
+
             sequence.Join(offset.DOLocalMove(Vector3.zero, 0.5f).SetEase(Ease.InOutSine));
             sequence.Join(offset.DOLocalRotate(Vector3.zero, 0.5f).SetEase(Ease.InOutSine));
             sequence.Join(turn.DOLocalRotate(new Vector3(0, (angle.y == 0) || (angle.y == 180) ? 0 : 270, angle.z), 0.3f).SetEase(Ease.InOutSine));
 
-            sequence.Append(DOTween.To(v => { }, 0, 0, 0.26f));
-
+            sequence.AppendInterval(0.26f);
             sequence.Append(pivot.DOLocalRotate(Vector3.zero, 0.14f).SetEase(Ease.InQuart));
             sequence.Join(pivot.DOLocalMoveY(0, 0.14f).SetEase(Ease.InQuart));
             sequence.Join(manager.transform.DOMove(position, 0.14f).SetEase(Ease.InQuart));
@@ -1545,7 +1544,7 @@ namespace MDPro3
             return sequence;
         }
 
-        private Sequence SequenceNormalSummon(Sequence sequence, Vector3 position, Vector3 angle, float interval, float timeBefore = 0)
+        private Sequence SequenceNormalSummon(Sequence sequence, Vector3 position, Vector3 angle, float interval)
         {
             var cardPlane = manager.GetElement<Transform>("CardPlane");
             var pivot = manager.GetElement<Transform>("Pivot");
@@ -1559,23 +1558,23 @@ namespace MDPro3
             });
 
             var midP = position;
-            midP.y = 15;
+            midP.y = 10;
 
             sequence.Append(manager.transform.DOMove(midP, 0.4f).SetEase(Ease.InOutSine));
             sequence.Join(manager.transform.DOLocalRotate(Vector3.zero, 0.4f).SetEase(Ease.InOutSine));
             sequence.Join(cardPlane.DOLocalRotate(new Vector3(0, (angle.y == 0) || (angle.y == 270) ? 0 : 180, 0), 0.4f).SetEase(Ease.InOutSine));
             sequence.Join(pivot.DOScale(GetCardScale(p), 0.16f).SetEase(Ease.InOutSine));
             sequence.Join(pivot.DOLocalMove(Vector3.zero, 0.16f).SetEase(Ease.InOutSine));
-            sequence.Join(pivot.DOLocalRotate(Vector3.zero, 0.16f).SetEase(Ease.InOutSine).OnComplete(() =>
-            {
-                pivot.DOLocalMoveY(5, 0.4f).SetEase(Ease.InOutQuart);
-                pivot.DOLocalRotate(new Vector3(-15, 0, 0), 0.4f).SetEase(Ease.InOutQuart);
-            }));
+            sequence.Join(pivot.DOLocalRotate(Vector3.zero, 0.16f).SetEase(Ease.InOutSine));
+
+            sequence.Insert(interval + 0.16f, pivot.DOLocalMoveY(5, 0.4f).SetEase(Ease.InOutQuart));
+            sequence.Insert(interval + 0.16f, pivot.DOLocalRotate(new Vector3(-15, 0, 0), 0.4f).SetEase(Ease.InOutQuart));
+
             sequence.Join(offset.DOLocalMove(Vector3.zero, 0.4f).SetEase(Ease.InOutSine));
             sequence.Join(offset.DOLocalRotate(Vector3.zero, 0.4f).SetEase(Ease.InOutSine));
             sequence.Join(turn.DOLocalRotate(new Vector3(0, (angle.y == 0) || (angle.y == 180) ? 0 : 270, angle.z), 0.2f).SetEase(Ease.InOutSine));
 
-            sequence.Append(DOTween.To(v => { }, 0, 0, 0.16f));
+            sequence.AppendInterval(0.16f);
 
             sequence.Append(pivot.DOLocalRotate(Vector3.zero, 0.14f).SetEase(Ease.InQuart));
             sequence.Join(pivot.DOLocalMoveY(0, 0.14f).SetEase(Ease.InQuart));
@@ -2206,26 +2205,29 @@ namespace MDPro3
             Destroy(fx, 1f);
         }
 
-        private readonly float[] bounceDutations = new float[6] { 0.4f, 0.2f, 0.133f, 0.133f, 0.067f, 0.067f };
+        private readonly float[] bounceDutationsHuge = new float[] { 0.4f, 0.2f, 0.133f, 0.133f, 0.067f, 0.067f };
+        private readonly float[] bounceDutationsSlight = new float[] { 0.2f, 0.133f, 0.133f, 0.067f };
 
-        public void AnimationLandShake(GameCard card, bool huge)
+        public void AnimationLandShake(GameCard card, int shakeLevel)
         {
+            if(shakeLevel == 0)
+                return;
             if (card == this)
                 return;
-            if ((p.location & (uint)CardLocation.Onfield) == 0)
+            if (!p.InLocation(CardLocation.Onfield))
                 return;
             if (model == null) // Overlays
                 return;
 
-            if (huge)
-            {
-                const float minCardsDistance = 8.6f;
-                const float delayOffset = 0.01f;
-                float distance = Vector3.Distance(card.model.transform.position, model.transform.position);
-                float delay = Math.Max(0, distance - minCardsDistance) * delayOffset;
-                Vector3 direction = (card.model.transform.position - model.transform.position).normalized;
-                direction.y = 0;
+            const float minCardsDistance = 8.6f;
+            const float delayOffset = 0.01f;
+            float distance = Vector3.Distance(card.model.transform.position, model.transform.position);
+            float delay = Math.Max(0, distance - minCardsDistance) * delayOffset;
+            Vector3 direction = (card.model.transform.position - model.transform.position).normalized;
+            direction.y = 0;
 
+            if (shakeLevel == 2)
+            {
                 int bounceCount = 6;
                 float height = 5f;
                 float angle = 50f;
@@ -2238,7 +2240,37 @@ namespace MDPro3
                 {
                     float decay = Mathf.Pow(0.7f, i);
 
-                    float duration = bounceDutations[i];
+                    float duration = bounceDutationsHuge[i];
+                    float currentHeight = height * decay;
+                    float currentAngle = angle * decay;
+
+                    Vector3 bounceDirection = (i % 2 == 0) ? direction : -direction;
+                    Vector3 axis = Vector3.Cross(bounceDirection, Vector3.up).normalized;
+                    Quaternion rotation = Quaternion.AngleAxis(currentAngle, axis);
+
+                    seq.Append(model.transform.DOMoveY(originalPosition.y + currentHeight, duration / 2)
+                        .SetEase(Ease.OutQuad))
+                        .Join(model.transform.DORotateQuaternion(rotation, duration / 2).SetEase(Ease.OutQuad));
+
+                    seq.Append(model.transform.DOMoveY(originalPosition.y, duration / 2).SetEase(Ease.InQuad))
+                        .Join(model.transform.DORotateQuaternion(originalRotation, duration / 2).SetEase(Ease.InQuad));
+                }
+            }
+            else if(shakeLevel == 1)
+            {
+                int bounceCount = 4;
+                float height = 3f;
+                float angle = 10f;
+
+                Sequence seq = DOTween.Sequence();
+                seq.AppendInterval(delay);
+                model.transform.GetPositionAndRotation(out Vector3 originalPosition, out Quaternion originalRotation);
+
+                for (int i = 0; i < bounceCount; i++)
+                {
+                    float decay = Mathf.Pow(0.7f, i);
+
+                    float duration = bounceDutationsSlight[i];
                     float currentHeight = height * decay;
                     float currentAngle = angle * decay;
 

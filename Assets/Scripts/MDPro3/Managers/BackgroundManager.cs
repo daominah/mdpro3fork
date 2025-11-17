@@ -92,7 +92,7 @@ namespace MDPro3
 
             if(id == 12 || cid >= 50)
             {
-                _ = SetDIYBGAsync(back.transform.GetChild(0).GetComponent<SpriteRenderer>(), id);
+                _ = SetDIYBGAsync(back.GetComponent<SpriteRenderer>(), id);
             }
         }
 

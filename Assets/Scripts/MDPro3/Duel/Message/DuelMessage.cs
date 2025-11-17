@@ -870,8 +870,17 @@ namespace MDPro3.Duel
                 Core.GetUI<OcgCoreUI>().CardDescription.Show(card, card.GetMaterial());
 
             AudioManager.PlaySE(se);
+
+            int shakeLevel = 0;
+            if (CutinViewer.HasCutin(card.GetData().Id))
+                shakeLevel = 1;
+            if (card.GetData().Level > 4)
+                shakeLevel = 1;
+            if (card.GetData().Level > 6)
+                shakeLevel = 2;
+
             foreach (var c in cards)
-                c.AnimationLandShake(card, card.GetData().Level > 6);
+                c.AnimationLandShake(card, shakeLevel);
             materialCards.Clear();
 
             await UniTask.WaitForSeconds(1f);
@@ -989,8 +998,14 @@ namespace MDPro3.Duel
                 CameraManager.ShakeCamera();
             if (Core.GetAutoInfo())
                 Core.GetUI<OcgCoreUI>().CardDescription.Show(card, card.GetMaterial());
+
+            int shakeLevel = 0;
+            if(CutinViewer.HasCutin(card.GetData().Id))
+                shakeLevel = 1;
+            if (card.GetData().IsHighLevel())
+                shakeLevel = 2;
             foreach(var c in cards)
-                c.AnimationLandShake(card, card.GetData().IsHighLevel());
+                c.AnimationLandShake(card, shakeLevel);
 
             TokenPass:
             if (card.GetData().HasType(CardType.Token))
@@ -1935,6 +1950,7 @@ namespace MDPro3.Duel
             opSpSummonCount = 0;
             turns++;
             myTurn = isFirst ? (turns % 2 != 0) : (turns % 2 == 0);
+
             PhaseButtonHandler.TurnChange(myTurn, turns);
             PhaseButtonHandler.SetTextMain(string.Empty);
             PhaseButtonHandler.SetTextBelow(string.Empty);

@@ -51,7 +51,7 @@ namespace MDPro3.UI
                 baseRect.DOAnchorPosX(150, transitionTime).OnComplete(() =>
                 {
                     RefreshList();
-                    baseRect.DOAnchorPosX(-30, transitionTime);
+                    baseRect.DOAnchorPosX(-30, transitionTime);// TODO: tween in tween
                 });
             }
 

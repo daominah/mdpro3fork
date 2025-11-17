@@ -176,7 +176,7 @@ namespace MDPro3.UI
             CardRect.DOLocalMove(new Vector3(0f, GetZoomPositionY(), -100f), 0.2f).SetEase(Ease.OutCubic);
             CardRect.DORotate(new Vector3(4f, 6f, 1f), 0.15f).OnComplete(() =>
             {
-                CardRect.DORotate(Vector3.zero, 0.2f).OnComplete(() => shifting = false);
+                CardRect.DORotate(Vector3.zero, 0.2f).OnComplete(() => shifting = false); // TODO: tween in tween
             });
 
             TextShortcut.text = InterString.Get("缩小");
@@ -193,7 +193,7 @@ namespace MDPro3.UI
             CardRect.DOLocalMove(new Vector3(0f, 0f, -100f), 0.2f).SetEase(Ease.OutCubic);
             CardRect.DORotate(new Vector3(-4f, -6f, -1f), 0.15f).OnComplete(() =>
             {
-                CardRect.DORotate(Vector3.zero, 0.2f).OnComplete(() => shifting = false);
+                CardRect.DORotate(Vector3.zero, 0.2f).OnComplete(() => shifting = false); // TODO: tween in tween
             });
 
             TextShortcut.text = InterString.Get("扩大");

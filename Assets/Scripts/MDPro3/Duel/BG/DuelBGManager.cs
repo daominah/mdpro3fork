@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Drawing.Text;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Playables;
@@ -18,6 +19,7 @@ using YgomGame.Bg;
 using YgomSystem.Effect;
 using YgomSystem.ElementSystem;
 using YgomSystem.Timeline;
+using YGOSharp.OCGWrapper;
 using static MDPro3.Servant.OcgCore;
 using static UnityEngine.Rendering.DebugUI;
 using static YgomGame.Bg.BgEffectSettingInner;
@@ -2416,45 +2418,56 @@ namespace MDPro3.Duel
             field1Manager.gameObject.SetActive(true);
         }
 
+        private CancellationTokenSource exTopCts;
+
         public void SetExDeckTop(GameCard card)
         {
+            if(exTopCts != null)
+            {
+                exTopCts.Cancel();
+                exTopCts.Dispose();
+            }
+
+            exTopCts = new CancellationTokenSource();
+
             var deck = card.p.InMyControl() ? myExtra : opExtra;
-            Material targetMat = null;
-            if ((card.p.position & (uint)CardPosition.FaceUp) > 0)
-                targetMat = card.GetMaterial();
-            if (targetMat == null)
-                targetMat = card.p.controller == 0 ? myProtector : opProtector;
+            var code = card.GetData().Id;
+            var targetMat = MaterialLoader.GetCardMaterial(code, true);
             foreach (var r in deck.transform.GetComponentsInChildren<Renderer>(true))
-                if (r.name.EndsWith("back"))
+                if (r.name.Contains("back"))
                     r.material = targetMat;
+            _ = SetCardToMaterialAsync(targetMat, code, exTopCts.Token);
         }
 
-        public async UniTask UpdateExDeckTop(uint controller, GameCard card = null)
+        private async UniTask SetCardToMaterialAsync(Material mat, int code, CancellationToken token)
         {
+            var tex = await CardImageLoader.LoadCardAsync(code, true, token);
+            if(mat == null)
+                return;
+            mat.mainTexture = tex;
+        }
+
+        public void UpdateExDeckTop(uint controller)
+        {
+            GameCard topCard = null;
+            var extraCount = Core.GetLocationCardCount(CardLocation.Extra, controller);
+            foreach (var c in cards)
+                if (c.p.InSequence(controller, CardLocation.Extra, extraCount - 1))
+                {
+                    topCard = c;
+                    break;
+                }            
+
+            if (topCard != null && topCard.p.InPosition(CardPosition.FaceUp) && topCard.GetData().Id != 0)
+            {
+                SetExDeckTop(topCard);
+                return;
+            }
+
             var deck = controller == 0 ? myExtra : opExtra;
-            GameCard topCard = card;
-            if (topCard == null)
-            {
-                var extraCount = Core.GetLocationCardCount(CardLocation.Extra, controller);
-                foreach (var c in cards)
-                    if (c.p.controller == controller)
-                        if ((c.p.location & (uint)CardLocation.Extra) > 0)
-                            if ((c.p.position & (uint)CardPosition.FaceUp) > 0)
-                                if (c.p.sequence == extraCount - 1)
-                                {
-                                    topCard = c;
-                                    break;
-                                }
-            }
             var targetMat = controller == 0 ? myProtector : opProtector;
-            if (topCard != null)
-            {
-                var code = topCard.GetData().Id;
-                targetMat = MaterialLoader.GetCardMaterial(code, true);
-                targetMat.mainTexture = await CardImageLoader.LoadCardAsync(code, true);
-            }
             foreach (var r in deck.transform.GetComponentsInChildren<Renderer>(true))
-                if (r.name.EndsWith("back"))
+                if (r.name.Contains("back"))
                     r.material = targetMat;
         }
 

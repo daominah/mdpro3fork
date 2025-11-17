@@ -12,7 +12,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using TMPro;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.EventSystems;
@@ -1602,7 +1601,7 @@ namespace MDPro3.Servant
             {
                 AudioManager.PlaySE("SE_LP_" + seType + (player == 0 ? "_PLAYER" : "_RIVAL"));
                 float flp = origin;
-                DOTween.To(() => flp, x => { flp = x; text.text = ((int)flp).ToString(); }, targetLP < 0 ? 0 : targetLP, 1.2f);
+                DOTween.To(() => flp, x => { flp = x; text.text = ((int)flp).ToString(); }, targetLP < 0 ? 0 : targetLP, 1.2f); // TODO: tween in tween
                 Destroy(obj);
             }));
 
@@ -1841,11 +1840,11 @@ namespace MDPro3.Servant
             DuelBGManager.SetExDeckTop(card);
         }
 
-        public async UniTask UpdateExDeckTop(uint controller, GameCard card = null)
+        public void UpdateExDeckTop(uint controller)
         {
             if (DuelBGManager == null)
                 return;
-            await DuelBGManager.UpdateExDeckTop(controller, card);
+            DuelBGManager.UpdateExDeckTop(controller);
         }
 
         public void RefreshBgState()

@@ -54,6 +54,7 @@ SpriteAtlas:
     - d1170b20ba9f5b942a262a329e484c24: 21300000
     - a819eb205bfd29e4ebe30ee7750bc3a8: 21300000
     - bbbb9f506e4881b4ba49b96292b2a6bc: 21300000
+    - 75a19d701da10f04f87c694fb256007c: 21300000
     - ff236fa0875202d459e8db4238756a3f: 21300000
     - c79497b0ca3edff4c91774bd322c41fd: 21300000
     - 23f27ac09f5d49b4a8620b9785092d49: 21300000
@@ -82,6 +83,7 @@ SpriteAtlas:
     - e268d4e3afda80949adfbc015f1ad860: 21300000
     - eced04f3791ab8c41958d07bbb7bd226: 21300000
     - c4500904c5f9ad64a9acbbc3420cd54d: 21300000
+    - fba62c14b9366204998a9d8f8cc2a0f7: 21300000
     - e5242c24cd3d2dd4a81b28a0b146fd83: 21300000
     - 48023f54bdf672148a45db8d22534827: 21300000
     - edf651846a214284a8aee899fb41fb5c: 21300000
@@ -161,6 +163,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: d1170b20ba9f5b942a262a329e484c24, type: 3}
   - {fileID: 21300000, guid: a819eb205bfd29e4ebe30ee7750bc3a8, type: 3}
   - {fileID: 21300000, guid: bbbb9f506e4881b4ba49b96292b2a6bc, type: 3}
+  - {fileID: 21300000, guid: 75a19d701da10f04f87c694fb256007c, type: 3}
   - {fileID: 21300000, guid: ff236fa0875202d459e8db4238756a3f, type: 3}
   - {fileID: 21300000, guid: c79497b0ca3edff4c91774bd322c41fd, type: 3}
   - {fileID: 21300000, guid: 23f27ac09f5d49b4a8620b9785092d49, type: 3}
@@ -189,6 +192,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: e268d4e3afda80949adfbc015f1ad860, type: 3}
   - {fileID: 21300000, guid: eced04f3791ab8c41958d07bbb7bd226, type: 3}
   - {fileID: 21300000, guid: c4500904c5f9ad64a9acbbc3420cd54d, type: 3}
+  - {fileID: 21300000, guid: fba62c14b9366204998a9d8f8cc2a0f7, type: 3}
   - {fileID: 21300000, guid: e5242c24cd3d2dd4a81b28a0b146fd83, type: 3}
   - {fileID: 21300000, guid: 48023f54bdf672148a45db8d22534827, type: 3}
   - {fileID: 21300000, guid: edf651846a214284a8aee899fb41fb5c, type: 3}
@@ -267,6 +271,7 @@ SpriteAtlas:
   - WallPaperIcon1130001
   - WallPaperIcon1135003
   - WallPaperIcon1130011
+  - WallPaperIcon1130104
   - WallPaperIcon1130092
   - WallPaperIcon1130027
   - WallPaperIcon1130019
@@ -295,6 +300,7 @@ SpriteAtlas:
   - WallPaperIcon1130065
   - WallPaperIcon1130085
   - WallPaperIcon1130091
+  - WallPaperIcon1130062
   - WallPaperIcon1130084
   - WallPaperIcon1130022
   - WallPaperIcon1130071

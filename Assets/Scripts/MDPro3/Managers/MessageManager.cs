@@ -75,7 +75,7 @@ namespace MDPro3
             rect.DOAnchorPosX(-50f, transitionTime);
             DOTween.To(v => { }, 0, 0, transitionTime + existTime).OnComplete(() =>
             {
-                rect.DOAnchorPosX(200f, transitionTime);
+                rect.DOAnchorPosX(200f, transitionTime); // TODO: tween in tween
             });
             DOTween.To(v => { }, 0, 0, existTime + transitionTime * 2).OnComplete(() =>
             {
@@ -133,7 +133,7 @@ namespace MDPro3
             rect.DOAnchorPosX(-10f, transitionTime);
             DOTween.To(v => { }, 0, 0, existTime + id).OnComplete(() =>
             {
-                rect.DOAnchorPosX(900f, transitionTime);
+                rect.DOAnchorPosX(900f, transitionTime); // TODO: tween in tween
             });
             DOTween.To(v => { }, 0, 0, existTime + transitionTime + id).OnComplete(() =>
             {

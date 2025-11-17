@@ -119,10 +119,10 @@ namespace MDPro3.UI
             Window.DOAnchorPosX(Width + SafeAreaAdapter.GetSafeAreaRightOffset(), TransitionTime)
                 .SetEase(Ease.OutQuart)
                 .OnComplete(() =>
-            {
-                shifting = false;
-                HideCompleteCallback();
-            });
+                {
+                    shifting = false;
+                    HideCompleteCallback();
+                });
 
             if (BG != null)
             {
