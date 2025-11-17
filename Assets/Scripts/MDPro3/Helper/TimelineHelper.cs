@@ -603,10 +603,10 @@ namespace MDPro3
 
             OcgCore.summonCard.UpdateExDeckTop();
 
-            var waitTime = 0.5f;
+            var interval = 0.5f;
             if (CutinViewer.HasCutin(code))
-                waitTime = 1f;
-            await OcgCore.summonCard.StartCardSequence(position, angle, waitTime).WaitAsync();
+                interval = 1f;
+            await OcgCore.summonCard.StartCardSequence(position, angle, interval).WaitAsync();
             dummyCard = null;
             OcgCore.summonCard = null;
         }

@@ -1794,6 +1794,26 @@ namespace MDPro3.Duel
                     }
                     return;
                 }
+                // 小丑与锁鸟
+                else if (code == 94145021)
+                {
+                    AudioManager.PlaySE("SE_EV_EF09279_v1");
+                    effect = GetCardEffectPrefab("Ef09279_Act01");
+                    var manager = effect.GetComponent<ElementObjectManager>();
+
+                    if (card.p.InMyControl())
+                    {
+                        UnityEngine.Object.Destroy(manager.GetElement("MainDeck"));
+                        DuelEffectUtil.SetDeckModelAppearance(manager.GetElement<ElementObjectManager>("EnMainDeck")
+                            , Core.GetLocationCardCount(CardLocation.Deck, 1), opDeck);
+                    }
+                    else
+                    {
+                        UnityEngine.Object.Destroy(manager.GetElement("EnMainDeck"));
+                        DuelEffectUtil.SetDeckModelAppearance(manager.GetElement<ElementObjectManager>("MainDeck")
+                            , Core.GetLocationCardCount(CardLocation.Deck, 0), myDeck);
+                    }
+                }
 
                 var director = effect.GetComponent<PlayableDirector>();
                 await director.WaitAsync();

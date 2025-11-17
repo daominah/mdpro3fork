@@ -1294,9 +1294,9 @@ namespace MDPro3
                         await CutinViewer.Play(data.Id, (int)p.controller);
                     }
                     if (data.IsHighLevel())
-                        await SequenceStrongSummon(sequence, position, rotation, 0).WaitAsync();
+                        await SequenceStrongSummon(sequence, position, rotation, 0, timePassed).WaitAsync();
                     else
-                        await SequenceNormalSummon(sequence, position, rotation, 0).WaitAsync();
+                        await SequenceNormalSummon(sequence, position, rotation, 0, timePassed).WaitAsync();
                     return;
                 }
             }
@@ -1312,9 +1312,9 @@ namespace MDPro3
                 if (cutin)
                     await CutinViewer.Play(data.Id, (int)p.controller);
                 if (data.IsHighLevel())
-                    await SequenceStrongSummon(sequence, position, rotation, 0).WaitAsync();
+                    await SequenceStrongSummon(sequence, position, rotation, 0, timePassed).WaitAsync();
                 else
-                    await SequenceNormalSummon(sequence, position, rotation, 0).WaitAsync();
+                    await SequenceNormalSummon(sequence, position, rotation, 0, timePassed).WaitAsync();
                 return;
             }
 
@@ -1475,7 +1475,7 @@ namespace MDPro3
             return u * u * p0 + 2 * u * t * p1 + t * t * p2;
         }
 
-        public Sequence StartCardSequence(Vector3 fromPosition, Vector3 fromRotation, float waitTime = 0f)
+        public Sequence StartCardSequence(Vector3 fromPosition, Vector3 fromRotation, float interval = 0f)
         {
             if (model == null)
                 return null;
@@ -1486,13 +1486,13 @@ namespace MDPro3
             var position = GetCardPosition(p);
             var rotaion = GetCardRotation(p);
             var sequence = DOTween.Sequence();
-            if(data.IsHighLevel())
-                return SequenceStrongSummon(sequence, position, rotaion, waitTime);
+            if (data.IsHighLevel())
+                return SequenceStrongSummon(sequence, position, rotaion, interval, 0f);
             else
-                return SequenceNormalSummon(sequence, position, rotaion, waitTime);
+                return SequenceNormalSummon(sequence, position, rotaion, interval, 0f);
         }
 
-        private Sequence SequenceStrongSummon(Sequence sequence, Vector3 position, Vector3 angle, float interval)
+        private Sequence SequenceStrongSummon(Sequence sequence, Vector3 position, Vector3 angle, float interval, float timePassed)
         {
             var cardPlane = manager.GetElement<Transform>("CardPlane");
             var pivot = manager.GetElement<Transform>("Pivot");
@@ -1516,14 +1516,14 @@ namespace MDPro3
             sequence.Join(pivot.DOLocalMove(Vector3.zero, 0.26f).SetEase(Ease.InOutSine));
             sequence.Join(pivot.DOLocalRotate(Vector3.zero, 0.26f).SetEase(Ease.InOutSine));
 
-            sequence.Insert(interval + 0.26f, pivot.DOLocalMoveY(10, 0.5f).SetEase(Ease.InOutQuart));
-            sequence.Insert(interval + 0.26f, pivot.DOLocalRotate(new Vector3(-35, 0, 0), 0.5f).SetEase(Ease.InOutQuart));
-
             sequence.Join(offset.DOLocalMove(Vector3.zero, 0.5f).SetEase(Ease.InOutSine));
             sequence.Join(offset.DOLocalRotate(Vector3.zero, 0.5f).SetEase(Ease.InOutSine));
             sequence.Join(turn.DOLocalRotate(new Vector3(0, (angle.y == 0) || (angle.y == 180) ? 0 : 270, angle.z), 0.3f).SetEase(Ease.InOutSine));
 
             sequence.AppendInterval(0.26f);
+            sequence.Insert(timePassed + interval + 0.26f, pivot.DOLocalMoveY(10, 0.5f).SetEase(Ease.InOutQuart));
+            sequence.Insert(timePassed + interval + 0.26f, pivot.DOLocalRotate(new Vector3(-35, 0, 0), 0.5f).SetEase(Ease.InOutQuart));
+
             sequence.Append(pivot.DOLocalRotate(Vector3.zero, 0.14f).SetEase(Ease.InQuart));
             sequence.Join(pivot.DOLocalMoveY(0, 0.14f).SetEase(Ease.InQuart));
             sequence.Join(manager.transform.DOMove(position, 0.14f).SetEase(Ease.InQuart));
@@ -1544,7 +1544,7 @@ namespace MDPro3
             return sequence;
         }
 
-        private Sequence SequenceNormalSummon(Sequence sequence, Vector3 position, Vector3 angle, float interval)
+        private Sequence SequenceNormalSummon(Sequence sequence, Vector3 position, Vector3 angle, float interval, float timePassed)
         {
             var cardPlane = manager.GetElement<Transform>("CardPlane");
             var pivot = manager.GetElement<Transform>("Pivot");
@@ -1567,14 +1567,13 @@ namespace MDPro3
             sequence.Join(pivot.DOLocalMove(Vector3.zero, 0.16f).SetEase(Ease.InOutSine));
             sequence.Join(pivot.DOLocalRotate(Vector3.zero, 0.16f).SetEase(Ease.InOutSine));
 
-            sequence.Insert(interval + 0.16f, pivot.DOLocalMoveY(5, 0.4f).SetEase(Ease.InOutQuart));
-            sequence.Insert(interval + 0.16f, pivot.DOLocalRotate(new Vector3(-15, 0, 0), 0.4f).SetEase(Ease.InOutQuart));
-
             sequence.Join(offset.DOLocalMove(Vector3.zero, 0.4f).SetEase(Ease.InOutSine));
             sequence.Join(offset.DOLocalRotate(Vector3.zero, 0.4f).SetEase(Ease.InOutSine));
             sequence.Join(turn.DOLocalRotate(new Vector3(0, (angle.y == 0) || (angle.y == 180) ? 0 : 270, angle.z), 0.2f).SetEase(Ease.InOutSine));
 
             sequence.AppendInterval(0.16f);
+            sequence.Insert(timePassed + interval + 0.16f, pivot.DOLocalMoveY(5, 0.4f).SetEase(Ease.InOutQuart));
+            sequence.Insert(timePassed + interval + 0.16f, pivot.DOLocalRotate(new Vector3(-15, 0, 0), 0.4f).SetEase(Ease.InOutQuart));
 
             sequence.Append(pivot.DOLocalRotate(Vector3.zero, 0.14f).SetEase(Ease.InQuart));
             sequence.Join(pivot.DOLocalMoveY(0, 0.14f).SetEase(Ease.InQuart));
