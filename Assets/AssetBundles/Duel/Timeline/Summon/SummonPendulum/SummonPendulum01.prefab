@@ -7459,6 +7459,22 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0.16865766
       objectReference: {fileID: 0}
+    - target: {fileID: 198145946691610353, guid: 8fbb653da5f9d054ab7de54d0777b931, type: 3}
+      propertyPath: lengthInSec
+      value: 2.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 198145946691610353, guid: 8fbb653da5f9d054ab7de54d0777b931, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 2.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 198405345196007189, guid: 8fbb653da5f9d054ab7de54d0777b931, type: 3}
+      propertyPath: lengthInSec
+      value: 2.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 198405345196007189, guid: 8fbb653da5f9d054ab7de54d0777b931, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 2.4
+      objectReference: {fileID: 0}
     - target: {fileID: 3009789816381792704, guid: 8fbb653da5f9d054ab7de54d0777b931, type: 3}
       propertyPath: m_InitialState
       value: 0
