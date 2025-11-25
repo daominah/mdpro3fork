@@ -83,7 +83,7 @@ namespace MDPro3.Duel.YGOSharp
                                 Directory.CreateDirectory(Program.PATH_TEMP_FOLDER);
                             var tempFile = Path.Combine(Path.GetFullPath(Program.PATH_TEMP_FOLDER), file);
                             e.Extract(Path.GetFullPath(Program.PATH_TEMP_FOLDER), ExtractExistingFileAction.OverwriteSilently);
-                            LoadCDB(tempFile, isPreCards : Path.GetFileName(zip.Name) == "ygopro-super-pre.ypk");
+                            LoadCDB(tempFile, isPreCards : Path.GetFileName(zip.Name) == "ygopro-super-pre.ypk" && file.ToLower().StartsWith("test-release"));
                             File.Delete(tempFile);
                         }
                     }
