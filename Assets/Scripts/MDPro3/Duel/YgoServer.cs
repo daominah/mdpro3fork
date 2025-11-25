@@ -1,4 +1,3 @@
-using System.IO;
 using System.Runtime.InteropServices;
 using System.Threading;
 
@@ -17,7 +16,7 @@ namespace MDPro3.Net
         public static Thread serverThread;
         public static void StartServer(string args)
         {
-            if(ServerRunning())
+            if (ServerRunning())
                 StopServer();
 
             serverThread = new Thread(() =>

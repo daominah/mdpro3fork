@@ -210,6 +210,8 @@ namespace MDPro3.Servant
         {
             if (servantUI == null)
                 return;
+            if (FromHandTest)
+                return;
 
             GetUI<RoomServantUI>().Realize();
         }
@@ -474,7 +476,8 @@ namespace MDPro3.Servant
 
         public void StocMessage_HsPlayerEnter(BinaryReader r)
         {
-            AudioManager.PlaySE("SE_ROOM_SITDOWN");
+            if(!FromHandTest)
+                AudioManager.PlaySE("SE_ROOM_SITDOWN");
             var name = r.ReadUnicode(20);
             var pos = r.ReadByte() & 3;
             var player = new Player();

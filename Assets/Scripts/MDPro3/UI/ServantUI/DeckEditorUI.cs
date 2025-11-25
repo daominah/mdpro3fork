@@ -230,7 +230,7 @@ namespace MDPro3.UI.ServantUI
         {
             base.AfterHideEvent();
 
-            if(!gotoAppearance || !RoomServant.FromHandTest)
+            if(!gotoAppearance && !RoomServant.FromHandTest)
                 Dispose();
         }
 
@@ -924,15 +924,22 @@ namespace MDPro3.UI.ServantUI
 
         public void OnHandTest()
         {
+            if (!DeckView.deckLoaded)
+                return;
+            if (condition == Condition.ChangeSide)
+                return;
+            if (!DeckIsFromLocal)
+            {
+                if (condition != Condition.ChangeSide)
+                    MessageManager.Toast(InterString.Get("请先保存卡组"));
+                return;
+            }
 
             _ = HandTestAsync();
         }
 
         private async UniTask HandTestAsync()
         {
-            UIManager.UIBlackIn(0.3f);
-            await UniTask.WaitForSeconds(0.3f);
-
             int port = 7911;
             while (!TcpHelper.IsPortAvailable(port))
             {
@@ -943,12 +950,12 @@ namespace MDPro3.UI.ServantUI
 
             string args = string.Format("{0} {1} {2} {3} {4} {5} {6} {7} {8} {9} {10} {11}",
                 port.ToString(),
-                BanlistManager.EmptyBanlistName,
+                "-1", // Banlist
                 "5", // Pool
                 "0", // Model
                 "F", // 
-                "F", // Check
-                "F", // Shuffle
+                "T", // No Check
+                "T", // No Shuffle
                 "8000", // Life Point
                 "5", // Hand
                 "1", // Time
@@ -960,9 +967,14 @@ namespace MDPro3.UI.ServantUI
             RoomServant.FromLocalHost = false;
             RoomServant.FromHandTest = true;
             YgoServer.StartServer(args);
-            await UniTask.Delay(50);
+
+            UIManager.UIBlackIn(0.3f);
+            await UniTask.WaitForSeconds(0.3f);
+
+            OcgCore.handler = Program.instance.room.Handler;
+
             Program.instance.solo.StartAIForHandTest(port);
-            await UniTask.Delay(50);
+            await UniTask.Delay(100);
             bool joined = false;
             TcpHelper.LinkStart("127.0.0.1", Config.Get("DuelPlayerName0", Config.EMPTY_STRING), port.ToString(), string.Empty, true, () => joined = true);
             await UniTask.WaitUntil(() => joined);
