@@ -674,6 +674,7 @@ namespace MDPro3.Duel
             data.isHero = player == 0;
             data.wait = false;
             data.delay = 0f;
+            voiceData.Add(data);
 
             return UniTask.CompletedTask;
         }
@@ -701,6 +702,7 @@ namespace MDPro3.Duel
             data.isHero = player == 0;
             data.wait = false;
             data.delay = 0f;
+            voiceData.Add(data);
 
             return UniTask.CompletedTask;
         }
