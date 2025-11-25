@@ -1,14 +1,16 @@
+using MDPro3.Duel.YGOSharp;
+using MDPro3.Net;
+using MDPro3.Servant;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Net;
+using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using UnityEngine;
-using MDPro3.Duel.YGOSharp;
-using MDPro3.Net;
-using System.Net;
-using MDPro3.Servant;
 
 namespace MDPro3
 {
@@ -183,10 +185,12 @@ namespace MDPro3
                                     Program.instance.room.StocMessage_ErrorMsg(r);
                                     break;
                                 case StocMessage.SelectHand:
-                                    Program.instance.room.StocMessage_SelectHand(r);
+                                    if(!RoomServant.FromHandTest)
+                                        Program.instance.room.StocMessage_SelectHand(r);
                                     break;
                                 case StocMessage.SelectTp:
-                                    Program.instance.room.StocMessage_SelectTp(r);
+                                    if(!RoomServant.FromHandTest)
+                                        Program.instance.room.StocMessage_SelectTp(r);
                                     break;
                                 case StocMessage.HandResult:
                                     Program.instance.room.StocMessage_HandResult(r);
@@ -342,6 +346,7 @@ namespace MDPro3
         }
 
         #region CtosMessage
+
         public static void CtosMessage_Response(byte[] response)
         {
             var message = new Package();
@@ -608,17 +613,52 @@ namespace MDPro3
 
         public static bool IsPortAvailable(int port)
         {
+            if (port < IPEndPoint.MinPort || port > IPEndPoint.MaxPort)
+            {
+                throw new ArgumentException($"指定的端口号 {port} 超出有效范围。");
+            }
+
+            bool? systemQueryResult = IsPortOccupiedBySystem(port);
+            if (systemQueryResult == true)
+                return false;
+
+            return TryBindSocket(port);
+        }
+
+        private static bool? IsPortOccupiedBySystem(int port)
+        {
+            try
+            {
+                IPGlobalProperties ipProperties = IPGlobalProperties.GetIPGlobalProperties();
+                IPEndPoint[] activeTcpListeners = ipProperties.GetActiveTcpListeners();
+
+                bool isInUse = activeTcpListeners.Any(endpoint => endpoint.Port == port);
+                return isInUse;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        private static bool TryBindSocket(int port)
+        {
             try
             {
                 using Socket socket = new(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                 socket.Bind(new IPEndPoint(IPAddress.Loopback, port));
                 return true;
             }
+            catch (SocketException)
+            {
+                return false;
+            }
             catch
             {
                 return false;
             }
         }
+
     }
 
     public class Package

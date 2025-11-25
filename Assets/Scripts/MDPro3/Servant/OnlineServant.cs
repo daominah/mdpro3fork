@@ -107,6 +107,7 @@ namespace MDPro3.Servant
 
             RoomServant.FromSolo = false;
             RoomServant.FromLocalHost = false;
+            RoomServant.FromHandTest = false;
             TcpHelper.LinkStart(ip, name, port, password, false, null);
         }
 
@@ -137,8 +138,11 @@ namespace MDPro3.Servant
                 serverArgs[9],
                 serverArgs[6],
                 "0");
+
             RoomServant.FromSolo = false;
             RoomServant.FromLocalHost = true;
+            RoomServant.FromHandTest = false;
+
             YgoServer.StartServer(args);
             TcpHelper.LinkStart("127.0.0.1", Config.Get("DuelPlayerName0", Config.EMPTY_STRING), port.ToString(), string.Empty, true, null);
         }

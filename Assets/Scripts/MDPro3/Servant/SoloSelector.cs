@@ -176,6 +176,14 @@ namespace MDPro3.Servant
                 Program.instance.ShiftToServant(Program.instance.room);
             }
         }
+
+        public void StartAIForHandTest(int port)
+        {
+            string aiCommand = GetWindBotCommand(0, false);
+            if (!string.IsNullOrEmpty(aiCommand))
+                StartWindBot(aiCommand, "127.0.0.1", port.ToString(), string.Empty, true, 0);
+        }
+
         private string GetRandomBot(string flag)
         {
             IList<BotInfo> foundBots = new List<BotInfo>();
@@ -236,6 +244,7 @@ namespace MDPro3.Servant
                 else
                     RoomServant.SoloLockHand = false;
                 RoomServant.FromLocalHost = false;
+                RoomServant.FromHandTest = false;
 
                 TcpHelper.LinkStart("127.0.0.1", Config.Get("DuelPlayerName0", Config.EMPTY_STRING), port, string.Empty, true
                     , () => StartWindBot(command, "127.0.0.1", port, string.Empty, lockHand, 0));

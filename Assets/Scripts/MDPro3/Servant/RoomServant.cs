@@ -38,6 +38,7 @@ namespace MDPro3.Servant
         public static bool FromSolo;
         public static bool SoloLockHand;
         public static bool FromLocalHost;
+        public static bool FromHandTest;
         public static int CoreShowing = 0;
 
         public class Player
@@ -193,6 +194,8 @@ namespace MDPro3.Servant
             OcgCore.lpLimit = StartLp;
             if(FromSolo)
                 Program.instance.ocgcore.returnServant = Program.instance.solo;
+            else if(FromHandTest)
+                Program.instance.ocgcore.returnServant = Program.instance.deckEditor;
             else
                 Program.instance.ocgcore.returnServant = Program.instance.online;
             if (SelfType == 7)
@@ -410,7 +413,8 @@ namespace MDPro3.Servant
             for (int i = 0; i < 4; i++)
                 players[i] = null;
 
-            Program.instance.ShiftToServant(Program.instance.room);
+            if(!FromHandTest)
+                Program.instance.ShiftToServant(Program.instance.room);
         }
 
         public void StocMessage_TypeChange(BinaryReader r)
@@ -434,7 +438,8 @@ namespace MDPro3.Servant
             if (Program.instance.deckEditor.showing)
             {
                 Program.instance.deckEditor.Hide(0);
-                MessageManager.Cast(InterString.Get("更换副卡组成功，请等待对手更换副卡组。"));
+                if(!FromHandTest)
+                    MessageManager.Cast(InterString.Get("更换副卡组成功，请等待对手更换副卡组。"));
             }
 
             if (showing)
