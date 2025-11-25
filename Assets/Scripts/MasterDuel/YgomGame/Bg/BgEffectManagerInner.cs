@@ -274,12 +274,20 @@ namespace YgomGame.Bg
             }
 
 			var se = "SE_FIELD_MAT" + name.Substring(4, 3) + "_TAP";
-			AudioManager.PlaySE(se);
+			try
+			{
+                AudioManager.PlaySE(se);
+            }
+            catch { }
 			if (name.ToLower().Contains("near"))
 				se += "_P";
 			else
 				se += "_R";
-            AudioManager.PlaySE(se);
+            try
+            {
+                AudioManager.PlaySE(se);
+            }
+            catch { }
         }
 
         public bool IsTapPlaying()

@@ -1349,9 +1349,9 @@ namespace MDPro3
             if (p.InLocation(CardLocation.Removed)
                 || p.InLocation(CardLocation.Deck)
                 || p.InLocation(CardLocation.Extra))
-                sequence.Join(turn.DOLocalRotate(new Vector3(0, 0, rotation.z), moveTime * 0.8f));
+                sequence.Join(turn.DOLocalRotate(new Vector3(0, 0, rotation.z), moveTime * 0.6f));
             else
-                sequence.Join(turn.DOLocalRotate(new Vector3(0, (rotation.y == 0) || (rotation.y == 180) ? 0 : 270, rotation.z), moveTime * 0.8f).SetEase(ease));
+                sequence.Join(turn.DOLocalRotate(new Vector3(0, (rotation.y == 0) || (rotation.y == 180) ? 0 : 270, rotation.z), moveTime * 0.6f).SetEase(ease));
             if (handAppeal && overrideMoveTime == 0)
             {
                 sequence.Join(turn.DOLocalMove(new Vector3(0, 0, 10), moveTime).SetEase(Ease.OutCubic).OnComplete(() =>
