@@ -1,4 +1,4 @@
-﻿// Better Streaming Assets, Piotr Gwiazdowski <gwiazdorrr+github at gmail.com>, 2017
+// Better Streaming Assets, Piotr Gwiazdowski <gwiazdorrr+github at gmail.com>, 2017
 
 using System;
 using System.Collections.Generic;
@@ -642,12 +642,12 @@ public static partial class BetterStreamingAssets
                                 }
                                 else 
                                 { 
-                                    Debug.LogAssertionFormat($"BetterStreamingAssets: file {fileName} is where Streaming Assets are put, but is compressed. " +
-                                        $"If this is a App Bundle build, see README.md for a possible workaround. " +
-                                        $"If this file is not a Streaming Asset (has been on purpose by hand or by another plug-in), handle " +
-                                        $"{nameof(CompressedStreamingAssetFound)} event or implement " +
-                                        $"{nameof(AndroidIsCompressedFileStreamingAsset)} partial method to prevent " +
-                                        $"this message from appearing again. ");
+                                    //Debug.LogAssertionFormat($"BetterStreamingAssets: file {fileName} is where Streaming Assets are put, but is compressed. " +
+                                    //    $"If this is a App Bundle build, see README.md for a possible workaround. " +
+                                    //    $"If this file is not a Streaming Asset (has been on purpose by hand or by another plug-in), handle " +
+                                    //    $"{nameof(CompressedStreamingAssetFound)} event or implement " +
+                                    //    $"{nameof(AndroidIsCompressedFileStreamingAsset)} partial method to prevent " +
+                                    //    $"this message from appearing again. ");
                                 }
                             }
 #endif

@@ -238,7 +238,6 @@ namespace MDPro3.Servant
             {
                 Debug.Log($"ReturnTo: {returnServant}");
                 Program.instance.ShiftToServant(returnServant);
-
             }
             else
             {
@@ -589,8 +588,6 @@ namespace MDPro3.Servant
             {
                 if (manual)
                 {
-                    Debug.Log("mark7");
-
                     surrendered = false;
                     RoomServant.NeedSide = false;
                     RoomServant.SideWaitingObserver = false;

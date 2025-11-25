@@ -364,7 +364,6 @@ namespace MDPro3.UI.ServantUI
             ShowPopupInput(selections, OnSaveReplay, OnGiveUpReplay, InputValidation.ValidationType.Path);
         }
 
-
         private void OnSaveReplay(string replayName)
         {
             TcpHelper.SaveRecord(replayName);

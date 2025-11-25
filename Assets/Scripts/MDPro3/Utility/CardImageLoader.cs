@@ -69,6 +69,7 @@ namespace MDPro3.Utility
             bool persistent = false,
             CancellationToken token = default)
         {
+
             var lockObj = artLoadingLocks.GetOrAdd(code, _ => new SemaphoreSlim(1, 1));
             await lockObj.WaitAsync(token);
 
@@ -76,15 +77,18 @@ namespace MDPro3.Utility
             {
                 if (cachedArts.TryGetValue(code, out var entry))
                 {
+
                     if (entry.LoadingTask != null)
                         await entry.LoadingTask.AsUniTask().AttachExternalCancellation(token);
                     if (entry.Texture != null)
                     {
+
                         Interlocked.Increment(ref entry.ReferenceCount);
                         entry.IsPersistent |= persistent;
                     }
                     else
                         Debug.LogError($"Art texture is null for code {code}");
+
                     return entry.Texture;
                 }
 
@@ -95,6 +99,7 @@ namespace MDPro3.Utility
 
                 if (cachedArts.TryAdd(code, newEntry))
                 {
+
                     newEntry.ReferenceCount = 1;
                     newEntry.IsPersistent = persistent;
                     try
@@ -107,7 +112,7 @@ namespace MDPro3.Utility
                         throw ex;
                     }
                     if (newEntry.Texture == null)
-                        Debug.Log($"{code} art is null");
+                        Debug.LogError($"{code} art is null");
 
                     newEntry.LoadingTask = null;
                     return newEntry.Texture;
@@ -151,7 +156,6 @@ namespace MDPro3.Utility
         {
             var lockObj = cardLoadingLocks.GetOrAdd(code, _ => new SemaphoreSlim(1, 1));
             await lockObj.WaitAsync(token);
-
             try
             {
                 if (!CardRenderer.CardHasVideoArt(code) || forceTexture)
@@ -189,18 +193,17 @@ namespace MDPro3.Utility
                             throw ex;
                         }
                         newEntry.LoadingTask = null;
-
                         return newEntry.Texture;
                     }
                     else
                     {
-                        Debug.LogError("CardImageLoader: Unexpected Errror.");
+                        Debug.LogError("CardImageLoader: Unexpected Error.");
                         return null;
                     }
                 }
                 else
                 {
-                    if(cachedVideoCards.TryGetValue(code, out var tex))
+                    if (cachedVideoCards.TryGetValue(code, out var tex))
                         return tex;
                     Texture texture = null;
                     texture = await InternalLoadVideoCardAsync(code, token);
@@ -290,6 +293,7 @@ namespace MDPro3.Utility
                         lastCardFoundArt = false;
                         return null;
                     }
+
                     if (needCrop)
                         art = CropCardToArt(art, code);
                     return art;
@@ -320,7 +324,10 @@ namespace MDPro3.Utility
                 }
                 return DownloadHandlerTexture.GetContent(request);
             }
-            finally { artSemaphore.Release(); }
+            finally 
+            {
+                artSemaphore.Release(); 
+            }
         }
 
         private static async Task<Texture2D> InternalLoadCardAsync(
@@ -333,6 +340,7 @@ namespace MDPro3.Utility
 
             try
             {
+
                 var data = CardsManager.Get(code, true);
                 if (data.Id == 0)
                 {
@@ -346,7 +354,7 @@ namespace MDPro3.Utility
 
                 if (art == null)
                 {
-                    Debug.Log($"Get null from ArtLoad for Card {data.Id}:");
+                    Debug.LogError($"Get null from ArtLoad for Card {data.Id}:");
                     art = TextureManager.container.unknownArt.texture;
                 }
                 if (!Program.instance.cardRenderer.RenderCard(code, art))
@@ -361,6 +369,7 @@ namespace MDPro3.Utility
                 returnValue.Apply();
                 returnValue.name = "Card_" + code;
                 ReleaseArt(code);
+
                 return returnValue;
             }
             finally { cardSemaphore.Release(); }
@@ -382,14 +391,13 @@ namespace MDPro3.Utility
                     lastCardRenderSucceed = false;
                     return TextureManager.container.unknownCard.texture;
                 }
-
                 var art = await LoadArtAsync(code, false, token).AsUniTask().AttachExternalCancellation(token);
                 if (token.IsCancellationRequested)
                     throw new OperationCanceledException(token);
 
                 if (art == null)
                 {
-                    Debug.Log($"Get null from ArtLoad for Card {data.Id}:");
+                    Debug.LogError($"Get null from ArtLoad for Card {data.Id}:");
                     art = TextureManager.container.unknownArt.texture;
                 }
 
@@ -558,13 +566,14 @@ namespace MDPro3.Utility
         private static async UniTask InitializeArtFileListAsync()
         {
             if (artFileListInitialized) return;
-            await UniTask.SwitchToThreadPool();
+            //await UniTask.SwitchToThreadPool();
+            await UniTask.Yield();
 
             var path = Program.PATH_ART;
 #if !UNITY_EDITOR && (UNITY_ANDROID || UNITY_IOS)
-                path = Path.Combine(Application.persistentDataPath, path);
+            path = Path.Combine(Application.persistentDataPath, path);
 #elif UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX || UNITY_STANDALONE_LINUX
-                path = Path.Combine(Environment.CurrentDirectory, path);
+            path = Path.Combine(Environment.CurrentDirectory, path);
 #else
             path = Path.Combine(Environment.CurrentDirectory, path);
 #endif
@@ -639,19 +648,20 @@ namespace MDPro3.Utility
         private static async UniTask InitializeVideoArtFileListAsync()
         {
             if (videoArtFileListInitialized) return;
-            await UniTask.SwitchToThreadPool();
 
             var path = Program.PATH_VIDEO_ART;
 #if !UNITY_EDITOR && (UNITY_ANDROID || UNITY_IOS)
-                path = Path.Combine(Application.persistentDataPath, path);
+            path = Path.Combine(Application.persistentDataPath, path);
 #elif UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX || UNITY_STANDALONE_LINUX
-                path = Path.Combine(Environment.CurrentDirectory, path);
+            path = Path.Combine(Environment.CurrentDirectory, path);
 #else
             path = Path.Combine(Environment.CurrentDirectory, path);
 #endif
 
             if (Directory.Exists(path))
             {
+                //await UniTask.SwitchToThreadPool();
+                await UniTask.Yield();
                 foreach (var file in Directory.GetFiles(path, "*.mp4"))
                 {
                     var fileName = Path.GetFileNameWithoutExtension(file);
