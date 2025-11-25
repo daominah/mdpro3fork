@@ -257,6 +257,8 @@ namespace MDPro3.Servant
             GetUI<OnlineServantUI>().PageMyCard.ButtonDeckSelector.SetConfigDeck(InterString.Get("未选中有效卡组"));
         }
 
+        private float timeError = 3f;
+
         private IEnumerator SyncDecks()
         {
             if (OnlineDeck.decks == null)
@@ -271,8 +273,8 @@ namespace MDPro3.Servant
                 decks.Add(new Deck(deckPath));
 
             var decksNeedUpload = new Dictionary<string, Deck>();//没在服务器找到对应的deckId的本地卡组
-            var decksNeedUpdateToServer = new Dictionary<string, Deck>();//找到deckId但本地时间大于服务器时间五秒以上的卡组
-            var decksNeedUpdateFromServer = new Dictionary<string, Deck>();//找到deckId但本地时间小于服务器时间五秒以上的卡组
+            var decksNeedUpdateToServer = new Dictionary<string, Deck>();//找到deckId但本地时间大于服务器时间timeError秒以上的卡组
+            var decksNeedUpdateFromServer = new Dictionary<string, Deck>();//找到deckId但本地时间小于服务器时间timeError秒以上的卡组
             var localFoundIds = new List<string>();
 
             for (int i = 0; i < decks.Count; i++)
@@ -303,11 +305,11 @@ namespace MDPro3.Servant
                             var serverTime = od.GetUpdateUtcTime();
                             var diff = serverTime - fileInfo.LastWriteTimeUtc;
 
-                            //Debug.Log($"{od.deckName}: serverTime: {serverTime} localTime: {fileInfo.LastWriteTimeUtc} diff: {diff.TotalSeconds}");
+                            //Debug.Log($"{od.deckName}: serverTimeUtc: {od.GetUpdateUtcTime()}, serverTimeLocal: {od.GetUpdateLocalTime()} localTime: {fileInfo.LastWriteTimeUtc} diff: {diff.TotalSeconds}");
 
-                            if (diff.TotalSeconds > 1f || diff.TotalSeconds < -1f)
+                            if (diff.TotalSeconds > timeError || diff.TotalSeconds < -timeError)
                             {
-                                if (fileInfo.LastWriteTime > serverTime)
+                                if (fileInfo.LastWriteTimeUtc > serverTime)
                                     decksNeedUpdateToServer.Add(deckName, decks[i]);
                                 else
                                     decksNeedUpdateFromServer.Add(deckName, decks[i]);
@@ -328,7 +330,6 @@ namespace MDPro3.Servant
                 var task = OnlineDeck.SyncDeck(deck.Value.deckId, deck.Key, deck.Value, time, false);
                 while (!task.IsCompleted)
                     yield return null;
-                deck.Value.Save(deck.Key, time, false);
             }
             //更新已经有Id的本地较旧卡组
             foreach (var deck in decksNeedUpdateFromServer)

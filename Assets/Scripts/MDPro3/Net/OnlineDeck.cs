@@ -477,13 +477,13 @@ namespace MDPro3.Net
 
             public DateTime GetUpdateUtcTime()
             {
-                var dataTimeOffset = DateTimeOffset.FromUnixTimeSeconds(deckUpdateDate / 1000);
+                var dataTimeOffset = DateTimeOffset.FromUnixTimeMilliseconds(deckUpdateDate - 28800000);
                 return dataTimeOffset.UtcDateTime;
             }
 
             public DateTime GetOnlineDeckLocalTime()
             {
-                var dataTimeOffset = DateTimeOffset.FromUnixTimeSeconds(lastDate / 1000);
+                var dataTimeOffset = DateTimeOffset.FromUnixTimeMilliseconds(lastDate);
                 return dataTimeOffset.LocalDateTime;
             }
         }

@@ -977,7 +977,6 @@ namespace MDPro3.UI.ServantUI
 
         }
 
-
         private void OnClearDeck()
         {
             var codes = new List<int>();
