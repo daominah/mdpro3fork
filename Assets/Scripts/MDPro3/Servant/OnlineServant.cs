@@ -305,7 +305,7 @@ namespace MDPro3.Servant
                             var serverTime = od.GetUpdateUtcTime();
                             var diff = serverTime - fileInfo.LastWriteTimeUtc;
 
-                            //Debug.Log($"{od.deckName}: serverTimeUtc: {od.GetUpdateUtcTime()}, serverTimeLocal: {od.GetUpdateLocalTime()} localTime: {fileInfo.LastWriteTimeUtc} diff: {diff.TotalSeconds}");
+                            //Debug.Log($"{od.deckName}: serverTimeUtc: {od.GetUpdateUtcTime()}, localTime: {fileInfo.LastWriteTimeUtc} diff: {diff.TotalSeconds}");
 
                             if (diff.TotalSeconds > timeError || diff.TotalSeconds < -timeError)
                             {

@@ -190,8 +190,9 @@ namespace MDPro3.UI
                     }
                 }
             }
-            else{
-                if (path.StartsWith("WallPaperIcon"))
+            else
+            {
+                if (AppearanceUI.currentContent == "Wallpaper")
                     Config.Set("Wallpaper", itemID.ToString());
                 else
                     Config.Set(Appearance.condition.ToString() + AppearanceUI.currentContent + Appearance.player, itemID.ToString());

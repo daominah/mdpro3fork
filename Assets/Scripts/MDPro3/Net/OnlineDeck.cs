@@ -225,7 +225,7 @@ namespace MDPro3.Net
                     deckProtector = decks[i].Protector,
                     isDelete = false,
                     deckYdk = decks[i].GetYDK(),
-                    timeStamp = ((DateTimeOffset)DateTime.UtcNow).ToUnixTimeMilliseconds()
+                    //timeStamp = ((DateTimeOffset)DateTime.UtcNow).ToUnixTimeMilliseconds()
                 };
 
                 decks[i].deckId = ids[i];
@@ -279,7 +279,7 @@ namespace MDPro3.Net
             {
                 userId = MyCard.account.user.id,
                 deckContributor = MyCard.account.user.username,
-                deck = new PostDeck(deck, deckId, deckName, ydk, time)
+                deck = new PostDeck(deck, deckId, deckName, ydk/*, time*/)
             };
 
             var json = JsonUtility.ToJson(body);
@@ -576,14 +576,18 @@ namespace MDPro3.Net
             public int deckProtector;
             public string deckYdk;
             public bool isDelete;
-            public long timeStamp;
+            //public long timeStamp;
+
+            //public PostDeck()
+            //{
+            //    timeStamp = ((DateTimeOffset)DateTime.UtcNow).ToUnixTimeMilliseconds();
+            //}
 
             public PostDeck()
             {
-                timeStamp = ((DateTimeOffset)DateTime.UtcNow).ToUnixTimeMilliseconds();
             }
 
-            public PostDeck(Deck deck, string deckId, string deckName, string ydk, DateTime time)
+            public PostDeck(Deck deck, string deckId, string deckName, string ydk/*, DateTime timeUtc*/)
             {
                 this.deckId = deckId;
                 this.deckName = deckName;
@@ -597,7 +601,7 @@ namespace MDPro3.Net
                 deckProtector = deck.Protector;
                 deckYdk = ydk;
                 isDelete = false;
-                timeStamp = ((DateTimeOffset)time.ToUniversalTime()).ToUnixTimeMilliseconds();
+                //timeStamp = ((DateTimeOffset)timeUtc).ToUnixTimeMilliseconds();
             }
 
         }

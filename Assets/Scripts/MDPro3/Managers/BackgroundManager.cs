@@ -81,7 +81,7 @@ namespace MDPro3
                 id = 10;
 
             var endString = id.ToString("D4");
-            back = ABLoader.LoadFromFolder<SpriteScaler>("MasterDuel/Background/Back" + endString, true, true);
+            back = ABLoader.LoadFromFolder<SpriteRenderer>("MasterDuel/Background/Back" + endString, true, true);
             if (back.TryGetComponent<SpriteScaler>(out var spriteScaler))
             {
                 spriteScaler.isApplyOnUpdate = true;

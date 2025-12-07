@@ -462,6 +462,7 @@ namespace MDPro3.UI.ServantUI
                         itemMono.Refresh();
                         currentList.Add(item);
                     }
+
                     if (Program.items.ListHaveSame(targetItems))
                     {
                         GameObject item = Instantiate(Template);
