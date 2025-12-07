@@ -3,6 +3,7 @@ using DG.Tweening;
 using MDPro3.Duel.YGOSharp;
 using MDPro3.UI;
 using MDPro3.UI.ServantUI;
+using Spine.Unity;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -228,7 +229,8 @@ namespace MDPro3.Servant
             GameObject cutin = null;
             bool diy = false;
             if (codes.Contains(code))
-                cutin = await ABLoader.LoadFromFolderAsync<PlayableDirector>("MonsterCutin/" + code, false, true);
+                //cutin = await ABLoader.LoadFromFolderAsync<PlayableDirector>("MonsterCutin/" + code, false, true);
+                cutin = await ABLoader.LoadMonsterCutinAsync(code);
             else
             {
                 cutin = await ABLoader.LoadFromFileAsync("MonsterCutin2/" + code, false, true);
@@ -243,17 +245,17 @@ namespace MDPro3.Servant
 
             //BackEffects
             string backPath;
-            if ((card.Attribute & (uint)CardAttribute.Dark) > 0) // 125
+            if (card.IsAttribute(CardAttribute.Dark)) // 125
                 backPath = "SummonMonster_Bgdak_S2";
-            else if ((card.Attribute & (uint)CardAttribute.Light) > 0) // 100
+            else if (card.IsAttribute(CardAttribute.Light)) // 100
                 backPath = "SummonMonster_Bglit_S2";
-            else if ((card.Attribute & (uint)CardAttribute.Earth) > 0) // 56
+            else if (card.IsAttribute(CardAttribute.Earth)) // 56
                 backPath = "SummonMonster_Bgeah_S2";
-            else if ((card.Attribute & (uint)CardAttribute.Water) > 0) // 35
+            else if (card.IsAttribute(CardAttribute.Water)) // 35
                 backPath = "SummonMonster_Bgwtr_S2";
-            else if ((card.Attribute & (uint)CardAttribute.Fire) > 0) // 31
+            else if (card.IsAttribute(CardAttribute.Fire)) // 31
                 backPath = "SummonMonster_Bgfie_S2";
-            else if ((card.Attribute & (uint)CardAttribute.Wind) > 0) // 25
+            else if (card.IsAttribute(CardAttribute.Wind)) // 25
                 backPath = "SummonMonster_Bgwid_S2";
             else // 4
                 backPath = "SummonMonster_Bgdve_S2";
