@@ -13,9 +13,15 @@ namespace MDPro3.UI
         public int code;
         public string cardName;
 
+        private Color colorForDiyCutin = Color.gray;
+
         public override void Refresh()
         {
             Manager.GetElement<TextMeshProUGUI>("ButtonText").text = cardName;
+            if(CutinViewer.codes.Contains(code))
+                Manager.GetElement<TextMeshProUGUI>("ButtonText").color = Color.white;
+            else
+                Manager.GetElement<TextMeshProUGUI>("ButtonText").color = colorForDiyCutin;
         }
         protected override void CallSubmitEvent()
         {
