@@ -66,6 +66,7 @@ SpriteAtlas:
     - 61b298f2bdc90894e828b3ef55f6d5b6: 21300000
     - 71a9cf130a03fe84fbda78dc6220f181: 21300000
     - 8f9b5943eaa391a4394fbc60cc6d405c: 21300000
+    - 8ff0cc93d3b75174da349bac25880c70: 21300000
     - c5d443a39f49dd44bbd12ca6ccf5da64: 21300000
     - c5b575e39cde4ec4087a6625819d45d9: 21300000
     - aac882f3a1ac43940b4caf3351023b5f: 21300000
@@ -83,6 +84,7 @@ SpriteAtlas:
     - cca57b566a221754e8e4f0b51c4b1a41: 21300000
     - 10d9ada699f5b0244b063b7442bdbe59: 21300000
     - c40da6b6094467942a312fcfb929ef9b: 21300000
+    - 515401d6fef1349439a0c2b8fec2bf2b: 21300000
     - 123a09371f3b3c747a4519f7af922b37: 21300000
     - bf0aeb876c71b6643b2698b877bc123e: 21300000
     - 30d0ed97b40470d4ea490f8026e3927f: 21300000
@@ -160,6 +162,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 61b298f2bdc90894e828b3ef55f6d5b6, type: 3}
   - {fileID: 21300000, guid: 71a9cf130a03fe84fbda78dc6220f181, type: 3}
   - {fileID: 21300000, guid: 8f9b5943eaa391a4394fbc60cc6d405c, type: 3}
+  - {fileID: 21300000, guid: 8ff0cc93d3b75174da349bac25880c70, type: 3}
   - {fileID: 21300000, guid: c5d443a39f49dd44bbd12ca6ccf5da64, type: 3}
   - {fileID: 21300000, guid: c5b575e39cde4ec4087a6625819d45d9, type: 3}
   - {fileID: 21300000, guid: aac882f3a1ac43940b4caf3351023b5f, type: 3}
@@ -177,6 +180,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: cca57b566a221754e8e4f0b51c4b1a41, type: 3}
   - {fileID: 21300000, guid: 10d9ada699f5b0244b063b7442bdbe59, type: 3}
   - {fileID: 21300000, guid: c40da6b6094467942a312fcfb929ef9b, type: 3}
+  - {fileID: 21300000, guid: 515401d6fef1349439a0c2b8fec2bf2b, type: 3}
   - {fileID: 21300000, guid: 123a09371f3b3c747a4519f7af922b37, type: 3}
   - {fileID: 21300000, guid: bf0aeb876c71b6643b2698b877bc123e, type: 3}
   - {fileID: 21300000, guid: 30d0ed97b40470d4ea490f8026e3927f, type: 3}
@@ -253,6 +257,7 @@ SpriteAtlas:
   - 1000021
   - 1001023
   - 1000013
+  - 1000035
   - 1001026
   - 1001018
   - 1000025
@@ -270,6 +275,7 @@ SpriteAtlas:
   - 1000012
   - 1002002
   - 1001009
+  - 1001038
   - 1001034
   - 1000041
   - 1001031

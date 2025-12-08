@@ -92,6 +92,7 @@ SpriteAtlas:
     - df5c6e789cbde1f438e35884115af347: 21300000
     - e6ae7cb81ddea34429165377f4a728aa: 21300000
     - d00c49e800f27f144adc7903a466aa89: 21300000
+    - 79cfebf8f6a91a34ea9554d12acf381a: 21300000
     - 682e0199ae820f345ba730e64d111fde: 21300000
     - e4a10c998b5ea8e40823678f25b5099d: 21300000
     - 265071e976413fd448eb7713bb601d9c: 21300000
@@ -100,6 +101,7 @@ SpriteAtlas:
     - f0d7c45b077ec8546bc17f6522ce7709: 21300000
     - ed14ef6b57c016845a3f271803d9603b: 21300000
     - 082d91cb8b250b84e8ad006d8d6b6ce4: 21300000
+    - 8cfe0fdbdac54a8408d5eb0dd9b47117: 21300000
     - a8f749ebbce1ed740ab9561f0a74c758: 21300000
     - 6677642cf139aef43afe900f7c04ef2f: 21300000
     - c25b177c0f1d95845af71b1a0b50edcf: 21300000
@@ -161,6 +163,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: df5c6e789cbde1f438e35884115af347, type: 3}
   - {fileID: 21300000, guid: e6ae7cb81ddea34429165377f4a728aa, type: 3}
   - {fileID: 21300000, guid: d00c49e800f27f144adc7903a466aa89, type: 3}
+  - {fileID: 21300000, guid: 79cfebf8f6a91a34ea9554d12acf381a, type: 3}
   - {fileID: 21300000, guid: 682e0199ae820f345ba730e64d111fde, type: 3}
   - {fileID: 21300000, guid: e4a10c998b5ea8e40823678f25b5099d, type: 3}
   - {fileID: 21300000, guid: 265071e976413fd448eb7713bb601d9c, type: 3}
@@ -169,6 +172,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: f0d7c45b077ec8546bc17f6522ce7709, type: 3}
   - {fileID: 21300000, guid: ed14ef6b57c016845a3f271803d9603b, type: 3}
   - {fileID: 21300000, guid: 082d91cb8b250b84e8ad006d8d6b6ce4, type: 3}
+  - {fileID: 21300000, guid: 8cfe0fdbdac54a8408d5eb0dd9b47117, type: 3}
   - {fileID: 21300000, guid: a8f749ebbce1ed740ab9561f0a74c758, type: 3}
   - {fileID: 21300000, guid: 6677642cf139aef43afe900f7c04ef2f, type: 3}
   - {fileID: 21300000, guid: c25b177c0f1d95845af71b1a0b50edcf, type: 3}
@@ -229,6 +233,7 @@ SpriteAtlas:
   - DeckCase1013
   - DeckCase0023
   - DeckCase2010
+  - DeckCase2024
   - DeckCase2017
   - DeckCase2004
   - DeckCase0024
@@ -237,6 +242,7 @@ SpriteAtlas:
   - DeckCase0013
   - DeckCase2009
   - DeckCase2008
+  - DeckCase2025
   - DeckCase2015
   - DeckCase0002
   - DeckCase0001

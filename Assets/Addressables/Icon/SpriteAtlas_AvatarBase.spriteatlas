@@ -59,6 +59,7 @@ SpriteAtlas:
     - 015a8041574bab14783d9abfff32485f: 21300000
     - 0664b74104ac6ad418026ca06dc55833: 21300000
     - fde7a5c1da533e143a447253cc63b183: 21300000
+    - 20899012990b36349b4aaa9477329f65: 21300000
     - 24e0d34287308264091f3f58455dee42: 21300000
     - a4f8e572e2d02c648ac36c1761560004: 21300000
     - a6a2f482fc9889748aa2f48a7e5a41f6: 21300000
@@ -100,6 +101,7 @@ SpriteAtlas:
     - bf4596c790527684e926582d802b037c: 21300000
     - c9924e3871b66c240bd1b5f2abc2dd32: 21300000
     - 8e36a15869ea93a4abe211afd87a9aa6: 21300000
+    - ad6f40681f226ab46adbba18b4c67ad9: 21300000
     - c3cc1188bff836d44a711c3df2ea59de: 21300000
     - ade10b8840859424985fad1f4c7b25c0: 21300000
     - dd635e98864ffb74da3ebde629d5ea8b: 21300000
@@ -152,6 +154,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 015a8041574bab14783d9abfff32485f, type: 3}
   - {fileID: 21300000, guid: 0664b74104ac6ad418026ca06dc55833, type: 3}
   - {fileID: 21300000, guid: fde7a5c1da533e143a447253cc63b183, type: 3}
+  - {fileID: 21300000, guid: 20899012990b36349b4aaa9477329f65, type: 3}
   - {fileID: 21300000, guid: 24e0d34287308264091f3f58455dee42, type: 3}
   - {fileID: 21300000, guid: a4f8e572e2d02c648ac36c1761560004, type: 3}
   - {fileID: 21300000, guid: a6a2f482fc9889748aa2f48a7e5a41f6, type: 3}
@@ -193,6 +196,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: bf4596c790527684e926582d802b037c, type: 3}
   - {fileID: 21300000, guid: c9924e3871b66c240bd1b5f2abc2dd32, type: 3}
   - {fileID: 21300000, guid: 8e36a15869ea93a4abe211afd87a9aa6, type: 3}
+  - {fileID: 21300000, guid: ad6f40681f226ab46adbba18b4c67ad9, type: 3}
   - {fileID: 21300000, guid: c3cc1188bff836d44a711c3df2ea59de, type: 3}
   - {fileID: 21300000, guid: ade10b8840859424985fad1f4c7b25c0, type: 3}
   - {fileID: 21300000, guid: dd635e98864ffb74da3ebde629d5ea8b, type: 3}
@@ -244,6 +248,7 @@ SpriteAtlas:
   - FieldAvatarBaseIcon1110016
   - FieldAvatarBaseIcon1112002
   - FieldAvatarBaseIcon1110023
+  - FieldAvatarBaseIcon1111071
   - FieldAvatarBaseIcon1111062
   - FieldAvatarBaseIcon1110014
   - FieldAvatarBaseIcon1111014
@@ -285,6 +290,7 @@ SpriteAtlas:
   - FieldAvatarBaseIcon1112001
   - FieldAvatarBaseIcon1111048
   - FieldAvatarBaseIcon1111064
+  - FieldAvatarBaseIcon1110037
   - FieldAvatarBaseIcon1110031
   - FieldAvatarBaseIcon1111011
   - FieldAvatarBaseIcon1110024
