@@ -101,6 +101,8 @@ namespace MDPro3.Duel
             UIManager.UIBlackIn(Core.TransitionTime);
             await UniTask.WaitForSeconds(Core.TransitionTime);
             await UniTask.WaitUntil(() => Appearance.loaded);
+            await ABLoader.CacheMasterDuelBundles();
+            Program.instance.ocgcore.LoadDuelButton();
 
             CameraManager.ShiftTo3D();
             UIManager.HideExitButton(0);

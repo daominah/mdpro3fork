@@ -118,7 +118,7 @@ namespace MDPro3
             OnlineService.Initialize();
 
             if(!ABLoader.mdCached)
-                await ABLoader.CacheMasterDuelBundles();
+                await ABLoader.CacheMasterDuelOutDuelBundles();
 
             if(items == null)
             {

@@ -259,15 +259,15 @@ namespace MDPro3.Servant
                 backPath = "SummonMonster_Bgwid_S2";
             else // 4
                 backPath = "SummonMonster_Bgdve_S2";
-            GameObject back = ABLoader.LoadMasterDuelGameObject(backPath);
+            GameObject back = ABLoader.LoadMasterDuelOutDuelObject(backPath);
             back.transform.SetParent(Program.instance.container_2D, false);
 
             //Name Bar
             GameObject nameBar;
             if (controller == 0)
-                nameBar = ABLoader.LoadMasterDuelGameObject("SummonMonster_Name_near");
+                nameBar = ABLoader.LoadMasterDuelOutDuelObject("SummonMonster_Name_near");
             else
-                nameBar = ABLoader.LoadMasterDuelGameObject("SummonMonster_Name_far");
+                nameBar = ABLoader.LoadMasterDuelOutDuelObject("SummonMonster_Name_far");
             nameBar.transform.SetParent(Program.instance.container_2D, false);
             var manager = nameBar.GetComponent<ElementObjectManager>();
             var tmp = manager.GetElement<TextMeshPro>("Monster_Name_TMP");
@@ -345,8 +345,8 @@ namespace MDPro3.Servant
             manager.GetElement<TextMesh>("Monster_Para").text = para;
 
             //front Effect
-            //var frontEffect = ABLoader.LoadMasterDuelGameObject(card.IsHighLevel() ? "SummonMonster_Thunder_power" : "SummonMonster_Thunder_normal");
-            var frontEffect = ABLoader.LoadMasterDuelGameObject("SummonMonster_Thunder_power");
+            //var frontEffect = ABLoader.LoadMasterDuelOutDuelObject(card.IsHighLevel() ? "SummonMonster_Thunder_power" : "SummonMonster_Thunder_normal");
+            var frontEffect = ABLoader.LoadMasterDuelOutDuelObject("SummonMonster_Thunder_power");
             frontEffect.transform.SetParent(Program.instance.container_2D, false);
 
             if (Program.instance.ocgcore.showing)

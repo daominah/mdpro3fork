@@ -154,7 +154,7 @@ namespace MDPro3
             title = InterString.Get("正在初始化");
 
             Program.SetRoot();
-            _ = ABLoader.CacheMasterDuelBundles();
+            _ = ABLoader.CacheMasterDuelOutDuelBundles();
             while (!ABLoader.mdCached)
             {
                 progressBar.value = ABLoader.mdCachedProgress;

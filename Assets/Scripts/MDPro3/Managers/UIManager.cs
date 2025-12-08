@@ -31,7 +31,6 @@ namespace MDPro3
         public Image blackBack;
         public RectTransform popup;
         public RectTransform sidePanel;
-        public RectTransform transition;
         public RectTransform duelButton;
         public static string currentWallpaper;
 
@@ -419,14 +418,10 @@ namespace MDPro3
         {
             if (duelTransition == null)
             {
-                duelTransition = ABLoader.LoadMasterDuelGameObject("DuelEndTransition");
+                duelTransition = ABLoader.LoadMasterDuelOutDuelObject("DuelEndTransition");
                 duelTransition.transform.SetParent(Program.instance.container_2D, false);
                 duelTransition.GetComponent<PlayableDirector>().Play();
             }
-
-            //float width = Screen.width * 1080 * 1.7f / Screen.height;
-            //Program.instance.ui_.transition.sizeDelta = Vector2.zero;
-            //DOTween.To(() => Program.instance.ui_.transition.sizeDelta, x => Program.instance.ui_.transition.sizeDelta = x, new Vector2(width, width), time);
         }
 
         public static void UIBlackOut(float time)
@@ -437,7 +432,6 @@ namespace MDPro3
                 Destroy(duelTransition, 1f);
                 duelTransition = null;
             }
-            //DOTween.To(() => Program.instance.ui_.transition.sizeDelta, x => Program.instance.ui_.transition.sizeDelta = x, Vector2.zero, time);
         }
 
         public static void ShowBlackBack(float alpha, float time, Action action = null)

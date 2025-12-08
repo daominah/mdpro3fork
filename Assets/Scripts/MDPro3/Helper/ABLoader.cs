@@ -519,40 +519,67 @@ namespace MDPro3
 
         public static bool mdCached;
         public static float mdCachedProgress;
+        private static bool mdDuelCached;
 
         private static AssetBundle mdBundleDuel;
+        private static AssetBundle mdBundleOutDuel;
         private static AssetBundle mdBundleMaterials;
         private static AssetBundle mdBundleSprites;
         private static AssetBundle mdBundleTextures;
 
-        public static async UniTask CacheMasterDuelBundles()
+        public static async UniTask CacheMasterDuelOutDuelBundles()
         {
-            mdCachedProgress = 0;
+            mdCachedProgress = 0f;
             await CacheFromFileAsync(Program.root + "MasterDuel/Built-in/shaders");
             mdCachedProgress = 0.2f;
-            mdBundleMaterials = await CacheFromFileAsync(Program.root + "MasterDuel/Built-in/materials");
-            mdCachedProgress = 0.4f;
             mdBundleSprites = await CacheFromFileAsync(Program.root + "MasterDuel/Built-in/sprites");
+            mdCachedProgress = 0.4f;
+            mdBundleMaterials = await CacheFromFileAsync(Program.root + "MasterDuel/Built-in/materials");
             mdCachedProgress = 0.6f;
-            mdBundleTextures = await CacheFromFileAsync(Program.root + "MasterDuel/Built-in/textures");
+            mdBundleOutDuel = await CacheFromFileAsync(Program.root + "MasterDuel/Built-in/outduel");
             mdCachedProgress = 0.8f;
-            mdBundleDuel = await CacheFromFileAsync(Program.root + "MasterDuel/Built-in/duel");
-            mdCachedProgress = 1f;
             mdCached = true;
         }
+
+        public static async UniTask CacheMasterDuelBundles()
+        {
+            if (mdDuelCached)
+                return;
+            mdBundleTextures = await CacheFromFileAsync(Program.root + "MasterDuel/Built-in/textures");
+            mdBundleDuel = await CacheFromFileAsync(Program.root + "MasterDuel/Built-in/duel");
+            mdDuelCached = true;
+        }
+
 
         public static GameObject LoadMasterDuelGameObject(string oName)
         {
             if(mdBundleDuel == null)
             {
-                Debug.LogError("MasterDuel AssetBundles not cached!");
+                Debug.LogError("MasterDuel AssetBundle [Duel] is not cached!");
                 return null;
             }
 
             var prefab = mdBundleDuel.LoadAsset<GameObject>(oName);
             if(prefab == null)
             {
-                Debug.LogError($"MasterDuel AssetBundle does not contain [{oName}]!");
+                Debug.LogError($"MasterDuel AssetBundle [Duel] does not contain [{oName}]!");
+                return null;
+            }
+            return Object.Instantiate(prefab);
+        }
+
+        public static GameObject LoadMasterDuelOutDuelObject(string oName)
+        {
+            if (mdBundleOutDuel == null)
+            {
+                Debug.LogError("MasterDuel AssetBundle [OutDuel] is not cached!");
+                return null;
+            }
+
+            var prefab = mdBundleOutDuel.LoadAsset<GameObject>(oName);
+            if (prefab == null)
+            {
+                Debug.LogError($"MasterDuel AssetBundle [OutDuel] does not contain [{oName}]!");
                 return null;
             }
             return Object.Instantiate(prefab);
@@ -562,13 +589,13 @@ namespace MDPro3
         {
             if (mdBundleMaterials == null)
             {
-                Debug.LogError("MasterDuel AssetBundles not cached!");
+                Debug.LogError("MasterDuel AssetBundle [Materials] is not cached!");
                 return null;
             }
             var mat = mdBundleMaterials.LoadAsset<Material>(mName);
             if (mat == null)
             {
-                Debug.LogError($"MasterDuel AssetBundle does not contain material [{mName}]!");
+                Debug.LogError($"MasterDuel AssetBundle [Materials] does not contain material [{mName}]!");
                 return null;
             }
             return Object.Instantiate(mat);
@@ -578,13 +605,13 @@ namespace MDPro3
         {
             if (mdBundleSprites == null)
             {
-                Debug.LogError("MasterDuel AssetBundles not cached!");
+                Debug.LogError("MasterDuel AssetBundle [Sprites] is not cached!");
                 return null;
             }
             var sprite = mdBundleSprites.LoadAsset<Sprite>(sName);
             if (sprite == null)
             {
-                Debug.LogError($"MasterDuel AssetBundle does not contain sprite [{sName}]!");
+                Debug.LogError($"MasterDuel AssetBundle [Sprites] does not contain sprite [{sName}]!");
                 return null;
             }
             return sprite;
@@ -594,13 +621,13 @@ namespace MDPro3
         {
             if (mdBundleTextures == null)
             {
-                Debug.LogError("MasterDuel AssetBundles not cached!");
+                Debug.LogError("MasterDuel AssetBundle [Textures] is not cached!");
                 return null;
             }
             var tex = mdBundleTextures.LoadAsset<Texture2D>(tName);
             if (tex == null)
             {
-                Debug.LogError($"MasterDuel AssetBundle does not contain texture [{tName}]!");
+                Debug.LogError($"MasterDuel AssetBundle [Textures] does not contain texture [{tName}]!");
                 return null;
             }
             return tex;
