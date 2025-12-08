@@ -301,6 +301,13 @@ namespace MDPro3
             new BgmLoop{name = "BGM_DUEL_EX_06_ALL", startTime = 4.950f, endTime = 180 + 7.141f },
             new BgmLoop{name = "BGM_DUEL_EX_07_PHASE_A", startTime = 20.499f, endTime = 120 + 25.909f },
             new BgmLoop{name = "BGM_DUEL_EX_07_PHASE_B", startTime = 7.757f, endTime = 120 + 27.756f },
+            new BgmLoop{name = "BGM_DUEL_EX_08_ALL", startTime = 21.667f, endTime = 180 + 17.979f },
+            new BgmLoop{name = "BGM_DUEL_EX_09_PHASE_A", startTime = 5.488f, endTime = 120 + 3.416f },
+            new BgmLoop{name = "BGM_DUEL_EX_09_PHASE_B", startTime = 0.802f, endTime = 120 + 2.501f },
+            new BgmLoop{name = "BGM_DUEL_EX_10_NORMAL", startTime = 0.0f, endTime = 60 + 27.832f },
+            new BgmLoop{name = "BGM_DUEL_EX_10_KEYCARD", startTime = 09.512f, endTime = 60 + 30.265f },
+            new BgmLoop{name = "BGM_DUEL_EX_10_CLIMAX", startTime = 1.516f, endTime = 60 + 31.898f },
+ 
 
             new BgmLoop{name = "BGM_DUEL_F01_ALL", startTime = 24.219f, endTime = 120 + 42.886f },
             new BgmLoop{name = "BGM_DUEL_F02_PHASE_A", startTime = 13.603f, endTime = 60 + 43.324f },
@@ -310,6 +317,14 @@ namespace MDPro3
             new BgmLoop{name = "BGM_DUEL_F03_PHASE_C", startTime = 28.667f, endTime = 60 + 49.794f },
             new BgmLoop{name = "BGM_DUEL_F04_PHASE_A", startTime = 32.952f, endTime = 60 + 56.523f },
             new BgmLoop{name = "BGM_DUEL_F04_PHASE_B", startTime = 19.020f, endTime = 120 + 26.755f },
+            new BgmLoop{name = "BGM_DUEL_F05_PHASE_A", startTime = 13.323f, endTime = 120 + 15.155f },
+            new BgmLoop{name = "BGM_DUEL_F05_PHASE_B", startTime = 7.291f, endTime = 120 + 13.283f },
+            new BgmLoop{name = "BGM_DUEL_F06_PHASE_A", startTime = 3.831f, endTime = 120 + 1.027f },
+            new BgmLoop{name = "BGM_DUEL_F06_PHASE_B", startTime = 0.739f, endTime = 120 + 12.236f },
+            new BgmLoop{name = "BGM_DUEL_F07_PHASE_A", startTime = 24.566f, endTime = 120 + 8.425f },
+            new BgmLoop{name = "BGM_DUEL_F07_PHASE_B", startTime = 0.552f, endTime = 60 + 24.069f },
+            new BgmLoop{name = "BGM_DUEL_F08_PHASE_A", startTime = 0.0f, endTime = 120 + 10.439f },
+            new BgmLoop{name = "BGM_DUEL_F08_PHASE_B", startTime = 8.569f, endTime = 120 + 8.047f },
 
             new BgmLoop{name = "BGM_DUEL_RATE01_NORMAL", startTime = 1.119f, endTime = 120 + 5.607f },
             new BgmLoop{name = "BGM_DUEL_RATE01_KEYCARD", startTime = 1.761f, endTime = 60 + 55.984f },
@@ -334,7 +349,12 @@ namespace MDPro3
 
         private static readonly List<int> commonBgms = new()
         {
-            1, 3, 7 
+            1, 3, 7
+        };
+
+        private static readonly List<int> colosseumBgms = new()
+        {
+            1, 2, 3, 4, 5, 6, 7
         };
 
         private static readonly Dictionary<int, List<int>> fieldBGMs = new()
@@ -352,31 +372,56 @@ namespace MDPro3
             {11, new List<int>{ 26 } },
             {12, new List<int>{ 19, 18, 25, 36 } }, //「突异变种进化研究所」「电脑的宇宙」「六世坏=天魔世界」「罪宝遗迹」
             {13, new List<int>{ 14 } }, //「相剑的灵峰」
-            {14, new List<int>{ 22, 42 } }, //「恶魔宫殿」「烙印剧城 惨绝戏 暂定」
+            {14, new List<int>{ 22 } }, //「恶魔宫殿」
             {15, new List<int>{ 10, 35 } }, //「冻结的世界」「冻结的世界」
             {16, new List<int>{ 20, 27, 28 } }, //「古之决斗的记忆」「苏醒的天空殿」「青色眼睛的灵堂」
         };
 
+        private static readonly Dictionary<int, List<string>> fieldColBGMs = new() // New list for Colosseum 20251203
+		{
+            {1, new List<string>{ "BGM_DUEL_EX_02_NORMAL", "BGM_DUEL_EX_02_KEYCARD", "BGM_DUEL_EX_02_CLIMAX" }}, // 角斗场
+			{2, new List<string>{ "BGM_DUEL_DC01_NORMAL", "BGM_DUEL_DC01_KEYCARD", "BGM_DUEL_DC01_CLIMAX" }},    // DC 1st
+			{3, new List<string>{ "BGM_DUEL_DC02_NORMAL", "BGM_DUEL_DC02_KEYCARD", "BGM_DUEL_DC02_CLIMAX" }},    // DC 2nd
+			{4, new List<string>{ "BGM_DUEL_EX_04_NORMAL", "BGM_DUEL_EX_04_KEYCARD", "BGM_DUEL_EX_04_CLIMAX" }}, // Xyz CUP 1st
+			{5, new List<string>{ "BGM_DUEL_EX_05_NORMAL", "BGM_DUEL_EX_05_KEYCARD", "BGM_DUEL_EX_05_CLIMAX" }}, // Xyz CUP 2nd
+			{6, new List<string>{ "BGM_DUEL_EX_06_ALL" }},                                                       // WCQ2025 1st
+			{7, new List<string>{ "BGM_DUEL_EX_07_PHASE_A", "BGM_DUEL_EX_07_PHASE_B" }},                         // WCQ2025 2nd
+		};
+
         private static readonly Dictionary<List<string>, List<int>> specialFieldBGMs = new()
         {
-            {new List<string>{ "BGM_DUEL_DC01_NORMAL", "BGM_DUEL_DC01_KEYCARD", "BGM_DUEL_DC01_CLIMAX" }, new List<int>{ } },
-            {new List<string>{ "BGM_DUEL_DC02_NORMAL", "BGM_DUEL_DC02_KEYCARD", "BGM_DUEL_DC02_CLIMAX" }, new List<int>{ } },
+            //{new List<string>{ "BGM_DUEL_DC01_NORMAL", "BGM_DUEL_DC01_KEYCARD", "BGM_DUEL_DC01_CLIMAX" }, new List<int>{ } }, //DC 1st round //colosseum 
+            //{new List<string>{ "BGM_DUEL_DC02_NORMAL", "BGM_DUEL_DC02_KEYCARD", "BGM_DUEL_DC02_CLIMAX" }, new List<int>{ } }, //DC 2nd round its //colosseum 
 
             {new List<string>{ "BGM_DUEL_EX_01" }, new List<int>{ } },
-            {new List<string>{ "BGM_DUEL_EX_02_NORMAL", "BGM_DUEL_EX_02_KEYCARD", "BGM_DUEL_EX_02_CLIMAX" }, new List<int>{ 8 } }, //「角斗场」
+            //{new List<string>{ "BGM_DUEL_EX_02_NORMAL", "BGM_DUEL_EX_02_KEYCARD", "BGM_DUEL_EX_02_CLIMAX" }, new List<int>{ 8 } }, //「角斗场」
             {new List<string>{ "BGM_DUEL_EX_03_NORMAL", "BGM_DUEL_EX_03_KEYCARD", "BGM_DUEL_EX_03_CLIMAX" }, new List<int>{ 13 } }, //「WCS」
-            {new List<string>{ "BGM_DUEL_EX_04_NORMAL", "BGM_DUEL_EX_04_KEYCARD", "BGM_DUEL_EX_04_CLIMAX" }, new List<int>{ } },
-            {new List<string>{ "BGM_DUEL_EX_05_NORMAL", "BGM_DUEL_EX_05_KEYCARD", "BGM_DUEL_EX_05_CLIMAX" }, new List<int>{ } },
-            {new List<string>{ "BGM_DUEL_EX_06_ALL" }, new List<int>{ } },
-            {new List<string>{ "BGM_DUEL_EX_07_PHASE_A", "BGM_DUEL_EX_07_PHASE_B" }, new List<int>{ } },
-
+            //{new List<string>{ "BGM_DUEL_EX_04_NORMAL", "BGM_DUEL_EX_04_KEYCARD", "BGM_DUEL_EX_04_CLIMAX" }, new List<int>{ } }, //Xyz CUP 1st round //colosseum 
+            //{new List<string>{ "BGM_DUEL_EX_05_NORMAL", "BGM_DUEL_EX_05_KEYCARD", "BGM_DUEL_EX_05_CLIMAX" }, new List<int>{ } }, //Xyz CUP 2nd round //colosseum 
+            //{new List<string>{ "BGM_DUEL_EX_06_ALL" }, new List<int>{ } }, //WCQ2025 1st round //colosseum 
+            //{new List<string>{ "BGM_DUEL_EX_07_PHASE_A", "BGM_DUEL_EX_07_PHASE_B" }, new List<int>{ } }, //WCQ2025 2nd round //colosseum 20251203
+            {new List<string>{ "BGM_DUEL_EX_08_ALL" }, new List<int>{ 45 } }, //WCS2025 //added 20251203
+            {new List<string>{ "BGM_DUEL_EX_09_PHASE_A", "BGM_DUEL_EX_09_PHASE_B" }, new List<int>{ 504 } }, //Synchro CUP 20251203
+            {new List<string>{ "BGM_DUEL_EX_10_NORMAL", "BGM_DUEL_EX_10_KEYCARD", "BGM_DUEL_EX_10_CLIMAX" }, new List<int>{  } }, //New Event?
+            
             {new List<string>{ "BGM_DUEL_F01_ALL" }, new List<int>{ 38 } }, //「邪恶双子」
             {new List<string>{ "BGM_DUEL_F02_PHASE_A", "BGM_DUEL_F02_PHASE_B" }, new List<int>{ } },
             {new List<string>{ "BGM_DUEL_F03_PHASE_A", "BGM_DUEL_F03_PHASE_B", "BGM_DUEL_F03_PHASE_C" }, new List<int>{ 40 } }, //「闪刀行动模拟区域」
-            {new List<string>{ "BGM_DUEL_F04_PHASE_A", "BGM_DUEL_F04_PHASE_B" }, new List<int>{ } },
+            {new List<string>{ "BGM_DUEL_F04_PHASE_A", "BGM_DUEL_F04_PHASE_B" }, new List<int>{ 42 } }, //Despia 「烙印剧城 惨绝戏 暂定」
+            {new List<string>{ "BGM_DUEL_F05_PHASE_A", "BGM_DUEL_F05_PHASE_B" }, new List<int>{ 41 } }, //Graveyard of Myriad Souls //added 20251203
+            {new List<string>{ "BGM_DUEL_F06_PHASE_A", "BGM_DUEL_F06_PHASE_B" }, new List<int>{ 47 } }, //White Forest //added 20251203
+            {new List<string>{ "BGM_DUEL_F07_PHASE_A", "BGM_DUEL_F07_PHASE_B" }, new List<int>{ 46, 50 } }, //E-Football //added 20251203
+            {new List<string>{ "BGM_DUEL_F08_PHASE_A", "BGM_DUEL_F08_PHASE_B" }, new List<int>{ 39 } }, //Labrynth //added 20251203
 
-            {new List<string>{ "BGM_DUEL_RATE01_NORMAL", "BGM_DUEL_RATE01_KEYCARD", "BGM_DUEL_RATE01_CLIMAX" }, new List<int>{ } },
+            //{new List<string>{ "BGM_DUEL_RATE01_NORMAL", "BGM_DUEL_RATE01_KEYCARD", "BGM_DUEL_RATE01_CLIMAX" }, new List<int>{ } },
 
+        };
+
+        private static readonly List<string> rateBgms = new()//only Rate BGM 20251203
+		{
+            "BGM_DUEL_RATE01_NORMAL",
+            "BGM_DUEL_RATE01_KEYCARD",
+            "BGM_DUEL_RATE01_CLIMAX"
         };
 
         private static int GetFieldIdByFieldName(string fieldName)
@@ -384,13 +429,29 @@ namespace MDPro3
             return int.Parse(fieldName.Substring(4, 3));
         }
 
+        private const float RateBgmChance = 0.05f; //Add Random rate for Rate BGM as 5%  20251203
+
         private static List<string> GetBgmsByFieldId(int fieldId)
         {
+            //Add Rate condition as RANDOM Appear  20251203
+            if (UnityEngine.Random.value < RateBgmChance)
+            {
+                return rateBgms;
+            }
             foreach (var pair in fieldBGMs)
                 if (pair.Value.Contains(fieldId))
                 {
                     return new List<string>() { $"BGM_DUEL_NORMAL_{pair.Key:D2}", $"BGM_DUEL_KEYCARD_{pair.Key:D2}", $"BGM_DUEL_CLIMAX_{pair.Key:D2}" };
                 }
+            //Add Colosseum condition  20251203
+            if (fieldId == 8)
+            {
+                var index = colosseumBgms[UnityEngine.Random.Range(0, colosseumBgms.Count)];
+                if (fieldColBGMs.TryGetValue(index, out var colBgmList))
+                {
+                    return colBgmList;
+                }
+            }
             foreach (var pair in specialFieldBGMs)
                 if (pair.Value.Contains(fieldId))
                 {
@@ -398,6 +459,7 @@ namespace MDPro3
                 }
             var undefined = commonBgms[UnityEngine.Random.Range(0, commonBgms.Count)];
             return new List<string>() { $"BGM_DUEL_NORMAL_{undefined:D2}", $"BGM_DUEL_KEYCARD_{undefined:D2}", $"BGM_DUEL_CLIMAX_{undefined:D2}" };
+
         }
 
         public static void PlayBgmNormal(string filedName)
@@ -405,7 +467,7 @@ namespace MDPro3
             bgmState = 0;
             var fieldId = GetFieldIdByFieldName(filedName);
             currentBGMs = GetBgmsByFieldId(fieldId);
-            if(currentBGMs.Count > 0)
+            if (currentBGMs.Count > 0)
                 PlayBGM(currentBGMs[0]);
         }
 
@@ -414,7 +476,7 @@ namespace MDPro3
             if (bgmState > 0)
                 return;
             bgmState = 1;
-            if(currentBGMs.Count > 1)
+            if (currentBGMs.Count > 1)
                 PlayBGM(currentBGMs[1]);
         }
 
