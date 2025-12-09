@@ -53,6 +53,9 @@ namespace MDPro3.UI
             base.CallToggleOnEvent();
             CallHoverOnEvent();
             Program.instance.character.GetUI<CharacterSelectorUI>().TextDetailName.text = charaName;
+#if UNITY_EDITOR
+            Program.instance.character.GetUI<CharacterSelectorUI>().TextDetailName.text += $" ({characterID})";
+#endif
             Program.instance.character.GetUI<CharacterSelectorUI>().TextDetailDescription.text = charaProfile;
             Config.Set(CharacterSelector.condition + "Character" + CharacterSelectorUI.player, characterID);
             Program.instance.ocgcore.CheckCharaFace();

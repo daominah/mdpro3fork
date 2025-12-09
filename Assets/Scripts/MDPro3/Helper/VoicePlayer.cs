@@ -46,12 +46,14 @@ namespace MDPro3.Duel
 
             if (language != loadedLanguage || heroString != chara)
             {
+                var originalChara = CharacterSelector.characters.GetCharacterOriginalId(chara);
+
                 heroString = chara;
-                var dataPath = jsonPath + Utility.Language.Japanese + "/voice/V" + heroString + ".json";
+                var dataPath = jsonPath + Utility.Language.Japanese + "/voice/V" + originalChara + ".json";
                 var txt = File.ReadAllText(dataPath);
                 heroVoices = JsonConvert.DeserializeObject<VoicesData>(txt);
 
-                dataPath = jsonPath + language + "/voice/SN" + heroString + ".json";
+                dataPath = jsonPath + language + "/voice/SN" + originalChara + ".json";
                 txt = File.ReadAllText(dataPath);
                 heroLines = JsonConvert.DeserializeObject<LinesData>(txt);
             }
@@ -59,12 +61,14 @@ namespace MDPro3.Duel
             chara = Config.Get(condition + "Character1", defaultCharacter);
             if (language != loadedLanguage || rivalString != chara)
             {
+                var originalChara = CharacterSelector.characters.GetCharacterOriginalId(chara);
+
                 rivalString = chara;
-                var dataPath = jsonPath + Utility.Language.Japanese + "/voice/V" + rivalString + ".json";
+                var dataPath = jsonPath + Utility.Language.Japanese + "/voice/V" + originalChara + ".json";
                 var txt = File.ReadAllText(dataPath);
                 rivalVoices = JsonConvert.DeserializeObject<VoicesData>(txt);
 
-                dataPath = jsonPath + language + "/voice/SN" + rivalString + ".json";
+                dataPath = jsonPath + language + "/voice/SN" + originalChara + ".json";
                 txt = File.ReadAllText(dataPath);
                 rivalLines = JsonConvert.DeserializeObject<LinesData>(txt);
             }

@@ -13,7 +13,13 @@ namespace MDPro3
         public struct SeriesCharacter
         {
             public string id;
+            public string originalId;
             public bool notReady;
+
+            public readonly string GetOriginalId()
+            {
+                return string.IsNullOrEmpty(originalId) ? id : originalId;
+            }
         }
 
         public List<SeriesCharacter> dm;
@@ -31,7 +37,7 @@ namespace MDPro3
         NPC_Profiles profiles;
 
         public string language = "zh-CN";
-        static Characters instance;
+        private static Characters instance;
 
         public string GetCharacterSeries(string charaID)
         {
@@ -70,31 +76,55 @@ namespace MDPro3
 
         public List<SeriesCharacter> GetSeriesCharacters(string serial)
         {
-            switch (serial)
+            return serial switch
             {
-                case "00":
-                    return dm;
-                case "01":
-                    return gx;
-                case "02":
-                    return _5ds;
-                case "03":
-                    return dsod;
-                case "04":
-                    return zexal;
-                case "05":
-                    return arcv;
-                case "06":
-                    return vrains;
-                case "07":
-                    return sevens;
-                case "08":
-                    return npc;
-                case "09":
-                    return gorush;
-                default: 
-                    return dm;
-            }
+                "00" => dm,
+                "01" => gx,
+                "02" => _5ds,
+                "03" => dsod,
+                "04" => zexal,
+                "05" => arcv,
+                "06" => vrains,
+                "07" => sevens,
+                "08" => npc,
+                "09" => gorush,
+                _ => dm,
+            };
+        }
+
+        public string GetCharacterOriginalId(string charaID)
+        {
+            foreach (var c in dm)
+                if (c.id == charaID)
+                    return c.GetOriginalId();
+            foreach (var c in gx)
+                if (c.id == charaID)
+                    return c.GetOriginalId();
+            foreach (var c in _5ds)
+                if (c.id == charaID)
+                    return c.GetOriginalId();
+            foreach (var c in dsod)
+                if (c.id == charaID)
+                    return c.GetOriginalId();
+            foreach (var c in zexal)
+                if (c.id == charaID)
+                    return c.GetOriginalId();
+            foreach (var c in arcv)
+                if (c.id == charaID)
+                    return c.GetOriginalId();
+            foreach (var c in vrains)
+                if (c.id == charaID)
+                    return c.GetOriginalId();
+            foreach (var c in sevens)
+                if (c.id == charaID)
+                    return c.GetOriginalId();
+            foreach (var c in npc)
+                if (c.id == charaID)
+                    return c.GetOriginalId();
+            foreach (var c in gorush)
+                if (c.id == charaID)
+                    return c.GetOriginalId();
+            return charaID;
         }
 
         static bool initialized = false;

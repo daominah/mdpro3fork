@@ -67,6 +67,7 @@ SpriteAtlas:
     - 9b1905e02c2dbe642a9aaae465254894: 21300000
     - 053e5de00dcdfdd44ac335092f4608a4: 21300000
     - e55da8f083f0d9e48b65356a0408cb4c: 21300000
+    - 5bbfe301136cbc44c9ad3448ed6ff82b: 21300000
     - 9cb31c217fa4ebd4a8b5e65d1574e0b4: 21300000
     - 50800c31d0d915c44807df117d5e06d9: 21300000
     - ee78ea512dfaef64d8031bbe52174f1d: 21300000
@@ -241,6 +242,7 @@ SpriteAtlas:
     - 350b7d1d598dd424496b00909a13805a: 21300000
     - e6e1403d9587303409a4d5b6f0dc16b7: 21300000
     - f3af564d014179e468137ff676f1c60e: 21300000
+    - cdb3f36db85106b4baf6e608cbdb8d97: 21300000
     - 4e76a37dd0ad3a84187d22d0080c013d: 21300000
     - decb45ad6098a5e45948d27e3a14324a: 21300000
     - 831823ed3747888418a12e4b452e1d27: 21300000
@@ -294,6 +296,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 9b1905e02c2dbe642a9aaae465254894, type: 3}
   - {fileID: 21300000, guid: 053e5de00dcdfdd44ac335092f4608a4, type: 3}
   - {fileID: 21300000, guid: e55da8f083f0d9e48b65356a0408cb4c, type: 3}
+  - {fileID: 21300000, guid: 5bbfe301136cbc44c9ad3448ed6ff82b, type: 3}
   - {fileID: 21300000, guid: 9cb31c217fa4ebd4a8b5e65d1574e0b4, type: 3}
   - {fileID: 21300000, guid: 50800c31d0d915c44807df117d5e06d9, type: 3}
   - {fileID: 21300000, guid: ee78ea512dfaef64d8031bbe52174f1d, type: 3}
@@ -468,6 +471,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 350b7d1d598dd424496b00909a13805a, type: 3}
   - {fileID: 21300000, guid: e6e1403d9587303409a4d5b6f0dc16b7, type: 3}
   - {fileID: 21300000, guid: f3af564d014179e468137ff676f1c60e, type: 3}
+  - {fileID: 21300000, guid: cdb3f36db85106b4baf6e608cbdb8d97, type: 3}
   - {fileID: 21300000, guid: 4e76a37dd0ad3a84187d22d0080c013d, type: 3}
   - {fileID: 21300000, guid: decb45ad6098a5e45948d27e3a14324a, type: 3}
   - {fileID: 21300000, guid: 831823ed3747888418a12e4b452e1d27, type: 3}
@@ -520,6 +524,7 @@ SpriteAtlas:
   - sn0433
   - sn0240
   - sn0703
+  - sn0041
   - sn0506
   - sn0333
   - sn0808
@@ -694,6 +699,7 @@ SpriteAtlas:
   - sn0819
   - sn0419
   - sn0605
+  - sn0042
   - sn9005
   - sn0608
   - sn0603
