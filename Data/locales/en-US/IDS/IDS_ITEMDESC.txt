@@ -96,6 +96,9 @@ Its immense power, fitting of its chaotic moniker, mercifully unleashes its whip
 [IDS_ITEMDESC.ID1000034]
 A being that helps a man on a journey to reclaim his true self.
 Although it should have disappeared, it appeared once again, perhaps because the man's sense of self was still incomplete.
+[IDS_ITEMDESC.ID1000035]
+A treasure hunter dressed in black who wields magic.
+The ruthless way she pursues her goals has earned her the moniker of "Demon".
 [IDS_ITEMDESC.ID1000036]
 A gifted magician from ancient times who mastered many forbidden arts.
 He disappeared from history without a trace upon the advent of "<card mrk='10282'/>".
@@ -215,7 +218,8 @@ coming soon
 The Pyroxene Warriors, even-tempered knights with hearts that secretly yearn for justice.
 They possess the ability to fuse as they require.
 [IDS_ITEMDESC.ID1001038]
-coming soon
+<category id='79'/> resides in the underworld and serves as a scout.
+They survey the human world on orders from the Roaring Domain.
 [IDS_ITEMDESC.ID1001039]
 coming soon
 [IDS_ITEMDESC.ID1001040]
@@ -696,26 +700,35 @@ She has faced "<card mrk='20747'/>" in a deadly struggle for survival.
 [IDS_ITEMDESC.ID1010120]
 coming soon
 [IDS_ITEMDESC.ID1010121]
-coming soon
+An Icon depicting a mysterious storyteller.
+The tale of "<card mrk='21195'/>" is passed down.
 [IDS_ITEMDESC.ID1010122]
-coming soon
+An Icon depicting a knight going up against a castle steeped in the legends of old.
+The valiant knight easily clears the numerous deadly traps lying in wait.
 [IDS_ITEMDESC.ID1010123]
 coming soon
 [IDS_ITEMDESC.ID1010124]
 coming soon
 [IDS_ITEMDESC.ID1010125]
-coming soon
+An Icon depicting a young man who possesses the power to see an inescapable future.
+He has witnessed countless futures since childhood.
 [IDS_ITEMDESC.ID1010126]
-coming soon
+An Icon depicting a magician who calls upon the stars to summon dragons.
+She uses the power of the dragons to take on a new form.
 [IDS_ITEMDESC.ID1010127]
-coming soon
+An Icon depicting a man with a mark on both cheeks.
+ He protects "<card mrk='5231'/>" while radiating a majestic appearance.
 [IDS_ITEMDESC.ID1010128]
 An Icon depicting a girl who has become an Xyz Monster.
  Thanks to the evolution of cell phones, she has secured the keys to victory.
 [IDS_ITEMDESC.ID1010129]
-coming soon
+An Icon depicting a reddish fiend hoisting a large sack.
+It bears a large cross-shaped scar on its chest.
 [IDS_ITEMDESC.ID1010130]
 coming soon
+[IDS_ITEMDESC.ID1010131]
+An Icon depicting the Academy's emblem.
+In an emergency, students are to assemble at once.
 [IDS_ITEMDESC.ID1011001]
 An Icon depicting a ball made of black and white panels.
 Winning 3 Duels in a row is not called a hat-trick.
@@ -903,11 +916,14 @@ Given to those who achieved considerable results in the Duelist Cup.
 An Icon with a bronze "DC 2025 SEP" logo. 
 Given to those who conquered numerous battles in the Duelist Cup.
 [IDS_ITEMDESC.ID1011063]
-coming soon
+An Icon with a golden "DC 2025 DEC" logo. 
+Given to those who performed above and beyond in the Duelist Cup.
 [IDS_ITEMDESC.ID1011064]
-coming soon
+An Icon with a silver "DC 2025 DEC" logo. 
+Given to those who achieved considerable results in the Duelist Cup.
 [IDS_ITEMDESC.ID1011065]
-coming soon
+An Icon with a bronze "DC 2025 DEC" logo. 
+Given to those who conquered numerous battles in the Duelist Cup.
 [IDS_ITEMDESC.ID1012001]
 An Icon depicting a "Krawler," Monsters who have overrun a certain world. This one is part of the higher class.
 They mercilessly destroy the efforts of human civilization that have lasted generations.
@@ -1152,6 +1168,9 @@ An exclusive Icon offered on special occasions.
 [IDS_ITEMDESC.ID1013010]
 An Icon depicting the logo of a soccer game where real and dream teams of 11 compete to be the best.
 Exhilarating action brought to you by those who never stop challenging themselves.
+[IDS_ITEMDESC.ID1013011]
+An Icon depicting the true form of "<card mrk='14440'/>".
+It's said that only "<card mrk='14439'/>" can see her true face.
 [IDS_ITEMDESC.ID1020001]
 A Title given to Duelists who began their Dueling journey with Yu-Gi-Oh! MASTER DUEL.
 It's never too late to start Dueling.
@@ -1715,6 +1734,24 @@ Like plates of armor, form an unbreakable vanguard by stacking piece upon piece.
 [IDS_ITEMDESC.ID1020188]
 A Title given to Duelists who achieved noteworthy results using a strategy involving Link Summons.
 As with a perfectly formed phalanx, link from monster to monster to create a formation with no weaknesses.
+[IDS_ITEMDESC.ID1020189]
+A Title given to Duelists who made it to the top 10 in DC 2025 DEC.
+Tales of their many great Duels and their bravery in competing for the throne will continue to be told for years to come.
+[IDS_ITEMDESC.ID1020190]
+A Title given to Duelists who made it to the top 100 in DC 2025 DEC.
+This is proof of a feat that many Duelists strive to achieve.
+[IDS_ITEMDESC.ID1020191]
+A Title given to Duelists who made it to the top 500 in DC 2025 DEC.
+Only the strongest of the strong may possess a heart like yours, tempered by many hard-fought Duels.
+[IDS_ITEMDESC.ID1020192]
+A Title given to Duelists who made it to the top 1,000 in DC 2025 DEC.
+Kudos to the Duelists who have continuously polished their Decks and tactics to achieve this result.
+[IDS_ITEMDESC.ID1020193]
+A Title given to Duelists who made it to the top 10000 in DC 2025 DEC.
+It was earned through victory after victory against fierce competitors in the 2nd STAGE.
+[IDS_ITEMDESC.ID1020194]
+A Title given to Duelists who made it to the 2nd Stage in DC 2025 DEC.
+It is proof of your accomplishment in making it through the hotly contested 1st Stage.
 [IDS_ITEMDESC.ID1020197]
 A Title given to Duelists who achieved results in a battle between three forces.
 No matter the situation, your abilities will shine through.
@@ -1830,9 +1867,15 @@ The colors, reminiscent of twilight, stir a flood of emotions.
 [IDS_ITEMDESC.ID1030037]
 A yellow and blue Icon Frame that evokes a golden sun rising over the sea.
 It calls to mind bright summer days with sparkling ocean waters set aglow by sunlight.
+[IDS_ITEMDESC.ID1030038]
+An Icon Frame evoking an enigmatic storyteller.
+A girl's voice can be heard, seemingly from nowhere.
 [IDS_ITEMDESC.ID1030039]
 An Icon Frame that evokes the power of Fusion—the foundation of the Pyroxene Warriors.
  It strains their Core but can be used consecutively.
+[IDS_ITEMDESC.ID1030040]
+A blue and white Icon Frame that evokes a cold winter sky.
+The white snow falls from the clear blue sky, reflecting the harmony of light.
 [IDS_ITEMDESC.ID1031001]
 An Icon Frame that is reminiscent of the gate used by Sky Strikers, to transfer their armaments.
 When the path opens to those who fight for peace, a new power to overcome hardship awakens.
@@ -2321,13 +2364,17 @@ For those who challenge the world.
 Protectors depicting a maid keeping the head maid occupied with feather grooming.
 For those thinking to share their gratitude with a special surprise.
 [IDS_ITEMDESC.ID1070132]
-coming soon
+Protectors depicting a mysterious storyteller.
+For those who weave the witch's tale.
 [IDS_ITEMDESC.ID1070133]
-coming soon
+Protectors depicting the lady castellan rushing out after being unable to wait any longer.
+For those waiting for their knight in shining armor.
 [IDS_ITEMDESC.ID1070134]
-coming soon
+Protectors depicting a woman of matchless, yet fleeting beauty.
+For those who reject all that come before them.
 [IDS_ITEMDESC.ID1070135]
-coming soon
+Protectors depicting the Golden Land and its terrifying golden army ready to mount an invasion.
+For those whose power stems from greed.
 [IDS_ITEMDESC.ID1070136]
 coming soon
 [IDS_ITEMDESC.ID1070137]
@@ -2336,14 +2383,17 @@ coming soon
 Protectors depicting a new look for a girl who was chosen to wield super-advanced technological weaponry.
  For those fighting to change their destiny.
 [IDS_ITEMDESC.ID1070139]
-coming soon
+Protectors depicting the combined strength of mighty dragons.
+For those who find themselves guided by the stars.
 [IDS_ITEMDESC.ID1070140]
 Protectors depicting an evolution of "<card mrk='11413'/>" spurred by the power of Zexal.
  For those seeking to instill hope for the future.
 [IDS_ITEMDESC.ID1070141]
-coming soon
+Protectors depicting the one who guides a soul's passage to the afterlife.
+For those who pass judgment on the souls of the dead.
 [IDS_ITEMDESC.ID1070142]
-coming soon
+Protectors depicting the Golden Lord, whose greed is insatiable.
+For those who desire to make all things their own.
 [IDS_ITEMDESC.ID1070143]
 Protectors depicting a queen among queens who flits upon a moonlit stage.
 For those who dance between moonbeams of glistening silver.
@@ -2542,6 +2592,9 @@ For those who aim to become the best in the world.
 [IDS_ITEMDESC.ID1073017]
 A Protector with a "DC 2025 SEP" logo. 
 For those who participated in the Duelist Cup and made the event a success.
+[IDS_ITEMDESC.ID1073018]
+A Protector with a "DC 2025 DEC" logo. 
+For those who participated in the Duelist Cup and made the event a success.
 [IDS_ITEMDESC.ID1075001]
 Protectors depicting a scene from Yu-Gi-Oh! CARD GAME THE CHRONICLES.
 The Duelists at the venue let out a great cheer to mark this prestigious event.
@@ -2717,6 +2770,12 @@ Perfect for the Decks of those battling in the northern territories.
 [IDS_ITEMDESC.ID1082022]
 A Card Case depicting a mechanized army created as a by-product.
 Perfect for Decks that have conducted countless trials.
+[IDS_ITEMDESC.ID1082024]
+A Card Case depicting an item used by a mysterious witch.
+Perfect for Decks featuring witches burdened with a cruel fate.
+[IDS_ITEMDESC.ID1082025]
+A Card Case depicting an impregnable castle that turns away all intruders.
+Perfect for Decks filled with plenty of Trap Cards.
 [IDS_ITEMDESC.ID1083001]
 An exclusive Card Case offered on special occasions.
 [IDS_ITEMDESC.ID1090001]
@@ -2825,6 +2884,9 @@ Even on this eve, the quietude of this place attracts an endless stream of the d
 [IDS_ITEMDESC.ID1090036]
 A Duel Field of a gigantic structure enveloped in an eerie atmosphere.
 Deep within, the gate of cataclysm is opening, slowly but inexorably.
+[IDS_ITEMDESC.ID1090037]
+A Duel Field of <card mrk='17367'/>.
+The curse cannot be broken unless the true treasure said to lie within the castle is retrieved.
 [IDS_ITEMDESC.ID1090040]
 A Duel Field of a football stadium.
 The cheers of enthusiastic fans echo across the turf.
@@ -2936,6 +2998,9 @@ The graves appear to have been dug recently.
 [IDS_ITEMDESC.ID1100036]
 Field Parts from Despia, Theater of the Branded.
 The level of refinement befits the darkness-emanating castle.
+[IDS_ITEMDESC.ID1100037]
+Field Parts from <card mrk='17367'/>.
+Their ornate designs give them great value as decorative pieces.
 [IDS_ITEMDESC.ID1100040]
 Field Parts from a football stadium.
 A temporary exit is part of the performance. The ace returns from the hole, ready to strike back.
@@ -3047,7 +3112,8 @@ coming soon
 Field Parts modeled on two white ghosts.
 Tonight marks a feast for strange and unusual monsters. Let us enjoy the merriment to come.
 [IDS_ITEMDESC.ID1101041]
-coming soon
+Field Parts modeled on the decorative ring known as a wreath.
+Wreathes serve many purposes, so the intent behind this one is unknown.
 [IDS_ITEMDESC.ID1101042]
 coming soon
 [IDS_ITEMDESC.ID1101043]
@@ -3193,6 +3259,9 @@ The meaning of its engraved markings remains unclear, but it should undoubtedly 
 [IDS_ITEMDESC.ID1110036]
 A Stand from Despia, Theater of the Branded.
 It is one of countless holes that have been carved in the sky.
+[IDS_ITEMDESC.ID1110037]
+A Stand from <card mrk='17367'/>.
+The spirit of hospitality towards guests is reflected in its refined design.
 [IDS_ITEMDESC.ID1110040]
 A Stand from a football stadium. Passion races across the field, the verdant stage reverberating with each shot.
 [IDS_ITEMDESC.ID1111001]
@@ -3342,6 +3411,9 @@ A Stand inspired by weird, wobbly creatures.
 [IDS_ITEMDESC.ID1111066]
 A Stand inspired by a magical circle gone haywire after an immense influx of power.
 There are even cases of the caster fusing with monsters—truly a terrible fate.
+[IDS_ITEMDESC.ID1111071]
+A Stand modeled on <category id='110'/>'s horoscope.
+It guides you using the mystical power of the stars.
 [IDS_ITEMDESC.ID1112001]
 A Stand from a Colosseum.
 The brilliant flame dances as if singing the praise of the brave warriors who battle here.
@@ -3714,13 +3786,17 @@ coming soon
 [IDS_ITEMDESC.ID1130094]
 coming soon
 [IDS_ITEMDESC.ID1130095]
-coming soon
+And so, the White Forest returned to the peaceful, mysterious forest it once was.
+The tale of "<card mrk='21195'/>".
 [IDS_ITEMDESC.ID1130096]
-coming soon
+Matchless beauty as delicate as silk and as fleeting as the moon in the night sky.
+This beautiful lady castellan lies waiting within her cursed castle's silver-lined walls.
 [IDS_ITEMDESC.ID1130097]
-coming soon
+The porcelain maiden's youngest sisters.
+Despite all their busy preparations behind the scenes, they ultimately had to face the knight themselves.
 [IDS_ITEMDESC.ID1130098]
-coming soon
+The first and eternal lord of the Golden Land.
+Through his own greed, he overpowered and consumed the curse that unleashed countless desires and resentments.
 [IDS_ITEMDESC.ID1130099]
 coming soon
 [IDS_ITEMDESC.ID1130100]
@@ -3730,12 +3806,14 @@ coming soon
 [IDS_ITEMDESC.ID1130102]
 coming soon
 [IDS_ITEMDESC.ID1130103]
-coming soon
+The stars themselves guide the brilliance of these interwoven dragons.
+Summon the dragons' power within your own hands.
 [IDS_ITEMDESC.ID1130104]
 The ancient progenitor of a great lineage of dragons.
 With an unquenchable thirst for battle, this Dragonlord held dominion over all with its incomparable might.
 [IDS_ITEMDESC.ID1130105]
-coming soon
+Another witch clad in white.
+She finds herself in a lonely tale of revenge.
 [IDS_ITEMDESC.ID1130106]
 coming soon
 [IDS_ITEMDESC.ID1130107]
@@ -3755,6 +3833,9 @@ Always stuns fans with his unbeatable technique and unexpected plays.
 [IDS_ITEMDESC.ID1132003]
 "I've made my very own wicked website that perfectly recreates my beloved hometown."
 She gleefully scurried off to the forums as the 10th visitor arrived.
+[IDS_ITEMDESC.ID1132004]
+A king who rules over a magical citadel.
+He performs miracles by drawing upon the energy stored within the magical stones found in his body.
 [IDS_ITEMDESC.ID1140001]
 A ticket that allows you to purchase a Legacy Pack.
 What will your legacy be?
@@ -3783,7 +3864,8 @@ It is said that when the <category id='101'/> are gathered, the prestigious door
 [IDS_ITEMDESC.ID1170003]
 coming soon
 [IDS_ITEMDESC.ID1170004]
-coming soon
+A Collector's File depicting those who lie in wait within the silvery, demonic castle.
+It is said that when the <category id='127'/>are gathered, the impregnable doors will shine brightly.
 [IDS_ITEMDESC.ID1170005]
 coming soon
 [IDS_ITEMDESC.ID1170006]
@@ -3811,9 +3893,11 @@ The dragon engraved on its surface glimmers brightly.
 [IDS_ITEMDESC.ID1180006]
 coming soon
 [IDS_ITEMDESC.ID1180007]
-coming soon
+A Coin whose motif is an impregnable castle that turns away all intruders.
+Its traps shimmer resplendently while lying in wait for unsuspecting victims.
 [IDS_ITEMDESC.ID1180008]
-coming soon
+A Coin whose motif is the lord of the Golden Land.
+Possessed with an insatiable greed that glimmers avariciously.
 [IDS_ITEMDESC.ID1180009]
 coming soon
 [IDS_ITEMDESC.ID1180010]
@@ -3824,7 +3908,8 @@ coming soon
 A Coin whose motif is super-advanced technological weaponry and the country that developed it.
  The emblem engraved on its surface glimmers brightly.
 [IDS_ITEMDESC.ID1180013]
-coming soon
+A Coin whose motif is the <category id='110'/> horoscope.
+The stars' power shines brightly.
 [IDS_ITEMDESC.ID1180014]
 A Coin whose motif is a very lucky card. Its white wings shimmer resplendently.
 [IDS_ITEMDESC.ID1180015]

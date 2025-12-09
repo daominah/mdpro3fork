@@ -96,6 +96,9 @@ Sa puissance colossale, chaotique, fouette ses ennemis et les détruit instantan
 [IDS_ITEMDESC.ID1000034]
 Un être qui aide un homme dans son voyage vers la reconquête de son vrai moi.
 Alors qu'il aurait dû disparaître, il est réapparu, peut-être parce que le sentiment d'identité de l'homme était encore incomplet.
+[IDS_ITEMDESC.ID1000035]
+Une chasseuse de trésors habillée de noir qui manie la magie.
+La manière dont elle poursuit son but sans relâche lui vaut le surnom de "Démon".
 [IDS_ITEMDESC.ID1000036]
 Un magicien talentueux des temps anciens, qui maîtrisait une forme de magie interdite.
 Il a disparu de l'Histoire sans laisser de trace après l'arrivée de "<card mrk='10282'/>".
@@ -215,7 +218,8 @@ coming soon
 Les Guerriers Pyroxènes sont des chevaliers au tempérament doux, dont le cœur rêve secrètement de justice.
 Ils possèdent la capacité de fusionner, selon leurs besoins.
 [IDS_ITEMDESC.ID1001038]
-coming soon
+<category id='79'/> réside dans les Souterrains et agit en tant qu'éclaireur.
+Il surveille le monde des humains sur ordres du Domaine rugissant.
 [IDS_ITEMDESC.ID1001039]
 coming soon
 [IDS_ITEMDESC.ID1001040]
@@ -696,26 +700,35 @@ Elle a affronté "<card mrk='20747'/>" dans une lutte sans pitié pour la survie
 [IDS_ITEMDESC.ID1010120]
 coming soon
 [IDS_ITEMDESC.ID1010121]
-coming soon
+Une icône représentant une mystérieuse conteuse.
+Le conte de "<card mrk='21195'/>" se transmet par la tradition orale.
 [IDS_ITEMDESC.ID1010122]
-coming soon
+Une Icône représentant un chevalier prenant d'assaut un château sorti tout droit d'anciennes légendes.
+Le chevalier vaillant franchit facilement tous les pièges mortels qu'il rencontre.
 [IDS_ITEMDESC.ID1010123]
 coming soon
 [IDS_ITEMDESC.ID1010124]
 coming soon
 [IDS_ITEMDESC.ID1010125]
-coming soon
+Une icône représentant un jeune homme qui a la capacité de voir un avenir certain.
+Il a eu de nombreuses visions depuis son enfance.
 [IDS_ITEMDESC.ID1010126]
-coming soon
+Une icône représentant une magicienne qui fait appel aux étoiles pour invoquer des dragons.
+Elle utilise le pouvoir des dragons pour prendre une nouvelle forme.
 [IDS_ITEMDESC.ID1010127]
-coming soon
+Une icône représentant un homme qui porte une marque sur les deux joues.
+Il protège "<card mrk='5231'/>" tout en irradiant une apparence majestueuse.
 [IDS_ITEMDESC.ID1010128]
 Une icône représentant une fille devenue un Monstre Xyz.
 Grâce à l'évolution des téléphones portables, elle sait comment décrocher la victoire.
 [IDS_ITEMDESC.ID1010129]
-coming soon
+Une icône représentant un démon rougeoyant portant un grand sac.
+Une imposante cicatrice en forme de croix lui balafre le torse.
 [IDS_ITEMDESC.ID1010130]
 coming soon
+[IDS_ITEMDESC.ID1010131]
+Une icône représentant l'emblème de l'académie.
+En situation d'urgence, les étudiants doivent se réunir immédiatement.
 [IDS_ITEMDESC.ID1011001]
 Une icône représentant un ballon constitué de panneaux noirs et blancs.
 Remporter 3 Duels d'affilée ne s'appelle pas un coup du chapeau.
@@ -903,11 +916,14 @@ Offerte à ceux qui ont atteint des résultats brillants lors de la Duelist Cup.
 Une icône avec un logo "DC 2025 SEP" en bronze. 
 Offerte à ceux qui ont remporté de nombreuses batailles lors de la Duelist Cup.
 [IDS_ITEMDESC.ID1011063]
-coming soon
+Une icône avec un logo "DC 2025 DEC" en or. 
+Offerte à ceux qui ont réalisé des exploits lors de la Duelist Cup.
 [IDS_ITEMDESC.ID1011064]
-coming soon
+Une icône avec un logo "DC 2025 DEC" en argent. 
+Offerte à ceux qui ont atteint des résultats brillants lors de la Duelist Cup.
 [IDS_ITEMDESC.ID1011065]
-coming soon
+Une icône avec un logo "DC 2025 DEC" en bronze. 
+Offerte à ceux qui ont remporté de nombreuses batailles lors de la Duelist Cup.
 [IDS_ITEMDESC.ID1012001]
 Une icône représentant un "Krawler", des monstres ayant envahi un certain monde. Celui-ci fait partie de la classe supérieure.
 Ils s'efforcent de réduire à néant les efforts de la civilisation humaine qui perdure depuis des générations.
@@ -1152,6 +1168,9 @@ Une icône exclusive offerte lors d'occasions spéciales.
 [IDS_ITEMDESC.ID1013010]
 Une icône représentant le logo d'un jeu de foot, où des équipes réelles et imaginaires de 11 joueurs s'affrontent pour être les meilleures.
 Une action palpitante qui vous est proposée par ceux qui ne cessent jamais de repousser leurs limites.
+[IDS_ITEMDESC.ID1013011]
+Une icône représentant la véritable forme de "<card mrk='14440'/>".
+Il paraît qu'il n'y a que "<card mrk='14439'/>" qui peut voir son vrai visage.
 [IDS_ITEMDESC.ID1020001]
 Un titre donné aux Duellistes ayant commencé leur aventure dans Yu-Gi-Oh! MASTER DUEL.
 Il n'est jamais trop tard pour se mettre aux Duels.
@@ -1715,6 +1734,24 @@ Telle une armure, formez une avant-garde impénétrable en empilant pièce aprè
 [IDS_ITEMDESC.ID1020188]
 Un titre donné aux Duellistes qui ont obtenu des résultats remarquables avec une stratégie axée sur des Invocations par Lien.
 Telle une chaîne parfaite, liez les monstres pour créer une formation sans faille.
+[IDS_ITEMDESC.ID1020189]
+Un titre donné aux Duellistes qui ont atteint le top 10 dans la DC 2025 DEC.
+Les récits de leurs innombrables grands Duels et de leur bravoure dans la bataille pour le trône perdureront dans le temps.
+[IDS_ITEMDESC.ID1020190]
+Un titre donné aux Duellistes qui ont atteint le top 100 dans la DC 2025 DEC.
+La preuve d'un exploit que de nombreux Duellistes essayent d'accomplir.
+[IDS_ITEMDESC.ID1020191]
+Un titre donné aux Duellistes qui ont atteint le top 500 dans la DC 2025 DEC.
+Seul le plus fort peut posséder un cœur comme le votre, que les nombreux Duels acharnés ont permis de tempérer.
+[IDS_ITEMDESC.ID1020192]
+Un titre donné aux Duellistes qui ont atteint le top 1000 dans la DC 2025 DEC.
+Bravo aux Duellistes qui ont continuellement perfectionné leurs Decks et leurs tactiques pour parvenir à ce résultat.
+[IDS_ITEMDESC.ID1020193]
+Un titre donné aux Duellistes qui ont atteint le top 10000 dans la DC 2025 DEC.
+Remporté grâce à des victoires successives contre des concurrents féroces lors de la 2nd STAGE.
+[IDS_ITEMDESC.ID1020194]
+Un titre donné aux Duellistes qui ont atteint la 2nd Stage dans la DC 2025 DEC.
+La preuve que vous avez réussi à passer la très disputée 1st Stage.
 [IDS_ITEMDESC.ID1020197]
 Un titre donné aux Duellistes qui ont obtenu des résultats lors d'une bataille entre trois forces.
 Quelle que soit la situation, vos capacités seront à leur paroxysme.
@@ -1830,9 +1867,15 @@ Les couleurs rappellent le crépuscule et suscitent tout un flot d'émotions.
 [IDS_ITEMDESC.ID1030037]
 Un cadre d'icône jaune et bleu qui évoque un soleil doré se levant au-dessus de la mer.
 Il rappelle ces belles journées d'été pendant lesquels la lumière du soleil se reflète sur l'eau étincelante de l'océan.
+[IDS_ITEMDESC.ID1030038]
+Un cadre d'icône évoquant une conteuse énigmatique.
+Une voix de fille peut être entendue, sortant de nulle part.
 [IDS_ITEMDESC.ID1030039]
 Un cadre d'icône qui évoque le pouvoir de la Fusion, la fondation même des Guerriers Pyroxènes.
 Elle affaiblit leur cœur, mais peut être utilisée en continu.
+[IDS_ITEMDESC.ID1030040]
+Un cadre d'icône bleu et blanc qui évoque le ciel froid de l'hiver.
+La neige blanche tombe du ciel bleu, reflétant la lumière avec harmonie.
 [IDS_ITEMDESC.ID1031001]
 Un Cadre d'icône qui évoque le portail utilisé par l'Assaut de l'Air afin de transférer leur armement.
 Lorsque la voie s'ouvre à ceux qui luttent pour la paix, un nouveau pouvoir pour surmonter les épreuves s'éveille.
@@ -2321,13 +2364,17 @@ Pour tous ceux qui défient le reste du monde.
 Protège-cartes représentant une servante prenant soin de ses ailes.
 Pour ceux qui souhaitent partager leur gratitude avec une surprise spéciale.
 [IDS_ITEMDESC.ID1070132]
-coming soon
+Des Protège-cartes représentant une mystérieuse conteuse.
+Pour tous ceux qui tissent le conte de la sorcière.
 [IDS_ITEMDESC.ID1070133]
-coming soon
+Des Protège-cartes représentant la châtelaine se précipitant dehors, incapable d'attendre plus longtemps.
+Pour toutes les personnes qui attentent leur preux chevalier.
 [IDS_ITEMDESC.ID1070134]
-coming soon
+Des Protège-cartes représentant une femme d'une beauté incomparable, bien qu'éphémère.
+Pour tous ceux qui rejettent le passé.
 [IDS_ITEMDESC.ID1070135]
-coming soon
+Des Protège-cartes représentant la Terre d'Or et sa terrible armée dorée prête à lancer une invasion.
+Pour tous ceux qui puisent leur puissance dans l'avarice.
 [IDS_ITEMDESC.ID1070136]
 coming soon
 [IDS_ITEMDESC.ID1070137]
@@ -2336,14 +2383,17 @@ coming soon
 Un Protège-carte avec une nouvelle apparence de la jeune fille élue pour manier des armes technologiques de pointe.
 Pour tous ceux qui se battent pour changer leur destin.
 [IDS_ITEMDESC.ID1070139]
-coming soon
+Des Protège-cartes représentant la force combinée de puissants dragons.
+Pour ceux qui sont guidés par les étoiles.
 [IDS_ITEMDESC.ID1070140]
 Des Protège-cartes ornés de l'image de "<card mrk='11413'/>" que le pouvoir de Zexal a fait évoluer.
 Pour tous ceux qui souhaitent retrouver espoir en l'avenir.
 [IDS_ITEMDESC.ID1070141]
-coming soon
+Des Protège-cartes représentant l'être qui guide les âmes dans l'au-delà.
+Pour ceux qui jugent les âmes des défunts.
 [IDS_ITEMDESC.ID1070142]
-coming soon
+Des Protège-cartes représentant le Seigneur d'Or, dont l'avarice est infinie.
+Pour tous ceux qui veulent tout s'approprier.
 [IDS_ITEMDESC.ID1070143]
 Des Protège-cartes représentant une reine parmi les reines, virevoltant sur une scène éclairée par la lune.
 Pour ceux qui dansent au milieu des rayons argentés scintillants de la lune.
@@ -2541,6 +2591,9 @@ Pour ceux qui aspirent à devenir le meilleur Duelliste au monde.
 [IDS_ITEMDESC.ID1073017]
 Un protège-cartes avec un logo "DC 2025 SEP". 
 Pour ceux qui ont participé à la Duelist Cup et qui ont fait de cet événement un succès.
+[IDS_ITEMDESC.ID1073018]
+Un protège-cartes avec un logo "DC 2025 DEC". 
+Pour ceux qui ont participé à la Duelist Cup et qui ont fait de cet événement un succès.
 [IDS_ITEMDESC.ID1075001]
 Protège-cartes représentant une scène du JEU DE CARTES Yu-Gi-Oh! LES CHRONIQUES.
 Les Duellistes présents sur place ont ovationné cet événement prestigieux.
@@ -2716,6 +2769,12 @@ Parfait pour ceux qui se battent dans les territoires du Nord.
 [IDS_ITEMDESC.ID1082022]
 Une Boîte de cartes illustrée d'une armée mécanique créée par accident.
 Elle est parfaite pour les Decks ayant subi de nombreux essais.
+[IDS_ITEMDESC.ID1082024]
+Une Boîte de cartes représentant un objet utilisé par une mystérieuse sorcière.
+Idéale pour les Decks avec des sorcières qui portent le fardeau d'un cruel destin.
+[IDS_ITEMDESC.ID1082025]
+Une Boîte de cartes représentant un château impénétrable qui repousse tous ceux qui tentent de s'y infiltrer.
+Idéal pour les Decks remplis de Cartes Piège.
 [IDS_ITEMDESC.ID1083001]
 Une Boîte de cartes exclusive offerte lors d'occasions spéciales.
 [IDS_ITEMDESC.ID1090001]
@@ -2824,6 +2883,9 @@ La tranquillité de cet endroit attire un flot infini de morts.
 [IDS_ITEMDESC.ID1090036]
 Un Terrain de Duel d'une structure gigantesque dans une atmosphère sinistre.
 En son cœur, la porte du cataclysme s'ouvre, lentement mais inexorablement.
+[IDS_ITEMDESC.ID1090037]
+Un Terrain de Duel de "<card mrk='17367'/>".
+La malédiction ne peut être levée à moins que le véritable trésor ne soit retrouvé dans le château.
 [IDS_ITEMDESC.ID1090040]
 Un Terrain de Duel dans un stade de football.
 Les encouragements des fans enthousiastes y résonnent.
@@ -2935,6 +2997,9 @@ Les tombes ont l'air d'avoir été fraîchement creusées.
 [IDS_ITEMDESC.ID1100036]
 Parties de Terrain inspirées de Despia, Théâtre des Marqués.
 Le niveau de raffinement est à la hauteur de ce château où règne l'obscurité.
+[IDS_ITEMDESC.ID1100037]
+Des Parties de Terrain issues de "<card mrk='17367'/>".
+Leurs motifs complexes en font de belles pièces décoratives.
 [IDS_ITEMDESC.ID1100040]
 Parties de Terrain provenant d'un terrain de football.
 Une issue temporaire qui fait partie de la performance. L'as revient de la trappe, prêt à riposter.
@@ -3045,7 +3110,8 @@ coming soon
 Des Parties de Terrain inspirées par deux fantômes blancs.
 Ce soir sera un festin pour les monstres étranges et peu communs. Profitons tous de la fête à venir.
 [IDS_ITEMDESC.ID1101041]
-coming soon
+Des Parties de Terrain inspirées d'une couronne décorative.
+Les couronnes ont de nombreuses utilisations, et on ignore à quoi sert celle-ci.
 [IDS_ITEMDESC.ID1101042]
 coming soon
 [IDS_ITEMDESC.ID1101043]
@@ -3191,6 +3257,9 @@ Le sens des inscriptions gravées dessus est peu clair, mais il est certain qu'i
 [IDS_ITEMDESC.ID1110036]
 Un Stand issu de Despia, Théâtre des Marqués.
 C'est l'une des innombrables crevasses qui ont été creusées dans le ciel.
+[IDS_ITEMDESC.ID1110037]
+Un Stand issu de <card mrk='17367'/>.
+L'esprit d'hospitalité est illustré par son apparence raffinée.
 [IDS_ITEMDESC.ID1110040]
 Tribune d'un stade de football. La passion déferle sur le terrain, la scène verdoyante résonnant à chaque tir.
 [IDS_ITEMDESC.ID1111001]
@@ -3340,6 +3409,9 @@ Il semble que ces ovoïdes roses ne grossiront pas davantage.
 [IDS_ITEMDESC.ID1111066]
 Un Stand inspiré par un cercle magique ayant mal tourné après une immense surcharge d'énergie.
 Certains cas de fusion entre le lanceur et les monstres ont été reportés, un sort des plus tragiques.
+[IDS_ITEMDESC.ID1111071]
+Un Stand inspiré de l'horoscope de "<category id='110'/>".
+Il vous guide grâce au pouvoir mystique des étoiles.
 [IDS_ITEMDESC.ID1112001]
 Un Stand issu d'un colisée.
 La flamme brillante danse comme si elle chantait les louanges des braves guerriers qui ont combattu ici.
@@ -3712,13 +3784,17 @@ coming soon
 [IDS_ITEMDESC.ID1130094]
 coming soon
 [IDS_ITEMDESC.ID1130095]
-coming soon
+Ainsi, la Forêt Blanche redevient le lieu paisible et mystérieux qu'elle était autrefois.
+Le conte de "<card mrk='21195'/>".
 [IDS_ITEMDESC.ID1130096]
-coming soon
+Une beauté sans pareil, aussi délicate que la soie et éphémère que la lune dans le ciel nocturne.
+Cette magnifique châtelaine se languit entre les murs argentés de son château maudit.
 [IDS_ITEMDESC.ID1130097]
-coming soon
+Les jeunes sœurs de la demoiselle en porcelaine.
+Malgré toutes leurs préparations, elles ont dû affronter le chevalier seules.
 [IDS_ITEMDESC.ID1130098]
-coming soon
+Le premier et dernier seigneur de la Terre d'Or !
+Sa cupidité l'a poussé à dominer et à absorber la malédiction qui a libéré d'innombrables désirs et ressentiments.
 [IDS_ITEMDESC.ID1130099]
 coming soon
 [IDS_ITEMDESC.ID1130100]
@@ -3728,12 +3804,14 @@ coming soon
 [IDS_ITEMDESC.ID1130102]
 coming soon
 [IDS_ITEMDESC.ID1130103]
-coming soon
+Les étoiles en personne guident l'éclat de ces dragons entremêlés.
+Invoquez la puissance des dragons au creux de votre main.
 [IDS_ITEMDESC.ID1130104]
 Le progéniteur ancestral d'une grande lignée de dragons.
 Avec sa soif insatiable de combat, ce Seigneur Dragon régnait sur le monde avec sa puissance incomparable.
 [IDS_ITEMDESC.ID1130105]
-coming soon
+Une autre sorcière vêtue de blanc.
+Elle s'est engagée seule sur la voie de la vengeance.
 [IDS_ITEMDESC.ID1130106]
 coming soon
 [IDS_ITEMDESC.ID1130107]
@@ -3753,6 +3831,9 @@ Il éblouit toujours ses fans grâce à ses techniques imparables et ses coups i
 [IDS_ITEMDESC.ID1132003]
 "J'ai créé mon propre site web qui recrée parfaitement mon village adoré."
 Elle s'est joyeusement précipitée sur les forums quand le dixième visiteur est arrivé.
+[IDS_ITEMDESC.ID1132004]
+Un roi qui gouverne sur une citadelle magique.
+Il réalise des miracles en canalisant l'énergie des pierres magiques dans son corps.
 [IDS_ITEMDESC.ID1140001]
 Un ticket permettant d'acheter un Pack Héritage.
 Quel sera votre héritage ?
@@ -3781,7 +3862,8 @@ Il paraît que lorsque les <category id='101'/> se rassemblent, la porte prestig
 [IDS_ITEMDESC.ID1170003]
 coming soon
 [IDS_ITEMDESC.ID1170004]
-coming soon
+Un Dossier de Collectionneur représentant les personnes qui se languissent dans le château argenté maléfique.
+Il paraît que lorsque les <category id='127'/> se rassembleront, ses portes impénétrables se mettront à briller de mille feux.
 [IDS_ITEMDESC.ID1170005]
 coming soon
 [IDS_ITEMDESC.ID1170006]
@@ -3809,9 +3891,11 @@ Le dragon gravé sur sa surface est étincelant.
 [IDS_ITEMDESC.ID1180006]
 coming soon
 [IDS_ITEMDESC.ID1180007]
-coming soon
+Une Pièce ornée d'un château impénétrable qui repousse tous ceux qui tentent de s'y infiltrer.
+Ses pièges resplendissent en attendant leurs victimes.
 [IDS_ITEMDESC.ID1180008]
-coming soon
+Une Pièce dont le motif est le seigneur de la Terre d'Or.
+Son désir insatiable brille de mille feux.
 [IDS_ITEMDESC.ID1180009]
 coming soon
 [IDS_ITEMDESC.ID1180010]
@@ -3822,7 +3906,8 @@ coming soon
 Une pièce ornée d'armes ultra sophistiquées et du symbole du pays qui les a mises au point.
 L'emblème gravé dessus brille de mille feux.
 [IDS_ITEMDESC.ID1180013]
-coming soon
+Une Pièce dont le motif est l'horoscope <category id='110'/>.
+Le pouvoir des étoiles scintille vaillamment.
 [IDS_ITEMDESC.ID1180014]
 Une Pièce dont le motif représente une carte très chanceuse. Ses ailes blanches brillent d'un éclat resplendissant.
 [IDS_ITEMDESC.ID1180015]

@@ -96,6 +96,9 @@ Seu poder colossal, condizente com seu apelido caótico, lança seu chicote de a
 [IDS_ITEMDESC.ID1000034]
 Um ser que ajuda um homem em uma jornada para recuperar seu verdadeiro eu.
 Embora devesse ter desaparecido, ele apareceu mais uma vez, talvez porque o senso de identidade do homem ainda estivesse incompleto.
+[IDS_ITEMDESC.ID1000035]
+Caçadora de tesouros com trajes negros que manipula magia.
+Recebeu a alcunha de "Demônio" pela frieza que apresenta para alcançar seus objetivos.
 [IDS_ITEMDESC.ID1000036]
 Um mago talentoso da antiguidade que dominou muitas artes proibidas.
 Ele desapareceu da história sem deixar rastros com o advento de "<card mrk='10282'/>".
@@ -215,7 +218,8 @@ coming soon
 Os Guerreiros Piroxênios, cavaleiros de temperamento equilibrado que anseiam em segredo por justiça.
 Possuem a habilidade de se fundir conforme necessário.
 [IDS_ITEMDESC.ID1001038]
-coming soon
+<category id='79'/> vive no submundo e atua como batedor.
+Sondam o mundo humano às ordens do Domínio do Rugido.
 [IDS_ITEMDESC.ID1001039]
 coming soon
 [IDS_ITEMDESC.ID1001040]
@@ -696,26 +700,35 @@ Ela já enfrentou "<card mrk='20747'/>" em um duelo mortal por sobrevivência.
 [IDS_ITEMDESC.ID1010120]
 coming soon
 [IDS_ITEMDESC.ID1010121]
-coming soon
+Ícone que retrata uma misteriosa narradora.
+Assim se transmite o conto de "<card mrk='21195'/>".
 [IDS_ITEMDESC.ID1010122]
-coming soon
+Ícone que retrata um cavaleiro avançando rumo um castelo repleto de lendas de outrora.
+Cavaleiro valente que desarma com astúcia as inúmeras armadilhas à espreita.
 [IDS_ITEMDESC.ID1010123]
 coming soon
 [IDS_ITEMDESC.ID1010124]
 coming soon
 [IDS_ITEMDESC.ID1010125]
-coming soon
+Ícone que retrata um jovem que tem o poder de ver um futuro inevitável.
+Desde criança, ele testemunhou incontáveis futuros.
 [IDS_ITEMDESC.ID1010126]
-coming soon
+Ícone que retrata uma maga que comunga com as estrelas para invocar dragões.
+Ela usa o poder dos dragões para assumir uma nova forma.
 [IDS_ITEMDESC.ID1010127]
-coming soon
+Ícone que retrata um homem com uma marca em cada bochecha.
+Ele protege "<card mrk='5231'/>" enquanto ostenta uma aparência majestosa.
 [IDS_ITEMDESC.ID1010128]
 Ícone que retrata uma garota que virou um Monstro Xyz.
 Graças à evolução dos celulares, ela teve acesso às chaves para a vitória.
 [IDS_ITEMDESC.ID1010129]
-coming soon
+Ícone que retrata um demônio avermelhado carregando uma bolsa grande.
+Carrega no peito uma cicatriz em forma de cruz.
 [IDS_ITEMDESC.ID1010130]
 coming soon
+[IDS_ITEMDESC.ID1010131]
+Um Ícone que representa o emblema da Academia.
+Em caso de emergência, os estudantes devem se reunir imediatamente.
 [IDS_ITEMDESC.ID1011001]
 Um ícone representando uma bola feita de painéis preto e branco.
 Vencer 3 Duelos seguidos não é considerado um triplete.
@@ -903,11 +916,14 @@ Dado aos que alcançaram resultados consideráveis na Copa de Duelistas.
 Um ícone com um logotipo "DC 2025 SEP" de bronze. 
 Dado aos que conquistaram inúmeras batalhas na Copa de Duelistas.
 [IDS_ITEMDESC.ID1011063]
-coming soon
+Um ícone com um logotipo "DC 2025 DEC" de ouro. 
+Dado aos que se saíram muito bem na Copa de Duelistas.
 [IDS_ITEMDESC.ID1011064]
-coming soon
+Um ícone com um logotipo "DC 2025 DEC" de prata. 
+Dado aos que alcançaram resultados consideráveis na Copa de Duelistas.
 [IDS_ITEMDESC.ID1011065]
-coming soon
+Um ícone com um logotipo "DC 2025 DEC" de bronze. 
+Dado aos que conquistaram inúmeras batalhas na Copa de Duelistas.
 [IDS_ITEMDESC.ID1012001]
 Um ícone representando um “Krawler”, monstros que dominaram certo mundo. Este faz parte de uma classe mais alta.
 Eles destroem impiedosamente os esforços da civilização humana que duraram gerações.
@@ -1152,6 +1168,9 @@ O encontro deles foi obra do destino ou foi inevitável? O que se revela é uma 
 [IDS_ITEMDESC.ID1013010]
 Um ícone representando o logotipo de um jogo de futebol onde times de 11, reais e ideais, competem pela vitória.
 Muita ação emocionante, trazida pelos que nunca param de desafiar a si mesmos.
+[IDS_ITEMDESC.ID1013011]
+Ícone que retrata a verdadeira forma de "<card mrk='14440'/>".
+Dizem que só "<card mrk='14439'/>" pode ver o rosto verdadeiro dela.
 [IDS_ITEMDESC.ID1020001]
 Um título dado a Duelistas que começaram sua jornada de Duelos em Yu-Gi-Oh! MASTER DUEL.
 Nunca é tarde para começar a Duelar.
@@ -1715,6 +1734,24 @@ Como placas de armadura, formam uma vanguarda inabalável de peças empilhadas.
 [IDS_ITEMDESC.ID1020188]
 Título concedido a Duelistas que obtiveram resultados notórios com uma estratégia que envolvia Invocações-Link.
 Tal como uma falange perfeita, faça o link entre monstros para criar uma formação sem pontos fracos.
+[IDS_ITEMDESC.ID1020189]
+Um Título dado aos Duelistas que ficaram entre os 10 melhores na DC 2025 DEC.
+Contos a respeito de seus grandes Duelos e de sua coragem em competir pelo trono continuarão a ser contados por anos a fio.
+[IDS_ITEMDESC.ID1020190]
+Um Título dado aos Duelistas que ficaram entre os 100 melhores na DC 2025 DEC.
+Esta é a prova de uma proeza que muitos Duelistas buscam alcançar.
+[IDS_ITEMDESC.ID1020191]
+Um Título dado aos Duelistas que ficaram entre os 500 melhores na DC 2025 DEC.
+Apenas os mais fortes dentre os mais fortes possuem um coração como o seu, temperado por muitos Duelos intensos.
+[IDS_ITEMDESC.ID1020192]
+Um Título dado aos Duelistas que ficaram entre os 1.000 melhores na DC 2025 DEC.
+Parabéns aos Duelistas que continuaram aperfeiçoando seus Decks e suas táticas para atingir este resultado.
+[IDS_ITEMDESC.ID1020193]
+Um Título dado aos Duelistas que ficaram entre os 10000 melhores no DC DEC 2025.
+Foi conquistado através de vitória após vitória contra ferozes competidores na 2ª FASE.
+[IDS_ITEMDESC.ID1020194]
+Um Título dado aos Duelistas que chegaram à 2ª Fase na DC 2025 DEC.
+Esta é uma prova de que conseguiu passar a altamente disputada 1ª Fase.
 [IDS_ITEMDESC.ID1020197]
 Um título concedido a Duelistas que obtiveram resultados em uma batalha entre três forças.
 Independentemente da situação, suas habilidades brilharão.
@@ -1830,9 +1867,15 @@ Evocando a imagem do crepúsculo, as cores trazem diversas emoções.
 [IDS_ITEMDESC.ID1030037]
 Uma Moldura de Ícone amarela e azul que evoca um sol dourado nascendo acima do oceano.
 Traz à mente dias de verão ensolarados, com a água do mar cintilando à luz do sol.
+[IDS_ITEMDESC.ID1030038]
+Moldura de Ícone que evoca uma misteriosa narradora.
+Uma voz de menina ecoa, mas não se sabe de onde.
 [IDS_ITEMDESC.ID1030039]
 Moldura de Ícone que evoca o poder da Fusão, o alicerce dos Guerreiros Piroxênios.
 Apesar de estressar o núcleo, pode-se usar de forma consecutiva.
+[IDS_ITEMDESC.ID1030040]
+Moldura de Ícone azul e branca que evoca um céu frio de inverno.
+A neve branca cai do céu azul e límpido, refletindo a harmonia da luz.
 [IDS_ITEMDESC.ID1031001]
 Uma Moldura de Ícone lembra o portão utilizado pelas Forças Celestes para transferir seus armamentos.
 Quando o caminho abre àqueles que lutam pela paz, um novo poder para superar as dificuldades desperta.
@@ -2322,13 +2365,17 @@ Para aqueles que desafiaram o mundo.
 Protetores que retratam uma servente que mantém a chefe ocupada com os cuidados das penas.
 Para quem pensa em mostrar gratidão por meio de surpresas especiais.
 [IDS_ITEMDESC.ID1070132]
-coming soon
+Protetores que retratam uma misteriosa narradora.
+Para quem tece o conto da bruxa.
 [IDS_ITEMDESC.ID1070133]
-coming soon
+Protetores que retratam uma castelã às pressa, pois não aguentava mais esperar um segundo sequer.
+Para quem aguarda o cavaleiro em armadura cintilante.
 [IDS_ITEMDESC.ID1070134]
-coming soon
+Protetores que retratam uma mulher de beleza ímpar, porém efêmera.
+Para quem rejeita tudo que surge no caminho.
 [IDS_ITEMDESC.ID1070135]
-coming soon
+Protetores que retratam o pavoroso exército da Terra Dourada, pronto para dar início a uma invasão.
+Para quem tem poder oriundo da ganância.
 [IDS_ITEMDESC.ID1070136]
 coming soon
 [IDS_ITEMDESC.ID1070137]
@@ -2337,14 +2384,17 @@ coming soon
 Protetores que retratam o novo visual de uma garota escolhida para portar armas tecnológicas superavançadas.
 Para aqueles que lutam para mudar o destino.
 [IDS_ITEMDESC.ID1070139]
-coming soon
+Protetores que retratam a força conjunta de dragões poderosos.
+Para quem olha para as estrelas em busca de orientação.
 [IDS_ITEMDESC.ID1070140]
 Protetores que retratam a evolução de "<card mrk='11413'/>" mediante o poder de Zexal.
 Para quem deseja promover esperança pelo futuro.
 [IDS_ITEMDESC.ID1070141]
-coming soon
+Protetores que retratam quem guia almas à vida após a morte.
+Para quem julga as almas dos mortos.
 [IDS_ITEMDESC.ID1070142]
-coming soon
+Protetores que retratam o Senhor Dourado, cuja ganância é insaciável.
+Para quem deseja se apossar de tudo.
 [IDS_ITEMDESC.ID1070143]
 Protetores que retratam uma rainha ímpar, que flutua em um palco ao luar.
 Para quem dança em meio aos feixes prateados e reluzentes do luar.
@@ -2543,6 +2593,9 @@ Para aqueles que almejam se tornar o melhor do mundo.
 [IDS_ITEMDESC.ID1073017]
 Um Protetor com um logotipo "DC 2025 SEP". 
 Para aqueles que participaram da Copa de Duelistas e tornaram o evento um sucesso.
+[IDS_ITEMDESC.ID1073018]
+Um Protetor com um logotipo "DC 2025 DEC". 
+Para aqueles que participaram da Copa de Duelistas e tornaram o evento um sucesso.
 [IDS_ITEMDESC.ID1075001]
 Protetores representando uma cena de Yu-Gi-Oh! CARD GAME THE CHRONICLES.
 Os Duelistas no local soltaram um grande grito de alegria para marcar esse evento prestigioso.
@@ -2718,6 +2771,12 @@ Perfeito para os Decks daqueles que batalham nos territórios do norte.
 [IDS_ITEMDESC.ID1082022]
 Porta-cards que retrata um exército mecânico que surgiu como subproduto.
 Ideal para Decks que passaram por inúmeras provações.
+[IDS_ITEMDESC.ID1082024]
+Porta-cards que retrata o item de uma bruxa misteriosa.
+Perfeito para Decks com bruxas que carregam o fardo de um destino cruel.
+[IDS_ITEMDESC.ID1082025]
+Porta-cards que retrata um castelo inexpugnável que afasta todos os invasores.
+Perfeito para Decks repletos de Cards de Armadilha.
 [IDS_ITEMDESC.ID1083001]
 Porta-cards exclusivo, disponível em ocasiões especiais.
 [IDS_ITEMDESC.ID1090001]
@@ -2826,6 +2885,9 @@ Mesmo nesta noite, a tranquilidade deste lugar atrai um fluxo inesgotável de mo
 [IDS_ITEMDESC.ID1090036]
 Um Campo de Duelo com uma estrutura gigantesca envolta em uma atmosfera sinistra.
 Em suas profundezas, o portão do cataclismo se abre de forma lenta porém inexorável.
+[IDS_ITEMDESC.ID1090037]
+Campo de Duelo de <card mrk='17367'/>.
+Apenas o tesouro verdadeiro que jaz dentro do castelo pode quebrar a maldição.
 [IDS_ITEMDESC.ID1090040]
 Um Campo de Duelo de um estádio de futebol.
 Os gritos de empolgação da torcida ecoam pelo gramado.
@@ -2937,6 +2999,9 @@ Pelo visto, os túmulos foram escavados recentemente.
 [IDS_ITEMDESC.ID1100036]
 Componentes de Campo de Despia, o Teatro dos Marcados.
 O nível de refinamento condiz com o castelo que emana escuridão.
+[IDS_ITEMDESC.ID1100037]
+Componentes de Campo de <card mrk='17367'/>.
+Apresenta design ornamental que valoriza as peças decorativas.
 [IDS_ITEMDESC.ID1100040]
 Componentes de Campo de um estádio de futebol.
 Uma saída temporária faz parte do desempenho. O ás retorna do buraco, pronto para contra-atacar.
@@ -3048,7 +3113,8 @@ coming soon
 Componentes de Campo inspirados em dois fantasmas brancos.
 A noite de hoje celebra monstros estranhos e incomuns. Celebremos a alegria que está por vir.
 [IDS_ITEMDESC.ID1101041]
-coming soon
+Componentes de Campo inspirados em uma grinalda (um círculo decorativo).
+Por ser um objeto versátil, ninguém sabe ao certo qual função cumpria.
 [IDS_ITEMDESC.ID1101042]
 coming soon
 [IDS_ITEMDESC.ID1101043]
@@ -3194,6 +3260,9 @@ O significado das inscrições permanece um mistério. Contudo, o manuseio reque
 [IDS_ITEMDESC.ID1110036]
 Um Pedestal de Despia, o Teatro dos Marcados.
 Esse é um dos inúmeros buracos que foram esculpidos no céu.
+[IDS_ITEMDESC.ID1110037]
+Pedestal de <card mrk='17367'/>.
+O design sofisticado reflete o espírito de hospitalidade com visitantes.
 [IDS_ITEMDESC.ID1110040]
 Um pedestal de um estádio de futebol. A paixão percorre todo o campo, um palco verdejante que vibra a cada jogada.
 [IDS_ITEMDESC.ID1111001]
@@ -3343,6 +3412,9 @@ Parece que as figuras rosadas em forma de ovo não crescerão mais.
 [IDS_ITEMDESC.ID1111066]
 Um pedestal inspirado em um círculo mágico que saiu de controle após um imenso influxo de poder.
 Há até casos em que o conjurador se fundiu com monstros - um destino terrível.
+[IDS_ITEMDESC.ID1111071]
+Pedestal inspirado no horóscopo de <category id='110'/>.
+Orienta por meio do poder místico das estrelas.
 [IDS_ITEMDESC.ID1112001]
 Um pedestal de um Coliseu.
 A chama brilhante dança como se cantasse a ode dos bravos guerreiros que lutam aqui.
@@ -3715,13 +3787,17 @@ coming soon
 [IDS_ITEMDESC.ID1130094]
 coming soon
 [IDS_ITEMDESC.ID1130095]
-coming soon
+E assim, a paz voltou a reinar na misteriosa Floresta Branca, tal como outrora.
+O conto de "<card mrk='21195'/>".
 [IDS_ITEMDESC.ID1130096]
-coming soon
+Beleza ímpar, delicada como a seda e efêmera como a lua no céu noturno.
+Bela castelã que vive à espera dentro de seu castelo amaldiçoado com muralhas de prata.
 [IDS_ITEMDESC.ID1130097]
-coming soon
+Irmãs mais novas da donzela de porcelana.
+Apesar dos incessantes esforços nos bastidores, tiveram de enfrentar o cavaleiro por conta própria.
 [IDS_ITEMDESC.ID1130098]
-coming soon
+Primeiro e eterno senhor da Terra Dourada.
+Com ganância irrefreável, subjugou e consumiu a maldição que alastrou inúmeros desejos e ressentimentos.
 [IDS_ITEMDESC.ID1130099]
 coming soon
 [IDS_ITEMDESC.ID1130100]
@@ -3731,12 +3807,14 @@ coming soon
 [IDS_ITEMDESC.ID1130102]
 coming soon
 [IDS_ITEMDESC.ID1130103]
-coming soon
+As próprias estrelas guiam o brilho dos dragões entrelaçados.
+Invoque o poder dos dragões com as próprias mãos.
 [IDS_ITEMDESC.ID1130104]
 Antigo progenitor de uma grande linhagem de dragões.
 Este Senhor Dragão dominava a todos, pois tinha uma sede insaciável de batalha e um poderio incomparável.
 [IDS_ITEMDESC.ID1130105]
-coming soon
+Outra bruxa em trajes brancos.
+Ela se encontra em um conto solitário de vingança.
 [IDS_ITEMDESC.ID1130106]
 coming soon
 [IDS_ITEMDESC.ID1130107]
@@ -3756,6 +3834,9 @@ Sempre surpreende os fãs com sua técnica imbatível e jogadas inesperadas.
 [IDS_ITEMDESC.ID1132003]
 "Criei meu próprio site nefasto, que recria com perfeição minha amada cidade natal."
 Ela se retira alegremente para os fóruns enquanto o décimo visitante chega.
+[IDS_ITEMDESC.ID1132004]
+Rei que governa uma cidadela mágica.
+Ele faz milagres ao canalizar a energia contida nas pedras mágicas que carrega no corpo.
 [IDS_ITEMDESC.ID1140001]
 Um bilhete que permite a compra de um Pacote do Legado.
 Qual será o seu legado?
@@ -3784,7 +3865,8 @@ Dizem que ao reunir <category id='101'/>, os ilustres portões brilharão com fu
 [IDS_ITEMDESC.ID1170003]
 coming soon
 [IDS_ITEMDESC.ID1170004]
-coming soon
+Acervo de Colecionador que retrata quem vive à espera em um castelo demoníaco e prateado.
+Dizem que ao reunir <category id='127'/>, o portão inexpugnável brilhará com fulgor.
 [IDS_ITEMDESC.ID1170005]
 coming soon
 [IDS_ITEMDESC.ID1170006]
@@ -3812,9 +3894,11 @@ O dragão gravado na superfície reluz com fulgor.
 [IDS_ITEMDESC.ID1180006]
 coming soon
 [IDS_ITEMDESC.ID1180007]
-coming soon
+Moeda cuja inspiração é um castelo inexpugnável que afasta todos os invasores.
+Tem armadilhas que brilham com fulgor enquanto espreitam as vítimas incautas.
 [IDS_ITEMDESC.ID1180008]
-coming soon
+Moeda cujo emblema é o senhor da Terra Dourada.
+Possui uma ganância insaciável que reluz com avareza.
 [IDS_ITEMDESC.ID1180009]
 coming soon
 [IDS_ITEMDESC.ID1180010]
@@ -3825,7 +3909,8 @@ coming soon
 Moeda cujo tema é armamento tecnológico superavançado, bem como o país de origem do aparato bélico.
 O emblema gravado na superfície reluz com fulgor.
 [IDS_ITEMDESC.ID1180013]
-coming soon
+Moeda cujo emblema é o horóscopo de <category id='110'/>.
+O poder das estrelas brilha com fulgor.
 [IDS_ITEMDESC.ID1180014]
 Moeda cujo tema é um card de muita sorte. Tem asas brancas de brilho resplandecente.
 [IDS_ITEMDESC.ID1180015]

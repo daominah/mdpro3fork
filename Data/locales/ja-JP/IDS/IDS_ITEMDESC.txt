@@ -98,7 +98,8 @@ coming soon
 本当の自分を取り戻すために旅する男を助ける存在。
 消えたはずだったが、男の自我が不完全な故か、内側から姿を現した。
 [IDS_ITEMDESC.ID1000035]
-coming soon
+黒づくめの衣装をまとい魔術を操るトレジャーハンター。
+目的のためには容赦ないその姿から「悪魔」と評されている。
 [IDS_ITEMDESC.ID1000036]
 禁術を極めた古の天才魔術師。
 「<card mrk='10282'/>」の建造と入れ替わるように魔法史から姿を消した。
@@ -242,7 +243,8 @@ coming soon
 温和で正義の心を秘める輝石の戦士たち。
 彼らが必要とする融合の力に関する能力を持っている。
 [IDS_ITEMDESC.ID1001038]
-coming soon
+魔界に住む斥候役の<category id='79'/>。
+轟界からの命を受けて地上界を偵察する。
 [IDS_ITEMDESC.ID1001039]
 coming soon
 [IDS_ITEMDESC.ID1001040]
@@ -723,26 +725,35 @@ coming soon
 [IDS_ITEMDESC.ID1010120]
 coming soon
 [IDS_ITEMDESC.ID1010121]
-coming soon
+不思議な語り部が描かれたアイコン。
+「<card mrk='21195'/>」のおはなしを語り継ぐ。
 [IDS_ITEMDESC.ID1010122]
-coming soon
+伝説渦巻く城を攻略する騎士が描かれたアイコン。
+数々の即死トラップを容易くクリアしてゆく。
 [IDS_ITEMDESC.ID1010123]
 coming soon
 [IDS_ITEMDESC.ID1010124]
 coming soon
 [IDS_ITEMDESC.ID1010125]
-coming soon
+制御できない未来を視る力を持つ少年が描かれたアイコン。
+幼い頃からさまざまな未来を幻視してきた。
 [IDS_ITEMDESC.ID1010126]
-coming soon
+星の力で竜を呼び出す魔術師が描かれたアイコン。
+竜魔の力を束ねることで新たな姿となる。
 [IDS_ITEMDESC.ID1010127]
-coming soon
+両頬に刻印がある男が描かれたアイコン。
+堂々とした出で立ちで「<card mrk='5231'/>」を護っている。
 [IDS_ITEMDESC.ID1010128]
 エクシーズモンスターとなった後輩ギャルが描かれたアイコン。
 携帯電話も進化して、勝利の方程式は全て揃った。
 [IDS_ITEMDESC.ID1010129]
-coming soon
+大きな袋を持った赤い悪魔が描かれたアイコン。
+胸には十字の大きな傷のようなものがある。
 [IDS_ITEMDESC.ID1010130]
 coming soon
+[IDS_ITEMDESC.ID1010131]
+学園のマークが描かれたアイコン。
+生徒が有事の際には直ちに駆けつけるのだ。
 [IDS_ITEMDESC.ID1011001]
 白と黒のパネルで構成されたボールが描かれたアイコン。
 デュエルで３連勝してもハットトリックとは言わない。
@@ -930,11 +941,14 @@ Yu-Gi-Oh! World Championship 2025 ：マスターデュエル出場を記念し�
 銅色に輝く「DC2025 SEP」のロゴが描かれたアイコン。
 デュエリストカップで、数々の戦いに打ち勝ったデュエリストたちに贈られる。
 [IDS_ITEMDESC.ID1011063]
-coming soon
+金色に輝く「DC2025 DEC」のロゴが描かれたアイコン。
+デュエリストカップで、最も優れた結果を残したデュエリストたちに贈られる。
 [IDS_ITEMDESC.ID1011064]
-coming soon
+銀色に輝く「DC2025 DEC」のロゴが描かれたアイコン。
+デュエリストカップで、優れた結果を残したデュエリストたちに贈られる。
 [IDS_ITEMDESC.ID1011065]
-coming soon
+銅色に輝く「DC2025 DEC」のロゴが描かれたアイコン。
+デュエリストカップで、数々の戦いに打ち勝ったデュエリストたちに贈られる。
 [IDS_ITEMDESC.ID1012001]
 とある星にあふれる機怪蟲「クローラー」の上位個体の一体が描かれたアイコン。
 彼らは無慈悲に人類の築いたものを破壊する。
@@ -1216,7 +1230,8 @@ coming soon
 リアルと夢のイレブンによる白熱の対戦が楽しめるサッカーゲームのロゴが描かれたアイコン。
 絶え間なき挑戦の歩みとともに、フットボールが生み出す熱い感動を届けていく。
 [IDS_ITEMDESC.ID1013011]
-coming soon
+「<card mrk='14440'/>」の真の姿が描かれたアイコン。
+その素顔は「<card mrk='14439'/>」にしか見せないと言われている。
 [IDS_ITEMDESC.ID1013012]
 coming soon
 [IDS_ITEMDESC.ID1013013]
@@ -1798,6 +1813,24 @@ Yu-Gi-Oh! World Championship 2025 ：マスターデュエルにおいて、BEST
 [IDS_ITEMDESC.ID1020188]
 リンク召喚による戦術で、結果を残したデュエリストに贈られる称号。
 空を支配する編隊のように死角のない連隊を編成する。
+[IDS_ITEMDESC.ID1020189]
+「DC2025 DEC」において、TOP10という結果を残したデュエリストに贈られる称号。
+最強という、たった一つの椅子を懸け、数々の名勝負を生み出したその勇姿は、この先も讃えられることだろう。
+[IDS_ITEMDESC.ID1020190]
+「DC2025 DEC」において、TOP100という結果を残したデュエリストに贈られる称号。
+多くのデュエリストたちにとって、目標となる存在であることの証だ。
+[IDS_ITEMDESC.ID1020191]
+「DC2025 DEC」において、TOP500という結果を残したデュエリストに贈られる称号。
+幾多にわたる激闘のデュエルを経て磨かれたその魂は、強者の中の強者にしか宿らないものだろう。
+[IDS_ITEMDESC.ID1020192]
+「DC2025 DEC」において、TOP1000という結果を残したデュエリストに贈られる称号。
+デッキとタクティクスを研鑽し続け、ここまで到達したデュエリストたちに称賛を送る。
+[IDS_ITEMDESC.ID1020193]
+「DC2025 DEC」において、TOP10000という結果を残したデュエリストに贈られる称号。
+猛者ぞろいの2nd STAGEにおいて、多くの勝ち星を積み上げた成果だ。
+[IDS_ITEMDESC.ID1020194]
+「DC2025 DEC」において、2nd STAGE進出という結果を残したデュエリストに贈られる称号。
+数多くのデュエリストが争う1st STAGEを勝ち抜き、実力を示した証。
 [IDS_ITEMDESC.ID1020197]
 三勢力による争いの中で、結果を残したデュエリストに贈られる称号。
 その能力はいかなる状況においても発揮されることだろう。
@@ -1914,12 +1947,14 @@ coming soon
 陽の光と澄んだ水を想起させるイエロー&ブルーのアイコンフレーム。
 光を受けてきらめく水面が、あの眩しい夏の日を思い出させる。
 [IDS_ITEMDESC.ID1030038]
-coming soon
+不思議な語り部を想起させるアイコンフレーム。
+どこからともなく少女の声が聞こえてきそうだ。
 [IDS_ITEMDESC.ID1030039]
 輝石の戦士たちにとって基本となる融合の力のアイコンフレーム。
 核石に負担は掛かるが連続で使用する事も可能だ。
 [IDS_ITEMDESC.ID1030040]
-coming soon
+冬空の冷たさを想起させるブルー&ホワイトのアイコンフレーム。
+澄み渡る青空の下、降り積もる白雪が光の調べを映し出す。
 [IDS_ITEMDESC.ID1030041]
 coming soon
 [IDS_ITEMDESC.ID1030042]
@@ -2504,13 +2539,17 @@ Yu-Gi-Oh! World Championship 2025のキービジュアルがデザインされ�
 メイド長を羽根つくろいで足止めする様子がデザインされたプロテクター。
 感謝の意を示すサプライズを考えるあなたに。
 [IDS_ITEMDESC.ID1070132]
-coming soon
+謎の語り手がデザインされたプロテクター。
+魔女の物語を紡ぐあなたに。
 [IDS_ITEMDESC.ID1070133]
-coming soon
+待ちきれず飛び出した女城主がデザインされたプロテクター。
+騎士を待ち受けるあなたに。
 [IDS_ITEMDESC.ID1070134]
-coming soon
+繊細で儚い絶世の美姫がデザインされたプロテクター。
+何者をも拒絶するあなたに。
 [IDS_ITEMDESC.ID1070135]
-coming soon
+侵攻のため黄金兵団を生み出す黄金卿がデザインされたプロテクター。
+欲望を源泉とするあなたに。
 [IDS_ITEMDESC.ID1070136]
 coming soon
 [IDS_ITEMDESC.ID1070137]
@@ -2519,14 +2558,17 @@ coming soon
 超兵器を託された少女の新たな姿がデザインされたプロテクター。
 運命を変えるあなたに。
 [IDS_ITEMDESC.ID1070139]
-coming soon
+竜魔の力を束ねた姿がデザインされたプロテクター。
+星辰に導かれたあなたに。
 [IDS_ITEMDESC.ID1070140]
 ゼアルの力で進化した「<card mrk='11413'/>」がデザインされたプロテクター。
 希望の未来を創造するあなたに。
 [IDS_ITEMDESC.ID1070141]
-coming soon
+死を司り冥界へと導く存在がデザインされたプロテクター。
+死者の魂を裁くあなたに。
 [IDS_ITEMDESC.ID1070142]
-coming soon
+欲望尽きぬ黄金卿がデザインされたプロテクター。
+全てを我が物とするあなたに。
 [IDS_ITEMDESC.ID1070143]
 月光の夜空を舞い統べる王の中の王がデザインされたプロテクター。
 月明かりに舞うあなたに。
@@ -2880,7 +2922,8 @@ Yu-Gi-Oh! World Championship 2025 ：マスターデュエルのビジュアル�
 「DC2025 SEP」のロゴがデザインされたプロテクター。
 デュエリストカップに参加し、イベントを盛り上げたあなたに。
 [IDS_ITEMDESC.ID1073018]
-coming soon
+「DC2025 DEC」のロゴがデザインされたプロテクター。
+デュエリストカップに参加し、イベントを盛り上げたあなたに。
 [IDS_ITEMDESC.ID1073019]
 coming soon
 [IDS_ITEMDESC.ID1073020]
@@ -3125,9 +3168,11 @@ coming soon
 [IDS_ITEMDESC.ID1082023]
 coming soon
 [IDS_ITEMDESC.ID1082024]
-coming soon
+不思議な魔女が扱う道具のイメージがデザインされたカードケース。
+過酷な運命を背負う魔女たちのデッキにおススメ。
 [IDS_ITEMDESC.ID1082025]
-coming soon
+何者をも拒絶する難攻不落の城のイメージがデザインされたカードケース。
+罠だらけのデッキにおススメ。
 [IDS_ITEMDESC.ID1082026]
 coming soon
 [IDS_ITEMDESC.ID1082027]
@@ -3249,7 +3294,8 @@ coming soon
 異様な雰囲気に包まれる巨大な建造物のフィールド。
 最奥ではゆっくりと、しかし確実に大厄災の扉が開いている。
 [IDS_ITEMDESC.ID1090037]
-coming soon
+<card mrk='17367'/>のフィールド。
+城内にあるとされる真の宝を持ち帰らねば呪いが解かれる事はない。
 [IDS_ITEMDESC.ID1090038]
 coming soon
 [IDS_ITEMDESC.ID1090039]
@@ -3396,7 +3442,8 @@ Evil★Twinのフィールドに設けられたフィールドパーツ。
 烙印劇城デスピアに設けられたフィールドパーツ。
 闇を放つ居城に相応しく洗練されている。
 [IDS_ITEMDESC.ID1100037]
-coming soon
+<card mrk='17367'/>に設けられたフィールドパーツ。
+美しい装飾が施された調度品としての価値も高い。
 [IDS_ITEMDESC.ID1100038]
 coming soon
 [IDS_ITEMDESC.ID1100039]
@@ -3512,7 +3559,8 @@ coming soon
 二体の白いオバケを模したフィールドパーツ。
 今宵は怪しきモンスターたちの宴。さあ共に戯れよう。
 [IDS_ITEMDESC.ID1101041]
-coming soon
+リースと呼ばれる装飾用の輪を模したフィールドパーツ。
+リースの用途は多岐に渡るため、どのような意図かは不明。
 [IDS_ITEMDESC.ID1101042]
 coming soon
 [IDS_ITEMDESC.ID1101043]
@@ -3661,7 +3709,8 @@ Evil★Twinのフィールドに設けられた台座。
 烙印劇城デスピアに設けられた台座。
 空に刻まれた無数の穴の一つのようだ。
 [IDS_ITEMDESC.ID1110037]
-coming soon
+<card mrk='17367'/>に設けられた台座。
+訪問者へのおもてなしの精神が格式高いデザインに表れている。
 [IDS_ITEMDESC.ID1110038]
 coming soon
 [IDS_ITEMDESC.ID1110039]
@@ -3859,7 +3908,8 @@ coming soon
 [IDS_ITEMDESC.ID1111070]
 coming soon
 [IDS_ITEMDESC.ID1111071]
-coming soon
+<category id='110'/>のホロスコープを模した台座。
+神秘的な星の力があなたを導く。
 [IDS_ITEMDESC.ID1111072]
 coming soon
 [IDS_ITEMDESC.ID1111073]
@@ -4272,13 +4322,17 @@ coming soon
 [IDS_ITEMDESC.ID1130094]
 coming soon
 [IDS_ITEMDESC.ID1130095]
-coming soon
+こうして白き森はむかしのような平和で不思議な森に戻りました。
+「<card mrk='21195'/>」のおはなし――。
 [IDS_ITEMDESC.ID1130096]
-coming soon
+白糸の如く繊細で、月の如く儚い、絶世の美姫。
+呪われし白銀の巨城で待つ麗しの女城主。
 [IDS_ITEMDESC.ID1130097]
-coming soon
+白磁の乙女の末妹である少女たち。
+舞台裏で忙しく準備したが、結局自ら騎士の相手をすることになった。
 [IDS_ITEMDESC.ID1130098]
-coming soon
+始まりにして永久なる黄金郷の王。
+数多の欲望と怨嗟を放つ呪いを己の我欲でねじ伏せ取り込んだ。
 [IDS_ITEMDESC.ID1130099]
 coming soon
 [IDS_ITEMDESC.ID1130100]
@@ -4288,12 +4342,14 @@ coming soon
 [IDS_ITEMDESC.ID1130102]
 coming soon
 [IDS_ITEMDESC.ID1130103]
-coming soon
+星辰が導くは、交わりし竜魔の煌めき。
+竜魔の力をその手に束ねよ。
 [IDS_ITEMDESC.ID1130104]
 太古から伝わる竜の始祖たる存在。
 溢れる闘気と規格外の体躯で王として君臨した。
 [IDS_ITEMDESC.ID1130105]
-coming soon
+白い姿のもう一人の魔女。
+孤独な復讐劇に身を投じている。
 [IDS_ITEMDESC.ID1130106]
 coming soon
 [IDS_ITEMDESC.ID1130107]
@@ -4313,6 +4369,9 @@ coming soon
 [IDS_ITEMDESC.ID1132003]
 大好きな故郷を再現した、アタイだけのイカしたサイト。
 10番目のお客様来訪に喜び勇んでコメント欄へ急ぐのであった。
+[IDS_ITEMDESC.ID1132004]
+魔法都市を支配する王。
+身体の魔力石から莫大なエネルギーを抽出し奇跡を生み出す。
 [IDS_ITEMDESC.ID1140001]
 レガシーパックを購入することができるチケット。
 レガシーとは後世へと受け継がれるもののことである。
@@ -4347,7 +4406,8 @@ coming soon
 [IDS_ITEMDESC.ID1170003]
 coming soon
 [IDS_ITEMDESC.ID1170004]
-coming soon
+白銀の悪魔城で待ち受けるものたちのコレクトファイル。
+<category id='127'/>を集めし時、難攻不落の扉が輝くという。
 [IDS_ITEMDESC.ID1170005]
 coming soon
 [IDS_ITEMDESC.ID1170006]
@@ -4375,9 +4435,11 @@ coming soon
 [IDS_ITEMDESC.ID1180006]
 coming soon
 [IDS_ITEMDESC.ID1180007]
-coming soon
+何者をも拒絶する難攻不落の城をモチーフとしたコイン。
+待ち受けるトラップがキラリと光る。
 [IDS_ITEMDESC.ID1180008]
-coming soon
+黄金郷の王をモチーフとしたコイン。
+尽きることのない欲望がキラリと光る。
 [IDS_ITEMDESC.ID1180009]
 coming soon
 [IDS_ITEMDESC.ID1180010]
@@ -4388,7 +4450,8 @@ coming soon
 超兵器とその開発した国家をモチーフとしたコイン。
 刻まれたエンブレムがキラリと光る。
 [IDS_ITEMDESC.ID1180013]
-coming soon
+<category id='110'/>のホロスコープをモチーフとしたコイン。
+星の力がキラリと光る。
 [IDS_ITEMDESC.ID1180014]
 幸運をもたらすラッキーカードをモチーフとしたコイン。
 白き羽がキラリと光る。

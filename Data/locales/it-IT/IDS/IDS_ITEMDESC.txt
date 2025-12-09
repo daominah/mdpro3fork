@@ -96,6 +96,9 @@ L'immensa potenza del Chaos, che si addice al suo nome, porta le cose al livello
 [IDS_ITEMDESC.ID1000034]
 Un essere che aiuta un uomo in un viaggio alla ricerca del suo vero sé.
 Anche se sarebbe dovuto scomparire, è apparso di nuovo, forse perché la percezione di se stesso di quell'uomo era ancora incompleta.
+[IDS_ITEMDESC.ID1000035]
+Una cacciatrice di tesori vestita di nero che sfrutta la magia.
+Il modo spietato con cui persegue i suoi obiettivi le è valso il soprannome di "Demone".
 [IDS_ITEMDESC.ID1000036]
 Un mago molto dotato dei tempi antichi in grado di padroneggiare diverse arti proibite.
 È scomparso senza lasciare traccia con l'arrivo di "<card mrk='10282'/>".
@@ -215,7 +218,8 @@ coming soon
 I guerrieri di pyroxene, cavalieri dal temperamento calmo, ma con un cuore che aspira segretamente alla giustizia.
 Quando serve hanno la capacità di fondersi.
 [IDS_ITEMDESC.ID1001038]
-coming soon
+<category id='79'/> vive nell'oltretomba e ha il ruolo di esploratore.
+Sorveglia il mondo degli umani su ordine del Dominio Ruggente.
 [IDS_ITEMDESC.ID1001039]
 coming soon
 [IDS_ITEMDESC.ID1001040]
@@ -696,26 +700,35 @@ Ha affrontato "<card mrk='20747'/>" in una lotta mortale per la sopravvivenza.
 [IDS_ITEMDESC.ID1010120]
 coming soon
 [IDS_ITEMDESC.ID1010121]
-coming soon
+Un'icona che raffigura una misteriosa narratrice.
+Il racconto di "<card mrk='21195'/>" viene tramandato.
 [IDS_ITEMDESC.ID1010122]
-coming soon
+Un'icona che raffigura un cavaliere che affronta un castello intriso di antiche leggende.
+Il cavaliere valoroso supera facilmente le numerose trappole mortali in agguato.
 [IDS_ITEMDESC.ID1010123]
 coming soon
 [IDS_ITEMDESC.ID1010124]
 coming soon
 [IDS_ITEMDESC.ID1010125]
-coming soon
+Un'icona che raffigura un giovane uomo dotato del potere di vedere un futuro inevitabile.
+Ha assistito a innumerevoli futuri fin dall'infanzia.
 [IDS_ITEMDESC.ID1010126]
-coming soon
+Un'icona che raffigura una maga che invoca le stelle per evocare draghi.
+Sfrutta il potere dei draghi per assumere una nuova forma.
 [IDS_ITEMDESC.ID1010127]
-coming soon
+Un'icona che raffigura un uomo con un segno su entrambe le guance.
+Protegge "<card mrk='5231'/>" trasmettendo un'apparenza regale.
 [IDS_ITEMDESC.ID1010128]
 Un'icona che raffigura una ragazza che è diventata un Mostro Xyz.
 Grazie all'evoluzione dei telefoni cellulari, si è assicurata le chiavi della vittoria.
 [IDS_ITEMDESC.ID1010129]
-coming soon
+Un'icona che raffigura un demone rossastro che porta un grande sacco.
+Ha una grossa cicatrice a forma di croce sul petto.
 [IDS_ITEMDESC.ID1010130]
 coming soon
+[IDS_ITEMDESC.ID1010131]
+Un'icona che raffigura lo stemma dell'Accademia.
+In caso di emergenza, gli studenti devono radunarsi immediatamente.
 [IDS_ITEMDESC.ID1011001]
 Un'icona che rappresenta un pallone composto da elementi bianchi e neri.
 Vincere 3 Duelli di fila non è considerata una tripletta.
@@ -903,11 +916,14 @@ Conferita a chi ha ottenuto notevoli risultati nella Duelist Cup.
 Un'icona con il logo di bronzo "DC 2025 SEP". 
 Conferita a chi ha vinto innumerevoli battaglie nella Duelist Cup.
 [IDS_ITEMDESC.ID1011063]
-coming soon
+Un'icona con il logo dorato "DC 2025 DEC". 
+Conferita a chi ha superato le aspettative nella Duelist Cup.
 [IDS_ITEMDESC.ID1011064]
-coming soon
+Un'icona con il logo d'argento "DC 2025 DEC". 
+Conferita a chi ha ottenuto notevoli risultati nella Duelist Cup.
 [IDS_ITEMDESC.ID1011065]
-coming soon
+Un'icona con il logo di bronzo "DC 2025 DEC". 
+Conferita a chi ha vinto innumerevoli battaglie nella Duelist Cup.
 [IDS_ITEMDESC.ID1012001]
 Un'icona che rappresenta un "Krawler", un mostro la cui razza ha invaso un certo pianeta. Questo esemplare è un membro della classe più alta.
 Tali creature distruggono senza pietà gli sforzi di generazioni della civiltà umana.
@@ -1151,6 +1167,9 @@ Un'icona esclusiva offerta in occasioni speciali.
 Un'icona esclusiva offerta in occasioni speciali.
 [IDS_ITEMDESC.ID1013010]
 Un'icona che raffigura il logo di una partita di calcio nella quale competono squadre reali e da sogno.Assisti ad azioni esaltanti di coloro che non smettono mai di sfidarsi.
+[IDS_ITEMDESC.ID1013011]
+Un'icona che raffigura la vera forma di "<card mrk='14440'/>".
+Si dice che solo "<card mrk='14439'/>" possa vedere il suo vero volto.
 [IDS_ITEMDESC.ID1020001]
 Un titolo dato ai Duellanti che hanno iniziato il loro viaggio nel mondo dei Duelli con Yu-Gi-Oh! MASTER DUEL.
 Non è mai troppo tardi per iniziare a Duellare.
@@ -1714,6 +1733,24 @@ Proprio come le placche di un'armatura, crea un'avanguardia indistruttibile sovr
 [IDS_ITEMDESC.ID1020188]
 Un titolo dato ai Duellanti che hanno raggiunto risultati degni di nota con una strategia basata sull'Evocazione Link.
 Proprio come una falange perfettamente formata, collega un mostro all'altro per creare una formazione senza alcun punto debole.
+[IDS_ITEMDESC.ID1020189]
+Titolo conferito ai Duellanti che hanno raggiunto la top 10 nella DC 2025 DEC.
+Le storie dei loro numerosi e agguerriti Duelli e del coraggio dimostrato nella competizione per il trono continueranno a essere raccontate per molti anni.
+[IDS_ITEMDESC.ID1020190]
+Titolo conferito ai Duellanti che hanno raggiunto la top 100 nella DC 2025 DEC.
+Questa è la prova di un'impresa che molti Duellanti si sforzano di compiere.
+[IDS_ITEMDESC.ID1020191]
+Titolo conferito ai Duellanti che hanno raggiunto la top 500 nella DC 2025 DEC.
+Solo i più forti dei forti possiedono un cuore così, temprato da molti Duelli all'ultimo sangue.
+[IDS_ITEMDESC.ID1020192]
+Titolo conferito ai Duellanti che hanno raggiunto la top 1000 nella DC 2025 DEC.
+Complimenti ai Duellanti che hanno continuamente perfezionato Deck e tattiche per raggiungere questo risultato.
+[IDS_ITEMDESC.ID1020193]
+Titolo conferito ai Duellanti che hanno raggiunto la top 10000 nella DC 2025 DEC.
+Ottenuto grazie a una vittoria dopo l'altra contro avversari agguerriti nella 2ª FASE.
+[IDS_ITEMDESC.ID1020194]
+Titolo conferito ai Duellanti che hanno raggiunto la 2ª fase nella DC 2025 DEC.
+Questa è la prova del superamento della combattutissima 1ª fase.
 [IDS_ITEMDESC.ID1020197]
 Un titolo dato ai Duellanti che hanno raggiunto risultati importanti in uno scontro fra tre diverse forze.
 Le tue abilità ti metteranno sempre in mostra, a prescindere dalla situazione.
@@ -1829,9 +1866,15 @@ I colori, che ricordano il tramonto, generano un variegato flusso di emozioni.
 [IDS_ITEMDESC.ID1030037]
 Una cornice icona gialla e blu che evoca un sole dorato che sorge sul mare.
 Richiama alla mente le calde giornate estive con le acque dell'oceano che brillano sotto i raggi del sole.
+[IDS_ITEMDESC.ID1030038]
+Una cornice icona che raffigura un'enigmatica narratrice.
+Si ode la voce di una ragazza, come se provenisse dal nulla.
 [IDS_ITEMDESC.ID1030039]
 Una cornice icona che evoca il potere della Fusione, la base dei guerrieri di pyroxene.
 Affatica il loro Nucleo, ma si può utilizzare più volte di seguito.
+[IDS_ITEMDESC.ID1030040]
+Una Cornice icona blu e bianca che richiama un freddo cielo invernale.
+La neve candida scende dal cielo terso e blu, rispecchiando l'armonia della luce.
 [IDS_ITEMDESC.ID1031001]
 Una cornice icona che ricorda il cancello usato dalle Assaltatrici del Cielo per spostare i loro armamenti.
 Quando il cammino si apre a coloro che lottano per la pace, un nuovo potere che consente di superare le avversità si risveglia.
@@ -2320,13 +2363,17 @@ Per coloro che sfidano il mondo.
 Protettori che raffigurano una cameriera che tiene occupata la capocameriera prendendosi cura delle piume.
 Per chi vuole esprimere la propria gratitudine con una sorpresa speciale.
 [IDS_ITEMDESC.ID1070132]
-coming soon
+Protettori che raffigurano una misteriosa narratrice.
+Per chi tesse la storia della strega.
 [IDS_ITEMDESC.ID1070133]
-coming soon
+Protettori che raffigurano la castellana che si precipita fuori, non riuscendo più ad attendere.
+Per chi attende il proprio cavaliere in una brillante armatura.
 [IDS_ITEMDESC.ID1070134]
-coming soon
+Protettori che raffigurano una donna dalla bellezza incomparabile, ma effimera.
+Per chi rifiuta tutto ciò che è venuto prima di loro.
 [IDS_ITEMDESC.ID1070135]
-coming soon
+Protettori che raffigurano la Terra Dorata e la sua terrificante armata dorata, pronta a dare vita a un'invasione.
+Per chi trae il proprio potere dall'avidità.
 [IDS_ITEMDESC.ID1070136]
 coming soon
 [IDS_ITEMDESC.ID1070137]
@@ -2335,14 +2382,17 @@ coming soon
 Protettori che raffigurano un nuovo look per una ragazza scelta per brandire un'arma tecnologica incredibilmente avanzata.
 Per chi combatte per cambiare il proprio destino.
 [IDS_ITEMDESC.ID1070139]
-coming soon
+Protettori che raffigurano la forza combinata di potenti draghi.
+Per chi si affida alla guida delle stelle.
 [IDS_ITEMDESC.ID1070140]
 Protettori che raffigurano un'evoluzione di "<card mrk='11413'/>" grazie al potere di Zexal.
 Per chi cerca di infondere speranza per il futuro.
 [IDS_ITEMDESC.ID1070141]
-coming soon
+Protettori che raffigurano chi traghetta le anime nell'aldilà.
+Per chi giudica le anime dei morti.
 [IDS_ITEMDESC.ID1070142]
-coming soon
+Protettori che raffigurano il Signore Dorato, contraddistinto da un'avidità insaziabile.
+Per chi desidera possedere ogni cosa.
 [IDS_ITEMDESC.ID1070143]
 Protettori che raffigurano una regina tra le regine che si muove leggera su un palcoscenico al chiaro di luna.
 Per chi danza tra i raggi di luna d'argento lucente.
@@ -2541,6 +2591,9 @@ Per chi punta a diventare il miglior Duellante del mondo.
 [IDS_ITEMDESC.ID1073017]
 Protettori con il logo "DC 2025 SEP". 
 Per chi ha partecipato alla Duelist Cup e reso l'evento un successo.
+[IDS_ITEMDESC.ID1073018]
+Protettori con il logo "DC 2025 DEC". 
+Per chi ha partecipato alla Duelist Cup e reso l'evento un successo.
 [IDS_ITEMDESC.ID1075001]
 Protettori che raffigurano una scena tratta da Yu-Gi-Oh! CARD GAME THE CHRONICLES.
 I Duellanti presenti alla location sono esplosi in un grande applauso per celebrare questo prestigioso evento.
@@ -2716,6 +2769,12 @@ Perfetta per i Deck di coloro che combattono nei territori del nord.
 [IDS_ITEMDESC.ID1082022]
 Una custodia carte che raffigura un esercito meccanizzato creato come sottoprodotto.
 Perfetta per i Deck che hanno svolto infinite prove.
+[IDS_ITEMDESC.ID1082024]
+Una custodia carte che raffigura un oggetto utilizzato da una strega misteriosa.
+Perfetta per Deck con streghe gravate da un destino crudele.
+[IDS_ITEMDESC.ID1082025]
+Una Custodia carte che raffigura un castello inespugnabile che respinge tutti gli intrusi.
+Perfetta per Deck con molte Carte Trappola.
 [IDS_ITEMDESC.ID1083001]
 Una Custodia carte esclusiva offerta in occasioni speciali.
 [IDS_ITEMDESC.ID1090001]
@@ -2824,6 +2883,9 @@ Anche in questa serata, la quiete di questo luogo attrae un flusso infinito di a
 [IDS_ITEMDESC.ID1090036]
 Un Terreno che raffigura una struttura gigantesca avvolta da un'atmosfera inquietante.
 Nascosta nelle sue profondità, la porta della fine inizia ad aprirsi, lentamente ma inesorabilmente.
+[IDS_ITEMDESC.ID1090037]
+Un Terreno Duello di <card mrk='17367'/>.
+La maledizione non può essere spezzata a meno che non venga recuperato il vero tesoro, che si dice sia nascosto nel castello.
 [IDS_ITEMDESC.ID1090040]
 Un Terreno Duello pari a uno stadio di calcio.
 Le grida dei tifosi appassionati risuonano in tutto il campo.
@@ -2935,6 +2997,9 @@ Le tombe sembrano essere state scavate di recente.
 [IDS_ITEMDESC.ID1100036]
 Parti del Terreno provenienti da "Dispia, Teatro dei Marchiati".
 Il livello di raffinatezza si addice al castello da cui emanano le tenebre.
+[IDS_ITEMDESC.ID1100037]
+Parti del Terreno provenienti da <card mrk='17367'/>.
+I motivi elaborati conferiscono loro un grande valore come pezzi decorativi.
 [IDS_ITEMDESC.ID1100040]
 Parti del Terreno provenienti da uno stadio di calcio.
 Un'uscita temporanea fa parte della prestazione. L'asso esce dalla manica, pronto a contrattaccare.
@@ -3046,7 +3111,8 @@ coming soon
 Parti del Terreno modellate su due fantasmi bianchi.
 Questa notte è la festa dei mostri più strani e insoliti. Festeggiamo la gioia che verrà.
 [IDS_ITEMDESC.ID1101041]
-coming soon
+Parti del Terreno ispirate al cerchio decorativo noto come ghirlanda.
+Le ghirlande hanno molte possibili funzioni, dunque lo scopo di questa resta ignoto.
 [IDS_ITEMDESC.ID1101042]
 coming soon
 [IDS_ITEMDESC.ID1101043]
@@ -3192,6 +3258,9 @@ Il significato delle sue incisioni resta oscuro, ma va indubbiamente trattato co
 [IDS_ITEMDESC.ID1110036]
 Uno stand proveniente da "Dispia, Teatro dei Marchiati".
 È uno degli innumerevoli squarci che si sono formati nel cielo.
+[IDS_ITEMDESC.ID1110037]
+Uno stand proveniente da <card mrk='17367'/>.
+Lo spirito dell'accoglienza verso gli ospiti viene riflesso nel suo motivo raffinato.
 [IDS_ITEMDESC.ID1110040]
 Uno stand proveniente da uno stadio di calcio. La passione corre sul campo, un palcoscenico verdeggiante che risuona a ogni tiro.
 [IDS_ITEMDESC.ID1111001]
@@ -3341,6 +3410,9 @@ Sembra che questi esseri rosa con le bolle non cresceranno ulteriormente.
 [IDS_ITEMDESC.ID1111066]
 Uno stand ispirato a un circolo magico impazzito dopo un immenso afflusso di potere.
 Ci sono persino casi in cui il lanciatore si fonde con i mostri: un destino davvero terribile.
+[IDS_ITEMDESC.ID1111071]
+Uno stand modellato sull'oroscopo di <category id='110'/>.
+Ti guida sfruttando il potere mistico delle stelle.
 [IDS_ITEMDESC.ID1112001]
 Uno stand proveniente da un Colosseo.
 La fiamma vivace danza come se stesse cantando le lodi dei coraggiosi guerrieri che si sfidano qui.
@@ -3713,13 +3785,17 @@ coming soon
 [IDS_ITEMDESC.ID1130094]
 coming soon
 [IDS_ITEMDESC.ID1130095]
-coming soon
+E così, la Foresta Bianca tornò a essere la foresta pacifica e misteriosa di un tempo.
+Il racconto di "<card mrk='21195'/>".
 [IDS_ITEMDESC.ID1130096]
-coming soon
+Una bellezza incomparabile e delicata come la seta, nonché sfuggente come la luna nel cielo notturno.
+La bella castellana attende silenziosa tra le mura illuminate d'argento del suo castello maledetto.
 [IDS_ITEMDESC.ID1130097]
-coming soon
+Le sorelle più giovani della fanciulla di porcellana.
+Nonostante tutti i loro frenetici preparativi dietro le quinte, alla fine hanno dovuto affrontare il cavaliere di persona.
 [IDS_ITEMDESC.ID1130098]
-coming soon
+Il primo ed eterno signore della Terra Dorata.
+Attraverso la sua avidità, soggiogò e assorbì la maledizione che aveva dato vita a innumerevoli desideri e risentimenti.
 [IDS_ITEMDESC.ID1130099]
 coming soon
 [IDS_ITEMDESC.ID1130100]
@@ -3729,12 +3805,14 @@ coming soon
 [IDS_ITEMDESC.ID1130102]
 coming soon
 [IDS_ITEMDESC.ID1130103]
-coming soon
+Sono le stelle a guidare il fulgore di questi draghi intrecciati.
+Evoca il potere dei draghi nelle tue mani.
 [IDS_ITEMDESC.ID1130104]
 L'antico progenitore di una grande stirpe di draghi.
 Con una brama insaziabile per la battaglia, questo Signoredrago dominava su ogni cosa con la sua potenza incomparabile.
 [IDS_ITEMDESC.ID1130105]
-coming soon
+Un'altra strega in abiti bianchi.
+Si ritrova immersa in una solitaria storia di vendetta.
 [IDS_ITEMDESC.ID1130106]
 coming soon
 [IDS_ITEMDESC.ID1130107]
@@ -3754,6 +3832,9 @@ I fan rimangono sempre stupiti dalla sua tecnica sopraffina e dalle sue giocate 
 [IDS_ITEMDESC.ID1132003]
 "Ho creato un fantastico sito web che riproduce alla perfezione la mia amata città natale".
 Si è precipitata con entusiasmo nei forum non appena è giunto il decimo visitatore.
+[IDS_ITEMDESC.ID1132004]
+Un re che regna su una cittadella magica.
+Compie miracoli sfruttando l'energia accumulata nelle pietre magiche presenti nel suo corpo.
 [IDS_ITEMDESC.ID1140001]
 Un coupon che puoi usare per acquistare una busta Eredità.
 Quale sarà la tua eredità?
@@ -3782,7 +3863,8 @@ Si dice che quando si ottengono più carte <category id='101'/>, le porte presti
 [IDS_ITEMDESC.ID1170003]
 coming soon
 [IDS_ITEMDESC.ID1170004]
-coming soon
+Un Album del Collezionista che raffigura chi giace in attesa all'interno di un castello argenteo e demoniaco.
+Si dice che quando si ottengono più carte <category id='127'/>, le porte inespugnabili risplenderanno luminose.
 [IDS_ITEMDESC.ID1170005]
 coming soon
 [IDS_ITEMDESC.ID1170006]
@@ -3810,9 +3892,11 @@ Il drago inciso sulla sua superficie brilla splendente.
 [IDS_ITEMDESC.ID1180006]
 coming soon
 [IDS_ITEMDESC.ID1180007]
-coming soon
+Una Moneta il cui motivo raffigura un castello inespugnabile che respinge tutti gli intrusi.
+Le sue trappole scintillano splendenti mentre giacciono in agguato per le vittime ignare.
 [IDS_ITEMDESC.ID1180008]
-coming soon
+Una moneta il cui motivo è il signore della Terra Dorata.
+Consumata da un'avidità insaziabile che luccica con brama sfrenata.
 [IDS_ITEMDESC.ID1180009]
 coming soon
 [IDS_ITEMDESC.ID1180010]
@@ -3823,7 +3907,8 @@ coming soon
 Una moneta il cui motivo raffigura armi tecnologiche ultra-avanzate e il paese che le ha sviluppate.
 Lo stemma inciso sulla sua superficie brilla splendente.
 [IDS_ITEMDESC.ID1180013]
-coming soon
+Una moneta il cui motivo è l'oroscopo di <category id='110'/>.
+Il potere delle stelle brilla luminoso.
 [IDS_ITEMDESC.ID1180014]
 Una moneta il cui motivo è una carta molto fortunata. Le sue ali bianche risplendono magnifiche.
 [IDS_ITEMDESC.ID1180015]

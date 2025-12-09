@@ -96,6 +96,9 @@ coming soon
 [IDS_ITEMDESC.ID1000034]
 它向那个寻找真正自我的男人伸出援手。
 原本应该已经消失，但由于男人的自我不完整，因此从内心中显现。
+[IDS_ITEMDESC.ID1000035]
+穿着一袭黑衣，能够施展魔法的宝物猎人。
+为达到目的能够不择手段，其行径被人们称为“恶魔”。
 [IDS_ITEMDESC.ID1000036]
 精通禁忌之术的古代天才魔术师。
 在“<card mrk='10282'/>”建造后，便从魔法史上销声匿迹。
@@ -215,7 +218,8 @@ coming soon
 辉石的战士们性格温和，胸怀正义之心。
 而他们拥有的能力，正好和众人不可或缺的融合之力密切相关。
 [IDS_ITEMDESC.ID1001038]
-coming soon
+住在魔界，担任斥候的<category id='79'/>。
+奉轰界之命侦察地上界。
 [IDS_ITEMDESC.ID1001039]
 coming soon
 [IDS_ITEMDESC.ID1001040]
@@ -695,26 +699,35 @@ coming soon
 [IDS_ITEMDESC.ID1010120]
 coming soon
 [IDS_ITEMDESC.ID1010121]
-coming soon
+描绘了奇妙说书人的头像。
+她将传颂“<card mrk='21195'/>”的故事。
 [IDS_ITEMDESC.ID1010122]
-coming soon
+描绘了攻克传说汇聚之城的骑士的头像。
+轻松突破各种各样的致命陷阱。
 [IDS_ITEMDESC.ID1010123]
 coming soon
 [IDS_ITEMDESC.ID1010124]
 coming soon
 [IDS_ITEMDESC.ID1010125]
-coming soon
+描绘了拥有无法控制自身能看见未来之力的少年的头像。
+他自幼便能幻视各种各样的未来。
 [IDS_ITEMDESC.ID1010126]
-coming soon
+描绘了以星之力召唤龙的魔术师的头像。
+借由汇聚龙魔之力，化为全新姿态。
 [IDS_ITEMDESC.ID1010127]
-coming soon
+描绘了两颊带着刻印的男人的头像。
+以威风凛凛的姿态守护着“<card mrk='5231'/>”。
 [IDS_ITEMDESC.ID1010128]
 描绘了变成了超量怪兽的辣妹学妹的头像。
 连手机也跟着进化，胜利的方程式全部凑齐了。
 [IDS_ITEMDESC.ID1010129]
-coming soon
+描绘了拿着大袋子的红色恶魔的头像。
+胸口上有一道十字形的巨大伤痕。
 [IDS_ITEMDESC.ID1010130]
 coming soon
+[IDS_ITEMDESC.ID1010131]
+描绘了学园标志的头像。
+学生一有状况，就必须立刻赶到现场。
 [IDS_ITEMDESC.ID1011001]
 描绘了一个由黑色与白色的板子构成的球的头像。
 在决斗中连胜三场称不上帽子戏法。
@@ -902,11 +915,14 @@ Yu-Gi-Oh! World Championship 2025:Master Duel分赛参赛选手的纪念头像�
 描绘了闪耀着铜色光辉的“DC2025 SEP”标志的头像。
 颁发给在DUELIST CUP中在多场决斗中取得胜利的决斗者。
 [IDS_ITEMDESC.ID1011063]
-coming soon
+描绘了闪耀着金色光辉的“DC2025 DEC”标志的头像。
+颁发给在DUELIST CUP中取得最佳成绩的决斗者。
 [IDS_ITEMDESC.ID1011064]
-coming soon
+描绘了闪耀着银色光辉的“DC2025 DEC”标志的头像。
+颁发给在DUELIST CUP中取得优秀成绩的决斗者。
 [IDS_ITEMDESC.ID1011065]
-coming soon
+描绘了闪耀着铜色光辉的“DC2025 DEC”标志的头像。
+颁发给在DUELIST CUP中在多场决斗中取得胜利的决斗者。
 [IDS_ITEMDESC.ID1012001]
 描绘了一只某个星球中过量繁殖的“机怪虫”的上位个体的头像。
 它们会无情地破坏人类花费数代建成的文明。
@@ -1151,6 +1167,9 @@ coming soon
 [IDS_ITEMDESC.ID1013010]
 描绘了足球游戏标志的头像，现实与虚幻的球员们将带来精彩的比赛。
 在不断挑战的过程中，将足球带来的炙热的感动传达给世界。
+[IDS_ITEMDESC.ID1013011]
+描绘了“<card mrk='14440'/>”的真实模样的头像。
+据说，她真正的面貌只让“<card mrk='14439'/>”看见。
 [IDS_ITEMDESC.ID1020001]
 授予因《Yu-Gi-Oh! MASTER DUEL》而成为决斗者的玩家的称号。
 挑战决斗的时间永远不会太晚。
@@ -1713,6 +1732,24 @@ coming soon
 [IDS_ITEMDESC.ID1020188]
 使用连接召唤的战术取得成果的决斗者被授予此称号。
 如同支配天空的编队般，组成毫无死角的连队。
+[IDS_ITEMDESC.ID1020189]
+授予在“DC2025 DEC”中，取得前10名次的决斗者的称号。
+为争夺唯一的最强王座，而创造出数场精彩对战的勇敢身姿，将永远被后人所称赞。
+[IDS_ITEMDESC.ID1020190]
+授予在“DC2025 DEC”中，取得前100名次的决斗者的称号。
+对于不少决斗者而言，拥有这一称号的人便是他们的目标。
+[IDS_ITEMDESC.ID1020191]
+授予在“DC2025 DEC”中，取得前500名次的决斗者的称号。
+在无数次艰苦卓绝的决斗中磨练出来的精神，只属于强者中的强者。
+[IDS_ITEMDESC.ID1020192]
+授予在“DC2025 DEC”中，取得前1000名次的决斗者的称号。
+献给不断磨炼试错牌组和战术，最终达到了这一境界的决斗者的赞誉。
+[IDS_ITEMDESC.ID1020193]
+授予在“DC2025 DEC”中，取得前10000名次的决斗者的称号。
+这是在充满激烈竞争的2nd STAGE中积累的许多胜利成果。
+[IDS_ITEMDESC.ID1020194]
+授予在“DC2025 DEC”中，晋级2nd STAGE的决斗者的称号。
+从众多决斗者角逐的1st STAGE中晋级的实力选手之证。
 [IDS_ITEMDESC.ID1020197]
 在三个势力的战斗中取得成果的决斗者被授予此称号。
 它们的能力将在任何情况下得到体现。
@@ -1828,9 +1865,15 @@ coming soon
 [IDS_ITEMDESC.ID1030037]
 令人联想到和煦阳光和清澈海水的黄蓝色头像边框。
 波光粼粼的水面，让人想起那个艳阳高照的夏日。
+[IDS_ITEMDESC.ID1030038]
+让人联想到奇妙说书人的头像边框。
+仿佛能听到某处传来少女的声音。
 [IDS_ITEMDESC.ID1030039]
 令人联想到对辉石的战士们而言必不可少的融合之力的头像边框。
 此力量还能够连续使用，然而会对核石造成负担。
+[IDS_ITEMDESC.ID1030040]
+会让人联想到冬日寒天的蓝白色头像边框。
+在澄澈的蓝天下，积雪映照出光之旋律。
 [IDS_ITEMDESC.ID1031001]
 令人联想到为了和平而战的人们转运“闪刀”装备时使用的传送门的头像边框。
 当他们的前方道路被打开之时，便能觉醒为了克服一切苦难的崭新力量。
@@ -2320,13 +2363,17 @@ coming soon
 设计有驻足梳理羽翼的女仆长的卡套。
 献给为表达感谢之意而策划一场惊喜的你。
 [IDS_ITEMDESC.ID1070132]
-coming soon
+设计有神秘说书人的卡套。
+献给谱写出魔女故事的你。
 [IDS_ITEMDESC.ID1070133]
-coming soon
+设计有迫不及待飞奔而出的女城主的卡套。
+献给等候骑士的你。
 [IDS_ITEMDESC.ID1070134]
-coming soon
+设计有纤细而梦幻的绝世美女的卡套。
+献给拒绝一切的你。
 [IDS_ITEMDESC.ID1070135]
-coming soon
+设计有黄金卿为展开侵略而打造出黄金军团的卡套。
+献给将欲望当成动力的你。
 [IDS_ITEMDESC.ID1070136]
 coming soon
 [IDS_ITEMDESC.ID1070137]
@@ -2335,14 +2382,17 @@ coming soon
 设计有继承了超兵器的少女全新样貌的卡套。
 献给改变命运的你。
 [IDS_ITEMDESC.ID1070139]
-coming soon
+设计有汇聚龙魔之力的样貌的卡套。
+献给受星宿指引的你。
 [IDS_ITEMDESC.ID1070140]
 设计有以ZEXAL之力进化而成的“<card mrk='11413'/>”的卡套。
 献给创造充满希望的未来的你。
 [IDS_ITEMDESC.ID1070141]
-coming soon
+设计有引导万物通往冥界的死亡主宰者的卡套。
+献给裁决死者灵魂的你。
 [IDS_ITEMDESC.ID1070142]
-coming soon
+设计有欲望无穷的黄金卿的卡套。
+献给想将世间一切纳入手中的你。
 [IDS_ITEMDESC.ID1070143]
 设计有在月光中翩然飞舞的万物之王的卡套。
 献给在月光中起舞的你。
@@ -2541,6 +2591,9 @@ coming soon
 [IDS_ITEMDESC.ID1073017]
 以“DC2025 SEP”的标志设计出的卡套。
 献给参与了DUELIST CUP并炒热活动气氛的你。
+[IDS_ITEMDESC.ID1073018]
+以“DC2025 DEC”的标志设计出的卡套。
+献给参与了DUELIST CUP并炒热活动气氛的你。
 [IDS_ITEMDESC.ID1075001]
 以“Yu-Gi-Oh! CARD GAME THE CHRONICLES”的场景设计出的卡套。
 在传说中的祭典会场里决斗者们高声欢庆。
@@ -2716,6 +2769,12 @@ coming soon
 [IDS_ITEMDESC.ID1082022]
 设计有作为副产物而建立的机械军队景象的牌组盒。
 推荐给经过反复实验的牌组使用。
+[IDS_ITEMDESC.ID1082024]
+设计有奇妙的魔女所用工具的插图的牌组盒。
+推荐给背负残酷命运的魔女们的牌组使用。
+[IDS_ITEMDESC.ID1082025]
+设计有拒绝一切的不落之城插图的牌组盒。
+推荐给布满陷阱的牌组使用。
 [IDS_ITEMDESC.ID1083001]
 特殊机会下提供的限定牌组盒。
 [IDS_ITEMDESC.ID1090001]
@@ -2822,6 +2881,9 @@ coming soon
 [IDS_ITEMDESC.ID1090036]
 被异样氛围笼罩的巨大建筑物场地。
 在最深处，灾难之门正在缓慢开启。
+[IDS_ITEMDESC.ID1090037]
+<card mrk='17367'/>的场地。
+若不将传说中藏于城内的真正秘宝带回，诅咒就无法解除。
 [IDS_ITEMDESC.ID1090040]
 足球场的场地。
 欢声雷动，响彻布满青草的舞台。
@@ -2933,6 +2995,9 @@ coming soon
 [IDS_ITEMDESC.ID1100036]
 设有烙印剧城 惨绝戏的场地配件。
 与散发黑暗气息的城堡十分相配且精致。
+[IDS_ITEMDESC.ID1100037]
+设置在<card mrk='17367'/>的场地配件。
+作为带有精致装饰的家具，其本身也极具价值。
 [IDS_ITEMDESC.ID1100040]
 设置于足球场的场地配件。
 退场只是短暂的表演。王牌终将卷土重来。
@@ -3043,7 +3108,8 @@ coming soon
 以两只白色鬼怪为原型制作的场地配件。
 今晚是妖异怪兽们的宴会。快来一同嬉戏吧。
 [IDS_ITEMDESC.ID1101041]
-coming soon
+以被称为花环的装饰用环状物为原型制作的场地配件。
+由于花环的用途广泛，其具体用途尚不明确。
 [IDS_ITEMDESC.ID1101042]
 coming soon
 [IDS_ITEMDESC.ID1101043]
@@ -3189,6 +3255,9 @@ coming soon
 [IDS_ITEMDESC.ID1110036]
 设有烙印剧城 惨绝戏的基座。
 仿佛天空中无数孔洞中的一个。
+[IDS_ITEMDESC.ID1110037]
+设置于<card mrk='17367'/>的基座。
+从其高级的设计便能看出对访客的款待之心。
 [IDS_ITEMDESC.ID1110040]
 设置于足球场的基座。
 热情地奔驰于翠绿的舞台，止不住沸腾的脉搏。
@@ -3338,6 +3407,9 @@ coming soon
 [IDS_ITEMDESC.ID1111066]
 模仿或因过量魔力而失控的魔法阵的基座。
 曾经发生过和魔物同化的先例，不可掉以轻心。
+[IDS_ITEMDESC.ID1111071]
+模仿<category id='110'/>的星盘的基座。
+神秘的星之力将会指引你。
 [IDS_ITEMDESC.ID1112001]
 设置于角斗场的基座。
 跳动闪烁的火焰，向矗立于此的战士致以最高荣誉。
@@ -3710,13 +3782,17 @@ coming soon
 [IDS_ITEMDESC.ID1130094]
 coming soon
 [IDS_ITEMDESC.ID1130095]
-coming soon
+就这样，白森重回往日那般和平而神秘的模样。
+这就是“<card mrk='21195'/>”的故事——
 [IDS_ITEMDESC.ID1130096]
-coming soon
+如白丝般纤细，似银月般梦幻的绝世美女。
+在受诅咒的白银巨城中等待的美丽女城主。
 [IDS_ITEMDESC.ID1130097]
-coming soon
+在白瓷少女中排行最小的少女们。
+在舞台后方忙得焦头烂额后，最终仍得亲自对付骑士。
 [IDS_ITEMDESC.ID1130098]
-coming soon
+既是初代，也是永恒的黄金乡之王。
+仅凭一己之私，压制并吞噬了带有无数欲望与怨恨的诅咒。
 [IDS_ITEMDESC.ID1130099]
 coming soon
 [IDS_ITEMDESC.ID1130100]
@@ -3726,12 +3802,14 @@ coming soon
 [IDS_ITEMDESC.ID1130102]
 coming soon
 [IDS_ITEMDESC.ID1130103]
-coming soon
+星宿所引导的，是交织的龙魔光芒。
+将龙魔之力凝聚于掌中吧。
 [IDS_ITEMDESC.ID1130104]
 自太古流传下来的龙的始祖。
 凭借着满溢而出的斗气与异于常规的体格，以王者之姿君临天下。
 [IDS_ITEMDESC.ID1130105]
-coming soon
+另一位白色装扮的魔女。
+身陷孤独的复仇剧中。
 [IDS_ITEMDESC.ID1130106]
 coming soon
 [IDS_ITEMDESC.ID1130107]
@@ -3751,6 +3829,9 @@ coming soon
 [IDS_ITEMDESC.ID1132003]
 这是专属于我的炫酷网站，重现了我最心爱的故乡。
 在我看到第十位客人来访后，便兴奋地赶往留言区。
+[IDS_ITEMDESC.ID1132004]
+支配魔法都市的王。
+从身体的魔力石抽取巨大的能量创造奇迹。
 [IDS_ITEMDESC.ID1140001]
 可以购买遗产卡包的卡券。
 遗产是由后人继承的事物。
@@ -3776,7 +3857,8 @@ coming soon
 [IDS_ITEMDESC.ID1170003]
 coming soon
 [IDS_ITEMDESC.ID1170004]
-coming soon
+在白银之城等候光临的恶魔们的收藏卡册。
+据说收集完<category id='127'/>后，固若金汤的门扉将散发光辉。
 [IDS_ITEMDESC.ID1170005]
 coming soon
 [IDS_ITEMDESC.ID1170006]
@@ -3804,9 +3886,11 @@ coming soon
 [IDS_ITEMDESC.ID1180006]
 coming soon
 [IDS_ITEMDESC.ID1180007]
-coming soon
+以拒绝一切的不落之城为概念所设计的硬币。
+埋伏猎物的陷阱闪着寒光。
 [IDS_ITEMDESC.ID1180008]
-coming soon
+以黄金乡之王为概念所设计的硬币。
+无尽的欲望散发光芒。
 [IDS_ITEMDESC.ID1180009]
 coming soon
 [IDS_ITEMDESC.ID1180010]
@@ -3817,7 +3901,8 @@ coming soon
 以超兵器和其开发国家为概念所设计的硬币。
 铭刻的徽章散发光芒。
 [IDS_ITEMDESC.ID1180013]
-coming soon
+以<category id='110'/>的星盘为概念所设计的硬币。
+星之力散发光芒。
 [IDS_ITEMDESC.ID1180014]
 以会带来幸运的幸运卡片为概念所设计的硬币。
 白色的羽翼散发光芒。
