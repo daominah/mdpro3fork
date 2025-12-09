@@ -14,390 +14,585 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dm:
   - id: 0001
+    originalId: 
     notReady: 0
   - id: 0002
+    originalId: 
     notReady: 0
   - id: 0003
+    originalId: 
     notReady: 0
   - id: 0004
+    originalId: 
     notReady: 0
   - id: 0005
+    originalId: 
     notReady: 0
   - id: 0006
+    originalId: 
     notReady: 0
   - id: 0007
+    originalId: 
     notReady: 0
   - id: 0008
+    originalId: 
     notReady: 0
   - id: 0009
+    originalId: 
     notReady: 0
   - id: 0010
+    originalId: 
     notReady: 0
   - id: 0011
+    originalId: 
     notReady: 0
   - id: 0012
+    originalId: 
     notReady: 0
   - id: 0013
+    originalId: 
     notReady: 0
   - id: 0014
+    originalId: 
     notReady: 0
   - id: 0015
+    originalId: 
     notReady: 0
   - id: 0016
+    originalId: 
     notReady: 0
   - id: 0017
+    originalId: 
     notReady: 0
   - id: 0018
+    originalId: 
     notReady: 1
   - id: 0019
+    originalId: 
     notReady: 0
   - id: 0020
+    originalId: 
     notReady: 0
   - id: 0021
+    originalId: 
     notReady: 0
   - id: 0022
+    originalId: 
     notReady: 0
   - id: 0023
+    originalId: 
     notReady: 0
   - id: 0024
+    originalId: 
     notReady: 0
   - id: 0025
+    originalId: 
     notReady: 1
   - id: 0029
+    originalId: 
     notReady: 0
   - id: 0031
+    originalId: 
     notReady: 0
   - id: 0032
+    originalId: 
     notReady: 0
   - id: 0033
+    originalId: 
     notReady: 0
   - id: 0034
+    originalId: 
     notReady: 0
   - id: 0040
+    originalId: 
+    notReady: 0
+  - id: 0041
+    originalId: 0001
+    notReady: 0
+  - id: 0042
+    originalId: 0002
     notReady: 0
   - id: 0047
+    originalId: 
     notReady: 0
   - id: 0048
+    originalId: 
     notReady: 0
   - id: 0053
+    originalId: 
     notReady: 0
   gx:
   - id: 0101
+    originalId: 
     notReady: 0
   - id: 0102
+    originalId: 
     notReady: 0
   - id: 0103
+    originalId: 
     notReady: 0
   - id: 0104
+    originalId: 
     notReady: 0
   - id: 0105
+    originalId: 
     notReady: 0
   - id: 0106
+    originalId: 
     notReady: 0
   - id: 0107
+    originalId: 
     notReady: 0
   - id: 0109
+    originalId: 
     notReady: 0
   - id: 0110
+    originalId: 
     notReady: 0
   - id: 0112
+    originalId: 
     notReady: 0
   - id: 0113
+    originalId: 
     notReady: 0
   - id: 0114
+    originalId: 
     notReady: 0
   - id: 0115
+    originalId: 
     notReady: 0
   - id: 0140
+    originalId: 
     notReady: 0
   - id: 0153
+    originalId: 
     notReady: 0
   - id: 0154
+    originalId: 
     notReady: 0
   - id: 0155
+    originalId: 
     notReady: 0
   _5ds:
   - id: 0201
+    originalId: 
     notReady: 0
   - id: 0202
+    originalId: 
     notReady: 0
   - id: 0203
+    originalId: 
     notReady: 0
   - id: 0204
+    originalId: 
     notReady: 0
   - id: 0205
+    originalId: 
     notReady: 0
   - id: 0206
+    originalId: 
     notReady: 0
   - id: 0207
+    originalId: 
     notReady: 0
   - id: 0208
+    originalId: 
     notReady: 0
   - id: 0209
+    originalId: 
     notReady: 0
   - id: 0210
+    originalId: 
     notReady: 0
   - id: 0211
+    originalId: 
     notReady: 0
   - id: 0213
+    originalId: 
     notReady: 0
   - id: 0214
+    originalId: 
     notReady: 0
   - id: 0215
+    originalId: 
     notReady: 0
   - id: 0216
+    originalId: 
     notReady: 0
   - id: 0217
+    originalId: 
     notReady: 0
   - id: 0218
+    originalId: 
     notReady: 0
   - id: 0240
+    originalId: 
     notReady: 0
   dsod:
   - id: 0301
+    originalId: 
     notReady: 0
   - id: 0302
+    originalId: 
     notReady: 0
   - id: 0303
+    originalId: 
     notReady: 0
   - id: 0304
+    originalId: 
     notReady: 0
   - id: 0305
+    originalId: 
     notReady: 0
   - id: 0306
+    originalId: 
     notReady: 0
   - id: 0307
+    originalId: 
     notReady: 0
   - id: 0308
+    originalId: 
     notReady: 0
   - id: 0309
+    originalId: 
     notReady: 0
   - id: 0315
+    originalId: 
     notReady: 0
   zexal:
   - id: 0401
+    originalId: 
     notReady: 0
   - id: 0404
+    originalId: 
     notReady: 0
   - id: 0405
+    originalId: 
     notReady: 0
   - id: 0406
+    originalId: 
     notReady: 0
   - id: 0407
+    originalId: 
     notReady: 0
   - id: 0409
+    originalId: 
     notReady: 0
   - id: 0410
+    originalId: 
     notReady: 0
   - id: 0411
+    originalId: 
     notReady: 0
   - id: 0412
+    originalId: 
     notReady: 0
   - id: 0415
+    originalId: 
     notReady: 0
   - id: 0418
+    originalId: 
     notReady: 0
   - id: 0419
+    originalId: 
     notReady: 0
   - id: 0420
+    originalId: 
     notReady: 0
   - id: 0422
+    originalId: 
     notReady: 0
   - id: 0423
+    originalId: 
     notReady: 0
   - id: 0424
+    originalId: 
     notReady: 0
   - id: 0443
+    originalId: 
     notReady: 0
   - id: 0444
+    originalId: 
     notReady: 0
   - id: 0445
+    originalId: 
     notReady: 0
   arcv:
   - id: 0501
+    originalId: 
     notReady: 0
   - id: 0502
+    originalId: 
     notReady: 0
   - id: 0503
+    originalId: 
     notReady: 0
   - id: 0504
+    originalId: 
     notReady: 0
   - id: 0505
+    originalId: 
     notReady: 0
   - id: 0506
+    originalId: 
     notReady: 0
   - id: 0507
+    originalId: 
     notReady: 0
   - id: 0508
+    originalId: 
     notReady: 0
   - id: 0509
+    originalId: 
     notReady: 0
   - id: 0510
+    originalId: 
     notReady: 0
   - id: 0511
+    originalId: 
     notReady: 0
   - id: 0512
+    originalId: 
     notReady: 0
   - id: 0513
+    originalId: 
     notReady: 0
   - id: 0514
+    originalId: 
     notReady: 0
   vrains:
   - id: 0601
+    originalId: 
     notReady: 0
   - id: 0602
+    originalId: 
     notReady: 0
   - id: 0603
+    originalId: 
     notReady: 0
   - id: 0604
+    originalId: 
     notReady: 0
   - id: 0605
+    originalId: 
     notReady: 0
   - id: 0608
+    originalId: 
     notReady: 0
   - id: 0609
+    originalId: 
     notReady: 0
   - id: 0610
+    originalId: 
     notReady: 0
   - id: 0612
+    originalId: 
     notReady: 0
   - id: 0849
+    originalId: 
     notReady: 0
   - id: 0850
+    originalId: 
     notReady: 0
   sevens:
   - id: 0701
+    originalId: 
     notReady: 0
   - id: 0702
+    originalId: 
     notReady: 0
   - id: 0703
+    originalId: 
     notReady: 0
   - id: 0704
+    originalId: 
     notReady: 0
   - id: 0705
+    originalId: 
     notReady: 0
   - id: 0706
+    originalId: 
     notReady: 0
   - id: 0707
+    originalId: 
     notReady: 0
   - id: 0708
+    originalId: 
     notReady: 0
   - id: 0709
+    originalId: 
     notReady: 0
   - id: 0712
+    originalId: 
     notReady: 0
   - id: 0715
+    originalId: 
     notReady: 0
   - id: 0717
+    originalId: 
     notReady: 0
   - id: 0853
+    originalId: 
     notReady: 0
   - id: 0854
+    originalId: 
     notReady: 0
   - id: 0855
+    originalId: 
     notReady: 0
   - id: 0856
+    originalId: 
     notReady: 0
   - id: 0857
+    originalId: 
     notReady: 0
   - id: 0858
+    originalId: 
     notReady: 0
   - id: 0859
+    originalId: 
     notReady: 0
   npc:
   - id: 0801
+    originalId: 
     notReady: 0
   - id: 0803
+    originalId: 
     notReady: 0
   - id: 0806
+    originalId: 
     notReady: 0
   - id: 0808
+    originalId: 
     notReady: 0
   - id: 0809
+    originalId: 
     notReady: 0
   - id: 0811
+    originalId: 
     notReady: 0
   - id: 0813
+    originalId: 
     notReady: 0
   - id: 0816
+    originalId: 
     notReady: 0
   - id: 0818
+    originalId: 
     notReady: 0
   - id: 0819
+    originalId: 
     notReady: 0
   - id: 0821
+    originalId: 
     notReady: 0
   - id: 0823
+    originalId: 
     notReady: 0
   - id: 0825
+    originalId: 
     notReady: 0
   - id: 0827
+    originalId: 
     notReady: 0
   - id: 0829
+    originalId: 
     notReady: 0
   - id: 0830
+    originalId: 
     notReady: 0
   - id: 0831
+    originalId: 
     notReady: 0
   - id: 0832
+    originalId: 
     notReady: 0
   - id: 0833
+    originalId: 
     notReady: 0
   - id: 0834
+    originalId: 
     notReady: 0
   - id: 0835
+    originalId: 
     notReady: 0
   - id: 0836
+    originalId: 
     notReady: 0
   - id: 0837
+    originalId: 
     notReady: 0
   - id: 0838
+    originalId: 
     notReady: 0
   - id: 0839
+    originalId: 
     notReady: 0
   - id: 0840
+    originalId: 
     notReady: 0
   - id: 0841
+    originalId: 
     notReady: 0
   - id: 0842
+    originalId: 
     notReady: 0
   - id: 0843
+    originalId: 
     notReady: 0
   - id: 0844
+    originalId: 
     notReady: 0
   - id: 0845
+    originalId: 
     notReady: 0
   - id: 0846
+    originalId: 
     notReady: 0
   - id: 0847
+    originalId: 
     notReady: 0
   - id: 0848
+    originalId: 
     notReady: 0
   - id: 0851
+    originalId: 
     notReady: 0
   - id: 0852
+    originalId: 
     notReady: 0
   - id: 0862
+    originalId: 
     notReady: 0
   - id: 0863
+    originalId: 
     notReady: 0
   - id: 0864
+    originalId: 
     notReady: 0
   - id: 0865
+    originalId: 
     notReady: 0
   - id: 0866
+    originalId: 
     notReady: 0
   - id: 9995
+    originalId: 
     notReady: 0
   gorush:
   - id: 0901
+    originalId: 
     notReady: 0
   - id: 0902
+    originalId: 
     notReady: 0
   - id: 0903
+    originalId: 
     notReady: 0
   - id: 0904
+    originalId: 
     notReady: 0
   - id: 0905
+    originalId: 
     notReady: 0
   language: zh-CN
