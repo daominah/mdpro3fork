@@ -873,20 +873,20 @@ PlayerSettings:
   il2cppStacktraceInformation: {}
   managedStrippingLevel:
     Android: 4
-    EmbeddedLinux: 1
-    GameCoreScarlett: 1
-    GameCoreXboxOne: 1
-    Nintendo Switch: 1
-    PS4: 1
-    PS5: 1
-    QNX: 1
+    EmbeddedLinux: 4
+    GameCoreScarlett: 4
+    GameCoreXboxOne: 4
+    Nintendo Switch: 4
+    PS4: 4
+    PS5: 4
+    QNX: 4
     Standalone: 4
-    VisionOS: 1
-    WebGL: 1
-    Windows Store Apps: 1
-    XboxOne: 1
-    iPhone: 1
-    tvOS: 1
+    VisionOS: 4
+    WebGL: 4
+    Windows Store Apps: 4
+    XboxOne: 4
+    iPhone: 4
+    tvOS: 4
   incrementalIl2cppBuild: {}
   suppressCommonWarnings: 0
   allowUnsafeCode: 1
