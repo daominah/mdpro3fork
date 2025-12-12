@@ -531,13 +531,13 @@ namespace MDPro3
         {
             mdCachedProgress = 0f;
             await CacheFromFileAsync(Program.root + "MasterDuel/Built-in/shaders");
-            mdCachedProgress = 0.2f;
+            mdCachedProgress = 0.3f;
             mdBundleSprites = await CacheFromFileAsync(Program.root + "MasterDuel/Built-in/sprites");
-            mdCachedProgress = 0.4f;
-            mdBundleMaterials = await CacheFromFileAsync(Program.root + "MasterDuel/Built-in/materials");
             mdCachedProgress = 0.6f;
+            mdBundleMaterials = await CacheFromFileAsync(Program.root + "MasterDuel/Built-in/materials");
+            mdCachedProgress = 0.9f;
             mdBundleOutDuel = await CacheFromFileAsync(Program.root + "MasterDuel/Built-in/outduel");
-            mdCachedProgress = 0.8f;
+            mdCachedProgress = 1f;
             mdCached = true;
         }
 

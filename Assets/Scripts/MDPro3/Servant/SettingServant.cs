@@ -126,9 +126,14 @@ namespace MDPro3.Servant
             // TODO FAA
             SettingServantUI.ChangeAAA(Config.GetFloat("AAA", 0f));
             SettingServantUI.ChangeShadow(Config.GetFloat("Shadow", 0f));
-            SettingServantUI.ChangeFPS(SettingServantUI.GetFPS());
+            SetFpsToConfig();
             SettingServantUI.ChangeShowFPS();
             Program.instance.background_.Change(int.Parse(Config.Get("Background", "0")));
+        }
+
+        public static void SetFpsToConfig()
+        {
+            SettingServantUI.ChangeFPS(SettingServantUI.GetFPS());
         }
 
         public float GetBGMVolum()

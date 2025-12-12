@@ -1,4 +1,5 @@
 using DG.Tweening;
+using MDPro3.Servant;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,6 @@ namespace MDPro3
         public Camera cameraDuelOverlayEffect2D;
         public Camera cameraUI;
         public Camera cameraUIBlur;
-        //public Camera cameraRenderTexture;
         public GameObject light;
         public SpriteRenderer black;
 
@@ -74,18 +74,8 @@ namespace MDPro3
             Program.instance.camera_.cameraMain.gameObject.SetActive(false);
             Program.instance.camera_.light.SetActive(false);
             Program.instance.camera_.camera2D.gameObject.SetActive(true);
-
-            //DuelOverlay3DCount = 0;
-            //DuelOverlay2DCount = 0;
-            //DuelOverlayEffect3DCount = 0;
-            //DuelOverlayEffect2DCount = 0;
-
-            //DuelOverlay3DMinus();
-            //DuelOverlayEffect3DMinus();
-            //DuelOverlay2DMinus();
-            //DuelOverlayEffect2DMinus();
-
             QualitySettings.SetQualityLevel(6);
+            SettingServant.SetFpsToConfig();
         }
 
         public static void ShiftTo3D()
@@ -94,6 +84,7 @@ namespace MDPro3
             Program.instance.camera_.light.SetActive(true);
             Program.instance.camera_.camera2D.gameObject.SetActive(false);
             QualitySettings.SetQualityLevel((int)Config.GetFloat("Quality", 2f));
+            SettingServant.SetFpsToConfig();
         }
 
         public static void Overlay3DReset()
@@ -166,12 +157,6 @@ namespace MDPro3
         {
             uiBlurCount++;
             Program.instance.camera_.cameraUIBlur.gameObject.SetActive(true);
-            //foreach (var feature in Program.instance.camera_.forwardRendererData.rendererFeatures)
-            //    if (feature is KawaseBlur)
-            //        feature.SetActive(true);
-            //foreach (var feature in Program.instance.camera_.forwardRendererDataForUI.rendererFeatures)
-            //    if (feature is KawaseBlur)
-            //        feature.SetActive(true);
         }
 
         public static void UIBlurMinus()
@@ -182,12 +167,6 @@ namespace MDPro3
             if (uiBlurCount == 0)
             {
                 Program.instance.camera_.cameraUIBlur.gameObject.SetActive(false);
-                //foreach (var feature in Program.instance.camera_.forwardRendererData.rendererFeatures)
-                //    if (feature is KawaseBlur)
-                //        feature.SetActive(false);
-                //foreach (var feature in Program.instance.camera_.forwardRendererDataForUI.rendererFeatures)
-                //    if (feature is KawaseBlur)
-                //        feature.SetActive(false);
             }
         }
 

@@ -242,69 +242,10 @@
     <type fullname="UnityEngine.InputSystem.PlayerInput/DeviceLostEvent" preserve="nothing" serialized="true" />
     <type fullname="UnityEngine.InputSystem.PlayerInput/DeviceRegainedEvent" preserve="nothing" serialized="true" />
   </assembly>
-  <assembly fullname="Unity.RenderPipelines.Core.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-    <type fullname="UnityEngine.Rendering.ProbeVolumesOptions" preserve="all" />
-    <type fullname="UnityEngine.Rendering.VolumeProfile" preserve="all" />
-    <type fullname="UnityEngine.Rendering.APVLeakReductionModeParameter" preserve="nothing" serialized="true" />
-    <type fullname="UnityEngine.Rendering.BoolParameter" preserve="nothing" serialized="true" />
-    <type fullname="UnityEngine.Rendering.ClampedFloatParameter" preserve="nothing" serialized="true" />
-    <type fullname="UnityEngine.Rendering.ClampedIntParameter" preserve="nothing" serialized="true" />
-    <type fullname="UnityEngine.Rendering.ColorParameter" preserve="nothing" serialized="true" />
-    <type fullname="UnityEngine.Rendering.FloatParameter" preserve="nothing" serialized="true" />
-    <type fullname="UnityEngine.Rendering.MinFloatParameter" preserve="nothing" serialized="true" />
-    <type fullname="UnityEngine.Rendering.NoInterpTextureParameter" preserve="nothing" serialized="true" />
-    <type fullname="UnityEngine.Rendering.ProbeVolumeBlendingTextureMemoryBudget" preserve="nothing" serialized="true" />
-    <type fullname="UnityEngine.Rendering.ProbeVolumeSHBands" preserve="nothing" serialized="true" />
-    <type fullname="UnityEngine.Rendering.ProbeVolumeSceneData" preserve="nothing" serialized="true" />
-    <type fullname="UnityEngine.Rendering.ProbeVolumeTextureMemoryBudget" preserve="nothing" serialized="true" />
-    <type fullname="UnityEngine.Rendering.SerializedDictionary`2" preserve="nothing" serialized="true" />
-    <type fullname="UnityEngine.Rendering.TextureCurve" preserve="nothing" serialized="true" />
-    <type fullname="UnityEngine.Rendering.TextureCurveParameter" preserve="nothing" serialized="true" />
-    <type fullname="UnityEngine.Rendering.TextureParameter" preserve="nothing" serialized="true" />
-    <type fullname="UnityEngine.Rendering.Vector2Parameter" preserve="nothing" serialized="true" />
-    <type fullname="UnityEngine.Rendering.Vector3Parameter" preserve="nothing" serialized="true" />
-    <type fullname="UnityEngine.Rendering.Vector4Parameter" preserve="nothing" serialized="true" />
-  </assembly>
   <assembly fullname="Unity.RenderPipelines.Universal.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-    <type fullname="UnityEngine.Rendering.Universal.Bloom" preserve="all" />
-    <type fullname="UnityEngine.Rendering.Universal.ChannelMixer" preserve="all" />
-    <type fullname="UnityEngine.Rendering.Universal.ChromaticAberration" preserve="all" />
-    <type fullname="UnityEngine.Rendering.Universal.ColorAdjustments" preserve="all" />
-    <type fullname="UnityEngine.Rendering.Universal.ColorCurves" preserve="all" />
-    <type fullname="UnityEngine.Rendering.Universal.ColorLookup" preserve="all" />
-    <type fullname="UnityEngine.Rendering.Universal.DepthOfField" preserve="all" />
-    <type fullname="UnityEngine.Rendering.Universal.FilmGrain" preserve="all" />
-    <type fullname="UnityEngine.Rendering.Universal.LensDistortion" preserve="all" />
-    <type fullname="UnityEngine.Rendering.Universal.LiftGammaGain" preserve="all" />
-    <type fullname="UnityEngine.Rendering.Universal.MotionBlur" preserve="all" />
-    <type fullname="UnityEngine.Rendering.Universal.PaniniProjection" preserve="all" />
-    <type fullname="UnityEngine.Rendering.Universal.PostProcessData" preserve="all" />
-    <type fullname="UnityEngine.Rendering.Universal.ScreenSpaceLensFlare" preserve="all" />
-    <type fullname="UnityEngine.Rendering.Universal.ShadowsMidtonesHighlights" preserve="all" />
-    <type fullname="UnityEngine.Rendering.Universal.SplitToning" preserve="all" />
-    <type fullname="UnityEngine.Rendering.Universal.Tonemapping" preserve="all" />
     <type fullname="UnityEngine.Rendering.Universal.UniversalAdditionalCameraData" preserve="all" />
     <type fullname="UnityEngine.Rendering.Universal.UniversalAdditionalLightData" preserve="all" />
-    <type fullname="UnityEngine.Rendering.Universal.UniversalRendererData" preserve="all" />
-    <type fullname="UnityEngine.Rendering.Universal.UniversalRenderPipelineAsset" preserve="all" />
-    <type fullname="UnityEngine.Rendering.Universal.Vignette" preserve="all" />
-    <type fullname="UnityEngine.Rendering.Universal.WhiteBalance" preserve="all" />
     <type fullname="UnityEngine.Rendering.Universal.TemporalAA/Settings" preserve="nothing" serialized="true" />
-    <type fullname="UnityEngine.Rendering.Universal.DepthOfFieldModeParameter" preserve="nothing" serialized="true" />
-    <type fullname="UnityEngine.Rendering.Universal.DownscaleParameter" preserve="nothing" serialized="true" />
-    <type fullname="UnityEngine.Rendering.Universal.FilmGrainLookupParameter" preserve="nothing" serialized="true" />
-    <type fullname="UnityEngine.Rendering.Universal.HDRACESPresetParameter" preserve="nothing" serialized="true" />
-    <type fullname="UnityEngine.Rendering.Universal.MotionBlurModeParameter" preserve="nothing" serialized="true" />
-    <type fullname="UnityEngine.Rendering.Universal.MotionBlurQualityParameter" preserve="nothing" serialized="true" />
-    <type fullname="UnityEngine.Rendering.Universal.NeutralRangeReductionModeParameter" preserve="nothing" serialized="true" />
-    <type fullname="UnityEngine.Rendering.Universal.PostProcessData/ShaderResources" preserve="nothing" serialized="true" />
-    <type fullname="UnityEngine.Rendering.Universal.PostProcessData/TextureResources" preserve="nothing" serialized="true" />
-    <type fullname="UnityEngine.Rendering.Universal.ScreenSpaceLensFlareResolutionParameter" preserve="nothing" serialized="true" />
-    <type fullname="UnityEngine.Rendering.Universal.ScriptableRendererData/DebugShaderResources" preserve="nothing" serialized="true" />
-    <type fullname="UnityEngine.Rendering.Universal.ScriptableRendererData/ProbeVolumeResources" preserve="nothing" serialized="true" />
-    <type fullname="UnityEngine.Rendering.Universal.StencilStateData" preserve="nothing" serialized="true" />
-    <type fullname="UnityEngine.Rendering.Universal.TonemappingModeParameter" preserve="nothing" serialized="true" />
-    <type fullname="UnityEngine.Rendering.Universal.UniversalRenderPipelineAsset/TextureResources" preserve="nothing" serialized="true" />
   </assembly>
   <assembly fullname="Unity.ResourceManager, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" preserve="all">
     <type fullname="UnityEngine.ResourceManagement.ResourceProviders.AssetBundleProvider" preserve="all" />
@@ -371,7 +312,6 @@
     <type fullname="UnityEngine.Events.PersistentListenerMode" preserve="nothing" serialized="true" />
     <type fullname="UnityEngine.Events.UnityEvent" preserve="nothing" serialized="true" />
     <type fullname="UnityEngine.RectOffset" preserve="nothing" serialized="true" />
-    <type fullname="UnityEngine.Bounds" preserve="nothing" serialized="true" />
   </assembly>
   <assembly fullname="UnityEngine.PhysicsModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
     <type fullname="UnityEngine.MeshCollider" preserve="all" />
