@@ -6,7 +6,7 @@ Unity version: 6000.0.10f1
 
 ### Other required folders
 
-* Platforms: https://code.mycard.moe/sherry\_chaos/mdpro3-assetbundles
+* Platforms: https://code.mycard.moe/sherry_chaos/mdpro3-assetbundles
 * Picture/Art: https://code.mycard.moe/mycard/hd-arts
 * Picture/Closeup: https://code.mycard.moe/mycard/ygopro2-closeup
 * Picture/DIY: You can find it from the released MDPro3
