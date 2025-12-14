@@ -37,7 +37,6 @@ namespace MDPro3.Servant
         private CancellationTokenSource cts;
 
         #region Servant
-
         public override int Depth => 1;
         protected override bool ShowLine => false;
 
@@ -65,7 +64,7 @@ namespace MDPro3.Servant
 
         protected override void AfterHidingEvent()
         {
-            Resources.UnloadUnusedAssets();
+            Program.instance.UnloadUnusedAssets();
         }
 
         public override void PerFrameFunction()
@@ -230,7 +229,7 @@ namespace MDPro3.Servant
             bool diy = false;
             if (codes.Contains(code))
                 //cutin = await ABLoader.LoadFromFolderAsync<PlayableDirector>("MonsterCutin/" + code, false, true);
-                cutin = await ABLoader.LoadMonsterCutinAsync(code);
+                cutin = await ABLoader.LoadMonsterCutinAsync(code, false);
             else
             {
                 cutin = await ABLoader.LoadFromFileAsync("MonsterCutin2/" + code, false, true);

@@ -344,7 +344,6 @@ namespace MDPro3
 
         private async UniTask UnloadUnusedAssetsAsync()
         {
-            ABLoader.ClearTemp();
             await Resources.UnloadUnusedAssets();
         }
 
