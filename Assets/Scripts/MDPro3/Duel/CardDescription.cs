@@ -149,7 +149,7 @@ namespace MDPro3
 
             manager.GetElement<TextMeshProUGUI>("TextDescription").fontSize = 25f * Config.GetUIScale(1.35f);
 
-            bool isMonster = WhetherCardIsMonster(data);
+            bool isMonster = CardIsMonster(data);
             if (isMonster)
             {
                 manager.GetElement("PropertyMonster").SetActive(true);
@@ -270,7 +270,7 @@ namespace MDPro3
                 manager.GetElement<Image>("Limit").sprite = TextureManager.container.banned;
         }
 
-        public static bool WhetherCardIsMonster(Card data)
+        public static bool CardIsMonster(Card data)
         {
             var origin = CardsManager.Get(data.Id);
             if (!origin.HasType(CardType.Monster))
@@ -297,33 +297,41 @@ namespace MDPro3
             public bool notOriginal;
         }
 
-        public static AttributeSprite GetCardAttribute(Card data, bool render = false)
+        private static AttributeSprite GetCardAttribute(Card data)
         {
             var origin = CardsManager.Get(data.Id);
             var returnValue = new AttributeSprite();
 
-            bool isMonster = WhetherCardIsMonster(data);
+            bool isMonster = CardIsMonster(data);
+
             if (isMonster)
             {
                 if (!origin.HasType(CardType.Monster))
                 {
-                    returnValue.sprite = TextureManager.GetCardAttributeIcon(data.Attribute, data.Id, render);
                     returnValue.notOriginal = true;
+                    returnValue.sprite = TextureManager.container.GetCardAttributeIcon(data);
                 }
                 else
                 {
-                    if ((data.Attribute ^ origin.Attribute) == 0)
+                    if (origin.HasType(CardType.Trap))
                     {
-                        returnValue.sprite = TextureManager.GetCardAttributeIcon(data.Attribute, data.Id, render);
-                        returnValue.notOriginal = false;
+                        returnValue.notOriginal = true;
+                        returnValue.sprite = TextureManager.container.GetCardAttributeIcon(data);
                     }
                     else
                     {
-                        returnValue.notOriginal = true;
-                        if (data.Attribute != origin.Attribute)
-                            returnValue.sprite = TextureManager.GetCardAttributeIcon(data.Attribute, data.Id, render);
+                        if (data.Attribute == origin.Attribute)
+                        {
+                            returnValue.notOriginal = false;
+                            returnValue.sprite = TextureManager.container.GetCardAttributeIcon(data);
+                        }
                         else
-                            returnValue.sprite = TextureManager.GetCardAttributeIcon(data.Attribute - origin.Attribute, data.Id, render);
+                        {
+                            returnValue.notOriginal = true;
+                            var newData = data.Clone();
+                            newData.Attribute = data.Attribute ^ origin.Attribute;
+                            returnValue.sprite = TextureManager.container.GetCardAttributeIcon(newData);
+                        }
                     }
                 }
             }
@@ -352,24 +360,12 @@ namespace MDPro3
                 }
                 else
                 {
+                    returnValue.notOriginal = true;
                     if (data.HasType(CardType.Spell))
-                    {
                         returnValue.sprite = TextureManager.container.attributeSpell;
-                        returnValue.notOriginal = true;
-                    }
                     else
-                    {
                         returnValue.sprite = TextureManager.container.attributeTrap;
-                        returnValue.notOriginal = true;
-                    }
                 }
-            }
-            if (NeedRushDuelStyle(data.Id) && render)
-            {
-                if (returnValue.sprite == TextureManager.container.attributeSpell)
-                    returnValue.sprite = TextureManager.container.rd_Attribute_Spell;
-                else if (returnValue.sprite == TextureManager.container.attributeTrap)
-                    returnValue.sprite = TextureManager.container.rd_Attribute_Trap;
             }
 
             return returnValue;

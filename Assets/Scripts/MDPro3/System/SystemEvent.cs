@@ -48,7 +48,6 @@ namespace MDPro3
 
         public static void CallVideoCardConfigChangeEvent()
         {
-            Debug.Log("CallVideoCardConfigChangeEvent");
             OnVideoCardConfigChange?.Invoke();
         }
     }

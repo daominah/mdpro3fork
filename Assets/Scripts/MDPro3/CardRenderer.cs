@@ -4,6 +4,7 @@ using MDPro3.Utility;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Text.RegularExpressions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -46,7 +47,8 @@ namespace MDPro3
         public RawImage cardArtPendulumSquare;
         public RawImage cardArtPendulumWidth;
         public Image cardFrame;
-        public Image cardAttribute;
+        public Image attrIcon;
+        public TextMeshProUGUI attrRuby;
         public TextMeshProUGUI cardName;
         public Text cardDescription;
         public Text cardDescriptionPendulum;
@@ -75,7 +77,8 @@ namespace MDPro3
         public RawImage cardArtPendulumRD;
         public RawImage cardArtPendulumWidthRD;
         public Image cardFrameRD;
-        public Image cardAttributeRD;
+        public Image attrIconRD;
+        public TextMeshProUGUI attrRubyRD;
         public GameObject cardLegendRD;
         public RectTransform movePartsRD;
         public TextMeshProUGUI cardNameRD;
@@ -164,6 +167,8 @@ namespace MDPro3
             cardNameRD.font = tmpFont;
             spellType.font = tmpFont;
             cardTypeRD.font = tmpFont;
+            attrRuby.font = tmpFont;
+            attrRubyRD.font = tmpFont;
         }
 
         #endregion
@@ -184,6 +189,8 @@ namespace MDPro3
             if (currentFontLanguage == language)
                 return;
             currentFontLanguage = language;
+
+            LoadText(language);
             if (language == Language.SimplifiedChinese)
             {
                 cardName.fontSize = 50f;
@@ -279,12 +286,13 @@ namespace MDPro3
                 cardNameRD.GetComponent<RectTransform>().localScale = new Vector3(cardNameLabelWidthRushDuel / nameWidth, 1f, 1f);
 
             cardNameRD.color = Color.white;
+            attrRubyRD.text = GetAttributeText(data);
 
             cardArtRD.gameObject.SetActive(false);
             cardArtPendulumRD.gameObject.SetActive(false);
             cardArtPendulumWidthRD.gameObject.SetActive(false);
             cardFrameRD.gameObject.SetActive(false);
-            cardAttributeRD.gameObject.SetActive(false);
+            attrIconRD.gameObject.SetActive(false);
             cardLegendRD.SetActive(false);
         }
 
@@ -301,6 +309,7 @@ namespace MDPro3
                 cardName.GetComponent<RectTransform>().localScale = new Vector3(cardNameLabelWidthOCG / nameWidth, 1, 1);
 
             cardName.color = Color.white;
+            attrRuby.text = GetAttributeText(data);
 
             cardFrame.gameObject.SetActive(false);
             cardArt.gameObject.SetActive(false);
@@ -310,7 +319,7 @@ namespace MDPro3
             levels.SetActive(false);
             ranks.SetActive(false);
             rank13.SetActive(false);
-            cardAttribute.gameObject.SetActive(false);
+            attrIcon.gameObject.SetActive(false);
             levelsMask.SetActive(false);
             ranksMask.SetActive(false);
             rank13Mask.SetActive(false);
@@ -393,7 +402,7 @@ namespace MDPro3
             cardArtPendulumWidthRD.gameObject.SetActive(false);
 
             cardFrameRD.gameObject.SetActive(true);
-            cardAttributeRD.gameObject.SetActive(true);
+            attrIconRD.gameObject.SetActive(true);
             cardDescriptionPendulumRD.text = string.Empty;
             lScaleRD.text = string.Empty;
             rScaleRD.text = string.Empty;
@@ -409,7 +418,8 @@ namespace MDPro3
             movePartsRD.gameObject.SetActive(true);
             movePartsRD.anchoredPosition = Vector2.zero;
 
-            cardAttributeRD.sprite = CardDescription.GetCardAttribute(data, true).sprite;
+            attrIconRD.sprite = TextureManager.container.GetCardAttributeIcon(data, true);
+            attrRubyRD.text = GetAttributeText(data);
             cardTypeRD.text = data.GetTypeForRushDuelRender();
 
             if (data.HasType(CardType.Pendulum))
@@ -571,7 +581,7 @@ namespace MDPro3
             cardArtPendulumWidth.gameObject.SetActive(false);
 
             cardFrame.gameObject.SetActive(true);
-            cardAttribute.gameObject.SetActive(true);
+            attrIcon.gameObject.SetActive(true);
             cardDescriptionPendulum.text = string.Empty;
             lScale.text = string.Empty;
             rScale.text = string.Empty;
@@ -590,7 +600,8 @@ namespace MDPro3
             linkCount.gameObject.SetActive(false);
             spellType.text = string.Empty;
             cardDescription.GetComponent<RectTransform>().sizeDelta = new Vector2(590f, 160f);
-            cardAttribute.sprite = CardDescription.GetCardAttribute(data, true).sprite;
+            attrIcon.sprite = TextureManager.container.GetCardAttributeIcon(data, true);
+            attrRuby.text = GetAttributeText(data);
 
             if (data.HasType(CardType.Pendulum))
             {
@@ -983,6 +994,72 @@ namespace MDPro3
         {
             Destroy(renderTexture);
             Destroy(gameObject);
+        }
+
+        #endregion
+
+        #region IDS_SYS
+
+        private readonly Dictionary<string, string> idsSysText = new();        
+
+        private void LoadText(string language)
+        {
+            idsSysText.Clear();
+            var path = $"{Program.PATH_LOCALES}{language}/IDS/IDS_SYS.txt";
+            if (!File.Exists(path))
+                return;
+            var text = File.ReadAllText(path);
+            var lines = text.Replace("\r", string.Empty).Split('\n');
+
+            string currentKey = null;
+            string currentValue = null;
+
+            foreach (var line in lines)
+            {
+                var match = Regex.Match(line, @"(?<=\[IDS_SYS\.).*?(?=\])");
+                if (match.Success)
+                {
+                    if (currentValue != null)
+                        idsSysText[currentKey] = currentValue;
+                    currentKey = match.Value;
+                }
+                else
+                    currentValue = line;
+            }
+
+            if(currentKey != null && currentValue != null)
+                idsSysText[currentKey] = currentValue;
+        }
+
+        private string GetIdsSysText(string key)
+        {
+            if (idsSysText.TryGetValue(key, out var value))
+                return value;
+            return string.Empty;
+        }
+
+        private string GetAttributeText(Card data)
+        {
+            if (data.HasType(CardType.Spell))
+                return GetIdsSysText("ATTR_MAGIC_RUBY");
+            else if (data.HasType(CardType.Trap))
+                return GetIdsSysText("ATTR_TRAP_RUBY");
+            else if (data.IsAttribute(CardAttribute.Light))
+                return GetIdsSysText("ATTR_LIGHT_RUBY");
+            else if(data.IsAttribute(CardAttribute.Dark))
+                return GetIdsSysText("ATTR_DARK_RUBY");
+            else if (data.IsAttribute(CardAttribute.Water))
+                return GetIdsSysText("ATTR_WATER_RUBY");
+            else if (data.IsAttribute(CardAttribute.Fire))
+                return GetIdsSysText("ATTR_FIRE_RUBY");
+            else if (data.IsAttribute(CardAttribute.Earth))
+                return GetIdsSysText("ATTR_EARTH_RUBY");
+            else if (data.IsAttribute(CardAttribute.Wind))
+                return GetIdsSysText("ATTR_WIND_RUBY");
+            else if (data.IsAttribute(CardAttribute.Divine))
+                return GetIdsSysText("ATTR_GOD_RUBY");
+            else
+                return string.Empty;
         }
 
         #endregion

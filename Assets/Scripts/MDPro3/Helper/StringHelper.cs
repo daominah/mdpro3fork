@@ -409,7 +409,7 @@ namespace MDPro3
             var origin = render ? CardsManager.GetRenderCard(data.Id) : CardsManager.Get(data.Id);
             try
             {
-                if (CardDescription.WhetherCardIsMonster(data))
+                if (CardDescription.CardIsMonster(data))
                 {
                     if (data.Race != origin.Race)
                         re = bracketLeft + "<color=#FD3E08>" + InterString.Get("[?]族", Race(data.Race)) + "</color>" + Program.STRING_SLASH + SecondType(data.Type) + bracketRight;

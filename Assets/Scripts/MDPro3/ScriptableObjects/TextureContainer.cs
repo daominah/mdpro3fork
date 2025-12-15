@@ -1,10 +1,11 @@
 using MDPro3;
 using MDPro3.Duel.YGOSharp;
+using MDPro3.UI;
+using MDPro3.Utility;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using MDPro3.UI;
 
 namespace MDPro3
 {
@@ -82,6 +83,15 @@ namespace MDPro3
         public Sprite attributeDivine;
         public Sprite attributeSpell;
         public Sprite attributeTrap;
+        public Sprite attributeLight_Ruby;
+        public Sprite attributeDark_Ruby;
+        public Sprite attributeWater_Ruby;
+        public Sprite attributeFire_Ruby;
+        public Sprite attributeEarth_Ruby;
+        public Sprite attributeWind_Ruby;
+        public Sprite attributeDivine_Ruby;
+        public Sprite attributeSpell_Ruby;
+        public Sprite attributeTrap_Ruby;
 
         [Header("CardType")]
         public Sprite typeNone;
@@ -787,27 +797,29 @@ namespace MDPro3
         public Sprite GetCardAttributeIcon(Card data, bool render = false)
         {
             bool rushDuel = CardRenderer.NeedRushDuelStyle(data.Id);
+            bool needRuby = render && !rushDuel && Language.AttributeNeedRuby();
+
             if (data.HasType(CardType.Monster))
             {
                 if ((data.Attribute & (uint)CardAttribute.Light) > 0)
-                    return rushDuel && render ? rd_Attribute_Light : attributeLight;
+                    return rushDuel && render ? rd_Attribute_Light : needRuby ? attributeLight_Ruby : attributeLight;
                 else if ((data.Attribute & (uint)CardAttribute.Dark) > 0)
-                    return rushDuel && render ? rd_Attribute_Dark : attributeDark;
+                    return rushDuel && render ? rd_Attribute_Dark : needRuby ? attributeDark_Ruby : attributeDark;
                 else if ((data.Attribute & (uint)CardAttribute.Water) > 0)
-                    return rushDuel && render ? rd_Attribute_Water : attributeWater;
+                    return rushDuel && render ? rd_Attribute_Water : needRuby ? attributeWater_Ruby : attributeWater;
                 else if ((data.Attribute & (uint)CardAttribute.Fire) > 0)
-                    return rushDuel && render ? rd_Attribute_Fire : attributeFire;
+                    return rushDuel && render ? rd_Attribute_Fire : needRuby ? attributeFire_Ruby : attributeFire;
                 else if ((data.Attribute & (uint)CardAttribute.Earth) > 0)
-                    return rushDuel && render ? rd_Attribute_Earth : attributeEarth;
+                    return rushDuel && render ? rd_Attribute_Earth : needRuby ? attributeEarth_Ruby : attributeEarth;
                 else if ((data.Attribute & (uint)CardAttribute.Wind) > 0)
-                    return rushDuel && render ? rd_Attribute_Wind : attributeWind;
+                    return rushDuel && render ? rd_Attribute_Wind : needRuby ? attributeWind_Ruby : attributeWind;
                 else
-                    return rushDuel && render ? rd_Attribute_Divine : attributeDivine;
+                    return rushDuel && render ? rd_Attribute_Divine : needRuby ? attributeDivine_Ruby : attributeDivine;
             }
             else if (data.HasType(CardType.Spell))
-                return attributeSpell;
+                return rushDuel && render ? rd_Attribute_Spell : needRuby ? attributeSpell_Ruby : attributeSpell;
             else
-                return attributeTrap;
+                return rushDuel && render ? rd_Attribute_Trap : needRuby ? attributeTrap_Ruby : attributeTrap;
         }
 
         public Sprite GetCardSpellTrapTypeIcon(Card data)

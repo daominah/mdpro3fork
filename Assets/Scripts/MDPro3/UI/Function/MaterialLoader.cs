@@ -1,13 +1,11 @@
-using System.Collections;
+using Cysharp.Threading.Tasks;
+using MDPro3.Duel.YGOSharp;
+using MDPro3.Utility;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Threading.Tasks;
-using MDPro3.Utility;
-using MDPro3.Duel.YGOSharp;
-using UnityEngine;
-using UnityEngine.AddressableAssets;
-using Cysharp.Threading.Tasks;
 using System.Threading;
+using System.Threading.Tasks;
+using UnityEngine;
 
 namespace MDPro3
 {
@@ -240,6 +238,9 @@ namespace MDPro3
                         mat.SetTexture("_KiraMask", TextureManager.container.cardKiraMaskPendulum);
                         mat.SetTexture("_MainNormal", TextureManager.container.cardNormalPendulum);
                     }
+
+                    if (Language.AttributeNeedRuby())
+                        mat.SetVector("_AttributeSize_Pos", new Vector4(9.85f, 13.96f, -3.7f, -5.81f));
                 }
 
                 if (rarity == CardRarity.Rarity.Millennium)

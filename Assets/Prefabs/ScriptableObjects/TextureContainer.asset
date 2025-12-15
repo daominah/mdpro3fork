@@ -66,6 +66,7 @@ MonoBehaviour:
   cardNormal: {fileID: 2800000, guid: b552f9fd55ddc7443bfe07c7dbc13b1f, type: 3}
   cardNormalLink: {fileID: 2800000, guid: 875fa980a3eb990419e51879fe12b281, type: 3}
   cardNormalPendulum: {fileID: 2800000, guid: 71402236982fddd41ada1cc6a44e94bd, type: 3}
+  CardKiraNormal03_Millennium: {fileID: 2800000, guid: 71d6974fbeeed2c41901e87746fda0cb, type: 3}
   attributeLight: {fileID: 21300000, guid: 157f899e40b269e4bb70d867aa084278, type: 3}
   attributeDark: {fileID: 21300000, guid: 7976b559931f6e840863f07ea92c278a, type: 3}
   attributeWater: {fileID: 21300000, guid: e639e2cab68115f499825b099bd456d5, type: 3}
@@ -75,6 +76,15 @@ MonoBehaviour:
   attributeDivine: {fileID: 21300000, guid: 435cb54b358980b42b0fabd5dbbce75a, type: 3}
   attributeSpell: {fileID: 21300000, guid: 40e45967f7e2236429d838e90c3a19b3, type: 3}
   attributeTrap: {fileID: 21300000, guid: be55c7575bca71b42b9f373fc0aecd01, type: 3}
+  attributeLight_Ruby: {fileID: 21300000, guid: b39796ee8b82c2c4fa0d8f4e3065221c, type: 3}
+  attributeDark_Ruby: {fileID: 21300000, guid: 7703e75c871bc1942b4f343bf9f81025, type: 3}
+  attributeWater_Ruby: {fileID: 21300000, guid: 042e2122887c9e449bc62ffc1b6c0e56, type: 3}
+  attributeFire_Ruby: {fileID: 21300000, guid: 44744a2e861f2c440a1ec28c0a3e6ea4, type: 3}
+  attributeEarth_Ruby: {fileID: 21300000, guid: 03a7053d66a52524e89c74cd6dea449c, type: 3}
+  attributeWind_Ruby: {fileID: 21300000, guid: f3a0375556492314e8e0b0c6c1ff51f4, type: 3}
+  attributeDivine_Ruby: {fileID: 21300000, guid: 8119e73337b1ae743ad4fdfc47eef220, type: 3}
+  attributeSpell_Ruby: {fileID: 21300000, guid: f7b330234c47da548ab1565d2dcf861c, type: 3}
+  attributeTrap_Ruby: {fileID: 21300000, guid: f2b244ed9403f0a4e88cea7e1d9f8487, type: 3}
   typeNone: {fileID: 21300000, guid: cfdad45f88fa7a14eb79e8bbc3307670, type: 3}
   typeCounter: {fileID: 21300000, guid: e8877c146699bad498e5c7c3e7d5c22f, type: 3}
   typeField: {fileID: 21300000, guid: 29814486051bdaa4ebf24d6c941f462c, type: 3}
@@ -490,10 +500,3 @@ MonoBehaviour:
   gamepad_Start_PlayStation: {fileID: 21300000, guid: 114b48f9b41b6a542b167960a7d9ee17, type: 3}
   gamepad_Select_Nintendo: {fileID: 21300000, guid: 0308e5cde23a96b4bbfaf28d59ec7835, type: 3}
   gamepad_Start_Nintendo: {fileID: 21300000, guid: 86feb6744b88c6946a73edb7b90b2b1a, type: 3}
-  fxt_Arrow: {fileID: 2800000, guid: f7b877a77c7530543815b9cd571203ee, type: 3}
-  fxt_Arrow_002: {fileID: 2800000, guid: cc77cec8332acc04eb877183efcec954, type: 3}
-  fxt_Arrow_003: {fileID: 2800000, guid: 89ee305204be7844abd1fc33fd0e8db7, type: 3}
-  fxt_Arrow_004: {fileID: 2800000, guid: 4c88d66a9e295ce49afb8c45c5fd54e9, type: 3}
-  fxt_msk_005: {fileID: 2800000, guid: fc78254fef4709843a3b17422a6bf171, type: 3}
-  CardKiraNormal03_Millennium: {fileID: 2800000, guid: 71d6974fbeeed2c41901e87746fda0cb, type: 3}
-  CardMask001: {fileID: 2800000, guid: 90c6e35ef4304f289c279037152a03b7, type: 3}

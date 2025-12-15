@@ -206,25 +206,6 @@ namespace MDPro3
                 return container.typeNone;
         }
 
-        public static Sprite GetCardAttributeIcon(int attribute, int code, bool render = false)
-        {
-            bool rushDuel = CardRenderer.NeedRushDuelStyle(code);
-            if ((attribute & (uint)CardAttribute.Light) > 0)
-                return rushDuel && render ? container.rd_Attribute_Light : container.attributeLight;
-            else if ((attribute & (uint)CardAttribute.Dark) > 0)
-                return rushDuel && render ? container.rd_Attribute_Dark : container.attributeDark;
-            else if ((attribute & (uint)CardAttribute.Water) > 0)
-                return rushDuel && render ? container.rd_Attribute_Water : container.attributeWater;
-            else if ((attribute & (uint)CardAttribute.Fire) > 0)
-                return rushDuel && render ? container.rd_Attribute_Fire : container.attributeFire;
-            else if ((attribute & (uint)CardAttribute.Earth) > 0)
-                return rushDuel && render ? container.rd_Attribute_Earth : container.attributeEarth;
-            else if ((attribute & (uint)CardAttribute.Wind) > 0)
-                return rushDuel && render ? container.rd_Attribute_Wind : container.attributeWind;
-            else
-                return rushDuel && render ? container.rd_Attribute_Divine : container.attributeDivine;
-        }
-
         public static Sprite GetCardRaceIcon(int race)
         {
             if ((race & (uint)CardRace.Warrior) > 0)

@@ -118,5 +118,13 @@ namespace MDPro3.Utility
                 return MasterDuelPortuguese;
             return language;
         }
+
+        public static bool AttributeNeedRuby()
+        {
+            var language = GetCardConfig();
+            if (language == SimplifiedChinese || language == TraditionalChinese)
+                return false;
+            return true;
+        }
     }
 }
