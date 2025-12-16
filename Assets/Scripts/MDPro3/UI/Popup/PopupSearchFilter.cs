@@ -66,21 +66,23 @@ namespace MDPro3.UI.Popup
                 if (f[15] > 0)
                     inputAttackTo.text = f[15].ToString();
                 if (f[16] > 0)
-                    inputDefenceTo.text = f[16].ToString();
+                    inputDefenceFrom.text = f[16].ToString();
                 if (f[17] > 0)
-                    inputScaleFrom.text = f[17].ToString();
+                    inputDefenceTo.text = f[17].ToString();
                 if (f[18] > 0)
-                    inputScaleTo.text = f[18].ToString();
-                if (f[19] >= 0)
-                    inputGPFrom.text = f[19].ToString();
+                    inputScaleFrom.text = f[18].ToString();
+                if (f[19] > 0)
+                    inputScaleTo.text = f[19].ToString();
                 if (f[20] >= 0)
-                    inputGPTo.text = f[20].ToString();
-                if (f[21] > 0)
-                    inputYearFrom.text = f[21].ToString();
+                    inputGPFrom.text = f[20].ToString();
+                if (f[21] >= 0)
+                    inputGPTo.text = f[21].ToString();
                 if (f[22] > 0)
-                    inputYearTo.text = f[22].ToString();
+                    inputYearFrom.text = f[22].ToString();
                 if (f[23] > 0)
-                    inputDefenceFrom.text = f[23].ToString();
+                    inputYearTo.text = f[23].ToString();
+                if (f[24] > 0)
+                    inputDefenceFrom.text = f[24].ToString();
             }
             Manager.GetElement<SelectionButton>("ButtonPack")
                 .SetButtonText(CardCollectionView.packName == string.Empty 
