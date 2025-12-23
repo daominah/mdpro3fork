@@ -16,6 +16,7 @@ using UnityEngine.Playables;
 using YgomGame.Duel;
 using YgomSystem.ElementSystem;
 using static MDPro3.Servant.OcgCore;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 
 namespace MDPro3
 {
@@ -141,48 +142,57 @@ namespace MDPro3
 
         private void LateUpdate()
         {
-            if (model != null)
-            {
-                hover = UserInput.HoverObject == manager.GetElement("CardModel");
-                if (!hover) hoving = false;
+            if (model == null)
+                return;
 
-                if (hover && UserInput.MouseLeftUp && !handCardDraged)
-                    OnClick();
-                else if (!hover && UserInput.MouseLeftUp)
+            hover = UserInput.HoverObject == manager.GetElement("CardModel");
+            if (hover)
+            {
+                if(p.InMyControl() && HideMyHandCard)
+                    HideMyHandCard = false;
+                else if(!p.InMyControl() && HideOpHandCard)
+                    HideOpHandCard = false;
+            }
+            if (!hover) hoving = false;
+
+            if (hover && UserInput.MouseLeftUp && !handCardDraged)
+                OnClick();
+            else if (!hover && UserInput.MouseLeftUp)
+            {
+                if (UserInput.HoverObject == null)
+                    NotClickThis();
+                else if (UserInput.HoverObject.name != "PlaceSelector")
+                    NotClickThis();
+            }
+
+            if (Math.Abs(handOffset - lastHandOffset) > 10)
+                NotClickThis();
+
+            if (p.InLocation(CardLocation.Hand))
+            {
+                if (hover && hoving == false && clicked == false)
                 {
-                    if (UserInput.HoverObject == null)
-                        NotClickThis();
-                    else if (UserInput.HoverObject.name != "PlaceSelector")
-                        NotClickThis();
+                    hoving = true;
+                    handDefault = false;
+                    AnimationHandHover();
+                    MoveToHandDefault(0.1f);
+                }
+                if (hover && UserInput.MouseLeftUp && !handCardDraged)
+                {
+                    clicked = true;
+                    handDefault = false;
+                    AnimationHandAppeal();
+                }
+                if (!hover && UserInput.MouseLeftDown)
+                {
+                    clicked = false;
+                }
+                if (!hover && !clicked && !handDefault)
+                {
+                    AnimationHandDefault(0.1f);
                 }
                 if (Math.Abs(handOffset - lastHandOffset) > 10)
-                    NotClickThis();
-
-                if ((p.location & (uint)CardLocation.Hand) > 0)
-                {
-                    if (hover && hoving == false && clicked == false)
-                    {
-                        hoving = true;
-                        handDefault = false;
-                        AnimationHandHover();
-                    }
-                    if (hover && UserInput.MouseLeftUp && !handCardDraged)
-                    {
-                        clicked = true;
-                        handDefault = false;
-                        AnimationHandAppeal();
-                    }
-                    if (!hover && UserInput.MouseLeftDown)
-                    {
-                        clicked = false;
-                    }
-                    if (!hover && !clicked && !handDefault)
-                    {
-                        AnimationHandDefault(0.1f);
-                    }
-                    if (Math.Abs(handOffset - lastHandOffset) > 10)
-                        SetHandDefault();
-                }
+                    SetHandDefault();
             }
         }
 
@@ -506,13 +516,16 @@ namespace MDPro3
 
                 float x = p.sequence * 4 - (handsCount - 1) * 2;
 
-                var z0 = -28 + (30 - Program.instance.camera_.cameraMain.fieldOfView) * 0.7f;
-                var z1 = 17 - (30 - Program.instance.camera_.cameraMain.fieldOfView) * 0.7f;
-
                 if (p.controller == 0)
-                    return new Vector3(x + handOffset * UIManager.ScreenLengthWithoutScalerX(0.038f), 15, z0);
+                {
+                    var z = -28 + (30 - Program.instance.camera_.cameraMain.fieldOfView) * 0.7f;
+                    return new Vector3(x + handOffset * UIManager.ScreenLengthWithoutScalerX(0.038f), 15, z);
+                }
                 else
-                    return new Vector3(-x, 15, z1);
+                {
+                    var z = 17 - (30 - Program.instance.camera_.cameraMain.fieldOfView) * 0.7f;
+                    return new Vector3(-x, 15, z);
+                }
             }
             else if (p.InLocation(CardLocation.Deck))
             {
@@ -1818,9 +1831,10 @@ namespace MDPro3
             model.transform.SetParent(null, true);
             handDefault = true;
             appealed = false;
+            MoveToHandDefault(time);
+
             var targetPosition = GetCardPosition(p, this);
             var x = targetPosition.x;
-            model.transform.DOLocalMove(targetPosition, time);
 
             Transform pivot = manager.GetElement<Transform>("Pivot");
             Transform offset = manager.GetElement<Transform>("Offset");
@@ -1838,9 +1852,20 @@ namespace MDPro3
                 turn.DOLocalRotate(Vector3.zero, time);
         }
 
+        private void MoveToHandDefault(float time)
+        {
+            var targetPosition = GetCardPosition(p, this);
+            var x = targetPosition.x;
+            if (HideMyHandCard && p.InMyControl())
+                targetPosition.z = -28f;
+            if (HideOpHandCard && !p.InMyControl())
+                targetPosition.z = 17f;
+            model.transform.DOLocalMove(targetPosition, time);
+        }
+
         public void SetHandToDefault()
         {
-            if (model == null || (p.location & (uint)CardLocation.Hand) == 0 || inAnimation)
+            if (model == null || !p.InLocation(CardLocation.Hand) || inAnimation)
                 return;
 
             clicked = false;
@@ -1849,8 +1874,8 @@ namespace MDPro3
 
         public void SetHandDefault()
         {
-            if (model == null || (p.location & (uint)CardLocation.Hand) == 0)
-                return;
+            if (model == null || !p.InLocation(CardLocation.Hand))
+                return;            
             appealed = false;
             model.transform.localPosition = GetCardPosition(p, this);
             float x = model.transform.localPosition.x;

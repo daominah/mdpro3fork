@@ -164,6 +164,26 @@ namespace MDPro3.Servant
         public static float lastHandOffset;
         public static bool clickingHandCard;
         public static bool handCardDraged;
+        private static bool hideMyHandCard;
+        public static bool HideMyHandCard
+        {
+            get { return hideMyHandCard; }
+            set 
+            { 
+                hideMyHandCard = value;
+                Program.instance.ocgcore.RefreshMyHandCardPosition();
+            }
+        }
+        private static bool hideOpHandCard;
+        public static bool HideOpHandCard
+        {
+            get { return hideOpHandCard; }
+            set
+            {
+                hideOpHandCard = value;
+                Program.instance.ocgcore.RefreshOpHandCardPosition();
+            }
+        }
 
         #endregion
 
@@ -292,12 +312,11 @@ namespace MDPro3.Servant
 
             if (GetMyHandCount() > 10)
             {
-                if (UserInput.HoverObject != null
+                if (UserInput.MouseLeftDown
+                    && UserInput.HoverObject != null
                     && UserInput.HoverObject.name == "CardModel"
                     && UserInput.HoverObject.GetComponent<GameCardMono>().cookieCard.p.controller == 0
-                    && (UserInput.HoverObject.GetComponent<GameCardMono>().cookieCard.p.location & (uint)CardLocation.Hand) > 0
-                    && UserInput.MouseLeftDown
-                    )
+                    && (UserInput.HoverObject.GetComponent<GameCardMono>().cookieCard.p.location & (uint)CardLocation.Hand) > 0)
                 {
                     clickInPosition = UserInput.MousePos.x;
                     clickingHandCard = true;
@@ -1621,6 +1640,7 @@ namespace MDPro3.Servant
 
         private void RefreshHandCardPositionInstant()
         {
+            hideMyHandCard = false;
             if (showing)
                 foreach (var card in cards)
                     card.SetHandDefault();
@@ -1632,6 +1652,23 @@ namespace MDPro3.Servant
                 foreach (var card in cards)
                     card.SetHandToDefault();
         }
+
+        public void RefreshMyHandCardPosition()
+        {
+            if (showing)
+                foreach (var card in cards)
+                    if(card.p.InMyControl())
+                        card.SetHandToDefault();
+        }
+
+        public void RefreshOpHandCardPosition()
+        {
+            if (showing)
+                foreach (var card in cards)
+                    if (!card.p.InMyControl())
+                        card.SetHandToDefault();
+        }
+
 
         string fieldHint;
         int fieldMin;

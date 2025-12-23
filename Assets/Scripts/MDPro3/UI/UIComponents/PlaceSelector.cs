@@ -214,7 +214,26 @@ namespace MDPro3.UI
             }
             else
             {
-                if ((p.location & (uint)CardLocation.Onfield) > 0)
+                if (p.InLocation(CardLocation.SpellZone))
+                {
+                    if (p.InMyControl())
+                    {
+                        OcgCore.HideMyHandCard = true;
+                        OcgCore.HideOpHandCard = false;
+                    }
+                    else
+                    {
+                        OcgCore.HideOpHandCard = true;
+                        OcgCore.HideMyHandCard = false;
+                    }
+                }
+                else
+                {
+                    OcgCore.HideMyHandCard = false;
+                    OcgCore.HideOpHandCard = false;
+                }
+
+                if (p.InLocation(CardLocation.Onfield))
                 {
                     var card = FindCardInThisPlace();
                     if (card != null)
@@ -447,7 +466,7 @@ namespace MDPro3.UI
             selectCard.SetActive(false);
         }
 
-        public void HighlightThisZone(uint place, int min, bool needConfirm = false)
+        public GPS HighlightThisZone(uint place, int min)
         {
             for (var i = 0; i < min; i++)
             {
@@ -466,6 +485,7 @@ namespace MDPro3.UI
                         {
                             ShowSelectZoneHighlight();
                             selecting = true;
+                            return p;
                         }
                     }
                 }
@@ -478,10 +498,12 @@ namespace MDPro3.UI
                         {
                             ShowSelectZoneHighlight();
                             selecting = true;
+                            return p;
                         }
                     }
                 }
             }
+            return null;
         }
 
         public void ShowSelectZoneHighlight()

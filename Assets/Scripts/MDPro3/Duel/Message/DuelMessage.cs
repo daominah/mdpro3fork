@@ -3190,8 +3190,24 @@ namespace MDPro3.Duel
                 min = 1;
             ES_min = min;
             var filter = ~reader.ReadUInt32();
+            bool haveMySpellZone = false;
+            bool haveOpSpellZone = false;
             foreach (var place in duelBGManager.places)
-                place.HighlightThisZone(filter, min);
+            {
+                var p = place.HighlightThisZone(filter, min);
+                if(p != null)
+                    if (p.InLocation(CardLocation.SpellZone))
+                    {
+                        if (p.InMyControl())
+                            haveMySpellZone = true;
+                        else
+                            haveOpSpellZone = true;
+                    }
+            }
+            if (haveMySpellZone)
+                HideMyHandCard = true;
+            else if (haveOpSpellZone)
+                HideOpHandCard = true;
 
             if (currentMessage == GameMessage.SelectPlace)
             {
