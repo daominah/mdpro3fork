@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
@@ -5,7 +6,7 @@ using UnityEngine.UI;
 
 namespace MDPro3.UI
 {
-    public class SwipeArea : MonoBehaviour
+    public class SwipeArea : MonoBehaviour, ICanvasRaycastFilter
     {
         public UnityEvent OnSwipeLeft;
         public UnityEvent OnSwipeRight;
@@ -14,8 +15,7 @@ namespace MDPro3.UI
         private Vector2 currentTouchPosition;
         private bool stopTouch = false;
 
-        private float swipeRange = 50f; // 滑动范围
-        private float tapRange = 10f; // 轻触范围
+        public float swipeRange = 50f;
 
         public void OnPointerDown(BaseEventData data)
         {
@@ -52,5 +52,16 @@ namespace MDPro3.UI
                 }
             }
         }
+
+        public bool IsRaycastLocationValid(Vector2 screenPoint, Camera eventCamera)
+        {
+            if (UserInput.MouseLeftUp)
+            {
+                OnPointerUp(new BaseEventData(EventSystem.current));
+            }
+
+            return true;
+        }
+
     }
 }

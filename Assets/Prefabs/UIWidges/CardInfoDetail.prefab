@@ -2455,9 +2455,9 @@ RectTransform:
   - {fileID: 224650453916092378}
   m_Father: {fileID: 224623248622095704}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 18, y: -52}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 208, y: 42}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &114432190137694342
@@ -8168,7 +8168,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 224719449395354517}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.80701756
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -9968,7 +9968,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 224939849324573562}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.71794873
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -15369,9 +15369,9 @@ RectTransform:
   - {fileID: 224299202191277751}
   m_Father: {fileID: 224623248622095704}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 238, y: -52}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 208, y: 42}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &114867095108582714
@@ -20150,9 +20150,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 7791176924581710415}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 584, y: -31}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 84, y: 42}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &9150139952031509180
@@ -20689,9 +20689,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 7791176924581710415}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 784, y: -31}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 84, y: 42}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2318537164940282873
@@ -20799,9 +20799,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 7791176924581710415}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 984, y: -31}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 84, y: 42}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &3090956439444166884
@@ -21471,9 +21471,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 7791176924581710415}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 684, y: -31}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 84, y: 42}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1096901667250210284
@@ -21582,9 +21582,9 @@ RectTransform:
   - {fileID: 2534668861936280417}
   m_Father: {fileID: 7791176924581710415}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1084, y: -31}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 84, y: 42}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2355830908432269729
@@ -21775,9 +21775,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 7791176924581710415}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 884, y: -31}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 84, y: 42}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5968262412313107696
@@ -21963,7 +21963,7 @@ MonoBehaviour:
   m_enableAutoSizing: 1
   m_fontSizeMin: 5
   m_fontSizeMax: 20
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535

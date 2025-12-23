@@ -1,15 +1,16 @@
+using DG.Tweening;
+using MDPro3.Duel.YGOSharp;
+using MDPro3.Net;
+using MDPro3.Servant;
+using MDPro3.UI.ServantUI;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
-using MDPro3.Duel.YGOSharp;
-using YgomSystem.ElementSystem;
-using DG.Tweening;
+using UnityEngine;
 using UnityEngine.Events;
-using MDPro3.Servant;
-using MDPro3.UI.ServantUI;
+using UnityEngine.UI;
+using YgomSystem.ElementSystem;
 
 namespace MDPro3.UI
 {
@@ -251,6 +252,12 @@ namespace MDPro3.UI
             m_IconPRE = m_IconPRE != null ? m_IconPRE
             : Manager.GetNestedElement<Image>(LABEL_IMG_ICONPRE);
 
+        private const string LABEL_TXT_GP = "CardArea/TextGP";
+        private TextMeshProUGUI m_TextGP;
+        protected TextMeshProUGUI TextGP =>
+            m_TextGP = m_TextGP != null ? m_TextGP
+            : Manager.GetNestedElement<TextMeshProUGUI>(LABEL_TXT_GP);
+
         #endregion
 
         #region MenuArea
@@ -384,6 +391,13 @@ namespace MDPro3.UI
                 IconSCCG.gameObject.SetActive((data.Ot & 8) > 0);
                 IconDIY.gameObject.SetActive((data.Ot & 4) > 0);
                 IconPRE.gameObject.SetActive(data.isPre);
+                if (TextGP != null)
+                {
+                    var gp = OnlineService.GetGenesysPoint(data.GetOriginalID());
+                    var gpString = OnlineService.GetGenesysPointString(data.GetOriginalID());
+                    TextGP.text = string.Format("G:{0}", gpString);
+                    TextGP.color = OnlineService.GetGenesysPointColor(gp);
+                }
             }
 
             #endregion
