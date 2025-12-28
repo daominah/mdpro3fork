@@ -291,17 +291,18 @@ namespace MDPro3
         {
             //召唤兽 梅尔卡巴[75286622]在安卓端和iOS端的Spine动画资源丢失，
             //临时修复方案为从已加载的AssetBundle中寻找SkeletonDataAsset并赋值。
-            if (prefab.transform.GetChild(0).GetChild(0).TryGetComponent<SkeletonAnimation>(out var sa))
+
+            var sa = prefab.GetComponentInChildren<SkeletonAnimation>();
+            if (sa == null)
+                return;
+            if (sa.skeletonDataAsset == null)
             {
-                if (sa.skeletonDataAsset == null)
-                {
-                    foreach (var asset in assets)
-                        if (asset is SkeletonDataAsset sda)
-                        {
-                            sa.skeletonDataAsset = sda;
-                            break;
-                        }
-                }
+                foreach (var asset in assets)
+                    if (asset is SkeletonDataAsset sda)
+                    {
+                        sa.skeletonDataAsset = sda;
+                        break;
+                    }
             }
         }
 
