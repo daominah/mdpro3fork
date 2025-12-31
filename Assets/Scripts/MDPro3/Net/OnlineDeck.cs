@@ -1,8 +1,10 @@
 using MDPro3.Duel.YGOSharp;
 using MDPro3.Utility;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -129,7 +131,10 @@ namespace MDPro3.Net
 
             if (request.result == UnityWebRequest.Result.Success)
             {
-                //Debug.Log(request.downloadHandler.text);
+                //var formatted = Tools.FormatJsonString(request.downloadHandler.text);
+                //File.WriteAllText("Decks.txt", formatted);
+                //Debug.Log(formatted);
+
                 decks = JsonUtility.FromJson<ResponseMultiSimpleData>(request.downloadHandler.text).data;
                 return decks;
             }
@@ -206,18 +211,20 @@ namespace MDPro3.Net
             {
                 var oldName = deckNames[i];
                 var newName = deckNames[i];
-                if (DeckNameExist(oldName))
+                if (DeckNameExist(oldName, decks[i].type))
                 {
                     newName += " - " + InterString.Get("复制");
-                    while (File.Exists(Program.PATH_DECK + newName + Program.EXPANSION_YDK))
+                    while (File.Exists(Program.PATH_DECK + (decks[i].type == string.Empty ? string.Empty : $"{decks[i].type}/")
+                        + newName + Program.EXPANSION_YDK))
                         newName += " - " + InterString.Get("复制");
-                    File.Delete(Program.PATH_DECK + oldName + Program.EXPANSION_YDK);
+                    File.Delete(Program.PATH_DECK + (decks[i].type == string.Empty ? string.Empty : $"{decks[i].type}/") + oldName + Program.EXPANSION_YDK);
                 }
 
                 body.decks[i] = new PostDeck
                 {
                     deckId = ids[i],
                     deckName = newName,
+                    deckType = decks[i].type,
                     deckCoverCard1 = decks[i].Pickup.Count > 0 ? decks[i].Pickup[0] : 0,
                     deckCoverCard2 = decks[i].Pickup.Count > 1 ? decks[i].Pickup[1] : 0,
                     deckCoverCard3 = decks[i].Pickup.Count > 2 ? decks[i].Pickup[2] : 0,
@@ -433,14 +440,11 @@ namespace MDPro3.Net
             return true;
         }
 
-        private static bool DeckNameExist(string deckName)
+        private static bool DeckNameExist(string deckName, string deckType)
         {
             if (decks == null)
                 return false;
-            foreach (var deck in decks)
-                if (deck.deckName == deckName && !deck.isDelete)
-                    return true;
-            return false;
+            return decks.Any(deck => !deck.isDelete && deck.deckName == deckName && deck.deckType == deckType);
         }
 
         #endregion
@@ -569,6 +573,7 @@ namespace MDPro3.Net
         {
             public string deckId;
             public string deckName;
+            public string deckType;
             public int deckCoverCard1;
             public int deckCoverCard2;
             public int deckCoverCard3;
@@ -591,6 +596,7 @@ namespace MDPro3.Net
             {
                 this.deckId = deckId;
                 this.deckName = deckName;
+                deckType = deck.type;
                 if (deck.Pickup.Count > 0)
                     deckCoverCard1 = deck.Pickup[0];
                 if (deck.Pickup.Count > 1)

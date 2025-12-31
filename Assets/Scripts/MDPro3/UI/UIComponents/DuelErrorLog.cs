@@ -28,6 +28,7 @@ namespace MDPro3.UI
 
         public void Show(string log)
         {
+            log = $"[OcgCore Message]: {log}";
             lastMessage = text.text;
             text.text = lastMessage + Program.STRING_LINE_BREAK + log;
 

@@ -176,7 +176,9 @@ namespace MDPro3.Servant
             if (fromDuel)
             {
                 servantUI.ShowEvent();
-                DOTween.To(v => { }, 0, 0, Program.instance.ocgcore.TransitionTime).OnComplete(() =>
+                DOTween.To(v => { }, 0, 0, Program.instance.ocgcore.TransitionTime)
+                    .SetUpdate(true)
+                    .OnComplete(() =>
                 {
                     servantUI.gameObject.SetActive(true);
                     inTransition = false;
@@ -237,7 +239,9 @@ namespace MDPro3.Servant
 
             if (toDuel)
             {
-                DOTween.To(v => { }, 0, 0, TransitionTime).OnComplete(() =>
+                DOTween.To(v => { }, 0, 0, TransitionTime)
+                    .SetUpdate(true)
+                    .OnComplete(() =>
                 {
                     servantUI.ShutDown();
                     inTransition = false;
@@ -246,7 +250,9 @@ namespace MDPro3.Servant
             else
             {
                 servantUI.Hide(nextDepth > Depth);
-                DOTween.To(v => { }, 0, 0, TransitionTime).OnComplete(() =>
+                DOTween.To(v => { }, 0, 0, TransitionTime)
+                    .SetUpdate(true)
+                    .OnComplete(() =>
                 {
                     inTransition = false;
                     AfterHidingEvent();

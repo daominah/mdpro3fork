@@ -319,7 +319,6 @@ namespace Percy
         public static extern int get_message(IntPtr pduel, IntPtr buf);
 
         [DllImport("ocgcore", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
-        //public static extern void get_log_message(IntPtr pduel, IntPtr buf);
         public static extern void get_log_message(IntPtr pduel, byte[] buf);
 
         [DllImport("ocgcore", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]

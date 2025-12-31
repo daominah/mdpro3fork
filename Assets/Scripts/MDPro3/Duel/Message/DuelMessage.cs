@@ -1070,7 +1070,6 @@ namespace MDPro3.Duel
             cardsInChain.Add(card);
             codesInChain.Add(code);
             controllerInChain.Add(gps.controller);
-            card.AnimationActivate();
             ES_hint = InterString.Get("「[?]」被发动时", card.GetData().Name);
             if (gps.InMyControl())
             {
@@ -1084,7 +1083,7 @@ namespace MDPro3.Duel
             }
             if(Core.GetAutoInfo())
                 Core.GetUI<OcgCoreUI>().CardDescription.Show(card, null);
-            await UniTask.WaitForSeconds(1f);
+            await card.AnimationActivate().WaitAsync();
         }
 
         protected override async UniTask GameMessage_Chained(BinaryReader reader)

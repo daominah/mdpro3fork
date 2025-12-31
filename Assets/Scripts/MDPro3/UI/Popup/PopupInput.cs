@@ -17,6 +17,7 @@ namespace MDPro3.UI.Popup
             base.InitializeSelections();
             input.GetComponent<TmpInputValidation>().type = validationType;
             input.text = args[1];
+            input.ActivateInputField();
         }
 
         protected override void OnCancel()

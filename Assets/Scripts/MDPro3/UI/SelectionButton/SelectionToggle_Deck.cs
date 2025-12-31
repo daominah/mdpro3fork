@@ -102,7 +102,10 @@ namespace MDPro3.UI
             await UniTask.WaitWhile(() => Program.instance.deckSelector.inTransition);
 
             for (int i = 0; i < transform.GetSiblingIndex(); i++)
-                await UniTask.Yield();
+                await UniTask.Yield(cancellationToken: destroyCancellationToken);
+
+            if (gameObject == null)
+                return;
 
             var sprite = await Program.items.LoadDeckCaseIconAsync(deckCase, "_L_SD");
             if (sprite != null)
@@ -187,7 +190,7 @@ namespace MDPro3.UI
             else
             {
                 AudioManager.PlaySE(SoundLabelClick);
-                Config.SetConfigDeck(deckName);
+                Config.SetConfigDeck(deckName, true);
                 if (DeckSelector.condition == DeckSelector.Condition.ForEdit)
                 {
                     Program.instance.deckEditor.SwitchCondition(DeckEditor.Condition.EditDeck);

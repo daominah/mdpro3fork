@@ -191,14 +191,20 @@ namespace MDPro3
             return scale > maxUIScale ? maxUIScale : scale;
         }
 
-        public static string GetConfigDeckName()
+        public static string GetConfigDeckName(bool containType = true)
         {
-            return Get("DeckInUse", EMPTY_STRING);
+            var config = Get("DeckInUse", EMPTY_STRING);
+            if(!containType && config.Contains("/"))
+                config = Path.GetFileName(config);
+            return config;
         }
 
-        public static void SetConfigDeck(string deckName)
+        public static void SetConfigDeck(string deckName, bool needCheck = false)
         {
-            Set("DeckInUse", deckName);
+            if(needCheck)
+                Set("DeckInUse", $"{Program.instance.deckSelector.DeckType}/{deckName}");
+            else
+                Set("DeckInUse", deckName);
         }
     }
 }

@@ -93,7 +93,8 @@ namespace MDPro3
                 renderer.material = mat;
         }
 
-        public async UniTask LoadDummyCard(ElementObjectManager manager, int code, uint player, bool active = false)
+        public async UniTask LoadDummyCard(ElementObjectManager manager, int code, uint player, bool active = false, 
+            Renderer attachRenderer = null, Renderer attachRenderer2 = null)
         {
             if (active)
                 manager.gameObject.SetActive(false);
@@ -102,6 +103,10 @@ namespace MDPro3
             var renderer = manager.GetElement<Renderer>("DummyCardModel_front");
             renderer.material = MaterialLoader.GetCardMaterial(code, true);
             renderer.material.mainTexture = await CardImageLoader.LoadCardAsync(code, false, manager.destroyCancellationToken);
+            if(attachRenderer != null)
+                attachRenderer.material.mainTexture = renderer.material.mainTexture;
+            if (attachRenderer2 != null)
+                attachRenderer2.material.mainTexture = renderer.material.mainTexture;
             if (active)
                 manager.gameObject.SetActive(true);
         }

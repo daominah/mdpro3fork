@@ -1,4 +1,5 @@
 using MDPro3.Utility;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -347,6 +348,23 @@ namespace MDPro3
 #else
             return path;
 #endif
+        }
+
+        #endregion
+
+        #region Json
+
+        public static string FormatJsonString(string jsonString)
+        {
+            try
+            {
+                var obj = JsonConvert.DeserializeObject(jsonString);
+                return JsonConvert.SerializeObject(obj, Formatting.Indented);
+            }
+            catch
+            {
+                return jsonString;
+            }
         }
 
         #endregion

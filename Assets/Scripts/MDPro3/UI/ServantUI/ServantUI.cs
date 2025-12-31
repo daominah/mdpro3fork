@@ -160,6 +160,7 @@ namespace MDPro3.UI.ServantUI
             CG.blocksRaycasts = false;
 
             DOTween.Sequence()
+                .SetUpdate(true)
                 .AppendInterval(0.2f)
                 .Append(CG.DOFade(1f, 0.4f).SetEase(Ease.Linear))
                 .OnComplete(() =>
@@ -170,11 +171,13 @@ namespace MDPro3.UI.ServantUI
 
             LeftPart.anchoredPosition = new Vector2(-1500f, 0f);
             DOTween.Sequence()
+                .SetUpdate(true)
                 .AppendInterval(0.2f)
                 .Append(LeftPart.DOAnchorPosX(0f, 0.4f).SetEase(Ease.OutQuart));
 
             RightPart.anchoredPosition = new Vector2(1500f, 0f);
             DOTween.Sequence()
+                .SetUpdate(true)
                 .AppendInterval(0.2f)
                 .Append(RightPart.DOAnchorPosX(0f, 0.4f).SetEase(Ease.OutQuart));
         }
@@ -186,6 +189,7 @@ namespace MDPro3.UI.ServantUI
             CG.blocksRaycasts = false;
 
             DOTween.Sequence()
+                .SetUpdate(true)
                 .AppendInterval(0.15f)
                 .Append(CG.DOFade(1f, 0.3f).SetEase(Ease.Linear))
                 .OnComplete(() =>
@@ -196,10 +200,12 @@ namespace MDPro3.UI.ServantUI
 
             Root.anchoredPosition3D = new Vector3(-240f, 0f, -360f);
             DOTween.Sequence()
+                .SetUpdate(true)
                 .AppendInterval(0.15f)
                 .Append(Root.DOAnchorPos3D(Vector3.zero, 0.5f).SetEase(Ease.OutQuart));
             Root.localEulerAngles = new Vector3(0f, 15f, 0f);
             DOTween.Sequence()
+                .SetUpdate(true)
                 .AppendInterval(0.15f)
                 .Append(Root.DOLocalRotate(Vector3.zero, 0.5f).SetEase(Ease.OutQuart));
         }
@@ -211,6 +217,7 @@ namespace MDPro3.UI.ServantUI
             CG.blocksRaycasts = false;
 
             DOTween.Sequence()
+                .SetUpdate(true)
                 .AppendInterval(0.15f)
                 .Append(CG.DOFade(1f, 0.3f).SetEase(Ease.Linear))
                 .OnComplete(() =>
@@ -221,10 +228,12 @@ namespace MDPro3.UI.ServantUI
 
             Root.anchoredPosition3D = new Vector3(240f, 0f, 360f);
             DOTween.Sequence()
+                .SetUpdate(true)
                 .AppendInterval(0.15f)
                 .Append(Root.DOAnchorPos3D(Vector3.zero, 0.5f).SetEase(Ease.OutQuart));
             Root.localEulerAngles = new Vector3(0f, -15f, 0f);
             DOTween.Sequence()
+                .SetUpdate(true)
                 .AppendInterval(0.15f)
                 .Append(Root.DOLocalRotate(Vector3.zero, 0.5f).SetEase(Ease.OutQuart));
         }
@@ -232,40 +241,49 @@ namespace MDPro3.UI.ServantUI
         protected virtual void Hide_Pop()
         {
             CG.blocksRaycasts = false;
-            CG.DOFade(0f, 0.25f).SetEase(Ease.Linear).OnComplete(() =>
+            CG.DOFade(0f, 0.25f)
+                .SetEase(Ease.Linear)
+                .SetUpdate(true)
+                .OnComplete(() =>
             {
                 gameObject.SetActive(false);
                 AfterHideEvent();
             });
 
-            LeftPart.DOAnchorPosX(-1500f, 0.25f).SetEase(Ease.InCubic);
-            RightPart.DOAnchorPosX(1500f, 0.25f).SetEase(Ease.InCubic);
+            LeftPart.DOAnchorPosX(-1500f, 0.25f).SetEase(Ease.InCubic).SetUpdate(true);
+            RightPart.DOAnchorPosX(1500f, 0.25f).SetEase(Ease.InCubic).SetUpdate(true);
         }
 
         protected virtual void Hide_Cover()
         {
             CG.blocksRaycasts = false;
-            CG.DOFade(0f, 0.2f).SetEase(Ease.Linear).OnComplete(() =>
+            CG.DOFade(0f, 0.2f)
+                .SetEase(Ease.Linear)
+                .SetUpdate(true)
+                .OnComplete(() =>
             {
                 gameObject.SetActive(false);
                 AfterHideEvent();
             });
 
-            Root.DOAnchorPos3D(new Vector3(-240f, 0f, -360f), 0.2f).SetEase(Ease.InCubic);
-            Root.DOLocalRotate(new Vector3(0f, 15f, 0f), 0.2f).SetEase(Ease.InCubic);
+            Root.DOAnchorPos3D(new Vector3(-240f, 0f, -360f), 0.2f).SetEase(Ease.InCubic).SetUpdate(true);
+            Root.DOLocalRotate(new Vector3(0f, 15f, 0f), 0.2f).SetEase(Ease.InCubic).SetUpdate(true);
         }
 
         protected virtual void Hide_Uncover()
         {
             CG.blocksRaycasts = false;
-            CG.DOFade(0f, 0.2f).SetEase(Ease.Linear).OnComplete(() =>
+            CG.DOFade(0f, 0.2f)
+                .SetEase(Ease.Linear)
+                .SetUpdate(true)
+                .OnComplete(() =>
             {
                 gameObject.SetActive(false);
                 AfterHideEvent();
             });
 
-            Root.DOAnchorPos3D(new Vector3(240f, 0f, 360f), 0.2f).SetEase(Ease.InCubic);
-            Root.DOLocalRotate(new Vector3(0f, -15f, 0f), 0.2f).SetEase(Ease.InCubic);
+            Root.DOAnchorPos3D(new Vector3(240f, 0f, 360f), 0.2f).SetEase(Ease.InCubic).SetUpdate(true);
+            Root.DOLocalRotate(new Vector3(0f, -15f, 0f), 0.2f).SetEase(Ease.InCubic).SetUpdate(true);
         }
 
     }

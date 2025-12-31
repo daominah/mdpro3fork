@@ -1,15 +1,17 @@
-using System;
-using MDPro3.UI;
 using MDPro3.Duel.YGOSharp;
+using MDPro3.Net;
+using MDPro3.UI;
+using MDPro3.UI.ServantUI;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using UnityEngine;
-using UnityEngine.UI;
+using System.Linq;
 using TMPro;
+using UnityEngine;
 using UnityEngine.EventSystems;
-using MDPro3.Net;
-using MDPro3.UI.ServantUI;
+using UnityEngine.UI;
+using YgomGame.TextIDs;
 using static MDPro3.Duel.YGOSharp.PacksManager;
 
 namespace MDPro3.Servant
@@ -267,7 +269,7 @@ namespace MDPro3.Servant
                 yield break;
             }
 
-            var deckFiles = Directory.GetFiles(Program.PATH_DECK, "*.ydk");
+            var deckFiles = Directory.GetFiles(Program.PATH_DECK, "*.ydk", SearchOption.AllDirectories);
             var decks = new List<Deck>();
             foreach (var deckPath in deckFiles)
                 decks.Add(new Deck(deckPath));
@@ -280,11 +282,10 @@ namespace MDPro3.Servant
             for (int i = 0; i < decks.Count; i++)
             {
                 var deckName = Path.GetFileNameWithoutExtension(deckFiles[i]);
-                if (decks[i].userId != MyCard.account.user.id.ToString())
-                {
-                    decksNeedUpload.Add(deckName, decks[i]);
-                    continue;
-                }
+                var type = Path.GetFileName(Path.GetDirectoryName(deckFiles[i]));
+                if (type == "Deck" && type == Path.GetDirectoryName(deckFiles[i]))
+                    type = string.Empty;
+                decks[i].type = type;
 
                 bool deckIdFound = false;
                 foreach (var od in OnlineDeck.decks)
@@ -292,15 +293,13 @@ namespace MDPro3.Servant
                     if (od.deckId == decks[i].deckId)
                     {
                         deckIdFound = true;
-
+                        localFoundIds.Add(od.deckId);
                         if (od.isDelete)
                         {
-                            Debug.LogFormat("Deck Delete: [{0}]", deckName);
                             File.Delete(deckFiles[i]);
                         }
                         else
                         {
-                            localFoundIds.Add(od.deckId);
                             var fileInfo = new FileInfo(deckFiles[i]);
                             var serverTime = od.GetUpdateUtcTime();
                             var diff = serverTime - fileInfo.LastWriteTimeUtc;
@@ -314,10 +313,13 @@ namespace MDPro3.Servant
                                 else
                                     decksNeedUpdateFromServer.Add(deckName, decks[i]);
                             }
+                            if(deckName != od.deckName && !decksNeedUpdateFromServer.Keys.Contains(deckName))
+                                decksNeedUpdateFromServer.Add(deckName, decks[i]);
                         }
                         break;
                     }
                 }
+
                 if (!deckIdFound)
                     decksNeedUpload.Add(deckName, decks[i]);
             }
@@ -337,29 +339,35 @@ namespace MDPro3.Servant
                 Debug.LogFormat("卡组[{0}]需要更新。", deck.Key);
 
                 var od = OnlineDeck.GetByID(deck.Value.deckId);
-                var oldPath = Program.PATH_DECK + deck.Key + Program.EXPANSION_YDK;
-                if (oldPath != od.deckName)
+                var oldPath = Program.PATH_DECK + (deck.Value.type == string.Empty ? string.Empty : $"{deck.Value.type}/") + deck.Key + Program.EXPANSION_YDK;
+                if (deck.Key != od.deckName || deck.Value.type != od.deckType)
                     File.Delete(oldPath);
-                var newPath = Program.PATH_DECK + od.deckName + Program.EXPANSION_YDK;
+                var newPath = Program.PATH_DECK + (od.deckType == string.Empty ? string.Empty : $"{od.deckType}/") + od.deckName + Program.EXPANSION_YDK;
                 File.WriteAllText(newPath, od.deckYdk);
                 File.SetLastWriteTimeUtc(newPath, od.GetUpdateUtcTime());
             }
 
             //下载本地ID不存在的服务器卡组
             //OnlineDeck.UploadDecks() 会刷新OnlineDeck.decks，因此本功能需要在[上传没有Id的本地卡组]之前执行
-            List<OnlineDeck.OnlineDeckData> odtd = new List<OnlineDeck.OnlineDeckData>();
-            foreach (var od in OnlineDeck.decks)
-                if (!od.isDelete)
-                    if (!localFoundIds.Contains(od.deckId))
-                        odtd.Add(od);
+            var odtd = OnlineDeck.decks
+                .Where(od => !od.isDelete && !localFoundIds.Contains(od.deckId))
+                .ToList();
             foreach (var deck in odtd)
             {
-                Debug.LogFormat("卡组[{0}]需要下载。{1}", deck.deckName, deck.isDelete);
+                var path = Program.PATH_DECK + (deck.deckType == string.Empty ? string.Empty : $"{deck.deckType}/") + deck.deckName + Program.EXPANSION_YDK;
+                if (File.Exists(path))
+                {
+                    Debug.Log($"删除服务器同名卡组 [{deck.deckType}/{deck.deckName}]  [{deck.deckId}]。");
+                    _ = OnlineDeck.DeleteDecks(new List<string> { deck.deckId });
+                    continue;
+                }
+                Debug.Log($"卡组[{deck.deckName}] [{deck.deckId}]需要下载。");
 
-                var d = new Deck(deck.deckYdk, string.Empty, string.Empty);
-                d.userId = MyCard.account.user.id.ToString();
-                d.deckId = deck.deckId;
-                d.Save(deck.deckName, deck.GetUpdateUtcTime());
+                var d = new Deck(deck.deckYdk, deck.deckId, MyCard.account.user.username)
+                {
+                    type = deck.deckType
+                };
+                d.Save(Path.GetFileName(deck.deckName), deck.GetUpdateUtcTime(), false);
             }
 
             //上传没有Id的本地卡组

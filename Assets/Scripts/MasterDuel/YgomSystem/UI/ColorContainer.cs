@@ -103,27 +103,27 @@ namespace YgomSystem.UI
 
 		protected Color GetColorUnselected()
 		{
-            return colorUnselected * intensityUnselected;
+            return baseColor * colorUnselected * intensityUnselected;
 		}
 
 		protected Color GetColorSelected()
 		{
-            return colorSelected * intensitySelected;
+            return baseColor * colorSelected * intensitySelected;
         }
 
         protected Color GetColorButtonDown()
 		{
-            return colorButtonDown * intensityButtonDown;
+            return baseColor * colorButtonDown * intensityButtonDown;
         }
 
         protected Color GetColorButtonEnter()
 		{
-            return colorButtonEnter * intensityButtonEnter;
+            return baseColor * colorButtonEnter * intensityButtonEnter;
         }
 
         protected Color GetColorButtonInactive()
 		{
-            return colorButtonInactive * intensityButtonInactive;
+            return baseColor * colorButtonInactive * intensityButtonInactive;
         }
 
         public virtual void SetColor(SelectMode select_mode, StatusMode status_mode, bool is_active = true)
@@ -133,5 +133,5 @@ namespace YgomSystem.UI
 		public void Reapply()
 		{
 		}
-	}
+    }
 }

@@ -634,7 +634,7 @@ namespace MDPro3
             }
             catch
             {
-                Debug.LogError("Addressables Not Found: " + $"DeckCase{code.ToString()[3..]}{suffix}");
+                Debug.LogError("Addressables Not Found: " + $"DeckCase {code}_{suffix}");
                 return await LoadAddressableSprite(ADDRESS_DEFAULT_DECK_CASE);
             }
         }

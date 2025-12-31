@@ -1,5 +1,5 @@
 using MDPro3;
-using Percy;
+using MDPro3.Duel.YGOSharp;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Playables;
@@ -52,35 +52,39 @@ namespace YgomGame.Duel
 				sr.sortingLayerName = "ChainSpot";
         }
 
-        public void Play(int chainnum, uint location, bool cardexist, bool turn, Vector3 worldposition, bool mutesound)
+		public void Play(int chainNum, GPS p, bool modelExist)
 		{
-			if(chainnum < 10)
-			{
-				m_EOManager.GetElement("DummyNum02_01").SetActive(false);
+            if (chainNum < 10)
+            {
+                m_EOManager.GetElement("DummyNum02_01").SetActive(false);
                 m_EOManager.GetElement("DummyNum02_02").SetActive(false);
-                m_EOManager.GetElement<SpriteRenderer>("DummyNum01").sprite = GetNumSprite(chainnum);
+                m_EOManager.GetElement<SpriteRenderer>("DummyNum01").sprite = GetNumSprite(chainNum);
             }
-			else
-			{
+            else
+            {
                 m_EOManager.GetElement("DummyNum01").SetActive(false);
-				int tensDigit = (chainnum / 10) % 10;
-				int onesDigit = chainnum % 10;
+                int tensDigit = (chainNum / 10) % 10;
+                int onesDigit = chainNum % 10;
                 m_EOManager.GetElement<SpriteRenderer>("DummyNum02_01").sprite = GetNumSprite(tensDigit);
                 m_EOManager.GetElement<SpriteRenderer>("DummyNum02_02").sprite = GetNumSprite(onesDigit);
             }
+
+			var position = GameCard.GetCardPosition(p);
 			var offsetY = 0f;
-			if ((location & (uint)CardLocation.Hand) > 0)
+			if(p.InLocation(CardLocation.Hand))
 				offsetY = 3f;
-			transform.position = worldposition + new Vector3(0, offsetY, 0);
+			else if(p.InLocation(CardLocation.Deck, CardLocation.Extra))
+                offsetY = 0.11f * Program.instance.ocgcore.GetLocationCardCount((CardLocation)p.location, p.controller);
+			position.y += offsetY;
+			transform.position = position;
+			transform.localScale = GameCard.GetCardScale(p);
 
-			if (!cardexist)
-				Destroy(m_EOManager.GetElement(LABEL_ICON_CHAINWRAP));
-			else if (turn)
-				m_EOManager.GetElement<Transform>(LABEL_ICON_CHAINWRAP).localEulerAngles = new Vector3(0, 90, 0);
-
-            transform.localScale = GameCard.GetCardScale(new GPS() { location = location });
-			if (mutesound)
-				AudioManager.nextMuteSE = "SE_DUELCHAIN_01";
+            if (!modelExist)
+                Destroy(m_EOManager.GetElement(LABEL_ICON_CHAINWRAP));
+			if(p.InLocation(CardLocation.MonsterZone) && p.InPosition(CardPosition.Defence))
+                m_EOManager.GetElement<Transform>(LABEL_ICON_CHAINWRAP).localEulerAngles = new Vector3(0, 90, 0);
+            if (chainNum == 1)
+                AudioManager.nextMuteSE = "SE_DUELCHAIN_01";
         }
 
         Sprite GetNumSprite(int num)

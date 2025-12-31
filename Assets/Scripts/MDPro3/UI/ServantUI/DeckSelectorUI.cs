@@ -65,29 +65,38 @@ namespace MDPro3.UI.ServantUI
             m_Footer = m_Footer != null ? m_Footer
             : Manager.GetElement<RectTransform>(LABEL_RT_FOOTER);
 
+        private const string LABEL_SBN_TYPE = "ButtonType";
+        private SelectionButton m_ButtonType;
+        public SelectionButton ButtonType =>
+            m_ButtonType = m_ButtonType != null ? m_ButtonType
+            : Manager.GetElement<SelectionButton>(LABEL_SBN_TYPE);
+
         private const string LABEL_SBN_DELETE = "ButtonDelete";
         private SelectionButton m_ButtonDelete;
         private SelectionButton ButtonDelete =>
             m_ButtonDelete = m_ButtonDelete != null ? m_ButtonDelete
             : Manager.GetElement<SelectionButton>(LABEL_SBN_DELETE);
 
-        private const string LABEL_SBN_DELETECANCEL = "ButtonDeleteCancel";
-        private SelectionButton m_ButtonDeleteCancel;
-        private SelectionButton ButtonDeleteCancel =>
-            m_ButtonDeleteCancel = m_ButtonDeleteCancel != null ? m_ButtonDeleteCancel
-            : Manager.GetElement<SelectionButton>(LABEL_SBN_DELETECANCEL);
+        private const string LABEL_SBN_CANCEL = "ButtonCancel";
+        private SelectionButton m_ButtonCancel;
+        private SelectionButton ButtonCancel =>
+            m_ButtonCancel = m_ButtonCancel != null ? m_ButtonCancel
+            : Manager.GetElement<SelectionButton>(LABEL_SBN_CANCEL);
 
-        private const string LABEL_SBN_DELETECONFIRM = "ButtonDeleteConfirm";
-        private SelectionButton m_ButtonDeleteConfirm;
-        private SelectionButton ButtonDeleteConfirm =>
-            m_ButtonDeleteConfirm = m_ButtonDeleteConfirm != null ? m_ButtonDeleteConfirm
-            : Manager.GetElement<SelectionButton>(LABEL_SBN_DELETECONFIRM);
+        private const string LABEL_SBN_CONFIRM = "ButtonConfirm";
+        private SelectionButton m_ButtonConfirm;
+        private SelectionButton ButtonConfirm =>
+            m_ButtonConfirm = m_ButtonConfirm != null ? m_ButtonConfirm
+            : Manager.GetElement<SelectionButton>(LABEL_SBN_CONFIRM);
 
         #endregion
 
         public SuperScrollView superScrollView;
+        public string deckType = string.Empty;
+        private string selectedType;
         public Dictionary<string, Deck> decks = new();
         public bool buttonLayoutSwitching;
+        public static string deckInUse;
 
         public override void ShowEvent()
         {
@@ -119,7 +128,6 @@ namespace MDPro3.UI.ServantUI
         public override void AfterShowEvent()
         {
             base.AfterShowEvent();
-
             RefreshList();
         }
 
@@ -137,27 +145,28 @@ namespace MDPro3.UI.ServantUI
             decks.Clear();
             ShowDefaultButtons();
             TogglePickupCard.SetToggleOff();
+            ButtonType.SetButtonText(GetTypeName());
 
             if (!Directory.Exists(Program.PATH_DECK))
                 Directory.CreateDirectory(Program.PATH_DECK);
-            var files = Directory.GetFiles(Program.PATH_DECK, "*.ydk");
-            List<string> fileList = files.ToList();
+            var path = GetCurrentTypePath();
+            var files = Directory.GetFiles(path, "*.ydk");
+            var fileList = files.ToList();
             foreach (var file in files)
             {
                 var fileName = Path.GetFileName(file);
-                fileName = fileName.Substring(0, fileName.Length - 4);
-                if (fileName == Config.GetConfigDeckName())
+                fileName = fileName[..^4];
+                if (fileName == Config.GetConfigDeckName(false))
                 {
                     fileList.Remove(file);
                     fileList.Insert(0, file);
                     break;
                 }
             }
-            List<string> list = new List<string>();
             foreach (var deck in fileList)
             {
                 var name = Path.GetFileName(deck);
-                name = name.Substring(0, name.Length - 4);
+                name = name[..^4];
                 decks.Add(name, new Deck(deck));
             }
 
@@ -171,7 +180,7 @@ namespace MDPro3.UI.ServantUI
 
         public void Print(string search = "")
         {
-            ExitDeleteDeck();
+            SwitchToDefaultLayout();
 
             superScrollView?.Clear();
 
@@ -264,7 +273,7 @@ namespace MDPro3.UI.ServantUI
 
         public void DeckCreate()
         {
-            ExitDeleteDeck();
+            SwitchToDefaultLayout();
             var selections = new List<string>()
             {
                 InterString.Get("请输入卡组名。@n创建卡组时会自动导入剪切板中的卡组码。"),
@@ -275,7 +284,7 @@ namespace MDPro3.UI.ServantUI
 
         private void DeckCheck(string deckName)
         {
-            var path = Program.PATH_DECK + deckName + Program.EXPANSION_YDK;
+            var path = GetDeckPath(deckName);
 
             if (File.Exists(path))
             {
@@ -296,7 +305,6 @@ namespace MDPro3.UI.ServantUI
                 DeckFileCreate(deckName);
         }
 
-        public static string deckInUse;
         private void DeckFileCreateWithName()
         {
             DeckFileCreate(deckInUse);
@@ -306,8 +314,7 @@ namespace MDPro3.UI.ServantUI
         {
             try
             {
-                var path = Program.PATH_DECK + deckName + Program.EXPANSION_YDK;
-                Directory.CreateDirectory(Path.GetDirectoryName(path)!);
+                var path = GetDeckPath(deckName);
                 File.Create(path).Close();
 
                 string clipBoard = GUIUtility.systemCopyBuffer;
@@ -317,14 +324,16 @@ namespace MDPro3.UI.ServantUI
                 {
                     var uri = new Uri(clipBoard);
                     var deck = DeckShareURL.UriToDeck(uri);
+                    deck.type = deckType;
                     deck.Save(deckName, DateTime.UtcNow);
                 }
                 else if (clipBoard.Contains(YdkeConverter.ydkeHeader))
                 {
                     var deck = YdkeConverter.Ydke2Deck(clipBoard);
+                    deck.type = deckType;
                     deck.Save(deckName, DateTime.UtcNow);
                 }
-                Config.SetConfigDeck(deckName);
+                Config.SetConfigDeck(deckName, true);
                 RefreshList();
             }
             catch (Exception e)
@@ -356,58 +365,515 @@ namespace MDPro3.UI.ServantUI
             PickupShowing = false;
         }
 
+        #region Deck Type
+
+        public void OnType()
+        {
+            var folders = GetAllDeckTypes();
+            var types = new List<string>
+            {
+                InterString.Get("卡组分组"),
+                InterString.Get("彩色选项为功能选项，白色选项为卡组分组。"),
+                "g:" + InterString.Get("新建分组"),
+                "r:" + InterString.Get("删除分组"),
+                "b:" + InterString.Get("重命名分组"),
+                "b:" + InterString.Get("移动到分组"),
+                "b:" + InterString.Get("复制到分组"),
+                InterString.Get("默认分组")
+            };
+            types.AddRange(folders);
+
+            UIManager.ShowPopupSelection(types, OnTypeChange, null);
+        }
+
+        private void OnTypeChange()
+        {
+            var button = UnityEngine.EventSystems.EventSystem.current.
+                currentSelectedGameObject.GetComponent<SelectionButton>();
+            var color = button.GetButtonTextColor();
+            string selected = button.GetButtonText();
+
+            if(color != Color.white)
+            {
+                if (selected == InterString.Get("新建分组"))
+                    AddDeckType();
+                if (selected == InterString.Get("删除分组"))
+                    RemoveDeckType();
+                if (selected == InterString.Get("重命名分组"))
+                    RenameDeckType();
+                if (selected == InterString.Get("移动到分组"))
+                    MoveToType();
+                if (selected == InterString.Get("复制到分组"))
+                    CopyToType();
+                return;
+            }
+
+            var type = selected;
+            if(selected == InterString.Get("默认分组"))
+                type = string.Empty;
+            deckType = type;
+            RefreshList();
+        }
+
+        private void AddDeckType()
+        {
+            var selections = new List<string>()
+                {
+                    InterString.Get("添加新卡组分组"),
+                    string.Empty
+                };
+            UIManager.ShowPopupInput(selections, AddDeckType, null, TmpInputValidation.ValidationType.Path);
+        }
+
+        private void AddDeckType(string type)
+        {
+            if(type == string.Empty)
+                return;
+
+            var path = Program.PATH_DECK + type + "/";
+            if (Directory.Exists(path))
+            {
+                MessageManager.Cast(InterString.Get("该分组已存在！"));
+                return;
+            }
+            Directory.CreateDirectory(path);
+            deckType = type;
+            RefreshList();
+        }
+
+        private void RemoveDeckType()
+        {
+            var folders = GetAllDeckTypes();
+            var types = new List<string>
+            {
+                InterString.Get("删除分组"),
+                string.Empty,
+            };
+            types.AddRange(folders);
+            UIManager.ShowPopupSelection(types, DeleteDeckType, null);
+        }
+
+        private void DeleteDeckType()
+        {
+            var type = UnityEngine.EventSystems.EventSystem.current.
+                currentSelectedGameObject.GetComponent<SelectionButton>().GetButtonText();
+            var path = Program.PATH_DECK + type + "/";
+            if (!Directory.Exists(path))
+                return;
+            var files = Directory.GetFiles(path, "*.ydk");
+            if(files.Length > 0)
+            {
+                var selections = new List<string>
+                {
+                    InterString.Get("删除分组"),
+                    InterString.Get("该卡组分类包含[?]个卡组，是否确认删除？", files.Length.ToString()),
+                    InterString.Get("确认"),
+                    InterString.Get("取消")
+                };
+                UIManager.ShowPopupYesOrNo(selections, () => DeleteDeckType(type), null);
+            }
+            else
+            {
+                DeleteDeckType(type);
+            }
+        }
+
+        private void DeleteDeckType(string type)
+        {
+            var path = Program.PATH_DECK + type + "/";
+            DeleteOnlineDecks(GetAllDeckIds(path));
+            var files = Directory.GetFiles(path, "*.ydk");
+            foreach (var file in files)
+                File.Delete(file);
+            Directory.Delete(path);
+            if (deckType == type)
+                deckType = string.Empty;
+            RefreshList();
+        }
+
+        private List<string> GetAllDeckIds(string dir)
+        {
+            var value = new List<string>();
+            var files = Directory.GetFiles(dir, "*.ydk");
+            foreach (var file in files)
+            {
+                var deck = new Deck(file);
+                value.Add(deck.deckId);
+                Debug.Log("--: " + deck.deckId);
+            }
+
+            return value;
+        }
+
+        private void RenameDeckType()
+        {
+            var folders = GetAllDeckTypes();
+            var types = new List<string>
+            {
+                InterString.Get("重命名分组"),
+                string.Empty,
+            };
+            types.AddRange(folders);
+            UIManager.ShowPopupSelection(types, RenameType, null);
+        }
+
+        private void RenameType()
+        {
+            selectedType = UnityEngine.EventSystems.EventSystem.current.
+                currentSelectedGameObject.GetComponent<SelectionButton>().GetButtonText();
+            var selections = new List<string>()
+                {
+                    InterString.Get("重命名分组"),
+                    selectedType
+                };
+            UIManager.ShowPopupInput(selections, CheckRenamedDeckType, null, TmpInputValidation.ValidationType.Path);
+        }
+
+        private void CheckRenamedDeckType(string newType)
+        {
+            if (newType == selectedType)
+                return;
+            var allTypes = GetAllDeckTypes();
+            bool exists = allTypes.Any(type=> type != selectedType && type == newType);
+            if (exists)
+            {
+                MessageManager.Cast(InterString.Get("该分组已存在！"));
+                return;
+            }
+
+            var path = Program.PATH_DECK + selectedType;
+            var newPath = Program.PATH_DECK + newType;
+            Directory.Move(path, newPath);
+            var files = Directory.GetFiles(newPath, "*.ydk");
+
+            foreach (var file in files)
+            {
+                var deck = new Deck(file)
+                {
+                    type = newType
+                };
+                deck.Save(Path.GetFileNameWithoutExtension(file), DateTime.UtcNow, true, false);
+            }
+
+            deckType = newType;
+            RefreshList();
+        }
+
+        private void MoveToType()
+        {
+            var folders = GetAllDeckTypes(deckType);
+            var types = new List<string>
+            {
+                InterString.Get("移动到分组"),
+                string.Empty
+            };
+            if (deckType != string.Empty)
+                types.Add(InterString.Get("默认分组"));
+            types.AddRange(folders);
+            UIManager.ShowPopupSelection(types, OnMoveToType, null);
+        }
+
+        private void CopyToType()
+        {
+            var folders = GetAllDeckTypes(deckType);
+            var types = new List<string>
+            {
+                InterString.Get("复制到分组"),
+                string.Empty
+            };
+            if (deckType != string.Empty)
+                types.Add(InterString.Get("默认分组"));
+            types.AddRange(folders);
+            UIManager.ShowPopupSelection(types, OnCopyToType, null);
+        }
+
+        private string GetCurrentTypePath()
+        {
+            if (deckType == string.Empty)
+                return Program.PATH_DECK;
+            else
+                return Program.PATH_DECK + deckType + "/";
+        }
+
+        private string GetTypeName(string type)
+        {
+            if(type == string.Empty)
+                return InterString.Get("默认分组");
+            else
+                return type;
+        }
+
+        private string GetTypeName()
+        {
+            return GetTypeName(deckType);
+        }
+
+        private string GetTypePath(string type)
+        {
+            if (type == string.Empty)
+                return Program.PATH_DECK;
+            else
+                return Program.PATH_DECK + $"{type}/";
+        }
+
+        private string GetDeckPath(string deckName, string type)
+        {
+            return GetTypePath(type) + deckName + Program.EXPANSION_YDK;
+        }
+
+        private string GetDeckPath(string deckName)
+        {
+            return GetDeckPath(deckName, deckType);
+        }
+
+        private string[] GetAllDeckTypes(string excludeType = null)
+        {
+            var folders = Directory.GetDirectories(Program.PATH_DECK);
+            var types = folders.Select(f => Path.GetFileName(f)).ToArray();
+            if(excludeType != null)
+                types = types.Where(t => t != excludeType).ToArray();
+            return types;
+        }
+
+        #endregion
 
         #region Delete Deck
 
         public void OnDelete()
         {
             if (buttonLayoutSwitching) return;
-            SwitchButtonLayouts(false);
+            SwitchButtonLayouts(LayoutType.Delete);
         }
 
-        public void OnDeleteCancel()
-        {
-            if (buttonLayoutSwitching) return;
-            SwitchButtonLayouts(true);
-            foreach (var item in superScrollView.items)
-            {
-                if (item.gameObject == null)
-                    continue;
-                item.gameObject.GetComponent<SelectionToggle_Deck>().HideToggle();
-            }
-        }
-
-        public void OnDeleteConfirm()
+        private void OnDeleteConfirm()
         {
             if (buttonLayoutSwitching) return;
 
-            var toDeleteIndex = new List<int>();
-            var toDeleteIds = new List<string>();
+            var deleteIndexs = new List<int>();
+            var deleteIds = new List<string>();
             for (int i = 0; i < superScrollView.items.Count; i++)
                 if (superScrollView.items[i].args[6] != "0")
                 {
-                    File.Delete(Program.PATH_DECK + superScrollView.items[i].args[0] + Program.EXPANSION_YDK);
-                    toDeleteIndex.Add(i);
-                    toDeleteIds.Add(superScrollView.items[i].args[7]);
+                    File.Delete(GetDeckPath(superScrollView.items[i].args[0]));
+                    deleteIndexs.Add(i);
+                    deleteIds.Add(superScrollView.items[i].args[7]);
                 }
-
             var lastSelect = Program.instance.deckSelector.lastSelectedDeckItem.index;
             int removedCount = 0;
-            for (int i = 0; i < toDeleteIndex.Count; i++)
+            for (int i = 0; i < deleteIndexs.Count; i++)
             {
-                superScrollView.RemoveAt(toDeleteIndex[i] - removedCount);
+                superScrollView.RemoveAt(deleteIndexs[i] - removedCount);
                 removedCount++;
             }
             Program.instance.deckSelector.lastSelectedDeckItem = (SelectionToggle_Deck)superScrollView.GetItemByIndex(lastSelect);
             if (Cursor.lockState == CursorLockMode.Locked)
                 Program.instance.deckSelector.Select();
-            DeleteOnlineDecks(toDeleteIds);
+            DeleteOnlineDecks(deleteIds);
 
-            ExitDeleteDeck(true);
+            SwitchToDefaultLayout();
             UpdateDeckNum();
         }
 
-        private void ExitDeleteDeck(bool needSwitch = false)
+        #endregion
+
+        #region Move Deck to Type
+
+        private void OnMoveToType()
+        {
+            if (buttonLayoutSwitching) return;
+            selectedType = UnityEngine.EventSystems.EventSystem.current.
+                currentSelectedGameObject.GetComponent<SelectionButton>().GetButtonText();
+            if(selectedType == InterString.Get("默认分组"))
+                selectedType = string.Empty;
+            SwitchButtonLayouts(LayoutType.MoveToType);
+        }
+
+        private void OnMoveToTypeConfirm()
+        {
+            if (buttonLayoutSwitching) return;
+
+            var moveIndexs = new List<int>();
+            for (int i = 0; i < superScrollView.items.Count; i++)
+                if (superScrollView.items[i].args[6] != "0")
+                {
+                    var filePath = GetDeckPath(superScrollView.items[i].args[0]);
+                    var newPath = GetDeckPath(superScrollView.items[i].args[0], selectedType);
+                    if(File.Exists(newPath))
+                    {
+                        MessageManager.Cast(InterString.Get("操作失败，目标分组已存在同名卡组：[[?]]。", superScrollView.items[i].args[0]));
+                        continue;
+                    }
+
+                    var deck = new Deck(filePath)
+                    {
+                        type = selectedType
+                    };
+                    deck.Save(superScrollView.items[i].args[0], DateTime.UtcNow, true, false);
+                    File.Delete(filePath);
+                    moveIndexs.Add(i);
+                }
+            var lastSelect = Program.instance.deckSelector.lastSelectedDeckItem.index;
+            int removedCount = 0;
+            for (int i = 0; i < moveIndexs.Count; i++)
+            {
+                superScrollView.RemoveAt(moveIndexs[i] - removedCount);
+                removedCount++;
+            }
+            Program.instance.deckSelector.lastSelectedDeckItem = (SelectionToggle_Deck)superScrollView.GetItemByIndex(lastSelect);
+            if (Cursor.lockState == CursorLockMode.Locked)
+                Program.instance.deckSelector.Select();
+
+            SwitchToDefaultLayout();
+            UpdateDeckNum();
+        }
+
+        #endregion
+
+        #region Copy Deck to Type
+
+        private void OnCopyToType()
+        {
+            if (buttonLayoutSwitching) return;
+            selectedType = UnityEngine.EventSystems.EventSystem.current.
+                currentSelectedGameObject.GetComponent<SelectionButton>().GetButtonText();
+            if (selectedType == InterString.Get("默认分组"))
+                selectedType = string.Empty;
+            SwitchButtonLayouts(LayoutType.CopyToType);
+        }
+
+        private void OnCopyToTypeConfirm()
+        {
+            if (buttonLayoutSwitching) return;
+
+            for (int i = 0; i < superScrollView.items.Count; i++)
+                if (superScrollView.items[i].args[6] != "0")
+                {
+                    var filePath = GetDeckPath(superScrollView.items[i].args[0]);
+                    var newPath = GetDeckPath(superScrollView.items[i].args[0], selectedType);
+                    if (File.Exists(newPath))
+                    {
+                        MessageManager.Cast(InterString.Get("操作失败，目标分组已存在同名卡组：[[?]]。", superScrollView.items[i].args[0]));
+                        continue;
+                    }
+
+                    var deck = new Deck(filePath)
+                    {
+                        deckId = string.Empty,
+                        type = selectedType
+                    };
+                    deck.Save(superScrollView.items[i].args[0], DateTime.UtcNow, true, false);
+                }
+            if (Cursor.lockState == CursorLockMode.Locked)
+                Program.instance.deckSelector.Select();
+            SwitchToDefaultLayout();
+        }
+
+        #endregion
+
+        #region Switch Layout
+
+        private enum LayoutType
+        {
+            Default,
+            Delete,
+            MoveToType,
+            CopyToType
+        }
+
+        private LayoutType layoutType;
+
+        private void ShowDefaultButtons()
+        {
+            ButtonDelete.gameObject.SetActive(true);
+            ButtonCancel.gameObject.SetActive(false);
+            ButtonOnline.gameObject.SetActive(true);
+            ButtonConfirm.gameObject.SetActive(false);
+            Input.gameObject.SetActive(true);
+            ButtonType.gameObject.SetActive(true);
+        }
+
+        private void ShowDeleteButtons()
+        {
+            ButtonDelete.gameObject.SetActive(false);
+            ButtonCancel.gameObject.SetActive(true);
+            ButtonOnline.gameObject.SetActive(false);
+            ButtonConfirm.gameObject.SetActive(true);
+            Input.gameObject.SetActive(false);
+            ButtonType.gameObject.SetActive(false);
+
+            ButtonCancel.ShowIcon(true);
+            ButtonConfirm.SetButtonText(InterString.Get("确认删除"));
+        }
+
+        private void ShowMoveOrCopyButtons()
+        {
+            ButtonDelete.gameObject.SetActive(false);
+            ButtonCancel.gameObject.SetActive(true);
+            ButtonOnline.gameObject.SetActive(false);
+            ButtonConfirm.gameObject.SetActive(true);
+            Input.gameObject.SetActive(false);
+            ButtonType.gameObject.SetActive(false);
+
+            ButtonCancel.ShowIcon(false);
+            ButtonConfirm.SetButtonText(InterString.Get("确认"));
+        }
+
+        private void UpdateDeckNum()
+        {
+            TextDeckNumValue.text = decks.Count.ToString();
+        }
+
+        private void SwitchToDefaultLayout()
+        {
+            HideAllToggles();
+            SwitchButtonLayouts(LayoutType.Default);
+        }
+
+        private void SwitchButtonLayouts(LayoutType layoutType)
+        {
+            if (this.layoutType == layoutType)
+                return;
+            buttonLayoutSwitching = true;
+            this.layoutType = layoutType;
+
+            var header = Manager.GetElement<RectTransform>("Header");
+            var footer = Manager.GetElement<RectTransform>("Footer");
+            UIManager.HideExitButton(0.2f);
+
+            DOTween.Sequence()
+                .Append(header.DOAnchorPosY(PropertyOverrider.NeedMobileLayout() ? 130f : 120f, 0.2f).OnComplete(() =>
+                {
+                    if (layoutType == LayoutType.Default)
+                        ShowDefaultButtons();
+                    else if (layoutType == LayoutType.Delete)
+                        ShowDeleteButtons();
+                    else
+                        ShowMoveOrCopyButtons();
+                    UIManager.ShowExitButton(0.3f, Ease.OutQuart);
+                    if (layoutType != LayoutType.Default)
+                        foreach (var item in superScrollView.items)
+                        {
+                            if (item.gameObject == null)
+                                continue;
+                            item.gameObject.GetComponent<SelectionToggle_Deck>().ShowToggle();
+                        }
+                    Title.text = layoutType switch
+                    {
+                        LayoutType.MoveToType => InterString.Get("移动到分组") + $" [{GetTypeName(selectedType)}]",
+                        LayoutType.CopyToType => InterString.Get("复制到分组") + $" [{GetTypeName(selectedType)}]",
+                        LayoutType.Delete => InterString.Get("删除卡组"),
+                        _ => InterString.Get("编辑卡组")
+                    };
+                }))
+                .Join(footer.DOAnchorPosY(PropertyOverrider.NeedMobileLayout() ? -186f : -140f, 0.2f))
+                .Append(header.DOAnchorPosY(0f, 0.3f).SetEase(Ease.OutQuart))
+                .Join(footer.DOAnchorPosY(0f, 0.3f).SetEase(Ease.OutQuart)).OnComplete(() =>
+                {
+                    buttonLayoutSwitching = false;
+                });
+        }
+
+        private void HideAllToggles()
         {
             if (superScrollView == null || superScrollView.items == null)
                 return;
@@ -420,95 +886,25 @@ namespace MDPro3.UI.ServantUI
                     continue;
                 item.gameObject.GetComponent<SelectionToggle_Deck>().HideToggle();
             }
-
-            buttonLayoutSwitching = true;
-
-            if (needSwitch)
-            {
-                var header = Manager.GetElement<RectTransform>("Header");
-                var footer = Manager.GetElement<RectTransform>("Footer");
-                UIManager.HideExitButton(0.2f);
-
-                DOTween.Sequence()
-                    .Append(header.DOAnchorPosY(PropertyOverrider.NeedMobileLayout() ? 130f : 120f, 0.2f).OnComplete(() =>
-                    {
-                        ShowDefaultButtons();
-                        UIManager.ShowExitButton(0.3f, Ease.OutQuart);
-                    }))
-                    .Append(header.DOAnchorPosY(0f, 0.3f).SetEase(Ease.OutQuart));
-
-                DOTween.Sequence()
-                    .Append(footer.DOAnchorPosY(PropertyOverrider.NeedMobileLayout() ? -186f : -140f, 0.2f))
-                    .Append(footer.DOAnchorPosY(0f, 0.3f).SetEase(Ease.OutQuart)).OnComplete(() =>
-                    {
-                        buttonLayoutSwitching = false;
-                    });
-            }
-            else
-            {
-                ShowDefaultButtons();
-                buttonLayoutSwitching = false;
-            }
         }
 
-        private void SwitchButtonLayouts(bool showDefault)
+        public void OnConfirm()
         {
-            buttonLayoutSwitching = true;
+            if (layoutType == LayoutType.Delete)
+                OnDeleteConfirm();
+            else if (layoutType == LayoutType.MoveToType)
+                OnMoveToTypeConfirm();
+            else if (layoutType == LayoutType.CopyToType)
+                OnCopyToTypeConfirm();
+        }
 
-            var header = Manager.GetElement<RectTransform>("Header");
-            var footer = Manager.GetElement<RectTransform>("Footer");
-            UIManager.HideExitButton(0.2f);
-
-            DOTween.Sequence()
-                .Append(header.DOAnchorPosY(PropertyOverrider.NeedMobileLayout() ? 130f : 120f, 0.2f).OnComplete(() =>
-                {
-                    if (showDefault)
-                        ShowDefaultButtons();
-                    else
-                        ShowDeleteButtons();
-                    UIManager.ShowExitButton(0.3f, Ease.OutQuart);
-                    if (!showDefault)
-                        foreach (var item in superScrollView.items)
-                        {
-                            if (item.gameObject == null)
-                                continue;
-                            item.gameObject.GetComponent<SelectionToggle_Deck>().ShowToggle();
-                        }
-                }))
-                .Append(header.DOAnchorPosY(0f, 0.3f).SetEase(Ease.OutQuart));
-
-            DOTween.Sequence()
-                .Append(footer.DOAnchorPosY(PropertyOverrider.NeedMobileLayout() ? -186f : -140f, 0.2f))
-                .Append(footer.DOAnchorPosY(0f, 0.3f).SetEase(Ease.OutQuart)).OnComplete(() =>
-                {
-                    buttonLayoutSwitching = false;
-                });
+        public void OnCancel()
+        {
+            if (buttonLayoutSwitching) return;
+            SwitchToDefaultLayout();
         }
 
         #endregion
-
-        private void ShowDefaultButtons()
-        {
-            ButtonDelete.gameObject.SetActive(true);
-            ButtonDeleteCancel.gameObject.SetActive(false);
-            ButtonOnline.gameObject.SetActive(true);
-            ButtonDeleteConfirm.gameObject.SetActive(false);
-            Input.gameObject.SetActive(true);
-        }
-
-        private void ShowDeleteButtons()
-        {
-            ButtonDelete.gameObject.SetActive(false);
-            ButtonDeleteCancel.gameObject.SetActive(true);
-            ButtonOnline.gameObject.SetActive(false);
-            ButtonDeleteConfirm.gameObject.SetActive(true);
-            Input.gameObject.SetActive(false);
-        }
-
-        private void UpdateDeckNum()
-        {
-            TextDeckNumValue.text = decks.Count.ToString();
-        }
 
     }
 }

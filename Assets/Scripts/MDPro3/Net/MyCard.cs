@@ -79,11 +79,7 @@ namespace MDPro3.Net
         {
             using var request = UnityWebRequest.Get(authUrl);
             request.SetRequestHeader(authHeader, "Bearer " + token);
-
-            var send = request.SendWebRequest();
-            await TaskUtility.WaitUntil(() => send.isDone);
-            if(!Application.isPlaying)
-                return null;
+            await request.SendWebRequest();
 
             if (request.result == UnityWebRequest.Result.Success)
             {

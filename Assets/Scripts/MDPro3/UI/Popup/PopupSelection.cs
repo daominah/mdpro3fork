@@ -49,7 +49,7 @@ namespace MDPro3.UI.Popup
                 var tasks = new List<string[]>();
                 for (int i = 2; i < args.Count; i++)
                 {
-                    var task = new string[] { args[i] };
+                    var task = args[i].Split(":");
                     tasks.Add(task);
                 }
                 superScrollView.Print(tasks);
@@ -61,7 +61,15 @@ namespace MDPro3.UI.Popup
         private void ItemOnListRefresh(string[] task, GameObject item)
         {
             var handler = item.GetComponent<SelectionToggle_PopupSelectionItem>();
-            handler.selection = task[0];
+            if(task.Length == 2)
+            {
+                handler.color = task[0];
+                handler.selection = task[1];
+            }
+            else
+            {
+                handler.selection = task[0];
+            }
             handler.clickAction = OnClick;
             handler.manager = this;
             handler.Refresh();

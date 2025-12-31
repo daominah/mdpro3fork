@@ -1,18 +1,5 @@
-using DG.Tweening;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
-using UnityEngine.UI;
-using MDPro3.Duel.YGOSharp;
 using MDPro3.UI;
-using MDPro3.Net;
-using TMPro;
-using UnityEngine.EventSystems;
 using MDPro3.UI.ServantUI;
 
 namespace MDPro3.Servant
@@ -52,11 +39,14 @@ namespace MDPro3.Servant
         public override int Depth => 4;
         protected override bool ShowLine => true;
 
+        public string DeckType => GetUI<DeckSelectorUI>().deckType;
+
         public override void Initialize()
         {
             base.Initialize();
             SwitchCondition(Condition.ForEdit);
         }
+
         public override void OnExit()
         {
             if (Program.exitOnReturn)
@@ -64,6 +54,7 @@ namespace MDPro3.Servant
             else
                 Program.instance.ShiftToServant(returnServant);
         }
+
         public override void PerFrameFunction()
         {
             if (!showing) return;
@@ -79,12 +70,20 @@ namespace MDPro3.Servant
                     if (GetUI<DeckSelectorUI>().ButtonOnline.gameObject.activeSelf)
                         GetUI<DeckSelectorUI>().OnOnlineDeckView();
                     else
-                        GetUI<DeckSelectorUI>().OnDeleteConfirm();
+                        GetUI<DeckSelectorUI>().OnConfirm();
                 }
                 if (UserInput.WasGamepadButtonNorthPressed)
                 {
                     AudioManager.PlaySE("SE_MENU_SELECT_01");
                     GetUI<DeckSelectorUI>().ActivateInputField();
+                }
+                if (UserInput.WasLeftShoulderPressed)
+                {
+                    if (GetUI<DeckSelectorUI>().ButtonType.gameObject.activeSelf)
+                    {
+                        AudioManager.PlaySE("SE_MENU_SELECT_01");
+                        GetUI<DeckSelectorUI>().OnType();
+                    }
                 }
                 if (UserInput.WasRightShoulderPressed)
                 {
@@ -101,11 +100,12 @@ namespace MDPro3.Servant
                     else
                     {
                         AudioManager.PlaySE("SE_MENU_CANCEL");
-                        GetUI<DeckSelectorUI>().OnDeleteCancel();
+                        GetUI<DeckSelectorUI>().OnCancel();
                     }
                 }
             }
         }
+
         public override void Select(bool forced = false)
         {
             if (!forced && !UserInput.NeedDefaultSelect())
@@ -113,6 +113,7 @@ namespace MDPro3.Servant
 
             lastSelectedDeckItem.GetSelectable().Select();
         }
+
         public override bool NeedResponseInput()
         {
             if(servantUI == null

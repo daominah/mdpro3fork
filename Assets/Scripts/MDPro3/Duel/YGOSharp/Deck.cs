@@ -25,6 +25,8 @@ namespace MDPro3.Duel.YGOSharp
         public string userId;
         public string deckId;
 
+        public string type = string.Empty;
+
         public Deck()
         {
             Main = new List<int>();
@@ -40,7 +42,11 @@ namespace MDPro3.Duel.YGOSharp
         }
 
         public Deck(string path) : this(File.ReadAllText(path), string.Empty, string.Empty)
-        {}
+        {
+            type = Path.GetFileName(Path.GetDirectoryName(path));
+            if(type == "Deck" && type == Path.GetDirectoryName(path))
+                type = string.Empty;
+        }
 
         public Deck(string ydk, string deckID = "", string userID = "")
         {
@@ -271,17 +277,21 @@ namespace MDPro3.Duel.YGOSharp
         /// <param name="saveTime"></param>
         /// <param name="upload"></param>
         /// <returns></returns>
-        public bool Save(string deckName, DateTime saveTime, bool upload = true)
+        public bool Save(string deckName, DateTime saveTime, bool upload = true, bool showHint = true)
         {
             var ydk = GetYDK();
             try
             {
-                var path = Program.PATH_DECK + deckName + Program.EXPANSION_YDK;
+                deckName = Path.GetFileNameWithoutExtension(deckName);
+                var path = Program.PATH_DECK + (type == string.Empty ? string.Empty : $"{type}/") + deckName + Program.EXPANSION_YDK;
+                var dir = Path.GetDirectoryName(path);
+                if (!Directory.Exists(dir))
+                    Directory.CreateDirectory(dir);
                 File.WriteAllText(path, ydk, Encoding.UTF8);
                 File.SetLastWriteTimeUtc(path, saveTime);
 
                 if (MyCard.account != null && upload)
-                    _ = OnlineDeck.SyncDeck(deckId, deckName, this, saveTime, true);
+                    _ = OnlineDeck.SyncDeck(deckId, deckName, this, saveTime, showHint);
             }
             catch
             {

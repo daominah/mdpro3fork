@@ -38,17 +38,17 @@ namespace MDPro3.Duel
         {
             showing = true;
             AudioManager.PlaySE("SE_LOG_OPEN");
-            baseRect.DOAnchorPosX(-20f, 0.2f);
+            baseRect.DOAnchorPosX(-20f, 0.2f).SetUpdate(true);
             baseRect.localScale = Vector3.one * Config.GetUIScale(1.15f);
         }
 
-        public void Hide(bool silent = false)
+        public void Hide(bool mute = false)
         {
             showing = false;
             draged = false;
-            baseRect.DOAnchorPosX(400f * Config.GetUIScale(1.15f) + SafeAreaAdapter.GetSafeAreaRightOffset(), 0.2f);
+            baseRect.DOAnchorPosX(400f * Config.GetUIScale(1.15f) + SafeAreaAdapter.GetSafeAreaRightOffset(), 0.2f).SetUpdate(true);
 
-            if (!silent)
+            if (!mute)
                 AudioManager.PlaySE("SE_LOG_CLOSE");
         }
 
@@ -72,7 +72,7 @@ namespace MDPro3.Duel
             if (!showing && fullHeight > scrollRect.viewport.rect.height)
                 item.SetActive(false);
             if (!draged)
-                scrollRect.DOVerticalNormalizedPos(0f, 0.1f);
+                scrollRect.DOVerticalNormalizedPos(0f, 0.1f).SetUpdate(true);
         }
 
         public void ClearLog()

@@ -437,7 +437,9 @@ namespace MDPro3
         public static void ShowBlackBack(float alpha, float time, Action action = null)
         {
             Program.instance.ui_.blackBack.raycastTarget = true;
-            Program.instance.ui_.blackBack.DOFade(alpha, time).OnComplete(() => 
+            Program.instance.ui_.blackBack.DOFade(alpha, time)
+                .SetUpdate(true)
+                .OnComplete(() => 
             {
                 action?.Invoke();
             });
@@ -445,7 +447,9 @@ namespace MDPro3
 
         public static void HideBlackBack(float time)
         {
-            Program.instance.ui_.blackBack.DOFade(0f, time).OnComplete(() => 
+            Program.instance.ui_.blackBack.DOFade(0f, time)
+                .SetUpdate(true)
+                .OnComplete(() => 
             {
                 Program.instance.ui_.blackBack.raycastTarget = false;
             });

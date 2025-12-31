@@ -485,6 +485,7 @@ namespace MDPro3.UI
             WindowCG.alpha = 1f;
 
             DOTween.Sequence()
+                .SetUpdate(true)
                 .Append(Window.DOAnchorPos(new Vector2(-480f, -32f), 0.1f).SetEase(Ease.InCubic))
                 .Join(WindowCG.DOFade(0f, 0.1f).OnComplete(() =>
                 {
@@ -511,6 +512,7 @@ namespace MDPro3.UI
             WindowCG.alpha = 1f;
 
             DOTween.Sequence()
+                .SetUpdate(true)
                 .Append(Window.DOAnchorPos(new Vector2(480f, -32f), 0.1f).SetEase(Ease.InCubic))
                 .Join(WindowCG.DOFade(0f, 0.1f).OnComplete(() =>
                 {

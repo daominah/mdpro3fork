@@ -69,7 +69,7 @@ namespace MDPro3.UI
 
         private const string LABEL_TXT_BUTTONTEXT = "ButtonText";
         private TextMeshProUGUI m_ButtonText;
-        private TextMeshProUGUI ButtonText =>
+        protected TextMeshProUGUI ButtonText =>
             m_ButtonText = m_ButtonText != null ? m_ButtonText
             : Manager.GetElement<TextMeshProUGUI>(LABEL_TXT_BUTTONTEXT);
 
@@ -446,6 +446,19 @@ namespace MDPro3.UI
             return string.Empty;
         }
 
+        public virtual void SetButtonTextColor(Color color)
+        {
+            if (ButtonText != null)
+                ButtonText.color = color;
+        }
+
+        public virtual Color GetButtonTextColor()
+        {
+            if (ButtonText != null)
+                return ButtonText.color;
+            return Color.white;
+        }
+
         public virtual Sprite GetIconSprite()
         {
             if(Icon != null)
@@ -457,6 +470,12 @@ namespace MDPro3.UI
         {
             if(Icon != null)
                 Icon.sprite = sprite;
+        }
+
+        public virtual void ShowIcon(bool show)
+        {
+            if(Icon != null)
+                Icon.gameObject.SetActive(show);
         }
 
         public virtual void SetHoverOnEvent(UnityAction call)

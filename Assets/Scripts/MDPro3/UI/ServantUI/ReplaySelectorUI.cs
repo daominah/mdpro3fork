@@ -113,7 +113,8 @@ namespace MDPro3.UI.ServantUI
                         var replays = GetYRPBuffer(fileName);
                         if (replays.Count == 0)
                             OcgCore.CurrentReplayUseYRP2 = true;
-                        OcgCore.CurrentReplayUseYRP2 = GetYRP(replays[^1]).IsNew();
+                        else
+                            OcgCore.CurrentReplayUseYRP2 = GetYRP(replays[^1]).IsNew();
 
                         var collection = TcpHelper.ReadPackagesInRecord(fileName);
                         PushCollection(collection);
@@ -128,8 +129,11 @@ namespace MDPro3.UI.ServantUI
                     PushCollection(collections);
                 }
             }
-            catch
+            catch(Exception e)
             {
+#if UNITY_EDITOR
+                Debug.LogError(e);
+#endif
                 MessageManager.Cast(InterString.Get("回放没有录制完整。"));
             }
         }

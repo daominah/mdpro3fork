@@ -26,10 +26,11 @@ namespace MDPro3.UI
 
             CG.alpha = 0f;
             CG.blocksRaycasts = true;
-            CG.DOFade(1f, TransitionTime);
+            CG.DOFade(1f, TransitionTime).SetUpdate(true);
 
             Rect.localScale = HideScale;
             Rect.DOScale(Vector3.one, TransitionTime)
+                .SetUpdate(true)
                 .SetEase(Ease.OutQuart)
                 .OnComplete(AfterShowEvent);
         }
@@ -40,8 +41,9 @@ namespace MDPro3.UI
             showing = false;
             HideEvent();
 
-            CG.DOFade(0f, TransitionTime);
+            CG.DOFade(0f, TransitionTime).SetUpdate(true);
             Rect.DOScale(HideScale, TransitionTime)
+                .SetUpdate(true)
                 .SetEase(Ease.InCubic)
                 .OnComplete(() => 
                 {

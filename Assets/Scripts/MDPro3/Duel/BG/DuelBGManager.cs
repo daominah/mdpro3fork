@@ -588,16 +588,27 @@ namespace MDPro3.Duel
 
         public void RefreshBgState()
         {
-            if(myDeck == null || myExtra == null
-                || opDeck == null || opExtra == null
-                || grave0Manager == null
-                || grave1Manager == null)
+            ResizeDecks();
+            RefreshGravesState();
+        }
+
+        public void ResizeDecks()
+        {
+            if (myDeck == null || myExtra == null
+                || opDeck == null || opExtra == null)
                 return;
 
             ResizeDeckModel(myDeck, Core.GetLocationCardCount(CardLocation.Deck, 0));
             ResizeDeckModel(myExtra, Core.GetLocationCardCount(CardLocation.Extra, 0));
             ResizeDeckModel(opDeck, Core.GetLocationCardCount(CardLocation.Deck, 1));
             ResizeDeckModel(opExtra, Core.GetLocationCardCount(CardLocation.Extra, 1));
+        }
+
+        public void RefreshGravesState()
+        {
+            if (grave0Manager == null
+                || grave1Manager == null)
+                return;
 
             RefreshGraveState(grave0Manager, Core.GetLocationCardCount(CardLocation.Grave, 0));
             RefreshExcludeState(grave0Manager, Core.GetLocationCardCount(CardLocation.Removed, 0));
@@ -844,59 +855,104 @@ namespace MDPro3.Duel
                 return;
 
             bool haveHint = false;
-            foreach (var card in cards)
-                if ((card.p.location & (uint)CardLocation.Grave) > 0)
-                    if (card.p.controller == 0)
-                        if (card.buttons.Count > 0)
-                        {
-                            var effect = ABLoader.LoadMasterDuelGameObject("fxp_HL_active_grave_001");
-                            effect.transform.SetParent(grave0Manager.GetElement<Transform>("GraveHighlightNear"), false);
-                            UnityEngine.Object.Destroy(effect, 3f);
-                            grave0Manager.GetElement<Animator>("GraveHighlightNear").SetBool("On", true);
-                            haveHint = true;
-                            break;
-                        }
-            foreach (var card in cards)
-                if ((card.p.location & (uint)CardLocation.Removed) > 0)
-                    if (card.p.controller == 0)
-                        if (card.buttons.Count > 0)
-                        {
-                            var effect = ABLoader.LoadMasterDuelGameObject("fxp_HL_active_exclude_001");
-                            effect.transform.SetParent(grave0Manager.GetElement<Transform>("ExcludeHighlightNear"), false);
-                            UnityEngine.Object.Destroy(effect, 3f);
-                            grave0Manager.GetElement<Animator>("ExcludeHighlightNear").SetBool("On", true);
-                            haveHint = true;
-                            break;
-                        }
-            foreach (var card in cards)
+            var cardsActivated = cards.Where(c => c.buttons.Count > 0);
+
+            foreach (var card in cardsActivated)
+                if (card.p.InLocation(CardLocation.Grave))
+                    if (card.p.InMyControl())
+                    {
+                        var effect = ABLoader.LoadMasterDuelGameObject("fxp_HL_active_grave_001");
+                        effect.transform.SetParent(grave0Manager.GetElement<Transform>("GraveHighlightNear"), false);
+                        UnityEngine.Object.Destroy(effect, 3f);
+                        grave0Manager.GetElement<Animator>("GraveHighlightNear").SetBool("On", true);
+                        haveHint = true;
+                        break;
+                    }
+            foreach (var card in cardsActivated)
+                if (card.p.InLocation(CardLocation.Grave))
+                    if (!card.p.InMyControl())
+                    {
+                        var effect = ABLoader.LoadMasterDuelGameObject("fxp_HL_active_grave_001");
+                        effect.transform.SetParent(grave1Manager.GetElement<Transform>("GraveHighlightFar"), false);
+                        UnityEngine.Object.Destroy(effect, 3f);
+                        grave1Manager.GetElement<Animator>("GraveHighlightFar").SetBool("On", true);
+                        haveHint = true;
+                        break;
+                    }
+            foreach (var card in cardsActivated)
+                if (card.p.InLocation(CardLocation.Removed))
+                    if (card.p.InMyControl())
+                    {
+                        var effect = ABLoader.LoadMasterDuelGameObject("fxp_HL_active_exclude_001");
+                        effect.transform.SetParent(grave0Manager.GetElement<Transform>("ExcludeHighlightNear"), false);
+                        UnityEngine.Object.Destroy(effect, 3f);
+                        grave0Manager.GetElement<Animator>("ExcludeHighlightNear").SetBool("On", true);
+                        haveHint = true;
+                        break;
+                    }
+            foreach (var card in cardsActivated)
+                if (card.p.InLocation(CardLocation.Removed))
+                    if (!card.p.InMyControl())
+                    {
+                        var effect = ABLoader.LoadMasterDuelGameObject("fxp_HL_active_exclude_001");
+                        effect.transform.SetParent(grave1Manager.GetElement<Transform>("ExcludeHighlightFar"), false);
+                        UnityEngine.Object.Destroy(effect, 3f);
+                        grave1Manager.GetElement<Animator>("ExcludeHighlightFar").SetBool("On", true);
+                        haveHint = true;
+                        break;
+                    }
+            foreach (var card in cardsActivated)
                 if ((card.p.location & (uint)CardLocation.Extra) > 0)
-                    if (card.p.controller == 0)
-                        if (card.buttons.Count > 0)
-                        {
-                            var effect = ABLoader.LoadMasterDuelGameObject("fxp_HL_active_Exdeck_001");
-                            effect.transform.SetParent(myExtra.transform, false);
-                            effect.transform.position = Tools.GetDeckModelTopPosition(myExtra);
-                            foreach (var place in places)
-                                place.ShowHint((uint)CardLocation.Extra, 0u);
-                            UnityEngine.Object.Destroy(effect, 3f);
-                            haveHint = true;
-                            break;
-                        }
-            foreach (var card in cards)
+                    if (card.p.InMyControl())
+                    {
+                        var effect = ABLoader.LoadMasterDuelGameObject("fxp_HL_active_Exdeck_001");
+                        effect.transform.SetParent(myExtra.transform, false);
+                        effect.transform.position = Tools.GetDeckModelTopPosition(myExtra);
+                        foreach (var place in places)
+                            place.ShowHint((uint)CardLocation.Extra, 0u);
+                        UnityEngine.Object.Destroy(effect, 3f);
+                        haveHint = true;
+                        break;
+                    }
+            foreach (var card in cardsActivated)
+                if ((card.p.location & (uint)CardLocation.Extra) > 0)
+                    if (!card.p.InMyControl())
+                    {
+                        var effect = ABLoader.LoadMasterDuelGameObject("fxp_HL_active_Exdeck_001");
+                        effect.transform.SetParent(opExtra.transform, false);
+                        effect.transform.position = Tools.GetDeckModelTopPosition(opExtra);
+                        foreach (var place in places)
+                            place.ShowHint((uint)CardLocation.Extra, 1u);
+                        UnityEngine.Object.Destroy(effect, 3f);
+                        haveHint = true;
+                        break;
+                    }
+            foreach (var card in cardsActivated)
                 if ((card.p.location & (uint)CardLocation.Deck) > 0)
                     if (card.p.controller == 0)
-                        if (card.buttons.Count > 0)
-                        {
-                            var effect = ABLoader.LoadMasterDuelGameObject("fxp_HL_active_Exdeck_001");
-                            effect.transform.SetParent(myDeck.transform, false);
-                            effect.transform.position = Tools.GetDeckModelTopPosition(myDeck);
-                            foreach (var place in places)
-                                place.ShowHint((uint)CardLocation.Deck, 0u);
-                            UnityEngine.Object.Destroy(effect, 3f);
-                            haveHint = true;
-                            break;
-                        }
-
+                    {
+                        var effect = ABLoader.LoadMasterDuelGameObject("fxp_HL_active_Exdeck_001");
+                        effect.transform.SetParent(myDeck.transform, false);
+                        effect.transform.position = Tools.GetDeckModelTopPosition(myDeck);
+                        foreach (var place in places)
+                            place.ShowHint((uint)CardLocation.Deck, 0u);
+                        UnityEngine.Object.Destroy(effect, 3f);
+                        haveHint = true;
+                        break;
+                    }
+            foreach (var card in cardsActivated)
+                if ((card.p.location & (uint)CardLocation.Deck) > 0)
+                    if (!card.p.InMyControl())
+                    {
+                        var effect = ABLoader.LoadMasterDuelGameObject("fxp_HL_active_Exdeck_001");
+                        effect.transform.SetParent(opDeck.transform, false);
+                        effect.transform.position = Tools.GetDeckModelTopPosition(opDeck);
+                        foreach (var place in places)
+                            place.ShowHint((uint)CardLocation.Deck, 1u);
+                        UnityEngine.Object.Destroy(effect, 3f);
+                        haveHint = true;
+                        break;
+                    }
             if (haveHint)
                 AudioManager.PlaySE("SE_DUEL_ACTIVE_POSSIBLE");
         }
@@ -956,6 +1012,8 @@ namespace MDPro3.Duel
 
             grave0Manager.GetElement<Animator>("GraveHighlightNear").SetBool("On", false);
             grave0Manager.GetElement<Animator>("ExcludeHighlightNear").SetBool("On", false);
+            grave1Manager.GetElement<Animator>("GraveHighlightFar").SetBool("On", false);
+            grave1Manager.GetElement<Animator>("ExcludeHighlightFar").SetBool("On", false);
         }
 
         private void FieldSelectReset()
@@ -1446,7 +1504,7 @@ namespace MDPro3.Duel
                 code = 83764719;
             if (card.GetData().Id == 63166096)//闪刀起动-交闪 异画
                 code = 63166096;
-            if (card.GetData().Id == 32807848)//闪刀起动-交闪 异画
+            if (card.GetData().Id == 32807848)//增援 异画
                 code = 32807848;
             if (card.GetData().Id == 49238329)//强欲而金满之壶 异画
                 code = 49238329;
@@ -1632,7 +1690,7 @@ namespace MDPro3.Duel
                 else if (code == 63166095 || code == 63166096)
                 {
                     int code2 = 0;
-                    nextMoveActionDuration = 2.2f + 0.5f;
+                    nextMoveActionDuration = 2.2f + 5f;
                     nextMoveAction = () =>
                     {
                         effect = GetCardEffectPrefab(code == 63166095 ? "Ef13671" : "Ef03434");
@@ -1660,7 +1718,7 @@ namespace MDPro3.Duel
                         nextMoveAction = null;
                         nextEventAction = null;
                         nextMoveManager = null;
-                        _ = card.MoveAsync(card.p, false, 0f, 0.5f);
+                        _ = card.MoveAsync(card.p, false, 0f, 0.7f).ContinueWith(() => NoMoreWait = true);
                     };
 
                     return;
