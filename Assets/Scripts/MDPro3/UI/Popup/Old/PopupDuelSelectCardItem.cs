@@ -47,7 +47,7 @@ namespace MDPro3.UI
 
         private void Start()
         {
-            _ = RefreshCard(card.GetData().Id);
+            _ = RefreshCard(card.GetValidData().Id);
 
             if ((card.p.location & (uint)CardLocation.Search) > 0)
             {

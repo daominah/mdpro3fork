@@ -361,7 +361,7 @@ namespace MDPro3.Servant
                     _ = OnlineDeck.DeleteDecks(new List<string> { deck.deckId });
                     continue;
                 }
-                Debug.Log($"卡组[{deck.deckName}] [{deck.deckId}]需要下载。");
+                Debug.Log($"卡组[{deck.deckType} / {deck.deckName}] [{deck.deckId}]需要下载。");
 
                 var d = new Deck(deck.deckYdk, deck.deckId, MyCard.account.user.username)
                 {

@@ -90,7 +90,7 @@ namespace MDPro3
     public class GameCard : MonoBehaviour
     {
         private Card data = new ();
-        private Card cachedData = new();
+        private readonly Card lastValidData = new();
         public GPS p;
         private bool m_disabled;
         public bool Disabled
@@ -407,20 +407,21 @@ namespace MDPro3
             return data;
         }
 
-        public Card CacheData()
+        public Card GetValidData()
         {
-            if(data.Id > 0)
-                cachedData = data.Clone();
-            return cachedData;
-        }
-
-        public Card GetCachedData()
-        {
-            return cachedData;
+            if (data.Id > 0)
+                return data;
+            else
+                return lastValidData;
         }
 
         public void SetData(Card d)
         {
+            if (d.Id > 0)
+                d.CloneTo(lastValidData);
+            else if (data.Id > 0)
+                data.CloneTo(lastValidData);
+
             if (d.Attack < 0)
                 d.Attack = 0;
             if (d.Defense < 0)

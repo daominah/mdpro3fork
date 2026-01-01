@@ -115,7 +115,7 @@ namespace MDPro3.UI
                 SetDeck(new Deck(path), configDeck);
         }
 
-        public void SetDeck(Deck deck,string deckName) 
+        public void SetDeck(Deck deck, string deckName)
         {
             this.deck = deck;
             this.deckName = deckName;
@@ -126,7 +126,10 @@ namespace MDPro3.UI
 
         private void SetDeckInteral()
         {
-            TextDeckName.text = deckName;
+            if(deckName.StartsWith("/"))
+                TextDeckName.text = Path.GetFileNameWithoutExtension(deckName);
+            else
+                TextDeckName.text = deckName;
             if(deck == null)
                 _ = RefreshAsync();
             else

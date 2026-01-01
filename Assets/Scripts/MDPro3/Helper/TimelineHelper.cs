@@ -167,7 +167,7 @@ namespace MDPro3
                 var renderer = dummyCard.GetElement<MeshRenderer>("DummyCardModel_front");
                 var code = materials[i].GetData().Id;
                 if (code == 0)
-                    code = materials[i].GetCachedData().Id;
+                    code = materials[i].GetValidData().Id;
                 _ = RefreshCardFace(renderer, code);
 
                 if (data.HasType(CardType.Synchro))
@@ -455,7 +455,7 @@ namespace MDPro3
             {
                 var code = materials[i + order].GetData().Id;
                 if (code == 0)
-                    code = materials[i + order].GetCachedData().Id;
+                    code = materials[i + order].GetValidData().Id;
 
                 var cardTex = await CardImageLoader.LoadCardAsync(code, false, face.GetCancellationTokenOnDestroy());
                 face.material.SetTexture("_CardFrame" + (char)('A' + i), cardTex);
@@ -487,12 +487,12 @@ namespace MDPro3
             {
                 foreach (var material in materials)
                 {
-                    var data = material.GetCachedData();
+                    var data = material.GetValidData();
                     if (data.HasType(CardType.Tuner))
                         tunerLevel += data.Level;
                 }
                 if (tunerLevel == 0)
-                    tunerLevel = materials[0].GetCachedData().Level;
+                    tunerLevel = materials[0].GetValidData().Level;
             }
             return tunerLevel;
         }

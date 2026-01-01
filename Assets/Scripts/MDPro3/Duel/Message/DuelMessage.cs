@@ -711,9 +711,7 @@ namespace MDPro3.Duel
             var reason = reader.ReadUInt32();
 
             var card = Core.GCS_Get(from);
-            if(card != null)
-                card.CacheData();
-            else
+            if(card == null)
             {
                 //DebugNoCard();
                 card = Core.GCS_Create(from);
