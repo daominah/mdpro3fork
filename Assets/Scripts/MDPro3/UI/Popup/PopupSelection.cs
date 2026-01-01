@@ -68,6 +68,7 @@ namespace MDPro3.UI.Popup
             }
             else
             {
+                handler.color = string.Empty;
                 handler.selection = task[0];
             }
             handler.clickAction = OnClick;
