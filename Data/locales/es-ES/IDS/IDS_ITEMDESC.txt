@@ -708,7 +708,8 @@ El valiente caballero supera una a una las numerosas y letales trampas que le ag
 [IDS_ITEMDESC.ID1010123]
 coming soon
 [IDS_ITEMDESC.ID1010124]
-coming soon
+Un icono que representa a la primera Mikanko.
+Cuentan que eligió al pájaro cantor como su bestia espiritual y forjó un juramento sagrado de amistad con lo divino.
 [IDS_ITEMDESC.ID1010125]
 Un icono que representa a un joven que posee el poder de ver un futuro ineludible.
 Gracias a él, ha presenciado numerosos futuros desde su niñez.
@@ -1143,6 +1144,8 @@ Reunió a un ejército para ampliar todavía más su ambicioso reino acuático.
 [IDS_ITEMDESC.ID1012075]
 Un icono que representa a un pájaro divino que protege siempre vigilante.
 Incinera a todo aquel que ose entrar en su santuario.
+[IDS_ITEMDESC.ID1012076]
+Un icono que representa a "<card mrk='4895'/>" abrumado por enormes deudas.Desesperado, trata de hacer números para volver a encarrilar su vida.
 [IDS_ITEMDESC.ID1013001]
 Un icono que representa a un joven al que le encanta el béisbol.
 Puedes haber coincidido con él en el colegio en algún momento que otro y haber sido testigo de su grandeza motivada por su pasión por el béisbol.
@@ -1930,6 +1933,9 @@ Parece que no alberga odio alguno hacia el ser humano.
 [IDS_ITEMDESC.ID1031018]
 Un marco de icono que se formó al crear un receptáculo capaz de albergar un alma.
 En su interior alberga tecnología ancestral y una férrea determinación.
+[IDS_ITEMDESC.ID1031020]
+Un marco de icono que representa una actuación importante de una compañía de artistas.
+La danza shishimai, que combina todos los elementos imaginables, se ha convertido en leyenda.
 [IDS_ITEMDESC.ID1032001]
 Un marco de icono con forma de adorno circular que se puede ver en ciertas regiones a medida que el año se acerca a su fin.
 Se cuelgan con un deseo sincero de felicidad y alegría para los tiempos venideros.
@@ -2379,7 +2385,8 @@ Para aquellos cuyo poder proviene de la codicia.
 [IDS_ITEMDESC.ID1070136]
 coming soon
 [IDS_ITEMDESC.ID1070137]
-coming soon
+Protectores que representan la salvación a manos de "<card mrk='21616'/>".
+Para quienes desean que el mundo vea quiénes son realmente.
 [IDS_ITEMDESC.ID1070138]
 Protectores que representan un nuevo aspecto para una chica elegida para manejar armamento tecnológico avanzado.
 Para quienes luchan por cambiar su destino.
@@ -2399,7 +2406,8 @@ Para quienes quieren hacerse con todo lo que ven.
 Protectores que representan a una reina entre reinas que revolotea en un escenario a la luz de la luna.
 Para quienes danzan entre brillantes y plateados rayos de luna.
 [IDS_ITEMDESC.ID1070144]
-coming soon
+Protectores que representan una criatura tan eufórica por el dinero recibido por el nuevo año que su alma ha abandonado su cuerpo.
+Para quienes celebran el nuevo año.
 [IDS_ITEMDESC.ID1070145]
 coming soon
 [IDS_ITEMDESC.ID1070146]
@@ -2520,6 +2528,9 @@ Para quienes protegen su santuario.
 [IDS_ITEMDESC.ID1071036]
 Protectores que representan a una Serpiente Marina con un apetito de dominio insaciable.
 Para quienes tienen un deseo insaciable.
+[IDS_ITEMDESC.ID1071037]
+Protectores que representan una cabaña construida en un terreno baldío tras una catástrofe financiera.
+Para quienes creen que la hierba es más verde al otro lado de la verja.
 [IDS_ITEMDESC.ID1072001]
 Un protector con el diseño del "<card mrk='13670'/>" con su armadura en modo de destrucción.
 Para aquellos jugadores que se abrirán camino hacia la victoria con uñas y dientes desde las llamas del campo de batalla.
@@ -3056,7 +3067,8 @@ Por suerte, incluso si una carta se descarta aquí, no absorbe tu vida ni la de 
 Partes del Campo con la forma de una máquina que manipula el tiempo.
 Expulsa humo y parece que pudiera hacer retroceder el tiempo en cualquier momento, pero, por desgracia, esta vez no pasará.
 [IDS_ITEMDESC.ID1101018]
-coming soon
+Partes del Campo inspiradas en una bestia que lo devora todo a su paso.
+Aunque solo es una réplica, es mejor pensárselo dos veces antes de aventurarse ahí.
 [IDS_ITEMDESC.ID1101019]
 Partes del Campo modeladas en un tarro que encierra monstruos Dragón.
 Almacenar monstruos de otros tipos no debería suponer problema... al menos de momento.
@@ -3085,7 +3097,7 @@ coming soon
 [IDS_ITEMDESC.ID1101029]
 coming soon
 [IDS_ITEMDESC.ID1101030]
-coming soon
+Partes del Campo inspiradas en provisiones de emergencia con una gran vida útil.Incluso en caso de emergencia, se desaconseja comer cualquier cosa que te encuentres.
 [IDS_ITEMDESC.ID1101031]
 Partes del Campo inspiradas en una semilla brillante que siembra la desesperación.
 Una maldición empieza a acechar cuando los difuntos vuelven a florecer.
@@ -3801,9 +3813,11 @@ Mediante su propia codicia, dominó y conjuró la maldición que liberó todo ti
 [IDS_ITEMDESC.ID1130099]
 coming soon
 [IDS_ITEMDESC.ID1130100]
-coming soon
+La primera Mikanko, que supuestamente poseía todas las reliquias sagradas.
+Cuenta con el pájaro cantor de la tierra eterna como bestia espiritual.
 [IDS_ITEMDESC.ID1130101]
-coming soon
+"<card mrk='21616'/>" baila para salvar a "<card mrk='18482'/>".
+Kagura Mikanko, que ha alcanzado la perfección mediante la práctica. Al fin, las bailarinas suben al escenario.
 [IDS_ITEMDESC.ID1130102]
 coming soon
 [IDS_ITEMDESC.ID1130103]
@@ -3870,7 +3884,8 @@ Dicen que cuando sus <category id='127'/> se reúnan, las impenetrables puertas 
 [IDS_ITEMDESC.ID1170005]
 coming soon
 [IDS_ITEMDESC.ID1170006]
-coming soon
+Archivo de Coleccionista que representa a unas doncellas que canalizan deidades mediante la danza.
+Cuentan que cuando los <category id='128'/> se reúnan, las puertas ceremoniales de la oración de la prosperidad resplandecerán.
 [IDS_ITEMDESC.ID1170007]
 coming soon
 [IDS_ITEMDESC.ID1170008]
@@ -3902,7 +3917,8 @@ Está poseída por una insaciable codicia que la hace brillar con avidez.
 [IDS_ITEMDESC.ID1180009]
 coming soon
 [IDS_ITEMDESC.ID1180010]
-coming soon
+Una moneda cuyo motivo es el escudo de los <category id='128'/>.
+Su bendición de abundancia brilla con un poder divino.
 [IDS_ITEMDESC.ID1180011]
 coming soon
 [IDS_ITEMDESC.ID1180012]

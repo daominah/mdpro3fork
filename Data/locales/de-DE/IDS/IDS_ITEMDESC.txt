@@ -708,7 +708,8 @@ Der tapfere Ritter überwindet mühelos die zahlreichen tödlichen Fallen, die a
 [IDS_ITEMDESC.ID1010123]
 coming soon
 [IDS_ITEMDESC.ID1010124]
-coming soon
+Ein Symbol, das die erste Mikanko darstellt.
+Es heißt, sie habe den ewig singenden Vogel zu ihrem Geistungeheuer erwählt und einen heiligen Freundschaftsschwur mit dem Göttlichen geschlossen.
 [IDS_ITEMDESC.ID1010125]
 Ein Symbol, das einen jungen Mann darstellt, der über die Kraft verfügt, eine unausweichliche Zukunft zu sehen.
 Seit seiner Kindheit hat er unzählige Zukünfte miterlebt.
@@ -1143,6 +1144,9 @@ Er stellte eine Armee auf, um sein ambitioniertes Wasserreich weiter zu vergrö�
 [IDS_ITEMDESC.ID1012075]
 Ein Symbol, das einen göttlichen Vogel darstellt, der stets wachsam aufpasst.
 Er verbrennt alle, die es wagen, in sein Heiligtum einzudringen.
+[IDS_ITEMDESC.ID1012076]
+Ein Symbol, das „<card mrk='4895'/>“ darstellt, der mit hohen Schulden belastet ist.
+Er wertet fieberhaft die Zahlen aus, um die Dinge wieder in Ordnung zu bringen.
 [IDS_ITEMDESC.ID1013001]
 Ein Symbol, das einen kleinen Jungen darstellt, der sich für Baseball begeistert.
 Vielleicht bist du ihm schon einmal an einer Schule begegnet, wo er durch seine Leidenschaft für Baseball zu Höchstleistungen angespornt wurde.
@@ -1930,6 +1934,9 @@ Sie scheint der Menschheit nichts Böses zu wollen.
 [IDS_ITEMDESC.ID1031018]
 Ein Symbol-Rahmen, der bei der Erschaffung eines Gefäßes entstand, das die Seele beherbergen kann.
 Darin stecken uralte Technologie und ein starker Sinn für Entschlossenheit.
+[IDS_ITEMDESC.ID1031020]
+Ein Symbol-Rahmen, der einen großen Auftritt einer Künstlergruppe zeigt.
+Der Shishimai-Tanz, der alle erdenklichen Elemente vereint, ist in die Legende eingegangen.
 [IDS_ITEMDESC.ID1032001]
 Ein Symbol-Rahmen in der Form einer runden Dekoration, die in manchen Regionen zum Jahresende zu sehen ist.
 Sie werden mit dem aufrichtigen Wunsch nach Glück und Freude in der kommenden Zeit aufgehängt.
@@ -2379,7 +2386,8 @@ Für diejenigen, deren Macht aus Gier entspringt.
 [IDS_ITEMDESC.ID1070136]
 coming soon
 [IDS_ITEMDESC.ID1070137]
-coming soon
+Kartenhüllen, die die Erlösung durch die Hände von „<card mrk='21616'/>“ darstellen.
+Für all jene, die der Welt zeigen wollen, wer sie wirklich sind.
 [IDS_ITEMDESC.ID1070138]
 Kartenhüllen, die einen neuen Look für ein Mädchen darstellen, das ausgewählt wurde, um hochmoderne technologische Waffen zu führen.
 Für diejenigen, die darum kämpfen, ihr Schicksal zu ändern.
@@ -2399,7 +2407,8 @@ Für diejenigen, die sich alles zu eigen machen wollen.
 Kartenhüllen, die eine Königin unter Königinnen darstellen, die über eine mondbeschienene Bühne huscht.
 Für diejenigen, die zwischen Mondstrahlen aus glitzerndem Silber tanzen.
 [IDS_ITEMDESC.ID1070144]
-coming soon
+Kartenhüllen, die ein Wesen darstellen, das so überglücklich über sein Neujahrsgeschenk ist, dass seine Seele buchstäblich seinen Körper verlassen hat.
+Für alle, die das neue Jahr feiern.
 [IDS_ITEMDESC.ID1070145]
 coming soon
 [IDS_ITEMDESC.ID1070146]
@@ -2520,6 +2529,9 @@ Für diejenigen, die ihr Heiligtum schützen.
 [IDS_ITEMDESC.ID1071036]
 Kartenhüllen, die eine Seeschlange abbilden, die einen unstillbaren Hunger nach Herrschaft hat.
 Für diejenigen, deren Hunger nicht gestillt werden kann.
+[IDS_ITEMDESC.ID1071037]
+Kartenhüllen, die eine Hütte darstellen, die nach dem finanziellen Ruin auf einem unbebauten Grundstück errichtet wurde.
+Für all jene, die glauben, das Gras sei auf der anderen Seite grüner.
 [IDS_ITEMDESC.ID1072001]
 Eine Kartenhülle mit dem Design von „<card mrk='13670'/>“ in ihrer Rüstung im Zerstörungsmodus.
 Für Spieler, die sich aus den Flammen des Schlachtfelds den Weg zum Sieg bahnen.
@@ -3055,7 +3067,8 @@ Selbst wenn hier eine Karte abgeworfen wird, saugt sie weder dir noch deinem Geg
 Spielfeldteile in Gestalt einer Maschine, die die Zeit manipuliert.
 Sie stößt Rauch aus und sieht so aus, als ob sie jeden Augenblick die Zeit zurückdrehen könnte – doch leider wird das zumindest jetzt nicht geschehen.
 [IDS_ITEMDESC.ID1101018]
-coming soon
+Spielfeldteile, die einem Ungeheuer nachempfunden sind, das alles auf seinem Weg verschlingt.
+Selbst wenn es sich nur um eine Nachbildung handelt, sollte man sich zweimal überlegen, ob man hineingeht.
 [IDS_ITEMDESC.ID1101019]
 Spielfeldteile in Form eines Gefäßes, das Drache-Monster versiegelt.
 Das Lagern von Monstern anderer Typen sollte kein Problem darstellen – zumindest im Moment nicht.
@@ -3084,7 +3097,8 @@ coming soon
 [IDS_ITEMDESC.ID1101029]
 coming soon
 [IDS_ITEMDESC.ID1101030]
-coming soon
+Spielfeldteile, die Notfallvorräten nachempfunden sind und eine lange Haltbarkeit aufweisen.
+Selbst im Notfall ist es nicht ratsam, alles zu essen, was man ausgräbt.
 [IDS_ITEMDESC.ID1101031]
 Spielfeldteile, die einem leuchtenden, Kummer verbreitenden Samen nachempfunden sind.
 Ein Fluch beginnt sich auszubreiten, als die Verstorbenen zurückkehren, um erneut zu blühen.
@@ -3800,9 +3814,11 @@ Durch seine eigene Gier bezwang und verschlang er den Fluch, der unzählige Begi
 [IDS_ITEMDESC.ID1130099]
 coming soon
 [IDS_ITEMDESC.ID1130100]
-coming soon
+Die erste Mikanko, die angeblich alle heiligen Reliquien besessen haben soll.
+Sie erklärte den ewig singenden Vogel des ewigen Landes zu ihrem Geistungeheuer.
 [IDS_ITEMDESC.ID1130101]
-coming soon
+„<card mrk='21616'/>“ tanzt, um „<card mrk='18482'/>“ zu retten.
+Mikanko Kagura, perfektioniert durch Wettbewerbe – endlich betreten die Tänzer und Tänzerinnen die Bühne.
 [IDS_ITEMDESC.ID1130102]
 coming soon
 [IDS_ITEMDESC.ID1130103]
@@ -3869,7 +3885,8 @@ Es heißt, dass die uneinnehmbaren Tore hell erstrahlen werden, wenn die <catego
 [IDS_ITEMDESC.ID1170005]
 coming soon
 [IDS_ITEMDESC.ID1170006]
-coming soon
+Ein Sammelordner mit Abbildungen von Jungfrauen, die durch Tanz Gottheiten kanalisieren.
+Es heißt, dass die Ritaultüren des Gebets für Wohlstand hell erstrahlen werden, wenn die <category id='128'/> versammelt sind.
 [IDS_ITEMDESC.ID1170007]
 coming soon
 [IDS_ITEMDESC.ID1170008]
@@ -3901,7 +3918,8 @@ Besessen von einer unersättlichen Gier, die habgierig schimmert.
 [IDS_ITEMDESC.ID1180009]
 coming soon
 [IDS_ITEMDESC.ID1180010]
-coming soon
+Eine Münze, deren Motiv das Wappen von <category id='128'/> ist.
+Sein Segen des Überflusses schimmert mit göttlicher Kraft.
 [IDS_ITEMDESC.ID1180011]
 coming soon
 [IDS_ITEMDESC.ID1180012]
