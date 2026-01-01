@@ -536,8 +536,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: {fileID: 1398959084}
   input: {fileID: 1775272994}
-  mode_Window: 0
-  mode_Android: 1
+  mode_Window: 1
+  mode_Android: 0
   mode_IOS: 0
   mode_Swtich: 0
   fullCopy: 0
