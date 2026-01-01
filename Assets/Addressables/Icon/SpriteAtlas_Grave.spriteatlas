@@ -79,6 +79,7 @@ SpriteAtlas:
     - 942f6175324a71b4aafd57e98e8ddaa4: 21300000
     - 452ae475c31be7e47bdb68f4d735ffb9: 21300000
     - cff631b5eeb3f38439f5411fa7a63f66: 21300000
+    - ffbefdb534ebc9542b92eb28ccf1a0c9: 21300000
     - f2cd60c50be8d824c984b2e8ded30a4b: 21300000
     - 5d1066362ceec9246b2671d063341045: 21300000
     - f4e6c156a866cd945aa3b7c4ad9c68bb: 21300000
@@ -93,6 +94,7 @@ SpriteAtlas:
     - 2033294869e26c84bba49491a467ecde: 21300000
     - 74abe0881c1c2384dba20f893fc740d4: 21300000
     - 923ab1887761f484a88cff1bac12c02f: 21300000
+    - 55f8b8a8e7b781047b9c66b8868e955e: 21300000
     - bad5e6b8a6cfed740b8187f988a62853: 21300000
     - 901262e88cac37f4b95bb1da2d1f17fc: 21300000
     - 2b06ae192301e344c84decb5ba97f9fc: 21300000
@@ -151,6 +153,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 942f6175324a71b4aafd57e98e8ddaa4, type: 3}
   - {fileID: 21300000, guid: 452ae475c31be7e47bdb68f4d735ffb9, type: 3}
   - {fileID: 21300000, guid: cff631b5eeb3f38439f5411fa7a63f66, type: 3}
+  - {fileID: 21300000, guid: ffbefdb534ebc9542b92eb28ccf1a0c9, type: 3}
   - {fileID: 21300000, guid: f2cd60c50be8d824c984b2e8ded30a4b, type: 3}
   - {fileID: 21300000, guid: 5d1066362ceec9246b2671d063341045, type: 3}
   - {fileID: 21300000, guid: f4e6c156a866cd945aa3b7c4ad9c68bb, type: 3}
@@ -165,6 +168,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 2033294869e26c84bba49491a467ecde, type: 3}
   - {fileID: 21300000, guid: 74abe0881c1c2384dba20f893fc740d4, type: 3}
   - {fileID: 21300000, guid: 923ab1887761f484a88cff1bac12c02f, type: 3}
+  - {fileID: 21300000, guid: 55f8b8a8e7b781047b9c66b8868e955e, type: 3}
   - {fileID: 21300000, guid: bad5e6b8a6cfed740b8187f988a62853, type: 3}
   - {fileID: 21300000, guid: 901262e88cac37f4b95bb1da2d1f17fc, type: 3}
   - {fileID: 21300000, guid: 2b06ae192301e344c84decb5ba97f9fc, type: 3}
@@ -222,6 +226,7 @@ SpriteAtlas:
   - FieldObjIcon1100018
   - FieldObjIcon1101007
   - FieldObjIcon1105001
+  - FieldObjIcon1101030
   - FieldObjIcon1101016
   - FieldObjIcon1101032
   - FieldObjIcon1101019
@@ -236,6 +241,7 @@ SpriteAtlas:
   - FieldObjIcon1101020
   - FieldObjIcon1100035
   - FieldObjIcon1100014
+  - FieldObjIcon1101018
   - FieldObjIcon1101005
   - FieldObjIcon1100003
   - FieldObjIcon1100004
