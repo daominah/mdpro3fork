@@ -474,8 +474,7 @@ namespace MDPro3.Net
                 Bad("no token");
 
             var token = account.token;
-            var url = authUrl;
-            using var request = UnityWebRequest.Get(url);
+            using var request = UnityWebRequest.Get(authUrl);
             request.SetRequestHeader("Authorization", $"Bearer {token}");
             request.SetRequestHeader("Content-Type", "application/json");
             await request.SendWebRequest();

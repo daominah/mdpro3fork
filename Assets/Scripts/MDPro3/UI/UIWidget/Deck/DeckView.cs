@@ -381,6 +381,8 @@ namespace MDPro3.UI
             //NameAreaGroup.SetActive(condition == Condition.Editable);
             InputDeckName.gameObject.SetActive(condition == Condition.Editable);
             TextDeckName.gameObject.SetActive(condition != Condition.Editable);
+            if (condition == Condition.Pickup)
+                ButtonDeck.gameObject.SetActive(false);
         }
 
         public RectTransform GetDeckLocationParent(DeckLocation location)

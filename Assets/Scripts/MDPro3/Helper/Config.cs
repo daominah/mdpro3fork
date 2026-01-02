@@ -194,15 +194,21 @@ namespace MDPro3
         public static string GetConfigDeckName(bool containType = true)
         {
             var config = Get("DeckInUse", EMPTY_STRING);
-            if(!containType && config.Contains("/"))
+            if(config.StartsWith("/") && config.Length > 1)
+                config = config[1..];
+            if (!containType && config.Contains("/"))
                 config = Path.GetFileName(config);
             return config;
         }
 
         public static void SetConfigDeck(string deckName, bool needCheck = false)
         {
-            if(needCheck)
-                Set("DeckInUse", $"{Program.instance.deckSelector.DeckType}/{deckName}");
+            if (needCheck)
+            {
+                var type = Program.instance.deckSelector.DeckType;
+                var config = type == string.Empty ? deckName : $"{type}/{deckName}";
+                Set("DeckInUse", config);
+            }
             else
                 Set("DeckInUse", deckName);
         }

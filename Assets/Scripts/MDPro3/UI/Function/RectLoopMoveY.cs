@@ -1,7 +1,8 @@
 using UnityEngine;
+using UnityEngine.UI;
 using DG.Tweening;
 using YgomSystem.UI;
-using UnityEngine.UI;
+using DGTween = DG.Tweening.Tween;
 
 namespace MDPro3.UI
 {
@@ -9,32 +10,105 @@ namespace MDPro3.UI
     {
         public float range;
         public float time;
-        float startY;
-        readonly Ease ease = Ease.InOutSine;
+
+        [Header("Smoothing")]
+        public Ease ease = Ease.InOutSine;
+
+        [Tooltip("Normal = Update, Late = LateUpdate. Late is often smoother for UI.")]
+        public UpdateType updateType = UpdateType.Late;
+
+        [Tooltip("If true, animation ignores Time.timeScale (keeps moving in pause/slowmo).")]
+        public bool ignoreTimeScale = true;
+
+        private RectTransform _rt;
+        private Image _img;
+
+        private float _centerY;
+        private DGTween _startupTween;
+        private DGTween _loopTween;
+
+        private void Awake()
+        {
+            _rt = GetComponent<RectTransform>();
+            _img = GetComponent<Image>();
+        }
 
         private void Start()
         {
-            startY = GetComponent<RectTransform>().anchoredPosition.y;
+            _centerY = _rt.anchoredPosition.y;
+
             foreach (var alpha in GetComponents<TweenAlpha>())
-                if (alpha.label == "Show")
-                    GetComponent<Image>().color = new Color(1, 1, 1, alpha.to);
+            {
+                if (alpha.label == "Show" && _img != null)
+                    _img.color = new Color(1f, 1f, 1f, alpha.to);
+            }
+
             foreach (var position in GetComponents<TweenPosition>())
+            {
                 if (position.label == "Loop")
                 {
                     range = position.from.y - position.to.y;
                     time = position.duration;
+                    break;
                 }
-            if (time > 0)
-                MoveUp();
+            }
+
+            if (time > 0f && !Mathf.Approximately(range, 0f))
+                StartSmoothLoop();
         }
 
-        void MoveUp()
+        private void StartSmoothLoop()
         {
-            GetComponent<RectTransform>().DOAnchorPosY(startY + range, time).SetEase(ease).OnComplete(() => { MoveDown(); });
+            KillTweens();
+
+            float yMin = _centerY - range;
+            float yMax = _centerY + range;
+
+            float curY = _rt.anchoredPosition.y;
+
+            float firstTarget = (Mathf.Abs(curY - yMax) <= Mathf.Abs(curY - yMin)) ? yMax : yMin;
+            float otherTarget = (firstTarget == yMax) ? yMin : yMax;
+
+            float fullDist = Mathf.Abs(yMax - yMin);
+            float firstDist = Mathf.Abs(curY - firstTarget);
+            float firstTime = (fullDist > 0.0001f) ? time * (firstDist / fullDist) : 0f;
+
+            _startupTween = _rt.DOAnchorPosY(firstTarget, firstTime)
+                .SetEase(ease)
+                .SetUpdate(updateType, ignoreTimeScale);
+
+            _startupTween.OnComplete(() =>
+            {
+                _loopTween = _rt.DOAnchorPosY(otherTarget, time)
+                    .SetEase(ease)
+                    .SetLoops(-1, LoopType.Yoyo)
+                    .SetUpdate(updateType, ignoreTimeScale);
+            });
         }
-        void MoveDown()
+
+        private void OnDisable()
         {
-            GetComponent<RectTransform>().DOAnchorPosY(startY - range, time).SetEase(ease).OnComplete(() => { MoveUp(); });
+            if (_startupTween != null && _startupTween.IsActive()) _startupTween.Pause();
+            if (_loopTween != null && _loopTween.IsActive()) _loopTween.Pause();
+        }
+
+        private void OnEnable()
+        {
+            if (_startupTween != null && _startupTween.IsActive()) _startupTween.Play();
+            if (_loopTween != null && _loopTween.IsActive()) _loopTween.Play();
+        }
+
+        private void OnDestroy()
+        {
+            KillTweens();
+        }
+
+        private void KillTweens()
+        {
+            if (_startupTween != null && _startupTween.IsActive()) _startupTween.Kill();
+            if (_loopTween != null && _loopTween.IsActive()) _loopTween.Kill();
+            _startupTween = null;
+            _loopTween = null;
         }
     }
 }
