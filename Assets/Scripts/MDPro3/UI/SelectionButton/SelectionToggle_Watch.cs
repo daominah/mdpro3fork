@@ -52,7 +52,12 @@ namespace MDPro3.UI
         {
             AudioManager.PlaySE("SE_MENU_DECIDE");
             base.CallSubmitEvent();
-            var password = MyCard.GetJoinRoomPassword(options, roomId, MyCard.account.user.id);
+            _ = WaitPasswordToJoin();
+        }
+
+        private async UniTask WaitPasswordToJoin()
+        {
+            var password = await MyCard.GetJoinRoomPassword(options, roomId, MyCard.account.user.id);
             TcpHelper.LinkStart(MyCard.duelUrl, MyCard.account.user.username, MyCard.athleticPort.ToString(), password, false, null);
         }
 

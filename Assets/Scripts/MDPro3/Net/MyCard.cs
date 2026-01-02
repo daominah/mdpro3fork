@@ -389,19 +389,19 @@ namespace MDPro3.Net
             JoinPrivate = 5,
         }
 
-        public static string GetJoinRoomPassword(MyCardRoomOptions options, string roomId, int userId, bool _private = false)
+        public static async UniTask<string> GetJoinRoomPassword(MyCardRoomOptions options, string roomId, int userId, bool _private = false)
         {
             byte[] optionsBuffer = new byte[6];
             optionsBuffer[1] = (byte)((_private ? (int)RoomAction.JoinPrivate : (int)RoomAction.JoinPublic) << 4);
 
-            EncryptBuffer(optionsBuffer, userId);
+            await EncryptBuffer(optionsBuffer);
 
             string base64String = Convert.ToBase64String(optionsBuffer);
 
             return base64String + roomId;
         }
 
-        public static string GetCreateRoomPasswd(MyCardRoomOptions options, string roomID, int userId, bool _private = false)
+        public static async Task<string> GetCreateRoomPasswd(MyCardRoomOptions options, string roomID, int userId, bool _private = false)
         {
             byte[] optionsBuffer = new byte[6];
             optionsBuffer[1] = (byte)(((byte)(_private ? RoomAction.CreatePrivate : RoomAction.CreatePublic) << 4) | (byte)(options.duel_rule << 1) | (options.auto_death ? 0x1 : 0));
@@ -410,13 +410,13 @@ namespace MDPro3.Net
             WriteUInt16LE(optionsBuffer, 3, (ushort)options.start_lp);
             optionsBuffer[5] = (byte)(((byte)options.start_hand << 4) | options.draw_count);
 
-            EncryptBuffer(optionsBuffer, userId);
+            await EncryptBuffer(optionsBuffer);
             string base64String = Convert.ToBase64String(optionsBuffer);
 
             return base64String + roomID;
         }
 
-        private static void EncryptBuffer(byte[] buffer, int external_id)
+        private static async UniTask EncryptBuffer(byte[] buffer)
         {
             int checksum = 0;
 
@@ -427,7 +427,8 @@ namespace MDPro3.Net
 
             buffer[0] = (byte)(checksum & 0xff);
 
-            int secret = (external_id % 65535) + 1;
+            var u16Secret = await GetUserU16SecretAsync();
+            int secret = u16Secret % 65535 + 1;
 
             for (int i = 0; i < buffer.Length; i += 2)
             {
@@ -451,6 +452,56 @@ namespace MDPro3.Net
         {
             buffer[offset] = (byte)(value & 0xff);
             buffer[offset + 1] = (byte)((value >> 8) & 0xff);
+        }
+
+        [Serializable]
+        private class AuthResponse
+        {
+            public int u16Secret;
+        }
+
+        private static async UniTask<int> GetUserU16SecretAsync()
+        {
+            static void Bad(string message)
+            {
+                MessageManager.Cast(InterString.Get("MyCard: 获取用户密钥失败。请重新登录。([?])", message));
+                throw new Exception($"Get U16 secret failed: {message}");
+            }
+
+            if(account == null)
+                Bad("No account info");
+            if (string.IsNullOrEmpty(account.token))
+                Bad("no token");
+
+            var token = account.token;
+            var url = authUrl;
+            using var request = UnityWebRequest.Get(url);
+            request.SetRequestHeader("Authorization", $"Bearer {token}");
+            request.SetRequestHeader("Content-Type", "application/json");
+            await request.SendWebRequest();
+            if (request.result != UnityWebRequest.Result.Success)
+            {
+                Bad(request.error);
+                return 0;
+            }
+
+            try
+            {
+                var jsonResponse = request.downloadHandler.text;
+                var authInfo = JsonUtility.FromJson<AuthResponse>(jsonResponse);
+                if (authInfo == null || authInfo.u16Secret == 0)
+                {
+                    Bad("no secret or invalid response");
+                    return 0;
+                }
+
+                return authInfo.u16Secret;
+            }
+            catch (Exception e)
+            {
+                Bad(e.ToString());
+                return 0;
+            }
         }
 
         #endregion
