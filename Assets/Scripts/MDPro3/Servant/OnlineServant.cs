@@ -334,9 +334,13 @@ namespace MDPro3.Servant
                                 else
                                     decksNeedUpdateFromServer.Add(deckName, decks[i]);
                             }
-                            if((Path.GetFileName(deckName) != od.deckName || GetDeckTypeFromName(deckName) != od.deckType)
-                                && !decksNeedUpdateFromServer.Keys.Contains(deckName))
+                            if((Path.GetFileName(deckName) != od.deckName || GetDeckTypeFromName(deckName) != od.GetType())
+                                && !decksNeedUpdateFromServer.Keys.Contains(deckName)
+                                && !decksNeedUpdateToServer.Keys.Contains(deckName))
+                            {
+                                //Debug.Log($"[{Path.GetFileName(deckName)}] [{od.deckName}] [{GetDeckTypeFromName(deckName)}] [{od.GetType()}]");
                                 decksNeedUpdateFromServer.Add(deckName, decks[i]);
+                            }
                         }
                         break;
                     }
@@ -362,9 +366,9 @@ namespace MDPro3.Servant
 
                 var od = OnlineDeck.GetByID(deck.Value.deckId);
                 var oldPath = Program.PATH_DECK + deck.Key + Program.EXPANSION_YDK;
-                if (Path.GetFileName(deck.Key) != od.deckName || deck.Value.type != od.deckType)
+                if (Path.GetFileName(deck.Key) != od.deckName || deck.Value.type != od.GetType())
                     File.Delete(oldPath);
-                var newPath = Program.PATH_DECK + (od.deckType == string.Empty ? string.Empty : $"{od.deckType}/") + od.deckName + Program.EXPANSION_YDK;
+                var newPath = Program.PATH_DECK + (od.GetType() == string.Empty ? string.Empty : $"{od.GetType()}/") + od.deckName + Program.EXPANSION_YDK;
                 if(!Directory.Exists(Path.GetDirectoryName(newPath)))
                     Directory.CreateDirectory(Path.GetDirectoryName(newPath));
                 File.WriteAllText(newPath, od.deckYdk);
@@ -377,18 +381,18 @@ namespace MDPro3.Servant
                 .Where(od => !od.isDelete && !localFoundIds.Contains(od.deckId));
             foreach (var deck in odtd)
             {
-                var path = Program.PATH_DECK + (deck.deckType == string.Empty ? string.Empty : $"{deck.deckType}/") + deck.deckName + Program.EXPANSION_YDK;
+                var path = Program.PATH_DECK + (deck.GetType() == string.Empty ? string.Empty : $"{deck.GetType()}/") + deck.deckName + Program.EXPANSION_YDK;
                 if (File.Exists(path))
                 {
-                    Debug.Log($"删除服务器同名卡组 [{deck.deckType}/{deck.deckName}]  [{deck.deckId}]。");
+                    Debug.Log($"删除服务器同名卡组 [{deck.GetType()}/{deck.deckName}]  [{deck.deckId}]。");
                     _ = OnlineDeck.DeleteDecks(new List<string> { deck.deckId });
                     continue;
                 }
-                Debug.Log($"卡组[{deck.deckType} / {deck.deckName}] [{deck.deckId}]需要下载。");
+                Debug.Log($"卡组[{deck.GetType()} / {deck.deckName}] [{deck.deckId}]需要下载。");
 
                 var d = new Deck(deck.deckYdk, deck.deckId, MyCard.account.user.username)
                 {
-                    type = deck.deckType
+                    type = deck.GetType()
                 };
                 d.Save(Path.GetFileName(deck.deckName), deck.GetUpdateUtcTime(), false);
             }

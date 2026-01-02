@@ -234,6 +234,8 @@ namespace MDPro3.Net
                     deckYdk = decks[i].GetYDK(),
                     //timeStamp = ((DateTimeOffset)DateTime.UtcNow).ToUnixTimeMilliseconds()
                 };
+                if (body.decks[i].deckType == "/")
+                    body.decks[i].deckType = string.Empty;
 
                 decks[i].deckId = ids[i];
                 decks[i].userId = MyCard.account.user.id.ToString();
@@ -444,7 +446,7 @@ namespace MDPro3.Net
         {
             if (decks == null)
                 return false;
-            return decks.Any(deck => !deck.isDelete && deck.deckName == deckName && deck.deckType == deckType);
+            return decks.Any(deck => !deck.isDelete && deck.deckName == deckName && deck.GetType() == deckType);
         }
 
         #endregion
@@ -489,6 +491,13 @@ namespace MDPro3.Net
             {
                 var dataTimeOffset = DateTimeOffset.FromUnixTimeMilliseconds(lastDate);
                 return dataTimeOffset.LocalDateTime;
+            }
+
+            public new string GetType()
+            {
+                if (string.IsNullOrEmpty(deckType) || deckType == "/")
+                    return string.Empty;
+                return deckType;
             }
         }
 
@@ -597,6 +606,8 @@ namespace MDPro3.Net
                 this.deckId = deckId;
                 this.deckName = deckName;
                 deckType = deck.type;
+                if(deckType == "/")
+                    deckType = string.Empty;
                 if (deck.Pickup.Count > 0)
                     deckCoverCard1 = deck.Pickup[0];
                 if (deck.Pickup.Count > 1)
