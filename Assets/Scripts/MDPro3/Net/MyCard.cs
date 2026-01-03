@@ -248,8 +248,9 @@ namespace MDPro3.Net
         public static async Task<MyCardMatchInfo> GetMatchInfo(string arena)
         {
             using var request = UnityWebRequest.PostWwwForm(matchUrl + "?arena=" + arena, jsonHeader);
+            var u16Secret = await GetUserU16SecretAsync();
             request.SetRequestHeader(contentTypeHeader, jsonHeader);
-            request.SetRequestHeader(authHeader, "Basic " + CustomBase64Encode(account.user.username + ":" + account.user.id));
+            request.SetRequestHeader(authHeader, "Basic " + CustomBase64Encode(account.user.username + ":" + u16Secret));
 
             var send = request.SendWebRequest();
             await TaskUtility.WaitUntil(() => send.isDone);
