@@ -822,14 +822,13 @@ namespace Percy
                     Move(2);
                     break;
                 case GameMessage.Move:
-                    //var raw = currentReader.ReadBytes(16);
-                    //int pc = raw[4];
-                    //int pl = raw[5];
-                    //int cc = raw[8];
-                    //int cl = raw[9];
-                    //int cs = raw[10];
-                    //int cp = raw[11];
-
+                    var raw = currentReader.ReadBytes(16);
+                    int pc = raw[4];
+                    int pl = raw[5];
+                    int cc = raw[8];
+                    int cl = raw[9];
+                    int cs = raw[10];
+                    int cp = raw[11];
 
                     //if (!Convert.ToBoolean(cl & ((int)CardLocation.Grave + (int)CardLocation.Overlay)) &&
                     //    Convert.ToBoolean(cl & ((int)CardLocation.Deck + (int)CardLocation.Hand))
@@ -840,7 +839,7 @@ namespace Percy
                     //    raw[2] = 0;
                     //    raw[3] = 0;
                     //}
-                    //currentWriter.Write(raw);
+                    currentWriter.Write(raw);
                     break;
                 case GameMessage.PosChange:
                     Move(9);
