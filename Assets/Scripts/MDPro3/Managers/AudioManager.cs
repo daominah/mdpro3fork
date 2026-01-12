@@ -307,7 +307,7 @@ namespace MDPro3
             new BgmLoop{name = "BGM_DUEL_EX_10_NORMAL", startTime = 0.0f, endTime = 60 + 27.832f },
             new BgmLoop{name = "BGM_DUEL_EX_10_KEYCARD", startTime = 09.512f, endTime = 60 + 30.265f },
             new BgmLoop{name = "BGM_DUEL_EX_10_CLIMAX", startTime = 1.516f, endTime = 60 + 31.898f },
- 
+
 
             new BgmLoop{name = "BGM_DUEL_F01_ALL", startTime = 24.219f, endTime = 120 + 42.886f },
             new BgmLoop{name = "BGM_DUEL_F02_PHASE_A", startTime = 13.603f, endTime = 60 + 43.324f },
@@ -354,7 +354,12 @@ namespace MDPro3
 
         private static readonly List<int> colosseumBgms = new()
         {
-            1, 2, 3, 4, 5, 6, 7
+            1, 2, 3, 4, 5, 6, 7, 8
+        };
+
+        private static readonly List<int> cyberseBgms = new()
+        {
+            1, 2
         };
 
         private static readonly Dictionary<int, List<int>> fieldBGMs = new()
@@ -369,8 +374,8 @@ namespace MDPro3
             {8, new List<int>{  } },
             {9, new List<int>{ 16, 17 } }, //「魔偶甜点城堡」「鬼计之馆」
             {10, new List<int>{  } },
-            {11, new List<int>{ 26 } },
-            {12, new List<int>{ 19, 18, 25, 36 } }, //「突异变种进化研究所」「电脑的宇宙」「六世坏=天魔世界」「罪宝遗迹」
+            {11, new List<int>{ 26, 50 } }, //Ursarctic, E-Football(MD) 20260106
+            {12, new List<int>{ 19, 25, 36 } }, //「突异变种进化研究所」「六世坏=天魔世界」「罪宝遗迹」
             {13, new List<int>{ 14 } }, //「相剑的灵峰」
             {14, new List<int>{ 22 } }, //「恶魔宫殿」
             {15, new List<int>{ 10, 35 } }, //「冻结的世界」「冻结的世界」
@@ -386,6 +391,13 @@ namespace MDPro3
 			{5, new List<string>{ "BGM_DUEL_EX_05_NORMAL", "BGM_DUEL_EX_05_KEYCARD", "BGM_DUEL_EX_05_CLIMAX" }}, // Xyz CUP 2nd
 			{6, new List<string>{ "BGM_DUEL_EX_06_ALL" }},                                                       // WCQ2025 1st
 			{7, new List<string>{ "BGM_DUEL_EX_07_PHASE_A", "BGM_DUEL_EX_07_PHASE_B" }},                         // WCQ2025 2nd
+			{8, new List<string>{ "BGM_DUEL_EX_10_NORMAL", "BGM_DUEL_EX_10_KEYCARD", "BGM_DUEL_EX_10_CLIMAX" }}, // New Event 20260106?
+		};
+
+        private static readonly Dictionary<int, List<string>> fieldCybBGMs = new() // New list for Cyberse 20260106
+		{
+            {1, new List<string>{ "BGM_DUEL_NORMAL_12", "BGM_DUEL_KEYCARD_12", "BGM_DUEL_CLIMAX_12" }}, // 「电脑的宇宙」
+			{2, new List<string>{ "BGM_DUEL_EX_01" }},    //World Legacy Last stage Cyberse Field 
 		};
 
         private static readonly Dictionary<List<string>, List<int>> specialFieldBGMs = new()
@@ -393,7 +405,7 @@ namespace MDPro3
             //{new List<string>{ "BGM_DUEL_DC01_NORMAL", "BGM_DUEL_DC01_KEYCARD", "BGM_DUEL_DC01_CLIMAX" }, new List<int>{ } }, //DC 1st round //colosseum 
             //{new List<string>{ "BGM_DUEL_DC02_NORMAL", "BGM_DUEL_DC02_KEYCARD", "BGM_DUEL_DC02_CLIMAX" }, new List<int>{ } }, //DC 2nd round its //colosseum 
 
-            {new List<string>{ "BGM_DUEL_EX_01" }, new List<int>{ } },
+            //{new List<string>{ "BGM_DUEL_EX_01" }, new List<int>{ 18 } }, //World Legacy Last stage Cyberse Field 
             //{new List<string>{ "BGM_DUEL_EX_02_NORMAL", "BGM_DUEL_EX_02_KEYCARD", "BGM_DUEL_EX_02_CLIMAX" }, new List<int>{ 8 } }, //「角斗场」
             {new List<string>{ "BGM_DUEL_EX_03_NORMAL", "BGM_DUEL_EX_03_KEYCARD", "BGM_DUEL_EX_03_CLIMAX" }, new List<int>{ 13 } }, //「WCS」
             //{new List<string>{ "BGM_DUEL_EX_04_NORMAL", "BGM_DUEL_EX_04_KEYCARD", "BGM_DUEL_EX_04_CLIMAX" }, new List<int>{ } }, //Xyz CUP 1st round //colosseum 
@@ -402,15 +414,15 @@ namespace MDPro3
             //{new List<string>{ "BGM_DUEL_EX_07_PHASE_A", "BGM_DUEL_EX_07_PHASE_B" }, new List<int>{ } }, //WCQ2025 2nd round //colosseum 20251203
             {new List<string>{ "BGM_DUEL_EX_08_ALL" }, new List<int>{ 45 } }, //WCS2025 //added 20251203
             {new List<string>{ "BGM_DUEL_EX_09_PHASE_A", "BGM_DUEL_EX_09_PHASE_B" }, new List<int>{ 504 } }, //Synchro CUP 20251203
-            {new List<string>{ "BGM_DUEL_EX_10_NORMAL", "BGM_DUEL_EX_10_KEYCARD", "BGM_DUEL_EX_10_CLIMAX" }, new List<int>{  } }, //New Event?
+            //{new List<string>{ "BGM_DUEL_EX_10_NORMAL", "BGM_DUEL_EX_10_KEYCARD", "BGM_DUEL_EX_10_CLIMAX" }, new List<int>{  } }, //New Event?
             
             {new List<string>{ "BGM_DUEL_F01_ALL" }, new List<int>{ 38 } }, //「邪恶双子」
-            {new List<string>{ "BGM_DUEL_F02_PHASE_A", "BGM_DUEL_F02_PHASE_B" }, new List<int>{ } },
+            {new List<string>{ "BGM_DUEL_F02_PHASE_A", "BGM_DUEL_F02_PHASE_B" }, new List<int>{ 34 } }, //Lost world 20260106
             {new List<string>{ "BGM_DUEL_F03_PHASE_A", "BGM_DUEL_F03_PHASE_B", "BGM_DUEL_F03_PHASE_C" }, new List<int>{ 40 } }, //「闪刀行动模拟区域」
             {new List<string>{ "BGM_DUEL_F04_PHASE_A", "BGM_DUEL_F04_PHASE_B" }, new List<int>{ 42 } }, //Despia 「烙印剧城 惨绝戏 暂定」
             {new List<string>{ "BGM_DUEL_F05_PHASE_A", "BGM_DUEL_F05_PHASE_B" }, new List<int>{ 41 } }, //Graveyard of Myriad Souls //added 20251203
             {new List<string>{ "BGM_DUEL_F06_PHASE_A", "BGM_DUEL_F06_PHASE_B" }, new List<int>{ 47 } }, //White Forest //added 20251203
-            {new List<string>{ "BGM_DUEL_F07_PHASE_A", "BGM_DUEL_F07_PHASE_B" }, new List<int>{ 46, 50 } }, //E-Football //added 20251203
+            {new List<string>{ "BGM_DUEL_F07_PHASE_A", "BGM_DUEL_F07_PHASE_B" }, new List<int>{ 46 } }, //E-Football //added 20251203
             {new List<string>{ "BGM_DUEL_F08_PHASE_A", "BGM_DUEL_F08_PHASE_B" }, new List<int>{ 39 } }, //Labrynth //added 20251203
 
             //{new List<string>{ "BGM_DUEL_RATE01_NORMAL", "BGM_DUEL_RATE01_KEYCARD", "BGM_DUEL_RATE01_CLIMAX" }, new List<int>{ } },
@@ -448,6 +460,14 @@ namespace MDPro3
             {
                 var index = colosseumBgms[UnityEngine.Random.Range(0, colosseumBgms.Count)];
                 if (fieldColBGMs.TryGetValue(index, out var colBgmList))
+                {
+                    return colBgmList;
+                }
+            }
+            if (fieldId == 18)//add cyberseBgms 20260106
+            {
+                var index = cyberseBgms[UnityEngine.Random.Range(0, colosseumBgms.Count)];
+                if (fieldCybBGMs.TryGetValue(index, out var colBgmList))
                 {
                     return colBgmList;
                 }
