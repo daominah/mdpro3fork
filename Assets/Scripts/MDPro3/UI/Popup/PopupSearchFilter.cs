@@ -81,8 +81,6 @@ namespace MDPro3.UI.Popup
                     inputYearFrom.text = f[22].ToString();
                 if (f[23] > 0)
                     inputYearTo.text = f[23].ToString();
-                if (f[24] > 0)
-                    inputDefenceFrom.text = f[24].ToString();
             }
             Manager.GetElement<SelectionButton>("ButtonPack")
                 .SetButtonText(CardCollectionView.packName == string.Empty 

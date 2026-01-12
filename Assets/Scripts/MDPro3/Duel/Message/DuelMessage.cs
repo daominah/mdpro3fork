@@ -2926,9 +2926,9 @@ namespace MDPro3.Duel
             }
             bool allOnfield = cardsInSelection.All(c => c.p.InLocation(CardLocation.Onfield) && !c.p.InLocation(CardLocation.Overlay));
             if (allOnfield)
-                Core.FieldSelect(ES_selectHint, cardsInSelection, ES_min, ES_max, cancelable, false);
+                Core.FieldSelect(ES_selectHint, cardsInSelection, ES_min, ES_max, cancelable, ES_min == 0);
             else
-                Core.GetUI<OcgCoreUI>().ShowPopupSelectCard(ES_selectHint, cardsInSelection, ES_min, ES_max, cancelable, false);
+                Core.GetUI<OcgCoreUI>().ShowPopupSelectCard(ES_selectHint, cardsInSelection, ES_min, ES_max, cancelable, ES_min == 0);
 
             await UniTask.WaitUntil(() => dispatcher.playerResponed);
         }
