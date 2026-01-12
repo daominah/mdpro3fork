@@ -113,12 +113,13 @@ namespace MDPro3
         public int levelForSelect_2 = 0;
         public int counterCanCount = 0;
         public int counterSelected = 0;
-        public List<GameCard> targets = new List<GameCard>();
-        public List<GameCard> effectTargets = new List<GameCard>();
-        public List<GameCard> overlays = new List<GameCard>();
+        public List<GameCard> targets = new();
+        public List<GameCard> effectTargets = new();
+        public List<GameCard> overlays = new();
         public GameCard overlayParent;
         public GameCard equipedCard;
         public List<Effect> effects = new();
+        public bool forSelect;
 
         public int overFatherCount;
         private const float closeupLineColorIntensity = 1.5f;
@@ -1034,7 +1035,13 @@ namespace MDPro3
             if ( nextMoveAction != null)
             {
                 model.SetActive(false);
-                nextMoveAction.Invoke();
+                var code = data.Id;
+                if (code == 0)
+                {
+                    code = Program.instance.ocgcore.GetNextConfirmedCardCode();
+                    SetCode(code);
+                }
+                nextMoveAction.Invoke(code);
                 await UniTask.WaitForSeconds(nextMoveActionDuration);
                 return;
             }
@@ -1258,7 +1265,7 @@ namespace MDPro3
                     model.transform.position = fx.transform.position;
                     model.transform.localEulerAngles = fx.transform.localEulerAngles;
                     sequence.Pause();
-                    if(data.Id == 0)
+                    if (data.Id == 0)
                     {
                         var code = Program.instance.ocgcore.GetUpdateDataIdByGameCard(this);
                         SetCode(code);

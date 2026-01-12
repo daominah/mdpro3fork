@@ -830,15 +830,18 @@ namespace Percy
                     int cs = raw[10];
                     int cp = raw[11];
 
-                    //if (!Convert.ToBoolean(cl & ((int)CardLocation.Grave + (int)CardLocation.Overlay)) &&
-                    //    Convert.ToBoolean(cl & ((int)CardLocation.Deck + (int)CardLocation.Hand))
-                    //    || Convert.ToBoolean(cp & (int)CardPosition.FaceDown))
-                    //{
-                    //    raw[0] = 0;
-                    //    raw[1] = 0;
-                    //    raw[2] = 0;
-                    //    raw[3] = 0;
-                    //}
+                    if (!OcgCore.nextMoveNeedCode)
+                    {
+                        if (!Convert.ToBoolean(cl & ((int)CardLocation.Grave + (int)CardLocation.Overlay)) &&
+                            Convert.ToBoolean(cl & ((int)CardLocation.Deck + (int)CardLocation.Hand))
+                            || Convert.ToBoolean(cp & (int)CardPosition.FaceDown))
+                        {
+                            raw[0] = 0;
+                            raw[1] = 0;
+                            raw[2] = 0;
+                            raw[3] = 0;
+                        }
+                    }
                     currentWriter.Write(raw);
                     break;
                 case GameMessage.PosChange:

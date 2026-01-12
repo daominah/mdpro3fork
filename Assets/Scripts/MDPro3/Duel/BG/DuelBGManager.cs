@@ -966,18 +966,22 @@ namespace MDPro3.Duel
             {
                 card.effects.Clear();
                 card.ClearButtons();
-                if ((card.p.location & (uint)CardLocation.Deck) > 0)
+                if (card.forSelect)
                 {
-                    if (deckReserved)
+                    card.forSelect = false;
+                    if (card.p.InLocation(CardLocation.Deck))
                     {
-                        if (card.p.controller == 0 && card.p.sequence != myMaxDeck - 1)
+                        if (deckReserved)
+                        {
+                            if (card.p.controller == 0 && card.p.sequence != myMaxDeck - 1)
+                                card.EraseData();
+                            if (card.p.controller == 1 && card.p.sequence != opMaxDeck - 1)
+                                card.EraseData();
+                        }
+                        else
+                        {
                             card.EraseData();
-                        if (card.p.controller == 1 && card.p.sequence != opMaxDeck - 1)
-                            card.EraseData();
-                    }
-                    else
-                    {
-                        card.EraseData();
+                        }
                     }
                 }
             }
@@ -1689,15 +1693,14 @@ namespace MDPro3.Duel
                 // 闪刀起动-交闪
                 else if (code == 63166095 || code == 63166096)
                 {
-                    int code2 = 0;
                     nextMoveActionDuration = 2.2f + 5f;
-                    nextMoveAction = () =>
+                    nextMoveNeedCode = true;
+                    nextMoveAction = (code2) =>
                     {
                         effect = GetCardEffectPrefab(code == 63166095 ? "Ef13671" : "Ef03434");
                         var manager = effect.GetComponent<ElementObjectManager>();
                         nextMoveManager = manager;
                         var renderer = manager.GetElement<Renderer>("SummonPosDummy");
-                        code2 = Program.instance.ocgcore.GetNextConfirmedCardCode();
                         _ = Program.instance.texture_.LoadCardToRendererWithMaterialAsync(renderer, code2, true);
                         UnityEngine.Object.Destroy(effect, 2.2f);
                     };
@@ -1709,7 +1712,6 @@ namespace MDPro3.Duel
 
                         var target = nextMoveManager.GetElement<Transform>("DummyCard01");
                         var card = lastMoveCard;
-                        card.SetCode(code2);
                         card.model.SetActive(true);
                         card.ResetModelRotation();
                         card.model.transform.position = target.position;

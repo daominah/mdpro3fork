@@ -36,18 +36,19 @@ namespace MDPro3.UI
         public PopupDuelSelectCard manager;
 
         public GameCard card;
-        static Color opColor = new Color(0.9f, 0, 0, 1);
+        private static Color opColor = new(0.9f, 0, 0, 1);
 
         public bool selected;
         public bool unselectable;
-        static Color unselectableColor = new Color(0.5f, 0.5f, 0.5f, 1f);
+        private static Color unselectableColor = new(0.5f, 0.5f, 0.5f, 1f);
         public bool preselected;
-        static float doubleClickTime = 0.2f;
+        private static readonly float doubleClickTime = 0.2f;
 
 
         private void Start()
         {
-            _ = RefreshCard(card.GetValidData().Id);
+            _ = RefreshCard(card.GetData().Id);
+            card.forSelect = true;
 
             if ((card.p.location & (uint)CardLocation.Search) > 0)
             {

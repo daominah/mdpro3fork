@@ -122,7 +122,7 @@ namespace MDPro3.Servant
         private static bool noMoreWait;
 
         public static Action endingAction;
-        public static Action nextMoveAction;
+        public static Action<int> nextMoveAction;
         public static float nextMoveActionDuration;
         public static ElementObjectManager nextMoveManager;
         public static Action nextEventAction;
@@ -147,6 +147,8 @@ namespace MDPro3.Servant
         public static int movingToOpGrave = 0;
         public static int movingToOpExclude = 0;
         public static uint nextMoveMessageController;
+
+        public static bool nextMoveNeedCode;
 
         #region Config Params
 
@@ -939,7 +941,7 @@ namespace MDPro3.Servant
                     currentMessage = (GameMessage)currentPackage.Function;
 
                     //if (currentMessage != GameMessage.UpdateData)
-                    //    Debug.Log($"GameMessage: {currentMessage}");
+                        //Debug.Log($"GameMessage: {currentMessage}");
 
                     try
                     {

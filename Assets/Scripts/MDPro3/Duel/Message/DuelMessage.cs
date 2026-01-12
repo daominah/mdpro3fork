@@ -720,6 +720,7 @@ namespace MDPro3.Duel
             lastMoveCard = card;
             card.SetCode(code);
             to.reason = reason;
+            nextMoveNeedCode = false;
 
             if(CanSyncNextMove(from, to))
                 _ = card.MoveAsync(to);
