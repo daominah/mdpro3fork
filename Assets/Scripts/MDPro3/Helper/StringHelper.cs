@@ -400,7 +400,7 @@ namespace MDPro3
 
             var bracketLeft = "【";
             var bracketRight = "】";
-            if (render && Language.CardNeedSmallBracket(data.isPre ? Language.GetPrereleaseConfig() : Language.GetCardConfig()))
+            if (render && Language.NeedSmallBracket(data.isPre ? Language.GetPrereleaseConfig() : Language.GetCardConfig()))
             {
                 bracketLeft = "[";
                 bracketRight = "]";

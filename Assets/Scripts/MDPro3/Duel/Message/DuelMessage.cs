@@ -11,7 +11,6 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using UnityEngine;
-using UnityEngine.Playables;
 using YgomSystem.ElementSystem;
 using static MDPro3.Servant.OcgCore;
 
@@ -1971,8 +1970,6 @@ namespace MDPro3.Duel
             var player = myTurn ? 0 : 1;
             PhaseButtonHandler.SetTextBelow(string.Empty);
 
-
-
             if (duelPhase == DuelPhase.Draw)
                 PhaseButtonHandler.SetTextMain("Draw");
             else if(duelPhase == DuelPhase.Standby)
@@ -2044,7 +2041,7 @@ namespace MDPro3.Duel
 
         protected override async UniTask GameMessage_ConfirmCards(BinaryReader reader)
         {
-            var player = LocalPlayer(reader.ReadByte());
+            /*var player = LocalPlayer(*/reader.ReadByte()/*)*/;
             if (condition != Condition.Replay || CurrentReplayUseYRP2)
                 reader.ReadByte();
 
@@ -2217,8 +2214,7 @@ namespace MDPro3.Duel
 
         protected override async UniTask GameMessage_RandomSelected(BinaryReader reader)
         {
-            //var player = LocalPlayer(reader.ReadByte());
-            reader.ReadByte();
+            /*var player = LocalPlayer(*/reader.ReadByte()/*)*/;
             var count = reader.ReadByte();
             for (var i = 0; i < count; i++)
             {
@@ -2472,8 +2468,7 @@ namespace MDPro3.Duel
                 return;
             duelBGManager.SetPlayableGuide(true);
 
-            //var player = LocalPlayer(reader.ReadChar());
-            reader.ReadChar();
+            /*var player = LocalPlayer(*/reader.ReadChar()/*)*/;
 
             var count = reader.ReadByte();
             for (var i = 0; i < count; i++)
@@ -2608,8 +2603,7 @@ namespace MDPro3.Duel
                 return;
             duelBGManager.SetPlayableGuide(true);
 
-            //var player = LocalPlayer(reader.ReadChar());
-            reader.ReadChar();
+            /*var player = LocalPlayer(*/reader.ReadChar()/*)*/;
 
             var count = reader.ReadByte();
             for (var i = 0; i < count; i++)
@@ -2668,8 +2662,7 @@ namespace MDPro3.Duel
                 return;
             duelBGManager.SetPlayableGuide(true);
 
-            //var player = LocalPlayer(reader.ReadByte());
-            reader.ReadByte();
+            /*var player = LocalPlayer(*/reader.ReadByte()/*)*/;
 
             var desc = StringHelper.Get(reader.ReadInt32());
             var title = InterString.Get("选择");
@@ -2706,8 +2699,7 @@ namespace MDPro3.Duel
                 return;
             duelBGManager.SetPlayableGuide(true);
 
-            //var player = LocalPlayer(reader.ReadByte());
-            reader.ReadByte();
+            /*var player = LocalPlayer(*/reader.ReadByte()/*)*/;
 
             /*var code = */reader.ReadInt32();
             var gps = reader.ReadShortGPS();
@@ -2755,7 +2747,7 @@ namespace MDPro3.Duel
                 return;
             duelBGManager.SetPlayableGuide(true);
 
-            var player = LocalPlayer(reader.ReadChar());
+            /*var player = LocalPlayer(*/reader.ReadChar()/*)*/;
             var count = reader.ReadByte();
             int spcount = reader.ReadByte();
             var hint0 = reader.ReadInt32();
@@ -2887,7 +2879,7 @@ namespace MDPro3.Duel
                 return;
             duelBGManager.SetPlayableGuide(true);
 
-            var player = LocalPlayer(reader.ReadByte());
+            /*var player = LocalPlayer(*/reader.ReadByte()/*)*/;
             var cancelable = reader.ReadByte() != 0;
             ES_min = reader.ReadByte();
             ES_max = reader.ReadByte();
@@ -2939,8 +2931,7 @@ namespace MDPro3.Duel
                 return;
             duelBGManager.SetPlayableGuide(true);
 
-            var player = LocalPlayer(reader.ReadByte());
-
+            /*var player = LocalPlayer(*/reader.ReadByte()/*)*/;
             var finishable = reader.ReadByte() != 0;
             var cancelable = reader.ReadByte() != 0 || finishable;
             ES_min = reader.ReadByte();
@@ -2984,7 +2975,7 @@ namespace MDPro3.Duel
             duelBGManager.SetPlayableGuide(true);
 
             ES_overFlow = reader.ReadByte() != 0;
-            var player = LocalPlayer(reader.ReadByte());
+            /*var player = LocalPlayer(*/reader.ReadByte()/*)*/;
             ES_level = reader.ReadInt32();
             ES_min = reader.ReadByte();
             ES_max = reader.ReadByte();
@@ -3112,7 +3103,7 @@ namespace MDPro3.Duel
                 return;
             duelBGManager.SetPlayableGuide(true);
 
-            var player = LocalPlayer(reader.ReadByte());
+            /*var player = LocalPlayer(*/reader.ReadByte()/*)*/;
             var cancelable = reader.ReadByte() != 0;
             ES_min = reader.ReadByte();
             ES_max = reader.ReadByte();
@@ -3151,7 +3142,7 @@ namespace MDPro3.Duel
                 return;
             duelBGManager.SetPlayableGuide(true);
 
-            var player = LocalPlayer(reader.ReadByte());
+            /*var player = LocalPlayer(*/reader.ReadByte()/*)*/;
             var count = reader.ReadByte();
             if (count > 1)
             {
@@ -3182,7 +3173,7 @@ namespace MDPro3.Duel
                 return;
             duelBGManager.SetPlayableGuide(true);
 
-            var player = reader.ReadByte();
+            /*var player = LocalPlayer(*/reader.ReadByte()/*)*/;
             var min = reader.ReadByte();
             if (min == 0)
                 min = 1;
@@ -3235,7 +3226,7 @@ namespace MDPro3.Duel
                 return;
             duelBGManager.SetPlayableGuide(true);
 
-            var player = LocalPlayer(reader.ReadByte());
+            /*var player = LocalPlayer(*/reader.ReadByte()/*)*/;
             var code = reader.ReadInt32();
             int positions = reader.ReadByte();
             var op1 = 0x1;
@@ -3279,7 +3270,7 @@ namespace MDPro3.Duel
 
             var length_of_message = reader.BaseStream.Length;
             var version1033b = (length_of_message - 5) % 8 == 0;
-            var player = LocalPlayer(reader.ReadByte());
+            /*var player = LocalPlayer(*/reader.ReadByte()/*)*/;
             reader.ReadInt16();
             if (version1033b)
                 ES_min = reader.ReadByte();
@@ -3317,7 +3308,7 @@ namespace MDPro3.Duel
                 return;
             duelBGManager.SetPlayableGuide(true);
 
-            var player = LocalPlayer(reader.ReadByte());
+            /*var player = LocalPlayer(*/reader.ReadByte()/*)*/;
             var ES_sortSum = 0;
             var count = reader.ReadByte();
             List<GameCard> sortingCards = new List<GameCard>();

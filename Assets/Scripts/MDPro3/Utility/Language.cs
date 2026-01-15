@@ -65,25 +65,7 @@ namespace MDPro3.Utility
             return string.Empty;
         }
 
-        public static bool UseLatin()
-        {
-            var config = GetConfig();
-            if (config == English
-                || config == Spanish
-                || config == Portuguese
-                || config == French
-                || config == German
-                || config == Italian)
-                return true;
-            return false;
-        }
-
-        public static bool CardUseLatin()
-        {
-            return CardUseLatin(GetCardConfig());
-        }
-
-        public static bool CardUseLatin(string language)
+        public static bool UseLatin(string language)
         {
             if (language == English
                 || language == Spanish
@@ -95,21 +77,50 @@ namespace MDPro3.Utility
             return false;
         }
 
-        public static bool CardNeedSmallBracket()
+        public static bool UseLatin()
         {
-            return CardNeedSmallBracket(GetCardConfig());
+            return UseLatin(GetConfig());
         }
 
-        public static bool CardNeedSmallBracket(string language)
+        public static bool CardUseLatin()
         {
-            if (CardUseLatin() || language == Korean)
+            return UseLatin(GetCardConfig());
+        }
+
+        public static bool NeedSmallBracket(string language)
+        {
+            if (UseLatin(language) || language == Korean)
                 return true;
             return false;
         }
 
+        public static bool NeedSmallBracket()
+        {
+            return NeedSmallBracket(GetConfig());
+        }
+
+        public static bool CardNeedSmallBracket()
+        {
+            return NeedSmallBracket(GetCardConfig());
+        }
+
+        public static string GetLeftBracket()
+        {
+            if (NeedSmallBracket())
+                return "[";
+            return "【";
+        }
+
+        public static string GetRightBracket()
+        {
+            if (NeedSmallBracket())
+                return "]";
+            return "】";
+        }
+
         public static bool NeedSpSummonString(string language)
         {
-            return !CardUseLatin(language);
+            return !UseLatin(language);
         }
 
         public static string GetMasterDuelLanguage(string language)

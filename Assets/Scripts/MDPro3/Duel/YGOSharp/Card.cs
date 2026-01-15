@@ -368,19 +368,19 @@ namespace MDPro3.Duel.YGOSharp
             var returnValue = GetSetName();
             if (returnValue.Length > 0)
             {
-                returnValue = $"【{returnValue}】";
+                returnValue = $"{Language.GetLeftBracket()}{returnValue}{Language.GetRightBracket()}";
             }
             return returnValue;
         }
 
         public string GetIdWithBracket()
         {
-            var re = $"【{Id}";
-            if (Alias != 0)
+            var re = $"{Language.GetLeftBracket()}{Id}";
+            if (Alias != 0 && Alias != Id)
             {
                 re += $"/{Alias}";
             }
-            re += "】";
+            re += Language.GetRightBracket();
             return re;
         }
 
@@ -463,8 +463,8 @@ namespace MDPro3.Duel.YGOSharp
             var re = string.Empty;
             if (Id == 0)
                 return re;
-            var bracketLeft = "【";
-            var bracketRight = "】";
+            var bracketLeft = Language.GetLeftBracket();
+            var bracketRight = Language.GetRightBracket();
             if (HasType(CardType.Monster))
                 re = $"{bracketLeft}{InterString.Get("[?]族", GetRaceString())}{Program.STRING_SLASH}{GetSecondType()}{bracketRight}";
             else
@@ -480,7 +480,7 @@ namespace MDPro3.Duel.YGOSharp
 
             var bracketLeft = "【";
             var bracketRight = "】";
-            if (Language.CardNeedSmallBracket(isPre ? Language.GetPrereleaseConfig() : Language.GetCardConfig()))
+            if (Language.NeedSmallBracket(isPre ? Language.GetPrereleaseConfig() : Language.GetCardConfig()))
             {
                 bracketLeft = "[";
                 bracketRight = "]";
@@ -507,7 +507,7 @@ namespace MDPro3.Duel.YGOSharp
             }
 
             re = re.Replace(Program.STRING_SLASH, 
-                (isPre ? Language.CardUseLatin(Language.GetPrereleaseConfig()) : Language.CardUseLatin()) 
+                (isPre ? Language.UseLatin(Language.GetPrereleaseConfig()) : Language.CardUseLatin()) 
                 ? CardRenderer.SMALL_SLASH : CardRenderer.BIG_SLASH);
 
             return re;
@@ -521,7 +521,7 @@ namespace MDPro3.Duel.YGOSharp
 
             var bracketLeft = "【";
             var bracketRight = "】";
-            if (Language.CardNeedSmallBracket(isPre ? Language.GetPrereleaseConfig() : Language.GetCardConfig()))
+            if (Language.NeedSmallBracket(isPre ? Language.GetPrereleaseConfig() : Language.GetCardConfig()))
             {
                 bracketLeft = "[";
                 bracketRight = "]";

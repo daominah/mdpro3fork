@@ -832,12 +832,12 @@ namespace MDPro3
             //        .Replace("\r\n⑨", "⑨");
             //}
 
-            if (!Language.CardUseLatin(language))
+            if (!Language.UseLatin(language))
                 description = description.Replace(Program.STRING_SLASH, BIG_SLASH);
             else
                 description = description.Replace(Program.STRING_SLASH, SMALL_SLASH);
 
-            if (!Language.CardUseLatin(language))
+            if (!Language.UseLatin(language))
                 description = description.Replace(" ", "\u00A0");
             description = description.Replace($"{Program.STRING_LINE_BREAK}{Program.STRING_LINE_BREAK}", Program.STRING_LINE_BREAK);
             return description;
