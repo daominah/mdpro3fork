@@ -22,7 +22,12 @@ namespace MDPro3.UI
         private GameObject chatItemOp;
         private GameObject chatItemSystem;
         private List<GameObject> chatItems = new();
-        private SortedDictionary<int, string> cachedDialog = new();
+        private struct ChatMessage
+        {
+            public int player;
+            public string content;
+        }
+        private readonly List<ChatMessage> cachedMessages = new();
 
         protected override void Awake()
         {
@@ -118,7 +123,7 @@ namespace MDPro3.UI
             MyTag,
             Op,
             OpTag,
-            WatchMe,
+            WatchMe, // 本机处于观战时的一号位
             WatchMyTag,
             WatchOp,
             WatchOpTag,
@@ -129,43 +134,25 @@ namespace MDPro3.UI
         {
             if (RoomServant.CoreShowing == 1)
             {
-                cachedDialog.Add(player, content);
+                cachedMessages.Add(new ChatMessage
+                {
+                    player = player,
+                    content = content
+                });
                 return;
             }
-            if (RoomServant.CoreShowing == 2 && cachedDialog.Count > 0)
+            if (RoomServant.CoreShowing == 2 && cachedMessages.Count > 0)
             {
-                var players = new List<int>();
-                var contents = new List<string>();
-                foreach (var element in cachedDialog)
-                {
-                    players.Add(element.Key);
-                    contents.Add(element.Value);
-                }
-                cachedDialog.Clear();
-                for (int i = 0; i < players.Count; i++)
-                    AddChatItem(players[i], contents[i]);
+                var cacehd = new List<ChatMessage>(cachedMessages);
+                cachedMessages.Clear();
+                for (int i = 0; i < cachedMessages.Count; i++)
+                    AddChatItem(cacehd[i].player, cacehd[i].content);
             }
 
             if (player == -2)
                 return;
 
-            if (RoomServant.CoreShowing == 2 && player < 4)
-            {
-                if (RoomServant.Mode != 2)
-                {
-                    if (OcgCore.isFirst && RoomServant.SelfType == 1
-                        || !OcgCore.isFirst && RoomServant.SelfType == 0)
-                        player = (player + 1) % 2;
-                }
-                else
-                {
-                    if (OcgCore.isFirst && RoomServant.SelfType > 1
-                        || !OcgCore.isFirst && RoomServant.SelfType < 2)
-                        player = (player + 2) % 4;
-                }
-            }
-
-            var nickName = RoomServant.players[player]?.name;
+            var nickName = GetPlayerName(player);
             GameObject item = null;
             var position = GetPlayerPositon(player);
             switch (position)
@@ -229,9 +216,11 @@ namespace MDPro3.UI
             scrollRect.content.sizeDelta = new Vector2(0, chatItems.Count * 150);
             scrollRect.DOVerticalNormalizedPos(0, 0.2f);
 
-            var p = new Package();
-            p.Function = (int)GameMessage.sibyl_chat;
-            p.Data = new BinaryMaster();
+            var p = new Package
+            {
+                Function = (int)GameMessage.sibyl_chat,
+                Data = new BinaryMaster()
+            };
             p.Data.writer.Write(player);
             p.Data.writer.WriteUnicode(content, content.Length + 1);
             TcpHelper.AddRecordLine(p);
@@ -242,8 +231,35 @@ namespace MDPro3.UI
                 MessageManager.Cast(content);
         }
 
+        private static int GetRoomPlayerIndex(int player)
+        {
+            if (!Program.instance.ocgcore.showing)
+                return player;
+            if(player > -1 && player < 4 && !OcgCore.isFirst)
+                return player ^ 2;
+            return player;
+        }
+
+        private static string GetPlayerConfigName(PlayerPosition position)
+        {
+            return position switch
+            {
+                PlayerPosition.Me => Config.Get("DuelPlayerName0", Config.EMPTY_STRING),
+                PlayerPosition.MyTag => Config.Get("DuelPlayerName0Tag", Config.EMPTY_STRING),
+                PlayerPosition.Op => Config.Get("DuelPlayerName1", Config.EMPTY_STRING),
+                PlayerPosition.OpTag => Config.Get("DuelPlayerName1Tag", Config.EMPTY_STRING),
+                PlayerPosition.WatchMe => Config.Get("WatchPlayerName0", Config.EMPTY_STRING),
+                PlayerPosition.WatchMyTag => Config.Get("WatchPlayerName0Tag", Config.EMPTY_STRING),
+                PlayerPosition.WatchOp => Config.Get("WatchPlayerName1", Config.EMPTY_STRING),
+                PlayerPosition.WatchOpTag => Config.Get("WatchPlayerName1Tag", Config.EMPTY_STRING),
+                _ => string.Empty,
+            };
+        }
+
         public static string GetPlayerName(int player)
         {
+            var playerPosition = GetPlayerPositon(player);
+            player = GetRoomPlayerIndex(player);
             string nickName = "";
             switch (player)
             {
@@ -255,7 +271,7 @@ namespace MDPro3.UI
                 case 2: //host tag
                 case 3: //client tag
                     nickName = RoomServant.players[player].name;
-                    var configName = GetConfigPlayerName(GetPlayerPositon(player));
+                    var configName = GetPlayerConfigName(playerPosition);
                     if (configName.Length > 0)
                         nickName = configName;
                     break;
@@ -275,33 +291,9 @@ namespace MDPro3.UI
             return nickName;
         }
 
-        public static string GetConfigPlayerName(PlayerPosition position)
-        {
-            switch (position)
-            {
-                case PlayerPosition.Me:
-                    return Config.Get("DuelPlayerName0", Config.EMPTY_STRING);
-                case PlayerPosition.MyTag:
-                    return Config.Get("DuelPlayerName0Tag", Config.EMPTY_STRING);
-                case PlayerPosition.Op:
-                    return Config.Get("DuelPlayerName1", Config.EMPTY_STRING);
-                case PlayerPosition.OpTag:
-                    return Config.Get("DuelPlayerName1Tag", Config.EMPTY_STRING);
-                case PlayerPosition.WatchMe:
-                    return Config.Get("WatchPlayerName0", Config.EMPTY_STRING);
-                case PlayerPosition.WatchMyTag:
-                    return Config.Get("WatchPlayerName0Tag", Config.EMPTY_STRING);
-                case PlayerPosition.WatchOp:
-                    return Config.Get("WatchPlayerName1", Config.EMPTY_STRING);
-                case PlayerPosition.WatchOpTag:
-                    return Config.Get("WatchPlayerName1Tag", Config.EMPTY_STRING);
-                default:
-                    return string.Empty;
-            }
-        }
-
         public static PlayerPosition GetPlayerPositon(int player)
         {
+            player = GetRoomPlayerIndex(player);
             PlayerPosition position;
             if (player < 4)
             {

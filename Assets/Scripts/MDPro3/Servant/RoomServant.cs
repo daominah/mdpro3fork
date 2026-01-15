@@ -112,7 +112,6 @@ namespace MDPro3.Servant
             TcpHelper.CtosMessage_Response(buffer);
         }
 
-
         public bool RoomIsFull()
         {
             int playerSeats = 2;
@@ -446,6 +445,8 @@ namespace MDPro3.Servant
 
             if (showing)
                 Hide(0);
+
+            UIManager.HideExitButton(TransitionTime);
         }
 
         public void StocMessage_DuelEnd(BinaryReader r)
@@ -465,12 +466,9 @@ namespace MDPro3.Servant
 
         public void StocMessage_Chat(BinaryReader r)
         {
-
             int player = r.ReadInt16();
             var length = r.BaseStream.Length - 3;
             var content = r.ReadUnicode((int)length);
-            //Debug.Log("StocMessage_Chat: " + player + "-" + content);
-
             Program.instance.ui_.chatPanel.AddChatItem(player, content);
         }
 
