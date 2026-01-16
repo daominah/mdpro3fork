@@ -108,6 +108,9 @@ Se ha fabricado con los restos de "<category id='89'/>".
 [IDS_ITEMDESC.ID1000041]
 Una bestia demoníaca que duerme como un tronco.
 Para alimentarse de los sueños de otros, su cuerpo produce un olor somnoliento, pero que también la duerme a ella.
+[IDS_ITEMDESC.ID1000042]
+¡El goloso "<card mrk='21371'/>"!
+Atrapa a todos esos deliciosos monstruos que viven en un mundo exquisitamente estúpido.
 [IDS_ITEMDESC.ID1001001]
 Una taza de fideos instantáneos que parece que te otorgaran el poder de Invocar por Fusión.
 ¡No porque sean instantáneos significa que sean malos!
@@ -698,7 +701,8 @@ Vuela a través del bosque sagrado para que todo pueda ser revelado.
 Un icono que representa a una gran bruja cuyos ojos pueden controlar la mente de los demás.
 Se ha enfrentado a "<card mrk='20747'/>" en una lucha mortal por la supervivencia.
 [IDS_ITEMDESC.ID1010120]
-coming soon
+Un icono que representa a monstruos exquisitamente estúpidos nacidos de la oscuridad.
+Parece ser que llevan dulces en la cabeza porque les hace sentir mejor.
 [IDS_ITEMDESC.ID1010121]
 Un icono que representa a una misteriosa cuentacuentos.
 La historia de la "<card mrk='21195'/>" ha pervivido.
@@ -726,7 +730,8 @@ Gracias a la evolución de los teléfonos celulares, se ha asegurado la clave pa
 Icono que representa a un demonio rojizo que alza un gran saco.
 Tiene una gran cicatriz en forma de cruz en el pecho.
 [IDS_ITEMDESC.ID1010130]
-coming soon
+Un icono que representa a "<card mrk='7188'/>" siendo venerado.
+Sigue sin ser consciente de lo que está por venir.
 [IDS_ITEMDESC.ID1010131]
 Un icono que representa el emblema de la Academia.
 En caso de emergencia, los alumnos deben reunirse de inmediato.
@@ -1164,6 +1169,9 @@ Un icono que representa una escena de Yu-Gi-Oh! CARD GAME THE CHRONICLES.
 [IDS_ITEMDESC.ID1013006]
 Un icono que representa una escena de Yu-Gi-Oh! CARD GAME THE CHRONICLES.
 ¿Su encuentro fue obra del destino o del azar? Lo que provocó fue una serie de sucesos que dejaron una marca indeleble en el mundo abisal.
+[IDS_ITEMDESC.ID1013007]
+Un icono que tienen un diseño clave de Yu-Gi-Oh! CARD GAME THE CHRONICLES.
+Viajando junto a espíritus. Baila, flor solitaria, con todo tu intenso color.
 [IDS_ITEMDESC.ID1013008]
 Un icono exclusivo que se ofrece en ocasiones especiales.
 [IDS_ITEMDESC.ID1013009]
@@ -1755,6 +1763,12 @@ Ganado victoria tras victoria frente a feroces competidores en la 2nd STAGE.
 [IDS_ITEMDESC.ID1020194]
 Un título otorgado a los duelistas que llegaron a la 2nd Stage en la DC 2025 DEC.
 Es la prueba de tu logro de haber superado la reñida 1st Stage.
+[IDS_ITEMDESC.ID1020195]
+Un título que se otorga a los duelistas que han logrado resultados notables en el "Festival de Fusión y Sincronía +".
+El orgullo de los duelistas despierta a causa de las cartas que más atesoran.
+[IDS_ITEMDESC.ID1020196]
+Un título que se concede a los duelistas que han aprovechado el poder de los monstruos legendarios y se han labrado una buena reputación.
+Una nueva leyenda se forja como resultado del enfrentamiento con el mejor duelista de todos los tiempos.
 [IDS_ITEMDESC.ID1020197]
 Un título que se otorga a los duelistas que han logrado buenos resultados en una batalla entre tres poderes.
 Sea cual sea la situación, tus habilidades brillarán con luz propia.
@@ -2409,14 +2423,17 @@ Para quienes danzan entre brillantes y plateados rayos de luna.
 Protectores que representan una criatura tan eufórica por el dinero recibido por el nuevo año que su alma ha abandonado su cuerpo.
 Para quienes celebran el nuevo año.
 [IDS_ITEMDESC.ID1070145]
-coming soon
+Protectores que representan la pose característica de un héroe que corre a la velocidad de la luz.
+Para aquellos que son verdaderas estrellas.
 [IDS_ITEMDESC.ID1070146]
-coming soon
+Protectores que representan a un rey supremo que gobierna a todos los demonios.
+Para aquellos que conquistan incluso otras dimensiones.
 [IDS_ITEMDESC.ID1070147]
 Protectores que representan a un "<card mrk='11765'/>" herido, bramando al cielo.
 Para quienes perciben el mundo tan verdaderamente fugaz como es.
 [IDS_ITEMDESC.ID1070148]
-coming soon
+Protectores que representan un ser que juzga los pecados de los demás y administra el castigo definitivo.
+Para quienes están preparados para la muerte.
 [IDS_ITEMDESC.ID1070149]
 Protectores que representan a un luchador con propulsores avanzados de alto rendimiento.
 Para quienes hacen uso de dotes de combate variables.
@@ -2553,6 +2570,9 @@ Para quienes nunca quieren mostrarse como son ante la persona que más quieren.
 [IDS_ITEMDESC.ID1072007]
 Protectores que representan un dúo con una colaboración impecable, pero personalidades en discordia.
 Para quienes se aventuran en dominios inexplorados.
+[IDS_ITEMDESC.ID1072008]
+Protectores que representan a "<card mrk='21371'/>" atrapando algo.
+Para quienes tienen ganas de algo delicioso.
 [IDS_ITEMDESC.ID1073001]
 Protectores con un diseño del Yu-Gi-Oh! World Championship 2023: MASTER DUEL.
 Para aquellos que aspiran a convertirse en los mejores del mundo.
@@ -2627,6 +2647,9 @@ Protectores que tienen un diseño clave de Yu-Gi-Oh! CARD GAME THE CHRONICLES.
 [IDS_ITEMDESC.ID1075007]
 Protectores que tienen un diseño clave de Yu-Gi-Oh! CARD GAME THE CHRONICLES.
 ¿Su encuentro fue obra del destino o del azar? Lo que provocó fue una serie de sucesos que dejaron una marca indeleble en el mundo abisal.
+[IDS_ITEMDESC.ID1075008]
+Protectores que tienen un diseño clave de Yu-Gi-Oh! CARD GAME THE CHRONICLES.
+Viajando junto a espíritus. Baila, flor solitaria, con todo tu intenso color.
 [IDS_ITEMDESC.ID1080001]
 Una sencilla caja de Decks de tonos rojos.
 La primera caja de Decks que recibes siempre es especial, ¿no crees?
@@ -2782,6 +2805,9 @@ Perfecta para los Decks de quienes luchan en territorios septentrionales.
 [IDS_ITEMDESC.ID1082022]
 Una caja de cartas que representa a un ejército mecanizado creado como derivado.
 Es perfecta para Decks que han llevado a cabo numerosas pruebas.
+[IDS_ITEMDESC.ID1082023]
+Una caja de cartas que representa una imagen de los juegos que aparecen en "<card mrk='21833'/>".
+Perfecta para Deck deliciosos.
 [IDS_ITEMDESC.ID1082024]
 Una caja de cartas que representa un objeto que usó una misteriosa bruja.
 Perfecta para Decks que tengan brujas que han sido víctimas de un cruel destino.
@@ -3089,7 +3115,8 @@ coming soon
 Partes del Campo que representan las ruinas que al parecer existían en la "<card mrk='11763'/>".
 Escapar de esas llamas abrasadoras es todo un logro, a menos que seas un guardián con el poder de la reencarnación.
 [IDS_ITEMDESC.ID1101026]
-coming soon
+Partes del Campo inspiradas en un ser que infunde auténtico miedo.
+Combínalo con su homólogo, "<card mrk='12931'/>", para sentar las bases de un poder divino.
 [IDS_ITEMDESC.ID1101027]
 coming soon
 [IDS_ITEMDESC.ID1101028]
@@ -3424,6 +3451,9 @@ Parece que estas burbujas rosas con forma de huevo no van a crecer más.
 [IDS_ITEMDESC.ID1111066]
 Un enclave inspirado en un círculo mágico cuyo inmenso poder se ha desbordado.
 Existen incluso casos en los que su invocador se ha fusionado con los monstruos, y ha conocido un trágico fin.
+[IDS_ITEMDESC.ID1111068]
+Un enclave inspirado en un mundo exquisitamente estúpido y en monstruos deliciosos.
+"<card mrk='21833'/>", monstruos exquisitamente estúpidos nacidos de la oscuridad.
 [IDS_ITEMDESC.ID1111071]
 Un enclave inspirado en el horóscopo de <category id='110'/>.
 Te guía usando el poder místico de las estrellas.
@@ -3797,7 +3827,8 @@ Una vez más, parece que algunos de los dulces han desaparecido.
 [IDS_ITEMDESC.ID1130093]
 coming soon
 [IDS_ITEMDESC.ID1130094]
-coming soon
+"<card mrk='21367'/>" celebrando la llegada de "<card mrk='21371'/>".
+¡Atrapa a esos deliciosos monstruos mientras estén en su punto!
 [IDS_ITEMDESC.ID1130095]
 Y así, el Bosque Blanco volvió a ser el pacífico y misterioso lugar que era.
 El cuento de la "<card mrk='21195'/>".
@@ -3830,9 +3861,11 @@ Este señor de los dragones dominaba todo con su poder incomparable y una sed in
 Otra bruja ataviada de blanco.
 Se encuentra inmersa en una solitaria historia de venganza.
 [IDS_ITEMDESC.ID1130106]
-coming soon
+Un portal bajo el misterioso gigante de piedra, el <category id='113'/>.
+De este portal nace un nuevo <category id='113'/>.
 [IDS_ITEMDESC.ID1130107]
-coming soon
+Los ángeles del reino de Solfa practican una poderosa y fabulosa magia conocida como "acordes".
+Una sinfonía de ángeles y hadas que limpia el mundo mortal de sus impurezas.
 [IDS_ITEMDESC.ID1130108]
 coming soon
 [IDS_ITEMDESC.ID1130109]
@@ -3877,7 +3910,8 @@ Cuentan que cuando los <category id='89'/> se reúnan, la puerta de la melodía 
 Archivo de Coleccionista que muestra a unas criadas ocupándose de las tareas del hogar para su señor.
 Cuentan que, cuando los <category id='101'/> se reúnan, las prestigiosas puertas resplandecerán.
 [IDS_ITEMDESC.ID1170003]
-coming soon
+Un Archivo de Coleccionista que representa monstruos deliciosos en un mundo exquisitamente estúpido.
+Cuentan que, cuando los "<category id='112'/>" se reúnan, las exquisitamente estúpidas puertas resplandecerán.
 [IDS_ITEMDESC.ID1170004]
 Un Archivo de Coleccionista que representa a quienes aguardan en el interior de un plateado y siniestro castillo.
 Dicen que cuando sus <category id='127'/> se reúnan, las impenetrables puertas resplandecerán.
@@ -3907,7 +3941,8 @@ La insignia del Ojo de Wdjat resplandece.
 Una moneda cuyo emblema es el escudo de las mujeres que sirven fielmente a su señor.
 El dragón grabado en su superficie brilla intensamente.
 [IDS_ITEMDESC.ID1180006]
-coming soon
+Una moneda cuyo motivo es el goloso "<card mrk='21371'/>".
+Su cara gruñona brilla intensamente.
 [IDS_ITEMDESC.ID1180007]
 Una moneda cuyo motivo es un castillo impenetrable que repele a los intrusos.
 Sus trampas resplandecen mientras aguardan a sus próximas víctimas.

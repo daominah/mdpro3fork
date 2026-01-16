@@ -108,6 +108,9 @@ coming soon
 [IDS_ITEMDESC.ID1000041]
 像滩泥一样睡倒的魔兽。
 它从身体中释放诱人沉眠的异味，企图吃掉别人的梦，却害得自己都睡着了。
+[IDS_ITEMDESC.ID1000042]
+最喜欢点心的“<card mrk='21371'/>”！
+快来获得这些住在点心国度的美味小家伙们吧！
 [IDS_ITEMDESC.ID1001001]
 一杯似乎可以让你进行融合召唤的杯面。
 身为方便食品并不意味着它没其他东西好吃。
@@ -697,7 +700,8 @@ coming soon
 描绘了拥有精神支配魔眼的大魔女的头像。
 曾与“<card mrk='20747'/>”展开激烈死斗。
 [IDS_ITEMDESC.ID1010120]
-coming soon
+描绘了自黑暗诞生，像点心般的小家伙们的头像。
+据说是因为很开心才会打扮成点心的模样。
 [IDS_ITEMDESC.ID1010121]
 描绘了奇妙说书人的头像。
 她将传颂“<card mrk='21195'/>”的故事。
@@ -725,7 +729,8 @@ coming soon
 描绘了拿着大袋子的红色恶魔的头像。
 胸口上有一道十字形的巨大伤痕。
 [IDS_ITEMDESC.ID1010130]
-coming soon
+描绘了被作为祭品的“<card mrk='7188'/>”的头像。
+接下来将发生何事，他还一无所知。
 [IDS_ITEMDESC.ID1010131]
 描绘了学园标志的头像。
 学生一有状况，就必须立刻赶到现场。
@@ -1164,6 +1169,9 @@ Yu-Gi-Oh! World Championship 2025:Master Duel分赛参赛选手的纪念头像�
 [IDS_ITEMDESC.ID1013006]
 “Yu-Gi-Oh! CARD GAME THE CHRONICLES”主视觉设计的头像。
 这场相遇究竟是命运还是必然？ 献给这镌刻在深渊世界中的，追忆的故事。
+[IDS_ITEMDESC.ID1013007]
+以《Yu-Gi-Oh! CARD GAME THE CHRONICLES》主视觉设计的头像。
+与精灵共度的每一天。飞舞吧花儿，为世界增添缤纷色彩。
 [IDS_ITEMDESC.ID1013008]
 特殊机会下提供的限定头像。
 [IDS_ITEMDESC.ID1013009]
@@ -1754,6 +1762,12 @@ coming soon
 [IDS_ITEMDESC.ID1020194]
 授予在“DC2025 DEC”中，晋级2nd STAGE的决斗者的称号。
 从众多决斗者角逐的1st STAGE中晋级的实力选手之证。
+[IDS_ITEMDESC.ID1020195]
+授予在“结合与同步庆典＋”中留下成绩的决斗者的称号
+用魂之卡唤醒决斗者的尊严。
+[IDS_ITEMDESC.ID1020196]
+赠予驱使传说中的怪物，并取得成果的决斗者的称号。
+与众多决斗者的邂逅和战斗创造了新的传说。
 [IDS_ITEMDESC.ID1020197]
 在三个势力的战斗中取得成果的决斗者被授予此称号。
 它们的能力将在任何情况下得到体现。
@@ -2408,14 +2422,17 @@ coming soon
 设计有因收到压岁钱而高兴得魂都飞了的模样的卡套。
 献给欢庆新年的你。
 [IDS_ITEMDESC.ID1070145]
-coming soon
+设计有英雄光速奔驰的招牌姿势的卡套。
+献给明星般的你。
 [IDS_ITEMDESC.ID1070146]
-coming soon
+设计有统御恶魔的至高之王的卡套。
+献给欲征服异次元的你。
 [IDS_ITEMDESC.ID1070147]
 设计有在创伤中咆哮的“<card mrk='11765'/>”的卡套。
 献给感受到世事无常的你。
 [IDS_ITEMDESC.ID1070148]
-coming soon
+设计有匡正罪恶并给予无上惩罚者的卡套。
+将终焉之时献给你。
 [IDS_ITEMDESC.ID1070149]
 设计有最前端超高性能战斗机的卡套。
 献给发挥各种能力的你。
@@ -2552,6 +2569,9 @@ coming soon
 [IDS_ITEMDESC.ID1072007]
 设计有性格不合却默契十足的二人组的卡套。
 献给探索未知领域的你。
+[IDS_ITEMDESC.ID1072008]
+设计有“<card mrk='21371'/>”抓起时的样子的卡套。
+献给想要取得美味小家伙们的你。
 [IDS_ITEMDESC.ID1073001]
 设计有Yu-Gi-Oh! World Championship 2023 MASTER DUEL分赛视觉的卡套。
 献给目标是世界最强的你。
@@ -2626,6 +2646,9 @@ coming soon
 [IDS_ITEMDESC.ID1075007]
 以《Yu-Gi-Oh! CARD GAME THE CHRONICLES》主视觉设计的卡套。
 这场相遇究竟是命运还是必然？ 献给这镌刻在深渊世界中的，追忆的故事。
+[IDS_ITEMDESC.ID1075008]
+以《Yu-Gi-Oh! CARD GAME THE CHRONICLES》主视觉设计的卡套。
+与精灵共度的每一天。飞舞吧花儿，为世界增添缤纷色彩。
 [IDS_ITEMDESC.ID1080001]
 以赤红色为基调简单设计的牌组盒。
 对第一个获得的牌组盒总是会有着特别的情感。
@@ -2781,6 +2804,9 @@ coming soon
 [IDS_ITEMDESC.ID1082022]
 设计有作为副产物而建立的机械军队景象的牌组盒。
 推荐给经过反复实验的牌组使用。
+[IDS_ITEMDESC.ID1082023]
+设计有“<card mrk='21833'/>”游戏形象插图的牌组盒。
+推荐给点心般的牌组使用。
 [IDS_ITEMDESC.ID1082024]
 设计有奇妙的魔女所用工具的插图的牌组盒。
 推荐给背负残酷命运的魔女们的牌组使用。
@@ -3085,7 +3111,8 @@ coming soon
 描绘“<card mrk='11763'/>”遗迹的场地配件。
 只有拥有转生之力的圣域守护者才能从其熊熊烈火中全身而退。
 [IDS_ITEMDESC.ID1101026]
-coming soon
+以能让人体会真正恐惧的存在为原型制作的场地配件。
+聚集与其成对的“<card mrk='12931'/>”，便能成为获得等同神之力量的基础。
 [IDS_ITEMDESC.ID1101027]
 coming soon
 [IDS_ITEMDESC.ID1101028]
@@ -3421,6 +3448,9 @@ coming soon
 [IDS_ITEMDESC.ID1111066]
 模仿或因过量魔力而失控的魔法阵的基座。
 曾经发生过和魔物同化的先例，不可掉以轻心。
+[IDS_ITEMDESC.ID1111068]
+模仿点心国度与美味小家伙们的基座。
+“<card mrk='21833'/>”是自黑暗诞生，像点心般的小家伙们。
 [IDS_ITEMDESC.ID1111071]
 模仿<category id='110'/>的星盘的基座。
 神秘的星之力将会指引你。
@@ -3794,7 +3824,8 @@ coming soon
 [IDS_ITEMDESC.ID1130093]
 coming soon
 [IDS_ITEMDESC.ID1130094]
-coming soon
+因“<card mrk='21371'/>”登场而兴奋不已的“<card mrk='21367'/>”。
+快来取得这些近亲狂欢的美味小家伙们吧！
 [IDS_ITEMDESC.ID1130095]
 就这样，白森重回往日那般和平而神秘的模样。
 这就是“<card mrk='21195'/>”的故事——
@@ -3827,9 +3858,11 @@ coming soon
 另一位白色装扮的魔女。
 身陷孤独的复仇剧中。
 [IDS_ITEMDESC.ID1130106]
-coming soon
+位于神秘巨石<category id='113'/>们下方的传送门。
+此传送门将催生出崭新的<category id='113'/>们。
 [IDS_ITEMDESC.ID1130107]
-coming soon
+坐镇音阶界的天使们演奏着被称为“和弦”的大魔法。
+此乃净化下界污秽的天使和妖精的交响曲。
 [IDS_ITEMDESC.ID1130108]
 coming soon
 [IDS_ITEMDESC.ID1130109]
@@ -3871,7 +3904,8 @@ coming soon
 为主人操持一切家务的她们的收藏卡册。
 据说收集完<category id='101'/>后，高名之门将散发光辉。
 [IDS_ITEMDESC.ID1170003]
-coming soon
+住在点心国度的美味小家伙们的收藏卡册。
+据说收集完<category id='112'/>后，点心之门将散发光辉。
 [IDS_ITEMDESC.ID1170004]
 在白银之城等候光临的恶魔们的收藏卡册。
 据说收集完<category id='127'/>后，固若金汤的门扉将散发光辉。
@@ -3901,7 +3935,8 @@ coming soon
 以侍奉主人的她们的纹章为概念所设计的硬币。
 龙的雕纹散发光芒。
 [IDS_ITEMDESC.ID1180006]
-coming soon
+以最喜欢点心的“<card mrk='21371'/>”为概念所设计的硬币。
+流露愤怒与困惑之情的小脸蛋散发光芒。
 [IDS_ITEMDESC.ID1180007]
 以拒绝一切的不落之城为概念所设计的硬币。
 埋伏猎物的陷阱闪着寒光。

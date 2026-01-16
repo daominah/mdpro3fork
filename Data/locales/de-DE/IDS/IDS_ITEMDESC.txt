@@ -108,6 +108,9 @@ Er wurde aus „<category id='89'/>“-Resten hergestellt.
 [IDS_ITEMDESC.ID1000041]
 Ein dämonisches Ungeheuer, das schläft wie Schlamm.
 Um sich von den Träumen anderer zu ernähren, stößt es ein einschläferndes Aroma aus, schläft aber immer selbst ein.
+[IDS_ITEMDESC.ID1000042]
+Die Naschkatze „<card mrk='21371'/>“!
+Schnapp dir alle lecker aussehenden Monster, die in einer köstlich albernen Welt leben!
 [IDS_ITEMDESC.ID1001001]
 Ein Becher mit Fertignudeln, die aussehen, als könnten sie dir die Macht der Fusionsbeschwörung gewähren.
 Es sind zwar Fertignudeln, aber das heißt nicht, dass sie nicht lecker sind!
@@ -698,7 +701,8 @@ Es fliegt durch den heiligen Wald, damit alles enthüllt wird.
 Ein Symbol, das eine große Hexe darstellt, deren Augen die Gedanken anderer kontrollieren können.
 Sie hat sich „<card mrk='20747'/>“ in einem tödlichen Überlebenskampf gestellt.
 [IDS_ITEMDESC.ID1010120]
-coming soon
+Ein Symbol, die herrlich alberne, aus der Dunkelheit geborene Monster darstellt.
+Offenbar tragen sie Süßigkeiten auf dem Kopf, weil es ihnen Freude bereitet.
 [IDS_ITEMDESC.ID1010121]
 Ein Symbol, das eine mysteriöse Geschichtenerzählerin darstellt.
 Das Märchen von „<card mrk='21195'/>“ wird weitererzählt.
@@ -726,7 +730,8 @@ Dank der Weiterentwicklung von Mobiltelefonen hat sie sich den Schlüssel zum Er
 Ein Symbol, das einen rötlichen Dämon darstellt, der einen großen Sack hochhebt.
 Er trägt eine große, kreuzförmige Narbe auf der Brust.
 [IDS_ITEMDESC.ID1010130]
-coming soon
+Ein Symbol, das die Verehrung von „<card mrk='7188'/>“ darstellt.
+Es ahnt noch nichts von dem, was kommen wird.
 [IDS_ITEMDESC.ID1010131]
 Ein Symbol, das das Emblem der Akademie darstellt.
 Im Notfall müssen sich die Schüler sofort versammeln.
@@ -1165,6 +1170,9 @@ War ihre Begegnung vorherbestimmt? War sie unvermeidbar? Es entfaltet sich eine 
 [IDS_ITEMDESC.ID1013006]
 Ein Symbol, auf dem eine Szene aus Yu-Gi-Oh!-Kartenspiel THE CHRONICLES abgebildet ist.
 War ihre Begegnung vorherbestimmt? War sie unvermeidbar? Es entfaltet sich eine Erinnerung an Geschehnisse, die eine Welt der Abgründe auf ewig geprägt haben.
+[IDS_ITEMDESC.ID1013007]
+Ein Symbol, mit einem Hauptmotiv für Yu-Gi-Oh! CARD GAME THE CHRONICLES.
+Seite an Seite mit Geistern auf Reisen. Tanze, einsame Blüte, in all deiner leuchtenden Farbe.
 [IDS_ITEMDESC.ID1013008]
 Ein exklusives Symbol, das zu besonderen Anlässen angeboten wird.
 [IDS_ITEMDESC.ID1013009]
@@ -1756,6 +1764,12 @@ Er wurde durch einen Sieg nach dem anderen gegen die harte Konkurrenz in der 2nd
 [IDS_ITEMDESC.ID1020194]
 Ein Titel, der an Duellanten vergeben wird, die die 2nd Stage des DC 2025 DEC erreicht haben.
 Er ist der Beweis dafür, dass du es durch die heiß umkämpfte 1st Stage geschafft hast.
+[IDS_ITEMDESC.ID1020195]
+Ein Titel, der an Duellanten vergeben wird, die bei „Fusion x Synchro-Festival +“ bemerkenswerte Ergebnisse erzielt haben.
+Der Stolz der Duellanten erwacht durch die Karten, die sie am meisten schätzen.
+[IDS_ITEMDESC.ID1020196]
+Ein Titel, der Duellanten verliehen wird, die die Macht der legendären Monster genutzt und sich einen Namen gemacht haben.
+Eine neue Legende wird erschaffen, wenn man die größten Duellanten trifft und sich mit ihnen duelliert.
 [IDS_ITEMDESC.ID1020197]
 Ein Titel, der an Duellanten vergeben wird, die in einem Kampf zwischen drei Seiten Ergebnisse erzielt haben.
 Ganz gleich in welcher Situation, deine Fähigkeiten werden sich durchsetzen.
@@ -2410,14 +2424,17 @@ Für diejenigen, die zwischen Mondstrahlen aus glitzerndem Silber tanzen.
 Kartenhüllen, die ein Wesen darstellen, das so überglücklich über sein Neujahrsgeschenk ist, dass seine Seele buchstäblich seinen Körper verlassen hat.
 Für alle, die das neue Jahr feiern.
 [IDS_ITEMDESC.ID1070145]
-coming soon
+Kartenhüllen, die die charakteristische Pose eines Helden darstellen, der mit Lichtgeschwindigkeit rennt.
+Für all jene, die wahre Sterne sind.
 [IDS_ITEMDESC.ID1070146]
-coming soon
+Kartenhüllen, die einen obersten König darstellen, der über alle Unterweltler herrscht.
+Für diejenigen, die auch andere Dimensionen erobern.
 [IDS_ITEMDESC.ID1070147]
 Kartenhüllen, die einen verletzten „<card mrk='11765'/>“ darstellen, der zum Himmel heult.
 Für diejenigen, die spüren, wie vergänglich die Welt ist.
 [IDS_ITEMDESC.ID1070148]
-coming soon
+Kartenhüllen, die ein Wesen darstellen, das über die Sünden anderer richtet und die ultimative Strafe verhängt.
+Für all jene, die bereit sind, ihrem Untergang zu begegnen.
 [IDS_ITEMDESC.ID1070149]
 Kartenhüllen, die einen hochmodernen, leistungsstarken Düsenjäger darstellen.
 Für diejenigen, die variable Angriffsfähigkeiten nutzen.
@@ -2554,6 +2571,9 @@ Für diejenigen, die sich dem Menschen, der ihnen am liebsten ist, nie offenbare
 [IDS_ITEMDESC.ID1072007]
 Kartenhüllen, auf denen ein Duo mit einer perfekten Partnerschaft, aber gegensätzlichen Persönlichkeiten, abgebildet ist.
 Für diejenigen, die sich in unerforschte Gebiete wagen.
+[IDS_ITEMDESC.ID1072008]
+Kartenhüllen, die „<card mrk='21371'/>“ beim Fangen darstellen.
+Für alle, die Lust auf etwas Leckeres haben.
 [IDS_ITEMDESC.ID1073001]
 Kartenhüllen mit einem visuellen Design für die Yu-Gi-Oh! World Championship 2023: MASTER DUEL.
 Für diejenigen, die die Besten der Welt werden wollen.
@@ -2628,6 +2648,9 @@ War ihre Begegnung vorherbestimmt? War sie unvermeidbar? Es entfaltet sich eine 
 [IDS_ITEMDESC.ID1075007]
 Kartenhüllen mit einem Hauptmotiv für Yu-Gi-Oh! CARD GAME THE CHRONICLES.
 War ihre Begegnung vorherbestimmt? War sie unvermeidbar? Es entfaltet sich eine Erinnerung an Geschehnisse, die eine Welt der Abgründe auf ewig geprägt haben.
+[IDS_ITEMDESC.ID1075008]
+Kartenhüllen mit einem Hauptmotiv für Yu-Gi-Oh! CARD GAME THE CHRONICLES.
+Tanze, einsame Blüte, in all deiner leuchtenden Farbe.
 [IDS_ITEMDESC.ID1080001]
 Eine einfache Deckbox mit roten Akzenten.
 Die erste Deckbox wächst einem immer ans Herz, oder nicht?
@@ -2782,6 +2805,9 @@ Ein Kartenetui, auf dem ein kontinentweiter Konflikt abgebildet ist.
 Perfekt für die Decks derjenigen, die in den nördlichen Territorien kämpfen.
 [IDS_ITEMDESC.ID1082022]
 Ein Kartenetui, auf dem eine mechanisierte Armee, die als Nebenprodukt entstanden ist, abgebildet ist.Perfekt für Decks, die unzählige Tests durchlaufen haben.
+[IDS_ITEMDESC.ID1082023]
+Ein Kartenetui, das ein Bild aus den in „<card mrk='21833'/>“ gezeigten Spielen darstellt.
+Perfekt für leckere Decks.
 [IDS_ITEMDESC.ID1082024]
 Ein Kartenetui, auf dem ein Gegenstand abgebildet ist, der von einer mysteriösen Hexe verwendet wird.
 Perfekt für Decks mit Hexen, die ein grausames Schicksal erdulden müssen.
@@ -3089,7 +3115,8 @@ coming soon
 Spielfeldteile, auf denen Ruinen abgebildet sind, welche auf der „<card mrk='11763'/>“ existieren sollen.
 Einem solchen Flammenmeer zu entkommen wäre ein ziemliches Kunststück, es sei denn, man wäre ein heiliger Wächter mit der Macht der Reinkarnation.
 [IDS_ITEMDESC.ID1101026]
-coming soon
+Spielfeldteile, die einem Wesen nachempfunden sind, das wahre Furcht einflößt.
+Kombiniere sie mit ihrem Gegenstück, „<card mrk='12931'/>“, um eine Grundlage für gottgleiche Macht zu schaffen.
 [IDS_ITEMDESC.ID1101027]
 coming soon
 [IDS_ITEMDESC.ID1101028]
@@ -3425,6 +3452,9 @@ Es scheint, dass die rosafarbenen, blasenartigen Ei-Formen nicht weiter wachsen.
 [IDS_ITEMDESC.ID1111066]
 Ein Stand, der von einem magischen Kreis inspiriert ist, der nach einem immensen Zustrom von Macht durcheinandergeraten ist.
 Es gibt sogar Fälle, in denen der Zauberer mit Monstern verschmilzt – ein wahrhaft schreckliches Schicksal.
+[IDS_ITEMDESC.ID1111068]
+Ein Stand, inspiriert von einer herrlich albernen Welt und lecker aussehenden Monstern.
+„<card mrk='21833'/>“, herrlich alberne, aus der Dunkelheit geborene Monster.
 [IDS_ITEMDESC.ID1111071]
 Ein Stand nach dem Vorbild von <category id='110'/>s Horoskop.
 Er leitet dich mithilfe der mystischen Kraft der Sterne.
@@ -3798,7 +3828,8 @@ Wieder einmal scheinen einige Süßigkeiten verschwunden zu sein.
 [IDS_ITEMDESC.ID1130093]
 coming soon
 [IDS_ITEMDESC.ID1130094]
-coming soon
+„<card mrk='21367'/>“ feiert die Ankunft von „<card mrk='21371'/>“.
+Schnapp dir die lecker aussehenden Monster, solange sie noch fröhlich sind!
 [IDS_ITEMDESC.ID1130095]
 Und so wurde der Weiße Wald wieder zu dem friedlichen, mysteriösen Wald, der er einst war.
 Die Geschichten vom „<card mrk='21195'/>“.
@@ -3831,9 +3862,11 @@ Mit einem unstillbaren Kampfeslust beherrschte dieser Drachenherrscher mit seine
 Eine weitere Hexe in Weiß.
 Sie findet sich in einer einsamen Rachegeschichte wieder.
 [IDS_ITEMDESC.ID1130106]
-coming soon
+Ein Portal unterhalb des geheimnisvollen Steingiganten, der <category id='113'/>.
+Aus diesem Portal wird ein neuer <category id='113'/> geboren.
 [IDS_ITEMDESC.ID1130107]
-coming soon
+Die Engel des Solfa-Reiches vollbringen mächtige, große Magie, die als „Akkorde“ bekannt ist.
+Eine Symphonie von Engeln und Feen, die die sterbliche Welt von ihrer Unreinheit reinigt.
 [IDS_ITEMDESC.ID1130108]
 coming soon
 [IDS_ITEMDESC.ID1130109]
@@ -3878,7 +3911,8 @@ Es heißt, dass das Tor der Melodie hell erstrahlen wird, wenn die <category id=
 Eine Collector’s File mit Darstellungen von Dienstmädchen, die für ihren Herrn die Hausarbeit erledigen.
 Es heißt, dass die Prestigetore hell erstrahlen werden, wenn die <category id='101'/> versammelt sind.
 [IDS_ITEMDESC.ID1170003]
-coming soon
+Ein Sammelordner mit lecker aussehenden Monstern in einer herrlich albernen Welt.
+Es heißt, dass die herrlich albernen Tore hell erstrahlen werden, wenn die <category id='112'/>s versammelt sind.
 [IDS_ITEMDESC.ID1170004]
 Ein Sammelordner, der diejenigen darstellt, die innerhalb der silbernen, dämonischen Burg lauern.
 Es heißt, dass die uneinnehmbaren Tore hell erstrahlen werden, wenn die <category id='127'/> versammelt sind.
@@ -3908,7 +3942,8 @@ Das Emblem des Auges von Wdjat schimmert darauf.
 Eine Münze, deren Motiv das Wappen der Frauen ist, die ihrem Herrn pflichtbewusst dienen.
 Der in ihre Oberfläche eingravierte Drache schimmert hell.
 [IDS_ITEMDESC.ID1180006]
-coming soon
+Eine Münze, deren Motiv der Süßigkeiten liebende „<card mrk='21371'/>“ ist.
+Sein grimmiges Gesicht leuchtet hell.
 [IDS_ITEMDESC.ID1180007]
 Eine Münze, deren Motiv eine uneinnehmbare Burg ist, die alle Eindringlinge abweist.
 Ihre Fallen schimmern prächtig, während sie auf ahnungslose Opfer lauern.

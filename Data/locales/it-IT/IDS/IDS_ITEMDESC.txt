@@ -108,6 +108,9 @@ La lancia di una divinità meccanica forgiata in risposta alla volontà di una b
 [IDS_ITEMDESC.ID1000041]
 Una bestia demoniaca che dorme come un sasso.
 Per nutrirsi dei sogni altrui, emana un odore dal proprio corpo che provoca sonnolenza, ma finisce sempre per addormentare se stesso.
+[IDS_ITEMDESC.ID1000042]
+L'amante dei dolci "<card mrk='21371'/>"!
+Prendi tutti i mostri Yummy che vivono in un mondo deliziosamente sciocco!
 [IDS_ITEMDESC.ID1001001]
 Una coppa di ramen istantaneo che sembra possa donarti il potere di Evocare tramite Fusione.
 Solo perché è ramen istantaneo, non significa che non sia buono!
@@ -698,7 +701,8 @@ Vola nella foresta sacra per svelare ogni cosa.
 Un'icona che raffigura una grande strega i cui occhi sono in grado di controllare le menti altrui.
 Ha affrontato "<card mrk='20747'/>" in una lotta mortale per la sopravvivenza.
 [IDS_ITEMDESC.ID1010120]
-coming soon
+Un'icona che raffigura alcuni mostri deliziosamente sciocchi nati dall'oscurità.
+A quanto pare, indossano dolci in testa perché li rende felici.
 [IDS_ITEMDESC.ID1010121]
 Un'icona che raffigura una misteriosa narratrice.
 Il racconto di "<card mrk='21195'/>" viene tramandato.
@@ -726,7 +730,8 @@ Grazie all'evoluzione dei telefoni cellulari, si è assicurata le chiavi della v
 Un'icona che raffigura un demone rossastro che porta un grande sacco.
 Ha una grossa cicatrice a forma di croce sul petto.
 [IDS_ITEMDESC.ID1010130]
-coming soon
+Un'icona che raffigura "<card mrk='7188'/>" in fase di adorazione.
+Resta inconsapevole di ciò che l'attende.
 [IDS_ITEMDESC.ID1010131]
 Un'icona che raffigura lo stemma dell'Accademia.
 In caso di emergenza, gli studenti devono radunarsi immediatamente.
@@ -1165,6 +1170,9 @@ Il loro incontro è opera del fato, o della necessità? Si aprono ricordi di eve
 [IDS_ITEMDESC.ID1013006]
 Un'icona che raffigura una scena tratta da Yu-Gi-Oh! CARD GAME THE CHRONICLES.
 Il loro incontro è opera del fato, o della necessità? Si aprono ricordi di eventi che hanno lasciato un segno indelebile in un mondo abissale.
+[IDS_ITEMDESC.ID1013007]
+Un'icona che raffigurano dei protagonisti di Yu-Gi-Oh! CARD GAME THE CHRONICLES.
+Viaggiando fianco a fianco con gli spiriti. Balla, fiore solitario, in tutto il tuo vivido colore.
 [IDS_ITEMDESC.ID1013008]
 Un'icona esclusiva offerta in occasioni speciali.
 [IDS_ITEMDESC.ID1013009]
@@ -1755,6 +1763,12 @@ Ottenuto grazie a una vittoria dopo l'altra contro avversari agguerriti nella 2�
 [IDS_ITEMDESC.ID1020194]
 Titolo conferito ai Duellanti che hanno raggiunto la 2ª fase nella DC 2025 DEC.
 Questa è la prova del superamento della combattutissima 1ª fase.
+[IDS_ITEMDESC.ID1020195]
+Un titolo dato ai Duellanti che hanno raggiunto risultati importanti nel "Festival Fusione x Synchro +".
+L'orgoglio dei Duellanti viene risvegliato dalle carte a loro più care.
+[IDS_ITEMDESC.ID1020196]
+Un titolo dato ai Duellanti che hanno padroneggiato il potere dei Mostri Leggendari e si sono fatti un nome.
+Dall'incontro e dallo scontro dei duellanti migliori nascerà una nuova leggenda.
 [IDS_ITEMDESC.ID1020197]
 Un titolo dato ai Duellanti che hanno raggiunto risultati importanti in uno scontro fra tre diverse forze.
 Le tue abilità ti metteranno sempre in mostra, a prescindere dalla situazione.
@@ -2408,14 +2422,17 @@ Per chi danza tra i raggi di luna d'argento lucente.
 Protettori che raffigurano una creatura così euforica per i soldi di Capodanno da aver perso il controllo del corpo.
 Per chi festeggia Capodanno.
 [IDS_ITEMDESC.ID1070145]
-coming soon
+Protettori che raffigurano la posa iconica di un eroe che corre alla velocità della luce.
+Per chi è una vera stella.
 [IDS_ITEMDESC.ID1070146]
-coming soon
+Protettori che raffigurano un re supremo che regna su tutti i demoni.
+Per chi conquista anche le altre dimensioni.
 [IDS_ITEMDESC.ID1070147]
 Protettori che raffigurano un "<card mrk='11765'/>" ferito, che ulula al cielo.
 Per chi avverte la vera fugacità del mondo.
 [IDS_ITEMDESC.ID1070148]
-coming soon
+Protettori che raffigurano un essere che giudica i peccati altrui e infligge la punizione suprema.
+Per chi è pronto a incontrare la propria fine.
 [IDS_ITEMDESC.ID1070149]
 Protettori che raffigurano un jet da combattimento all'avanguardia e ad alte prestazioni.
 Per chi utilizza capacità d'attacco variabili.
@@ -2552,6 +2569,9 @@ Per chi non si rivela mai davanti a chi ama di più.
 [IDS_ITEMDESC.ID1072007]
 Protettori che raffigurano un duo che funziona alla perfezione, anche se le loro personalità sono contrastanti.
 Per coloro che si avventurano in terre sconosciute.
+[IDS_ITEMDESC.ID1072008]
+Protettori che raffigurano "<card mrk='21371'/>" che cattura qualcosa.
+Per chi desidera qualcosa di buono.
 [IDS_ITEMDESC.ID1073001]
 Protettori con un design grafico dello "Yu-Gi-Oh! World Championship 2023: MASTER DUEL".
 Per chi punta a diventare il miglior Duellante del mondo.
@@ -2626,6 +2646,9 @@ Il loro incontro è opera del fato, o della necessità? Si aprono ricordi di eve
 [IDS_ITEMDESC.ID1075007]
 Protettori che raffigurano dei protagonisti di Yu-Gi-Oh! CARD GAME THE CHRONICLES.
 Il loro incontro è opera del fato, o della necessità? Si aprono ricordi di eventi che hanno lasciato un segno indelebile in un mondo abissale.
+[IDS_ITEMDESC.ID1075008]
+Protettori che raffigurano dei protagonisti di Yu-Gi-Oh! CARD GAME THE CHRONICLES.
+Viaggiando fianco a fianco con gli spiriti. Balla, fiore solitario, in tutto il tuo vivido colore.
 [IDS_ITEMDESC.ID1080001]
 Una semplice scatola per Deck con degli accenti rossi.
 La prima scatola per Deck non si scorda mai.
@@ -2781,6 +2804,9 @@ Perfetta per i Deck di coloro che combattono nei territori del nord.
 [IDS_ITEMDESC.ID1082022]
 Una custodia carte che raffigura un esercito meccanizzato creato come sottoprodotto.
 Perfetta per i Deck che hanno svolto infinite prove.
+[IDS_ITEMDESC.ID1082023]
+Una custodia carte che raffigura un'immagine dai giochi mostrati in "<card mrk='21833'/>".
+Perfetta per i Deck deliziosi.
 [IDS_ITEMDESC.ID1082024]
 Una custodia carte che raffigura un oggetto utilizzato da una strega misteriosa.
 Perfetta per Deck con streghe gravate da un destino crudele.
@@ -3088,7 +3114,8 @@ coming soon
 Parti del Terreno che raffigurano delle rovine che si dice si trovino sull'"<card mrk='11763'/>".
 Sfuggire a queste fiamme impetuose sarebbe un'impresa notevole per chiunque non fosse un guardiano sacro in grado di reincarnarsi.
 [IDS_ITEMDESC.ID1101026]
-coming soon
+Parti del Terreno modellate su un essere che ispira puro terrore.
+Abbinale con la sua controparte, "<card mrk='12931'/>", per creare le basi di un potere sovrumano.
 [IDS_ITEMDESC.ID1101027]
 coming soon
 [IDS_ITEMDESC.ID1101028]
@@ -3424,6 +3451,9 @@ Sembra che questi esseri rosa con le bolle non cresceranno ulteriormente.
 [IDS_ITEMDESC.ID1111066]
 Uno stand ispirato a un circolo magico impazzito dopo un immenso afflusso di potere.
 Ci sono persino casi in cui il lanciatore si fonde con i mostri: un destino davvero terribile.
+[IDS_ITEMDESC.ID1111068]
+Uno stand ispirato a un mostro deliziosamente sciocco e mostri Yummy.
+"<card mrk='21833'/>", alcuni mostri deliziosamente sciocchi nati dall'oscurità.
 [IDS_ITEMDESC.ID1111071]
 Uno stand modellato sull'oroscopo di <category id='110'/>.
 Ti guida sfruttando il potere mistico delle stelle.
@@ -3797,7 +3827,8 @@ Ancora una volta, sembra che parte dei dolci sia scomparsa.
 [IDS_ITEMDESC.ID1130093]
 coming soon
 [IDS_ITEMDESC.ID1130094]
-coming soon
+"<card mrk='21367'/>" che celebra l'arrivo di "<card mrk='21371'/>".
+Prendi i mostri Yummy mentre fanno festa!
 [IDS_ITEMDESC.ID1130095]
 E così, la Foresta Bianca tornò a essere la foresta pacifica e misteriosa di un tempo.
 Il racconto di "<card mrk='21195'/>".
@@ -3830,9 +3861,11 @@ Con una brama insaziabile per la battaglia, questo Signoredrago dominava su ogni
 Un'altra strega in abiti bianchi.
 Si ritrova immersa in una solitaria storia di vendetta.
 [IDS_ITEMDESC.ID1130106]
-coming soon
+Un portale sotto il misterioso gigante di pietra, <category id='113'/>.
+È da questo portale che nasce un nuovo <category id='113'/>.
 [IDS_ITEMDESC.ID1130107]
-coming soon
+Gli angeli del regno di Solfa utilizzano potenti magie chiamate "accordi".
+Una sinfonia di angeli e fate che rimuove ogni impurità dal mondo dei mortali.
 [IDS_ITEMDESC.ID1130108]
 coming soon
 [IDS_ITEMDESC.ID1130109]
@@ -3877,7 +3910,8 @@ Si dice che quando si ottengono più carte <category id='89'/>, il cancello dell
 Un Album del Collezionista che raffigura delle cameriere che si occupano delle faccende domestiche per il padrone di casa.
 Si dice che quando si ottengono più carte <category id='101'/>, le porte prestigiose risplenderanno luminose.
 [IDS_ITEMDESC.ID1170003]
-coming soon
+Un Album del Collezionista che raffigura dei mostri Yummy in un mondo deliziosamente sciocco.
+Si dice che quando si ottengono più carte <category id='112'/>, le porte deliziosamente sciocche risplenderanno luminose.
 [IDS_ITEMDESC.ID1170004]
 Un Album del Collezionista che raffigura chi giace in attesa all'interno di un castello argenteo e demoniaco.
 Si dice che quando si ottengono più carte <category id='127'/>, le porte inespugnabili risplenderanno luminose.
@@ -3907,7 +3941,8 @@ L'insegna dell'Occhio di Wdjat risplende.
 Una moneta il cui motivo è lo stemma delle donne che servono fedelmente il proprio padrone.
 Il drago inciso sulla sua superficie brilla splendente.
 [IDS_ITEMDESC.ID1180006]
-coming soon
+Una moneta il cui motivo è l'amante dei dolci "<card mrk='21371'/>".
+Il suo volto imbronciato brilla intensamente.
 [IDS_ITEMDESC.ID1180007]
 Una Moneta il cui motivo raffigura un castello inespugnabile che respinge tutti gli intrusi.
 Le sue trappole scintillano splendenti mentre giacciono in agguato per le vittime ignare.

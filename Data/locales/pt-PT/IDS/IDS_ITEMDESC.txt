@@ -108,6 +108,9 @@ Proveniente dos restos de "<category id='89'/>".
 [IDS_ITEMDESC.ID1000041]
 Uma fera demoníaca que dorme como lama.
 Para comer os sonhos dos outros, ele libera um odor indutor de sono de seu corpo, mas sempre coloca a si mesmo para dormir.
+[IDS_ITEMDESC.ID1000042]
+A adoradora de doces "<card mrk='21371'/>"!
+Pegue todos os monstros de dar água na boca que vivem em um mundinho deliciosamente bobo!
 [IDS_ITEMDESC.ID1001001]
 Um copo de macarrão instantâneo que parece conceder o poder da Invocação-Fusão.
 Só porque são instantâneos, não quer dizer que são ruins!
@@ -698,7 +701,8 @@ Voa pela floresta sagrada para que tudo venha à tona.
 Ícone que retrata uma grande bruxa, cujos olhos podem controlar mentes.
 Ela já enfrentou "<card mrk='20747'/>" em um duelo mortal por sobrevivência.
 [IDS_ITEMDESC.ID1010120]
-coming soon
+Um Ícone que retrata monstros deliciosamente bobos nascidos das trevas.
+Aparentemente, eles usam doces na cabeça porque isso os deixam felizes.
 [IDS_ITEMDESC.ID1010121]
 Ícone que retrata uma misteriosa narradora.
 Assim se transmite o conto de "<card mrk='21195'/>".
@@ -726,7 +730,8 @@ Graças à evolução dos celulares, ela teve acesso às chaves para a vitória.
 Ícone que retrata um demônio avermelhado carregando uma bolsa grande.
 Carrega no peito uma cicatriz em forma de cruz.
 [IDS_ITEMDESC.ID1010130]
-coming soon
+Um Ícone representando "<card mrk='7188'/>" sendo adorado.
+Ele ainda não sabe o que está por vir.
 [IDS_ITEMDESC.ID1010131]
 Um Ícone que representa o emblema da Academia.
 Em caso de emergência, os estudantes devem se reunir imediatamente.
@@ -1165,6 +1170,9 @@ O encontro deles foi obra do destino ou foi inevitável? O que se revela é uma 
 [IDS_ITEMDESC.ID1013006]
 Um ícone representando uma cena de Yu-Gi-Oh! CARD GAME THE CHRONICLES.
 O encontro deles foi obra do destino ou foi inevitável? O que se revela é uma lembrança de eventos que deixaram uma marca indelével em um mundo abissal.
+[IDS_ITEMDESC.ID1013007]
+Um ícone com visual chave para Yu-Gi-Oh! CARD GAME THE CHRONICLES.
+Viajando lado a lado com espíritos. Dance, flor solitária, em todo o seu vívido brilho.
 [IDS_ITEMDESC.ID1013008]
 Ícone exclusivo, disponível em ocasiões especiais.
 [IDS_ITEMDESC.ID1013009]
@@ -1756,6 +1764,12 @@ Foi conquistado através de vitória após vitória contra ferozes competidores 
 [IDS_ITEMDESC.ID1020194]
 Um Título dado aos Duelistas que chegaram à 2ª Fase na DC 2025 DEC.
 Esta é uma prova de que conseguiu passar a altamente disputada 1ª Fase.
+[IDS_ITEMDESC.ID1020195]
+Um Título concedido a Duelistas que obtiveram resultados notáveis no Festival Fusão x Sincro +.
+O orgulho dos Duelistas é despertado pelos cards que eles mais estimam.
+[IDS_ITEMDESC.ID1020196]
+Um título dado a Duelistas que dominaram o poder dos Monstros Lendários e marcaram seu próprio nome na história.
+Uma nova lenda é criada após encontrar e Duelar contra os maiores Duelistas.
 [IDS_ITEMDESC.ID1020197]
 Um título concedido a Duelistas que obtiveram resultados em uma batalha entre três forças.
 Independentemente da situação, suas habilidades brilharão.
@@ -2410,14 +2424,17 @@ Para quem dança em meio aos feixes prateados e reluzentes do luar.
 Protetores que retratam uma criatura tão extasiada com o presente de Ano-Novo que sua alma literalmente deixou seu corpo.
 Para quem está celebrando o Ano-Novo.
 [IDS_ITEMDESC.ID1070145]
-coming soon
+Protetores representando a pose icônica de um herói que corre na velocidade da luz.
+Para aqueles que são verdadeiras estrelas.
 [IDS_ITEMDESC.ID1070146]
-coming soon
+Protetores representando um rei supremo que governa todos os demônios.
+Para aqueles que conquistam até outras dimensões.
 [IDS_ITEMDESC.ID1070147]
 Protetores que retratam a dor de "<card mrk='11765'/>" enquanto uiva ao céu.
 Para quem sente o quanto o mundo é efêmero.
 [IDS_ITEMDESC.ID1070148]
-coming soon
+Protetores que retratam um ser que julga os pecados dos outros e entrega o castigo final.
+Para aqueles que estão prontos para enfrentar seu destino.
 [IDS_ITEMDESC.ID1070149]
 Protetores que retratam um caça com tecnologia de ponta e alta performance.
 Para quem usa vários recursos de ataque.
@@ -2554,6 +2571,9 @@ Para aqueles que nunca se revelam àqueles que mais estimam.
 [IDS_ITEMDESC.ID1072007]
 Protetores representando uma dupla com uma parceria perfeita mas personalidades conflitantes.
 Para aqueles que se aventuram por terras inexploradas.
+[IDS_ITEMDESC.ID1072008]
+Protetores que retratam "<card mrk='21371'/>" fazendo uma captura.
+Para quem deseja algo saboroso.
 [IDS_ITEMDESC.ID1073001]
 Protetores com o logotipo do Yu-Gi-Oh! World Championship 2023: MASTER DUEL.
 Para aqueles que almejam se tornar o melhor do mundo.
@@ -2628,6 +2648,9 @@ O encontro deles foi obra do destino ou foi inevitável? O que se revela é uma 
 [IDS_ITEMDESC.ID1075007]
 Protetores com visual chave para Yu-Gi-Oh! CARD GAME THE CHRONICLES.
 O encontro deles foi obra do destino ou foi inevitável? O que se revela é uma lembrança de eventos que deixaram uma marca indelével em um mundo abissal.
+[IDS_ITEMDESC.ID1075008]
+Protetores com visual chave para Yu-Gi-Oh! CARD GAME THE CHRONICLES.
+Viajando lado a lado com espíritos. Dance, flor solitária, em todo o seu vívido brilho.
 [IDS_ITEMDESC.ID1080001]
 Uma Caixa para Deck simples com tons vermelhos.
 A primeira Caixa para Deck que você obtém ganha importância, não é?
@@ -2783,6 +2806,9 @@ Perfeito para os Decks daqueles que batalham nos territórios do norte.
 [IDS_ITEMDESC.ID1082022]
 Porta-cards que retrata um exército mecânico que surgiu como subproduto.
 Ideal para Decks que passaram por inúmeras provações.
+[IDS_ITEMDESC.ID1082023]
+Um Porta-cards que retrata uma imagem dos jogos mostrados em "<card mrk='21833'/>".
+Perfeito para Decks deliciosos.
 [IDS_ITEMDESC.ID1082024]
 Porta-cards que retrata o item de uma bruxa misteriosa.
 Perfeito para Decks com bruxas que carregam o fardo de um destino cruel.
@@ -3090,7 +3116,8 @@ coming soon
 Componentes de Campo representando as ruínas que dizem existir em "<card mrk='11763'/>".
 Escapar de tais chamas furiosas seria uma façanha e tanto, a menos que você fosse um guardião sagrado com o poder da reencarnação.
 [IDS_ITEMDESC.ID1101026]
-coming soon
+Componentes de Campo inspiradas em um ser que desperta um medo verdadeiro.
+Combine-a com sua contraparte, "<card mrk='12931'/>", para criar a base de um poder divino.
 [IDS_ITEMDESC.ID1101027]
 coming soon
 [IDS_ITEMDESC.ID1101028]
@@ -3426,6 +3453,9 @@ Parece que as figuras rosadas em forma de ovo não crescerão mais.
 [IDS_ITEMDESC.ID1111066]
 Um pedestal inspirado em um círculo mágico que saiu de controle após um imenso influxo de poder.
 Há até casos em que o conjurador se fundiu com monstros - um destino terrível.
+[IDS_ITEMDESC.ID1111068]
+Um pedestal inspirado por um mundo deliciosamente bobo e por monstros com aparência saborosa.
+"<card mrk='21833'/>", monstros deliciosamente bobos nascidos das trevas.
 [IDS_ITEMDESC.ID1111071]
 Pedestal inspirado no horóscopo de <category id='110'/>.
 Orienta por meio do poder místico das estrelas.
@@ -3799,7 +3829,8 @@ Pelo visto, mais uma vez, os doces desapareceram.
 [IDS_ITEMDESC.ID1130093]
 coming soon
 [IDS_ITEMDESC.ID1130094]
-coming soon
+"<card mrk='21367'/>" celebrando a chegada de "<card mrk='21371'/>".
+Agarre os monstros apetitosos enquanto eles festejam!
 [IDS_ITEMDESC.ID1130095]
 E assim, a paz voltou a reinar na misteriosa Floresta Branca, tal como outrora.
 O conto de "<card mrk='21195'/>".
@@ -3832,9 +3863,11 @@ Este Senhor Dragão dominava a todos, pois tinha uma sede insaciável de batalha
 Outra bruxa em trajes brancos.
 Ela se encontra em um conto solitário de vingança.
 [IDS_ITEMDESC.ID1130106]
-coming soon
+Um portal sob o misterioso gigante de pedra, o "<category id='113'/>".
+É desse portal que nasce um novo "<category id='113'/>".
 [IDS_ITEMDESC.ID1130107]
-coming soon
+Os anjos do reino de Solfa executam poderosas magias grandiosas conhecidas como "acordes".
+Uma sinfonia de anjos e fadas que purifica o mundo mortal de suas impurezas.
 [IDS_ITEMDESC.ID1130108]
 coming soon
 [IDS_ITEMDESC.ID1130109]
@@ -3879,7 +3912,8 @@ Dizem que ao reunir <category id='89'/>, o portão da melodia brilhará com fulg
 Acervo de Colecionador que retrata serventes cumprindo tarefas domésticas para o mestre.
 Dizem que ao reunir <category id='101'/>, os ilustres portões brilharão com fulgor.
 [IDS_ITEMDESC.ID1170003]
-coming soon
+Um Acervo de Colecionador que retrata monstros apetitosos em um mundo deliciosamente bobo.
+Dizem que, quando os <category id='112'/>s se reúnem, as portas deliciosamente bobas brilham intensamente.
 [IDS_ITEMDESC.ID1170004]
 Acervo de Colecionador que retrata quem vive à espera em um castelo demoníaco e prateado.
 Dizem que ao reunir <category id='127'/>, o portão inexpugnável brilhará com fulgor.
@@ -3909,7 +3943,8 @@ A insígnia do Olho de Wdjat brilha.
 Moeda cujo emblema retrata mulheres que servem com devoção ao mestre.
 O dragão gravado na superfície reluz com fulgor.
 [IDS_ITEMDESC.ID1180006]
-coming soon
+Moeda cujo emblema é a entusiasta de doces "<card mrk='21371'/>".
+Seu rostinho rabugento brilha intensamente.
 [IDS_ITEMDESC.ID1180007]
 Moeda cuja inspiração é um castelo inexpugnável que afasta todos os invasores.
 Tem armadilhas que brilham com fulgor enquanto espreitam as vítimas incautas.

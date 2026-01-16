@@ -109,6 +109,9 @@ coming soon
 [IDS_ITEMDESC.ID1000041]
 陷入沉眠的魔獸。
 為了吃掉別人的夢，從體內釋放出誘人入睡的臭氣，但總是害自己睡著。
+[IDS_ITEMDESC.ID1000042]
+最喜歡點心的「<card mrk='21371'/>」！
+快來取得這些住在點心國度的美味小傢伙們吧！
 [IDS_ITEMDESC.ID1001001]
 感覺可讓人發動融合召喚的杯子。
 雖然很簡易，但簡易不等於很差。
@@ -699,7 +702,8 @@ coming soon
 上面畫著擁有能夠支配精神之魔眼的大魔女頭像。
 曾與「<card mrk='20747'/>」展開激烈死鬥。
 [IDS_ITEMDESC.ID1010120]
-coming soon
+上面畫著自黑暗誕生，像點心般的小傢伙們的頭像。
+據說是因為很開心才會打扮成點心的模樣。
 [IDS_ITEMDESC.ID1010121]
 上面畫著奇妙說書人的頭像。
 她將傳頌「<card mrk='21195'/>」的故事。
@@ -727,7 +731,8 @@ coming soon
 上面畫著拿著大袋子的紅色惡魔頭像。
 胸口上有一道十字形的巨大傷痕。
 [IDS_ITEMDESC.ID1010130]
-coming soon
+上面畫著被作為祭品的「<card mrk='7188'/>」的頭像。
+接下來將發生何事，他還一無所知。
 [IDS_ITEMDESC.ID1010131]
 上面畫著學園圖案的頭像。
 學生一有狀況，就必須立刻趕到現場。
@@ -1166,6 +1171,9 @@ Yu-Gi-Oh! World Championship 2024:MASTER DUEL參賽紀念頭像。
 [IDS_ITEMDESC.ID1013006]
 「Yu-Gi-Oh! CARD GAME THE CHRONICLES」景象的頭像。
 那邂逅是命中註定還是必然？ 刻劃在深淵世界中的追憶故事。
+[IDS_ITEMDESC.ID1013007]
+「Yu-Gi-Oh! CARD GAME THE CHRONICLES」的主視覺效果刻畫而成的頭像。
+與精靈共度的每一天。飛舞吧花兒，為世界增添繽紛色彩。
 [IDS_ITEMDESC.ID1013008]
 僅限特殊機會才能獲得的限定頭像。
 [IDS_ITEMDESC.ID1013009]
@@ -1757,6 +1765,12 @@ Yu-Gi-Oh! World Championship 2025:MASTER DUEL中十二強決鬥者的稱號。
 [IDS_ITEMDESC.ID1020194]
 在「DC2025 DEC」中，取得晉級2nd STAGE成績的決鬥者可獲得此稱號。
 戰勝眾多決鬥者，從1st STAGE勝出的實力證明。
+[IDS_ITEMDESC.ID1020195]
+在「結合＆同步盃賽＋」中，取得好成績的決鬥者可獲得此稱號。
+魂之卡將喚醒決鬥者的榮耀。
+[IDS_ITEMDESC.ID1020196]
+將傳說怪獸運用到極致，留下佳績的決鬥者可獲得此稱號。
+與各式各樣的決鬥者相遇、對戰，將創造出新的傳說。
 [IDS_ITEMDESC.ID1020197]
 在三大勢力的爭鬥中，留下佳績的決鬥者可獲得此稱號。
 這種能力想必能在任何情況下發揮影響力。
@@ -2412,14 +2426,17 @@ coming soon
 此卡套外面畫著因為收到壓歲錢，高興得魂都飛了的模樣。
 獻給歡慶新年的你。
 [IDS_ITEMDESC.ID1070145]
-coming soon
+此卡套外面畫著光速奔馳的一名英雄的招牌姿勢。
+獻給明星般的你。
 [IDS_ITEMDESC.ID1070146]
-coming soon
+此卡套外面畫著統御惡魔的至高之王。
+獻給欲征服異次元的你。
 [IDS_ITEMDESC.ID1070147]
 此卡套外面畫著受傷的「<card mrk='11765'/>」的咆哮。
 獻給感受到世事無常的你。
 [IDS_ITEMDESC.ID1070148]
-coming soon
+此卡套外面畫著匡正罪惡並給予無上懲罰的存在。
+將終焉之時獻給你。
 [IDS_ITEMDESC.ID1070149]
 此卡套外面畫著最新穎的超高性能戰鬥機。
 獻給發揮各種能力的你。
@@ -2556,6 +2573,9 @@ coming soon
 [IDS_ITEMDESC.ID1072007]
 此卡套外面畫著默契絕佳但個性不合的兩個人。
 獻給探索未知領域的你。
+[IDS_ITEMDESC.ID1072008]
+此卡套外面畫著「<card mrk='21371'/>」抓起時的樣子。
+獻給想要取得美味小傢伙們的你。
 [IDS_ITEMDESC.ID1073001]
 Yu-Gi-Oh! World Championship 2023:MASTER DUEL的視覺效果刻畫而成的卡套。
 獻給目標成為世界最強的你。
@@ -2630,6 +2650,9 @@ Yu-Gi-Oh! World Championship 2025:MASTER DUEL的視覺效果刻畫而成的卡�
 [IDS_ITEMDESC.ID1075007]
 「Yu-Gi-Oh! CARD GAME THE CHRONICLES」的主視覺效果刻畫而成的卡套。
 那邂逅是命中註定還是必然？ 刻劃在深淵世界中的追憶故事。
+[IDS_ITEMDESC.ID1075008]
+「Yu-Gi-Oh! CARD GAME THE CHRONICLES」的主視覺效果刻畫而成的卡套。
+與精靈共度的每一天。飛舞吧花兒，為世界增添繽紛色彩。
 [IDS_ITEMDESC.ID1080001]
 以紅色為基調，整體相當簡約高雅的牌組卡盒。
 首次拿到手的牌組卡盒會讓人有愛不釋手的感覺。
@@ -2785,6 +2808,9 @@ coming soon
 [IDS_ITEMDESC.ID1082022]
 此卡盒外面畫著作為副產物而建立的機械軍隊的插圖。
 推薦給經過反覆實驗的牌組使用。
+[IDS_ITEMDESC.ID1082023]
+此卡盒外面畫著「<card mrk='21833'/>」遊戲形象的插圖。
+推薦給點心般的牌組使用。
 [IDS_ITEMDESC.ID1082024]
 此卡盒外面畫著奇妙的魔女所使用的道具的插圖。
 推薦給背負殘酷命運的魔女們的牌組使用。
@@ -3092,7 +3118,8 @@ coming soon
 以據傳位於「<card mrk='11763'/>」的遺跡所設計的場地配件。
 只有具備轉生之力的聖域守護者們，才有機會從如此猛烈火焰中存活。
 [IDS_ITEMDESC.ID1101026]
-coming soon
+仿造能讓人體會真正恐怖之存在的場地配件。
+聚集與其成對的「<card mrk='12931'/>」，便能成為獲得等同神之力量的基礎。
 [IDS_ITEMDESC.ID1101027]
 coming soon
 [IDS_ITEMDESC.ID1101028]
@@ -3430,6 +3457,9 @@ coming soon
 [IDS_ITEMDESC.ID1111066]
 以疑似獲得過量魔力而失控的魔法陣為靈感設計出的底座。
 曾經發生過和魔物同化的前例，不可掉以輕心。
+[IDS_ITEMDESC.ID1111068]
+以點心國度與美味小傢伙們為靈感設計出的底座。
+「<card mrk='21833'/>」是自黑暗誕生，像點心般的小傢伙們。
 [IDS_ITEMDESC.ID1111071]
 以<category id='110'/>的天宮圖為靈感設計出的底座。
 神秘的星之力將會指引你。
@@ -3800,7 +3830,8 @@ coming soon
 [IDS_ITEMDESC.ID1130093]
 coming soon
 [IDS_ITEMDESC.ID1130094]
-coming soon
+因「<card mrk='21371'/>」登場而興奮不已的「<card mrk='21367'/>」。
+快來取得這些盡情狂歡的美味小傢伙們吧！
 [IDS_ITEMDESC.ID1130095]
 就這樣，白森重回往日那般和平而神秘的模樣。
 這就是「<card mrk='21195'/>」的故事──
@@ -3833,9 +3864,11 @@ coming soon
 另一位白色裝扮的魔女。
 身陷孤獨的復仇劇中。
 [IDS_ITEMDESC.ID1130106]
-coming soon
+位於神秘巨石<category id='113'/>們下方的傳送門。
+此傳送門將催生出嶄新的<category id='113'/>們。
 [IDS_ITEMDESC.ID1130107]
-coming soon
+坐鎮音階界的天使們演奏著被稱為「和弦」的大魔法。
+此乃淨化下界汙穢的天使與妖精的交響曲。
 [IDS_ITEMDESC.ID1130108]
 coming soon
 [IDS_ITEMDESC.ID1130109]
@@ -3877,7 +3910,8 @@ coming soon
 為主人操持一切家事的她們的收藏卡冊。
 據說收集完<category id='101'/>後，高名之門將散發光輝。
 [IDS_ITEMDESC.ID1170003]
-coming soon
+住在點心國度的美味小傢伙們的蒐藏檔案。
+據說收集完<category id='112'/>後，點心之門將散發光輝。
 [IDS_ITEMDESC.ID1170004]
 在白銀之城等候光臨的惡魔們的蒐藏檔案。
 據說收集完<category id='127'/>後，固若金湯的門扉將散發光輝。
@@ -3907,7 +3941,8 @@ coming soon
 以侍奉主人的她們的紋章為概念所設計的硬幣。
 龍的雕紋散發光芒。
 [IDS_ITEMDESC.ID1180006]
-coming soon
+以最喜歡點心的「<card mrk='21371'/>」為概念所設計的硬幣。
+流露憤怒與困惑之情的小臉蛋散發光芒。
 [IDS_ITEMDESC.ID1180007]
 以拒絕一切的不落之城為概念所設計的硬幣。
 等候的陷阱散發光芒。

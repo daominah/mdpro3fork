@@ -108,6 +108,9 @@ It has been created from "<category id='89'/>" remains.
 [IDS_ITEMDESC.ID1000041]
 A demonic beast that sleeps like mud.
 In order to eat others' dreams, it releases a sleep-inducing odor from its body, but it always puts itself to sleep.
+[IDS_ITEMDESC.ID1000042]
+The sweets-loving "<card mrk='21371'/>"!
+Snatch up all the yummy-looking monsters who live in a scrumptiously silly world!
 [IDS_ITEMDESC.ID1001001]
 A cup of instant noodles that look like they could grant you the power to Fusion Summon.
 Just because they're instant, doesn't mean they're bad!
@@ -698,7 +701,8 @@ It flies through the sacred forest so that all may be revealed.
 An Icon depicting a great witch whose eyes can control the minds of others.
 She has faced "<card mrk='20747'/>" in a deadly struggle for survival.
 [IDS_ITEMDESC.ID1010120]
-coming soon
+An Icon depicting scrumptiously silly monsters born from darkness.
+Apparently, they wear sweets on their heads because it brings them joy.
 [IDS_ITEMDESC.ID1010121]
 An Icon depicting a mysterious storyteller.
 The tale of "<card mrk='21195'/>" is passed down.
@@ -726,7 +730,8 @@ Thanks to the evolution of cell phones, she has secured the keys to victory.
 An Icon depicting a reddish fiend hoisting a large sack.
 It bears a large cross-shaped scar on its chest.
 [IDS_ITEMDESC.ID1010130]
-coming soon
+An Icon depicting "<card mrk='7188'/>" being worshipped.
+It remains unaware of what is to come.
 [IDS_ITEMDESC.ID1010131]
 An Icon depicting the Academy's emblem.
 In an emergency, students are to assemble at once.
@@ -1165,6 +1170,9 @@ Was their meeting the work of fate, or unavoidable? What unfolds is a recollecti
 [IDS_ITEMDESC.ID1013006]
 An Icon depicting a scene from Yu-Gi-Oh! CARD GAME THE CHRONICLES.
 Was their meeting the work of fate, or unavoidable? What unfolds is a recollection of events that left an indelible mark on an abyssal world.
+[IDS_ITEMDESC.ID1013007]
+An Icon featuring a key visual for Yu-Gi-Oh! CARD GAME THE CHRONICLES.
+Journeying side by side with spirits. Dance, lone blossom, in all your vivid color.
 [IDS_ITEMDESC.ID1013008]
 An exclusive Icon offered on special occasions.
 [IDS_ITEMDESC.ID1013009]
@@ -1756,6 +1764,12 @@ It was earned through victory after victory against fierce competitors in the 2n
 [IDS_ITEMDESC.ID1020194]
 A Title given to Duelists who made it to the 2nd Stage in DC 2025 DEC.
 It is proof of your accomplishment in making it through the hotly contested 1st Stage.
+[IDS_ITEMDESC.ID1020195]
+A Title given to Duelists who achieved noteworthy results in the "Fusion x Synchro Festival +".
+The pride of Duelists is awoken by the cards they hold dearest.
+[IDS_ITEMDESC.ID1020196]
+A Title given to Duelists who have harnessed the power of Legendary Monsters and made a name for themselves.
+A new legend is created from meeting and Dueling the greatest of Duelists.
 [IDS_ITEMDESC.ID1020197]
 A Title given to Duelists who achieved results in a battle between three forces.
 No matter the situation, your abilities will shine through.
@@ -2409,14 +2423,17 @@ For those who dance between moonbeams of glistening silver.
 Protectors depicting a creature so ecstatic about their New Year's gift money, their soul has literally left their body.
 For those celebrating the New Year.
 [IDS_ITEMDESC.ID1070145]
-coming soon
+Protectors depicting the signature pose of a hero who runs at the speed of light.
+For those who are true stars.
 [IDS_ITEMDESC.ID1070146]
-coming soon
+Protectors depicting a supreme king that rules over all fiends.
+For those who conquer even other dimensions.
 [IDS_ITEMDESC.ID1070147]
 Protectors depicting an injured "<card mrk='11765'/>", howling to the sky.
 For those who feel the world for how truly fleeting it is.
 [IDS_ITEMDESC.ID1070148]
-coming soon
+Protectors depicting a being who passes judgment upon others' sins and delivers the ultimate punishment.
+For those ready to meet their demise.
 [IDS_ITEMDESC.ID1070149]
 Protectors depicting a cutting-edge, high-performance jet fighter.
  For those utilizing variable attack capabilities.
@@ -2553,6 +2570,9 @@ For those who never reveal themselves before the one they hold most dear.
 [IDS_ITEMDESC.ID1072007]
 Protectors depicting a duo with a perfect partnership but conflicting personalities.
 For those who venture into uncharted domains.
+[IDS_ITEMDESC.ID1072008]
+Protectors depicting "<card mrk='21371'/>" making a catch.
+For those craving something yummy.
 [IDS_ITEMDESC.ID1073001]
 Protectors with a Yu-Gi-Oh! World Championship 2023: MASTER DUEL visual design.
 For those who aim to become the best in the world.
@@ -2627,6 +2647,9 @@ Was their meeting the work of fate, or unavoidable? What unfolds is a recollecti
 [IDS_ITEMDESC.ID1075007]
 Protectors featuring a key visual for Yu-Gi-Oh! CARD GAME THE CHRONICLES.
 Was their meeting the work of fate, or unavoidable? What unfolds is a recollection of events that left an indelible mark on an abyssal world.
+[IDS_ITEMDESC.ID1075008]
+Protectors featuring a key visual for Yu-Gi-Oh! CARD GAME THE CHRONICLES.
+Journeying side by side with spirits. Dance, lone blossom, in all your vivid color.
 [IDS_ITEMDESC.ID1080001]
 A simple Deck Box with red accents.
 The first Deck Box you get always grows on you, doesn't it?
@@ -2782,6 +2805,9 @@ Perfect for the Decks of those battling in the northern territories.
 [IDS_ITEMDESC.ID1082022]
 A Card Case depicting a mechanized army created as a by-product.
 Perfect for Decks that have conducted countless trials.
+[IDS_ITEMDESC.ID1082023]
+A Card Case depicting an image from the games shown in "<card mrk='21833'/>".
+Perfect for delicious Decks.
 [IDS_ITEMDESC.ID1082024]
 A Card Case depicting an item used by a mysterious witch.
 Perfect for Decks featuring witches burdened with a cruel fate.
@@ -3089,7 +3115,8 @@ coming soon
 Field Parts depicting the ruins said to exist on "<card mrk='11763'/>".
 Escaping from such raging flames would be quite the feat, unless you were a sacred guardian with the power of reincarnation.
 [IDS_ITEMDESC.ID1101026]
-coming soon
+Field Parts modeled on a being that inspires true fear.
+Pair it with its counterpart, "<card mrk='12931'/>", to build a foundation for godlike power.
 [IDS_ITEMDESC.ID1101027]
 coming soon
 [IDS_ITEMDESC.ID1101028]
@@ -3425,6 +3452,9 @@ A Stand inspired by weird, wobbly creatures.
 [IDS_ITEMDESC.ID1111066]
 A Stand inspired by a magical circle gone haywire after an immense influx of power.
 There are even cases of the caster fusing with monsters—truly a terrible fate.
+[IDS_ITEMDESC.ID1111068]
+A Stand inspired by a scrumptiously silly world and yummy-looking monsters.
+"<card mrk='21833'/>", scrumptiously silly monsters born from darkness.
 [IDS_ITEMDESC.ID1111071]
 A Stand modeled on <category id='110'/>'s horoscope.
 It guides you using the mystical power of the stars.
@@ -3798,7 +3828,8 @@ Once again, it seems some of the sweets have gone missing.
 [IDS_ITEMDESC.ID1130093]
 coming soon
 [IDS_ITEMDESC.ID1130094]
-coming soon
+"<card mrk='21367'/>" celebrating the arrival of "<card mrk='21371'/>".
+Snatch up the yummy-looking monsters while they make merry!
 [IDS_ITEMDESC.ID1130095]
 And so, the White Forest returned to the peaceful, mysterious forest it once was.
 The tale of "<card mrk='21195'/>".
@@ -3831,9 +3862,11 @@ With an unquenchable thirst for battle, this Dragonlord held dominion over all w
 Another witch clad in white.
 She finds herself in a lonely tale of revenge.
 [IDS_ITEMDESC.ID1130106]
-coming soon
+A portal beneath the mysterious stone giant, the <category id='113'/>.
+It is from this portal that a new <category id='113'/> is born.
 [IDS_ITEMDESC.ID1130107]
-coming soon
+The angels of the Solfa realm perform powerful grand magic known as "chords".
+A symphony of angels and fairies that cleanses the mortal world of its impurity.
 [IDS_ITEMDESC.ID1130108]
 coming soon
 [IDS_ITEMDESC.ID1130109]
@@ -3878,7 +3911,8 @@ It is said that when the <category id='89'/> are gathered, the gate of melody wi
 A Collector's File depicting maids who handle household duties for their master.
 It is said that when the <category id='101'/> are gathered, the prestigious doors shall shine brightly.
 [IDS_ITEMDESC.ID1170003]
-coming soon
+A Collector's File depicting yummy-looking monsters in a scrumptiously silly world.
+It is said that when the <category id='112'/>s have gathered, the scrumptiously silly doors shall shine brightly.
 [IDS_ITEMDESC.ID1170004]
 A Collector's File depicting those who lie in wait within the silvery, demonic castle.
 It is said that when the <category id='127'/>are gathered, the impregnable doors will shine brightly.
@@ -3908,7 +3942,8 @@ The Eye of Wdjat insignia glimmers.
 A coin whose motif is the crest of the women who dutifully serve their master.
 The dragon engraved on its surface glimmers brightly.
 [IDS_ITEMDESC.ID1180006]
-coming soon
+A Coin whose motif is the sweets-loving "<card mrk='21371'/>".
+Its grumpy face shines brightly.
 [IDS_ITEMDESC.ID1180007]
 A Coin whose motif is an impregnable castle that turns away all intruders.
 Its traps shimmer resplendently while lying in wait for unsuspecting victims.
