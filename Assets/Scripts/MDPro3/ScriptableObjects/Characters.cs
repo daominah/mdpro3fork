@@ -14,6 +14,7 @@ namespace MDPro3
         {
             public string id;
             public string originalId;
+            public string descriptionId;
             public bool notReady;
 
             public readonly string GetOriginalId()
@@ -32,6 +33,8 @@ namespace MDPro3
         public List<SeriesCharacter> sevens;
         public List<SeriesCharacter> npc;
         public List<SeriesCharacter> gorush;
+
+        private List<List<SeriesCharacter>> characters;
 
         NPC_Names names;
         NPC_Profiles profiles;
@@ -94,36 +97,19 @@ namespace MDPro3
 
         public string GetCharacterOriginalId(string charaID)
         {
-            foreach (var c in dm)
-                if (c.id == charaID)
-                    return c.GetOriginalId();
-            foreach (var c in gx)
-                if (c.id == charaID)
-                    return c.GetOriginalId();
-            foreach (var c in _5ds)
-                if (c.id == charaID)
-                    return c.GetOriginalId();
-            foreach (var c in dsod)
-                if (c.id == charaID)
-                    return c.GetOriginalId();
-            foreach (var c in zexal)
-                if (c.id == charaID)
-                    return c.GetOriginalId();
-            foreach (var c in arcv)
-                if (c.id == charaID)
-                    return c.GetOriginalId();
-            foreach (var c in vrains)
-                if (c.id == charaID)
-                    return c.GetOriginalId();
-            foreach (var c in sevens)
-                if (c.id == charaID)
-                    return c.GetOriginalId();
-            foreach (var c in npc)
-                if (c.id == charaID)
-                    return c.GetOriginalId();
-            foreach (var c in gorush)
-                if (c.id == charaID)
-                    return c.GetOriginalId();
+            foreach(var c in characters)
+                foreach (var ch in c)
+                    if (ch.id == charaID)
+                        return ch.GetOriginalId();
+            return charaID;
+        }
+
+        public string GetCharacterDescriptionId(string charaID)
+        {
+            foreach (var c in characters)
+                foreach (var ch in c)
+                    if (ch.id == charaID)
+                        return ch.descriptionId;
             return charaID;
         }
 
@@ -138,6 +124,10 @@ namespace MDPro3
             names = JsonConvert.DeserializeObject<NPC_Names>(File.ReadAllText(path));
             path = Program.PATH_DATA + "DuelLinks_Profile.json";
             profiles = JsonConvert.DeserializeObject<NPC_Profiles>(File.ReadAllText(path));
+            characters = new List<List<SeriesCharacter>>()
+            {
+                dm, gx, _5ds, dsod, zexal, arcv, vrains, sevens, npc, gorush
+            };
             initialized = true;
             instance = this;
         }
@@ -178,10 +168,11 @@ namespace MDPro3
         {
             if (!initialized)
                 Initialize();
+            var value = string.Empty;
 
             if (profiles.PROFILE.TryGetValue("ID" + id, out var data))
             {
-                return language switch
+                value = language switch
                 {
                     "ja-JP" => data.japanese,
                     "en-US" => data.english,
@@ -197,8 +188,31 @@ namespace MDPro3
                     _ => data.english,
                 };
             }
-            else
-                return string.Empty;
+
+            if(string.IsNullOrEmpty(value))
+            {
+                var dID = GetCharacterDescriptionId(id);
+                if (profiles.PROFILE.TryGetValue("ID" + dID, out var data2))
+                {
+                    value = language switch
+                    {
+                        "ja-JP" => data2.japanese,
+                        "en-US" => data2.english,
+                        "fr-FR" => data2.french,
+                        "it-IT" => data2.italian,
+                        "de-DE" => data2.german,
+                        "es-ES" => data2.spanish,
+                        "pt-BR" => data2.portuguese,
+                        "ru-RU" => data2.russian,
+                        "ko-KR" => data2.korean,
+                        "zh-TW" => data2.tChinese,
+                        "zh-CN" => data2.sChinese,
+                        _ => data2.english,
+                    };
+                }
+            }
+
+            return value;
         }
     }
 
