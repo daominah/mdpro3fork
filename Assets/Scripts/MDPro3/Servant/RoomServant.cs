@@ -469,6 +469,7 @@ namespace MDPro3.Servant
             int player = r.ReadInt16();
             var length = r.BaseStream.Length - 3;
             var content = r.ReadUnicode((int)length);
+            //Debug.Log($"{player}: {content}");
             Program.instance.ui_.chatPanel.AddChatItem(player, content);
         }
 

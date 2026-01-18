@@ -154,7 +154,7 @@ namespace MDPro3.UI
 
             var nickName = GetPlayerName(player);
             GameObject item = null;
-            var position = GetPlayerPositon(player);
+            var position = GetPlayerPosition(player);
             switch (position)
             {
                 case PlayerPosition.Me:
@@ -235,9 +235,24 @@ namespace MDPro3.UI
         {
             if (!Program.instance.ocgcore.showing)
                 return player;
-            if(player > -1 && player < 4 && !OcgCore.isFirst)
-                return player ^ 2;
+            if (RoomServant.SelfType == 7)
+                return player;
+            if(player > -1 && player < 4)
+            {
+                if(InFirst() && !OcgCore.isFirst)
+                    return player ^ 2;
+                if(!InFirst() && OcgCore.isFirst)
+                    return player ^ 2;
+            }
             return player;
+        }
+
+        private static bool InFirst()
+        {
+            if(RoomServant.Mode < 2)
+                return RoomServant.SelfType == 0;
+            else
+                return RoomServant.SelfType == 0 || RoomServant.SelfType == 1;
         }
 
         private static string GetPlayerConfigName(PlayerPosition position)
@@ -258,7 +273,7 @@ namespace MDPro3.UI
 
         public static string GetPlayerName(int player)
         {
-            var playerPosition = GetPlayerPositon(player);
+            var playerPosition = GetPlayerPosition(player);
             player = GetRoomPlayerIndex(player);
             string nickName = "";
             switch (player)
@@ -291,7 +306,7 @@ namespace MDPro3.UI
             return nickName;
         }
 
-        public static PlayerPosition GetPlayerPositon(int player)
+        public static PlayerPosition GetPlayerPosition(int player)
         {
             player = GetRoomPlayerIndex(player);
             PlayerPosition position;

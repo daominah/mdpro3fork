@@ -161,7 +161,7 @@ namespace MDPro3.UI.ServantUI
                     roomPlayers[i].SetReadyIcon(RoomServant.players[i].ready);
                     roomPlayers[i].SetButtonTextColor(RoomServant.SelfType == i ? Color.cyan : Color.white);
 
-                    var position = GetPlayerPositon(i);
+                    var position = GetPlayerPosition(i);
                     switch (position)
                     {
                         case PlayerPosition.Me:
