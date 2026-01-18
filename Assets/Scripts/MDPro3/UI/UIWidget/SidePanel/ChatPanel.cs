@@ -145,13 +145,11 @@ namespace MDPro3.UI
             {
                 var cacehd = new List<ChatMessage>(cachedMessages);
                 cachedMessages.Clear();
-                for (int i = 0; i < cachedMessages.Count; i++)
+                for (int i = 0; i < cacehd.Count; i++)
                     AddChatItem(cacehd[i].player, cacehd[i].content);
             }
-
             if (player == -2)
                 return;
-
             var nickName = GetPlayerName(player);
             GameObject item = null;
             var position = GetPlayerPosition(player);
@@ -212,7 +210,6 @@ namespace MDPro3.UI
             item.transform.SetParent(scrollRect.content, false);
             item.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -chatItems.Count * 150);
             chatItems.Add(item);
-
             scrollRect.content.sizeDelta = new Vector2(0, chatItems.Count * 150);
             scrollRect.DOVerticalNormalizedPos(0, 0.2f);
 
@@ -224,7 +221,6 @@ namespace MDPro3.UI
             p.Data.writer.Write(player);
             p.Data.writer.WriteUnicode(content, content.Length + 1);
             TcpHelper.AddRecordLine(p);
-
             if (Program.instance.ocgcore.showing)
                 Program.instance.ocgcore.Chat(player, content);
             if (Program.instance.online.showing)
@@ -235,14 +231,20 @@ namespace MDPro3.UI
         {
             if (!Program.instance.ocgcore.showing)
                 return player;
-            if (RoomServant.SelfType == 7)
-                return player;
-            if(player > -1 && player < 4)
+            if (player > -1 && player < 4)
             {
-                if(InFirst() && !OcgCore.isFirst)
-                    return player ^ 2;
+                var swapMask = RoomServant.Mode == 2 ? 2 : 1;
+                if (RoomServant.SelfType == 7)
+                {
+                    if (!OcgCore.isFirst)
+                        return player ^ swapMask;
+                    else
+                        return player;
+                }
+                if (InFirst() && !OcgCore.isFirst)
+                    return player ^ swapMask;
                 if(!InFirst() && OcgCore.isFirst)
-                    return player ^ 2;
+                    return player ^ swapMask;
             }
             return player;
         }
@@ -275,7 +277,7 @@ namespace MDPro3.UI
         {
             var playerPosition = GetPlayerPosition(player);
             player = GetRoomPlayerIndex(player);
-            string nickName = "";
+            string nickName = string.Empty;
             switch (player)
             {
                 case -1: //local name
