@@ -31,6 +31,7 @@ namespace MDPro3
             {12, "DIY Green" },
             {14, "Neos" },
             {16, "Classic Grid" },
+            {17, "4th Anniversary" },
 
             {50, "DIY Classic" },
             {51, "DIY Classic2" },

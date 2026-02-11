@@ -55,6 +55,8 @@ SpriteAtlas:
     - 2549d7a0e31d1124eb373f3ec1d144d6: 21300000
     - 3d7d7bc00ad63a2468a96bb39d7feee7: 21300000
     - 0cc2b9e0115c20c4b8d598258dd0d54a: 21300000
+    - 24f619f071b04cb409b302cd47c17f05: 21300000
+    - cb2383f18dab800418fc635cb9acc002: 21300000
     - 27162ef1a29fa0241806f8e2b8eb6ff2: 21300000
     - 56c9dc42d1f2821449707394262e5260: 21300000
     - 8f88b45234254b54c80876c4a411ce66: 21300000
@@ -93,6 +95,7 @@ SpriteAtlas:
     - 56bec88e1c065f844983a9d472b27d00: 21300000
     - 275fe00fae9e07247b2456ad080db590: 21300000
     - 91e6f20f7b8553044b2f77b605edb761: 21300000
+    - 8c49cfbf25f40ad44bbeff8237105245: 21300000
     - e954abcfc4d861b419209c04e5ef0dc1: 21300000
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
@@ -101,6 +104,8 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 2549d7a0e31d1124eb373f3ec1d144d6, type: 3}
   - {fileID: 21300000, guid: 3d7d7bc00ad63a2468a96bb39d7feee7, type: 3}
   - {fileID: 21300000, guid: 0cc2b9e0115c20c4b8d598258dd0d54a, type: 3}
+  - {fileID: 21300000, guid: 24f619f071b04cb409b302cd47c17f05, type: 3}
+  - {fileID: 21300000, guid: cb2383f18dab800418fc635cb9acc002, type: 3}
   - {fileID: 21300000, guid: 27162ef1a29fa0241806f8e2b8eb6ff2, type: 3}
   - {fileID: 21300000, guid: 56c9dc42d1f2821449707394262e5260, type: 3}
   - {fileID: 21300000, guid: 8f88b45234254b54c80876c4a411ce66, type: 3}
@@ -139,6 +144,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 56bec88e1c065f844983a9d472b27d00, type: 3}
   - {fileID: 21300000, guid: 275fe00fae9e07247b2456ad080db590, type: 3}
   - {fileID: 21300000, guid: 91e6f20f7b8553044b2f77b605edb761, type: 3}
+  - {fileID: 21300000, guid: 8c49cfbf25f40ad44bbeff8237105245, type: 3}
   - {fileID: 21300000, guid: e954abcfc4d861b419209c04e5ef0dc1, type: 3}
   m_PackedSpriteNamesToIndex:
   - FieldIcon1090016
@@ -146,6 +152,8 @@ SpriteAtlas:
   - FieldIcon1098001
   - FieldIcon1090023
   - FieldIcon1090004
+  - FieldIcon1090041
+  - FieldIcon1092004
   - FieldIcon1090024
   - FieldIcon1090037
   - FieldIcon1090028
@@ -184,6 +192,7 @@ SpriteAtlas:
   - FieldIcon1090011
   - FieldIcon1092002
   - FieldIcon1090006
+  - FieldIcon1090039
   - FieldIcon1090002
   m_RenderDataMap: {}
   m_Tag: SpriteAtlas_Field

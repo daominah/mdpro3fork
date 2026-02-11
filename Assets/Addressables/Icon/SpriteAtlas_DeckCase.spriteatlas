@@ -97,6 +97,7 @@ SpriteAtlas:
     - 682e0199ae820f345ba730e64d111fde: 21300000
     - e4a10c998b5ea8e40823678f25b5099d: 21300000
     - 265071e976413fd448eb7713bb601d9c: 21300000
+    - ac02ed4ad1ee75e41a0953802e203cd4: 21300000
     - 1d3a3aba0c92cf24f81bec65a26b5abe: 21300000
     - b1ee791b88d88d94880e3bb570744333: 21300000
     - f0d7c45b077ec8546bc17f6522ce7709: 21300000
@@ -107,6 +108,7 @@ SpriteAtlas:
     - 6677642cf139aef43afe900f7c04ef2f: 21300000
     - c25b177c0f1d95845af71b1a0b50edcf: 21300000
     - c6d8b22d0ead41b46bb632c2806ff071: 21300000
+    - 3a58153d7ddc24b41af1d360715c8cf7: 21300000
     - 01702b5dc12826d4ab189bec85d62ca7: 21300000
     - c03cc47df3bdd0043867cb4eb76fc105: 21300000
     - ce282edd03cb9d541a6d8180452755b9: 21300000
@@ -115,6 +117,7 @@ SpriteAtlas:
     - 0dad7a3e3bf907a48abd0a4c8d045d8f: 21300000
     - 4a0b4c7ee1ddb284aadd73493cff1332: 21300000
     - 9306378e2e831e046931ff51e9988f7e: 21300000
+    - 11accefe61e171549bf1210d5d111fb6: 21300000
     - 9ddc517f88630ad45b6a79b129ab694e: 21300000
     - e397f69f72c84d44abfcf99ee032d5c7: 21300000
     - d947e89f11463d044a4883732e680687: 21300000
@@ -169,6 +172,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 682e0199ae820f345ba730e64d111fde, type: 3}
   - {fileID: 21300000, guid: e4a10c998b5ea8e40823678f25b5099d, type: 3}
   - {fileID: 21300000, guid: 265071e976413fd448eb7713bb601d9c, type: 3}
+  - {fileID: 21300000, guid: ac02ed4ad1ee75e41a0953802e203cd4, type: 3}
   - {fileID: 21300000, guid: 1d3a3aba0c92cf24f81bec65a26b5abe, type: 3}
   - {fileID: 21300000, guid: b1ee791b88d88d94880e3bb570744333, type: 3}
   - {fileID: 21300000, guid: f0d7c45b077ec8546bc17f6522ce7709, type: 3}
@@ -179,6 +183,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 6677642cf139aef43afe900f7c04ef2f, type: 3}
   - {fileID: 21300000, guid: c25b177c0f1d95845af71b1a0b50edcf, type: 3}
   - {fileID: 21300000, guid: c6d8b22d0ead41b46bb632c2806ff071, type: 3}
+  - {fileID: 21300000, guid: 3a58153d7ddc24b41af1d360715c8cf7, type: 3}
   - {fileID: 21300000, guid: 01702b5dc12826d4ab189bec85d62ca7, type: 3}
   - {fileID: 21300000, guid: c03cc47df3bdd0043867cb4eb76fc105, type: 3}
   - {fileID: 21300000, guid: ce282edd03cb9d541a6d8180452755b9, type: 3}
@@ -187,6 +192,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 0dad7a3e3bf907a48abd0a4c8d045d8f, type: 3}
   - {fileID: 21300000, guid: 4a0b4c7ee1ddb284aadd73493cff1332, type: 3}
   - {fileID: 21300000, guid: 9306378e2e831e046931ff51e9988f7e, type: 3}
+  - {fileID: 21300000, guid: 11accefe61e171549bf1210d5d111fb6, type: 3}
   - {fileID: 21300000, guid: 9ddc517f88630ad45b6a79b129ab694e, type: 3}
   - {fileID: 21300000, guid: e397f69f72c84d44abfcf99ee032d5c7, type: 3}
   - {fileID: 21300000, guid: d947e89f11463d044a4883732e680687, type: 3}
@@ -240,6 +246,7 @@ SpriteAtlas:
   - DeckCase2017
   - DeckCase2004
   - DeckCase0024
+  - DeckCase0032
   - DeckCase1014
   - DeckCase2013
   - DeckCase0013
@@ -250,6 +257,7 @@ SpriteAtlas:
   - DeckCase0002
   - DeckCase0001
   - DeckCase1001
+  - DeckCase0031
   - DeckCase1010
   - DeckCase2001
   - DeckCase1008
@@ -258,6 +266,7 @@ SpriteAtlas:
   - DeckCase0010
   - DeckCase2005
   - DeckCase2016
+  - DeckCase2026
   - DeckCase2019
   - DeckCase0016
   - DeckCase0005
