@@ -369,5 +369,19 @@ namespace MDPro3
 
         #endregion
 
+        #region Screen
+
+        public static float GetScreenAspectRatio()
+        {
+            return (float)Screen.width / Screen.height;
+        }
+
+        public static bool IsAspectRatioWidescreen()
+        {
+            return GetScreenAspectRatio() >= 1.77f; // 16:9
+        }
+
+        #endregion
+
     }
 }

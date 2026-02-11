@@ -1512,6 +1512,8 @@ namespace MDPro3.Duel
                 code = 32807848;
             if (card.GetData().Id == 49238329)//强欲而金满之壶 异画
                 code = 49238329;
+            if (card.GetData().Id == 24224831)//墓穴的指名者 异画
+                code = 24224831;
 
             var targetFolder = Program.root + "MasterDuel/Card/" + code.ToString();
 #if UNITY_STANDALONE_WIN && !UNITY_EDITOR
@@ -1598,6 +1600,12 @@ namespace MDPro3.Duel
                 {
                     AudioManager.PlaySE("SE_EV_CALLED_GRAVE");
                     effect = GetCardEffectPrefab(card.p.InMyControl() ? "Ef13619" : "Ef13619Op");
+                }
+                // 墓穴的指名者 异画
+                else if (code == 24224831)
+                {
+                    AudioManager.PlaySE(card.p.InMyControl() ? "SE_EV_EF21233_R" : "SE_EV_EF21233_P");
+                    effect = GetCardEffectPrefab(card.p.InMyControl() ? Tools.IsAspectRatioWidescreen() ? "Ef21233_Op" : "Ef21233_Op_4x3" : "Ef21233");
                 }
                 // 禁忌的一滴
                 else if (code == 24299458)
@@ -1886,8 +1894,7 @@ namespace MDPro3.Duel
                 }
 
                 var director = effect.GetComponent<PlayableDirector>();
-                await director.WaitAsync();
-                UnityEngine.Object.Destroy(effect);
+                await director.AutoDestroy();
             }
             else
             {
