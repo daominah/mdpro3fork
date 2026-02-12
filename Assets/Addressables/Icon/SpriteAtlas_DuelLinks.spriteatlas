@@ -175,6 +175,7 @@ SpriteAtlas:
     - 6a2ac098256c54d4d8324f153b037a36: 21300000
     - e786d198c55800747bcf70e08c1f4a90: 21300000
     - 7a587398403503346a5b3ddeb507af0c: 21300000
+    - 06bad79864f8bf04d9d0c427f79243c8: 21300000
     - a57921a8ddfed10439e2eb237c790766: 21300000
     - 7b8bb6a8d67e1074cb656056f1112b84: 21300000
     - f7f2e0b8754ca6343923384ea387fa52: 21300000
@@ -300,6 +301,7 @@ SpriteAtlas:
     - 9593939f32017be4bad8edd48d970d52: 21300000
     - 1a013baff030fa14eb35a147df136f59: 21300000
     - 613a92cf321ce2946b05351eba9cdeee: 21300000
+    - fd21cbcfc0bdef24f9c54bbb97862c76: 21300000
     - 5bb57fefe7de358449cbb218a1d15522: 21300000
     - 3553b7ffe2db8b744aa06cc86e658643: 21300000
     - 240818ffab029eb4fbb051802cd3f426: 21300000
@@ -430,6 +432,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 6a2ac098256c54d4d8324f153b037a36, type: 3}
   - {fileID: 21300000, guid: e786d198c55800747bcf70e08c1f4a90, type: 3}
   - {fileID: 21300000, guid: 7a587398403503346a5b3ddeb507af0c, type: 3}
+  - {fileID: 21300000, guid: 06bad79864f8bf04d9d0c427f79243c8, type: 3}
   - {fileID: 21300000, guid: a57921a8ddfed10439e2eb237c790766, type: 3}
   - {fileID: 21300000, guid: 7b8bb6a8d67e1074cb656056f1112b84, type: 3}
   - {fileID: 21300000, guid: f7f2e0b8754ca6343923384ea387fa52, type: 3}
@@ -555,6 +558,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 9593939f32017be4bad8edd48d970d52, type: 3}
   - {fileID: 21300000, guid: 1a013baff030fa14eb35a147df136f59, type: 3}
   - {fileID: 21300000, guid: 613a92cf321ce2946b05351eba9cdeee, type: 3}
+  - {fileID: 21300000, guid: fd21cbcfc0bdef24f9c54bbb97862c76, type: 3}
   - {fileID: 21300000, guid: 5bb57fefe7de358449cbb218a1d15522, type: 3}
   - {fileID: 21300000, guid: 3553b7ffe2db8b744aa06cc86e658643, type: 3}
   - {fileID: 21300000, guid: 240818ffab029eb4fbb051802cd3f426, type: 3}
@@ -684,6 +688,7 @@ SpriteAtlas:
   - sn0607
   - sn0440
   - sn0604
+  - sn0416
   - sn0008
   - sn0708
   - sn0833
@@ -809,6 +814,7 @@ SpriteAtlas:
   - sn0303
   - sn0236
   - sn0426
+  - sn0447
   - sn9092
   - sn0005
   - sn0134
