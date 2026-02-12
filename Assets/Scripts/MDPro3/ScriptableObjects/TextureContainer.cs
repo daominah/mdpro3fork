@@ -216,6 +216,15 @@ namespace MDPro3
         public Sprite counterYosen;
         public Sprite counterZushin;
 
+        public Sprite counterKyouai;
+        public Sprite counterAccess;
+        public Sprite counterShukudai;
+        public Sprite counterShiki;
+        public Sprite counterC;
+        public Sprite counterDish;
+        public Sprite counterKyuzai;
+        public Sprite counterT;
+
         [Header("Button Icon")]
         public Sprite[] battle;
         public Sprite[] select;

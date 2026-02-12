@@ -310,6 +310,7 @@ namespace MDPro3
                 0x8 => container.counterDeformer,
                 0x1009 => container.counterVenom,
                 0xA => container.counterGenex,
+                //0xB => , //指示物（古代的机械城）
                 0xC => container.counterThunder,
                 0xD => container.counterGreed,
                 0x100E => container.counterAlien,
@@ -318,6 +319,7 @@ namespace MDPro3
                 0x11 => container.counterHyper,
                 0x12 => container.counterKarakuri,
                 0x13 => container.counterChaos,
+                //0x14 => , //指示物（奇迹之侏罗纪蛋）
                 0x1015 => container.counterIce,
                 0x16 => container.counterStone,
                 0x17 => container.counterDonguri,
@@ -328,47 +330,98 @@ namespace MDPro3
                 0x1C => container.counterD,
                 0x1D => container.counterJunk,
                 0x1E => container.counterGate,
+                //0x1F => , //指示物（巨大战舰）
                 0x20 => container.counterPlant,
                 0x1021 => container.counterGuard2,
                 0x22 => container.counterDragonic,
                 0x23 => container.counterOcean,
                 0x1024 => container.counterString,
                 0x25 => container.counterChronicle,
+                //0x26 =>, //指示物（金属射手）
+                //0x27 =>, //指示物（死亡蚊）
+                //0x28 =>, //指示物（暗黑弹射手）
+                //0x29 =>, //指示物（气球蜥蜴）
+                //0x102A =>, //指示物（魔法防护器）
                 0x2B => container.counterDestiny,
                 0x2C => container.counterOrbital,
+                //0x2D =>, //指示物（踢火）
                 0x2E => container.counterShark,
                 0x2F => container.counterPumpkin,
                 0x30 => container.counterKattobing,
                 0x31 => container.counterHopeSlash,
                 0x32 => container.counterBalloon,
                 0x33 => container.counterYosen,
+                //0x34 => , //指示物（纸箱拳击手）
                 0x35 => container.counterSound,
                 0x36 => container.counterEM,
                 0x37 => container.counterKaiju,
                 0x1038 => container.counterHoukai,
                 0x1039 => container.counterZushin,
+                //0x40 => , //指示物（No.51 怪腕之必杀摔角手）
                 0x1041 => container.counterPredator,
+                //0x42 => , //指示物（爆竹鬼）
                 0x43 => container.counterDefect,
+                //0x44 => , //指示物（弹带城壁龙）
                 0x1045 => container.counterScales,
+                //0x46 => , //指示物（刚鬼死斗）
+                //0x47 => , //指示物（限制代码）
+                //0x48 => , //指示物（连接死亡炮塔）
                 0x1049 => container.counterPolice,
                 0x4A => container.counterAthlete,
                 0x4B => container.counterBarrel,
                 0x4C => container.counterSummon,
                 0x104D => container.counterSignal,
+                //0x4E => , //指示物（魂之灵摆）
                 0x104F => container.counterVenemy,
+                //0x50 => , //指示物（娱乐伙伴 掉头跑骑兵）
+                //0x51 => , //指示物（蜂军巢）
+                //0x52 => , //指示物（防火龙·暗流体）
+                //0x53 => , //指示物（炽天蝶）
+                //0x54 => , //指示物（星遗物引导的前路）
+                //0x55 => , //指示物（隐居者的大釜）
                 0x56 => container.counterFireStar,
                 0x57 => container.counterPhantasm,
+                //0x58 => , //指示物（祢须三破鸣比）
                 0x59 => container.counterOtoshidama,
+                //0x5A => , //指示物（战吼试炼）
+                //0x5B => , //指示物（北极天熊北斗星）
                 0x105C => container.counterBurn,
+                //0x5D => , //指示物（机巧传-神使记纪图）
                 0x5E => container.counterOunokagi,
                 0x5F => container.counterPiece,
+                //0x60 => , //指示物（北极天熊辐射）
+                //0x61 => , //指示物（命运的囚人）
+                //0x62 => , //指示物（逐渐削减的生命）
                 0x1063 => container.counterIllusion,
                 0x64 => container.counterGG,
                 0x1065 => container.counterRabbit,
+                //0x66 => , //指示物（推荐捏军贯）
+                //0x67 => , //指示物（战斗车轮）
+                //0x68 => , //指示物（图腾柱）
+                //0x69 => , //指示物（吠陀-优婆尼沙昙）
                 0x6A => container.counterKyoumei,
+                0x106B => container.counterKyouai,
+                0x6C => container.counterAccess,
+                0x6D => container.counterShukudai,
+                0x6E => container.counterShiki,
+                0x6F => container.counterC,
+                0x70 => container.counterDish,
+                0x71 => container.counterKyuzai,
+                0x1072 => container.counterGirl,
+                0x73 => container.counterT,
+
                 0x102A => container.counterGardna,
                 _ => container.counterNormal,
             };
+
+            /*
+            Currently not used:
+            counterDeath
+            counterEarthBind
+            counterGardna
+            counterGuard
+
+            */
         }
 
         #endregion
