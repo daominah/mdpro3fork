@@ -200,6 +200,14 @@ MonoBehaviour:
   counterWorm: {fileID: 21300000, guid: da0a06267946c80429651e550b96dc6c, type: 3}
   counterYosen: {fileID: 21300000, guid: ba4724101d99f484d82b1e92a16791b8, type: 3}
   counterZushin: {fileID: 21300000, guid: 1c43b0e68b0fa5049b4f62291bd01608, type: 3}
+  counterKyouai: {fileID: 21300000, guid: 18c226eb22b3f3a4fb23bc19bf2eb984, type: 3}
+  counterAccess: {fileID: 21300000, guid: 9f17f0d2f554a1e4c81226f6fa5c63bf, type: 3}
+  counterShukudai: {fileID: 21300000, guid: bd1d37631b556ca4f880b1da425f55e3, type: 3}
+  counterShiki: {fileID: 21300000, guid: 3d49b095a6296d1469fc27c6a8205d60, type: 3}
+  counterC: {fileID: 21300000, guid: 3140c9e8890539a49a06a2af4f2b2f45, type: 3}
+  counterDish: {fileID: 21300000, guid: f21478d965372d34aa5eecd99e77fc97, type: 3}
+  counterKyuzai: {fileID: 21300000, guid: 6163bddd620f6ce4c997bc7ec8e4718b, type: 3}
+  counterT: {fileID: 21300000, guid: c8615e3b22a9cab4f85fa3d5e2e24f2f, type: 3}
   battle:
   - {fileID: 21300000, guid: 12db16943897c0e4f9599de51632e70c, type: 3}
   - {fileID: 21300000, guid: d026a7b6d9105ad41b502c9b0014f140, type: 3}

@@ -5042,6 +5042,7 @@ MonoBehaviour:
   overlays: []
   overlayParent: {fileID: 0}
   equipedCard: {fileID: 0}
+  forSelect: 0
   overFatherCount: 0
   model: {fileID: 0}
   manager: {fileID: 0}
