@@ -105,6 +105,12 @@ Desapareció sin dejar ni rastro con la llegada de "<card mrk='10282'/>".
 [IDS_ITEMDESC.ID1000037]
 La lanza de una deidad robótica que fue forjada en respuesta al deseo de una muñeca mecánica.
 Se ha fabricado con los restos de "<category id='89'/>".
+[IDS_ITEMDESC.ID1000038]
+Una "mensajera" que acepta encargos relacionados con datos prohibidos.
+Cuando una misteriosa organización la convierte en su objetivo, su destino comienza a cambiar.
+[IDS_ITEMDESC.ID1000039]
+Una chica que juró proteger a "<card mrk='14676'/>", a pesar de que quieren aniquilarla.
+Aún no se percata de que el pequeño futuro que protege liberará un caos aún mayor en el mundo.
 [IDS_ITEMDESC.ID1000041]
 Una bestia demoníaca que duerme como un tronco.
 Para alimentarse de los sueños de otros, su cuerpo produce un olor somnoliento, pero que también la duerme a ella.
@@ -216,7 +222,8 @@ Afina con los demás a través del sonido que emite y posee una fuerza capaz de 
 [IDS_ITEMDESC.ID1001035]
 coming soon
 [IDS_ITEMDESC.ID1001036]
-coming soon
+Una chica yokai aparece dentro de la mansión.
+La luz de la luna entra por la ventana para mostrar su sonrisa.
 [IDS_ITEMDESC.ID1001037]
 Los guerreros Piroxénicos, unos caballeros ecuánimes cuyos corazones anhelan la justicia en secreto.
 Ellos poseen la habilidad de fusionarse según lo vean necesario.
@@ -334,7 +341,8 @@ A pesar de poseer un talento innato, necesitó un entrenamiento especial para do
 Este herrero, que habita en un reino oscuro, doblega a los demonios y los convierte en sus armas.
 Verlo enzarzado en un encarnizado combate con el "<card mrk='20225'/>" en guardia es como ver a un demonio preparado para atacar.
 [IDS_ITEMDESC.ID1003005]
-coming soon
+Una sombra se cierne sobre la mensajera que corre velozmente en la noche.
+La persecución entre luces de neón vuelve a dar comienzo.
 [IDS_ITEMDESC.ID1003006]
 coming soon
 [IDS_ITEMDESC.ID1003007]
@@ -710,7 +718,8 @@ La historia de la "<card mrk='21195'/>" ha pervivido.
 Un icono que representa a un caballero que asalta un castillo repleto de leyendas antiguas.
 El valiente caballero supera una a una las numerosas y letales trampas que le aguardan.
 [IDS_ITEMDESC.ID1010123]
-coming soon
+Un icono que representa a una unidad especial que resuelve crímenes sobrenaturales.
+Al someter a un objetivo, deja temporalmente a un lado sus limitaciones para liberar su verdadero poder.
 [IDS_ITEMDESC.ID1010124]
 Un icono que representa a la primera Mikanko.
 Cuentan que eligió al pájaro cantor como su bestia espiritual y forjó un juramento sagrado de amistad con lo divino.
@@ -735,6 +744,9 @@ Sigue sin ser consciente de lo que está por venir.
 [IDS_ITEMDESC.ID1010131]
 Un icono que representa el emblema de la Academia.
 En caso de emergencia, los alumnos deben reunirse de inmediato.
+[IDS_ITEMDESC.ID1010138]
+Un icono que representa a un mago con un poder mágico inigualable.
+El círculo mágico que dibujó llevó al legendario Rey de los Duelos a la victoria.
 [IDS_ITEMDESC.ID1011001]
 Un icono que representa una pelota con cuadros negros y blancos.
 Ganar 3 Duelos seguidos no se llama "hat-trick".
@@ -1151,6 +1163,18 @@ Un icono que representa a un pájaro divino que protege siempre vigilante.
 Incinera a todo aquel que ose entrar en su santuario.
 [IDS_ITEMDESC.ID1012076]
 Un icono que representa a "<card mrk='4895'/>" abrumado por enormes deudas.Desesperado, trata de hacer números para volver a encarrilar su vida.
+[IDS_ITEMDESC.ID1012077]
+Un icono que representa a una "mensajera" que se especializa en datos prohibidos.
+Con más de 100 identidades, nadie sabe quién es en realidad.
+[IDS_ITEMDESC.ID1012078]
+Un icono que representa a "<category id='154'/>", la ninja más joven.
+Haciendo caso a las palabras del jefe de su aldea, juró castigar a los malhechores por el bien de todos.
+[IDS_ITEMDESC.ID1012079]
+Un icono que representa a "<card mrk='17165'/>" liberando un trueno volcánico.
+La criatura de energía inmortal "<category id='40'/>" se muestra.
+[IDS_ITEMDESC.ID1012080]
+Un icono que representa al arma que "<card mrk='14676'/>" portó.
+Parece pronunciar palabras sencillas, pero se sigue sin saber mucho sobre su potencial.
 [IDS_ITEMDESC.ID1013001]
 Un icono que representa a un joven al que le encanta el béisbol.
 Puedes haber coincidido con él en el colegio en algún momento que otro y haber sido testigo de su grandeza motivada por su pasión por el béisbol.
@@ -1764,7 +1788,7 @@ Ganado victoria tras victoria frente a feroces competidores en la 2nd STAGE.
 Un título otorgado a los duelistas que llegaron a la 2nd Stage en la DC 2025 DEC.
 Es la prueba de tu logro de haber superado la reñida 1st Stage.
 [IDS_ITEMDESC.ID1020195]
-Un título que se otorga a los duelistas que han logrado resultados notables en el "Festival de Fusión y Sincronía +".
+Un título que se otorga a los duelistas que han logrado resultados notables en el "<exhibition id='033'/>".
 El orgullo de los duelistas despierta a causa de las cartas que más atesoran.
 [IDS_ITEMDESC.ID1020196]
 Un título que se concede a los duelistas que han aprovechado el poder de los monstruos legendarios y se han labrado una buena reputación.
@@ -1772,6 +1796,12 @@ Una nueva leyenda se forja como resultado del enfrentamiento con el mejor duelis
 [IDS_ITEMDESC.ID1020197]
 Un título que se otorga a los duelistas que han logrado buenos resultados en una batalla entre tres poderes.
 Sea cual sea la situación, tus habilidades brillarán con luz propia.
+[IDS_ITEMDESC.ID1020198]
+Un título que se concede a quienes dan sus primeros pasos como duelistas con Decks inmortales.
+Con un rugido atronador, se lanzan al combate ferozmente contra sus rivales.
+[IDS_ITEMDESC.ID1020199]
+Un título que se otorga a los duelistas que lograron buenos resultados en el evento "Carrera de dados - Fusión/Sincronía/Enlace".
+Un brillante futuro aguarda a aquellos valientes que confían en sí mismos.
 [IDS_ITEMDESC.ID1021001]
 Un título que solo se otorga en una ocasión especial.
 [IDS_ITEMDESC.ID1021002]
@@ -1947,6 +1977,9 @@ Parece que no alberga odio alguno hacia el ser humano.
 [IDS_ITEMDESC.ID1031018]
 Un marco de icono que se formó al crear un receptáculo capaz de albergar un alma.
 En su interior alberga tecnología ancestral y una férrea determinación.
+[IDS_ITEMDESC.ID1031019]
+Un marco de icono que evoca a una agente de la unidad <category id='134'/>.
+Una luz roja parpadea cuando libera su poder.
 [IDS_ITEMDESC.ID1031020]
 Un marco de icono que representa una actuación importante de una compañía de artistas.
 La danza shishimai, que combina todos los elementos imaginables, se ha convertido en leyenda.
@@ -2437,6 +2470,27 @@ Para quienes están preparados para la muerte.
 [IDS_ITEMDESC.ID1070149]
 Protectores que representan a un luchador con propulsores avanzados de alto rendimiento.
 Para quienes hacen uso de dotes de combate variables.
+[IDS_ITEMDESC.ID1070150]
+Protectores que representan la nueva historia de la "perseguidora" y la "perseguida".
+Para quienes siguen la senda en la que creen.
+[IDS_ITEMDESC.ID1070151]
+Protectores que representan a un hombre con un poder sobrenatural.
+Para quienes quieren liberarse de sus limitaciones.
+[IDS_ITEMDESC.ID1070152]
+Protectores que muestran el descenso de un mago imbuido del poder del caos.
+Para quienes pueden doblegar la magia de destrucción a su antojo.
+[IDS_ITEMDESC.ID1070153]
+Protectores que muestran una forma de vida inmortal que emite un destello rojo.
+Para aquellos con un resplandor incontrolable.
+[IDS_ITEMDESC.ID1070157]
+Protectores que muestran un streamer monísimo vestido de forma especial.
+Para aquellos que se enfrentan al mundo con el rostro impasible.
+[IDS_ITEMDESC.ID1070158]
+Protectores que muestran a "<card mrk='7696'/>" tras despertar un nuevo poder.
+Para quienes creen en el vínculo de los camaradas reunidos.
+[IDS_ITEMDESC.ID1070159]
+Protectors featuring a pair of friendly, well-dressed tanuki.
+For those who wish for happiness and growth.
 [IDS_ITEMDESC.ID1071001]
 Protectores que ilustran a un guerrero que ha madurado y guarda en su corazón las cicatrices de las batallas. 
 Perfectos para los que siempre quieren lo mejor para sus amigos.
@@ -2548,6 +2602,8 @@ Para quienes tienen un deseo insaciable.
 [IDS_ITEMDESC.ID1071037]
 Protectores que representan una cabaña construida en un terreno baldío tras una catástrofe financiera.
 Para quienes creen que la hierba es más verde al otro lado de la verja.
+[IDS_ITEMDESC.ID1071038]
+Protectores que representan a una "mensajera" con más de 100 identidades. Para quienes recorren el mundo de la noche.
 [IDS_ITEMDESC.ID1072001]
 Un protector con el diseño del "<card mrk='13670'/>" con su armadura en modo de destrucción.
 Para aquellos jugadores que se abrirán camino hacia la victoria con uñas y dientes desde las llamas del campo de batalla.
@@ -2739,6 +2795,12 @@ Un dragón demoníaco abrasador cuya ferocidad escarlata no tiene parangón.
 [IDS_ITEMDESC.ID1080030]
 Una caja de cartas que representa a "<card mrk='19500'/>".
 Después de evolucionar a una forma trascendental, este halcón de voluntad férrea despliega sus alas de rebelión.
+[IDS_ITEMDESC.ID1080031]
+Una caja de cartas que representa a "<card mrk='21610'/>".
+Perfecta para Decks centrados en el uso de magia de destrucción.
+[IDS_ITEMDESC.ID1080032]
+Una caja de cartas que representa a "<card mrk='17449'/>".
+Perfecta para Decks cargados de energía inmortal.
 [IDS_ITEMDESC.ID1082001]
 Una caja para Decks con un diseño inspirado en la gran extensión galáctica de la que provienen los Monstruos Xyz. 
 Ideal para los Decks que se centran en la Invocación por Xyz.
@@ -2814,6 +2876,9 @@ Perfecta para Decks que tengan brujas que han sido víctimas de un cruel destino
 [IDS_ITEMDESC.ID1082025]
 Una caja de cartas que representa un castillo impenetrable que repele a los intrusos.
 Perfecta para Decks repletos de Cartas de Trampa.
+[IDS_ITEMDESC.ID1082026]
+Una caja de cartas que representa a <card mrk='21385'/>.
+Perfecta para Decks que resuelven crímenes sobrenaturales.
 [IDS_ITEMDESC.ID1083001]
 Una caja de cartas exclusiva que se ofrece en ocasiones especiales.
 [IDS_ITEMDESC.ID1090001]
@@ -2925,12 +2990,20 @@ En su interior se abre, lenta pero inexorable, la puerta del cataclismo.
 [IDS_ITEMDESC.ID1090037]
 Un Campo de Duelo del <card mrk='17367'/>.
 La maldición solo se romperá al encontrar el verdadero tesoro que supuestamente yace en el castillo.
+[IDS_ITEMDESC.ID1090039]
+Un Campo de Duelo de "<card mrk='21385'/>".
+Los callejones repletos de tiendas algo sospechosas son perfectos para que los delincuentes sobrenaturales hagan de las suyas.
 [IDS_ITEMDESC.ID1090040]
 Un Campo de Duelo de un estadio de fútbol.
 Los vítores de los hinchas se oyen por todo el campo.
+[IDS_ITEMDESC.ID1090041]
+Un Campo de Duelo donde se reúnen y operan ladrones, agentes, mensajeros y muchos otros miembros del inframundo. También parece ser la sede de una organización secreta que viaja a través del tiempo y las dimensiones para derrotar a las fuerzas del mal.
 [IDS_ITEMDESC.ID1092001]
 Un Campo que representa a dos guerreros inmersos en un violento combate.
 ¡No hay mejor momento para un enfrentamiento que ahora!
+[IDS_ITEMDESC.ID1092004]
+A Duel Field where young duelists clash with pride and soul.
+The time has come to fulfill the pact of destiny. With resonating bonds, seize the summit and claim the title of Japan’s high school champion!
 [IDS_ITEMDESC.ID1100001]
 Partes del Campo de un bosque.
 El diseño grabado recuerda a las reliquias antiguas.
@@ -3039,9 +3112,15 @@ Su sofisticación está a la altura del castillo del que emanan las sombras.
 [IDS_ITEMDESC.ID1100037]
 Partes del Campo del <card mrk='17367'/>.
 Sus diseños ornamentados les otorgan gran valor como piezas de decoración.
+[IDS_ITEMDESC.ID1100039]
+Partes del Campo de "<card mrk='21385'/>".
+Todos se quedan en guardia cuando ven el diseño, así que tiene un efecto disuasorio para los delincuentes.
 [IDS_ITEMDESC.ID1100040]
 Partes del Campo de un estadio de fútbol.
 Su salida temporal es parte del espectáculo. El jugador insignia sale del hoyo dispuesto a contraatacar.
+[IDS_ITEMDESC.ID1100041]
+Partes del Campo de la Ciberciudad de Neón.
+También parecen útiles como refugios temporales para los agentes.
 [IDS_ITEMDESC.ID1101001]
 Partes del Campo inspiradas en un Agujero Trampa.
 ¿Colocar una trampa como esta tiene algo que ver con la astucia o es una injusticia sin más?
@@ -3170,7 +3249,8 @@ coming soon
 [IDS_ITEMDESC.ID1102003]
 coming soon
 [IDS_ITEMDESC.ID1102004]
-coming soon
+Field parts set within the stadium.
+The fiery spirit of youth cannot be contained by any force.
 [IDS_ITEMDESC.ID1102005]
 coming soon
 [IDS_ITEMDESC.ID1102006]
@@ -3302,8 +3382,14 @@ Uno de los innumerables agujeros que perforan el cielo.
 [IDS_ITEMDESC.ID1110037]
 Un enclave del <card mrk='17367'/>.
 En su refinado diseño se refleja el espíritu de la hospitalidad hacia los invitados.
+[IDS_ITEMDESC.ID1110039]
+Un enclave de "<card mrk='21385'/>".
+Si es un lugar en el que puede haber crímenes sobrenaturales, está claro que "<category id='134'/>" lo tiene marcado.
 [IDS_ITEMDESC.ID1110040]
 Un enclave de un estado de fútbol. El campo vibra con la emoción y se estremece con cada disparo.
+[IDS_ITEMDESC.ID1110041]
+Un enclave del Campo de Duelo de la Ciberciudad de Neón.
+Incluso bajo el resplandor de las luces eléctricas, nadie está a salvo tras convertirse en el blanco de los agentes.
 [IDS_ITEMDESC.ID1111001]
 Un enclave inspirado en un determinado tablero con letras grabadas que se usa en diversas artes sobrenaturales.
 Sentirás como si un espíritu oscuro y vengativo te mirara desde la grieta...
@@ -3457,9 +3543,18 @@ Un enclave inspirado en un mundo exquisitamente estúpido y en monstruos delicio
 [IDS_ITEMDESC.ID1111071]
 Un enclave inspirado en el horóscopo de <category id='110'/>.
 Te guía usando el poder místico de las estrellas.
+[IDS_ITEMDESC.ID1111072]
+Un enclave inspirado en la ropa especial de un streamer monísimo.
+Se necesita cierto aire de despreocupación para llamar la atención de verdad.
+[IDS_ITEMDESC.ID1111080]
+Un enclave inspirado en un dragón que porta el nombre de "<category id='158'/>".
+Su poder abrumador puede abrir un agujero hacia un mundo cerrado.
 [IDS_ITEMDESC.ID1112001]
 Un enclave de un Coliseo.
 El fuego brillante baila como si cantara las alabanzas de los valientes guerreros que allí combaten.
+[IDS_ITEMDESC.ID1112004]
+A Stand from a Stadium.
+Who will rise and lift the trophy of triumph side by side—the true champions?
 [IDS_ITEMDESC.ID1113001]
 Un enclave que conmemora la participación en el evento MASTER DUEL del Yu-Gi-Oh! World Championship 2023.
 Su diseño austero pone de manifiesto el prestigio de la competición.
@@ -3545,9 +3640,9 @@ A partir de una carta como el "<card mrk='19014'/>", realiza una serie de Invoca
 Este Deck de "<category id='106'/>" simboliza el poder de los monstruos reunidos.
 Comienza tu ofensiva con monstruos de Nivel 4, como "<card mrk='19460'/>", que puede allanar el camino a "<card mrk='15519'/>", "<card mrk='19501'/>" y "<card mrk='12868'/>". Usa sus efectos para Invocar a "<card mrk='19459'/>" y reunir a una temible banda de monstruos de "<category id='106'/>". Después usa "<card mrk='12868'/>" con Material Xyz para Invocar por Enlace a "<card mrk='14205'/>" y convocar a poderosos Monstruos Xyz mientras sigues Invocando a otros monstruos. Cuando todo esté en su lugar, usa cartas como "<card mrk='19511'/>" en el turno de tu adversario para convocar a "<card mrk='19500'/>". Esta carta te facilitará la victoria de inmediato al aniquilar las cartas del Campo del adversario y causarles daño directo, todo ello sin sufrir los efectos de otras cartas.
 [IDS_ITEMDESC.ID1120031]
-coming soon
+Este Deck adopta un enfoque técnico en combate, usando "<card mrk='4041'/>" y Monstruos de Fusión. "<card mrk='21610'/>" es la carta destacada. Puedes Invocarla de Modo Especial fácilmente durante un turno en el que activaste una Carta Mágica, y cuando se Invoca de Modo Especial, puedes añadir una carta que actúa como sucesora de tu Deck a tu mano. Si usas este efecto para preparar a "<card mrk='12456'/>" o "<card mrk='11672'/>", puedes crear una formación sólida capaz de responder a los movimientos de tu adversario. Además de los monstruos, asegúrate de usar Cartas Mágicas / de Trampa para tomar la delantera en combate y después acaba con tu adversario con un poderoso Monstruo de Fusión.
 [IDS_ITEMDESC.ID1120032]
-coming soon
+Un Deck "<category id='40'/>" que se basa en desplegar monstruos de Nivel/Rango/Vínculo 2 que luchan en perfecta sincronía. Empieza preparando monstruos de Nivel 2 en el Campo y después combina monstruos como "<card mrk='17405'/>" y "<card mrk='17406'/>" para desplegarlos en combate. Usa cartas como "<card mrk='17449'/>", que te permiten invocar monstruos directamente de tu Deck y después preparar a "<card mrk='17408'/>" y "<card mrk='17409'/>" para crear una formación que puede adaptarse a los efectos de tu adversario. Cuando sea tu turno para atacar, usa a "<card mrk='17458'/>" para aumentar tu ATK y hacerte con la victoria.
 [IDS_ITEMDESC.ID1120033]
 coming soon
 [IDS_ITEMDESC.ID1120034]
@@ -3842,7 +3937,8 @@ A pesar de todos sus preparativos entre bastidores, al final tuvieron que enfren
 El primer y el eterno señor de la Tierra Dorada.
 Mediante su propia codicia, dominó y conjuró la maldición que liberó todo tipo de deseos y resentimientos.
 [IDS_ITEMDESC.ID1130099]
-coming soon
+Sin limitaciones, "<card mrk='21379'/>" libera un poder incluso mayor.
+Con la luna llena a sus espaldas, cercena todo a su alrededor con una furia desmesurada.
 [IDS_ITEMDESC.ID1130100]
 La primera Mikanko, que supuestamente poseía todas las reliquias sagradas.
 Cuenta con el pájaro cantor de la tierra eterna como bestia espiritual.
@@ -3867,11 +3963,26 @@ De este portal nace un nuevo <category id='113'/>.
 Los ángeles del reino de Solfa practican una poderosa y fabulosa magia conocida como "acordes".
 Una sinfonía de ángeles y hadas que limpia el mundo mortal de sus impurezas.
 [IDS_ITEMDESC.ID1130108]
-coming soon
+Dos almas han elegido una nueva senda.
+La caza se convierte en alianza mientras atraviesan la oscuridad de la noche.
 [IDS_ITEMDESC.ID1130109]
-coming soon
+La "mensajera" de las mil caras.
+Es capar de adaptarse a quienes quieran luchar junto a ella.
 [IDS_ITEMDESC.ID1130110]
-coming soon
+Una ninja que persigue la justicia, fiel a los preceptos que le inculcó el líder de su aldea.
+Todo es posible con sus artes ninja.
+[IDS_ITEMDESC.ID1130111]
+Una "mensajera" que roba datos de todo tipo para sus clientes.
+Atraviesa la noche a toda velocidad, dejando solo un tenue resplandor luminoso.
+[IDS_ITEMDESC.ID1130112]
+Con ciertas dudas sobre la misión de captura de "<card mrk='14676'/>", decide rebelarse y dar la espalda a sus obligaciones.
+Las palabras del jefe de la aldea se grabaron a fuego en su mente, lo que la empujó a luchar en el bando de la justicia.
+[IDS_ITEMDESC.ID1130113]
+<category id='40'/> que gestiona a "<card mrk='17164'/>".
+Absorben energía y partes, cada una de las cuales recibe un poder aún mayor.
+[IDS_ITEMDESC.ID1130124]
+La "perseguidora" y la "perseguida" buscan un nuevo futuro.
+La senda que recorrerán con sus ideales sigue siendo un misterio.
 [IDS_ITEMDESC.ID1132001]
 Él tampoco tiene muy claro por qué, pero ahora el conejo es miembro de un club de fútbol.
 Espera poder liderar a su equipo hasta la victoria con toda su habilidad de apoyo natural.
@@ -3916,7 +4027,8 @@ Cuentan que, cuando los "<category id='112'/>" se reúnan, las exquisitamente es
 Un Archivo de Coleccionista que representa a quienes aguardan en el interior de un plateado y siniestro castillo.
 Dicen que cuando sus <category id='127'/> se reúnan, las impenetrables puertas resplandecerán.
 [IDS_ITEMDESC.ID1170005]
-coming soon
+Un Archivo de Coleccionista que representa a una unidad especial que resuelve crímenes sobrenaturales.
+Cuentan que cuando los <category id='134'/> se reúnan, las puertas de la liberación resplandecerán.
 [IDS_ITEMDESC.ID1170006]
 Archivo de Coleccionista que representa a unas doncellas que canalizan deidades mediante la danza.
 Cuentan que cuando los <category id='128'/> se reúnan, las puertas ceremoniales de la oración de la prosperidad resplandecerán.
@@ -3925,6 +4037,13 @@ coming soon
 [IDS_ITEMDESC.ID1170008]
 Archivo de Coleccionista que representa a unas chicas que cargan un cruel destino sobre sus hombros.
 Cuentan que cuando los <category id='002'/> se reúnan, las puertas de la tecnología más avanzada resplandecerá.
+[IDS_ITEMDESC.ID1170009]
+Un Archivo de Coleccionista que representa al mago de mayor confianza del legendario Rey de los Duelos.
+Cuentan que cuando los <category id='072'/> se reúnan, las puertas de la magia negra resplandecerán.
+[IDS_ITEMDESC.ID1170010]
+coming soon
+[IDS_ITEMDESC.ID1170011]
+coming soon
 [IDS_ITEMDESC.ID1180001]
 Una moneda en la que aparece el dragón brillante que trae una nueva leyenda.
 Sus ojos celestes resplandecen.
@@ -3965,11 +4084,13 @@ El poder de las estrellas brilla intensamente.
 [IDS_ITEMDESC.ID1180014]
 Una moneda cuyo motivo es una carta que da mucha suerte. Sus alas blancas brillan resplandecientes.
 [IDS_ITEMDESC.ID1180015]
-coming soon
+Una moneda cuyo motivo es el símbolo de <category id='134'/>.Su determinación contra los crímenes sobrenaturales brilla intensamente.
 [IDS_ITEMDESC.ID1180016]
-coming soon
+Una moneda cuyo motivo es la "<card mrk='19487'/>" usada por "<card mrk='14676'/>".
+Parece brillar con osadía y confianza.
 [IDS_ITEMDESC.ID1180017]
-coming soon
+Una moneda cuyo motivo es un mago que conoce la magia negra.
+Su tremendo poder mágico brilla intensamente.
 [IDS_ITEMDESC.ID1180018]
 coming soon
 [IDS_ITEMDESC.ID1180019]

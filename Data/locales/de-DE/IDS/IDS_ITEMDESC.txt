@@ -105,6 +105,12 @@ Mit dem Aufkommen von „<card mrk='10282'/>“ verschwand er spurlos aus den Ge
 [IDS_ITEMDESC.ID1000037]
 Der Speer einer Maschinengottheit, geschmiedet als Reaktion auf den Willen einer mechanischen Puppe.
 Er wurde aus „<category id='89'/>“-Resten hergestellt.
+[IDS_ITEMDESC.ID1000038]
+Eine „Kurierin“, die Aufträge annimmt, die mit verbotenen Daten zu tun haben.
+Als eine mysteriöse Organisation sie ins Visier nimmt, beginnt sich ihr Schicksal zu verändern.
+[IDS_ITEMDESC.ID1000039]
+Ein Mädchen schwor, „<card mrk='14676'/>“ zu beschützen, obwohl die Kurierin eliminiert werden sollte.
+Sie ahnt noch nicht, dass die kleine Zukunft, die sie beschützt, die Welt in noch größere Turbulenzen stürzen wird.
 [IDS_ITEMDESC.ID1000041]
 Ein dämonisches Ungeheuer, das schläft wie Schlamm.
 Um sich von den Träumen anderer zu ernähren, stößt es ein einschläferndes Aroma aus, schläft aber immer selbst ein.
@@ -216,7 +222,8 @@ Durch das Stimmen mit anderen erzeugt es Kräfte, die die Erde selbst zerschmett
 [IDS_ITEMDESC.ID1001035]
 coming soon
 [IDS_ITEMDESC.ID1001036]
-coming soon
+Ein Yokai-Mädchen erscheint im Inneren der Villa.
+Mondlicht strömt durchs Fenster und enthüllt ihr Lächeln.
 [IDS_ITEMDESC.ID1001037]
 Die Pyroxen-Krieger, besonnene Ritter mit einem Herzen, das sich insgeheim nach Gerechtigkeit sehnt.
 Sie besitzen die Fähigkeit, nach Bedarf zu fusionieren.
@@ -334,7 +341,8 @@ Obwohl sie von Geburt an talentiert war, wurde sie erst nach einem speziellen Tr
 Der Schmied, der in einem dunklen Reich lebt, unterwirft Unterweltler und macht sie zu seinen Waffen.
 Wenn du ihn mit „<card mrk='20225'/>“ in einem intensiven Kampf siehst, bist du Zeuge eines Ungeheuers, das nur darauf wartet, zuzuschlagen.
 [IDS_ITEMDESC.ID1003005]
-coming soon
+Ein Schatten schleicht sich an die Kurierin heran, die durch die Nacht rast.
+Heute Abend beginnt die neonbeleuchtete Jagd von neuem.
 [IDS_ITEMDESC.ID1003006]
 coming soon
 [IDS_ITEMDESC.ID1003007]
@@ -710,7 +718,8 @@ Das Märchen von „<card mrk='21195'/>“ wird weitererzählt.
 Ein Symbol, das einen Ritter zeigt, der gegen eine von alten Legenden umwobene Burg antritt.
 Der tapfere Ritter überwindet mühelos die zahlreichen tödlichen Fallen, die auf ihn lauern.
 [IDS_ITEMDESC.ID1010123]
-coming soon
+Ein Symbol, das ein Mitglied einer Spezialeinheit darstellt, die gegen übernatürliche Verbrechen vorgeht.
+Wenn sie ein Ziel unterdrückt, löst sie vorübergehend ihre Fesseln, um ihre wahre Macht zu entfesseln.
 [IDS_ITEMDESC.ID1010124]
 Ein Symbol, das die erste Mikanko darstellt.
 Es heißt, sie habe den ewig singenden Vogel zu ihrem Geistungeheuer erwählt und einen heiligen Freundschaftsschwur mit dem Göttlichen geschlossen.
@@ -735,6 +744,9 @@ Es ahnt noch nichts von dem, was kommen wird.
 [IDS_ITEMDESC.ID1010131]
 Ein Symbol, das das Emblem der Akademie darstellt.
 Im Notfall müssen sich die Schüler sofort versammeln.
+[IDS_ITEMDESC.ID1010138]
+Ein Symbol, das einen Zauberer mit unvergleichlicher magischer Macht darstellt.
+Der magische Kreis, den er zog, führte den legendären König der Spiele zum Sieg.
 [IDS_ITEMDESC.ID1011001]
 Ein Symbol, das einen Ball, der aus schwarzen und weißen Panels besteht, darstellt.
 3 Duelle in Folge zu gewinnen nennt man nicht einen Hattrick.
@@ -1152,6 +1164,18 @@ Er verbrennt alle, die es wagen, in sein Heiligtum einzudringen.
 [IDS_ITEMDESC.ID1012076]
 Ein Symbol, das „<card mrk='4895'/>“ darstellt, der mit hohen Schulden belastet ist.
 Er wertet fieberhaft die Zahlen aus, um die Dinge wieder in Ordnung zu bringen.
+[IDS_ITEMDESC.ID1012077]
+Ein Symbol, das eine „Kurierin“ darstellt, die sich auf verbotene Daten spezialisiert hat.
+Mit über 100 Identitäten kennt niemand ihr wahres Ich.
+[IDS_ITEMDESC.ID1012078]
+Ein Symbol, das die jüngste weibliche Ninja „<category id='154'/>“ darstellt.
+Sie befolgt die Worte ihres Dorfvorstehers und schwor, Übeltäter zum Wohle aller zu bestrafen.
+[IDS_ITEMDESC.ID1012079]
+Ein Symbol, das einen „<card mrk='17165'/>“ darstellt, der donnernde Vulkanausbrüche entfesselt.
+Die unsterbliche Energie-Lebensform „<category id='40'/>“ offenbart sich.
+[IDS_ITEMDESC.ID1012080]
+Ein Symbol, das die von „<card mrk='14676'/>“ geführte Waffe darstellt.
+Es scheint einfache Worte zu sprechen, doch die Komplexität seines Potenzials bleibt unbekannt.
 [IDS_ITEMDESC.ID1013001]
 Ein Symbol, das einen kleinen Jungen darstellt, der sich für Baseball begeistert.
 Vielleicht bist du ihm schon einmal an einer Schule begegnet, wo er durch seine Leidenschaft für Baseball zu Höchstleistungen angespornt wurde.
@@ -1765,7 +1789,7 @@ Er wurde durch einen Sieg nach dem anderen gegen die harte Konkurrenz in der 2nd
 Ein Titel, der an Duellanten vergeben wird, die die 2nd Stage des DC 2025 DEC erreicht haben.
 Er ist der Beweis dafür, dass du es durch die heiß umkämpfte 1st Stage geschafft hast.
 [IDS_ITEMDESC.ID1020195]
-Ein Titel, der an Duellanten vergeben wird, die bei „Fusion x Synchro-Festival +“ bemerkenswerte Ergebnisse erzielt haben.
+Ein Titel, der an Duellanten vergeben wird, die bei „<exhibition id='033'/>“ bemerkenswerte Ergebnisse erzielt haben.
 Der Stolz der Duellanten erwacht durch die Karten, die sie am meisten schätzen.
 [IDS_ITEMDESC.ID1020196]
 Ein Titel, der Duellanten verliehen wird, die die Macht der legendären Monster genutzt und sich einen Namen gemacht haben.
@@ -1773,6 +1797,12 @@ Eine neue Legende wird erschaffen, wenn man die größten Duellanten trifft und 
 [IDS_ITEMDESC.ID1020197]
 Ein Titel, der an Duellanten vergeben wird, die in einem Kampf zwischen drei Seiten Ergebnisse erzielt haben.
 Ganz gleich in welcher Situation, deine Fähigkeiten werden sich durchsetzen.
+[IDS_ITEMDESC.ID1020198]
+Ein Titel für diejenigen, die ihre ersten Schritte als Duellant mit unsterblichen Decks unternehmen.
+Mit donnerndem Gebrüll stürzen sie sich in erbitterte Kämpfe mit ihren Rivalen.
+[IDS_ITEMDESC.ID1020199]
+Ein Titel, der an Duellanten vergeben wird, die beim Festival „Würfel-Rallye – Fusion/Synchro/Link“ Ergebnisse erzielt haben.
+Eine glänzende Zukunft wartet auf diejenigen, die mutig genug sind, sich selbst zu vertrauen.
 [IDS_ITEMDESC.ID1021001]
 Ein Titel, der nur zu einem besonderen Anlass verliehen wird.
 [IDS_ITEMDESC.ID1021002]
@@ -1948,6 +1978,9 @@ Sie scheint der Menschheit nichts Böses zu wollen.
 [IDS_ITEMDESC.ID1031018]
 Ein Symbol-Rahmen, der bei der Erschaffung eines Gefäßes entstand, das die Seele beherbergen kann.
 Darin stecken uralte Technologie und ein starker Sinn für Entschlossenheit.
+[IDS_ITEMDESC.ID1031019]
+Ein Symbolrahmen, der an eine weibliche Agentin der <category id='134'/>-Einheit erinnert.
+Ein rotes Licht flackert auf, wenn sie ihre Kraft entfesselt.
 [IDS_ITEMDESC.ID1031020]
 Ein Symbol-Rahmen, der einen großen Auftritt einer Künstlergruppe zeigt.
 Der Shishimai-Tanz, der alle erdenklichen Elemente vereint, ist in die Legende eingegangen.
@@ -2438,6 +2471,27 @@ Für all jene, die bereit sind, ihrem Untergang zu begegnen.
 [IDS_ITEMDESC.ID1070149]
 Kartenhüllen, die einen hochmodernen, leistungsstarken Düsenjäger darstellen.
 Für diejenigen, die variable Angriffsfähigkeiten nutzen.
+[IDS_ITEMDESC.ID1070150]
+Kartenhüllen, die das nächste Kapitel von „Jäger“ und „Gejagtem“ darstellen.
+Für diejenigen, die dem Weg folgen, an den sie glauben.
+[IDS_ITEMDESC.ID1070151]
+Kartenhüllen, die einen Mann mit wilden, übernatürlichen Kräften darstellen.
+Für alle, die sich von Fesseln befreien wollen.
+[IDS_ITEMDESC.ID1070152]
+Kartenhüllen, die die Ankunft eines Magiers darstellen, der mit der Macht des Chaos erfüllt ist.
+Für diejenigen, die die Zerstörungsmagie ihrem Willen unterwerfen können.
+[IDS_ITEMDESC.ID1070153]
+Kartenhüllen, die eine unsterbliche, rot leuchtende Energieform darstellen.
+Für alle mit unbändiger Ausstrahlung.
+[IDS_ITEMDESC.ID1070157]
+Kartenhüllen, die eine ultraniedliche Streamerin in einem besonderen Outfit darstellen.
+Für all jene, die der Welt mit ausdrucksloser Miene begegnen.
+[IDS_ITEMDESC.ID1070158]
+Kartenhüllen, die „<card mrk='7696'/>“ darstellen, nachdem eine neue Kraft erweckt wurde.
+Für all jene, die an den Zusammenhalt von Kameraden glauben.
+[IDS_ITEMDESC.ID1070159]
+Protectors featuring a pair of friendly, well-dressed tanuki.
+For those who wish for happiness and growth.
 [IDS_ITEMDESC.ID1071001]
 Kartenhüllen, die einen Krieger darstellen, der gereift ist und die Narben, die während der Kämpfe in sein Herz geätzt wurden, akzeptiert hat. 
 Perfekt für alle, die immer das Beste für ihre geliebten Freunde wollen.
@@ -2549,6 +2603,8 @@ Für diejenigen, deren Hunger nicht gestillt werden kann.
 [IDS_ITEMDESC.ID1071037]
 Kartenhüllen, die eine Hütte darstellen, die nach dem finanziellen Ruin auf einem unbebauten Grundstück errichtet wurde.
 Für all jene, die glauben, das Gras sei auf der anderen Seite grüner.
+[IDS_ITEMDESC.ID1071038]
+Kartenhüllen, die eine „Kurierin“ mit über 100 Identitäten darstellen. Für all jene, die die Welt der Nacht durchstreifen.
 [IDS_ITEMDESC.ID1072001]
 Eine Kartenhülle mit dem Design von „<card mrk='13670'/>“ in ihrer Rüstung im Zerstörungsmodus.
 Für Spieler, die sich aus den Flammen des Schlachtfelds den Weg zum Sieg bahnen.
@@ -2740,6 +2796,12 @@ Ein alles verschlingender, teuflischer Drache von unvergleichlicher scharlachrot
 [IDS_ITEMDESC.ID1080030]
 Ein Kartenetui, auf dem „<card mrk='19500'/>“ abgebildet ist.
 Dieser Falke mit einem eisernen Willen, der sich zu einer transzendenten Form entwickelt hat, breitet seine Schwingen der Rebellion aus.
+[IDS_ITEMDESC.ID1080031]
+Ein Kartenetui, auf dem „<card mrk='21610'/>“ abgebildet ist.
+Perfekt für Decks, die sich auf Zerstörungsmagie konzentrieren.
+[IDS_ITEMDESC.ID1080032]
+Ein Kartenetui, auf dem „<card mrk='17449'/>“ abgebildet ist.
+Perfekt für Decks voller unsterblicher Energie.
 [IDS_ITEMDESC.ID1082001]
 Eine Deckbox mit einem Design, das von den großen galaktischen Weiten inspiriert ist, aus denen die Xyz-Monster stammen. 
 Perfekt für Decks, in denen sich alles um Xyz-Beschwörungen dreht!
@@ -2814,6 +2876,9 @@ Perfekt für Decks mit Hexen, die ein grausames Schicksal erdulden müssen.
 [IDS_ITEMDESC.ID1082025]
 Ein Kartenetui, das eine uneinnehmbare Burg zeigt, die alle Eindringlinge abweist.
 Perfekt für Decks, die viele Fallenkarten enthalten.
+[IDS_ITEMDESC.ID1082026]
+Ein Kartenetui, auf dem <card mrk='21385'/> abgebildet ist.
+Perfekt für Decks, die gegen übernatürliche Verbrechen vorgehen.
 [IDS_ITEMDESC.ID1083001]
 Ein exklusives Kartenetui, das zu besonderen Anlässen angeboten wird.
 [IDS_ITEMDESC.ID1090001]
@@ -2925,12 +2990,20 @@ Tief im Inneren öffnet sich langsam, aber unaufhaltsam das Tor zur Katastrophe.
 [IDS_ITEMDESC.ID1090037]
 Ein Duell-Spielfeld in Form eines <card mrk='17367'/>.
 Der Fluch kann nur gebrochen werden, wenn der wahre Schatz, der sich angeblich im Schloss befindet, geborgen wird.
+[IDS_ITEMDESC.ID1090039]
+Ein Duell-Spielfeld in Form eines <card mrk='21385'/>.
+Eine Hintergasse voller zwielichtiger Läden ist ein idealer Ort für übernatürliche Kriminelle, um ihr Unwesen zu treiben.
 [IDS_ITEMDESC.ID1090040]
 Ein Duell-Spielfeld in Form eines Fußballstadions.
 Der Jubel der begeisterten Fans hallt über den Rasen.
+[IDS_ITEMDESC.ID1090041]
+Ein Duell-Spielfeld, auf dem Diebe, Agenten, Kuriere und andere Bewohner der Unterwelt zusammenkommen und ihre Geschäfte abwickeln. Es scheint auch die Heimat einer geheimen Organisation zu sein, die durch die Zeit und durch Dimensionen reist, um die Mächte des Bösen zu besiegen.
 [IDS_ITEMDESC.ID1092001]
 Ein Spielfeld, das zwei Krieger darstellt, die in einem wilden Kampf verwickelt sind.
 Die beste Zeit für ein Kräftemessen ist immer jetzt!
+[IDS_ITEMDESC.ID1092004]
+A Duel Field where young duelists clash with pride and soul.
+The time has come to fulfill the pact of destiny. With resonating bonds, seize the summit and claim the title of Japan’s high school champion!
 [IDS_ITEMDESC.ID1100001]
 Spielfeldteile eines Waldes.
 Das darauf eingravierte Muster erinnert an antike Relikte.
@@ -3039,9 +3112,15 @@ Der Grad an Raffinesse passt perfekt zu dem Schloss voller Dunkelheit.
 [IDS_ITEMDESC.ID1100037]
 Spielfeldteile aus dem <card mrk='17367'/>.
 Ihre kunstvollen Verzierungen verleihen ihnen einen hohen Wert als Dekorationsstücke.
+[IDS_ITEMDESC.ID1100039]
+Spielfeldteile aus <card mrk='21385'/>.
+Die Menschen bleiben wachsam, wenn sie das Design sehen, es scheint also eine abschreckende Wirkung auf Verbrechen zu haben.
 [IDS_ITEMDESC.ID1100040]
 Spielfeldteile eines Fußballstadions.
 Ein temporäres Verlassen ist Teil der Leistung. Das Ass kommt aus dem Loch zurück und ist bereit, zurückzuschlagen.
+[IDS_ITEMDESC.ID1100041]
+Spielfeldteile aus der Neonbeleuchteten Cyberstadt.
+Sie scheinen auch als vorübergehendes Versteck für Agenten nützlich zu sein.
 [IDS_ITEMDESC.ID1101001]
 Spielfeldteile inspiriert von einer Fallgrube.
 Ist das Stellen einer solchen Falle ein Zeichen von Gerissenheit, oder einfach nur unfair?
@@ -3171,7 +3250,8 @@ coming soon
 [IDS_ITEMDESC.ID1102003]
 coming soon
 [IDS_ITEMDESC.ID1102004]
-coming soon
+Field parts set within the stadium.
+The fiery spirit of youth cannot be contained by any force.
 [IDS_ITEMDESC.ID1102005]
 coming soon
 [IDS_ITEMDESC.ID1102006]
@@ -3303,8 +3383,14 @@ Sie ist eines von unzähligen Löchern, die in den Himmel gemeißelt wurden.
 [IDS_ITEMDESC.ID1110037]
 Ein Stand aus dem <card mrk='17367'/>.
 Die Gastfreundschaft gegenüber Gästen spiegelt sich in der raffinierten Gestaltung wider.
+[IDS_ITEMDESC.ID1110039]
+Ein Stand aus <card mrk='21385'/>.
+Wenn es sich um einen Ort handelt, an dem übernatürliche Verbrechen wahrscheinlich vorkommen, hat ihn <category id='134'/> natürlich gekennzeichnet.
 [IDS_ITEMDESC.ID1110040]
 Eine Tribüne eines Fußballstadions. Leidenschaft rast über das Feld, die grüne Bühne hallt bei jedem Schuss wider.
+[IDS_ITEMDESC.ID1110041]
+Ein Stand aus dem Neonbeleuchtete Cyberstadt Duell-Spielfeld.
+Selbst im Schein elektrischer Lampen ist niemand sicher, sobald er ins Visier der Agenten geraten ist.
 [IDS_ITEMDESC.ID1111001]
 Ein Stand inspiriert von einem bestimmten, mit Buchstaben gravierten Brett, das in vielen übernatürlichen Künsten Anwendung findet.
 Du hast das Gefühl, dass dich durch den Schlitz ein dunkler, rachsüchtiger Geist beobachtet …
@@ -3458,9 +3544,18 @@ Ein Stand, inspiriert von einer herrlich albernen Welt und lecker aussehenden Mo
 [IDS_ITEMDESC.ID1111071]
 Ein Stand nach dem Vorbild von <category id='110'/>s Horoskop.
 Er leitet dich mithilfe der mystischen Kraft der Sterne.
+[IDS_ITEMDESC.ID1111072]
+Ein Stand, inspiriert vom besonderen Outfit einer ultraniedlichen Streamerin.
+Niedlichkeit braucht einen Hauch von Distanz, um richtig zur Geltung zu kommen.
+[IDS_ITEMDESC.ID1111080]
+Ein Stand, inspiriert von einem Drachen mit dem Namen „<category id='158'/>“.
+Überwältigende Kraft reißt ein Loch in eine abgeschottete Welt.
 [IDS_ITEMDESC.ID1112001]
 Der Stand eines Kolosseums.
 Die leuchtende Flamme tanzt, als ob sie die mutigen Krieger lobpreisen will, die hier kämpfen.
+[IDS_ITEMDESC.ID1112004]
+A Stand from a Stadium.
+Who will rise and lift the trophy of triumph side by side—the true champions?
 [IDS_ITEMDESC.ID1113001]
 Ein Symbol zum Andenken an die Teilnahme am MASTER DUEL-Event der Yu-Gi-Oh! World Championship 2023.
 Das majestätische Design unterstreicht den prestigeträchtigen Charakter des Wettbewerbs.
@@ -3546,9 +3641,9 @@ Beginne mit einer Karte wie „<card mrk='19014'/>“ und führe eine Reihe von 
 Dieses „<category id='106'/>“-Deck symbolisiert die Kraft der vereinten Monster.
 Starte deine Offensive mit Stufe 4 Monstern wie „<card mrk='19460'/>“, die den Weg für „<card mrk='15519'/>“, „<card mrk='19501'/>“ und „<card mrk='12868'/>“ ebnen können. Nutze ihre Effekte, um „<card mrk='19459'/>“ zu beschwören und eine furchterregende Schar von „<category id='106'/>“-Monstern aufzustellen. Benutze dann „<card mrk='12868'/>“ mit Xyz-Material, um „<card mrk='14205'/>“ als Linkbeschwörung zu beschwören und mächtige Xyz-Monster herbeizurufen, während du weiterhin andere Monster beschwörst. Wenn alles bereit ist, setze während des Spielzugs deines Gegners Karten wie „<card mrk='19511'/>“ ein, um „<card mrk='19500'/>“ aufzurufen. Diese Karte bringt dich dem Sieg sofort näher, indem sie die Karten auf dem gegnerischen Spielfeld auslöscht und dem Gegner direkten Schaden zufügt, während sie von anderen Karteneffekten unbeeinflusst bleibt!
 [IDS_ITEMDESC.ID1120031]
-coming soon
+Dieses Deck verfolgt in Kämpfen einen technischen Ansatz und nutzt „<card mrk='4041'/>“ sowie Fusionsmonster. „<card mrk='21610'/>“ ist die vorgestellte Karte. Du kannst sie ganz einfach als Spezialbeschwörung in einem Zug beschwören, in dem du eine Zauberkarte aktiviert hast, und wenn sie als Spezialbeschwörung beschworen wird, kannst du eine Karte aus deinem Deck, die als Nachfolger fungiert, deiner Hand hinzufügen. Falls du diesen Effekt nutzt, um „<card mrk='12456'/>“ oder „<card mrk='11672'/>“ vorzubereiten, kannst du eine stabile Formation aufbauen, die auf die Züge deines Gegners reagieren kann. Neben Monstern solltest du auch Zauber-/Fallenkarten einsetzen, um im Kampf die Oberhand zu gewinnen und deinen Gegner dann mit einem mächtigen Fusionsmonster zu besiegen!
 [IDS_ITEMDESC.ID1120032]
-coming soon
+Ein „<category id='40'/>“-Deck, das sich um den Einsatz von Monstern von Stufe/Rang/Link 2 dreht, die zusammen in perfekter Harmonie kämpfen. Bereite zunächst Monster der Stufe 2 auf dem Spielfeld vor und kombiniere dann Monster wie „<card mrk='17405'/>“ und „<card mrk='17406'/>“, um sie im Kampf einzusetzen. Nutze Karten wie „<card mrk='17449'/>“, mit denen du direkt Monster aus deinem Deck beschwören kannst, und bereite dann „<card mrk='17408'/>“ und „<card mrk='17409'/>“ vor, um eine Formation zu erstellen, die sich an die Effekte deines Gegners anpassen kann. Wenn du an der Reihe bist, anzugreifen, nutze „<card mrk='17458'/>“, um deinen Angriffswert zu erhöhen und den Sieg zu erringen!
 [IDS_ITEMDESC.ID1120033]
 coming soon
 [IDS_ITEMDESC.ID1120034]
@@ -3843,7 +3938,8 @@ Trotz all ihrer hektischen Vorbereitungen hinter den Kulissen mussten sie sich l
 Dem ersten und ewigen Lord des goldenen Landes.
 Durch seine eigene Gier bezwang und verschlang er den Fluch, der unzählige Begierden und Neid entfesselte.
 [IDS_ITEMDESC.ID1130099]
-coming soon
+Ungezügelt entfesselt „<card mrk='21379'/>“ noch größere Kraft.
+Mit dem Vollmond im Rücken metzelt er sich in rasender Raserei durch alles um ihn herum.
 [IDS_ITEMDESC.ID1130100]
 Die erste Mikanko, die angeblich alle heiligen Reliquien besessen haben soll.
 Sie erklärte den ewig singenden Vogel des ewigen Landes zu ihrem Geistungeheuer.
@@ -3868,11 +3964,26 @@ Aus diesem Portal wird ein neuer <category id='113'/> geboren.
 Die Engel des Solfa-Reiches vollbringen mächtige, große Magie, die als „Akkorde“ bekannt ist.
 Eine Symphonie von Engeln und Feen, die die sterbliche Welt von ihrer Unreinheit reinigt.
 [IDS_ITEMDESC.ID1130108]
-coming soon
+Zwei Seelen, die einen neuen Weg gewählt haben.
+Aus der Verfolgungsjagd wird eine Partnerschaft, als sie durch die Dunkelheit der Nacht rasen.
 [IDS_ITEMDESC.ID1130109]
-coming soon
+Eine „Kurierin“ mit unzähligen Gesichtern.
+Sie ist in der Lage, sich an diejenigen anzupassen, die an ihrer Seite kämpfen.
 [IDS_ITEMDESC.ID1130110]
-coming soon
+Eine Ninja, die nach Gerechtigkeit strebt und die Grundsätze ihres Dorfvorstehers tief im Herzen trägt.
+Mit ihren Ninja-Künsten ist alles möglich.
+[IDS_ITEMDESC.ID1130111]
+Eine „Kurierin“, die für ihre Auftraggeber Daten aller Art stiehlt.
+Sie rast durch die Nacht und hinterlässt nur das schwache Nachglühen ihrer Rücklichter.
+[IDS_ITEMDESC.ID1130112]
+Da sie Zweifel an der Verfolgungsmission von „<card mrk='14676'/>“ hegt, wendet sie ihre Klinge gegen ihre eigene Pflicht.
+Mit den Worten des Dorfvorstehers im Herzen entschied sie sich, zu der Gerechtigkeit zu stehen, an die sie glaubte.
+[IDS_ITEMDESC.ID1130113]
+Der <category id='40'/>, der „<card mrk='17164'/>“ kontrolliert.
+Sie zapfen Energie und Teile ab und gewinnen dadurch noch größere Kraft.
+[IDS_ITEMDESC.ID1130124]
+„Jäger“ und „Gejagter“ ergreifen eine neue Zukunft.
+Welchen Weg sie aus ihren Idealen heraus einschlagen werden, bleibt ein Rätsel.
 [IDS_ITEMDESC.ID1132001]
 Warum auch immer, aber das Kaninchen ist jetzt Mitglied in einem Fußballverein.
 Es hofft, sein Team mit all seinen angeborenen Führungsqualitäten zum Sieg zu führen.
@@ -3917,7 +4028,8 @@ Es heißt, dass die herrlich albernen Tore hell erstrahlen werden, wenn die <cat
 Ein Sammelordner, der diejenigen darstellt, die innerhalb der silbernen, dämonischen Burg lauern.
 Es heißt, dass die uneinnehmbaren Tore hell erstrahlen werden, wenn die <category id='127'/> versammelt sind.
 [IDS_ITEMDESC.ID1170005]
-coming soon
+Ein Sammelordner, der ein Mitglied einer Spezialeinheit darstellt, die gegen übernatürliche Verbrechen vorgeht.
+Es heißt, dass die Tore der Freiheit hell erstrahlen werden, wenn die <category id='134'/> versammelt sind.
 [IDS_ITEMDESC.ID1170006]
 Ein Sammelordner mit Abbildungen von Jungfrauen, die durch Tanz Gottheiten kanalisieren.
 Es heißt, dass die Ritaultüren des Gebets für Wohlstand hell erstrahlen werden, wenn die <category id='128'/> versammelt sind.
@@ -3926,6 +4038,13 @@ coming soon
 [IDS_ITEMDESC.ID1170008]
 Ein Sammelordner, auf dem Mädchen abgebildet sind, die die Last eines grausamen Schicksals tragen.
 Es heißt, dass die Türen der hochmodernen Technologie hell erstrahlen wird, wenn die <category id='002'/> versammelt sind.
+[IDS_ITEMDESC.ID1170009]
+Ein Sammelordner, der einen Magier darstellt, dem der legendäre König der Spiele am meisten vertraute.
+Es heißt, dass die Tore der Schwarzen Magie hell erstrahlen werden, wenn die <category id='072'/> versammelt sind.
+[IDS_ITEMDESC.ID1170010]
+coming soon
+[IDS_ITEMDESC.ID1170011]
+coming soon
 [IDS_ITEMDESC.ID1180001]
 Eine Münze, deren Motiv der leuchtende Drache ist, der eine neue Legende hervorbringt.
 Seine himmelblauen Augen schimmern.
@@ -3966,11 +4085,14 @@ Die Kraft der Sterne strahlt hell.
 [IDS_ITEMDESC.ID1180014]
 Eine Münze, deren Motiv eine sehr glücksbringende Karte ist. Seine weißen Flügel schimmern prächtig.
 [IDS_ITEMDESC.ID1180015]
-coming soon
+Eine Münze, deren Motiv <category id='134'/>s Symbol ist.
+Der Entschluss gegen übernatürliche Verbrechen leuchtet hell.
 [IDS_ITEMDESC.ID1180016]
-coming soon
+Eine Münze, deren Motiv das „<card mrk='19487'/>“ ist, was von „<card mrk='14676'/>“ verwendet wird.
+Der kühne Ausdruck strahlt Selbstbewusstsein aus.
 [IDS_ITEMDESC.ID1180017]
-coming soon
+Eine Münze, deren Motiv ein Magier ist, der schwarze Magie ausübt.
+Seine überragende magische Kraft strahlt hell.
 [IDS_ITEMDESC.ID1180018]
 coming soon
 [IDS_ITEMDESC.ID1180019]

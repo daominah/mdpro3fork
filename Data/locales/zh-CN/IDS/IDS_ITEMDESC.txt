@@ -105,6 +105,12 @@ coming soon
 [IDS_ITEMDESC.ID1000037]
 回应机械人偶的遗志而诞生的机神的长枪。
 由“<category id='89'/>”的残骸锻造而成。
+[IDS_ITEMDESC.ID1000038]
+专门接受黑暗数据委托的“送货员”。
+因被神秘组织盯上，命运的齿轮就此转动。
+[IDS_ITEMDESC.ID1000039]
+决心守护原先为执行对象的“<card mrk='14676'/>”的少女。
+但她尚未明白，由自己双手守护的微小未来，却将引来更剧烈的世界动荡。
 [IDS_ITEMDESC.ID1000041]
 像滩泥一样睡倒的魔兽。
 它从身体中释放诱人沉眠的异味，企图吃掉别人的梦，却害得自己都睡着了。
@@ -216,7 +222,8 @@ coming soon
 [IDS_ITEMDESC.ID1001035]
 coming soon
 [IDS_ITEMDESC.ID1001036]
-coming soon
+在宅邸出没的妖怪少女。
+月色映照的宅邸里，少女浅浅一笑。
 [IDS_ITEMDESC.ID1001037]
 辉石的战士们性格温和，胸怀正义之心。
 而他们拥有的能力，正好和众人不可或缺的融合之力密切相关。
@@ -334,7 +341,8 @@ coming soon
 狩猎恶魔并将其作为武器的黑暗社会锻造师。
 驱使“<card mrk='20225'/>”，其战斗姿态犹如恶魔一般。
 [IDS_ITEMDESC.ID1003005]
-coming soon
+悄然接近夜幕之下驱车飞奔的送货员的黑影。
+今晚也将在霓虹灯的照耀之下展开一场追逐战。
 [IDS_ITEMDESC.ID1003006]
 coming soon
 [IDS_ITEMDESC.ID1003007]
@@ -709,7 +717,8 @@ coming soon
 描绘了攻克传说汇聚之城的骑士的头像。
 轻松突破各种各样的致命陷阱。
 [IDS_ITEMDESC.ID1010123]
-coming soon
+描绘了惩治异能犯罪的特务部队成员的头像。
+镇压对象时会暂时解开自身束缚，解放真正的力量。
 [IDS_ITEMDESC.ID1010124]
 描绘了初代御巫的头像。
 她以长鸣鸟为灵兽，与神缔结了坚定的友谊誓约。
@@ -734,6 +743,9 @@ coming soon
 [IDS_ITEMDESC.ID1010131]
 描绘了学园标志的头像。
 学生一有状况，就必须立刻赶到现场。
+[IDS_ITEMDESC.ID1010138]
+描绘了具有最高阶魔力的魔法师的头像。
+他画出的魔导阵，为传说中的决斗王带来胜利。
 [IDS_ITEMDESC.ID1011001]
 描绘了一个由黑色与白色的板子构成的球的头像。
 在决斗中连胜三场称不上帽子戏法。
@@ -1151,6 +1163,18 @@ Yu-Gi-Oh! World Championship 2025:Master Duel分赛参赛选手的纪念头像�
 [IDS_ITEMDESC.ID1012076]
 描绘了欠下多笔债务的“<card mrk='4895'/>”的头像。
 他正拼命盘算着，试图重新出发。
+[IDS_ITEMDESC.ID1012077]
+描绘了专门处理黑暗数据的“送货员”的图像。
+她的伪装千变万化，真正面貌至今仍无人知晓。
+[IDS_ITEMDESC.ID1012078]
+描绘了“<category id='154'/>”最年轻女忍者的头像。
+受村长嘱托，发誓要为世界和人们惩恶扬善。
+[IDS_ITEMDESC.ID1012079]
+描绘了“<card mrk='17165'/>”引发火山雷场面的头像。
+不灭的能量生命体“<category id='40'/>”显现。
+[IDS_ITEMDESC.ID1012080]
+描绘了“<card mrk='14676'/>”所使用的武器的头像。
+似乎能说出简单的词语，但无法得知其具体性能。
 [IDS_ITEMDESC.ID1013001]
 描绘了真心热爱着棒球的男孩的头像。
 无论任何一个时代，无论任何一个校园。你是否也曾见带着对棒球的满腔热血前进的少年。
@@ -1763,7 +1787,7 @@ coming soon
 授予在“DC2025 DEC”中，晋级2nd STAGE的决斗者的称号。
 从众多决斗者角逐的1st STAGE中晋级的实力选手之证。
 [IDS_ITEMDESC.ID1020195]
-授予在“结合与同步庆典＋”中留下成绩的决斗者的称号
+授予在“<exhibition id='033'/>”中留下成绩的决斗者的称号
 用魂之卡唤醒决斗者的尊严。
 [IDS_ITEMDESC.ID1020196]
 赠予驱使传说中的怪物，并取得成果的决斗者的称号。
@@ -1771,6 +1795,12 @@ coming soon
 [IDS_ITEMDESC.ID1020197]
 在三个势力的战斗中取得成果的决斗者被授予此称号。
 它们的能力将在任何情况下得到体现。
+[IDS_ITEMDESC.ID1020198]
+授予使用不灭牌组迈步向前的决斗者的称号。
+伴随着震耳欲聋的轰鸣声，毅然投入与宿敌们的热血激斗。
+[IDS_ITEMDESC.ID1020199]
+授予在“骰子拉力～融合/同步/连接～”中留下成绩的决斗者的称号。
+勇于相信自己的人，必能到达光明的未来。
 [IDS_ITEMDESC.ID1021001]
 特殊机会下提供的限定称号。
 [IDS_ITEMDESC.ID1021002]
@@ -1946,6 +1976,9 @@ coming soon
 [IDS_ITEMDESC.ID1031018]
 制造灵魂容器的过程中产生的头像边框。
 凝聚着失传的技术与无论如何都要达成目的的坚定意志。
+[IDS_ITEMDESC.ID1031019]
+让人联想到<category id='134'/>部队女性队员的头像边框。
+当她解放力量之时，将会闪烁赤红光芒。
 [IDS_ITEMDESC.ID1031020]
 让人联想起由艺术团队绘制的大规模表演的头像边框。
 汇聚所有要素的“SHI・SHI・MAI DANCE”刻下了传说。
@@ -2436,6 +2469,27 @@ coming soon
 [IDS_ITEMDESC.ID1070149]
 设计有最前端超高性能战斗机的卡套。
 献给发挥各种能力的你。
+[IDS_ITEMDESC.ID1070150]
+设计有“追逐者”与“被追逐者”在那之后的姿态的卡套。
+献给走在自己坚信的道路上的你。
+[IDS_ITEMDESC.ID1070151]
+设计有拥有狂暴异能的男子的卡套。
+献给解开束缚的你。
+[IDS_ITEMDESC.ID1070152]
+设计有身怀混沌之力，降临于世的魔术师的卡套。
+献给掌握毁灭魔术的你。
+[IDS_ITEMDESC.ID1070153]
+设计有闪耀红光且不灭的能量生命体的卡套。
+献给光芒迸发的你。
+[IDS_ITEMDESC.ID1070157]
+设计有身穿特别服装的超可爱主播的卡套。
+献给一脸淡定地认真努力的你。
+[IDS_ITEMDESC.ID1070158]
+设计有激发全新力量的“<card mrk='7696'/>”的卡套。
+献给坚信众战友之情的你。
+[IDS_ITEMDESC.ID1070159]
+Protectors featuring a pair of friendly, well-dressed tanuki.
+For those who wish for happiness and growth.
 [IDS_ITEMDESC.ID1071001]
 以克服了心中因战斗失败而留下的疤痕并获得了成长的战士的姿态设计出的卡套。
 献给心中时刻挂念着伙伴并无比珍视伙伴的你。
@@ -2547,6 +2601,9 @@ coming soon
 [IDS_ITEMDESC.ID1071037]
 设计有破产后在空地搭建的小屋庭院景象的卡套。
 献给觉得别人家草坪看起来比较漂亮的你。
+[IDS_ITEMDESC.ID1071038]
+设计有伪装千变万化的“送货员”的卡套。
+献给穿梭于夜世界的你。
 [IDS_ITEMDESC.ID1072001]
 以“<card mrk='13670'/>”和被毁灭模式装甲包裹着的少女的身姿设计出的卡套。
 献给通过从战场的篝火中走出，并将胜利牢牢抓在身边的你。
@@ -2738,6 +2795,12 @@ coming soon
 [IDS_ITEMDESC.ID1080030]
 按照“<card mrk='19500'/>”的身姿设计出的牌组盒。
 进化之隼超越了铁的意志和钢的顽强，张开了反抗之翼。
+[IDS_ITEMDESC.ID1080031]
+设计有“<card mrk='21610'/>”形象的牌组盒。
+推荐给掌握毁灭魔术的牌组使用。
+[IDS_ITEMDESC.ID1080032]
+设计有“<card mrk='17449'/>”形象的牌组盒。
+推荐给迸发不灭能量的牌组使用。
 [IDS_ITEMDESC.ID1082001]
 按照超量怪兽现身所在的宇宙的图案设计出的牌组盒。
 推荐用于超量战术为核心的牌组。
@@ -2813,6 +2876,9 @@ coming soon
 [IDS_ITEMDESC.ID1082025]
 设计有拒绝一切的不落之城插图的牌组盒。
 推荐给布满陷阱的牌组使用。
+[IDS_ITEMDESC.ID1082026]
+设计有<card mrk='21385'/>的牌组盒。
+推荐给惩治异能犯罪的牌组使用。
 [IDS_ITEMDESC.ID1083001]
 特殊机会下提供的限定牌组盒。
 [IDS_ITEMDESC.ID1090001]
@@ -2922,12 +2988,21 @@ coming soon
 [IDS_ITEMDESC.ID1090037]
 <card mrk='17367'/>的场地。
 若不将传说中藏于城内的真正秘宝带回，诅咒就无法解除。
+[IDS_ITEMDESC.ID1090039]
+<card mrk='21385'/>的场地。
+可疑商铺林立的后街小巷，可说是异能犯罪者最常出没的地方。
 [IDS_ITEMDESC.ID1090040]
 足球场的场地。
 欢声雷动，响彻布满青草的舞台。
+[IDS_ITEMDESC.ID1090041]
+怪盗、特工、送货员等地下社会的居民所活动的场地。
+穿越时光和次元惩奸除恶的神秘组织似乎也隐身其中。
 [IDS_ITEMDESC.ID1092001]
 让通过激烈战斗激发身体潜能的强者们强强碰撞的角斗场的场地。
 此时此刻，正是一决雌雄之时！
+[IDS_ITEMDESC.ID1092004]
+A Duel Field where young duelists clash with pride and soul.
+The time has come to fulfill the pact of destiny. With resonating bonds, seize the summit and claim the title of Japan’s high school champion!
 [IDS_ITEMDESC.ID1100001]
 设置于森林中的场地配件。
 雕刻的纹路让人联想到古代的遗物。
@@ -3036,9 +3111,15 @@ coming soon
 [IDS_ITEMDESC.ID1100037]
 设置在<card mrk='17367'/>的场地配件。
 作为带有精致装饰的家具，其本身也极具价值。
+[IDS_ITEMDESC.ID1100039]
+设置于<card mrk='21385'/>的场地配件。
+有些人见到这个标志就会警戒，多少有抑制犯罪的效果。
 [IDS_ITEMDESC.ID1100040]
 设置于足球场的场地配件。
 退场只是短暂的表演。王牌终将卷土重来。
+[IDS_ITEMDESC.ID1100041]
+设置于霓虹闪烁的未来都市场地的场地配件。
+似乎也能作为特工的临时藏身所。
 [IDS_ITEMDESC.ID1101001]
 以落穴为灵感设计的场地配件。
 像这样设置出的陷阱，究竟是狡猾的计谋，还是苟且的手段？
@@ -3167,7 +3248,8 @@ coming soon
 [IDS_ITEMDESC.ID1102003]
 coming soon
 [IDS_ITEMDESC.ID1102004]
-coming soon
+Field parts set within the stadium.
+The fiery spirit of youth cannot be contained by any force.
 [IDS_ITEMDESC.ID1102005]
 coming soon
 [IDS_ITEMDESC.ID1102006]
@@ -3299,9 +3381,15 @@ coming soon
 [IDS_ITEMDESC.ID1110037]
 设置于<card mrk='17367'/>的基座。
 从其高级的设计便能看出对访客的款待之心。
+[IDS_ITEMDESC.ID1110039]
+设置于<card mrk='21385'/>的基座。
+若是异能犯罪的高发区域，<category id='134'/>当然会标记起来。
 [IDS_ITEMDESC.ID1110040]
 设置于足球场的基座。
 热情地奔驰于翠绿的舞台，止不住沸腾的脉搏。
+[IDS_ITEMDESC.ID1110041]
+设置于霓虹闪烁的未来都市场地的基座。
+即使在电子光芒的照耀之下，一旦被特工们盯上，便无法安心度日。
 [IDS_ITEMDESC.ID1111001]
 以用于降灵术等情况下的刻有文字的模板为灵感设计出的基座。
 放置基座后，感觉能瞥见存在于缝隙之中的黑暗的怨灵。
@@ -3454,9 +3542,18 @@ coming soon
 [IDS_ITEMDESC.ID1111071]
 模仿<category id='110'/>的星盘的基座。
 神秘的星之力将会指引你。
+[IDS_ITEMDESC.ID1111072]
+模仿超可爱主播的特别服装的基座。
+就是要面无表情才显得可爱。
+[IDS_ITEMDESC.ID1111080]
+模仿以冠有“<category id='158'/>”之名的龙的基座。
+以压倒性的力量，打破这封闭的世界。
 [IDS_ITEMDESC.ID1112001]
 设置于角斗场的基座。
 跳动闪烁的火焰，向矗立于此的战士致以最高荣誉。
+[IDS_ITEMDESC.ID1112004]
+A Stand from a Stadium.
+Who will rise and lift the trophy of triumph side by side—the true champions?
 [IDS_ITEMDESC.ID1113001]
 纪念Yu-Gi-Oh! World Championship 2023 MASTER DUEL参赛的基座。
 严肃的设计充分体现了大赛的格调之高。
@@ -3542,9 +3639,9 @@ coming soon
 这是让怪兽团结起来，进而获得胜利的“<category id='106'/>”牌组。
 首先通过“<card mrk='19460'/>”等效果部署等级4怪兽，从“<card mrk='15519'/>”一路促成“<card mrk='19501'/>”及“<card mrk='12868'/>”，并使用其效果召唤“<card mrk='19459'/>”等，接连部署“<category id='106'/>”怪兽吧。此时只要以持有超量素材的“<card mrk='12868'/>”用作素材，连接召唤出“<card mrk='14205'/>”，就能在召唤强力超量怪兽的同时确保部署后续怪兽的手段，请牢记这一点。准备就绪后，在对方的回合以“<card mrk='19511'/>”等的效果召唤出“<card mrk='19500'/>”吧。此卡可以将对手场上的卡片一扫而空并给予伤害，还不受其他卡片的效果影响，一举冲向胜利吧！
 [IDS_ITEMDESC.ID1120031]
-coming soon
+这是以“<card mrk='4041'/>”和其融合怪兽来进行技巧性作战的牌组。焦点卡片是“<card mrk='21610'/>”。在魔法卡效果发动的回合即可轻松地进行特殊召唤，还可以在特殊召唤后将后续的卡片从牌组加入手牌。只要活用这个效果，准备好“<card mrk='12456'/>”或“<card mrk='11672'/>”，就能建立起稳固的阵型，应付对手的行动。不光是使用怪兽，更要运用魔法/陷阱卡来掌握战斗主导权，以强大的融合怪兽给予对手致命一击！
 [IDS_ITEMDESC.ID1120032]
-coming soon
+这是利用等级2/阶级2/连接2的怪兽联合作战的“<category id='40'/>”牌组。首先在场上准备等级2怪兽，之后结合“<card mrk='17405'/>”、“<card mrk='17406'/>”等来部署怪兽吧。只要活用可从牌组直接召唤怪兽的“<card mrk='17449'/>”等，准备好“<card mrk='17408'/>”、“<card mrk='17409'/>”，就能建立起稳固的阵型，应付对手的效果。一看准攻击时机，就用“<card mrk='17458'/>”一口气提升攻击力，分出胜负吧！
 [IDS_ITEMDESC.ID1120033]
 coming soon
 [IDS_ITEMDESC.ID1120034]
@@ -3839,7 +3936,8 @@ coming soon
 既是初代，也是永恒的黄金乡之王。
 仅凭一己之私，压制并吞噬了带有无数欲望与怨恨的诅咒。
 [IDS_ITEMDESC.ID1130099]
-coming soon
+解开束缚，进一步解放力量的“<card mrk='21379'/>”。
+在满月之下狂暴地斩碎周围的一切。
 [IDS_ITEMDESC.ID1130100]
 相传持有所有神器的初代御巫。
 高洁的常世之长鸣鸟是她的灵兽。
@@ -3864,11 +3962,26 @@ coming soon
 坐镇音阶界的天使们演奏着被称为“和弦”的大魔法。
 此乃净化下界污秽的天使和妖精的交响曲。
 [IDS_ITEMDESC.ID1130108]
-coming soon
+两人选择了新的道路。
+由追逐改为合作，一同在灯火通明的夜幕之下驱车飞奔。
 [IDS_ITEMDESC.ID1130109]
-coming soon
+她是伪装千变万化的“送货员”。
+能为共斗的伙伴改变自身。
 [IDS_ITEMDESC.ID1130110]
-coming soon
+她是深信村长之言，贯彻正义的女忍者。
+使出拿手的忍法便无所不能。
+[IDS_ITEMDESC.ID1130111]
+窃取各种数据并送货上门的“送货员”。
+她奔驰在夜幕之下，只见尾灯划出绚烂的轨迹。
+[IDS_ITEMDESC.ID1130112]
+她对追踪“<card mrk='14676'/>”的任务抱有疑问，反转了手中的使命之刃。
+最后下定决心相信村长之言，贯彻自己的正义。
+[IDS_ITEMDESC.ID1130113]
+负责管理“<card mrk='17164'/>”的<category id='40'/>们。
+吸收能量与零件，各自获得更强的力量。
+[IDS_ITEMDESC.ID1130124]
+“追逐者”与“被追逐者”将走向崭新的未来。
+她们坚信的一切会描绘出何等光景，如今仍未可知。
 [IDS_ITEMDESC.ID1132001]
 意外加入了足球俱乐部的兔子。
 梦想以自己与生俱来的支援能力带领球队获胜。
@@ -3910,7 +4023,8 @@ coming soon
 在白银之城等候光临的恶魔们的收藏卡册。
 据说收集完<category id='127'/>后，固若金汤的门扉将散发光辉。
 [IDS_ITEMDESC.ID1170005]
-coming soon
+惩治异能犯罪的特殊部队的收藏卡册。
+据说收集完<category id='134'/>后，解放之门将散发光辉。
 [IDS_ITEMDESC.ID1170006]
 借由舞蹈让神明降临己身的少女们的收藏卡册。
 据说收集完<category id='128'/>后，祈求繁荣的仪式之门将散发光辉。
@@ -3919,6 +4033,13 @@ coming soon
 [IDS_ITEMDESC.ID1170008]
 背负着残酷命运的少女们的收藏卡册。
 据说收集完<category id='002'/>后，超科学之门将散发光辉。
+[IDS_ITEMDESC.ID1170009]
+传说中的决斗王最信赖的魔导师的收藏卡册。
+据说收集完<category id='072'/>后，黑魔术之门将散发光辉。
+[IDS_ITEMDESC.ID1170010]
+coming soon
+[IDS_ITEMDESC.ID1170011]
+coming soon
 [IDS_ITEMDESC.ID1180001]
 以创造新传说的白龙为原型的硬币。
 青色的眼睛闪耀着光芒。
@@ -3960,11 +4081,14 @@ coming soon
 以会带来幸运的幸运卡片为概念所设计的硬币。
 白色的羽翼散发光芒。
 [IDS_ITEMDESC.ID1180015]
-coming soon
+以<category id='134'/>的象征为概念所设计的硬币。
+对抗异能犯罪的决心散发光芒。
 [IDS_ITEMDESC.ID1180016]
-coming soon
+以“<card mrk='14676'/>”使用的“<card mrk='19487'/>”为概念所设计的硬币。
+充满自信的神情散发光芒。
 [IDS_ITEMDESC.ID1180017]
-coming soon
+以掌握黑魔术的魔导师为概念所设计的硬币。
+最高阶魔法的力量散发光芒。
 [IDS_ITEMDESC.ID1180018]
 coming soon
 [IDS_ITEMDESC.ID1180019]

@@ -105,6 +105,12 @@ He disappeared from history without a trace upon the advent of "<card mrk='10282
 [IDS_ITEMDESC.ID1000037]
 A machine deity's spear forged in response to a mechanical doll's will.
 It has been created from "<category id='89'/>" remains.
+[IDS_ITEMDESC.ID1000038]
+A "Courier" who takes jobs dealing with forbidden data.
+When a mysterious organization targets her, her fate begins to shift.
+[IDS_ITEMDESC.ID1000039]
+A girl swore to protect "<card mrk='14676'/>", despite the courier being targeted for elimination.
+She doesn't yet realize that the small future she protects will draw the world into even greater turmoil.
 [IDS_ITEMDESC.ID1000041]
 A demonic beast that sleeps like mud.
 In order to eat others' dreams, it releases a sleep-inducing odor from its body, but it always puts itself to sleep.
@@ -216,7 +222,8 @@ Tuning with other through its sound, it yields forces that shatter the very eart
 [IDS_ITEMDESC.ID1001035]
 coming soon
 [IDS_ITEMDESC.ID1001036]
-coming soon
+A Yokai girl appears inside the mansion.
+Moonlight streams through the window to reveal her smile.
 [IDS_ITEMDESC.ID1001037]
 The Pyroxene Warriors, even-tempered knights with hearts that secretly yearn for justice.
 They possess the ability to fuse as they require.
@@ -334,7 +341,8 @@ Though talented from birth, it was only after special training that she became a
 Residing in a dark realm, this blacksmith subdues fiends and turns them into his weapons.
 To witness him in intense combat with "<card mrk='20225'/>" at the ready is to witness a fiend waiting to pounce.
 [IDS_ITEMDESC.ID1003005]
-coming soon
+A shadow creeps up on the courier racing through the night.
+Tonight, the neon-lit chase begins anew.
 [IDS_ITEMDESC.ID1003006]
 coming soon
 [IDS_ITEMDESC.ID1003007]
@@ -710,7 +718,8 @@ The tale of "<card mrk='21195'/>" is passed down.
 An Icon depicting a knight going up against a castle steeped in the legends of old.
 The valiant knight easily clears the numerous deadly traps lying in wait.
 [IDS_ITEMDESC.ID1010123]
-coming soon
+An Icon depicting a member of a special unit that cracks down on supernatural crime.
+When suppressing a target, she temporarily releases her restraints to unleash her true power.
 [IDS_ITEMDESC.ID1010124]
 An icon depicting the first Mikanko.
 It is said to have taken the ever-singing bird as its spirit beast and forged a sacred oath of friendship with the divine.
@@ -735,6 +744,9 @@ It remains unaware of what is to come.
 [IDS_ITEMDESC.ID1010131]
 An Icon depicting the Academy's emblem.
 In an emergency, students are to assemble at once.
+[IDS_ITEMDESC.ID1010138]
+An Icon depicting a wizard of unparalleled magical power.
+The magical circle he drew led the legendary King of Games to victory.
 [IDS_ITEMDESC.ID1011001]
 An Icon depicting a ball made of black and white panels.
 Winning 3 Duels in a row is not called a hat-trick.
@@ -1152,6 +1164,18 @@ It incinerates all who would dare intrude upon its sanctuary.
 [IDS_ITEMDESC.ID1012076]
 An Icon depicting "<card mrk='4895'/>" burdened with heavy debt.
 He is frantically crunching the numbers to get things back on track.
+[IDS_ITEMDESC.ID1012077]
+An Icon depicting a "Courier" that specializes in forbidden data.
+With over 100 identities, no one knows the real her.
+[IDS_ITEMDESC.ID1012078]
+An Icon depicting the youngest female ninja "<category id='154'/>".
+Heeding the words of her village chief, she vowed to punish evildoers for the good of all.
+[IDS_ITEMDESC.ID1012079]
+An Icon depicting "<card mrk='17165'/>" unleashing volcanic thunder.
+The immortal energy life-form "<category id='40'/>" reveals itself.
+[IDS_ITEMDESC.ID1012080]
+An Icon depicting the weapon wielded by "<card mrk='14676'/>".
+It seems to utter simple words, but the intricacies of its potential remain unknown.
 [IDS_ITEMDESC.ID1013001]
 An Icon depicting a young boy who truly enjoys baseball.
 You may have encountered him at a school in some era or other, being spurred on to greatness by his passion for baseball.
@@ -1765,7 +1789,7 @@ It was earned through victory after victory against fierce competitors in the 2n
 A Title given to Duelists who made it to the 2nd Stage in DC 2025 DEC.
 It is proof of your accomplishment in making it through the hotly contested 1st Stage.
 [IDS_ITEMDESC.ID1020195]
-A Title given to Duelists who achieved noteworthy results in the "Fusion x Synchro Festival +".
+A Title given to Duelists who achieved noteworthy results in the "<exhibition id='033'/>".
 The pride of Duelists is awoken by the cards they hold dearest.
 [IDS_ITEMDESC.ID1020196]
 A Title given to Duelists who have harnessed the power of Legendary Monsters and made a name for themselves.
@@ -1773,6 +1797,12 @@ A new legend is created from meeting and Dueling the greatest of Duelists.
 [IDS_ITEMDESC.ID1020197]
 A Title given to Duelists who achieved results in a battle between three forces.
 No matter the situation, your abilities will shine through.
+[IDS_ITEMDESC.ID1020198]
+A Title given to those who take their first steps as a Duelist with immortal Decks.
+With a thunderous roar, they throw themselves into fierce battles with their rivals.
+[IDS_ITEMDESC.ID1020199]
+A Title given to Duelists who achieved results in the "Dice Rally - Fusion/Synchro/Link" event.
+A brilliant future awaits those courageous enough to trust themselves.
 [IDS_ITEMDESC.ID1021001]
 A Title only bestowed upon a special occasion.
 [IDS_ITEMDESC.ID1021002]
@@ -1948,6 +1978,9 @@ It appears to bear no malice towards the human race.
 [IDS_ITEMDESC.ID1031018]
 An Icon Frame that was formed while creating a vessel capable of housing the soul.
 Within it resides ancient technology and a strong sense of purpose.
+[IDS_ITEMDESC.ID1031019]
+An Icon Frame that evokes a female operative of the <category id='134'/> unit.
+A red light flickers when she unleashes her power.
 [IDS_ITEMDESC.ID1031020]
 An Icon Frame evoking a major performance by an artist troupe.
 The Shishimai Dance, combining every conceivable element, is etched into legend.
@@ -2437,6 +2470,27 @@ For those ready to meet their demise.
 [IDS_ITEMDESC.ID1070149]
 Protectors depicting a cutting-edge, high-performance jet fighter.
  For those utilizing variable attack capabilities.
+[IDS_ITEMDESC.ID1070150]
+Protectors depicting the next chapter of "the pursuer" and "the pursued".
+For those who follow the path they believe in.
+[IDS_ITEMDESC.ID1070151]
+Protectors depicting a man with a wild supernatural power.
+For those who want to break free from restraints.
+[IDS_ITEMDESC.ID1070152]
+Protectors depicting the descent of a magician imbued with the power of chaos.
+For those who can bend destruction magic to their will.
+[IDS_ITEMDESC.ID1070153]
+Protectors depicting an immortal energy lifeform that glows red.
+For those with uncontainable radiance.
+[IDS_ITEMDESC.ID1070157]
+Protectors depicting an ultra-cute streamer in a special outfit.
+For those who take on the world with a deadpan face.
+[IDS_ITEMDESC.ID1070158]
+Protectors depicting "<card mrk='7696'/>" after awakening a new power.
+For those who believe in the bond of gathered comrades.
+[IDS_ITEMDESC.ID1070159]
+Protectors featuring a pair of friendly, well-dressed tanuki.
+For those who wish for happiness and growth.
 [IDS_ITEMDESC.ID1071001]
 Protectors that illustrate a warrior who has matured and taken the scars etched in his heart during battles. 
 Perfect for those who always want the best for their dear friends.
@@ -2548,6 +2602,8 @@ For those whose desire cannot be sated.
 [IDS_ITEMDESC.ID1071037]
 Protectors depicting a shack built on a vacant lot following financial ruin.
 For those who think the grass is greener on the other side.
+[IDS_ITEMDESC.ID1071038]
+Protectors depicting a "Courier" with over 100 identities. For those who traverse the world of night.
 [IDS_ITEMDESC.ID1072001]
 A Protector with the design of "<card mrk='13670'/>" in her Destruction mode armor.
 For players who will claw their way to victory from the flames of the battlefield.
@@ -2739,6 +2795,12 @@ An all-incinerating fiendish dragon of unrivaled scarlet ferocity.
 [IDS_ITEMDESC.ID1080030]
 A Card Case depicting "<card mrk='19500'/>".
 Having evolved into a transcendent form, this iron-willed falcon spreads out its wings of rebellion.
+[IDS_ITEMDESC.ID1080031]
+A Card Case depicting "<card mrk='21610'/>".
+Perfect for Decks focused on wielding destruction magic.
+[IDS_ITEMDESC.ID1080032]
+A Card Case depicting "<card mrk='17449'/>".
+Perfect for Decks packed with immortal energy.
 [IDS_ITEMDESC.ID1082001]
 A Deck Case with a design inspired by the great galactic expanse from which Xyz Monsters appear. 
 A great fit for Decks that revolve around Xyz Summoning!
@@ -2814,6 +2876,9 @@ Perfect for Decks featuring witches burdened with a cruel fate.
 [IDS_ITEMDESC.ID1082025]
 A Card Case depicting an impregnable castle that turns away all intruders.
 Perfect for Decks filled with plenty of Trap Cards.
+[IDS_ITEMDESC.ID1082026]
+A Card Case depicting <card mrk='21385'/>.
+Perfect for Decks that crack down on supernatural crime.
 [IDS_ITEMDESC.ID1083001]
 An exclusive Card Case offered on special occasions.
 [IDS_ITEMDESC.ID1090001]
@@ -2925,12 +2990,20 @@ Deep within, the gate of cataclysm is opening, slowly but inexorably.
 [IDS_ITEMDESC.ID1090037]
 A Duel Field of <card mrk='17367'/>.
 The curse cannot be broken unless the true treasure said to lie within the castle is retrieved.
+[IDS_ITEMDESC.ID1090039]
+A Duel Field of <card mrk='21385'/>.
+A back alley lined with shady shops is an ideal place for supernatural criminals to operate.
 [IDS_ITEMDESC.ID1090040]
 A Duel Field of a football stadium.
 The cheers of enthusiastic fans echo across the turf.
+[IDS_ITEMDESC.ID1090041]
+A Duel Field where thieves, agents, couriers, and other denizens of the underworld gather and operate. It also appears to be host to a secret organization that travels through time and across dimensions to defeat the forces of evil.
 [IDS_ITEMDESC.ID1092001]
 A Field depicting two warriors locked in a fierce battle.
 There's no better time for a showdown than now!
+[IDS_ITEMDESC.ID1092004]
+A Duel Field where young duelists clash with pride and soul.
+The time has come to fulfill the pact of destiny. With resonating bonds, seize the summit and claim the title of Japan’s high school champion!
 [IDS_ITEMDESC.ID1100001]
 Field Parts from a forest.
 Its engraved pattern is reminiscent of ancient relics.
@@ -3039,9 +3112,15 @@ The level of refinement befits the darkness-emanating castle.
 [IDS_ITEMDESC.ID1100037]
 Field Parts from <card mrk='17367'/>.
 Their ornate designs give them great value as decorative pieces.
+[IDS_ITEMDESC.ID1100039]
+Field Parts from <card mrk='21385'/>.
+People stay on guard when they see the design, so it seems to have a crime deterrent effect.
 [IDS_ITEMDESC.ID1100040]
 Field Parts from a football stadium.
 A temporary exit is part of the performance. The ace returns from the hole, ready to strike back.
+[IDS_ITEMDESC.ID1100041]
+Field Parts from the Neon-Lit Cyber City.
+They also seem useful as a temporary hideout for agents.
 [IDS_ITEMDESC.ID1101001]
 Field Parts inspired by a Trap Hole.
 Would setting a trap like this be a mark of cunning wit, or just plain unfair?
@@ -3171,7 +3250,8 @@ coming soon
 [IDS_ITEMDESC.ID1102003]
 coming soon
 [IDS_ITEMDESC.ID1102004]
-coming soon
+Field parts set within the stadium.
+The fiery spirit of youth cannot be contained by any force.
 [IDS_ITEMDESC.ID1102005]
 coming soon
 [IDS_ITEMDESC.ID1102006]
@@ -3303,8 +3383,14 @@ It is one of countless holes that have been carved in the sky.
 [IDS_ITEMDESC.ID1110037]
 A Stand from <card mrk='17367'/>.
 The spirit of hospitality towards guests is reflected in its refined design.
+[IDS_ITEMDESC.ID1110039]
+A Stand from <card mrk='21385'/>.
+If it's a place where supernatural crimes are likely to occur, of course <category id='134'/> has it marked.
 [IDS_ITEMDESC.ID1110040]
 A Stand from a football stadium. Passion races across the field, the verdant stage reverberating with each shot.
+[IDS_ITEMDESC.ID1110041]
+A stand from the Neon-Lit Cyber City Duel Field.
+Even under the glow of electric lights, no one is safe once targeted by the agents.
 [IDS_ITEMDESC.ID1111001]
 A Stand inspired by a certain board engraved with letters, used in various supernatural arts.
 You feel as if you can see a dark, vengeful spirit staring back at you from the gap...
@@ -3458,9 +3544,18 @@ A Stand inspired by a scrumptiously silly world and yummy-looking monsters.
 [IDS_ITEMDESC.ID1111071]
 A Stand modeled on <category id='110'/>'s horoscope.
 It guides you using the mystical power of the stars.
+[IDS_ITEMDESC.ID1111072]
+A Stand inspired by the special outfit of an ultra-cute streamer.
+Cuteness needs a hint of aloofness to really shine.
+[IDS_ITEMDESC.ID1111080]
+A Stand inspired by a dragon bearing the name "<category id='158'/>".
+Overwhelming power blasts a hole in a closed-off world.
 [IDS_ITEMDESC.ID1112001]
 A Stand from a Colosseum.
 The brilliant flame dances as if singing the praise of the brave warriors who battle here.
+[IDS_ITEMDESC.ID1112004]
+A Stand from a Stadium.
+Who will rise and lift the trophy of triumph side by side—the true champions?
 [IDS_ITEMDESC.ID1113001]
 A Stand commemorating participation in the MASTER DUEL event of the Yu-Gi-Oh! World Championship 2023.
 Its austere design speaks to the prestigious nature of the competition.
@@ -3546,9 +3641,9 @@ Starting with a card like "<card mrk='19014'/>", perform a series of Synchro Sum
 This "<category id='106'/>" Deck symbolizes the power of monsters united.
 Start your offense with Level 4 monsters such as "<card mrk='19460'/>", which can pave the way for "<card mrk='15519'/>", "<card mrk='19501'/>", and "<card mrk='12868'/>". Use their effects to Summon "<card mrk='19459'/>" and amass a fearsome band of "<category id='106'/>" monsters. Then, use "<card mrk='12868'/>" with Xyz Material to Link Summon "<card mrk='14205'/>" and bring forth powerful Xyz Monsters while continuing to Summon other monsters. When everything is in place, use cards like "<card mrk='19511'/>" on your opponent's turn to call upon "<card mrk='19500'/>". This card will bring you instantly closer to victory by obliterating the cards on your opponent's field and dealing direct damage to them, all while being unaffected to other card effects!
 [IDS_ITEMDESC.ID1120031]
-coming soon
+This deck takes a technical approach on battles, using "<card mrk='4041'/>" and Fusion Monsters. "<card mrk='21610'/>" is the featured card. You can easily Special Summon it during a turn you activated a Spell Card, and when it is Special Summoned, you can add a card that acts as a successor from your Deck to your hand. If you use this effect to prepare "<card mrk='12456'/>" or "<card mrk='11672'/>", you can establish a solid formation that can respond to your opponent's moves. In addition to monsters, make sure to use Spell/Trap Cards to seize the upper hand in battle and then finish off your opponent with a mighty Fusion Monster!
 [IDS_ITEMDESC.ID1120032]
-coming soon
+A "<category id='40'/>" Deck that revolves around deploying Level/Rank/Link 2 monsters that fight in perfect unison. Start by preparing Level 2 monsters on the field, and then combine monsters such as "<card mrk='17405'/>" and "<card mrk='17406'/>" to deploy for the battle. Use cards such as "<card mrk='17449'/>" which let you directly summon monsters from your Deck and then prepare "<card mrk='17408'/>" and "<card mrk='17409'/>" to create a formation that can adapt to your opponent's effects. Once it's your turn to attack, use "<card mrk='17458'/>" to increase your ATK and seize victory!
 [IDS_ITEMDESC.ID1120033]
 coming soon
 [IDS_ITEMDESC.ID1120034]
@@ -3843,7 +3938,8 @@ Despite all their busy preparations behind the scenes, they ultimately had to fa
 The first and eternal lord of the Golden Land.
 Through his own greed, he overpowered and consumed the curse that unleashed countless desires and resentments.
 [IDS_ITEMDESC.ID1130099]
-coming soon
+Unrestrained, "<card mrk='21379'/>" releases even greater power.
+With the full moon at his back, he slashes through everything around in a raging frenzy.
 [IDS_ITEMDESC.ID1130100]
 The first Mikanko, said to have possessed all of the sacred relics.
 She claimed the ever-singing bird of the eternal land as her spirit beast.
@@ -3868,11 +3964,26 @@ It is from this portal that a new <category id='113'/> is born.
 The angels of the Solfa realm perform powerful grand magic known as "chords".
 A symphony of angels and fairies that cleanses the mortal world of its impurity.
 [IDS_ITEMDESC.ID1130108]
-coming soon
+Two souls who have chosen a new path.
+The pursuit becomes a partnership as they blaze through the dark of night.
 [IDS_ITEMDESC.ID1130109]
-coming soon
+A "courier" of countless faces.
+She is able to adapt to those who fight alongside her.
 [IDS_ITEMDESC.ID1130110]
-coming soon
+A ninja who pursues justice, holding her village chief's creed close to her heart.
+Anything is possible with her ninja arts.
+[IDS_ITEMDESC.ID1130111]
+A "Courier" who steals data of all kinds for her clients.
+She blazes through the night, leaving only the faint afterglow of tail lights behind.
+[IDS_ITEMDESC.ID1130112]
+Harboring doubts about the pursuit mission for "<card mrk='14676'/>", she turns her blade against her own duty.
+With the village chief's words engraved in her heart, she chose to stand by the justice she believed in.
+[IDS_ITEMDESC.ID1130113]
+The <category id='40'/> who manage "<card mrk='17164'/>".
+They siphon off energy and parts, each gaining even greater power.
+[IDS_ITEMDESC.ID1130124]
+"The pursuer" and the "the pursued" seize a new future.
+The path they'll shape from their ideals remains a mystery.
 [IDS_ITEMDESC.ID1132001]
 It's not so sure why either, but the rabbit is now a member of a football club.
 It hopes to lead its team to victory with all its natural supportive skill.
@@ -3917,7 +4028,8 @@ It is said that when the <category id='112'/>s have gathered, the scrumptiously 
 A Collector's File depicting those who lie in wait within the silvery, demonic castle.
 It is said that when the <category id='127'/>are gathered, the impregnable doors will shine brightly.
 [IDS_ITEMDESC.ID1170005]
-coming soon
+A Collector's File featuring a special unit that cracks down on supernatural crime.
+It is said that when the <category id='134'/> are gathered, the doors of liberation will shine brightly.
 [IDS_ITEMDESC.ID1170006]
 A Collector's File depicting maidens who channel deities through dance.
 It is said that when the <category id='128'/> are gathered, the ritual doors of the prosperity prayer will shine brightly.
@@ -3926,6 +4038,13 @@ coming soon
 [IDS_ITEMDESC.ID1170008]
 A Collector's File depicting girls who carry the burden of a cruel fate.
  It is said that when the <category id='002'/> are gathered, the doors of cutting-edge technology will shine brightly.
+[IDS_ITEMDESC.ID1170009]
+A Collector's File featuring the magician most trusted by the legendary King of Games.
+It is said that when the <category id='072'/> are gathered, the doors of black magic will shine brightly.
+[IDS_ITEMDESC.ID1170010]
+coming soon
+[IDS_ITEMDESC.ID1170011]
+coming soon
 [IDS_ITEMDESC.ID1180001]
 A Coin whose motif is the luminous dragon who brings about a new legend.
 Its cerulean eyes glimmer.
@@ -3966,11 +4085,14 @@ The stars' power shines brightly.
 [IDS_ITEMDESC.ID1180014]
 A Coin whose motif is a very lucky card. Its white wings shimmer resplendently.
 [IDS_ITEMDESC.ID1180015]
-coming soon
+A Coin whose motif is the symbol of <category id='134'/>.
+Its resolve against supernatural crime shines brightly.
 [IDS_ITEMDESC.ID1180016]
-coming soon
+A Coin whose motif is the "<card mrk='19487'/>" used by "<card mrk='14676'/>".
+Its daring expression gleams with confidence.
 [IDS_ITEMDESC.ID1180017]
-coming soon
+A Coin whose motif is a magician wielding black magic.
+Its supreme magical power shines brightly.
 [IDS_ITEMDESC.ID1180018]
 coming soon
 [IDS_ITEMDESC.ID1180019]

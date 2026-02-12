@@ -72,6 +72,10 @@ Diabellstar la Sorcière Sombre
 Aleister l'Invokhateur
 [IDS_ITEM.ID1000037]
 Dingirsu, l'Orcust de l'Étoile du Berger
+[IDS_ITEM.ID1000038]
+I:P Masquerena
+[IDS_ITEM.ID1000039]
+S:P Petite Chevaleresse
 [IDS_ITEM.ID1000041]
 Numéro 41 : Bagooska le Tapir Terriblement Fatigué
 [IDS_ITEM.ID1000042]
@@ -142,6 +146,8 @@ Ryko le Chasseur, Seigneur Lumière
 Sarcophage du Roi
 [IDS_ITEM.ID1001034]
 Diapason des Ténèbres 
+[IDS_ITEM.ID1001036]
+Beauté Fantôme et Manoir Hanté
 [IDS_ITEM.ID1001037]
 Tortue-Gemmes
 [IDS_ITEM.ID1001038]
@@ -180,6 +186,8 @@ Shuraig Tri-Brigade du Mauvais Augure
 Assaut de l'Air - As - Raye
 [IDS_ITEM.ID1003004]
 Graveur Démonforgeron
+[IDS_ITEM.ID1003005]
+I:P Masquerena et Rappa Chiyomaru de la Force-S
 [IDS_ITEM.ID1005001]
 Lapin Sauveteur
 [IDS_ITEM.ID1010001]
@@ -422,6 +430,8 @@ Coupy☆Miammy
 Diabellstar la Sorcière Sombre
 [IDS_ITEM.ID1010122]
 Chevalier Vaillant
+[IDS_ITEM.ID1010123]
+K9-17 Izuna
 [IDS_ITEM.ID1010124]
 Ohime la Manifestation Mikanko
 [IDS_ITEM.ID1010125]
@@ -438,6 +448,8 @@ Griffes Noël
 Corbeau du Miracle
 [IDS_ITEM.ID1010131]
 Réseau d'Urgence de l'Académie Gagaga
+[IDS_ITEM.ID1010138]
+Magicien Sombre
 [IDS_ITEM.ID1011001]
 Ballon de foot
 [IDS_ITEM.ID1011002]
@@ -716,6 +728,14 @@ Poseidra, le Dragon de l'Atlantide
 Avatar Grand Roi du Feu Garunix
 [IDS_ITEM.ID1012076]
 Goblin, Gestionnaire Avisé
+[IDS_ITEM.ID1012077]
+I:P Masquerena
+[IDS_ITEM.ID1012078]
+Rappa Chiyomaru de la Force-S
+[IDS_ITEM.ID1012079]
+Démarreur de Spright
+[IDS_ITEM.ID1012080]
+EM:P Miaoumine
 [IDS_ITEM.ID1013001]
 PawaPuro
 [IDS_ITEM.ID1013002]
@@ -1132,6 +1152,10 @@ Duelliste Psychique
 PDG
 [IDS_ITEM.ID1020197]
 Chevalier Polyvalent
+[IDS_ITEM.ID1020198]
+Démarreur de Spright
+[IDS_ITEM.ID1020199]
+Avancée
 [IDS_ITEM.ID1021001]
 Démarrage
 [IDS_ITEM.ID1021002]
@@ -1254,6 +1278,8 @@ Unité Habillée β
 Fusion d'Amour A.I.
 [IDS_ITEM.ID1031018]
 Orcust
+[IDS_ITEM.ID1031019]
+K9-17 Izuna
 [IDS_ITEM.ID1031020]
 FIÈVRE P.U.N.K. JAM !
 [IDS_ITEM.ID1032001]
@@ -1582,6 +1608,20 @@ Infini Éphémère
 Punisseur de la Fin Psychique
 [IDS_ITEM.ID1070149]
 Gradius
+[IDS_ITEM.ID1070150]
+W:P Bal Raffiné
+[IDS_ITEM.ID1070151]
+K9-ØØ Lupis
+[IDS_ITEM.ID1070152]
+Secrets de la Magie des Ténèbres
+[IDS_ITEM.ID1070153]
+Spright de l'Elfe
+[IDS_ITEM.ID1070157]
+Live☆Jumelle Lil-la Sucreries
+[IDS_ITEM.ID1070158]
+Robot Guerrier Extrême
+[IDS_ITEM.ID1070159]
+Compte de Créatures de l'Empereur Tanuki
 [IDS_ITEM.ID1071001]
 Maximus Croisédia
 [IDS_ITEM.ID1071002]
@@ -1656,6 +1696,8 @@ Avatar Grand Roi du Feu Garunix
 Poseidra, le Dragon de l'Atlantide
 [IDS_ITEM.ID1071037]
 L'Herbe a l'Air plus Verte
+[IDS_ITEM.ID1071038]
+I:P Masquerena
 [IDS_ITEM.ID1072001]
 Conversion d'Assaut de l'Air : Ailes Flamboyantes de la Destruction
 [IDS_ITEM.ID1072002]
@@ -1784,6 +1826,10 @@ Flamme d'Albaz
 Force de la Puissance Cramoisie
 [IDS_ITEM.ID1080030]
 Réunion du Raid
+[IDS_ITEM.ID1080031]
+Explosion Magique Sombre
+[IDS_ITEM.ID1080032]
+Étincelle Géante
 [IDS_ITEM.ID1082001]
 Noir Xyz
 [IDS_ITEM.ID1082002]
@@ -1834,6 +1880,8 @@ Miam☆Miam☆Miammys
 Diabellstar la Sorcière Sombre
 [IDS_ITEM.ID1082025]
 Labrynth
+[IDS_ITEM.ID1082026]
+"Une Affaire pour K9"
 [IDS_ITEM.ID1083001]
 Blanc et bleu
 [IDS_ITEM.ID1090001]
@@ -1908,12 +1956,18 @@ Cimetière des Âmes Abondantes
 Despia, Théâtre des Marqués
 [IDS_ITEM.ID1090037]
 Labyrinthe Labrynth
+[IDS_ITEM.ID1090039]
+"Une Affaire pour K9"
 [IDS_ITEM.ID1090040]
 Stade de football
+[IDS_ITEM.ID1090041]
+Ville Cyber aux Néons
 [IDS_ITEM.ID1092001]
 Colisée
 [IDS_ITEM.ID1092002]
 WCS
+[IDS_ITEM.ID1092004]
+Championnat des lycées au Japon
 [IDS_ITEM.ID1100001]
 Forêt
 [IDS_ITEM.ID1100002]
@@ -1986,8 +2040,12 @@ Cimetière des Âmes Abondantes
 Despia, Théâtre des Marqués
 [IDS_ITEM.ID1100037]
 Labyrinthe Labrynth
+[IDS_ITEM.ID1100039]
+"Une Affaire pour K9"
 [IDS_ITEM.ID1100040]
 Stade de football
+[IDS_ITEM.ID1100041]
+Ville Cyber aux Néons
 [IDS_ITEM.ID1101001]
 Trappe
 [IDS_ITEM.ID1101002]
@@ -2034,6 +2092,8 @@ coming soon
 Recycleur de Ferraille et Ramasse-Miettes
 [IDS_ITEM.ID1101023]
 Retour à la Case Départ
+[IDS_ITEM.ID1101024]
+coming soon
 [IDS_ITEM.ID1101025]
 Sanctuaire du Roi du Feu
 [IDS_ITEM.ID1101026]
@@ -2058,6 +2118,8 @@ Couronne
 Colisée
 [IDS_ITEM.ID1102002]
 WCS
+[IDS_ITEM.ID1102004]
+Championnat des lycées au Japon
 [IDS_ITEM.ID1110001]
 Forêt
 [IDS_ITEM.ID1110002]
@@ -2130,8 +2192,12 @@ Cimetière des Âmes Abondantes
 Despia, Théâtre des Marqués
 [IDS_ITEM.ID1110037]
 Labyrinthe Labrynth
+[IDS_ITEM.ID1110039]
+"Une Affaire pour K9"
 [IDS_ITEM.ID1110040]
 Stade de football
+[IDS_ITEM.ID1110041]
+Ville Cyber aux Néons
 [IDS_ITEM.ID1111001]
 Tableau de la Destinée
 [IDS_ITEM.ID1111002]
@@ -2234,10 +2300,16 @@ Effondrement Magique
 Miammy
 [IDS_ITEM.ID1111071]
 Queudragon
+[IDS_ITEM.ID1111072]
+Live☆Jumelle Lil-la Sucreries
+[IDS_ITEM.ID1111080]
+borrelle
 [IDS_ITEM.ID1112001]
 Colisée
 [IDS_ITEM.ID1112002]
 WCS
+[IDS_ITEM.ID1112004]
+Championnat des lycées au Japon
 [IDS_ITEM.ID1113001]
 Fête du WCS 2023
 [IDS_ITEM.ID1113002]
@@ -2307,9 +2379,9 @@ Force de la Puissance Cramoisie
 [IDS_ITEM.ID1120030]
 Réunion du Raid
 [IDS_ITEM.ID1120031]
-coming soon
+Explosion Magique Sombre
 [IDS_ITEM.ID1120032]
-coming soon
+Étincelle Géante
 [IDS_ITEM.ID1120033]
 coming soon
 [IDS_ITEM.ID1120034]
@@ -2508,6 +2580,8 @@ Mademoiselle Labrynth du Château d'Argent
 Effroyable Ruse de l'Archdémon
 [IDS_ITEM.ID1130098]
 Surnaliche le Seigneur d'Or
+[IDS_ITEM.ID1130099]
+K9-X "Loup-Garou"
 [IDS_ITEM.ID1130100]
 Ohime la Manifestation Mikanko
 [IDS_ITEM.ID1130101]
@@ -2522,6 +2596,20 @@ Diabellze la Protectrice du Péché Originel
 Anastasis Mégalithe
 [IDS_ITEM.ID1130107]
 Symphonie Solfaccord
+[IDS_ITEM.ID1130108]
+W:P Bal Raffiné
+[IDS_ITEM.ID1130109]
+I:P Masquerena
+[IDS_ITEM.ID1130110]
+S:P Petite Chevaleresse
+[IDS_ITEM.ID1130111]
+I:P Masquerena
+[IDS_ITEM.ID1130112]
+S:P Petite Chevaleresse
+[IDS_ITEM.ID1130113]
+Sursaut Gamma de Spright
+[IDS_ITEM.ID1130124]
+I:P Masquerena et S:P Petite Chevaleresse
 [IDS_ITEM.ID1132001]
 Lapin Sauveteur
 [IDS_ITEM.ID1132002]
@@ -2553,13 +2641,19 @@ Miammy
 [IDS_ITEM.ID1170004]
 Labrynth
 [IDS_ITEM.ID1170005]
-coming soon
+K9
 [IDS_ITEM.ID1170006]
 Mikanko
 [IDS_ITEM.ID1170007]
 coming soon
 [IDS_ITEM.ID1170008]
 Assaut de l'Air - As
+[IDS_ITEM.ID1170009]
+Magicien Sombre
+[IDS_ITEM.ID1170010]
+coming soon
+[IDS_ITEM.ID1170011]
+coming soon
 [IDS_ITEM.ID1180001]
 Dragon Blanc Alternatif aux Yeux Bleus
 [IDS_ITEM.ID1180002]
@@ -2589,11 +2683,11 @@ Queudragon Ketu
 [IDS_ITEM.ID1180014]
 Kuriboh Ailé
 [IDS_ITEM.ID1180015]
-coming soon
+K9
 [IDS_ITEM.ID1180016]
-coming soon
+EM:P Miaoumine
 [IDS_ITEM.ID1180017]
-coming soon
+Magicien Sombre
 [IDS_ITEM.ID1180018]
 coming soon
 [IDS_ITEM.ID1180019]
