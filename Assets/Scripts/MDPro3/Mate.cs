@@ -86,7 +86,6 @@ namespace MDPro3
                 var animator = transform.GetChild(0).GetComponent<Animator>();
                 if (animator != null)
                     animator.cullingMode = AnimatorCullingMode.AlwaysAnimate;
-                gameObject.SetActive(false);
             }
             else
             {
