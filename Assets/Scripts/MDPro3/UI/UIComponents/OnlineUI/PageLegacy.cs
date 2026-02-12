@@ -71,8 +71,8 @@ namespace MDPro3.UI
             public string port;
             public string password;
         }
-        private List<HostAddress> addresses = new();
-        private const string PATH_ADDRESS_SAVE = "Data/hosts.conf";
+        private readonly List<HostAddress> addresses = new();
+        private readonly string PATH_ADDRESS_SAVE = Utility.Language.UseChinese() ? "Data/hosts.conf" : "Data/hosts2.conf";
         private SuperScrollView hostSuperScrollView;
         private bool addressedLoaded = false;
 

@@ -65,6 +65,14 @@ namespace MDPro3.Utility
             return string.Empty;
         }
 
+        public static bool UseChinese()
+        {
+            var language = GetConfig();
+            if (language == SimplifiedChinese || language == TraditionalChinese)
+                return true;
+            return false;
+        }
+
         public static bool UseLatin(string language)
         {
             if (language == English
