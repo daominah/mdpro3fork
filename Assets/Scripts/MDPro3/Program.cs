@@ -8,9 +8,6 @@ using UnityEngine.AddressableAssets;
 using MDPro3.Net;
 using MDPro3.Servant;
 using Cysharp.Threading.Tasks;
-using MDPro3.Utility;
-
-
 
 #if UNITY_EDITOR
 using UnityEditor;

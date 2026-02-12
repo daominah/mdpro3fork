@@ -38,7 +38,7 @@ namespace MDPro3.Duel.YGOSharp
         public string packShortName = "";
         public string packFullName = "";
         public string reality = "";
-        public string strSetName = "";  
+        public string strSetName = "";
         public int year = 0;
         public int month = 0;
         public int day = 0;
@@ -204,11 +204,11 @@ namespace MDPro3.Duel.YGOSharp
 
         public bool IsHighLevel()
         {
-            if(HasType(CardType.Link) && GetLinkCount() > 2)
+            if (HasType(CardType.Link) && GetLinkCount() > 2)
                 return true;
-            if(HasType(CardType.Xyz) && Level > 3)
+            if (HasType(CardType.Xyz) && Level > 3)
                 return true;
-            if(Level > 6)
+            if (Level > 6)
                 return true;
             return false;
         }
@@ -237,19 +237,76 @@ namespace MDPro3.Duel.YGOSharp
             return Defense == -2 ? "?" : Defense.ToString();
         }
 
+        // Put this near other fields/helpers inside Card class:
+        private static readonly string PendulumSeparatorLine = new string('─', 14);
+
         public string GetDescription(bool withSetName = false)
         {
-            if (HasType(CardType.Pendulum))
-            {
-                var texts = GetDescriptionSplit();
-                string monster = InterString.Get("【怪兽效果】");
-                if (!HasType(CardType.Effect))
-                    monster = InterString.Get("【怪兽描述】");
-
-                return (withSetName ? GetSetNameWithColor() : string.Empty) + InterString.Get("【灵摆效果】") + "\n" + texts[0] + "\n" + monster + "\n" + texts[1];
-            }
-            else
+            if (!HasType(CardType.Pendulum))
                 return (withSetName ? GetSetNameWithColor() : string.Empty) + Desc;
+
+            var setName = withSetName ? GetSetNameWithColor() : string.Empty;
+
+            var texts = GetDescriptionSplit();
+            var pendulumText = texts[0]?.Trim('\r', '\n');
+            var monsterText = texts[1]?.Trim('\r', '\n');
+
+            var language = Language.GetConfig();
+
+            // Apply "official-like" panel layout for ALL languages except Korean:
+            // Monster text (no header) -> separator -> [Pendulum Effect] -> pendulum text
+            if (language != Language.Korean)
+            {
+                var pendulumHeader = NormalizeBracketLabel(InterString.Get("【灵摆效果】"));
+
+                var result = setName + (monsterText ?? string.Empty);
+
+                if (!string.IsNullOrEmpty(pendulumText))
+                {
+                    if (!string.IsNullOrEmpty(monsterText))
+                        result += "\n" + PendulumSeparatorLine + "\n";
+                    else if (!string.IsNullOrEmpty(result))
+                        result += "\n";
+
+                    result += pendulumHeader + "\n" + pendulumText;
+                }
+
+                return result;
+            }
+
+            // Korean: keep the old behavior (already working for you)
+            string monsterHeader = InterString.Get("【怪兽效果】");
+            if (!HasType(CardType.Effect))
+                monsterHeader = InterString.Get("【怪兽描述】");
+
+            var pendulumHeaderK = NormalizeBracketLabel(InterString.Get("【灵摆效果】"));
+            monsterHeader = NormalizeBracketLabel(monsterHeader);
+
+            return setName
+                + pendulumHeaderK + "\n" + (pendulumText ?? string.Empty)
+                + "\n" + monsterHeader + "\n" + (monsterText ?? string.Empty);
+        }
+
+        private static string NormalizeBracketLabel(string label)
+        {
+            if (string.IsNullOrEmpty(label))
+                return string.Empty;
+
+            // Remove extra spaces inside brackets: "[ xxx ]" -> "[xxx]" / "【 xxx 】" -> "【xxx】"
+            label = label.Replace("[ ", "[")
+                         .Replace(" ]", "]")
+                         .Replace("【 ", "【")
+                         .Replace(" 】", "】");
+
+            // Ensure bracket glyphs match current UI language.
+            // TrimEnd so we don't accidentally embed the " ] " trailing space inside the label itself.
+            var left = Language.GetLeftBracket();
+            var right = Language.GetRightBracket().TrimEnd();
+
+            label = label.Replace("【", left).Replace("】", right)
+                         .Replace("[", left).Replace("]", right);
+
+            return label.Trim();
         }
 
         public string GetMonsterDescription(bool render = false)
@@ -431,7 +488,7 @@ namespace MDPro3.Duel.YGOSharp
 
         public static string GetSpellTrapType(int cardType, int type = 0)
         {
-            if((cardType & (int)CardType.Spell) > 0)
+            if ((cardType & (int)CardType.Spell) > 0)
             {
                 if ((cardType & (int)CardType.Field) > 0)
                     return InterString.Get("场地魔法", type);
@@ -483,7 +540,7 @@ namespace MDPro3.Duel.YGOSharp
             if (Language.NeedSmallBracket(isPre ? Language.GetPrereleaseConfig() : Language.GetCardConfig()))
             {
                 bracketLeft = "[";
-                bracketRight = "]";
+                bracketRight = "] ";
             }
 
             if (HasType(CardType.Monster))
@@ -493,7 +550,7 @@ namespace MDPro3.Duel.YGOSharp
             else
             {
                 var type = 1;
-                if(isPre)
+                if (isPre)
                     type = 2;
                 re = bracketLeft;
                 if (HasType(CardType.Spell))
@@ -506,8 +563,8 @@ namespace MDPro3.Duel.YGOSharp
                 re += bracketRight;
             }
 
-            re = re.Replace(Program.STRING_SLASH, 
-                (isPre ? Language.UseLatin(Language.GetPrereleaseConfig()) : Language.CardUseLatin()) 
+            re = re.Replace(Program.STRING_SLASH,
+                (isPre ? Language.UseLatin(Language.GetPrereleaseConfig()) : Language.CardUseLatin())
                 ? CardRenderer.SMALL_SLASH : CardRenderer.BIG_SLASH);
 
             return re;
