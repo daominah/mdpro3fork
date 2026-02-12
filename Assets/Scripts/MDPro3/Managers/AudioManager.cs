@@ -319,13 +319,18 @@ namespace MDPro3
             new BgmLoop{name = "BGM_DUEL_F04_PHASE_B", startTime = 19.020f, endTime = 120 + 26.755f },
             new BgmLoop{name = "BGM_DUEL_F05_PHASE_A", startTime = 13.323f, endTime = 120 + 15.155f },
             new BgmLoop{name = "BGM_DUEL_F05_PHASE_B", startTime = 7.291f, endTime = 120 + 13.283f },
-            new BgmLoop{name = "BGM_DUEL_F06_PHASE_A", startTime = 3.831f, endTime = 120 + 1.027f },
+            new BgmLoop{name = "BGM_DUEL_F06_PHASE_A", startTime = 3.831f, endTime = 120 + 9.429f }, //fix 20260130
             new BgmLoop{name = "BGM_DUEL_F06_PHASE_B", startTime = 0.739f, endTime = 120 + 12.236f },
             new BgmLoop{name = "BGM_DUEL_F07_PHASE_A", startTime = 24.566f, endTime = 120 + 8.425f },
             new BgmLoop{name = "BGM_DUEL_F07_PHASE_B", startTime = 0.552f, endTime = 60 + 24.069f },
             new BgmLoop{name = "BGM_DUEL_F08_PHASE_A", startTime = 0.0f, endTime = 120 + 10.439f },
             new BgmLoop{name = "BGM_DUEL_F08_PHASE_B", startTime = 8.569f, endTime = 120 + 8.047f },
-
+            new BgmLoop{name = "BGM_DUEL_F09_PHASE_A", startTime = 0.757f, endTime = 120 + 18.982f }, //Added 20260130
+            new BgmLoop{name = "BGM_DUEL_F09_PHASE_B", startTime = 39.995f, endTime = 120 + 7.306f }, //Added 20260130
+            new BgmLoop{name = "BGM_DUEL_F10_PHASE_A", startTime = 0.507f, endTime = 60 + 45.980f }, //Added 20260130
+            new BgmLoop{name = "BGM_DUEL_F10_PHASE_B", startTime = 9.092f, endTime = 60 + 55.030f }, //Added 20260130
+            new BgmLoop{name = "BGM_DUEL_F10_PHASE_C", startTime = 1.353f, endTime = 120 + 22.772f }, //Added 20260130
+    
             new BgmLoop{name = "BGM_DUEL_RATE01_NORMAL", startTime = 1.119f, endTime = 120 + 5.607f },
             new BgmLoop{name = "BGM_DUEL_RATE01_KEYCARD", startTime = 1.761f, endTime = 60 + 55.984f },
             new BgmLoop{name = "BGM_DUEL_RATE01_CLIMAX", startTime = 0.822f, endTime = 60 + 53.925f },
@@ -402,16 +407,7 @@ namespace MDPro3
 
         private static readonly Dictionary<List<string>, List<int>> specialFieldBGMs = new()
         {
-            //{new List<string>{ "BGM_DUEL_DC01_NORMAL", "BGM_DUEL_DC01_KEYCARD", "BGM_DUEL_DC01_CLIMAX" }, new List<int>{ } }, //DC 1st round //colosseum 
-            //{new List<string>{ "BGM_DUEL_DC02_NORMAL", "BGM_DUEL_DC02_KEYCARD", "BGM_DUEL_DC02_CLIMAX" }, new List<int>{ } }, //DC 2nd round its //colosseum 
-
-            //{new List<string>{ "BGM_DUEL_EX_01" }, new List<int>{ 18 } }, //World Legacy Last stage Cyberse Field 
-            //{new List<string>{ "BGM_DUEL_EX_02_NORMAL", "BGM_DUEL_EX_02_KEYCARD", "BGM_DUEL_EX_02_CLIMAX" }, new List<int>{ 8 } }, //「角斗场」
             {new List<string>{ "BGM_DUEL_EX_03_NORMAL", "BGM_DUEL_EX_03_KEYCARD", "BGM_DUEL_EX_03_CLIMAX" }, new List<int>{ 13 } }, //「WCS」
-            //{new List<string>{ "BGM_DUEL_EX_04_NORMAL", "BGM_DUEL_EX_04_KEYCARD", "BGM_DUEL_EX_04_CLIMAX" }, new List<int>{ } }, //Xyz CUP 1st round //colosseum 
-            //{new List<string>{ "BGM_DUEL_EX_05_NORMAL", "BGM_DUEL_EX_05_KEYCARD", "BGM_DUEL_EX_05_CLIMAX" }, new List<int>{ } }, //Xyz CUP 2nd round //colosseum 
-            //{new List<string>{ "BGM_DUEL_EX_06_ALL" }, new List<int>{ } }, //WCQ2025 1st round //colosseum 
-            //{new List<string>{ "BGM_DUEL_EX_07_PHASE_A", "BGM_DUEL_EX_07_PHASE_B" }, new List<int>{ } }, //WCQ2025 2nd round //colosseum 20251203
             {new List<string>{ "BGM_DUEL_EX_08_ALL" }, new List<int>{ 45 } }, //WCS2025 //added 20251203
             {new List<string>{ "BGM_DUEL_EX_09_PHASE_A", "BGM_DUEL_EX_09_PHASE_B" }, new List<int>{ 504 } }, //Synchro CUP 20251203
             //{new List<string>{ "BGM_DUEL_EX_10_NORMAL", "BGM_DUEL_EX_10_KEYCARD", "BGM_DUEL_EX_10_CLIMAX" }, new List<int>{  } }, //New Event?
@@ -424,6 +420,8 @@ namespace MDPro3
             {new List<string>{ "BGM_DUEL_F06_PHASE_A", "BGM_DUEL_F06_PHASE_B" }, new List<int>{ 47 } }, //White Forest //added 20251203
             {new List<string>{ "BGM_DUEL_F07_PHASE_A", "BGM_DUEL_F07_PHASE_B" }, new List<int>{ 46 } }, //E-Football //added 20251203
             {new List<string>{ "BGM_DUEL_F08_PHASE_A", "BGM_DUEL_F08_PHASE_B" }, new List<int>{ 39 } }, //Labrynth //added 20251203
+			{new List<string>{ "BGM_DUEL_F09_PHASE_A", "BGM_DUEL_F09_PHASE_B" }, new List<int>{ 48 } }, //K9 20260130
+            {new List<string>{ "BGM_DUEL_F10_PHASE_A", "BGM_DUEL_F10_PHASE_B", "BGM_DUEL_F10_PHASE_C" }, new List<int>{ 49 } }, //IP 20260130
 
             //{new List<string>{ "BGM_DUEL_RATE01_NORMAL", "BGM_DUEL_RATE01_KEYCARD", "BGM_DUEL_RATE01_CLIMAX" }, new List<int>{ } },
 
@@ -464,12 +462,12 @@ namespace MDPro3
                     return colBgmList;
                 }
             }
-            if (fieldId == 18)//add cyberseBgms 20260106
+            if (fieldId == 18)//add cyberseBgms 20260116 fixed
             {
-                var index = cyberseBgms[UnityEngine.Random.Range(0, colosseumBgms.Count)];
-                if (fieldCybBGMs.TryGetValue(index, out var colBgmList))
+                var index = cyberseBgms[UnityEngine.Random.Range(0, cyberseBgms.Count)];
+                if (fieldCybBGMs.TryGetValue(index, out var cybBgmList))
                 {
-                    return colBgmList;
+                    return cybBgmList;
                 }
             }
             foreach (var pair in specialFieldBGMs)
