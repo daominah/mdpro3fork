@@ -426,7 +426,7 @@ namespace MDPro3
 
         private static async UniTask CacheCutin(int code)
         {
-            if (!CutinViewer.HasCutin(code))
+            if (!CutinViewer.CutinExist(code))
                 return;
 
             if (CutinViewer.codes.Contains(code))
@@ -604,7 +604,7 @@ namespace MDPro3
             OcgCore.summonCard.UpdateExDeckTop();
 
             var interval = 0.5f;
-            if (CutinViewer.HasCutin(code))
+            if (CutinViewer.CutinExist(code))
                 interval = 1f;
             await OcgCore.summonCard.StartCardSequence(position, angle, interval).WaitAsync();
             dummyCard = null;

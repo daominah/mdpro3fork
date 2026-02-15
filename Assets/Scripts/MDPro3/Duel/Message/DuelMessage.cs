@@ -870,7 +870,7 @@ namespace MDPro3.Duel
             AudioManager.PlaySE(se);
 
             int shakeLevel = 0;
-            if (CutinViewer.HasCutin(card.GetData().Id))
+            if (CutinViewer.CutinExist(card.GetData().Id))
                 shakeLevel = 1;
             if (card.GetData().Level > 4)
                 shakeLevel = 1;
@@ -998,7 +998,7 @@ namespace MDPro3.Duel
                 Core.GetUI<OcgCoreUI>().CardDescription.Show(card, card.GetMaterial());
 
             int shakeLevel = 0;
-            if(CutinViewer.HasCutin(card.GetData().Id))
+            if(CutinViewer.CutinExist(card.GetData().Id))
                 shakeLevel = 1;
             if (card.GetData().IsHighLevel())
                 shakeLevel = 2;

@@ -195,7 +195,11 @@ namespace MDPro3
 #if !UNITY_EDITOR && (UNITY_STANDALONE_OSX || UNITY_STANDALONE_WIN)
             dir = new DirectoryInfo(Path.Combine(Application.dataPath, Program.root + path));
 #endif
-
+            if (!dir.Exists)
+            {
+                Debug.LogError($"[LoadFromFolderAsync]: Path [{dir.FullName}] does not exist.");
+                return null;
+            }
             FileInfo[] files = dir.GetFiles("*");
             List<AssetBundle> bundles = new();
             for (int i = 0; i < files.Length; i++)

@@ -1338,7 +1338,7 @@ namespace MDPro3
                 {
                     AudioManager.PlaySE(se);
 
-                    bool cutin = CutinViewer.HasCutin(data.Id);
+                    bool cutin = CutinViewer.CutinExist(data.Id);
                     sequence.Pause();
                     if (cutin)
                     {
@@ -1361,7 +1361,7 @@ namespace MDPro3
             {
                 AudioManager.PlaySE(se);
                 sequence.Pause();
-                bool cutin = CutinViewer.HasCutin(data.Id);
+                bool cutin = CutinViewer.CutinExist(data.Id);
                 if (cutin)
                     await CutinViewer.Play(data.Id, (int)p.controller);
                 if (data.IsHighLevel())

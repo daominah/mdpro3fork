@@ -7,6 +7,7 @@ using Spine.Unity;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading;
 using TMPro;
 using UnityEngine;
@@ -142,7 +143,9 @@ namespace MDPro3.Servant
             {
                 if(int.TryParse(dirInfos[i].Name, out var code))
                 {
-                    Card card = CardsManager.Get(code);
+                    Card card = CardsManager.GetCard(code);
+                    if (card == null)
+                        continue;
                     cards.Add(card);
                     codes.Add(card.Id);
                 }
@@ -171,7 +174,7 @@ namespace MDPro3.Servant
             Select();
         }
 
-        public static bool HasCutin(int code)
+        public static bool CutinExist(int code)
         {
             if (OcgCore.condition == OcgCore.Condition.Duel
                 && !Config.GetBool("DuelCutin", true))
@@ -183,16 +186,7 @@ namespace MDPro3.Servant
                 && !Config.GetBool("ReplayCutin", true))
                 return false;
             code = AliasCode(code);
-            bool returnValue = false;
-            foreach (var card in cards)
-            {
-                if (card.Id == code)
-                {
-                    returnValue = true;
-                    break;
-                }
-            }
-            return returnValue;
+            return cards.Any(c => c.Id == code);
         }
 
         private static int AliasCode(int code)

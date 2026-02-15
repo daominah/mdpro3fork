@@ -26,7 +26,7 @@ namespace MDPro3.UI
         protected override void CallSubmitEvent()
         {
             AudioManager.PlaySE("SE_MENU_DECIDE");
-            if (CutinViewer.HasCutin(code))
+            if (CutinViewer.CutinExist(code))
                 _ = CutinViewer.Play(code, 0);
         }
         protected override void CallToggleOnEvent()
