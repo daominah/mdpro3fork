@@ -116,8 +116,11 @@ namespace MDPro3
             nowNum = 0;
             totalNum = 0;
 
+            string tempZipPath = Path.Combine(Application.temporaryCachePath, type + "_temp.zip");
+
             string filePath = Path.Combine(Application.streamingAssetsPath, type + ".zip");
             using UnityWebRequest request = UnityWebRequest.Get(filePath);
+            request.downloadHandler = new DownloadHandlerFile(tempZipPath);
             request.SendWebRequest();
             while (!request.isDone)
             {
@@ -128,8 +131,6 @@ namespace MDPro3
 
             if (request.result == UnityWebRequest.Result.Success)
             {
-                byte[] bytes = request.downloadHandler.data;
-
                 title = InterString.Get("正在解压[?]", type + ".zip");
                 string outPath = "";
                 if (type.Contains("_"))
@@ -137,7 +138,7 @@ namespace MDPro3
                 if (outPath.Length > 0 && !Directory.Exists(outPath))
                     Directory.CreateDirectory(outPath);
 
-                IEnumerator extractEnumerator = ExtractZipFile(bytes, outPath);
+                IEnumerator extractEnumerator = ExtractZipFileFromFile(tempZipPath, outPath);
                 while (extractEnumerator.MoveNext())
                     yield return extractEnumerator.Current;
             }
@@ -331,5 +332,52 @@ namespace MDPro3
             string textInt = version.Substring(0, 1) + version.Substring(2, 1) + version.Substring(4, 1);
             return int.Parse(textInt);
         }
+
+        private IEnumerator ExtractZipFileFromFile(string zipPath, string outFolder)
+        {
+            ZipFile zf = null;
+            try
+            {
+                zf = new ZipFile(zipPath);
+                int count = 0;
+                foreach (ZipEntry zipEntry in zf)
+                    count++;
+                totalNum = count;
+                nowNum = 0;
+                extracting = true;
+
+                foreach (ZipEntry zipEntry in zf)
+                {
+                    nowNum++;
+                    if (!zipEntry.IsFile)
+                        continue;
+
+                    string entryFileName = zipEntry.Name;
+                    byte[] buffer = new byte[4096];
+                    Stream zipStream = zf.GetInputStream(zipEntry);
+                    string fullZipToPath = Path.Combine(outFolder, entryFileName);
+                    string directoryName = Path.GetDirectoryName(fullZipToPath);
+                    if (directoryName.Length > 0)
+                        Directory.CreateDirectory(directoryName);
+
+                    using (FileStream streamWriter = File.Create(fullZipToPath))
+                    {
+                        StreamUtils.Copy(zipStream, streamWriter, buffer);
+                    }
+
+                    yield return null;
+                }
+            }
+            finally
+            {
+                if (zf != null)
+                {
+                    zf.IsStreamOwner = true;
+                    zf.Close();
+                }
+                extracting = false;
+            }
+        }
+
     }
 }
