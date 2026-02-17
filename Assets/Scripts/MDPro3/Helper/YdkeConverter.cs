@@ -15,7 +15,7 @@ namespace MDPro3
             ydkeString = ydkeString.Replace(ydkeHeader, string.Empty);
 
             var sections = ydkeString.Split('!');
-            if(sections.Length < 3)
+            if (sections.Length < 3)
             {
                 //throw new ArgumentException("Invalid YDKE format");
                 return null;
@@ -27,6 +27,10 @@ namespace MDPro3
                 Extra = DecodeSection(sections[1]),
                 Side = DecodeSection(sections[2])
             };
+
+            // Replace pre-release ids with official ids (if mapping exists).
+            YdkIdHelper.NormalizeDeck(result);
+
             return result;
         }
 

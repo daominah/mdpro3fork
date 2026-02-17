@@ -111,8 +111,12 @@ namespace MDPro3.Duel.YGOSharp
                     {
                         continue;
                     }
+
                     if (code > 100)
                     {
+                        // Replace pre-release ids with official ids (if mapping exists).
+                        code = YdkIdHelper.ToOfficial(code);
+
                         switch (flag)
                         {
                             case 1:
@@ -152,7 +156,7 @@ namespace MDPro3.Duel.YGOSharp
                 }
             }
 
-            if(Pickup.Count < 3)
+            if (Pickup.Count < 3)
                 Pickup.AddRange(Enumerable.Repeat(0, 3 - Pickup.Count));
         }
 
@@ -168,6 +172,9 @@ namespace MDPro3.Duel.YGOSharp
             Grave = 1100001;
             Stand = 1110001;
             Mate = 1000001;
+
+            // Normalize any pre-release ids that may be in the provided lists.
+            YdkIdHelper.NormalizeDeck(this);
         }
 
         public int Check(Banlist ban, bool ocg, bool tcg)

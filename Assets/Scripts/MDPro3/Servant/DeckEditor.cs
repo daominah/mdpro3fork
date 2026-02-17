@@ -49,10 +49,17 @@ namespace MDPro3.Servant
                 case Condition.EditDeck:
                     returnServant = Program.instance.deckSelector;
                     DeckName = Config.GetConfigDeckName();
-                    Deck = new Deck(Program.PATH_DECK + DeckName + Program.EXPANSION_YDK);
+
+                    var deckPath = Program.PATH_DECK + DeckName + Program.EXPANSION_YDK;
+
+                    // Auto-fix the file on disk (pre-release ids -> official ids).
+                    YdkIdHelper.NormalizeYdkFile(deckPath);
+
+                    Deck = new Deck(deckPath);
                     DeckIsFromLocal = true;
                     historyCards = new();
                     break;
+
                 case Condition.OnlineDeck:
                     returnServant = Program.instance.onlineDeckViewer;
                     DeckName = deckName;
@@ -60,6 +67,7 @@ namespace MDPro3.Servant
                     DeckIsFromLocal = false;
                     historyCards = new();
                     break;
+
                 case Condition.ReplayDeck:
                     returnServant = Program.instance.replay;
                     DeckName = deckName;
@@ -67,6 +75,7 @@ namespace MDPro3.Servant
                     DeckIsFromLocal = false;
                     historyCards = new();
                     break;
+
                 case Condition.ChangeSide:
                     DeckName = Config.GetConfigDeckName();
                     Deck = TcpHelper.deck;
