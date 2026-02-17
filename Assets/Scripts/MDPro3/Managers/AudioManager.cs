@@ -376,7 +376,7 @@ namespace MDPro3
             {5, new List<int>{ 7 } }, //「异国之都」
             {6, new List<int>{ 15, 24 } }, //「鲜彩之苍海」「辉石的洞窟」
             {7, new List<int>{ 9 } }, //「摩天楼」
-            {8, new List<int>{  } },
+            {8, new List<int>{ 502 } }, // High School JP Championship 20260212
             {9, new List<int>{ 16, 17 } }, //「魔偶甜点城堡」「鬼计之馆」
             {10, new List<int>{  } },
             {11, new List<int>{ 26, 50 } }, //Ursarctic, E-Football(MD) 20260106
