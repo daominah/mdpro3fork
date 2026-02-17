@@ -73,6 +73,7 @@ namespace MDPro3.UI
             text.gameObject.SetActive(true);
             Tools.PlayAnimation(transform, "StartToPhase1");
             duelStart = true;
+            duelEnd = false;
         }
 
         public void DuelEnd()

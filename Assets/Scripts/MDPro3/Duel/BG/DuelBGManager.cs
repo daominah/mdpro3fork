@@ -19,9 +19,7 @@ using YgomGame.Bg;
 using YgomSystem.Effect;
 using YgomSystem.ElementSystem;
 using YgomSystem.Timeline;
-using YGOSharp.OCGWrapper;
 using static MDPro3.Servant.OcgCore;
-using static UnityEngine.Rendering.DebugUI;
 using static YgomGame.Bg.BgEffectSettingInner;
 
 namespace MDPro3.Duel
@@ -36,8 +34,8 @@ namespace MDPro3.Duel
 
         private bool mate0Random = true;
         private bool mate1Random = true;
-        private int bgPhase0 = 1;
-        private int bgPhase1 = 1;
+        private int bgPhase0 = 0;
+        private int bgPhase1 = 0;
         private bool backgroundFieldInitialize = false;
         public bool loaded;
 
@@ -544,6 +542,7 @@ namespace MDPro3.Duel
         {
             if (field0Manager == null || field1Manager == null)
                 return;
+            if (bgPhase0 == 1 && bgPhase1 == 1) return;
 
             if (backgroundFieldInitialize)
             {

@@ -79,7 +79,7 @@ namespace YgomSystem.Timeline
                 if (OcgCore.summonCard == null)
                     return;
                 var code = OcgCore.summonCard.GetData().Id;
-                if (CutinViewer.HasCutin(code))
+                if (CutinViewer.CutinExist(code))
                     _ = CutinViewer.Play(code, (int)OcgCore.summonCard.p.controller);
             }
             else if(label == "Next")

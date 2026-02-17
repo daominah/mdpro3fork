@@ -296,7 +296,13 @@ namespace MDPro3
             //召唤兽 梅尔卡巴[75286622]在安卓端和iOS端的Spine动画资源丢失，
             //临时修复方案为从已加载的AssetBundle中寻找SkeletonDataAsset并赋值。
 
-            var sa = prefab.GetComponentInChildren<SkeletonAnimation>();
+            //傻缺科乐美在 混沌幻魔[60110982]的Root节点留了个没删的SkeletonAnimation。
+
+            var sas = prefab.GetComponentsInChildren<SkeletonAnimation>();
+            if(sas == null || sas.Length == 0 || sas.Length > 1)
+                return;
+
+            var sa = sas[0];
             if (sa == null)
                 return;
             if (sa.skeletonDataAsset == null)
