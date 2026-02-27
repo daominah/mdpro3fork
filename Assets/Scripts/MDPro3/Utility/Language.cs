@@ -121,8 +121,9 @@ namespace MDPro3.Utility
 
         public static string GetRightBracket()
         {
-            if (NeedSmallBracket())
-                return "]";
+            var language = GetConfig();
+            if (UseLatin(language))
+                return "]  ";
             return "】";
         }
 

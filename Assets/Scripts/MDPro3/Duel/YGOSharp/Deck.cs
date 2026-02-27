@@ -114,8 +114,9 @@ namespace MDPro3.Duel.YGOSharp
 
                     if (code > 100)
                     {
-                        // Replace pre-release ids with official ids (if mapping exists).
-                        code = YdkIdHelper.ToOfficial(code);
+                        // Replace pre-release ids with official ids only for playable deck sections.
+                        if (flag >= 1 && flag <= 3)
+                            code = YdkIdHelper.ToOfficial(code);
 
                         switch (flag)
                         {

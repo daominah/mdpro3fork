@@ -25,6 +25,14 @@ namespace MDPro3
         private static readonly Regex _ydkIdLine =
             new Regex(@"^(\s*#?\s*)(\d+)(\s*)$", RegexOptions.Compiled);
 
+        private enum DeckSection
+        {
+            None,
+            Main,
+            Extra,
+            Side
+        }
+
         public static void EnsureLoaded()
         {
             if (_loaded) return;
@@ -107,12 +115,12 @@ namespace MDPro3
             changed += NormalizeList(deck.Main);
             changed += NormalizeList(deck.Extra);
             changed += NormalizeList(deck.Side);
-            changed += NormalizeList(deck.Pickup);
             return changed;
         }
 
         /// <summary>
-        /// Reads a .ydk file and rewrites it on disk, replacing pre-release ids with official ids.
+        /// Reads a .ydk file and rewrites it on disk, replacing pre-release ids with official ids
+        /// only inside #main, #extra and !side sections.
         /// Returns the number of lines changed.
         /// </summary>
         public static int NormalizeYdkFile(string path)
@@ -138,12 +146,42 @@ namespace MDPro3
             var lines = original.Replace("\r\n", "\n").Split('\n');
 
             var changed = 0;
+            var section = DeckSection.None;
 
             for (int i = 0; i < lines.Length; i++)
             {
                 var line = lines[i];
+                var trimmed = line.TrimStart();
+
+                if (trimmed.StartsWith("#main", StringComparison.Ordinal))
+                {
+                    section = DeckSection.Main;
+                    continue;
+                }
+                if (trimmed.StartsWith("#extra", StringComparison.Ordinal))
+                {
+                    section = DeckSection.Extra;
+                    continue;
+                }
+                if (trimmed.StartsWith("!side", StringComparison.Ordinal))
+                {
+                    section = DeckSection.Side;
+                    continue;
+                }
+
                 var m = _ydkIdLine.Match(line);
-                if (!m.Success) continue;
+                if (!m.Success)
+                {
+                    // Any other ydk directive/header exits card sections.
+                    if (trimmed.StartsWith("#", StringComparison.Ordinal) ||
+                        trimmed.StartsWith("!", StringComparison.Ordinal))
+                    {
+                        section = DeckSection.None;
+                    }
+                    continue;
+                }
+
+                if (section == DeckSection.None) continue;
 
                 if (!int.TryParse(m.Groups[2].Value, out var id)) continue;
                 if (id <= 100) continue;
