@@ -29,7 +29,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: d0a85fb87789a624b84e98d941aad31b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture2DAsset_90c6e35ef4304f289c279037152a03b7_Out_0_Texture2D:
@@ -52,7 +52,7 @@ Material:
     m_Floats:
     - _ColorMask: 15
     - _DirectionalLightAmp: 0.88
-    - _FakeBlend: 1
+    - _FakeBlend: 0
     - _LoadingBlend: 0
     - _Monochrome: 0
     - _QueueControl: 1

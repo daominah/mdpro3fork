@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: RoyalStyle3D
-  m_Shader: {fileID: 4800000, guid: 27b79ee02cb2507438f330137782cf42, type: 3}
+  m_Name: ShineStyleOFUI
+  m_Shader: {fileID: 4800000, guid: a4d063f4d53d2b64e99c3c34933a275d, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -36,31 +36,19 @@ Material:
         m_Texture: {fileID: 2800000, guid: 067b10328108b7d45827fb33f6134466, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _HighlightNormal:
-        m_Texture: {fileID: 2800000, guid: a885df8d14949ac4d8f2a9280ea4a8d0, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _HighlightTex:
-        m_Texture: {fileID: 2800000, guid: b709041a17a0dfa44a2a7a46b32426dd, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _HoloTex:
-        m_Texture: {fileID: 2800000, guid: 54e4fc99b03a29347ae85df16a6af2bf, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Kira02_01:
-        m_Texture: {fileID: 2800000, guid: b1661655758a8a246923f03567093b9e, type: 3}
+        m_Texture: {fileID: 2800000, guid: c072e55511ebc1a4d82d4db20a9f374a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _KiraColorTexture:
-        m_Texture: {fileID: 2800000, guid: 5c363db696962dc43a0067d467c0f2f5, type: 3}
+        m_Texture: {fileID: 2800000, guid: 612710dce86e2214687808b8208d69e8, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _KiraMask:
         m_Texture: {fileID: 2800000, guid: f67522af775aebb4bafcfc0fb0ccb8bc, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _KiraNormal01_02:
+    - _KiraNormal01:
         m_Texture: {fileID: 2800000, guid: 5e8658364381f1940b2c6a4057d503ea, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -77,6 +65,10 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MonsterNameTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OverFrameMask:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -98,44 +90,38 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - Vector1_9f6a6c75361e4098a9692014463c70fa: 1
     - _AttributeTile: 1
-    - _CardDistortion01: 1
-    - _CardDistortion02: 1
+    - _CardDistortion: 0
     - _ColorMask: 15
-    - _CubemapContrast: 1
-    - _CubemapPower: 2
     - _DirectionalLightAmp: 0.88
     - _EnhanceColorThreshold: 2
+    - _EnvironmentPower: 1
     - _FakeBlend: 1
-    - _FrameMetal: 0
-    - _HighlightAmp: 3
+    - _FrameMetal: 1
+    - _HighlightAmp: 1
     - _HighlightRotation: -30
     - _HighlightScrollOffset: 0
-    - _HoloBrightness: 1
-    - _HoloBrightness02: 1.2
-    - _HoloShift01: 2.18
-    - _HoloShift02: 1
-    - _IllustBright: 0.8
-    - _IlluustRanbowPower: 1
-    - _Kira01_01Tile: 0.5
-    - _Kira01_02Power: -2.19
-    - _Kira01_02Tile: 2
-    - _Kira02_01Power: -2
-    - _Kira02_01Tile: 1
-    - _Kira02_02Power: 0.49
-    - _Kira2_02Tile: 1
-    - _KiraMetal01: -0.33
-    - _KiraMetal02: 3
-    - _KiraNormal01_01Power: 1
+    - _HoloBrightness: 0.7
+    - _HoloShift: 1
+    - _IllustBrightness: -0.2
+    - _IllustContrast: 1.3
+    - _IllustHoloPower: 1
+    - _IllustRanbowPower: 2
+    - _Kira01Tile: 1
+    - _Kira02Tile: 1
+    - _KiraMetal: 1
+    - _KiraNormal01Power: 0.4
+    - _KiraNormal02Power: 0.4
+    - _LinkOn_Off: 0
     - _LoadingBlend: 0
-    - _MainNormalPower: 1
-    - _MainTexMetal: 1
+    - _MainNormalPower: 0.86
+    - _MainTexMetal: 0
     - _Monochrome: 0
     - _MonsterNameNormalPower: 4
     - _MonsterNameTextBold: 1.3
     - _QueueControl: 1
     - _QueueOffset: 1
-    - _RanbowPower: 0
     - _ScrollSpeed: 1.5
     - _Smoothness: 0.5
     - _Stencil: 0
@@ -151,16 +137,15 @@ Material:
     - _AddColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _AmbientColor: {r: 0.06, g: 0.06, b: 0.06, a: 1}
     - _AttributeSize_Pos: {r: 9.82, g: 13.84, b: -3.7, a: -5.81}
+    - _CardNameColor: {r: 1, g: 1, b: 1, a: 0}
     - _ClipRect: {r: 0, g: 0, b: 0, a: 0}
-    - _Color: {r: 1, g: 0.9385045, b: 0.7232704, a: 1}
-    - _CubemapColor: {r: 0.8980392, g: 0.8666667, b: 0.3254902, a: 0}
+    - _EnvironmentColor: {r: 1, g: 1, b: 1, a: 0}
     - _FakeLightColor: {r: 0, g: 0, b: 0, a: 0}
     - _FakeLightDirection: {r: 0.75, g: -0.75, b: 0, a: 0}
     - _FakeNormalDirection: {r: 0.75, g: -0.75, b: 0, a: 0}
     - _FakeViewDirection: {r: 0.75, g: 0.75, b: 0, a: 0}
-    - _KiraColor01: {r: 0.21186084, g: 0.15500766, b: 0.5188679, a: 0}
-    - _KiraColor02: {r: 0.4063017, g: 0.38901743, b: 0.5849056, a: 0}
-    - _SpecularColor: {r: 0.16037738, g: 0.16037738, b: 0.16037738, a: 1}
+    - _KiraColor: {r: 0.375445, g: 0.40083554, b: 0.5566038, a: 0}
+    - _SpecularColor: {r: 0.764151, g: 0.764151, b: 0.764151, a: 1}
     - _TintColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 0

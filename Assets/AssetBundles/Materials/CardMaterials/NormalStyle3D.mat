@@ -56,7 +56,7 @@ Material:
     m_Floats:
     - _ColorMask: 15
     - _DirectionalLightAmp: 0.88
-    - _FakeBlend: 1
+    - _FakeBlend: 0
     - _LoadingBlend: 0
     - _Monochrome: 0
     - _QueueControl: 1
