@@ -2404,7 +2404,7 @@
              1 string name = "<noninit>"
             1 string name = "unity_FogColor"
            0 int fogMode = -1
-           0 int gpuProgramID = 154692
+           0 int gpuProgramID = 179921
            0 SerializedTagMap m_Tags
             0 map tags
              0 Array Array (8 items)
@@ -3209,7 +3209,7 @@
              1 string name = "<noninit>"
             1 string name = "unity_FogColor"
            0 int fogMode = -1
-           0 int gpuProgramID = 258272
+           0 int gpuProgramID = 258166
            0 SerializedTagMap m_Tags
             0 map tags
              0 Array Array (8 items)
@@ -3970,7 +3970,7 @@
              1 string name = "<noninit>"
             1 string name = "unity_FogColor"
            0 int fogMode = -1
-           0 int gpuProgramID = 285744
+           0 int gpuProgramID = 278943
            0 SerializedTagMap m_Tags
             0 map tags
              0 Array Array (8 items)
@@ -9759,7 +9759,7 @@
    [0]
     0 PPtr<Shader> data
      0 int m_FileID = 0
-     0 SInt64 m_PathID = 6034231041006315562
+     0 SInt64 m_PathID = 1846
  0 map m_NonModifiableTextures
   0 Array Array (1 items)
    0 int size = 1
