@@ -1,4 +1,4 @@
-Shader "Shader Graphs/ShineStyle3D" {
+Shader "Shader Graphs/ShineStyleOFUI" {
 	Properties {
 		[NoScaleOffset] _MainTex ("MainTex", 2D) = "white" {}
 		[NoScaleOffset] _LoadingTex ("LoadingTex", 2D) = "white" {}
@@ -6,6 +6,7 @@ Shader "Shader Graphs/ShineStyle3D" {
 		[NoScaleOffset] _MonsterNameTex ("MonsterNameTex", 2D) = "black" {}
 		_MonsterNameTextBold ("MonsterNameTextBold", Float) = 1.3
 		[NoScaleOffset] _AttributeTex ("AttributeTex", 2D) = "white" {}
+		_MonsterNameNormalPower ("MonsterNameNormalPower", Float) = 4
 		_AttributeTile ("AttributeTile", Float) = 1
 		_AttributeSize_Pos ("AttributeSize&Pos", Vector) = (9.85,13.9,-3.7,-5.81)
 		_MainTexMetal ("MainTexMetal", Float) = 0
@@ -50,10 +51,17 @@ Shader "Shader Graphs/ShineStyle3D" {
 		_EnhanceColorThreshold ("EnhanceColorThreshold", Float) = 2
 		_IllustRanbowPower ("IllustRanbowPower", Float) = 1
 		[ToggleUI] _LinkOn_Off ("LinkOn_Off", Float) = 0
-		[ToggleUI] _isFade ("isFade", Float) = 0
+		[NoScaleOffset] _OverFrameMask ("OverFrameMask", 2D) = "white" {}
 		[NoScaleOffset] _Texture2DAsset_90c6e35ef4304f289c279037152a03b7_Out_0_Texture2D ("Texture2D", 2D) = "white" {}
-		[HideInInspector] _QueueOffset ("_QueueOffset", Float) = 0
-		[HideInInspector] _QueueControl ("_QueueControl", Float) = -1
+		[HideInInspector] _StencilComp ("Stencil Comparison", Float) = 8
+		[HideInInspector] _Stencil ("Stencil ID", Float) = 0
+		[HideInInspector] _StencilOp ("Stencil Operation", Float) = 0
+		[HideInInspector] _StencilWriteMask ("Stencil Write Mask", Float) = 255
+		[HideInInspector] _StencilReadMask ("Stencil Read Mask", Float) = 255
+		[HideInInspector] _ColorMask ("ColorMask", Float) = 15
+		[HideInInspector] _ClipRect ("ClipRect", Vector) = (0,0,0,0)
+		[HideInInspector] _UIMaskSoftnessX ("UIMaskSoftnessX", Float) = 1
+		[HideInInspector] _UIMaskSoftnessY ("UIMaskSoftnessY", Float) = 1
 		[HideInInspector] [NoScaleOffset] unity_Lightmaps ("unity_Lightmaps", 2DArray) = "" {}
 		[HideInInspector] [NoScaleOffset] unity_LightmapsInd ("unity_LightmapsInd", 2DArray) = "" {}
 		[HideInInspector] [NoScaleOffset] unity_ShadowMasks ("unity_ShadowMasks", 2DArray) = "" {}

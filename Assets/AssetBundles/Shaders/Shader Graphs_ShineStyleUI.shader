@@ -11,7 +11,7 @@ Shader "Shader Graphs/ShineStyleUI" {
 		_MainTexMetal ("MainTexMetal", Float) = 0
 		[NoScaleOffset] [Normal] _MainNormal ("MainNormal", 2D) = "bump" {}
 		_FrameMetal ("FrameMetal", Float) = 1
-		[NoScaleOffset] _FrameMask ("FrameMask", 2D) = "white" {}
+		[NoScaleOffset] _CardMask ("CardMask", 2D) = "white" {}
 		_MainNormalPower ("MainNormalPower", Float) = 0.86
 		_EnvironmentPower ("EnvironmentPower", Float) = 1
 		_EnvironmentColor ("EnvironmentColor", Vector) = (1,1,1,0)
@@ -19,7 +19,6 @@ Shader "Shader Graphs/ShineStyleUI" {
 		[HDR] _KiraColor ("KiraColor", Vector) = (0.3764706,0.4,0.5568628,0)
 		[NoScaleOffset] _KiraColorTexture ("KiraColorTexture", 2D) = "white" {}
 		_KiraMetal ("KiraMetal", Float) = 1
-		[NoScaleOffset] _KiraMask ("KiraMask", 2D) = "white" {}
 		[NoScaleOffset] _KiraNormal01 ("Kira01", 2D) = "white" {}
 		_Kira01Tile ("Kira01Tile", Float) = 1
 		_KiraNormal01Power ("Kira01Power", Float) = 1

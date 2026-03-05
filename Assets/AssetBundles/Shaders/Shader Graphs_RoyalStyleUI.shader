@@ -15,8 +15,6 @@ Shader "Shader Graphs/RoyalStyleUI" {
 		_FrameMetal ("FrameMetal", Float) = 0
 		_CubemapPower ("CubemapPower", Float) = 2
 		_CubemapColor ("CubemapColor", Vector) = (0.8980392,0.8666667,0.3254902,0)
-		[NoScaleOffset] _FrameMask ("FrameMask", 2D) = "black" {}
-		[HDR] _KiraColor01 ("KiraColor01", Vector) = (0.4392157,0.4156863,0.5843138,0)
 		[NoScaleOffset] _KiraColorTexture ("KiraColorTexture", 2D) = "white" {}
 		_KiraMetal01 ("KiraMetal01", Float) = -0.33
 		_Kira01_01Tile ("Kira01_01Tile", Float) = 0.5
@@ -36,7 +34,7 @@ Shader "Shader Graphs/RoyalStyleUI" {
 		_Kira2_02Tile ("Kira2_02Tile", Float) = 1
 		_Kira02_02Power ("Kira02_02Power", Float) = 0.49
 		_CardDistortion02 ("CardDistortion02", Float) = 1
-		[NoScaleOffset] _KiraMask ("KiraMask", 2D) = "white" {}
+		[NoScaleOffset] _CardMask ("CardMask", 2D) = "white" {}
 		_HoloBrightness02 ("HoloBrightness02", Float) = 1.29
 		_HoloShift02 ("HoloShift02", Float) = 1
 		_SpecularColor ("SpecularColor", Vector) = (0.1019608,0.1019608,0.1019608,1)
@@ -50,7 +48,6 @@ Shader "Shader Graphs/RoyalStyleUI" {
 		_HighlightAmp ("HighlightAmp", Float) = 1.8
 		_HighlightScrollOffset ("HighlightScrollOffset", Float) = 0
 		_HighlightRotation ("HighlightRotation", Float) = -30
-		_CubemapContrast ("CubemapContrast", Range(0, 1)) = 0
 		[NoScaleOffset] _HighlightTex ("HighlightTex", 2D) = "white" {}
 		[NoScaleOffset] _HighlightNormal ("HighlightNormal", 2D) = "white" {}
 		_EnhanceColorThreshold ("EnhanceColorThreshold", Float) = 1

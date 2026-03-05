@@ -1,4 +1,4 @@
-Shader "Shader Graphs/RoyalStyle3D" {
+Shader "Shader Graphs/RoyalStyleOFUI" {
 	Properties {
 		[NoScaleOffset] _MainTex ("MainTex", 2D) = "white" {}
 		[NoScaleOffset] _LoadingTex ("LoadingTex", 2D) = "white" {}
@@ -15,7 +15,6 @@ Shader "Shader Graphs/RoyalStyle3D" {
 		_FrameMetal ("FrameMetal", Float) = 0
 		_CubemapPower ("CubemapPower", Float) = 2
 		_CubemapColor ("CubemapColor", Vector) = (0.8980392,0.8666667,0.3254902,0)
-		[NoScaleOffset] _CardMask ("CardMask", 2D) = "black" {}
 		[NoScaleOffset] _KiraColorTexture ("KiraColorTexture", 2D) = "white" {}
 		_KiraMetal01 ("KiraMetal01", Float) = -0.33
 		_Kira01_01Tile ("Kira01_01Tile", Float) = 0.5
@@ -35,6 +34,7 @@ Shader "Shader Graphs/RoyalStyle3D" {
 		_Kira2_02Tile ("Kira2_02Tile", Float) = 1
 		_Kira02_02Power ("Kira02_02Power", Float) = 0.49
 		_CardDistortion02 ("CardDistortion02", Float) = 1
+		[NoScaleOffset] _CardMask ("CardMask", 2D) = "white" {}
 		_HoloBrightness02 ("HoloBrightness02", Float) = 1.29
 		_HoloShift02 ("HoloShift02", Float) = 1
 		_SpecularColor ("SpecularColor", Vector) = (0.1019608,0.1019608,0.1019608,1)
@@ -60,10 +60,17 @@ Shader "Shader Graphs/RoyalStyle3D" {
 		_FakeNormalDirection ("FakeNormalDirection", Vector) = (0,0,0,0)
 		_FakeBlend ("FakeBlend", Range(0, 1)) = 0
 		_TintColor ("TintColor", Vector) = (1,1,1,1)
-		[ToggleUI] _isFade ("isFade", Float) = 0
+		[NoScaleOffset] _OverFrameMask ("OverFrameMask", 2D) = "white" {}
 		[NoScaleOffset] _Texture2DAsset_90c6e35ef4304f289c279037152a03b7_Out_0_Texture2D ("Texture2D", 2D) = "white" {}
-		[HideInInspector] _QueueOffset ("_QueueOffset", Float) = 0
-		[HideInInspector] _QueueControl ("_QueueControl", Float) = -1
+		[HideInInspector] _StencilComp ("Stencil Comparison", Float) = 8
+		[HideInInspector] _Stencil ("Stencil ID", Float) = 0
+		[HideInInspector] _StencilOp ("Stencil Operation", Float) = 0
+		[HideInInspector] _StencilWriteMask ("Stencil Write Mask", Float) = 255
+		[HideInInspector] _StencilReadMask ("Stencil Read Mask", Float) = 255
+		[HideInInspector] _ColorMask ("ColorMask", Float) = 15
+		[HideInInspector] _ClipRect ("ClipRect", Vector) = (0,0,0,0)
+		[HideInInspector] _UIMaskSoftnessX ("UIMaskSoftnessX", Float) = 1
+		[HideInInspector] _UIMaskSoftnessY ("UIMaskSoftnessY", Float) = 1
 		[HideInInspector] [NoScaleOffset] unity_Lightmaps ("unity_Lightmaps", 2DArray) = "" {}
 		[HideInInspector] [NoScaleOffset] unity_LightmapsInd ("unity_LightmapsInd", 2DArray) = "" {}
 		[HideInInspector] [NoScaleOffset] unity_ShadowMasks ("unity_ShadowMasks", 2DArray) = "" {}

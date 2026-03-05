@@ -1,4 +1,4 @@
-Shader "Shader Graphs/RoyalStyle3D" {
+Shader "Shader Graphs/RoyalStyleOF3D" {
 	Properties {
 		[NoScaleOffset] _MainTex ("MainTex", 2D) = "white" {}
 		[NoScaleOffset] _LoadingTex ("LoadingTex", 2D) = "white" {}
@@ -61,6 +61,7 @@ Shader "Shader Graphs/RoyalStyle3D" {
 		_FakeBlend ("FakeBlend", Range(0, 1)) = 0
 		_TintColor ("TintColor", Vector) = (1,1,1,1)
 		[ToggleUI] _isFade ("isFade", Float) = 0
+		[NoScaleOffset] _OverFrameMask ("OverFrameMask", 2D) = "white" {}
 		[NoScaleOffset] _Texture2DAsset_90c6e35ef4304f289c279037152a03b7_Out_0_Texture2D ("Texture2D", 2D) = "white" {}
 		[HideInInspector] _QueueOffset ("_QueueOffset", Float) = 0
 		[HideInInspector] _QueueControl ("_QueueControl", Float) = -1
