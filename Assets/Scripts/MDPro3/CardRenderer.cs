@@ -494,6 +494,17 @@ public OverFrameEffectBoxRectMode overFrameEffectBoxRectMode = OverFrameEffectBo
         private RectMask2D _overFrameSideClipL;
         private RectMask2D _overFrameSideClipR;
 
+        // Pendulum-only extra continuation clips for the left/right scale parchments.
+        private RectTransform _overFramePendulumCenterClipRt;
+        private RectMask2D _overFramePendulumCenterClip;
+        private RawImage _overFramePendulumCenterArt;
+        private RectTransform _overFramePendulumScaleClipL_Rt;
+        private RectTransform _overFramePendulumScaleClipR_Rt;
+        private RectMask2D _overFramePendulumScaleClipL;
+        private RectMask2D _overFramePendulumScaleClipR;
+        private RawImage _overFramePendulumScaleArtL;
+        private RawImage _overFramePendulumScaleArtR;
+
         // How strong the base-art continuation is inside the parchment
         // Tuned to match Konami proxy readability in the effect box (less muddy continuation).
         private const float OverFrameTextBgAlpha = 0.00f;
@@ -511,11 +522,19 @@ public OverFrameEffectBoxRectMode overFrameEffectBoxRectMode = OverFrameEffectBo
         // ────────────────────────────────────────────────
         private const float OverFrameFadeTopAlpha = 0.05f;
         private const float OverFrameFadeBottomAlpha = 0.11f;
+        private const float OverFramePendulumFadeTopAlpha = 0.025f;
+        private const float OverFramePendulumFadeBottomAlpha = 0.055f;
 
         // When the parchment background Image exists, use it as the wash overlay (looks like the proxy, not a flat rectangle)
         private const bool OverFramePreferSpriteWash = true;
         private const bool OverFrameEnableWashOverlay = true;
         private const float OverFrameWashSpriteAlpha = 0.12f;
+        private const float OverFramePendulumWashSpriteAlpha = 0.07f;
+
+        // Pendulum-only extra fade overlays for left/right scale parchment zones.
+        private VerticalGradientGraphic _overFrameEffectFadePendulumC;
+        private VerticalGradientGraphic _overFrameEffectFadePendulumL;
+        private VerticalGradientGraphic _overFrameEffectFadePendulumR;
 
         private const float OverFrameFadePadTop = 0f;
         private const float OverFrameFadePadBottom = 0f;
@@ -538,13 +557,22 @@ public OverFrameEffectBoxRectMode overFrameEffectBoxRectMode = OverFrameEffectBo
             if (_overFrameTextClipRt) _overFrameTextClipRt.gameObject.SetActive(false);
             if (_overFrameArtSideL) _overFrameArtSideL.gameObject.SetActive(false);
             if (_overFrameArtSideR) _overFrameArtSideR.gameObject.SetActive(false);
+            if (_overFramePendulumCenterArt) _overFramePendulumCenterArt.gameObject.SetActive(false);
+            if (_overFramePendulumScaleArtL) _overFramePendulumScaleArtL.gameObject.SetActive(false);
+            if (_overFramePendulumScaleArtR) _overFramePendulumScaleArtR.gameObject.SetActive(false);
 
             if (_overFrameSideClipL_Rt) _overFrameSideClipL_Rt.gameObject.SetActive(false);
             if (_overFrameSideClipR_Rt) _overFrameSideClipR_Rt.gameObject.SetActive(false);
+            if (_overFramePendulumCenterClipRt) _overFramePendulumCenterClipRt.gameObject.SetActive(false);
+            if (_overFramePendulumScaleClipL_Rt) _overFramePendulumScaleClipL_Rt.gameObject.SetActive(false);
+            if (_overFramePendulumScaleClipR_Rt) _overFramePendulumScaleClipR_Rt.gameObject.SetActive(false);
 
             if (_overFrameEffectFadeMaskRt) _overFrameEffectFadeMaskRt.gameObject.SetActive(false);
 
             if (_overFrameEffectFade) _overFrameEffectFade.gameObject.SetActive(false);
+            if (_overFrameEffectFadePendulumC) _overFrameEffectFadePendulumC.gameObject.SetActive(false);
+            if (_overFrameEffectFadePendulumL) _overFrameEffectFadePendulumL.gameObject.SetActive(false);
+            if (_overFrameEffectFadePendulumR) _overFrameEffectFadePendulumR.gameObject.SetActive(false);
         }
 
 
@@ -559,6 +587,14 @@ public OverFrameEffectBoxRectMode overFrameEffectBoxRectMode = OverFrameEffectBo
             if (cardArtPendulumWidth != null && cardArtPendulumWidth.gameObject.activeSelf) return cardArtPendulumWidth;
             if (cardArtPendulum != null && cardArtPendulum.gameObject.activeSelf) return cardArtPendulum;
             return cardArt;
+        }
+
+        private bool IsPendulumArtImage(RawImage artImage)
+        {
+            return artImage != null &&
+                   (artImage == cardArtPendulum ||
+                    artImage == cardArtPendulumSquare ||
+                    artImage == cardArtPendulumWidth);
         }
 
 
@@ -667,20 +703,29 @@ public OverFrameEffectBoxRectMode overFrameEffectBoxRectMode = OverFrameEffectBo
         // ────────────────────────────────────────────────
         private Text GetActiveOcgDescriptionText()
         {
+            // Pendulum cards keep both description texts active; prefer the pendulum zone when it has content.
+            if (cardDescriptionPendulum != null &&
+                cardDescriptionPendulum.gameObject.activeInHierarchy &&
+                !string.IsNullOrEmpty(cardDescriptionPendulum.text))
+                return cardDescriptionPendulum;
+
             if (cardDescription != null && cardDescription.gameObject.activeInHierarchy) return cardDescription;
             if (cardDescriptionPendulum != null && cardDescriptionPendulum.gameObject.activeInHierarchy) return cardDescriptionPendulum;
             return cardDescription;
         }
 
         
-        private RectTransform GetEffectBoxRectTransform()
+        private RectTransform GetEffectBoxRectTransform(Text preferredDesc = null, bool allowExplicitOverride = true, float minAreaOverTextFactor = 1.05f)
         {
             // 1) Explicit override (preferred): the REAL parchment Image rect.
             // This prevents accidentally masking with TMP text rects / padding containers.
-            if (overFrameEffectBoxImage != null && overFrameEffectBoxImage.gameObject != null && overFrameEffectBoxImage.gameObject.activeInHierarchy)
+            if (allowExplicitOverride &&
+                overFrameEffectBoxImage != null &&
+                overFrameEffectBoxImage.gameObject != null &&
+                overFrameEffectBoxImage.gameObject.activeInHierarchy)
                 return overFrameEffectBoxImage.rectTransform;
 
-            var desc = GetActiveOcgDescriptionText();
+            var desc = preferredDesc ?? GetActiveOcgDescriptionText();
             if (desc == null) return null;
 
             var descRt = desc.GetComponent<RectTransform>();
@@ -758,7 +803,7 @@ public OverFrameEffectBoxRectMode overFrameEffectBoxRectMode = OverFrameEffectBo
                     float area = Mathf.Max(0.0001f, (oMaxX - oMinX) * (oMaxY - oMinY));
 
                     // Must be meaningfully larger than text rect, but not huge
-                    if (area < dArea * 1.05f) continue;
+                    if (area < dArea * minAreaOverTextFactor) continue;
                     if (area > maxArea) continue;
 
                     bool bordered = img.type == Image.Type.Sliced;
@@ -910,17 +955,545 @@ public OverFrameEffectBoxRectMode overFrameEffectBoxRectMode = OverFrameEffectBo
             return true;
         }
 
+        // Converts an arbitrary RectTransform world-rect into frame-normalized coordinates [0..1].
+        // Unlike TryGetEffectBoxNormalizedRect, this has no sanity filter and is used for pendulum-specific regions.
+        private static bool TryGetRectNormalizedInFrame(RectTransform frameRt, RectTransform sourceRt, out Rect rectNrm)
+        {
+            rectNrm = default;
+            if (frameRt == null || sourceRt == null) return false;
+
+            var fc = new Vector3[4];
+            frameRt.GetWorldCorners(fc); // 0=BL,1=TL,2=TR,3=BR
+
+            Vector3 bl = fc[0];
+            Vector3 br = fc[3];
+            Vector3 tl = fc[1];
+
+            Vector3 w = br - bl;
+            Vector3 h = tl - bl;
+
+            float wLen2 = Vector3.Dot(w, w);
+            float hLen2 = Vector3.Dot(h, h);
+            if (wLen2 < 1e-6f || hLen2 < 1e-6f) return false;
+
+            var sc = new Vector3[4];
+            sourceRt.GetWorldCorners(sc);
+
+            float minX = 999f, minY = 999f;
+            float maxX = -999f, maxY = -999f;
+            for (int i = 0; i < 4; i++)
+            {
+                Vector3 rel = sc[i] - bl;
+                float nx = Vector3.Dot(rel, w) / wLen2;
+                float ny = Vector3.Dot(rel, h) / hLen2;
+
+                minX = Mathf.Min(minX, nx);
+                minY = Mathf.Min(minY, ny);
+                maxX = Mathf.Max(maxX, nx);
+                maxY = Mathf.Max(maxY, ny);
+            }
+
+            minX = Mathf.Clamp01(minX);
+            minY = Mathf.Clamp01(minY);
+            maxX = Mathf.Clamp01(maxX);
+            maxY = Mathf.Clamp01(maxY);
+
+            float width = Mathf.Max(0f, maxX - minX);
+            float height = Mathf.Max(0f, maxY - minY);
+            if (width < 0.001f || height < 0.001f) return false;
+
+            rectNrm = new Rect(minX, minY, width, height);
+            return true;
+        }
+
+        private static Rect ExpandNormalizedRect(Rect rectNrm, float padLeft, float padRight, float padTop, float padBottom)
+        {
+            float xMin = Mathf.Clamp01(rectNrm.xMin - padLeft);
+            float xMax = Mathf.Clamp01(rectNrm.xMin + rectNrm.width + padRight);
+            float yMin = Mathf.Clamp01(rectNrm.yMin - padBottom);
+            float yMax = Mathf.Clamp01(rectNrm.yMin + rectNrm.height + padTop);
+
+            float w = Mathf.Max(0f, xMax - xMin);
+            float h = Mathf.Max(0f, yMax - yMin);
+            return new Rect(xMin, yMin, w, h);
+        }
+
+        private bool TryGetImageBackedZoneNormalized(
+            RectTransform frameRt,
+            Text zoneText,
+            out RectTransform zoneBoxRt,
+            out Rect zoneNrm)
+        {
+            zoneBoxRt = null;
+            zoneNrm = default;
+
+            if (frameRt == null || zoneText == null || !zoneText.gameObject.activeInHierarchy)
+                return false;
+
+            float minAreaFactor = (zoneText == lScale || zoneText == rScale) ? 0.92f : 1.02f;
+            var candidateRt = GetEffectBoxRectTransform(zoneText, false, minAreaFactor);
+            if (candidateRt == null) return false;
+
+            var img = candidateRt.GetComponent<Image>();
+            if (img == null || img.sprite == null) return false;
+
+            if (!TryGetRectNormalizedInFrame(frameRt, candidateRt, out zoneNrm))
+                return false;
+
+            if (zoneNrm.width <= 0.001f || zoneNrm.height <= 0.001f)
+                return false;
+
+            zoneBoxRt = candidateRt;
+            return true;
+        }
+
+        private static bool IsLikelyMatchingPendulumZone(Rect fallbackZoneNrm, Rect imageZoneNrm)
+        {
+            if (fallbackZoneNrm.width <= 0.001f || fallbackZoneNrm.height <= 0.001f ||
+                imageZoneNrm.width <= 0.001f || imageZoneNrm.height <= 0.001f)
+                return false;
+
+            float widthRatio = imageZoneNrm.width / Mathf.Max(0.0001f, fallbackZoneNrm.width);
+            float heightRatio = imageZoneNrm.height / Mathf.Max(0.0001f, fallbackZoneNrm.height);
+            if (widthRatio < 0.55f || widthRatio > 1.12f ||
+                heightRatio < 0.55f || heightRatio > 1.20f)
+                return false;
+
+            float ixMin = Mathf.Max(fallbackZoneNrm.xMin, imageZoneNrm.xMin);
+            float iyMin = Mathf.Max(fallbackZoneNrm.yMin, imageZoneNrm.yMin);
+            float ixMax = Mathf.Min(fallbackZoneNrm.xMax, imageZoneNrm.xMax);
+            float iyMax = Mathf.Min(fallbackZoneNrm.yMax, imageZoneNrm.yMax);
+
+            float iArea = Mathf.Max(0f, ixMax - ixMin) * Mathf.Max(0f, iyMax - iyMin);
+            float baseArea = Mathf.Max(0.0001f, Mathf.Min(
+                fallbackZoneNrm.width * fallbackZoneNrm.height,
+                imageZoneNrm.width * imageZoneNrm.height));
+
+            float overlapRatio = iArea / baseArea;
+            float fallbackCx = 0.5f * (fallbackZoneNrm.xMin + fallbackZoneNrm.xMax);
+            float imageCx = 0.5f * (imageZoneNrm.xMin + imageZoneNrm.xMax);
+            float fallbackCy = 0.5f * (fallbackZoneNrm.yMin + fallbackZoneNrm.yMax);
+            float imageCy = 0.5f * (imageZoneNrm.yMin + imageZoneNrm.yMax);
+
+            return overlapRatio >= 0.40f &&
+                   Mathf.Abs(fallbackCx - imageCx) <= 0.14f &&
+                   Mathf.Abs(fallbackCy - imageCy) <= 0.07f;
+        }
+
+        private bool TryGetPendulumParchmentZonesNormalized(
+            RectTransform frameRt,
+            out Rect centerZoneNrm,
+            out Rect leftScaleZoneNrm,
+            out Rect rightScaleZoneNrm,
+            out Rect fullBandNrm,
+            out bool usedImageBoxRects,
+            out RectTransform centerZoneBoxRt,
+            out RectTransform leftScaleZoneBoxRt,
+            out RectTransform rightScaleZoneBoxRt,
+            float separatorGapNrm)
+        {
+            centerZoneNrm = default;
+            leftScaleZoneNrm = default;
+            rightScaleZoneNrm = default;
+            fullBandNrm = default;
+            usedImageBoxRects = false;
+            centerZoneBoxRt = null;
+            leftScaleZoneBoxRt = null;
+            rightScaleZoneBoxRt = null;
+
+            if (frameRt == null ||
+                cardDescriptionPendulum == null ||
+                lScale == null ||
+                rScale == null ||
+                !cardDescriptionPendulum.gameObject.activeInHierarchy ||
+                !lScale.gameObject.activeInHierarchy ||
+                !rScale.gameObject.activeInHierarchy ||
+                string.IsNullOrEmpty(cardDescriptionPendulum.text))
+                return false;
+
+            // 1) Prefer REAL parchment Image rects (same behavior as normal overframe seam clipping).
+            // We intentionally bypass explicit override here because pendulum has separate center/scale parchments.
+            RectTransform centerBoxRt = null;
+            RectTransform leftBoxRt = null;
+            RectTransform rightBoxRt = null;
+            bool hasCenterBoxRt = TryGetImageBackedZoneNormalized(frameRt, cardDescriptionPendulum, out centerBoxRt, out var centerBoxNrm);
+            bool hasLeftBoxRt = TryGetImageBackedZoneNormalized(frameRt, lScale, out leftBoxRt, out var leftBoxNrm);
+            bool hasRightBoxRt = TryGetImageBackedZoneNormalized(frameRt, rScale, out rightBoxRt, out var rightBoxNrm);
+
+            if (hasCenterBoxRt && hasLeftBoxRt && hasRightBoxRt)
+            {
+                float imgLeftX0 = leftBoxNrm.xMin;
+                float imgLeftX1 = leftBoxNrm.xMin + leftBoxNrm.width;
+                float imgCenterX0 = centerBoxNrm.xMin;
+                float imgCenterX1 = centerBoxNrm.xMin + centerBoxNrm.width;
+                float imgRightX0 = rightBoxNrm.xMin;
+                float imgRightX1 = rightBoxNrm.xMin + rightBoxNrm.width;
+
+                bool ordered =
+                    imgLeftX0 < imgLeftX1 &&
+                    imgCenterX0 < imgCenterX1 &&
+                    imgRightX0 < imgRightX1 &&
+                    imgLeftX0 < imgCenterX0 &&
+                    imgCenterX1 < imgRightX1;
+
+                // Side scale boxes are expected to be narrower than the center pendulum text parchment.
+                bool shapeLooksLikePendulumParchment =
+                    leftBoxNrm.width < centerBoxNrm.width &&
+                    rightBoxNrm.width < centerBoxNrm.width;
+
+                if (ordered && shapeLooksLikePendulumParchment)
+                {
+                    float imgYMin = Mathf.Min(centerBoxNrm.yMin, Mathf.Min(leftBoxNrm.yMin, rightBoxNrm.yMin));
+                    float imgYMax = Mathf.Max(centerBoxNrm.yMin + centerBoxNrm.height, Mathf.Max(leftBoxNrm.yMin + leftBoxNrm.height, rightBoxNrm.yMin + rightBoxNrm.height));
+                    if (imgYMax > imgYMin)
+                    {
+                        // With real parchment Image rects, use their exact bounds (no midpoint approximation).
+                        // The border-safe inner cut is handled later by clip/fade inset logic.
+                        leftScaleZoneNrm = leftBoxNrm;
+                        centerZoneNrm = centerBoxNrm;
+                        rightScaleZoneNrm = rightBoxNrm;
+                        centerZoneBoxRt = centerBoxRt;
+                        leftScaleZoneBoxRt = leftBoxRt;
+                        rightScaleZoneBoxRt = rightBoxRt;
+                        float imgBandXMin = Mathf.Min(leftScaleZoneNrm.xMin, Mathf.Min(centerZoneNrm.xMin, rightScaleZoneNrm.xMin));
+                        float imgBandXMax = Mathf.Max(leftScaleZoneNrm.xMax, Mathf.Max(centerZoneNrm.xMax, rightScaleZoneNrm.xMax));
+                        fullBandNrm = new Rect(imgBandXMin, imgYMin, imgBandXMax - imgBandXMin, imgYMax - imgYMin);
+                        usedImageBoxRects = true;
+                        return fullBandNrm.width > 0.001f && fullBandNrm.height > 0.001f;
+                    }
+                }
+            }
+
+            // 2) Fallback: infer parchments from text rects + tuned padding.
+            if (!TryGetRectNormalizedInFrame(frameRt, cardDescriptionPendulum.rectTransform, out var centerTextNrm) ||
+                !TryGetRectNormalizedInFrame(frameRt, lScale.rectTransform, out var leftScaleTextNrm) ||
+                !TryGetRectNormalizedInFrame(frameRt, rScale.rectTransform, out var rightScaleTextNrm))
+                return false;
+
+            Rect center = ExpandNormalizedRect(
+                centerTextNrm,
+                OverFramePendulumCenterPadSideNrm,
+                OverFramePendulumCenterPadSideNrm,
+                OverFramePendulumCenterPadTopNrm,
+                OverFramePendulumCenterPadBottomNrm);
+
+            float yMin = center.yMin;
+            float yMax = center.yMin + center.height;
+            if (yMax <= yMin) return false;
+
+            float leftX0 = Mathf.Clamp01(leftScaleTextNrm.xMin - OverFramePendulumScalePadOuterNrm);
+            float rightX1 = Mathf.Clamp01(rightScaleTextNrm.xMin + rightScaleTextNrm.width + OverFramePendulumScalePadOuterNrm);
+
+            // In fallback mode, center text rect is narrower than center parchment.
+            // Derive seam boundaries from the scale box inner edges so fade/clip reaches inner separator walls.
+            float centerBoundaryLeft = Mathf.Clamp01(leftScaleTextNrm.xMin + leftScaleTextNrm.width + OverFramePendulumScalePadInnerNrm);
+            float centerBoundaryRight = Mathf.Clamp01(rightScaleTextNrm.xMin - OverFramePendulumScalePadInnerNrm);
+            if (centerBoundaryRight <= centerBoundaryLeft)
+                return false;
+
+            float separatorHalfGap = Mathf.Max(0f, separatorGapNrm * 0.5f);
+            float leftX1 = Mathf.Clamp01(centerBoundaryLeft - separatorHalfGap);
+            float centerX0 = Mathf.Clamp01(centerBoundaryLeft + separatorHalfGap);
+            float centerX1 = Mathf.Clamp01(centerBoundaryRight - separatorHalfGap);
+            float rightX0 = Mathf.Clamp01(centerBoundaryRight + separatorHalfGap);
+
+            if (leftX1 <= leftX0 || centerX1 <= centerX0 || rightX1 <= rightX0)
+                return false;
+
+            leftScaleZoneNrm = new Rect(leftX0, yMin, leftX1 - leftX0, yMax - yMin);
+            centerZoneNrm = new Rect(centerX0, yMin, centerX1 - centerX0, yMax - yMin);
+            rightScaleZoneNrm = new Rect(rightX0, yMin, rightX1 - rightX0, yMax - yMin);
+
+            // Use REAL parchment Image rects when they clearly match the intended zone role.
+            // This prevents accidental "full upper band" picks from collapsing all three zones.
+            float roleTolX = 10f / 704f;
+
+            bool centerBoxRoleValid =
+                hasCenterBoxRt &&
+                centerBoxNrm.xMin >= centerBoundaryLeft - roleTolX &&
+                centerBoxNrm.xMax <= centerBoundaryRight + roleTolX &&
+                centerBoxNrm.width > 0.04f;
+
+            bool leftBoxRoleValid =
+                hasLeftBoxRt &&
+                leftBoxNrm.xMax <= centerBoundaryLeft + roleTolX &&
+                leftBoxNrm.xMin <= centerBoundaryLeft - roleTolX &&
+                leftBoxNrm.width > 0.02f;
+
+            bool rightBoxRoleValid =
+                hasRightBoxRt &&
+                rightBoxNrm.xMin >= centerBoundaryRight - roleTolX &&
+                rightBoxNrm.xMax >= centerBoundaryRight + roleTolX &&
+                rightBoxNrm.width > 0.02f;
+
+            if (centerBoxRoleValid)
+            {
+                centerZoneNrm = centerBoxNrm;
+                centerZoneBoxRt = centerBoxRt;
+            }
+
+            if (leftBoxRoleValid)
+            {
+                leftScaleZoneNrm = leftBoxNrm;
+                leftScaleZoneBoxRt = leftBoxRt;
+            }
+
+            if (rightBoxRoleValid)
+            {
+                rightScaleZoneNrm = rightBoxNrm;
+                rightScaleZoneBoxRt = rightBoxRt;
+            }
+
+            // Lock fallback seam boundaries to adjacent real boxes (when present), otherwise to
+            // scale-inner fallback boundaries. This removes vertical dead strips at separators.
+            float seamLeft = centerZoneBoxRt != null
+                ? centerZoneNrm.xMin
+                : (leftScaleZoneBoxRt != null ? leftScaleZoneNrm.xMax : centerBoundaryLeft);
+            float seamRight = centerZoneBoxRt != null
+                ? centerZoneNrm.xMax
+                : (rightScaleZoneBoxRt != null ? rightScaleZoneNrm.xMin : centerBoundaryRight);
+
+            seamLeft = Mathf.Clamp01(seamLeft);
+            seamRight = Mathf.Clamp01(seamRight);
+            if (seamRight <= seamLeft)
+                return false;
+
+            if (leftScaleZoneBoxRt == null)
+                leftScaleZoneNrm = new Rect(
+                    leftScaleZoneNrm.xMin,
+                    leftScaleZoneNrm.yMin,
+                    Mathf.Max(0f, seamLeft - leftScaleZoneNrm.xMin),
+                    leftScaleZoneNrm.height);
+
+            if (centerZoneBoxRt == null)
+                centerZoneNrm = new Rect(
+                    seamLeft,
+                    centerZoneNrm.yMin,
+                    Mathf.Max(0f, seamRight - seamLeft),
+                    centerZoneNrm.height);
+
+            if (rightScaleZoneBoxRt == null)
+                rightScaleZoneNrm = new Rect(
+                    seamRight,
+                    rightScaleZoneNrm.yMin,
+                    Mathf.Max(0f, rightScaleZoneNrm.xMax - seamRight),
+                    rightScaleZoneNrm.height);
+
+            if (leftScaleZoneNrm.width <= 0.001f || centerZoneNrm.width <= 0.001f || rightScaleZoneNrm.width <= 0.001f)
+                return false;
+
+            usedImageBoxRects = centerZoneBoxRt != null || leftScaleZoneBoxRt != null || rightScaleZoneBoxRt != null;
+            float bandXMin = Mathf.Min(leftScaleZoneNrm.xMin, Mathf.Min(centerZoneNrm.xMin, rightScaleZoneNrm.xMin));
+            float bandXMax = Mathf.Max(leftScaleZoneNrm.xMax, Mathf.Max(centerZoneNrm.xMax, rightScaleZoneNrm.xMax));
+            float bandYMin = Mathf.Min(leftScaleZoneNrm.yMin, Mathf.Min(centerZoneNrm.yMin, rightScaleZoneNrm.yMin));
+            float bandYMax = Mathf.Max(leftScaleZoneNrm.yMax, Mathf.Max(centerZoneNrm.yMax, rightScaleZoneNrm.yMax));
+            fullBandNrm = new Rect(bandXMin, bandYMin, bandXMax - bandXMin, bandYMax - bandYMin);
+            return fullBandNrm.width > 0.001f && fullBandNrm.height > 0.001f;
+        }
+
+        private void UpdateMaskedContinuationClip(
+            ref RectTransform clipRt,
+            ref RectMask2D clipMask,
+            ref RawImage artCopy,
+            string clipName,
+            string artName,
+            Rect zoneNrm,
+            RectTransform frameRt,
+            RectTransform clipParentRt,
+            RectTransform artReferenceRt,
+            Texture2D tex,
+            Rect uvRect,
+            OverFrameSpec spec,
+            float alpha,
+            float insetLeft = 0f,
+            float insetRight = 0f,
+            float insetTop = 0f,
+            float insetBottom = 0f,
+            RectTransform parchmentBoxRt = null,
+            float borderCutFactor = OverFrameBorderCutFactor,
+            float borderSafetyInset = OverFrameBorderSafetyInset)
+        {
+            bool hasZoneNrm = zoneNrm.width > 0.001f && zoneNrm.height > 0.001f;
+            bool hasParchmentBox = parchmentBoxRt != null;
+            bool valid =
+                tex != null &&
+                frameRt != null &&
+                clipParentRt != null &&
+                artReferenceRt != null &&
+                (hasZoneNrm || hasParchmentBox);
+
+            if (!valid)
+            {
+                if (clipRt != null) clipRt.gameObject.SetActive(false);
+                if (artCopy != null) artCopy.gameObject.SetActive(false);
+                return;
+            }
+
+            if (clipRt == null)
+            {
+                var go = new GameObject(clipName, typeof(RectTransform), typeof(RectMask2D));
+                go.transform.SetParent(clipParentRt, false);
+                clipRt = go.GetComponent<RectTransform>();
+                clipMask = go.GetComponent<RectMask2D>();
+            }
+            else if (clipRt.parent != clipParentRt)
+            {
+                clipRt.SetParent(clipParentRt, false);
+            }
+
+            clipRt.gameObject.SetActive(true);
+
+            if (hasParchmentBox)
+                MatchRectByWorldCorners(clipRt, parchmentBoxRt, clipParentRt);
+            else
+                MatchRectToFrameNormalized(clipRt, frameRt, clipParentRt, zoneNrm);
+
+            float borderInsetLeft = 0f;
+            float borderInsetRight = 0f;
+            float borderInsetTop = 0f;
+            float borderInsetBottom = 0f;
+            if (hasParchmentBox &&
+                TryGetEffectBoxBorderMidWorld(parchmentBoxRt, out var midLeftW, out var midRightW, out var midTopW, out var midBottomW))
+            {
+                midLeftW *= borderCutFactor;
+                midRightW *= borderCutFactor;
+                midTopW *= borderCutFactor;
+                midBottomW *= borderCutFactor;
+
+                borderInsetLeft = WorldToLocalX(clipRt, midLeftW) + borderSafetyInset;
+                borderInsetRight = WorldToLocalX(clipRt, midRightW) + borderSafetyInset;
+                borderInsetTop = WorldToLocalY(clipRt, midTopW) + borderSafetyInset;
+                borderInsetBottom = WorldToLocalY(clipRt, midBottomW) + borderSafetyInset;
+            }
+
+            InsetRect(
+                clipRt,
+                Mathf.Max(0f, borderInsetLeft + insetLeft),
+                Mathf.Max(0f, borderInsetRight + insetRight),
+                Mathf.Max(0f, borderInsetTop + insetTop),
+                Mathf.Max(0f, borderInsetBottom + insetBottom));
+
+            if (artCopy == null && _overFrameArt != null)
+            {
+                var clone = Instantiate(_overFrameArt, clipRt);
+                clone.name = artName;
+                clone.raycastTarget = false;
+                artCopy = clone;
+
+                var arf = artCopy.GetComponent<AspectRatioFitter>();
+                if (arf) arf.enabled = false;
+            }
+            else if (artCopy != null && artCopy.transform.parent != clipRt)
+            {
+                artCopy.transform.SetParent(clipRt, false);
+            }
+
+            if (artCopy == null) return;
+
+            artCopy.gameObject.SetActive(true);
+            artCopy.texture = tex;
+            artCopy.uvRect = uvRect;
+            artCopy.color = new Color(1f, 1f, 1f, alpha);
+            artCopy.maskable = true;
+
+            MatchRectByWorldCorners(artCopy.rectTransform, artReferenceRt, clipRt);
+            artCopy.rectTransform.sizeDelta *= spec.scale;
+            artCopy.rectTransform.anchoredPosition += spec.offset;
+        }
+
+        private void UpdateGradientFadeZone(
+            ref VerticalGradientGraphic fadeGraphic,
+            string objectName,
+            Rect zoneNrm,
+            RectTransform frameRt,
+            RectTransform fadeParentRt,
+            Color washRgb,
+            float topAlpha,
+            float bottomAlpha,
+            float insetLeft,
+            float insetRight,
+            float insetTop,
+            float insetBottom,
+            RectTransform parchmentBoxRt = null,
+            float borderCutFactor = OverFrameBorderCutFactor,
+            float borderSafetyInset = OverFrameBorderSafetyInset)
+        {
+            bool hasZoneNrm = zoneNrm.width > 0.001f && zoneNrm.height > 0.001f;
+            bool hasParchmentBox = parchmentBoxRt != null;
+            bool valid =
+                fadeParentRt != null &&
+                (hasParchmentBox || (frameRt != null && hasZoneNrm));
+
+            if (!valid)
+            {
+                if (fadeGraphic != null) fadeGraphic.gameObject.SetActive(false);
+                return;
+            }
+
+            if (fadeGraphic == null)
+            {
+                var go = new GameObject(objectName, typeof(RectTransform), typeof(CanvasRenderer), typeof(VerticalGradientGraphic));
+                go.transform.SetParent(fadeParentRt, false);
+                fadeGraphic = go.GetComponent<VerticalGradientGraphic>();
+                fadeGraphic.raycastTarget = false;
+            }
+            else if (fadeGraphic.transform.parent != fadeParentRt)
+            {
+                fadeGraphic.transform.SetParent(fadeParentRt, false);
+            }
+
+            fadeGraphic.gameObject.SetActive(true);
+            fadeGraphic.topColor = new Color(washRgb.r, washRgb.g, washRgb.b, topAlpha);
+            fadeGraphic.bottomColor = new Color(washRgb.r, washRgb.g, washRgb.b, bottomAlpha);
+
+            RectTransform rt = fadeGraphic.rectTransform;
+            if (hasParchmentBox)
+                MatchRectByWorldCorners(rt, parchmentBoxRt, fadeParentRt);
+            else
+                MatchRectToFrameNormalized(rt, frameRt, fadeParentRt, zoneNrm);
+
+            float borderInsetLeft = 0f;
+            float borderInsetRight = 0f;
+            float borderInsetTop = 0f;
+            float borderInsetBottom = 0f;
+            if (hasParchmentBox &&
+                TryGetEffectBoxBorderMidWorld(parchmentBoxRt, out var midLeftW, out var midRightW, out var midTopW, out var midBottomW))
+            {
+                midLeftW *= borderCutFactor;
+                midRightW *= borderCutFactor;
+                midTopW *= borderCutFactor;
+                midBottomW *= borderCutFactor;
+
+                borderInsetLeft = WorldToLocalX(rt, midLeftW) + borderSafetyInset;
+                borderInsetRight = WorldToLocalX(rt, midRightW) + borderSafetyInset;
+                borderInsetTop = WorldToLocalY(rt, midTopW) + borderSafetyInset;
+                borderInsetBottom = WorldToLocalY(rt, midBottomW) + borderSafetyInset;
+            }
+
+            InsetRect(
+                rt,
+                Mathf.Max(0f, borderInsetLeft + insetLeft),
+                Mathf.Max(0f, borderInsetRight + insetRight),
+                Mathf.Max(0f, borderInsetTop + insetTop),
+                Mathf.Max(0f, borderInsetBottom + insetBottom));
+            rt.sizeDelta += new Vector2(OverFrameFadePadSide * 2f, OverFrameFadePadTop + OverFrameFadePadBottom);
+            rt.anchoredPosition += new Vector2(0f, (OverFrameFadePadTop - OverFrameFadePadBottom) * 0.5f);
+        }
+
 // ────────────────────────────────────────────────
 // Effect-box BORDER mid-thickness in WORLD units.
 // We use the parchment background sprite's 9-slice border to compute where
 // the proxy cuts the art: right in the MIDDLE of the border thickness.
 // Returns mid-border distances (left/right/top/bottom) measured in world units.
 // ────────────────────────────────────────────────
-private bool TryGetEffectBoxBorderMidWorld(out float midLeftW, out float midRightW, out float midTopW, out float midBottomW)
+private bool TryGetEffectBoxBorderMidWorld(
+    RectTransform boxRt,
+    out float midLeftW,
+    out float midRightW,
+    out float midTopW,
+    out float midBottomW)
 {
     midLeftW = midRightW = midTopW = midBottomW = 0f;
-
-    var boxRt = GetEffectBoxRectTransform();
     if (boxRt == null) return false;
 
     var img = boxRt.GetComponent<Image>();
@@ -954,6 +1527,11 @@ private bool TryGetEffectBoxBorderMidWorld(out float midLeftW, out float midRigh
     midBottomW = Mathf.Abs(midBottomW);
 
     return true;
+}
+
+private bool TryGetEffectBoxBorderMidWorld(out float midLeftW, out float midRightW, out float midTopW, out float midBottomW)
+{
+    return TryGetEffectBoxBorderMidWorld(GetEffectBoxRectTransform(), out midLeftW, out midRightW, out midTopW, out midBottomW);
 }
 
 private static float WorldToLocalX(RectTransform rt, float worldDist)
@@ -1050,26 +1628,23 @@ private bool IsEffectBoxRectInnerFill(RectTransform boxRt, Rect measuredNrm)
         // Must be: OverFrameArt → FadeOverlay → Text/UI
         // ────────────────────────────────────────────────
         
-        private void ApplyOverFrameEffectBoxFade()
+        private void ApplyOverFrameEffectBoxFade(bool isPendulum)
         {
-                        if (!OverFrameEnableWashOverlay)
+            if (!OverFrameEnableWashOverlay)
             {
                 // Only fade the artwork layers (continuation), never tint the parchment/text.
                 if (_overFrameEffectFadeMaskRt) _overFrameEffectFadeMaskRt.gameObject.SetActive(false);
                 if (_overFrameEffectFade) _overFrameEffectFade.gameObject.SetActive(false);
+                if (_overFrameEffectFadePendulumC) _overFrameEffectFadePendulumC.gameObject.SetActive(false);
+                if (_overFrameEffectFadePendulumL) _overFrameEffectFadePendulumL.gameObject.SetActive(false);
+                if (_overFrameEffectFadePendulumR) _overFrameEffectFadePendulumR.gameObject.SetActive(false);
                 return;
             }
 
-            var desc = GetActiveOcgDescriptionText();
+            var desc = (isPendulum && cardDescription != null && cardDescription.gameObject.activeInHierarchy)
+                ? cardDescription
+                : GetActiveOcgDescriptionText();
             if (desc == null) return;
-
-            bool hasExplicitEffectBox =
-                overFrameEffectBoxImage != null &&
-                overFrameEffectBoxImage.gameObject != null &&
-                overFrameEffectBoxImage.gameObject.activeInHierarchy;
-
-            var boxRt = hasExplicitEffectBox ? overFrameEffectBoxImage.rectTransform : GetEffectBoxRectTransform();
-            if (boxRt == null) return;
 
             // IMPORTANT: parent fade in the SAME UI layer as the description text
             // (this is the layer that is visible above the artwork).
@@ -1080,6 +1655,136 @@ private bool IsEffectBoxRectInnerFill(RectTransform boxRt, Rect measuredNrm)
             Color washRgb = OverFrameFadeDebugMagenta
                 ? new Color(1f, 0f, 1f, 1f)
                 : new Color(0.93f, 0.86f, 0.74f, 1f);
+
+            float topA = OverFrameFadeDebugMagenta
+                ? 1f
+                : (isPendulum ? OverFramePendulumFadeTopAlpha : OverFrameFadeTopAlpha);
+            float botA = OverFrameFadeDebugMagenta
+                ? 1f
+                : (isPendulum ? OverFramePendulumFadeBottomAlpha : OverFrameFadeBottomAlpha);
+
+            if (isPendulum &&
+                cardFrame != null &&
+                cardFrame.gameObject.activeInHierarchy &&
+                TryGetPendulumParchmentZonesNormalized(
+                    cardFrame.rectTransform,
+                    out var pendCenterNrm,
+                    out var pendLeftNrm,
+                    out var pendRightNrm,
+                    out _,
+                    out _,
+                    out var pendCenterBoxRt,
+                    out var pendLeftBoxRt,
+                    out var pendRightBoxRt,
+                    OverFramePendulumSeparatorGapFadeNrm))
+            {
+                if (_overFrameEffectFadeMaskRt != null)
+                    _overFrameEffectFadeMaskRt.gameObject.SetActive(false);
+
+                float centerFadeInsetSide = OverFramePendulumCenterFadeInsetSide;
+                float centerFadeInsetTop = OverFramePendulumCenterFadeInsetTop;
+                float centerFadeInsetBottom = OverFramePendulumCenterFadeInsetBottom;
+                float scaleFadeInsetOuter = OverFramePendulumScaleFadeInsetOuter;
+                float scaleFadeInsetInner = OverFramePendulumScaleFadeInsetInner;
+                float scaleFadeInsetTop = OverFramePendulumScaleFadeInsetTop;
+                float scaleFadeInsetBottom = OverFramePendulumScaleFadeInsetBottom;
+                float fallbackFadeInsetSide = OverFramePendulumZoneFallbackFadeInsetSide;
+                float fallbackFadeInsetTop = OverFramePendulumZoneFallbackFadeInsetTop;
+                float fallbackFadeInsetBottom = OverFramePendulumZoneFallbackFadeInsetBottom;
+
+                if (pendCenterBoxRt == null)
+                {
+                    centerFadeInsetSide += fallbackFadeInsetSide;
+                    centerFadeInsetTop += fallbackFadeInsetTop;
+                    centerFadeInsetBottom += fallbackFadeInsetBottom;
+                }
+
+                if (pendLeftBoxRt == null)
+                {
+                    scaleFadeInsetOuter += fallbackFadeInsetSide;
+                    scaleFadeInsetInner += fallbackFadeInsetSide;
+                    scaleFadeInsetTop += fallbackFadeInsetTop;
+                    scaleFadeInsetBottom += fallbackFadeInsetBottom;
+                }
+
+                if (pendRightBoxRt == null)
+                {
+                    scaleFadeInsetOuter += fallbackFadeInsetSide;
+                    scaleFadeInsetInner += fallbackFadeInsetSide;
+                    scaleFadeInsetTop += fallbackFadeInsetTop;
+                    scaleFadeInsetBottom += fallbackFadeInsetBottom;
+                }
+
+                UpdateGradientFadeZone(
+                    ref _overFrameEffectFadePendulumC,
+                    "OverFrameEffectFadePendulumC",
+                    pendCenterNrm,
+                    cardFrame.rectTransform,
+                    fadeParentRt,
+                    washRgb,
+                    topA,
+                    botA,
+                    centerFadeInsetSide,
+                    centerFadeInsetSide,
+                    centerFadeInsetTop,
+                    centerFadeInsetBottom,
+                    pendCenterBoxRt,
+                    OverFramePendulumUpperZoneBorderCutFactor,
+                    OverFramePendulumUpperZoneBorderSafetyInset);
+
+                UpdateGradientFadeZone(
+                    ref _overFrameEffectFadePendulumL,
+                    "OverFrameEffectFadePendulumL",
+                    pendLeftNrm,
+                    cardFrame.rectTransform,
+                    fadeParentRt,
+                    washRgb,
+                    topA,
+                    botA,
+                    scaleFadeInsetOuter,
+                    scaleFadeInsetInner,
+                    scaleFadeInsetTop,
+                    scaleFadeInsetBottom,
+                    pendLeftBoxRt,
+                    OverFramePendulumUpperZoneBorderCutFactor,
+                    OverFramePendulumUpperZoneBorderSafetyInset);
+
+                UpdateGradientFadeZone(
+                    ref _overFrameEffectFadePendulumR,
+                    "OverFrameEffectFadePendulumR",
+                    pendRightNrm,
+                    cardFrame.rectTransform,
+                    fadeParentRt,
+                    washRgb,
+                    topA,
+                    botA,
+                    scaleFadeInsetInner,
+                    scaleFadeInsetOuter,
+                    scaleFadeInsetTop,
+                    scaleFadeInsetBottom,
+                    pendRightBoxRt,
+                    OverFramePendulumUpperZoneBorderCutFactor,
+                    OverFramePendulumUpperZoneBorderSafetyInset);
+
+                int fadeIdx = Mathf.Clamp(desc.transform.GetSiblingIndex(), 0, fadeParentRt.childCount - 1);
+                if (_overFrameEffectFadePendulumC) _overFrameEffectFadePendulumC.rectTransform.SetSiblingIndex(fadeIdx);
+                if (_overFrameEffectFadePendulumL) _overFrameEffectFadePendulumL.rectTransform.SetSiblingIndex(fadeIdx);
+                if (_overFrameEffectFadePendulumR) _overFrameEffectFadePendulumR.rectTransform.SetSiblingIndex(fadeIdx);
+            }
+            else
+            {
+                if (_overFrameEffectFadePendulumC) _overFrameEffectFadePendulumC.gameObject.SetActive(false);
+                if (_overFrameEffectFadePendulumL) _overFrameEffectFadePendulumL.gameObject.SetActive(false);
+                if (_overFrameEffectFadePendulumR) _overFrameEffectFadePendulumR.gameObject.SetActive(false);
+            }
+
+            bool hasExplicitEffectBox =
+                overFrameEffectBoxImage != null &&
+                overFrameEffectBoxImage.gameObject != null &&
+                overFrameEffectBoxImage.gameObject.activeInHierarchy;
+
+            var boxRt = hasExplicitEffectBox ? overFrameEffectBoxImage.rectTransform : GetEffectBoxRectTransform(desc);
+            if (boxRt == null) return;
 
             // If we can, use the parchment background sprite itself as the wash overlay.
             // This looks like the proxy (corners/edges match) and avoids a flat gray rectangle.
@@ -1113,7 +1818,9 @@ private bool IsEffectBoxRectInnerFill(RectTransform boxRt, Rect measuredNrm)
                 _overFrameEffectFadeMaskImg.type = boxImg.type;
                 _overFrameEffectFadeMaskImg.preserveAspect = boxImg.preserveAspect;
                 _overFrameEffectFadeMaskImg.fillCenter = boxImg.fillCenter;
-                _overFrameEffectFadeMaskImg.color = new Color(washRgb.r, washRgb.g, washRgb.b, OverFrameWashSpriteAlpha);
+
+                float washAlpha = isPendulum ? OverFramePendulumWashSpriteAlpha : OverFrameWashSpriteAlpha;
+                _overFrameEffectFadeMaskImg.color = new Color(washRgb.r, washRgb.g, washRgb.b, washAlpha);
 
                 // If an old gradient exists from earlier builds, disable it so ONLY the art is faded.
                 if (_overFrameEffectFade != null)
@@ -1147,9 +1854,6 @@ private bool IsEffectBoxRectInnerFill(RectTransform boxRt, Rect measuredNrm)
                 rt.anchoredPosition = Vector2.zero;
                 rt.sizeDelta = Vector2.zero;
 
-                float topA = OverFrameFadeDebugMagenta ? 1f : OverFrameFadeTopAlpha;
-                float botA = OverFrameFadeDebugMagenta ? 1f : OverFrameFadeBottomAlpha;
-
                 _overFrameEffectFade.topColor = new Color(washRgb.r, washRgb.g, washRgb.b, topA);
                 _overFrameEffectFade.bottomColor = new Color(washRgb.r, washRgb.g, washRgb.b, botA);
             }
@@ -1160,8 +1864,21 @@ private bool IsEffectBoxRectInnerFill(RectTransform boxRt, Rect measuredNrm)
             if (cardFrame != null && cardFrame.gameObject.activeInHierarchy)
             {
                 Rect boxNrm = OverFrameEffectBoxNrm;
-                if (hasExplicitEffectBox && TryGetEffectBoxNormalizedRect(cardFrame.rectTransform, out var dynBoxNrm))
+                if (isPendulum &&
+                    desc == cardDescriptionPendulum &&
+                    TryGetRectNormalizedInFrame(cardFrame.rectTransform, boxRt, out var pendBoxNrm))
+                {
+                    boxNrm = ExpandNormalizedRect(
+                        pendBoxNrm,
+                        OverFramePendulumCenterPadSideNrm,
+                        OverFramePendulumCenterPadSideNrm,
+                        OverFramePendulumCenterPadTopNrm,
+                        OverFramePendulumCenterPadBottomNrm);
+                }
+                else if (hasExplicitEffectBox && TryGetEffectBoxNormalizedRect(cardFrame.rectTransform, out var dynBoxNrm))
+                {
                     boxNrm = dynBoxNrm;
+                }
 
                 MatchRectToFrameNormalized(targetRt, cardFrame.rectTransform, fadeParentRt, boxNrm);
             }
@@ -1171,7 +1888,10 @@ private bool IsEffectBoxRectInnerFill(RectTransform boxRt, Rect measuredNrm)
             }
 
             // Inset so we don't tint the parchment border line
-            InsetRect(targetRt, OverFrameFadeInsetSide, OverFrameFadeInsetSide, OverFrameFadeInsetTop, OverFrameFadeInsetBottom);
+            float fadeInsetSide = isPendulum ? OverFramePendulumFadeInsetSide : OverFrameFadeInsetSide;
+            float fadeInsetTop = isPendulum ? OverFramePendulumFadeInsetTop : OverFrameFadeInsetTop;
+            float fadeInsetBottom = isPendulum ? OverFramePendulumFadeInsetBottom : OverFrameFadeInsetBottom;
+            InsetRect(targetRt, fadeInsetSide, fadeInsetSide, fadeInsetTop, fadeInsetBottom);
 
             // Expand to match proxy region feel
             targetRt.sizeDelta += new Vector2(OverFrameFadePadSide * 2f, OverFrameFadePadTop + OverFrameFadePadBottom);
@@ -1200,10 +1920,10 @@ private bool IsEffectBoxRectInnerFill(RectTransform boxRt, Rect measuredNrm)
         );
 
         private static readonly Rect OverFrameEffectBoxNrm = new Rect(
-            0.05397727f, // xMin = 38 / 704  (expanded 14px each side)
-            0.0625f,
-            0.89204545f, // width = 628 / 704 (600 + 28)
-            0.18847656f + (OverFrameParchmentTopRaisePx / OverFrameRefH)
+            0.05965909f, // xMin = 42 / 704
+            0.05859375f, // yMin = 60 / 1024
+            0.88068182f, // width = 620 / 704
+            0.19238281f + (OverFrameParchmentTopRaisePx / OverFrameRefH) // height = 197 / 1024 (+ top raise)
         );
 
         
@@ -1241,11 +1961,16 @@ private bool IsEffectBoxRectInnerFill(RectTransform boxRt, Rect measuredNrm)
         // Faint continuation strength inside the parchment box
         // (you already have OverFrameTextArtAlpha; tweak here if desired)
         private const float OverFrameTextArtAlpha = 0.36f;
+        private const float OverFramePendulumTextArtAlpha = 0.36f;
+        private const float OverFramePendulumUpperZoneArtAlpha = OverFramePendulumTextArtAlpha;
+        private const bool OverFramePendulumUpperUseBaseArtContinuation = false;
 
         // Because the overlay is rendered ABOVE the frame sprite, we must keep the entire
         // border thickness clear (otherwise the artwork tints/overlaps the border line).
         // 1.0 = cut in the middle of the border, 2.0 = cut at the inner edge (full border).
         private const float OverFrameBorderCutFactor = 2.0f;
+        private const float OverFramePendulumUpperZoneBorderCutFactor = 2.00f;
+        private const float OverFramePendulumUpperZoneBorderSafetyInset = 0.25f;
 
         // If the parchment background sprite has no 9-slice border data,
         // we fall back to a safe local-unit border inset so the artwork never touches the border line.
@@ -1254,9 +1979,26 @@ private bool IsEffectBoxRectInnerFill(RectTransform boxRt, Rect measuredNrm)
         // When the chosen effect-box RectTransform already represents the INNER fill (border excluded),
         // we only apply a tiny inset to avoid texture filtering/half-pixel bleed.
         private const float OverFrameInnerRectNoBorderInset = 0.15f;
+        private const float OverFramePendulumInnerRectNoBorderInset = 0.20f;
 
         // Inner-rect variant for the upper clip nudge (usually 0; the rect is already on the inner edge).
         private const float OverFrameUpperClipInsetBottomInner = 0.0f;
+        private const float OverFramePendulumUpperClipInsetBottomInner = 0.35f;
+
+        // Pendulum center text rect expansion in normalized frame space (704x1024 reference).
+        // This maps the center parchment box boundaries from the text rect without touching separator lines.
+        private const float OverFramePendulumCenterPadSideNrm = 8.5f / 704f;
+        private const float OverFramePendulumCenterPadTopNrm = 8.5f / 1024f;
+        private const float OverFramePendulumCenterPadBottomNrm = 8f / 1024f;
+        // Pendulum scale parchment widths inferred from the scale text rects.
+        private const float OverFramePendulumScalePadOuterNrm = 9f / 704f;
+        private const float OverFramePendulumScalePadInnerNrm = 2f / 704f;
+        // Keep separate separator dead-zones for wash-fade vs hard-clip:
+        // - Fade gap: small, so wash reaches close to inner parchment walls.
+        // - Clip gap: larger, so art clips hard on delimiter seams.
+        private const float OverFramePendulumSeparatorGapFadeNrm = 0.00f / 704f;
+        private const float OverFramePendulumSeparatorGapClipNrm = 0.35f / 704f;
+        private const float OverFramePendulumUpperFallbackSeamRaiseNrm = 4.20f / 1024f;
 
         // Auto-detection thresholds in normalized frame space (0..1).
         // These only matter in Auto mode and are generous to handle minor prefab/layout differences.
@@ -1269,26 +2011,59 @@ private bool IsEffectBoxRectInnerFill(RectTransform boxRt, Rect measuredNrm)
         // IMPORTANT:
         // - The border thickness itself comes from the parchment sprite's 9-slice border (TryGetEffectBoxBorderMidWorld + OverFrameBorderCutFactor).
         // - These values are EXTRA "safety" insets added on top, to avoid any texture filtering / half-pixel bleed on the border lines.
-        private const float OverFrameUpperClipInsetBottom = 1.0f;   // pushes the upper hard-stop slightly ABOVE the border line
+        private const float OverFrameUpperClipInsetBottom = 1.20f;  // pushes the upper hard-stop slightly ABOVE the border line
         private const float OverFrameBorderSafetyInset    = 0.75f;  // extra shrink to keep border lines perfectly clean
 
         // Extra insets for the continuation clip inside the parchment (usually keep at 0 and tune safety above).
         private const float OverFrameTextClipInsetLeft = 0.0f;
         private const float OverFrameTextClipInsetRight = 0.0f;
         private const float OverFrameTextClipInsetTop = 0.0f;
-        private const float OverFrameTextClipInsetBottom = 0.0f;
+        private const float OverFrameTextClipInsetBottom = -1.35f;
+        private const float OverFramePendulumTextClipInsetBottom = -2.10f;
 
         // Side continuation clip insets (preserve outer card border + parchment frame line)
         private const float OverFrameSideClipInsetOuter  = 0.0f;
         private const float OverFrameSideClipInsetInner  = 0.0f;
         private const float OverFrameSideClipInsetTop    = 0.0f;
         private const float OverFrameSideClipInsetBottom = 0.0f;
+        private const float OverFrameSideContinuationSafetyInset = 0.00f;
+        private const float OverFramePendulumSideClipInsetOuter = 0.00f;
+        private const float OverFramePendulumSideContinuationSafetyInset = 0.00f;
         // Tiny overlap between split clips to hide 1px seam gaps at left/right.
         private const float OverFrameSplitSeamOverlap = 0.90f;
+        private const float OverFramePendulumSplitSeamOverlap = 0.90f;
         // Optional: also inset the parchment wash overlay so it doesn't tint the border
-        private const float OverFrameFadeInsetSide = 0.80f;
+        private const float OverFrameFadeInsetSide = 0.00f;
         private const float OverFrameFadeInsetTop = 0.00f;
-        private const float OverFrameFadeInsetBottom = 0.90f;
+        private const float OverFrameFadeInsetBottom = -0.20f;
+        private const float OverFramePendulumFadeInsetSide = 0.70f;
+        private const float OverFramePendulumFadeInsetTop = 0.10f;
+        private const float OverFramePendulumFadeInsetBottom = 0.75f;
+        // Upper pendulum fade boxes (center + scales) are tuned separately from lower effect-box fade.
+        private const float OverFramePendulumCenterFadeInsetSide = 0.10f;
+        private const float OverFramePendulumCenterFadeInsetTop = 0.25f;
+        private const float OverFramePendulumCenterFadeInsetBottom = 0.00f;
+        private const float OverFramePendulumScaleFadeInsetOuter = 0.60f;
+        private const float OverFramePendulumScaleFadeInsetInner = 0.10f;
+        private const float OverFramePendulumScaleFadeInsetTop = 0.25f;
+        private const float OverFramePendulumScaleFadeInsetBottom = 0.00f;
+        // Upper pendulum parchments (center/left-scale/right-scale) use separate clips.
+        // Keep center and scale seam trims separate so narrow scale boxes don't get over-masked.
+        private const float OverFramePendulumCenterClipInsetSide = 0.20f;
+        private const float OverFramePendulumCenterClipInsetTop = 0.45f;
+        private const float OverFramePendulumCenterClipInsetBottom = 0.00f;
+        private const float OverFramePendulumScaleClipInsetOuter = 0.60f;
+        private const float OverFramePendulumScaleClipInsetInner = 0.20f;
+        private const float OverFramePendulumScaleClipInsetTop = 0.45f;
+        private const float OverFramePendulumScaleClipInsetBottom = 0.00f;
+        // Applied when a pendulum upper zone has no dedicated parchment Image rect.
+        // Split fade vs clip so fade can reach inner walls while clip stays hard/stable.
+        private const float OverFramePendulumZoneFallbackFadeInsetSide = 0.00f;
+        private const float OverFramePendulumZoneFallbackFadeInsetTop = 0.00f;
+        private const float OverFramePendulumZoneFallbackFadeInsetBottom = 0.00f;
+        private const float OverFramePendulumZoneFallbackClipInsetSide = 0.00f;
+        private const float OverFramePendulumZoneFallbackClipInsetTop = 0.00f;
+        private const float OverFramePendulumZoneFallbackClipInsetBottom = 0.00f;
 
         private static void InsetRect(RectTransform rt, float left, float right, float top, float bottom)
         {
@@ -1323,10 +2098,15 @@ private bool IsEffectBoxRectInnerFill(RectTransform boxRt, Rect measuredNrm)
             SetRectByWorldBLTR(dst, worldBL, worldTR, dstParent);
         }
 
-        private bool ApplyOverFrameProxySplit(Texture2D tex, RawImage baseArt, OverFrameSpec spec, RectTransform frameRt, Transform anchorParent, RectTransform anchorParentRt)
+        private bool ApplyOverFrameProxySplit(Texture2D tex, RawImage baseArt, OverFrameSpec spec, RectTransform frameRt, Transform anchorParent, RectTransform anchorParentRt, bool isPendulum)
         {
             if (tex == null || frameRt == null || anchorParent == null || anchorParentRt == null)
                 return false;
+
+            // Full-card overframe art should track the card frame bounds (same behavior as normal overframe path).
+            RectTransform splitArtReferenceRt = frameRt;
+            float splitSeamOverlap = isPendulum ? OverFramePendulumSplitSeamOverlap : OverFrameSplitSeamOverlap;
+
             // Prefer stable reference bounds unless an explicit parchment Image is assigned.
             // This avoids auto-detect picking text/padding rects that shrink the mask width.
             bool hasExplicitEffectBox =
@@ -1334,23 +2114,130 @@ private bool IsEffectBoxRectInnerFill(RectTransform boxRt, Rect measuredNrm)
                 overFrameEffectBoxImage.gameObject != null &&
                 overFrameEffectBoxImage.gameObject.activeInHierarchy;
 
-            // Dynamically derive the parchment/effect-box bounds only from explicit rects.
+            // Dynamically derive the parchment/effect-box bounds.
             Rect effectBoxNrm = OverFrameEffectBoxNrm;
             Rect effectBoxInnerNrm = OverFrameEffectBoxInnerNrm;
-            Rect dynEffectBoxNrm = default;
-            bool haveDynEffectBox = false;
-            if (hasExplicitEffectBox)
-                haveDynEffectBox = TryGetEffectBoxNormalizedRect(frameRt, out dynEffectBoxNrm);
-            if (haveDynEffectBox)
-                effectBoxNrm = dynEffectBoxNrm;
-            // IMPORTANT: clip using explicit parchment Image when available.
-            // Decide whether that rect is OUTER (includes border) or already INNER (border excluded).
             var realBoxRt = hasExplicitEffectBox ? overFrameEffectBoxImage.rectTransform : null;
-            bool effectBoxIsInnerFill = IsEffectBoxRectInnerFill(realBoxRt, effectBoxNrm);
-            if (realBoxRt == null) effectBoxIsInnerFill = true;
-            float clipSafetyInset = effectBoxIsInnerFill ? OverFrameInnerRectNoBorderInset : OverFrameBorderSafetyInset;
+            bool effectBoxIsInnerFill;
+            Rect pendCenterNrm = default;
+            Rect pendLeftScaleNrm = default;
+            Rect pendRightScaleNrm = default;
+            Rect pendFullBandNrm = default;
+            bool pendUsedImageBoxRects = false;
+            RectTransform pendCenterBoxRt = null;
+            RectTransform pendLeftBoxRt = null;
+            RectTransform pendRightBoxRt = null;
+            bool hasPendulumParchmentZones = isPendulum &&
+                                             TryGetPendulumParchmentZonesNormalized(
+                                                 frameRt,
+                                                 out pendCenterNrm,
+                                                 out pendLeftScaleNrm,
+                                                 out pendRightScaleNrm,
+                                                 out pendFullBandNrm,
+                                                 out pendUsedImageBoxRects,
+                                                 out pendCenterBoxRt,
+                                                 out pendLeftBoxRt,
+                                                 out pendRightBoxRt,
+                                                 OverFramePendulumSeparatorGapClipNrm);
 
-            float yCut = Mathf.Clamp01(effectBoxNrm.yMin + effectBoxNrm.height);
+            if (hasPendulumParchmentZones)
+            {
+                effectBoxNrm = pendCenterNrm;
+                effectBoxInnerNrm = effectBoxNrm;
+                effectBoxIsInnerFill = true;
+                realBoxRt = null;
+            }
+            else if (isPendulum &&
+                     cardDescriptionPendulum != null &&
+                     cardDescriptionPendulum.gameObject.activeInHierarchy &&
+                     !string.IsNullOrEmpty(cardDescriptionPendulum.text) &&
+                     TryGetRectNormalizedInFrame(frameRt, cardDescriptionPendulum.rectTransform, out var pendCenterFallbackNrm))
+            {
+                effectBoxNrm = ExpandNormalizedRect(
+                    pendCenterFallbackNrm,
+                    OverFramePendulumCenterPadSideNrm,
+                    OverFramePendulumCenterPadSideNrm,
+                    OverFramePendulumCenterPadTopNrm,
+                    OverFramePendulumCenterPadBottomNrm);
+                effectBoxInnerNrm = effectBoxNrm;
+                effectBoxIsInnerFill = true;
+                realBoxRt = null;
+            }
+            else
+            {
+                Rect dynEffectBoxNrm = default;
+                bool haveDynEffectBox = false;
+                if (hasExplicitEffectBox)
+                    haveDynEffectBox = TryGetEffectBoxNormalizedRect(frameRt, out dynEffectBoxNrm);
+                if (haveDynEffectBox)
+                    effectBoxNrm = dynEffectBoxNrm;
+
+                // IMPORTANT: clip using explicit parchment Image when available.
+                // Decide whether that rect is OUTER (includes border) or already INNER (border excluded).
+                effectBoxIsInnerFill = IsEffectBoxRectInnerFill(realBoxRt, effectBoxNrm);
+                if (realBoxRt == null) effectBoxIsInnerFill = true;
+            }
+
+            float clipSafetyInset = effectBoxIsInnerFill
+                ? (isPendulum ? OverFramePendulumInnerRectNoBorderInset : OverFrameInnerRectNoBorderInset)
+                : OverFrameBorderSafetyInset;
+
+            float yCut;
+            if (hasPendulumParchmentZones)
+            {
+                float pendBandTop = pendFullBandNrm.yMin + pendFullBandNrm.height;
+                float fallbackSeamRaise = !pendUsedImageBoxRects ? OverFramePendulumUpperFallbackSeamRaiseNrm : 0f;
+                yCut = Mathf.Clamp01(pendBandTop + fallbackSeamRaise);
+
+                // Keep fallback pendulum clip zones touching the moved seam.
+                // Without this, raising yCut can leave a thin uncovered strip near upper separators.
+                if (fallbackSeamRaise > 0f)
+                {
+                    float raisedTop = yCut;
+
+                    if (raisedTop > (pendCenterNrm.yMin + pendCenterNrm.height))
+                        pendCenterNrm = new Rect(
+                            pendCenterNrm.xMin,
+                            pendCenterNrm.yMin,
+                            pendCenterNrm.width,
+                            Mathf.Max(0f, raisedTop - pendCenterNrm.yMin));
+
+                    if (raisedTop > (pendLeftScaleNrm.yMin + pendLeftScaleNrm.height))
+                        pendLeftScaleNrm = new Rect(
+                            pendLeftScaleNrm.xMin,
+                            pendLeftScaleNrm.yMin,
+                            pendLeftScaleNrm.width,
+                            Mathf.Max(0f, raisedTop - pendLeftScaleNrm.yMin));
+
+                    if (raisedTop > (pendRightScaleNrm.yMin + pendRightScaleNrm.height))
+                        pendRightScaleNrm = new Rect(
+                            pendRightScaleNrm.xMin,
+                            pendRightScaleNrm.yMin,
+                            pendRightScaleNrm.width,
+                            Mathf.Max(0f, raisedTop - pendRightScaleNrm.yMin));
+
+                    if (raisedTop > (effectBoxNrm.yMin + effectBoxNrm.height))
+                    {
+                        effectBoxNrm = new Rect(
+                            effectBoxNrm.xMin,
+                            effectBoxNrm.yMin,
+                            effectBoxNrm.width,
+                            Mathf.Max(0f, raisedTop - effectBoxNrm.yMin));
+                        effectBoxInnerNrm = effectBoxNrm;
+                    }
+
+                    if (raisedTop > (pendFullBandNrm.yMin + pendFullBandNrm.height))
+                        pendFullBandNrm = new Rect(
+                            pendFullBandNrm.xMin,
+                            pendFullBandNrm.yMin,
+                            pendFullBandNrm.width,
+                            Mathf.Max(0f, raisedTop - pendFullBandNrm.yMin));
+                }
+            }
+            else
+            {
+                yCut = Mathf.Clamp01(effectBoxNrm.yMin + effectBoxNrm.height);
+            }
             Rect upperAreaNrm = new Rect(0f, yCut, 1f, Mathf.Max(0f, 1f - yCut));
 
 
@@ -1387,9 +2274,10 @@ private bool IsEffectBoxRectInnerFill(RectTransform boxRt, Rect measuredNrm)
             MatchRectToFrameNormalized(_overFrameMainClipRt, frameRt, anchorParentRt, upperAreaNrm);
 
             // Inset so we don't tint the parchment border line
+            float upperClipInsetBottomInner = isPendulum ? OverFramePendulumUpperClipInsetBottomInner : OverFrameUpperClipInsetBottomInner;
             float mainCutLocal =
                 (effectBoxIsInnerFill ? 0f : (hasBorder ? WorldToLocalY(_overFrameMainClipRt, midTopW) : OverFrameFallbackBorderInset))
-                + (effectBoxIsInnerFill ? OverFrameUpperClipInsetBottomInner : OverFrameUpperClipInsetBottom)
+                + (effectBoxIsInnerFill ? upperClipInsetBottomInner : OverFrameUpperClipInsetBottom)
                 + clipSafetyInset; // keep the top parchment border line perfectly clean // keep the top parchment border line perfectly clean
             InsetRect(_overFrameMainClipRt, 0f, 0f, 0f, mainCutLocal);
 
@@ -1403,7 +2291,7 @@ private bool IsEffectBoxRectInnerFill(RectTransform boxRt, Rect measuredNrm)
             // Align main art to full frame (then it gets clipped)
             if (_overFrameArt != null)
             {
-                MatchRectByWorldCorners(_overFrameArt.rectTransform, frameRt, _overFrameMainClipRt);
+                MatchRectByWorldCorners(_overFrameArt.rectTransform, splitArtReferenceRt, _overFrameMainClipRt);
                 _overFrameArt.rectTransform.sizeDelta *= spec.scale;
                 _overFrameArt.rectTransform.anchoredPosition += spec.offset;
             }
@@ -1415,13 +2303,29 @@ private bool IsEffectBoxRectInnerFill(RectTransform boxRt, Rect measuredNrm)
             float boxX0 = effectBoxNrm.xMin;
             float boxX1 = effectBoxNrm.xMin + effectBoxNrm.width;
             float boxY1 = effectBoxNrm.yMin + effectBoxNrm.height;
-            // Side continuation should run from card bottom up to the top of the effect box,
-            // so beams/light on the side are not cut halfway near the footer area.
+            // Continue side gutters from card bottom to the current split seam.
+            // For pendulum cards this avoids empty left/right zones below the lower parchment box.
             float sideY0 = 0f;
-            float sideH = Mathf.Max(0f, boxY1 - sideY0);
+            float sideY1 = boxY1;
+            float sideH = Mathf.Max(0f, sideY1 - sideY0);
 
-            Rect leftSideNrm = new Rect(0f, sideY0, Mathf.Max(0f, boxX0), sideH);
-            Rect rightSideNrm = new Rect(boxX1, sideY0, Mathf.Max(0f, 1f - boxX1), sideH);
+            Rect leftSideNrm;
+            Rect rightSideNrm;
+            if (hasPendulumParchmentZones)
+            {
+                float leftOuterW = Mathf.Max(0f, pendLeftScaleNrm.xMin);
+                float rightOuterX = pendRightScaleNrm.xMin + pendRightScaleNrm.width;
+                leftSideNrm = new Rect(0f, sideY0, leftOuterW, sideH);
+                rightSideNrm = new Rect(rightOuterX, sideY0, Mathf.Max(0f, 1f - rightOuterX), sideH);
+            }
+            else
+            {
+                leftSideNrm = new Rect(0f, sideY0, Mathf.Max(0f, boxX0), sideH);
+                rightSideNrm = new Rect(boxX1, sideY0, Mathf.Max(0f, 1f - boxX1), sideH);
+            }
+
+            Texture sideTex = tex;
+            Rect sideUv = _overFrameArt != null ? _overFrameArt.uvRect : new Rect(0f, 0f, 1f, 1f);
 
             // Left clip
             if (leftSideNrm.width > 0.001f && leftSideNrm.height > 0.001f)
@@ -1443,13 +2347,15 @@ private bool IsEffectBoxRectInnerFill(RectTransform boxRt, Rect measuredNrm)
                 // Inset so the over-art never touches the parchment border lines (left side margin)
                 // NOTE: This clip is OUTSIDE the parchment box, so we MUST NOT apply the parchment border thickness here.
                 // Applying the fallback border inset (13px) creates visible "empty margins" near the corners.
-                float sideL_Inner = clipSafetyInset + OverFrameSideClipInsetInner;
-                float sideL_Top = clipSafetyInset + OverFrameSideClipInsetTop;
-                float sideL_Bottom = clipSafetyInset + OverFrameSideClipInsetBottom;
+                float sideSafety = isPendulum ? OverFramePendulumSideContinuationSafetyInset : OverFrameSideContinuationSafetyInset;
+                float sideOuterInset = isPendulum ? OverFramePendulumSideClipInsetOuter : OverFrameSideClipInsetOuter;
+                float sideL_Inner = sideSafety + OverFrameSideClipInsetInner;
+                float sideL_Top = sideSafety + OverFrameSideClipInsetTop;
+                float sideL_Bottom = sideSafety + OverFrameSideClipInsetBottom;
 
                 InsetRect(_overFrameSideClipL_Rt,
-                    OverFrameSideClipInsetOuter,
-                    Mathf.Max(0f, sideL_Inner - OverFrameSplitSeamOverlap),
+                    sideOuterInset,
+                    Mathf.Max(0f, sideL_Inner - splitSeamOverlap),
                     Mathf.Max(0f, sideL_Top),
                     Mathf.Max(0f, sideL_Bottom));
                 if (_overFrameArtSideL == null)
@@ -1468,12 +2374,12 @@ private bool IsEffectBoxRectInnerFill(RectTransform boxRt, Rect measuredNrm)
                 }
 
                 _overFrameArtSideL.gameObject.SetActive(true);
-                _overFrameArtSideL.texture = tex;
-                _overFrameArtSideL.uvRect = _overFrameArt != null ? _overFrameArt.uvRect : _overFrameArtSideL.uvRect;
+                _overFrameArtSideL.texture = sideTex;
+                _overFrameArtSideL.uvRect = sideUv;
                 _overFrameArtSideL.color = Color.white;
                 _overFrameArtSideL.maskable = true;
 
-                MatchRectByWorldCorners(_overFrameArtSideL.rectTransform, frameRt, _overFrameSideClipL_Rt);
+                MatchRectByWorldCorners(_overFrameArtSideL.rectTransform, splitArtReferenceRt, _overFrameSideClipL_Rt);
                 _overFrameArtSideL.rectTransform.sizeDelta *= spec.scale;
                 _overFrameArtSideL.rectTransform.anchoredPosition += spec.offset;
             }
@@ -1503,13 +2409,15 @@ private bool IsEffectBoxRectInnerFill(RectTransform boxRt, Rect measuredNrm)
                 // Inset so the over-art never touches the parchment border lines (right side margin)
                 // NOTE: This clip is OUTSIDE the parchment box, so we MUST NOT apply the parchment border thickness here.
                 // Applying the fallback border inset (13px) creates visible "empty margins" near the corners.
-                float sideR_Inner = clipSafetyInset + OverFrameSideClipInsetInner;
-                float sideR_Top = clipSafetyInset + OverFrameSideClipInsetTop;
-                float sideR_Bottom = clipSafetyInset + OverFrameSideClipInsetBottom;
+                float sideSafety = isPendulum ? OverFramePendulumSideContinuationSafetyInset : OverFrameSideContinuationSafetyInset;
+                float sideOuterInset = isPendulum ? OverFramePendulumSideClipInsetOuter : OverFrameSideClipInsetOuter;
+                float sideR_Inner = sideSafety + OverFrameSideClipInsetInner;
+                float sideR_Top = sideSafety + OverFrameSideClipInsetTop;
+                float sideR_Bottom = sideSafety + OverFrameSideClipInsetBottom;
 
                 InsetRect(_overFrameSideClipR_Rt,
-                    Mathf.Max(0f, sideR_Inner - OverFrameSplitSeamOverlap),
-                    OverFrameSideClipInsetOuter,
+                    Mathf.Max(0f, sideR_Inner - splitSeamOverlap),
+                    sideOuterInset,
                     Mathf.Max(0f, sideR_Top),
                     Mathf.Max(0f, sideR_Bottom));
                 if (_overFrameArtSideR == null)
@@ -1528,12 +2436,12 @@ private bool IsEffectBoxRectInnerFill(RectTransform boxRt, Rect measuredNrm)
                 }
 
                 _overFrameArtSideR.gameObject.SetActive(true);
-                _overFrameArtSideR.texture = tex;
-                _overFrameArtSideR.uvRect = _overFrameArt != null ? _overFrameArt.uvRect : _overFrameArtSideR.uvRect;
+                _overFrameArtSideR.texture = sideTex;
+                _overFrameArtSideR.uvRect = sideUv;
                 _overFrameArtSideR.color = Color.white;
                 _overFrameArtSideR.maskable = true;
 
-                MatchRectByWorldCorners(_overFrameArtSideR.rectTransform, frameRt, _overFrameSideClipR_Rt);
+                MatchRectByWorldCorners(_overFrameArtSideR.rectTransform, splitArtReferenceRt, _overFrameSideClipR_Rt);
                 _overFrameArtSideR.rectTransform.sizeDelta *= spec.scale;
                 _overFrameArtSideR.rectTransform.anchoredPosition += spec.offset;
             }
@@ -1544,11 +2452,94 @@ private bool IsEffectBoxRectInnerFill(RectTransform boxRt, Rect measuredNrm)
             }
 
             // ── B) TEXT CLIP (continuation inside parchment) ─────────────────
-            var desc = GetActiveOcgDescriptionText();
-            if (desc == null) return true;
+            var desc = (isPendulum && cardDescription != null && cardDescription.gameObject.activeInHierarchy)
+                ? cardDescription
+                : GetActiveOcgDescriptionText();
+            if (desc == null)
+            {
+                if (_overFramePendulumCenterClipRt) _overFramePendulumCenterClipRt.gameObject.SetActive(false);
+                if (_overFramePendulumCenterArt) _overFramePendulumCenterArt.gameObject.SetActive(false);
+                if (_overFramePendulumScaleClipL_Rt) _overFramePendulumScaleClipL_Rt.gameObject.SetActive(false);
+                if (_overFramePendulumScaleClipR_Rt) _overFramePendulumScaleClipR_Rt.gameObject.SetActive(false);
+                if (_overFramePendulumScaleArtL) _overFramePendulumScaleArtL.gameObject.SetActive(false);
+                if (_overFramePendulumScaleArtR) _overFramePendulumScaleArtR.gameObject.SetActive(false);
+                return true;
+            }
 
             var fadeParentRt = desc.transform.parent as RectTransform;
-            if (fadeParentRt == null) return true;
+            if (fadeParentRt == null)
+            {
+                if (_overFramePendulumCenterClipRt) _overFramePendulumCenterClipRt.gameObject.SetActive(false);
+                if (_overFramePendulumCenterArt) _overFramePendulumCenterArt.gameObject.SetActive(false);
+                if (_overFramePendulumScaleClipL_Rt) _overFramePendulumScaleClipL_Rt.gameObject.SetActive(false);
+                if (_overFramePendulumScaleClipR_Rt) _overFramePendulumScaleClipR_Rt.gameObject.SetActive(false);
+                if (_overFramePendulumScaleArtL) _overFramePendulumScaleArtL.gameObject.SetActive(false);
+                if (_overFramePendulumScaleArtR) _overFramePendulumScaleArtR.gameObject.SetActive(false);
+                return true;
+            }
+
+            RectTransform textClipBoxRt = realBoxRt;
+            Rect textClipBoxNrm = effectBoxInnerNrm;
+            bool textClipIsInnerFill = effectBoxIsInnerFill;
+            float textClipSafetyInset = clipSafetyInset;
+
+            float textMidLeftW = midLeftW;
+            float textMidRightW = midRightW;
+            float textMidTopW = midTopW;
+            float textMidBottomW = midBottomW;
+            bool textHasBorder = hasBorder;
+
+            if (isPendulum)
+            {
+                textClipBoxRt = hasExplicitEffectBox ? overFrameEffectBoxImage.rectTransform : GetEffectBoxRectTransform(desc);
+
+                bool trustDetectedLowerBox = false;
+                if (textClipBoxRt != null)
+                {
+                    if (hasExplicitEffectBox)
+                    {
+                        trustDetectedLowerBox = true;
+                    }
+                    else
+                    {
+                        var detectedImg = textClipBoxRt.GetComponent<Image>();
+                        trustDetectedLowerBox = detectedImg != null && detectedImg.sprite != null;
+                    }
+                }
+
+                if (trustDetectedLowerBox && textClipBoxRt != null && TryGetRectNormalizedInFrame(frameRt, textClipBoxRt, out var pendLowerBoxNrm))
+                {
+                    // Reject text-rect-like detections: pendulum lower box should be close to normal effect-box width.
+                    bool likelyTooNarrow = pendLowerBoxNrm.width < (OverFrameEffectBoxNrm.width - (8f / 704f));
+                    textClipBoxNrm = pendLowerBoxNrm;
+                    textClipIsInnerFill = likelyTooNarrow ? true : IsEffectBoxRectInnerFill(textClipBoxRt, textClipBoxNrm);
+
+                    if (likelyTooNarrow && !hasExplicitEffectBox)
+                    {
+                        textClipBoxRt = null;
+                        textClipBoxNrm = OverFrameEffectBoxNrm;
+                    }
+                }
+                else
+                {
+                    textClipBoxRt = null;
+                    textClipBoxNrm = OverFrameEffectBoxNrm;
+                    textClipIsInnerFill = true;
+                }
+
+                textClipSafetyInset = textClipIsInnerFill
+                    ? OverFramePendulumInnerRectNoBorderInset
+                    : OverFrameBorderSafetyInset;
+
+                textHasBorder = TryGetEffectBoxBorderMidWorld(textClipBoxRt, out textMidLeftW, out textMidRightW, out textMidTopW, out textMidBottomW);
+                if (textHasBorder)
+                {
+                    textMidLeftW *= OverFrameBorderCutFactor;
+                    textMidRightW *= OverFrameBorderCutFactor;
+                    textMidTopW *= OverFrameBorderCutFactor;
+                    textMidBottomW *= OverFrameBorderCutFactor;
+                }
+            }
 
             if (_overFrameTextClipRt == null)
             {
@@ -1566,27 +2557,28 @@ private bool IsEffectBoxRectInnerFill(RectTransform boxRt, Rect measuredNrm)
 
             // Clip area = parchment box (prefer the REAL parchment Image rect when available)
             // realBoxRt already computed above (explicit parchment Image preferred).
-            if (realBoxRt != null)
-                MatchRectByWorldCorners(_overFrameTextClipRt, realBoxRt, fadeParentRt);
+            if (textClipBoxRt != null)
+                MatchRectByWorldCorners(_overFrameTextClipRt, textClipBoxRt, fadeParentRt);
             else
-                MatchRectToFrameNormalized(_overFrameTextClipRt, frameRt, fadeParentRt, effectBoxInnerNrm);
+                MatchRectToFrameNormalized(_overFrameTextClipRt, frameRt, fadeParentRt, textClipBoxNrm);
 
             // Inset so continuation doesn't tint the orange border line.
             // We cut at the INNER edge of the parchment border (9-slice border * OverFrameBorderCutFactor),
             // then add a small safety inset to avoid half-pixel filtering bleed.
-            float textInsetL = (effectBoxIsInnerFill ? 0f : (hasBorder ? WorldToLocalX(_overFrameTextClipRt, midLeftW) : OverFrameFallbackBorderInset))
-                               + clipSafetyInset + OverFrameTextClipInsetLeft;
-            float textInsetR = (effectBoxIsInnerFill ? 0f : (hasBorder ? WorldToLocalX(_overFrameTextClipRt, midRightW) : OverFrameFallbackBorderInset))
-                               + clipSafetyInset + OverFrameTextClipInsetRight;
-            float textInsetT = (effectBoxIsInnerFill ? 0f : (hasBorder ? WorldToLocalY(_overFrameTextClipRt, midTopW) : OverFrameFallbackBorderInset))
-                               + clipSafetyInset + OverFrameTextClipInsetTop;
-            float textInsetB = (effectBoxIsInnerFill ? 0f : (hasBorder ? WorldToLocalY(_overFrameTextClipRt, midBottomW) : OverFrameFallbackBorderInset))
-                               + clipSafetyInset + OverFrameTextClipInsetBottom;
+            float textInsetL = (textClipIsInnerFill ? 0f : (textHasBorder ? WorldToLocalX(_overFrameTextClipRt, textMidLeftW) : OverFrameFallbackBorderInset))
+                               + textClipSafetyInset + OverFrameTextClipInsetLeft;
+            float textInsetR = (textClipIsInnerFill ? 0f : (textHasBorder ? WorldToLocalX(_overFrameTextClipRt, textMidRightW) : OverFrameFallbackBorderInset))
+                               + textClipSafetyInset + OverFrameTextClipInsetRight;
+            float textInsetT = (textClipIsInnerFill ? 0f : (textHasBorder ? WorldToLocalY(_overFrameTextClipRt, textMidTopW) : OverFrameFallbackBorderInset))
+                               + textClipSafetyInset + OverFrameTextClipInsetTop;
+            float textClipInsetBottom = isPendulum ? OverFramePendulumTextClipInsetBottom : OverFrameTextClipInsetBottom;
+            float textInsetB = (textClipIsInnerFill ? 0f : (textHasBorder ? WorldToLocalY(_overFrameTextClipRt, textMidBottomW) : OverFrameFallbackBorderInset))
+                               + textClipSafetyInset + textClipInsetBottom;
 
             InsetRect(
                 _overFrameTextClipRt,
-                Mathf.Max(0f, textInsetL - OverFrameSplitSeamOverlap),
-                Mathf.Max(0f, textInsetR - OverFrameSplitSeamOverlap),
+                Mathf.Max(0f, textInsetL - splitSeamOverlap),
+                Mathf.Max(0f, textInsetR - splitSeamOverlap),
                 Mathf.Max(0f, textInsetT),
                 Mathf.Max(0f, textInsetB));
             // --- BG continuation under the parchment (prevents "empty" transparent gaps) ---
@@ -1626,7 +2618,7 @@ private bool IsEffectBoxRectInnerFill(RectTransform boxRt, Rect measuredNrm)
             _overFrameArtTextBG.maskable = true;
 
             // Align BG continuation to full frame (then clipped by parchment mask)
-            MatchRectByWorldCorners(_overFrameArtTextBG.rectTransform, frameRt, _overFrameTextClipRt);
+            MatchRectByWorldCorners(_overFrameArtTextBG.rectTransform, splitArtReferenceRt, _overFrameTextClipRt);
             _overFrameArtTextBG.rectTransform.sizeDelta *= spec.scale;
             _overFrameArtTextBG.rectTransform.anchoredPosition += spec.offset;
 
@@ -1651,11 +2643,12 @@ private bool IsEffectBoxRectInnerFill(RectTransform boxRt, Rect measuredNrm)
                 _overFrameArtText.gameObject.SetActive(true);
                 _overFrameArtText.texture = tex;
                 _overFrameArtText.uvRect = _overFrameArt != null ? _overFrameArt.uvRect : _overFrameArtText.uvRect;
-                _overFrameArtText.color = new Color(1f, 1f, 1f, OverFrameTextArtAlpha);
+                float textArtAlpha = isPendulum ? OverFramePendulumTextArtAlpha : OverFrameTextArtAlpha;
+                _overFrameArtText.color = new Color(1f, 1f, 1f, textArtAlpha);
                 _overFrameArtText.maskable = true;
 
                 // Align continuation to full frame (then clipped by parchment mask)
-                MatchRectByWorldCorners(_overFrameArtText.rectTransform, frameRt, _overFrameTextClipRt);
+                MatchRectByWorldCorners(_overFrameArtText.rectTransform, splitArtReferenceRt, _overFrameTextClipRt);
                 _overFrameArtText.rectTransform.sizeDelta *= spec.scale;
                 _overFrameArtText.rectTransform.anchoredPosition += spec.offset;
             }
@@ -1663,11 +2656,138 @@ private bool IsEffectBoxRectInnerFill(RectTransform boxRt, Rect measuredNrm)
             if (_overFrameArtTextBG != null) _overFrameArtTextBG.transform.SetSiblingIndex(0);
             if (_overFrameArtText != null) _overFrameArtText.transform.SetSiblingIndex(1);
 
+            if (hasPendulumParchmentZones)
+            {
+                Texture2D pendTex = tex;
+                Rect pendUv = _overFrameArt != null ? _overFrameArt.uvRect : new Rect(0f, 0f, 1f, 1f);
+                if (OverFramePendulumUpperUseBaseArtContinuation &&
+                    baseArt != null &&
+                    baseArt.texture is Texture2D baseTex)
+                {
+                    // Scale parchments should continue the underlying artwork, not transparent cutout regions.
+                    pendTex = baseTex;
+                    pendUv = baseArt.uvRect;
+                }
+
+                float pendAlpha = OverFramePendulumUpperZoneArtAlpha;
+                float centerInsetSide = OverFramePendulumCenterClipInsetSide;
+                float centerInsetTop = OverFramePendulumCenterClipInsetTop;
+                float centerInsetBottom = OverFramePendulumCenterClipInsetBottom;
+                float scaleInsetOuter = OverFramePendulumScaleClipInsetOuter;
+                float scaleInsetInner = OverFramePendulumScaleClipInsetInner;
+                float scaleInsetTop = OverFramePendulumScaleClipInsetTop;
+                float scaleInsetBottom = OverFramePendulumScaleClipInsetBottom;
+                float fallbackClipInsetSide = OverFramePendulumZoneFallbackClipInsetSide;
+                float fallbackClipInsetTop = OverFramePendulumZoneFallbackClipInsetTop;
+                float fallbackClipInsetBottom = OverFramePendulumZoneFallbackClipInsetBottom;
+
+                if (pendCenterBoxRt == null)
+                {
+                    centerInsetSide += fallbackClipInsetSide;
+                    centerInsetTop += fallbackClipInsetTop;
+                    centerInsetBottom += fallbackClipInsetBottom;
+                }
+
+                if (pendLeftBoxRt == null)
+                {
+                    scaleInsetOuter += fallbackClipInsetSide;
+                    scaleInsetInner += fallbackClipInsetSide;
+                    scaleInsetTop += fallbackClipInsetTop;
+                    scaleInsetBottom += fallbackClipInsetBottom;
+                }
+
+                if (pendRightBoxRt == null)
+                {
+                    scaleInsetOuter += fallbackClipInsetSide;
+                    scaleInsetInner += fallbackClipInsetSide;
+                    scaleInsetTop += fallbackClipInsetTop;
+                    scaleInsetBottom += fallbackClipInsetBottom;
+                }
+
+                UpdateMaskedContinuationClip(
+                    ref _overFramePendulumCenterClipRt,
+                    ref _overFramePendulumCenterClip,
+                    ref _overFramePendulumCenterArt,
+                    "OverFramePendulumCenterClip",
+                    "OverFramePendulumCenterArt",
+                    pendCenterNrm,
+                    frameRt,
+                    fadeParentRt,
+                    splitArtReferenceRt,
+                    pendTex,
+                    pendUv,
+                    spec,
+                    pendAlpha,
+                    centerInsetSide,
+                    centerInsetSide,
+                    centerInsetTop,
+                    centerInsetBottom,
+                    pendCenterBoxRt,
+                    OverFramePendulumUpperZoneBorderCutFactor,
+                    OverFramePendulumUpperZoneBorderSafetyInset);
+
+                UpdateMaskedContinuationClip(
+                    ref _overFramePendulumScaleClipL_Rt,
+                    ref _overFramePendulumScaleClipL,
+                    ref _overFramePendulumScaleArtL,
+                    "OverFramePendulumScaleClipL",
+                    "OverFramePendulumScaleArtL",
+                    pendLeftScaleNrm,
+                    frameRt,
+                    fadeParentRt,
+                    splitArtReferenceRt,
+                    pendTex,
+                    pendUv,
+                    spec,
+                    pendAlpha,
+                    scaleInsetOuter,
+                    scaleInsetInner,
+                    scaleInsetTop,
+                    scaleInsetBottom,
+                    pendLeftBoxRt,
+                    OverFramePendulumUpperZoneBorderCutFactor,
+                    OverFramePendulumUpperZoneBorderSafetyInset);
+
+                UpdateMaskedContinuationClip(
+                    ref _overFramePendulumScaleClipR_Rt,
+                    ref _overFramePendulumScaleClipR,
+                    ref _overFramePendulumScaleArtR,
+                    "OverFramePendulumScaleClipR",
+                    "OverFramePendulumScaleArtR",
+                    pendRightScaleNrm,
+                    frameRt,
+                    fadeParentRt,
+                    splitArtReferenceRt,
+                    pendTex,
+                    pendUv,
+                    spec,
+                    pendAlpha,
+                    scaleInsetInner,
+                    scaleInsetOuter,
+                    scaleInsetTop,
+                    scaleInsetBottom,
+                    pendRightBoxRt,
+                    OverFramePendulumUpperZoneBorderCutFactor,
+                    OverFramePendulumUpperZoneBorderSafetyInset);
+            }
+            else
+            {
+                if (_overFramePendulumCenterClipRt) _overFramePendulumCenterClipRt.gameObject.SetActive(false);
+                if (_overFramePendulumCenterArt) _overFramePendulumCenterArt.gameObject.SetActive(false);
+                if (_overFramePendulumScaleClipL_Rt) _overFramePendulumScaleClipL_Rt.gameObject.SetActive(false);
+                if (_overFramePendulumScaleClipR_Rt) _overFramePendulumScaleClipR_Rt.gameObject.SetActive(false);
+                if (_overFramePendulumScaleArtL) _overFramePendulumScaleArtL.gameObject.SetActive(false);
+                if (_overFramePendulumScaleArtR) _overFramePendulumScaleArtR.gameObject.SetActive(false);
+            }
+
             // IMPORTANT: the continuation must be BELOW the description text (so text stays crisp),
             // but ABOVE the parchment background (so you can actually see the art "under" the parchment like the official proxy).
             // We insert at desc index so Unity shifts desc (and anything above it) one slot up.
             int descIdx = desc.transform.GetSiblingIndex();
             _overFrameTextClipRt.SetSiblingIndex(Mathf.Clamp(descIdx, 0, fadeParentRt.childCount - 1));
+            if (_overFramePendulumCenterClipRt) _overFramePendulumCenterClipRt.SetSiblingIndex(Mathf.Clamp(descIdx, 0, fadeParentRt.childCount - 1));
+            if (_overFramePendulumScaleClipL_Rt) _overFramePendulumScaleClipL_Rt.SetSiblingIndex(Mathf.Clamp(descIdx, 0, fadeParentRt.childCount - 1));
+            if (_overFramePendulumScaleClipR_Rt) _overFramePendulumScaleClipR_Rt.SetSiblingIndex(Mathf.Clamp(descIdx, 0, fadeParentRt.childCount - 1));
 
             return true;
         }
@@ -1691,6 +2811,7 @@ private bool IsEffectBoxRectInnerFill(RectTransform boxRt, Rect measuredNrm)
                 CleanupOverFrame();
                 return false;
             }
+            bool isPendulum = IsPendulumArtImage(baseArt);
 
             // 2) Load overlay PNG from OverFrame/Overframe folder by card ID.
             var tex = LoadOverFrameTexture(code);
@@ -1748,35 +2869,11 @@ private bool IsEffectBoxRectInnerFill(RectTransform boxRt, Rect measuredNrm)
             
             // Decide UV cropping:
             // - Full-card overlays must NOT inherit baseArt.uvRect (it would zoom/crop the overlay).
-            // - If the overlay texture aspect differs from the frame, crop UV to "cover" the frame (no stretching).
+            // - Keep full UV for full-card overlays to match the legacy overframe mod behavior.
             Rect overUv = baseArt.uvRect;
             if (looksFullCard && cardFrame != null)
             {
-                var fr = cardFrame.rectTransform.rect;
-                float targetAspect = fr.width / Mathf.Max(1f, fr.height);
-                float texAspect = (float)tex.width / Mathf.Max(1f, tex.height);
-
-                if (Mathf.Abs(texAspect - targetAspect) > 0.0005f)
-                {
-                    if (texAspect > targetAspect)
-                    {
-                        // Texture is wider: crop left/right.
-                        float w = targetAspect / texAspect;
-                        float x = (1f - w) * 0.5f;
-                        overUv = new Rect(x, 0f, w, 1f);
-                    }
-                    else
-                    {
-                        // Texture is taller/narrower: crop top/bottom.
-                        float h = texAspect / targetAspect;
-                        float y = (1f - h) * 0.5f;
-                        overUv = new Rect(0f, y, 1f, h);
-                    }
-                }
-                else
-                {
-                    overUv = new Rect(0f, 0f, 1f, 1f);
-                }
+                overUv = new Rect(0f, 0f, 1f, 1f);
             }
 
             _overFrameArt.uvRect = overUv;
@@ -1817,7 +2914,7 @@ private bool IsEffectBoxRectInnerFill(RectTransform boxRt, Rect measuredNrm)
 
             if (looksFullCard && cardFrame != null)
             {
-                splitApplied = ApplyOverFrameProxySplit(tex, baseArt, spec, cardFrame.rectTransform, anchorParent, parentRt);
+                splitApplied = ApplyOverFrameProxySplit(tex, baseArt, spec, cardFrame.rectTransform, anchorParent, parentRt, isPendulum);
             }
 
             if (!splitApplied)
@@ -1871,7 +2968,7 @@ private bool IsEffectBoxRectInnerFill(RectTransform boxRt, Rect measuredNrm)
 
             // 10) FINAL: Apply effect-box fade + enforce ordering
             //     OverFrameArt → FadeOverlay → Text/UI
-            ApplyOverFrameEffectBoxFade();
+            ApplyOverFrameEffectBoxFade(isPendulum);
 
             // Keep important UI on top (don’t hide ATK/Level/etc)
             if (cardName) cardName.transform.SetAsLastSibling();
