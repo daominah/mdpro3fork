@@ -202,10 +202,12 @@ namespace MDPro3
 
                     manager.GetElement("Defense").SetActive(true);
                     manager.GetElement("TextDefense").SetActive(true);
-                    manager.GetElement<Text>("TextDefense").text = data.Defense == -2 ? "?" : data.Defense.ToString();
-                    if (data.Defense > (origin.Defense < 0 ? 0 : origin.Defense))
+                    var defense = Card.NormalizeBattleValue(data.Defense, true);
+                    var originDefense = Card.NormalizeBattleValue(origin.Defense, false);
+                    manager.GetElement<Text>("TextDefense").text = Card.FormatBattleValue(defense);
+                    if (Card.NormalizeBattleValue(defense, false) > originDefense)
                         manager.GetElement<Text>("TextDefense").color = upColor;
-                    else if (data.Defense < origin.Defense)
+                    else if (Card.NormalizeBattleValue(defense, false) < originDefense)
                         manager.GetElement<Text>("TextDefense").color = downColor;
                     else
                         manager.GetElement<Text>("TextDefense").color = equalColor;
@@ -238,10 +240,12 @@ namespace MDPro3
                     }
                 }
 
-                manager.GetElement<Text>("TextAttack").text = data.Attack == -2 ? "?" : data.Attack.ToString();
-                if (data.Attack > (origin.Attack < 0 ? 0 : origin.Attack))
+                var attack = Card.NormalizeBattleValue(data.Attack, true);
+                var originAttack = Card.NormalizeBattleValue(origin.Attack, false);
+                manager.GetElement<Text>("TextAttack").text = Card.FormatBattleValue(attack);
+                if (Card.NormalizeBattleValue(attack, false) > originAttack)
                     manager.GetElement<Text>("TextAttack").color = upColor;
-                else if (data.Attack < origin.Attack)
+                else if (Card.NormalizeBattleValue(attack, false) < originAttack)
                     manager.GetElement<Text>("TextAttack").color = downColor;
                 else
                     manager.GetElement<Text>("TextAttack").color = equalColor;

@@ -3220,8 +3220,8 @@ private bool IsEffectBoxRectInnerFill(RectTransform boxRt, Rect measuredNrm)
             line.SetActive(true);
             textATK.SetActive(true);
             textDEF.SetActive(true);
-            numATK.text = data.Attack == -2 ? "?" : data.Attack.ToString();
-            numDEF.text = data.Defense == -2 ? "?" : data.Defense.ToString();
+            numATK.text = data.GetAttackString();
+            numDEF.text = data.GetDefenseString();
             linkCount.gameObject.SetActive(false);
             spellType.text = string.Empty;
             cardDescription.GetComponent<RectTransform>().sizeDelta = new Vector2(590f, 160f);

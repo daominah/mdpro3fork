@@ -10,6 +10,9 @@ namespace MDPro3.Duel.YGOSharp
 {
     public class Card
     {
+        public const int MAX_BATTLE_POWER_DISPLAY = 99_999_999;
+        public const int UNKNOWN_BATTLE_VALUE = -2;
+
         public int Id;
         public int Ot;
         public int Alias;
@@ -229,15 +232,31 @@ namespace MDPro3.Duel.YGOSharp
 
         public string GetAttackString()
         {
-            return Attack == -2 ? "?" : Attack.ToString();
+            return FormatBattleValue(Attack);
         }
 
         public string GetDefenseString()
         {
-            return Defense == -2 ? "?" : Defense.ToString();
+            return FormatBattleValue(Defense);
         }
 
-        // Put this near other fields/helpers inside Card class:
+        public static int NormalizeBattleValue(int value, bool keepUnknown = true)
+        {
+            if (value == UNKNOWN_BATTLE_VALUE)
+                return keepUnknown ? UNKNOWN_BATTLE_VALUE : 0;
+            if (value < 0)
+                return MAX_BATTLE_POWER_DISPLAY;
+            if (value > MAX_BATTLE_POWER_DISPLAY)
+                return MAX_BATTLE_POWER_DISPLAY;
+            return value;
+        }
+
+        public static string FormatBattleValue(int value)
+        {
+            var normalized = NormalizeBattleValue(value, true);
+            return normalized == UNKNOWN_BATTLE_VALUE ? "?" : normalized.ToString();
+        }
+
         private static readonly string PendulumSeparatorLine = new string('─', 14);
 
         public string GetDescription(bool withSetName = false)

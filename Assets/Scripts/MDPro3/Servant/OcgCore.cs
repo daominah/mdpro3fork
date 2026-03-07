@@ -1948,13 +1948,13 @@ namespace MDPro3.Servant
             DuelBGManager.PlayGraveEffect(p, isIn);
         }
 
-        public int GetAllAtk(bool mySide)
+        public long GetAllAtk(bool mySide)
         {
-            int allAttack = 0;
+            long allAttack = 0;
             var monsters = GCS_GetLocationCards(mySide ? 0 : 1, (int)CardLocation.MonsterZone);
             foreach (var card in monsters)
                 if ((card.p.position & (uint)CardPosition.FaceUpAttack) > 0)
-                    allAttack += card.GetData().Attack;
+                    allAttack += Card.NormalizeBattleValue(card.GetData().Attack, false);
             return allAttack;
         }
 

@@ -423,10 +423,10 @@ namespace MDPro3
             else if (data.Id > 0)
                 data.CloneTo(lastValidData);
 
-            if (d.Attack < 0)
-                d.Attack = 0;
-            if (d.Defense < 0)
-                d.Defense = 0;
+            d.Attack = Card.NormalizeBattleValue(d.Attack, false);
+            d.Defense = Card.NormalizeBattleValue(d.Defense, false);
+            d.rAttack = Card.NormalizeBattleValue(d.rAttack, false);
+            d.rDefense = Card.NormalizeBattleValue(d.rDefense, false);
 
             if (d.Id != data.Id)
             {
