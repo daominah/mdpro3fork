@@ -51,6 +51,8 @@ namespace MDPro3.Servant
             if (servantUI != null)
                 RefreshDeckSelector();
 
+            // Re-roll random duel icon/frame/protector whenever returning to lobby.
+            _ = Program.instance.appearance.LoadSettingAssets();
             StartCoroutine(RefreshMyCardAssets());
         }
 
