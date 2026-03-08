@@ -47,6 +47,17 @@ namespace MDPro3.Servant
 
         [HideInInspector] public SelectionToggle_Solo lastSoloItem;
 
+        private string lastSoloCommand = string.Empty;
+        private int lastSoloPort = 7911;
+        private int lastSoloLp = 8000;
+        private int lastSoloHand = 5;
+        private int lastSoloDraw = 1;
+        private bool lastSoloLockHand;
+        private bool lastSoloNoCheck;
+        private bool lastSoloNoShuffle;
+        private bool hasLastSoloLaunchConfig;
+        private bool retryLastSoloDuelWhenShown;
+
         #region Servant
 
         public override int Depth => 3;
@@ -57,6 +68,13 @@ namespace MDPro3.Servant
             returnServant = Program.instance.menu;
             base.Initialize();
             LoadBots();
+        }
+
+        protected override void ApplyShowArrangement(int preDepth)
+        {
+            base.ApplyShowArrangement(preDepth);
+            if (retryLastSoloDuelWhenShown)
+                StartCoroutine(RetryLastSoloDuelWhenReady());
         }
 
         protected override void FirstLoadEvent()
@@ -164,7 +182,19 @@ namespace MDPro3.Servant
         {
             string aiCommand = GetWindBotCommand(aiCode, diyDeck);
             if (!string.IsNullOrEmpty(aiCommand))
-                Launch(aiCommand, GetUI<SoloSelectorUI>().IsLockHand(), GetUI<SoloSelectorUI>().IsNoCheck(), GetUI<SoloSelectorUI>().IsNoShuffle());
+            {
+                var ui = GetUI<SoloSelectorUI>();
+                var lockHand = ui.IsLockHand();
+                var noCheck = ui.IsNoCheck();
+                var noShuffle = ui.IsNoShuffle();
+                var duelPort = ui.GetPort();
+                var duelLp = ui.GetLP();
+                var duelHand = ui.GetHand();
+                var duelDraw = ui.GetDraw();
+
+                RememberLastSoloLaunch(aiCommand, duelPort, duelLp, duelHand, duelDraw, lockHand, noCheck, noShuffle);
+                LaunchWithConfig(aiCommand, duelPort, duelLp, duelHand, duelDraw, lockHand, noCheck, noShuffle);
+            }
         }
 
         public void StartAIForRoom(int aiCode, bool diyDeck)
@@ -229,13 +259,60 @@ namespace MDPro3.Servant
         }
         public void Launch(string command, bool lockHand, bool noCheck, bool noShuffle)
         {
-            port = GetUI<SoloSelectorUI>().GetPort().ToString();
+            var ui = GetUI<SoloSelectorUI>();
+            LaunchWithConfig(command, ui.GetPort(), ui.GetLP(), ui.GetHand(), ui.GetDraw(), lockHand, noCheck, noShuffle);
+        }
 
-            string lp = GetUI<SoloSelectorUI>().GetLP().ToString();
-            string hand = GetUI<SoloSelectorUI>().GetHand().ToString();
-            string draw = GetUI<SoloSelectorUI>().GetDraw().ToString();
+        public bool CanRetryLastSoloDuel()
+        {
+            return hasLastSoloLaunchConfig;
+        }
+
+        public void QueueRetryLastSoloDuel()
+        {
+            if (!CanRetryLastSoloDuel())
+                return;
+            retryLastSoloDuelWhenShown = true;
+        }
+
+        private void RememberLastSoloLaunch(string command, int duelPort, int duelLp, int duelHand, int duelDraw
+            , bool lockHand, bool noCheck, bool noShuffle)
+        {
+            lastSoloCommand = command;
+            lastSoloPort = duelPort;
+            lastSoloLp = duelLp;
+            lastSoloHand = duelHand;
+            lastSoloDraw = duelDraw;
+            lastSoloLockHand = lockHand;
+            lastSoloNoCheck = noCheck;
+            lastSoloNoShuffle = noShuffle;
+            hasLastSoloLaunchConfig = true;
+        }
+
+        private IEnumerator RetryLastSoloDuelWhenReady()
+        {
+            yield return null;
+            while (showing && inTransition)
+                yield return null;
+
+            if (!showing || !retryLastSoloDuelWhenShown || !hasLastSoloLaunchConfig)
+                yield break;
+
+            retryLastSoloDuelWhenShown = false;
+            LaunchWithConfig(lastSoloCommand, lastSoloPort, lastSoloLp, lastSoloHand, lastSoloDraw
+                , lastSoloLockHand, lastSoloNoCheck, lastSoloNoShuffle);
+        }
+
+        private void LaunchWithConfig(string command, int duelPort, int duelLp, int duelHand, int duelDraw
+            , bool lockHand, bool noCheck, bool noShuffle)
+        {
+            port = duelPort.ToString();
+
+            string lp = duelLp.ToString();
+            string hand = duelHand.ToString();
+            string draw = duelDraw.ToString();
             string args = port + " -1 5 0 F " + (noCheck ? "T " : "F ") + (noShuffle ? "T " : "F ") + lp + " " + hand + " " + draw + " 0 0";
-            if (TcpHelper.IsPortAvailable(int.Parse(port)))
+            if (TcpHelper.IsPortAvailable(duelPort))
             {
                 YgoServer.StartServer(args);
                 RoomServant.FromSolo = true;

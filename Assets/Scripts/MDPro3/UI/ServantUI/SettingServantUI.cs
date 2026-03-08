@@ -547,6 +547,7 @@ namespace MDPro3.UI.ServantUI
         public override void Initialize(Servant.Servant servant)
         {
             base.Initialize(servant);
+            ButtonRetry.SetClickEvent(OnRetry);
 
             InitializeVolume();
             InitializeScreenMode();
@@ -609,7 +610,10 @@ namespace MDPro3.UI.ServantUI
                     ToggleWatch.gameObject.SetActive(false);
                     ToggleReplay.gameObject.SetActive(false);
 
-                    ButtonRetry.gameObject.SetActive(false);
+                    var canRetrySolo = RoomServant.FromSolo;
+                    ButtonRetry.gameObject.SetActive(canRetrySolo);
+                    if (canRetrySolo)
+                        ButtonRetry.SetButtonText(InterString.Get("重试"));
                     ButtonSurrender.gameObject.SetActive(true);
                     ButtonSurrender.SetButtonText(InterString.Get("投降"));
                 }
@@ -2384,6 +2388,17 @@ namespace MDPro3.UI.ServantUI
 
         public void OnSurrender()
         {
+            Program.instance.ocgcore.OnDuelResultConfirmed(true);
+        }
+
+        public void OnRetry()
+        {
+            if (OcgCore.condition != OcgCore.Condition.Duel || !RoomServant.FromSolo)
+                return;
+            if (!Program.instance.solo.CanRetryLastSoloDuel())
+                return;
+
+            Program.instance.ocgcore.onSurrenderConfirmed = Program.instance.solo.QueueRetryLastSoloDuel;
             Program.instance.ocgcore.OnDuelResultConfirmed(true);
         }
 

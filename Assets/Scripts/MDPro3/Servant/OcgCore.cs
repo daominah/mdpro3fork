@@ -131,6 +131,7 @@ namespace MDPro3.Servant
         public static float nextNegateAction_AdditionalTime;
         public static ElementObjectManager nextNegateAction_AdditionalManager;
         public static Action startCard;
+        public Action onSurrenderConfirmed;
 
         public static Material myProtector;
         public static Material opProtector;
@@ -653,11 +654,13 @@ namespace MDPro3.Servant
                 InterString.Get("是"),
                 InterString.Get("否")
             };
-            UIManager.ShowPopupYesOrNo(selections, ActionSurrender, null);
+            UIManager.ShowPopupYesOrNo(selections, ActionSurrender, ActionCancelSurrender);
         }
 
         private void ActionSurrender()
         {
+            onSurrenderConfirmed?.Invoke();
+            onSurrenderConfirmed = null;
             surrendered = true;
             if (TcpHelper.tcpClient != null && TcpHelper.tcpClient.Connected)
             {
@@ -668,6 +671,11 @@ namespace MDPro3.Servant
             }
             else
                 OnExit();
+        }
+
+        private void ActionCancelSurrender()
+        {
+            onSurrenderConfirmed = null;
         }
 
         #endregion
