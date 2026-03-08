@@ -165,7 +165,7 @@ namespace MDPro3
                 MouseMovedEvent();
             }
 
-            if(MoveInput != Vector2.zero)
+            if(MoveInput != Vector2.zero && !InputFieldActivating())
             {
                 if (Cursor.lockState == CursorLockMode.None)
                 {
@@ -456,10 +456,11 @@ namespace MDPro3
             if (current == null) return false;
             if (!current.TryGetComponent<Selectable>(out var selectable))
                 return false;
-            if(selectable is TMP_InputField inputField)
-                return inputField.isFocused;
-            else
-                return false;
+            if (selectable is TMP_InputField tmpInputField)
+                return tmpInputField.isFocused;
+            if (selectable is InputField legacyInputField)
+                return legacyInputField.isFocused;
+            return false;
         }
 
         #endregion

@@ -240,24 +240,30 @@ namespace MDPro3.Duel
             #region Mate
 
             var mateConfig = Config.Get(condition.ToString() + "Mate0", Program.items.mates[0].id.ToString());
-            if (mateConfig != Items.CODE_NONE.ToString() || deck != null)
+            var overrideDeckAppearance = Config.GetBool("OverrideDeckAppearance", false);
+            var mateConfigIsNone = mateConfig == Items.CODE_NONE.ToString();
+            if (!mateConfigIsNone || (deck != null && !overrideDeckAppearance))
             {
                 int mateCode = int.Parse(mateConfig);
-                if (deck != null && !Config.GetBool("OverrideDeckAppearance", false))
+                if (deck != null && !overrideDeckAppearance && !mateConfigIsNone)
                     mateCode = deck.Mate;
-                var mate = await ABLoader.LoadMateAsync(mateCode);
-                if (mate != null)
+
+                if (mateCode != Items.CODE_NONE)
                 {
-                    mate0 = mate;
-                    mate0.parent = pos_Avatar_near;
-                    mate0.gameObject.SetActive(false);
+                    var mate = await ABLoader.LoadMateAsync(mateCode);
+                    if (mate != null)
+                    {
+                        mate0 = mate;
+                        mate0.parent = pos_Avatar_near;
+                        mate0.gameObject.SetActive(false);
+                    }
                 }
             }
 
             mateConfig = Config.Get(condition.ToString() + "Mate1", Program.items.mates[0].id.ToString());
             if (mateConfig != Items.CODE_NONE.ToString())
             {
-                var mate = await ABLoader.LoadMateAsync(int.Parse(Config.Get(condition.ToString() + "Mate1", Program.items.mates[0].id.ToString())));
+                var mate = await ABLoader.LoadMateAsync(int.Parse(mateConfig));
                 if (mate != null)
                 {
                     mate1 = mate;

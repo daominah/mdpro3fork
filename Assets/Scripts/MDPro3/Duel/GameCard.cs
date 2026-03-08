@@ -423,10 +423,10 @@ namespace MDPro3
             else if (data.Id > 0)
                 data.CloneTo(lastValidData);
 
-            if (d.Attack < 0)
-                d.Attack = 0;
-            if (d.Defense < 0)
-                d.Defense = 0;
+            d.Attack = Card.NormalizeBattleValue(d.Attack, false);
+            d.Defense = Card.NormalizeBattleValue(d.Defense, false);
+            d.rAttack = Card.NormalizeBattleValue(d.rAttack, false);
+            d.rDefense = Card.NormalizeBattleValue(d.rDefense, false);
 
             if (d.Id != data.Id)
             {
@@ -441,6 +441,8 @@ namespace MDPro3
                 }
             }
             data = d;
+            if (model != null && p.InLocation(CardLocation.Hand) && !inAnimation)
+                RefreshHandTurnByCode();
             RefreshLabel();
             UpdateExDeckTop();
         }
@@ -1547,11 +1549,19 @@ namespace MDPro3
                 Program.instance.ocgcore.SetExDeckTop(this);
 
             ShowFaceDownCardOrNot(NeedShowFaceDownCard());
+            RefreshHandTurnByCode();
 
             if (p.InLocation(CardLocation.Deck, CardLocation.Extra))
                 Program.instance.ocgcore.DuelBGManager.ResizeDecks();
             if (p.InLocation(CardLocation.Grave, CardLocation.Removed))
                 Program.instance.ocgcore.DuelBGManager.RefreshGravesState();
+        }
+
+        private void RefreshHandTurnByCode()
+        {
+            if (model == null || !p.InLocation(CardLocation.Hand))
+                return;
+            manager.GetElement<Transform>("Turn").localEulerAngles = new Vector3(0, 0, data.Id == 0 ? 180 : 0);
         }
 
         public Sequence StartCardSequence(Vector3 fromPosition, Vector3 fromRotation, float interval = 0f)

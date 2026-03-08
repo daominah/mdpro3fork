@@ -28,20 +28,22 @@ namespace MDPro3.Net
 
         private static async UniTask InitializeGenesysLflist()
         {
-            var eTag = await GetETagAsync(URL_GENESYS_LFLIST);
-            if (!string.IsNullOrEmpty(eTag))
-            {
-                var configTag = Config.Get(GetLocalETagKey(URL_GENESYS_LFLIST), Config.EMPTY_STRING);
-                if(!string.Equals(eTag, configTag, StringComparison.Ordinal))
-                {
-                    Program.Debug("Update Genesys Lflist.");
-                    await DownloadGenesysLflist(eTag);
-                }
-                else
-                    Program.Debug("Genesys Lflist do not need update.");
-            }
-
+            // Load cached/local genesys data immediately so Deck Editor works offline.
             ParseGenesysLflist();
+
+            var eTag = await GetETagAsync(URL_GENESYS_LFLIST);
+            if (string.IsNullOrEmpty(eTag))
+                return;
+
+            var configTag = Config.Get(GetLocalETagKey(URL_GENESYS_LFLIST), Config.EMPTY_STRING);
+            if(!string.Equals(eTag, configTag, StringComparison.Ordinal))
+            {
+                Program.Debug("Update Genesys Lflist.");
+                await DownloadGenesysLflist(eTag);
+                ParseGenesysLflist();
+            }
+            else
+                Program.Debug("Genesys Lflist do not need update.");
         }
 
         private static bool GenesysRequiresDownload()
@@ -74,6 +76,10 @@ namespace MDPro3.Net
 
         private static void ParseGenesysLflist()
         {
+            genesysBannedCards.Clear();
+            genesysPoints.Clear();
+            officialGenesysLimit = 100;
+
             if (!File.Exists(PATH_GENESYS_LFLIST))
                 return;
 
@@ -88,6 +94,13 @@ namespace MDPro3.Net
                     if(string.IsNullOrEmpty(line) || line.StartsWith("#")) continue;
                     if (line.StartsWith("$"))
                     {
+                        // e.g. "$genesys 100"
+                        if (line.StartsWith("$genesys", StringComparison.OrdinalIgnoreCase))
+                        {
+                            var limitParts = line.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                            if (limitParts.Length >= 2 && int.TryParse(limitParts[1], out var limit))
+                                officialGenesysLimit = limit;
+                        }
                         currentType = line;
                         continue;
                     }
@@ -242,6 +255,7 @@ namespace MDPro3.Net
         public static async UniTask<string> GetETagAsync(string url)
         {
             using var headRequest = UnityWebRequest.Head(url);
+            headRequest.timeout = 8;
             await headRequest.SendWebRequest();
 
             if(headRequest.result != UnityWebRequest.Result.Success)

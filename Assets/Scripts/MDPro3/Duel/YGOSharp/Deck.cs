@@ -290,7 +290,10 @@ namespace MDPro3.Duel.YGOSharp
             var ydk = GetYDK();
             try
             {
-                deckName = Path.GetFileNameWithoutExtension(deckName);
+                deckName = NormalizeDeckFileName(deckName);
+                if (!IsValidDeckFileName(deckName))
+                    return false;
+
                 var path = Program.PATH_DECK + (type == string.Empty ? string.Empty : $"{type}/") + deckName + Program.EXPANSION_YDK;
                 var dir = Path.GetDirectoryName(path);
                 if (!Directory.Exists(dir))
@@ -306,6 +309,25 @@ namespace MDPro3.Duel.YGOSharp
                 return false;
             }
             return true;
+        }
+
+        public static string NormalizeDeckFileName(string deckName)
+        {
+            deckName = deckName?.Trim() ?? string.Empty;
+            if (deckName.EndsWith(Program.EXPANSION_YDK, StringComparison.OrdinalIgnoreCase))
+                deckName = deckName[..^Program.EXPANSION_YDK.Length];
+            return deckName;
+        }
+
+        public static bool IsValidDeckFileName(string deckName)
+        {
+            if (string.IsNullOrWhiteSpace(deckName))
+                return false;
+#if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
+            if (deckName.EndsWith(" ", StringComparison.Ordinal) || deckName.EndsWith(".", StringComparison.Ordinal))
+                return false;
+#endif
+            return deckName.IndexOfAny(Path.GetInvalidFileNameChars()) < 0;
         }
 
         public string GetYDK()
