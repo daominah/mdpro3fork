@@ -301,6 +301,7 @@ namespace MDPro3
         public Sprite listSingleColumn;
         public Sprite listViewIconExpand;
         public Sprite listViewIconDefault;
+        public Sprite listCardStatsBase;
 
         [Header("Card Affect")]
         public Sprite CardAffectDisable;

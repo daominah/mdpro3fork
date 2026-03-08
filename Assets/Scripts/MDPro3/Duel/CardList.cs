@@ -22,8 +22,17 @@ namespace MDPro3.UI
         const float ExtraDeckToggleButtonWidth = 64f;
         const float ExtraDeckToggleButtonHeight = 62f;
         const float ExtraDeckToggleButtonIconSize = 42f;
-        const float ExtraDeckToggleButtonOverlap = 4f;
+        const float ExtraDeckToggleButtonOverlap = 0f;
         const float ExtraDeckToggleButtonTopInset = 0f;
+        const float ExtraDeckToggleAdornmentWidth = 40f;
+        const float ExtraDeckToggleAdornmentHeight = 106f;
+        const float ExtraDeckToggleAdornmentVisibleStartX = 22f;
+        const float ExtraDeckToggleAdornmentOffsetY = 22f;
+        const float ExtraDeckToggleJoinPatchWidth = 16f;
+        const float ExtraDeckToggleJoinPatchHeight = 16f;
+        const float ExtraDeckToggleJoinPatchOffsetX = ExtraDeckToggleButtonWidth - 2f;
+        const float ExtraDeckToggleJoinPatchOffsetY = 0f;
+        const float ExtraDeckToggleJoinPatchTopLineHeight = 2f;
         const float HiddenPadding = 20f;
 
         public RectTransform baseRect;
@@ -43,6 +52,9 @@ namespace MDPro3.UI
         bool extraDeckGridMode = false;
         Button extraDeckModeButton;
         Image extraDeckModeButtonIcon;
+        RectTransform extraDeckModeButtonSeamRect;
+        RectTransform extraDeckModeButtonJoinPatchRect;
+        RectTransform extraDeckModeButtonJoinPatchTopLineRect;
 
         public void Show(List<GameCard> cards, CardLocation location, int controller)
         {
@@ -56,7 +68,7 @@ namespace MDPro3.UI
             this.cards = cards;
             this.location = location;
             this.controller = controller;
-            if ((this.location & CardLocation.Extra) > 0 && (!showing || (previousLocation & CardLocation.Extra) == 0))
+            if (IsToggleListLocation(this.location) && (!showing || !IsToggleListLocation(previousLocation)))
                 extraDeckGridMode = false;
 
             if (!showing)
@@ -219,13 +231,17 @@ namespace MDPro3.UI
 
         bool ShouldUseExtraDeckGrid()
         {
-            return (location & CardLocation.Extra) > 0 && extraDeckGridMode;
+            return IsToggleListLocation(location) && extraDeckGridMode;
         }
 
         void EnsureExtraDeckModeToggle()
         {
+            TryBindExistingExtraDeckModeToggle();
             if (extraDeckModeButton != null)
+            {
+                UpdateExtraDeckModeToggleLayout();
                 return;
+            }
 
             var parent = baseRect;
             if (parent == null)
@@ -233,17 +249,24 @@ namespace MDPro3.UI
 
             var go = new GameObject("ExtraDeckViewToggle", typeof(RectTransform), typeof(CanvasRenderer), typeof(Image), typeof(Button));
             go.transform.SetParent(parent, false);
-            go.transform.SetSiblingIndex(0);
+            go.transform.SetAsLastSibling();
             var rect = go.GetComponent<RectTransform>();
             rect.anchorMin = new Vector2(0f, 1f);
             rect.anchorMax = new Vector2(0f, 1f);
             rect.pivot = new Vector2(0f, 1f);
-            rect.anchoredPosition = new Vector2(GetExtraDeckToggleAnchoredX(), -ExtraDeckToggleButtonTopInset);
-            rect.sizeDelta = new Vector2(ExtraDeckToggleButtonWidth, ExtraDeckToggleButtonHeight);
+            rect.anchoredPosition = Vector2.zero;
+            rect.sizeDelta = Vector2.zero;
 
             var bgImage = go.GetComponent<Image>();
             var baseImage = baseRect != null ? baseRect.GetComponent<Image>() : null;
-            if (baseImage != null)
+            var blackBg = TextureManager.container != null ? TextureManager.container.black : null;
+            if (blackBg != null)
+            {
+                bgImage.sprite = blackBg;
+                bgImage.type = Image.Type.Simple;
+                bgImage.color = Color.white;
+            }
+            else if (baseImage != null)
             {
                 bgImage.sprite = baseImage.sprite;
                 bgImage.type = baseImage.type;
@@ -268,6 +291,38 @@ namespace MDPro3.UI
             extraDeckModeButtonIcon.preserveAspect = true;
             extraDeckModeButtonIcon.color = Color.white;
             extraDeckModeButtonIcon.raycastTarget = false;
+
+            EnsureExtraDeckModeToggleSeam(go.transform);
+            EnsureExtraDeckModeToggleJoinPatch(go.transform);
+            UpdateExtraDeckModeToggleLayout();
+        }
+
+        void TryBindExistingExtraDeckModeToggle()
+        {
+            if (extraDeckModeButton != null || baseRect == null)
+                return;
+
+            var existing = baseRect.Find("ExtraDeckViewToggle");
+            if (existing == null)
+                return;
+
+            extraDeckModeButton = existing.GetComponent<Button>();
+            if (extraDeckModeButton == null)
+                return;
+
+            var iconTransform = existing.Find("Icon");
+            if (iconTransform != null)
+                extraDeckModeButtonIcon = iconTransform.GetComponent<Image>();
+
+            EnsureExtraDeckModeToggleSeam(existing);
+            EnsureExtraDeckModeToggleJoinPatch(existing);
+
+            var bgImage = existing.GetComponent<Image>();
+            if (bgImage != null)
+                extraDeckModeButton.targetGraphic = bgImage;
+
+            extraDeckModeButton.onClick.RemoveListener(OnExtraDeckModeButtonClick);
+            extraDeckModeButton.onClick.AddListener(OnExtraDeckModeButtonClick);
         }
 
         void UpdateExtraDeckModeToggle()
@@ -275,9 +330,11 @@ namespace MDPro3.UI
             if (extraDeckModeButton == null || extraDeckModeButtonIcon == null)
                 return;
 
-            var isExtraLocation = (location & CardLocation.Extra) > 0;
-            extraDeckModeButton.gameObject.SetActive(isExtraLocation);
-            if (!isExtraLocation)
+            UpdateExtraDeckModeToggleLayout();
+
+            var isToggleLocation = IsToggleListLocation(location);
+            extraDeckModeButton.gameObject.SetActive(isToggleLocation);
+            if (!isToggleLocation)
                 return;
 
             if (ShouldUseExtraDeckGrid())
@@ -292,11 +349,16 @@ namespace MDPro3.UI
 
         void OnExtraDeckModeButtonClick()
         {
-            if ((location & CardLocation.Extra) == 0)
+            if (!IsToggleListLocation(location))
                 return;
 
             extraDeckGridMode = !extraDeckGridMode;
             RefreshList();
+        }
+
+        bool IsToggleListLocation(CardLocation targetLocation)
+        {
+            return (targetLocation & (CardLocation.Extra | CardLocation.Grave | CardLocation.Removed)) > 0;
         }
 
         float GetHiddenPosX()
@@ -319,6 +381,175 @@ namespace MDPro3.UI
         float GetExtraDeckToggleAnchoredX()
         {
             return -ExtraDeckToggleButtonWidth + ExtraDeckToggleButtonOverlap;
+        }
+
+        float GetExtraDeckToggleAdornmentAnchoredX()
+        {
+            // Lock the visible seam line to the toggle start (left edge).
+            return -ExtraDeckToggleAdornmentVisibleStartX;
+        }
+
+        void UpdateExtraDeckModeToggleLayout()
+        {
+            if (extraDeckModeButton != null && extraDeckModeButton.transform is RectTransform buttonRect)
+            {
+                buttonRect.anchoredPosition = new Vector2(GetExtraDeckToggleAnchoredX(), -ExtraDeckToggleButtonTopInset);
+                buttonRect.sizeDelta = new Vector2(ExtraDeckToggleButtonWidth, ExtraDeckToggleButtonHeight);
+            }
+
+            if (extraDeckModeButtonSeamRect != null)
+            {
+                extraDeckModeButtonSeamRect.anchoredPosition =
+                    new Vector2(GetExtraDeckToggleAdornmentAnchoredX(), ExtraDeckToggleAdornmentOffsetY);
+                extraDeckModeButtonSeamRect.sizeDelta =
+                    new Vector2(ExtraDeckToggleAdornmentWidth, ExtraDeckToggleAdornmentHeight);
+            }
+
+            if (extraDeckModeButtonJoinPatchRect != null)
+            {
+                extraDeckModeButtonJoinPatchRect.anchoredPosition =
+                    new Vector2(ExtraDeckToggleJoinPatchOffsetX, ExtraDeckToggleJoinPatchOffsetY);
+                extraDeckModeButtonJoinPatchRect.sizeDelta =
+                    new Vector2(ExtraDeckToggleJoinPatchWidth, ExtraDeckToggleJoinPatchHeight);
+            }
+
+            if (extraDeckModeButtonJoinPatchTopLineRect != null)
+            {
+                extraDeckModeButtonJoinPatchTopLineRect.anchoredPosition = Vector2.zero;
+                extraDeckModeButtonJoinPatchTopLineRect.sizeDelta = new Vector2(0f, ExtraDeckToggleJoinPatchTopLineHeight);
+            }
+        }
+
+        void EnsureExtraDeckModeToggleSeam(Transform parent)
+        {
+            extraDeckModeButtonSeamRect = null;
+            var seamSprite = GetToggleBackgroundSprite();
+            if (parent == null || seamSprite == null)
+                return;
+
+            RectTransform seamRect = null;
+            var seamTransform = parent.Find("Seam");
+            if (seamTransform != null)
+            {
+                seamTransform.gameObject.SetActive(true);
+                seamRect = seamTransform as RectTransform;
+                if (seamRect == null)
+                    seamRect = seamTransform.GetComponent<RectTransform>();
+            }
+
+            if (seamRect == null)
+            {
+                var seam = new GameObject("Seam", typeof(RectTransform), typeof(CanvasRenderer), typeof(Image));
+                seam.transform.SetParent(parent, false);
+                seam.transform.SetAsFirstSibling();
+                seamRect = seam.GetComponent<RectTransform>();
+            }
+
+            seamRect.anchorMin = new Vector2(0f, 1f);
+            seamRect.anchorMax = new Vector2(0f, 1f);
+            seamRect.pivot = new Vector2(0f, 1f);
+            seamRect.anchoredPosition = Vector2.zero;
+            seamRect.sizeDelta = Vector2.zero;
+
+            var seamImage = seamRect.GetComponent<Image>();
+            if (seamImage == null)
+                seamImage = seamRect.gameObject.AddComponent<Image>();
+            seamImage.sprite = seamSprite;
+            seamImage.type = Image.Type.Simple;
+            seamImage.color = Color.white;
+            seamImage.raycastTarget = false;
+
+            extraDeckModeButtonSeamRect = seamRect;
+            var middleMaskTransform = seamRect.Find("MiddleMask");
+            if (middleMaskTransform != null)
+                middleMaskTransform.gameObject.SetActive(false);
+        }
+
+        void EnsureExtraDeckModeToggleJoinPatch(Transform parent)
+        {
+            extraDeckModeButtonJoinPatchRect = null;
+            extraDeckModeButtonJoinPatchTopLineRect = null;
+            if (parent == null)
+                return;
+
+            RectTransform patchRect = null;
+            var patchTransform = parent.Find("JoinPatch");
+            if (patchTransform != null)
+            {
+                patchTransform.gameObject.SetActive(true);
+                patchRect = patchTransform as RectTransform;
+                if (patchRect == null)
+                    patchRect = patchTransform.GetComponent<RectTransform>();
+            }
+
+            if (patchRect == null)
+            {
+                var patch = new GameObject("JoinPatch", typeof(RectTransform), typeof(CanvasRenderer), typeof(Image));
+                patch.transform.SetParent(parent, false);
+                patch.transform.SetSiblingIndex(0);
+                patchRect = patch.GetComponent<RectTransform>();
+            }
+
+            patchRect.anchorMin = new Vector2(0f, 1f);
+            patchRect.anchorMax = new Vector2(0f, 1f);
+            patchRect.pivot = new Vector2(0f, 1f);
+
+            var patchImage = patchRect.GetComponent<Image>();
+            var blackBg = TextureManager.container != null ? TextureManager.container.black : null;
+            if (blackBg != null)
+            {
+                patchImage.sprite = blackBg;
+                patchImage.type = Image.Type.Simple;
+                patchImage.color = Color.white;
+            }
+            else
+            {
+                patchImage.sprite = null;
+                patchImage.color = Color.black;
+            }
+            patchImage.raycastTarget = false;
+
+            RectTransform topLineRect = null;
+            var topLineTransform = patchRect.Find("TopLine");
+            if (topLineTransform != null)
+            {
+                topLineTransform.gameObject.SetActive(true);
+                topLineRect = topLineTransform as RectTransform;
+                if (topLineRect == null)
+                    topLineRect = topLineTransform.GetComponent<RectTransform>();
+            }
+
+            if (topLineRect == null)
+            {
+                var topLine = new GameObject("TopLine", typeof(RectTransform), typeof(CanvasRenderer), typeof(Image));
+                topLine.transform.SetParent(patchRect, false);
+                topLineRect = topLine.GetComponent<RectTransform>();
+            }
+
+            topLineRect.anchorMin = new Vector2(0f, 1f);
+            topLineRect.anchorMax = new Vector2(1f, 1f);
+            topLineRect.pivot = new Vector2(0.5f, 1f);
+
+            var topLineImage = topLineRect.GetComponent<Image>();
+            if (blackBg != null)
+            {
+                topLineImage.sprite = blackBg;
+                topLineImage.type = Image.Type.Simple;
+            }
+            else
+            {
+                topLineImage.sprite = null;
+            }
+            topLineImage.color = new Color(0.78f, 0.78f, 0.78f, 1f);
+            topLineImage.raycastTarget = false;
+
+            extraDeckModeButtonJoinPatchRect = patchRect;
+            extraDeckModeButtonJoinPatchTopLineRect = topLineRect;
+        }
+
+        Sprite GetToggleBackgroundSprite()
+        {
+            return TextureManager.container != null ? TextureManager.container.listCardStatsBase : null;
         }
 
         void ClearList()
