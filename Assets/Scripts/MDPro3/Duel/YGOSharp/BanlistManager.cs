@@ -182,6 +182,12 @@ namespace MDPro3.Duel.YGOSharp
                         Banlists.Add(current);
                         continue;
                     }
+                    if (line.StartsWith("$"))
+                    {
+                        if (current != null && line.Equals("$whitelist", StringComparison.OrdinalIgnoreCase))
+                            current.EnableWhitelistMode();
+                        continue;
+                    }
                     if (!line.Contains(" "))
                         continue;
                     if (current == null)
