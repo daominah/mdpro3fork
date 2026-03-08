@@ -1,7 +1,9 @@
 using Ionic.Zip;
 using MDPro3.Servant;
+using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 
 namespace MDPro3.Duel.YGOSharp
 {
@@ -9,6 +11,9 @@ namespace MDPro3.Duel.YGOSharp
     {
         public static List<Banlist> Banlists { get; private set; }
         public static string EmptyBanlistName = "N/A";
+        private static bool localServerLflistInjected;
+        private static string localServerLflistBackupContent;
+        private const string LfListFileName = "lflist.conf";
 
         public static void Initialize()
         {
@@ -54,6 +59,110 @@ namespace MDPro3.Duel.YGOSharp
             Banlists.Add(current);
         }
 
+        public static void PrepareLocalServerLflist()
+        {
+            if (localServerLflistInjected)
+                return;
+            if (!Config.GetBool("Expansions", true))
+                return;
+
+            try
+            {
+                if (!File.Exists(Program.PATH_LFLIST))
+                    return;
+
+                localServerLflistBackupContent = File.ReadAllText(Program.PATH_LFLIST);
+                var mergedContent = BuildMergedLflistContent();
+
+                if (string.IsNullOrEmpty(mergedContent) || mergedContent == localServerLflistBackupContent)
+                {
+                    localServerLflistBackupContent = null;
+                    return;
+                }
+
+                File.WriteAllText(Program.PATH_LFLIST, mergedContent);
+                localServerLflistInjected = true;
+            }
+            catch (Exception e)
+            {
+                localServerLflistBackupContent = null;
+                localServerLflistInjected = false;
+                UnityEngine.Debug.LogError("Failed to prepare LAN lflist.conf.");
+                UnityEngine.Debug.LogException(e);
+            }
+        }
+
+        public static void RestoreLocalServerLflist()
+        {
+            if (!localServerLflistInjected)
+                return;
+
+            try
+            {
+                if (localServerLflistBackupContent != null)
+                    File.WriteAllText(Program.PATH_LFLIST, localServerLflistBackupContent);
+            }
+            catch (Exception e)
+            {
+                UnityEngine.Debug.LogError("Failed to restore original lflist.conf.");
+                UnityEngine.Debug.LogException(e);
+            }
+            finally
+            {
+                localServerLflistBackupContent = null;
+                localServerLflistInjected = false;
+            }
+        }
+
+        private static string BuildMergedLflistContent()
+        {
+            StringBuilder builder = new StringBuilder();
+            var confPath = Program.PATH_EXPANSIONS + LfListFileName;
+            AppendLflistFromFile(builder, confPath);
+
+            foreach (var zip in ZipHelper.zips)
+            {
+                if (zip.Name.ToLower().EndsWith("script.zip"))
+                    continue;
+                foreach (var file in zip.EntryFileNames)
+                {
+                    if (!file.ToLower().EndsWith(LfListFileName))
+                        continue;
+
+                    var entry = zip[file];
+                    using (var memoryStream = new MemoryStream())
+                    {
+                        entry.Extract(memoryStream);
+                        memoryStream.Position = 0;
+                        using (var reader = new StreamReader(memoryStream))
+                            AppendLflistText(builder, reader.ReadToEnd());
+                    }
+                }
+            }
+
+            AppendLflistFromFile(builder, Program.PATH_LFLIST);
+            return builder.ToString();
+        }
+
+        private static void AppendLflistFromFile(StringBuilder builder, string path)
+        {
+            if (!File.Exists(path))
+                return;
+            AppendLflistText(builder, File.ReadAllText(path));
+        }
+
+        private static void AppendLflistText(StringBuilder builder, string text)
+        {
+            if (string.IsNullOrWhiteSpace(text))
+                return;
+
+            if (builder.Length > 0 && builder[builder.Length - 1] != '\n')
+                builder.AppendLine();
+            builder.Append(text);
+            if (builder.Length > 0 && builder[builder.Length - 1] != '\n')
+                builder.AppendLine();
+        }
+
         public static void InitializeFromReader(StreamReader reader)
         {
             Banlist current = null;
@@ -71,6 +180,12 @@ namespace MDPro3.Duel.YGOSharp
                         current = new Banlist();
                         current.Name = line.Substring(1, line.Length - 1);
                         Banlists.Add(current);
+                        continue;
+                    }
+                    if (line.StartsWith("$"))
+                    {
+                        if (current != null && line.Equals("$whitelist", StringComparison.OrdinalIgnoreCase))
+                            current.EnableWhitelistMode();
                         continue;
                     }
                     if (!line.Contains(" "))

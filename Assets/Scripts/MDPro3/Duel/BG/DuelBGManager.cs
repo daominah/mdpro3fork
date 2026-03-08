@@ -99,6 +99,9 @@ namespace MDPro3.Duel
             UIManager.UIBlackIn(Core.TransitionTime);
             await UniTask.WaitForSeconds(Core.TransitionTime);
             await UniTask.WaitUntil(() => Appearance.loaded);
+            // Rebuild appearance assets on each match load so random selections
+            // (icon / frame / protector) are re-rolled per duel.
+            await Program.instance.appearance.LoadSettingAssets();
             await ABLoader.CacheMasterDuelBundles();
             Program.instance.ocgcore.LoadDuelButton();
 

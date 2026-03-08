@@ -298,6 +298,10 @@ namespace MDPro3
         public Sprite listOpRemoved;
         public Sprite listMyXyz;
         public Sprite listOpXyz;
+        public Sprite listSingleColumn;
+        public Sprite listViewIconExpand;
+        public Sprite listViewIconDefault;
+        public Sprite listCardStatsBase;
 
         [Header("Card Affect")]
         public Sprite CardAffectDisable;

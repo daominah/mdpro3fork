@@ -51,6 +51,8 @@ namespace MDPro3.Servant
             if (servantUI != null)
                 RefreshDeckSelector();
 
+            // Re-roll random duel icon/frame/protector whenever returning to lobby.
+            _ = Program.instance.appearance.LoadSettingAssets();
             StartCoroutine(RefreshMyCardAssets());
         }
 
@@ -145,6 +147,7 @@ namespace MDPro3.Servant
             RoomServant.FromLocalHost = true;
             RoomServant.FromHandTest = false;
 
+            BanlistManager.PrepareLocalServerLflist();
             YgoServer.StartServer(args);
             TcpHelper.LinkStart("127.0.0.1", Config.Get("DuelPlayerName0", Config.EMPTY_STRING), port.ToString(), string.Empty, true, null);
         }

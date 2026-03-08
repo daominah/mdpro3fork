@@ -67,6 +67,8 @@ namespace MDPro3.Servant
             CoreShowing = 0;
             Program.instance.ui_.chatPanel.Show(false);
             OcgCore.handler = Handler;
+            // Re-roll random duel/watch icon & frame whenever entering a room.
+            _ = Program.instance.appearance.LoadSettingAssets();
             GetUI<RoomServantUI>().RefreshDeckSelector();
         }
 

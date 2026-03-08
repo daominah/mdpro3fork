@@ -656,13 +656,13 @@ namespace MDPro3.Duel
                     MessageManager.Cast(InterString.Get("请联系开发者修复这张特殊胜利的卡。"));
             }
 
+            // Start win/lose field animation first, then show result text while it is ongoing.
+            duelBGManager.ShowBGEnd(duelResult);
             await duelBGManager.ShowDuelResultText(duelText);
 
             MessageManager.Cast(endingReason);
             if (condition != Condition.Replay)
                 Core.GetUI<OcgCoreUI>().ShowSaveReplay();
-
-            duelBGManager.ShowBGEnd(duelResult);
         }
 
         protected override UniTask GameMessage_UpdateData(BinaryReader reader)
