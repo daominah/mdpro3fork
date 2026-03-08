@@ -1,5 +1,6 @@
 using System.Runtime.InteropServices;
 using System.Threading;
+using MDPro3.Duel.YGOSharp;
 
 namespace MDPro3.Net
 {
@@ -21,15 +22,29 @@ namespace MDPro3.Net
 
             serverThread = new Thread(() =>
             {
-                Dll.start_server(args);
+                try
+                {
+                    Dll.start_server(args);
+                }
+                finally
+                {
+                    BanlistManager.RestoreLocalServerLflist();
+                }
             });
             serverThread.Start();
         }
 
         public static void StopServer()
         {
-            Dll.stop_server();
-            serverThread?.Abort();
+            try
+            {
+                Dll.stop_server();
+            }
+            finally
+            {
+                serverThread?.Abort();
+                BanlistManager.RestoreLocalServerLflist();
+            }
         }
 
         public static bool ServerRunning()
