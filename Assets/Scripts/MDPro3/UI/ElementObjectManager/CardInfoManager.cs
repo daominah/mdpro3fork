@@ -419,7 +419,7 @@ namespace MDPro3.UI
                 SpellTrapType.SetActive(true);
                 IconSpellTrapType.sprite = TextureManager.container.GetCardSpellTrapTypeIcon(data);
                 TextSpellTrapType.text
-                    = StringHelper.SecondType(data.Type) + StringHelper.MainType(data.Type);
+                    = data.GetSpellTrapType(true);
 
                 IconAtk.gameObject.SetActive(false);
                 IconDef.gameObject.SetActive(false);

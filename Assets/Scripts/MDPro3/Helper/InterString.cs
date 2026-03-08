@@ -25,8 +25,8 @@ namespace MDPro3
         public static void Initialize()
         {
             translations.Clear();
-            translationsForRender.Clear();
-            translationsForPrerelease.Clear();
+            translationsForRender = new Dictionary<string, string>();
+            translationsForPrerelease = new Dictionary<string, string>();
 
             path = Program.PATH_LOCALES + Language.GetConfig() + PATH_CONF_FILE;
             if (!File.Exists(path))
