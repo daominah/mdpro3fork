@@ -6,6 +6,7 @@ using Mono.Data.Sqlite;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.IO;
 using System.Text.RegularExpressions;
 using YGOSharp.OCGWrapper;
@@ -20,6 +21,9 @@ namespace MDPro3.Duel.YGOSharp
 
         public static IDictionary<int, Card> _cards = new Dictionary<int, Card>();
         public static IDictionary<int, Card> _cardsForRender = new Dictionary<int, Card>();
+        private static readonly CompareInfo SearchCompareInfo = CultureInfo.InvariantCulture.CompareInfo;
+        private const CompareOptions SearchCompareOptions =
+            CompareOptions.IgnoreCase | CompareOptions.IgnoreWidth | CompareOptions.IgnoreKanaType;
 
         public static List<string> setNameHead = new()
         {
@@ -269,6 +273,30 @@ namespace MDPro3.Duel.YGOSharp
             return returnValue;
         }
 
+        private static bool MatchWithSearchOptions(string source, string keyword)
+        {
+            if (string.IsNullOrEmpty(source) || string.IsNullOrEmpty(keyword))
+                return false;
+
+            try
+            {
+                if (Regex.Replace(source, keyword, "miaowu", RegexOptions.IgnoreCase) != source)
+                    return true;
+            }
+            catch (ArgumentException)
+            {
+                // Keep searching with a literal fallback when regex input is invalid.
+            }
+
+            return SearchCompareInfo.IndexOf(source, keyword, SearchCompareOptions) >= 0;
+        }
+
+        private static bool MatchCardId(int cardId, string keyword)
+        {
+            return !string.IsNullOrEmpty(keyword)
+                && SearchCompareInfo.Compare(cardId.ToString(), keyword, SearchCompareOptions) == 0;
+        }
+
         internal static List<Card> Search
         (
             string getName,
@@ -278,7 +306,7 @@ namespace MDPro3.Duel.YGOSharp
         )
         {
             var returnValue = new List<Card>();
-            string[] strings = getName.Split(' ');
+            string[] strings = getName.Split(new[] { ' ', '\u3000' }, StringSplitOptions.None);
             nameInSearch = getName;
             foreach (var item in _cards)
             {
@@ -290,7 +318,7 @@ namespace MDPro3.Duel.YGOSharp
                     {
                         if (s.StartsWith("@"))
                         {
-                            if (Regex.Replace(card.strSetName, s.Substring(1, s.Length - 1), "miaowu", RegexOptions.IgnoreCase) == card.strSetName)
+                            if (!MatchWithSearchOptions(card.strSetName, s.Substring(1, s.Length - 1)))
                             {
                                 pass = false;
                                 break;
@@ -298,10 +326,10 @@ namespace MDPro3.Duel.YGOSharp
                         }
                         else if (
                                 s != ""
-                                && Regex.Replace(card.Name, s, "miaowu", RegexOptions.IgnoreCase) == card.Name
-                                && Regex.Replace(card.Desc, s, "miaowu", RegexOptions.IgnoreCase) == card.Desc
-                                && Regex.Replace(card.strSetName, s, "miaowu", RegexOptions.IgnoreCase) == card.strSetName
-                                && card.Id.ToString() != s
+                                && !MatchWithSearchOptions(card.Name, s)
+                                && !MatchWithSearchOptions(card.Desc, s)
+                                && !MatchWithSearchOptions(card.strSetName, s)
+                                && !MatchCardId(card.Id, s)
                                 )
                         {
                             pass = false;
@@ -553,9 +581,9 @@ namespace MDPro3.Duel.YGOSharp
             {
                 Card card = item.Value;
                 if(announced == ""
-                    || Regex.Replace(card.Name, announced, "miaowu", RegexOptions.IgnoreCase) != card.Name
-                    || Regex.Replace(card.strSetName, announced, "miaowu", RegexOptions.IgnoreCase) != card.strSetName
-                    || card.Id.ToString() == announced)
+                    || MatchWithSearchOptions(card.Name, announced)
+                    || MatchWithSearchOptions(card.strSetName, announced)
+                    || MatchCardId(card.Id, announced))
                 {
                     if(searchCodes.Count == 0 || IsDeclarable(card, searchCodes))
                         returnValue.Add(card);
