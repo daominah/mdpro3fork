@@ -63,83 +63,55 @@ namespace MDPro3.Duel.YGOSharp
         {
             nullName = InterString.Get("未知卡片");
             nullString = string.Empty;
-;
-            string language = Language.GetConfig();
-            string databaseFullPath = Program.PATH_LOCALES + language + "/cards.cdb";
-            if (!File.Exists(databaseFullPath))
-                databaseFullPath = Program.PATH_LOCALES + "zh-CN/cards.cdb";
-            _cards.Clear();
-            LoadCDB(databaseFullPath);
-            if (Config.Get("Expansions", "1") == "1")
+            IDictionary<int, Card> previousCards = _cards;
+            IDictionary<int, Card> previousRenderCards = _cardsForRender;
+
+            var loadedCards = new Dictionary<int, Card>(Math.Max(previousCards?.Count ?? 0, 16384));
+            var loadedRenderCards = new Dictionary<int, Card>(Math.Max(previousRenderCards?.Count ?? 0, 16384));
+
+            bool loadedMain = TryLoadCardsForLanguage(loadedCards, Language.GetConfig(), render: false);
+            bool loadedRender = TryLoadCardsForLanguage(loadedRenderCards, Language.GetCardConfig(), render: true);
+
+            if (!loadedMain || loadedCards.Count == 0)
             {
-                foreach (var cdb in Directory.GetFiles("Expansions", "*.cdb"))
-                    LoadCDB(cdb);
-                foreach (var zip in ZipHelper.zips)
+                if (string.IsNullOrEmpty(MDPro3.MessageManager.messageFromSubString))
                 {
-                    if (zip.Name.ToLower().EndsWith("script.zip"))
-                        continue;
-                    foreach (var file in zip.EntryFileNames)
-                    {
-                        if (file.ToLower().EndsWith(".cdb"))
-                        {
-                            var e = zip[file];
-                            if (!Directory.Exists(Program.PATH_TEMP_FOLDER))
-                                Directory.CreateDirectory(Program.PATH_TEMP_FOLDER);
-                            var tempFile = Path.Combine(Path.GetFullPath(Program.PATH_TEMP_FOLDER), file);
-                            e.Extract(Path.GetFullPath(Program.PATH_TEMP_FOLDER), ExtractExistingFileAction.OverwriteSilently);
-                            LoadCDB(tempFile, isPreCards : Path.GetFileName(zip.Name) == "ygopro-super-pre.ypk" && file.ToLower().StartsWith("test-release"));
-                            File.Delete(tempFile);
-                        }
-                    }
+                    MDPro3.MessageManager.messageFromSubString =
+                        InterString.Get("Failed to load card database. Some cards may be shown as unknown.");
                 }
+
+                if (previousCards != null && previousCards.Count > 0)
+                    _cards = previousCards;
+                else
+                    _cards = loadedCards;
+
+                if (previousRenderCards != null && previousRenderCards.Count > 0)
+                    _cardsForRender = previousRenderCards;
+                else
+                    _cardsForRender = loadedRenderCards;
+
+                return;
             }
+
+            if (!loadedRender)
+            {
+                if (previousRenderCards != null && previousRenderCards.Count > 0)
+                    loadedRenderCards = new Dictionary<int, Card>(previousRenderCards);
+                else
+                    loadedRenderCards = new Dictionary<int, Card>(loadedCards);
+            }
+
+            _cards = loadedCards;
+            _cardsForRender = loadedRenderCards;
 
             UpdateSetNames();
             PacksManager.Initialize();
-
-            _cardsForRender.Clear();
-            var cardLanguage = Language.GetCardConfig();
-            databaseFullPath = Program.PATH_LOCALES + cardLanguage + "/cards.cdb";
-            if (!File.Exists(databaseFullPath))
-                databaseFullPath = Program.PATH_LOCALES + "zh-CN/cards.cdb";
-            LoadCDB(databaseFullPath, true);
-            if (Config.Get("Expansions", "1") == "1")
-            {
-                foreach (var cdb in Directory.GetFiles("Expansions", "*.cdb"))
-                    LoadCDB(cdb, true);
-                foreach (var zip in ZipHelper.zips)
-                {
-                    if (zip.Name.ToLower().EndsWith("script.zip"))
-                        continue;
-                    foreach (var file in zip.EntryFileNames)
-                    {
-                        if (file.ToLower().EndsWith(".cdb"))
-                        {
-                            var e = zip[file];
-                            if (!Directory.Exists(Program.PATH_TEMP_FOLDER))
-                                Directory.CreateDirectory(Program.PATH_TEMP_FOLDER);
-                            var tempFile = Path.Combine(Path.GetFullPath(Program.PATH_TEMP_FOLDER), file);
-                            e.Extract(Path.GetFullPath(Program.PATH_TEMP_FOLDER), ExtractExistingFileAction.OverwriteSilently);
-                            LoadCDB(tempFile, true, isPreCards: Path.GetFileName(zip.Name) == "ygopro-super-pre.ypk");
-                            File.Delete(tempFile);
-                        }
-                    }
-                }
-            }
         }
 
         internal static void LoadCDB(string databaseFullPath, bool render = false, bool isPreCards = false)
         {
-            using SqliteConnection connection = new("Data Source=" + databaseFullPath);
-            connection.Open();
-
-            using IDbCommand command =
-                new SqliteCommand("SELECT datas.*, texts.* FROM datas,texts WHERE datas.id=texts.id;", connection);
-            using IDataReader reader = command.ExecuteReader();
-            while (reader.Read())
-            {
-                LoadCard(reader, render, isPreCards);
-            }
+            var targetCards = render ? _cardsForRender : _cards;
+            TryLoadCDB(databaseFullPath, targetCards, isPreCards, render, optionalDatabase: false);
         }
 
         internal static void UpdateSetNames()
@@ -216,24 +188,115 @@ namespace MDPro3.Duel.YGOSharp
             return returnValue;
         }
 
-        private static void LoadCard(IDataRecord reader, bool render = false, bool isPreCards = false)
+        private static bool TryLoadCardsForLanguage(IDictionary<int, Card> targetCards, string language, bool render)
+        {
+            string databaseFullPath = ResolveCardsDatabasePath(language);
+            if (!TryLoadCDB(databaseFullPath, targetCards, isPreCards: false, render, optionalDatabase: false))
+                return false;
+
+            if (Config.Get("Expansions", "1") != "1")
+                return true;
+
+            foreach (var cdb in Directory.GetFiles("Expansions", "*.cdb"))
+                TryLoadCDB(cdb, targetCards, isPreCards: false, render, optionalDatabase: true);
+
+            foreach (var zip in ZipHelper.zips)
+            {
+                if (zip.Name.ToLower().EndsWith("script.zip"))
+                    continue;
+
+                foreach (var file in zip.EntryFileNames)
+                {
+                    if (!file.ToLower().EndsWith(".cdb"))
+                        continue;
+
+                    string tempRoot = Path.GetFullPath(Program.PATH_TEMP_FOLDER);
+                    string tempFile = Path.Combine(tempRoot, file);
+                    bool isPreCards = false;
+
+                    try
+                    {
+                        if (!Directory.Exists(tempRoot))
+                            Directory.CreateDirectory(tempRoot);
+
+                        zip[file].Extract(tempRoot, ExtractExistingFileAction.OverwriteSilently);
+
+                        bool fromPrereleasePack = Path.GetFileName(zip.Name)
+                            .Equals("ygopro-super-pre.ypk", StringComparison.OrdinalIgnoreCase);
+                        isPreCards = fromPrereleasePack && (render || file.ToLower().StartsWith("test-release"));
+
+                        TryLoadCDB(tempFile, targetCards, isPreCards, render, optionalDatabase: true);
+                    }
+                    catch (Exception)
+                    {
+                    }
+                    finally
+                    {
+                        try
+                        {
+                            if (File.Exists(tempFile))
+                                File.Delete(tempFile);
+                        }
+                        catch (Exception)
+                        {
+                        }
+                    }
+                }
+            }
+
+            return true;
+        }
+
+        private static string ResolveCardsDatabasePath(string language)
+        {
+            string databaseFullPath = Program.PATH_LOCALES + language + "/cards.cdb";
+            if (!File.Exists(databaseFullPath))
+                databaseFullPath = Program.PATH_LOCALES + Language.SimplifiedChinese + "/cards.cdb";
+            return databaseFullPath;
+        }
+
+        private static bool TryLoadCDB(
+            string databaseFullPath,
+            IDictionary<int, Card> targetCards,
+            bool isPreCards,
+            bool render,
+            bool optionalDatabase)
+        {
+            try
+            {
+                using SqliteConnection connection = new("Data Source=" + databaseFullPath);
+                connection.Open();
+
+                using IDbCommand command =
+                    new SqliteCommand("SELECT datas.*, texts.* FROM datas,texts WHERE datas.id=texts.id;", connection);
+                using IDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    try
+                    {
+                        LoadCard(reader, targetCards, isPreCards);
+                    }
+                    catch (Exception)
+                    {
+                    }
+                }
+
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        private static void LoadCard(IDataRecord reader, IDictionary<int, Card> targetCards, bool isPreCards = false)
         {
             Card card = new(reader) 
             {
                 isPre = isPreCards
             };
-            if (!render)
-            {
-                //if (!_cards.ContainsKey(card.Id))
-                //    _cards.Add(card.Id, card);
-                _cards[card.Id] = card;
-            }
-            else
-            {
-                //if (!_cardsForRender.ContainsKey(card.Id))
-                //    _cardsForRender.Add(card.Id, card);
-                _cardsForRender[card.Id] = card;
-            }
+
+            targetCards[card.Id] = card;
         }
 
         public static List<string> GetMiddleStrings(string str, string start, string end)
