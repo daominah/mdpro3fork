@@ -1498,6 +1498,8 @@ namespace MDPro3.Servant
                     GetUI<OcgCoreUI>().AvatarPlayer1.material = Appearance.duelFrameMat1Tag;
                     SetFaceWhenCharaOff(Appearance.duelFace1Tag, 1);
                 }
+
+                _ = ApplyOnlineOpponentFaceAsync();
             }
             else if (condition == Condition.Watch)
             {
@@ -1547,6 +1549,49 @@ namespace MDPro3.Servant
             }
 
             _ = SetMyCardFace();
+        }
+
+        private async UniTask ApplyOnlineOpponentFaceAsync()
+        {
+            if (condition != Condition.Duel)
+                return;
+
+            var useTagOpponent = isTag && GetUI<OcgCoreUI>().TextPlayer1Name.text != name_1;
+            if (!RoomServant.TryGetOnlineAppearanceForOpponent(useTagOpponent, out var appearance))
+            {
+                if (!useTagOpponent || !RoomServant.TryGetOnlineAppearanceForOpponent(false, out appearance))
+                    return;
+            }
+
+            var iconPlayer = useTagOpponent ? 3 : 1;
+            var frameCode = appearance.Frame.ToString();
+            var frameSprite = await Program.items.LoadConcreteItemIconAsync(frameCode, Items.ItemType.Frame, iconPlayer);
+            Material frameMaterial;
+            if (appearance.Frame == Items.CODE_DIY)
+                frameMaterial = Appearance.matForFace == null ? null : new Material(Appearance.matForFace);
+            else
+                frameMaterial = await ABLoader.LoadFrameMaterial(frameCode);
+            if (frameMaterial != null && frameSprite != null)
+                frameMaterial.SetTexture("_ProfileFrameTex", frameSprite.texture);
+
+            var faceSprite = await Program.items.LoadConcreteItemIconAsync(appearance.Face.ToString(), Items.ItemType.Face, iconPlayer);
+
+            var latestUseTagOpponent = isTag && GetUI<OcgCoreUI>().TextPlayer1Name.text != name_1;
+            if (latestUseTagOpponent != useTagOpponent)
+                return;
+
+            if (!RoomServant.TryGetOnlineAppearanceForOpponent(useTagOpponent, out var latest))
+            {
+                if (!useTagOpponent || !RoomServant.TryGetOnlineAppearanceForOpponent(false, out latest))
+                    return;
+            }
+            if (latest.Face != appearance.Face || latest.Frame != appearance.Frame)
+                return;
+
+            if (frameMaterial != null)
+                GetUI<OcgCoreUI>().AvatarPlayer1.material = frameMaterial;
+            if (faceSprite != null)
+                SetFaceWhenCharaOff(faceSprite, 1);
         }
 
         private async UniTask SetMyCardFace()
