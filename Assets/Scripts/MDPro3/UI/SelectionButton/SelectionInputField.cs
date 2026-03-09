@@ -65,10 +65,7 @@ namespace MDPro3.UI
             {
                 if(InputField.isFocused) 
                 {
-                    if (int.TryParse(InputField.text, out int num))
-                    {
-                        InputField.text = (num + upNum).ToString();
-                    }
+                    TryAdjustFocusedIntegerValue(upNum);
                     return;
                 }
                 else if (navigationEvent.onUpNavigation.GetPersistentEventCount() > 0)
@@ -81,10 +78,7 @@ namespace MDPro3.UI
             {
                 if (InputField.isFocused)
                 {
-                    if (int.TryParse(InputField.text, out int num))
-                    {
-                        InputField.text = (num - upNum).ToString();
-                    }
+                    TryAdjustFocusedIntegerValue(-upNum);
                     return;
                 }
                 else if (navigationEvent.onDownNavigation.GetPersistentEventCount() > 0)
@@ -97,10 +91,7 @@ namespace MDPro3.UI
             {
                 if (InputField.isFocused)
                 {
-                    if (int.TryParse(InputField.text, out int num))
-                    {
-                        InputField.text = (num - rightNum).ToString();
-                    }
+                    TryAdjustFocusedIntegerValue(-rightNum);
                     return;
                 }
                 else if (navigationEvent.onLeftNavigation.GetPersistentEventCount() > 0)
@@ -113,10 +104,7 @@ namespace MDPro3.UI
             {
                 if (InputField.isFocused)
                 {
-                    if (int.TryParse(InputField.text, out int num))
-                    {
-                        InputField.text = (num + rightNum).ToString();
-                    }
+                    TryAdjustFocusedIntegerValue(rightNum);
                     return;
                 }
                 else if (navigationEvent.onRightNavigation.GetPersistentEventCount() > 0)
@@ -127,6 +115,20 @@ namespace MDPro3.UI
             }
 
             base.OnNavigation(eventData);
+        }
+
+        private void TryAdjustFocusedIntegerValue(int delta)
+        {
+            if (!AllowArrowAdjustForFocusedInput())
+                return;
+            if (int.TryParse(InputField.text, out int num))
+                InputField.text = (num + delta).ToString();
+        }
+
+        private bool AllowArrowAdjustForFocusedInput()
+        {
+            return InputField.contentType == TMP_InputField.ContentType.IntegerNumber
+                || InputField.characterValidation == TMP_InputField.CharacterValidation.Integer;
         }
     }
 }

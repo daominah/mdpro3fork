@@ -3,6 +3,8 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
+using System.Text;
 using UnityEngine.EventSystems;
 using MDPro3.Servant;
 using MDPro3.UI.ServantUI;
@@ -25,8 +27,36 @@ namespace MDPro3.UI
         {
             base.Refresh();
 
-            Manager.GetElement<TextMeshProUGUI>("Player0Name").text = player0Name;
-            Manager.GetElement<TextMeshProUGUI>("Player1Name").text = player1Name;
+            var player0Label = Manager.GetElement<TextMeshProUGUI>("Player0Name");
+            var player1Label = Manager.GetElement<TextMeshProUGUI>("Player1Name");
+
+            if (player0Label != null)
+                player0Label.text = GetSafeDisplayName(player0Name, player0Label);
+            if (player1Label != null)
+                player1Label.text = GetSafeDisplayName(player1Name, player1Label);
+        }
+
+        private static string GetSafeDisplayName(string name, TextMeshProUGUI label)
+        {
+            if (string.IsNullOrEmpty(name))
+                return string.Empty;
+            if (label == null || label.font == null)
+                return name;
+
+            if (label.font.HasCharacters(name, out uint[] missingCharacters, true, true))
+                return name;
+
+            if (missingCharacters == null || missingCharacters.Length == 0)
+                return name;
+
+            var missingSet = new HashSet<uint>(missingCharacters);
+            var builder = new StringBuilder(name.Length);
+            for (int i = 0; i < name.Length; i++)
+            {
+                var code = name[i];
+                builder.Append(missingSet.Contains(code) ? '?' : name[i]);
+            }
+            return builder.ToString();
         }
 
         protected override async UniTask RefreshAsync()
