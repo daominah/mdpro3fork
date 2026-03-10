@@ -270,6 +270,8 @@ namespace MDPro3
                 }
                 onDisConnected = false;
                 tcpClient = null;
+                deck = null;
+                deckStrings.Clear();
                 canJoin = true;
                 if (Program.instance.ocgcore.showing)
                 {
@@ -375,6 +377,7 @@ namespace MDPro3
             for (var i = 0; i < deckFor.Extra.Count; i++) message.Data.writer.Write(deckFor.Extra[i]);
             for (var i = 0; i < deckFor.Side.Count; i++) message.Data.writer.Write(deckFor.Side[i]);
             Send(message);
+            CtosMessage_UpdateAppearance(deckFor);
         }
 
         public static void CtosMessage_HandResult(int res)
@@ -420,6 +423,7 @@ namespace MDPro3
         public static void CtosMessage_JoinGame(string psw)
         {
             deckStrings.Clear();
+            deck = null;
             var message = new Package();
             message.Function = (int)CtosMessage.JoinGame;
             message.Data.writer.Write((short)Config.ClientVersion);
@@ -432,6 +436,8 @@ namespace MDPro3
 
         public static void CtosMessage_LeaveGame()
         {
+            deck = null;
+            deckStrings.Clear();
             var message = new Package();
             message.Function = (int)CtosMessage.LeaveGame;
             Send(message);
@@ -457,6 +463,30 @@ namespace MDPro3
             message.Function = (int)CtosMessage.Chat;
             message.Data.writer.WriteUnicode(str, str.Length + 1);
             Send(message);
+        }
+
+        public static void CtosMessage_UpdateAppearance(Deck deckFor)
+        {
+            if (deckFor == null)
+                return;
+            var syncMessage = OnlineAppearanceSync.BuildMessageForLocalPlayer(deckFor);
+            CtosMessage_Chat(syncMessage);
+            Debug.Log($"[OnlineAppearance] Sent sync payload: {syncMessage}");
+        }
+
+        public static void CtosMessage_UpdateAppearanceFromCurrentDeck()
+        {
+            if (deck != null)
+            {
+                CtosMessage_UpdateAppearance(deck);
+                return;
+            }
+
+            var deckPath = Program.PATH_DECK + Config.GetConfigDeckName() + Program.EXPANSION_YDK;
+            if (!File.Exists(deckPath))
+                return;
+
+            CtosMessage_UpdateAppearance(new Deck(deckPath));
         }
 
         public static void CtosMessage_HsToDuelist()

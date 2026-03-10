@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -62,63 +63,82 @@ namespace MDPro3.UI
 
         public void Refresh()
         {
-            _ = RefreshAsync();
+            _ = RefreshAsync(this.GetCancellationTokenOnDestroy());
         }
 
-        private async UniTask RefreshAsync()
+        private async UniTask RefreshAsync(CancellationToken cancellationToken)
         {
-            for (int i = 0; i < index; i++)
-                await UniTask.Yield();
-
-            if (path.StartsWith("Protector"))
+            try
             {
-                protectorMaterial = await ABLoader.LoadProtectorMaterial(itemID.ToString(), destroyCancellationToken);
-                if (protectorMaterial != null)
-                    protectorMaterial.renderQueue = 3000;
+                for (int i = 0; i < index; i++)
+                    await UniTask.Yield(PlayerLoopTiming.Update, cancellationToken);
 
-                // Use default UI material for list rendering so viewport/mask clipping works while scrolling.
-                Protector.texture = protectorMaterial == null ? null : protectorMaterial.mainTexture;
-                Protector.material = null;
-                Protector.color = Color.white;
-                Icon.gameObject.SetActive(false);
-            }
-            else if (path.Length > 0)
-            {
-                Icon.sprite = await Program.items.LoadItemIconAsync(itemID.ToString(), Items.ItemType.Unknown);
-                if (Manager == null)
+                if (cancellationToken.IsCancellationRequested || this == null)
                     return;
-                Icon.color = Color.white;
-                if (path.StartsWith("ProfileFrame"))
+
+                if (path.StartsWith("Protector"))
                 {
-                    Icon.rectTransform.localScale = Vector3.one * 0.8f;
-                    Icon.material = await ABLoader.LoadFrameMaterial(itemID.ToString());
-                    Icon.material.SetTexture("_ProfileFrameTex", Icon.sprite.texture);
-                    Icon.sprite = TextureManager.container.black;
+                    protectorMaterial = await ABLoader.LoadProtectorMaterial(itemID.ToString(), cancellationToken);
+                    if (protectorMaterial != null)
+                        protectorMaterial.renderQueue = 3000;
+
+                    if (cancellationToken.IsCancellationRequested || this == null)
+                        return;
+
+                    // Use default UI material for list rendering so viewport/mask clipping works while scrolling.
+                    Protector.texture = protectorMaterial == null ? null : protectorMaterial.mainTexture;
+                    Protector.material = null;
+                    Protector.color = Color.white;
+                    Icon.gameObject.SetActive(false);
+                }
+                else if (path.Length > 0)
+                {
+                    Icon.sprite = await Program.items.LoadItemIconAsync(itemID.ToString(), Items.ItemType.Unknown);
+                    if (cancellationToken.IsCancellationRequested || this == null || Manager == null)
+                        return;
                     Icon.color = Color.white;
+                    if (path.StartsWith("ProfileFrame"))
+                    {
+                        Icon.rectTransform.localScale = Vector3.one * 0.8f;
+                        Icon.material = await ABLoader.LoadFrameMaterial(itemID.ToString());
+                        if (cancellationToken.IsCancellationRequested || this == null)
+                            return;
+                        Icon.material.SetTexture("_ProfileFrameTex", Icon.sprite.texture);
+                        Icon.sprite = TextureManager.container.black;
+                        Icon.color = Color.white;
+                    }
+                    else if (path.StartsWith("DeckCase"))
+                    {
+                        Icon.transform.localPosition = new Vector3(0f, 15f, 0f);
+                    }
+                    else if (path.StartsWith("WallPaperIcon"))
+                    {
+                        WallpaperBG.gameObject.SetActive(true);
+                    }
+                    Protector.gameObject.SetActive(false);
                 }
-                else if (path.StartsWith("DeckCase"))
+                else //CrossDuel Mate
                 {
-                    Icon.transform.localPosition = new Vector3(0f, 15f, 0f);
+                    var art = await CardImageLoader.LoadArtAsync(itemID, true, cancellationToken);
+                    if (cancellationToken.IsCancellationRequested || this == null)
+                        return;
+                    Icon.color = Color.white;
+                    Icon.sprite = TextureManager.Texture2Sprite(art);
+                    Protector.gameObject.SetActive(false);
                 }
-                else if (path.StartsWith("WallPaperIcon"))
-                {
-                    WallpaperBG.gameObject.SetActive(true);
-                }
-                Protector.gameObject.SetActive(false);
+
+                if (path.StartsWith("ProfileIcon") && !cancellationToken.IsCancellationRequested && this != null)
+                    Icon.material = Appearance.matForFace;
+
+                loaded = true;
             }
-            else //CrossDuel Mate
+            catch (OperationCanceledException)
             {
-                var art = await CardImageLoader.LoadArtAsync(itemID, true, destroyCancellationToken);
-                Icon.color = Color.white;
-                Icon.sprite = TextureManager.Texture2Sprite(art);
-                Protector.gameObject.SetActive(false);
             }
-
-            if (path.StartsWith("ProfileIcon"))
-                Icon.material = Appearance.matForFace;
-
-            loaded = true;
-            refreshCoroutine = null;
+            finally
+            {
+                refreshCoroutine = null;
+            }
         }
 
         protected override void CallHoverOnEvent()
@@ -202,6 +222,14 @@ namespace MDPro3.UI
                     Config.Set("Wallpaper", itemID.ToString());
                 else
                     Config.Set(Appearance.condition.ToString() + AppearanceUI.currentContent + Appearance.player, itemID.ToString());
+
+                if (Appearance.condition == Appearance.Condition.Duel
+                    && Appearance.player == "0"
+                    && Config.GetBool("OverrideDeckAppearance", false)
+                    && Program.instance.room != null
+                    && Program.instance.room.showing
+                    && RoomServant.SelfType < 4)
+                    TcpHelper.CtosMessage_UpdateAppearanceFromCurrentDeck();
             }
 
             StartCoroutine(ConfigSetAsync());
