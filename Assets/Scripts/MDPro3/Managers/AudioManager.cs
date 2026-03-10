@@ -7,6 +7,7 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 namespace MDPro3
 {
@@ -122,6 +123,73 @@ namespace MDPro3
 
         private static LastSE lastSE = new();
         public static string nextMuteSE;
+        private static readonly Dictionary<string, bool> seAddressExists = new();
+        private const string OneShotSuffix = "_oneshot";
+
+        private static async UniTask<bool> HasSEAddress(string path)
+        {
+            if (string.IsNullOrEmpty(path))
+                return false;
+
+            if (seAddressExists.TryGetValue(path, out var exists))
+                return exists;
+
+            var handle = Addressables.LoadResourceLocationsAsync(path, typeof(AudioClip));
+            try
+            {
+                await handle.Task;
+                exists = handle.Status == AsyncOperationStatus.Succeeded
+                         && handle.Result != null
+                         && handle.Result.Count > 0;
+            }
+            catch
+            {
+                exists = false;
+            }
+            finally
+            {
+                if (handle.IsValid())
+                    Addressables.Release(handle);
+            }
+
+            seAddressExists[path] = exists;
+            return exists;
+        }
+
+        private static async UniTask<string> ResolveSEAddress(string path)
+        {
+            if (await HasSEAddress(path))
+                return path;
+
+            if (path.EndsWith(OneShotSuffix, StringComparison.OrdinalIgnoreCase))
+            {
+                var fallbackPath = path.Substring(0, path.Length - OneShotSuffix.Length);
+                if (await HasSEAddress(fallbackPath))
+                    return fallbackPath;
+            }
+
+            return null;
+        }
+
+        private static async UniTaskVoid PlaySEInternal(string path, float volumeScale)
+        {
+            var resolvedPath = await ResolveSEAddress(path);
+            if (string.IsNullOrEmpty(resolvedPath))
+                return;
+
+            var handle = Addressables.LoadAssetAsync<AudioClip>(resolvedPath);
+            try
+            {
+                await handle.Task;
+            }
+            catch
+            {
+                return;
+            }
+
+            if (handle.Status == AsyncOperationStatus.Succeeded && handle.Result != null && se != null)
+                se.PlayOneShot(handle.Result, volumeScale);
+        }
 
         public static void PlaySE(string path, float volumeScale = 1)
         {
@@ -142,12 +210,7 @@ namespace MDPro3
 
             lastSE.time = Time.time;
             lastSE.seName = path;
-            var handle = Addressables.LoadAssetAsync<AudioClip>(path);
-            handle.Completed += (result) =>
-            {
-                if (result.Result != null)
-                    se.PlayOneShot(result.Result, volumeScale);
-            };
+            _ = PlaySEInternal(path, volumeScale);
         }
 
         public void PlayShuffleSE()
