@@ -56,16 +56,28 @@ namespace MDPro3
 
         public static void ChangeCameraFOV()
         {
-            float aspect = (float)Screen.width * 9 / Screen.height;
-            if (aspect > 16)
+            var camera = Program.instance.camera_;
+            if (camera == null || camera.cameraMain == null || camera.cameraDuelOverlay3D == null)
+                return;
+
+            var aspect = Tools.GetScreenAspectRatio();
+            var ultraWideT = Mathf.InverseLerp(16f / 9f, 32f / 9f, aspect);
+
+            // Keep 16:9 unchanged while widening ultrawide framing to match MD-style composition.
+            var duelFov = Mathf.Lerp(30f, 33f, ultraWideT);
+            camera.cameraMain.fieldOfView = duelFov;
+            camera.cameraDuelOverlay3D.fieldOfView = duelFov;
+
+            mainCameraDefaultPosition = new Vector3(
+                0f,
+                95f + Mathf.Lerp(0f, 4f, ultraWideT),
+                -37f - Mathf.Lerp(0f, 5f, ultraWideT));
+
+            if (Program.instance.ocgcore != null && Program.instance.ocgcore.showing)
             {
-                Program.instance.camera_.cameraMain.fieldOfView = 30 + 16 - aspect;
-                Program.instance.camera_.cameraDuelOverlay3D.fieldOfView = Program.instance.camera_.cameraMain.fieldOfView;
-            }
-            else
-            {
-                Program.instance.camera_.cameraMain.fieldOfView = 30;
-                Program.instance.camera_.cameraDuelOverlay3D.fieldOfView = 30;
+                camera.cameraMain.transform.localPosition = mainCameraDefaultPosition;
+                if (!overlaySticking)
+                    camera.cameraDuelOverlay3D.transform.localPosition = mainCameraDefaultPosition;
             }
         }
 
@@ -89,7 +101,7 @@ namespace MDPro3
 
         public static void Overlay3DReset()
         {
-            Program.instance.camera_.cameraDuelOverlay3D.transform.localPosition = new Vector3(0, 95, -37);
+            Program.instance.camera_.cameraDuelOverlay3D.transform.localPosition = mainCameraDefaultPosition;
             Program.instance.camera_.cameraDuelOverlay3D.transform.localEulerAngles = new Vector3(70, 0, 0);
         }
 
