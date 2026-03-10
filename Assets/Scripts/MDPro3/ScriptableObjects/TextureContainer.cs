@@ -65,6 +65,7 @@ namespace MDPro3
         public Texture2D cardFrameMask;
         public Texture2D cardFrameMaskLink;
         public Texture2D cardFrameMaskPendulum;
+        public Texture2D cardFrameMaskW;
         public Texture2D cardKiraMask;
         public Texture2D cardKiraMaskLink;
         public Texture2D cardKiraMaskPendulum;
@@ -72,6 +73,8 @@ namespace MDPro3
         public Texture2D cardNormalLink;
         public Texture2D cardNormalPendulum;
         public Texture2D CardKiraNormal03_Millennium;
+        public Texture2D CardDescColumnMask;
+        public Texture2D CardDescColumnMaskP;
 
         [Header("Card Attribute")]
         public Sprite attributeLight;
@@ -446,6 +449,8 @@ namespace MDPro3
         public Texture2D rd_KiraMaskPendulum;
         public Texture2D rd_CardAttributeSet;
         public Texture2D rd_CardNormal;
+        public Texture2D rd_CardDescColumnMask;
+        public Texture2D rd_CardDescColumnMaskP;
 
         [Header("Gamepad Icon")]
         public Sprite gamepad_ButtonSouth_Xbox;
@@ -485,16 +490,16 @@ namespace MDPro3
 
         #region MyCard Rank
 
-        int[] rankRange = new int[]
+        private readonly int[] rankRange = new int[]
         {
-        1000,
-        1100,
-        1200,
-        1300,
-        1400,
-        1500,
-        1600,
-        1700
+            1000,
+            1100,
+            1200,
+            1300,
+            1400,
+            1500,
+            1600,
+            1700
         };
 
         public List<Sprite> GetRankSprites(int rank)
@@ -1004,6 +1009,143 @@ namespace MDPro3
                     return rd ?
                         rd_Loading_Effect.texture
                         : cardFrameEffect.texture;
+            }
+        }
+
+        public Sprite GetCardFrame(Card data, CardRenderer.CardStyle cardStyle)
+        {
+            if(cardStyle == CardRenderer.CardStyle.OCG_TCG)
+            {
+                if(data.HasType(CardType.Pendulum))
+                {
+                    if (data.HasType(CardType.Xyz))
+                        return cardFramePendulumXyzOF;
+                    else if (data.HasType(CardType.Synchro))
+                        return cardFramePendulumSynchroOF;
+                    else if (data.HasType(CardType.Fusion))
+                        return cardFramePendulumFusionOF;
+                    else if (data.HasType(CardType.Ritual))
+                        return cardFramePendulumRitualOF;
+                    else if (data.HasType(CardType.Normal))
+                        return cardFramePendulumNormalOF;
+                    else
+                        return cardFramePendulumEffectOF;
+                }
+                else
+                {
+                    if (data.Id == 10000000)
+                        return cardFrameObeliskOF;
+                    else if (data.Id == 10000010)
+                        return cardFrameRaOF;
+                    else if (data.Id == 10000020)
+                        return cardFrameOsirisOF;
+                    else if (data.HasType(CardType.Link))
+                        return cardFrameLinkOF;
+                    else if (data.HasType(CardType.Xyz))
+                        return cardFrameXyzOF;
+                    else if (data.HasType(CardType.Synchro))
+                        return cardFrameSynchroOF;
+                    else if (data.HasType(CardType.Fusion))
+                        return cardFrameFusionOF;
+                    else if (data.HasType(CardType.Ritual) && data.HasType(CardType.Monster))
+                        return cardFrameRitualOF;
+                    else if (data.HasType(CardType.Token))
+                        return cardFrameTokenOF;
+                    else if (data.HasType(CardType.Normal))
+                        return cardFrameNormalOF;
+                    else if (data.HasType(CardType.Spell))
+                        return cardFrameSpellOF;
+                    else if (data.HasType(CardType.Trap))
+                        return cardFrameTrapOF;
+                    else
+                        return cardFrameEffectOF;
+                }
+            }
+            else
+            {
+                if (data.HasType(CardType.Pendulum))
+                {
+                    if (data.HasType(CardType.Xyz))
+                        return rd_Frame_PendulumXyz;
+                    else if (data.HasType(CardType.Synchro))
+                        return rd_Frame_PendulumSynchro;
+                    else if (data.HasType(CardType.Fusion))
+                        return rd_Frame_PendulumFusion;
+                    else if (data.HasType(CardType.Ritual))
+                        return rd_Frame_PendulumRitual;
+                    else if (data.HasType(CardType.Normal))
+                        return rd_Frame_PendulumNormal;
+                    else
+                        return rd_Frame_PendulumEffect;
+                }
+                else
+                {
+                    if (data.Id == 10000000)
+                        return rd_Frame_Obelisk;
+                    else if (data.Id == 10000010)
+                        return rd_Frame_Ra;
+                    else if (data.Id == 10000020)
+                        return rd_Frame_Slifer;
+                    else if (data.HasType(CardType.Link))
+                        return rd_Frame_Link;
+                    else if (data.HasType(CardType.Xyz))
+                        return rd_Frame_Xyz;
+                    else if (data.HasType(CardType.Synchro))
+                        return rd_Frame_Synchro;
+                    else if (data.HasType(CardType.Fusion))
+                        return rd_Frame_Fusion;
+                    else if (data.HasType(CardType.Ritual) && data.HasType(CardType.Monster))
+                        return rd_Frame_Ritual;
+                    else if (data.HasType(CardType.Token))
+                        return rd_Frame_Token;
+                    else if (data.HasType(CardType.Normal))
+                        return rd_Frame_Normal;
+                    else if (data.HasType(CardType.Spell))
+                        return rd_Frame_Spell;
+                    else if (data.HasType(CardType.Trap))
+                        return rd_Frame_Trap;
+                    else
+                        return rd_Frame_Effect;
+                }
+            }
+        }
+
+        public Sprite GetCardFrame(Card data)
+        {
+            return GetCardFrame(data, CardRenderer.GetCardStyleByCode(data.Id));
+        }
+
+        public Sprite GetOcgLinkCount(int count)
+        {
+            return count switch
+            {
+                1 => link1R,
+                2 => link2R,
+                3 => link3R,
+                4 => link4R,
+                5 => link5R,
+                6 => link6R,
+                7 => link7R,
+                8 => link8R,
+                _ => null,
+            };
+        }
+
+        public Texture2D GetDescMask(CardRenderer.CardStyle cardStyle, bool isPendulum)
+        {
+            if(cardStyle == CardRenderer.CardStyle.OCG_TCG)
+            {
+                if (isPendulum)
+                    return TextureManager.container.CardDescColumnMaskP;
+                else
+                    return TextureManager.container.CardDescColumnMask;
+            }
+            else
+            {
+                if (isPendulum)
+                    return TextureManager.container.rd_CardDescColumnMaskP;
+                else
+                    return TextureManager.container.rd_CardDescColumnMask;
             }
         }
 

@@ -57,9 +57,10 @@ MonoBehaviour:
   cardFramePendulumFusionOF: {fileID: 21300000, guid: 2ec1557d11f62fd4bba646561ddc8a38, type: 3}
   cardFrameLinkOF: {fileID: 21300000, guid: ecfebef1d741fc64891a732e662f66c9, type: 3}
   cardFramePendulumRitualOF: {fileID: 21300000, guid: 17e2debd03606ec4b9ff05e2cc4362e7, type: 3}
-  cardFrameMask: {fileID: 2800000, guid: 067b10328108b7d45827fb33f6134466, type: 3}
-  cardFrameMaskLink: {fileID: 2800000, guid: b592abbe0c43f914d97d5fa7e7cef0e1, type: 3}
-  cardFrameMaskPendulum: {fileID: 2800000, guid: 0e96adbf14f612e44bc3aad5d944bfbf, type: 3}
+  cardFrameMask: {fileID: 2800000, guid: d85dfb059355dce48b6cd677047f2b81, type: 3}
+  cardFrameMaskLink: {fileID: 2800000, guid: 7f29816a1a66c2c41b256372756b7708, type: 3}
+  cardFrameMaskPendulum: {fileID: 2800000, guid: 9bc20d0183a757e4e80a2772046b7402, type: 3}
+  cardFrameMaskW: {fileID: 2800000, guid: 2ebeb635d3a68e84485108267f2c9c29, type: 3}
   cardKiraMask: {fileID: 2800000, guid: f67522af775aebb4bafcfc0fb0ccb8bc, type: 3}
   cardKiraMaskLink: {fileID: 2800000, guid: 1c882f9fe5e46c944b41f2f476b45827, type: 3}
   cardKiraMaskPendulum: {fileID: 2800000, guid: ab1dd000ca931a342958b889832686e6, type: 3}
@@ -67,6 +68,8 @@ MonoBehaviour:
   cardNormalLink: {fileID: 2800000, guid: 875fa980a3eb990419e51879fe12b281, type: 3}
   cardNormalPendulum: {fileID: 2800000, guid: 71402236982fddd41ada1cc6a44e94bd, type: 3}
   CardKiraNormal03_Millennium: {fileID: 2800000, guid: 71d6974fbeeed2c41901e87746fda0cb, type: 3}
+  CardDescColumnMask: {fileID: 2800000, guid: 126a985029b9aaa408d5a9e06f434442, type: 3}
+  CardDescColumnMaskP: {fileID: 2800000, guid: bc76d40f1527fe944a1875c5939a820d, type: 3}
   attributeLight: {fileID: 21300000, guid: 157f899e40b269e4bb70d867aa084278, type: 3}
   attributeDark: {fileID: 21300000, guid: 7976b559931f6e840863f07ea92c278a, type: 3}
   attributeWater: {fileID: 21300000, guid: e639e2cab68115f499825b099bd456d5, type: 3}
@@ -476,6 +479,8 @@ MonoBehaviour:
   rd_KiraMaskPendulum: {fileID: 2800000, guid: ad112383d2d010945965fb587ff62a3d, type: 3}
   rd_CardAttributeSet: {fileID: 2800000, guid: 8e060280489ff074cbc3cfd6122ebdfd, type: 3}
   rd_CardNormal: {fileID: 2800000, guid: 3f5b3131dbe35bb4592393a6adc7ead2, type: 3}
+  rd_CardDescColumnMask: {fileID: 2800000, guid: 4c0d6dc80e3c3c84182f91749a226934, type: 3}
+  rd_CardDescColumnMaskP: {fileID: 2800000, guid: 26387e3c01068cc428504db53a9498ef, type: 3}
   gamepad_ButtonSouth_Xbox: {fileID: 21300000, guid: d5977869931a55f458b6ef0ffa413a1f, type: 3}
   gamepad_ButtonEast_Xbox: {fileID: 21300000, guid: 1d4312ba815631546b3703002b49271f, type: 3}
   gamepad_ButtonWest_Xbox: {fileID: 21300000, guid: c2c100a0a6077774e822c1b1b5b1f7fd, type: 3}

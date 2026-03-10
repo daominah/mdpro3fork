@@ -1356,9 +1356,14 @@ namespace MDPro3.UI.ServantUI
         {
             string selected = EventSystem.current.currentSelectedGameObject
                 .GetComponent<SelectionButton>().GetButtonText();
+            var currrent = Config.Get("CardStyle", selected);
             Config.Set("CardStyle", selected);
-            ButtonCardStyle.SetModeText(selected);
-            UIManager.ChangeLanguage();
+            if(currrent != selected)
+            {
+                ButtonCardStyle.SetModeText(selected);
+                UIManager.ChangeLanguage();
+                MaterialLoader.ClearCachedOverFrameMasks();
+            }
         }
 
         #endregion

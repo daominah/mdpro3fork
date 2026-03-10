@@ -158,7 +158,12 @@ namespace MDPro3.Duel.YGOSharp
 
         public bool HasType(CardType type)
         {
-            return ((Type & (int)type) != 0);
+            return (Type & (int)type) != 0;
+        }
+
+        public bool HasType(CardType type1, CardType type2)
+        {
+            return HasType(type1) || HasType(type2);
         }
 
         public bool HasLinkMarker(CardLinkMarker dir)

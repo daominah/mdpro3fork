@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
+using static MDPro3.CardRenderer;
 
 namespace MDPro3
 {
@@ -34,6 +35,25 @@ namespace MDPro3
         private static Material cardMatMillennium3D;
         private static Material cardMatMillenniumRD3D;
 
+        private static Material cardMatShineOFUI;
+        private static Material cardMatShineOFRDUI;
+        private static Material cardMatRoyalOFUI;
+        private static Material cardMatRoyalOFRDUI;
+        private static Material cardMatGoldOFUI;
+        private static Material cardMatGoldOFRDUI;
+        private static Material cardMatMillenniumOFUI;
+        private static Material cardMatMillenniumOFRDUI;
+
+        private static Material cardMatShineOF3D;
+        private static Material cardMatShineOFRD3D;
+        private static Material cardMatRoyalOF3D;
+        private static Material cardMatRoyalOFRD3D;
+        private static Material cardMatGoldOF3D;
+        private static Material cardMatGoldOFRD3D;
+        private static Material cardMatMillenniumOF3D;
+        private static Material cardMatMillenniumOFRD3D;
+
+        private static Dictionary<int, Texture2D> cachedOverFrameMasks = new();
 
         [RuntimeInitializeOnLoadMethod]
         public static async UniTask LoadCardMaterials()
@@ -41,71 +61,98 @@ namespace MDPro3
             await UniTask.WaitUntil(() => TextureManager.loaded && TextureManager.container != null);
 
             cardMatNormalUI = ABLoader.LoadMasterDuelMaterial("NormalStyleUI");
-            cardMatShineUI = ABLoader.LoadMasterDuelMaterial("ShineStyleUI");
-            cardMatRoyalUI = ABLoader.LoadMasterDuelMaterial("RoyalStyleUI");
-
-            cardMatGoldUI = UnityEngine.Object.Instantiate(cardMatRoyalUI);
-            cardMatGoldUI.SetFloat("_CardDistortion01", 1.2f);
-            cardMatGoldUI.SetFloat("_Kira01_01Tile", 0.25f);
-            cardMatGoldUI.SetFloat("_Kira01_01Power", 3f);
-            cardMatGoldUI.SetColor("_KiraColor02", new Color(0.5f, 0.5f, 0f, 0f));
-            cardMatGoldUI.SetColor("_CubemapColor", new Color(0.7f, 0.7f, 0f, 0f));
-
-            cardMatMillenniumUI = UnityEngine.Object.Instantiate(cardMatRoyalUI);
-            cardMatMillenniumUI.SetTexture("_HighlightNormal"
-                , TextureManager.container.CardKiraNormal03_Millennium);
-            cardMatMillenniumUI.SetColor("_CubemapColor", new Color(0.898f, 0.3245f, 0.7723f, 0f));
-            cardMatMillenniumUI.SetColor("_KiraColor02", new Color(0.3099f, 0.1633f, 0.2753f, 0f));
-            cardMatMillenniumUI.SetFloat("_Kira01_01Tile", 0.25f);
-            cardMatMillenniumUI.SetFloat("_Kira01_02Tile", 0f);
-            cardMatMillenniumUI.SetFloat("_RanbowPower", 0.5f);
-
-            cardMatShineRDUI = UnityEngine.Object.Instantiate(cardMatShineUI);
-            MaterialToRD(cardMatShineRDUI);
-            cardMatRoyalRDUI = UnityEngine.Object.Instantiate(cardMatRoyalUI);
-            MaterialToRD(cardMatRoyalRDUI);
-            cardMatGoldRDUI = UnityEngine.Object.Instantiate(cardMatGoldUI);
-            MaterialToRD(cardMatGoldRDUI);
-            cardMatMillenniumRDUI = UnityEngine.Object.Instantiate(cardMatMillenniumUI);
-            MaterialToRD(cardMatMillenniumRDUI);
-
             cardMatNormal3D = ABLoader.LoadMasterDuelMaterial("NormalStyle3D");
+
+
+            cardMatShineUI = ABLoader.LoadMasterDuelMaterial("ShineStyleUI");
             cardMatShine3D = ABLoader.LoadMasterDuelMaterial("ShineStyle3D");
-            cardMatRoyal3D = ABLoader.LoadMasterDuelMaterial("RoyalStyle3D");
-
-            cardMatGold3D = UnityEngine.Object.Instantiate(cardMatRoyal3D);
-            cardMatGold3D.SetFloat("_CardDistortion01", 1.2f);
-            cardMatGold3D.SetFloat("_Kira01_01Tile", 0.25f);
-            cardMatGold3D.SetFloat("_Kira01_01Power", 3f);
-            cardMatGold3D.SetColor("_KiraColor02", new Color(0.5f, 0.5f, 0f, 0f));
-            cardMatGold3D.SetColor("_CubemapColor", new Color(0.7f, 0.7f, 0f, 0f));
-
-            cardMatMillennium3D = UnityEngine.Object.Instantiate(cardMatRoyal3D);
-            cardMatMillennium3D.SetTexture("_HighlightNormal"
-                , TextureManager.container.CardKiraNormal03_Millennium);
-            cardMatMillennium3D.SetColor("_CubemapColor", new Color(0.898f, 0.3245f, 0.7723f, 0f));
-            cardMatMillennium3D.SetColor("_KiraColor02", new Color(0.3099f, 0.1633f, 0.2753f, 0f));
-            cardMatMillennium3D.SetFloat("_Kira01_01Tile", 0.25f);
-            cardMatMillennium3D.SetFloat("_Kira01_02Tile", 0f);
-            cardMatMillennium3D.SetFloat("_RanbowPower", 0.5f);
-
+            cardMatShineRDUI = UnityEngine.Object.Instantiate(cardMatShineUI);
+            SetMaterialToRD(cardMatShineRDUI);
             cardMatShineRD3D = UnityEngine.Object.Instantiate(cardMatShine3D);
-            MaterialToRD(cardMatShineRD3D);
+            SetMaterialToRD(cardMatShineRD3D);
+
+            cardMatShineOFUI = ABLoader.LoadMasterDuelMaterial("ShineStyleOFUI");
+            cardMatShineOF3D = ABLoader.LoadMasterDuelMaterial("ShineStyleOF3D");
+            cardMatShineOFRDUI = UnityEngine.Object.Instantiate(cardMatShineOFUI);
+            SetMaterialToRD(cardMatShineOFRDUI);
+            cardMatShineOFRD3D = UnityEngine.Object.Instantiate(cardMatShineOF3D);
+            SetMaterialToRD(cardMatShineOFRD3D);
+
+
+            cardMatRoyalUI = ABLoader.LoadMasterDuelMaterial("RoyalStyleUI");
+            cardMatGoldUI = UnityEngine.Object.Instantiate(cardMatRoyalUI);
+            SetMaterialToGold(cardMatGoldUI);
+            cardMatMillenniumUI = UnityEngine.Object.Instantiate(cardMatRoyalUI);
+            SetMaterialToMillennium(cardMatMillenniumUI);
+            cardMatRoyalRDUI = UnityEngine.Object.Instantiate(cardMatRoyalUI);
+            SetMaterialToRD(cardMatRoyalRDUI);
+            cardMatGoldRDUI = UnityEngine.Object.Instantiate(cardMatGoldUI);
+            SetMaterialToRD(cardMatGoldRDUI);
+            cardMatMillenniumRDUI = UnityEngine.Object.Instantiate(cardMatMillenniumUI);
+            SetMaterialToRD(cardMatMillenniumRDUI);
+            cardMatRoyal3D = ABLoader.LoadMasterDuelMaterial("RoyalStyle3D");
+            cardMatGold3D = UnityEngine.Object.Instantiate(cardMatRoyal3D);
+            SetMaterialToGold(cardMatGold3D);
+            cardMatMillennium3D = UnityEngine.Object.Instantiate(cardMatRoyal3D);
+            SetMaterialToMillennium(cardMatMillennium3D);
             cardMatRoyalRD3D = UnityEngine.Object.Instantiate(cardMatRoyal3D);
-            MaterialToRD(cardMatRoyalRD3D);
+            SetMaterialToRD(cardMatRoyalRD3D);
             cardMatGoldRD3D = UnityEngine.Object.Instantiate(cardMatGold3D);
-            MaterialToRD(cardMatGoldRD3D);
+            SetMaterialToRD(cardMatGoldRD3D);
             cardMatMillenniumRD3D = UnityEngine.Object.Instantiate(cardMatMillennium3D);
-            MaterialToRD(cardMatMillenniumRD3D);
+            SetMaterialToRD(cardMatMillenniumRD3D);
+
+            cardMatRoyalOFUI = ABLoader.LoadMasterDuelMaterial("RoyalStyleOFUI");
+            cardMatGoldOFUI = UnityEngine.Object.Instantiate(cardMatRoyalOFUI);
+            SetMaterialToGold(cardMatGoldOFUI);
+            cardMatMillenniumOFUI = UnityEngine.Object.Instantiate(cardMatRoyalOFUI);
+            SetMaterialToMillennium(cardMatMillenniumOFUI);
+            cardMatRoyalOFRDUI = UnityEngine.Object.Instantiate(cardMatRoyalOFUI);
+            SetMaterialToRD(cardMatRoyalOFRDUI);
+            cardMatGoldOFRDUI = UnityEngine.Object.Instantiate(cardMatGoldOFUI);
+            SetMaterialToRD(cardMatGoldOFRDUI);
+            cardMatMillenniumOFRDUI = UnityEngine.Object.Instantiate(cardMatMillenniumOFUI);
+            SetMaterialToRD(cardMatMillenniumOFRDUI);
+            cardMatRoyalOF3D = ABLoader.LoadMasterDuelMaterial("RoyalStyleOF3D");
+            cardMatGoldOF3D = UnityEngine.Object.Instantiate(cardMatRoyalOF3D);
+            SetMaterialToGold(cardMatGoldOF3D);
+            cardMatMillenniumOF3D = UnityEngine.Object.Instantiate(cardMatRoyalOF3D);
+            SetMaterialToMillennium(cardMatMillenniumOF3D);
+            cardMatRoyalOFRD3D = UnityEngine.Object.Instantiate(cardMatRoyalOF3D);
+            SetMaterialToRD(cardMatRoyalOFRD3D);
+            cardMatGoldOFRD3D = UnityEngine.Object.Instantiate(cardMatGoldOF3D);
+            SetMaterialToRD(cardMatGoldOFRD3D);
+            cardMatMillenniumOFRD3D = UnityEngine.Object.Instantiate(cardMatMillenniumOF3D);
+            SetMaterialToRD(cardMatMillenniumOFRD3D);
         }
 
-        private static void MaterialToRD(Material material)
+        private static void SetMaterialToRD(Material material)
         {
-            material.SetTexture("_FrameMask", TextureManager.container.rd_Mask);
+            material.SetTexture("_CardMask", TextureManager.container.rd_Mask);
             material.SetTexture("_KiraMask", TextureManager.container.rd_KiraMask);
             material.SetTexture("_MainNormal", TextureManager.container.rd_CardNormal);
             material.SetTexture("_AttributeTex", TextureManager.container.rd_CardAttributeSet);
             material.SetVector("_AttributeSize_Pos", new Vector4(8.31f, 12.26f, -3.19f, -5.13f));
+        }
+
+        private static void SetMaterialToGold(Material material)
+        {
+            material.SetFloat("_CardDistortion01", 1.2f);
+            material.SetFloat("_Kira01_01Tile", 0.25f);
+            material.SetFloat("_Kira01_01Power", 3f);
+            material.SetColor("_KiraColor02", new Color(0.5f, 0.5f, 0f, 0f));
+            material.SetColor("_CubemapColor", new Color(0.7f, 0.7f, 0f, 0f));
+        }
+
+        private static void SetMaterialToMillennium(Material material)
+        {
+            material.SetTexture("_HighlightNormal"
+                , TextureManager.container.CardKiraNormal03_Millennium);
+            material.SetColor("_CubemapColor", new Color(0.898f, 0.3245f, 0.7723f, 0f));
+            material.SetColor("_KiraColor02", new Color(0.3099f, 0.1633f, 0.2753f, 0f));
+            material.SetFloat("_Kira01_01Tile", 0.25f);
+            material.SetFloat("_Kira01_02Tile", 0f);
+            material.SetFloat("_RanbowPower", 0.5f);
         }
 
         private static Color GetMillenniumFrameColor(Card data)
@@ -170,29 +217,33 @@ namespace MDPro3
 
             bool rushDuel = CardRenderer.NeedRushDuelStyle(code);
             var rarity = CardRarity.GetRarity(code);
+            var overFrame = CardImageLoader.GetOverFrame(code);
 
-            bool needSet = true;
             switch (rarity)
             {
                 case CardRarity.Rarity.Normal:
                     mat = UnityEngine.Object.Instantiate(use3D ? cardMatNormal3D : cardMatNormalUI);
-                    needSet = false;
                     break;
                 case CardRarity.Rarity.Shine:
-                    mat = UnityEngine.Object.Instantiate(rushDuel ? use3D ? cardMatShineRD3D : cardMatShineRDUI : use3D ? cardMatShine3D : cardMatShineUI);
+                    //mat = UnityEngine.Object.Instantiate(overFrame == null ? rushDuel ? use3D ? cardMatShineRD3D : cardMatShineRDUI : use3D ? cardMatShine3D : cardMatShineUI
+                    mat = UnityEngine.Object.Instantiate(overFrame == null ? rushDuel ? use3D ? cardMatShineOFRD3D : cardMatShineOFRDUI : use3D ? cardMatShineOF3D : cardMatShineOFUI
+                        : rushDuel ? use3D ? cardMatShineOFRD3D : cardMatShineOFRDUI : use3D ? cardMatShineOF3D : cardMatShineOFUI);
                     break;
                 case CardRarity.Rarity.Royal:
-                    mat = UnityEngine.Object.Instantiate(rushDuel ? use3D ? cardMatRoyalRD3D : cardMatRoyalRDUI : use3D ? cardMatRoyal3D : cardMatRoyalUI);
+                    mat = UnityEngine.Object.Instantiate(overFrame == null ? rushDuel ? use3D ? cardMatRoyalRD3D : cardMatRoyalRDUI : use3D ? cardMatRoyal3D : cardMatRoyalUI
+                        : rushDuel ? use3D ? cardMatRoyalOFRD3D : cardMatRoyalOFRDUI : use3D ? cardMatRoyalOF3D : cardMatRoyalOFUI);
                     break;
                 case CardRarity.Rarity.Gold:
-                    mat = UnityEngine.Object.Instantiate(rushDuel ? use3D ? cardMatGoldRD3D : cardMatGoldRDUI : use3D ? cardMatGold3D : cardMatGoldUI);
+                    mat = UnityEngine.Object.Instantiate(overFrame == null ? rushDuel ? use3D ? cardMatGoldRD3D : cardMatGoldRDUI : use3D ? cardMatGold3D : cardMatGoldUI
+                        : rushDuel ? use3D ? cardMatGoldOFRD3D : cardMatGoldOFRDUI : use3D ? cardMatGoldOF3D : cardMatGoldOFUI);
                     break;
                 case CardRarity.Rarity.Millennium:
-                    mat = UnityEngine.Object.Instantiate(rushDuel ? use3D ? cardMatMillenniumRD3D : cardMatMillenniumRDUI : use3D ? cardMatMillennium3D : cardMatMillenniumUI);
+                    mat = UnityEngine.Object.Instantiate(overFrame == null ? rushDuel ? use3D ? cardMatMillenniumRD3D : cardMatMillenniumRDUI : use3D ? cardMatMillennium3D : cardMatMillenniumUI
+                        : rushDuel ? use3D ? cardMatMillenniumOFRD3D : cardMatMillenniumOFRDUI : use3D ? cardMatMillenniumOF3D : cardMatMillenniumOFUI);
                     break;
             }
 
-            if (needSet)
+            if (rarity != CardRarity.Rarity.Normal)
             {
                 var data = CardsManager.Get(code);
                 if (data.HasType(CardType.Spell))
@@ -226,7 +277,7 @@ namespace MDPro3
                 {
                     if (data.HasType(CardType.Link))
                     {
-                        mat.SetTexture("_FrameMask", TextureManager.container.cardFrameMaskLink);
+                        mat.SetTexture("_CardMask", TextureManager.container.cardFrameMaskLink);
                         mat.SetTexture("_KiraMask", TextureManager.container.cardKiraMaskLink);
                         mat.SetTexture("_MainNormal", TextureManager.container.cardNormalLink);
                         if (rarity == CardRarity.Rarity.Shine)
@@ -234,7 +285,7 @@ namespace MDPro3
                     }
                     else if (data.HasType(CardType.Pendulum))
                     {
-                        mat.SetTexture("_FrameMask", TextureManager.container.cardFrameMaskPendulum);
+                        mat.SetTexture("_CardMask", TextureManager.container.cardFrameMaskPendulum);
                         mat.SetTexture("_KiraMask", TextureManager.container.cardKiraMaskPendulum);
                         mat.SetTexture("_MainNormal", TextureManager.container.cardNormalPendulum);
                     }
@@ -248,9 +299,31 @@ namespace MDPro3
                     mat.SetColor("_KiraColor02", GetMillenniumFrameColor(data));
                     mat.SetColor("_CubemapColor", GetMillenniumNameColor(data));
                 }
+
+                if(overFrame != null)
+                {
+                    if(!cachedOverFrameMasks.TryGetValue(code, out var mask))
+                    {
+                        var descMask = TextureManager.container.GetDescMask(GetCardStyleByCode(code), data.HasType(CardType.Pendulum));
+                        mask = TextureProcessor.ApplyMaskToAlpha(overFrame, descMask, invertMask: true);
+                        mask = TextureProcessor.InvertAlpha(mask);
+#if UNITY_EDITOR
+                        mask.alphaIsTransparency = true;
+#endif
+                        cachedOverFrameMasks[code] = mask;
+                    }
+                    mat.SetTexture("_OverFrameMask", mask);
+                }
             }
 
             return mat;
+        }
+
+        public static void ClearCachedOverFrameMasks()
+        {
+            foreach (var mask in cachedOverFrameMasks.Values)
+                UnityEngine.Object.Destroy(mask);
+            cachedOverFrameMasks.Clear();
         }
 
         #endregion

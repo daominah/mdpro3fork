@@ -71,6 +71,7 @@ namespace MDPro3
         public const string PATH_ALT_ART = "Picture/Art2/";
         public const string PATH_CARD_PIC = "Picture/CardGenerated/";
         public const string PATH_CLOSEUP = "Picture/Closeup/";
+        public const string PATH_OVER_FRAME = "Picture/OverFrame/";
         public const string PATH_DATA = "Data/";
         public const string PATH_LOCALES = "Data/locales/";
         public const string PATH_CONFIG = "Data/config.conf";

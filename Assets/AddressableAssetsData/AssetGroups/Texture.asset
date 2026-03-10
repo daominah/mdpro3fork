@@ -25,11 +25,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 067b10328108b7d45827fb33f6134466
-    m_Address: CardframeMask_RNA
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 081b5e42d6f01b34486d8ff6af7f6692
     m_Address: RD_Level
     m_ReadOnly: 0
@@ -47,11 +42,6 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0be4cf968d6fd764fabe2d3999a3a45a
     m_Address: card_frame03
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 0e96adbf14f612e44bc3aad5d944bfbf
-    m_Address: CardframeMask_Pen
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -457,11 +447,6 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b552f9fd55ddc7443bfe07c7dbc13b1f
     m_Address: CardNormal_RNA
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: b592abbe0c43f914d97d5fa7e7cef0e1
-    m_Address: CardframeMask_Link
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

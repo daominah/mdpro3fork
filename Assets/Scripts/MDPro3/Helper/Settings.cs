@@ -138,7 +138,7 @@ namespace MDPro3
 
     public static class Settings
     {
-        private const string JsonPath = "Data/Settings.json";
+        private const string PATH_JSON = Program.PATH_DATA + "Settings.json";
         private const string MDPRO3_VERSION_URL_OLD = "https://code.moenext.com/sherry_chaos/MDPro3/-/raw/master/Version.txt";
         private const string MDPRO3_VERSION_URL_FALSE = "https://code.moenext.com/sherry_chaos/MDPro3/-/raw/master/version.txt";
         private const string MDPRO3_VERSION_URL_DEFAULT = "https://cdn02.moecube.com:444/mdpro3-data/Version.txt";
@@ -156,14 +156,14 @@ namespace MDPro3
 
         public static void Initialize()
         {
-            if (!File.Exists(JsonPath))
+            if (!File.Exists(PATH_JSON))
             {
                 _data = new SettingData();
                 SaveSettings(_data);
                 return;
             }
 
-            var json = File.ReadAllText(JsonPath);
+            var json = File.ReadAllText(PATH_JSON);
             try
             {
                 _data = EnsureDefaultValues(json);
@@ -212,7 +212,7 @@ namespace MDPro3
         private static void SaveSettings(SettingData data)
         {
             var json = JsonConvert.SerializeObject(data, Formatting.Indented);
-            File.WriteAllText(JsonPath, json);
+            File.WriteAllText(PATH_JSON, json);
         }
 
         private static SettingData EnsureDefaultValues(string json)

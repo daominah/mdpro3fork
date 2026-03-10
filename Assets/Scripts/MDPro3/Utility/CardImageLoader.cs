@@ -21,8 +21,10 @@ namespace MDPro3.Utility
         private static readonly ConcurrentDictionary<int, CacheEntry> cachedCards = new();
         private static readonly ConcurrentDictionary<int, Texture2D> cachedCardNames = new();
         private static readonly ConcurrentDictionary<int, Texture> cachedVideoCards = new();
+        private static readonly ConcurrentDictionary<int, Texture2D> cachedOverFrames = new();
 
         private static readonly ConcurrentDictionary<int, SemaphoreSlim> artLoadingLocks = new();
+        private static readonly ConcurrentDictionary<int, SemaphoreSlim> overFrameLoadingLocks = new();
         private static readonly ConcurrentDictionary<int, SemaphoreSlim> cardLoadingLocks = new();
 
         private static readonly List<CardRenderer> videos = new();
@@ -31,6 +33,7 @@ namespace MDPro3.Utility
         public static bool lastCardRenderSucceed;
 
         private static SemaphoreSlim artSemaphore;
+        private static SemaphoreSlim overFrameSemaphore;
         private static SemaphoreSlim cardSemaphore;
         private static int maxLoads;
 
@@ -44,10 +47,12 @@ namespace MDPro3.Utility
             maxLoads = GetOptimalConcurrency();
 
             artSemaphore = new SemaphoreSlim(maxLoads, maxLoads);
+            overFrameSemaphore = new SemaphoreSlim(maxLoads, maxLoads);
             cardSemaphore = new SemaphoreSlim(maxLoads, maxLoads);
 
             _ = InitializeArtFileListAsync();
             _ = InitializeVideoArtFileListAsync();
+            _ = InitializeOverFrameFileListAsync();
 
             SystemEvent.OnVideoCardConfigChange += CheckArtVideoConfig;
         }
@@ -64,12 +69,11 @@ namespace MDPro3.Utility
 
         #region API
 
-        public static async Task<Texture2D> LoadArtAsync(
+        public static async UniTask<Texture2D> LoadArtAsync(
             int code,
             bool persistent = false,
             CancellationToken token = default)
         {
-
             var lockObj = artLoadingLocks.GetOrAdd(code, _ => new SemaphoreSlim(1, 1));
             await lockObj.WaitAsync(token);
 
@@ -148,7 +152,36 @@ namespace MDPro3.Utility
                     UnityEngine.Object.Destroy(entry.Texture);
         }
 
-        public static async Task<Texture> LoadCardAsync(
+        public static async UniTask<Texture2D> LoadOverFrameAsync(
+            int code,
+            CancellationToken token = default)
+        {
+            var lockObj = overFrameLoadingLocks.GetOrAdd(code, _ => new SemaphoreSlim(1, 1));
+            await lockObj.WaitAsync(token);
+
+            try
+            {
+                if (cachedOverFrames.TryGetValue(code, out var tex))
+                    return tex;
+
+                var of = await InternalLoadOverFrameAsync(code, token);
+                if(of != null)
+                    cachedOverFrames[code] = of;
+                return of;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                lockObj.Release();
+                overFrameLoadingLocks.TryRemove(code, out _);
+            }
+        }
+
+
+        public static async UniTask<Texture> LoadCardAsync(
             int code,
             bool persistent = false,
             CancellationToken token = default,
@@ -330,6 +363,44 @@ namespace MDPro3.Utility
             }
         }
 
+        private static async UniTask<Texture2D> InternalLoadOverFrameAsync(int code, CancellationToken token)
+        {
+            await overFrameSemaphore.WaitAsync(token);
+
+            try
+            {
+                if (!CardHasOverFrame(code))
+                    return null;
+                var path = Tools.GetPlatformPath(Program.PATH_OVER_FRAME + code + ".png");
+                using var request = UnityWebRequestTexture.GetTexture(path);
+                try
+                {
+                    await request.SendWebRequest().ToUniTask(cancellationToken: token);
+                }
+                catch (OperationCanceledException ex) when (token.IsCancellationRequested)
+                {
+                    request.Abort();
+                    throw ex;
+                }
+                catch (Exception ex)
+                {
+                    Debug.LogError($"加载失败: {ex.Message}");
+                    throw ex;
+                }
+
+                if(request.result != UnityWebRequest.Result.Success)
+                {
+                    Debug.LogError($"加载失败: {request.error}");
+                    return null;
+                }
+                return DownloadHandlerTexture.GetContent(request);
+            }
+            finally
+            {
+                overFrameSemaphore.Release();
+            }
+        }
+
         private static async Task<Texture2D> InternalLoadCardAsync(
             int code,
             CancellationToken token)
@@ -348,7 +419,7 @@ namespace MDPro3.Utility
                     return TextureManager.container.unknownCard.texture;
                 }
 
-                var art = await LoadArtAsync(code, false, token).AsUniTask().AttachExternalCancellation(token);
+                var art = await LoadArtAsync(code, false, token).AttachExternalCancellation(token);
                 if (token.IsCancellationRequested)
                     throw new OperationCanceledException(token);
 
@@ -357,7 +428,10 @@ namespace MDPro3.Utility
                     Debug.LogError($"Get null from ArtLoad for Card {data.Id}:");
                     art = TextureManager.container.unknownArt.texture;
                 }
-                if (!Program.instance.cardRenderer.RenderCard(code, art))
+
+                Texture2D overFrame = await LoadOverFrameAsync(code, token).AttachExternalCancellation(token);
+
+                if (!Program.instance.cardRenderer.RenderCard(code, art, overFrame))
                 {
                     lastCardRenderSucceed = false;
                     return TextureManager.container.unknownCard.texture;
@@ -375,7 +449,7 @@ namespace MDPro3.Utility
             finally { cardSemaphore.Release(); }
         }
 
-        private static async Task<Texture> InternalLoadVideoCardAsync(
+        private static async UniTask<Texture> InternalLoadVideoCardAsync(
             int code,
             CancellationToken token)
         {
@@ -391,7 +465,7 @@ namespace MDPro3.Utility
                     lastCardRenderSucceed = false;
                     return TextureManager.container.unknownCard.texture;
                 }
-                var art = await LoadArtAsync(code, false, token).AsUniTask().AttachExternalCancellation(token);
+                var art = await LoadArtAsync(code, false, token).AttachExternalCancellation(token);
                 if (token.IsCancellationRequested)
                     throw new OperationCanceledException(token);
 
@@ -590,9 +664,9 @@ namespace MDPro3.Utility
 
             path = Program.PATH_ALT_ART;
 #if !UNITY_EDITOR && (UNITY_ANDROID || UNITY_IOS)
-                path = Path.Combine(Application.persistentDataPath, path);
+            path = Path.Combine(Application.persistentDataPath, path);
 #elif UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX || UNITY_STANDALONE_LINUX
-                path = Path.Combine(Environment.CurrentDirectory, path);
+            path = Path.Combine(Environment.CurrentDirectory, path);
 #else
             path = Path.Combine(Environment.CurrentDirectory, path);
 #endif
@@ -626,15 +700,7 @@ namespace MDPro3.Utility
                 path = Program.PATH_ART + code + Program.EXPANSION_JPG;
 
             if (!string.IsNullOrEmpty(path))
-            {
-#if !UNITY_EDITOR && (UNITY_ANDROID || UNITY_IOS)
-                path = Path.Combine("file://" + Application.persistentDataPath, path);
-#elif UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX || UNITY_STANDALONE_LINUX
-                path = Path.Combine("file://" + Environment.CurrentDirectory, path);
-#else
-                path = Path.Combine(Environment.CurrentDirectory, path);
-#endif
-            }
+                path = Tools.GetPlatformPath(path);
 
             return path;
         }
@@ -649,14 +715,7 @@ namespace MDPro3.Utility
         {
             if (videoArtFileListInitialized) return;
 
-            var path = Program.PATH_VIDEO_ART;
-#if !UNITY_EDITOR && (UNITY_ANDROID || UNITY_IOS)
-            path = Path.Combine(Application.persistentDataPath, path);
-#elif UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX || UNITY_STANDALONE_LINUX
-            path = Path.Combine(Environment.CurrentDirectory, path);
-#else
-            path = Path.Combine(Environment.CurrentDirectory, path);
-#endif
+            var path = Tools.GetPlatformPath(Program.PATH_VIDEO_ART);
 
             if (Directory.Exists(path))
             {
@@ -683,6 +742,42 @@ namespace MDPro3.Utility
             videoArtFileListInitialized = false;
             _ = InitializeVideoArtFileListAsync();
             ClearArtVideos();
+        }
+
+        #endregion
+
+        #region Over Frame Cache
+
+        private static readonly List<int> overFrameFileList = new();
+        private static bool overFrameFileListInitialized;
+        private static async UniTask InitializeOverFrameFileListAsync()
+        {
+            if (overFrameFileListInitialized) return;
+            var path = Tools.GetPlatformPath(Program.PATH_OVER_FRAME);
+            if(Directory.Exists(path))
+            {
+                //await UniTask.SwitchToThreadPool();
+                await UniTask.Yield();
+                foreach (var file in Directory.GetFiles(path, "*.png"))
+                {
+                    var fileName = Path.GetFileNameWithoutExtension(file);
+                    if (int.TryParse(fileName, out var code))
+                        overFrameFileList.Add(code);
+                }
+            }
+            overFrameFileListInitialized = true;
+        }
+
+        public static bool CardHasOverFrame(int code)
+        {
+            return overFrameFileList.Contains(code);
+        }
+
+        public static Texture2D GetOverFrame(int code)
+        {
+            if(cachedOverFrames.ContainsKey(code))
+                return cachedOverFrames[code];
+            return null;
         }
 
         #endregion
