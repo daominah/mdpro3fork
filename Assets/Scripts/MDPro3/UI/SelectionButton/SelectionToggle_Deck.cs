@@ -99,17 +99,31 @@ namespace MDPro3.UI
             if (index == 0)
                 return;
 
-            await UniTask.WaitWhile(() => Program.instance.deckSelector.inTransition);
+            try
+            {
+                await UniTask.WaitWhile(
+                    () => Program.instance.deckSelector.inTransition,
+                    cancellationToken: destroyCancellationToken);
 
-            for (int i = 0; i < transform.GetSiblingIndex(); i++)
-                await UniTask.Yield(cancellationToken: destroyCancellationToken);
+                int siblingIndex = transform.GetSiblingIndex();
+                for (int i = 0; i < siblingIndex; i++)
+                    await UniTask.Yield(cancellationToken: destroyCancellationToken);
 
-            if (gameObject == null)
-                return;
+                if (this == null || gameObject == null)
+                    return;
 
-            var sprite = await Program.items.LoadDeckCaseIconAsync(deckCase, "_L_SD");
-            if (sprite != null)
+                var sprite = await Program.items.LoadDeckCaseIconAsync(deckCase, "_L_SD");
+                if (this == null || gameObject == null || sprite == null)
+                    return;
+
                 Manager.GetElement<Image>("DeckImage").sprite = sprite;
+            }
+            catch (System.OperationCanceledException)
+            {
+            }
+            catch (MissingReferenceException)
+            {
+            }
         }
 
         protected override async UniTask RefreshAsync()

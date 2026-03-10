@@ -234,8 +234,7 @@ namespace MDPro3.UI
             cardCollectionView.superScrollView.scrollRect.OnBeginDrag(eventData);
             dragStartPosition = eventData.position;
             dragProcessing = true;
-            //draging = !DeckEditor.useMobileLayout;
-            draging = false;
+            draging = !DeckEditor.UseMobileLayout;
             dragIni = false;
         }
 

@@ -131,6 +131,7 @@ namespace MDPro3.Servant
         public static float nextNegateAction_AdditionalTime;
         public static ElementObjectManager nextNegateAction_AdditionalManager;
         public static Action startCard;
+        public Action onSurrenderConfirmed;
 
         public static Material myProtector;
         public static Material opProtector;
@@ -653,11 +654,13 @@ namespace MDPro3.Servant
                 InterString.Get("是"),
                 InterString.Get("否")
             };
-            UIManager.ShowPopupYesOrNo(selections, ActionSurrender, null);
+            UIManager.ShowPopupYesOrNo(selections, ActionSurrender, ActionCancelSurrender);
         }
 
         private void ActionSurrender()
         {
+            onSurrenderConfirmed?.Invoke();
+            onSurrenderConfirmed = null;
             surrendered = true;
             if (TcpHelper.tcpClient != null && TcpHelper.tcpClient.Connected)
             {
@@ -668,6 +671,11 @@ namespace MDPro3.Servant
             }
             else
                 OnExit();
+        }
+
+        private void ActionCancelSurrender()
+        {
+            onSurrenderConfirmed = null;
         }
 
         #endregion
@@ -1490,6 +1498,8 @@ namespace MDPro3.Servant
                     GetUI<OcgCoreUI>().AvatarPlayer1.material = Appearance.duelFrameMat1Tag;
                     SetFaceWhenCharaOff(Appearance.duelFace1Tag, 1);
                 }
+
+                _ = ApplyOnlineOpponentFaceAsync();
             }
             else if (condition == Condition.Watch)
             {
@@ -1539,6 +1549,49 @@ namespace MDPro3.Servant
             }
 
             _ = SetMyCardFace();
+        }
+
+        private async UniTask ApplyOnlineOpponentFaceAsync()
+        {
+            if (condition != Condition.Duel)
+                return;
+
+            var useTagOpponent = isTag && GetUI<OcgCoreUI>().TextPlayer1Name.text != name_1;
+            if (!RoomServant.TryGetOnlineAppearanceForOpponent(useTagOpponent, out var appearance))
+            {
+                if (!useTagOpponent || !RoomServant.TryGetOnlineAppearanceForOpponent(false, out appearance))
+                    return;
+            }
+
+            var iconPlayer = useTagOpponent ? 3 : 1;
+            var frameCode = appearance.Frame.ToString();
+            var frameSprite = await Program.items.LoadConcreteItemIconAsync(frameCode, Items.ItemType.Frame, iconPlayer);
+            Material frameMaterial;
+            if (appearance.Frame == Items.CODE_DIY)
+                frameMaterial = Appearance.matForFace == null ? null : new Material(Appearance.matForFace);
+            else
+                frameMaterial = await ABLoader.LoadFrameMaterial(frameCode);
+            if (frameMaterial != null && frameSprite != null)
+                frameMaterial.SetTexture("_ProfileFrameTex", frameSprite.texture);
+
+            var faceSprite = await Program.items.LoadConcreteItemIconAsync(appearance.Face.ToString(), Items.ItemType.Face, iconPlayer);
+
+            var latestUseTagOpponent = isTag && GetUI<OcgCoreUI>().TextPlayer1Name.text != name_1;
+            if (latestUseTagOpponent != useTagOpponent)
+                return;
+
+            if (!RoomServant.TryGetOnlineAppearanceForOpponent(useTagOpponent, out var latest))
+            {
+                if (!useTagOpponent || !RoomServant.TryGetOnlineAppearanceForOpponent(false, out latest))
+                    return;
+            }
+            if (latest.Face != appearance.Face || latest.Frame != appearance.Frame)
+                return;
+
+            if (frameMaterial != null)
+                GetUI<OcgCoreUI>().AvatarPlayer1.material = frameMaterial;
+            if (faceSprite != null)
+                SetFaceWhenCharaOff(faceSprite, 1);
         }
 
         private async UniTask SetMyCardFace()
@@ -1948,13 +2001,13 @@ namespace MDPro3.Servant
             DuelBGManager.PlayGraveEffect(p, isIn);
         }
 
-        public int GetAllAtk(bool mySide)
+        public long GetAllAtk(bool mySide)
         {
-            int allAttack = 0;
+            long allAttack = 0;
             var monsters = GCS_GetLocationCards(mySide ? 0 : 1, (int)CardLocation.MonsterZone);
             foreach (var card in monsters)
                 if ((card.p.position & (uint)CardPosition.FaceUpAttack) > 0)
-                    allAttack += card.GetData().Attack;
+                    allAttack += Card.NormalizeBattleValue(card.GetData().Attack, false);
             return allAttack;
         }
 

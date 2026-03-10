@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+using System;
+using System.Collections.Generic;
 using System.IO;
 
 namespace YGOSharp
@@ -23,6 +24,12 @@ namespace YGOSharp
                 {
                     current = new Banlist();
                     Banlists.Add(current);
+                    continue;
+                }
+                if (line.StartsWith("$"))
+                {
+                    if (current != null && line.Equals("$whitelist", StringComparison.OrdinalIgnoreCase))
+                        current.EnableWhitelistMode();
                     continue;
                 }
                 if (!line.Contains(" "))

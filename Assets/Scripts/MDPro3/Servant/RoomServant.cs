@@ -47,6 +47,7 @@ namespace MDPro3.Servant
             public bool ready;
         }
         public static Player[] players = new Player[32];
+        private static readonly Dictionary<int, OnlineAppearanceData> onlineAppearances = new();
 
         private Deck deck;
 
@@ -67,6 +68,8 @@ namespace MDPro3.Servant
             CoreShowing = 0;
             Program.instance.ui_.chatPanel.Show(false);
             OcgCore.handler = Handler;
+            // Re-roll random duel/watch icon & frame whenever entering a room.
+            _ = Program.instance.appearance.LoadSettingAssets();
             GetUI<RoomServantUI>().RefreshDeckSelector();
         }
 
@@ -86,6 +89,7 @@ namespace MDPro3.Servant
                 if (FromLocalHost)
                     YgoServer.StopServer();
             }
+            onlineAppearances.Clear();
             base.OnExit();
             Program.instance.ocgcore.CloseConnection();
         }
@@ -132,6 +136,77 @@ namespace MDPro3.Servant
                 return false;
             }
             return true;
+        }
+
+        public static bool TryGetOnlineAppearanceForSide(int side, out OnlineAppearanceData appearance)
+        {
+            appearance = default;
+            if (!TryGetTeamPlayer(side, false, out var player))
+                return false;
+            return onlineAppearances.TryGetValue(player, out appearance);
+        }
+
+        public static bool TryGetOnlineAppearanceForOpponent(bool tag, out OnlineAppearanceData appearance)
+        {
+            appearance = default;
+            if (!TryGetTeamPlayer(1, tag, out var player))
+                return false;
+            return onlineAppearances.TryGetValue(player, out appearance);
+        }
+
+        public static bool TryGetOnlineAppearanceForPlayer(int player, out OnlineAppearanceData appearance)
+        {
+            appearance = default;
+            if (player < 0 || player >= 4)
+                return false;
+            return onlineAppearances.TryGetValue(player, out appearance);
+        }
+
+        private static bool TryGetTeamPlayer(int side, bool tag, out int player)
+        {
+            player = -1;
+            if (side != 0 && side != 1)
+                return false;
+
+            if (Mode != 2)
+            {
+                if (tag)
+                    return false;
+
+                if (SelfType == 7)
+                    player = side;
+                else
+                    player = side == 0 ? SelfType : 1 - SelfType;
+                return player >= 0 && player < 4;
+            }
+
+            var hostTeamAsSide0 = SelfType == 7 || SelfType < 2;
+            var useHostTeam = hostTeamAsSide0 ? side == 0 : side == 1;
+
+            if (useHostTeam)
+                player = tag ? 1 : 0;
+            else
+                player = tag ? 3 : 2;
+
+            return true;
+        }
+
+        private static void MoveOnlineAppearance(int from, int to)
+        {
+            if (onlineAppearances.TryGetValue(from, out var appearance))
+            {
+                onlineAppearances[to] = appearance;
+                onlineAppearances.Remove(from);
+            }
+            else
+            {
+                onlineAppearances.Remove(to);
+            }
+        }
+
+        private static void RemoveOnlineAppearance(int player)
+        {
+            onlineAppearances.Remove(player);
         }
 
         private void ShowOcgCore()
@@ -413,6 +488,7 @@ namespace MDPro3.Servant
 
             for (int i = 0; i < 4; i++)
                 players[i] = null;
+            onlineAppearances.Clear();
 
             if(!FromHandTest)
                 Program.instance.ShiftToServant(Program.instance.room);
@@ -425,6 +501,8 @@ namespace MDPro3.Servant
             IsHost = ((type >> 4) & 0xF) != 0;
             if (SelfType < 4 && players[SelfType] != null)
                 players[SelfType].ready = false;
+            if (SelfType < 4)
+                TcpHelper.CtosMessage_UpdateAppearanceFromCurrentDeck();
             Realize();
         }
 
@@ -467,8 +545,23 @@ namespace MDPro3.Servant
         public void StocMessage_Chat(BinaryReader r)
         {
             int player = r.ReadInt16();
-            var length = r.BaseStream.Length - 3;
+            var length = (int)((r.BaseStream.Length - r.BaseStream.Position) / 2);
             var content = r.ReadUnicode((int)length);
+            if (OnlineAppearanceSync.IsSyncMessage(content))
+            {
+                if (player >= 0 && player < 4 && OnlineAppearanceSync.TryParse(content, out var appearance))
+                {
+                    onlineAppearances[player] = appearance;
+                    if (showing)
+                        Realize();
+                    Debug.Log($"[OnlineAppearance] Received sync from seat {player}: {appearance.Case},{appearance.Protector},{appearance.Field},{appearance.Grave},{appearance.Stand},{appearance.Mate},{appearance.Face},{appearance.Frame}");
+                }
+                else
+                {
+                    Debug.LogWarning($"[OnlineAppearance] Ignored sync chat. seat={player}, content='{content}'");
+                }
+                return;
+            }
             //Debug.Log($"{player}: {content} {OcgCore.isFirst} {RoomServant.SelfType}");
             Program.instance.ui_.chatPanel.AddChatItem(player, content);
         }
@@ -483,6 +576,9 @@ namespace MDPro3.Servant
             player.name = name;
             player.ready = false;
             players[pos] = player;
+            RemoveOnlineAppearance(pos);
+            if (SelfType < 4 && players[SelfType] != null && pos != SelfType)
+                TcpHelper.CtosMessage_UpdateAppearanceFromCurrentDeck();
             Realize();
         }
 
@@ -497,16 +593,21 @@ namespace MDPro3.Servant
                 {
                     players[state] = players[pos];
                     players[pos] = null;
+                    MoveOnlineAppearance(pos, state);
                 }
                 if (state == 0x9)
                     players[pos].ready = true;
                 if (state == 0xA)
                     players[pos].ready = false;
                 if (state == 0xB)
+                {
                     players[pos] = null;
+                    RemoveOnlineAppearance(pos);
+                }
                 if (state == 0x8)
                 {
                     players[pos] = null;
+                    RemoveOnlineAppearance(pos);
                     ObserverCount++;
                 }
                 Realize();

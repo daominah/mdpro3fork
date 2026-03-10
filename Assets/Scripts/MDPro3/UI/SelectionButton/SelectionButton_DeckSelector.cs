@@ -2,6 +2,7 @@ using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using MDPro3.Duel.YGOSharp;
 using MDPro3.Utility;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -101,8 +102,7 @@ namespace MDPro3.UI
         protected override void OnDisable()
         {
             base.OnDisable();
-            cts?.Cancel();
-            cts?.Dispose();
+            DisposeRefreshCts();
         }
 
         public void SetConfigDeck(string hint)
@@ -147,55 +147,104 @@ namespace MDPro3.UI
         {
             refreshed = false;
 
-            cts = new();
-            await UniTask.WaitUntil(() => Items.initialized, cancellationToken : cts.Token);
-            await UniTask.WaitWhile(() => TextureManager.container == null, cancellationToken: cts.Token);
+            DisposeRefreshCts();
+            var refreshCts = new CancellationTokenSource();
+            cts = refreshCts;
+            var token = refreshCts.Token;
 
-            ImageDeck.color = Color.clear;
-            ImageCard0.color =Color.clear;
-            ImageCard1.color = Color.clear;
-            ImageCard2.color = Color.clear;
+            try
+            {
+                await UniTask.WaitUntil(() => Items.initialized, cancellationToken: token);
+                await UniTask.WaitWhile(() => TextureManager.container == null, cancellationToken: token);
 
-            ImageDeck.sprite = await Program.items.LoadDeckCaseIconAsync(deckCase, "_L_SD");
-            ImageDeck.color = Color.white;
+                ImageDeck.color = Color.clear;
+                ImageCard0.color =Color.clear;
+                ImageCard1.color = Color.clear;
+                ImageCard2.color = Color.clear;
 
-            if (card0 == 0)
-            {
-                ImageCard0.texture = null;
-                ImageCard0.material = await ABLoader.LoadProtectorMaterial(protector.ToString(), cts.Token);
-            }
-            else
-            {
-                ImageCard0.material = MaterialLoader.GetCardMaterial(card0);
-                ImageCard0.texture = await CardImageLoader.LoadCardAsync(card0, true);
-            }
-            ImageCard0.color = Color.white;
+                ImageDeck.sprite = await Program.items.LoadDeckCaseIconAsync(deckCase, "_L_SD");
+                ImageDeck.color = Color.white;
 
-            if (card1 == 0)
-            {
-                ImageCard1.texture = null;
-                ImageCard1.material = await ABLoader.LoadProtectorMaterial(protector.ToString(), cts.Token);
-            }
-            else
-            {
-                ImageCard1.material = MaterialLoader.GetCardMaterial(card1);
-                ImageCard1.texture = await CardImageLoader.LoadCardAsync(card1, true);
-            }
-            ImageCard1.color = Color.white;
+                if (card0 == 0)
+                {
+                    ImageCard0.texture = null;
+                    ImageCard0.material = await ABLoader.LoadProtectorMaterial(protector.ToString(), token);
+                }
+                else
+                {
+                    ImageCard0.material = MaterialLoader.GetCardMaterial(card0);
+                    ImageCard0.texture = await CardImageLoader.LoadCardAsync(card0, true);
+                }
+                ImageCard0.color = Color.white;
 
-            if (card2 == 0)
-            {
-                ImageCard2.texture = null;
-                ImageCard2.material = await ABLoader.LoadProtectorMaterial(protector.ToString(), cts.Token);
-            }
-            else
-            {
-                ImageCard2.material = MaterialLoader.GetCardMaterial(card2);
-                ImageCard2.texture = await CardImageLoader.LoadCardAsync(card2, true);
-            }
-            ImageCard2.color = Color.white;
+                if (card1 == 0)
+                {
+                    ImageCard1.texture = null;
+                    ImageCard1.material = await ABLoader.LoadProtectorMaterial(protector.ToString(), token);
+                }
+                else
+                {
+                    ImageCard1.material = MaterialLoader.GetCardMaterial(card1);
+                    ImageCard1.texture = await CardImageLoader.LoadCardAsync(card1, true);
+                }
+                ImageCard1.color = Color.white;
 
-            refreshed = true;
+                if (card2 == 0)
+                {
+                    ImageCard2.texture = null;
+                    ImageCard2.material = await ABLoader.LoadProtectorMaterial(protector.ToString(), token);
+                }
+                else
+                {
+                    ImageCard2.material = MaterialLoader.GetCardMaterial(card2);
+                    ImageCard2.texture = await CardImageLoader.LoadCardAsync(card2, true);
+                }
+                ImageCard2.color = Color.white;
+
+                refreshed = true;
+            }
+            catch (OperationCanceledException)
+            {
+            }
+            finally
+            {
+                if (ReferenceEquals(cts, refreshCts))
+                {
+                    cts = null;
+                    try
+                    {
+                        refreshCts.Dispose();
+                    }
+                    catch (ObjectDisposedException)
+                    {
+                    }
+                }
+            }
+        }
+
+        private void DisposeRefreshCts()
+        {
+            var refreshCts = cts;
+            if (refreshCts == null)
+                return;
+
+            cts = null;
+
+            try
+            {
+                refreshCts.Cancel();
+            }
+            catch (ObjectDisposedException)
+            {
+            }
+
+            try
+            {
+                refreshCts.Dispose();
+            }
+            catch (ObjectDisposedException)
+            {
+            }
         }
 
         protected override void CallHoverOnEvent()

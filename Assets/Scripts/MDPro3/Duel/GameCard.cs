@@ -423,10 +423,10 @@ namespace MDPro3
             else if (data.Id > 0)
                 data.CloneTo(lastValidData);
 
-            if (d.Attack < 0)
-                d.Attack = 0;
-            if (d.Defense < 0)
-                d.Defense = 0;
+            d.Attack = Card.NormalizeBattleValue(d.Attack, false);
+            d.Defense = Card.NormalizeBattleValue(d.Defense, false);
+            d.rAttack = Card.NormalizeBattleValue(d.rAttack, false);
+            d.rDefense = Card.NormalizeBattleValue(d.rDefense, false);
 
             if (d.Id != data.Id)
             {
@@ -441,6 +441,8 @@ namespace MDPro3
                 }
             }
             data = d;
+            if (model != null && p.InLocation(CardLocation.Hand) && !inAnimation)
+                RefreshHandTurnByCode();
             RefreshLabel();
             UpdateExDeckTop();
         }
@@ -521,15 +523,14 @@ namespace MDPro3
                     handsCount = Program.instance.ocgcore.GetOpHandCount();
 
                 float x = p.sequence * 4 - (handsCount - 1) * 2;
-
                 if (p.controller == 0)
                 {
-                    var z = -28 + (30 - Program.instance.camera_.cameraMain.fieldOfView) * 0.7f;
+                    var z = GetMyHandBaseZ();
                     return new Vector3(x + handOffset * UIManager.ScreenLengthWithoutScalerX(0.038f), 15, z);
                 }
                 else
                 {
-                    var z = 17 - (30 - Program.instance.camera_.cameraMain.fieldOfView) * 0.7f;
+                    var z = GetOpHandBaseZ();
                     return new Vector3(-x, 15, z);
                 }
             }
@@ -709,6 +710,35 @@ namespace MDPro3
                 }
             }
             return returnValue;
+        }
+
+        private static float GetMyHandBaseZ()
+        {
+            return -28f + GetHandDepthOffsetByFov();
+        }
+
+        private static float GetOpHandBaseZ()
+        {
+            return 17f - GetHandDepthOffsetByFov();
+        }
+
+        private static float GetHandDepthOffsetByFov()
+        {
+            var camera = Program.instance?.camera_?.cameraMain;
+            if (camera == null)
+                return 0f;
+
+            var fovDelta = Mathf.Clamp(30f - camera.fieldOfView, 0f, 6f);
+            var fovCompensation = fovDelta * 0.7f;
+
+            // After widening duel camera framing, retract hand outward on ultrawide displays.
+            var aspect = Tools.GetScreenAspectRatio();
+            var ultraWide21x9T = Mathf.InverseLerp(16f / 9f, 21f / 9f, aspect);
+            var ultraWide32x9T = Mathf.InverseLerp(21f / 9f, 32f / 9f, aspect);
+            // Strong ultrawide push so hand cards sit lower while keeping a little more text visible.
+            var ultraWideOutward = Mathf.Lerp(0f, 1.60f, ultraWide21x9T) + Mathf.Lerp(0f, 1.10f, ultraWide32x9T);
+
+            return fovCompensation - ultraWideOutward;
         }
 
         public static Vector3 GetCardRotation(GPS p, int code = 0)
@@ -1547,11 +1577,19 @@ namespace MDPro3
                 Program.instance.ocgcore.SetExDeckTop(this);
 
             ShowFaceDownCardOrNot(NeedShowFaceDownCard());
+            RefreshHandTurnByCode();
 
             if (p.InLocation(CardLocation.Deck, CardLocation.Extra))
                 Program.instance.ocgcore.DuelBGManager.ResizeDecks();
             if (p.InLocation(CardLocation.Grave, CardLocation.Removed))
                 Program.instance.ocgcore.DuelBGManager.RefreshGravesState();
+        }
+
+        private void RefreshHandTurnByCode()
+        {
+            if (model == null || !p.InLocation(CardLocation.Hand))
+                return;
+            manager.GetElement<Transform>("Turn").localEulerAngles = new Vector3(0, 0, data.Id == 0 ? 180 : 0);
         }
 
         public Sequence StartCardSequence(Vector3 fromPosition, Vector3 fromRotation, float interval = 0f)
@@ -1905,9 +1943,9 @@ namespace MDPro3
             var targetPosition = GetCardPosition(p, this);
             var x = targetPosition.x;
             if (HideMyHandCard && p.InMyControl())
-                targetPosition.z = -28f;
+                targetPosition.z = GetMyHandBaseZ();
             if (HideOpHandCard && !p.InMyControl())
-                targetPosition.z = 17f;
+                targetPosition.z = GetOpHandBaseZ();
             model.transform.DOLocalMove(targetPosition, time);
         }
 

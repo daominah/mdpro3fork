@@ -96,9 +96,16 @@ namespace MDPro3.Duel
                 && File.Exists(Program.PATH_DECK + deckName + Program.EXPANSION_YDK))
                 deck = new Deck(Program.PATH_DECK + deckName + Program.EXPANSION_YDK);
 
+            var hasSide0Appearance = RoomServant.TryGetOnlineAppearanceForSide(0, out var side0Appearance);
+            var hasSide1Appearance = RoomServant.TryGetOnlineAppearanceForSide(1, out var side1Appearance);
+            var overrideDeckAppearance = Config.GetBool("OverrideDeckAppearance", false);
+
             UIManager.UIBlackIn(Core.TransitionTime);
             await UniTask.WaitForSeconds(Core.TransitionTime);
             await UniTask.WaitUntil(() => Appearance.loaded);
+            // Rebuild appearance assets on each match load so random selections
+            // (icon / frame / protector) are re-rolled per duel.
+            await Program.instance.appearance.LoadSettingAssets();
             await ABLoader.CacheMasterDuelBundles();
             Program.instance.ocgcore.LoadDuelButton();
 
@@ -139,16 +146,21 @@ namespace MDPro3.Duel
             var path = Program.items.GetAssetPath(
                 Config.Get(condition.ToString() + "Field0",
                 Program.items.mats[0].id.ToString()), Items.ItemType.Mat);
-            if (deck != null && !Config.GetBool("OverrideDeckAppearance", false))
+            if (condition == Condition.Watch && hasSide0Appearance)
+                path = Program.items.GetAssetPath(side0Appearance.Field.ToString(), Items.ItemType.Mat);
+            else if (deck != null && !overrideDeckAppearance)
                 path = Program.items.GetAssetPath(deck.Field.ToString(), Items.ItemType.Mat);
             path = "MasterDuel/" + path;
             var field0 = await ABLoader.LoadFromFileAsync(path + "_near", false, true);
             field0.transform.SetParent(Program.instance.container_3D, false);
             field0Manager = field0.GetComponent<BgEffectManager>();
 
+            var field1Config = Config.Get(condition.ToString() + "Field1",
+                Program.items.mats[0].id.ToString());
+            if (hasSide1Appearance)
+                field1Config = side1Appearance.Field.ToString();
             var field1 = await ABLoader.LoadFromFileAsync("MasterDuel/" +
-                Program.items.GetAssetPath(Config.Get(condition.ToString() + "Field1",
-                Program.items.mats[0].id.ToString()), Items.ItemType.Mat, 1) + "_far"
+                Program.items.GetAssetPath(field1Config, Items.ItemType.Mat, 1) + "_far"
                 , false, true);
             field1.transform.SetParent(Program.instance.container_3D, false);
             field1Manager = field1.GetComponent<BgEffectManager>();
@@ -177,7 +189,9 @@ namespace MDPro3.Duel
             path = Program.items.GetAssetPath(
                 Config.Get(condition.ToString() + "Grave0",
                 Program.items.graves[0].id.ToString()), Items.ItemType.Grave);
-            if (deck != null && !Config.GetBool("OverrideDeckAppearance", false))
+            if (condition == Condition.Watch && hasSide0Appearance)
+                path = Program.items.GetAssetPath(side0Appearance.Grave.ToString(), Items.ItemType.Grave);
+            else if (deck != null && !overrideDeckAppearance)
                 path = Program.items.GetAssetPath(deck.Grave.ToString(), Items.ItemType.Grave);
             path = "MasterDuel/" + path;
 
@@ -185,9 +199,12 @@ namespace MDPro3.Duel
             grave0.transform.SetParent(pos_Grave_near, false);
             grave0Manager = grave0.GetComponent<BgEffectManager>();
 
+            var grave1Config = Config.Get(condition.ToString() + "Grave1",
+                Program.items.graves[0].id.ToString());
+            if (hasSide1Appearance)
+                grave1Config = side1Appearance.Grave.ToString();
             var grave1 = await ABLoader.LoadFromFileAsync("MasterDuel/" +
-                Program.items.GetAssetPath(Config.Get(condition.ToString() + "Grave1",
-                Program.items.graves[0].id.ToString()), Items.ItemType.Grave, 1) + "_far"
+                Program.items.GetAssetPath(grave1Config, Items.ItemType.Grave, 1) + "_far"
                 , false, true);
             grave1.transform.SetParent(pos_Grave_far, false);
             grave1Manager = grave1.GetComponent<BgEffectManager>();
@@ -208,10 +225,12 @@ namespace MDPro3.Duel
             #region Stand
 
             var standConfig = Config.Get(condition.ToString() + "Stand0", Program.items.stands[0].id.ToString());
+            if (condition == Condition.Watch && hasSide0Appearance)
+                standConfig = side0Appearance.Stand.ToString();
             if (standConfig != Items.CODE_NONE.ToString() || deck != null)
             {
                 path = Program.items.GetAssetPath(standConfig, Items.ItemType.Stand);
-                if (deck != null && !Config.GetBool("OverrideDeckAppearance", false))
+                if (deck != null && !overrideDeckAppearance)
                     path = Program.items.GetAssetPath(deck.Stand.ToString(), Items.ItemType.Stand);
                 path = "MasterDuel/" + path;
                 var stand0 = await ABLoader.LoadFromFileAsync(path + "_near", false, true);
@@ -223,6 +242,8 @@ namespace MDPro3.Duel
             }
 
             standConfig = Config.Get(condition.ToString() + "Stand1", Program.items.stands[0].id.ToString());
+            if (hasSide1Appearance)
+                standConfig = side1Appearance.Stand.ToString();
             if (standConfig != Items.CODE_NONE.ToString())
             {
                 var stand1 = await ABLoader.LoadFromFileAsync("MasterDuel/" +
@@ -240,11 +261,13 @@ namespace MDPro3.Duel
             #region Mate
 
             var mateConfig = Config.Get(condition.ToString() + "Mate0", Program.items.mates[0].id.ToString());
-            if (mateConfig != Items.CODE_NONE.ToString() || deck != null)
+            if (condition == Condition.Watch && hasSide0Appearance)
+                mateConfig = side0Appearance.Mate.ToString();
+            int mateCode = int.Parse(mateConfig);
+            if (deck != null && !overrideDeckAppearance)
+                mateCode = deck.Mate;
+            if (mateCode != Items.CODE_NONE)
             {
-                int mateCode = int.Parse(mateConfig);
-                if (deck != null && !Config.GetBool("OverrideDeckAppearance", false))
-                    mateCode = deck.Mate;
                 var mate = await ABLoader.LoadMateAsync(mateCode);
                 if (mate != null)
                 {
@@ -255,9 +278,11 @@ namespace MDPro3.Duel
             }
 
             mateConfig = Config.Get(condition.ToString() + "Mate1", Program.items.mates[0].id.ToString());
+            if (hasSide1Appearance)
+                mateConfig = side1Appearance.Mate.ToString();
             if (mateConfig != Items.CODE_NONE.ToString())
             {
-                var mate = await ABLoader.LoadMateAsync(int.Parse(Config.Get(condition.ToString() + "Mate1", Program.items.mates[0].id.ToString())));
+                var mate = await ABLoader.LoadMateAsync(int.Parse(mateConfig));
                 if (mate != null)
                 {
                     mate1 = mate;
@@ -334,20 +359,44 @@ namespace MDPro3.Duel
             #region Deck Model
 
             var deckMat = Appearance.duelProtector0;
-            if (deck != null && !Config.GetBool("OverrideDeckAppearance", false))
+            if (deck != null && !overrideDeckAppearance)
                 deckMat = await ABLoader.LoadProtectorMaterial(deck.Protector.ToString(), Application.exitCancellationToken);
 
             if (condition == Condition.Duel)
                 myProtector = deckMat;
             else if (condition == Condition.Watch)
+            {
                 myProtector = Appearance.watchProtector0;
+                if (hasSide0Appearance)
+                {
+                    var mat = await ABLoader.LoadProtectorMaterial(side0Appearance.Protector.ToString(), Application.exitCancellationToken);
+                    if (mat != null)
+                        myProtector = mat;
+                }
+            }
             else if (condition == Condition.Replay)
                 myProtector = Appearance.replayProtector0;
 
             if (condition == Condition.Duel)
+            {
                 opProtector = Appearance.duelProtector1;
+                if (hasSide1Appearance)
+                {
+                    var mat = await ABLoader.LoadProtectorMaterial(side1Appearance.Protector.ToString(), Application.exitCancellationToken);
+                    if (mat != null)
+                        opProtector = mat;
+                }
+            }
             else if (condition == Condition.Watch)
+            {
                 opProtector = Appearance.watchProtector1;
+                if (hasSide1Appearance)
+                {
+                    var mat = await ABLoader.LoadProtectorMaterial(side1Appearance.Protector.ToString(), Application.exitCancellationToken);
+                    if (mat != null)
+                        opProtector = mat;
+                }
+            }
             else if (condition == Condition.Replay)
                 opProtector = Appearance.replayProtector1;
 

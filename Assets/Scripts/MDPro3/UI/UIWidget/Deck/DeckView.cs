@@ -783,7 +783,8 @@ namespace MDPro3.UI
             if (condition == Condition.Editable && !deckLoaded) return false;
 
             Deck = FromObjectDeckToCodedDeck();
-            DeckFileSave();
+            if (!DeckFileSave())
+                return false;
             SetCondition(Condition.Editable);
             return true;
         }
@@ -1293,27 +1294,78 @@ namespace MDPro3.UI
             return DeckLocation.All;
         }
 
-        protected void DeckFileSave()
+        protected bool DeckFileSave()
         {
             try
             {
-                var deckName = GetDeckName();
-                // TODO: 检查违法字符。
+                var deckName = MDPro3.Duel.YGOSharp.Deck.NormalizeDeckFileName(GetDeckName());
+                if (!MDPro3.Duel.YGOSharp.Deck.IsValidDeckFileName(deckName))
+                    throw new InvalidOperationException($"Invalid deck name: \"{GetDeckName()}\"");
+
                 Deck.type = deckType;
-                Deck.Save(deckName, DateTime.UtcNow);
-                if (deckName != deckFileName)
-                    File.Delete(Program.PATH_DECK + this.deckNameWithType + Program.EXPANSION_YDK);
+
+                var oldDeckPath = GetDeckFilePath(deckFileName);
+                if (!Deck.Save(deckName, DateTime.UtcNow))
+                    throw new IOException($"Failed to save deck \"{deckName}\".");
+
+                var newDeckPath = GetDeckFilePath(deckName);
+                if (IsSameDeckPath(oldDeckPath, newDeckPath))
+                    ApplyCaseOnlyRename(oldDeckPath, newDeckPath);
+                else if (File.Exists(oldDeckPath))
+                    File.Delete(oldDeckPath);
+
                 deckFileName = deckName;
-                deckNameWithType = deckType == string.Empty ? string.Empty : $"/{deckType}" + deckName;
+                deckNameWithType = deckType == string.Empty ? deckName : $"{deckType}/{deckName}";
+                InputDeckName.text = deckFileName;
+                TextDeckName.text = deckFileName;
                 MessageManager.Toast(InterString.Get("本地卡组「[?]」已保存。", deckName));
                 Config.SetConfigDeck(deckName, true);
                 SetDirty(false);
+                return true;
             }
             catch (Exception e)
             {
                 MessageManager.Toast(InterString.Get("保存失败！"));
                 MessageManager.Cast(e.Message);
+                return false;
             }
+        }
+
+        private string GetDeckFilePath(string deckName)
+        {
+            return Program.PATH_DECK + (deckType == string.Empty ? string.Empty : $"{deckType}/")
+                + deckName + Program.EXPANSION_YDK;
+        }
+
+        private static bool IsSameDeckPath(string leftPath, string rightPath)
+        {
+            var fullLeftPath = Path.GetFullPath(leftPath);
+            var fullRightPath = Path.GetFullPath(rightPath);
+#if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
+            return string.Equals(fullLeftPath, fullRightPath, StringComparison.OrdinalIgnoreCase);
+#else
+            return string.Equals(fullLeftPath, fullRightPath, StringComparison.Ordinal);
+#endif
+        }
+
+        private static void ApplyCaseOnlyRename(string oldPath, string newPath)
+        {
+#if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
+            var fullOldPath = Path.GetFullPath(oldPath);
+            var fullNewPath = Path.GetFullPath(newPath);
+
+            if (string.Equals(fullOldPath, fullNewPath, StringComparison.Ordinal))
+                return;
+            if (!string.Equals(fullOldPath, fullNewPath, StringComparison.OrdinalIgnoreCase))
+                return;
+            if (!File.Exists(fullOldPath))
+                return;
+
+            var directory = Path.GetDirectoryName(fullOldPath);
+            var tempPath = Path.Combine(directory ?? Program.PATH_DECK, $"__mdpro3_casefix_{Guid.NewGuid():N}.tmp");
+            File.Move(fullOldPath, tempPath);
+            File.Move(tempPath, fullNewPath);
+#endif
         }
 
         #region Pickup

@@ -51,6 +51,8 @@ namespace MDPro3.Servant
             if (servantUI != null)
                 RefreshDeckSelector();
 
+            // Re-roll random duel icon/frame/protector whenever returning to lobby.
+            _ = Program.instance.appearance.LoadSettingAssets();
             StartCoroutine(RefreshMyCardAssets());
         }
 
@@ -145,6 +147,7 @@ namespace MDPro3.Servant
             RoomServant.FromLocalHost = true;
             RoomServant.FromHandTest = false;
 
+            BanlistManager.PrepareLocalServerLflist();
             YgoServer.StartServer(args);
             TcpHelper.LinkStart("127.0.0.1", Config.Get("DuelPlayerName0", Config.EMPTY_STRING), port.ToString(), string.Empty, true, null);
         }
@@ -232,26 +235,42 @@ namespace MDPro3.Servant
 
         private IEnumerator RefreshMyCardAssets()
         {
+            var onlineUI = GetUI<OnlineServantUI>();
+            if (onlineUI == null || onlineUI.PageMyCard == null || onlineUI.PageMyCard.UserProfile == null)
+                yield break;
+
+            var userProfile = onlineUI.PageMyCard.UserProfile;
+
             var task = MyCard.GetExp();
             while (!task.IsCompleted)
                 yield return null;
 
-            GetUI<OnlineServantUI>().PageMyCard.UserProfile.SetProfile(task.Result);
+            MyCardUserExp expData = null;
+            if (!task.IsCanceled && task.Exception == null)
+                expData = task.Result;
+            userProfile.SetProfile(expData);
 
             while (!Appearance.loaded)
                 yield return null;
-            GetUI<OnlineServantUI>().PageMyCard.UserProfile.Avatar.material = Appearance.duelFrameMat0;
+            if (userProfile.Avatar != null)
+                userProfile.Avatar.material = Appearance.duelFrameMat0;
 
             if (MyCard.avatar == null)
             {
-                var avatarTask = Tools.DownloadImageAsync(MyCard.account.user.avatar);
-                while (!avatarTask.IsCompleted)
-                    yield return null;
-                MyCard.avatar = avatarTask.Result;
-                GetUI<OnlineServantUI>().PageMyCard.UserProfile.Avatar.texture = MyCard.avatar;
+                var avatarAddress = MyCard.account?.user?.avatar;
+                if (!string.IsNullOrEmpty(avatarAddress))
+                {
+                    var avatarTask = Tools.DownloadImageAsync(avatarAddress);
+                    while (!avatarTask.IsCompleted)
+                        yield return null;
+                    MyCard.avatar = avatarTask.Result;
+                }
             }
 
-            GetUI<OnlineServantUI>().PageMyCard.ActivePageFunction();
+            if (userProfile.Avatar != null && MyCard.avatar != null)
+                userProfile.Avatar.texture = MyCard.avatar;
+
+            onlineUI.PageMyCard.ActivePageFunction();
         }
 
         private void RefreshDeckSelector()
