@@ -90,7 +90,7 @@ namespace MDPro3.Utility
                         Interlocked.Increment(ref entry.ReferenceCount);
                         entry.IsPersistent |= persistent;
                     }
-                    else if (!HasOverFrameArtFile(code))
+                    else
                         Debug.LogError($"Art texture is null for code {code}");
 
                     return entry.Texture;
@@ -115,7 +115,7 @@ namespace MDPro3.Utility
                         cachedArts.TryRemove(code, out _);
                         throw ex;
                     }
-                    if (newEntry.Texture == null && !HasOverFrameArtFile(code))
+                    if (newEntry.Texture == null)
                         Debug.LogError($"{code} art is null");
 
                     newEntry.LoadingTask = null;
@@ -288,7 +288,6 @@ namespace MDPro3.Utility
             cachedCardNames.Clear();
 
             ClearArtVideos();
-            knownOverFrameArts.Clear();
         }        
 
         #endregion
@@ -324,7 +323,7 @@ namespace MDPro3.Utility
                     }
                     if (art == null)
                     {
-                        lastCardFoundArt = HasOverFrameArtFile(code);
+                        lastCardFoundArt = false;
                         return null;
                     }
 
@@ -426,8 +425,7 @@ namespace MDPro3.Utility
 
                 if (art == null)
                 {
-                    if (!HasOverFrameArtFile(data.Id))
-                        Debug.LogError($"Get null from ArtLoad for Card {data.Id}:");
+                    Debug.LogError($"Get null from ArtLoad for Card {data.Id}:");
                     art = TextureManager.container.unknownArt.texture;
                 }
 
@@ -473,8 +471,7 @@ namespace MDPro3.Utility
 
                 if (art == null)
                 {
-                    if (!HasOverFrameArtFile(data.Id))
-                        Debug.LogError($"Get null from ArtLoad for Card {data.Id}:");
+                    Debug.LogError($"Get null from ArtLoad for Card {data.Id}:");
                     art = TextureManager.container.unknownArt.texture;
                 }
 
@@ -635,30 +632,6 @@ namespace MDPro3.Utility
         #endregion
 
         #region Art File List Cache
-
-        private static bool HasOverFrameArtFile(int code)
-        {
-            if (knownOverFrameArts.ContainsKey(code))
-                return true;
-
-            var fileName = code + Program.EXPANSION_PNG;
-#if !UNITY_EDITOR && (UNITY_ANDROID || UNITY_IOS)
-            var overFramePath = Path.Combine(Application.persistentDataPath, "Picture", "OverFrame", fileName);
-            var overframePath = Path.Combine(Application.persistentDataPath, "Picture", "Overframe", fileName);
-#elif UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX || UNITY_STANDALONE_LINUX
-            var overFramePath = Path.Combine(Environment.CurrentDirectory, "Picture", "OverFrame", fileName);
-            var overframePath = Path.Combine(Environment.CurrentDirectory, "Picture", "Overframe", fileName);
-#else
-            var overFramePath = Path.Combine(Environment.CurrentDirectory, "Picture", "OverFrame", fileName);
-            var overframePath = Path.Combine(Environment.CurrentDirectory, "Picture", "Overframe", fileName);
-#endif
-
-            var exists = File.Exists(overFramePath) || File.Exists(overframePath);
-            if (exists)
-                knownOverFrameArts.TryAdd(code, 0);
-
-            return exists;
-        }
 
         private static readonly List<int> artFileList = new();
         private static readonly Dictionary<int, string> artAltFileList = new();
