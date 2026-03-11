@@ -9,11 +9,20 @@ namespace MDPro3.UI
 {
     public class SelectionButton_MainMenu : SelectionButton
     {
+
+        #region Elements
+
+        private TextMeshProUGUI textTitle;
+        private TextMeshProUGUI TextTitle => 
+            textTitle = textTitle != null ? textTitle 
+            : Manager.GetElement<TextMeshProUGUI>("Text");
+
+        #endregion
+
         private const float ArrowRestX = -5f;
         private const float ArrowStartX = -262f;
-        private const float ArrowTextGap = 30f;
-        private static float s_BaseButtonWidth = -1f;
-        private static float s_BaseTextWidth = -1f;
+        private const float baseWidth = 450f;
+        private const float baseExtraWidth = 16f + 30f + 26f + 5f;
 
         protected override void Awake()
         {
@@ -26,8 +35,6 @@ namespace MDPro3.UI
 
         private void ElementsReset()
         {
-            EnsureMainMenuButtonWidth();
-
             // Out
             Manager.GetElement<CanvasGroup>("Out").alpha = 1f;
             Manager.GetElement<RectTransform>("Line").localScale = Vector3.one;
@@ -51,7 +58,6 @@ namespace MDPro3.UI
             if (hoverd)
                 return;
             base.HoverOn();
-            EnsureMainMenuButtonWidth();
 
             Manager.GetElement<CanvasGroup>("Out").alpha = 0f;
 
@@ -67,68 +73,6 @@ namespace MDPro3.UI
             Manager.GetElement<RectTransform>("Arrow").anchoredPosition = new Vector2(ArrowStartX, 0f);
             var tween2 = Manager.GetElement<RectTransform>("Arrow").DOAnchorPosX(ArrowRestX, 0.33f).SetEase(Ease.OutQuart);
             hoverOnTweens.Add(tween2);
-        }
-
-        private void EnsureMainMenuButtonWidth()
-        {
-            var selfRect = transform as RectTransform;
-            if (selfRect == null || selfRect.parent == null)
-                return;
-
-            var selfTextRect = Manager.GetElement<RectTransform>("Text");
-            if (s_BaseButtonWidth < 0f)
-                s_BaseButtonWidth = selfRect.sizeDelta.x;
-            if (s_BaseTextWidth < 0f && selfTextRect != null)
-                s_BaseTextWidth = selfTextRect.rect.width;
-
-            if (s_BaseButtonWidth <= 0f || s_BaseTextWidth <= 0f)
-                return;
-
-            var buttons = selfRect.parent.GetComponentsInChildren<SelectionButton_MainMenu>(true);
-            var maxTargetWidth = s_BaseButtonWidth;
-
-            foreach (var button in buttons)
-            {
-                if (button == null)
-                    continue;
-
-                var buttonRect = button.transform as RectTransform;
-                if (buttonRect == null)
-                    continue;
-
-                var text = button.Manager.GetElement<TextMeshProUGUI>("Text");
-                var textOver = button.Manager.GetElement<TextMeshProUGUI>("TextOver");
-                var textRect = button.Manager.GetElement<RectTransform>("Text");
-                if (text == null || textRect == null)
-                    continue;
-
-                text.ForceMeshUpdate();
-                textOver?.ForceMeshUpdate();
-
-                var maxLabelWidth = text.preferredWidth;
-                if (textOver != null && textOver.preferredWidth > maxLabelWidth)
-                    maxLabelWidth = textOver.preferredWidth;
-                var neededTextWidth = maxLabelWidth + ArrowTextGap;
-                var extraWidth = Mathf.Max(0f, neededTextWidth - s_BaseTextWidth);
-                var targetWidth = s_BaseButtonWidth + extraWidth;
-
-                if (targetWidth > maxTargetWidth)
-                    maxTargetWidth = targetWidth;
-            }
-
-            var resolvedWidth = Mathf.Ceil(maxTargetWidth);
-
-            foreach (var button in buttons)
-            {
-                if (button == null)
-                    continue;
-                var buttonRect = button.transform as RectTransform;
-                if (buttonRect == null)
-                    continue;
-                if (Mathf.Abs(buttonRect.sizeDelta.x - resolvedWidth) < 0.01f)
-                    continue;
-                buttonRect.sizeDelta = new Vector2(resolvedWidth, buttonRect.sizeDelta.y);
-            }
         }
 
         protected override void HoverOff(bool force = false)
@@ -157,5 +101,21 @@ namespace MDPro3.UI
             base.OnSelect(playSE);
             Program.instance.menu.lastSelectedButton = this;
         }
+
+        public float GetPreferredWidth()
+        {
+            TextTitle.ForceMeshUpdate();
+            return Mathf.Ceil(TextTitle.preferredWidth + baseExtraWidth);
+        }
+
+        public void SetWidth(float width)
+        {
+            if (width < baseWidth)
+                width = baseWidth;
+            var rt = transform as RectTransform;
+            if (rt != null)
+                rt.sizeDelta = new Vector2(width, rt.sizeDelta.y);
+        }
+
     }
 }
