@@ -182,6 +182,7 @@ namespace MDPro3
             Program.instance.UnloadUnusedAssets();
 
             InitializeLanguage();
+            Program.instance.menu.EnsureButtonsWidth();
             Program.instance.cutin.LoadCutins();
             Program.instance.mate.LoadMates();
             Program.instance.solo.LoadBots();

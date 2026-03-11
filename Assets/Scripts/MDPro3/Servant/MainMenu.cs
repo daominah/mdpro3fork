@@ -53,6 +53,7 @@ namespace MDPro3.Servant
             servantUI.ResetUI();
             StartCoroutine(LoadMyCardNewsAsync());
 
+            EnsureButtonsWidth();
             Program.instance.ReadParams();
         }
 
@@ -145,6 +146,30 @@ namespace MDPro3.Servant
             var news = OnlineService.myCardNews;
             GetUI<MainMenuUI>().News.news = news;
             GetUI<MainMenuUI>().News.LoadNews();
+        }
+
+        private SelectionButton_MainMenu[] buttons;
+        private SelectionButton_MainMenu[] Buttons
+            => buttons ??= GetButtons();
+
+        private SelectionButton_MainMenu[] GetButtons()
+        {
+            if (servantUI == null)
+                return null;
+            return transform.GetComponentsInChildren<SelectionButton_MainMenu>(true);
+        }
+
+        public void EnsureButtonsWidth()
+        {
+            if (Buttons == null)
+                return;
+
+            var widths = new float[Buttons.Length];
+            for (int i = 0; i < Buttons.Length; i++)
+                widths[i] = buttons[i].GetPreferredWidth();
+            var maxWidth = Mathf.Max(widths);
+            foreach(var button in Buttons)
+                button.SetWidth(maxWidth);
         }
 
     }
