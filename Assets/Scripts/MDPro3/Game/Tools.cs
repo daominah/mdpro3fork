@@ -224,7 +224,7 @@ namespace MDPro3
             }
             else
             {
-                UnityEngine.Debug.LogErrorFormat($"Image [{0}]: {1}", url, request.error);
+                UnityEngine.Debug.LogErrorFormat("Image [{0}]: {1}", url, request.error);
                 return null;
             }
         }
