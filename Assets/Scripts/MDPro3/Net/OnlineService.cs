@@ -63,7 +63,16 @@ namespace MDPro3.Net
             using var request = UnityWebRequest.Get(URL_GENESYS_LFLIST);
             request.timeout = 15;
 
-            await request.SendWebRequest();
+            try
+            {
+                await request.SendWebRequest();
+            }
+            catch
+            {
+                MessageManager.Cast(InterString.Get("下载Genesys禁卡表失败。"));
+                return;
+            }
+
             if (request.result == UnityWebRequest.Result.Success)
             {
                 File.WriteAllText(PATH_GENESYS_LFLIST, request.downloadHandler.text);
@@ -218,7 +227,16 @@ namespace MDPro3.Net
             using var request = UnityWebRequest.Get(URL_MYCARD_APPS);
             request.timeout = 15;
 
-            await request.SendWebRequest();
+            try
+            {
+                await request.SendWebRequest();
+            }
+            catch
+            {
+                Program.Debug("下载MyCard apps.json失败。");
+                return;
+            }
+
             if (request.result == UnityWebRequest.Result.Success)
             {
                 File.WriteAllText(PATH_MYCARD_APPS, request.downloadHandler.text);
@@ -256,7 +274,14 @@ namespace MDPro3.Net
         {
             using var headRequest = UnityWebRequest.Head(url);
             headRequest.timeout = 8;
-            await headRequest.SendWebRequest();
+            try
+            {
+                await headRequest.SendWebRequest();
+            }
+            catch
+            {
+                return null;
+            }
 
             if(headRequest.result != UnityWebRequest.Result.Success)
             {
