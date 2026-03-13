@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Drawing.Text;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -26,7 +27,6 @@ namespace MDPro3.Duel
 {
     public class DuelBGManager
     {
-
         #region Parameters
 
         private OcgCore Core => Program.instance.ocgcore;
@@ -34,6 +34,8 @@ namespace MDPro3.Duel
 
         private bool mate0Random = true;
         private bool mate1Random = true;
+        private Tween mate0RandomCooldownTween;
+        private Tween mate1RandomCooldownTween;
         private int bgPhase0 = 0;
         private int bgPhase1 = 0;
         private bool backgroundFieldInitialize = false;
@@ -70,6 +72,8 @@ namespace MDPro3.Duel
         private BgEffectManager stand1Manager;
         private Mate mate0;
         private Mate mate1;
+        private PremiumMateState premiumMate0;
+        private PremiumMateState premiumMate1;
 
         private GameObject phaseButton;
         private TimerHandler timerHandler;
@@ -83,11 +87,43 @@ namespace MDPro3.Duel
 
         #endregion
 
+        private sealed class PremiumMateState
+        {
+            public int Side;
+            public PremiumMateRule Rule;
+            public PremiumMateSwapEffect SwapEffect;
+            public Transform Anchor;
+            public readonly Dictionary<int, Mate> Forms = new();
+            public int ActiveMateId;
+            public bool IsTransitioning;
+            public int QueuedMateId;
+            public bool IsPermanentSub;
+            public bool InBattlePhaseSub;
+            public bool PendingDirectAttack;
+            public IReadOnlyList<string> OverrideTriggerPriority;
+            public int PendingTurnSwapToken;
+            public int RayeEngageMateId;
+            public int RayeBattleMateId;
+        }
+
+        private readonly struct SwapEffectLabelPlaybackResult
+        {
+            public bool Consumed { get; }
+
+            public SwapEffectLabelPlaybackResult(bool consumed)
+            {
+                Consumed = consumed;
+            }
+
+            public static SwapEffectLabelPlaybackResult None => new(false);
+        }
+
         #region Public
 
         public async UniTask LoadAssetsAsync()
         {
             loaded = false;
+            ResetPremiumMateStates();
 
             deck = null;
             var deckName = Config.GetConfigDeckName();
@@ -266,30 +302,12 @@ namespace MDPro3.Duel
             int mateCode = int.Parse(mateConfig);
             if (deck != null && !overrideDeckAppearance)
                 mateCode = deck.Mate;
-            if (mateCode != Items.CODE_NONE)
-            {
-                var mate = await ABLoader.LoadMateAsync(mateCode);
-                if (mate != null)
-                {
-                    mate0 = mate;
-                    mate0.parent = pos_Avatar_near;
-                    mate0.gameObject.SetActive(false);
-                }
-            }
+            await LoadMateForSideAsync(0, mateCode, pos_Avatar_near);
 
             mateConfig = Config.Get(condition.ToString() + "Mate1", Program.items.mates[0].id.ToString());
             if (hasSide1Appearance)
                 mateConfig = side1Appearance.Mate.ToString();
-            if (mateConfig != Items.CODE_NONE.ToString())
-            {
-                var mate = await ABLoader.LoadMateAsync(int.Parse(mateConfig));
-                if (mate != null)
-                {
-                    mate1 = mate;
-                    mate1.parent = pos_Avatar_far;
-                    mate1.gameObject.SetActive(false);
-                }
-            }
+            await LoadMateForSideAsync(1, int.Parse(mateConfig), pos_Avatar_far);
 
             #endregion
 
@@ -556,7 +574,7 @@ namespace MDPro3.Duel
 
         public async UniTask ShowDecksAsync()
         {
-            if(myDeck == null || myExtra == null 
+            if (myDeck == null || myExtra == null
                 || opDeck == null || opExtra == null)
                 return;
 
@@ -607,31 +625,1202 @@ namespace MDPro3.Duel
             field1Manager.PlayAnimatorTrigger(TriggerLabelDefine.StartToPhase1);
             grave1Manager.PlayAnimatorTrigger(TriggerLabelDefine.StartToPhase1);
             bgPhase1 = 1;
-            if (mate0 != null)
-            {
-                mate0.gameObject.SetActive(true);
-                mate0.Play(Mate.MateAction.Entry);
-            }
-            if (mate1 != null)
-            {
-                mate1.gameObject.SetActive(true);
-                mate1.Play(Mate.MateAction.Entry);
-            }
+
+            InitializeMateEntry(0);
+            InitializeMateEntry(1);
+
             if (timerHandler != null)
                 timerHandler.DuelStart();
 
-            mate0Random = false;
-            mate1Random = false;
-            DOTween.To(v => { }, 0, 0, UnityEngine.Random.Range(8, 16)).OnComplete(() =>
-            {
-                mate0Random = true;
-            });
-            DOTween.To(v => { }, 0, 0, UnityEngine.Random.Range(8, 16)).OnComplete(() =>
-            {
-                mate1Random = true;
-            });
+            RestartMateRandomCooldown(0);
+            RestartMateRandomCooldown(1);
 
             backgroundFieldInitialize = true;
+        }
+
+        public void OnNewTurn(bool myTurn, int turn)
+        {
+            ApplyPremiumNewTurn(GetPremiumMateState(0), myTurn, turn);
+            ApplyPremiumNewTurn(GetPremiumMateState(1), !myTurn, turn);
+        }
+
+        public void OnNewPhase(int turnPlayer, DuelPhase phase)
+        {
+            ApplyPremiumPhase(GetPremiumMateState(0), turnPlayer == 0, phase);
+            ApplyPremiumPhase(GetPremiumMateState(1), turnPlayer == 1, phase);
+        }
+
+        public void OnSpecialSummonFromExtra(int ownerPlayer)
+        {
+            var state = GetPremiumMateState(ownerPlayer);
+            if (state == null)
+                return;
+
+            if (state.Rule.Behavior == PremiumMateBehavior.GaiaExtraDeckPermanent
+                || state.Rule.Behavior == PremiumMateBehavior.FiendsmithExtraDeckOrEquipPermanent)
+            {
+                if (state.IsPermanentSub)
+                    return;
+                state.IsPermanentSub = true;
+                RequestPremiumMateForm(state, state.Rule.SubId);
+            }
+        }
+
+        public void OnEquipApplied(int ownerPlayer)
+        {
+            var state = GetPremiumMateState(ownerPlayer);
+            if (state == null)
+                return;
+            if (state.Rule.Behavior != PremiumMateBehavior.FiendsmithExtraDeckOrEquipPermanent)
+                return;
+            if (state.IsPermanentSub)
+                return;
+
+            state.IsPermanentSub = true;
+            RequestPremiumMateForm(state, state.Rule.SubId);
+        }
+
+        public void OnLifePointsChanged(int player, int lifePoint)
+        {
+            var state = GetPremiumMateState(player);
+            if (state == null)
+                return;
+            if (state.Rule.Behavior != PremiumMateBehavior.ShuraigLpThreshold)
+                return;
+            if (state.IsPermanentSub)
+                return;
+            if (lifePoint > state.Rule.LpThreshold)
+                return;
+
+            state.IsPermanentSub = true;
+            RequestPremiumMateForm(state, state.Rule.SubId);
+        }
+
+        public void OnDirectAttack(int attackerPlayer)
+        {
+            var state = GetPremiumMateState(attackerPlayer);
+            if (state == null)
+                return;
+            if (state.Rule.Behavior != PremiumMateBehavior.RayeBattlePhaseAndDirectAttack)
+                return;
+            var battleMateId = GetRayeBattleMateId(state);
+            if (state.ActiveMateId != battleMateId)
+                return;
+
+            state.PendingDirectAttack = true;
+        }
+
+        public void OnPlayerDamaged(int defenderPlayer, int amount)
+        {
+            if (amount <= 0)
+                return;
+
+            var state0 = GetPremiumMateState(0);
+            var state1 = GetPremiumMateState(1);
+            TryResolveRayeDirectAttack(state0, defenderPlayer);
+            TryResolveRayeDirectAttack(state1, defenderPlayer);
+        }
+
+        private void TryResolveRayeDirectAttack(PremiumMateState state, int defenderPlayer)
+        {
+            if (state == null)
+                return;
+            if (state.Rule.Behavior != PremiumMateBehavior.RayeBattlePhaseAndDirectAttack)
+                return;
+            if (!state.PendingDirectAttack)
+                return;
+            if (state.Side == defenderPlayer)
+                return;
+
+            state.PendingDirectAttack = false;
+            state.InBattlePhaseSub = false;
+            RequestPremiumMateForm(state, GetRayeEngageMateId(state));
+        }
+
+        private void ApplyPremiumNewTurn(PremiumMateState state, bool ownerTurn, int turn)
+        {
+            if (state == null)
+                return;
+            _ = ownerTurn;
+
+            state.PendingDirectAttack = false;
+
+            switch (state.Rule.Behavior)
+            {
+                case PremiumMateBehavior.LaundryBattlePhaseRoundTrip:
+                    state.InBattlePhaseSub = false;
+                    if (!state.IsPermanentSub)
+                        RequestPremiumMateForm(state, state.Rule.BaseId);
+                    break;
+                case PremiumMateBehavior.RayeBattlePhaseAndDirectAttack:
+                    state.InBattlePhaseSub = false;
+                    break;
+                case PremiumMateBehavior.IpSpTurnParity:
+                    var target = (turn % 2 != 0) ? state.Rule.BaseId : state.Rule.SubId;
+                    const float ipSpPreSwapDelaySeconds = 0.80f;
+                    var turnSwapToken = ++state.PendingTurnSwapToken;
+                    _ = RequestPremiumMateFormDelayedAsync(state, target, ipSpPreSwapDelaySeconds, turnSwapToken);
+                    break;
+            }
+        }
+
+        private async UniTask RequestPremiumMateFormDelayedAsync(PremiumMateState state, int targetMateId, float delaySeconds, int token)
+        {
+            if (state == null)
+                return;
+            if (delaySeconds > 0f)
+                await UniTask.WaitForSeconds(delaySeconds);
+            if (state.PendingTurnSwapToken != token)
+                return;
+            if (GetPremiumMateState(state.Side) != state)
+                return;
+
+            RequestPremiumMateForm(state, targetMateId);
+        }
+
+        private void ApplyPremiumPhase(PremiumMateState state, bool ownerTurn, DuelPhase phase)
+        {
+            if (state == null)
+                return;
+
+            switch (state.Rule.Behavior)
+            {
+                case PremiumMateBehavior.LaundryBattlePhaseRoundTrip:
+                    if (ownerTurn && phase == DuelPhase.BattleStart)
+                    {
+                        state.InBattlePhaseSub = true;
+                        RequestPremiumMateForm(state, state.Rule.SubId);
+                    }
+                    else if ((!ownerTurn || phase == DuelPhase.Main2 || phase == DuelPhase.End) && state.InBattlePhaseSub)
+                    {
+                        state.InBattlePhaseSub = false;
+                        RequestPremiumMateForm(state, state.Rule.BaseId);
+                    }
+                    break;
+                case PremiumMateBehavior.RayeBattlePhaseAndDirectAttack:
+                    var battleMateId = GetRayeBattleMateId(state);
+                    if (ownerTurn && phase == DuelPhase.BattleStart)
+                    {
+                        state.PendingDirectAttack = false;
+                        state.InBattlePhaseSub = true;
+                        if (state.ActiveMateId != battleMateId)
+                            RequestPremiumMateForm(state, battleMateId);
+                    }
+                    else if ((phase == DuelPhase.Main2 || phase == DuelPhase.End) && state.InBattlePhaseSub)
+                    {
+                        state.PendingDirectAttack = false;
+                        state.InBattlePhaseSub = false;
+                    }
+                    break;
+            }
+        }
+
+        private void InitializeMateEntry(int side)
+        {
+            var state = GetPremiumMateState(side);
+            if (state != null)
+            {
+                foreach (var pair in state.Forms)
+                    if (pair.Value != null)
+                        pair.Value.gameObject.SetActive(false);
+
+                if (!state.Forms.TryGetValue(state.ActiveMateId, out var activeMate) || activeMate == null)
+                    activeMate = state.Forms.Values.FirstOrDefault(m => m != null);
+
+                if (activeMate == null)
+                {
+                    SetMateForSide(side, null);
+                    return;
+                }
+
+                state.ActiveMateId = activeMate.code;
+                ResetMateTransform(activeMate, state.Anchor);
+                SetExclusivePremiumMateActiveForm(state, activeMate);
+                activeMate.PrepareForPremiumSwapActivation();
+                activeMate.Play(Mate.MateAction.Entry);
+                SetMateForSide(side, activeMate);
+                return;
+            }
+
+            var mate = GetMateForSide(side);
+            if (mate != null)
+            {
+                mate.gameObject.SetActive(true);
+                mate.Play(Mate.MateAction.Entry);
+            }
+        }
+
+        private async UniTask LoadMateForSideAsync(int side, int mateCode, Transform anchor)
+        {
+            SetPremiumMateState(side, null);
+            SetMateForSide(side, null);
+
+            if (mateCode == Items.CODE_NONE)
+                return;
+
+            var normalizedMateCode = PremiumMateRules.GetBaseMateId(mateCode);
+            if (PremiumMateRules.TryGetRuleByBaseId(normalizedMateCode, out var rule))
+            {
+                var formIds = new List<int> { rule.BaseId };
+                foreach (var variantId in rule.VariantIds)
+                    if (!formIds.Contains(variantId))
+                        formIds.Add(variantId);
+
+                var loadedForms = new Dictionary<int, Mate>();
+                foreach (var formId in formIds)
+                {
+                    var formMate = await ABLoader.LoadMateAsync(formId);
+                    if (formMate == null)
+                        continue;
+
+                    ConfigureLoadedMate(formMate, anchor);
+                    loadedForms[formId] = formMate;
+                }
+
+                if (loadedForms.TryGetValue(rule.BaseId, out var baseMate)
+                    && loadedForms.TryGetValue(rule.SubId, out _))
+                {
+                    var state = new PremiumMateState
+                    {
+                        Side = side,
+                        Rule = rule,
+                        SwapEffect = PremiumMateSwapEffects.GetOrDefault(rule.BaseId),
+                        Anchor = anchor,
+                        ActiveMateId = rule.BaseId
+                    };
+                    foreach (var pair in loadedForms)
+                        state.Forms[pair.Key] = pair.Value;
+
+                    if (rule.Behavior == PremiumMateBehavior.RayeBattlePhaseAndDirectAttack)
+                    {
+                        // The premium Raye mate's item IDs do not match the visual form order:
+                        // 1003003 = Engage, 1003103 = Kagari, 1003203 = Raye.
+                        // The opening Raye-only startup is disabled; start directly on Engage.
+                        state.RayeEngageMateId = rule.BaseId;
+                        state.RayeBattleMateId = loadedForms.ContainsKey(1003103) ? 1003103 : rule.SubId;
+                        state.ActiveMateId = state.RayeEngageMateId;
+                    }
+
+                    SetPremiumMateState(side, state);
+                    if (!loadedForms.TryGetValue(state.ActiveMateId, out var initialMate) || initialMate == null)
+                        initialMate = baseMate;
+                    SetMateForSide(side, initialMate);
+                    return;
+                }
+
+                var fallbackMate = loadedForms.Values.FirstOrDefault();
+                if (fallbackMate != null)
+                {
+                    SetMateForSide(side, fallbackMate);
+                    return;
+                }
+            }
+
+            var mate = await ABLoader.LoadMateAsync(normalizedMateCode);
+            if (mate == null)
+                return;
+
+            ConfigureLoadedMate(mate, anchor);
+            SetMateForSide(side, mate);
+        }
+
+        private static void ConfigureLoadedMate(Mate mate, Transform anchor)
+        {
+            if (mate == null)
+                return;
+
+            ResetMateTransform(mate, anchor);
+            mate.gameObject.SetActive(false);
+        }
+
+        private static void ResetMateTransform(Mate mate, Transform anchor)
+        {
+            if (mate == null || anchor == null)
+                return;
+
+            mate.parent = anchor;
+            mate.transform.SetParent(anchor, false);
+            mate.transform.localPosition = Vector3.zero;
+            mate.transform.localRotation = Quaternion.identity;
+        }
+
+        private static int GetRayeEngageMateId(PremiumMateState state)
+        {
+            if (state == null)
+                return 0;
+            if (state.RayeEngageMateId > 0)
+                return state.RayeEngageMateId;
+            return state.Rule.BaseId;
+        }
+
+        private static int GetRayeBattleMateId(PremiumMateState state)
+        {
+            if (state == null)
+                return 0;
+            return state.RayeBattleMateId > 0 ? state.RayeBattleMateId : state.Rule.SubId;
+        }
+
+        private static int ResolvePremiumMateTargetId(PremiumMateState state, int targetMateId)
+        {
+            if (state == null)
+                return targetMateId;
+
+            if (state.Rule.Behavior == PremiumMateBehavior.RayeBattlePhaseAndDirectAttack
+                && targetMateId == GetRayeBattleMateId(state)
+                && !state.InBattlePhaseSub)
+            {
+                return GetRayeEngageMateId(state);
+            }
+
+            return targetMateId;
+        }
+
+        private void ActivatePremiumMateFormImmediate(PremiumMateState state, int targetMateId)
+        {
+            if (state == null)
+                return;
+            if (!state.Forms.TryGetValue(targetMateId, out var targetMate) || targetMate == null)
+                return;
+
+            ResetMateTransform(targetMate, state.Anchor);
+            SetExclusivePremiumMateActiveForm(state, targetMate);
+            targetMate.PrepareForPremiumSwapActivation();
+            state.ActiveMateId = targetMateId;
+            SetMateForSide(state.Side, targetMate);
+            RestartMateRandomCooldown(state.Side);
+        }
+
+        private static void SetExclusivePremiumMateActiveForm(PremiumMateState state, Mate activeMate, Mate additionalActiveMate = null)
+        {
+            if (state == null)
+                return;
+
+            foreach (var pair in state.Forms)
+            {
+                var mate = pair.Value;
+                if (mate == null)
+                    continue;
+                mate.gameObject.SetActive(mate == activeMate || mate == additionalActiveMate);
+            }
+        }
+
+        private static bool ShouldSuppressAmbientPremiumMateActions(PremiumMateState state)
+        {
+            return state != null && state.Rule.Behavior == PremiumMateBehavior.RayeBattlePhaseAndDirectAttack;
+        }
+
+        private static bool HasNonChangeTrigger(IReadOnlyList<string> triggerPriority)
+        {
+            if (triggerPriority == null || triggerPriority.Count == 0)
+                return false;
+
+            for (var i = 0; i < triggerPriority.Count; i++)
+            {
+                var trigger = triggerPriority[i];
+                if (string.IsNullOrEmpty(trigger))
+                    continue;
+                if (!trigger.StartsWith("Change", StringComparison.OrdinalIgnoreCase))
+                    return true;
+            }
+
+            return false;
+        }
+
+        private static bool IsChangeTrigger(string triggerName)
+        {
+            return !string.IsNullOrEmpty(triggerName) && triggerName.StartsWith("Change", StringComparison.OrdinalIgnoreCase);
+        }
+
+        private static bool HasConfiguredChangeTrigger(IReadOnlyList<string> triggerPriority)
+        {
+            if (triggerPriority == null || triggerPriority.Count == 0)
+                return false;
+
+            for (var i = 0; i < triggerPriority.Count; i++)
+            {
+                if (IsChangeTrigger(triggerPriority[i]))
+                    return true;
+            }
+
+            return false;
+        }
+
+        private static IReadOnlyList<string> BuildNonChangeFirstPriority(IReadOnlyList<string> triggerPriority)
+        {
+            if (triggerPriority == null || triggerPriority.Count <= 1)
+                return triggerPriority;
+
+            var hasLeadingChange = false;
+            var hasFollowingNonChange = false;
+            for (var i = 0; i < triggerPriority.Count; i++)
+            {
+                var trigger = triggerPriority[i];
+                if (string.IsNullOrEmpty(trigger))
+                    continue;
+                if (IsChangeTrigger(trigger))
+                {
+                    hasLeadingChange = true;
+                    continue;
+                }
+
+                if (hasLeadingChange)
+                {
+                    hasFollowingNonChange = true;
+                    break;
+                }
+            }
+
+            if (!hasFollowingNonChange)
+                return triggerPriority;
+
+            var reordered = new List<string>(triggerPriority.Count);
+            for (var i = 0; i < triggerPriority.Count; i++)
+            {
+                var trigger = triggerPriority[i];
+                if (string.IsNullOrEmpty(trigger) || IsChangeTrigger(trigger))
+                    continue;
+                reordered.Add(trigger);
+            }
+
+            for (var i = 0; i < triggerPriority.Count; i++)
+            {
+                var trigger = triggerPriority[i];
+                if (string.IsNullOrEmpty(trigger) || !IsChangeTrigger(trigger))
+                    continue;
+                reordered.Add(trigger);
+            }
+
+            return reordered.Count > 0 ? reordered : triggerPriority;
+        }
+
+        private static bool MateHasAnyChangeTriggerParameter(Mate mate, IReadOnlyList<string> triggerPriority)
+        {
+            if (mate == null || triggerPriority == null || triggerPriority.Count == 0)
+                return false;
+
+            var checkedSet = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+            for (var i = 0; i < triggerPriority.Count; i++)
+            {
+                var trigger = triggerPriority[i];
+                if (!IsChangeTrigger(trigger))
+                    continue;
+                if (!checkedSet.Add(trigger))
+                    continue;
+                if (mate.HasMasterDuelTriggerParameter(trigger))
+                    return true;
+            }
+
+            return false;
+        }
+
+        private static bool MateHasAnyTransitionCandidate(Mate mate, IReadOnlyList<string> triggerPriority)
+        {
+            if (mate == null || triggerPriority == null || triggerPriority.Count == 0)
+                return false;
+
+            return mate.TryDescribeMasterDuelTransitionCandidates(triggerPriority, out _);
+        }
+
+        private static UniTask WaitForSecondsUnscaledAsync(float seconds)
+        {
+            if (seconds <= 0f)
+                return UniTask.CompletedTask;
+
+            return UniTask.Delay(TimeSpan.FromSeconds(seconds), DelayType.UnscaledDeltaTime);
+        }
+
+        private static UniTask WaitForSecondsSwapTimingAsync(float seconds, bool useUnscaledTiming)
+        {
+            if (seconds <= 0f)
+                return UniTask.CompletedTask;
+
+            return useUnscaledTiming
+                ? WaitForSecondsUnscaledAsync(seconds)
+                : UniTask.WaitForSeconds(seconds);
+        }
+
+        private static async UniTask<float> MeasureCurrentTransitionQueueDelayAsync(
+            Mate mate,
+            int beforeStateHash,
+            bool beforeInTransition,
+            float maxWaitSeconds)
+        {
+            if (mate == null || maxWaitSeconds <= 0f)
+                return 0f;
+
+            var startRealtime = Time.realtimeSinceStartup;
+            while (Time.realtimeSinceStartup - startRealtime < maxWaitSeconds)
+            {
+                await UniTask.Yield(PlayerLoopTiming.Update);
+                if (!mate.TryGetMasterDuelPrimaryAnimatorSnapshot(
+                        out var stateHash,
+                        out _,
+                        out _,
+                        out var inTransition,
+                        out var activeInHierarchy)
+                    || !activeInHierarchy)
+                {
+                    return 0f;
+                }
+
+                if ((!beforeInTransition && inTransition) || stateHash != beforeStateHash)
+                    return Time.realtimeSinceStartup - startRealtime;
+            }
+
+            return 0f;
+        }
+
+        private void RequestPremiumMateForm(PremiumMateState state, int targetMateId)
+        {
+            if (state == null)
+                return;
+            targetMateId = ResolvePremiumMateTargetId(state, targetMateId);
+            if (!state.Forms.ContainsKey(targetMateId))
+                return;
+
+            if (state.IsTransitioning && state.QueuedMateId == targetMateId)
+                return;
+            if (!state.IsTransitioning && state.ActiveMateId == targetMateId)
+                return;
+            state.QueuedMateId = targetMateId;
+            if (state.IsTransitioning)
+                return;
+
+            _ = ProcessPremiumMateSwapQueueAsync(state);
+        }
+
+        private async UniTask ProcessPremiumMateSwapQueueAsync(PremiumMateState state)
+        {
+            if (state == null)
+                return;
+
+            state.IsTransitioning = true;
+            try
+            {
+                while (state.QueuedMateId != 0)
+                {
+                    if (state.QueuedMateId == state.ActiveMateId)
+                    {
+                        state.QueuedMateId = 0;
+                        break;
+                    }
+
+                    var nextMateId = state.QueuedMateId;
+                    state.QueuedMateId = 0;
+                    await SwapPremiumMateAsync(state, nextMateId);
+                }
+            }
+            finally
+            {
+                state.IsTransitioning = false;
+            }
+        }
+
+        private async UniTask SwapPremiumMateAsync(PremiumMateState state, int targetMateId)
+        {
+            if (state == null)
+                return;
+            targetMateId = ResolvePremiumMateTargetId(state, targetMateId);
+            if (!state.Forms.TryGetValue(targetMateId, out var nextMate) || nextMate == null)
+                return;
+
+            var currentMate = GetMateForSide(state.Side);
+            if (currentMate == null && state.Forms.TryGetValue(state.ActiveMateId, out var fromState))
+                currentMate = fromState;
+
+            if (currentMate == nextMate)
+            {
+                SetExclusivePremiumMateActiveForm(state, nextMate);
+                state.ActiveMateId = targetMateId;
+                SetMateForSide(state.Side, nextMate);
+                return;
+            }
+
+            var toSub = state.Rule.Behavior == PremiumMateBehavior.RayeBattlePhaseAndDirectAttack
+                ? targetMateId == GetRayeBattleMateId(state)
+                : targetMateId == state.Rule.SubId;
+            var swapDelay = toSub ? state.SwapEffect.ToSubDelaySeconds : state.SwapEffect.ToBaseDelaySeconds;
+            var effectAssetPath = state.SwapEffect.GetEffectAssetPath(toSub);
+            var useUnscaledSwapTiming = state.SwapEffect.UseUnscaledSwapTiming;
+            var changeOnTargetMate = state.SwapEffect.PlayChangeOnTargetMate;
+            var changeOnBothMates = state.SwapEffect.PlayChangeOnBothMates;
+            var playChangeOnCurrentMate = !changeOnTargetMate || changeOnBothMates;
+            var playChangeOnNextMate = changeOnTargetMate || changeOnBothMates;
+            var triggerPriorityOverride = state.OverrideTriggerPriority;
+            var currentTriggerPriority = triggerPriorityOverride ?? (toSub
+                ? state.SwapEffect.ToSubCurrentTriggerPriority
+                : state.SwapEffect.ToBaseCurrentTriggerPriority);
+            var nextTriggerPriority = triggerPriorityOverride ?? (toSub
+                ? state.SwapEffect.ToSubNextTriggerPriority
+                : state.SwapEffect.ToBaseNextTriggerPriority);
+            IReadOnlyList<string> effectiveNextTriggerPriority = nextTriggerPriority;
+            if (state.SwapEffect.UseChangeMotion && currentMate != null && playChangeOnCurrentMate
+                && !MateHasAnyTransitionCandidate(currentMate, currentTriggerPriority))
+                playChangeOnCurrentMate = false;
+            state.OverrideTriggerPriority = null;
+            var playedChangeOnCurrent = false;
+            var playedChangeOnNext = false;
+            var currentTransitionDelay = 0f;
+            var nextTransitionDelay = 0f;
+            var currentTriggerQueueDelay = 0f;
+            var currentTriggerQueueProbeStarted = false;
+            var currentTriggerQueueDelayTask = UniTask.FromResult(0f);
+            var currentBeforeStateHash = 0;
+            var currentBeforeInTransition = false;
+            var hasCurrentSnapshot = false;
+            if (state.SwapEffect.CompensateCurrentTriggerQueueDelay && currentMate != null)
+            {
+                hasCurrentSnapshot = currentMate.TryGetMasterDuelPrimaryAnimatorSnapshot(
+                    out currentBeforeStateHash,
+                    out _,
+                    out _,
+                    out currentBeforeInTransition,
+                    out _);
+            }
+
+            void StartCurrentTriggerQueueProbeIfNeeded()
+            {
+                if (currentTriggerQueueProbeStarted || !playedChangeOnCurrent || !hasCurrentSnapshot)
+                    return;
+                if (state.SwapEffect.MaxCurrentTriggerQueueDelaySeconds <= 0f)
+                    return;
+
+                currentTriggerQueueProbeStarted = true;
+                currentTriggerQueueDelayTask = MeasureCurrentTransitionQueueDelayAsync(
+                    currentMate,
+                    currentBeforeStateHash,
+                    currentBeforeInTransition,
+                    state.SwapEffect.MaxCurrentTriggerQueueDelaySeconds);
+            }
+
+            var effectPosition = currentMate != null ? currentMate.transform.position : state.Anchor.position;
+            var effectLabel = toSub ? state.SwapEffect.ToSubEffectLabel : state.SwapEffect.ToBaseEffectLabel;
+            var preferEffectLabelPlayback = state.SwapEffect.PreferEffectLabelPlayback && !string.IsNullOrEmpty(effectLabel);
+            if (!preferEffectLabelPlayback && state.SwapEffect.UseChangeMotion && currentMate != null && playChangeOnCurrentMate)
+            {
+                playedChangeOnCurrent = currentMate.PlayChangeTransition(currentTriggerPriority, out currentTransitionDelay);
+                StartCurrentTriggerQueueProbeIfNeeded();
+            }
+
+            if (state.SwapEffect.SourceToEffectDelaySeconds > 0f)
+                await WaitForSecondsSwapTimingAsync(state.SwapEffect.SourceToEffectDelaySeconds, useUnscaledSwapTiming);
+
+            var effectPlayback = await SpawnPremiumSwapEffectAsync(state, effectAssetPath, effectPosition, effectLabel, toSub);
+            if (preferEffectLabelPlayback && state.SwapEffect.UseChangeMotion && currentMate != null && playChangeOnCurrentMate)
+            {
+                if (!effectPlayback.Consumed)
+                {
+                    playedChangeOnCurrent = currentMate.PlayChangeTransition(currentTriggerPriority, out currentTransitionDelay);
+                    StartCurrentTriggerQueueProbeIfNeeded();
+                }
+            }
+
+            var delay = swapDelay;
+            if (currentTriggerQueueProbeStarted)
+            {
+                currentTriggerQueueDelay = await currentTriggerQueueDelayTask;
+                if (currentTriggerQueueDelay > 0f)
+                    delay += currentTriggerQueueDelay;
+            }
+
+            if (playedChangeOnCurrent)
+            {
+                if (state.SwapEffect.UseTransitionDelayAsMinimum)
+                    delay = Mathf.Max(delay, currentTransitionDelay);
+                else if (delay <= 0f)
+                    delay = currentTransitionDelay;
+            }
+
+            var keepCurrentAliveForOverlap = currentMate != null
+                && playedChangeOnCurrent
+                && changeOnBothMates
+                && currentTransitionDelay > delay;
+            if (delay > 0f)
+                await WaitForSecondsSwapTimingAsync(delay, useUnscaledSwapTiming);
+
+            targetMateId = ResolvePremiumMateTargetId(state, targetMateId);
+            if (!state.Forms.TryGetValue(targetMateId, out nextMate) || nextMate == null)
+                return;
+
+            ResetMateTransform(nextMate, state.Anchor);
+            if (currentMate != null && !keepCurrentAliveForOverlap)
+                currentMate.gameObject.SetActive(false);
+            SetExclusivePremiumMateActiveForm(state, nextMate, keepCurrentAliveForOverlap ? currentMate : null);
+            nextMate.PrepareForPremiumSwapActivation();
+            state.ActiveMateId = targetMateId;
+            SetMateForSide(state.Side, nextMate);
+
+            if (state.SwapEffect.PreferNonChangeNextWhenChangeTriggerMissing
+                && triggerPriorityOverride == null
+                && HasConfiguredChangeTrigger(nextTriggerPriority)
+                && !MateHasAnyChangeTriggerParameter(nextMate, nextTriggerPriority))
+            {
+                var reorderedPriority = BuildNonChangeFirstPriority(nextTriggerPriority);
+                if (!ReferenceEquals(reorderedPriority, nextTriggerPriority))
+                    effectiveNextTriggerPriority = reorderedPriority;
+            }
+
+            if (state.SwapEffect.NextMotionLeadInSeconds > 0f)
+                await WaitForSecondsUnscaledAsync(state.SwapEffect.NextMotionLeadInSeconds);
+
+            var hasNextActivationTrigger = HasNonChangeTrigger(effectiveNextTriggerPriority);
+            var shouldPlayNextMotion = state.SwapEffect.UseChangeMotion
+                && (playChangeOnNextMate || !playedChangeOnCurrent || hasNextActivationTrigger);
+            if (shouldPlayNextMotion)
+            {
+                playedChangeOnNext = nextMate.PlayChangeTransition(effectiveNextTriggerPriority, out nextTransitionDelay);
+                var nextStageWait = nextTransitionDelay;
+                if (state.SwapEffect.NextMotionMinDurationSeconds > 0f)
+                    nextStageWait = Mathf.Max(nextStageWait, state.SwapEffect.NextMotionMinDurationSeconds);
+                if (nextStageWait > 0f)
+                    await WaitForSecondsUnscaledAsync(nextStageWait);
+                if (state.SwapEffect.NextMotionDelaySeconds > 0f)
+                    await WaitForSecondsUnscaledAsync(state.SwapEffect.NextMotionDelaySeconds);
+            }
+
+            if (keepCurrentAliveForOverlap && currentMate != null)
+                currentMate.gameObject.SetActive(false);
+
+            RestartMateRandomCooldown(state.Side);
+        }
+
+        private async UniTask<SwapEffectLabelPlaybackResult> SpawnPremiumSwapEffectAsync(PremiumMateState state, string effectPath, Vector3 position, string effectLabel = null, bool toSub = true)
+        {
+            if (state == null || state.SwapEffect == null)
+                return SwapEffectLabelPlaybackResult.None;
+            if (!state.SwapEffect.HasChangeEffectAsset(toSub))
+                return SwapEffectLabelPlaybackResult.None;
+
+            var fullPath = Path.Combine(Program.root, effectPath);
+            GameObject effect = null;
+            var selectedScore = int.MinValue;
+            void ConsiderEffectCandidate(GameObject candidate)
+            {
+                if (candidate == null)
+                    return;
+
+                var score = GetSwapEffectCandidateScore(candidate);
+                if (effect == null || score > selectedScore)
+                {
+                    if (effect != null && effect != candidate)
+                        UnityEngine.Object.Destroy(effect);
+
+                    effect = candidate;
+                    selectedScore = score;
+                }
+                else
+                {
+                    UnityEngine.Object.Destroy(candidate);
+                }
+            }
+
+            if (Directory.Exists(fullPath))
+            {
+                var leafName = Path.GetFileName(effectPath);
+                var directBundlePath = Path.Combine(fullPath, leafName);
+                if (!string.IsNullOrEmpty(leafName) && File.Exists(directBundlePath))
+                {
+                    var loadPath = effectPath + "/" + leafName;
+                    ConsiderEffectCandidate(await ABLoader.LoadFromFileAsync(loadPath, false, true));
+                }
+
+                ConsiderEffectCandidate(await ABLoader.LoadFromFolderAsync<PlayableDirector>(effectPath, false, true));
+                ConsiderEffectCandidate(await ABLoader.LoadFromFolderAsync<ParticleSystem>(effectPath, false, true));
+            }
+            else
+            {
+                ConsiderEffectCandidate(await ABLoader.LoadFromFileAsync(effectPath, false, true));
+            }
+
+            if (effect == null)
+                return SwapEffectLabelPlaybackResult.None;
+
+            effect.transform.SetParent(Program.instance.container_3D, false);
+            effect.transform.position = position;
+            var labelResult = await PlayPremiumSwapEffectLabelAsync(effect, effectLabel);
+            UnityEngine.Object.Destroy(effect, 5f);
+            return labelResult;
+        }
+
+        private async UniTask<SwapEffectLabelPlaybackResult> PlayPremiumSwapEffectLabelAsync(GameObject effect, string effectLabel)
+        {
+            if (effect == null)
+                return SwapEffectLabelPlaybackResult.None;
+
+            var labelPlayed = false;
+            var fallbackPlayed = false;
+
+            var animators = effect.GetComponentsInChildren<Animator>(true);
+            for (var i = 0; i < animators.Length; i++)
+            {
+                var animator = animators[i];
+                if (animator == null)
+                    continue;
+
+                if (TryPlayAnimatorEffectLabel(animator, effectLabel))
+                    labelPlayed = true;
+            }
+
+            var directors = effect.GetComponentsInChildren<PlayableDirector>(true);
+            for (var i = 0; i < directors.Length; i++)
+            {
+                var director = directors[i];
+                if (director == null)
+                    continue;
+
+                if (TryPlayDirectorEffectLabel(director, effectLabel, out var startTime))
+                {
+                    director.time = startTime;
+                    director.Play();
+                    labelPlayed = true;
+                }
+            }
+
+            var changeEffects = effect.GetComponentsInChildren<BgAvatarChangeEffect>(true);
+            if (!labelPlayed && !string.IsNullOrEmpty(effectLabel))
+            {
+                for (var i = 0; i < changeEffects.Length; i++)
+                {
+                    if (!TryPlayBgAvatarChangeEffectLabel(changeEffects[i], effectLabel))
+                        continue;
+
+                    labelPlayed = true;
+                    break;
+                }
+            }
+
+            if (!labelPlayed && !string.IsNullOrEmpty(effectLabel))
+            {
+                if (TryPlayElementObjectLabel(effect, effectLabel))
+                    labelPlayed = true;
+                else if (TryPlayAnyComponentLabel(effect, effectLabel))
+                    labelPlayed = true;
+            }
+
+            var labeledControllers = effect.GetComponentsInChildren<LabeledPlayableController>(true);
+            if (!labelPlayed && !string.IsNullOrEmpty(effectLabel) && labeledControllers.Length > 0)
+            {
+                for (var i = 0; i < directors.Length; i++)
+                {
+                    var director = directors[i];
+                    if (director == null || director.state == PlayState.Playing)
+                        continue;
+                    director.Play();
+                }
+
+                const int maxFramesToWait = 3;
+                for (var frame = 0; frame <= maxFramesToWait && !labelPlayed; frame++)
+                {
+                    for (var i = 0; i < labeledControllers.Length; i++)
+                    {
+                        var controller = labeledControllers[i];
+                        if (controller == null || controller.loopMixerBehaviour == null)
+                            continue;
+
+                        controller.PlayLabel(effectLabel, (TimelineClip)null);
+                        labelPlayed = true;
+                        break;
+                    }
+
+                    if (!labelPlayed && frame < maxFramesToWait)
+                        await UniTask.Yield();
+                }
+            }
+
+            if (!labelPlayed && !string.IsNullOrEmpty(effectLabel) && directors.Length == 1)
+            {
+                var director = directors[0];
+                if (director != null)
+                {
+                    director.time = 0d;
+                    director.Play();
+                    fallbackPlayed = true;
+                }
+            }
+
+            return new SwapEffectLabelPlaybackResult(labelPlayed || fallbackPlayed);
+        }
+
+        private static bool TryPlayBgAvatarChangeEffectLabel(BgAvatarChangeEffect changeEffect, string effectLabel)
+        {
+            if (changeEffect == null || string.IsNullOrEmpty(effectLabel))
+                return false;
+
+            var toMain = LabelEquals(changeEffect.toMainLabel, effectLabel);
+            var toSub = LabelEquals(changeEffect.toSubLabel, effectLabel);
+            if (!toMain && !toSub)
+                return false;
+
+            var fieldName = toMain ? "toMainObj" : "toSubObj";
+            var field = typeof(BgAvatarChangeEffect).GetField(fieldName, BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
+            var particle = field != null ? field.GetValue(changeEffect) as ParticleSystem : null;
+            if (particle != null)
+            {
+                PlayTargetObject(particle.gameObject);
+                return true;
+            }
+
+            if (TryPlayElementObjectLabel(changeEffect.gameObject, effectLabel))
+                return true;
+
+            return TryPlayAnyComponentLabel(changeEffect.gameObject, effectLabel);
+        }
+
+        private static bool TryPlayElementObjectLabel(GameObject root, string effectLabel)
+        {
+            if (root == null || string.IsNullOrEmpty(effectLabel))
+                return false;
+
+            var elements = root.GetComponentsInChildren<ElementObject>(true);
+            var played = false;
+            for (var i = 0; i < elements.Length; i++)
+            {
+                var element = elements[i];
+                if (element == null || !LabelEquals(element.label, effectLabel))
+                    continue;
+
+                PlayTargetObject(element.gameObject);
+                played = true;
+            }
+
+            return played;
+        }
+
+        private static bool TryPlayAnyComponentLabel(GameObject root, string effectLabel)
+        {
+            if (root == null || string.IsNullOrEmpty(effectLabel))
+                return false;
+
+            var behaviours = root.GetComponentsInChildren<MonoBehaviour>(true);
+            var played = false;
+            for (var i = 0; i < behaviours.Length; i++)
+            {
+                var behaviour = behaviours[i];
+                if (behaviour == null)
+                    continue;
+
+                var field = behaviour.GetType().GetField("label", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+                if (field == null || field.FieldType != typeof(string))
+                    continue;
+
+                var value = field.GetValue(behaviour) as string;
+                if (!LabelEquals(value, effectLabel))
+                    continue;
+
+                PlayTargetObject(behaviour.gameObject);
+                played = true;
+            }
+
+            return played;
+        }
+
+        private static void PlayTargetObject(GameObject target)
+        {
+            if (target == null)
+                return;
+
+            target.SetActive(true);
+
+            var particles = target.GetComponentsInChildren<ParticleSystem>(true);
+            for (var i = 0; i < particles.Length; i++)
+            {
+                var particle = particles[i];
+                if (particle == null)
+                    continue;
+
+                particle.gameObject.SetActive(true);
+                particle.Clear(true);
+                particle.Play(true);
+            }
+
+            var animators = target.GetComponentsInChildren<Animator>(true);
+            for (var i = 0; i < animators.Length; i++)
+            {
+                var animator = animators[i];
+                if (animator == null)
+                    continue;
+                animator.gameObject.SetActive(true);
+                animator.Rebind();
+                animator.Update(0f);
+                animator.Play(0, 0, 0f);
+            }
+
+            var directors = target.GetComponentsInChildren<PlayableDirector>(true);
+            for (var i = 0; i < directors.Length; i++)
+            {
+                var director = directors[i];
+                if (director == null)
+                    continue;
+                director.gameObject.SetActive(true);
+                director.time = 0d;
+                director.Play();
+            }
+        }
+
+        private static bool LabelEquals(string a, string b)
+        {
+            return !string.IsNullOrEmpty(a)
+                && !string.IsNullOrEmpty(b)
+                && a.Equals(b, StringComparison.OrdinalIgnoreCase);
+        }
+
+        private static bool TryPlayDirectorEffectLabel(PlayableDirector director, string effectLabel, out double startTime)
+        {
+            startTime = 0d;
+            if (director == null || string.IsNullOrEmpty(effectLabel))
+                return false;
+
+            var playableName = director.playableAsset != null ? director.playableAsset.name : string.Empty;
+            var nameMatch =
+                (!string.IsNullOrEmpty(playableName) && playableName.IndexOf(effectLabel, StringComparison.OrdinalIgnoreCase) >= 0)
+                || director.name.IndexOf(effectLabel, StringComparison.OrdinalIgnoreCase) >= 0
+                || director.gameObject.name.IndexOf(effectLabel, StringComparison.OrdinalIgnoreCase) >= 0;
+            if (nameMatch)
+                return true;
+
+            return TryGetDirectorLabelStartTime(director, effectLabel, out startTime);
+        }
+
+        private static bool TryGetDirectorLabelStartTime(PlayableDirector director, string effectLabel, out double startTime)
+        {
+            startTime = 0d;
+            if (director == null || string.IsNullOrEmpty(effectLabel) || director.playableAsset == null)
+                return false;
+
+            var outputs = director.playableAsset.outputs;
+            foreach (var output in outputs)
+            {
+                var track = output.sourceObject as TrackAsset;
+                if (track == null)
+                    continue;
+
+                foreach (var clip in track.GetClips())
+                {
+                    if (clip == null)
+                        continue;
+
+                    var displayName = clip.displayName;
+                    if (!string.IsNullOrEmpty(displayName)
+                        && displayName.Equals(effectLabel, StringComparison.OrdinalIgnoreCase))
+                    {
+                        startTime = clip.start;
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
+
+        private static int GetSwapEffectCandidateScore(GameObject candidate)
+        {
+            if (candidate == null)
+                return int.MinValue;
+
+            var labeledControllers = candidate.GetComponentsInChildren<LabeledPlayableController>(true).Length;
+            var directors = candidate.GetComponentsInChildren<PlayableDirector>(true).Length;
+            var animators = candidate.GetComponentsInChildren<Animator>(true).Length;
+            var particles = candidate.GetComponentsInChildren<ParticleSystem>(true).Length;
+            var changeEffects = candidate.GetComponentsInChildren<BgAvatarChangeEffect>(true).Length;
+            var elementLabels = candidate.GetComponentsInChildren<ElementObject>(true).Length;
+            return labeledControllers * 100 + changeEffects * 60 + directors * 20 + animators * 8 + elementLabels * 4 + particles * 2;
+        }
+
+        private static bool TryPlayAnimatorEffectLabel(Animator animator, string effectLabel)
+        {
+            if (animator == null || string.IsNullOrEmpty(effectLabel))
+                return false;
+
+            var played = false;
+            var parameters = animator.parameters;
+            for (var i = 0; i < parameters.Length; i++)
+            {
+                var parameter = parameters[i];
+                if (parameter.type != AnimatorControllerParameterType.Trigger)
+                    continue;
+                if (!parameter.name.Equals(effectLabel, StringComparison.OrdinalIgnoreCase))
+                    continue;
+
+                animator.SetTrigger(parameter.name);
+                played = true;
+            }
+            if (played)
+                return true;
+
+            for (var layer = 0; layer < animator.layerCount; layer++)
+            {
+                var layerName = animator.GetLayerName(layer);
+                var shortHash = Animator.StringToHash(effectLabel);
+                var fullHash = Animator.StringToHash($"{layerName}.{effectLabel}");
+                if (animator.HasState(layer, fullHash))
+                {
+                    animator.Play(fullHash, layer, 0f);
+                    played = true;
+                    continue;
+                }
+                if (animator.HasState(layer, shortHash))
+                {
+                    animator.Play(shortHash, layer, 0f);
+                    played = true;
+                }
+            }
+            if (played)
+                return true;
+
+            var controller = animator.runtimeAnimatorController;
+            if (controller == null)
+                return false;
+
+            var clips = controller.animationClips;
+            for (var i = 0; i < clips.Length; i++)
+            {
+                var clip = clips[i];
+                if (clip == null)
+                    continue;
+                if (!clip.name.Equals(effectLabel, StringComparison.OrdinalIgnoreCase))
+                    continue;
+
+                animator.Play(clip.name, 0, 0f);
+                return true;
+            }
+
+            return false;
+        }
+
+        private Mate GetMateForSide(int side)
+        {
+            return side == 0 ? mate0 : mate1;
+        }
+
+        private void SetMateForSide(int side, Mate mate)
+        {
+            if (side == 0)
+                mate0 = mate;
+            else
+                mate1 = mate;
+        }
+
+        private PremiumMateState GetPremiumMateState(int side)
+        {
+            return side == 0 ? premiumMate0 : premiumMate1;
+        }
+
+        private void SetPremiumMateState(int side, PremiumMateState state)
+        {
+            if (side == 0)
+                premiumMate0 = state;
+            else
+                premiumMate1 = state;
+        }
+
+        private void ResetPremiumMateStates()
+        {
+            premiumMate0 = null;
+            premiumMate1 = null;
+            mate0RandomCooldownTween?.Kill();
+            mate0RandomCooldownTween = null;
+            mate1RandomCooldownTween?.Kill();
+            mate1RandomCooldownTween = null;
         }
 
         public void RefreshBgState()
@@ -741,7 +1930,7 @@ namespace MDPro3.Duel
             {
                 field0Manager.PlayAnimatorTrigger(TriggerLabelDefine.PhaseToDamagePhaseAll);
                 //field0Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhaseToNextPhaseAll);
-                if (mate0 != null && !first)
+                if (!first && CanPlayMateAction(0, mate0))
                     mate0.Play(Mate.MateAction.GetDamage);
                 if (bgPhase0 == 1 && life0 < (lpLimit * 0.75f))
                 {
@@ -790,7 +1979,7 @@ namespace MDPro3.Duel
             {
                 field1Manager.PlayAnimatorTrigger(TriggerLabelDefine.PhaseToDamagePhaseAll);
                 //field1Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhaseToNextPhaseAll);
-                if (mate1 != null && !first)
+                if (!first && CanPlayMateAction(1, mate1))
                     mate1.Play(Mate.MateAction.GetDamage);
                 if (bgPhase1 == 1 && life1 < (lpLimit * 0.75f))
                 {
@@ -1085,6 +2274,9 @@ namespace MDPro3.Duel
             foreach (var go in allGameObjects)
                 UnityEngine.Object.Destroy(go);
             allGameObjects.Clear();
+            ResetPremiumMateStates();
+            mate0 = null;
+            mate1 = null;
         }
 
         public async UniTask ShowDuelResultText(string text)
@@ -1148,7 +2340,7 @@ namespace MDPro3.Duel
             void HeroWin()
             {
                 field0Manager.PlayAnimatorTrigger(TriggerLabelDefine.EndWin);
-                if (mate0 != null)
+                if (CanPlayMateAction(0, mate0))
                     mate0.Play(Mate.MateAction.Victory);
             }
 
@@ -1164,14 +2356,14 @@ namespace MDPro3.Duel
 
                 if (stand0Manager != null)
                     stand0Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase4ToEnd);
-                if (mate0 != null)
+                if (CanPlayMateAction(0, mate0))
                     mate0.Play(Mate.MateAction.Defeat);
             }
 
             void RivalWin()
             {
                 field1Manager.PlayAnimatorTrigger(TriggerLabelDefine.EndWin);
-                if (mate1 != null)
+                if (CanPlayMateAction(1, mate1))
                     mate1.Play(Mate.MateAction.Victory);
             }
 
@@ -1187,7 +2379,7 @@ namespace MDPro3.Duel
 
                 if (stand1Manager != null)
                     stand1Manager.PlayAnimatorTrigger(TriggerLabelDefine.DamagePhase4ToEnd);
-                if (mate1 != null)
+                if (CanPlayMateAction(1, mate1))
                     mate1.Play(Mate.MateAction.Defeat);
             }
 
@@ -2470,9 +3662,11 @@ namespace MDPro3.Duel
 
         public bool HoveringMate0()
         {
-            if(mate0 == null)
+            if (mate0 == null)
                 return false;
             if (UserInput.HoverObject == mate0.gameObject)
+                return true;
+            if (UserInput.HoverObject != null && UserInput.HoverObject.transform.IsChildOf(mate0.transform))
                 return true;
             return false;
         }
@@ -2483,12 +3677,14 @@ namespace MDPro3.Duel
                 return false;
             if (UserInput.HoverObject == mate1.gameObject)
                 return true;
+            if (UserInput.HoverObject != null && UserInput.HoverObject.transform.IsChildOf(mate1.transform))
+                return true;
             return false;
         }
 
         public void TapMate0()
         {
-            if (mate0 == null)
+            if (!CanPlayMateAction(0, mate0, false))
                 return;
             if (Time.time - mate0TapTime < 1f)
                 return;
@@ -2498,7 +3694,7 @@ namespace MDPro3.Duel
 
         public void TapMate1()
         {
-            if (mate1 == null)
+            if (!CanPlayMateAction(1, mate1, false))
                 return;
             if (Time.time - mate1TapTime < 1f)
                 return;
@@ -2508,28 +3704,84 @@ namespace MDPro3.Duel
 
         public void PlayMate0Random()
         {
-            if (mate0 == null)
+            if (!CanPlayMateAction(0, mate0))
                 return;
-            if (mate0Random)
-            {
-                mate0Random = false;
-                mate0.Play(Mate.MateAction.Random);
-                DOTween.To(v => { }, 0, 0, UnityEngine.Random.Range(8, 16)).OnComplete(() =>
-                {
-                    mate0Random = true;
-                });
-            }
+            if (ShouldSuppressAmbientPremiumMateActions(GetPremiumMateState(0)))
+                return;
+            if (!mate0Random)
+                return;
+
+            mate0.Play(Mate.MateAction.Random);
+            RestartMateRandomCooldown(0);
         }
 
         public void PlayMate1Random()
         {
-            if (mate1 == null)
+            if (!CanPlayMateAction(1, mate1))
                 return;
-            if (mate1Random)
+            if (ShouldSuppressAmbientPremiumMateActions(GetPremiumMateState(1)))
+                return;
+            if (!mate1Random)
+                return;
+
+            mate1.Play(Mate.MateAction.Random);
+            RestartMateRandomCooldown(1);
+        }
+
+        private bool CanPlayMateAction(int side, Mate mate, bool skipWhileTransitioning = true)
+        {
+            if (mate == null)
+                return false;
+            if (skipWhileTransitioning && IsPremiumMateTransitioning(side))
+                return false;
+            return true;
+        }
+
+        private bool IsPremiumMateTransitioning(int side)
+        {
+            var state = GetPremiumMateState(side);
+            return state != null && state.IsTransitioning;
+        }
+
+        private void RestartMateRandomCooldown(int side)
+        {
+            var premiumState = GetPremiumMateState(side);
+            if (ShouldSuppressAmbientPremiumMateActions(premiumState))
+            {
+                if (side == 0)
+                {
+                    mate0Random = false;
+                    mate0RandomCooldownTween?.Kill();
+                    mate0RandomCooldownTween = null;
+                }
+                else
+                {
+                    mate1Random = false;
+                    mate1RandomCooldownTween?.Kill();
+                    mate1RandomCooldownTween = null;
+                }
+                return;
+            }
+
+            var mate = side == 0 ? mate0 : mate1;
+            var delay = mate != null && mate.type == Mate.MateType.MasterDuel
+                ? UnityEngine.Random.Range(20f, 70f)
+                : UnityEngine.Random.Range(8f, 16f);
+
+            if (side == 0)
+            {
+                mate0Random = false;
+                mate0RandomCooldownTween?.Kill();
+                mate0RandomCooldownTween = DOTween.To(v => { }, 0, 0, delay).OnComplete(() =>
+                {
+                    mate0Random = true;
+                });
+            }
+            else
             {
                 mate1Random = false;
-                mate1.Play(Mate.MateAction.Random);
-                DOTween.To(v => { }, 0, 0, UnityEngine.Random.Range(8, 16)).OnComplete(() =>
+                mate1RandomCooldownTween?.Kill();
+                mate1RandomCooldownTween = DOTween.To(v => { }, 0, 0, delay).OnComplete(() =>
                 {
                     mate1Random = true;
                 });

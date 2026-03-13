@@ -100,7 +100,8 @@ namespace MDPro3
         public List<Item> wallpapers;   // 113
         public List<List<Item>> kinds;
 
-        private const string ADDRESS_DEFAULT_DECK_CASE = "DeckCase0001_L";
+        private const int CODE_DEFAULT_DECK_CASE = 1080001;
+        private const string ADDRESS_DEFAULT_DECK_CASE_LEGACY = "DeckCase0001_L";
 
         public const string STRING_NULL = "coming soon";
         public const int CODE_NONE = 0;
@@ -628,14 +629,34 @@ namespace MDPro3
 
         public async UniTask<Sprite> LoadDeckCaseIconAsync(int code, string suffix)
         {
+            var sprite = await TryLoadAddressableSprite(GetDeckCaseAddress(code, suffix));
+            if (sprite != null)
+                return sprite;
+
+            sprite = await TryLoadAddressableSprite(GetDeckCaseAddress(CODE_DEFAULT_DECK_CASE, suffix));
+            if (sprite != null)
+                return sprite;
+
+            return await TryLoadAddressableSprite(ADDRESS_DEFAULT_DECK_CASE_LEGACY);
+        }
+
+        private static string GetDeckCaseAddress(int code, string suffix)
+        {
+            if (code < 1080000 || code > 1089999)
+                code = CODE_DEFAULT_DECK_CASE;
+
+            return $"DeckCase{code.ToString()[3..]}{suffix ?? string.Empty}";
+        }
+
+        private async UniTask<Sprite> TryLoadAddressableSprite(string address)
+        {
             try
             {
-                return await LoadAddressableSprite($"DeckCase{code.ToString()[3..]}{suffix}");
+                return await LoadAddressableSprite(address);
             }
             catch
             {
-                Debug.LogError("Addressables Not Found: " + $"DeckCase {code}_{suffix}");
-                return await LoadAddressableSprite(ADDRESS_DEFAULT_DECK_CASE);
+                return null;
             }
         }
 
