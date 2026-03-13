@@ -55,7 +55,23 @@ namespace MDPro3
             Animator[] animators = animationContainer.GetComponentsInChildren<Animator>();
             foreach (Animator animator in animators)
             {
-                animator.SetTrigger(animationName);
+                if (animator == null || string.IsNullOrEmpty(animationName))
+                    continue;
+
+                var hasTrigger = false;
+                var parameters = animator.parameters;
+                for (var i = 0; i < parameters.Length; i++)
+                {
+                    var param = parameters[i];
+                    if (param.type == AnimatorControllerParameterType.Trigger && param.name == animationName)
+                    {
+                        hasTrigger = true;
+                        break;
+                    }
+                }
+
+                if (hasTrigger)
+                    animator.SetTrigger(animationName);
             }
         }
 

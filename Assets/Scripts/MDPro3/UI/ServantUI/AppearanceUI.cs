@@ -8,6 +8,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using static MDPro3.Servant.Appearance;
 using static YgomGame.Duel.BattleAimingEffect;
+using MDPro3.Duel;
 
 namespace MDPro3.UI.ServantUI
 {
@@ -390,6 +391,8 @@ namespace MDPro3.UI.ServantUI
                 int itemCount = 0;
                 foreach (var itemInfo in targetItems)
                 {
+                    if (currentContent == "Mate" && PremiumMateRules.IsPremiumVariantId(itemInfo.id))
+                        continue;
                     if (itemInfo.notReady) continue;
 
                     GameObject item = Instantiate(Template);
@@ -520,44 +523,68 @@ namespace MDPro3.UI.ServantUI
 
             foreach (var item in currentList)
             {
+                var itemMono = item.GetComponent<SelectionToggle_AppearanceItem>();
+                if (currentContent == "Mate" && PremiumMateRules.IsPremiumVariantId(itemMono.itemID))
+                {
+                    itemMono.Hide();
+                    continue;
+                }
+
                 if (player.Contains("0") && onlyOpSideShowItems.Contains(item))
-                    item.GetComponent<SelectionToggle_AppearanceItem>().Hide();
+                    itemMono.Hide();
                 else
-                    item.GetComponent<SelectionToggle_AppearanceItem>().Show();
+                    itemMono.Show();
             }
 
             foreach (var item in currentList)
             {
+                var itemMono = item.GetComponent<SelectionToggle_AppearanceItem>();
+
                 if (currentContent == "Wallpaper")
                 {
-                    if (item.GetComponent<SelectionToggle_AppearanceItem>().itemID.ToString() == Config.Get("Wallpaper", targetItems[0].id.ToString()))
+                    if (itemMono.itemID.ToString() == Config.Get("Wallpaper", targetItems[0].id.ToString()))
                     {
-                        item.GetComponent<SelectionToggle_AppearanceItem>().SetToggleOn();
+                        itemMono.SetToggleOn();
                         break;
                     }
                 }
                 else
                 {
-                    var itemID = item.GetComponent<SelectionToggle_AppearanceItem>().itemID;
+                    var itemID = itemMono.itemID;
+                    if (currentContent == "Mate" && PremiumMateRules.IsPremiumVariantId(itemID))
+                        continue;
 
                     if (condition == Condition.DeckEditor)
                     {
-                        if (itemID == DeckEditor.Deck.Case
+                        if (currentContent == "Mate")
+                        {
+                            var selectedMate = PremiumMateRules.GetBaseMateId(DeckEditor.Deck.Mate);
+                            if (itemID == selectedMate)
+                            {
+                                itemMono.SetToggleOn();
+                                break;
+                            }
+                        }
+                        else if (itemID == DeckEditor.Deck.Case
                             || itemID == DeckEditor.Deck.Protector
                             || itemID == DeckEditor.Deck.Field
                             || itemID == DeckEditor.Deck.Grave
                             || itemID == DeckEditor.Deck.Stand
                             || itemID == DeckEditor.Deck.Mate)
                         {
-                            item.GetComponent<SelectionToggle_AppearanceItem>().SetToggleOn();
-                            break;
+                                itemMono.SetToggleOn();
+                                break;
                         }
                     }
                     else
                     {
-                        if (itemID.ToString() == Config.Get(condition.ToString() + currentContent + player, targetItems[0].id.ToString()))
+                        var selectedCode = Config.Get(condition.ToString() + currentContent + player, targetItems[0].id.ToString());
+                        if (currentContent == "Mate" && int.TryParse(selectedCode, out var selectedMateCode))
+                            selectedCode = PremiumMateRules.GetBaseMateId(selectedMateCode).ToString();
+
+                        if (itemID.ToString() == selectedCode)
                         {
-                            item.GetComponent<SelectionToggle_AppearanceItem>().SetToggleOn();
+                            itemMono.SetToggleOn();
                             break;
                         }
                     }

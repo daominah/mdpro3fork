@@ -69,22 +69,35 @@ namespace MDPro3
             }
 
             AssetBundle ab = await AssetBundle.LoadFromFileAsync(Program.root + path);
-            var assets = ab.LoadAllAssets();
-
-            foreach (UnityEngine.Object asset in assets)
+            var expectedName = Path.GetFileName(path);
+            if (!string.IsNullOrEmpty(expectedName))
             {
-                if (typeof(GameObject).IsInstanceOfType(asset))
+                var assetRequest = ab.LoadAssetAsync<GameObject>(expectedName);
+                await assetRequest;
+                returnValue = assetRequest.asset as GameObject;
+            }
+
+            if (returnValue == null)
+            {
+                var assets = ab.LoadAllAssets();
+                foreach (UnityEngine.Object asset in assets)
                 {
-                    if (cache)
-                    {
-                        if (!cachedAB.TryAdd(path, asset as GameObject))
-                            Debug.LogWarning($"Failed to cache {path}");
-                    }
-                    returnValue = asset as GameObject;
-                    //break;
+                    if (!typeof(GameObject).IsInstanceOfType(asset))
+                        continue;
+
+                    var candidate = asset as GameObject;
+                    returnValue = candidate;
+                    if (candidate != null && candidate.name == expectedName)
+                        break;
                 }
             }
             ab.Unload(false);
+
+            if (cache && returnValue != null)
+            {
+                if (!cachedAB.TryAdd(path, returnValue))
+                    Debug.LogWarning($"Failed to cache {path}");
+            }
 
             if (instantiate && returnValue != null)
                 return UnityEngine.Object.Instantiate(returnValue);
