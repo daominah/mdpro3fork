@@ -9,6 +9,7 @@ using MDPro3.UI;
 using TMPro;
 using UnityEngine.EventSystems;
 using System.IO;
+using System.Threading.Tasks;
 using MDPro3.Duel.YGOSharp;
 using MDPro3.UI.ServantUI;
 using Cysharp.Threading.Tasks;
@@ -73,6 +74,10 @@ namespace MDPro3.Servant
         public const string opTagString = "OpTag";
 
         #endregion
+
+        private const string FaceFrameMaterialCode = "1030001";
+        private static readonly object loadSettingAssetsLock = new();
+        private static Task loadSettingAssetsTask;
 
         public enum Condition
         {
@@ -182,11 +187,30 @@ namespace MDPro3.Servant
         public static bool loaded;
         public async UniTask LoadSettingAssets()
         {
-            loaded = false;
+            Task taskToAwait;
+            lock (loadSettingAssetsLock)
+            {
+                if (loadSettingAssetsTask == null || loadSettingAssetsTask.IsCompleted)
+                {
+                    loaded = false;
+                    loadSettingAssetsTask = LoadSettingAssetsCore().AsTask();
+                }
 
-            var ab = await AssetBundle.LoadFromFileAsync(Program.root + "MasterDuel/Frame/ProfileFrameMat1030001");
-            matForFace = ab.LoadAsset<Material>("ProfileFrameMat1030001");
-            ab.Unload(false);
+                taskToAwait = loadSettingAssetsTask;
+            }
+
+            await taskToAwait;
+        }
+
+        private static void ApplyFrameTexture(Material material, Sprite sprite)
+        {
+            if (material != null && sprite != null)
+                material.SetTexture("_ProfileFrameTex", sprite.texture);
+        }
+
+        private async UniTask LoadSettingAssetsCore()
+        {
+            matForFace = await ABLoader.LoadFrameMaterial(FaceFrameMaterialCode);
 
             #region Face
             duelFace0 = await Program.items.LoadConcreteItemIconAsync(Config.Get("DuelFace0", Program.items.faces[0].id.ToString()), Items.ItemType.Face, 0);
@@ -210,51 +234,51 @@ namespace MDPro3.Servant
 
             var duelFrame0 = await Program.items.LoadConcreteItemIconAsync(Config.Get("DuelFrame0", Program.items.frames[0].id.ToString()), Items.ItemType.Frame);
             duelFrameMat0 = await ABLoader.LoadFrameMaterial(Config.Get("DuelFrame0", Program.items.frames[0].id.ToString()));
-            duelFrameMat0.SetTexture("_ProfileFrameTex", duelFrame0.texture);
+            ApplyFrameTexture(duelFrameMat0, duelFrame0);
 
             var duelFrame1 = await Program.items.LoadConcreteItemIconAsync(Config.Get("DuelFrame1", Program.items.frames[0].id.ToString()), Items.ItemType.Frame);
             duelFrameMat1 = await ABLoader.LoadFrameMaterial(Config.Get("DuelFrame1", Program.items.frames[0].id.ToString()));
-            duelFrameMat1.SetTexture("_ProfileFrameTex", duelFrame1.texture);
+            ApplyFrameTexture(duelFrameMat1, duelFrame1);
 
             var duelFrame0Tag = await Program.items.LoadConcreteItemIconAsync(Config.Get("DuelFrame0Tag", Program.items.frames[0].id.ToString()), Items.ItemType.Frame);
             duelFrameMat0Tag = await ABLoader.LoadFrameMaterial(Config.Get("DuelFrame0Tag", Program.items.frames[0].id.ToString()));
-            duelFrameMat0Tag.SetTexture("_ProfileFrameTex", duelFrame0Tag.texture);
+            ApplyFrameTexture(duelFrameMat0Tag, duelFrame0Tag);
 
             var duelFrame1Tag = await Program.items.LoadConcreteItemIconAsync(Config.Get("DuelFrame1Tag", Program.items.frames[0].id.ToString()), Items.ItemType.Frame);
             duelFrameMat1Tag = await ABLoader.LoadFrameMaterial(Config.Get("DuelFrame1Tag", Program.items.frames[0].id.ToString()));
-            duelFrameMat1Tag.SetTexture("_ProfileFrameTex", duelFrame1Tag.texture);
+            ApplyFrameTexture(duelFrameMat1Tag, duelFrame1Tag);
 
             var watchFrame0 = await Program.items.LoadConcreteItemIconAsync(Config.Get("WatchFrame0", Program.items.frames[0].id.ToString()), Items.ItemType.Frame);
             watchFrameMat0 = await ABLoader.LoadFrameMaterial(Config.Get("WatchFrame0", Program.items.frames[0].id.ToString()));
-            watchFrameMat0.SetTexture("_ProfileFrameTex", watchFrame0.texture);
+            ApplyFrameTexture(watchFrameMat0, watchFrame0);
 
             var watchFrame1 = await Program.items.LoadConcreteItemIconAsync(Config.Get("WatchFrame1", Program.items.frames[0].id.ToString()), Items.ItemType.Frame);
             watchFrameMat1 = await ABLoader.LoadFrameMaterial(Config.Get("WatchFrame1", Program.items.frames[0].id.ToString()));
-            watchFrameMat1.SetTexture("_ProfileFrameTex", watchFrame1.texture);
+            ApplyFrameTexture(watchFrameMat1, watchFrame1);
 
             var watchFrame0Tag = await Program.items.LoadConcreteItemIconAsync(Config.Get("WatchFrame0Tag", Program.items.frames[0].id.ToString()), Items.ItemType.Frame);
             watchFrameMat0Tag = await ABLoader.LoadFrameMaterial(Config.Get("WatchFrame0Tag", Program.items.frames[0].id.ToString()));
-            watchFrameMat0Tag.SetTexture("_ProfileFrameTex", watchFrame0Tag.texture);
+            ApplyFrameTexture(watchFrameMat0Tag, watchFrame0Tag);
 
             var watchFrame1Tag = await Program.items.LoadConcreteItemIconAsync(Config.Get("WatchFrame1Tag", Program.items.frames[0].id.ToString()), Items.ItemType.Frame);
             watchFrameMat1Tag = await ABLoader.LoadFrameMaterial(Config.Get("WatchFrame1Tag", Program.items.frames[0].id.ToString()));
-            watchFrameMat1Tag.SetTexture("_ProfileFrameTex", watchFrame1Tag.texture);
+            ApplyFrameTexture(watchFrameMat1Tag, watchFrame1Tag);
 
             var replayFrame0 = await Program.items.LoadConcreteItemIconAsync(Config.Get("ReplayFrame0", Program.items.frames[0].id.ToString()), Items.ItemType.Frame);
             replayFrameMat0 = await ABLoader.LoadFrameMaterial(Config.Get("ReplayFrame0", Program.items.frames[0].id.ToString()));
-            replayFrameMat0.SetTexture("_ProfileFrameTex", replayFrame0.texture);
+            ApplyFrameTexture(replayFrameMat0, replayFrame0);
 
             var replayFrame1 = await Program.items.LoadConcreteItemIconAsync(Config.Get("ReplayFrame1", Program.items.frames[0].id.ToString()), Items.ItemType.Frame);
             replayFrameMat1 = await ABLoader.LoadFrameMaterial(Config.Get("ReplayFrame1", Program.items.frames[0].id.ToString()));
-            replayFrameMat1.SetTexture("_ProfileFrameTex", replayFrame1.texture);
+            ApplyFrameTexture(replayFrameMat1, replayFrame1);
 
             var replayFrame0Tag = await Program.items.LoadConcreteItemIconAsync(Config.Get("ReplayFrame0Tag", Program.items.frames[0].id.ToString()), Items.ItemType.Frame);
             replayFrameMat0Tag = await ABLoader.LoadFrameMaterial(Config.Get("ReplayFrame0Tag", Program.items.frames[0].id.ToString()));
-            replayFrameMat0Tag.SetTexture("_ProfileFrameTex", replayFrame0Tag.texture);
+            ApplyFrameTexture(replayFrameMat0Tag, replayFrame0Tag);
 
             var replayFrame1Tag = await Program.items.LoadConcreteItemIconAsync(Config.Get("ReplayFrame1Tag", Program.items.frames[0].id.ToString()), Items.ItemType.Frame);
             replayFrameMat1Tag = await ABLoader.LoadFrameMaterial(Config.Get("ReplayFrame1Tag", Program.items.frames[0].id.ToString()));
-            replayFrameMat1Tag.SetTexture("_ProfileFrameTex", replayFrame1Tag.texture);
+            ApplyFrameTexture(replayFrameMat1Tag, replayFrame1Tag);
 
             #endregion
 
