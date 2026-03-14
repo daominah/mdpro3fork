@@ -514,6 +514,20 @@ namespace MDPro3.UI
             return Selectable;
         }
 
+        public virtual void ResetVisualState(bool clearEventSelection = false)
+        {
+            hovering = false;
+            pressing = false;
+            selected = false;
+
+            if (clearEventSelection && EventSystem.current != null
+                && EventSystem.current.currentSelectedGameObject == gameObject)
+                EventSystem.current.SetSelectedGameObject(null);
+
+            HoverOff();
+            SetColor(SelectMode.Unselected, StatusMode.Normal, Selectable.interactable);
+        }
+
         #endregion
 
         #region Navigation
