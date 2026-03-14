@@ -59,6 +59,9 @@ namespace MDPro3.UI
         #endregion
 
         private CancellationTokenSource cts;
+        private int currentCode = int.MinValue;
+        private bool currentIsCard;
+        private string currentPath = string.Empty;
 
         public void Show()
         {
@@ -74,27 +77,65 @@ namespace MDPro3.UI
             CG.blocksRaycasts = false;
         }
 
-        public void SetItem(int code, string itemName, string desc, bool isCard)
+        public void SetItem(int code, string itemName, string desc, bool isCard, string path = null, Sprite preloadedSprite = null, Material preloadedMaterial = null)
         {
             TextSetting.text = itemName;
 #if UNITY_EDITOR
             TextSetting.text = $"{itemName} ({code})";
 #endif
             TextDescription.text = desc;
+            currentCode = code;
+            currentIsCard = isCard;
+            currentPath = path ?? string.Empty;
 
             CancelLoading();
+            ResetPreview();
+            ApplyLoadedPreview(code, preloadedSprite, preloadedMaterial);
             cts = new CancellationTokenSource();
             _ = SetIconAsync(code, cts.Token, isCard);
+        }
+
+        public void ApplyLoadedPreview(int code, Sprite sprite = null, Material material = null)
+        {
+            if (code != currentCode)
+                return;
+
+            if (currentIsCard)
+            {
+                if (sprite == null)
+                    return;
+
+                ResetPreview();
+                Image.sprite = sprite;
+                Image.gameObject.SetActive(true);
+                return;
+            }
+
+            if (currentPath.StartsWith("Protector"))
+            {
+                if (material == null)
+                    return;
+
+                ResetPreview();
+                RawImage.material = material;
+                RawImage.gameObject.SetActive(true);
+                return;
+            }
+
+            if (currentPath.StartsWith("ProfileFrame") || sprite == null)
+                return;
+
+            ResetPreview();
+            Image.sprite = sprite;
+            Image.gameObject.SetActive(true);
+            WallpaperBG.gameObject.SetActive(currentPath.StartsWith("WallPaperIcon"));
         }
 
         private async UniTask SetIconAsync(int code, CancellationToken token, bool isCard)
         {
             var codeString = code.ToString();
 
-            Image.gameObject.SetActive(false);
-            Image.material = null;
-            RawImage.gameObject.SetActive(false);
-            WallpaperBG.gameObject.SetActive(false);
+            ResetPreview();
 
             if (isCard) //Cross Duel Mate
             {
@@ -110,8 +151,11 @@ namespace MDPro3.UI
                 if (codeString.StartsWith("107")) // Protector
                 {
                     RawImage.material = await ABLoader.LoadProtectorMaterial(code.ToString(), token);
-                    RawImage.material.renderQueue = 3000;
-                    RawImage.gameObject.SetActive(true);
+                    if (RawImage.material != null)
+                    {
+                        RawImage.material.renderQueue = 3000;
+                        RawImage.gameObject.SetActive(true);
+                    }
                 }
                 else
                 {
@@ -147,6 +191,15 @@ namespace MDPro3.UI
                     }
                 }
             }
+        }
+
+        private void ResetPreview()
+        {
+            Image.gameObject.SetActive(false);
+            Image.material = null;
+            RawImage.gameObject.SetActive(false);
+            RawImage.material = null;
+            WallpaperBG.gameObject.SetActive(false);
         }
 
         private void CancelLoading()

@@ -111,6 +111,8 @@ namespace MDPro3
         private InputAction gamepadStartAction;
 
         private Vector2 lastMousePos;
+        private Vector2 cursorRestorePos;
+        private bool hasCursorRestorePos;
 
         private Gamepad pad;
         private Coroutine stopRumbleAfterTimeCoroutine;
@@ -437,9 +439,20 @@ namespace MDPro3
 
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+
+            if (hasCursorRestorePos && Mouse.current != null)
+            {
+                Mouse.current.WarpCursorPosition(cursorRestorePos);
+                MousePos = cursorRestorePos;
+                lastMousePos = cursorRestorePos;
+                hasCursorRestorePos = false;
+                ignoreNextCursorMove = true;
+            }
         }
         private void HideCursor()
         {
+            cursorRestorePos = MousePos;
+            hasCursorRestorePos = true;
             ignoreNextCursorMove = true;
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;

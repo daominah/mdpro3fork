@@ -139,6 +139,7 @@ namespace MDPro3.UI
 
                 loaded = true;
                 StartPremiumCrossfade();
+                PushLoadedPreviewToDetail();
             }
             catch (OperationCanceledException)
             {
@@ -160,7 +161,8 @@ namespace MDPro3.UI
             base.CallToggleOnEvent();
             CallHoverOnEvent();
 
-            Program.instance.appearance.GetUI<AppearanceUI>().Detail.SetItem(itemID, itemName, description, path == string.Empty);
+            var detail = Program.instance.appearance.GetUI<AppearanceUI>().Detail;
+            detail.SetItem(itemID, itemName, description, path == string.Empty, path, GetPreviewSprite(), GetPreviewMaterial());
 
             Program.instance.appearance.GetUI<AppearanceUI>().SetHoverText(itemName);
             Program.instance.appearance.lastSelectedItem = this;
@@ -441,6 +443,36 @@ namespace MDPro3.UI
             Destroy(gameObject);
         }
 
+        private Sprite GetPreviewSprite()
+        {
+            if (!loaded)
+                return null;
+
+            if (path.StartsWith("Protector") || path.StartsWith("ProfileFrame"))
+                return null;
+
+            return Icon != null ? Icon.sprite : null;
+        }
+
+        private Material GetPreviewMaterial()
+        {
+            if (!loaded || !path.StartsWith("Protector"))
+                return null;
+
+            return protectorMaterial;
+        }
+
+        private void PushLoadedPreviewToDetail()
+        {
+            if (!isOn || Program.instance?.appearance == null)
+                return;
+
+            Program.instance.appearance.GetUI<AppearanceUI>().Detail.ApplyLoadedPreview(
+                itemID,
+                GetPreviewSprite(),
+                GetPreviewMaterial());
+        }
+
         #region Premium Mate Crossfade
 
         private void StartPremiumCrossfade()
@@ -515,20 +547,13 @@ namespace MDPro3.UI
             Sprite subSprite = null;
             foreach (var variantId in rule.VariantIds)
             {
-                var task = Program.items.LoadItemIconAsync(variantId.ToString(), Items.ItemType.Mate);
+                var task = Program.items.TryLoadItemIconAsync(variantId.ToString(), Items.ItemType.Mate);
                 while (task.Status == UniTaskStatus.Pending)
                     yield return null;
 
-                try
-                {
-                    subSprite = task.GetAwaiter().GetResult();
-                    if (subSprite != null)
-                        break;
-                }
-                catch
-                {
-                    // Icon not available for this variant, try next
-                }
+                subSprite = task.GetAwaiter().GetResult();
+                if (subSprite != null)
+                    break;
             }
 
             if (subSprite == null || this == null || Icon == null)
