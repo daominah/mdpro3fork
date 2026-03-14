@@ -48,7 +48,7 @@ namespace MDPro3.UI.ServantUI
             var tasks = new List<string[]>();
             foreach (var card in CutinViewer.cards)
             {
-                if (card.Name.Contains(search) || card.Id.ToString() == search)
+                if (card.Name.IndexOf(search, System.StringComparison.OrdinalIgnoreCase) >= 0 || card.Id.ToString() == search)
                 {
                     string code = card.Id.ToString();
                     string cardName = card.Name;
