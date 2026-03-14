@@ -13,6 +13,7 @@ using System.Threading;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Playables;
+using UnityEngine.Rendering;
 using YgomGame.Duel;
 using YgomSystem.ElementSystem;
 using static MDPro3.Servant.OcgCore;
@@ -437,12 +438,16 @@ namespace MDPro3
                     {
                         SetFace();
                         ShowFaceDownCardOrNot(NeedShowFaceDownCard());
+                        RefreshHandShadowState();
                     }
                 }
             }
             data = d;
             if (model != null && p.InLocation(CardLocation.Hand) && !inAnimation)
+            {
                 RefreshHandTurnByCode();
+                RefreshHandShadowState();
+            }
             RefreshLabel();
             UpdateExDeckTop();
         }
@@ -719,7 +724,10 @@ namespace MDPro3
 
         private static float GetOpHandBaseZ()
         {
-            return 17f - GetHandDepthOffsetByFov();
+            var baseZ = 17f;
+            if (CurrentReplayGodView)
+                baseZ += 2f;
+            return baseZ - GetHandDepthOffsetByFov();
         }
 
         private static float GetHandDepthOffsetByFov()
@@ -1036,6 +1044,7 @@ namespace MDPro3
                     CreateModel();
                     ModelAt(p);
                     ShowFaceDownCardOrNot(NeedShowFaceDownCard());
+                    RefreshHandShadowState();
                     if (IsFaceDownOnSpellZone())
                         setOverTurn = true;
                     if (p.InLocation(CardLocation.Hand))
@@ -1578,6 +1587,7 @@ namespace MDPro3
 
             ShowFaceDownCardOrNot(NeedShowFaceDownCard());
             RefreshHandTurnByCode();
+            RefreshHandShadowState();
 
             if (p.InLocation(CardLocation.Deck, CardLocation.Extra))
                 Program.instance.ocgcore.DuelBGManager.ResizeDecks();
@@ -1590,6 +1600,23 @@ namespace MDPro3
             if (model == null || !p.InLocation(CardLocation.Hand))
                 return;
             manager.GetElement<Transform>("Turn").localEulerAngles = new Vector3(0, 0, data.Id == 0 ? 180 : 0);
+        }
+
+        private void RefreshHandShadowState()
+        {
+            if (model == null)
+                return;
+
+            var mode = CurrentReplayGodView && p.InLocation(CardLocation.Hand) && !p.InMyControl()
+                ? ShadowCastingMode.Off
+                : ShadowCastingMode.On;
+            var cardModel = manager.GetElement<Transform>("CardModel");
+            for (int i = 0; i < cardModel.childCount; i++)
+            {
+                var renderer = cardModel.GetChild(i).GetComponent<Renderer>();
+                if (renderer != null)
+                    renderer.shadowCastingMode = mode;
+            }
         }
 
         public Sequence StartCardSequence(Vector3 fromPosition, Vector3 fromRotation, float interval = 0f)

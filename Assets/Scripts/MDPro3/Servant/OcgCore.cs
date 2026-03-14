@@ -203,6 +203,7 @@ namespace MDPro3.Servant
         public static bool inputMode;
         public static bool Accing;
         public static bool CurrentReplayUseYRP2;
+        public static bool CurrentReplayGodView;
 
         #endregion
 
@@ -259,6 +260,7 @@ namespace MDPro3.Servant
         {
             base.OnExit();
             CloseConnection();
+            CurrentReplayGodView = false;
             GetUI<OcgCoreUI>().OnNor();
         }
 
@@ -706,6 +708,7 @@ namespace MDPro3.Servant
             packages.Clear();
             packages = null;
             packages = packs;
+            replayPlaybackEndedNotified = false;
             allPackages.Clear();
             foreach (Package p in packages)
                 allPackages.Add(p);
@@ -924,6 +927,7 @@ namespace MDPro3.Servant
         private async UniTask ProcessMessage()
         {
             messageDispatcher.Dispose();
+            replayPlaybackEndedNotified = false;
 
             try
             {
@@ -961,17 +965,31 @@ namespace MDPro3.Servant
 
                     lastMessage = currentMessage;
                     if (packages.Count == 0)
+                    {
+                        NotifyReplayPlaybackEnded();
                         break;
+                    }
                     packages.RemoveAt(0);
 
                     if (condition == Condition.Replay && packages.Count == 0)
                     {
-                        MessageManager.Cast(InterString.Get("回放播放结束。"));
+                        NotifyReplayPlaybackEnded();
                         break;
                     }
                 }
             }
             catch (Exception e) { Debug.Log(e); }
+        }
+
+        private bool replayPlaybackEndedNotified;
+
+        public void NotifyReplayPlaybackEnded()
+        {
+            if (condition != Condition.Replay || replayPlaybackEndedNotified)
+                return;
+
+            replayPlaybackEndedNotified = true;
+            MessageManager.Cast(InterString.Get("回放播放结束。"));
         }
 
         #endregion

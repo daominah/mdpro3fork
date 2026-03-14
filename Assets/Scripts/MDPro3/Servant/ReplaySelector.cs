@@ -22,6 +22,7 @@ namespace MDPro3.Servant
         protected override void ApplyShowArrangement(int preDepth)
         {
             base.ApplyShowArrangement(preDepth);
+            RefreshButtonMaterials();
             GetUI<ReplaySelectorUI>().Print();
         }
 
@@ -44,6 +45,8 @@ namespace MDPro3.Servant
             if (!forced && !UserInput.NeedDefaultSelect())
                 return;
 
+            if (lastSelectedReplayItem == null)
+                return;
             lastSelectedReplayItem.GetSelectable().Select();
         }
 
@@ -56,8 +59,17 @@ namespace MDPro3.Servant
         protected override void FirstLoadEvent()
         {
             base.FirstLoadEvent();
+            RefreshButtonMaterials();
             if(Program.exitOnReturn)
                 GetUI<ReplaySelectorUI>().KF_Replay(replayName);
+        }
+
+        private void RefreshButtonMaterials()
+        {
+            var ui = GetUI<ReplaySelectorUI>();
+            ui.ButtonGodView.ResetVisualState(true);
+            _ = Program.instance.texture_.SetCommonShopButtonMaterial(ui.ImageOut, false);
+            _ = Program.instance.texture_.SetCommonShopButtonMaterial(ui.ImageHover, true);
         }
 
         private string replayName;

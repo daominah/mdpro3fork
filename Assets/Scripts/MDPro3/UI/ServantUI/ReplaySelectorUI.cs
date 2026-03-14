@@ -87,6 +87,7 @@ namespace MDPro3.UI.ServantUI
 
         public void KF_Replay(string name, bool god = false)
         {
+            OcgCore.CurrentReplayGodView = god;
             string fileName = Program.PATH_REPLAY + name + (name.EndsWith(Program.EXPANSION_YRP) ? string.Empty : Program.EXPANSION_YRP3D);
             if (!File.Exists(fileName))
             {
@@ -420,7 +421,8 @@ namespace MDPro3.UI.ServantUI
         public void SelectLastReplayItem()
         {
             UserInput.NextSelectionIsAxis = true;
-            Program.instance.replay.lastSelectedReplayItem.GetSelectable().Select();
+            if (Program.instance.replay.lastSelectedReplayItem != null)
+                Program.instance.replay.lastSelectedReplayItem.GetSelectable().Select();
         }
 
     }

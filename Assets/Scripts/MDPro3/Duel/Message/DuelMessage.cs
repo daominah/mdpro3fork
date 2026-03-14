@@ -663,6 +663,8 @@ namespace MDPro3.Duel
             MessageManager.Cast(endingReason);
             if (condition != Condition.Replay)
                 Core.GetUI<OcgCoreUI>().ShowSaveReplay();
+            else
+                Core.NotifyReplayPlaybackEnded();
         }
 
         protected override UniTask GameMessage_UpdateData(BinaryReader reader)
