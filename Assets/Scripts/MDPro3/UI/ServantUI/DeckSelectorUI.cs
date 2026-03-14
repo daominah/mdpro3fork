@@ -203,7 +203,7 @@ namespace MDPro3.UI.ServantUI
                 List<string[]> tasks = new() { new string[7] { string.Empty, "0", "0", "0", "0", "0", "0" } };
                 foreach (var deck in decks)
                 {
-                    if (!deck.Key.Contains(search))
+                    if (deck.Key.IndexOf(search, System.StringComparison.OrdinalIgnoreCase) < 0)
                         continue;
                     var task = new string[8]
                     {

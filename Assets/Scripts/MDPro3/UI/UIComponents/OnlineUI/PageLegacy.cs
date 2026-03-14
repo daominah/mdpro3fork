@@ -168,7 +168,7 @@ namespace MDPro3.UI
             var tasks = new List<string[]>();
             foreach (var address in addresses)
             {
-                if (address.name.Contains(search))
+                if (address.name.IndexOf(search, System.StringComparison.OrdinalIgnoreCase) >= 0)
                 {
                     string[] task = new string[] { address.name, address.host, address.port, address.password };
                     tasks.Add(task);
