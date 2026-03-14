@@ -19,7 +19,9 @@ namespace MDPro3
         public static Dictionary<string, GameObject> cachedAB = new();
         public static Dictionary<string, GameObject> cachedABFolder = new();
         public static Dictionary<string, Material> cachedPMat = new();
+        public static Dictionary<string, Material> cachedFrameMat = new();
         private static readonly SemaphoreSlim protectorSemaphoreSlim = new(1, 1);
+        private static readonly SemaphoreSlim frameSemaphoreSlim = new(1, 1);
 
         public static async UniTask<AssetBundle> CacheFromFileAsync(string path)
         {
@@ -386,11 +388,41 @@ namespace MDPro3
             if (code == Items.CODE_RANDOM.ToString())
                 code = Items.lastRandomFrameID;
 
-            var ab = await AssetBundle.LoadFromFileAsync(Program.root + "MasterDuel/Frame/ProfileFrameMat" + code);
-            var material = ab.LoadAsset<Material>("ProfileFrameMat" + code);
-            ab.Unload(false);
-            TextureManager.ChangeProfileFrameMaterialWrapMode(material);
-            return material;
+            await frameSemaphoreSlim.WaitAsync();
+
+            try
+            {
+                if (cachedFrameMat.TryGetValue(code, out var cachedMaterial))
+                    if (cachedMaterial != null)
+                        return new Material(cachedMaterial);
+
+                var ab = await AssetBundle.LoadFromFileAsync(Program.root + "MasterDuel/Frame/ProfileFrameMat" + code);
+                if (ab == null)
+                    return null;
+
+                try
+                {
+                    var material = ab.LoadAsset<Material>("ProfileFrameMat" + code);
+                    if (material == null)
+                        return null;
+
+                    TextureManager.ChangeProfileFrameMaterialWrapMode(material);
+
+                    if (cachedFrameMat.TryGetValue(code, out cachedMaterial) && cachedMaterial != null)
+                        return new Material(cachedMaterial);
+
+                    cachedFrameMat[code] = material;
+                    return new Material(material);
+                }
+                finally
+                {
+                    ab.Unload(false);
+                }
+            }
+            finally
+            {
+                frameSemaphoreSlim.Release();
+            }
         }
 
         public static async UniTask<Material> LoadMaterialAsync(string path, CancellationToken token)
