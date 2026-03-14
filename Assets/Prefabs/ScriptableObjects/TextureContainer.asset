@@ -397,6 +397,9 @@ MonoBehaviour:
   chainNumSet7: {fileID: 21300000, guid: 5a4b900ee24dc5546861d48ce2e42150, type: 3}
   chainNumSet8: {fileID: 21300000, guid: 0ac64bc140f9d204886aed6f0dcf8eeb, type: 3}
   chainNumSet9: {fileID: 21300000, guid: 1514e0f4855cc744587659ea7eb86465, type: 3}
+  duelCardSelectionListFrame: {fileID: 21300000, guid: 7b65c898a762940478e77cdb545bac45, type: 3}
+  duelCardSelectionListViewIconHorizontal: {fileID: 21300000, guid: 5a5bd2c00c42fe440a5f3d62fade6359, type: 3}
+  duelCardSelectionListViewIconVertical: {fileID: 21300000, guid: 1a70faaead076664786c1564bcce5b79, type: 3}
   toggleM: {fileID: 21300000, guid: b4b6f990bf52e9e41a3157d2c0701a28, type: 3}
   toggleM_On: {fileID: 21300000, guid: 77342bb8b8bac73418a111be27a694e5, type: 3}
   toggleM_Over: {fileID: 21300000, guid: 03c22d822bdf72e4680c02fb6caa13a5, type: 3}
