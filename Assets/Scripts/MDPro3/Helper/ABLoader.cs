@@ -351,24 +351,39 @@ namespace MDPro3
                 if (!Directory.Exists(folder))
                     return null;
 
-                var files = Directory.GetFiles(folder);
+                var files = Directory.GetFiles(folder)
+                    .OrderBy(path => Path.GetFileName(path).Equals(code, StringComparison.OrdinalIgnoreCase) ? 0 : 1)
+                    .ThenBy(Path.GetFileName, StringComparer.OrdinalIgnoreCase)
+                    .ToArray();
+                if (files.Length == 0)
+                    return null;
 
+                var bundles = new List<AssetBundle>();
                 AssetBundle matAB = null;
-                List<AssetBundle> abs = new();
-                foreach (var file in files)
+                foreach (var path in files)
                 {
-                    var ab = await AssetBundle.LoadFromFileAsync(file).WithCancellation(token);
-                    abs.Add(ab);
-                    if (Path.GetFileName(file) == code)
-                        matAB = ab;
+                    var bundle = await AssetBundle.LoadFromFileAsync(path).WithCancellation(token);
+                    if (bundle == null)
+                        continue;
+
+                    bundles.Add(bundle);
+                    if (Path.GetFileName(path).Equals(code, StringComparison.OrdinalIgnoreCase))
+                        matAB = bundle;
                 }
                 if (matAB == null)
                     return null;
 
                 material = matAB.LoadAsset<Material>("PMat");
+                if (material == null)
+                {
+                    foreach (var bundle in bundles)
+                        bundle.Unload(false);
+                    return null;
+                }
+
                 material.renderQueue = 3000;
-                foreach (var ab in abs)
-                    ab.Unload(false);
+                foreach (var bundle in bundles)
+                    bundle.Unload(false);
 
                 if (cachedPMat.ContainsKey(code))
                     material = cachedPMat[code];

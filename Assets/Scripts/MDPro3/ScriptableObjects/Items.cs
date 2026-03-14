@@ -120,6 +120,7 @@ namespace MDPro3
         private readonly Dictionary<int, string> descriptions = new();
         private readonly Dictionary<int, string> categories = new();
         private readonly Dictionary<string, Sprite> cachedIcons = new();
+        private readonly Dictionary<string, bool> iconAddressExists = new();
 
         private string lastMat0;
         private string lastMat1;
@@ -515,6 +516,44 @@ namespace MDPro3
             }
 
             return returnValue;
+        }
+
+        private async UniTask<bool> HasItemIconAddress(string address)
+        {
+            if (string.IsNullOrEmpty(address))
+                return false;
+
+            lock (iconAddressExists)
+                if (iconAddressExists.TryGetValue(address, out var exists))
+                    return exists;
+
+            var handle = Addressables.LoadResourceLocationsAsync(address, typeof(Sprite));
+            try
+            {
+                await handle.Task;
+                return handle.Result != null && handle.Result.Count > 0;
+            }
+            catch
+            {
+                return false;
+            }
+            finally
+            {
+                lock (iconAddressExists)
+                    iconAddressExists[address] = handle.IsValid() && handle.Result != null && handle.Result.Count > 0;
+
+                if (handle.IsValid())
+                    Addressables.Release(handle);
+            }
+        }
+
+        public async UniTask<Sprite> TryLoadItemIconAsync(string id, ItemType type)
+        {
+            var address = GetIconAddress(id);
+            if (!await HasItemIconAddress(address))
+                return null;
+
+            return await LoadItemIconAsync(id, type);
         }
 
         public async UniTask<Sprite> LoadConcreteItemIconAsync(string id, ItemType type, int player = 0)
