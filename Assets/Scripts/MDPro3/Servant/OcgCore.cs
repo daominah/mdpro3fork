@@ -1326,13 +1326,13 @@ namespace MDPro3.Servant
         public bool GetAutoInfo()
         {
             if (condition == Condition.Duel
-                && Config.Get("DuelAutoInfo", "0") == "0")
+                && !Config.GetBool("DuelAutoInfo", true))
                 return false;
             if (condition == Condition.Watch
-                && Config.Get("WatchAutoInfo", "0") == "0")
+                && !Config.GetBool("WatchAutoInfo", true))
                 return false;
             if (condition == Condition.Replay
-                && Config.Get("ReplayAutoInfo", "0") == "0")
+                && !Config.GetBool("ReplayAutoInfo", true))
                 return false;
 
             return true;
