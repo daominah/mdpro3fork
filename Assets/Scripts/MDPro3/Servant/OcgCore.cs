@@ -763,24 +763,38 @@ namespace MDPro3.Servant
             GetUI<OcgCoreUI>().DuelErrorLog.Show(error);
         }
 
+        public static bool ShouldShowPlayerMessages()
+        {
+            if (condition == Condition.Duel && !Config.GetBool("DuelPlayerMessage", true))
+                return false;
+            if (condition == Condition.Watch && !Config.GetBool("WatchPlayerMessage", true))
+                return false;
+            if (condition == Condition.Replay && !Config.GetBool("ReplayPlayerMessage", true))
+                return false;
+            return true;
+        }
+
+        public static bool ShouldShowSystemMessages()
+        {
+            if (condition == Condition.Duel && !Config.GetBool("DuelSystemMessage", true))
+                return false;
+            if (condition == Condition.Watch && !Config.GetBool("WatchSystemMessage", true))
+                return false;
+            if (condition == Condition.Replay && !Config.GetBool("ReplaySystemMessage", true))
+                return false;
+            return true;
+        }
+
         public bool GetMessageConfig(int player)
         {
             if (player < 4 || player == 7)
             {
-                if (condition == Condition.Duel && !Config.GetBool("DuelPlayerMessage", true))
-                    return false;
-                if (condition == Condition.Watch && !Config.GetBool("WatchPlayerMessage", true))
-                    return false;
-                if (condition == Condition.Replay && !Config.GetBool("ReplayPlayerMessage", true))
+                if (!ShouldShowPlayerMessages())
                     return false;
             }
             else
             {
-                if (condition == Condition.Duel && !Config.GetBool("DuelSystemMessage", true))
-                    return false;
-                if (condition == Condition.Watch && !Config.GetBool("WatchSystemMessage", true))
-                    return false;
-                if (condition == Condition.Replay && !Config.GetBool("ReplaySystemMessage", true))
+                if (!ShouldShowSystemMessages())
                     return false;
             }
             return true;
@@ -1464,6 +1478,8 @@ namespace MDPro3.Servant
         public static void PrintDuelLog(string content)
         {
             lastDuelLog = content;
+            if (!ShouldShowSystemMessages())
+                return;
             MessageManager.Cast(content);
         }
 
