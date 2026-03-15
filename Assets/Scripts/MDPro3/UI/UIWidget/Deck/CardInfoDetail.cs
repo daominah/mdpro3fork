@@ -647,29 +647,42 @@ namespace MDPro3.UI
             _ = SaveCardsAsync(CardsManager.GetAllCardCodes(), cts.Token);
         }
 
+        private static Texture2D CreateSaveTextureCopy(Texture2D source)
+        {
+            var copy = new Texture2D(source.width, source.height, TextureFormat.RGBA32, false);
+            copy.SetPixels(source.GetPixels());
+            copy.Apply();
+            return copy;
+        }
+
         private bool SaveCardPicture(int code, Texture2D tex)
         {
             if (!Directory.Exists(Program.PATH_CARD_PIC))
                 Directory.CreateDirectory(Program.PATH_CARD_PIC);
 
+            Texture2D workingTexture = tex;
+            bool destroyWorkingTexture = false;
             try
             {
                 var size = Settings.Data.SavedCardSize;
                 if (size.Length > 1 && size[0] > 0 && size[1] > 0)
                     if (size[0] != tex.width || size[1] != tex.height)
-                        tex = TextureManager.ResizeTexture2D(tex, size[0], size[1]);
+                    {
+                        workingTexture = TextureManager.ResizeTexture2D(CreateSaveTextureCopy(tex), size[0], size[1]);
+                        destroyWorkingTexture = true;
+                    }
 
                 byte[] pic;
                 string fullPath;
                 var format = Settings.Data.SavedCardFormat.ToLower();
                 if (format == Program.EXPANSION_PNG)
                 {
-                    pic = tex.EncodeToPNG();
+                    pic = workingTexture.EncodeToPNG();
                     fullPath = Program.PATH_CARD_PIC + code + Program.EXPANSION_PNG;
                 }
                 else
                 {
-                    pic = tex.EncodeToJPG(85);
+                    pic = workingTexture.EncodeToJPG(85);
                     fullPath = Program.PATH_CARD_PIC + code + Program.EXPANSION_JPG;
                 }
 
@@ -680,68 +693,116 @@ namespace MDPro3.UI
             {
                 return false;
             }
+            finally
+            {
+                if (destroyWorkingTexture && workingTexture != null)
+                    Destroy(workingTexture);
+            }
         }
 
         private async UniTask SaveCardsAsync(List<int> cards, CancellationToken token)
         {
             var time = Time.time;
-
-            var pop = await Addressables.InstantiateAsync("Popup/PopupProgress.prefab").WithCancellation(token);
-            pop.transform.SetParent(Program.instance.ui_.popup, false);
-            var popupProgress = pop.GetComponent<UI.Popup.PopupProgress>();
-            popupProgress.args = new List<string> { InterString.Get("卡图保存中") };
-            popupProgress.cancelAction = StopSaving;
-            popupProgress.text.text = string.Empty;
-            popupProgress.progressBar.value = 0f;
-            popupProgress.Show();
-            await UniTask.WaitForSeconds(popupProgress.transitionTime, cancellationToken : token);
-
+            UI.Popup.PopupProgress popupProgress = null;
             int errorCount = 0;
             errorLog = string.Empty;
             var errorLogPath = Program.PATH_CARD_PIC + "MissingAndFailedCards.txt";
-            if (File.Exists(errorLogPath))
-                File.Delete(errorLogPath);
+            if (!Directory.Exists(Program.PATH_CARD_PIC))
+                Directory.CreateDirectory(Program.PATH_CARD_PIC);
 
-            for (int i = 0; i < cards.Count; i++)
+            try
             {
-                var result = await SaveCardAsync(cards[i], token);
-                if (!result)
-                {
-                    errorCount++;
-                    errorLog += cards[i].ToString() + Program.STRING_LINE_BREAK;
-                }
+                var pop = await Addressables.InstantiateAsync("Popup/PopupProgress.prefab").WithCancellation(token);
+                pop.transform.SetParent(Program.instance.ui_.popup, false);
+                popupProgress = pop.GetComponent<UI.Popup.PopupProgress>();
+                popupProgress.args = new List<string> { InterString.Get("卡图保存中") };
+                popupProgress.cancelAction = StopSaving;
+                popupProgress.text.text = string.Empty;
+                popupProgress.progressBar.value = 0f;
+                popupProgress.Show();
+                await UniTask.WaitForSeconds(popupProgress.transitionTime, cancellationToken : token);
 
-                popupProgress.text.text = i + Program.STRING_SLASH + cards.Count + Program.STRING_LINE_BREAK + InterString.Get("错误：") + errorCount;
-                popupProgress.progressBar.value = (float)i / cards.Count;
-                if (cards.Count <= 100)
-                    await UniTask.Yield(cancellationToken : token);
+                if (File.Exists(errorLogPath))
+                    File.Delete(errorLogPath);
+
+                for (int i = 0; i < cards.Count; i++)
+                {
+                    token.ThrowIfCancellationRequested();
+
+                    var result = await SaveCardAsync(cards[i], token);
+                    if (!result)
+                    {
+                        errorCount++;
+                        errorLog += cards[i].ToString() + Program.STRING_LINE_BREAK;
+                    }
+
+                    popupProgress.text.text = (i + 1) + Program.STRING_SLASH + cards.Count + Program.STRING_LINE_BREAK + InterString.Get("错误：") + errorCount;
+                    popupProgress.progressBar.value = cards.Count == 0 ? 1f : (float)(i + 1) / cards.Count;
+                    if ((i + 1) % 8 == 0 || i == cards.Count - 1)
+                        await UniTask.Yield(PlayerLoopTiming.Update, token);
+                }
             }
-            popupProgress.Hide();
-            if (errorCount > 0)
-                File.WriteAllText(errorLogPath, errorLog);
+            catch (OperationCanceledException) when (token.IsCancellationRequested)
+            {
+            }
+            finally
+            {
+                popupProgress?.Hide();
+                if (!string.IsNullOrEmpty(errorLog))
+                    File.WriteAllText(errorLogPath, errorLog);
+                if (cts != null && cts.Token == token)
+                {
+                    cts.Dispose();
+                    cts = null;
+                }
+            }
             //Debug.Log($"Time Used: {Time.time - time}");
         }
 
         private async UniTask<bool> SaveCardAsync(int code, CancellationToken token)
         {
+            token.ThrowIfCancellationRequested();
+
             var format = Settings.Data.SavedCardFormat;
             if (format != Program.EXPANSION_PNG)
                 format = Program.EXPANSION_JPG;
             if (File.Exists(Program.PATH_CARD_PIC + code + format))
                 return true;
 
-            var tex = await CardImageLoader.LoadCardAsync(code, false, token, true);
-            if (!SaveCardPicture(code, (Texture2D)tex)
-                || !CardImageLoader.lastCardFoundArt
-                || !CardImageLoader.lastCardRenderSucceed)
+            Texture2D tex = null;
+            try
+            {
+                tex = await CardImageLoader.LoadCardAsync(code, false, token, true) as Texture2D;
+                if (tex == null)
+                    return false;
+
+                if (!SaveCardPicture(code, tex)
+                    || !CardImageLoader.lastCardFoundArt
+                    || !CardImageLoader.lastCardRenderSucceed)
+                    return false;
+                return true;
+            }
+            catch (OperationCanceledException) when (token.IsCancellationRequested)
+            {
+                throw;
+            }
+            catch
+            {
                 return false;
-            return true;
+            }
+            finally
+            {
+                var unknownCard = TextureManager.container != null ? TextureManager.container.unknownCard.texture : null;
+                if (tex != null && tex != unknownCard)
+                    CardImageLoader.ReleaseCard(code);
+            }
         }
 
         private void StopSaving()
         {
             cts?.Cancel();
             cts?.Dispose();
+            cts = null;
             if (!string.IsNullOrEmpty(errorLog))
                 File.WriteAllText(Program.PATH_CARD_PIC + "MissingAndFailedCards.txt", errorLog);
         }
