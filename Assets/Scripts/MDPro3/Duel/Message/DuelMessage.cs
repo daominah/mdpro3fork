@@ -509,7 +509,8 @@ namespace MDPro3.Duel
             /*var lenth = */reader.ReadInt16();
             var buffer = reader.ReadToEnd();
             var text = Encoding.UTF8.GetString(buffer, 0, buffer.Length);
-            MessageManager.Cast(text);
+            if (OcgCore.ShouldShowSystemMessages())
+                MessageManager.Cast(text);
 
             return UniTask.CompletedTask;
         }
