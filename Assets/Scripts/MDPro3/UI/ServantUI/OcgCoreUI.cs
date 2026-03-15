@@ -621,6 +621,55 @@ namespace MDPro3.UI.ServantUI
         }
 
         private bool bgDetailShowing;
+        public void RefreshBgDetail()
+        {
+            var core = Program.instance.ocgcore;
+            var info = core?.messageDispatcher?.duel?.duelBGManager?.fieldSummonRightInfo;
+            if (info == null)
+                return;
+
+            var summonInfoManager = info.GetComponent<ElementObjectManager>();
+            if (summonInfoManager == null)
+                return;
+
+            var nearManager = summonInfoManager.GetElement<ElementObjectManager>("RootNear");
+            var farManager = summonInfoManager.GetElement<ElementObjectManager>("RootFar");
+            nearManager.GetElement<TextMeshPro>("TextSummon").text = mySummonCount.ToString();
+            nearManager.GetElement<TextMeshPro>("TextSpSummon").text = mySpSummonCount.ToString();
+            farManager.GetElement<TextMeshPro>("TextSummon").text = opSummonCount.ToString();
+            farManager.GetElement<TextMeshPro>("TextSpSummon").text = opSpSummonCount.ToString();
+
+            nearManager.GetElement<TextMeshPro>("TextTotalAtk").text = core.GetAllAtk(true).ToString();
+            farManager.GetElement<TextMeshPro>("TextTotalAtk").text = core.GetAllAtk(false).ToString();
+
+            summonInfoManager.GetElement<TextMeshPro>("GraveNear").text = core.GetLocationCardCount(CardLocation.Grave, 0).ToString();
+            summonInfoManager.GetElement<TextMeshPro>("GraveFar").text = core.GetLocationCardCount(CardLocation.Grave, 1).ToString();
+            summonInfoManager.GetElement<TextMeshPro>("ExcludeNear").text = core.GetLocationCardCount(CardLocation.Removed, 0).ToString();
+            summonInfoManager.GetElement<TextMeshPro>("ExcludeFar").text = core.GetLocationCardCount(CardLocation.Removed, 1).ToString();
+            summonInfoManager.GetElement<TextMeshPro>("DeckNear").text = core.GetLocationCardCount(CardLocation.Deck, 0).ToString();
+            summonInfoManager.GetElement<TextMeshPro>("DeckFar").text = core.GetLocationCardCount(CardLocation.Deck, 1).ToString();
+            summonInfoManager.GetElement<TextMeshPro>("ExtraNear").text = core.GetLocationCardCount(CardLocation.Extra, 0).ToString();
+            summonInfoManager.GetElement<TextMeshPro>("ExtraFar").text = core.GetLocationCardCount(CardLocation.Extra, 1).ToString();
+            summonInfoManager.GetElement<TextMeshPro>("HandNear").text = core.GetLocationCardCount(CardLocation.Hand, 0).ToString();
+            summonInfoManager.GetElement<TextMeshPro>("HandFar").text = core.GetLocationCardCount(CardLocation.Hand, 1).ToString();
+        }
+
+        public void ResetBgDetailState()
+        {
+            var wasShowing = bgDetailShowing;
+            bgDetailShowing = false;
+            foreach (var card in cards)
+                card.HideHiddenLabel();
+
+            var info = Program.instance.ocgcore?.messageDispatcher?.duel?.duelBGManager?.fieldSummonRightInfo;
+            if (info != null)
+            {
+                if (wasShowing || info.activeSelf)
+                    CameraManager.DuelOverlay3DMinus();
+                info.SetActive(false);
+            }
+        }
+
         public void SwitchBgDetail(bool show)
         {
             if (show)
@@ -631,7 +680,6 @@ namespace MDPro3.UI.ServantUI
 
         private void ShowBgDetail()
         {
-            var core = Program.instance.ocgcore;
             var info = Program.instance.ocgcore.messageDispatcher.duel.duelBGManager.fieldSummonRightInfo;
 
             if (bgDetailShowing)
@@ -644,29 +692,7 @@ namespace MDPro3.UI.ServantUI
             {
                 CameraManager.DuelOverlay3DPlus();
                 info.SetActive(true);
-
-                var summonInfoManager = info.GetComponent<ElementObjectManager>();
-                var nearManager = summonInfoManager.GetElement<ElementObjectManager>("RootNear");
-                var farManager = summonInfoManager.GetElement<ElementObjectManager>("RootFar");
-                nearManager.GetElement<TextMeshPro>("TextSummon").text = mySummonCount.ToString();
-
-                nearManager.GetElement<TextMeshPro>("TextSpSummon").text = mySpSummonCount.ToString();
-                farManager.GetElement<TextMeshPro>("TextSummon").text = opSummonCount.ToString();
-                farManager.GetElement<TextMeshPro>("TextSpSummon").text = opSpSummonCount.ToString();
-
-                nearManager.GetElement<TextMeshPro>("TextTotalAtk").text = core.GetAllAtk(true).ToString();
-                farManager.GetElement<TextMeshPro>("TextTotalAtk").text = core.GetAllAtk(false).ToString();
-
-                summonInfoManager.GetElement<TextMeshPro>("GraveNear").text = core.GetLocationCardCount(CardLocation.Grave, 0).ToString();
-                summonInfoManager.GetElement<TextMeshPro>("GraveFar").text = core.GetLocationCardCount(CardLocation.Grave, 1).ToString();
-                summonInfoManager.GetElement<TextMeshPro>("ExcludeNear").text = core.GetLocationCardCount(CardLocation.Removed, 0).ToString();
-                summonInfoManager.GetElement<TextMeshPro>("ExcludeFar").text = core.GetLocationCardCount(CardLocation.Removed, 1).ToString();
-                summonInfoManager.GetElement<TextMeshPro>("DeckNear").text = core.GetLocationCardCount(CardLocation.Deck, 0).ToString();
-                summonInfoManager.GetElement<TextMeshPro>("DeckFar").text = core.GetLocationCardCount(CardLocation.Deck, 1).ToString();
-                summonInfoManager.GetElement<TextMeshPro>("ExtraNear").text = core.GetLocationCardCount(CardLocation.Extra, 0).ToString();
-                summonInfoManager.GetElement<TextMeshPro>("ExtraFar").text = core.GetLocationCardCount(CardLocation.Extra, 1).ToString();
-                summonInfoManager.GetElement<TextMeshPro>("HandNear").text = core.GetLocationCardCount(CardLocation.Hand, 0).ToString();
-                summonInfoManager.GetElement<TextMeshPro>("HandFar").text = core.GetLocationCardCount(CardLocation.Hand, 1).ToString();
+                RefreshBgDetail();
             }
         }
 
