@@ -156,6 +156,16 @@ namespace MDPro3.Duel
             return player;
         }
 
+        private static VoicesData GetVoiceSet(bool isHero)
+        {
+            return isHero ? heroVoices : rivalVoices;
+        }
+
+        private int GetLeadingState(bool isHero)
+        {
+            return isHero ? LeadingStateOfHero() : LeadingStateOfRival();
+        }
+
         #endregion
 
         #region Message Process
@@ -258,8 +268,8 @@ namespace MDPro3.Duel
             if (turns == 1)
                 return UniTask.CompletedTask;
 
-            var targetData = myTurn ? heroVoices : rivalVoices;
-            var leadingState = myTurn ? LeadingStateOfHero() : LeadingStateOfRival();
+            var targetData = GetVoiceSet(myTurn);
+            var leadingState = GetLeadingState(myTurn);
 
             var data = new VoiceData();
             data.name = GetVoiceBySituation(targetData.TurnStart, leadingState);
@@ -277,13 +287,13 @@ namespace MDPro3.Duel
             if(duelPhase != DuelPhase.BattleStart && duelPhase != DuelPhase.End)
                 return UniTask.CompletedTask;
 
-            var targetData = myTurn ? heroVoices : rivalVoices;
+            var targetData = GetVoiceSet(myTurn);
             var data = new VoiceData();
             if(duelPhase == DuelPhase.BattleStart)
                 data.name = Tools.GetRandomDictionaryElement(targetData.BattleStart.rawKvp).Value.shortName;
             else if(duelPhase == DuelPhase.End)
             {
-                var leadingState = myTurn ? LeadingStateOfHero() : LeadingStateOfRival();
+                var leadingState = GetLeadingState(myTurn);
                 data.name = GetVoiceBySituation(targetData.TurnEnd, leadingState);
             }
             data.num = GetVoiceNum(targetData, data.name);
@@ -417,9 +427,9 @@ namespace MDPro3.Duel
                 category = (int)Category.Summon;
                 subCategory = (int)SummonSub.Normal;
 
-                isMe = from.controller == 0;
-                var targetDataT = isMe ? heroVoices : rivalVoices;
-                var data = GetVoiceByCard(isMe ? heroVoices : rivalVoices, targetDataT.MainMonsterSummon, code, 0, isMe);
+                isMe = from.InMyControl();
+                var targetDataT = GetVoiceSet(isMe);
+                var data = GetVoiceByCard(targetDataT, targetDataT.MainMonsterSummon, code, 0, isMe);
                 if (data.name != string.Empty)
                 {
                     voiceData.Add(data);
@@ -465,16 +475,16 @@ namespace MDPro3.Duel
                     isMe = from.InMyControl();
                 }
 
-                var targetDataT = isMe ? heroVoices : rivalVoices;
+                var targetDataT = GetVoiceSet(isMe);
 
                 if (subCategory != (int)SummonSub.Special)
                 {
-                    var data = GetVoiceByCard(isMe ? heroVoices : rivalVoices, targetDataT.BeforeMainSummon, code, 0, isMe);
+                    var data = GetVoiceByCard(targetDataT, targetDataT.BeforeMainSummon, code, 0, isMe);
                     if (data.name != string.Empty)
                         voiceData.Add(data);
                 }
 
-                var dataT = GetVoiceByCard(isMe ? heroVoices : rivalVoices, targetDataT.MainMonsterSummon, code, 0, isMe);
+                var dataT = GetVoiceByCard(targetDataT, targetDataT.MainMonsterSummon, code, 0, isMe);
                 if (dataT.name != string.Empty)
                 {
                     if (subCategory != (int)SummonSub.Special && voiceData.Count == 0)
@@ -515,7 +525,7 @@ namespace MDPro3.Duel
                 code = nextPack.Data.reader.ReadInt32();
                 var gps = nextPack.Data.reader.ReadGPS();
 
-                var targetDataT = gps.InMyControl() ? heroVoices : rivalVoices;
+                var targetDataT = GetVoiceSet(gps.InMyControl());
                 var data = GetVoiceByCard(targetDataT, targetDataT.MainMonsterEffect, code, 0, gps.InMyControl());
                 if (data.name != string.Empty)
                 {
@@ -535,8 +545,8 @@ namespace MDPro3.Duel
                     isMe = from.InMyControl();
                 }
 
-                if (NeedBeforeCardEffect(from.InMyControl()))
-                    voiceData.Add(GetBeforeCardEffectData(isMe ? heroVoices : rivalVoices, from.InMyControl()));
+                if (NeedBeforeCardEffect(isMe))
+                    voiceData.Add(GetBeforeCardEffectData(GetVoiceSet(isMe), isMe));
 
                 var simple = SimpleVoiceData.GetCardEffectSubCategory(nextPack.Data.reader, fromHand);
                 category = simple.category;
@@ -546,7 +556,7 @@ namespace MDPro3.Duel
                     fromHand = false;
             }
 
-            var targetData = isMe ? heroVoices : rivalVoices;
+            var targetData = GetVoiceSet(isMe);
             if(category == 0)
                 return UniTask.CompletedTask;
             if (fromHand)
@@ -554,7 +564,7 @@ namespace MDPro3.Duel
                 var data = new VoiceData();
                 data.name = GetVoiceBySubCategory(targetData.CardEffect, (int)CardEffectSub.FromHand, (int)CardEffectSub.FromHand, 0);
                 data.num = GetVoiceNum(targetData, data.name);
-                data.isHero = from.controller == 0;
+                data.isHero = isMe;
                 data.wait = true;
                 data.delay = 0f;
                 voiceData.Add(data);
@@ -562,7 +572,7 @@ namespace MDPro3.Duel
             var data2 = new VoiceData();
             data2.name = GetVoiceBySubCategory(targetData.GetCategoryEntry((Category)category), subCategory, subInCase, patternIndex);
             data2.num = GetVoiceNum(targetData, data2.name);
-            data2.isHero = from.controller == 0;
+            data2.isHero = isMe;
             data2.wait = true;
             data2.delay = 0f;
             voiceData.Add(data2);
@@ -633,13 +643,14 @@ namespace MDPro3.Duel
                 return UniTask.CompletedTask;
 
             var player = LocalPlayer(reader.ReadByte());
-            var targetData = player == 0 ? heroVoices : rivalVoices;
-            var leadingState = player == 0 ? LeadingStateOfHero() : LeadingStateOfRival();
+            var isHero = player == 0;
+            var targetData = GetVoiceSet(isHero);
+            var leadingState = GetLeadingState(isHero);
 
             var data = new VoiceData();
             data.name = GetVoiceBySituation(targetData.Draw, leadingState);
             data.num = GetVoiceNum(targetData, data.name);
-            data.isHero = player == 0;
+            data.isHero = isHero;
             data.wait = true;
             data.delay = 0f;
             voiceData.Add(data);
@@ -651,17 +662,18 @@ namespace MDPro3.Duel
         {
             var player = LocalPlayer(reader.ReadByte());
             var value = reader.ReadInt32();
-            var targetData = player == 0 ? heroVoices : rivalVoices;
-            var cacheLP = player == 0 ? life0 : life1;
+            var isHero = player == 0;
+            var targetData = GetVoiceSet(isHero);
+            var cacheLP = isHero ? life0 : life1;
 
-            if (player == 0)
+            if (isHero)
                 life0 -= value;
             else
                 life1 -= value;
 
             if (value >= cacheLP)
             {
-                voiceData.Add(GetFinishDamageVoiceData(targetData, player == 0));
+                voiceData.Add(GetFinishDamageVoiceData(targetData, isHero));
                 return UniTask.CompletedTask;
             }
 
@@ -671,7 +683,7 @@ namespace MDPro3.Duel
             else
                 data.name = Tools.GetRandomDictionaryElement(targetData.Damage.rawKvp).Value.shortName;
             data.num = GetVoiceNum(targetData, data.name);
-            data.isHero = player == 0;
+            data.isHero = isHero;
             data.wait = false;
             data.delay = 0f;
             voiceData.Add(data);
@@ -683,23 +695,24 @@ namespace MDPro3.Duel
         {
             var player = LocalPlayer(reader.ReadByte());
             var value = reader.ReadInt32();
-            var targetData = player == 0 ? heroVoices : rivalVoices;
-            var cacheLP = player == 0 ? life0 : life1;
-            if (player == 0)
+            var isHero = player == 0;
+            var targetData = GetVoiceSet(isHero);
+            var cacheLP = isHero ? life0 : life1;
+            if (isHero)
                 life0 -= value;
             else
                 life1 -= value;
 
             if (value >= cacheLP)
             {
-                voiceData.Add(GetFinishDamageVoiceData(targetData, player == 0));
+                voiceData.Add(GetFinishDamageVoiceData(targetData, isHero));
                 return UniTask.CompletedTask;
             }
 
             var data = new VoiceData();
             data.name = Tools.GetRandomDictionaryElement(targetData.CostDamage.rawKvp).Value.shortName;
             data.num = GetVoiceNum(targetData, data.name);
-            data.isHero = player == 0;
+            data.isHero = isHero;
             data.wait = false;
             data.delay = 0f;
             voiceData.Add(data);
@@ -723,17 +736,18 @@ namespace MDPro3.Duel
         {
             var player = LocalPlayer(reader.ReadByte());
             var value = reader.ReadInt32();
-            var targetData = player == 0 ? heroVoices : rivalVoices;
+            var isHero = player == 0;
+            var targetData = GetVoiceSet(isHero);
 
-            var diff = (player == 0 ? life0 : life1) - value;
-            if (player == 0)
+            var diff = (isHero ? life0 : life1) - value;
+            if (isHero)
                 life0 = value;
             else
                 life1 = value;
 
             if (value == 0)
             {
-                voiceData.Add(GetFinishDamageVoiceData(targetData, player == 0));
+                voiceData.Add(GetFinishDamageVoiceData(targetData, isHero));
                 return UniTask.CompletedTask;
             }
 
@@ -746,7 +760,7 @@ namespace MDPro3.Duel
             else
                 data.name = Tools.GetRandomDictionaryElement(targetData.Damage.rawKvp).Value.shortName;
             data.num = GetVoiceNum(targetData, data.name);
-            data.isHero = player == 0;
+            data.isHero = isHero;
             data.wait = false;
             data.delay = 0f;
             voiceData.Add(data);
@@ -780,12 +794,13 @@ namespace MDPro3.Duel
             }
 
             bool finalBlow = value >= (from.InMyControl() ? life1 : life0);
-            var targetData = from.InMyControl() ? heroVoices : rivalVoices;
+            var isHero = from.InMyControl();
+            var targetData = GetVoiceSet(isHero);
 
             var data = new VoiceData();
             data.name = Tools.GetRandomDictionaryElement(finalBlow ? targetData.BeforeAttackFinish.rawKvp : targetData.BeforeAttackNormal.rawKvp).Value.shortName;
             data.num = GetVoiceNum(targetData, data.name);
-            data.isHero = from.controller == 0;
+            data.isHero = isHero;
             data.wait = true;
             data.delay = 0f;
             voiceData.Add(data);

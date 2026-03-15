@@ -2,9 +2,11 @@ using MDPro3.Net;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 using UnityEngine.EventSystems;
 using MDPro3.Servant;
 using MDPro3.UI.ServantUI;
@@ -62,14 +64,33 @@ namespace MDPro3.UI
         protected override async UniTask RefreshAsync()
         {
             refreshed = false;
+            var cancellationToken = cts?.Token ?? destroyCancellationToken;
+            var face0 = Manager.GetElement<RawImage>("Face0");
+            var face1 = Manager.GetElement<RawImage>("Face1");
 
-            Manager.GetElement<RawImage>("Face0").texture = Appearance.defaultFace0.texture;
-            Manager.GetElement<RawImage>("Face1").texture = Appearance.defaultFace1.texture;
+            if (face0 != null)
+                face0.texture = Appearance.defaultFace0.texture;
+            if (face1 != null)
+                face1.texture = Appearance.defaultFace1.texture;
 
-            Manager.GetElement<RawImage>("Face0").texture = await MyCard.GetAvatarAsync(player0Name);
-            Manager.GetElement<RawImage>("Face1").texture = await MyCard.GetAvatarAsync(player1Name);
+            try
+            {
+                var avatar0 = await MyCard.GetAvatarAsync(player0Name, cancellationToken);
+                if (!cancellationToken.IsCancellationRequested && face0 != null)
+                    face0.texture = avatar0;
 
-            refreshed = true;
+                var avatar1 = await MyCard.GetAvatarAsync(player1Name, cancellationToken);
+                if (!cancellationToken.IsCancellationRequested && face1 != null)
+                    face1.texture = avatar1;
+
+                refreshed = true;
+            }
+            catch (OperationCanceledException)
+            {
+            }
+            catch (MissingReferenceException)
+            {
+            }
         }
 
         protected override void CallToggleOnEvent()

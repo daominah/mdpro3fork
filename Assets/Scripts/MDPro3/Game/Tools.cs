@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -224,15 +225,18 @@ namespace MDPro3
 
         #region Online
 
-        public static async Task<Texture2D> DownloadImageAsync(string url)
+        public static async Task<Texture2D> DownloadImageAsync(string url, CancellationToken cancellationToken = default)
         {
             using var request = UnityWebRequestTexture.GetTexture(url);
             request.SetRequestHeader("User-Agent", "MDPro3/" + Application.version + " (" + System.Environment.OSVersion.ToString() + "); Unity/" + Application.unityVersion);
 
             var send = request.SendWebRequest();
-            await TaskUtility.WaitUntil(() => send.isDone);
+            while (!send.isDone)
+                await TaskUtility.WaitOneFrame(cancellationToken);
             if (!Application.isPlaying)
                 return null;
+
+            cancellationToken.ThrowIfCancellationRequested();
 
             if (request.result == UnityWebRequest.Result.Success)
             {

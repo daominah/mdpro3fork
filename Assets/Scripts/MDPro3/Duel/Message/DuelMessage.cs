@@ -84,6 +84,7 @@ namespace MDPro3.Duel
             opActivated.Clear();
             Program.instance.ocgcore.GetUI<OcgCoreUI>().CardDescription.Hide();
             Program.instance.ocgcore.GetUI<OcgCoreUI>().CardList.Hide();
+            Program.instance.ocgcore.GetUI<OcgCoreUI>().ResetBgDetailState();
             surrendered = false;
             tagSurrendered = false;
             deckReserved = false;
@@ -818,6 +819,7 @@ namespace MDPro3.Duel
                 mySummonCount++;
             else
                 opSummonCount++;
+            Core.GetUI<OcgCoreUI>().RefreshBgDetail();
 
 
             var se = "SE_LAND_NORMAL";
@@ -910,6 +912,7 @@ namespace MDPro3.Duel
                 mySpSummonCount++;
             else
                 opSpSummonCount++;
+            Core.GetUI<OcgCoreUI>().RefreshBgDetail();
 
             if (card.GetData().HasType(CardType.Token))
                 goto TokenPass;
@@ -1968,6 +1971,7 @@ namespace MDPro3.Duel
             mySpSummonCount = 0;
             opSummonCount = 0;
             opSpSummonCount = 0;
+            Core.GetUI<OcgCoreUI>().RefreshBgDetail();
             turns++;
             myTurn = isFirst ? (turns % 2 != 0) : (turns % 2 == 0);
             duelBGManager.OnNewTurn(myTurn, turns);

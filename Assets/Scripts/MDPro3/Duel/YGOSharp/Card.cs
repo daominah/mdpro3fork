@@ -262,7 +262,7 @@ namespace MDPro3.Duel.YGOSharp
             return normalized == UNKNOWN_BATTLE_VALUE ? "?" : normalized.ToString();
         }
 
-        private static readonly string PendulumSeparatorLine = new string('─', 14);
+        internal static readonly string PendulumSeparatorLine = new string('─', 14);
 
         public string GetDescription(bool withSetName = false)
         {
@@ -311,7 +311,7 @@ namespace MDPro3.Duel.YGOSharp
                 + "\n" + monsterHeader + "\n" + (monsterText ?? string.Empty);
         }
 
-        private static string NormalizeBracketLabel(string label)
+        internal static string NormalizeBracketLabel(string label)
         {
             if (string.IsNullOrEmpty(label))
                 return string.Empty;
