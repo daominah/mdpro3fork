@@ -144,7 +144,7 @@ namespace MDPro3.Duel
             var tempStrings = new List<string>();
             foreach (var e in entry.rawKvp)
                 if (e.Value.situations != null && e.Value.situations.Length > 0)
-                    if (Array.IndexOf(e.Value.situations, situation) > 0)
+                    if (Array.IndexOf(e.Value.situations, situation) >= 0)
                         tempStrings.Add(e.Value.shortName);
             if (tempStrings.Count > 0)
                 returnValue = tempStrings[UnityEngine.Random.Range(0, tempStrings.Count)];
