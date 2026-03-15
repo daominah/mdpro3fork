@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -113,8 +114,10 @@ namespace MDPro3.Net
             }
         }
 
-        public static async UniTask<Texture2D> GetAvatarAsync(string userName)
+        public static async UniTask<Texture2D> GetAvatarAsync(string userName, CancellationToken cancellationToken = default)
         {
+            cancellationToken.ThrowIfCancellationRequested();
+
             if(!Directory.Exists(avatarSavePath))
                 Directory.CreateDirectory(avatarSavePath);
 
@@ -137,6 +140,7 @@ namespace MDPro3.Net
                         return cachedAvatars[avatarName];
 
                 var pic = await TextureManager.LoadPicFromFileAsync(fullPath);
+                cancellationToken.ThrowIfCancellationRequested();
 
                 lock (cachedAvatars)
                     if (!cachedAvatars.ContainsKey(avatarName))
@@ -148,7 +152,7 @@ namespace MDPro3.Net
 
             using(var request = UnityWebRequest.Get(userUrl.Replace("{username}", userName)))
             {
-                await request.SendWebRequest();
+                await request.SendWebRequest().WithCancellation(cancellationToken);
                 if (request.result == UnityWebRequest.Result.Success)
                 {
                     avatarAddress = JsonUtility.FromJson<MyCardRoomUserInfo>(request.downloadHandler.text).user.avatar;
@@ -160,8 +164,11 @@ namespace MDPro3.Net
                 }
             }
 
-            var requestAvatar = Tools.DownloadImageAsync(avatarAddress);
+            cancellationToken.ThrowIfCancellationRequested();
+
+            var requestAvatar = Tools.DownloadImageAsync(avatarAddress, cancellationToken);
             await requestAvatar;
+            cancellationToken.ThrowIfCancellationRequested();
             Texture2D downloadImage = requestAvatar.Result;
             if (downloadImage == null)
                 return null;
