@@ -22,6 +22,7 @@ namespace MDPro3
         public static PlayerInput PlayerInput;
         public static string KeyboardSchemeName = "Keyboard&Mouse";
         public static string GamepadSchemeName = "Gamepad";
+        public static string TouchSchemeName = "Touch";
         public static bool NextSelectionIsAxis;
         public static GameObject HoverObject;
 
@@ -124,6 +125,7 @@ namespace MDPro3
         private float downPressingTime;
         private const float moveRepeatDelay = 0.4f;
         private const float moveRepeatRate = 0.2f;
+        private const float moveInputDeadzone = 0.35f;
 
         private void Awake()
         {
@@ -157,17 +159,25 @@ namespace MDPro3
 
         private void Update()
         {
-            MoveInput = moveAction.ReadValue<Vector2>();
-            MousePos = mouseAction.ReadValue<Vector2>();
+            var hasTouchInput = TryGetTouchState(out var touchPosition, out var touchPressed, out var touchPressing, out var touchReleased);
+            if (hasTouchInput)
+            {
+                EnsureTouchControlScheme();
+                if (Cursor.lockState == CursorLockMode.Locked)
+                    ShowCursorForTouch();
+            }
+
+            MoveInput = ApplyMoveDeadzone(moveAction.ReadValue<Vector2>());
+            MousePos = hasTouchInput ? touchPosition : mouseAction.ReadValue<Vector2>();
             LeftScrollWheel = leftScrollAction.ReadValue<Vector2>();
             RightScrollWheel = rightScrollAction.ReadValue<Vector2>();
 
-            if (MousePos != lastMousePos)
+            if (MousePos != lastMousePos || touchPressed)
             {
                 MouseMovedEvent();
             }
 
-            if(MoveInput != Vector2.zero && !InputFieldActivating())
+            if (MoveInput != Vector2.zero && !hasTouchInput && !InputFieldActivating())
             {
                 if (Cursor.lockState == CursorLockMode.None)
                 {
@@ -193,13 +203,13 @@ namespace MDPro3
 
             #region Mouse
 
-            MouseLeftDown = leftClickAction.WasPressedThisFrame();
+            MouseLeftDown = leftClickAction.WasPressedThisFrame() || touchPressed;
             MouseRightDown = rightClickAction.WasPressedThisFrame();
             MouseMiddleDown = middleClickAction.WasPressedThisFrame();
-            MouseLeftPressing = leftClickAction.IsPressed();
+            MouseLeftPressing = leftClickAction.IsPressed() || touchPressing;
             MouseMiddlePressing = middleClickAction.IsPressed();
             MouseRightPressing = rightClickAction.IsPressed();
-            MouseLeftUp = leftClickAction.WasReleasedThisFrame();
+            MouseLeftUp = leftClickAction.WasReleasedThisFrame() || touchReleased;
             MouseRightUp = rightClickAction.WasReleasedThisFrame();
             MouseMiddleUp = middleClickAction.WasReleasedThisFrame();
 
@@ -334,9 +344,70 @@ namespace MDPro3
 
         }
 
+        private static Vector2 ApplyMoveDeadzone(Vector2 input)
+        {
+            input.x = ApplyMoveDeadzone(input.x);
+            input.y = ApplyMoveDeadzone(input.y);
+            return input;
+        }
+
+        private static float ApplyMoveDeadzone(float input)
+        {
+            if (Mathf.Abs(input) < moveInputDeadzone)
+                return 0f;
+
+            return Mathf.Sign(input);
+        }
+
+        private static bool TryGetTouchState(out Vector2 touchPosition, out bool touchPressed, out bool touchPressing, out bool touchReleased)
+        {
+            touchPosition = default;
+            touchPressed = false;
+            touchPressing = false;
+            touchReleased = false;
+
+            var touchscreen = Touchscreen.current;
+            if (touchscreen == null)
+                return false;
+
+            var touch = touchscreen.primaryTouch;
+            touchPressed = touch.press.wasPressedThisFrame;
+            touchPressing = touch.press.isPressed;
+            touchReleased = touch.press.wasReleasedThisFrame;
+            if (!touchPressed && !touchPressing && !touchReleased)
+                return false;
+
+            touchPosition = touch.position.ReadValue();
+            return true;
+        }
+
+        private static bool TouchInputActive()
+        {
+            var touchscreen = Touchscreen.current;
+            if (touchscreen == null)
+                return false;
+
+            var touch = touchscreen.primaryTouch;
+            return touch.press.wasPressedThisFrame || touch.press.isPressed || touch.press.wasReleasedThisFrame;
+        }
+
+        private void EnsureTouchControlScheme()
+        {
+            if (PlayerInput == null || Touchscreen.current == null || PlayerInput.currentControlScheme == TouchSchemeName)
+                return;
+
+            try
+            {
+                PlayerInput.SwitchCurrentControlScheme(TouchSchemeName, Touchscreen.current);
+            }
+            catch (InvalidOperationException)
+            {
+            }
+        }
+
         private void MouseMovedEvent()
         {
-            if(PlayerInput.currentControlScheme != GamepadSchemeName)
+            if (PlayerInput.currentControlScheme != GamepadSchemeName || TouchInputActive())
                 OnMouseMovedAction?.Invoke();
         }
 
@@ -365,6 +436,8 @@ namespace MDPro3
 
         public static bool NeedDefaultSelect()
         {
+            if (TouchInputActive())
+                return false;
             if (PlayerInput.currentControlScheme == GamepadSchemeName)
                 return true;
             else if (Cursor.lockState == CursorLockMode.Locked)
@@ -449,6 +522,15 @@ namespace MDPro3
                 ignoreNextCursorMove = true;
             }
         }
+
+        private void ShowCursorForTouch()
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            hasCursorRestorePos = false;
+            ignoreNextCursorMove = false;
+        }
+
         private void HideCursor()
         {
             cursorRestorePos = MousePos;
