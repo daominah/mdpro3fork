@@ -1607,7 +1607,7 @@ namespace MDPro3
             if (model == null)
                 return;
 
-            var mode = CurrentReplayGodView && p.InLocation(CardLocation.Hand) && !p.InMyControl()
+            var mode = p.InLocation(CardLocation.Hand) && !p.InMyControl()
                 ? ShadowCastingMode.Off
                 : ShadowCastingMode.On;
             var cardModel = manager.GetElement<Transform>("CardModel");
