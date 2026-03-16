@@ -383,5 +383,23 @@ namespace MDPro3
 
         #endregion
 
+        #region Text
+
+        public static string RemoveFirstLines(string text, int linesToRemove)
+        {
+            if (string.IsNullOrEmpty(text) || linesToRemove <= 0)
+                return text;
+
+            string[] lines = text.Split(new[] { "\r\n", "\n" }, StringSplitOptions.None);
+
+            if (lines.Length <= linesToRemove)
+                return text;
+
+            var remainingLines = lines.Skip(linesToRemove).ToArray();
+            string newLine = text.Contains("\r\n") ? "\r\n" : "\n";
+            return string.Join(newLine, remainingLines);
+        }
+
+        #endregion
     }
 }

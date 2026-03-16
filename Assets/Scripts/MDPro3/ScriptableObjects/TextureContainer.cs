@@ -958,14 +958,14 @@ namespace MDPro3
                     return rd ?
                         rd_Loading_PendulumSynchro.texture
                         : cardFramePendulumSynchro.texture;
-                else if (data.HasType(CardType.Fusion))
-                    return rd ?
-                        rd_Loading_PendulumFusion.texture
-                        : cardFramePendulumFusion.texture;
                 else if (data.HasType(CardType.Ritual))
                     return rd ?
                         rd_Loading_PendulumRitual.texture
                         : cardFramePendulumRitual.texture;
+                else if (data.HasType(CardType.Fusion))
+                    return rd ?
+                        rd_Loading_PendulumFusion.texture
+                        : cardFramePendulumFusion.texture;
                 else
                     return rd ?
                         rd_Loading_PendulumEffect.texture
@@ -985,14 +985,14 @@ namespace MDPro3
                     return rd ?
                         rd_Loading_Synchro.texture
                         : cardFrameSynchro.texture;
-                else if (data.HasType(CardType.Fusion))
-                    return rd ?
-                        rd_Loading_Fusion.texture
-                        : cardFrameFusion.texture;
                 else if (data.HasType(CardType.Ritual) && data.HasType(CardType.Monster))
                     return rd ?
                         rd_Loading_Ritual.texture
                         : cardFrameRitual.texture;
+                else if (data.HasType(CardType.Fusion))
+                    return rd ?
+                        rd_Loading_Fusion.texture
+                        : cardFrameFusion.texture;
                 else if (data.HasType(CardType.Link))
                     return rd ?
                         rd_Loading_Link.texture
@@ -1065,7 +1065,7 @@ namespace MDPro3
                         return cardFrameEffectOF;
                 }
             }
-            else
+            else // CardStyle.RushDuel
             {
                 if (data.HasType(CardType.Pendulum))
                 {
@@ -1073,10 +1073,10 @@ namespace MDPro3
                         return rd_Frame_PendulumXyz;
                     else if (data.HasType(CardType.Synchro))
                         return rd_Frame_PendulumSynchro;
-                    else if (data.HasType(CardType.Fusion))
-                        return rd_Frame_PendulumFusion;
                     else if (data.HasType(CardType.Ritual))
                         return rd_Frame_PendulumRitual;
+                    else if (data.HasType(CardType.Fusion))
+                        return rd_Frame_PendulumFusion;
                     else if (data.HasType(CardType.Normal))
                         return rd_Frame_PendulumNormal;
                     else
@@ -1096,10 +1096,10 @@ namespace MDPro3
                         return rd_Frame_Xyz;
                     else if (data.HasType(CardType.Synchro))
                         return rd_Frame_Synchro;
+                    else if (data.HasAllTypes(CardType.Fusion, CardType.Ritual))
+                        return rd_Frame_Ritual;
                     else if (data.HasType(CardType.Fusion))
                         return rd_Frame_Fusion;
-                    else if (data.HasType(CardType.Ritual) && data.HasType(CardType.Monster))
-                        return rd_Frame_Ritual;
                     else if (data.HasType(CardType.Token))
                         return rd_Frame_Token;
                     else if (data.HasType(CardType.Normal))

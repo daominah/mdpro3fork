@@ -617,16 +617,14 @@ namespace MDPro3.Utility
 
         private static Texture2D GetCroppingTex(Texture2D texture, int startX, int startY, int width, int height)
         {
-            var returnValue = new Texture2D(width - startX, height - startY);
-            var pix = new Color32[returnValue.width * returnValue.height];
-            var index = 0;
-            for (var y = startY; y < height; y++)
-                for (var x = startX; x < width; x++)
-                    pix[index++] = texture.GetPixel(x, y);
+            int destWidth = width - startX;
+            int destHeight = height - startY;
 
-            returnValue.SetPixels32(pix);
-            returnValue.Apply();
-            return returnValue;
+            var result = new Texture2D(destWidth, destHeight, texture.format, false);
+            Graphics.CopyTexture(texture, 0, 0, startX, startY, destWidth, destHeight,
+                                 result, 0, 0, 0, 0);
+
+            return result;
         }
 
         #endregion

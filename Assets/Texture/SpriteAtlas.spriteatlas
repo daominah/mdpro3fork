@@ -184,6 +184,7 @@ SpriteAtlas:
     - bbbaddb2f52dda243893f854cedf46c4: 21300000
     - 55ff7eb207fa9a24e8e740b4fab3299c: 21300000
     - 98c476c2e9799714d99e0bb5fee52acc: 21300000
+    - 9f9e97c267d35b84db512595c857ffba: 21300000
     - 9438adc285e9a11498484b1e31cbbccc: 21300000
     - 3f3530d278caa714dac3fa1ca2b32382: 21300000
     - 9f17f0d2f554a1e4c81226f6fa5c63bf: 21300000
@@ -320,6 +321,7 @@ SpriteAtlas:
     - 544c8d75b7000c64bbf92d9ff9a78c2e: 21300000
     - af9e91850e3183d48846a52e6f7afee0: 21300000
     - ec6f0285a5f1c5e4bbed8c4bef6f7a40: 21300000
+    - 5b696a850bf3a3443bf0e67396ecc181: 21300000
     - 3d49b095a6296d1469fc27c6a8205d60: 21300000
     - 6d94149591e51734c93b241dd3f542ae: 21300000
     - b2f4f6957098f14459d8dee76a35f8c8: 21300000
@@ -365,6 +367,7 @@ SpriteAtlas:
     - 066065a6b1b767c418d2889597305402: 21300000
     - 3222daa6321be744bb2eda09e234d81c: 21300000
     - 594b2da68531f8748bde385e1c723438: 21300000
+    - 838190b6b8c45334bab89da28a238150: 21300000
     - d026a7b6d9105ad41b502c9b0014f140: 21300000
     - 986037c638106f04082197be94cbd15b: 21300000
     - 10b2ebc6b9aba444191d85f8aa94207b: 21300000
@@ -924,6 +927,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: bbbaddb2f52dda243893f854cedf46c4, type: 3}
   - {fileID: 21300000, guid: 55ff7eb207fa9a24e8e740b4fab3299c, type: 3}
   - {fileID: 21300000, guid: 98c476c2e9799714d99e0bb5fee52acc, type: 3}
+  - {fileID: 21300000, guid: 9f9e97c267d35b84db512595c857ffba, type: 3}
   - {fileID: 21300000, guid: 9438adc285e9a11498484b1e31cbbccc, type: 3}
   - {fileID: 21300000, guid: 3f3530d278caa714dac3fa1ca2b32382, type: 3}
   - {fileID: 21300000, guid: 9f17f0d2f554a1e4c81226f6fa5c63bf, type: 3}
@@ -1060,6 +1064,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 544c8d75b7000c64bbf92d9ff9a78c2e, type: 3}
   - {fileID: 21300000, guid: af9e91850e3183d48846a52e6f7afee0, type: 3}
   - {fileID: 21300000, guid: ec6f0285a5f1c5e4bbed8c4bef6f7a40, type: 3}
+  - {fileID: 21300000, guid: 5b696a850bf3a3443bf0e67396ecc181, type: 3}
   - {fileID: 21300000, guid: 3d49b095a6296d1469fc27c6a8205d60, type: 3}
   - {fileID: 21300000, guid: 6d94149591e51734c93b241dd3f542ae, type: 3}
   - {fileID: 21300000, guid: b2f4f6957098f14459d8dee76a35f8c8, type: 3}
@@ -1105,6 +1110,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 066065a6b1b767c418d2889597305402, type: 3}
   - {fileID: 21300000, guid: 3222daa6321be744bb2eda09e234d81c, type: 3}
   - {fileID: 21300000, guid: 594b2da68531f8748bde385e1c723438, type: 3}
+  - {fileID: 21300000, guid: 838190b6b8c45334bab89da28a238150, type: 3}
   - {fileID: 21300000, guid: d026a7b6d9105ad41b502c9b0014f140, type: 3}
   - {fileID: 21300000, guid: 986037c638106f04082197be94cbd15b, type: 3}
   - {fileID: 21300000, guid: 10b2ebc6b9aba444191d85f8aa94207b, type: 3}
@@ -1663,6 +1669,7 @@ SpriteAtlas:
   - GUI_CommonButtonList_NoLink
   - GUI_CommonButtonToggleM_CheckOn
   - GUI_T_Icon1_Counter_DOUBLE
+  - GUI_Duel_GenericCardList_ViewIcon_Default
   - GUI_CommonItemFrameS_Over
   - GUI_CommonButtonL
   - GUI_T_Icon1_Counter_ACCESS
@@ -1799,6 +1806,7 @@ SpriteAtlas:
   - GUI_CommonWindowS_SubTitle_Base0
   - GUI_CommonButtonToggleS_Select
   - RankBg07
+  - GUI_Duel_CardStats_Base_0
   - GUI_T_Icon1_Counter_SHIKI
   - GUI_Duel_CardSelectionList_DialogChain
   - GUI_T_Icon1_State26
@@ -1844,6 +1852,7 @@ SpriteAtlas:
   - GUI_alpha_Icon_Cardlist6
   - GUI_T_Icon1_Counter_PSYCHO
   - img_rankicon_07_l
+  - GUI_Duel_GenericCardList_ViewIcon_Expand
   - GUI_T_DuelButtonActIcon01_2
   - GUI_CommonDetail_Base_VtrEff
   - GUI_T_DuelButtonActIcon02_1

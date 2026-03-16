@@ -256,33 +256,30 @@ namespace MDPro3
         private const string BIG_SLASH = "／";
         private const string SMALL_SLASH = " / ";
 
-        protected static string TextForRender(string description, bool isPre)
+        protected static string TextForRender(string description, Card data)
         {
             if (string.IsNullOrEmpty(description))
                 return string.Empty;
-            var language = isPre ? Language.GetPrereleaseConfig() : Language.GetCardConfig();
 
-            //if (language == Language.Japanese)
-            //{
-            description = description.Replace("\t\r\n", "\f\f\f");
-            description = description.Replace("\r\n●", "●●●");
-            description = description.Replace("\r", string.Empty);
-            description = description.Replace("\n", string.Empty);
-            description = description.Replace("\f\f\f", Program.STRING_LINE_BREAK);
-            description = description.Replace("●●●", $"{Program.STRING_LINE_BREAK}●");
-            //}
-            //else
-            //{
-            //    description = description
-            //        .Replace("\r\n②", "②")
-            //        .Replace("\r\n③", "③")
-            //        .Replace("\r\n④", "④")
-            //        .Replace("\r\n⑤", "⑤")
-            //        .Replace("\r\n⑥", "⑥")
-            //        .Replace("\r\n⑦", "⑦")
-            //        .Replace("\r\n⑧", "⑧")
-            //        .Replace("\r\n⑨", "⑨");
-            //}
+            if (data.IsRushDuelCard())
+            {
+                int removeLineCount = 1;
+                if (data.HasType(CardType.Maximum))
+                    removeLineCount = 2;
+                description = Tools.RemoveFirstLines(description, removeLineCount);
+            }
+
+            var language = data.isPre ? Language.GetPrereleaseConfig() : Language.GetCardConfig();
+
+            if (!data.IsRushDuelCard())
+            {
+                description = description.Replace("\t\r\n", "\f\f\f");
+                description = description.Replace("\r\n●", "●●●");
+                description = description.Replace("\r", string.Empty);
+                description = description.Replace("\n", string.Empty);
+                description = description.Replace("\f\f\f", Program.STRING_LINE_BREAK);
+                description = description.Replace("●●●", $"{Program.STRING_LINE_BREAK}●");
+            }
 
             if (!Language.UseLatin(language))
                 description = description.Replace(Program.STRING_SLASH, BIG_SLASH);

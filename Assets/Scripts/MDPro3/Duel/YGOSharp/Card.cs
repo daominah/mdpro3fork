@@ -164,9 +164,14 @@ namespace MDPro3.Duel.YGOSharp
             return (Type & (int)type) != 0;
         }
 
-        public bool HasType(CardType type1, CardType type2)
+        public bool HasAnyType(CardType type1, CardType type2)
         {
             return HasType(type1) || HasType(type2);
+        }
+
+        public bool HasAllTypes(CardType type1, CardType type2)
+        {
+            return HasType(type1) && HasType(type2);
         }
 
         public bool HasLinkMarker(CardLinkMarker dir)
@@ -229,6 +234,11 @@ namespace MDPro3.Duel.YGOSharp
         public int GetGenesysPoint()
         {
             return OnlineService.GetGenesysPoint(GetOriginalID());
+        }
+
+        public bool IsRushDuelCard()
+        {
+            return Id >= 120000000 && Id < 130000000;
         }
 
         #endregion
@@ -633,6 +643,18 @@ namespace MDPro3.Duel.YGOSharp
             if (HasType(CardType.Counter))
                 re += "<Sprite=5>";
             return re;
+        }
+
+        public string GetMaximumAttackString()
+        {
+            var returnValue = string.Empty;
+            var lines = Desc.Replace("\r", string.Empty).Split('\n');
+            if (lines.Length < 2)
+                return returnValue;
+            var parts = lines[1].Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            if(parts.Length > 1) 
+                return parts[1];
+            return returnValue;
         }
 
         #endregion

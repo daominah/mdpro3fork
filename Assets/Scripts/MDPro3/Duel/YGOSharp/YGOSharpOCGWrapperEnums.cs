@@ -55,7 +55,11 @@ namespace MDPro3.Duel.YGOSharp
         Xyz = 0x800000,
         Pendulum = 0x1000000,
         SpSummon = 0x2000000,
-        Link = 0x4000000
+        Link = 0x4000000,
+
+        //Rush Duel
+        Maximum = 0x8000,
+        Legend = 0x8
     }
 
     public enum CardAttribute

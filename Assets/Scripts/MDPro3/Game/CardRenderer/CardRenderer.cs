@@ -4,11 +4,10 @@ using MDPro3.Utility;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using System.Text.RegularExpressions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-using UnityEngine.Rendering.Universal;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 using UnityEngine.Video;
 
@@ -27,8 +26,11 @@ namespace MDPro3
         [SerializeField] private RectTransform builder;
         [SerializeField] private Camera renderCamera;
         [SerializeField] private VideoPlayer videoPlayer;
-        [SerializeField] private RawImage renderedCardFrame;
+        [SerializeField] private Material matComposite;
+        private Material matCompositeInstance;
+        private Texture2D texFrame;
         public RenderTexture renderTexture;
+        private ScriptableRenderContext context;
 
         #endregion
 
@@ -239,49 +241,70 @@ namespace MDPro3
 
             renderCamera.Render();
             RenderTexture.active = renderTexture;
-            var onlyFrame = new Texture2D(RenderTexture.active.width, RenderTexture.active.height, TextureFormat.RGBA32, true);
-            onlyFrame.ReadPixels(new Rect(0, 0, RenderTexture.active.width, RenderTexture.active.height), 0, 0);
-            onlyFrame.Apply();
-            onlyFrame.name = "Card_" + code;
-            renderedCardFrame.texture = onlyFrame;
-            renderedCardFrame.gameObject.SetActive(true);
+            texFrame = new Texture2D(RenderTexture.active.width, RenderTexture.active.height, TextureFormat.RGBA32, true);
+            texFrame.ReadPixels(new Rect(0, 0, RenderTexture.active.width, RenderTexture.active.height), 0, 0);
+            texFrame.Apply();
+            texFrame.name = "Card_" + code;
+            Destroy(builder.gameObject);
 
             videoPlayer.gameObject.SetActive(true);
             videoPlayer.url = GetVideoURL(code);
-            videoPlayer.targetTexture = Instantiate(videoPlayer.targetTexture);
             videoPlayer.Prepare();
-
-            var targetImage = builder.GetArtPartForVideo(data.HasType(CardType.Pendulum));
-            targetImage.gameObject.SetActive(true);
-            targetImage.texture = videoPlayer.targetTexture;
-            targetImage.transform.SetParent(transform);
-            renderedCardFrame.transform.SetAsLastSibling();
-            Destroy(builder.gameObject);
-
             await UniTask.WaitUntil(() => videoPlayer.isPrepared);
 
-            renderCamera.gameObject.SetActive(true);
-            renderCamera.targetTexture = Instantiate(renderTexture);
-            renderCamera.SetVolumeFrameworkUpdateMode(VolumeFrameworkUpdateMode.EveryFrame);
-            renderTexture = renderCamera.targetTexture;
+            renderTexture = Instantiate(renderTexture);
+            SetMaterial(data);
             return renderTexture;
+        }
+
+        private void SetMaterial(Card data)
+        {
+            matCompositeInstance = Instantiate(matComposite);
+            matCompositeInstance.SetTexture("_MainTex", videoPlayer.texture);
+            matCompositeInstance.SetTexture("_FrameTex", texFrame);
+            matCompositeInstance.SetVector("_VideoRect", GetVideoRect(data));
+        }
+
+        private Vector4 GetVideoRect(Card data)
+        {
+            if (NeedRushDuelStyle(data.Id))
+            {
+                return new Vector4(0.049f, 0.281f, 0.902f, 0.62f);
+            }
+            else
+            {
+                if (data.HasType(CardType.Pendulum))
+                    return new Vector4(0.696f, 0.2275f, 0.86f, 0.5918f);
+                else
+                    return new Vector4(0.1235f, 0.297f, 0.7528f, 0.5175f);
+            }
+        }
+
+        private void LateUpdate()
+        {
+            if (matCompositeInstance == null)
+                return;
+            Graphics.Blit(videoPlayer.targetTexture, renderTexture, matCompositeInstance);
         }
 
         public void PauseVideo()
         {
-            renderCamera.gameObject.SetActive(false);
             videoPlayer.Pause();
         }
 
         public void PlayVideo()
         {
-            renderCamera.gameObject.SetActive(true);
             videoPlayer.Play();
         }
 
         public void Dispose()
         {
-            Destroy(renderTexture);
+            if(matCompositeInstance != null)
+            {
+                Destroy(matCompositeInstance);
+                Destroy(renderTexture);
+                Destroy(texFrame);
+            }
             Destroy(gameObject);
         }
 

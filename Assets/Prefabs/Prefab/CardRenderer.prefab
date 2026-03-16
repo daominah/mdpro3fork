@@ -35,78 +35,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 704, y: 1024}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &1182185792978640889
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 9082862922315469024}
-  - component: {fileID: 4853623234814736792}
-  - component: {fileID: 120950969743933094}
-  m_Layer: 10
-  m_Name: Frame
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!224 &9082862922315469024
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1182185792978640889}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7287715509432259750}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 704, y: 1024}
-  m_Pivot: {x: 0, y: 1}
---- !u!222 &4853623234814736792
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1182185792978640889}
-  m_CullTransparentMesh: 1
---- !u!114 &120950969743933094
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1182185792978640889}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Texture: {fileID: 0}
-  m_UVRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
 --- !u!1 &7878167979749567023
 GameObject:
   m_ObjectHideFlags: 0
@@ -287,11 +215,11 @@ VideoPlayer:
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
-  m_TargetTexture: {fileID: 8400000, guid: 8f5b379149e3c804d84d7bd6111ba8af, type: 2}
+  m_TargetTexture: {fileID: 0}
   m_TimeReference: 0
   m_TargetMaterialRenderer: {fileID: 0}
   m_TargetMaterialProperty: <noninit>
-  m_RenderMode: 2
+  m_RenderMode: 4
   m_AspectRatio: 5
   m_DataSource: 1
   m_TimeUpdateMode: 2
@@ -306,7 +234,7 @@ VideoPlayer:
   m_DirectAudioMutes: 00
   m_ControlledAudioTrackCount: 1
   m_PlayOnAwake: 1
-  m_SkipOnDrop: 1
+  m_SkipOnDrop: 0
   m_Looping: 1
   m_WaitForFirstFrame: 1
   m_FrameReadyEventEnabled: 0
@@ -344,7 +272,6 @@ RectTransform:
   - {fileID: 8400473325012030711}
   - {fileID: 4256007042953254575}
   - {fileID: 1009792736605793975}
-  - {fileID: 9082862922315469024}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -388,64 +315,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   builder: {fileID: 8400473325012030711}
-  ocg: {fileID: 0}
-  rd: {fileID: 0}
   renderCamera: {fileID: 9139189678543172720}
   videoPlayer: {fileID: 6557919073823895907}
-  renderedCardFrame: {fileID: 120950969743933094}
+  matComposite: {fileID: 2100000, guid: ffa3524d14796f7428377735539535a5, type: 2}
   renderTexture: {fileID: 8400000, guid: c9c34cb6ceb21d94c9c8de71c8859cf4, type: 2}
-  cardArt: {fileID: 0}
-  cardArtPendulum: {fileID: 0}
-  cardArtPendulumSquare: {fileID: 0}
-  cardArtPendulumWidth: {fileID: 0}
-  cardFrame: {fileID: 0}
-  attrIcon: {fileID: 0}
-  attrRuby: {fileID: 0}
-  cardName: {fileID: 0}
-  cardDescription: {fileID: 0}
-  cardDescriptionPendulum: {fileID: 0}
-  lScale: {fileID: 0}
-  rScale: {fileID: 0}
-  levels: {fileID: 0}
-  ranks: {fileID: 0}
-  rank13: {fileID: 0}
-  levelsMask: {fileID: 0}
-  ranksMask: {fileID: 0}
-  rank13Mask: {fileID: 0}
-  linkMarkers: {fileID: 0}
-  line: {fileID: 0}
-  textATK: {fileID: 0}
-  textDEF: {fileID: 0}
-  numATK: {fileID: 0}
-  numDEF: {fileID: 0}
-  linkCount: {fileID: 0}
-  spellType: {fileID: 0}
-  cardPassword: {fileID: 0}
-  cardAuther: {fileID: 0}
-  cardArtRD: {fileID: 0}
-  cardArtPendulumRD: {fileID: 0}
-  cardArtPendulumWidthRD: {fileID: 0}
-  cardFrameRD: {fileID: 0}
-  attrIconRD: {fileID: 0}
-  attrRubyRD: {fileID: 0}
-  cardLegendRD: {fileID: 0}
-  movePartsRD: {fileID: 0}
-  cardNameRD: {fileID: 0}
-  cardTypeRD: {fileID: 0}
-  cardDescriptionRD: {fileID: 0}
-  cardDescriptionPendulumRD: {fileID: 0}
-  lScaleRD: {fileID: 0}
-  rScaleRD: {fileID: 0}
-  maxAtkRD: {fileID: 0}
-  maxAtkNumRD: {fileID: 0}
-  atkRD: {fileID: 0}
-  atkNumRD: {fileID: 0}
-  defRD: {fileID: 0}
-  defNumRD: {fileID: 0}
-  levelRD: {fileID: 0}
-  levelNumRD: {fileID: 0}
-  rankRD: {fileID: 0}
-  rankNumRD: {fileID: 0}
-  linkRD: {fileID: 0}
-  cardPasswordRD: {fileID: 0}
-  cardAutherRD: {fileID: 0}

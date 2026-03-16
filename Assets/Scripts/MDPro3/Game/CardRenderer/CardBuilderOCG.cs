@@ -119,10 +119,10 @@ namespace MDPro3
 
                 var pendulumDesc = data.GetDescriptionSplit(true);
                 textDescription.text = data.GetTypeForRushDuelRender();
-                textDescriptionPendulum.text = TextForRender(pendulumDesc[0], data.isPre);
+                textDescriptionPendulum.text = TextForRender(pendulumDesc[0], data);
 
                 var authorSplit = GetAuthorFromDescription(pendulumDesc[1]);
-                textDescription.text += Program.STRING_LINE_BREAK + TextForRender(authorSplit[0], data.isPre);
+                textDescription.text += Program.STRING_LINE_BREAK + TextForRender(authorSplit[0], data);
                 textAuther.text = authorSplit[1];
 
                 textLScale.text = data.LScale.ToString();
@@ -137,7 +137,7 @@ namespace MDPro3
                     desc = data.GetTypeForRushDuelRender() + Program.STRING_LINE_BREAK;
 
                 var authorSplit = GetAuthorFromDescription(data.Desc);
-                desc += TextForRender(authorSplit[0], data.isPre);
+                desc += TextForRender(authorSplit[0], data);
                 textDescription.text = desc;
                 textAuther.text = authorSplit[1];
             }
@@ -182,7 +182,7 @@ namespace MDPro3
                 for (int i = 0; i < 12; i++)
                     levels.transform.GetChild(i).gameObject.SetActive(i < data.Level);
             }
-            else if (data.HasType(CardType.Spell, CardType.Trap))
+            else if (data.HasAnyType(CardType.Spell, CardType.Trap))
             {
                 descriptionRT.sizeDelta = new Vector2(590, 185);
                 tmpCardName.color = Color.white;

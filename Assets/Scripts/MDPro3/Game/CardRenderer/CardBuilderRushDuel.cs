@@ -47,6 +47,10 @@ namespace MDPro3
             link.SetActive(false);
             numLevel.text = string.Empty;
             numRank.text = string.Empty;
+
+            legend.SetActive(false);
+            maxAtk.SetActive(false);
+            numMaxAtk.text = string.Empty;
         }
 
         public override void SetCard(Card data, string language, Texture art, Texture2D overFrame = null)
@@ -81,11 +85,11 @@ namespace MDPro3
                     imageArtPendulum.gameObject.SetActive(true);
                     imageArtPendulum.texture = art;
                 }
-                textDescriptionPendulum.text = TextForRender(data.GetPendulumDescription(true), data.isPre);
+                textDescriptionPendulum.text = TextForRender(data.GetPendulumDescription(true), data);
 
                 var authorSplit = GetAuthorFromDescription(data.GetMonsterDescription(true));
                 textAuther.text = authorSplit[1];
-                textDescription.text = TextForRender(authorSplit[0], data.isPre);
+                textDescription.text = TextForRender(authorSplit[0], data);
 
                 textLScale.text = data.LScale.ToString();
                 textRScale.text = data.RScale.ToString();
@@ -95,7 +99,7 @@ namespace MDPro3
                 imageArt.gameObject.SetActive(true);
                 imageArt.texture = art;
                 var authorSplit = GetAuthorFromDescription(data.Desc);
-                textDescription.text = TextForRender(authorSplit[0], data.isPre);
+                textDescription.text = TextForRender(authorSplit[0], data);
                 textAuther.text = authorSplit[1];
             }
 
@@ -128,12 +132,20 @@ namespace MDPro3
                 level.SetActive(true);
                 numLevel.text = data.Level.ToString();
             }
-            else if(data.HasType(CardType.Spell, CardType.Trap))
+            else if(data.HasAnyType(CardType.Spell, CardType.Trap))
             {
                 atk.SetActive(false);
                 def.SetActive(false);
                 numAtk.text = string.Empty;
                 numDef.text = string.Empty;
+            }
+
+            legend.SetActive(data.HasType(CardType.Legend));
+
+            if(data.HasType(CardType.Maximum))
+            {
+                maxAtk.SetActive(true);
+                numMaxAtk.text = data.GetMaximumAttackString();
             }
         }
 
