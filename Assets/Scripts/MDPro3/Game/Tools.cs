@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -55,7 +56,23 @@ namespace MDPro3
             Animator[] animators = animationContainer.GetComponentsInChildren<Animator>();
             foreach (Animator animator in animators)
             {
-                animator.SetTrigger(animationName);
+                if (animator == null || string.IsNullOrEmpty(animationName))
+                    continue;
+
+                var hasTrigger = false;
+                var parameters = animator.parameters;
+                for (var i = 0; i < parameters.Length; i++)
+                {
+                    var param = parameters[i];
+                    if (param.type == AnimatorControllerParameterType.Trigger && param.name == animationName)
+                    {
+                        hasTrigger = true;
+                        break;
+                    }
+                }
+
+                if (hasTrigger)
+                    animator.SetTrigger(animationName);
             }
         }
 
@@ -208,15 +225,18 @@ namespace MDPro3
 
         #region Online
 
-        public static async Task<Texture2D> DownloadImageAsync(string url)
+        public static async Task<Texture2D> DownloadImageAsync(string url, CancellationToken cancellationToken = default)
         {
             using var request = UnityWebRequestTexture.GetTexture(url);
             request.SetRequestHeader("User-Agent", "MDPro3/" + Application.version + " (" + System.Environment.OSVersion.ToString() + "); Unity/" + Application.unityVersion);
 
             var send = request.SendWebRequest();
-            await TaskUtility.WaitUntil(() => send.isDone);
+            while (!send.isDone)
+                await TaskUtility.WaitOneFrame(cancellationToken);
             if (!Application.isPlaying)
                 return null;
+
+            cancellationToken.ThrowIfCancellationRequested();
 
             if (request.result == UnityWebRequest.Result.Success)
             {
@@ -224,7 +244,7 @@ namespace MDPro3
             }
             else
             {
-                UnityEngine.Debug.LogErrorFormat($"Image [{0}]: {1}", url, request.error);
+                UnityEngine.Debug.LogErrorFormat("Image [{0}]: {1}", url, request.error);
                 return null;
             }
         }

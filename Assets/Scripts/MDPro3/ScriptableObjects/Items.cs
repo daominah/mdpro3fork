@@ -100,7 +100,8 @@ namespace MDPro3
         public List<Item> wallpapers;   // 113
         public List<List<Item>> kinds;
 
-        private const string ADDRESS_DEFAULT_DECK_CASE = "DeckCase0001_L";
+        private const int CODE_DEFAULT_DECK_CASE = 1080001;
+        private const string ADDRESS_DEFAULT_DECK_CASE_LEGACY = "DeckCase0001_L";
 
         public const string STRING_NULL = "coming soon";
         public const int CODE_NONE = 0;
@@ -119,6 +120,7 @@ namespace MDPro3
         private readonly Dictionary<int, string> descriptions = new();
         private readonly Dictionary<int, string> categories = new();
         private readonly Dictionary<string, Sprite> cachedIcons = new();
+        private readonly Dictionary<string, bool> iconAddressExists = new();
 
         private string lastMat0;
         private string lastMat1;
@@ -516,6 +518,44 @@ namespace MDPro3
             return returnValue;
         }
 
+        private async UniTask<bool> HasItemIconAddress(string address)
+        {
+            if (string.IsNullOrEmpty(address))
+                return false;
+
+            lock (iconAddressExists)
+                if (iconAddressExists.TryGetValue(address, out var exists))
+                    return exists;
+
+            var handle = Addressables.LoadResourceLocationsAsync(address, typeof(Sprite));
+            try
+            {
+                await handle.Task;
+                return handle.Result != null && handle.Result.Count > 0;
+            }
+            catch
+            {
+                return false;
+            }
+            finally
+            {
+                lock (iconAddressExists)
+                    iconAddressExists[address] = handle.IsValid() && handle.Result != null && handle.Result.Count > 0;
+
+                if (handle.IsValid())
+                    Addressables.Release(handle);
+            }
+        }
+
+        public async UniTask<Sprite> TryLoadItemIconAsync(string id, ItemType type)
+        {
+            var address = GetIconAddress(id);
+            if (!await HasItemIconAddress(address))
+                return null;
+
+            return await LoadItemIconAsync(id, type);
+        }
+
         public async UniTask<Sprite> LoadConcreteItemIconAsync(string id, ItemType type, int player = 0)
         {
             if(id == CODE_RANDOM.ToString())
@@ -628,14 +668,34 @@ namespace MDPro3
 
         public async UniTask<Sprite> LoadDeckCaseIconAsync(int code, string suffix)
         {
+            var sprite = await TryLoadAddressableSprite(GetDeckCaseAddress(code, suffix));
+            if (sprite != null)
+                return sprite;
+
+            sprite = await TryLoadAddressableSprite(GetDeckCaseAddress(CODE_DEFAULT_DECK_CASE, suffix));
+            if (sprite != null)
+                return sprite;
+
+            return await TryLoadAddressableSprite(ADDRESS_DEFAULT_DECK_CASE_LEGACY);
+        }
+
+        private static string GetDeckCaseAddress(int code, string suffix)
+        {
+            if (code < 1080000 || code > 1089999)
+                code = CODE_DEFAULT_DECK_CASE;
+
+            return $"DeckCase{code.ToString()[3..]}{suffix ?? string.Empty}";
+        }
+
+        private async UniTask<Sprite> TryLoadAddressableSprite(string address)
+        {
             try
             {
-                return await LoadAddressableSprite($"DeckCase{code.ToString()[3..]}{suffix}");
+                return await LoadAddressableSprite(address);
             }
             catch
             {
-                Debug.LogError("Addressables Not Found: " + $"DeckCase {code}_{suffix}");
-                return await LoadAddressableSprite(ADDRESS_DEFAULT_DECK_CASE);
+                return null;
             }
         }
 

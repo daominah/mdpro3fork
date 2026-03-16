@@ -19,7 +19,9 @@ namespace MDPro3
         public static Dictionary<string, GameObject> cachedAB = new();
         public static Dictionary<string, GameObject> cachedABFolder = new();
         public static Dictionary<string, Material> cachedPMat = new();
+        public static Dictionary<string, Material> cachedFrameMat = new();
         private static readonly SemaphoreSlim protectorSemaphoreSlim = new(1, 1);
+        private static readonly SemaphoreSlim frameSemaphoreSlim = new(1, 1);
 
         public static async UniTask<AssetBundle> CacheFromFileAsync(string path)
         {
@@ -69,22 +71,35 @@ namespace MDPro3
             }
 
             AssetBundle ab = await AssetBundle.LoadFromFileAsync(Program.root + path);
-            var assets = ab.LoadAllAssets();
-
-            foreach (UnityEngine.Object asset in assets)
+            var expectedName = Path.GetFileName(path);
+            if (!string.IsNullOrEmpty(expectedName))
             {
-                if (typeof(GameObject).IsInstanceOfType(asset))
+                var assetRequest = ab.LoadAssetAsync<GameObject>(expectedName);
+                await assetRequest;
+                returnValue = assetRequest.asset as GameObject;
+            }
+
+            if (returnValue == null)
+            {
+                var assets = ab.LoadAllAssets();
+                foreach (UnityEngine.Object asset in assets)
                 {
-                    if (cache)
-                    {
-                        if (!cachedAB.TryAdd(path, asset as GameObject))
-                            Debug.LogWarning($"Failed to cache {path}");
-                    }
-                    returnValue = asset as GameObject;
-                    //break;
+                    if (!typeof(GameObject).IsInstanceOfType(asset))
+                        continue;
+
+                    var candidate = asset as GameObject;
+                    returnValue = candidate;
+                    if (candidate != null && candidate.name == expectedName)
+                        break;
                 }
             }
             ab.Unload(false);
+
+            if (cache && returnValue != null)
+            {
+                if (!cachedAB.TryAdd(path, returnValue))
+                    Debug.LogWarning($"Failed to cache {path}");
+            }
 
             if (instantiate && returnValue != null)
                 return UnityEngine.Object.Instantiate(returnValue);
@@ -336,24 +351,39 @@ namespace MDPro3
                 if (!Directory.Exists(folder))
                     return null;
 
-                var files = Directory.GetFiles(folder);
+                var files = Directory.GetFiles(folder)
+                    .OrderBy(path => Path.GetFileName(path).Equals(code, StringComparison.OrdinalIgnoreCase) ? 0 : 1)
+                    .ThenBy(Path.GetFileName, StringComparer.OrdinalIgnoreCase)
+                    .ToArray();
+                if (files.Length == 0)
+                    return null;
 
+                var bundles = new List<AssetBundle>();
                 AssetBundle matAB = null;
-                List<AssetBundle> abs = new();
-                foreach (var file in files)
+                foreach (var path in files)
                 {
-                    var ab = await AssetBundle.LoadFromFileAsync(file).WithCancellation(token);
-                    abs.Add(ab);
-                    if (Path.GetFileName(file) == code)
-                        matAB = ab;
+                    var bundle = await AssetBundle.LoadFromFileAsync(path).WithCancellation(token);
+                    if (bundle == null)
+                        continue;
+
+                    bundles.Add(bundle);
+                    if (Path.GetFileName(path).Equals(code, StringComparison.OrdinalIgnoreCase))
+                        matAB = bundle;
                 }
                 if (matAB == null)
                     return null;
 
                 material = matAB.LoadAsset<Material>("PMat");
+                if (material == null)
+                {
+                    foreach (var bundle in bundles)
+                        bundle.Unload(false);
+                    return null;
+                }
+
                 material.renderQueue = 3000;
-                foreach (var ab in abs)
-                    ab.Unload(false);
+                foreach (var bundle in bundles)
+                    bundle.Unload(false);
 
                 if (cachedPMat.ContainsKey(code))
                     material = cachedPMat[code];
@@ -373,11 +403,41 @@ namespace MDPro3
             if (code == Items.CODE_RANDOM.ToString())
                 code = Items.lastRandomFrameID;
 
-            var ab = await AssetBundle.LoadFromFileAsync(Program.root + "MasterDuel/Frame/ProfileFrameMat" + code);
-            var material = ab.LoadAsset<Material>("ProfileFrameMat" + code);
-            ab.Unload(false);
-            TextureManager.ChangeProfileFrameMaterialWrapMode(material);
-            return material;
+            await frameSemaphoreSlim.WaitAsync();
+
+            try
+            {
+                if (cachedFrameMat.TryGetValue(code, out var cachedMaterial))
+                    if (cachedMaterial != null)
+                        return new Material(cachedMaterial);
+
+                var ab = await AssetBundle.LoadFromFileAsync(Program.root + "MasterDuel/Frame/ProfileFrameMat" + code);
+                if (ab == null)
+                    return null;
+
+                try
+                {
+                    var material = ab.LoadAsset<Material>("ProfileFrameMat" + code);
+                    if (material == null)
+                        return null;
+
+                    TextureManager.ChangeProfileFrameMaterialWrapMode(material);
+
+                    if (cachedFrameMat.TryGetValue(code, out cachedMaterial) && cachedMaterial != null)
+                        return new Material(cachedMaterial);
+
+                    cachedFrameMat[code] = material;
+                    return new Material(material);
+                }
+                finally
+                {
+                    ab.Unload(false);
+                }
+            }
+            finally
+            {
+                frameSemaphoreSlim.Release();
+            }
         }
 
         public static async UniTask<Material> LoadMaterialAsync(string path, CancellationToken token)

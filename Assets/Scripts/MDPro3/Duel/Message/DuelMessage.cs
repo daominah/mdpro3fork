@@ -84,6 +84,7 @@ namespace MDPro3.Duel
             opActivated.Clear();
             Program.instance.ocgcore.GetUI<OcgCoreUI>().CardDescription.Hide();
             Program.instance.ocgcore.GetUI<OcgCoreUI>().CardList.Hide();
+            Program.instance.ocgcore.GetUI<OcgCoreUI>().ResetBgDetailState();
             surrendered = false;
             tagSurrendered = false;
             deckReserved = false;
@@ -508,7 +509,8 @@ namespace MDPro3.Duel
             /*var lenth = */reader.ReadInt16();
             var buffer = reader.ReadToEnd();
             var text = Encoding.UTF8.GetString(buffer, 0, buffer.Length);
-            MessageManager.Cast(text);
+            if (OcgCore.ShouldShowSystemMessages())
+                MessageManager.Cast(text);
 
             return UniTask.CompletedTask;
         }
@@ -663,6 +665,8 @@ namespace MDPro3.Duel
             MessageManager.Cast(endingReason);
             if (condition != Condition.Replay)
                 Core.GetUI<OcgCoreUI>().ShowSaveReplay();
+            else
+                Core.NotifyReplayPlaybackEnded();
         }
 
         protected override UniTask GameMessage_UpdateData(BinaryReader reader)
@@ -816,6 +820,7 @@ namespace MDPro3.Duel
                 mySummonCount++;
             else
                 opSummonCount++;
+            Core.GetUI<OcgCoreUI>().RefreshBgDetail();
 
 
             var se = "SE_LAND_NORMAL";
@@ -908,6 +913,7 @@ namespace MDPro3.Duel
                 mySpSummonCount++;
             else
                 opSpSummonCount++;
+            Core.GetUI<OcgCoreUI>().RefreshBgDetail();
 
             if (card.GetData().HasType(CardType.Token))
                 goto TokenPass;
@@ -919,6 +925,13 @@ namespace MDPro3.Duel
             card.SetCode(code);
             card.AnimationPositon();
             ES_hint = InterString.Get("「[?]」特殊召唤宣言时", card.GetData().Name);
+
+            var isExtraDeckMonster = card.GetData().HasType(CardType.Fusion)
+                || card.GetData().HasType(CardType.Synchro)
+                || card.GetData().HasType(CardType.Xyz)
+                || card.GetData().HasType(CardType.Link);
+            if (isExtraDeckMonster)
+                duelBGManager.OnSpecialSummonFromExtra(gps.InMyControl() ? 0 : 1);
 
             if(materialCards.Count > 0)
             {
@@ -1315,6 +1328,9 @@ namespace MDPro3.Duel
             else
                 attackedPosition = attackedCard.model.transform.position;
 
+            if (directAttack != 0)
+                duelBGManager.OnDirectAttack(from.InMyControl() ? 0 : 1);
+
             var isFinalAttack = duelBGManager.IsFinalBlow();
             duelBGManager.HideAttackLine();
             duelBGManager.HideDuelFinalBlowText();
@@ -1516,7 +1532,12 @@ namespace MDPro3.Duel
             if(life0 <= 0 || life1 <= 0)
                 duelBGManager.FinishDamageEffect();
 
+            if (currentMessage == GameMessage.Damage)
+                duelBGManager.OnPlayerDamaged(player, Mathf.Max(value, 0));
+
             duelBGManager.UpdateBgEffects(player);
+            duelBGManager.OnLifePointsChanged(0, life0);
+            duelBGManager.OnLifePointsChanged(1, life1);
             AudioManager.PlaySE("SE_COST_DAMAGE");
             Core.SetLP(player, -value);
             await UniTask.WaitForSeconds(0.5f);
@@ -1543,6 +1564,8 @@ namespace MDPro3.Duel
                 ES_hint = InterString.Get("对方生命值回复时");
             }
 
+            duelBGManager.OnLifePointsChanged(0, life0);
+            duelBGManager.OnLifePointsChanged(1, life1);
             Core.SetLP(player, value);
             await UniTask.WaitForSeconds(0.5f);
         }
@@ -1568,6 +1591,10 @@ namespace MDPro3.Duel
                 duelBGManager.FinishDamageEffect();
 
             duelBGManager.UpdateBgEffects(player);
+            if (diff < 0)
+                duelBGManager.OnPlayerDamaged(player, -diff);
+            duelBGManager.OnLifePointsChanged(0, life0);
+            duelBGManager.OnLifePointsChanged(1, life1);
             if(diff < 0)
                 AudioManager.PlaySE("SE_COST_DAMAGE");
             Core.SetLP(player, diff);
@@ -1945,8 +1972,10 @@ namespace MDPro3.Duel
             mySpSummonCount = 0;
             opSummonCount = 0;
             opSpSummonCount = 0;
+            Core.GetUI<OcgCoreUI>().RefreshBgDetail();
             turns++;
             myTurn = isFirst ? (turns % 2 != 0) : (turns % 2 == 0);
+            duelBGManager.OnNewTurn(myTurn, turns);
 
             PhaseButtonHandler.TurnChange(myTurn, turns);
             PhaseButtonHandler.SetTextMain(string.Empty);
@@ -1997,6 +2026,7 @@ namespace MDPro3.Duel
             else if (duelPhase == DuelPhase.End)
                 PhaseButtonHandler.SetTextMain("End");
 
+            duelBGManager.OnNewPhase(player, duelPhase);
             await duelBGManager.ShowPhaseBanner(player, duelPhase);
         }
 
@@ -2296,7 +2326,10 @@ namespace MDPro3.Duel
             if (currentMessage == GameMessage.CardTarget)
                 cardFrom.AddTarget(cardTo);
             else if (currentMessage == GameMessage.Equip)
+            {
                 cardFrom.equipedCard = cardTo;
+                duelBGManager.OnEquipApplied(from.InMyControl() ? 0 : 1);
+            }
 
             return UniTask.CompletedTask;
         }

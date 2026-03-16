@@ -954,7 +954,7 @@ MonoBehaviour:
   - id: 1003003
     m_name: 
     m_description: 
-    path: Mate/M13670_Model
+    path: Mate/M13671_Model
     secondFace: 1
     diy: 0
     notReady: 0
@@ -962,6 +962,13 @@ MonoBehaviour:
     m_name: 
     m_description: 
     path: Mate/M13668_Model
+    secondFace: 1
+    diy: 0
+    notReady: 0
+  - id: 1003203
+    m_name: 
+    m_description: 
+    path: Mate/M13670_Model
     secondFace: 1
     diy: 0
     notReady: 0

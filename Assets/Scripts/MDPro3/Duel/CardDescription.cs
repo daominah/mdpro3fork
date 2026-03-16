@@ -56,6 +56,87 @@ namespace MDPro3
             manager.GetElement<RawImage>("Card").material = mat;
         }
 
+        private static bool IsPendulumEffectContext(Card data, GPS p)
+        {
+            return p != null
+                && (((p.location & (uint)CardLocation.PendulumZone) > 0)
+                || ((p.location & (uint)CardLocation.SpellZone) > 0
+                && !data.HasType(CardType.Equip)
+                && !data.HasType(CardType.Continuous)
+                && !data.HasType(CardType.Trap)));
+        }
+
+        private static string WrapInactiveText(string text)
+        {
+            return string.IsNullOrEmpty(text) ? string.Empty : "<color=#666666>" + text + "</color>";
+        }
+
+        private static string BuildPendulumDescription(Card data, Card origin, GPS p)
+        {
+            var inPendulumContext = IsPendulumEffectContext(data, p);
+            var inMonsterContext = p != null && (p.location & (uint)CardLocation.MonsterZone) > 0;
+            if (!inPendulumContext && !inMonsterContext)
+                return data.GetDescription(true);
+
+            var setName = data.GetSetNameWithColor();
+            var pendulumText = origin.GetPendulumDescription()?.Trim('\r', '\n');
+            var monsterText = origin.GetMonsterDescription()?.Trim('\r', '\n');
+
+            if (Language.GetConfig() == Language.Korean)
+            {
+                var monsterHeader = InterString.Get("【怪兽效果】");
+                if (!data.HasType(CardType.Effect))
+                    monsterHeader = InterString.Get("【怪兽描述】");
+
+                monsterHeader = Card.NormalizeBracketLabel(monsterHeader);
+                var pendulumHeader = Card.NormalizeBracketLabel(InterString.Get("【灵摆效果】"));
+                var pendulumBlock = pendulumHeader + "\n" + (pendulumText ?? string.Empty);
+                var monsterBlock = monsterHeader + "\n" + (monsterText ?? string.Empty);
+
+                if (inPendulumContext)
+                    return setName + pendulumBlock + "\n" + WrapInactiveText(monsterBlock);
+                if (inMonsterContext)
+                    return setName + monsterBlock + "\n" + WrapInactiveText(pendulumBlock);
+
+                return data.GetDescription(true);
+            }
+
+            var pendulumHeaderDefault = Card.NormalizeBracketLabel(InterString.Get("【灵摆效果】"));
+            var result = setName;
+
+            if (!string.IsNullOrEmpty(monsterText))
+                result += inPendulumContext ? WrapInactiveText(monsterText) : monsterText;
+
+            if (!string.IsNullOrEmpty(pendulumText))
+            {
+                var pendulumBlock = pendulumHeaderDefault + "\n" + pendulumText;
+
+                if (!string.IsNullOrEmpty(monsterText))
+                {
+                    if (inMonsterContext)
+                    {
+                        result += "\n" + WrapInactiveText(Card.PendulumSeparatorLine + "\n" + pendulumBlock);
+                    }
+                    else if (inPendulumContext)
+                    {
+                        result += WrapInactiveText("\n" + Card.PendulumSeparatorLine) + "\n" + pendulumBlock;
+                    }
+                    else
+                    {
+                        result += "\n" + Card.PendulumSeparatorLine + "\n" + pendulumBlock;
+                    }
+                }
+                else
+                {
+                    if (!string.IsNullOrEmpty(result))
+                        result += "\n";
+                    result += inMonsterContext ? WrapInactiveText(pendulumBlock) : pendulumBlock;
+                }
+            }
+
+            return result;
+        }
+
         public void Show(GameCard card, Material mat, int code = -1, GPS gps = null)
         {
             Card data;
@@ -124,26 +205,7 @@ namespace MDPro3
 
             manager.GetElement<Text>("TextType").text = data.GetTypeForUI();
             if (data.HasType(CardType.Pendulum))
-            {
-                var texts = origin.GetDescriptionSplit();
-                string monster = InterString.Get("【怪兽效果】");
-                if (!data.HasType(CardType.Effect))
-                    monster = InterString.Get("【怪兽描述】");
-                if (p != null
-                    && ((p.location & (uint)CardLocation.PendulumZone) > 0 ||
-                    ((p.location & (uint)CardLocation.SpellZone) > 0
-                    && !data.HasType(CardType.Equip)
-                    && !data.HasType(CardType.Continuous)
-                    && !data.HasType(CardType.Trap))))
-                    manager.GetElement<TextMeshProUGUI>("TextDescription").text = tails + data.GetSetNameWithColor() + InterString.Get("【灵摆效果】") + "\n" + texts[0] + "\n"
-                        + "<color=#666666>" + monster + "\n" + texts[1] + "</color>";
-                else if (p != null && (p.location & (uint)CardLocation.MonsterZone) > 0)
-                    manager.GetElement<TextMeshProUGUI>("TextDescription").text = tails + data.GetSetNameWithColor() + monster + "\n" + texts[1] + "\n"
-                        + "<color=#666666>" + InterString.Get("【灵摆效果】") + "\n" + texts[0] + "</color>";
-                else
-                    manager.GetElement<TextMeshProUGUI>("TextDescription").text = tails + data.GetSetNameWithColor() + InterString.Get("【灵摆效果】") + "\n" + texts[0] + "\n"
-                        + monster + "\n" + texts[1];
-            }
+                manager.GetElement<TextMeshProUGUI>("TextDescription").text = tails + BuildPendulumDescription(data, origin, p);
             else
                 manager.GetElement<TextMeshProUGUI>("TextDescription").text = tails + data.GetSetNameWithColor() + data.Desc;
 

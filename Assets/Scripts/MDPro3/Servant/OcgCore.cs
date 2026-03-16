@@ -203,6 +203,7 @@ namespace MDPro3.Servant
         public static bool inputMode;
         public static bool Accing;
         public static bool CurrentReplayUseYRP2;
+        public static bool CurrentReplayGodView;
 
         #endregion
 
@@ -259,6 +260,7 @@ namespace MDPro3.Servant
         {
             base.OnExit();
             CloseConnection();
+            CurrentReplayGodView = false;
             GetUI<OcgCoreUI>().OnNor();
         }
 
@@ -706,6 +708,7 @@ namespace MDPro3.Servant
             packages.Clear();
             packages = null;
             packages = packs;
+            replayPlaybackEndedNotified = false;
             allPackages.Clear();
             foreach (Package p in packages)
                 allPackages.Add(p);
@@ -760,24 +763,38 @@ namespace MDPro3.Servant
             GetUI<OcgCoreUI>().DuelErrorLog.Show(error);
         }
 
+        public static bool ShouldShowPlayerMessages()
+        {
+            if (condition == Condition.Duel && !Config.GetBool("DuelPlayerMessage", true))
+                return false;
+            if (condition == Condition.Watch && !Config.GetBool("WatchPlayerMessage", true))
+                return false;
+            if (condition == Condition.Replay && !Config.GetBool("ReplayPlayerMessage", true))
+                return false;
+            return true;
+        }
+
+        public static bool ShouldShowSystemMessages()
+        {
+            if (condition == Condition.Duel && !Config.GetBool("DuelSystemMessage", true))
+                return false;
+            if (condition == Condition.Watch && !Config.GetBool("WatchSystemMessage", true))
+                return false;
+            if (condition == Condition.Replay && !Config.GetBool("ReplaySystemMessage", true))
+                return false;
+            return true;
+        }
+
         public bool GetMessageConfig(int player)
         {
             if (player < 4 || player == 7)
             {
-                if (condition == Condition.Duel && !Config.GetBool("DuelPlayerMessage", true))
-                    return false;
-                if (condition == Condition.Watch && !Config.GetBool("WatchPlayerMessage", true))
-                    return false;
-                if (condition == Condition.Replay && !Config.GetBool("ReplayPlayerMessage", true))
+                if (!ShouldShowPlayerMessages())
                     return false;
             }
             else
             {
-                if (condition == Condition.Duel && !Config.GetBool("DuelSystemMessage", true))
-                    return false;
-                if (condition == Condition.Watch && !Config.GetBool("WatchSystemMessage", true))
-                    return false;
-                if (condition == Condition.Replay && !Config.GetBool("ReplaySystemMessage", true))
+                if (!ShouldShowSystemMessages())
                     return false;
             }
             return true;
@@ -924,6 +941,7 @@ namespace MDPro3.Servant
         private async UniTask ProcessMessage()
         {
             messageDispatcher.Dispose();
+            replayPlaybackEndedNotified = false;
 
             try
             {
@@ -961,17 +979,31 @@ namespace MDPro3.Servant
 
                     lastMessage = currentMessage;
                     if (packages.Count == 0)
+                    {
+                        NotifyReplayPlaybackEnded();
                         break;
+                    }
                     packages.RemoveAt(0);
 
                     if (condition == Condition.Replay && packages.Count == 0)
                     {
-                        MessageManager.Cast(InterString.Get("回放播放结束。"));
+                        NotifyReplayPlaybackEnded();
                         break;
                     }
                 }
             }
             catch (Exception e) { Debug.Log(e); }
+        }
+
+        private bool replayPlaybackEndedNotified;
+
+        public void NotifyReplayPlaybackEnded()
+        {
+            if (condition != Condition.Replay || replayPlaybackEndedNotified)
+                return;
+
+            replayPlaybackEndedNotified = true;
+            MessageManager.Cast(InterString.Get("回放播放结束。"));
         }
 
         #endregion
@@ -1326,13 +1358,13 @@ namespace MDPro3.Servant
         public bool GetAutoInfo()
         {
             if (condition == Condition.Duel
-                && Config.Get("DuelAutoInfo", "0") == "0")
+                && !Config.GetBool("DuelAutoInfo", true))
                 return false;
             if (condition == Condition.Watch
-                && Config.Get("WatchAutoInfo", "0") == "0")
+                && !Config.GetBool("WatchAutoInfo", true))
                 return false;
             if (condition == Condition.Replay
-                && Config.Get("ReplayAutoInfo", "0") == "0")
+                && !Config.GetBool("ReplayAutoInfo", true))
                 return false;
 
             return true;
@@ -1446,6 +1478,8 @@ namespace MDPro3.Servant
         public static void PrintDuelLog(string content)
         {
             lastDuelLog = content;
+            if (!ShouldShowSystemMessages())
+                return;
             MessageManager.Cast(content);
         }
 

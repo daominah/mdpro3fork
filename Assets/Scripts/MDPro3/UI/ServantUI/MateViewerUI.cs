@@ -75,7 +75,7 @@ namespace MDPro3.UI.ServantUI
             var tasks = new List<string[]>();
             foreach (var card in cards)
             {
-                if (card.Name.Contains(search))
+                if (card.Name.IndexOf(search, System.StringComparison.OrdinalIgnoreCase) >= 0)
                 {
                     string[] task = new string[] { card.Id.ToString(), card.Name };
                     tasks.Add(task);
@@ -83,7 +83,9 @@ namespace MDPro3.UI.ServantUI
             }
             foreach (var mate in Program.items.mates)
             {
-                if (!string.IsNullOrEmpty(mate.name) && mate.name.Contains(search) && !mate.notReady)
+                if (!string.IsNullOrEmpty(mate.name)
+                    && mate.name.IndexOf(search, System.StringComparison.OrdinalIgnoreCase) >= 0
+                    && !mate.notReady)
                 {
                     string[] task = new string[] { mate.id.ToString(), mate.name };
                     tasks.Add(task);

@@ -10,6 +10,7 @@ using MDPro3.Servant;
 using MDPro3.UI.ServantUI;
 using MDPro3.Utility;
 using Cysharp.Threading.Tasks;
+using MDPro3.Duel;
 
 namespace MDPro3.UI
 {
@@ -27,6 +28,7 @@ namespace MDPro3.UI
         private RawImage Protector =>
             m_Protector = m_Protector != null ? m_Protector
             : Manager.GetElement<RawImage>(LABEL_RIMG_PROTECTOR);
+
 
         private const string LABEL_IMG_WALLPAPER_BG = "WallpaperBG";
         private Image m_WallpaperBG;
@@ -51,6 +53,11 @@ namespace MDPro3.UI
 
         private Coroutine refreshCoroutine;
         private Coroutine hideCoroutine;
+
+        private Image premiumOverlayIcon;
+        private Coroutine premiumCrossfadeCoroutine;
+        private const float CrossfadeHoldSeconds = 2.0f;
+        private const float CrossfadeFadeSeconds = 0.6f;
 
         protected override void Awake()
         {
@@ -131,6 +138,8 @@ namespace MDPro3.UI
                     Icon.material = Appearance.matForFace;
 
                 loaded = true;
+                StartPremiumCrossfade();
+                PushLoadedPreviewToDetail();
             }
             catch (OperationCanceledException)
             {
@@ -152,7 +161,8 @@ namespace MDPro3.UI
             base.CallToggleOnEvent();
             CallHoverOnEvent();
 
-            Program.instance.appearance.GetUI<AppearanceUI>().Detail.SetItem(itemID, itemName, description, path == string.Empty);
+            var detail = Program.instance.appearance.GetUI<AppearanceUI>().Detail;
+            detail.SetItem(itemID, itemName, description, path == string.Empty, path, GetPreviewSprite(), GetPreviewMaterial());
 
             Program.instance.appearance.GetUI<AppearanceUI>().SetHoverText(itemName);
             Program.instance.appearance.lastSelectedItem = this;
@@ -208,9 +218,10 @@ namespace MDPro3.UI
                 }
                 else
                 {
-                    if (DeckEditor.Deck.Mate != itemID)
+                    var normalizedMateId = PremiumMateRules.GetBaseMateId(itemID);
+                    if (DeckEditor.Deck.Mate != normalizedMateId)
                     {
-                        DeckEditor.Deck.Mate = itemID;
+                        DeckEditor.Deck.Mate = normalizedMateId;
                         Program.instance.deckEditor.GetUI<DeckEditorUI>().DeckView.SetDirty(true);
                         Program.instance.deckEditor.GetUI<DeckEditorUI>().IconMate.sprite = Icon.sprite;
                     }
@@ -220,6 +231,9 @@ namespace MDPro3.UI
             {
                 if (AppearanceUI.currentContent == "Wallpaper")
                     Config.Set("Wallpaper", itemID.ToString());
+                else if (AppearanceUI.currentContent == "Mate")
+                    Config.Set(Appearance.condition.ToString() + AppearanceUI.currentContent + Appearance.player,
+                        PremiumMateRules.GetBaseMateId(itemID).ToString());
                 else
                     Config.Set(Appearance.condition.ToString() + AppearanceUI.currentContent + Appearance.player, itemID.ToString());
 
@@ -384,6 +398,7 @@ namespace MDPro3.UI
             if (hideCoroutine != null || !gameObject.activeSelf)
                 return;
             hideCoroutine = StartCoroutine(HideAsync());
+            StopPremiumCrossfade();
 
             GetComponent<LayoutElement>().ignoreLayout = true;
             GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
@@ -412,10 +427,13 @@ namespace MDPro3.UI
 
             GetComponent<LayoutElement>().ignoreLayout = false;
             transform.SetSiblingIndex(index);
+            StartPremiumCrossfade();
         }
 
         public void Dispose()
         {
+            StopPremiumCrossfade();
+
             if(refreshCoroutine != null)
                 StopCoroutine(refreshCoroutine);
 
@@ -424,5 +442,173 @@ namespace MDPro3.UI
 
             Destroy(gameObject);
         }
+
+        private Sprite GetPreviewSprite()
+        {
+            if (!loaded)
+                return null;
+
+            if (path.StartsWith("Protector") || path.StartsWith("ProfileFrame"))
+                return null;
+
+            return Icon != null ? Icon.sprite : null;
+        }
+
+        private Material GetPreviewMaterial()
+        {
+            if (!loaded || !path.StartsWith("Protector"))
+                return null;
+
+            return protectorMaterial;
+        }
+
+        private void PushLoadedPreviewToDetail()
+        {
+            if (!isOn || Program.instance?.appearance == null)
+                return;
+
+            Program.instance.appearance.GetUI<AppearanceUI>().Detail.ApplyLoadedPreview(
+                itemID,
+                GetPreviewSprite(),
+                GetPreviewMaterial());
+        }
+
+        #region Premium Mate Crossfade
+
+        private void StartPremiumCrossfade()
+        {
+            StopPremiumCrossfade();
+            if (!loaded)
+                return;
+            if (AppearanceUI.currentContent != "Mate")
+                return;
+            if (!PremiumMateRules.IsPremiumBaseId(itemID))
+                return;
+            if (Icon == null || !Icon.gameObject.activeSelf)
+                return;
+
+            premiumCrossfadeCoroutine = StartCoroutine(PremiumCrossfadeAsync());
+        }
+
+        private void StopPremiumCrossfade()
+        {
+            if (premiumCrossfadeCoroutine != null)
+            {
+                StopCoroutine(premiumCrossfadeCoroutine);
+                premiumCrossfadeCoroutine = null;
+            }
+            if (premiumOverlayIcon != null)
+            {
+                Destroy(premiumOverlayIcon.gameObject);
+                premiumOverlayIcon = null;
+            }
+            if (Icon != null)
+            {
+                var c = Icon.color;
+                c.a = 1f;
+                Icon.color = c;
+            }
+        }
+
+        private Image CreateOverlayIcon()
+        {
+            var overlayGo = new GameObject("PremiumOverlay");
+            overlayGo.transform.SetParent(Icon.transform.parent, false);
+            overlayGo.transform.SetSiblingIndex(Icon.transform.GetSiblingIndex() + 1);
+
+            var overlayImg = overlayGo.AddComponent<Image>();
+            overlayImg.raycastTarget = false;
+            overlayImg.preserveAspect = Icon.preserveAspect;
+            overlayImg.type = Icon.type;
+            overlayImg.maskable = Icon.maskable;
+
+            var overlayRt = overlayImg.rectTransform;
+            var iconRt = Icon.rectTransform;
+            overlayRt.anchorMin = iconRt.anchorMin;
+            overlayRt.anchorMax = iconRt.anchorMax;
+            overlayRt.pivot = iconRt.pivot;
+            overlayRt.anchoredPosition = iconRt.anchoredPosition;
+            overlayRt.sizeDelta = iconRt.sizeDelta;
+            overlayRt.localScale = iconRt.localScale;
+            overlayRt.localRotation = iconRt.localRotation;
+
+            var c = Color.white;
+            c.a = 0f;
+            overlayImg.color = c;
+
+            return overlayImg;
+        }
+
+        private IEnumerator PremiumCrossfadeAsync()
+        {
+            if (!PremiumMateRules.TryGetRuleByBaseId(itemID, out var rule))
+                yield break;
+
+            Sprite subSprite = null;
+            foreach (var variantId in rule.VariantIds)
+            {
+                var task = Program.items.TryLoadItemIconAsync(variantId.ToString(), Items.ItemType.Mate);
+                while (task.Status == UniTaskStatus.Pending)
+                    yield return null;
+
+                subSprite = task.GetAwaiter().GetResult();
+                if (subSprite != null)
+                    break;
+            }
+
+            if (subSprite == null || this == null || Icon == null)
+                yield break;
+
+            premiumOverlayIcon = CreateOverlayIcon();
+            premiumOverlayIcon.sprite = subSprite;
+
+            // Icon shows base (alpha=1), overlay shows sub (alpha=0) initially.
+            // Crossfade loop: hold → fade overlay in → hold → fade overlay out → repeat.
+            while (true)
+            {
+                // Hold on base icon
+                yield return new WaitForSecondsRealtime(CrossfadeHoldSeconds);
+
+                // Fade in overlay (base → sub)
+                yield return FadeOverlay(0f, 1f, CrossfadeFadeSeconds);
+
+                // Hold on sub icon
+                yield return new WaitForSecondsRealtime(CrossfadeHoldSeconds);
+
+                // Fade out overlay (sub → base)
+                yield return FadeOverlay(1f, 0f, CrossfadeFadeSeconds);
+            }
+        }
+
+        private IEnumerator FadeOverlay(float fromAlpha, float toAlpha, float duration)
+        {
+            if (premiumOverlayIcon == null)
+                yield break;
+
+            var elapsed = 0f;
+            while (elapsed < duration)
+            {
+                elapsed += Time.unscaledDeltaTime;
+                var t = Mathf.Clamp01(elapsed / duration);
+                t = t * t * (3f - 2f * t); // smoothstep
+                var alpha = Mathf.Lerp(fromAlpha, toAlpha, t);
+                if (premiumOverlayIcon != null)
+                {
+                    var c = premiumOverlayIcon.color;
+                    c.a = alpha;
+                    premiumOverlayIcon.color = c;
+                }
+                yield return null;
+            }
+
+            if (premiumOverlayIcon != null)
+            {
+                var c = premiumOverlayIcon.color;
+                c.a = toAlpha;
+                premiumOverlayIcon.color = c;
+            }
+        }
+
+        #endregion
     }
 }
