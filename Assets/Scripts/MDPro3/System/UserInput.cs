@@ -6,16 +6,19 @@ using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.DualShock;
 using UnityEngine.UI;
-
-#if (!UNITY_ANDROID && !UNITY_IOS && !UNITY_STANDALONE_LINUX) || UNITY_EDITOR
-using UnityEngine.InputSystem.Switch;
 using UnityEngine.InputSystem.UI;
+
+#if UNITY_EDITOR || UNITY_STANDALONE_WIN || UNITY_STANDALONE_OSX || UNITY_WSA || PACKAGE_DOCS_GENERATION
+using UnityEngine.InputSystem.Switch;
 #endif
 
 namespace MDPro3
 {
     public class UserInput : MonoBehaviour
     {
+        private Camera cameraMain;
+        private Camera CameraMain => cameraMain != null ? cameraMain : (cameraMain = Program.instance.camera_.cameraMain);
+        private static InputSystemUIInputModule inputModule;
         public delegate void UserInputAction();
 
         public static UserInput instance;
@@ -123,13 +126,15 @@ namespace MDPro3
         private float rightPressingTime;
         private float upPressingTime;
         private float downPressingTime;
-        private const float moveRepeatDelay = 0.4f;
-        private const float moveRepeatRate = 0.2f;
         private const float moveInputDeadzone = 0.35f;
+        private const float moveRepeatDelay = 0.4f;
+        private static float moveRepeatRate = 0.1f;
 
         private void Awake()
         {
             instance = this;
+            inputModule = GetComponent<InputSystemUIInputModule>();
+            SetMoveRepeatSpeed(1f);
             PlayerInput = GetComponent<PlayerInput>();
             PlayerInput.onControlsChanged += OnControlsChanged;
 
@@ -159,25 +164,18 @@ namespace MDPro3
 
         private void Update()
         {
-            var hasTouchInput = TryGetTouchState(out var touchPosition, out var touchPressed, out var touchPressing, out var touchReleased);
-            if (hasTouchInput)
-            {
-                EnsureTouchControlScheme();
-                if (Cursor.lockState == CursorLockMode.Locked)
-                    ShowCursorForTouch();
-            }
-
             MoveInput = ApplyMoveDeadzone(moveAction.ReadValue<Vector2>());
-            MousePos = hasTouchInput ? touchPosition : mouseAction.ReadValue<Vector2>();
+            MousePos = mouseAction.ReadValue<Vector2>();
             LeftScrollWheel = leftScrollAction.ReadValue<Vector2>();
             RightScrollWheel = rightScrollAction.ReadValue<Vector2>();
 
-            if (MousePos != lastMousePos || touchPressed)
+            if (MousePos != lastMousePos)
             {
                 MouseMovedEvent();
+                UpdateHoverObject();
             }
 
-            if (MoveInput != Vector2.zero && !hasTouchInput && !InputFieldActivating())
+            if (MoveInput != Vector2.zero && !InputFieldActivating())
             {
                 if (Cursor.lockState == CursorLockMode.None)
                 {
@@ -203,13 +201,13 @@ namespace MDPro3
 
             #region Mouse
 
-            MouseLeftDown = leftClickAction.WasPressedThisFrame() || touchPressed;
+            MouseLeftDown = leftClickAction.WasPressedThisFrame();
             MouseRightDown = rightClickAction.WasPressedThisFrame();
             MouseMiddleDown = middleClickAction.WasPressedThisFrame();
-            MouseLeftPressing = leftClickAction.IsPressed() || touchPressing;
+            MouseLeftPressing = leftClickAction.IsPressed();
             MouseMiddlePressing = middleClickAction.IsPressed();
             MouseRightPressing = rightClickAction.IsPressed();
-            MouseLeftUp = leftClickAction.WasReleasedThisFrame() || touchReleased;
+            MouseLeftUp = leftClickAction.WasReleasedThisFrame();
             MouseRightUp = rightClickAction.WasReleasedThisFrame();
             MouseMiddleUp = middleClickAction.WasReleasedThisFrame();
 
@@ -219,129 +217,74 @@ namespace MDPro3
 
             #region Navigation
 
-            if (MoveInput.x > 0f)
-            {
-                if(rightPressingTime == 0f)
-                    WasRightPressed = true;
-                else
-                    WasRightPressed = false;
-
-                rightPressingTime += Time.unscaledDeltaTime;
-            }
-            else
-            {
-                rightPressingTime = 0f;
-                WasRightPressed = false;
-            }
-            if (rightPressingTime > 0f && !WasRightPressed)
-            {
-                if(rightPressingTime > moveRepeatDelay)
-                {
-                    var overDelay = rightPressingTime - moveRepeatDelay;
-                    if(overDelay > moveRepeatRate)
-                    {
-                        WasRightPressed = true;
-                        rightPressingTime -= moveRepeatRate;
-                    }
-                }
-            }
-
-            if (MoveInput.x < 0f)
-            {
-                if (leftPressingTime == 0f)
-                    WasLeftPressed = true;
-                else
-                    WasLeftPressed = false;
-
-                leftPressingTime += Time.unscaledDeltaTime;
-            }
-            else
-            {
-                leftPressingTime = 0f;
-                WasLeftPressed = false;
-            }
-            if (leftPressingTime > 0f && !WasLeftPressed)
-            {
-                if (leftPressingTime > moveRepeatDelay)
-                {
-                    var overDelay = leftPressingTime - moveRepeatDelay;
-                    if (overDelay > moveRepeatRate)
-                    {
-                        WasLeftPressed = true;
-                        leftPressingTime -= moveRepeatRate;
-                    }
-                }
-            }
-
-            if (MoveInput.y > 0f)
-            {
-                if (upPressingTime == 0f)
-                    WasUpPressed = true;
-                else
-                    WasUpPressed = false;
-
-                upPressingTime += Time.unscaledDeltaTime;
-            }
-            else
-            {
-                upPressingTime = 0f;
-                WasUpPressed = false;
-            }
-            if (upPressingTime > 0f && !WasUpPressed)
-            {
-                if (upPressingTime > moveRepeatDelay)
-                {
-                    var overDelay = upPressingTime - moveRepeatDelay;
-                    if (overDelay > moveRepeatRate)
-                    {
-                        WasUpPressed = true;
-                        upPressingTime -= moveRepeatRate;
-                    }
-                }
-            }
-
-            if (MoveInput.y < 0f)
-            {
-                if (downPressingTime == 0f)
-                    WasDownPressed = true;
-                else
-                    WasDownPressed = false;
-
-                downPressingTime += Time.unscaledDeltaTime;
-            }
-            else
-            {
-                downPressingTime = 0f;
-                WasDownPressed = false;
-            }
-            if (downPressingTime > 0f && !WasDownPressed)
-            {
-                if (downPressingTime > moveRepeatDelay)
-                {
-                    var overDelay = downPressingTime - moveRepeatDelay;
-                    if (overDelay > moveRepeatRate)
-                    {
-                        WasDownPressed = true;
-                        downPressingTime -= moveRepeatRate;
-                    }
-                }
-            }
+            UpdateAxisRepeat(MoveInput.x, ref WasRightPressed, ref WasLeftPressed, ref rightPressingTime, ref leftPressingTime);
+            UpdateAxisRepeat(MoveInput.y, ref WasUpPressed, ref WasDownPressed, ref upPressingTime, ref downPressingTime);
 
             #endregion
 
-            #region Hover Object
+        }
 
+        private void UpdateHoverObject()
+        {
             HoverObject = null;
-            if (Program.instance.camera_.cameraMain.gameObject.activeInHierarchy
+            if (CameraMain.gameObject.activeInHierarchy
                 && !EventSystem.current.IsPointerOverGameObject())
             {
-                Ray ray = Program.instance.camera_.cameraMain.ScreenPointToRay(MousePos);
+                Ray ray = CameraMain.ScreenPointToRay(MousePos);
                 if (Physics.Raycast(ray, out var hit))
                     HoverObject = hit.collider.gameObject;
             }
+        }
 
-            #endregion
+        private void UpdateAxisRepeat(float value, ref bool pWasPressed, ref bool nWasPressed, ref float pPressedTime, ref float nPressedTime)
+        {
+            if (value > 0)
+            {
+                nWasPressed = false;
+                nPressedTime = 0f;
 
+                if (pPressedTime == 0f)
+                    pWasPressed = true;
+                else
+                    pWasPressed = false;
+                pPressedTime += Time.unscaledDeltaTime;
+                if (pPressedTime > moveRepeatRate && !pWasPressed)
+                {
+                    var overDelay = pPressedTime - moveRepeatDelay;
+                    if (overDelay > moveRepeatRate)
+                    {
+                        pWasPressed = true;
+                        pPressedTime -= moveRepeatRate;
+                    }
+                }
+            }
+            else if (value < 0)
+            {
+                pWasPressed = false;
+                pPressedTime = 0f;
+
+                if (nPressedTime == 0f)
+                    nWasPressed = true;
+                else
+                    nWasPressed = false;
+                nPressedTime += Time.unscaledDeltaTime;
+                if(nPressedTime > moveRepeatRate && !nWasPressed)
+                {
+                    var overDelay = nPressedTime - moveRepeatDelay;
+                    if(overDelay > moveRepeatRate)
+                    {
+                        nWasPressed = true;
+                        nPressedTime -= moveRepeatRate;
+                    }
+                }
+            }
+            else
+            {
+                nWasPressed = false;
+                nPressedTime = 0f;
+                pWasPressed = false;
+                pPressedTime = 0f;
+            }
         }
 
         private static Vector2 ApplyMoveDeadzone(Vector2 input)
@@ -359,55 +302,9 @@ namespace MDPro3
             return Mathf.Sign(input);
         }
 
-        private static bool TryGetTouchState(out Vector2 touchPosition, out bool touchPressed, out bool touchPressing, out bool touchReleased)
-        {
-            touchPosition = default;
-            touchPressed = false;
-            touchPressing = false;
-            touchReleased = false;
-
-            var touchscreen = Touchscreen.current;
-            if (touchscreen == null)
-                return false;
-
-            var touch = touchscreen.primaryTouch;
-            touchPressed = touch.press.wasPressedThisFrame;
-            touchPressing = touch.press.isPressed;
-            touchReleased = touch.press.wasReleasedThisFrame;
-            if (!touchPressed && !touchPressing && !touchReleased)
-                return false;
-
-            touchPosition = touch.position.ReadValue();
-            return true;
-        }
-
-        private static bool TouchInputActive()
-        {
-            var touchscreen = Touchscreen.current;
-            if (touchscreen == null)
-                return false;
-
-            var touch = touchscreen.primaryTouch;
-            return touch.press.wasPressedThisFrame || touch.press.isPressed || touch.press.wasReleasedThisFrame;
-        }
-
-        private void EnsureTouchControlScheme()
-        {
-            if (PlayerInput == null || Touchscreen.current == null || PlayerInput.currentControlScheme == TouchSchemeName)
-                return;
-
-            try
-            {
-                PlayerInput.SwitchCurrentControlScheme(TouchSchemeName, Touchscreen.current);
-            }
-            catch (InvalidOperationException)
-            {
-            }
-        }
-
         private void MouseMovedEvent()
         {
-            if (PlayerInput.currentControlScheme != GamepadSchemeName || TouchInputActive())
+            if (PlayerInput.currentControlScheme != GamepadSchemeName)
                 OnMouseMovedAction?.Invoke();
         }
 
@@ -426,7 +323,7 @@ namespace MDPro3
 
                 if (Gamepad.current is DualShockGamepad)
                     gamepadType = GamepadType.PlayStation;
-#if (!UNITY_ANDROID && !UNITY_IOS && !UNITY_STANDALONE_LINUX) || UNITY_EDITOR
+#if UNITY_EDITOR || UNITY_STANDALONE_WIN || UNITY_STANDALONE_OSX || UNITY_WSA || PACKAGE_DOCS_GENERATION
                 else if (Gamepad.current is SwitchProControllerHID)
                     gamepadType = GamepadType.Nintendo;
 #endif
@@ -436,8 +333,6 @@ namespace MDPro3
 
         public static bool NeedDefaultSelect()
         {
-            if (TouchInputActive())
-                return false;
             if (PlayerInput.currentControlScheme == GamepadSchemeName)
                 return true;
             else if (Cursor.lockState == CursorLockMode.Locked)
@@ -446,12 +341,10 @@ namespace MDPro3
             return false;
         }
 
-        public static void SetMoveRepeatRate(float rate)
+        public static void SetMoveRepeatSpeed(float speed)
         {
-#if (!UNITY_ANDROID && !UNITY_IOS && !UNITY_STANDALONE_LINUX) || UNITY_EDITOR
-            var module = instance.GetComponent<InputSystemUIInputModule>();
-            module.moveRepeatRate = rate;
-#endif
+            moveRepeatRate = 0.1f / speed;
+            inputModule.moveRepeatRate = 0.1f / speed;
         }
 
         #region Rumble
@@ -519,16 +412,7 @@ namespace MDPro3
                 MousePos = cursorRestorePos;
                 lastMousePos = cursorRestorePos;
                 hasCursorRestorePos = false;
-                ignoreNextCursorMove = true;
             }
-        }
-
-        private void ShowCursorForTouch()
-        {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-            hasCursorRestorePos = false;
-            ignoreNextCursorMove = false;
         }
 
         private void HideCursor()
@@ -559,5 +443,6 @@ namespace MDPro3
         }
 
         #endregion
+
     }
 }

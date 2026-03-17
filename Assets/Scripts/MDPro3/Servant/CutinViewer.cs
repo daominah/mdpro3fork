@@ -48,10 +48,16 @@ namespace MDPro3.Servant
             LoadCutins();
         }
 
+        protected override void ApplyShowArrangement(int preDepth)
+        {
+            base.ApplyShowArrangement(preDepth);
+            UserInput.SetMoveRepeatSpeed(2f);
+        }
+
         protected override void ApplyHideArrangement(int nextDepth)
         {
             base.ApplyHideArrangement(nextDepth);
-            UserInput.SetMoveRepeatRate(0.1f);
+            UserInput.SetMoveRepeatSpeed(1f);
 
             if (randomBGMPlayed)
             {

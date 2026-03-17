@@ -47,20 +47,20 @@ namespace MDPro3.Servant
         protected override void ApplyShowArrangement(int preDepth)
         {
             base.ApplyShowArrangement(preDepth);
-            Program.instance.camera_.light.gameObject.SetActive(true);
+            Program.instance.camera_.light.SetActive(true);
             Program.instance.camera_.light.transform.GetChild(0).localEulerAngles = new Vector3(123f, -28f, -40f);
             Program.instance.camera_.light.transform.GetChild(1).localEulerAngles = new Vector3(-80f, -140f, 0f);
             CameraManager.DuelOverlay2DPlus();
             CameraReset();
             AudioManager.PlayBGM("BGM_OUT_TUTORIAL_2", 0.5f);
-            UserInput.SetMoveRepeatRate(0.05f);
+            UserInput.SetMoveRepeatSpeed(2f);
         }
 
         protected override void ApplyHideArrangement(int preDepth)
         {
             base.ApplyHideArrangement(preDepth);
             CameraManager.DuelOverlay2DMinus();
-            Program.instance.camera_.light.gameObject.SetActive(false);
+            Program.instance.camera_.light.SetActive(false);
             Program.instance.camera_.light.transform.GetChild(0).localEulerAngles = new Vector3(96f, -28f, -40f);
             Program.instance.camera_.light.transform.GetChild(1).localEulerAngles = new Vector3(-15f, -45f, 0f);
             if (mate != null)
@@ -68,7 +68,7 @@ namespace MDPro3.Servant
             AudioManager.ResetSESource();
             AudioManager.PlaySE("SE_MENU_CANCEL");
             AudioManager.PlayBGM(AudioManager.BGM_MENU_MAIN);
-            UserInput.SetMoveRepeatRate(0.1f);
+            UserInput.SetMoveRepeatSpeed(1f);
         }
 
         public override void PerFrameFunction()

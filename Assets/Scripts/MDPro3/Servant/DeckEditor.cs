@@ -115,6 +115,18 @@ namespace MDPro3.Servant
             base.Initialize();
         }
 
+        protected override void ApplyShowArrangement(int preDepth)
+        {
+            base.ApplyShowArrangement(preDepth);
+            UserInput.SetMoveRepeatSpeed(0.8f);
+        }
+
+        protected override void ApplyHideArrangement(int nextDepth)
+        {
+            base.ApplyHideArrangement(nextDepth);
+            UserInput.SetMoveRepeatSpeed(1f);
+        }
+
         public override void PerFrameFunction()
         {
             if (!NeedResponseInput())
