@@ -498,12 +498,6 @@ namespace MDPro3.UI
                 Destroy(premiumOverlayIcon.gameObject);
                 premiumOverlayIcon = null;
             }
-            if (Icon != null)
-            {
-                var c = Icon.color;
-                c.a = 1f;
-                Icon.color = c;
-            }
         }
 
         private Image CreateOverlayIcon()
