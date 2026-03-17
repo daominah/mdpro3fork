@@ -49,7 +49,6 @@ namespace MDPro3.UI
         public string description;
         public string path;
         private bool loaded;
-        private Material protectorMaterial;
 
         private Coroutine refreshCoroutine;
         private Coroutine hideCoroutine;
@@ -85,16 +84,7 @@ namespace MDPro3.UI
 
                 if (path.StartsWith("Protector"))
                 {
-                    protectorMaterial = await ABLoader.LoadProtectorMaterial(itemID.ToString(), cancellationToken);
-                    if (protectorMaterial != null)
-                        protectorMaterial.renderQueue = 3000;
-
-                    if (cancellationToken.IsCancellationRequested || this == null)
-                        return;
-
-                    // Use default UI material for list rendering so viewport/mask clipping works while scrolling.
-                    Protector.texture = protectorMaterial == null ? null : protectorMaterial.mainTexture;
-                    Protector.material = null;
+                    Protector.material = await ABLoader.LoadProtector.material(itemID.ToString(), destroyCancellationToken);
                     Protector.color = Color.white;
                     Icon.gameObject.SetActive(false);
                 }
@@ -186,7 +176,7 @@ namespace MDPro3.UI
                     {
                         DeckEditor.Deck.Protector = itemID;
                         Program.instance.deckEditor.GetUI<DeckEditorUI>().DeckView.SetDirty(true);
-                        Program.instance.deckEditor.GetUI<DeckEditorUI>().IconProtector.material = protectorMaterial;
+                        Program.instance.deckEditor.GetUI<DeckEditorUI>().IconProtector.material = Protector.material;
                     }
                 }
                 else if (path.StartsWith("FieldIcon"))
@@ -259,38 +249,38 @@ namespace MDPro3.UI
                 if (Appearance.player == "0")
                 {
                     if (Appearance.condition == Appearance.Condition.Duel)
-                        Appearance.duelProtector0 = protectorMaterial;
+                        Appearance.duelProtector0 = Protector.material;
                     else if (Appearance.condition == Appearance.Condition.Watch)
-                        Appearance.watchProtector0 = protectorMaterial;
+                        Appearance.watchProtector0 = Protector.material;
                     else if (Appearance.condition == Appearance.Condition.Replay)
-                        Appearance.replayProtector0 = protectorMaterial;
+                        Appearance.replayProtector0 = Protector.material;
                 }
                 else if (Appearance.player == "1")
                 {
                     if (Appearance.condition == Appearance.Condition.Duel)
-                        Appearance.duelProtector1 = protectorMaterial;
+                        Appearance.duelProtector1 = Protector.material;
                     else if (Appearance.condition == Appearance.Condition.Watch)
-                        Appearance.watchProtector1 = protectorMaterial;
+                        Appearance.watchProtector1 = Protector.material;
                     else if (Appearance.condition == Appearance.Condition.Replay)
-                        Appearance.replayProtector1 = protectorMaterial;
+                        Appearance.replayProtector1 = Protector.material;
                 }
                 else if (Appearance.player == "0Tag")
                 {
                     if (Appearance.condition == Appearance.Condition.Duel)
-                        Appearance.duelProtector0Tag = protectorMaterial;
+                        Appearance.duelProtector0Tag = Protector.material;
                     else if (Appearance.condition == Appearance.Condition.Watch)
-                        Appearance.watchProtector0Tag = protectorMaterial;
+                        Appearance.watchProtector0Tag = Protector.material;
                     else if (Appearance.condition == Appearance.Condition.Replay)
-                        Appearance.replayProtector0Tag = protectorMaterial;
+                        Appearance.replayProtector0Tag = Protector.material;
                 }
                 else if (Appearance.player == "1Tag")
                 {
                     if (Appearance.condition == Appearance.Condition.Duel)
-                        Appearance.duelProtector1Tag = protectorMaterial;
+                        Appearance.duelProtector1Tag = Protector.material;
                     else if (Appearance.condition == Appearance.Condition.Watch)
-                        Appearance.watchProtector1Tag = protectorMaterial;
+                        Appearance.watchProtector1Tag = Protector.material;
                     else if (Appearance.condition == Appearance.Condition.Replay)
-                        Appearance.replayProtector1Tag = protectorMaterial;
+                        Appearance.replayProtector1Tag = Protector.material;
                 }
             }
             else
@@ -459,7 +449,7 @@ namespace MDPro3.UI
             if (!loaded || !path.StartsWith("Protector"))
                 return null;
 
-            return protectorMaterial;
+            return Protector.material;
         }
 
         private void PushLoadedPreviewToDetail()
