@@ -35,11 +35,12 @@ namespace MDPro3.Servant
         public static bool NeedSide;
         public static bool JoinWithReconnect;
         public static bool SideWaitingObserver;
-        public static bool FromSolo;
         public static bool SoloLockHand;
+        public static int CoreShowing = 0;
+
+        public static bool FromSolo;
         public static bool FromLocalHost;
         public static bool FromHandTest;
-        public static int CoreShowing = 0;
 
         public class Player
         {
@@ -68,8 +69,8 @@ namespace MDPro3.Servant
             CoreShowing = 0;
             Program.instance.ui_.chatPanel.Show(false);
             OcgCore.handler = Handler;
-            // Re-roll random duel/watch icon & frame whenever entering a room.
-            _ = Program.instance.appearance.LoadSettingAssets();
+            if(preDepth != Program.instance.deckSelector.Depth)
+                _ = Program.instance.appearance.LoadSettingAssets();
             GetUI<RoomServantUI>().RefreshDeckSelector();
         }
 

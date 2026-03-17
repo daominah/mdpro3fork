@@ -76,8 +76,6 @@ namespace MDPro3.Servant
         #endregion
 
         private const string FaceFrameMaterialCode = "1030001";
-        private static readonly object loadSettingAssetsLock = new();
-        private static Task loadSettingAssetsTask;
 
         public enum Condition
         {
@@ -187,19 +185,9 @@ namespace MDPro3.Servant
         public static bool loaded;
         public async UniTask LoadSettingAssets()
         {
-            Task taskToAwait;
-            lock (loadSettingAssetsLock)
-            {
-                if (loadSettingAssetsTask == null || loadSettingAssetsTask.IsCompleted)
-                {
-                    loaded = false;
-                    loadSettingAssetsTask = LoadSettingAssetsCore().AsTask();
-                }
-
-                taskToAwait = loadSettingAssetsTask;
-            }
-
-            await taskToAwait;
+            if (!loaded && matForFace != null) return;
+            loaded = false;
+            await LoadSettingAssetsCore();
         }
 
         private static void ApplyFrameTexture(Material material, Sprite sprite)
