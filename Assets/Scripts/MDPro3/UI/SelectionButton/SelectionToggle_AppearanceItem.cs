@@ -55,8 +55,9 @@ namespace MDPro3.UI
 
         private Image premiumOverlayIcon;
         private Coroutine premiumCrossfadeCoroutine;
-        private const float CrossfadeHoldSeconds = 2.0f;
-        private const float CrossfadeFadeSeconds = 0.6f;
+        private const float CrossfadeHoldSeconds = 3.0f;
+        private const float CrossfadeFadeSeconds = 1.0f;
+        private static readonly Dictionary<int, Sprite> cachedArtSprites = new();
 
         protected override void Awake()
         {
@@ -84,16 +85,15 @@ namespace MDPro3.UI
 
                 if (path.StartsWith("Protector"))
                 {
-                    Protector.material = await ABLoader.LoadProtector.material(itemID.ToString(), destroyCancellationToken);
-                    Protector.color = Color.white;
                     Icon.gameObject.SetActive(false);
+                    Protector.material = await ABLoader.LoadProtectorMaterial(itemID.ToString(), destroyCancellationToken);
+                    Protector.color = Color.white;
                 }
                 else if (path.Length > 0)
                 {
                     Icon.sprite = await Program.items.LoadItemIconAsync(itemID.ToString(), Items.ItemType.Unknown);
                     if (cancellationToken.IsCancellationRequested || this == null || Manager == null)
                         return;
-                    Icon.color = Color.white;
                     if (path.StartsWith("ProfileFrame"))
                     {
                         Icon.rectTransform.localScale = Vector3.one * 0.8f;
@@ -102,7 +102,6 @@ namespace MDPro3.UI
                             return;
                         Icon.material.SetTexture("_ProfileFrameTex", Icon.sprite.texture);
                         Icon.sprite = TextureManager.container.black;
-                        Icon.color = Color.white;
                     }
                     else if (path.StartsWith("DeckCase"))
                     {
@@ -112,15 +111,22 @@ namespace MDPro3.UI
                     {
                         WallpaperBG.gameObject.SetActive(true);
                     }
+                    Icon.color = Color.white;
                     Protector.gameObject.SetActive(false);
                 }
                 else //CrossDuel Mate
                 {
-                    var art = await CardImageLoader.LoadArtAsync(itemID, true, cancellationToken);
-                    if (cancellationToken.IsCancellationRequested || this == null)
-                        return;
+                    if(!cachedArtSprites.TryGetValue(itemID, out var sprite))
+                    {
+                        var art = await CardImageLoader.LoadArtAsync(itemID, true, cancellationToken);
+                        if (cancellationToken.IsCancellationRequested || this == null)
+                            return;
+                        sprite = TextureManager.Texture2Sprite(art);
+                        cachedArtSprites.TryAdd(itemID, sprite);
+                    }
+
+                    Icon.sprite = sprite;
                     Icon.color = Color.white;
-                    Icon.sprite = TextureManager.Texture2Sprite(art);
                     Protector.gameObject.SetActive(false);
                 }
 

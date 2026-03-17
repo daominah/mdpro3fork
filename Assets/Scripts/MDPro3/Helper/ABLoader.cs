@@ -331,7 +331,16 @@ namespace MDPro3
             }
         }
 
+        private static Shader defaultProtectorShader;
+        private const string defaultProtectorCode = "1070002";
         public static async UniTask<Material> LoadProtectorMaterial(string code, CancellationToken token)
+        {
+            if(defaultProtectorShader == null)
+                await InternalLoadProtectorMaterialAsync(defaultProtectorCode, token);
+            return await InternalLoadProtectorMaterialAsync(code, token);
+        }
+
+        public static async UniTask<Material> InternalLoadProtectorMaterialAsync(string code, CancellationToken token)
         {
             await protectorSemaphoreSlim.WaitAsync(token);
 
@@ -381,14 +390,15 @@ namespace MDPro3
                     return null;
                 }
 
+                if (defaultProtectorShader == null &&
+                    code == defaultProtectorCode)
+                    defaultProtectorShader = material.shader;
+                if (material.shader.name.Contains("3D"))
+                    material.shader = defaultProtectorShader;
                 material.renderQueue = 3000;
                 foreach (var bundle in bundles)
                     bundle.Unload(false);
-
-                if (cachedPMat.ContainsKey(code))
-                    material = cachedPMat[code];
-                else
-                    cachedPMat.Add(code, material);
+                cachedPMat.TryAdd(code, material);
 
                 return material;
             }
