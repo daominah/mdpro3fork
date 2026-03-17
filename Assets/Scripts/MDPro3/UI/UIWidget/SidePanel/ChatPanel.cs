@@ -311,11 +311,6 @@ namespace MDPro3.UI
         public static PlayerPosition GetPlayerPosition(int player)
         {
             player = GetRoomPlayerIndex(player);
-            bool spectatorInRoomLobby =
-                RoomServant.SelfType == 7
-                && Program.instance.room != null
-                && Program.instance.room.showing
-                && !Program.instance.ocgcore.showing;
             PlayerPosition position;
             if (player < 4)
             {
@@ -331,9 +326,9 @@ namespace MDPro3.UI
                     else
                     {
                         if (player == 0)
-                            position = spectatorInRoomLobby ? PlayerPosition.Me : PlayerPosition.WatchMe;
+                            position = PlayerPosition.WatchMe;
                         else
-                            position = spectatorInRoomLobby ? PlayerPosition.Op : PlayerPosition.WatchOp;
+                            position = PlayerPosition.WatchOp;
                     }
                 }
                 else
@@ -355,13 +350,13 @@ namespace MDPro3.UI
                     else
                     {
                         if (player == 0)
-                            position = spectatorInRoomLobby ? PlayerPosition.Me : PlayerPosition.WatchMe;
+                            position = PlayerPosition.WatchMe;
                         else if (player == 1)
-                            position = spectatorInRoomLobby ? PlayerPosition.MyTag : PlayerPosition.WatchMyTag;
+                            position = PlayerPosition.WatchMyTag;
                         else if (player == 2)
-                            position = spectatorInRoomLobby ? PlayerPosition.Op : PlayerPosition.WatchOp;
+                            position = PlayerPosition.WatchOp;
                         else
-                            position = spectatorInRoomLobby ? PlayerPosition.OpTag : PlayerPosition.WatchOpTag;
+                            position = PlayerPosition.WatchOpTag;
                     }
                 }
             }
