@@ -43,6 +43,16 @@ namespace MDPro3.Servant
         public void SwitchCondition(Condition condition)
         {
             SoloSelector.condition = condition;
+            switch (condition)
+            {
+                case Condition.ForSolo:
+                    returnServant = Program.instance.menu;
+                    break;
+                case Condition.ForRoom:
+                    returnServant = Program.instance.room;
+                    break;
+            }
+
         }
 
         [HideInInspector] public SelectionToggle_Solo lastSoloItem;
