@@ -16,6 +16,7 @@ namespace MDPro3.Duel.YGOSharp
         public int Id;
         public int Ot;
         public int Alias;
+        public int RuleCode;
         public long Setcode;
         public int Type;
 
@@ -68,6 +69,7 @@ namespace MDPro3.Duel.YGOSharp
             r.Id = Id;
             r.Ot = Ot;
             r.Alias = Alias;
+            r.RuleCode = RuleCode;
             r.Setcode = Setcode;
             r.Type = Type;
             r.Level = Level;
@@ -98,6 +100,7 @@ namespace MDPro3.Duel.YGOSharp
             r.Id = Id;
             r.Ot = Ot;
             r.Alias = Alias;
+            r.RuleCode = RuleCode;
             r.Setcode = Setcode;
             r.Type = Type;
             r.Level = Level;
@@ -153,9 +156,13 @@ namespace MDPro3.Duel.YGOSharp
             {
                 Str[ii] = reader.GetString(14 + ii);
             }
+            //TODO
+            if(Id == 6218705)
+            {
+                RuleCode = 13331639;
+                Alias = 13331639;
+            }
         }
-
-
 
         #region Tools
 
