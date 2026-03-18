@@ -114,55 +114,22 @@ namespace MDPro3.UI
             if (data == null)
                 return;
 
-            var userInfo = MyCard.account?.user;
-            var userName = userInfo?.name;
-            if (string.IsNullOrEmpty(userName))
-                userName = userInfo?.username ?? string.Empty;
+            if(MyCard.account != null)
+                TextUserName.text = MyCard.account.user.name;
+            TextExpValue.text = data.exp.ToString();
+            TextDPValue.text = data.pt.ToString();
+            TextAthleticWinValue.text = data.athletic_win.ToString();
+            TextAthleticWinRatioValue.text = data.athletic_wl_ratio + "%";
+            TextAthleticRankValue.text = data.arena_rank.ToString();
+            TextEntertainCountValue.text = data.entertain_all.ToString();
+            TextEntertainRankValue.text = data.exp_rank.ToString();
 
-            var textUserName = TextUserName;
-            if (textUserName != null)
-                textUserName.text = userName;
-            var textExpValue = TextExpValue;
-            if (textExpValue != null)
-                textExpValue.text = data.exp.ToString();
-            var textDPValue = TextDPValue;
-            if (textDPValue != null)
-                textDPValue.text = data.pt.ToString();
-            var textAthleticWinValue = TextAthleticWinValue;
-            if (textAthleticWinValue != null)
-                textAthleticWinValue.text = data.athletic_win.ToString();
-            var textAthleticWinRatioValue = TextAthleticWinRatioValue;
-            if (textAthleticWinRatioValue != null)
-                textAthleticWinRatioValue.text = data.athletic_wl_ratio + "%";
-            var textAthleticRankValue = TextAthleticRankValue;
-            if (textAthleticRankValue != null)
-                textAthleticRankValue.text = data.arena_rank.ToString();
-            var textEntertainCountValue = TextEntertainCountValue;
-            if (textEntertainCountValue != null)
-                textEntertainCountValue.text = data.entertain_all.ToString();
-            var textEntertainRankValue = TextEntertainRankValue;
-            if (textEntertainRankValue != null)
-                textEntertainRankValue.text = data.exp_rank.ToString();
-
-            var rankSprites = TextureManager.container?.GetRankSprites(data.pt);
-            if (rankSprites == null || rankSprites.Count < 5)
-                return;
-
-            var iconBG = IconBG;
-            if (iconBG != null)
-                iconBG.sprite = rankSprites[0];
-            var iconRank = IconRank;
-            if (iconRank != null)
-                iconRank.sprite = rankSprites[1];
-            var iconTier1 = IconTier1;
-            if (iconTier1 != null)
-                iconTier1.sprite = rankSprites[2];
-            var iconTier2 = IconTier2;
-            if (iconTier2 != null)
-                iconTier2.sprite = rankSprites[3];
-            var iconTier3 = IconTier3;
-            if (iconTier3 != null)
-                iconTier3.sprite = rankSprites[4];
+            var rankSprites = TextureManager.container.GetRankSprites(data.pt);
+            IconBG.sprite = rankSprites[0];
+            IconRank.sprite = rankSprites[1];
+            IconTier1.sprite = rankSprites[2];
+            IconTier2.sprite = rankSprites[3];
+            IconTier3.sprite = rankSprites[4];
         }
     }
 }
