@@ -145,7 +145,6 @@ namespace MDPro3.Servant
             RoomServant.FromLocalHost = true;
             RoomServant.FromHandTest = false;
 
-            BanlistManager.PrepareLocalServerLflist();
             YgoServer.StartServer(args);
             TcpHelper.LinkStart("127.0.0.1", Config.Get("DuelPlayerName0", Config.EMPTY_STRING), port.ToString(), string.Empty, true, null);
         }

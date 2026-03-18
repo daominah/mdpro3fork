@@ -48,16 +48,16 @@ namespace MDPro3
             if (Config.GetBool("Expansions", true))
             {
                 foreach (var conf in Directory.GetFiles(Program.PATH_EXPANSIONS, "*.conf"))
-                    if (!conf.ToLower().EndsWith("lflist.conf"))
+                    if (!conf.ToLower().EndsWith(BanlistManager.FILE_NAME))
                         text += Program.STRING_LINE_BREAK + File.ReadAllText(conf);
                 foreach (var zip in ZipHelper.zips)
                 {
-                    if (zip.Name.ToLower().EndsWith("script.zip"))
+                    if (zip.Name.ToLower().EndsWith(Program.SCRIPT_ZIP))
                         continue;
                     foreach (var file in zip.EntryFileNames)
                     {
                         if (file.ToLower().EndsWith(Program.EXPANSION_CONF)
-                            && !file.ToLower().EndsWith("lflist.conf"))
+                            && !file.ToLower().EndsWith(BanlistManager.FILE_NAME))
                         {
                             var ms = new MemoryStream();
                             var e = zip[file];

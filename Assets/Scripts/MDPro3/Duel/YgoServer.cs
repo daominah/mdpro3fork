@@ -22,29 +22,15 @@ namespace MDPro3.Net
 
             serverThread = new Thread(() =>
             {
-                try
-                {
-                    Dll.start_server(args);
-                }
-                finally
-                {
-                    BanlistManager.RestoreLocalServerLflist();
-                }
+                Dll.start_server(args);
             });
             serverThread.Start();
         }
 
         public static void StopServer()
         {
-            try
-            {
-                Dll.stop_server();
-            }
-            finally
-            {
-                serverThread?.Abort();
-                BanlistManager.RestoreLocalServerLflist();
-            }
+            Dll.stop_server();
+            serverThread?.Abort();
         }
 
         public static bool ServerRunning()

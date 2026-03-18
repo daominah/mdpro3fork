@@ -34,7 +34,7 @@ namespace MDPro3
             var returnValue = new List<string>();
             foreach (var zip in zips)
             {
-                if (zip.Name.ToLower().EndsWith("script.zip"))
+                if (zip.Name.ToLower().EndsWith(Program.SCRIPT_ZIP))
                     continue;
                 foreach (var file in zip.EntryFileNames)
                 {

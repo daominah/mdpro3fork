@@ -508,7 +508,7 @@ namespace MDPro3.Utility
             {
                 foreach (var zip in ZipHelper.zips)
                 {
-                    if (zip.Name.ToLower().EndsWith("script.zip"))
+                    if (zip.Name.ToLower().EndsWith(Program.SCRIPT_ZIP))
                         continue;
                     foreach (var file in zip.EntryFileNames)
                     {

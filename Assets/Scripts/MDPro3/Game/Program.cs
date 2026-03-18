@@ -75,7 +75,6 @@ namespace MDPro3
         public const string PATH_DATA = "Data/";
         public const string PATH_LOCALES = "Data/locales/";
         public const string PATH_CONFIG = "Data/config.conf";
-        public const string PATH_LFLIST = "Data/lflist.conf";
         public const string PATH_DECK = "Deck/";
         public const string PATH_EXPANSIONS = "Expansions/";
         public const string PATH_PUZZLE = "Puzzle/";
@@ -93,6 +92,7 @@ namespace MDPro3
         public const string EXPANSION_MP4 = ".mp4";
         public const string STRING_SLASH = "/";
         public const string STRING_LINE_BREAK = "\r\n";
+        public const string SCRIPT_ZIP = "script.zip";
 
         #endregion
 

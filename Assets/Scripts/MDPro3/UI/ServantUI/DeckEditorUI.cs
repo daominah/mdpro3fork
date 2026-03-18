@@ -850,7 +850,7 @@ namespace MDPro3.UI.ServantUI
             if (DeckIsFromLocal && !DeckView.GetDirty()) return;
 
             if (DeckIsFromLocal)
-                if (banlist.Name != BanlistManager.EmptyBanlistName)
+                if (banlist.Name != BanlistManager.EMPTY_LIST_NAME)
                 {
                     if (DeckView.mainCount > 60 || DeckView.extraCount > 15 || DeckView.sideCount > 15)
                     {
