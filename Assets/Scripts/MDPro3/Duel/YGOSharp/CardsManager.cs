@@ -6,6 +6,7 @@ using Mono.Data.Sqlite;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Text.RegularExpressions;
@@ -18,9 +19,11 @@ namespace MDPro3.Duel.YGOSharp
         public static string nullName = string.Empty;
         public static string nullString = string.Empty;
         public static string nameInSearch = string.Empty;
+        private const string EXPANSION_CDB = ".cdb";
 
-        public static IDictionary<int, Card> _cards = new Dictionary<int, Card>();
-        public static IDictionary<int, Card> _cardsForRender = new Dictionary<int, Card>();
+
+        public static Dictionary<int, Card> _cards = new();
+        public static Dictionary<int, Card> _cardsForRender = new();
         private static readonly CompareInfo SearchCompareInfo = CultureInfo.InvariantCulture.CompareInfo;
         private const CompareOptions SearchCompareOptions =
             CompareOptions.IgnoreCase | CompareOptions.IgnoreWidth | CompareOptions.IgnoreKanaType;
@@ -62,56 +65,36 @@ namespace MDPro3.Duel.YGOSharp
         internal static void Initialize()
         {
             nullName = InterString.Get("未知卡片");
-            nullString = string.Empty;
-            IDictionary<int, Card> previousCards = _cards;
-            IDictionary<int, Card> previousRenderCards = _cardsForRender;
 
-            var loadedCards = new Dictionary<int, Card>(Math.Max(previousCards?.Count ?? 0, 16384));
-            var loadedRenderCards = new Dictionary<int, Card>(Math.Max(previousRenderCards?.Count ?? 0, 16384));
+            var preCards = _cards;
+            var preRenderCards = _cardsForRender;
 
-            bool loadedMain = TryLoadCardsForLanguage(loadedCards, Language.GetConfig(), render: false);
-            bool loadedRender = TryLoadCardsForLanguage(loadedRenderCards, Language.GetCardConfig(), render: true);
+            var language = Language.GetConfig();
+            var cardLanguage = Language.GetCardConfig();
 
-            if (!loadedMain || loadedCards.Count == 0)
+            _cards = new();
+            if(!TryLoadCardsForLanguage(_cards, language))
             {
-                if (string.IsNullOrEmpty(MDPro3.MessageManager.messageFromSubString))
+                UnityEngine.Debug.LogError("Load CDB Error.");
+                _cards = preCards;
+            }
+
+            if (language == cardLanguage)
+            {
+                _cardsForRender = _cards;
+            }
+            else
+            {
+                _cardsForRender = new();
+                if (!TryLoadCardsForLanguage(_cardsForRender, cardLanguage))
                 {
-                    MDPro3.MessageManager.messageFromSubString =
-                        InterString.Get("Failed to load card database. Some cards may be shown as unknown.");
+                    UnityEngine.Debug.LogError("Load CDB Error.");
+                    _cardsForRender = preRenderCards;
                 }
-
-                if (previousCards != null && previousCards.Count > 0)
-                    _cards = previousCards;
-                else
-                    _cards = loadedCards;
-
-                if (previousRenderCards != null && previousRenderCards.Count > 0)
-                    _cardsForRender = previousRenderCards;
-                else
-                    _cardsForRender = loadedRenderCards;
-
-                return;
             }
-
-            if (!loadedRender)
-            {
-                if (previousRenderCards != null && previousRenderCards.Count > 0)
-                    loadedRenderCards = new Dictionary<int, Card>(previousRenderCards);
-                else
-                    loadedRenderCards = new Dictionary<int, Card>(loadedCards);
-            }
-
-            _cards = loadedCards;
-            _cardsForRender = loadedRenderCards;
 
             UpdateSetNames();
             PacksManager.Initialize();
-        }
-
-        internal static void LoadCDB(string databaseFullPath, bool render = false, bool isPreCards = false)
-        {
-            var targetCards = render ? _cardsForRender : _cards;
-            TryLoadCDB(databaseFullPath, targetCards, isPreCards, render, optionalDatabase: false);
         }
 
         internal static void UpdateSetNames()
@@ -188,17 +171,17 @@ namespace MDPro3.Duel.YGOSharp
             return returnValue;
         }
 
-        private static bool TryLoadCardsForLanguage(IDictionary<int, Card> targetCards, string language, bool render)
+        private static bool TryLoadCardsForLanguage(IDictionary<int, Card> targetCards, string language)
         {
             string databaseFullPath = ResolveCardsDatabasePath(language);
-            if (!TryLoadCDB(databaseFullPath, targetCards, isPreCards: false, render, optionalDatabase: false))
+            if (!TryLoadCDB(databaseFullPath, targetCards, isPreCards: false))
                 return false;
 
-            if (Config.Get("Expansions", "1") != "1")
+            if (Config.GetBool("Expansions", true))
                 return true;
 
-            foreach (var cdb in Directory.GetFiles("Expansions", "*.cdb"))
-                TryLoadCDB(cdb, targetCards, isPreCards: false, render, optionalDatabase: true);
+            foreach (var cdb in Directory.GetFiles(Program.PATH_EXPANSIONS, EXPANSION_CDB))
+                TryLoadCDB(cdb, targetCards, isPreCards: false);
 
             foreach (var zip in ZipHelper.zips)
             {
@@ -207,7 +190,7 @@ namespace MDPro3.Duel.YGOSharp
 
                 foreach (var file in zip.EntryFileNames)
                 {
-                    if (!file.ToLower().EndsWith(".cdb"))
+                    if (!file.ToLower().EndsWith(EXPANSION_CDB))
                         continue;
 
                     string tempRoot = Path.GetFullPath(Program.PATH_TEMP_FOLDER);
@@ -223,12 +206,13 @@ namespace MDPro3.Duel.YGOSharp
 
                         bool fromPrereleasePack = Path.GetFileName(zip.Name)
                             .Equals("ygopro-super-pre.ypk", StringComparison.OrdinalIgnoreCase);
-                        isPreCards = fromPrereleasePack && (render || file.ToLower().StartsWith("test-release"));
-
-                        TryLoadCDB(tempFile, targetCards, isPreCards, render, optionalDatabase: true);
+                        isPreCards = fromPrereleasePack && file.ToLower().StartsWith("test-release");
+                        TryLoadCDB(tempFile, targetCards, isPreCards);
                     }
-                    catch (Exception)
+                    catch (Exception e)
                     {
+                        UnityEngine.Debug.LogException(e);
+                        return false;
                     }
                     finally
                     {
@@ -237,9 +221,7 @@ namespace MDPro3.Duel.YGOSharp
                             if (File.Exists(tempFile))
                                 File.Delete(tempFile);
                         }
-                        catch (Exception)
-                        {
-                        }
+                        catch {}
                     }
                 }
             }
@@ -258,9 +240,7 @@ namespace MDPro3.Duel.YGOSharp
         private static bool TryLoadCDB(
             string databaseFullPath,
             IDictionary<int, Card> targetCards,
-            bool isPreCards,
-            bool render,
-            bool optionalDatabase)
+            bool isPreCards)
         {
             try
             {
@@ -271,19 +251,10 @@ namespace MDPro3.Duel.YGOSharp
                     new SqliteCommand("SELECT datas.*, texts.* FROM datas,texts WHERE datas.id=texts.id;", connection);
                 using IDataReader reader = command.ExecuteReader();
                 while (reader.Read())
-                {
-                    try
-                    {
-                        LoadCard(reader, targetCards, isPreCards);
-                    }
-                    catch (Exception)
-                    {
-                    }
-                }
-
+                    LoadCard(reader, targetCards, isPreCards);
                 return true;
             }
-            catch (Exception)
+            catch
             {
                 return false;
             }
