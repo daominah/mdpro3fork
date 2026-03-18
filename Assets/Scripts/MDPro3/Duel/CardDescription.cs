@@ -1,12 +1,9 @@
 using DG.Tweening;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using YgomSystem.ElementSystem;
 using MDPro3.Duel.YGOSharp;
-using static MDPro3.CardRenderer;
 using static MDPro3.Servant.OcgCore;
 using MDPro3.Utility;
 using MDPro3.UI;
@@ -317,7 +314,7 @@ namespace MDPro3
                 manager.GetElement("PropertyMonster").SetActive(false);
                 manager.GetElement("PropertySpell").SetActive(true);
                 manager.GetElement<Image>("SpellType").sprite = TextureManager.GetSpellTrapTypeIcon(data);
-                manager.GetElement<Text>("TextSpellType").text = data.GetSpellTrapType(true);
+                manager.GetElement<Text>("TextSpellType").text = data.GetSpellTrapType();
             }
             RefreshLimitIcon(data.Id);
         }

@@ -25,8 +25,8 @@ namespace MDPro3
         public static void Initialize()
         {
             translations.Clear();
-            translationsForRender = new Dictionary<string, string>();
-            translationsForPrerelease = new Dictionary<string, string>();
+            translationsForRender.Clear();
+            translationsForPrerelease.Clear();
 
             path = Program.PATH_LOCALES + Language.GetConfig() + PATH_CONF_FILE;
             if (!File.Exists(path))
@@ -41,6 +41,7 @@ namespace MDPro3
             else
             {
                 pathForRender = Program.PATH_LOCALES + Language.GetCardConfig() + PATH_CONF_FILE;
+                translationsForRender = new();
                 if (!File.Exists(pathForRender))
                     File.Create(pathForRender).Close();
                 InitializeContent(File.ReadAllText(pathForRender), 1);
@@ -59,6 +60,7 @@ namespace MDPro3
             else
             {
                 pathForPrerelease = Program.PATH_LOCALES + Language.GetPrereleaseConfig() + PATH_CONF_FILE;
+                translationsForPrerelease = new();
                 if (!File.Exists(pathForPrerelease))
                     File.Create(pathForPrerelease).Close();
                 InitializeContent(File.ReadAllText(pathForPrerelease), 2);

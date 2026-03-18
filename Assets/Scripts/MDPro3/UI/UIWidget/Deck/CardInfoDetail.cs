@@ -410,7 +410,7 @@ namespace MDPro3.UI
                 ParamatorAreaBottom.SetActive(false);
                 SpellTrapType.SetActive(true);
                 IconSpellTrapType.sprite = TextureManager.container.GetCardSpellTrapTypeIcon(data);
-                TextSpellTrapType.text = data.GetSpellTrapType(true);
+                TextSpellTrapType.text = data.GetSpellTrapType();
                 PoolGroup.SetParent(ParamatorAreaTop.transform, false);
             }
 
