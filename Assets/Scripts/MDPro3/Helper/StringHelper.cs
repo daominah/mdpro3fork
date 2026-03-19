@@ -178,6 +178,8 @@ namespace MDPro3
                 }
             }
 
+            if (a == string.Empty)
+                a = "???";
             return a;
         }
 
