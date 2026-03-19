@@ -471,7 +471,6 @@ namespace MDPro3
                 return;
             var syncMessage = OnlineAppearanceSync.BuildMessageForLocalPlayer(deckFor);
             CtosMessage_Chat(syncMessage);
-            Debug.Log($"[OnlineAppearance] Sent sync payload: {syncMessage}");
         }
 
         public static void CtosMessage_UpdateAppearanceFromCurrentDeck()

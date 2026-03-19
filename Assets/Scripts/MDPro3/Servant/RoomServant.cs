@@ -547,7 +547,7 @@ namespace MDPro3.Servant
         {
             int player = r.ReadInt16();
             var length = (int)((r.BaseStream.Length - r.BaseStream.Position) / 2);
-            var content = r.ReadUnicode((int)length);
+            var content = r.ReadUnicode(length);
             if (OnlineAppearanceSync.IsSyncMessage(content))
             {
                 if (player >= 0 && player < 4 && OnlineAppearanceSync.TryParse(content, out var appearance))
@@ -559,7 +559,7 @@ namespace MDPro3.Servant
                 }
                 else
                 {
-                    Debug.LogWarning($"[OnlineAppearance] Ignored sync chat. seat={player}, content='{content}'");
+                    Debug.LogWarning($"[OnlineAppearance] Ignored sync chat. seat={player}");
                 }
                 return;
             }
