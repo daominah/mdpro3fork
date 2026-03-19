@@ -16,6 +16,21 @@ namespace MDPro3.UI
 {
     public class SelectionToggle_Watch : SelectionToggle_ScrollRectItem
     {
+        #region Elements
+
+        private TextMeshProUGUI m_Player0Label;
+        private TextMeshProUGUI Player0Label =>
+            m_Player0Label = m_Player0Label != null ? m_Player0Label
+            : Manager.GetElement<TextMeshProUGUI>("Player0Name");
+
+        private TextMeshProUGUI m_Player1Label;
+        private TextMeshProUGUI Player1Label =>
+            m_Player1Label = m_Player1Label != null ? m_Player1Label
+            : Manager.GetElement<TextMeshProUGUI>("Player1Name");
+
+        #endregion
+
+
         [Header("SelectionToggle Watch")]
 
 
@@ -25,17 +40,12 @@ namespace MDPro3.UI
         public string player1Name;
         public string arena;
         public MyCardRoomOptions options = new();
+
         public override void Refresh()
         {
             base.Refresh();
-
-            var player0Label = Manager.GetElement<TextMeshProUGUI>("Player0Name");
-            var player1Label = Manager.GetElement<TextMeshProUGUI>("Player1Name");
-
-            if (player0Label != null)
-                player0Label.text = GetSafeDisplayName(player0Name, player0Label);
-            if (player1Label != null)
-                player1Label.text = GetSafeDisplayName(player1Name, player1Label);
+            Player0Label.text = GetSafeDisplayName(player0Name, Player0Label);
+            Player1Label.text = GetSafeDisplayName(player1Name, Player1Label);
         }
 
         private static string GetSafeDisplayName(string name, TextMeshProUGUI label)

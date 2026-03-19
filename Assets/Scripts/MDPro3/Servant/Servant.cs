@@ -54,8 +54,8 @@ namespace MDPro3.Servant
                 {
                     result.Result.transform.SetParent(transform, false);
                     servantUI = result.Result.GetComponent<ServantUI>();
-                    ApplyShowArrangement(preDepth);
                     FirstLoadEvent();
+                    ApplyShowArrangement(preDepth);
                 };
             }
         }

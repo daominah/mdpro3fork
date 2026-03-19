@@ -775,7 +775,7 @@ namespace MDPro3
         {
             var unicode = reader.ReadBytes(len * 2);
             var text = Encoding.Unicode.GetString(unicode);
-            text = text.Substring(0, text.IndexOf('\0'));
+            text = text[..text.IndexOf('\0')];
             return text;
         }
 
