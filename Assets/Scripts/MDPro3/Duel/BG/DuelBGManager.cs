@@ -22,6 +22,7 @@ using YgomSystem.ElementSystem;
 using YgomSystem.Timeline;
 using static MDPro3.Servant.OcgCore;
 using static YgomGame.Bg.BgEffectSettingInner;
+using static YgomGame.Bg.BgUnit;
 
 namespace MDPro3.Duel
 {
@@ -939,8 +940,7 @@ namespace MDPro3.Duel
 
             mate.parent = anchor;
             mate.transform.SetParent(anchor, false);
-            mate.transform.localPosition = Vector3.zero;
-            mate.transform.localRotation = Quaternion.identity;
+            mate.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
         }
 
         private static int GetRayeEngageMateId(PremiumMateState state)
@@ -993,7 +993,6 @@ namespace MDPro3.Duel
         {
             if (state == null)
                 return;
-
             foreach (var pair in state.Forms)
             {
                 var mate = pair.Value;
@@ -1096,7 +1095,6 @@ namespace MDPro3.Duel
         {
             if (mate == null || triggerPriority == null || triggerPriority.Count == 0)
                 return false;
-
             var checkedSet = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
             for (var i = 0; i < triggerPriority.Count; i++)
             {
@@ -1253,6 +1251,7 @@ namespace MDPro3.Duel
                 ? state.SwapEffect.ToSubNextTriggerPriority
                 : state.SwapEffect.ToBaseNextTriggerPriority);
             IReadOnlyList<string> effectiveNextTriggerPriority = nextTriggerPriority;
+
             if (state.SwapEffect.UseChangeMotion && currentMate != null && playChangeOnCurrentMate
                 && !MateHasAnyTransitionCandidate(currentMate, currentTriggerPriority))
                 playChangeOnCurrentMate = false;
@@ -2273,6 +2272,8 @@ namespace MDPro3.Duel
             foreach (var go in allGameObjects)
                 UnityEngine.Object.Destroy(go);
             allGameObjects.Clear();
+            bgPhase0 = 0;
+            bgPhase1 = 0;
             ResetPremiumMateStates();
             mate0 = null;
             mate1 = null;
