@@ -8,12 +8,12 @@ namespace MDPro3.UI
         public static float LastEventTime { get; private set; } = float.NegativeInfinity;
         public static string LastEventLabel { get; private set; } = string.Empty;
 
-        void PlayAnimationEventSe(string se)
+        private void PlayAnimationEventSe(string se)
         {
             RegisterEvent(se);
             AudioManager.PlaySE(se, 0.4f);
         }
-        void NewEvent(string se)
+        private void NewEvent(string se)
         {
             RegisterEvent(se);
             AudioManager.PlaySE(se, 0.4f);

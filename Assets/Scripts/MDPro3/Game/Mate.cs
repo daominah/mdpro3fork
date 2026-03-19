@@ -1,11 +1,11 @@
+using MDPro3.Servant;
+using MDPro3.UI;
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using System;
 using UnityEngine;
 using UnityEngine.Playables;
 using Willow;
-using MDPro3.Servant;
-using MDPro3.UI;
 
 namespace MDPro3
 {
@@ -78,7 +78,7 @@ namespace MDPro3
         private Coroutine masterDuelVoiceFallbackCoroutine;
         private float masterDuelVoiceFallbackStartTime;
 
-        bool Playing()
+        private bool Playing()
         {
             if (directorA != null && directorA.state == PlayState.Playing)
                 return true;
@@ -162,6 +162,7 @@ namespace MDPro3
                 masterDuelPrimaryAnimator = masterDuelAnimators[0];
 
             masterDuelInitialized = true;
+
         }
 
         private void RefreshMasterDuelAnimatorCacheIfNeeded()
@@ -223,7 +224,7 @@ namespace MDPro3
             }
         }
 
-        void Start()
+        private void Start()
         {
             if (type == MateType.MasterDuel)
             {
@@ -282,17 +283,13 @@ namespace MDPro3
                 var animator = GetComponent<Animator>();
                 if (animator != null)
                     animator.cullingMode = AnimatorCullingMode.AlwaysAnimate;
-
-                //AnimatorControllerParameter[] parameter = animator.parameters;
-                //foreach (var param in parameter)
-                //    Debug.Log(": 参数名称：" + param.name + " 参数类型：" + param.type);
-
             }
         }
 
-
         public void Play(MateAction action)
         {
+            //Debug.Log($"Mate {code} Play {action}.");
+
             switch (type)
             {
                 case (MateType.MasterDuel):
@@ -620,6 +617,9 @@ namespace MDPro3
 
         public bool PlayChangeTransition(IReadOnlyList<string> triggerPriority, out float suggestedDelaySeconds)
         {
+            //foreach (var trigger in triggerPriority)
+            //    Debug.Log($"PlayChangeTransition: {trigger}");
+
             suggestedDelaySeconds = 0f;
             if (type != MateType.MasterDuel)
                 return false;

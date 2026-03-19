@@ -107,10 +107,10 @@ namespace MDPro3.Duel
                 : ToBaseTriggerPriority;
             ToSubNextTriggerPriority = toSubNextTriggerPriority != null && toSubNextTriggerPriority.Count > 0
                 ? toSubNextTriggerPriority.ToArray()
-                : ToSubTriggerPriority;
+                : ToSubCurrentTriggerPriority;
             ToBaseNextTriggerPriority = toBaseNextTriggerPriority != null && toBaseNextTriggerPriority.Count > 0
                 ? toBaseNextTriggerPriority.ToArray()
-                : ToBaseTriggerPriority;
+                : ToBaseCurrentTriggerPriority;
             DuelStartTriggerPriority = duelStartTriggerPriority != null && duelStartTriggerPriority.Count > 0
                 ? duelStartTriggerPriority.ToArray()
                 : ToSubTriggerPriority;
@@ -180,13 +180,9 @@ namespace MDPro3.Duel
                 toSubEffectLabel: "EngageToKagari",
                 toBaseEffectLabel: "KagariToEngage",
                 useUnscaledSwapTiming: true,
-                toSubTriggerPriority: new[] { "Change2", "Change1", "Change", "ChangePreHide" },
-                toBaseTriggerPriority: new[] { "Change2", "ChangeBack", "ChangePreHide", "Change" },
-                toBaseCurrentTriggerPriority: new[] { "Change2", "ChangeBack", "ChangePreHide", "Change" },
-                toSubNextTriggerPriority: new[] { "Change2", "Change1", "Change", "Entry", "Normal", "ChangePreHide" },
-                toBaseNextTriggerPriority: new[] { "Entry", "Normal", "Change2", "ChangeBack", "ChangePreHide", "Change" },
                 duelStartTriggerPriority: new[] { "Change", "Change2", "Change1", "ChangePreHide" },
-                playChangeOnTargetMate: false,
+                playChangeOnTargetMate: true,
+                playChangeOnBothMates: true,
                 preferNonChangeNextWhenChangeTriggerMissing: true) },
             { 1003004, new PremiumMateSwapEffect(
                 1003004,
