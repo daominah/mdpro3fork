@@ -16,7 +16,7 @@ namespace MDPro3.UI
 
         public SuperScrollView superScrollView;
         private List<MyCardRoom> rooms;
-        private List<string[]> tasks = new List<string[]>();
+        private readonly List<string[]> tasks = new();
 
         private void OnEnable()
         {
@@ -96,7 +96,7 @@ namespace MDPro3.UI
                     room.options.replay_mode.ToString()
             };
             tasks.Add(task);
-            if (gameObject.activeInHierarchy)
+            if (superScrollView != null && gameObject.activeInHierarchy)
                 superScrollView.Add(task);
         }
         public void UpdateRoom(MyCardRoom room)
@@ -129,7 +129,7 @@ namespace MDPro3.UI
                 {
                     for (var j = 1; j < task.Length; j++)
                         tasks[i][j] = task[j];
-                    if (gameObject.activeInHierarchy)
+                    if (superScrollView != null && gameObject.activeInHierarchy)
                         superScrollView.UpdateAt(i, task);
                     break;
                 }
@@ -142,7 +142,7 @@ namespace MDPro3.UI
                 if (rooms[i].id == roomId)
                 {
                     rooms.Remove(rooms[i]);
-                    if (gameObject.activeInHierarchy)
+                    if (superScrollView != null && gameObject.activeInHierarchy)
                         superScrollView.RemoveAt(i);
                     break;
                 }
