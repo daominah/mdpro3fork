@@ -85,15 +85,6 @@ namespace MDPro3.UI.ServantUI
             m_TextPlaceCount = m_TextPlaceCount != null ? m_TextPlaceCount
             : Manager.GetElement<TextMeshProUGUI>(LABEL_TXT_PLACECOUNT);
 
-        private RectTransform nearLowDeckIndicator;
-        private RectTransform farLowDeckIndicator;
-        private TextMeshProUGUI nearLowDeckCount;
-        private TextMeshProUGUI farLowDeckCount;
-        private static readonly Vector2 NearLowDeckIndicatorOffset = new Vector2(0f, 14f);
-        private static readonly Vector2 FarLowDeckIndicatorOffset = new Vector2(0f, -6f);
-        private const float LowDeckIndicatorSize = 44f;
-        private const float LowDeckIndicatorFontSizeMax = 30f;
-
         #endregion
 
         #region Mono
@@ -182,7 +173,6 @@ namespace MDPro3.UI.ServantUI
             base.ShowEvent();
 
             CloseHint();
-            HideLowDeckCountIndicators();
 
             ButtonStop.gameObject.SetActive(true);
             ButtonPlay.gameObject.SetActive(false);
@@ -192,70 +182,11 @@ namespace MDPro3.UI.ServantUI
             ButtonTiming.gameObject.SetActive(condition == Condition.Duel);
         }
 
-        private void Update()
-        {
-            RefreshLowDeckCountIndicators();
-        }
-
         #region UI Tools
 
-        private void EnsureLowDeckCountIndicators()
-        {
-            if (nearLowDeckIndicator != null && farLowDeckIndicator != null)
-                return;
-
-            if (nearLowDeckIndicator == null)
-                nearLowDeckIndicator = CreateLowDeckCountIndicator("LowDeckCountNear", out nearLowDeckCount);
-            if (farLowDeckIndicator == null)
-                farLowDeckIndicator = CreateLowDeckCountIndicator("LowDeckCountFar", out farLowDeckCount);
-        }
-
-        private RectTransform CreateLowDeckCountIndicator(string name, out TextMeshProUGUI indicator)
-        {
-            var indicatorObject = new GameObject(name, typeof(RectTransform));
-            indicatorObject.transform.SetParent(RectPlaceCount.parent, false);
-            indicatorObject.name = name;
-            indicatorObject.SetActive(false);
-
-            var indicatorRect = indicatorObject.GetComponent<RectTransform>();
-            indicatorRect.anchorMin = RectPlaceCount.anchorMin;
-            indicatorRect.anchorMax = RectPlaceCount.anchorMax;
-            indicatorRect.pivot = new Vector2(0.5f, 0.5f);
-            indicatorRect.sizeDelta = new Vector2(LowDeckIndicatorSize, LowDeckIndicatorSize);
-            indicatorRect.localScale = Vector3.one;
-            indicatorRect.localRotation = Quaternion.identity;
-            indicatorRect.anchoredPosition = Vector2.zero;
-
-            var textObject = new GameObject("Text", typeof(RectTransform), typeof(TextMeshProUGUI));
-            textObject.transform.SetParent(indicatorObject.transform, false);
-            indicator = textObject.GetComponent<TextMeshProUGUI>();
-            indicator.font = TextPlaceCount.font;
-            indicator.fontSharedMaterial = TextPlaceCount.fontSharedMaterial;
-            indicator.fontStyle = TextPlaceCount.fontStyle;
-            indicator.enableAutoSizing = true;
-            indicator.fontSizeMin = 1f;
-            indicator.fontSizeMax = LowDeckIndicatorFontSizeMax;
-            indicator.alignment = TextAlignmentOptions.Center;
-            indicator.color = TextPlaceCount.color;
-            indicator.margin = Vector4.zero;
-            indicator.raycastTarget = false;
-            indicator.rectTransform.anchorMin = Vector2.zero;
-            indicator.rectTransform.anchorMax = Vector2.one;
-            indicator.rectTransform.pivot = new Vector2(0.5f, 0.5f);
-            indicator.rectTransform.anchoredPosition = Vector2.zero;
-            indicator.rectTransform.sizeDelta = Vector2.zero;
-            indicator.rectTransform.localScale = Vector3.one;
-            return indicatorRect;
-        }
-
-        private Vector2 GetLocationCountPosition(GPS p, bool centerDeckCount)
+        private Vector2 GetLocationCountPosition(GPS p)
         {
             var position = UIManager.WorldToScreenPoint(Program.instance.camera_.cameraMain, GameCard.GetCardPosition(p));
-            if (centerDeckCount && (p.location & (uint)CardLocation.Deck) > 0)
-            {
-                position += p.controller == 0 ? NearLowDeckIndicatorOffset : FarLowDeckIndicatorOffset;
-                return position;
-            }
 
             if ((p.location & ((uint)CardLocation.Deck + (uint)CardLocation.Extra)) > 0 && p.controller == 0)
                 position.y += 80;
@@ -274,75 +205,20 @@ namespace MDPro3.UI.ServantUI
                 RectPlaceCount.localScale = new Vector3(1, 1, 1);
             }
 
-            if (!centerDeckCount)
+            if (p.controller == 0 && (p.location & (uint)CardLocation.Extra) > 0
+                || p.controller == 1 && (p.location & (uint)CardLocation.Deck) > 0)
             {
-                if (p.controller == 0 && (p.location & (uint)CardLocation.Extra) > 0
-                    || p.controller == 1 && (p.location & (uint)CardLocation.Deck) > 0)
-                {
-                    position.x += 20;
-                    RectPlaceCount.localScale = new Vector3(1, 1, 1);
-                }
-                else if (p.controller == 1 && (p.location & (uint)CardLocation.Extra) > 0
-                    || p.controller == 0 && (p.location & (uint)CardLocation.Deck) > 0)
-                {
-                    position.x -= 20;
-                    RectPlaceCount.localScale = new Vector3(-1, 1, 1);
-                }
+                position.x += 20;
+                RectPlaceCount.localScale = new Vector3(1, 1, 1);
+            }
+            else if (p.controller == 1 && (p.location & (uint)CardLocation.Extra) > 0
+                || p.controller == 0 && (p.location & (uint)CardLocation.Deck) > 0)
+            {
+                position.x -= 20;
+                RectPlaceCount.localScale = new Vector3(-1, 1, 1);
             }
 
             return position;
-        }
-
-        private void RefreshLowDeckCountIndicators()
-        {
-            if (!gameObject.activeInHierarchy || Program.instance?.ocgcore == null)
-            {
-                HideLowDeckCountIndicators();
-                return;
-            }
-
-            EnsureLowDeckCountIndicators();
-            RefreshLowDeckCountIndicator(nearLowDeckIndicator, nearLowDeckCount, 0);
-            RefreshLowDeckCountIndicator(farLowDeckIndicator, farLowDeckCount, 1);
-        }
-
-        private void RefreshLowDeckCountIndicator(RectTransform indicatorRoot, TextMeshProUGUI indicator, uint controller)
-        {
-            if (indicatorRoot == null || indicator == null)
-                return;
-
-            var deckCount = Program.instance.ocgcore.GetLocationCardCount(CardLocation.Deck, controller);
-            if (deckCount <= 0 || deckCount > 10)
-            {
-                indicatorRoot.gameObject.SetActive(false);
-                return;
-            }
-
-            var gps = new GPS
-            {
-                controller = controller,
-                location = (uint)CardLocation.Deck
-            };
-            indicatorRoot.anchoredPosition = GetLocationCountPosition(gps, true);
-            indicator.text = deckCount.ToString();
-
-            var alpha = 1f;
-            if (deckCount < 5)
-                alpha = 0.35f + 0.65f * ((Mathf.Sin(Time.unscaledTime * 8f) + 1f) * 0.5f);
-
-            var color = TextPlaceCount.color;
-            color.a = alpha;
-            indicator.color = color;
-            if (!indicatorRoot.gameObject.activeSelf)
-                indicatorRoot.gameObject.SetActive(true);
-        }
-
-        private void HideLowDeckCountIndicators()
-        {
-            if (nearLowDeckIndicator != null)
-                nearLowDeckIndicator.gameObject.SetActive(false);
-            if (farLowDeckIndicator != null)
-                farLowDeckIndicator.gameObject.SetActive(false);
         }
 
         public void SetHint(string hint)
@@ -358,7 +234,7 @@ namespace MDPro3.UI.ServantUI
 
         public void ShowLocationCount(GPS p)
         {
-            var position = GetLocationCountPosition(p, false);
+            var position = GetLocationCountPosition(p);
             TextPlaceCount.rectTransform.localScale = RectPlaceCount.localScale;
             RectPlaceCount.anchoredPosition = position;
             RectPlaceCount.gameObject.SetActive(true);
