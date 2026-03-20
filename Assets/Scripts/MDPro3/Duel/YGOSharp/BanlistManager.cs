@@ -74,33 +74,82 @@ namespace MDPro3.Duel.YGOSharp
                 AppendLflistText(builder, line);
                 try
                 {
-                    if (line == null)
+                    if (string.IsNullOrWhiteSpace(line))
                         continue;
-                    if (line.StartsWith("#"))
+                    line = line.Trim();                     // 去掉首尾空白
+                    if (line[0] == '#')                    // 注释行
                         continue;
-                    if (line.StartsWith("!"))
+
+                    if (line[0] == '!')                    // 新列表开始
                     {
-                        current = new Banlist();
-                        current.Name = line.Substring(1, line.Length - 1);
+                        current = new Banlist
+                        {
+                            Name = line[1..].Trim()
+                        };
                         Banlists.Add(current);
                         continue;
                     }
-                    if (line.StartsWith("$"))
+
+                    if (current == null)                   // 尚未有激活的列表
+                        continue;
+
+                    if (line[0] == '$')                    // $ 开头的行
                     {
-                        if (current != null && line.Equals("$whitelist", StringComparison.OrdinalIgnoreCase))
+                        string rest = line[1..].Trim();
+                        // 白名单模式指令：$whitelist
+                        if (rest.StartsWith("whitelist", StringComparison.OrdinalIgnoreCase))
+                        {
                             current.EnableWhitelistMode();
+                            continue;
+                        }
+                        // 否则解析为全局信用额度：$key value
+                        string[] parts = rest.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                        if (parts.Length >= 2)
+                        {
+                            string key = parts[0];
+                            if (uint.TryParse(parts[1], out uint limit))
+                                current.AddCreditLimit(key, limit);
+                        }
                         continue;
                     }
-                    if (!line.Contains(" "))
+
+                    // 普通行：可能是传统限制行，也可能是卡牌信用消耗行
+                    string[] data = line.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                    if (data.Length < 2)
                         continue;
-                    if (current == null)
-                        continue;
-                    string[] data = line.Split(new char[] { ' ' }, System.StringSplitOptions.RemoveEmptyEntries);
-                    int id = int.Parse(data[0]);
-                    int count = int.Parse(data[1]);
-                    current.Add(id, count);
+
+                    // 检查是否包含 $（信用消耗行）
+                    bool isCreditLine = false;
+                    int dollarIndex = -1;
+                    for (int i = 0; i < data.Length; i++)
+                    {
+                        if (data[i].StartsWith("$"))
+                        {
+                            isCreditLine = true;
+                            dollarIndex = i;
+                            break;
+                        }
+                    }
+
+                    if (isCreditLine)
+                    {
+                        // 格式：卡号 $信用类型 消耗值
+                        if (dollarIndex + 1 >= data.Length)
+                            continue;
+                        if (int.TryParse(data[0], out int cardId) && int.TryParse(data[dollarIndex + 1], out int value))
+                        {
+                            string key = data[dollarIndex][1..]; // 去掉 $
+                            current.AddCardCredit(cardId, key, value);
+                        }
+                    }
+                    else
+                    {
+                        // 传统格式：卡号 数量
+                        if (int.TryParse(data[0], out int id) && int.TryParse(data[1], out int count))
+                            current.Add(id, count);
+                    }
                 }
-                catch (System.Exception e)
+                catch (Exception e)
                 {
                     UnityEngine.Debug.Log(line);
                     UnityEngine.Debug.Log(e);
