@@ -11056,7 +11056,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 22.55
+  m_fontSize: 19.65
   m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -19580,7 +19580,7 @@ MonoBehaviour:
         m_Calls: []
   selected: 0
   cardCollectionView: {fileID: 0}
-  genesysPoint: 0
+  genesysCredit: 0
 --- !u!114 &3954322275822361723
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29239,7 +29239,7 @@ GameObject:
   - component: {fileID: 3061920071493632200}
   - component: {fileID: 7983965099703941560}
   m_Layer: 5
-  m_Name: TextGenesysPoint
+  m_Name: TextGenesysCredit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29276,7 +29276,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d45bbefa568ea23d9ad54b33ccf4780f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  label: TextGenesysPoint
+  label: TextGenesysCredit
 --- !u!222 &5019366998633073922
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 namespace MDPro3.Duel.YGOSharp
 {
@@ -17,7 +18,8 @@ namespace MDPro3.Duel.YGOSharp
             get => _hash;
             private set => _hash = value;
         }
-        public string Name = "";
+        public string Name = string.Empty;
+        public bool isCredit;
 
         public Dictionary<string, uint> CreditLimits { get; private set; }
         public Dictionary<int, Dictionary<string, int>> CardCredits { get; private set; }
@@ -31,6 +33,29 @@ namespace MDPro3.Duel.YGOSharp
             WhitelistOnly = false;
         }
 
+        public void Add(int cardId, int quantity)
+        {
+            if (quantity < 0 || quantity > 3)
+                return;
+            switch (quantity)
+            {
+                case 0:
+                    BannedIds.Add(cardId);
+                    break;
+                case 1:
+                    LimitedIds.Add(cardId);
+                    break;
+                case 2:
+                    SemiLimitedIds.Add(cardId);
+                    break;
+                case 3:
+                    UnlimitedIds.Add(cardId);
+                    break;
+            }
+            uint code = (uint)cardId;
+            Hash = Hash ^ ((code << 18) | (code >> 14)) ^ ((code << (27 + quantity)) | (code >> (5 - quantity)));
+        }
+
         public void AddCreditLimit(string key, uint limit)
         {
             CreditLimits ??= new();
@@ -39,6 +64,7 @@ namespace MDPro3.Duel.YGOSharp
             CreditLimits[key] = limit;
             uint keyHash = CreditHash(key);
             UpdateHash(ref _hash, keyHash, limit, 0x43524544u);
+            isCredit = true;
         }
 
         public void AddCardCredit(int cardId, string key, int value)
@@ -50,6 +76,7 @@ namespace MDPro3.Duel.YGOSharp
             CardCredits[cardId][key] = value;
             uint keyHash = CreditHash(key);
             UpdateHash(ref _hash, (uint)cardId, keyHash, value);
+            isCredit = true;
         }
 
         public int GetQuantity(int cardId)
@@ -85,8 +112,7 @@ namespace MDPro3.Duel.YGOSharp
                 if (UnlimitedIds.Contains(al))
                     return 3;
                 return WhitelistOnly ? 0 : 3;
-            }
-            
+            }            
         }
 
         public int GetCredit(int cardId)
@@ -98,15 +124,57 @@ namespace MDPro3.Duel.YGOSharp
             return GetCredit(cardId, first);
         }
 
-        public int GetCredit(int cardId, string creditKey)
+        public int GetCredit(int code, string creditKey)
         {
             if (!IsCreditBanlist())
                 return 0;
 
-            if (CardCredits.ContainsKey(cardId) && CardCredits[cardId].ContainsKey(creditKey))
-                return CardCredits[cardId][creditKey];
+            if (CardCredits.ContainsKey(code) && CardCredits[code].ContainsKey(creditKey))
+                return CardCredits[code][creditKey];
+
+            var alias = CardsManager.GetAlias(code);
+            if (CardCredits.ContainsKey(alias) && CardCredits[alias].ContainsKey(creditKey))
+                return CardCredits[alias][creditKey];
 
             return 0;
+        }
+
+        public string GetCreditString(int code)
+        {
+            if (BannedIds.Contains(code))
+                return "X";
+            return GetCredit(code).ToString();
+        }
+
+        public Color GetCreditColor(int credit)
+        {
+            if(!isCredit || CreditLimits == null || CreditLimits.Count == 0)
+                return Color.red;
+
+            var limit = CreditLimits.FirstOrDefault().Value;
+            if (credit < 0)
+                return Color.red;
+            else if (credit == 0)
+                return Color.gray;
+            else if(credit <= limit / 10)
+                return Color.green;
+            else if (credit <= limit / 2)
+                return Color.yellow;
+            else if (credit <= limit)
+                return Color.magenta;
+            else
+                return Color.red;
+        }
+
+        public Color GetCreditLimitColor(int credits)
+        {
+            if (!isCredit || CreditLimits == null || CreditLimits.Count == 0)
+                return Color.red;
+
+            var limit = CreditLimits.FirstOrDefault().Value;
+            if (credits <= limit)
+                return Color.white;
+            return Color.red;
         }
 
         public void EnableWhitelistMode()
@@ -115,29 +183,6 @@ namespace MDPro3.Duel.YGOSharp
                 return;
             WhitelistOnly = true;
             Hash ^= 0x0f0f0f0f;
-        }
-
-        public void Add(int cardId, int quantity)
-        {
-            if (quantity < 0 || quantity > 3)
-                return;
-            switch (quantity)
-            {
-                case 0:
-                    BannedIds.Add(cardId);
-                    break;
-                case 1:
-                    LimitedIds.Add(cardId);
-                    break;
-                case 2:
-                    SemiLimitedIds.Add(cardId);
-                    break;
-                case 3:
-                    UnlimitedIds.Add(cardId);
-                    break;
-            }
-            uint code = (uint)cardId;
-            Hash = Hash ^ ((code << 18) | (code >> 14)) ^ ((code << (27 + quantity)) | (code >> (5 - quantity)));
         }
 
         private bool IsCreditBanlist()

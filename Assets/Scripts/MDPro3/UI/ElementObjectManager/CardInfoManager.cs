@@ -377,7 +377,7 @@ namespace MDPro3.UI
             #region Card Area
 
             IconLimit.sprite = TextureManager.container
-                .GetCardRegulationIcon(data.Id, DeckEditor.banlist);
+                .GetCardRegulationIcon(data.Id, DeckEditor.Banlist);
 
             SetCardCount();
 

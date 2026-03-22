@@ -112,8 +112,7 @@ namespace MDPro3.UI
                 InterString.Get("禁限卡表"),
                 string.Empty
             };
-            foreach (var list in BanlistManager.Banlists)
-                selections.Add(list.Name);
+            selections.AddRange(BanlistManager.GetAllNames(true));
             UIManager.ShowPopupSelection(selections, ChangeBanlist, null);
         }
 

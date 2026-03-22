@@ -1,14 +1,10 @@
 using DG.Tweening;
 using MDPro3.Servant;
 using MDPro3.UI.PropertyOverride;
-using MDPro3.Utility;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-using UnityEngine.UI;
 using static MDPro3.Servant.DeckBrowser;
-using static MDPro3.UI.ServantUI.DeckEditorUI;
 
 namespace MDPro3.UI.ServantUI
 {
@@ -52,8 +48,6 @@ namespace MDPro3.UI.ServantUI
         [HideInInspector] public PickupCardSelection PickupCardSelection;
 
         private const string LABEL_WIDGET_PICKUP = "UIWidges/DeckBrowserOptionForPickupCardSelection.prefab";
-
-        public static CardInfoType cardInfoType = CardInfoType.None;
 
         public enum ResponseRegion
         {
@@ -115,33 +109,6 @@ namespace MDPro3.UI.ServantUI
         {
             DeckView.SetCursor(_ResponseRegion == ResponseRegion.Deck);
             
-        }
-
-        public void SetCardInfoType()
-        {
-            var type = (CardInfoType)(((int)cardInfoType + 1) % 4);
-            SetCardInfoType(type);
-            SelectionButton_CardInfoType.instance.SetCardInfoTypeIcon(type);
-        }
-
-        public void SetCardInfoType(CardInfoType type)
-        {
-            AudioManager.PlaySE("SE_MENU_SELECT_01");
-            cardInfoType = type;
-            switch (cardInfoType)
-            {
-                case CardInfoType.None:
-                    MessageManager.Toast(InterString.Get("切换到简单显示"));
-                    break;
-                case CardInfoType.Detail:
-                    MessageManager.Toast(InterString.Get("切换到详情显示"));
-                    break;
-                case CardInfoType.Pool:
-                    MessageManager.Toast(InterString.Get("切换到归属显示"));
-                    break;
-            }
-
-            DeckView.SetCardInfoType(type);
         }
 
         public void SetCondition(Condition condition)

@@ -8771,7 +8771,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 7446650972608614846}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.59
+  m_Size: 0.6475
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -19545,7 +19545,7 @@ MonoBehaviour:
         m_Calls: []
   selected: 0
   cardCollectionView: {fileID: 0}
-  genesysPoint: 0
+  genesysCredit: 0
 --- !u!114 &3954322275822361723
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23556,7 +23556,7 @@ GameObject:
   - component: {fileID: 2003393612404765901}
   - component: {fileID: 6245320557579022238}
   m_Layer: 5
-  m_Name: TextGenesysPoint
+  m_Name: TextGenesysCredit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23593,7 +23593,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d45bbefa568ea23d9ad54b33ccf4780f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  label: TextGenesysPoint
+  label: TextGenesysCredit
 --- !u!222 &3005999169163829884
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -46346,7 +46346,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3036679950856914851, guid: d4403fd2f98246942bb4edbb4b732ea1, type: 3}
       propertyPath: m_Size
-      value: 0.85607195
+      value: 0.8991754
       objectReference: {fileID: 0}
     - target: {fileID: 3039851360208839043, guid: d4403fd2f98246942bb4edbb4b732ea1, type: 3}
       propertyPath: m_AnchorMax.y

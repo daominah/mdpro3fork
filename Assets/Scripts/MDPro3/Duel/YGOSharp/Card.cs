@@ -65,28 +65,30 @@ namespace MDPro3.Duel.YGOSharp
 
         public Card Clone()
         {
-            Card r = new Card();
-            r.Id = Id;
-            r.Ot = Ot;
-            r.Alias = Alias;
-            r.RuleCode = RuleCode;
-            r.Setcode = Setcode;
-            r.Type = Type;
-            r.Level = Level;
-            r.LScale = LScale;
-            r.RScale = RScale;
-            r.LinkMarker = LinkMarker;
-            r.Attribute = Attribute;
-            r.Race = Race;
-            r.Attack = Attack;
-            r.Defense = Defense;
-            r.rAttack = rAttack;
-            r.rDefense = rDefense;
-            r.Category = Category;
-            r.Name = Name;
-            r.Desc = Desc;
-            r.Str = new string[Str.Length];
-            r.isPre = isPre;
+            Card r = new()
+            {
+                Id = Id,
+                Ot = Ot,
+                Alias = Alias,
+                RuleCode = RuleCode,
+                Setcode = Setcode,
+                Type = Type,
+                Level = Level,
+                LScale = LScale,
+                RScale = RScale,
+                LinkMarker = LinkMarker,
+                Attribute = Attribute,
+                Race = Race,
+                Attack = Attack,
+                Defense = Defense,
+                rAttack = rAttack,
+                rDefense = rDefense,
+                Category = Category,
+                Name = Name,
+                Desc = Desc,
+                Str = new string[Str.Length],
+                isPre = isPre
+            };
 
             for (int ii = 0; ii < Str.Length; ii++)
             {
@@ -238,9 +240,14 @@ namespace MDPro3.Duel.YGOSharp
             return (Attribute & (uint)attribute) > 0;
         }
 
-        public int GetGenesysPoint()
+        public int GetCredit()
         {
-            return OnlineService.GetGenesysPoint(GetOriginalID());
+            return BanlistManager.currentGenesysBanList.GetCredit(Id);
+        }
+
+        public string GetCreditString()
+        {
+            return BanlistManager.currentGenesysBanList.GetCreditString(Id);
         }
 
         public bool IsRushDuelCard()

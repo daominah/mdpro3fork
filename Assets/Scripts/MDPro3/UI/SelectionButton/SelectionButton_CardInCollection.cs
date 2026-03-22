@@ -46,7 +46,6 @@ namespace MDPro3.UI
         }
         public Card card;
         public CardCollectionView cardCollectionView;
-        public int genesysPoint;
 
         private CardRawImageHandler m_ImageHandler;
         private CardRawImageHandler ImageHandler =>
@@ -117,7 +116,7 @@ namespace MDPro3.UI
         public void SetRegulationIcon()
         {
             Manager.GetElement<Image>("IconLimit").sprite
-                = TextureManager.container.GetCardRegulationIcon(CardCode, DeckEditor.banlist);
+                = TextureManager.container.GetCardRegulationIcon(CardCode, DeckEditor.Banlist);
         }
 
         private void SetIcons()
@@ -149,12 +148,8 @@ namespace MDPro3.UI
             Manager.GetElement<TextMeshProUGUI>("TextLink").text = card.GetLinkCount().ToString();
             Manager.GetElement<TextMeshProUGUI>("TextPendulumScale").text = card.LScale.ToString();
 
-            genesysPoint = OnlineService.GetGenesysPoint(card.GetOriginalID());
-            var text = genesysPoint.ToString();
-            if (genesysPoint < 0)
-                text = "X";
-            TextCardPoint.text = text;
-            TextCardPoint.color = OnlineService.GetGenesysPointColor(genesysPoint);
+            TextCardPoint.text = card.GetCreditString();
+            TextCardPoint.color = BanlistManager.currentGenesysBanList.GetCreditColor(card.GetCredit());
 
             RefreshIcons();
             RefreshCountIcon();
@@ -162,30 +157,30 @@ namespace MDPro3.UI
 
         public void RefreshIcons()
         {
-            Manager.GetElement("IconAttribute").SetActive(DeckEditorUI.cardInfoType == DeckEditorUI.CardInfoType.Detail);
-            Manager.GetElement("IconSpellTrapType").SetActive(DeckEditorUI.cardInfoType == DeckEditorUI.CardInfoType.Detail);
-            Manager.GetElement("IconRace").SetActive(DeckEditorUI.cardInfoType == DeckEditorUI.CardInfoType.Detail);
-            Manager.GetElement("IconTuner").SetActive(DeckEditorUI.cardInfoType == DeckEditorUI.CardInfoType.Detail
+            Manager.GetElement("IconAttribute").SetActive(DeckEditor.cardInfoType == DeckEditor.CardInfoType.Detail);
+            Manager.GetElement("IconSpellTrapType").SetActive(DeckEditor.cardInfoType == DeckEditor.CardInfoType.Detail);
+            Manager.GetElement("IconRace").SetActive(DeckEditor.cardInfoType == DeckEditor.CardInfoType.Detail);
+            Manager.GetElement("IconTuner").SetActive(DeckEditor.cardInfoType == DeckEditor.CardInfoType.Detail
                 && card.HasType(CardType.Tuner));
             var levelType = card.GetLevelType();
-            Manager.GetElement("IconLevel").SetActive(DeckEditorUI.cardInfoType == DeckEditorUI.CardInfoType.Detail
+            Manager.GetElement("IconLevel").SetActive(DeckEditor.cardInfoType == DeckEditor.CardInfoType.Detail
                 && card.HasType(CardType.Monster) && levelType == Card.LevelType.Level);
-            Manager.GetElement("IconRank").SetActive(DeckEditorUI.cardInfoType == DeckEditorUI.CardInfoType.Detail
+            Manager.GetElement("IconRank").SetActive(DeckEditor.cardInfoType == DeckEditor.CardInfoType.Detail
                 && card.HasType(CardType.Monster) && levelType == Card.LevelType.Rank);
-            Manager.GetElement("IconLink").SetActive(DeckEditorUI.cardInfoType == DeckEditorUI.CardInfoType.Detail
+            Manager.GetElement("IconLink").SetActive(DeckEditor.cardInfoType == DeckEditor.CardInfoType.Detail
                 && card.HasType(CardType.Monster) && levelType == Card.LevelType.Link);
-            Manager.GetElement("IconPendulumScale").SetActive(DeckEditorUI.cardInfoType == DeckEditorUI.CardInfoType.Detail
+            Manager.GetElement("IconPendulumScale").SetActive(DeckEditor.cardInfoType == DeckEditor.CardInfoType.Detail
                 && card.HasType(CardType.Pendulum));
-            Manager.GetElement("IconPool").SetActive(DeckEditorUI.cardInfoType == DeckEditorUI.CardInfoType.Pool);
+            Manager.GetElement("IconPool").SetActive(DeckEditor.cardInfoType == DeckEditor.CardInfoType.Pool);
 
-            CardPoint.SetActive(DeckEditorUI.cardInfoType == DeckEditorUI.CardInfoType.Genesys);
-            Manager.GetElement("IconLimit").SetActive(DeckEditorUI.cardInfoType != DeckEditorUI.CardInfoType.Genesys);
+            CardPoint.SetActive(DeckEditor.cardInfoType == DeckEditor.CardInfoType.Genesys);
+            Manager.GetElement("IconLimit").SetActive(DeckEditor.cardInfoType != DeckEditor.CardInfoType.Genesys);
 
         }
 
         public void RefreshCountIcon()
         {
-            var ragulation = DeckEditor.banlist.GetQuantity(card.Id);
+            var ragulation = DeckEditor.Banlist.GetQuantity(card.Id);
             var count = Program.instance.deckEditor
                 .GetUI<DeckEditorUI>().DeckView.GetCardCount(card.Id);
             var color = Color.white;

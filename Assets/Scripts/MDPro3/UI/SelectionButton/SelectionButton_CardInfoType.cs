@@ -4,6 +4,7 @@ using MDPro3.Servant;
 using MDPro3.UI.ServantUI;
 using TMPro;
 using MDPro3.Net;
+using MDPro3.Duel.YGOSharp;
 
 namespace MDPro3.UI
 {
@@ -35,11 +36,11 @@ namespace MDPro3.UI
             m_Info3 = m_Info3 != null ? m_Info3
             : Manager.GetElement(LABEL_GO_INFO3);
 
-        private const string LABEL_TXT_GP = "TextGenesysPoint";
-        private TextMeshProUGUI m_TextGP;
-        private TextMeshProUGUI TextGP =>
-            m_TextGP = m_TextGP != null ? m_TextGP
-            : Manager.GetElement<TextMeshProUGUI>(LABEL_TXT_GP);
+        private const string LABEL_TXT_GC = "TextGenesysCredit";
+        private TextMeshProUGUI m_TextGC;
+        private TextMeshProUGUI TextGC =>
+            m_TextGC = m_TextGC != null ? m_TextGC
+            : Manager.GetElement<TextMeshProUGUI>(LABEL_TXT_GC);
 
         #endregion
 
@@ -49,32 +50,31 @@ namespace MDPro3.UI
         {
             base.Awake();
             instance = this;
-            SetCardInfoTypeIcon(DeckEditorUI.cardInfoType);
+            SetCardInfoTypeIcon(DeckEditor.cardInfoType);
             SetClickEvent(ClickEvent);
         }
 
         private void ClickEvent()
         {
-            var type = (DeckEditorUI.CardInfoType)(((int)DeckEditorUI.cardInfoType + 1) % 4);
-            Program.instance.deckEditor.GetUI<DeckEditorUI>().SetCardInfoType(type);
-            SetCardInfoTypeIcon(type);
+            var type = (DeckEditor.CardInfoType)(((int)DeckEditor.cardInfoType + 1) % 4);
+            Program.instance.deckEditor.SetCardInfoType(type);
         }
 
-        public void SetCardInfoTypeIcon(DeckEditorUI.CardInfoType type)
+        public void SetCardInfoTypeIcon(DeckEditor.CardInfoType type)
         {
-            Info0.SetActive(type == DeckEditorUI.CardInfoType.None);
-            Info1.SetActive(type == DeckEditorUI.CardInfoType.Detail);
-            Info2.SetActive(type == DeckEditorUI.CardInfoType.Pool);
-            Info3.SetActive(type == DeckEditorUI.CardInfoType.Genesys);
-            TextGP.gameObject.SetActive(type == DeckEditorUI.CardInfoType.Genesys);
+            Info0.SetActive(type == DeckEditor.CardInfoType.None);
+            Info1.SetActive(type == DeckEditor.CardInfoType.Detail);
+            Info2.SetActive(type == DeckEditor.CardInfoType.Pool);
+            Info3.SetActive(type == DeckEditor.CardInfoType.Genesys);
+            TextGC.gameObject.SetActive(type == DeckEditor.CardInfoType.Genesys);
         }
 
-        public static void SetGenesysPoints(int gp)
+        public static void SetGenesysCredits(int gc)
         {
             if (instance == null)
                 return;
-            instance.TextGP.text = gp.ToString();
-            instance.TextGP.color = OnlineService.GetGenesysPointsColor(gp);
+            instance.TextGC.text = gc.ToString();
+            instance.TextGC.color = BanlistManager.currentGenesysBanList.GetCreditLimitColor(gc);
         }
     }
 }

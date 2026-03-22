@@ -113,8 +113,6 @@ namespace MDPro3
 
             Screen.sleepTimeout = SleepTimeout.NeverSleep;
 
-            OnlineService.Initialize();
-
             if(!ABLoader.mdCached)
                 await ABLoader.CacheMasterDuelOutDuelBundles();
 
@@ -130,6 +128,8 @@ namespace MDPro3
             ZipHelper.Initialize();
             items.Initialize();
             BanlistManager.Initialize();
+            OnlineService.Initialize();
+
             InitializeAllManagers();
             InitializeAllServants();
         }

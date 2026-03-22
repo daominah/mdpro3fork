@@ -420,6 +420,13 @@ namespace MDPro3
             return string.Join(newLine, remainingLines);
         }
 
+        public static string MergeWithNewLine(string str1, string str2)
+        {
+            var nonEmpty = new[] { str1, str2 }
+                .Where(s => !string.IsNullOrWhiteSpace(s));
+            return string.Join(Environment.NewLine, nonEmpty);
+        }
+
         #endregion
     }
 }

@@ -1,20 +1,10 @@
 using DG.Tweening;
-using MDPro3.Net;
 using MDPro3.UI;
 using MDPro3.Duel.YGOSharp;
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using TMPro;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
-using YgomSystem.ElementSystem;
 using MDPro3.UI.PropertyOverride;
-using MDPro3.Utility;
 using MDPro3.UI.ServantUI;
 using static MDPro3.UI.ServantUI.DeckEditorUI;
 
@@ -28,7 +18,7 @@ namespace MDPro3.Servant
         public static Deck Deck { get; set; }
         public static string DeckName { get; set; }
         public static bool DeckIsFromLocal;
-        public static Banlist banlist;
+        public static Banlist Banlist => cardInfoType == CardInfoType.Genesys ? BanlistManager.currentGenesysBanList : BanlistManager.currentBanList;
         public static List<int> historyCards;
         public static bool UseMobileLayout => PropertyOverrider.NeedMobileLayout();
         public static string onlineDeckID;
@@ -91,6 +81,15 @@ namespace MDPro3.Servant
             set { GetUI<DeckEditorUI>()._ResponseRegion = value; }
         }
 
+        public enum CardInfoType
+        {
+            None = 0,
+            Detail = 1,
+            Pool = 2,
+            Genesys = 3
+        }
+        public static CardInfoType cardInfoType { get; private set; }
+
         #endregion
 
         #region Servant
@@ -111,7 +110,6 @@ namespace MDPro3.Servant
         {
             SystemEvent.OnResolutionChange += ChangeCanvasMatch;
             returnServant = Program.instance.deckSelector;
-            banlist = BanlistManager.Banlists[0];
             base.Initialize();
         }
 
@@ -317,6 +315,13 @@ namespace MDPro3.Servant
             if ((float)Screen.width / Screen.height > 16f / 9f)
                 return 1f;
             else return 0f;
+        }
+
+        public void SetCardInfoType(CardInfoType type)
+        {
+            cardInfoType = type;
+            GetUI<DeckEditorUI>().SetCardInfoType(type);
+            SelectionButton_CardInfoType.instance.SetCardInfoTypeIcon(type);
         }
 
         #endregion

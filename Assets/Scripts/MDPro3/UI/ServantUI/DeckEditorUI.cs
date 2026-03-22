@@ -8,7 +8,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -152,15 +151,6 @@ namespace MDPro3.UI.ServantUI
         private bool gotoAppearance;
         private static bool deckLiked;
         public bool callExit;
-
-        public enum CardInfoType
-        {
-            None = 0,
-            Detail = 1,
-            Pool = 2,
-            Genesys = 3
-        }
-        public static CardInfoType cardInfoType = CardInfoType.None;
 
         public enum ResponseRegion
         {
@@ -731,7 +721,7 @@ namespace MDPro3.UI.ServantUI
 
         private void InitializeHeader()
         {
-            ButtonRegulation.SetButtonText(banlist.Name);
+            ButtonRegulation.SetButtonText(DeckEditor.Banlist.Name);
 
             if (condition == Condition.ChangeSide)
             {
@@ -747,14 +737,12 @@ namespace MDPro3.UI.ServantUI
         public void SetCardInfoType()
         {
             var type = (CardInfoType)(((int)cardInfoType + 1) % 4);
-            SetCardInfoType(type);
-            SelectionButton_CardInfoType.instance.SetCardInfoTypeIcon(type);
+            Program.instance.deckEditor.SetCardInfoType(type);
         }
 
         public void SetCardInfoType(CardInfoType type)
         {
             AudioManager.PlaySE("SE_MENU_SELECT_01");
-            cardInfoType = type;
             switch (cardInfoType)
             {
                 case CardInfoType.None:
@@ -770,10 +758,10 @@ namespace MDPro3.UI.ServantUI
                     MessageManager.Toast(InterString.Get("切换到Genesys积分显示"));
                     break;
             }
-
             DeckView.SetCardInfoType(type);
-            CardCollectionView.SetCardInfoType(type);
-
+            CardCollectionView.SetCardInfoType();
+            CardDetailView.RefreshRegulation();
+            ButtonRegulation.SetButtonText(DeckEditor.Banlist.Name);
         }
 
         private void RefreshRegulationIcons()
@@ -793,8 +781,9 @@ namespace MDPro3.UI.ServantUI
                 InterString.Get("禁限卡表"),
                 string.Empty
             };
-            foreach (var list in BanlistManager.Banlists)
-                selections.Add(list.Name);
+            var names = cardInfoType == CardInfoType.Genesys ? 
+                BanlistManager.GetAllGenesysNames() : BanlistManager.GetAllNames();
+            selections.AddRange(names);
             UIManager.ShowPopupSelection(selections, ChangeRegulation);
         }
 
@@ -802,7 +791,10 @@ namespace MDPro3.UI.ServantUI
         {
             string selected = EventSystem.current.currentSelectedGameObject
                 .GetComponent<SelectionButton>().GetButtonText();
-            banlist = BanlistManager.GetByName(selected);
+            if(cardInfoType == CardInfoType.Genesys)
+                BanlistManager.currentGenesysBanList = BanlistManager.GetByName(selected);
+            else
+                BanlistManager.currentBanList = BanlistManager.GetByName(selected);
             ButtonRegulation.SetButtonText(selected);
             RefreshRegulationIcons();
         }
@@ -850,7 +842,7 @@ namespace MDPro3.UI.ServantUI
             if (DeckIsFromLocal && !DeckView.GetDirty()) return;
 
             if (DeckIsFromLocal)
-                if (banlist.Name != BanlistManager.EMPTY_LIST_NAME)
+                if (DeckEditor.Banlist.Name != BanlistManager.EMPTY_LIST_NAME)
                 {
                     if (DeckView.mainCount > 60 || DeckView.extraCount > 15 || DeckView.sideCount > 15)
                     {

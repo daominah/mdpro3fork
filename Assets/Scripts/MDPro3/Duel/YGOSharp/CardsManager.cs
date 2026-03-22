@@ -171,6 +171,14 @@ namespace MDPro3.Duel.YGOSharp
             return returnValue;
         }
 
+        internal static int GetAlias(int id)
+        {
+            var data = GetCardRaw(id);
+            if(data == null)
+                return 0;
+            return data.Alias;
+        }
+
         private static bool TryLoadCardsForLanguage(IDictionary<int, Card> targetCards, string language)
         {
             string databaseFullPath = ResolveCardsDatabasePath(language);
@@ -571,7 +579,7 @@ namespace MDPro3.Duel.YGOSharp
                                                                                 if (JudgeInt((int)filters[14], (int)filters[15], card.Attack))
                                                                                     if (JudgeInt((int)filters[16], (int)filters[17], card.Defense))
                                                                                         if (JudgeInt((int)filters[18], (int)filters[19], card.LScale))
-                                                                                            if (CheckGenesysPoint((int)filters[20], (int)filters[21], card))
+                                                                                            if (CheckGenesysCredit((int)filters[20], (int)filters[21], card))
                                                                                                 if (JudgeInt((int)filters[22], (int)filters[23], card.year))
                                                                                                 {
                                                                                                     if (pack == string.Empty)
@@ -601,11 +609,11 @@ namespace MDPro3.Duel.YGOSharp
             return returnValue;
         }
 
-        private static bool CheckGenesysPoint(int min, int max, Card card)
+        private static bool CheckGenesysCredit(int min, int max, Card card)
         {
             if(min == -233 && max == -233)
                 return true;
-            return JudgeInt(min, max, card.GetGenesysPoint());
+            return JudgeInt(min, max, card.GetCredit());
         }
 
         internal static List<Card> AnnounceSearch(string announced, List<int> searchCodes)
@@ -926,7 +934,7 @@ namespace MDPro3.Duel.YGOSharp
                  != ((int)CardType.Monster + (int)CardType.Token));
         }
 
-        public static bool IfSetCard(int setCodeToAnalyse, long setCodeFromCard)
+        internal static bool IfSetCard(int setCodeToAnalyse, long setCodeFromCard)
         {
             bool res = false;
             int settype = setCodeToAnalyse & 0xfff;
@@ -2101,11 +2109,11 @@ namespace MDPro3.Duel.YGOSharp
             return (left, right) =>
             {
                 int a = 1;
-                if(left.GetGenesysPoint() < right.GetGenesysPoint())
+                if(left.GetCredit() < right.GetCredit())
                 {
                     a = -1;
                 }
-                else if (left.GetGenesysPoint() > right.GetGenesysPoint())
+                else if (left.GetCredit() > right.GetCredit())
                 {
                     a = 1;
                 }
@@ -2225,11 +2233,11 @@ namespace MDPro3.Duel.YGOSharp
             return (left, right) =>
             {
                 int a = 1;
-                if (left.GetGenesysPoint() < right.GetGenesysPoint())
+                if (left.GetCredit() < right.GetCredit())
                 {
                     a = 1;
                 }
-                else if (left.GetGenesysPoint() > right.GetGenesysPoint())
+                else if (left.GetCredit() > right.GetCredit())
                 {
                     a = -1;
                 }

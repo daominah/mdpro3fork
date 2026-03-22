@@ -380,7 +380,7 @@ namespace MDPro3.UI
             #region Card Area
 
             IconLimit.sprite = TextureManager.container
-                .GetCardRegulationIcon(data.Id, DeckEditor.banlist);
+                .GetCardRegulationIcon(data.Id, DeckEditor.Banlist);
 
             SetCardCount();
 
@@ -393,10 +393,8 @@ namespace MDPro3.UI
                 IconPRE.gameObject.SetActive(data.isPre);
                 if (TextGP != null)
                 {
-                    var gp = OnlineService.GetGenesysPoint(data.GetOriginalID());
-                    var gpString = OnlineService.GetGenesysPointString(data.GetOriginalID());
-                    TextGP.text = string.Format("G:{0}", gpString);
-                    TextGP.color = OnlineService.GetGenesysPointColor(gp);
+                    TextGP.text = string.Format("G:{0}", data.GetCreditString());
+                    TextGP.color = BanlistManager.currentGenesysBanList.GetCreditColor(data.GetCredit());
                 }
             }
 
@@ -533,6 +531,13 @@ namespace MDPro3.UI
                 ToggleBookMark.SetToggleOn(false);
             else
                 ToggleBookMark.SetToggleOff(false);
+        }
+
+        public virtual void RefreshRegulation()
+        {
+            if(Card == null) return;
+            IconLimit.sprite = TextureManager.container
+                .GetCardRegulationIcon(Card.Id, DeckEditor.Banlist);
         }
 
         public virtual void SetRelatedCardEvent(UnityAction call)

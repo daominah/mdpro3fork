@@ -345,7 +345,7 @@ namespace MDPro3.UI
             StartCoroutine(PrintDeckAsync());
 
             if(Program.instance.currentServant == Program.instance.deckEditor)
-                SetCardInfoTypeInternal(DeckEditorUI.cardInfoType);
+                SetCardInfoTypeInternal(DeckEditor.cardInfoType);
         }
 
         private async UniTask LoadDeckCaseAsync(int deckCase)
@@ -699,7 +699,7 @@ namespace MDPro3.UI
         public bool CanAddCard(int code)
         {
             var count = GetCardCount(code);
-            if (count >= DeckEditor.banlist.GetQuantity(code))
+            if (count >= DeckEditor.Banlist.GetQuantity(code))
             {
                 if (count == 3)
                     MessageManager.Toast(InterString.Get("卡组中同名卡片不得超过3张"));
@@ -801,23 +801,23 @@ namespace MDPro3.UI
             return count;
         }
 
-        public void SetCardInfoType(DeckEditorUI.CardInfoType type)
+        public void SetCardInfoType(DeckEditor.CardInfoType type)
         {
             foreach (var card in cards)
                 card.RefreshIcons();
             SetCardInfoTypeInternal(type);
         }
 
-        private void SetCardInfoTypeInternal(DeckEditorUI.CardInfoType type)
+        private void SetCardInfoTypeInternal(DeckEditor.CardInfoType type)
         {
             if (Program.instance.currentServant == Program.instance.deckEditor)
             {
-                MainDeckGenesys.SetActive(type == DeckEditorUI.CardInfoType.Genesys);
-                TextMainDeckGP.gameObject.SetActive(type == DeckEditorUI.CardInfoType.Genesys);
-                ExtraDeckGenesys.SetActive(type == DeckEditorUI.CardInfoType.Genesys);
-                TextExtraDeckGP.gameObject.SetActive(type == DeckEditorUI.CardInfoType.Genesys);
-                SideDeckGenesys.SetActive(type == DeckEditorUI.CardInfoType.Genesys);
-                TextSideDeckGP.gameObject.SetActive(type == DeckEditorUI.CardInfoType.Genesys);
+                MainDeckGenesys.SetActive(type == DeckEditor.CardInfoType.Genesys);
+                TextMainDeckGP.gameObject.SetActive(type == DeckEditor.CardInfoType.Genesys);
+                ExtraDeckGenesys.SetActive(type == DeckEditor.CardInfoType.Genesys);
+                TextExtraDeckGP.gameObject.SetActive(type == DeckEditor.CardInfoType.Genesys);
+                SideDeckGenesys.SetActive(type == DeckEditor.CardInfoType.Genesys);
+                TextSideDeckGP.gameObject.SetActive(type == DeckEditor.CardInfoType.Genesys);
             }
             else
             {
@@ -1016,12 +1016,11 @@ namespace MDPro3.UI
             return deck;
         }
 
-        public int GetGenesysPoints()
+        public int GetGenesysCredits()
         {
             var value = 0;
             foreach (var card in cards)
-                if(card.genesysPoint > 0)
-                    value += card.genesysPoint;
+                value += card.Card.GetCredit();
             return value;
         }
 
@@ -1143,7 +1142,7 @@ namespace MDPro3.UI
                 int monsterCount = 0;
                 int spellCount = 0;
                 int trapCount = 0;
-                int gp = 0;
+                int gc = 0;
 
                 foreach (var card in cards)
                     if (card.location == DeckLocation.MainDeck)
@@ -1155,14 +1154,13 @@ namespace MDPro3.UI
                             trapCount++;
                         else
                             monsterCount++;
-                        if (card.genesysPoint > 0)
-                            gp += card.genesysPoint;
+                        gc += card.Card.GetCredit();
                     }
                 TextMainDeckCardNum.text = mainCount.ToString();
                 TextMainDeckMonsterNum.text = monsterCount.ToString();
                 TextMainDeckSpellNum.text = spellCount.ToString();
                 TextMainDeckTrapNum.text = trapCount.ToString();
-                TextMainDeckGP.text = gp.ToString();
+                TextMainDeckGP.text = gc.ToString();
             }
             if ((location & DeckLocation.ExtraDeck) > 0)
             {
@@ -1171,7 +1169,7 @@ namespace MDPro3.UI
                 int synchroCount = 0;
                 int xyzCount = 0;
                 int linkCount = 0;
-                int gp = 0;
+                int gc = 0;
 
                 foreach (var card in cards)
                     if (card.location == DeckLocation.ExtraDeck)
@@ -1185,15 +1183,14 @@ namespace MDPro3.UI
                             xyzCount++;
                         else if (card.Card.HasType(CardType.Link))
                             linkCount++;
-                        if (card.genesysPoint > 0)
-                            gp += card.genesysPoint;
+                        gc += card.Card.GetCredit();
                     }
                 TextExtraDeckCardNum.text = extraCount.ToString();
                 TextExtraDeckFusionNum.text = fusionCount.ToString();
                 TextExtraDeckSynchroNum.text = synchroCount.ToString();
                 TextExtraDeckXyzNum.text = xyzCount.ToString();
                 TextExtraDeckLinkNum.text = linkCount.ToString();
-                TextExtraDeckGP.text = gp.ToString();
+                TextExtraDeckGP.text = gc.ToString();
             }
             if ((location & DeckLocation.SideDeck) > 0)
             {
@@ -1201,7 +1198,7 @@ namespace MDPro3.UI
                 int monsterCount = 0;
                 int spellCount = 0;
                 int trapCount = 0;
-                int gp = 0;
+                int gc = 0;
 
                 foreach (var card in cards)
                     if (card.location == DeckLocation.SideDeck)
@@ -1213,18 +1210,17 @@ namespace MDPro3.UI
                             trapCount++;
                         else
                             monsterCount++;
-                        if (card.genesysPoint > 0)
-                            gp += card.genesysPoint;
+                        gc += card.Card.GetCredit();
                     }
                 TextSideDeckCardNum.text = sideCount.ToString();
                 TextSideDeckMonsterNum.text = monsterCount.ToString();
                 TextSideDeckSpellNum.text = spellCount.ToString();
                 TextSideDeckTrapNum.text = trapCount.ToString();
-                TextSideDeckGP.text = gp.ToString();
+                TextSideDeckGP.text = gc.ToString();
             }
 
             if(Program.instance.currentServant == Program.instance.deckEditor)
-                SelectionButton_CardInfoType.SetGenesysPoints(GetGenesysPoints());
+                SelectionButton_CardInfoType.SetGenesysCredits(GetGenesysCredits());
         }
 
         protected void SortCards()

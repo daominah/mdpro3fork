@@ -241,7 +241,7 @@ namespace MDPro3.UI
         public void PrintSearchCards(string text = "")
         {
             var cards = new List<int>();
-            var results = CardsManager.Search(InputSearch.InputField.text, filters, DeckEditor.banlist, packName);
+            var results = CardsManager.Search(InputSearch.InputField.text, filters, DeckEditor.Banlist, packName);
             SortCards(results);
             foreach(var card in results)
                 cards.Add(card.Id);
@@ -416,7 +416,7 @@ namespace MDPro3.UI
                     .RefreshCountIcon();
         }
 
-        public void SetCardInfoType(DeckEditorUI.CardInfoType type)
+        public void SetCardInfoType()
         {
             foreach (var go in superScrollView.gameObjects)
                 go.GetComponent<SelectionButton_CardInCollection>()

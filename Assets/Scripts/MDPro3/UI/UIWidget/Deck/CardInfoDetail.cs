@@ -335,10 +335,10 @@ namespace MDPro3.UI
 
             ImageCard.SetCard(data);
             IconLimit.sprite = TextureManager.container
-                .GetCardRegulationIcon(data.Id, DeckEditor.banlist);
+                .GetCardRegulationIcon(data.Id, DeckEditor.Banlist);
 
             IconLimit.sprite = TextureManager.container
-                .GetCardRegulationIcon(data.Id, DeckEditor.banlist);
+                .GetCardRegulationIcon(data.Id, DeckEditor.Banlist);
 
             #endregion
 
@@ -420,10 +420,8 @@ namespace MDPro3.UI
             IconDIY.gameObject.SetActive((data.Ot & 4) > 0);
             IconBETA.gameObject.SetActive(data.isPre);
 
-            var gp = OnlineService.GetGenesysPoint(data.GetOriginalID());
-            var gpString = OnlineService.GetGenesysPointString(data.GetOriginalID());
-            TextGP.text = string.Format("G:{0}", gpString);
-            TextGP.color = OnlineService.GetGenesysPointColor(gp);
+            TextGP.text = string.Format("G:{0}", data.GetCreditString());
+            TextGP.color = BanlistManager.currentGenesysBanList.GetCreditColor(card.GetCredit());
 
             #endregion
 

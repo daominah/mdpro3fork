@@ -156,7 +156,6 @@ namespace MDPro3.UI
         public DeckLocation location;
         private Vector3 dragScale = new(1.7f, 1.7f, 1f);
         private RectTransform child;
-        public int genesysPoint;
 
         protected override void Awake()
         {
@@ -259,7 +258,7 @@ namespace MDPro3.UI
         public void SetRegulationIcon()
         {
             IconLimit.sprite =
-                TextureManager.container.GetCardRegulationIcon(Card.Id, DeckEditor.banlist);
+                TextureManager.container.GetCardRegulationIcon(Card.Id, DeckEditor.Banlist);
         }
 
         private void SetIcons()
@@ -291,12 +290,8 @@ namespace MDPro3.UI
             TextLink.text = Card.GetLinkCount().ToString();
             TextPendulumScale.text = Card.LScale.ToString();
 
-            genesysPoint = OnlineService.GetGenesysPoint(Card.GetOriginalID());
-            var text = genesysPoint.ToString();
-            if (genesysPoint < 0)
-                text = "X";
-            TextCardPoint.text = text;
-            TextCardPoint.color = OnlineService.GetGenesysPointColor(genesysPoint);
+            TextCardPoint.text = Card.GetCreditString();
+            TextCardPoint.color = BanlistManager.currentGenesysBanList.GetCreditColor(Card.GetCredit()); ;
 
             RefreshIcons();
         }
@@ -305,23 +300,23 @@ namespace MDPro3.UI
         {
             if(Program.instance.currentServant == Program.instance.deckEditor)
             {
-                IconAttribute.gameObject.SetActive(DeckEditorUI.cardInfoType == DeckEditorUI.CardInfoType.Detail);
-                IconSpellTrapType.gameObject.SetActive(DeckEditorUI.cardInfoType == DeckEditorUI.CardInfoType.Detail);
-                IconRace.gameObject.SetActive(DeckEditorUI.cardInfoType == DeckEditorUI.CardInfoType.Detail);
-                IconTuner.gameObject.SetActive(DeckEditorUI.cardInfoType == DeckEditorUI.CardInfoType.Detail
+                IconAttribute.gameObject.SetActive(DeckEditor.cardInfoType == DeckEditor.CardInfoType.Detail);
+                IconSpellTrapType.gameObject.SetActive(DeckEditor.cardInfoType == DeckEditor.CardInfoType.Detail);
+                IconRace.gameObject.SetActive(DeckEditor.cardInfoType == DeckEditor.CardInfoType.Detail);
+                IconTuner.gameObject.SetActive(DeckEditor.cardInfoType == DeckEditor.CardInfoType.Detail
                     && Card.HasType(CardType.Tuner));
                 var levelType = Card.GetLevelType();
-                IconLevel.gameObject.SetActive(DeckEditorUI.cardInfoType == DeckEditorUI.CardInfoType.Detail
+                IconLevel.gameObject.SetActive(DeckEditor.cardInfoType == DeckEditor.CardInfoType.Detail
                     && Card.HasType(CardType.Monster) && levelType == Card.LevelType.Level);
-                IconRank.gameObject.SetActive(DeckEditorUI.cardInfoType == DeckEditorUI.CardInfoType.Detail
+                IconRank.gameObject.SetActive(DeckEditor.cardInfoType == DeckEditor.CardInfoType.Detail
                     && Card.HasType(CardType.Monster) && levelType == Card.LevelType.Rank);
-                IconLink.gameObject.SetActive(DeckEditorUI.cardInfoType == DeckEditorUI.CardInfoType.Detail
+                IconLink.gameObject.SetActive(DeckEditor.cardInfoType == DeckEditor.CardInfoType.Detail
                     && Card.HasType(CardType.Monster) && levelType == Card.LevelType.Link);
-                IconPendulumScale.gameObject.SetActive(DeckEditorUI.cardInfoType == DeckEditorUI.CardInfoType.Detail
+                IconPendulumScale.gameObject.SetActive(DeckEditor.cardInfoType == DeckEditor.CardInfoType.Detail
                     && Card.HasType(CardType.Pendulum));
-                IconPool.gameObject.SetActive(DeckEditorUI.cardInfoType == DeckEditorUI.CardInfoType.Pool);
-                CardPoint.SetActive(DeckEditorUI.cardInfoType == DeckEditorUI.CardInfoType.Genesys);
-                IconLimit.gameObject.SetActive(DeckEditorUI.cardInfoType != DeckEditorUI.CardInfoType.Genesys);
+                IconPool.gameObject.SetActive(DeckEditor.cardInfoType == DeckEditor.CardInfoType.Pool);
+                CardPoint.SetActive(DeckEditor.cardInfoType == DeckEditor.CardInfoType.Genesys);
+                IconLimit.gameObject.SetActive(DeckEditor.cardInfoType != DeckEditor.CardInfoType.Genesys);
             }
             else if (Program.instance.currentServant == Program.instance.deckBrowser)
             {

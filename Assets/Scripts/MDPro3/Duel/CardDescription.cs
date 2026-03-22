@@ -321,7 +321,7 @@ namespace MDPro3
 
         private void RefreshLimitIcon(int code)
         {
-            var banlist = DeckEditor.banlist;
+            var banlist = BanlistManager.currentBanList;
             var limit = banlist.GetQuantity(code);
             if (limit == 3)
                 manager.GetElement<Image>("Limit").sprite = TextureManager.container.typeNone;

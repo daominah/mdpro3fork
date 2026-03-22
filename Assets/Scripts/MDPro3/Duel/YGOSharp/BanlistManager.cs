@@ -3,22 +3,35 @@ using MDPro3.Servant;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
+using YGOSharp;
 
 namespace MDPro3.Duel.YGOSharp
 {
     public static class BanlistManager
     {
         public static List<Banlist> Banlists { get; private set; }
-        public static string PATH => Program.PATH_DATA + FILE_NAME;
-        public const string EMPTY_LIST_NAME = "N/A";
         public const string FILE_NAME = "lflist.conf";
-        private const string MERGED_FILE_NAME = "lflist_merged.conf";
+        private const string FILE_NAME_MERGED = "lflist_merged.conf";
+        public const string FILE_NAME_GENESYS = "lflist_genesys.conf";
+        public const string EMPTY_LIST_NAME = "N/A";
+        public static int emptyListIndex;
+        public static Banlist currentBanList;
+        public static Banlist currentGenesysBanList;
+
+        private static bool dirty;
+        private static List<string> allNames;
+        private static List<string> allNamesNoGenesys;
+        private static List<string> allGenesysNames;
+        private static List<string> allNamesFromDefaultGenesys;
+        private static string allTextNoGenesys;
+
         private static readonly StringBuilder builder = new();
 
         public static void Initialize()
         {
-            Banlists = new List<Banlist>();
+            Banlists = new();
             builder.Clear();
             StreamReader reader;
             if (Config.GetBool("Expansions", true))
@@ -52,20 +65,26 @@ namespace MDPro3.Duel.YGOSharp
                 }
             }
 
-            reader = new StreamReader(PATH);
-            InitializeFromReader(reader);
-            reader.Close();
-
-            File.WriteAllText(Path.Combine(Program.PATH_DATA, MERGED_FILE_NAME), builder.ToString(), Encoding.UTF8);
+            var path = Program.PATH_DATA + FILE_NAME;
+            if (File.Exists(path))
+            {
+                reader = new StreamReader(Program.PATH_DATA + FILE_NAME);
+                InitializeFromReader(reader);
+                reader.Close();
+            }
+            allTextNoGenesys = builder.ToString();
 
             Banlist current = new()
             {
                 Name = EMPTY_LIST_NAME
             };
             Banlists.Add(current);
+            emptyListIndex = Banlists.Count - 1;
+
+            InitializeForGenesys();
         }
 
-        public static void InitializeFromReader(StreamReader reader)
+        public static void InitializeFromReader(StreamReader reader, bool record = false)
         {
             Banlist current = null;
             while (!reader.EndOfStream)
@@ -86,7 +105,12 @@ namespace MDPro3.Duel.YGOSharp
                         {
                             Name = line[1..].Trim()
                         };
-                        Banlists.Add(current);
+                        if (record)
+                        {
+                            allNamesFromDefaultGenesys ??= new();
+                            allNamesFromDefaultGenesys.Add(current.Name);
+                        }
+                        AddList(current);
                         continue;
                     }
 
@@ -157,6 +181,55 @@ namespace MDPro3.Duel.YGOSharp
             }
         }
 
+        public static void InitializeForGenesys()
+        {
+            builder.Clear();
+
+            var gPath = Program.PATH_DATA + FILE_NAME_GENESYS;
+            if (File.Exists(gPath))
+            {
+                if (Banlists != null && allNamesFromDefaultGenesys != null)
+                    foreach (var name in allNamesFromDefaultGenesys)
+                        Banlists.RemoveAll(b => b.Name == name);
+
+                var reader = new StreamReader(gPath);
+                InitializeFromReader(reader, true);
+                reader.Close();
+            }
+
+            InitialCurrentBanlists();
+            var text = Tools.MergeWithNewLine(allTextNoGenesys, builder.ToString());
+            SaveMergedText(text);
+        }
+
+        private static void InitialCurrentBanlists()
+        {
+            currentBanList = null;
+            currentGenesysBanList = null;
+            foreach (var banlist in Banlists)
+            {
+                if(currentBanList == null && !banlist.isCredit)
+                    currentBanList = banlist;
+                if(currentGenesysBanList == null && banlist.isCredit)
+                    currentGenesysBanList = banlist;
+                if (currentBanList != null && currentGenesysBanList != null)
+                    break;
+            }
+            currentBanList ??= new();
+            currentGenesysBanList ??= new();
+        }
+
+        private static void SaveMergedText(string text)
+        {
+            File.WriteAllText(Path.Combine(Program.PATH_DATA, FILE_NAME_MERGED), text, Encoding.UTF8);
+        }
+
+        private static void AddList(Banlist banlist)
+        {
+            Banlists.Add(banlist);
+            dirty = true;
+        }
+
         private static void AppendLflistText(StringBuilder builder, string text)
         {
             if (string.IsNullOrWhiteSpace(text))
@@ -166,7 +239,6 @@ namespace MDPro3.Duel.YGOSharp
                 builder.AppendLine();
             builder.Append(text);
         }
-
 
         public static int GetIndex(uint hash)
         {
@@ -192,40 +264,59 @@ namespace MDPro3.Duel.YGOSharp
             return InterString.Get("未知卡表");
         }
 
-        public static List<string> GetAllName()
+        public static List<string> GetAllNames(bool includeGenesys = false)
         {
-            List<string> returnValue = new();
-            foreach (var item in Banlists)
+            allNames ??= new();
+            allNamesNoGenesys ??= new();
+
+            if (dirty)
             {
-                returnValue.Add(item.Name);
+                allNames.Clear();
+                allNamesNoGenesys.Clear();
+                foreach (var item in Banlists)
+                {
+                    allNames.Add(item.Name);
+                    if(!item.isCredit)
+                        allNamesNoGenesys.Add(item.Name);
+                }
             }
-            return returnValue;
+
+            if (includeGenesys)
+                return allNames;
+            else
+                return allNamesNoGenesys;
+        }
+
+        public static List<string> GetAllGenesysNames()
+        {
+            allGenesysNames ??= new();
+
+            if (dirty)
+            {
+                allGenesysNames.Clear();
+                foreach(var item in Banlists)
+                    if(item.isCredit)
+                        allGenesysNames.Add(item.Name);
+            }
+
+            return allGenesysNames;
         }
 
         public static Banlist GetByName(string name)
         {
-            Banlist returnValue = Banlists[^1];
             foreach (var item in Banlists)
-            {
                 if (item.Name == name)
-                {
-                    returnValue = item;
-                }
-            }
-            return returnValue;
+                    return item;
+            return Banlists[emptyListIndex];
         }
 
         public static Banlist GetByHash(uint hash)
         {
-            Banlist returnValue = Banlists[^1];
             foreach (var item in Banlists)
-            {
                 if (item.Hash == hash)
-                {
-                    returnValue = item;
-                }
-            }
-            return returnValue;
+                    return item;
+            return Banlists[emptyListIndex];
         }
+
     }
 }
