@@ -182,8 +182,13 @@ namespace MDPro3
                     manager.GetElement("BaseActivated").SetActive(false);
             }
 
-            manager.GetElement<Text>("TextName").text = data.Name;
-            var attributeSprite = GetCardAttribute(data);
+            var cardName = data.Name;
+            if (data.Id != data.Alias && data.Alias != origin.Alias)
+            {
+                var alias = CardsManager.Get(data.Alias);
+                cardName += $" ({alias.Name})";
+            }
+            manager.GetElement<Text>("TextName").text = cardName; var attributeSprite = GetCardAttribute(data);
             manager.GetElement<Image>("Attribute").sprite = attributeSprite.sprite;
             manager.GetElement("ArributeOutline").SetActive(attributeSprite.notOriginal);
             var frameColors = GetCardFrameColor(data);
