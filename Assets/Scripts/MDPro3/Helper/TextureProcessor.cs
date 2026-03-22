@@ -1,6 +1,7 @@
-using UnityEngine;
+using SevenZip;
 using System;
 using System.Threading.Tasks;
+using UnityEngine;
 
 public static class TextureProcessor
 {
@@ -18,6 +19,7 @@ public static class TextureProcessor
 
     private const string PATH_APPLY_MASK_ALPHA = "ComputeShader/ApplyMaskAlpha";
     private const string PATH_INVERT_ALPHA = "ComputeShader/InvertAlpha";
+    private const string PATH_TEXTURE_RESIZE = "ComputeShader/TextureResize";
 
     private static ComputeShader shaderApplyMaskAlpha;
     private static ComputeShader ShaderApplyMaskAlpha => 
@@ -27,6 +29,11 @@ public static class TextureProcessor
     private static ComputeShader ShaderInvertMaskAlpha =>
         shaderInvertMaskAlpha != null ? shaderInvertMaskAlpha
         : shaderInvertMaskAlpha = LoadComputeShader(PATH_INVERT_ALPHA);
+    private static ComputeShader shaderTextureResize;
+    private static ComputeShader ShaderTextureResize =>
+        shaderTextureResize != null ? shaderTextureResize
+        : shaderTextureResize = LoadComputeShader(PATH_TEXTURE_RESIZE);
+
 
     private static ComputeShader LoadComputeShader(string path)
     {
@@ -36,9 +43,14 @@ public static class TextureProcessor
 
     private static RenderTexture CreateRenderTexture(Texture2D sourceTex)
     {
+        return CreateRenderTexture(sourceTex.width, sourceTex.height);
+    }
+
+    private static RenderTexture CreateRenderTexture(int width, int height)
+    {
         RenderTexture outputRT = new(
-            sourceTex.width,
-            sourceTex.height,
+            width,
+            height,
             0,
             RenderTextureFormat.ARGB32
         )
@@ -52,17 +64,23 @@ public static class TextureProcessor
         return outputRT;
     }
 
-    private static void DispatchComputeShader(ComputeShader shader, int kernel, Texture2D sourceTex)
+    private static void DispatchComputeShader(ComputeShader shader, int kernel, Texture sourceTex)
+    {
+        DispatchComputeShader(shader, kernel, sourceTex.width, sourceTex.height);
+    }
+
+    private static void DispatchComputeShader(ComputeShader shader, int kernel, int width, int height)
     {
         shader.GetKernelThreadGroupSizes(kernel, out uint threadGroupSizeX, out uint threadGroupSizeY, out _);
 
-        int threadGroupsX = Mathf.CeilToInt(sourceTex.width / (float)threadGroupSizeX);
-        int threadGroupsY = Mathf.CeilToInt(sourceTex.height / (float)threadGroupSizeY);
+        int threadGroupsX = Mathf.CeilToInt(width / (float)threadGroupSizeX);
+        int threadGroupsY = Mathf.CeilToInt(height / (float)threadGroupSizeY);
 
         shader.Dispatch(kernel, threadGroupsX, threadGroupsY, 1);
     }
 
-    private static Texture2D RenderTextureToTexture2D(RenderTexture rt, Texture2D sourceTex)
+
+    private static Texture2D RenderTextureToTexture2D(RenderTexture rt, Texture sourceTex)
     {
         Texture2D resultTex = new(sourceTex.width, sourceTex.height, TextureFormat.ARGB32, false);
         RenderTexture.active = rt;
@@ -140,21 +158,15 @@ public static class TextureProcessor
 
     private static float ApplyBlendMode(float sourceAlpha, float maskValue, BlendMode blendMode)
     {
-        switch (blendMode)
+        return blendMode switch
         {
-            case BlendMode.Multiply:
-                return sourceAlpha * maskValue;
-            case BlendMode.Replace:
-                return maskValue;
-            case BlendMode.Additive:
-                return Mathf.Clamp01(sourceAlpha + maskValue);
-            case BlendMode.Subtractive:
-                return Mathf.Clamp01(sourceAlpha - maskValue);
-            case BlendMode.Overwrite:
-                return sourceAlpha > 0 ? maskValue : 0;
-            default:
-                return sourceAlpha * maskValue;
-        }
+            BlendMode.Multiply => sourceAlpha * maskValue,
+            BlendMode.Replace => maskValue,
+            BlendMode.Additive => Mathf.Clamp01(sourceAlpha + maskValue),
+            BlendMode.Subtractive => Mathf.Clamp01(sourceAlpha - maskValue),
+            BlendMode.Overwrite => sourceAlpha > 0 ? maskValue : 0,
+            _ => sourceAlpha * maskValue,
+        };
     }
 
     private static Texture2D EnsureTextureReadable(Texture2D texture)
@@ -257,7 +269,6 @@ public static class TextureProcessor
         return resultTex;
     }
 
-    // CPU回退方案
     public static Texture2D ApplyMaskToAlpha_CPU(
         Texture2D sourceTex,
         Texture2D maskTex,
@@ -424,6 +435,65 @@ public static class TextureProcessor
         return resultTexture;
     }
 
+    #endregion
+
+
+    #region Texture Resize
+
+    public static Texture2D ResizeTexture2D(Texture2D texture, int newWidth, int newHeight)
+    {
+        if (texture == null)
+            throw new ArgumentNullException("Texture cannot be null.");
+        if (!SystemInfo.supportsComputeShaders)
+        {
+            Debug.LogWarning("Current platform does not support Compute Shaders. Falling back to CPU method.");
+            return ResizeTexture2D_CPU(texture, newWidth, newHeight);
+        }
+
+        ComputeShader shader = ShaderTextureResize;
+        int kernelHandle = shader.FindKernel("CSMain");
+        RenderTexture outputRT = CreateRenderTexture(texture.width, texture.height);
+
+        shader.SetTexture(kernelHandle, "Result", outputRT);
+        shader.SetTexture(kernelHandle, "Source", texture);
+        shader.SetInt("SourceWidth", texture.width);
+        shader.SetInt("SourceHeight", texture.height);
+        shader.SetInt("DestWidth", newWidth);
+        shader.SetInt("DestHeight", newHeight);
+        DispatchComputeShader(shader, kernelHandle, outputRT);
+        Texture2D resultTex = RenderTextureToTexture2D(outputRT, outputRT);
+        CleanupRenderTexture(outputRT);
+        return resultTex;
+    }
+
+    public static Texture2D ResizeTexture2D_CPU(Texture2D texture, int newWidth, int newHeight)
+    {
+        Color32[] srcPixels = texture.GetPixels32();
+        Color32[] dstPixels = ResizePixelsBilinear32(srcPixels, texture.width, texture.height, newWidth, newHeight);
+        Texture2D dst = new(newWidth, newHeight, texture.format, false);
+        dst.SetPixels32(dstPixels);
+        dst.Apply();
+
+        return dst;
+    }
+
+    private static Color32[] ResizePixelsBilinear32(Color32[] srcPixels, int srcWidth, int srcHeight, int dstWidth, int dstHeight)
+    {
+        Color32[] dstPixels = new Color32[dstWidth * dstHeight];
+
+        for (int y = 0; y < dstHeight; y++)
+        {
+            for (int x = 0; x < dstWidth; x++)
+            {
+                float u = (x + 0.5f) / dstWidth;
+                float v = (y + 0.5f) / dstHeight;
+                Color sampledColor = SampleTextureBilinear(srcPixels, srcWidth, srcHeight, u, v);
+                dstPixels[y * dstWidth + x] = sampledColor;
+            }
+        }
+
+        return dstPixels;
+    }
 
     #endregion
 

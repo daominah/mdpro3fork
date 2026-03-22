@@ -666,7 +666,7 @@ namespace MDPro3.UI
                 if (size.Length > 1 && size[0] > 0 && size[1] > 0)
                     if (size[0] != tex.width || size[1] != tex.height)
                     {
-                        workingTexture = TextureManager.ResizeTexture2D(CreateSaveTextureCopy(tex), size[0], size[1]);
+                        workingTexture = TextureProcessor.ResizeTexture2D(CreateSaveTextureCopy(tex), size[0], size[1]);
                         destroyWorkingTexture = true;
                     }
 

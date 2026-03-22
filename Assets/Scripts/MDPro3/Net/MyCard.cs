@@ -182,7 +182,7 @@ namespace MDPro3.Net
                     fullPath = avatarSavePath + fileName + Program.EXPANSION_PNG;
                     if(downloadImage.width > avatarSize)
                     {
-                        returnValue = TextureManager.ResizeTexture2D(downloadImage, avatarSize, avatarSize);
+                        returnValue = TextureProcessor.ResizeTexture2D(downloadImage, avatarSize, avatarSize);
                         UnityEngine.Object.Destroy(downloadImage);
                     }
 

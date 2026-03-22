@@ -114,7 +114,7 @@ namespace MDPro3
             if(pic.height != targetHeight)
             {
                 int newWidth = Mathf.RoundToInt(pic.width * (targetHeight / (float)pic.height));
-                scaledTexture = TextureManager.ResizeTexture2D(pic, newWidth, targetHeight);
+                scaledTexture = TextureProcessor.ResizeTexture2D(pic, newWidth, targetHeight);
             }
             else
                 scaledTexture = pic;
