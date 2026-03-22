@@ -40,6 +40,7 @@ namespace MDPro3.Duel
             AudioManager.PlaySE("SE_LOG_OPEN");
             baseRect.DOAnchorPosX(-20f, 0.2f).SetUpdate(true);
             baseRect.localScale = Vector3.one * Config.GetUIScale(1.15f);
+            SnapToLatest();
         }
 
         public void Hide(bool mute = false)
@@ -79,6 +80,13 @@ namespace MDPro3.Duel
         {
             scrollRect.content.DestroyAllChildren();
             fullHeight = 0;
+        }
+
+        private void SnapToLatest()
+        {
+            scrollRect.StopMovement();
+            scrollRect.verticalNormalizedPosition = 0f;
+            Refresh(0f);
         }
 
         private void Refresh(float value)
