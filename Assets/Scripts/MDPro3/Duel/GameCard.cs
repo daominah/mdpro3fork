@@ -2543,7 +2543,7 @@ namespace MDPro3
             if ((p.location & (uint)CardLocation.Hand) > 0)
                 Tools.ChangeSortingLayer(highlightParent, "Default");
             else
-                Tools.ChangeSortingLayer(highlightParent, "DuelEffect_Low");
+                Tools.ChangeSortingLayer(highlightParent, "CardHighlight");
         }
 
         public void ClearButtons()
