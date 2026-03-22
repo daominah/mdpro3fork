@@ -34,34 +34,10 @@ public static class TextureProcessor
         shaderTextureResize != null ? shaderTextureResize
         : shaderTextureResize = LoadComputeShader(PATH_TEXTURE_RESIZE);
 
-
     private static ComputeShader LoadComputeShader(string path)
     {
         ComputeShader shader = Resources.Load<ComputeShader>(path);
         return shader;
-    }
-
-    private static RenderTexture CreateRenderTexture(Texture2D sourceTex)
-    {
-        return CreateRenderTexture(sourceTex.width, sourceTex.height);
-    }
-
-    private static RenderTexture CreateRenderTexture(int width, int height)
-    {
-        RenderTexture outputRT = new(
-            width,
-            height,
-            0,
-            RenderTextureFormat.ARGB32
-        )
-        {
-            enableRandomWrite = true,
-            filterMode = FilterMode.Bilinear,
-            wrapMode = TextureWrapMode.Clamp,
-            autoGenerateMips = false
-        };
-        outputRT.Create();
-        return outputRT;
     }
 
     private static void DispatchComputeShader(ComputeShader shader, int kernel, Texture sourceTex)
@@ -79,7 +55,6 @@ public static class TextureProcessor
         shader.Dispatch(kernel, threadGroupsX, threadGroupsY, 1);
     }
 
-
     private static Texture2D RenderTextureToTexture2D(RenderTexture rt, Texture sourceTex)
     {
         Texture2D resultTex = new(sourceTex.width, sourceTex.height, TextureFormat.ARGB32, false);
@@ -90,13 +65,6 @@ public static class TextureProcessor
         return resultTex;
     }
 
-    private static void CleanupRenderTexture(RenderTexture rt)
-    {
-        if (rt != null && rt.IsCreated())
-        {
-            rt.Release();
-        }
-    }
 
     private static float GetChannelValue(Color color, int channel)
     {
@@ -240,7 +208,7 @@ public static class TextureProcessor
         int kernelHandle = shader.FindKernel("CSMain");
 
         // 4. 创建输出纹理
-        RenderTexture outputRT = CreateRenderTexture(sourceTex);
+        RenderTexture outputRT = RenderTexturePool.Get(sourceTex.width, sourceTex.height);
 
         // 5. 设置Compute Shader参数
         shader.SetTexture(kernelHandle, "SourceTex", sourceTex);
@@ -264,7 +232,7 @@ public static class TextureProcessor
         Texture2D resultTex = RenderTextureToTexture2D(outputRT, sourceTex);
 
         // 8. 清理
-        CleanupRenderTexture(outputRT);
+        RenderTexturePool.Return(outputRT);
 
         return resultTex;
     }
@@ -394,12 +362,12 @@ public static class TextureProcessor
 
         ComputeShader shader = ShaderInvertMaskAlpha;
         int kernelHandle = shader.FindKernel("CSMain");
-        RenderTexture outputRT = CreateRenderTexture(texture);
+        RenderTexture outputRT = RenderTexturePool.Get(texture.width, texture.height);
         shader.SetTexture(kernelHandle, "SourceTex", texture);
         shader.SetTexture(kernelHandle, "Result", outputRT);
         DispatchComputeShader(shader, kernelHandle, texture);
         Texture2D resultTex = RenderTextureToTexture2D(outputRT, texture);
-        CleanupRenderTexture(outputRT);
+        RenderTexturePool.Return(outputRT);
         return resultTex;
     }
 
@@ -437,7 +405,6 @@ public static class TextureProcessor
 
     #endregion
 
-
     #region Texture Resize
 
     public static Texture2D ResizeTexture2D(Texture2D texture, int newWidth, int newHeight)
@@ -452,7 +419,7 @@ public static class TextureProcessor
 
         ComputeShader shader = ShaderTextureResize;
         int kernelHandle = shader.FindKernel("CSMain");
-        RenderTexture outputRT = CreateRenderTexture(texture.width, texture.height);
+        RenderTexture outputRT = RenderTexturePool.Get(texture.width, texture.height);
 
         shader.SetTexture(kernelHandle, "Result", outputRT);
         shader.SetTexture(kernelHandle, "Source", texture);
@@ -462,7 +429,7 @@ public static class TextureProcessor
         shader.SetInt("DestHeight", newHeight);
         DispatchComputeShader(shader, kernelHandle, outputRT);
         Texture2D resultTex = RenderTextureToTexture2D(outputRT, outputRT);
-        CleanupRenderTexture(outputRT);
+        RenderTexturePool.Return(outputRT);
         return resultTex;
     }
 
