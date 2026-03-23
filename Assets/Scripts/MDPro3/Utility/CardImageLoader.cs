@@ -17,6 +17,8 @@ namespace MDPro3.Utility
 
         #region 字段和属性
 
+        public const float DEFAULT_ASPECT = 704 / 1024f;
+
         private static readonly ConcurrentDictionary<int, CacheEntry> cachedArts = new();
         private static readonly ConcurrentDictionary<int, CacheEntry> cachedCards = new();
         private static readonly ConcurrentDictionary<int, Texture2D> cachedCardNames = new();
@@ -393,7 +395,11 @@ namespace MDPro3.Utility
                     Debug.LogError($"加载失败: {request.error}");
                     return null;
                 }
-                return DownloadHandlerTexture.GetContent(request);
+                var tex = DownloadHandlerTexture.GetContent(request);
+                var aspect = tex.width / (float)tex.height;
+                if(aspect > DEFAULT_ASPECT)
+                    tex = TextureProcessor.PadBottomToMatchAspect(tex, DEFAULT_ASPECT);
+                return tex;
             }
             finally
             {
@@ -585,7 +591,7 @@ namespace MDPro3.Utility
             var startY = Mathf.CeilToInt(cardPic.height * 0.3f);
             var width = Mathf.CeilToInt(cardPic.width * 0.87f);
             var height = Mathf.CeilToInt(cardPic.height * 0.81f);
-            return GetCroppingTex(cardPic, startX, startY, width, height);
+            return TextureProcessor.GetCroppingTex(cardPic, startX, startY, width, height);
         }
 
         private static Texture2D GetArtFromPendulumCard(Texture2D cardPic)
@@ -594,7 +600,7 @@ namespace MDPro3.Utility
             var startY = Mathf.CeilToInt(cardPic.height * 0.38f);
             var width = Mathf.CeilToInt(cardPic.width * 0.933f);
             var height = Mathf.CeilToInt(cardPic.height * 0.81f);
-            return GetCroppingTex(cardPic, startX, startY, width, height);
+            return TextureProcessor.GetCroppingTex(cardPic, startX, startY, width, height);
         }
 
         private static Texture2D GetArtFromRushDuelMonsterCard(Texture2D cardPic)
@@ -603,7 +609,7 @@ namespace MDPro3.Utility
             var startY = Mathf.CeilToInt(cardPic.height * 0.29f);
             var width = Mathf.CeilToInt(cardPic.width * 0.933f);
             var height = Mathf.CeilToInt(cardPic.height * 0.90f);
-            return GetCroppingTex(cardPic, startX, startY, width, height);
+            return TextureProcessor.GetCroppingTex(cardPic, startX, startY, width, height);
         }
 
         private static Texture2D GetArtFromRushDuelSpellCard(Texture2D cardPic)
@@ -612,19 +618,7 @@ namespace MDPro3.Utility
             var startY = Mathf.CeilToInt(cardPic.height * 0.29f);
             var width = Mathf.CeilToInt(cardPic.width * 0.933f);
             var height = Mathf.CeilToInt(cardPic.height * 0.90f);
-            return GetCroppingTex(cardPic, startX, startY, width, height);
-        }
-
-        private static Texture2D GetCroppingTex(Texture2D texture, int startX, int startY, int width, int height)
-        {
-            int destWidth = width - startX;
-            int destHeight = height - startY;
-
-            var result = new Texture2D(destWidth, destHeight, texture.format, false);
-            Graphics.CopyTexture(texture, 0, 0, startX, startY, destWidth, destHeight,
-                                 result, 0, 0, 0, 0);
-
-            return result;
+            return TextureProcessor.GetCroppingTex(cardPic, startX, startY, width, height);
         }
 
         #endregion

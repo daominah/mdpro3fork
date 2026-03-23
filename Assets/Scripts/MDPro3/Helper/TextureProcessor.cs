@@ -464,4 +464,52 @@ public static class TextureProcessor
 
     #endregion
 
+    #region PadBottomToMatchAspect
+
+    public static Texture2D PadBottomToMatchAspect(Texture2D source, float targetAspect)
+    {
+        if (source == null) return null;
+
+        int width = source.width;
+        int height = source.height;
+        float currentAspect = (float)width / height;
+
+        if (currentAspect <= targetAspect)
+            return source;
+
+        int newHeight = Mathf.CeilToInt(width / targetAspect);
+
+        Texture2D result = new(width, newHeight, source.format, false);
+
+        Color32[] transparentPixels = new Color32[width * newHeight];
+        for (int i = 0; i < transparentPixels.Length; i++)
+            transparentPixels[i] = new Color32(0, 0, 0, 0);
+        result.SetPixels32(transparentPixels);
+        result.Apply();
+
+        int dstY = newHeight - height;
+        Graphics.CopyTexture(source, 0, 0, 0, 0, width, height,
+                             result, 0, 0, 0, dstY);
+
+        return result;
+    }
+
+    #endregion
+
+    #region Crop Texture
+
+    public static Texture2D GetCroppingTex(Texture2D texture, int startX, int startY, int width, int height)
+    {
+        int destWidth = width - startX;
+        int destHeight = height - startY;
+
+        var result = new Texture2D(destWidth, destHeight, texture.format, false);
+        Graphics.CopyTexture(texture, 0, 0, startX, startY, destWidth, destHeight,
+                             result, 0, 0, 0, 0);
+
+        return result;
+    }
+
+    #endregion
+
 }

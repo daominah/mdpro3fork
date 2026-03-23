@@ -2,7 +2,6 @@ using MDPro3.Duel.YGOSharp;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using static YgomGame.Card.Content;
 
 namespace MDPro3
 {
@@ -56,6 +55,7 @@ namespace MDPro3
         public override void SetCard(Card data, string language, Texture art, Texture2D overFrame = null)
         {
             base.SetCard(data, language, art, overFrame);
+
             numAtk.text = data.GetAttackString();
             numDef.text = data.GetDefenseString();
             atk.SetActive(true);
