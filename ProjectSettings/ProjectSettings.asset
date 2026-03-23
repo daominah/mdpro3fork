@@ -850,7 +850,7 @@ PlayerSettings:
   webWasm2023: 0
   scriptingDefineSymbols:
     1: 
-    Android: 
+    Android: UNITY_INPUT_SYSTEM_ENABLE_UI
     EmbeddedLinux: 
     LinuxHeadlessSimulation: 
     Nintendo Switch: 
@@ -861,7 +861,7 @@ PlayerSettings:
     WebGL: 
     Windows Store Apps: 
     XboxOne: 
-    iPhone: 
+    iPhone: UNITY_INPUT_SYSTEM_ENABLE_UI
     tvOS: 
   additionalCompilerArguments: {}
   platformArchitecture: {}
