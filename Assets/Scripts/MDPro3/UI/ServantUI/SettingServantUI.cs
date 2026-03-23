@@ -2336,43 +2336,63 @@ namespace MDPro3.UI.ServantUI
 
         #region About
 
+        private static string GetAboutText(string text)
+        {
+            if (string.IsNullOrEmpty(text))
+                return string.Empty;
+
+            var result = text.Replace("\r\n", "\n").Replace('\r', '\n').TrimEnd();
+            if (result.EndsWith("_END_", StringComparison.Ordinal))
+                result = result[..^"_END_".Length].TrimEnd();
+            return result;
+        }
+
         public void OnAboutGame()
         {
-            var handle = Addressables.LoadAssetAsync<TextAsset>("AboutGame");
+            var address = Language.UseChinese() ? "AboutGame" : "AboutGame_en";
+            var handle = Addressables.LoadAssetAsync<TextAsset>(address);
             handle.Completed += (result) =>
             {
                 var selections = new List<string>()
                 {
                     InterString.Get("关于游戏"),
-                    result.Result.text
+                    GetAboutText(result.Result.text)
                 };
-                UIManager.ShowPopupText(selections);
+                if (Language.UseChinese())
+                    UIManager.ShowPopupText(selections);
+                else
+                    UIManager.ShowPopupText(selections, TMPro.HorizontalAlignmentOptions.Left);
             };
         }
         public void OnAboutVersion()
         {
-            var handle = Addressables.LoadAssetAsync<TextAsset>("AboutVersion");
+            var address = Language.UseChinese() ? "AboutVersion" : "AboutVersion_en";
+            var handle = Addressables.LoadAssetAsync<TextAsset>(address);
             handle.Completed += (result) =>
             {
                 var selections = new List<string>()
                 {
                     InterString.Get("关于版本号"),
-                    result.Result.text
+                    GetAboutText(result.Result.text)
                 };
                 UIManager.ShowPopupText(selections, TMPro.HorizontalAlignmentOptions.Left);
             };
         }
         public void OnAboutUpdate()
         {
-            var handle = Addressables.LoadAssetAsync<TextAsset>("AboutUpdate");
+            var address = Language.UseChinese() ? "AboutUpdate" : "AboutUpdate_en";
+            var handle = Addressables.LoadAssetAsync<TextAsset>(address);
             handle.Completed += (result) =>
             {
                 var selections = new List<string>()
                 {
                     InterString.Get("关于更新"),
-                    result.Result.text
+                    GetAboutText(result.Result.text)
                 };
-                UIManager.ShowPopupText(selections);
+                if (Language.UseChinese())
+                    UIManager.ShowPopupText(selections);
+                else
+                    UIManager.ShowPopupText(selections, TMPro.HorizontalAlignmentOptions.Left);
             };
         }
         public void OnUpdateContent()
