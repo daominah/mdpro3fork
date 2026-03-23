@@ -505,7 +505,7 @@ namespace MDPro3
             effectTargets.Remove(card);
         }
 
-        public static Vector3 GetCardPosition(GPS p, GameCard c = null, GameCard overlayParent = null)
+        public static Vector3 GetCardPosition(GPS p)
         {
             var returnValue = Vector3.zero;
 
@@ -520,10 +520,8 @@ namespace MDPro3
             else if (p.InLocation(CardLocation.Hand))
             {
                 int handsCount;
-                if(c == null)
-                    return Vector3.zero;
 
-                if (c.p.InMyControl())
+                if (p.InMyControl())
                     handsCount = Program.instance.ocgcore.GetMyHandCount();
                 else
                     handsCount = Program.instance.ocgcore.GetOpHandCount();
@@ -624,7 +622,6 @@ namespace MDPro3
                         break;
                 }
             }
-
             else if (p.InLocation(CardLocation.SpellZone))
             {
                 if (p.sequence < 5 || (p.sequence == 6 || p.sequence == 7) && OcgCore.MasterRule >= 4)
@@ -703,17 +700,8 @@ namespace MDPro3
 
             if (p.InLocation(CardLocation.Overlay))
             {
-                if (overlayParent != null)
-                {
-                    var pposition = overlayParent.overFatherCount - 1 - p.position;
-                    returnValue.y -= (pposition + 2) * 0.02f;
-                    returnValue.x += (pposition + 1) * 0.2f;
-                }
-                else
-                {
-                    returnValue.y -= (p.position + 2) * 0.02f;
-                    returnValue.x += (p.position + 1) * 0.2f;
-                }
+                returnValue.y -= (p.position + 2) * 0.02f;
+                returnValue.x += (p.position + 1) * 0.2f;
             }
             return returnValue;
         }
@@ -1112,7 +1100,7 @@ namespace MDPro3
                 }
             }
 
-            var position = GetCardPosition(p, this);
+            var position = GetCardPosition(p);
             var rotation = GetCardRotation(p, data.Id);
 
             bool handAppeal = false;
@@ -1872,7 +1860,7 @@ namespace MDPro3
             }
             else
                 manager = this.manager;
-            model.transform.localPosition = GetCardPosition(gps, this);
+            model.transform.localPosition = GetCardPosition(gps);
             Vector3 rotation = GetCardRotation(gps, data.Id);
 
             var cardPlane = manager.GetElement<Transform>("CardPlane");
@@ -1947,7 +1935,7 @@ namespace MDPro3
             appealed = false;
             MoveToHandDefault(time);
 
-            var targetPosition = GetCardPosition(p, this);
+            var targetPosition = GetCardPosition(p);
             var x = targetPosition.x;
 
             Transform pivot = manager.GetElement<Transform>("Pivot");
@@ -1968,7 +1956,7 @@ namespace MDPro3
 
         private void MoveToHandDefault(float time)
         {
-            var targetPosition = GetCardPosition(p, this);
+            var targetPosition = GetCardPosition(p);
             var x = targetPosition.x;
             if (HideMyHandCard && p.InMyControl())
                 targetPosition.z = GetMyHandBaseZ();
@@ -1991,7 +1979,7 @@ namespace MDPro3
             if (model == null || !p.InLocation(CardLocation.Hand))
                 return;            
             appealed = false;
-            model.transform.localPosition = GetCardPosition(p, this);
+            model.transform.localPosition = GetCardPosition(p);
             float x = model.transform.localPosition.x;
             manager.GetElement<Transform>("Pivot").localPosition = new Vector3(0, 0, HandOffsetPositionByX(x));
             manager.GetElement<Transform>("Offset").localPosition = Vector3.zero;
