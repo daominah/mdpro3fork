@@ -347,6 +347,7 @@ namespace MDPro3
 
             back.material = p.controller ==0 ? myProtector : opProtector;
             back.material.renderQueue = 3000;
+            back.material.SetFloat("_ZWrite", 1f);
             SetFace();
 
             model.transform.SetParent(Program.instance.ocgcore.GetFieldTransform(p.controller));
@@ -2538,12 +2539,20 @@ namespace MDPro3
                 manager.GetElement("EffectHighlightYellow").SetActive(true);
             else
                 manager.GetElement("EffectHighlightBlue").SetActive(true);
-            var highlightParent = manager.GetElement("EffectHighlightBlue").transform.parent.gameObject;
 
-            if ((p.location & (uint)CardLocation.Hand) > 0)
-                Tools.ChangeSortingLayer(highlightParent, "Default");
-            else
-                Tools.ChangeSortingLayer(highlightParent, "CardHighlight");
+            var highlightParent = manager.GetElement("EffectHighlightBlue").transform.parent.gameObject;
+            var t1 = manager.GetElement<Transform>("EffectHighlightYellow").GetChild(0);
+            var t2 = manager.GetElement<Transform>("EffectHighlightBlue").GetChild(0);
+            var t3 = manager.GetElement<Transform>("EffectHighlightYellowSelect").GetChild(0);
+            var t4 = manager.GetElement<Transform>("EffectHighlightBlueSelect").GetChild(0);
+            var needDown = p.InPosition(CardPosition.FaceUp);
+            if(p.InLocation(CardLocation.Hand))
+                needDown  = true;
+            var position = new Vector3(0f, needDown ? -0.05f : 0.05f, 0f);
+            t1.localPosition = position;
+            t2.localPosition = position;
+            t3.localPosition = position;
+            t4.localPosition = position;
         }
 
         public void ClearButtons()

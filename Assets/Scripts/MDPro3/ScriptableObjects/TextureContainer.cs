@@ -361,9 +361,6 @@ namespace MDPro3
         public Sprite chainNumSet9;
 
         [Header("Window")]
-        public Sprite duelCardSelectionListFrame;
-        public Sprite duelCardSelectionListViewIconHorizontal;
-        public Sprite duelCardSelectionListViewIconVertical;
         public Sprite toggleM;
         public Sprite toggleM_On;
         public Sprite toggleM_Over;

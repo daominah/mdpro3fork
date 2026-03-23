@@ -500,12 +500,11 @@ namespace MDPro3.UI.ServantUI
         public void RefreshBgDetail()
         {
             var core = Program.instance.ocgcore;
-            var info = core?.messageDispatcher?.duel?.duelBGManager?.fieldSummonRightInfo;
+            var info = core.messageDispatcher.duel.duelBGManager.fieldSummonRightInfo;
             if (info == null)
                 return;
 
-            var summonInfoManager = info.GetComponent<ElementObjectManager>();
-            if (summonInfoManager == null)
+            if (!info.TryGetComponent<ElementObjectManager>(out var summonInfoManager))
                 return;
 
             var nearManager = summonInfoManager.GetElement<ElementObjectManager>("RootNear");
@@ -537,7 +536,7 @@ namespace MDPro3.UI.ServantUI
             foreach (var card in cards)
                 card.HideHiddenLabel();
 
-            var info = Program.instance.ocgcore?.messageDispatcher?.duel?.duelBGManager?.fieldSummonRightInfo;
+            var info = Program.instance.ocgcore.messageDispatcher.duel.duelBGManager.fieldSummonRightInfo;
             if (info != null)
             {
                 if (wasShowing || info.activeSelf)

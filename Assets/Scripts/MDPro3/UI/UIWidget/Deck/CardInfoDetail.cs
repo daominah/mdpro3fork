@@ -700,7 +700,9 @@ namespace MDPro3.UI
 
         private async UniTask SaveCardsAsync(List<int> cards, CancellationToken token)
         {
+#if UNITY_EDITOR
             var time = Time.time;
+#endif
             UI.Popup.PopupProgress popupProgress = null;
             int errorCount = 0;
             errorLog = string.Empty;
@@ -745,7 +747,7 @@ namespace MDPro3.UI
             }
             finally
             {
-                popupProgress?.Hide();
+                popupProgress.Hide();
                 if (!string.IsNullOrEmpty(errorLog))
                     File.WriteAllText(errorLogPath, errorLog);
                 if (cts != null && cts.Token == token)
@@ -754,7 +756,9 @@ namespace MDPro3.UI
                     cts = null;
                 }
             }
-            //Debug.Log($"Time Used: {Time.time - time}");
+#if UNITY_EDITOR
+            Debug.Log($"Time Used: {Time.time - time}");
+#endif
         }
 
         private async UniTask<bool> SaveCardAsync(int code, CancellationToken token)
