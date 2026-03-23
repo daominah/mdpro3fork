@@ -17,13 +17,22 @@ namespace MDPro3.Utility
 
         #region 字段和属性
 
+        private class VideoCacheEntry
+        {
+            public Texture Texture;
+            public CardRenderer Renderer;
+            public int ReferenceCount;
+            public bool IsPersistent;
+            public Task<(Texture Texture, CardRenderer Renderer)> LoadingTask;
+        }
+
         public const float DEFAULT_ASPECT = 704 / 1024f;
 
         private static readonly ConcurrentDictionary<int, CacheEntry> cachedArts = new();
         private static readonly ConcurrentDictionary<int, CacheEntry> cachedCards = new();
         private static readonly ConcurrentDictionary<int, Texture2D> cachedCardNames = new();
-        private static readonly ConcurrentDictionary<int, Texture> cachedVideoCards = new();
         private static readonly ConcurrentDictionary<int, Texture2D> cachedOverFrames = new();
+        private static readonly ConcurrentDictionary<int, VideoCacheEntry> cachedVideoCards = new();
 
         private static readonly ConcurrentDictionary<int, SemaphoreSlim> artLoadingLocks = new();
         private static readonly ConcurrentDictionary<int, SemaphoreSlim> overFrameLoadingLocks = new();
@@ -238,12 +247,58 @@ namespace MDPro3.Utility
                 }
                 else
                 {
-                    if (cachedVideoCards.TryGetValue(code, out var tex))
-                        return tex;
-                    Texture texture = null;
-                    texture = await InternalLoadVideoCardAsync(code, token);
-                    cachedVideoCards[code] = texture;
-                    return texture;
+                    try
+                    {
+                        if (cachedVideoCards.TryGetValue(code, out var entry))
+                        {
+                            if (entry.LoadingTask != null)
+                                await entry.LoadingTask.AsUniTask().AttachExternalCancellation(token);
+                            if (entry.Texture != null)
+                            {
+                                Interlocked.Increment(ref entry.ReferenceCount);
+                                entry.IsPersistent |= persistent;
+                            }
+                            else
+                                Debug.LogError($"Video card texture is null for code {code}");
+                            return entry.Texture;
+                        }
+
+                        VideoCacheEntry newEntry = new()
+                        {
+                            LoadingTask = InternalLoadVideoCardAsync(code, token).AsTask()
+                        };
+
+                        if (cachedVideoCards.TryAdd(code, newEntry))
+                        {
+                            newEntry.ReferenceCount = 1;
+                            newEntry.IsPersistent = persistent;
+                            try
+                            {
+                                var result = await newEntry.LoadingTask;
+                                newEntry.Texture = result.Texture;
+                                newEntry.Renderer = result.Renderer;
+                            }
+                            catch (OperationCanceledException ex)
+                            {
+                                cachedVideoCards.TryRemove(code, out _);
+                                throw ex;
+                            }
+                            if (newEntry.Texture == null)
+                                Debug.LogError($"{code} video card is null");
+
+                            newEntry.LoadingTask = null;
+                            return newEntry.Texture;
+                        }
+                        else
+                        {
+                            Debug.LogError("CardImageLoader: Unexpected Error.");
+                            return null;
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        throw e;
+                    }
                 }
             }
             catch (Exception e)
@@ -259,13 +314,32 @@ namespace MDPro3.Utility
 
         public static void ReleaseCard(int code)
         {
-            if (!cachedCards.TryGetValue(code, out var entry)) return;
+            // 普通卡片释放
+            if (cachedCards.TryGetValue(code, out var entry))
+            {
+                var newCount = Interlocked.Decrement(ref entry.ReferenceCount);
+                if (newCount == 0 && !entry.IsPersistent)
+                    if (cachedCards.TryRemove(code, out _))
+                        UnityEngine.Object.Destroy(entry.Texture);
+                return;
+            }
 
-            var newCount = Interlocked.Decrement(ref entry.ReferenceCount);
-
-            if (newCount == 0 && !entry.IsPersistent)
-                if (cachedCards.TryRemove(code, out _))
-                    UnityEngine.Object.DestroyImmediate(entry.Texture);
+            // 视频卡释放
+            if (cachedVideoCards.TryGetValue(code, out var videoEntry))
+            {
+                var newCount = Interlocked.Decrement(ref videoEntry.ReferenceCount);
+                if (newCount == 0 && !videoEntry.IsPersistent)
+                {
+                    if (cachedVideoCards.TryRemove(code, out _))
+                    {
+                        if (videoEntry.Renderer != null)
+                        {
+                            videoEntry.Renderer.Dispose();
+                            videos.Remove(videoEntry.Renderer);
+                        }
+                    }
+                }
+            }
         }
 
         public static Texture2D LoadCardName(int code)
@@ -281,6 +355,7 @@ namespace MDPro3.Utility
 
         public static void ClearCache()
         {
+            // 普通卡片
             foreach (var card in cachedCards.Values)
                 UnityEngine.Object.Destroy(card.Texture);
             cachedCards.Clear();
@@ -289,8 +364,24 @@ namespace MDPro3.Utility
                 UnityEngine.Object.Destroy(cardNameTex);
             cachedCardNames.Clear();
 
-            ClearArtVideos();
-        }        
+            // 视频卡
+            foreach (var video in cachedVideoCards.Values)
+            {
+                if (video.Renderer != null)
+                    video.Renderer.Dispose();
+            }
+            cachedVideoCards.Clear();
+            videos.Clear();
+        }
+
+        public static int GetCardReferenceCount(int code)
+        {
+            if (cachedCards.TryGetValue(code, out var entry))
+                return entry.ReferenceCount;
+            if (cachedVideoCards.TryGetValue(code, out var videoEntry))
+                return videoEntry.ReferenceCount;
+            return 0;
+        }
 
         #endregion
 
@@ -455,7 +546,7 @@ namespace MDPro3.Utility
             finally { cardSemaphore.Release(); }
         }
 
-        private static async UniTask<Texture> InternalLoadVideoCardAsync(
+        private static async UniTask<(Texture Texture, CardRenderer Renderer)> InternalLoadVideoCardAsync(
             int code,
             CancellationToken token)
         {
@@ -469,7 +560,7 @@ namespace MDPro3.Utility
                 if (data.Id == 0)
                 {
                     lastCardRenderSucceed = false;
-                    return TextureManager.container.unknownCard.texture;
+                    return (TextureManager.container.unknownCard.texture, null);
                 }
                 var art = await LoadArtAsync(code, false, token).AttachExternalCancellation(token);
                 if (token.IsCancellationRequested)
@@ -483,7 +574,8 @@ namespace MDPro3.Utility
 
                 var cardRenderer = (await Addressables.InstantiateAsync("Prefab/CardRenderer.prefab")).GetComponent<CardRenderer>();
                 videos.Add(cardRenderer);
-                return await cardRenderer.GetVideoCardAsync(code);
+                var texture = await cardRenderer.GetVideoCardAsync(code);
+                return (texture, cardRenderer);
             }
             finally { cardSemaphore.Release(); }
         }
@@ -575,10 +667,15 @@ namespace MDPro3.Utility
 
         private static void ClearArtVideos()
         {
-            foreach (var video in videos)
-                video.Dispose();
-            videos.Clear();
+            foreach (var video in cachedVideoCards.Values)
+            {
+                if (video.Texture != null)
+                    UnityEngine.Object.Destroy(video.Texture);
+                if (video.Renderer != null)
+                    video.Renderer.Dispose();
+            }
             cachedVideoCards.Clear();
+            videos.Clear();
         }
 
         #endregion

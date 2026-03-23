@@ -134,6 +134,9 @@ namespace MDPro3
         private bool hover;
         private bool hoving;
 
+        private int currentCardCode = 0;
+        private Texture currentCardTexture;
+
         private void Awake()
         {
             SystemEvent.OnVideoCardConfigChange += ReloadFaceWhenConfigChange;
@@ -141,6 +144,23 @@ namespace MDPro3
 
         public void Dispose()
         {
+            if (cts != null)
+            {
+                cts.Cancel();
+                cts.Dispose();
+                cts = null;
+            }
+
+            lock (this)
+            {
+                if (currentCardTexture != null && currentCardCode != 0)
+                {
+                    CardImageLoader.ReleaseCard(currentCardCode);
+                    currentCardTexture = null;
+                    currentCardCode = 0;
+                }
+            }
+
             Destroy(model);
             Destroy(this);
             SystemEvent.OnVideoCardConfigChange -= ReloadFaceWhenConfigChange;
@@ -388,6 +408,21 @@ namespace MDPro3
 
         private async UniTask SetFaceAsync(CancellationToken cancellationToken)
         {
+            Texture oldTexture = null;
+            int oldCode = 0;
+            lock (this)
+            {
+                oldTexture = currentCardTexture;
+                oldCode = currentCardCode;
+                currentCardTexture = null;
+                currentCardCode = 0;
+            }
+            if (oldTexture != null && oldCode != 0)
+            {
+                CardImageLoader.ReleaseCard(oldCode);
+            }
+
+            var cardCode = data.Id;
             Renderer cardFace = manager.GetElement<Transform>("CardModel").
                     GetChild(1).GetComponent<Renderer>();
 
@@ -397,12 +432,40 @@ namespace MDPro3
             cardFace.material = mat;
             cardFace.material.renderQueue = 2999;
 
-            var texture = await CardImageLoader.LoadCardAsync(data.Id, true, cancellationToken);
-            isRenderTexture = texture is RenderTexture;
-            if (model == null)
-                return;
-            cardFace.material.mainTexture = texture;
-            SetDisabled();
+            Texture texture = null;
+            try
+            {
+                texture = await CardImageLoader.LoadCardAsync(cardCode, true, cancellationToken);
+                isRenderTexture = texture is RenderTexture;
+
+                if (this == null || model == null || data.Id != cardCode)
+                {
+                    if (texture != null)
+                        CardImageLoader.ReleaseCard(cardCode);
+                    return;
+                }
+
+                cardFace.material.mainTexture = texture;
+                SetDisabled();
+
+                lock (this)
+                {
+                    currentCardTexture = texture;
+                    currentCardCode = cardCode;
+                }
+            }
+            catch (OperationCanceledException)
+            {
+                if (texture != null)
+                    CardImageLoader.ReleaseCard(cardCode);
+                throw;
+            }
+            catch (Exception)
+            {
+                if (texture != null)
+                    CardImageLoader.ReleaseCard(cardCode);
+                throw;
+            }
         }
 
         public Card GetData()

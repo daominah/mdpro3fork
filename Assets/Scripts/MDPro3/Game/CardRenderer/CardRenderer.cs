@@ -1,9 +1,12 @@
 using Cysharp.Threading.Tasks;
 using MDPro3.Duel.YGOSharp;
 using MDPro3.Utility;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -205,6 +208,8 @@ namespace MDPro3
 
         #region Video Card
 
+        private int code;
+
         public static bool CardHasVideoArt(int code)
         {
             if (!Config.GetBool("VideoCard", true))
@@ -227,6 +232,8 @@ namespace MDPro3
         {
             if (!CardHasVideoArt(code))
                 return null;
+
+            this.code = code;
 
             var data = CardsManager.GetRenderCard(code);
             if (data == null || data.Id == 0)
@@ -284,16 +291,28 @@ namespace MDPro3
         {
             if (matCompositeInstance == null)
                 return;
+
+            if(CardImageLoader.GetCardReferenceCount(code) == 0)
+            {
+                PauseVideo();
+                return;
+            }
+
+            PlayVideo();
             Graphics.Blit(videoPlayer.targetTexture, renderTexture, matCompositeInstance);
         }
 
         public void PauseVideo()
         {
+            if(!videoPlayer.isPlaying)
+                return;
             videoPlayer.Pause();
         }
 
         public void PlayVideo()
         {
+            if(videoPlayer.isPlaying)
+                return;
             videoPlayer.Play();
         }
 
