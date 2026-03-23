@@ -2781,7 +2781,7 @@ namespace MDPro3.Duel
                     if (card.effectTargets.Count > 0 && card.effectTargets[0].model != null)
                     {
                         AudioManager.PlaySE("SE_EV_CYCLONE");
-                        effect = GetCardEffectPrefab("Ef04909");
+                        effect = GetCardEffectPrefab("Ef04909_OP");
                         effect.transform.position = card.effectTargets[0].model.transform.position;
                         if (card.p.controller != 0)
                             effect.transform.localEulerAngles = new Vector3(0, 180, 0);
