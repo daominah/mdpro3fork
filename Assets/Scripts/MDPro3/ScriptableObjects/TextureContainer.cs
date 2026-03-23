@@ -1049,10 +1049,12 @@ namespace MDPro3
                         return cardFrameXyzOF;
                     else if (data.HasType(CardType.Synchro))
                         return cardFrameSynchroOF;
-                    else if (data.HasType(CardType.Fusion))
-                        return cardFrameFusionOF;
+                    else if (data.HasType(CardType.Ritual) && data.HasType(CardType.Fusion))
+                        return cardFrameRitualOF;
                     else if (data.HasType(CardType.Ritual) && data.HasType(CardType.Monster))
                         return cardFrameRitualOF;
+                    else if (data.HasType(CardType.Fusion))
+                        return cardFrameFusionOF;
                     else if (data.HasType(CardType.Token))
                         return cardFrameTokenOF;
                     else if (data.HasType(CardType.Normal))
@@ -1097,6 +1099,8 @@ namespace MDPro3
                     else if (data.HasType(CardType.Synchro))
                         return rd_Frame_Synchro;
                     else if (data.HasAllTypes(CardType.Fusion, CardType.Ritual))
+                        return rd_Frame_Ritual;
+                    else if (data.HasAllTypes(CardType.Ritual, CardType.Monster))
                         return rd_Frame_Ritual;
                     else if (data.HasType(CardType.Fusion))
                         return rd_Frame_Fusion;
