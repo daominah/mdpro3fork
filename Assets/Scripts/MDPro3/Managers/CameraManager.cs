@@ -68,10 +68,10 @@ namespace MDPro3
             camera.cameraMain.fieldOfView = duelFov;
             camera.cameraDuelOverlay3D.fieldOfView = duelFov;
 
-            mainCameraDefaultPosition = new Vector3(
-                0f,
-                95f + Mathf.Lerp(0f, 4f, ultraWideT),
-                -37f - Mathf.Lerp(0f, 5f, ultraWideT));
+            //mainCameraDefaultPosition = new Vector3(
+            //    0f,
+            //    95f + Mathf.Lerp(0f, 4f, ultraWideT),
+            //    -37f - Mathf.Lerp(0f, 5f, ultraWideT));
 
             if (Program.instance.ocgcore != null && Program.instance.ocgcore.showing)
             {
@@ -227,15 +227,14 @@ namespace MDPro3
             {
                 overlaySticking = true;
                 Program.instance.camera_.cameraDuelOverlay3D.transform.SetParent(Program.instance.camera_.cameraMain.transform, false);
-                Program.instance.camera_.cameraDuelOverlay3D.transform.localPosition = Vector3.zero;
-                Program.instance.camera_.cameraDuelOverlay3D.transform.localEulerAngles = Vector3.zero;
+                Program.instance.camera_.cameraDuelOverlay3D.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
             }
             else
             {
                 overlaySticking = false;
                 Program.instance.camera_.cameraDuelOverlay3D.transform.SetParent(Program.instance.camera_.transform, false);
-                Program.instance.camera_.cameraDuelOverlay3D.transform.localPosition = mainCameraDefaultPosition;
-                Program.instance.camera_.cameraDuelOverlay3D.transform.localEulerAngles = mainCameraDefaultAngle;
+                Program.instance.camera_.cameraDuelOverlay3D.transform.SetLocalPositionAndRotation
+                    (mainCameraDefaultPosition, Quaternion.Euler(mainCameraDefaultAngle));
             }
         }
     }
