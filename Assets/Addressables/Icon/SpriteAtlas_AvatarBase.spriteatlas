@@ -148,6 +148,7 @@ SpriteAtlas:
     - ef908d5f80a4ee44bba3bd56f496d5ac: 21300000
     - f97c3a6f68e813a4fa354ec808a6011a: 21300000
     - 994433afe6821b44f9857ccb07b1f4ba: 21300000
+    - a05b6faf0cf19bf458a7eadf3374b610: 21300000
     - a40761cf8a9682843ada146016669099: 21300000
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
@@ -249,6 +250,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: ef908d5f80a4ee44bba3bd56f496d5ac, type: 3}
   - {fileID: 21300000, guid: f97c3a6f68e813a4fa354ec808a6011a, type: 3}
   - {fileID: 21300000, guid: 994433afe6821b44f9857ccb07b1f4ba, type: 3}
+  - {fileID: 21300000, guid: a05b6faf0cf19bf458a7eadf3374b610, type: 3}
   - {fileID: 21300000, guid: a40761cf8a9682843ada146016669099, type: 3}
   m_PackedSpriteNamesToIndex:
   - FieldAvatarBaseIcon1111002
@@ -349,6 +351,7 @@ SpriteAtlas:
   - FieldAvatarBaseIcon1111003
   - FieldAvatarBaseIcon1111039
   - FieldAvatarBaseIcon1110015
+  - FieldAvatarBaseIcon1111077
   - FieldAvatarBaseIcon1111045
   m_RenderDataMap: {}
   m_Tag: SpriteAtlas_AvatarBase
