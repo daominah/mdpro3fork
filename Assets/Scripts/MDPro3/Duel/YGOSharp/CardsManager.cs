@@ -185,7 +185,7 @@ namespace MDPro3.Duel.YGOSharp
             if (!TryLoadCDB(databaseFullPath, targetCards, isPreCards: false))
                 return false;
 
-            if (Config.GetBool("Expansions", true))
+            if (!Config.GetBool("Expansions", true))
                 return true;
 
             foreach (var cdb in Directory.GetFiles(Program.PATH_EXPANSIONS, EXPANSION_CDB))
