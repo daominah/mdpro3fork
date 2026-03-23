@@ -117,6 +117,9 @@ Per nutrirsi dei sogni altrui, emana un odore dal proprio corpo che provoca sonn
 [IDS_ITEMDESC.ID1000042]
 L'amante dei dolci "<card mrk='21371'/>"!
 Prendi tutti i mostri Yummy che vivono in un mondo deliziosamente sciocco!
+[IDS_ITEMDESC.ID1000043]
+<category id='166'/> è noto per le sue corna distintive sulla testa.
+Sfrutta le sue potenti braccia per infliggere pugni devastanti e prese soffocanti.
 [IDS_ITEMDESC.ID1001001]
 Una coppa di ramen istantaneo che sembra possa donarti il potere di Evocare tramite Fusione.
 Solo perché è ramen istantaneo, non significa che non sia buono!
@@ -744,6 +747,15 @@ Resta inconsapevole di ciò che l'attende.
 [IDS_ITEMDESC.ID1010131]
 Un'icona che raffigura lo stemma dell'Accademia.
 In caso di emergenza, gli studenti devono radunarsi immediatamente.
+[IDS_ITEMDESC.ID1010132]
+Un'icona che raffigura un membro di un gruppo di quattro amici da "<card mrk='21465'/>".
+Pur essendo appassionato e audace, segue sempre le regole.
+[IDS_ITEMDESC.ID1010133]
+Un'icona che raffigura la giovane ragazza di "<card mrk='21827'/>", che funge da tramite per una divinità.
+Venera le tempeste mentre richiama il potere del dio del vento dentro di lei.
+[IDS_ITEMDESC.ID1010136]
+Un'icona che raffigura una mucca che è stata sollevata in aria.
+I temibili venti spazzano via tutto nell'area sovrastante.
 [IDS_ITEMDESC.ID1010138]
 Un'icona che raffigura un mago dai poteri magici senza pari.
 Il cerchio magico che ha tracciato ha portato alla vittoria il leggendario Re dei Giochi.
@@ -941,6 +953,15 @@ Un'icona con il logo d'argento "DC 2025 DEC".
 Conferita a chi ha ottenuto notevoli risultati nella Duelist Cup.
 [IDS_ITEMDESC.ID1011065]
 Un'icona con il logo di bronzo "DC 2025 DEC". 
+Conferita a chi ha vinto innumerevoli battaglie nella Duelist Cup.
+[IDS_ITEMDESC.ID1011066]
+Un'icona con il logo dorato "DC 2026 MAR". 
+Conferita a chi ha superato le aspettative nella Duelist Cup.
+[IDS_ITEMDESC.ID1011067]
+Un'icona con il logo d'argento "DC 2026 MAR". 
+Conferita a chi ha ottenuto notevoli risultati nella Duelist Cup.
+[IDS_ITEMDESC.ID1011068]
+Un'icona con il logo di bronzo "DC 2026 MAR". 
 Conferita a chi ha vinto innumerevoli battaglie nella Duelist Cup.
 [IDS_ITEMDESC.ID1012001]
 Un'icona che rappresenta un "Krawler", un mostro la cui razza ha invaso un certo pianeta. Questo esemplare è un membro della classe più alta.
@@ -1802,12 +1823,39 @@ Con un fragoroso ruggito, si gettano in feroci battaglie contro i propri rivali.
 [IDS_ITEMDESC.ID1020199]
 Un titolo dato ai Duellanti che hanno raggiunto risultati importanti nell'evento "Dice Rally Fusione/Synchro/Link.
 Un futuro brillante attende coloro che sono abbastanza coraggiosi da credere in se stessi.
+[IDS_ITEMDESC.ID1020204]
+Titolo conferito ai Duellanti che hanno raggiunto la top 10 nella DC 2026 MAR.
+Le storie dei loro numerosi e agguerriti Duelli e del coraggio dimostrato nella competizione per il trono continueranno a essere raccontate per molti anni.
+[IDS_ITEMDESC.ID1020205]
+Titolo conferito ai Duellanti che hanno raggiunto la top 100 nella DC 2026 MAR.
+Questa è la prova di un'impresa che molti Duellanti si sforzano di compiere.
+[IDS_ITEMDESC.ID1020206]
+Titolo conferito ai Duellanti che hanno raggiunto la top 500 nella DC 2026 MAR.
+Solo i più forti dei forti possiedono un cuore così, temprato da molti Duelli all'ultimo sangue.
+[IDS_ITEMDESC.ID1020207]
+Titolo conferito ai Duellanti che hanno raggiunto la top 1000 nella DC 2026 MAR.
+Complimenti ai Duellanti che hanno continuamente perfezionato Deck e tattiche per raggiungere questo risultato.
+[IDS_ITEMDESC.ID1020208]
+Titolo conferito ai Duellanti che hanno raggiunto la top 10000 nella DC 2026 MAR.
+Ottenuto grazie a una vittoria dopo l'altra contro avversari agguerriti nella 2ª FASE.
+[IDS_ITEMDESC.ID1020209]
+Titolo conferito ai Duellanti che hanno raggiunto la 2ª fase nella DC 2026 MAR.
+Questa è la prova del superamento della combattutissima 1ª fase.
 [IDS_ITEMDESC.ID1021001]
 Un titolo conferito solo per un'occasione speciale.
 [IDS_ITEMDESC.ID1021002]
 Un titolo conferito solo per un'occasione speciale.
 [IDS_ITEMDESC.ID1021003]
 coming soon
+[IDS_ITEMDESC.ID1022001]
+Un titolo assegnato ai Duellanti che vengono dichiarati campioni assoluti del "Campionato delle scuole superiori del Giappone" di Yu-Gi-Oh! MASTER DUEL del 2026.
+ Questo traguardo è stato ottenuto grazie a una dedizione assoluta, a testimonianza di un'amicizia nata da giovani. La porta per il futuro è spalancata.
+[IDS_ITEMDESC.ID1022002]
+Un titolo assegnato ai Duellanti che hanno raggiunto la Gran finale del "Campionato delle scuole superiori del Giappone" di Yu-Gi-Oh! MASTER DUEL del 2026.
+ Uno spirito che ha perseverato fino alla fine è la massima dimostrazione di forza. Dalle fiamme di ambizioni non realizzate nasce il prossimo capitolo della tua storia.
+[IDS_ITEMDESC.ID1022003]
+Un titolo assegnato ai Duellanti che hanno raggiunto la Finale del "Campionato delle scuole superiori del Giappone" di Yu-Gi-Oh! MASTER DUEL del 2026.
+ Il percorso forgiato dalle difficoltà va oltre vittorie e sconfitte. È un passo irrevocabile verso il tuo futuro. Da qui, le possibilità sono infinite.
 [IDS_ITEMDESC.ID1030001]
 Una cornice icona data a tutti i Duellanti.
 Il bianco è una tonalità molto versatile che può mutare in qualsiasi colore. Come nel bianco, in ogni Duellante alberga il potere illimitato della crescita e del miglioramento.
@@ -1923,6 +1971,9 @@ Affatica il loro Nucleo, ma si può utilizzare più volte di seguito.
 [IDS_ITEMDESC.ID1030040]
 Una Cornice icona blu e bianca che richiama un freddo cielo invernale.
 La neve candida scende dal cielo terso e blu, rispecchiando l'armonia della luce.
+[IDS_ITEMDESC.ID1030041]
+Una cornice icona rossa e bianca che permette molteplici interpretazioni.
+I suoi tratti più dinamici, come vitalità e passione, sono bilanciati da emozioni più sottili, come dolore e spiritualità.
 [IDS_ITEMDESC.ID1031001]
 Una cornice icona che ricorda il cancello usato dalle Assaltatrici del Cielo per spostare i loro armamenti.
 Quando il cammino si apre a coloro che lottano per la pace, un nuovo potere che consente di superare le avversità si risveglia.
@@ -1983,6 +2034,9 @@ Quando scatena il suo potere lampeggia una luce rossa.
 [IDS_ITEMDESC.ID1031020]
 Una Cornice icona che evoca una grande esibizione di una compagnia di artisti.
 La Danza del Leone, combinando ogni elemento possibile, è entrata nella leggenda.
+[IDS_ITEMDESC.ID1031021]
+Una cornice icona che evoca una furiosa tempesta squarciata da un fulmine.
+Le raffiche di vento proteggono dalle minacce esterne.
 [IDS_ITEMDESC.ID1032001]
 Una cornice icona a forma di decorazione circolare, che viene usata in determinate regioni quando l'anno volge al termine.
 Vengono appese in segno di sincero augurio di felicità e gioia per il futuro.
@@ -2481,6 +2535,9 @@ Per coloro che possono piegare la magia della distruzione alla propria volontà.
 [IDS_ITEMDESC.ID1070153]
 Protettori che raffigurano una forma di vita energetica immortale che lampeggia di rosso.
 Per coloro che sono dotati di una radiosità incontenibile.
+[IDS_ITEMDESC.ID1070154]
+Protettori che raffigurano una furiosa tempesta squarciata dai fulmini.
+Per coloro che credono nel colpire rapidamente.
 [IDS_ITEMDESC.ID1070157]
 Protettori che raffigurano una streamer super carina in un completo speciale.
 Per coloro che affrontano il mondo con un'espressione impassibile.
@@ -2488,8 +2545,11 @@ Per coloro che affrontano il mondo con un'espressione impassibile.
 Protettori che raffigurano "<card mrk='7696'/>" dopo aver risvegliato un nuovo potere.
 Per coloro che credono nel legame tra compagni riuniti.
 [IDS_ITEMDESC.ID1070159]
-Protectors featuring a pair of friendly, well-dressed tanuki.
-For those who wish for happiness and growth.
+Protettori che raffigurano dei simpatici procioni vestiti al meglio.
+Per coloro che desiderano felicità e crescita personale.
+[IDS_ITEMDESC.ID1070160]
+Protettori che raffigurano cosa si trova oltre la Synchro Evocazione.
+Per coloro che sono alla ricerca di nuovi orizzonti.
 [IDS_ITEMDESC.ID1071001]
 Protettori che rappresentano un guerriero che ha imparato a convivere con le ferite inferte al suo cuore durante le battaglie. 
 Perfetti per chi pretende sempre il meglio per gli amici più cari.
@@ -2681,6 +2741,9 @@ Protettori con il logo "DC 2025 SEP".
 Per chi ha partecipato alla Duelist Cup e reso l'evento un successo.
 [IDS_ITEMDESC.ID1073018]
 Protettori con il logo "DC 2025 DEC". 
+Per chi ha partecipato alla Duelist Cup e reso l'evento un successo.
+[IDS_ITEMDESC.ID1073019]
+Protettori con il logo "DC 2026 MAR". 
 Per chi ha partecipato alla Duelist Cup e reso l'evento un successo.
 [IDS_ITEMDESC.ID1075001]
 Protettori che raffigurano una scena tratta da Yu-Gi-Oh! CARD GAME THE CHRONICLES.
@@ -3546,6 +3609,9 @@ Ti guida sfruttando il potere mistico delle stelle.
 [IDS_ITEMDESC.ID1111072]
 Uno stand ispirato al completo speciale di una streamer super carina.
 La tenerezza ha bisogno di un po' di distacco per brillare davvero.
+[IDS_ITEMDESC.ID1111077]
+Uno stand ispirato a un'energia vorticosa generata dalla natura.
+Accogli l'aura che emana e fatti riempire di vitalità.
 [IDS_ITEMDESC.ID1111080]
 Uno stand ispirato a un drago recante il nome "<category id='158'/>".
 Un potere travolgente apre un varco in un mondo isolato.
@@ -3980,6 +4046,18 @@ Con le parole del suo capovillaggio impresse nel cuore, ha scelto di difendere l
 [IDS_ITEMDESC.ID1130113]
 <category id='40'/> che gestisce "<card mrk='17164'/>".
 Assorbono energia e parti, guadagnando ciascuno un potere ancora maggiore.
+[IDS_ITEMDESC.ID1130114]
+"<card mrk='8023'/>" annienta gli altri con uno sguardo distaccato.
+Questa sua immagine ritrae il suo futuro come chierica di supporto.
+[IDS_ITEMDESC.ID1130115]
+Il dio supremo delle tempeste scatena un inferno di fuoco.
+Con la sua potenza, cambia liberamente le condizioni meteorologiche in tutto il mondo.
+[IDS_ITEMDESC.ID1130118]
+"<card mrk='21810'/>", uno degli dei del regno degli spiriti.
+Ha scatenato "<card mrk='21777'/>", crepitante di fulmini verdi sul mondo.
+[IDS_ITEMDESC.ID1130119]
+Una bestia enorme ruggisce in risposta al possente grido.
+La furia della natura riecheggia nel territorio in vortici turbinanti.
 [IDS_ITEMDESC.ID1130124]
 "L'inseguitrice" e "l'inseguita" conquistano un nuovo futuro.
 La strada che tracceranno seguendo i propri ideali resta un mistero.

@@ -117,6 +117,9 @@ Para comer os sonhos dos outros, ele libera um odor indutor de sono de seu corpo
 [IDS_ITEMDESC.ID1000042]
 A adoradora de doces "<card mrk='21371'/>"!
 Pegue todos os monstros de dar água na boca que vivem em um mundinho deliciosamente bobo!
+[IDS_ITEMDESC.ID1000043]
+<category id='166'/> se destaca pelos distintos chifres na cabeça.
+Com braços poderosos, desfere socos destruidores e aplica estrangulamentos.
 [IDS_ITEMDESC.ID1001001]
 Um copo de macarrão instantâneo que parece conceder o poder da Invocação-Fusão.
 Só porque são instantâneos, não quer dizer que são ruins!
@@ -744,6 +747,15 @@ Ele ainda não sabe o que está por vir.
 [IDS_ITEMDESC.ID1010131]
 Um Ícone que representa o emblema da Academia.
 Em caso de emergência, os estudantes devem se reunir imediatamente.
+[IDS_ITEMDESC.ID1010132]
+Ícone que retrata um membro de um grupo de quatro colegas de "<card mrk='21465'/>".
+Ele é ousado e impetuoso, mas sempre segue as regras.
+[IDS_ITEMDESC.ID1010133]
+Ícone que retrata uma menina de "<card mrk='21827'/>" que serve como receptáculo de uma divindade.
+Ela venera tempestades conforme invoca o poder da divindade do vento que nela habita.
+[IDS_ITEMDESC.ID1010136]
+Ícone que retrata uma vaca voando nas alturas.
+Os pavorosos ventos arremessam tudo pelos ares.
 [IDS_ITEMDESC.ID1010138]
 Um ícone que retrata um mago de poder sem igual.
 O círculo mágico que ele traçou levou o lendário Rei dos Jogos à vitória.
@@ -941,6 +953,15 @@ Um ícone com um logotipo "DC 2025 DEC" de prata.
 Dado aos que alcançaram resultados consideráveis na Copa de Duelistas.
 [IDS_ITEMDESC.ID1011065]
 Um ícone com um logotipo "DC 2025 DEC" de bronze. 
+Dado aos que conquistaram inúmeras batalhas na Copa de Duelistas.
+[IDS_ITEMDESC.ID1011066]
+Um ícone com um logotipo "DC 2026 MAR" de ouro. 
+Dado aos que se saíram muito bem na Copa de Duelistas.
+[IDS_ITEMDESC.ID1011067]
+Um ícone com um logotipo "DC 2026 MAR" de prata. 
+Dado aos que alcançaram resultados consideráveis na Copa de Duelistas.
+[IDS_ITEMDESC.ID1011068]
+Um ícone com um logotipo "DC 2026 MAR" de bronze. 
 Dado aos que conquistaram inúmeras batalhas na Copa de Duelistas.
 [IDS_ITEMDESC.ID1012001]
 Um ícone representando um “Krawler”, monstros que dominaram certo mundo. Este faz parte de uma classe mais alta.
@@ -1803,12 +1824,39 @@ Com um rugido trovejante, eles se lançam em batalhas ferozes contra seus rivais
 [IDS_ITEMDESC.ID1020199]
 Um Título concedido aos Duelistas que obtiveram resultados no evento "Rally de Dados - Fusão/Sincro/Link".
 Um futuro brilhante aguarda os que são corajosos o suficiente para confiar em si mesmos.
+[IDS_ITEMDESC.ID1020204]
+Um Título dado aos Duelistas que ficaram entre os 10 melhores na DC 2026 MAR.
+Contos a respeito de seus grandes Duelos e de sua coragem em competir pelo trono continuarão a ser contados por anos a fio.
+[IDS_ITEMDESC.ID1020205]
+Um Título dado aos Duelistas que ficaram entre os 100 melhores na DC 2026 MAR.
+Esta é a prova de uma proeza que muitos Duelistas buscam alcançar.
+[IDS_ITEMDESC.ID1020206]
+Um Título dado aos Duelistas que ficaram entre os 500 melhores na DC 2026 MAR.
+Apenas os mais fortes dentre os mais fortes possuem um coração como o seu, temperado por muitos Duelos intensos.
+[IDS_ITEMDESC.ID1020207]
+Um Título dado aos Duelistas que ficaram entre os 1.000 melhores na DC 2026 MAR.
+Parabéns aos Duelistas que continuaram aperfeiçoando seus Decks e suas táticas para atingir este resultado.
+[IDS_ITEMDESC.ID1020208]
+Um Título dado aos Duelistas que ficaram entre os 10000 melhores no DC MAR 2026.
+Foi conquistado através de vitória após vitória contra ferozes competidores na 2ª FASE.
+[IDS_ITEMDESC.ID1020209]
+Um Título dado aos Duelistas que chegaram à 2ª Fase na DC 2026 MAR.
+Esta é uma prova de que conseguiu passar a altamente disputada 1ª Fase.
 [IDS_ITEMDESC.ID1021001]
 Um título concedido apenas em uma ocasião especial.
 [IDS_ITEMDESC.ID1021002]
 Um título concedido apenas em uma ocasião especial.
 [IDS_ITEMDESC.ID1021003]
 coming soon
+[IDS_ITEMDESC.ID1022001]
+Um Título concedido aos Duelistas coroados como os primeiros campeões do "Campeonato Japonês de Ensino Médio" de 2026 de Yu-Gi-Oh! MASTER DUEL.
+ O ápice foi alcançado com pura dedicação, um testemunho da amizade forjada na juventude. A porta para o futuro está aberta.
+[IDS_ITEMDESC.ID1022002]
+Um Título concedido aos Duelistas que chegaram à Grande Final do "Campeonato Japonês de Ensino Médio" de 2026 de Yu-Gi-Oh! MASTER DUEL.
+ Um espírito que luta até o fim é a maior prova de força. Das chamas de uma ambição não realizada nasce o próximo capítulo da sua história.
+[IDS_ITEMDESC.ID1022003]
+Um Título concedido aos Duelistas que chegaram à Final do "Campeonato Japonês de Ensino Médio" de 2026 de Yu-Gi-Oh! MASTER DUEL.
+ O caminho aberto em meio às provações vai além de vitória e derrota. Ele marca um passo definitivo rumo ao seu futuro. A partir daqui, as possibilidades são infinitas.
 [IDS_ITEMDESC.ID1030001]
 Uma moldura de ícone dada a todos os Duelistas.
 Branco é um tom muito versátil que pode ser alterado para qualquer cor. Nela reside o potencial ilimitado para todos os Duelistas crescerem e melhorarem.
@@ -1924,6 +1972,9 @@ Apesar de estressar o núcleo, pode-se usar de forma consecutiva.
 [IDS_ITEMDESC.ID1030040]
 Moldura de Ícone azul e branca que evoca um céu frio de inverno.
 A neve branca cai do céu azul e límpido, refletindo a harmonia da luz.
+[IDS_ITEMDESC.ID1030041]
+Moldura de Ícone vermelha e branca que deixa margem para inúmeras interpretações.
+Características dinâmicas, como vitalidade e paixão, harmonizam com as mais sutis, como lamento e espiritualidade.
 [IDS_ITEMDESC.ID1031001]
 Uma Moldura de Ícone lembra o portão utilizado pelas Forças Celestes para transferir seus armamentos.
 Quando o caminho abre àqueles que lutam pela paz, um novo poder para superar as dificuldades desperta.
@@ -1984,6 +2035,9 @@ Uma luz vermelha pisca quando ela libera seu poder.
 [IDS_ITEMDESC.ID1031020]
 Uma Moldura de Ícone que evoca uma importante performance de um grupo de artistas.
 A Dança Shishimai, combinando todos os elementos imagináveis, virou uma arte lendária.
+[IDS_ITEMDESC.ID1031021]
+Moldura de Ícone que evoca um relâmpago rasgando uma tempestade feroz.
+As rajadas de vento protegem contra ameaças externas.
 [IDS_ITEMDESC.ID1032001]
 Uma Moldura de Ícone em forma de decoração circular que pode ser vista em uma certa região conforme o ano chega ao fim.
 São penduradas com o desejo sincero de felicidade e alegria nos tempos vindouros.
@@ -2483,6 +2537,9 @@ Para aqueles que podem manipular a magia de destruição à sua vontade.
 [IDS_ITEMDESC.ID1070153]
 Protetores que retratam uma forma de vida de energia imortal que brilha em vermelho.
 Para aqueles cuja radiância não pode ser contida.
+[IDS_ITEMDESC.ID1070154]
+Protetores que retratam um relâmpago rasgando uma tempestade violenta.
+Para quem acredita em atacar com rapidez.
 [IDS_ITEMDESC.ID1070157]
 Protetores que retratam uma streamer ultrameiga em um traje especial.
 Para aqueles que encaram o mundo com uma expressão impassível.
@@ -2490,8 +2547,11 @@ Para aqueles que encaram o mundo com uma expressão impassível.
 Protetores que retratam "<card mrk='7696'/>" após despertar um novo poder.
 Para aqueles que acreditam no laço entre companheiros reunidos.
 [IDS_ITEMDESC.ID1070159]
-Protectors featuring a pair of friendly, well-dressed tanuki.
-For those who wish for happiness and growth.
+Protetores que retratam Guaxinins amigáveis com trajes de requinte.
+Para quem reza por prosperidade e felicidade.
+[IDS_ITEMDESC.ID1070160]
+Protetores que retratam o que há além da Invocação-Sincro.
+Para quem busca novos horizontes.
 [IDS_ITEMDESC.ID1071001]
 Protetores que ilustram um guerreiro que amadureceu e tirou as cicatrizes gravadas em seu coração durante as batalhas. 
 Perfeito para aqueles que querem sempre o melhor para os seus amigos mais queridos.
@@ -2683,6 +2743,9 @@ Um Protetor com um logotipo "DC 2025 SEP".
 Para aqueles que participaram da Copa de Duelistas e tornaram o evento um sucesso.
 [IDS_ITEMDESC.ID1073018]
 Um Protetor com um logotipo "DC 2025 DEC". 
+Para aqueles que participaram da Copa de Duelistas e tornaram o evento um sucesso.
+[IDS_ITEMDESC.ID1073019]
+Um Protetor com um logotipo "DC 2026 MAR". 
 Para aqueles que participaram da Copa de Duelistas e tornaram o evento um sucesso.
 [IDS_ITEMDESC.ID1075001]
 Protetores representando uma cena de Yu-Gi-Oh! CARD GAME THE CHRONICLES.
@@ -3548,6 +3611,9 @@ Orienta por meio do poder místico das estrelas.
 [IDS_ITEMDESC.ID1111072]
 Um pedestal inspirado no traje especial de uma streamer muito meiga.
 A fofura precisa de um toque de indiferença para realmente brilhar.
+[IDS_ITEMDESC.ID1111077]
+Pedestal inspirado em uma espiral de energia da natureza.
+Receba a aura emitida e banhe-se em vitalidade.
 [IDS_ITEMDESC.ID1111080]
 Um pedestal inspirado em um dragão que carrega o nome "<category id='158'/>".
 Um poder avassalador abre um buraco em um mundo isolado.
@@ -3982,6 +4048,18 @@ Com as palavras do chefe da aldeia gravadas no coração, ela optou por defender
 [IDS_ITEMDESC.ID1130113]
 Os <category id='40'/> que gerenciam "<card mrk='17164'/>".
 Eles drenam energia e peças, e cada um obtém um poder ainda maior.
+[IDS_ITEMDESC.ID1130114]
+Com olhar distante, "<card mrk='8023'/>" eleva os demais.
+Imagem que retrata o futuro dela como uma clériga diligente.
+[IDS_ITEMDESC.ID1130115]
+A divindade suprema das tempestades invoca uma tormenta infernal.
+Tem tanto poder que é capaz de mudar o clima mundo afora quando quer.
+[IDS_ITEMDESC.ID1130118]
+"<card mrk='21810'/>", uma das divindades do reino espiritual.
+Libertou "<card mrk='21777'/>", descarregando relâmpagos verdes mundo afora.
+[IDS_ITEMDESC.ID1130119]
+Uma fera colossal urra em resposta ao estridente berro.
+A fúria da natureza ecoa pela terra em turbilhões vorazes.
 [IDS_ITEMDESC.ID1130124]
 "A perseguidora" e "a perseguida" buscam um novo futuro.
 O caminho que elas vão moldar a partir de seus ideais permanece um mistério.

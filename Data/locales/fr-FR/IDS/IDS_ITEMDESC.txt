@@ -117,6 +117,9 @@ Afin de dévorer les rêves des autres, elle dégage une odeur somnifère de son
 [IDS_ITEMDESC.ID1000042]
 "<card mrk='21371'/>", qui adore les bonbons !
 Attrapez plein de monstres appétissants, qui vivent dans un monde aussi délirant que délicieux !
+[IDS_ITEMDESC.ID1000043]
+<category id='166'/> est célèbre pour ses cornes.
+Ses bras puissants peuvent asséner des coups destructeurs et étrangler ses adversaires.
 [IDS_ITEMDESC.ID1001001]
 Des nouilles instantanées qui semblent capables de conférer le pouvoir de l'Invocation Fusion.
 Ce n'est pas parce qu'elles sont instantanées qu'elles sont mauvaises !
@@ -744,6 +747,15 @@ Il n'est pas conscient de ce qui l'attend.
 [IDS_ITEMDESC.ID1010131]
 Une icône représentant l'emblème de l'académie.
 En situation d'urgence, les étudiants doivent se réunir immédiatement.
+[IDS_ITEMDESC.ID1010132]
+Une icône représentant un membre d'un groupe de quatre amis de "<card mrk='21465'/>".
+Bien que passionné et audacieux, il respecte toujours les règles.
+[IDS_ITEMDESC.ID1010133]
+Une icône représentant une jeune fille de "<card mrk='21827'/>" dont le corps est habité par un dieu.
+Elle vénère les orages et canalise la puissance du dieu du vent en elle.
+[IDS_ITEMDESC.ID1010136]
+Une icône représentant une vache projetée haut dans les airs.
+Les vents redoutables de cette zone envoient tout valser dans le ciel.
 [IDS_ITEMDESC.ID1010138]
 Une icône représentant un sorcier doté d'un pouvoir magique sans égal.
 Le cercle magique qu'il dessina offrit la victoire au légendaire Roi des Jeux.
@@ -941,6 +953,15 @@ Une icône avec un logo "DC 2025 DEC" en argent.
 Offerte à ceux qui ont atteint des résultats brillants lors de la Duelist Cup.
 [IDS_ITEMDESC.ID1011065]
 Une icône avec un logo "DC 2025 DEC" en bronze. 
+Offerte à ceux qui ont remporté de nombreuses batailles lors de la Duelist Cup.
+[IDS_ITEMDESC.ID1011066]
+Une icône avec un logo "DC 2026 MAR" en or. 
+Offerte à ceux qui ont réalisé des exploits lors de la Duelist Cup.
+[IDS_ITEMDESC.ID1011067]
+Une icône avec un logo "DC 2026 MAR" en argent. 
+Offerte à ceux qui ont atteint des résultats brillants lors de la Duelist Cup.
+[IDS_ITEMDESC.ID1011068]
+Une icône avec un logo "DC 2026 MAR" en bronze. 
 Offerte à ceux qui ont remporté de nombreuses batailles lors de la Duelist Cup.
 [IDS_ITEMDESC.ID1012001]
 Une icône représentant un "Krawler", des monstres ayant envahi un certain monde. Celui-ci fait partie de la classe supérieure.
@@ -1803,12 +1824,39 @@ Dans un rugissement assourdissant, ils se lancent dans des combats acharnés con
 [IDS_ITEMDESC.ID1020199]
 Un titre donné aux Duellistes qui ont obtenu des résultats au cours de l'événement "Course de dés - Fusion/Synchro/Lien".
 L'avenir sourit à ceux qui ont le courage de croire en leurs capacités.
+[IDS_ITEMDESC.ID1020204]
+Un titre donné aux Duellistes qui ont atteint le top 10 dans la DC 2026 MAR.
+Les récits de leurs innombrables grands Duels et de leur bravoure dans la bataille pour le trône perdureront dans le temps.
+[IDS_ITEMDESC.ID1020205]
+Un titre donné aux Duellistes qui ont atteint le top 100 dans la DC 2026 MAR.
+La preuve d'un exploit que de nombreux Duellistes essayent d'accomplir.
+[IDS_ITEMDESC.ID1020206]
+Un titre donné aux Duellistes qui ont atteint le top 500 dans la DC 2026 MAR.
+Seul le plus fort peut posséder un cœur comme le votre, que les nombreux Duels acharnés ont permis de tempérer.
+[IDS_ITEMDESC.ID1020207]
+Un titre donné aux Duellistes qui ont atteint le top 1000 dans la DC 2026 MAR.
+Bravo aux Duellistes qui ont continuellement perfectionné leurs Decks et leurs tactiques pour parvenir à ce résultat.
+[IDS_ITEMDESC.ID1020208]
+Un titre donné aux Duellistes qui ont atteint le top 10000 dans la DC 2026 MAR.
+Remporté grâce à des victoires successives contre des concurrents féroces lors de la 2nd STAGE.
+[IDS_ITEMDESC.ID1020209]
+Un titre donné aux Duellistes qui ont atteint la 2nd Stage dans la DC 2026 MAR.
+La preuve que vous avez réussi à passer la très disputée 1st Stage.
 [IDS_ITEMDESC.ID1021001]
 Un titre qui n'est décerné que lors d'une occasion spéciale.
 [IDS_ITEMDESC.ID1021002]
 Un titre qui n'est décerné que lors d'une occasion spéciale.
 [IDS_ITEMDESC.ID1021003]
 coming soon
+[IDS_ITEMDESC.ID1022001]
+Un titre accordé aux Duellistes sacrés premiers champions du "Championnat des lycées au Japon 2026" de Yu-Gi-Oh! MASTER DUEL.
+ Ce titre a été obtenu grâce à une détermination à toute épreuve, témoignage d'une amitié forgée dans la jeunesse. La porte vers l'avenir est grande ouverte.
+[IDS_ITEMDESC.ID1022002]
+Un titre accordé aux Duellistes qui ont atteint la grande finale du "Championnat des lycées au Japon 2026" de Yu-Gi-Oh! MASTER DUEL.
+ Persévérer jusqu'au bout est la preuve de force ultime. Des cendres d'une ambition inassouvie naît le prochain chapitre de votre histoire.
+[IDS_ITEMDESC.ID1022003]
+Un titre accordé aux Duellistes qui ont atteint la finale du "Championnat des lycées au Japon 2026" de Yu-Gi-Oh! MASTER DUEL.
+ La voie marquée par les épreuves transcende la victoire et la défaite. Elle constitue un pas en avant décisif vers votre avenir. Les possibilités sont infinies.
 [IDS_ITEMDESC.ID1030001]
 Un cadre d'icône donné à tous les Duellistes.
 Le blanc est une nuance très versatile qui peut être remplacée par n'importe quelle autre couleur. En lui réside le potentiel illimité de tous les Duellistes à évoluer et à s'améliorer.
@@ -1924,6 +1972,9 @@ Elle affaiblit leur cœur, mais peut être utilisée en continu.
 [IDS_ITEMDESC.ID1030040]
 Un cadre d'icône bleu et blanc qui évoque le ciel froid de l'hiver.
 La neige blanche tombe du ciel bleu, reflétant la lumière avec harmonie.
+[IDS_ITEMDESC.ID1030041]
+Un cadre d'icône rouge et blanc qui peut être interprété de nombreuses manières différentes.
+Des attributs dynamiques comme la vitalité et la passion sont contrebalancés par des attributs plus subtils, comme la tristesse et la spiritualité.
 [IDS_ITEMDESC.ID1031001]
 Un Cadre d'icône qui évoque le portail utilisé par l'Assaut de l'Air afin de transférer leur armement.
 Lorsque la voie s'ouvre à ceux qui luttent pour la paix, un nouveau pouvoir pour surmonter les épreuves s'éveille.
@@ -1984,6 +2035,9 @@ Une lumière rouge clignote lorsqu'elle libère son pouvoir.
 [IDS_ITEMDESC.ID1031020]
 Un cadre d'icône évoquant un spectacle grandiose d'une troupe d'artistes.
 La Danse Shishimai, qui associe tous les éléments possibles, est gravée dans la légende.
+[IDS_ITEMDESC.ID1031021]
+Un cadre d'icône évoquant une tempête féroce traversée d'un éclair.
+Les bourrasques de vent servent de barrière contre les menaces extérieures.
 [IDS_ITEMDESC.ID1032001]
 Un Cadre d'icône de forme circulaire pouvant être aperçu dans certaines régions du monde lorsque l'année arrive à son terme.
 On l'accroche en faisant le vœu sincère que les jours à venir apportent joie et bonheur.
@@ -2482,6 +2536,9 @@ Pour ceux qui peuvent manipuler comme ils l’entendent la magie destructrice.
 [IDS_ITEMDESC.ID1070153]
 Protège-cartes représentant une forme de vie énergétique immortelle qui brille d'une lumière rouge.
 Pour ceux qui rayonnent d'un éclat incontrôlable.
+[IDS_ITEMDESC.ID1070154]
+Des Protège-cartes représentant un orage violent traversé par des éclairs.
+Pour ceux qui pensent qu'il faut frapper vite.
 [IDS_ITEMDESC.ID1070157]
 Protège-cartes représentant une streameuse ultra mignonne dans une tenue spéciale.
 Pour ceux qui affrontent le monde en restant impassibles.
@@ -2489,8 +2546,11 @@ Pour ceux qui affrontent le monde en restant impassibles.
 Protège-cartes représentant "<card mrk='7696'/>" après avoir éveillé un nouveau pouvoir.
 Pour ceux qui croient au lien qui unit des camarades réunis.
 [IDS_ITEMDESC.ID1070159]
-Protectors featuring a pair of friendly, well-dressed tanuki.
-For those who wish for happiness and growth.
+Des Protège-cartes représentant des ratons laveurs amicaux sur leur trente-et-un.
+Pour ceux qui sont en quête de développement personnel et de bonheur.
+[IDS_ITEMDESC.ID1070160]
+Des Protège-cartes représentant ce qui réside au-delà de l'Invocation Synchro.
+Pour ceux qui sont en quête de nouveaux horizons.
 [IDS_ITEMDESC.ID1071001]
 Des protège-cartes illustrant un guerrier qui a mûri et accepté les cicatrices gravées dans son cœur au cours des batailles. 
 Parfaits pour ceux qui veulent toujours le meilleur pour leurs amis.
@@ -2681,6 +2741,9 @@ Un protège-cartes avec un logo "DC 2025 SEP".
 Pour ceux qui ont participé à la Duelist Cup et qui ont fait de cet événement un succès.
 [IDS_ITEMDESC.ID1073018]
 Un protège-cartes avec un logo "DC 2025 DEC". 
+Pour ceux qui ont participé à la Duelist Cup et qui ont fait de cet événement un succès.
+[IDS_ITEMDESC.ID1073019]
+Un protège-cartes avec un logo "DC 2026 MAR". 
 Pour ceux qui ont participé à la Duelist Cup et qui ont fait de cet événement un succès.
 [IDS_ITEMDESC.ID1075001]
 Protège-cartes représentant une scène du JEU DE CARTES Yu-Gi-Oh! LES CHRONIQUES.
@@ -2990,7 +3053,7 @@ En son cœur, la porte du cataclysme s'ouvre, lentement mais inexorablement.
 Un Terrain de Duel de "<card mrk='17367'/>".
 La malédiction ne peut être levée à moins que le véritable trésor ne soit retrouvé dans le château.
 [IDS_ITEMDESC.ID1090039]
-Un Terrain de Duel de "<card mrk='21385'/>".
+Un Terrain de Duel de <card mrk='21385'/>.
 Une ruelle abritant de nombreuses boutiques louches, l'endroit idéal pour les criminels surnaturels.
 [IDS_ITEMDESC.ID1090040]
 Un Terrain de Duel dans un stade de football.
@@ -3112,7 +3175,7 @@ Le niveau de raffinement est à la hauteur de ce château où règne l'obscurit�
 Des Parties de Terrain issues de "<card mrk='17367'/>".
 Leurs motifs complexes en font de belles pièces décoratives.
 [IDS_ITEMDESC.ID1100039]
-Des Parties de Terrain issues de "<card mrk='21385'/>".
+Des Parties de Terrain issues de <card mrk='21385'/>.
 Les gens restent sur leurs gardes lorsqu'ils voient ce motif, qui semble donc avoir un effet dissuasif sur la criminalité.
 [IDS_ITEMDESC.ID1100040]
 Parties de Terrain provenant d'un terrain de football.
@@ -3545,6 +3608,9 @@ Il vous guide grâce au pouvoir mystique des étoiles.
 [IDS_ITEMDESC.ID1111072]
 Un Stand inspiré par la tenue spéciale d'une streameuse ultra mignonne.
 Le charme doit être assorti d'une touche de froideur pour vraiment briller.
+[IDS_ITEMDESC.ID1111077]
+Un Stand inspiré d'une énergie tourbillonnante née de la nature.
+Recevoir l'aura qu'il émet vous remplit de vitalité.
 [IDS_ITEMDESC.ID1111080]
 Un Stand inspiré d'un dragon nommé "<category id='158'/>".
 Une puissance écrasante ouvre une brèche dans un monde fermé.
@@ -3979,6 +4045,18 @@ Avec les paroles du chef de son village gravées dans son cœur, elle choisit de
 [IDS_ITEMDESC.ID1130113]
 <category id='40'/> qui gère "<card mrk='17164'/>".
 Ils détournent l'énergie et les parties, chacun gagnant ainsi encore plus de puissance.
+[IDS_ITEMDESC.ID1130114]
+"<card mrk='8023'/>" renverse autrui par son regard froid.
+Cette image représente son futur en tant qu'ecclésiastique charitable.
+[IDS_ITEMDESC.ID1130115]
+Le dieu suprême des tempêtes libère une fournaise infernale.
+Son pouvoir lui permet de modifier la météo partout dans le monde.
+[IDS_ITEMDESC.ID1130118]
+"<card mrk='21810'/>", l'un des dieux du royaume des esprits.
+Il a libéré "<card mrk='21777'/>" sur le monde, crépitant d'éclairs verts.
+[IDS_ITEMDESC.ID1130119]
+Une bête immense rugit en réponse au puissant cri perçant.
+La fureur de la nature résonne en tourbillon à travers tout le territoire.
 [IDS_ITEMDESC.ID1130124]
 "La pourchasseuse" et sa "proie" forgent un nouvel avenir.
 La voie qu'elles traceront en suivant leurs idéaux reste inconnue.

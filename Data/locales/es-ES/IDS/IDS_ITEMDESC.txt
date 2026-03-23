@@ -117,6 +117,9 @@ Para alimentarse de los sueños de otros, su cuerpo produce un olor somnoliento,
 [IDS_ITEMDESC.ID1000042]
 ¡El goloso "<card mrk='21371'/>"!
 Atrapa a todos esos deliciosos monstruos que viven en un mundo exquisitamente estúpido.
+[IDS_ITEMDESC.ID1000043]
+A <category id='166'/> se le reconoce por los cuernos de la cabeza.
+Usa sus poderosos brazos para asestar demoledores puñetazos y llaves estranguladoras.
 [IDS_ITEMDESC.ID1001001]
 Una taza de fideos instantáneos que parece que te otorgaran el poder de Invocar por Fusión.
 ¡No porque sean instantáneos significa que sean malos!
@@ -744,6 +747,15 @@ Sigue sin ser consciente de lo que está por venir.
 [IDS_ITEMDESC.ID1010131]
 Un icono que representa el emblema de la Academia.
 En caso de emergencia, los alumnos deben reunirse de inmediato.
+[IDS_ITEMDESC.ID1010132]
+Un icono que representa a un miembro de un grupo de cuatro amigos de "<card mrk='21465'/>".
+Aunque es apasionado y audaz, siempre sigue las reglas.
+[IDS_ITEMDESC.ID1010133]
+Un icono que representa a la joven de "<card mrk='21827'/>", que sirve como receptáculo de un dios.
+Venera las tormentas e invoca el poder del dios del viento que hay en su interior.
+[IDS_ITEMDESC.ID1010136]
+Un icono que representa a una vaca flotando en el aire.
+Los temibles vientos mandan todo lo que hay en la zona por los aires.
 [IDS_ITEMDESC.ID1010138]
 Un icono que representa a un mago con un poder mágico inigualable.
 El círculo mágico que dibujó llevó al legendario Rey de los Duelos a la victoria.
@@ -941,6 +953,15 @@ Un icono con el logotipo plateado de la DC 2025 DEC.
 Se concede a quienes han logrado grandes resultados en la Duelist Cup.
 [IDS_ITEMDESC.ID1011065]
 Un icono con el logotipo broncíneo de la DC 2025 DEC. 
+Se concede a quienes han triunfado en numerosas batallas en la Duelist Cup.
+[IDS_ITEMDESC.ID1011066]
+Un icono con el logotipo dorado de la DC 2026 MAR. 
+Se concede a quienes han destacado por encima del resto en la Duelist Cup.
+[IDS_ITEMDESC.ID1011067]
+Un icono con el logotipo plateado de la DC 2026 MAR. 
+Se concede a quienes han logrado grandes resultados en la Duelist Cup.
+[IDS_ITEMDESC.ID1011068]
+Un icono con el logotipo broncíneo de la DC 2026 MAR. 
 Se concede a quienes han triunfado en numerosas batallas en la Duelist Cup.
 [IDS_ITEMDESC.ID1012001]
 Un icono que representa a un Krawler, monstruos que han invadido cierto mundo. Este forma parte de la nobleza.
@@ -1802,12 +1823,39 @@ Con un rugido atronador, se lanzan al combate ferozmente contra sus rivales.
 [IDS_ITEMDESC.ID1020199]
 Un título que se otorga a los duelistas que lograron buenos resultados en el evento "Carrera de dados - Fusión/Sincronía/Enlace".
 Un brillante futuro aguarda a aquellos valientes que confían en sí mismos.
+[IDS_ITEMDESC.ID1020204]
+Un título otorgado a los duelistas que hayan logrado estar entre los 10 primeros en la DC 2026 MAR.
+Las historias de sus numerosos e impresionantes duelos, así como de su valentía al competir por el trono perdurarán en el tiempo.
+[IDS_ITEMDESC.ID1020205]
+Un título otorgado a los duelistas que hayan logrado estar entre los 100 primeros en la DC 2026 MAR.
+Es la prueba de un logro al que muchos duelistas aspiran.
+[IDS_ITEMDESC.ID1020206]
+Un título otorgado a los duelistas que hayan logrado estar entre los 500 primeros en la DC 2026 MAR.
+Solo los que se alzan victoriosos de entre los más fuertes pueden poseer un corazón como el tuyo, templado por muchos Duelos reñidos.
+[IDS_ITEMDESC.ID1020207]
+Un título otorgado a los duelistas que hayan logrado estar entre los 1000 primeros en la DC 2026 MAR.
+Enhorabuena a los duelistas que han seguido desarrollando sus Decks y sus tácticas hasta alcanzar este objetivo.
+[IDS_ITEMDESC.ID1020208]
+Un título otorgado a los duelistas que hayan logrado estar entre los 10000 primeros en la DC 2026 MAR.
+Ganado victoria tras victoria frente a feroces competidores en la 2nd STAGE.
+[IDS_ITEMDESC.ID1020209]
+Un título otorgado a los duelistas que llegaron a la 2nd Stage en la DC 2026 MAR.
+Es la prueba de tu logro de haber superado la reñida 1st Stage.
 [IDS_ITEMDESC.ID1021001]
 Un título que solo se otorga en una ocasión especial.
 [IDS_ITEMDESC.ID1021002]
 Un título que solo se otorga en una ocasión especial.
 [IDS_ITEMDESC.ID1021003]
 coming soon
+[IDS_ITEMDESC.ID1022001]
+Un título otorgado a los duelistas coronados como los primeros líderes del "Campeonato de institutos de Japón" de Yu-Gi-Oh! MASTER DUEL de 2026.
+ Este hito fue conseguido con pura dedicación y atestigua una amistad forjada en la juventud. Las puertas al futuro están abiertas de par en par.
+[IDS_ITEMDESC.ID1022002]
+Un título otorgado a los duelistas que alcanzaron la gran final del "Campeonato de institutos de Japón" de Yu-Gi-Oh! MASTER DUEL de 2026.
+ Un espíritu que perseveró hasta el final es la prueba de poder definitiva. De las llamas de una ambición por cumplir, nace el próximo capítulo de tu historia.
+[IDS_ITEMDESC.ID1022003]
+Un título otorgado a los duelistas que alcanzaron la final del "Campeonato de institutos de Japón" de Yu-Gi-Oh! MASTER DUEL de 2026.
+ El sendero forjado a través de varios retos va más allá de la victoria y la derrota. Sirve como un paso irrevocable hacia el futuro. Desde aquí, las opciones son infinitas.
 [IDS_ITEMDESC.ID1030001]
 Un marco de icono que se entrega a todos los duelistas.
 El blanco es un tono muy versátil que puede transformarse en cualquier color. En él residen las posibilidades ilimitadas de crecer y mejorar de todos los duelistas.
@@ -1923,6 +1971,9 @@ Esto agota su núcleo, pero se puede usar una vez tras otra.
 [IDS_ITEMDESC.ID1030040]
 Un marco de icono azul y blanco que evoca un frío cielo de invierno.
 La blanca nieve cae del cielo azul y refleja la armonía de la luz.
+[IDS_ITEMDESC.ID1030041]
+Un marco de icono rojo y blanco con un gran número de interpretaciones.
+Los rasgos dinámicos, como la vitalidad y la pasión, se contrarrestan con otros más sutiles, como la pena y la espiritualidad.
 [IDS_ITEMDESC.ID1031001]
 Un marco de icono que recuerda al portal usado por los Cazas del Cielo para transferir su armamento.
 Cuando el camino se abre para quienes luchan por la paz, un nuevo poder despierta para superar la adversidad.
@@ -1983,6 +2034,9 @@ Una luz roja parpadea cuando libera su poder.
 [IDS_ITEMDESC.ID1031020]
 Un marco de icono que representa una actuación importante de una compañía de artistas.
 La danza shishimai, que combina todos los elementos imaginables, se ha convertido en leyenda.
+[IDS_ITEMDESC.ID1031021]
+Un marco de icono que evoca una feroz tormenta en la que irrumpe un potente trueno.
+Las ráfagas de viento protegen de cualquier amenaza externa.
 [IDS_ITEMDESC.ID1032001]
 Un marco de icono con forma de adorno circular que se puede ver en ciertas regiones a medida que el año se acerca a su fin.
 Se cuelgan con un deseo sincero de felicidad y alegría para los tiempos venideros.
@@ -2482,6 +2536,9 @@ Para quienes pueden doblegar la magia de destrucción a su antojo.
 [IDS_ITEMDESC.ID1070153]
 Protectores que muestran una forma de vida inmortal que emite un destello rojo.
 Para aquellos con un resplandor incontrolable.
+[IDS_ITEMDESC.ID1070154]
+Protectores que representan una violenta tormenta en la que irrumpen numerosos rayos.
+Para quienes creen en los golpes veloces.
 [IDS_ITEMDESC.ID1070157]
 Protectores que muestran un streamer monísimo vestido de forma especial.
 Para aquellos que se enfrentan al mundo con el rostro impasible.
@@ -2489,8 +2546,11 @@ Para aquellos que se enfrentan al mundo con el rostro impasible.
 Protectores que muestran a "<card mrk='7696'/>" tras despertar un nuevo poder.
 Para quienes creen en el vínculo de los camaradas reunidos.
 [IDS_ITEMDESC.ID1070159]
-Protectors featuring a pair of friendly, well-dressed tanuki.
-For those who wish for happiness and growth.
+Protectores que muestran unos simpáticos mapaches en sus mejores galas.
+Para quienes rezan por su crecimiento personal y felicidad.
+[IDS_ITEMDESC.ID1070160]
+Protectores que muestran lo que yace tras la Invocación por Sincronía.
+Para quienes buscan nuevos horizontes.
 [IDS_ITEMDESC.ID1071001]
 Protectores que ilustran a un guerrero que ha madurado y guarda en su corazón las cicatrices de las batallas. 
 Perfectos para los que siempre quieren lo mejor para sus amigos.
@@ -2682,6 +2742,9 @@ Un protector con el logotipo de la DC 2025 SEP.
 Para los que participaron la Duelist Cup e hicieron que el evento sea todo un éxito.
 [IDS_ITEMDESC.ID1073018]
 Un protector con el logotipo de la DC 2025 DEC. 
+Para los que participaron la Duelist Cup e hicieron que el evento sea todo un éxito.
+[IDS_ITEMDESC.ID1073019]
+Un protector con el logotipo de la DC 2026 MAR. 
 Para los que participaron la Duelist Cup e hicieron que el evento sea todo un éxito.
 [IDS_ITEMDESC.ID1075001]
 Protectores que representan una escena de Yu-Gi-Oh! CARD GAME THE CHRONICLES.
@@ -3546,6 +3609,9 @@ Te guía usando el poder místico de las estrellas.
 [IDS_ITEMDESC.ID1111072]
 Un enclave inspirado en la ropa especial de un streamer monísimo.
 Se necesita cierto aire de despreocupación para llamar la atención de verdad.
+[IDS_ITEMDESC.ID1111077]
+Un enclave inspirado en una turbulenta energía que surge de la naturaleza.
+Recibe el aura que emite y rebosarás vitalidad.
 [IDS_ITEMDESC.ID1111080]
 Un enclave inspirado en un dragón que porta el nombre de "<category id='158'/>".
 Su poder abrumador puede abrir un agujero hacia un mundo cerrado.
@@ -3980,6 +4046,18 @@ Las palabras del jefe de la aldea se grabaron a fuego en su mente, lo que la emp
 [IDS_ITEMDESC.ID1130113]
 <category id='40'/> que gestiona a "<card mrk='17164'/>".
 Absorben energía y partes, cada una de las cuales recibe un poder aún mayor.
+[IDS_ITEMDESC.ID1130114]
+"<card mrk='8023'/>" lanza una mirada distante a los demás.
+Esta imagen de ella representa su futuro como sacerdotisa que brinda apoyo.
+[IDS_ITEMDESC.ID1130115]
+El dios supremo de las tormentas libera una tremenda hecatombe.
+Con su poder, cambia el tiempo de todo el mundo a su voluntad.
+[IDS_ITEMDESC.ID1130118]
+"<card mrk='21810'/>", uno de los dioses del reino espiritual.
+Libera el poder de "<card mrk='21777'/>" y sus devastadores rayos verdes en el mundo.
+[IDS_ITEMDESC.ID1130119]
+Una enorme bestia ruge en respuesta al temible alarido.
+La furia de la naturaleza resuena por todo el terreno golpeando con feroces vendavales.
 [IDS_ITEMDESC.ID1130124]
 La "perseguidora" y la "perseguida" buscan un nuevo futuro.
 La senda que recorrerán con sus ideales sigue siendo un misterio.

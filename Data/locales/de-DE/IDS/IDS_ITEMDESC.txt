@@ -117,6 +117,9 @@ Um sich von den Träumen anderer zu ernähren, stößt es ein einschläferndes A
 [IDS_ITEMDESC.ID1000042]
 Die Naschkatze „<card mrk='21371'/>“!
 Schnapp dir alle lecker aussehenden Monster, die in einer köstlich albernen Welt leben!
+[IDS_ITEMDESC.ID1000043]
+<category id='166'/> ist bekannt für die markanten Hörner auf seinem Kopf.
+Es nutzt seine kräftigen Arme, um knochenbrechende Schläge und Würgegriffe auszuführen.
 [IDS_ITEMDESC.ID1001001]
 Ein Becher mit Fertignudeln, die aussehen, als könnten sie dir die Macht der Fusionsbeschwörung gewähren.
 Es sind zwar Fertignudeln, aber das heißt nicht, dass sie nicht lecker sind!
@@ -744,6 +747,15 @@ Es ahnt noch nichts von dem, was kommen wird.
 [IDS_ITEMDESC.ID1010131]
 Ein Symbol, das das Emblem der Akademie darstellt.
 Im Notfall müssen sich die Schüler sofort versammeln.
+[IDS_ITEMDESC.ID1010132]
+Ein Symbol, das ein Mitglied einer Gruppe von vier Freunden aus „<card mrk='21465'/>“ darstellt.
+Obwohl er leidenschaftlich und kühn ist, hält er sich stets an die Regeln.
+[IDS_ITEMDESC.ID1010133]
+Ein Symbol, das das junge Mädchen aus „<card mrk='21827'/>“ darstellt, das als Gefäß für eine Gottheit dient.
+Sie verehrt Stürme, indem sie die Macht des Windgottes in sich anruft.
+[IDS_ITEMDESC.ID1010136]
+Ein Symbol, das eine hoch in die Luft gewehte Kuh darstellt.
+Die furchtbaren Winde fegen alles in der Gegend in die Höhe.
 [IDS_ITEMDESC.ID1010138]
 Ein Symbol, das einen Zauberer mit unvergleichlicher magischer Macht darstellt.
 Der magische Kreis, den er zog, führte den legendären König der Spiele zum Sieg.
@@ -941,6 +953,15 @@ Ein Symbol mit einem silbernen „DC 2025 DEC“-Logo.
 Wurde an diejenigen verliehen, die beim Duelist Cup beachtliche Leistungen erbracht haben.
 [IDS_ITEMDESC.ID1011065]
 Ein Symbol mit einem bronzenen „DC 2025 DEC“-Logo. 
+Wurde an diejenigen verliehen, die beim Duelist Cup viele Kämpfe für sich entschieden haben.
+[IDS_ITEMDESC.ID1011066]
+Ein Symbol mit einem goldenen „DC 2026 MAR“-Logo. 
+Wurde an diejenigen verliehen, die beim Duelist Cup überdurchschnittliche Leistungen erbracht haben.
+[IDS_ITEMDESC.ID1011067]
+Ein Symbol mit einem silbernen „DC 2026 MAR“-Logo. 
+Wurde an diejenigen verliehen, die beim Duelist Cup beachtliche Leistungen erbracht haben.
+[IDS_ITEMDESC.ID1011068]
+Ein Symbol mit einem bronzenen „DC 2026 MAR“-Logo. 
 Wurde an diejenigen verliehen, die beim Duelist Cup viele Kämpfe für sich entschieden haben.
 [IDS_ITEMDESC.ID1012001]
 Ein Symbol, das einen „Krawler“ darstellt; Monster, die eine bestimmte Welt überrannt haben. Dieser gehört der höheren Klasse an.
@@ -1803,12 +1824,39 @@ Mit donnerndem Gebrüll stürzen sie sich in erbitterte Kämpfe mit ihren Rivale
 [IDS_ITEMDESC.ID1020199]
 Ein Titel, der an Duellanten vergeben wird, die beim Festival „Würfel-Rallye – Fusion/Synchro/Link“ Ergebnisse erzielt haben.
 Eine glänzende Zukunft wartet auf diejenigen, die mutig genug sind, sich selbst zu vertrauen.
+[IDS_ITEMDESC.ID1020204]
+Ein Titel, der an Duellanten vergeben wird, die im DC 2026 MAR die Top 10 erreicht haben.
+Die Geschichten über ihre vielen großartigen Duelle und ihre Tapferkeit im Kampf um den Thron werden noch viele Jahre lang erzählt werden.
+[IDS_ITEMDESC.ID1020205]
+Ein Titel, der an Duellanten vergeben wird, die im DC 2026 MAR die Top 100 erreicht haben.
+Dies ist ein Beweis für eine Leistung, die viele Duellanten anstreben.
+[IDS_ITEMDESC.ID1020206]
+Ein Titel, der an Duellanten vergeben wird, die im DC 2026 MAR die Top 500 erreicht haben.
+Nur die Stärksten der Starken können ein Herz wie das deine besitzen, das durch viele hart umkämpfte Duelle gestählt wurde.
+[IDS_ITEMDESC.ID1020207]
+Ein Titel, der an Duellanten vergeben wird, die im DC 2026 MAR die Top 1.000 erreicht haben.
+Hut ab vor den Duellanten, die kontinuierlich an ihren Decks und Taktiken gefeilt haben, um dieses Ergebnis zu erreichen.
+[IDS_ITEMDESC.ID1020208]
+Ein Titel, der an Duellanten vergeben wird, die im DC 2026 MAR die Top 10000 erreicht haben.
+Er wurde durch einen Sieg nach dem anderen gegen die harte Konkurrenz in der 2nd STAGE verdient.
+[IDS_ITEMDESC.ID1020209]
+Ein Titel, der an Duellanten vergeben wird, die die 2nd Stage des DC 2026 MAR erreicht haben.
+Er ist der Beweis dafür, dass du es durch die heiß umkämpfte 1st Stage geschafft hast.
 [IDS_ITEMDESC.ID1021001]
 Ein Titel, der nur zu einem besonderen Anlass verliehen wird.
 [IDS_ITEMDESC.ID1021002]
 Ein Titel, der nur zu einem besonderen Anlass verliehen wird.
 [IDS_ITEMDESC.ID1021003]
 coming soon
+[IDS_ITEMDESC.ID1022001]
+Mit diesem Titel wurden die ersten Champions der Yu-Gi-Oh! MASTER DUEL „Japan High School Championship“ 2026 gekürt.
+ Dieser Höhepunkt wurde mit unermüdlichem Einsatz erreicht – ein Beweis für eine in der Jugend geschmiedete Freundschaft. Die Tür zur Zukunft steht weit offen.
+[IDS_ITEMDESC.ID1022002]
+Ein Titel, der den Duellanten verliehen wird, die das große Finale der Yu-Gi-Oh! MASTER DUEL „Japan High School Championship“ 2026 erreicht haben.
+ Ein Geist, der bis zum Schluss durchhält, ist der ultimative Beweis für Stärke. Aus den Flammen unerfüllter Ambitionen entsteht das nächste Kapitel deiner Geschichte.
+[IDS_ITEMDESC.ID1022003]
+Ein Titel, der den Duellanten verliehen wird, die das Finale der Yu-Gi-Oh! MASTER DUEL „Japan High School Championship“ 2026 erreicht haben.
+ Der durch Prüfungen geebnete Weg geht über Sieg und Niederlage hinaus. Es stellt einen unwiderruflichen Schritt in Richtung deiner Zukunft dar. Von hier an sind die Möglichkeiten grenzenlos.
 [IDS_ITEMDESC.ID1030001]
 Ein Symbol-Rahmen, der an alle Duellanten vergeben wird.
 Weiß ist eine sehr vielseitige Farbe, die sich in jede Farbe ändern lässt. In ihr wohnt das grenzenlose Potenzial aller Duellanten, zu wachsen und sich zu verbessern.
@@ -1924,6 +1972,9 @@ Es belastet ihren Kern, kann aber mehrmals hintereinander verwendet werden.
 [IDS_ITEMDESC.ID1030040]
 Ein blauer und weißer Symbol-Rahmen, der an einen kalten Winterhimmel erinnert.
 Der weiße Schnee fällt vom klaren blauen Himmel und spiegelt die Harmonie des Lichts wider.
+[IDS_ITEMDESC.ID1030041]
+Ein rot-weißer Symbol-Rahmen, der vielfältige Interpretationen zulässt.
+Dynamische Eigenschaften wie Vitalität und Leidenschaft stehen im Gleichgewicht mit subtileren Eigenschaften wie Trauer und Spiritualität.
 [IDS_ITEMDESC.ID1031001]
 Ein Symbol-Rahmen, der an das Tor erinnert, das die Himmelsjäger benutzen, um ihre Ausrüstung zu transferieren.
 Wenn sich der Weg für diejenigen öffnet, die für den Frieden kämpfen, erwacht eine neue Kraft zur Überwindung der Not.
@@ -1984,6 +2035,9 @@ Ein rotes Licht flackert auf, wenn sie ihre Kraft entfesselt.
 [IDS_ITEMDESC.ID1031020]
 Ein Symbol-Rahmen, der einen großen Auftritt einer Künstlergruppe zeigt.
 Der Shishimai-Tanz, der alle erdenklichen Elemente vereint, ist in die Legende eingegangen.
+[IDS_ITEMDESC.ID1031021]
+Ein Symbol-Rahmen, der an einen heftigen Sturm erinnert, der von einem Blitz durchbohrt wird.
+Die Windböen schützen vor äußeren Bedrohungen.
 [IDS_ITEMDESC.ID1032001]
 Ein Symbol-Rahmen in der Form einer runden Dekoration, die in manchen Regionen zum Jahresende zu sehen ist.
 Sie werden mit dem aufrichtigen Wunsch nach Glück und Freude in der kommenden Zeit aufgehängt.
@@ -2483,6 +2537,9 @@ Für diejenigen, die die Zerstörungsmagie ihrem Willen unterwerfen können.
 [IDS_ITEMDESC.ID1070153]
 Kartenhüllen, die eine unsterbliche, rot leuchtende Energieform darstellen.
 Für alle mit unbändiger Ausstrahlung.
+[IDS_ITEMDESC.ID1070154]
+Kartenhüllen, die einen heftigen Sturm darstellen, der von Blitzen durchbohrt wird.
+Für diejenigen, die an schnelles Zuschlagen glauben.
 [IDS_ITEMDESC.ID1070157]
 Kartenhüllen, die eine ultraniedliche Streamerin in einem besonderen Outfit darstellen.
 Für all jene, die der Welt mit ausdrucksloser Miene begegnen.
@@ -2490,8 +2547,11 @@ Für all jene, die der Welt mit ausdrucksloser Miene begegnen.
 Kartenhüllen, die „<card mrk='7696'/>“ darstellen, nachdem eine neue Kraft erweckt wurde.
 Für all jene, die an den Zusammenhalt von Kameraden glauben.
 [IDS_ITEMDESC.ID1070159]
-Protectors featuring a pair of friendly, well-dressed tanuki.
-For those who wish for happiness and growth.
+Kartenhüllen, die freundliche Waschbären in ihrem schönsten Zwirn darstellen.
+Für all jene, die um persönliches Wachstum und Glück beten.
+[IDS_ITEMDESC.ID1070160]
+Kartenhüllen, die das veranschaulichen, was jenseits der Synchrobeschwörung liegt.
+Für alle, die neue Horizonte suchen.
 [IDS_ITEMDESC.ID1071001]
 Kartenhüllen, die einen Krieger darstellen, der gereift ist und die Narben, die während der Kämpfe in sein Herz geätzt wurden, akzeptiert hat. 
 Perfekt für alle, die immer das Beste für ihre geliebten Freunde wollen.
@@ -2683,6 +2743,9 @@ Eine Kartenhülle mit „DC 2025 SEP“-Logo.
 Für Spieler, die am Duelist Cup teilgenommen und dem Event zu Erfolg verholfen haben.
 [IDS_ITEMDESC.ID1073018]
 Eine Kartenhülle mit „DC 2025 DEC“-Logo. 
+Für Spieler, die am Duelist Cup teilgenommen und dem Event zu Erfolg verholfen haben.
+[IDS_ITEMDESC.ID1073019]
+Eine Kartenhülle mit „DC 2026 MAR“-Logo. 
 Für Spieler, die am Duelist Cup teilgenommen und dem Event zu Erfolg verholfen haben.
 [IDS_ITEMDESC.ID1075001]
 Ein Kartenhülle, auf der eine Szene aus Yu-Gi-Oh! CARD GAME THE CHRONICLES abgebildet ist.
@@ -3547,6 +3610,9 @@ Er leitet dich mithilfe der mystischen Kraft der Sterne.
 [IDS_ITEMDESC.ID1111072]
 Ein Stand, inspiriert vom besonderen Outfit einer ultraniedlichen Streamerin.
 Niedlichkeit braucht einen Hauch von Distanz, um richtig zur Geltung zu kommen.
+[IDS_ITEMDESC.ID1111077]
+Ein Stand, inspiriert von einer wirbelnden Energie, die aus der Natur stammt.
+Empfange die Aura, die er ausstrahlt, und werde mit Vitalität erfüllt.
 [IDS_ITEMDESC.ID1111080]
 Ein Stand, inspiriert von einem Drachen mit dem Namen „<category id='158'/>“.
 Überwältigende Kraft reißt ein Loch in eine abgeschottete Welt.
@@ -3981,6 +4047,18 @@ Mit den Worten des Dorfvorstehers im Herzen entschied sie sich, zu der Gerechtig
 [IDS_ITEMDESC.ID1130113]
 Der <category id='40'/>, der „<card mrk='17164'/>“ kontrolliert.
 Sie zapfen Energie und Teile ab und gewinnen dadurch noch größere Kraft.
+[IDS_ITEMDESC.ID1130114]
+„<card mrk='8023'/>“ betrachtet andere mit distanziertem Blick.
+Dieses Bild von ihr veranschaulicht ihre Zukunft als hilfsbereite Geistliche.
+[IDS_ITEMDESC.ID1130115]
+Der oberste Gott der Stürme entfesselt ein feuriges Inferno.
+Mit seiner Kraft verändert es nach Belieben das Wetter auf der ganzen Welt.
+[IDS_ITEMDESC.ID1130118]
+„<card mrk='21810'/>“, einer der Götter der Geisterwelt.
+Entfesselte ein „<card mrk='21777'/>“, das von grünen Blitzen durchzuckt wurde, auf die Welt.
+[IDS_ITEMDESC.ID1130119]
+Als Antwort auf den gewaltigen Schrei brüllt ein riesiges Tier.
+Die Wut der Natur hallt in wirbelnden Strudeln durch das Land.
 [IDS_ITEMDESC.ID1130124]
 „Jäger“ und „Gejagter“ ergreifen eine neue Zukunft.
 Welchen Weg sie aus ihren Idealen heraus einschlagen werden, bleibt ein Rätsel.

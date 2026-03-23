@@ -117,6 +117,9 @@ In order to eat others' dreams, it releases a sleep-inducing odor from its body,
 [IDS_ITEMDESC.ID1000042]
 The sweets-loving "<card mrk='21371'/>"!
 Snatch up all the yummy-looking monsters who live in a scrumptiously silly world!
+[IDS_ITEMDESC.ID1000043]
+<category id='166'/> is known for the distinct horns on its head.
+It uses its powerful arms to deliver bone-crushing punches and choke holds.
 [IDS_ITEMDESC.ID1001001]
 A cup of instant noodles that look like they could grant you the power to Fusion Summon.
 Just because they're instant, doesn't mean they're bad!
@@ -744,6 +747,15 @@ It remains unaware of what is to come.
 [IDS_ITEMDESC.ID1010131]
 An Icon depicting the Academy's emblem.
 In an emergency, students are to assemble at once.
+[IDS_ITEMDESC.ID1010132]
+An Icon depicting one member of a group of four friends from "<card mrk='21465'/>".
+Though passionate and bold, he always follows the rules.
+[IDS_ITEMDESC.ID1010133]
+An Icon depicting the young girl from "<card mrk='21827'/>" who serves as a vessel for a god.
+She worships storms as she calls upon the power of the wind god within her.
+[IDS_ITEMDESC.ID1010136]
+An Icon depicting a cow that has been carried high into the air.
+The fearsome winds sweep everything in the area skyward.
 [IDS_ITEMDESC.ID1010138]
 An Icon depicting a wizard of unparalleled magical power.
 The magical circle he drew led the legendary King of Games to victory.
@@ -941,6 +953,15 @@ An Icon with a silver "DC 2025 DEC" logo.
 Given to those who achieved considerable results in the Duelist Cup.
 [IDS_ITEMDESC.ID1011065]
 An Icon with a bronze "DC 2025 DEC" logo. 
+Given to those who conquered numerous battles in the Duelist Cup.
+[IDS_ITEMDESC.ID1011066]
+An Icon with a golden "DC 2026 MAR" logo. 
+Given to those who performed above and beyond in the Duelist Cup.
+[IDS_ITEMDESC.ID1011067]
+An Icon with a silver "DC 2026 MAR" logo. 
+Given to those who achieved considerable results in the Duelist Cup.
+[IDS_ITEMDESC.ID1011068]
+An Icon with a bronze "DC 2026 MAR" logo. 
 Given to those who conquered numerous battles in the Duelist Cup.
 [IDS_ITEMDESC.ID1012001]
 An Icon depicting a "Krawler," Monsters who have overrun a certain world. This one is part of the higher class.
@@ -1803,12 +1824,39 @@ With a thunderous roar, they throw themselves into fierce battles with their riv
 [IDS_ITEMDESC.ID1020199]
 A Title given to Duelists who achieved results in the "Dice Rally - Fusion/Synchro/Link" event.
 A brilliant future awaits those courageous enough to trust themselves.
+[IDS_ITEMDESC.ID1020204]
+A Title given to Duelists who made it to the top 10 in DC 2026 MAR.
+Tales of their many great Duels and their bravery in competing for the throne will continue to be told for years to come.
+[IDS_ITEMDESC.ID1020205]
+A Title given to Duelists who made it to the top 100 in DC 2026 MAR.
+This is proof of a feat that many Duelists strive to achieve.
+[IDS_ITEMDESC.ID1020206]
+A Title given to Duelists who made it to the top 500 in DC 2026 MAR.
+Only the strongest of the strong may possess a heart like yours, tempered by many hard-fought Duels.
+[IDS_ITEMDESC.ID1020207]
+A Title given to Duelists who made it to the top 1,000 in DC 2026 MAR.
+Kudos to the Duelists who have continuously polished their Decks and tactics to achieve this result.
+[IDS_ITEMDESC.ID1020208]
+A Title given to Duelists who made it to the top 10000 in DC 2026 MAR.
+It was earned through victory after victory against fierce competitors in the 2nd STAGE.
+[IDS_ITEMDESC.ID1020209]
+A Title given to Duelists who made it to the 2nd Stage in DC 2026 MAR.
+It is proof of your accomplishment in making it through the hotly contested 1st Stage.
 [IDS_ITEMDESC.ID1021001]
 A Title only bestowed upon a special occasion.
 [IDS_ITEMDESC.ID1021002]
 A Title only bestowed upon a special occasion.
 [IDS_ITEMDESC.ID1021003]
 coming soon
+[IDS_ITEMDESC.ID1022001]
+A Title awarded to the Duelists crowned the first-ever champions of the 2026 Yu-Gi-Oh! MASTER DUEL "Japan High School Championship".
+ This apex was attained with pure dedication—a testament of friendship forged in youth. The door to the future is wide open.
+[IDS_ITEMDESC.ID1022002]
+A Title awarded to the Duelists who reached the Grand Final of the 2026 Yu-Gi-Oh! MASTER DUEL "Japan High School Championship".
+ A spirit that persevered to the very end is the ultimate proof of strength. From the flames of unfulfilled ambition, the next chapter of your story is born.
+[IDS_ITEMDESC.ID1022003]
+A Title awarded to the Duelists who reached the Final of the 2026 Yu-Gi-Oh! MASTER DUEL "Japan High School Championship".
+ The path carved through trials transcends victory and defeat. It serves as an irrevocable step toward your future. From here, the possibilities are endless.
 [IDS_ITEMDESC.ID1030001]
 An Icon Frame given to all Duelists.
 White is a very versatile shade that can be changed to any color. Within it dwells the limitless potential for all Duelists to grow and improve.
@@ -1924,6 +1972,9 @@ An Icon Frame that evokes the power of Fusion—the foundation of the Pyroxene W
 [IDS_ITEMDESC.ID1030040]
 A blue and white Icon Frame that evokes a cold winter sky.
 The white snow falls from the clear blue sky, reflecting the harmony of light.
+[IDS_ITEMDESC.ID1030041]
+A red and white Icon Frame that allows for an array of interpretations.
+Dynamic traits like vitality and passion are balanced with subtler ones, such as sorrow and spirituality.
 [IDS_ITEMDESC.ID1031001]
 An Icon Frame that is reminiscent of the gate used by Sky Strikers, to transfer their armaments.
 When the path opens to those who fight for peace, a new power to overcome hardship awakens.
@@ -1984,6 +2035,9 @@ A red light flickers when she unleashes her power.
 [IDS_ITEMDESC.ID1031020]
 An Icon Frame evoking a major performance by an artist troupe.
 The Shishimai Dance, combining every conceivable element, is etched into legend.
+[IDS_ITEMDESC.ID1031021]
+An Icon Frame evoking a ferocious storm pierced by a bolt of lightning.
+The gusts of wind defend against outside threats.
 [IDS_ITEMDESC.ID1032001]
 An Icon Frame in the shape of a circular decoration, which can be seen in a certain region as the year draws to a close.
 They are hung with the sincere wish for happiness and joy in times to come.
@@ -2482,6 +2536,9 @@ For those who can bend destruction magic to their will.
 [IDS_ITEMDESC.ID1070153]
 Protectors depicting an immortal energy lifeform that glows red.
 For those with uncontainable radiance.
+[IDS_ITEMDESC.ID1070154]
+Protectors depicting a violent storm pierced through with lightning.
+For those who believe in striking quickly.
 [IDS_ITEMDESC.ID1070157]
 Protectors depicting an ultra-cute streamer in a special outfit.
 For those who take on the world with a deadpan face.
@@ -2489,8 +2546,11 @@ For those who take on the world with a deadpan face.
 Protectors depicting "<card mrk='7696'/>" after awakening a new power.
 For those who believe in the bond of gathered comrades.
 [IDS_ITEMDESC.ID1070159]
-Protectors featuring a pair of friendly, well-dressed tanuki.
-For those who wish for happiness and growth.
+Protectors depicting friendly raccoons dressed in their finest.
+For those who pray for personal growth and happiness.
+[IDS_ITEMDESC.ID1070160]
+Protectors depicting what lies beyond Synchro Summoning.
+For those who seek out new horizons.
 [IDS_ITEMDESC.ID1071001]
 Protectors that illustrate a warrior who has matured and taken the scars etched in his heart during battles. 
 Perfect for those who always want the best for their dear friends.
@@ -2682,6 +2742,9 @@ A Protector with a "DC 2025 SEP" logo.
 For those who participated in the Duelist Cup and made the event a success.
 [IDS_ITEMDESC.ID1073018]
 A Protector with a "DC 2025 DEC" logo. 
+For those who participated in the Duelist Cup and made the event a success.
+[IDS_ITEMDESC.ID1073019]
+A Protector with a "DC 2026 MAR" logo. 
 For those who participated in the Duelist Cup and made the event a success.
 [IDS_ITEMDESC.ID1075001]
 Protectors depicting a scene from Yu-Gi-Oh! CARD GAME THE CHRONICLES.
@@ -3547,6 +3610,9 @@ It guides you using the mystical power of the stars.
 [IDS_ITEMDESC.ID1111072]
 A Stand inspired by the special outfit of an ultra-cute streamer.
 Cuteness needs a hint of aloofness to really shine.
+[IDS_ITEMDESC.ID1111077]
+A Stand inspired by a swirling energy born from nature.
+Receive the aura it emits and be filled with vitality.
 [IDS_ITEMDESC.ID1111080]
 A Stand inspired by a dragon bearing the name "<category id='158'/>".
 Overwhelming power blasts a hole in a closed-off world.
@@ -3981,6 +4047,18 @@ With the village chief's words engraved in her heart, she chose to stand by the 
 [IDS_ITEMDESC.ID1130113]
 The <category id='40'/> who manage "<card mrk='17164'/>".
 They siphon off energy and parts, each gaining even greater power.
+[IDS_ITEMDESC.ID1130114]
+"<card mrk='8023'/>" levels others with an aloof gaze.
+This image of her depicts her future as a supportive cleric.
+[IDS_ITEMDESC.ID1130115]
+The supreme god of storms unleashes a fiery inferno.
+With its power, it freely changes the weather throughout the world.
+[IDS_ITEMDESC.ID1130118]
+"<card mrk='21810'/>", one of the gods of the spirit realm.
+It unleashed "<card mrk='21777'/>", crackling with green lightning, upon the world.
+[IDS_ITEMDESC.ID1130119]
+A massive beast roars in response to the mighty shriek.
+Nature's fury echoes throughout the land in swirling eddies.
 [IDS_ITEMDESC.ID1130124]
 "The pursuer" and the "the pursued" seize a new future.
 The path they'll shape from their ideals remains a mystery.
