@@ -29,6 +29,8 @@ namespace MDPro3.Duel.YGOSharp
 
         private static readonly StringBuilder builder = new();
 
+        private const bool CORE_SUPPORT_GENESYS_LFLIST = false;
+
         public static void Initialize()
         {
             Banlists = new();
@@ -198,8 +200,13 @@ namespace MDPro3.Duel.YGOSharp
             }
 
             InitialCurrentBanlists();
-            var text = Tools.MergeWithNewLine(allTextNoGenesys, builder.ToString());
-            SaveMergedText(text);
+            if (CORE_SUPPORT_GENESYS_LFLIST)
+            {
+                var text = Tools.MergeWithNewLine(allTextNoGenesys, builder.ToString());
+                SaveMergedText(text);
+            }
+            else
+                SaveMergedText(allTextNoGenesys);
         }
 
         private static void InitialCurrentBanlists()
