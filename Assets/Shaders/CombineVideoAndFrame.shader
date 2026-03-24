@@ -9,6 +9,10 @@ Shader "MDPro3/CombineVideoAndFrame"
     
     SubShader
     {
+        ZTest Always
+        Cull Off
+        ZWrite Off
+
         Tags { "RenderType"="Opaque" }
         LOD 100
         

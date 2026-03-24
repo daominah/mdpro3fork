@@ -289,6 +289,12 @@ namespace MDPro3
                         mat.SetTexture("_KiraMask", TextureManager.container.cardKiraMaskPendulum);
                         mat.SetTexture("_MainNormal", TextureManager.container.cardNormalPendulum);
                     }
+                    else
+                    {
+                        mat.SetTexture("_CardMask", TextureManager.container.cardFrameMask);
+                        mat.SetTexture("_KiraMask", TextureManager.container.cardKiraMask);
+                        mat.SetTexture("_MainNormal", TextureManager.container.cardNormal);
+                    }
 
                     if (Language.AttributeNeedRuby())
                         mat.SetVector("_AttributeSize_Pos", new Vector4(9.85f, 13.96f, -3.7f, -5.81f));
