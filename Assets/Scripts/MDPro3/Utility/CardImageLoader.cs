@@ -463,7 +463,7 @@ namespace MDPro3.Utility
             {
                 if (!CardHasOverFrame(code))
                     return null;
-                var path = Tools.GetPlatformPath(Program.PATH_OVER_FRAME + code + ".png");
+                var path = Tools.GetPlatformFilePath(Program.PATH_OVER_FRAME + code + ".png");
                 using var request = UnityWebRequestTexture.GetTexture(path);
                 try
                 {
@@ -731,15 +731,7 @@ namespace MDPro3.Utility
             //await UniTask.SwitchToThreadPool();
             await UniTask.Yield();
 
-            var path = Program.PATH_ART;
-#if !UNITY_EDITOR && (UNITY_ANDROID || UNITY_IOS)
-            path = Path.Combine(Application.persistentDataPath, path);
-#elif UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX || UNITY_STANDALONE_LINUX
-            path = Path.Combine(Environment.CurrentDirectory, path);
-#else
-            path = Path.Combine(Environment.CurrentDirectory, path);
-#endif
-
+            var path = Tools.GetPlatformPath(Program.PATH_ART);
             if (Directory.Exists(path))
             {
                 foreach (var file in Directory.GetFiles(path, "*.jpg"))
@@ -750,15 +742,7 @@ namespace MDPro3.Utility
                 }
             }
 
-            path = Program.PATH_ALT_ART;
-#if !UNITY_EDITOR && (UNITY_ANDROID || UNITY_IOS)
-            path = Path.Combine(Application.persistentDataPath, path);
-#elif UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX || UNITY_STANDALONE_LINUX
-            path = Path.Combine(Environment.CurrentDirectory, path);
-#else
-            path = Path.Combine(Environment.CurrentDirectory, path);
-#endif
-
+            path = Tools.GetPlatformPath(Program.PATH_ALT_ART);
             if (Directory.Exists(path))
             {
                 foreach (var file in Directory.GetFiles(path, "*.jpg"))
@@ -788,7 +772,7 @@ namespace MDPro3.Utility
                 path = Program.PATH_ART + code + Program.EXPANSION_JPG;
 
             if (!string.IsNullOrEmpty(path))
-                path = Tools.GetPlatformPath(path);
+                path = Tools.GetPlatformFilePath(path);
 
             return path;
         }
@@ -842,7 +826,7 @@ namespace MDPro3.Utility
         {
             if (overFrameFileListInitialized) return;
             var path = Tools.GetPlatformPath(Program.PATH_OVER_FRAME);
-            if(Directory.Exists(path))
+            if (Directory.Exists(path))
             {
                 //await UniTask.SwitchToThreadPool();
                 await UniTask.Yield();

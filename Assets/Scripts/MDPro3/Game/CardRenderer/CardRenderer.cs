@@ -222,7 +222,6 @@ namespace MDPro3
         private static string GetVideoURL(int code)
         {
             string path = Program.PATH_VIDEO_ART + code.ToString() + Program.EXPANSION_MP4;
-            path = Tools.GetPlatformPath(path);
             path = Tools.FormatPlatformUrl(path);
 
             return path;
@@ -291,8 +290,7 @@ namespace MDPro3
         {
             if (matCompositeInstance == null)
                 return;
-
-            if(CardImageLoader.GetCardReferenceCount(code) == 0)
+            if (CardImageLoader.GetCardReferenceCount(code) == 0)
             {
                 PauseVideo();
                 return;
