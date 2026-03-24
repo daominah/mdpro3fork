@@ -52,8 +52,7 @@ namespace MDPro3.Utility
 
         #region 初始化
 
-        [RuntimeInitializeOnLoadMethod]
-        private static void Initialize()
+        public static void Initialize()
         {
             maxLoads = GetOptimalConcurrency();
 
