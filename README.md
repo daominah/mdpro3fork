@@ -13,6 +13,7 @@ This fork targets **offline-only, human vs AI** use on Android.
 
 - **Ramdom number** do not work properly (at least when select random AI decks).
 
+- **hand after shuffled** caanot select card, eg Fuwalos effect.
 - **Performance / heat reduction**:
   - Change imported textures in the Unity Editor to ASTC 6x6 compression for the Android
     platform override (`Assets/Texture/` and `Assets/MasterDuel/`). One-time build setting,
