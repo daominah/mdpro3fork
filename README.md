@@ -11,6 +11,8 @@ This fork targets **offline-only, human vs AI** use on Android.
   The original code had a DOTween lifecycle bug where rapid attacks could leave the camera
   at the wrong vertical position.
 
+- **Ramdom number** do not work properly (at least when select random AI decks).
+
 - **Performance / heat reduction**:
   - Change imported textures in the Unity Editor to ASTC 6x6 compression for the Android
     platform override (`Assets/Texture/` and `Assets/MasterDuel/`). One-time build setting,
@@ -18,7 +20,7 @@ This fork targets **offline-only, human vs AI** use on Android.
   - In-game settings already expose FPS cap (30 recommended), render scale (0.5 default),
     shadow quality, MSAA, and post-process AA. Keep these at their mobile defaults.
 
-- **Disable all online features**: remove or stub out login, matchmaking, live spectating,
+- **Disable all online features**: remove or stub out new experimental cards update popup, login, matchmaking, live spectating,
   deck cloud sync, and WebSocket duel server connections. The goal is a self-contained APK
   that does not require any network access.
 
