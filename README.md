@@ -25,6 +25,8 @@ This fork targets **offline-only, human vs AI** use on Android.
   deck cloud sync, and WebSocket duel server connections. The goal is a self-contained APK
   that does not require any network access.
 
+- **normal summon remaining*: instead of summonned
+
 ## Platform
 
 Built with **Unity 6000.0.10f1**. Targets Android, iOS, PC, and macOS.
