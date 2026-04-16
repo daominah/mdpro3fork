@@ -1,4 +1,4 @@
-# MDPro3
+⁸# MDPro3
 
 A fan-made Yu-Gi-Oh! Trading Card Game simulator for mobile and desktop, built in Unity.
 It uses assets extracted from Konami's official Master Duel game for a good visual experience.
@@ -25,7 +25,9 @@ This fork targets **offline-only, human vs AI** use on Android.
   deck cloud sync, and WebSocket duel server connections. The goal is a self-contained APK
   that does not require any network access.
 
-- **normal summon remaining*: instead of summonned
+- **normal summon remaining**: instead of summonned
+
+- swipe up to attack
 
 ## Platform
 
