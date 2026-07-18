@@ -796,7 +796,7 @@ namespace MDPro3.UI
             {
                 var unknownCard = TextureManager.container != null ? TextureManager.container.unknownCard.texture : null;
                 if (tex != null && tex != unknownCard)
-                    CardImageLoader.ReleaseCard(code);
+                    Destroy(tex);
             }
         }
 
