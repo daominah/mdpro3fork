@@ -125,13 +125,14 @@ namespace MDPro3
                 items = handle.Result;
             }
 
+            var cardImageLoaderInitialization = CardImageLoader.InitializeAsync();
             cardRenderer = (await Addressables.InstantiateAsync("Prefab/CardRenderer.prefab")).GetComponent<CardRenderer>();
 
             ZipHelper.Initialize();
             items.Initialize();
             BanlistManager.Initialize();
             OnlineService.Initialize();
-            CardImageLoader.Initialize();
+            await cardImageLoaderInitialization;
 
             InitializeAllManagers();
             InitializeAllServants();

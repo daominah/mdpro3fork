@@ -550,19 +550,40 @@ namespace MDPro3
         private static AssetBundle mdBundleDuel;
         private static AssetBundle mdBundleOutDuel;
         private static AssetBundle mdBundleMaterials;
+        private static AssetBundle mdBundleShaders;
         private static AssetBundle mdBundleSprites;
         private static AssetBundle mdBundleTextures;
 
         public static async UniTask CacheMasterDuelOutDuelBundles()
         {
             mdCachedProgress = 0f;
-            await CacheFromFileAsync(Program.root + "MasterDuel/Built-in/shaders");
-            mdCachedProgress = 0.3f;
-            mdBundleSprites = await CacheFromFileAsync(Program.root + "MasterDuel/Built-in/sprites");
-            mdCachedProgress = 0.6f;
-            mdBundleMaterials = await CacheFromFileAsync(Program.root + "MasterDuel/Built-in/materials");
-            mdCachedProgress = 0.9f;
-            mdBundleOutDuel = await CacheFromFileAsync(Program.root + "MasterDuel/Built-in/outduel");
+            var requests = new[]
+            {
+                AssetBundle.LoadFromFileAsync(Program.root + "MasterDuel/Built-in/shaders"),
+                AssetBundle.LoadFromFileAsync(Program.root + "MasterDuel/Built-in/sprites"),
+                AssetBundle.LoadFromFileAsync(Program.root + "MasterDuel/Built-in/materials"),
+                AssetBundle.LoadFromFileAsync(Program.root + "MasterDuel/Built-in/outduel")
+            };
+
+            var allDone = false;
+            while (!allDone)
+            {
+                allDone = true;
+                var progress = 0f;
+                foreach (var request in requests)
+                {
+                    allDone &= request.isDone;
+                    progress += request.progress;
+                }
+                mdCachedProgress = progress / requests.Length;
+                if (!allDone)
+                    await UniTask.Yield();
+            }
+
+            mdBundleShaders = requests[0].assetBundle;
+            mdBundleSprites = requests[1].assetBundle;
+            mdBundleMaterials = requests[2].assetBundle;
+            mdBundleOutDuel = requests[3].assetBundle;
             mdCachedProgress = 1f;
             mdCached = true;
         }
@@ -571,8 +592,14 @@ namespace MDPro3
         {
             if (mdDuelCached)
                 return;
-            mdBundleTextures = await CacheFromFileAsync(Program.root + "MasterDuel/Built-in/textures");
-            mdBundleDuel = await CacheFromFileAsync(Program.root + "MasterDuel/Built-in/duel");
+
+            var bundles = await UniTask.WhenAll(new[]
+            {
+                CacheFromFileAsync(Program.root + "MasterDuel/Built-in/textures"),
+                CacheFromFileAsync(Program.root + "MasterDuel/Built-in/duel")
+            });
+            mdBundleTextures = bundles[0];
+            mdBundleDuel = bundles[1];
             mdDuelCached = true;
         }
 

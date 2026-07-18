@@ -52,7 +52,7 @@ namespace MDPro3.Utility
 
         #region 初始化
 
-        public static void Initialize()
+        public static async UniTask InitializeAsync()
         {
             maxLoads = GetOptimalConcurrency();
 
@@ -60,9 +60,25 @@ namespace MDPro3.Utility
             overFrameSemaphore = new SemaphoreSlim(maxLoads, maxLoads);
             cardSemaphore = new SemaphoreSlim(maxLoads, maxLoads);
 
-            _ = InitializeArtFileListAsync();
-            _ = InitializeVideoArtFileListAsync();
-            _ = InitializeOverFrameFileListAsync();
+            var artPath = Tools.GetPlatformPath(Program.PATH_ART);
+            var altArtPath = Tools.GetPlatformPath(Program.PATH_ALT_ART);
+            var videoArtPath = Tools.GetPlatformPath(Program.PATH_VIDEO_ART);
+            var overFramePath = Tools.GetPlatformPath(Program.PATH_OVER_FRAME);
+
+            await UniTask.SwitchToThreadPool();
+            var indexingErrors = new List<string>();
+            var newArtFileList = GetFileCodes(artPath, "*.jpg", indexingErrors);
+            var newArtAltFileList = GetAlternateArtFiles(altArtPath, indexingErrors);
+            var newVideoArtFileList = GetFileCodes(videoArtPath, "*.mp4", indexingErrors);
+            var newOverFrameFileList = GetFileCodes(overFramePath, "*.png", indexingErrors);
+            await UniTask.SwitchToMainThread();
+
+            artFileList = newArtFileList;
+            artAltFileList = newArtAltFileList;
+            videoArtFileList = newVideoArtFileList;
+            overFrameFileList = newOverFrameFileList;
+            foreach (var error in indexingErrors)
+                Debug.LogWarning($"CardImageLoader: Failed to index {error}");
 
             SystemEvent.OnVideoCardConfigChange += CheckArtVideoConfig;
         }
@@ -721,53 +737,69 @@ namespace MDPro3.Utility
 
         #region Art File List Cache
 
-        private static readonly List<int> artFileList = new();
-        private static readonly Dictionary<int, string> artAltFileList = new();
-        private static bool artFileListInitialized;
+        private static HashSet<int> artFileList = new();
+        private static Dictionary<int, string> artAltFileList = new();
 
-        private static async UniTask InitializeArtFileListAsync()
+        private static HashSet<int> GetFileCodes(
+            string path,
+            string searchPattern,
+            List<string> errors)
         {
-            if (artFileListInitialized) return;
-            //await UniTask.SwitchToThreadPool();
-            await UniTask.Yield();
-
-            var path = Tools.GetPlatformPath(Program.PATH_ART);
-            if (Directory.Exists(path))
+            var result = new HashSet<int>();
+            try
             {
-                foreach (var file in Directory.GetFiles(path, "*.jpg"))
+                if (Directory.Exists(path))
                 {
-                    var fileName = Path.GetFileNameWithoutExtension(file);
-                    if (int.TryParse(fileName, out var code))
-                        artFileList.Add(code);
+                    foreach (var file in Directory.GetFiles(path, searchPattern))
+                    {
+                        var fileName = Path.GetFileNameWithoutExtension(file);
+                        if (int.TryParse(fileName, out var code))
+                            result.Add(code);
+                    }
                 }
             }
-
-            path = Tools.GetPlatformPath(Program.PATH_ALT_ART);
-            if (Directory.Exists(path))
+            catch (Exception exception) when (exception is IOException || exception is UnauthorizedAccessException)
             {
-                foreach (var file in Directory.GetFiles(path, "*.jpg"))
+                errors.Add($"{path}: {exception.Message}");
+            }
+            return result;
+        }
+
+        private static Dictionary<int, string> GetAlternateArtFiles(
+            string path,
+            List<string> errors)
+        {
+            var result = new Dictionary<int, string>();
+            try
+            {
+                if (Directory.Exists(path))
                 {
-                    var fileName = Path.GetFileNameWithoutExtension(file);
-                    if (int.TryParse(fileName, out var code))
-                        artAltFileList.Add(code, Program.EXPANSION_JPG);
-                }
-                foreach (var file in Directory.GetFiles(path, "*.png"))
-                {
-                    var fileName = Path.GetFileNameWithoutExtension(file);
-                    if (int.TryParse(fileName, out var code))
-                        if (!artAltFileList.ContainsKey(code))
-                            artAltFileList.Add(code, Program.EXPANSION_PNG);
+                    foreach (var file in Directory.GetFiles(path, "*.jpg"))
+                    {
+                        var fileName = Path.GetFileNameWithoutExtension(file);
+                        if (int.TryParse(fileName, out var code))
+                            result[code] = Program.EXPANSION_JPG;
+                    }
+                    foreach (var file in Directory.GetFiles(path, "*.png"))
+                    {
+                        var fileName = Path.GetFileNameWithoutExtension(file);
+                        if (int.TryParse(fileName, out var code))
+                            result.TryAdd(code, Program.EXPANSION_PNG);
+                    }
                 }
             }
-
-            artFileListInitialized = true;
+            catch (Exception exception) when (exception is IOException || exception is UnauthorizedAccessException)
+            {
+                errors.Add($"{path}: {exception.Message}");
+            }
+            return result;
         }
 
         private static string GetArtFilePath(int code)
         {
             string path = string.Empty;
-            if (artAltFileList.ContainsKey(code))
-                path = Program.PATH_ALT_ART + code + artAltFileList[code];
+            if (artAltFileList.TryGetValue(code, out var extension))
+                path = Program.PATH_ALT_ART + code + extension;
             else if (artFileList.Contains(code))
                 path = Program.PATH_ART + code + Program.EXPANSION_JPG;
 
@@ -781,27 +813,18 @@ namespace MDPro3.Utility
 
         #region Video Art File List Cache
 
-        private static readonly List<int> videoArtFileList = new();
-        private static bool videoArtFileListInitialized;
-        private static async UniTask InitializeVideoArtFileListAsync()
+        private static HashSet<int> videoArtFileList = new();
+
+        private static async UniTask ReloadArtVideosAsync()
         {
-            if (videoArtFileListInitialized) return;
-
             var path = Tools.GetPlatformPath(Program.PATH_VIDEO_ART);
-
-            if (Directory.Exists(path))
-            {
-                //await UniTask.SwitchToThreadPool();
-                await UniTask.Yield();
-                foreach (var file in Directory.GetFiles(path, "*.mp4"))
-                {
-                    var fileName = Path.GetFileNameWithoutExtension(file);
-                    if (int.TryParse(fileName, out var code))
-                        videoArtFileList.Add(code);
-                }
-            }
-
-            videoArtFileListInitialized = true;
+            await UniTask.SwitchToThreadPool();
+            var indexingErrors = new List<string>();
+            var newVideoArtFileList = GetFileCodes(path, "*.mp4", indexingErrors);
+            await UniTask.SwitchToMainThread();
+            videoArtFileList = newVideoArtFileList;
+            foreach (var error in indexingErrors)
+                Debug.LogWarning($"CardImageLoader: Failed to index {error}");
         }
 
         public static bool CardHasVideoArt(int code)
@@ -811,8 +834,7 @@ namespace MDPro3.Utility
 
         public static void ReloadArtVideos()
         {
-            videoArtFileListInitialized = false;
-            _ = InitializeVideoArtFileListAsync();
+            ReloadArtVideosAsync().Forget();
             ClearArtVideos();
         }
 
@@ -820,25 +842,7 @@ namespace MDPro3.Utility
 
         #region Over Frame Cache
 
-        private static readonly List<int> overFrameFileList = new();
-        private static bool overFrameFileListInitialized;
-        private static async UniTask InitializeOverFrameFileListAsync()
-        {
-            if (overFrameFileListInitialized) return;
-            var path = Tools.GetPlatformPath(Program.PATH_OVER_FRAME);
-            if (Directory.Exists(path))
-            {
-                //await UniTask.SwitchToThreadPool();
-                await UniTask.Yield();
-                foreach (var file in Directory.GetFiles(path, "*.png"))
-                {
-                    var fileName = Path.GetFileNameWithoutExtension(file);
-                    if (int.TryParse(fileName, out var code))
-                        overFrameFileList.Add(code);
-                }
-            }
-            overFrameFileListInitialized = true;
-        }
+        private static HashSet<int> overFrameFileList = new();
 
         public static bool CardHasOverFrame(int code)
         {
